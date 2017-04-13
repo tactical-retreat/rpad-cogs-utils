@@ -51,6 +51,10 @@ raw_dir = os.path.join(output_dir, 'raw_data')
 extract_dir = os.path.join(output_dir, 'extract_data')
 corrected_dir = os.path.join(output_dir, 'corrected_data')
 
+os.makedirs(raw_dir, exist_ok=True)
+os.makedirs(extract_dir, exist_ok=True)
+os.makedirs(corrected_dir, exist_ok=True)
+
 python_exec = sys.executable
 cur_file_path = os.path.dirname(os.path.realpath(__file__))
 tool_path = os.path.join(cur_file_path, 'PADTextureTool.py')
