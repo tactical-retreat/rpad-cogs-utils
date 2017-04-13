@@ -52,8 +52,8 @@ extract_dir = os.path.join(output_dir, 'extract_data')
 corrected_dir = os.path.join(output_dir, 'corrected_data')
 
 python_exec = sys.executable
-# tool_path = os.path.join('image_pull', 'PADTextureTool.py')
-tool_path = os.path.join(os.getcwd(), 'src', 'image_pull', 'PADTextureTool.py')
+cur_file_path = os.path.dirname(os.path.realpath(__file__))
+tool_path = os.path.join(cur_file_path, 'PADTextureTool.py')
 
 IMAGE_SIZE = (640, 388)
 
