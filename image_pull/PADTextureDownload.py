@@ -8,6 +8,15 @@ from PIL import Image
 import padtools
 
 
+# The 'padtools' package did not work properly out of the box on linux. I had to go in
+# and adjust the __init__.py files like so:
+#
+# OLD: Regions.load(os.path.join(__file__, "..", "data", "regions.json"))
+# NEW: Regions.load(os.path.join(os.path.dirname(__file__), "data", "regions.json"))
+#
+# Did this for padtools/regions/__init__.py and padtools/servers/__init__.py
+
+
 def getOutputFileName(suggestedFileName):
     outputFileName = suggestedFileName
     # If the file is a "monster file" then pad the ID out with extra zeroes.
@@ -66,6 +75,7 @@ for asset in jp_assets:
     raw_file_name = os.path.basename(asset_url)
 
     if not raw_file_name.endswith('.bc'):
+        print('skipping', raw_file_name)
         continue
 
     raw_file_path = os.path.join(raw_dir, raw_file_name)
@@ -91,7 +101,8 @@ for asset in jp_assets:
                       output=extract_dir))
 
 
-    corrected_file_path = os.path.join(corrected_dir, extract_file_name)
+    corrected_file_name = extract_file_name.lower().strip('mons_').strip('0')
+    corrected_file_path = os.path.join(corrected_dir, corrected_file_name)
 
     if os.path.exists(corrected_file_path):
         print('skipping existing file', corrected_file_path)

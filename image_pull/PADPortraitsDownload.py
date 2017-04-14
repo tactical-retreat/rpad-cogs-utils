@@ -88,9 +88,9 @@ for asset in jp_assets:
 
     corrected_file_path = os.path.join(corrected_dir, output_file_name)
     if not os.path.exists(corrected_file_path):
-        if os.path.exists(gamewith_path):
-            shutil.copy(gamewith_path, corrected_file_path)
-        elif os.path.exists(pdx_path):
+        if os.path.exists(pdx_path):
             shutil.copy(pdx_path, corrected_file_path)
+        elif os.path.exists(gamewith_path):
+            shutil.copy(gamewith_path, corrected_file_path)
         else:
             print('failed to copy any file to', corrected_file_path)
