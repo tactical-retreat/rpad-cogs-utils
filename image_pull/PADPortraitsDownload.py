@@ -13,6 +13,7 @@ parser = argparse.ArgumentParser(description="Downloads P&D portraits.", add_hel
 
 outputGroup = parser.add_argument_group("Output")
 outputGroup.add_argument("--output_dir", help="Path to a folder where output should be saved")
+outputGroup.add_argument("--server", help="One of [NA, JP]")
 
 helpGroup = parser.add_argument_group("Help")
 helpGroup.add_argument("-h", "--help", action="help", help="Displays this help message and exits.")
@@ -28,10 +29,13 @@ def download_file(url, file_path):
         with open(file_path, "wb") as f:
             f.write(file_data)
 
-jp_server = padtools.regions.japan.server
-jp_assets = jp_server.assets
+assets = []
+if args.server == 'NA':
+    assets = padtools.regions.north_america.server.assets
+elif args.server == 'JP':
+    assets = padtools.regions.japan.server.assets
 
-print('Found', len(jp_assets), 'assets total')
+print('Found', len(assets), 'assets total')
 
 
 pdx_dir = os.path.join(output_dir, 'pdx_data')
@@ -50,7 +54,17 @@ IMAGE_SIZE = (100, 100)
 THUMBNAIL_GAMEWITH_TEMPLATE = 'https://gamewith.akamaized.net/article_tools/pad/gacha/{}.png'
 THUMBNAIL_PDX_TEMPLATE = 'http://www.puzzledragonx.com/en/img/book/{}.png'
 
-for asset in jp_assets:
+
+# This was overwritten by voltron. PDX opted to copy it +10,000 ids away
+CROWS_1 = {x: x + 10000 for x in range(2601, 2635 + 1)}
+# This isn't overwritten but PDX adjusted anyway
+CROWS_2 = {x: x + 10000 for x in range(3460, 3481 + 1)}
+
+PDX_JP_ADJUSTMENTS = {}
+PDX_JP_ADJUSTMENTS.update(CROWS_1)
+PDX_JP_ADJUSTMENTS.update(CROWS_2)
+
+for asset in assets:
     asset_url = asset.url
     raw_file_name = os.path.basename(asset_url)
 
@@ -70,8 +84,8 @@ for asset in jp_assets:
 
     gamewith_path = os.path.join(gamewith_dir, output_file_name)
     try:
-        if os.path.exists(gamewith_path):
-            print('skipping existing file', gamewith_path)
+        if os.path.exists(gamewith_path) or args.server == 'NA':
+            print('skipping existing/unused file', gamewith_path)
         else:
             download_file(gamewith_url, gamewith_path)
     except Exception as e:
@@ -82,6 +96,12 @@ for asset in jp_assets:
         if os.path.exists(pdx_path):
             print('skipping existing file', pdx_path)
         else:
+            # Account for mapped PDX monsters
+            if args.server == 'JP':
+                id_value = int(stripped_monster_id)
+                mapped_id_value = PDX_JP_ADJUSTMENTS.get(id_value, id_value)
+                pdx_url = THUMBNAIL_PDX_TEMPLATE.format(mapped_id_value)
+
             download_file(pdx_url, pdx_path)
     except Exception as e:
         print('failed to download', pdx_url, 'to', pdx_path)

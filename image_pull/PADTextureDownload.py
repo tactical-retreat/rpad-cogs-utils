@@ -35,14 +35,19 @@ parser = argparse.ArgumentParser(description="Downloads and extracts P&D texture
 
 outputGroup = parser.add_argument_group("Output")
 outputGroup.add_argument("--output_dir", help="Path to a folder where output should be saved")
+outputGroup.add_argument("--server", help="One of [NA, JP]")
 
 helpGroup = parser.add_argument_group("Help")
 helpGroup.add_argument("-h", "--help", action="help", help="Displays this help message and exits.")
 args = parser.parse_args()
 
 
-jp_server = padtools.regions.japan.server
-jp_assets = jp_server.assets
+assets = []
+if args.server == 'NA':
+    assets = padtools.regions.north_america.server.assets
+elif args.server == 'JP':
+    assets = padtools.regions.japan.server.assets
+
 
 output_dir = args.output_dir
 
@@ -53,7 +58,7 @@ def download_file(url, file_path):
         with open(file_path, "wb") as f:
             f.write(file_data)
 
-print('Found', len(jp_assets), 'assets total')
+print('Found', len(assets), 'assets total')
 
 
 raw_dir = os.path.join(output_dir, 'raw_data')
@@ -70,7 +75,7 @@ tool_path = os.path.join(cur_file_path, 'PADTextureTool.py')
 
 IMAGE_SIZE = (640, 388)
 
-for asset in jp_assets:
+for asset in assets:
     asset_url = asset.url
     raw_file_name = os.path.basename(asset_url)
 
