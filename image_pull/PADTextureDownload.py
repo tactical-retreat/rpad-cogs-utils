@@ -21,12 +21,14 @@ def getOutputFileName(suggestedFileName):
     outputFileName = suggestedFileName
     # If the file is a "monster file" then pad the ID out with extra zeroes.
     try:
-        prefix, mId, suffix = getOutputFileName.monsterFileNameRegex.match(suggestedFileName).groups()
+        prefix, mId, suffix = getOutputFileName.monsterFileNameRegex.match(
+            suggestedFileName).groups()
         outputFileName = prefix + mId.zfill(5) + suffix
     except AttributeError:
         pass
 
     return outputFileName
+
 
 getOutputFileName.monsterFileNameRegex = re.compile(r'^(MONS_)(\d+)(\..+)$', flags=re.IGNORECASE)
 
@@ -51,12 +53,14 @@ elif args.server == 'JP':
 
 output_dir = args.output_dir
 
+
 def download_file(url, file_path):
     response_object = urllib.request.urlopen(url)
     with response_object as response:
         file_data = response.read()
         with open(file_path, "wb") as f:
             f.write(file_data)
+
 
 print('Found', len(assets), 'assets total')
 
@@ -91,7 +95,6 @@ for asset in assets:
         print('downloading', asset.url, 'to', raw_file_path)
         download_file(asset_url, raw_file_path)
 
-
     extract_file_name = getOutputFileName(raw_file_name).upper().replace('BC', 'PNG')
     extract_file_path = os.path.join(extract_dir, extract_file_name)
 
@@ -100,11 +103,10 @@ for asset in assets:
     else:
         print('processing', raw_file_path, 'to', extract_dir, 'with name', extract_file_name)
         os.system('{python} {tool} -nb -o={output} {input}'.format(
-                      python=python_exec,
-                      tool=tool_path,
-                      input=raw_file_path,
-                      output=extract_dir))
-
+            python=python_exec,
+            tool=tool_path,
+            input=raw_file_path,
+            output=extract_dir))
 
     corrected_file_name = extract_file_name.lower().strip('mons_').strip('0')
     corrected_file_path = os.path.join(corrected_dir, corrected_file_name)
@@ -113,6 +115,10 @@ for asset in assets:
         print('skipping existing file', corrected_file_path)
     else:
         img = Image.open(extract_file_path)
+        if img.size[1] > IMAGE_SIZE[1]:
+            # this is a two-part image
+            img = img.crop((0, 0, img.size[0], img.size[1] / 2))
+
         old_size = img.size
 
         new_img = Image.new("RGBA", IMAGE_SIZE)
