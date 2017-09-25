@@ -99,8 +99,6 @@ for asset in assets:
     extract_file_path = os.path.join(extract_dir, extract_file_name)
 
     if os.path.exists(extract_file_path):
-        # Currently this is happening because of the new animated images, they
-        # come in parts that are assembled by pad.
         print('skipping existing file', extract_file_path)
     else:
         print('processing', raw_file_path, 'to', extract_dir, 'with name', extract_file_name)
@@ -116,6 +114,8 @@ for asset in assets:
     if os.path.exists(corrected_file_path):
         print('skipping existing file', corrected_file_path)
     elif not os.path.exists(extract_file_path):
+        # Currently this is happening because of the new animated images, they
+        # come in parts that are assembled by PAD.
         print('Error, could not find file:', extract_file_path)
     else:
         img = Image.open(extract_file_path)
