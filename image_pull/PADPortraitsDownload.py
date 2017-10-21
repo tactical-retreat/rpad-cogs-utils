@@ -22,12 +22,14 @@ args = parser.parse_args()
 
 output_dir = args.output_dir
 
+
 def download_file(url, file_path):
     response_object = urllib.request.urlopen(url)
     with response_object as response:
         file_data = response.read()
         with open(file_path, "wb") as f:
             f.write(file_data)
+
 
 assets = []
 if args.server == 'NA':
@@ -107,10 +109,9 @@ for asset in assets:
         print('failed to download', pdx_url, 'to', pdx_path)
 
     corrected_file_path = os.path.join(corrected_dir, output_file_name)
-    if not os.path.exists(corrected_file_path):
-        if os.path.exists(pdx_path):
-            shutil.copy(pdx_path, corrected_file_path)
-        elif os.path.exists(gamewith_path):
-            shutil.copy(gamewith_path, corrected_file_path)
-        else:
-            print('failed to copy any file to', corrected_file_path)
+    if os.path.exists(pdx_path):
+        shutil.copy(pdx_path, corrected_file_path)
+    elif os.path.exists(gamewith_path):
+        shutil.copy(gamewith_path, corrected_file_path)
+    else:
+        print('failed to copy any file to', corrected_file_path)
