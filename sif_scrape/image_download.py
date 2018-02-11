@@ -82,6 +82,7 @@ def autocrop(image):
 for f in os.listdir(raw_dir):
     raw_file = os.path.join(raw_dir, f)
     processed_file = os.path.join(processed_dir, f)
-    image = Image.open(raw_file)
-    image = autocrop(image)
-    image.save(processed_file)
+    if not os.path.exists(processed_file):
+        image = Image.open(raw_file)
+        image = autocrop(image)
+        image.save(processed_file)
