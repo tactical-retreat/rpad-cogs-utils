@@ -6,6 +6,7 @@ import sys
 import urllib.request
 
 from PIL import Image
+import requests
 
 
 parser = argparse.ArgumentParser(description="Downloads SIF images.", add_help=False)
@@ -36,10 +37,7 @@ def download_file(url, file_path):
 
 
 def load_json(url):
-    response_object = urllib.request.urlopen(url)
-    with response_object as response:
-        file_data = response.read()
-        return json.loads(str(file_data))
+    return requests.get(url).json()
 
 
 FIRST_REQ = 'https://schoolido.lu/api/cards/?page_size=100'
