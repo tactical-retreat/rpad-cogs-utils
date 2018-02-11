@@ -39,7 +39,7 @@ def load_json(url):
     response_object = urllib.request.urlopen(url)
     with response_object as response:
         file_data = response.read()
-        return json.loads(file_data)
+        return json.loads(str(file_data))
 
 
 FIRST_REQ = 'https://schoolido.lu/api/cards/?page_size=100'
