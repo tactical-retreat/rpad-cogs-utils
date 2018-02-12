@@ -67,6 +67,7 @@ def process_row(row):
         'url': full_url,
         'images': {},
     }
+    print('processing {} {}'.format(ship_id, name_en))
     process_sub_row(full_url, item)
     return item
 
