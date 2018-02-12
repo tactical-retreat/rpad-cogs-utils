@@ -63,8 +63,8 @@ def process_row(row):
     global used_ids
     cols = row.findAll('td')
     ship_id = int(cols[0].text.strip())
-    if ship_id in used_ids:
-        # Fix for collab ships
+    if ship_id in used_ids or ship_id in [3, 4]:
+        # Fix for collab ships, 3,4 are not used atm
         ship_id += 2000
     used_ids.add(ship_id)
 
