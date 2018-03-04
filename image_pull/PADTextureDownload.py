@@ -89,7 +89,7 @@ for asset in assets:
 
     raw_file_path = os.path.join(raw_dir, raw_file_name)
 
-    if os.path.exists(raw_file_path) and 'CARD' not in raw_file_path:
+    if os.path.exists(raw_file_path) and 'card' not in raw_file_path.lower():
         # always redownload card files
         print('file exists', raw_file_path)
     else:
@@ -99,7 +99,7 @@ for asset in assets:
     extract_file_name = getOutputFileName(raw_file_name).upper().replace('BC', 'PNG')
     extract_file_path = os.path.join(extract_dir, extract_file_name)
 
-    if os.path.exists(extract_file_path):
+    if os.path.exists(extract_file_path) and 'card' not in extract_file_path.lower():
         print('skipping existing file', extract_file_path)
     else:
         print('processing', raw_file_path, 'to', extract_dir, 'with name', extract_file_name)
