@@ -94,14 +94,23 @@ def get_card_img(portraits, row, col):
     return portraits.crop(box=(xstart, ystart, xend, yend))
 
 
+def is_entirely_transparent(img):
+    return img.getextrema() == ((0, 0), (0, 0), (0, 0), (0, 0))
+
+
 for card_id, card_attr, card_sattr in card_types:
     card_file, row, col = idx_for_id(card_id)
     portraits = get_portraits_img(card_file)
     if portraits is None:
         # This can happen since JP gets ahead of NA and it's not easy to
         # confirm that a card is in JP but not NA
+        print('skipping {} because CARDS file does not exist: {}'.format(card_id, card_file))
         continue
+
     card_img = get_card_img(portraits, row, col)
+    if is_entirely_transparent(card_img):
+        print('skipping {} because it is missing'.format(card_id))
+        continue
 
     # Create a grey image to overlay the portrait on, filling in the background
     grey_img = Image.new("RGBA", card_img.size, color=(68, 68, 68, 255))
