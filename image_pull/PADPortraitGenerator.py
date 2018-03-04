@@ -77,6 +77,8 @@ card_imgs = {}
 def get_portraits_img(file_name):
     if file_name not in card_imgs:
         file_path = os.path.join(input_dir, file_name)
+        if not os.path.exists(file_path):
+            return None
         card_imgs[file_name] = Image.open(file_path)
     return card_imgs[file_name]
 
@@ -95,6 +97,10 @@ def get_card_img(portraits, row, col):
 for card_id, card_attr, card_sattr in card_types:
     card_file, row, col = idx_for_id(card_id)
     portraits = get_portraits_img(card_file)
+    if portraits is None:
+        # This can happen since JP gets ahead of NA and it's not easy to
+        # confirm that a card is in JP but not NA
+        continue
     card_img = get_card_img(portraits, row, col)
 
     # Create a grey image to overlay the portrait on, filling in the background
