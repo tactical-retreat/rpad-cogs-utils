@@ -89,7 +89,8 @@ for asset in assets:
 
     raw_file_path = os.path.join(raw_dir, raw_file_name)
 
-    if os.path.exists(raw_file_path):
+    if os.path.exists(raw_file_path) and 'CARD' not in raw_file_path:
+        # always redownload card files
         print('file exists', raw_file_path)
     else:
         print('downloading', asset.url, 'to', raw_file_path)
