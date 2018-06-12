@@ -127,9 +127,7 @@ def get_action_payload(action, pid, sid, v_name, v_value, r):
 def pull_and_write_endpoint(action, pid, sid, v_name, v_value, r):
     payload = get_action_payload(action, pid, sid, v_name, v_value, r)
     url = build_url(server_api_endpoint, payload)
-    print('querying', url)
     action_json = get_json_results(url, headers)
-    print('got ', action_json)
 
     output_file = os.path.join(output_dir, '{}.json'.format(action))
     with open(output_file, 'w') as outfile:
