@@ -19,8 +19,8 @@ def internal_id_to_display_id(i_id):
 
 
 def display_id_to_group(d_id):
-    return chr(ord('a') + (int(d_id) % 5))
+    return chr(ord('a') + (int(d_id[2]) % 5))
 
 
 def internal_id_to_group(i_id):
-    return display_id_to_group(internal_id_to_display_id(i_id))
+    return chr(ord('a') + (int(i_id) % 5))
