@@ -1,3 +1,7 @@
+import csv
+from io import StringIO
+import json
+
 # Simple dungeons
 # d;1,Start Tower Pt. 1,1,0,0,0
 # f;1,Basic Controls,3,103,0,0,0,0,0,0,0
@@ -109,3 +113,31 @@ class Dungeon:
 
     def is_guerrilla(self):
         return self.dungeon_type == 'guerrilla'
+
+
+def load_dungeons(dungeon_file):
+    """Converts dungeon JSON into an array of Dungeons."""
+    with open(dungeon_file) as f:
+        dungeon_json = json.load(f)
+    dungeon_info = dungeon_json['dungeons']
+
+    dungeons = []
+    cur_dungeon = None
+
+    for line in dungeon_info.split('\n'):
+        info = line[0:2]
+        data = line[2:]
+        data_values = next(csv.reader(StringIO(data), quotechar="'"))
+        if info == 'd;':
+            cur_dungeon = Dungeon(data_values)
+            if not cur_dungeon.is_bad():
+                dungeons.append(cur_dungeon)
+        elif info == 'f;':
+            floor = DungeonFloor(data_values)
+            cur_dungeon.floors.append(floor)
+        elif info == 'c;':
+            pass
+        else:
+            print('unexpected line: ' + line)
+
+    return dungeons

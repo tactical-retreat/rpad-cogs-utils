@@ -1,3 +1,5 @@
+import json
+
 # Parsing bonus data.
 
 # keys: 'sebiadm'
@@ -126,3 +128,15 @@ class Bonus:
 
     def __eq__(self, other):
         return self.__dict__ == other.__dict__
+
+
+def load_bonus_data(bonus_json_file):
+    with open(bonus_json_file) as f:
+        bonus_json = json.load(f)
+    bonus_info = bonus_json['bonuses']
+
+    bonuses = []
+    for item in bonus_info:
+        bonuses.append(Bonus(item))
+
+    return bonuses
