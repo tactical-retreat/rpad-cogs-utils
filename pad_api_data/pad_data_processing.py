@@ -89,6 +89,7 @@ for gdb in guerrilla_dungeon_bonuses:
         'dungeon_name': gdb.dungeon.clean_name,
         'start_timestamp': gh_to_timestamp(gdb.bonus.s, server),
         'end_timestamp': gh_to_timestamp(gdb.bonus.e, server),
+        'server': server,
     })
 
 output_file = os.path.join(output_dir, 'guerrilla_data.json')
