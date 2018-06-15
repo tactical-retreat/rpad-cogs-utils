@@ -21,6 +21,7 @@ inputGroup = parser.add_argument_group("Input")
 inputGroup.add_argument("--server", required=True, help="One of [NA, JP, HT]")
 inputGroup.add_argument("--user_uuid", required=True, help="Account UUID")
 inputGroup.add_argument("--user_intid", required=True, help="Account code")
+inputGroup.add_argument("--only_bonus", action='store_true', help="Only populate bonus data")
 
 outputGroup = parser.add_argument_group("Output")
 outputGroup.add_argument("--output_dir", required=True,
@@ -83,6 +84,8 @@ server_host = urllib.parse.urlparse(server_api_endpoint).hostname
 user_u = args.user_uuid
 user_i = args.user_intid
 
+user_group = chr(ord('a') + int(user_i[2]) % 5)
+
 output_dir = args.output_dir
 os.makedirs(output_dir, exist_ok=True)
 
@@ -124,18 +127,26 @@ def get_action_payload(action, pid, sid, v_name, v_value, r):
     return payload
 
 
-def pull_and_write_endpoint(action, pid, sid, v_name, v_value, r):
+def pull_and_write_endpoint(action, pid, sid, v_name, v_value, r, file_name_suffix=''):
     payload = get_action_payload(action, pid, sid, v_name, v_value, r)
     url = build_url(server_api_endpoint, payload)
     action_json = get_json_results(url, headers)
 
-    output_file = os.path.join(output_dir, '{}.json'.format(action))
+    file_name = '{}{}.json'.format(action, file_name_suffix)
+    output_file = os.path.join(output_dir, file_name)
+    print('writing', file_name)
     with open(output_file, 'w') as outfile:
         json.dump(action_json, outfile, sort_keys=True, indent=4)
 
 
+pull_and_write_endpoint('download_limited_bonus_data', user_i, user_sid,
+                        'v', '2', server_r, file_name_suffix='_{}'.format(user_group))
+
+if args.only_bonus:
+    print('skipping other downloads')
+    exit
+
 pull_and_write_endpoint('download_card_data', user_i, user_sid, 'v', '3', server_r)
 pull_and_write_endpoint('download_dungeon_data', user_i, user_sid, 'v', '2', server_r)
 pull_and_write_endpoint('download_skill_data', user_i, user_sid, 'ver', '1', server_r)
-pull_and_write_endpoint('download_limited_bonus_data', user_i, user_sid, 'v', '2', server_r)
 pull_and_write_endpoint('download_enemy_skill_data', user_i, user_sid, 'ver', '0', server_r)
