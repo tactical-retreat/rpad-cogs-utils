@@ -36,9 +36,8 @@ args = parser.parse_args()
 # All my endpoint data is for the android stuff, padtools picks ios by default.
 # Load the data from the json for the android endpoints.
 SERVERS = {
-    'JP': Server('http://patch-pad.gungho.jp/base_adr.json'),
     'NA': Server('http://patch-na-pad.gungho.jp/base-na-adr.json'),
-    'HT': Server('http://dl.padsv.gungho.jp/base.ht-adr.json'),
+    'JP': Server('http://dl.padsv.gungho.jp/base_adr.json'),
 }
 
 
