@@ -12,6 +12,7 @@ import urllib
 from padtools.servers.server import Server
 import requests
 
+import pad_utils
 import padkeygen
 
 
@@ -84,7 +85,7 @@ server_host = urllib.parse.urlparse(server_api_endpoint).hostname
 user_u = args.user_uuid
 user_i = args.user_intid
 
-user_group = chr(ord('a') + int(user_i[2]) % 5)
+user_group = pad_utils.internal_id_to_group(user_i)
 
 output_dir = args.output_dir
 os.makedirs(output_dir, exist_ok=True)
@@ -144,7 +145,7 @@ pull_and_write_endpoint('download_limited_bonus_data', user_i, user_sid,
 
 if args.only_bonus:
     print('skipping other downloads')
-    exit
+    exit()
 
 pull_and_write_endpoint('download_card_data', user_i, user_sid, 'v', '3', server_r)
 pull_and_write_endpoint('download_dungeon_data', user_i, user_sid, 'v', '2', server_r)
