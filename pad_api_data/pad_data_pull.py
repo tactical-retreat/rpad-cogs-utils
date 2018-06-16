@@ -12,8 +12,8 @@ import urllib
 from padtools.servers.server import Server
 import requests
 
+import keygen
 import pad_utils
-import padkeygen
 
 
 parser = argparse.ArgumentParser(description="Extracts PAD API data.", add_help=False)
@@ -75,6 +75,8 @@ def get_login_payload(u, i, p, v, r):
 server_name = args.server
 server = SERVERS[server_name]
 server_p = server_name.lower()
+# JP calls it's server ja in the URL
+server_p = 'ja' if server_p == 'jp' else server_p
 server_v = server.version
 server_r = server_v.replace('.', '')
 
@@ -92,16 +94,21 @@ os.makedirs(output_dir, exist_ok=True)
 headers = get_headers(server_host)
 
 
-def build_url(url, payload):
+def build_url(url, payload, server_name):
     combined_payload = ['{}={}'.format(x[0], x[1]) for x in payload]
     payload_str = '&'.join(combined_payload)
-    key = padkeygen.generate_key(payload_str)
+    if server_name.upper() == 'NA':
+        key = keygen.generate_key_na(payload_str, n=0)
+    elif server_name.upper() == 'JP':
+        key = keygen.generate_key_jp(payload_str, n=0)
+
     final_payload_str = '{}&key={}'.format(payload_str, key)
 
     return '{}?{}'.format(url, final_payload_str)
 
 
 def get_json_results(url, headers):
+    print(url)
     s = requests.Session()
     req = requests.Request('GET', url, headers=headers)
     p = req.prepare()
@@ -110,8 +117,9 @@ def get_json_results(url, headers):
 
 
 login_payload = get_login_payload(user_u, user_i, server_p, server_v, server_r)
-login_url = build_url(server_api_endpoint, login_payload)
+login_url = build_url(server_api_endpoint, login_payload, server_name)
 login_json = get_json_results(login_url, headers)
+print(login_json)
 
 user_sid = login_json['sid']
 
@@ -127,9 +135,9 @@ def get_action_payload(action, pid, sid, v_name, v_value, r):
     return payload
 
 
-def pull_and_write_endpoint(action, pid, sid, v_name, v_value, r, file_name_suffix=''):
+def pull_and_write_endpoint(server_name, action, pid, sid, v_name, v_value, r, file_name_suffix=''):
     payload = get_action_payload(action, pid, sid, v_name, v_value, r)
-    url = build_url(server_api_endpoint, payload)
+    url = build_url(server_api_endpoint, payload, server_name)
     action_json = get_json_results(url, headers)
 
     file_name = '{}{}.json'.format(action, file_name_suffix)
@@ -139,14 +147,15 @@ def pull_and_write_endpoint(action, pid, sid, v_name, v_value, r, file_name_suff
         json.dump(action_json, outfile, sort_keys=True, indent=4)
 
 
-pull_and_write_endpoint('download_limited_bonus_data', user_i, user_sid,
+pull_and_write_endpoint(server_name, 'download_limited_bonus_data', user_i, user_sid,
                         'v', '2', server_r, file_name_suffix='_{}'.format(user_group))
 
 if args.only_bonus:
     print('skipping other downloads')
     exit()
 
-pull_and_write_endpoint('download_card_data', user_i, user_sid, 'v', '3', server_r)
-pull_and_write_endpoint('download_dungeon_data', user_i, user_sid, 'v', '2', server_r)
-pull_and_write_endpoint('download_skill_data', user_i, user_sid, 'ver', '1', server_r)
-pull_and_write_endpoint('download_enemy_skill_data', user_i, user_sid, 'ver', '0', server_r)
+pull_and_write_endpoint(server_name, 'download_card_data', user_i, user_sid, 'v', '3', server_r)
+pull_and_write_endpoint(server_name, 'download_dungeon_data', user_i, user_sid, 'v', '2', server_r)
+pull_and_write_endpoint(server_name, 'download_skill_data', user_i, user_sid, 'ver', '1', server_r)
+pull_and_write_endpoint(server_name, 'download_enemy_skill_data',
+                        user_i, user_sid, 'ver', '0', server_r)
