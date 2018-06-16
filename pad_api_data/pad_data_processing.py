@@ -33,12 +33,12 @@ def dt_to_time(dt):
 
 
 parser = argparse.ArgumentParser(description="Extracts PAD API data.", add_help=False)
-#
+
 inputGroup = parser.add_argument_group("Input")
 inputGroup.add_argument("--server", required=True, help="One of [NA, JP, HT]")
 inputGroup.add_argument("--input_dir", required=True,
                         help="Path to a folder where the input data is")
-#
+
 outputGroup = parser.add_argument_group("Output")
 outputGroup.add_argument("--output_dir", required=True,
                          help="Path to a folder where output should be saved")
