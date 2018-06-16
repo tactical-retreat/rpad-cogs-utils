@@ -84,11 +84,11 @@ class Bonus:
 
     }
 
-    keys = 'sebiadm'
+    keys = 'sebiadmf'
 
     def __init__(self, raw):
         if not set(raw) <= set(Bonus.keys):
-            raise ValueError('Unexpected keys: ' + str(set(Bonus.keys) - set(raw)))
+            raise ValueError('Unexpected keys: ' + str(set(raw) - set(Bonus.keys)))
 
         # Start time as gungho time string
         self.s = raw['s']
@@ -98,8 +98,16 @@ class Bonus:
 
         # If populated, a dungeon id
         self.d = None
+
+        # If populated, the floor in the dungeon
+        # Stuff rewards text in monthly quests
+        self.f = None
+
         if 'd' in raw:
             self.d = int(raw['d'])
+            if 'f' in raw:
+                self.f = int(str(raw['f'])[len(str(raw['d'])):])
+                print(self.f)
 
         # If populated, a message (including formatting color)
         if 'm' in raw:
