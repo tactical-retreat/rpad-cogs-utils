@@ -7,7 +7,7 @@ def ghtime(s, server):
     #>  2015-12-28 00:00:00
     tz_offsets = {
         'na': '-0800',
-        'jp': '0900',
+        'jp': '+0900',
     }
     return datetime.datetime.strptime('{} {}'.format(s, tz_offsets[server.lower()]), '%y%m%d%H%M%S %z')
 
