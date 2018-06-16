@@ -107,7 +107,6 @@ class Bonus:
             self.d = int(raw['d'])
             if 'f' in raw:
                 self.f = int(str(raw['f'])[len(str(raw['d'])):])
-                print(self.f)
 
         # If populated, a message (including formatting color)
         if 'm' in raw:
