@@ -5,4 +5,4 @@ python3 /home/tactical0retreat/rpad-cogs-utils/pad_api_data/padguide/download_fi
   --output_dir=/home/tactical0retreat/pad_data/padguide
 
 echo "Syncing"
-gsutil -m rsync -r /home/tactical0retreat/pad_data/padguide/*.jsp.json gs://mirubot/paddata/padguide
+gsutil -m rsync -r /home/tactical0retreat/pad_data/padguide/ gs://mirubot/paddata/padguide
