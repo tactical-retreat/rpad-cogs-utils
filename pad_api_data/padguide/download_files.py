@@ -70,7 +70,7 @@ schedule_jsp = 'scheduleList.jsp'
 
 def writeJsonFile(ep, js_data):
     file_path = '{}.json'.format(ep)
-    with open(os.path.join(args.input_dir, file_path), "w") as f:
+    with open(os.path.join(args.output_dir, file_path), "w") as f:
         json.dump(js_data, f, sort_keys=True, indent=4)
 
 
