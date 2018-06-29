@@ -1,0 +1,1 @@
+"""Enemy skill info not supported yet."""
