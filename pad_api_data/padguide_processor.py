@@ -14,10 +14,17 @@ import pymysql
 import pytz
 
 
+def str2bool(v):
+  return v.lower() in ("yes", "true", "t", "1")
+
+
 def parse_args():
     parser = argparse.ArgumentParser(description="Patches the PadGuide database.", add_help=False)
+    parser.register('type', 'bool', str2bool)
 
     inputGroup = parser.add_argument_group("Input")
+    inputGroup.add_argument("--doupdates", default=False, action="store_true" , help="Enables actions")
+    inputGroup.add_argument("--logsql", default=False, action="store_true" , help="Logs sql commands")
     inputGroup.add_argument("--db_config", required=True, help="JSON database info")
     inputGroup.add_argument("--input_dir", required=True,
                             help="Path to a folder where the input data is")
@@ -64,8 +71,8 @@ def get_single_value(connection, sql, op=str):
         return op(list(row.values())[0])
 
 
-LOG_ALL_SQL = False
-DRY_RUN = False
+#LOG_ALL_SQL = False
+#DRY_RUN = True 
 
 
 def check_existing(connection, sql):
@@ -299,7 +306,7 @@ def database_diff(connection, database):
                 schedule_events.append(schedule_item)
 
     next_id = get_single_value(
-        connection, 'SELECT MAX(CAST(schedule_seq AS SIGNED)) FROM schedule_list', op=int)
+        connection, 'SELECT COALESCE(MAX(CAST(schedule_seq AS SIGNED)), 30000) FROM schedule_list', op=int)
 
     print('updating db starting at', next_id)
 
@@ -329,6 +336,7 @@ def load_data(args):
     connection = make_db_connection(db_config)
 
     database_diff(connection, na_database)
+    database_diff(connection, jp_database)
 
     print('done')
 
@@ -422,4 +430,10 @@ class MergedCard(object):
 
 if __name__ == '__main__':
     args = parse_args()
+    global LOG_ALL_SQL
+    global DRY_RUN
+    LOG_ALL_SQL = args.logsql
+    DRY_RUN = not args.doupdates
+    print('log sql:', LOG_ALL_SQL)
+    print('dry_run:', DRY_RUN)
     load_data(args)
