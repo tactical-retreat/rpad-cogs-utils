@@ -28,7 +28,7 @@ do
 
     echo "Processing ${server}/${group}/${uuid}/${intid} ${do_only_bonus}"
     python3 ${EXEC_DIR}/pad_data_pull.py \
-        --output_dir=${DATA_DIR}/${server,,} \
+        --output_dir=${DATA_DIR}/raw/${server,,} \
         --server=${server^^} \
         --user_uuid=${uuid} \
         --user_intid=${intid} \
@@ -36,7 +36,8 @@ do
 done < $1
 
 python3 ${EXEC_DIR}/padguide_processor.py \
-  --input_dir=${DATA_DIR} \
+  --input_dir=${DATA_DIR}/raw \
+  --output_dir=${DATA_DIR}/processed \
   --db_config=${EXEC_DIR}/db_config.json \
   --doupdates
 
