@@ -4,15 +4,17 @@ Parses card data.
 
 import json
 import os
-
 from typing import List, Any
+
+from ..common import pad_util
 from ..common.shared_types import AttrId, CardId, SkillId, TypeId
+
 
 # The typical JSON file name for this data.
 FILE_NAME = 'download_card_data.json'
 
 
-class BookCard(json.JSONEncoder):
+class BookCard(pad_util.JsonDictEncodable):
     """Data about a player-ownable monster."""
 
     def __init__(self, raw: List[Any]):

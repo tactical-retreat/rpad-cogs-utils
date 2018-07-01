@@ -39,9 +39,9 @@ def parse_args():
     inputGroup.add_argument("--input_dir", required=True,
                             help="Path to a folder where the input data is")
 
-    # outputGroup = parser.add_argument_group("Output")
-    # outputGroup.add_argument("--output_dir", required=True,
-    #                          help="Path to a folder where output should be saved")
+    outputGroup = parser.add_argument_group("Output")
+    outputGroup.add_argument("--output_dir", required=True,
+                             help="Path to a folder where output should be saved")
 
     helpGroup = parser.add_argument_group("Help")
     helpGroup.add_argument("-h", "--help", action="help",
@@ -333,10 +333,13 @@ def database_diff(connection, database):
 
 def load_data(args):
     input_dir = args.input_dir
-    # output_dir = args.output_dir
+    output_dir = args.output_dir
 
-    na_database = load_database(os.path.join(input_dir, 'na'), 'na')
     jp_database = load_database(os.path.join(input_dir, 'jp'), 'jp')
+    na_database = load_database(os.path.join(input_dir, 'na'), 'na')
+
+    jp_database.save_all(output_dir)
+    na_database.save_all(output_dir)
 
     with open(args.db_config) as f:
         db_config = json.load(f)
@@ -368,6 +371,17 @@ class Database(object):
 
         self.bonuses = clean_bonuses(pg_server, bonus_sets, dungeons)
         self.cards = clean_cards(cards, skills)
+
+    def save_all(self, output_dir: str):
+        def save(file_name: str, obj: object):
+            output_file = os.path.join(output_dir, '{}_{}.json'.format(self.pg_server, file_name))
+            with open(output_file, 'w') as f:
+                json.dump(obj, f, indent=4, sort_keys=True, default=lambda x: x.__dict__)
+        save('raw_cards', self.raw_cards)
+        save('dungeons', self.dungeons)
+        save('skills', self.skills)
+        save('bonuses', self.bonuses)
+        save('cards', self.cards)
 
 
 def clean_bonuses(pg_server, bonus_sets, dungeons):
@@ -414,7 +428,7 @@ def clean_cards(cards, skills):
     return merged_cards
 
 
-class MergedBonus(object):
+class MergedBonus(pad_util.JsonDictEncodable):
     def __init__(self, server, bonus, dungeon, group):
         self.server = server
         self.bonus = bonus
@@ -429,7 +443,7 @@ class MergedBonus(object):
             self.server, self.group, repr(self.dungeon), repr(self.bonus))
 
 
-class MergedCard(object):
+class MergedCard(pad_util.JsonDictEncodable):
     def __init__(self, card, active_skill, leader_skill):
         self.card = card
         self.active_skill = active_skill
