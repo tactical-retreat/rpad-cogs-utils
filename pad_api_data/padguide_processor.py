@@ -1,8 +1,8 @@
 """
 
 """
-from _datetime import datetime
 import argparse
+from datetime import datetime, timedelta
 import json
 import os
 import time
@@ -182,8 +182,10 @@ class ScheduleItem(object):
         self.url = None
 
     def is_valid(self):
+        # Messages and some random data errors
+        is_too_long = (self.close_date - self.open_date) > timedelta(days=365)
         # Only accept guerrilla for now
-        return self.event_enum == EventType.Guerrilla
+        return not is_too_long and self.event_enum == EventType.Guerrilla
 
     def exists_sql(self):
         sql = """SELECT schedule_seq FROM schedule_list
