@@ -11,11 +11,19 @@ from enum import Enum
 from pad_etl.common import pad_util
 from pad_etl.data import bonus, card, dungeon, skill
 import pymysql
-import pytz
+
+
+def normalize_pgserver(server: str):
+    server = server.lower()
+    if server == 'na':
+        server = 'us'
+    if server not in ('us', 'jp'):
+        raise ValueError('unexpected server:', server)
+    return server
 
 
 def str2bool(v):
-  return v.lower() in ("yes", "true", "t", "1")
+    return v.lower() in ("yes", "true", "t", "1")
 
 
 def parse_args():
@@ -23,8 +31,10 @@ def parse_args():
     parser.register('type', 'bool', str2bool)
 
     inputGroup = parser.add_argument_group("Input")
-    inputGroup.add_argument("--doupdates", default=False, action="store_true" , help="Enables actions")
-    inputGroup.add_argument("--logsql", default=False, action="store_true" , help="Logs sql commands")
+    inputGroup.add_argument("--doupdates", default=False,
+                            action="store_true", help="Enables actions")
+    inputGroup.add_argument("--logsql", default=False,
+                            action="store_true", help="Logs sql commands")
     inputGroup.add_argument("--db_config", required=True, help="JSON database info")
     inputGroup.add_argument("--input_dir", required=True,
                             help="Path to a folder where the input data is")
@@ -69,10 +79,6 @@ def get_single_value(connection, sql, op=str):
         if len(row.values()) > 1:
             raise ValueError('too many columns in result:', sql)
         return op(list(row.values())[0])
-
-
-#LOG_ALL_SQL = False
-#DRY_RUN = True 
 
 
 def check_existing(connection, sql):
@@ -159,8 +165,7 @@ class ScheduleItem(object):
         # Set during insert generation
         self.schedule_seq = None
 
-        # TODO: Need to propagate this in merged_event
-        self.server = ''
+        self.server = normalize_pgserver(merged_event.server)
 
         # ? Unused ?
         self.server_open_date = datetime.utcfromtimestamp(
@@ -184,6 +189,7 @@ class ScheduleItem(object):
         sql = """SELECT schedule_seq FROM schedule_list
                  WHERE open_timestamp = {open_timestamp}
                  AND close_timestamp = {close_timestamp}
+                 AND server = {server}
                  AND event_seq = {event_seq}
                  AND dungeon_seq = {dungeon_seq}
                  """
