@@ -36,7 +36,7 @@ class Bonus(pad_util.JsonDictEncodable):
         5: {'name': 'Stamina {}!', 'mod_fn': ghmult},
 
         # Special/co-op dungeon list.
-        6: {'name': 'dung'},
+        6: {'name': 'dungeon'},
 
         # PEM text.
         8: {'name': 'PEM Event', },
@@ -63,15 +63,27 @@ class Bonus(pad_util.JsonDictEncodable):
         17: {'name': 'skill*', 'mod_fn': ghmult},
 
         # "tourney is over, results pending"?
-        21: {'name': 'trn_anc', },
+        20: {'name': 'tournament_active', },
+
+        # "tourney is over, results pending"?
+        21: {'name': 'tournament_closed', },
 
         # ?
-        22: {'name': 'annc', },
+        22: {'name': 'score_announcement', },
 
         # metadata?
         23: {'name': 'meta?', },
 
-        25: {'name': 'boss +egg', 'mod_fn': ghmult}
+        # Bosses drop as +99 Eggs
+        # None (but associated with dungeon)
+        25: {'name': 'dungeon_special_event'},
+
+        # Limited Time Dungeon arrives! (on multiplayer mode button)
+        29: {'name': 'multiplayer_announcement'},
+
+        36: {'name': 'daily_dragons'},
+
+        37: {'name': 'monthly_quest_dungeon'}
     }
 
     keys = 'sebiadmf'
