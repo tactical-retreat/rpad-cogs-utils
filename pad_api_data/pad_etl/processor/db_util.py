@@ -40,11 +40,9 @@ class DbWrapper(object):
                                           autocommit=True)
         logger.info('DB Connected')
 
-    def execute(self, cursor, sql, commit=False):
+    def execute(self, cursor, sql):
         logger.debug('Executing: %s', sql)
-        cursor.execute(sql)
-        if commit:
-            self.connection.commit()
+        return cursor.execute(sql)
 
     def load_to_key_value(self, key_name, value_name, table_name):
         with self.connection.cursor() as cursor:
@@ -81,9 +79,7 @@ class DbWrapper(object):
 
     def check_existing(self, sql):
         with self.connection.cursor() as cursor:
-            self.execute(cursor, sql)
-            data = list(cursor.fetchall())
-            num_rows = len(data)
+            num_rows = self.execute(cursor, sql)
             if num_rows > 1:
                 raise ValueError('got too many results:', num_rows, sql)
             return bool(num_rows)
