@@ -158,7 +158,7 @@ def database_diff_events(db_wrapper, database):
     logger.info('updating db starting at %i', next_id)
 
     for se in schedule_events:
-        if db_wrapper.check_existing(schedule_item.exists_sql()):
+        if db_wrapper.check_existing(se.exists_sql()):
             logger.debug('event already exists, skipping')
         else:
             next_id += 1
