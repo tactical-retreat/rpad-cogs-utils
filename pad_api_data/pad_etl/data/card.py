@@ -34,28 +34,29 @@ class BookCard(pad_util.JsonDictEncodable):
         self.unknown_009 = raw[9]
         self.max_level = int(raw[10])
         self.feed_xp_at_lvl_4 = int(raw[11])
-        self.unknown_012 = raw[12]
-        self.released_status = raw[13]
-        self.sell_price_at_lvl_10 = raw[14]
+        self.released_status = raw[12]  # always 100?
+        self.sell_price_at_lvl_10 = raw[13]
 
-        self.min_hp = int(raw[15])
-        self.max_hp = int(raw[16])
-        self.hp_exponent = float(raw[17])
+        self.min_hp = int(raw[14])
+        self.max_hp = int(raw[15])
+        self.hp_exponent = float(raw[16])
 
-        self.min_atk = int(raw[18])
-        self.max_atk = int(raw[19])
-        self.atk_exponent = float(raw[20])
+        self.min_atk = int(raw[17])
+        self.max_atk = int(raw[18])
+        self.atk_exponent = float(raw[19])
 
-        self.min_rcv = int(raw[21])
-        self.max_rcv = int(raw[22])
-        self.rcv_exponent = float(raw[23])
+        self.min_rcv = int(raw[20])
+        self.max_rcv = int(raw[21])
+        self.rcv_exponent = float(raw[22])
 
-        self.xp_max = int(raw[24])
-        self.xp_gr = float(raw[25])
+        self.xp_max = int(raw[23])
+        self.xp_gr = float(raw[24])
 
-        self.active_skill_id = SkillId(raw[26])
-        self.leader_skill_id = SkillId(raw[27])
+        self.active_skill_id = SkillId(raw[25])
+        self.leader_skill_id = SkillId(raw[26])
+        #This is correct
 
+        # Here and below something is off
         self.enemy_turns = int(raw[28])
 
         self.enemy_hp_1 = int(raw[29])
@@ -73,6 +74,7 @@ class BookCard(pad_util.JsonDictEncodable):
         self.enemy_coins_at_lvl_2 = int(raw[38])
         self.enemy_xp_at_lvl_2 = int(raw[39])
 
+        # This is correct!
         self.ancestor_id = CardId(raw[40])
 
         self.evo_mat_id_1 = CardId(raw[41])
@@ -121,7 +123,7 @@ class BookCard(pad_util.JsonDictEncodable):
         return str(self.__dict__)
 
     def __repr__(self):
-        return 'Card({} - {})'.format(self.card_id, self.card_name)
+        return 'Card({} - {})'.format(self.card_id, self.name)
 
 
 def unflatten(raw: List[Any], idx: int, width: int, replace: bool=False):
