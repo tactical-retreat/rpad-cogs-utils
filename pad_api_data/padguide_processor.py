@@ -126,6 +126,7 @@ def database_diff_events(db_wrapper, database):
                 '-No Dark': ' [No Dark]',
                 '-Special': ' [Special]',
                 '-7x6 Board': ' [7x6]',
+                '-Tricolor': '-Tricolor [Fr/Wt/Wd Only]'
             }
             clean_name = merged_event.dungeon.clean_name
             for k, v in name_mapping.items():
