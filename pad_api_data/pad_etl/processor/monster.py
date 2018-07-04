@@ -104,8 +104,8 @@ class MonsterItem(object):
         self.te_seq = 1
 
         # Unset by default
-        self.ts_seq_leader = 0
-        self.ts_seq_skill = 0
+        self.ts_seq_leader = None
+        self.ts_seq_skill = None
 
         # Hardcoded mapping because simple
         self.tt_seq = PAD_PADGUIDE_TYPES[card.type_1_id]
@@ -122,7 +122,6 @@ class MonsterItem(object):
                  AND event_seq = {event_seq}
                  AND dungeon_seq = {dungeon_seq}
                  """
-
         return sql.format(**db_util.object_to_sql_params(self))
 
     def insert_sql(self):
