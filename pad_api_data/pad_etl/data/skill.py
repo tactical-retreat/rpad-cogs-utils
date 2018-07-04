@@ -28,7 +28,7 @@ class MonsterSkill(pad_util.JsonDictEncodable):
         self.description = str(raw[1])
 
         # Skill description text (no formatting).
-        self.clean_description = pad_util.strip_colors(self.description)
+        self.clean_description = pad_util.strip_colors(self.description).replace('\n', ' ')
 
         # Encodes the type of skill (requires parsing other_fields).
         self.skill_type = int(raw[2])
