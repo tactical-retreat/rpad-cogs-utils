@@ -1,12 +1,10 @@
-from datetime import date, datetime, timedelta
+from datetime import date
 import time
 
-from enum import Enum
-
 from . import db_util
-from . import processor_util
+from ..common.padguide_values import TYPE_MAP, AWAKENING_MAP
 from ..data.card import BookCard
-from .merged_data import MergedBonus, MergedCard
+from .merged_data import MergedCard
 
 
 # Requires: monster_name, monster_id, active_name, leader_name
@@ -39,26 +37,6 @@ def get_monster_lookup_sql(card: MergedCard):
 
 def get_monster_exists_sql(card: MergedCard):
     return "SELECT monster_no FROM monster_list WHERE monster_no = '{}'".format(card.card.card_id)
-
-
-PAD_PADGUIDE_TYPES = {
-    -1: 0,  # Not set
-    0: 7,  # Evolve
-    1: 1,  # Dragon
-    2: 3,  # Physical
-    3: 4,  # Healer
-    4: 2,  # Balance
-    5: 6,  # God
-    6: 5,  # Attacker
-    7: 10,  # Devil
-    8: 14,  # Machine
-    # x: 9,  # Protected (no longer exists)
-    # 10/11 don't exist
-    12: 13,  # Awoken
-    # 13 doesn't exist
-    14: 8,  # Enhance
-    15: 15,  # Vendor
-}
 
 
 class MonsterItem(object):
@@ -110,8 +88,8 @@ class MonsterItem(object):
         self.ts_seq_skill = None
 
         # Hardcoded mapping because simple
-        self.tt_seq = PAD_PADGUIDE_TYPES[card.type_1_id]
-        self.tt_seq_sub = PAD_PADGUIDE_TYPES[card.type_2_id]
+        self.tt_seq = TYPE_MAP[card.type_1_id]
+        self.tt_seq_sub = TYPE_MAP[card.type_2_id]
 
     def is_valid(self):
         return True
@@ -286,3 +264,69 @@ class MonsterPriceItem(object):
 
     def __repr__(self):
         return 'MonsterPriceItem({})'.format(self.monster_no)
+
+
+def awoken_name_id_sql():
+    return """
+        SELECT sl.ts_name_us as name, sl.ts_seq AS ts_seq
+        FROM awoken_skill_list asl
+        INNER JOIN skill_list sl 
+        USING (ts_seq)
+        GROUP BY 1, 2
+        """
+
+
+def card_to_awakenings(awoken_name_to_id, card: BookCard):
+    results = []
+    print('for', card.card_id)
+    try:
+        for awakening_id in card.awakenings:
+            pg_awakening_name = AWAKENING_MAP[awakening_id]
+            print(awakening_id, pg_awakening_name)
+            ts_seq = awoken_name_to_id[pg_awakening_name]
+            results.append(MonsterAwakeningItem(card.card_id, len(results) + 1, ts_seq, 0))
+        for awakening_id in card.super_awakenings:
+            pg_awakening_name = AWAKENING_MAP[awakening_id]
+            print(awakening_id, pg_awakening_name)
+            ts_seq = awoken_name_to_id[pg_awakening_name]
+            results.append(MonsterAwakeningItem(card.card_id, len(results) + 1, ts_seq, 1))
+    except Exception as e:
+        print('EXCEPTION')
+        print(e)
+    return results
+
+
+class MonsterAwakeningItem(object):
+    def __init__(self, monster_no: int, order_idx: int, ts_seq: int, is_super: int):
+        # Unique ID
+        self.tma_seq = None
+
+        # Skill ID (awakening info)
+        self.ts_seq = ts_seq
+
+        self.monster_no = monster_no
+        self.order_idx = order_idx
+        self.is_super = is_super
+
+        self.del_yn = 0
+        self.tstamp = int(time.time())
+
+    def exists_sql(self):
+        sql = """
+        SELECT tma_seq FROM awoken_skill_list
+        WHERE monster_no = {monster_no} and order_idx = {order_idx}
+        """.format(**db_util.object_to_sql_params(self))
+        return sql
+
+    def insert_sql(self, tma_seq):
+        self.tma_seq = tma_seq
+        sql = """
+        INSERT INTO `padguide`.`awoken_skill_list`
+            (`del_yn`, `is_super`, `monster_no`, `order_idx`, `tma_seq`, `tstamp`, `ts_seq`)
+            VALUES
+            ({del_yn}, {is_super}, {monster_no}, {order_idx}, {tma_seq}, {tstamp}, {ts_seq});
+        """.format(**db_util.object_to_sql_params(self))
+        return sql
+
+    def __repr__(self):
+        return 'MonsterAwakeningItem({})'.format(self.monster_no)

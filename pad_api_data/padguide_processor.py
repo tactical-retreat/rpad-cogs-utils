@@ -7,12 +7,14 @@ from collections import defaultdict
 import json
 import logging
 import os
-
 from typing import DefaultDict
+
+from pad_etl.common import padguide_values
 from pad_etl.data import bonus, card, dungeon, skill
 from pad_etl.processor import monster, monster_skill
 from pad_etl.processor.db_util import DbWrapper
 from pad_etl.processor.merged_data import MergedBonus, MergedCard, CrossServerCard
+from pad_etl.processor.monster import awoken_name_id_sql
 from pad_etl.processor.schedule_item import ScheduleItem
 
 
@@ -205,7 +207,6 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
         na_card = na_id_to_card.get(card_id, jp_card)
 
         csc, err_msg = make_cross_server_card(jp_card, na_card)
-
         if csc:
             combined_cards.append(csc)
         elif err_msg:
@@ -238,6 +239,24 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
         else:
             logger.warn('Inserting new monster price: %s', repr(monster_price))
             db_wrapper.insert_item(monster_price.insert_sql())
+
+    awakening_name_and_id = db_wrapper.fetch_data(monster.awoken_name_id_sql())
+    awoken_name_to_id = {row['name']: row['ts_seq'] for row in awakening_name_and_id}
+
+    next_awakening_id = db_wrapper.get_single_value(
+        'SELECT 1 + COALESCE(MAX(CAST(tma_seq AS SIGNED)), 20000) FROM awoken_skill_list', op=int)
+
+    # Awakenings
+    for csc in combined_cards:
+        awakenings = monster.card_to_awakenings(awoken_name_to_id, csc.jp_card.card)
+        for item in awakenings:
+            if db_wrapper.check_existing(item.exists_sql()):
+                # Skipping existing card updates for now, inserts only
+                fail_logger.debug('Skipping existing awakening: %s', repr(item))
+            else:
+                logger.warn('Inserting new awakening: %s', repr(item))
+                db_wrapper.insert_item(item.insert_sql(next_awakening_id))
+                next_awakening_id += 1
 
     next_skill_id = db_wrapper.get_single_value(
         'SELECT 1 + COALESCE(MAX(CAST(ts_seq AS SIGNED)), 20000) FROM skill_list', op=int)

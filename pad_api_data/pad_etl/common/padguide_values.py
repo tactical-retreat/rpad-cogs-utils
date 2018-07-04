@@ -5,45 +5,36 @@ Some of the PadGuide strings (e.g. awakening names) do not exactly match
 the NA client names.
 """
 
-ATTRIBUTE_MAP = {
-    0: 'Fire',
-    1: 'Water',
-    2: 'Wood',
-    3: 'Light',
-    4: 'Dark',
-}
-
-
 TYPE_MAP = {
-    -1: None,
-    0: 'Evolve',
-    1: 'Balanced',
-    2: 'Physical',
-    3: 'Healer',
-    4: 'Dragon',
-    5: 'God',
-    6: 'Attacker',
-    7: 'Devil',
-    8: 'Machine',
-
-    12: 'Awaken',
-
-    14: 'Enhance',
-    15: 'Redeemable Material',
-    #? Protected?
-    #? Vendor?
+    -1: 0,  # Not set
+    0: 7,  # Evolve
+    1: 1,  # Dragon
+    2: 3,  # Physical
+    3: 4,  # Healer
+    4: 2,  # Balance
+    5: 6,  # God
+    6: 5,  # Attacker
+    7: 10,  # Devil
+    8: 14,  # Machine
+    # x: 9,  # Protected (no longer exists)
+    # 10/11 don't exist
+    12: 13,  # Awoken
+    # 13 doesn't exist
+    14: 8,  # Enhance
+    15: 15,  # Vendor
 }
 
+# Might only be accurate for JP values?
 AWAKENING_MAP = {
     # 0: None,  # No need.
     1: 'Enhanced HP',
     2: 'Enhanced Attack',
     3: 'Enhanced Heal',
-    4: 'Reduced Fire Damage',
-    5: 'Reduced Water Damage',
-    6: 'Reduced Wood Damage',
-    7: 'Reduced Light Damage',
-    8: 'Reduced Dark Damage',
+    4: 'Reduce Fire Damage',
+    5: 'Reduce Water Damage',
+    6: 'Reduce Wood Damage',
+    7: 'Reduce Light Damage',
+    8: 'Reduce Dark Damage',
     9: 'Auto-Recover',
     10: 'Resistance-Bind',
     11: 'Resistance-Dark',
@@ -64,7 +55,7 @@ AWAKENING_MAP = {
     26: 'Enhanced Dark Att.',
     27: 'Two-Pronged Attack',
     28: 'Resistance-Skill Bind',
-    29: 'Enhanced Heart Orbs',
+    29: 'Enhanced Heal Orbs',
     30: 'Multi Boost',
     31: 'Dragon Killer',
     32: 'God Killer',
@@ -78,28 +69,23 @@ AWAKENING_MAP = {
     40: 'Awaken Material Killer',
     41: 'Enhance Material Killer',
     42: 'Vendor Material Killer',
-
-    # Not sure of all these =(
     43: 'Enhanced Combo',
     44: 'Guard Break',
     45: 'Additional Attack',
-
     46: 'Enhanced Team HP',
-    47: 'Enhanced Team Attack',
-    48: 'Enhanced Team RCV',
-    49: 'Super Enhanced Combo',
-    50: 'Damage Void Shield Penetration',
-    51: 'Awoken Assist',
-
-    52: 'Skill Charge',
-    53: 'Super Additional Attack',
-    54: 'Resistance-Bind＋',
-    55: 'Extend Time＋',
-    56: 'Resistance-Cloud',
-    57: 'Resistance-Board Restrict',
-    58: 'Skill Boost＋',
-    59: 'L-Shape Attack',
-    60: 'L-Shape Damage Reduction',
-    61: 'Enhance when HP is below 50%',
-    62: 'Enhance when HP is above 80%',
+    47: 'Enhanced Team RCV',
+    48: 'Damage Void Shield Penetration',
+    49: 'Awoken Assist',
+    50: 'Super Additional Attack',
+    51: 'Skill Charge',
+    52: 'Resistance-Bind＋',
+    54: 'Resistance-Cloud',
+    53: 'Extend Time＋',
+    55: 'Resistance-Board Restrict',
+    56: 'Skill Boost＋',
+    57: 'Enhance when HP is above 80%',
+    58: 'Enhance when HP is below 50%',
+    59: 'L-Shape Damage Reduction',
+    60: 'L-Shape Attack',
+    61: 'Super Enhanced Combo',
 }
