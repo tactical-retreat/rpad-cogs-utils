@@ -278,16 +278,13 @@ def awoken_name_id_sql():
 
 def card_to_awakenings(awoken_name_to_id, card: BookCard):
     results = []
-    print('for', card.card_id)
     try:
         for awakening_id in card.awakenings:
             pg_awakening_name = AWAKENING_MAP[awakening_id]
-            print(awakening_id, pg_awakening_name)
             ts_seq = awoken_name_to_id[pg_awakening_name]
             results.append(MonsterAwakeningItem(card.card_id, len(results) + 1, ts_seq, 0))
         for awakening_id in card.super_awakenings:
             pg_awakening_name = AWAKENING_MAP[awakening_id]
-            print(awakening_id, pg_awakening_name)
             ts_seq = awoken_name_to_id[pg_awakening_name]
             results.append(MonsterAwakeningItem(card.card_id, len(results) + 1, ts_seq, 1))
     except Exception as e:
