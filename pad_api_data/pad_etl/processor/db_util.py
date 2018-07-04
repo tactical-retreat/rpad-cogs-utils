@@ -44,6 +44,11 @@ class DbWrapper(object):
         logger.debug('Executing: %s', sql)
         return cursor.execute(sql)
 
+    def fetch_data(self, sql):
+        with self.connection.cursor() as cursor:
+            self.execute(cursor, sql)
+        return list(cursor.fetchall())
+
     def load_to_key_value(self, key_name, value_name, table_name):
         with self.connection.cursor() as cursor:
             sql = 'SELECT {} AS k, {} AS v FROM {}'.format(key_name, value_name, table_name)
