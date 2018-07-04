@@ -99,7 +99,7 @@ class BookCard(pad_util.JsonDictEncodable):
         self.eskills = raw[57]  # List[int]
 
         self.awakenings = raw[58]  # List[int]
-        self.super_awakenings = raw[59]  # Needs unpacking?
+        self.super_awakenings = list(map(int, filter(str.strip, raw[59].split(','))))  # List[int]
 
         self.base_id = CardId(raw[60])  # ??
         self.group_id = raw[61]  # ??
@@ -136,7 +136,9 @@ def unflatten(raw: List[Any], idx: int, width: int, replace: bool=False):
     """
     item_count = raw[idx]
     if item_count == 0:
-        return
+        if replace:
+            raw[idx] = list()
+            return
 
     data_start = idx + 1
     flattened_item_count = width * item_count
