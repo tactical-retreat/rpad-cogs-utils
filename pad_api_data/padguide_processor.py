@@ -39,6 +39,8 @@ def parse_args():
                             action="store_true", help="Enables actions")
     inputGroup.add_argument("--logsql", default=False,
                             action="store_true", help="Logs sql commands")
+    inputGroup.add_argument("--skipintermediate", default=False,
+                            action="store_true", help="Skips the slow intermediate storage")
     inputGroup.add_argument("--db_config", required=True, help="JSON database info")
     inputGroup.add_argument("--input_dir", required=True,
                             help="Path to a folder where the input data is")
@@ -228,6 +230,15 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
             logger.warn('Inserting new monster info: %s', repr(monster_info))
             db_wrapper.insert_item(monster_info.insert_sql())
 
+    for csc in combined_cards:
+        monster_price = monster.MonsterPriceItem(csc.jp_card.card)
+        if db_wrapper.check_existing(monster_price.exists_sql()):
+            fail_logger.debug('Skipping existing monster price: %s', repr(monster_price))
+            pass
+        else:
+            logger.warn('Inserting new monster price: %s', repr(monster_price))
+            db_wrapper.insert_item(monster_price.insert_sql())
+
     next_skill_id = db_wrapper.get_single_value(
         'SELECT 1 + COALESCE(MAX(CAST(ts_seq AS SIGNED)), 20000) FROM skill_list', op=int)
 
@@ -309,9 +320,10 @@ def load_data(args):
     jp_database = load_database(os.path.join(input_dir, 'jp'), 'jp')
     na_database = load_database(os.path.join(input_dir, 'na'), 'na')
 
-    logger.info('Storing intermediate data')
-    jp_database.save_all(output_dir)
-    na_database.save_all(output_dir)
+    if not args.skipintermediate:
+        logger.info('Storing intermediate data')
+        jp_database.save_all(output_dir)
+        na_database.save_all(output_dir)
 
     logger.info('Connecting to database')
     with open(args.db_config) as f:

@@ -5,7 +5,9 @@ from enum import Enum
 
 from . import db_util
 from . import processor_util
+from ..data.card import BookCard
 from .merged_data import MergedBonus, MergedCard
+
 
 # Requires: monster_name, monster_id, active_name, leader_name
 LOOKUP_SQL = """
@@ -258,3 +260,29 @@ class MonsterInfoItem(object):
 
     def __repr__(self):
         return 'MonsterInfoItem({})'.format(self.monster_no)
+
+
+class MonsterPriceItem(object):
+    def __init__(self, card: BookCard):
+        self.monster_no = card.card_id
+        self.buy_price = 0
+        self.sell_price = card.sell_mp
+        self.tstamp = int(time.time())
+
+    def exists_sql(self):
+        sql = """SELECT monster_no FROM monster_price_list
+                 WHERE monster_no = {monster_no}
+                 """.format(**db_util.object_to_sql_params(self))
+        return sql
+
+    def insert_sql(self):
+        sql = """
+        INSERT INTO `padguide`.`monster_price_list`
+            (`buy_price`, `monster_no`, `sell_price`, `tstamp`)
+            VALUES
+            ({buy_price}, {monster_no}, {sell_price}, {tstamp});
+        """.format(**db_util.object_to_sql_params(self))
+        return sql
+
+    def __repr__(self):
+        return 'MonsterPriceItem({})'.format(self.monster_no)
