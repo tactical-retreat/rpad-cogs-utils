@@ -1,13 +1,16 @@
 """
-
+Loads the raw data files for NA/JP into intermediate structures, saves them,
+then updates the database with the new data.  
 """
 import argparse
+from collections import defaultdict
 import json
 import logging
 import os
 
+from typing import DefaultDict
 from pad_etl.data import bonus, card, dungeon, skill
-from pad_etl.processor import monster
+from pad_etl.processor import monster, monster_skill
 from pad_etl.processor.db_util import DbWrapper
 from pad_etl.processor.merged_data import MergedBonus, MergedCard, CrossServerCard
 from pad_etl.processor.schedule_item import ScheduleItem
@@ -66,9 +69,6 @@ def database_diff_events(db_wrapper, database):
     en_name_to_event_id, jp_name_to_event_id = load_event_lookups(db_wrapper)
     en_name_to_dungeon_id, jp_name_to_dungeon_id = load_dungeon_lookups(db_wrapper)
 
-#     general_events = []
-#     dungeon_events = []
-#     guerilla_events = []
     schedule_events = []
     unmatched_events = []
 
@@ -153,17 +153,39 @@ def database_diff_events(db_wrapper, database):
                 schedule_events.append(schedule_item)
 
     next_id = db_wrapper.get_single_value(
-        'SELECT COALESCE(MAX(CAST(schedule_seq AS SIGNED)), 30000) FROM schedule_list', op=int)
+        'SELECT 1 + COALESCE(MAX(CAST(schedule_seq AS SIGNED)), 30000) FROM schedule_list', op=int)
 
-    logger.info('updating db starting at %i', next_id)
+    logger.info('updating event db starting at %i', next_id)
 
     for se in schedule_events:
         if db_wrapper.check_existing(se.exists_sql()):
             logger.debug('event already exists, skipping')
         else:
-            next_id += 1
             logger.debug('inserting item')
             db_wrapper.insert_item(se.insert_sql(next_id))
+            next_id += 1
+
+
+# Creates a CrossServerCard if appropriate.
+# If the card cannot be created, provides an error message.
+def make_cross_server_card(jp_card: MergedCard, na_card: MergedCard) -> (CrossServerCard, str):
+    card_id = jp_card.card.card_id
+    if card_id <= 0 or card_id > 6000:
+        return None, 'crazy id: {}'.format(repr(card))
+
+    if card_id < 3000:
+        # ignoring older cards for now to get around the voltron issue
+        # Eventually fix this using a hardcoded card mapping or something
+        return None, None
+
+    if '***' in jp_card.card.name or '???' in jp_card.card.name:
+        return None, 'Skipping debug card: {}'.format(repr(card))
+
+    if '***' in na_card.card.name or '???' in na_card.card.name:
+        # Card probably exists in JP but not in NA
+        na_card = jp_card
+
+    return CrossServerCard(jp_card, na_card), None
 
 
 def database_diff_cards(db_wrapper, jp_database, na_database):
@@ -171,53 +193,108 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
     jp_id_to_card = {mc.card.card_id: mc for mc in jp_database.cards}
     na_id_to_card = {mc.card.card_id: mc for mc in na_database.cards}
 
-#     # Compose a list of skill ids to the lowest monster ID
-#     jp_leader_skill_id_to_card = {mc.leader_skill.skill_id: mc.card.card_id}
-
     if len(jp_card_ids) != len(jp_id_to_card):
         logger.error('Mismatched sizes: %s %s', len(jp_card_ids), len(jp_id_to_card))
 
+    # This is the list of cards we could potentially update
     combined_cards = []  # List[CrossServerCard]
     for card_id in jp_card_ids:
         jp_card = jp_id_to_card.get(card_id)
         na_card = na_id_to_card.get(card_id, jp_card)
 
-        if card_id <= 0 or card_id > 6000:
-            fail_logger.debug('Skipping card, crazy id: %s', repr(card))
-            continue
+        csc, err_msg = make_cross_server_card(jp_card, na_card)
 
-        if card_id < 3000:
-            # ignoring older cards for now to get around the voltron issue
-            # Eventually fix this using a hardcoded card mapping or something
-            continue
-
-        if '***' in jp_card.card.name or '???' in jp_card.card.name:
-            fail_logger.debug('Skipping debug card: %s', repr(card))
-            continue
-
-        if '***' in na_card.card.name or '???' in na_card.card.name:
-            # Card probably exists in JP but not in NA
-            na_card = jp_card
-
-        combined_cards.append(CrossServerCard(jp_card, na_card))
+        if csc:
+            combined_cards.append(csc)
+        elif err_msg:
+            fail_logger.debug('Skipping card, %s', err_msg)
 
     for csc in combined_cards:
         if db_wrapper.check_existing(monster.get_monster_exists_sql(csc.jp_card)):
             # Skipping existing card updates for now, inserts only
             fail_logger.debug('Skipping existing card: %s', repr(card))
+        else:
+            # This is a new card, so populate it
+            new_monster = monster.MonsterItem(csc.jp_card, csc.na_card)
+            logger.warn('Inserting new card: %s', repr(new_monster))
+            db_wrapper.insert_item(new_monster.insert_sql())
+
+    for csc in combined_cards:
+        monster_info = monster.MonsterInfoItem(csc.jp_card)
+        if db_wrapper.check_existing(monster_info.exists_sql()):
+            fail_logger.debug('Skipping existing monster info: %s', repr(monster_info))
+            pass
+        else:
+            logger.warn('Inserting new monster info: %s', repr(monster_info))
+            db_wrapper.insert_item(monster_info.insert_sql())
+
+    next_skill_id = db_wrapper.get_single_value(
+        'SELECT 1 + COALESCE(MAX(CAST(ts_seq AS SIGNED)), 20000) FROM skill_list', op=int)
+
+    # Create a list of SkillIds to CardIds
+    skill_id_to_card_ids = defaultdict(list)  # type DefaultDict<SkillId, List[CardId]>
+    for merged_card in jp_database.cards:
+        for skill in [merged_card.active_skill, merged_card.leader_skill]:
+            if skill is None:
+                continue
+            skill_id_to_card_ids[skill.skill_id].append(merged_card.card.card_id)
+
+    for csc in combined_cards:
+        merged_card = csc.jp_card
+
+        info = db_wrapper.get_single_or_no_row(monster_skill.get_monster_skill_ids(merged_card))
+        if not info:
+            fail_logger.warn('Unexpected empty skill lookup: %s', repr(merged_card))
             continue
 
-        # This is a new card, so populate it
-        new_monster = monster.MonsterItem(csc.jp_card, csc.na_card)
-        logger.warn('Inserting new card: %s', repr(new_monster))
-#         db_wrapper.insert_item(new_monster.insert_sql())
+        ts_seq_leader = info['ts_seq_leader']
+        ts_seq_skill = info['ts_seq_skill']
 
-        new_monster_info = monster.MonsterInfoItem(csc.jp_card)
-        logger.warn('Inserting new monster info: %s', repr(new_monster_info))
-#         db_wrapper.insert_item(new_monster_info.insert_sql())
+        # Refactor this garbage code
+        updated = False
+        if ts_seq_leader is None and merged_card.leader_skill:
+            alt_monster_no = min(skill_id_to_card_ids[merged_card.leader_skill.skill_id])
 
-    # Iterate and check for missing leader/active skills
-    # Iterate and check for stuff needing update:
+            if alt_monster_no < merged_card.card.card_id:
+                # An existing card already has this skill, look it up
+                ts_seq_leader = db_wrapper.get_single_value(
+                    "select ts_seq_leader from monster_list where monster_no = {}".format(alt_monster_no), op=int)
+                logger.warn('Looked up existing skill id %s from %s for %s',
+                            ts_seq_leader, alt_monster_no, merged_card)
+            else:
+                skill_item = monster_skill.MonsterSkillItem(
+                    next_skill_id, csc.jp_card.leader_skill, csc.na_card.leader_skill)
+                logger.warn('Inserting new monster skill: %s - %s',
+                            repr(merged_card), repr(skill_item))
+                db_wrapper.insert_item(skill_item.insert_sql())
+                ts_seq_leader = next_skill_id
+                next_skill_id += 1
+            updated = True
+
+        if ts_seq_skill is None and merged_card.active_skill:
+            alt_monster_no = min(skill_id_to_card_ids[merged_card.active_skill.skill_id])
+
+            if alt_monster_no < merged_card.card.card_id:
+                # An existing card already has this skill, look it up
+                ts_seq_skill = db_wrapper.get_single_value(
+                    "select ts_seq_skill from monster_list where monster_no = {}".format(alt_monster_no), op=int)
+                logger.warn('Looked up existing skill id %s from %s for %s',
+                            ts_seq_skill, alt_monster_no, merged_card)
+            else:
+                skill_item = monster_skill.MonsterSkillItem(
+                    next_skill_id, csc.jp_card.active_skill, csc.na_card.active_skill)
+                logger.warn('Inserting new monster skill: %s - %s',
+                            repr(merged_card), repr(skill_item))
+                db_wrapper.insert_item(skill_item.insert_sql())
+                ts_seq_skill = next_skill_id
+                next_skill_id += 1
+            updated = True
+
+        if updated:
+            logger.warn('Updating monster skill info: %s - %s - %s',
+                        repr(merged_card), ts_seq_leader, ts_seq_skill)
+            db_wrapper.insert_item(monster_skill.get_update_monster_skill_ids(
+                merged_card, ts_seq_leader, ts_seq_skill))
 
 
 def load_data(args):
