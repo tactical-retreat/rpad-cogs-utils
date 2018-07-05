@@ -10,10 +10,10 @@ the NA client names.
 TYPE_MAP = {
     -1: 0,  # Not set
     0: 7,  # Evolve
-    1: 1,  # Dragon
+    1: 2,  # Balance
     2: 3,  # Physical
     3: 4,  # Healer
-    4: 2,  # Balance
+    4: 1,  # Dragon
     5: 6,  # God
     6: 5,  # Attacker
     7: 10,  # Devil
