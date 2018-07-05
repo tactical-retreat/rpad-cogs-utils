@@ -420,3 +420,35 @@ class EvolutionMaterialItem(object):
 
     def __repr__(self):
         return 'EvolutionMaterialItem({} -> {})'.format(self.monster_no, self.tv_seq)
+
+
+class MonsterAddInfoItem(object):
+    def __init__(self, card: BookCard):
+        self.extra_val1 = int(card.inheritable)
+        self.monster_no = card.card_id
+        self.sub_type = TYPE_MAP[card.type_3_id]
+        self.tstamp = int(time.time())
+
+    def exists_sql(self):
+        sql = """SELECT monster_no FROM monster_add_info_list
+                 WHERE monster_no = {monster_no}
+                 """.format(**db_util.object_to_sql_params(self))
+        return sql
+
+    def insert_sql(self):
+        sql = """
+        INSERT INTO `padguide`.`monster_add_info_list`
+            (`extra_val1`,
+            `monster_no`,
+            `sub_type`,
+            `tstamp`)
+            VALUES
+            ({extra_val1},
+            {monster_no},
+            {sub_type},
+            {tstamp});
+            """.format(**db_util.object_to_sql_params(self))
+        return sql
+
+    def __repr__(self):
+        return 'MonsterInfoItem({} - {}/{})'.format(self.monster_no, self.extra_val1, self.sub_type)

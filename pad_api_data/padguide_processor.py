@@ -230,6 +230,16 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
             logger.warn('Inserting new monster info: %s', repr(monster_info))
             db_wrapper.insert_item(monster_info.insert_sql())
 
+    # Additional monster info
+    for csc in combined_cards:
+        monster_add_info = monster.MonsterAddInfoItem(csc.jp_card.card)
+        if db_wrapper.check_existing(monster_add_info.exists_sql()):
+            fail_logger.debug('Skipping existing addl monster info: %s', repr(monster_add_info))
+            pass
+        else:
+            logger.warn('Inserting new addl monster info: %s', repr(monster_add_info))
+            db_wrapper.insert_item(monster_add_info.insert_sql())
+
     # Monster prices
     for csc in combined_cards:
         monster_price = monster.MonsterPriceItem(csc.jp_card.card)
