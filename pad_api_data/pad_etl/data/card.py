@@ -26,7 +26,7 @@ class BookCard(pad_util.JsonDictEncodable):
         self.name = str(raw[1])
         self.attr_id = AttrId(raw[2])
         self.sub_attr_id = AttrId(raw[3])
-        self.is_ult = bool(raw[4])
+        self.is_ult = bool(raw[4])  # True if ultimate, False if normal evo
         self.type_1_id = TypeId(raw[5])
         self.type_2_id = TypeId(raw[6])
         self.rarity = int(raw[7])

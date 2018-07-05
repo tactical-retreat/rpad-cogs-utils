@@ -7,14 +7,11 @@ from collections import defaultdict
 import json
 import logging
 import os
-from typing import DefaultDict
 
-from pad_etl.common import padguide_values
 from pad_etl.data import bonus, card, dungeon, skill
 from pad_etl.processor import monster, monster_skill
 from pad_etl.processor.db_util import DbWrapper
 from pad_etl.processor.merged_data import MergedBonus, MergedCard, CrossServerCard
-from pad_etl.processor.monster import awoken_name_id_sql
 from pad_etl.processor.schedule_item import ScheduleItem
 
 
@@ -212,16 +209,18 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
         elif err_msg:
             fail_logger.debug('Skipping card, %s', err_msg)
 
+    # Base monster
     for csc in combined_cards:
         if db_wrapper.check_existing(monster.get_monster_exists_sql(csc.jp_card)):
             # Skipping existing card updates for now, inserts only
-            fail_logger.debug('Skipping existing card: %s', repr(card))
+            fail_logger.debug('Skipping existing card: %s', repr(csc.jp_card))
         else:
             # This is a new card, so populate it
             new_monster = monster.MonsterItem(csc.jp_card, csc.na_card)
             logger.warn('Inserting new card: %s', repr(new_monster))
             db_wrapper.insert_item(new_monster.insert_sql())
 
+    # Monster info
     for csc in combined_cards:
         monster_info = monster.MonsterInfoItem(csc.jp_card)
         if db_wrapper.check_existing(monster_info.exists_sql()):
@@ -231,6 +230,7 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
             logger.warn('Inserting new monster info: %s', repr(monster_info))
             db_wrapper.insert_item(monster_info.insert_sql())
 
+    # Monster prices
     for csc in combined_cards:
         monster_price = monster.MonsterPriceItem(csc.jp_card.card)
         if db_wrapper.check_existing(monster_price.exists_sql()):
@@ -240,13 +240,13 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
             logger.warn('Inserting new monster price: %s', repr(monster_price))
             db_wrapper.insert_item(monster_price.insert_sql())
 
+    # Awakenings
     awakening_name_and_id = db_wrapper.fetch_data(monster.awoken_name_id_sql())
     awoken_name_to_id = {row['name']: row['ts_seq'] for row in awakening_name_and_id}
 
     next_awakening_id = db_wrapper.get_single_value(
         'SELECT 1 + COALESCE(MAX(CAST(tma_seq AS SIGNED)), 20000) FROM awoken_skill_list', op=int)
 
-    # Awakenings
     for csc in combined_cards:
         awakenings = monster.card_to_awakenings(awoken_name_to_id, csc.jp_card.card)
         for item in awakenings:
@@ -258,6 +258,40 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
                 db_wrapper.insert_item(item.insert_sql(next_awakening_id))
                 next_awakening_id += 1
 
+    # Evolutions
+    next_evo_id = db_wrapper.get_single_value(
+        'SELECT 1 + COALESCE(MAX(CAST(tv_seq AS SIGNED)), 4000) FROM evolution_list', op=int)
+
+    for csc in combined_cards:
+        evolution = monster.EvolutionItem(csc.jp_card.card)
+        if not evolution.is_valid():
+            continue
+        if db_wrapper.check_existing(evolution.exists_sql()):
+            fail_logger.debug('Skipping existing evolution: %s', repr(evolution))
+        else:
+            logger.warn('Inserting new evolution: %s', repr(evolution))
+            db_wrapper.insert_item(evolution.insert_sql(next_evo_id))
+            next_evo_id += 1
+
+    # Evo mats
+    next_evo_mat_id = db_wrapper.get_single_value(
+        'SELECT 1 + COALESCE(MAX(CAST(tem_seq AS SIGNED)), 15000) FROM evo_material_list', op=int)
+
+    for csc in combined_cards:
+        card = csc.jp_card.card
+        if not card.ancestor_id:
+            continue
+        tv_seq = db_wrapper.get_single_value(monster.lookup_evo_id_sql(card), op=int)
+        evo_mat_items = monster.card_to_evo_mats(card, tv_seq)
+        for item in evo_mat_items:
+            if db_wrapper.check_existing(item.exists_sql()):
+                fail_logger.debug('Skipping existing evo mat: %s', repr(item))
+            else:
+                logger.warn('Inserting new evo mat: %s', repr(item))
+                db_wrapper.insert_item(item.insert_sql(next_evo_mat_id))
+                next_evo_mat_id += 1
+
+    # Skills
     next_skill_id = db_wrapper.get_single_value(
         'SELECT 1 + COALESCE(MAX(CAST(ts_seq AS SIGNED)), 20000) FROM skill_list', op=int)
 

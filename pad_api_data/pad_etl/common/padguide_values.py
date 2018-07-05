@@ -1,3 +1,5 @@
+from enum import Enum
+
 """
 Conversions from PAD values to PadGuide strings.
 
@@ -89,3 +91,10 @@ AWAKENING_MAP = {
     60: 'L-Shape Attack',
     61: 'Super Enhanced Combo',
 }
+
+
+class EvoType(Enum):
+    """Evo types supported by PadGuide. Numbers correspond to their id values."""
+    Evo = 0
+    UvoAwoken = 1
+    UuvoReincarnated = 2
