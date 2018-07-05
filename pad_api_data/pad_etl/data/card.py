@@ -115,7 +115,7 @@ class BookCard(pad_util.JsonDictEncodable):
         self.is_collab = bool(self.random_flags & 4)
 
         self.furigana = str(raw[67])  # JP data only?
-        self.limit = int(raw[68])
+        self.limit_mult = int(raw[68])
 
         self.other_fields = raw[69:]
 

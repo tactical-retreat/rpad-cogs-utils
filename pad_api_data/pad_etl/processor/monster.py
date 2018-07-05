@@ -61,6 +61,7 @@ class MonsterItem(object):
         self.hp_max = card.max_hp
         self.hp_min = card.min_hp
         self.level = card.max_level
+        self.limit_mult = card.limit_mult
         self.pronunciation_jp = card.furigana
         self.rarity = card.rarity
         self.ratio_atk = 1  # Not sure about this
@@ -118,6 +119,7 @@ class MonsterItem(object):
             `hp_max`,
             `hp_min`,
             `level`,
+            `limit_mult`,
             `monster_no`,
             `monster_no_jp`,
             `monster_no_kr`,
@@ -153,6 +155,7 @@ class MonsterItem(object):
             {hp_max},
             {hp_min},
             {level},
+            {limit_mult},
             {monster_no},
             {monster_no_jp},
             {monster_no_kr},
