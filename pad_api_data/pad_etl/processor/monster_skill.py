@@ -122,4 +122,3 @@ class MonsterSkillItem(object):
 
     def __repr__(self):
         return 'MonsterSkillItem({} - {})'.format(self.ts_seq, self.search_data)
->>>>>>> branch 'master' of https://github.com/nachoapps/rpad-cogs-utils.git
