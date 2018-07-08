@@ -59,7 +59,7 @@ class ScheduleItem(object):
         group = merged_bonus.group
         self.team_data = None if group is None else ord(merged_bonus.group) - ord('a')
 
-        self.tstamp = int(time.time())
+        self.tstamp = int(time.time()) * 1000
 
         self.url = None
 

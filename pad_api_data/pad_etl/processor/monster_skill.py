@@ -55,7 +55,7 @@ class MonsterSkillItem(object):
         self.tt_seq_2 = 0
 
         # Useful fields
-        self.tstamp = int(time.time())
+        self.tstamp = int(time.time()) * 1000
         self.ts_desc_jp = skill_jp.clean_description
         self.ts_desc_kr = 'unknown_{}'.format(skill_jp.skill_id)
         self.ts_desc_us = skill_na.clean_description

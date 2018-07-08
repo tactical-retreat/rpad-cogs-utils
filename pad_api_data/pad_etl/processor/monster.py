@@ -73,7 +73,7 @@ class MonsterItem(object):
         self.tm_name_jp = merged_card_jp.card.name
         self.tm_name_kr = 'unknown_{}'.format(self.monster_no)
         self.tm_name_us = merged_card_na.card.name
-        self.tstamp = int(time.time())
+        self.tstamp = int(time.time()) * 1000
 
         # Foreign keys
 
@@ -200,7 +200,7 @@ class MonsterInfoItem(object):
         self.rare_egg = 0
         self.sell_price = 0
         self.tsr_seq = 42  # This is an unused series; should be replaced by the updater
-        self.tstamp = int(time.time())
+        self.tstamp = int(time.time()) * 1000
 
     def exists_sql(self):
         sql = """SELECT monster_no FROM monster_info_list
@@ -248,7 +248,7 @@ class MonsterPriceItem(object):
         self.monster_no = card.card_id
         self.buy_price = 0
         self.sell_price = card.sell_mp
-        self.tstamp = int(time.time())
+        self.tstamp = int(time.time()) * 1000
 
     def exists_sql(self):
         sql = """SELECT monster_no FROM monster_price_list
@@ -309,7 +309,7 @@ class MonsterAwakeningItem(object):
         self.is_super = is_super
 
         self.del_yn = 0
-        self.tstamp = int(time.time())
+        self.tstamp = int(time.time()) * 1000
 
     def exists_sql(self):
         sql = """
@@ -338,7 +338,7 @@ class EvolutionItem(object):
 
         self.to_no = card.card_id
         self.monster_no = card.ancestor_id
-        self.tstamp = int(time.time())
+        self.tstamp = int(time.time()) * 1000
 
         # TODO: This is poorly done, but probably doesn't matter for my usage.
         # Doesn't handle UUVO properly.
@@ -400,7 +400,7 @@ class EvolutionMaterialItem(object):
         self.monster_no = mat_monster_no
         self.order_idx = order_idx
         self.tv_seq = tv_seq
-        self.tstamp = int(time.time())
+        self.tstamp = int(time.time()) * 1000
 
     def exists_sql(self):
         sql = """SELECT tem_seq FROM evo_material_list
@@ -427,7 +427,7 @@ class MonsterAddInfoItem(object):
         self.extra_val1 = int(card.inheritable)
         self.monster_no = card.card_id
         self.sub_type = TYPE_MAP[card.type_3_id]
-        self.tstamp = int(time.time())
+        self.tstamp = int(time.time()) * 1000
 
     def exists_sql(self):
         sql = """SELECT monster_no FROM monster_add_info_list
