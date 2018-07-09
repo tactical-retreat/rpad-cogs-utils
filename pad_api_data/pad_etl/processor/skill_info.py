@@ -85,6 +85,11 @@ TYPES = {0: 'Evo Material',
          15: 'Redeemable Material'}
 
 
+def convert_with_defaults(type_name, args, defaults):
+    new_args = {k: (args[k] if k in args else v) for k, v in defaults.items()}
+    return convert(type_name, new_args)
+
+
 def convert(type_name, arguments):
     def i(x):
         args = {}
@@ -135,40 +140,56 @@ def fmt_multiplier_text(hp_mult, atk_mult, rcv_mult):
     return output
 
 
+def fmt_reduct_text(damage_reduct):
+    if damage_reduct != 0:
+        return 'reduce damage taken by {}%'.format(fmt_mult(damage_reduct * 100))
+    else:
+        return None
+
+
+def fmt_stats_type_attr_bonus(c):
+    for_type = c['for_type']
+    for_attr = c['for_attr']
+    hp_mult = c['hp_multiplier']
+    atk_mult = c['atk_multiplier']
+    rcv_mult = c['rcv_multiplier']
+    damage_reduct = c['damage_reduction'] if 'damage_reduction' in c else 0
+    skill_text = ''
+
+    multiplier_text = fmt_multiplier_text(hp_mult, atk_mult, rcv_mult)
+    if multiplier_text:
+        skill_text += multiplier_text
+
+        for_skill_text = ''
+        if for_type:
+            for_skill_text += ' ' + ', '.join([TYPES[i] for i in for_type]) + ' type'
+
+        if for_attr:
+            if for_skill_text:
+                for_skill_text += ' and'
+            color_text = 'all' if len(for_attr) == 5 else ', '.join(
+                [ATTRIBUTES[i] for i in for_attr])
+            for_skill_text += ' ' + color_text + ' Att.'
+
+        if for_skill_text:
+            skill_text += ' for' + for_skill_text
+
+    reduct_text = fmt_reduct_text(damage_reduct)
+    if reduct_text:
+        if multiplier_text:
+            skill_text += '; '
+        skill_text += reduct_text.capitalize()
+
+    return skill_text
+
+
 def passive_stats_convert(arguments):
     def f(x):
-        _, c = convert('passive_stats', {
-                       k: (arguments[k] if k in arguments else v) for k, v in passive_stats_backups.items()})(x)
+        _, c = convert_with_defaults('passive_stats',
+                                     arguments,
+                                     passive_stats_backups)(x)
 
-        for_type = c['for_type']
-        for_attr = c['for_attr']
-        hp_mult = c['hp_multiplier']
-        atk_mult = c['atk_multiplier']
-        rcv_mult = c['rcv_multiplier']
-        skill_text = c['skill_text']
-
-        multiplier_text = fmt_multiplier_text(hp_mult, atk_mult, rcv_mult)
-        if multiplier_text:
-            skill_text += multiplier_text
-
-            for_skill_text = ''
-            if for_type:
-                for_skill_text += ' ' + ', '.join([TYPES[i] for i in for_type]) + ' type'
-
-            if for_attr:
-                if for_skill_text:
-                    for_skill_text += ' and'
-                color_text = 'all' if len(for_attr) == 5 else ', '.join(
-                    [ATTRIBUTES[i] for i in for_attr])
-                for_skill_text += ' ' + color_text + ' Att.'
-
-            if for_skill_text:
-                skill_text += ' for' + for_skill_text
-
-        if c['damage_reduction'] != 0.0:
-            skill_text += '; Reduce damage taken by ' + \
-                fmt_mult(c['damage_reduction'] * 100) + '%'
-        c['skill_text'] = skill_text
+        c['skill_text'] += fmt_stats_type_attr_bonus(c)
         return 'passive_stats', c
     return f
 
@@ -182,8 +203,9 @@ BELOW = False
 def threshold_stats_convert(above, arguments):
     def f(x):
         if above:
-            _, c = convert('above_threshold_stats', {
-                           k: (arguments[k] if k in arguments else v) for k, v in threshold_stats_backups.items()})(x)
+            _, c = convert_with_defaults('above_threshold_stats',
+                                         arguments,
+                                         threshold_stats_backups)(x)
             damage_reduction = c['damage_reduction']
             for_attr = c['for_attr']
             rcv_mult = c['rcv_multiplier']
@@ -404,8 +426,9 @@ combo_match_backups = {'for_attr': [], 'for_type': [], 'minimum_combos': 0, 'min
 
 def combo_match_convert(arguments):
     def f(x):
-        _, c = convert('combo_match', {
-                       k: (arguments[k] if k in arguments else v) for k, v in combo_match_backups.items()})(x)
+        _, c = convert_with_defaults('combo_match',
+                                     arguments,
+                                     combo_match_backups)(x)
         skill_text = c['skill_text']
         max_combos = c['maximum_combos']
         min_combos = c['minimum_combos']
@@ -445,8 +468,9 @@ attribute_match_backups = {'attributes': [], 'minimum_attributes': 0, 'minimum_a
 
 def attribute_match_convert(arguments):
     def f(x):
-        _, c = convert('attribute_match', {
-                       k: (arguments[k] if k in arguments else v) for k, v in attribute_match_backups.items()})(x)
+        _, c = convert_with_defaults('attribute_match',
+                                     arguments,
+                                     attribute_match_backups)(x)
         skill_text = c['skill_text']
         if c['maximum_attributes'] == 0:
             c['maximum_attributes'] = c['minimum_attributes']
@@ -507,8 +531,9 @@ multi_attribute_match_backups = {'attributes': [], 'minimum_match': 0, 'minimum_
 
 def multi_attribute_match_convert(arguments):
     def f(x):
-        _, c = convert('multi-attribute_match',
-                       {k: (arguments[k] if k in arguments else v) for k, v in multi_attribute_match_backups.items()})(x)
+        _, c = convert_with_defaults('multi-attribute_match',
+                                     arguments,
+                                     multi_attribute_match_backups)(x)
         attributes = c['attributes']
         min_damage_reduct = c['minimum_damage_reduction']
         min_rcv_mult = c['minimum_rcv_multiplier']
@@ -651,8 +676,9 @@ mass_match_backups = {'attributes': [], 'minimum_count': 0, 'minimum_atk_multipl
 
 def mass_match_convert(arguments):
     def f(x):
-        _, c = convert('mass_match', {
-                       k: (arguments[k] if k in arguments else v) for k, v in mass_match_backups.items()})(x)
+        _, c = convert_with_defaults('mass_match',
+                                     arguments,
+                                     mass_match_backups)(x)
         max_count = c['maximum_count']
         min_count = c['minimum_count']
         if max_count == 0:
@@ -706,8 +732,9 @@ after_attack_on_match_backups = {'multiplier': 0, 'skill_text': ''}
 
 def after_attack_convert(arguments):
     def f(x):
-        _, c = convert('after_attack_on_match', {
-                       k: (arguments[k] if k in arguments else v) for k, v in after_attack_on_match_backups.items()})(x)
+        _, c = convert_with_defaults('after_attack_on_match',
+                                     arguments,
+                                     after_attack_on_match_backups)(x)
         c['skill_text'] += fmt_mult(c['multiplier']) + \
             'x ATK additional damage when matching orbs'
         return 'after_attack_on_match', c
@@ -719,8 +746,9 @@ heal_on_match_backups = {'multiplier': 0, 'skill_text': ''}
 
 def heal_on_convert(arguments):
     def f(x):
-        _, c = convert('heal on match', {
-                       k: (arguments[k] if k in arguments else v) for k, v in heal_on_match_backups.items()})(x)
+        _, c = convert_with_defaults('heal_on',
+                                     arguments,
+                                     heal_on_match_backups)(x)
         c['skill_text'] += fmt_mult(c['multiplier']) + \
             'x RCV additional heal when matching orbs'
         return 'heal on match', c
@@ -732,8 +760,9 @@ resolve_backups = {'threshold': 0, 'skill_text': ''}
 
 def resolve_convert(arguments):
     def f(x):
-        _, c = convert('resolve', {k: (arguments[k] if k in arguments else v)
-                                   for k, v in resolve_backups.items()})(x)
+        _, c = convert_with_defaults('resolve',
+                                     arguments,
+                                     resolve_backups)(x)
         c['skill_text'] += 'May survive when HP is reduced to 0 (HP>' + str(
             c['threshold'] * 100).rstrip('0').rstrip('.') + '%)'
         return 'resolve', c
@@ -746,169 +775,19 @@ bonus_move_time_backups = {'time': 0.0, 'for_attr': [], 'for_type': [
 
 def bonus_time_convert(arguments):
     def f(x):
-        _, c = convert('bonus_move_time', {
-                       k: (arguments[k] if k in arguments else v) for k, v in bonus_move_time_backups.items()})(x)
-        for_type = c['for_type']
-        hp_mult = c['hp_multiplier']
-        atk_mult = c['atk_multiplier']
-        rcv_mult = c['rcv_multiplier']
-        for_attr = c['for_attr']
-        skill_text = c['skill_text']
-        if not for_type:
-            if hp_mult != 1 and hp_mult == atk_mult == rcv_mult:
-                skill_text += fmt_mult(hp_mult) + 'x all stats for '
-                if for_attr == [0, 1, 2, 3, 4]:
-                    skill_text += 'all Att.'
-                else:
-                    for i in for_attr[:-1]:
-                        skill_text += ATTRIBUTES[i] + ', '
-                    skill_text += ATTRIBUTES[int(for_attr[-1])] + ' Att.'
-            elif hp_mult == 1 and atk_mult != 1 and rcv_mult != 1:
-                if atk_mult == rcv_mult:
-                    skill_text += fmt_mult(atk_mult) + 'x ATK & RCV for '
-                    if for_attr == [0, 1, 2, 3, 4]:
-                        skill_text += 'all Att.'
-                    else:
-                        for i in for_attr[:-1]:
-                            skill_text += ATTRIBUTES[i] + ', '
-                        skill_text += ATTRIBUTES[int(for_attr[-1])] + ' Att.'
-                else:
-                    skill_text += fmt_mult(atk_mult) + \
-                        'x ATK and ' + fmt_mult(rcv_mult) + 'x RCV for '
-                    if for_attr == [0, 1, 2, 3, 4]:
-                        skill_text += 'all Att.'
-                    else:
-                        for i in for_attr[:-1]:
-                            skill_text += ATTRIBUTES[i] + ', '
-                        skill_text += ATTRIBUTES[int(for_attr[-1])] + ' Att.'
-            elif hp_mult != 1 and atk_mult == 1 and rcv_mult != 1:
-                if hp_mult == rcv_mult:
-                    skill_text += fmt_mult(hp_mult) + 'x HP & RCV for '
-                    if for_attr == [0, 1, 2, 3, 4]:
-                        skill_text += 'all Att.'
-                    else:
-                        for i in for_attr[:-1]:
-                            skill_text += ATTRIBUTES[i] + ', '
-                        skill_text += ATTRIBUTES[int(for_attr[-1])] + ' Att.'
-                else:
-                    skill_text += fmt_mult(hp_mult) + 'x HP and ' + \
-                        fmt_mult(rcv_mult) + 'x RCV for '
-                    if for_attr == [0, 1, 2, 3, 4]:
-                        skill_text += 'all Att.'
-                    else:
-                        for i in for_attr[:-1]:
-                            skill_text += ATTRIBUTES[i] + ', '
-                        skill_text += ATTRIBUTES[int(for_attr[-1])] + ' Att.'
-            elif hp_mult != 1 and atk_mult != 1 and rcv_mult == 1:
-                if atk_mult == hp_mult:
-                    skill_text += fmt_mult(hp_mult) + 'x HP & ATK for '
-                    if for_attr == [0, 1, 2, 3, 4]:
-                        skill_text += 'all Att.'
-                    else:
-                        for i in for_attr[:-1]:
-                            skill_text += ATTRIBUTES[i] + ', '
-                        skill_text += ATTRIBUTES[int(for_attr[-1])] + ' Att.'
-                else:
-                    skill_text += fmt_mult(hp_mult) + 'x HP and ' + \
-                        fmt_mult(atk_mult) + 'x ATK for '
-                    if for_attr == [0, 1, 2, 3, 4]:
-                        skill_text += 'all Att.'
-                    else:
-                        for i in for_attr[:-1]:
-                            skill_text += ATTRIBUTES[i] + ', '
-                        skill_text += ATTRIBUTES[int(for_attr[-1])] + ' Att.'
-            elif hp_mult == 1 and atk_mult == 1 and rcv_mult != 1:
-                skill_text += fmt_mult(rcv_mult) + 'x RCV for '
-                if for_attr == [0, 1, 2, 3, 4]:
-                    skill_text += 'all Att.'
-                else:
-                    for i in for_attr[:-1]:
-                        skill_text += ATTRIBUTES[i] + ', '
-                    skill_text += ATTRIBUTES[int(for_attr[-1])] + ' Att.'
-            elif hp_mult == 1 and atk_mult != 1 and rcv_mult == 1:
-                skill_text += fmt_mult(atk_mult) + 'x ATK for '
-                if for_attr == [0, 1, 2, 3, 4]:
-                    skill_text += 'all Att.'
-                else:
-                    for i in for_attr[:-1]:
-                        skill_text += ATTRIBUTES[i] + ', '
-                    skill_text += ATTRIBUTES[int(for_attr[-1])] + ' Att.'
-            elif hp_mult != 1 and atk_mult == 1 and rcv_mult == 1:
-                skill_text += fmt_mult(hp_mult) + 'x HP for '
-                if for_attr == [0, 1, 2, 3, 4]:
-                    skill_text += 'all Att.'
-                else:
-                    for i in for_attr[:-1]:
-                        skill_text += ATTRIBUTES[i] + ', '
-                    skill_text += ATTRIBUTES[int(for_attr[-1])] + ' Att.'
-        else:
-            if hp_mult != 1 and hp_mult == atk_mult == rcv_mult:
-                skill_text += str(hp_mult
-                                  ).rstrip('0').rstrip('.') + 'x all stats for '
-                for i in for_type[:-1]:
-                    skill_text += TYPES[i] + ', '
-                skill_text += TYPES[int(for_type[-1])] + ' type'
-            elif hp_mult == 1 and atk_mult != 1 and rcv_mult != 1:
-                if atk_mult == rcv_mult:
-                    skill_text += fmt_mult(atk_mult) + 'x ATK & RCV for '
-                    for i in for_type[:-1]:
-                        skill_text += TYPES[i] + ', '
-                    skill_text += TYPES[int(for_type[-1])] + ' type'
-                else:
-                    skill_text += fmt_mult(atk_mult) + \
-                        'x ATK and ' + fmt_mult(rcv_mult) + 'x RCV for '
-                    for i in for_type[:-1]:
-                        skill_text += TYPES[i] + ', '
-                    skill_text += TYPES[int(for_type[-1])] + ' type'
-            elif hp_mult != 1 and atk_mult == 1 and rcv_mult != 1:
-                if hp_mult == rcv_mult:
-                    skill_text += fmt_mult(hp_mult) + 'x HP & RCV for '
-                    for i in for_type[:-1]:
-                        skill_text += TYPES[i] + ', '
-                    skill_text += TYPES[int(for_type[-1])] + ' type'
-                else:
-                    skill_text += fmt_mult(hp_mult) + 'x HP and ' + \
-                        fmt_mult(rcv_mult) + 'x RCV for '
-                    for i in for_type[:-1]:
-                        skill_text += TYPES[i] + ', '
-                    skill_text += TYPES[int(for_type[-1])] + ' type'
-            elif hp_mult != 1 and atk_mult != 1 and rcv_mult == 1:
-                if atk_mult == hp_mult:
-                    skill_text += fmt_mult(hp_mult) + 'x HP & ATK for '
-                    for i in for_type[:-1]:
-                        skill_text += TYPES[i] + ', '
-                    skill_text += TYPES[int(for_type[-1])] + ' type'
-                else:
-                    skill_text += fmt_mult(hp_mult) + 'x HP and ' + \
-                        fmt_mult(atk_mult) + 'x ATK for '
-                    for i in for_type[:-1]:
-                        skill_text += TYPES[i] + ', '
-                    skill_text += TYPES[int(for_type[-1])] + ' type'
-            elif hp_mult == 1 and atk_mult == 1 and rcv_mult != 1:
-                skill_text += fmt_mult(rcv_mult) + 'x RCV for '
-                for i in for_type[:-1]:
-                    skill_text += TYPES[i] + ', '
-                skill_text += TYPES[int(for_type[-1])] + ' type'
-            elif hp_mult == 1 and atk_mult != 1 and rcv_mult == 1:
-                skill_text += fmt_mult(atk_mult) + 'x ATK for '
-                for i in for_type[:-1]:
-                    skill_text += TYPES[i] + ', '
-                skill_text += TYPES[int(for_type[-1])] + ' type'
-            elif hp_mult != 1 and atk_mult == 1 and rcv_mult == 1:
-                skill_text += fmt_mult(hp_mult) + 'x HP for '
-                for i in for_type[:-1]:
-                    skill_text += TYPES[i] + ', '
-                skill_text += TYPES[int(for_type[-1])] + ' type'
+        _, c = convert_with_defaults('bonus_move_time',
+                                     arguments,
+                                     bonus_move_time_backups)(x)
+        skill_text = fmt_stats_type_attr_bonus(c)
 
         time = c['time']
-        if time != 0 and skill_text != '':
-            skill_text += '; Increase orb movement time by ' + \
-                fmt_mult(time) + ' seconds'
-        elif skill_text == '':
-            skill_text += 'Increase orb movement time by ' + \
-                fmt_mult(time) + ' seconds'
+        if time:
+            if skill_text:
+                skill_text += '; '
 
-        c['skill_text'] = skill_text
+            skill_text += 'Increase orb movement time by ' + fmt_mult(time) + ' seconds'
+
+        c['skill_text'] += skill_text
         return 'bonus_move_time', c
     return f
 
@@ -918,8 +797,9 @@ counter_attack_backups = {'chance': 0, 'multiplier': 0, 'attribute': [], 'skill_
 
 def counter_attack_convert(arguments):
     def f(x):
-        _, c = convert('counter_attack', {
-                       k: (arguments[k] if k in arguments else v) for k, v in counter_attack_backups.items()})(x)
+        _, c = convert_with_defaults('counter_attack',
+                                     arguments,
+                                     counter_attack_backups)(x)
         if c['chance'] == 1:
             c['skill_text'] += fmt_mult(c['multiplier']) + \
                 'x ' + ATTRIBUTES[int(c['attribute'])] + ' counterattack'
@@ -936,8 +816,9 @@ egg_drop_backups = {'multiplier': 1.0, 'skill_text': ''}
 
 def egg_drop_convert(arguments):
     def f(x):
-        _, c = convert('egg_drop_rate', {
-                       k: (arguments[k] if k in arguments else v) for k, v in egg_drop_backups.items()})(x)
+        _, c = convert_with_defaults('egg_drop_rate',
+                                     arguments,
+                                     egg_drop_backups)(x)
         c['skill_text'] += fmt_mult(c['multiplier']) + 'x Egg Drop rate'
         return 'egg_drop_rate', c
     return f
@@ -948,8 +829,9 @@ coin_drop_backups = {'multiplier': 1.0, 'skill_text': ''}
 
 def coin_drop_convert(arguments):
     def f(x):
-        _, c = convert('coin_drop_rate', {
-                       k: (arguments[k] if k in arguments else v) for k, v in coin_drop_backups.items()})(x)
+        _, c = convert_with_defaults('coin_drop_rate',
+                                     arguments,
+                                     coin_drop_backups)(x)
         c['skill_text'] += fmt_mult(c['multiplier']) + 'x Coin Drop rate'
         return 'coin_drop_rate', c
     return f
@@ -961,8 +843,9 @@ skill_used_backups = {'for_attr': [], 'for_type': [],
 
 def skill_used_convert(arguments):
     def f(x):
-        _, c = convert('skill_used_stats', {
-                       k: (arguments[k] if k in arguments else v) for k, v in skill_used_backups.items()})(x)
+        _, c = convert_with_defaults('skill_used_stats',
+                                     arguments,
+                                     skill_used_backups)(x)
         skill_text = c['skill_text']
         for_attr = c['for_attr']
         rcv_mult = c['rcv_multiplier']
@@ -1041,8 +924,9 @@ exact_combo_backups = {'combos': 0, 'atk_multiplier': 1, 'skill_text': ''}
 
 def exact_combo_convert(arguments):
     def f(x):
-        _, c = convert('exact_combo_match', {
-                       k: (arguments[k] if k in arguments else v) for k, v in exact_combo_backups.items()})(x)
+        _, c = convert_with_defaults('exact_combo_match',
+                                     arguments,
+                                     exact_combo_backups)(x)
         c['skill_text'] += fmt_mult(c['atk_multiplier']) + \
             'x ATK when exactly ' + str(c['combos']) + ' combos'
         return 'exact_combo_match', c
@@ -1055,8 +939,9 @@ passive_stats_type_atk_all_hp_backups = {'for_type': [],
 
 def passive_stats_type_atk_all_hp_convert(arguments):
     def f(x):
-        _, c = convert('passive_stats_type_atk_all_hp', {k: (
-            arguments[k] if k in arguments else v) for k, v in passive_stats_type_atk_all_hp_backups.items()})(x)
+        _, c = convert_with_defaults('passive_stats_type_atk_all_hp',
+                                     arguments,
+                                     passive_stats_type_atk_all_hp_backups)(x)
         c['skill_text'] += 'Reduce total HP by ' + str((1 - c['hp_multiplier']) * 100).rstrip(
             '0').rstrip('.') + '%; ' + fmt_mult(c['atk_multiplier']) + 'x ATK for '
         for i in c['for_type'][:-1]:
@@ -1072,8 +957,9 @@ team_build_bonus_backups = {'monster_ids': 0, 'hp_multiplier': 1,
 
 def team_build_bonus_convert(arguments):
     def f(x):
-        _, c = convert('team_build_bonus', {
-                       k: (arguments[k] if k in arguments else v) for k, v in team_build_bonus_backups.items()})(x)
+        _, c = convert_with_defaults('team_build_bonus',
+                                     arguments,
+                                     team_build_bonus_backups)(x)
         hp_multiplier = c['hp_multiplier']
         atk_multiplier = c['atk_multiplier']
         rcv_multiplier = c['rcv_multiplier']
@@ -1131,8 +1017,9 @@ rank_exp_rate_backups = {'multiplier': 1, 'skill_text': ''}
 
 def rank_exp_rate_convert(arguments):
     def f(x):
-        _, c = convert('rank_exp_rate', {
-                       k: (arguments[k] if k in arguments else v) for k, v in rank_exp_rate_backups.items()})(x)
+        _, c = convert_with_defaults('rank_exp_rate',
+                                     arguments,
+                                     rank_exp_rate_backups)(x)
         c['skill_text'] += fmt_mult(c['multiplier']) + 'x rank EXP'
         return 'rank_exp_rate', c
     return f
@@ -1143,8 +1030,9 @@ heart_tpa_stats_backups = {'rcv_multiplier': 1, 'skill_text': ''}
 
 def heart_tpa_stats_convert(arguments):
     def f(x):
-        _, c = convert('heart_tpa_stats', {
-                       k: (arguments[k] if k in arguments else v) for k, v in heart_tpa_stats_backups.items()})(x)
+        _, c = convert_with_defaults('heart_tpa_stats',
+                                     arguments,
+                                     heart_tpa_stats_backups)(x)
         c['skill_text'] += fmt_mult(c['rcv_multiplier']) + \
             'x RCV when matching 4 Heal orbs'
         return 'heart_tpa_stats', c
@@ -1156,8 +1044,9 @@ five_orb_one_enhance_backups = {'atk_multiplier': 1, 'skill_text': ''}
 
 def five_orb_one_enhance_convert(arguments):
     def f(x):
-        _, c = convert('five_orb_one_enhance', {
-                       k: (arguments[k] if k in arguments else v) for k, v in five_orb_one_enhance_backups.items()})(x)
+        _, c = convert_with_defaults('five_orb_one_enhance',
+                                     arguments,
+                                     five_orb_one_enhance_backups)(x)
         c['skill_text'] += fmt_mult(c['atk_multiplier']) + \
             'x ATK for matched Att. when matching 5 Orbs with 1+ enhanced'
         return 'five_orb_one_enhance', c
@@ -1170,42 +1059,27 @@ heart_cross_backups = {'atk_multiplier': 1, 'rcv_multiplier': 1,
 
 def heart_cross_convert(arguments):
     def f(x):
-        _, c = convert('heart_cross', {
-                       k: (arguments[k] if k in arguments else v) for k, v in heart_cross_backups.items()})(x)
+        _, c = convert_with_defaults('heart_cross',
+                                     arguments,
+                                     heart_cross_backups)(x)
         atk_mult = c['atk_multiplier']
-        atk_mult_str = fmt_mult(atk_mult)
         rcv_mult = c['rcv_multiplier']
-        rcv_mult_str = fmt_mult(rcv_mult)
         skill_text = c['skill_text']
         damage_reduct = c['damage_reduction']
-        damage_reduct_str = fmt_mult(damage_reduct * 100)
 
-        cross_cond_str = 'when matching 5 Heal orbs in a cross fromation'
-        if atk_mult != 1 and rcv_mult != 1 and damage_reduct != 0:
-            if atk_mult == rcv_mult:
-                skill_text += atk_mult_str + 'x ATK & RCV and reduce damage taken by ' + \
-                    damage_reduct_str + '% ' + cross_cond_str
+        multiplier_text = fmt_multiplier_text(1, atk_mult, rcv_mult)
+        if multiplier_text:
+            skill_text += multiplier_text
+
+        reduct_text = fmt_reduct_text(damage_reduct)
+        if reduct_text:
+            if multiplier_text:
+                skill_text += ' and ' + reduct_text
             else:
-                skill_text += atk_mult_str + 'x ATK, ' + rcv_mult_str + 'x RCV and reduce damage taken by ' + \
-                    damage_reduct_str + '% ' + cross_cond_str
-        elif atk_mult != 1 and rcv_mult == 1 and damage_reduct != 0:
-            skill_text += atk_mult_str + 'x ATK and reduce damage taken by ' + \
-                damage_reduct_str + '% ' + cross_cond_str
-        elif atk_mult == 1 and rcv_mult != 1 and damage_reduct != 0:
-            skill_text += rcv_mult_str + 'x RCV and reduce damage taken by ' + \
-                damage_reduct_str + '% ' + cross_cond_str
-        elif atk_mult != 1 and rcv_mult != 1 and damage_reduct == 0:
-            skill_text += atk_mult_str + 'x ATK, ' + rcv_mult_str + \
-                'x RCV ' + cross_cond_str
-        elif atk_mult != 1 and rcv_mult == 1 and damage_reduct == 0:
-            skill_text += atk_mult_str + \
-                'x ATK ' + cross_cond_str
-        elif atk_mult == 1 and rcv_mult != 1 and damage_reduct == 0:
-            skill_text += rcv_mult_str + \
-                'x RCV ' + cross_cond_str
-        elif atk_mult == 1 and rcv_mult == 1 and damage_reduct != 0:
-            skill_text += 'Reduce damage taken by ' + damage_reduct_str + \
-                '% ' + cross_cond_str
+                skill_text += reduct_text.capitalize()
+
+        skill_text += ' when matching 5 Heal orbs in a cross formation'
+
         c['skill_text'] = skill_text
         return 'heart_cross', c
     return f
