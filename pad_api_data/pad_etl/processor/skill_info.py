@@ -1,68 +1,22 @@
-#  Created by CandyNinja
+#  Created by CandyNinja, edited by cate and tactical_retreat
 #
-#  This script reformats the raw json files from pad to a more usable
-#  and readable format. The script accepts a dict with a str key for the
-#  mode and the tuple value storing the str of the input and output file
-#  locations, modes and examples below. There is an optional parameter
-#  for pretty printing the json instead of minimizing the file.
-#
-#  Modes:
-#  'skill' for card skills (active and leader)
-#  'dungeon' for dungeon data (list of dungeons and floors, not data within them)
-#    -- TODO BELOW --
-#  'enemy_skill' for dungeon encounter skills
-#  'card' for card data (awakenings, stats, types, etc.)
-#
-#  Examples:
-#  reformatter.reformat({'skill': ('download_skill_data.json','reformat/skills.json'),
-#                        'card':  ('download_card_data.json', 'reformat/cards.json' )},
-#                       pretty=True)
-#
-#  reformatter.reformat({'dungeon': ('download_dungeon_data.json','reformat/skills.json')})
-#
-#
+# Reformats pad file data into useful skill info
 
 from collections import defaultdict
-import csv
 import json
+from operator import itemgetter
+import sys
+
+from defaultlist import defaultlist
 
 
-# base code from https://stackoverflow.com/a/8749640/8150086
-class defaultlist(list):
-    def __init__(self, fx, initial=[]):
-        self._fx = fx
-        self.extend(initial)
-
-    def _fill(self, index):
-        if type(index) == slice:
-            if index.step == None or index.step > 0:
-                if index.stop == None:
-                    return
-                while len(self) <= index.stop:
-                    self.append(self._fx())
-            else:
-                if index.start == None:
-                    return
-                while len(self) <= index.start:
-                    self.append(self._fx())
-        else:
-            while len(self) <= index:
-                self.append(self._fx())
-
-    def __setitem__(self, index, value):
-        self._fill(index)
-        list.__setitem__(self, index, value)
-
-    def __getitem__(self, index):
-        self._fill(index)
-        if type(index) == slice:
-            return defaultlist(self._fx, list.__getitem__(self, index))
-        else:
-            return list.__getitem__(self, index)
+def make_defaultlist(fx, initial=[]):
+    df = defaultlist(fx)
+    df.extend(initial)
+    return df
 
 
 # this is used to name the skill ids and their arguments
-
 def cc(x): return x
 
 
@@ -134,7 +88,7 @@ TYPES = {0: 'Evo Material',
 def convert(type_name, arguments):
     def i(x):
         args = {}
-        x = defaultlist(int, x)
+        x = make_defaultlist(int, x)
 
         for name, t in arguments.items():
             if type(t) == tuple:
@@ -151,210 +105,70 @@ passive_stats_backups = {'for_attr': [], 'for_type': [], 'hp_multiplier': 1.0, '
                          'rcv_multiplier': 1.0, 'reduction_attributes': all_attr, 'damage_reduction': 0.0, 'skill_text': ''}
 
 
+def fmt_multiplier_text(hp_mult, atk_mult, rcv_mult):
+    if hp_mult == atk_mult and atk_mult == rcv_mult:
+        if hp_mult == 1:
+            return None
+        return '{}x all stats'.format(fmt_mult(hp_mult))
+
+    mults = [('HP', hp_mult), ('ATK', atk_mult), ('RCV', rcv_mult)]
+    mults = list(filter(lambda x: x[1] != 1, mults))
+    mults.sort(key=itemgetter(1), reverse=True)
+
+    chunks = []
+    x = 0
+    while x < len(mults):
+        can_check_double = x + 1 < len(mults)
+        if can_check_double and mults[x][1] == mults[x + 1][1]:
+            chunks.append(('{} & {}'.format(mults[x][0], mults[x + 1][0]), mults[x][1]))
+            x += 2
+        else:
+            chunks.append((mults[x][0], mults[x][1]))
+            x += 1
+
+    output = ''
+    for c in chunks:
+        if len(output):
+            output += ' and '
+        output += '{}x {}'.format(fmt_mult(c[1]), c[0])
+
+    return output
+
+
 def passive_stats_convert(arguments):
     def f(x):
         _, c = convert('passive_stats', {
                        k: (arguments[k] if k in arguments else v) for k, v in passive_stats_backups.items()})(x)
+
         for_type = c['for_type']
-        if not for_type:
-            hp_mult = c['hp_multiplier']
-            atk_mult = c['atk_multiplier']
-            rcv_mult = c['rcv_multiplier']
-            skill_text = c['skill_text']
-            if hp_mult != 1 and atk_mult != 1 and rcv_mult != 1:
-                if hp_mult == atk_mult == rcv_mult:
-                    skill_text += fmt_mult(hp_mult) + 'x all stats for '
-                    for_attr = c['for_attr']
-                    if for_attr == [0, 1, 2, 3, 4]:
-                        skill_text += 'all Att.'
-                    else:
-                        for i in for_attr[:-1]:
-                            skill_text += ATTRIBUTES[i] + ', '
-                        skill_text += ATTRIBUTES[int(for_attr[-1])] + ' Att.'
-                elif hp_mult == atk_mult:
-                    skill_text += fmt_mult(hp_mult) + 'x HP & ATK and ' + \
-                        fmt_mult(rcv_mult) + 'x RCV for '
-                    if for_attr == [0, 1, 2, 3, 4]:
-                        skill_text += 'all Att.'
-                    else:
-                        for i in for_attr[:-1]:
-                            skill_text += ATTRIBUTES[i] + ', '
-                        skill_text += ATTRIBUTES[int(for_attr[-1])] + ' Att.'
-                elif hp_mult == rcv_mult:
-                    skill_text += fmt_mult(hp_mult) + 'x HP & RCV and ' + \
-                        fmt_mult(atk_mult) + 'x ATK for '
-                    if for_attr == [0, 1, 2, 3, 4]:
-                        skill_text += 'all Att.'
-                    else:
-                        for i in for_attr[:-1]:
-                            skill_text += ATTRIBUTES[i] + ', '
-                        skill_text += ATTRIBUTES[int(for_attr[-1])] + ' Att.'
-                elif atk_mult == rcv_mult:
-                    skill_text += fmt_mult(atk_mult) + 'x ATK & RCV and ' + \
-                        fmt_mult(hp_mult) + 'x HP for '
-                    if for_attr == [0, 1, 2, 3, 4]:
-                        skill_text += 'all Att.'
-                    else:
-                        for i in for_attr[:-1]:
-                            skill_text += ATTRIBUTES[i] + ', '
-                        skill_text += ATTRIBUTES[int(for_attr[-1])] + ' Att.'
-            elif hp_mult == 1 and atk_mult != 1 and rcv_mult != 1:
-                if atk_mult == rcv_mult:
-                    skill_text += fmt_mult(atk_mult) + 'x ATK & RCV for '
-                    if for_attr == [0, 1, 2, 3, 4]:
-                        skill_text += 'all Att.'
-                    else:
-                        for i in for_attr[:-1]:
-                            skill_text += ATTRIBUTES[i] + ', '
-                        skill_text += ATTRIBUTES[int(for_attr[-1])] + ' Att.'
-                else:
-                    skill_text += fmt_mult(atk_mult) + \
-                        'x ATK and ' + fmt_mult(rcv_mult) + 'x RCV for '
-                    if for_attr == [0, 1, 2, 3, 4]:
-                        skill_text += 'all Att.'
-                    else:
-                        for i in for_attr[:-1]:
-                            skill_text += ATTRIBUTES[i] + ', '
-                        skill_text += ATTRIBUTES[int(for_attr[-1])] + ' Att.'
-            elif hp_mult != 1 and atk_mult == 1 and rcv_mult != 1:
-                if hp_mult == rcv_mult:
-                    skill_text += fmt_mult(hp_mult) + 'x HP & RCV for '
-                    if for_attr == [0, 1, 2, 3, 4]:
-                        skill_text += 'all Att.'
-                    else:
-                        for i in for_attr[:-1]:
-                            skill_text += ATTRIBUTES[i] + ', '
-                        skill_text += ATTRIBUTES[int(for_attr[-1])] + ' Att.'
-                else:
-                    skill_text += fmt_mult(hp_mult) + 'x HP and ' + \
-                        fmt_mult(rcv_mult) + 'x RCV for '
-                    if for_attr == [0, 1, 2, 3, 4]:
-                        skill_text += 'all Att.'
-                    else:
-                        for i in for_attr[:-1]:
-                            skill_text += ATTRIBUTES[i] + ', '
-                        skill_text += ATTRIBUTES[int(for_attr[-1])] + ' Att.'
-            elif hp_mult != 1 and atk_mult != 1 and rcv_mult == 1:
-                if atk_mult == hp_mult:
-                    skill_text += fmt_mult(hp_mult) + 'x HP & ATK for '
-                    if for_attr == [0, 1, 2, 3, 4]:
-                        skill_text += 'all Att.'
-                    else:
-                        for i in for_attr[:-1]:
-                            skill_text += ATTRIBUTES[i] + ', '
-                        skill_text += ATTRIBUTES[int(for_attr[-1])] + ' Att.'
-                else:
-                    skill_text += fmt_mult(hp_mult) + 'x HP and ' + \
-                        fmt_mult(atk_mult) + 'x ATK for '
-                    if for_attr == [0, 1, 2, 3, 4]:
-                        skill_text += 'all Att.'
-                    else:
-                        for i in for_attr[:-1]:
-                            skill_text += ATTRIBUTES[i] + ', '
-                        skill_text += ATTRIBUTES[int(for_attr[-1])] + ' Att.'
-            elif hp_mult == 1 and atk_mult == 1 and rcv_mult != 1:
-                skill_text += fmt_mult(rcv_mult) + 'x RCV for '
-                if for_attr == [0, 1, 2, 3, 4]:
-                    skill_text += 'all Att.'
-                else:
-                    for i in for_attr[:-1]:
-                        skill_text += ATTRIBUTES[i] + ', '
-                    skill_text += ATTRIBUTES[int(for_attr[-1])] + ' Att.'
-            elif hp_mult == 1 and atk_mult != 1 and rcv_mult == 1:
-                skill_text += fmt_mult(atk_mult) + 'x ATK for '
-                if for_attr == [0, 1, 2, 3, 4]:
-                    skill_text += 'all Att.'
-                else:
-                    for i in for_attr[:-1]:
-                        skill_text += ATTRIBUTES[i] + ', '
-                    skill_text += ATTRIBUTES[int(for_attr[-1])] + ' Att.'
-            elif hp_mult != 1 and atk_mult == 1 and rcv_mult == 1:
-                skill_text += fmt_mult(hp_mult) + 'x HP for '
-                if for_attr == [0, 1, 2, 3, 4]:
-                    skill_text += 'all Att.'
-                else:
-                    for i in for_attr[:-1]:
-                        skill_text += ATTRIBUTES[i] + ', '
-                    skill_text += ATTRIBUTES[int(for_attr[-1])] + ' Att.'
-        else:
-            if hp_mult != 1 and atk_mult != 1 and rcv_mult != 1:
-                if hp_mult == atk_mult == rcv_mult:
-                    skill_text += fmt_mult(hp_mult) + 'x all stats for '
-                    for i in for_type[:-1]:
-                        skill_text += TYPES[i] + ', '
-                    skill_text += TYPES[int(for_type[-1])] + ' type'
-                elif hp_mult == atk_mult:
-                    skill_text += fmt_mult(hp_mult) + 'x HP & ATK and ' + \
-                        fmt_mult(rcv_mult) + 'x RCV for '
-                    for i in for_type[:-1]:
-                        skill_text += TYPES[i] + ', '
-                    skill_text += TYPES[int(for_type[-1])] + ' type'
-                elif hp_mult == rcv_mult:
-                    skill_text += fmt_mult(hp_mult) + 'x HP & RCV and ' + \
-                        fmt_mult(atk_mult) + 'x ATK for '
-                    for i in for_type[:-1]:
-                        skill_text += TYPES[i] + ', '
-                    skill_text += TYPES[int(for_type[-1])] + ' type'
-                elif atk_mult == rcv_mult:
-                    skill_text += fmt_mult(atk_mult) + \
-                        'x ATK & RCV and ' + fmt_mult(hp_mult) + 'x HP for '
-                    for i in for_type[:-1]:
-                        skill_text += TYPES[i] + ', '
-                    skill_text += TYPES[int(for_type[-1])] + ' type'
-            elif hp_mult == 1 and atk_mult != 1 and rcv_mult != 1:
-                if atk_mult == rcv_mult:
-                    skill_text += str(atk_mult).rstrip('0').rstrip('.') + 'x ATK & RCV for '
-                    for i in for_type[:-1]:
-                        skill_text += TYPES[i] + ', '
-                    skill_text += TYPES[int(for_type[-1])] + ' type'
-                else:
-                    skill_text += fmt_mult(atk_mult) + \
-                        'x ATK and ' + str(rcv_mult).rstrip('0').rstrip('.') + 'x RCV for '
-                    for i in for_type[:-1]:
-                        skill_text += TYPES[i] + ', '
-                    skill_text += TYPES[int(for_type[-1])] + ' type'
-            elif hp_mult != 1 and atk_mult == 1 and rcv_mult != 1:
-                if hp_mult == rcv_mult:
-                    skill_text += fmt_mult(hp_mult) + 'x HP & RCV for '
-                    for i in for_type[:-1]:
-                        skill_text += TYPES[i] + ', '
-                    skill_text += TYPES[int(for_type[-1])] + ' type'
-                else:
-                    skill_text += fmt_mult(hp_mult) + 'x HP and ' + \
-                        fmt_mult(rcv_mult) + 'x RCV for '
-                    for i in for_type[:-1]:
-                        skill_text += TYPES[i] + ', '
-                    skill_text += TYPES[int(for_type[-1])] + ' type'
-            elif hp_mult != 1 and atk_mult != 1 and rcv_mult == 1:
-                if atk_mult == hp_mult:
-                    skill_text += fmt_mult(hp_mult) + 'x HP & ATK for '
-                    for i in for_type[:-1]:
-                        skill_text += TYPES[i] + ', '
-                    skill_text += TYPES[int(for_type[-1])] + ' type'
-                else:
-                    skill_text += fmt_mult(hp_mult) + 'x HP and ' + \
-                        fmt_mult(atk_mult) + 'x ATK for '
-                    for i in for_type[:-1]:
-                        skill_text += TYPES[i] + ', '
-                    skill_text += TYPES[int(for_type[-1])] + ' type'
-            elif hp_mult == 1 and atk_mult == 1 and rcv_mult != 1:
-                skill_text += fmt_mult(rcv_mult) + 'x RCV for '
-                for i in for_type[:-1]:
-                    skill_text += TYPES[i] + ', '
-                skill_text += TYPES[int(for_type[-1])] + ' type'
-            elif hp_mult == 1 and atk_mult != 1 and rcv_mult == 1:
-                skill_text += fmt_mult(atk_mult) + 'x ATK for '
-                for i in for_type[:-1]:
-                    skill_text += TYPES[i] + ', '
-                skill_text += TYPES[int(for_type[-1])] + ' type'
-            elif hp_mult != 1 and atk_mult == 1 and rcv_mult == 1:
-                skill_text += fmt_mult(hp_mult) + 'x HP for '
-                for i in for_type[:-1]:
-                    skill_text += TYPES[i] + ', '
-                skill_text += TYPES[int(for_type[-1])] + ' type'
+        for_attr = c['for_attr']
+        hp_mult = c['hp_multiplier']
+        atk_mult = c['atk_multiplier']
+        rcv_mult = c['rcv_multiplier']
+        skill_text = c['skill_text']
+
+        multiplier_text = fmt_multiplier_text(hp_mult, atk_mult, rcv_mult)
+        if multiplier_text:
+            skill_text += multiplier_text
+
+            for_skill_text = ''
+            if for_type:
+                for_skill_text += ' ' + ', '.join([TYPES[i] for i in for_type]) + ' type'
+
+            if for_attr:
+                if for_skill_text:
+                    for_skill_text += ' and'
+                color_text = 'all' if len(for_attr) == 5 else ', '.join(
+                    [ATTRIBUTES[i] for i in for_attr])
+                for_skill_text += ' ' + color_text + ' Att.'
+
+            if for_skill_text:
+                skill_text += ' for' + for_skill_text
+
         if c['damage_reduction'] != 0.0:
             skill_text += '; Reduce damage taken by ' + \
                 fmt_mult(c['damage_reduction'] * 100) + '%'
+        c['skill_text'] = skill_text
         return 'passive_stats', c
     return f
 
@@ -382,68 +196,72 @@ def threshold_stats_convert(above, arguments):
                     if not for_type:
                         skill_text += fmt_mult(atk_mult) + 'x ATK '
                         if for_attr == [0, 1, 2, 3, 4]:
-                            skill_text += 'when above ' + \
-                                fmt_mult(threshold) + '% HP'
+                            skill_text += 'when above ' + fmt_mult(threshold) + '% HP'
                         else:
                             skill_text += 'for '
                             for i in for_attr[:-1]:
                                 skill_text += ATTRIBUTES[i] + ', '
-                            skill_text += ATTRIBUTES[int(for_attr[-1])] + ' Att. when above ' + str(
-                                threshold).rstrip('0').rstrip('.') + '% HP'
+                            skill_text += ATTRIBUTES[int(for_attr[-1])] + \
+                                ' Att. when above ' + fmt_mult(threshold) + '% HP'
+                        c['skill_text'] = skill_text
                         return 'above_threshold_stats', c
                     else:
                         skill_text += fmt_mult(atk_mult) + 'x ATK for '
                         for i in for_type[:-1]:
                             skill_text += TYPES[i] + ', '
-                        skill_text += TYPES[int(for_type[-1])] + ' type when above ' + \
-                            str(threshold).rstrip('0').rstrip('.') + '% HP'
+                        skill_text += TYPES[int(for_type[-1])] + \
+                            ' type when above ' + fmt_mult(threshold) + '% HP'
+                        c['skill_text'] = skill_text
                         return 'above_threshold_stats', c
                 else:
                     if rcv_mult == atk_mult:
                         if not for_type:
                             skill_text += fmt_mult(atk_mult) + 'x ATK & RCV '
                             if for_attr == [0, 1, 2, 3, 4]:
-                                skill_text += 'when above ' + \
-                                    fmt_mult(threshold) + '% HP'
+                                skill_text += 'when above ' + fmt_mult(threshold) + '% HP'
                             else:
                                 skill_text += 'for '
                                 for i in for_attr[:-1]:
                                     skill_text += ATTRIBUTES[i] + ', '
-                                skill_text += ATTRIBUTES[int(for_attr[-1])] + ' Att. when above ' + str(
-                                    threshold).rstrip('0').rstrip('.') + '% HP'
+                                skill_text += ATTRIBUTES[int(for_attr[-1])] + \
+                                    ' Att. when above ' + fmt_mult(threshold) + '% HP'
+                            c['skill_text'] = skill_text
                             return 'above_threshold_stats', c
                         else:
                             skill_text += fmt_mult(atk_mult) + 'x ATK & RCV for '
                             for i in for_type[:-1]:
                                 skill_text += TYPES[i] + ', '
-                            skill_text += TYPES[int(for_type[-1])] + ' type when above ' + str(
-                                threshold).rstrip('0').rstrip('.') + '% HP'
+                            skill_text += TYPES[int(for_type[-1])] + \
+                                ' type when above ' + fmt_mult(threshold) + '% HP'
+                            c['skill_text'] = skill_text
                             return 'above_threshold_stats', c
                     else:
                         if not for_type:
-                            skill_text += str(atk_mult).rstrip('0').rstrip(
-                                '.') + 'x ATK and ' + fmt_mult(rcv_mult) + 'x RCV '
+                            skill_text += fmt_mult(atk_mult) + 'x ATK and ' + \
+                                fmt_mult(rcv_mult) + 'x RCV '
                             if for_attr == [0, 1, 2, 3, 4]:
-                                skill_text += 'when above ' + \
-                                    fmt_mult(threshold) + '% HP'
+                                skill_text += 'when above ' + fmt_mult(threshold) + '% HP'
                             else:
                                 skill_text += 'for '
                                 for i in for_attr[:-1]:
                                     skill_text += ATTRIBUTES[i] + ', '
-                                skill_text += ATTRIBUTES[int(for_attr[-1])] + ' Att. when above ' + str(
-                                    threshold).rstrip('0').rstrip('.') + '% HP'
+                                skill_text += ATTRIBUTES[int(for_attr[-1])] + \
+                                    ' Att. when above ' + fmt_mult(threshold) + '% HP'
+                            c['skill_text'] = skill_text
                             return 'above_threshold_stats', c
                         else:
-                            skill_text += str(atk_mult).rstrip('0').rstrip(
-                                '.') + 'x ATK and ' + fmt_mult(rcv_mult) + 'x RCV for '
+                            skill_text += fmt_mult(atk_mult) + 'x ATK and ' + \
+                                fmt_mult(rcv_mult) + 'x RCV for '
                             for i in for_type[:-1]:
                                 skill_text += TYPES[i] + ', '
-                            skill_text += TYPES[int(for_type[-1])] + ' type when above ' + str(
-                                threshold).rstrip('0').rstrip('.') + '% HP'
+                            skill_text += TYPES[int(for_type[-1])] + \
+                                ' type when above ' + fmt_mult(threshold) + '% HP'
+                            c['skill_text'] = skill_text
                             return 'above_threshold_stats', c
             elif atk_mult == 1.0:
                 skill_text += 'Reduce damage taken by ' + str(damage_reduction * 100).rstrip(
                     '0').rstrip('.') + '% when above ' + fmt_mult(threshold) + '% HP'
+                c['skill_text'] = skill_text
                 return 'above_threshold_stats', c
             else:
                 if not for_type:
@@ -456,6 +274,7 @@ def threshold_stats_convert(above, arguments):
                             skill_text += ATTRIBUTES[i] + ', '
                         skill_text += ATTRIBUTES[int(for_attr[-1])] + ' and reduce damage taken by ' + str(damage_reduction * 100).rstrip(
                             '0').rstrip('.') + '% when above ' + fmt_mult(threshold) + '% HP'
+                    c['skill_text'] = skill_text
                     return 'above_threshold_stats', c
                 else:
                     skill_text += fmt_mult(atk_mult) + 'x ATK for '
@@ -463,11 +282,20 @@ def threshold_stats_convert(above, arguments):
                         skill_text += TYPES[i] + ', '
                     skill_text += TYPES[int(for_type[-1])] + ' type when above ' + \
                         fmt_mult(threshold) + '% HP'
+                    c['skill_text'] = skill_text
                     return 'above_threshold_stats', c
         else:
             _, c = convert('below_threshold_stats', {
                            k: (arguments[k] if k in arguments else v) for k, v in threshold_stats_backups.items()})(x)
+
+            damage_reduction = c['damage_reduction']
+            for_attr = c['for_attr']
+            rcv_mult = c['rcv_multiplier']
+            for_type = c['for_type']
+            atk_mult = c['atk_multiplier']
             skill_text = c['skill_text']
+            threshold = c['threshold'] * 100
+
             if damage_reduction == 0:
                 if rcv_mult == 1.0:
                     if not for_type:
@@ -480,14 +308,16 @@ def threshold_stats_convert(above, arguments):
                             for i in for_attr[:-1]:
                                 skill_text += ATTRIBUTES[i] + ', '
                             skill_text += ATTRIBUTES[int(for_attr[-1])] + ' Att. when below ' + \
-                                str(threshold).rstrip('0').rstrip('.') + '% HP'
+                                fmt_mult(threshold) + '% HP'
+                        c['skill_text'] = skill_text
                         return 'below_threshold_stats', c
                     else:
                         skill_text += fmt_mult(atk_mult) + 'x ATK for '
                         for i in for_type[:-1]:
                             skill_text += TYPES[i] + ', '
                         skill_text += TYPES[int(for_type[-1])] + ' type when below ' + \
-                            str(threshold).rstrip('0').rstrip('.') + '% HP'
+                            fmt_mult(threshold) + '% HP'
+                        c['skill_text'] = skill_text
                         return 'below_threshold_stats', c
                 else:
                     if rcv_mult == atk_mult:
@@ -502,13 +332,15 @@ def threshold_stats_convert(above, arguments):
                                     skill_text += ATTRIBUTES[i] + ', '
                                 skill_text += ATTRIBUTES[int(for_attr[-1])] + ' Att. when below ' + str(
                                     threshold).rstrip('0').rstrip('.') + '% HP'
+                            c['skill_text'] = skill_text
                             return 'below_threshold_stats', c
                         else:
                             skill_text += fmt_mult(atk_mult) + 'x ATK & RCV for '
                             for i in for_type[:-1]:
                                 skill_text += TYPES[i] + ', '
                             skill_text += TYPES[int(for_type[-1])] + ' type when below ' + \
-                                str(threshold).rstrip('0').rstrip('.') + '% HP'
+                                fmt_mult(threshold) + '% HP'
+                            c['skill_text'] = skill_text
                             return 'below_threshold_stats', c
                     else:
                         if not for_type:
@@ -523,32 +355,36 @@ def threshold_stats_convert(above, arguments):
                                     skill_text += ATTRIBUTES[i] + ', '
                                 skill_text += ATTRIBUTES[int(for_attr[-1])] + \
                                     ' Att. when below ' + fmt_mult(threshold) + '% HP'
+                            c['skill_text'] = skill_text
                             return 'below_threshold_stats', c
                         else:
-                            skill_text += str(atk_mult).rstrip('0').rstrip('.') + \
+                            skill_text += fmt_mult(atk_mult) + \
                                 'x ATK and ' + fmt_mult(rcv_mult) + 'x RCV for '
                             for i in for_type[:-1]:
                                 skill_text += TYPES[i] + ', '
                             skill_text += TYPES[int(for_type[-1])] + ' type when below ' + \
-                                str(threshold).rstrip('0').rstrip('.') + '% HP'
+                                fmt_mult(threshold) + '% HP'
+                            c['skill_text'] = skill_text
                             return 'below_threshold_stats', c
             elif atk_mult == 1.0:
                 skill_text += 'Reduce damage taken by ' + \
-                    str(damage_reduction * 100).rstrip('0').rstrip('.') + \
+                    fmt_mult(damage_reduction * 100) + \
                     '% when below ' + fmt_mult(threshold) + '% HP'
+                c['skill_text'] = skill_text
                 return 'below_threshold_stats', c
             else:
                 if not for_type:
                     skill_text += fmt_mult(atk_mult) + 'x ATK for '
                     if for_attr == [0, 1, 2, 3, 4]:
                         skill_text += 'all Att. and reduce damage taken by ' + \
-                            str(damage_reduction * 100).rstrip('0').rstrip('.') + \
+                            fmt_mult(damage_reduction * 100) + \
                             '% when below ' + fmt_mult(threshold) + '% HP'
                     else:
                         for i in for_attr[:-1]:
                             skill_text += ATTRIBUTES[i] + ', '
                         skill_text += ATTRIBUTES[int(for_attr[-1])] + ' and reduce damage taken by ' + fmt_mult(
                             damage_reduction * 100) + '% when below ' + fmt_mult(threshold) + '% HP'
+                    c['skill_text'] = skill_text
                     return 'below_threshold_stats', c
                 else:
                     skill_text += fmt_mult(atk_mult) + 'x ATK for '
@@ -556,6 +392,7 @@ def threshold_stats_convert(above, arguments):
                         skill_text += TYPES[i] + ', '
                     skill_text += TYPES[int(for_type[-1])] + ' type when below ' + \
                         fmt_mult(threshold) + '% HP'
+                    c['skill_text'] = skill_text
                     return 'below_threshold_stats', c
     return f
 
@@ -571,18 +408,20 @@ def combo_match_convert(arguments):
                        k: (arguments[k] if k in arguments else v) for k, v in combo_match_backups.items()})(x)
         skill_text = c['skill_text']
         max_combos = c['maximum_combos']
+        min_combos = c['minimum_combos']
         if max_combos == 0:
-            min_combos = c['minimum_combos']
-            c['maximum_combos'] = min_combos
+            max_combos = min_combos
+            c['maximum_combos'] = max_combos
+
         min_rcv_mult = c['minimum_rcv_multiplier']
         min_atk_mult = c['minimum_atk_multiplier']
         bonus_atk_mult = c['bonus_atk_multiplier']
         bonus_rcv_mult = c['bonus_rcv_multiplier']
+        min_damage_reduct = c['minimum_damage_reduction']
         if min_atk_mult == min_rcv_mult and bonus_atk_mult == bonus_rcv_mult:
             skill_text = fmt_mult(min_atk_mult) + \
                 'x ATK & RCV when ' + str(min_combos) + ' or more combos'
             if max_combos != min_combos:
-                min_damage_reduct = c['minimum_damage_reduction']
                 skill_text += ' up to ' + str(min_atk_mult + (max_combos - min_combos)
                                               * bonus_atk_mult).rstrip('0').rstrip('.') + 'x at ' + str(max_combos) + ' combos'
         elif min_damage_reduct != 0:
@@ -671,16 +510,16 @@ def multi_attribute_match_convert(arguments):
         _, c = convert('multi-attribute_match',
                        {k: (arguments[k] if k in arguments else v) for k, v in multi_attribute_match_backups.items()})(x)
         attributes = c['attributes']
+        min_damage_reduct = c['minimum_damage_reduction']
+        min_rcv_mult = c['minimum_rcv_multiplier']
+        min_atk_mult = c['minimum_atk_multiplier']
+        min_match = c['minimum_match']
+        bonus_atk_mult = c['bonus_atk_multiplier']
         if all(x == attributes[0] for x in attributes):
-            min_damage_reduct = c['minimum_damage_reduction']
-            min_rcv_mult = c['minimum_rcv_multiplier']
             if min_damage_reduct != 0 and min_rcv_mult == 1:
-                min_atk_mult = c['minimum_atk_multiplier']
-                min_match = c['minimum_match']
                 c['skill_text'] += fmt_mult(min_atk_mult) + 'x ATK and reduce damage taken by ' + str(min_damage_reduct
                                                                                                       * 100).rstrip('0').rstrip('.') + '% when matching ' + str(min_match) + '+ ' + ATTRIBUTES[attributes[0]] + ' combos'
             elif len(attributes) != min_match and min_rcv_mult == 1:
-                bonus_atk_mult = c['bonus_atk_multiplier']
                 c['skill_text'] += fmt_mult(min_atk_mult) + 'x ATK when matching ' + str(min_match) + ' ' + ATTRIBUTES[attributes[0]] + ' combos, up to ' + str(
                     min_atk_mult + (len(attributes) - min_match) * bonus_atk_mult).rstrip('0').rstrip('.') + 'x at ' + str(len(attributes)) + ' ' + ATTRIBUTES[attributes[0]] + ' combos'
             elif attributes != [] and min_rcv_mult == 1:
@@ -817,7 +656,8 @@ def mass_match_convert(arguments):
         max_count = c['maximum_count']
         min_count = c['minimum_count']
         if max_count == 0:
-            c['maximum_count'] = min_count
+            max_count = min_count
+            c['maximum_count'] = max_count
 
         min_damage_reduction = c['minimum_damage_reduction']
         min_rcv_mult = c['minimum_rcv_multiplier']
@@ -827,7 +667,7 @@ def mass_match_convert(arguments):
 
         if max_count == min_count:
             if min_damage_reduction != 0:
-                if min_rcv_mult != 1.0 and min_rcv_mult == 'minimum_atk_multiplier':
+                if min_rcv_mult != 1.0 and min_rcv_mult == min_atk_mult:
                     c['skill_text'] += fmt_mult(min_atk_mult) + 'x ATK and RCV and reduce damage taken by ' + str(min_damage_reduction * 100).rstrip(
                         '0').rstrip('.') + '% when matching ' + str(min_count) + '+ ' + ATTRIBUTES[attributes[0]] + ' orbs'
                 elif min_rcv_mult != 1.0:
@@ -838,14 +678,14 @@ def mass_match_convert(arguments):
                         '0').rstrip('.') + '% when matching ' + str(min_count) + '+ ' + ATTRIBUTES[attributes[0]] + ' orbs'
 
             else:
-                if min_rcv_mult != 1.0 and min_rcv_mult == 'minimum_atk_multiplier':
-                    c['skill_text'] += str(min_atk_mult).rstrip('0').rstrip('.') + 'x ATK and RCV when matching ' + str(
+                if min_rcv_mult != 1.0 and min_rcv_mult == min_atk_mult:
+                    c['skill_text'] += fmt_mult(min_atk_mult) + 'x ATK and RCV when matching ' + str(
                         min_count) + '+ ' + ATTRIBUTES[attributes[0]] + ' orbs'
                 elif attributes != []:
                     c['skill_text'] += fmt_mult(min_atk_mult) + 'x ATK and ' + str(min_rcv_mult).rstrip('0').rstrip(
                         '.') + 'x RCV when matching ' + str(min_count) + '+ ' + ATTRIBUTES[attributes[0]] + ' orbs'
         else:
-            if min_rcv_mult != 1.0 and min_rcv_mult == 'minimum_atk_multiplier':
+            if min_rcv_mult != 1.0 and min_rcv_mult == min_atk_mult:
                 c['skill_text'] += fmt_mult(min_atk_mult) + 'x ATK and RCV when matching ' + str(min_count) + '+ ' + ATTRIBUTES[attributes[0]] + \
                     ' orbs up to ' + str((max_count - min_count) * bonus_atk_mult +
                                          min_atk_mult) + 'x at ' + str(max_count) + ' orbs'
@@ -908,166 +748,167 @@ def bonus_time_convert(arguments):
     def f(x):
         _, c = convert('bonus_move_time', {
                        k: (arguments[k] if k in arguments else v) for k, v in bonus_move_time_backups.items()})(x)
-        if not c['for_type']:
-            if c['hp_multiplier'] != 1 and c['hp_multiplier'] == c['atk_multiplier'] == c['rcv_multiplier']:
-                c['skill_text'] += str(c['hp_multiplier']
-                                       ).rstrip('0').rstrip('.') + 'x all stats for '
-                if c['for_attr'] == [0, 1, 2, 3, 4]:
-                    c['skill_text'] += 'all Att.'
+        for_type = c['for_type']
+        hp_mult = c['hp_multiplier']
+        atk_mult = c['atk_multiplier']
+        rcv_mult = c['rcv_multiplier']
+        for_attr = c['for_attr']
+        skill_text = c['skill_text']
+        if not for_type:
+            if hp_mult != 1 and hp_mult == atk_mult == rcv_mult:
+                skill_text += fmt_mult(hp_mult) + 'x all stats for '
+                if for_attr == [0, 1, 2, 3, 4]:
+                    skill_text += 'all Att.'
                 else:
-                    for i in c['for_attr'][:-1]:
-                        c['skill_text'] += ATTRIBUTES[i] + ', '
-                    c['skill_text'] += ATTRIBUTES[int(c['for_attr'][-1])] + ' Att.'
-            elif c['hp_multiplier'] == 1 and c['atk_multiplier'] != 1 and c['rcv_multiplier'] != 1:
-                if c['atk_multiplier'] == c['rcv_multiplier']:
-                    c['skill_text'] += str(c['atk_multiplier']
-                                           ).rstrip('0').rstrip('.') + 'x ATK & RCV for '
-                    if c['for_attr'] == [0, 1, 2, 3, 4]:
-                        c['skill_text'] += 'all Att.'
+                    for i in for_attr[:-1]:
+                        skill_text += ATTRIBUTES[i] + ', '
+                    skill_text += ATTRIBUTES[int(for_attr[-1])] + ' Att.'
+            elif hp_mult == 1 and atk_mult != 1 and rcv_mult != 1:
+                if atk_mult == rcv_mult:
+                    skill_text += fmt_mult(atk_mult) + 'x ATK & RCV for '
+                    if for_attr == [0, 1, 2, 3, 4]:
+                        skill_text += 'all Att.'
                     else:
-                        for i in c['for_attr'][:-1]:
-                            c['skill_text'] += ATTRIBUTES[i] + ', '
-                        c['skill_text'] += ATTRIBUTES[int(c['for_attr'][-1])] + ' Att.'
+                        for i in for_attr[:-1]:
+                            skill_text += ATTRIBUTES[i] + ', '
+                        skill_text += ATTRIBUTES[int(for_attr[-1])] + ' Att.'
                 else:
-                    c['skill_text'] += fmt_mult(c['atk_multiplier']) + \
-                        'x ATK and ' + str(c['rcv_multiplier']
-                                           ).rstrip('0').rstrip('.') + 'x RCV for '
-                    if c['for_attr'] == [0, 1, 2, 3, 4]:
-                        c['skill_text'] += 'all Att.'
+                    skill_text += fmt_mult(atk_mult) + \
+                        'x ATK and ' + fmt_mult(rcv_mult) + 'x RCV for '
+                    if for_attr == [0, 1, 2, 3, 4]:
+                        skill_text += 'all Att.'
                     else:
-                        for i in c['for_attr'][:-1]:
-                            c['skill_text'] += ATTRIBUTES[i] + ', '
-                        c['skill_text'] += ATTRIBUTES[int(c['for_attr'][-1])] + ' Att.'
-            elif c['hp_multiplier'] != 1 and c['atk_multiplier'] == 1 and c['rcv_multiplier'] != 1:
-                if c['hp_multiplier'] == c['rcv_multiplier']:
-                    c['skill_text'] += str(c['hp_multiplier']
-                                           ).rstrip('0').rstrip('.') + 'x HP & RCV for '
-                    if c['for_attr'] == [0, 1, 2, 3, 4]:
-                        c['skill_text'] += 'all Att.'
+                        for i in for_attr[:-1]:
+                            skill_text += ATTRIBUTES[i] + ', '
+                        skill_text += ATTRIBUTES[int(for_attr[-1])] + ' Att.'
+            elif hp_mult != 1 and atk_mult == 1 and rcv_mult != 1:
+                if hp_mult == rcv_mult:
+                    skill_text += fmt_mult(hp_mult) + 'x HP & RCV for '
+                    if for_attr == [0, 1, 2, 3, 4]:
+                        skill_text += 'all Att.'
                     else:
-                        for i in c['for_attr'][:-1]:
-                            c['skill_text'] += ATTRIBUTES[i] + ', '
-                        c['skill_text'] += ATTRIBUTES[int(c['for_attr'][-1])] + ' Att.'
+                        for i in for_attr[:-1]:
+                            skill_text += ATTRIBUTES[i] + ', '
+                        skill_text += ATTRIBUTES[int(for_attr[-1])] + ' Att.'
                 else:
-                    c['skill_text'] += fmt_mult(c['hp_multiplier']) + 'x HP and ' + \
-                        fmt_mult(c['rcv_multiplier']) + 'x RCV for '
-                    if c['for_attr'] == [0, 1, 2, 3, 4]:
-                        c['skill_text'] += 'all Att.'
+                    skill_text += fmt_mult(hp_mult) + 'x HP and ' + \
+                        fmt_mult(rcv_mult) + 'x RCV for '
+                    if for_attr == [0, 1, 2, 3, 4]:
+                        skill_text += 'all Att.'
                     else:
-                        for i in c['for_attr'][:-1]:
-                            c['skill_text'] += ATTRIBUTES[i] + ', '
-                        c['skill_text'] += ATTRIBUTES[int(c['for_attr'][-1])] + ' Att.'
-            elif c['hp_multiplier'] != 1 and c['atk_multiplier'] != 1 and c['rcv_multiplier'] == 1:
-                if c['atk_multiplier'] == c['hp_multiplier']:
-                    c['skill_text'] += str(c['hp_multiplier']
-                                           ).rstrip('0').rstrip('.') + 'x HP & ATK for '
-                    if c['for_attr'] == [0, 1, 2, 3, 4]:
-                        c['skill_text'] += 'all Att.'
+                        for i in for_attr[:-1]:
+                            skill_text += ATTRIBUTES[i] + ', '
+                        skill_text += ATTRIBUTES[int(for_attr[-1])] + ' Att.'
+            elif hp_mult != 1 and atk_mult != 1 and rcv_mult == 1:
+                if atk_mult == hp_mult:
+                    skill_text += fmt_mult(hp_mult) + 'x HP & ATK for '
+                    if for_attr == [0, 1, 2, 3, 4]:
+                        skill_text += 'all Att.'
                     else:
-                        for i in c['for_attr'][:-1]:
-                            c['skill_text'] += ATTRIBUTES[i] + ', '
-                        c['skill_text'] += ATTRIBUTES[int(c['for_attr'][-1])] + ' Att.'
+                        for i in for_attr[:-1]:
+                            skill_text += ATTRIBUTES[i] + ', '
+                        skill_text += ATTRIBUTES[int(for_attr[-1])] + ' Att.'
                 else:
-                    c['skill_text'] += fmt_mult(c['hp_multiplier']) + 'x HP and ' + \
-                        fmt_mult(c['atk_multiplier']) + 'x ATK for '
-                    if c['for_attr'] == [0, 1, 2, 3, 4]:
-                        c['skill_text'] += 'all Att.'
+                    skill_text += fmt_mult(hp_mult) + 'x HP and ' + \
+                        fmt_mult(atk_mult) + 'x ATK for '
+                    if for_attr == [0, 1, 2, 3, 4]:
+                        skill_text += 'all Att.'
                     else:
-                        for i in c['for_attr'][:-1]:
-                            c['skill_text'] += ATTRIBUTES[i] + ', '
-                        c['skill_text'] += ATTRIBUTES[int(c['for_attr'][-1])] + ' Att.'
-            elif c['hp_multiplier'] == 1 and c['atk_multiplier'] == 1 and c['rcv_multiplier'] != 1:
-                c['skill_text'] += fmt_mult(c['rcv_multiplier']) + 'x RCV for '
-                if c['for_attr'] == [0, 1, 2, 3, 4]:
-                    c['skill_text'] += 'all Att.'
+                        for i in for_attr[:-1]:
+                            skill_text += ATTRIBUTES[i] + ', '
+                        skill_text += ATTRIBUTES[int(for_attr[-1])] + ' Att.'
+            elif hp_mult == 1 and atk_mult == 1 and rcv_mult != 1:
+                skill_text += fmt_mult(rcv_mult) + 'x RCV for '
+                if for_attr == [0, 1, 2, 3, 4]:
+                    skill_text += 'all Att.'
                 else:
-                    for i in c['for_attr'][:-1]:
-                        c['skill_text'] += ATTRIBUTES[i] + ', '
-                    c['skill_text'] += ATTRIBUTES[int(c['for_attr'][-1])] + ' Att.'
-            elif c['hp_multiplier'] == 1 and c['atk_multiplier'] != 1 and c['rcv_multiplier'] == 1:
-                c['skill_text'] += fmt_mult(c['atk_multiplier']) + 'x ATK for '
-                if c['for_attr'] == [0, 1, 2, 3, 4]:
-                    c['skill_text'] += 'all Att.'
+                    for i in for_attr[:-1]:
+                        skill_text += ATTRIBUTES[i] + ', '
+                    skill_text += ATTRIBUTES[int(for_attr[-1])] + ' Att.'
+            elif hp_mult == 1 and atk_mult != 1 and rcv_mult == 1:
+                skill_text += fmt_mult(atk_mult) + 'x ATK for '
+                if for_attr == [0, 1, 2, 3, 4]:
+                    skill_text += 'all Att.'
                 else:
-                    for i in c['for_attr'][:-1]:
-                        c['skill_text'] += ATTRIBUTES[i] + ', '
-                    c['skill_text'] += ATTRIBUTES[int(c['for_attr'][-1])] + ' Att.'
-            elif c['hp_multiplier'] != 1 and c['atk_multiplier'] == 1 and c['rcv_multiplier'] == 1:
-                c['skill_text'] += fmt_mult(c['hp_multiplier']) + 'x HP for '
-                if c['for_attr'] == [0, 1, 2, 3, 4]:
-                    c['skill_text'] += 'all Att.'
+                    for i in for_attr[:-1]:
+                        skill_text += ATTRIBUTES[i] + ', '
+                    skill_text += ATTRIBUTES[int(for_attr[-1])] + ' Att.'
+            elif hp_mult != 1 and atk_mult == 1 and rcv_mult == 1:
+                skill_text += fmt_mult(hp_mult) + 'x HP for '
+                if for_attr == [0, 1, 2, 3, 4]:
+                    skill_text += 'all Att.'
                 else:
-                    for i in c['for_attr'][:-1]:
-                        c['skill_text'] += ATTRIBUTES[i] + ', '
-                    c['skill_text'] += ATTRIBUTES[int(c['for_attr'][-1])] + ' Att.'
+                    for i in for_attr[:-1]:
+                        skill_text += ATTRIBUTES[i] + ', '
+                    skill_text += ATTRIBUTES[int(for_attr[-1])] + ' Att.'
         else:
-            if c['hp_multiplier'] != 1 and c['hp_multiplier'] == c['atk_multiplier'] == c['rcv_multiplier']:
-                c['skill_text'] += str(c['hp_multiplier']
-                                       ).rstrip('0').rstrip('.') + 'x all stats for '
-                for i in c['for_type'][:-1]:
-                    c['skill_text'] += TYPES[i] + ', '
-                c['skill_text'] += TYPES[int(c['for_type'][-1])] + ' type'
-            elif c['hp_multiplier'] == 1 and c['atk_multiplier'] != 1 and c['rcv_multiplier'] != 1:
-                if c['atk_multiplier'] == c['rcv_multiplier']:
-                    c['skill_text'] += str(c['atk_multiplier']
-                                           ).rstrip('0').rstrip('.') + 'x ATK & RCV for '
-                    for i in c['for_type'][:-1]:
-                        c['skill_text'] += TYPES[i] + ', '
-                    c['skill_text'] += TYPES[int(c['for_type'][-1])] + ' type'
+            if hp_mult != 1 and hp_mult == atk_mult == rcv_mult:
+                skill_text += str(hp_mult
+                                  ).rstrip('0').rstrip('.') + 'x all stats for '
+                for i in for_type[:-1]:
+                    skill_text += TYPES[i] + ', '
+                skill_text += TYPES[int(for_type[-1])] + ' type'
+            elif hp_mult == 1 and atk_mult != 1 and rcv_mult != 1:
+                if atk_mult == rcv_mult:
+                    skill_text += fmt_mult(atk_mult) + 'x ATK & RCV for '
+                    for i in for_type[:-1]:
+                        skill_text += TYPES[i] + ', '
+                    skill_text += TYPES[int(for_type[-1])] + ' type'
                 else:
-                    c['skill_text'] += fmt_mult(c['atk_multiplier']) + \
-                        'x ATK and ' + str(c['rcv_multiplier']
-                                           ).rstrip('0').rstrip('.') + 'x RCV for '
-                    for i in c['for_type'][:-1]:
-                        c['skill_text'] += TYPES[i] + ', '
-                    c['skill_text'] += TYPES[int(c['for_type'][-1])] + ' type'
-            elif c['hp_multiplier'] != 1 and c['atk_multiplier'] == 1 and c['rcv_multiplier'] != 1:
-                if c['hp_multiplier'] == c['rcv_multiplier']:
-                    c['skill_text'] += str(c['hp_multiplier']
-                                           ).rstrip('0').rstrip('.') + 'x HP & RCV for '
-                    for i in c['for_type'][:-1]:
-                        c['skill_text'] += TYPES[i] + ', '
-                    c['skill_text'] += TYPES[int(c['for_type'][-1])] + ' type'
+                    skill_text += fmt_mult(atk_mult) + \
+                        'x ATK and ' + fmt_mult(rcv_mult) + 'x RCV for '
+                    for i in for_type[:-1]:
+                        skill_text += TYPES[i] + ', '
+                    skill_text += TYPES[int(for_type[-1])] + ' type'
+            elif hp_mult != 1 and atk_mult == 1 and rcv_mult != 1:
+                if hp_mult == rcv_mult:
+                    skill_text += fmt_mult(hp_mult) + 'x HP & RCV for '
+                    for i in for_type[:-1]:
+                        skill_text += TYPES[i] + ', '
+                    skill_text += TYPES[int(for_type[-1])] + ' type'
                 else:
-                    c['skill_text'] += fmt_mult(c['hp_multiplier']) + 'x HP and ' + \
-                        fmt_mult(c['rcv_multiplier']) + 'x RCV for '
-                    for i in c['for_type'][:-1]:
-                        c['skill_text'] += TYPES[i] + ', '
-                    c['skill_text'] += TYPES[int(c['for_type'][-1])] + ' type'
-            elif c['hp_multiplier'] != 1 and c['atk_multiplier'] != 1 and c['rcv_multiplier'] == 1:
-                if c['atk_multiplier'] == c['hp_multiplier']:
-                    c['skill_text'] += str(c['hp_multiplier']
-                                           ).rstrip('0').rstrip('.') + 'x HP & ATK for '
-                    for i in c['for_type'][:-1]:
-                        c['skill_text'] += TYPES[i] + ', '
-                    c['skill_text'] += TYPES[int(c['for_type'][-1])] + ' type'
+                    skill_text += fmt_mult(hp_mult) + 'x HP and ' + \
+                        fmt_mult(rcv_mult) + 'x RCV for '
+                    for i in for_type[:-1]:
+                        skill_text += TYPES[i] + ', '
+                    skill_text += TYPES[int(for_type[-1])] + ' type'
+            elif hp_mult != 1 and atk_mult != 1 and rcv_mult == 1:
+                if atk_mult == hp_mult:
+                    skill_text += fmt_mult(hp_mult) + 'x HP & ATK for '
+                    for i in for_type[:-1]:
+                        skill_text += TYPES[i] + ', '
+                    skill_text += TYPES[int(for_type[-1])] + ' type'
                 else:
-                    c['skill_text'] += fmt_mult(c['hp_multiplier']) + 'x HP and ' + \
-                        fmt_mult(c['atk_multiplier']) + 'x ATK for '
-                    for i in c['for_type'][:-1]:
-                        c['skill_text'] += TYPES[i] + ', '
-                    c['skill_text'] += TYPES[int(c['for_type'][-1])] + ' type'
-            elif c['hp_multiplier'] == 1 and c['atk_multiplier'] == 1 and c['rcv_multiplier'] != 1:
-                c['skill_text'] += fmt_mult(c['rcv_multiplier']) + 'x RCV for '
-                for i in c['for_type'][:-1]:
-                    c['skill_text'] += TYPES[i] + ', '
-                c['skill_text'] += TYPES[int(c['for_type'][-1])] + ' type'
-            elif c['hp_multiplier'] == 1 and c['atk_multiplier'] != 1 and c['rcv_multiplier'] == 1:
-                c['skill_text'] += fmt_mult(c['atk_multiplier']) + 'x ATK for '
-                for i in c['for_type'][:-1]:
-                    c['skill_text'] += TYPES[i] + ', '
-                c['skill_text'] += TYPES[int(c['for_type'][-1])] + ' type'
-            elif c['hp_multiplier'] != 1 and c['atk_multiplier'] == 1 and c['rcv_multiplier'] == 1:
-                c['skill_text'] += fmt_mult(c['hp_multiplier']) + 'x HP for '
-                for i in c['for_type'][:-1]:
-                    c['skill_text'] += TYPES[i] + ', '
-                c['skill_text'] += TYPES[int(c['for_type'][-1])] + ' type'
-        if c['time'] != 0 and c['skill_text'] != '':
-            c['skill_text'] += '; Increase orb movement time by ' + \
-                fmt_mult(c['time']) + ' seconds'
-        elif c['skill_text'] == '':
-            c['skill_text'] += 'Increase orb movement time by ' + \
-                fmt_mult(c['time']) + ' seconds'
+                    skill_text += fmt_mult(hp_mult) + 'x HP and ' + \
+                        fmt_mult(atk_mult) + 'x ATK for '
+                    for i in for_type[:-1]:
+                        skill_text += TYPES[i] + ', '
+                    skill_text += TYPES[int(for_type[-1])] + ' type'
+            elif hp_mult == 1 and atk_mult == 1 and rcv_mult != 1:
+                skill_text += fmt_mult(rcv_mult) + 'x RCV for '
+                for i in for_type[:-1]:
+                    skill_text += TYPES[i] + ', '
+                skill_text += TYPES[int(for_type[-1])] + ' type'
+            elif hp_mult == 1 and atk_mult != 1 and rcv_mult == 1:
+                skill_text += fmt_mult(atk_mult) + 'x ATK for '
+                for i in for_type[:-1]:
+                    skill_text += TYPES[i] + ', '
+                skill_text += TYPES[int(for_type[-1])] + ' type'
+            elif hp_mult != 1 and atk_mult == 1 and rcv_mult == 1:
+                skill_text += fmt_mult(hp_mult) + 'x HP for '
+                for i in for_type[:-1]:
+                    skill_text += TYPES[i] + ', '
+                skill_text += TYPES[int(for_type[-1])] + ' type'
+
+        time = c['time']
+        if time != 0 and skill_text != '':
+            skill_text += '; Increase orb movement time by ' + \
+                fmt_mult(time) + ' seconds'
+        elif skill_text == '':
+            skill_text += 'Increase orb movement time by ' + \
+                fmt_mult(time) + ' seconds'
+
+        c['skill_text'] = skill_text
         return 'bonus_move_time', c
     return f
 
@@ -1122,70 +963,75 @@ def skill_used_convert(arguments):
     def f(x):
         _, c = convert('skill_used_stats', {
                        k: (arguments[k] if k in arguments else v) for k, v in skill_used_backups.items()})(x)
-        if c['for_attr'] != []:
-            if c['for_attr'] == [0, 1, 2, 3, 4]:
-                if c['rcv_multiplier'] != 1 and c['rcv_multiplier'] == c['atk_multiplier']:
-                    c['skill_text'] += fmt_mult(c['atk_multiplier']) + \
+        skill_text = c['skill_text']
+        for_attr = c['for_attr']
+        rcv_mult = c['rcv_multiplier']
+        atk_mult = c['atk_multiplier']
+        for_type = c['for_type']
+        if for_attr != []:
+            if for_attr == [0, 1, 2, 3, 4]:
+                if rcv_mult != 1 and rcv_mult == atk_mult:
+                    skill_text += fmt_mult(atk_mult) + \
                         'x ATK & RCV on the turn a skill is used'
-                elif c['rcv_multiplier'] != 1 and c['rcv_multiplier'] != c['atk_multiplier'] and c['atk_multiplier'] != 1:
-                    c['skill_text'] += fmt_mult(c['atk_multiplier']) + 'x ATK and ' + str(
-                        c['rcv_multiplier']).rstrip('0').rstrip('.') + 'x RCV on the turn a skill is used'
-                elif c['rcv_multiplier'] == 1 and c['rcv_multiplier'] != c['atk_multiplier']:
-                    c['skill_text'] += fmt_mult(c['atk_multiplier']) + \
+                elif rcv_mult != 1 and rcv_mult != atk_mult and atk_mult != 1:
+                    skill_text += fmt_mult(atk_mult) + 'x ATK and ' + str(
+                        rcv_mult).rstrip('0').rstrip('.') + 'x RCV on the turn a skill is used'
+                elif rcv_mult == 1 and rcv_mult != atk_mult:
+                    skill_text += fmt_mult(atk_mult) + \
                         'x ATK on the turn a skill is used'
-                elif c['atk_multiplier'] == 1 and c['rcv_multiplier'] != c['atk_multiplier']:
-                    c['skill_text'] += fmt_mult(c['rcv_multiplier']) + \
+                elif atk_mult == 1 and rcv_mult != atk_mult:
+                    skill_text += fmt_mult(rcv_mult) + \
                         'x RCV on the turn a skill is used'
             else:
-                if c['rcv_multiplier'] != 1 and c['rcv_multiplier'] == c['atk_multiplier']:
-                    c['skill_text'] += str(c['atk_multiplier']
-                                           ).rstrip('0').rstrip('.') + 'x ATK & RCV for '
-                    for i in c['for_attr'][:-1]:
-                        c['skill_text'] += ATTRIBUTES[i] + ', '
-                    c['skill_text'] += ATTRIBUTES[int(c['for_attr'][-1])] + \
+                if rcv_mult != 1 and rcv_mult == atk_mult:
+                    skill_text += str(atk_mult
+                                      ).rstrip('0').rstrip('.') + 'x ATK & RCV for '
+                    for i in for_attr[:-1]:
+                        skill_text += ATTRIBUTES[i] + ', '
+                    skill_text += ATTRIBUTES[int(for_attr[-1])] + \
                         ' Att. on the turn a skill is used'
-                elif c['rcv_multiplier'] != 1 and c['rcv_multiplier'] != c['atk_multiplier']:
-                    c['skill_text'] += fmt_mult(c['atk_multiplier']) + \
-                        'x ATK and ' + str(c['rcv_multiplier']
+                elif rcv_mult != 1 and rcv_mult != atk_mult:
+                    skill_text += fmt_mult(atk_mult) + \
+                        'x ATK and ' + str(rcv_mult
                                            ).rstrip('0').rstrip('.') + 'x RCV for '
-                    for i in c['for_attr'][:-1]:
-                        c['skill_text'] += ATTRIBUTES[i] + ', '
-                    c['skill_text'] += ATTRIBUTES[int(c['for_attr'][-1])] + \
+                    for i in for_attr[:-1]:
+                        skill_text += ATTRIBUTES[i] + ', '
+                    skill_text += ATTRIBUTES[int(for_attr[-1])] + \
                         ' Att. on the turn a skill is used'
-                elif c['rcv_multiplier'] == 1 and c['rcv_multiplier'] != c['atk_multiplier']:
-                    c['skill_text'] += str(c['atk_multiplier']
-                                           ).rstrip('0').rstrip('.') + 'x ATK for '
-                    for i in c['for_attr'][:-1]:
-                        c['skill_text'] += ATTRIBUTES[i] + ', '
-                    c['skill_text'] += ATTRIBUTES[int(c['for_attr'][-1])] + \
+                elif rcv_mult == 1 and rcv_mult != atk_mult:
+                    skill_text += str(atk_mult
+                                      ).rstrip('0').rstrip('.') + 'x ATK for '
+                    for i in for_attr[:-1]:
+                        skill_text += ATTRIBUTES[i] + ', '
+                    skill_text += ATTRIBUTES[int(for_attr[-1])] + \
                         ' Att. on the turn a skill is used'
-        elif c['for_type'] != []:
-            if c['rcv_multiplier'] != 1 and c['rcv_multiplier'] == c['atk_multiplier']:
-                c['skill_text'] += str(c['atk_multiplier']
-                                       ).rstrip('0').rstrip('.') + 'x ATK & RCV for '
-                for i in c['for_type'][:-1]:
-                    c['skill_text'] += TYPES[i] + ', '
-                c['skill_text'] += TYPES[int(c['for_type'][-1])] + \
+        elif for_type != []:
+            if rcv_mult != 1 and rcv_mult == atk_mult:
+                skill_text += fmt_mult(atk_mult) + 'x ATK & RCV for '
+                for i in for_type[:-1]:
+                    skill_text += TYPES[i] + ', '
+                skill_text += TYPES[int(for_type[-1])] + \
                     ' type on the turn a skill is used'
-            elif c['rcv_multiplier'] != 1 and c['rcv_multiplier'] != c['atk_multiplier']:
-                c['skill_text'] += fmt_mult(c['atk_multiplier']) + \
-                    'x ATK and ' + fmt_mult(c['rcv_multiplier']) + 'x RCV for '
-                for i in c['for_type'][:-1]:
-                    c['skill_text'] += TYPES[i] + ', '
-                c['skill_text'] += TYPES[int(c['for_type'][-1])] + \
+            elif rcv_mult != 1 and rcv_mult != atk_mult:
+                skill_text += fmt_mult(atk_mult) + \
+                    'x ATK and ' + fmt_mult(rcv_mult) + 'x RCV for '
+                for i in for_type[:-1]:
+                    skill_text += TYPES[i] + ', '
+                skill_text += TYPES[int(for_type[-1])] + \
                     ' type on the turn a skill is used'
-            elif c['rcv_multiplier'] == 1 and c['rcv_multiplier'] != c['atk_multiplier']:
-                c['skill_text'] += fmt_mult(c['atk_multiplier']) + 'x ATK for '
-                for i in c['for_type'][:-1]:
-                    c['skill_text'] += TYPES[i] + ', '
-                c['skill_text'] += TYPES[int(c['for_type'][-1])] + \
+            elif rcv_mult == 1 and rcv_mult != atk_mult:
+                skill_text += fmt_mult(atk_mult) + 'x ATK for '
+                for i in for_type[:-1]:
+                    skill_text += TYPES[i] + ', '
+                skill_text += TYPES[int(for_type[-1])] + \
                     ' type on the turn a skill is used'
-            elif c['atk_multiplier'] == 1 and c['rcv_multiplier'] != c['atk_multiplier']:
-                c['skill_text'] += fmt_mult(c['rcv_multiplier']) + 'x RCV for '
-                for i in c['for_type'][:-1]:
-                    c['skill_text'] += TYPES[i] + ', '
-                c['skill_text'] += TYPES[int(c['for_type'][-1])] + \
+            elif atk_mult == 1 and rcv_mult != atk_mult:
+                skill_text += fmt_mult(rcv_mult) + 'x RCV for '
+                for i in for_type[:-1]:
+                    skill_text += TYPES[i] + ', '
+                skill_text += TYPES[int(for_type[-1])] + \
                     ' type on the turn a skill is used'
+        c['skill_text'] = skill_text
         return 'skill_used_stats', c
     return f
 
@@ -1228,49 +1074,54 @@ def team_build_bonus_convert(arguments):
     def f(x):
         _, c = convert('team_build_bonus', {
                        k: (arguments[k] if k in arguments else v) for k, v in team_build_bonus_backups.items()})(x)
-        if c['hp_multiplier'] != 1 and c['atk_multiplier'] != 1 and c['rcv_multiplier'] != 1:
-            if c['hp_multiplier'] == c['atk_multiplier'] == c['rcv_multiplier']:
-                c['skill_text'] += fmt_mult(c['hp_multiplier']) + \
-                    'x all stats if ' + str(c['monster_ids']) + ' is on the team'
-            elif c['hp_multiplier'] == c['atk_multiplier']:
-                c['skill_text'] += fmt_mult(c['hp_multiplier']) + 'x HP & ATK and ' + str(
-                    c['rcv_multiplier']).rstrip('0').rstrip('.') + 'x RCV if ' + str(c['monster_ids']) + ' is on the team'
-            elif c['hp_multiplier'] == c['rcv_multiplier']:
-                c['skill_text'] += fmt_mult(c['hp_multiplier']) + 'x HP & RCV and ' + str(
-                    c['atk_multiplier']).rstrip('0').rstrip('.') + 'x ATK if ' + str(c['monster_ids']) + ' is on the team'
-            elif c['atk_multiplier'] == c['rcv_multiplier']:
-                c['skill_text'] += fmt_mult(c['atk_multiplier']) + 'x ATK & RCV and ' + str(
-                    c['hp_multiplier']).rstrip('0').rstrip('.') + 'x HP if ' + str(c['monster_ids']) + ' is on the team'
-        elif c['hp_multiplier'] == 1 and c['atk_multiplier'] != 1 and c['rcv_multiplier'] != 1:
-            if c['atk_multiplier'] == c['rcv_multiplier']:
-                c['skill_text'] += fmt_mult(c['atk_multiplier']) + \
-                    'x ATK & RCV if ' + str(c['monster_ids']) + ' is on the team'
+        hp_multiplier = c['hp_multiplier']
+        atk_multiplier = c['atk_multiplier']
+        rcv_multiplier = c['rcv_multiplier']
+        monster_ids = str(c['monster_ids'])
+
+        if hp_multiplier != 1 and atk_multiplier != 1 and rcv_multiplier != 1:
+            if hp_multiplier == atk_multiplier == rcv_multiplier:
+                c['skill_text'] += fmt_mult(hp_multiplier) + \
+                    'x all stats if ' + monster_ids + ' is on the team'
+            elif hp_multiplier == atk_multiplier:
+                c['skill_text'] += fmt_mult(hp_multiplier) + 'x HP & ATK and ' + fmt_mult(
+                    rcv_multiplier) + 'x RCV if ' + monster_ids + ' is on the team'
+            elif hp_multiplier == rcv_multiplier:
+                c['skill_text'] += fmt_mult(hp_multiplier) + 'x HP & RCV and ' + fmt_mult(
+                    atk_multiplier) + 'x ATK if ' + monster_ids + ' is on the team'
+            elif atk_multiplier == rcv_multiplier:
+                c['skill_text'] += fmt_mult(atk_multiplier) + 'x ATK & RCV and ' + fmt_mult(
+                    hp_multiplier) + 'x HP if ' + monster_ids + ' is on the team'
+        elif hp_multiplier == 1 and atk_multiplier != 1 and rcv_multiplier != 1:
+            if atk_multiplier == rcv_multiplier:
+                c['skill_text'] += fmt_mult(atk_multiplier) + \
+                    'x ATK & RCV if ' + monster_ids + ' is on the team'
             else:
-                c['skill_text'] += fmt_mult(c['atk_multiplier']) + 'x ATK and ' + str(
-                    c['rcv_multiplier']).rstrip('0').rstrip('.') + 'x RCV if ' + str(c['monster_ids']) + ' is on the team'
-        elif c['hp_multiplier'] != 1 and c['atk_multiplier'] == 1 and c['rcv_multiplier'] != 1:
-            if c['hp_multiplier'] == c['rcv_multiplier']:
-                c['skill_text'] += fmt_mult(c['hp_multiplier']) + \
-                    'x HP & RCV if ' + str(c['monster_ids']) + ' is on the team'
+                c['skill_text'] += fmt_mult(atk_multiplier) + 'x ATK and ' + fmt_mult(
+                    rcv_multiplier) + 'x RCV if ' + monster_ids + ' is on the team'
+        elif hp_multiplier != 1 and atk_multiplier == 1 and rcv_multiplier != 1:
+            if hp_multiplier == rcv_multiplier:
+                c['skill_text'] += fmt_mult(hp_multiplier) + \
+                    'x HP & RCV if ' + monster_ids + ' is on the team'
             else:
-                c['skill_text'] += fmt_mult(c['hp_multiplier']) + 'x HP and ' + str(
-                    c['rcv_multiplier']).rstrip('0').rstrip('.') + 'x RCV if ' + str(c['monster_ids']) + ' is on the team'
-        elif c['hp_multiplier'] != 1 and c['atk_multiplier'] != 1 and c['rcv_multiplier'] == 1:
-            if c['atk_multiplier'] == c['hp_multiplier']:
-                c['skill_text'] += fmt_mult(c['hp_multiplier']) + \
-                    'x HP & ATK if ' + str(c['monster_ids']) + ' is on the team'
+                c['skill_text'] += fmt_mult(hp_multiplier) + 'x HP and ' + str(
+                    rcv_multiplier).rstrip('0').rstrip('.') + 'x RCV if ' + monster_ids + ' is on the team'
+        elif hp_multiplier != 1 and atk_multiplier != 1 and rcv_multiplier == 1:
+            if atk_multiplier == hp_multiplier:
+                c['skill_text'] += fmt_mult(hp_multiplier) + \
+                    'x HP & ATK if ' + monster_ids + ' is on the team'
             else:
-                c['skill_text'] += fmt_mult(c['hp_multiplier']) + 'x HP and ' + str(
-                    c['atk_multiplier']).rstrip('0').rstrip('.') + 'x ATK if ' + str(c['monster_ids']) + ' is on the team'
-        elif c['hp_multiplier'] == 1 and c['atk_multiplier'] == 1 and c['rcv_multiplier'] != 1:
-            c['skill_text'] += fmt_mult(c['rcv_multiplier']) + \
-                'x RCV if ' + str(c['monster_ids']) + ' is on the team'
-        elif c['hp_multiplier'] == 1 and c['atk_multiplier'] != 1 and c['rcv_multiplier'] == 1:
-            c['skill_text'] += fmt_mult(c['atk_multiplier']) + \
-                'x ATK if ' + str(c['monster_ids']) + ' is on the team'
-        elif c['hp_multiplier'] != 1 and c['atk_multiplier'] == 1 and c['rcv_multiplier'] == 1:
-            c['skill_text'] += fmt_mult(c['hp_multiplier']) + \
-                'x HP if ' + str(c['monster_ids']) + ' is on the team'
+                c['skill_text'] += fmt_mult(hp_multiplier) + 'x HP and ' + str(
+                    atk_multiplier).rstrip('0').rstrip('.') + 'x ATK if ' + monster_ids + ' is on the team'
+        elif hp_multiplier == 1 and atk_multiplier == 1 and rcv_multiplier != 1:
+            c['skill_text'] += fmt_mult(rcv_multiplier) + \
+                'x RCV if ' + monster_ids + ' is on the team'
+        elif hp_multiplier == 1 and atk_multiplier != 1 and rcv_multiplier == 1:
+            c['skill_text'] += fmt_mult(atk_multiplier) + \
+                'x ATK if ' + monster_ids + ' is on the team'
+        elif hp_multiplier != 1 and atk_multiplier == 1 and rcv_multiplier == 1:
+            c['skill_text'] += fmt_mult(hp_multiplier) + \
+                'x HP if ' + monster_ids + ' is on the team'
         return 'team_build_bonus', c
     return f
 
@@ -1355,6 +1206,7 @@ def heart_cross_convert(arguments):
         elif atk_mult == 1 and rcv_mult == 1 and damage_reduct != 0:
             skill_text += 'Reduce damage taken by ' + damage_reduct_str + \
                 '% ' + cross_cond_str
+        c['skill_text'] = skill_text
         return 'heart_cross', c
     return f
 
@@ -1362,7 +1214,7 @@ def heart_cross_convert(arguments):
 SKILL_TRANSFORM = {
     0: lambda x:
     convert('null_skill', {})(x)
-    if defaultlist(int, x)[1] == 0 else
+    if make_defaultlist(int, x)[1] == 0 else
     convert('attack_attr_x_atk', {'attribute': (0, cc),
                                   'multiplier': (1, multi), 'mass_attack': True})(x),
     1: convert('attack_attr_damage', {'attribute': (0, cc), 'damage': (1, cc), 'mass_attack': True}),
@@ -1384,7 +1236,7 @@ SKILL_TRANSFORM = {
     42: convert('element_attack_attr_damage', {'enemy_attribute': (0, cc), 'attack_attribute': (1, cc), 'damage': (2, cc)}),
     50: lambda x:
     convert('rcv_boost', {'duration': (0, cc), 'multiplier': (2, multi)})(x)
-    if defaultlist(int, x)[1] == 5 else
+    if make_defaultlist(int, x)[1] == 5 else
     convert('attribute_attack_boost', {'duration': (0, cc),
                                        'attributes': (1, listify), 'multiplier': (2, multi)})(x),
     51: convert('force_mass_attack', {'duration': (0, cc)}),
@@ -1425,11 +1277,11 @@ SKILL_TRANSFORM = {
     156: lambda x:
     convert('awakening_heal', {'duration': (0, cc), 'awakenings': (
         slice(1, 4), list_con), 'amount_per': (5, cc)})(x)
-    if defaultlist(int, x)[4] == 1 else
+    if make_defaultlist(int, x)[4] == 1 else
     (convert('awakening_attack_boost', {'duration': (0, cc), 'awakenings': (slice(1, 4), list_con), 'amount_per': (5, lambda x: (x - 100) / 100)})(x)
-        if defaultlist(int, x)[4] == 2 else
+        if make_defaultlist(int, x)[4] == 2 else
      (convert('awakening_shield', {'duration': (0, cc), 'awakenings': (slice(1, 4), list_con), 'amount_per': (5, multi)})(x)
-      if defaultlist(int, x)[4] == 3 else
+      if make_defaultlist(int, x)[4] == 3 else
       (156, x))),
     160: convert('extra_combo', {'duration': (0, cc), 'combos': (1, cc)}),
     161: convert('true_gravity', {'percentage_max_hp': (0, multi)}),
@@ -1546,83 +1398,82 @@ SKILL_TRANSFORM = {
     186: convert('large_board', {'for_attr': (0, binary_con), 'for_type': (1, binary_con), 'hp_multiplier': (2, multi2), 'atk_multiplier': (3, multi2), 'rcv_multiplier': (4, multi2)}), }
 
 
-def reformat(d: {str: (str, str)}, pretty=False):
-    if 'skill' in d:
-        print('-- Parsing skills --\n')
-        skill_data = json.load(open(d['skill'][0]))
-        print('Raw skills json loaded\n')
-        reformatted = {}
-        reformatted['res'] = skill_data['res']
-        reformatted['version'] = skill_data['v']
-        reformatted['ckey'] = skill_data['ckey']
-        reformatted['active_skills'] = {}
-        reformatted['leader_skills'] = {}
+def reformat(in_file_name, out_file_name):
+    print('-- Parsing skills --\n')
+    with open(in_file_name) as f:
+        skill_data = json.load(f)
+    print('Raw skills json loaded\n')
+    reformatted = {}
+    reformatted['res'] = skill_data['res']
+    reformatted['version'] = skill_data['v']
+    reformatted['ckey'] = skill_data['ckey']
+    reformatted['active_skills'] = {}
+    reformatted['leader_skills'] = {}
 
-        print(f'Starting skill conversion of {len(skill_data["skill"])} skills')
-        for i, c in enumerate(skill_data['skill']):
-            if c[3] == 0 and c[4] == 0:  # this distinguishes leader skills from active skills
-                reformatted['leader_skills'][i] = {}
-                reformatted['leader_skills'][i]['id'] = i
-                reformatted['leader_skills'][i]['name'] = c[0]
-                reformatted['leader_skills'][i]['card_description'] = c[1]
-                if c[2] in SKILL_TRANSFORM:
-                    reformatted['leader_skills'][i]['type'], reformatted['leader_skills'][i]['args'] = SKILL_TRANSFORM[c[2]](
-                        c[6:])
-                    if type(reformatted['leader_skills'][i]['args']) == list:
-                        print(f'Unhandled leader skill type: {c[2]} (skill id: {i})')
-                        del reformatted['leader_skills'][i]
-                else:
-                    print(f'Unexpected leader skill type: {c[2]} (skill id: {i})')
+    print(f'Starting skill conversion of {len(skill_data["skill"])} skills')
+    for i, c in enumerate(skill_data['skill']):
+        if c[3] == 0 and c[4] == 0:  # this distinguishes leader skills from active skills
+            reformatted['leader_skills'][i] = {}
+            reformatted['leader_skills'][i]['id'] = i
+            reformatted['leader_skills'][i]['name'] = c[0]
+            reformatted['leader_skills'][i]['card_description'] = c[1]
+            if c[2] in SKILL_TRANSFORM:
+                reformatted['leader_skills'][i]['type'], reformatted['leader_skills'][i]['args'] = SKILL_TRANSFORM[c[2]](
+                    c[6:])
+                if type(reformatted['leader_skills'][i]['args']) == list:
+                    print(f'Unhandled leader skill type: {c[2]} (skill id: {i})')
                     del reformatted['leader_skills'][i]
-                    #reformatted['leader_skills'][i]['type'] = f'_{c[2]}'
-                    #reformatted['leader_skills'][i]['args'] = {f'_{i}':v for i,v in enumerate(c[6:])}
             else:
-                reformatted['active_skills'][i] = {}
-                reformatted['active_skills'][i]['id'] = i
-                reformatted['active_skills'][i]['name'] = c[0]
-                reformatted['active_skills'][i]['card_description'] = c[1]
-                reformatted['active_skills'][i]['max_skill'] = c[3]
-                reformatted['active_skills'][i]['base_cooldown'] = c[4]
-                if c[2] in SKILL_TRANSFORM:
-                    reformatted['active_skills'][i]['type'], reformatted['active_skills'][i]['args'] = SKILL_TRANSFORM[c[2]](
-                        c[6:])
-                    if type(reformatted['active_skills'][i]['args']) != dict:
-                        print(f'Unhandled active skill type: {c[2]} (skill id: {i})')
-                        del reformatted['active_skills'][i]
-                else:
-                    print(f'Unexpected active skill type: {c[2]} (skill id: {i})')
+                print(f'Unexpected leader skill type: {c[2]} (skill id: {i})')
+                del reformatted['leader_skills'][i]
+                #reformatted['leader_skills'][i]['type'] = f'_{c[2]}'
+                #reformatted['leader_skills'][i]['args'] = {f'_{i}':v for i,v in enumerate(c[6:])}
+        else:
+            reformatted['active_skills'][i] = {}
+            reformatted['active_skills'][i]['id'] = i
+            reformatted['active_skills'][i]['name'] = c[0]
+            reformatted['active_skills'][i]['card_description'] = c[1]
+            reformatted['active_skills'][i]['max_skill'] = c[3]
+            reformatted['active_skills'][i]['base_cooldown'] = c[4]
+            if c[2] in SKILL_TRANSFORM:
+                reformatted['active_skills'][i]['type'], reformatted['active_skills'][i]['args'] = SKILL_TRANSFORM[c[2]](
+                    c[6:])
+                if type(reformatted['active_skills'][i]['args']) != dict:
+                    print(f'Unhandled active skill type: {c[2]} (skill id: {i})')
                     del reformatted['active_skills'][i]
-                    #reformatted['active_skills'][i]['type'] = f'_{c[2]}'
-                    #reformatted['active_skills'][i]['args'] = {f'_{i}':v for i,v in enumerate(c[6:])}
+            else:
+                print(f'Unexpected active skill type: {c[2]} (skill id: {i})')
+                del reformatted['active_skills'][i]
+                #reformatted['active_skills'][i]['type'] = f'_{c[2]}'
+                #reformatted['active_skills'][i]['args'] = {f'_{i}':v for i,v in enumerate(c[6:])}
 
-        print(f"Converted {len(reformatted['active_skills'])} active skills and {len(reformatted['leader_skills'])} leader skills ({len(reformatted['active_skills']) + len(reformatted['leader_skills'])} total)\n")
+    print(f"Converted {len(reformatted['active_skills'])} active skills and {len(reformatted['leader_skills'])} leader skills ({len(reformatted['active_skills']) + len(reformatted['leader_skills'])} total)\n")
 
-        def verify(skills):
-            ls_verification = defaultdict(lambda: defaultdict(set))
-            for name, data in skills.items():
-                ls_verification[data['type']]['_arg_names'].add(frozenset(data['args'].keys()))
-                for a_name, a_value in data['args'].items():
-                    ls_verification[data['type']][a_name].add(type(a_value))
-            for name, value in ls_verification.items():
-                for a, p in value.items():
-                    if len(p) != 1:
-                        print(f'INCONSISTENT name:{name} difference in {repr(a)}: {repr(p)}\n')
+    def verify(skills):
+        ls_verification = defaultdict(lambda: defaultdict(set))
+        for name, data in skills.items():
+            ls_verification[data['type']]['_arg_names'].add(frozenset(data['args'].keys()))
+            for a_name, a_value in data['args'].items():
+                ls_verification[data['type']][a_name].add(type(a_value))
+        for name, value in ls_verification.items():
+            for a, p in value.items():
+                if len(p) != 1:
+                    print(f'INCONSISTENT name:{name} difference in {repr(a)}: {repr(p)}\n')
 
-        print('Checking active skill consistency\n-------start-------\n')
-        verify(reformatted['active_skills'])
-        print('--------end--------\n')
+    print('Checking active skill consistency\n-------start-------\n')
+    verify(reformatted['active_skills'])
+    print('--------end--------\n')
 
-        print('Checking leader skill consistency\n-------start-------\n')
-        verify(reformatted['leader_skills'])
-        print('--------end--------\n')
+    print('Checking leader skill consistency\n-------start-------\n')
+    verify(reformatted['leader_skills'])
+    print('--------end--------\n')
 
-        out_file = open(d['skill'][1], 'w')
-        out_file.write(json.dumps(reformatted, indent=4, sort_keys=True)
-                       if pretty else json.dumps(reformatted, sort_keys=True))
-        out_file.close()
-        print(f'Result saved\n')
-        print(f'-- End skills --\n')
+    with open(out_file_name, 'w') as f:
+        json.dump(reformatted, f, sort_keys=True, indent=4)
+    print('Result saved\n')
+    print('-- End skills --\n')
 
 
 if __name__ == '__main__':
+    reformat(sys.argv[1], sys.argv[2])
     pass
