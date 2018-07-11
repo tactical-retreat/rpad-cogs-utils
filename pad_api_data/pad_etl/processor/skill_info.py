@@ -20,6 +20,9 @@ def make_defaultlist(fx, initial=[]):
 def cc(x): return x
 
 
+def ccf(x): return float(x)
+
+
 def multi(x): return x / 100
 
 
@@ -77,6 +80,71 @@ TYPES = {0: 'Evo Material',
          14: 'Enhance Material',
          15: 'Redeemable Material'}
 
+AWAKENING = {
+    0: '',  # No need.
+    1: 'Enhanced HP',
+    2: 'Enhanced Attack',
+    3: 'Enhanced Heal',
+    4: 'Reduce Fire Damage',
+    5: 'Reduce Water Damage',
+    6: 'Reduce Wood Damage',
+    7: 'Reduce Light Damage',
+    8: 'Reduce Dark Damage',
+    9: 'Auto-Recover',
+    10: 'Resistance-Bind',
+    11: 'Resistance-Dark',
+    12: 'Resistance-Jammers',
+    13: 'Resistance-Poison',
+    14: 'Enhanced Fire Orbs',
+    15: 'Enhanced Water Orbs',
+    16: 'Enhanced Wood Orbs',
+    17: 'Enhanced Light Orbs',
+    18: 'Enhanced Dark Orbs',
+    19: 'Extend Time',
+    20: 'Recover Bind',
+    21: 'Skill Boost',
+    22: 'Enhanced Fire Att.',
+    23: 'Enhanced Water Att.',
+    24: 'Enhanced Wood Att.',
+    25: 'Enhanced Light Att.',
+    26: 'Enhanced Dark Att.',
+    27: 'Two-Pronged Attack',
+    28: 'Resistance-Skill Bind',
+    29: 'Enhanced Heal Orbs',
+    30: 'Multi Boost',
+    31: 'Dragon Killer',
+    32: 'God Killer',
+    33: 'Devil Killer',
+    34: 'Machine Killer',
+    35: 'Balanced Killer',
+    36: 'Attacker Killer',
+    37: 'Physical Killer',
+    38: 'Healer Killer',
+    39: 'Evolve Material Killer',
+    40: 'Awaken Material Killer',
+    41: 'Enhance Material Killer',
+    42: 'Vendor Material Killer',
+    43: 'Enhanced Combo',
+    44: 'Guard Break',
+    45: 'Additional Attack',
+    46: 'Enhanced Team HP',
+    47: 'Enhanced Team RCV',
+    48: 'Damage Void Shield Penetration',
+    49: 'Awoken Assist',
+    50: 'Super Additional Attack',
+    51: 'Skill Charge',
+    52: 'Resistance-Bind＋',
+    54: 'Resistance-Cloud',
+    53: 'Extend Time＋',
+    55: 'Resistance-Board Restrict',
+    56: 'Skill Boost＋',
+    57: 'Enhance when HP is above 80%',
+    58: 'Enhance when HP is below 50%',
+    59: 'L-Shape Damage Reduction',
+    60: 'L-Shape Attack',
+    61: 'Super Enhanced Combo',
+}
+
 
 def convert_with_defaults(type_name, args, defaults):
     new_args = {k: (args[k] if k in args else v) for k, v in defaults.items()}
@@ -97,10 +165,6 @@ def convert(type_name, arguments):
                 args[name] = t
         return (type_name, args)
     return i
-
-
-passive_stats_backups = {'for_attr': [], 'for_type': [], 'hp_multiplier': 1.0, 'atk_multiplier': 1.0,
-                         'rcv_multiplier': 1.0, 'reduction_attributes': all_attr, 'damage_reduction': 0.0, 'skill_text': ''}
 
 
 def fmt_multiplier_text(hp_mult, atk_mult, rcv_mult):
@@ -176,6 +240,1017 @@ def fmt_stats_type_attr_bonus(c, reduce_join_txt='; ', skip_attr_all=False):
         skill_text += reduct_text
 
     return skill_text
+
+
+# Active skill
+
+def fmt_mass_atk(mass_attack):
+    if mass_attack:
+        return 'all enemies'
+    else:
+        return 'an enemy'
+
+
+def fmt_duration(duration):
+    if duration > 1:
+        return 'For ' + str(duration) + ' turns, '
+    else:
+        return 'For ' + str(duration) + ' turn, '
+
+
+attr_nuke_convert_backups = {'attribute': 0,
+                             'multiplier': 1,
+                             'mass_attack': False,
+                             'skill_text': ''}
+
+
+def attr_nuke_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('attack_attr_x_atk',
+                                     arguments,
+                                     attr_nuke_convert_backups)(x)
+        c['skill_text'] += 'Deal ' + fmt_mult(c['multiplier']) + 'x ATK ' + ATTRIBUTES[int(
+            c['attribute'])] + ' damage to ' + fmt_mass_atk(c['mass_attack'])
+        return 'attack_attr_x_atk', c
+    return f
+
+
+fixed_attr_nuke_convert_backups = {'attribute': 0,
+                                   'damage': 1,
+                                   'mass_attack': False,
+                                   'skill_text': ''}
+
+
+def fixed_attr_nuke_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('attack_attr_damage',
+                                     arguments,
+                                     fixed_attr_nuke_convert_backups)(x)
+        c['skill_text'] += 'Deal ' + str(c['damage']) + ' ' + ATTRIBUTES[int(
+            c['attribute'])] + ' damage to ' + fmt_mass_atk(c['mass_attack'])
+        return 'attack_attr_damage', c
+    return f
+
+
+self_att_nuke_convert_backups = {'multiplier': 1,
+                                 'mass_attack': False,
+                                 'skill_text': ''}
+
+
+def self_att_nuke_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('attack_x_atk',
+                                     arguments,
+                                     self_att_nuke_convert_backups)(x)
+        c['skill_text'] += 'Deal ' + fmt_mult(c['multiplier']) + \
+            'x ATK damage to ' + fmt_mass_atk(c['mass_attack'])
+        return 'attack_x_atk', c
+    return f
+
+
+shield_convert_backups = {'duration': 1,
+                          'reduction': 0,
+                          'skill_text': ''}
+
+
+def shield_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('damage_shield_buff',
+                                     arguments,
+                                     shield_convert_backups)(x)
+        c['skill_text'] += fmt_duration(c['duration']) + fmt_reduct_text(c['reduction'])
+        return 'damage_shield_buff', c
+    return f
+
+
+elemental_shield_backups = {'duration': 0,
+                            'attribute': 0,
+                            'reduction': 0,
+                            'skill_text': ''}
+
+
+def elemental_shield_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('elemental_shield',
+                                     arguments,
+                                     elemental_shield_backups)(x)
+        c['skill_text'] += fmt_duration(c['duration'])
+        if c['reduction'] == 1:
+            c['skill_text'] += 'void all ' + ATTRIBUTES[int(c['attribute'])] + ' damage'
+        else:
+            c['skill_text'] += 'reduce ' + \
+                ATTRIBUTES[int(c['attribute'])] + ' damage by ' + \
+                fmt_mult(c['reduction'] * 100) + '%'
+        return 'elemental_shield', c
+    return f
+
+
+drain_attack_backups = {'atk_multiplier': 0,
+                        'recover_multiplier': 0,
+                        'mass_attack': False,
+                        'skill_text': ''}
+
+
+def drain_attack_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('drain_attack',
+                                     arguments,
+                                     drain_attack_backups)(x)
+        c['skill_text'] += 'Deal ' + \
+            fmt_mult(c['atk_multiplier']) + 'x ATK damage to ' + fmt_mass_atk(c['mass_attack'])
+        if c['recover_multiplier'] == 1:
+            c['skill_text'] += ' and recover the same amount as HP'
+        else:
+            c['skill_text'] += ' and recover ' + \
+                fmt_mult(c['recover_multiplier'] * 100) + '% of the damage as HP'
+        return 'drain_attack', c
+    return f
+
+
+poison_convert_backups = {'multiplier': 1,
+                          'skill_text': ''}
+
+
+def poison_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('poison',
+                                     arguments,
+                                     poison_convert_backups)(x)
+        c['skill_text'] += 'All enemies are poisoned (' + fmt_mult(c['multiplier']) + 'x ATK)'
+        return 'poison', c
+    return f
+
+
+ctw_convert_backups = {'duration': 0,
+                       'skill_text': ''}
+
+
+def ctw_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('change_the_world',
+                                     arguments,
+                                     ctw_convert_backups)(x)
+        c['skill_text'] += 'Freely move orbs for ' + str(c['duration']) + ' seconds'
+        return 'change_the_world', c
+    return f
+
+
+gravity_convert_backups = {'percentage_hp': 0,
+                           'skill_text': ''}
+
+
+def gravity_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('gravity',
+                                     arguments,
+                                     gravity_convert_backups)(x)
+        c['skill_text'] += 'Reduce enemies\' HP by ' + fmt_mult(c['percentage_hp'] * 100) + '%'
+        return 'gravity', c
+    return f
+
+
+heal_active_convert_backups = {'hp': 0,
+                               'rcv_multiplier_as_hp': 0,
+                               'card_bind': 0,
+                               'percentage_max_hp': 0,
+                               'awoken_bind': 0,
+                               'team_rcv_multiplier_as_hp': 0,
+                               'skill_text': ''}
+
+
+def heal_active_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('heal_active',
+                                     arguments,
+                                     heal_active_convert_backups)(x)
+        rcv_mult = c['rcv_multiplier_as_hp']
+        php = c['percentage_max_hp']
+        trcv_mult = c['team_rcv_multiplier_as_hp']
+        has_heal = False
+
+        if c['hp'] != 0:
+            c['skill_text'] += 'Recover ' + str(c['hp']) + ' HP'
+        elif rcv_mult != 0:
+            c['skill_text'] += 'Recover HP equal to ' + fmt_mult(rcv_mult) + 'x RCV'
+            has_heal = True
+        elif php != 0:
+            c['skill_text'] += 'Recover ' + fmt_mult(php * 100) + '% of max HP'
+            has_heal = True
+        elif trcv_mult != 0:
+            c['skill_text'] += 'Recover HP equal to ' + fmt_mult(trcv_mult) + 'x team\'s total RCV'
+            has_heal = True
+        if c['card_bind'] != 0 and c['awoken_bind'] != 0:
+            if has_heal:
+                c['skill_text'] += '; '
+            if c['card_bind'] == 9999:
+                c['skill_text'] += 'Remove all binds and awoken skill binds'
+            else:
+                c['skill_text'] += 'Remove binds and awoken skill binds by ' + \
+                    str(c['card_bind']) + ' turns'
+        elif c['card_bind'] == 0 and c['awoken_bind'] != 0:
+            if has_heal:
+                c['skill_text'] += '; '
+            if c['awoken_bind'] == 9999:
+                c['skill_text'] += 'Remove all awoken skill binds'
+            else:
+                c['skill_text'] += 'Remove awoken skill binds by ' + \
+                    str(c['awoken_bind']) + ' turns'
+        elif c['awoken_bind'] == 0 and c['card_bind'] != 0:
+            if has_heal:
+                c['skill_text'] += '; '
+            if c['card_bind'] == 9999:
+                c['skill_text'] += 'Remove all binds'
+            else:
+                c['skill_text'] += 'Remove binds by ' + str(c['card_bind']) + ' turns'
+        return 'heal_active', c
+    return f
+
+
+single_orb_change_convert_backups = {'from': 0,
+                                     'to': 0,
+                                     'skill_text': ''}
+
+
+def single_orb_change_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('single_orb_convert',
+                                     arguments,
+                                     single_orb_change_convert_backups)(x)
+        c['skill_text'] += 'Change ' + \
+            ATTRIBUTES[int(c['from'])] + ' orbs to ' + ATTRIBUTES[int(c['to'])] + ' orbs'
+        return 'single_orb_convert', c
+    return f
+
+
+delay_convert_backups = {'turns': 0,
+                         'skill_text': ''}
+
+
+def delay_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('delay_convert',
+                                     arguments,
+                                     delay_convert_backups)(x)
+        c['skill_text'] += 'Delay enemies for ' + str(c['turns']) + ' turns'
+        return 'delay_convert', c
+    return f
+
+
+defense_reduction_convert_backups = {'duration': 0,
+                                     'reduction': 0,
+                                     'skill_text': ''}
+
+
+def defense_reduction_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('defense_reduction',
+                                     arguments,
+                                     defense_reduction_convert_backups)(x)
+        c['skill_text'] += fmt_duration(c['duration']) + \
+            'reduce enemies\' defense by ' + fmt_mult(c['reduction'] * 100) + '%'
+        return 'defense_reduction', c
+    return f
+
+
+double_orb_convert_backups = {'from_1': 0,
+                              'to_1': 0,
+                              'from_2': 0,
+                              'to_2': 0,
+                              'skill_text': ''}
+
+
+def double_orb_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('double_orb_convert',
+                                     arguments,
+                                     double_orb_convert_backups)(x)
+        if c['to_1'] == c['to_2']:
+            c['skill_text'] += 'Change ' + ATTRIBUTES[int(c['from_1'])] + ' orbs and ' + ATTRIBUTES[int(
+                c['from_2'])] + ' orbs to ' + ATTRIBUTES[int(c['to_1'])] + ' orbs'
+        else:
+            c['skill_text'] += 'Change ' + \
+                ATTRIBUTES[int(c['from_1'])] + ' orbs to ' + ATTRIBUTES[int(c['to_1'])] + ' orbs'
+            c['skill_text'] += ' and change ' + \
+                ATTRIBUTES[int(c['from_2'])] + ' orbs to ' + ATTRIBUTES[int(c['to_2'])] + ' orbs'
+        return 'double_orb_convert', c
+    return f
+
+
+damage_to_att_enemy_backups = {'enemy_attribute': 0,
+                               'attack_attribute': 0,
+                               'damage': 0,
+                               'skill_text': ''}
+
+
+def damage_to_att_enemy_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('damage_to_att_enemy',
+                                     arguments,
+                                     damage_to_att_enemy_backups)(x)
+        c['skill_text'] += 'Deal ' + str(c['damage']) + ' ' + ATTRIBUTES[int(
+            c['attack_attribute'])] + ' damage to all ' + ATTRIBUTES[int(c['enemy_attribute'])] + ' Att. enemies'
+        return 'damage_to_att_enemy', c
+    return f
+
+
+rcv_boost_backups = {'duration': 0,
+                     'multiplier': 1,
+                     'skill_text': ''}
+
+
+def rcv_boost_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('rcv_boost',
+                                     arguments,
+                                     rcv_boost_backups)(x)
+        c['skill_text'] += fmt_duration(c['duration']) + fmt_mult(c['multiplier']) + 'x RCV'
+        return 'rcv_boost', c
+    return f
+
+
+attribute_attack_boost_backups = {'duration': 0,
+                                  'for_attr': 0,
+                                  'atk_multiplier': 0,
+                                  'skill_text': ''}
+
+
+def attribute_attack_boost_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('attribute_attack_boost',
+                                     arguments,
+                                     attribute_attack_boost_backups)(x)
+        c['skill_text'] += fmt_duration(c['duration']) + fmt_stats_type_attr_bonus(c)
+        return 'attribute_attack_boost', c
+    return f
+
+
+mass_attack_backups = {'duration': 0,
+                       'skill_text': ''}
+
+
+def mass_attack_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('mass_attack_buff',
+                                     arguments,
+                                     mass_attack_backups)(x)
+        c['skill_text'] += fmt_duration(c['duration']) + 'all attacks become mass attack'
+        return 'mass_attack_buff', c
+    return f
+
+
+enhance_backups = {'orbs': [],
+                   'skill_text': ''}
+
+
+def enhance_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('enhance_orbs',
+                                     arguments,
+                                     enhance_backups)(x)
+        for_attr = c['orbs']
+        for_skill_text = ''
+        skip_attr_all = False
+
+        if for_attr != []:
+            if for_attr and not len(for_attr) == 6:
+                if for_skill_text:
+                    for_skill_text += ' and'
+                color_text = 'all' if len(for_attr) == 5 else ', '.join(
+                    [ATTRIBUTES[i] for i in for_attr])
+                for_skill_text += ' ' + color_text
+                c['skill_text'] += 'Enhance all' + for_skill_text + ' orbs'
+            else:
+                c['skill_text'] += 'Enhance all orbs'
+        return 'enhance_orbs', c
+    return f
+
+
+lock_backups = {'orbs': [],
+                'skill_text': ''}
+
+
+def lock_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('lock_orbs',
+                                     arguments,
+                                     lock_backups)(x)
+        for_attr = c['orbs']
+        for_skill_text = ''
+        skip_attr_all = False
+
+        if for_attr != []:
+            if for_attr and not len(for_attr) == 6:
+                if for_skill_text:
+                    for_skill_text += ' and'
+                color_text = 'all' if len(for_attr) == 5 else ', '.join(
+                    [ATTRIBUTES[i] for i in for_attr])
+                for_skill_text += ' ' + color_text
+                c['skill_text'] += 'Lock all' + for_skill_text + ' orbs'
+            else:
+                c['skill_text'] += 'Lock all orbs'
+        return 'lock_orbs', c
+    return f
+
+
+laser_backups = {'damage': 0,
+                 'mass_attack': False,
+                 'skill_text': ''}
+
+
+def laser_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('laser',
+                                     arguments,
+                                     laser_backups)(x)
+        c['skill_text'] += 'Deal ' + str(c['damage']) + \
+            ' fixed damage to ' + fmt_mass_atk(c['mass_attack'])
+        return 'laser', c
+    return f
+
+
+no_skyfall_backups = {'duration': 0,
+                      'skill_text': ''}
+
+
+def no_skyfall_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('no_skyfall_buff',
+                                     arguments,
+                                     no_skyfall_backups)(x)
+        c['skill_text'] += fmt_duration(c['duration']) + 'no skyfall'
+        return 'no_skyfall_buff', c
+    return f
+
+
+enhance_skyfall_backups = {'duration': 0,
+                           'percentage_increase': 0,
+                           'skill_text': ''}
+
+
+def enhance_skyfall_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('enhance_skyfall_buff',
+                                     arguments,
+                                     enhance_skyfall_backups)(x)
+        c['skill_text'] += fmt_duration(c['duration']) + 'enhanced orbs are more likely to appear by ' + \
+            fmt_mult(c['percentage_increase'] * 100) + '%'
+        return 'enhance_skyfall_buff', c
+    return f
+
+
+auto_heal_backups = {'duration': 0,
+                     'percentage_max_hp': 0,
+                     'skill_text': ''}
+
+
+def auto_heal_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('auto_heal',
+                                     arguments,
+                                     auto_heal_backups)(x)
+        c['skill_text'] += fmt_duration(c['duration']) + 'recover ' + \
+            fmt_mult(c['percentage_max_hp'] * 100) + '% of max HP'
+        return 'auto_heal', c
+    return f
+
+
+absorb_mechanic_void_backups = {'duration': 0,
+                                'attribute_absorb': False,
+                                'damage_absorb': False,
+                                'skill_text': ''}
+
+
+def absorb_mechanic_void_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('absorb_mechanic_void',
+                                     arguments,
+                                     absorb_mechanic_void_backups)(x)
+        if c['attribute_absorb'] and c['damage_absorb']:
+            c['skill_text'] += fmt_duration(c['duration']) + \
+                'void damage absorb shield and att. absorb shield effects'
+        elif c['attribute_absorb'] and not c['damage_absorb']:
+            c['skill_text'] += fmt_duration(c['duration']) + 'void att. absorb shield effects'
+        elif not c['attribute_absorb'] and c['damage_absorb']:
+            c['skill_text'] += fmt_duration(c['duration']) + 'void damage absorb shield effects'
+        return 'absorb_mechanic_void', c
+    return f
+
+
+true_gravity_convert_backups = {'percentage_max_hp': 0,
+                                'skill_text': ''}
+
+
+def true_gravity_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('true_gravity',
+                                     arguments,
+                                     true_gravity_convert_backups)(x)
+        c['skill_text'] += 'Deal damage equal to ' + \
+            fmt_mult(c['percentage_max_hp'] * 100) + '% of enemies\' max HP'
+        return 'true_gravity', c
+    return f
+
+
+extra_combo_backups = {'duration': 0,
+                       'combos': 0,
+                       'skill_text': ''}
+
+
+def extra_combo_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('extra_combo',
+                                     arguments,
+                                     extra_combo_backups)(x)
+        c['skill_text'] += fmt_duration(c['duration']) + \
+            'increase combo count by ' + str(c['combos'])
+        return 'extra_combo', c
+    return f
+
+
+awakening_heal_backups = {'awakenings': [],
+                          'amount_per': 0,
+                          'skill_text': ''}
+
+
+def awakening_heal_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('awakening_heal',
+                                     arguments,
+                                     awakening_heal_backups)(x)
+        c['skill_text'] += 'Recover ' + str(c['amount_per']) + ' HP for each '
+        for i in range(0, len(c['awakenings']) - 1):
+            if c['awakenings'][i + 1] != 0:
+                c['skill_text'] += AWAKENING[c['awakenings'][i]] + ', '
+            else:
+                c['skill_text'] += AWAKENING[c['awakenings'][i]]
+        if int(c['awakenings'][-1]) != 0:
+            c['skill_text'] += AWAKENING[int(c['awakenings'][-1])]
+        c['skill_text'] += ' awakening skill on the team'
+        return 'awakening_heal', c
+    return f
+
+
+awakening_attack_boost_backups = {'duration': 0,
+                                  'awakenings': [],
+                                  'amount_per': 0,
+                                  'skill_text': ''}
+
+
+def awakening_attack_boost_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('awakening_attack_boost',
+                                     arguments,
+                                     awakening_attack_boost_backups)(x)
+        c['skill_text'] += fmt_duration(c['duration']) + 'increase ATK by ' + \
+            fmt_mult(c['amount_per'] * 100) + '% for each '
+        for i in range(0, len(c['awakenings']) - 1):
+            if c['awakenings'][i + 1] != 0:
+                c['skill_text'] += AWAKENING[c['awakenings'][i]] + ', '
+            else:
+                c['skill_text'] += AWAKENING[c['awakenings'][i]]
+        if int(c['awakenings'][-1]) != 0:
+            c['skill_text'] += AWAKENING[int(c['awakenings'][-1])]
+        c['skill_text'] += ' awakening skill on the team'
+        return 'awakening_attack_boost', c
+    return f
+
+
+awakening_shield_backups = {'duration': 0,
+                            'awakenings': [],
+                            'amount_per': 0,
+                            'skill_text': ''}
+
+
+def awakening_shield_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('awakening_shield',
+                                     arguments,
+                                     awakening_shield_backups)(x)
+        c['skill_text'] += fmt_duration(c['duration']) + 'reduce damage taken by ' + \
+            fmt_mult(c['amount_per'] * 100) + '% for each '
+        for i in range(0, len(c['awakenings']) - 1):
+            if c['awakenings'][i + 1] != 0:
+                c['skill_text'] += AWAKENING[c['awakenings'][i]] + ', '
+            else:
+                c['skill_text'] += AWAKENING[c['awakenings'][i]]
+        if int(c['awakenings'][-1]) != 0:
+            c['skill_text'] += AWAKENING[int(c['awakenings'][-1])]
+        c['skill_text'] += ' awakening skill on the team'
+        return 'awakening_shield', c
+    return f
+
+
+change_enemies_attribute_backups = {'attribute': 0,
+                                    'skill_text': ''}
+
+
+def change_enemies_attribute_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('change_enemies_attribute',
+                                     arguments,
+                                     change_enemies_attribute_backups)(x)
+        c['skill_text'] += 'Change all enemies to ' + ATTRIBUTES[c['attribute']] + ' Att.'
+        return 'change_enemies_attribute', c
+    return f
+
+
+haste_backups = {'turns': 0,
+                 'skill_text': ''}
+
+
+def haste_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('haste',
+                                     arguments,
+                                     haste_backups)(x)
+        if c['turns'] > 1:
+            c['skill_text'] += 'Charge allies\' skill by ' + str(c['turns']) + ' turns'
+        else:
+            c['skill_text'] += 'Charge allies\' skill by ' + str(c['turns']) + ' turn'
+        return 'haste', c
+    return f
+
+
+random_orb_change_backups = {'from': [],
+                             'to': [],
+                             'skill_text': ''}
+
+
+def random_orb_change_convert(arguments):
+    def f(x):
+
+        _, c = convert_with_defaults('random_orb_change',
+                                     arguments,
+                                     random_orb_change_backups)(x)
+        c['skill_text'] += 'Change '
+        if len(c['from']) > 1:
+            for i in c['from'][:-1]:
+                c['skill_text'] += ATTRIBUTES[i] + ', '
+            c['skill_text'] += ATTRIBUTES[c['from'][-1]] + ' orbs to '
+        elif c['from'] != []:
+            c['skill_text'] += ATTRIBUTES[c['from'][0]] + ' orbs to '
+        if len(c['to']) > 1:
+            for i in c['to'][:-1]:
+                c['skill_text'] += ATTRIBUTES[i] + ', '
+            c['skill_text'] += ATTRIBUTES[c['to'][-1]] + ' orbs'
+        elif c['to'] != []:
+            c['skill_text'] += ATTRIBUTES[c['to'][0]] + ' orbs'
+        return 'random_orb_change', c
+    return f
+
+
+attack_attr_x_team_atk_backups = {'team_attributes': [],
+                                  'multiplier': 1,
+                                  'mass_attack': False,
+                                  'attack_attribute': 0,
+                                  'skill_text': ''}
+
+
+def attack_attr_x_team_atk_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('attack_attr_x_team_atk',
+                                     arguments,
+                                     attack_attr_x_team_atk_backups)(x)
+        c['skill_text'] += 'Deal ' + ATTRIBUTES[c['attack_attribute']] + \
+            ' damage equal to ' + fmt_mult(c['multiplier']) + 'x of team\'s total '
+        if len(c['team_attributes']) == 1:
+            c['skill_text'] += ATTRIBUTES[c['team_attributes'][0]] + ' ATK to '
+        elif len(c['team_attributes']) > 1:
+            for i in c['team_attributes'][:-1]:
+                c['skill_text'] += ATTRIBUTES[i] + ', '
+            c['skill_text'] += ATTRIBUTES[c['team_attributes'][-1]] + ' ATK to '
+        c['skill_text'] += fmt_mass_atk(c['mass_attack'])
+        return 'attack_attr_x_team_atk', c
+    return f
+
+
+spawn_orb_backups = {'amount': 0,
+                     'orbs': [],
+                     'excluding_orbs': [],
+                     'skill_text': ''}
+
+
+def spawn_orb_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('spawn_orb',
+                                     arguments,
+                                     spawn_orb_backups)(x)
+        c['skill_text'] += 'Create ' + str(c['amount']) + ' '
+        if len(c['orbs']) == 1:
+            c['skill_text'] += ATTRIBUTES[c['orbs'][0]] + ' orbs at random'
+        elif len(c['orbs']) > 1:
+            for i in c['orbs'][:-1]:
+                c['skill_text'] += ATTRIBUTES[i] + ', '
+            c['skill_text'] += ATTRIBUTES[c['orbs'][-1]] + ' orbs at random'
+        if c['orbs'] != c['excluding_orbs']:
+            templist = list(set(c['excluding_orbs']) - set(c['orbs']))
+            c['skill_text'] += ' except '
+            if len(templist) > 1:
+                for i in templist[:-1]:
+                    c['skill_text'] += ATTRIBUTES[i] + ', '
+                c['skill_text'] += ATTRIBUTES[templist[-1]] + ' orbs'
+            elif len(templist) == 1:
+                c['skill_text'] += ATTRIBUTES[templist[0]] + ' orbs'
+        return 'spawn_orb', c
+    return f
+
+
+move_time_buff_backups = {'duration': 0,
+                          'static': 0,
+                          'percentage': 0,
+                          'skill_text': ''}
+
+
+def move_time_buff_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('move_time_buff',
+                                     arguments,
+                                     move_time_buff_backups)(x)
+        if c['static'] == 0:
+            c['skill_text'] += fmt_duration(c['duration']) + \
+                fmt_mult(c['percentage']) + 'x orb move time'
+        elif c['percentage'] == 0:
+            c['skill_text'] += fmt_duration(c['duration']) + \
+                'increase orb move time by ' + fmt_mult(c['static']) + ' seconds'
+        return 'move_time_buff', c
+    return f
+
+
+row_change_backups = {'rows': [],
+                      'skill_text': ''}
+
+
+def row_change_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('row_change',
+                                     arguments,
+                                     row_change_backups)(x)
+
+        ROW_INDEX = {
+            0: 'top row',
+            1: '2nd row from top',
+            2: 'middle row',
+            3: '2nd row from bottom',
+            -2: 'bottom row',
+        }
+
+        if len(c['rows']) == 1:
+            c['skill_text'] += 'Change ' + \
+                ROW_INDEX[int(c['rows'][0]['index'])] + ' to ' + \
+                ATTRIBUTES[int(c['rows'][0]['orbs'][0])] + ' orbs'
+        elif len(c['rows']) == 2:
+            if c['rows'][0]['orbs'][0] == c['rows'][1]['orbs'][0]:
+                c['skill_text'] += 'Change ' + ROW_INDEX[int(c['rows'][0]['index'])] + ' and ' + ROW_INDEX[int(
+                    c['rows'][1]['index'])] + ' to ' + ATTRIBUTES[int(c['rows'][0]['orbs'][0])] + ' orbs'
+            else:
+                c['skill_text'] += 'Change ' + \
+                    ROW_INDEX[int(c['rows'][0]['index'])] + ' to ' + \
+                    ATTRIBUTES[int(c['rows'][0]['orbs'][0])] + ' orbs'
+                c['skill_text'] += ' and change ' + \
+                    ROW_INDEX[int(c['rows'][1]['index'])] + ' to ' + \
+                    ATTRIBUTES[int(c['rows'][1]['orbs'][0])] + ' orbs'
+        return 'row_change', c
+    return f
+
+
+column_change_backups = {'columns': [],
+                         'skill_text': ''}
+
+
+def column_change_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('column_change',
+                                     arguments,
+                                     column_change_backups)(x)
+
+        COLUMN_INDEX = {
+            0: 'far left column',
+            1: '2nd column from left',
+            2: '3rd column from left',
+            3: '3rd column from right',
+            4: '2nd column from right',
+            5: 'far right column',
+        }
+
+        if len(c['columns']) == 1:
+            c['skill_text'] += 'Change ' + COLUMN_INDEX[int(
+                c['columns'][0]['index'])] + ' to ' + ATTRIBUTES[int(c['columns'][0]['orbs'][0])] + ' orbs'
+        elif len(c['columns']) == 2:
+            if c['columns'][0]['orbs'][0] == c['columns'][1]['orbs'][0]:
+                c['skill_text'] += 'Change ' + COLUMN_INDEX[int(c['columns'][0]['index'])] + ' and ' + COLUMN_INDEX[int(
+                    c['columns'][1]['index'])] + ' to ' + ATTRIBUTES[int(c['columns'][0]['orbs'][0])] + ' orbs'
+            else:
+                c['skill_text'] += 'Change ' + COLUMN_INDEX[int(
+                    c['columns'][0]['index'])] + ' to ' + ATTRIBUTES[int(c['columns'][0]['orbs'][0])] + ' orbs'
+                c['skill_text'] += ' and change ' + COLUMN_INDEX[int(
+                    c['columns'][1]['index'])] + ' to ' + ATTRIBUTES[int(c['columns'][1]['orbs'][0])] + ' orbs'
+        return 'column_change', c
+    return f
+
+
+change_skyfall_backups = {'orbs': [],
+                          'duration': 0,
+                          'percentage': 0,
+                          'skill_text': ''}
+
+
+def change_skyfall_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('change_skyfall',
+                                     arguments,
+                                     change_skyfall_backups)(x)
+        c['skill_text'] += fmt_duration(c['duration'])
+
+        if len(c['orbs']) > 1:
+            for i in c['orbs'][:-1]:
+                c['skill_text'] += ATTRIBUTES[i] + ', '
+            c['skill_text'] += ATTRIBUTES[c['orbs'][-1]] + \
+                ' orbs are more likely to appear by ' + fmt_mult(c['percentage'] * 100) + '%'
+        elif len(c['orbs']) == 1:
+            c['skill_text'] += ATTRIBUTES[c['orbs'][0]] + \
+                ' orbs are more likely to appear by ' + fmt_mult(c['percentage'] * 100) + '%'
+        return 'change_skyfall', c
+    return f
+
+
+random_nuke_backups = {'attribute': 0,
+                       'minimum_multiplier': 1,
+                       'maximum_multiplier': 1,
+                       'mass_attack': False,
+                       'skill_text': ''}
+
+
+def random_nuke_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('random_nuke',
+                                     arguments,
+                                     random_nuke_backups)(x)
+        if c['minimum_multiplier'] != c['maximum_multiplier']:
+            c['skill_text'] += 'Randomized ' + ATTRIBUTES[c['attribute']] + ' damage to ' + fmt_mass_atk(
+                c['mass_attack']) + '(' + fmt_mult(c['minimum_multiplier']) + '~' + fmt_mult(c['maximum_multiplier']) + 'x)'
+        else:
+            c['skill_text'] += 'Deal ' + fmt_mult(c['maximum_multiplier']) + 'x ' + \
+                ATTRIBUTES[c['attribute']] + ' damage to ' + fmt_mass_atk(c['mass_attack'])
+        return 'random_nuke', c
+    return f
+
+
+counterattack_backups = {'duration': 0,
+                         'multiplier': 1,
+                         'attribute': 0,
+                         'skill_text': ''}
+
+
+def counterattack_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('counterattack',
+                                     arguments,
+                                     counterattack_backups)(x)
+
+        c['skill_text'] += fmt_duration(c['duration']) + fmt_mult(c['multiplier']) + \
+            'x ' + ATTRIBUTES[c['attribute']] + ' counterattack'
+        return 'counterattack', c
+    return f
+
+
+board_change_backups = {'attributes': [],
+                        'skill_text': ''}
+
+
+def board_change_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('board_change',
+                                     arguments,
+                                     board_change_backups)(x)
+        c['skill_text'] += 'Change all orbs to '
+        if len(c['attributes']) > 1:
+            for i in c['attributes'][:-1]:
+                c['skill_text'] += ATTRIBUTES[i] + ', '
+            c['skill_text'] += 'and ' + ATTRIBUTES[c['attributes'][-1]] + ' orbs'
+        elif len(c['attributes']) == 1:
+            c['skill_text'] += ATTRIBUTES[c['attributes'][0]] + ' orbs'
+        return 'board_change', c
+    return f
+
+
+suicide_random_nuke_backups = {'attribute': 0,
+                               'minimum_multiplier': 1,
+                               'maximum_multiplier': 1,
+                               'hp_remaining': 1,
+                               'mass_attack': False,
+                               'skill_text': ''}
+
+
+def suicide_random_nuke_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('suicide_random_nuke',
+                                     arguments,
+                                     suicide_random_nuke_backups)(x)
+        if c['hp_remaining'] == 0:
+            c['skill_text'] += 'Reduce HP to 1; '
+        else:
+            c['skill_text'] += 'Reduce HP by ' + fmt_mult(c['hp_remaining'] * 100) + '%; '
+        if c['minimum_multiplier'] != c['maximum_multiplier']:
+            c['skill_text'] += 'Randomized ' + ATTRIBUTES[c['attribute']] + ' damage to ' + fmt_mass_atk(
+                c['mass_attack']) + '(' + fmt_mult(c['minimum_multiplier']) + '~' + fmt_mult(c['maximum_multiplier']) + 'x)'
+        else:
+            c['skill_text'] += 'Deal ' + fmt_mult(c['maximum_multiplier']) + 'x ' + \
+                ATTRIBUTES[c['attribute']] + ' damage to ' + fmt_mass_atk(c['mass_attack'])
+        return 'suicide_random_nuke', c
+    return f
+
+
+suicide_nuke_backups = {'attribute': 0,
+                        'damage': 0,
+                        'hp_remaining': 1,
+                        'mass_attack': False,
+                        'skill_text': ''}
+
+
+def suicide_nuke_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('suicide_nuke',
+                                     arguments,
+                                     suicide_nuke_backups)(x)
+        if c['hp_remaining'] == 0:
+            c['skill_text'] += 'Reduce HP to 1; '
+        else:
+            c['skill_text'] += 'Reduce HP by ' + fmt_mult(c['hp_remaining'] * 100) + '%; '
+        c['skill_text'] += 'Deal ' + str(c['damage']) + ' ' + ATTRIBUTES[c['attribute']
+                                                                         ] + ' damage to ' + fmt_mass_atk(c['mass_attack'])
+        return 'suicide_nuke', c
+    return f
+
+
+type_attack_boost_backups = {'duration': 0,
+                             'types': [],
+                             'multiplier': 0,
+                             'skill_text': ''}
+
+
+def type_attack_boost_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('type_attack_boost',
+                                     arguments,
+                                     type_attack_boost_backups)(x)
+        c['skill_text'] += fmt_duration(c['duration']) + fmt_mult(c['multiplier']) + 'x ATK for '
+        if len(c['types']) > 1:
+            for i in c['types'][:-1]:
+                c['skill_text'] += TYPES[i] + ', '
+            c['skill_text'] += TYPES[c['types'][-1]] + ' types'
+        elif len(c['types']) == 1:
+            c['skill_text'] += TYPES[c['types'][-1]] + ' type'
+        return 'type_attack_boost', c
+    return f
+
+
+grudge_strike_backups = {'mass_attack': False,
+                         'attribute': 0,
+                         'high_multiplier': 1,
+                         'low_multiplier': 1,
+                         'skill_text': ''}
+
+
+def grudge_strike_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('grudge_strike',
+                                     arguments,
+                                     grudge_strike_backups)(x)
+        c['skill_text'] += 'Deal ' + ATTRIBUTES[c['attribute']] + ' damage to ' + fmt_mass_atk(c['mass_attack']) + ' depending on HP level (' + fmt_mult(
+            c['low_multiplier']) + 'x at 1 HP and ' + fmt_mult(c['high_multiplier']) + 'x at 100% HP)'
+        return 'grudge_strike', c
+    return f
+
+
+drain_attr_attack_backups = {'attribute': 0,
+                             'atk_multiplier': 0,
+                             'recover_multiplier': 0,
+                             'mass_attack': False,
+                             'skill_text': ''}
+
+
+def drain_attr_attack_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('drain_attr_attack',
+                                     arguments,
+                                     drain_attr_attack_backups)(x)
+        c['skill_text'] += 'Deal ' + fmt_mult(c['atk_multiplier']) + 'x ATK ' + \
+            ATTRIBUTES[c['attribute']] + ' damage to ' + fmt_mass_atk(c['mass_attack'])
+        if c['recover_multiplier'] == 1:
+            c['skill_text'] += ' and recover the amount as HP'
+        else:
+            c['skill_text'] += ' and recover ' + \
+                fmt_mult(c['recover_multiplier'] * 100) + '% of the damage as HP'
+        return 'drain_attr_attack', c
+    return f
+
+
+# End of Active skill
+
+# Leader skill
+
+passive_stats_backups = {'for_attr': [], 'for_type': [], 'hp_multiplier': 1.0, 'atk_multiplier': 1.0,
+                         'rcv_multiplier': 1.0, 'reduction_attributes': all_attr, 'damage_reduction': 0.0, 'skill_text': ''}
 
 
 def passive_stats_convert(arguments):
@@ -629,87 +1704,86 @@ def heart_cross_convert(arguments):
         c['skill_text'] = skill_text
         return 'heart_cross', c
     return f
+# End of Leader skill
 
 
 SKILL_TRANSFORM = {
     0: lambda x:
     convert('null_skill', {})(x)
     if make_defaultlist(int, x)[1] == 0 else
-    convert('attack_attr_x_atk', {'attribute': (0, cc),
-                                  'multiplier': (1, multi), 'mass_attack': True})(x),
-    1: convert('attack_attr_damage', {'attribute': (0, cc), 'damage': (1, cc), 'mass_attack': True}),
-    2: convert('attack_x_atk', {'multiplier': (0, multi), 'mass_attack': False}),
-    3: convert('damage_shield_buff', {'duration': (0, cc), 'reduction': (1, multi)}),
-    4: convert('poison', {'multiplier': (0, multi)}),
-    5: convert('change_the_world', {'duration': (0, cc)}),
-    6: convert('gravity', {'percentage_hp': (0, multi)}),
-    7: convert('heal_active', {'rcv_multiplier_as_hp': (0, multi), 'card_bind': 0, 'hp': 0, 'percentage_max_hp': 0.0, 'awoken_bind': 0, 'team_rcv_multiplier_as_hp': 0.0}),
-    8: convert('heal_active', {'hp': (0, cc), 'card_bind': 0, 'rcv_multiplier_as_hp': 0.0, 'percentage_max_hp': 0.0, 'awoken_bind': 0, 'team_rcv_multiplier_as_hp': 0.0}),
-    9: convert('single_orb_change', {'from': (0, cc), 'to': (0, cc)}),
-    10: convert('board_refresh', {}),
-    18: convert('delay', {'turns': (0, cc)}),
-    19: convert('defense_reduction', {'duration': (0, cc), 'reduction': (1, multi)}),
-    20: convert('double_orb_change', {'from_1': (0, cc), 'to_1': (1, cc), 'from_2': (2, cc), 'to_2': (3, cc)}),
-    21: convert('elemental_shield_buff', {'duration': (0, cc), 'attribute': (1, cc), 'reduction': (2, multi)}),
-    35: convert('drain_attack', {'atk_multiplier': (0, multi), 'recover_multiplier': (1, multi), 'mass_attack': False}),
-    37: convert('attack_attr_x_atk', {'attribute': (0, cc), 'multiplier': (1, multi), 'mass_attack': False}),
-    42: convert('element_attack_attr_damage', {'enemy_attribute': (0, cc), 'attack_attribute': (1, cc), 'damage': (2, cc)}),
+    attr_nuke_convert({'attribute': (0, cc), 'multiplier': (1, multi), 'mass_attack': True})(x),
+    1: fixed_attr_nuke_convert({'attribute': (0, cc), 'damage': (1, cc), 'mass_attack': True}),
+    2: self_att_nuke_convert({'multiplier': (0, multi), 'mass_attack': False}),
+    3: shield_convert({'duration': (0, cc), 'reduction': (1, multi)}),
+    4: poison_convert({'multiplier': (0, multi)}),
+    5: ctw_convert({'duration': (0, cc)}),
+    6: gravity_convert({'percentage_hp': (0, multi)}),
+    7: heal_active_convert({'rcv_multiplier_as_hp': (0, multi), 'card_bind': 0, 'hp': 0, 'percentage_max_hp': 0.0, 'awoken_bind': 0, 'team_rcv_multiplier_as_hp': 0.0}),
+    8: heal_active_convert({'hp': (0, cc), 'card_bind': 0, 'rcv_multiplier_as_hp': 0.0, 'percentage_max_hp': 0.0, 'awoken_bind': 0, 'team_rcv_multiplier_as_hp': 0.0}),
+    9: single_orb_change_convert({'from': (0, cc), 'to': (1, cc)}),
+    10: convert('board_refresh', {'skill_text': 'Shuffle all orbs'}),
+    18: delay_convert({'turns': (0, cc)}),
+    19: defense_reduction_convert({'duration': (0, cc), 'reduction': (1, multi)}),
+    20: double_orb_convert({'from_1': (0, cc), 'to_1': (1, cc), 'from_2': (2, cc), 'to_2': (3, cc)}),
+    21: elemental_shield_convert({'duration': (0, cc), 'attribute': (1, cc), 'reduction': (2, multi)}),
+    35: drain_attack_convert({'atk_multiplier': (0, multi), 'recover_multiplier': (1, multi), 'mass_attack': False}),
+    37: attr_nuke_convert({'attribute': (0, cc), 'multiplier': (1, multi), 'mass_attack': False}),
+    42: damage_to_att_enemy_convert({'enemy_attribute': (0, cc), 'attack_attribute': (1, cc), 'damage': (2, cc)}),
     50: lambda x:
-    convert('rcv_boost', {'duration': (0, cc), 'multiplier': (2, multi)})(x)
+    rcv_boost_convert({'duration': (0, cc), 'multiplier': (2, multi)})(x)
     if make_defaultlist(int, x)[1] == 5 else
-    convert('attribute_attack_boost', {'duration': (0, cc),
-                                       'attributes': (1, listify), 'multiplier': (2, multi)})(x),
-    51: convert('force_mass_attack', {'duration': (0, cc)}),
-    52: convert('enhance_orbs', {'orbs': (0, listify)}),
-    55: convert('laser', {'damage': (0, cc), 'mass_attack': False}),
-    56: convert('laser', {'damage': (0, cc), 'mass_attack': True}),
-    58: convert('attack_attr_random_x_atk', {'attribute': (0, cc), 'minimum_multiplier': (1, multi), 'maximum_multiplier': (2, multi), 'mass_attack': True}),
-    59: convert('attack_attr_random_x_atk', {'attribute': (0, cc), 'minimum_multiplier': (1, multi), 'maximum_multiplier': (2, multi), 'mass_attack': False}),
-    60: convert('counter_attack_buff', {'duration': (0, cc), 'multiplier': (1, multi), 'attribute': (2, cc)}),
-    71: convert('board_change', {'attributes': (slice(None), lambda x: [v for v in x if v != -1])}),
-    84: convert('suicide_attack_attr_random_x_atk', {'attribute': (0, cc), 'minimum_multiplier': (1, multi), 'maximum_multiplier': (2, multi), 'hp_remaining': (3, multi), 'mass_attack': False}),
-    85: convert('suicide_attack_attr_random_x_atk', {'attribute': (0, cc), 'minimum_multiplier': (1, multi), 'maximum_multiplier': (2, multi), 'hp_remaining': (3, multi), 'mass_attack': True}),
-    86: convert('suicide_attack_attr_damage', {'attribute': (0, cc), 'damage': (1, multi), 'hp_remaining': (3, multi), 'mass_attack': False}),
-    87: convert('suicide_attack_attr_damage', {'attribute': (0, cc), 'damage': (1, multi), 'hp_remaining': (3, multi), 'mass_attack': True}),
-    88: convert('type_attack_boost', {'duration': (0, cc), 'types': (1, listify), 'multiplier': (2, multi)}),
-    90: convert('attribute_attack_boost', {'duration': (0, cc), 'attributes': (slice(1, 3), list_con), 'multiplier': (2, multi)}),
-    91: convert('enhance_orbs', {'orbs': (slice(0, 2), list_con)}),
-    92: convert('type_attack_boost', {'duration': (0, cc), 'types': (slice(1, 3), list_con), 'multiplier': (2, multi)}),
-    93: convert('leader_swap', {}),
-    110: convert('grudge_strike', {'mass_attack': (0, lambda x: x == 0), 'attribute': (1, cc), 'high_multiplier': (2, multi), 'low_multiplier': (3, multi)}),
-    115: convert('drain_attack_attr', {'attribute': (0, cc), 'atk_multiplier': (1, multi), 'recover_multiplier': (2, multi), 'mass_attack': False}),
+    attribute_attack_boost_convert(
+        {'duration': (0, cc), 'for_attr': (1, listify), 'atk_multiplier': (2, multi)})(x),
+    51: mass_attack_convert({'duration': (0, cc)}),
+    52: enhance_convert({'orbs': (0, listify)}),
+    55: laser_convert({'damage': (0, cc), 'mass_attack': False}),
+    56: laser_convert({'damage': (0, cc), 'mass_attack': True}),
+    58: random_nuke_convert({'attribute': (0, cc), 'minimum_multiplier': (1, multi), 'maximum_multiplier': (2, multi), 'mass_attack': True}),
+    59: random_nuke_convert({'attribute': (0, cc), 'minimum_multiplier': (1, multi), 'maximum_multiplier': (2, multi), 'mass_attack': False}),
+    60: counterattack_convert({'duration': (0, cc), 'multiplier': (1, multi), 'attribute': (2, cc)}),
+    71: board_change_convert({'attributes': (slice(None), lambda x: [v for v in x if v != -1])}),
+    84: suicide_random_nuke_convert({'attribute': (0, cc), 'minimum_multiplier': (1, multi), 'maximum_multiplier': (2, multi), 'hp_remaining': (3, multi), 'mass_attack': False}),
+    85: suicide_random_nuke_convert({'attribute': (0, cc), 'minimum_multiplier': (1, multi), 'maximum_multiplier': (2, multi), 'hp_remaining': (3, multi), 'mass_attack': True}),
+    86: suicide_nuke_convert({'attribute': (0, cc), 'damage': (1, cc), 'hp_remaining': (3, multi), 'mass_attack': False}),
+    87: suicide_nuke_convert({'attribute': (0, cc), 'damage': (1, cc), 'hp_remaining': (3, multi), 'mass_attack': True}),
+    88: type_attack_boost_convert({'duration': (0, cc), 'types': (1, listify), 'multiplier': (2, multi)}),
+    90: attribute_attack_boost_convert({'duration': (0, cc), 'for_attr': (slice(1, 3), list_con), 'atk_multiplier': (2, ccf)}),
+    91: enhance_convert({'orbs': (slice(0, 2), list_con)}),
+    92: type_attack_boost_convert({'duration': (0, cc), 'types': (slice(1, 3), list_con), 'multiplier': (3, multi)}),
+    93: convert('leader_swap', {'skill_text': 'Becomes Team leader, changes back when used again'}),
+    110: grudge_strike_convert({'mass_attack': (0, lambda x: x == 0), 'attribute': (1, cc), 'high_multiplier': (2, multi), 'low_multiplier': (3, multi)}),
+    115: drain_attr_attack_convert({'attribute': (0, cc), 'atk_multiplier': (1, multi), 'recover_multiplier': (2, multi), 'mass_attack': False}),
     116: convert('combine_active_skills', {'skill_ids': (slice(None), list_con)}),
-    117: convert('heal_active', {'card_bind': (0, cc), 'rcv_multiplier_as_hp': (1, multi), 'hp': (2, cc), 'percentage_max_hp': (3, multi), 'awoken_bind': (4, cc), 'team_rcv_multiplier_as_hp': 0.0}),
-    118: convert('random_skill', {'skill_ids': (slice(None), list_con)}),
-    126: convert('change_skyfall', {'orbs': (0, binary_con), 'duration': (1, cc), 'percentage': (3, multi)}),
-    127: convert('column_change', {'columns': (slice(None), lambda x: [{'index': i if i < 3 else i - 5, 'orbs': binary_con(orbs)} for indices, orbs in zip(x[::2], x[1::2]) for i in binary_con(indices)])}),
-    128: convert('row_change', {'rows': (slice(None), lambda x: [{'index': i if i < 4 else i - 6, 'orbs': binary_con(orbs)} for indices, orbs in zip(x[::2], x[1::2]) for i in binary_con(indices)])}),
-    132: convert('move_time_buff', {'duration': (0, cc), 'static': (1, lambda x: x / 10), 'percentage': (2, multi)}),
-    140: convert('enhance_orbs', {'orbs': (0, binary_con)}),
-    141: convert('spawn_orbs', {'amount': (0, cc), 'orbs': (1, binary_con), 'excluding_orbs': (2, binary_con)}),
+    117: heal_active_convert({'card_bind': (0, cc), 'rcv_multiplier_as_hp': (1, multi), 'hp': (2, cc), 'percentage_max_hp': (3, multi), 'awoken_bind': (4, cc), 'team_rcv_multiplier_as_hp': 0.0}),
+    118: convert('random_skill', {'skill_ids': (slice(None), list_con), 'skill_text': 'Activate a random skill'}),
+    126: change_skyfall_convert({'orbs': (0, binary_con), 'duration': (1, cc), 'percentage': (3, multi)}),
+    127: column_change_convert({'columns': (slice(None), lambda x: [{'index': i, 'orbs': binary_con(orbs)} for indices, orbs in zip(x[::2], x[1::2]) for i in binary_con(indices)])}),
+    128: row_change_convert({'rows': (slice(None), lambda x: [{'index': i if i < 4 else i - 6, 'orbs': binary_con(orbs)} for indices, orbs in zip(x[::2], x[1::2]) for i in binary_con(indices)])}),
+    132: move_time_buff_convert({'duration': (0, cc), 'static': (1, lambda x: x / 10), 'percentage': (2, multi)}),
+    140: enhance_convert({'orbs': (0, binary_con)}),
+    141: spawn_orb_convert({'amount': (0, cc), 'orbs': (1, binary_con), 'excluding_orbs': (2, binary_con)}),
     142: convert('attribute_change', {'duration': (0, cc), 'attribute': (1, cc)}),
-    144: convert('attack_attr_x_team_atk', {'team_attributes': (0, binary_con), 'multiplier': (1, multi), 'mass_attack': (2, lambda x: x == 0), 'attack_attribute': (3, cc), }),
-    145: convert('heal_active', {'team_rcv_multiplier_as_hp': (0, multi), 'card_bind': 0, 'rcv_multiplier_as_hp': 0.0, 'hp': 0, 'percentage_max_hp': 0.0, 'awoken_bind': 0}),
-    146: convert('haste', {'turns': (0, cc)}),
-    152: convert('lock_orbs', {'orbs': (0, binary_con)}),
-    153: convert('change_enemies_attribute', {'attribute': (0, cc)}),
-    154: convert('random_orb_change', {'from': (0, binary_con), 'to': (1, binary_con)}),
+    144: attack_attr_x_team_atk_convert({'team_attributes': (0, binary_con), 'multiplier': (1, multi), 'mass_attack': (2, lambda x: x == 0), 'attack_attribute': (3, cc), }),
+    145: heal_active_convert({'team_rcv_multiplier_as_hp': (0, multi), 'card_bind': 0, 'rcv_multiplier_as_hp': 0.0, 'hp': 0, 'percentage_max_hp': 0.0, 'awoken_bind': 0}),
+    146: haste_convert({'turns': (0, cc)}),
+    152: lock_convert({'orbs': (0, binary_con)}),
+    153: change_enemies_attribute_convert({'attribute': (0, cc)}),
+    154: random_orb_change_convert({'from': (0, binary_con), 'to': (1, binary_con)}),
     156: lambda x:
-    convert('awakening_heal', {'duration': (0, cc), 'awakenings': (
-        slice(1, 4), list_con), 'amount_per': (5, cc)})(x)
+    awakening_heal_convert({'awakenings': (slice(1, 4), list_con), 'amount_per': (5, cc)})(x)
     if make_defaultlist(int, x)[4] == 1 else
-    (convert('awakening_attack_boost', {'duration': (0, cc), 'awakenings': (slice(1, 4), list_con), 'amount_per': (5, lambda x: (x - 100) / 100)})(x)
+    (awakening_attack_boost_convert({'duration': (0, cc), 'awakenings': (slice(1, 4), list_con), 'amount_per': (5, lambda x: (x - 100) / 100)})(x)
         if make_defaultlist(int, x)[4] == 2 else
-     (convert('awakening_shield', {'duration': (0, cc), 'awakenings': (slice(1, 4), list_con), 'amount_per': (5, multi)})(x)
+     (awakening_shield_convert({'duration': (0, cc), 'awakenings': (slice(1, 4), list_con), 'amount_per': (5, multi)})(x)
       if make_defaultlist(int, x)[4] == 3 else
       (156, x))),
-    160: convert('extra_combo', {'duration': (0, cc), 'combos': (1, cc)}),
-    161: convert('true_gravity', {'percentage_max_hp': (0, multi)}),
-    172: convert('unlock', {}),
-    173: convert('absorb_mechanic_void', {'duration': (0, cc), 'attribute_absorb': (1, bool), 'damage_absorb': (1, bool)}),
-    179: convert('auto_heal_buff', {'duration': (0, cc), 'percentage_max_hp': (2, multi)}),
-    180: convert('enhanced_skyfall_buff', {'duration': (0, cc), 'percentage_increase': (1, multi)}),
-    184: convert('no_skyfall_buff', {'duration': (0, cc)}),
+    160: extra_combo_convert({'duration': (0, cc), 'combos': (1, cc)}),
+    161: true_gravity_convert({'percentage_max_hp': (0, multi)}),
+    172: convert('unlock', {'skill_text': 'Unlock all orbs'}),
+    173: absorb_mechanic_void_convert({'duration': (0, cc), 'attribute_absorb': (1, bool), 'damage_absorb': (1, bool)}),
+    179: auto_heal_convert({'duration': (0, cc), 'percentage_max_hp': (2, multi)}),
+    180: enhance_skyfall_convert({'duration': (0, cc), 'percentage_increase': (1, multi)}),
+    184: no_skyfall_convert({'duration': (0, cc)}),
     188: convert('multihit_laser', {'damage': (0, cc), 'mass_attack': False}),
     189: convert('unlock_board_path', {}),
     11: passive_stats_convert({'for_attr': (0, listify), 'atk_multiplier': (1, multi)}),
