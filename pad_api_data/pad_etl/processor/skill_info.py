@@ -8,7 +8,6 @@ from operator import itemgetter
 import sys
 
 from defaultlist import defaultlist
-from tensorflow.python.ops.gen_string_ops import reduce_join
 
 
 def make_defaultlist(fx, initial=[]):
@@ -37,13 +36,6 @@ def list_con_pos(x): return [i for i in x if i > 0]
 
 
 def binary_con(x): return [i for i, v in enumerate(str(bin(x))[:1:-1]) if v == '1']
-# def binary_con(x):
-#    result = []
-#    print(f'start: {x}, {bin(x)}, {str(bin(x))}, {str(bin(x))[:1:-1]}')
-#    for i,v in enumerate(str(bin(x))[2::-1]):
-#        if v == '1':
-#            result.append(i)
-#    return result
 
 
 def list_binary_con(x): return [b for i in x for b in binary_con(i)]
