@@ -1704,6 +1704,168 @@ def heart_cross_convert(arguments):
         c['skill_text'] = skill_text
         return 'heart_cross', c
     return f
+
+multi_play_backups = {'for_attr': [], 'for_type': [], 'hp_multiplier': 1.0, 'atk_multiplier': 1.0,
+                         'rcv_multiplier': 1.0, 'reduction_attributes': all_attr, 'damage_reduction': 0.0, 'skill_text': ''}
+
+
+def multi_play_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('multi_play',
+                                     arguments,
+                                     multi_play_backups)(x)
+
+        c['skill_text'] += 'When in multiplayer mode '+ fmt_stats_type_attr_bonus(c)
+        return 'multi_play', c
+    return f
+
+dual_passive_stat_backups = {'for_attr_1': [], 'for_type_1': [], 'hp_multiplier_1': 1.0, 'atk_multiplier_1': 1.0, 'rcv_multiplier_1': 1.0,
+                             'for_attr_2': [], 'for_type_2': [], 'hp_multiplier_2': 1.0, 'atk_multiplier_2': 1.0, 'rcv_multiplier_2': 1.0,
+                             'skill_text': ''}
+
+
+def dual_passive_stat_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('dual_passive_stat',
+                                     arguments,
+                                     dual_passive_stat_backups)(x)
+        c1 = {}
+        c1['for_attr'] = c['for_attr_1']
+        c1['for_type'] = c['for_type_1']
+        c1['hp_multiplier'] = c['hp_multiplier_1']
+        c1['atk_multiplier'] = c['atk_multiplier_1']
+        c1['rcv_multiplier'] = c['rcv_multiplier_1']
+        c2 = {}
+        c2['for_attr'] = c['for_attr_2']
+        c2['for_type'] = c['for_type_2']
+        c2['hp_multiplier'] = c['hp_multiplier_2']
+        c2['atk_multiplier'] = c['atk_multiplier_2']
+        c2['rcv_multiplier'] = c['rcv_multiplier_2']
+        c['skill_text'] += fmt_stats_type_attr_bonus(c1) +'; ' + c['skill_text'] + fmt_stats_type_attr_bonus(c2)
+        if c1['for_type'] == [] and c2['for_type'] == [] and c1['atk_multiplier'] != 1 and c2['atk_multiplier'] != 1:
+            c['skill_text'] += '; ' + fmt_mult(c1['atk_multiplier']*c2['atk_multiplier']) + 'x ATK for allies with both Att.'
+        return 'dual_passive_stat', c
+    return f
+
+
+dual_threshold_stats_backups = {'for_attr': [], 'for_type': [],
+                                'threshold_1': 0, 'above_1': False, 'atk_multiplier_1': 1, 'rcv_multiplier_1': 1, 'damage_reduction_1': 0.0,
+                                'threshold_2': 0, 'above_2': False, 'atk_multiplier_2': 1, 'rcv_multiplier_2': 1, 'damage_reduction_2': 0.0,
+                                'skill_text': ''}
+
+def dual_threshold_stats_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('dual_threshold_stats',
+                                     arguments,
+                                     dual_threshold_stats_backups)(x)
+        c1 = {}
+        c1['above'] = c['above_1']
+        c1['threshold'] = c['threshold_1']
+        c1['atk_multiplier'] = c['atk_multiplier_1']
+        c1['rcv_multiplier'] = c['rcv_multiplier_1']
+        c1['damage_reduction'] = c['damage_reduction_1']
+        c2 = {}
+        c2['above'] = c['above_2']
+        c2['threshold'] = c['threshold_2']
+        c2['atk_multiplier'] = c['atk_multiplier_2']
+        c2['rcv_multiplier'] = c['rcv_multiplier_2']
+        c2['damage_reduction'] = c['damage_reduction_2']
+        skill_text = ''
+        if c1['atk_multiplier'] != 0 or c1['rcv_multiplier'] != 1 or c1['damage_reduction'] != 0:
+            if c1['atk_multiplier'] == 0 or c1['rcv_multiplier'] != 1 or c1['damage_reduction'] != 0:
+                c1['atk_multiplier'] = 1
+            skill_text = fmt_stats_type_attr_bonus(c1, reduce_join_txt=' and ', skip_attr_all=True)
+            skill_text += ' when above ' if c1['above'] else ' when below '
+            skill_text += fmt_mult(c1['threshold'] * 100) + '% HP'
+
+        if c2['atk_multiplier'] != 1 or c2['rcv_multiplier'] != 1 or c2['damage_reduction'] != 0:
+            if skill_text != '':
+                skill_text += '; '
+            skill_text += fmt_stats_type_attr_bonus(c2, reduce_join_txt=' and ', skip_attr_all=True)
+            skill_text += ' when above ' if c2['above'] else ' when below '
+            skill_text += fmt_mult(c2['threshold'] * 100) + '% HP'
+        c['skill_text'] += skill_text
+        return 'dual_threshold_stats',c
+    return f
+
+color_cross_backups = {'crosses':[],
+                       'skill_text': ''}
+
+def color_cross_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('color_cross',
+                                     arguments,
+                                     color_cross_backups)(x)
+        if len(c['crosses']) == 1:
+            c['skill_text'] += fmt_mult(c['crosses'][0]['atk_multiplier']) + 'x ATK for each cross of 5 ' + \
+                               ATTRIBUTES[int(c['crosses'][0]['attribute'])] + ' orbs'
+        elif len(c['crosses']) >1:
+            c['skill_text'] += fmt_mult(c['crosses'][0]['atk_multiplier']) + 'x ATK for each cross of 5 '
+            for i in range(0,len(c['crosses']))[:-1]:
+                c['skill_text'] += ATTRIBUTES[c['crosses'][i]['attribute']] + ', '
+            c['skill_text'] += ATTRIBUTES[c['crosses'][-1]['attribute']] + ' orbs'
+        return 'color_cross',c
+    return f
+
+minimum_orb_backups = {'minimum_orb': 3, 'for_attr': [], 'for_type': [], 'hp_multiplier': 1.0, 'atk_multiplier': 1.0,
+                         'rcv_multiplier': 1.0, 'skill_text': ''}
+
+
+def minimum_orb_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('minimum_orb',
+                                     arguments,
+                                     minimum_orb_backups)(x)
+
+        c['skill_text'] += 'Unable to erase ' + str(c['minimum_orb']) + ' orbs or less; ' + fmt_stats_type_attr_bonus(c)
+        return 'minimum_orb', c
+    return f
+
+
+orb_remain_backups = {'orb_count': 0,
+                      'atk_multiplier': 1,
+                      'bonus_atk_multiplier': 0,
+                      'skill_text': ''}
+
+def orb_remain_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('orb_remain',
+                                     arguments,
+                                     orb_remain_backups)(x)
+        c['skill_text'] += fmt_mult(c['atk_multiplier']) + 'x ATK when there is less than ' +\
+                           str(c['orb_count']) + ' orbs remaining'
+        if c['bonus_atk_multiplier'] != 0:
+            c['skill_text'] += ' up to ' + fmt_mult(c['atk_multiplier'] +\
+                                                    c['bonus_atk_multiplier'] *\
+                                                    c['orb_count']) +\
+                               'x ATK when 0 orbs left'
+        return 'orb_remain',c
+    return f
+
+
+collab_bonus_backups = {'collab_id': 0, 'for_attr': [0,1,2,3,4], 'for_type': [], 'hp_multiplier': 1.0, 'atk_multiplier': 1.0,
+                        'rcv_multiplier': 1.0, 'skill_text': ''}
+
+
+def collab_bonus_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('collab_bonus',
+                                     arguments,
+                                     collab_bonus_backups)(x)
+
+        COLLAB = {
+            0: '',
+            47: 'Duel Masters Collab',
+            58: 'Kinnikuman Collab',
+            60: 'Magazine All-Stars Collab',
+            61: 'Monster Hunter Collab',
+            10001: 'Dragonbounds & Dragon Callers Series',
+            }
+
+        c['skill_text'] += fmt_stats_type_attr_bonus(c) + ' when all cards are from ' + COLLAB[c['collab_id']] 
+        return 'collab_bonus', c
+    return f
+
 # End of Leader skill
 
 
@@ -1854,23 +2016,23 @@ SKILL_TRANSFORM = {
     130: threshold_stats_convert(BELOW, {'for_attr': (1, binary_con), 'for_type': (2, binary_con), 'threshold': (0, multi), 'atk_multiplier': (3, multi2), 'rcv_multiplier': (4, multi2), 'reduction_attributes': (5, binary_con), 'damage_reduction': (6, multi)}),
     131: threshold_stats_convert(ABOVE, {'for_attr': (1, binary_con), 'for_type': (2, binary_con), 'threshold': (0, multi), 'atk_multiplier': (3, multi2), 'rcv_multiplier': (4, multi2), 'reduction_attributes': (5, binary_con), 'damage_reduction': (6, multi)}),
     133: skill_used_convert({'for_attr': (0, binary_con), 'for_type': (1, binary_con), 'atk_multiplier': (2, multi2), 'rcv_multiplier': (3, multi2)}),
-    136: convert('dual_passive_stats', {'for_attr_1': (0, binary_con), 'for_type_1': [], 'hp_multiplier_1': (1, multi2), 'atk_multiplier_1': (2, multi2), 'rcv_multiplier_1': (3, multi2),
-                                        'for_attr_2': (4, binary_con), 'for_type_2': [], 'hp_multiplier_2': (5, multi2), 'atk_multiplier_2': (6, multi2), 'rcv_multiplier_2': (7, multi2)}),
-    137: convert('dual_passive_stats', {'for_attr_1': [], 'for_type_1': (0, binary_con), 'hp_multiplier_1': (1, multi2), 'atk_multiplier_1': (2, multi2), 'rcv_multiplier_1': (3, multi2),
-                                        'for_attr_2': [], 'for_type_2': (4, binary_con), 'hp_multiplier_2': (5, multi2), 'atk_multiplier_2': (6, multi2), 'rcv_multiplier_2': (7, multi2)}),
+    136: dual_passive_stat_convert({'for_attr_1': (0, binary_con), 'for_type_1': [], 'hp_multiplier_1': (1, multi2), 'atk_multiplier_1': (2, multi2), 'rcv_multiplier_1': (3, multi2),
+                                    'for_attr_2': (4, binary_con), 'for_type_2': [], 'hp_multiplier_2': (5, multi2), 'atk_multiplier_2': (6, multi2), 'rcv_multiplier_2': (7, multi2)}),
+    137: dual_passive_stat_convert({'for_attr_1': [], 'for_type_1': (0, binary_con), 'hp_multiplier_1': (1, multi2), 'atk_multiplier_1': (2, multi2), 'rcv_multiplier_1': (3, multi2),
+                                    'for_attr_2': [], 'for_type_2': (4, binary_con), 'hp_multiplier_2': (5, multi2), 'atk_multiplier_2': (6, multi2), 'rcv_multiplier_2': (7, multi2)}),
     138: convert('combine_leader_skills', {'skill_ids': (slice(None), list_con)}),
-    139: convert('dual_threshold_stats', {'for_attr': (0, binary_con), 'for_type': (1, binary_con),
-                                          'threshold_1': (2, multi), 'above_1': (3, lambda x: not bool(x)), 'atk_multiplier_1': (4, multi), 'rcv_multiplier_1': 1.0, 'damage_reduction_1': 0.0,
-                                          'threshold_2': (5, multi), 'above_2': (6, lambda x: not bool(x)), 'atk_multiplier_2': (7, multi), 'rcv_multiplier_2': 1.0, 'damage_reduction_2': 0.0}),
+    139: dual_threshold_stats_convert({'for_attr': (0, binary_con), 'for_type': (1, binary_con),
+                                       'threshold_1': (2, multi), 'above_1': (3, lambda x: not bool(x)), 'atk_multiplier_1': (4, multi), 'rcv_multiplier_1': 1.0, 'damage_reduction_1': 0.0,
+                                       'threshold_2': (5, multi), 'above_2': (6, lambda x: not bool(x)), 'atk_multiplier_2': (7, multi), 'rcv_multiplier_2': 1.0, 'damage_reduction_2': 0.0}),
     148: rank_exp_rate_convert({'multiplier': (0, multi)}),
     149: heart_tpa_stats_convert({'rcv_multiplier': (0, multi)}),
     150: five_orb_one_enhance_convert({'atk_multiplier': (1, multi)}),
     151: heart_cross_convert({'atk_multiplier': (0, multi2), 'rcv_multiplier': (1, multi2), 'damage_reduction': (2, multi)}),
-    155: convert('multiplayer_stats', {'for_attr': (0, binary_con), 'for_type': (1, binary_con), 'hp_multiplier': (2, multi2), 'atk_multiplier': (3, multi2), 'rcv_multiplier': (4, multi2)}),
-    157: convert('color_cross', {'crosses': (slice(None), lambda x: [{'attribute': a, 'atk_multiplier': multi(d)} for a, d in zip(x[::2], x[1::2])])}),
-    158: convert('minimum_match', {'minimum_match': (0, cc), 'for_attr': (1, binary_con), 'for_type': (2, binary_con), 'hp_multiplier': (4, multi2), 'atk_multiplier': (3, multi2), 'rcv_multiplier': (5, multi2)}),
+    155: multi_play_convert({'for_attr': (0, binary_con), 'for_type': (1, binary_con), 'hp_multiplier': (2, multi2), 'atk_multiplier': (3, multi2), 'rcv_multiplier': (4, multi2)}),
+    157: color_cross_convert({'crosses': (slice(None), lambda x: [{'attribute': a, 'atk_multiplier': multi(d)} for a, d in zip(x[::2], x[1::2])])}),
+    158: minimum_orb_convert({'minimum_orb': (0, cc), 'for_attr': (1, binary_con), 'for_type': (2, binary_con), 'hp_multiplier': (4, multi2), 'atk_multiplier': (3, multi2), 'rcv_multiplier': (5, multi2)}),
     159: mass_match_convert({'attributes': (0, binary_con), 'minimum_count': (1, cc), 'minimum_atk_multiplier': (2, multi), 'bonus_atk_multiplier': (3, multi), 'maximum_count': (4, cc)}),
-    162: convert('large_board', {'for_attr': [], 'for_type': [], 'hp_multiplier': 1.0, 'atk_multiplier': 1.0, 'rcv_multiplier': 1.0}),
+    162: passive_stats_convert({'for_attr': [], 'for_type': [], 'hp_multiplier': 1.0, 'atk_multiplier': 1.0, 'rcv_multiplier': 1.0,'skill_text': 'Board becomes 7x6; '}),
     163: passive_stats_convert({'for_attr': (0, binary_con), 'for_type': (1, binary_con), 'hp_multiplier': (2, multi2), 'atk_multiplier': (3, multi2), 'rcv_multiplier': (4, multi2), 'reduction_attributes': (5, binary_con), 'damage_reduction': (6, multi),
                                 'skill_text': '[No Skyfall] '}),
     164: multi_attribute_match_convert({'attributes': (slice(0, 4), list_binary_con), 'minimum_match': (4, cc), 'minimum_atk_multiplier': (5, multi), 'minimum_rcv_multiplier': (6, multi), 'bonus_atk_multiplier': (7, multi), 'bonus_rcv_multiplier': (7, multi)}),
@@ -1881,15 +2043,15 @@ SKILL_TRANSFORM = {
     169: combo_match_convert({'for_attr': all_attr, 'minimum_combos': (0, cc), 'minimum_atk_multiplier': (1, multi), 'minimum_damage_reduction': (2, multi)}),
     170: attribute_match_convert({'attributes': (0, binary_con), 'minimum_attributes': (1, cc), 'minimum_atk_multiplier': (2, multi), 'minimum_damage_reduction': (3, multi)}),
     171: multi_attribute_match_convert({'attributes': (slice(0, 4), list_binary_con), 'minimum_match': (4, cc), 'minimum_atk_multiplier': (5, multi), 'minimum_damage_reduction': (6, multi)}),
-    175: convert('collab_bonus', {'collab_id': (0, cc), 'hp_multiplier': (3, multi2), 'atk_multiplier': (4, multi2), 'rcv_multiplier': (5, multi2)}),
-    177: convert('orbs_remaining', {'orb_count': (5, cc), 'atk_multiplier': (6, multi), 'bonus_atk_multiplier': (7, multi)}),
-    178: convert('fixed_move_time', {'time': (0, cc), 'for_attr': (1, binary_con), 'for_type': (2, binary_con), 'hp_multiplier': (3, multi2), 'atk_multiplier': (4, multi2), 'rcv_multiplier': (5, multi2)}),
+    175: collab_bonus_convert({'collab_id': (0, cc), 'hp_multiplier': (3, multi2), 'atk_multiplier': (4, multi2), 'rcv_multiplier': (5, multi2)}),
+    177: orb_remain_convert({'orb_count': (5, cc), 'atk_multiplier': (6, multi), 'bonus_atk_multiplier': (7, multi)}),
+    178: passive_stats_convert({'time': (0, cc), 'for_attr': (1, binary_con), 'for_type': (2, binary_con), 'hp_multiplier': (3, multi2), 'atk_multiplier': (4, multi2), 'rcv_multiplier': (5, multi2), 'skill_text': 'Fixed 4 second movetime; '}),
     182: mass_match_convert({'attributes': (0, binary_con), 'minimum_count': (1, cc), 'minimum_atk_multiplier': (2, multi), 'minimum_damage_reduction': (3, multi)}),
-    183: convert('dual_threshold_stats', {'for_attr': (0, binary_con), 'for_type': (1, binary_con),
-                                          'threshold_1': (2, multi), 'above_1': True, 'atk_multiplier_1': (3, multi), 'rcv_multiplier_1': 1.0, 'damage_reduction_1': (4, multi),
-                                          'threshold_2': (5, multi), 'above_2': False, 'atk_multiplier_2': (6, multi2), 'rcv_multiplier_2': (7, multi2), 'damage_reduction_2': 0.0}),
+    183: dual_threshold_stats_convert({'for_attr': (0, binary_con), 'for_type': (1, binary_con),
+                                       'threshold_1': (2, multi), 'above_1': True, 'atk_multiplier_1': (3, multi), 'rcv_multiplier_1': 1.0, 'damage_reduction_1': (4, multi),
+                                       'threshold_2': (5, multi), 'above_2': False, 'atk_multiplier_2': (6, multi2), 'rcv_multiplier_2': (7, multi2), 'damage_reduction_2': 0.0}),
     185: bonus_time_convert({'time': (0, multi), 'for_attr': (1, binary_con), 'for_type': (2, binary_con), 'hp_multiplier': (3, multi2), 'atk_multiplier': (4, multi2), 'rcv_multiplier': (5, multi2)}),
-    186: convert('large_board', {'for_attr': (0, binary_con), 'for_type': (1, binary_con), 'hp_multiplier': (2, multi2), 'atk_multiplier': (3, multi2), 'rcv_multiplier': (4, multi2)}), }
+    186: passive_stats_convert({'for_attr': (0, binary_con), 'for_type': (1, binary_con), 'hp_multiplier': (2, multi2), 'atk_multiplier': (3, multi2), 'rcv_multiplier': (4, multi2)}), 'skill_text': 'Board becomes 7x6; '}
 
 
 def reformat(in_file_name, out_file_name):
