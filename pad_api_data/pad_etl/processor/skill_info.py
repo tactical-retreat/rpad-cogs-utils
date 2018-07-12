@@ -1249,8 +1249,24 @@ def drain_attr_attack_convert(arguments):
 
 # Leader skill
 
+def fmt_parameter(c):
+    hp_mult = c.get('hp_multiplier', 1)
+    atk_mult = c.get('atk_multiplier', c.get('minimum_atk_multiplier', 1.0))
+    rcv_mult = c.get('rcv_multiplier', c.get('minimum_rcv_multiplier', 1.0))
+    bonus_atk_mult = c.get('bonus_atk_multiplier', 0.0)
+    bonus_rcv_mult = c.get('bonus_rcv_multiplier', 0.0)
+    damage_reduct = c.get('damage_reduction', c.get('minimum_damage_reduction', 0.0))
+    step = c.get('step', 0.0)
+
+    if damage_reduct == '': damge_reduct = 0
+    
+    return [float(fmt_mult(pow(hp_mult,2))),
+            float(fmt_mult(float("{0:.2f}".format(pow(atk_mult + step * bonus_atk_mult,2))))),
+            float(fmt_mult(pow(rcv_mult + step * bonus_rcv_mult,2))),
+            float(fmt_mult(1 - pow(1 - damage_reduct,2)))]
+
 passive_stats_backups = {'for_attr': [], 'for_type': [], 'hp_multiplier': 1.0, 'atk_multiplier': 1.0,
-                         'rcv_multiplier': 1.0, 'reduction_attributes': all_attr, 'damage_reduction': 0.0, 'skill_text': ''}
+                         'rcv_multiplier': 1.0, 'reduction_attributes': all_attr, 'damage_reduction': 0.0, 'skill_text': '', 'parameter': [1.0,1.0,1.0,0.0]}
 
 
 def passive_stats_convert(arguments):
@@ -1260,6 +1276,7 @@ def passive_stats_convert(arguments):
                                      passive_stats_backups)(x)
 
         c['skill_text'] += fmt_stats_type_attr_bonus(c)
+        c['parameter'] = fmt_parameter(c)
         return 'passive_stats', c
     return f
 
@@ -1280,13 +1297,14 @@ def threshold_stats_convert(above, arguments):
         skill_text += ' when above ' if above else ' when below '
         skill_text += fmt_mult(threshold * 100) + '% HP'
         c['skill_text'] += skill_text
+        c['parameter'] = fmt_parameter(c)
         return tag, c
     return f
 
 
 combo_match_backups = {'for_attr': [], 'for_type': [], 'minimum_combos': 0, 'minimum_atk_multiplier': 1.0, 'minimum_rcv_multiplier': 1.0, 'minimum_damage_reduction': 0.0,
                                                                             'bonus_atk_multiplier': 0.0,   'bonus_rcv_multiplier': 0.0,   'bonus_damage_reduction': 0.0,
-                                                       'maximum_combos': 0, 'reduction_attributes': all_attr, 'skill_text': ''}
+                                                       'maximum_combos': 0, 'reduction_attributes': all_attr, 'skill_text': '', 'parameter': [1.0,1.0,1.0,0.0]}
 
 
 def combo_match_convert(arguments):
@@ -1312,13 +1330,16 @@ def combo_match_convert(arguments):
             skill_text += ' up to {}x at {} combos'.format(fmt_mult(max_mult), max_combos)
 
         c['skill_text'] = skill_text
+
+        c['step'] = max_combos - min_combos
+        c['parameter'] = fmt_parameter(c)
         return 'combo_match', c
     return f
 
 
 attribute_match_backups = {'attributes': [], 'minimum_attributes': 0, 'minimum_atk_multiplier': 1.0, 'minimum_rcv_multiplier': 1.0, 'minimum_damage_reduction': 0.0,
                                                                       'bonus_atk_multiplier': 0.0,   'bonus_rcv_multiplier': 0.0,   'bonus_damage_reduction': 0.0,
-                                             'maximum_attributes': 0, 'reduction_attributes': all_attr, 'skill_text': ''}
+                                             'maximum_attributes': 0, 'reduction_attributes': all_attr, 'skill_text': '', 'parameter': [1.0,1.0,1.0,0.0]}
 
 
 def attribute_match_convert(arguments):
@@ -1356,13 +1377,16 @@ def attribute_match_convert(arguments):
             skill_text += ' when matching {} at once'.format(attr_text)
 
         c['skill_text'] = skill_text
+
+        c['step'] = max_attr - min_attr
+        c['parameter'] = fmt_parameter(c)
         return 'attribute_match', c
     return f
 
 
 multi_attribute_match_backups = {'attributes': [], 'minimum_match': 0, 'minimum_atk_multiplier': 1.0, 'minimum_rcv_multiplier': 1.0, 'minimum_damage_reduction': 0.0,
                                                                        'bonus_atk_multiplier': 0.0,   'bonus_rcv_multiplier': 0.0,   'bonus_damage_reduction': 0.0,
-                                                   'reduction_attributes': all_attr, 'skill_text': ''}
+                                                   'reduction_attributes': all_attr, 'skill_text': '', 'parameter': [1.0,1.0,1.0,0.0], 'step': 0}
 
 
 def multi_attribute_match_convert(arguments):
@@ -1408,13 +1432,17 @@ def multi_attribute_match_convert(arguments):
                 skill_text += ' up to {}x when matching {}'.format(fmt_mult(max_mult), all_colors)
 
         c['skill_text'] = skill_text
+
+        c['step'] = len(attributes) - min_match
+        c['parameter'] = fmt_parameter(c)
+        
         return 'multi-attribute_match', c
     return f
 
 
 mass_match_backups = {'attributes': [], 'minimum_count': 0, 'minimum_atk_multiplier': 1.0, 'minimum_rcv_multiplier': 1.0, 'minimum_damage_reduction': 0.0,
                                                             'bonus_atk_multiplier': 0.0,   'bonus_rcv_multiplier': 0.0,   'bonus_damage_reduction': 0.0,
-                                        'maximum_count': 0, 'reduction_attributes': all_attr, 'skill_text': ''}
+                                        'maximum_count': 0, 'reduction_attributes': all_attr, 'skill_text': '', 'parameter': [1.0,1.0,1.0,0.0]}
 
 
 def mass_match_convert(arguments):
@@ -1451,11 +1479,14 @@ def mass_match_convert(arguments):
             c['maximum_count'] = min_count
         # End Temporary hack
 
+        c['step'] = max_count - min_count
+        c['parameter'] = fmt_parameter(c)
+
         return 'mass_match', c
     return f
 
 
-after_attack_on_match_backups = {'multiplier': 0, 'skill_text': ''}
+after_attack_on_match_backups = {'multiplier': 0, 'skill_text': '', 'parameter': [1.0,1.0,1.0,0.0]}
 
 
 def after_attack_convert(arguments):
@@ -1469,7 +1500,7 @@ def after_attack_convert(arguments):
     return f
 
 
-heal_on_match_backups = {'multiplier': 0, 'skill_text': ''}
+heal_on_match_backups = {'multiplier': 0, 'skill_text': '', 'parameter': [1.0,1.0,1.0,0.0]}
 
 
 def heal_on_convert(arguments):
@@ -1483,7 +1514,7 @@ def heal_on_convert(arguments):
     return f
 
 
-resolve_backups = {'threshold': 0, 'skill_text': ''}
+resolve_backups = {'threshold': 0, 'skill_text': '', 'parameter': [1.0,1.0,1.0,0.0]}
 
 
 def resolve_convert(arguments):
@@ -1497,8 +1528,9 @@ def resolve_convert(arguments):
     return f
 
 
-bonus_move_time_backups = {'time': 0.0, 'for_attr': [], 'for_type': [
-], 'hp_multiplier': 1.0, 'atk_multiplier': 1.0, 'rcv_multiplier': 1.0, 'skill_text': ''}
+bonus_move_time_backups = {'time': 0.0, 'for_attr': [], 'for_type': [],
+                           'hp_multiplier': 1.0, 'atk_multiplier': 1.0, 'rcv_multiplier': 1.0,
+                           'skill_text': '', 'parameter': [1.0,1.0,1.0,0.0]}
 
 
 def bonus_time_convert(arguments):
@@ -1516,11 +1548,14 @@ def bonus_time_convert(arguments):
             skill_text += 'Increase orb movement time by ' + fmt_mult(time) + ' seconds'
 
         c['skill_text'] += skill_text
+
+        c['parameter'] = fmt_parameter(c)
+        c['parameter'][3] = 0.0
         return 'bonus_move_time', c
     return f
 
 
-counter_attack_backups = {'chance': 0, 'multiplier': 0, 'attribute': [], 'skill_text': ''}
+counter_attack_backups = {'chance': 0, 'multiplier': 0, 'attribute': [], 'skill_text': '', 'parameter': [1.0,1.0,1.0,0.0]}
 
 
 def counter_attack_convert(arguments):
@@ -1539,7 +1574,7 @@ def counter_attack_convert(arguments):
     return f
 
 
-egg_drop_backups = {'multiplier': 1.0, 'skill_text': ''}
+egg_drop_backups = {'multiplier': 1.0, 'skill_text': '', 'parameter': [1.0,1.0,1.0,0.0]}
 
 
 def egg_drop_convert(arguments):
@@ -1552,7 +1587,7 @@ def egg_drop_convert(arguments):
     return f
 
 
-coin_drop_backups = {'multiplier': 1.0, 'skill_text': ''}
+coin_drop_backups = {'multiplier': 1.0, 'skill_text': '', 'parameter': [1.0,1.0,1.0,0.0]}
 
 
 def coin_drop_convert(arguments):
@@ -1566,7 +1601,7 @@ def coin_drop_convert(arguments):
 
 
 skill_used_backups = {'for_attr': [], 'for_type': [],
-                      'atk_multiplier': 1, 'rcv_multiplier': 1, 'skill_text': ''}
+                      'atk_multiplier': 1, 'rcv_multiplier': 1, 'skill_text': '', 'parameter': [1.0,1.0,1.0,0.0]}
 
 
 def skill_used_convert(arguments):
@@ -1577,11 +1612,14 @@ def skill_used_convert(arguments):
         skill_text = fmt_stats_type_attr_bonus(c, skip_attr_all=True)
         skill_text += ' on the turn a skill is used'
         c['skill_text'] = skill_text
+
+        c['parameter'] = fmt_parameter(c)
+        c['parameter'][3] = 0.0
         return 'skill_used_stats', c
     return f
 
 
-exact_combo_backups = {'combos': 0, 'atk_multiplier': 1, 'skill_text': ''}
+exact_combo_backups = {'combos': 0, 'atk_multiplier': 1, 'skill_text': '', 'parameter': [1.0,1.0,1.0,0.0]}
 
 
 def exact_combo_convert(arguments):
@@ -1591,12 +1629,15 @@ def exact_combo_convert(arguments):
                                      exact_combo_backups)(x)
         c['skill_text'] += fmt_mult(c['atk_multiplier']) + \
             'x ATK when exactly ' + str(c['combos']) + ' combos'
+
+        c['parameter'] = fmt_parameter(c)
+        c['parameter'][3] = 0.0
         return 'exact_combo_match', c
     return f
 
 
 passive_stats_type_atk_all_hp_backups = {'for_type': [],
-                                         'atk_multiplier': 1, 'hp_multiplier': 1, 'skill_text': ''}
+                                         'atk_multiplier': 1, 'hp_multiplier': 1, 'skill_text': '', 'parameter': [1.0,1.0,1.0,0.0]}
 
 
 def passive_stats_type_atk_all_hp_convert(arguments):
@@ -1610,12 +1651,15 @@ def passive_stats_type_atk_all_hp_convert(arguments):
         for i in c['for_type'][:-1]:
             c['skill_text'] += TYPES[i] + ', '
         c['skill_text'] += TYPES[int(c['for_type'][-1])] + ' type'
+
+        c['parameter'] = fmt_parameter(c)
+        c['parameter'][3] = 0.0
         return 'passive_stats_type_atk_all_hp', c
     return f
 
 
 team_build_bonus_backups = {'monster_ids': 0, 'hp_multiplier': 1,
-                            'atk_multiplier': 1, 'rcv_multiplier': 1, 'skill_text': ''}
+                            'atk_multiplier': 1, 'rcv_multiplier': 1, 'skill_text': '', 'parameter': [1.0,1.0,1.0,0.0]}
 
 
 def team_build_bonus_convert(arguments):
@@ -1629,11 +1673,14 @@ def team_build_bonus_convert(arguments):
         skill_text += ' if ' + monster_ids + ' is on the team'
 
         c['skill_text'] += skill_text
+
+        c['parameter'] = fmt_parameter(c)
+        c['parameter'][3] = 0.0
         return 'team_build_bonus', c
     return f
 
 
-rank_exp_rate_backups = {'multiplier': 1, 'skill_text': ''}
+rank_exp_rate_backups = {'multiplier': 1, 'skill_text': '', 'parameter': [1.0,1.0,1.0,0.0]}
 
 
 def rank_exp_rate_convert(arguments):
@@ -1642,11 +1689,12 @@ def rank_exp_rate_convert(arguments):
                                      arguments,
                                      rank_exp_rate_backups)(x)
         c['skill_text'] += fmt_mult(c['multiplier']) + 'x rank EXP'
+        c['parameter'][3] = 0.0
         return 'rank_exp_rate', c
     return f
 
 
-heart_tpa_stats_backups = {'rcv_multiplier': 1, 'skill_text': ''}
+heart_tpa_stats_backups = {'rcv_multiplier': 1, 'skill_text': '', 'parameter': [1.0,1.0,1.0,0.0]}
 
 
 def heart_tpa_stats_convert(arguments):
@@ -1656,11 +1704,14 @@ def heart_tpa_stats_convert(arguments):
                                      heart_tpa_stats_backups)(x)
         c['skill_text'] += fmt_mult(c['rcv_multiplier']) + \
             'x RCV when matching 4 Heal orbs'
+
+        c['parameter'] = fmt_parameter(c)
+        c['parameter'][3] = 0.0
         return 'heart_tpa_stats', c
     return f
 
 
-five_orb_one_enhance_backups = {'atk_multiplier': 1, 'skill_text': ''}
+five_orb_one_enhance_backups = {'atk_multiplier': 1, 'skill_text': '', 'parameter': [1.0,1.0,1.0,0.0]}
 
 
 def five_orb_one_enhance_convert(arguments):
@@ -1670,12 +1721,15 @@ def five_orb_one_enhance_convert(arguments):
                                      five_orb_one_enhance_backups)(x)
         c['skill_text'] += fmt_mult(c['atk_multiplier']) + \
             'x ATK for matched Att. when matching 5 Orbs with 1+ enhanced'
+
+        c['parameter'] = fmt_parameter(c)
+        c['parameter'][3] = 0.0
         return 'five_orb_one_enhance', c
     return f
 
 
 heart_cross_backups = {'atk_multiplier': 1, 'rcv_multiplier': 1,
-                       'damage_reduction': 0, 'skill_text': ''}
+                       'damage_reduction': 0, 'skill_text': '', 'parameter': [1.0,1.0,1.0,0.0]}
 
 
 def heart_cross_convert(arguments):
@@ -1702,11 +1756,13 @@ def heart_cross_convert(arguments):
         skill_text += ' when matching 5 Heal orbs in a cross formation'
 
         c['skill_text'] = skill_text
+
+        c['parameter'] = fmt_parameter(c)
         return 'heart_cross', c
     return f
 
 multi_play_backups = {'for_attr': [], 'for_type': [], 'hp_multiplier': 1.0, 'atk_multiplier': 1.0,
-                         'rcv_multiplier': 1.0, 'reduction_attributes': all_attr, 'damage_reduction': 0.0, 'skill_text': ''}
+                         'rcv_multiplier': 1.0, 'reduction_attributes': all_attr, 'damage_reduction': 0.0, 'skill_text': '', 'parameter': [1.0,1.0,1.0,0.0]}
 
 
 def multi_play_convert(arguments):
@@ -1716,12 +1772,15 @@ def multi_play_convert(arguments):
                                      multi_play_backups)(x)
 
         c['skill_text'] += 'When in multiplayer mode '+ fmt_stats_type_attr_bonus(c)
+
+        c['parameter'] = fmt_parameter(c)
+        c['parameter'][3] = 0.0
         return 'multi_play', c
     return f
 
 dual_passive_stat_backups = {'for_attr_1': [], 'for_type_1': [], 'hp_multiplier_1': 1.0, 'atk_multiplier_1': 1.0, 'rcv_multiplier_1': 1.0,
                              'for_attr_2': [], 'for_type_2': [], 'hp_multiplier_2': 1.0, 'atk_multiplier_2': 1.0, 'rcv_multiplier_2': 1.0,
-                             'skill_text': ''}
+                             'skill_text': '', 'parameter': [1.0,1.0,1.0,0.0]}
 
 
 def dual_passive_stat_convert(arguments):
@@ -1744,6 +1803,16 @@ def dual_passive_stat_convert(arguments):
         c['skill_text'] += fmt_stats_type_attr_bonus(c1) +'; ' + c['skill_text'] + fmt_stats_type_attr_bonus(c2)
         if c1['for_type'] == [] and c2['for_type'] == [] and c1['atk_multiplier'] != 1 and c2['atk_multiplier'] != 1:
             c['skill_text'] += '; ' + fmt_mult(c1['atk_multiplier']*c2['atk_multiplier']) + 'x ATK for allies with both Att.'
+
+        c1['parameter'] = fmt_parameter(c1)
+        c2['parameter'] = fmt_parameter(c2)
+
+        for i in range(0,len(c['parameter'])):
+            if c1['parameter'][i] > c2['parameter'][i]:
+                c['parameter'][i] = c1['parameter'][i]
+            else:
+                c['parameter'][i] = c2['parameter'][i]
+        c['parameter'][3] = 0.0
         return 'dual_passive_stat', c
     return f
 
@@ -1751,7 +1820,7 @@ def dual_passive_stat_convert(arguments):
 dual_threshold_stats_backups = {'for_attr': [], 'for_type': [],
                                 'threshold_1': 0, 'above_1': False, 'atk_multiplier_1': 1, 'rcv_multiplier_1': 1, 'damage_reduction_1': 0.0,
                                 'threshold_2': 0, 'above_2': False, 'atk_multiplier_2': 1, 'rcv_multiplier_2': 1, 'damage_reduction_2': 0.0,
-                                'skill_text': ''}
+                                'skill_text': '', 'parameter': [1.0,1.0,1.0,0.0]}
 
 def dual_threshold_stats_convert(arguments):
     def f(x):
@@ -1785,11 +1854,21 @@ def dual_threshold_stats_convert(arguments):
             skill_text += ' when above ' if c2['above'] else ' when below '
             skill_text += fmt_mult(c2['threshold'] * 100) + '% HP'
         c['skill_text'] += skill_text
+
+        c1['parameter'] = fmt_parameter(c1)
+        c2['parameter'] = fmt_parameter(c2)
+
+        for i in range(0,len(c['parameter'])):
+            if c1['parameter'][i] > c2['parameter'][i]:
+                c['parameter'][i] = c1['parameter'][i]
+            else:
+                c['parameter'][i] = c2['parameter'][i]
         return 'dual_threshold_stats',c
     return f
 
 color_cross_backups = {'crosses':[],
-                       'skill_text': ''}
+                       'hp_multiplier': 1.0, 'atk_multiplier': 1.0, 'rcv_multiplier': 1.0, 'damage_reduction': 0.0,
+                       'skill_text': '', 'parameter': [1.0,1.0,1.0,0.0]}
 
 def color_cross_convert(arguments):
     def f(x):
@@ -1799,16 +1878,26 @@ def color_cross_convert(arguments):
         if len(c['crosses']) == 1:
             c['skill_text'] += fmt_mult(c['crosses'][0]['atk_multiplier']) + 'x ATK for each cross of 5 ' + \
                                ATTRIBUTES[int(c['crosses'][0]['attribute'])] + ' orbs'
+            
+            c['atk_multiplier'] = pow(c['crosses'][0]['atk_multiplier'],2)
+            c['parameter'] = fmt_parameter(c)
         elif len(c['crosses']) >1:
             c['skill_text'] += fmt_mult(c['crosses'][0]['atk_multiplier']) + 'x ATK for each cross of 5 '
             for i in range(0,len(c['crosses']))[:-1]:
                 c['skill_text'] += ATTRIBUTES[c['crosses'][i]['attribute']] + ', '
             c['skill_text'] += ATTRIBUTES[c['crosses'][-1]['attribute']] + ' orbs'
+            
+            c['atk_multiplier'] = pow(c['crosses'][0]['atk_multiplier'],3)
+
+            c['parameter'] = fmt_parameter(c)
+            
+        
         return 'color_cross',c
     return f
 
-minimum_orb_backups = {'minimum_orb': 3, 'for_attr': [], 'for_type': [], 'hp_multiplier': 1.0, 'atk_multiplier': 1.0,
-                         'rcv_multiplier': 1.0, 'skill_text': ''}
+minimum_orb_backups = {'minimum_orb': 3, 'for_attr': [], 'for_type': [],
+                       'hp_multiplier': 1.0, 'atk_multiplier': 1.0, 'rcv_multiplier': 1.0,
+                       'skill_text': '', 'parameter': [1.0,1.0,1.0,0.0]}
 
 
 def minimum_orb_convert(arguments):
@@ -1818,6 +1907,9 @@ def minimum_orb_convert(arguments):
                                      minimum_orb_backups)(x)
 
         c['skill_text'] += 'Unable to erase ' + str(c['minimum_orb']) + ' orbs or less; ' + fmt_stats_type_attr_bonus(c)
+
+        c['parameter'] = fmt_parameter(c)
+        c['parameter'][3] = 0.0
         return 'minimum_orb', c
     return f
 
@@ -1825,7 +1917,8 @@ def minimum_orb_convert(arguments):
 orb_remain_backups = {'orb_count': 0,
                       'atk_multiplier': 1,
                       'bonus_atk_multiplier': 0,
-                      'skill_text': ''}
+                      'skill_text': '',
+                      'parameter': [1.0,1.0,1.0,0.0]}
 
 def orb_remain_convert(arguments):
     def f(x):
@@ -1839,12 +1932,16 @@ def orb_remain_convert(arguments):
                                                     c['bonus_atk_multiplier'] *\
                                                     c['orb_count']) +\
                                'x ATK when 0 orbs left'
+        c['step'] = c['orb_count']
+        c['parameter'] = fmt_parameter(c)
+        c['parameter'][3] = 0.0
         return 'orb_remain',c
     return f
 
 
-collab_bonus_backups = {'collab_id': 0, 'for_attr': [0,1,2,3,4], 'for_type': [], 'hp_multiplier': 1.0, 'atk_multiplier': 1.0,
-                        'rcv_multiplier': 1.0, 'skill_text': ''}
+collab_bonus_backups = {'collab_id': 0, 'for_attr': [0,1,2,3,4], 'for_type': [],
+                        'hp_multiplier': 1.0, 'atk_multiplier': 1.0, 'rcv_multiplier': 1.0,
+                        'skill_text': '', 'parameter': [1.0,1.0,1.0,0.0]}
 
 
 def collab_bonus_convert(arguments):
@@ -1862,7 +1959,10 @@ def collab_bonus_convert(arguments):
             10001: 'Dragonbounds & Dragon Callers Series',
             }
 
-        c['skill_text'] += fmt_stats_type_attr_bonus(c) + ' when all cards are from ' + COLLAB[c['collab_id']] 
+        c['skill_text'] += fmt_stats_type_attr_bonus(c) + ' when all cards are from ' + COLLAB[c['collab_id']]
+
+        c['parameter'] = fmt_parameter(c)
+        c['parameter'][3] = 0.0
         return 'collab_bonus', c
     return f
 
@@ -1915,7 +2015,7 @@ SKILL_TRANSFORM = {
     93: convert('leader_swap', {'skill_text': 'Becomes Team leader, changes back when used again'}),
     110: grudge_strike_convert({'mass_attack': (0, lambda x: x == 0), 'attribute': (1, cc), 'high_multiplier': (2, multi), 'low_multiplier': (3, multi)}),
     115: drain_attr_attack_convert({'attribute': (0, cc), 'atk_multiplier': (1, multi), 'recover_multiplier': (2, multi), 'mass_attack': False}),
-    116: convert('combine_active_skills', {'skill_ids': (slice(None), list_con)}),
+    116: convert('combine_active_skills', {'skill_ids': (slice(None), list_con), 'skill_text': ''}),
     117: heal_active_convert({'card_bind': (0, cc), 'rcv_multiplier_as_hp': (1, multi), 'hp': (2, cc), 'percentage_max_hp': (3, multi), 'awoken_bind': (4, cc), 'team_rcv_multiplier_as_hp': 0.0}),
     118: convert('random_skill', {'skill_ids': (slice(None), list_con), 'skill_text': 'Activate a random skill'}),
     126: change_skyfall_convert({'orbs': (0, binary_con), 'duration': (1, cc), 'percentage': (3, multi)}),
@@ -1963,7 +2063,7 @@ SKILL_TRANSFORM = {
     29: passive_stats_convert({'for_attr': (0, listify), 'hp_multiplier': (1, multi), 'atk_multiplier': (1, multi), 'rcv_multiplier': (1, multi)}),
     30: passive_stats_convert({'for_type': (slice(0, 2), list_con), 'hp_multiplier': (2, multi)}),
     31: passive_stats_convert({'for_type': (slice(0, 2), list_con), 'atk_multiplier': (2, multi)}),
-    33: convert('drumming_sound', {'skill_text': 'Turn orb sound effects into Taiko noises'}),
+    33: convert('drumming_sound', {'skill_text': 'Turn orb sound effects into Taiko noises', 'parameter': [1.0,1.0,1.0,0.0]}),
     36: passive_stats_convert({'reduction_attributes': (slice(0, 2), list_con), 'damage_reduction': (2, multi)}),
     38: threshold_stats_convert(BELOW, {'for_attr': all_attr, 'threshold': (0, multi), 'damage_reduction': (2, multi)}),
     39: threshold_stats_convert(BELOW, {'for_attr': all_attr, 'threshold': (0, multi), 'atk_multiplier': (slice(1, 4), atk_from_slice), 'rcv_multiplier': (slice(1, 4), rcv_from_slice)}),
@@ -2020,7 +2120,7 @@ SKILL_TRANSFORM = {
                                     'for_attr_2': (4, binary_con), 'for_type_2': [], 'hp_multiplier_2': (5, multi2), 'atk_multiplier_2': (6, multi2), 'rcv_multiplier_2': (7, multi2)}),
     137: dual_passive_stat_convert({'for_attr_1': [], 'for_type_1': (0, binary_con), 'hp_multiplier_1': (1, multi2), 'atk_multiplier_1': (2, multi2), 'rcv_multiplier_1': (3, multi2),
                                     'for_attr_2': [], 'for_type_2': (4, binary_con), 'hp_multiplier_2': (5, multi2), 'atk_multiplier_2': (6, multi2), 'rcv_multiplier_2': (7, multi2)}),
-    138: convert('combine_leader_skills', {'skill_ids': (slice(None), list_con)}),
+    138: convert('combine_leader_skills', {'skill_ids': (slice(None), list_con), 'skill_text': '', 'parameter': [1.0,1.0,1.0,0.0]}),
     139: dual_threshold_stats_convert({'for_attr': (0, binary_con), 'for_type': (1, binary_con),
                                        'threshold_1': (2, multi), 'above_1': (3, lambda x: not bool(x)), 'atk_multiplier_1': (4, multi), 'rcv_multiplier_1': 1.0, 'damage_reduction_1': 0.0,
                                        'threshold_2': (5, multi), 'above_2': (6, lambda x: not bool(x)), 'atk_multiplier_2': (7, multi), 'rcv_multiplier_2': 1.0, 'damage_reduction_2': 0.0}),
@@ -2029,6 +2129,7 @@ SKILL_TRANSFORM = {
     150: five_orb_one_enhance_convert({'atk_multiplier': (1, multi)}),
     151: heart_cross_convert({'atk_multiplier': (0, multi2), 'rcv_multiplier': (1, multi2), 'damage_reduction': (2, multi)}),
     155: multi_play_convert({'for_attr': (0, binary_con), 'for_type': (1, binary_con), 'hp_multiplier': (2, multi2), 'atk_multiplier': (3, multi2), 'rcv_multiplier': (4, multi2)}),
+    156: convert('unexpected',{'skill_text':'', 'parameter': [1.0,1.0,1.0,0.0]}),
     157: color_cross_convert({'crosses': (slice(None), lambda x: [{'attribute': a, 'atk_multiplier': multi(d)} for a, d in zip(x[::2], x[1::2])])}),
     158: minimum_orb_convert({'minimum_orb': (0, cc), 'for_attr': (1, binary_con), 'for_type': (2, binary_con), 'hp_multiplier': (4, multi2), 'atk_multiplier': (3, multi2), 'rcv_multiplier': (5, multi2)}),
     159: mass_match_convert({'attributes': (0, binary_con), 'minimum_count': (1, cc), 'minimum_atk_multiplier': (2, multi), 'bonus_atk_multiplier': (3, multi), 'maximum_count': (4, cc)}),
@@ -2044,6 +2145,7 @@ SKILL_TRANSFORM = {
     170: attribute_match_convert({'attributes': (0, binary_con), 'minimum_attributes': (1, cc), 'minimum_atk_multiplier': (2, multi), 'minimum_damage_reduction': (3, multi)}),
     171: multi_attribute_match_convert({'attributes': (slice(0, 4), list_binary_con), 'minimum_match': (4, cc), 'minimum_atk_multiplier': (5, multi), 'minimum_damage_reduction': (6, multi)}),
     175: collab_bonus_convert({'collab_id': (0, cc), 'hp_multiplier': (3, multi2), 'atk_multiplier': (4, multi2), 'rcv_multiplier': (5, multi2)}),
+    176: convert('unexpected',{'skill_text': '', 'parameter': [1.0,1.0,1.0,0.0]}),
     177: orb_remain_convert({'orb_count': (5, cc), 'atk_multiplier': (6, multi), 'bonus_atk_multiplier': (7, multi)}),
     178: passive_stats_convert({'time': (0, cc), 'for_attr': (1, binary_con), 'for_type': (2, binary_con), 'hp_multiplier': (3, multi2), 'atk_multiplier': (4, multi2), 'rcv_multiplier': (5, multi2), 'skill_text': 'Fixed 4 second movetime; '}),
     182: mass_match_convert({'attributes': (0, binary_con), 'minimum_count': (1, cc), 'minimum_atk_multiplier': (2, multi), 'minimum_damage_reduction': (3, multi)}),
@@ -2053,6 +2155,9 @@ SKILL_TRANSFORM = {
     185: bonus_time_convert({'time': (0, multi), 'for_attr': (1, binary_con), 'for_type': (2, binary_con), 'hp_multiplier': (3, multi2), 'atk_multiplier': (4, multi2), 'rcv_multiplier': (5, multi2)}),
     186: passive_stats_convert({'for_attr': (0, binary_con), 'for_type': (1, binary_con), 'hp_multiplier': (2, multi2), 'atk_multiplier': (3, multi2), 'rcv_multiplier': (4, multi2)}), 'skill_text': 'Board becomes 7x6; '}
 
+
+MULTI_PART_LS = {}
+MULTI_PART_AS = {}
 
 def reformat(in_file_name, out_file_name):
     print('-- Parsing skills --\n')
@@ -2079,6 +2184,27 @@ def reformat(in_file_name, out_file_name):
                 if type(reformatted['leader_skills'][i]['args']) == list:
                     print(f'Unhandled leader skill type: {c[2]} (skill id: {i})')
                     del reformatted['leader_skills'][i]
+                if reformatted['leader_skills'][i]['type'] == 'combine_leader_skills':
+                    for j in range(0,len(reformatted['leader_skills'][i]['args']['skill_ids'])):
+                        if MULTI_PART_LS.get(str(reformatted['leader_skills'][i]['args']['skill_ids'][j])):
+                            MULTI_PART_LS[str(reformatted['leader_skills'][i]['args']['skill_ids'][j])] += [i]
+                        else:
+                            MULTI_PART_LS[str(reformatted['leader_skills'][i]['args']['skill_ids'][j])] = [i]
+                if MULTI_PART_LS.get(str(i)):
+                    for k in range(0, len(MULTI_PART_LS[str(i)])):
+                        #Generating skill_text
+                        if reformatted['leader_skills'][int(MULTI_PART_LS[str(i)][k])]['args']['skill_text'] == '':
+                            reformatted['leader_skills'][int(MULTI_PART_LS[str(i)][k])]['args']['skill_text'] += reformatted['leader_skills'][i]['args']['skill_text']
+                        else:
+                            reformatted['leader_skills'][int(MULTI_PART_LS[str(i)][k])]['args']['skill_text'] += '; ' + reformatted['leader_skills'][i]['args']['skill_text']
+                        #Generating parameter
+                        for m in range(0,3):
+                            if m != 3:
+                                reformatted['leader_skills'][int(MULTI_PART_LS[str(i)][k])]['args']['parameter'][m] *= reformatted['leader_skills'][i]['args']['parameter'][m]
+                            else:
+                                reformatted['leader_skills'][int(MULTI_PART_LS[str(i)][k])]['args']['parameter'][m] = 1 - (1 - float(reformatted['leader_skills'][int(MULTI_PART_LS[str(i)][k])]['args']['parameter'][m])) *\
+                                                                                                                      (1 - float(reformatted['leader_skills'][i]['args']['parameter'][m]))
+
             else:
                 print(f'Unexpected leader skill type: {c[2]} (skill id: {i})')
                 del reformatted['leader_skills'][i]
@@ -2097,6 +2223,14 @@ def reformat(in_file_name, out_file_name):
                 if type(reformatted['active_skills'][i]['args']) != dict:
                     print(f'Unhandled active skill type: {c[2]} (skill id: {i})')
                     del reformatted['active_skills'][i]
+                if reformatted['active_skills'][i]['type'] == 'combine_active_skills':
+                    for j in range(0,len(reformatted['active_skills'][i]['args']['skill_ids'])):
+                        MULTI_PART_AS[str(reformatted['active_skills'][i]['args']['skill_ids'][j])] = reformatted['active_skills'][i]['id']
+                if MULTI_PART_AS.get(str(i)) and reformatted['active_skills'][i]['args'].get('skill_text'):
+                    if reformatted['active_skills'][MULTI_PART_AS[str(i)]]['args']['skill_text'] == '':
+                        reformatted['active_skills'][MULTI_PART_AS[str(i)]]['args']['skill_text'] += reformatted['active_skills'][i]['args']['skill_text']
+                    else:
+                        reformatted['active_skills'][MULTI_PART_AS[str(i)]]['args']['skill_text'] += '; ' + reformatted['active_skills'][i]['args']['skill_text']
             else:
                 print(f'Unexpected active skill type: {c[2]} (skill id: {i})')
                 del reformatted['active_skills'][i]
