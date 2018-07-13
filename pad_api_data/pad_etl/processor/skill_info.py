@@ -197,9 +197,18 @@ def fmt_multiplier_text(hp_mult, atk_mult, rcv_mult):
     return output
 
 
-def fmt_reduct_text(damage_reduct):
+def fmt_reduct_text(damage_reduct, reduct_att=[0, 1, 2, 3, 4]):
     if damage_reduct != 0:
-        return 'reduce damage taken by {}%'.format(fmt_mult(damage_reduct * 100))
+        text = ''
+        if reduct_att == []:
+            text += 'reduce damage taken by {}%'.format(fmt_mult(damage_reduct * 100))
+            return text
+        else:
+            color_text = 'all' if len(reduct_att) == 5 else ', '.join(
+                [ATTRIBUTES[i] for i in reduct_att])
+            text += 'reduce damage taken from ' + color_text + \
+                ' Att. by {}%'.format(fmt_mult(damage_reduct * 100))
+            return text
     else:
         return None
 
@@ -211,6 +220,7 @@ def fmt_stats_type_attr_bonus(c, reduce_join_txt='; ', skip_attr_all=False):
     atk_mult = c.get('atk_multiplier', c.get('minimum_atk_multiplier', 1))
     rcv_mult = c.get('rcv_multiplier', c.get('minimum_rcv_multiplier', 1))
     damage_reduct = c.get('damage_reduction', c.get('minimum_damage_reduction', 0))
+    reduct_att = c.get('reduction_attributes', [])
     skill_text = ''
 
     multiplier_text = fmt_multiplier_text(hp_mult, atk_mult, rcv_mult)
@@ -231,7 +241,7 @@ def fmt_stats_type_attr_bonus(c, reduce_join_txt='; ', skip_attr_all=False):
         if for_skill_text:
             skill_text += ' for' + for_skill_text
 
-    reduct_text = fmt_reduct_text(damage_reduct)
+    reduct_text = fmt_reduct_text(damage_reduct, reduct_att)
     if reduct_text:
         if multiplier_text:
             skill_text += reduce_join_txt
@@ -1245,9 +1255,42 @@ def drain_attr_attack_convert(arguments):
     return f
 
 
+attribute_change_backups = {'duration': 0,
+                            'attribute': 0,
+                            'skill_text': ''}
+
+
+def attribute_change_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('attribute_change',
+                                     arguments,
+                                     attribute_change_backups)(x)
+        c['skill_text'] += 'Change own Att. to ' + \
+            ATTRIBUTES[c['attribute']] + ' for ' + str(c['duration']) + ' turns'
+        return 'attribute_change', c
+    return f
+
+
+multi_hit_laser_backups = {'damage': 0,
+                           'mass_attack': False,
+                           'repeat': 0,
+                           'skill_text': ''}
+
+
+def multi_hit_laser_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('multi_hit_laser',
+                                     arguments,
+                                     multi_hit_laser_backups)(x)
+        c['skill_text'] += 'Deal ' + str(c['damage']) + ' damage to ' + \
+            fmt_mass_atk(c['mass_attack'])
+        return 'multi_hit_laser', c
+    return f
+
 # End of Active skill
 
 # Leader skill
+
 
 def fmt_parameter(c):
     hp_mult = c.get('hp_multiplier', 1)
@@ -1374,6 +1417,9 @@ def attribute_match_convert(arguments):
             if max_mult > min_atk_mult:
                 skill_text += ' up to {}x at 5 colors+heal)'.format(
                     fmt_mult(max_mult), min_attr - 1)
+        elif min_attr == max_attr and len(attr) > min_attr:
+            attr_text = ', '.join([ATTRIBUTES[i] for i in attr])
+            skill_text += ' when matching ' + str(min_attr) + '+ of {} at once'.format(attr_text)
         else:
             attr_text = ', '.join([ATTRIBUTES[i] for i in attr])
             skill_text += ' when matching {} at once'.format(attr_text)
@@ -1735,7 +1781,9 @@ def five_orb_one_enhance_convert(arguments):
 
 
 heart_cross_backups = {'atk_multiplier': 1, 'rcv_multiplier': 1,
-                       'damage_reduction': 0, 'skill_text': '', 'parameter': [1.0, 1.0, 1.0, 0.0]}
+                       'damage_reduction': 0,
+                       'cross_count': 1,
+                       'skill_text': '', 'parameter': [1.0, 1.0, 1.0, 0.0]}
 
 
 def heart_cross_convert(arguments):
@@ -1852,13 +1900,13 @@ def dual_threshold_stats_convert(arguments):
         c2['damage_reduction'] = c['damage_reduction_2']
         skill_text = ''
         if c1['atk_multiplier'] != 0 or c1['rcv_multiplier'] != 1 or c1['damage_reduction'] != 0:
-            if c1['atk_multiplier'] == 0 or c1['rcv_multiplier'] != 1 or c1['damage_reduction'] != 0:
+            if c1['atk_multiplier'] == 0 and c1['rcv_multiplier'] != 1 and c1['damage_reduction'] != 0:
                 c1['atk_multiplier'] = 1
             skill_text = fmt_stats_type_attr_bonus(c1, reduce_join_txt=' and ', skip_attr_all=True)
             skill_text += ' when above ' if c1['above'] else ' when below '
             skill_text += fmt_mult(c1['threshold'] * 100) + '% HP'
 
-        if c2['atk_multiplier'] != 1 or c2['rcv_multiplier'] != 1 or c2['damage_reduction'] != 0:
+        if c2['threshold'] != 0:
             if skill_text != '':
                 skill_text += '; '
             skill_text += fmt_stats_type_attr_bonus(c2, reduce_join_txt=' and ', skip_attr_all=True)
@@ -1880,6 +1928,7 @@ def dual_threshold_stats_convert(arguments):
 
 color_cross_backups = {'crosses': [],
                        'hp_multiplier': 1.0, 'atk_multiplier': 1.0, 'rcv_multiplier': 1.0, 'damage_reduction': 0.0,
+                       'cross_count': 2,
                        'skill_text': '', 'parameter': [1.0, 1.0, 1.0, 0.0]}
 
 
@@ -1895,6 +1944,7 @@ def color_cross_convert(arguments):
             c['atk_multiplier'] = pow(c['crosses'][0]['atk_multiplier'], 2)
             c['parameter'] = fmt_parameter(c)
         elif len(c['crosses']) > 1:
+            c['cross_count'] = 3
             c['skill_text'] += fmt_mult(c['crosses'][0]['atk_multiplier']
                                         ) + 'x ATK for each cross of 5 '
             for i in range(0, len(c['crosses']))[:-1]:
@@ -2041,7 +2091,7 @@ SKILL_TRANSFORM = {
     132: move_time_buff_convert({'duration': (0, cc), 'static': (1, lambda x: x / 10), 'percentage': (2, multi)}),
     140: enhance_convert({'orbs': (0, binary_con)}),
     141: spawn_orb_convert({'amount': (0, cc), 'orbs': (1, binary_con), 'excluding_orbs': (2, binary_con)}),
-    142: convert('attribute_change', {'duration': (0, cc), 'attribute': (1, cc)}),
+    142: attribute_change_convert({'duration': (0, cc), 'attribute': (1, cc)}),
     144: attack_attr_x_team_atk_convert({'team_attributes': (0, binary_con), 'multiplier': (1, multi), 'mass_attack': (2, lambda x: x == 0), 'attack_attribute': (3, cc), }),
     145: heal_active_convert({'team_rcv_multiplier_as_hp': (0, multi), 'card_bind': 0, 'rcv_multiplier_as_hp': 0.0, 'hp': 0, 'percentage_max_hp': 0.0, 'awoken_bind': 0}),
     146: haste_convert({'turns': (0, cc)}),
@@ -2055,15 +2105,17 @@ SKILL_TRANSFORM = {
         if make_defaultlist(int, x)[4] == 2 else
      (awakening_shield_convert({'duration': (0, cc), 'awakenings': (slice(1, 4), list_con), 'amount_per': (5, multi)})(x)
       if make_defaultlist(int, x)[4] == 3 else
-      (156, x))),
+      (convert('unexpected', {'skill_text': '', 'parameter': [1.0, 1.0, 1.0, 0.0]})(x)
+       if make_defaultlist(int, x)[4] == 0 else
+       (156, x)))),
     160: extra_combo_convert({'duration': (0, cc), 'combos': (1, cc)}),
     161: true_gravity_convert({'percentage_max_hp': (0, multi)}),
     172: convert('unlock', {'skill_text': 'Unlock all orbs'}),
-    173: absorb_mechanic_void_convert({'duration': (0, cc), 'attribute_absorb': (1, bool), 'damage_absorb': (1, bool)}),
+    173: absorb_mechanic_void_convert({'duration': (0, cc), 'attribute_absorb': (1, bool), 'damage_absorb': (3, bool)}),
     179: auto_heal_convert({'duration': (0, cc), 'percentage_max_hp': (2, multi)}),
     180: enhance_skyfall_convert({'duration': (0, cc), 'percentage_increase': (1, multi)}),
     184: no_skyfall_convert({'duration': (0, cc)}),
-    188: convert('multihit_laser', {'damage': (0, cc), 'mass_attack': False}),
+    188: multi_hit_laser_convert({'damage': (0, cc), 'mass_attack': False}),
     189: convert('unlock_board_path', {}),
     11: passive_stats_convert({'for_attr': (0, listify), 'atk_multiplier': (1, multi)}),
     12: after_attack_convert({'multiplier': (0, multi)}),
@@ -2146,7 +2198,6 @@ SKILL_TRANSFORM = {
     150: five_orb_one_enhance_convert({'atk_multiplier': (1, multi)}),
     151: heart_cross_convert({'atk_multiplier': (0, multi2), 'rcv_multiplier': (1, multi2), 'damage_reduction': (2, multi)}),
     155: multi_play_convert({'for_attr': (0, binary_con), 'for_type': (1, binary_con), 'hp_multiplier': (2, multi2), 'atk_multiplier': (3, multi2), 'rcv_multiplier': (4, multi2)}),
-    156: convert('unexpected', {'skill_text': '', 'parameter': [1.0, 1.0, 1.0, 0.0]}),
     157: color_cross_convert({'crosses': (slice(None), lambda x: [{'attribute': a, 'atk_multiplier': multi(d)} for a, d in zip(x[::2], x[1::2])])}),
     158: minimum_orb_convert({'minimum_orb': (0, cc), 'for_attr': (1, binary_con), 'for_type': (2, binary_con), 'hp_multiplier': (4, multi2), 'atk_multiplier': (3, multi2), 'rcv_multiplier': (5, multi2)}),
     159: mass_match_convert({'attributes': (0, binary_con), 'minimum_count': (1, cc), 'minimum_atk_multiplier': (2, multi), 'bonus_atk_multiplier': (3, multi), 'maximum_count': (4, cc)}),
@@ -2210,25 +2261,6 @@ def reformat(in_file_name, out_file_name):
                         else:
                             MULTI_PART_LS[str(reformatted['leader_skills'][i]
                                               ['args']['skill_ids'][j])] = [i]
-                if MULTI_PART_LS.get(str(i)):
-                    for k in range(0, len(MULTI_PART_LS[str(i)])):
-                        # Generating skill_text
-                        if reformatted['leader_skills'][int(MULTI_PART_LS[str(i)][k])]['args']['skill_text'] == '':
-                            reformatted['leader_skills'][int(MULTI_PART_LS[str(
-                                i)][k])]['args']['skill_text'] += reformatted['leader_skills'][i]['args']['skill_text']
-                        else:
-                            reformatted['leader_skills'][int(MULTI_PART_LS[str(
-                                i)][k])]['args']['skill_text'] += '; ' + reformatted['leader_skills'][i]['args']['skill_text']
-                        # Generating parameter
-                        for m in range(0, 3):
-                            if m != 3:
-                                reformatted['leader_skills'][int(MULTI_PART_LS[str(
-                                    i)][k])]['args']['parameter'][m] *= reformatted['leader_skills'][i]['args']['parameter'][m]
-                            else:
-                                reformatted['leader_skills'][int(MULTI_PART_LS[str(i)][k])]['args']['parameter'][m] = 1 - (1 - float(reformatted['leader_skills'][int(MULTI_PART_LS[str(i)][k])]['args']['parameter'][m])) *\
-                                    (1 - float(reformatted['leader_skills']
-                                               [i]['args']['parameter'][m]))
-
             else:
                 print(f'Unexpected leader skill type: {c[2]} (skill id: {i})')
                 del reformatted['leader_skills'][i]
@@ -2251,18 +2283,108 @@ def reformat(in_file_name, out_file_name):
                     for j in range(0, len(reformatted['active_skills'][i]['args']['skill_ids'])):
                         MULTI_PART_AS[str(reformatted['active_skills'][i]['args']
                                           ['skill_ids'][j])] = reformatted['active_skills'][i]['id']
-                if MULTI_PART_AS.get(str(i)) and reformatted['active_skills'][i]['args'].get('skill_text'):
-                    if reformatted['active_skills'][MULTI_PART_AS[str(i)]]['args']['skill_text'] == '':
-                        reformatted['active_skills'][MULTI_PART_AS[str(
-                            i)]]['args']['skill_text'] += reformatted['active_skills'][i]['args']['skill_text']
-                    else:
-                        reformatted['active_skills'][MULTI_PART_AS[str(
-                            i)]]['args']['skill_text'] += '; ' + reformatted['active_skills'][i]['args']['skill_text']
             else:
                 print(f'Unexpected active skill type: {c[2]} (skill id: {i})')
                 del reformatted['active_skills'][i]
                 #reformatted['active_skills'][i]['type'] = f'_{c[2]}'
                 #reformatted['active_skills'][i]['args'] = {f'_{i}':v for i,v in enumerate(c[6:])}
+
+    for j, c in enumerate(skill_data['skill']):
+        if c[2] in SKILL_TRANSFORM:
+            i_str = str(j)
+            if MULTI_PART_LS.get(i_str):
+                for k in range(0, len(MULTI_PART_LS[i_str])):
+                        # Generating skill_text
+                    combined_skill_args = reformatted['leader_skills'][j]['args']
+                    cur_skill_id = int(MULTI_PART_LS[i_str][k])
+                    cur_args = reformatted['leader_skills'][cur_skill_id]['args']
+
+                    if cur_args['skill_text'] == '':
+                        cur_args['skill_text'] += combined_skill_args['skill_text']
+                    else:
+                        cur_args['skill_text'] += '; ' + \
+                            combined_skill_args['skill_text']
+                    # Generating parameter
+                    hp_mult = float(cur_args['parameter'][0])
+                    atk_mult = float(cur_args['parameter'][1])
+                    rcv_mult = float(cur_args['parameter'][2])
+                    reduction = float(cur_args['parameter'][3])
+
+                    for m in range(0, 4):
+                        if m == 0:
+                            hp_mult *= combined_skill_args['parameter'][m]
+                        elif m == 1:
+                            atk_mult *= combined_skill_args['parameter'][m]
+                        elif m == 2:
+                            rcv_mult *= combined_skill_args['parameter'][m]
+                        elif m == 3:
+                            reduction = 1 - (1 - float(cur_args['parameter'][m])) *\
+                                (1 - float(combined_skill_args['parameter'][m]))
+                    cur_args['parameter'] = [hp_mult, atk_mult, rcv_mult, reduction]
+            elif MULTI_PART_AS.get(str(j)):
+                AS = reformatted['active_skills']
+                LS = reformatted['leader_skills']
+                AS_comb_skill_text = reformatted['active_skills'][MULTI_PART_AS[str(
+                    j)]]['args']['skill_text']
+                if AS.get(j):
+
+                    AS_curr_arg = AS[j]['args']
+                    AS_comb_skill_ids = AS[MULTI_PART_AS[str(j)]]['args']['skill_ids']
+
+                    if AS_curr_arg.get('skill_text'):
+
+                        AS_curr_type = AS[j]['type']
+                        AS_curr_skill_text = AS[j]['args']['skill_text']
+
+                        if AS_comb_skill_text == '':
+                            AS_comb_skill_text += AS_curr_skill_text
+
+                            if AS_curr_type == 'multi_hit_laser':  # Adding extra text for multi_hit_laser
+                                repeat = 0
+                                for k in range(0, len(AS_comb_skill_ids)):
+                                    if AS_comb_skill_ids[k] == j:
+                                        repeat += 1
+                                AS_comb_skill_text += ' ' + str(repeat) + ' times'
+                        else:
+                            AS_comb_skill_text += '; ' + AS_curr_skill_text
+
+                            if AS_curr_type == 'multi_hit_laser':  # Adding extra text for multi_hit_laser
+                                repeat = 0
+                                for k in range(0, len(AS_comb_skill_ids)):
+                                    if AS_comb_skill_ids[k] == j:
+                                        repeat += 1
+                                AS_comb_skill_text += ' ' + str(repeat) + ' times'
+                elif LS.get(j):
+
+                    LS_curr_arg = LS[j]['args']
+
+                    if LS_curr_arg.get('skill_text'):
+
+                        LS_curr_type = LS[j]['type']
+                        LS_curr_skill_text = LS[j]['args']['skill_text']
+
+                        if AS_comb_skill_text == '':
+
+                            AS_comb_skill_text += LS_curr_skill_text
+
+                            if LS_curr_type == 'multi_hit_laser':  # Adding extra text for multi_hit_laser
+                                repeat = 0
+                                for k in range(0, len(AS_comb_skill_ids)):
+                                    if AS_comb_skill_ids[k] == j:
+                                        repeat += 1
+                                AS_comb_skill_text += ' ' + str(repeat) + ' times'
+                        else:
+
+                            AS_comb_skill_text += '; ' + LS_curr_skill_text
+
+                            if LS_curr_type == 'multi_hit_laser':  # Adding extra text for multi_hit_laser
+                                repeat = 0
+                                for k in range(0, len(AS_comb_skill_ids)):
+                                    if AS_comb_skill_ids[k] == j:
+                                        repeat += 1
+                                AS_comb_skill_text += ' ' + str(repeat) + ' times'
+                reformatted['active_skills'][MULTI_PART_AS[str(
+                    j)]]['args']['skill_text'] = AS_comb_skill_text
 
     print(f"Converted {len(reformatted['active_skills'])} active skills and {len(reformatted['leader_skills'])} leader skills ({len(reformatted['active_skills']) + len(reformatted['leader_skills'])} total)\n")
 
