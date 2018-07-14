@@ -9,6 +9,8 @@ import sys
 
 from defaultlist import defaultlist
 
+from ..common.padguide_values import AWAKENING_MAP
+
 
 def make_defaultlist(fx, initial=[]):
     df = defaultlist(fx)
@@ -79,71 +81,6 @@ TYPES = {0: 'Evo Material',
          12: 'Awaken Material',
          14: 'Enhance Material',
          15: 'Redeemable Material'}
-
-AWAKENING = {
-    0: '',  # No need.
-    1: 'Enhanced HP',
-    2: 'Enhanced Attack',
-    3: 'Enhanced Heal',
-    4: 'Reduce Fire Damage',
-    5: 'Reduce Water Damage',
-    6: 'Reduce Wood Damage',
-    7: 'Reduce Light Damage',
-    8: 'Reduce Dark Damage',
-    9: 'Auto-Recover',
-    10: 'Resistance-Bind',
-    11: 'Resistance-Dark',
-    12: 'Resistance-Jammers',
-    13: 'Resistance-Poison',
-    14: 'Enhanced Fire Orbs',
-    15: 'Enhanced Water Orbs',
-    16: 'Enhanced Wood Orbs',
-    17: 'Enhanced Light Orbs',
-    18: 'Enhanced Dark Orbs',
-    19: 'Extend Time',
-    20: 'Recover Bind',
-    21: 'Skill Boost',
-    22: 'Enhanced Fire Att.',
-    23: 'Enhanced Water Att.',
-    24: 'Enhanced Wood Att.',
-    25: 'Enhanced Light Att.',
-    26: 'Enhanced Dark Att.',
-    27: 'Two-Pronged Attack',
-    28: 'Resistance-Skill Bind',
-    29: 'Enhanced Heal Orbs',
-    30: 'Multi Boost',
-    31: 'Dragon Killer',
-    32: 'God Killer',
-    33: 'Devil Killer',
-    34: 'Machine Killer',
-    35: 'Balanced Killer',
-    36: 'Attacker Killer',
-    37: 'Physical Killer',
-    38: 'Healer Killer',
-    39: 'Evolve Material Killer',
-    40: 'Awaken Material Killer',
-    41: 'Enhance Material Killer',
-    42: 'Vendor Material Killer',
-    43: 'Enhanced Combo',
-    44: 'Guard Break',
-    45: 'Additional Attack',
-    46: 'Enhanced Team HP',
-    47: 'Enhanced Team RCV',
-    48: 'Damage Void Shield Penetration',
-    49: 'Awoken Assist',
-    50: 'Super Additional Attack',
-    51: 'Skill Charge',
-    52: 'Resistance-Bind＋',
-    54: 'Resistance-Cloud',
-    53: 'Extend Time＋',
-    55: 'Resistance-Board Restrict',
-    56: 'Skill Boost＋',
-    57: 'Enhance when HP is above 80%',
-    58: 'Enhance when HP is below 50%',
-    59: 'L-Shape Damage Reduction',
-    60: 'L-Shape Attack',
-    61: 'Super Enhanced Combo',
-}
 
 
 def convert_with_defaults(type_name, args, defaults):
@@ -619,7 +556,6 @@ def enhance_convert(arguments):
                                      enhance_backups)(x)
         for_attr = c['orbs']
         for_skill_text = ''
-        skip_attr_all = False
 
         if for_attr != []:
             if for_attr and not len(for_attr) == 6:
@@ -646,7 +582,6 @@ def lock_convert(arguments):
                                      lock_backups)(x)
         for_attr = c['orbs']
         for_skill_text = ''
-        skip_attr_all = False
 
         if for_attr != []:
             if for_attr and not len(for_attr) == 6:
@@ -790,11 +725,11 @@ def awakening_heal_convert(arguments):
         c['skill_text'] += 'Recover ' + str(c['amount_per']) + ' HP for each '
         for i in range(0, len(c['awakenings']) - 1):
             if c['awakenings'][i + 1] != 0:
-                c['skill_text'] += AWAKENING[c['awakenings'][i]] + ', '
+                c['skill_text'] += AWAKENING_MAP[c['awakenings'][i]] + ', '
             else:
-                c['skill_text'] += AWAKENING[c['awakenings'][i]]
+                c['skill_text'] += AWAKENING_MAP[c['awakenings'][i]]
         if int(c['awakenings'][-1]) != 0:
-            c['skill_text'] += AWAKENING[int(c['awakenings'][-1])]
+            c['skill_text'] += AWAKENING_MAP[int(c['awakenings'][-1])]
         c['skill_text'] += ' awakening skill on the team'
         return 'awakening_heal', c
     return f
@@ -815,11 +750,11 @@ def awakening_attack_boost_convert(arguments):
             fmt_mult(c['amount_per'] * 100) + '% for each '
         for i in range(0, len(c['awakenings']) - 1):
             if c['awakenings'][i + 1] != 0:
-                c['skill_text'] += AWAKENING[c['awakenings'][i]] + ', '
+                c['skill_text'] += AWAKENING_MAP[c['awakenings'][i]] + ', '
             else:
-                c['skill_text'] += AWAKENING[c['awakenings'][i]]
+                c['skill_text'] += AWAKENING_MAP[c['awakenings'][i]]
         if int(c['awakenings'][-1]) != 0:
-            c['skill_text'] += AWAKENING[int(c['awakenings'][-1])]
+            c['skill_text'] += AWAKENING_MAP[int(c['awakenings'][-1])]
         c['skill_text'] += ' awakening skill on the team'
         return 'awakening_attack_boost', c
     return f
@@ -840,11 +775,11 @@ def awakening_shield_convert(arguments):
             fmt_mult(c['amount_per'] * 100) + '% for each '
         for i in range(0, len(c['awakenings']) - 1):
             if c['awakenings'][i + 1] != 0:
-                c['skill_text'] += AWAKENING[c['awakenings'][i]] + ', '
+                c['skill_text'] += AWAKENING_MAP[c['awakenings'][i]] + ', '
             else:
-                c['skill_text'] += AWAKENING[c['awakenings'][i]]
+                c['skill_text'] += AWAKENING_MAP[c['awakenings'][i]]
         if int(c['awakenings'][-1]) != 0:
-            c['skill_text'] += AWAKENING[int(c['awakenings'][-1])]
+            c['skill_text'] += AWAKENING_MAP[int(c['awakenings'][-1])]
         c['skill_text'] += ' awakening skill on the team'
         return 'awakening_shield', c
     return f
@@ -1300,9 +1235,6 @@ def fmt_parameter(c):
     bonus_rcv_mult = c.get('bonus_rcv_multiplier', 0.0)
     damage_reduct = c.get('damage_reduction', c.get('minimum_damage_reduction', 0.0))
     step = c.get('step', 0.0)
-
-    if damage_reduct == '':
-        damge_reduct = 0
 
     return [float(fmt_mult(pow(hp_mult, 2))),
             float(fmt_mult(float("{0:.2f}".format(pow(atk_mult + step * bonus_atk_mult, 2))))),
@@ -2233,6 +2165,36 @@ def reformat(in_file_name, out_file_name):
     with open(in_file_name) as f:
         skill_data = json.load(f)
     print('Raw skills json loaded\n')
+    reformatted = reformat_json(skill_data)
+
+    print(f"Converted {len(reformatted['active_skills'])} active skills and {len(reformatted['leader_skills'])} leader skills ({len(reformatted['active_skills']) + len(reformatted['leader_skills'])} total)\n")
+
+    def verify(skills):
+        ls_verification = defaultdict(lambda: defaultdict(set))
+        for name, data in skills.items():
+            ls_verification[data['type']]['_arg_names'].add(frozenset(data['args'].keys()))
+            for a_name, a_value in data['args'].items():
+                ls_verification[data['type']][a_name].add(type(a_value))
+        for name, value in ls_verification.items():
+            for a, p in value.items():
+                if len(p) != 1:
+                    print(f'INCONSISTENT name:{name} difference in {repr(a)}: {repr(p)}\n')
+
+    print('Checking active skill consistency\n-------start-------\n')
+    verify(reformatted['active_skills'])
+    print('--------end--------\n')
+
+    print('Checking leader skill consistency\n-------start-------\n')
+    verify(reformatted['leader_skills'])
+    print('--------end--------\n')
+
+    with open(out_file_name, 'w') as f:
+        json.dump(reformatted, f, sort_keys=True, indent=4)
+    print('Result saved\n')
+    print('-- End skills --\n')
+
+
+def reformat_json(skill_data):
     reformatted = {}
     reformatted['res'] = skill_data['res']
     reformatted['version'] = skill_data['v']
@@ -2386,31 +2348,7 @@ def reformat(in_file_name, out_file_name):
                 reformatted['active_skills'][MULTI_PART_AS[str(
                     j)]]['args']['skill_text'] = AS_comb_skill_text
 
-    print(f"Converted {len(reformatted['active_skills'])} active skills and {len(reformatted['leader_skills'])} leader skills ({len(reformatted['active_skills']) + len(reformatted['leader_skills'])} total)\n")
-
-    def verify(skills):
-        ls_verification = defaultdict(lambda: defaultdict(set))
-        for name, data in skills.items():
-            ls_verification[data['type']]['_arg_names'].add(frozenset(data['args'].keys()))
-            for a_name, a_value in data['args'].items():
-                ls_verification[data['type']][a_name].add(type(a_value))
-        for name, value in ls_verification.items():
-            for a, p in value.items():
-                if len(p) != 1:
-                    print(f'INCONSISTENT name:{name} difference in {repr(a)}: {repr(p)}\n')
-
-    print('Checking active skill consistency\n-------start-------\n')
-    verify(reformatted['active_skills'])
-    print('--------end--------\n')
-
-    print('Checking leader skill consistency\n-------start-------\n')
-    verify(reformatted['leader_skills'])
-    print('--------end--------\n')
-
-    with open(out_file_name, 'w') as f:
-        json.dump(reformatted, f, sort_keys=True, indent=4)
-    print('Result saved\n')
-    print('-- End skills --\n')
+    return reformatted
 
 
 if __name__ == '__main__':

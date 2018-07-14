@@ -28,7 +28,7 @@ TYPE_MAP = {
 
 # Might only be accurate for JP values?
 AWAKENING_MAP = {
-    # 0: None,  # No need.
+    0: '',  # No need.
     1: 'Enhanced HP',
     2: 'Enhanced Attack',
     3: 'Enhanced Heal',
