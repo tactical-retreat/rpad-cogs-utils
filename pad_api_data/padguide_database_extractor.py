@@ -1,10 +1,11 @@
-import json
 import argparse
-import pymysql
-import os
-
 from datetime import datetime
 from decimal import Decimal
+import json
+import os
+
+import pymysql
+
 
 parser = argparse.ArgumentParser(description="Download PadGuide database as JSON.", add_help=False)
 
@@ -53,7 +54,21 @@ output_dir = args.output_dir
 def fix_table_name(table_name):
     parts = table_name.split('_')
     return ''.join([parts[0]] + [p.capitalize() for p in parts[1:]])
-   
+
+
+def copy_override(row_data, override_suffix):
+    override_columns = list(filter(lambda x: x.endswith(override_suffix), row_data.keys()))
+    for oc in override_columns:
+        value = row_data[oc]
+        del row_data[oc]
+        if not value:
+            continue
+        base_name = oc[:-len(override_suffix)]
+        if base_name not in row_data:
+            print('error: base column missing:', base_name)
+        else:
+            row_data[base_name] = value
+
 
 def dump_table(table_name, output_dir, cursor):
     print('processing', table_name)
@@ -76,14 +91,14 @@ def dump_table(table_name, output_dir, cursor):
                 else:
                     fixed_data = 'Y' if data else 'N'
             elif type(data) is Decimal:
-                first  = '{}'.format(float(data))
+                first = '{}'.format(float(data))
                 second = '{:.1f}'.format(float(data))
                 fixed_data = max((first, second), key=len)
             elif type(data) is datetime:
                 if table_name in ALT_DATETIME_TABLES:
-                    fixed_data = data.isoformat(' ') 
+                    fixed_data = data.isoformat(' ')
                 else:
-                    fixed_data = data.date().isoformat() 
+                    fixed_data = data.date().isoformat()
             elif 'HOUR' in fixed_col or 'MINUTE' in fixed_col:
                 if fixed_col in ALT_HR_MIN_COLS:
                     fixed_data = str(data)
@@ -91,12 +106,16 @@ def dump_table(table_name, output_dir, cursor):
                     fixed_data = str(data).zfill(2)
             else:
                 fixed_data = str(data)
-                
-            row_data[fixed_col] = fixed_data 
+
+            row_data[fixed_col] = fixed_data
+
+        copy_override(row_data, '_CALCULATED')
+        copy_override(row_data, '_OVERRIDE')
         result_json['items'].append(row_data)
 
     with open(output_file, 'w') as f:
-        json.dump(result_json, f, sort_keys=True, indent=4)    
+        json.dump(result_json, f, sort_keys=True, indent=4)
+
 
 # Connect to the database
 connection = pymysql.connect(host=db_config['host'],
@@ -107,7 +126,7 @@ connection = pymysql.connect(host=db_config['host'],
                              cursorclass=pymysql.cursors.DictCursor)
 
 with connection.cursor() as cursor:
-    sql = "SELECT table_name FROM information_schema.tables where table_schema='padguide'";
+    sql = "SELECT table_name FROM information_schema.tables where table_schema='padguide'"
     cursor.execute(sql)
     tables = list(cursor.fetchall())
 
@@ -121,5 +140,3 @@ with connection.cursor() as cursor:
         dump_table(table_name, output_dir, [])
 
 connection.close()
-
-
