@@ -137,11 +137,11 @@ def fmt_multiplier_text(hp_mult, atk_mult, rcv_mult):
 def fmt_reduct_text(damage_reduct, reduct_att=[0, 1, 2, 3, 4]):
     if damage_reduct != 0:
         text = ''
-        if reduct_att == [0,1,2,3,4]:
+        if reduct_att == [0, 1, 2, 3, 4]:
             text += 'reduce damage taken by {}%'.format(fmt_mult(damage_reduct * 100))
             return text
         else:
-            color_text =  ', '.join([ATTRIBUTES[i] for i in reduct_att])
+            color_text = ', '.join([ATTRIBUTES[i] for i in reduct_att])
             text += 'reduce damage taken from ' + color_text + \
                 ' Att. by {}%'.format(fmt_mult(damage_reduct * 100))
             return text
@@ -1248,11 +1248,11 @@ def passive_stats_convert(arguments):
                                      passive_stats_backups)(x)
 
         skill_text = fmt_stats_type_attr_bonus(c)
-        if skill_text !=  '' and c['skill_text'] == '':
+        if skill_text != '' and c['skill_text'] == '':
             c['skill_text'] = skill_text
         elif skill_text != '' and c['skill_text'] != '':
-            c['skill_text']+= '; ' + skill_text
-            
+            c['skill_text'] += '; ' + skill_text
+
         c['parameter'] = fmt_parameter(c)
         return 'passive_stats', c
     return f
@@ -1450,7 +1450,7 @@ def mass_match_convert(arguments):
         if len(attributes) == 1:
             skill_text += ' ' + ATTRIBUTES[attributes[0]]
         elif len(attributes) > 1:
-            color_text =  ', '.join([ATTRIBUTES[i] for i in attributes[:-1]])
+            color_text = ', '.join([ATTRIBUTES[i] for i in attributes[:-1]])
             color_text += ' or ' + ATTRIBUTES[attributes[-1]]
             skill_text += color_text
 
@@ -1911,7 +1911,7 @@ def minimum_orb_convert(arguments):
                                      minimum_orb_backups)(x)
 
         c['skill_text'] += '[Unable to erase ' + \
-            str(c['minimum_orb']-1) + ' orbs or less]; ' + fmt_stats_type_attr_bonus(c)
+            str(c['minimum_orb'] - 1) + ' orbs or less]; ' + fmt_stats_type_attr_bonus(c)
 
         c['parameter'] = fmt_parameter(c)
         c['parameter'][3] = 0.0
@@ -2224,7 +2224,10 @@ def reformat_json_info(skill_data):
         if 'skill_text' in args:
             leader_skills[sid] = CalculatedSkill(sid, args['skill_text'])
 
-    return leader_skills, active_skills
+    # IDs are unique, no need for two maps
+    results = leader_skills.copy()
+    leader_skills.update(active_skills)
+    return results
 
 
 def reformat_json(skill_data):
