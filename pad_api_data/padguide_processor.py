@@ -10,6 +10,7 @@ import os
 
 from pad_etl.data import bonus, card, dungeon, skill
 from pad_etl.processor import monster, monster_skill
+from pad_etl.processor import skill_info
 from pad_etl.processor.db_util import DbWrapper
 from pad_etl.processor.merged_data import MergedBonus, MergedCard, CrossServerCard
 from pad_etl.processor.schedule_item import ScheduleItem
@@ -22,7 +23,6 @@ fail_logger = logging.getLogger('processor_failures')
 logging.getLogger().setLevel(logging.DEBUG)
 logger.setLevel(logging.DEBUG)
 # logger.setLevel(logging.INFO)
-fail_logger.setLevel(logging.WARN)
 
 
 def str2bool(v):
@@ -305,6 +305,9 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
     next_skill_id = db_wrapper.get_single_value(
         'SELECT 1 + COALESCE(MAX(CAST(ts_seq AS SIGNED)), 20000) FROM skill_list', op=int)
 
+    # Compute English skill text
+    calc_leader_skills, calc_active_skills = skill_info.reformat_json_info(jp_database.raw_skills)
+
     # Create a list of SkillIds to CardIds
     skill_id_to_card_ids = defaultdict(list)  # type DefaultDict<SkillId, List[CardId]>
     for merged_card in jp_database.cards:
@@ -336,8 +339,11 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
                 logger.warn('Looked up existing skill id %s from %s for %s',
                             ts_seq_leader, alt_monster_no, merged_card)
             else:
+                calc_skill = calc_leader_skills.get(merged_card.leader_skill.skill_id, '')
+                calc_skill_description = calc_skill.description.strip() or None if calc_skill else None
+                print('got calc skill', calc_skill_description)
                 skill_item = monster_skill.MonsterSkillItem(
-                    next_skill_id, csc.jp_card.leader_skill, csc.na_card.leader_skill)
+                    next_skill_id, csc.jp_card.leader_skill, csc.na_card.leader_skill, calc_skill_description)
                 logger.warn('Inserting new monster skill: %s - %s',
                             repr(merged_card), repr(skill_item))
                 db_wrapper.insert_item(skill_item.insert_sql())
@@ -355,8 +361,11 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
                 logger.warn('Looked up existing skill id %s from %s for %s',
                             ts_seq_skill, alt_monster_no, merged_card)
             else:
+                calc_skill = calc_active_skills.get(merged_card.active_skill.skill_id, '')
+                calc_skill_description = calc_skill.description.strip() or None if calc_skill else None
+                print('got calc skill', calc_skill_description)
                 skill_item = monster_skill.MonsterSkillItem(
-                    next_skill_id, csc.jp_card.active_skill, csc.na_card.active_skill)
+                    next_skill_id, csc.jp_card.active_skill, csc.na_card.active_skill, calc_skill_description)
                 logger.warn('Inserting new monster skill: %s - %s',
                             repr(merged_card), repr(skill_item))
                 db_wrapper.insert_item(skill_item.insert_sql())
@@ -413,16 +422,20 @@ def load_database(base_dir, pg_server):
         card.load_card_data(data_dir=base_dir),
         dungeon.load_dungeon_data(data_dir=base_dir),
         {x: bonus.load_bonus_data(data_dir=base_dir, data_group=x) for x in 'abcde'},
-        skill.load_skill_data(data_dir=base_dir))
+        skill.load_skill_data(data_dir=base_dir),
+        skill.load_raw_skill_data(data_dir=base_dir))
 
 
 class Database(object):
-    def __init__(self, pg_server, cards, dungeons, bonus_sets, skills):
+    def __init__(self, pg_server, cards, dungeons, bonus_sets, skills, raw_skills):
         self.pg_server = pg_server
         self.raw_cards = cards
         self.dungeons = dungeons
         self.bonus_sets = bonus_sets
         self.skills = skills
+
+        # This is temporary for the integration of calculated skills
+        self.raw_skills = raw_skills
 
         self.bonuses = clean_bonuses(pg_server, bonus_sets, dungeons)
         self.cards = clean_cards(cards, skills)
