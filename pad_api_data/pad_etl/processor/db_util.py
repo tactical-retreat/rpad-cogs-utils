@@ -74,6 +74,8 @@ class DbWrapper(object):
             data = list(cursor.fetchall())
             num_rows = len(data)
             if num_rows == 0:
+                if self.dry_run:
+                    return None
                 raise ValueError('got zero results:', sql)
             if num_rows > 1:
                 raise ValueError('got too many results:', num_rows, sql)
