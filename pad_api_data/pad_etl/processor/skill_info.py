@@ -137,12 +137,11 @@ def fmt_multiplier_text(hp_mult, atk_mult, rcv_mult):
 def fmt_reduct_text(damage_reduct, reduct_att=[0, 1, 2, 3, 4]):
     if damage_reduct != 0:
         text = ''
-        if reduct_att == []:
+        if reduct_att == [0,1,2,3,4]:
             text += 'reduce damage taken by {}%'.format(fmt_mult(damage_reduct * 100))
             return text
         else:
-            color_text = 'all' if len(reduct_att) == 5 else ', '.join(
-                [ATTRIBUTES[i] for i in reduct_att])
+            color_text =  ', '.join([ATTRIBUTES[i] for i in reduct_att])
             text += 'reduce damage taken from ' + color_text + \
                 ' Att. by {}%'.format(fmt_mult(damage_reduct * 100))
             return text
@@ -373,21 +372,17 @@ def heal_active_convert(arguments):
         rcv_mult = c['rcv_multiplier_as_hp']
         php = c['percentage_max_hp']
         trcv_mult = c['team_rcv_multiplier_as_hp']
-        has_heal = False
 
         if c['hp'] != 0:
             c['skill_text'] += 'Recover ' + str(c['hp']) + ' HP'
         elif rcv_mult != 0:
             c['skill_text'] += 'Recover HP equal to ' + fmt_mult(rcv_mult) + 'x RCV'
-            has_heal = True
         elif php != 0:
             c['skill_text'] += 'Recover ' + fmt_mult(php * 100) + '% of max HP'
-            has_heal = True
         elif trcv_mult != 0:
             c['skill_text'] += 'Recover HP equal to ' + fmt_mult(trcv_mult) + 'x team\'s total RCV'
-            has_heal = True
         if c['card_bind'] != 0 and c['awoken_bind'] != 0:
-            if has_heal:
+            if c['skill_text'] != '':
                 c['skill_text'] += '; '
             if c['card_bind'] == 9999:
                 c['skill_text'] += 'Remove all binds and awoken skill binds'
@@ -395,7 +390,7 @@ def heal_active_convert(arguments):
                 c['skill_text'] += 'Remove binds and awoken skill binds by ' + \
                     str(c['card_bind']) + ' turns'
         elif c['card_bind'] == 0 and c['awoken_bind'] != 0:
-            if has_heal:
+            if c['skill_text'] != '':
                 c['skill_text'] += '; '
             if c['awoken_bind'] == 9999:
                 c['skill_text'] += 'Remove all awoken skill binds'
@@ -403,7 +398,7 @@ def heal_active_convert(arguments):
                 c['skill_text'] += 'Remove awoken skill binds by ' + \
                     str(c['awoken_bind']) + ' turns'
         elif c['awoken_bind'] == 0 and c['card_bind'] != 0:
-            if has_heal:
+            if c['skill_text'] != '':
                 c['skill_text'] += '; '
             if c['card_bind'] == 9999:
                 c['skill_text'] += 'Remove all binds'
@@ -1252,7 +1247,12 @@ def passive_stats_convert(arguments):
                                      arguments,
                                      passive_stats_backups)(x)
 
-        c['skill_text'] += fmt_stats_type_attr_bonus(c)
+        skill_text = fmt_stats_type_attr_bonus(c)
+        if skill_text !=  '' and c['skill_text'] == '':
+            c['skill_text'] = skill_text
+        elif skill_text != '' and c['skill_text'] != '':
+            c['skill_text']+= '; ' + skill_text
+            
         c['parameter'] = fmt_parameter(c)
         return 'passive_stats', c
     return f
@@ -1271,8 +1271,12 @@ def threshold_stats_convert(above, arguments):
                                        threshold_stats_backups)(x)
         threshold = c['threshold']
         skill_text = fmt_stats_type_attr_bonus(c, reduce_join_txt=' and ', skip_attr_all=True)
-        skill_text += ' when above ' if above else ' when below '
-        skill_text += fmt_mult(threshold * 100) + '% HP'
+        if threshold != 1:
+            skill_text += ' when above ' if above else ' when below '
+            skill_text += fmt_mult(threshold * 100) + '% HP'
+        else:
+            skill_text += ' when '
+            skill_text += 'HP is full' if above else 'HP is not full'
         c['skill_text'] += skill_text
         c['parameter'] = fmt_parameter(c)
         return tag, c
@@ -1441,10 +1445,14 @@ def mass_match_convert(arguments):
 
         skill_text += ' when matching ' + str(min_count)
         if max_count != min_count:
-            skill_text += '+'
+            skill_text += '+ '
 
-        if len(attributes):
+        if len(attributes) == 1:
             skill_text += ' ' + ATTRIBUTES[attributes[0]]
+        elif len(attributes) > 1:
+            color_text =  ', '.join([ATTRIBUTES[i] for i in attributes[:-1]])
+            color_text += ' or ' + ATTRIBUTES[attributes[-1]]
+            skill_text += color_text
 
         skill_text += ' orbs'
 
@@ -1902,8 +1910,8 @@ def minimum_orb_convert(arguments):
                                      arguments,
                                      minimum_orb_backups)(x)
 
-        c['skill_text'] += 'Unable to erase ' + \
-            str(c['minimum_orb']) + ' orbs or less; ' + fmt_stats_type_attr_bonus(c)
+        c['skill_text'] += '[Unable to erase ' + \
+            str(c['minimum_orb']-1) + ' orbs or less]; ' + fmt_stats_type_attr_bonus(c)
 
         c['parameter'] = fmt_parameter(c)
         c['parameter'][3] = 0.0
@@ -2133,9 +2141,9 @@ SKILL_TRANSFORM = {
     157: color_cross_convert({'crosses': (slice(None), lambda x: [{'attribute': a, 'atk_multiplier': multi(d)} for a, d in zip(x[::2], x[1::2])])}),
     158: minimum_orb_convert({'minimum_orb': (0, cc), 'for_attr': (1, binary_con), 'for_type': (2, binary_con), 'hp_multiplier': (4, multi2), 'atk_multiplier': (3, multi2), 'rcv_multiplier': (5, multi2)}),
     159: mass_match_convert({'attributes': (0, binary_con), 'minimum_count': (1, cc), 'minimum_atk_multiplier': (2, multi), 'bonus_atk_multiplier': (3, multi), 'maximum_count': (4, cc)}),
-    162: passive_stats_convert({'for_attr': [], 'for_type': [], 'hp_multiplier': 1.0, 'atk_multiplier': 1.0, 'rcv_multiplier': 1.0, 'skill_text': 'Board becomes 7x6; '}),
+    162: passive_stats_convert({'for_attr': [], 'for_type': [], 'hp_multiplier': 1.0, 'atk_multiplier': 1.0, 'rcv_multiplier': 1.0, 'skill_text': '[Board becomes 7x6]'}),
     163: passive_stats_convert({'for_attr': (0, binary_con), 'for_type': (1, binary_con), 'hp_multiplier': (2, multi2), 'atk_multiplier': (3, multi2), 'rcv_multiplier': (4, multi2), 'reduction_attributes': (5, binary_con), 'damage_reduction': (6, multi),
-                                'skill_text': '[No Skyfall] '}),
+                                'skill_text': '[No Skyfall]'}),
     164: multi_attribute_match_convert({'attributes': (slice(0, 4), list_binary_con), 'minimum_match': (4, cc), 'minimum_atk_multiplier': (5, multi), 'minimum_rcv_multiplier': (6, multi), 'bonus_atk_multiplier': (7, multi), 'bonus_rcv_multiplier': (7, multi)}),
     165: attribute_match_convert({'attributes': (0, binary_con), 'minimum_attributes': (1, cc), 'minimum_atk_multiplier': (2, multi), 'minimum_rcv_multiplier': (3, multi), 'bonus_atk_multiplier': (4, multi), 'bonus_rcv_multiplier': (5, multi),
                                   'maximum_attributes': (slice(1, 7, 6), lambda x: x[0] + x[1])}),
@@ -2146,14 +2154,14 @@ SKILL_TRANSFORM = {
     171: multi_attribute_match_convert({'attributes': (slice(0, 4), list_binary_con), 'minimum_match': (4, cc), 'minimum_atk_multiplier': (5, multi), 'minimum_damage_reduction': (6, multi)}),
     175: collab_bonus_convert({'collab_id': (0, cc), 'hp_multiplier': (3, multi2), 'atk_multiplier': (4, multi2), 'rcv_multiplier': (5, multi2)}),
     176: convert('unexpected', {'skill_text': '', 'parameter': [1.0, 1.0, 1.0, 0.0]}),
-    177: orb_remain_convert({'orb_count': (5, cc), 'atk_multiplier': (6, multi), 'bonus_atk_multiplier': (7, multi)}),
-    178: passive_stats_convert({'time': (0, cc), 'for_attr': (1, binary_con), 'for_type': (2, binary_con), 'hp_multiplier': (3, multi2), 'atk_multiplier': (4, multi2), 'rcv_multiplier': (5, multi2), 'skill_text': 'Fixed 4 second movetime; '}),
+    177: orb_remain_convert({'orb_count': (5, cc), 'atk_multiplier': (6, multi), 'bonus_atk_multiplier': (7, multi), 'skill_text': '[No skyfall]; '}),
+    178: passive_stats_convert({'time': (0, cc), 'for_attr': (1, binary_con), 'for_type': (2, binary_con), 'hp_multiplier': (3, multi2), 'atk_multiplier': (4, multi2), 'rcv_multiplier': (5, multi2), 'skill_text': '[Fixed 4 second movetime]'}),
     182: mass_match_convert({'attributes': (0, binary_con), 'minimum_count': (1, cc), 'minimum_atk_multiplier': (2, multi), 'minimum_damage_reduction': (3, multi)}),
     183: dual_threshold_stats_convert({'for_attr': (0, binary_con), 'for_type': (1, binary_con),
                                        'threshold_1': (2, multi), 'above_1': True, 'atk_multiplier_1': (3, multi), 'rcv_multiplier_1': 1.0, 'damage_reduction_1': (4, multi),
                                        'threshold_2': (5, multi), 'above_2': False, 'atk_multiplier_2': (6, multi2), 'rcv_multiplier_2': (7, multi2), 'damage_reduction_2': 0.0}),
     185: bonus_time_convert({'time': (0, multi), 'for_attr': (1, binary_con), 'for_type': (2, binary_con), 'hp_multiplier': (3, multi2), 'atk_multiplier': (4, multi2), 'rcv_multiplier': (5, multi2)}),
-    186: passive_stats_convert({'for_attr': (0, binary_con), 'for_type': (1, binary_con), 'hp_multiplier': (2, multi2), 'atk_multiplier': (3, multi2), 'rcv_multiplier': (4, multi2)}), 'skill_text': 'Board becomes 7x6; '}
+    186: passive_stats_convert({'for_attr': (0, binary_con), 'for_type': (1, binary_con), 'hp_multiplier': (2, multi2), 'atk_multiplier': (3, multi2), 'rcv_multiplier': (4, multi2)}), 'skill_text': '[Board becomes 7x6]'}
 
 
 MULTI_PART_LS = {}
