@@ -56,6 +56,20 @@ def fix_table_name(table_name):
     return ''.join([parts[0]] + [p.capitalize() for p in parts[1:]])
 
 
+def copy_override(row_data, override_suffix):
+    override_columns = list(filter(lambda x: x.endswith(override_suffix), row_data.keys()))
+    for oc in override_columns:
+        value = row_data[oc]
+        del row_data[oc]
+        if not value:
+            continue
+        base_name = oc[:-len(override_suffix)]
+        if base_name not in row_data:
+            print('error: base column missing:', base_name)
+        else:
+            row_data[base_name] = value
+
+
 def dump_table(table_name, output_dir, cursor):
     print('processing', table_name)
     reformatted_tn = fix_table_name(table_name)
@@ -94,6 +108,9 @@ def dump_table(table_name, output_dir, cursor):
                 fixed_data = str(data)
 
             row_data[fixed_col] = fixed_data
+
+        copy_override(row_data, '_CALCULATED')
+        copy_override(row_data, '_OVERRIDE')
         result_json['items'].append(row_data)
 
     with open(output_file, 'w') as f:
