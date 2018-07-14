@@ -30,7 +30,7 @@ def get_update_monster_skill_ids(mc: MergedCard, ts_seq_leader: int, ts_seq_skil
 
 
 class MonsterSkillItem(object):
-    def __init__(self, ts_seq: int, skill_jp: MonsterSkill, skill_na: MonsterSkill):
+    def __init__(self, ts_seq: int, skill_jp: MonsterSkill, skill_na: MonsterSkill, calc_skill_desc: str):
         # Primary key
         self.ts_seq = ts_seq
 
@@ -59,6 +59,7 @@ class MonsterSkillItem(object):
         self.ts_desc_jp = skill_jp.clean_description
         self.ts_desc_kr = 'unknown_{}'.format(skill_jp.skill_id)
         self.ts_desc_us = skill_na.clean_description
+        self.ts_desc_us_calculated = calc_skill_desc
         self.ts_name_jp = skill_jp.name
         self.ts_name_kr = 'unknown_{}'.format(skill_jp.skill_id)
         self.ts_name_us = skill_na.name
@@ -69,7 +70,7 @@ class MonsterSkillItem(object):
 
     def insert_sql(self):
         sql = """
-        INSERT INTO `padguide`.`skill_list`
+        INSERT INTO `skill_list`
             (`mag_atk`,
             `mag_hp`,
             `mag_rcv`,
@@ -84,6 +85,7 @@ class MonsterSkillItem(object):
             `ts_desc_jp`,
             `ts_desc_kr`,
             `ts_desc_us`,
+            `ts_desc_us_calculated`,
             `ts_name_jp`,
             `ts_name_kr`,
             `ts_name_us`,
@@ -108,6 +110,7 @@ class MonsterSkillItem(object):
             {ts_desc_jp},
             {ts_desc_kr},
             {ts_desc_us},
+            {ts_desc_us_calculated},
             {ts_name_jp},
             {ts_name_kr},
             {ts_name_us},
