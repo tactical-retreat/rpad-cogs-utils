@@ -36,7 +36,7 @@ def get_monster_lookup_sql(card: MergedCard):
 
 
 def get_monster_exists_sql(card: MergedCard):
-    return "SELECT monster_no FROM monster_list WHERE monster_no = '{}'".format(card.card.card_id)
+    return "SELECT monster_no FROM monster_list WHERE monster_no = {}".format(card.card.card_id)
 
 
 class MonsterItem(object):
@@ -95,19 +95,9 @@ class MonsterItem(object):
     def is_valid(self):
         return True
 
-    def exists_sql(self):
-        sql = """SELECT schedule_seq FROM schedule_list
-                 WHERE open_timestamp = {open_timestamp}
-                 AND close_timestamp = {close_timestamp}
-                 AND server = {server}
-                 AND event_seq = {event_seq}
-                 AND dungeon_seq = {dungeon_seq}
-                 """
-        return sql.format(**db_util.object_to_sql_params(self))
-
     def insert_sql(self):
         sql = """
-        INSERT INTO `padguide`.`monster_list`
+        INSERT INTO `monster_list`
             (`app_version`,
             `atk_max`,
             `atk_min`,
@@ -210,7 +200,7 @@ class MonsterInfoItem(object):
 
     def insert_sql(self):
         sql = """
-        INSERT INTO `padguide`.`monster_info_list`
+        INSERT INTO `monster_info_list`
             (`fodder_exp`,
             `history_jp`,
             `history_kr`,
@@ -258,7 +248,7 @@ class MonsterPriceItem(object):
 
     def insert_sql(self):
         sql = """
-        INSERT INTO `padguide`.`monster_price_list`
+        INSERT INTO `monster_price_list`
             (`buy_price`, `monster_no`, `sell_price`, `tstamp`)
             VALUES
             ({buy_price}, {monster_no}, {sell_price}, {tstamp});
@@ -321,7 +311,7 @@ class MonsterAwakeningItem(object):
     def insert_sql(self, tma_seq):
         self.tma_seq = tma_seq
         sql = """
-        INSERT INTO `padguide`.`awoken_skill_list`
+        INSERT INTO `awoken_skill_list`
             (`del_yn`, `is_super`, `monster_no`, `order_idx`, `tma_seq`, `tstamp`, `ts_seq`)
             VALUES
             ({del_yn}, {is_super}, {monster_no}, {order_idx}, {tma_seq}, {tstamp}, {ts_seq});
@@ -362,7 +352,7 @@ class EvolutionItem(object):
     def insert_sql(self, tv_seq: int):
         self.tv_seq = tv_seq
         sql = """
-        INSERT INTO `padguide`.`evolution_list`
+        INSERT INTO `evolution_list`
             (`monster_no`, `to_no`, `tstamp`, `tv_seq`, `tv_type`)
             VALUES
             ({monster_no}, {to_no}, {tstamp}, {tv_seq}, {tv_type});
@@ -411,7 +401,7 @@ class EvolutionMaterialItem(object):
     def insert_sql(self, tem_seq: int):
         self.tem_seq = tem_seq
         sql = """
-        INSERT INTO `padguide`.`evo_material_list`
+        INSERT INTO `evo_material_list`
             (`monster_no`, `order_idx`, `tem_seq`, `tstamp`, `tv_seq`)
             VALUES
             ({monster_no}, {order_idx}, {tem_seq}, {tstamp}, {tv_seq});
@@ -437,7 +427,7 @@ class MonsterAddInfoItem(object):
 
     def insert_sql(self):
         sql = """
-        INSERT INTO `padguide`.`monster_add_info_list`
+        INSERT INTO `monster_add_info_list`
             (`extra_val1`,
             `monster_no`,
             `sub_type`,
