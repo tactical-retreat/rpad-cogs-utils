@@ -68,3 +68,15 @@ def load_skill_data(data_dir=None, skill_json_file: str=None) -> List[MonsterSki
         raise NotImplementedError('version: {}'.format(skill_json['v']))
 
     return [MonsterSkill(i, ms) for i, ms in enumerate(skill_json['skill'])]
+
+
+def load_raw_skill_data(data_dir=None, skill_json_file: str=None) -> object:
+    """Load raw PAD json file."""
+    # Temporary hack
+    if skill_json_file is None:
+        skill_json_file = os.path.join(data_dir, FILE_NAME)
+
+    with open(skill_json_file) as f:
+        skill_json = json.load(f)
+
+    return skill_json

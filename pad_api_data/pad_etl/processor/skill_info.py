@@ -2194,6 +2194,31 @@ def reformat(in_file_name, out_file_name):
     print('-- End skills --\n')
 
 
+class CalculatedSkill(object):
+    def __init__(self, skill_id, skill_desc, skill_params=None):
+        self.skill_id = skill_id
+        self.description = skill_desc
+        self.params = skill_params
+
+
+def reformat_json_info(skill_data):
+    reformatted = reformat_json(skill_data)
+    leader_skills = {}
+    active_skills = {}
+
+    for sid, info in reformatted['leader_skills'].items():
+        args = info['args']
+        if 'skill_text' in args:
+            parameter = args.get('parameter', [1.0, 1.0, 1.0])
+            leader_skills[sid] = CalculatedSkill(sid, args['skill_text'], parameter)
+    for sid, info in reformatted['active_skills'].items():
+        args = info['args']
+        if 'skill_text' in args:
+            leader_skills[sid] = CalculatedSkill(sid, args['skill_text'])
+
+    return leader_skills, active_skills
+
+
 def reformat_json(skill_data):
     reformatted = {}
     reformatted['res'] = skill_data['res']
