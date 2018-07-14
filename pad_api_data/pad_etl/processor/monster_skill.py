@@ -1,14 +1,15 @@
 # from datetime import date, datetime, timedelta
 import time
-#
-# from enum import Enum
 
 from . import db_util
-# from . import processor_util
 from ..data.skill import MonsterSkill
 from .merged_data import MergedCard
+from .monster import SqlItem
 
 
+#
+# from enum import Enum
+# from . import processor_util
 def get_monster_skill_ids(mc: MergedCard):
     args = {'monster_no': mc.card.card_id}
     sql = "SELECT ts_seq_leader, ts_seq_skill FROM monster_list WHERE monster_no = {monster_no}"
@@ -29,7 +30,7 @@ def get_update_monster_skill_ids(mc: MergedCard, ts_seq_leader: int, ts_seq_skil
     return sql.format(**db_util.object_to_sql_params(args))
 
 
-class MonsterSkillItem(object):
+class MonsterSkillItem(SqlItem):
     def __init__(self, ts_seq: int, skill_jp: MonsterSkill, skill_na: MonsterSkill, calc_skill_desc: str):
         # Primary key
         self.ts_seq = ts_seq
@@ -68,60 +69,42 @@ class MonsterSkillItem(object):
 
         self.search_data = '{} {}'.format(self.ts_name_jp, self.ts_name_us)
 
-    def insert_sql(self):
-        sql = """
-        INSERT INTO `skill_list`
-            (`mag_atk`,
-            `mag_hp`,
-            `mag_rcv`,
-            `order_idx`,
-            `reduce_dmg`,
-            `rta_seq_1`,
-            `rta_seq_2`,
-            `search_data`,
-            `ta_seq_1`,
-            `ta_seq_2`,
-            `tstamp`,
-            `ts_desc_jp`,
-            `ts_desc_kr`,
-            `ts_desc_us`,
-            `ts_desc_us_calculated`,
-            `ts_name_jp`,
-            `ts_name_kr`,
-            `ts_name_us`,
-            `ts_seq`,
-            `tt_seq_1`,
-            `tt_seq_2`,
-            `turn_max`,
-            `turn_min`,
-            `t_condition`)
-            VALUES
-            ({mag_atk},
-            {mag_hp},
-            {mag_rcv},
-            {order_idx},
-            {reduce_dmg},
-            {rta_seq_1},
-            {rta_seq_2},
-            {search_data},
-            {ta_seq_1},
-            {ta_seq_2},
-            {tstamp},
-            {ts_desc_jp},
-            {ts_desc_kr},
-            {ts_desc_us},
-            {ts_desc_us_calculated},
-            {ts_name_jp},
-            {ts_name_kr},
-            {ts_name_us},
-            {ts_seq},
-            {tt_seq_1},
-            {tt_seq_2},
-            {turn_max},
-            {turn_min},
-            {t_condition});
-        """
-        return sql.format(**db_util.object_to_sql_params(self))
+    def _table(self):
+        return 'skill_list'
+
+    def _key(self):
+        return 'ts_seq'
+
+    def _insert_columns(self):
+        return [
+            'mag_atk',
+            'mag_hp',
+            'mag_rcv',
+            'order_idx',
+            'reduce_dmg',
+            'rta_seq_1',
+            'rta_seq_2',
+            'search_data',
+            'ta_seq_1',
+            'ta_seq_2',
+            'tstamp',
+            'ts_desc_jp',
+            'ts_desc_kr',
+            'ts_desc_us',
+            'ts_desc_us_calculated',
+            'ts_name_jp',
+            'ts_name_kr',
+            'ts_name_us',
+            'ts_seq',
+            'tt_seq_1',
+            'tt_seq_2',
+            'turn_max',
+            'turn_min',
+            't_condition',
+        ]
+
+    def _update_columns(self):
+        return ['ts_desc_us_calculated']
 
     def __repr__(self):
         return 'MonsterSkillItem({} - {})'.format(self.ts_seq, self.search_data)

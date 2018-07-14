@@ -7,39 +7,61 @@ from ..data.card import BookCard
 from .merged_data import MergedCard
 
 
-# Requires: monster_name, monster_id, active_name, leader_name
-LOOKUP_SQL = """
-SELECT 
-    monster.monster_no AS monster_no, 
-    active.ts_seq AS active_ts_seq, 
-    leader.ts_seq AS leader_ts_seq
-FROM monster_list AS monster
-LEFT OUTER JOIN skill_list AS active
-  ON monster.ts_seq_skill = active.ts_seq
-LEFT OUTER JOIN skill_list AS leader
-  ON monster.ts_seq_leader = leader.ts_seq
-WHERE (monster.tm_name_us = {name} OR monster.tm_name_jp = {name})
-AND (monster.monster_no_us = {monster_id} or monster_no_jp = {monster_id})
-AND (active.ts_seq IS NULL OR active.ts_name_us = {active_name} OR active.ts_name_jp = {active_name})
-AND (leader.ts_seq IS NULL OR leader.ts_name_us = {leader_name} OR leader.ts_name_jp = {leader_name})
-"""
+class SqlItem(object):
+    def exists_sql(self):
+        sql = 'SELECT {} FROM {} WHERE {}'.format(
+            self._key(), self._table(), self._col_compare(self._key()))
+        return sql.format(**db_util.object_to_sql_params(self))
+
+    def needs_update_sql(self):
+        update_cols = self._update_columns()
+        if update_cols is None:
+            return False
+        cols = [self._key()] + update_cols
+        sql = 'SELECT {} FROM {} WHERE'.format(self._key(), self._table())
+        sql += ' ' + ' AND '.join(map(self._col_compare, cols))
+        return sql.format(**db_util.object_to_sql_params(self))
+
+    def _col_compare(self, col):
+        return col + ' = ' + self._col_value_ref(col)
+
+    def _col_value_ref(self, col):
+        return '{' + col + '}'
+
+    def _col_name_ref(self, col):
+        return '`' + col + '`'
+
+    def update_sql(self):
+        cols = self._update_columns()
+        if not cols:
+            return None  # Update not supported
+
+        sql = 'UPDATE {}'.format(self._table())
+        sql += ' SET ' + ', '.join(map(self._col_compare, cols))
+        sql += ' WHERE ' + self._col_compare(self._key())
+        return sql.format(**db_util.object_to_sql_params(self))
+
+    def insert_sql(self):
+        cols = self._insert_columns()
+        sql = 'INSERT INTO {}'.format(self._table())
+        sql += ' (' + ', '.join(map(self._col_name_ref, cols)) + ')'
+        sql += ' VALUES (' + ', '.join(map(self._col_value_ref, cols)) + ')'
+        return sql.format(**db_util.object_to_sql_params(self))
+
+    def _table(self):
+        raise NotImplemented('no table name set')
+
+    def _key(self):
+        raise NotImplemented('no key name set')
+
+    def _insert_columns(self):
+        raise NotImplemented('no insert columns set')
+
+    def _update_columns(self):
+        return None
 
 
-def get_monster_lookup_sql(card: MergedCard):
-    inputs = {
-        'name': card.card.name,
-        'monster_id': str(card.card.card_id),
-        'active_name': card.active_skill.name if card.active_skill else '',
-        'leader_name': card.leader_skill.name if card.leader_skill else '',
-    }
-    return LOOKUP_SQL.format(**db_util.object_to_sql_params(inputs))
-
-
-def get_monster_exists_sql(card: MergedCard):
-    return "SELECT monster_no FROM monster_list WHERE monster_no = {}".format(card.card.card_id)
-
-
-class MonsterItem(object):
+class MonsterItem(SqlItem):
     def __init__(self, merged_card_jp: MergedCard, merged_card_na: MergedCard):
         card = merged_card_jp.card
 
@@ -95,89 +117,44 @@ class MonsterItem(object):
     def is_valid(self):
         return True
 
-    def insert_sql(self):
-        sql = """
-        INSERT INTO `monster_list`
-            (`app_version`,
-            `atk_max`,
-            `atk_min`,
-            `comment_jp`,
-            `comment_kr`,
-            `comment_us`,
-            `cost`,
-            `exp`,
-            `hp_max`,
-            `hp_min`,
-            `level`,
-            `limit_mult`,
-            `monster_no`,
-            `monster_no_jp`,
-            `monster_no_kr`,
-            `monster_no_us`,
-            `pronunciation_jp`,
-            `rarity`,
-            `ratio_atk`,
-            `ratio_hp`,
-            `ratio_rcv`,
-            `rcv_max`,
-            `rcv_min`,
-            `reg_date`,
-            `ta_seq`,
-            `ta_seq_sub`,
-            `te_seq`,
-            `tm_name_jp`,
-            `tm_name_kr`,
-            `tm_name_us`,
-            `tstamp`,
-            `ts_seq_leader`,
-            `ts_seq_skill`,
-            `tt_seq`,
-            `tt_seq_sub`)
-            VALUES
-            ({app_version},
-            {atk_max},
-            {atk_min},
-            {comment_jp},
-            {comment_kr},
-            {comment_us},
-            {cost},
-            {exp},
-            {hp_max},
-            {hp_min},
-            {level},
-            {limit_mult},
-            {monster_no},
-            {monster_no_jp},
-            {monster_no_kr},
-            {monster_no_us},
-            {pronunciation_jp},
-            {rarity},
-            {ratio_atk},
-            {ratio_hp},
-            {ratio_rcv},
-            {rcv_max},
-            {rcv_min},
-            {reg_date},
-            {ta_seq},
-            {ta_seq_sub},
-            {te_seq},
-            {tm_name_jp},
-            {tm_name_kr},
-            {tm_name_us},
-            {tstamp},
-            {ts_seq_leader},
-            {ts_seq_skill},
-            {tt_seq},
-            {tt_seq_sub});
-            """.format(**db_util.object_to_sql_params(self))
+    def _table(self):
+        return 'monster_list'
 
-        return sql
+    def _key(self):
+        return 'monster_no'
+
+    def _insert_columns(self):
+        return [
+            'app_version',
+            'atk_max', 'atk_min',
+            'comment_jp', 'comment_kr', 'comment_us',
+            'cost',
+            'exp',
+            'hp_max', 'hp_min',
+            'level',
+            'limit_mult',
+            'monster_no', 'monster_no_jp', 'monster_no_kr', 'monster_no_us',
+            'pronunciation_jp',
+            'rarity',
+            'ratio_atk', 'ratio_hp', 'ratio_rcv',
+            'rcv_max', 'rcv_min',
+            'reg_date',
+            'ta_seq', 'ta_seq_sub',
+            'te_seq',
+            'tm_name_jp', 'tm_name_kr', 'tm_name_us',
+            'tstamp',
+            'ts_seq_leader', 'ts_seq_skill',
+            'tt_seq', 'tt_seq_sub',
+        ]
+
+    def _update_columns(self):
+        return ['tm_name_us']
 
     def __repr__(self):
         return 'MonsterItem({} - {})'.format(self.monster_no, self.tm_name_us)
 
 
-class MonsterInfoItem(object):
+class MonsterInfoItem(SqlItem):
     def __init__(self, merged_card: MergedCard):
         self.fodder_exp = 0
         self.history_jp = '[{}] New Added'.format(date.today().isoformat())
@@ -192,68 +169,49 @@ class MonsterInfoItem(object):
         self.tsr_seq = 42  # This is an unused series; should be replaced by the updater
         self.tstamp = int(time.time()) * 1000
 
-    def exists_sql(self):
-        sql = """SELECT monster_no FROM monster_info_list
-                 WHERE monster_no = {monster_no}
-                 """.format(**db_util.object_to_sql_params(self))
-        return sql
+    def _table(self):
+        return 'monster_info_list'
 
-    def insert_sql(self):
-        sql = """
-        INSERT INTO `monster_info_list`
-            (`fodder_exp`,
-            `history_jp`,
-            `history_kr`,
-            `history_us`,
-            `monster_no`,
-            `on_kr`,
-            `on_us`,
-            `pal_egg`,
-            `rare_egg`,
-            `sell_price`,
-            `tsr_seq`,
-            `tstamp`)
-            VALUES
-            ({fodder_exp},
-            {history_jp},
-            {history_kr},
-            {history_us},
-            {monster_no},
-            {on_kr},
-            {on_us},
-            {pal_egg},
-            {rare_egg},
-            {sell_price},
-            {tsr_seq},
-            {tstamp});
-            """.format(**db_util.object_to_sql_params(self))
-        return sql
+    def _key(self):
+        return 'monster_no'
+
+    def _insert_columns(self):
+        return [
+            'fodder_exp',
+            'history_jp', 'history_kr', 'history_us',
+            'monster_no',
+            'on_kr', 'on_us',
+            'pal_egg', 'rare_egg',
+            'sell_price',
+            'tsr_seq',
+            'tstamp',
+        ]
+
+    def _update_columns(self):
+        return None
 
     def __repr__(self):
         return 'MonsterInfoItem({})'.format(self.monster_no)
 
 
-class MonsterPriceItem(object):
+class MonsterPriceItem(SqlItem):
     def __init__(self, card: BookCard):
         self.monster_no = card.card_id
         self.buy_price = 0
         self.sell_price = card.sell_mp
         self.tstamp = int(time.time()) * 1000
 
-    def exists_sql(self):
-        sql = """SELECT monster_no FROM monster_price_list
-                 WHERE monster_no = {monster_no}
-                 """.format(**db_util.object_to_sql_params(self))
-        return sql
+    def _table(self):
+        return 'monster_price_list'
 
-    def insert_sql(self):
-        sql = """
-        INSERT INTO `monster_price_list`
-            (`buy_price`, `monster_no`, `sell_price`, `tstamp`)
-            VALUES
-            ({buy_price}, {monster_no}, {sell_price}, {tstamp});
-        """.format(**db_util.object_to_sql_params(self))
-        return sql
+    def _key(self):
+        return 'monster_no'
+
+    def _insert_columns(self):
+        return ['buy_price', 'monster_no', 'sell_price', 'tstamp']
+
+    def _update_columns(self):
+        return ['sell_price']
 
     def __repr__(self):
         return 'MonsterPriceItem({})'.format(self.monster_no)
@@ -281,8 +239,7 @@ def card_to_awakenings(awoken_name_to_id, card: BookCard):
             ts_seq = awoken_name_to_id[pg_awakening_name]
             results.append(MonsterAwakeningItem(card.card_id, len(results) + 1, ts_seq, 1))
     except Exception as e:
-        print('EXCEPTION')
-        print(e)
+        print('EXCEPTION', e)
     return results
 
 
@@ -412,33 +369,24 @@ class EvolutionMaterialItem(object):
         return 'EvolutionMaterialItem({} -> {})'.format(self.monster_no, self.tv_seq)
 
 
-class MonsterAddInfoItem(object):
+class MonsterAddInfoItem(SqlItem):
     def __init__(self, card: BookCard):
         self.extra_val1 = int(card.inheritable)
         self.monster_no = card.card_id
         self.sub_type = TYPE_MAP[card.type_3_id]
         self.tstamp = int(time.time()) * 1000
 
-    def exists_sql(self):
-        sql = """SELECT monster_no FROM monster_add_info_list
-                 WHERE monster_no = {monster_no}
-                 """.format(**db_util.object_to_sql_params(self))
-        return sql
+    def _table(self):
+        return 'monster_add_info_list'
 
-    def insert_sql(self):
-        sql = """
-        INSERT INTO `monster_add_info_list`
-            (`extra_val1`,
-            `monster_no`,
-            `sub_type`,
-            `tstamp`)
-            VALUES
-            ({extra_val1},
-            {monster_no},
-            {sub_type},
-            {tstamp});
-            """.format(**db_util.object_to_sql_params(self))
-        return sql
+    def _key(self):
+        return 'monster_no'
+
+    def _insert_columns(self):
+        return ['extra_val1', 'monster_no', 'sub_type', 'tstamp']
+
+    def _update_columns(self):
+        return ['extra_val1', 'sub_type']
 
     def __repr__(self):
         return 'MonsterInfoItem({} - {}/{})'.format(self.monster_no, self.extra_val1, self.sub_type)
