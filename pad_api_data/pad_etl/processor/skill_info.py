@@ -2175,7 +2175,10 @@ def reformat(in_file_name, out_file_name):
     print('Raw skills json loaded\n')
     reformatted = reformat_json(skill_data)
 
-    print(f"Converted {len(reformatted['active_skills'])} active skills and {len(reformatted['leader_skills'])} leader skills ({len(reformatted['active_skills']) + len(reformatted['leader_skills'])} total)\n")
+    print('Converted {active} active skills and {leader} leader skills ({comb} total)\n'.format(
+        active=len(reformatted['active_skills']),
+        leader=len(reformatted['leader_skills']),
+        comb=(len(reformatted['active_skills']) + len(reformatted['leader_skills']))))
 
     def verify(skills):
         ls_verification = defaultdict(lambda: defaultdict(set))
