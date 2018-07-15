@@ -148,7 +148,7 @@ class MonsterItem(SqlItem):
         ]
 
     def _update_columns(self):
-        return ['tm_name_us']
+        return ['tm_name_us', 'limit_mult']
 
     def __repr__(self):
         return 'MonsterItem({} - {})'.format(self.monster_no, self.tm_name_us)
