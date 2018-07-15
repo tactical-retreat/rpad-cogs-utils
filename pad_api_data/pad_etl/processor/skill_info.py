@@ -2189,7 +2189,8 @@ def reformat(in_file_name, out_file_name):
         for name, value in ls_verification.items():
             for a, p in value.items():
                 if len(p) != 1:
-                    print(f'INCONSISTENT name:{name} difference in {repr(a)}: {repr(p)}\n')
+                    print('INCONSISTENT name:{name} difference in {repa}: {repp}\n'.format(
+                        name=name, repa=repr(a)), repp=repr(p))
 
     print('Checking active skill consistency\n-------start-------\n')
     verify(reformatted['active_skills'])
@@ -2241,7 +2242,7 @@ def reformat_json(skill_data):
     reformatted['active_skills'] = {}
     reformatted['leader_skills'] = {}
 
-    print(f'Starting skill conversion of {len(skill_data["skill"])} skills')
+    print('Starting skill conversion of {count} skills'.format(count=len(skill_data["skill"])))
     for i, c in enumerate(skill_data['skill']):
         if c[3] == 0 and c[4] == 0:  # this distinguishes leader skills from active skills
             reformatted['leader_skills'][i] = {}
@@ -2252,7 +2253,8 @@ def reformat_json(skill_data):
                 reformatted['leader_skills'][i]['type'], reformatted['leader_skills'][i]['args'] = SKILL_TRANSFORM[c[2]](
                     c[6:])
                 if type(reformatted['leader_skills'][i]['args']) == list:
-                    print(f'Unhandled leader skill type: {c[2]} (skill id: {i})')
+                    print('Unhandled leader skill type: {c2} (skill id: {i})'.format(
+                        c2=c[2], i=i))
                     del reformatted['leader_skills'][i]
                 if reformatted['leader_skills'][i]['type'] == 'combine_leader_skills':
                     for j in range(0, len(reformatted['leader_skills'][i]['args']['skill_ids'])):
@@ -2263,7 +2265,7 @@ def reformat_json(skill_data):
                             MULTI_PART_LS[str(reformatted['leader_skills'][i]
                                               ['args']['skill_ids'][j])] = [i]
             else:
-                print(f'Unexpected leader skill type: {c[2]} (skill id: {i})')
+                print('Unexpected leader skill type: {c2} (skill id: {i})'.format(c2=c[2], i=i))
                 del reformatted['leader_skills'][i]
                 #reformatted['leader_skills'][i]['type'] = f'_{c[2]}'
                 #reformatted['leader_skills'][i]['args'] = {f'_{i}':v for i,v in enumerate(c[6:])}
@@ -2278,14 +2280,14 @@ def reformat_json(skill_data):
                 reformatted['active_skills'][i]['type'], reformatted['active_skills'][i]['args'] = SKILL_TRANSFORM[c[2]](
                     c[6:])
                 if type(reformatted['active_skills'][i]['args']) != dict:
-                    print(f'Unhandled active skill type: {c[2]} (skill id: {i})')
+                    print('Unhandled active skill type: {c2} (skill id: {i})'.format(c2=c[2], i=i))
                     del reformatted['active_skills'][i]
                 if reformatted['active_skills'][i]['type'] == 'combine_active_skills':
                     for j in range(0, len(reformatted['active_skills'][i]['args']['skill_ids'])):
                         MULTI_PART_AS[str(reformatted['active_skills'][i]['args']
                                           ['skill_ids'][j])] = reformatted['active_skills'][i]['id']
             else:
-                print(f'Unexpected active skill type: {c[2]} (skill id: {i})')
+                print('Unexpected active skill type: {c2} (skill id: {i})'.format(c2=c[2], i=i))
                 del reformatted['active_skills'][i]
                 #reformatted['active_skills'][i]['type'] = f'_{c[2]}'
                 #reformatted['active_skills'][i]['args'] = {f'_{i}':v for i,v in enumerate(c[6:])}
