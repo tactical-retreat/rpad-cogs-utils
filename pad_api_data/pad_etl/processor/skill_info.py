@@ -2016,7 +2016,13 @@ SKILL_TRANSFORM = {
     86: suicide_nuke_convert({'attribute': (0, cc), 'damage': (1, cc), 'hp_remaining': (3, multi), 'mass_attack': False}),
     87: suicide_nuke_convert({'attribute': (0, cc), 'damage': (1, cc), 'hp_remaining': (3, multi), 'mass_attack': True}),
     88: type_attack_boost_convert({'duration': (0, cc), 'types': (1, listify), 'multiplier': (2, multi)}),
-    90: attribute_attack_boost_convert({'duration': (0, cc), 'for_attr': (slice(1, 3), list_con), 'atk_multiplier': (2, ccf)}),
+    90: lambda x:
+    attribute_attack_boost_convert({'duration': (0, cc), 'for_attr': (
+        slice(1, 3), list_con), 'atk_multiplier': (2, ccf)})(x)
+    if len(make_defaultlist(int, x)) == 3 else
+    (attribute_attack_boost_convert({'duration': (0, cc), 'for_attr': (slice(1, 3), list_con), 'atk_multiplier': (3, multi)})(x)
+     if len(make_defaultlist(int, x)) == 4 else
+     (90, x)),
     91: enhance_convert({'orbs': (slice(0, 2), list_con)}),
     92: type_attack_boost_convert({'duration': (0, cc), 'types': (slice(1, 3), list_con), 'multiplier': (3, multi)}),
     93: convert('leader_swap', {'skill_text': 'Becomes Team leader, changes back when used again'}),
@@ -2042,7 +2048,7 @@ SKILL_TRANSFORM = {
     awakening_heal_convert({'awakenings': (slice(1, 4), list_con), 'amount_per': (5, cc)})(x)
     if make_defaultlist(int, x)[4] == 1 else
     (awakening_attack_boost_convert({'duration': (0, cc), 'awakenings': (slice(1, 4), list_con), 'amount_per': (5, lambda x: (x - 100) / 100)})(x)
-        if make_defaultlist(int, x)[4] == 2 else
+     if make_defaultlist(int, x)[4] == 2 else
      (awakening_shield_convert({'duration': (0, cc), 'awakenings': (slice(1, 4), list_con), 'amount_per': (5, multi)})(x)
       if make_defaultlist(int, x)[4] == 3 else
       (convert('unexpected', {'skill_text': '', 'parameter': [1.0, 1.0, 1.0, 0.0]})(x)
