@@ -53,7 +53,7 @@ def rcv_from_slice(x): return multi(x[2]) if 2 in x[:2] else 1.0
 
 
 def fmt_mult(x):
-    return str(x).rstrip('0').rstrip('.')
+    return str(round(x,2)).rstrip('0').rstrip('.')
 
 
 all_attr = [0, 1, 2, 3, 4]
@@ -1832,15 +1832,17 @@ def dual_threshold_stats_convert(arguments):
         c1['atk_multiplier'] = c['atk_multiplier_1']
         c1['rcv_multiplier'] = c['rcv_multiplier_1']
         c1['damage_reduction'] = c['damage_reduction_1']
+        c1['reduction_attributes'] = [0,1,2,3,4]
         c2 = {}
         c2['above'] = c['above_2']
         c2['threshold'] = c['threshold_2']
         c2['atk_multiplier'] = c['atk_multiplier_2']
         c2['rcv_multiplier'] = c['rcv_multiplier_2']
         c2['damage_reduction'] = c['damage_reduction_2']
+        c2['reduction_attributes'] = [0,1,2,3,4]
         skill_text = ''
         if c1['atk_multiplier'] != 0 or c1['rcv_multiplier'] != 1 or c1['damage_reduction'] != 0:
-            if c1['atk_multiplier'] == 0 and c1['rcv_multiplier'] != 1 and c1['damage_reduction'] != 0:
+            if c1['atk_multiplier'] == 0:
                 c1['atk_multiplier'] = 1
             skill_text = fmt_stats_type_attr_bonus(c1, reduce_join_txt=' and ', skip_attr_all=True)
             skill_text += ' when above ' if c1['above'] else ' when below '
@@ -1854,14 +1856,13 @@ def dual_threshold_stats_convert(arguments):
             skill_text += fmt_mult(c2['threshold'] * 100) + '% HP'
         c['skill_text'] += skill_text
 
-        c1['parameter'] = fmt_parameter(c1)
+        c['parameter'] = fmt_parameter(c1)
         c2['parameter'] = fmt_parameter(c2)
 
-        for i in range(0, len(c['parameter'])):
-            if c1['parameter'][i] > c2['parameter'][i]:
-                c['parameter'][i] = c1['parameter'][i]
-            else:
+        for i in range(1, len(c['parameter'])):                    
+            if c2['parameter'][i] > c['parameter'][i]:
                 c['parameter'][i] = c2['parameter'][i]
+
         return 'dual_threshold_stats', c
     return f
 
