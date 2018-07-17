@@ -243,7 +243,7 @@ def card_to_awakenings(awoken_name_to_id, card: BookCard):
     return results
 
 
-class MonsterAwakeningItem(object):
+class MonsterAwakeningItem(SqlItem):
     def __init__(self, monster_no: int, order_idx: int, ts_seq: int, is_super: int):
         # Unique ID
         self.tma_seq = None
@@ -258,22 +258,32 @@ class MonsterAwakeningItem(object):
         self.del_yn = 0
         self.tstamp = int(time.time()) * 1000
 
-    def exists_sql(self):
+    def exists_by_values_sql(self):
         sql = """
         SELECT tma_seq FROM awoken_skill_list
         WHERE monster_no = {monster_no} and order_idx = {order_idx}
         """.format(**db_util.object_to_sql_params(self))
         return sql
 
-    def insert_sql(self, tma_seq):
-        self.tma_seq = tma_seq
-        sql = """
-        INSERT INTO `awoken_skill_list`
-            (`del_yn`, `is_super`, `monster_no`, `order_idx`, `tma_seq`, `tstamp`, `ts_seq`)
-            VALUES
-            ({del_yn}, {is_super}, {monster_no}, {order_idx}, {tma_seq}, {tstamp}, {ts_seq});
-        """.format(**db_util.object_to_sql_params(self))
-        return sql
+    def _table(self):
+        return 'awoken_skill_list'
+
+    def _key(self):
+        return 'tma_seq'
+
+    def _insert_columns(self):
+        return [
+            'del_yn',
+            'is_super',
+            'monster_no',
+            'order_idx',
+            'tma_seq',
+            'tstamp',
+            'ts_seq'
+        ]
+
+    def _update_columns(self):
+        return ['is_super', 'ts_seq']
 
     def __repr__(self):
         return 'MonsterAwakeningItem({})'.format(self.monster_no)

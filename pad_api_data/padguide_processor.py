@@ -257,13 +257,13 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
     for csc in combined_cards:
         awakenings = monster.card_to_awakenings(awoken_name_to_id, csc.jp_card.card)
         for item in awakenings:
-            if db_wrapper.check_existing(item.exists_sql()):
-                # Skipping existing card updates for now, inserts only
-                fail_logger.debug('Skipping existing awakening: %s', repr(item))
+            tma_seq = db_wrapper.check_existing_value(item.exists_by_values_sql())
+            if tma_seq:
+                item.tma_seq = tma_seq
             else:
-                logger.warn('Inserting new awakening: %s', repr(item))
-                db_wrapper.insert_item(item.insert_sql(next_awakening_id))
+                item.tma_seq = next_awakening_id
                 next_awakening_id += 1
+            insert_or_update(item)
 
     # Evolutions
     next_evo_id = db_wrapper.get_single_value(
