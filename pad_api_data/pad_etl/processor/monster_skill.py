@@ -128,7 +128,7 @@ class MonsterSkillLeaderDataItem(SqlItem):
         for i in range(4):
             code = i + 1
             mult = params[i]
-            if mult != 1:
+            if (mult != 1.0 and code != 4) or (mult > 0 and code == 4):
                 mult_fmt = '{:.2f}'.format(mult).rstrip('0').rstrip('.')
                 leader_data_parts.append('{}/{}///'.format(code, mult_fmt))
 
