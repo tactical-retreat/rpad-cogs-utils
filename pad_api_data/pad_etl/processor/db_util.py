@@ -91,6 +91,20 @@ class DbWrapper(object):
                 raise ValueError('got too many results:', num_rows, sql)
             return bool(num_rows)
 
+    def check_existing_value(self, sql):
+        with self.connection.cursor() as cursor:
+            num_rows = self.execute(cursor, sql)
+            if num_rows > 1:
+                raise ValueError('got too many results:', num_rows, sql)
+            elif num_rows == 0:
+                return None
+            else:
+                row_values = list(cursor.fetchone().values())
+                if len(row_values) > 1:
+                    return row_values
+                else:
+                    return row_values[0]
+
     def insert_item(self, sql):
         with self.connection.cursor() as cursor:
             if self.dry_run:
