@@ -1448,8 +1448,8 @@ def mass_match_convert(arguments):
             skill_text += '+ '
 
         if len(attributes) == 1:
-            skill_text += ' ' + ATTRIBUTES[attributes[0]]
-        elif len(attributes) > 1:
+            skill_text += ATTRIBUTES[attributes[0]]
+        elif len(attributes) > 1 and attributes != [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]:
             color_text = ', '.join([ATTRIBUTES[i] for i in attributes[:-1]])
             color_text += ' or ' + ATTRIBUTES[attributes[-1]]
             skill_text += color_text
@@ -2048,7 +2048,7 @@ SKILL_TRANSFORM = {
     awakening_heal_convert({'awakenings': (slice(1, 4), list_con), 'amount_per': (5, cc)})(x)
     if make_defaultlist(int, x)[4] == 1 else
     (awakening_attack_boost_convert({'duration': (0, cc), 'awakenings': (slice(1, 4), list_con), 'amount_per': (5, lambda x: (x - 100) / 100)})(x)
-     if make_defaultlist(int, x)[4] == 2 else
+        if make_defaultlist(int, x)[4] == 2 else
      (awakening_shield_convert({'duration': (0, cc), 'awakenings': (slice(1, 4), list_con), 'amount_per': (5, multi)})(x)
       if make_defaultlist(int, x)[4] == 3 else
       (convert('unexpected', {'skill_text': '', 'parameter': [1.0, 1.0, 1.0, 0.0]})(x)
