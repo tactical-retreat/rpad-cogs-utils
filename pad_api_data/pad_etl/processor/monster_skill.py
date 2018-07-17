@@ -106,7 +106,7 @@ class MonsterSkillItem(SqlItem):
         ]
 
     def _update_columns(self):
-        return ['ts_desc_us_calculated']
+        return ['ts_desc_us_calculated', 'turn_max', 'turn_min']
 
     def __repr__(self):
         return 'MonsterSkillItem({} - {})'.format(self.ts_seq, self.search_data)
