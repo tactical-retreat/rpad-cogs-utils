@@ -1445,14 +1445,14 @@ def mass_match_convert(arguments):
 
         skill_text += ' when matching ' + str(min_count)
         if max_count != min_count:
-            skill_text += '+ '
+            skill_text += '+'
 
         if len(attributes) == 1:
-            skill_text += ATTRIBUTES[attributes[0]]
+            skill_text += ' ' + ATTRIBUTES[attributes[0]]
         elif len(attributes) > 1 and attributes != [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]:
             color_text = ', '.join([ATTRIBUTES[i] for i in attributes[:-1]])
             color_text += ' or ' + ATTRIBUTES[attributes[-1]]
-            skill_text += color_text
+            skill_text += ' ' + color_text
 
         skill_text += ' orbs'
 
