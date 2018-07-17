@@ -386,6 +386,12 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
                     'ts_seq_leader', merged_card.leader_skill, merged_card_na.leader_skill, calc_ls_skill_description)
                 update_monster = True
 
+            if calc_ls_skill:
+                leader_data_item = monster_skill.MonsterSkillLeaderDataItem(
+                    ts_seq_leader, calc_ls_skill.params)
+                if leader_data_item.leader_data:
+                    insert_or_update(leader_data_item)
+
         ts_seq_skill = info['ts_seq_skill']
         if merged_card.active_skill:
             calc_as_skill = calc_skills.get(merged_card.active_skill.skill_id, '')

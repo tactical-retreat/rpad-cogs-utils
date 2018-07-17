@@ -1,6 +1,8 @@
 # from datetime import date, datetime, timedelta
 import time
 
+from typing import List
+
 from . import db_util
 from ..data.skill import MonsterSkill
 from .merged_data import MergedCard
@@ -108,3 +110,47 @@ class MonsterSkillItem(SqlItem):
 
     def __repr__(self):
         return 'MonsterSkillItem({} - {})'.format(self.ts_seq, self.search_data)
+
+
+class MonsterSkillLeaderDataItem(SqlItem):
+    def __init__(self, ts_seq: int, params: List[float]):
+        # Primary key
+        self.ts_seq = ts_seq
+
+        # 4 pipe delimited fields, each field is a condition
+        # Slashes separate effects for conditions
+        # 1: Code 1=HP, 2=ATK, 3=RCV, 4=Reduction
+        # 2: Multiplier
+        # 3: Color restriction (coded)
+        # 4: Type restriction (coded)
+        # 5: Combo restriction
+        leader_data_parts = []
+        for i in range(4):
+            code = i + 1
+            mult = params[i]
+            if mult != 1:
+                mult_fmt = '{:.2f}'.format(mult).rstrip('0').rstrip('.')
+                leader_data_parts.append('{}/{}///'.format(code, mult_fmt))
+
+        self.leader_data = '|'.join(leader_data_parts)
+
+        self.tstamp = int(time.time()) * 1000
+
+    def _table(self):
+        return 'skill_leader_data_list'
+
+    def _key(self):
+        return 'ts_seq'
+
+    def _insert_columns(self):
+        return [
+            'leader_data',
+            'ts_seq',
+            'tstamp',
+        ]
+
+    def _update_columns(self):
+        return ['leader_data']
+
+    def __repr__(self):
+        return 'MonsterSkillLeaderDataItem({} - {})'.format(self.ts_seq, self.leader_data)
