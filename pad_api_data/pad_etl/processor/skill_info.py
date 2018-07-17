@@ -1231,10 +1231,10 @@ def fmt_parameter(c):
     damage_reduct = c.get('damage_reduction', c.get('minimum_damage_reduction', 0.0))
     step = c.get('step', 0.0)
 
-    return [float(fmt_mult(pow(hp_mult, 2))),
-            float(fmt_mult(float("{0:.2f}".format(pow(atk_mult + step * bonus_atk_mult, 2))))),
-            float(fmt_mult(pow(rcv_mult + step * bonus_rcv_mult, 2))),
-            float(fmt_mult(1 - pow(1 - damage_reduct, 2)))]
+    return [float(fmt_mult(hp_mult)),
+            float(fmt_mult(float("{0:.2f}".format(atk_mult + step * bonus_atk_mult)))),
+            float(fmt_mult(rcv_mult + step * bonus_rcv_mult)),
+            float(fmt_mult(damage_reduct))]
 
 
 passive_stats_backups = {'for_attr': [], 'for_type': [], 'hp_multiplier': 1.0, 'atk_multiplier': 1.0,
@@ -2227,7 +2227,7 @@ def reformat_json_info(skill_data):
     for sid, info in reformatted['leader_skills'].items():
         args = info['args']
         if 'skill_text' in args:
-            parameter = args.get('parameter', [1.0, 1.0, 1.0])
+            parameter = args.get('parameter', [1.0, 1.0, 1.0, 1.0])
             leader_skills[sid] = CalculatedSkill(sid, args['skill_text'], parameter)
     for sid, info in reformatted['active_skills'].items():
         args = info['args']
@@ -2319,16 +2319,11 @@ def reformat_json(skill_data):
                     rcv_mult = float(cur_args['parameter'][2])
                     reduction = float(cur_args['parameter'][3])
 
-                    for m in range(0, 4):
-                        if m == 0:
-                            hp_mult *= combined_skill_args['parameter'][m]
-                        elif m == 1:
-                            atk_mult *= combined_skill_args['parameter'][m]
-                        elif m == 2:
-                            rcv_mult *= combined_skill_args['parameter'][m]
-                        elif m == 3:
-                            reduction = 1 - (1 - float(cur_args['parameter'][m])) *\
-                                (1 - float(combined_skill_args['parameter'][m]))
+                    hp_mult *= combined_skill_args['parameter'][0]
+                    atk_mult *= combined_skill_args['parameter'][1]
+                    rcv_mult *= combined_skill_args['parameter'][2]
+                    reduction = 1 - (1 - reduction) * \
+                        (1 - float(combined_skill_args['parameter'][3]))
                     cur_args['parameter'] = [hp_mult, atk_mult, rcv_mult, reduction]
             elif MULTI_PART_AS.get(str(j)):
                 AS = reformatted['active_skills']
