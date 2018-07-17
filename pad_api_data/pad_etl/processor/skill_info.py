@@ -1361,8 +1361,10 @@ def attribute_match_convert(arguments):
             skill_text += ' when matching {} at once'.format(attr_text)
 
         c['skill_text'] = skill_text
-
-        c['step'] = max_attr - min_attr
+        if max_attr == min_attr and bonus_atk_mult != 0:
+            c['step'] = len(attr)-min_attr
+        else:
+            c['step'] = max_attr - min_attr
         c['parameter'] = fmt_parameter(c)
         return 'attribute_match', c
     return f
