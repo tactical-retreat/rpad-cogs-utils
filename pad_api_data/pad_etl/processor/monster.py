@@ -20,7 +20,9 @@ class SqlItem(object):
         cols = [self._key()] + update_cols
         sql = 'SELECT {} FROM {} WHERE'.format(self._key(), self._table())
         sql += ' ' + ' AND '.join(map(self._col_compare, cols))
-        return sql.format(**db_util.object_to_sql_params(self))
+        formatted_sql = sql.format(**db_util.object_to_sql_params(self))
+        fixed_sql = formatted_sql.replace('= NULL', 'is NULL')
+        return fixed_sql
 
     def _col_compare(self, col):
         return col + ' = ' + self._col_value_ref(col)
@@ -351,7 +353,7 @@ def card_to_evo_mats(card: BookCard, tv_seq: int):
     return results
 
 
-class EvolutionMaterialItem(object):
+class EvolutionMaterialItem(SqlItem):
     def __init__(self, mat_monster_no: int, order_idx: int, tv_seq: int):
         self.tem_seq = None
         self.monster_no = mat_monster_no
@@ -359,21 +361,23 @@ class EvolutionMaterialItem(object):
         self.tv_seq = tv_seq
         self.tstamp = int(time.time()) * 1000
 
-    def exists_sql(self):
+    def exists_by_values_sql(self):
         sql = """SELECT tem_seq FROM evo_material_list
                  WHERE order_idx = {order_idx} AND tv_seq = {tv_seq} 
                  """.format(**db_util.object_to_sql_params(self))
         return sql
 
-    def insert_sql(self, tem_seq: int):
-        self.tem_seq = tem_seq
-        sql = """
-        INSERT INTO `evo_material_list`
-            (`monster_no`, `order_idx`, `tem_seq`, `tstamp`, `tv_seq`)
-            VALUES
-            ({monster_no}, {order_idx}, {tem_seq}, {tstamp}, {tv_seq});
-        """.format(**db_util.object_to_sql_params(self))
-        return sql
+    def _table(self):
+        return 'evo_material_list'
+
+    def _key(self):
+        return 'tem_seq'
+
+    def _insert_columns(self):
+        return ['monster_no', 'order_idx', 'tem_seq', 'tstamp', 'tv_seq']
+
+    def _update_columns(self):
+        return ['monster_no']
 
     def __repr__(self):
         return 'EvolutionMaterialItem({} -> {})'.format(self.monster_no, self.tv_seq)

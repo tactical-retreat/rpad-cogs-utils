@@ -19,6 +19,7 @@ from pad_etl.processor.schedule_item import ScheduleItem
 logging.basicConfig()
 logger = logging.getLogger('processor')
 fail_logger = logging.getLogger('processor_failures')
+fail_logger.setLevel(logging.INFO)
 
 logging.getLogger().setLevel(logging.DEBUG)
 logger.setLevel(logging.DEBUG)
@@ -291,12 +292,13 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
         tv_seq = db_wrapper.get_single_value(monster.lookup_evo_id_sql(card), op=int)
         evo_mat_items = monster.card_to_evo_mats(card, tv_seq)
         for item in evo_mat_items:
-            if db_wrapper.check_existing(item.exists_sql()):
-                fail_logger.debug('Skipping existing evo mat: %s', repr(item))
+            tem_seq = db_wrapper.check_existing_value(item.exists_by_values_sql())
+            if tem_seq:
+                item.tem_seq = tem_seq
             else:
-                logger.warn('Inserting new evo mat: %s', repr(item))
-                db_wrapper.insert_item(item.insert_sql(next_evo_mat_id))
+                item.tem_seq = next_evo_mat_id
                 next_evo_mat_id += 1
+            insert_or_update(item)
 
     # Skills
     next_skill_id = db_wrapper.get_single_value(
