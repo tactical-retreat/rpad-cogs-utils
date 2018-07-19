@@ -1249,7 +1249,7 @@ def passive_stats_convert(arguments):
 
         skill_text = fmt_stats_type_attr_bonus(c)
         if skill_text != '' and c['skill_text'] == '':
-            c['skill_text'] = skill_text
+            c['skill_text'] += skill_text
         elif skill_text != '' and c['skill_text'] != '':
             c['skill_text'] += '; ' + skill_text
 
@@ -2170,7 +2170,7 @@ SKILL_TRANSFORM = {
                                        'threshold_1': (2, multi), 'above_1': True, 'atk_multiplier_1': (3, multi), 'rcv_multiplier_1': 1.0, 'damage_reduction_1': (4, multi),
                                        'threshold_2': (5, multi), 'above_2': False, 'atk_multiplier_2': (6, multi2), 'rcv_multiplier_2': (7, multi2), 'damage_reduction_2': 0.0}),
     185: bonus_time_convert({'time': (0, multi), 'for_attr': (1, binary_con), 'for_type': (2, binary_con), 'hp_multiplier': (3, multi2), 'atk_multiplier': (4, multi2), 'rcv_multiplier': (5, multi2)}),
-    186: passive_stats_convert({'for_attr': (0, binary_con), 'for_type': (1, binary_con), 'hp_multiplier': (2, multi2), 'atk_multiplier': (3, multi2), 'rcv_multiplier': (4, multi2)}), 'skill_text': '[Board becomes 7x6]'}
+    186: passive_stats_convert({'for_attr': (0, binary_con), 'for_type': (1, binary_con), 'hp_multiplier': (2, multi2), 'atk_multiplier': (3, multi2), 'rcv_multiplier': (4, multi2), 'skill_text': '[Board becomes 7x6]'}), }
 
 
 MULTI_PART_LS = {}
