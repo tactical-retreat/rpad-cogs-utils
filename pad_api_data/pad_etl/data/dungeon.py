@@ -9,8 +9,7 @@ import os
 from typing import List, Any
 
 from ..common import pad_util
-from ..common.dungeon_types import DUNGEON_TYPE
-
+from ..common.dungeon_types import DUNGEON_TYPE, REPEAT_DAY
 
 # The typical JSON file name for this data.
 FILE_NAME = 'download_dungeon_data.json'
@@ -44,10 +43,8 @@ class Dungeon(pad_util.JsonDictEncodable):
         self.dungeon_id = int(raw[0])
         self.name = str(raw[1])
         self.unknown_002 = int(raw[2])
-        self.unknown_004 = int(raw[4])
 
         self.clean_name = pad_util.strip_colors(self.name)
-
 
         # Using DUNGEON TYPES file in common.dungeon_types
         self.dungeon_type = DUNGEON_TYPE[int(raw[3])]
@@ -55,6 +52,9 @@ class Dungeon(pad_util.JsonDictEncodable):
         # I call it comment as it is similar to dungeon_type, but sometimes designates certain dungeons specifically
         # over others. See dungeon_types.py for more details.
         self.dungeon_comment = pad_util.get_dungeon_comment(int(raw[5]))
+
+        # This will be a day of the week, or an empty string if it doesn't repeat regularly
+        self.repeat_day = REPEAT_DAY[int(raw[4])]
 
         if len(raw) > 6:
             print('unexpected field count: ' + ','.join(raw))
@@ -66,7 +66,7 @@ class Dungeon(pad_util.JsonDictEncodable):
         return 'Dungeon({} - {})'.format(self.dungeon_id, self.clean_name)
 
 
-def load_dungeon_data(data_dir: str=None, dungeon_file: str=None) -> List[Dungeon]:
+def load_dungeon_data(data_dir: str = None, dungeon_file: str = None) -> List[Dungeon]:
     """Converts dungeon JSON into an array of Dungeons."""
     if dungeon_file is None:
         dungeon_file = os.path.join(data_dir, FILE_NAME)
