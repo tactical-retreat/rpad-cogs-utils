@@ -64,7 +64,7 @@ class JsonDictEncodable(json.JSONEncoder):
 
 # Simply returns a dungeon comment for a input raw value. Doing it this way is necessary as to not have to put all the values
 # directly into a dictionary when multiple val's correspond to a single comment, but are unnecessarily delineated
-def get_dungeon_comment(val):
+def get_dungeon_comment(val: int) -> str:
     if val in range(5611, 5615):
         return "Retired Special Dungeons"  # These are the last normal dungeons
     elif val in range(21612, 21618):
