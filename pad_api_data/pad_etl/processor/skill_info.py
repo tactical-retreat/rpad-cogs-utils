@@ -1217,6 +1217,20 @@ def multi_hit_laser_convert(arguments):
         return 'multi_hit_laser', c
     return f
 
+hp_nuke_convert_backups = {'multiplier': 1,
+                           'attribute' : 0,
+                           'mass_attack': True,
+                           'skill_text': ''}
+def hp_nuke_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('hp_nuke',
+                                     arguments,
+                                     hp_nuke_convert_backups)(x)
+        c['skill_text'] += 'Deal ' + ATTRIBUTES[c['attribute']] + ' damage equal to '+ fmt_mult(c['multiplier']) +\
+                            'x of team\'s total HP to ' + fmt_mass_atk(c['mass_attack'])
+        return 'hp_nuke',c
+    return f
+
 # End of Active skill
 
 # Leader skill
@@ -2043,6 +2057,7 @@ SKILL_TRANSFORM = {
     140: enhance_convert({'orbs': (0, binary_con)}),
     141: spawn_orb_convert({'amount': (0, cc), 'orbs': (1, binary_con), 'excluding_orbs': (2, binary_con)}),
     142: attribute_change_convert({'duration': (0, cc), 'attribute': (1, cc)}),
+    143: hp_nuke_convert({'multiplier': (0,multi)}),
     144: attack_attr_x_team_atk_convert({'team_attributes': (0, binary_con), 'multiplier': (1, multi), 'mass_attack': (2, lambda x: x == 0), 'attack_attribute': (3, cc), }),
     145: heal_active_convert({'team_rcv_multiplier_as_hp': (0, multi), 'card_bind': 0, 'rcv_multiplier_as_hp': 0.0, 'hp': 0, 'percentage_max_hp': 0.0, 'awoken_bind': 0}),
     146: haste_convert({'turns': (0, cc)}),
