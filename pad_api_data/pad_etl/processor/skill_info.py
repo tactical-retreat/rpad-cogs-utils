@@ -1804,14 +1804,13 @@ def dual_passive_stat_convert(arguments):
             c['skill_text'] += '; ' + fmt_mult(c1['atk_multiplier'] *
                                                c2['atk_multiplier']) + 'x ATK for allies with both Att.'
 
-        c1['parameter'] = fmt_parameter(c1)
+        c['parameter'] = fmt_parameter(c1)
         c2['parameter'] = fmt_parameter(c2)
 
         for i in range(0, len(c['parameter'])):
-            if c1['parameter'][i] > c2['parameter'][i]:
-                c['parameter'][i] = c1['parameter'][i]
-            else:
+            if c2['parameter'][i] > c['parameter'][i]:
                 c['parameter'][i] = c2['parameter'][i]
+
         c['parameter'][3] = 0.0
         return 'dual_passive_stat', c
     return f
