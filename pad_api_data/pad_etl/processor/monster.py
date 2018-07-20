@@ -157,14 +157,14 @@ class MonsterItem(SqlItem):
 
 
 class MonsterInfoItem(SqlItem):
-    def __init__(self, merged_card: MergedCard):
+    def __init__(self, merged_card: MergedCard, na_merged_card: MergedCard):
         self.fodder_exp = 0
         self.history_jp = '[{}] New Added'.format(date.today().isoformat())
         self.history_kr = self.history_jp
         self.history_us = self.history_jp
         self.monster_no = merged_card.card.card_id
         self.on_kr = 0
-        self.on_us = 1
+        self.on_us = 1 if merged_card != na_merged_card and na_merged_card.card.released_status else 0
         self.pal_egg = 0
         self.rare_egg = 0
         self.sell_price = 0
@@ -190,7 +190,7 @@ class MonsterInfoItem(SqlItem):
         ]
 
     def _update_columns(self):
-        return None
+        return ['on_us']
 
     def __repr__(self):
         return 'MonsterInfoItem({})'.format(self.monster_no)

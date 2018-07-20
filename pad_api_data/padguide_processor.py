@@ -238,7 +238,7 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
 
     # Monster info
     for csc in combined_cards:
-        insert_or_update(monster.MonsterInfoItem(csc.jp_card))
+        insert_or_update(monster.MonsterInfoItem(csc.jp_card, csc.na_card))
 
     # Additional monster info
     for csc in combined_cards:
