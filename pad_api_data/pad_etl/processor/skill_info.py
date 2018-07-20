@@ -1231,6 +1231,9 @@ def fmt_parameter(c):
     damage_reduct = c.get('damage_reduction', c.get('minimum_damage_reduction', 0.0))
     step = c.get('step', 0.0)
 
+    if atk_mult < 1:
+        atk_mult = 1.0
+    
     return [float(fmt_mult(hp_mult)),
             float(fmt_mult(float("{0:.2f}".format(atk_mult + step * bonus_atk_mult)))),
             float(fmt_mult(rcv_mult + step * bonus_rcv_mult)),
