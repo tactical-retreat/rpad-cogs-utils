@@ -56,3 +56,12 @@ DUNGEON_TYPE_COMMENTS = {
     600011: 'Multiplayer',
 }
 
+REPEAT_DAY = {
+    0: '', # Doesn't repeat weekly
+    1:'Monday',
+    2:'Tuesday',
+    3:'Wednesday',
+    4:'Thursday',
+    5:'Friday',
+    8:'Weekend'
+}
