@@ -55,6 +55,7 @@ class Dungeon(pad_util.JsonDictEncodable):
         # This will be a day of the week, or an empty string if it doesn't repeat regularly
         self.repeat_day = REPEAT_DAY[int(raw[4])]
 
+
         if len(raw) > 6:
             print('unexpected field count: ' + ','.join(raw))
 
