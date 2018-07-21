@@ -46,7 +46,7 @@ DUNGEON_TYPE = {
     299911: 'Metal Dragon',
     300001: 'Daily',
     400001: 'Guerrilla',
-    490001: 'Gift', # Gachadra, certain one-shots, etc
+    490001: 'Guerrilla', # Gachadra
     500001: 'Gift/Daily Event',
     500011: 'Gift/Daily Event',
     600001: 'Multiplayer Endless Corridors',
