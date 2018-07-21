@@ -500,7 +500,7 @@ def clean_bonuses(pg_server, bonus_sets, dungeons):
                 if dungeon is None:
                     fail_logger.critical('Dungeon lookup failed for bonus: %s', repr(bonus))
                 else:
-                    guerrilla_group = data_group if dungeon.dungeon_type == 'guerrilla' else None
+                    guerrilla_group = data_group if dungeon.dungeon_type.lower() == 'guerrilla' else None
 
             if guerrilla_group or data_group == 'a':
                 merged_bonuses.append(MergedBonus(pg_server, bonus, dungeon, guerrilla_group))
