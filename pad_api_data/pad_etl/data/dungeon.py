@@ -34,6 +34,17 @@ class DungeonFloor(pad_util.JsonDictEncodable):
         self.unknown_010 = raw[10]
 
 
+prefix_to_dungeontype = {
+    # #G#Ruins of the Star Vault 25
+    '#G#': 'guerrilla',
+
+    # #1#Star Treasure of the Night Sky 25
+    '#1#': 'unknown-1',
+
+    # #C#Rurouni Kenshin dung
+    '#C#': 'collab',
+}
+
 class Dungeon(pad_util.JsonDictEncodable):
     """A top-level dungeon."""
 
@@ -54,6 +65,15 @@ class Dungeon(pad_util.JsonDictEncodable):
 
         # This will be a day of the week, or an empty string if it doesn't repeat regularly
         self.repeat_day = REPEAT_DAY[int(raw[4])]
+
+        # prevoius hack as a temp measure, as it was cleaning the names
+        self.bonus_type = None
+        for prefix, bonus_type in prefix_to_dungeontype.items():
+            if self.clean_name.startswith(prefix):
+                self.prefix = prefix
+                self.bonus_type_type = bonus_type
+                self.clean_name = self.clean_name[len(prefix):]
+                break
 
 
         if len(raw) > 6:
