@@ -34,6 +34,18 @@ class DungeonFloor(pad_util.JsonDictEncodable):
         self.unknown_010 = raw[10]
 
 
+prefix_to_dungeontype = {
+    # #G#Ruins of the Star Vault 25
+    '#G#': 'guerrilla',
+
+    # #1#Star Treasure of the Night Sky 25
+    '#1#': 'unknown-1',
+
+    # #C#Rurouni Kenshin dung
+    '#C#': 'collab',
+}
+
+
 class Dungeon(pad_util.JsonDictEncodable):
     """A top-level dungeon."""
 
@@ -47,7 +59,11 @@ class Dungeon(pad_util.JsonDictEncodable):
         self.clean_name = pad_util.strip_colors(self.name)
 
         # Using DUNGEON TYPES file in common.dungeon_types
-        self.dungeon_type = DUNGEON_TYPE[int(raw[3])]
+        self.alt_dungeon_type = DUNGEON_TYPE[int(raw[3])]
+
+        # Temporary hack. The newly added 'Guerrilla' type doesn't seem to be correct, and that's
+        # the only type actively in use. Using the old logic for now.
+        self.dungeon_type = None
 
         # I call it comment as it is similar to dungeon_type, but sometimes designates certain dungeons specifically
         # over others. See dungeon_types.py for more details.
@@ -55,6 +71,13 @@ class Dungeon(pad_util.JsonDictEncodable):
 
         # This will be a day of the week, or an empty string if it doesn't repeat regularly
         self.repeat_day = REPEAT_DAY[int(raw[4])]
+
+        for prefix, dungeon_type in prefix_to_dungeontype.items():
+            if self.clean_name.startswith(prefix):
+                self.prefix = prefix
+                self.dungeon_type = dungeon_type
+                self.clean_name = self.clean_name[len(prefix):]
+                break
 
         if len(raw) > 6:
             print('unexpected field count: ' + ','.join(raw))
