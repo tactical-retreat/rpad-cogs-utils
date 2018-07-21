@@ -1,7 +1,7 @@
 import datetime
 import json
 import re
-from .dungeon_types import DUNGEON_TYPE_COMMENTS
+from .dungeon_types import DUNGEON_TYPES
 
 
 def strip_colors(message: int) -> str:
@@ -64,7 +64,7 @@ class JsonDictEncodable(json.JSONEncoder):
 
 # Simply returns a dungeon comment for a input raw value. Doing it this way is necessary as to not have to put all the values
 # directly into a dictionary when multiple val's correspond to a single comment, but are unnecessarily delineated
-def get_dungeon_comment(val: int) -> str:
+def get_dungeon_type(val: int) -> str:
     if val in range(5611, 5615):
         return "Retired Special Dungeons"  # These are the last normal dungeons
     elif val in range(21612, 21618):
@@ -77,7 +77,7 @@ def get_dungeon_comment(val: int) -> str:
         return "Technical"
     elif val in range(200301, 200306) or val in range(200201, 200206):
         return "Special Decended"
-    elif val in DUNGEON_TYPE_COMMENTS:
-        return DUNGEON_TYPE_COMMENTS[val]
+    elif val in DUNGEON_TYPES:
+        return DUNGEON_TYPES[val]
     else:
         return "No Data"

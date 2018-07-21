@@ -9,7 +9,7 @@ import os
 from typing import List, Any
 
 from ..common import pad_util
-from ..common.dungeon_types import DUNGEON_TYPE
+from ..common.dungeon_types import DUNGEON_CATEGORY
 
 
 # The typical JSON file name for this data.
@@ -50,11 +50,11 @@ class Dungeon(pad_util.JsonDictEncodable):
 
 
         # Using DUNGEON TYPES file in common.dungeon_types
-        self.dungeon_type = DUNGEON_TYPE[int(raw[3])]
+        self.dungeon_category = DUNGEON_CATEGORY[int(raw[3])]
 
         # I call it comment as it is similar to dungeon_type, but sometimes designates certain dungeons specifically
         # over others. See dungeon_types.py for more details.
-        self.dungeon_comment = pad_util.get_dungeon_comment(int(raw[5]))
+        self.dungeon_type = pad_util.get_dungeon_type(int(raw[5]))
 
         if len(raw) > 6:
             print('unexpected field count: ' + ','.join(raw))
