@@ -28,7 +28,7 @@ class MergedCard(pad_util.JsonDictEncodable):
 
 
 class CrossServerCard(object):
-    def __init__(self, jp_card: MergedCard, na_card: MergedCard):
-        self.card_id = jp_card.card.card_id
+    def __init__(self, monster_no: int, jp_card: MergedCard, na_card: MergedCard):
+        self.monster_no = monster_no
         self.jp_card = jp_card
         self.na_card = na_card
