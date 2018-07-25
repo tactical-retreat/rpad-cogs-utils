@@ -129,7 +129,7 @@ class MonsterSkillLeaderDataItem(SqlItem):
             code = i + 1
             mult = params[i]
             if (mult != 1.0 and code != 4) or (mult > 0 and code == 4):
-                mult_fmt = '{:.2f}'.format(mult).rstrip('0').rstrip('.')
+                mult_fmt = '{:.4f}'.format(mult).rstrip('0').rstrip('.')
                 leader_data_parts.append('{}/{}///'.format(code, mult_fmt))
 
         self.leader_data = '|'.join(leader_data_parts)

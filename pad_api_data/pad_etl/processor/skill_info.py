@@ -53,7 +53,7 @@ def rcv_from_slice(x): return multi(x[2]) if 2 in x[:2] else 1.0
 
 
 def fmt_mult(x):
-    return str(round(x,2)).rstrip('0').rstrip('.')
+    return str(round(float(x), 2)).rstrip('0').rstrip('.')
 
 
 all_attr = [0, 1, 2, 3, 4]
@@ -1217,18 +1217,21 @@ def multi_hit_laser_convert(arguments):
         return 'multi_hit_laser', c
     return f
 
+
 hp_nuke_convert_backups = {'multiplier': 1,
-                           'attribute' : 0,
+                           'attribute': 0,
                            'mass_attack': True,
                            'skill_text': ''}
+
+
 def hp_nuke_convert(arguments):
     def f(x):
         _, c = convert_with_defaults('hp_nuke',
                                      arguments,
                                      hp_nuke_convert_backups)(x)
-        c['skill_text'] += 'Deal ' + ATTRIBUTES[c['attribute']] + ' damage equal to '+ fmt_mult(c['multiplier']) +\
-                            'x of team\'s total HP to ' + fmt_mass_atk(c['mass_attack'])
-        return 'hp_nuke',c
+        c['skill_text'] += 'Deal ' + ATTRIBUTES[c['attribute']] + ' damage equal to ' + fmt_mult(c['multiplier']) +\
+            'x of team\'s total HP to ' + fmt_mass_atk(c['mass_attack'])
+        return 'hp_nuke', c
     return f
 
 # End of Active skill
@@ -1247,11 +1250,11 @@ def fmt_parameter(c):
 
     if atk_mult < 1:
         atk_mult = 1.0
-    
-    return [float(fmt_mult(hp_mult)),
-            float(fmt_mult(float("{0:.2f}".format(atk_mult + step * bonus_atk_mult)))),
-            float(fmt_mult(rcv_mult + step * bonus_rcv_mult)),
-            float(fmt_mult(damage_reduct))]
+
+    return [float(hp_mult),
+            float("{0:.2f}".format(atk_mult + step * bonus_atk_mult)),
+            float(rcv_mult + step * bonus_rcv_mult),
+            float(damage_reduct)]
 
 
 passive_stats_backups = {'for_attr': [], 'for_type': [], 'hp_multiplier': 1.0, 'atk_multiplier': 1.0,
@@ -1379,7 +1382,7 @@ def attribute_match_convert(arguments):
 
         c['skill_text'] = skill_text
         if max_attr == min_attr and bonus_atk_mult != 0:
-            c['step'] = len(attr)-min_attr
+            c['step'] = len(attr) - min_attr
         else:
             c['step'] = max_attr - min_attr
         c['parameter'] = fmt_parameter(c)
@@ -1850,14 +1853,14 @@ def dual_threshold_stats_convert(arguments):
         c1['atk_multiplier'] = c['atk_multiplier_1']
         c1['rcv_multiplier'] = c['rcv_multiplier_1']
         c1['damage_reduction'] = c['damage_reduction_1']
-        c1['reduction_attributes'] = [0,1,2,3,4]
+        c1['reduction_attributes'] = [0, 1, 2, 3, 4]
         c2 = {}
         c2['above'] = c['above_2']
         c2['threshold'] = c['threshold_2']
         c2['atk_multiplier'] = c['atk_multiplier_2']
         c2['rcv_multiplier'] = c['rcv_multiplier_2']
         c2['damage_reduction'] = c['damage_reduction_2']
-        c2['reduction_attributes'] = [0,1,2,3,4]
+        c2['reduction_attributes'] = [0, 1, 2, 3, 4]
         skill_text = ''
         if c1['atk_multiplier'] != 0 or c1['rcv_multiplier'] != 1 or c1['damage_reduction'] != 0:
             if c1['atk_multiplier'] == 0:
@@ -1877,7 +1880,7 @@ def dual_threshold_stats_convert(arguments):
         c['parameter'] = fmt_parameter(c1)
         c2['parameter'] = fmt_parameter(c2)
 
-        for i in range(1, len(c['parameter'])):                    
+        for i in range(1, len(c['parameter'])):
             if c2['parameter'][i] > c['parameter'][i]:
                 c['parameter'][i] = c2['parameter'][i]
 
@@ -2057,7 +2060,8 @@ SKILL_TRANSFORM = {
     140: enhance_convert({'orbs': (0, binary_con)}),
     141: spawn_orb_convert({'amount': (0, cc), 'orbs': (1, binary_con), 'excluding_orbs': (2, binary_con)}),
     142: attribute_change_convert({'duration': (0, cc), 'attribute': (1, cc)}),
-    143: hp_nuke_convert({'multiplier': (0,multi)}), #May be using incomplete data eg. Mamoru SID: 10573
+    # May be using incomplete data eg. Mamoru SID: 10573
+    143: hp_nuke_convert({'multiplier': (0, multi)}),
     144: attack_attr_x_team_atk_convert({'team_attributes': (0, binary_con), 'multiplier': (1, multi), 'mass_attack': (2, lambda x: x == 0), 'attack_attribute': (3, cc), }),
     145: heal_active_convert({'team_rcv_multiplier_as_hp': (0, multi), 'card_bind': 0, 'rcv_multiplier_as_hp': 0.0, 'hp': 0, 'percentage_max_hp': 0.0, 'awoken_bind': 0}),
     146: haste_convert({'turns': (0, cc)}),
@@ -2082,7 +2086,7 @@ SKILL_TRANSFORM = {
     180: enhance_skyfall_convert({'duration': (0, cc), 'percentage_increase': (1, multi)}),
     184: no_skyfall_convert({'duration': (0, cc)}),
     188: multi_hit_laser_convert({'damage': (0, cc), 'mass_attack': False}),
-    189: convert('unlock_board_path', {}), #May be using incomplete data eg. Toragon SID: 10136
+    189: convert('unlock_board_path', {}),  # May be using incomplete data eg. Toragon SID: 10136
     11: passive_stats_convert({'for_attr': (0, listify), 'atk_multiplier': (1, multi)}),
     12: after_attack_convert({'multiplier': (0, multi)}),
     13: heal_on_convert({'multiplier': (0, multi)}),
@@ -2409,6 +2413,13 @@ def reformat_json(skill_data):
                                 AS_comb_skill_text += ' ' + str(repeat) + ' times'
                 reformatted['active_skills'][MULTI_PART_AS[str(
                     j)]]['args']['skill_text'] = AS_comb_skill_text
+
+    # Do final trimming on parameter values now that all the math has completed
+    for skill in reformatted['leader_skills'].values():
+        args = skill['args']
+        params = args.get('parameter', [])
+        for i, v in enumerate(params):
+            params[i] = round(float(v), 4)
 
     return reformatted
 
