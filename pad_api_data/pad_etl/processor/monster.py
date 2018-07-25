@@ -2,6 +2,7 @@ from datetime import date
 import time
 
 from . import db_util
+from ..common import monster_id_mapping
 from ..common.padguide_values import TYPE_MAP, AWAKENING_MAP, EvoType
 from ..data.card import BookCard
 from .merged_data import MergedCard
@@ -64,14 +65,12 @@ class SqlItem(object):
 
 
 class MonsterItem(SqlItem):
-    def __init__(self, merged_card_jp: MergedCard, merged_card_na: MergedCard):
-        card = merged_card_jp.card
-
+    def __init__(self, card: BookCard, card_na: BookCard):
         # Primary key
-        self.monster_no = int(card.card_id)
-        self.monster_no_jp = int(self.monster_no)
-        self.monster_no_kr = int(self.monster_no)
-        self.monster_no_us = int(self.monster_no)
+        self.monster_no = monster_id_mapping.jp_id_to_monster_no(card.card_id)
+        self.monster_no_jp = card.card_id
+        self.monster_no_kr = card.card_id
+        self.monster_no_us = card_na.card_id
 
         # Flat values
         self.app_version = None
@@ -79,7 +78,7 @@ class MonsterItem(SqlItem):
         self.atk_min = card.min_atk
         self.comment_jp = None
         self.comment_kr = None
-        self.comment_us = None  # Used for 'jp only' ?
+        self.comment_us = None
         self.cost = card.cost
         self.exp = 0  # Not actual value
         self.hp_max = card.max_hp
@@ -94,9 +93,9 @@ class MonsterItem(SqlItem):
         self.rcv_max = card.max_rcv
         self.rcv_min = card.min_rcv
         self.reg_date = date.today().isoformat()
-        self.tm_name_jp = merged_card_jp.card.name
+        self.tm_name_jp = card.name
         self.tm_name_kr = 'unknown_{}'.format(self.monster_no)
-        self.tm_name_us = merged_card_na.card.name
+        self.tm_name_us = card_na.name
         self.tstamp = int(time.time()) * 1000
 
         # Foreign keys
@@ -157,14 +156,14 @@ class MonsterItem(SqlItem):
 
 
 class MonsterInfoItem(SqlItem):
-    def __init__(self, merged_card: MergedCard):
+    def __init__(self, jp_card: BookCard, na_card: BookCard):
         self.fodder_exp = 0
         self.history_jp = '[{}] New Added'.format(date.today().isoformat())
         self.history_kr = self.history_jp
         self.history_us = self.history_jp
-        self.monster_no = merged_card.card.card_id
+        self.monster_no = monster_id_mapping.jp_id_to_monster_no(jp_card.card_id)
         self.on_kr = 0
-        self.on_us = 1
+        self.on_us = 1 if jp_card != na_card and na_card.released_status else 0
         self.pal_egg = 0
         self.rare_egg = 0
         self.sell_price = 0
@@ -190,7 +189,7 @@ class MonsterInfoItem(SqlItem):
         ]
 
     def _update_columns(self):
-        return None
+        return ['on_us']
 
     def __repr__(self):
         return 'MonsterInfoItem({})'.format(self.monster_no)
@@ -198,7 +197,7 @@ class MonsterInfoItem(SqlItem):
 
 class MonsterPriceItem(SqlItem):
     def __init__(self, card: BookCard):
-        self.monster_no = card.card_id
+        self.monster_no = monster_id_mapping.jp_id_to_monster_no(card.card_id)
         self.buy_price = 0
         self.sell_price = card.sell_mp
         self.tstamp = int(time.time()) * 1000
@@ -246,14 +245,14 @@ def card_to_awakenings(awoken_name_to_id, card: BookCard):
 
 
 class MonsterAwakeningItem(SqlItem):
-    def __init__(self, monster_no: int, order_idx: int, ts_seq: int, is_super: int):
+    def __init__(self, card_id: int, order_idx: int, ts_seq: int, is_super: int):
         # Unique ID
         self.tma_seq = None
 
         # Skill ID (awakening info)
         self.ts_seq = ts_seq
 
-        self.monster_no = monster_no
+        self.monster_no = monster_id_mapping.jp_id_to_monster_no(card_id)
         self.order_idx = order_idx
         self.is_super = is_super
 
@@ -295,8 +294,8 @@ class EvolutionItem(object):
     def __init__(self, card: BookCard):
         self.tv_seq = None
 
-        self.to_no = card.card_id
-        self.monster_no = card.ancestor_id
+        self.to_no = monster_id_mapping.jp_id_to_monster_no(card.card_id)
+        self.monster_no = monster_id_mapping.jp_id_to_monster_no(card.ancestor_id)
         self.tstamp = int(time.time()) * 1000
 
         # TODO: This is poorly done, but probably doesn't matter for my usage.
@@ -354,9 +353,9 @@ def card_to_evo_mats(card: BookCard, tv_seq: int):
 
 
 class EvolutionMaterialItem(SqlItem):
-    def __init__(self, mat_monster_no: int, order_idx: int, tv_seq: int):
+    def __init__(self, mat_monster_id: int, order_idx: int, tv_seq: int):
         self.tem_seq = None
-        self.monster_no = mat_monster_no
+        self.monster_no = monster_id_mapping.jp_id_to_monster_no(mat_monster_id)
         self.order_idx = order_idx
         self.tv_seq = tv_seq
         self.tstamp = int(time.time()) * 1000
@@ -386,7 +385,7 @@ class EvolutionMaterialItem(SqlItem):
 class MonsterAddInfoItem(SqlItem):
     def __init__(self, card: BookCard):
         self.extra_val1 = int(card.inheritable)
-        self.monster_no = card.card_id
+        self.monster_no = monster_id_mapping.jp_id_to_monster_no(card.card_id)
         self.sub_type = TYPE_MAP[card.type_3_id]
         self.tstamp = int(time.time()) * 1000
 

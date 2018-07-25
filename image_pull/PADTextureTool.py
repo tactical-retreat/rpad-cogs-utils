@@ -368,6 +368,7 @@ class Settings(object):
         self._outputDirectory = None
         self._trimmingEnabled = True
         self._blackeningEnabled = True
+        self._subtexturesEnabled = False
 
     @property
     def inputFiles(self):
@@ -406,6 +407,13 @@ class Settings(object):
     def setBlackeningEnabled(self, value):
         self._blackeningEnabled = value
 
+    @property
+    def subtexturesEnabled(self):
+        return self._subtexturesEnabled
+
+    def setSubtexturesEnabled(self, value):
+        self._subtexturesEnabled = value
+
 
 def getSettingsFromCommandLine():
     settings = Settings()
@@ -433,6 +441,8 @@ def getSettingsFromCommandLine():
     featuresGroup.add_argument("-nt", "--notrim", nargs=0, help="Puzzle & Dragons' textures are padded with empty space, which this script automatically removes before writing the texture to disk. Use this flag to disable automatic trimming.",
                                action=call(settings.setTrimmingEnabled, False))
     featuresGroup.add_argument("-nb", "--noblacken", nargs=0, help="By default, this script will \"blacken\" (i.e. set the red, green and blue channels to zero) any fully-transparent pixels of an image before exporting it. This reduces file size in a way that does not affect the quality of the image. Use this flag to disable automatic blackening.", action=call(settings.setBlackeningEnabled, False))
+    featuresGroup.add_argument("--subtextures", nargs=0, help="Enables extracting monsters with multiple textures",
+                               action=call(settings.setSubtexturesEnabled, False))
 
     helpGroup = parser.add_argument_group("Help")
     helpGroup.add_argument("-h", "--help", action="help",
@@ -490,6 +500,11 @@ def main():
         textures = list(TextureReader.extractTexturesFromBinaryBlob(fileContents, inputFilePath))
         print("{} texture{} found.\n".format(str(len(textures)) if any(
             textures) else "No", "" if len(textures) == 1 else "s"))
+
+        if not settings.subtexturesEnabled:
+            if len(textures) > 1 or '000.PNG' in textures[0].name:
+                print("Skipping; subtextures not enabled")
+                exit()
 
         for texture in textures:
             outputFileName = getOutputFileName(texture.name)

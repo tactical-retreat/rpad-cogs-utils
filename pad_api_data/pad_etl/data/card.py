@@ -34,7 +34,7 @@ class BookCard(pad_util.JsonDictEncodable):
         self.unknown_009 = raw[9]
         self.max_level = int(raw[10])
         self.feed_xp_at_lvl_4 = int(raw[11])
-        self.released_status = raw[12]  # always 100?
+        self.released_status = raw[12] == 100
         self.sell_price_at_lvl_10 = raw[13]
 
         self.min_hp = int(raw[14])
@@ -111,7 +111,7 @@ class BookCard(pad_util.JsonDictEncodable):
 
         self.random_flags = raw[66]
         self.inheritable = bool(self.random_flags & 1)
-        self.is_released = bool(self.random_flags & 2)
+#         self.is_released = bool(self.random_flags & 2)
         self.is_collab = bool(self.random_flags & 4)
 
         self.furigana = str(raw[67])  # JP data only?

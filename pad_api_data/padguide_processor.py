@@ -8,6 +8,7 @@ import json
 import logging
 import os
 
+from pad_etl.common import monster_id_mapping
 from pad_etl.data import bonus, card, dungeon, skill
 from pad_etl.processor import monster, monster_skill
 from pad_etl.processor import skill_info
@@ -163,7 +164,7 @@ def database_diff_events(db_wrapper, database):
         if db_wrapper.check_existing(se.exists_sql()):
             logger.debug('event already exists, skipping')
         else:
-            logger.debug('inserting item')
+            logger.debug('inserting item: %s', repr(se))
             db_wrapper.insert_item(se.insert_sql(next_id))
             next_id += 1
 
@@ -194,7 +195,8 @@ def make_cross_server_card(jp_card: MergedCard, na_card: MergedCard) -> (CrossSe
     if jp_card.active_skill and not na_card.active_skill:
         na_card.active_skill = jp_card.active_skill
 
-    return CrossServerCard(jp_card, na_card), None
+    monster_no = monster_id_mapping.jp_id_to_monster_no(card_id)
+    return CrossServerCard(monster_no, jp_card, na_card), None
 
 
 def database_diff_cards(db_wrapper, jp_database, na_database):
@@ -209,7 +211,7 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
     combined_cards = []  # List[CrossServerCard]
     for card_id in jp_card_ids:
         jp_card = jp_id_to_card.get(card_id)
-        na_card = na_id_to_card.get(card_id, jp_card)
+        na_card = na_id_to_card.get(monster_id_mapping.jp_id_to_na_id(card_id), jp_card)
 
         csc, err_msg = make_cross_server_card(jp_card, na_card)
         if csc:
@@ -234,11 +236,11 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
 
     # Base monster
     for csc in combined_cards:
-        insert_or_update(monster.MonsterItem(csc.jp_card, csc.na_card))
+        insert_or_update(monster.MonsterItem(csc.jp_card.card, csc.na_card.card))
 
     # Monster info
     for csc in combined_cards:
-        insert_or_update(monster.MonsterInfoItem(csc.jp_card))
+        insert_or_update(monster.MonsterInfoItem(csc.jp_card.card, csc.na_card.card))
 
     # Additional monster info
     for csc in combined_cards:
@@ -318,6 +320,7 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
     for csc in combined_cards:
         merged_card = csc.jp_card
         merged_card_na = csc.na_card
+        monster_no = csc.monster_no
 
         info = db_wrapper.get_single_or_no_row(monster_skill.get_monster_skill_ids(merged_card))
         if not info:
@@ -325,9 +328,10 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
             continue
 
         def lookup_existing_skill_id(field_name, skill_id):
-            alt_monster_no = min(skill_id_to_card_ids[skill_id])
+            alt_monster_no = monster_id_mapping.jp_id_to_monster_no(
+                min(skill_id_to_card_ids[skill_id]))
 
-            if alt_monster_no == merged_card.card:
+            if alt_monster_no == monster_no:
                 # No existing monster (by monster id order) has this skill
                 return
 

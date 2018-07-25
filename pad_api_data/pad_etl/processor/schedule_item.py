@@ -34,8 +34,8 @@ class ScheduleItem(object):
         self.close_weekday = 0
 
         self.dungeon_seq = str(dungeon_id)
-        self.event_seq = '0' if event_id is None else str(event_id
-                                                          )
+        self.event_seq = '0' if event_id is None else str(event_id)
+
         # TODO: Need to support Week
         self.event_enum = EventType.Guerrilla if merged_bonus.group else EventType.Etc
         self.event_type = str(self.event_enum.value)
@@ -56,8 +56,8 @@ class ScheduleItem(object):
             self.open_timestamp).replace(hour=0, minute=0, second=0)
         self.server_open_hour = 0
 
-        group = merged_bonus.group
-        self.team_data = None if group is None else ord(merged_bonus.group) - ord('a')
+        self.group = merged_bonus.group
+        self.team_data = None if self.group is None else ord(self.group) - ord('a')
 
         self.tstamp = int(time.time()) * 1000
 
@@ -113,3 +113,6 @@ class ScheduleItem(object):
             """.format(**db_util.object_to_sql_params(self))
 
         return sql
+
+    def __repr__(self):
+        return 'ScheduleItem({}/{} - {} {}->{})'.format(self.event_seq, self.dungeon_seq, self.group, self.open_date, self.close_date)

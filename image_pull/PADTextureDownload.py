@@ -102,10 +102,14 @@ for asset in assets:
     if os.path.exists(extract_file_path) and 'card' not in extract_file_path.lower():
         print('skipping existing file', extract_file_path)
     else:
+        # Disable trimming for the card files; screws up portrait generation
+        no_trim = '-nt' if 'card' in extract_file_name.lower() else ''
+
         print('processing', raw_file_path, 'to', extract_dir, 'with name', extract_file_name)
-        os.system('{python} {tool} -nb -o={output} {input}'.format(
+        os.system('{python} {tool} {no_trim} -o={output} {input}'.format(
             python=python_exec,
             tool=tool_path,
+            no_trim=no_trim,
             input=raw_file_path,
             output=extract_dir))
 

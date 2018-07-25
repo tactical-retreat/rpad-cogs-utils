@@ -66,5 +66,5 @@ python3 ${EXEC_DIR}/json_merge.py \
   --output=${DATA_DIR}/merged/guerrilla_data.json
 
 echo "Syncing"
-gsutil -m rsync -r /home/tactical0retreat/pad_data/ gs://mirubot/paddata/
+gsutil -m rsync -r -c /home/tactical0retreat/pad_data/ gs://mirubot/paddata/
 
