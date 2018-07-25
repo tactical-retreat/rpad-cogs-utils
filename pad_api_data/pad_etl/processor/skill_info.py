@@ -2057,7 +2057,7 @@ SKILL_TRANSFORM = {
     140: enhance_convert({'orbs': (0, binary_con)}),
     141: spawn_orb_convert({'amount': (0, cc), 'orbs': (1, binary_con), 'excluding_orbs': (2, binary_con)}),
     142: attribute_change_convert({'duration': (0, cc), 'attribute': (1, cc)}),
-    143: hp_nuke_convert({'multiplier': (0,multi)}),
+    143: hp_nuke_convert({'multiplier': (0,multi)}), #May be using incomplete data eg. Mamoru SID: 10573
     144: attack_attr_x_team_atk_convert({'team_attributes': (0, binary_con), 'multiplier': (1, multi), 'mass_attack': (2, lambda x: x == 0), 'attack_attribute': (3, cc), }),
     145: heal_active_convert({'team_rcv_multiplier_as_hp': (0, multi), 'card_bind': 0, 'rcv_multiplier_as_hp': 0.0, 'hp': 0, 'percentage_max_hp': 0.0, 'awoken_bind': 0}),
     146: haste_convert({'turns': (0, cc)}),
@@ -2082,7 +2082,7 @@ SKILL_TRANSFORM = {
     180: enhance_skyfall_convert({'duration': (0, cc), 'percentage_increase': (1, multi)}),
     184: no_skyfall_convert({'duration': (0, cc)}),
     188: multi_hit_laser_convert({'damage': (0, cc), 'mass_attack': False}),
-    189: convert('unlock_board_path', {}),
+    189: convert('unlock_board_path', {}), #May be using incomplete data eg. Toragon SID: 10136
     11: passive_stats_convert({'for_attr': (0, listify), 'atk_multiplier': (1, multi)}),
     12: after_attack_convert({'multiplier': (0, multi)}),
     13: heal_on_convert({'multiplier': (0, multi)}),
