@@ -2060,8 +2060,7 @@ SKILL_TRANSFORM = {
     140: enhance_convert({'orbs': (0, binary_con)}),
     141: spawn_orb_convert({'amount': (0, cc), 'orbs': (1, binary_con), 'excluding_orbs': (2, binary_con)}),
     142: attribute_change_convert({'duration': (0, cc), 'attribute': (1, cc)}),
-    # May be using incomplete data eg. Mamoru SID: 10573
-    143: hp_nuke_convert({'multiplier': (0, multi)}),
+    143: hp_nuke_convert({'multiplier': (0, multi)}), # May be using incomplete data eg. Mamoru SID: 10573
     144: attack_attr_x_team_atk_convert({'team_attributes': (0, binary_con), 'multiplier': (1, multi), 'mass_attack': (2, lambda x: x == 0), 'attack_attribute': (3, cc), }),
     145: heal_active_convert({'team_rcv_multiplier_as_hp': (0, multi), 'card_bind': 0, 'rcv_multiplier_as_hp': 0.0, 'hp': 0, 'percentage_max_hp': 0.0, 'awoken_bind': 0}),
     146: haste_convert({'turns': (0, cc)}),
@@ -2321,7 +2320,6 @@ def reformat_json(skill_data):
                 del reformatted['active_skills'][i]
                 #reformatted['active_skills'][i]['type'] = f'_{c[2]}'
                 #reformatted['active_skills'][i]['args'] = {f'_{i}':v for i,v in enumerate(c[6:])}
-
     for j, c in enumerate(skill_data['skill']):
         if c[2] in SKILL_TRANSFORM:
             i_str = str(j)
@@ -2385,6 +2383,7 @@ def reformat_json(skill_data):
                 elif LS.get(j):
 
                     LS_curr_arg = LS[j]['args']
+                    AS_comb_skill_ids = AS[MULTI_PART_AS[str(j)]]['args']['skill_ids']
 
                     if LS_curr_arg.get('skill_text'):
 
@@ -2420,7 +2419,7 @@ def reformat_json(skill_data):
         params = args.get('parameter', [])
         for i, v in enumerate(params):
             params[i] = round(float(v), 4)
-
+    
     return reformatted
 
 
