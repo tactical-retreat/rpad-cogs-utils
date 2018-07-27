@@ -9,7 +9,7 @@ import sys
 
 from defaultlist import defaultlist
 
-from ..common.padguide_values import AWAKENING_MAP
+#from ..common.padguide_values import AWAKENING_MAP
 
 
 def make_defaultlist(fx, initial=[]):
@@ -82,6 +82,70 @@ TYPES = {0: 'Evo Material',
          14: 'Enhance Material',
          15: 'Redeemable Material'}
 
+AWAKENING_MAP = {
+    0: '',  # No need.
+    1: 'Enhanced HP',
+    2: 'Enhanced Attack',
+    3: 'Enhanced Heal',
+    4: 'Reduce Fire Damage',
+    5: 'Reduce Water Damage',
+    6: 'Reduce Wood Damage',
+    7: 'Reduce Light Damage',
+    8: 'Reduce Dark Damage',
+    9: 'Auto-Recover',
+    10: 'Resistance-Bind',
+    11: 'Resistance-Dark',
+    12: 'Resistance-Jammers',
+    13: 'Resistance-Poison',
+    14: 'Enhanced Fire Orbs',
+    15: 'Enhanced Water Orbs',
+    16: 'Enhanced Wood Orbs',
+    17: 'Enhanced Light Orbs',
+    18: 'Enhanced Dark Orbs',
+    19: 'Extend Time',
+    20: 'Recover Bind',
+    21: 'Skill Boost',
+    22: 'Enhanced Fire Att.',
+    23: 'Enhanced Water Att.',
+    24: 'Enhanced Wood Att.',
+    25: 'Enhanced Light Att.',
+    26: 'Enhanced Dark Att.',
+    27: 'Two-Pronged Attack',
+    28: 'Resistance-Skill Bind',
+    29: 'Enhanced Heal Orbs',
+    30: 'Multi Boost',
+    31: 'Dragon Killer',
+    32: 'God Killer',
+    33: 'Devil Killer',
+    34: 'Machine Killer',
+    35: 'Balanced Killer',
+    36: 'Attacker Killer',
+    37: 'Physical Killer',
+    38: 'Healer Killer',
+    39: 'Evolve Material Killer',
+    40: 'Awaken Material Killer',
+    41: 'Enhance Material Killer',
+    42: 'Vendor Material Killer',
+    43: 'Enhanced Combo',
+    44: 'Guard Break',
+    45: 'Additional Attack',
+    46: 'Enhanced Team HP',
+    47: 'Enhanced Team RCV',
+    48: 'Damage Void Shield Penetration',
+    49: 'Awoken Assist',
+    50: 'Super Additional Attack',
+    51: 'Skill Charge',
+    52: 'Resistance-Bind＋',
+    54: 'Resistance-Cloud',
+    53: 'Extend Time＋',
+    55: 'Resistance-Board Restrict',
+    56: 'Skill Boost＋',
+    57: 'Enhance when HP is above 80%',
+    58: 'Enhance when HP is below 50%',
+    59: 'L-Shape Damage Reduction',
+    60: 'L-Shape Attack',
+    61: 'Super Enhanced Combo',
+}
 
 def convert_with_defaults(type_name, args, defaults):
     new_args = {k: (args[k] if k in args else v) for k, v in defaults.items()}
@@ -1869,16 +1933,24 @@ def dual_threshold_stats_convert(arguments):
         if c1['atk_multiplier'] != 0 or c1['rcv_multiplier'] != 1 or c1['damage_reduction'] != 0:
             if c1['atk_multiplier'] == 0:
                 c1['atk_multiplier'] = 1
-            skill_text = fmt_stats_type_attr_bonus(c1, reduce_join_txt=' and ', skip_attr_all=True)
-            skill_text += ' when above ' if c1['above'] else ' when below '
-            skill_text += fmt_mult(c1['threshold'] * 100) + '% HP'
+            if c1['threshold'] == 1:
+                skill_text = fmt_stats_type_attr_bonus(c1, reduce_join_txt=' and ', skip_attr_all=True)
+                skill_text += ' when HP is full' if c1['above'] else ' when HP is not full'
+            else:
+                skill_text = fmt_stats_type_attr_bonus(c1, reduce_join_txt=' and ', skip_attr_all=True)
+                skill_text += ' when above ' if c1['above'] else ' when below '
+                skill_text += fmt_mult(c1['threshold'] * 100) + '% HP'
 
         if c2['threshold'] != 0:
             if skill_text != '':
                 skill_text += '; '
-            skill_text += fmt_stats_type_attr_bonus(c2, reduce_join_txt=' and ', skip_attr_all=True)
-            skill_text += ' when above ' if c2['above'] else ' when below '
-            skill_text += fmt_mult(c2['threshold'] * 100) + '% HP'
+            if c2['threshold'] == 1:
+                skill_text += fmt_stats_type_attr_bonus(c2, reduce_join_txt=' and ', skip_attr_all=True)
+                skill_text += ' when HP is full' if c2['above'] else ' when HP is not full'
+            else:
+                skill_text += fmt_stats_type_attr_bonus(c2, reduce_join_txt=' and ', skip_attr_all=True)
+                skill_text += ' when above ' if c2['above'] else ' when below '
+                skill_text += fmt_mult(c2['threshold'] * 100) + '% HP'
         c['skill_text'] += skill_text
 
         c['parameter'] = fmt_parameter(c1)
