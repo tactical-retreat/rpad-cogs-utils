@@ -17,7 +17,6 @@ def make_defaultlist(fx, initial=[]):
     df.extend(initial)
     return df
 
-
 # this is used to name the skill ids and their arguments
 def cc(x): return x
 
@@ -2055,7 +2054,9 @@ SKILL_TRANSFORM = {
     if len(make_defaultlist(int, x)) == 3 else
     (attribute_attack_boost_convert({'duration': (0, cc), 'for_attr': (slice(1, 3), list_con), 'atk_multiplier': (3, multi)})(x)
      if len(make_defaultlist(int, x)) == 4 else
-     (90, x)),
+     (convert('unexpected', {'skill_text': '', 'parameter': [1.0, 1.0, 1.0, 0.0]})(x)
+      if len(make_defaultlist(int, x)) == 1 else
+      (90, x))),
     91: enhance_convert({'orbs': (slice(0, 2), list_con)}),
     92: type_attack_boost_convert({'duration': (0, cc), 'types': (slice(1, 3), list_con), 'multiplier': (3, multi)}),
     93: convert('leader_swap', {'skill_text': 'Becomes Team leader, changes back when used again'}),
