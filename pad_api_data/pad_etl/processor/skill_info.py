@@ -1848,6 +1848,8 @@ def dual_threshold_stats_convert(arguments):
                                      arguments,
                                      dual_threshold_stats_backups)(x)
         c1 = {}
+        c1['for_attr'] = c['for_attr']
+        c1['for_type'] = c['for_type']
         c1['above'] = c['above_1']
         c1['threshold'] = c['threshold_1']
         c1['atk_multiplier'] = c['atk_multiplier_1']
@@ -1855,6 +1857,8 @@ def dual_threshold_stats_convert(arguments):
         c1['damage_reduction'] = c['damage_reduction_1']
         c1['reduction_attributes'] = [0, 1, 2, 3, 4]
         c2 = {}
+        c2['for_attr'] = c['for_attr']
+        c2['for_type'] = c['for_type']
         c2['above'] = c['above_2']
         c2['threshold'] = c['threshold_2']
         c2['atk_multiplier'] = c['atk_multiplier_2']
