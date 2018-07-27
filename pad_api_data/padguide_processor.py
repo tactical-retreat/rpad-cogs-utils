@@ -176,11 +176,6 @@ def make_cross_server_card(jp_card: MergedCard, na_card: MergedCard) -> (CrossSe
     if card_id <= 0 or card_id > 6000:
         return None, 'crazy id: {}'.format(repr(card))
 
-    if card_id < 3000:
-        # ignoring older cards for now to get around the voltron issue
-        # Eventually fix this using a hardcoded card mapping or something
-        return None, None
-
     if '***' in jp_card.card.name or '???' in jp_card.card.name:
         return None, 'Skipping debug card: {}'.format(repr(card))
 
@@ -348,6 +343,7 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
 
             if ts_seq is None:
                 # Lookup failed, insert a new skill
+                nonlocal next_skill_id
                 item = monster_skill.MonsterSkillItem(
                     next_skill_id, skill_value, na_skill_value, calc_skill_description)
 

@@ -2296,6 +2296,7 @@ def reformat_json(skill_data):
                     print('Unhandled leader skill type: {c2} (skill id: {i})'.format(
                         c2=c[2], i=i))
                     del reformatted['leader_skills'][i]
+                    continue
                 if reformatted['leader_skills'][i]['type'] == 'combine_leader_skills':
                     for j in range(0, len(reformatted['leader_skills'][i]['args']['skill_ids'])):
                         if MULTI_PART_LS.get(str(reformatted['leader_skills'][i]['args']['skill_ids'][j])):
