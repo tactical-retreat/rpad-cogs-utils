@@ -2055,7 +2055,7 @@ SKILL_TRANSFORM = {
     (attribute_attack_boost_convert({'duration': (0, cc), 'for_attr': (slice(1, 3), list_con), 'atk_multiplier': (3, multi)})(x)
      if len(make_defaultlist(int, x)) == 4 else
      (convert('unexpected', {'skill_text': '', 'parameter': [1.0, 1.0, 1.0, 0.0]})(x)
-      if len(make_defaultlist(int, x)) == 1 else
+      if len(make_defaultlist(int, x)) == 0 else
       (90, x))),
     91: enhance_convert({'orbs': (slice(0, 2), list_con)}),
     92: type_attack_boost_convert({'duration': (0, cc), 'types': (slice(1, 3), list_con), 'multiplier': (3, multi)}),
