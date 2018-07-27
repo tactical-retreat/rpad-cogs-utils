@@ -82,7 +82,6 @@ TYPES = {0: 'Evo Material',
          14: 'Enhance Material',
          15: 'Redeemable Material'}
 
-
 def convert_with_defaults(type_name, args, defaults):
     new_args = {k: (args[k] if k in args else v) for k, v in defaults.items()}
     return convert(type_name, new_args)
@@ -1869,16 +1868,24 @@ def dual_threshold_stats_convert(arguments):
         if c1['atk_multiplier'] != 0 or c1['rcv_multiplier'] != 1 or c1['damage_reduction'] != 0:
             if c1['atk_multiplier'] == 0:
                 c1['atk_multiplier'] = 1
-            skill_text = fmt_stats_type_attr_bonus(c1, reduce_join_txt=' and ', skip_attr_all=True)
-            skill_text += ' when above ' if c1['above'] else ' when below '
-            skill_text += fmt_mult(c1['threshold'] * 100) + '% HP'
+            if c1['threshold'] == 1:
+                skill_text = fmt_stats_type_attr_bonus(c1, reduce_join_txt=' and ', skip_attr_all=True)
+                skill_text += ' when HP is full' if c1['above'] else ' when HP is not full'
+            else:
+                skill_text = fmt_stats_type_attr_bonus(c1, reduce_join_txt=' and ', skip_attr_all=True)
+                skill_text += ' when above ' if c1['above'] else ' when below '
+                skill_text += fmt_mult(c1['threshold'] * 100) + '% HP'
 
         if c2['threshold'] != 0:
             if skill_text != '':
                 skill_text += '; '
-            skill_text += fmt_stats_type_attr_bonus(c2, reduce_join_txt=' and ', skip_attr_all=True)
-            skill_text += ' when above ' if c2['above'] else ' when below '
-            skill_text += fmt_mult(c2['threshold'] * 100) + '% HP'
+            if c2['threshold'] == 1:
+                skill_text += fmt_stats_type_attr_bonus(c2, reduce_join_txt=' and ', skip_attr_all=True)
+                skill_text += ' when HP is full' if c2['above'] else ' when HP is not full'
+            else:
+                skill_text += fmt_stats_type_attr_bonus(c2, reduce_join_txt=' and ', skip_attr_all=True)
+                skill_text += ' when above ' if c2['above'] else ' when below '
+                skill_text += fmt_mult(c2['threshold'] * 100) + '% HP'
         c['skill_text'] += skill_text
 
         c['parameter'] = fmt_parameter(c1)
