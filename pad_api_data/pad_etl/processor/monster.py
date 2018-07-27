@@ -5,7 +5,6 @@ from . import db_util
 from ..common import monster_id_mapping
 from ..common.padguide_values import TYPE_MAP, AWAKENING_MAP, EvoType
 from ..data.card import BookCard
-from .merged_data import MergedCard
 
 
 class SqlItem(object):
@@ -332,7 +331,7 @@ class EvolutionItem(object):
 
 
 def lookup_evo_id_sql(card: BookCard):
-    return 'select tv_seq from evolution_list where to_no = {}'.format(card.card_id)
+    return 'select tv_seq from evolution_list where to_no = {}'.format(monster_id_mapping.jp_id_to_monster_no(card.card_id))
 
 
 def card_to_evo_mats(card: BookCard, tv_seq: int):
