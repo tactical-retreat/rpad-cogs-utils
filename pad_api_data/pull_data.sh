@@ -1,3 +1,4 @@
+#!/bin/bash
 #
 # Expects an input config file formatted as:
 # <[JP,NA]>,<[A,B,C,D,E]>,<uuid>,<int_id>,<RED,GREEN,BLUE>
