@@ -1465,7 +1465,7 @@ def mass_match_convert(arguments):
 
         skill_text += ' when matching ' + str(min_count)
         if max_count != min_count:
-            skill_text += '+'
+            skill_text += ' or more connected'
 
         if len(attributes) == 1:
             skill_text += ' ' + ATTRIBUTES[attributes[0]]
