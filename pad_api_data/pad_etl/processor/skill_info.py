@@ -320,7 +320,7 @@ def poison_convert(arguments):
         _, c = convert_with_defaults('poison',
                                      arguments,
                                      poison_convert_backups)(x)
-        c['skill_text'] += 'All enemies are poisoned (' + fmt_mult(c['multiplier']) + 'x ATK)'
+        c['skill_text'] += 'Poison all enemies (' + fmt_mult(c['multiplier']) + 'x ATK)'
         return 'poison', c
     return f
 
@@ -374,9 +374,12 @@ def heal_active_convert(arguments):
         if c['hp'] != 0:
             c['skill_text'] += 'Recover ' + str(c['hp']) + ' HP'
         elif rcv_mult != 0:
-            c['skill_text'] += 'Recover HP equal to ' + fmt_mult(rcv_mult) + 'x RCV'
+            c['skill_text'] += 'Recover ' + fmt_mult(rcv_mult) + 'x RCV as HP'
         elif php != 0:
-            c['skill_text'] += 'Recover ' + fmt_mult(php * 100) + '% of max HP'
+            if php == 1:
+                c['skill_text'] += 'Recover all HP'
+            else:
+                c['skill_text'] += 'Recover ' + fmt_mult(php * 100) + '% of max HP'
         elif trcv_mult != 0:
             c['skill_text'] += 'Recover HP equal to ' + fmt_mult(trcv_mult) + 'x team\'s total RCV'
         if c['card_bind'] != 0 and c['awoken_bind'] != 0:
@@ -385,7 +388,7 @@ def heal_active_convert(arguments):
             if c['card_bind'] == 9999:
                 c['skill_text'] += 'Remove all binds and awoken skill binds'
             else:
-                c['skill_text'] += 'Remove binds and awoken skill binds by ' + \
+                c['skill_text'] += 'Reduce binds and awoken skill binds by ' + \
                     str(c['card_bind']) + ' turns'
         elif c['card_bind'] == 0 and c['awoken_bind'] != 0:
             if c['skill_text'] != '':
@@ -393,7 +396,7 @@ def heal_active_convert(arguments):
             if c['awoken_bind'] == 9999:
                 c['skill_text'] += 'Remove all awoken skill binds'
             else:
-                c['skill_text'] += 'Remove awoken skill binds by ' + \
+                c['skill_text'] += 'Reduce awoken skill binds by ' + \
                     str(c['awoken_bind']) + ' turns'
         elif c['awoken_bind'] == 0 and c['card_bind'] != 0:
             if c['skill_text'] != '':
@@ -401,7 +404,7 @@ def heal_active_convert(arguments):
             if c['card_bind'] == 9999:
                 c['skill_text'] += 'Remove all binds'
             else:
-                c['skill_text'] += 'Remove binds by ' + str(c['card_bind']) + ' turns'
+                c['skill_text'] += 'Reduce binds by ' + str(c['card_bind']) + ' turns'
         return 'heal_active', c
     return f
 
@@ -1699,7 +1702,7 @@ def rank_exp_rate_convert(arguments):
         _, c = convert_with_defaults('rank_exp_rate',
                                      arguments,
                                      rank_exp_rate_backups)(x)
-        c['skill_text'] += fmt_mult(c['multiplier']) + 'x rank EXP'
+        c['skill_text'] += fmt_mult(c['multiplier']) + 'x Rank EXP'
         c['parameter'][3] = 0.0
         return 'rank_exp_rate', c
     return f
@@ -1786,7 +1789,7 @@ def multi_play_convert(arguments):
                                      arguments,
                                      multi_play_backups)(x)
 
-        c['skill_text'] += 'When in multiplayer mode ' + fmt_stats_type_attr_bonus(c)
+        c['skill_text'] += fmt_stats_type_attr_bonus(c) + ' when in multiplayer mode'
 
         c['parameter'] = fmt_parameter(c)
         c['parameter'][3] = 0.0
@@ -2022,7 +2025,7 @@ SKILL_TRANSFORM = {
     7: heal_active_convert({'rcv_multiplier_as_hp': (0, multi), 'card_bind': 0, 'hp': 0, 'percentage_max_hp': 0.0, 'awoken_bind': 0, 'team_rcv_multiplier_as_hp': 0.0}),
     8: heal_active_convert({'hp': (0, cc), 'card_bind': 0, 'rcv_multiplier_as_hp': 0.0, 'percentage_max_hp': 0.0, 'awoken_bind': 0, 'team_rcv_multiplier_as_hp': 0.0}),
     9: single_orb_change_convert({'from': (0, cc), 'to': (1, cc)}),
-    10: convert('board_refresh', {'skill_text': 'Shuffle all orbs'}),
+    10: convert('board_refresh', {'skill_text': 'Replace all orbs'}),
     18: delay_convert({'turns': (0, cc)}),
     19: defense_reduction_convert({'duration': (0, cc), 'reduction': (1, multi)}),
     20: double_orb_convert({'from_1': (0, cc), 'to_1': (1, cc), 'from_2': (2, cc), 'to_2': (3, cc)}),
