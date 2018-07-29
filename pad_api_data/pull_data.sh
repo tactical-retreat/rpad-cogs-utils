@@ -1,3 +1,4 @@
+#!/bin/bash
 #
 # Expects an input config file formatted as:
 # <[JP,NA]>,<[A,B,C,D,E]>,<uuid>,<int_id>,<RED,GREEN,BLUE>
@@ -18,7 +19,7 @@ EXEC_DIR="/home/tactical0retreat/rpad-cogs-utils/pad_api_data"
 
 DISCORD_WEBHOOK_URL="https://discordapp.com/api/webhooks/472472663416373269/BZ_5NM_f1WENIzTvwfPKJlq-39ZwE2UIwcYEustCJly2eJDHIm4WYw0p9TvJ0rMnBuPW"
 
-function hook_alert() {
+function hook_alert {
     echo "Pipeline failed"
     data="{\"username\": \"pipeline\", \"content\": \"$1\"}"
     curl -H "Content-Type: application/json" \
@@ -26,17 +27,17 @@ function hook_alert() {
         -d "$data" $DISCORD_WEBHOOK_URL
 }
 
-function hook_file() {
+function hook_file {
   curl -F "data=@$1" $DISCORD_WEBHOOK_URL
 }
 
-function error_exit() {
+function error_exit {
     echo "Pipeline failed"
     hook_alert "Pipeline failed"
     hook_file "/tmp/pad_data_update_log.txt"
 }
 
-function success_exit() {
+function success_exit {
     echo "Pipeline finished"
     hook_alert "Pipeline finished"
 }
@@ -44,7 +45,7 @@ function success_exit() {
 trap error_exit ERR
 trap success_exit EXIT
 
-function dl_data() {
+function dl_data {
     while read server group uuid intid scolor
     do
         do_only_bonus=""
@@ -63,7 +64,7 @@ function dl_data() {
     done < $1
 }
 
-# dl_data()
+dl_data $1
 
 python3 ${EXEC_DIR}/padguide_processor.py \
   --input_dir=${DATA_DIR}/raw \
