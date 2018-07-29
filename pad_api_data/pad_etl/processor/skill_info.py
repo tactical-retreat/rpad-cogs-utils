@@ -9,8 +9,72 @@ import sys
 
 from defaultlist import defaultlist
 
-from ..common.padguide_values import AWAKENING_MAP
+#from ..common.padguide_values import AWAKENING_MAP
 
+AWAKENING_MAP = {
+    0: '',  # No need.
+    1: 'Enhanced HP',
+    2: 'Enhanced Attack',
+    3: 'Enhanced Heal',
+    4: 'Reduce Fire Damage',
+    5: 'Reduce Water Damage',
+    6: 'Reduce Wood Damage',
+    7: 'Reduce Light Damage',
+    8: 'Reduce Dark Damage',
+    9: 'Auto-Recover',
+    10: 'Resistance-Bind',
+    11: 'Resistance-Dark',
+    12: 'Resistance-Jammers',
+    13: 'Resistance-Poison',
+    14: 'Enhanced Fire Orbs',
+    15: 'Enhanced Water Orbs',
+    16: 'Enhanced Wood Orbs',
+    17: 'Enhanced Light Orbs',
+    18: 'Enhanced Dark Orbs',
+    19: 'Extend Time',
+    20: 'Recover Bind',
+    21: 'Skill Boost',
+    22: 'Enhanced Fire Att.',
+    23: 'Enhanced Water Att.',
+    24: 'Enhanced Wood Att.',
+    25: 'Enhanced Light Att.',
+    26: 'Enhanced Dark Att.',
+    27: 'Two-Pronged Attack',
+    28: 'Resistance-Skill Bind',
+    29: 'Enhanced Heal Orbs',
+    30: 'Multi Boost',
+    31: 'Dragon Killer',
+    32: 'God Killer',
+    33: 'Devil Killer',
+    34: 'Machine Killer',
+    35: 'Balanced Killer',
+    36: 'Attacker Killer',
+    37: 'Physical Killer',
+    38: 'Healer Killer',
+    39: 'Evolve Material Killer',
+    40: 'Awaken Material Killer',
+    41: 'Enhance Material Killer',
+    42: 'Vendor Material Killer',
+    43: 'Enhanced Combo',
+    44: 'Guard Break',
+    45: 'Additional Attack',
+    46: 'Enhanced Team HP',
+    47: 'Enhanced Team RCV',
+    48: 'Damage Void Shield Penetration',
+    49: 'Awoken Assist',
+    50: 'Super Additional Attack',
+    51: 'Skill Charge',
+    52: 'Resistance-Bind＋',
+    54: 'Resistance-Cloud',
+    53: 'Extend Time＋',
+    55: 'Resistance-Board Restrict',
+    56: 'Skill Boost＋',
+    57: 'Enhance when HP is above 80%',
+    58: 'Enhance when HP is below 50%',
+    59: 'L-Shape Damage Reduction',
+    60: 'L-Shape Attack',
+    61: 'Super Enhanced Combo',
+}
 
 def make_defaultlist(fx, initial=[]):
     df = defaultlist(fx)
@@ -796,6 +860,7 @@ def change_enemies_attribute_convert(arguments):
 
 
 haste_backups = {'turns': 0,
+                 'max_turns': 0,
                  'skill_text': ''}
 
 
@@ -804,10 +869,13 @@ def haste_convert(arguments):
         _, c = convert_with_defaults('haste',
                                      arguments,
                                      haste_backups)(x)
-        if c['turns'] > 1:
-            c['skill_text'] += 'Charge allies\' skill by ' + str(c['turns']) + ' turns'
+        if c['turns'] == c['max_turns']:
+            if c['turns'] > 1:
+                c['skill_text'] += 'Charge allies\' skill by ' + str(c['turns']) + ' turns'
+            else:
+                c['skill_text'] += 'Charge allies\' skill by ' + str(c['turns']) + ' turn'
         else:
-            c['skill_text'] += 'Charge allies\' skill by ' + str(c['turns']) + ' turn'
+            c['skill_text'] += 'Charge allies\' skill by ' + str(c['turns']) + '~' + str(c['max_turns']) + ' turns'
         return 'haste', c
     return f
 
@@ -2115,8 +2183,7 @@ SKILL_TRANSFORM = {
     87: suicide_nuke_convert({'attribute': (0, cc), 'damage': (1, cc), 'hp_remaining': (3, multi), 'mass_attack': True}),
     88: type_attack_boost_convert({'duration': (0, cc), 'types': (1, listify), 'multiplier': (2, multi)}),
     90: lambda x:
-    attribute_attack_boost_convert({'duration': (0, cc), 'for_attr': (
-        slice(1, 3), list_con), 'atk_multiplier': (2, ccf)})(x)
+    attribute_attack_boost_convert({'duration': (0, cc), 'for_attr': (slice(1, 3), list_con), 'atk_multiplier': (2, ccf)})(x)
     if len(make_defaultlist(int, x)) == 3 else
     (attribute_attack_boost_convert({'duration': (0, cc), 'for_attr': (slice(1, 3), list_con), 'atk_multiplier': (3, multi)})(x)
      if len(make_defaultlist(int, x)) == 4 else
@@ -2141,7 +2208,7 @@ SKILL_TRANSFORM = {
     143: hp_nuke_convert({'multiplier': (0, multi)}), # May be using incomplete data eg. Mamoru SID: 10573
     144: attack_attr_x_team_atk_convert({'team_attributes': (0, binary_con), 'multiplier': (1, multi), 'mass_attack': (2, lambda x: x == 0), 'attack_attribute': (3, cc), }),
     145: heal_active_convert({'team_rcv_multiplier_as_hp': (0, multi), 'card_bind': 0, 'rcv_multiplier_as_hp': 0.0, 'hp': 0, 'percentage_max_hp': 0.0, 'awoken_bind': 0}),
-    146: haste_convert({'turns': (0, cc)}),
+    146: haste_convert({'turns': (0, cc), 'max_turns': (1, cc)}),
     152: lock_convert({'orbs': (0, binary_con)}),
     153: change_enemies_attribute_convert({'attribute': (0, cc)}),
     154: random_orb_change_convert({'from': (0, binary_con), 'to': (1, binary_con)}),
