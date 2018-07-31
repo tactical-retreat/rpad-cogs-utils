@@ -827,7 +827,9 @@ def random_orb_change_convert(arguments):
                                      arguments,
                                      random_orb_change_backups)(x)
         c['skill_text'] += 'Change '
-        if len(c['from']) > 1:
+        if c['from'] == [0,1,2,3,4,5,6,7,8,9]:
+            c['skill_text'] += 'all orbs to '
+        elif len(c['from']) > 1:
             for i in c['from'][:-1]:
                 c['skill_text'] += ATTRIBUTES[i] + ', '
             c['skill_text'] += ATTRIBUTES[c['from'][-1]] + ' orbs to '
