@@ -34,6 +34,16 @@ class DungeonFloor(pad_util.JsonDictEncodable):
         self.unknown_010 = raw[10]
 
 
+prefix_to_dungeontype = {
+    # #G#Ruins of the Star Vault 25
+    '#G#': 'guerrilla',
+    # #1#Star Treasure of the Night Sky 25
+    '#1#': 'unknown-1',
+    # #C#Rurouni Kenshin dung
+    '#C#': 'collab',
+}
+
+
 class Dungeon(pad_util.JsonDictEncodable):
     """A top-level dungeon."""
 
@@ -45,6 +55,12 @@ class Dungeon(pad_util.JsonDictEncodable):
         self.unknown_002 = int(raw[2])
 
         self.clean_name = pad_util.strip_colors(self.name)
+
+        for prefix in prefix_to_dungeontype.items():
+            if self.clean_name.startswith(prefix):
+                self.prefix = prefix
+                self.clean_name = self.clean_name[len(prefix):]
+                break
 
         # Using DUNGEON TYPE file in common.dungeon_types
         self.dungeon_type = pad_util.get_dungeon_type(int(raw[3]))
