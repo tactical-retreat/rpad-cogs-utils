@@ -1,4 +1,4 @@
-DUNGEON_TYPE = {
+DUNGEON_CATEGORY = {
     0: 'Normal Dungeon',
     1: 'Special Dungeon',
     2: 'Technical Dungeon',
@@ -10,7 +10,7 @@ DUNGEON_TYPE = {
 
 
 # These for sure might need a rename/reclassification. I gave them as best a designation as I could
-DUNGEON_TYPE_COMMENTS = {
+DUNGEON_TYPE = {
     0: 'Normal',  # Something to do with them at least
     1: 'Special Descended',
     2: 'Endless',
@@ -46,14 +46,14 @@ DUNGEON_TYPE_COMMENTS = {
     299911: 'Metal Dragon',
     300001: 'Daily',
     400001: 'Guerrilla',
-    490001: 'GachaDra',
+    490001: 'Guerrilla', # Gachadra
     500001: 'Gift/Daily Event',
     500011: 'Gift/Daily Event',
     600001: 'Multiplayer Endless Corridors',
     600002: 'Multiplayer Evo Rush',
     600003: 'Multiplayer Descended',
     600004: 'Multiplayer Special Descended',
-    600011: 'Multiplayer',
+    600011: 'Collab', # Multiplayer collab
 }
 
 REPEAT_DAY = {
