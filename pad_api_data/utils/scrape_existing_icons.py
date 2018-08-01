@@ -50,6 +50,16 @@ def scrape_images(args):
         urllib.request.urlretrieve(image_url, output_file)
 
 
+    # Some items don't have DB entries, guess/scrape them manually
+    for i in range(0, 20):
+        file_name = 'type_{}.png'.format(str(i).zfill(2))
+        image_url = 'http://pad.dnt7.com/images/icons/{}'.format(file_name)
+        output_file = os.path.join(output_dir, file_name)
+        try: 
+           urllib.request.urlretrieve(image_url, output_file)
+        except:
+            pass
+
 if __name__ == '__main__':
     args = parse_args()
     scrape_images(args)
