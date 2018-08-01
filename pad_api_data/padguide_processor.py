@@ -140,7 +140,7 @@ def database_diff_events(db_wrapper, database):
 
             if dungeon_id is None:
                 if merged_event.group:
-                    fail_logger.warn('failed group lookup: %s', repr(merged_event))
+                    fail_logger.error('failed group lookup: %s', repr(merged_event))
                 fail_logger.info('dungeon lookup failed: %s', repr(merged_event.dungeon))
 
         if not dungeon_id:
@@ -149,7 +149,7 @@ def database_diff_events(db_wrapper, database):
         else:
             schedule_item = ScheduleItem(merged_event, event_id, dungeon_id)
             if not schedule_item.is_valid():
-                fail_logger.info('skipping item: %s - %s - %s',
+                fail_logger.debug('skipping item: %s - %s - %s',
                                  repr(merged_event), event_id, dungeon_id)
                 continue
             else:
@@ -162,9 +162,9 @@ def database_diff_events(db_wrapper, database):
 
     for se in schedule_events:
         if db_wrapper.check_existing(se.exists_sql()):
-            logger.debug('event already exists, skipping')
+            logger.debug('event already exists, skipping, %s', repr(se))
         else:
-            logger.debug('inserting item: %s', repr(se))
+            logger.warn('inserting item: %s', repr(se))
             db_wrapper.insert_item(se.insert_sql(next_id))
             next_id += 1
 
