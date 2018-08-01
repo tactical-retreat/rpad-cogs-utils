@@ -54,6 +54,10 @@ def jp_id_to_na_id(jp_id):
     if between(jp_id, 1049, 1058):
         return adjust(jp_id, 1049, 924)
 
+    # Voltron
+    if between(jp_id, 2601, 2631):
+        return None
+
     # Didn't match an exception, same card ID
     return jp_id
 
