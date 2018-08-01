@@ -43,7 +43,8 @@ def scrape_images(args):
         cursor.execute(sql)
         icons = list(cursor.fetchall())
 
-    for icon in icons:
+    for icon_row in icons:
+        icon = icon_row['icon_url']
         image_url = 'http://pad.dnt7.com/images/icons/{}'.format(icon)
         output_file = os.path.join(output_dir, icon)
         urllib.request.urlretrieve(image_url, output_file)
