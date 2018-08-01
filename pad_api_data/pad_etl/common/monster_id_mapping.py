@@ -78,7 +78,7 @@ def na_id_to_monster_no(na_id):
     na_id = int(na_id)
 
     # Voltron
-    if between(2601, 2631):
+    if between(na_id, 2601, 2631):
         return adjust(na_id, 2601, 9601)
 
     raise NotImplementedError('only voltron supported')
