@@ -7,13 +7,13 @@ from . import db_util
 from ..data.skill import MonsterSkill
 from .merged_data import MergedCard
 from .monster import SqlItem
-
+from ..common import monster_id_mapping
 
 #
 # from enum import Enum
 # from . import processor_util
 def get_monster_skill_ids(mc: MergedCard):
-    args = {'monster_no': mc.card.card_id}
+    args = {'monster_no': monster_id_mapping.jp_id_to_monster_no(mc.card.card_id)}
     sql = "SELECT ts_seq_leader, ts_seq_skill FROM monster_list WHERE monster_no = {monster_no}"
     return sql.format(**db_util.object_to_sql_params(args))
 
