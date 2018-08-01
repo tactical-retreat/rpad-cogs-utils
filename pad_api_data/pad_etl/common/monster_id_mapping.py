@@ -24,6 +24,8 @@
 # monster_no 9601-9631
 # monster_no_jp/monster_no_us 2601-2631
 
+NA_VOLTRON_IDS = range(2601, 2632)
+
 
 def between(n, bottom, top):
     return n >= bottom and n <= top
@@ -65,3 +67,14 @@ def jp_id_to_monster_no(jp_id):
 
     # Didn't match an exception, same card ID
     return jp_id
+
+
+# NOTE this is incomplete only supports voltron for now
+def na_id_to_monster_no(na_id):
+    na_id = int(na_id)
+
+    # Voltron
+    if between(2601, 2631):
+        return adjust(na_id, 2601, 9601)
+
+    raise NotImplementedError('only voltron supported')
