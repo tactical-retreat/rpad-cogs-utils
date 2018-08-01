@@ -11,7 +11,6 @@ from defaultlist import defaultlist
 
 from ..common.padguide_values import AWAKENING_MAP
 
-
 def make_defaultlist(fx, initial=[]):
     df = defaultlist(fx)
     df.extend(initial)
@@ -796,6 +795,7 @@ def change_enemies_attribute_convert(arguments):
 
 
 haste_backups = {'turns': 0,
+                 'max_turns': 0,
                  'skill_text': ''}
 
 
@@ -804,10 +804,13 @@ def haste_convert(arguments):
         _, c = convert_with_defaults('haste',
                                      arguments,
                                      haste_backups)(x)
-        if c['turns'] > 1:
-            c['skill_text'] += 'Charge allies\' skill by ' + str(c['turns']) + ' turns'
+        if c['turns'] == c['max_turns']:
+            if c['turns'] > 1:
+                c['skill_text'] += 'Charge allies\' skill by ' + str(c['turns']) + ' turns'
+            else:
+                c['skill_text'] += 'Charge allies\' skill by ' + str(c['turns']) + ' turn'
         else:
-            c['skill_text'] += 'Charge allies\' skill by ' + str(c['turns']) + ' turn'
+            c['skill_text'] += 'Charge allies\' skill by ' + str(c['turns']) + '~' + str(c['max_turns']) + ' turns'
         return 'haste', c
     return f
 
@@ -824,7 +827,9 @@ def random_orb_change_convert(arguments):
                                      arguments,
                                      random_orb_change_backups)(x)
         c['skill_text'] += 'Change '
-        if len(c['from']) > 1:
+        if c['from'] == [0,1,2,3,4,5,6,7,8,9]:
+            c['skill_text'] += 'all orbs to '
+        elif len(c['from']) > 1:
             for i in c['from'][:-1]:
                 c['skill_text'] += ATTRIBUTES[i] + ', '
             c['skill_text'] += ATTRIBUTES[c['from'][-1]] + ' orbs to '
@@ -2115,8 +2120,7 @@ SKILL_TRANSFORM = {
     87: suicide_nuke_convert({'attribute': (0, cc), 'damage': (1, cc), 'hp_remaining': (3, multi), 'mass_attack': True}),
     88: type_attack_boost_convert({'duration': (0, cc), 'types': (1, listify), 'multiplier': (2, multi)}),
     90: lambda x:
-    attribute_attack_boost_convert({'duration': (0, cc), 'for_attr': (
-        slice(1, 3), list_con), 'atk_multiplier': (2, ccf)})(x)
+    attribute_attack_boost_convert({'duration': (0, cc), 'for_attr': (slice(1, 3), list_con), 'atk_multiplier': (2, ccf)})(x)
     if len(make_defaultlist(int, x)) == 3 else
     (attribute_attack_boost_convert({'duration': (0, cc), 'for_attr': (slice(1, 3), list_con), 'atk_multiplier': (3, multi)})(x)
      if len(make_defaultlist(int, x)) == 4 else
@@ -2141,7 +2145,7 @@ SKILL_TRANSFORM = {
     143: hp_nuke_convert({'multiplier': (0, multi)}), # May be using incomplete data eg. Mamoru SID: 10573
     144: attack_attr_x_team_atk_convert({'team_attributes': (0, binary_con), 'multiplier': (1, multi), 'mass_attack': (2, lambda x: x == 0), 'attack_attribute': (3, cc), }),
     145: heal_active_convert({'team_rcv_multiplier_as_hp': (0, multi), 'card_bind': 0, 'rcv_multiplier_as_hp': 0.0, 'hp': 0, 'percentage_max_hp': 0.0, 'awoken_bind': 0}),
-    146: haste_convert({'turns': (0, cc)}),
+    146: haste_convert({'turns': (0, cc), 'max_turns': (1, cc)}),
     152: lock_convert({'orbs': (0, binary_con)}),
     153: change_enemies_attribute_convert({'attribute': (0, cc)}),
     154: random_orb_change_convert({'from': (0, binary_con), 'to': (1, binary_con)}),
