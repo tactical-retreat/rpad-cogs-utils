@@ -1834,9 +1834,9 @@ def dual_passive_stat_convert(arguments):
         atk_mult = c1['atk_multiplier'] * c2['atk_multiplier']
         rcv_mult = c1['rcv_multiplier'] * c2['rcv_multiplier']
         
-        c['parameter'] = [hp_mult if hp_mult >= 1 else 1.0,
+        c['parameter'] = [max(hp_mult, 1.0),
                           atk_mult,
-                          rcv_mult if rcv_mult >= 1 else 1.0,
+                          max(rcv_mult, 1.0),
                           0.0]
         
         return 'dual_passive_stat', c
