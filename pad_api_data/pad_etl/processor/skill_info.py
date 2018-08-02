@@ -1830,12 +1830,15 @@ def dual_passive_stat_convert(arguments):
             c['skill_text'] += '; ' + fmt_mult(c1['atk_multiplier'] *
                                                c2['atk_multiplier']) + 'x ATK for allies with both Att.'
 
-        c['hp_multiplier'] = c1['hp_multiplier'] * c2['hp_multiplier']
-        c['atk_multiplier'] = c1['atk_multiplier'] * c2['atk_multiplier']
-        c['rcv_multiplier'] = c1['rcv_multiplier'] * c2['rcv_multiplier']            
-        c['parameter'] = fmt_parameter(c1)
-
-        c['parameter'][3] = 0.0
+        hp_mult = c1['hp_multiplier'] * c2['hp_multiplier']
+        atk_mult = c1['atk_multiplier'] * c2['atk_multiplier']
+        rcv_mult = c1['rcv_multiplier'] * c2['rcv_multiplier']
+        
+        c['parameter'] = [max(hp_mult, 1.0),
+                          atk_mult,
+                          max(rcv_mult, 1.0),
+                          0.0]
+        
         return 'dual_passive_stat', c
     return f
 
