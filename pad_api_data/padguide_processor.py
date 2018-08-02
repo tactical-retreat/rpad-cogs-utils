@@ -150,7 +150,7 @@ def database_diff_events(db_wrapper, database):
             schedule_item = ScheduleItem(merged_event, event_id, dungeon_id)
             if not schedule_item.is_valid():
                 fail_logger.debug('skipping item: %s - %s - %s',
-                                 repr(merged_event), event_id, dungeon_id)
+                                  repr(merged_event), event_id, dungeon_id)
                 continue
             else:
                 schedule_events.append(schedule_item)
@@ -415,6 +415,21 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
                 merged_card, ts_seq_leader, ts_seq_skill))
 
 
+def database_update_timestamps(db_wrapper):
+    get_tables_sql = 'SELECT `table` FROM get_timestamp'
+    tables = list(map(lambda x: x['table'], db_wrapper.fetch_data(get_tables_sql)))
+    for table in tables:
+        get_tstamp_sql = 'SELECT MAX(tstamp) FROM `{}`'.format(table)
+        try:
+            tstamp = db_wrapper.get_single_or_no_row(get_tstamp_sql)
+            if tstamp:
+                update_tstamp_sql = 'UPDATE get_timestamp SET tstamp = {} WHERE table = "{}"'.format(
+                    tstamp, table)
+                db_wrapper.execute(update_tstamp_sql)
+        except:
+            pass  # table probably didn't exist
+
+
 def load_data(args):
     if args.logsql:
         logging.getLogger('database').setLevel(logging.DEBUG)
@@ -447,6 +462,9 @@ def load_data(args):
 
     logger.info('Starting card diff')
     database_diff_cards(db_wrapper, jp_database, na_database)
+
+    logger.info('Starting tstamp update')
+    database_update_timestamps(db_wrapper)
 
     print('done')
 
