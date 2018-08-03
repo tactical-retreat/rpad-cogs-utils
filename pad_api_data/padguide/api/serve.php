@@ -1,4 +1,13 @@
 <?php
+	function fix_table_name($tbl_name) {
+	    $pieces = preg_split('/(?=[A-Z])/', $tbl_name);
+	    $name = $pieces[0];
+	    for ($x = 1; $x <= count(pieces); $x++) {
+	        $name = $name . '_' . strtolower($pieces[$x]);
+	    }
+	    return $name;
+	}
+
 	function serve($tbl_name) {
 		$base_path = "/home/tactical0retreat/rpad-cogs-utils/pad_api_data";
 		$script = $base_path . "/serve_padguide_data.py";
