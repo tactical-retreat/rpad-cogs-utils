@@ -52,7 +52,6 @@ def load_from_db(db_config, db_table, data_arg):
     if data_arg:
         tstamp = extract_tstamp(data_arg)
         sql += ' WHERE tstamp >= {}'.format(tstamp)
-    print(sql)
 
     with connection.cursor() as cursor:
         cursor.execute(sql)
