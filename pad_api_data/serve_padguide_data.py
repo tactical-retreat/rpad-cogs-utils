@@ -16,6 +16,7 @@ def parse_args():
     inputGroup.add_argument("--data_arg", help="PadGuide API data param")
 
     inputGroup.add_argument("--raw_file", help="Raw JSON file")
+    inputGroup.add_argument("--plain", help="Skip encryption and wrapping")
 
     return parser.parse_args()
 
@@ -71,7 +72,10 @@ def main(args):
     else:
         raise RuntimeError('Incorrect arguments')
 
-    print(encode_data_response(json.dumps(data)))
+    if args.plain:
+        print(json.dumps(data, indent=4))
+    else:
+        print(encode_data_response(json.dumps(data)))
 
 
 if __name__ == "__main__":

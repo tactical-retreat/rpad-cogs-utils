@@ -19,6 +19,11 @@
 			$cmd = $cmd . " --data_arg=" . $data_arg;
 		}
 		
+		$plain = $_POST["plain"];
+		if ($plain = "true") {
+			$cmd = $cmd . " --plain=";
+		}
+		
 		passthru($cmd, $err);
 	}
 ?>
