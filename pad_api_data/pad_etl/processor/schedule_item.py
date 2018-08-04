@@ -2,10 +2,18 @@ from datetime import datetime, timedelta
 import time
 
 from enum import Enum
+import pytz
 
 from . import db_util
 from . import processor_util
 from .merged_data import MergedBonus
+
+
+# TZ used for PAD NA
+NA_TZ_OBJ = pytz.timezone('US/Pacific')
+
+# TZ used for PAD JP
+JP_TZ_OBJ = pytz.timezone('Asia/Tokyo')
 
 
 class EventType(Enum):
@@ -19,19 +27,25 @@ class EventType(Enum):
 
 class ScheduleItem(object):
     def __init__(self, merged_bonus: MergedBonus, event_id: int, dungeon_id: int):
+        self.server = processor_util.normalize_pgserver(merged_bonus.server)
 
         # New parameters
         self.open_timestamp = merged_bonus.start_timestamp
         self.close_timestamp = merged_bonus.end_timestamp
 
-        # TODO: Fill in garbage date values for padguide app
-        # TODO: Filled in close_date/open_date due to non-nullable column, but
-        # using the wrong timezone
-        self.close_date = datetime.utcfromtimestamp(
-            self.close_timestamp).replace(hour=0, minute=0, second=0)
-        self.close_hour = 0
-        self.close_minute = 0
-        self.close_weekday = 0
+        close_datetime_local = datetime.utcfromtimestamp(
+            self.close_timestamp).replace(tzinfo=(NA_TZ_OBJ if self.server == 'us' else JP_TZ_OBJ))
+        open_datetime_local_utc = datetime.utcfromtimestamp(self.open_timestamp)
+        open_datetime_local = open_datetime_local_utc.replace(
+            tzinfo=(NA_TZ_OBJ if self.server == 'us' else JP_TZ_OBJ))
+
+        # Per padguide peculiarity, close time is inclusive, -1m from actual close
+        close_datetime_local -= timedelta(minutes=1)
+
+        self.close_date = close_datetime_local.replace(hour=0, minute=0, second=0)
+        self.close_hour = close_datetime_local.strftime('%H')
+        self.close_minute = close_datetime_local.strftime('%M')
+        self.close_weekday = close_datetime_local.strftime('%w')
 
         self.dungeon_seq = str(dungeon_id)
         self.event_seq = '0' if event_id is None else str(event_id)
@@ -40,21 +54,17 @@ class ScheduleItem(object):
         self.event_enum = EventType.Guerrilla if merged_bonus.group else EventType.Etc
         self.event_type = str(self.event_enum.value)
 
-        self.open_date = datetime.utcfromtimestamp(
-            self.open_timestamp).replace(hour=0, minute=0, second=0)
-        self.open_hour = 0
-        self.open_minute = 0
-        self.open_weekday = 0
+        self.open_date = open_datetime_local.replace(hour=0, minute=0, second=0)
+        self.open_hour = open_datetime_local.strftime('%H')
+        self.open_minute = open_datetime_local.strftime('%M')
+        self.open_weekday = open_datetime_local.strftime('%w')
 
         # Set during insert generation
         self.schedule_seq = None
 
-        self.server = processor_util.normalize_pgserver(merged_bonus.server)
-
         # ? Unused ?
-        self.server_open_date = datetime.utcfromtimestamp(
-            self.open_timestamp).replace(hour=0, minute=0, second=0)
-        self.server_open_hour = 0
+        self.server_open_date = open_datetime_local_utc.replace(hour=0, minute=0, second=0)
+        self.server_open_hour = open_datetime_local_utc.strftime('%H')
 
         self.group = merged_bonus.group
         self.team_data = None if self.group is None else ord(self.group) - ord('a')
