@@ -42,7 +42,7 @@ class ScheduleItem(object):
         # Per padguide peculiarity, close time is inclusive, -1m from actual close
         close_datetime_local -= timedelta(minutes=1)
 
-        self.close_date = close_datetime_local.replace(hour=0, minute=0, second=0)
+        self.close_date = close_datetime_local.date()
         self.close_hour = close_datetime_local.strftime('%H')
         self.close_minute = close_datetime_local.strftime('%M')
         self.close_weekday = close_datetime_local.strftime('%w')
@@ -54,7 +54,7 @@ class ScheduleItem(object):
         self.event_enum = EventType.Guerrilla if merged_bonus.group else EventType.Etc
         self.event_type = str(self.event_enum.value)
 
-        self.open_date = open_datetime_local.replace(hour=0, minute=0, second=0)
+        self.open_date = open_datetime_local.date()
         self.open_hour = open_datetime_local.strftime('%H')
         self.open_minute = open_datetime_local.strftime('%M')
         self.open_weekday = open_datetime_local.strftime('%w')
