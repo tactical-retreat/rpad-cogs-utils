@@ -2,7 +2,7 @@
 	function fix_table_name($tbl_name) {
 	    $pieces = preg_split('/(?=[A-Z])/', $tbl_name);
 	    $name = $pieces[0];
-	    for ($x = 1; $x <= count(pieces); $x++) {
+	    for ($x = 1; $x <= count($pieces); $x++) {
 	        $name = $name . '_' . strtolower($pieces[$x]);
 	    }
 	    return $name;
