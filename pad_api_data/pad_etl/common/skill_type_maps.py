@@ -183,23 +183,3 @@ SKILL_TYPE = {
     188: 'Unknown',
     189: 'Shows Combo Path',
 }
-
-# For a static boost on attrs
-BOOSTED_ATTRS = {
-    0: "Fire",
-    1: 'Water',
-    2: 'Wood',
-    3: 'Light',
-    4: 'Dark',
-}
-
-# For a static boost on types
-BOOSTED_TYPES = {
-    1: 'Balanced',
-    2: 'Physical',
-    3: 'Healer',
-    4: 'Dragon',
-    5: 'God',
-    6: 'Attacker',
-    7: 'Devil',
-}
