@@ -14,7 +14,7 @@
 		$db_config = $base_path . "/db_config.json";
 		
 		$cmd = "python3 " . $script . " --db_config=" . $db_config . " --db_table=" . $tbl_name;
-		if (array_key_exists("data", $_POST) {
+		if (array_key_exists("data", $_POST)) {
 			$data_arg = $_POST["data"];
 			$cmd = $cmd . " --data_arg=" . $data_arg;
 		}
@@ -28,7 +28,7 @@
 			$cmd = $cmd . " --map_value=" . $args['map_value'];
 		}
 		
-		if (array_key_exists("plain", $_GET) {
+		if (array_key_exists("plain", $_GET)) {
 			$cmd = $cmd . " --plain";
 		}
 		
@@ -42,7 +42,7 @@
 		
 		$cmd = "python3 " . $script . " --raw_file=" . $file_path;
 		
-		if (array_key_exists("plain", $_GET) {
+		if (array_key_exists("plain", $_GET)) {
 			$cmd = $cmd . " --plain";
 		}
 		
