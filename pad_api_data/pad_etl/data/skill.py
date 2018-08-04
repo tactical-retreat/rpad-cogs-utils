@@ -27,10 +27,14 @@ class MonsterSkill(pad_util.JsonDictEncodable):
         self.description = str(raw[1])
 
         # Skill description text (no formatting).
-        self.clean_description = pad_util.strip_colors(self.description).replace('\n', ' ')
+        self.clean_description = pad_util.strip_colors(self.description).replace('\n', ' ').replace('^p', '')
 
         # Encodes the type of skill (requires parsing other_fields).
-        self.skill_type = SKILL_TYPE(int(raw[2]))
+        self.skill_type = int(raw[2])
+
+        # New field. Describes the idea that a skill falls into
+        self.skill_class = SKILL_TYPE(self.skill_type)
+
 
         # If an active skill, number of levels to max.
         levels = int(raw[3])
@@ -47,6 +51,17 @@ class MonsterSkill(pad_util.JsonDictEncodable):
 
         # Fields used in coordination with skill_type.
         self.other_fields = raw[6:]
+
+        # NEW FIELDS. The skills that a skill links two if it has multiple clauses
+        self.skill_part_1_id = None
+        self.skill_part_2_id = None
+        self.skill_part_3_id = None
+
+        if self.skill_type == 116 or self.skill_type == 138:
+            self.skill_part_1_id = self.other_fields[0]
+            self.skill_part_2_id = self.other_fields[1]
+            if len(self.other_fields) == 3:
+                self.skill_part_3_id = self.other_fields[2]
 
         multipliers = parse_leader_skill_multiplier(int(raw[2]), self.other_fields)
         self.hp_mult = multipliers['hp']
@@ -138,9 +153,6 @@ def parse_leader_skill_multiplier(skill, other_fields) -> {}:
     elif skill == 108:
         multipliers['atk'] = other_fields[-1]/100
         multipliers['hp'] = other_fields[0]/100
-
-
-
 
     return multipliers
 

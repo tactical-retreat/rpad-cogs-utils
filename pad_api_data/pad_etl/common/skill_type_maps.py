@@ -133,6 +133,9 @@ SKILL_TYPE = {
 
     # Another very important one
     138: 'Two Part Leader Skill',
+
+
+
     139: 'HP MuLti Conditional ATK Boost',
     140: 'Orb Enhance',
     141: 'Random Location Orb Spawn',
@@ -140,7 +143,7 @@ SKILL_TYPE = {
     143: 'Unknown',
     144: 'ATTR Nuke of ATTR2 ATK',
     145: 'Unknown',
-    146: 'ATTR Burst',  # Though really I have no idea
+    146: 'Haste',
     148: 'Unknown',
     149: 'Unknown',
     150: 'Unknown',
