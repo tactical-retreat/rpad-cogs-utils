@@ -28,7 +28,7 @@
 			$cmd = $cmd . " --map_value=" . $args['map_value'];
 		}
 		
-		$plain = $_POST["plain"];
+		$plain == $_GET["plain"];
 		if ($plain = "true") {
 			$cmd = $cmd . " --plain";
 		}
@@ -43,8 +43,8 @@
 		
 		$cmd = "python3 " . $script . " --raw_file=" . $file_path;
 		
-		$plain = $_POST["plain"];
-		if ($plain = "true") {
+		$plain = $_GET["plain"];
+		if ($plain == "true") {
 			$cmd = $cmd . " --plain";
 		}
 		
