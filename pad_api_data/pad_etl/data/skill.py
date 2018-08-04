@@ -2,14 +2,13 @@
 Parses monster skill (leader/active) data.
 """
 
-
 import json
 import os
 from typing import List, Any
 
 from ..common import pad_util
 from ..common.shared_types import SkillId
-
+from ..common.skill_type_maps import SKILL_TYPE, BOOSTED_ATTRS, BOOSTED_TYPES
 
 # The typical JSON file name for this data.
 FILE_NAME = 'download_skill_data.json'
@@ -31,7 +30,7 @@ class MonsterSkill(pad_util.JsonDictEncodable):
         self.clean_description = pad_util.strip_colors(self.description).replace('\n', ' ')
 
         # Encodes the type of skill (requires parsing other_fields).
-        self.skill_type = int(raw[2])
+        self.skill_type = SKILL_TYPE(int(raw[2]))
 
         # If an active skill, number of levels to max.
         levels = int(raw[3])
@@ -49,6 +48,12 @@ class MonsterSkill(pad_util.JsonDictEncodable):
         # Fields used in coordination with skill_type.
         self.other_fields = raw[6:]
 
+        multipliers = parse_leader_skill_multiplier(int(raw[2]), self.other_fields)
+        self.hp_mult = multipliers['hp']
+        self.atk_mult = multipliers['atk']
+        self.rcv_mult = multipliers['rcv']
+        self.damage_reduction = multipliers['shield']
+
     def __str__(self):
         return str(self.__dict__)
 
@@ -56,7 +61,70 @@ class MonsterSkill(pad_util.JsonDictEncodable):
         return 'Skill(%s, %r)' % (self.skill_id, self.name)
 
 
-def load_skill_data(data_dir=None, skill_json_file: str=None) -> List[MonsterSkill]:
+def parse_leader_skill_multiplier(skill, other_fields) -> {}:
+    # HP, ATK, RCV, Damage Reduction
+    multipliers = {'hp': 1.0, 'atk': 1.0, 'rcv': 1.0, 'shield': 0.0}
+
+    # Attack boost only
+    if skill in [11, 22, 26]:
+        multipliers['atk'] = other_fields[1] / 100
+
+    # HP boost only
+    elif skill in [23, 48]:
+        multipliers['hp'] = other_fields[1]/100
+    elif skill in [24, 49]:
+        multipliers['rcv'] = other_fields[1]/100
+
+    # RCV and ATK
+    elif skill == 28:
+        multipliers['atk'] = other_fields[1] / 100
+        multipliers['rcv'] = other_fields[1] / 100
+
+    # All stat boost
+    elif skill == 29:
+        multipliers['hp'] = other_fields[1] / 100
+        multipliers['atk'] = other_fields[1] / 100
+        multipliers['rcv'] = other_fields[1] / 100
+
+    elif skill == 30:
+        multipliers['hp'] = other_fields[2] / 100
+    elif skill in [31, 40, 50]:
+        multipliers['atk'] = other_fields[2] / 100
+    elif skill in [36, 38, 43]:
+        multipliers['shield'] = other_fields[2] / 100
+    elif skill in [39, 44]:
+        multipliers['atk'] = other_fields[3] / 100
+
+        if other_fields[2] == 2:
+            multipliers['rcv'] = other_fields[3] / 100
+    elif skill == 45:
+        multipliers['hp'] = other_fields[1] / 100
+        multipliers['atk'] = other_fields[1] / 100
+    elif skill == 46:
+        multipliers['hp'] = other_fields[2] / 100
+
+    # rainbow parsing
+    elif skill == 61:
+        if len(other_fields) == 3:
+            multipliers['atk'] = other_fields[2]/100
+        elif len(other_fields) == 4:
+            r_type = other_fields[0]
+            if r_type == 31:
+                mult = other_fields[2]/100 + (other_fields[3]/100) * (5-other_fields[1])
+                multipliers['atk'] = mult
+            elif r_type % 14 == 0:
+                multipliers['atk'] = other_fields[2]/100 + other_fields[3]/100
+            else:
+                # r_type is 63
+                 mult = other_fields[2] / 100 + (other_fields[3] / 100) * (6 - other_fields[1])
+                 multipliers['atk'] = mult
+        elif len(other_fields) == 5:
+            multipliers['atk'] = other_fields[2] + (other_fields[4]-other_fields[1]) * other_fields[3]
+
+    return multipliers
+
+
+def load_skill_data(data_dir=None, skill_json_file: str = None) -> List[MonsterSkill]:
     """Load MonsterSkill objects from the PAD json file."""
     if skill_json_file is None:
         skill_json_file = os.path.join(data_dir, FILE_NAME)
@@ -70,7 +138,7 @@ def load_skill_data(data_dir=None, skill_json_file: str=None) -> List[MonsterSki
     return [MonsterSkill(i, ms) for i, ms in enumerate(skill_json['skill'])]
 
 
-def load_raw_skill_data(data_dir=None, skill_json_file: str=None) -> object:
+def load_raw_skill_data(data_dir=None, skill_json_file: str = None) -> object:
     """Load raw PAD json file."""
     # Temporary hack
     if skill_json_file is None:
