@@ -424,7 +424,7 @@ def database_update_timestamps(db_wrapper):
             tstamp_row = db_wrapper.get_single_or_no_row(get_tstamp_sql)
             if tstamp_row:
                 tstamp = tstamp_row['tstamp']
-                update_tstamp_sql = 'UPDATE get_timestamp SET tstamp = {} WHERE `table` = "{}"'.format(
+                update_tstamp_sql = 'UPDATE get_timestamp SET tstamp = {} WHERE internal_table = "{}"'.format(
                     tstamp, table)
                 db_wrapper.insert_item(update_tstamp_sql)
         except:

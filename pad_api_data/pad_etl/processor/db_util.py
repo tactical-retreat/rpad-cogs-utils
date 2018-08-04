@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, date
 import logging
 
 import pymysql
@@ -19,7 +19,7 @@ def object_to_sql_params(obj):
             new_d[k] = "'{}'".format(clean_v)
         elif type(v) in (int, float):
             new_d[k] = '{}'.format(v)
-        elif type(v) == datetime:
+        elif type(v) in [datetime, date]:
             new_d[k] = "'{}'".format(v.isoformat())
     return new_d
 
