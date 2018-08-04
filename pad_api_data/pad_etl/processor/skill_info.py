@@ -935,7 +935,7 @@ def row_change_convert(arguments):
         ROW_INDEX = {
             0: 'top row',
             1: '2nd row from top',
-            2: 'middle row',
+            2: '3rd row from bottom',
             3: '2nd row from bottom',
             -2: 'bottom row',
         }
