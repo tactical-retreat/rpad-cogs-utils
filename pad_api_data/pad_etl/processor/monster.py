@@ -38,6 +38,10 @@ class SqlItem(object):
         if not cols:
             return None  # Update not supported
 
+        # If an item is timestamped, modify the timestamp on every update
+        if hasattr(self, 'tstamp'):
+            cols = cols + ['tstamp']
+
         sql = 'UPDATE {}'.format(self._table())
         sql += ' SET ' + ', '.join(map(self._col_compare, cols))
         sql += ' WHERE ' + self._col_compare(self._key())
