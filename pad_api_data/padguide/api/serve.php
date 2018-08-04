@@ -40,7 +40,7 @@
 		
 		$plain = $_POST["plain"];
 		if ($plain = "true") {
-			$cmd = $cmd . " --plain=";
+			$cmd = $cmd . " --plain";
 		}
 		
 		passthru($cmd, $err);

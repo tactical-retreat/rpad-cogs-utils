@@ -16,8 +16,8 @@ def parse_args():
     inputGroup.add_argument("--data_arg", help="PadGuide API data param")
 
     inputGroup.add_argument("--raw_file", help="Raw JSON file")
-    inputGroup.add_argument("--plain", help="Skip encryption and wrapping")
-    inputGroup.add_argument("--no_items", help="Skip wrapping s")
+    inputGroup.add_argument("--plain", action='store_true', help="Skip encryption and wrapping")
+    inputGroup.add_argument("--no_items", action='store_true', help="Skip wrapping in items tag")
 
     return parser.parse_args()
 
