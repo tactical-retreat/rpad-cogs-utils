@@ -66,40 +66,43 @@ def parse_leader_skill_multiplier(skill, other_fields) -> {}:
     multipliers = {'hp': 1.0, 'atk': 1.0, 'rcv': 1.0, 'shield': 0.0}
 
     # Attack boost only
-    if skill in [11, 22, 26]:
-        multipliers['atk'] = other_fields[1] / 100
+    if skill in [11, 22, 26, 31, 40, 50, 66, 69, 88, 90, 94, 95, 96, 97, 100, 104]:
+        multipliers['atk'] = other_fields[-1]/100
 
     # HP boost only
     elif skill in [23, 48]:
         multipliers['hp'] = other_fields[1]/100
+
     elif skill in [24, 49]:
         multipliers['rcv'] = other_fields[1]/100
 
     # RCV and ATK
-    elif skill == 28:
-        multipliers['atk'] = other_fields[1] / 100
-        multipliers['rcv'] = other_fields[1] / 100
+    elif skill in [28, 64, 75, 79]:
+        multipliers['atk'] = other_fields[-1] / 100
+        multipliers['rcv'] = other_fields[-1] / 100
 
     # All stat boost
-    elif skill == 29:
-        multipliers['hp'] = other_fields[1] / 100
-        multipliers['atk'] = other_fields[1] / 100
-        multipliers['rcv'] = other_fields[1] / 100
+    elif skill in [29, 65, 76, 114]:
+        multipliers['hp'] = other_fields[-1] / 100
+        multipliers['atk'] = other_fields[-1] / 100
+        multipliers['rcv'] = other_fields[-1] / 100
 
     elif skill == 30:
         multipliers['hp'] = other_fields[2] / 100
-    elif skill in [31, 40, 50]:
-        multipliers['atk'] = other_fields[2] / 100
+
     elif skill in [36, 38, 43]:
         multipliers['shield'] = other_fields[2] / 100
+
+
     elif skill in [39, 44]:
         multipliers['atk'] = other_fields[3] / 100
-
         if other_fields[2] == 2:
             multipliers['rcv'] = other_fields[3] / 100
-    elif skill == 45:
-        multipliers['hp'] = other_fields[1] / 100
-        multipliers['atk'] = other_fields[1] / 100
+
+    elif skill in [45, 62, 73, 77, 111]:
+        multipliers['hp'] = other_fields[-1] / 100
+        multipliers['atk'] = other_fields[-1] / 100
+
     elif skill == 46:
         multipliers['hp'] = other_fields[2] / 100
 
@@ -116,10 +119,28 @@ def parse_leader_skill_multiplier(skill, other_fields) -> {}:
                 multipliers['atk'] = other_fields[2]/100 + other_fields[3]/100
             else:
                 # r_type is 63
-                 mult = other_fields[2] / 100 + (other_fields[3] / 100) * (6 - other_fields[1])
-                 multipliers['atk'] = mult
+                mult = other_fields[2] / 100 + (other_fields[3] / 100) * (6 - other_fields[1])
+                multipliers['atk'] = mult
         elif len(other_fields) == 5:
             multipliers['atk'] = other_fields[2] + (other_fields[4]-other_fields[1]) * other_fields[3]
+
+    elif skill in [63, 67]:
+        multipliers['hp'] = other_fields[1]/100
+        multipliers['rcv'] = other_fields[1]/100
+
+    elif skill == 98:
+        multipliers['atk'] = other_fields[1] + (other_fields[3] - other_fields[0]) * other_fields[2]
+
+    elif skill == 105:
+        multipliers['atk'] = other_fields[1]/100
+        multipliers['rcv'] = other_fields[0]/100
+
+    elif skill == 108:
+        multipliers['atk'] = other_fields[-1]/100
+        multipliers['hp'] = other_fields[0]/100
+
+
+
 
     return multipliers
 
