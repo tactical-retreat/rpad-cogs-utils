@@ -28,8 +28,8 @@
 			$cmd = $cmd . " --map_value=" . $args['map_value'];
 		}
 		
-		$plain == $_GET["plain"];
-		if ($plain = "true") {
+		$plain = $_GET["plain"];
+		if ($plain == "true") {
 			$cmd = $cmd . " --plain";
 		}
 		
