@@ -153,7 +153,7 @@ def parse_leader_skill_multiplier(skill, other_fields, length) -> {}:
         multipliers['atk'] = get_last(other_fields)
         multipliers['hp'] = other_fields[0]/100
 
-    elif skill == 119:
+    elif skill in [119, 159]:
         if length == 3:
             multipliers['atk'] = get_last(other_fields)
         elif length == 5:
