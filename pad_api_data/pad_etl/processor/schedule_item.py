@@ -34,7 +34,7 @@ class ScheduleItem(object):
         self.close_timestamp = merged_bonus.end_timestamp
 
         close_datetime_local = datetime.utcfromtimestamp(
-            self.close_timestamp).replace(tzinfo=(NA_TZ_OBJ if self.server == 'us' else JP_TZ_OBJ))
+            self.close_timestamp).replace(tzinfo=(NA_TZ_OBJ if self.server == 'US' else JP_TZ_OBJ))
         open_datetime_local_utc = datetime.utcfromtimestamp(self.open_timestamp)
         open_datetime_local = open_datetime_local_utc.replace(
             tzinfo=(NA_TZ_OBJ if self.server == 'us' else JP_TZ_OBJ))
