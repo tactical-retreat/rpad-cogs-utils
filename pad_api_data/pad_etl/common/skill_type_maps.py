@@ -171,7 +171,7 @@ SKILL_TYPE = {
     173: 'Void Damage Absorption',
     174: 'Collab Conditional Boost',
     176: 'Unknown',
-    177: 'Unknown',
+    177: 'Orb Remaining Multiplier',
     178: 'Unknown',
     179: 'HP Recovery',
     180: 'Unknown',
