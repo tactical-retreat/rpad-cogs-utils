@@ -419,13 +419,14 @@ def database_update_timestamps(db_wrapper):
     get_tables_sql = 'SELECT `table` FROM get_timestamp'
     tables = list(map(lambda x: x['table'], db_wrapper.fetch_data(get_tables_sql)))
     for table in tables:
-        get_tstamp_sql = 'SELECT MAX(tstamp) FROM `{}`'.format(table)
+        get_tstamp_sql = 'SELECT MAX(tstamp) as tstamp FROM `{}`'.format(table.lower() + '_list')
         try:
-            tstamp = db_wrapper.get_single_or_no_row(get_tstamp_sql)
-            if tstamp:
-                update_tstamp_sql = 'UPDATE get_timestamp SET tstamp = {} WHERE table = "{}"'.format(
+            tstamp_row = db_wrapper.get_single_or_no_row(get_tstamp_sql)
+            if tstamp_row:
+                tstamp = tstamp_row['tstamp']
+                update_tstamp_sql = 'UPDATE get_timestamp SET tstamp = {} WHERE `table` = "{}"'.format(
                     tstamp, table)
-                db_wrapper.execute(update_tstamp_sql)
+                db_wrapper.insert_item(update_tstamp_sql)
         except:
             pass  # table probably didn't exist
 
