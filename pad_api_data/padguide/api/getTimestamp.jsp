@@ -1,4 +1,8 @@
 <?php 
 	require 'serve.php';
-    print(serve(fix_table_name(basename(__FILE__, '.jsp')), true));
+	$args = [
+		'map_key' => 'table',
+		'map_value' => 'tstamp'
+	]
+    print(serve(fix_table_name(basename(__FILE__, '.jsp')), $args));
 ?>

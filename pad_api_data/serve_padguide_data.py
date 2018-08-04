@@ -17,7 +17,11 @@ def parse_args():
 
     inputGroup.add_argument("--raw_file", help="Raw JSON file")
     inputGroup.add_argument("--plain", action='store_true', help="Skip encryption and wrapping")
+
     inputGroup.add_argument("--no_items", action='store_true', help="Skip wrapping in items tag")
+
+    inputGroup.add_argument("--map_key", help="Return key/value pair from table")
+    inputGroup.add_argument("--map_value", help="Return key/value pair from table")
 
     return parser.parse_args()
 
@@ -42,7 +46,14 @@ def load_file_json(file_name):
         return json.load(f)
 
 
-def load_from_db(db_config, db_table, data_arg):
+def map_table(db_table, cursor, map_key, map_value):
+    result = {}
+    for row in cursor:
+        result[row[map_key]] = row[map_value]
+    return result
+
+
+def load_from_db(db_config, db_table, data_arg, map_key=None, map_value=None):
     connection = pymysql.connect(host=db_config['host'],
                                  user=db_config['user'],
                                  password=db_config['password'],
@@ -57,7 +68,11 @@ def load_from_db(db_config, db_table, data_arg):
 
     with connection.cursor() as cursor:
         cursor.execute(sql)
-        data = dump_table(db_table, cursor)
+
+        if map_key and map_value:
+            data = map_table(db_table, cursor, map_key, map_value)
+        else:
+            data = dump_table(db_table, cursor)
 
     connection.close()
     return data
@@ -69,7 +84,7 @@ def main(args):
     elif args.db_config and args.db_table:
         with open(args.db_config) as f:
             db_config = json.load(f)
-        data = load_from_db(db_config, args.db_table, args.data_arg)
+        data = load_from_db(db_config, args.db_table, args.data_arg, args.map_key, args.map_value)
     else:
         raise RuntimeError('Incorrect arguments')
 
