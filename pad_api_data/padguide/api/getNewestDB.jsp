@@ -1,4 +1,4 @@
 <?php 
 	require 'serve.php';
-    print(serve_plain('getNewestDB.json'));
+    print(serve_plain('./getNewestDB.json'));
 ?>

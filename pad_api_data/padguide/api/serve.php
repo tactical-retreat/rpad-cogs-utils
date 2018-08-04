@@ -28,10 +28,9 @@
 	}
 	
 	
-	function serve_plain($file_name) {
+	function serve_plain($file_path) {
 		$base_path = "/home/tactical0retreat/rpad-cogs-utils/pad_api_data";
 		$script = $base_path . "/serve_padguide_data.py";
-		$file_path = $base_path . "/" . $file_name;
 		
 		$cmd = "python3 " . $script . " --raw_file=" . $file_path;
 		
