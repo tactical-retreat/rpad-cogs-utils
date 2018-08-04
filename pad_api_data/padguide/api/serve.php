@@ -2,7 +2,7 @@
 	function fix_table_name($tbl_name) {
 	    $pieces = preg_split('/(?=[A-Z])/', $tbl_name);
 	    $name = $pieces[0];
-	    for ($x = 1; $x <= count($pieces); $x++) {
+	    for ($x = 1; $x < count($pieces); $x++) {
 	        $name = $name . '_' . strtolower($pieces[$x]);
 	    }
 	    return $name;
@@ -14,8 +14,8 @@
 		$db_config = $base_path . "/db_config.json";
 		
 		$cmd = "python3 " . $script . " --db_config=" . $db_config . " --db_table=" . $tbl_name;
-		$data_arg = $_POST["data"];
-		if ($data_arg != "") {
+		if (array_key_exists("data", $_POST) {
+			$data_arg = $_POST["data"];
 			$cmd = $cmd . " --data_arg=" . $data_arg;
 		}
 		
@@ -28,8 +28,7 @@
 			$cmd = $cmd . " --map_value=" . $args['map_value'];
 		}
 		
-		$plain = $_GET["plain"];
-		if ($plain == "true") {
+		if (array_key_exists("plain", $_GET) {
 			$cmd = $cmd . " --plain";
 		}
 		
@@ -43,8 +42,7 @@
 		
 		$cmd = "python3 " . $script . " --raw_file=" . $file_path;
 		
-		$plain = $_GET["plain"];
-		if ($plain == "true") {
+		if (array_key_exists("plain", $_GET) {
 			$cmd = $cmd . " --plain";
 		}
 		
