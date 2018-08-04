@@ -17,6 +17,7 @@ def parse_args():
 
     inputGroup.add_argument("--raw_file", help="Raw JSON file")
     inputGroup.add_argument("--plain", help="Skip encryption and wrapping")
+    inputGroup.add_argument("--no_items", help="Skip wrapping s")
 
     return parser.parse_args()
 
@@ -71,6 +72,9 @@ def main(args):
         data = load_from_db(db_config, args.db_table, args.data_arg)
     else:
         raise RuntimeError('Incorrect arguments')
+
+    if args.no_items:
+        data = data['items']
 
     if args.plain:
         print(json.dumps(data, indent=4))

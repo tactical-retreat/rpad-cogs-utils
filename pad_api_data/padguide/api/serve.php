@@ -8,7 +8,7 @@
 	    return $name;
 	}
 
-	function serve($tbl_name) {
+	function serve($tbl_name, $no_items = false) {
 		$base_path = "/home/tactical0retreat/rpad-cogs-utils/pad_api_data";
 		$script = $base_path . "/serve_padguide_data.py";
 		$db_config = $base_path . "/db_config.json";
@@ -19,9 +19,13 @@
 			$cmd = $cmd . " --data_arg=" . $data_arg;
 		}
 		
+		if ($no_items) {
+			$cmd = $cmd . " --no_items";
+		}
+		
 		$plain = $_POST["plain"];
 		if ($plain = "true") {
-			$cmd = $cmd . " --plain=";
+			$cmd = $cmd . " --plain";
 		}
 		
 		passthru($cmd, $err);
