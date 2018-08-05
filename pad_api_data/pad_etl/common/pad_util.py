@@ -62,7 +62,7 @@ class JsonDictEncodable(json.JSONEncoder):
     def default(self, o):
         return o.__dict__
 
-# Simply returns a dungeon comment for a input raw value. Doing it this way is necessary as to not have to put all the values
+
 # directly into a dictionary when multiple val's correspond to a single comment, but are unnecessarily delineated
 def get_dungeon_comment(val: int) -> str:
     if val in range(5611, 5615):
@@ -81,6 +81,7 @@ def get_dungeon_comment(val: int) -> str:
         return DUNGEON_TYPE_COMMENTS[val]
     else:
         return "No Data"
+
 
 def parse_skill_multiplier(skill, other_fields, length) -> {}:
     # HP, ATK, RCV, Damage Reduction
@@ -202,7 +203,7 @@ def parse_skill_multiplier(skill, other_fields, length) -> {}:
 
             scale = get_last(other_fields)
             c_count = other_fields[5]
-            multipliers['atk'] *= other_fields[6] + scale * (max_combos - c_count)
+            multipliers['atk'] *= get_second_last(other_fields) + scale * (max_combos - c_count)
 
     elif skill == 125:
         if length == 7:
