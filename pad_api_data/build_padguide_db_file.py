@@ -48,11 +48,10 @@ def parse_args():
 
     inputGroup = parser.add_argument_group("Input")
     inputGroup.add_argument("--db_config", required=True, help="JSON database info")
-    inputGroup.add_argument("--base_db", required=True, help="Base DB file to work with")
+    inputGroup.add_argument("--base_db", required=True, help="Base SQLite file to work with")
 
     outputGroup = parser.add_argument_group("Output")
-    outputGroup.add_argument("--output_dir", required=True,
-                             help="Path to a folder where output should be saved")
+    outputGroup.add_argument("--output_file", required=True, help="SQLite file to write to")
 
     helpGroup = parser.add_argument_group("Help")
     helpGroup.add_argument("-h", "--help", action="help",
@@ -62,12 +61,10 @@ def parse_args():
 
 
 def do_main(args):
-    base_db = args.base_db
-    # File must be named Panda.sql so remove this
+    # File must be named Panda.sql
     # Add zipping the sql
-    timestamp = int(datetime.datetime.utcnow().timestamp())
-    output_db = os.path.join(args.output_dir, 'padguide_{}.sql'.format(timestamp))
-    shutil.copy(base_db, output_db)
+    output_file = args.output_file
+    shutil.copy(args.base_db, output_file)
 
     with open(args.db_config) as f:
         db_config = json.load(f)
@@ -80,7 +77,7 @@ def do_main(args):
                                  charset=db_config['charset'],
                                  cursorclass=pymysql.cursors.DictCursor)
 
-    sqlite_conn = lite.connect(output_db, detect_types=lite.PARSE_DECLTYPES, isolation_level=None)
+    sqlite_conn = lite.connect(output_file, detect_types=lite.PARSE_DECLTYPES, isolation_level=None)
     sqlite_conn.row_factory = lite.Row
     sqlite_conn.execute('pragma foreign_keys=OFF')
 
