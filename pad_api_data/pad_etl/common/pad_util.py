@@ -150,20 +150,20 @@ def parse_skill_multiplier(skill, other_fields, length) -> {}:
                 multipliers['atk'] *= get_third_last(other_fields) + (other_fields[-1] - other_fields[1]) * get_second_last(other_fields)
 
     elif skill in [63, 67]:
-        multipliers['hp'] *= other_fields[1] / 100
-        multipliers['rcv'] *= other_fields[1] / 100
+        multipliers['hp'] *= get_last(other_fields)
+        multipliers['rcv'] *= get_last(other_fields)
 
     elif skill == 98:
         multipliers['atk'] *= get_third_last(other_fields) + (other_fields[3] - other_fields[0]) * get_second_last(
             other_fields)
 
     elif skill == 105:
-        multipliers['atk'] *= other_fields[1] / 100
-        multipliers['rcv'] *= other_fields[0] / 100
+        multipliers['atk'] *= get_last(other_fields)
+        multipliers['rcv'] *= get_mult(other_fields[0])
 
     elif skill == 108:
         multipliers['atk'] *= get_last(other_fields)
-        multipliers['hp'] *= other_fields[0] / 100
+        multipliers['hp'] *= get_mult(other_fields[0])
 
     elif skill in [119, 159]:
         if length == 3:
@@ -208,7 +208,8 @@ def parse_skill_multiplier(skill, other_fields, length) -> {}:
     elif skill == 125:
         if length == 7:
             multipliers['atk'] *= get_last(other_fields)
-            multipliers['hp'] *= get_second_last(other_fields)
+            if get_second_last(other_fields) != 0:
+                multipliers['hp'] *= get_second_last(other_fields)
         elif length == 8:
             if other_fields[-2] != 0:
                 multipliers['atk'] *= get_second_last(other_fields)
@@ -219,7 +220,8 @@ def parse_skill_multiplier(skill, other_fields, length) -> {}:
 
     elif skill == 129:
         if length == 4:
-            multipliers['hp'] *= get_second_last(other_fields)
+            if get_second_last(other_fields) != 0:
+                multipliers['hp'] *= get_second_last(other_fields)
             multipliers['atk'] *= get_last(other_fields)
         elif length == 5:
             if get_third_last(other_fields) != 0:
