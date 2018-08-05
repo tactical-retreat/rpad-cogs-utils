@@ -143,8 +143,10 @@ def parse_skill_multiplier(skill, other_fields, length) -> {}:
                 mult = get_second_last(other_fields) + (get_last(other_fields)) * (6 - other_fields[1])
                 multipliers['atk'] *= mult
         elif length == 5:
-            multipliers['atk'] *= get_third_last(other_fields) + (other_fields[4] - other_fields[1]) * get_second_last(
-                other_fields)
+            if other_fields[0] == 31:
+                multipliers['atk'] *= get_third_last(other_fields) + (5 - other_fields[1]) * get_second_last(other_fields)
+            else:
+                multipliers['atk'] *= get_third_last(other_fields) + (other_fields[-1] - other_fields[1]) * get_second_last(other_fields)
 
     elif skill in [63, 67]:
         multipliers['hp'] *= other_fields[1] / 100
@@ -453,4 +455,3 @@ def get_third_last(other_fields):
         return other_fields[-3] / 100
     else:
         return 1
-    
