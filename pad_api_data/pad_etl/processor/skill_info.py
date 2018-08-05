@@ -2168,7 +2168,7 @@ SKILL_TRANSFORM = {
     180: enhance_skyfall_convert({'duration': (0, cc), 'percentage_increase': (1, multi)}),
     184: no_skyfall_convert({'duration': (0, cc)}),
     188: multi_hit_laser_convert({'damage': (0, cc), 'mass_attack': False}),
-    189: convert('unlock_board_path', {}),  # May be using incomplete data eg. Toragon SID: 10136
+    189: convert('unlock_board_path', { 'skill_text': 'Unlock all orbs; Change all orbs to Fire, Water, Wood, and Light orbs; Show path to 3 combos'}),  # May be using incomplete data eg. Toragon SID: 10136
     11: passive_stats_convert({'for_attr': (0, listify), 'atk_multiplier': (1, multi)}),
     12: after_attack_convert({'multiplier': (0, multi)}),
     13: heal_on_convert({'multiplier': (0, multi)}),
