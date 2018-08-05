@@ -89,7 +89,7 @@ def parse_skill_multiplier(skill, other_fields, length) -> {}:
 
     if skill == 3:
         multipliers['shield'] = get_last(other_fields)
-        
+
     # Attack boost only
     elif skill in [11, 22, 26, 31, 40, 50, 66, 69, 88, 90, 92, 94, 95, 96, 97, 100, 101, 104, 109, 122, 130, 131, 150]:
         multipliers['atk'] *= get_last(other_fields)
