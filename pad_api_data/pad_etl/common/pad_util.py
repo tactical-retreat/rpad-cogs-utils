@@ -258,7 +258,8 @@ def parse_skill_multiplier(skill, other_fields, length) -> {}:
             multipliers['atk'] *= get_mult(other_fields[2])
             multipliers['hp'] *= get_last(other_fields)
         elif length == 7:
-            multipliers['hp'] *= get_mult(other_fields[1])
+            if other_fields[1] != 0:
+                multipliers['hp'] *= get_mult(other_fields[1])
             multipliers['atk'] *= get_mult(other_fields[2]) * get_last(other_fields)
             multipliers['rcv'] *= get_mult(other_fields[3])
         elif length == 8:
@@ -318,18 +319,25 @@ def parse_skill_multiplier(skill, other_fields, length) -> {}:
         if length == 4:
             multipliers['atk'] *= get_last(other_fields)
         if length == 6:
-            multipliers['hp'] *= get_third_last(other_fields)
-            multipliers['atk'] *= get_second_last(other_fields)
-            multipliers['rcv'] *= get_last(other_fields)
+            if get_third_last(other_fields) != 0:
+                multipliers['hp'] *= get_third_last(other_fields)
+            if get_second_last(other_fields) != 0:
+                multipliers['atk'] *= get_second_last(other_fields)
+            if get_last(other_fields) != 0:
+                multipliers['rcv'] *= get_last(other_fields)
 
     elif skill == 163:
         if length == 4:
-            multipliers['hp'] *= get_second_last(other_fields)
+            if get_second_last(other_fields) != 0:
+                multipliers['hp'] *= get_second_last(other_fields)
             multipliers['atk'] *= get_last(other_fields)
         if length == 5:
-            multipliers['hp'] *= get_third_last(other_fields)
-            multipliers['atk'] *= get_second_last(other_fields)
-            multipliers['rcv'] *= get_last(other_fields)
+            if get_third_last(other_fields) != 0:
+                multipliers['hp'] *= get_third_last(other_fields)
+            if get_second_last(other_fields) != 0:
+                multipliers['atk'] *= get_second_last(other_fields)
+            if get_last(other_fields) != 0:
+                multipliers['rcv'] *= get_last(other_fields)
         if length == 6:
             multipliers['shield'] = get_last(other_fields)
 
