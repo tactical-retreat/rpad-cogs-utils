@@ -7,6 +7,7 @@ import shutil
 from pad_etl.processor import db_util
 from padguide.extract_utils import fix_table_name, fix_row
 import pymysql
+from padguide import encoding
 
 import sqlite3 as lite
 
@@ -26,9 +27,19 @@ TBL_MAPPING = {
     'skill_leader_data_list': 'TBL_SKILL_LEADER_DATA',
 }
 
-# Names of columns
-SUPPRESS_COLUMNS = [
+# Names of columns that should be encrypted
+ENCRYPTED_COLUMNS = [
+    'SELL_PRICE', 'FODDER_EXP',
+    'TS_NAME_JP', 'TS_NAME_US', 'TS_NAME_KR',
+    'TS_DESC_JP', 'TS_DESC_US', 'TS_DESC_KR',
 ]
+
+
+def encrypt_cols(row):
+    fixed_row = {}
+    for key, value in row.items():
+        fixed_row[key] = encoding.encode(value) if key in ENCRYPTED_COLUMNS else value
+    return fixed_row
 
 
 def parse_args():
@@ -89,8 +100,9 @@ def do_main(args):
             print("for", dest_tbl, 'skipping', skipped_dest_cols)
             for row in cursor:
                 fixed_row = fix_row(src_tbl, row)
-                insert_cols = set(fixed_row.keys()).intersection(map(str.upper, dest_cols))
-                insert_sql = db_util.generate_insert_sql(dest_tbl, insert_cols, fixed_row)
+                encrypted_row = encrypt_cols(fixed_row)
+                insert_cols = set(encrypted_row.keys()).intersection(map(str.upper, dest_cols))
+                insert_sql = db_util.generate_insert_sql(dest_tbl, insert_cols, encrypted_row)
                 sqlite_conn.execute(insert_sql)
 
     sqlite_conn.close()
