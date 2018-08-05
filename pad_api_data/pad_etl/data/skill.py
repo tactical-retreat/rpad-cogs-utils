@@ -66,7 +66,9 @@ class MonsterSkill(pad_util.JsonDictEncodable):
         self.hp_mult = multipliers['hp']
         self.atk_mult = multipliers['atk']
         self.rcv_mult = multipliers['rcv']
-        self.damage_reduction = multipliers['shield']
+
+        # This gives you the shield as a percent rather than a fraction
+        self.shield = multipliers['shield'] * 100
 
     def __str__(self):
         return str(self.__dict__)
