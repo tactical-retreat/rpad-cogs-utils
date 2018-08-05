@@ -14,7 +14,7 @@ def encode(plain_text):
     padded_data = padder.update(plain_text.encode('utf-8')) + padder.finalize()
 
     msg_encrypted = encryptor.update(padded_data) + encryptor.finalize()
-    return ''.join('{:02x}'.format(x) for x in msg_encrypted)
+    return msg_encrypted.hex()
 
 
 def decode(hex_text):
