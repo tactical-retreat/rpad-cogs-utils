@@ -33,7 +33,7 @@ class MonsterSkill(pad_util.JsonDictEncodable):
         self.skill_type = int(raw[2])
 
         # New field. Describes the idea that a skill falls into
-        self.skill_class = SKILL_TYPE(self.skill_type)
+        self.skill_class = SKILL_TYPE[self.skill_type]
 
         # If an active skill, number of levels to max.
         levels = int(raw[3])

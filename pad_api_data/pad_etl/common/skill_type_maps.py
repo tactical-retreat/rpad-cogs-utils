@@ -1,6 +1,7 @@
 
 
 SKILL_TYPE = {
+    0: 'ATTR Mass Attack',
     1: 'Multi Target Nuke',     # Hits multiple enemies
     2: 'Single Target Nuke',  # 50x, 200x, etc atk on an enemy
     3: 'Damage Reduction/Shield',    # Self explanatory but for ACTIVE SKILLS
@@ -32,6 +33,7 @@ SKILL_TYPE = {
     31: 'Dragon/God ATK Boost',
     33: 'Taiko Drum',   # Princess Soprano best waifu
     34: 'Nuke and Heal',    # Nukes and recovers a bit of health
+    35: 'ATK Based Nuke',
     36: 'Two ATTR Damage Reduction',
     37: 'Single Target, Team ATTR Nuke',  # i.e. 30x DARK Damage nuke, etc
     38: 'Low HP Shield',     # Vastly reduce dmg under 50% health
