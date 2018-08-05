@@ -33,6 +33,7 @@ class SqlItem(object):
     def _col_name_ref(self, col):
         return '`' + col + '`'
 
+    # TODO: move to dbutil
     def update_sql(self):
         cols = self._update_columns()
         if not cols:
@@ -49,10 +50,7 @@ class SqlItem(object):
 
     def insert_sql(self):
         cols = self._insert_columns()
-        sql = 'INSERT INTO {}'.format(self._table())
-        sql += ' (' + ', '.join(map(self._col_name_ref, cols)) + ')'
-        sql += ' VALUES (' + ', '.join(map(self._col_value_ref, cols)) + ')'
-        return sql.format(**db_util.object_to_sql_params(self))
+        return db_util.generate_insert_sql(self._table(), cols, self)
 
     def _table(self):
         raise NotImplemented('no table name set')
