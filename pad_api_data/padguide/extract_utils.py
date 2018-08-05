@@ -37,43 +37,47 @@ def _copy_override(row_data, override_suffix):
             row_data[base_name] = value
 
 
+def fix_row(table_name, row):
+    row_data = {}
+    for col in row:
+        fixed_col = col.upper()
+        if fixed_col.startswith('_'):
+            fixed_col = fixed_col[1:]
+        data = row[col]
+        if data is None:
+            fixed_data = ''
+        elif '_YN' in fixed_col:
+            if table_name in _ALT_YN_TABLES:
+                fixed_data = '1' if data else '0'
+            else:
+                fixed_data = 'Y' if data else 'N'
+        elif type(data) is Decimal:
+            first = '{}'.format(float(data))
+            second = '{:.1f}'.format(float(data))
+            fixed_data = max((first, second), key=len)
+        elif type(data) is datetime:
+            if table_name in _ALT_DATETIME_TABLES:
+                fixed_data = data.isoformat(' ')
+            else:
+                fixed_data = data.date().isoformat()
+        elif 'HOUR' in fixed_col or 'MINUTE' in fixed_col:
+            if fixed_col in _ALT_HR_MIN_COLS:
+                fixed_data = str(data)
+            else:
+                fixed_data = str(data).zfill(2)
+        else:
+            fixed_data = str(data)
+
+        row_data[fixed_col] = fixed_data
+
+    _copy_override(row_data, '_CALCULATED')
+    _copy_override(row_data, '_OVERRIDE')
+    return row_data
+
+
 def dump_table(table_name, cursor):
     result_json = {'items': []}
     for row in cursor:
-        row_data = {}
-        for col in row:
-            fixed_col = col.upper()
-            if fixed_col.startswith('_'):
-                fixed_col = fixed_col[1:]
-            data = row[col]
-            if data is None:
-                fixed_data = ''
-            elif '_YN' in fixed_col:
-                if table_name in _ALT_YN_TABLES:
-                    fixed_data = '1' if data else '0'
-                else:
-                    fixed_data = 'Y' if data else 'N'
-            elif type(data) is Decimal:
-                first = '{}'.format(float(data))
-                second = '{:.1f}'.format(float(data))
-                fixed_data = max((first, second), key=len)
-            elif type(data) is datetime:
-                if table_name in _ALT_DATETIME_TABLES:
-                    fixed_data = data.isoformat(' ')
-                else:
-                    fixed_data = data.date().isoformat()
-            elif 'HOUR' in fixed_col or 'MINUTE' in fixed_col:
-                if fixed_col in _ALT_HR_MIN_COLS:
-                    fixed_data = str(data)
-                else:
-                    fixed_data = str(data).zfill(2)
-            else:
-                fixed_data = str(data)
-
-            row_data[fixed_col] = fixed_data
-
-        _copy_override(row_data, '_CALCULATED')
-        _copy_override(row_data, '_OVERRIDE')
-        result_json['items'].append(row_data)
+        result_json['items'].append(fix_row(table_name, row))
 
     return result_json

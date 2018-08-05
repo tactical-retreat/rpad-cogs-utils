@@ -5,7 +5,7 @@ import os
 import shutil
 
 from pad_etl.processor import db_util
-from padguide.extract_utils import fix_table_name
+from padguide.extract_utils import fix_table_name, fix_row
 import pymysql
 
 import sqlite3 as lite
@@ -52,6 +52,8 @@ def parse_args():
 
 def do_main(args):
     base_db = args.base_db
+    # File must be named Panda.sql so remove this
+    # Add zipping the sql
     timestamp = int(datetime.datetime.utcnow().timestamp())
     output_db = os.path.join(args.output_dir, 'padguide_{}.sql'.format(timestamp))
     shutil.copy(base_db, output_db)
@@ -69,6 +71,7 @@ def do_main(args):
 
     sqlite_conn = lite.connect(output_db, detect_types=lite.PARSE_DECLTYPES, isolation_level=None)
     sqlite_conn.row_factory = lite.Row
+    sqlite_conn.execute('pragma foreign_keys=OFF')
 
     for src_tbl, dest_tbl in TBL_MAPPING.items():
         dest_select_sql = 'SELECT * FROM {}'.format(dest_tbl)
@@ -79,13 +82,15 @@ def do_main(args):
             src_select_sql = 'SELECT * FROM {}'.format(src_tbl)
             cursor.execute(src_select_sql)
             src_cols = set([desc[0].lower() for desc in cursor.description])
+
             skipped_src_cols = src_cols - dest_cols
             skipped_dest_cols = dest_cols - src_cols
             print("for", src_tbl, 'skipping', skipped_src_cols)
             print("for", dest_tbl, 'skipping', skipped_dest_cols)
-            combined_cols = src_cols.intersection(dest_cols)
             for row in cursor:
-                insert_sql = db_util.generate_insert_sql(dest_tbl, combined_cols, row)
+                fixed_row = fix_row(src_tbl, row)
+                insert_cols = set(fixed_row.keys()).intersection(map(str.upper, dest_cols))
+                insert_sql = db_util.generate_insert_sql(dest_tbl, insert_cols, fixed_row)
                 sqlite_conn.execute(insert_sql)
 
     sqlite_conn.close()
