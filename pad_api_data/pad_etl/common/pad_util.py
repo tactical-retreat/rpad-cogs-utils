@@ -98,7 +98,7 @@ def parse_skill_multiplier(skill, other_fields, length) -> {}:
     elif skill in [23, 30, 48, 107]:
         multipliers['hp'] *= get_last(other_fields)
 
-    elif skill in [24, 49, 50, 149]:
+    elif skill in [24, 49, 149]:
         multipliers['rcv'] *= get_last(other_fields)
 
     # RCV and ATK
@@ -134,6 +134,12 @@ def parse_skill_multiplier(skill, other_fields, length) -> {}:
 
     elif skill == 46:
         multipliers['hp'] *= get_last(other_fields)
+
+    elif skill == 50:
+        if other_fields[1] == 5:
+            multipliers['rcv'] *= get_last(other_fields)
+        else:
+            multipliers['atk'] *= get_last(other_fields)
 
     elif skill == 86:
         if length == 4:
