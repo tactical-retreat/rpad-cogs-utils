@@ -416,7 +416,7 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
 
 
 def database_update_timestamps(db_wrapper):
-    get_tables_sql = 'SELECT `table` FROM get_timestamp'
+    get_tables_sql = 'SELECT `internal_table` FROM get_timestamp'
     tables = list(map(lambda x: x['table'], db_wrapper.fetch_data(get_tables_sql)))
     for table in tables:
         get_tstamp_sql = 'SELECT MAX(tstamp) as tstamp FROM `{}`'.format(table.lower() + '_list')
