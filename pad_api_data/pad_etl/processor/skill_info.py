@@ -521,7 +521,14 @@ def attribute_attack_boost_convert(arguments):
         _, c = convert_with_defaults('attribute_attack_boost',
                                      arguments,
                                      attribute_attack_boost_backups)(x)
-        c['skill_text'] += fmt_duration(c['duration']) + fmt_stats_type_attr_bonus(c)
+        skill_text = ''
+        if 5 in c['for_attr']:
+            c['for_attr'].remove(5)
+            skill_text += fmt_duration(c['duration']) + fmt_mult(c['atk_multiplier']) + 'x RCV'
+        if skill_text:
+            skill_text += '; '
+        skill_text += fmt_duration(c['duration']) + fmt_stats_type_attr_bonus(c)
+        c['skill_text'] += skill_text
         return 'attribute_attack_boost', c
     return f
 
