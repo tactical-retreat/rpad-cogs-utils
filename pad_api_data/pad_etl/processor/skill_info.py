@@ -566,7 +566,7 @@ def enhance_convert(arguments):
                 color_text = 'all' if len(for_attr) == 5 else ', '.join(
                     [ATTRIBUTES[i] for i in for_attr])
                 for_skill_text += ' ' + color_text
-                c['skill_text'] += 'Enhance all ' + for_skill_text + ' orbs'
+                c['skill_text'] += 'Enhance all' + for_skill_text + ' orbs'
             else:
                 c['skill_text'] += 'Enhance all orbs'
         return 'enhance_orbs', c
