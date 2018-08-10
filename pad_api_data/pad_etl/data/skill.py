@@ -63,9 +63,9 @@ class MonsterSkill(pad_util.JsonDictEncodable):
                 self.skill_part_3_id = self.other_fields[2]
 
         multipliers = pad_util.parse_skill_multiplier(int(raw[2]), self.other_fields, len(self.other_fields))
-        self.hp_mult = multipliers['hp']
-        self.atk_mult = multipliers['atk']
-        self.rcv_mult = multipliers['rcv']
+        self.hp_mult = multipliers.hp
+        self.atk_mult = multipliers.atk
+        self.rcv_mult = multipliers.rcv
 
         # This gives you the shield as a percent rather than a fraction
         self.shield = multipliers['shield'] * 100
