@@ -27,10 +27,15 @@ def do_copy(src_dir, src_file, dest_dir, dest_file, resize=None):
     dest_path = os.path.join(dest_dir, dest_file)
     if os.path.exists(src_path) and not os.path.exists(dest_path):
         if resize:
-            im = Image.open(src_path)
-            new_size = (im.size[0] * resize, im.size[1] * resize)
-            im.thumbnail(new_size, Image.ANTIALIAS)
-            im.save(dest_path)
+            try:
+                im = Image.open(src_path)
+                new_size = (im.size[0] * resize, im.size[1] * resize)
+                im.thumbnail(new_size, Image.ANTIALIAS)
+                im.save(dest_path)
+            except Exception as ex:
+                print('failed to shrink', src_path, 'to', dest_path, 'falling back to copy')
+                print(ex)
+                shutil.copy2(src_path, dest_path)
         else:
             shutil.copy2(src_path, dest_path)
 
