@@ -3,6 +3,7 @@ import time
 
 from . import db_util
 from ..common import monster_id_mapping
+from ..common import shared_types
 from ..common.padguide_values import TYPE_MAP, AWAKENING_MAP, EvoType
 from ..data.card import BookCard
 
@@ -99,6 +100,12 @@ class MonsterItem(SqlItem):
         self.tm_name_us = card_na.name
         self.tstamp = int(time.time()) * 1000
 
+        if self.level == 1:
+            self.exp = 0
+        else:
+            self.exp = shared_types.curve_value(
+                0, card_na.xp_max, card_na.xp_scale, self.level, 99)
+
         # Foreign keys
 
         # There's a lookup table for this, but the colors are just offset by 1 (including null)
@@ -150,7 +157,7 @@ class MonsterItem(SqlItem):
         ]
 
     def _update_columns(self):
-        return ['tm_name_us', 'limit_mult']
+        return ['tm_name_us', 'limit_mult', 'exp']
 
     def __repr__(self):
         return 'MonsterItem({} - {})'.format(self.monster_no, self.tm_name_us)

@@ -39,18 +39,18 @@ class BookCard(pad_util.JsonDictEncodable):
 
         self.min_hp = int(raw[14])
         self.max_hp = int(raw[15])
-        self.hp_curve = float(raw[16])
+        self.hp_scale = float(raw[16])
 
         self.min_atk = int(raw[17])
         self.max_atk = int(raw[18])
-        self.atk_curve = float(raw[19])
+        self.atk_scale = float(raw[19])
 
         self.min_rcv = int(raw[20])
         self.max_rcv = int(raw[21])
-        self.rcv_curve = float(raw[22])
+        self.rcv_scale = float(raw[22])
 
         self.xp_max = int(raw[23])
-        self.xp_gr = float(raw[24])
+        self.xp_scale = float(raw[24])
 
         self.active_skill_id = SkillId(raw[25])
         self.leader_skill_id = SkillId(raw[26])
