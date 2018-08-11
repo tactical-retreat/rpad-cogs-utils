@@ -27,7 +27,8 @@ class MonsterSkill(pad_util.JsonDictEncodable):
         self.description = str(raw[1])
 
         # Skill description text (no formatting).
-        self.clean_description = pad_util.strip_colors(self.description).replace('\n', ' ').replace('^p', '')
+        self.clean_description = pad_util.strip_colors(
+            self.description).replace('\n', ' ').replace('^p', '')
 
         # Encodes the type of skill (requires parsing other_fields).
         self.skill_type = int(raw[2])
@@ -51,7 +52,8 @@ class MonsterSkill(pad_util.JsonDictEncodable):
         # Fields used in coordination with skill_type.
         self.other_fields = raw[6:]
 
-        # NEW FIELDS. The skills that a skill links to if it has multiple clauses/conditions for activation
+        # NEW FIELDS. The skills that a skill links to if it has multiple
+        # clauses/conditions for activation
         self.skill_part_1_id = None
         self.skill_part_2_id = None
         self.skill_part_3_id = None
@@ -62,13 +64,14 @@ class MonsterSkill(pad_util.JsonDictEncodable):
             if len(self.other_fields) == 3:
                 self.skill_part_3_id = self.other_fields[2]
 
-        multipliers = pad_util.parse_skill_multiplier(int(raw[2]), self.other_fields, len(self.other_fields))
+        multipliers = pad_util.parse_skill_multiplier(
+            int(raw[2]), self.other_fields, len(self.other_fields))
         self.hp_mult = multipliers.hp
         self.atk_mult = multipliers.atk
         self.rcv_mult = multipliers.rcv
 
         # This gives you the shield as a percent rather than a fraction
-        self.shield = multipliers['shield'] * 100
+        self.shield = multipliers.shield * 100
 
     def __str__(self):
         return str(self.__dict__)
