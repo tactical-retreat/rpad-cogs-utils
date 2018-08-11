@@ -164,8 +164,18 @@ class MonsterItem(SqlItem):
 
 
 def update_series_by_monster_no_sql(monster_no, series_id):
-    return 'UPDATE monster_info_list SET tsr_seq = {series_id} WHERE monster_no = {monster_no}'.format(
-        monster_no=monster_no, series_id=series_id)
+    args = {
+        'monster_no': monster_no,
+        'ts_seq': series_id,
+        'tstamp': int(time.time()) * 1000,
+    }
+    sql = """
+    UPDATE monster_info_list 
+    SET tsr_seq = {tsr_seq},
+        tstamp = {tstamp}
+    WHERE monster_no = {monster_no}
+    """
+    return sql.format(**db_util.object_to_sql_params(args))
 
 
 class MonsterInfoItem(SqlItem):
