@@ -1102,7 +1102,7 @@ def suicide_random_nuke_convert(arguments):
         if c['hp_remaining'] == 0:
             c['skill_text'] += 'Reduce HP to 1; '
         else:
-            c['skill_text'] += 'Reduce HP by ' + fmt_mult(c['hp_remaining'] * 100) + '%; '
+            c['skill_text'] += 'Reduce HP by ' + fmt_mult((1 - c['hp_remaining']) * 100) + '%; '
         if c['minimum_multiplier'] != c['maximum_multiplier']:
             c['skill_text'] += 'Randomized ' + ATTRIBUTES[c['attribute']] + ' damage to ' + fmt_mass_atk(
                 c['mass_attack']) + '(' + fmt_mult(c['minimum_multiplier']) + '~' + fmt_mult(c['maximum_multiplier']) + 'x)'
