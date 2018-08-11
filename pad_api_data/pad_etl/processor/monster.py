@@ -166,7 +166,7 @@ class MonsterItem(SqlItem):
 def update_series_by_monster_no_sql(monster_no, series_id):
     args = {
         'monster_no': monster_no,
-        'ts_seq': series_id,
+        'tsr_seq': series_id,
         'tstamp': int(time.time()) * 1000,
     }
     sql = """
