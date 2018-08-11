@@ -137,5 +137,5 @@ class DbWrapper(object):
             self.execute(cursor, sql)
             data = list(cursor.fetchall())
             num_rows = len(data)
-            if len(data) > 0:
+            if num_rows > 0:
                 raise ValueError('got too many results for insert:', num_rows, sql)
