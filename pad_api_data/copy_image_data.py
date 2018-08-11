@@ -53,7 +53,7 @@ def copy_images(args):
     for jp_id in range(1, 6000):
         monster_no = monster_id_mapping.jp_id_to_monster_no(jp_id)
         monster_no_filled = str(monster_no).zfill(4)
-        monster_no_filled_long = str(monster_no).zfill(4)
+        monster_no_filled_long = str(monster_no).zfill(5)
         do_copy(jp_icon_input_dir, '{}.png'.format(jp_id),
                 output_dir, 'icon_{}.png'.format(monster_no_filled))
         do_copy(jp_portrait_input_dir, '{}.png'.format(jp_id),
@@ -65,7 +65,7 @@ def copy_images(args):
     for na_id in monster_id_mapping.NA_VOLTRON_IDS:
         monster_no = monster_id_mapping.na_id_to_monster_no(na_id)
         monster_no_filled = str(monster_no).zfill(4)
-        monster_no_filled_long = str(monster_no).zfill(4)
+        monster_no_filled_long = str(monster_no).zfill(5)
         do_copy(na_icon_input_dir, '{}.png'.format(na_id),
                 output_dir, 'icon_{}.png'.format(monster_no_filled))
         do_copy(na_portrait_input_dir, '{}.png'.format(na_id),
