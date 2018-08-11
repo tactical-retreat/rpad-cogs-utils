@@ -163,6 +163,11 @@ class MonsterItem(SqlItem):
         return 'MonsterItem({} - {})'.format(self.monster_no, self.tm_name_us)
 
 
+def update_series_by_monster_no_sql(monster_no, series_id):
+    return 'UPDATE monster_info_list SET tsr_seq = {series_id} WHERE monster_no = {monster_no}'.format(
+        monster_no=monster_no, series_id=series_id)
+
+
 class MonsterInfoItem(SqlItem):
     def __init__(self, jp_card: BookCard, na_card: BookCard):
         self.fodder_exp = 0

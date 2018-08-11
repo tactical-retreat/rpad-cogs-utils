@@ -278,6 +278,55 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
             db_wrapper.insert_item(evolution.insert_sql(next_evo_id))
             next_evo_id += 1
 
+    # Try to populate series if missing.
+
+    # First stage.
+    # 1) Create evo trees for monsters.
+    # 2) For monsters with tsr_seq = 42, find the lowest monster_no in the tree.
+    # 3) If that monster has a series != 42, apply it and save.
+
+    # Not implemented yet.
+
+    # Second stage.
+    # 1) Pull the list of monster_no -> series_id from the DB.
+    # 2) Compile a list of group_id -> series_id (excluding premium, tsr_seq=42).
+    # 3) Discard any group_id with more than one series_id.
+    # 4) Iterate over every monster with series_id = 42. If the group_id has a series_id mapped,
+    #    assign it and save.
+    group_id_to_cards = defaultdict(list)  # type DefaultDict<GroupId, List[CrossServerCard]>
+    for csc in combined_cards:
+        group_id_to_cards[csc.jp_card.card.group_id].append(csc)
+
+    monster_no_to_series_id = db_wrapper.load_to_key_value(
+        'monster_no', 'tsr_seq', 'monster_info_list')  # type Map<int, int>
+
+    group_id_to_series_id = {}  # type Map<int, int
+    for group_id, card_list in group_id_to_cards.items():
+        series_id = None
+        for card in card_list:
+            new_series_id = monster_no_to_series_id[card.monster_no]
+            if new_series_id == 42:
+                continue  # Skip premium
+            if series_id != new_series_id:
+                if series_id is None:
+                    series_id = new_series_id
+                else:
+                    series_id = None
+                    break
+        if series_id is not None:
+            group_id_to_series_id[group_id] = series_id
+
+    for csc in combined_cards:
+        series_id = monster_no_to_series_id[csc.monster_no]
+        if series_id != 42:
+            continue
+        group_id = csc.jp_card.card.group_id
+        if group_id in group_id_to_series_id:
+            new_series_id = group_id_to_series_id[group_id]
+            logger.warn('Detected new group ID for %s, %s', repr(csc.na_card.card), new_series_id)
+            db_wrapper.insert_item(monster.update_series_by_monster_no_sql(
+                csc.monster_no, new_series_id))
+
     # Evo mats
     next_evo_mat_id = db_wrapper.get_single_value(
         'SELECT 1 + COALESCE(MAX(CAST(tem_seq AS SIGNED)), 15000) FROM evo_material_list', op=int)
