@@ -281,24 +281,37 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
     # Try to populate series if missing.
 
     # First stage.
-    # 1) Create evo trees for monsters.
-    # 2) For monsters with tsr_seq = 42, find the lowest monster_no in the tree.
+    # 1) Pull the list of monster_no -> series_id from the DB.
+    # 2) For monsters with tsr_seq = 42, find the series of it's ancestor
     # 3) If that monster has a series != 42, apply it and save.
+    monster_no_to_series_id = db_wrapper.load_to_key_value(
+        'monster_no', 'tsr_seq', 'monster_info_list')  # type Map<int, int>
 
-    # Not implemented yet.
+    for csc in combined_cards:
+        if monster_no_to_series_id[csc.monster_no] != 42:
+            continue
+        ancestor_id = csc.jp_card.card.ancestor_id
+        if ancestor_id == 0:
+            continue
+        ancestor_monster_no = monster_id_mapping.jp_id_to_monster_no(ancestor_id)
+        ancestor_series = monster_no_to_series_id[ancestor_monster_no]
+        if ancestor_series != 42:
+            logger.warn('Detected new group ID for %s, %s', repr(csc.na_card.card), ancestor_series)
+            db_wrapper.insert_item(monster.update_series_by_monster_no_sql(
+                csc.monster_no, ancestor_series))
 
     # Second stage.
-    # 1) Pull the list of monster_no -> series_id from the DB.
+    # 1) Pull the list of monster_no -> series_id from the DB (again, may have been updated in step 1)
     # 2) Compile a list of group_id -> series_id (excluding premium, tsr_seq=42).
     # 3) Discard any group_id with more than one series_id.
     # 4) Iterate over every monster with series_id = 42. If the group_id has a series_id mapped,
     #    assign it and save.
+    monster_no_to_series_id = db_wrapper.load_to_key_value(
+        'monster_no', 'tsr_seq', 'monster_info_list')  # type Map<int, int>
+
     group_id_to_cards = defaultdict(list)  # type DefaultDict<GroupId, List[CrossServerCard]>
     for csc in combined_cards:
         group_id_to_cards[csc.jp_card.card.group_id].append(csc)
-
-    monster_no_to_series_id = db_wrapper.load_to_key_value(
-        'monster_no', 'tsr_seq', 'monster_info_list')  # type Map<int, int>
 
     group_id_to_series_id = {}  # type Map<int, int
     for group_id, card_list in group_id_to_cards.items():
