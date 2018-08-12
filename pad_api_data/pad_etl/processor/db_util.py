@@ -1,4 +1,5 @@
-from datetime import datetime
+from datetime import datetime, date
+import decimal
 import logging
 
 import pymysql
@@ -15,13 +16,36 @@ def object_to_sql_params(obj):
         if v is None:
             new_d[k] = 'NULL'
         elif type(v) == str:
-            clean_v = v.replace("'", r"\'")
+            clean_v = v.replace("'", r"''")
             new_d[k] = "'{}'".format(clean_v)
-        elif type(v) in (int, float):
+        elif type(v) in (int, float, decimal.Decimal):
             new_d[k] = '{}'.format(v)
-        elif type(v) == datetime:
+        elif type(v) in [datetime, date]:
             new_d[k] = "'{}'".format(v.isoformat())
     return new_d
+
+
+def _col_compare(col):
+    return col + ' = ' + _col_value_ref(col)
+
+
+def _col_value_ref(col):
+    return '{' + col + '}'
+
+
+def _col_name_ref(col):
+    return '`' + col + '`'
+
+
+def _tbl_name_ref(table_name):
+    return '`' + table_name + '`'
+
+
+def generate_insert_sql(table_name, cols, item):
+    sql = 'INSERT INTO {}'.format(_tbl_name_ref(table_name))
+    sql += ' (' + ', '.join(map(_col_name_ref, cols)) + ')'
+    sql += ' VALUES (' + ', '.join(map(_col_value_ref, cols)) + ')'
+    return sql.format(**object_to_sql_params(item))
 
 
 class DbWrapper(object):
@@ -113,5 +137,5 @@ class DbWrapper(object):
             self.execute(cursor, sql)
             data = list(cursor.fetchall())
             num_rows = len(data)
-            if len(data) > 0:
+            if num_rows > 0:
                 raise ValueError('got too many results for insert:', num_rows, sql)

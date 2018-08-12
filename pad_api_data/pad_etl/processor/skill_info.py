@@ -521,7 +521,14 @@ def attribute_attack_boost_convert(arguments):
         _, c = convert_with_defaults('attribute_attack_boost',
                                      arguments,
                                      attribute_attack_boost_backups)(x)
-        c['skill_text'] += fmt_duration(c['duration']) + fmt_stats_type_attr_bonus(c)
+        skill_text = ''
+        if 5 in c['for_attr']:
+            c['for_attr'].remove(5)
+            skill_text += fmt_duration(c['duration']) + fmt_mult(c['atk_multiplier']) + 'x RCV'
+        if skill_text:
+            skill_text += '; '
+        skill_text += fmt_duration(c['duration']) + fmt_stats_type_attr_bonus(c)
+        c['skill_text'] += skill_text
         return 'attribute_attack_boost', c
     return f
 
@@ -935,7 +942,7 @@ def row_change_convert(arguments):
         ROW_INDEX = {
             0: 'top row',
             1: '2nd row from top',
-            2: 'middle row',
+            2: '3rd row from bottom',
             3: '2nd row from bottom',
             -2: 'bottom row',
         }
@@ -1095,7 +1102,7 @@ def suicide_random_nuke_convert(arguments):
         if c['hp_remaining'] == 0:
             c['skill_text'] += 'Reduce HP to 1; '
         else:
-            c['skill_text'] += 'Reduce HP by ' + fmt_mult(c['hp_remaining'] * 100) + '%; '
+            c['skill_text'] += 'Reduce HP by ' + fmt_mult((1 - c['hp_remaining']) * 100) + '%; '
         if c['minimum_multiplier'] != c['maximum_multiplier']:
             c['skill_text'] += 'Randomized ' + ATTRIBUTES[c['attribute']] + ' damage to ' + fmt_mass_atk(
                 c['mass_attack']) + '(' + fmt_mult(c['minimum_multiplier']) + '~' + fmt_mult(c['maximum_multiplier']) + 'x)'
@@ -1830,14 +1837,15 @@ def dual_passive_stat_convert(arguments):
             c['skill_text'] += '; ' + fmt_mult(c1['atk_multiplier'] *
                                                c2['atk_multiplier']) + 'x ATK for allies with both Att.'
 
-        c['parameter'] = fmt_parameter(c1)
-        c2['parameter'] = fmt_parameter(c2)
-
-        for i in range(0, len(c['parameter'])):
-            if c2['parameter'][i] > c['parameter'][i]:
-                c['parameter'][i] = c2['parameter'][i]
-
-        c['parameter'][3] = 0.0
+        hp_mult = c1['hp_multiplier'] * c2['hp_multiplier']
+        atk_mult = c1['atk_multiplier'] * c2['atk_multiplier']
+        rcv_mult = c1['rcv_multiplier'] * c2['rcv_multiplier']
+        
+        c['parameter'] = [max(hp_mult, 1.0),
+                          atk_mult,
+                          max(rcv_mult, 1.0),
+                          0.0]
+        
         return 'dual_passive_stat', c
     return f
 
@@ -2167,7 +2175,7 @@ SKILL_TRANSFORM = {
     180: enhance_skyfall_convert({'duration': (0, cc), 'percentage_increase': (1, multi)}),
     184: no_skyfall_convert({'duration': (0, cc)}),
     188: multi_hit_laser_convert({'damage': (0, cc), 'mass_attack': False}),
-    189: convert('unlock_board_path', {}),  # May be using incomplete data eg. Toragon SID: 10136
+    189: convert('unlock_board_path', { 'skill_text': 'Unlock all orbs; Change all orbs to Fire, Water, Wood, and Light orbs; Show path to 3 combos'}),  # May be using incomplete data eg. Toragon SID: 10136
     11: passive_stats_convert({'for_attr': (0, listify), 'atk_multiplier': (1, multi)}),
     12: after_attack_convert({'multiplier': (0, multi)}),
     13: heal_on_convert({'multiplier': (0, multi)}),
@@ -2259,7 +2267,7 @@ SKILL_TRANSFORM = {
     165: attribute_match_convert({'attributes': (0, binary_con), 'minimum_attributes': (1, cc), 'minimum_atk_multiplier': (2, multi), 'minimum_rcv_multiplier': (3, multi), 'bonus_atk_multiplier': (4, multi), 'bonus_rcv_multiplier': (5, multi),
                                   'maximum_attributes': (slice(1, 7, 6), lambda x: x[0] + x[1])}),
     166: combo_match_convert({'for_attr': all_attr, 'minimum_combos': (0, cc), 'minimum_atk_multiplier': (1, multi), 'minimum_rcv_multiplier': (2, multi), 'bonus_atk_multiplier': (3, multi), 'bonus_rcv_multiplier': (4, multi), 'maximum_combos': (5, cc)}),
-    167: mass_match_convert({'attributes': (0, binary_con), 'minimum_count': (1, cc), 'minimum_atk_multiplier': (2, multi), 'minimum_rcv_multiplier': (3, multi), 'bonus_atk_multiplier': (4, multi), 'bonus_atk_multiplier': (5, multi), 'maximum_count': (6, cc)}),
+    167: mass_match_convert({'attributes': (0, binary_con), 'minimum_count': (1, cc), 'minimum_atk_multiplier': (2, multi), 'minimum_rcv_multiplier': (3, multi), 'bonus_atk_multiplier': (4, multi), 'bonus_rcv_multiplier': (5, multi), 'maximum_count': (6, cc)}),
     169: combo_match_convert({'for_attr': all_attr, 'minimum_combos': (0, cc), 'minimum_atk_multiplier': (1, multi), 'minimum_damage_reduction': (2, multi)}),
     170: attribute_match_convert({'attributes': (0, binary_con), 'minimum_attributes': (1, cc), 'minimum_atk_multiplier': (2, multi), 'minimum_damage_reduction': (3, multi)}),
     171: multi_attribute_match_convert({'attributes': (slice(0, 4), list_binary_con), 'minimum_match': (4, cc), 'minimum_atk_multiplier': (5, multi), 'minimum_damage_reduction': (6, multi)}),
@@ -2344,7 +2352,6 @@ def reformat_json_info(skill_data):
     leader_skills.update(active_skills)
     return results
 
-
 def reformat_json(skill_data):
     reformatted = {}
     reformatted['res'] = skill_data['res']
@@ -2396,8 +2403,10 @@ def reformat_json(skill_data):
                     del reformatted['active_skills'][i]
                 if reformatted['active_skills'][i]['type'] == 'combine_active_skills':
                     for j in range(0, len(reformatted['active_skills'][i]['args']['skill_ids'])):
-                        MULTI_PART_AS[str(reformatted['active_skills'][i]['args']
-                                          ['skill_ids'][j])] = reformatted['active_skills'][i]['id']
+                        part_id = str(reformatted['active_skills'][i]['args']['skill_ids'][j])
+                        if not part_id in MULTI_PART_AS.keys():
+                            MULTI_PART_AS[part_id] = []
+                        MULTI_PART_AS[part_id].append(reformatted['active_skills'][i]['id'])
             else:
                 print('Unexpected active skill type: {c2} (skill id: {i})'.format(c2=c[2], i=i))
                 del reformatted['active_skills'][i]
@@ -2433,68 +2442,75 @@ def reformat_json(skill_data):
             elif MULTI_PART_AS.get(str(j)):
                 AS = reformatted['active_skills']
                 LS = reformatted['leader_skills']
-                AS_comb_skill_text = reformatted['active_skills'][MULTI_PART_AS[str(
-                    j)]]['args']['skill_text']
-                if AS.get(j):
 
-                    AS_curr_arg = AS[j]['args']
-                    AS_comb_skill_ids = AS[MULTI_PART_AS[str(j)]]['args']['skill_ids']
+                for repeated_skill in range(0,len(MULTI_PART_AS[str(j)])):
+                    
+                    AS_comb_skill_text = reformatted['active_skills'][MULTI_PART_AS[str(j)][repeated_skill]]['args']['skill_text']
+                    if AS.get(j):
 
-                    if AS_curr_arg.get('skill_text'):
+                        AS_curr_arg = AS[j]['args']
+                        AS_comb_skill_ids = AS[MULTI_PART_AS[str(j)][repeated_skill]]['args']['skill_ids']
 
-                        AS_curr_type = AS[j]['type']
-                        AS_curr_skill_text = AS[j]['args']['skill_text']
+                        if AS_curr_arg.get('skill_text'):
 
-                        if AS_comb_skill_text == '':
-                            AS_comb_skill_text += AS_curr_skill_text
+                            AS_curr_type = AS[j]['type']
+                            AS_curr_skill_text = AS[j]['args']['skill_text']
 
-                            if AS_curr_type == 'multi_hit_laser':  # Adding extra text for multi_hit_laser
-                                repeat = 0
-                                for k in range(0, len(AS_comb_skill_ids)):
-                                    if AS_comb_skill_ids[k] == j:
-                                        repeat += 1
-                                AS_comb_skill_text += ' ' + str(repeat) + ' times'
-                        else:
-                            AS_comb_skill_text += '; ' + AS_curr_skill_text
+                            if AS_comb_skill_text == '':
+                                AS_comb_skill_text += AS_curr_skill_text
 
-                            if AS_curr_type == 'multi_hit_laser':  # Adding extra text for multi_hit_laser
-                                repeat = 0
-                                for k in range(0, len(AS_comb_skill_ids)):
-                                    if AS_comb_skill_ids[k] == j:
-                                        repeat += 1
-                                AS_comb_skill_text += ' ' + str(repeat) + ' times'
-                elif LS.get(j):
+                                if AS_curr_type == 'multi_hit_laser':  # Adding extra text for multi_hit_laser
+                                    repeat = 0
+                                    for k in range(0, len(AS_comb_skill_ids)):
+                                        if AS_comb_skill_ids[k] == j:
+                                            repeat += 1
+                                    AS_comb_skill_text += ' ' + str(repeat) + ' times'
+                                    MULTI_PART_AS[str(j)] = [MULTI_PART_AS[str(j)][0]]
+                            else:
+                                AS_comb_skill_text += '; ' + AS_curr_skill_text
 
-                    LS_curr_arg = LS[j]['args']
-                    AS_comb_skill_ids = AS[MULTI_PART_AS[str(j)]]['args']['skill_ids']
+                                if AS_curr_type == 'multi_hit_laser':  # Adding extra text for multi_hit_laser
+                                    repeat = 0
+                                    for k in range(0, len(AS_comb_skill_ids)):
+                                        if AS_comb_skill_ids[k] == j:
+                                            repeat += 1
+                                    AS_comb_skill_text += ' ' + str(repeat) + ' times'
+                                    MULTI_PART_AS[str(j)] = [MULTI_PART_AS[str(j)][0]]
+                    elif LS.get(j):
 
-                    if LS_curr_arg.get('skill_text'):
+                        LS_curr_arg = LS[j]['args']
+                        AS_comb_skill_ids = AS[MULTI_PART_AS[str(j)][repeated_skill]]['args']['skill_ids']
 
-                        LS_curr_type = LS[j]['type']
-                        LS_curr_skill_text = LS[j]['args']['skill_text']
+                        if LS_curr_arg.get('skill_text'):
 
-                        if AS_comb_skill_text == '':
+                            LS_curr_type = LS[j]['type']
+                            LS_curr_skill_text = LS[j]['args']['skill_text']
 
-                            AS_comb_skill_text += LS_curr_skill_text
+                            if AS_comb_skill_text == '':
 
-                            if LS_curr_type == 'multi_hit_laser':  # Adding extra text for multi_hit_laser
-                                repeat = 0
-                                for k in range(0, len(AS_comb_skill_ids)):
-                                    if AS_comb_skill_ids[k] == j:
-                                        repeat += 1
-                                AS_comb_skill_text += ' ' + str(repeat) + ' times'
-                        else:
+                                AS_comb_skill_text += LS_curr_skill_text
 
-                            AS_comb_skill_text += '; ' + LS_curr_skill_text
+                                if LS_curr_type == 'multi_hit_laser':  # Adding extra text for multi_hit_laser
+                                    repeat = 0
+                                    for k in range(0, len(AS_comb_skill_ids)):
+                                        if AS_comb_skill_ids[k] == j:
+                                            repeat += 1
+                                    AS_comb_skill_text += ' ' + str(repeat) + ' times'
+                                    MULTI_PART_AS[str(j)] = [MULTI_PART_AS[str(j)][0]]
+                            else:
 
-                            if LS_curr_type == 'multi_hit_laser':  # Adding extra text for multi_hit_laser
-                                repeat = 0
-                                for k in range(0, len(AS_comb_skill_ids)):
-                                    if AS_comb_skill_ids[k] == j:
-                                        repeat += 1
-                                AS_comb_skill_text += ' ' + str(repeat) + ' times'
-                reformatted['active_skills'][MULTI_PART_AS[str(
-                    j)]]['args']['skill_text'] = AS_comb_skill_text
+                                AS_comb_skill_text += '; ' + LS_curr_skill_text
+
+                                if LS_curr_type == 'multi_hit_laser':  # Adding extra text for multi_hit_laser
+                                    repeat = 0
+                                    for k in range(0, len(AS_comb_skill_ids)):
+                                        if AS_comb_skill_ids[k] == j:
+                                            repeat += 1
+                                    AS_comb_skill_text += ' ' + str(repeat) + ' times'
+                                    MULTI_PART_AS[str(j)] = [MULTI_PART_AS[str(j)][0]]
+                    reformatted['active_skills'][MULTI_PART_AS[str(j)][repeated_skill]]['args']['skill_text'] = AS_comb_skill_text
+                    if 'times' in reformatted['active_skills'][MULTI_PART_AS[str(j)][repeated_skill]]['args']['skill_text']:
+                        break
 
     # Do final trimming on parameter values now that all the math has completed
     for skill in reformatted['leader_skills'].values():

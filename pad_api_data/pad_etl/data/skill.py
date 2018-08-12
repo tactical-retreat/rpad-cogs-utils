@@ -2,14 +2,13 @@
 Parses monster skill (leader/active) data.
 """
 
-
 import json
 import os
 from typing import List, Any
 
 from ..common import pad_util
 from ..common.shared_types import SkillId
-
+from ..common.skill_type_maps import SKILL_TYPE
 
 # The typical JSON file name for this data.
 FILE_NAME = 'download_skill_data.json'
@@ -28,10 +27,14 @@ class MonsterSkill(pad_util.JsonDictEncodable):
         self.description = str(raw[1])
 
         # Skill description text (no formatting).
-        self.clean_description = pad_util.strip_colors(self.description).replace('\n', ' ')
+        self.clean_description = pad_util.strip_colors(
+            self.description).replace('\n', ' ').replace('^p', '')
 
         # Encodes the type of skill (requires parsing other_fields).
         self.skill_type = int(raw[2])
+
+        # New field. Describes the idea that a skill falls into
+        self.skill_class = SKILL_TYPE[self.skill_type]
 
         # If an active skill, number of levels to max.
         levels = int(raw[3])
@@ -49,6 +52,27 @@ class MonsterSkill(pad_util.JsonDictEncodable):
         # Fields used in coordination with skill_type.
         self.other_fields = raw[6:]
 
+        # NEW FIELDS. The skills that a skill links to if it has multiple
+        # clauses/conditions for activation
+        self.skill_part_1_id = None
+        self.skill_part_2_id = None
+        self.skill_part_3_id = None
+
+        if self.skill_type == 116 or self.skill_type == 138:
+            self.skill_part_1_id = self.other_fields[0]
+            self.skill_part_2_id = self.other_fields[1]
+            if len(self.other_fields) == 3:
+                self.skill_part_3_id = self.other_fields[2]
+
+        multipliers = pad_util.parse_skill_multiplier(
+            int(raw[2]), self.other_fields, len(self.other_fields))
+        self.hp_mult = multipliers.hp
+        self.atk_mult = multipliers.atk
+        self.rcv_mult = multipliers.rcv
+
+        # This gives you the shield as a percent rather than a fraction
+        self.shield = multipliers.shield * 100
+
     def __str__(self):
         return str(self.__dict__)
 
@@ -56,7 +80,7 @@ class MonsterSkill(pad_util.JsonDictEncodable):
         return 'Skill(%s, %r)' % (self.skill_id, self.name)
 
 
-def load_skill_data(data_dir=None, skill_json_file: str=None) -> List[MonsterSkill]:
+def load_skill_data(data_dir=None, skill_json_file: str = None) -> List[MonsterSkill]:
     """Load MonsterSkill objects from the PAD json file."""
     if skill_json_file is None:
         skill_json_file = os.path.join(data_dir, FILE_NAME)
@@ -70,7 +94,7 @@ def load_skill_data(data_dir=None, skill_json_file: str=None) -> List[MonsterSki
     return [MonsterSkill(i, ms) for i, ms in enumerate(skill_json['skill'])]
 
 
-def load_raw_skill_data(data_dir=None, skill_json_file: str=None) -> object:
+def load_raw_skill_data(data_dir=None, skill_json_file: str = None) -> object:
     """Load raw PAD json file."""
     # Temporary hack
     if skill_json_file is None:

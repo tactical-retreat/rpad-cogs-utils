@@ -1,8 +1,7 @@
 import argparse
-from datetime import datetime
-from decimal import Decimal
 import json
 import os
+from padguide.extract_utils import dump_table, fix_table_name
 
 import pymysql
 
@@ -21,21 +20,6 @@ helpGroup.add_argument("-h", "--help", action="help", help="Displays this help m
 
 args = parser.parse_args()
 
-# Tables that use 1/0 instead of Y/N?
-ALT_YN_TABLES = [
-    'dungeon_list',
-]
-
-# Tables that use full datetimes
-ALT_DATETIME_TABLES = [
-    'egg_title_list',
-    'monster_list',
-]
-
-# Hour/Minute fields that shouldn't be zformat(2)
-ALT_HR_MIN_COLS = [
-    'SERVER_OPEN_HOUR',
-]
 
 # Tables that don't exist, just dump them empty
 EMPTY_FILES = [
@@ -50,73 +34,6 @@ with open(args.db_config) as f:
 
 output_dir = args.output_dir
 
-
-def fix_table_name(table_name):
-    parts = table_name.split('_')
-    return ''.join([parts[0]] + [p.capitalize() for p in parts[1:]])
-
-
-def copy_override(row_data, override_suffix):
-    override_columns = list(filter(lambda x: x.endswith(override_suffix), row_data.keys()))
-    for oc in override_columns:
-        value = row_data[oc]
-        del row_data[oc]
-        if not value:
-            continue
-        base_name = oc[:-len(override_suffix)]
-        if base_name not in row_data:
-            print('error: base column missing:', base_name)
-        else:
-            row_data[base_name] = value
-
-
-def dump_table(table_name, output_dir, cursor):
-    print('processing', table_name)
-    reformatted_tn = fix_table_name(table_name)
-    output_file = os.path.join(output_dir, '{}.json'.format(reformatted_tn))
-
-    result_json = {'items': []}
-    for row in cursor:
-        row_data = {}
-        for col in row:
-            fixed_col = col.upper()
-            if fixed_col.startswith('_'):
-                fixed_col = fixed_col[1:]
-            data = row[col]
-            if data is None:
-                fixed_data = ''
-            elif '_YN' in fixed_col:
-                if table_name in ALT_YN_TABLES:
-                    fixed_data = '1' if data else '0'
-                else:
-                    fixed_data = 'Y' if data else 'N'
-            elif type(data) is Decimal:
-                first = '{}'.format(float(data))
-                second = '{:.1f}'.format(float(data))
-                fixed_data = max((first, second), key=len)
-            elif type(data) is datetime:
-                if table_name in ALT_DATETIME_TABLES:
-                    fixed_data = data.isoformat(' ')
-                else:
-                    fixed_data = data.date().isoformat()
-            elif 'HOUR' in fixed_col or 'MINUTE' in fixed_col:
-                if fixed_col in ALT_HR_MIN_COLS:
-                    fixed_data = str(data)
-                else:
-                    fixed_data = str(data).zfill(2)
-            else:
-                fixed_data = str(data)
-
-            row_data[fixed_col] = fixed_data
-
-        copy_override(row_data, '_CALCULATED')
-        copy_override(row_data, '_OVERRIDE')
-        result_json['items'].append(row_data)
-
-    with open(output_file, 'w') as f:
-        json.dump(result_json, f, sort_keys=True, indent=4)
-
-
 # Connect to the database
 connection = pymysql.connect(host=db_config['host'],
                              user=db_config['user'],
@@ -125,6 +42,15 @@ connection = pymysql.connect(host=db_config['host'],
                              charset=db_config['charset'],
                              cursorclass=pymysql.cursors.DictCursor)
 
+
+def write_table_data(result_json, table_name, output_dir):
+    reformatted_tn = fix_table_name(table_name)
+    output_file = os.path.join(output_dir, '{}.json'.format(reformatted_tn))
+
+    with open(output_file, 'w') as f:
+        json.dump(result_json, f, sort_keys=True, indent=4)
+
+
 with connection.cursor() as cursor:
     sql = "SELECT table_name FROM information_schema.tables where table_schema='padguide'"
     cursor.execute(sql)
@@ -132,11 +58,14 @@ with connection.cursor() as cursor:
 
     for table in tables:
         table_name = table['table_name']
+        print('processing', table_name)
         sql = 'select * from {}'.format(table_name)
         cursor.execute(sql)
-        dump_table(table_name, output_dir, cursor)
+        result_json = dump_table(table_name, cursor)
+        write_table_data(result_json, table_name, output_dir)
 
     for table_name in EMPTY_FILES:
-        dump_table(table_name, output_dir, [])
+        result_json = dump_table(table_name, [])
+        write_table_data(result_json, table_name, output_dir)
 
 connection.close()
