@@ -65,6 +65,7 @@ def load_from_db(db_config, db_table, data_arg, map_key=None, map_value=None):
     if data_arg:
         tstamp = extract_tstamp(data_arg)
         sql += ' WHERE tstamp >= {}'.format(tstamp)
+        sql += ' ORDER BY tstamp ASC'
 
     with connection.cursor() as cursor:
         cursor.execute(sql)
