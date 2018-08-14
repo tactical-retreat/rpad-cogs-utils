@@ -10,7 +10,7 @@ from .merged_data import MergedBonus
 
 
 # TZ used for PAD NA
-NA_TZ_OBJ = pytz.timezone('US/Pacific')
+NA_TZ_OBJ = pytz.timezone('America/Los_Angeles')
 
 # TZ used for PAD JP
 JP_TZ_OBJ = pytz.timezone('Asia/Tokyo')
@@ -33,11 +33,12 @@ class ScheduleItem(object):
         self.open_timestamp = merged_bonus.start_timestamp
         self.close_timestamp = merged_bonus.end_timestamp
 
-        close_datetime_local = datetime.utcfromtimestamp(
-            self.close_timestamp).replace(tzinfo=(NA_TZ_OBJ if self.server == 'US' else JP_TZ_OBJ))
-        open_datetime_local_utc = datetime.utcfromtimestamp(self.open_timestamp)
-        open_datetime_local = open_datetime_local_utc.replace(
-            tzinfo=(NA_TZ_OBJ if self.server == 'us' else JP_TZ_OBJ))
+        open_datetime_utc = datetime.fromtimestamp(self.open_timestamp, pytz.UTC)
+        close_datetime_utc = datetime.fromtimestamp(self.close_timestamp, pytz.UTC)
+
+        server_tz = NA_TZ_OBJ if self.server == 'US' else JP_TZ_OBJ
+        open_datetime_local = open_datetime_utc.replace(tzinfo=server_tz)
+        close_datetime_local = close_datetime_utc.replace(tzinfo=server_tz)
 
         # Per padguide peculiarity, close time is inclusive, -1m from actual close
         close_datetime_local -= timedelta(minutes=1)
@@ -63,8 +64,8 @@ class ScheduleItem(object):
         self.schedule_seq = None
 
         # ? Unused ?
-        self.server_open_date = open_datetime_local_utc.replace(hour=0, minute=0, second=0)
-        self.server_open_hour = open_datetime_local_utc.strftime('%H')
+        self.server_open_date = open_datetime_utc.replace(hour=0, minute=0, second=0)
+        self.server_open_hour = open_datetime_utc.strftime('%H')
 
         self.group = merged_bonus.group
         self.team_data = None if self.group is None else ord(self.group) - ord('a')
