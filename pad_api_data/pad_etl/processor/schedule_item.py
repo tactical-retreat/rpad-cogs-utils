@@ -36,17 +36,13 @@ class ScheduleItem(object):
         open_datetime_utc = datetime.fromtimestamp(self.open_timestamp, pytz.UTC)
         close_datetime_utc = datetime.fromtimestamp(self.close_timestamp, pytz.UTC)
 
-        server_tz = NA_TZ_OBJ if self.server == 'US' else JP_TZ_OBJ
-        open_datetime_local = open_datetime_utc.replace(tzinfo=server_tz)
-        close_datetime_local = close_datetime_utc.replace(tzinfo=server_tz)
-
         # Per padguide peculiarity, close time is inclusive, -1m from actual close
-        close_datetime_local -= timedelta(minutes=1)
+        close_datetime_utc -= timedelta(minutes=1)
 
-        self.close_date = close_datetime_local.date()
-        self.close_hour = close_datetime_local.strftime('%H')
-        self.close_minute = close_datetime_local.strftime('%M')
-        self.close_weekday = close_datetime_local.strftime('%w')
+        self.close_date = close_datetime_utc.date()
+        self.close_hour = close_datetime_utc.strftime('%H')
+        self.close_minute = close_datetime_utc.strftime('%M')
+        self.close_weekday = close_datetime_utc.strftime('%w')
 
         self.dungeon_seq = str(dungeon_id)
         self.event_seq = '0' if event_id is None else str(event_id)
@@ -55,17 +51,20 @@ class ScheduleItem(object):
         self.event_enum = EventType.Guerrilla if merged_bonus.group else EventType.Etc
         self.event_type = str(self.event_enum.value)
 
-        self.open_date = open_datetime_local.date()
-        self.open_hour = open_datetime_local.strftime('%H')
-        self.open_minute = open_datetime_local.strftime('%M')
-        self.open_weekday = open_datetime_local.strftime('%w')
+        self.open_date = open_datetime_utc.date()
+        self.open_hour = open_datetime_utc.strftime('%H')
+        self.open_minute = open_datetime_utc.strftime('%M')
+        self.open_weekday = open_datetime_utc.strftime('%w')
 
         # Set during insert generation
         self.schedule_seq = None
 
-        # ? Unused ?
-        self.server_open_date = open_datetime_utc.replace(hour=0, minute=0, second=0)
-        self.server_open_hour = open_datetime_utc.strftime('%H')
+        # Used for maintenance or something
+        server_tz = NA_TZ_OBJ if self.server == 'US' else JP_TZ_OBJ
+        open_datetime_local = open_datetime_utc.replace(tzinfo=server_tz)
+
+        self.server_open_date = open_datetime_local.replace(hour=0, minute=0, second=0).date()
+        self.server_open_hour = open_datetime_local.strftime('%H')
 
         self.group = merged_bonus.group
         self.team_data = None if self.group is None else ord(self.group) - ord('a')
