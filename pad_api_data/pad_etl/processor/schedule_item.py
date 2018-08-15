@@ -69,7 +69,11 @@ class ScheduleItem(object):
         self.group = merged_bonus.group
         self.team_data = None if self.group is None else ord(self.group) - ord('a')
 
-        self.tstamp = int(time.time()) * 1000
+        # Push the tstamp forward one day into the future to try and account for the fact that
+        # historically PadGuide didn't publish scheduled items this early. This is a hack to
+        # fix guerrillas getting purged by the app.
+        one_day_in_seconds = 1 * 24 * 60 * 60
+        self.tstamp = int(time.time() + one_day_in_seconds) * 1000
 
         self.url = None
 
