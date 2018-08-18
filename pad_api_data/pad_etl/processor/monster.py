@@ -407,7 +407,7 @@ class EvolutionMaterialItem(SqlItem):
 
 class MonsterAddInfoItem(SqlItem):
     def __init__(self, card: BookCard):
-        self.extra_val1 = int(card.inheritable)
+        self.extra_val1 = 1 if card.inheritable else 2
         self.monster_no = monster_id_mapping.jp_id_to_monster_no(card.card_id)
         self.sub_type = TYPE_MAP[card.type_3_id]
         self.tstamp = int(time.time()) * 1000
