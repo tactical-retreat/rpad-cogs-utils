@@ -7,6 +7,7 @@ from collections import defaultdict
 import json
 import logging
 import os
+import feedparser
 
 from pad_etl.common import monster_id_mapping
 from pad_etl.data import bonus, card, dungeon, skill
@@ -15,6 +16,7 @@ from pad_etl.processor import skill_info
 from pad_etl.processor.db_util import DbWrapper
 from pad_etl.processor.merged_data import MergedBonus, MergedCard, CrossServerCard
 from pad_etl.processor.schedule_item import ScheduleItem
+from pad_etl.processor.news import NewsItem
 
 
 logging.basicConfig()
@@ -477,6 +479,20 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
                 merged_card, ts_seq_leader, ts_seq_skill))
 
 
+def database_update_news(db_wrapper):
+    RENI_NEWS_JP = 'https://pad.protic.site/news/category/pad-jp/feed'
+    jp_feed = feedparser.parse(RENI_NEWS_JP)
+    next_id = db_wrapper.get_single_value(
+        'SELECT 1 + COALESCE(MAX(CAST(tn_seq AS SIGNED)), 10000) FROM news_list', op=int)
+    for entry in jp_feed.entries:
+        item = NewsItem('JP', entry.title, entry.link)
+        if db_wrapper.check_existing(item.exists_sql()):
+            logger.debug('news already exists, skipping, %s', repr(item))
+        else:
+            logger.warn('inserting item: %s', repr(item))
+            db_wrapper.insert_item(item.insert_sql(next_id))
+            next_id += 1
+
 def database_update_timestamps(db_wrapper):
     get_tables_sql = 'SELECT `internal_table` FROM get_timestamp'
     tables = list(map(lambda x: x['internal_table'], db_wrapper.fetch_data(get_tables_sql)))
@@ -525,6 +541,12 @@ def load_data(args):
 
     logger.info('Starting card diff')
     database_diff_cards(db_wrapper, jp_database, na_database)
+
+    logger.info('Starting news update')
+    try:
+        database_update_news(db_wrapper)
+    except Exception as ex:
+        print('updating news failed', str(ex))
 
     logger.info('Starting tstamp update')
     database_update_timestamps(db_wrapper)
