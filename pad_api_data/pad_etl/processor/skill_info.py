@@ -586,15 +586,12 @@ def lock_convert(arguments):
         for_skill_text = ''
 
         if for_attr != []:
-            if for_attr and not len(for_attr) == 6:
-                if for_skill_text:
-                    for_skill_text += ' and'
-                color_text = 'all' if len(for_attr) == 5 else ', '.join(
-                    [ATTRIBUTES[i] for i in for_attr])
-                for_skill_text += ' ' + color_text
-                c['skill_text'] += 'Lock all' + for_skill_text + ' orbs'
-            else:
-                c['skill_text'] += 'Lock all orbs'
+            if for_skill_text:
+                for_skill_text += ' and'
+            color_text = 'all' if len(for_attr) == 10 else ', '.join(
+                [ATTRIBUTES[i] for i in for_attr])
+            for_skill_text += ' ' + color_text
+            c['skill_text'] += 'Lock all' + for_skill_text + ' orbs'
         return 'lock_orbs', c
     return f
 
