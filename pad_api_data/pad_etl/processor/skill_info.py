@@ -9,7 +9,7 @@ import sys
 
 from defaultlist import defaultlist
 
-#from ..common.padguide_values import AWAKENING_MAP
+from ..common.padguide_values import AWAKENING_MAP
 
 def make_defaultlist(fx, initial=[]):
     df = defaultlist(fx)
