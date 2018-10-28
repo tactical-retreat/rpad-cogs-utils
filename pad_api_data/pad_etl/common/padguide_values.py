@@ -92,6 +92,7 @@ AWAKENING_MAP = {
     61: 'Super Enhanced Combo',
     62: 'Combo Orb',
     63: 'Skill Voice',
+    64: 'Dungeon Bonus',
 }
 
 

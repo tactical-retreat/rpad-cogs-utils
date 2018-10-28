@@ -640,6 +640,8 @@ def enhance_skyfall_convert(arguments):
 
 auto_heal_backups = {'duration': 0,
                      'percentage_max_hp': 0,
+                     'unbind': 0,
+                     'awoken_unbind': 0,
                      'skill_text': ''}
 
 
@@ -648,8 +650,20 @@ def auto_heal_convert(arguments):
         _, c = convert_with_defaults('auto_heal',
                                      arguments,
                                      auto_heal_backups)(x)
-        c['skill_text'] += fmt_duration(c['duration']) + 'recover ' + \
-            fmt_mult(c['percentage_max_hp'] * 100) + '% of max HP'
+        skill_text = ''
+        unbind = c['unbind']
+        awoken_unbind = c['awoken_unbind']
+        if c['duration']:
+            skill_text += fmt_duration(c['duration']) + 'recover ' + \
+                fmt_mult(c['percentage_max_hp'] * 100) + '% of max HP'
+        if (unbind or awoken_unbind):
+            if skill_text:
+                skill_text += '; '
+            skill_text += ('Reduce binds and awoken skill binds by {} turns'.format(unbind) if (unbind and awoken_unbind) else
+                           ('Reduce binds by {} turns'.format(unbind) if unbind else
+                            ('Reduce awoken skill binds by {} turns'.format(awoken_unbind))))
+        c['skill_text'] += skill_text
+        
         return 'auto_heal', c
     return f
 
@@ -2164,7 +2178,7 @@ SKILL_TRANSFORM = {
     161: true_gravity_convert({'percentage_max_hp': (0, multi)}),
     172: convert('unlock', {'skill_text': 'Unlock all orbs'}),
     173: absorb_mechanic_void_convert({'duration': (0, cc), 'attribute_absorb': (1, bool), 'damage_absorb': (3, bool)}),
-    179: auto_heal_convert({'duration': (0, cc), 'percentage_max_hp': (2, multi)}),
+    179: auto_heal_convert({'duration': (0, cc), 'percentage_max_hp': (2, multi), 'unbind': (3,cc), 'awoken_unbind': (4,cc)}),
     180: enhance_skyfall_convert({'duration': (0, cc), 'percentage_increase': (1, multi)}),
     184: no_skyfall_convert({'duration': (0, cc)}),
     188: multi_hit_laser_convert({'damage': (0, cc), 'mass_attack': False}),
