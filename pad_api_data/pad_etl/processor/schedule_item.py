@@ -2,10 +2,18 @@ from datetime import datetime, timedelta
 import time
 
 from enum import Enum
+import pytz
 
 from . import db_util
 from . import processor_util
 from .merged_data import MergedBonus
+
+
+# TZ used for PAD NA
+NA_TZ_OBJ = pytz.timezone('America/Los_Angeles')
+
+# TZ used for PAD JP
+JP_TZ_OBJ = pytz.timezone('Asia/Tokyo')
 
 
 class EventType(Enum):
@@ -19,19 +27,22 @@ class EventType(Enum):
 
 class ScheduleItem(object):
     def __init__(self, merged_bonus: MergedBonus, event_id: int, dungeon_id: int):
+        self.server = processor_util.normalize_pgserver(merged_bonus.server)
 
         # New parameters
         self.open_timestamp = merged_bonus.start_timestamp
         self.close_timestamp = merged_bonus.end_timestamp
 
-        # TODO: Fill in garbage date values for padguide app
-        # TODO: Filled in close_date/open_date due to non-nullable column, but
-        # using the wrong timezone
-        self.close_date = datetime.utcfromtimestamp(
-            self.close_timestamp).replace(hour=0, minute=0, second=0)
-        self.close_hour = 0
-        self.close_minute = 0
-        self.close_weekday = 0
+        open_datetime_utc = datetime.fromtimestamp(self.open_timestamp, pytz.UTC)
+        close_datetime_utc = datetime.fromtimestamp(self.close_timestamp, pytz.UTC)
+
+        # Per padguide peculiarity, close time is inclusive, -1m from actual close
+        close_datetime_utc -= timedelta(minutes=1)
+
+        self.close_date = close_datetime_utc.date()
+        self.close_hour = close_datetime_utc.strftime('%H')
+        self.close_minute = close_datetime_utc.strftime('%M')
+        self.close_weekday = close_datetime_utc.strftime('%w')
 
         self.dungeon_seq = str(dungeon_id)
         self.event_seq = '0' if event_id is None else str(event_id)
@@ -40,26 +51,29 @@ class ScheduleItem(object):
         self.event_enum = EventType.Guerrilla if merged_bonus.group else EventType.Etc
         self.event_type = str(self.event_enum.value)
 
-        self.open_date = datetime.utcfromtimestamp(
-            self.open_timestamp).replace(hour=0, minute=0, second=0)
-        self.open_hour = 0
-        self.open_minute = 0
-        self.open_weekday = 0
+        self.open_date = open_datetime_utc.date()
+        self.open_hour = open_datetime_utc.strftime('%H')
+        self.open_minute = open_datetime_utc.strftime('%M')
+        self.open_weekday = open_datetime_utc.strftime('%w')
 
         # Set during insert generation
         self.schedule_seq = None
 
-        self.server = processor_util.normalize_pgserver(merged_bonus.server)
+        # Used for maintenance or something
+        server_tz = NA_TZ_OBJ if self.server == 'US' else JP_TZ_OBJ
+        open_datetime_local = open_datetime_utc.replace(tzinfo=server_tz)
 
-        # ? Unused ?
-        self.server_open_date = datetime.utcfromtimestamp(
-            self.open_timestamp).replace(hour=0, minute=0, second=0)
-        self.server_open_hour = 0
+        self.server_open_date = open_datetime_local.replace(hour=0, minute=0, second=0).date()
+        self.server_open_hour = open_datetime_local.strftime('%H')
 
         self.group = merged_bonus.group
         self.team_data = None if self.group is None else ord(self.group) - ord('a')
 
-        self.tstamp = int(time.time()) * 1000
+        # Push the tstamp forward one day into the future to try and account for the fact that
+        # historically PadGuide didn't publish scheduled items this early. This is a hack to
+        # fix guerrillas getting purged by the app.
+        one_day_in_seconds = 1 * 24 * 60 * 60
+        self.tstamp = int(time.time() + one_day_in_seconds) * 1000
 
         self.url = None
 

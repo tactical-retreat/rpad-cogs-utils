@@ -90,6 +90,8 @@ AWAKENING_MAP = {
     59: 'L-Shape Damage Reduction',
     60: 'L-Shape Attack',
     61: 'Super Enhanced Combo',
+    62: 'Combo Orb',
+    63: 'Skill Voice',
 }
 
 

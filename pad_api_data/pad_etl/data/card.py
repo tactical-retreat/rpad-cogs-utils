@@ -39,37 +39,37 @@ class BookCard(pad_util.JsonDictEncodable):
 
         self.min_hp = int(raw[14])
         self.max_hp = int(raw[15])
-        self.hp_exponent = float(raw[16])
+        self.hp_scale = float(raw[16])
 
         self.min_atk = int(raw[17])
         self.max_atk = int(raw[18])
-        self.atk_exponent = float(raw[19])
+        self.atk_scale = float(raw[19])
 
         self.min_rcv = int(raw[20])
         self.max_rcv = int(raw[21])
-        self.rcv_exponent = float(raw[22])
+        self.rcv_scale = float(raw[22])
 
         self.xp_max = int(raw[23])
-        self.xp_gr = float(raw[24])
+        self.xp_scale = float(raw[24])
 
         self.active_skill_id = SkillId(raw[25])
         self.leader_skill_id = SkillId(raw[26])
-        #This is correct
 
-        # Here and below something is off
-        self.enemy_turns = int(raw[28])
+        self.enemy_turns = int(raw[27])
 
-        self.enemy_hp_1 = int(raw[29])
-        self.enemy_hp_10 = int(raw[30])
-        self.enemy_hp_gr = float(raw[31])
+        self.enemy_hp_1 = int(raw[28])
+        self.enemy_hp_10 = int(raw[29])
+        self.enemy_hp_gr = float(raw[30])
 
-        self.enemy_atk1 = int(raw[32])
-        self.enemy_at_k10 = int(raw[33])
-        self.enemy_atk_gr = float(raw[34])
+        self.enemy_atk1 = int(raw[31])
+        self.enemy_at_k10 = int(raw[32])
+        self.enemy_atk_gr = float(raw[33])
 
-        self.enemy_def_1 = int(raw[35])
-        self.enemy_def_10 = int(raw[36])
-        self.enemy_def_gr = float(raw[37])
+        self.enemy_def_1 = int(raw[34])
+        self.enemy_def_10 = int(raw[35])
+        self.enemy_def_gr = float(raw[36])
+
+        self.unknown_37 = raw[37]
 
         self.enemy_coins_at_lvl_2 = int(raw[38])
         self.enemy_xp_at_lvl_2 = int(raw[39])
@@ -159,7 +159,7 @@ def load_card_data(data_dir: str=None, card_json_file: str=None) -> List[BookCar
     with open(card_json_file) as f:
         card_json = json.load(f)
 
-    if card_json['v'] != 1250:
+    if card_json['v'] not in (1250, 1520):
         raise NotImplementedError('version: {}'.format(card_json['v']))
 
     return [BookCard(r) for r in card_json['card']]

@@ -3,6 +3,7 @@ import time
 
 from . import db_util
 from ..common import monster_id_mapping
+from ..common import shared_types
 from ..common.padguide_values import TYPE_MAP, AWAKENING_MAP, EvoType
 from ..data.card import BookCard
 
@@ -33,10 +34,15 @@ class SqlItem(object):
     def _col_name_ref(self, col):
         return '`' + col + '`'
 
+    # TODO: move to dbutil
     def update_sql(self):
         cols = self._update_columns()
         if not cols:
             return None  # Update not supported
+
+        # If an item is timestamped, modify the timestamp on every update
+        if hasattr(self, 'tstamp'):
+            cols = cols + ['tstamp']
 
         sql = 'UPDATE {}'.format(self._table())
         sql += ' SET ' + ', '.join(map(self._col_compare, cols))
@@ -45,10 +51,7 @@ class SqlItem(object):
 
     def insert_sql(self):
         cols = self._insert_columns()
-        sql = 'INSERT INTO {}'.format(self._table())
-        sql += ' (' + ', '.join(map(self._col_name_ref, cols)) + ')'
-        sql += ' VALUES (' + ', '.join(map(self._col_value_ref, cols)) + ')'
-        return sql.format(**db_util.object_to_sql_params(self))
+        return db_util.generate_insert_sql(self._table(), cols, self)
 
     def _table(self):
         raise NotImplemented('no table name set')
@@ -96,6 +99,12 @@ class MonsterItem(SqlItem):
         self.tm_name_kr = 'unknown_{}'.format(self.monster_no)
         self.tm_name_us = card_na.name
         self.tstamp = int(time.time()) * 1000
+
+        if self.level == 1:
+            self.exp = 0
+        else:
+            self.exp = shared_types.curve_value(
+                0, card_na.xp_max, card_na.xp_scale, self.level, 99)
 
         # Foreign keys
 
@@ -148,10 +157,25 @@ class MonsterItem(SqlItem):
         ]
 
     def _update_columns(self):
-        return ['tm_name_us', 'limit_mult']
+        return ['tm_name_us', 'limit_mult', 'exp']
 
     def __repr__(self):
         return 'MonsterItem({} - {})'.format(self.monster_no, self.tm_name_us)
+
+
+def update_series_by_monster_no_sql(monster_no, series_id):
+    args = {
+        'monster_no': monster_no,
+        'tsr_seq': series_id,
+        'tstamp': int(time.time()) * 1000,
+    }
+    sql = """
+    UPDATE monster_info_list 
+    SET tsr_seq = {tsr_seq},
+        tstamp = {tstamp}
+    WHERE monster_no = {monster_no}
+    """
+    return sql.format(**db_util.object_to_sql_params(args))
 
 
 class MonsterInfoItem(SqlItem):
@@ -383,7 +407,7 @@ class EvolutionMaterialItem(SqlItem):
 
 class MonsterAddInfoItem(SqlItem):
     def __init__(self, card: BookCard):
-        self.extra_val1 = int(card.inheritable)
+        self.extra_val1 = 1 if card.inheritable else 2
         self.monster_no = monster_id_mapping.jp_id_to_monster_no(card.card_id)
         self.sub_type = TYPE_MAP[card.type_3_id]
         self.tstamp = int(time.time()) * 1000
