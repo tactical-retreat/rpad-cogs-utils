@@ -651,23 +651,17 @@ def auto_heal_convert(arguments):
                                      arguments,
                                      auto_heal_backups)(x)
         skill_text = ''
+        unbind = c['unbind']
+        awoken_unbind = c['awoken_unbind']
         if c['duration']:
             skill_text += fmt_duration(c['duration']) + 'recover ' + \
                 fmt_mult(c['percentage_max_hp'] * 100) + '% of max HP'
-        
-        if c['unbind'] and c['awoken_unbind'] and skill_text:
-            skill_text += '; Reduce binds and awoken skill binds by {} turns'.format(c['unbind'])
-        elif c['unbind'] and c['awoken_unbind']:
-            skill_text += 'Reduce binds and awoken skill binds by {} turns'.format(c['unbind'])
-        elif c['unbind'] and skill_text:
-            skill_text += '; Reduce binds by {} turns'.format(c['unbind'])
-        elif c['unbind']:
-            skill_text += 'Reduce binds by {} turns'.format(c['unbind'])
-        elif c['awoken_unbind'] and skill_text:
-            skill_text += '; Reduce awoken skill binds by {} turns'.format(c['awoken_unbind'])
-        elif c['awoken_unbind']:
-            skill_text += 'Reduce awoken skill binds by {} turns'.format(c['awoken_unbind'])
-
+        if (unbind or awoken_unbind):
+            if skill_text:
+                skill_text += '; '
+            skill_text += ('Reduce binds and awoken skill binds by {} turns'.format(unbind) if (unbind and awoken_unbind) else
+                           ('Reduce binds by {} turns'.format(unbind) if unbind else
+                            ('Reduce awoken skill binds by {} turns'.format(awoken_unbind))))
         c['skill_text'] += skill_text
         
         return 'auto_heal', c
