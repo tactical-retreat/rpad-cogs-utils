@@ -159,7 +159,7 @@ def load_card_data(data_dir: str=None, card_json_file: str=None) -> List[BookCar
     with open(card_json_file) as f:
         card_json = json.load(f)
 
-    if card_json['v'] not in (1250, 1520):
+    if card_json['v'] not in (1250, 1520, 1600):
         raise NotImplementedError('version: {}'.format(card_json['v']))
 
     return [BookCard(r) for r in card_json['card']]
