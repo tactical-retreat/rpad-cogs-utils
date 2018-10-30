@@ -97,7 +97,7 @@ def load_dungeon_data(data_dir: str = None, dungeon_file: str = None) -> List[Du
     with open(dungeon_file) as f:
         dungeon_json = json.load(f)
 
-    if dungeon_json['v'] != 4:
+    if dungeon_json['v'] != 6:
         raise NotImplementedError('version: {}'.format(dungeon_json['v']))
 
     dungeon_info = dungeon_json['dungeons']
