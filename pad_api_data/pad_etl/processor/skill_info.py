@@ -11,12 +11,15 @@ from defaultlist import defaultlist
 
 from ..common.padguide_values import AWAKENING_MAP
 
+
 def make_defaultlist(fx, initial=[]):
     df = defaultlist(fx)
     df.extend(initial)
     return df
 
 # this is used to name the skill ids and their arguments
+
+
 def cc(x): return x
 
 
@@ -79,6 +82,7 @@ TYPES = {0: 'Evo Material',
          12: 'Awaken Material',
          14: 'Enhance Material',
          15: 'Redeemable Material'}
+
 
 def convert_with_defaults(type_name, args, defaults):
     new_args = {k: (args[k] if k in args else v) for k, v in defaults.items()}
@@ -663,7 +667,7 @@ def auto_heal_convert(arguments):
                            ('Reduce binds by {} turns'.format(unbind) if unbind else
                             ('Reduce awoken skill binds by {} turns'.format(awoken_unbind))))
         c['skill_text'] += skill_text
-        
+
         return 'auto_heal', c
     return f
 
@@ -824,7 +828,8 @@ def haste_convert(arguments):
             else:
                 c['skill_text'] += 'Charge allies\' skill by ' + str(c['turns']) + ' turn'
         else:
-            c['skill_text'] += 'Charge allies\' skill by ' + str(c['turns']) + '~' + str(c['max_turns']) + ' turns'
+            c['skill_text'] += 'Charge allies\' skill by ' + \
+                str(c['turns']) + '~' + str(c['max_turns']) + ' turns'
         return 'haste', c
     return f
 
@@ -841,7 +846,7 @@ def random_orb_change_convert(arguments):
                                      arguments,
                                      random_orb_change_backups)(x)
         c['skill_text'] += 'Change '
-        if c['from'] == [0,1,2,3,4,5,6,7,8,9]:
+        if c['from'] == [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]:
             c['skill_text'] += 'all orbs to '
         elif len(c['from']) > 1:
             for i in c['from'][:-1]:
@@ -1847,12 +1852,12 @@ def dual_passive_stat_convert(arguments):
         hp_mult = c1['hp_multiplier'] * c2['hp_multiplier']
         atk_mult = c1['atk_multiplier'] * c2['atk_multiplier']
         rcv_mult = c1['rcv_multiplier'] * c2['rcv_multiplier']
-        
+
         c['parameter'] = [max(hp_mult, 1.0),
                           atk_mult,
                           max(rcv_mult, 1.0),
                           0.0]
-        
+
         return 'dual_passive_stat', c
     return f
 
@@ -1891,10 +1896,12 @@ def dual_threshold_stats_convert(arguments):
             if c1['atk_multiplier'] == 0:
                 c1['atk_multiplier'] = 1
             if c1['threshold'] == 1:
-                skill_text = fmt_stats_type_attr_bonus(c1, reduce_join_txt=' and ', skip_attr_all=True)
+                skill_text = fmt_stats_type_attr_bonus(
+                    c1, reduce_join_txt=' and ', skip_attr_all=True)
                 skill_text += ' when HP is full' if c1['above'] else ' when HP is not full'
             else:
-                skill_text = fmt_stats_type_attr_bonus(c1, reduce_join_txt=' and ', skip_attr_all=True)
+                skill_text = fmt_stats_type_attr_bonus(
+                    c1, reduce_join_txt=' and ', skip_attr_all=True)
                 skill_text += ' when above ' if c1['above'] else ' when below '
                 skill_text += fmt_mult(c1['threshold'] * 100) + '% HP'
 
@@ -1902,10 +1909,12 @@ def dual_threshold_stats_convert(arguments):
             if skill_text != '':
                 skill_text += '; '
             if c2['threshold'] == 1:
-                skill_text += fmt_stats_type_attr_bonus(c2, reduce_join_txt=' and ', skip_attr_all=True)
+                skill_text += fmt_stats_type_attr_bonus(c2,
+                                                        reduce_join_txt=' and ', skip_attr_all=True)
                 skill_text += ' when HP is full' if c2['above'] else ' when HP is not full'
             else:
-                skill_text += fmt_stats_type_attr_bonus(c2, reduce_join_txt=' and ', skip_attr_all=True)
+                skill_text += fmt_stats_type_attr_bonus(c2,
+                                                        reduce_join_txt=' and ', skip_attr_all=True)
                 skill_text += ' when above ' if c2['above'] else ' when below '
                 skill_text += fmt_mult(c2['threshold'] * 100) + '% HP'
         c['skill_text'] += skill_text
@@ -2080,6 +2089,7 @@ def collab_bonus_convert(arguments):
             71: 'GungHo Collab',
             72: 'GungHo Collab',
             74: 'Power Pro Collab',
+            76: 'Sword Art Online Collab',
             10001: 'Dragonbounds & Dragon Callers',
         }
 
@@ -2135,7 +2145,8 @@ SKILL_TRANSFORM = {
     87: suicide_nuke_convert({'attribute': (0, cc), 'damage': (1, cc), 'hp_remaining': (3, multi), 'mass_attack': True}),
     88: type_attack_boost_convert({'duration': (0, cc), 'types': (1, listify), 'multiplier': (2, multi)}),
     90: lambda x:
-    attribute_attack_boost_convert({'duration': (0, cc), 'for_attr': (slice(1, 3), list_con), 'atk_multiplier': (2, ccf)})(x)
+    attribute_attack_boost_convert({'duration': (0, cc), 'for_attr': (
+        slice(1, 3), list_con), 'atk_multiplier': (2, ccf)})(x)
     if len(make_defaultlist(int, x)) == 3 else
     (attribute_attack_boost_convert({'duration': (0, cc), 'for_attr': (slice(1, 3), list_con), 'atk_multiplier': (3, multi)})(x)
      if len(make_defaultlist(int, x)) == 4 else
@@ -2157,7 +2168,8 @@ SKILL_TRANSFORM = {
     140: enhance_convert({'orbs': (0, binary_con)}),
     141: spawn_orb_convert({'amount': (0, cc), 'orbs': (1, binary_con), 'excluding_orbs': (2, binary_con)}),
     142: attribute_change_convert({'duration': (0, cc), 'attribute': (1, cc)}),
-    143: hp_nuke_convert({'multiplier': (0, multi)}), # May be using incomplete data eg. Mamoru SID: 10573
+    # May be using incomplete data eg. Mamoru SID: 10573
+    143: hp_nuke_convert({'multiplier': (0, multi)}),
     144: attack_attr_x_team_atk_convert({'team_attributes': (0, binary_con), 'multiplier': (1, multi), 'mass_attack': (2, lambda x: x == 0), 'attack_attribute': (3, cc), }),
     145: heal_active_convert({'team_rcv_multiplier_as_hp': (0, multi), 'card_bind': 0, 'rcv_multiplier_as_hp': 0.0, 'hp': 0, 'percentage_max_hp': 0.0, 'awoken_bind': 0}),
     146: haste_convert({'turns': (0, cc), 'max_turns': (1, cc)}),
@@ -2178,11 +2190,12 @@ SKILL_TRANSFORM = {
     161: true_gravity_convert({'percentage_max_hp': (0, multi)}),
     172: convert('unlock', {'skill_text': 'Unlock all orbs'}),
     173: absorb_mechanic_void_convert({'duration': (0, cc), 'attribute_absorb': (1, bool), 'damage_absorb': (3, bool)}),
-    179: auto_heal_convert({'duration': (0, cc), 'percentage_max_hp': (2, multi), 'unbind': (3,cc), 'awoken_unbind': (4,cc)}),
+    179: auto_heal_convert({'duration': (0, cc), 'percentage_max_hp': (2, multi), 'unbind': (3, cc), 'awoken_unbind': (4, cc)}),
     180: enhance_skyfall_convert({'duration': (0, cc), 'percentage_increase': (1, multi)}),
     184: no_skyfall_convert({'duration': (0, cc)}),
     188: multi_hit_laser_convert({'damage': (0, cc), 'mass_attack': False}),
-    189: convert('unlock_board_path', { 'skill_text': 'Unlock all orbs; Change all orbs to Fire, Water, Wood, and Light orbs; Show path to 3 combos'}),  # May be using incomplete data eg. Toragon SID: 10136
+    # May be using incomplete data eg. Toragon SID: 10136
+    189: convert('unlock_board_path', {'skill_text': 'Unlock all orbs; Change all orbs to Fire, Water, Wood, and Light orbs; Show path to 3 combos'}),
     11: passive_stats_convert({'for_attr': (0, listify), 'atk_multiplier': (1, multi)}),
     12: after_attack_convert({'multiplier': (0, multi)}),
     13: heal_on_convert({'multiplier': (0, multi)}),
@@ -2359,6 +2372,7 @@ def reformat_json_info(skill_data):
     leader_skills.update(active_skills)
     return results
 
+
 def reformat_json(skill_data):
     reformatted = {}
     reformatted['res'] = skill_data['res']
@@ -2450,13 +2464,15 @@ def reformat_json(skill_data):
                 AS = reformatted['active_skills']
                 LS = reformatted['leader_skills']
 
-                for repeated_skill in range(0,len(MULTI_PART_AS[str(j)])):
-                    
-                    AS_comb_skill_text = reformatted['active_skills'][MULTI_PART_AS[str(j)][repeated_skill]]['args']['skill_text']
+                for repeated_skill in range(0, len(MULTI_PART_AS[str(j)])):
+
+                    AS_comb_skill_text = reformatted['active_skills'][MULTI_PART_AS[str(
+                        j)][repeated_skill]]['args']['skill_text']
                     if AS.get(j):
 
                         AS_curr_arg = AS[j]['args']
-                        AS_comb_skill_ids = AS[MULTI_PART_AS[str(j)][repeated_skill]]['args']['skill_ids']
+                        AS_comb_skill_ids = AS[MULTI_PART_AS[str(
+                            j)][repeated_skill]]['args']['skill_ids']
 
                         if AS_curr_arg.get('skill_text'):
 
@@ -2486,7 +2502,8 @@ def reformat_json(skill_data):
                     elif LS.get(j):
 
                         LS_curr_arg = LS[j]['args']
-                        AS_comb_skill_ids = AS[MULTI_PART_AS[str(j)][repeated_skill]]['args']['skill_ids']
+                        AS_comb_skill_ids = AS[MULTI_PART_AS[str(
+                            j)][repeated_skill]]['args']['skill_ids']
 
                         if LS_curr_arg.get('skill_text'):
 
@@ -2515,7 +2532,8 @@ def reformat_json(skill_data):
                                             repeat += 1
                                     AS_comb_skill_text += ' ' + str(repeat) + ' times'
                                     MULTI_PART_AS[str(j)] = [MULTI_PART_AS[str(j)][0]]
-                    reformatted['active_skills'][MULTI_PART_AS[str(j)][repeated_skill]]['args']['skill_text'] = AS_comb_skill_text
+                    reformatted['active_skills'][MULTI_PART_AS[str(
+                        j)][repeated_skill]]['args']['skill_text'] = AS_comb_skill_text
                     if 'times' in reformatted['active_skills'][MULTI_PART_AS[str(j)][repeated_skill]]['args']['skill_text']:
                         break
 
@@ -2525,7 +2543,7 @@ def reformat_json(skill_data):
         params = args.get('parameter', [])
         for i, v in enumerate(params):
             params[i] = round(float(v), 4)
-    
+
     return reformatted
 
 
