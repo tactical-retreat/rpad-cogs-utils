@@ -152,7 +152,7 @@ def load_bonus_data(data_dir: str=None, data_group: str=None,
     with open(bonus_json_file) as f:
         bonus_json = json.load(f)
 
-    if bonus_json['v'] != 2:
-        raise NotImplementedError('version: {}'.format(bonus_json['v']))
+    if bonus_json['v'] > 2:
+        print('Warning! Version of bonus file is not tested: {}'.format(bonus_json['v']))
 
     return [Bonus(item) for item in bonus_json['bonuses']]

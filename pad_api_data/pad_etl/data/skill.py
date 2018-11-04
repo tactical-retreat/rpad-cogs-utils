@@ -88,8 +88,8 @@ def load_skill_data(data_dir=None, skill_json_file: str = None) -> List[MonsterS
     with open(skill_json_file) as f:
         skill_json = json.load(f)
 
-    if skill_json['v'] != 1220:
-        raise NotImplementedError('version: {}'.format(skill_json['v']))
+    if skill_json['v'] > 1220:
+        print('Warning! Version of skill file is not tested: {}'.format(skill_json['v']))
 
     return [MonsterSkill(i, ms) for i, ms in enumerate(skill_json['skill'])]
 
