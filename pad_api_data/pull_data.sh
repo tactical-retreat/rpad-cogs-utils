@@ -4,10 +4,12 @@
 # <[JP,NA]>,<[A,B,C,D,E]>,<uuid>,<int_id>,<RED,GREEN,BLUE>
 #
 # Group ID and starter color are not used, just for documentation
+#
+# If a second argument is supplied, it is used as the discord alerting URL
 set -e
 set -x
 
-if [ $# -ne 1 ]; then
+if [ $# -lt 1 ]; then
    echo "requires config file as input"
    exit
 fi
@@ -17,7 +19,10 @@ IFS=","
 DATA_DIR="/home/tactical0retreat/pad_data"
 EXEC_DIR="/home/tactical0retreat/rpad-cogs-utils/pad_api_data"
 
-DISCORD_WEBHOOK_URL="https://discordapp.com/api/webhooks/472472663416373269/BZ_5NM_f1WENIzTvwfPKJlq-39ZwE2UIwcYEustCJly2eJDHIm4WYw0p9TvJ0rMnBuPW"
+DISCORD_WEBHOOK_URL=""
+if [ $# -eq 2 ]; then
+    DISCORD_WEBHOOK_URL="https://discordapp.com/api/webhooks/$2"
+fi
 
 function hook_alert {
     echo "Pipeline failed"
@@ -42,8 +47,10 @@ function success_exit {
     hook_alert "Pipeline finished"
 }
 
-trap error_exit ERR
-trap success_exit EXIT
+if [ $DISCORD_WEBHOOK_URL != "" ]; then
+	trap error_exit ERR
+	trap success_exit EXIT
+fi
 
 function dl_data {
     while read server group uuid intid scolor
