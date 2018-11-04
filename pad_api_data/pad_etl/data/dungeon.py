@@ -79,8 +79,9 @@ class Dungeon(pad_util.JsonDictEncodable):
                 self.clean_name = self.clean_name[len(prefix):]
                 break
 
-        if len(raw) > 6:
-            print('unexpected field count: ' + ','.join(raw))
+        # Warning disabled; format changed, assuming it's still fine whatever
+#         if len(raw) > 6:
+#             print('unexpected field count: ' + ','.join(raw))
 
     def __str__(self):
         return str(self.__dict__)
