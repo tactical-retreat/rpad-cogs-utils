@@ -55,20 +55,20 @@ output_dir = args.output_dir
 # Shitty hack but I'm lazy and don't care
 if server == 'NA':
     GROUP_TO_COLOR = {
-        'A': 'R',
-        'B': 'G',
-        'C': 'R',
-        'D': 'R',
-        'E': 'B',
+        'A': 'RED',
+        'B': 'GREEN',
+        'C': 'RED',
+        'D': 'RED',
+        'E': 'BLUE',
     }
     SELECTED_STARTER_GROUPS = ['A', 'B', 'E']
 elif server == 'JP':
     GROUP_TO_COLOR = {
-        'A': 'R',
-        'B': 'R',
-        'C': 'G',
-        'D': 'B',
-        'E': 'B',
+        'A': 'RED',
+        'B': 'RED',
+        'C': 'GREEN',
+        'D': 'BLUE',
+        'E': 'BLUE',
     }
     SELECTED_STARTER_GROUPS = ['A', 'C', 'D']
 
