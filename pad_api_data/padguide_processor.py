@@ -2,13 +2,13 @@
 Loads the raw data files for NA/JP into intermediate structures, saves them,
 then updates the database with the new data.  
 """
-import argparse
 from collections import defaultdict
 import json
 import logging
 import os
-import feedparser
 
+import argparse
+import feedparser
 from pad_etl.common import monster_id_mapping
 from pad_etl.data import bonus, card, dungeon, skill
 from pad_etl.processor import monster, monster_skill
@@ -16,6 +16,7 @@ from pad_etl.processor import skill_info
 from pad_etl.processor.db_util import DbWrapper
 from pad_etl.processor.merged_data import MergedBonus, MergedCard, CrossServerCard
 from pad_etl.processor.schedule_item import ScheduleItem
+
 from pad_etl.processor.news import NewsItem
 
 
@@ -493,6 +494,7 @@ def database_update_news(db_wrapper):
             db_wrapper.insert_item(item.insert_sql(next_id))
             next_id += 1
 
+
 def database_update_timestamps(db_wrapper):
     get_tables_sql = 'SELECT `internal_table` FROM get_timestamp'
     tables = list(map(lambda x: x['internal_table'], db_wrapper.fetch_data(get_tables_sql)))
@@ -593,8 +595,30 @@ class Database(object):
 def clean_bonuses(pg_server, bonus_sets, dungeons):
     dungeons_by_id = {d.dungeon_id: d for d in dungeons}
 
+    # Shitty hack but I'm lazy and don't care
+    if pg_server.upper() == 'NA':
+        GROUP_TO_COLOR = {
+            'A': 'RED',
+            'B': 'GREEN',
+            'C': 'RED',
+            'D': 'RED',
+            'E': 'BLUE',
+        }
+        SELECTED_STARTER_GROUPS = ['A', 'B', 'E']
+    elif pg_server.upper() == 'JP':
+        GROUP_TO_COLOR = {
+            'A': 'RED',
+            'B': 'RED',
+            'C': 'GREEN',
+            'D': 'BLUE',
+            'E': 'BLUE',
+        }
+        SELECTED_STARTER_GROUPS = ['A', 'C', 'D']
+
     merged_bonuses = []
     for data_group, bonus_set in bonus_sets.items():
+        starter = GROUP_TO_COLOR[data_group.upper()]
+
         for bonus in bonus_set:
             dungeon = None
             guerrilla_group = None
@@ -606,9 +630,39 @@ def clean_bonuses(pg_server, bonus_sets, dungeons):
                     guerrilla_group = data_group if dungeon.dungeon_type == 'guerrilla' else None
 
             if guerrilla_group or data_group == 'a':
-                merged_bonuses.append(MergedBonus(pg_server, bonus, dungeon, guerrilla_group))
+                merged_bonuses.append(MergedBonus(
+                    pg_server, bonus, dungeon, guerrilla_group, starter))
 
-    return merged_bonuses
+    # Hacks for overriding guerrilla to starter
+    # Figure out which guerrillas are starter based.
+    # A bit awkward since we only have dupes for Red mostly, and an uneven number.
+    starter_string_to_bonus = defaultdict(list)
+    for bonus in merged_bonuses:
+        starter_string_to_bonus[bonus.starter_unique_string].append(bonus)
+
+    # Pick out the names for those guerrillas
+    starter_guerrilla_dungeon_names = set()
+    for bonus_list in starter_string_to_bonus.values():
+        if len(bonus_list) > 1:
+            dungeon = bonus_list[0].dungeon
+            if dungeon and dungeon.dungeon_type == 'guerrilla':
+                starter_guerrilla_dungeon_names.add(dungeon.clean_name)
+
+    # Loop over the guerrillas checking against the names; if it's in the list
+    # and from the selected 'normal' group, use it. If it's not in the list,
+    # use it.
+    final_bonuses = []
+    for bonus in merged_bonuses:
+        dungeon = bonus.dungeon
+        if dungeon and dungeon.dungeon_type == 'guerrilla' and dungeon.clean_name in starter_guerrilla_dungeon_names:
+            if bonus.group.upper() in SELECTED_STARTER_GROUPS:
+                bonus.group = None
+                final_bonuses.append(bonus)
+        else:
+            bonus.starter = None
+            final_bonuses.append(bonus)
+
+    return final_bonuses
 
 
 def clean_cards(cards, skills):

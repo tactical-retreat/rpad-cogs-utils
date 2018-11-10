@@ -48,7 +48,11 @@ class ScheduleItem(object):
         self.event_seq = '0' if event_id is None else str(event_id)
 
         # TODO: Need to support Week
-        self.event_enum = EventType.Guerrilla if merged_bonus.group else EventType.Etc
+        self.event_enum = EventType.Etc
+        if merged_bonus.group:
+            self.event_enum = EventType.Guerrilla
+        elif merged_bonus.starter:
+            self.event_enum = EventType.SpecialWeek
         self.event_type = str(self.event_enum.value)
 
         self.open_date = open_datetime_utc.date()
@@ -67,7 +71,12 @@ class ScheduleItem(object):
         self.server_open_hour = open_datetime_local.strftime('%H')
 
         self.group = merged_bonus.group
-        self.team_data = None if self.group is None else ord(self.group) - ord('a')
+        self.starter = merged_bonus.starter
+        self.team_data = None
+        if self.group:
+            self.team_data = ord(self.group) - ord('a')
+        elif self.starter:
+            self.team_data = ['RED', 'BLUE', 'GREEN'].index(self.starter)
 
         # Push the tstamp forward one day into the future to try and account for the fact that
         # historically PadGuide didn't publish scheduled items this early. This is a hack to
@@ -81,7 +90,7 @@ class ScheduleItem(object):
         # Messages and some random data errors
         is_too_long = (self.close_date - self.open_date) > timedelta(days=365)
         # Only accept guerrilla for now
-        return not is_too_long and self.event_enum == EventType.Guerrilla
+        return not is_too_long and self.event_enum in (EventType.Guerrilla, EventType.SpecialWeek)
 
     def exists_sql(self):
         sql = """SELECT schedule_seq FROM schedule_list
@@ -89,6 +98,7 @@ class ScheduleItem(object):
                  AND close_timestamp = {close_timestamp}
                  AND server = {server}
                  AND event_seq = {event_seq}
+                 AND event_type = {event_type}
                  AND dungeon_seq = {dungeon_seq}
                  """
 
