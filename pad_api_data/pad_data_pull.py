@@ -6,14 +6,12 @@ Requires padkeygen which is not checked in.
 import argparse
 import json
 import os
-import sys
 import urllib
-
-from padtools.servers.server import Server
-import requests
 
 import keygen
 import pad_utils
+from padtools.servers.server import Server
+import requests
 
 
 parser = argparse.ArgumentParser(description="Extracts PAD API data.", add_help=False)
@@ -135,10 +133,15 @@ def get_action_payload(action, pid, sid, v_name, v_value, r):
     return payload
 
 
-def pull_and_write_endpoint(server_name, action, pid, sid, v_name, v_value, r, file_name_suffix=''):
+def pull_endpoint_json(server_name, action, pid, sid, v_name, v_value, r):
     payload = get_action_payload(action, pid, sid, v_name, v_value, r)
     url = build_url(server_api_endpoint, payload, server_name)
     action_json = get_json_results(url, headers)
+    return action_json
+
+
+def pull_and_write_endpoint(server_name, action, pid, sid, v_name, v_value, r, file_name_suffix=''):
+    action_json = pull_endpoint_json(server_name, action, pid, sid, v_name, v_value, r)
 
     file_name = '{}{}.json'.format(action, file_name_suffix)
     output_file = os.path.join(output_dir, file_name)
@@ -159,3 +162,15 @@ pull_and_write_endpoint(server_name, 'download_dungeon_data', user_i, user_sid, 
 pull_and_write_endpoint(server_name, 'download_skill_data', user_i, user_sid, 'ver', '1', server_r)
 pull_and_write_endpoint(server_name, 'download_enemy_skill_data',
                         user_i, user_sid, 'ver', '0', server_r)
+
+
+def write_egg_machines(player_data):
+    extra_egg_machines = player_data['egatya3']
+    output_file = os.path.join(output_dir, 'extra_egg_machines.json')
+    with open(output_file, 'w') as outfile:
+        json.dump(extra_egg_machines, outfile, sort_keys=True, indent=4)
+
+
+player_data = pull_endpoint_json(server_name, 'get_player_data',
+                                 user_i, user_sid, 'v', '2', server_r)
+write_egg_machines(player_data)
