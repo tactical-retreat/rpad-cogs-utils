@@ -2,12 +2,12 @@
 Loads the raw data files for NA/JP into intermediate structures, saves them,
 then updates the database with the new data.  
 """
+import argparse
 from collections import defaultdict
 import json
 import logging
 import os
 
-import argparse
 import feedparser
 from pad_etl.common import monster_id_mapping
 from pad_etl.data import bonus, card, dungeon, skill
@@ -15,9 +15,8 @@ from pad_etl.processor import monster, monster_skill
 from pad_etl.processor import skill_info
 from pad_etl.processor.db_util import DbWrapper
 from pad_etl.processor.merged_data import MergedBonus, MergedCard, CrossServerCard
-from pad_etl.processor.schedule_item import ScheduleItem
-
 from pad_etl.processor.news import NewsItem
+from pad_etl.processor.schedule_item import ScheduleItem
 
 
 logging.basicConfig()
@@ -605,6 +604,7 @@ def clean_bonuses(pg_server, bonus_sets, dungeons):
             'E': 'BLUE',
         }
         SELECTED_STARTER_GROUPS = ['A', 'B', 'E']
+        include_abcde = False
     elif pg_server.upper() == 'JP':
         GROUP_TO_COLOR = {
             'A': 'RED',
@@ -614,6 +614,8 @@ def clean_bonuses(pg_server, bonus_sets, dungeons):
             'E': 'BLUE',
         }
         SELECTED_STARTER_GROUPS = ['A', 'C', 'D']
+        # This hack just flat out disables old style guerrillas for JP
+        include_abcde = True
 
     merged_bonuses = []
     for data_group, bonus_set in bonus_sets.items():
@@ -658,7 +660,7 @@ def clean_bonuses(pg_server, bonus_sets, dungeons):
             if bonus.group.upper() in SELECTED_STARTER_GROUPS:
                 bonus.group = None
                 final_bonuses.append(bonus)
-        else:
+        elif include_abcde:
             bonus.starter = None
             final_bonuses.append(bonus)
 
