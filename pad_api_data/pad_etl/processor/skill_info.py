@@ -1995,8 +1995,8 @@ def orb_remain_convert(arguments):
         _, c = convert_with_defaults('orb_remain',
                                      arguments,
                                      orb_remain_backups)(x)
-        c['skill_text'] += fmt_mult(c['atk_multiplier']) + 'x ATK when there are less than ' +\
-            str(c['orb_count']) + ' orbs remaining'
+        c['skill_text'] += fmt_mult(c['atk_multiplier']) + 'x ATK when there are ' + \
+            str(c['orb_count']) + ' or fewer orbs remaining'
         if c['bonus_atk_multiplier'] != 0:
             c['skill_text'] += ' up to ' + fmt_mult(c['atk_multiplier'] +
                                                     c['bonus_atk_multiplier'] *
