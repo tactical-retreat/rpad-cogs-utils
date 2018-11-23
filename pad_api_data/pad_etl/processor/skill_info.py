@@ -467,7 +467,7 @@ def double_orb_convert(arguments):
                                      arguments,
                                      double_orb_convert_backups)(x)
         if c['to_1'] == c['to_2']:
-            skill_text = 'Chang {}, {} orbs to {} orbs'.format(ATTRIBUTES[int(c['from_1'])],
+            skill_text = 'Change {}, {} orbs to {} orbs'.format(ATTRIBUTES[int(c['from_1'])],
                                                                     ATTRIBUTES[int(c['from_2'])],
                                                                     ATTRIBUTES[int(c['to_1'])])
         else:
