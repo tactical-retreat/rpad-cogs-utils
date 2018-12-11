@@ -604,7 +604,7 @@ def clean_bonuses(pg_server, bonus_sets, dungeons):
             'E': 'BLUE',
         }
         SELECTED_STARTER_GROUPS = ['A', 'B', 'E']
-        include_abcde = True
+        include_abcde = False
     elif pg_server.upper() == 'JP':
         GROUP_TO_COLOR = {
             'A': 'RED',
