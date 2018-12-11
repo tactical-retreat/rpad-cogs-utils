@@ -44,7 +44,8 @@ function error_exit {
 
 function success_exit {
     echo "Pipeline finished"
-    hook_alert "Pipeline finished"
+    # Disabling; spammy
+    # hook_alert "Pipeline finished"
 }
 
 if [ $DISCORD_WEBHOOK_URL != "" ]; then
