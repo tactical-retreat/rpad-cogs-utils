@@ -113,7 +113,7 @@ python3 ${EXEC_DIR}/json_merge.py \
 
 echo "Building DB dump"
 python3 ${EXEC_DIR}/build_padguide_db_file.py \
-  --db_config= \
+  --db_config=${EXEC_DIR}/db_config.json \
   --base_db=${DATA_DIR}/padguide_db/pg_scrubbed_Panda.sql \
   --output_file=${DATA_DIR}/padguide_db/Panda.sql
   
