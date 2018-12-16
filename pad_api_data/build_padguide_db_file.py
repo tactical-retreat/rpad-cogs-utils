@@ -82,6 +82,9 @@ def do_main(args):
     sqlite_conn.execute('pragma foreign_keys=OFF')
 
     for src_tbl, dest_tbl in TBL_MAPPING.items():
+        dest_truncate_sql = 'DELETE FROM {}'.format(dest_tbl)
+        sqlite_conn.execute(dest_truncate_sql)
+
         dest_select_sql = 'SELECT * FROM {}'.format(dest_tbl)
         dest_cols = set([desc[0].lower()
                          for desc in sqlite_conn.execute(dest_select_sql).description])
