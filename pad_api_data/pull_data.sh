@@ -118,7 +118,8 @@ python3 ${EXEC_DIR}/build_padguide_db_file.py \
   --output_file=${DATA_DIR}/padguide_db/Panda.sql
   
 echo "Zipping/copying DB dump"
-zip ${DATA_DIR}/padguide_db/Panda.sql.zip ${DATA_DIR}/padguide_db/Panda.sql
+rm ${DATA_DIR}/padguide_db/Panda.sql.zip
+zip -j ${DATA_DIR}/padguide_db/Panda.sql.zip ${DATA_DIR}/padguide_db/Panda.sql
 cp ${DATA_DIR}/padguide_db/Panda.sql.zip /var/www/html/padguide/data
 
 echo "Syncing"
