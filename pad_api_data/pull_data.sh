@@ -111,16 +111,16 @@ python3 ${EXEC_DIR}/json_merge.py \
   --right=${DATA_DIR}/raw/jp/guerrilla_data.json \
   --output=${DATA_DIR}/merged/guerrilla_data.json
 
-echo "Building DB dump"
-python3 ${EXEC_DIR}/build_padguide_db_file.py \
-  --db_config=${EXEC_DIR}/db_config.json \
-  --base_db=${DATA_DIR}/padguide_db/576-Panda.sql \
-  --output_file=${DATA_DIR}/padguide_db/Panda.sql
+# echo "Building DB dump"
+# python3 ${EXEC_DIR}/build_padguide_db_file.py \
+#   --db_config=${EXEC_DIR}/db_config.json \
+#   --base_db=${DATA_DIR}/padguide_db/576-Panda.sql \
+#   --output_file=${DATA_DIR}/padguide_db/Panda.sql
   
-echo "Zipping/copying DB dump"
-rm ${DATA_DIR}/padguide_db/Panda.sql.zip
-zip -j ${DATA_DIR}/padguide_db/Panda.sql.zip ${DATA_DIR}/padguide_db/Panda.sql
-cp ${DATA_DIR}/padguide_db/Panda.sql.zip /var/www/html/padguide/data
+# echo "Zipping/copying DB dump"
+# rm ${DATA_DIR}/padguide_db/Panda.sql.zip
+# zip -j ${DATA_DIR}/padguide_db/Panda.sql.zip ${DATA_DIR}/padguide_db/Panda.sql
+# cp ${DATA_DIR}/padguide_db/Panda.sql.zip /var/www/html/padguide/data
 
 echo "Syncing"
 gsutil -m rsync -r -c /home/tactical0retreat/pad_data/ gs://mirubot/paddata/
