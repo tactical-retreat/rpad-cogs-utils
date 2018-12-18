@@ -472,12 +472,14 @@ def double_orb_convert(arguments):
                                      double_orb_convert_backups)(x)
         if c['to_1'] == c['to_2']:
             skill_text = 'Change {}, {} orbs to {} orbs'.format(ATTRIBUTES[int(c['from_1'])],
-                                                                    ATTRIBUTES[int(c['from_2'])],
-                                                                    ATTRIBUTES[int(c['to_1'])])
+                                                                ATTRIBUTES[int(c['from_2'])],
+                                                                ATTRIBUTES[int(c['to_1'])])
         else:
             skill_text = 'Change {} orbs to {} orbs; Change {} orbs to {} orbs'.format(ATTRIBUTES[int(c['from_1'])],
-                                                                                       ATTRIBUTES[int(c['to_1'])],
-                                                                                       ATTRIBUTES[int(c['from_2'])],
+                                                                                       ATTRIBUTES[int(
+                                                                                           c['to_1'])],
+                                                                                       ATTRIBUTES[int(
+                                                                                           c['from_2'])],
                                                                                        ATTRIBUTES[int(c['to_2'])])
         c['skill_text'] = skill_text
         return 'double_orb_convert', c
@@ -2095,8 +2097,12 @@ def collab_bonus_convert(arguments):
             10001: 'Dragonbounds & Dragon Callers',
         }
 
+        collab_id = c['collab_id']
+        if collab_id not in COLLAB_MAP:
+            print('Missing collab name for', collab_id)
+
         c['skill_text'] += fmt_stats_type_attr_bonus(c) + \
-            ' when all cards are from ' + COLLAB_MAP.get(c['collab_id'], '<not populated>')
+            ' when all cards are from ' + COLLAB_MAP.get('collab_id', '<not populated>')
 
         c['parameter'] = fmt_parameter(c)
         c['parameter'][3] = 0.0
