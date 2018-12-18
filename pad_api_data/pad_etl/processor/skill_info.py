@@ -2094,6 +2094,7 @@ def collab_bonus_convert(arguments):
             72: 'GungHo Collab',
             74: 'Power Pro Collab',
             76: 'Sword Art Online Collab',
+            77: 'Kamen Rider Collab',
             10001: 'Dragonbounds & Dragon Callers',
         }
 
