@@ -68,6 +68,7 @@ function dl_data {
             --server=${server^^} \
             --user_uuid=${uuid} \
             --user_intid=${intid} \
+            --user_group=${scolor} \
             ${do_only_bonus}
     done < $1
 }

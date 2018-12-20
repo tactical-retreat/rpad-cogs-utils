@@ -20,6 +20,7 @@ inputGroup = parser.add_argument_group("Input")
 inputGroup.add_argument("--server", required=True, help="One of [NA, JP, HT]")
 inputGroup.add_argument("--user_uuid", required=True, help="Account UUID")
 inputGroup.add_argument("--user_intid", required=True, help="Account code")
+inputGroup.add_argument("--user_group", required=True, help="Expected user group")
 inputGroup.add_argument("--only_bonus", action='store_true', help="Only populate bonus data")
 
 outputGroup = parser.add_argument_group("Output")
@@ -84,7 +85,7 @@ server_host = urllib.parse.urlparse(server_api_endpoint).hostname
 user_u = args.user_uuid
 user_i = args.user_intid
 
-user_group = pad_utils.internal_id_to_group(user_i)
+user_group = args.user_group.lower()
 
 output_dir = args.output_dir
 os.makedirs(output_dir, exist_ok=True)
