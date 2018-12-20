@@ -560,7 +560,8 @@ def load_database(base_dir, pg_server):
         pg_server,
         card.load_card_data(data_dir=base_dir),
         dungeon.load_dungeon_data(data_dir=base_dir),
-        {x: bonus.load_bonus_data(data_dir=base_dir, data_group=x) for x in 'abcde'},
+        {x: bonus.load_bonus_data(data_dir=base_dir, data_group=x)
+         for x in ['red', 'blue', 'green']},
         skill.load_skill_data(data_dir=base_dir),
         skill.load_raw_skill_data(data_dir=base_dir))
 
@@ -594,33 +595,8 @@ class Database(object):
 def clean_bonuses(pg_server, bonus_sets, dungeons):
     dungeons_by_id = {d.dungeon_id: d for d in dungeons}
 
-    # Shitty hack but I'm lazy and don't care
-    if pg_server.upper() == 'NA':
-        GROUP_TO_COLOR = {
-            'A': 'RED',
-            'B': 'GREEN',
-            'C': 'RED',
-            'D': 'RED',
-            'E': 'BLUE',
-        }
-        SELECTED_STARTER_GROUPS = ['A', 'B', 'E']
-        include_abcde = False
-    elif pg_server.upper() == 'JP':
-        GROUP_TO_COLOR = {
-            'A': 'RED',
-            'B': 'RED',
-            'C': 'GREEN',
-            'D': 'BLUE',
-            'E': 'BLUE',
-        }
-        SELECTED_STARTER_GROUPS = ['A', 'C', 'D']
-        # This hack just flat out disables old style guerrillas for JP
-        include_abcde = False
-
     merged_bonuses = []
     for data_group, bonus_set in bonus_sets.items():
-        starter = GROUP_TO_COLOR[data_group.upper()]
-
         for bonus in bonus_set:
             dungeon = None
             guerrilla_group = None
@@ -631,40 +607,10 @@ def clean_bonuses(pg_server, bonus_sets, dungeons):
                 else:
                     guerrilla_group = data_group if dungeon.dungeon_type == 'guerrilla' else None
 
-            if guerrilla_group or data_group == 'a':
-                merged_bonuses.append(MergedBonus(
-                    pg_server, bonus, dungeon, guerrilla_group, starter))
+            if guerrilla_group or data_group == 'red':
+                merged_bonuses.append(MergedBonus(pg_server, bonus, dungeon, guerrilla_group))
 
-    # Hacks for overriding guerrilla to starter
-    # Figure out which guerrillas are starter based.
-    # A bit awkward since we only have dupes for Red mostly, and an uneven number.
-    starter_string_to_bonus = defaultdict(list)
-    for bonus in merged_bonuses:
-        starter_string_to_bonus[bonus.starter_unique_string].append(bonus)
-
-    # Pick out the names for those guerrillas
-    starter_guerrilla_dungeon_names = set()
-    for bonus_list in starter_string_to_bonus.values():
-        if len(bonus_list) > 1:
-            dungeon = bonus_list[0].dungeon
-            if dungeon and dungeon.dungeon_type == 'guerrilla':
-                starter_guerrilla_dungeon_names.add(dungeon.clean_name)
-
-    # Loop over the guerrillas checking against the names; if it's in the list
-    # and from the selected 'normal' group, use it. If it's not in the list,
-    # use it.
-    final_bonuses = []
-    for bonus in merged_bonuses:
-        dungeon = bonus.dungeon
-        if dungeon and dungeon.dungeon_type == 'guerrilla' and dungeon.clean_name in starter_guerrilla_dungeon_names:
-            if bonus.group.upper() in SELECTED_STARTER_GROUPS:
-                bonus.group = None
-                final_bonuses.append(bonus)
-        elif include_abcde:
-            bonus.starter = None
-            final_bonuses.append(bonus)
-
-    return final_bonuses
+    return merged_bonuses
 
 
 def clean_cards(cards, skills):

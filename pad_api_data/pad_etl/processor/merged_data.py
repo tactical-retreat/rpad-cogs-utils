@@ -2,15 +2,12 @@ from ..common import pad_util
 
 
 class MergedBonus(pad_util.JsonDictEncodable):
-    def __init__(self, server, bonus, dungeon, group, starter):
+    def __init__(self, server, bonus, dungeon, group):
         self.server = server
         self.bonus = bonus
         self.dungeon = dungeon
         self.group = group
-
-        self.starter = starter
-        self.starter_unique_string = '{}{}'.format(
-            dungeon.clean_name if dungeon else '', bonus.start_time_str)
+        self.is_starter = group in ['red', 'green', 'blue']
 
         self.start_timestamp = pad_util.gh_to_timestamp(bonus.start_time_str, server)
         self.end_timestamp = pad_util.gh_to_timestamp(bonus.end_time_str, server)

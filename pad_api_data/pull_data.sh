@@ -57,12 +57,12 @@ function dl_data {
     while read server group uuid intid scolor
     do
         do_only_bonus=""
-        if [ ${group^^} != "A" ]
+        if [ ${scolor^^} != "RED" ]
         then
             do_only_bonus="--only_bonus"
         fi
 
-        echo "Processing ${server}/${group}/${uuid}/${intid} ${do_only_bonus}"
+        echo "Processing ${server}/${scolor}/${uuid}/${intid} ${do_only_bonus}"
         python3 ${EXEC_DIR}/pad_data_pull.py \
             --output_dir=${DATA_DIR}/raw/${server,,} \
             --server=${server^^} \

@@ -49,10 +49,10 @@ class ScheduleItem(object):
 
         # TODO: Need to support Week
         self.event_enum = EventType.Etc
-        if merged_bonus.group:
-            self.event_enum = EventType.Guerrilla
-        elif merged_bonus.starter:
+        if merged_bonus.is_starter:
             self.event_enum = EventType.SpecialWeek
+        elif merged_bonus.group:
+            self.event_enum = EventType.Guerrilla
         self.event_type = str(self.event_enum.value)
 
         self.open_date = open_datetime_utc.date()
@@ -71,12 +71,14 @@ class ScheduleItem(object):
         self.server_open_hour = open_datetime_local.strftime('%H')
 
         self.group = merged_bonus.group
-        self.starter = merged_bonus.starter
+        self.is_starter = merged_bonus.is_starter
         self.team_data = None
+
         if self.group:
-            self.team_data = ord(self.group) - ord('a')
-        elif self.starter:
-            self.team_data = ['RED', 'BLUE', 'GREEN'].index(self.starter)
+            if self.is_starter:
+                self.team_data = ['red', 'blue', 'green'].index(self.group)
+            else:
+                self.team_data = ord(self.group) - ord('a')
 
         # Push the tstamp forward one day into the future to try and account for the fact that
         # historically PadGuide didn't publish scheduled items this early. This is a hack to
