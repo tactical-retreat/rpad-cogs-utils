@@ -70,7 +70,8 @@ guerrilla_dungeon_bonuses = []
 bonus_file_glob = os.path.join(input_dir, 'download_limited_bonus_data_*.json')
 for file_match in glob.glob(bonus_file_glob):
     before_group = file_match.rfind('_')
-    group = file_match[before_group + 1:before_group + 2].upper()
+    after_group = file_match.rfind('.')
+    group = file_match[before_group + 1:after_group].upper()
     bonuses = limited_bonus_data.load_bonus_data(file_match)
 
     for item in bonuses:
