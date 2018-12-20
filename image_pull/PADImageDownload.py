@@ -9,6 +9,7 @@ parser = argparse.ArgumentParser(
     description="Downloads P&D images from the GungHo site.", add_help=False)
 
 outputGroup = parser.add_argument_group("Output")
+outputGroup.add_argument("--alt_input_dir", help="Optional path to input BC files")
 outputGroup.add_argument("--output_dir", help="Path to a folder where output should be saved")
 
 helpGroup = parser.add_argument_group("Help")
@@ -55,8 +56,14 @@ def generate_resized_image(source_file, dest_file):
 
 
 output_dir = args.output_dir
-raw_dir = os.path.join(output_dir, 'raw_data')
-corrected_dir = os.path.join(output_dir, 'corrected_data')
+
+# This mode is used for the version that attempts to download all the artwork
+if args.alt_input_dir:
+    raw_dir = args.alt_input_dir
+    corrected_dir = output_dir
+else:
+    raw_dir = os.path.join(output_dir, 'raw_data')
+    corrected_dir = os.path.join(output_dir, 'corrected_data')
 
 
 for file_name in os.listdir(raw_dir):
