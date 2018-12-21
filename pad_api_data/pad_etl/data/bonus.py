@@ -24,16 +24,16 @@ class Bonus(pad_util.JsonDictEncodable):
 
     types = {
         # EXP multiplier.
-        1: {'name': 'Exp x {}!', 'mod_fn': ghmult_plain},
+        1: {'name': 'Exp Boost', 'mod_fn': ghmult_plain},
 
         # Coin multiplier.
-        2: {'name': 'Coin x {}!', 'mod_fn': ghmult_plain},
+        2: {'name': 'Coin Boost', 'mod_fn': ghmult_plain},
 
         # Drop rate increased.
-        3: {'name': 'Drop% x {}!', 'mod_fn': ghmult_plain},
+        3: {'name': 'Drop Boost', 'mod_fn': ghmult_plain},
 
         # Stamina reduced.
-        5: {'name': 'Stamina {}!', 'mod_fn': ghmult_plain},
+        5: {'name': 'Stamina Reduction', 'mod_fn': ghmult_plain},
 
         # Special/co-op dungeon list.
         6: {'name': 'dungeon'},
@@ -45,22 +45,22 @@ class Bonus(pad_util.JsonDictEncodable):
         9: {'name': 'REM Event', },
 
         # Current PEM pal point cost.
-        10: {'name': 'PEM cost: {}', 'mod_fn': int},
+        10: {'name': 'PEM Cost', 'mod_fn': int},
 
         # Feed XP modifier.
-        11: {'name': 'great*', 'mod_fn': ghmult_plain},
+        11: {'name': 'Feed Exp Bonus Chance', 'mod_fn': ghmult_plain},
 
         # Increased plus rate 1?
-        12: {'name': '+Egg x{}!', 'mod_fn': ghchance_plain},
+        12: {'name': '+Egg Drop Rate 1', 'mod_fn': ghchance_plain},
 
         # ?
         14: {'name': 'gf_?', },
 
         # Increased plus rate 2?
-        16: {'name': '+Egg x{}!', 'mod_fn': ghmult_plain},
+        16: {'name': '+Egg Drop Rate 2', 'mod_fn': ghmult_plain},
 
         # Increased skillup chance
-        17: {'name': 'skill*', 'mod_fn': ghmult_plain},
+        17: {'name': 'Feed Skill-Up Chance', 'mod_fn': ghmult_plain},
 
         # "tourney is over, results pending"?
         20: {'name': 'tournament_active', },
@@ -80,9 +80,13 @@ class Bonus(pad_util.JsonDictEncodable):
         # Limited Time Dungeon arrives! (on multiplayer mode button)
         29: {'name': 'multiplayer_announcement'},
 
+        # Daily XP dragon
         36: {'name': 'daily_dragons'},
 
-        37: {'name': 'monthly_quest_dungeon'}
+        37: {'name': 'monthly_quest_dungeon'},
+
+        # https://bit.ly/2zWWGPd - #Q#6th Year Anniversary Quest 1
+        43: {'name': 'monthly_quest_info'},
     }
 
     keys = 'sebiadmf'
@@ -124,13 +128,16 @@ class Bonus(pad_util.JsonDictEncodable):
         bonus_id = int(raw['b'])
         bonus_info = Bonus.types.get(bonus_id, {'name': 'unknown_id:{}'.format(bonus_id)})
 
-        # Bonus value, if provided and a processor is set
+        # Bonus value, if provided, optionally processed
         self.bonus_value = None  # type: number
-        if 'mod_fn' in bonus_info and 'a' in raw:
-            self.bonus_value = bonus_info['mod_fn'](raw['a'])
+        if 'a' in raw:
+            self.bonus_value = raw['a']
+            if 'mod_fn' in bonus_info:
+                self.bonus_value = bonus_info['mod_fn'](self.bonus_value)
 
         # Human readable name for the bonus
-        self.bonus_name = bonus_info['name'].format(self.bonus_value)
+        self.bonus_name = bonus_info['name']
+        self.bonus_id = bonus_id
 
     def __str__(self):
         return str(self.__dict__)

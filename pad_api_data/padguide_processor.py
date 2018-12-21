@@ -81,11 +81,19 @@ def filter_events(bonuses):
             'rem_event',
             'multiplayer_announcement',
             'monthly_quest_dungeon',
+            'monthly_quest_info',
+            ''
+        ]
+        allowed_nondungeon_events = [
+            'Feed Skill-Up Chance',
+            'Feed Exp Bonus Chance',
         ]
         bonus_name = merged_event.bonus.bonus_name
         bonus_message = merged_event.bonus.clean_message
         if bonus_name in ignored_event_names:
-            fail_logger.debug('skipping announcement: %s - %s', bonus_name, bonus_message)
+            fail_logger.debug('skipping ignored event: %s - %s', bonus_name, bonus_message)
+        elif bonus_name in allowed_nondungeon_events:
+            filtered_events.append(merged_event)
         elif not merged_event.dungeon:
             fail_logger.debug('skipping non-dungeon: %s - %s', bonus_name, bonus_message)
         else:
@@ -96,6 +104,7 @@ def filter_events(bonuses):
 
 def find_event_id(en_name_to_event_id, jp_name_to_event_id, merged_event):
     bonus_name = merged_event.bonus.bonus_name
+    bonus_value = merged_event.bonus.bonus_value
     bonus_message = merged_event.bonus.clean_message
 
     message_replacements = {
@@ -111,6 +120,16 @@ def find_event_id(en_name_to_event_id, jp_name_to_event_id, merged_event):
             bonus_message = msg_out
             break
 
+    message_builders = {
+        'Exp Boost': 'Exp x {}!',
+        'Coin Boost': 'Coin x {}!',
+        'Drop Boost': 'Drop% x {}!',
+        'Stamina Reduction': 'Stamina {}!',
+    }
+
+    if bonus_name in message_builders:
+        bonus_message = message_builders[bonus_name].format(bonus_value)
+
     if bonus_name in en_name_to_event_id:
         return en_name_to_event_id[bonus_name]
     elif bonus_message in en_name_to_event_id:
@@ -118,18 +137,27 @@ def find_event_id(en_name_to_event_id, jp_name_to_event_id, merged_event):
     elif bonus_message in jp_name_to_event_id:
         return jp_name_to_event_id[bonus_message]
     elif bonus_name in ['dungeon', 'daily_dragons', 'dungeon_special_event']:
-        fail_logger.info('skipping unsupported event: %s - %s', bonus_name, bonus_message)
+        fail_logger.info('skipping unsupported event: %s - %s - %s',
+                         bonus_name, bonus_value, bonus_message)
     else:
-        pad_event_value = merged_event.bonus.bonus_value
         pad_dungeon_name = merged_event.dungeon.clean_name if merged_event.dungeon else ''
         fail_logger.warn('failed to match bonus name/message: (%s, %s) - (%s - %s)',
-                         bonus_name, pad_event_value,
+                         bonus_name, bonus_value,
                          bonus_message, pad_dungeon_name)
     return None
 
 
 def find_dungeon_id(en_name_to_dungeon_id, jp_name_to_dungeon_id, merged_event):
-    clean_name = merged_event.dungeon.clean_name
+    clean_name = None
+
+    # Special processing for weird events
+    if merged_event.bonus.bonus_name in ['Feed Skill-Up Chance', 'Feed Exp Bonus Chance']:
+        clean_name = 'x{} Skill Up, Great/Super Chance'.format(merged_event.bonus.bonus_value)
+    elif merged_event.dungeon:
+        clean_name = merged_event.dungeon.clean_name
+    else:
+        fail_logger.debug('skipping event with no dungeon: %s', repr(merged_event))
+        return None
 
     dungeon_id = en_name_to_dungeon_id.get(clean_name, None)
     if dungeon_id is None:
@@ -175,10 +203,6 @@ def database_diff_events(db_wrapper, database):
     unmatched_events = []
 
     for merged_event in filtered_events:
-        if not merged_event.dungeon:
-            fail_logger.debug('skipping event with no dungeon: %s', repr(merged_event))
-            continue
-
         if merged_event.bonus.dungeon_floor_id:
             fail_logger.debug('skipping event for dungeon floor: %s', repr(merged_event))
             continue
