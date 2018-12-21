@@ -25,8 +25,8 @@ fail_logger = logging.getLogger('processor_failures')
 fail_logger.setLevel(logging.INFO)
 
 logging.getLogger().setLevel(logging.DEBUG)
-logger.setLevel(logging.DEBUG)
-# logger.setLevel(logging.INFO)
+# logger.setLevel(logging.DEBUG)
+logger.setLevel(logging.INFO)
 
 
 def str2bool(v):
@@ -70,17 +70,9 @@ def load_dungeon_lookups(db_wrapper):
     return en_name_to_id, jp_name_to_id
 
 
-def database_diff_events(db_wrapper, database):
-    en_name_to_event_id, jp_name_to_event_id = load_event_lookups(db_wrapper)
-    en_name_to_dungeon_id, jp_name_to_dungeon_id = load_dungeon_lookups(db_wrapper)
-
-    schedule_events = []
-    unmatched_events = []
-
-    for merged_event in database.bonuses:
-        event_id = None
-        dungeon_id = None
-
+def filter_events(bonuses):
+    filtered_events = []
+    for merged_event in bonuses:
         ignored_event_names = [
             'tournament_active',
             'tournament_closed',
@@ -90,72 +82,124 @@ def database_diff_events(db_wrapper, database):
             'multiplayer_announcement',
             'monthly_quest_dungeon',
         ]
-
         bonus_name = merged_event.bonus.bonus_name
         bonus_message = merged_event.bonus.clean_message
         if bonus_name in ignored_event_names:
             fail_logger.debug('skipping announcement: %s - %s', bonus_name, bonus_message)
-        elif bonus_name in en_name_to_event_id:
-            event_id = en_name_to_event_id[bonus_name]
-        elif bonus_message in en_name_to_event_id:
-            event_id = en_name_to_event_id[bonus_message]
-        elif bonus_message in jp_name_to_event_id:
-            event_id = jp_name_to_event_id[bonus_message]
-        elif bonus_name == 'dungeon' or 'daily_dragons':
-            # No event expected
-            # Currently not handling these
-            pass
-        elif bonus_name == 'dungeon_special_event':
-            # Currently not handling these
-            pass
+        elif not merged_event.dungeon:
+            fail_logger.debug('skipping non-dungeon: %s - %s', bonus_name, bonus_message)
         else:
-            pad_event_value = merged_event.bonus.bonus_value
-            pad_dungeon_name = merged_event.dungeon.clean_name if merged_event.dungeon else ''
-            fail_logger.warn('failed to match bonus name/message: (%s, %s) - (%s - %s)',
-                             bonus_name, pad_event_value,
-                             bonus_message, pad_dungeon_name)
+            filtered_events.append(merged_event)
 
-        if merged_event.dungeon:
-            name_mapping = {
-                '-Awoken Skills Invalid': ' [Awoken Skills Invalid]',
-                '-Assists Invalid': ' [Assists Invalid]',
-                '-Skills Invalid': ' [Skills Invalid]',
-                '-All Att. Req.': ' [All Att. Req.]',
-                '-No Continues': ' [No Continues]',
-                '-No Dupes': ' [No Dupes]',
-                '-No RCV': ' [No RCV]',
-                '-No Fire': ' [No Fire]',
-                '-No Water': ' [No Water]',
-                '-No Wood': ' [No Wood]',
-                '-No Light': ' [No Light]',
-                '-No Dark': ' [No Dark]',
-                '-Special': ' [Special]',
-                '-7x6 Board': ' [7x6]',
-                '-Tricolor': '-Tricolor [Fr/Wt/Wd Only]'
-            }
-            clean_name = merged_event.dungeon.clean_name
-            for k, v in name_mapping.items():
-                clean_name = clean_name.replace(k, v)
-            dungeon_id = en_name_to_dungeon_id.get(clean_name, None)
-            if dungeon_id is None:
-                dungeon_id = jp_name_to_dungeon_id.get(clean_name, None)
+    return filtered_events
 
-            if dungeon_id is None:
-                if merged_event.group:
-                    fail_logger.error('failed group lookup: %s', repr(merged_event))
-                fail_logger.info('dungeon lookup failed: %s', repr(merged_event.dungeon))
+
+def find_event_id(en_name_to_event_id, jp_name_to_event_id, merged_event):
+    bonus_name = merged_event.bonus.bonus_name
+    bonus_message = merged_event.bonus.clean_message
+
+    message_replacements = {
+        'Bosses drop 10 + Points!': '+10 Drop',
+        'Bosses drop 30 + Points!': '+30 Drop',
+        'Bosses drop 50 + Points!': '+50 Drop',
+        'Bosses drop 99 + Points!': '+99 Drop',
+        '※[+99] will be added to + Points': '+99 Drop',
+    }
+
+    for msg_in, msg_out in message_replacements.items():
+        if bonus_message == msg_in:
+            bonus_message = msg_out
+            break
+
+    if bonus_name in en_name_to_event_id:
+        return en_name_to_event_id[bonus_name]
+    elif bonus_message in en_name_to_event_id:
+        return en_name_to_event_id[bonus_message]
+    elif bonus_message in jp_name_to_event_id:
+        return jp_name_to_event_id[bonus_message]
+    elif bonus_name in ['dungeon', 'daily_dragons', 'dungeon_special_event']:
+        fail_logger.info('skipping unsupported event: %s - %s', bonus_name, bonus_message)
+    else:
+        pad_event_value = merged_event.bonus.bonus_value
+        pad_dungeon_name = merged_event.dungeon.clean_name if merged_event.dungeon else ''
+        fail_logger.warn('failed to match bonus name/message: (%s, %s) - (%s - %s)',
+                         bonus_name, pad_event_value,
+                         bonus_message, pad_dungeon_name)
+    return None
+
+
+def find_dungeon_id(en_name_to_dungeon_id, jp_name_to_dungeon_id, merged_event):
+    clean_name = merged_event.dungeon.clean_name
+
+    dungeon_id = en_name_to_dungeon_id.get(clean_name, None)
+    if dungeon_id is None:
+        dungeon_id = jp_name_to_dungeon_id.get(clean_name, None)
+
+    if dungeon_id:
+        return dungeon_id
+
+    name_mapping = {
+        '-Awoken Skills Invalid': ' [Awoken Skills Invalid]',
+        '-Assists Invalid': ' [Assists Invalid]',
+        '-Skills Invalid': ' [Skills Invalid]',
+        '-All Att. Req.': ' [All Att. Req.]',
+        '-No Continues': ' [No Continues]',
+        '-No Dupes': ' [No Dupes]',
+        '-No RCV': ' [No RCV]',
+        '-No Fire': ' [No Fire]',
+        '-No Water': ' [No Water]',
+        '-No Wood': ' [No Wood]',
+        '-No Light': ' [No Light]',
+        '-No Dark': ' [No Dark]',
+        '-Special': ' [Special]',
+        '-7x6 Board': ' [7x6]',
+        '-Tricolor': '-Tricolor [Fr/Wt/Wd Only]'
+    }
+    for k, v in name_mapping.items():
+        clean_name = clean_name.replace(k, v)
+
+    dungeon_id = en_name_to_dungeon_id.get(clean_name, None)
+    if dungeon_id is None:
+        dungeon_id = jp_name_to_dungeon_id.get(clean_name, None)
+
+    return dungeon_id
+
+
+def database_diff_events(db_wrapper, database):
+    filtered_events = filter_events(database.bonuses)
+
+    en_name_to_event_id, jp_name_to_event_id = load_event_lookups(db_wrapper)
+    en_name_to_dungeon_id, jp_name_to_dungeon_id = load_dungeon_lookups(db_wrapper)
+
+    schedule_events = []
+    unmatched_events = []
+
+    for merged_event in filtered_events:
+        if not merged_event.dungeon:
+            fail_logger.debug('skipping event with no dungeon: %s', repr(merged_event))
+            continue
+
+        if merged_event.bonus.dungeon_floor_id:
+            fail_logger.debug('skipping event for dungeon floor: %s', repr(merged_event))
+            continue
+
+        event_id = find_event_id(en_name_to_event_id, jp_name_to_event_id, merged_event)
+        dungeon_id = find_dungeon_id(en_name_to_dungeon_id, jp_name_to_dungeon_id, merged_event)
 
         if not dungeon_id:
-            fail_logger.info('unmatched record')
-            unmatched_events.append(merged_event)
-        else:
-            schedule_item = ScheduleItem(merged_event, event_id, dungeon_id)
-            if not schedule_item.is_valid():
-                fail_logger.debug('skipping item: %s - %s - %s',
-                                  repr(merged_event), event_id, dungeon_id)
-                continue
+            if merged_event.group:
+                fail_logger.error('failed group lookup: %s', repr(merged_event))
             else:
-                schedule_events.append(schedule_item)
+                fail_logger.info('dungeon failed lookup: %s', repr(merged_event))
+            unmatched_events.append(merged_event)
+            continue
+
+        schedule_item = ScheduleItem(merged_event, event_id, dungeon_id)
+        if not schedule_item.is_valid():
+            fail_logger.debug('skipping item: %s - %s', repr(merged_event), repr(schedule_item))
+            continue
+        else:
+            schedule_events.append(schedule_item)
 
     next_id = db_wrapper.get_single_value(
         'SELECT 1 + COALESCE(MAX(CAST(schedule_seq AS SIGNED)), 30000) FROM schedule_list', op=int)
@@ -534,11 +578,12 @@ def load_data(args):
     db_wrapper = DbWrapper(dry_run)
     db_wrapper.connect(db_config)
 
-    logger.info('Starting JP event diff')
-    database_diff_events(db_wrapper, jp_database)
+#     logger.info('Starting JP event diff')
+#     database_diff_events(db_wrapper, jp_database)
 
     logger.info('Starting NA event diff')
     database_diff_events(db_wrapper, na_database)
+    return
 
     logger.info('Starting card diff')
     database_diff_cards(db_wrapper, jp_database, na_database)
