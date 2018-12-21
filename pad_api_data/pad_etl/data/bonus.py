@@ -11,7 +11,7 @@ import os
 from typing import Dict, List, Any
 
 from ..common import pad_util
-from ..common.pad_util import ghmult, ghchance
+from ..common.pad_util import ghmult_plain, ghchance_plain
 from ..common.shared_types import DungeonId, DungeonFloorId
 
 
@@ -24,16 +24,16 @@ class Bonus(pad_util.JsonDictEncodable):
 
     types = {
         # EXP multiplier.
-        1: {'name': 'Exp x{}!', 'mod_fn': ghmult},
+        1: {'name': 'Exp x {}!', 'mod_fn': ghmult_plain},
 
         # Coin multiplier.
-        2: {'name': 'Coin x{}!', 'mod_fn': ghmult},
+        2: {'name': 'Coin x {}!', 'mod_fn': ghmult_plain},
 
         # Drop rate increased.
-        3: {'name': 'Drop% x{}!', 'mod_fn': ghmult},
+        3: {'name': 'Drop% x {}!', 'mod_fn': ghmult_plain},
 
         # Stamina reduced.
-        5: {'name': 'Stamina {}!', 'mod_fn': ghmult},
+        5: {'name': 'Stamina {}!', 'mod_fn': ghmult_plain},
 
         # Special/co-op dungeon list.
         6: {'name': 'dungeon'},
@@ -48,19 +48,19 @@ class Bonus(pad_util.JsonDictEncodable):
         10: {'name': 'PEM cost: {}', 'mod_fn': int},
 
         # Feed XP modifier.
-        11: {'name': 'great*', 'mod_fn': ghmult},
+        11: {'name': 'great*', 'mod_fn': ghmult_plain},
 
         # Increased plus rate 1?
-        12: {'name': '+egg%', 'mod_fn': ghchance},
+        12: {'name': '+Egg x{}!', 'mod_fn': ghchance_plain},
 
         # ?
         14: {'name': 'gf_?', },
 
         # Increased plus rate 2?
-        16: {'name': '+egg*', 'mod_fn': ghmult},
+        16: {'name': '+Egg x{}!', 'mod_fn': ghmult_plain},
 
         # Increased skillup chance
-        17: {'name': 'skill*', 'mod_fn': ghmult},
+        17: {'name': 'skill*', 'mod_fn': ghmult_plain},
 
         # "tourney is over, results pending"?
         20: {'name': 'tournament_active', },
@@ -74,8 +74,7 @@ class Bonus(pad_util.JsonDictEncodable):
         # metadata?
         23: {'name': 'meta?', },
 
-        # Bosses drop as +99 Eggs
-        # None (but associated with dungeon)
+        # Seems to contain random text in the comment
         25: {'name': 'dungeon_special_event'},
 
         # Limited Time Dungeon arrives! (on multiplayer mode button)
@@ -127,7 +126,7 @@ class Bonus(pad_util.JsonDictEncodable):
 
         # Bonus value, if provided and a processor is set
         self.bonus_value = None  # type: number
-        if 'mod_inf' in bonus_info and 'a' in raw:
+        if 'mod_fn' in bonus_info and 'a' in raw:
             self.bonus_value = bonus_info['mod_fn'](raw['a'])
 
         # Human readable name for the bonus
@@ -137,7 +136,7 @@ class Bonus(pad_util.JsonDictEncodable):
         return str(self.__dict__)
 
     def __repr__(self):
-        return 'Bonus({} - {}/{})'.format(self.bonus_name, self.dungeon_id, self.dungeon_floor_id)
+        return 'Bonus({} - {} - {}/{})'.format(self.bonus_name, self.clean_message, self.dungeon_id, self.dungeon_floor_id)
 
     def __eq__(self, other):
         return self.__dict__ == other.__dict__
