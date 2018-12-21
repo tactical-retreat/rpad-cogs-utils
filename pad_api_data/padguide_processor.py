@@ -578,12 +578,11 @@ def load_data(args):
     db_wrapper = DbWrapper(dry_run)
     db_wrapper.connect(db_config)
 
-#     logger.info('Starting JP event diff')
-#     database_diff_events(db_wrapper, jp_database)
+    logger.info('Starting JP event diff')
+    database_diff_events(db_wrapper, jp_database)
 
     logger.info('Starting NA event diff')
     database_diff_events(db_wrapper, na_database)
-    return
 
     logger.info('Starting card diff')
     database_diff_cards(db_wrapper, jp_database, na_database)
