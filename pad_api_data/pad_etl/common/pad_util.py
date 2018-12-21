@@ -16,10 +16,24 @@ def ghmult(x: int) -> str:
     return '%sx' % mult
 
 
+def ghmult_plain(x: int) -> str:
+    """Normalizes multiplier to a human-readable number (without decorations)."""
+    mult = x / 10000
+    if int(mult) == mult:
+        mult = int(mult)
+    return '{}'.format(mult)
+
+
 def ghchance(x: int) -> str:
     """Normalizes percentage to a human-readable number."""
     assert x % 100 == 0
     return '%d%%' % (x // 100)
+
+
+def ghchance_plain(x: int) -> str:
+    """Normalizes percentage to a human-readable number (without decorations)."""
+    assert x % 100 == 0
+    return '%d%' % (x // 100)
 
 
 def ghtime(time_str: str, server: str) -> datetime.datetime:
@@ -63,7 +77,8 @@ class JsonDictEncodable(json.JSONEncoder):
         return o.__dict__
 
 
-# directly into a dictionary when multiple val's correspond to a single comment, but are unnecessarily delineated
+# directly into a dictionary when multiple val's correspond to a single
+# comment, but are unnecessarily delineated
 def get_dungeon_comment(val: int) -> str:
     if val in range(5611, 5615):
         return "Retired Special Dungeons"  # These are the last normal dungeons
@@ -159,13 +174,15 @@ def parse_skill_multiplier(skill, other_fields, length) -> Multiplier:
         elif length == 4:
             r_type = other_fields[0]
             if r_type == 31:
-                mult = get_second_last(other_fields) + get_last(other_fields) * (5 - other_fields[1])
+                mult = get_second_last(other_fields) + \
+                    get_last(other_fields) * (5 - other_fields[1])
                 multipliers.atk *= mult
             elif r_type % 14 == 0:
                 multipliers.atk *= get_second_last(other_fields) + get_last(other_fields)
             else:
                 # r_type is 63
-                mult = get_second_last(other_fields) + (get_last(other_fields)) * (6 - other_fields[1])
+                mult = get_second_last(other_fields) + \
+                    (get_last(other_fields)) * (6 - other_fields[1])
                 multipliers.atk *= mult
         elif length == 5:
             if other_fields[-1] <= other_fields[1]:
@@ -177,7 +194,7 @@ def parse_skill_multiplier(skill, other_fields, length) -> Multiplier:
                         other_fields)
             else:
                 multipliers.atk *= get_third_last(other_fields) + (
-                        other_fields[-1] - other_fields[1]) * get_second_last(other_fields)
+                    other_fields[-1] - other_fields[1]) * get_second_last(other_fields)
 
     elif skill in [63, 67]:
         multipliers.hp *= get_last(other_fields)
@@ -207,7 +224,7 @@ def parse_skill_multiplier(skill, other_fields, length) -> Multiplier:
             multipliers.atk *= get_last(other_fields)
         elif length == 5:
             multipliers.atk *= get_third_last(other_fields) + (
-                    (other_fields[4] - other_fields[1]) * (get_second_last(other_fields)))
+                (other_fields[4] - other_fields[1]) * (get_second_last(other_fields)))
 
     elif skill == 121:
         if length == 3:
@@ -468,8 +485,10 @@ def parse_skill_multiplier(skill, other_fields, length) -> Multiplier:
             multipliers.atk *= get_second_last(other_fields)
             multipliers.rcv *= get_last(other_fields)
         if length == 7:
-            multipliers.atk *= get_mult(other_fields[2]) + get_third_last(other_fields) * other_fields[-1]
-            multipliers.rcv *= get_mult(other_fields[3]) + get_second_last(other_fields) * other_fields[-1]
+            multipliers.atk *= get_mult(other_fields[2]) + \
+                get_third_last(other_fields) * other_fields[-1]
+            multipliers.rcv *= get_mult(other_fields[3]) + \
+                get_second_last(other_fields) * other_fields[-1]
 
     elif skill == 166:
         multipliers.atk *= get_mult(other_fields[1]) + (other_fields[-1] - other_fields[0]) * get_third_last(
@@ -509,7 +528,8 @@ def parse_skill_multiplier(skill, other_fields, length) -> Multiplier:
         if length == 7:
             multipliers.atk *= get_last(other_fields)
         elif length == 8:
-            multipliers.atk *= get_second_last(other_fields) + other_fields[-3] * get_last(other_fields)
+            multipliers.atk *= get_second_last(other_fields) + \
+                other_fields[-3] * get_last(other_fields)
 
     elif skill in [178, 185]:
         if length == 4:
