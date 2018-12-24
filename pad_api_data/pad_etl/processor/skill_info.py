@@ -2104,7 +2104,7 @@ def collab_bonus_convert(arguments):
             print('Missing collab name for', collab_id)
 
         c['skill_text'] += fmt_stats_type_attr_bonus(c) + \
-            ' when all cards are from ' + COLLAB_MAP.get('collab_id', '<not populated>')
+            ' when all cards are from ' + COLLAB_MAP.get(collab_id, '<not populated>')
 
         c['parameter'] = fmt_parameter(c)
         c['parameter'][3] = 0.0
