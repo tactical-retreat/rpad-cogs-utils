@@ -45,6 +45,7 @@ def parse_args():
     inputGroup.add_argument("--skipintermediate", default=False,
                             action="store_true", help="Skips the slow intermediate storage")
     inputGroup.add_argument("--db_config", required=True, help="JSON database info")
+    inputGroup.add_argument("--dev", default=False, action="store_true", help="Should we run dev processes")
     inputGroup.add_argument("--input_dir", required=True,
                             help="Path to a folder where the input data is")
 
