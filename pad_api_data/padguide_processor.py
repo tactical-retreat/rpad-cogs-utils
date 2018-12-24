@@ -10,7 +10,7 @@ import os
 
 import feedparser
 from pad_etl.common import monster_id_mapping
-from pad_etl.data import bonus, card, dungeon, skill
+from pad_etl.data import bonus, card, dungeon, skill, extra_egg_machine
 from pad_etl.processor import monster, monster_skill
 from pad_etl.processor import skill_info
 from pad_etl.processor.db_util import DbWrapper
@@ -56,6 +56,10 @@ def parse_args():
     helpGroup.add_argument("-h", "--help", action="help",
                            help="Displays this help message and exits.")
     return parser.parse_args()
+
+
+#def database_diff_egg_machines(db_wrapper, database):
+#     raw_bonuses = database.bonus_sets.values()[0]
 
 
 def load_event_lookups(db_wrapper):
@@ -632,15 +636,17 @@ def load_database(base_dir, pg_server):
          for x in ['red', 'blue', 'green']},
         skill.load_skill_data(data_dir=base_dir),
         skill.load_raw_skill_data(data_dir=base_dir))
+        # extra_egg_machine.load_data(data_dir=base_dir))
 
 
 class Database(object):
-    def __init__(self, pg_server, cards, dungeons, bonus_sets, skills, raw_skills):
+    def __init__(self, pg_server, cards, dungeons, bonus_sets, skills, raw_skills, extra_egg_machines=None):
         self.pg_server = pg_server
         self.raw_cards = cards
         self.dungeons = dungeons
         self.bonus_sets = bonus_sets
         self.skills = skills
+        self.extra_egg_machines = extra_egg_machines
 
         # This is temporary for the integration of calculated skills
         self.raw_skills = raw_skills
