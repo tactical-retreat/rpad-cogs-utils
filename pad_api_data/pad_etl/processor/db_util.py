@@ -73,9 +73,11 @@ class DbWrapper(object):
             self.execute(cursor, sql)
         return list(cursor.fetchall())
 
-    def load_to_key_value(self, key_name, value_name, table_name):
+    def load_to_key_value(self, key_name, value_name, table_name, where_clause=None):
         with self.connection.cursor() as cursor:
             sql = 'SELECT {} AS k, {} AS v FROM {}'.format(key_name, value_name, table_name)
+            if where_clause:
+                sql += ' WHERE ' + where_clause
             self.execute(cursor, sql)
             data = list(cursor.fetchall())
             return {row['k']: row['v'] for row in data}
