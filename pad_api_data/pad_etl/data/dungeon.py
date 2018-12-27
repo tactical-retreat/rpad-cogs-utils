@@ -19,19 +19,17 @@ class DungeonFloor(pad_util.JsonDictEncodable):
     """A floor listed once you click into a Dungeon."""
 
     def __init__(self, raw: List[Any]):
-        self.raw = raw
-
         self.floor_number = int(raw[0])
         self.raw_name = raw[1]
-        self.unknown_002 = raw[2]
-        self.unknown_003 = raw[3]
+        self.waves = raw[2]
+        self.rflags1 = raw[3]
         self.stamina = raw[4]
-        self.unknown_005 = raw[5]
-        self.unknown_006 = raw[6]
-        self.unknown_007 = raw[7]
-        self.unknown_008 = raw[8]
-        self.unknown_009 = raw[9]
-        self.unknown_010 = raw[10]
+        self.bgm1 = raw[5]
+        self.bgm2 = raw[6]
+        self.rflags2 = raw[7]
+        self.flags = raw[8]
+        # These need to be parsed depending on flags
+        self.remaining_fields = raw[9:]
 
 
 prefix_to_dungeontype = {
@@ -68,6 +66,7 @@ class Dungeon(pad_util.JsonDictEncodable):
         # I call it comment as it is similar to dungeon_type, but sometimes designates certain dungeons specifically
         # over others. See dungeon_types.py for more details.
         self.dungeon_comment = pad_util.get_dungeon_comment(int(raw[5]))
+        self.dungeon_comment_value = int(raw[5])
 
         # This will be a day of the week, or an empty string if it doesn't repeat regularly
         self.repeat_day = REPEAT_DAY[int(raw[4])]
