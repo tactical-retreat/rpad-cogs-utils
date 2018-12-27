@@ -42,6 +42,18 @@ function error_exit {
     hook_file "/tmp/pad_data_update_log.txt"
 }
 
+function human_fixes_check {
+    human_fixes_path="/tmp/pipeline_human_fixes.txt"
+    if [ -s ${human_fixes_path} ]
+    then
+        echo "Alerting for human fixes"
+        hook_alert "Pipeline requires human intervention"
+        hook_file ${human_fixes_path}
+    else
+        echo "No fixes required"
+    fi
+}
+
 function success_exit {
     echo "Pipeline finished"
     # Disabling; spammy
@@ -86,6 +98,8 @@ python3 ${EXEC_DIR}/padguide_processor.py \
   --output_dir=${DATA_DIR}/processed \
   --db_config=${EXEC_DIR}/db_config.json \
   --doupdates
+
+human_fixes_check
 
 echo "updating padguide_dev"
 python3 ${EXEC_DIR}/padguide_processor.py \
