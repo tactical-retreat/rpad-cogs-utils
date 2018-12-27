@@ -47,7 +47,6 @@ class ScheduleItem(object):
         self.dungeon_seq = str(dungeon_id)
         self.event_seq = '0' if event_id is None else str(event_id)
 
-        # TODO: Need to support Week
         self.event_enum = None
         if merged_bonus.is_starter:
             self.event_enum = EventType.SpecialWeek
@@ -55,6 +54,8 @@ class ScheduleItem(object):
             self.event_enum = EventType.Guerrilla
         elif merged_bonus.bonus.bonus_name in ['Feed Skill-Up Chance', 'Feed Exp Bonus Chance']:
             self.event_enum = EventType.Etc
+        else:
+            self.event_enum = EventType.Special
         self.event_type = str(self.event_enum.value if self.event_enum else None)
 
         self.open_date = open_datetime_utc.date()
@@ -93,8 +94,7 @@ class ScheduleItem(object):
     def is_valid(self):
         # Messages and some random data errors
         is_too_long = (self.close_date - self.open_date) > timedelta(days=365)
-        # Only accept guerrilla for now
-        return not is_too_long and self.event_enum in (EventType.Guerrilla, EventType.SpecialWeek, EventType.Etc)
+        return not is_too_long and self.event_enum in (EventType.Special, EventType.Guerrilla, EventType.SpecialWeek, EventType.Etc)
 
     def exists_sql(self):
         sql = """SELECT schedule_seq FROM schedule_list
