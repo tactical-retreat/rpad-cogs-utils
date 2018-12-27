@@ -31,7 +31,7 @@ logging.getLogger().setLevel(logging.DEBUG)
 logger.setLevel(logging.INFO)
 
 human_fix_logger = logging.getLogger('human_fix')
-human_fix_logger.addHandler(logging.FileHandler('/tmp/dev_pipeline_human_fixes', mode='w')) 
+human_fix_logger.addHandler(logging.FileHandler('/tmp/pipeline_human_fixes.txt', mode='w')) 
 human_fix_logger.setLevel(logging.INFO)
 
 
