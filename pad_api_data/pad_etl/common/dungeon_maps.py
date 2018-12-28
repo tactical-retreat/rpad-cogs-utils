@@ -1,3 +1,6 @@
+
+
+# This is a map for the Floor raw[7] item
 raw7_map = {
     0: 'None',
     1: 'No Fire',

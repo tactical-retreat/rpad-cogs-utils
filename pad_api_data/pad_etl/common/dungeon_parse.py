@@ -1,3 +1,4 @@
+# A small object to hold floor modifier information
 class Modifier:
     def __init__(self):
         self.requiredDungeon = 0
@@ -5,6 +6,7 @@ class Modifier:
         self.entryRequirement = "None"
 
 
+# Some basic functions so that I dont have to keep rewriting some things
 def splitMods(raw, pos, diff):
     return raw[pos + diff].split("|")
 
@@ -13,6 +15,7 @@ def getLast(raw):
     return str(raw[-1])
 
 
+# A function that returns a modifier object depending on the input type from the raw list.
 def getModifiers(raw, pos):
     val = int(raw[pos])
 
