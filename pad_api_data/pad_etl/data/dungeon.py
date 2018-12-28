@@ -10,6 +10,8 @@ from typing import List, Any
 
 from ..common import pad_util
 from ..common.dungeon_types import DUNGEON_TYPE, REPEAT_DAY
+from ..common.dungeon_parse import getModifiers
+from ..common.dungeon_maps import raw7_map
 
 # The typical JSON file name for this data.
 FILE_NAME = 'download_dungeon_data.json'
@@ -29,7 +31,32 @@ class DungeonFloor(pad_util.JsonDictEncodable):
         self.rflags2 = raw[7]
         self.flags = raw[8]
         # These need to be parsed depending on flags
+        self.otherModifier = raw7_map[int(raw[7])]
+
+        possibleDrops = {}
+
+        pos = 8
+
+        while (int(raw[pos]) is not 0):
+            rawVal = int(raw[pos])
+            if rawVal > 10000:
+                val = rawVal - 10000
+                possibleDrops[val] = "rare"
+                pos += 1
+            else:
+                possibleDrops[rawVal] = "normal"
+                pos += 1
+        pos += 1
+        modifiers = getModifiers(raw, pos)
+
+        self.entryRequirement = modifiers.entryRequirement
+        self.requiredDungeon = modifiers.requiredDungeon
+        self.modifiers = modifiers.modifiers
+
+        self.possibleDrops = possibleDrops
+
         self.remaining_fields = raw[9:]
+
 
 
 prefix_to_dungeontype = {
