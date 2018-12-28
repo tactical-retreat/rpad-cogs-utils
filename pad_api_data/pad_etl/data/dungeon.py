@@ -49,14 +49,21 @@ class DungeonFloor(pad_util.JsonDictEncodable):
         pos += 1
         modifiers = getModifiers(raw, pos)
 
+        drops = []
+        dropRarities = []
+
+        for key, val in possibleDrops.items():
+            drops.append(key)
+            dropRarities.append(val)
+
+        self.drops = drops
+        self.dropRarities = dropRarities
+
         self.entryRequirement = modifiers.entryRequirement
         self.requiredDungeon = modifiers.requiredDungeon
         self.modifiers = modifiers.modifiers
 
-        self.possibleDrops = possibleDrops
-
         self.remaining_fields = raw[9:]
-
 
 
 prefix_to_dungeontype = {
@@ -109,8 +116,9 @@ class Dungeon(pad_util.JsonDictEncodable):
                 break
 
         # Warning disabled; format changed, assuming it's still fine whatever
-#         if len(raw) > 6:
-#             print('unexpected field count: ' + ','.join(raw))
+
+    #         if len(raw) > 6:
+    #             print('unexpected field count: ' + ','.join(raw))
 
     def __str__(self):
         return str(self.__dict__)
