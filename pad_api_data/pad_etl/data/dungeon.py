@@ -41,6 +41,9 @@ prefix_to_dungeontype = {
 
     # #C#Rurouni Kenshin dung
     '#C#': 'collab',
+
+    # Monthly and other quests
+    '#Q#': 'quest',
 }
 
 
