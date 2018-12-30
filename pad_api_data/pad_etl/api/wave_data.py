@@ -29,4 +29,5 @@ class WaveMonster(pad_util.JsonDictEncodable):
         self.monster_id = monster_data[1]
         self.monster_level = monster_data[2]
         self.drop_monster_id = monster_data[3]
-        self.plus_amount = monster_data[4]
+        self.drop_monster_level = monster_data[4]
+        self.plus_amount = monster_data[5]

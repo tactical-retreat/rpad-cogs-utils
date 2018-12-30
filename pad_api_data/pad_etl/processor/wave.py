@@ -21,6 +21,7 @@ class WaveItem(SqlItem):
         self.monster_id = monster.monster_id
         self.monster_level = monster.monster_level
         self.drop_monster_id = monster.drop_monster_id
+        self.drop_monster_level = monster.drop_monster_level
         self.plus_amount = monster.plus_amount
 
         self.pull_id = pull_id
