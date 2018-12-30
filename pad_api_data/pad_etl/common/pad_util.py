@@ -1,6 +1,9 @@
 import datetime
 import json
 import re
+
+import pytz
+
 from .dungeon_types import DUNGEON_TYPE_COMMENTS
 
 
@@ -40,11 +43,13 @@ def ghtime(time_str: str, server: str) -> datetime.datetime:
     """Converts a time string into a datetime."""
     # <  151228000000
     # >  2015-12-28 00:00:00
+    server = server.lower()
+    server = 'jp' if server == 'ja' else server
     tz_offsets = {
         'na': '-0800',
         'jp': '+0900',
     }
-    timezone_str = '{} {}'.format(time_str, tz_offsets[server.lower()])
+    timezone_str = '{} {}'.format(time_str, tz_offsets[server])
     return datetime.datetime.strptime(timezone_str, '%y%m%d%H%M%S %z')
 
 
@@ -52,6 +57,32 @@ def gh_to_timestamp(time_str: str, server: str) -> int:
     """Converts a time string to a timestamp."""
     dt = ghtime(time_str, server)
     return int(dt.timestamp())
+
+
+def datetime_to_gh(dt):
+    # Assumes timezone is set properly
+    return dt.strftime('%y%m%d%H%M%S')
+
+
+class NoDstWestern(datetime.tzinfo):
+    def utcoffset(self, *dt):
+        return datetime.timedelta(hours=-8)
+
+    def tzname(self, dt):
+        return "NoDstWestern"
+
+    def dst(self, dt):
+        return datetime.timedelta(hours=-8)
+
+
+def cur_gh_time(server):
+    server = server.lower()
+    server = 'jp' if server == 'ja' else server
+    tz_offsets = {
+        'na': NoDstWestern(),
+        'jp': pytz.timezone('Asia/Tokyo'),
+    }
+    return datetime_to_gh(datetime.datetime.now(tz_offsets[server]))
 
 
 def internal_id_to_display_id(i_id: int) -> str:
@@ -75,6 +106,9 @@ class JsonDictEncodable(json.JSONEncoder):
 
     def default(self, o):
         return o.__dict__
+
+    def __str__(self):
+        return str(self.__dict__)
 
 
 # directly into a dictionary when multiple val's correspond to a single
