@@ -10,6 +10,8 @@ from typing import List, Any
 
 from ..common import pad_util
 from ..common.dungeon_types import DUNGEON_TYPE, REPEAT_DAY
+from ..common.dungeon_parse import getModifiers
+from ..common.dungeon_maps import raw7_map
 
 # The typical JSON file name for this data.
 FILE_NAME = 'download_dungeon_data.json'
@@ -29,6 +31,42 @@ class DungeonFloor(pad_util.JsonDictEncodable):
         self.rflags2 = raw[7]
         self.flags = raw[8]
         # These need to be parsed depending on flags
+        self.otherModifier = raw7_map[int(raw[7])]
+
+        possibleDrops = {}
+
+
+
+        # This next loop runs through the elements from raw[8] until it hits a 0. The 0 indicates the end of the list
+        # of drops for the floor, the following segments are the dungeon modifiers
+        pos = 8
+
+        while (int(raw[pos]) is not 0):
+            rawVal = int(raw[pos])
+            if rawVal > 10000:
+                val = rawVal - 10000
+                possibleDrops[val] = "rare"
+                pos += 1
+            else:
+                possibleDrops[rawVal] = "normal"
+                pos += 1
+        pos += 1
+        modifiers = getModifiers(raw, pos)
+
+        drops = []
+        dropRarities = []
+
+        for key, val in possibleDrops.items():
+            drops.append(key)
+            dropRarities.append(val)
+
+        self.drops = drops
+        self.dropRarities = dropRarities
+
+        self.entryRequirement = modifiers.entryRequirement
+        self.requiredDungeon = modifiers.requiredDungeon
+        self.modifiers = modifiers.modifiers
+
         self.remaining_fields = raw[9:]
 
 
@@ -82,8 +120,9 @@ class Dungeon(pad_util.JsonDictEncodable):
                 break
 
         # Warning disabled; format changed, assuming it's still fine whatever
-#         if len(raw) > 6:
-#             print('unexpected field count: ' + ','.join(raw))
+
+    #         if len(raw) > 6:
+    #             print('unexpected field count: ' + ','.join(raw))
 
     def __str__(self):
         return str(self.__dict__)
