@@ -37,6 +37,7 @@ a:hover
         <a href='<?php echo site_url('main/monster_info_list')?>'>Monster Info</a> | 
         <a href='<?php echo site_url('main/series_list')?>'>Series</a> | 
         <a href='<?php echo site_url('main/dungeon_list')?>'>Dungeon</a> | 
+        <a href='<?php echo site_url('main/upload_csv')?>'>Import CSV</a>
     </div>
 <!-- End of header-->
     <div style='height:20px;'></div>  
@@ -45,7 +46,7 @@ a:hover
  
     </div>
 <!-- Beginning footer -->
-<div>Footer</div>
+<div><!-- Footer --></div>
 <!-- End of Footer -->
 </body>
 </html>
