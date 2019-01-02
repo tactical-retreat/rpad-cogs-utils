@@ -8,22 +8,30 @@ import pymysql
 logger = logging.getLogger('database')
 logger.setLevel(logging.ERROR)
 
-
+# This stuff should move to sql_item probably
 def object_to_sql_params(obj):
     d = obj if type(obj) == dict else obj.__dict__
     new_d = {}
     for k, v in d.items():
-        if v is None:
-            new_d[k] = 'NULL'
-        elif type(v) == str:
-            clean_v = v.replace("'", r"''")
-            new_d[k] = "'{}'".format(clean_v)
-        elif type(v) in (int, float, decimal.Decimal):
-            new_d[k] = '{}'.format(v)
-        elif type(v) in [datetime, date]:
-            new_d[k] = "'{}'".format(v.isoformat())
+        new_val = value_to_sql_param(v)
+        if new_val is not None:
+            new_d[k] = new_val
     return new_d
 
+def value_to_sql_param(v):
+    if v is None:
+        return 'NULL'
+    elif type(v) == str:
+        clean_v = v.replace("'", r"''")
+        return "'{}'".format(clean_v)
+    elif type(v) in (int, float, decimal.Decimal):
+        return '{}'.format(v)
+    elif type(v) in [datetime, date]:
+        return "'{}'".format(v.isoformat())
+    elif type(v) in [bool]:
+        return str(v)
+    else:
+        return None
 
 def _col_compare(col):
     return col + ' = ' + _col_value_ref(col)
@@ -109,6 +117,14 @@ class DbWrapper(object):
             if len(row.values()) > 1:
                 raise ValueError('too many columns in result:', sql)
             return op(list(row.values())[0])
+
+    def load_single_object(self, obj_type, key_val):
+        sql = 'SELECT * FROM {} WHERE {}'.format(
+            _tbl_name_ref(obj_type.TABLE), 
+            _col_compare(obj_type.KEY_COL))
+        sql = sql.format(**{obj_type.KEY_COL: key_val})
+        data = self.get_single_or_no_row(sql)
+        return obj_type(**data) if data else None
 
     def check_existing(self, sql):
         with self.connection.cursor() as cursor:
