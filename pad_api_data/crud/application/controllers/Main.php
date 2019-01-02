@@ -42,8 +42,8 @@ public function monster_list(){
 	//misc
 	'reg_date','tstamp'
 	/* Not displayed
-		app_version: probably useless
-		te_seq: redundant with exp
+	app_version: probably useless
+	te_seq: redundant with exp
 	*/
 	);
 	$relations = array(
@@ -58,20 +58,45 @@ public function monster_list(){
 }
 
 public function monster_info_list(){
-	$columns = array('monster_no','tsr_seq','history_jp','history_kr','history_us','on_kr','on_us','pal_egg','rare_egg','fodder_exp','sell_price','tstamp');
-    $this->_do_table('monster_info_list', $columns);
+	$columns = array('monster_no','tsr_seq','on_kr','on_us','pal_egg','rare_egg','fodder_exp','sell_price','history_jp','history_kr','history_us','tstamp');
+	$relations = array(
+		'Monster' => array('monster_no', 'monster_list', '[{monster_no}] {tm_name_us}'),
+		'Series' => array('tsr_seq', 'series_list', 'name_us', array('del_yn' => false))
+	);
+    $this->_do_table('monster_info_list', $columns, $relations);
 }
 
 public function series_list(){
-	$columns = array('tsr_seq','name_jp','name_kr','name_us','search_data',/*'del_yn',*/'tstamp');
+	$columns = array('tsr_seq','name_jp','name_kr','name_us','search_data','del_yn','tstamp');
 	$order = array('del_yn', 'asc');
     $this->_do_table('series_list', $columns, null, $order);
 }
 
 public function dungeon_list(){
-	$columns = array('dungeon_seq','order_idx','tdt_seq','dungeon_type','icon_seq','name_jp','name_kr','name_us','comment_jp','comment_kr','comment_us',/*'show_yn',*/'tstamp');
+	$columns = array('dungeon_seq','order_idx','tdt_seq','dungeon_type','icon_seq','name_jp','name_kr','name_us','comment_jp','comment_kr','comment_us','show_yn','tstamp');
 	$order = array('show_yn', 'asc');
     $this->_do_table('dungeon_list', $columns, null, $order);
+}
+
+public function csv_select(){
+	$error = array('error' => '');
+	$this->load->view('csv_select', $error);
+}
+public function csv_upload(){
+	$config['upload_path'] = 'assets/uploads/';
+	$config['allowed_types'] = 'csv';
+	$config['file_name'] = 'tmp_import.csv';
+	$config['overwrite'] = True;
+
+	$this->load->library('upload', $config);
+
+	if (!$this->upload->do_upload('userfile')){
+		$error = array('error' => $this->upload->display_errors());
+		$this->load->view('csv_select', $error);
+	}else{
+		$data = array('upload_data' => $this->upload->data());
+		$this->load->view('csv_import', $data);
+	}
 }
 
 public function _do_table($table = null, $columns = null, $relations = null, $order = null) {
@@ -84,10 +109,10 @@ public function _do_table($table = null, $columns = null, $relations = null, $or
 		$crud->fields($columns);
 	}
 	if(!is_null($relations)){
-		foreach($relations as $name => $r){
-			$crud->display_as($r[0], $name);
-			$crud->set_relation(...$r);
-		}
+	foreach($relations as $name => $r){
+		$crud->display_as($r[0], $name);
+		$crud->set_relation(...$r);
+	}
 	}
 	if(!is_null($order)){
 		$crud->order_by(...$order);
