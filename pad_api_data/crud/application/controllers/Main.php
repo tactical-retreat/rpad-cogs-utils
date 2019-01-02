@@ -51,8 +51,8 @@ public function monster_list(){
 		'Sub Att' => array('ta_seq_sub', 'attribute_list', 'ta_name_us'),
 		'Type 1' => array('tt_seq', 'type_list', 'tt_name_us'),
 		'Type 2' => array('tt_seq_sub', 'type_list', 'tt_name_us'),
-		'Lead Skill' => array('ts_seq_leader', 'skill_list', 'ts_desc_us_calculated'),
-		'Active' => array('ts_seq_skill', 'skill_list', 'ts_desc_us_calculated')
+		'Lead Skill' => array('ts_seq_leader', 'skill_list', '[{ts_seq}] {ts_desc_us_calculated}'),
+		'Active' => array('ts_seq_skill', 'skill_list', '[{ts_seq}] {ts_desc_us_calculated}')
 	);
     $this->_do_table('monster_list', $columns, $relations);
 }
