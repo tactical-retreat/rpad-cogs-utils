@@ -126,6 +126,14 @@ class DbWrapper(object):
         data = self.get_single_or_no_row(sql)
         return obj_type(**data) if data else None
 
+    def load_multiple_objects(self, obj_type, key_val):
+        sql = 'SELECT * FROM {} WHERE {}'.format(
+            _tbl_name_ref(obj_type.TABLE), 
+            _col_compare(obj_type.LIST_COL))
+        sql = sql.format(**{obj_type.LIST_COL: key_val})
+        data = self.fetch_data(sql)
+        return [obj_type(**d) for d in data]
+
     def check_existing(self, sql):
         with self.connection.cursor() as cursor:
             num_rows = self.execute(cursor, sql)
@@ -157,3 +165,4 @@ class DbWrapper(object):
             num_rows = len(data)
             if num_rows > 0:
                 raise ValueError('got too many results for insert:', num_rows, sql)
+
