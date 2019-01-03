@@ -1,6 +1,13 @@
 from . import db_util
 
 class SqlItem(object):
+    def key_value(self):
+        return getattr(self, self._key()) if self._key() else None
+
+    def needs_insert(self):
+        key_val = self.key_value()
+        return key_val is None or key_val == 0
+
     def exists_sql(self):
         sql = 'SELECT {} FROM {} WHERE {}'.format(
             self._key(), self._table(), self._col_compare(self._key()))
@@ -13,6 +20,7 @@ class SqlItem(object):
         cols = [self._key()] + update_cols
         sql = 'SELECT {} FROM {} WHERE'.format(self._key(), self._table())
         sql += ' ' + ' AND '.join(map(self._col_compare, cols))
+
         formatted_sql = sql.format(**db_util.object_to_sql_params(self))
         fixed_sql = formatted_sql.replace('= NULL', 'is NULL')
         return fixed_sql
@@ -34,7 +42,9 @@ class SqlItem(object):
 
         # If an item is timestamped, modify the timestamp on every update
         if hasattr(self, 'tstamp'):
-            cols = cols + ['tstamp']
+            # TODO: Consider auto udpating tstamp here
+            if 'tstamp' not in cols:
+                cols = cols + ['tstamp']
 
         sql = 'UPDATE {}'.format(self._table())
         sql += ' SET ' + ', '.join(map(self._col_compare, cols))
@@ -43,6 +53,10 @@ class SqlItem(object):
 
     def insert_sql(self):
         cols = self._insert_columns()
+        if hasattr(self, 'tstamp'):
+            # TODO: Consider auto udpating tstamp here
+            if 'tstamp' not in cols:
+                cols = cols + ['tstamp']
         return db_util.generate_insert_sql(self._table(), cols, self)
 
     def _table(self):
@@ -56,4 +70,3 @@ class SqlItem(object):
 
     def _update_columns(self):
         return None
-
