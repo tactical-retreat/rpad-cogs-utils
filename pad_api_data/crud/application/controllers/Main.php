@@ -1,7 +1,7 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
  
 class Main extends CI_Controller {
- 
+public $csv_primary_key = 'monster_list.monster_no';
 function __construct()
 {
         parent::__construct();
@@ -12,7 +12,7 @@ $this->load->helper('url');
 /* ------------------ */ 
  
 $this->load->library('grocery_CRUD'); 
- 
+$this->load->library('upload');
 }
  
 public function index()
@@ -66,40 +66,148 @@ public function monster_info_list(){
     $this->_do_table('monster_info_list', $columns, $relations);
 }
 
-public function series_list(){
+public function series_list_active(){
+	$columns = array('tsr_seq','monsters','name_jp','name_kr','name_us','search_data','del_yn','tstamp');
+	$filter = array('del_yn', 0);
+	$relations = array(
+		//ordering looks nice but is slow af
+		'N2N_monsters' => array('monsters', 'monster_info_list', 'monster_list', 'tsr_seq', 'monster_no' , 'tm_name_us'/*, 'monster_no asc'*/)
+	);
+    $this->_do_table('series_list', $columns, $relations, $filter);
+}
+
+public function series_list_inactive(){
 	$columns = array('tsr_seq','name_jp','name_kr','name_us','search_data','del_yn','tstamp');
-	$order = array('del_yn', 'asc');
-    $this->_do_table('series_list', $columns, null, $order);
+	$filter = array('del_yn', 1);
+    $this->_do_table('series_list', $columns, null, $filter);
 }
 
-public function dungeon_list(){
+public function dungeon_list_active(){
 	$columns = array('dungeon_seq','order_idx','tdt_seq','dungeon_type','icon_seq','name_jp','name_kr','name_us','comment_jp','comment_kr','comment_us','show_yn','tstamp');
-	$order = array('show_yn', 'asc');
-    $this->_do_table('dungeon_list', $columns, null, $order);
+	$filter = array('show_yn', 1);
+    $this->_do_table('dungeon_list', $columns, null, $filter);
 }
 
-public function csv_select(){
-	$error = array('error' => '');
-	$this->load->view('csv_select', $error);
+public function dungeon_list_inactive(){
+	$columns = array('dungeon_seq','order_idx','tdt_seq','dungeon_type','icon_seq','name_jp','name_kr','name_us','comment_jp','comment_kr','comment_us','show_yn','tstamp');
+	$filter = array('show_yn', 0);
+    $this->_do_table('dungeon_list', $columns, null, $filter);
 }
-public function csv_upload(){
-	$config['upload_path'] = 'assets/uploads/';
-	$config['allowed_types'] = 'csv';
-	$config['file_name'] = 'tmp_import.csv';
-	$config['overwrite'] = True;
 
-	$this->load->library('upload', $config);
-
-	if (!$this->upload->do_upload('userfile')){
-		$error = array('error' => $this->upload->display_errors());
-		$this->load->view('csv_select', $error);
-	}else{
-		$data = array('upload_data' => $this->upload->data());
-		$this->load->view('csv_import', $data);
+private function _get_primary_key($tablename){
+	$f_dat = $this->db->field_data($tablename);
+	foreach ($f_dat as $f){
+		if($f->primary_key == 1){
+			return $f->name;
+		}
 	}
+	return '';
 }
 
-public function _do_table($table = null, $columns = null, $relations = null, $order = null) {
+public function csv_upload(){
+	$output = array();
+	if (!$this->upload->do_upload('userfile')){
+		$output['error'] = $this->upload->display_errors();
+	}else{
+		$upload_data = $this->upload->data();
+		if (($handle = fopen($upload_data['full_path'], 'r')) !== false) {
+			$filesize = filesize($upload_data['full_path']);
+			$output['csv_data'] = array();
+			$pk_idx = null;
+			$fields = array();
+			$output['headings'] = array();
+			while (($data = fgetcsv($handle, $filesize, ',')) !== false) {
+				if(!isset($pk_idx)) {
+					if(!in_array($this->csv_primary_key, $data)){
+						$output['error'] = 'Missing ' . $this->csv_primary_key . ' field';
+						break;
+					}
+					$pk_idx = array_search($this->csv_primary_key, $data);
+					$output['headings'] = $data;
+					$fields[$pk_idx] = explode('.', $this->csv_primary_key, 2);
+					$pk_fieldname = $fields[$pk_idx][1];
+					foreach($data as $i => $d){
+						if($i == $pk_idx){
+							continue;
+						}
+						$tmp = explode('.', $d, 2);
+						if(sizeof($tmp) < 2){
+							$output['error'] = $d . ' not in <table>.<field> format';
+							break;
+						}
+						if(in_array($fields[$pk_idx][1], $this->db->list_fields($tmp[0]))){
+							$tmp[2] = $pk_fieldname;
+						}else{
+							$tmp[2] = $tmp[1];
+							$tmp[1] = $this->_get_primary_key($tmp[0]);
+						}
+						$fields[$i] = $tmp;
+					}
+				} else {
+					if($data[$pk_idx] == 'null'){
+						continue;
+					}
+					$pk_tablename = $fields[$pk_idx][0];
+					$pk_fieldname = $fields[$pk_idx][1];
+					$this->db->select($pk_fieldname);
+					$this->db->from($pk_tablename);
+					$this->db->where($pk_fieldname, $data[$pk_idx]);
+					$res = $this->db->get();
+					if($res->num_rows() == 0){
+						//$output['error'] = $data[$pk_idx] . ' does not exist in ' . $this->csv_primary_key;
+						continue;
+					}
+					
+					$input_data = array($this->csv_primary_key => $data[$pk_idx]);
+					$db_data = array($this->csv_primary_key => $data[$pk_idx]);
+					foreach($fields as $i => $field){
+						if($i == $pk_idx){
+							continue;
+						}
+						$tablename = $field[0];
+						$fieldname = $field[1];
+						$wherefield = $field[2];
+						$heading = $output['headings'][$i];
+						if($wherefield == $pk_fieldname){
+							$whereinput = $data[$pk_idx];
+						}else{
+							$whereinput = $data[$i];
+						}
+						$input_data[$heading] = $data[$i];
+						
+						if($fieldname == 'tm_name_us_override'){
+							$this->db->select($fieldname . ', tm_name_us, tm_name_jp, ' . $wherefield);
+						}else{
+							$this->db->select($fieldname . ', ' . $wherefield);
+						}
+						$this->db->from($tablename);
+						$this->db->where($wherefield, $whereinput);						
+						$res = $this->db->get();
+						//echo $this->db->last_query() . '<br/>';
+						if($res->num_rows() == 0){
+							$db_data[$heading] = 'null';
+						}else{
+							$row = $res->row_array();
+							unset($row[$tablename . '.' . $pk_fieldname]);
+							unset($row[$pk_fieldname]);
+							if(sizeof($row) == 1){
+								$row = reset($row);
+							}
+							$db_data[$heading] = $row;
+						}
+					}
+					$output['csv_data'][] = array('new' => $input_data, 'current' => $db_data);
+				}
+			}
+			fclose($handle);
+			unlink($upload_data['full_path']);
+		}
+
+	}
+	$this->load->view('csv_import', $output);
+}
+
+public function _do_table($table = null, $columns = null, $relations = null, $filter = null) {
 	$crud = new grocery_CRUD();
     $crud->set_theme('flexigrid');
 	$crud->set_table($table);
@@ -109,20 +217,24 @@ public function _do_table($table = null, $columns = null, $relations = null, $or
 		$crud->fields($columns);
 	}
 	if(!is_null($relations)){
-	foreach($relations as $name => $r){
-		$crud->display_as($r[0], $name);
-		$crud->set_relation(...$r);
+		foreach($relations as $name => $r){
+			if(strpos($name, 'N2N') === 0){
+				$crud->set_relation_n_n(...$r);
+			}else{
+				$crud->display_as($r[0], $name);
+				$crud->set_relation(...$r);
+			}
+		}
 	}
-	}
-	if(!is_null($order)){
-		$crud->order_by(...$order);
+	if(!is_null($filter)){
+		$crud->where(...$filter);
 	}
 
     $crud->callback_before_insert(array($this,'_update_tstamp'));
     $crud->callback_before_update(array($this,'_update_tstamp'));
 
     $output = $crud->render();
-    $this->load->view('padguide.php',$output);
+    $this->load->view('padguide.php', $output);
 }
 
 function _update_tstamp($post_array,
