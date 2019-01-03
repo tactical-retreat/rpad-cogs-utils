@@ -10,16 +10,18 @@ from .monster import SqlItem
 
 
 class WaveItem(SqlItem):
-    def __init__(self, pull_id: int, entry_id: int, server: str, dungeon_id: int, dungeon_floor_id: int, floor: int, slot: int, monster: wave_data.WaveMonster):
+    def __init__(self, pull_id: int, entry_id: int, server: str, dungeon_id: int, floor_id: int, stage: int, slot: int, monster: wave_data.WaveMonster):
         self.server = server
         self.dungeon_id = dungeon_id
-        self.dungeon_floor_id = dungeon_floor_id
-        self.floor = floor
+        self.floor_id = floor_id
+        self.stage = stage
         self.slot = slot
 
-        self.unknown_0 = monster.unknown_0
+        self.spawn_type = monster.spawn_type
         self.monster_id = monster.monster_id
         self.monster_level = monster.monster_level
+
+        # If drop_monster_id == 9900, then drop_monster_level is the bonus gold amount
         self.drop_monster_id = monster.drop_monster_id
         self.drop_monster_level = monster.drop_monster_level
         self.plus_amount = monster.plus_amount
