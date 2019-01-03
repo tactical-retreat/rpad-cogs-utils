@@ -17,9 +17,18 @@ a:hover
 {
     text-decoration: underline;
 }
-.grid-table {
+.grid {
 	display: grid;
-	grid-template-columns: repeat(5, 1fr);
+	grid-template-rows: min-content;
+}
+.grid.table {
+	grid-template-columns: 1fr repeat(5, 2fr);
+}
+.grid.table > *{
+	border: solid 1px black;
+}
+.grid.list {
+	grid-template-columns: 1fr 2fr;
 }
 </style>
 </head>
@@ -52,17 +61,27 @@ if(!isset($csv_data)):
 
 <?php else:?>
 
-<div class="grid-table">
+<div class="grid table">
+<div></div>
 
 <?php
 foreach($headings as $head){
 	echo '<div><b>' . $head . '</b></div>';
 }
-foreach($csv_data as $row){
-	foreach($row as $type){
-		foreach($type as $cell){
-			echo '<div>';
-			print_r($cell);
+foreach($csv_data as $types){
+	foreach($types as $type => $row){
+		echo '<div>' . $type . '</div>';
+		foreach($row as $value){
+			if(is_array($value)){
+				echo '<div class="grid list">';
+				foreach($value as $k => $v){
+					echo '<div>[' . $k . ']</div>';
+					echo '<div>' . $v . '</div>';
+				}
+			}else{
+				echo '<div>';
+				echo $value;
+			}
 			echo '</div>';
 		}
 	}

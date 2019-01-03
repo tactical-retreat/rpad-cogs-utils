@@ -61,7 +61,7 @@ public function monster_info_list(){
 	$columns = array('monster_no','tsr_seq','on_kr','on_us','pal_egg','rare_egg','fodder_exp','sell_price','history_jp','history_kr','history_us','tstamp');
 	$relations = array(
 		'Monster' => array('monster_no', 'monster_list', '[{monster_no}] {tm_name_us}'),
-		'Series' => array('tsr_seq', 'series_list', 'name_us', array('del_yn' => false))
+		'Series' => array('tsr_seq', 'series_list', '[{tsr_seq}] {name_us}', array('del_yn' => false))
 	);
     $this->_do_table('monster_info_list', $columns, $relations);
 }
