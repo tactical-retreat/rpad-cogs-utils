@@ -75,6 +75,7 @@ def pull_data(args):
     print('entering dungeon', dungeon_id, 'floor', floor_id, loop_count, 'times')
     for entry_id in range(loop_count):
         print('entering', entry_id)
+        entry_id = int(time.time())
         enter = api_client.enter_dungeon(dungeon_id, floor_id, self_card=friend_card)
         wave_response = wave_data.parse_wave_response(enter['e'])
 
