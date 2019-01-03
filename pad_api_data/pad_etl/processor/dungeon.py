@@ -53,6 +53,8 @@ class Icon(SqlItem):
     Created this class but not bothering to populate for now.
     """
     NOT_SET = 0
+    TABLE = 'icon_list'
+    KEY_COL = 'icon_seq'
     def __init__(self, 
                  icon_seq: int=None,
                  icon_url: str=None,
@@ -65,10 +67,10 @@ class Icon(SqlItem):
         return dump(self)
 
     def _table(self):
-        return 'icon_list'
+        return Icon.TABLE
 
     def _key(self):
-        return 'icon_seq'
+        return Icon.KEY_COL
 
     def _insert_columns(self):
         return full_columns(self)
@@ -157,7 +159,7 @@ class Dungeon(SqlItem):
         self.tstamp = tstamp or int(time.time()) * 1000
 
         self.resolved_dungeon_type = None
-        self.resolved_icon = None # Not populating at the moment
+        self.resolved_icon = None
         self.resolved_sub_dungeons = []
 
     def __repr__(self):
@@ -233,7 +235,7 @@ class SubDungeon(SqlItem):
         self.tsd_seq = tsd_seq # Primary Key
         self.tstamp = tstamp or int(time.time()) * 1000
 
-        self.resolved_dungeon_monster = []
+        self.resolved_dungeon_monsters = []
         self.resolved_sub_dungeon_score = None
         self.resolved_sub_dungeon_reward = None
         self.resolved_sub_dungeon_point = None
@@ -499,6 +501,9 @@ class DungeonLoader(object):
         
         if dungeon.tdt_seq:
             dungeon.resolved_dungeon_type = self.db_wrapper.load_single_object(DungeonType, dungeon.tdt_seq)
+
+        if dungeon.icon_seq:
+            dungeon.resolved_icon = self.db_wrapper.load_single_object(Icon, dungeon.icon_seq)
         
         dungeon.resolved_sub_dungeons = self.load_sub_dungeons(dungeon_seq)
         # TODO: load icon
@@ -526,7 +531,7 @@ class DungeonLoader(object):
         key = item.key_value()
         if item.needs_insert():
             print('item needed insert:', type(item), item.key_value())
-            key = self.db_wrapper.insert_item(dungeon.insert_sql())
+            key = self.db_wrapper.insert_item(item.insert_sql())
         elif not self.db_wrapper.check_existing(item.needs_update_sql()):
             print('item needed update:', type(item), item.key_value())
             print(item.needs_update_sql())
