@@ -23,7 +23,7 @@ class DungeonFloor(pad_util.JsonDictEncodable):
     def __init__(self, raw: List[Any]):
         self.floor_number = int(raw[0])
         self.raw_name = raw[1]
-        self.waves = raw[2]
+        self.waves = int(raw[2])
         self.rflags1 = raw[3]
         self.stamina = raw[4]
         self.bgm1 = raw[5]
