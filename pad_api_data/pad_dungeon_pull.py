@@ -81,8 +81,8 @@ def pull_data(args):
 
         for stage_idx, floor in enumerate(wave_response.floors):
             for monster_idx, monster in enumerate(floor.monsters):
-                wave_item = WaveItem(pull_id, entry_id, server, dungeon_id,
-                                     floor_id, stage_idx, monster_idx, monster)
+                wave_item = WaveItem(pull_id=pull_id, entry_id=entry_id, server=server, dungeon_id=dungeon_id,
+                                     floor_id=floor_id, stage=stage_idx, slot=monster_idx, monster=monster)
                 db_wrapper.insert_item(wave_item.insert_sql())
 
         time.sleep(2)
