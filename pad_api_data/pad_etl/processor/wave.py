@@ -17,7 +17,6 @@ class WaveItem(SqlItem):
     LIST_COL = 'dungeon_id'
     def __init__(self,
             id: int=None,
-            pull_time: datetime=None,
             pull_id: int=None,
             entry_id: int=None, 
             server: str=None, 
@@ -32,6 +31,7 @@ class WaveItem(SqlItem):
             drop_monster_level: int=None,
             plus_amount: int=None, 
             monster: wave_data.WaveMonster=None,
+            pull_time=None # Ignored
             ):
         self.id = id
         self.server = server
