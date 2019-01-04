@@ -195,18 +195,18 @@ def update_sub_dungeon(sub_dungeon: dbdungeon.SubDungeon,
 	sub_dungeon.order_idx = jp_dungeon_floor.floor_number
 	sub_dungeon.stage = jp_dungeon_floor.waves
 	sub_dungeon.stamina = jp_dungeon_floor.stamina
-	sub_dungeon.tsd_name_jp = jp_dungeon_floor.raw_name
-	sub_dungeon.tsd_name_kr = na_dungeon_floor.raw_name
-	sub_dungeon.tsd_name_us = na_dungeon_floor.raw_name
+	sub_dungeon.tsd_name_jp = jp_dungeon_floor.clean_name
+	sub_dungeon.tsd_name_kr = na_dungeon_floor.clean_name
+	sub_dungeon.tsd_name_us = na_dungeon_floor.clean_name
 	sub_dungeon.tstamp = int(time.time()) * 1000
 
 	processed_floor = ProcessedFloor(jp_dungeon_floor.waves, waves, monster_id_to_card)
 	result_stages = processed_floor.result_stages
 
-	sub_dungeon.coin_max = sum([rs.coins_max for rs in result_stages])
-	sub_dungeon.coin_min = sum([rs.coins_min for rs in result_stages])
-	sub_dungeon.exp_max = sum([rs.xp_min for rs in result_stages])
-	sub_dungeon.exp_min = sum([rs.xp_max for rs in result_stages])
+	sub_dungeon.coin_max = int(sum([rs.coins_max for rs in result_stages]))
+	sub_dungeon.coin_min = int(sum([rs.coins_min for rs in result_stages]))
+	sub_dungeon.exp_max = int(sum([rs.xp_min for rs in result_stages]))
+	sub_dungeon.exp_min = int(sum([rs.xp_max for rs in result_stages]))
 
 	for stage in result_stages:
 		existing = filter(lambda dm: dm.floor == stage.stage_idx, sub_dungeon.resolved_dungeon_monsters)
@@ -231,10 +231,11 @@ def update_sub_dungeon(sub_dungeon: dbdungeon.SubDungeon,
 
 			# TODO: fix
 			monster.amount = 1
-			# TODO: add
-			monster.atk = enemy_data.atk.value_at(enemy_level)
-			monster.defense = enemy_data.defense.value_at(enemy_level)
-			monster.hp = enemy_data.hp.value_at(enemy_level)
+
+			modifiers = jp_dungeon_floor.modifiers_clean
+			monster.atk = int(round(modifiers['atk'] * enemy_data.atk.value_at(enemy_level)))
+			monster.defense = int(round(modifiers['def'] * enemy_data.defense.value_at(enemy_level)))
+			monster.hp = int(round(modifiers['hp'] * enemy_data.hp.value_at(enemy_level)))
 			monster.turn = enemy_data.turns
 
 			monster.tsd_seq = sub_dungeon.tsd_seq
@@ -248,8 +249,6 @@ def update_sub_dungeon(sub_dungeon: dbdungeon.SubDungeon,
 
 			monster.tstamp = int(time.time()) * 1000
 
-    # Need wave data for this
-    # sub_dungeon.resolved_dungeon_monster = []
 
     # Not supported for now
     # sub_dungeon.resolved_sub_dungeon_score = None
