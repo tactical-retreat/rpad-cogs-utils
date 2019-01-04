@@ -25,10 +25,10 @@ class Curve(pad_util.JsonDictEncodable):
         self.min_value = min_value
         self.max_value = max_value or min_value * max_level
         self.scale = scale
-        self.max_level = min(max_level, 1)
+        self.max_level = max(max_level, 1)
 
     def value_at(self, level: int):
-        f = 0 if self.max_level == 1 else ((level - 1) / (self.max_level - 1))
+        f = 1 if self.max_level == 1 else ((level - 1) / (self.max_level - 1))
         return self.min_value + (self.max_value - self.min_value) * math.pow(f, self.scale)
 
 class Enemy(pad_util.JsonDictEncodable):
