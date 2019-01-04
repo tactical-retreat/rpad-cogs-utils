@@ -15,7 +15,7 @@ import json
 VERSION = 'dadguide 0.1'
 
 class ProcessedFloor(object):
-	def __init__(self, stage_count, example_waves):
+	def __init__(self, stage_count, example_waves, monster_id_to_card):
 		self.stages = [ProcessedStage(idx+1) for idx in range(stage_count)]
 		self.invades = ProcessedStage(0)
 
@@ -27,7 +27,7 @@ class ProcessedFloor(object):
 				stage_groupings[(wave.stage, wave.entry_id)].append(wave)
 
 		for k, v in stage_groupings.items():
-			self.stages[k[0]].add_wave_group(v)
+			self.stages[k[0]].add_wave_group(v, monster_id_to_card)
 
 
 		self.result_stages = []
@@ -41,26 +41,39 @@ class ProcessedStage(object):
 	def __init__(self, stage_idx):
 		self.stage_idx = stage_idx
 		self.count = 0
-		self.bonus_coins = 0
+		self.coins = []
+		self.xp = []
 
-		# TODO: prioritize order by slot
 		# TODO: alternate drops
 		# TODO: drop rates
 
 		self.spawn_to_drop = defaultdict(set)
+		self.spawn_to_level = {}
 		self.spawn_to_slot = defaultdict(set)
 		self.spawn_to_count = defaultdict(int)
 		self.spawns_per_wave = defaultdict(int)
 
-	def add_wave_group(self, waves):
+	def add_wave_group(self, waves, monster_id_to_card):
+		"""A wave group represents all the spawns encountered on a stage instance."""
 		self.count += 1
 		self.spawns_per_wave[len(waves)] += 1
+		coins = 0
+		xp = 0
 		for wave in waves:
 			if wave.get_drop():
 				self.spawn_to_drop[wave.monster_id].add(wave.get_drop())
+			self.spawn_to_level[wave.monster_id] = wave.monster_level
 			self.spawn_to_slot[wave.monster_id].add(wave.slot)
 			self.spawn_to_count[wave.monster_id] += 1
-			self.bonus_coins += wave.get_coins()
+
+			enemy_data = monster_id_to_card[wave.monster_id].enemy()
+			enemy_level = wave.monster_level
+			coins += wave.get_coins()
+			coins += enemy_data.coin.value_at(enemy_level)
+			xp += enemy_data.xp.value_at(enemy_level)
+
+		self.coins.append(coins)
+		self.xp.append(xp)
 
 
 class ResultFloor(object):
@@ -72,6 +85,11 @@ class ResultStage(object):
 		self.stage_idx = processed_stage.stage_idx
 		self.slots = []
 
+		self.coins_min = min(processed_stage.coins)
+		self.coins_max = max(processed_stage.coins)
+		self.xp_min = min(processed_stage.xp)
+		self.xp_max = max(processed_stage.xp)
+
 		fixed_spawns = []
 		random_spawns = []
 		for spawn, count in processed_stage.spawn_to_count.items():
@@ -81,9 +99,10 @@ class ResultStage(object):
 				random_spawns.append(spawn)
 
 		for spawn in fixed_spawns:
+			level = processed_stage.spawn_to_level[spawn]
 			drops = processed_stage.spawn_to_drop[spawn]
 			order = min(processed_stage.spawn_to_slot[spawn])
-			self.slots.append(ResultSlot(spawn, order, drops, None))
+			self.slots.append(ResultSlot(spawn, level, order, drops, None))
 
 		if random_spawns:
 			wave_sizes = processed_stage.spawns_per_wave.values()
@@ -94,14 +113,21 @@ class ResultStage(object):
 			if min_random_spawns != max_random_spawns:
 				comment += ' to {}'.format(max_random_spawns)
 			for spawn in random_spawns:
+				level = processed_stage.spawn_to_level[spawn]
 				drops = processed_stage.spawn_to_drop[spawn]
 				order = min(processed_stage.spawn_to_slot[spawn])
-				self.slots.append(ResultSlot(spawn, order, drops, comment))
+				self.slots.append(ResultSlot(spawn, level, order, drops, comment))
 
 
 class ResultSlot(object):
-	def __init__(self, monster_id: int, order: int, drops: set, comment: str):
+	def __init__(self, 
+				 monster_id: int, 
+				 monster_level: int,
+				 order: int, 
+				 drops: set, 
+				 comment: str):
 		self.monster_id = monster_id
+		self.monster_level = monster_level
 		self.order = order
 		self.drops = drops
 		self.comment = comment
@@ -110,7 +136,8 @@ class ResultSlot(object):
 def populate_dungeon(dungeon: dbdungeon.Dungeon, 
 					 jp_dungeon: datadungeon.Dungeon,
 					 na_dungeon: datadungeon.Dungeon,
-					 waves=[]
+					 waves=[],
+					 cards=[]
 					 ):
 	dungeon.comment_us = VERSION
 
@@ -143,11 +170,13 @@ def populate_dungeon(dungeon: dbdungeon.Dungeon,
 	for wave in waves:
 		floor_to_waves[wave.floor_id].append(wave)
 
+	monster_id_to_card = {c.card_id: c for c in cards}
 	for idx in range(expected_floor_count):
 		update_sub_dungeon(dungeon.resolved_sub_dungeons[idx], 
 						   jp_dungeon.floors[idx],
 						   na_dungeon.floors[idx],
-						   floor_to_waves[idx+1])
+						   floor_to_waves[idx+1],
+						   monster_id_to_card)
 
 	dungeon.icon_seq = 0
 	max_dungeon = dungeon.resolved_sub_dungeons[-1]
@@ -160,14 +189,9 @@ def populate_dungeon(dungeon: dbdungeon.Dungeon,
 def update_sub_dungeon(sub_dungeon: dbdungeon.SubDungeon, 
 					   jp_dungeon_floor: datadungeon.DungeonFloor,
 					   na_dungeon_floor: datadungeon.DungeonFloor,
-					   waves
+					   waves,
+					   monster_id_to_card
 					   ):
-	# TODO: fill in from waves
-	sub_dungeon.coin_max = 0
-	sub_dungeon.coin_min = 0
-	sub_dungeon.exp_max = 0
-	sub_dungeon.exp_min = 0
-
 	sub_dungeon.order_idx = jp_dungeon_floor.floor_number
 	sub_dungeon.stage = jp_dungeon_floor.waves
 	sub_dungeon.stamina = jp_dungeon_floor.stamina
@@ -176,27 +200,46 @@ def update_sub_dungeon(sub_dungeon: dbdungeon.SubDungeon,
 	sub_dungeon.tsd_name_us = na_dungeon_floor.raw_name
 	sub_dungeon.tstamp = int(time.time()) * 1000
 
-	processed_floor = ProcessedFloor(jp_dungeon_floor.waves, waves)
-	for stage in processed_floor.result_stages:
+	processed_floor = ProcessedFloor(jp_dungeon_floor.waves, waves, monster_id_to_card)
+	result_stages = processed_floor.result_stages
+
+	sub_dungeon.coin_max = sum([rs.coins_max for rs in result_stages])
+	sub_dungeon.coin_min = sum([rs.coins_min for rs in result_stages])
+	sub_dungeon.exp_max = sum([rs.xp_min for rs in result_stages])
+	sub_dungeon.exp_min = sum([rs.xp_max for rs in result_stages])
+
+	for stage in result_stages:
 		existing = filter(lambda dm: dm.floor == stage.stage_idx, sub_dungeon.resolved_dungeon_monsters)
 		existing_id_to_monster = {dm.monster_no: dm for dm in existing}
 		for slot in stage.slots:
-			monster = existing_id_to_monster.get(slot.monster_id)
+			card = monster_id_to_card[slot.monster_id]
+			# TODO: this might need mapping
+			if card.card_id > 9999:
+				# This is a dummy entry monster for alternate enemy skills
+				monster_id = card.base_id
+			else:
+				monster_id = card.card_id
+
+			monster = existing_id_to_monster.get(monster_id)
 			if not monster:
 				monster = dbdungeon.DungeonMonster()
+				monster.monster_no = monster_id
 				sub_dungeon.resolved_dungeon_monsters.append(monster)
+
+			enemy_data = card.enemy()
+			enemy_level = slot.monster_level
+
 			# TODO: fix
 			monster.amount = 1
 			# TODO: add
-			monster.atk = 1
-			monster.defense = 1
-			monster.hp = 1
-			monster.turn = 1
+			monster.atk = enemy_data.atk.value_at(enemy_level)
+			monster.defense = enemy_data.defense.value_at(enemy_level)
+			monster.hp = enemy_data.hp.value_at(enemy_level)
+			monster.turn = enemy_data.turns
 
 			monster.tsd_seq = sub_dungeon.tsd_seq
 			monster.floor = stage.stage_idx
 
-			monster.monster_no = slot.monster_id
 			monster.drop_no = min(slot.drops) if slot.drops else 0
 			monster.order_idx = slot.order
 			monster.comment_kr = slot.comment
