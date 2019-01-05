@@ -2,17 +2,18 @@
 Converts the downloaded files into stuff useful for import.
 """
 import argparse
+from collections import defaultdict
 import glob
 import json
 import os
 
+from limited_bonus_data import Bonus
+import limited_bonus_data
+import pad_utils
 import pytz
 
 from dungeon_data import Dungeon, DungeonFloor
 import dungeon_data
-from limited_bonus_data import Bonus
-import limited_bonus_data
-import pad_utils
 
 
 ET_TZ_OBJ = pytz.timezone('US/Eastern')
@@ -69,7 +70,8 @@ guerrilla_dungeon_bonuses = []
 bonus_file_glob = os.path.join(input_dir, 'download_limited_bonus_data_*.json')
 for file_match in glob.glob(bonus_file_glob):
     before_group = file_match.rfind('_')
-    group = file_match[before_group + 1:before_group + 2]
+    after_group = file_match.rfind('.')
+    group = file_match[before_group + 1:after_group].upper()
     bonuses = limited_bonus_data.load_bonus_data(file_match)
 
     for item in bonuses:
@@ -81,11 +83,12 @@ for file_match in glob.glob(bonus_file_glob):
             cur_dungeon_bonus.group = group
             guerrilla_dungeon_bonuses.append(cur_dungeon_bonus)
 
+final_guerrillas = guerrilla_dungeon_bonuses
 
 output_data = []
-for gdb in guerrilla_dungeon_bonuses:
+for gdb in final_guerrillas:
     output_data.append({
-        'group': gdb.group.upper(),
+        'group': gdb.group,
         'dungeon_name': gdb.dungeon.clean_name,
         'start_timestamp': gh_to_timestamp(gdb.bonus.s, server),
         'end_timestamp': gh_to_timestamp(gdb.bonus.e, server),

@@ -1,4 +1,6 @@
 from ..common import pad_util
+from datetime import datetime, timedelta
+import pytz
 
 
 class MergedBonus(pad_util.JsonDictEncodable):
@@ -7,6 +9,7 @@ class MergedBonus(pad_util.JsonDictEncodable):
         self.bonus = bonus
         self.dungeon = dungeon
         self.group = group
+        self.is_starter = group in ['red', 'green', 'blue']
 
         self.start_timestamp = pad_util.gh_to_timestamp(bonus.start_time_str, server)
         self.end_timestamp = pad_util.gh_to_timestamp(bonus.end_time_str, server)
@@ -14,6 +17,11 @@ class MergedBonus(pad_util.JsonDictEncodable):
     def __repr__(self):
         return 'MergedBonus({} {} - {} - {})'.format(
             self.server, self.group, repr(self.dungeon), repr(self.bonus))
+
+    def open_duration(self):
+        open_datetime_utc = datetime.fromtimestamp(self.start_timestamp, pytz.UTC)
+        close_datetime_utc = datetime.fromtimestamp(self.end_timestamp, pytz.UTC)
+        return close_datetime_utc - open_datetime_utc
 
 
 class MergedCard(pad_util.JsonDictEncodable):

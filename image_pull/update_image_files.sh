@@ -3,31 +3,39 @@
 # Updates the local cache of full monster pics / portraits from the JP server and
 # uploads them to GCS, setting them public.
 
+RUN_DIR=/home/tactical0retreat/rpad-cogs-utils/image_pull
+IMG_DIR=/home/tactical0retreat/image_data
+PADGUIDE_DATA_DIR=/home/tactical0retreat/hosted_services/bots/Red-DiscordBot-PrivateMiru/data/padguide2
+
 # Full pictures
-python3 /home/tactical0retreat/rpad-cogs-utils/image_pull/PADTextureDownload.py --output_dir=/home/tactical0retreat/image_data/na/full --server=NA
-python3 /home/tactical0retreat/rpad-cogs-utils/image_pull/PADTextureDownload.py --output_dir=/home/tactical0retreat/image_data/jp/full --server=JP
-gsutil -m rsync -r /home/tactical0retreat/image_data/na/full/corrected_data gs://mirubot/padimages/na/full/
-gsutil -m rsync -r /home/tactical0retreat/image_data/jp/full/corrected_data gs://mirubot/padimages/jp/full/
+python3 ${RUN_DIR}/PADTextureDownload.py --output_dir=${IMG_DIR}/na/full --server=NA
+python3 ${RUN_DIR}/PADImageDownload.py --output_dir=${IMG_DIR}/na/full
+
+python3 ${RUN_DIR}/PADTextureDownload.py --output_dir=${IMG_DIR}/jp/full --server=JP
+python3 ${RUN_DIR}/PADImageDownload.py --output_dir=${IMG_DIR}/jp/full
+
+gsutil -m rsync -r ${IMG_DIR}/na/full/corrected_data gs://mirubot/padimages/na/full/
+gsutil -m rsync -r ${IMG_DIR}/jp/full/corrected_data gs://mirubot/padimages/jp/full/
 
 # Portraits
-python3 /home/tactical0retreat/rpad-cogs-utils/image_pull/PADPortraitsGenerator.py \
-  --input_dir=/home/tactical0retreat/image_data/na/full/extract_data \
-  --card_types_file=/home/tactical0retreat/hosted_services/bots/Red-DiscordBot-PrivateMiru/data/padguide2/card_data.csv \
-  --card_templates_file=/home/tactical0retreat/rpad-cogs-utils/image_pull/wide_cards.png \
+python3 ${RUN_DIR}/PADPortraitsGenerator.py \
+  --input_dir=${IMG_DIR}/na/full/extract_data \
+  --card_types_file=${PADGUIDE_DATA_DIR}/card_data.csv \
+  --card_templates_file=${RUN_DIR}/wide_cards.png \
   --server=na \
-  --output_dir=/home/tactical0retreat/image_data/na/portrait/local_tmp
+  --output_dir=${IMG_DIR}/na/portrait/local_tmp
 
-python3 /home/tactical0retreat/rpad-cogs-utils/image_pull/PADPortraitsGenerator.py \
-  --input_dir=/home/tactical0retreat/image_data/jp/full/extract_data \
-  --card_types_file=/home/tactical0retreat/hosted_services/bots/Red-DiscordBot-PrivateMiru/data/padguide2/card_data.csv \
-  --card_templates_file=/home/tactical0retreat/rpad-cogs-utils/image_pull/wide_cards.png \
+python3 ${RUN_DIR}/PADPortraitsGenerator.py \
+  --input_dir=${IMG_DIR}/jp/full/extract_data \
+  --card_types_file=${PADGUIDE_DATA_DIR}/card_data.csv \
+  --card_templates_file=${RUN_DIR}/wide_cards.png \
   --server=jp \
-  --output_dir=/home/tactical0retreat/image_data/jp/portrait/local
+  --output_dir=${IMG_DIR}/jp/portrait/local
 
-python3 /home/tactical0retreat/rpad-cogs-utils/image_pull/PADPortraitsCombiner.py \
-  --na_dir=/home/tactical0retreat/image_data/na/portrait/local_tmp \
-  --jp_dir=/home/tactical0retreat/image_data/jp/portrait/local \
-  --output_dir=/home/tactical0retreat/image_data/na/portrait/local
+python3 ${RUN_DIR}/PADPortraitsCombiner.py \
+  --na_dir=${IMG_DIR}/na/portrait/local_tmp \
+  --jp_dir=${IMG_DIR}/jp/portrait/local \
+  --output_dir=${IMG_DIR}/na/portrait/local
 
-gsutil -m rsync -r /home/tactical0retreat/image_data/na/portrait/local gs://mirubot/padimages/na/portrait/
-gsutil -m rsync -r /home/tactical0retreat/image_data/jp/portrait/local gs://mirubot/padimages/jp/portrait/
+gsutil -m rsync -r ${IMG_DIR}/na/portrait/local gs://mirubot/padimages/na/portrait/
+gsutil -m rsync -r ${IMG_DIR}/jp/portrait/local gs://mirubot/padimages/jp/portrait/

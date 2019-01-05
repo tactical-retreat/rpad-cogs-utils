@@ -64,8 +64,13 @@ class MonsterSkill(pad_util.JsonDictEncodable):
             if len(self.other_fields) == 3:
                 self.skill_part_3_id = self.other_fields[2]
 
-        multipliers = pad_util.parse_skill_multiplier(
-            int(raw[2]), self.other_fields, len(self.other_fields))
+        try:
+            multipliers = pad_util.parse_skill_multiplier(
+                int(raw[2]), self.other_fields, len(self.other_fields))
+        except Exception as e:
+            print('skill parsing failed for', raw[2], 'with exception:', e)
+            multipliers = pad_util.Multiplier()
+
         self.hp_mult = multipliers.hp
         self.atk_mult = multipliers.atk
         self.rcv_mult = multipliers.rcv
@@ -88,8 +93,8 @@ def load_skill_data(data_dir=None, skill_json_file: str = None) -> List[MonsterS
     with open(skill_json_file) as f:
         skill_json = json.load(f)
 
-    if skill_json['v'] != 1220:
-        raise NotImplementedError('version: {}'.format(skill_json['v']))
+    if skill_json['v'] > 1220:
+        print('Warning! Version of skill file is not tested: {}'.format(skill_json['v']))
 
     return [MonsterSkill(i, ms) for i, ms in enumerate(skill_json['skill'])]
 

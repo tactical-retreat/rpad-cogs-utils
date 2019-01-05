@@ -4,6 +4,7 @@ Parses card data.
 
 import json
 import os
+import math
 from typing import List, Any
 
 from ..common import pad_util
@@ -13,6 +14,40 @@ from ..common.shared_types import AttrId, CardId, SkillId, TypeId
 # The typical JSON file name for this data.
 FILE_NAME = 'download_card_data.json'
 
+
+class Curve(pad_util.JsonDictEncodable):
+    """Describes how to scale according to level 1-10."""
+    def __init__(self,
+                 min_value: int,
+                 max_value: int=None,
+                 scale: float=1.0,
+                 max_level: int=10):
+        self.min_value = min_value
+        self.max_value = max_value or min_value * max_level
+        self.scale = scale
+        self.max_level = max(max_level, 1)
+
+    def value_at(self, level: int):
+        f = 1 if self.max_level == 1 else ((level - 1) / (self.max_level - 1))
+        return self.min_value + (self.max_value - self.min_value) * math.pow(f, self.scale)
+
+class Enemy(pad_util.JsonDictEncodable):
+    """Describes how this monster spawns as an enemy."""
+    def __init__(self,
+                 turns: int,
+                 hp: Curve,
+                 atk: Curve,
+                 defense: Curve,
+                 max_level: int,
+                 coin: Curve,
+                 xp: Curve):
+        self.turns = turns
+        self.hp = hp
+        self.atk = atk
+        self.defense = defense
+        self.max_level = max_level
+        self.coin = coin
+        self.xp = xp
 
 class BookCard(pad_util.JsonDictEncodable):
     """Data about a player-ownable monster."""
@@ -57,24 +92,23 @@ class BookCard(pad_util.JsonDictEncodable):
 
         self.enemy_turns = int(raw[27])
 
-        self.enemy_hp_1 = int(raw[28])
-        self.enemy_hp_10 = int(raw[29])
-        self.enemy_hp_gr = float(raw[30])
+        # Min = lvl 1 and Max = lvl 10
+        self.enemy_hp_min = int(raw[28])
+        self.enemy_hp_max = int(raw[29])
+        self.enemy_hp_scale = float(raw[30])
 
-        self.enemy_atk1 = int(raw[31])
-        self.enemy_at_k10 = int(raw[32])
-        self.enemy_atk_gr = float(raw[33])
+        self.enemy_atk_min = int(raw[31])
+        self.enemy_atk_max = int(raw[32])
+        self.enemy_atk_scale = float(raw[33])
 
-        self.enemy_def_1 = int(raw[34])
-        self.enemy_def_10 = int(raw[35])
-        self.enemy_def_gr = float(raw[36])
+        self.enemy_def_min = int(raw[34])
+        self.enemy_def_max = int(raw[35])
+        self.enemy_def_scale = float(raw[36])
 
-        self.unknown_37 = raw[37]
-
+        self.enemy_max_level = int(raw[37])
         self.enemy_coins_at_lvl_2 = int(raw[38])
         self.enemy_xp_at_lvl_2 = int(raw[39])
 
-        # This is correct!
         self.ancestor_id = CardId(raw[40])
 
         self.evo_mat_id_1 = CardId(raw[41])
@@ -111,13 +145,45 @@ class BookCard(pad_util.JsonDictEncodable):
 
         self.random_flags = raw[66]
         self.inheritable = bool(self.random_flags & 1)
-#         self.is_released = bool(self.random_flags & 2)
         self.is_collab = bool(self.random_flags & 4)
 
         self.furigana = str(raw[67])  # JP data only?
         self.limit_mult = int(raw[68])
 
         self.other_fields = raw[69:]
+
+    def enemy(self):
+        return Enemy(self.enemy_turns,
+                     Curve(self.enemy_hp_min,
+                           self.enemy_hp_max,
+                           self.enemy_hp_scale,
+                           self.enemy_max_level),
+                     Curve(self.enemy_atk_min,
+                           self.enemy_atk_max,
+                           self.enemy_atk_scale,
+                           self.enemy_max_level),
+                     Curve(self.enemy_def_min,
+                           self.enemy_def_max,
+                           self.enemy_def_scale,
+                           self.enemy_max_level),
+                     self.enemy_max_level,
+                     Curve(self.enemy_coins_at_lvl_2 / 2,
+                           max_level=self.enemy_max_level),
+                     Curve(self.enemy_xp_at_lvl_2 / 2,
+                           max_level=self.enemy_max_level))
+
+
+    def hp_curve(self):
+        return Curve(self.min_hp, self.max_hp, self.hp_scale)
+
+    def atk_curve(self):
+        return Curve(self.min_atk, self.max_atk, self.atk_scale)
+
+    def rcv_curve(self):
+        return Curve(self.min_rcv, self.max_rcv, self.rcv_scale)
+
+    def xp_curve(self):
+        return Curve(0, self.xp_max, self.xp_scale)
 
     def __str__(self):
         return str(self.__dict__)
@@ -159,7 +225,7 @@ def load_card_data(data_dir: str=None, card_json_file: str=None) -> List[BookCar
     with open(card_json_file) as f:
         card_json = json.load(f)
 
-    if card_json['v'] not in (1250, 1520):
-        raise NotImplementedError('version: {}'.format(card_json['v']))
+    if card_json['v'] > 1600:
+        print('Warning! Version of card file is not tested: {}'.format(card_json['v']))
 
     return [BookCard(r) for r in card_json['card']]
