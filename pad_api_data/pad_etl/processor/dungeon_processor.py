@@ -85,10 +85,10 @@ class ResultStage(object):
 		self.stage_idx = processed_stage.stage_idx
 		self.slots = []
 
-		self.coins_min = min(processed_stage.coins)
-		self.coins_max = max(processed_stage.coins)
-		self.xp_min = min(processed_stage.xp)
-		self.xp_max = max(processed_stage.xp)
+		self.coins_min = min(processed_stage.coins) if processed_stage.coins else 0
+		self.coins_max = max(processed_stage.coins) if processed_stage.coins else 0
+		self.xp_min = min(processed_stage.xp) if processed_stage.xp else 0
+		self.xp_max = max(processed_stage.xp) if processed_stage.xp else 0
 
 		fixed_spawns = []
 		random_spawns = []
