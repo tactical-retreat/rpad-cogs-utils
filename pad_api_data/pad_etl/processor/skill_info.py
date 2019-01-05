@@ -1393,7 +1393,7 @@ def attribute_match_convert(arguments):
 
         min_atk_mult = c['minimum_atk_multiplier']
         bonus_atk_mult = c['bonus_atk_multiplier']
-        if c['bonus_att_cap'] == 0:
+        if att_cap == 0:
             max_mult = min_atk_mult + (len(attr) - min_attr) * bonus_atk_mult
         else:
             max_mult = min_atk_mult + att_cap * bonus_atk_mult
