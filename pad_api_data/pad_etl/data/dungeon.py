@@ -23,7 +23,8 @@ class DungeonFloor(pad_util.JsonDictEncodable):
     def __init__(self, raw: List[Any]):
         self.floor_number = int(raw[0])
         self.raw_name = raw[1]
-        self.waves = raw[2]
+        self.clean_name = pad_util.strip_colors(self.raw_name)
+        self.waves = int(raw[2])
         self.rflags1 = raw[3]
         self.stamina = raw[4]
         self.bgm1 = raw[5]
@@ -65,9 +66,30 @@ class DungeonFloor(pad_util.JsonDictEncodable):
 
         self.entryRequirement = modifiers.entryRequirement
         self.requiredDungeon = modifiers.requiredDungeon
+
         self.modifiers = modifiers.modifiers
 
         self.remaining_fields = raw[9:]
+
+        # Modifiers parsing doesn't seem to always work
+        # Hacked up version for dungeon modifiers, needed for
+        # enemy parsing.
+        self.modifiers_clean = {
+            'hp': 1.0,
+            'atk': 1.0,
+            'def': 1.0,
+        }
+
+        for field in self.remaining_fields:
+            if 'hp:' in field or 'at:' in field or 'df:' in field:
+                for mod in field.split('|'):
+                    if mod.startswith('hp:'):
+                        self.modifiers_clean['hp'] = float(mod[3:]) / 10000
+                    elif mod.startswith('at:'):
+                        self.modifiers_clean['atk'] = float(mod[3:]) / 10000
+                    elif mod.startswith('df:'):
+                        self.modifiers_clean['def'] = float(mod[3:]) / 10000
+                break
 
 
 prefix_to_dungeontype = {

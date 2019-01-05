@@ -29,6 +29,10 @@ EMPTY_FILES = [
     'sub_dungeon_malias_list',
 ]
 
+SKIP_TABLES = [
+    'wave_data',
+]
+
 with open(args.db_config) as f:
     db_config = json.load(f)
 
@@ -58,6 +62,9 @@ with connection.cursor() as cursor:
 
     for table in tables:
         table_name = table['table_name']
+        if table_name in SKIP_TABLES:
+            print('skipping', table_name)
+            continue
         print('processing', table_name)
         sql = 'select * from {}'.format(table_name)
         cursor.execute(sql)

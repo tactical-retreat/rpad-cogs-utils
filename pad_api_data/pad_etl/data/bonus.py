@@ -74,16 +74,33 @@ class Bonus(pad_util.JsonDictEncodable):
         # metadata?
         23: {'name': 'meta?', },
 
+        # Gift dungeon with special text?
+        # e.g. Mysterious Visitors dungeon with [+297] will be added to + Points message
+        # Has a huge timestamp range, so reward probably
+        24: {'name': 'gift_dungeon_with_reward', },
+
         # Seems to contain random text in the comment
         25: {'name': 'dungeon_special_event'},
 
         # Limited Time Dungeon arrives! (on multiplayer mode button)
         29: {'name': 'multiplayer_announcement'},
 
+        # Multiplayer dungeon announcement?
+        # TAMADRA Invades in Multiplayer Evo Rush!?
+        31: {'name': 'multiplayer_dungeon_text'},
+
+        # Tournament dungeon announcement?
+        # Rank into the top 30% to get a Dragonbound, Rikuu
+        32: {'name': 'tournament_text'},
+
         # Daily XP dragon
         36: {'name': 'daily_dragons'},
 
         37: {'name': 'monthly_quest_dungeon'},
+
+        # Reward: Jewel of Creation
+        # Latent TAMADRA (Skill Delay Resist.) invades guaranteed!
+        39: {'name': 'dungeon_floor_text'},
 
         # https://bit.ly/2zWWGPd - #Q#6th Year Anniversary Quest 1
         43: {'name': 'monthly_quest_info'},
