@@ -34,7 +34,7 @@ def filter_current_bonuses(
         bonus = merged_bonus['bonus']
         bonus_name = bonus['bonus_name']
         #if bonus_name not in ['dungeon', 'daily_dragons']:
-        # TODO: fix daily dragons
+        # TODO: fix daily dragons, probably need to check week day
         if bonus_name not in ['dungeon']:
             # These are the only events with dungeons that we're interested in
             continue
