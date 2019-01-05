@@ -22,10 +22,11 @@ a:hover
 	grid-template-rows: min-content;
 }
 .grid.table {
-	grid-template-columns: 1fr repeat(5, 2fr);
+	grid-template-columns: min-content repeat(<?php echo isset($headings) ? sizeof($headings) : 0;?>, 1fr);
 }
 .grid.table > *{
-	border: solid 1px black;
+	border-bottom: dotted 1px black;
+	padding: 1px;
 }
 .grid.list {
 	grid-template-columns: 1fr 2fr;
@@ -44,6 +45,10 @@ a:hover
 <!-- End of header-->
 
 <?php
+if(isset($result_msg)){
+	echo $result_msg;
+	echo '<p>' . anchor('main/csv_upload', 'Upload Another File') . '</p>';
+}
 if(isset($error)){
 	echo $error;
 }
@@ -59,18 +64,21 @@ if(!isset($csv_data)):
 
 </form>
 
-<?php else:?>
-
+<?php else:
+echo form_open_multipart('main/csv_update');
+?>
 <div class="grid table">
-<div></div>
+<div><b>Use</b></div>
 
 <?php
 foreach($headings as $head){
 	echo '<div><b>' . $head . '</b></div>';
 }
-foreach($csv_data as $types){
+foreach($csv_data as $i => $types){
 	foreach($types as $type => $row){
-		echo '<div>' . $type . '</div>';
+		echo '<div>';
+		echo '<label><input type="radio" name="action_row_' . $i . '" value="' . ($type == 'new' ? '1" checked' : '0"') . '>' . $type . ' values</label>';
+		echo '</div>';
 		foreach($row as $value){
 			if(is_array($value)){
 				echo '<div class="grid list">';
@@ -87,10 +95,9 @@ foreach($csv_data as $types){
 	}
 }
 ?>
-
 </div>
-
-<p><?php echo anchor('main/csv_upload', 'Upload Another File'); ?></p>
+<input type="submit" value="update"/>
+</form>
 <?php endif;?>
 
 </body>
