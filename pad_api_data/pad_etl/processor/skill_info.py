@@ -1400,7 +1400,7 @@ def attribute_match_convert(arguments):
         if attr == [0, 1, 2, 3, 4]:
             skill_text += ' when matching {} or more colors'.format(min_attr)
             if max_mult > min_atk_mult:
-                skill_text += ' up to {}x at {} colors'.format(fmt_mult(max_mult), len(attr) - att_cap)
+                skill_text += ' up to {}x at {} colors'.format(fmt_mult(max_mult), min_attr + att_cap)
         elif attr == [0, 1, 2, 3, 4, 5]:
             skill_text += ' when matching {} or more colors ({}+heal)'.format(
                 min_attr, min_attr - 1)
