@@ -34,7 +34,7 @@ class ServerEndpoint(Enum):
 
 
 class EndpointActionInfo(object):
-    def __init__(self, name: str, v_name: str, v_value: int):
+    def __init__(self, name: str, v_name: str, v_value: int, **extra_args):
         # Name of the action
         self.name = name
 
@@ -43,6 +43,9 @@ class EndpointActionInfo(object):
 
         # Value for the version parameter
         self.v_value = v_value
+
+        # Other random one-off parameters
+        self.extra_args = extra_args
 
 
 class EndpointAction(Enum):
@@ -53,6 +56,7 @@ class EndpointAction(Enum):
     DOWNLOAD_LIMITED_BONUS_DATA = EndpointActionInfo('download_limited_bonus_data', 'v', 2)
     GET_PLAYER_DATA = EndpointActionInfo('get_player_data', 'v', 2)
     GET_RECOMMENDED_HELPERS = EndpointActionInfo('get_recommended_helpers', None, None)
+    DOWNLOAD_MONSTER_EXCHANGE = EndpointActionInfo('mdatadl', None, None, dtp=0)
 
 
 def get_headers(host):
@@ -192,6 +196,9 @@ class PadApiClient(object):
 
         if action.value.v_name:
             payload.append((action.value.v_name,   action.value.v_value))
+
+        for key, val in action.value.extra_args.items():
+            payload.append((key, val))
 
         payload.extend([
             ('r',      self.server_r),

@@ -65,6 +65,7 @@ pull_and_write_endpoint(api_client, pad_api.EndpointAction.DOWNLOAD_CARD_DATA)
 pull_and_write_endpoint(api_client, pad_api.EndpointAction.DOWNLOAD_DUNGEON_DATA)
 pull_and_write_endpoint(api_client, pad_api.EndpointAction.DOWNLOAD_SKILL_DATA)
 pull_and_write_endpoint(api_client, pad_api.EndpointAction.DOWNLOAD_ENEMY_SKILL_DATA)
+pull_and_write_endpoint(api_client, pad_api.EndpointAction.DOWNLOAD_MONSTER_EXCHANGE)
 
 
 def write_egg_machines(player_data):
