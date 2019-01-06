@@ -65,7 +65,7 @@ class Exchange(pad_util.JsonDictEncodable):
         self.flag_type = int(raw[13])
 
         # Options for trading the monster
-        self.required_monsters = raw[14:]
+        self.required_monsters = list(map(int, raw[14:]))
 
 
     def __str__(self):
@@ -84,7 +84,7 @@ def load_data(data_dir: str=None, json_file: str=None, server: str=None) -> List
         if '/na/' in json_file or '\\na\\' in json_file:
             server = 'na'
         elif '/jp/' in json_file or '\\jp\\' in json_file:
-            server = jp
+            server = 'jp'
         else:
             raise Exception('Server not supplied and not automatically detected from path')
 
