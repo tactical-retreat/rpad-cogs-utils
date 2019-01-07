@@ -12,7 +12,7 @@ from datetime import datetime, timedelta
 
 import feedparser
 from pad_etl.common import monster_id_mapping
-from pad_etl.data import bonus, card, dungeon, skill, extra_egg_machine
+from pad_etl.data import bonus, card, dungeon, skill, enemy_skill, extra_egg_machine
 from pad_etl.processor import monster, monster_skill
 from pad_etl.processor import skill_info
 from pad_etl.processor.db_util import DbWrapper
@@ -659,17 +659,19 @@ def load_database(base_dir, pg_server):
         {x: bonus.load_bonus_data(data_dir=base_dir, data_group=x)
          for x in ['red', 'blue', 'green']},
         skill.load_skill_data(data_dir=base_dir),
-        skill.load_raw_skill_data(data_dir=base_dir))
+        skill.load_raw_skill_data(data_dir=base_dir),
+        enemy_skill.load_enemy_skill_data(data_dir=base_dir))
         # extra_egg_machine.load_data(data_dir=base_dir))
 
 
 class Database(object):
-    def __init__(self, pg_server, cards, dungeons, bonus_sets, skills, raw_skills, extra_egg_machines=None):
+    def __init__(self, pg_server, cards, dungeons, bonus_sets, skills, raw_skills, enemy_skills, extra_egg_machines=None):
         self.pg_server = pg_server
         self.raw_cards = cards
         self.dungeons = dungeons
         self.bonus_sets = bonus_sets
         self.skills = skills
+        self.enemy_skills = enemy_skills
         self.extra_egg_machines = extra_egg_machines
 
         # This is temporary for the integration of calculated skills
@@ -686,9 +688,9 @@ class Database(object):
         save('raw_cards', self.raw_cards)
         save('dungeons', self.dungeons)
         save('skills', self.skills)
+        save('enemy_skills', self.enemy_skills)
         save('bonuses', self.bonuses)
         save('cards', self.cards)
-
 
 def clean_bonuses(pg_server, bonus_sets, dungeons):
     dungeons_by_id = {d.dungeon_id: d for d in dungeons}

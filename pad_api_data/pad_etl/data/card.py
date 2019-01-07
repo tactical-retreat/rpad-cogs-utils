@@ -31,6 +31,13 @@ class Curve(pad_util.JsonDictEncodable):
         f = 1 if self.max_level == 1 else ((level - 1) / (self.max_level - 1))
         return self.min_value + (self.max_value - self.min_value) * math.pow(f, self.scale)
 
+class EnemySkillRef(pad_util.JsonDictEncodable):
+    """Describes how this monster uses an enemy skill"""
+    def __init__(self, enemy_skill_id: int, enemy_ai: int, enemy_rnd: int):
+        self.enemy_skill_id = enemy_skill_id
+        self.enemy_ai = enemy_ai
+        self.enemy_rnd = enemy_rnd
+
 class Enemy(pad_util.JsonDictEncodable):
     """Describes how this monster spawns as an enemy."""
     def __init__(self,
@@ -40,7 +47,8 @@ class Enemy(pad_util.JsonDictEncodable):
                  defense: Curve,
                  max_level: int,
                  coin: Curve,
-                 xp: Curve):
+                 xp: Curve,
+                 enemy_skill_refs: List[EnemySkillRef]):
         self.turns = turns
         self.hp = hp
         self.atk = atk
@@ -48,6 +56,7 @@ class Enemy(pad_util.JsonDictEncodable):
         self.max_level = max_level
         self.coin = coin
         self.xp = xp
+        self.enemy_skill_refs = enemy_skill_refs
 
 class BookCard(pad_util.JsonDictEncodable):
     """Data about a player-ownable monster."""
@@ -130,7 +139,8 @@ class BookCard(pad_util.JsonDictEncodable):
         self.unknown_055 = raw[55]
         self.unknown_056 = raw[56]
 
-        self.eskills = raw[57]  # List[int]
+        # self.enemy_skills = raw[57]
+        self.enemy_skill_refs = [EnemySkillRef(raw[57][i], raw[57][i+1], raw[57][i+2]) for i in range(0, len(raw[57])-2, 3)]
 
         self.awakenings = raw[58]  # List[int]
         self.super_awakenings = list(map(int, filter(str.strip, raw[59].split(','))))  # List[int]
@@ -170,7 +180,8 @@ class BookCard(pad_util.JsonDictEncodable):
                      Curve(self.enemy_coins_at_lvl_2 / 2,
                            max_level=self.enemy_max_level),
                      Curve(self.enemy_xp_at_lvl_2 / 2,
-                           max_level=self.enemy_max_level))
+                           max_level=self.enemy_max_level),
+                     self.enemy_skill_refs)
 
 
     def hp_curve(self):
