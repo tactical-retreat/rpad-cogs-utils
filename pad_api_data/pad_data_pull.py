@@ -8,6 +8,8 @@ import json
 import os
 
 from pad_etl.api import pad_api
+from pad_etl.data import bonus, extra_egg_machine
+from bs4 import BeautifulSoup
 
 
 parser = argparse.ArgumentParser(description="Extracts PAD API data.", add_help=False)
@@ -67,13 +69,67 @@ pull_and_write_endpoint(api_client, pad_api.EndpointAction.DOWNLOAD_SKILL_DATA)
 pull_and_write_endpoint(api_client, pad_api.EndpointAction.DOWNLOAD_ENEMY_SKILL_DATA)
 pull_and_write_endpoint(api_client, pad_api.EndpointAction.DOWNLOAD_MONSTER_EXCHANGE)
 
+api_client.load_player_data()
+player_data = api_client.player_data
+bonus_data = bonus.load_bonus_data(data_dir=output_dir,
+                                   data_group=user_group,
+                                   server=args.server)
 
-def write_egg_machines(player_data):
-    extra_egg_machines = player_data['egatya3']
-    output_file = os.path.join(output_dir, 'extra_egg_machines.json')
-    with open(output_file, 'w') as outfile:
-        json.dump(extra_egg_machines, outfile, sort_keys=True, indent=4)
+# Egg machine extraction
+extra_egg_machines = extra_egg_machine.load_data(
+    data_json=player_data.egg_data, 
+    server=args.server)
+open_egg_machines = [x for x in extra_egg_machines if x.is_open()]
 
+def extract_event(machine_code, machine_name):
+    m_events = [x for x in bonus_data if x.bonus_name == machine_code and x.is_open()]
+    # Probably should only be one of these
+    em_events = []
+    for event in m_events:
+        em_events.append({
+            'name': machine_name,
+            'comment': event.message,
+            'start': event.start_time_str,
+            'end': event.end_time_str,
+            'row': event.egg_machine_id,
+        })
 
-player_data = api_client.action(pad_api.EndpointAction.GET_PLAYER_DATA)
-write_egg_machines(player_data)
+    return [extra_egg_machine.ExtraEggMachine(em, args.server) for em in em_events]
+
+open_egg_machines.extend(extract_event('rem_event', 'Rare Egg Machine'))
+open_egg_machines.extend(extract_event('pem_event', 'Pal Egg Machine'))
+
+for em in open_egg_machines:
+    gtype = 72 # Probably not right; was an example for a specific other rem
+    has_rate = True
+    if em.name == 'Pal Egg Machine':
+        gtype = 1
+        has_rate = False
+    elif em.name == 'Rare Egg Machine':
+        gtype = 2
+
+    grow = em.egg_machine_id
+    page = api_client.get_egg_machine_page(gtype, grow)
+    soup = BeautifulSoup(page, 'html.parser')
+    rows = soup.table.find_all('tr')
+    for row in rows:
+        cols = row.find_all('td')
+        if len(cols) < 2:
+            continue
+
+        if has_rate:
+            # Some rows can be size 3 (left header)
+            name_chunk = cols[-2].a['href']
+            rate_chunk = cols[-1].text.replace('%', '')
+            rate = round(float(rate_chunk) / 100, 4)
+        else:
+            # Some rows can be size 2 (left header)
+            name_chunk = cols[-1].a['href']
+            rate = 0
+
+        name_id = name_chunk[name_chunk.rfind('=')+1:]
+        em.contents[int(name_id)] = rate
+
+output_file = os.path.join(output_dir, 'egg_machines.json')
+with open(output_file, 'w') as outfile:
+    json.dump(open_egg_machines, outfile, sort_keys=True, indent=4, default=lambda x: x.__dict__)
