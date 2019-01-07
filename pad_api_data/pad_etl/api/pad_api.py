@@ -14,6 +14,8 @@ import keygen
 from pad_etl.common import pad_util
 from padtools.servers.server import Server
 import requests
+from fake_useragent import UserAgent
+
 
 import dungeon_encoding
 
@@ -301,3 +303,23 @@ class PadApiClient(object):
         if response_code != 0:
             raise Exception('Bad server response: ' + str(response_code))
         return result_json
+
+    def get_egg_machine_page(self, gtype, grow):
+        payload = [
+            ('gtype', gtype),
+            ('grow',  grow),
+            ('pid',   self.user_intid),
+            ('sid',   self.session_id),
+        ]
+        combined_payload = ['{}={}'.format(x[0], x[1]) for x in payload]
+        payload_str = '&'.join(combined_payload)
+        final_url = '{}?{}'.format(self.player_data.gacha_url, payload_str)
+
+        ua = UserAgent()
+        headers = {'User-Agent': ua.chrome}
+
+        s = requests.Session()
+        req = requests.Request('GET', final_url, headers=headers)
+        p = req.prepare()
+        r = s.send(p)
+        return r.text
