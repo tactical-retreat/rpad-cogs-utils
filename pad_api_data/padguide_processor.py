@@ -16,7 +16,7 @@ from pad_etl.data import bonus, card, dungeon, skill, enemy_skill, extra_egg_mac
 from pad_etl.processor import monster, monster_skill
 from pad_etl.processor import skill_info
 from pad_etl.processor.db_util import DbWrapper
-from pad_etl.processor.merged_data import MergedBonus, MergedCard, CrossServerCard
+from pad_etl.processor.merged_data import MergedBonus, MergedCard, CrossServerCard, MergedEnemySkillset
 from pad_etl.processor.news import NewsItem
 from pad_etl.processor.schedule_item import ScheduleItem
 
@@ -679,6 +679,7 @@ class Database(object):
 
         self.bonuses = clean_bonuses(pg_server, bonus_sets, dungeons)
         self.cards = clean_cards(cards, skills)
+        self.enemies = clean_enemy(cards, enemy_skills)
 
     def save_all(self, output_dir: str):
         def save(file_name: str, obj: object):
@@ -691,6 +692,7 @@ class Database(object):
         save('enemy_skills', self.enemy_skills)
         save('bonuses', self.bonuses)
         save('cards', self.cards)
+        save('enemies', self.enemies)
 
 def clean_bonuses(pg_server, bonus_sets, dungeons):
     dungeons_by_id = {d.dungeon_id: d for d in dungeons}
@@ -736,6 +738,18 @@ def clean_cards(cards, skills):
         merged_cards.append(MergedCard(card, active_skill, leader_skill))
     return merged_cards
 
+def clean_enemy(cards, enemy_skills):
+    enemy_skill_by_id = {s.enemy_skill_id: s for s in enemy_skills}
+    merged_enemies = {}
+    for card in cards:
+        if len(card.enemy_skill_refs) > 0:
+            enemy_skillset = []
+            for esf in card.enemy_skill_refs:
+                if enemy_skill_by_id.get(esf.enemy_skill_id) == None:
+                    print("ERROR - " + str(esf.enemy_skill_id))
+                enemy_skillset.append(MergedEnemySkillset(esf, enemy_skill_by_id.get(esf.enemy_skill_id)))
+            merged_enemies[card.card_id] = enemy_skillset
+    return merged_enemies
 
 if __name__ == '__main__':
     args = parse_args()

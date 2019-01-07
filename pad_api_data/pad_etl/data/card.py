@@ -140,7 +140,7 @@ class BookCard(pad_util.JsonDictEncodable):
         self.unknown_056 = raw[56]
 
         # self.enemy_skills = raw[57]
-        self.enemy_skill_refs = [EnemySkillRef(raw[57][i], raw[57][i+1], raw[57][i+2]) for i in range(0, len(raw[57])-2, 3)]
+        self.enemy_skill_refs = [EnemySkillRef(int(raw[57][i]), raw[57][i+1], raw[57][i+2]) for i in range(0, len(raw[57])-2, 3)]
 
         self.awakenings = raw[58]  # List[int]
         self.super_awakenings = list(map(int, filter(str.strip, raw[59].split(','))))  # List[int]
