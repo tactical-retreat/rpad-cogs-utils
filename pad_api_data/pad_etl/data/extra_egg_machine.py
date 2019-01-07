@@ -37,6 +37,9 @@ class ExtraEggMachine(pad_util.JsonDictEncodable):
         self.comment = str(raw.get('comment', ''))
         self.clean_comment = pad_util.strip_colors(self.comment)
 
+        # Monster ID to %
+        self.contents = {}
+
     def is_open(self):
         current_time = int(time.time())
         return self.start_timestamp < current_time and current_time < self.end_timestamp
@@ -51,10 +54,17 @@ class ExtraEggMachine(pad_util.JsonDictEncodable):
         return self.__dict__ == other.__dict__
 
 
-def load_data(data_dir: str=None, json_file: str=None, server: str=None) -> List[ExtraEggMachine]:
+def load_data(data_dir: str=None, 
+              json_file: str=None,
+              data_json=None,
+              server: str=None) -> List[ExtraEggMachine]:
     """Load ExtraEggMachine objects from the json file."""
-    if json_file is None:
-        json_file = os.path.join(data_dir, FILE_NAME)
+    if data_json is None:
+        if json_file is None:
+            json_file = os.path.join(data_dir, FILE_NAME)
+
+        with open(json_file) as f:
+            data_json = json.load(f)
 
     if not server:
         if '/na/' in json_file or '\\na\\' in json_file:
@@ -64,8 +74,7 @@ def load_data(data_dir: str=None, json_file: str=None, server: str=None) -> List
         else:
             raise Exception('Server not supplied and not automatically detected from path')
 
-    with open(json_file) as f:
-        data_json = json.load(f)
+    server = server.lower()
 
     egg_machines = []
     for outer in data_json:
