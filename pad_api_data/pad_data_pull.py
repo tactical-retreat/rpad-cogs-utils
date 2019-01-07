@@ -100,13 +100,11 @@ open_egg_machines.extend(extract_event('rem_event', 'Rare Egg Machine'))
 open_egg_machines.extend(extract_event('pem_event', 'Pal Egg Machine'))
 
 for em in open_egg_machines:
-    gtype = 72 # Probably not right; was an example for a specific other rem
+    gtype = 2 # Probably not right; seems to work?
     has_rate = True
     if em.name == 'Pal Egg Machine':
         gtype = 1
         has_rate = False
-    elif em.name == 'Rare Egg Machine':
-        gtype = 2
 
     grow = em.egg_machine_id
     page = api_client.get_egg_machine_page(gtype, grow)
