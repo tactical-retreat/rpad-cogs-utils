@@ -65,10 +65,6 @@ def parse_args():
     return parser.parse_args()
 
 
-#def database_diff_egg_machines(db_wrapper, database):
-#     raw_bonuses = database.bonus_sets.values()[0]
-
-
 def load_event_lookups(db_wrapper):
     en_name_to_id = db_wrapper.load_to_key_value('event_name_us', 'event_seq', 'event_list')
     jp_name_to_id = db_wrapper.load_to_key_value('event_name_jp', 'event_seq', 'event_list')
@@ -661,18 +657,16 @@ def load_database(base_dir, pg_server):
         skill.load_skill_data(data_dir=base_dir),
         skill.load_raw_skill_data(data_dir=base_dir),
         exchange.load_data(data_dir=base_dir))
-        # extra_egg_machine.load_data(data_dir=base_dir))
 
 
 class Database(object):
-    def __init__(self, pg_server, cards, dungeons, bonus_sets, skills, raw_skills, exchange, extra_egg_machines=None):
+    def __init__(self, pg_server, cards, dungeons, bonus_sets, skills, raw_skills, exchange):
         self.pg_server = pg_server
         self.raw_cards = cards
         self.dungeons = dungeons
         self.bonus_sets = bonus_sets
         self.skills = skills
         self.exchange = exchange
-        self.extra_egg_machines = extra_egg_machines
 
         # This is temporary for the integration of calculated skills
         self.raw_skills = raw_skills
