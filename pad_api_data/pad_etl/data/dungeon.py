@@ -29,14 +29,11 @@ class DungeonFloor(pad_util.JsonDictEncodable):
         self.stamina = raw[4]
         self.bgm1 = raw[5]
         self.bgm2 = raw[6]
-        self.rflags2 = raw[7]
-        self.flags = raw[8]
+        self.rflags2 = int(raw[7])
         # These need to be parsed depending on flags
         self.otherModifier = raw7_map[int(raw[7])]
 
         possibleDrops = {}
-
-
 
         # This next loop runs through the elements from raw[8] until it hits a 0. The 0 indicates the end of the list
         # of drops for the floor, the following segments are the dungeon modifiers
@@ -69,7 +66,8 @@ class DungeonFloor(pad_util.JsonDictEncodable):
 
         self.modifiers = modifiers.modifiers
 
-        self.remaining_fields = raw[9:]
+        self.flags = int(raw[pos])
+        self.remaining_fields = raw[pos+1:]
 
         # Modifiers parsing doesn't seem to always work
         # Hacked up version for dungeon modifiers, needed for
@@ -114,6 +112,36 @@ class DungeonFloor(pad_util.JsonDictEncodable):
                     'awakening_count': details[4] if full_record else 0,
                     'skill_level': details[5] if full_record else 0,
                 }
+
+        # This code imported from Rikuu, need to clean it up and merge
+        # with the other modifiers parsing code. For now just importing
+        # the score parsing, needed for dungeon loading.
+        self.score = None
+        i = 0
+
+        if ((self.flags & 0x1) != 0):
+            i += 2
+            #self.requirement = {
+            #  dungeonId: Number(self.remaining_fields[i++]),
+            #  floorId: Number(self.remaining_fields[i++])
+            #};
+        if ((self.flags & 0x4) != 0):
+            i += 1
+            #self.beginTime = fromPADTime(self.remaining_fields[i++]);
+        if ((self.flags & 0x8) != 0):
+            self.score = int(self.remaining_fields[i]);
+            i += 1
+        if ((self.flags & 0x10) != 0):
+            i += 1
+            #self.minRank = Number(self.remaining_fields[i++]);
+        if ((self.flags & 0x40) != 0):
+            i += 1
+            #self.properties = self.remaining_fields[i++].split('|');
+
+        #self.conditions = {
+        #  type: Number(raw[i++]),
+        #  values: raw.slice(i).map(Number)
+        #};
 
 
 prefix_to_dungeontype = {
