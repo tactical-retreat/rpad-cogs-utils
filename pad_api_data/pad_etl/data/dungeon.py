@@ -92,6 +92,30 @@ class DungeonFloor(pad_util.JsonDictEncodable):
                 break
 
 
+        # Modifiers parsing also seems to skip fixed teams sometimes.
+        # Hacked up version for just that here.
+        self.fixed_team = {}
+
+        for field in self.remaining_fields:
+            if not 'fc1' in field:
+                continue
+            for sub_field in field.split('|'):
+                if not sub_field.startswith('fc'):
+                    continue
+                idx = int(sub_field[2])
+                contents = sub_field[4:]
+                details = contents.split(';')
+                full_record = len(details) > 1
+                self.fixed_team[idx] = {
+                    'monster_id': details[0],
+                    'hp_plus': details[1] if full_record else 0,
+                    'atk_plus': details[2] if full_record else 0,
+                    'rcv_plus': details[3] if full_record else 0,
+                    'awakening_count': details[4] if full_record else 0,
+                    'skill_level': details[5] if full_record else 0,
+                }
+
+
 prefix_to_dungeontype = {
     # #G#Ruins of the Star Vault 25
     '#G#': 'guerrilla',
