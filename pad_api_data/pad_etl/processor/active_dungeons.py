@@ -61,7 +61,7 @@ def filter_floors(dungeon_floors: List[Dict[str, Any]]) -> List[int]:
     """Currently only prevents entrance into fixed teams floors."""
     accepted_floors = []
     for floor in dungeon_floors:
-        if 'fixed' in floor['clean_name'].lower():
-            continue
+        #if 'fixed' in floor['clean_name'].lower():
+        #    continue
         accepted_floors.append(int(floor['floor_number']))
     return accepted_floors
