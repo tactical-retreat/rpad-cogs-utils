@@ -101,6 +101,7 @@ class ScheduleItem(object):
                  WHERE open_timestamp = {open_timestamp}
                  AND close_timestamp = {close_timestamp}
                  AND server = {server}
+                 AND team_data = {team_data}
                  AND event_seq = {event_seq}
                  AND event_type = {event_type}
                  AND dungeon_seq = {dungeon_seq}
