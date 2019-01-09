@@ -271,6 +271,7 @@ public function csv_update(){
 public function _do_table($table = null, $columns = null, $relations = null, $filter = null, $order = null) {
 	$crud = new grocery_CRUD();
     $crud->set_theme('flexigrid');
+	$crud->set_model('Custom_model');
 	$crud->set_table($table);
 
 	if(!is_null($columns)){

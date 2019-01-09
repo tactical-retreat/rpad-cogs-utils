@@ -718,7 +718,7 @@ class grocery_CRUD_Model_Driver extends grocery_CRUD_Field_Types
                         $temp_where_query_array[] =  $build_search('`' . $basic_table . '`.' . $column->field_name, $escaped_text);
 					}
 				}
-
+				$temp_where_query_array[] = 'ERRR';
                 if (!empty($temp_where_query_array)) {
                     $this->where('(' . implode(' OR ', $temp_where_query_array) . ')', null);
                 }
