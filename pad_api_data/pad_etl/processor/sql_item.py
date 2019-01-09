@@ -5,8 +5,19 @@ class SqlItem(object):
         return getattr(self, self._key()) if self._key() else None
 
     def needs_insert(self):
+        if not self.uses_local_primary_key():
+            raise Exception('Should not call this function, uses FK primary Key')
         key_val = self.key_value()
         return key_val is None or key_val == 0
+
+
+    def uses_local_primary_key(self):
+        """Controls insert logic.
+
+        If true, an insert is needed if the primary key is missing.
+        If false, an insert is needed if the primary key is set but not found in the table.
+        """
+        return True
 
     def exists_sql(self):
         sql = 'SELECT {} FROM {} WHERE {}'.format(
