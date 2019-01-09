@@ -656,7 +656,7 @@ def load_database(base_dir, pg_server):
          for x in ['red', 'blue', 'green']},
         skill.load_skill_data(data_dir=base_dir),
         skill.load_raw_skill_data(data_dir=base_dir),
-        enemy_skill.load_enemy_skill_data(data_dir=base_dir))
+        enemy_skill.load_enemy_skill_data(data_dir=base_dir),
         exchange.load_data(data_dir=base_dir))
 
 
@@ -667,7 +667,7 @@ class Database(object):
         self.dungeons = dungeons
         self.bonus_sets = bonus_sets
         self.skills = skills
-		self.enemy_skills = enemy_skills
+        self.enemy_skills = enemy_skills
         self.exchange = exchange
 
         # This is temporary for the integration of calculated skills
