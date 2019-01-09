@@ -251,13 +251,13 @@ public function csv_update(){
 
 					$by_table[$tmp[0]][$tmp[1]] = $value;
 				}
-				print_r($by_table);
-				echo '<br/>';
+				//print_r($by_table);
+				//echo '<br/>';
 				foreach($by_table as $table => $data){
 					$this->db->where($pk_fieldname, $pk_value);
 					$this->db->update($table, $data);
-					echo $this->db->last_query();
-					echo '<br/>';
+					//echo $this->db->last_query();
+					//echo '<br/>';
 					$complete[] = $pk_value;
 				}
 			}

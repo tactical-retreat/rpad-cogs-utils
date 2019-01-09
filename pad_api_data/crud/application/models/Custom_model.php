@@ -23,8 +23,11 @@ class Custom_model  extends grocery_CRUD_Model  {
 
 				if($count == 0)
 				{
-					if(!empty($field_info->priority_field_relation_table))
+					if(!empty($field_info->priority_field_relation_table)){
 						$where_array[$field_info->priority_field_relation_table] = $counter;
+					}else{
+						$where_array[$field_info->primary_key_alias_to_this_table] = $main_primary_key;
+					}
 
 					$this->db->insert($field_info->relation_table, $where_array);
 					log_message('debug', $this->db->last_query());
