@@ -34,7 +34,7 @@ def filter_current_bonuses(
         bonus = merged_bonus['bonus']
         bonus_name = bonus['bonus_name']
         #if bonus_name not in ['dungeon', 'daily_dragons']:
-        # TODO: fix daily dragons
+        # TODO: fix daily dragons, probably need to check week day
         if bonus_name not in ['dungeon']:
             # These are the only events with dungeons that we're interested in
             continue
@@ -61,7 +61,7 @@ def filter_floors(dungeon_floors: List[Dict[str, Any]]) -> List[int]:
     """Currently only prevents entrance into fixed teams floors."""
     accepted_floors = []
     for floor in dungeon_floors:
-        if 'fixed' in floor['clean_name'].lower():
-            continue
+        #if 'fixed' in floor['clean_name'].lower():
+        #    continue
         accepted_floors.append(int(floor['floor_number']))
     return accepted_floors

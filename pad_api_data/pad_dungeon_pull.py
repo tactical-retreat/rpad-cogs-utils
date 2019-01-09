@@ -23,7 +23,7 @@ def parse_args():
 
     inputGroup.add_argument("--dungeon_id", required=True, help="Dungeon ID")
     inputGroup.add_argument("--floor_id", required=True, help="Floor ID")
-    inputGroup.add_argument("--loop_count", default=100, help="Number of entry attempts")
+    inputGroup.add_argument("--loop_count", type=int, default=100, help="Number of entry attempts")
 
     outputGroup = parser.add_argument_group("Output")
     outputGroup.add_argument("--db_config", required=True, help="JSON database info")

@@ -14,6 +14,8 @@ import keygen
 from pad_etl.common import pad_util
 from padtools.servers.server import Server
 import requests
+from fake_useragent import UserAgent
+
 
 import dungeon_encoding
 
@@ -34,7 +36,7 @@ class ServerEndpoint(Enum):
 
 
 class EndpointActionInfo(object):
-    def __init__(self, name: str, v_name: str, v_value: int):
+    def __init__(self, name: str, v_name: str, v_value: int, **extra_args):
         # Name of the action
         self.name = name
 
@@ -43,6 +45,9 @@ class EndpointActionInfo(object):
 
         # Value for the version parameter
         self.v_value = v_value
+
+        # Other random one-off parameters
+        self.extra_args = extra_args
 
 
 class EndpointAction(Enum):
@@ -53,6 +58,7 @@ class EndpointAction(Enum):
     DOWNLOAD_LIMITED_BONUS_DATA = EndpointActionInfo('download_limited_bonus_data', 'v', 2)
     GET_PLAYER_DATA = EndpointActionInfo('get_player_data', 'v', 2)
     GET_RECOMMENDED_HELPERS = EndpointActionInfo('get_recommended_helpers', None, None)
+    DOWNLOAD_MONSTER_EXCHANGE = EndpointActionInfo('mdatadl', None, None, dtp=0)
 
 
 def get_headers(host):
@@ -66,22 +72,35 @@ def get_headers(host):
     }
 
 
-def generate_entry_data(data_parsed: PlayerDataResponse, friend_leader: FriendLeader):
+def generate_entry_data(data_parsed: PlayerDataResponse, friend_leader: FriendLeader, fixed_team=False):
     nonce = math.floor(random.random() * 0x10000)
     nonce_offset = nonce % 0x100
     card_nonce = len(data_parsed.cards) + nonce_offset
 
-    friend_values = [friend_leader.hp_plus, friend_leader.atk_plus, friend_leader.rcv_plus, friend_leader.awakening_count,
-                     friend_leader.assist_monster_id, friend_leader.super_awakening_id, friend_leader.assist_awakening_count]
-
     deck_and_inherits = data_parsed.get_deck_and_inherits()
-    deck_and_inherits.append(friend_leader.monster_id)
-    deck_and_inherits.append(friend_leader.assist_monster_id)
 
     deck_uuids = data_parsed.get_current_deck_uuids()
     leader = data_parsed.cards_by_uuid[deck_uuids[0]]
     leader_uuid = leader.card_uuid
     deck_uuids_minimal = [u for u in deck_uuids if u != 0]
+
+    if fixed_team:
+        return [
+            'rk={}'.format(nonce),
+            'bm={}'.format(card_nonce),
+            'lc={}'.format(leader_uuid),
+            'ds={}'.format(','.join(map(str, deck_and_inherits))),
+            'dev={}'.format(PadApiClient.DEV),
+            'osv={}'.format(PadApiClient.OSV).replace('.', ','),
+            'pc={}'.format(','.join(map(str, deck_uuids_minimal))),
+            'de={}'.format(1),  # This is always 1?
+        ]
+
+    friend_values = [friend_leader.hp_plus, friend_leader.atk_plus, friend_leader.rcv_plus, friend_leader.awakening_count,
+                     friend_leader.assist_monster_id, friend_leader.super_awakening_id, friend_leader.assist_awakening_count]
+
+    deck_and_inherits.append(friend_leader.monster_id)
+    deck_and_inherits.append(friend_leader.assist_monster_id)
 
     return [
         'rk={}'.format(nonce),
@@ -97,7 +116,7 @@ def generate_entry_data(data_parsed: PlayerDataResponse, friend_leader: FriendLe
         'pc={}'.format(','.join(map(str, deck_uuids_minimal))),
         'de={}'.format(1),  # This is always 1?
     ]
-
+    
 
 class PadApiClient(object):
     OSV = '6.0'
@@ -193,6 +212,9 @@ class PadApiClient(object):
         if action.value.v_name:
             payload.append((action.value.v_name,   action.value.v_value))
 
+        for key, val in action.value.extra_args.items():
+            payload.append((key, val))
+
         payload.extend([
             ('r',      self.server_r),
             ('m',      '0'),
@@ -247,7 +269,8 @@ class PadApiClient(object):
 
     def get_entry_payload(self, dung_id: int, floor_id: int,
                           self_card: CardEntry=None,
-                          friend: FriendEntry=None, friend_leader: FriendLeader=None):
+                          friend: FriendEntry=None, friend_leader: FriendLeader=None,
+                          fixed_team=False):
         cur_ghtime = pad_util.cur_gh_time(self.server_p)
         cur_timestamp = int(cur_ghtime) * 1000 + random.randint(0, 999)
         data = [
@@ -258,15 +281,19 @@ class PadApiClient(object):
             ('floor',  floor_id),
             ('time',   cur_timestamp),
         ]
-        if self_card:
+
+        if fixed_team:
+            friend = None
+            friend_leader = None
+        elif self_card:
             data.append(('shelp', self_card.card_uuid))
             friend_leader = self.card_entry_to_fake_friend(self_card)
         elif friend_leader:
             ('helper', friend.user_intid),
         else:
-            raise Exception('Must specify one of self_card, friend/friend_leader')
+            raise Exception('Must specify one of self_card, friend/friend_leader, fixed_team')
 
-        entry_data = generate_entry_data(self.player_data, friend_leader)
+        entry_data = generate_entry_data(self.player_data, friend_leader, fixed_team=fixed_team)
         # TODO: make initial key random
         enc_entry_data = dungeon_encoding.encodePadDungeon('&'.join(entry_data), 0x23)
         data.extend([
@@ -294,3 +321,23 @@ class PadApiClient(object):
         if response_code != 0:
             raise Exception('Bad server response: ' + str(response_code))
         return result_json
+
+    def get_egg_machine_page(self, gtype, grow):
+        payload = [
+            ('gtype', gtype),
+            ('grow',  grow),
+            ('pid',   self.user_intid),
+            ('sid',   self.session_id),
+        ]
+        combined_payload = ['{}={}'.format(x[0], x[1]) for x in payload]
+        payload_str = '&'.join(combined_payload)
+        final_url = '{}?{}'.format(self.player_data.gacha_url, payload_str)
+
+        ua = UserAgent()
+        headers = {'User-Agent': ua.chrome}
+
+        s = requests.Session()
+        req = requests.Request('GET', final_url, headers=headers)
+        p = req.prepare()
+        r = s.send(p)
+        return r.text

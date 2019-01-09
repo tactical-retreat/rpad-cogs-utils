@@ -101,12 +101,16 @@ class ScheduleItem(object):
                  WHERE open_timestamp = {open_timestamp}
                  AND close_timestamp = {close_timestamp}
                  AND server = {server}
+                 AND team_data = {team_data}
                  AND event_seq = {event_seq}
                  AND event_type = {event_type}
                  AND dungeon_seq = {dungeon_seq}
                  """
 
-        return sql.format(**db_util.object_to_sql_params(self))
+        formatted_sql = sql.format(**db_util.object_to_sql_params(self))
+        # TODO: Convert this object to use SqlItem
+        fixed_sql = formatted_sql.replace('= NULL', 'is NULL')
+        return fixed_sql
 
     def insert_sql(self, schedule_seq):
         self.schedule_seq = schedule_seq

@@ -22,7 +22,7 @@ class ProcessedFloor(object):
 		stage_groupings = defaultdict(list)
 		for wave in example_waves:
 			if wave.is_invade():
-				self.invades.add_wave_group([wave])
+				self.invades.add_wave_group([wave], monster_id_to_card)
 			else:
 				stage_groupings[(wave.stage, wave.entry_id)].append(wave)
 
@@ -85,10 +85,10 @@ class ResultStage(object):
 		self.stage_idx = processed_stage.stage_idx
 		self.slots = []
 
-		self.coins_min = min(processed_stage.coins)
-		self.coins_max = max(processed_stage.coins)
-		self.xp_min = min(processed_stage.xp)
-		self.xp_max = max(processed_stage.xp)
+		self.coins_min = min(processed_stage.coins) if processed_stage.coins else 0
+		self.coins_max = max(processed_stage.coins) if processed_stage.coins else 0
+		self.xp_min = min(processed_stage.xp) if processed_stage.xp else 0
+		self.xp_max = max(processed_stage.xp) if processed_stage.xp else 0
 
 		fixed_spawns = []
 		random_spawns = []
@@ -213,12 +213,13 @@ def update_sub_dungeon(sub_dungeon: dbdungeon.SubDungeon,
 		existing_id_to_monster = {dm.monster_no: dm for dm in existing}
 		for slot in stage.slots:
 			card = monster_id_to_card[slot.monster_id]
-			# TODO: this might need mapping
-			if card.card_id > 9999:
-				# This is a dummy entry monster for alternate enemy skills
-				monster_id = card.base_id
-			else:
-				monster_id = card.card_id
+
+			# TODO: this might need mapping due to na/jp skew for monster_no
+			monster_id = slot.monster_id
+			monster_id = monster_id - 100000 if monster_id > 99999 else monster_id
+
+			if monster_id <= 0:
+				raise Exception('Bad monster ID', slot.monster_id, card.card_id, card.base_id)
 
 			monster = existing_id_to_monster.get(monster_id)
 			if not monster:

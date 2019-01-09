@@ -4,6 +4,7 @@ Parses the extra egg machine data.
 
 import json
 import os
+import time
 from typing import Dict, List, Any
 
 from ..common import pad_util
@@ -16,18 +17,32 @@ FILE_NAME = 'extra_egg_machines.json'
 class ExtraEggMachine(pad_util.JsonDictEncodable):
     """Egg machines extracted from the player data json."""
 
-    def __init__(self, raw: Dict[str, Any]):
+    def __init__(self, raw: Dict[str, Any], server: str):
         self.name = str(raw['name'])
+        self.server = server
         self.clean_name = pad_util.strip_colors(self.name)
 
         # Start time as gungho time string
         self.start_time_str = str(raw['start'])
+        self.start_timestamp = pad_util.gh_to_timestamp(self.start_time_str, server)
 
         # End time as gungho time string
         self.end_time_str = str(raw['end'])
+        self.end_timestamp = pad_util.gh_to_timestamp(self.end_time_str, server)
 
         # The egg machine ID used in the API call param grow
         self.egg_machine_id = int(raw['row'])
+
+        # TODO: extra egg machine parser needs to pull out comment
+        self.comment = str(raw.get('comment', ''))
+        self.clean_comment = pad_util.strip_colors(self.comment)
+
+        # Monster ID to %
+        self.contents = {}
+
+    def is_open(self):
+        current_time = int(time.time())
+        return self.start_timestamp < current_time and current_time < self.end_timestamp
 
     def __str__(self):
         return str(self.__dict__)
@@ -39,16 +54,32 @@ class ExtraEggMachine(pad_util.JsonDictEncodable):
         return self.__dict__ == other.__dict__
 
 
-def load_data(data_dir: str=None, egg_json_file: str=None) -> List[ExtraEggMachine]:
+def load_data(data_dir: str=None, 
+              json_file: str=None,
+              data_json=None,
+              server: str=None) -> List[ExtraEggMachine]:
     """Load ExtraEggMachine objects from the json file."""
-    if egg_json_file is None:
-        egg_json_file = os.path.join(data_dir, FILE_NAME)
+    if data_json is None:
+        if json_file is None:
+            json_file = os.path.join(data_dir, FILE_NAME)
 
-    with open(egg_json_file) as f:
-        egg_json = json.load(f)
+        with open(json_file) as f:
+            data_json = json.load(f)
+
+    if not server:
+        if '/na/' in json_file or '\\na\\' in json_file:
+            server = 'na'
+        elif '/jp/' in json_file or '\\jp\\' in json_file:
+            server = 'jp'
+        else:
+            raise Exception('Server not supplied and not automatically detected from path')
+
+    server = server.lower()
 
     egg_machines = []
-    for outer in egg_json:
+    for outer in data_json:
         if outer:
             for em in outer:
-                egg_machines.append(ExtraEggMachine(em))
+                egg_machines.append(ExtraEggMachine(em, server))
+
+    return egg_machines

@@ -8,6 +8,10 @@ class PlayerDataResponse(pad_util.JsonDictEncodable):
         self.cards = [CardEntry(c) for c in data['card']]
         self.friends = [FriendEntry(f) for f in data['friends']]
         self.cards_by_uuid = {c.card_uuid: c for c in self.cards}
+        self.egg_data = data['egatya3']
+
+        gmsg = data['gmsg'].replace('ihttps', 'https')
+        self.gacha_url = gmsg[:gmsg.rfind('/')] + '/prop.php'
 
     def get_current_deck(self):
         if 'decks' in self.decksb:
