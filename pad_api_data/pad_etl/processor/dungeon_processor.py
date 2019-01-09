@@ -294,8 +294,16 @@ def update_sub_dungeon(sub_dungeon: dbdungeon.SubDungeon,
 
                 if len(monster_drops) > 1:
                     raise Exception('expected at most one monster drop', monster_drops)
+
+                # Sort the other drops for indexing purposes
+                other_drops = list(sorted(other_drops))
+
                 if monster_drops:
                     monster.drop_no = next(iter(monster_drops))
+                elif other_drops:
+                    # We need drop_no to be set; since the monster didn't drop itself, set the
+                    # first other drop
+                    monster.drop_no = other_drops.pop(0)
 
                 existing_drops = {
                     int(ed.monster_no): ed for ed in monster.resolved_dungeon_monster_drops}
