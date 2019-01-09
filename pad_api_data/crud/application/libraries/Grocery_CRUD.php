@@ -561,7 +561,7 @@ class grocery_CRUD_Model_Driver extends grocery_CRUD_Field_Types
 	}
 
 	protected function set_ajax_list_queries($state_info = null)
-	{
+	{		
         $field_types = $this->get_field_types();
 
 		if(!empty($state_info->per_page))
@@ -582,6 +582,34 @@ class grocery_CRUD_Model_Driver extends grocery_CRUD_Field_Types
 
 		if(isset($state_info->search) && $state_info->search !== '')
 		{
+			$build_search = function($field, $text){
+				if(!array_key_exists('wildcard', $_POST)){
+					return "$field LIKE %'$text'%";
+				}else{
+					switch($_POST['wildcard']){
+						default:
+						case 'equal':
+							return "$field='$text'";
+						break;
+						case 'not_equal':
+							return "$field!='$text'";
+						break;
+						case 'begin':
+							return "CAST($field as CHAR) LIKE '$text%'";
+						break;
+						case 'end':
+							return "CAST($field as CHAR) LIKE '%$text'";
+						break;
+						case 'contain':
+							return "CAST($field as CHAR) LIKE '%$text%'";
+						break;
+						case 'not_contain':
+							return "CAST($field as CHAR) NOT LIKE '%$text%'";
+						break;
+					}
+				}
+			};
+			
 			if (!empty($this->relation)) {
 				foreach ($this->relation as $relation_name => $relation_values) {
 					$temp_relation[$this->_unique_field_name($relation_name)] = $this->_get_field_names_to_search($relation_values);
@@ -598,68 +626,46 @@ class grocery_CRUD_Model_Driver extends grocery_CRUD_Field_Types
 
                             foreach ($temp_relation[$search_field] as $relation_field) {
                                 $escaped_text = $this->basic_model->escape_str($search_text);
-                                $temp_where_query_array[] = $relation_field . ' LIKE \'%' . $escaped_text . '%\'';
+                                //$temp_where_query_array[] = $relation_field . ' LIKE \'%' . $escaped_text . '%\'';
+                                $temp_where_query_array[] = $build_search($relation_field, $escaped_text);
                             }
                             if (!empty($temp_where_query_array)) {
                                 $this->where('(' . implode(' OR ', $temp_where_query_array) . ')', null);
                             }
 
                         } else {
-                            $this->like($temp_relation[$search_field] , $search_text);
+                            //$this->like($temp_relation[$search_field] , $search_text);
+                            $this->where($build_search($temp_relation[$search_field], $this->basic_model->escape_str($search_text)));
                         }
-                    }				elseif(isset($this->relation_n_n[$state_info->search->field]))
-				{
-					$escaped_text = $this->basic_model->escape_str($state_info->search->text);
-					$this->having($state_info->search->field." LIKE '%".$escaped_text."%'");
-				}
-				else
-				{
-				$wildcard = $_POST['wildcard'];
-                                if($wildcard == "equal")
-                                {
-					$this->like($state_info->search->field , $state_info->search->text , 'none');
-                                }
-                                elseif($wildcard == "not_equal")
-                                {
-					$this->where($state_info->search->field.' !=', $state_info->search->text);
-                                }
-                                elseif($wildcard == "begin")
-                                {
-					$this->like($state_info->search->field , $state_info->search->text , 'after');
-                                }
-                                elseif($wildcard == "end")
-                                {
-					$this->like($state_info->search->field , $state_info->search->text , 'before');
-                                }
-                                elseif($wildcard == "contain")
-                                {
-					$this->like($state_info->search->field , $state_info->search->text);
-                                }
-                                elseif($wildcard == "not_contain")
-                                {
-					$this->where($state_info->search->field.' not like ', "%".$state_info->search->text."%");
-                                }
- 
-				}
-
-
-
-
+                    } elseif(isset($this->relation_n_n[$search_field])) {
+                        $escaped_text = $this->basic_model->escape_str($search_text);
+						$this->having($build_search($search_field, $escaped_text));
+                    } else {
+						$escaped_text = $this->basic_model->escape_str($search_text);
+                        $this->where($build_search($search_field, $escaped_text));
+                    }
                 }
             } elseif ($state_info->search->field !== null) {
 				if (isset($temp_relation[$state_info->search->field])) {
 					if (is_array($temp_relation[$state_info->search->field])) {
 						foreach ($temp_relation[$state_info->search->field] as $search_field) {
-							$this->or_like($search_field , $state_info->search->text);
+							//$this->or_like($search_field , $state_info->search->text);
+							$escaped_text = $this->basic_model->escape_str($state_info->search->text);
+							$this->or_where($build_search($search_field, $escaped_text));
                         }
                     } else {
-						$this->like($temp_relation[$state_info->search->field] , $state_info->search->text);
+						//$this->like($temp_relation[$state_info->search->field] , $state_info->search->text);
+						$escaped_text = $this->basic_model->escape_str($state_info->search->text);
+						$this->where($build_search($temp_relation[$state_info->search->field], $escaped_text));
                     }
 				} elseif(isset($this->relation_n_n[$state_info->search->field])) {
 					$escaped_text = $this->basic_model->escape_str($state_info->search->text);
-					$this->having($state_info->search->field." LIKE '%".$escaped_text."%'");
+					//$this->having($state_info->search->field." LIKE '%".$escaped_text."%'");
+					$this->having($build_search($state_info->search->field, $escaped_text));
 				} else {
-					$this->like($state_info->search->field , $state_info->search->text);
+					//$this->like($state_info->search->field , $state_info->search->text);
+					$escaped_text = $this->basic_model->escape_str($state_info->search->text);
+					$this->where($build_search($state_info->search->field, $escaped_text));
 				}
 			}
             // Search all field
@@ -669,11 +675,12 @@ class grocery_CRUD_Model_Driver extends grocery_CRUD_Field_Types
 
 				$search_text = $state_info->search->text;
 
-				if(!empty($this->where))
+				/*if(!empty($this->where))
 					foreach($this->where as $where)
-						$this->basic_model->having($where[0],$where[1],$where[2]);
+						$this->basic_model->having($where[0],$where[1],$where[2]);*/
 
                 $temp_where_query_array = [];
+                $temp_having_query_array = [];
                 $basic_table = $this->get_table();
 
 				foreach($columns as $column)
@@ -685,31 +692,39 @@ class grocery_CRUD_Model_Driver extends grocery_CRUD_Field_Types
 							foreach($temp_relation[$column->field_name] as $search_field)
 							{
                                 $escaped_text = $this->basic_model->escape_str($search_text);
-                                $temp_where_query_array[] = $search_field . ' LIKE \'%' . $escaped_text . '%\'';
+                                //$temp_where_query_array[] = $search_field . ' LIKE \'%' . $escaped_text . '%\'';
+								$temp_where_query_array[] = $build_search($search_field, $escaped_text);
 							}
 						}
 						else
 						{
                             $escaped_text = $this->basic_model->escape_str($search_text);
-                            $temp_where_query_array[] = $temp_relation[$column->field_name] . ' LIKE \'%' . $escaped_text . '%\'';
+                            //$temp_where_query_array[] = $temp_relation[$column->field_name] . ' LIKE \'%' . $escaped_text . '%\'';
+							$temp_where_query_array[] = $build_search($temp_relation[$column->field_name], $escaped_text);
 						}
 					}
 					elseif(isset($this->relation_n_n[$column->field_name]))
 					{
 						//@todo have a where for the relation_n_n statement
+						//$escaped_text = $this->basic_model->escape_str($search_text);
+						//$temp_having_query_array[] = $build_search($column->field_name, $escaped_text);
 					}
 					elseif (
 					    isset($field_types[$column->field_name]) &&
                         !in_array($field_types[$column->field_name]->type, array('date', 'datetime', 'timestamp'))
                     ) {
                         $escaped_text = $this->basic_model->escape_str($search_text);
-                        $temp_where_query_array[] =  '`' . $basic_table . '`.' . $column->field_name . ' LIKE \'%' . $escaped_text . '%\'';
+                        //$temp_where_query_array[] =  '`' . $basic_table . '`.' . $column->field_name . ' LIKE \'%' . $escaped_text . '%\'';
+                        $temp_where_query_array[] =  $build_search('`' . $basic_table . '`.' . $column->field_name, $escaped_text);
 					}
 				}
 
                 if (!empty($temp_where_query_array)) {
                     $this->where('(' . implode(' OR ', $temp_where_query_array) . ')', null);
                 }
+                /*if (!empty($temp_having_query_array)) {
+                    $this->having('(' . implode(' OR ', $temp_having_query_array) . ')', null);
+                }*/
 			}
 		}
 	}
