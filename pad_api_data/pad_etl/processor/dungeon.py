@@ -13,7 +13,8 @@ import json
 
 def full_columns(o: SqlItem, remove_cols=[], add_cols=[]):
     cols = set(vars(o).keys())
-    cols.discard(o._key())
+    if o.uses_local_primary_key():
+        cols.discard(o._key())
     cols.discard('tstamp')
     # Do something about tstamp in SqlItem insert or update
     cols = set([x for x in cols if not x.startswith('resolved')])
@@ -275,6 +276,9 @@ class SubDungeonPoint(SqlItem):
     def __repr__(self):
         return dump(self)
 
+    def uses_local_primary_key(self):
+        return False
+
     def _table(self):
         return SubDungeonPoint.TABLE
 
@@ -312,6 +316,9 @@ class SubDungeonReward(SqlItem):
     def __repr__(self):
         return dump(self)
 
+    def uses_local_primary_key(self):
+        return False
+
     def _table(self):
         return SubDungeonReward.TABLE
 
@@ -342,6 +349,9 @@ class SubDungeonScore(SqlItem):
 
     def __repr__(self):
         return dump(self)
+
+    def uses_local_primary_key(self):
+        return False
 
     def _table(self):
         return SubDungeonScore.TABLE
@@ -438,7 +448,7 @@ class DungeonMonsterDrop(SqlItem):
                  tstamp: int=None):
         self.monster_no = monster_no # FK to Monster (not mapped)
         self.order_idx = order_idx # Generally 10 * n where n is 1-indexed
-        self.status = status # Generally 0; Rarely 2, not sure why
+        self.status = status # Generally 0; Rarely 2, not sure why (might be 'deleted')
         self.tdmd_seq = tdmd_seq # Primary Key
         self.tdm_seq = tdm_seq # Foreign Key to DungeonMonster (injected)
         self.tstamp = tstamp or (int(time.time()) * 1000)
@@ -529,16 +539,27 @@ class DungeonLoader(object):
 
     def insert_or_update(self, item: SqlItem):
         key = item.key_value()
-        if item.needs_insert():
-            print('item needed insert:', type(item), item.key_value())
-            key = self.db_wrapper.insert_item(item.insert_sql())
-        elif not self.db_wrapper.check_existing(item.needs_update_sql()):
-            print('item needed update:', type(item), item.key_value())
-            print(item.needs_update_sql())
-            self.db_wrapper.insert_item(item.update_sql())
+        if not item.uses_local_primary_key():
+            if not self.db_wrapper.check_existing(item.exists_sql()):
+                print('item (fk) needed insert:', type(item), key)
+                key = self.db_wrapper.insert_item(item.insert_sql())
+            elif not self.db_wrapper.check_existing(item.needs_update_sql()):
+                print('item (fk) needed update:', type(item), key)
+                print(item.needs_update_sql())
+                self.db_wrapper.insert_item(item.update_sql())
+
+        else:
+            if item.needs_insert():
+                print('item needed insert:', type(item), key)
+                key = self.db_wrapper.insert_item(item.insert_sql())
+            elif not self.db_wrapper.check_existing(item.needs_update_sql()):
+                print('item needed update:', type(item), key)
+                print(item.needs_update_sql())
+                self.db_wrapper.insert_item(item.update_sql())
         return key
 
     def save_dungeon(self, dungeon: Dungeon):
+        # TODO: Run save in a transaction and commit on success
         # TODO: Save DungeonType?
         if dungeon.resolved_dungeon_type:
             dungeon.tdt_seq = dungeon.resolved_dungeon_type.tdt_seq

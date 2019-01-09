@@ -11,8 +11,10 @@ from . import dungeon as dbdungeon
 from ..data import dungeon as datadungeon
 from .monster import SqlItem
 import json
+from statistics import mean
 
-VERSION = 'dadguide 0.1'
+
+VERSION = 'dadguide 0.2'
 
 class ProcessedFloor(object):
 	def __init__(self, stage_count, example_waves, monster_id_to_card):
@@ -43,6 +45,7 @@ class ProcessedStage(object):
 		self.count = 0
 		self.coins = []
 		self.xp = []
+		self.mp = []
 
 		# TODO: alternate drops
 		# TODO: drop rates
@@ -59,9 +62,14 @@ class ProcessedStage(object):
 		self.spawns_per_wave[len(waves)] += 1
 		coins = 0
 		xp = 0
+		mp = 0
 		for wave in waves:
-			if wave.get_drop():
-				self.spawn_to_drop[wave.monster_id].add(wave.get_drop())
+			drop = wave.get_drop()
+			if drop:
+				self.spawn_to_drop[wave.monster_id].add(drop)
+				data_card_data = monster_id_to_card[drop]
+				mp += data_card_data.sell_mp
+
 			self.spawn_to_level[wave.monster_id] = wave.monster_level
 			self.spawn_to_slot[wave.monster_id].add(wave.slot)
 			self.spawn_to_count[wave.monster_id] += 1
@@ -74,6 +82,7 @@ class ProcessedStage(object):
 
 		self.coins.append(coins)
 		self.xp.append(xp)
+		self.mp.append(mp)
 
 
 class ResultFloor(object):
@@ -89,6 +98,7 @@ class ResultStage(object):
 		self.coins_max = max(processed_stage.coins) if processed_stage.coins else 0
 		self.xp_min = min(processed_stage.xp) if processed_stage.xp else 0
 		self.xp_max = max(processed_stage.xp) if processed_stage.xp else 0
+		self.mp_avg = mean(processed_stage.mp) if processed_stage.mp else 0
 
 		fixed_spawns = []
 		random_spawns = []
@@ -131,7 +141,16 @@ class ResultSlot(object):
 		self.order = order
 		self.drops = drops
 		self.comment = comment
-		
+
+
+def make_tree_from_cards(cards):
+	tree = defaultdict(set)
+	for card in cards:
+		ancestor_set = tree.get(card.ancestor_id)
+		ancestor_set.add(card.card_id)
+		tree[card.card_id] = ancestor_set
+	return tree
+
 
 def populate_dungeon(dungeon: dbdungeon.Dungeon, 
 					 jp_dungeon: datadungeon.Dungeon,
@@ -208,6 +227,18 @@ def update_sub_dungeon(sub_dungeon: dbdungeon.SubDungeon,
 	sub_dungeon.exp_max = int(sum([rs.xp_min for rs in result_stages]))
 	sub_dungeon.exp_min = int(sum([rs.xp_max for rs in result_stages]))
 
+	if jp_dungeon_floor.score:
+		if sub_dungeon.resolved_sub_dungeon_score is None:
+			sub_dungeon.resolved_sub_dungeon_score = dbdungeon.SubDungeonScore()
+		sub_dungeon.resolved_sub_dungeon_score.score = jp_dungeon_floor.score
+
+	if sub_dungeon.resolved_sub_dungeon_point is None:
+		sub_dungeon.resolved_sub_dungeon_point = dbdungeon.SubDungeonPoint()
+	total_avg_mp = round(sum([rs.mp_avg for rs in result_stages]), 4)
+	sub_dungeon.resolved_sub_dungeon_point.tot_point = total_avg_mp
+
+	monster_tree = make_tree_from_cards(monster_id_to_card.values())
+
 	for stage in result_stages:
 		existing = filter(lambda dm: dm.floor == stage.stage_idx, sub_dungeon.resolved_dungeon_monsters)
 		existing_id_to_monster = {dm.monster_no: dm for dm in existing}
@@ -242,6 +273,16 @@ def update_sub_dungeon(sub_dungeon: dbdungeon.SubDungeon,
 			monster.tsd_seq = sub_dungeon.tsd_seq
 			monster.floor = stage.stage_idx
 
+			monster.drop_no = 0
+			if slot.drops:
+				other_drops = set()
+				for drop in slot.drops:
+					if drop in monster_tree[monster_id]:
+						# Drop is an evo of the current monster
+						monster.drop_no = drop
+					else:
+						# Drop is an alternate, like collab mats
+						other_drops.add(drop)
 			monster.drop_no = min(slot.drops) if slot.drops else 0
 			monster.order_idx = slot.order
 			monster.comment_kr = slot.comment
