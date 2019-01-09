@@ -584,15 +584,15 @@ class grocery_CRUD_Model_Driver extends grocery_CRUD_Field_Types
 		{
 			$build_search = function($field, $text){
 				if(!array_key_exists('wildcard', $_POST)){
-					return "$field LIKE %'$text'%";
+					return "CAST($field as CHAR) LIKE '%$text%'";
 				}else{
 					switch($_POST['wildcard']){
 						default:
 						case 'equal':
-							return "$field='$text'";
+							return "CAST($field as CHAR)='$text'";
 						break;
 						case 'not_equal':
-							return "$field!='$text'";
+							return "CAST($field as CHAR)!='$text'";
 						break;
 						case 'begin':
 							return "CAST($field as CHAR) LIKE '$text%'";
@@ -718,9 +718,9 @@ class grocery_CRUD_Model_Driver extends grocery_CRUD_Field_Types
                         $temp_where_query_array[] =  $build_search('`' . $basic_table . '`.' . $column->field_name, $escaped_text);
 					}
 				}
-				$temp_where_query_array[] = 'ERRR';
                 if (!empty($temp_where_query_array)) {
                     $this->where('(' . implode(' OR ', $temp_where_query_array) . ')', null);
+                    //$this->where('(' . implode(' OR ', $temp_where_query_array) . '), ERR', null);
                 }
                 /*if (!empty($temp_having_query_array)) {
                     $this->having('(' . implode(' OR ', $temp_having_query_array) . ')', null);
