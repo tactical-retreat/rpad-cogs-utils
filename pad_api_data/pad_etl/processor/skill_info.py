@@ -1384,17 +1384,16 @@ def attribute_match_convert(arguments):
         max_attr = c['maximum_attributes']
         min_attr = c['minimum_attributes']
         attr = c['attributes']
-
-        if max_attr == 0:
+        min_atk_mult = c['minimum_atk_multiplier']
+        bonus_atk_mult = c['bonus_atk_multiplier']
+        
+        if max_attr == 0 and bonus_atk_mult != 0:
             max_attr = len(attr)
             c['maximum_attributes'] = len(attr)
         elif max_attr < min_attr:
             max_attr = min_attr + max_attr
             c['maximum_attributes'] = max_attr
 
-        min_atk_mult = c['minimum_atk_multiplier']
-        bonus_atk_mult = c['bonus_atk_multiplier']
-        
         max_mult = min_atk_mult + (max_attr - min_attr) * bonus_atk_mult
         if attr == [0, 1, 2, 3, 4]:
             skill_text += ' when matching {} or more colors'.format(min_attr)
