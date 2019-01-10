@@ -257,6 +257,8 @@ def update_sub_dungeon(sub_dungeon: dbdungeon.SubDungeon,
             reward_value = SpecialIcons.QuestionMark.value
         elif '+ points' in floor_text or '+ポイント' in floor_text:
             reward_value = SpecialIcons.StarPlusEgg.value
+        elif 'magic stone' in floor_text:
+            reward_value = SpecialIcons.MagicStone
         else:
             matched_monsters = set()
             for m_name in monster_name_to_id.keys():
