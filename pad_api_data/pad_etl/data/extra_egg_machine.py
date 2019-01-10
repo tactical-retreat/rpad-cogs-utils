@@ -30,12 +30,18 @@ class ExtraEggMachine(pad_util.JsonDictEncodable):
         self.end_time_str = str(raw['end'])
         self.end_timestamp = pad_util.gh_to_timestamp(self.end_time_str, server)
 
-        # The egg machine ID used in the API call param grow
-        self.egg_machine_id = int(raw['row'])
-
         # TODO: extra egg machine parser needs to pull out comment
         self.comment = str(raw.get('comment', ''))
         self.clean_comment = pad_util.strip_colors(self.comment)
+
+        # The egg machine ID used in the API call param grow
+        self.egg_machine_row = int(raw['row'])
+
+        # Not sure exactly how this is used; doesn't seem to be gtype
+        self.egg_machine_type = int(raw['type'])
+
+        # Stone or pal point cost
+        self.cost = int(raw['pri'])
 
         # Monster ID to %
         self.contents = {}
@@ -54,7 +60,7 @@ class ExtraEggMachine(pad_util.JsonDictEncodable):
         return self.__dict__ == other.__dict__
 
 
-def load_data(data_dir: str=None, 
+def load_data(data_dir: str=None,
               json_file: str=None,
               data_json=None,
               server: str=None) -> List[ExtraEggMachine]:

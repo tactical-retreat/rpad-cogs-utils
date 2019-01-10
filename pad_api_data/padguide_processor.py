@@ -4,15 +4,14 @@ then updates the database with the new data.
 """
 import argparse
 from collections import defaultdict
+from datetime import timedelta
 import json
 import logging
 import os
-from datetime import datetime, timedelta
-
 
 import feedparser
 from pad_etl.common import monster_id_mapping
-from pad_etl.data import bonus, card, dungeon, skill, enemy_skill, extra_egg_machine, exchange
+from pad_etl.data import bonus, card, dungeon, skill, exchange, enemy_skill
 from pad_etl.processor import monster, monster_skill
 from pad_etl.processor import skill_info
 from pad_etl.processor.db_util import DbWrapper
@@ -31,7 +30,7 @@ logging.getLogger().setLevel(logging.DEBUG)
 logger.setLevel(logging.INFO)
 
 human_fix_logger = logging.getLogger('human_fix')
-human_fix_logger.addHandler(logging.FileHandler('/tmp/pipeline_human_fixes.txt', mode='w')) 
+human_fix_logger.addHandler(logging.FileHandler('/tmp/pipeline_human_fixes.txt', mode='w'))
 human_fix_logger.setLevel(logging.INFO)
 
 
@@ -51,7 +50,8 @@ def parse_args():
     inputGroup.add_argument("--skipintermediate", default=False,
                             action="store_true", help="Skips the slow intermediate storage")
     inputGroup.add_argument("--db_config", required=True, help="JSON database info")
-    inputGroup.add_argument("--dev", default=False, action="store_true", help="Should we run dev processes")
+    inputGroup.add_argument("--dev", default=False, action="store_true",
+                            help="Should we run dev processes")
     inputGroup.add_argument("--input_dir", required=True,
                             help="Path to a folder where the input data is")
 
@@ -76,9 +76,12 @@ def load_dungeon_lookups(db_wrapper):
     jp_name_to_id = db_wrapper.load_to_key_value('name_jp', 'dungeon_seq', 'dungeon_list')
     return en_name_to_id, jp_name_to_id
 
+
 def load_dungeon_mappings(db_wrapper):
-    pad_id_to_dungeon_seq = db_wrapper.load_to_key_value('pad_dungeon_id', 'dungeon_seq', 'etl_dungeon_map')
-    pad_id_ignore = db_wrapper.load_to_key_value('pad_dungeon_id', 'pad_dungeon_id', 'etl_dungeon_ignore')
+    pad_id_to_dungeon_seq = db_wrapper.load_to_key_value(
+        'pad_dungeon_id', 'dungeon_seq', 'etl_dungeon_map')
+    pad_id_ignore = db_wrapper.load_to_key_value(
+        'pad_dungeon_id', 'pad_dungeon_id', 'etl_dungeon_ignore')
     return pad_id_to_dungeon_seq, pad_id_ignore
 
 
@@ -154,11 +157,12 @@ def find_event_id(en_name_to_event_id, jp_name_to_event_id, merged_event):
     elif bonus_name == 'dungeon_special_event' and bonus_value == 10000:
         # These are PADR and other delayed dungeons
         fail_logger.debug('skipping unsupported padr/mail event: %s - %s - %s',
-                         bonus_name, bonus_value, bonus_message)
+                          bonus_name, bonus_value, bonus_message)
     elif bonus_name == 'dungeon_special_event':
-        # Random other text that I'm not parsing now (e.g. invade info, rank xp, coins, stuff in mail)
+        # Random other text that I'm not parsing now (e.g. invade info, rank xp,
+        # coins, stuff in mail)
         fail_logger.debug('skipping unsupported event text : %s - %s - %s',
-                         bonus_name, bonus_value, bonus_message)
+                          bonus_name, bonus_value, bonus_message)
     elif bonus_name in ['daily_dragons']:
         fail_logger.info('skipping unsupported event: %s - %s - %s',
                          bonus_name, bonus_value, bonus_message)
@@ -192,7 +196,7 @@ def find_dungeon_id(pad_id_to_dungeon_seq, pad_id_ignore, en_name_to_dungeon_id,
     if merged_event.bonus.bonus_name in ['Feed Skill-Up Chance', 'Feed Exp Bonus Chance']:
         clean_name = 'x{} Skill Up, Great/Super Chance'.format(merged_event.bonus.bonus_value)
     else:
-        fail_logger.debug('skipping event with no dungeon and no override: %s', repr(merged_event))   
+        fail_logger.debug('skipping event with no dungeon and no override: %s', repr(merged_event))
         return None
 
     dungeon_id = en_name_to_dungeon_id.get(clean_name, None)
@@ -226,7 +230,8 @@ def database_diff_events(db_wrapper, database):
         if event_id is None:
             fail_logger.debug('bailing early; event not found')
             continue
-        dungeon_id = find_dungeon_id(pad_id_to_dungeon_seq, pad_id_ignore, en_name_to_dungeon_id, jp_name_to_dungeon_id, merged_event)
+        dungeon_id = find_dungeon_id(pad_id_to_dungeon_seq, pad_id_ignore,
+                                     en_name_to_dungeon_id, jp_name_to_dungeon_id, merged_event)
 
         if not dungeon_id:
             if merged_event.group:
@@ -260,7 +265,6 @@ def database_diff_events(db_wrapper, database):
     print('dumping all events\n')
     for de in debug_events:
         print(repr(de[0]), repr(de[1]))
-
 
 
 # Creates a CrossServerCard if appropriate.

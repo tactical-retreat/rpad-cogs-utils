@@ -7,9 +7,10 @@ import argparse
 import json
 import os
 
-from pad_etl.api import pad_api
-from pad_etl.data import bonus, extra_egg_machine
 from bs4 import BeautifulSoup
+from pad_etl.data import bonus, extra_egg_machine
+
+from pad_etl.api import pad_api
 
 
 parser = argparse.ArgumentParser(description="Extracts PAD API data.", add_help=False)
@@ -77,9 +78,17 @@ bonus_data = bonus.load_bonus_data(data_dir=output_dir,
 
 # Egg machine extraction
 extra_egg_machines = extra_egg_machine.load_data(
-    data_json=player_data.egg_data, 
+    data_json=player_data.egg_data,
     server=args.server)
-open_egg_machines = [x for x in extra_egg_machines if x.is_open()]
+
+# Disabled for now; The value for gtype doesn't seem to be the 'type' value from the json.
+# Maybe with more examples I can figure this out. So far I have:
+# na request= gtype 62 grow 223 | data= type 52 ptp 0 pri 5 | sao
+# jp request= gtype 62 grow 379 | data= type 33 ptp 0 pri 5 | ny
+# jp request= gtype 52 grow 380 | data= type 54 ptp 0 pri 6 | fate
+#open_egg_machines = [x for x in extra_egg_machines if x.is_open()]
+open_egg_machines = []
+
 
 def extract_event(machine_code, machine_name):
     m_events = [x for x in bonus_data if x.bonus_name == machine_code and x.is_open()]
@@ -92,21 +101,21 @@ def extract_event(machine_code, machine_name):
             'start': event.start_time_str,
             'end': event.end_time_str,
             'row': event.egg_machine_id,
+            'type': 1 if event.bonus_name == 'pem_event' else 2,
+            'pri': 500 if event.bonus_name == 'pem_event' else 5,
         })
 
     return [extra_egg_machine.ExtraEggMachine(em, args.server) for em in em_events]
+
 
 open_egg_machines.extend(extract_event('rem_event', 'Rare Egg Machine'))
 open_egg_machines.extend(extract_event('pem_event', 'Pal Egg Machine'))
 
 for em in open_egg_machines:
-    gtype = 2 # Probably not right; seems to work?
-    has_rate = True
-    if em.name == 'Pal Egg Machine':
-        gtype = 1
-        has_rate = False
+    grow = em.egg_machine_row
+    gtype = em.egg_machine_type
+    has_rate = em.name != 'Pal Egg Machine'
 
-    grow = em.egg_machine_id
     page = api_client.get_egg_machine_page(gtype, grow)
     soup = BeautifulSoup(page, 'html.parser')
     rows = soup.table.find_all('tr')
@@ -125,7 +134,7 @@ for em in open_egg_machines:
             name_chunk = cols[-1].a['href']
             rate = 0
 
-        name_id = name_chunk[name_chunk.rfind('=')+1:]
+        name_id = name_chunk[name_chunk.rfind('=') + 1:]
         em.contents[int(name_id)] = rate
 
 output_file = os.path.join(output_dir, 'egg_machines.json')
