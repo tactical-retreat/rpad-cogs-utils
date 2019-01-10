@@ -1384,27 +1384,38 @@ def attribute_match_convert(arguments):
         max_attr = c['maximum_attributes']
         min_attr = c['minimum_attributes']
         attr = c['attributes']
-
-        if max_attr == 0:
-            max_attr = min_attr
-            c['maximum_attributes'] = min_attr
-        elif max_attr < min_attr:
-            max_attr = min_attr + max_attr
-            c['maximum_attributes'] = max_attr
-
         min_atk_mult = c['minimum_atk_multiplier']
         bonus_atk_mult = c['bonus_atk_multiplier']
+        step = 0
+
+        if max_attr == 0 and bonus_atk_mult != 0:
+            max_attr = len(attr)
+            c['maximum_attributes'] = len(attr)
+            step = max_attr - min_attr
+        elif bonus_atk_mult == 0:
+            step = 0
+            max_attr = min_attr
+        elif max_attr < min_attr:
+            step = max_attr
+            max_attr = min_attr + max_attr
+            c['maximum_attributes'] = max_attr
+        elif (max_attr + min_attr) <= len(attr):
+            max_attr = min_attr + max_attr
+            c['maximum_attributes'] = max_attr
+            step = max_attr - min_attr
+        else:
+            step = max_attr-min_attr
         
         max_mult = min_atk_mult + (max_attr - min_attr) * bonus_atk_mult
         if attr == [0, 1, 2, 3, 4]:
             skill_text += ' when matching {} or more colors'.format(min_attr)
-            if max_mult > min_atk_mult:
+            if step > 0:
                 skill_text += ' up to {}x at {} colors'.format(fmt_mult(max_mult),max_attr)
         elif attr == [0, 1, 2, 3, 4, 5]:
             skill_text += ' when matching {} or more colors ({}+heal)'.format(
                 min_attr, min_attr - 1)
-            if max_mult > min_atk_mult:
-                skill_text += ' up to {}x at 5 colors+heal)'.format(
+            if step > 0:
+                skill_text += ' up to {}x at 5 colors+heal'.format(
                     fmt_mult(max_mult), min_attr - 1)
         elif min_attr == max_attr and len(attr) > min_attr:
             attr_text = ', '.join([ATTRIBUTES[i] for i in attr])
@@ -1413,11 +1424,8 @@ def attribute_match_convert(arguments):
             attr_text = ', '.join([ATTRIBUTES[i] for i in attr])
             skill_text += ' when matching {} at once'.format(attr_text)
 
+        c['step'] = step
         c['skill_text'] = skill_text
-        if max_attr == min_attr and bonus_atk_mult != 0:
-            c['step'] = len(attr) - min_attr
-        else:
-            c['step'] = max_attr - min_attr
         c['parameter'] = fmt_parameter(c)
         return 'attribute_match', c
     return f
@@ -2298,7 +2306,7 @@ SKILL_TRANSFORM = {
                                 'skill_text': '[No Skyfall]'}),
     164: multi_attribute_match_convert({'attributes': (slice(0, 4), list_binary_con), 'minimum_match': (4, cc), 'minimum_atk_multiplier': (5, multi), 'minimum_rcv_multiplier': (6, multi), 'bonus_atk_multiplier': (7, multi), 'bonus_rcv_multiplier': (7, multi)}),
     165: attribute_match_convert({'attributes': (0, binary_con), 'minimum_attributes': (1, cc), 'minimum_atk_multiplier': (2, multi), 'minimum_rcv_multiplier': (3, multi), 'bonus_atk_multiplier': (4, multi), 'bonus_rcv_multiplier': (5, multi),
-                                  'maximum_attributes': (slice(1, 7, 6), lambda x: x[0] + x[1])}),
+                                  'maximum_attributes': (6, cc)}),
     166: combo_match_convert({'for_attr': all_attr, 'minimum_combos': (0, cc), 'minimum_atk_multiplier': (1, multi), 'minimum_rcv_multiplier': (2, multi), 'bonus_atk_multiplier': (3, multi), 'bonus_rcv_multiplier': (4, multi), 'maximum_combos': (5, cc)}),
     167: mass_match_convert({'attributes': (0, binary_con), 'minimum_count': (1, cc), 'minimum_atk_multiplier': (2, multi), 'minimum_rcv_multiplier': (3, multi), 'bonus_atk_multiplier': (4, multi), 'bonus_rcv_multiplier': (5, multi), 'maximum_count': (6, cc)}),
     169: combo_match_convert({'for_attr': all_attr, 'minimum_combos': (0, cc), 'minimum_atk_multiplier': (1, multi), 'minimum_damage_reduction': (2, multi)}),
