@@ -200,7 +200,7 @@ def populate_dungeon(dungeon: dbdungeon.Dungeon,
                            na_dungeon.floors[idx],
                            floor_to_waves[idx + 1],
                            monster_id_to_card,
-                           floor_text.get(idx, ''),
+                           floor_text.get(idx + 1, ''),
                            monster_name_to_id)
 
     dungeon.icon_seq = 0
