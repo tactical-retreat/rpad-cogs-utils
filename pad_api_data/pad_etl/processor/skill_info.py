@@ -1386,23 +1386,35 @@ def attribute_match_convert(arguments):
         attr = c['attributes']
         min_atk_mult = c['minimum_atk_multiplier']
         bonus_atk_mult = c['bonus_atk_multiplier']
-        
+        step = 0
+
         if max_attr == 0 and bonus_atk_mult != 0:
             max_attr = len(attr)
             c['maximum_attributes'] = len(attr)
+            step = max_attr - min_attr
+        elif bonus_atk_mult == 0:
+            step = 0
+            max_attr = min_attr
         elif max_attr < min_attr:
+            step = max_attr
             max_attr = min_attr + max_attr
             c['maximum_attributes'] = max_attr
-
+        elif (max_attr + min_attr) <= len(attr):
+            max_attr = min_attr + max_attr
+            c['maximum_attributes'] = max_attr
+            step = max_attr - min_attr
+        else:
+            step = max_attr-min_attr
+        
         max_mult = min_atk_mult + (max_attr - min_attr) * bonus_atk_mult
         if attr == [0, 1, 2, 3, 4]:
             skill_text += ' when matching {} or more colors'.format(min_attr)
-            if max_mult > min_atk_mult:
+            if step > 0:
                 skill_text += ' up to {}x at {} colors'.format(fmt_mult(max_mult),max_attr)
         elif attr == [0, 1, 2, 3, 4, 5]:
             skill_text += ' when matching {} or more colors ({}+heal)'.format(
                 min_attr, min_attr - 1)
-            if max_mult > min_atk_mult:
+            if step > 0:
                 skill_text += ' up to {}x at 5 colors+heal'.format(
                     fmt_mult(max_mult), min_attr - 1)
         elif min_attr == max_attr and len(attr) > min_attr:
@@ -1412,11 +1424,8 @@ def attribute_match_convert(arguments):
             attr_text = ', '.join([ATTRIBUTES[i] for i in attr])
             skill_text += ' when matching {} at once'.format(attr_text)
 
+        c['step'] = step
         c['skill_text'] = skill_text
-        if max_attr == min_attr and bonus_atk_mult != 0:
-            c['step'] = len(attr) - min_attr
-        else:
-            c['step'] = max_attr - min_attr
         c['parameter'] = fmt_parameter(c)
         return 'attribute_match', c
     return f
