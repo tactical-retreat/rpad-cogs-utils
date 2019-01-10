@@ -1,18 +1,10 @@
 from collections import defaultdict
-from datetime import datetime, timedelta
-import json
 from statistics import mean
 import time
 
-from enum import Enum
-import pytz
-
-from . import db_util
 from . import dungeon as dbdungeon
-from . import processor_util
+from ..common.padguide_values import SpecialIcons
 from ..data import dungeon as datadungeon
-from .monster import SqlItem
-
 
 VERSION = 'dadguide 0.2'
 
@@ -159,7 +151,9 @@ def populate_dungeon(dungeon: dbdungeon.Dungeon,
                      jp_dungeon: datadungeon.Dungeon,
                      na_dungeon: datadungeon.Dungeon,
                      waves=[],
-                     cards=[]
+                     cards=[],
+                     na_cards=[],
+                     floor_text={}
                      ):
     dungeon.comment_us = VERSION
 
@@ -193,13 +187,17 @@ def populate_dungeon(dungeon: dbdungeon.Dungeon,
     for wave in waves:
         floor_to_waves[wave.floor_id].append(wave)
 
+    monster_name_to_id = {x.name.lower(): x for x in cards + na_cards if x.card_id < 9999}
+
     monster_id_to_card = {c.card_id: c for c in cards}
     for idx in range(expected_floor_count):
         update_sub_dungeon(dungeon.resolved_sub_dungeons[idx],
                            jp_dungeon.floors[idx],
                            na_dungeon.floors[idx],
                            floor_to_waves[idx + 1],
-                           monster_id_to_card)
+                           monster_id_to_card,
+                           floor_text.get(idx, ''),
+                           monster_name_to_id)
 
     dungeon.icon_seq = 0
     max_dungeon = dungeon.resolved_sub_dungeons[-1]
@@ -214,7 +212,9 @@ def update_sub_dungeon(sub_dungeon: dbdungeon.SubDungeon,
                        jp_dungeon_floor: datadungeon.DungeonFloor,
                        na_dungeon_floor: datadungeon.DungeonFloor,
                        waves,
-                       monster_id_to_card
+                       monster_id_to_card,
+                       floor_text,
+                       monster_name_to_id
                        ):
     sub_dungeon.order_idx = jp_dungeon_floor.floor_number
     sub_dungeon.stage = jp_dungeon_floor.waves
@@ -241,6 +241,33 @@ def update_sub_dungeon(sub_dungeon: dbdungeon.SubDungeon,
         sub_dungeon.resolved_sub_dungeon_point = dbdungeon.SubDungeonPoint()
     total_avg_mp = round(sum([rs.mp_avg for rs in result_stages]), 4)
     sub_dungeon.resolved_sub_dungeon_point.tot_point = total_avg_mp
+
+    floor_text = floor_text.lower()
+    reward_value = None
+    if 'reward' in floor_text or 'first time clear' in floor_text or '初クリア報酬' in floor_text:
+        if 'coins' in floor_text or '万コイン' in floor_text:
+            reward_value = SpecialIcons.Coin.value
+        elif 'pal points' in floor_text or '友情ポイント' in floor_text:
+            reward_value = SpecialIcons.Point.value
+        elif 'dungeon' in floor_text:
+            reward_value = SpecialIcons.QuestionMark.value
+        elif '+ points' in floor_text or '+ポイント' in floor_text:
+            reward_value = SpecialIcons.StarPlusEgg.value
+        else:
+            for m_name, m_card in monster_name_to_id.items():
+                if m_name in floor_text:
+                    reward_value = m_card.card_id
+                    break
+
+        if reward_value is None:
+            reward_value = SpecialIcons.RedX.value
+
+    if reward_value:
+        # TODO: support 1/2 reward types?
+        reward_text = '0/{}'.format(reward_value)
+        if sub_dungeon.resolved_sub_dungeon_reward is None:
+            sub_dungeon.resolved_sub_dungeon_reward = dbdungeon.SubDungeonReward()
+        sub_dungeon.resolved_sub_dungeon_reward.data = reward_text
 
     monster_tree = make_tree_from_cards(monster_id_to_card.values())
 
