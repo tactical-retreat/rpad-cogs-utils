@@ -148,7 +148,7 @@ class Dungeon(SqlItem):
                  tstamp: int=None):
         self.app_version = app_version  # Unused
         self.comment_jp = comment_jp  # Unused
-        self.comment_kr = comment_kr or comment_us  # Unused
+        self.comment_kr = comment_kr  # Unused
         self.comment_us = comment_us  # Unused
         self.dungeon_seq = dungeon_seq  # Primary Key
         self.dungeon_type = dungeon_type or (dungeon_type_enum.value if dungeon_type_enum else None)
