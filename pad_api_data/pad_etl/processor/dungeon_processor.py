@@ -50,12 +50,12 @@ class ProcessedStage(object):
         self.spawn_to_level = {}
         self.spawn_to_slot = defaultdict(set)
         self.spawn_to_count = defaultdict(int)
-        self.spawns_per_wave = defaultdict(int)
+        self.spawns_per_wave = []
 
     def add_wave_group(self, waves, monster_id_to_card):
         """A wave group represents all the spawns encountered on a stage instance."""
         self.count += 1
-        self.spawns_per_wave[len(waves)] += 1
+        self.spawns_per_wave.append(len(waves))
         coins = 0
         xp = 0
         mp = 0
@@ -112,7 +112,7 @@ class ResultStage(object):
             self.slots.append(ResultSlot(spawn, level, order, drops, None))
 
         if random_spawns:
-            wave_sizes = processed_stage.spawns_per_wave.values()
+            wave_sizes = processed_stage.spawns_per_wave
             fixed_spawn_count = len(fixed_spawns)
             min_random_spawns = min(wave_sizes) - fixed_spawn_count
             max_random_spawns = max(wave_sizes) - fixed_spawn_count
