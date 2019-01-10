@@ -24,8 +24,6 @@ def parse_args():
                             help="Path to a folder where the input data is")
 
     outputGroup = parser.add_argument_group("Output")
-    outputGroup.add_argument("--doprod", default=False,
-                             action="store_true", help="Run against prod")
     outputGroup.add_argument("--doupdates", default=False,
                              action="store_true", help="Apply updates")
 
