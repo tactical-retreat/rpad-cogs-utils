@@ -1369,7 +1369,6 @@ def combo_match_convert(arguments):
 
 attribute_match_backups = {'attributes': [], 'minimum_attributes': 0, 'minimum_atk_multiplier': 1.0, 'minimum_rcv_multiplier': 1.0, 'minimum_damage_reduction': 0.0,
                                                                       'bonus_atk_multiplier': 0.0,   'bonus_rcv_multiplier': 0.0,   'bonus_damage_reduction': 0.0,
-                                                                      'bonus_att_cap': 0,
                                              'maximum_attributes': 0, 'reduction_attributes': all_attr, 'skill_text': '', 'parameter': [1.0, 1.0, 1.0, 0.0]}
 
 
@@ -1385,22 +1384,22 @@ def attribute_match_convert(arguments):
         max_attr = c['maximum_attributes']
         min_attr = c['minimum_attributes']
         attr = c['attributes']
-        att_cap = c['bonus_att_cap']
 
         if max_attr == 0:
             max_attr = min_attr
+            c['maximum_attributes'] = min_attr
+        elif max_attr < min_attr:
+            max_attr = min_attr + max_attr
             c['maximum_attributes'] = max_attr
 
         min_atk_mult = c['minimum_atk_multiplier']
         bonus_atk_mult = c['bonus_atk_multiplier']
-        if att_cap == 0:
-            max_mult = min_atk_mult + (len(attr) - min_attr) * bonus_atk_mult
-        else:
-            max_mult = min_atk_mult + att_cap * bonus_atk_mult
+        
+        max_mult = min_atk_mult + (max_attr - min_attr) * bonus_atk_mult
         if attr == [0, 1, 2, 3, 4]:
             skill_text += ' when matching {} or more colors'.format(min_attr)
             if max_mult > min_atk_mult:
-                skill_text += ' up to {}x at {} colors'.format(fmt_mult(max_mult), min_attr + att_cap)
+                skill_text += ' up to {}x at {} colors'.format(fmt_mult(max_mult),max_attr)
         elif attr == [0, 1, 2, 3, 4, 5]:
             skill_text += ' when matching {} or more colors ({}+heal)'.format(
                 min_attr, min_attr - 1)
@@ -1415,9 +1414,7 @@ def attribute_match_convert(arguments):
             skill_text += ' when matching {} at once'.format(attr_text)
 
         c['skill_text'] = skill_text
-        if att_cap != 0:
-            c['step'] = att_cap 
-        elif max_attr == min_attr and bonus_atk_mult != 0:
+        if max_attr == min_attr and bonus_atk_mult != 0:
             c['step'] = len(attr) - min_attr
         else:
             c['step'] = max_attr - min_attr
@@ -2241,7 +2238,7 @@ SKILL_TRANSFORM = {
     49: passive_stats_convert({'for_attr': (0, listify), 'rcv_multiplier': (1, multi)}),
     53: egg_drop_convert({'multiplier': (0, multi)}),
     54: coin_drop_convert({'multiplier': (0, multi)}),
-    61: attribute_match_convert({'attributes': (0, binary_con), 'minimum_attributes': (1, cc), 'minimum_atk_multiplier': (2, multi), 'bonus_atk_multiplier': (3, multi), 'bonus_att_cap': (4, cc)}),
+    61: attribute_match_convert({'attributes': (0, binary_con), 'minimum_attributes': (1, cc), 'minimum_atk_multiplier': (2, multi), 'bonus_atk_multiplier': (3, multi), 'maximum_attributes': (4, cc)}),
     62: passive_stats_convert({'for_type': (0, listify), 'hp_multiplier': (1, multi), 'atk_multiplier': (1, multi)}),
     63: passive_stats_convert({'for_type': (0, listify), 'hp_multiplier': (1, multi), 'rcv_multiplier': (1, multi)}),
     64: passive_stats_convert({'for_type': (0, listify), 'atk_multiplier': (1, multi), 'rcv_multiplier': (1, multi)}),
