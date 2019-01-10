@@ -1386,8 +1386,8 @@ def attribute_match_convert(arguments):
         attr = c['attributes']
 
         if max_attr == 0:
-            max_attr = min_attr
-            c['maximum_attributes'] = min_attr
+            max_attr = len(attr)
+            c['maximum_attributes'] = len(attr)
         elif max_attr < min_attr:
             max_attr = min_attr + max_attr
             c['maximum_attributes'] = max_attr
@@ -1404,7 +1404,7 @@ def attribute_match_convert(arguments):
             skill_text += ' when matching {} or more colors ({}+heal)'.format(
                 min_attr, min_attr - 1)
             if max_mult > min_atk_mult:
-                skill_text += ' up to {}x at 5 colors+heal)'.format(
+                skill_text += ' up to {}x at 5 colors+heal'.format(
                     fmt_mult(max_mult), min_attr - 1)
         elif min_attr == max_attr and len(attr) > min_attr:
             attr_text = ', '.join([ATTRIBUTES[i] for i in attr])
