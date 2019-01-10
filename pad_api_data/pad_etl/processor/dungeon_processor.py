@@ -287,7 +287,7 @@ def update_sub_dungeon(sub_dungeon: dbdungeon.SubDungeon,
 
             # TODO: this might need mapping due to na/jp skew for monster_no
             monster_id = slot.monster_id
-            monster_id = monster_id - 100000 if monster_id > 99999 else monster_id
+            monster_id = monster_id % 10000 if monster_id > 9999 else monster_id
 
             if monster_id <= 0:
                 raise Exception('Bad monster ID', slot.monster_id, card.card_id, card.base_id)
