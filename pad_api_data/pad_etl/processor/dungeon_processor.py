@@ -258,10 +258,13 @@ def update_sub_dungeon(sub_dungeon: dbdungeon.SubDungeon,
         elif '+ points' in floor_text or '+ポイント' in floor_text:
             reward_value = SpecialIcons.StarPlusEgg.value
         else:
-            for m_name, m_card in monster_name_to_id.items():
+            matched_monsters = set()
+            for m_name in monster_name_to_id.keys():
                 if m_name in floor_text:
-                    reward_value = m_card.card_id
-                    break
+                    matched_monsters.add(m_name)
+            if matched_monsters:
+                best_match = max(matched_monsters, key=len)
+                reward_value = monster_name_to_id[best_match].card_id
 
         if reward_value is None:
             reward_value = SpecialIcons.RedX.value
