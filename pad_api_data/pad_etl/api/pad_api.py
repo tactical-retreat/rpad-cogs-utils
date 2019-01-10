@@ -10,12 +10,11 @@ from typing import Callable
 import urllib
 
 from enum import Enum
+from fake_useragent import UserAgent
 import keygen
 from pad_etl.common import pad_util
 from padtools.servers.server import Server
 import requests
-from fake_useragent import UserAgent
-
 
 import dungeon_encoding
 
@@ -116,7 +115,7 @@ def generate_entry_data(data_parsed: PlayerDataResponse, friend_leader: FriendLe
         'pc={}'.format(','.join(map(str, deck_uuids_minimal))),
         'de={}'.format(1),  # This is always 1?
     ]
-    
+
 
 class PadApiClient(object):
     OSV = '6.0'
