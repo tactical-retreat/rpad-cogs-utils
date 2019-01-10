@@ -6,7 +6,11 @@ from . import dungeon as dbdungeon
 from ..common.padguide_values import SpecialIcons
 from ..data import dungeon as datadungeon
 
-VERSION = 'dadguide 0.2'
+VERSION = 'dadguide 0.3'
+# Version log:
+#  0.1 - initial version
+#  0.2 - points, wave data, fixed card info
+#  0.3 - drops, alt drops, rewards
 
 
 class ProcessedFloor(object):
