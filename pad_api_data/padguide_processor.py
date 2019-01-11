@@ -742,15 +742,15 @@ def clean_cards(cards, skills):
 
 def clean_enemy(cards, enemy_skills):
     enemy_skill_by_id = {s.enemy_skill_id: s for s in enemy_skills}
-    merged_enemies = {}
+    merged_enemies = []
     for card in cards:
         if len(card.enemy_skill_refs) > 0:
             enemy_skillset = []
             for esf in card.enemy_skill_refs:
-                if enemy_skill_by_id.get(esf.enemy_skill_id) == None:
+                if enemy_skill_by_id.get(esf.enemy_skill_id) is None:
                     print("ERROR - " + str(esf.enemy_skill_id))
                 enemy_skillset.append(MergedEnemySkillset(esf, enemy_skill_by_id.get(esf.enemy_skill_id)))
-            merged_enemies[card.card_id] = enemy_skillset
+            merged_enemies.append({'monster_no': card.card_id, 'skill_set': enemy_skillset})
     return merged_enemies
 
 if __name__ == '__main__':
