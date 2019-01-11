@@ -2,7 +2,6 @@ import csv
 from io import StringIO
 import json
 import os
-import re
 from typing import List, Any
 
 from ..common import pad_util

@@ -1,5 +1,6 @@
 import json
-import sys
+
+from ..common import pad_util
 
 ai = 'ai'
 rnd = 'rnd'
@@ -54,7 +55,7 @@ def describe_bind(min_turns, max_turns, target_count=None, target_type='cards'):
 
 
 def describe_enrage(mult, turns):
-    output = ['Increase damage to {:s}%'.format(mult)]
+    output = ['Increase damage to {:d}%'.format(mult)]
     if turns == 0:
         output.append('attack')
     else:
@@ -63,7 +64,7 @@ def describe_enrage(mult, turns):
 
 
 # skill types
-class EnemySkillDescription:
+class EnemySkillDescription(pad_util.JsonDictEncodable):
     def __init__(self, condition, effect, description):
         self.condition = condition
         self.effect = effect
@@ -71,7 +72,7 @@ class EnemySkillDescription:
 
 
 class ESNone(EnemySkillDescription):
-    def __init__(self, ref, params, effect, description):
+    def __init__(self, ref, params, effect='none', description='NONE'):
         super(ESNone, self).__init__(None, effect, description)
 
 
@@ -132,15 +133,12 @@ class ESBind(ESStatusEffect):
 
 
 class ESRandomBind(ESBind):
-    TARGET_TYPE_MAP = {
-        1: 'random cards'
-    }
 
-    def __init__(self, ref, params, es_type):
+    def __init__(self, ref, params):
         super(ESRandomBind, self).__init__(
             ref, params, effect='random_bind'
         )
-        self.target_type = ESRandomBind.TARGET_TYPE_MAP[es_type]
+        self.target_type = 'random cards'
         self.description = describe_bind(self.min_turns, self.max_turns, params[1], self.target_type)
 
 
@@ -158,8 +156,8 @@ class ESEnrage(ESStatusEffect):
         super(ESEnrage, self).__init__(
             ref, params, effect=effect, description=description
         )
-        self.multiplier = int(params[3])
-        self.turns = int(params[2])
+        self.multiplier = int(params[2])
+        self.turns = int(params[1])
 
 
 class ESStorePower(ESEnrage):
@@ -173,7 +171,9 @@ class ESStorePower(ESEnrage):
         self.turns = 0
 
 
-LOGIC_MAP = {}
+LOGIC_MAP = {
+    0: ESNone
+}
 
 
 ACTION_MAP = {
@@ -196,7 +196,7 @@ def reformat_json(enemy_data):
             if t in LOGIC_MAP:
                 logics[idx] = LOGIC_MAP[t](skill['enemy_skill_ref'], skill['enemy_skill_info']['params'])
             elif t in ACTION_MAP:
-                actions[idx] = LOGIC_MAP[t](skill['enemy_skill_ref'], skill['enemy_skill_info']['params'])
+                actions[idx] = ACTION_MAP[t](skill['enemy_skill_ref'], skill['enemy_skill_info']['params'])
             else: # unparsed skills
                 unknown[idx] = (skill['enemy_skill_id'], skill['enemy_skill_info']['name'])
         reformatted.append({
@@ -219,12 +219,6 @@ def reformat(in_file_name, out_file_name):
     print('Converted {active} enemies\n'.format(active=len(reformatted)))
 
     with open(out_file_name, 'w') as f:
-        json.dump(reformatted, f, sort_keys=True, indent=4)
+        json.dump(reformatted, f, indent=4, sort_keys=True, default=lambda x: x.__dict__)
     print('Result saved\n')
     print('-- End Enemies --\n')
-
-
-if __name__ == '__main__':
-    # python enemy_skillset.py {server}_enemies.json out.json
-    reformat(sys.argv[1], sys.argv[2])
-    pass
