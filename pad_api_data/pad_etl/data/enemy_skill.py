@@ -1,5 +1,7 @@
 import os
 import json
+import csv
+from io import StringIO
 from typing import List, Any
 
 from ..common import pad_util
@@ -25,24 +27,11 @@ class EnemySkill(pad_util.JsonDictEncodable):
 
 
 def load_enemy_skill_data(data_dir: str=None, card_json_file: str=None) -> List[EnemySkill]:
-    def check_new_str(es, i):
-        return es[i] == ',' or es[i] == '\n'
-
     if card_json_file is None:
         card_json_file = os.path.join(data_dir, FILE_NAME)
     with open(card_json_file) as f:
         enemy_skill_json = json.load(f)
     es = enemy_skill_json['enemy_skills']
-    raw_arr = [['']]
-    is_str = False
-    for i in range(len(es)):
-        if es[i] == '\'':
-            is_str = not check_new_str(es, i+1) if is_str else check_new_str(es, i-1)
-        elif not is_str and es[i] == '\n':
-            raw_arr.append([''])
-        elif not is_str and es[i] == ',':
-            raw_arr[-1][-1] = raw_arr[-1][-1].strip('\'')
-            raw_arr[-1].append('')
-        if is_str or es[i].isalnum():
-            raw_arr[-1][-1] += es[i]
-    return [EnemySkill(x) for x in raw_arr if len(x) > 3]
+    es = es.replace("',", "#,").replace(",'", ",#").replace("'\n", "#\n")
+    csv_lines = csv.reader(StringIO(es), quotechar="#", delimiter=',')
+    return [EnemySkill(x) for x in csv_lines if x[0] != 'c']

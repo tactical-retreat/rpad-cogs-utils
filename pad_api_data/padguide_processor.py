@@ -748,7 +748,8 @@ def clean_enemy(cards, enemy_skills):
             enemy_skillset = []
             for esf in card.enemy_skill_refs:
                 if enemy_skill_by_id.get(esf.enemy_skill_id) is None:
-                    print("ERROR - " + str(esf.enemy_skill_id))
+                    print("Enemy skill not found: " + str(esf.enemy_skill_id))
+                    continue
                 enemy_skillset.append(MergedEnemySkillset(esf, enemy_skill_by_id.get(esf.enemy_skill_id)))
             merged_enemies.append({'monster_no': card.card_id, 'skill_set': enemy_skillset})
     return merged_enemies
