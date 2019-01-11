@@ -13,107 +13,175 @@ ATTRIBUTE_MAP = {
 }
 
 
-# generic actions
-def condition(chance, hp=None, one_time=False):
-    cond = '' if chance == 0 or chance == 100 else '{:d}% chance'.format(chance)
-    cond += '' if len(cond) == 0 else ' '
-    cond += '' if hp is None else 'when <{:s}% HP'.format(hp)
-    cond += '' if len(cond) == 0 else ', '
-    cond += '' if not one_time else 'one-time use'
-    return cond if len(cond) > 0 else None
+# description
+def describe_condition(chance, base_chance=0, hp=None, one_time=False):
+    output = []
+    if chance < 100:
+        output.append('{:d}% chance'.format(chance))
+    if base_chance > 0:
+        output.append('({:d}% base chance)'.format(chance))
+    if hp:
+        output.append('when <{:s}% HP'.format(hp))
+    if one_time:
+        output.append('[one-time]')
+    return ' '.join(output)
 
 
-def attack(min_hit, max_hit, mult):
-    out = 'Deal '
+def describe_attack(min_hit, max_hit, mult):
+    output = []
     if min_hit == max_hit:
-        out += '{:d}% damage'.format(int(min_hit) * int(mult))
+        output.append('Deal {:d}% damage'.format(int(min_hit) * int(mult)))
         if int(min_hit) > 1:
-            out += '({:s} hits, {:s}% each)'.format(min_hit, mult)
+            output.append('({:s} hits, {:s}% each)'.format(min_hit, mult))
     else:
-        out += '{:d}%~{:d}% damage ({:s}~{:s} hits, {:s}% each)'.\
-            format(int(min_hit) * int(mult), int(max_hit) * int(mult), min_hit, max_hit, mult)
-    return {'min_hit': min_hit, 'max_hit': max_hit, 'multiplier': mult, 'description': out}
+        output.append('Deal {:d}%~{:d}% damage ({:s}~{:s} hits, {:s}% each)'.\
+            format(int(min_hit) * int(mult), int(max_hit) * int(mult), min_hit, max_hit, mult))
+
+    return ''.join(output)
 
 
-def binds(min_turns, max_turns, target_count=None, target_type='cards'):
+def describe_bind(min_turns, max_turns, target_count=None, target_type='cards'):
+    output = []
     if target_count:
-        out = 'Bind {:s} {:s} for '.format(target_count, target_type)
+        output.append('Bind {:s} {:s}'.format(target_count, target_type))
     else:
-        out = 'Bind {:s} for '.format(target_type)
+        output.append('Bind {:s}'.format(target_type))
     if min_turns != max_turns:
-        out += '{:s}~{:s} turns'.format(min_turns, max_turns)
+        output.append('{:s}~{:s} turns'.format(min_turns, max_turns))
     else:
-        out += '{:s} turns'.format(min_turns)
-    return {'min_turns': min_turns, 'max_turns': max_turns,
-            'target_count': target_count, 'target_type': target_type,
-            'description': out}
+        output.append('{:s} turns'.format(min_turns))
+    return ' for '.join(output)
 
 
-def enrage(mult, turns):
-    out = 'Increase damage to {:s}% for the next '.format(mult)
+def describe_enrage(mult, turns):
+    output = ['Increase damage to {:s}%'.format(mult)]
     if turns == 0:
-        out += 'attack'
+        output.append('attack')
     else:
-        out += '{:s} turns'.format(turns)
-    return {'multiplier': mult, 'turns': turns, 'description': out}
+        output.append('{:s} turns'.format(turns))
+    return ' for the next '.join(output)
 
 
 # skill types
-def none(args):
-    return {'condition': None,
-            'effect': None,
-            'description': '<NONE>'}
+class EnemySkillDescription:
+    def __init__(self, condition, effect, description):
+        self.condition = condition
+        self.effect = effect
+        self.description = description
 
 
-def random_binds(args):
-    ref = args['enemy_skill_ref']
-    params = args['enemy_skill_info']['params']
-    return {'condition': condition(ref[rnd], params[11], ref[ai] == 100),
-            'effect': 'random_bind',
-            **binds(params[2], params[3], params[1], 'random cards')}
+class ESNone(EnemySkillDescription):
+    def __init__(self, ref, params, effect, description):
+        super(ESNone, self).__init__(None, effect, description)
 
 
-def attribute_binds(args):
-    ref = args['enemy_skill_ref']
-    params = args['enemy_skill_info']['params']
-    return {'condition': condition(ref[rnd], params[11], ref[ai] == 100),
-            'effect': 'attribute_binds',
-            **binds(params[2], params[3], None, '{:s} cards'.format(ATTRIBUTE_MAP[params[1]][1]))}
+class ESInactivity(EnemySkillDescription):
+    def __init__(self, ref, params, effect='skip_turn', description='Do nothings'):
+        self.chance = ref[rnd]
+        self.hp_threshold = params[11]
+        self.one_time = ref[ai] == 100
+        super(ESInactivity, self).__init__(
+            describe_condition(self.chance, 0, self.hp_threshold, self.one_time),
+            effect,
+            description
+        )
 
 
-def store_power(args):
-    ref = args['enemy_skill_ref']
-    params = args['enemy_skill_info']['params']
-    return {'condition': condition(ref[rnd], params[11], ref[ai] == 100),
-            'effect': 'store_power',
-            **enrage(str(100 + int(params[1])), 0)}
+class ESStatusEffect(EnemySkillDescription):
+    def __init__(self, ref, params, effect='status_effect', description='Not an attack'):
+        self.chance = ref[rnd]
+        self.hp_threshold = params[11]
+        self.one_time = ref[ai] == 100
+        super(ESStatusEffect, self).__init__(
+            describe_condition(self.chance, 0, self.hp_threshold, self.one_time),
+            effect,
+            description
+        )
 
 
-def named_attack(args):
-    ref = args['enemy_skill_ref']
-    params = args['enemy_skill_info']['params']
-    return {'condition': condition(ref[ai], params[11]),
-            'effect': 'named_attack',
-            **attack(params[1], params[2], params[3])}
+class ESAttack(EnemySkillDescription):
+    def __init__(self, ref, params, effect='attack', description='An Attack'):
+        self.chance = ref[ai]
+        self.base_chance = ref[rnd]
+        self.hp_threshold = params[11]
+        super(ESAttack, self).__init__(
+            condition=describe_condition(self.chance, self.base_chance, self.hp_threshold),
+            effect=effect,
+            description=description
+        )
 
 
-def skip_turn(args):
-    return {'condition': condition(args['enemy_skill_ref'][rnd], None, args['enemy_skill_ref'][ai] == 100),
-            'effect': 'skip_turn',
-            'description': 'Skip turn'}
+class ESAttackMultihit(ESAttack):
+    def __init__(self, ref, params):
+        super(ESAttackMultihit, self).__init__(
+            ref, params,
+            effect='multihit_attack',
+            description=describe_attack(params[1], params[2], params[3])
+        )
 
 
-LOGIC_MAP = {
-    0: none,
-}
+class ESBind(ESStatusEffect):
+    def __init__(self, ref, params, effect='Bind', description='Bind targets'):
+        self.min_turns = params[2]
+        self.max_turns = params[3]
+        super(ESBind, self).__init__(
+            ref, params,
+            effect=effect,
+            description=description
+        )
+
+
+class ESRandomBind(ESBind):
+    TARGET_TYPE_MAP = {
+        1: 'random cards'
+    }
+
+    def __init__(self, ref, params, es_type):
+        super(ESRandomBind, self).__init__(
+            ref, params, effect='random_bind'
+        )
+        self.target_type = ESRandomBind.TARGET_TYPE_MAP[es_type]
+        self.description = describe_bind(self.min_turns, self.max_turns, params[1], self.target_type)
+
+
+class ESAttributeBind(ESBind):
+    def __init__(self, ref, params):
+        super(ESAttributeBind, self).__init__(
+            ref, params, effect='attribute_bind'
+        )
+        self.target_type = '{:s} cards'.format(ATTRIBUTE_MAP[params[1]][1])
+        self.description = describe_bind(self.min_turns, self.max_turns, None, self.target_type)
+
+
+class ESEnrage(ESStatusEffect):
+    def __init__(self, ref, params, effect='enrage', description='Boost attack power'):
+        super(ESEnrage, self).__init__(
+            ref, params, effect=effect, description=description
+        )
+        self.multiplier = int(params[3])
+        self.turns = int(params[2])
+
+
+class ESStorePower(ESEnrage):
+    def __init__(self, ref, params):
+        super(ESStorePower, self).__init__(
+            ref, params,
+            effect='store_power',
+            description=describe_enrage(100 + int(params[1]), 0)
+        )
+        self.multiplier = 100 + int(params[1])
+        self.turns = 0
+
+
+LOGIC_MAP = {}
 
 
 ACTION_MAP = {
-    1: random_binds,
-    2: attribute_binds,
-    8: store_power,
-    15: named_attack,
-    16: skip_turn
+    1: ESRandomBind,
+    2: ESAttributeBind,
+    8: ESStorePower,
+    15: ESAttackMultihit,
+    16: ESInactivity
 }
 
 
@@ -126,9 +194,9 @@ def reformat_json(enemy_data):
         for idx, skill in enumerate(enemy['skill_set']):
             t = skill['enemy_skill_info']['type']
             if t in LOGIC_MAP:
-                logics[idx] = LOGIC_MAP[t](skill)
+                logics[idx] = LOGIC_MAP[t](skill['enemy_skill_ref'], skill['enemy_skill_info']['params'])
             elif t in ACTION_MAP:
-                actions[idx] = ACTION_MAP[t](skill)
+                actions[idx] = LOGIC_MAP[t](skill['enemy_skill_ref'], skill['enemy_skill_info']['params'])
             else: # unparsed skills
                 unknown[idx] = (skill['enemy_skill_id'], skill['enemy_skill_info']['name'])
         reformatted.append({

@@ -1,13 +1,13 @@
-import os
-import json
 import csv
 from io import StringIO
+import json
+import os
+import re
 from typing import List, Any
 
 from ..common import pad_util
 
 FILE_NAME = 'download_enemy_skill_data.json'
-
 
 class EnemySkill(pad_util.JsonDictEncodable):
 
