@@ -746,11 +746,16 @@ def clean_enemy(cards, enemy_skills):
     for card in cards:
         if len(card.enemy_skill_refs) > 0:
             enemy_skillset = []
-            for esf in card.enemy_skill_refs:
-                if enemy_skill_by_id.get(esf.enemy_skill_id) is None:
-                    print("Enemy skill not found: " + str(esf.enemy_skill_id))
+            for esr in card.enemy_skill_refs:
+                if enemy_skill_by_id.get(esr.enemy_skill_id) is None:
+                    print("Enemy skill not found: " + str(esr.enemy_skill_id))
                     continue
-                enemy_skillset.append(MergedEnemySkillset(esf, enemy_skill_by_id.get(esf.enemy_skill_id)))
+                es = enemy_skill_by_id.get(esr.enemy_skill_id)
+                es_set = None
+                if es.type == 83:
+                    es_set = [enemy_skill_by_id.get(int(s_id)) for s_id in es.params[1:11]
+                              if s_id is not None and enemy_skill_by_id.get(int(s_id)) is not None]
+                enemy_skillset.append(MergedEnemySkillset(esr, es, es_set))
             merged_enemies.append({'monster_no': card.card_id, 'skill_set': enemy_skillset})
     return merged_enemies
 
