@@ -6,21 +6,21 @@ ai = 'ai'
 rnd = 'rnd'
 
 ATTRIBUTE_MAP = {
-    '-1': (0, 'random'),
+    -1: (0, 'Random'),
     None: (1, 'Fire'),
-    '1': (2, 'Water'),
-    '2': (3, 'Wood'),
-    '3': (4, 'Light'),
-    '4': (5, 'Dark'),
-    '5': (6, 'Heal'),
-    '6': (6, 'Jammer'),
-    '7': (6, 'Poison')
+    1: (2, 'Water'),
+    2: (3, 'Wood'),
+    3: (4, 'Light'),
+    4: (5, 'Dark'),
+    5: (6, 'Heal'),
+    6: (7, 'Jammer'),
+    7: (8, 'Poison')
 }
 
 TYPING_MAP = {
-    '4': (1, 'Dragon'),
-    '5': (6, 'God'),
-    '7': (10, 'Devil')
+    4: (1, 'Dragon'),
+    5: (6, 'God'),
+    7: (10, 'Devil')
 }
 
 
@@ -43,9 +43,9 @@ class Describe:
         if min_hit == max_hit:
             output += 'Deal {:d}% damage'.format(int(min_hit) * int(mult))
             if int(min_hit) > 1:
-                output += ' ({:s} hits, {:s}% each)'.format(min_hit, mult)
+                output += ' ({:d} hits, {:d}% each)'.format(min_hit, mult)
         else:
-            output += 'Deal {:d}%~{:d}% damage ({:s}~{:s} hits, {:s}% each)'.\
+            output += 'Deal {:d}%~{:d}% damage ({:d}~{:d} hits, {:d}% each)'.\
                 format(int(min_hit) * int(mult), int(max_hit) * int(mult), min_hit, max_hit, mult)
         return output
 
@@ -53,13 +53,13 @@ class Describe:
     def bind(min_turns, max_turns, target_count=None, target_type='cards'):
         output = []
         if target_count:
-            output.append('Bind {:s} {:s}'.format(target_count, target_type))
+            output.append('Bind {:d} {:s}'.format(target_count, target_type))
         else:
             output.append('Bind {:s}'.format(target_type))
-        if min_turns != max_turns:
-            output.append('{:s}~{:s} turns'.format(min_turns, max_turns))
+        if max_turns is not None and min_turns != max_turns:
+            output.append('{:d}~{:d} turns'.format(min_turns, max_turns))
         else:
-            output.append('{:s} turns'.format(min_turns))
+            output.append('{:d} turns'.format(min_turns))
         return ' for '.join(output)
 
     @staticmethod
@@ -76,13 +76,29 @@ class Describe:
             output += orb_to
         return output
 
+
+    @staticmethod
+    def blind():
+        return 'Unable to see Orbs'
+
+    @staticmethod
+    def dispel():
+        return 'Voids Skill effects'
+
+    @staticmethod
+    def recover(min_amount, max_amount, target='Enemy'):
+        if max_amount is not None and min_amount != max_amount:
+            return '{:s} recover {:d}%~{:d}% HP'.format(target, min_amount, max_amount)
+        else:
+            return '{:s} recover {:d}% HP'.format(target, min_amount)
+
     @staticmethod
     def enrage(mult, turns):
         output = ['Increase damage to {:d}%'.format(mult)]
         if turns == 0:
             output.append('attack')
         else:
-            output.append('{:s} turns'.format(turns))
+            output.append('{:d} turns'.format(turns))
         return ' for the next '.join(output)
 
 
@@ -97,12 +113,12 @@ class EnemySkillDescription(pad_util.JsonDictEncodable):
 
 
 class ESNone(EnemySkillDescription):
-    def __init__(self, es_id, name, ref, params, effect='none', description='NONE'):
-        super(ESNone, self).__init__(es_id, name, None, effect, description)
+    def __init__(self, es_id, name, ref, params, effect='none'):
+        super(ESNone, self).__init__(es_id, name, None, effect, description='NONE')
 
 
 class ESInactivity(EnemySkillDescription):
-    def __init__(self, es_id, name, ref, params, effect='skip_turn', description='Do nothing'):
+    def __init__(self, es_id, name, ref, params, effect='skip_turn'):
         self.chance = ref[rnd]
         self.hp_threshold = None if params[11] is None else int(params[11])
         self.one_time = ref[ai] == 100
@@ -110,12 +126,12 @@ class ESInactivity(EnemySkillDescription):
             es_id, name,
             Describe.condition(self.chance, self.hp_threshold, self.one_time),
             effect,
-            description
+            description='Do nothing'
         )
 
 
 class ESEffect(EnemySkillDescription):
-    def __init__(self, es_id, name, ref, params, effect='status_effect', description='Not an attack'):
+    def __init__(self, es_id, name, ref, params, effect='status_effect'):
         self.chance = ref[rnd]
         self.hp_threshold = None if params[11] is None else int(params[11])
         self.one_time = ref[ai] == 100
@@ -123,113 +139,153 @@ class ESEffect(EnemySkillDescription):
             es_id, name,
             Describe.condition(self.chance, self.hp_threshold, self.one_time),
             effect,
-            description
+            description='Not an attack'
         )
 
 
 class ESAttack(EnemySkillDescription):
-    def __init__(self, es_id, name, ref, params, effect='attack', description='An Attack'):
+    def __init__(self, es_id, name, ref, params, effect='attack'):
         self.chance = ref[ai] if int(ref[ai]) > 0 else ref[rnd]
         self.hp_threshold = None if params[11] is None else int(params[11])
         super(ESAttack, self).__init__(
             es_id, name,
             condition=Describe.condition(self.chance, self.hp_threshold),
             effect=effect,
-            description=description
+            description='An Attack'
         )
 
 
 class ESAttackMultihit(ESAttack):
     def __init__(self, es_id, name, ref, params):
         super(ESAttackMultihit, self).__init__(
-            es_id, name, ref, params,
-            effect='multihit_attack',
-            description=Describe.attack(params[1], params[2], params[3])
+            es_id, name, ref, params
         )
+        self.min_hit = params[1]
+        self.max_hit = params[2]
+        self.multiplier = params[3]
+        self.description = Describe.attack(self.min_hit, self.max_hit, self.multiplier)
 
 
 class ESBind(ESEffect):
-    def __init__(self, es_id, name, ref, params, effect='Bind', description='Bind targets'):
-        self.min_turns = params[2]
-        self.max_turns = params[3]
+    def __init__(self, es_id, name, ref, params, target_count=None, target_type_description='cards'):
         super(ESBind, self).__init__(
             es_id, name, ref, params,
-            effect=effect,
-            description=description
+            effect='Bind'
         )
+        self.min_turns = params[2]
+        self.max_turns = params[3]
+        self.description = Describe.bind(self.min_turns, self.max_turns, target_count, target_type_description)
 
 
 class ESRandomBind(ESBind):
 
     def __init__(self, es_id, name, ref, params):
         super(ESRandomBind, self).__init__(
-            es_id, name, ref, params, effect='random_bind'
-        )
-        self.target_type = 'random cards'
-        self.description = Describe.bind(self.min_turns, self.max_turns, params[1], self.target_type)
+            es_id, name, ref, params,
+            target_count=params[1],
+            target_type_description='random cards')
 
 
 class ESAttributeBind(ESBind):
     def __init__(self, es_id, name, ref, params):
         super(ESAttributeBind, self).__init__(
-            es_id, name, ref, params, effect='attribute_bind'
-        )
-        self.target_type = '{:s} cards'.format(ATTRIBUTE_MAP[params[1]][1])
-        self.description = Describe.bind(self.min_turns, self.max_turns, None, self.target_type)
+            es_id, name, ref, params,
+            target_count=None,
+            target_type_description='{:s} cards'.format(ATTRIBUTE_MAP[params[1]][1]))
+        self.target_attribute = ATTRIBUTE_MAP[params[1]][0]
 
 
 class ESTypingBind(ESBind):
     def __init__(self, es_id, name, ref, params):
         super(ESTypingBind, self).__init__(
-            es_id, name, ref, params, effect='attribute_bind'
-        )
-        self.target_type = TYPING_MAP[params[1]][0]
-        self.description = Describe.bind(self.min_turns, self.max_turns, None, '{:s} cards'.format(TYPING_MAP[params[1]][1]))
+            es_id, name, ref, params,
+            target_count=None,
+            target_type_description='{:s} cards'.format(TYPING_MAP[params[1]][1]))
+        self.target_typing = TYPING_MAP[params[1]][0]
+
+
+class ESSkillBind(ESBind):
+    def __init__(self, es_id, name, ref, params):
+        super(ESSkillBind, self).__init__(
+            es_id, name, ref, params,
+            target_count=None,
+            target_type_description='active skill')
 
 
 class ESOrbChange(ESEffect):
-    def __init__(self, es_id, name, ref, params):
-        super(ESOrbChange, self).__init__(es_id, name, ref, params)
-        self.orb_from = ATTRIBUTE_MAP[params[1]][0]
-        self.orb_to = ATTRIBUTE_MAP[params[2]][0]
+    def __init__(self, es_id, name, ref, params, orb_from, orb_to):
+        super(ESOrbChange, self).__init__(es_id, name, ref, params, effect='orb_change')
+        self.orb_from = orb_from[0]
+        self.orb_to = orb_to[0]
         self.description = Describe.orbchange(ATTRIBUTE_MAP[params[1]][1], ATTRIBUTE_MAP[params[2]][1])
+
+
+class ESOrbChangeSingle(ESOrbChange):
+    def __init__(self, es_id, name, ref, params):
+        super(ESOrbChangeSingle, self).\
+            __init__(es_id, name, ref, params, ATTRIBUTE_MAP[params[1]], ATTRIBUTE_MAP[params[2]])
+
+
+class ESJammerChangeSingle(ESOrbChange):
+    def __init__(self, es_id, name, ref, params):
+        super(ESJammerChangeSingle, self).\
+            __init__(es_id, name, ref, params, ATTRIBUTE_MAP[params[1]], ATTRIBUTE_MAP[6])
+
+
+class ESJammerChangeRandom(ESOrbChange):
+    def __init__(self, es_id, name, ref, params):
+        self.random_count = int(params[1])
+        super(ESJammerChangeRandom, self).\
+            __init__(es_id, name, ref, params, (0, 'Random {:d}'.format(self.random_count)), ATTRIBUTE_MAP[6])
 
 
 class ESBlind(ESEffect):
     def __init__(self, es_id, name, ref, params):
         super(ESBlind, self).__init__(es_id, name, ref, params)
-        self.description = 'Unable to see Orbs'
+        self.description = Describe.blind()
 
 
 class ESDispel(ESEffect):
     def __init__(self, es_id, name, ref, params):
         super(ESDispel, self).__init__(es_id, name, ref, params)
-        self.description = 'Voids Skill effects'
+        self.description = Describe.dispel()
         self.condition = self.condition.replace('(one-time)', 'when player buff exists')
 
 
+class ESRecover(ESEffect):
+    def __init__(self,  es_id, name, ref, params, target):
+        super(ESRecover, self).__init__(es_id, name, ref, params, effect='recover')
+        self.min_amount = params[1]
+        self.max_amount = params[2]
+        self.target = target
+        self.description = Describe.recover(self.min_amount, self.max_amount, self.target)
+
+
+class ESRecoverEnemy(ESRecover):
+    def __init__(self,  es_id, name, ref, params):
+        super(ESRecover, self).__init__(es_id, name, ref, params, 'Enemy')
+
+
 class ESEnrage(ESEffect):
-    def __init__(self, es_id, name, ref, params, effect='enrage', description='Boost attack power'):
+    def __init__(self, es_id, name, ref, params, multiplier, turns, effect='enrage'):
         super(ESEnrage, self).__init__(
             es_id,
             name,
-            ref, params, effect=effect, description=description
+            ref, params, effect=effect
         )
-        self.multiplier = int(params[2])
-        self.turns = int(params[1])
+        self.multiplier = multiplier
+        self.turns = turns
+        self.description = Describe.enrage(self.multiplier, self.turns)
 
 
 class ESStorePower(ESEnrage):
     def __init__(self, es_id, name, ref, params):
         super(ESStorePower, self).__init__(
-            es_id,
-            name,
-            ref, params,
-            effect='store_power',
-            description=Describe.enrage(100 + int(params[1]), 0)
+            es_id, name, ref, params,
+            multiplier=100 + params[1],
+            turns=0
         )
-        self.multiplier = 100 + int(params[1])
-        self.turns = 0
+
 
 # Logic
 
@@ -252,10 +308,17 @@ ACTION_MAP = {
     1: ESRandomBind,
     2: ESAttributeBind,
     3: ESTypingBind,
-    4: ESOrbChange,
+    4: ESOrbChangeSingle,
     5: ESBlind,
     6: ESDispel,
+    7: ESRecoverEnemy,
     8: ESStorePower,
+    # type 9 skills are unused, there's only 3 and they seem to buff defense
+    # type 10 skills don't exist
+    # type 11 skills don't exist
+    12: ESJammerChangeSingle,
+    13: ESJammerChangeRandom,
+    14: ESSkillBind,
     15: ESAttackMultihit,
     16: ESInactivity
 }
@@ -268,6 +331,7 @@ def reformat_json(enemy_data):
         actions = {}
         unknown = {}
         for idx, skill in enumerate(enemy['skill_set']):
+            print(enemy['monster_no'])
             t = skill['enemy_skill_info']['type']
             if t in LOGIC_MAP:
                 logics[idx] = LOGIC_MAP[t](
@@ -281,7 +345,7 @@ def reformat_json(enemy_data):
                     skill['enemy_skill_info']['name'],
                     skill['enemy_skill_ref'],
                     skill['enemy_skill_info']['params'])
-            else: # unparsed skills
+            else:  # skills not parsed
                 unknown[idx] = EnemySkillUnknown(skill['enemy_skill_id'], skill['enemy_skill_info']['name'])
         reformatted.append({
             'MONSTER_NO': enemy['monster_no'],

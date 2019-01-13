@@ -20,7 +20,10 @@ class EnemySkill(pad_util.JsonDictEncodable):
         p_idx = 4
         while offset < self.flags.bit_length():
             if (self.flags >> offset) & 1 != 0:
-                self.params[offset] = raw[p_idx]
+                try:
+                    self.params[offset] = int(raw[p_idx])
+                except ValueError:
+                    self.params[offset] = raw[p_idx]
                 p_idx += 1
             offset += 1
 
