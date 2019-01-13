@@ -1,10 +1,9 @@
 import argparse
 import json
-import os
 import time
 
 from padguide.encoding import encode, decode
-from padguide.extract_utils import dump_table, fix_table_name
+from padguide.extract_utils import dump_table
 import pymysql
 
 
@@ -24,7 +23,8 @@ def parse_args():
     inputGroup.add_argument("--map_key", help="Return key/value pair from table")
     inputGroup.add_argument("--map_value", help="Return key/value pair from table")
 
-    inputGroup.add_argument("--timelimit", default=False, action='store_true', help="Limits the timestamp field to 1m")
+    inputGroup.add_argument("--timelimit", default=False, action='store_true',
+                            help="Limits the timestamp field to 1m")
 
     return parser.parse_args()
 
@@ -97,7 +97,8 @@ def main(args):
     elif args.db_config and args.db_table:
         with open(args.db_config) as f:
             db_config = json.load(f)
-        data = load_from_db(db_config, args.db_table, args.data_arg, args.map_key, args.map_value, args.timelimit)
+        data = load_from_db(db_config, args.db_table, args.data_arg,
+                            args.map_key, args.map_value, args.timelimit)
     else:
         raise RuntimeError('Incorrect arguments')
 
