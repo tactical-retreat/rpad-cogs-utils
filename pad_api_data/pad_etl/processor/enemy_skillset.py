@@ -1,5 +1,5 @@
 import json
-
+from collections import OrderedDict
 from ..common import pad_util
 
 ai = 'ai'
@@ -14,7 +14,8 @@ ATTRIBUTE_MAP = {
     4: (5, 'Dark'),
     5: (6, 'Heal'),
     6: (7, 'Jammer'),
-    7: (8, 'Poison')
+    7: (8, 'Poison'),
+    8: (9, 'Mortal Poison')
 }
 
 TYPING_MAP = {
@@ -22,6 +23,26 @@ TYPING_MAP = {
     5: (6, 'God'),
     7: (10, 'Devil')
 }
+
+
+def es_id(skill):
+    return skill['enemy_skill_id']
+
+
+def name(skill):
+    return skill['enemy_skill_info']['name']
+
+
+def params(skill):
+    return skill['enemy_skill_info']['params']
+
+
+def ref(skill):
+    return skill['enemy_skill_ref']
+
+
+def es_type(skill):
+    return skill['enemy_skill_info']['type']
 
 
 # description
@@ -38,7 +59,7 @@ class Describe:
         return ' '.join(output).capitalize() if len(output) > 0 else None
 
     @staticmethod
-    def attack(min_hit, max_hit, mult):
+    def attack(mult, min_hit=1, max_hit=1):
         output = ''
         if min_hit == max_hit:
             output += 'Deal {:d}% damage'.format(int(min_hit) * int(mult))
@@ -48,6 +69,10 @@ class Describe:
             output += 'Deal {:d}%~{:d}% damage ({:d}~{:d} hits, {:d}% each)'.\
                 format(int(min_hit) * int(mult), int(max_hit) * int(mult), min_hit, max_hit, mult)
         return output
+
+    @staticmethod
+    def skip():
+        return 'Do nothing'
 
     @staticmethod
     def bind(min_turns, max_turns, target_count=None, target_type='cards'):
@@ -104,271 +129,321 @@ class Describe:
     def status_shield(turns):
         return 'Voids status ailments for {:d} turns'.format(turns)
 
-
     @staticmethod
     def debuff(d_type, amount, unit, turns):
         return '{:s} {:.0f}{:s} for {:d} turns'.format(d_type, amount, unit, turns).capitalize()
 
+    @staticmethod
+    def end_battle():
+        return 'Reduce self HP to 0'
+
+    @staticmethod
+    def change_attribute(attributes):
+        return 'Change own attribute to ' + ' '.join(attributes)
+
+    @staticmethod
+    def gravity(percent):
+        return 'Player -{:d}% HP'.format(percent)
+
 
 # Action
 class ESAction(pad_util.JsonDictEncodable):
-    def __init__(self, es_id, name, condition, effect, description):
-        self.enemy_skill_id = es_id
-        self.name = name
+    def __init__(self, skill, condition, effect, description):
+        self.enemy_skill_id = es_id(skill)
+        self.name = name(skill)
         self.condition = condition
         self.effect = effect
         self.description = description
 
 
-class ESInactivity(ESAction):
-    def __init__(self, es_id, name, ref, params, effect='skip_turn'):
-        self.chance = ref[rnd]
-        self.hp_threshold = None if params[11] is None else int(params[11])
-        self.one_time = ref[ai] == 100
-        super(ESInactivity, self).__init__(
-            es_id, name,
-            Describe.condition(self.chance, self.hp_threshold, self.one_time),
-            effect,
-            description='Do nothing'
-        )
-
-
 class ESEffect(ESAction):
-    def __init__(self, es_id, name, ref, params, effect='status_effect'):
-        self.chance = ref[rnd]
-        self.hp_threshold = None if params[11] is None else int(params[11])
-        self.one_time = ref[ai] == 100
+    def __init__(self, skill):
+        self.chance = ref(skill)[rnd]
+        self.hp_threshold = None if params(skill)[11] is None else int(params(skill)[11])
+        self.one_time = ref(skill)[ai] == 100
         super(ESEffect, self).__init__(
-            es_id, name,
+            skill,
             Describe.condition(self.chance, self.hp_threshold, self.one_time),
-            effect,
+            effect='status_effect',
             description='Not an attack'
         )
 
 
+class ESInactivity(ESEffect):
+    def __init__(self, skill):
+        super(ESInactivity, self).__init__(skill)
+        self.effect = 'skip_turn'
+        self.description = Describe.skip()
+
+
 class ESAttack(ESAction):
-    def __init__(self, es_id, name, ref, params, effect='attack'):
-        self.chance = ref[ai] if int(ref[ai]) > 0 else ref[rnd]
-        self.hp_threshold = None if params[11] is None else int(params[11])
+    def __init__(self, skill):
+        self.chance = ref(skill)[ai] if int(ref(skill)[ai]) > 0 else ref(skill)[rnd]
+        self.hp_threshold = None if params(skill)[11] is None else int(params(skill)[11])
         super(ESAttack, self).__init__(
-            es_id, name,
+            skill,
             condition=Describe.condition(self.chance, self.hp_threshold),
-            effect=effect,
+            effect='attack',
             description='An Attack'
         )
 
 
+class ESAttackSinglehit(ESAttack):
+    def __init__(self, skill, multiplier):
+        super(ESAttackSinglehit, self).__init__(skill)
+        self.effect = 'attack_single'
+        self.multiplier = multiplier
+        self.description = Describe.attack(self.multiplier)
+
+
 class ESAttackMultihit(ESAttack):
-    def __init__(self, es_id, name, ref, params):
-        super(ESAttackMultihit, self).__init__(
-            es_id, name, ref, params
-        )
-        self.min_hit = params[1]
-        self.max_hit = params[2]
-        self.multiplier = params[3]
-        self.description = Describe.attack(self.min_hit, self.max_hit, self.multiplier)
+    def __init__(self, skill):
+        super(ESAttackMultihit, self).__init__(skill)
+        self.min_hit = params(skill)[1]
+        self.max_hit = params(skill)[2]
+        self.multiplier = params(skill)[3]
+        self.effect = 'attack_multi'
+        self.description = Describe.attack(self.multiplier, self.min_hit, self.max_hit)
+
+
+class ESAttackPreemptive(ESAttackSinglehit):
+    def __init__(self, skill):
+        super(ESAttackPreemptive, self).__init__(skill, multiplier=params(skill)[2])
+        self.effect = 'attack_preemptive'
 
 
 class ESBind(ESEffect):
-    def __init__(self, es_id, name, ref, params, target_count=None, target_type_description='cards'):
-        super(ESBind, self).__init__(
-            es_id, name, ref, params,
-            effect='Bind'
-        )
-        self.min_turns = params[2]
-        self.max_turns = params[3]
+    def __init__(self, skill, target_count=None, target_type_description='cards'):
+        super(ESBind, self).__init__(skill)
+        self.min_turns = params(skill)[2]
+        self.max_turns = params(skill)[3]
+        self.effect = 'bind'
         self.description = Describe.bind(self.min_turns, self.max_turns, target_count, target_type_description)
 
 
 class ESRandomBind(ESBind):
-    def __init__(self, es_id, name, ref, params):
+    def __init__(self, skill):
         super(ESRandomBind, self).__init__(
-            es_id, name, ref, params,
-            target_count=params[1],
+            skill,
+            target_count=params(skill)[1],
             target_type_description='random cards')
 
 
 class ESAttributeBind(ESBind):
-    def __init__(self, es_id, name, ref, params):
+    def __init__(self, skill):
         super(ESAttributeBind, self).__init__(
-            es_id, name, ref, params,
+            skill,
             target_count=None,
-            target_type_description='{:s} cards'.format(ATTRIBUTE_MAP[params[1]][1]))
-        self.target_attribute = ATTRIBUTE_MAP[params[1]][0]
+            target_type_description='{:s} cards'.format(ATTRIBUTE_MAP[params(skill)[1]][1]))
+        self.target_attribute = ATTRIBUTE_MAP[params(skill)[1]][0]
 
 
 class ESTypingBind(ESBind):
-    def __init__(self, es_id, name, ref, params):
+    def __init__(self, skill):
         super(ESTypingBind, self).__init__(
-            es_id, name, ref, params,
+            skill,
             target_count=None,
-            target_type_description='{:s} cards'.format(TYPING_MAP[params[1]][1]))
-        self.target_typing = TYPING_MAP[params[1]][0]
+            target_type_description='{:s} cards'.format(TYPING_MAP[params(skill)[1]][1]))
+        self.target_typing = TYPING_MAP[params(skill)[1]][0]
 
 
 class ESSkillBind(ESBind):
-    def __init__(self, es_id, name, ref, params):
+    def __init__(self, skill):
         super(ESSkillBind, self).__init__(
-            es_id, name, ref, params,
+            skill,
             target_count=None,
             target_type_description='active skill')
 
 
 class ESOrbChange(ESEffect):
-    def __init__(self, es_id, name, ref, params, orb_from, orb_to):
-        super(ESOrbChange, self).__init__(es_id, name, ref, params, effect='orb_change')
+    def __init__(self, skill, orb_from, orb_to):
+        super(ESOrbChange, self).__init__(skill)
         self.orb_from = orb_from[0]
         self.orb_to = orb_to[0]
-        self.description = Describe.orb_change(ATTRIBUTE_MAP[params[1]][1], ATTRIBUTE_MAP[params[2]][1])
+        self.effect = 'orb_change'
+        self.description = Describe.orb_change(orb_from[1], orb_to[1])
 
 
 class ESOrbChangeSingle(ESOrbChange):
-    def __init__(self, es_id, name, ref, params):
+    def __init__(self, skill):
         super(ESOrbChangeSingle, self).\
-            __init__(es_id, name, ref, params, ATTRIBUTE_MAP[params[1]], ATTRIBUTE_MAP[params[2]])
+            __init__(skill, ATTRIBUTE_MAP[params(skill)[1]], ATTRIBUTE_MAP[params(skill)[2]])
 
 
 class ESJammerChangeSingle(ESOrbChange):
-    def __init__(self, es_id, name, ref, params):
+    def __init__(self, skill):
         super(ESJammerChangeSingle, self).\
-            __init__(es_id, name, ref, params, ATTRIBUTE_MAP[params[1]], ATTRIBUTE_MAP[6])
+            __init__(skill, ATTRIBUTE_MAP[params(skill)[1]], ATTRIBUTE_MAP[6])
 
 
 class ESJammerChangeRandom(ESOrbChange):
-    def __init__(self, es_id, name, ref, params):
-        self.random_count = int(params[1])
+    def __init__(self, skill):
+        self.random_count = int(params(skill)[1])
         super(ESJammerChangeRandom, self).\
-            __init__(es_id, name, ref, params, (0, 'Random {:d}'.format(self.random_count)), ATTRIBUTE_MAP[6])
+            __init__(skill, (0, 'Random {:d}'.format(self.random_count)), ATTRIBUTE_MAP[6])
+
+
+class ESOrbChangeAttack(ESAttackSinglehit):
+    def __init__(self, skill):
+        super(ESOrbChangeAttack, self).__init__(
+            skill,
+            multiplier=params(skill)[1]
+        )
+        self.orb_from = ATTRIBUTE_MAP[params(skill)[2]][0]
+        self.orb_to = ATTRIBUTE_MAP[params(skill)[3]][0]
+        self.effect = 'orb_change_attack'
+        self.description = Describe.orb_change(ATTRIBUTE_MAP[params(skill)[2]][1], ATTRIBUTE_MAP[params(skill)[3]][1])\
+                           + ' & ' + Describe.attack(self.multiplier)
 
 
 class ESBlind(ESEffect):
-    def __init__(self, es_id, name, ref, params):
-        super(ESBlind, self).__init__(es_id, name, ref, params)
+    def __init__(self, skill):
+        super(ESBlind, self).__init__(skill)
         self.description = Describe.blind()
 
 
 class ESDispel(ESEffect):
-    def __init__(self, es_id, name, ref, params):
-        ref[ai] = 0
-        super(ESDispel, self).__init__(es_id, name, ref, params)
+    def __init__(self, skill):
+        ref(skill)[ai] = 0
+        super(ESDispel, self).__init__(skill)
         self.description = Describe.dispel()
 
 
 class ESStatusShield(ESEffect):
-    def __init__(self, es_id, name, ref, params):
-        super(ESStatusShield, self).__init__(es_id, name, ref, params)
-        self.turns = params[1]
+    def __init__(self, skill):
+        super(ESStatusShield, self).__init__(skill)
+        self.turns = params(skill)[1]
         self.description = Describe.status_shield(self.turns)
 
 
 class ESRecover(ESEffect):
-    def __init__(self,  es_id, name, ref, params, target):
-        super(ESRecover, self).__init__(es_id, name, ref, params, effect='recover')
-        self.min_amount = params[1]
-        self.max_amount = params[2]
+    def __init__(self,  skill, target):
+        super(ESRecover, self).__init__(skill)
+        self.min_amount = params(skill)[1]
+        self.max_amount = params(skill)[2]
         self.target = target
+        self.effect = 'recover'
         self.description = Describe.recover(self.min_amount, self.max_amount, self.target)
 
 
 class ESRecoverEnemy(ESRecover):
-    def __init__(self,  es_id, name, ref, params):
-        super(ESRecoverEnemy, self).__init__(es_id, name, ref, params, target='enemy')
+    def __init__(self,  skill):
+        super(ESRecoverEnemy, self).__init__(skill, target='enemy')
 
 
 class ESEnrage(ESEffect):
-    def __init__(self, es_id, name, ref, params, multiplier, turns, effect='enrage'):
-        super(ESEnrage, self).__init__(
-            es_id, name, ref, params,
-            effect=effect
-        )
+    def __init__(self, skill, multiplier, turns):
+        super(ESEnrage, self).__init__(skill)
         self.multiplier = multiplier
         self.turns = turns
+        self.effect = 'enrage'
         self.description = Describe.enrage(self.multiplier, self.turns)
 
 
 class ESStorePower(ESEnrage):
-    def __init__(self, es_id, name, ref, params):
+    def __init__(self, skill):
         super(ESStorePower, self).__init__(
-            es_id, name, ref, params,
-            multiplier=100 + params[1],
+            skill,
+            multiplier=100 + params(skill)[1],
             turns=0
         )
 
 
 class ESAttackUp(ESEnrage):
-    def __init__(self, es_id, name, ref, params):
-        if params[3] is None:
+    def __init__(self, skill):
+        if params(skill)[3] is None:
             super(ESAttackUp, self).__init__(
-                es_id, name, ref, params,
-                multiplier=params[2],
-                turns=params[1]
+                skill,
+                multiplier=params(skill)[2],
+                turns=params(skill)[1]
             )
         else:
             super(ESAttackUp, self).__init__(
-                es_id, name, ref, params,
-                multiplier=params[3],
-                turns=params[2]
+                skill,
+                multiplier=params(skill)[3],
+                turns=params(skill)[2]
             )
 
 
 class ESDebuff(ESEffect):
-    def __init__(self, es_id, name, ref, params, debuff_type, amount, unit):
-        super(ESDebuff, self).__init__(es_id, name, ref, params, effect='debuff')
-        self.turns = params[1]
+    def __init__(self, skill, debuff_type, amount, unit):
+        super(ESDebuff, self).__init__(skill)
+        self.turns = params(skill)[1]
         self.type = debuff_type
         self.amount = amount
         self.unit = unit
+        self.effect = 'debuff'
         self.description = Describe.debuff(self.type, self.amount, self.unit, self.turns)
 
 
 class ESDebuffMovetime(ESDebuff):
-    def __init__(self, es_id, name, ref, params):
-        if params[2] is not None:
+    def __init__(self, skill):
+        if params(skill)[2] is not None:
             super(ESDebuffMovetime, self).__init__(
-                es_id, name, ref, params,
+                skill,
                 debuff_type='movetime',
-                amount=-params[2]/10,
+                amount=-params(skill)[2]/10,
                 unit='s'
             )
-        elif params[3] is not None:
+        elif params(skill)[3] is not None:
             super(ESDebuffMovetime, self).__init__(
-                es_id, name, ref, params,
+                skill,
                 debuff_type='movetime',
-                amount=params[3],
+                amount=params(skill)[3],
                 unit='%'
             )
 
 
 class ESEndBattle(ESEffect):
-    def __init__(self, es_id, name, ref, params):
-        super(ESEndBattle, self).__init__(es_id, name, ref, params, effect='end_battle')
-        self.description = 'Reduce self HP to 0'
+    def __init__(self, skill):
+        super(ESEndBattle, self).__init__(skill)
+        self.description = Describe.end_battle()
+        self.effect = 'end_battle'
         self.condition = Describe.condition(100, self.hp_threshold, False)
+
+
+class ESChangeAttribute(ESEffect):
+    def __init__(self, skill):
+        super(ESChangeAttribute, self).__init__(skill)
+        atts = list(OrderedDict.fromkeys([ATTRIBUTE_MAP[x] for x in params(skill)[1:5]]))
+        self.attributes = [x[0] for x in atts]
+        self.effect = 'change_attribute'
+        self.description = Describe.change_attribute([x[1] for x in atts])
+
+
+class ESGravity(ESEffect):
+    def __init__(self, skill):
+        super(ESGravity, self).__init__(skill)
+        self.percent = params(skill)[1]
+        self.effect = 'gravity'
+        self.description = Describe.gravity(self.percent)
 
 
 # Logic
 class ESLogic(pad_util.JsonDictEncodable):
-    def __init__(self, es_id, effect):
-        self.enemy_skill_id = es_id
+    def __init__(self, skill, effect=None):
+        self.enemy_skill_id = es_id(skill)
         self.effect = effect
 
 
 class ESNone(ESLogic):
-    def __init__(self, es_id, ref, type):
-        super(ESNone, self).__init__(es_id, None)
+    def __init__(self, skill):
+        super(ESNone, self).__init__(skill)
 
 
-class ESSetFlag(ESLogic):
-    FLAG_SET_MAP = {
-        22: True,
-        24: False
+class ESFlagOperation(ESLogic):
+    FLAG_OPERATION_MAP = {
+        22: 'SET',
+        24: 'UNSET',
+        44: 'OR',
+        45: 'XOR'
     }
 
-    def __init__(self, es_id, ref, es_type):
-        super(ESSetFlag, self).__init__(es_id, effect='set_flag')
-        # flag is a bitmap
-        self.flag = ref[ai] + 1
-        self.set = self.FLAG_SET_MAP[es_type]
+    def __init__(self, skill):
+        super(ESFlagOperation, self).__init__(skill, effect='flag_operation')
+        self.flag = ref(skill)[ai]
+        self.flag_bin = bin(ref(skill)[ai])
+        self.operation = self.FLAG_OPERATION_MAP[es_type(skill)]
 
 
 class ESSetCounter(ESLogic):
@@ -378,34 +453,35 @@ class ESSetCounter(ESLogic):
         27: '-'
     }
 
-    def __init__(self, es_id, ref, es_type):
-        super(ESSetCounter, self).__init__(es_id, effect='set_counter')
-        self.counter = ref[ai] if es_type == 25 else 1
-        self.set = self.COUNTER_SET_MAP[es_type]
+    def __init__(self, skill):
+        super(ESSetCounter, self).__init__(skill, effect='set_counter')
+        self.counter = ref(skill)[ai] if es_type(skill) == 25 else 1
+        self.set = self.COUNTER_SET_MAP[es_type(skill)]
 
 
 class ESSetCounterIf(ESLogic):
-    def __init__(self, es_id, ref, es_type):
-        super(ESSetCounterIf, self).__init__(es_id, effect='set_counter_if')
+    def __init__(self, skill):
+        super(ESSetCounterIf, self).__init__(skill, effect='set_counter_if')
         self.effect = 'set_counter_if'
-        self.counter_is = ref[ai]
-        self.counter = ref[rnd]
+        self.counter_is = ref(skill)[ai]
+        self.counter = ref(skill)[rnd]
 
 
 class ESBranch(ESLogic):
-    def __init__(self, es_id, ref, branch_condition):
+    def __init__(self, skill, branch_condition):
         self.branch_condition = branch_condition
-        self.branch_value = ref[ai]
-        self.target_round = ref[rnd]
-        super(ESBranch, self).__init__(es_id, effect='branch')
+        self.branch_value = ref(skill)[ai]
+        self.target_round = ref(skill)[rnd]
+        super(ESBranch, self).__init__(skill, effect='branch')
 
 
 class ESBranchFlag(ESBranch):
-    def __init__(self, es_id, ref, es_type):
+    def __init__(self, skill):
         super(ESBranchFlag, self).__init__(
-            es_id, ref,
+            skill,
             branch_condition='flag'
         )
+        self.branch_value_bin = bin(ref(skill)[ai])
 
 
 class ESBranchHP(ESBranch):
@@ -414,10 +490,10 @@ class ESBranchHP(ESBranch):
         29: '>'
     }
 
-    def __init__(self, es_id, ref, es_type):
-        self.compare = self.HP_COMPARE_MAP[es_type]
+    def __init__(self, skill):
+        self.compare = self.HP_COMPARE_MAP[es_type(skill)]
         super(ESBranchHP, self).__init__(
-            es_id, ref,
+            skill,
             branch_condition='hp'
         )
 
@@ -429,10 +505,10 @@ class ESBranchCounter(ESBranch):
         32: '>'
     }
 
-    def __init__(self, es_id, ref, es_type):
-        self.compare = self.COUNTER_COMPARE_MAP[es_type]
+    def __init__(self, skill):
+        self.compare = self.COUNTER_COMPARE_MAP[es_type(skill)]
         super(ESBranchCounter, self).__init__(
-            es_id, ref,
+            skill,
             branch_condition='counter'
         )
 
@@ -444,38 +520,44 @@ class ESBranchLevel(ESBranch):
         35: '>'
     }
 
-    def __init__(self, es_id, ref, es_type):
-        self.compare = self.LEVEL_COMPARE_MAP[es_type]
+    def __init__(self, skill):
+        self.compare = self.LEVEL_COMPARE_MAP[es_type(skill)]
         super(ESBranchLevel, self).__init__(
-            es_id, ref,
+            skill,
             branch_condition='level'
         )
 
 
 class ESEndPath(ESLogic):
-    def __init__(self, es_id, ref, es_type):
-        super(ESEndPath, self).__init__(es_id, effect='end_turn')
+    def __init__(self, skill):
+        super(ESEndPath, self).__init__(skill, effect='end_turn')
 
 
 class ESCountdown(ESLogic):
-    def __init__(self, es_id, ref, es_type):
+    def __init__(self, skill):
         # decrement counter at the end of every turn, including this turn
-        super(ESCountdown, self).__init__(es_id, effect='start_countdown')
+        super(ESCountdown, self).__init__(skill, effect='start_countdown')
+
+
+class ESPreemptive(ESLogic):
+    def __init__(self, skill):
+        super(ESPreemptive, self).__init__(skill, effect='preemptive')
+        self.level = params(skill)[1]
 
 
 # Unknown
 class EnemySkillUnknown(pad_util.JsonDictEncodable):
-    def __init__(self, es_id, name, es_type):
-        self.es_id = es_id
-        self.name = name
-        self.type = es_type
+    def __init__(self, skill):
+        self.es_id = es_id(skill)
+        self.name = name(skill)
+        self.type = es_type(skill)
 
 
 LOGIC_MAP = {
     0: ESNone,
-    22: ESSetFlag,
+    22: ESFlagOperation,
     23: ESBranchFlag,
-    24: ESSetFlag,
+    24: ESFlagOperation,
     25: ESSetCounter,
     26: ESSetCounter,
     27: ESSetCounter,
@@ -489,7 +571,11 @@ LOGIC_MAP = {
     35: ESBranchLevel,
     36: ESEndPath,
     37: ESCountdown,
-    38: ESSetCounterIf
+    38: ESSetCounterIf,
+    43: ESBranchFlag,
+    44: ESFlagOperation,
+    45: ESFlagOperation,
+    49: ESPreemptive
 }
 
 
@@ -503,8 +589,6 @@ ACTION_MAP = {
     7: ESRecoverEnemy,
     8: ESStorePower,
     # type 9 skills are unused, there's only 3 and they seem to buff defense
-    # type 10 skills don't exist
-    # type 11 skills don't exist
     12: ESJammerChangeSingle,
     13: ESJammerChangeRandom,
     14: ESSkillBind,
@@ -515,7 +599,11 @@ ACTION_MAP = {
     19: ESAttackUp,
     20: ESStatusShield,
     39: ESDebuffMovetime,
-    40: ESEndBattle
+    40: ESEndBattle,
+    46: ESChangeAttribute,
+    47: ESAttackPreemptive,
+    48: ESOrbChangeAttack,
+    50: ESGravity
 }
 
 
@@ -527,23 +615,13 @@ def reformat_json(enemy_data):
         unknown = {}
         for idx, skill in enumerate(enemy['skill_set']):
             idx += 1
-            t = skill['enemy_skill_info']['type']
-            if t in LOGIC_MAP:
-                logics[idx] = LOGIC_MAP[t](
-                    skill['enemy_skill_id'],
-                    skill['enemy_skill_ref'],
-                    t)
-            elif t in ACTION_MAP:
-                actions[idx] = ACTION_MAP[t](
-                    skill['enemy_skill_id'],
-                    skill['enemy_skill_info']['name'],
-                    skill['enemy_skill_ref'],
-                    skill['enemy_skill_info']['params'])
+            print(str(enemy['monster_no']) + ':' + str(es_type(skill)))
+            if es_type(skill) in LOGIC_MAP:
+                logics[idx] = LOGIC_MAP[es_type(skill)](skill)
+            elif es_type(skill) in ACTION_MAP:
+                actions[idx] = ACTION_MAP[es_type(skill)](skill)
             else:  # skills not parsed
-                unknown[idx] = EnemySkillUnknown(
-                    skill['enemy_skill_id'],
-                    skill['enemy_skill_info']['name'],
-                    t)
+                unknown[idx] = EnemySkillUnknown(skill)
         reformatted.append({
             'MONSTER_NO': enemy['monster_no'],
             'LOGIC': logics,
