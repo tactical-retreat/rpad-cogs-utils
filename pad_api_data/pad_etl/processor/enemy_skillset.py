@@ -15,15 +15,13 @@ ATTRIBUTE_MAP = {
     5: (6, 'Heal'),
     6: (7, 'Jammer'),
     7: (8, 'Poison')
-}
 
 TYPING_MAP = {
     4: (1, 'Dragon'),
     5: (6, 'God'),
     7: (10, 'Devil')
-}
 
-
+	
 # description
 class Describe:
     @staticmethod
@@ -178,7 +176,6 @@ class ESBind(ESEffect):
 
 
 class ESRandomBind(ESBind):
-
     def __init__(self, es_id, name, ref, params):
         super(ESRandomBind, self).__init__(
             es_id, name, ref, params,
