@@ -139,7 +139,10 @@ class Describe:
 
     @staticmethod
     def change_attribute(attributes):
-        return 'Change own attribute to ' + ' '.join(attributes)
+        if len(attributes) == 1:
+            return 'Change own attribute to ' + attributes[0]
+        else:
+            return 'Change own attribute to random one of ' + ', '.join(attributes)
 
     @staticmethod
     def gravity(percent):
@@ -405,7 +408,7 @@ class ESEndBattle(ESEffect):
 class ESChangeAttribute(ESEffect):
     def __init__(self, skill):
         super(ESChangeAttribute, self).__init__(skill)
-        atts = list(OrderedDict.fromkeys([ATTRIBUTE_MAP[x] for x in params(skill)[1:5]]))
+        atts = list(OrderedDict.fromkeys([ATTRIBUTE_MAP[x] for x in params(skill)[1:6]]))
         self.attributes = [x[0] for x in atts]
         self.effect = 'change_attribute'
         self.description = Describe.change_attribute([x[1] for x in atts])
@@ -615,7 +618,7 @@ def reformat_json(enemy_data):
         unknown = {}
         for idx, skill in enumerate(enemy['skill_set']):
             idx += 1
-            print(str(enemy['monster_no']) + ':' + str(es_type(skill)))
+            # print(str(enemy['monster_no']) + ':' + str(es_type(skill)))
             if es_type(skill) in LOGIC_MAP:
                 logics[idx] = LOGIC_MAP[es_type(skill)](skill)
             elif es_type(skill) in ACTION_MAP:
