@@ -58,6 +58,8 @@ def parse_args():
     outputGroup = parser.add_argument_group("Output")
     outputGroup.add_argument("--output_dir", required=True,
                              help="Path to a folder where output should be saved")
+    outputGroup.add_argument("--pretty", default=False, action="store_true",
+                             help="Controls pretty printing of results")
 
     helpGroup = parser.add_argument_group("Help")
     helpGroup.add_argument("-h", "--help", action="help",
@@ -620,8 +622,8 @@ def load_data(args):
 
     if not args.skipintermediate:
         logger.info('Storing intermediate data')
-        jp_database.save_all(output_dir)
-        na_database.save_all(output_dir)
+        jp_database.save_all(output_dir, args.pretty)
+        na_database.save_all(output_dir, args.pretty)
 
     logger.info('Connecting to database')
     with open(args.db_config) as f:
@@ -680,11 +682,14 @@ class Database(object):
         self.bonuses = clean_bonuses(pg_server, bonus_sets, dungeons)
         self.cards = clean_cards(cards, skills)
 
-    def save_all(self, output_dir: str):
+    def save_all(self, output_dir: str, pretty: bool):
         def save(file_name: str, obj: object):
             output_file = os.path.join(output_dir, '{}_{}.json'.format(self.pg_server, file_name))
             with open(output_file, 'w') as f:
-                json.dump(obj, f, indent=4, sort_keys=True, default=lambda x: x.__dict__)
+                if pretty:
+                    json.dump(obj, f, indent=4, sort_keys=True, default=lambda x: x.__dict__)
+                else:
+                    json.dump(obj, f, default=lambda x: x.__dict__)
         save('raw_cards', self.raw_cards)
         save('dungeons', self.dungeons)
         save('skills', self.skills)
