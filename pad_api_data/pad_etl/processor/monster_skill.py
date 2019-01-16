@@ -1,4 +1,3 @@
-# from datetime import date, datetime, timedelta
 import time
 from typing import List
 
@@ -6,12 +5,9 @@ from . import db_util
 from ..common import monster_id_mapping
 from ..data.skill import MonsterSkill
 from .merged_data import MergedCard
-from .monster import SqlItem
+from .sql_item import SqlItem
 
 
-#
-# from enum import Enum
-# from . import processor_util
 def get_monster_skill_ids(mc: MergedCard):
     args = {'monster_no': monster_id_mapping.jp_id_to_monster_no(mc.card.card_id)}
     sql = "SELECT ts_seq_leader, ts_seq_skill FROM monster_list WHERE monster_no = {monster_no}"
