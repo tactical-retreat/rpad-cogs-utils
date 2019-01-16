@@ -2,14 +2,11 @@ from datetime import date
 import time
 
 from . import db_util
-from . import sql_item
 from ..common import monster_id_mapping
 from ..common import shared_types
 from ..common.padguide_values import TYPE_MAP, AWAKENING_MAP, EvoType
 from ..data.card import BookCard
-
-# Temporary; remove references from other files and delete
-SqlItem = sql_item.SqlItem
+from .sql_item import SqlItem
 
 
 class MonsterItem(SqlItem):
