@@ -5,8 +5,6 @@ import time
 
 from enum import Enum
 
-from . import db_util
-
 
 def object_to_sql_params(obj):
     d = obj if type(obj) == dict else obj.__dict__

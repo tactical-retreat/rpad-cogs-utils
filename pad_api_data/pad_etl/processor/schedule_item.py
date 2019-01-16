@@ -6,6 +6,7 @@ import pytz
 
 from . import db_util
 from . import processor_util
+from . import sql_item
 from .merged_data import MergedBonus
 
 
@@ -107,7 +108,7 @@ class ScheduleItem(object):
                  AND dungeon_seq = {dungeon_seq}
                  """
 
-        formatted_sql = sql.format(**db_util.object_to_sql_params(self))
+        formatted_sql = sql.format(**sql_item.object_to_sql_params(self))
         # TODO: Convert this object to use SqlItem
         fixed_sql = formatted_sql.replace('= NULL', 'is NULL')
         return fixed_sql
@@ -142,7 +143,7 @@ class ScheduleItem(object):
             {team_data},
             {tstamp},
             {url});
-            """.format(**db_util.object_to_sql_params(self))
+            """.format(**sql_item.object_to_sql_params(self))
 
         return sql
 
