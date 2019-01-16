@@ -46,7 +46,7 @@ class EggTitleCategory(Enum):
     """
     GODFEST = 0
     RARE = 1
-    PAL = 1
+    PAL = 2
 
 
 class EggTitle(SimpleSqlItem):
