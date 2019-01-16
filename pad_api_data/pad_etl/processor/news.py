@@ -1,6 +1,6 @@
 import time
 
-from . import db_util
+from . import sql_item
 from .sql_item import SqlItem
 
 
@@ -30,7 +30,7 @@ class NewsItem(SqlItem):
         sql = """SELECT tn_seq FROM news_list
                  WHERE server = {server}
                  AND title_us  = {title_us}
-                 """.format(**db_util.object_to_sql_params(self))
+                 """.format(**sql_item.object_to_sql_params(self))
         return sql
 
     def _table(self):
