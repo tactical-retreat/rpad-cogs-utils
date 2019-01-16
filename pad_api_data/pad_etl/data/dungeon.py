@@ -30,6 +30,7 @@ class DungeonFloor(pad_util.JsonDictEncodable):
         self.bgm1 = raw[5]
         self.bgm2 = raw[6]
         self.rflags2 = int(raw[7])
+
         # These need to be parsed depending on flags
         self.other_modifier = raw7_map[int(raw[7])]
 
