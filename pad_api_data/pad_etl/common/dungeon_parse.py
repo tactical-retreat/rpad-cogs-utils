@@ -21,6 +21,11 @@ def getLast(raw):
     return str(raw[-1])
 
 
+
+
+
+ ### Needs proper implementation for 32, 96, 97, 101
+
 def getModifiers(raw, pos):
     val = int(raw[pos])
 
@@ -35,7 +40,8 @@ def getModifiers(raw, pos):
         return modifiers
 
     elif val == 32:
-        modifiers.modifiers['max_team_size'] = parse32[int(raw[pos + 1])](raw)
+        modifiers.messages.append(parse32[int(raw[pos + 1])](raw))
+        # modifiers.messages.append(parse32[int(raw[pos + 2])](raw))
         return modifiers
 
     elif val == 33:
@@ -120,7 +126,12 @@ def getModifiers(raw, pos):
     elif val == 72:
         modifiers.remainingModifiers = splitMods(raw, pos, 2)
         return modifiers
-
+    elif val == 96:
+        splitData = raw[pos+1].split("|")
+        for m in splitData:
+            modifiers.remainingModifiers.append(m)
+        modifiers.entryRequirement = parse32[int(raw[pos + 2])](raw)
+        return modifiers
     else:
         return modifiers
 
@@ -154,7 +165,7 @@ def getReqExpDragon(raw):
 
 
 def getNumOrLess(raw):
-    return getLast(raw)
+    return "Teams of " + getLast(raw) + " or less allowed"
 
 type_flip = {
     '5': 'Dragon'
