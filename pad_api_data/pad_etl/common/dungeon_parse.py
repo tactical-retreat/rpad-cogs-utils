@@ -7,7 +7,7 @@ class Modifier:
         self.entryRequirement = None
         self.modifiers = {}
         self.messages = []
-        self.fixedTeam = []
+        self.fixedTeam = {}
         self.enhancedType = None
         self.enhancedAttribute = None
         self.score = None
@@ -61,8 +61,21 @@ def getModifiers(raw, pos):
             elif 'smsg' in m:
                 modifiers.messages.append(m.split(':')[-1])
             elif 'fc' in m:
-                cardDataSplit = m.split(";")[0].split(":")[-1]
-                modifiers.fixedTeam.append(cardDataSplit)
+
+                details = m.split(';')
+                cardID = details[0].split(":")[-1]
+
+                full_record = len(details) > 1
+
+                modifiers.fixed_team[cardID] = {
+                    'monster_id': details[0],
+                    'hp_plus': details[1] if full_record else 0,
+                    'atk_plus': details[2] if full_record else 0,
+                    'rcv_plus': details[3] if full_record else 0,
+                    'awakening_count': details[4] if full_record else 0,
+                    'skill_level': details[5] if full_record else 0,
+                }
+                modifiers.fixedTeam.append(cardID)
             elif 'btype' in m:
                 splitBtype = m.split(';')
                 val = int(splitBtype[0].split(':')[-1])

@@ -120,35 +120,37 @@ class DungeonFloor(pad_util.JsonDictEncodable):
         #             'skill_level': details[5] if full_record else 0,
         #         }
         #
+
+
         # This code imported from Rikuu, need to clean it up and merge
         # with the other modifiers parsing code. For now just importing
         # the score parsing, needed for dungeon loading.
-        # self.score = None
-        # i = 0
-        #
-        # if ((self.flags & 0x1) != 0):
-        #     i += 2
-        #     #self.requirement = {
-        #     #  dungeonId: Number(self.remaining_fields[i++]),
-        #     #  floorId: Number(self.remaining_fields[i++])
-        #     #};
-        # if ((self.flags & 0x4) != 0):
-        #     i += 1
-        #     #self.beginTime = fromPADTime(self.remaining_fields[i++]);
-        # if ((self.flags & 0x8) != 0):
-        #     self.score = int(self.remaining_fields[i]);
-        #     i += 1
-        # if ((self.flags & 0x10) != 0):
-        #     i += 1
-        #     #self.minRank = Number(self.remaining_fields[i++]);
-        # if ((self.flags & 0x40) != 0):
-        #     i += 1
-        #     #self.properties = self.remaining_fields[i++].split('|');
-        #
-        # #self.conditions = {
-        # #  type: Number(raw[i++]),
-        # #  values: raw.slice(i).map(Number)
-        # #};
+        self.other_score = None
+        i = 0
+
+        if ((self.flags & 0x1) != 0):
+            i += 2
+            #self.requirement = {
+            #  dungeonId: Number(self.remaining_fields[i++]),
+            #  floorId: Number(self.remaining_fields[i++])
+            #};
+        if ((self.flags & 0x4) != 0):
+            i += 1
+            #self.beginTime = fromPADTime(self.remaining_fields[i++]);
+        if ((self.flags & 0x8) != 0):
+            self.other_score = int(self.remaining_fields[i]);
+            i += 1
+        if ((self.flags & 0x10) != 0):
+            i += 1
+            #self.minRank = Number(self.remaining_fields[i++]);
+        if ((self.flags & 0x40) != 0):
+            i += 1
+            #self.properties = self.remaining_fields[i++].split('|');
+
+        #self.conditions = {
+        #  type: Number(raw[i++]),
+        #  values: raw.slice(i).map(Number)
+        #};
 
 
 prefix_to_dungeontype = {
