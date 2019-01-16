@@ -1,45 +1,13 @@
-import json
 import time
 
 from enum import Enum
 
 from . import db_util
-from .monster import SqlItem
+from .sql_item import SqlItem, SimpleSqlItem
+from .sql_item import full_columns, dump
 
 
-def full_columns(o: SqlItem, remove_cols=[], add_cols=[]):
-    cols = set(vars(o).keys())
-    if o.uses_local_primary_key():
-        cols.discard(o._key())
-    cols.discard('tstamp')
-    # Do something about tstamp in SqlItem insert or update
-    cols = set([x for x in cols if not x.startswith('resolved')])
-    cols = cols.difference(remove_cols)
-    cols = cols.union(add_cols)
-
-    if hasattr(type(o), 'COL_MAPPINGS'):
-        mappings = type(o).COL_MAPPINGS
-        for k, v in mappings.items():
-            cols.discard(v)
-            cols.add(k)
-
-    return list(cols)
-
-
-def dump_helper(x):
-    if isinstance(x, Enum):
-        return str(x)
-    elif hasattr(x, '__dict__'):
-        return vars(x)
-    else:
-        return repr(x)
-
-
-def dump(obj):
-    return json.dumps(obj, indent=4, sort_keys=True, default=dump_helper)
-
-
-class Icon(SqlItem):
+class Icon(SimpleSqlItem):
     """Does not seem to be necessary.
 
     Looks like the icon loading works fine without actually having a ref to an entry
@@ -62,21 +30,6 @@ class Icon(SqlItem):
         self.icon_url = icon_url
         self.tstamp = tstamp or (int(time.time()) * 1000)
 
-    def __repr__(self):
-        return dump(self)
-
-    def _table(self):
-        return Icon.TABLE
-
-    def _key(self):
-        return Icon.KEY_COL
-
-    def _insert_columns(self):
-        return full_columns(self)
-
-    def _update_columns(self):
-        return full_columns(self)
-
 
 class SimpleDungeonType(Enum):
     """This is used for the 'dungeon_type' field"""
@@ -86,7 +39,7 @@ class SimpleDungeonType(Enum):
     Etc = 3
 
 
-class DungeonType(SqlItem):
+class DungeonType(SimpleSqlItem):
     """Dungeon type, used as part of filtering.
 
     An 'unsorted' entry exists as a placeholder at tdt_seq=41
@@ -109,23 +62,8 @@ class DungeonType(SqlItem):
         self.tdt_seq = tdt_seq  # Primary Key
         self.tstamp = tstamp or (int(time.time()) * 1000)
 
-    def __repr__(self):
-        return dump(self)
 
-    def _table(self):
-        return DungeonType.TABLE
-
-    def _key(self):
-        return DungeonType.KEY_COL
-
-    def _insert_columns(self):
-        return full_columns(self)
-
-    def _update_columns(self):
-        return full_columns(self)
-
-
-class Dungeon(SqlItem):
+class Dungeon(SimpleSqlItem):
     """The dungeon object."""
     TABLE = 'dungeon_list'
     KEY_COL = 'dungeon_seq'
@@ -137,7 +75,6 @@ class Dungeon(SqlItem):
                  comment_us: str=None,
                  dungeon_seq: int=None,
                  dungeon_type: int=None,
-                 dungeon_type_enum: SimpleDungeonType=None,
                  icon_seq: int=None,
                  name_jp: str=None,
                  name_kr: str=None,
@@ -151,9 +88,9 @@ class Dungeon(SqlItem):
         self.comment_kr = comment_kr  # Unused
         self.comment_us = comment_us  # Unused
         self.dungeon_seq = dungeon_seq  # Primary Key
-        self.dungeon_type = dungeon_type or (dungeon_type_enum.value if dungeon_type_enum else None)
-        self.dungeon_type_enum = dungeon_type_enum or (
-            SimpleDungeonType(dungeon_type) if dungeon_type is not None else None)
+        self.dungeon_type = dungeon_type
+        self.dungeon_type_enum = SimpleDungeonType(
+            dungeon_type) if dungeon_type is not None else None
         self.icon_seq = icon_seq  # FK to Icon but seems not to be necessary
         self.name_jp = name_jp
         self.name_kr = name_kr or name_us
@@ -164,27 +101,19 @@ class Dungeon(SqlItem):
         self.tstamp = tstamp or int(time.time()) * 1000
 
         self.resolved_dungeon_type = None
-        self.resolved_icon = None
         self.resolved_sub_dungeons = []
 
-    def __repr__(self):
-        return dump(self)
-
-    def _table(self):
-        return Dungeon.TABLE
-
-    def _key(self):
-        return Dungeon.KEY_COL
-
-    def _insert_columns(self):
-        return full_columns(self, remove_cols=['dungeon_type_enum'])
-
-    def _update_columns(self):
-        return full_columns(self, remove_cols=['dungeon_type_enum'])
+    def dungeon_type_enum(self):
+        if self.dungeon_type is None:
+            return None
+        else:
+            return SimpleDungeonType(self.dungeon_type)
 
 
-class DungeonSkillDamage(SqlItem):
+class DungeonSkillDamage(SimpleSqlItem):
     """Only present on attacks."""
+    TABLE = 'dungeon_skill_damage_list'
+    KEY_COL = 'tds_seq'
 
     def __init__(self,
                  damage: int=None,
@@ -194,23 +123,8 @@ class DungeonSkillDamage(SqlItem):
         self.tds_seq = tds_seq  # Primary Key
         self.tstamp = tstamp or int(time.time()) * 1000
 
-    def __repr__(self):
-        return dump(self)
 
-    def _table(self):
-        return 'dungeon_skill_damage_list'
-
-    def _key(self):
-        return 'tds_seq'
-
-    def _insert_columns(self):
-        return full_columns(self)
-
-    def _update_columns(self):
-        return full_columns(self)
-
-
-class SubDungeon(SqlItem):
+class SubDungeon(SimpleSqlItem):
     """Stages of a dungeon."""
     TABLE = 'sub_dungeon_list'
     KEY_COL = 'tsd_seq'
@@ -249,23 +163,8 @@ class SubDungeon(SqlItem):
         self.resolved_sub_dungeon_reward = None
         self.resolved_sub_dungeon_point = None
 
-    def __repr__(self):
-        return dump(self)
 
-    def _table(self):
-        return SubDungeon.TABLE
-
-    def _key(self):
-        return SubDungeon.KEY_COL
-
-    def _insert_columns(self):
-        return full_columns(self)
-
-    def _update_columns(self):
-        return full_columns(self)
-
-
-class SubDungeonPoint(SqlItem):
+class SubDungeonPoint(SimpleSqlItem):
     """MP estimate for clearing dungeon if all drops are sold.
 
     Seems to be required.
@@ -283,26 +182,11 @@ class SubDungeonPoint(SqlItem):
         self.tsd_seq = tsd_seq  # FK to SubDungeon (injected)
         self.tstamp = tstamp or int(time.time()) * 1000
 
-    def __repr__(self):
-        return dump(self)
-
     def uses_local_primary_key(self):
         return False
 
-    def _table(self):
-        return SubDungeonPoint.TABLE
 
-    def _key(self):
-        return SubDungeonPoint.KEY_COL
-
-    def _insert_columns(self):
-        return full_columns(self)
-
-    def _update_columns(self):
-        return full_columns(self)
-
-
-class SubDungeonReward(SqlItem):
+class SubDungeonReward(SimpleSqlItem):
     """Optional reward for clearing floor, e.g. challenges.
 
     Format looks like: 0/1329|0/521|0/522
@@ -324,26 +208,11 @@ class SubDungeonReward(SqlItem):
         self.tsd_seq = tsd_seq  # FK to SubDungeon (injected)
         self.tstamp = tstamp or int(time.time()) * 1000
 
-    def __repr__(self):
-        return dump(self)
-
     def uses_local_primary_key(self):
         return False
 
-    def _table(self):
-        return SubDungeonReward.TABLE
 
-    def _key(self):
-        return SubDungeonReward.KEY_COL
-
-    def _insert_columns(self):
-        return full_columns(self)
-
-    def _update_columns(self):
-        return full_columns(self)
-
-
-class SubDungeonScore(SqlItem):
+class SubDungeonScore(SimpleSqlItem):
     """Optional score for s-rank.
 
     Not yet supported.
@@ -360,26 +229,11 @@ class SubDungeonScore(SqlItem):
         self.tsd_seq = tsd_seq  # FK to SubDungeon (injected)
         self.tstamp = tstamp or (int(time.time()) * 1000)
 
-    def __repr__(self):
-        return dump(self)
-
     def uses_local_primary_key(self):
         return False
 
-    def _table(self):
-        return SubDungeonScore.TABLE
 
-    def _key(self):
-        return SubDungeonScore.KEY_COL
-
-    def _insert_columns(self):
-        return full_columns(self)
-
-    def _update_columns(self):
-        return full_columns(self)
-
-
-class DungeonMonster(SqlItem):
+class DungeonMonster(SimpleSqlItem):
     TABLE = 'dungeon_monster_list'
     KEY_COL = 'tdm_seq'
     LIST_COL = SubDungeon.KEY_COL
@@ -435,23 +289,8 @@ class DungeonMonster(SqlItem):
         self.resolved_dungeon_monster_drops = []
         self.resolved_dungeon_skills = []
 
-    def __repr__(self):
-        return dump(self)
 
-    def _table(self):
-        return DungeonMonster.TABLE
-
-    def _key(self):
-        return DungeonMonster.KEY_COL
-
-    def _insert_columns(self):
-        return full_columns(self)
-
-    def _update_columns(self):
-        return full_columns(self)
-
-
-class DungeonMonsterDrop(SqlItem):
+class DungeonMonsterDrop(SimpleSqlItem):
     """Represents alternate drops for a monster, and is optional."""
     TABLE = 'dungeon_monster_drop_list'
     KEY_COL = 'tdmd_seq'
@@ -470,18 +309,6 @@ class DungeonMonsterDrop(SqlItem):
         self.tdmd_seq = tdmd_seq  # Primary Key
         self.tdm_seq = tdm_seq  # Foreign Key to DungeonMonster (injected)
         self.tstamp = tstamp or (int(time.time()) * 1000)
-
-    def __repr__(self):
-        return dump(self)
-
-    def _table(self):
-        return DungeonMonsterDrop.TABLE
-
-    def _key(self):
-        return DungeonMonsterDrop.KEY_COL
-
-    def _insert_columns(self):
-        return full_columns(self)
 
     def _update_columns(self):
         return full_columns(self, remove_cols=['tdm_seq'])
@@ -534,11 +361,7 @@ class DungeonLoader(object):
             dungeon.resolved_dungeon_type = self.db_wrapper.load_single_object(
                 DungeonType, dungeon.tdt_seq)
 
-        if dungeon.icon_seq:
-            dungeon.resolved_icon = self.db_wrapper.load_single_object(Icon, dungeon.icon_seq)
-
         dungeon.resolved_sub_dungeons = self.load_sub_dungeons(dungeon_seq)
-        # TODO: load icon
 
         return dungeon
 
@@ -563,39 +386,18 @@ class DungeonLoader(object):
             # dm.resolved_dungeon_skills = self.db_wrapper.load_multiple_objects(DungeonMonsterDrop, tsd_seq)
         return dungeon_monsters
 
-    def insert_or_update(self, item: SqlItem):
-        key = item.key_value()
-        if not item.uses_local_primary_key():
-            if not self.db_wrapper.check_existing(item.exists_sql()):
-                print('item (fk) needed insert:', type(item), key)
-                key = self.db_wrapper.insert_item(item.insert_sql())
-            elif not self.db_wrapper.check_existing(item.needs_update_sql()):
-                print('item (fk) needed update:', type(item), key)
-                print(item.needs_update_sql())
-                self.db_wrapper.insert_item(item.update_sql())
-
-        else:
-            if item.needs_insert():
-                print('item needed insert:', type(item), key)
-                key = self.db_wrapper.insert_item(item.insert_sql())
-            elif not self.db_wrapper.check_existing(item.needs_update_sql()):
-                print('item needed update:', type(item), key)
-                print(item.needs_update_sql())
-                self.db_wrapper.insert_item(item.update_sql())
-        return key
-
     def save_dungeon(self, dungeon: Dungeon):
         # TODO: Run save in a transaction and commit on success
         # TODO: Save DungeonType?
         if dungeon.resolved_dungeon_type:
             dungeon.tdt_seq = dungeon.resolved_dungeon_type.tdt_seq
-        dungeon_seq = self.insert_or_update(dungeon)
+        dungeon_seq = self.db_wrapper.insert_or_update(dungeon)
         for sd in dungeon.resolved_sub_dungeons:
             sd.dungeon_seq = dungeon_seq
             self.save_sub_dungeon(sd)
 
     def save_sub_dungeon(self, sub_dungeon: SubDungeon):
-        tsd_seq = self.insert_or_update(sub_dungeon)
+        tsd_seq = self.db_wrapper.insert_or_update(sub_dungeon)
         for dm in sub_dungeon.resolved_dungeon_monsters:
             dm.dungeon_seq = sub_dungeon.dungeon_seq
             dm.tsd_seq = tsd_seq
@@ -603,22 +405,22 @@ class DungeonLoader(object):
 
         if sub_dungeon.resolved_sub_dungeon_score:
             sub_dungeon.resolved_sub_dungeon_score.tsd_seq = tsd_seq
-            self.insert_or_update(sub_dungeon.resolved_sub_dungeon_score)
+            self.db_wrapper.insert_or_update(sub_dungeon.resolved_sub_dungeon_score)
 
         if sub_dungeon.resolved_sub_dungeon_reward:
             sub_dungeon.resolved_sub_dungeon_reward.tsd_seq = tsd_seq
-            self.insert_or_update(sub_dungeon.resolved_sub_dungeon_reward)
+            self.db_wrapper.insert_or_update(sub_dungeon.resolved_sub_dungeon_reward)
 
         if sub_dungeon.resolved_sub_dungeon_point:
             sub_dungeon.resolved_sub_dungeon_point.tsd_seq = tsd_seq
-            self.insert_or_update(sub_dungeon.resolved_sub_dungeon_point)
+            self.db_wrapper.insert_or_update(sub_dungeon.resolved_sub_dungeon_point)
 
     def save_dungeon_monster(self, dungeon_monster: DungeonMonster):
-        tdm_seq = self.insert_or_update(dungeon_monster)
+        tdm_seq = self.db_wrapper.insert_or_update(dungeon_monster)
 
         for dmd in dungeon_monster.resolved_dungeon_monster_drops:
             dmd.tdm_seq = tdm_seq
-            self.insert_or_update(dmd)
+            self.db_wrapper.insert_or_update(dmd)
 
         for ds in dungeon_monster.resolved_dungeon_skills:
             # Currently ignoring skills

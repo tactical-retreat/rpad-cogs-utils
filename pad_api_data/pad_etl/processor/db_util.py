@@ -1,75 +1,13 @@
-from datetime import datetime, date
-import decimal
 import logging
+import random
 
 import pymysql
-import random
+
+from .sql_item import SqlItem, _col_compare, _tbl_name_ref, process_col_mappings
 
 
 logger = logging.getLogger('database')
 logger.setLevel(logging.ERROR)
-
-# This stuff should move to sql_item probably
-def object_to_sql_params(obj):
-    d = obj if type(obj) == dict else obj.__dict__
-    # Defensive copy since we're updating this dict
-    d = dict(d)
-    d = process_col_mappings(type(obj), d, reverse=True)
-    new_d = {}
-    for k, v in d.items():
-        new_val = value_to_sql_param(v)
-        if new_val is not None:
-            new_d[k] = new_val
-    return new_d
-
-def value_to_sql_param(v):
-    if v is None:
-        return 'NULL'
-    elif type(v) == str:
-        clean_v = v.replace("'", r"''")
-        return "'{}'".format(clean_v)
-    elif type(v) in (int, float, decimal.Decimal):
-        return '{}'.format(v)
-    elif type(v) in [datetime, date]:
-        return "'{}'".format(v.isoformat())
-    elif type(v) in [bool]:
-        return str(v)
-    else:
-        return None
-
-def _col_compare(col):
-    return col + ' = ' + _col_value_ref(col)
-
-
-def _col_value_ref(col):
-    return '{' + col + '}'
-
-
-def _col_name_ref(col):
-    return '`' + col + '`'
-
-
-def _tbl_name_ref(table_name):
-    return '`' + table_name + '`'
-
-
-def generate_insert_sql(table_name, cols, item):
-    sql = 'INSERT INTO {}'.format(_tbl_name_ref(table_name))
-    sql += ' (' + ', '.join(map(_col_name_ref, cols)) + ')'
-    sql += ' VALUES (' + ', '.join(map(_col_value_ref, cols)) + ')'
-    return sql.format(**object_to_sql_params(item))
-
-
-def process_col_mappings(obj_type, d, reverse=False):
-    if hasattr(obj_type, 'COL_MAPPINGS'):
-        mappings = obj_type.COL_MAPPINGS
-        if reverse:
-            mappings = {v: k for k, v in mappings.items()}
-
-        for k, v in mappings.items():
-            d[v] = d[k]
-            d.pop(k)
-    return d
 
 
 class DbWrapper(object):
@@ -118,13 +56,13 @@ class DbWrapper(object):
             else:
                 return data[0]
 
-    def get_single_value(self, sql, op=str):
+    def get_single_value(self, sql, op=str, fail_on_empty=True):
         with self.connection.cursor() as cursor:
             self.execute(cursor, sql)
             data = list(cursor.fetchall())
             num_rows = len(data)
             if num_rows == 0:
-                if self.dry_run:
+                if self.dry_run or not fail_on_empty:
                     return None
                 raise ValueError('got zero results:', sql)
             if num_rows > 1:
@@ -136,7 +74,7 @@ class DbWrapper(object):
 
     def load_single_object(self, obj_type, key_val):
         sql = 'SELECT * FROM {} WHERE {}'.format(
-            _tbl_name_ref(obj_type.TABLE), 
+            _tbl_name_ref(obj_type.TABLE),
             _col_compare(obj_type.KEY_COL))
         sql = sql.format(**{obj_type.KEY_COL: key_val})
         data = self.get_single_or_no_row(sql)
@@ -144,7 +82,7 @@ class DbWrapper(object):
 
     def load_multiple_objects(self, obj_type, key_val):
         sql = 'SELECT * FROM {} WHERE {}'.format(
-            _tbl_name_ref(obj_type.TABLE), 
+            _tbl_name_ref(obj_type.TABLE),
             _col_compare(obj_type.LIST_COL))
         sql = sql.format(**{obj_type.LIST_COL: key_val})
         data = self.fetch_data(sql)
@@ -182,3 +120,35 @@ class DbWrapper(object):
             if num_rows > 0:
                 raise ValueError('got too many results for insert:', num_rows, sql)
             return cursor.lastrowid
+
+    def insert_or_update(self, item: SqlItem):
+        key = item.key_value()
+        if item.uses_alternate_key_lookup():
+            key = self.get_single_value(item.exists_sql(), op=int, fail_on_empty=False)
+            item.set_key_value(key)
+
+            if not key:
+                print('item (alt) needed insert:', type(item), key)
+                key = self.insert_item(item.insert_sql())
+            elif not self.check_existing(item.needs_update_sql()):
+                print('item (alt) needed update:', type(item), key)
+                print(item.needs_update_sql())
+                self.insert_item(item.update_sql())
+
+        elif not item.uses_local_primary_key():
+            if not self.check_existing(item.exists_sql()):
+                print('item (fk) needed insert:', type(item), key)
+                key = self.insert_item(item.insert_sql())
+            elif not self.check_existing(item.needs_update_sql()):
+                print('item (fk) needed update:', type(item), key)
+                print(item.needs_update_sql())
+                self.insert_item(item.update_sql())
+        else:
+            if item.needs_insert():
+                print('item needed insert:', type(item), key)
+                key = self.insert_item(item.insert_sql())
+            elif not self.check_existing(item.needs_update_sql()):
+                print('item needed update:', type(item), key)
+                print(item.needs_update_sql())
+                self.insert_item(item.update_sql())
+        return key

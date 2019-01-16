@@ -1,13 +1,5 @@
-import time
-from typing import List
-from datetime import datetime
-
-from . import db_util
 from ..api import wave_data
-from ..common import monster_id_mapping
-from ..data.skill import MonsterSkill
-from .merged_data import MergedCard
-from .monster import SqlItem
+from .sql_item import SqlItem
 
 
 class WaveItem(SqlItem):
@@ -15,30 +7,31 @@ class WaveItem(SqlItem):
     TABLE = 'wave_data'
     KEY_COL = 'id'
     LIST_COL = 'dungeon_id'
+
     def __init__(self,
-            id: int=None,
-            pull_id: int=None,
-            entry_id: int=None, 
-            server: str=None, 
-            dungeon_id: int=None, 
-            floor_id: int=None, 
-            stage: int=None, 
-            slot: int=None,
-            spawn_type: int=None,
-            monster_id: int=None,
-            monster_level: int=None,
-            drop_monster_id: int=None,
-            drop_monster_level: int=None,
-            plus_amount: int=None, 
-            monster: wave_data.WaveMonster=None,
-            pull_time=None # Ignored
-            ):
+                 id: int=None,
+                 pull_id: int=None,
+                 entry_id: int=None,
+                 server: str=None,
+                 dungeon_id: int=None,
+                 floor_id: int=None,
+                 stage: int=None,
+                 slot: int=None,
+                 spawn_type: int=None,
+                 monster_id: int=None,
+                 monster_level: int=None,
+                 drop_monster_id: int=None,
+                 drop_monster_level: int=None,
+                 plus_amount: int=None,
+                 monster: wave_data.WaveMonster=None,
+                 pull_time=None  # Ignored
+                 ):
         self.id = id
         self.server = server
         self.dungeon_id = dungeon_id
-        self.floor_id = floor_id # ID starts at 1 for lowest
-        self.stage = stage # 0-indexed
-        self.slot = slot # 0-indexed
+        self.floor_id = floor_id  # ID starts at 1 for lowest
+        self.stage = stage  # 0-indexed
+        self.slot = slot  # 0-indexed
 
         self.spawn_type = spawn_type
         self.monster_id = monster_id
@@ -64,7 +57,7 @@ class WaveItem(SqlItem):
         return self.spawn_type == 2
 
     def get_drop(self):
-        return self.drop_monster_id if self.drop_monster_id > 0 and self.get_coins() == 0  else None
+        return self.drop_monster_id if self.drop_monster_id > 0 and self.get_coins() == 0 else None
 
     def get_coins(self):
         return self.drop_monster_level if self.drop_monster_id == WaveItem.DROP_MONSTER_ID_GOLD else 0
