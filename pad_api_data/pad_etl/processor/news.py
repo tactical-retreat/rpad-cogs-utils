@@ -1,16 +1,16 @@
-# from datetime import date, datetime, timedelta
 import time
 
 from . import db_util
-from .monster import SqlItem
+from .sql_item import SqlItem
+
 
 class NewsItem(SqlItem):
     def __init__(self, server: str, title: str, url: str):
-        self.tn_seq = None # Provided at insert
+        self.tn_seq = None  # Provided at insert
 
         self.del_yn = 0
-        self.os_type = 'C' # Both OSes
-        self.server = server # JP or US
+        self.os_type = 'C'  # Both OSes
+        self.server = server  # JP or US
 
         self.title_jp = title
         self.title_kr = title
@@ -52,4 +52,3 @@ class NewsItem(SqlItem):
 
     def __repr__(self):
         return 'NewsItem({})'.format(self.title_us)
-
