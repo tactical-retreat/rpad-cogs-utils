@@ -1,5 +1,6 @@
 from dungeon_maps import btypeChart, battrChart
 
+
 class Modifier:
     def __init__(self):
         self.requiredDungeon = None
@@ -11,6 +12,8 @@ class Modifier:
         self.enhancedType = None
         self.enhancedAttribute = None
         self.score = None
+        self.possibleDrops = {}
+        self.pos = 0
 
 
 def splitMods(raw, pos, diff):
@@ -21,22 +24,36 @@ def getLast(raw):
     return str(raw[-1])
 
 
+### Needs proper implementation for 32, 96, 97, 101
 
-
-
- ### Needs proper implementation for 32, 96, 97, 101
-
-def getModifiers(raw, pos):
-    val = int(raw[pos])
-
+def getModifiers(raw):
     modifiers = Modifier()
+
+    # This next loop runs through the elements from raw[8] until it hits a 0. The 0 indicates the end of the list
+    # of drops for the floor, the following segments are the dungeon modifiers
+    pos = 8
+
+    while (int(raw[pos]) is not 0):
+        rawVal = int(raw[pos])
+        if rawVal > 10000:
+            val = rawVal - 10000
+            modifiers.possibleDrops[val] = "rare"
+            pos += 1
+        else:
+            modifiers.possibleDrops[rawVal] = "normal"
+            pos += 1
+    pos += 1
+
+    modifiers.pos = pos
+
+    val = int(raw[pos])
 
     if val == 5:
         modifiers.requiredDungeon = int(raw[pos + 1])
         return modifiers
 
     elif val == 8:
-        modifiers.score = raw[pos+1]
+        modifiers.score = raw[pos + 1]
         return modifiers
 
     elif val == 32:
@@ -87,9 +104,9 @@ def getModifiers(raw, pos):
                 try:
                     mods = splitBtype[1:]
                     modifiers.enhancedType = btypeChart[val]
-                    modifiers.modifiers['hp'] = int(mods[0])/10000
-                    modifiers.modifiers['atk'] = int(mods[1])/10000
-                    modifiers.modifiers['rcv'] = int(mods[2])/10000
+                    modifiers.modifiers['hp'] = int(mods[0]) / 10000
+                    modifiers.modifiers['atk'] = int(mods[1]) / 10000
+                    modifiers.modifiers['rcv'] = int(mods[2]) / 10000
                 except Exception as e:
                     print("Enhanced type for value", val, " not supported. Dungeon title:", raw[1], ". Error:", e)
             elif 'battr' in m:
@@ -127,7 +144,7 @@ def getModifiers(raw, pos):
         modifiers.remainingModifiers = splitMods(raw, pos, 2)
         return modifiers
     elif val == 96:
-        splitData = raw[pos+1].split("|")
+        splitData = raw[pos + 1].split("|")
         for m in splitData:
             modifiers.remainingModifiers.append(m)
         modifiers.entryRequirement = parse32[int(raw[pos + 2])](raw)
@@ -166,6 +183,7 @@ def getReqExpDragon(raw):
 
 def getNumOrLess(raw):
     return "Teams of " + getLast(raw) + " or less allowed"
+
 
 type_flip = {
     '5': 'Dragon'

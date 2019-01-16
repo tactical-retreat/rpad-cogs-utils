@@ -34,30 +34,13 @@ class DungeonFloor(pad_util.JsonDictEncodable):
         # These need to be parsed depending on flags
         self.other_modifier = raw7_map[int(raw[7])]
 
-        possibleDrops = {}
-
-        # This next loop runs through the elements from raw[8] until it hits a 0. The 0 indicates the end of the list
-        # of drops for the floor, the following segments are the dungeon modifiers
-        pos = 8
-
-        while (int(raw[pos]) is not 0):
-            rawVal = int(raw[pos])
-            if rawVal > 10000:
-                val = rawVal - 10000
-                possibleDrops[val] = "rare"
-                pos += 1
-            else:
-                possibleDrops[rawVal] = "normal"
-                pos += 1
-        pos += 1
-
         try:
-            modifiers = getModifiers(raw, pos)
+            modifiers = getModifiers(raw)
         except Exception as e:
             print("Error:", e, "on parse of value", int(raw[pos]))
             modifiers = Modifier()
 
-        self.possible_drops = possibleDrops
+        self.possible_drops = modifiers.possibleDrops
         self.entry_requirement = modifiers.entryRequirement
         self.required_dungeon = modifiers.requiredDungeon
         self.remaining_modifiers = modifiers.remainingModifiers
@@ -68,6 +51,8 @@ class DungeonFloor(pad_util.JsonDictEncodable):
         self.fixed_team = modifiers.fixedTeam
         self.remaining_modifiers = modifiers.remainingModifiers
         self.test_score = modifiers.score
+
+        pos = modifiers.pos
 
         # for debugging just in case otherwise we can negate
         self.original_fields = raw[pos:]
