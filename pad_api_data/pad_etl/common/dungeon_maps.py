@@ -37,3 +37,32 @@ raw7_map = {
     1792: 'Awoken Skills Invalid',
     2048: 'Assists Invalid'
 }
+
+
+btypeChart = {
+    2: 'Balanced',
+    4: 'Physical',
+    8: 'Healer',
+    12: 'Physical & Healer',
+    16: 'Dragon',
+    20: 'Physical & Dragon Enhanced',
+    32: 'God',
+    34: 'Balanced & God',
+    40: 'Healer & God',
+    64: 'Attacker',
+    68: 'Physical & Attacker',
+    128: 'Devil',
+    132: 'Physical & Devil',
+    192: 'Attacker & Devil Enhanced',
+    256: 'Machine Enhanced',
+    320: 'Attacker & Machine'
+}
+
+battrChart = {
+    1: 'Fire',
+    2: 'Water',
+    4: 'Wood',
+    8: 'Light',
+    16: 'Dark',
+
+}
