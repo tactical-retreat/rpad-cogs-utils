@@ -363,8 +363,3 @@ def update_sub_dungeon(sub_dungeon: dbdungeon.SubDungeon,
             monster.comment_us = slot.comment
 
             monster.tstamp = int(time.time()) * 1000
-
-    # Not supported for now
-    # sub_dungeon.resolved_sub_dungeon_score = None
-    # sub_dungeon.resolved_sub_dungeon_reward = None
-    # sub_dungeon.resolved_sub_dungeon_point = None
