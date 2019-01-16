@@ -2,7 +2,7 @@ from dungeon_maps import btypeChart, battrChart
 
 class Modifier:
     def __init__(self):
-        self.requiredDungeon = 0
+        self.requiredDungeon = None
         self.remainingModifiers = []
         self.entryRequirement = None
         self.modifiers = {}
@@ -35,7 +35,7 @@ def getModifiers(raw, pos):
         return modifiers
 
     elif val == 32:
-        modifiers.entryRequirement = parse32[int(raw[pos + 1])](raw)
+        modifiers.modifiers['max_team_size'] = parse32[int(raw[pos + 1])](raw)
         return modifiers
 
     elif val == 33:
@@ -67,7 +67,7 @@ def getModifiers(raw, pos):
 
                 full_record = len(details) > 1
 
-                modifiers.fixed_team[cardID] = {
+                modifiers.fixedTeam[cardID] = {
                     'monster_id': details[0],
                     'hp_plus': details[1] if full_record else 0,
                     'atk_plus': details[2] if full_record else 0,
@@ -75,7 +75,6 @@ def getModifiers(raw, pos):
                     'awakening_count': details[4] if full_record else 0,
                     'skill_level': details[5] if full_record else 0,
                 }
-                modifiers.fixedTeam.append(cardID)
             elif 'btype' in m:
                 splitBtype = m.split(';')
                 val = int(splitBtype[0].split(':')[-1])
@@ -99,6 +98,11 @@ def getModifiers(raw, pos):
                     modifiers.modifiers['rcv'] = int(mods[2]) / 10000
                 except Exception as e:
                     print(e, "for value", val, "btype split data:", btype, "Dungeon:", raw[1])
+            elif 'hpfix' in m:
+                val = m.split(':')[-1]
+                modifiers.modifiers['fixed_hp'] = int(val)
+            elif 'ndf' in m:
+                modifiers.messages.append("No Skyfall Combos")
             else:
                 modifiers.remainingModifiers.append(m)
         return modifiers
@@ -150,7 +154,7 @@ def getReqExpDragon(raw):
 
 
 def getNumOrLess(raw):
-    return "Teams of " + getLast(raw) + " or less allowed"
+    return getLast(raw)
 
 type_flip = {
     '5': 'Dragon'
