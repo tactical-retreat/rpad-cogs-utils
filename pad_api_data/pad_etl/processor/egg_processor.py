@@ -69,12 +69,17 @@ class EggProcessor(object):
 
         rate_to_monsters = defaultdict(set)
         for monster_id, rate in egg_json['contents'].items():
-            rate_to_monsters[fmt_pct(rate)].add(monster_id)
+            rate_to_monsters[rate].add(monster_id)
 
         for row_idx, rate in enumerate(sorted(rate_to_monsters.keys()), 1):
-            rate_row = create_egg_title(egg_json, egg.EggTitleType.NAME, rate)
+            monsters_list = rate_to_monsters[rate]
+            if rate:
+                row_title = '{} Each\n{} Total'.format(fmt_pct(rate), fmt_pct(rate*len(monsters_list)))
+            else:
+                row_title = 'Unknown Rate'
+            rate_row = create_egg_title(egg_json, egg.EggTitleType.NAME, row_title)
             rate_row.order_idx = row_idx
-            for monster_idx, monster_id in enumerate(sorted(rate_to_monsters[rate])):
+            for monster_idx, monster_id in enumerate(sorted(monsters_list)):
                 rate_row.resolved_egg_monsters.append(
                     egg.EggMonster(monster_no=int(monster_id), order_idx=monster_idx))
 
