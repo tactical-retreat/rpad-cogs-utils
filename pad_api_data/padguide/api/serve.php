@@ -31,7 +31,11 @@
 		if (array_key_exists("plain", $_GET)) {
 			$cmd = $cmd . " --plain";
 		}
-		
+
+		if (array_key_exists('timelimit', $args)) {
+			$cmd = $cmd . " --timelimit";
+        }
+
 		passthru($cmd, $err);
 	}
 	

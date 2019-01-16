@@ -1,9 +1,9 @@
 import argparse
 import json
-import os
+import time
 
 from padguide.encoding import encode, decode
-from padguide.extract_utils import dump_table, fix_table_name
+from padguide.extract_utils import dump_table
 import pymysql
 
 
@@ -22,6 +22,9 @@ def parse_args():
 
     inputGroup.add_argument("--map_key", help="Return key/value pair from table")
     inputGroup.add_argument("--map_value", help="Return key/value pair from table")
+
+    inputGroup.add_argument("--timelimit", default=False, action='store_true',
+                            help="Limits the timestamp field to 1m")
 
     return parser.parse_args()
 
@@ -53,7 +56,7 @@ def map_table(db_table, cursor, map_key, map_value):
     return result
 
 
-def load_from_db(db_config, db_table, data_arg, map_key=None, map_value=None):
+def load_from_db(db_config, db_table, data_arg, map_key=None, map_value=None, limit_tstamp=False):
     connection = pymysql.connect(host=db_config['host'],
                                  user=db_config['user'],
                                  password=db_config['password'],
@@ -64,7 +67,16 @@ def load_from_db(db_config, db_table, data_arg, map_key=None, map_value=None):
     sql = 'SELECT * FROM {}'.format(db_table)
     if data_arg:
         tstamp = extract_tstamp(data_arg)
+        if limit_tstamp:
+            tstamp = int(tstamp)
+            m_ago = int((time.time() - 32 * 24 * 60 * 60) * 1000)
+            tstamp = max(m_ago, tstamp)
+
         sql += ' WHERE tstamp >= {}'.format(tstamp)
+
+        if limit_tstamp and db_table.lower() == 'schedule_list':
+            sql += ' AND close_timestamp > UNIX_TIMESTAMP()'
+
         sql += ' ORDER BY tstamp ASC'
 
     with connection.cursor() as cursor:
@@ -85,7 +97,8 @@ def main(args):
     elif args.db_config and args.db_table:
         with open(args.db_config) as f:
             db_config = json.load(f)
-        data = load_from_db(db_config, args.db_table, args.data_arg, args.map_key, args.map_value)
+        data = load_from_db(db_config, args.db_table, args.data_arg,
+                            args.map_key, args.map_value, args.timelimit)
     else:
         raise RuntimeError('Incorrect arguments')
 

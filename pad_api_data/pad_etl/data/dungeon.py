@@ -23,19 +23,17 @@ class DungeonFloor(pad_util.JsonDictEncodable):
     def __init__(self, raw: List[Any]):
         self.floor_number = int(raw[0])
         self.raw_name = raw[1]
-        self.waves = raw[2]
+        self.clean_name = pad_util.strip_colors(self.raw_name)
+        self.waves = int(raw[2])
         self.rflags1 = raw[3]
         self.stamina = raw[4]
         self.bgm1 = raw[5]
         self.bgm2 = raw[6]
-        self.rflags2 = raw[7]
-        self.flags = raw[8]
+        self.rflags2 = int(raw[7])
         # These need to be parsed depending on flags
         self.otherModifier = raw7_map[int(raw[7])]
 
         possibleDrops = {}
-
-
 
         # This next loop runs through the elements from raw[8] until it hits a 0. The 0 indicates the end of the list
         # of drops for the floor, the following segments are the dungeon modifiers
@@ -65,9 +63,85 @@ class DungeonFloor(pad_util.JsonDictEncodable):
 
         self.entryRequirement = modifiers.entryRequirement
         self.requiredDungeon = modifiers.requiredDungeon
+
         self.modifiers = modifiers.modifiers
 
-        self.remaining_fields = raw[9:]
+        self.flags = int(raw[pos])
+        self.remaining_fields = raw[pos+1:]
+
+        # Modifiers parsing doesn't seem to always work
+        # Hacked up version for dungeon modifiers, needed for
+        # enemy parsing.
+        self.modifiers_clean = {
+            'hp': 1.0,
+            'atk': 1.0,
+            'def': 1.0,
+        }
+
+        for field in self.remaining_fields:
+            if 'hp:' in field or 'at:' in field or 'df:' in field:
+                for mod in field.split('|'):
+                    if mod.startswith('hp:'):
+                        self.modifiers_clean['hp'] = float(mod[3:]) / 10000
+                    elif mod.startswith('at:'):
+                        self.modifiers_clean['atk'] = float(mod[3:]) / 10000
+                    elif mod.startswith('df:'):
+                        self.modifiers_clean['def'] = float(mod[3:]) / 10000
+                break
+
+
+        # Modifiers parsing also seems to skip fixed teams sometimes.
+        # Hacked up version for just that here.
+        self.fixed_team = {}
+
+        for field in self.remaining_fields:
+            if not 'fc1' in field:
+                continue
+            for sub_field in field.split('|'):
+                if not sub_field.startswith('fc'):
+                    continue
+                idx = int(sub_field[2])
+                contents = sub_field[4:]
+                details = contents.split(';')
+                full_record = len(details) > 1
+                self.fixed_team[idx] = {
+                    'monster_id': details[0],
+                    'hp_plus': details[1] if full_record else 0,
+                    'atk_plus': details[2] if full_record else 0,
+                    'rcv_plus': details[3] if full_record else 0,
+                    'awakening_count': details[4] if full_record else 0,
+                    'skill_level': details[5] if full_record else 0,
+                }
+
+        # This code imported from Rikuu, need to clean it up and merge
+        # with the other modifiers parsing code. For now just importing
+        # the score parsing, needed for dungeon loading.
+        self.score = None
+        i = 0
+
+        if ((self.flags & 0x1) != 0):
+            i += 2
+            #self.requirement = {
+            #  dungeonId: Number(self.remaining_fields[i++]),
+            #  floorId: Number(self.remaining_fields[i++])
+            #};
+        if ((self.flags & 0x4) != 0):
+            i += 1
+            #self.beginTime = fromPADTime(self.remaining_fields[i++]);
+        if ((self.flags & 0x8) != 0):
+            self.score = int(self.remaining_fields[i]);
+            i += 1
+        if ((self.flags & 0x10) != 0):
+            i += 1
+            #self.minRank = Number(self.remaining_fields[i++]);
+        if ((self.flags & 0x40) != 0):
+            i += 1
+            #self.properties = self.remaining_fields[i++].split('|');
+
+        #self.conditions = {
+        #  type: Number(raw[i++]),
+        #  values: raw.slice(i).map(Number)
+        #};
 
 
 prefix_to_dungeontype = {

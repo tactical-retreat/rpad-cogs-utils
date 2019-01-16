@@ -1,11 +1,9 @@
 import argparse
-import datetime
 import json
-import os
 import shutil
 
 from pad_etl.processor import db_util
-from padguide.extract_utils import fix_table_name, fix_row
+from padguide.extract_utils import fix_row
 import pymysql
 from padguide import encoding
 
@@ -32,6 +30,8 @@ ENCRYPTED_COLUMNS = [
     'SELL_PRICE', 'FODDER_EXP',
     'TS_NAME_JP', 'TS_NAME_US', 'TS_NAME_KR',
     'TS_DESC_JP', 'TS_DESC_US', 'TS_DESC_KR',
+    'COMMENT_JP', 'COMMENT_US', 'COMMENT_KR',
+    'HISTORY_JP', 'HISTORY_US', 'HISTORY_KR',
 ]
 
 
@@ -107,14 +107,6 @@ def do_main(args):
 
     sqlite_conn.close()
     mysql_conn.close()
-
-
-def write_table_data(result_json, table_name, output_dir):
-    reformatted_tn = fix_table_name(table_name)
-    output_file = os.path.join(output_dir, '{}.json'.format(reformatted_tn))
-
-    with open(output_file, 'w') as f:
-        json.dump(result_json, f, sort_keys=True, indent=4)
 
 
 if __name__ == '__main__':

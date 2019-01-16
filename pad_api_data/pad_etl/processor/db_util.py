@@ -3,27 +3,39 @@ import decimal
 import logging
 
 import pymysql
+import random
 
 
 logger = logging.getLogger('database')
 logger.setLevel(logging.ERROR)
 
-
+# This stuff should move to sql_item probably
 def object_to_sql_params(obj):
     d = obj if type(obj) == dict else obj.__dict__
+    # Defensive copy since we're updating this dict
+    d = dict(d)
+    d = process_col_mappings(type(obj), d, reverse=True)
     new_d = {}
     for k, v in d.items():
-        if v is None:
-            new_d[k] = 'NULL'
-        elif type(v) == str:
-            clean_v = v.replace("'", r"''")
-            new_d[k] = "'{}'".format(clean_v)
-        elif type(v) in (int, float, decimal.Decimal):
-            new_d[k] = '{}'.format(v)
-        elif type(v) in [datetime, date]:
-            new_d[k] = "'{}'".format(v.isoformat())
+        new_val = value_to_sql_param(v)
+        if new_val is not None:
+            new_d[k] = new_val
     return new_d
 
+def value_to_sql_param(v):
+    if v is None:
+        return 'NULL'
+    elif type(v) == str:
+        clean_v = v.replace("'", r"''")
+        return "'{}'".format(clean_v)
+    elif type(v) in (int, float, decimal.Decimal):
+        return '{}'.format(v)
+    elif type(v) in [datetime, date]:
+        return "'{}'".format(v.isoformat())
+    elif type(v) in [bool]:
+        return str(v)
+    else:
+        return None
 
 def _col_compare(col):
     return col + ' = ' + _col_value_ref(col)
@@ -46,6 +58,18 @@ def generate_insert_sql(table_name, cols, item):
     sql += ' (' + ', '.join(map(_col_name_ref, cols)) + ')'
     sql += ' VALUES (' + ', '.join(map(_col_value_ref, cols)) + ')'
     return sql.format(**object_to_sql_params(item))
+
+
+def process_col_mappings(obj_type, d, reverse=False):
+    if hasattr(obj_type, 'COL_MAPPINGS'):
+        mappings = obj_type.COL_MAPPINGS
+        if reverse:
+            mappings = {v: k for k, v in mappings.items()}
+
+        for k, v in mappings.items():
+            d[v] = d[k]
+            d.pop(k)
+    return d
 
 
 class DbWrapper(object):
@@ -110,6 +134,22 @@ class DbWrapper(object):
                 raise ValueError('too many columns in result:', sql)
             return op(list(row.values())[0])
 
+    def load_single_object(self, obj_type, key_val):
+        sql = 'SELECT * FROM {} WHERE {}'.format(
+            _tbl_name_ref(obj_type.TABLE), 
+            _col_compare(obj_type.KEY_COL))
+        sql = sql.format(**{obj_type.KEY_COL: key_val})
+        data = self.get_single_or_no_row(sql)
+        return obj_type(**process_col_mappings(obj_type, data)) if data else None
+
+    def load_multiple_objects(self, obj_type, key_val):
+        sql = 'SELECT * FROM {} WHERE {}'.format(
+            _tbl_name_ref(obj_type.TABLE), 
+            _col_compare(obj_type.LIST_COL))
+        sql = sql.format(**{obj_type.LIST_COL: key_val})
+        data = self.fetch_data(sql)
+        return [obj_type(**process_col_mappings(obj_type, d)) for d in data]
+
     def check_existing(self, sql):
         with self.connection.cursor() as cursor:
             num_rows = self.execute(cursor, sql)
@@ -135,9 +175,10 @@ class DbWrapper(object):
         with self.connection.cursor() as cursor:
             if self.dry_run:
                 logger.warn('not inserting item due to dry run')
-                return
+                return random.randrange(-99999, -1)
             self.execute(cursor, sql)
             data = list(cursor.fetchall())
             num_rows = len(data)
             if num_rows > 0:
                 raise ValueError('got too many results for insert:', num_rows, sql)
+            return cursor.lastrowid

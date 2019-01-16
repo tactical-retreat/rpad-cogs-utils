@@ -8,6 +8,7 @@ each other to get the full list.
 
 import json
 import os
+import time
 from typing import Dict, List, Any
 
 from ..common import pad_util
@@ -39,13 +40,13 @@ class Bonus(pad_util.JsonDictEncodable):
         6: {'name': 'dungeon'},
 
         # PEM text.
-        8: {'name': 'PEM Event', },
+        8: {'name': 'pem_event', },
 
         # REM text.
-        9: {'name': 'REM Event', },
+        9: {'name': 'rem_event', },
 
         # Current PEM pal point cost.
-        10: {'name': 'PEM Cost', 'mod_fn': int},
+        10: {'name': 'pem_cost', 'mod_fn': int},
 
         # Feed XP modifier.
         11: {'name': 'Feed Exp Bonus Chance', 'mod_fn': ghmult_plain},
@@ -74,16 +75,33 @@ class Bonus(pad_util.JsonDictEncodable):
         # metadata?
         23: {'name': 'meta?', },
 
+        # Gift dungeon with special text?
+        # e.g. Mysterious Visitors dungeon with [+297] will be added to + Points message
+        # Has a huge timestamp range, so reward probably
+        24: {'name': 'gift_dungeon_with_reward', },
+
         # Seems to contain random text in the comment
         25: {'name': 'dungeon_special_event'},
 
         # Limited Time Dungeon arrives! (on multiplayer mode button)
         29: {'name': 'multiplayer_announcement'},
 
+        # Multiplayer dungeon announcement?
+        # TAMADRA Invades in Multiplayer Evo Rush!?
+        31: {'name': 'multiplayer_dungeon_text'},
+
+        # Tournament dungeon announcement?
+        # Rank into the top 30% to get a Dragonbound, Rikuu
+        32: {'name': 'tournament_text'},
+
         # Daily XP dragon
         36: {'name': 'daily_dragons'},
 
         37: {'name': 'monthly_quest_dungeon'},
+
+        # Reward: Jewel of Creation
+        # Latent TAMADRA (Skill Delay Resist.) invades guaranteed!
+        39: {'name': 'dungeon_floor_text'},
 
         # https://bit.ly/2zWWGPd - #Q#6th Year Anniversary Quest 1
         43: {'name': 'monthly_quest_info'},
@@ -91,15 +109,17 @@ class Bonus(pad_util.JsonDictEncodable):
 
     keys = 'sebiadmf'
 
-    def __init__(self, raw: Dict[str, Any]):
+    def __init__(self, raw: Dict[str, Any], server: str):
         if not set(raw) <= set(Bonus.keys):
             raise ValueError('Unexpected keys: ' + str(set(raw) - set(Bonus.keys)))
 
         # Start time as gungho time string
         self.start_time_str = str(raw['s'])
+        self.start_timestamp = pad_util.gh_to_timestamp(self.start_time_str, server)
 
         # End time as gungho time string
         self.end_time_str = str(raw['e'])
+        self.end_timestamp = pad_util.gh_to_timestamp(self.end_time_str, server)
 
         # Optional DungeonId
         self.dungeon_id = None  # type: DungeonId
@@ -139,6 +159,10 @@ class Bonus(pad_util.JsonDictEncodable):
         self.bonus_name = bonus_info['name']
         self.bonus_id = bonus_id
 
+    def is_open(self):
+        current_time = int(time.time())
+        return self.start_timestamp < current_time and current_time < self.end_timestamp
+
     def __str__(self):
         return str(self.__dict__)
 
@@ -150,15 +174,23 @@ class Bonus(pad_util.JsonDictEncodable):
 
 
 def load_bonus_data(data_dir: str=None, data_group: str=None,
-                    bonus_json_file: str=None) -> List[Bonus]:
+                    json_file: str=None, server: str=None) -> List[Bonus]:
     """Load Bonus objects from the PAD json file."""
-    if bonus_json_file is None:
-        bonus_json_file = os.path.join(data_dir, FILE_NAME.format(data_group))
+    if json_file is None:
+        json_file = os.path.join(data_dir, FILE_NAME.format(data_group))
 
-    with open(bonus_json_file) as f:
-        bonus_json = json.load(f)
+    if not server:
+        if '/na/' in json_file or '\\na\\' in json_file:
+            server = 'na'
+        elif '/jp/' in json_file or '\\jp\\' in json_file:
+            server = 'jp'
+        else:
+            raise Exception('Server not supplied and not automatically detected from path')
 
-    if bonus_json['v'] > 2:
-        print('Warning! Version of bonus file is not tested: {}'.format(bonus_json['v']))
+    with open(json_file) as f:
+        data_json = json.load(f)
 
-    return [Bonus(item) for item in bonus_json['bonuses']]
+    if data_json['v'] > 2:
+        print('Warning! Version of bonus file is not tested: {}'.format(data_json['v']))
+
+    return [Bonus(item, server) for item in data_json['bonuses']]

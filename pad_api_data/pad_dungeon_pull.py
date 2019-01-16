@@ -23,7 +23,7 @@ def parse_args():
 
     inputGroup.add_argument("--dungeon_id", required=True, help="Dungeon ID")
     inputGroup.add_argument("--floor_id", required=True, help="Floor ID")
-    inputGroup.add_argument("--loop_count", default=100, help="Number of entry attempts")
+    inputGroup.add_argument("--loop_count", type=int, default=100, help="Number of entry attempts")
 
     outputGroup = parser.add_argument_group("Output")
     outputGroup.add_argument("--db_config", required=True, help="JSON database info")
@@ -60,7 +60,7 @@ def pull_data(args):
 
     friend_card = api_client.get_any_card_except_in_cur_deck()
     dungeon_id = args.dungeon_id
-    dungeon_floor_id = args.floor_id
+    floor_id = args.floor_id
     loop_count = args.loop_count
     pull_id = int(time.time())
 
@@ -72,16 +72,17 @@ def pull_data(args):
     db_wrapper = DbWrapper(dry_run)
     db_wrapper.connect(db_config)
 
-    print('entering dungeon', dungeon_id, 'floor', dungeon_floor_id, loop_count, 'times')
+    print('entering dungeon', dungeon_id, 'floor', floor_id, loop_count, 'times')
     for entry_id in range(loop_count):
         print('entering', entry_id)
-        enter = api_client.enter_dungeon(dungeon_id, dungeon_floor_id, self_card=friend_card)
+        entry_id = int(time.time())
+        enter = api_client.enter_dungeon(dungeon_id, floor_id, self_card=friend_card)
         wave_response = wave_data.parse_wave_response(enter['e'])
 
-        for floor_idx, floor in enumerate(wave_response.floors):
+        for stage_idx, floor in enumerate(wave_response.floors):
             for monster_idx, monster in enumerate(floor.monsters):
-                wave_item = WaveItem(pull_id, entry_id, server, dungeon_id,
-                                     dungeon_floor_id, floor_idx, monster_idx, monster)
+                wave_item = WaveItem(pull_id=pull_id, entry_id=entry_id, server=server, dungeon_id=dungeon_id,
+                                     floor_id=floor_id, stage=stage_idx, slot=monster_idx, monster=monster)
                 db_wrapper.insert_item(wave_item.insert_sql())
 
         time.sleep(2)

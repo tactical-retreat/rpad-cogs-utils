@@ -64,8 +64,13 @@ class MonsterSkill(pad_util.JsonDictEncodable):
             if len(self.other_fields) == 3:
                 self.skill_part_3_id = self.other_fields[2]
 
-        multipliers = pad_util.parse_skill_multiplier(
-            int(raw[2]), self.other_fields, len(self.other_fields))
+        try:
+            multipliers = pad_util.parse_skill_multiplier(
+                int(raw[2]), self.other_fields, len(self.other_fields))
+        except Exception as e:
+            print('skill parsing failed for', raw[2], 'with exception:', e)
+            multipliers = pad_util.Multiplier()
+
         self.hp_mult = multipliers.hp
         self.atk_mult = multipliers.atk
         self.rcv_mult = multipliers.rcv
