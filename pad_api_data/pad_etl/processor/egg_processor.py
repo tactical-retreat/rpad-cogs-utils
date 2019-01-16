@@ -76,7 +76,7 @@ class EggProcessor(object):
             rate_row.order_idx = row_idx
             for monster_idx, monster_id in enumerate(sorted(rate_to_monsters[rate])):
                 rate_row.resolved_egg_monsters.append(
-                    egg.EggMonster(monster_no=monster_id, order_idx=monster_idx))
+                    egg.EggMonster(monster_no=int(monster_id), order_idx=monster_idx))
 
             results.append(rate_row)
 
