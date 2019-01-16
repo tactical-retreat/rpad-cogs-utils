@@ -37,7 +37,7 @@ class DungeonFloor(pad_util.JsonDictEncodable):
         try:
             modifiers = getModifiers(raw)
         except Exception as e:
-            print("Error:", e, "on parse of value", int(raw[pos]))
+            print("Error:", e, "on parse of values", int(raw[8:]))
             modifiers = Modifier()
 
         self.possible_drops = modifiers.possibleDrops
