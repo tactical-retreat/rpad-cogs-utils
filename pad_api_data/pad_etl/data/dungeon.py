@@ -56,7 +56,6 @@ class DungeonFloor(pad_util.JsonDictEncodable):
             print("Error:", e, "on parse of value", int(raw[pos]))
             modifiers = Modifier()
 
-
         self.possible_drops = possibleDrops
         self.entry_requirement = modifiers.entryRequirement
         self.required_dungeon = modifiers.requiredDungeon
@@ -67,14 +66,13 @@ class DungeonFloor(pad_util.JsonDictEncodable):
         self.messages = modifiers.messages
         self.fixed_team = modifiers.fixedTeam
         self.remaining_modifiers = modifiers.remainingModifiers
-        self.score = modifiers.score
-
+        self.test_score = modifiers.score
 
         # for debugging just in case otherwise we can negate
         self.original_fields = raw[pos:]
 
-        # self.flags = int(raw[pos])
-        # self.remaining_fields = raw[pos+1:]
+        self.flags = int(raw[pos])
+        self.remaining_fields = raw[pos + 1:]
         #
         # # Modifiers parsing doesn't seem to always work
         # # Hacked up version for dungeon modifiers, needed for
@@ -121,36 +119,35 @@ class DungeonFloor(pad_util.JsonDictEncodable):
         #         }
         #
 
-
         # This code imported from Rikuu, need to clean it up and merge
         # with the other modifiers parsing code. For now just importing
         # the score parsing, needed for dungeon loading.
-        self.other_score = None
+        self.score = None
         i = 0
 
         if ((self.flags & 0x1) != 0):
             i += 2
-            #self.requirement = {
+            # self.requirement = {
             #  dungeonId: Number(self.remaining_fields[i++]),
             #  floorId: Number(self.remaining_fields[i++])
-            #};
+            # };
         if ((self.flags & 0x4) != 0):
             i += 1
-            #self.beginTime = fromPADTime(self.remaining_fields[i++]);
+            # self.beginTime = fromPADTime(self.remaining_fields[i++]);
         if ((self.flags & 0x8) != 0):
-            self.other_score = int(self.remaining_fields[i]);
+            self.score = int(self.remaining_fields[i]);
             i += 1
         if ((self.flags & 0x10) != 0):
             i += 1
-            #self.minRank = Number(self.remaining_fields[i++]);
+            # self.minRank = Number(self.remaining_fields[i++]);
         if ((self.flags & 0x40) != 0):
             i += 1
-            #self.properties = self.remaining_fields[i++].split('|');
+            # self.properties = self.remaining_fields[i++].split('|');
 
-        #self.conditions = {
+        # self.conditions = {
         #  type: Number(raw[i++]),
         #  values: raw.slice(i).map(Number)
-        #};
+        # };
 
 
 prefix_to_dungeontype = {
