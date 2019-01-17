@@ -152,7 +152,7 @@ class SqlItem(object):
         if update_cols is None:
             return False
 
-        return key_and_cols_compare(self, include_key=include_key)
+        return key_and_cols_compare(self, cols=update_cols, include_key=include_key)
 
     # TODO: move to dbutil
     def update_sql(self):

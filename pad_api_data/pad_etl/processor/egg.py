@@ -27,6 +27,9 @@ class EggMonster(SimpleSqlItem):
         self.tet_seq = tet_seq  # FK to EggTitle (injected)
         self.tstamp = tstamp or (int(time.time()) * 1000)
 
+    def uses_alternate_key_lookup(self):
+        return True
+
     def exists_sql(self):
         return sql_item.key_and_cols_compare(
             self, cols=['tet_seq', 'order_idx'], include_key=False)
@@ -44,9 +47,9 @@ class EggTitleCategory(Enum):
 
     Shorthand representation of table, egg_title_category column tec_seq.
     """
-    GODFEST = 0
-    RARE = 1
-    PAL = 1
+    GODFEST = 1
+    RARE = 2
+    PAL = 3
 
 
 class EggTitle(SimpleSqlItem):
@@ -138,6 +141,8 @@ class EggTitleName(SimpleSqlItem):
             self, cols=['tet_seq', 'language'], include_key=False)
         # TODO: add unique key to enforce
 
+    def uses_alternate_key_lookup(self):
+        return True
 
 class EggLoader(object):
     def __init__(self, db_wrapper: db_util.DbWrapper):
