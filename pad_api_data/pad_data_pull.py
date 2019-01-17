@@ -77,20 +77,13 @@ bonus_data = bonus.load_bonus_data(data_dir=output_dir,
                                    server=args.server)
 
 # Egg machine extraction
-extra_egg_machines = extra_egg_machine.load_data(
+egg_machines = extra_egg_machine.load_data(
     data_json=player_data.egg_data,
     server=args.server)
 
-# Disabled for now; The value for gtype doesn't seem to be the 'type' value from the json.
-# Maybe with more examples I can figure this out. So far I have:
-# na request= gtype 62 grow 223 | data= type 52 ptp 0 pri 5 | sao
-# jp request= gtype 62 grow 379 | data= type 33 ptp 0 pri 5 | ny
-# jp request= gtype 52 grow 380 | data= type 54 ptp 0 pri 6 | fate
-#open_egg_machines = [x for x in extra_egg_machines if x.is_open()]
-open_egg_machines = []
-
 
 def extract_event(machine_code, machine_name):
+    # TODO: Move out of here
     m_events = [x for x in bonus_data if x.bonus_name == machine_code and x.is_open()]
     # Probably should only be one of these
     em_events = []
@@ -102,16 +95,22 @@ def extract_event(machine_code, machine_name):
             'end': event.end_time_str,
             'row': event.egg_machine_id,
             'type': 1 if event.bonus_name == 'pem_event' else 2,
+            # pri can actually be found in another event but it's probably safe to fix it.
             'pri': 500 if event.bonus_name == 'pem_event' else 5,
         })
 
-    return [extra_egg_machine.ExtraEggMachine(em, args.server) for em in em_events]
+    return [extra_egg_machine.ExtraEggMachine(em, args.server, em['type']) for em in em_events]
 
 
-open_egg_machines.extend(extract_event('rem_event', 'Rare Egg Machine'))
-open_egg_machines.extend(extract_event('pem_event', 'Pal Egg Machine'))
+egg_machines.extend(extract_event('rem_event', 'Rare Egg Machine'))
+egg_machines.extend(extract_event('pem_event', 'Pal Egg Machine'))
 
-for em in open_egg_machines:
+# TODO: Move out of here
+for em in egg_machines:
+    if not em.is_open():
+        # Can only pull rates when the machine is live.
+        continue
+
     grow = em.egg_machine_row
     gtype = em.egg_machine_type
     has_rate = em.name != 'Pal Egg Machine'
@@ -139,4 +138,4 @@ for em in open_egg_machines:
 
 output_file = os.path.join(output_dir, 'egg_machines.json')
 with open(output_file, 'w') as outfile:
-    json.dump(open_egg_machines, outfile, sort_keys=True, indent=4, default=lambda x: x.__dict__)
+    json.dump(egg_machines, outfile, sort_keys=True, indent=4, default=lambda x: x.__dict__)
