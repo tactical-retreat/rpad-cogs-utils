@@ -148,4 +148,5 @@ python3 ${EXEC_DIR}/json_merge.py \
 
 echo "Syncing"
 gsutil -m rsync -r -c /home/tactical0retreat/pad_data/ gs://mirubot/paddata/
+gsutil -m rsync -r -c /home/tactical0retreat/pad_data/ gs://mirubot-data/paddata/
 
