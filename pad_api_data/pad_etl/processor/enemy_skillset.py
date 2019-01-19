@@ -8,6 +8,7 @@ rnd = 'rnd'
 ATTRIBUTE_MAP = {
     -1: (0, 'Random'),
     None: (1, 'Fire'),
+    0: (1, 'Fire'),
     1: (2, 'Water'),
     2: (3, 'Wood'),
     3: (4, 'Light'),
@@ -43,6 +44,28 @@ def ref(skill):
 
 def es_type(skill):
     return skill['enemy_skill_info']['type']
+
+
+def attribute_bitmap(bits):
+    offset = 0
+    atts = []
+    while offset < bits.bit_length():
+        if (bits >> offset) & 1 == 1:
+            atts.append(ATTRIBUTE_MAP[offset])
+        offset += 1
+    return atts
+
+
+def bind_leader_bitmap(bits):
+    targets = []
+    if (bits >> 0) & 1 == 1:
+        targets.append('own leader')
+    if (bits >> 1) & 1 == 1:
+        targets.append('friend leader')
+    if len(targets) == 1:
+        return targets[0]
+    else:
+        return 'both leaders'
 
 
 # description
@@ -224,35 +247,45 @@ class ESBind(ESEffect):
         self.description = Describe.bind(self.min_turns, self.max_turns, target_count, target_type_description)
 
 
-class ESRandomBind(ESBind):
+class ESBindRandom(ESBind):
     def __init__(self, skill):
-        super(ESRandomBind, self).__init__(
+        super(ESBindRandom, self).__init__(
             skill,
             target_count=params(skill)[1],
             target_type_description='random cards')
 
 
-class ESAttributeBind(ESBind):
+class ESBindLeader(ESBind):
     def __init__(self, skill):
-        super(ESAttributeBind, self).__init__(
+        targets = bind_leader_bitmap(params(skill)[1])
+        super(ESBindLeader, self).__init__(
+            skill,
+            target_count=len(targets),
+            target_type_description=', '.join(targets)
+        )
+
+
+class ESBindAttribute(ESBind):
+    def __init__(self, skill):
+        super(ESBindAttribute, self).__init__(
             skill,
             target_count=None,
             target_type_description='{:s} cards'.format(ATTRIBUTE_MAP[params(skill)[1]][1]))
         self.target_attribute = ATTRIBUTE_MAP[params(skill)[1]][0]
 
 
-class ESTypingBind(ESBind):
+class ESBindTyping(ESBind):
     def __init__(self, skill):
-        super(ESTypingBind, self).__init__(
+        super(ESBindTyping, self).__init__(
             skill,
             target_count=None,
             target_type_description='{:s} cards'.format(TYPING_MAP[params(skill)[1]][1]))
         self.target_typing = TYPING_MAP[params(skill)[1]][0]
 
 
-class ESSkillBind(ESBind):
+class ESBindSkill(ESBind):
     def __init__(self, skill):
-        super(ESSkillBind, self).__init__(
+        super(ESBindSkill, self).__init__(
             skill,
             target_count=None,
             target_type_description='active skill')
@@ -284,6 +317,11 @@ class ESJammerChangeRandom(ESOrbChange):
         self.random_count = int(params(skill)[1])
         super(ESJammerChangeRandom, self).\
             __init__(skill, (0, 'Random {:d}'.format(self.random_count)), ATTRIBUTE_MAP[6])
+
+
+class ESPoisonChangeSingle(ESOrbChange):
+    def __init__(self, skill):
+        super(ESPoisonChangeSingle, self).__init__(skill, ATTRIBUTE_MAP[params(skill)[1]], ATTRIBUTE_MAP[7])
 
 
 class ESOrbChangeAttack(ESAttackSinglehit):
@@ -332,6 +370,17 @@ class ESRecover(ESEffect):
 class ESRecoverEnemy(ESRecover):
     def __init__(self,  skill):
         super(ESRecoverEnemy, self).__init__(skill, target='enemy')
+
+
+class ESRecoverEnemyAlly(ESRecover):
+    def __init__(self,  skill):
+        super(ESRecoverEnemyAlly, self).__init__(skill, target='enemy ally')
+        self.condition = 'When enemy ally is killed'
+
+
+class ESRecoverPlayer(ESRecover):
+    def __init__(self, skill):
+        super(ESRecoverPlayer, self).__init__(skill, target='player')
 
 
 class ESEnrage(ESEffect):
@@ -420,6 +469,14 @@ class ESGravity(ESEffect):
         self.percent = params(skill)[1]
         self.effect = 'gravity'
         self.description = Describe.gravity(self.percent)
+
+
+class ESAbsorbAttribute(ESEffect):
+    def __init__(self, skill):
+        super(ESAbsorbAttribute, self).__init__(skill)
+        self.min_turns = params(skill)[1]
+        self.max_turns = params(skill)[2]
+        self.attributes = attribute_bitmap(params(skill)[3])
 
 
 # Logic
@@ -583,9 +640,9 @@ LOGIC_MAP = {
 
 
 ACTION_MAP = {
-    1: ESRandomBind,
-    2: ESAttributeBind,
-    3: ESTypingBind,
+    1: ESBindRandom,
+    2: ESBindAttribute,
+    3: ESBindTyping,
     4: ESOrbChangeSingle,
     5: ESBlind,
     6: ESDispel,
@@ -594,7 +651,7 @@ ACTION_MAP = {
     # type 9 skills are unused, there's only 3 and they seem to buff defense
     12: ESJammerChangeSingle,
     13: ESJammerChangeRandom,
-    14: ESSkillBind,
+    14: ESBindSkill,
     15: ESAttackMultihit,
     16: ESInactivity,
     17: ESAttackUp,
@@ -606,7 +663,11 @@ ACTION_MAP = {
     46: ESChangeAttribute,
     47: ESAttackPreemptive,
     48: ESOrbChangeAttack,
-    50: ESGravity
+    50: ESGravity,
+    52: ESRecoverEnemy,
+    53: ESAbsorbAttribute,
+    54: ESBindLeader,
+    55: ESRecoverPlayer
 }
 
 

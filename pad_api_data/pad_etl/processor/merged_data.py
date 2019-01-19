@@ -39,7 +39,8 @@ class MergedEnemySkillset(pad_util.JsonDictEncodable):
         self.enemy_skill_id = enemy_skill_ref.enemy_skill_id
         self.enemy_skill_ref = {'ai': enemy_skill_ref.enemy_ai, 'rnd': enemy_skill_ref.enemy_rnd}
         self.enemy_skill_info = {'name': enemy_skill.name, 'type': enemy_skill.type, 'params': enemy_skill.params}
-        self.enemy_skill_set = enemy_skill_set
+        if enemy_skill_set:
+            self.enemy_skill_set = [{'name': es.name, 'type': es.type, 'params': es.params} for es in enemy_skill_set]
 
 class CrossServerCard(object):
     def __init__(self, monster_no: int, jp_card: MergedCard, na_card: MergedCard):
