@@ -147,6 +147,6 @@ python3 ${EXEC_DIR}/json_merge.py \
 # cp ${DATA_DIR}/padguide_db/Panda.sql.zip /var/www/html/padguide/data
 
 echo "Syncing"
-gsutil -m rsync -r -c /home/tactical0retreat/pad_data/ gs://mirubot/paddata/
+gsutil -m rsync -r -c /home/tactical0retreat/pad_large_data/ gs://mirubot/paddata/
 gsutil -m rsync -r -c /home/tactical0retreat/pad_data/ gs://mirubot-data/paddata/
 
