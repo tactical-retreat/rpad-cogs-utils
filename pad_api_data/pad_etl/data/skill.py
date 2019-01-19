@@ -54,9 +54,9 @@ class MonsterSkill(pad_util.JsonDictEncodable):
 
         # NEW FIELDS. The skills that a skill links to if it has multiple
         # clauses/conditions for activation
-        self.skill_part_1_id = None
-        self.skill_part_2_id = None
-        self.skill_part_3_id = None
+        self.skill_part_1_id = -1
+        self.skill_part_2_id = -1
+        self.skill_part_3_id = -1
 
         if self.skill_type == 116 or self.skill_type == 138:
             self.skill_part_1_id = self.other_fields[0]
