@@ -1263,6 +1263,60 @@ def hp_nuke_convert(arguments):
         return 'hp_nuke', c
     return f
 
+fixed_pos_convert_backups = {'row_pos_1': [],
+                             'row_pos_2': [],
+                             'row_pos_3': [],
+                             'row_pos_4': [],
+                             'row_pos_5': [],
+                             'attribute': 0,
+                             'skill_text': ''}
+
+def fixed_pos_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('fixed_pos',
+                                     arguments,
+                                     fixed_pos_convert_backups)(x)
+        ROW_INDEX = {
+            0: 'top row',
+            1: '2nd row from top',
+            2: '3rd row from bottom',
+            3: '2nd row from bottom',
+            4: 'bottom row',
+        }
+        COLUMN_INDEX = {
+            0: 'far left column',
+            1: '2nd column from left',
+            2: '3rd column from left',
+            3: '3rd column from right',
+            4: '2nd column from right',
+            5: 'far right column',
+        }
+        
+        board = [[],[],[],[],[]]
+        board[0]= c['row_pos_1']
+        board[1]= c['row_pos_2']
+        board[2]= c['row_pos_3']
+        board[3]= c['row_pos_4']
+        board[4]= c['row_pos_5']
+        orb_count = 0
+        row_pos = 0
+        col_pos = 0
+        shape = 'some shape'
+        
+        for x in board:
+            orb_count += len(x)
+
+        if orb_count == 5:
+            for x in range(1,len(board)-1): #Check for cross shape
+                if len(board[x]) == 3 and len(board[x-1]) == 1 and len(board[x+1]) == 1 :
+                    row_pos = x
+                    col_pos = board[x][1]
+                    shape = 'cross'
+        
+        c['skill_text'] += 'Create ' + shape + ' of ' + ATTRIBUTES[c['attribute']] + ' orbs with center at '  + ROW_INDEX[row_pos] + ' and ' +COLUMN_INDEX[col_pos]
+        return 'create_cross', c
+    return f
+
 # End of Active skill
 
 # Leader skill
@@ -2313,7 +2367,7 @@ SKILL_TRANSFORM = {
     170: attribute_match_convert({'attributes': (0, binary_con), 'minimum_attributes': (1, cc), 'minimum_atk_multiplier': (2, multi), 'minimum_damage_reduction': (3, multi)}),
     171: multi_attribute_match_convert({'attributes': (slice(0, 4), list_binary_con), 'minimum_match': (4, cc), 'minimum_atk_multiplier': (5, multi), 'minimum_damage_reduction': (6, multi)}),
     175: collab_bonus_convert({'collab_id': (0, cc), 'hp_multiplier': (3, multi2), 'atk_multiplier': (4, multi2), 'rcv_multiplier': (5, multi2)}),
-    176: convert('unexpected', {'skill_text': '', 'parameter': [1.0, 1.0, 1.0, 0.0]}),
+    176: fixed_pos_convert({'board'[0]: (0, binary_con) ,'row_pos_1': (0, binary_con), 'row_pos_2': (1, binary_con), 'row_pos_3': (2, binary_con), 'row_pos_4': (3, binary_con), 'row_pos_5': (4, binary_con), 'attribute':(5, cc)}),
     177: orb_remain_convert({'orb_count': (5, cc), 'atk_multiplier': (6, multi), 'bonus_atk_multiplier': (7, multi), 'skill_text': '[No skyfall]; '}),
     178: passive_stats_convert({'time': (0, cc), 'for_attr': (1, binary_con), 'for_type': (2, binary_con), 'hp_multiplier': (3, multi2), 'atk_multiplier': (4, multi2), 'rcv_multiplier': (5, multi2), 'skill_text': '[Fixed 4 second movetime]'}),
     182: mass_match_convert({'attributes': (0, binary_con), 'minimum_count': (1, cc), 'minimum_atk_multiplier': (2, multi), 'minimum_damage_reduction': (3, multi)}),
