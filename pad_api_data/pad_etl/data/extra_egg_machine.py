@@ -17,7 +17,7 @@ FILE_NAME = 'extra_egg_machines.json'
 class ExtraEggMachine(pad_util.JsonDictEncodable):
     """Egg machines extracted from the player data json."""
 
-    def __init__(self, raw: Dict[str, Any], server: str):
+    def __init__(self, raw: Dict[str, Any], server: str, gtype: int):
         self.name = str(raw['name'])
         self.server = server
         self.clean_name = pad_util.strip_colors(self.name)
@@ -37,8 +37,12 @@ class ExtraEggMachine(pad_util.JsonDictEncodable):
         # The egg machine ID used in the API call param grow
         self.egg_machine_row = int(raw['row'])
 
-        # Not sure exactly how this is used; doesn't seem to be gtype
-        self.egg_machine_type = int(raw['type'])
+        # The egg machine ID used in the API call param gtype
+        # Corresponds to the ordering of the item in egatya3
+        self.egg_machine_type = gtype
+
+        # Not sure exactly how this is used
+        self.alt_egg_machine_type = int(raw['type'])
 
         # Stone or pal point cost
         self.cost = int(raw['pri'])
@@ -83,9 +87,14 @@ def load_data(data_dir: str=None,
     server = server.lower()
 
     egg_machines = []
+    # gtype starts at 52 and goes up by 10 for every egg machine or slot.
+    gtype = 52
     for outer in data_json:
         if outer:
             for em in outer:
-                egg_machines.append(ExtraEggMachine(em, server))
-
+                egg_machines.append(ExtraEggMachine(em, server, gtype))
+                gtype += 10
+        else:
+            # Always increment this even if the slot is empty.
+            gtype += 10
     return egg_machines

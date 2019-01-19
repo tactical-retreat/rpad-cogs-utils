@@ -89,8 +89,6 @@ class Dungeon(SimpleSqlItem):
         self.comment_us = comment_us  # Unused
         self.dungeon_seq = dungeon_seq  # Primary Key
         self.dungeon_type = dungeon_type
-        self.dungeon_type_enum = SimpleDungeonType(
-            dungeon_type) if dungeon_type is not None else None
         self.icon_seq = icon_seq  # FK to Icon but seems not to be necessary
         self.name_jp = name_jp
         self.name_kr = name_kr or name_us

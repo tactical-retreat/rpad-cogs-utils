@@ -47,7 +47,7 @@ def create_egg_title(egg_json, title_type: egg.EggTitleType, title_value: str):
     et.title_type = title_type.value
 
     et.pad_machine_row = egg_json['egg_machine_row']
-    et.pad_machine_type = egg_json['egg_machine_type']
+    et.pad_machine_type = egg_json['alt_egg_machine_type']
 
     et.resolved_egg_title_names = create_all_egg_title_names(title_value)
 
@@ -55,7 +55,7 @@ def create_egg_title(egg_json, title_type: egg.EggTitleType, title_value: str):
 
 
 def fmt_pct(num):
-    return '{:.1%}'.format(num).rstrip('0%.') + '%'
+    return '{:.1%}'.format(num).rstrip('0%').rstrip('.') + '%'
 
 
 class EggProcessor(object):
@@ -65,7 +65,7 @@ class EggProcessor(object):
     def convert_from_json(self, egg_json):
         results = []
         results.append(create_egg_title(
-            egg_json, egg.EggTitleType.NAME_AND_DATE, egg_json['clean_comment']))
+            egg_json, egg.EggTitleType.NAME_AND_DATE, egg_json['clean_comment'] or egg_json['clean_name']))
 
         rate_to_monsters = defaultdict(set)
         for monster_id, rate in egg_json['contents'].items():
@@ -74,7 +74,8 @@ class EggProcessor(object):
         for row_idx, rate in enumerate(sorted(rate_to_monsters.keys()), 1):
             monsters_list = rate_to_monsters[rate]
             if rate:
-                row_title = '{} Each\n{} Total'.format(fmt_pct(rate), fmt_pct(rate*len(monsters_list)))
+                row_title = '{} Each\n{} Total'.format(
+                    fmt_pct(rate), fmt_pct(rate * len(monsters_list)))
             else:
                 row_title = 'Unknown Rate'
             rate_row = create_egg_title(egg_json, egg.EggTitleType.NAME, row_title)

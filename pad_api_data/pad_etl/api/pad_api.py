@@ -9,14 +9,13 @@ import random
 from typing import Callable
 import urllib
 
+import dungeon_encoding
 from enum import Enum
 from fake_useragent import UserAgent
 import keygen
 from pad_etl.common import pad_util
 from padtools.servers.server import Server
 import requests
-
-import dungeon_encoding
 
 from .player_data import PlayerDataResponse, RecommendedHelpersResponse, FriendEntry, FriendLeader, CardEntry
 

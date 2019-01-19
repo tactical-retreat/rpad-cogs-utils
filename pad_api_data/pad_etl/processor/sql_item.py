@@ -142,7 +142,7 @@ class SqlItem(object):
         If true, an insert is needed if the 'exists' sql fails, which will also be used to
         retrieve the primary key.
         """
-        return True
+        return False
 
     def exists_sql(self):
         return key_and_cols_compare(self)
