@@ -79,7 +79,7 @@ for file_name in os.listdir(raw_dir):
         print('skipping non-card file', file_name)
         continue
     in_file = os.path.join(raw_dir, file_name)
-    out_file = os.path.join(args.output_dir, '{}.wav'.format(voice_id_to_card_id[file_id]))
+    out_file = os.path.join(fixed_dir, '{}.wav'.format(voice_id_to_card_id[file_id]))
 
     cmd = 'sox -t ima -r 44100 -e ima-adpcm -v .5 {} {}'.format(in_file, out_file)
     print('running', cmd)
