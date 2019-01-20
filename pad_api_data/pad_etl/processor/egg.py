@@ -151,14 +151,14 @@ class EggLoader(object):
     def hide_outdated_machines(self):
         sql = """
             update egg_title_list 
-            set show_yn = 0 
+            set show_yn = 0, tstamp = UNIX_TIMESTAMP() * 1000
             where pad_machine_row is null or pad_machine_type is null
         """
         self.db_wrapper.insert_item(sql)
 
         sql = """
                 update egg_title_list 
-                set show_yn = 0 
+                set show_yn = 0, tstamp = UNIX_TIMESTAMP() * 1000 
                 where show_yn = 1
                 and end_date < now()
                 and pad_machine_row is not null
