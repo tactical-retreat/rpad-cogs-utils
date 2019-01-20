@@ -5,6 +5,8 @@ import re
 import sys
 import urllib.request
 
+from collections import defaultdict
+
 import padtools
 
 parser = argparse.ArgumentParser(
@@ -71,7 +73,12 @@ data_file_path = os.path.join(args.data_dir, '{}_raw_cards.json'.format(server))
 with open(data_file_path) as f:
     card_data = json.load(f)
 
-voice_id_to_card_id = {c['voice_id']: c['card_id'] for c in card_data}
+
+voice_id_to_card_id = defaultdict(set)
+for c in card_data:
+    voice_id = c['voice_id']
+    if voice_id:
+        voice_id_to_card_id[voice_id].add(c['card_id'])
 
 for file_name in os.listdir(raw_dir):
     file_id = int(file_name.lstrip('padv0').rstrip('.wav'))
@@ -79,10 +86,10 @@ for file_name in os.listdir(raw_dir):
         print('skipping non-card file', file_name)
         continue
     in_file = os.path.join(raw_dir, file_name)
-    out_file = os.path.join(fixed_dir, '{}.wav'.format(voice_id_to_card_id[file_id]))
-
-    cmd = 'sox -t ima -r 44100 -e ima-adpcm -v .5 {} {}'.format(in_file, out_file)
-    print('running', cmd)
-    os.system(cmd)
+    for card_id in voice_id_to_card_id[file_id]:
+        out_file = os.path.join(fixed_dir, '{}.wav'.format(card_id))
+        cmd = 'sox -t ima -r 44100 -e ima-adpcm -v .5 {} {}'.format(in_file, out_file)
+        print('running', cmd)
+        os.system(cmd)
 
 print('done')
