@@ -6,23 +6,23 @@ ai = 'ai'
 rnd = 'rnd'
 
 ATTRIBUTE_MAP = {
-    -1: (0, 'Random'),
-    None: (1, 'Fire'),
-    0: (1, 'Fire'),
-    1: (2, 'Water'),
-    2: (3, 'Wood'),
-    3: (4, 'Light'),
-    4: (5, 'Dark'),
-    5: (6, 'Heal'),
-    6: (7, 'Jammer'),
-    7: (8, 'Poison'),
-    8: (9, 'Mortal Poison')
+    -1: 'Random',
+    None: 'Fire',
+    0: 'Fire',
+    1: 'Water',
+    2: 'Wood',
+    3: 'Light',
+    4: 'Dark',
+    5: 'Heal',
+    6: 'Jammer',
+    7: 'Poison',
+    8: 'Mortal Poison'
 }
 
 TYPING_MAP = {
-    4: (1, 'Dragon'),
-    5: (6, 'God'),
-    7: (10, 'Devil')
+    4: 'Dragon',
+    5: 'God',
+    7: 'Devil'
 }
 
 
@@ -126,18 +126,15 @@ class Describe:
 
     @staticmethod
     def blind():
-        return 'Unable to see Orbs'
+        return 'Blind all orbs on the board'
 
     @staticmethod
     def dispel():
         return 'Voids player buff effects'
 
     @staticmethod
-    def recover(min_amount, max_amount, target='enemy'):
-        if max_amount is not None and min_amount != max_amount:
-            return '{:s} recover {:d}%~{:d}% HP'.format(target, min_amount, max_amount).capitalize()
-        else:
-            return '{:s} recover {:d}% HP'.format(target, min_amount).capitalize()
+    def recover(amount, target='enemy'):
+        return '{:s} recover {:d}% HP'.format(target, amount).capitalize()
 
     @staticmethod
     def enrage(mult, turns):
@@ -171,6 +168,14 @@ class Describe:
     def gravity(percent):
         return 'Player -{:d}% HP'.format(percent)
 
+    @staticmethod
+    def absorb(condition, turns):
+        return 'Absorb {:s} damage for {:d} turns'.format(condition, turns)
+
+    @staticmethod
+    def skyfall(orbs, amount, turns):
+        return '{:s} skyfall +{:d}% for {:d} turns'.format(', '.join(orbs), amount, turns)
+
 
 # Action
 class ESAction(pad_util.JsonDictEncodable):
@@ -200,6 +205,13 @@ class ESInactivity(ESEffect):
         super(ESInactivity, self).__init__(skill)
         self.effect = 'skip_turn'
         self.description = Describe.skip()
+
+
+class ESDeathCry(ESEffect):
+    def __init__(self, skill):
+        super(ESDeathCry, self).__init__(skill)
+        self.condition = 'On death'
+        self.effect = params(skill)[0]
 
 
 class ESAttack(ESAction):
@@ -243,16 +255,29 @@ class ESBind(ESEffect):
         super(ESBind, self).__init__(skill)
         self.min_turns = params(skill)[2]
         self.max_turns = params(skill)[3]
+        if target_count:
+            self.target_count = target_count
         self.effect = 'bind'
         self.description = Describe.bind(self.min_turns, self.max_turns, target_count, target_type_description)
 
 
-class ESBindRandom(ESBind):
+class ESBindAttack(ESAttackSinglehit):
     def __init__(self, skill):
+        super(ESBindAttack, self).__init__(skill, multiplier=params(skill)[1])
+        self.min_turns = params(skill)[2]
+        self.max_turns = params(skill)[3]
+        self.target_count = params(skill)[5]
+        self.effect = 'bind_attack'
+        self.description = self.description + ', ' + \
+                           Describe.bind(self.min_turns, self.max_turns, self.target_count, 'cards')
+
+
+class ESBindRandom(ESBind):
+    def __init__(self, skill, target_type_description='random cards'):
         super(ESBindRandom, self).__init__(
             skill,
             target_count=params(skill)[1],
-            target_type_description='random cards')
+            target_type_description=target_type_description)
 
 
 class ESBindLeader(ESBind):
@@ -265,13 +290,18 @@ class ESBindLeader(ESBind):
         )
 
 
+class ESBindRandomSub(ESBindRandom):
+    def __init__(self, skill):
+        super(ESBindRandomSub, self).__init__(skill, target_type_description='random subs')
+
+
 class ESBindAttribute(ESBind):
     def __init__(self, skill):
         super(ESBindAttribute, self).__init__(
             skill,
             target_count=None,
-            target_type_description='{:s} cards'.format(ATTRIBUTE_MAP[params(skill)[1]][1]))
-        self.target_attribute = ATTRIBUTE_MAP[params(skill)[1]][0]
+            target_type_description='{:s} cards'.format(ATTRIBUTE_MAP[params(skill)[1]]))
+        self.target_attribute = ATTRIBUTE_MAP[params(skill)[1]]
 
 
 class ESBindTyping(ESBind):
@@ -294,10 +324,10 @@ class ESBindSkill(ESBind):
 class ESOrbChange(ESEffect):
     def __init__(self, skill, orb_from, orb_to):
         super(ESOrbChange, self).__init__(skill)
-        self.orb_from = orb_from[0]
-        self.orb_to = orb_to[0]
+        self.orb_from = orb_from
+        self.orb_to = orb_to
         self.effect = 'orb_change'
-        self.description = Describe.orb_change(orb_from[1], orb_to[1])
+        self.description = Describe.orb_change(self.orb_from, self.orb_to)
 
 
 class ESOrbChangeSingle(ESOrbChange):
@@ -316,7 +346,7 @@ class ESJammerChangeRandom(ESOrbChange):
     def __init__(self, skill):
         self.random_count = int(params(skill)[1])
         super(ESJammerChangeRandom, self).\
-            __init__(skill, (0, 'Random {:d}'.format(self.random_count)), ATTRIBUTE_MAP[6])
+            __init__(skill, 'Random {:d}'.format(self.random_count), ATTRIBUTE_MAP[6])
 
 
 class ESPoisonChangeSingle(ESOrbChange):
@@ -324,23 +354,51 @@ class ESPoisonChangeSingle(ESOrbChange):
         super(ESPoisonChangeSingle, self).__init__(skill, ATTRIBUTE_MAP[params(skill)[1]], ATTRIBUTE_MAP[7])
 
 
-class ESOrbChangeAttack(ESAttackSinglehit):
+class ESPoisonChangeRandom(ESOrbChange):
     def __init__(self, skill):
+        self.random_count = int(params(skill)[1])
+        super(ESPoisonChangeRandom, self).\
+            __init__(skill, 'Random {:d}'.format(self.random_count), ATTRIBUTE_MAP[7])
+
+
+class ESMortalPoisonChangeRandom(ESOrbChange):
+    def __init__(self, skill):
+        self.random_count = int(params(skill)[1])
+        super(ESMortalPoisonChangeRandom, self).\
+            __init__(skill, 'Random {:d}'.format(self.random_count), ATTRIBUTE_MAP[8])
+
+
+class ESOrbChangeAttack(ESAttackSinglehit):
+    def __init__(self, skill, orb_from=None, orb_to=None):
         super(ESOrbChangeAttack, self).__init__(
             skill,
             multiplier=params(skill)[1]
         )
-        self.orb_from = ATTRIBUTE_MAP[params(skill)[2]][0]
-        self.orb_to = ATTRIBUTE_MAP[params(skill)[3]][0]
+        self.orb_from = ATTRIBUTE_MAP[params(skill)[2]] if orb_from is None else orb_from
+        self.orb_to = ATTRIBUTE_MAP[params(skill)[3]] if orb_to is None else orb_to
         self.effect = 'orb_change_attack'
-        self.description = Describe.orb_change(ATTRIBUTE_MAP[params(skill)[2]][1], ATTRIBUTE_MAP[params(skill)[3]][1])\
-                           + ' & ' + Describe.attack(self.multiplier)
+        self.description = Describe.orb_change(self.orb_from, self.orb_to) + ' & ' + Describe.attack(self.multiplier)
+
+
+class ESPoisonChangeRandomAttack(ESOrbChangeAttack):
+    def __init__(self, skill):
+        self.random_count = int(params(skill)[2])
+        super(ESPoisonChangeRandomAttack, self).__init__(
+            skill, orb_from='Random {:d}'.format(self.random_count), orb_to=ATTRIBUTE_MAP[7])
 
 
 class ESBlind(ESEffect):
     def __init__(self, skill):
         super(ESBlind, self).__init__(skill)
         self.description = Describe.blind()
+        self.effect = 'blind'
+
+
+class ESBlindAttack(ESAttackSinglehit):
+    def __init__(self, skill):
+        super(ESBlindAttack, self).__init__(skill, multiplier=params(skill)[1])
+        self.description = self.description + ', ' + Describe.blind()
+        self.effect = 'blind_attack'
 
 
 class ESDispel(ESEffect):
@@ -348,6 +406,7 @@ class ESDispel(ESEffect):
         ref(skill)[ai] = 0
         super(ESDispel, self).__init__(skill)
         self.description = Describe.dispel()
+        self.effect = 'dispel'
 
 
 class ESStatusShield(ESEffect):
@@ -360,11 +419,10 @@ class ESStatusShield(ESEffect):
 class ESRecover(ESEffect):
     def __init__(self,  skill, target):
         super(ESRecover, self).__init__(skill)
-        self.min_amount = params(skill)[1]
-        self.max_amount = params(skill)[2]
+        self.amount = params(skill)[1]
         self.target = target
         self.effect = 'recover'
-        self.description = Describe.recover(self.min_amount, self.max_amount, self.target)
+        self.description = Describe.recover(self.amount, self.target)
 
 
 class ESRecoverEnemy(ESRecover):
@@ -457,10 +515,9 @@ class ESEndBattle(ESEffect):
 class ESChangeAttribute(ESEffect):
     def __init__(self, skill):
         super(ESChangeAttribute, self).__init__(skill)
-        atts = list(OrderedDict.fromkeys([ATTRIBUTE_MAP[x] for x in params(skill)[1:6]]))
-        self.attributes = [x[0] for x in atts]
+        self.attributes = list(OrderedDict.fromkeys([ATTRIBUTE_MAP[x] for x in params(skill)[1:6]]))
         self.effect = 'change_attribute'
-        self.description = Describe.change_attribute([x[1] for x in atts])
+        self.description = Describe.change_attribute(self.attributes)
 
 
 class ESGravity(ESEffect):
@@ -474,9 +531,26 @@ class ESGravity(ESEffect):
 class ESAbsorbAttribute(ESEffect):
     def __init__(self, skill):
         super(ESAbsorbAttribute, self).__init__(skill)
-        self.min_turns = params(skill)[1]
-        self.max_turns = params(skill)[2]
+        self.turns = params(skill)[1]
         self.attributes = attribute_bitmap(params(skill)[3])
+        self.description = Describe.absorb(','.join(self.attributes), self.turns)
+
+
+class ESAbsorbCombo(ESEffect):
+    def __init__(self, skill):
+        super(ESAbsorbCombo, self).__init__(skill)
+        self.turns = params(skill)[1]
+        self.combo_threshold = params(skill)[3]
+        self.description = Describe.absorb('combo <= {}'.format(self.combo_threshold), self.turns)
+
+
+class ESSkyfall(ESEffect):
+    def __init__(self, skill):
+        super(ESSkyfall, self).__init__(skill)
+        self.turns = params(skill)[2]
+        self.attributes = attribute_bitmap(params(skill)[1])
+        self.amount = params(skill)[4]
+        self.description = Describe.skyfall(self.attributes, self.turns, self.amount)
 
 
 # Logic
@@ -667,7 +741,18 @@ ACTION_MAP = {
     52: ESRecoverEnemy,
     53: ESAbsorbAttribute,
     54: ESBindLeader,
-    55: ESRecoverPlayer
+    55: ESRecoverPlayer,
+    56: ESPoisonChangeSingle,
+    60: ESPoisonChangeRandom,
+    61: ESMortalPoisonChangeRandom,
+    62: ESBlindAttack,
+    63: ESBindAttack,
+    64: ESPoisonChangeRandomAttack,
+    65: ESBindRandomSub,
+    66: ESInactivity,
+    67: ESAbsorbCombo,
+    68: ESSkyfall,
+    69: ESDeathCry
 }
 
 
