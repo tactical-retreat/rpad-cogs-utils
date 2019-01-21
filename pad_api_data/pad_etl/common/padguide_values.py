@@ -125,6 +125,3 @@ class SpecialIcons(Enum):
     StarPlusEgg = 9997
     ChimeraPlus = 9998
     MultiColoredKing = 9999
-
-    UvoAwoken = 1
-    UuvoReincarnated = 2
