@@ -150,3 +150,5 @@ echo "Syncing"
 gsutil -m rsync -r -c /home/tactical0retreat/pad_large_data/ gs://mirubot/paddata/
 gsutil -m rsync -r -c /home/tactical0retreat/pad_data/ gs://mirubot-data/paddata/
 
+# Make a public accessible copy for reni's blog
+gsutil -m rsync -r -c gs://mirubot-data/paddata/ gs://mirubot/protic/paddata/
