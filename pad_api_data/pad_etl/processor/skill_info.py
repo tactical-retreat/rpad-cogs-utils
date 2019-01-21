@@ -373,41 +373,26 @@ def heal_active_convert(arguments):
         rcv_mult = c['rcv_multiplier_as_hp']
         php = c['percentage_max_hp']
         trcv_mult = c['team_rcv_multiplier_as_hp']
+        unbind = c['card_bind']
+        awoken_unbind = c['awoken_bind']
 
-        if c['hp'] != 0:
-            c['skill_text'] += 'Recover ' + str(c['hp']) + ' HP'
-        elif rcv_mult != 0:
-            c['skill_text'] += 'Recover ' + fmt_mult(rcv_mult) + 'x RCV as HP'
-        elif php != 0:
-            if php == 1:
-                c['skill_text'] += 'Recover all HP'
-            else:
-                c['skill_text'] += 'Recover ' + fmt_mult(php * 100) + '% of max HP'
-        elif trcv_mult != 0:
-            c['skill_text'] += 'Recover HP equal to ' + fmt_mult(trcv_mult) + 'x team\'s total RCV'
-        if c['card_bind'] != 0 and c['awoken_bind'] != 0:
-            if c['skill_text'] != '':
-                c['skill_text'] += '; '
-            if c['card_bind'] == 9999:
-                c['skill_text'] += 'Remove all binds and awoken skill binds'
-            else:
-                c['skill_text'] += 'Reduce binds and awoken skill binds by ' + \
-                    str(c['card_bind']) + ' turns'
-        elif c['card_bind'] == 0 and c['awoken_bind'] != 0:
-            if c['skill_text'] != '':
-                c['skill_text'] += '; '
-            if c['awoken_bind'] == 9999:
-                c['skill_text'] += 'Remove all awoken skill binds'
-            else:
-                c['skill_text'] += 'Reduce awoken skill binds by ' + \
-                    str(c['awoken_bind']) + ' turns'
-        elif c['awoken_bind'] == 0 and c['card_bind'] != 0:
-            if c['skill_text'] != '':
-                c['skill_text'] += '; '
-            if c['card_bind'] == 9999:
-                c['skill_text'] += 'Remove all binds'
-            else:
-                c['skill_text'] += 'Reduce binds by ' + str(c['card_bind']) + ' turns'
+        skill_text = ('Recover ' + str(c['hp']) + ' HP' if c['hp'] != 0 else
+                      ('Recover ' + fmt_mult(rcv_mult) + 'x RCV as HP' if rcv_mult != 0 else
+                       ('Recover all HP' if php == 1 else
+                        ('Recover ' + fmt_mult(php * 100) + '% of max HP' if php > 0 else
+                         ('Recover HP equal to ' + fmt_mult(trcv_mult) + 'x team\'s total RCV' if trcv_mult > 0 else
+                          (''))))))
+            
+        if (unbind or awoken_unbind):
+            if skill_text:
+                skill_text += '; '
+            skill_text += ('Remove all binds and awoken skill binds' if (unbind >= 9999 and awoken_unbind) else
+                           ('Reduce binds and awoken skill binds by {} turns'.format(awoken_unbind) if (unbind and awoken_unbind) else
+                            ('Remove all binds' if unbind >= 9999 else
+                             ('Reduce binds by {} turns'.format(unbind) if unbind else
+                              ('Remove all awoken skill binds' if awoken_unbind >= 9999 else
+                               ('Reduce awoken skill binds by {} turns'.format(awoken_unbind)))))))
+        c['skill_text'] = skill_text
         return 'heal_active', c
     return f
 
@@ -667,9 +652,12 @@ def auto_heal_convert(arguments):
         if (unbind or awoken_unbind):
             if skill_text:
                 skill_text += '; '
-            skill_text += ('Reduce binds and awoken skill binds by {} turns'.format(unbind) if (unbind and awoken_unbind) else
-                           ('Reduce binds by {} turns'.format(unbind) if unbind else
-                            ('Reduce awoken skill binds by {} turns'.format(awoken_unbind))))
+            skill_text += ('Remove all binds and awoken skill binds' if (unbind >= 9999 and awoken_unbind) else
+                           ('Reduce binds and awoken skill binds by {} turns'.format(awoken_unbind) if (unbind and awoken_unbind) else
+                            ('Remove all binds' if unbind >= 9999 else
+                             ('Reduce binds by {} turns'.format(unbind) if unbind else
+                              ('Remove all awoken skill binds' if awoken_unbind >= 9999 else
+                               ('Reduce awoken skill binds by {} turns'.format(awoken_unbind)))))))
         c['skill_text'] += skill_text
 
         return 'auto_heal', c
