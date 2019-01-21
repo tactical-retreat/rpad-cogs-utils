@@ -101,7 +101,7 @@ class MonsterItem(SqlItem):
         ]
 
     def _update_columns(self):
-        return ['tm_name_jp', 'tm_name_us', 'limit_mult', 'exp', 'atk_max', 'atk_min', 'hp_max', 'hp_min', 'rcv_max', 'rcv_min', 'cost', 'level', 'limit_mult']
+        return ['tm_name_jp', 'tm_name_us', 'limit_mult', 'exp', 'atk_max', 'atk_min', 'hp_max', 'hp_min', 'rcv_max', 'rcv_min', 'cost', 'level', 'limit_mult', 'rarity']
 
     def __repr__(self):
         return 'MonsterItem({} - {})'.format(self.monster_no, self.tm_name_us)
