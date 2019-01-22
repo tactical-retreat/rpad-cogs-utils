@@ -2,10 +2,10 @@ import argparse
 import json
 import shutil
 
-from pad_etl.processor import db_util
-from padguide.extract_utils import fix_row
+from extract_utils import fix_row
 import pymysql
-from padguide import encoding
+import db_util
+import encoding
 
 import sqlite3 as lite
 
