@@ -5,7 +5,7 @@
 
 RUN_DIR=/home/tactical0retreat/rpad-cogs-utils/image_pull
 IMG_DIR=/home/tactical0retreat/image_data
-PADGUIDE_DATA_DIR=/home/tactical0retreat/hosted_services/bots/Red-DiscordBot-PrivateMiru/data/padguide2
+PROCESSED_DATA_DIR=/home/tactical0retreat/pad_data/processed
 
 # Full pictures
 python3 ${RUN_DIR}/PADTextureDownload.py --output_dir=${IMG_DIR}/na/full --server=NA
@@ -20,14 +20,14 @@ gsutil -m rsync -r ${IMG_DIR}/jp/full/corrected_data gs://mirubot/padimages/jp/f
 # Portraits
 python3 ${RUN_DIR}/PADPortraitsGenerator.py \
   --input_dir=${IMG_DIR}/na/full/extract_data \
-  --card_types_file=${PADGUIDE_DATA_DIR}/card_data.csv \
+  --data_dir=${PROCESSED_DATA_DIR} \
   --card_templates_file=${RUN_DIR}/wide_cards.png \
   --server=na \
   --output_dir=${IMG_DIR}/na/portrait/local_tmp
 
 python3 ${RUN_DIR}/PADPortraitsGenerator.py \
   --input_dir=${IMG_DIR}/jp/full/extract_data \
-  --card_types_file=${PADGUIDE_DATA_DIR}/card_data.csv \
+  --data_dir=${PROCESSED_DATA_DIR} \
   --card_templates_file=${RUN_DIR}/wide_cards.png \
   --server=jp \
   --output_dir=${IMG_DIR}/jp/portrait/local

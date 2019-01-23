@@ -7,9 +7,7 @@ from ..common import monster_id_mapping
 from ..common import shared_types
 from ..common.padguide_values import TYPE_MAP, AWAKENING_MAP, EvoType
 from ..data.card import BookCard
-
-# Temporary; remove references from other files and delete
-SqlItem = sql_item.SqlItem
+from .sql_item import SqlItem
 
 
 class MonsterItem(SqlItem):
@@ -103,7 +101,18 @@ class MonsterItem(SqlItem):
         ]
 
     def _update_columns(self):
-        return ['tm_name_jp', 'tm_name_us', 'limit_mult', 'exp', 'atk_max', 'atk_min', 'hp_max', 'hp_min', 'rcv_max', 'rcv_min', 'cost', 'level', 'limit_mult']
+        return [
+            'tm_name_jp', 'tm_name_us',
+            'limit_mult',
+            'exp',
+            'atk_max', 'atk_min',
+            'hp_max', 'hp_min',
+            'rcv_max', 'rcv_min',
+            'cost',
+            'level',
+            'rarity',
+            'tt_seq', 'tt_seq_sub',
+        ]
 
     def __repr__(self):
         return 'MonsterItem({} - {})'.format(self.monster_no, self.tm_name_us)
@@ -121,7 +130,7 @@ def update_series_by_monster_no_sql(monster_no, series_id):
         tstamp = {tstamp}
     WHERE monster_no = {monster_no}
     """
-    return sql.format(**db_util.object_to_sql_params(args))
+    return sql.format(**sql_item.object_to_sql_params(args))
 
 
 class MonsterInfoItem(SqlItem):
@@ -232,7 +241,7 @@ class MonsterAwakeningItem(SqlItem):
         sql = """
         SELECT tma_seq FROM awoken_skill_list
         WHERE monster_no = {monster_no} and order_idx = {order_idx}
-        """.format(**db_util.object_to_sql_params(self))
+        """.format(**sql_item.object_to_sql_params(self))
         return sql
 
     def _table(self):
@@ -283,7 +292,7 @@ class EvolutionItem(object):
     def exists_sql(self):
         sql = """SELECT tv_seq FROM evolution_list
                  WHERE to_no = {to_no}
-                 """.format(**db_util.object_to_sql_params(self))
+                 """.format(**sql_item.object_to_sql_params(self))
         return sql
 
     def insert_sql(self, tv_seq: int):
@@ -293,7 +302,7 @@ class EvolutionItem(object):
             (`monster_no`, `to_no`, `tstamp`, `tv_seq`, `tv_type`)
             VALUES
             ({monster_no}, {to_no}, {tstamp}, {tv_seq}, {tv_type});
-        """.format(**db_util.object_to_sql_params(self))
+        """.format(**sql_item.object_to_sql_params(self))
         return sql
 
     def __repr__(self):
@@ -332,7 +341,7 @@ class EvolutionMaterialItem(SqlItem):
     def exists_by_values_sql(self):
         sql = """SELECT tem_seq FROM evo_material_list
                  WHERE order_idx = {order_idx} AND tv_seq = {tv_seq} 
-                 """.format(**db_util.object_to_sql_params(self))
+                 """.format(**sql_item.object_to_sql_params(self))
         return sql
 
     def _table(self):

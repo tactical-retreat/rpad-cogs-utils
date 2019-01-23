@@ -2,10 +2,10 @@ import argparse
 import json
 import shutil
 
-from pad_etl.processor import db_util
-from padguide.extract_utils import fix_row
+from extract_utils import fix_row
 import pymysql
-from padguide import encoding
+import db_util
+import encoding
 
 import sqlite3 as lite
 
@@ -31,6 +31,7 @@ ENCRYPTED_COLUMNS = [
     'TS_NAME_JP', 'TS_NAME_US', 'TS_NAME_KR',
     'TS_DESC_JP', 'TS_DESC_US', 'TS_DESC_KR',
     'COMMENT_JP', 'COMMENT_US', 'COMMENT_KR',
+    'HISTORY_JP', 'HISTORY_US', 'HISTORY_KR',
 ]
 
 

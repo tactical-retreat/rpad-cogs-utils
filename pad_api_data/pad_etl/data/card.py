@@ -160,7 +160,9 @@ class BookCard(pad_util.JsonDictEncodable):
         self.furigana = str(raw[67])  # JP data only?
         self.limit_mult = int(raw[68])
 
-        self.other_fields = raw[69:]
+        self.voice_id = int(raw[69]) # Number of the voice file, 1-indexed, 0 if no voice
+
+        self.other_fields = raw[70:]
 
     def enemy(self):
         return Enemy(self.enemy_turns,

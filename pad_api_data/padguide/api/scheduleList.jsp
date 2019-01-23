@@ -1,4 +1,7 @@
 <?php 
 	require 'serve.php';
-    print(serve(fix_table_name(basename(__FILE__, '.jsp'))));
+    $args = [
+        'timelimit' => true,
+    ];
+    print(serve(fix_table_name(basename(__FILE__, '.jsp')), $args));
 ?>

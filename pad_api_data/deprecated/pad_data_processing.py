@@ -97,7 +97,7 @@ for gdb in final_guerrillas:
 
 output_file = os.path.join(output_dir, 'guerrilla_data.json')
 with open(output_file, 'w') as f:
-    json.dump({'items': output_data}, f, sort_keys=True, indent=4)
+    json.dump({'items': output_data}, f)
 
 # print('Times in ET')
 # for db in guerrilla_dungeon_bonuses:

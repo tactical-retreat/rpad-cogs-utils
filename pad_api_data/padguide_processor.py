@@ -8,6 +8,7 @@ from datetime import timedelta
 import json
 import logging
 import os
+import time
 
 import feedparser
 from pad_etl.common import monster_id_mapping
@@ -18,6 +19,8 @@ from pad_etl.processor.db_util import DbWrapper
 from pad_etl.processor.merged_data import MergedBonus, MergedCard, CrossServerCard, MergedEnemySkillset
 from pad_etl.processor.news import NewsItem
 from pad_etl.processor.schedule_item import ScheduleItem
+from pad_etl.processor import egg
+from pad_etl.processor import egg_processor
 
 
 logging.basicConfig()
@@ -58,6 +61,8 @@ def parse_args():
     outputGroup = parser.add_argument_group("Output")
     outputGroup.add_argument("--output_dir", required=True,
                              help="Path to a folder where output should be saved")
+    outputGroup.add_argument("--pretty", default=False, action="store_true",
+                             help="Controls pretty printing of results")
 
     helpGroup = parser.add_argument_group("Help")
     helpGroup.add_argument("-h", "--help", action="help",
@@ -575,6 +580,19 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
                 merged_card, ts_seq_leader, ts_seq_skill))
 
 
+def database_update_egg_machines(db_wrapper, jp_database, na_database):
+    loader = egg.EggLoader(db_wrapper)
+    loader.hide_outdated_machines()
+    
+    processor = egg_processor.EggProcessor()
+    for em_json in jp_database.egg_machines + na_database.egg_machines:
+        if em_json['end_timestamp'] < time.time():
+            print('Skipping machine; looks closed', em_json['clean_name'])
+            continue
+        egg_title_list = processor.convert_from_json(em_json)
+        loader.save_egg_title_list(egg_title_list)
+
+
 def database_update_news(db_wrapper):
     RENI_NEWS_JP = 'https://pad.protic.site/news/category/pad-jp/feed'
     jp_feed = feedparser.parse(RENI_NEWS_JP)
@@ -620,8 +638,8 @@ def load_data(args):
 
     if not args.skipintermediate:
         logger.info('Storing intermediate data')
-        jp_database.save_all(output_dir)
-        na_database.save_all(output_dir)
+        jp_database.save_all(output_dir, args.pretty)
+        na_database.save_all(output_dir, args.pretty)
 
     logger.info('Connecting to database')
     with open(args.db_config) as f:
@@ -639,6 +657,12 @@ def load_data(args):
     logger.info('Starting card diff')
     database_diff_cards(db_wrapper, jp_database, na_database)
 
+    logger.info('Starting egg machine update')
+    try:
+        database_update_egg_machines(db_wrapper, jp_database, na_database)
+    except Exception as ex:
+        print('updating egg machines failed', str(ex))
+
     logger.info('Starting news update')
     try:
         database_update_news(db_wrapper)
@@ -652,6 +676,11 @@ def load_data(args):
 
 
 def load_database(base_dir, pg_server):
+    egg_file = os.path.join(base_dir, 'egg_machines.json')
+
+    with open(egg_file) as f:
+        egg_machines = json.load(f)
+
     return Database(
         pg_server,
         card.load_card_data(data_dir=base_dir),
@@ -661,11 +690,12 @@ def load_database(base_dir, pg_server):
         skill.load_skill_data(data_dir=base_dir),
         skill.load_raw_skill_data(data_dir=base_dir),
         enemy_skill.load_enemy_skill_data(data_dir=base_dir),
-        exchange.load_data(data_dir=base_dir))
+        exchange.load_data(data_dir=base_dir),
+        egg_machines)
 
 
 class Database(object):
-    def __init__(self, pg_server, cards, dungeons, bonus_sets, skills, raw_skills, enemy_skills, exchange):
+    def __init__(self, pg_server, cards, dungeons, bonus_sets, skills, raw_skills, enemy_skills, exchange, egg_machines):
         self.pg_server = pg_server
         self.raw_cards = cards
         self.dungeons = dungeons
@@ -673,6 +703,7 @@ class Database(object):
         self.skills = skills
         self.enemy_skills = enemy_skills
         self.exchange = exchange
+        self.egg_machines = egg_machines
 
         # This is temporary for the integration of calculated skills
         self.raw_skills = raw_skills
@@ -681,11 +712,14 @@ class Database(object):
         self.cards = clean_cards(cards, skills)
         self.enemies = clean_enemy(cards, enemy_skills)
 
-    def save_all(self, output_dir: str):
+    def save_all(self, output_dir: str, pretty: bool):
         def save(file_name: str, obj: object):
             output_file = os.path.join(output_dir, '{}_{}.json'.format(self.pg_server, file_name))
             with open(output_file, 'w') as f:
-                json.dump(obj, f, indent=4, sort_keys=True, default=lambda x: x.__dict__)
+                if pretty:
+                    json.dump(obj, f, indent=4, sort_keys=True, default=lambda x: x.__dict__)
+                else:
+                    json.dump(obj, f, default=lambda x: x.__dict__)
         save('raw_cards', self.raw_cards)
         save('dungeons', self.dungeons)
         save('skills', self.skills)
