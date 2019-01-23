@@ -12,15 +12,16 @@ import time
 
 import feedparser
 from pad_etl.common import monster_id_mapping
-from pad_etl.data import bonus, card, dungeon, skill, exchange, enemy_skill
+from pad_etl.data import card, skill
+from pad_etl.data import database
+from pad_etl.processor import egg
+from pad_etl.processor import egg_processor
 from pad_etl.processor import monster, monster_skill
 from pad_etl.processor import skill_info
 from pad_etl.processor.db_util import DbWrapper
-from pad_etl.processor.merged_data import MergedBonus, MergedCard, CrossServerCard
+from pad_etl.processor.merged_data import MergedCard, CrossServerCard
 from pad_etl.processor.news import NewsItem
 from pad_etl.processor.schedule_item import ScheduleItem
-from pad_etl.processor import egg
-from pad_etl.processor import egg_processor
 
 
 logging.basicConfig()
@@ -583,7 +584,7 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
 def database_update_egg_machines(db_wrapper, jp_database, na_database):
     loader = egg.EggLoader(db_wrapper)
     loader.hide_outdated_machines()
-    
+
     processor = egg_processor.EggProcessor()
     for em_json in jp_database.egg_machines + na_database.egg_machines:
         if em_json['end_timestamp'] < time.time():
@@ -633,8 +634,11 @@ def load_data(args):
     output_dir = args.output_dir
 
     logger.info('Loading data')
-    jp_database = load_database(os.path.join(input_dir, 'jp'), 'jp')
-    na_database = load_database(os.path.join(input_dir, 'na'), 'na')
+    jp_database = database.Database('jp', input_dir)
+    jp_database.load_database()
+
+    na_database = database.Database('na', input_dir)
+    na_database.load_database()
 
     if not args.skipintermediate:
         logger.info('Storing intermediate data')
@@ -673,104 +677,6 @@ def load_data(args):
     database_update_timestamps(db_wrapper)
 
     print('done')
-
-
-def load_database(base_dir, pg_server):
-    egg_file = os.path.join(base_dir, 'egg_machines.json')
-
-    with open(egg_file) as f:
-        egg_machines = json.load(f)
-
-    return Database(
-        pg_server,
-        card.load_card_data(data_dir=base_dir),
-        dungeon.load_dungeon_data(data_dir=base_dir),
-        {x: bonus.load_bonus_data(data_dir=base_dir, data_group=x)
-         for x in ['red', 'blue', 'green']},
-        skill.load_skill_data(data_dir=base_dir),
-        skill.load_raw_skill_data(data_dir=base_dir),
-        enemy_skill.load_enemy_skill_data(data_dir=base_dir),
-        exchange.load_data(data_dir=base_dir),
-        egg_machines)
-
-
-class Database(object):
-    def __init__(self, pg_server, cards, dungeons, bonus_sets, skills, raw_skills, enemy_skills, exchange, egg_machines):
-        self.pg_server = pg_server
-        self.raw_cards = cards
-        self.dungeons = dungeons
-        self.bonus_sets = bonus_sets
-        self.skills = skills
-        self.enemy_skills = enemy_skills
-        self.exchange = exchange
-        self.egg_machines = egg_machines
-
-        # This is temporary for the integration of calculated skills
-        self.raw_skills = raw_skills
-
-        self.bonuses = clean_bonuses(pg_server, bonus_sets, dungeons)
-        self.cards = clean_cards(cards, skills)
-
-    def save_all(self, output_dir: str, pretty: bool):
-        def save(file_name: str, obj: object):
-            output_file = os.path.join(output_dir, '{}_{}.json'.format(self.pg_server, file_name))
-            with open(output_file, 'w') as f:
-                if pretty:
-                    json.dump(obj, f, indent=4, sort_keys=True, default=lambda x: x.__dict__)
-                else:
-                    json.dump(obj, f, default=lambda x: x.__dict__)
-        save('raw_cards', self.raw_cards)
-        save('dungeons', self.dungeons)
-        save('skills', self.skills)
-        save('enemy_skills', self.enemy_skills)
-        save('bonuses', self.bonuses)
-        save('cards', self.cards)
-        save('exchange', self.exchange)
-
-
-def clean_bonuses(pg_server, bonus_sets, dungeons):
-    dungeons_by_id = {d.dungeon_id: d for d in dungeons}
-
-    merged_bonuses = []
-    for data_group, bonus_set in bonus_sets.items():
-        for bonus in bonus_set:
-            dungeon = None
-            guerrilla_group = None
-            if bonus.dungeon_id:
-                dungeon = dungeons_by_id.get(bonus.dungeon_id, None)
-                if dungeon is None:
-                    fail_logger.critical('Dungeon lookup failed for bonus: %s', repr(bonus))
-                else:
-                    guerrilla_group = data_group if dungeon.dungeon_type == 'guerrilla' else None
-
-            if guerrilla_group or data_group == 'red':
-                merged_bonuses.append(MergedBonus(pg_server, bonus, dungeon, guerrilla_group))
-
-    return merged_bonuses
-
-
-def clean_cards(cards, skills):
-    skills_by_id = {s.skill_id: s for s in skills}
-
-    merged_cards = []
-    for card in cards:
-        active_skill = None
-        leader_skill = None
-
-        if card.active_skill_id:
-            active_skill = skills_by_id.get(card.active_skill_id, None)
-            if active_skill is None:
-                fail_logger.critical('Active skill lookup failed: %s - %s',
-                                     repr(card), card.active_skill_id)
-
-        if card.leader_skill_id:
-            leader_skill = skills_by_id.get(card.leader_skill_id, None)
-            if leader_skill is None:
-                fail_logger.critical('Leader skill lookup failed: %s - %s',
-                                     repr(card), card.leader_skill_id)
-
-        merged_cards.append(MergedCard(card, active_skill, leader_skill))
-    return merged_cards
 
 
 if __name__ == '__main__':

@@ -2,14 +2,12 @@ import json
 import logging
 import os
 
-# TODO move these into data dir
-from ..processor.merged_data import MergedBonus, MergedCard
-from ..common import monster_id_mapping
 from . import bonus, card, dungeon, skill, exchange, enemy_skill
-
+from ..processor.merged_data import MergedBonus, MergedCard  # TODO move these into data dir
 
 
 fail_logger = logging.getLogger('processor_failures')
+
 
 def _clean_bonuses(pg_server, bonus_sets, dungeons):
     dungeons_by_id = {d.dungeon_id: d for d in dungeons}
@@ -56,11 +54,10 @@ def _clean_cards(cards, skills):
     return merged_cards
 
 
-
 class Database(object):
-    def __init__(self, pg_server, base_dir):
+    def __init__(self, pg_server, raw_dir):
         self.pg_server = pg_server
-        self.base_dir = base_dir
+        self.base_dir = os.path.join(raw_dir, pg_server)
 
         # Loaded from disk
         self.raw_cards = []
@@ -98,7 +95,6 @@ class Database(object):
 
         self.bonuses = _clean_bonuses(self.pg_server, self.bonus_sets, self.dungeons)
         self.cards = _clean_cards(self.raw_cards, self.skills)
-
 
     def save_all(self, output_dir: str, pretty: bool):
         def save(file_name: str, obj: object):
