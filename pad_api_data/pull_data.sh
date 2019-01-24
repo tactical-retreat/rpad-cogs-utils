@@ -118,19 +118,19 @@ python3 ${EXEC_DIR}/extract_padguide_db.py \
   
 # Temporary!
 echo "Starting NA processing"
-python3 ${EXEC_DIR}/pad_data_processing.py \
+python3 ${EXEC_DIR}/deprecated/pad_data_processing.py \
   --input_dir=${DATA_DIR}/raw/na \
   --output_dir=${DATA_DIR}/raw/na \
   --server=NA
 
 echo "Starting JP processing"
-python3 ${EXEC_DIR}/pad_data_processing.py \
+python3 ${EXEC_DIR}/deprecated/pad_data_processing.py \
   --input_dir=${DATA_DIR}/raw/jp \
   --output_dir=${DATA_DIR}/raw/jp \
   --server=JP
 
 echo "Merging data"
-python3 ${EXEC_DIR}/json_merge.py \
+python3 ${EXEC_DIR}/deprecated/json_merge.py \
   --left=${DATA_DIR}/raw/na/guerrilla_data.json \
   --right=${DATA_DIR}/raw/jp/guerrilla_data.json \
   --output=${DATA_DIR}/merged/guerrilla_data.json
@@ -147,6 +147,8 @@ python3 ${EXEC_DIR}/json_merge.py \
 # cp ${DATA_DIR}/padguide_db/Panda.sql.zip /var/www/html/padguide/data
 
 echo "Syncing"
-gsutil -m rsync -r -c /home/tactical0retreat/pad_data/ gs://mirubot/paddata/
+gsutil -m rsync -r -c /home/tactical0retreat/pad_large_data/ gs://mirubot/paddata/
 gsutil -m rsync -r -c /home/tactical0retreat/pad_data/ gs://mirubot-data/paddata/
 
+# Make a public accessible copy for reni's blog
+gsutil -m rsync -r -c gs://mirubot-data/paddata/ gs://mirubot/protic/paddata/

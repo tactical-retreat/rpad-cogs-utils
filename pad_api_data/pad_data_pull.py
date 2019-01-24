@@ -114,13 +114,14 @@ for em in egg_machines:
     grow = em.egg_machine_row
     gtype = em.egg_machine_type
     has_rate = em.name != 'Pal Egg Machine'
+    min_cols = 2 if has_rate else 1
 
     page = api_client.get_egg_machine_page(gtype, grow)
     soup = BeautifulSoup(page, 'html.parser')
     rows = soup.table.find_all('tr')
     for row in rows:
         cols = row.find_all('td')
-        if len(cols) < 2:
+        if len(cols) < min_cols:
             continue
 
         if has_rate:

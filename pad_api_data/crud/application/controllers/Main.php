@@ -251,13 +251,13 @@ public function csv_update(){
 
 					$by_table[$tmp[0]][$tmp[1]] = $value;
 				}
-				print_r($by_table);
-				echo '<br/>';
+				//print_r($by_table);
+				//echo '<br/>';
 				foreach($by_table as $table => $data){
 					$this->db->where($pk_fieldname, $pk_value);
 					$this->db->update($table, $data);
-					echo $this->db->last_query();
-					echo '<br/>';
+					//echo $this->db->last_query();
+					//echo '<br/>';
 					$complete[] = $pk_value;
 				}
 			}
@@ -271,6 +271,7 @@ public function csv_update(){
 public function _do_table($table = null, $columns = null, $relations = null, $filter = null, $order = null) {
 	$crud = new grocery_CRUD();
     $crud->set_theme('flexigrid');
+	$crud->set_model('Custom_model');
 	$crud->set_table($table);
 
 	if(!is_null($columns)){

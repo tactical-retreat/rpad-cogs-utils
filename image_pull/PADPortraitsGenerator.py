@@ -1,5 +1,6 @@
 import argparse
 import csv
+import json
 import os
 import re
 import sys
@@ -12,8 +13,8 @@ parser = argparse.ArgumentParser(description="Generates P&D portraits.", add_hel
 
 inputGroup = parser.add_argument_group("Input")
 inputGroup.add_argument("--input_dir", help="Path to a folder where CARD files are")
+inputGroup.add_argument("--data_dir", required=True, help="Path to processed pad data files")
 inputGroup.add_argument("--server", help="Either na or jp")
-inputGroup.add_argument("--card_types_file", help="Path to card type CSV file")
 inputGroup.add_argument("--card_templates_file", help="Path to card templates png")
 
 
@@ -27,7 +28,7 @@ args = parser.parse_args()
 
 input_dir = args.input_dir
 server = args.server
-card_types_file = args.card_types_file
+cards_file = os.path.join(args.data_dir, '{}_raw_cards.json'.format(server))
 card_templates_file = args.card_templates_file
 output_dir = args.output_dir
 
@@ -52,10 +53,24 @@ for idx, t in enumerate(['r', 'b', 'g', 'l', 'd']):
 
 
 card_types = []
-with open(card_types_file) as csvfile:
-    for row in csv.reader(csvfile):
-        if row[1] == server:
-            card_types.append([int(row[0]), row[2], row[3]])
+with open(cards_file) as f:
+    card_data = json.load(f)
+
+attr_map = {
+    -1: '',
+    0: 'r',
+    1: 'b',
+    2: 'g',
+    3: 'l',
+    4: 'd',
+}
+
+for card in card_data:
+    card_types.append([
+        card['card_id'],
+        attr_map[card['attr_id']],
+        attr_map[card['sub_attr_id']]
+    ])
 
 
 def idx_for_id(card_id: int):

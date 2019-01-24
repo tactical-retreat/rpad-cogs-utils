@@ -7,15 +7,19 @@ from collections import defaultdict
 from datetime import timedelta
 import json
 import logging
-import os
+import time
 
 import feedparser
 from pad_etl.common import monster_id_mapping
-from pad_etl.data import bonus, card, dungeon, skill, exchange, enemy_skill
+from pad_etl.data import card, skill
+from pad_etl.data import database
+from pad_etl.processor import egg
+from pad_etl.processor import egg_processor
 from pad_etl.processor import monster, monster_skill
+from pad_etl.processor import skill_data
 from pad_etl.processor import skill_info
 from pad_etl.processor.db_util import DbWrapper
-from pad_etl.processor.merged_data import MergedBonus, MergedCard, CrossServerCard
+from pad_etl.processor.merged_data import MergedCard, CrossServerCard
 from pad_etl.processor.news import NewsItem
 from pad_etl.processor.schedule_item import ScheduleItem
 
@@ -536,6 +540,19 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
 
         update_monster = False
 
+        def update_skill_data(ts_seq, as_desc=None, ls_desc=None):
+            if not ts_seq or not (as_desc or ls_desc):
+                return
+            skill_data_item = db_wrapper.load_single_object(skill_data.SkillData, ts_seq)
+            if not skill_data_item:
+                skill_data_item = skill_data.SkillData(ts_seq=ts_seq)
+            if as_desc:
+                conditions = skill_data.parse_as_conditions(as_desc)
+            else:
+                conditions = skill_data.parse_ls_conditions(ls_desc)
+            skill_data_item.type_data = skill_data.format_conditions(conditions)
+            db_wrapper.insert_or_update(skill_data_item)
+
         ts_seq_leader = info['ts_seq_leader']
         if merged_card.leader_skill:
             calc_ls_skill = calc_skills.get(merged_card.leader_skill.skill_id, '')
@@ -549,6 +566,8 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
                 ts_seq_leader = find_or_create_skill(
                     'ts_seq_leader', merged_card.leader_skill, merged_card_na.leader_skill, calc_ls_skill_description)
                 update_monster = True
+
+            update_skill_data(ts_seq_leader, ls_desc=calc_ls_skill_description)
 
             if calc_ls_skill:
                 leader_data_item = monster_skill.MonsterSkillLeaderDataItem(
@@ -570,11 +589,26 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
                     'ts_seq_skill', merged_card.active_skill, merged_card_na.active_skill, calc_as_skill_description)
                 update_monster = True
 
+            update_skill_data(ts_seq_skill, as_desc=calc_as_skill_description)
+
         if update_monster:
             logger.warn('Updating monster skill info: %s - %s - %s',
                         repr(merged_card), ts_seq_leader, ts_seq_skill)
             db_wrapper.insert_item(monster_skill.get_update_monster_skill_ids(
                 merged_card, ts_seq_leader, ts_seq_skill))
+
+
+def database_update_egg_machines(db_wrapper, jp_database, na_database):
+    loader = egg.EggLoader(db_wrapper)
+    loader.hide_outdated_machines()
+
+    processor = egg_processor.EggProcessor()
+    for em_json in jp_database.egg_machines + na_database.egg_machines:
+        if em_json['end_timestamp'] < time.time():
+            print('Skipping machine; looks closed', em_json['clean_name'])
+            continue
+        egg_title_list = processor.convert_from_json(em_json)
+        loader.save_egg_title_list(egg_title_list)
 
 
 def database_update_news(db_wrapper):
@@ -617,8 +651,11 @@ def load_data(args):
     output_dir = args.output_dir
 
     logger.info('Loading data')
-    jp_database = load_database(os.path.join(input_dir, 'jp'), 'jp')
-    na_database = load_database(os.path.join(input_dir, 'na'), 'na')
+    jp_database = database.Database('jp', input_dir)
+    jp_database.load_database()
+
+    na_database = database.Database('na', input_dir)
+    na_database.load_database()
 
     if not args.skipintermediate:
         logger.info('Storing intermediate data')
@@ -641,6 +678,12 @@ def load_data(args):
     logger.info('Starting card diff')
     database_diff_cards(db_wrapper, jp_database, na_database)
 
+    logger.info('Starting egg machine update')
+    try:
+        database_update_egg_machines(db_wrapper, jp_database, na_database)
+    except Exception as ex:
+        print('updating egg machines failed', str(ex))
+
     logger.info('Starting news update')
     try:
         database_update_news(db_wrapper)
@@ -651,97 +694,6 @@ def load_data(args):
     database_update_timestamps(db_wrapper)
 
     print('done')
-
-
-def load_database(base_dir, pg_server):
-    return Database(
-        pg_server,
-        card.load_card_data(data_dir=base_dir),
-        dungeon.load_dungeon_data(data_dir=base_dir),
-        {x: bonus.load_bonus_data(data_dir=base_dir, data_group=x)
-         for x in ['red', 'blue', 'green']},
-        skill.load_skill_data(data_dir=base_dir),
-        skill.load_raw_skill_data(data_dir=base_dir),
-        enemy_skill.load_enemy_skill_data(data_dir=base_dir),
-        exchange.load_data(data_dir=base_dir))
-
-
-class Database(object):
-    def __init__(self, pg_server, cards, dungeons, bonus_sets, skills, raw_skills, enemy_skills, exchange):
-        self.pg_server = pg_server
-        self.raw_cards = cards
-        self.dungeons = dungeons
-        self.bonus_sets = bonus_sets
-        self.skills = skills
-        self.enemy_skills = enemy_skills
-        self.exchange = exchange
-
-        # This is temporary for the integration of calculated skills
-        self.raw_skills = raw_skills
-
-        self.bonuses = clean_bonuses(pg_server, bonus_sets, dungeons)
-        self.cards = clean_cards(cards, skills)
-
-    def save_all(self, output_dir: str, pretty: bool):
-        def save(file_name: str, obj: object):
-            output_file = os.path.join(output_dir, '{}_{}.json'.format(self.pg_server, file_name))
-            with open(output_file, 'w') as f:
-                if pretty:
-                    json.dump(obj, f, indent=4, sort_keys=True, default=lambda x: x.__dict__)
-                else:
-                    json.dump(obj, f, default=lambda x: x.__dict__)
-        save('raw_cards', self.raw_cards)
-        save('dungeons', self.dungeons)
-        save('skills', self.skills)
-        save('enemy_skills', self.enemy_skills)
-        save('bonuses', self.bonuses)
-        save('cards', self.cards)
-        save('exchange', self.exchange)
-
-
-def clean_bonuses(pg_server, bonus_sets, dungeons):
-    dungeons_by_id = {d.dungeon_id: d for d in dungeons}
-
-    merged_bonuses = []
-    for data_group, bonus_set in bonus_sets.items():
-        for bonus in bonus_set:
-            dungeon = None
-            guerrilla_group = None
-            if bonus.dungeon_id:
-                dungeon = dungeons_by_id.get(bonus.dungeon_id, None)
-                if dungeon is None:
-                    fail_logger.critical('Dungeon lookup failed for bonus: %s', repr(bonus))
-                else:
-                    guerrilla_group = data_group if dungeon.dungeon_type == 'guerrilla' else None
-
-            if guerrilla_group or data_group == 'red':
-                merged_bonuses.append(MergedBonus(pg_server, bonus, dungeon, guerrilla_group))
-
-    return merged_bonuses
-
-
-def clean_cards(cards, skills):
-    skills_by_id = {s.skill_id: s for s in skills}
-
-    merged_cards = []
-    for card in cards:
-        active_skill = None
-        leader_skill = None
-
-        if card.active_skill_id:
-            active_skill = skills_by_id.get(card.active_skill_id, None)
-            if active_skill is None:
-                fail_logger.critical('Active skill lookup failed: %s - %s',
-                                     repr(card), card.active_skill_id)
-
-        if card.leader_skill_id:
-            leader_skill = skills_by_id.get(card.leader_skill_id, None)
-            if leader_skill is None:
-                fail_logger.critical('Leader skill lookup failed: %s - %s',
-                                     repr(card), card.leader_skill_id)
-
-        merged_cards.append(MergedCard(card, active_skill, leader_skill))
-    return merged_cards
 
 
 if __name__ == '__main__':

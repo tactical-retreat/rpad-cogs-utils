@@ -10,7 +10,7 @@
 
 	function serve($tbl_name, $args = []) {
 		$base_path = "/home/tactical0retreat/rpad-cogs-utils/pad_api_data";
-		$script = $base_path . "/serve_padguide_data.py";
+		$script = $base_path . "/padguide/serve_padguide_data.py";
 		$db_config = $base_path . "/db_config.json";
 		
 		$cmd = "python3 " . $script . " --db_config=" . $db_config . " --db_table=" . $tbl_name;
@@ -42,7 +42,7 @@
 	
 	function serve_plain($file_path) {
 		$base_path = "/home/tactical0retreat/rpad-cogs-utils/pad_api_data";
-		$script = $base_path . "/serve_padguide_data.py";
+		$script = $base_path . "/padguide/serve_padguide_data.py";
 		
 		$cmd = "python3 " . $script . " --raw_file=" . $file_path;
 		

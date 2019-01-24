@@ -2,8 +2,8 @@ import argparse
 import json
 import time
 
-from padguide.encoding import encode, decode
-from padguide.extract_utils import dump_table
+from encoding import encode, decode
+from extract_utils import dump_table
 import pymysql
 
 
