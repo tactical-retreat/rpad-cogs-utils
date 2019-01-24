@@ -3,10 +3,11 @@ import logging
 import os
 
 from . import bonus, card, dungeon, skill, exchange, enemy_skill
-# TODO move these into data dir
+from ..processor import enemy_skillset as enemy_skillset_lib
 from ..processor.merged_data import MergedBonus, MergedCard, MergedEnemySkillset
 
 
+# TODO move these into data dir
 fail_logger = logging.getLogger('processor_failures')
 
 
@@ -71,7 +72,13 @@ def _clean_enemy(cards, enemy_skills):
                     es_set = [enemy_skill_by_id.get(s_id) for s_id in es.params[1:11]
                               if s_id is not None and enemy_skill_by_id.get(s_id) is not None]
                 enemy_skillset.append(MergedEnemySkillset(esr, es, es_set))
-            merged_enemies.append({'monster_no': card.card_id, 'skill_set': enemy_skillset})
+
+                # This is a mess but the skillset parser expects json objects
+                item = {'monster_no': card.card_id, 'skill_set': enemy_skillset}
+                data = json.dumps([item], default=lambda x: x.__dict__)
+                data_json = json.loads(data)
+                item['skill_processed'] = enemy_skillset_lib.reformat_json(data_json)
+            merged_enemies.append(item)
     return merged_enemies
 
 
