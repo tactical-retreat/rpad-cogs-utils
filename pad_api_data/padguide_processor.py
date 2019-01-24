@@ -16,6 +16,7 @@ from pad_etl.data import database
 from pad_etl.processor import egg
 from pad_etl.processor import egg_processor
 from pad_etl.processor import monster, monster_skill
+from pad_etl.processor import skill_data
 from pad_etl.processor import skill_info
 from pad_etl.processor.db_util import DbWrapper
 from pad_etl.processor.merged_data import MergedCard, CrossServerCard
@@ -539,6 +540,19 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
 
         update_monster = False
 
+        def update_skill_data(ts_seq, as_desc=None, ls_desc=None):
+            if not ts_seq or not (as_desc or ls_desc):
+                return
+            skill_data_item = db_wrapper.load_single_object(skill_data.SkillData, ts_seq)
+            if not skill_data_item:
+                skill_data_item = skill_data.SkillData()
+            if as_desc:
+                conditions = skill_data.parse_as_conditions(as_desc)
+            else:
+                conditions = skill_data.parse_ls_conditions(ls_desc)
+            skill_data_item.type_data = skill_data.format_conditions(conditions)
+            db_wrapper.insert_or_update(skill_data_item)
+
         ts_seq_leader = info['ts_seq_leader']
         if merged_card.leader_skill:
             calc_ls_skill = calc_skills.get(merged_card.leader_skill.skill_id, '')
@@ -552,6 +566,8 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
                 ts_seq_leader = find_or_create_skill(
                     'ts_seq_leader', merged_card.leader_skill, merged_card_na.leader_skill, calc_ls_skill_description)
                 update_monster = True
+
+            update_skill_data(ts_seq_leader, ls_desc=calc_ls_skill_description)
 
             if calc_ls_skill:
                 leader_data_item = monster_skill.MonsterSkillLeaderDataItem(
@@ -572,6 +588,8 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
                 ts_seq_skill = find_or_create_skill(
                     'ts_seq_skill', merged_card.active_skill, merged_card_na.active_skill, calc_as_skill_description)
                 update_monster = True
+
+            update_skill_data(ts_seq_skill, as_desc=calc_as_skill_description)
 
         if update_monster:
             logger.warn('Updating monster skill info: %s - %s - %s',
