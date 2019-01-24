@@ -7,7 +7,6 @@ from collections import defaultdict
 from datetime import timedelta
 import json
 import logging
-import os
 import time
 
 import feedparser
