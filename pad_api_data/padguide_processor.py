@@ -545,7 +545,7 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
                 return
             skill_data_item = db_wrapper.load_single_object(skill_data.SkillData, ts_seq)
             if not skill_data_item:
-                skill_data_item = skill_data.SkillData()
+                skill_data_item = skill_data.SkillData(ts_seq=ts_seq)
             if as_desc:
                 conditions = skill_data.parse_as_conditions(as_desc)
             else:
