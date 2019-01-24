@@ -1,6 +1,8 @@
 import re
+from typing import List
 
 from enum import Enum
+
 
 # Values here are used to compose the skill_data_list -> type_data field, which
 # is a field formatted via the values in the condition enums, csv, encased
@@ -16,8 +18,6 @@ from enum import Enum
 #
 # Other fields in skill_data_list are useful, they populate the visual
 # effect for a skill. Not populating those yet.
-
-
 class AsCondition(Enum):
     ETC_1 = 0
     ETC_2 = 998  # Seems unused
@@ -86,6 +86,7 @@ class LsCondition(Enum):
     RESOLVE = 36
     EXTEND_TIME = 37
     COIN = 150
+    # TODO: add egg drop rate as first class (currently ETC)
     EXP = 170
     BOARD_CHANGE_7X6 = 200
     NO_SKYFALL_COMBOS = 210
@@ -93,10 +94,11 @@ class LsCondition(Enum):
 
 
 def format_conditions(skill_conditions):
-    return ','.join(['({})'.format(x.value) for x in skill_conditions])
+    sorted_cond_values = sorted([x.value for x in skill_conditions])
+    return ','.join(['({})'.format(x) for x in sorted_cond_values])
 
 
-def parse_as_conditions(skill_text: str) -> list[AsCondition]:
+def parse_as_conditions(skill_text: str) -> List[AsCondition]:
     """Takes the processor-generated active skill text and produces a list of conditions."""
     skill_text = skill_text.lower()
     results = set()
@@ -107,8 +109,11 @@ def parse_as_conditions(skill_text: str) -> list[AsCondition]:
     if 'enhance all' in skill_text:
         results.add(AsCondition.ENHANCED_ORBS)
 
-    if 'x atk' in skill_text:
-        results.add(AsCondition.ENHANCED_ATTACK)
+    for part in skill_text.split(';'):
+        atk_match = re.match('(.*)x atk(.*)', part)
+        # Filter out 'Deal 20x ATK Wood' and 'Poison all enemies (1x ATK)'
+        if atk_match and 'deal' not in atk_match.group(1) and not atk_match.group(2).startswith(')'):
+            results.add(AsCondition.ENHANCED_ATTACK)
 
     if "reduce enemies' defense" in skill_text:
         results.add(AsCondition.REDUCE_DEFENSE)
@@ -129,7 +134,9 @@ def parse_as_conditions(skill_text: str) -> list[AsCondition]:
     if 'freely move orbs' in skill_text:
         results.add(AsCondition.STOP_TIME)
 
-    if 'reduce damage taken' in skill_text:
+    if 'reduce damage taken by 100%' in skill_text:
+        results.add(AsCondition.VOID_DAMAGE)
+    elif 'reduce damage taken' in skill_text:
         results.add(AsCondition.REDUCE_DAMAGE)
 
     if 'void all' in skill_text:
@@ -150,11 +157,11 @@ def parse_as_conditions(skill_text: str) -> list[AsCondition]:
     all_colors = colors + ['heal', 'poison', 'mortal poison', 'jammer']
     if any(['change {} orbs'.format(x) in skill_text for x in all_colors]):
         results.add(AsCondition.ORB_CONVERT)
+    if any(['change {}, '.format(x) in skill_text for x in all_colors]):
+        results.add(AsCondition.ORB_CONVERT)
 
-    if 'damage to an enemy and recover' in skill_text:
-        results.add(AsCondition.ATTACK_AND_HEAL)
-
-    if 'x rcv' in skill_text:
+    skill_mod = re.sub(r'0[.]\d+x', ' ', skill_text)
+    if 'x rcv' in skill_mod:
         results.add(AsCondition.ENHANCED_HEAL)
 
     if 'becomes team leader' in skill_text:
@@ -190,7 +197,9 @@ def parse_as_conditions(skill_text: str) -> list[AsCondition]:
     if 'are more likely to appear' in skill_text:
         results.add(AsCondition.DROP_CHANCE)
 
-    if 'fixed damage to' in skill_text:
+    if 'damage to an enemy and recover' in skill_text:
+        results.add(AsCondition.ATTACK_AND_HEAL)
+    elif 'fixed damage to' in skill_text:
         results.add(AsCondition.FIXED_DAMAGE)
     elif 'damage to an enemy' in skill_text or 'atk to an enemy' in skill_text:
         results.add(AsCondition.SINGLE_TARGET_ATTACK)
@@ -204,6 +213,8 @@ def parse_as_conditions(skill_text: str) -> list[AsCondition]:
 
     if 'increase orb move time' in skill_text:
         results.add(AsCondition.EXTENDS_TIME)
+    if re.match('.*\dx orb move time.*', skill_text):
+        results.add(AsCondition.EXTENDS_TIME)
 
     if 'change own att' in skill_text:
         results.add(AsCondition.CHANGE_ATTRIBUTE)
@@ -214,7 +225,7 @@ def parse_as_conditions(skill_text: str) -> list[AsCondition]:
     if 'replace all orbs' in skill_text:
         results.add(AsCondition.ORB_REFRESH)
 
-    if 'xxx' in skill_text:
+    if 'change all enemies to' in skill_text:
         results.add(AsCondition.CHANGE_ENEMIES_ATTRIBUTE)
 
     if 'increase combo count' in skill_text:
@@ -244,7 +255,7 @@ def parse_as_conditions(skill_text: str) -> list[AsCondition]:
     return results
 
 
-def parse_ls_conditions(skill_text: str) -> list[LsCondition]:
+def parse_ls_conditions(skill_text: str) -> List[LsCondition]:
     """Takes the processor-generated leader skill text and produces a list of conditions."""
     skill_text = skill_text.lower()
     results = set()
@@ -254,7 +265,8 @@ def parse_ls_conditions(skill_text: str) -> list[LsCondition]:
 
     # Strip out stuff like 0.25x because there's no reduction category,
     # don't want it to match for enhanced categories.
-    skill_mod = re.sub(r'[.]\d+x', ' ', skill_text)
+    skill_mod = re.sub(r'0[.]\d+x', ' ', skill_text)
+    skill_mod = skill_mod.replace('x rcv additional heal', '')
 
     hp, atk, rcv = False, False, False
     if 'x all stats' in skill_mod:
@@ -290,7 +302,7 @@ def parse_ls_conditions(skill_text: str) -> list[LsCondition]:
     elif rcv:
         results.add(LsCondition.ENHANCED_RCV)
 
-    if 'reduce damage taken by' in skill_text:
+    if 'reduce damage taken' in skill_text:
         results.add(LsCondition.REDUCE_DAMAGE)
 
     if 'additional damage when matching' in skill_text:
@@ -314,6 +326,9 @@ def parse_ls_conditions(skill_text: str) -> list[LsCondition]:
     if 'board becomes 7x6' in skill_text:
         results.add(LsCondition.BOARD_CHANGE_7X6)
 
+    if 'no skyfall' in skill_text:
+        results.add(LsCondition.NO_SKYFALL_COMBOS)
+
     etc_text = [
         'taiko',
         'power-up',
@@ -321,6 +336,7 @@ def parse_ls_conditions(skill_text: str) -> list[LsCondition]:
         'sells for',
         'special evo material',
         'monster points',
+        'egg drop rate',
     ]
     if any([x in skill_text for x in etc_text]):
         results.add(LsCondition.ETC)
