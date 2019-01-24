@@ -23,7 +23,7 @@ class EnemySkill(pad_util.JsonDictEncodable):
         while offset < self.flags.bit_length():
             if (self.flags >> offset) & 1 != 0:
                 p_value = raw[p_idx]
-                self.params[offset] = int(p_value) if p_value.isdigit() else p_value
+                self.params[offset] = int(p_value) if p_value.lstrip('-').isdigit() else p_value
                 p_idx += 1
             offset += 1
 
