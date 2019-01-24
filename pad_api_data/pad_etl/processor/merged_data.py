@@ -1,6 +1,8 @@
-from ..common import pad_util
 from datetime import datetime, timedelta
+
 import pytz
+
+from ..common import pad_util
 
 
 class MergedBonus(pad_util.JsonDictEncodable):
@@ -33,6 +35,19 @@ class MergedCard(pad_util.JsonDictEncodable):
     def __repr__(self):
         return 'MergedCard({} - {} - {})'.format(
             repr(self.card), repr(self.active_skill), repr(self.leader_skill))
+
+
+class MergedEnemySkillset(pad_util.JsonDictEncodable):
+    def __init__(self, enemy_skill_ref, enemy_skill, enemy_skill_set=None):
+        self.enemy_skill_id = enemy_skill_ref.enemy_skill_id
+        self.enemy_skill_ref = {'ai': enemy_skill_ref.enemy_ai, 'rnd': enemy_skill_ref.enemy_rnd}
+        self.enemy_skill_info = {'name': enemy_skill.name,
+                                 'type': enemy_skill.type, 'params': enemy_skill.params}
+        
+        self.enemy_skill_set = []
+        if enemy_skill_set:
+            self.enemy_skill_set = [{'name': es.name, 'type': es.type,
+                                     'params': es.params} for es in enemy_skill_set]
 
 
 class CrossServerCard(object):
