@@ -3,15 +3,15 @@ from dungeon_maps import btypeChart, battrChart
 
 class Modifier:
     def __init__(self):
-        self.requiredDungeon = None
+        self.requiredDungeon = 0
         self.remainingModifiers = []
-        self.entryRequirement = None
+        self.entryRequirement = "None"
         self.modifiers = {}
         self.messages = []
         self.fixedTeam = {}
-        self.enhancedType = None
-        self.enhancedAttribute = None
-        self.score = None
+        self.enhancedType = "None"
+        self.enhancedAttribute = "None"
+        self.score = 0
         self.possibleDrops = {}
         self.pos = 0
 
