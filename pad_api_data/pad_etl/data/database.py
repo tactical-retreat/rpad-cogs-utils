@@ -3,7 +3,8 @@ import logging
 import os
 
 from . import bonus, card, dungeon, skill, exchange, enemy_skill
-from ..processor.merged_data import MergedBonus, MergedCard  # TODO move these into data dir
+# TODO move these into data dir
+from ..processor.merged_data import MergedBonus, MergedCard, MergedEnemySkillset
 
 
 fail_logger = logging.getLogger('processor_failures')
@@ -54,6 +55,26 @@ def _clean_cards(cards, skills):
     return merged_cards
 
 
+def _clean_enemy(cards, enemy_skills):
+    enemy_skill_by_id = {s.enemy_skill_id: s for s in enemy_skills}
+    merged_enemies = []
+    for card in cards:
+        if len(card.enemy_skill_refs) > 0:
+            enemy_skillset = []
+            for esr in card.enemy_skill_refs:
+                if enemy_skill_by_id.get(esr.enemy_skill_id) is None:
+                    print("Enemy skill not found: " + str(esr.enemy_skill_id))
+                    continue
+                es = enemy_skill_by_id.get(esr.enemy_skill_id)
+                es_set = None
+                if es.type == 83:
+                    es_set = [enemy_skill_by_id.get(s_id) for s_id in es.params[1:11]
+                              if s_id is not None and enemy_skill_by_id.get(s_id) is not None]
+                enemy_skillset.append(MergedEnemySkillset(esr, es, es_set))
+            merged_enemies.append({'monster_no': card.card_id, 'skill_set': enemy_skillset})
+    return merged_enemies
+
+
 class Database(object):
     def __init__(self, pg_server, raw_dir):
         self.pg_server = pg_server
@@ -95,6 +116,7 @@ class Database(object):
 
         self.bonuses = _clean_bonuses(self.pg_server, self.bonus_sets, self.dungeons)
         self.cards = _clean_cards(self.raw_cards, self.skills)
+        self.enemies = _clean_enemy(self.raw_cards, self.enemy_skills)
 
     def save_all(self, output_dir: str, pretty: bool):
         def save(file_name: str, obj: object):
@@ -111,3 +133,4 @@ class Database(object):
         save('bonuses', self.bonuses)
         save('cards', self.cards)
         save('exchange', self.exchange)
+        save('enemies', self.enemies)
