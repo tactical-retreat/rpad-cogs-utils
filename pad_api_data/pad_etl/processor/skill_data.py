@@ -1,7 +1,12 @@
 import re
+import time
 from typing import List
 
 from enum import Enum
+
+from . import db_util
+from . import sql_item
+from .sql_item import SimpleSqlItem
 
 
 # Values here are used to compose the skill_data_list -> type_data field, which
@@ -342,3 +347,40 @@ def parse_ls_conditions(skill_text: str) -> List[LsCondition]:
         results.add(LsCondition.ETC)
 
     return results
+
+
+class SkillData(SimpleSqlItem):
+    """Contains details about the skill.
+
+    Currently only populating the skill_type, used for searching.
+    Other fields control visual display of the skill's effects.
+    """
+    TABLE = 'skill_data_list'
+    KEY_COL = 'ts_seq'
+
+    def __init__(self,
+                 data1: str=None,
+                 data2: str=None,
+                 data3: str=None,
+                 data4: str=None,
+                 data5: str=None,
+                 data6: str=None,
+                 tstamp: int=None,
+                 ts_seq: int=None,
+                 type_data: str=None):
+        self.data1 = data1
+        self.data2 = data2
+        self.data3 = data3
+        self.data4 = data4
+        self.data5 = data5
+        self.data6 = data6
+        self.tstamp = tstamp or (int(time.time()) * 1000)
+        self.ts_seq = ts_seq
+        self.type_data = type_data
+
+    def uses_local_primary_key(self):
+        return False
+
+    # Only updating the type_data field for now
+    def _update_columns(self):
+        return ['type_data']
