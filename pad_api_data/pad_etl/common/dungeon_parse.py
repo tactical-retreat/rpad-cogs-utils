@@ -1,4 +1,4 @@
-from dungeon_maps import ENHANCED_TYPE_MAP, ENHANCED_ATTRIBUTE_MAP
+from dungeon_maps import ENHANCED_TYPE_MAP, ENHANCED_ATTRIBUTE_MAP, TEAM_REQUIREMENT_MAP
 
 
 class Modifier:
@@ -25,6 +25,9 @@ def get_last_as_string(raw):
 
 def get_modifiers(raw):
     dungeon_modifiers = Modifier()
+
+    # This indicates the types of things you should build your team around, i.e. No Awoken Skills, Tricolor, No RCV, etc
+    dungeon_modifiers.messages.append(TEAM_REQUIREMENT_MAP[int(raw[7])])
 
     # This next loop runs through the elements from raw[8] until it hits a 0. The 0 indicates the end of the list
     # of drops for the floor, the following segments are the dungeon modifiers

@@ -1,7 +1,7 @@
 
 
 # This is a map for the Floor raw[7] item, which indicates the board modifier
-BOARD_MODIFIER_MAP = {
+TEAM_REQUIREMENT_MAP = {
     0: 'None',
     1: 'No Fire',
     2: 'No Water',
@@ -40,7 +40,7 @@ BOARD_MODIFIER_MAP = {
 
 
 # This map takes in an int, indicated by the btype parameter in the dungeon modifiers, and returns
-# the type of monster that gets a stat boost i.e. 1.5x stats for dragon type
+# the type of monster that gets a stat boost i.e. 1.5x stats for dragon type would be btype:16
 ENHANCED_TYPE_MAP = {
     2: 'Balanced',
     4: 'Physical',
@@ -61,7 +61,7 @@ ENHANCED_TYPE_MAP = {
 }
 
 # This map takes in an int, indiciated by the battr parameter, and returns the attribute
-# that receives a stat bonus, i.e. 1.5x stats for Light type
+# that receives a stat bonus, i.e. 1.5x stats for Light type would be battr:8
 ENHANCED_ATTRIBUTE_MAP = {
     1: 'Fire',
     2: 'Water',
