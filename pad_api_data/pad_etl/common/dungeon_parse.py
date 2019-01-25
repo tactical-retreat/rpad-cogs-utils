@@ -15,11 +15,11 @@ class Modifier:
         self.possible_drops = {}
 
 
-def splitMods(raw, pos, diff):
+def split_modifiers(raw, pos, diff):
     return raw[pos + diff].split("|")
 
 
-def getLast(raw):
+def get_last_as_string(raw):
     return str(raw[-1])
 
 
@@ -31,20 +31,20 @@ def getModifiers(raw):
     pos = 8
 
     while (int(raw[pos]) is not 0):
-        rawVal = int(raw[pos])
-        if rawVal > 10000:
-            val = rawVal - 10000
-            modifiers.possibleDrops[val] = "rare"
+        raw_val = int(raw[pos])
+        if raw_val > 10000:
+            val = raw_val - 10000
+            modifiers.possible_drops[val] = "rare"
             pos += 1
         else:
-            modifiers.possibleDrops[rawVal] = "normal"
+            modifiers.possible_drops[raw_val] = "normal"
             pos += 1
     pos += 1
 
     val = int(raw[pos])
 
     if val == 5:
-        modifiers.requiredDungeon = int(raw[pos + 1])
+        modifiers.required_dungeon = int(raw[pos + 1])
         return modifiers
 
     elif val == 8:
@@ -52,26 +52,25 @@ def getModifiers(raw):
         return modifiers
 
     elif val == 32:
-        modifiers.messages.append(parse32[int(raw[pos + 1])](raw))
-        # modifiers.messages.append(parse32[int(raw[pos + 2])](raw))
+        modifiers.messages.append(ENTRY_REQUIREMENT_MAP[int(raw[pos + 1])](raw))
         return modifiers
 
     elif val == 33:
-        modifiers.requiredDungeon = int(raw[pos + 1])
-        modifiers.entryRequirement = parse32[int(raw[pos + 3])](raw)
+        modifiers.required_dungeon = int(raw[pos + 1])
+        modifiers.entry_requirement = ENTRY_REQUIREMENT_MAP[int(raw[pos + 3])](raw)
         return modifiers
 
     elif val == 37:
-        modifiers.requiredDungeon = int(raw[pos + 1])
-        modifiers.entryRequirement = parse32[int(raw[-2])](raw)
+        modifiers.required_dungeon = int(raw[pos + 1])
+        modifiers.entry_requirement = ENTRY_REQUIREMENT_MAP[int(raw[-2])](raw)
         return modifiers
 
     elif val == 40:
-        modifiers.entryRequirement = parse32[int(raw[pos + 2])](raw)
+        modifiers.entry_requirement = ENTRY_REQUIREMENT_MAP[int(raw[pos + 2])](raw)
         return modifiers
 
     elif val == 64:
-        mods = splitMods(raw, pos, 1)
+        mods = split_modifiers(raw, pos, 1)
 
         for m in mods:
             if 'dmsg' in m:
@@ -81,11 +80,11 @@ def getModifiers(raw):
             elif 'fc' in m:
 
                 details = m.split(';')
-                cardID = details[0].split(":")[-1]
+                card_id = details[0].split(":")[-1]
 
                 full_record = len(details) > 1
 
-                modifiers.fixedTeam[cardID] = {
+                modifiers.fixed_team[card_id] = {
                     'monster_id': details[0],
                     'hp_plus': details[1] if full_record else 0,
                     'atk_plus': details[2] if full_record else 0,
@@ -126,38 +125,38 @@ def getModifiers(raw):
         return modifiers
 
     elif val == 65:
-        modifiers.requiredDungeon = int(raw[pos + 1])
-        modifiers.remainingModifiers = splitMods(raw, pos, 2)
+        modifiers.required_dungeon = int(raw[pos + 1])
+        modifiers.remaining_modifiers = split_modifiers(raw, pos, 2)
         return modifiers
 
     elif val == 69:
-        modifiers.requiredDungeon = int(raw[pos + 1])
-        modifiers.remainingModifiers = splitMods(raw, pos, 4)
+        modifiers.required_dungeon = int(raw[pos + 1])
+        modifiers.remaining_modifiers = split_modifiers(raw, pos, 4)
         return modifiers
 
     elif val == 72:
-        modifiers.remainingModifiers = splitMods(raw, pos, 2)
+        modifiers.remaining_modifiers = split_modifiers(raw, pos, 2)
         return modifiers
     elif val == 96:
-        splitData = raw[pos + 1].split("|")
-        for m in splitData:
-            modifiers.remainingModifiers.append(m)
-        modifiers.entryRequirement = parse32[int(raw[pos + 2])](raw)
+        split_data = raw[pos + 1].split("|")
+        for m in split_data:
+            modifiers.remaining_modifiers.append(m)
+        modifiers.entry_requirement = ENTRY_REQUIREMENT_MAP[int(raw[pos + 2])](raw)
         return modifiers
-    else:
-        return modifiers
+
+    return modifiers
 
 
 def getCost(raw):
-    return "Maximum cost: " + getLast(raw)
+    return "Maximum cost: " + get_last_as_string(raw)
 
 
 def getMaxStar(raw):
-    return getLast(raw) + " stars or less"
+    return get_last_as_string(raw) + " stars or less"
 
 
 def getAllowedType(raw):
-    return type_flip[getLast(raw)] + " type only allowed"
+    return type_flip[get_last_as_string(raw)] + " type only allowed"
 
 
 def getReqAttr(raw):
@@ -173,11 +172,12 @@ def specialDesc(raw):
 
 
 def getReqExpDragon(raw):
-    return getLast(raw) + " required to enter"
+    return get_last_as_string(raw) + " required to enter"
 
 
 def getNumOrLess(raw):
-    return "Teams of " + getLast(raw) + " or less allowed"
+    return "Teams of " + get_last_as_string(raw) + " or less allowed"
+
 
 # Appears to be a special case, for a dungeon that no longer is in the game
 TYPE_FLIP = {
