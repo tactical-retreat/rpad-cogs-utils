@@ -128,7 +128,6 @@ def get_modifiers(raw):
         return dungeon_modifiers
 
     elif val == 32:
-        print(raw)
         dungeon_modifiers.messages.append(ENTRY_REQUIREMENT_MAP[int(raw[pos + 1])](raw))
         return dungeon_modifiers
 
