@@ -6,7 +6,7 @@ class Modifier:
         self.required_dungeon = None
         self.remaining_modifiers = []
         self.entry_requirement = ""
-        self.modifiers = {}
+        self.stat_modifiers = {}
         self.messages = []
         self.fixed_team = {}
         self.enhanced_type = ""
@@ -24,7 +24,7 @@ def get_last_as_string(raw):
 
 
 def get_modifiers(raw):
-    modifiers = Modifier()
+    dungeon_modifiers = Modifier()
 
     # This next loop runs through the elements from raw[8] until it hits a 0. The 0 indicates the end of the list
     # of drops for the floor, the following segments are the dungeon modifiers
@@ -34,56 +34,56 @@ def get_modifiers(raw):
         raw_val = int(raw[pos])
         if raw_val > 10000:
             val = raw_val - 10000
-            modifiers.possible_drops[val] = "rare"
+            dungeon_modifiers.possible_drops[val] = "rare"
             pos += 1
         else:
-            modifiers.possible_drops[raw_val] = "normal"
+            dungeon_modifiers.possible_drops[raw_val] = "normal"
             pos += 1
     pos += 1
 
     val = int(raw[pos])
 
     if val == 5:
-        modifiers.required_dungeon = int(raw[pos + 1])
-        return modifiers
+        dungeon_modifiers.required_dungeon = int(raw[pos + 1])
+        return dungeon_modifiers
 
     elif val == 8:
-        modifiers.score = raw[pos + 1]
-        return modifiers
+        dungeon_modifiers.score = raw[pos + 1]
+        return dungeon_modifiers
 
     elif val == 32:
-        modifiers.messages.append(ENTRY_REQUIREMENT_MAP[int(raw[pos + 1])](raw))
-        return modifiers
+        dungeon_modifiers.messages.append(ENTRY_REQUIREMENT_MAP[int(raw[pos + 1])](raw))
+        return dungeon_modifiers
 
     elif val == 33:
-        modifiers.required_dungeon = int(raw[pos + 1])
-        modifiers.entry_requirement = ENTRY_REQUIREMENT_MAP[int(raw[pos + 3])](raw)
-        return modifiers
+        dungeon_modifiers.required_dungeon = int(raw[pos + 1])
+        dungeon_modifiers.entry_requirement = ENTRY_REQUIREMENT_MAP[int(raw[pos + 3])](raw)
+        return dungeon_modifiers
 
     elif val == 37:
-        modifiers.required_dungeon = int(raw[pos + 1])
-        modifiers.entry_requirement = ENTRY_REQUIREMENT_MAP[int(raw[-2])](raw)
-        return modifiers
+        dungeon_modifiers.required_dungeon = int(raw[pos + 1])
+        dungeon_modifiers.entry_requirement = ENTRY_REQUIREMENT_MAP[int(raw[-2])](raw)
+        return dungeon_modifiers
 
     elif val == 40:
-        modifiers.entry_requirement = ENTRY_REQUIREMENT_MAP[int(raw[pos + 2])](raw)
-        return modifiers
+        dungeon_modifiers.entry_requirement = ENTRY_REQUIREMENT_MAP[int(raw[pos + 2])](raw)
+        return dungeon_modifiers
 
     elif val == 64:
         mods = split_modifiers(raw, pos, 1)
 
         for m in mods:
             if 'dmsg' in m:
-                modifiers.messages.append(m.split(':')[-1])
+                dungeon_modifiers.messages.append(m.split(':')[-1])
             elif 'smsg' in m:
-                modifiers.messages.append(m.split(':')[-1])
+                dungeon_modifiers.messages.append(m.split(':')[-1])
             elif 'fc' in m:
                 details = m.split(';')
                 card_id = details[0].split(":")[-1]
 
                 full_record = len(details) > 1
 
-                modifiers.fixed_team[card_id] = {
+                dungeon_modifiers.fixed_team[card_id] = {
                     'monster_id': details[0],
                     'hp_plus': details[1] if full_record else 0,
                     'atk_plus': details[2] if full_record else 0,
@@ -95,59 +95,59 @@ def get_modifiers(raw):
                 split_btype = m.split(';')
                 enhanced_type_raw = int(split_btype[0].split(':')[-1])
                 mods = split_btype[1:]
-                modifiers.enhanced_type = ENHANCED_TYPE_MAP[enhanced_type_raw]
-                modifiers.modifiers['hp'] = int(mods[0]) / 10000
-                modifiers.modifiers['atk'] = int(mods[1]) / 10000
-                modifiers.modifiers['rcv'] = int(mods[2]) / 10000
+                dungeon_modifiers.enhanced_type = ENHANCED_TYPE_MAP[enhanced_type_raw]
+                dungeon_modifiers.stat_modifiers['hp'] = int(mods[0]) / 10000
+                dungeon_modifiers.stat_modifiers['atk'] = int(mods[1]) / 10000
+                dungeon_modifiers.stat_modifiers['rcv'] = int(mods[2]) / 10000
 
             elif 'battr' in m:
                 split_btype = m.split(';')
                 val = int(split_btype[0].split(':')[-1])
                 mods = split_btype[1:]
-                modifiers.enhancedAttribute = ENHANCED_ATTRIBUTE_MAP[val]
-                modifiers.modifiers['hp'] = int(mods[0]) / 10000
-                modifiers.modifiers['atk'] = int(mods[1]) / 10000
-                modifiers.modifiers['rcv'] = int(mods[2]) / 10000
+                dungeon_modifiers.enhancedAttribute = ENHANCED_ATTRIBUTE_MAP[val]
+                dungeon_modifiers.stat_modifiers['hp'] = int(mods[0]) / 10000
+                dungeon_modifiers.stat_modifiers['atk'] = int(mods[1]) / 10000
+                dungeon_modifiers.stat_modifiers['rcv'] = int(mods[2]) / 10000
 
             elif 'hpfix' in m:
                 hp_val = m.split(':')[-1]
-                modifiers.modifiers['fixed_hp'] = int(hp_val)
+                dungeon_modifiers.stat_modifiers['fixed_hp'] = int(hp_val)
             elif 'ndf' in m:
-                modifiers.messages.append("No Skyfall Combos")
+                dungeon_modifiers.messages.append("No Skyfall Combos")
             elif 'hp' in m:
                 hp_val = m.split(':')[-1]
-                modifiers.modifiers['hp'] = int(hp_val) / 10000
+                dungeon_modifiers.stat_modifiers['hp'] = int(hp_val) / 10000
             elif 'atk' in m:
                 atk_val = m.split(':')[-1]
-                modifiers.modifiers['atk'] = int(atk_val) / 10000
+                dungeon_modifiers.stat_modifiers['atk'] = int(atk_val) / 10000
             elif 'df' in m:
                 df_val = m.split(':')[-1]
-                modifiers.modifiers['def'] = int(df_val) / 10000
+                dungeon_modifiers.stat_modifiers['def'] = int(df_val) / 10000
             else:
-                modifiers.remaining_modifiers.append(m)
-        return modifiers
+                dungeon_modifiers.remaining_modifiers.append(m)
+        return dungeon_modifiers
 
     elif val == 65:
-        modifiers.required_dungeon = int(raw[pos + 1])
-        modifiers.remaining_modifiers = split_modifiers(raw, pos, 2)
-        return modifiers
+        dungeon_modifiers.required_dungeon = int(raw[pos + 1])
+        dungeon_modifiers.remaining_modifiers = split_modifiers(raw, pos, 2)
+        return dungeon_modifiers
 
     elif val == 69:
-        modifiers.required_dungeon = int(raw[pos + 1])
-        modifiers.remaining_modifiers = split_modifiers(raw, pos, 4)
-        return modifiers
+        dungeon_modifiers.required_dungeon = int(raw[pos + 1])
+        dungeon_modifiers.remaining_modifiers = split_modifiers(raw, pos, 4)
+        return dungeon_modifiers
 
     elif val == 72:
-        modifiers.remaining_modifiers = split_modifiers(raw, pos, 2)
-        return modifiers
+        dungeon_modifiers.remaining_modifiers = split_modifiers(raw, pos, 2)
+        return dungeon_modifiers
     elif val == 96:
         split_data = raw[pos + 1].split("|")
         for m in split_data:
-            modifiers.remaining_modifiers.append(m)
-        modifiers.entry_requirement = ENTRY_REQUIREMENT_MAP[int(raw[pos + 2])](raw)
-        return modifiers
+            dungeon_modifiers.remaining_modifiers.append(m)
+        dungeon_modifiers.entry_requirement = ENTRY_REQUIREMENT_MAP[int(raw[pos + 2])](raw)
+        return dungeon_modifiers
 
-    return modifiers
+    return dungeon_modifiers
 
 
 def get_cost(raw):

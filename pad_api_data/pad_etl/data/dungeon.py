@@ -40,7 +40,7 @@ class DungeonFloor(pad_util.JsonDictEncodable):
         self.entry_requirement = modifiers.entryRequirement
         self.required_dungeon = modifiers.requiredDungeon
         self.remaining_modifiers = modifiers.remainingModifiers
-        self.stat_modifiers = modifiers.modifiers
+        self.stat_modifiers = modifiers.stat_modifiers
         self.enhanced_type = modifiers.enhancedType
         self.enhanced_attribute = modifiers.enhancedAttribute
         self.messages = modifiers.messages
