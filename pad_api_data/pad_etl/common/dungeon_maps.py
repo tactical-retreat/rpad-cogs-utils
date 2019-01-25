@@ -1,6 +1,7 @@
 
 
 # This is a map for the Floor raw[7] item, which indicates the board modifier
+# Value for 768 is currently blank as there are no obvious indications as to what it is referring to
 TEAM_REQUIREMENT_MAP = {
     0: None,
     1: 'No Fire',
@@ -28,7 +29,7 @@ TEAM_REQUIREMENT_MAP = {
     276: 'No Wood/Dark',
     280: 'Tricolor',
     288: 'No RCV',
-    768: '',
+    768: None,
     800: 'No RCV',
     1024: 'Awoken Skills Invalid',
     1056: 'No RCV, Awoken Skills Invalid',
