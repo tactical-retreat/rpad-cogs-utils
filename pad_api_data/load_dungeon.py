@@ -1,5 +1,6 @@
 import argparse
 import json
+import logging
 import os
 
 from pad_etl.data import bonus as databonus
@@ -8,8 +9,11 @@ from pad_etl.data import dungeon as datadungeon
 from pad_etl.processor import db_util
 from pad_etl.processor import dungeon
 from pad_etl.processor import dungeon_processor
-
 from pad_etl.processor.wave import WaveItem
+
+
+logger = logging.getLogger('database')
+logger.setLevel(logging.INFO)
 
 
 def parse_args():
