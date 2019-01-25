@@ -11,7 +11,6 @@ from typing import List, Any
 from ..common import pad_util
 from ..common.dungeon_types import DUNGEON_TYPE, REPEAT_DAY
 from ..common.dungeon_parse import get_modifiers, Modifier
-from ..common.dungeon_maps import TEAM_REQUIREMENT_MAP
 
 # The typical JSON file name for this data.
 FILE_NAME = 'download_dungeon_data.json'
@@ -38,7 +37,6 @@ class DungeonFloor(pad_util.JsonDictEncodable):
         self.possible_drops = modifiers.possible_drops
         self.entry_requirement = modifiers.entry_requirement
         self.required_dungeon = modifiers.required_dungeon
-        self.remaining_modifiers = modifiers.remaining_modifiers
         self.enhanced_type = modifiers.enhanced_type
         self.enhanced_attribute = modifiers.enhanced_attribute
         self.messages = modifiers.messages
@@ -48,6 +46,7 @@ class DungeonFloor(pad_util.JsonDictEncodable):
         self.remaining_modifiers = modifiers.remaining_modifiers
 
         self.score = modifiers.score
+
         self.modifiers_clean = modifiers.stat_modifiers
 
 
