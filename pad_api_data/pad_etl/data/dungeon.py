@@ -20,11 +20,6 @@ class DungeonFloor(pad_util.JsonDictEncodable):
     """A floor listed once you click into a Dungeon."""
 
     def __init__(self, raw: List[Any]):
-        try:
-            modifiers = get_modifiers(raw)
-        except Exception as e:
-            print("Error:", e, "on parse of values", int(raw[8:]))
-            modifiers = Modifier()
         self.floor_number = int(raw[0])
         self.raw_name = raw[1]
         self.clean_name = pad_util.strip_colors(self.raw_name)
@@ -34,6 +29,8 @@ class DungeonFloor(pad_util.JsonDictEncodable):
         self.bgm1 = raw[5]
         self.bgm2 = raw[6]
         self.rflags2 = int(raw[7])
+
+        modifiers = get_modifiers(raw)
         self.possible_drops = modifiers.possible_drops
         self.entry_requirement = modifiers.entry_requirement
         self.required_dungeon = modifiers.required_dungeon
