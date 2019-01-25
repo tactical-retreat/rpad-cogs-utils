@@ -233,8 +233,8 @@ def update_sub_dungeon(sub_dungeon: dbdungeon.SubDungeon,
 
     sub_dungeon.coin_max = int(sum([rs.coins_max for rs in result_stages]))
     sub_dungeon.coin_min = int(sum([rs.coins_min for rs in result_stages]))
-    sub_dungeon.exp_max = int(sum([rs.xp_min for rs in result_stages]))
-    sub_dungeon.exp_min = int(sum([rs.xp_max for rs in result_stages]))
+    sub_dungeon.exp_max = int(sum([rs.xp_max for rs in result_stages]))
+    sub_dungeon.exp_min = int(sum([rs.xp_min for rs in result_stages]))
 
     if jp_dungeon_floor.score:
         if sub_dungeon.resolved_sub_dungeon_score is None:
