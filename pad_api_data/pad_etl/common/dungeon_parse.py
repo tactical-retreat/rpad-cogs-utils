@@ -6,14 +6,14 @@ class Modifier:
         self.required_dungeon = None
         self.required_floor = None
         self.remaining_modifiers = []
-        self.entry_requirement = ""
+        self.entry_requirement = None
         self.team_stat_modifiers = {}
         self.encounter_stat_modifiers = {}
         self.messages = []
         self.fixed_team = {}
-        self.enhanced_type = ""
-        self.enhanced_attribute = ""
-        self.score = 0
+        self.enhanced_type = None
+        self.enhanced_attribute = None
+        self.score = None
         self.possible_drops = {}
 
     def __str__(self):
