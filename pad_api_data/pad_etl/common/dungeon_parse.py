@@ -28,8 +28,8 @@ def get_last_as_string(raw):
     return str(raw[-1])
 
 
-def get_stat_modifiers(split_modifiers, dungeon_modifiers):
-    for m in split_modifiers:
+def get_stat_modifiers(mods, dungeon_modifiers):
+    for m in mods:
         if m.startswith('dmsg'):
             dungeon_modifiers.messages.append(m.split(':')[-1])
         elif m.startswith('smsg'):
@@ -127,6 +127,7 @@ def get_modifiers(raw):
         return dungeon_modifiers
 
     elif val == 32:
+        print(raw)
         dungeon_modifiers.messages.append(ENTRY_REQUIREMENT_MAP[int(raw[pos + 1])](raw))
         return dungeon_modifiers
 
@@ -167,12 +168,14 @@ def get_modifiers(raw):
     elif val == 72:
         dungeon_modifiers.remaining_modifiers = split_modifiers(raw, pos, 2)
         return dungeon_modifiers
+
     elif val == 96:
         split_data = raw[pos + 1].split("|")
         for m in split_data:
             dungeon_modifiers.remaining_modifiers.append(m)
         dungeon_modifiers.entry_requirement = ENTRY_REQUIREMENT_MAP[int(raw[pos + 2])](raw)
         return dungeon_modifiers
+
     elif val == 97:
         dungeon_modifiers.required_dungeon = int(raw[pos + 1])
         dungeon_modifiers.required_floor = int(raw[pos + 2])
@@ -180,6 +183,7 @@ def get_modifiers(raw):
         get_stat_modifiers(mods, dungeon_modifiers)
         dungeon_modifiers.messages.append(ENTRY_REQUIREMENT_MAP[int(raw[pos+4])](raw))
         return dungeon_modifiers
+    
     elif val == 101:
         dungeon_modifiers.required_dungeon = int(raw[pos + 1])
         dungeon_modifiers.required_floor = int(raw[pos + 2])
