@@ -4,15 +4,15 @@ from dungeon_maps import btypeChart, battrChart
 class Modifier:
     def __init__(self):
         self.required_dungeon = None
-        self.remainingModifiers = []
-        self.entryRequirement = ""
+        self.remaining_modifiers = []
+        self.entry_requirement = ""
         self.modifiers = {}
         self.messages = []
-        self.fixedTeam = {}
-        self.enhancedType = ""
-        self.enhancedAttribute = ""
+        self.fixed_team = {}
+        self.enhanced_type = ""
+        self.enhanced_attribute = ""
         self.score = 0
-        self.possibleDrops = {}
+        self.possible_drops = {}
 
 
 def splitMods(raw, pos, diff):

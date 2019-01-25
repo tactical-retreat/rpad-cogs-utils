@@ -1,7 +1,7 @@
 
 
 # This is a map for the Floor raw[7] item, which indicates the board modifier
- BOARD_MODIFIER_MAP = {
+BOARD_MODIFIER_MAP = {
     0: 'None',
     1: 'No Fire',
     2: 'No Water',
