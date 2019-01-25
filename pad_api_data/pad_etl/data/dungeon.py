@@ -10,7 +10,7 @@ from typing import List, Any
 
 from ..common import pad_util
 from ..common.dungeon_types import DUNGEON_TYPE, REPEAT_DAY
-from ..common.dungeon_parse import getModifiers, Modifier
+from ..common.dungeon_parse import get_modifiers, Modifier
 from ..common.dungeon_maps import BOARD_MODIFIER_MAP
 
 # The typical JSON file name for this data.
@@ -22,7 +22,7 @@ class DungeonFloor(pad_util.JsonDictEncodable):
 
     def __init__(self, raw: List[Any]):
         try:
-            modifiers = getModifiers(raw)
+            modifiers = get_modifiers(raw)
         except Exception as e:
             print("Error:", e, "on parse of values", int(raw[8:]))
         modifiers = Modifier()

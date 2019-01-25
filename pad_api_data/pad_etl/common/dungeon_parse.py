@@ -23,7 +23,7 @@ def get_last_as_string(raw):
     return str(raw[-1])
 
 
-def getModifiers(raw):
+def get_modifiers(raw):
     modifiers = Modifier()
 
     # This next loop runs through the elements from raw[8] until it hits a 0. The 0 indicates the end of the list
@@ -93,35 +93,30 @@ def getModifiers(raw):
                     'skill_level': details[5] if full_record else 0,
                 }
             elif 'btype' in m:
-                splitBtype = m.split(';')
-                val = int(splitBtype[0].split(':')[-1])
-                try:
-                    mods = splitBtype[1:]
-                    modifiers.enhancedType = btypeChart[val]
-                    modifiers.modifiers['hp'] = int(mods[0]) / 10000
-                    modifiers.modifiers['atk'] = int(mods[1]) / 10000
-                    modifiers.modifiers['rcv'] = int(mods[2]) / 10000
-                except Exception as e:
-                    print("Enhanced type for value", val, " not supported. Dungeon title:", raw[1], ". Error:", e)
+                split_btype = m.split(';')
+                enhanced_type_raw = int(split_btype[0].split(':')[-1])
+                mods = split_btype[1:]
+                modifiers.enhanced_type = btypeChart[enhanced_type_raw]
+                modifiers.modifiers['hp'] = int(mods[0]) / 10000
+                modifiers.modifiers['atk'] = int(mods[1]) / 10000
+                modifiers.modifiers['rcv'] = int(mods[2]) / 10000
+
             elif 'battr' in m:
                 btype = m.split(';')
                 val = int(btype[0].split(':')[-1])
+                mods = btype[1:]
+                modifiers.enhancedAttribute = battrChart[val]
+                modifiers.modifiers['hp'] = int(mods[0]) / 10000
+                modifiers.modifiers['atk'] = int(mods[1]) / 10000
+                modifiers.modifiers['rcv'] = int(mods[2]) / 10000
 
-                try:
-                    mods = btype[1:]
-                    modifiers.enhancedAttribute = battrChart[val]
-                    modifiers.modifiers['hp'] = int(mods[0]) / 10000
-                    modifiers.modifiers['atk'] = int(mods[1]) / 10000
-                    modifiers.modifiers['rcv'] = int(mods[2]) / 10000
-                except Exception as e:
-                    print(e, "for value", val, "btype split data:", btype, "Dungeon:", raw[1])
             elif 'hpfix' in m:
                 val = m.split(':')[-1]
                 modifiers.modifiers['fixed_hp'] = int(val)
             elif 'ndf' in m:
                 modifiers.messages.append("No Skyfall Combos")
             else:
-                modifiers.remainingModifiers.append(m)
+                modifiers.remaining_modifiers.append(m)
         return modifiers
 
     elif val == 65:
