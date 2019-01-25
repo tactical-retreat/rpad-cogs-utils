@@ -47,8 +47,9 @@ class DungeonFloor(pad_util.JsonDictEncodable):
 
         self.score = modifiers.score
 
-        self.modifiers_clean = modifiers.stat_modifiers
-
+        # Preserves original modifiers_clean usage while adding in a new option for team specific multipliers
+        self.team_modifiers = modifiers.team_stat_modifiers
+        self.modifiers_clean = modifiers.encounter_stat_modifiers
 
 
 prefix_to_dungeontype = {
