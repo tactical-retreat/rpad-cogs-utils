@@ -16,6 +16,9 @@ class Modifier:
         self.score = 0
         self.possible_drops = {}
 
+    def __str__(self):
+        return str(self.__dict__)
+
 
 def split_modifiers(raw, pos, diff):
     return raw[pos + diff].split("|")
@@ -23,6 +26,62 @@ def split_modifiers(raw, pos, diff):
 
 def get_last_as_string(raw):
     return str(raw[-1])
+
+
+def get_stat_modifiers(split_modifiers, dungeon_modifiers):
+    for m in split_modifiers:
+        if m.startswith('dmsg'):
+            dungeon_modifiers.messages.append(m.split(':')[-1])
+        elif m.startswith('smsg'):
+            dungeon_modifiers.messages.append(m.split(':')[-1])
+        elif m.startswith('fc'):
+            details = m.split(';')
+            card_id = details[0].split(":")[-1]
+
+            full_record = len(details) > 1
+
+            dungeon_modifiers.fixed_team[card_id] = {
+                'monster_id': details[0],
+                'hp_plus': details[1] if full_record else 0,
+                'atk_plus': details[2] if full_record else 0,
+                'rcv_plus': details[3] if full_record else 0,
+                'awakening_count': details[4] if full_record else 0,
+                'skill_level': details[5] if full_record else 0,
+            }
+        elif m.startswith('btype'):
+            split_btype = m.split(';')
+            enhanced_type_raw = int(split_btype[0].split(':')[-1])
+            mods = split_btype[1:]
+            dungeon_modifiers.enhanced_type = ENHANCED_TYPE_MAP[enhanced_type_raw]
+            dungeon_modifiers.team_stat_modifiers['hp'] = float(mods[0]) / 10000
+            dungeon_modifiers.team_stat_modifiers['atk'] = float(mods[1]) / 10000
+            dungeon_modifiers.team_stat_modifiers['rcv'] = float(mods[2]) / 10000
+
+        elif m.startswith('battr'):
+            split_btype = m.split(';')
+            val = int(split_btype[0].split(':')[-1])
+            mods = split_btype[1:]
+            dungeon_modifiers.enhancedAttribute = ENHANCED_ATTRIBUTE_MAP[val]
+            dungeon_modifiers.team_stat_modifiers['hp'] = float(mods[0]) / 10000
+            dungeon_modifiers.team_stat_modifiers['atk'] = float(mods[1]) / 10000
+            dungeon_modifiers.team_stat_modifiers['rcv'] = float(mods[2]) / 10000
+
+        elif m.startswith('btype'):
+            hp_val = m.split(':')[-1]
+            dungeon_modifiers.team_stat_modifiers['fixed_hp'] = float(hp_val)
+        elif m.startswith('ndf'):
+            dungeon_modifiers.messages.append("No Skyfall Combos")
+        elif m.startswith('hp'):
+            hp_val = m.split(':')[-1]
+            dungeon_modifiers.encounter_stat_modifiers['hp'] = float(hp_val) / 10000
+        elif m.startswith('atk'):
+            atk_val = m.split(':')[-1]
+            dungeon_modifiers.encounter_stat_modifiers['atk'] = float(atk_val) / 10000
+        elif m.startswith('df'):
+            df_val = m.split(':')[-1]
+            dungeon_modifiers.encounter_stat_modifiers['def'] = float(df_val) / 10000
+        else:
+            dungeon_modifiers.remaining_modifiers.append(m)
 
 
 def get_modifiers(raw):
@@ -51,12 +110,12 @@ def get_modifiers(raw):
     val = int(raw[pos])
 
     if val == 1:
-        dungeon_modifiers.required_dungeon = int(raw[pos+1])
-        dungeon_modifiers.required_floor = int(raw[pos+2])
+        dungeon_modifiers.required_dungeon = int(raw[pos + 1])
+        dungeon_modifiers.required_floor = int(raw[pos + 2])
 
     elif val == 5:
-        dungeon_modifiers.required_dungeon = int(raw[pos+1])
-        dungeon_modifiers.required_floor = int(raw[pos+2])
+        dungeon_modifiers.required_dungeon = int(raw[pos + 1])
+        dungeon_modifiers.required_floor = int(raw[pos + 2])
         return dungeon_modifiers
 
     elif val == 8:
@@ -89,60 +148,7 @@ def get_modifiers(raw):
 
     elif val == 64:
         mods = split_modifiers(raw, pos, 1)
-
-        for m in mods:
-            if m.startswith('dmsg'):
-                dungeon_modifiers.messages.append(m.split(':')[-1])
-            elif m.startswith('smsg'):
-                dungeon_modifiers.messages.append(m.split(':')[-1])
-            elif m.startswith('fc'):
-                details = m.split(';')
-                card_id = details[0].split(":")[-1]
-
-                full_record = len(details) > 1
-
-                dungeon_modifiers.fixed_team[card_id] = {
-                    'monster_id': details[0],
-                    'hp_plus': details[1] if full_record else 0,
-                    'atk_plus': details[2] if full_record else 0,
-                    'rcv_plus': details[3] if full_record else 0,
-                    'awakening_count': details[4] if full_record else 0,
-                    'skill_level': details[5] if full_record else 0,
-                }
-            elif m.startswith('btype'):
-                split_btype = m.split(';')
-                enhanced_type_raw = int(split_btype[0].split(':')[-1])
-                mods = split_btype[1:]
-                dungeon_modifiers.enhanced_type = ENHANCED_TYPE_MAP[enhanced_type_raw]
-                dungeon_modifiers.team_stat_modifiers['hp'] = float(mods[0]) / 10000
-                dungeon_modifiers.team_stat_modifiers['atk'] = float(mods[1]) / 10000
-                dungeon_modifiers.team_stat_modifiers['rcv'] = float(mods[2]) / 10000
-
-            elif m.startswith('battr'):
-                split_btype = m.split(';')
-                val = int(split_btype[0].split(':')[-1])
-                mods = split_btype[1:]
-                dungeon_modifiers.enhancedAttribute = ENHANCED_ATTRIBUTE_MAP[val]
-                dungeon_modifiers.team_stat_modifiers['hp'] = float(mods[0]) / 10000
-                dungeon_modifiers.team_stat_modifiers['atk'] = float(mods[1]) / 10000
-                dungeon_modifiers.team_stat_modifiers['rcv'] = float(mods[2]) / 10000
-
-            elif m.startswith('btype'):
-                hp_val = m.split(':')[-1]
-                dungeon_modifiers.team_stat_modifiers['fixed_hp'] = float(hp_val)
-            elif m.startswith('ndf'):
-                dungeon_modifiers.messages.append("No Skyfall Combos")
-            elif m.startswith('hp'):
-                hp_val = m.split(':')[-1]
-                dungeon_modifiers.encounter_stat_modifiers['hp'] = float(hp_val) / 10000
-            elif m.startswith('atk'):
-                atk_val = m.split(':')[-1]
-                dungeon_modifiers.encounter_stat_modifiers['atk'] = float(atk_val) / 10000
-            elif m.startswith('df'):
-                df_val = m.split(':')[-1]
-                dungeon_modifiers.encounter_stat_modifiers['def'] = float(df_val) / 10000
-            else:
-                dungeon_modifiers.remaining_modifiers.append(m)
+        get_stat_modifiers(mods, dungeon_modifiers)
         return dungeon_modifiers
 
     elif val == 65:
