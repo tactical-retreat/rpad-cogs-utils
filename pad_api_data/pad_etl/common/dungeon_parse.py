@@ -99,33 +99,33 @@ def get_modifiers(raw):
                 enhanced_type_raw = int(split_btype[0].split(':')[-1])
                 mods = split_btype[1:]
                 dungeon_modifiers.enhanced_type = ENHANCED_TYPE_MAP[enhanced_type_raw]
-                dungeon_modifiers.stat_modifiers['hp'] = int(mods[0]) / 10000
-                dungeon_modifiers.stat_modifiers['atk'] = int(mods[1]) / 10000
-                dungeon_modifiers.stat_modifiers['rcv'] = int(mods[2]) / 10000
+                dungeon_modifiers.stat_modifiers['hp'] = float(mods[0]) / 10000
+                dungeon_modifiers.stat_modifiers['atk'] = float(mods[1]) / 10000
+                dungeon_modifiers.stat_modifiers['rcv'] = float(mods[2]) / 10000
 
             elif m.startswith('battr'):
                 split_btype = m.split(';')
                 val = int(split_btype[0].split(':')[-1])
                 mods = split_btype[1:]
                 dungeon_modifiers.enhancedAttribute = ENHANCED_ATTRIBUTE_MAP[val]
-                dungeon_modifiers.stat_modifiers['hp'] = int(mods[0]) / 10000
-                dungeon_modifiers.stat_modifiers['atk'] = int(mods[1]) / 10000
-                dungeon_modifiers.stat_modifiers['rcv'] = int(mods[2]) / 10000
+                dungeon_modifiers.stat_modifiers['hp'] = float(mods[0]) / 10000
+                dungeon_modifiers.stat_modifiers['atk'] = float(mods[1]) / 10000
+                dungeon_modifiers.stat_modifiers['rcv'] = float(mods[2]) / 10000
 
             elif m.startswith('btype'):
                 hp_val = m.split(':')[-1]
-                dungeon_modifiers.stat_modifiers['fixed_hp'] = int(hp_val)
+                dungeon_modifiers.stat_modifiers['fixed_hp'] = float(hp_val)
             elif m.startswith('ndf'):
                 dungeon_modifiers.messages.append("No Skyfall Combos")
             elif m.startswith('hp'):
                 hp_val = m.split(':')[-1]
-                dungeon_modifiers.stat_modifiers['hp'] = int(hp_val) / 10000
+                dungeon_modifiers.stat_modifiers['hp'] = float(hp_val) / 10000
             elif m.startswith('atk'):
                 atk_val = m.split(':')[-1]
-                dungeon_modifiers.stat_modifiers['atk'] = int(atk_val) / 10000
+                dungeon_modifiers.stat_modifiers['atk'] = float(atk_val) / 10000
             elif m.startswith('df'):
                 df_val = m.split(':')[-1]
-                dungeon_modifiers.stat_modifiers['def'] = int(df_val) / 10000
+                dungeon_modifiers.stat_modifiers['def'] = float(df_val) / 10000
             else:
                 dungeon_modifiers.remaining_modifiers.append(m)
         return dungeon_modifiers
