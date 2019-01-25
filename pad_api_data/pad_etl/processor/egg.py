@@ -144,6 +144,7 @@ class EggTitleName(SimpleSqlItem):
     def uses_alternate_key_lookup(self):
         return True
 
+
 class EggLoader(object):
     def __init__(self, db_wrapper: db_util.DbWrapper):
         self.db_wrapper = db_wrapper
@@ -157,12 +158,18 @@ class EggLoader(object):
         self.db_wrapper.insert_item(sql)
 
         sql = """
-                update egg_title_list 
-                set show_yn = 0, tstamp = UNIX_TIMESTAMP() * 1000 
-                where show_yn = 1
-                and end_date < now()
+            update egg_title_list as etl
+            inner join (
+                select pad_machine_row, pad_machine_type
+                from egg_title_list
+                where end_date < now()
                 and pad_machine_row is not null
                 and pad_machine_type is not null
+                group by 1, 2
+            ) as et_limit
+            on etl.pad_machine_row = et_limit.pad_machine_row 
+            and etl.pad_machine_type = et_limit.pad_machine_type
+            set show_yn = 0, tstamp = UNIX_TIMESTAMP() * 1000
             """
         self.db_wrapper.insert_item(sql)
 

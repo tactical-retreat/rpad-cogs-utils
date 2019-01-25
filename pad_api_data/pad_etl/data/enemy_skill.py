@@ -11,6 +11,7 @@ FILE_NAME = 'download_enemy_skill_data.json'
 class EnemySkill(pad_util.JsonDictEncodable):
 
     def __init__(self, raw: List[Any]):
+        from builtins import int
         self.enemy_skill_id = int(raw[0])
         self.name = raw[1]
         self.type = int(raw[2])
@@ -20,10 +21,8 @@ class EnemySkill(pad_util.JsonDictEncodable):
         p_idx = 4
         while offset < self.flags.bit_length():
             if (self.flags >> offset) & 1 != 0:
-                try:
-                    self.params[offset] = int(raw[p_idx])
-                except ValueError:
-                    self.params[offset] = raw[p_idx]
+                p_value = raw[p_idx]
+                self.params[offset] = int(p_value) if p_value.lstrip('-').isdigit() else p_value
                 p_idx += 1
             offset += 1
 

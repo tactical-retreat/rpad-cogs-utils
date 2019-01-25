@@ -128,27 +128,24 @@ class DbWrapper(object):
             item.set_key_value(key)
 
             if not key:
-                print('item (alt) needed insert:', type(item), key)
+                logger.info('item (alt) needed insert: %s %s', type(item), key)
                 key = self.insert_item(item.insert_sql())
             elif not self.check_existing(item.needs_update_sql()):
-                print('item (alt) needed update:', type(item), key)
-                print(item.needs_update_sql())
+                logger.info('item (alt) needed update: %s %s', type(item), key)
                 self.insert_item(item.update_sql())
 
         elif not item.uses_local_primary_key():
             if not self.check_existing(item.exists_sql()):
-                print('item (fk) needed insert:', type(item), key)
+                logger.info('item (fk) needed insert: %s %s', type(item), key)
                 key = self.insert_item(item.insert_sql())
             elif not self.check_existing(item.needs_update_sql()):
-                print('item (fk) needed update:', type(item), key)
-                print(item.needs_update_sql())
+                logger.info('item (fk) needed update: %s %s', type(item), key)
                 self.insert_item(item.update_sql())
         else:
             if item.needs_insert():
-                print('item needed insert:', type(item), key)
+                logger.info('item needed insert: %s %s', type(item), key)
                 key = self.insert_item(item.insert_sql())
             elif not self.check_existing(item.needs_update_sql()):
-                print('item needed update:', type(item), key)
-                print(item.needs_update_sql())
+                logger.info('item needed update: %s %s', type(item), key)
                 self.insert_item(item.update_sql())
         return key

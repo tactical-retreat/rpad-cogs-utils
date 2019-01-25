@@ -1,6 +1,8 @@
+from collections import OrderedDict
 import json
 from collections import OrderedDict
 from ..common import pad_util
+
 
 ai = 'ai'
 rnd = 'rnd'
@@ -269,7 +271,7 @@ class ESBindAttack(ESAttackSinglehit):
         self.target_count = params(skill)[5]
         self.effect = 'bind_attack'
         self.description = self.description + ', ' + \
-                           Describe.bind(self.min_turns, self.max_turns, self.target_count, 'cards')
+            Describe.bind(self.min_turns, self.max_turns, self.target_count, 'cards')
 
 
 class ESBindRandom(ESBind):
@@ -378,7 +380,6 @@ class ESOrbChangeAttack(ESAttackSinglehit):
         self.orb_to = ATTRIBUTE_MAP[params(skill)[3]] if orb_to is None else orb_to
         self.effect = 'orb_change_attack'
         self.description = Describe.orb_change(self.orb_from, self.orb_to) + ' & ' + Describe.attack(self.multiplier)
-
 
 class ESPoisonChangeRandomAttack(ESOrbChangeAttack):
     def __init__(self, skill):
@@ -492,7 +493,7 @@ class ESDebuffMovetime(ESDebuff):
             super(ESDebuffMovetime, self).__init__(
                 skill,
                 debuff_type='movetime',
-                amount=-params(skill)[2]/10,
+                amount=-params(skill)[2] / 10,
                 unit='s'
             )
         elif params(skill)[3] is not None:

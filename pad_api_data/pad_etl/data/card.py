@@ -3,8 +3,8 @@ Parses card data.
 """
 
 import json
-import os
 import math
+import os
 from typing import List, Any
 
 from ..common import pad_util
@@ -17,6 +17,7 @@ FILE_NAME = 'download_card_data.json'
 
 class Curve(pad_util.JsonDictEncodable):
     """Describes how to scale according to level 1-10."""
+
     def __init__(self,
                  min_value: int,
                  max_value: int=None,
@@ -31,15 +32,19 @@ class Curve(pad_util.JsonDictEncodable):
         f = 1 if self.max_level == 1 else ((level - 1) / (self.max_level - 1))
         return self.min_value + (self.max_value - self.min_value) * math.pow(f, self.scale)
 
+
 class EnemySkillRef(pad_util.JsonDictEncodable):
     """Describes how this monster uses an enemy skill"""
+
     def __init__(self, enemy_skill_id: int, enemy_ai: int, enemy_rnd: int):
         self.enemy_skill_id = enemy_skill_id
         self.enemy_ai = enemy_ai
         self.enemy_rnd = enemy_rnd
 
+
 class Enemy(pad_util.JsonDictEncodable):
     """Describes how this monster spawns as an enemy."""
+
     def __init__(self,
                  turns: int,
                  hp: Curve,
@@ -57,6 +62,7 @@ class Enemy(pad_util.JsonDictEncodable):
         self.coin = coin
         self.xp = xp
         self.enemy_skill_refs = enemy_skill_refs
+
 
 class BookCard(pad_util.JsonDictEncodable):
     """Data about a player-ownable monster."""
@@ -140,7 +146,8 @@ class BookCard(pad_util.JsonDictEncodable):
         self.unknown_056 = raw[56]
 
         # self.enemy_skills = raw[57]
-        self.enemy_skill_refs = [EnemySkillRef(int(raw[57][i]), raw[57][i+1], raw[57][i+2]) for i in range(0, len(raw[57])-2, 3)]
+        self.enemy_skill_refs = [EnemySkillRef(
+            int(raw[57][i]), raw[57][i + 1], raw[57][i + 2]) for i in range(0, len(raw[57]) - 2, 3)]
 
         self.awakenings = raw[58]  # List[int]
         self.super_awakenings = list(map(int, filter(str.strip, raw[59].split(','))))  # List[int]
@@ -160,7 +167,7 @@ class BookCard(pad_util.JsonDictEncodable):
         self.furigana = str(raw[67])  # JP data only?
         self.limit_mult = int(raw[68])
 
-        self.voice_id = int(raw[69]) # Number of the voice file, 1-indexed, 0 if no voice
+        self.voice_id = int(raw[69])  # Number of the voice file, 1-indexed, 0 if no voice
 
         self.other_fields = raw[70:]
 
@@ -184,7 +191,6 @@ class BookCard(pad_util.JsonDictEncodable):
                      Curve(self.enemy_xp_at_lvl_2 / 2,
                            max_level=self.enemy_max_level),
                      self.enemy_skill_refs)
-
 
     def hp_curve(self):
         return Curve(self.min_hp, self.max_hp, self.hp_scale)

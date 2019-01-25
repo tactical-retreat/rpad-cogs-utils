@@ -382,7 +382,7 @@ def heal_active_convert(arguments):
                         ('Recover ' + fmt_mult(php * 100) + '% of max HP' if php > 0 else
                          ('Recover HP equal to ' + fmt_mult(trcv_mult) + 'x team\'s total RCV' if trcv_mult > 0 else
                           (''))))))
-            
+
         if (unbind or awoken_unbind):
             if skill_text:
                 skill_text += '; '
@@ -1251,6 +1251,7 @@ def hp_nuke_convert(arguments):
         return 'hp_nuke', c
     return f
 
+
 fixed_pos_convert_backups = {'row_pos_1': [],
                              'row_pos_2': [],
                              'row_pos_3': [],
@@ -1258,6 +1259,7 @@ fixed_pos_convert_backups = {'row_pos_1': [],
                              'row_pos_5': [],
                              'attribute': 0,
                              'skill_text': ''}
+
 
 def fixed_pos_convert(arguments):
     def f(x):
@@ -1279,29 +1281,30 @@ def fixed_pos_convert(arguments):
             4: '2nd column from right',
             5: 'far right column',
         }
-        
-        board = [[],[],[],[],[]]
-        board[0]= c['row_pos_1']
-        board[1]= c['row_pos_2']
-        board[2]= c['row_pos_3']
-        board[3]= c['row_pos_4']
-        board[4]= c['row_pos_5']
+
+        board = [[], [], [], [], []]
+        board[0] = c['row_pos_1']
+        board[1] = c['row_pos_2']
+        board[2] = c['row_pos_3']
+        board[3] = c['row_pos_4']
+        board[4] = c['row_pos_5']
         orb_count = 0
         row_pos = 0
         col_pos = 0
         shape = 'some shape'
-        
+
         for x in board:
             orb_count += len(x)
 
         if orb_count == 5:
-            for x in range(1,len(board)-1): #Check for cross shape
-                if len(board[x]) == 3 and len(board[x-1]) == 1 and len(board[x+1]) == 1 :
+            for x in range(1, len(board) - 1):  # Check for cross shape
+                if len(board[x]) == 3 and len(board[x - 1]) == 1 and len(board[x + 1]) == 1:
                     row_pos = x
                     col_pos = board[x][1]
                     shape = 'cross'
-        
-        c['skill_text'] += 'Create ' + shape + ' of ' + ATTRIBUTES[c['attribute']] + ' orbs with center at '  + ROW_INDEX[row_pos] + ' and ' +COLUMN_INDEX[col_pos]
+
+        c['skill_text'] += 'Create ' + shape + ' of ' + ATTRIBUTES[c['attribute']] + \
+            ' orbs with center at ' + ROW_INDEX[row_pos] + ' and ' + COLUMN_INDEX[col_pos]
         return 'create_cross', c
     return f
 
@@ -1446,13 +1449,13 @@ def attribute_match_convert(arguments):
             c['maximum_attributes'] = max_attr
             step = max_attr - min_attr
         else:
-            step = max_attr-min_attr
-        
+            step = max_attr - min_attr
+
         max_mult = min_atk_mult + (max_attr - min_attr) * bonus_atk_mult
         if attr == [0, 1, 2, 3, 4]:
             skill_text += ' when matching {} or more colors'.format(min_attr)
             if step > 0:
-                skill_text += ' up to {}x at {} colors'.format(fmt_mult(max_mult),max_attr)
+                skill_text += ' up to {}x at {} colors'.format(fmt_mult(max_mult), max_attr)
         elif attr == [0, 1, 2, 3, 4, 5]:
             skill_text += ' when matching {} or more colors ({}+heal)'.format(
                 min_attr, min_attr - 1)
@@ -1471,6 +1474,7 @@ def attribute_match_convert(arguments):
         c['parameter'] = fmt_parameter(c)
         return 'attribute_match', c
     return f
+
 
 multi_attribute_match_backups = {'attributes': [], 'minimum_match': 0, 'minimum_atk_multiplier': 1.0, 'minimum_rcv_multiplier': 1.0, 'minimum_damage_reduction': 0.0,
                                                                        'bonus_atk_multiplier': 0.0,   'bonus_rcv_multiplier': 0.0,   'bonus_damage_reduction': 0.0,
@@ -2355,7 +2359,7 @@ SKILL_TRANSFORM = {
     170: attribute_match_convert({'attributes': (0, binary_con), 'minimum_attributes': (1, cc), 'minimum_atk_multiplier': (2, multi), 'minimum_damage_reduction': (3, multi)}),
     171: multi_attribute_match_convert({'attributes': (slice(0, 4), list_binary_con), 'minimum_match': (4, cc), 'minimum_atk_multiplier': (5, multi), 'minimum_damage_reduction': (6, multi)}),
     175: collab_bonus_convert({'collab_id': (0, cc), 'hp_multiplier': (3, multi2), 'atk_multiplier': (4, multi2), 'rcv_multiplier': (5, multi2)}),
-    176: fixed_pos_convert({'board'[0]: (0, binary_con) ,'row_pos_1': (0, binary_con), 'row_pos_2': (1, binary_con), 'row_pos_3': (2, binary_con), 'row_pos_4': (3, binary_con), 'row_pos_5': (4, binary_con), 'attribute':(5, cc)}),
+    176: fixed_pos_convert({'board'[0]: (0, binary_con), 'row_pos_1': (0, binary_con), 'row_pos_2': (1, binary_con), 'row_pos_3': (2, binary_con), 'row_pos_4': (3, binary_con), 'row_pos_5': (4, binary_con), 'attribute': (5, cc)}),
     177: orb_remain_convert({'orb_count': (5, cc), 'atk_multiplier': (6, multi), 'bonus_atk_multiplier': (7, multi), 'skill_text': '[No skyfall]; '}),
     178: passive_stats_convert({'time': (0, cc), 'for_attr': (1, binary_con), 'for_type': (2, binary_con), 'hp_multiplier': (3, multi2), 'atk_multiplier': (4, multi2), 'rcv_multiplier': (5, multi2), 'skill_text': '[Fixed 4 second movetime]'}),
     182: mass_match_convert({'attributes': (0, binary_con), 'minimum_count': (1, cc), 'minimum_atk_multiplier': (2, multi), 'minimum_damage_reduction': (3, multi)}),
