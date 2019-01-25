@@ -142,35 +142,35 @@ def get_modifiers(raw):
     return modifiers
 
 
-def getCost(raw):
+def get_cost(raw):
     return "Maximum cost: " + get_last_as_string(raw)
 
 
-def getMaxStar(raw):
+def get_max_star(raw):
     return get_last_as_string(raw) + " stars or less"
 
 
-def getAllowedType(raw):
-    return type_flip[get_last_as_string(raw)] + " type only allowed"
+def get_allowed_type(raw):
+    return TYPE_FLIP[get_last_as_string(raw)] + " type only allowed"
 
 
-def getReqAttr(raw):
+def get_all_attr_req(raw):
     return "All Attributes Required"
 
 
-def noDupes(raw):
+def get_no_dupes(raw):
     return "No Duplicate Cards"
 
 
-def specialDesc(raw):
+def get_special_desc(raw):
     return "Special Descended Dungeon"
 
 
-def getReqExpDragon(raw):
+def get_req_exp_dragon(raw):
     return get_last_as_string(raw) + " required to enter"
 
 
-def getNumOrLess(raw):
+def get_n_or_less(raw):
     return "Teams of " + get_last_as_string(raw) + " or less allowed"
 
 
@@ -181,12 +181,12 @@ TYPE_FLIP = {
 
 # for n = 32, returns back a description of the dungeon entry requirements
 ENTRY_REQUIREMENT_MAP = {
-    2: getCost,
-    4: getMaxStar,
-    7: getAllowedType,
-    9: getReqAttr,
-    10: noDupes,
-    11: specialDesc,
-    13: getReqExpDragon,
-    14: getNumOrLess
+    2: get_cost,
+    4: get_max_star,
+    7: get_allowed_type,
+    9: get_all_attr_req,
+    10: get_no_dupes,
+    11: get_special_desc,
+    13: get_req_exp_dragon,
+    14: get_n_or_less
 }
