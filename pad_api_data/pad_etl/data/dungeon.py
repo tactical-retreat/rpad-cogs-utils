@@ -36,16 +36,16 @@ class DungeonFloor(pad_util.JsonDictEncodable):
         self.bgm2 = raw[6]
         self.rflags2 = int(raw[7])
         self.board_modifier = BOARD_MODIFIER_MAP[int(raw[7])]
-        self.possible_drops = modifiers.possibleDrops
-        self.entry_requirement = modifiers.entryRequirement
-        self.required_dungeon = modifiers.requiredDungeon
-        self.remaining_modifiers = modifiers.remainingModifiers
-        self.stat_modifiers = modifiers.stat_modifiers
-        self.enhanced_type = modifiers.enhancedType
-        self.enhanced_attribute = modifiers.enhancedAttribute
+        self.possible_drops = modifiers.possible_drops
+        self.entry_requirement = modifiers.entry_requirement
+        self.required_dungeon = modifiers.required_dungeon
+        self.remaining_modifiers = modifiers.remaining_modifiers
+        self.modifiers_clean = modifiers.stat_modifiers
+        self.enhanced_type = modifiers.enhanced_type
+        self.enhanced_attribute = modifiers.enhanced_attribute
         self.messages = modifiers.messages
-        self.fixed_team = modifiers.fixedTeam
-        self.remaining_modifiers = modifiers.remainingModifiers
+        self.fixed_team = modifiers.fixed_team
+        self.remaining_modifiers = modifiers.remaining_modifiers
         self.score = modifiers.score
 
 
