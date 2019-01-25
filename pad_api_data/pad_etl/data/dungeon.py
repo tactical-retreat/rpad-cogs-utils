@@ -35,7 +35,6 @@ class DungeonFloor(pad_util.JsonDictEncodable):
         self.bgm1 = raw[5]
         self.bgm2 = raw[6]
         self.rflags2 = int(raw[7])
-        self.team_requirement = TEAM_REQUIREMENT_MAP[int(raw[7])]
         self.possible_drops = modifiers.possible_drops
         self.entry_requirement = modifiers.entry_requirement
         self.required_dungeon = modifiers.required_dungeon
