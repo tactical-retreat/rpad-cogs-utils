@@ -179,8 +179,14 @@ def get_modifiers(raw):
         mods = split_modifiers(raw, pos, 3)
         get_stat_modifiers(mods, dungeon_modifiers)
         dungeon_modifiers.messages.append(ENTRY_REQUIREMENT_MAP[int(raw[pos+4])](raw))
-    elif val is not 0:
-        print(raw)
+        return dungeon_modifiers
+    elif val == 101:
+        dungeon_modifiers.required_dungeon = int(raw[pos + 1])
+        dungeon_modifiers.required_floor = int(raw[pos + 2])
+        mods = split_modifiers(raw, pos, 4)
+        get_stat_modifiers(mods, dungeon_modifiers)
+        return dungeon_modifiers
+
     return dungeon_modifiers
 
 

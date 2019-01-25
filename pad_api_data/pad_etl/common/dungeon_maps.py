@@ -2,7 +2,7 @@
 
 # This is a map for the Floor raw[7] item, which indicates the board modifier
 TEAM_REQUIREMENT_MAP = {
-    0: 'None',
+    0: None,
     1: 'No Fire',
     2: 'No Water',
     3: 'Wood/Light/Dark only',
