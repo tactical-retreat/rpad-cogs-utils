@@ -173,6 +173,13 @@ def get_modifiers(raw):
             dungeon_modifiers.remaining_modifiers.append(m)
         dungeon_modifiers.entry_requirement = ENTRY_REQUIREMENT_MAP[int(raw[pos + 2])](raw)
         return dungeon_modifiers
+    elif val == 97:
+        print(raw)
+        dungeon_modifiers.required_dungeon = int(raw[pos + 1])
+        dungeon_modifiers.required_floor = int(raw[pos + 2])
+        mods = split_modifiers(raw, pos, 1)
+        get_stat_modifiers(mods, dungeon_modifiers)
+        dungeon_modifiers.messages.append(ENTRY_REQUIREMENT_MAP[int(raw[-2])](raw))
 
     return dungeon_modifiers
 
