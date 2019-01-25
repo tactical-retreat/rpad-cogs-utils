@@ -1,4 +1,4 @@
-from dungeon_maps import btypeChart, battrChart
+from dungeon_maps import ENHANCED_TYPE_MAP, ENHANCED_ATTRIBUTE_MAP
 
 
 class Modifier:
@@ -96,16 +96,16 @@ def get_modifiers(raw):
                 split_btype = m.split(';')
                 enhanced_type_raw = int(split_btype[0].split(':')[-1])
                 mods = split_btype[1:]
-                modifiers.enhanced_type = btypeChart[enhanced_type_raw]
+                modifiers.enhanced_type = ENHANCED_TYPE_MAP[enhanced_type_raw]
                 modifiers.modifiers['hp'] = int(mods[0]) / 10000
                 modifiers.modifiers['atk'] = int(mods[1]) / 10000
                 modifiers.modifiers['rcv'] = int(mods[2]) / 10000
 
             elif 'battr' in m:
-                btype = m.split(';')
-                val = int(btype[0].split(':')[-1])
-                mods = btype[1:]
-                modifiers.enhancedAttribute = battrChart[val]
+                split_btype = m.split(';')
+                val = int(split_btype[0].split(':')[-1])
+                mods = split_btype[1:]
+                modifiers.enhancedAttribute = ENHANCED_ATTRIBUTE_MAP[val]
                 modifiers.modifiers['hp'] = int(mods[0]) / 10000
                 modifiers.modifiers['atk'] = int(mods[1]) / 10000
                 modifiers.modifiers['rcv'] = int(mods[2]) / 10000
