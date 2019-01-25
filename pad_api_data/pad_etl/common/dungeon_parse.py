@@ -81,6 +81,7 @@ def get_stat_modifiers(mods, dungeon_modifiers):
             df_val = m.split(':')[-1]
             dungeon_modifiers.encounter_stat_modifiers['def'] = float(df_val) / 10000
         else:
+            # Catch any remaining things not parsed yet, i.e. dg values
             dungeon_modifiers.remaining_modifiers.append(m)
 
 
@@ -96,7 +97,7 @@ def get_modifiers(raw):
     # of drops for the floor, the following segments are the dungeon modifiers
     pos = 8
 
-    while (int(raw[pos]) is not 0):
+    while int(raw[pos]) is not 0:
         raw_val = int(raw[pos])
         if raw_val > 10000:
             val = raw_val - 10000
@@ -181,7 +182,7 @@ def get_modifiers(raw):
         dungeon_modifiers.required_floor = int(raw[pos + 2])
         mods = split_modifiers(raw, pos, 3)
         get_stat_modifiers(mods, dungeon_modifiers)
-        dungeon_modifiers.messages.append(ENTRY_REQUIREMENT_MAP[int(raw[pos+4])](raw))
+        dungeon_modifiers.messages.append(ENTRY_REQUIREMENT_MAP[int(raw[pos + 4])](raw))
         return dungeon_modifiers
 
     elif val == 101:
