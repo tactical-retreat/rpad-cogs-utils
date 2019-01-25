@@ -1,7 +1,7 @@
 
 
-# This is a map for the Floor raw[7] item
-raw7_map = {
+# This is a map for the Floor raw[7] item, which indicates the board modifier
+ BOARD_MODIFIER_MAP = {
     0: 'None',
     1: 'No Fire',
     2: 'No Water',
@@ -28,7 +28,7 @@ raw7_map = {
     276: 'No Wood/Dark',
     280: 'Tricolor',
     288: 'No RCV',
-    768: 'No Clue',
+    768: '',
     800: 'No RCV',
     1024: 'Awoken Skills Invalid',
     1056: 'No RCV, Awoken Skills Invalid',
@@ -39,7 +39,9 @@ raw7_map = {
 }
 
 
-btypeChart = {
+# This map takes in an int, indicated by the btype parameter in the dungeon modifiers, and returns
+# the type of monster that gets a stat boost i.e. 1.5x stats for dragon type
+ENHANCED_TYPE_MAP = {
     2: 'Balanced',
     4: 'Physical',
     8: 'Healer',
@@ -58,7 +60,9 @@ btypeChart = {
     320: 'Attacker & Machine'
 }
 
-battrChart = {
+# This map takes in an int, indiciated by the battr parameter, and returns the attribute
+# that receives a stat bonus, i.e. 1.5x stats for Light type
+ENHANCED_ATTRIBUTE_MAP = {
     1: 'Fire',
     2: 'Water',
     4: 'Wood',

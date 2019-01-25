@@ -3,17 +3,16 @@ from dungeon_maps import btypeChart, battrChart
 
 class Modifier:
     def __init__(self):
-        self.requiredDungeon = 0
+        self.required_dungeon = None
         self.remainingModifiers = []
-        self.entryRequirement = "None"
+        self.entryRequirement = ""
         self.modifiers = {}
         self.messages = []
         self.fixedTeam = {}
-        self.enhancedType = "None"
-        self.enhancedAttribute = "None"
+        self.enhancedType = ""
+        self.enhancedAttribute = ""
         self.score = 0
         self.possibleDrops = {}
-        self.pos = 0
 
 
 def splitMods(raw, pos, diff):
@@ -23,8 +22,6 @@ def splitMods(raw, pos, diff):
 def getLast(raw):
     return str(raw[-1])
 
-
-### Needs proper implementation for 32, 96, 97, 101
 
 def getModifiers(raw):
     modifiers = Modifier()
@@ -43,8 +40,6 @@ def getModifiers(raw):
             modifiers.possibleDrops[rawVal] = "normal"
             pos += 1
     pos += 1
-
-    modifiers.pos = pos
 
     val = int(raw[pos])
 
@@ -184,13 +179,13 @@ def getReqExpDragon(raw):
 def getNumOrLess(raw):
     return "Teams of " + getLast(raw) + " or less allowed"
 
-
-type_flip = {
+# Appears to be a special case, for a dungeon that no longer is in the game
+TYPE_FLIP = {
     '5': 'Dragon'
 }
 
-# for n = 32
-parse32 = {
+# for n = 32, returns back a description of the dungeon entry requirements
+ENTRY_REQUIREMENT_MAP = {
     2: getCost,
     4: getMaxStar,
     7: getAllowedType,
