@@ -78,7 +78,6 @@ def get_modifiers(raw):
             elif 'smsg' in m:
                 modifiers.messages.append(m.split(':')[-1])
             elif 'fc' in m:
-
                 details = m.split(';')
                 card_id = details[0].split(":")[-1]
 
@@ -111,10 +110,19 @@ def get_modifiers(raw):
                 modifiers.modifiers['rcv'] = int(mods[2]) / 10000
 
             elif 'hpfix' in m:
-                val = m.split(':')[-1]
-                modifiers.modifiers['fixed_hp'] = int(val)
+                hp_val = m.split(':')[-1]
+                modifiers.modifiers['fixed_hp'] = int(hp_val)
             elif 'ndf' in m:
                 modifiers.messages.append("No Skyfall Combos")
+            elif 'hp' in m:
+                hp_val = m.split(':')[-1]
+                modifiers.modifiers['hp'] = int(hp_val) / 10000
+            elif 'atk' in m:
+                atk_val = m.split(':')[-1]
+                modifiers.modifiers['atk'] = int(atk_val) / 10000
+            elif 'df' in m:
+                df_val = m.split(':')[-1]
+                modifiers.modifiers['def'] = int(df_val) / 10000
             else:
                 modifiers.remaining_modifiers.append(m)
         return modifiers
