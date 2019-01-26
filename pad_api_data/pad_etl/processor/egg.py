@@ -165,13 +165,13 @@ class EggLoader(object):
                 where end_date < now()
                 and pad_machine_row is not null
                 and pad_machine_type is not null
+                and show_yn = 1
                 group by 1, 2, 3
             ) as et_limit
             on etl.pad_machine_row = et_limit.pad_machine_row 
             and etl.pad_machine_type = et_limit.pad_machine_type
             and etl.server = et_limit.server
             set show_yn = 0, tstamp = UNIX_TIMESTAMP() * 1000
-            where show_yn = 1
             """
         self.db_wrapper.insert_item(sql)
 
