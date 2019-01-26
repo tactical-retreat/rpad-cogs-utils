@@ -169,7 +169,7 @@ class EggLoader(object):
             ) as et_limit
             on etl.pad_machine_row = et_limit.pad_machine_row 
             and etl.pad_machine_type = et_limit.pad_machine_type
-            and etl.server = et.server
+            and etl.server = et_limit.server
             set show_yn = 0, tstamp = UNIX_TIMESTAMP() * 1000
             """
         self.db_wrapper.insert_item(sql)
