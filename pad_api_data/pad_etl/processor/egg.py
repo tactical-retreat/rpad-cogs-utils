@@ -160,15 +160,16 @@ class EggLoader(object):
         sql = """
             update egg_title_list as etl
             inner join (
-                select pad_machine_row, pad_machine_type
+                select pad_machine_row, pad_machine_type, server
                 from egg_title_list
                 where end_date < now()
                 and pad_machine_row is not null
                 and pad_machine_type is not null
-                group by 1, 2
+                group by 1, 2, 3
             ) as et_limit
             on etl.pad_machine_row = et_limit.pad_machine_row 
             and etl.pad_machine_type = et_limit.pad_machine_type
+            and etl.server = et.server
             set show_yn = 0, tstamp = UNIX_TIMESTAMP() * 1000
             """
         self.db_wrapper.insert_item(sql)
