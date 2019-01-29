@@ -4,7 +4,7 @@ import re
 
 import pytz
 
-from dungeon_types import DUNGEON_TYPE_COMMENTS
+from .dungeon_types import DUNGEON_TYPE_COMMENTS
 
 
 def strip_colors(message: int) -> str:
