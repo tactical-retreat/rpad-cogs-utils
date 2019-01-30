@@ -102,7 +102,7 @@ class EggTitle(SimpleSqlItem):
 
     def exists_sql(self):
         return sql_item.key_and_cols_compare(
-            self, cols=['pad_machine_row', 'pad_machine_type', 'order_idx'], include_key=False)
+            self, cols=['pad_machine_row', 'pad_machine_type', 'order_idx', 'server', 'tec_seq'], include_key=False)
         # TODO: add unique key to enforce
 
 
@@ -160,15 +160,17 @@ class EggLoader(object):
         sql = """
             update egg_title_list as etl
             inner join (
-                select pad_machine_row, pad_machine_type
+                select pad_machine_row, pad_machine_type, server
                 from egg_title_list
                 where end_date < now()
                 and pad_machine_row is not null
                 and pad_machine_type is not null
-                group by 1, 2
+                and show_yn = 1
+                group by 1, 2, 3
             ) as et_limit
             on etl.pad_machine_row = et_limit.pad_machine_row 
             and etl.pad_machine_type = et_limit.pad_machine_type
+            and etl.server = et_limit.server
             set show_yn = 0, tstamp = UNIX_TIMESTAMP() * 1000
             """
         self.db_wrapper.insert_item(sql)
@@ -182,13 +184,14 @@ class EggLoader(object):
         em_pad_ids = self.db_wrapper.fetch_data(sql)
         return [self.load(em['pad_machine_row'], em['pad_machine_type']) for em in em_pad_ids]
 
-    def load(self, pad_machine_row: int, pad_machine_type: int):
+    def load(self, pad_machine_row: int, pad_machine_type: int, server: str):
         sql = """
             select tet_seq 
             from egg_title_list 
             where pad_machine_row = {} 
             and pad_machine_type = {}
-        """.format(pad_machine_row, pad_machine_type)
+            and server = {}
+        """.format(pad_machine_row, pad_machine_type, server)
         em_ids = self.db_wrapper.fetch_data(sql)
         return [self.load_egg_title(data['tet_seq']) for data in em_ids]
 

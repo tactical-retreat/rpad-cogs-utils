@@ -191,13 +191,21 @@ def populate_dungeon(dungeon: dbdungeon.Dungeon,
     for wave in waves:
         floor_to_waves[wave.floor_id].append(wave)
 
-    monster_name_to_id = {x.name.lower(): x for x in cards + na_cards if x.card_id < 9999}
+    jp_dungeon_floors = jp_dungeon.floors
+    na_dungeon_floors = na_dungeon.floors
+    if len(jp_dungeon_floors) > len(na_dungeon_floors):
+        print('jp dungeon larger than na; extending to match')
+        na_dungeon_floors.extend(jp_dungeon_floors[len(na_dungeon_floors):])
+    elif len(na_dungeon_floors) > len(jp_dungeon_floors):
+        print('na dungeon larger than jp; extending to match')
+        jp_dungeon_floors.extend(na_dungeon_floors[len(jp_dungeon_floors):])
 
+    monster_name_to_id = {x.name.lower(): x for x in cards + na_cards if x.card_id < 9999}
     monster_id_to_card = {c.card_id: c for c in cards}
     for idx in range(expected_floor_count):
         update_sub_dungeon(dungeon.resolved_sub_dungeons[idx],
-                           jp_dungeon.floors[idx],
-                           na_dungeon.floors[idx],
+                           jp_dungeon_floors[idx],
+                           na_dungeon_floors[idx],
                            floor_to_waves[idx + 1],
                            monster_id_to_card,
                            floor_text.get(idx + 1, ''),
@@ -233,8 +241,8 @@ def update_sub_dungeon(sub_dungeon: dbdungeon.SubDungeon,
 
     sub_dungeon.coin_max = int(sum([rs.coins_max for rs in result_stages]))
     sub_dungeon.coin_min = int(sum([rs.coins_min for rs in result_stages]))
-    sub_dungeon.exp_max = int(sum([rs.xp_min for rs in result_stages]))
-    sub_dungeon.exp_min = int(sum([rs.xp_max for rs in result_stages]))
+    sub_dungeon.exp_max = int(sum([rs.xp_max for rs in result_stages]))
+    sub_dungeon.exp_min = int(sum([rs.xp_min for rs in result_stages]))
 
     if jp_dungeon_floor.score:
         if sub_dungeon.resolved_sub_dungeon_score is None:
