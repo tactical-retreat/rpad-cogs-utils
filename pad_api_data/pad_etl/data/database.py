@@ -74,10 +74,11 @@ def _clean_enemy(cards, enemy_skills):
                 enemy_skillset.append(MergedEnemySkillset(esr, es, es_set))
 
                 # This is a mess but the skillset parser expects json objects
-                item = {'monster_no': card.card_id, 'skill_set': enemy_skillset}
-                data = json.dumps([item], default=lambda x: x.__dict__)
-                data_json = json.loads(data)
-                item['skill_processed'] = enemy_skillset_lib.reformat_json(data_json)
+                # TODO: make this part sane
+                # data = json.dumps([item], default=lambda x: x.__dict__)
+                # data_json = json.loads(data)
+                # item['skill_processed'] = enemy_skillset_lib.reformat_json(data_json)
+            item = {'monster_no': card.card_id, 'skill_set': enemy_skillset}
             merged_enemies.append(item)
     return merged_enemies
 
@@ -102,6 +103,7 @@ class Database(object):
         # Computed from other entries
         self.bonuses = []
         self.cards = []
+        self.enemies = []
 
     def load_database(self):
         base_dir = self.base_dir
