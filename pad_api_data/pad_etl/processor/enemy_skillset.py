@@ -382,7 +382,16 @@ class ESBindSkill(ESBind):
         super(ESBindSkill, self).__init__(
             skill,
             target_count=None,
-            target_type_description='active skill')
+            target_type_description='active skills')
+        self.effect = 'skill_bind'
+
+
+class ESBindAwoken(ESEffect):
+    def __init__(self, skill):
+        super(ESBindAwoken, self).__init__(skill)
+        self.turns = params(skill)[1]
+        self.description = Describe.bind(self.turns, None, None, 'awoken skills')
+        self.effect = 'awoken_bind'
 
 
 class ESOrbChange(ESEffect):
@@ -607,7 +616,15 @@ class ESAbsorbCombo(ESEffect):
         super(ESAbsorbCombo, self).__init__(skill)
         self.turns = params(skill)[1]
         self.combo_threshold = params(skill)[3]
-        self.description = Describe.absorb('combo <= {}'.format(self.combo_threshold), self.turns)
+        self.description = Describe.absorb('combo <= {:,d}'.format(self.combo_threshold), self.turns)
+
+
+class ESAbsorbThreshold(ESEffect):
+    def __init__(self, skill):
+        super(ESAbsorbThreshold, self).__init__(skill)
+        self.turns = params(skill)[1]
+        self.absorb_threshold = params(skill)[2]
+        self.description = Describe.absorb('damage >= {}'.format(self.absorb_threshold), self.turns)
 
 
 class ESVoidShield(ESEffect):
@@ -739,17 +756,31 @@ class ESRowSpawnMulti(ESRowColSpawnMulti):
 
 
 class ESBoardChange(ESEffect):
-    def __init__(self, skill, attributes):
+    def __init__(self, skill, attributes=None):
         super(ESBoardChange, self).__init__(skill)
-        self.attributes = attributes
+        if attributes:
+            self.attributes = attributes
+        else:
+            self.attributes = attribute_bitmap(params(skill)[1])
         self.effect = 'board_change'
 
 
-class ESBoardChangeAttack(ESBoardChange):
+class ESBoardChangeAttackFlat(ESBoardChange):
     def __init__(self, skill):
-        super(ESBoardChangeAttack, self).__init__(
+        super(ESBoardChangeAttackFlat, self).__init__(
             skill,
-            [ATTRIBUTE_MAP[x] for x in params(skill)[2:params(skill).index(-1)]])
+            [ATTRIBUTE_MAP[x] for x in params(skill)[2:params(skill).index(-1)]]
+        )
+        self.multiplier = params(skill)[1]
+        self.description = Describe.board_change(self.attributes) + ' & ' + Describe.attack(self.multiplier)
+
+
+class ESBoardChangeAttackBits(ESBoardChange):
+    def __init__(self, skill):
+        super(ESBoardChangeAttackBits, self).__init__(
+            skill,
+            attribute_bitmap(params(skill)[2])
+        )
         self.multiplier = params(skill)[1]
         self.description = Describe.board_change(self.attributes) + ' & ' + Describe.attack(self.multiplier)
 
@@ -980,9 +1011,14 @@ ACTION_MAP = {
     77: ESColumnSpawnMulti,
     78: ESRowSpawn,
     79: ESRowSpawnMulti,
-    81: ESBoardChangeAttack,
-    82: ESAttackSinglehit, # called "Disable Skill" in EN but "Normal Attack" in JP
-    83: ESSkillSet
+    81: ESBoardChangeAttackFlat,
+    82: ESAttackSinglehit,  # called "Disable Skill" in EN but "Normal Attack" in JP
+    83: ESSkillSet,
+    84: ESBoardChange,
+    85: ESBoardChangeAttackBits,
+    86: ESRecoverEnemy,
+    87: ESAbsorbThreshold,
+    88: ESBindAwoken
 }
 
 
