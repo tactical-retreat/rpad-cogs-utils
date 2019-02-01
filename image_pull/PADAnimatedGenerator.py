@@ -51,8 +51,7 @@ def generate_resized_image(source_file, dest_file):
     # Trim transparent edges
     img = img.crop(img.getbbox())
 
-    if img.size[0] > img.size[1]:
-        max_size = IMAGE_SIZE_NO_PADDING[0] if img.size[0] > img.size[1] else IMAGE_SIZE_NO_PADDING[1]
+    max_size = IMAGE_SIZE_NO_PADDING[0] if img.size[0] > img.size[1] else IMAGE_SIZE_NO_PADDING[1]
     img.thumbnail((max_size, max_size), Image.ANTIALIAS)
 
     old_size = img.size
