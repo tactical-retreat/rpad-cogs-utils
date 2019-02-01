@@ -132,7 +132,7 @@ class Database(object):
                 if pretty:
                     json.dump(obj, f, indent=4, sort_keys=True, default=lambda x: x.__dict__)
                 else:
-                    json.dump(obj, f, default=lambda x: x.__dict__)
+                    json.dump(obj, f, sort_keys=True, default=lambda x: x.__dict__)
         save('raw_cards', self.raw_cards)
         save('dungeons', self.dungeons)
         save('skills', self.skills)
