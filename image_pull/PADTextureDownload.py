@@ -91,7 +91,7 @@ for asset in assets:
 
     if 'card' in raw_file_path.lower():
         # always redownload card files
-        num = int(raw_file_name.rstrip('.bc').lstrip('card_'))
+        num = int(raw_file_name.rstrip('.bc').lstrip('cards_'))
         if num < 45:
             # Arbitrary cutoff; all the slots below here have been filled, no need to
             # keep downloading
