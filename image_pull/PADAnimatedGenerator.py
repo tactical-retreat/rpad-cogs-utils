@@ -9,11 +9,12 @@ parser = argparse.ArgumentParser(
     description="Generates static frames for animated images.", add_help=False)
 
 inputGroup = parser.add_argument_group("Input")
-inputGroup.add_argument("--raw_dir", help="Path to input BC files")
-inputGroup.add_argument("--working_dir", help="Path to pad-resources project")
+inputGroup.add_argument("--raw_dir", required=True, help="Path to input BC files")
+inputGroup.add_argument("--working_dir", required=True, help="Path to pad-resources project")
 
 outputGroup = parser.add_argument_group("Output")
-outputGroup.add_argument("--output_dir", help="Path to a folder where output should be saved")
+outputGroup.add_argument("--output_dir", required=True,
+                         help="Path to a folder where output should be saved")
 
 helpGroup = parser.add_argument_group("Help")
 helpGroup.add_argument("-h", "--help", action="help", help="Displays this help message and exits.")
@@ -31,10 +32,10 @@ def blacken_image(image):
     pixel_data = image.load()
     for y in range(image.size[1]):
         for x in range(image.size[0]):
-            # Check if it's opaque
-            if pixel_data[x, y][3] == 255:
+            # Check if it's completely transparent
+            if pixel_data[x, y][3] == 0:
                 # Set the color to black
-                pixel_data[x, y] = (0, 0, 0, 255)
+                pixel_data[x, y] = (0, 0, 0, 0)
 
 
 def generate_resized_image(source_file, dest_file):
