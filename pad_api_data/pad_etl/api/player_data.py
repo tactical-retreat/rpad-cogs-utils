@@ -54,7 +54,7 @@ class PlayerDataResponse(pad_util.JsonDictEncodable):
                 results[idx] = 0
                 continue
 
-            for c in self.player_data.cards:
+            for c in self.cards:
                 # Ensure the card id matches and the UUID isn't already used
                 if int(c.card_id) == int(card_id) and c.card_uuid not in results:
                     results[idx] = c.card_uuid
