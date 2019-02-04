@@ -71,6 +71,7 @@ def get_headers(host):
 
 
 def generate_entry_data(data_parsed: PlayerDataResponse, friend_leader: FriendLeader, fixed_team=False):
+    """Returns a pair of the entry data array and [leader_card_id, friend_card_id]"""
     nonce = math.floor(random.random() * 0x10000)
     nonce_offset = nonce % 0x100
     card_nonce = len(data_parsed.cards) + nonce_offset
@@ -113,6 +114,9 @@ def generate_entry_data(data_parsed: PlayerDataResponse, friend_leader: FriendLe
         'osv={}'.format(PadApiClient.OSV).replace('.', ','),
         'pc={}'.format(','.join(map(str, deck_uuids_minimal))),
         'de={}'.format(1),  # This is always 1?
+    ], [
+        deck_and_inherits[0],
+        deck_and_inherits[-2],
     ]
 
 
@@ -260,15 +264,18 @@ class PadApiClient(object):
     def enter_dungeon(self, dung_id: int, floor_id: int,
                       self_card: CardEntry=None,
                       friend: FriendEntry=None, friend_leader: FriendLeader=None):
-        payload = self.get_entry_payload(dung_id, floor_id, self_card, friend, friend_leader)
+        payload, leaders = self.get_entry_payload(
+            dung_id, floor_id, self_card, friend, friend_leader)
         url = self.build_url(payload)
         action_json = self.get_json_results(url)
+        action_json['entry_leads'] = leaders
         return action_json
 
     def get_entry_payload(self, dung_id: int, floor_id: int,
                           self_card: CardEntry=None,
                           friend: FriendEntry=None, friend_leader: FriendLeader=None,
                           fixed_team=False):
+        """Returns a pair of the entry payload and [leader_card_id, friend_card_id]"""
         cur_ghtime = pad_util.cur_gh_time(self.server_p)
         cur_timestamp = int(cur_ghtime) * 1000 + random.randint(0, 999)
         data = [
@@ -291,7 +298,8 @@ class PadApiClient(object):
         else:
             raise Exception('Must specify one of self_card, friend/friend_leader, fixed_team')
 
-        entry_data = generate_entry_data(self.player_data, friend_leader, fixed_team=fixed_team)
+        entry_data, leaders = generate_entry_data(
+            self.player_data, friend_leader, fixed_team=fixed_team)
         # TODO: make initial key random
         enc_entry_data = dungeon_encoding.encodePadDungeon('&'.join(entry_data), 0x23)
         data.extend([
@@ -300,7 +308,7 @@ class PadApiClient(object):
             ('m',      '0'),
         ])
 
-        return data
+        return data, leaders
 
     def build_url(self, payload):
         combined_payload = ['{}={}'.format(x[0], x[1]) for x in payload]

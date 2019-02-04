@@ -1,7 +1,6 @@
 """
 """
 import argparse
-from collections import Counter
 import json
 import logging
 import time
@@ -78,11 +77,13 @@ def pull_data(args):
         entry_id = int(time.time())
         enter = api_client.enter_dungeon(dungeon_id, floor_id, self_card=friend_card)
         wave_response = wave_data.parse_wave_response(enter['e'])
+        leaders = enter['entry_leads']
 
         for stage_idx, floor in enumerate(wave_response.floors):
             for monster_idx, monster in enumerate(floor.monsters):
                 wave_item = WaveItem(pull_id=pull_id, entry_id=entry_id, server=server, dungeon_id=dungeon_id,
-                                     floor_id=floor_id, stage=stage_idx, slot=monster_idx, monster=monster)
+                                     floor_id=floor_id, stage=stage_idx, slot=monster_idx, monster=monster,
+                                     leader_id=leaders[0], friend_id=leaders[1])
                 db_wrapper.insert_item(wave_item.insert_sql())
 
         time.sleep(2)
