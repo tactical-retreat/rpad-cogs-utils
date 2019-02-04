@@ -48,10 +48,9 @@ class PlayerDataResponse(pad_util.JsonDictEncodable):
         return deck_and_inherits
 
     def map_card_ids_to_uuids(self, card_ids):
-        results = []
+        results = [0] * 5
         for idx, card_id in enumerate(card_ids):
             if card_id == 0:
-                results[idx] = 0
                 continue
 
             for c in self.cards:
