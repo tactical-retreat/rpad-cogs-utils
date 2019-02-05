@@ -4,6 +4,7 @@ Pulls data files for specified account/server.
 Requires padkeygen which is not checked in.
 Requires dungeon_encoding which is not checked in.
 """
+import json
 import math
 import random
 from typing import Callable
@@ -57,6 +58,7 @@ class EndpointAction(Enum):
     GET_PLAYER_DATA = EndpointActionInfo('get_player_data', 'v', 2)
     GET_RECOMMENDED_HELPERS = EndpointActionInfo('get_recommended_helpers', None, None)
     DOWNLOAD_MONSTER_EXCHANGE = EndpointActionInfo('mdatadl', None, None, dtp=0)
+    SAVE_DECKS = EndpointActionInfo('save_decks', None, None, curdeck=0)
 
 
 def get_headers(host):
@@ -71,6 +73,7 @@ def get_headers(host):
 
 
 def generate_entry_data(data_parsed: PlayerDataResponse, friend_leader: FriendLeader, fixed_team=False):
+    """Returns a pair of the entry data array and [leader_card_id, friend_card_id]"""
     nonce = math.floor(random.random() * 0x10000)
     nonce_offset = nonce % 0x100
     card_nonce = len(data_parsed.cards) + nonce_offset
@@ -113,6 +116,9 @@ def generate_entry_data(data_parsed: PlayerDataResponse, friend_leader: FriendLe
         'osv={}'.format(PadApiClient.OSV).replace('.', ','),
         'pc={}'.format(','.join(map(str, deck_uuids_minimal))),
         'de={}'.format(1),  # This is always 1?
+    ], [
+        deck_and_inherits[0],
+        deck_and_inherits[-2],
     ]
 
 
@@ -220,6 +226,32 @@ class PadApiClient(object):
 
         return payload
 
+    def overwrite_current_decks(self, card_uuids, self_friend_id=0):
+        """Hacky routine to set all decks to the specified IDs and force the current deck to 0.
+
+        card_ids should be list of integers with length=5
+        """
+        # First map card ID to card UUID
+        proto_deck = list(card_uuids)
+
+        # Finish deck entry with team awakening, selected friend, etc
+        proto_deck.extend([9, self_friend_id, 0, 0])
+
+        # Create a decks array all with the same thing
+        decks = []
+        for _ in range(self.player_data.get_deck_count()):
+            decks.append(proto_deck)
+
+        post_data = {
+            'decksb': json.dumps({'fmt': 1, 'decks': decks})
+        }
+
+        payload = self.get_action_payload(EndpointAction.SAVE_DECKS)
+
+        url = self.build_url(payload)
+        action_json = self.get_json_results(url, post_data=post_data)
+        return action_json
+
     def get_any_friend(self):
         if self.player_data.friends:
             return self.player_data.friends[0]
@@ -260,15 +292,18 @@ class PadApiClient(object):
     def enter_dungeon(self, dung_id: int, floor_id: int,
                       self_card: CardEntry=None,
                       friend: FriendEntry=None, friend_leader: FriendLeader=None):
-        payload = self.get_entry_payload(dung_id, floor_id, self_card, friend, friend_leader)
+        payload, leaders = self.get_entry_payload(
+            dung_id, floor_id, self_card, friend, friend_leader)
         url = self.build_url(payload)
         action_json = self.get_json_results(url)
+        action_json['entry_leads'] = leaders
         return action_json
 
     def get_entry_payload(self, dung_id: int, floor_id: int,
                           self_card: CardEntry=None,
                           friend: FriendEntry=None, friend_leader: FriendLeader=None,
                           fixed_team=False):
+        """Returns a pair of the entry payload and [leader_card_id, friend_card_id]"""
         cur_ghtime = pad_util.cur_gh_time(self.server_p)
         cur_timestamp = int(cur_ghtime) * 1000 + random.randint(0, 999)
         data = [
@@ -291,7 +326,8 @@ class PadApiClient(object):
         else:
             raise Exception('Must specify one of self_card, friend/friend_leader, fixed_team')
 
-        entry_data = generate_entry_data(self.player_data, friend_leader, fixed_team=fixed_team)
+        entry_data, leaders = generate_entry_data(
+            self.player_data, friend_leader, fixed_team=fixed_team)
         # TODO: make initial key random
         enc_entry_data = dungeon_encoding.encodePadDungeon('&'.join(entry_data), 0x23)
         data.extend([
@@ -300,7 +336,7 @@ class PadApiClient(object):
             ('m',      '0'),
         ])
 
-        return data
+        return data, leaders
 
     def build_url(self, payload):
         combined_payload = ['{}={}'.format(x[0], x[1]) for x in payload]
@@ -309,9 +345,12 @@ class PadApiClient(object):
         final_payload_str = '{}&key={}'.format(payload_str, key)
         return '{}?{}'.format(self.server_api_endpoint, final_payload_str)
 
-    def get_json_results(self, url):
+    def get_json_results(self, url, post_data=None):
         s = requests.Session()
-        req = requests.Request('GET', url, headers=self.default_headers)
+        if post_data:
+            req = requests.Request('POST', url, headers=self.default_headers, data=post_data)
+        else:
+            req = requests.Request('GET', url, headers=self.default_headers)
         p = req.prepare()
         r = s.send(p)
         result_json = r.json()

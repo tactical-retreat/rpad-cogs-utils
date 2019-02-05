@@ -7,12 +7,16 @@ RUN_DIR=/home/tactical0retreat/rpad-cogs-utils/image_pull
 IMG_DIR=/home/tactical0retreat/image_data
 PROCESSED_DATA_DIR=/home/tactical0retreat/pad_data/processed
 
+ALT_PROCESSOR_DIR=/home/tactical0retreat/git/pad-resources
+
+yarn --cwd=${ALT_PROCESSOR_DIR} update
+
 # Full pictures
 python3 ${RUN_DIR}/PADTextureDownload.py --output_dir=${IMG_DIR}/na/full --server=NA
-python3 ${RUN_DIR}/PADImageDownload.py --output_dir=${IMG_DIR}/na/full
+python3 ${RUN_DIR}/PADAnimatedGenerator.py --raw_dir=${IMG_DIR}/na/full/raw_data --working_dir=${ALT_PROCESSOR_DIR} --output_dir=${IMG_DIR}/na/full/corrected_data
 
 python3 ${RUN_DIR}/PADTextureDownload.py --output_dir=${IMG_DIR}/jp/full --server=JP
-python3 ${RUN_DIR}/PADImageDownload.py --output_dir=${IMG_DIR}/jp/full
+python3 ${RUN_DIR}/PADAnimatedGenerator.py --raw_dir=${IMG_DIR}/jp/full/raw_data --working_dir=${ALT_PROCESSOR_DIR} --output_dir=${IMG_DIR}/jp/full/corrected_data
 
 gsutil -m rsync -r ${IMG_DIR}/na/full/corrected_data gs://mirubot/padimages/na/full/
 gsutil -m rsync -r ${IMG_DIR}/jp/full/corrected_data gs://mirubot/padimages/jp/full/

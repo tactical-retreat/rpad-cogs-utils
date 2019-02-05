@@ -24,8 +24,8 @@ class WaveItem(SqlItem):
                  drop_monster_level: int=None,
                  plus_amount: int=None,
                  monster: wave_data.WaveMonster=None,
-                 pull_time=None  # Ignored
-                 ):
+                 leader_id: int=None,
+                 friend_id: int=None):
         self.id = id
         self.server = server
         self.dungeon_id = dungeon_id
@@ -52,6 +52,9 @@ class WaveItem(SqlItem):
 
         self.pull_id = pull_id
         self.entry_id = entry_id
+
+        self.leader_id = leader_id
+        self.friend_id = friend_id
 
     def is_invade(self):
         return self.spawn_type == 2

@@ -13,6 +13,12 @@ class PlayerDataResponse(pad_util.JsonDictEncodable):
         gmsg = data['gmsg'].replace('ihttps', 'https')
         self.gacha_url = gmsg[:gmsg.rfind('/')] + '/prop.php'
 
+    def get_deck_count(self):
+        if 'decks' in self.decksb:
+            return len(self.decksb['decks'])
+        else:
+            return len(self.decksb)
+
     def get_current_deck(self):
         if 'decks' in self.decksb:
             return self.decksb['decks'][self.cur_deck_id]
@@ -40,6 +46,21 @@ class PlayerDataResponse(pad_util.JsonDictEncodable):
                 assist_card = self.cards_by_uuid[card.assist_uuid]
                 deck_and_inherits.append(assist_card.card_id)
         return deck_and_inherits
+
+    def map_card_ids_to_uuids(self, card_ids):
+        results = [0] * 5
+        for idx, card_id in enumerate(card_ids):
+            if card_id == 0:
+                continue
+
+            for c in self.cards:
+                # Ensure the card id matches and the UUID isn't already used
+                if int(c.card_id) == int(card_id) and c.card_uuid not in results:
+                    results[idx] = c.card_uuid
+                    break
+            if not results[idx]:
+                raise ValueError('could not find uuid for', card_id)
+        return results
 
 
 class RecommendedHelpersResponse(pad_util.JsonDictEncodable):

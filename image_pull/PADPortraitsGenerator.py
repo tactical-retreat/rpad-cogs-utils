@@ -1,10 +1,6 @@
 import argparse
-import csv
 import json
 import os
-import re
-import sys
-import time
 
 from PIL import Image
 
@@ -66,8 +62,15 @@ attr_map = {
 }
 
 for card in card_data:
+    card_id = card['card_id']
+
+    # Prevent loading junk entries (fake enemies) and also limit to data which has
+    # been officially released.
+    if card_id < 9999 and not card['released_status']:
+        continue
+
     card_types.append([
-        card['card_id'],
+        card_id,
         attr_map[card['attr_id']],
         attr_map[card['sub_attr_id']]
     ])
