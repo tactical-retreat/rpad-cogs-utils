@@ -6,6 +6,7 @@ import os
 from pad_etl.data import bonus as databonus
 from pad_etl.data import card as datacard
 from pad_etl.data import dungeon as datadungeon
+from pad_etl.data import database
 from pad_etl.processor import db_util
 from pad_etl.processor import dungeon
 from pad_etl.processor import dungeon_processor
@@ -64,11 +65,18 @@ loader = dungeon.DungeonLoader(db_wrapper)
 print(dungeon_seq, pad_dungeon_id)
 dungeon = loader.load_dungeon(dungeon_seq)
 
-jp_dir = os.path.join(args.raw_input_dir, 'jp')
-na_dir = os.path.join(args.raw_input_dir, 'na')
 
-jp_data = datadungeon.load_dungeon_data(data_dir=jp_dir)
-na_data = datadungeon.load_dungeon_data(data_dir=na_dir)
+jp_database = database.Database('jp', args.raw_input_dir)
+jp_database.load_database()
+
+na_database = database.Database('na', args.raw_input_dir)
+na_database.load_database()
+
+jp_data = jp_database.dungeons
+na_data = na_database.dungeons
+
+jp_dungeon = None
+na_dungeon = None
 
 for d in jp_data:
     if d.dungeon_id == pad_dungeon_id:
@@ -81,11 +89,11 @@ for d in na_data:
         na_dungeon = d
         break
 
-if not na_dungeon:
-    na_dungeon = jp_dungeon
+jp_dungeon = jp_dungeon or na_dungeon
+na_dungeon = na_dungeon or jp_dungeon
 
-jp_bonus_data = databonus.load_bonus_data(data_dir=jp_dir, data_group='red', server='jp')
-na_bonus_data = databonus.load_bonus_data(data_dir=na_dir, data_group='red', server='na')
+jp_bonus_data = jp_database.bonus_sets['red']
+na_bonus_data = na_database.bonus_sets['red']
 
 floor_text = {}
 for bonus in jp_bonus_data + na_bonus_data:
@@ -96,8 +104,10 @@ for bonus in jp_bonus_data + na_bonus_data:
     adj_floor_id = bonus.dungeon_floor_id - bonus.dungeon_id * 1000
     floor_text[adj_floor_id] = bonus.clean_message
 
-cards = datacard.load_card_data(data_dir=jp_dir)
-na_cards = datacard.load_card_data(data_dir=na_dir)
+cards = jp_database.raw_cards
+na_cards = na_database.raw_cards
+
+na_enemies = na_database.enemies
 
 waves = db_wrapper.load_multiple_objects(WaveItem, pad_dungeon_id)
 print('loaded', len(waves), 'waves')
@@ -105,7 +115,8 @@ dungeon_processor.populate_dungeon(dungeon, jp_dungeon, na_dungeon,
                                    waves=waves,
                                    cards=cards,
                                    na_cards=na_cards,
-                                   floor_text=floor_text)
+                                   floor_text=floor_text,
+                                   na_enemies=na_enemies)
 
 # print(dungeon)
 loader.save_dungeon(dungeon)
