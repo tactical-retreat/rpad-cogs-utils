@@ -5,8 +5,8 @@ import os
 
 from pad_etl.data import bonus as databonus
 from pad_etl.data import card as datacard
-from pad_etl.data import dungeon as datadungeon
 from pad_etl.data import database
+from pad_etl.data import dungeon as datadungeon
 from pad_etl.processor import db_util
 from pad_etl.processor import dungeon
 from pad_etl.processor import dungeon_processor
@@ -104,9 +104,11 @@ for bonus in jp_bonus_data + na_bonus_data:
     adj_floor_id = bonus.dungeon_floor_id - bonus.dungeon_id * 1000
     floor_text[adj_floor_id] = bonus.clean_message
 
+# TODO should use a cross server card list
 cards = jp_database.raw_cards
 na_cards = na_database.raw_cards
 
+# TODO need a cross server enemies list
 na_enemies = na_database.enemies
 
 waves = db_wrapper.load_multiple_objects(WaveItem, pad_dungeon_id)
@@ -116,7 +118,7 @@ dungeon_processor.populate_dungeon(dungeon, jp_dungeon, na_dungeon,
                                    cards=cards,
                                    na_cards=na_cards,
                                    floor_text=floor_text,
-                                   na_enemies=na_enemies)
+                                   jp_enemies=na_enemies)
 
 # print(dungeon)
 loader.save_dungeon(dungeon)

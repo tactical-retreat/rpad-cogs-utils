@@ -4,7 +4,7 @@ import os
 
 from . import bonus, card, dungeon, skill, exchange, enemy_skill
 from ..processor import enemy_skillset as enemy_skillset_lib
-from ..processor.merged_data import MergedBonus, MergedCard, MergedEnemySkillset
+from ..processor.merged_data import MergedBonus, MergedCard, MergedEnemySkillset, MergedEnemy
 
 
 # TODO move these into data dir
@@ -60,25 +60,25 @@ def _clean_enemy(cards, enemy_skills):
     enemy_skill_by_id = {s.enemy_skill_id: s for s in enemy_skills}
     merged_enemies = []
     for card in cards:
-        if len(card.enemy_skill_refs) > 0:
-            enemy_skillset = []
-            for esr in card.enemy_skill_refs:
-                if enemy_skill_by_id.get(esr.enemy_skill_id) is None:
-                    print("Enemy skill not found: " + str(esr.enemy_skill_id))
-                    continue
-                es = enemy_skill_by_id.get(esr.enemy_skill_id)
-                es_set = None
-                if es.type == 83:
-                    es_set = [enemy_skill_by_id.get(s_id) for s_id in es.params[1:11]
-                              if s_id is not None and enemy_skill_by_id.get(s_id) is not None]
-                enemy_skillset.append(MergedEnemySkillset(esr, es, es_set))
+        if len(card.enemy_skill_refs) == 0:
+            continue
 
-                # This is a mess but the skillset parser expects json objects
-                item = {'monster_no': card.card_id, 'skill_set': enemy_skillset}
-                data = json.dumps([item], default=lambda x: x.__dict__)
-                data_json = json.loads(data)
-                item['skill_processed'] = enemy_skillset_lib.reformat_json(data_json)
-            merged_enemies.append(item)
+        enemy_skillset = []
+        for esr in card.enemy_skill_refs:
+            if enemy_skill_by_id.get(esr.enemy_skill_id) is None:
+                print("Enemy skill not found: " + str(esr.enemy_skill_id))
+                continue
+            es = enemy_skill_by_id.get(esr.enemy_skill_id)
+            es_set = None
+            if es.type == 83:
+                es_set = [enemy_skill_by_id.get(s_id) for s_id in es.params[1:11]
+                          if s_id is not None and enemy_skill_by_id.get(s_id) is not None]
+            enemy_skillset.append(MergedEnemySkillset(esr, es, es_set))
+
+        logic, actions, unknown = enemy_skillset_lib.extract_logic_actions_unknown(
+            enemy_skillset)
+        merged_enemies.append(MergedEnemy(card.card_id, logic, actions, unknown))
+
     return merged_enemies
 
 

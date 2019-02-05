@@ -29,23 +29,23 @@ TYPING_MAP = {
 
 
 def es_id(skill):
-    return skill['enemy_skill_id']
+    return skill.enemy_skill_id
 
 
 def name(skill):
-    return skill['enemy_skill_info']['name']
+    return skill.enemy_skill_info['name']
 
 
 def params(skill):
-    return skill['enemy_skill_info']['params']
+    return skill.enemy_skill_info['params']
 
 
 def ref(skill):
-    return skill['enemy_skill_ref']
+    return skill.enemy_skill_ref
 
 
 def es_type(skill):
-    return skill['enemy_skill_info']['type']
+    return skill.enemy_skill_info['type']
 
 
 def attribute_bitmap(bits):
@@ -761,21 +761,24 @@ ACTION_MAP = {
 }
 
 
+def extract_logic_actions_unknown(enemy_skillset):
+    logics = {}
+    actions = {}
+    unknown = {}
+    for idx, skill in enumerate(enemy_skillset):
+        if es_type(skill) in LOGIC_MAP:
+            logics[idx] = LOGIC_MAP[es_type(skill)](skill)
+        elif es_type(skill) in ACTION_MAP:
+            actions[idx] = ACTION_MAP[es_type(skill)](skill)
+        else:  # skills not parsed
+            unknown[idx] = EnemySkillUnknown(skill)
+    return logics, actions, unknown
+
+
 def reformat_json(enemy_data):
     reformatted = []
     for enemy in enemy_data:
-        logics = {}
-        actions = {}
-        unknown = {}
-        for idx, skill in enumerate(enemy['skill_set']):
-            idx += 1
-            # print(str(enemy['monster_no']) + ':' + str(es_type(skill)))
-            if es_type(skill) in LOGIC_MAP:
-                logics[idx] = LOGIC_MAP[es_type(skill)](skill)
-            elif es_type(skill) in ACTION_MAP:
-                actions[idx] = ACTION_MAP[es_type(skill)](skill)
-            else:  # skills not parsed
-                unknown[idx] = EnemySkillUnknown(skill)
+        logics, actions, unknown = extract_logic_actions_unknown(enemy['skill_set'])
         reformatted.append({
             'MONSTER_NO': enemy['monster_no'],
             'LOGIC': logics,
