@@ -19,7 +19,7 @@ from pad_etl.processor import monster, monster_skill
 from pad_etl.processor import skill_data
 from pad_etl.processor import skill_info
 from pad_etl.processor.db_util import DbWrapper
-from pad_etl.processor.merged_data import MergedCard, CrossServerCard, MergedEnemySkillset
+from pad_etl.processor.merged_data import MergedCard, CrossServerCard
 from pad_etl.processor.news import NewsItem
 from pad_etl.processor.schedule_item import ScheduleItem
 
