@@ -118,7 +118,14 @@ for em in egg_machines:
 
     page = api_client.get_egg_machine_page(gtype, grow)
     soup = BeautifulSoup(page, 'html.parser')
-    rows = soup.table.find_all('tr')
+    table = soup.table
+
+    if not table:
+        print('Egg machine scrape failed:', gtype, grow)
+        print(page)
+        continue
+
+    rows = table.find_all('tr')
     for row in rows:
         cols = row.find_all('td')
         if len(cols) < min_cols:
