@@ -51,11 +51,9 @@ class MergedEnemySkillset(pad_util.JsonDictEncodable):
 
 
 class MergedEnemy(pad_util.JsonDictEncodable):
-    def __init__(self, enemy_id: int, logic, actions, unknown):
+    def __init__(self, enemy_id: int, behavior):
         self.enemy_id = enemy_id
-        self.logic = logic  # List[ESLogic]
-        self.actions = actions  # List[ESAction]
-        self.unknown = unknown  # List[EnemySkillUnknown]
+        self.behavior = behavior  # List[ESAction or ESLogic or ESPassive]
 
 
 class CrossServerCard(object):

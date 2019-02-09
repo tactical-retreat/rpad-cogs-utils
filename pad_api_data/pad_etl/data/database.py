@@ -75,9 +75,8 @@ def _clean_enemy(cards, enemy_skills):
                           if s_id is not None and enemy_skill_by_id.get(s_id) is not None]
             enemy_skillset.append(MergedEnemySkillset(esr, es, es_set))
 
-        logic, actions, unknown = enemy_skillset_lib.extract_logic_actions_unknown(
-            enemy_skillset)
-        merged_enemies.append(MergedEnemy(card.card_id, logic, actions, unknown))
+        behavior = enemy_skillset_lib.extract_behavior(enemy_skillset)
+        merged_enemies.append(MergedEnemy(card.card_id, behavior))
 
     return merged_enemies
 
