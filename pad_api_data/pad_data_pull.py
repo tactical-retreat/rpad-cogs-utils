@@ -123,6 +123,7 @@ for em in egg_machines:
     if not table:
         print('Egg machine scrape failed:', gtype, grow)
         print(page)
+        print(player_data.egg_data)
         continue
 
     rows = table.find_all('tr')
