@@ -8,6 +8,7 @@ from datetime import timedelta
 import json
 import logging
 import time
+import os
 
 import feedparser
 from pad_etl.common import monster_id_mapping
@@ -34,7 +35,8 @@ logging.getLogger().setLevel(logging.DEBUG)
 logger.setLevel(logging.INFO)
 
 human_fix_logger = logging.getLogger('human_fix')
-human_fix_logger.addHandler(logging.FileHandler('/tmp/pipeline_human_fixes.txt', mode='w'))
+if os.name != 'nt':
+    human_fix_logger.addHandler(logging.FileHandler('/tmp/pipeline_human_fixes.txt', mode='w'))
 human_fix_logger.setLevel(logging.INFO)
 
 
