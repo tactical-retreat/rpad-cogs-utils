@@ -29,27 +29,27 @@ TYPING_MAP = {
 
 
 def es_id(skill):
-    return skill['enemy_skill_id']
+    return skill.enemy_skill_id
 
 
 def name(skill):
-    return skill['enemy_skill_info']['name']
+    return skill.enemy_skill_info['name']
 
 
 def params(skill):
-    return skill['enemy_skill_info']['params']
+    return skill.enemy_skill_info['params']
 
 
 def ref(skill):
-    return skill['enemy_skill_ref'] if 'enemy_skill_ref' in skill else None
+    return skill.enemy_skill_ref
 
 
 def es_type(skill):
-    return skill['enemy_skill_info']['type']
+    return skill.enemy_skill_info['type']
 
 
 def skillset(skill):
-    return skill['enemy_skill_set']
+    return skill.enemy_skill_set
 
 
 def attribute_bitmap(bits):
@@ -128,6 +128,8 @@ def positions_2d_bitmap(bits_arr):
     return positions, rows, cols
 
 # description
+
+
 class Describe:
     @staticmethod
     def condition(chance, hp=None, one_time=False):
@@ -405,7 +407,8 @@ class ESBind(ESEffect):
 
 class ESBindAttack(ESBind):
     def __init__(self, skill):
-        super(ESBindAttack, self).__init__(skill, target_count=params(skill)[5], target_type_description='cards')
+        super(ESBindAttack, self).__init__(skill, target_count=params(
+            skill)[5], target_type_description='cards')
         self.effect = 'bind_attack'
         self.multiplier = params(skill)[1]
         self.description += ' & ' + Describe.attack(self.multiplier)
@@ -572,8 +575,8 @@ class ESBlindStickyFixed(ESBlindSticky):
         super(ESBlindStickyFixed, self).__init__(skill)
         self.position_str, self.position_rows, self.position_cols = positions_2d_bitmap(params(skill)[2:7])
         self.description = Describe.blind_sticky_fixed(self.turns)
-    
-    
+
+
 class ESDispel(ESEffect):
     def __init__(self, skill):
         super(ESDispel, self).__init__(skill)
@@ -717,7 +720,6 @@ class ESAbsorbCombo(ESEffect):
         self.combo_threshold = params(skill)[3]
         self.description = Describe.absorb('combo <= {:,d}'.format(self.combo_threshold), self.turns)
 
-
 class ESAbsorbThreshold(ESEffect):
     def __init__(self, skill):
         super(ESAbsorbThreshold, self).__init__(skill)
@@ -801,9 +803,9 @@ class ESRowColSpawnMulti(ESFixedOrbSpawn):
         )
         desc_arr = []
         for i in range(1, 6, 2):
-            if params(skill)[i] and params(skill)[i+1]:
+            if params(skill)[i] and params(skill)[i + 1]:
                 p = position_bitmap(params(skill)[i])
-                a = attribute_bitmap(params(skill)[i+1])
+                a = attribute_bitmap(params(skill)[i + 1])
                 desc_arr.append(Describe.fixed_orb_spawn(self.position_type, p, a)[7:])
                 self.positions += p
                 self.attributes += a
@@ -871,7 +873,8 @@ class ESBoardChangeAttackFlat(ESBoardChange):
             [ATTRIBUTE_MAP[x] for x in params(skill)[2:params(skill).index(-1)]]
         )
         self.multiplier = params(skill)[1]
-        self.description = Describe.board_change(self.attributes) + ' & ' + Describe.attack(self.multiplier)
+        self.description = Describe.board_change(
+            self.attributes) + ' & ' + Describe.attack(self.multiplier)
 
 
 class ESBoardChangeAttackBits(ESBoardChange):
@@ -884,20 +887,24 @@ class ESBoardChangeAttackBits(ESBoardChange):
         self.description = Describe.board_change(self.attributes) + ' & ' + Describe.attack(self.multiplier)
 
 
+class SubSkill:
+    def __init__(self, enemy_skill_id, enemy_skill_info):
+        self.enemy_skill_id = enemy_skill_id
+        self.enemy_skill_info = enemy_skill_info
+        self.enemy_skill_ref = None
+
+
 class ESSkillSet(ESEffect):
     def __init__(self, skill):
         super(ESSkillSet, self).__init__(skill)
         self.effect = 'skill_set'
         self.skill_list = []
         for i, s in enumerate(skillset(skill)):
-            sub_skill = {
-                'enemy_skill_id': params(skill)[1 + i],
-                'enemy_skill_info': s
-            }
-            if s['type'] in BEHAVIOR_MAP:
-                self.skill_list.append(BEHAVIOR_MAP[s['type']](
-                    sub_skill
-                ))
+            sub_skill = SubSkill(params(skill)[1 + i], s)
+            skill_type = s['type']
+            if skill_type in BEHAVIOR_MAP:
+                behavior = BEHAVIOR_MAP[skill_type](sub_skill)
+                self.skill_list.append(behavior)
             else:
                 self.skill_list.append(EnemySkillUnknown(sub_skill))
 
@@ -1233,6 +1240,19 @@ PASSIVE_MAP = {
     72: ESAttributeResist,
     73: ESResolve
 }
+
+
+def extract_behavior(enemy_skillset):
+    behavior = []
+    for skill in enemy_skillset:
+        skill_type = es_type(skill)
+        if skill_type in BEHAVIOR_MAP:
+            behavior.append(BEHAVIOR_MAP[skill_type](skill))
+        elif skill_type in PASSIVE_MAP:
+            behavior.append(PASSIVE_MAP[skill_type](skill))
+        else:  # skills not parsed
+            behavior.append(EnemySkillUnknown(skill))
+    return behavior
 
 
 def reformat_json(enemy_data):

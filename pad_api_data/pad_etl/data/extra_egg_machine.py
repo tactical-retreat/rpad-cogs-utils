@@ -87,14 +87,11 @@ def load_data(data_dir: str=None,
     server = server.lower()
 
     egg_machines = []
-    # gtype starts at 52 and goes up by 10 for every egg machine or slot.
+    # gtype starts at 52 and goes up by 10 for every egg machine slot.
     gtype = 52
     for outer in data_json:
         if outer:
             for em in outer:
                 egg_machines.append(ExtraEggMachine(em, server, gtype))
-                gtype += 10
-        else:
-            # Always increment this even if the slot is empty.
-            gtype += 10
+        gtype += 10
     return egg_machines

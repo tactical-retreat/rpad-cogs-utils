@@ -554,8 +554,7 @@ def enhance_convert(arguments):
 
         if for_attr:
             if not len(for_attr) == 6:
-                color_text = 'all' if len(for_attr) == 5 else ', '.join(
-                    [ATTRIBUTES[i] for i in for_attr])
+                color_text = ', '.join([ATTRIBUTES[i] for i in for_attr])
                 for_skill_text += ' ' + color_text
                 c['skill_text'] += 'Enhance all' + for_skill_text + ' orbs'
             else:
@@ -579,8 +578,7 @@ def lock_convert(arguments):
         if for_attr:
             color_text = 'all' if len(for_attr) == 10 else ', '.join(
                 [ATTRIBUTES[i] for i in for_attr])
-            for_skill_text += ' ' + color_text
-            c['skill_text'] += 'Lock all' + for_skill_text + ' orbs'
+            c['skill_text'] += 'Lock ' + color_text + ' orbs'
         return 'lock_orbs', c
     return f
 

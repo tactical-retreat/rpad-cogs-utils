@@ -24,6 +24,7 @@ class WaveItem(SqlItem):
                  drop_monster_level: int=None,
                  plus_amount: int=None,
                  monster: wave_data.WaveMonster=None,
+                 pull_time=None,  # Ignored
                  leader_id: int=None,
                  friend_id: int=None):
         self.id = id

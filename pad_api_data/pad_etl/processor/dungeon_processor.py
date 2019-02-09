@@ -157,8 +157,8 @@ def populate_dungeon(dungeon: dbdungeon.Dungeon,
                      waves=[],
                      cards=[],
                      na_cards=[],
-                     floor_text={}
-                     ):
+                     floor_text={},
+                     na_enemies=[]):
     dungeon.comment_us = VERSION
 
     # Most dungeons are this type
@@ -218,6 +218,8 @@ def populate_dungeon(dungeon: dbdungeon.Dungeon,
         max_floor = max(map(lambda dm: dm.floor, max_monsters))
         max_floor_monsters = filter(lambda dm: dm.floor == max_floor, max_monsters)
         dungeon.icon_seq = max(map(lambda dm: dm.monster_no, max_floor_monsters))
+
+    #if max_dungeon.resolved_dungeon_monsters:
 
 
 def update_sub_dungeon(sub_dungeon: dbdungeon.SubDungeon,
