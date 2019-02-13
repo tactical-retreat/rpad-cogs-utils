@@ -4,8 +4,9 @@ import os
 
 from . import bonus, card, dungeon, skill, exchange, enemy_skill
 from ..processor import enemy_skillset as enemy_skillset_lib
-from ..processor.merged_data import MergedBonus, MergedCard, MergedEnemySkillset, MergedEnemy
+from ..processor.merged_data import MergedBonus, MergedCard, MergedEnemy
 
+from .card import EnemySkillRef
 
 # TODO move these into data dir
 fail_logger = logging.getLogger('processor_failures')
@@ -66,21 +67,12 @@ def _clean_enemy(cards, enemy_skills):
         if len(card.enemy_skill_refs) == 0:
             continue
 
-        enemy_skillset = []
-        for esr in card.enemy_skill_refs:
-            if enemy_skill_by_id.get(esr.enemy_skill_id) is None:
-                print("Enemy skill not found: " + str(esr.enemy_skill_id))
-                continue
-            es = enemy_skill_by_id.get(esr.enemy_skill_id)
-            es_set = None
-            if es.type == 83:
-                es_set = [enemy_skill_by_id.get(s_id) for s_id in es.params[1:11]
-                          if s_id is not None and enemy_skill_by_id.get(s_id) is not None]
-            enemy_skillset.append(MergedEnemySkillset(esr, es, es_set))
+        default_ref = EnemySkillRef(0, 0, 0)
+        enemy_skillset = [x if enemy_skill_by_id.get(x.enemy_skill_id) is not None else default_ref
+                          for x in card.enemy_skill_refs]
 
-        behavior = enemy_skillset_lib.extract_behavior(enemy_skillset)
+        behavior = enemy_skillset_lib.extract_behavior(enemy_skillset, enemy_skill_by_id)
         merged_enemies.append(MergedEnemy(card.card_id, behavior))
-
     return merged_enemies
 
 

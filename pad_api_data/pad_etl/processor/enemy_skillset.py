@@ -17,9 +17,6 @@ def dump_obj(o):
         return '{} {}'.format(type(o).__name__, json.dumps(o, sort_keys=True, default=lambda x: x.__dict__))
 
 
-ai = 'ai'
-rnd = 'rnd'
-
 ATTRIBUTE_MAP = {
     -1: 'Random',
     None: 'Fire',
@@ -31,7 +28,8 @@ ATTRIBUTE_MAP = {
     5: 'Heal',
     6: 'Jammer',
     7: 'Poison',
-    8: 'Mortal Poison'
+    8: 'Mortal Poison',
+    9: 'Bomb'
 }
 
 TYPING_MAP = {
@@ -42,28 +40,39 @@ TYPING_MAP = {
 }
 
 
+class DictWithAttributeAccess(dict):
+    def __getattr__(self, key):
+        return self[key]
+
+    def __setattr__(self, key, value):
+        self[key] = value
+
+
+enemy_skill_map = None
+
+
 def es_id(skill):
     return skill.enemy_skill_id
 
 
 def name(skill):
-    return skill.enemy_skill_info['name']
+    return enemy_skill_map[skill.enemy_skill_id].name
 
 
 def params(skill):
-    return skill.enemy_skill_info['params']
+    return enemy_skill_map[skill.enemy_skill_id].params
 
 
-def ref(skill):
-    return skill.enemy_skill_ref
+def ai(skill):
+    return skill.enemy_ai
+
+
+def rnd(skill):
+    return skill.enemy_rnd
 
 
 def es_type(skill):
-    return skill.enemy_skill_info['type']
-
-
-def skillset(skill):
-    return skill.enemy_skill_set
+    return enemy_skill_map[skill.enemy_skill_id].type
 
 
 def attribute_bitmap(bits):
@@ -328,12 +337,13 @@ class Describe:
 # Condition subclass
 
 class ESCondition(pad_util.JsonDictEncodable):
-    def __init__(self, ref, params_arr, description=None):
-        self.ref = ref
+    def __init__(self, ai, rnd, params_arr, description=None):
+        self.ai = ai
+        self.rnd = rnd
         self.hp_threshold = None if params_arr[11] is None else params_arr[11]
         self.one_time = params_arr[13]
         self.description = description if description else \
-            Describe.condition(max(ref[ai], ref[rnd]), self.hp_threshold, self.one_time is not None)
+            Describe.condition(max(ai, rnd), self.hp_threshold, self.one_time is not None)
 
 
 # Action
@@ -345,10 +355,10 @@ class ESAction(pad_util.JsonDictEncodable):
         self.name = name(skill)
         self.effect = effect
         self.description = description
-        if ref(skill):
-            self.condition = ESCondition(ref(skill), params(skill))
-        else:
+        if ai(skill) is None or rnd(skill) is None:
             self.condition = None
+        else:
+            self.condition = ESCondition(ai(skill), rnd(skill), params(skill))
 
 
 class ESEffect(ESAction):
@@ -875,6 +885,11 @@ class ESRandomSpawn(ESEffect):
         self.description = Describe.random_orb_spawn(self.count, self.attributes)
 
 
+class ESBombSpawn(ESEffect):
+    def __init__(self, skill):
+        super(ESBombSpawn, self).__init__(skill)
+
+
 class ESBoardChange(ESEffect):
     def __init__(self, skill, attributes=None):
         super(ESBoardChange, self).__init__(skill)
@@ -907,26 +922,37 @@ class ESBoardChangeAttackBits(ESBoardChange):
             self.attributes) + ' & ' + Describe.attack(self.multiplier)
 
 
-class SubSkill():
-    def __init__(self, enemy_skill_id, enemy_skill_info):
+class SubSkill(pad_util.JsonDictEncodable):
+    def __init__(self, enemy_skill_id):
         self.enemy_skill_id = enemy_skill_id
-        self.enemy_skill_info = enemy_skill_info
-        self.enemy_skill_ref = None
+        self.enemy_skill_info = enemy_skill_map[enemy_skill_id]
+        self.enemy_ai = None
+        self.enemy_rnd = None
 
 
 class ESSkillSet(ESEffect):
     def __init__(self, skill):
         super(ESSkillSet, self).__init__(skill)
         self.effect = 'skill_set'
+        self.description = 'Perform multiple skills'
         self.skill_list = []
-        for i, s in enumerate(skillset(skill)):
-            sub_skill = SubSkill(params(skill)[1 + i], s)
-            skill_type = s['type']
-            if skill_type in BEHAVIOR_MAP:
-                behavior = BEHAVIOR_MAP[skill_type](sub_skill)
-                self.skill_list.append(behavior)
-            else:
-                self.skill_list.append(EnemySkillUnknown(sub_skill))
+        i = 0
+        for s in params(skill)[1:11]:
+            if s is not None:
+                sub_skill = SubSkill(s)
+                if es_type(sub_skill) in BEHAVIOR_MAP:
+                    behavior = BEHAVIOR_MAP[es_type(sub_skill)](sub_skill)
+                    self.skill_list.append(behavior)
+                else:
+                    self.skill_list.append(EnemySkillUnknown(sub_skill))
+            i += 1
+
+
+class ESSkillSetOnDeath(ESSkillSet):
+    def __init__(self, skill):
+        super(ESSkillSetOnDeath, self).__init__(skill)
+        if self.condition:
+            self.condition.description = 'On death'
 
 
 class ESSkillDelay(ESEffect):
@@ -1033,8 +1059,8 @@ class ESFlagOperation(ESLogic):
 
     def __init__(self, skill):
         super(ESFlagOperation, self).__init__(skill, effect='flag_operation')
-        self.flag = ref(skill)[ai]
-        self.flag_bin = bin(ref(skill)[ai])
+        self.flag = ai(skill)
+        self.flag_bin = bin(self.flag)
         self.operation = self.FLAG_OPERATION_MAP[es_type(skill)]
 
 
@@ -1047,7 +1073,7 @@ class ESSetCounter(ESLogic):
 
     def __init__(self, skill):
         super(ESSetCounter, self).__init__(skill, effect='set_counter')
-        self.counter = ref(skill)[ai] if es_type(skill) == 25 else 1
+        self.counter = ai(skill) if es_type(skill) == 25 else 1
         self.set = self.COUNTER_SET_MAP[es_type(skill)]
 
 
@@ -1055,15 +1081,15 @@ class ESSetCounterIf(ESLogic):
     def __init__(self, skill):
         super(ESSetCounterIf, self).__init__(skill, effect='set_counter_if')
         self.effect = 'set_counter_if'
-        self.counter_is = ref(skill)[ai]
-        self.counter = ref(skill)[rnd]
+        self.counter_is = ai(skill)
+        self.counter = rnd(skill)
 
 
 class ESBranch(ESLogic):
     def __init__(self, skill, branch_condition):
         self.branch_condition = branch_condition
-        self.branch_value = ref(skill)[ai]
-        self.target_round = ref(skill)[rnd]
+        self.branch_value = ai(skill)
+        self.target_round = rnd(skill)
         super(ESBranch, self).__init__(skill, effect='branch')
 
 
@@ -1073,7 +1099,7 @@ class ESBranchFlag(ESBranch):
             skill,
             branch_condition='flag'
         )
-        self.branch_value_bin = bin(ref(skill)[ai])
+        self.branch_value_bin = bin(ai(skill))
 
 
 class ESBranchHP(ESBranch):
@@ -1135,6 +1161,12 @@ class ESPreemptive(ESLogic):
     def __init__(self, skill):
         super(ESPreemptive, self).__init__(skill, effect='preemptive')
         self.level = params(skill)[1]
+
+
+class ESBranchCard(ESBranch):
+    def __init__(self, skill):
+        super(ESBranchCard, self).__init__(skill, branch_condition='player_cards')
+        self.branch_value = [x for x in params(skill) if x is not None]
 
 
 # Unknown
@@ -1202,9 +1234,8 @@ BEHAVIOR_MAP = {
     87: ESAbsorbThreshold,
     88: ESBindAwoken,
     89: ESSkillDelay,
-    # 90: ESSkillSet, enemy jump (?)
     92: ESRandomSpawn,
-    # 93: FF animation (?)
+    # 93: FF animation (???)
     94: ESOrbLock,
     # 95 death skillset
     96: ESSkyfallLocks,
@@ -1213,7 +1244,7 @@ BEHAVIOR_MAP = {
     99: ESOrbSealColumn,
     100: ESOrbSealRow,
     101: ESFixedStart,
-    # 102: Bombs
+    102: ESBombSpawn,
     # 103: also bombs
     # 104: clouds
     # 105: RCV debuff
@@ -1252,7 +1283,8 @@ BEHAVIOR_MAP = {
     43: ESBranchFlag,
     44: ESFlagOperation,
     45: ESFlagOperation,
-    49: ESPreemptive
+    49: ESPreemptive,
+    90: ESBranchCard,
     # 113: logic class ※前ターンでaiコンボ以上の時、rndに分岐
     # 120: logic class ※残りai体の時、rnd に分岐
 }
@@ -1263,7 +1295,9 @@ PASSIVE_MAP = {
 }
 
 
-def extract_behavior(enemy_skillset):
+def extract_behavior(enemy_skillset, enemy_skill_by_id):
+    global enemy_skill_map
+    enemy_skill_map = enemy_skill_by_id
     behavior = []
     for skill in enemy_skillset:
         skill_type = es_type(skill)
@@ -1276,17 +1310,19 @@ def extract_behavior(enemy_skillset):
     return behavior
 
 
-def reformat_json(enemy_data):
+def reformat_json(card_data):
     reformatted = []
-    for enemy in enemy_data:
+    for enemy in card_data:
 
-        if enemy['monster_no'] != 1836:
+        # TODO: remove test code
+        if enemy.card_id != 1670:
             continue
 
         behavior = {}
         passives = {}
         unknown = {}
-        for idx, skill in enumerate(enemy['skill_set']):
+        # Sequence of enemy skill is important for logic
+        for idx, skill in enumerate(enemy.enemy_skill_refs):
             idx += 1
             # print(str(enemy['monster_no']) + ':' + str(es_type(skill)))
             if es_type(skill) in BEHAVIOR_MAP:
@@ -1296,7 +1332,7 @@ def reformat_json(enemy_data):
             else:  # skills not parsed
                 unknown[idx] = EnemySkillUnknown(skill)
         reformatted.append({
-            'MONSTER_NO': enemy['monster_no'],
+            'MONSTER_NO': enemy.card_id,
             'BEHAVIOR': behavior,
             'PASSIVE': passives,
             'UNKNOWN': unknown
@@ -1305,16 +1341,23 @@ def reformat_json(enemy_data):
     return reformatted
 
 
-def reformat(in_file_name, out_file_name):
+def reformat(raw_cards_json, enemy_skills_json, output_json):
+    global enemy_skill_map
     print('-- Parsing Enemies --\n')
-    with open(in_file_name) as f:
-        enemy_data = json.load(f)
-    print('Merged skill set json loaded\n')
-    reformatted = reformat_json(enemy_data)
+    with open(enemy_skills_json) as f:
+        enemy_skill_map = {x.enemy_skill_id: x for x
+                           in json.load(f, object_hook=lambda json_dict: DictWithAttributeAccess(json_dict))}
+    if enemy_skill_map is None:
+        print('Failed to load enemy skill info\n')
+    print('Enemy skill json loaded\n')
+    with open(raw_cards_json) as f:
+        card_data = json.load(f, object_hook=lambda json_dict: DictWithAttributeAccess(json_dict))
+    print('Raw cards json loaded\n')
+    reformatted = reformat_json(card_data)
 
     print('Converted {active} enemies\n'.format(active=len(reformatted)))
 
-    with open(out_file_name, 'w') as f:
+    with open(output_json, 'w') as f:
         json.dump(reformatted, f, indent=4, sort_keys=True, default=lambda x: x.__dict__)
     print('Result saved\n')
     print('-- End Enemies --\n')
