@@ -6,8 +6,6 @@ from . import bonus, card, dungeon, skill, exchange, enemy_skill
 from ..processor import enemy_skillset as enemy_skillset_lib
 from ..processor.merged_data import MergedBonus, MergedCard, MergedEnemy
 
-from .card import EnemySkillRef
-
 fail_logger = logging.getLogger('processor_failures')
 
 
@@ -60,17 +58,13 @@ def _clean_cards(cards, skills, enemy_skills):
 
 
 def _clean_enemy(cards, enemy_skills):
-    enemy_skill_by_id = {s.enemy_skill_id: s for s in enemy_skills}
+    enemy_skillset_lib.enemy_skill_map = {s.enemy_skill_id: s for s in enemy_skills}
     merged_enemies = []
     for card in cards:
         if len(card.enemy_skill_refs) == 0:
             continue
-
-        default_ref = EnemySkillRef(0, 0, 0)
-        enemy_skillset = [x if enemy_skill_by_id.get(x.enemy_skill_id) is not None else default_ref
-                          for x in card.enemy_skill_refs]
-
-        behavior = enemy_skillset_lib.extract_behavior(enemy_skillset, enemy_skill_by_id)
+        enemy_skillset = [x for x in card.enemy_skill_refs]
+        behavior = enemy_skillset_lib.extract_behavior(enemy_skillset)
         merged_enemies.append(MergedEnemy(card.card_id, behavior))
     return merged_enemies
 
@@ -95,6 +89,7 @@ class Database(object):
         # Computed from other entries
         self.bonuses = []
         self.cards = []
+        self.enemies = []
 
     def load_database(self):
         base_dir = self.base_dir
