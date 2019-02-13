@@ -8,7 +8,6 @@ from ..processor.merged_data import MergedBonus, MergedCard, MergedEnemy
 
 from .card import EnemySkillRef
 
-# TODO move these into data dir
 fail_logger = logging.getLogger('processor_failures')
 
 

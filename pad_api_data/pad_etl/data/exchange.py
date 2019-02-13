@@ -4,10 +4,9 @@ Parses monster exchange data.
 
 import json
 import os
-from typing import Dict, List, Any
+from typing import List
 
 from ..common import pad_util
-from ..common.shared_types import CardId
 
 
 # The typical JSON file name for this data.
@@ -18,23 +17,23 @@ class Exchange(pad_util.JsonDictEncodable):
     """Exchangeable monsters, options to exhange, and any event text."""
 
     def __init__(self, raw: List[str], server: str):
-        self.unknown_000 = str(raw[0]) # Seems to always be 'A'
-        
+        self.unknown_000 = str(raw[0])  # Seems to always be 'A'
+
         # Seems to be the unique ID for the trade?
         self.trade_id = int(raw[1])
 
         # Seems to be an order field, with lower values towards the top?
         self.display_order = int(raw[2])
 
-        # 1-indexed menu this appears in 
+        # 1-indexed menu this appears in
         self.menu_idx = int(raw[3])
 
         # Trade monster ID
         self.monster_id = int(raw[4])
 
-        self.unknown_005 = int(raw[5]) # 1 (all examples checked)
-        self.unknown_006 = int(raw[6]) # 0 (all examples checked)
-        
+        self.unknown_005 = int(raw[5])  # 1 (all examples checked)
+        self.unknown_006 = int(raw[6])  # 0 (all examples checked)
+
         # Trade availability start time string
         self.start_time_str = str(raw[7])
         self.start_timestamp = pad_util.gh_to_timestamp(self.start_time_str, server)
@@ -45,16 +44,18 @@ class Exchange(pad_util.JsonDictEncodable):
 
         # Start time string for the announcement text, probably?
         self.announcement_start_time_str = str(raw[9])
-        self.announcement_start_timestamp = pad_util.gh_to_timestamp(self.announcement_start_time_str, server) if self.announcement_start_time_str else ''
+        self.announcement_start_timestamp = pad_util.gh_to_timestamp(
+            self.announcement_start_time_str, server) if self.announcement_start_time_str else ''
 
         # End time string for the announcement text, probably?
         self.announcement_end_time_str = str(raw[10])
-        self.announcement_end_timestamp = pad_util.gh_to_timestamp(self.announcement_end_time_str, server) if self.announcement_end_time_str else ''
+        self.announcement_end_timestamp = pad_util.gh_to_timestamp(
+            self.announcement_end_time_str, server) if self.announcement_end_time_str else ''
 
         # Optional text that appears above monster name, for limited time events
         self.announcement_text = str(raw[11])
 
-        # Clean version of the announcement text without formatting 
+        # Clean version of the announcement text without formatting
         self.announcement_text_clean = pad_util.strip_colors(self.announcement_text)
 
         # Number of required monsters for the trade
@@ -66,7 +67,6 @@ class Exchange(pad_util.JsonDictEncodable):
 
         # Options for trading the monster
         self.required_monsters = list(map(int, raw[14:]))
-
 
     def __str__(self):
         return str(self.__dict__)

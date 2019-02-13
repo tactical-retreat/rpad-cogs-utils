@@ -1,7 +1,6 @@
 from datetime import date
 import time
 
-from . import db_util
 from . import sql_item
 from ..common import monster_id_mapping
 from ..common import shared_types

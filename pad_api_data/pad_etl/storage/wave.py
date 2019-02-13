@@ -1,4 +1,4 @@
-from ..api import wave_data
+from ..data import wave as wave_data
 from .sql_item import SqlItem
 
 

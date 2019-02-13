@@ -18,6 +18,8 @@ from pad_etl.common import pad_util
 from padtools.servers.server import Server
 import requests
 
+from ..data.wave import WaveResponse
+
 from .player_data import PlayerDataResponse, RecommendedHelpersResponse, FriendEntry, FriendLeader, CardEntry
 
 
@@ -120,6 +122,19 @@ def generate_entry_data(data_parsed: PlayerDataResponse, friend_leader: FriendLe
         deck_and_inherits[0],
         deck_and_inherits[-2],
     ]
+
+
+def extract_wave_response_from_entry(entry_json) -> WaveResponse:
+    """Converts the results of a sneak_dungeon call into wave info."""
+    return parse_wave_response(entry_json['e'])
+
+
+def parse_wave_response(encrypted_wave_data: str) -> WaveResponse:
+    wave_decrypted = dungeon_encoding.decodePadDungeon(encrypted_wave_data)
+    wave_data = wave_decrypted.split('=')[1]
+    wave_data = wave_data.split('&')[0]
+    wave_data = wave_data.replace('"w":', '')
+    return WaveResponse(json.loads(wave_data))
 
 
 class PadApiClient(object):

@@ -4,10 +4,9 @@ import time
 from enum import Enum
 import pytz
 
-from . import db_util
 from . import processor_util
 from . import sql_item
-from .merged_data import MergedBonus
+from ..processor.merged_data import MergedBonus
 
 
 # TZ used for PAD NA

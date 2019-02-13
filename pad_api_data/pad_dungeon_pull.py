@@ -5,11 +5,11 @@ import json
 import logging
 import time
 
-from pad_etl.processor.db_util import DbWrapper
-from pad_etl.processor.wave import WaveItem
-
 from pad_etl.api import pad_api
 from pad_etl.api import wave_data
+
+from pad_etl.processor.db_util import DbWrapper
+from pad_etl.processor.wave import WaveItem
 
 
 def parse_args():
@@ -75,9 +75,9 @@ def pull_data(args):
     for entry_id in range(loop_count):
         print('entering', entry_id)
         entry_id = int(time.time())
-        enter = api_client.enter_dungeon(dungeon_id, floor_id, self_card=friend_card)
-        wave_response = wave_data.parse_wave_response(enter['e'])
-        leaders = enter['entry_leads']
+        entry_json = api_client.enter_dungeon(dungeon_id, floor_id, self_card=friend_card)
+        wave_response = pad_api.extract_wave_response_from_entry(entry_json)
+        leaders = entry_json['entry_leads']
 
         for stage_idx, floor in enumerate(wave_response.floors):
             for monster_idx, monster in enumerate(floor.monsters):
