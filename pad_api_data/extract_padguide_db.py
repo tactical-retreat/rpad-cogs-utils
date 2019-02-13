@@ -52,7 +52,7 @@ def write_table_data(result_json, table_name, output_dir):
     output_file = os.path.join(output_dir, '{}.json'.format(reformatted_tn))
 
     with open(output_file, 'w') as f:
-        json.dump(result_json, f)
+        json.dump(result_json, f, sort_keys=True)
 
 
 with connection.cursor() as cursor:

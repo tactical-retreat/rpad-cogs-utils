@@ -7,13 +7,13 @@ import glob
 import json
 import os
 
-from limited_bonus_data import Bonus
-import limited_bonus_data
-import pad_utils
 import pytz
 
 from dungeon_data import Dungeon, DungeonFloor
 import dungeon_data
+from limited_bonus_data import Bonus
+import limited_bonus_data
+import pad_utils
 
 
 ET_TZ_OBJ = pytz.timezone('US/Eastern')
@@ -97,7 +97,7 @@ for gdb in final_guerrillas:
 
 output_file = os.path.join(output_dir, 'guerrilla_data.json')
 with open(output_file, 'w') as f:
-    json.dump({'items': output_data}, f)
+    json.dump({'items': output_data}, f, sort_keys=True)
 
 # print('Times in ET')
 # for db in guerrilla_dungeon_bonuses:
