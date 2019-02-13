@@ -4,8 +4,9 @@ import os
 
 from . import bonus, card, dungeon, skill, exchange, enemy_skill
 from ..processor import enemy_skillset as enemy_skillset_lib
-from ..processor.merged_data import MergedBonus, MergedCard, MergedEnemySkillset, MergedEnemy
+from ..processor.merged_data import MergedBonus, MergedCard, MergedEnemy
 
+from .card import EnemySkillRef
 
 # TODO move these into data dir
 fail_logger = logging.getLogger('processor_failures')
@@ -32,8 +33,9 @@ def _clean_bonuses(pg_server, bonus_sets, dungeons):
     return merged_bonuses
 
 
-def _clean_cards(cards, skills):
+def _clean_cards(cards, skills, enemy_skills):
     skills_by_id = {s.skill_id: s for s in skills}
+    enemy_behavior_by_card_id = {int(s.enemy_id): s.behavior for s in enemy_skills}
 
     merged_cards = []
     for card in cards:
@@ -52,7 +54,9 @@ def _clean_cards(cards, skills):
                 fail_logger.critical('Leader skill lookup failed: %s - %s',
                                      repr(card), card.leader_skill_id)
 
-        merged_cards.append(MergedCard(card, active_skill, leader_skill))
+        enemy_behavior = enemy_behavior_by_card_id.get(int(card.card_id), [])
+
+        merged_cards.append(MergedCard(card, active_skill, leader_skill, enemy_behavior))
     return merged_cards
 
 
@@ -63,21 +67,12 @@ def _clean_enemy(cards, enemy_skills):
         if len(card.enemy_skill_refs) == 0:
             continue
 
-        enemy_skillset = []
-        for esr in card.enemy_skill_refs:
-            if enemy_skill_by_id.get(esr.enemy_skill_id) is None:
-                print("Enemy skill not found: " + str(esr.enemy_skill_id))
-                continue
-            es = enemy_skill_by_id.get(esr.enemy_skill_id)
-            es_set = None
-            if es.type == 83:
-                es_set = [enemy_skill_by_id.get(s_id) for s_id in es.params[1:11]
-                          if s_id is not None and enemy_skill_by_id.get(s_id) is not None]
-            enemy_skillset.append(MergedEnemySkillset(esr, es, es_set))
+        default_ref = EnemySkillRef(0, 0, 0)
+        enemy_skillset = [x if enemy_skill_by_id.get(x.enemy_skill_id) is not None else default_ref
+                          for x in card.enemy_skill_refs]
 
-        behavior = enemy_skillset_lib.extract_behavior(enemy_skillset)
+        behavior = enemy_skillset_lib.extract_behavior(enemy_skillset, enemy_skill_by_id)
         merged_enemies.append(MergedEnemy(card.card_id, behavior))
-
     return merged_enemies
 
 
@@ -121,8 +116,8 @@ class Database(object):
             self.egg_machines = json.load(f)
 
         self.bonuses = _clean_bonuses(self.pg_server, self.bonus_sets, self.dungeons)
-        self.cards = _clean_cards(self.raw_cards, self.skills)
         self.enemies = _clean_enemy(self.raw_cards, self.enemy_skills)
+        self.cards = _clean_cards(self.raw_cards, self.skills, self.enemies)
 
     def save_all(self, output_dir: str, pretty: bool):
         def save(file_name: str, obj: object):
