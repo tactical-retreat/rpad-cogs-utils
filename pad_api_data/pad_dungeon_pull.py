@@ -6,10 +6,9 @@ import logging
 import time
 
 from pad_etl.api import pad_api
-from pad_etl.api import wave_data
 
-from pad_etl.processor.db_util import DbWrapper
-from pad_etl.processor.wave import WaveItem
+from pad_etl.storage.db_util import DbWrapper
+from pad_etl.storage.wave import WaveItem
 
 
 def parse_args():
