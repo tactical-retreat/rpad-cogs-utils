@@ -58,17 +58,13 @@ def _clean_cards(cards, skills):
 
 
 def _clean_enemy(cards, enemy_skills):
-    enemy_skill_by_id = {s.enemy_skill_id: s for s in enemy_skills}
+    enemy_skillset_lib.enemy_skill_map = {s.enemy_skill_id: s for s in enemy_skills}
     merged_enemies = []
     for card in cards:
         if len(card.enemy_skill_refs) == 0:
             continue
-
-        default_ref = EnemySkillRef(0, 0, 0)
-        enemy_skillset = [x if enemy_skill_by_id.get(x.enemy_skill_id) is not None else default_ref
-                          for x in card.enemy_skill_refs]
-
-        behavior = enemy_skillset_lib.extract_behavior(enemy_skillset, enemy_skill_by_id)
+        enemy_skillset = [x for x in card.enemy_skill_refs]
+        behavior = enemy_skillset_lib.extract_behavior(enemy_skillset)
         merged_enemies.append(MergedEnemy(card.card_id, behavior))
     return merged_enemies
 
