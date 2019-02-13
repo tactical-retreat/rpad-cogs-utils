@@ -4,6 +4,19 @@ import json
 from ..common import pad_util
 
 
+def dump_obj(o):
+    if isinstance(o, ESSkillSet):
+        msg = 'SkillSet:'
+        msg += '\n\tCondition: {}'.format(json.dumps(o.condition,
+                                                     sort_keys=True, default=lambda x: x.__dict__))
+        for idx, behavior in enumerate(o.skill_list):
+            msg += '\n\t{} {} {}'.format(idx, type(behavior).__name__,
+                                         json.dumps(behavior, sort_keys=True, default=lambda x: x.__dict__))
+        return msg
+    else:
+        return '{} {}'.format(type(o).__name__, json.dumps(o, sort_keys=True, default=lambda x: x.__dict__))
+
+
 ai = 'ai'
 rnd = 'rnd'
 
