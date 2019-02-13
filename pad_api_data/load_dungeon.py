@@ -118,7 +118,7 @@ dungeon_processor.populate_dungeon(dungeon, jp_dungeon, na_dungeon,
                                    cards=cards,
                                    na_cards=na_cards,
                                    floor_text=floor_text,
-                                   jp_enemies=na_enemies)
+                                   na_enemies=na_enemies)
 
 # print(dungeon)
 loader.save_dungeon(dungeon)
