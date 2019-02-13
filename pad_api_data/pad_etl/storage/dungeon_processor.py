@@ -6,6 +6,7 @@ from . import dungeon as dbdungeon
 from ..common.padguide_values import SpecialIcons
 from ..data import dungeon as datadungeon
 
+
 VERSION = 'dadguide 0.3'
 # Version log:
 #  0.1 - initial version
@@ -219,7 +220,7 @@ def populate_dungeon(dungeon: dbdungeon.Dungeon,
         max_floor_monsters = filter(lambda dm: dm.floor == max_floor, max_monsters)
         dungeon.icon_seq = max(map(lambda dm: dm.monster_no, max_floor_monsters))
 
-    #if max_dungeon.resolved_dungeon_monsters:
+    # if max_dungeon.resolved_dungeon_monsters:
 
 
 def update_sub_dungeon(sub_dungeon: dbdungeon.SubDungeon,

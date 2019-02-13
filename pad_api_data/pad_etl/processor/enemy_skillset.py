@@ -3,6 +3,19 @@ from collections import OrderedDict
 from ..common import pad_util
 
 
+def dump_obj(o):
+    if isinstance(o, ESSkillSet):
+        msg = 'SkillSet:'
+        msg += '\n\tCondition: {}'.format(json.dumps(o.condition,
+                                                     sort_keys=True, default=lambda x: x.__dict__))
+        for idx, behavior in enumerate(o.skill_list):
+            msg += '\n\t{} {} {}'.format(idx, type(behavior).__name__,
+                                         json.dumps(behavior, sort_keys=True, default=lambda x: x.__dict__))
+        return msg
+    else:
+        return '{} {}'.format(type(o).__name__, json.dumps(o, sort_keys=True, default=lambda x: x.__dict__))
+
+
 ATTRIBUTE_MAP = {
     -1: 'Random',
     None: 'Fire',
@@ -1347,7 +1360,7 @@ class ESPreemptive(ESLogic):
 
 class ESBranchCard(ESBranch):
     def __init__(self, skill):
-        super(ESBranchCard, self).__init__(skill, branch_condition='player cards')
+        super(ESBranchCard, self).__init__(skill, branch_condition='player_cards')
         self.branch_value = [x for x in params(skill) if x is not None]
         self.compare = 'HAS'
 
@@ -1537,6 +1550,8 @@ def reformat(raw_cards_json, enemy_skills_json, output_json):
     with open(enemy_skills_json) as f:
         enemy_skill_map = {x.enemy_skill_id: x for x
                            in json.load(f, object_hook=lambda json_dict: DictWithAttributeAccess(json_dict))}
+    if enemy_skill_map is None:
+        print('Failed to load enemy skill info\n')
     print('Enemy skill json loaded\n')
     with open(raw_cards_json) as f:
         card_data = json.load(f, object_hook=lambda json_dict: DictWithAttributeAccess(json_dict))

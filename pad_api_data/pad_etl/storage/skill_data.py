@@ -4,8 +4,6 @@ from typing import List
 
 from enum import Enum
 
-from . import db_util
-from . import sql_item
 from .sql_item import SimpleSqlItem
 
 

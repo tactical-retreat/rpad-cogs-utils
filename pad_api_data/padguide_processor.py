@@ -7,22 +7,24 @@ from collections import defaultdict
 from datetime import timedelta
 import json
 import logging
-import time
 import os
+import time
 
 import feedparser
 from pad_etl.common import monster_id_mapping
 from pad_etl.data import card, skill
 from pad_etl.data import database
-from pad_etl.processor import egg
-from pad_etl.processor import egg_processor
-from pad_etl.processor import monster, monster_skill
-from pad_etl.processor import skill_data
 from pad_etl.processor import skill_info
-from pad_etl.processor.db_util import DbWrapper
 from pad_etl.processor.merged_data import MergedCard, CrossServerCard
-from pad_etl.processor.news import NewsItem
-from pad_etl.processor.schedule_item import ScheduleItem
+from pad_etl.storage import egg
+from pad_etl.storage import egg_processor
+from pad_etl.storage import monster
+from pad_etl.storage import monster_skill
+from pad_etl.storage import skill_data
+
+from pad_etl.storage.db_util import DbWrapper
+from pad_etl.storage.news import NewsItem
+from pad_etl.storage.schedule_item import ScheduleItem
 
 
 logging.basicConfig()
