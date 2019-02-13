@@ -5,8 +5,6 @@ import time
 from . import dungeon as dbdungeon
 from ..common.padguide_values import SpecialIcons
 from ..data import dungeon as datadungeon
-from ..processor import enemy_skillset
-from ..processor import enemy_skillset_processor
 
 
 VERSION = 'dadguide 0.3'
