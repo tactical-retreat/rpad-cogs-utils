@@ -27,10 +27,11 @@ class MergedBonus(pad_util.JsonDictEncodable):
 
 
 class MergedCard(pad_util.JsonDictEncodable):
-    def __init__(self, card, active_skill, leader_skill):
+    def __init__(self, card, active_skill, leader_skill, enemy_behavior):
         self.card = card
         self.active_skill = active_skill
         self.leader_skill = leader_skill
+        self.enemy_behavior = enemy_behavior
 
     def __repr__(self):
         return 'MergedCard({} - {} - {})'.format(
