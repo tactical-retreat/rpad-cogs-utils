@@ -5,6 +5,8 @@ import time
 from . import dungeon as dbdungeon
 from ..common.padguide_values import SpecialIcons
 from ..data import dungeon as datadungeon
+from ..processor import enemy_skillset
+from ..processor import enemy_skillset_processor
 
 
 VERSION = 'dadguide 0.3'
@@ -203,6 +205,7 @@ def populate_dungeon(dungeon: dbdungeon.Dungeon,
 
     monster_name_to_id = {x.name.lower(): x for x in cards + na_cards if x.card_id < 9999}
     monster_id_to_card = {c.card_id: c for c in cards}
+    enemy_id_to_enemy = {e.enemy_id: e for e in na_enemies}
     for idx in range(expected_floor_count):
         update_sub_dungeon(dungeon.resolved_sub_dungeons[idx],
                            jp_dungeon_floors[idx],
@@ -210,7 +213,8 @@ def populate_dungeon(dungeon: dbdungeon.Dungeon,
                            floor_to_waves[idx + 1],
                            monster_id_to_card,
                            floor_text.get(idx + 1, ''),
-                           monster_name_to_id)
+                           monster_name_to_id,
+                           enemy_id_to_enemy)
 
     dungeon.icon_seq = 0
     max_dungeon = dungeon.resolved_sub_dungeons[-1]
@@ -229,7 +233,8 @@ def update_sub_dungeon(sub_dungeon: dbdungeon.SubDungeon,
                        waves,
                        monster_id_to_card,
                        floor_text,
-                       monster_name_to_id
+                       monster_name_to_id,
+                       enemy_id_to_enemy
                        ):
     sub_dungeon.order_idx = jp_dungeon_floor.floor_number
     sub_dungeon.stage = jp_dungeon_floor.waves
@@ -372,5 +377,16 @@ def update_sub_dungeon(sub_dungeon: dbdungeon.SubDungeon,
             monster.comment_kr = slot.comment
             monster.comment_jp = slot.comment
             monster.comment_us = slot.comment
+
+            if False:
+                print(card.card_id, card.name)
+                enemy = enemy_id_to_enemy[slot.monster_id]
+                for idx, behavior in enumerate(enemy.behavior):
+                    print(idx, enemy_skillset.dump_obj(behavior), '\n')
+                    print()
+
+                ss = enemy_skillset_processor.convert(enemy, enemy_level)
+                print(ss.dump())
+                print()
 
             monster.tstamp = int(time.time()) * 1000

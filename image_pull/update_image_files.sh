@@ -21,6 +21,9 @@ python3 ${RUN_DIR}/PADAnimatedGenerator.py --raw_dir=${IMG_DIR}/jp/full/raw_data
 gsutil -m rsync -r ${IMG_DIR}/na/full/corrected_data gs://mirubot/padimages/na/full/
 gsutil -m rsync -r ${IMG_DIR}/jp/full/corrected_data gs://mirubot/padimages/jp/full/
 
+b2 sync ${IMG_DIR}/na/full/corrected_data b2://miru-data/padimages/na/full
+b2 sync ${IMG_DIR}/jp/full/corrected_data b2://miru-data/padimages/jp/full
+
 # Portraits
 python3 ${RUN_DIR}/PADPortraitsGenerator.py \
   --input_dir=${IMG_DIR}/na/full/extract_data \
@@ -43,3 +46,6 @@ python3 ${RUN_DIR}/PADPortraitsCombiner.py \
 
 gsutil -m rsync -r ${IMG_DIR}/na/portrait/local gs://mirubot/padimages/na/portrait/
 gsutil -m rsync -r ${IMG_DIR}/jp/portrait/local gs://mirubot/padimages/jp/portrait/
+
+b2 sync ${IMG_DIR}/na/portrait/local b2://miru-data/padimages/na/portrait
+b2 sync ${IMG_DIR}/jp/portrait/local b2://miru-data/padimages/jp/portrait

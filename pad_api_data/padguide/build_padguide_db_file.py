@@ -2,11 +2,11 @@ import argparse
 import json
 import shutil
 
-from extract_utils import fix_row
 import pymysql
+
 import db_util
 import encoding
-
+from extract_utils import fix_row
 import sqlite3 as lite
 
 
@@ -15,14 +15,31 @@ import sqlite3 as lite
 # The base database should have the updated tables empty.
 # This maps MySql db table names to SQLite table names.
 TBL_MAPPING = {
-    'monster_list': 'TBL_MONSTER',
-    'monster_info_list': 'TBL_MONSTER_INFO',
-    'monster_price_list': 'TBL_MONSTER_PRICE',
     'awoken_skill_list': 'TBL_MONSTER_AWOKEN_SKILL',
+    'coin_rotation_list': 'TBL_COIN_ROTATION',
+    'dungeon_list': 'TBL_DUNGEON',
+    'dungeon_monster_list': 'TBL_DUNGEON_MONSTER',
+    'dungeon_monster_drop_list': 'TBL_DUNGEON_MONSTER_DROP',
+    'sub_dungeon_list': 'TBL_SUB_DUNGEON',
+    'dungeon_skill_list': 'TBL_DUNGEON_SKILL',
+    'dungeon_skill_damage_list': 'TBL_DUNGEON_SKILL_DAMAGE',
+    'egg_monster_list': 'TBL_EGG_MONSTER',
+    'egg_title_list': 'TBL_EGG_TITLE',
+    'egg_title_name_list': 'TBL_EGG_TITLE_NAME',
+    'evolution_list': 'TBL_EVOLUTION',
     'evo_material_list': 'TBL_EVO_MATERIAL',
     'monster_add_info_list': 'TBL_MONSTER_ADD_INFO',
-    'skill_list': 'TBL_SKILL',
+    'monster_info_list': 'TBL_MONSTER_INFO',
+    'monster_list': 'TBL_MONSTER',
+    'monster_price_list': 'TBL_MONSTER_PRICE',
+    'skill_data_list': 'TBL_SKILL_DATA',
     'skill_leader_data_list': 'TBL_SKILL_LEADER_DATA',
+    'skill_list': 'TBL_SKILL',
+    'skill_rotation_list': 'TBL_SKILL_ROTATION',
+    'skill_rotation_list_list': 'TBL_SKILL_ROTATION_LIST',
+    'sub_dungeon_point_list': 'TBL_SUB_DUNGEON_POINT',
+    'sub_dungeon_reward_list': 'TBL_SUB_DUNGEON_REWARD',
+    'sub_dungeon_score_list': 'TBL_SUB_DUNGEON_SCORE',
 }
 
 # Names of columns that should be encrypted
@@ -32,6 +49,13 @@ ENCRYPTED_COLUMNS = [
     'TS_DESC_JP', 'TS_DESC_US', 'TS_DESC_KR',
     'COMMENT_JP', 'COMMENT_US', 'COMMENT_KR',
     'HISTORY_JP', 'HISTORY_US', 'HISTORY_KR',
+    'TSD_NAME_JP', 'TSD_NAME_US', 'TSD_NAME_KR',
+]
+
+TBL_TRUNCATE = [
+    'TBL_SCHEDULE',
+    'TBL_RSS',
+    'TBL_NEWS',
 ]
 
 
@@ -80,6 +104,11 @@ def do_main(args):
     sqlite_conn = lite.connect(output_file, detect_types=lite.PARSE_DECLTYPES, isolation_level=None)
     sqlite_conn.row_factory = lite.Row
     sqlite_conn.execute('pragma foreign_keys=OFF')
+
+    for dest_tbl in TBL_TRUNCATE:
+        print('truncating', dest_tbl)
+        dest_truncate_sql = 'DELETE FROM {}'.format(dest_tbl)
+        sqlite_conn.execute(dest_truncate_sql)
 
     for src_tbl, dest_tbl in TBL_MAPPING.items():
         dest_truncate_sql = 'DELETE FROM {}'.format(dest_tbl)

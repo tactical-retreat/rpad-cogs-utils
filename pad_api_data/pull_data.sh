@@ -152,3 +152,9 @@ gsutil -m rsync -r -c /home/tactical0retreat/pad_data/ gs://mirubot-data/paddata
 
 # Make a public accessible copy for reni's blog
 gsutil -m rsync -r -c gs://mirubot-data/paddata/ gs://mirubot/protic/paddata/
+
+# Update B2 copy
+b2 sync /home/tactical0retreat/pad_data b2://miru-data/paddata
+b2 sync /home/tactical0retreat/pad_large_data/padguide_db b2://miru-data/padguide/db
+b2 sync /var/www/html/padguide/images b2://miru-data/padguide/images
+

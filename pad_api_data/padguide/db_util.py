@@ -1,9 +1,22 @@
 from datetime import datetime, date
 import decimal
-import json
-
 
 # Copied this from the processor; easier than fixing paths
+
+# This could maybe move to a class method on SqlItem?
+# Fix usage in load_x_object in db_util.
+
+
+def process_col_mappings(obj_type, d, reverse=False):
+    if hasattr(obj_type, 'COL_MAPPINGS'):
+        mappings = obj_type.COL_MAPPINGS
+        if reverse:
+            mappings = {v: k for k, v in mappings.items()}
+
+        for k, v in mappings.items():
+            d[v] = d[k]
+            d.pop(k)
+    return d
 
 
 def object_to_sql_params(obj):
