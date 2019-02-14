@@ -106,7 +106,10 @@ class Context(object):
     def __init__(self, level):
         self.turn = 1
         self.is_preemptive = False
+        self.do_preemptive = False
         self.flags = 0
+        self.counter = 0
+        self.is_countdown = False
         self.hp = 100
         self.level = level
         self.enemies = 999
@@ -122,6 +125,7 @@ def loop_through(ctx: Context, behaviors):
     ctx.reset()
     results = []
     traversed = []
+    errors = []
 
     idx = 0
     iter_count = 0
@@ -130,6 +134,8 @@ def loop_through(ctx: Context, behaviors):
         if idx >= len(behaviors) or idx in traversed:
             break
         traversed.append(idx)
+        if ctx.is_countdown:
+            ctx.counter -= 1
 
         b = behaviors[idx]
         b_type = type(b)
@@ -138,10 +144,11 @@ def loop_through(ctx: Context, behaviors):
             idx += 1
             continue
 
-        if b_type == ESPreemptive and b.level <= ctx.level:
+        if b_type == ESPreemptive:
             behaviors[idx] = None
             idx += 1
             ctx.is_preemptive = True
+            ctx.do_preemptive = b.level <= ctx.level
             continue
 
         if b_type == EnemySkillUnknown or issubclass(b_type, ESAction):
@@ -180,6 +187,49 @@ def loop_through(ctx: Context, behaviors):
             else:
                 idx += 1
             continue
+
+        if b_type == ESBranchLevel:
+            take_branch = False
+            if b.compare == '<':
+                take_branch = ctx.level < b.branch_value
+            else:
+                take_branch = ctx.level >= b.branch_value
+            if take_branch:
+                idx = b.target_round
+            else:
+                idx += 1
+            continue
+
+        if b_type == ESSetCounter:
+            if b.set == '=':
+                ctx.counter = b.counter
+            elif b.set == '+':
+                ctx.counter += b.counter
+            elif b.set == '-':
+                ctx.counter -= b.counter
+            idx += 1
+            continue
+
+        if b_type == ESSetCounterIf:
+            if ctx.counter == b.counter_is:
+                ctx.counter = b.counter
+            idx += 1
+            continue
+
+        if b_type == ESBranchCounter:
+            take_branch = False
+            if b.compare == '<':
+                take_branch = ctx.counter < b.branch_value
+            else:
+                take_branch = ctx.counter >= b.branch_value
+            if take_branch:
+                idx = b.target_round
+            else:
+                idx += 1
+            continue
+
+        if b_type == ESCountdown:
+            ctx.is_countdown = True
 
         raise ValueError('unsupported operation:', b_type, b)
 
