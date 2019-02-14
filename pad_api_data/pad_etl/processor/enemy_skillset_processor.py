@@ -109,7 +109,6 @@ class Context(object):
         self.do_preemptive = False
         self.flags = 0
         self.counter = 0
-        self.is_countdown = False
         self.hp = 100
         self.level = level
         self.enemies = 999
@@ -134,8 +133,6 @@ def loop_through(ctx: Context, behaviors):
         if idx >= len(behaviors) or idx in traversed:
             break
         traversed.append(idx)
-        if ctx.is_countdown:
-            ctx.counter -= 1
 
         b = behaviors[idx]
         b_type = type(b)
