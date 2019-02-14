@@ -519,7 +519,7 @@ class ESBindLeader(ESBind):
         super(ESBindLeader, self).__init__(
             skill,
             target_count=len(targets),
-            target_type_description=', '.join(targets)
+            target_type_description=targets
         )
 
 
@@ -1268,6 +1268,7 @@ class ESLogic(pad_util.JsonDictEncodable):
         self.CATEGORY = 'LOGIC'
         self.enemy_skill_id = es_id(skill)
         self.effect = effect
+        self.type = es_type(skill)
 
 
 class ESNone(ESLogic):
@@ -1575,7 +1576,7 @@ def reformat_json(card_data):
     return reformatted
 
 
-def reformat(raw_cards_json, enemy_skills_json, output_json):
+def reformat(raw_cards_json, enemy_skills_json, output_json, mon_id=None):
     global enemy_skill_map
     print('-- Parsing Enemies --\n')
     with open(enemy_skills_json) as f:
@@ -1587,7 +1588,10 @@ def reformat(raw_cards_json, enemy_skills_json, output_json):
     with open(raw_cards_json) as f:
         card_data = json.load(f, object_hook=lambda json_dict: DictWithAttributeAccess(json_dict))
     print('Raw cards json loaded\n')
-    reformatted = reformat_json(card_data)
+    if mon_id:
+        reformatted = reformat_json([card_data[mon_id]])
+    else:
+        reformatted = reformat_json(card_data)
 
     print('Converted {active} enemies\n'.format(active=len(reformatted)))
 
