@@ -34,7 +34,8 @@ TBL_MAPPING = {
     'monster_price_list': 'TBL_MONSTER_PRICE',
     'skill_leader_data_list': 'TBL_SKILL_LEADER_DATA',
     'skill_list': 'TBL_SKILL',
-    'skill_rotation_list': 'TBL_SKILL_ROTATION_LIST',
+    'skill_rotation_list': 'TBL_SKILL_ROTATION',
+    'skill_rotation_list_list': 'TBL_SKILL_ROTATION_LIST',
     'sub_dungeon_point_list': 'TBL_SUB_DUNGEON_POINT',
     'sub_dungeon_reward_list': 'TBL_SUB_DUNGEON_REWARD',
     'sub_dungeon_score_list': 'TBL_SUB_DUNGEON_SCORE',
@@ -48,6 +49,12 @@ ENCRYPTED_COLUMNS = [
     'COMMENT_JP', 'COMMENT_US', 'COMMENT_KR',
     'HISTORY_JP', 'HISTORY_US', 'HISTORY_KR',
     'TSD_NAME_JP', 'TSD_NAME_US', 'TSD_NAME_KR',
+]
+
+TBL_TRUNCATE = [
+    'TBL_SCHEDULE',
+    'TBL_RSS',
+    'TBL_NEWS',
 ]
 
 
@@ -96,6 +103,11 @@ def do_main(args):
     sqlite_conn = lite.connect(output_file, detect_types=lite.PARSE_DECLTYPES, isolation_level=None)
     sqlite_conn.row_factory = lite.Row
     sqlite_conn.execute('pragma foreign_keys=OFF')
+
+    for dest_tbl in TBL_TRUNCATE:
+        print('truncating', dest_tbl)
+        dest_truncate_sql = 'DELETE FROM {}'.format(dest_tbl)
+        sqlite_conn.execute(dest_truncate_sql)
 
     for src_tbl, dest_tbl in TBL_MAPPING.items():
         dest_truncate_sql = 'DELETE FROM {}'.format(dest_tbl)
