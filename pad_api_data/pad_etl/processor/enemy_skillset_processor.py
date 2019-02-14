@@ -121,12 +121,15 @@ class Context(object):
 def loop_through(ctx: Context, behaviors):
     ctx.reset()
     results = []
+    traversed = []
 
     idx = 0
     iter_count = 0
     while iter_count < 1000:
-        if idx > len(behaviors):
+        iter_count += 1
+        if idx >= len(behaviors) or idx in traversed:
             break
+        traversed.append(idx)
 
         b = behaviors[idx]
         b_type = type(b)
@@ -157,12 +160,14 @@ def loop_through(ctx: Context, behaviors):
             break
 
         if b_type == ESFlagOperation:
-            if b.operation == 'SET':
+            if b.operation == 'SET' or b.operation == 'OR':
                 ctx.flags = ctx.flags | b.flag
-                idx += 1
-                continue
+            elif b.operation == 'UNSET':
+                ctx.flags = ctx.flags & ~b.flag
             else:
                 raise ValueError('unsupported operation:', b.operation)
+            idx += 1
+            continue
 
         if b_type == ESBranchHP:
             take_branch = False
@@ -324,7 +329,6 @@ def convert(enemy: MergedEnemy, level: int):
         hp_ctx = ctx.clone()
         hp_ctx.hp = checkpoint
         cur_loop = loop_through(hp_ctx, behaviors)
-        print(cur_loop)
         while cur_loop not in globally_seen_behavior and cur_loop not in locally_seen_behavior:
             globally_seen_behavior.append(cur_loop)
             locally_seen_behavior.append(cur_loop)
@@ -371,7 +375,7 @@ def clean_skillset(skillset: ProcessedSkillset):
         placed = False
         for hp_group in skillset.hp_skill_groups:
             if hp_group.hp_ceiling == hp_threshold:
-                hp_group.append(es)
+                hp_group.skills.append(es)
                 break
         if not placed:
             skillset.hp_skill_groups.append(HpSkillGroup(hp_threshold, [es]))
