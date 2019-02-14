@@ -32,6 +32,7 @@ TBL_MAPPING = {
     'monster_info_list': 'TBL_MONSTER_INFO',
     'monster_list': 'TBL_MONSTER',
     'monster_price_list': 'TBL_MONSTER_PRICE',
+    'skill_data_list': 'TBL_SKILL_DATA',
     'skill_leader_data_list': 'TBL_SKILL_LEADER_DATA',
     'skill_list': 'TBL_SKILL',
     'skill_rotation_list': 'TBL_SKILL_ROTATION',
