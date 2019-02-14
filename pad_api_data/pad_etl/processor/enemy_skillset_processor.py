@@ -111,16 +111,8 @@ class Context(object):
         self.level = level
         self.enemies = 999
 
-        self.unconditional_flag_tripped = False
-        self.hp_flag_seen = False
-
-        self.enemy_conditionals_seen = set()
-        self.hp_conditionals_seen = set()
-
     def reset(self):
         self.is_preemptive = False
-        self.unconditional_flag_tripped = False
-        self.hp_flag_seen = False
 
     def clone(self):
         return copy.deepcopy(self)
@@ -173,7 +165,6 @@ def loop_through(ctx: Context, behaviors):
                 raise ValueError('unsupported operation:', b.operation)
 
         if b_type == ESBranchHP:
-            ctx.hp_flag_seen = True
             take_branch = False
             if b.compare == '<':
                 take_branch = ctx.hp < b.branch_value
