@@ -228,8 +228,13 @@ def loop_through(ctx: Context, behaviors):
                 idx += 1
             continue
 
-        if b_type == ESCountdown:
-            ctx.is_countdown = True
+        # if b_type == ESCountdown:
+        #    if ctx.counter == 0:
+        #        idx += 1
+        #        continue
+        #    else:
+        #        ctx.counter -= 1
+        #        break
 
         raise ValueError('unsupported operation:', b_type, b)
 

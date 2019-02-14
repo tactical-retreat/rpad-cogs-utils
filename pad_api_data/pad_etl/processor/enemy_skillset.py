@@ -1380,8 +1380,8 @@ class ESEndPath(ESLogic):
 
 class ESCountdown(ESLogic):
     def __init__(self, skill):
-        # decrement counter at the end of every turn, including this turn
-        super(ESCountdown, self).__init__(skill, effect='start_countdown')
+        # decrement counter and end path
+        super(ESCountdown, self).__init__(skill, effect='countdown')
 
 
 class ESPreemptive(ESLogic):
