@@ -1360,7 +1360,10 @@ def passive_stats_convert(arguments):
                                      arguments,
                                      passive_stats_backups)(x)
 
-        skill_text = fmt_stats_type_attr_bonus(c)
+        skill_text = ''
+        if c['time'] > 0:
+            skill_text += '[Fixed {} second movetime]; '.format(c['time'])
+        skill_text += fmt_stats_type_attr_bonus(c)
         if skill_text != '' and c['skill_text'] == '':
             c['skill_text'] += skill_text
         elif skill_text != '' and c['skill_text'] != '':
