@@ -1014,16 +1014,16 @@ def change_skyfall_convert(arguments):
         _, c = convert_with_defaults('change_skyfall',
                                      arguments,
                                      change_skyfall_backups)(x)
-        c['skill_text'] += fmt_duration(c['duration'])
-
-        if len(c['orbs']) > 1:
-            for i in c['orbs'][:-1]:
-                c['skill_text'] += ATTRIBUTES[i] + ', '
-            c['skill_text'] += ATTRIBUTES[c['orbs'][-1]] + \
-                ' orbs are more likely to appear by ' + fmt_mult(c['percentage'] * 100) + '%'
-        elif len(c['orbs']) == 1:
-            c['skill_text'] += ATTRIBUTES[c['orbs'][0]] + \
-                ' orbs are more likely to appear by ' + fmt_mult(c['percentage'] * 100) + '%'
+        skill_text = ''
+        skill_text += fmt_duration(c['duration'])
+        rate = fmt_mult(c['percentage'] * 100)
+        
+        if rate == '100':
+            skill_text += 'only {} orbs will appear'.format(', '.join(ATTRIBUTES[i] for i in c['orbs']))
+        else:
+            skill_text += '{} orbs are more likely to appear by {}%'.format(', '.join(ATTRIBUTES[i] for i in c['orbs']),
+                                                                            rate)
+        c['skill_text'] = skill_text
         return 'change_skyfall', c
     return f
 
@@ -1574,11 +1574,12 @@ def mass_match_convert(arguments):
         if max_count != min_count:
             skill_text += ' or more connected'
 
-        if len(attributes) == 1:
-            skill_text += ' ' + ATTRIBUTES[attributes[0]]
-        elif len(attributes) > 1 and attributes != [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]:
-            color_text = ', '.join([ATTRIBUTES[i] for i in attributes[:-1]])
-            color_text += ' or ' + ATTRIBUTES[attributes[-1]]
+        if len(attributes) >= 1 and len(attributes) <= 7:
+            color_text = ', '.join(ATTRIBUTES[i] for i in attributes) if len(attributes) == 1 else ((', '.join(ATTRIBUTES[i] for i in attributes[:-1])) + ' or {}'.format(ATTRIBUTES[attributes[-1]]))
+            skill_text += ' ' + color_text
+        elif len(attributes) >= 7 and len(attributes) < 10:
+            att_sym_diff = sorted(list(set(ATTRIBUTES) - set(attributes)), key = lambda x: ATTRIBUTES[x])
+            color_text = 'non {}'.format(', '.join(ATTRIBUTES[i] for i in att_sym_diff)) if len(att_sym_diff) == 1 else ('non {}'.format(', '.join(ATTRIBUTES[i] for i in att_sym_diff[:-1])) + ' or {}'.format(ATTRIBUTES[att_sym_diff[-1]]))
             skill_text += ' ' + color_text
 
         skill_text += ' orbs'
