@@ -1574,11 +1574,12 @@ def mass_match_convert(arguments):
         if max_count != min_count:
             skill_text += ' or more connected'
 
-        if len(attributes) == 1:
-            skill_text += ' ' + ATTRIBUTES[attributes[0]]
-        elif len(attributes) > 1 and attributes != [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]:
-            color_text = ', '.join([ATTRIBUTES[i] for i in attributes[:-1]])
-            color_text += ' or ' + ATTRIBUTES[attributes[-1]]
+        if len(attributes) >= 1 and len(attributes) <= 7:
+            color_text = ', '.join(ATTRIBUTES[i] for i in attributes) if len(attributes) == 1 else ((', '.join(ATTRIBUTES[i] for i in attributes[:-1])) + ' or {}'.format(ATTRIBUTES[attributes[-1]]))
+            skill_text += ' ' + color_text
+        elif len(attributes) >= 7 and len(attributes) < 10:
+            att_sym_diff = sorted(list(set(ATTRIBUTES) - set(attributes)), key = lambda x: ATTRIBUTES[x])
+            color_text = 'non {}'.format(', '.join(ATTRIBUTES[i] for i in att_sym_diff)) if len(att_sym_diff) == 1 else ('non {}'.format(', '.join(ATTRIBUTES[i] for i in att_sym_diff[:-1])) + ' or {}'.format(ATTRIBUTES[att_sym_diff[-1]]))
             skill_text += ' ' + color_text
 
         skill_text += ' orbs'
