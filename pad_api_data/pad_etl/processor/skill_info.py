@@ -1014,16 +1014,16 @@ def change_skyfall_convert(arguments):
         _, c = convert_with_defaults('change_skyfall',
                                      arguments,
                                      change_skyfall_backups)(x)
-        c['skill_text'] += fmt_duration(c['duration'])
-
-        if len(c['orbs']) > 1:
-            for i in c['orbs'][:-1]:
-                c['skill_text'] += ATTRIBUTES[i] + ', '
-            c['skill_text'] += ATTRIBUTES[c['orbs'][-1]] + \
-                ' orbs are more likely to appear by ' + fmt_mult(c['percentage'] * 100) + '%'
-        elif len(c['orbs']) == 1:
-            c['skill_text'] += ATTRIBUTES[c['orbs'][0]] + \
-                ' orbs are more likely to appear by ' + fmt_mult(c['percentage'] * 100) + '%'
+        skill_text = ''
+        skill_text += fmt_duration(c['duration'])
+        rate = fmt_mult(c['percentage'] * 100)
+        
+        if rate == '100':
+            skill_text += 'only {} orbs will appear'.format(', '.join(ATTRIBUTES[i] for i in c['orbs']))
+        else:
+            skill_text += '{} orbs are more likely to appear by {}%'.format(', '.join(ATTRIBUTES[i] for i in c['orbs']),
+                                                                            rate)
+        c['skill_text'] = skill_text
         return 'change_skyfall', c
     return f
 
