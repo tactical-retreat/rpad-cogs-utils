@@ -21,8 +21,8 @@ python3 ${RUN_DIR}/PADAnimatedGenerator.py --raw_dir=${IMG_DIR}/jp/full/raw_data
 gsutil -m rsync -r ${IMG_DIR}/na/full/corrected_data gs://mirubot/padimages/na/full/
 gsutil -m rsync -r ${IMG_DIR}/jp/full/corrected_data gs://mirubot/padimages/jp/full/
 
-b2 --compareVersions size sync ${IMG_DIR}/na/full/corrected_data b2://miru-data/padimages/na/full
-b2 --compareVersions size sync ${IMG_DIR}/jp/full/corrected_data b2://miru-data/padimages/jp/full
+b2 sync --compareVersions size ${IMG_DIR}/na/full/corrected_data b2://miru-data/padimages/na/full
+b2 sync --compareVersions size ${IMG_DIR}/jp/full/corrected_data b2://miru-data/padimages/jp/full
 
 # Portraits
 python3 ${RUN_DIR}/PADPortraitsGenerator.py \
