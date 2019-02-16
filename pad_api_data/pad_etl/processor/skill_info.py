@@ -1350,7 +1350,7 @@ def fmt_parameter(c):
             float(damage_reduct)]
 
 
-passive_stats_backups = {'for_attr': [], 'for_type': [], 'hp_multiplier': 1.0, 'atk_multiplier': 1.0,
+passive_stats_backups = {'time': 0, 'for_attr': [], 'for_type': [], 'hp_multiplier': 1.0, 'atk_multiplier': 1.0,
                          'rcv_multiplier': 1.0, 'reduction_attributes': all_attr, 'damage_reduction': 0.0, 'skill_text': '', 'parameter': [1.0, 1.0, 1.0, 0.0]}
 
 
@@ -2384,7 +2384,7 @@ SKILL_TRANSFORM = {
     175: collab_bonus_convert({'collab_id': (0, cc), 'hp_multiplier': (3, multi2), 'atk_multiplier': (4, multi2), 'rcv_multiplier': (5, multi2)}),
     176: fixed_pos_convert({'board'[0]: (0, binary_con), 'row_pos_1': (0, binary_con), 'row_pos_2': (1, binary_con), 'row_pos_3': (2, binary_con), 'row_pos_4': (3, binary_con), 'row_pos_5': (4, binary_con), 'attribute': (5, cc)}),
     177: orb_remain_convert({'orb_count': (5, cc), 'atk_multiplier': (6, multi), 'bonus_atk_multiplier': (7, multi), 'skill_text': '[No skyfall]; '}),
-    178: passive_stats_convert({'time': (0, cc), 'for_attr': (1, binary_con), 'for_type': (2, binary_con), 'hp_multiplier': (3, multi2), 'atk_multiplier': (4, multi2), 'rcv_multiplier': (5, multi2), 'skill_text': '[Fixed 4 second movetime]'}),
+    178: passive_stats_convert({'time': (0, cc), 'for_attr': (1, binary_con), 'for_type': (2, binary_con), 'hp_multiplier': (3, multi2), 'atk_multiplier': (4, multi2), 'rcv_multiplier': (5, multi2)}),
     182: mass_match_convert({'attributes': (0, binary_con), 'minimum_count': (1, cc), 'minimum_atk_multiplier': (2, multi), 'minimum_damage_reduction': (3, multi)}),
     183: dual_threshold_stats_convert({'for_attr': (0, binary_con), 'for_type': (1, binary_con),
                                        'threshold_1': (2, multi), 'above_1': True, 'atk_multiplier_1': (3, multi), 'rcv_multiplier_1': 1.0, 'damage_reduction_1': (4, multi),
