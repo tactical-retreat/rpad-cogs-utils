@@ -89,3 +89,52 @@ for dungeon in current_dungeons:
         else:
             print('entering', dungeon_id, floor_id)
             do_dungeon_load(dungeon_id, floor_id)
+
+
+def do_dungeon_fill(dungeon_seq):
+    if not args.doupdates:
+        print('skipping due to dry run')
+        return
+    dungeon_script = '/home/tactical0retreat/rpad-cogs-utils/pad_api_data/load_dungeon.py'
+    process_args = [
+        'python3',
+        dungeon_script,
+        '--db_config={}'.format(selected_db_config),
+        '--raw_input_dir={}'.format('/home/tactical0retreat/pad_data/raw/'),
+        '--doupdates',
+        '--dungeon_seq={}'.format(dungeon_seq),
+    ]
+    p = subprocess.run(process_args, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    print(str(p.stdout))
+    print(str(p.stderr))
+
+
+FIND_DUNGEONS_SQL = """
+select dungeon_seq, name_us
+from dungeon_list
+where dungeon_seq in (
+    select dungeon_seq 
+    from etl_dungeon_map
+    where pad_dungeon_id in (
+        select dungeon_id from wave_data group by 1
+    )
+    group by 1
+    having count(*) = 1
+)
+and dungeon_seq not in (
+    select dungeon_seq from dungeon_monster_list group by 1
+)
+order by dungeon_seq desc
+"""
+
+ready_dungeons = db_wrapper.fetch_data(FIND_DUNGEONS_SQL)
+
+for row in ready_dungeons:
+    dungeon_seq = row['dungeon_seq']
+    name_us = row['name_us']
+    print('dungeon to load:', dungeon_seq, name_us)
+    if int(dungeon_seq) in [1450]:
+        print('skipping unloadable dungeon', dungeon_seq)
+        continue
+    do_dungeon_fill(dungeon_seq)
+
