@@ -4,6 +4,7 @@ import subprocess
 
 from pad_etl.processor import active_dungeons
 from pad_etl.storage import db_util
+from pad_etl.storage import timestamp_processor
 
 
 def parse_args():
@@ -138,3 +139,5 @@ for row in ready_dungeons:
         continue
     do_dungeon_fill(dungeon_seq)
 
+
+timestamp_processor.update_timestamps(db_wrapper)
