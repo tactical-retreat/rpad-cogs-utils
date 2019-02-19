@@ -1,6 +1,8 @@
 from collections import OrderedDict
 import json
 
+from docutils.nodes import description
+
 from ..common import pad_util
 
 
@@ -186,6 +188,8 @@ class Describe:
 
     @staticmethod
     def attack(mult, min_hit=1, max_hit=1):
+        if mult is None:
+            return None
         output = ''
         if min_hit == max_hit:
             output += 'Deal {:d}% damage'.format(int(min_hit) * int(mult))
@@ -243,10 +247,6 @@ class Describe:
     @staticmethod
     def blind_sticky_fixed(turns):
         return 'Blind orbs in specific positions for {:d} turns'.format(turns)
-
-    @staticmethod
-    def dispel():
-        return 'Voids player buff effects'
 
     @staticmethod
     def recover(amount, target='enemy'):
@@ -354,10 +354,6 @@ class Describe:
         return 'Seal {:s} {:s} for {:d} turns'.format(', '.join([ordinal(x) for x in positions]), position_type, turns)
 
     @staticmethod
-    def fixed_start():
-        return 'Fix orb movement starting point to random position on the board'
-
-    @staticmethod
     def cloud(turns, width, height, x, y):
         if width == 6 and height == 1:
             shape = 'Row of'
@@ -399,6 +395,13 @@ class Describe:
         else:
             return 'Change player HP to {:d}% for {:d} turns'.format(max_hp, turns)
 
+    @staticmethod
+    def death_cry(message):
+        if message is None:
+            return 'Show death effect'
+        else:
+            return 'Show message: {:s}'.format(message)
+
 
 # Condition subclass
 
@@ -412,97 +415,110 @@ class ESCondition(pad_util.JsonDictEncodable):
             Describe.condition(max(ai, rnd), self.hp_threshold, self.one_time is not None)
 
 
+class ESAttack(pad_util.JsonDictEncodable):
+    def __init__(self, atk_multiplier, min_hits=1, max_hits=1):
+        self.atk_multiplier = atk_multiplier
+        self.min_hits = min_hits
+        self.max_hits = max_hits
+        self.description = Describe.attack(self.atk_multiplier, self.min_hits, self.max_hits)
+
+    @staticmethod
+    def new_instance(atk_multiplier, min_hits=1, max_hits=1):
+        if atk_multiplier is None:
+            return None
+        else:
+            return ESAttack(atk_multiplier, min_hits, max_hits)
+
+
 # Action
 class ESAction(pad_util.JsonDictEncodable):
-    def __init__(self, skill, effect, description):
+    def __init__(self, skill, effect='enemy_skill', description='Enemy action', attack=None):
         self.CATEGORY = 'ACTION'
         self.enemy_skill_id = es_id(skill)
         self.type = es_type(skill)
         self.name = name(skill)
         self.effect = effect
         self.description = description
-        if ai(skill) is None or rnd(skill) is None:
-            self.condition = None
+        self.condition = None if ai(skill) is None or rnd(skill) is None \
+            else ESCondition(ai(skill), rnd(skill), params(skill))
+        self.attack = attack if attack is not None else ESAttack.new_instance(params(skill)[14])
+
+        desc_arr = []
+        if attack is not None:
+            if description != 'Enemy action':
+                desc_arr.append(description)
+            desc_arr.append(attack.description)
         else:
-            self.condition = ESCondition(ai(skill), rnd(skill), params(skill))
+            desc_arr.append(description)
+        self.description = ' & '.join(desc_arr)
 
 
-class ESEffect(ESAction):
+class ESInactivity(ESAction):
     def __init__(self, skill):
-        super(ESEffect, self).__init__(
+        super(ESInactivity, self).__init__(
             skill,
-            effect='status_effect',
-            description='Not an attack'
+            effect='skip_turn',
+            description=Describe.skip()
         )
 
 
-class ESInactivity(ESEffect):
+class ESDeathCry(ESAction):
     def __init__(self, skill):
-        super(ESInactivity, self).__init__(skill)
-        self.effect = 'skip_turn'
-        self.description = Describe.skip()
-
-
-class ESDeathCry(ESEffect):
-    def __init__(self, skill):
-        super(ESDeathCry, self).__init__(skill)
+        self.message = params(skill)[0]
+        super(ESDeathCry, self).__init__(
+            skill,
+            effect='death_action',
+            description=Describe.death_cry(self.message)
+        )
         if self.condition:
             self.condition.description = 'On death'
-        self.message = params(skill)[0]
 
 
-class ESAttack(ESAction):
-    def __init__(self, skill):
-        super(ESAttack, self).__init__(
+class ESAttackSinglehit(ESAction):
+    def __init__(self, skill, atk_multiplier=100):
+        super(ESAttackSinglehit, self).__init__(
             skill,
-            effect='attack',
-            description='An Attack'
+            effect='attack_single',
+            attack=ESAttack.new_instance(atk_multiplier)
         )
 
 
-class ESAttackSinglehit(ESAttack):
-    def __init__(self, skill, multiplier=100):
-        super(ESAttackSinglehit, self).__init__(skill)
-        self.effect = 'attack_single'
-        self.multiplier = multiplier
-        self.description = Describe.attack(self.multiplier)
-
-
-class ESAttackMultihit(ESAttack):
+class ESAttackMultihit(ESAction):
     def __init__(self, skill):
-        super(ESAttackMultihit, self).__init__(skill)
-        self.min_hit = params(skill)[1]
-        self.max_hit = params(skill)[2]
-        self.multiplier = params(skill)[3]
-        self.effect = 'attack_multi'
-        self.description = Describe.attack(self.multiplier, self.min_hit, self.max_hit)
+        super(ESAttackMultihit, self).__init__(
+            skill,
+            effect='attack_multi',
+            attack=ESAttack.new_instance(params(skill)[3], params(skill)[1], params(skill)[2])
+        )
 
 
-class ESAttackPreemptive(ESAttackSinglehit):
+class ESAttackPreemptive(ESAction):
     def __init__(self, skill):
-        super(ESAttackPreemptive, self).__init__(skill, multiplier=params(skill)[2])
-        self.effect = 'attack_preemptive'
+        super(ESAttackPreemptive, self).__init__(
+            skill,
+            effect='attack_preemptive',
+            attack=ESAttack.new_instance(params(skill)[2])
+        )
 
 
-class ESBind(ESEffect):
-    def __init__(self, skill, target_count=None, target_type_description='cards'):
-        super(ESBind, self).__init__(skill)
+class ESBind(ESAction):
+    def __init__(self, skill, target_count=None, target_type_description='cards', attack=None):
         self.min_turns = params(skill)[2]
         self.max_turns = params(skill)[3]
         if target_count:
             self.target_count = target_count
-        self.effect = 'bind'
-        self.description = Describe.bind(
-            self.min_turns, self.max_turns, target_count, target_type_description)
+        super(ESBind, self).__init__(
+            skill,
+            effect='bind',
+            description=Describe.bind(self.min_turns, self.max_turns, target_count, target_type_description),
+            attack=attack
+        )
 
 
 class ESBindAttack(ESBind):
     def __init__(self, skill):
         super(ESBindAttack, self).__init__(skill, target_count=params(
-            skill)[5], target_type_description='cards')
-        self.effect = 'bind_attack'
-        self.attack_multiplier = params(skill)[1]
-        self.description += ' & ' + Describe.attack(self.attack_multiplier)
+            skill)[5], target_type_description='cards', attack=ESAttack.new_instance(params(skill)[1]))
 
 
 class ESBindRandom(ESBind):
@@ -555,21 +571,25 @@ class ESBindSkill(ESBind):
         self.effect = 'skill_bind'
 
 
-class ESBindAwoken(ESEffect):
+class ESBindAwoken(ESAction):
     def __init__(self, skill):
-        super(ESBindAwoken, self).__init__(skill)
         self.turns = params(skill)[1]
-        self.description = Describe.bind(self.turns, None, None, 'awoken skills')
-        self.effect = 'awoken_bind'
+        super(ESBindAwoken, self).__init__(
+            skill,
+            effect='awoken_bind',
+            description=Describe.bind(self.turns, None, None, 'awoken skills')
+        )
 
 
-class ESOrbChange(ESEffect):
+class ESOrbChange(ESAction):
     def __init__(self, skill, orb_from, orb_to):
-        super(ESOrbChange, self).__init__(skill)
         self.orb_from = orb_from
         self.orb_to = orb_to
-        self.effect = 'orb_change'
-        self.description = Describe.orb_change(self.orb_from, self.orb_to)
+        super(ESOrbChange, self).__init__(
+            skill,
+            effect='orb_change',
+            description=Describe.orb_change(self.orb_from, self.orb_to)
+        )
 
 
 class ESOrbChangeSingle(ESOrbChange):
@@ -585,9 +605,7 @@ class ESOrbChangeAttackBits(ESOrbChange):
             orb_from=attribute_bitmap(params(skill)[2]),
             orb_to=attribute_bitmap(params(skill)[3])
         )
-        self.attack_multiplier = params(skill)[1]
-        if self.attack_multiplier:
-            self.description += ' & ' + Describe.attack(self.attack_multiplier)
+        self.attack = ESAttack.new_instance(params(skill)[1])
 
 
 class ESJammerChangeSingle(ESOrbChange):
@@ -630,9 +648,8 @@ class ESOrbChangeAttack(ESOrbChange):
             orb_from=ATTRIBUTE_MAP[params(skill)[2]] if orb_from is None else orb_from,
             orb_to=ATTRIBUTE_MAP[params(skill)[3]] if orb_to is None else orb_to
         )
-        self.attack_multiplier = params(skill)[1]
+        self.attack = ESAttack.new_instance(params(skill)[1])
         self.effect = 'orb_change_attack'
-        self.description += ' & ' + Describe.attack(self.attack_multiplier)
 
 
 class ESPoisonChangeRandomAttack(ESOrbChangeAttack):
@@ -642,67 +659,68 @@ class ESPoisonChangeRandomAttack(ESOrbChangeAttack):
             skill, orb_from='Random {:d}'.format(self.random_count), orb_to=ATTRIBUTE_MAP[7])
 
 
-class ESBlind(ESEffect):
+class ESBlind(ESAction):
     def __init__(self, skill):
-        super(ESBlind, self).__init__(skill)
-        self.description = Describe.blind()
-        self.effect = 'blind'
+        super(ESBlind, self).__init__(
+            skill,
+            effect='blind',
+            description=Describe.blind(),
+            attack=ESAttack.new_instance(params(skill)[1])
+        )
 
 
-class ESBlindAttack(ESBlind):
+class ESBlindStickyRandom(ESAction):
     def __init__(self, skill):
-        super(ESBlindAttack, self).__init__(skill)
-        self.attack_multiplier = params(skill)[1]
-        self.description += ' & ' + Describe.attack(self.attack_multiplier)
-        self.effect = 'blind_attack'
-
-
-class ESBlindSticky(ESEffect):
-    def __init__(self, skill):
-        super(ESBlindSticky, self).__init__(skill)
         self.turns = params(skill)[1]
-        self.effect = 'blind_sticky'
-
-
-class ESBlindStickyRandom(ESBlindSticky):
-    def __init__(self, skill):
-        super(ESBlindStickyRandom, self).__init__(skill)
         self.min_count = params(skill)[2]
         self.max_count = params(skill)[3]
-        self.target = 'random'
-        self.effect = 'blind_sticky'
-        self.description = Describe.blind_sticky_random(self.turns, self.min_count, self.max_count)
+        super(ESBlindStickyRandom, self).__init__(
+            skill,
+            effect='blind_sticky_random',
+            description=Describe.blind_sticky_random(self.turns, self.min_count, self.max_count)
+        )
 
 
-class ESBlindStickyFixed(ESBlindSticky):
+class ESBlindStickyFixed(ESAction):
     def __init__(self, skill):
-        super(ESBlindStickyFixed, self).__init__(skill)
-        self.position_str, self.position_rows, self.position_cols = positions_2d_bitmap(params(skill)[
-                                                                                        2:7])
-        self.description = Describe.blind_sticky_fixed(self.turns)
-
-
-class ESDispel(ESEffect):
-    def __init__(self, skill):
-        super(ESDispel, self).__init__(skill)
-        self.description = Describe.dispel()
-        self.effect = 'dispel'
-
-
-class ESStatusShield(ESEffect):
-    def __init__(self, skill):
-        super(ESStatusShield, self).__init__(skill)
         self.turns = params(skill)[1]
-        self.description = Describe.status_shield(self.turns)
+        self.position_str, self.position_rows, self.position_cols\
+            = positions_2d_bitmap(params(skill)[2:7])
+        super(ESBlindStickyFixed, self).__init__(
+            skill,
+            effect='blind_sticky_fixed',
+            description=Describe.blind_sticky_fixed(self.turns)
+        )
 
 
-class ESRecover(ESEffect):
+class ESDispel(ESAction):
+    def __init__(self, skill):
+        super(ESDispel, self).__init__(
+            skill,
+            effect='dispel',
+            description='Voids player buff effects'
+        )
+
+
+class ESStatusShield(ESAction):
+    def __init__(self, skill):
+        self.turns = params(skill)[1]
+        super(ESStatusShield, self).__init__(
+            skill,
+            effect='status_shield',
+            description=Describe.status_shield(self.turns)
+        )
+
+
+class ESRecover(ESAction):
     def __init__(self,  skill, target):
-        super(ESRecover, self).__init__(skill)
         self.amount = params(skill)[1]
         self.target = target
-        self.effect = 'recover'
-        self.description = Describe.recover(self.amount, self.target)
+        super(ESRecover, self).__init__(
+            skill,
+            effect='recover',
+            description=Describe.recover(self.amount, self.target)
+        )
 
 
 class ESRecoverEnemy(ESRecover):
@@ -722,13 +740,15 @@ class ESRecoverPlayer(ESRecover):
         super(ESRecoverPlayer, self).__init__(skill, target='player')
 
 
-class ESEnrage(ESEffect):
+class ESEnrage(ESAction):
     def __init__(self, skill, multiplier, turns):
-        super(ESEnrage, self).__init__(skill)
         self.multiplier = multiplier
         self.turns = turns
-        self.effect = 'enrage'
-        self.description = Describe.enrage(self.multiplier, self.turns)
+        super(ESEnrage, self).__init__(
+            skill,
+            effect='enrage',
+            description=Describe.enrage(self.multiplier, self.turns)
+        )
 
 
 class ESStorePower(ESEnrage):
@@ -756,15 +776,17 @@ class ESAttackUp(ESEnrage):
             )
 
 
-class ESDebuff(ESEffect):
+class ESDebuff(ESAction):
     def __init__(self, skill, debuff_type, amount, unit):
-        super(ESDebuff, self).__init__(skill)
         self.turns = params(skill)[1]
         self.type = debuff_type
         self.amount = amount
         self.unit = unit
-        self.effect = 'debuff'
-        self.description = Describe.debuff(self.type, self.amount, self.unit, self.turns)
+        super(ESDebuff, self).__init__(
+            skill,
+            effect='debuff',
+            description=Describe.debuff(self.type, self.amount, self.unit, self.turns)
+        )
 
 
 class ESDebuffMovetime(ESDebuff):
@@ -795,119 +817,153 @@ class ESDebuffRCV(ESDebuff):
         )
 
 
-class ESEndBattle(ESEffect):
+class ESEndBattle(ESAction):
     def __init__(self, skill):
-        super(ESEndBattle, self).__init__(skill)
-        self.description = Describe.end_battle()
-        self.effect = 'end_battle'
+        super(ESEndBattle, self).__init__(
+            skill,
+            effect='end_battle',
+            description=Describe.end_battle()
+        )
         if self.condition:
             self.condition.chance = 100
 
 
-class ESChangeAttribute(ESEffect):
+class ESChangeAttribute(ESAction):
     def __init__(self, skill):
-        super(ESChangeAttribute, self).__init__(skill)
         self.attributes = list(OrderedDict.fromkeys([ATTRIBUTE_MAP[x] for x in params(skill)[1:6]]))
-        self.effect = 'change_attribute'
-        self.description = Describe.change_attribute(self.attributes)
+        super(ESChangeAttribute, self).__init__(
+            skill,
+            effect='change_attribute',
+            description=Describe.change_attribute(self.attributes)
+        )
 
 
-class ESGravity(ESEffect):
+class ESGravity(ESAction):
     def __init__(self, skill):
-        super(ESGravity, self).__init__(skill)
         self.percent = params(skill)[1]
-        self.effect = 'gravity'
-        self.description = Describe.gravity(self.percent)
+        super(ESGravity, self).__init__(
+            skill,
+            effect = 'gravity',
+            description = Describe.gravity(self.percent)
+        )
 
 
-class ESAbsorbAttribute(ESEffect):
+class ESAbsorbAttribute(ESAction):
     def __init__(self, skill):
-        super(ESAbsorbAttribute, self).__init__(skill)
         self.turns = params(skill)[1]
         self.attributes = attribute_bitmap(params(skill)[3])
-        self.description = Describe.absorb(', '.join(self.attributes), self.turns)
+        super(ESAbsorbAttribute, self).__init__(
+            skill,
+            effect='absorb_attribute',
+            description=Describe.absorb(', '.join(self.attributes), self.turns)
+        )
 
 
-class ESAbsorbCombo(ESEffect):
+class ESAbsorbCombo(ESAction):
     def __init__(self, skill):
-        super(ESAbsorbCombo, self).__init__(skill)
         self.turns = params(skill)[1]
         self.combo_threshold = params(skill)[3]
-        self.description = Describe.absorb(
-            'combo <= {:,d}'.format(self.combo_threshold), self.turns)
+        super(ESAbsorbCombo, self).__init__(
+            skill,
+            effect='absorb_combo',
+            description=Describe.absorb(
+                'combo <= {:,d}'.format(self.combo_threshold), self.turns)
+        )
 
 
-class ESAbsorbThreshold(ESEffect):
+class ESAbsorbThreshold(ESAction):
     def __init__(self, skill):
-        super(ESAbsorbThreshold, self).__init__(skill)
         self.turns = params(skill)[1]
         self.absorb_threshold = params(skill)[2]
-        self.description = Describe.absorb('damage >= {}'.format(self.absorb_threshold), self.turns)
+        super(ESAbsorbThreshold, self).__init__(
+            skill,
+            effect='absorb_damage',
+            description=Describe.absorb('damage >= {}'.format(self.absorb_threshold), self.turns)
+        )
 
 
-class ESVoidShield(ESEffect):
+class ESVoidShield(ESAction):
     def __init__(self, skill):
-        super(ESVoidShield, self).__init__(skill)
         self.turns = params(skill)[1]
         # mysterious params[2], always 1055 except for no.2485 Hakumen no Mono who has 31
         self.void_threshold = params(skill)[3]
-        self.description = Describe.void(self.void_threshold, self.turns)
+        super(ESVoidShield, self).__init__(
+            skill,
+            effect='void_damage',
+            description=Describe.void(self.void_threshold, self.turns)
+        )
 
 
-class ESDamageShield(ESEffect):
+class ESDamageShield(ESAction):
     def __init__(self, skill):
-        super(ESDamageShield, self).__init__(skill)
         self.turns = params(skill)[1]
         self.shield_percent = params(skill)[2]
-        self.description = Describe.damage_reduction('all sources', self.shield_percent, self.turns)
+        super(ESDamageShield, self).__init__(
+            skill,
+            effect='reduce_damage',
+            description=Describe.damage_reduction('all sources', self.shield_percent, self.turns)
+        )
 
 
-class ESInvulnerableOn(ESEffect):
+class ESInvulnerableOn(ESAction):
     def __init__(self, skill):
-        super(ESInvulnerableOn, self).__init__(skill)
         self.turns = params(skill)[1]
-        self.effect = 'invulnerability_on'
-        self.description = Describe.damage_reduction('all sources', turns=self.turns)
+        super(ESInvulnerableOn, self).__init__(
+            skill,
+            effect='invulnerability_on',
+            description=Describe.damage_reduction('all sources', turns=self.turns)
+        )
 
 
-class ESInvulnerableOff(ESEffect):
+class ESInvulnerableOff(ESAction):
     def __init__(self, skill):
-        super(ESInvulnerableOff, self).__init__(skill)
-        self.effect = 'invulnerability_off'
-        self.description = 'Remove damage immunity effect'
+        super(ESInvulnerableOff, self).__init__(
+            skill,
+            effect='invulnerability_off',
+            description='Remove damage immunity effect'
+        )
 
 
-class ESSkyfall(ESEffect):
+class ESSkyfall(ESAction):
     def __init__(self, skill):
-        super(ESSkyfall, self).__init__(skill)
         self.turns = params(skill)[2]
         self.attributes = attribute_bitmap(params(skill)[1])
         self.chance = params(skill)[4]
-        self.effect = 'skyfall_increase'
-        self.description = Describe.skyfall(self.attributes, self.chance, self.turns)
+        if es_type(skill) == 68:
+            super(ESSkyfall, self).__init__(
+                skill,
+                effect='skyfall_increase',
+                description=Describe.skyfall(self.attributes, self.chance, self.turns)
+            )
+        elif es_type(skill) == 96:
+            super(ESSkyfall, self).__init__(
+                skill,
+                effect='skyfall_lock',
+                description=Describe.skyfall_lock(self.attributes, self.chance, self.turns)
+            )
 
 
-class ESSkyfallLocks(ESSkyfall):
+class ESLeaderSwap(ESAction):
     def __init__(self, skill):
-        super(ESSkyfallLocks, self).__init__(skill)
-        self.effect = 'skyfall_lock'
-        self.description = Describe.skyfall_lock(self.attributes, self.chance, self.turns)
-
-
-class ESLeaderSwap(ESEffect):
-    def __init__(self, skill):
-        super(ESLeaderSwap, self).__init__(skill)
         self.turns = self.turns = params(skill)[1]
-        self.description = Describe.leadswap(self.turns)
+        super(ESLeaderSwap, self).__init__(
+            skill,
+            effect='swap_leader',
+            description=Describe.leadswap(self.turns)
+        )
 
 
-class ESFixedOrbSpawn(ESEffect):
-    def __init__(self, skill, position_type, positions, attributes):
-        super(ESFixedOrbSpawn, self).__init__(skill)
+class ESFixedOrbSpawn(ESAction):
+    def __init__(self, skill, position_type, positions, attributes, description, attack=None):
         self.position_type = position_type
         self.positions = positions
         self.attributes = attributes
-        self.effect = 'row_col_spawn'
+        super(ESFixedOrbSpawn, self).__init__(
+            skill,
+            effect='row_col_spawn',
+            description=description,
+            attack=attack
+        )
 
 
 class ESRowColSpawn(ESFixedOrbSpawn):
@@ -916,35 +972,35 @@ class ESRowColSpawn(ESFixedOrbSpawn):
             skill,
             position_type=position_type,
             positions=position_bitmap(params(skill)[1]),
-            attributes=attribute_bitmap(params(skill)[2])
-        )
-        self.description = Describe.row_col_spawn(
-            self.position_type,
-            self.positions,
-            self.attributes
+            attributes=attribute_bitmap(params(skill)[2]),
+            description=Describe.row_col_spawn(
+                position_type,
+                position_bitmap(params(skill)[1]),
+                attribute_bitmap(params(skill)[2])
+            )
         )
 
 
 class ESRowColSpawnMulti(ESFixedOrbSpawn):
     def __init__(self, skill, position_type):
-        super(ESRowColSpawnMulti, self).__init__(
-            skill,
-            position_type=position_type,
-            positions=[],
-            attributes=[]
-        )
         desc_arr = []
+        pos = []
+        att = []
         for i in range(1, 6, 2):
             if params(skill)[i] and params(skill)[i + 1]:
                 p = position_bitmap(params(skill)[i])
                 a = attribute_bitmap(params(skill)[i + 1])
-                desc_arr.append(Describe.row_col_spawn(self.position_type, p, a)[7:])
-                self.positions += p
-                self.attributes += a
-        self.description = 'Change ' + ', '.join(desc_arr)
-        if params(skill)[7]:
-            self.attack_multiplier = params(skill)[7]
-            self.description += ' & ' + Describe.attack(self.attack_multiplier)
+                desc_arr.append(Describe.row_col_spawn(position_type, p, a)[7:])
+                pos += p
+                att += a
+        super(ESRowColSpawnMulti, self).__init__(
+            skill,
+            position_type=position_type,
+            positions=pos,
+            attributes=att,
+            description='Change ' + ', '.join(desc_arr),
+            attack=ESAttack.new_instance(params(skill)[7])
+        )
 
 
 class ESColumnSpawn(ESRowColSpawn):
@@ -979,72 +1035,71 @@ class ESRowSpawnMulti(ESRowColSpawnMulti):
         )
 
 
-class ESRandomSpawn(ESEffect):
+class ESRandomSpawn(ESAction):
     def __init__(self, skill):
-        super(ESRandomSpawn, self).__init__(skill)
         self.count = params(skill)[1]
         self.attributes = attribute_bitmap(params(skill)[2])
-        self.effect = 'random_orb_spawn'
-        self.description = Describe.random_orb_spawn(self.count, self.attributes)
+        super(ESRandomSpawn, self).__init__(
+            skill,
+            effect='random_orb_spawn',
+            description=Describe.random_orb_spawn(self.count, self.attributes)
+        )
 
 
-class ESBombRandomSpawn(ESEffect):
+class ESBombRandomSpawn(ESAction):
     def __init__(self, skill):
-        super(ESBombRandomSpawn, self).__init__(skill)
         self.count = params(skill)[2]
-        self.attack_multiplier = params(skill)[14]
-        self.effect = 'random_bomb_spawn'
-        self.description = Describe.random_orb_spawn(self.count, ['Bomb'])
-        if self.attack_multiplier is not None:
-            self.description += ' & ' + Describe.attack(self.attack_multiplier)
+        super(ESBombRandomSpawn, self).__init__(
+            skill,
+            effect='random_bomb_spawn',
+            description=Describe.random_orb_spawn(self.count, ['Bomb'])
+        )
 
 
-class ESBombFixedSpawn(ESEffect):
+class ESBombFixedSpawn(ESAction):
     def __init__(self, skill):
-        super(ESBombFixedSpawn, self).__init__(skill)
         self.count = params(skill)[2]
-        self.attack_multiplier = params(skill)[14]
-        self.effect = 'fixed_bomb_spawn'
-        self.position_str, self.position_rows, self.position_cols = positions_2d_bitmap(params(skill)[
-                                                                                        2:7])
-        if self.position_rows is not None and len(self.position_rows) == 6 \
-                and self.position_cols is not None and len(self.position_cols) == 5:
-            self.description = Describe.board_change(['Bomb'])
-        self.description = Describe.fixed_orb_spawn(['Bomb'])
-        if self.attack_multiplier is not None:
-            self.description += ' & ' + Describe.attack(self.attack_multiplier)
+        self.position_str, self.position_rows, self.position_cols = positions_2d_bitmap(params(skill)[2:7])
+        super(ESBombFixedSpawn, self).__init__(
+            skill,
+            effect='fixed_bomb_spawn',
+            description=Describe.board_change(['Bomb'])
+            if self.position_rows is not None and len(self.position_rows) == 6
+            and self.position_cols is not None and len(self.position_cols) == 5
+            else Describe.fixed_orb_spawn(['Bomb'])
+        )
 
 
-class ESBoardChange(ESEffect):
-    def __init__(self, skill, attributes=None):
-        super(ESBoardChange, self).__init__(skill)
+class ESBoardChange(ESAction):
+    def __init__(self, skill, attributes=None, attack=None):
         if attributes:
             self.attributes = attributes
         else:
             self.attributes = attribute_bitmap(params(skill)[1])
-        self.effect = 'board_change'
+        super(ESBoardChange, self).__init__(
+            skill,
+            effect='board_change',
+            description=Describe.board_change(self.attributes),
+            attack=attack
+        )
 
 
 class ESBoardChangeAttackFlat(ESBoardChange):
     def __init__(self, skill):
         super(ESBoardChangeAttackFlat, self).__init__(
             skill,
-            [ATTRIBUTE_MAP[x] for x in params(skill)[2:params(skill).index(-1)]]
+            [ATTRIBUTE_MAP[x] for x in params(skill)[2:params(skill).index(-1)]],
+            ESAttack.new_instance(params(skill)[1])
         )
-        self.attack_multiplier = params(skill)[1]
-        self.description = Describe.board_change(
-            self.attributes) + ' & ' + Describe.attack(self.attack_multiplier)
 
 
 class ESBoardChangeAttackBits(ESBoardChange):
     def __init__(self, skill):
         super(ESBoardChangeAttackBits, self).__init__(
             skill,
-            attribute_bitmap(params(skill)[2])
+            attribute_bitmap(params(skill)[2]),
+            ESAttack.new_instance(params(skill)[1])
         )
-        self.attack_multiplier = params(skill)[1]
-        self.description = Describe.board_change(
-            self.attributes) + ' & ' + Describe.attack(self.attack_multiplier)
 
 
 class SubSkill(pad_util.JsonDictEncodable):
@@ -1055,11 +1110,8 @@ class SubSkill(pad_util.JsonDictEncodable):
         self.enemy_rnd = None
 
 
-class ESSkillSet(ESEffect):
+class ESSkillSet(ESAction):
     def __init__(self, skill):
-        super(ESSkillSet, self).__init__(skill)
-        self.effect = 'skill_set'
-        self.description = 'Perform multiple skills'
         self.skill_list = []
         i = 0
         for s in params(skill)[1:11]:
@@ -1071,6 +1123,11 @@ class ESSkillSet(ESEffect):
                 else:
                     self.skill_list.append(EnemySkillUnknown(sub_skill))
             i += 1
+        super(ESSkillSet, self).__init__(
+            skill,
+            effect='skill_set',
+            description='Perform multiple skills'
+        )
 
 
 class ESSkillSetOnDeath(ESSkillSet):
@@ -1080,31 +1137,37 @@ class ESSkillSetOnDeath(ESSkillSet):
             self.condition.description = 'On death'
 
 
-class ESSkillDelay(ESEffect):
+class ESSkillDelay(ESAction):
     def __init__(self, skill):
-        super(ESSkillDelay, self).__init__(skill)
         self.turns = params(skill)[2]
-        self.effect = 'skill_delay'
-        self.description = Describe.skill_delay(self.turns)
+        super(ESSkillDelay, self).__init__(
+            skill,
+            effect = 'skill_delay',
+            description=Describe.skill_delay(self.turns)
+        )
 
 
-class ESOrbLock(ESEffect):
+class ESOrbLock(ESAction):
     def __init__(self, skill):
-        super(ESOrbLock, self).__init__(skill)
         self.count = params(skill)[2]
         self.attributes = attribute_bitmap(params(skill)[1])
-        self.effect = 'orb_lock'
-        self.description = Describe.orb_lock(self.count, self.attributes)
+        super(ESOrbLock, self).__init__(
+            skill,
+            effect='orb_lock',
+            description=Describe.orb_lock(self.count, self.attributes)
+        )
 
 
-class ESOrbSeal(ESEffect):
+class ESOrbSeal(ESAction):
     def __init__(self, skill, position_type, positions):
-        super(ESOrbSeal, self).__init__(skill)
         self.turns = params(skill)[2]
         self.position_type = position_type
         self.positions = positions
-        self.effect = 'orb_seal'
-        self.description = Describe.orb_seal(self.turns, self.position_type, self.positions)
+        super(ESOrbSeal, self).__init__(
+            skill,
+            effect='orb_seal',
+            description=Describe.orb_seal(self.turns, self.position_type, self.positions)
+        )
 
 
 class ESOrbSealColumn(ESOrbSeal):
@@ -1125,45 +1188,51 @@ class ESOrbSealRow(ESOrbSeal):
         )
 
 
-class ESCloud(ESEffect):
+class ESCloud(ESAction):
     def __init__(self, skill):
-        super(ESCloud, self).__init__(skill)
         self.turns = params(skill)[1]
         self.cloud_width = params(skill)[2]
         self.cloud_height = params(skill)[3]
         self.origin_y = params(skill)[4]
         self.origin_x = params(skill)[5]
-        self.attack_multiplier = params(skill)[14]
-        self.description = Describe.cloud(
-            self.turns, self.cloud_width, self.cloud_height, self.origin_x, self.origin_y)
-        if self.attack_multiplier is not None:
-            self.description += ' & ' + Describe.attack(self.attack_multiplier)
+        super(ESCloud, self).__init__(
+            skill,
+            effect='cloud',
+            description=Describe.cloud(
+                self.turns, self.cloud_width, self.cloud_height, self.origin_x, self.origin_y)
+        )
 
 
-class ESFixedStart(ESEffect):
+class ESFixedStart(ESAction):
     def __init__(self, skill):
-        super(ESFixedStart, self).__init__(skill)
-        self.effect = 'fixed_start'
-        self.description = Describe.fixed_start()
+        super(ESFixedStart, self).__init__(
+            skill,
+            effect='fixed_start',
+            description='Fix orb movement starting point to random position on the board'
+        )
 
 
-class ESAttributeBlock(ESEffect):
+class ESAttributeBlock(ESAction):
     def __init__(self, skill):
-        super(ESAttributeBlock, self).__init__(skill)
         self.turns = params(skill)[1]
         self.attributes = attribute_bitmap(params(skill)[2])
-        self.effect = 'attribute_block'
-        self.description = Describe.attribute_block(self.turns, self.attributes)
+        super(ESAttributeBlock, self).__init__(
+            skill,
+            effect = 'attribute_block',
+            description = Describe.attribute_block(self.turns, self.attributes)
+        )
 
 
-class ESSpinners(ESEffect):
+class ESSpinners(ESAction):
     def __init__(self, skill, position_type):
-        super(ESSpinners, self).__init__(skill)
         self.turns = params(skill)[1]
         self.speed = params(skill)[2]
         self.position_type = position_type
-        self.effect = 'orb_spinners'
-        self.description = Describe.spinners(self.turns, self.speed, self.position_type)
+        super(ESSpinners, self).__init__(
+            skill,
+            effect='orb_spinners',
+            description=Describe.spinners(self.turns, self.speed, self.position_type)
+        )
 
 
 class ESSpinnersRandom(ESSpinners):
@@ -1176,90 +1245,102 @@ class ESSpinnersRandom(ESSpinners):
 
 class ESSpinnersFixed(ESSpinners):
     def __init__(self, skill):
+        self.position_str, self.position_rows, self.position_cols = positions_2d_bitmap(params(skill)[3:8])
         super(ESSpinnersFixed, self).__init__(
             skill,
             position_type='fixed'
         )
-        self.position_str, self.position_rows, self.position_cols = positions_2d_bitmap(params(skill)[
-                                                                                        3:8])
 
 
-class ESMaxHPChange(ESEffect):
+class ESMaxHPChange(ESAction):
     def __init__(self, skill):
-        super(ESMaxHPChange, self).__init__(skill)
         self.turns = params(skill)[3]
-        self.effect = 'max_hp_change'
         if params(skill)[2] is not None:
             self.max_hp = params(skill)[2]
             self.hp_change_type = 'percent'
         else:
             self.max_hp = params(skill)[3]
             self.hp_change_type = 'flat'
-        self.description = Describe.max_hp_change(self.turns, self.max_hp, self.hp_change_type)
+        super(ESMaxHPChange, self).__init__(
+            skill,
+            effect='max_hp_change',
+            description=Describe.max_hp_change(self.turns, self.max_hp, self.hp_change_type)
+        )
 
 
-class ESFixedTarget(ESEffect):
+class ESFixedTarget(ESAction):
     def __init__(self, skill):
-        super(ESFixedTarget, self).__init__(skill)
-        # self.target = params(skill)[1]
-        self.effect = 'fixed_target'
-        self.description = 'Forces attacks to hit this enemy'
+        self.target = params(skill)[1]
+        super(ESFixedTarget, self).__init__(
+            skill,
+            effect='fixed_target',
+            description='Forces attacks to hit this enemy'
+        )
+
+
+class ESTurnChangeActive(ESAction):
+    def __init__(self, skill):
+        self.turn_counter = params(skill)[2]
+        super(ESTurnChangeActive, self).__init__(
+            skill,
+            effect='turn_change_active',
+            description=Describe.turn_change(self.turn_counter)
+        )
 
 
 # Passive
 class ESPassive(pad_util.JsonDictEncodable):
-    def __init__(self, skill):
+    def __init__(self, skill, effect, description):
         self.CATEGORY = 'PASSIVE'
         self.enemy_skill_id = es_id(skill)
         self.type = es_type(skill)
         self.name = name(skill)
-        self.effect = 'passive_effect'
-        self.description = 'A passive trait'
+        self.effect = effect
+        self.description = description
 
 
 class ESAttributeResist(ESPassive):
     def __init__(self, skill):
-        super(ESAttributeResist, self).__init__(skill)
         self.attributes = attribute_bitmap(params(skill)[1])
         self.shield_percent = params(skill)[2]
-        self.effect = 'resist_attribute'
-        self.description = Describe.damage_reduction(
-            ', '.join(self.attributes), percent=self.shield_percent)
+        super(ESAttributeResist, self).__init__(
+            skill,
+            effect='resist_attribute',
+            description=Describe.damage_reduction(
+                ', '.join(self.attributes), percent=self.shield_percent)
+        )
 
 
 class ESResolve(ESPassive):
     def __init__(self, skill):
-        super(ESResolve, self).__init__(skill)
         self.hp_threshold = params(skill)[1]
-        self.effect = 'resolve'
-        self.description = Describe.resolve(self.hp_threshold)
+        super(ESResolve, self).__init__(
+            skill,
+            effect = 'resolve',
+            description=Describe.resolve(self.hp_threshold)
+        )
 
 
 class ESTurnChangePassive(ESPassive):
     def __init__(self, skill):
-        super(ESTurnChangePassive, self).__init__(skill)
         self.hp_threshold = params(skill)[1]
         self.turn_counter = params(skill)[2]
-        self.effect = 'turn_change_passive'
-        self.description = Describe.turn_change(self.turn_counter, self.hp_threshold)
+        super(ESTurnChangePassive, self).__init__(
+            skill,
+            effect = 'turn_change_passive',
+            description=Describe.turn_change(self.turn_counter, self.hp_threshold)
+        )
 
 
 class ESTypeResist(ESPassive):
     def __init__(self, skill):
-        super(ESTypeResist, self).__init__(skill)
         self.types = typing_bitmap(params(skill)[1])
         self.shield_percent = params(skill)[2]
-        self.effect = 'resist_type'
-        self.description = Describe.damage_reduction(
-            ', '.join(self.types), percent=self.shield_percent)
-
-
-class ESTurnChangeActive(ESEffect):
-    def __init__(self, skill):
-        super(ESTurnChangeActive, self).__init__(skill)
-        self.effect = 'turn_change_active'
-        self.turn_counter = params(skill)[2]
-        self.description = Describe.turn_change(self.turn_counter)
+        super(ESTypeResist, self).__init__(
+            skill,
+            effect = 'resist_type',
+            description=Describe.damage_reduction(', '.join(self.types), percent=self.shield_percent)
+        )
 
 
 # Logic
@@ -1450,7 +1531,7 @@ BEHAVIOR_MAP = {
     56: ESPoisonChangeSingle,
     60: ESPoisonChangeRandom,
     61: ESMortalPoisonChangeRandom,
-    62: ESBlindAttack,
+    62: ESBlind,
     63: ESBindAttack,
     64: ESPoisonChangeRandomAttack,
     65: ESBindRandomSub,
@@ -1478,7 +1559,7 @@ BEHAVIOR_MAP = {
     # 93: FF animation (???)
     94: ESOrbLock,
     95: ESSkillSetOnDeath,
-    96: ESSkyfallLocks,
+    96: ESSkyfall,
     97: ESBlindStickyRandom,
     98: ESBlindStickyFixed,
     99: ESOrbSealColumn,
@@ -1556,6 +1637,7 @@ def reformat_json(card_data):
         behavior = {}
         passives = {}
         unknown = {}
+
         # Sequence of enemy skill is important for logic
         for idx, skill in enumerate(enemy.enemy_skill_refs):
             idx += 1
