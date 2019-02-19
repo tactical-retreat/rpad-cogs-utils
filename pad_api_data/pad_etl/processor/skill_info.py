@@ -1014,16 +1014,16 @@ def change_skyfall_convert(arguments):
         _, c = convert_with_defaults('change_skyfall',
                                      arguments,
                                      change_skyfall_backups)(x)
-        c['skill_text'] += fmt_duration(c['duration'])
-
-        if len(c['orbs']) > 1:
-            for i in c['orbs'][:-1]:
-                c['skill_text'] += ATTRIBUTES[i] + ', '
-            c['skill_text'] += ATTRIBUTES[c['orbs'][-1]] + \
-                ' orbs are more likely to appear by ' + fmt_mult(c['percentage'] * 100) + '%'
-        elif len(c['orbs']) == 1:
-            c['skill_text'] += ATTRIBUTES[c['orbs'][0]] + \
-                ' orbs are more likely to appear by ' + fmt_mult(c['percentage'] * 100) + '%'
+        skill_text = ''
+        skill_text += fmt_duration(c['duration'])
+        rate = fmt_mult(c['percentage'] * 100)
+        
+        if rate == '100':
+            skill_text += 'only {} orbs will appear'.format(', '.join(ATTRIBUTES[i] for i in c['orbs']))
+        else:
+            skill_text += '{} orbs are more likely to appear by {}%'.format(', '.join(ATTRIBUTES[i] for i in c['orbs']),
+                                                                            rate)
+        c['skill_text'] = skill_text
         return 'change_skyfall', c
     return f
 
@@ -1290,20 +1290,41 @@ def fixed_pos_convert(arguments):
         row_pos = 0
         col_pos = 0
         shape = 'some shape'
-
+        determined = False
+        
         for x in board:
             orb_count += len(x)
 
         if orb_count == 5:
-            for x in range(1, len(board) - 1):  # Check for cross shape
-                if len(board[x]) == 3 and len(board[x - 1]) == 1 and len(board[x + 1]) == 1:
+            for x in range(1,len(board)-1): #Check for cross
+                if len(board[x]) == 3 and len(board[x-1]) == 1 and len(board[x+1]) == 1 and not determined:   #Check for cross
                     row_pos = x
                     col_pos = board[x][1]
                     shape = 'cross'
-
-        c['skill_text'] += 'Create ' + shape + ' of ' + ATTRIBUTES[c['attribute']] + \
-            ' orbs with center at ' + ROW_INDEX[row_pos] + ' and ' + COLUMN_INDEX[col_pos]
-        return 'create_cross', c
+                    determined = True
+            for x in range(0,len(board)): #Check for L
+                if len(board[x]) == 3 and not determined:
+                    row_pos = x
+                    col_pos = board[x+1][0] if x < 2 else (board[x-1][0] if x > 2 else
+                                                           (board[x+1][0] if len(board[x+1]) > 0 else
+                                                            (board[x-1][0])))
+                    shape = 'L shape'
+                    determined = True
+        if orb_count == 9 and not determined:
+            for x in range(1,len(board)-1): #Check for square
+                if len(board[x]) == 3 and len(board[x-1]) == 3 and len(board[x+1]) == 3 :
+                    row_pos = x
+                    col_pos = board[x][1]
+                    shape = 'square'
+                    determined = True
+        if orb_count == 18 and not determined:
+            if len(board[0]) == 6 and len(board[4]) == 6 and len(board[1]) + len(board[2]) + len(board[3]) == 6:
+                    shape = 'border'
+        
+        c['skill_text'] += 'Change the outermost orbs of the board to ' + ATTRIBUTES[c['attribute']] + ' orbs'  if shape == 'border' else (
+            'Create ' + shape + ' of ' + ATTRIBUTES[c['attribute']] + ' orbs with center at ' + ROW_INDEX[row_pos] + ' and ' +COLUMN_INDEX[col_pos])
+        
+        return 'create_shape', c
     return f
 
 # End of Active skill
@@ -1329,7 +1350,7 @@ def fmt_parameter(c):
             float(damage_reduct)]
 
 
-passive_stats_backups = {'for_attr': [], 'for_type': [], 'hp_multiplier': 1.0, 'atk_multiplier': 1.0,
+passive_stats_backups = {'time': 0, 'for_attr': [], 'for_type': [], 'hp_multiplier': 1.0, 'atk_multiplier': 1.0,
                          'rcv_multiplier': 1.0, 'reduction_attributes': all_attr, 'damage_reduction': 0.0, 'skill_text': '', 'parameter': [1.0, 1.0, 1.0, 0.0]}
 
 
@@ -1339,7 +1360,10 @@ def passive_stats_convert(arguments):
                                      arguments,
                                      passive_stats_backups)(x)
 
-        skill_text = fmt_stats_type_attr_bonus(c)
+        skill_text = ''
+        if c['time'] > 0:
+            skill_text += '[Fixed {} second movetime]; '.format(c['time'])
+        skill_text += fmt_stats_type_attr_bonus(c)
         if skill_text != '' and c['skill_text'] == '':
             c['skill_text'] += skill_text
         elif skill_text != '' and c['skill_text'] != '':
@@ -1553,11 +1577,12 @@ def mass_match_convert(arguments):
         if max_count != min_count:
             skill_text += ' or more connected'
 
-        if len(attributes) == 1:
-            skill_text += ' ' + ATTRIBUTES[attributes[0]]
-        elif len(attributes) > 1 and attributes != [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]:
-            color_text = ', '.join([ATTRIBUTES[i] for i in attributes[:-1]])
-            color_text += ' or ' + ATTRIBUTES[attributes[-1]]
+        if len(attributes) >= 1 and len(attributes) <= 7:
+            color_text = ', '.join(ATTRIBUTES[i] for i in attributes) if len(attributes) == 1 else ((', '.join(ATTRIBUTES[i] for i in attributes[:-1])) + ' or {}'.format(ATTRIBUTES[attributes[-1]]))
+            skill_text += ' ' + color_text
+        elif len(attributes) >= 7 and len(attributes) < 10:
+            att_sym_diff = sorted(list(set(ATTRIBUTES) - set(attributes)), key = lambda x: ATTRIBUTES[x])
+            color_text = 'non {}'.format(', '.join(ATTRIBUTES[i] for i in att_sym_diff)) if len(att_sym_diff) == 1 else ('non {}'.format(', '.join(ATTRIBUTES[i] for i in att_sym_diff[:-1])) + ' or {}'.format(ATTRIBUTES[att_sym_diff[-1]]))
             skill_text += ' ' + color_text
 
         skill_text += ' orbs'
@@ -2359,7 +2384,7 @@ SKILL_TRANSFORM = {
     175: collab_bonus_convert({'collab_id': (0, cc), 'hp_multiplier': (3, multi2), 'atk_multiplier': (4, multi2), 'rcv_multiplier': (5, multi2)}),
     176: fixed_pos_convert({'board'[0]: (0, binary_con), 'row_pos_1': (0, binary_con), 'row_pos_2': (1, binary_con), 'row_pos_3': (2, binary_con), 'row_pos_4': (3, binary_con), 'row_pos_5': (4, binary_con), 'attribute': (5, cc)}),
     177: orb_remain_convert({'orb_count': (5, cc), 'atk_multiplier': (6, multi), 'bonus_atk_multiplier': (7, multi), 'skill_text': '[No skyfall]; '}),
-    178: passive_stats_convert({'time': (0, cc), 'for_attr': (1, binary_con), 'for_type': (2, binary_con), 'hp_multiplier': (3, multi2), 'atk_multiplier': (4, multi2), 'rcv_multiplier': (5, multi2), 'skill_text': '[Fixed 4 second movetime]'}),
+    178: passive_stats_convert({'time': (0, cc), 'for_attr': (1, binary_con), 'for_type': (2, binary_con), 'hp_multiplier': (3, multi2), 'atk_multiplier': (4, multi2), 'rcv_multiplier': (5, multi2)}),
     182: mass_match_convert({'attributes': (0, binary_con), 'minimum_count': (1, cc), 'minimum_atk_multiplier': (2, multi), 'minimum_damage_reduction': (3, multi)}),
     183: dual_threshold_stats_convert({'for_attr': (0, binary_con), 'for_type': (1, binary_con),
                                        'threshold_1': (2, multi), 'above_1': True, 'atk_multiplier_1': (3, multi), 'rcv_multiplier_1': 1.0, 'damage_reduction_1': (4, multi),

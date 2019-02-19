@@ -21,6 +21,7 @@ from pad_etl.storage import egg_processor
 from pad_etl.storage import monster
 from pad_etl.storage import monster_skill
 from pad_etl.storage import skill_data
+from pad_etl.storage import timestamp_processor
 
 from pad_etl.storage.db_util import DbWrapper
 from pad_etl.storage.news import NewsItem
@@ -695,7 +696,7 @@ def load_data(args):
         print('updating news failed', str(ex))
 
     logger.info('Starting tstamp update')
-    database_update_timestamps(db_wrapper)
+    timestamp_processor.update_timestamps(db_wrapper)
 
     print('done')
 
