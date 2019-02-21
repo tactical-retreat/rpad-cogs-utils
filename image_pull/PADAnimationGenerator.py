@@ -20,7 +20,7 @@ args = parser.parse_args()
 
 
 def generate_resized_image(source_file, dest_file):
-    ffmpg_cmd = 'ffmpeg -i {} -pix_fmt yuv420p -r 24 -c:v libx264 -filter:v "crop=640:420:0:30" {}'.format(
+    ffmpg_cmd = 'ffmpeg -i {} -pix_fmt yuv420p -r 24 -c:v libx264 -filter:v "crop=640:390:0:60" {}'.format(
         source_file, dest_file)
 
     print('running', ffmpg_cmd)
