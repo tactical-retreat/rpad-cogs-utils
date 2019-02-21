@@ -49,3 +49,7 @@ gsutil -m rsync -r ${IMG_DIR}/jp/portrait/local gs://mirubot/padimages/jp/portra
 
 b2 sync --compareVersions size ${IMG_DIR}/na/portrait/local b2://miru-data/padimages/na/portrait
 b2 sync --compareVersions size ${IMG_DIR}/jp/portrait/local b2://miru-data/padimages/jp/portrait
+
+# Animations
+python3 ${RUN_DIR}/PADAnimationGenerator.py --raw_dir=${IMG_DIR}/jp/full/raw_data --working_dir=${ALT_PROCESSOR_DIR} --output_dir=${IMG_DIR}/animated
+b2 sync --compareVersions size ${IMG_DIR}/animated b2://miru-data/padimages/animated
