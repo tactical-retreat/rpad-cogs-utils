@@ -82,7 +82,7 @@ working_dir = args.working_dir
 output_dir = args.output_dir
 
 for file_name in sorted(os.listdir(raw_dir)):
-    if 'mons' not in file_name:
+    if 'mons' not in file_name or 'isanimated' in file_name:
         print('skipping', file_name)
         continue
 

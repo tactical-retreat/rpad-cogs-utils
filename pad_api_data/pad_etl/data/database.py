@@ -91,23 +91,28 @@ class Database(object):
         self.cards = []
         self.enemies = []
 
-    def load_database(self):
+    def load_database(self, skip_skills=False, skip_bonus=False, skip_extra=False):
         base_dir = self.base_dir
         self.raw_cards = card.load_card_data(data_dir=base_dir)
         self.dungeons = dungeon.load_dungeon_data(data_dir=base_dir)
-        self.bonus_sets = {
-            'red': bonus.load_bonus_data(data_dir=base_dir, data_group='red'),
-            'blue': bonus.load_bonus_data(data_dir=base_dir, data_group='blue'),
-            'green': bonus.load_bonus_data(data_dir=base_dir, data_group='green'),
-        }
-        self.skills = skill.load_skill_data(data_dir=base_dir)
-        self.raw_skills = skill.load_raw_skill_data(data_dir=base_dir)
-        self.enemy_skills = enemy_skill.load_enemy_skill_data(data_dir=base_dir)
-        self.exchange = exchange.load_data(data_dir=base_dir)
 
-        # TODO move this to egg machines parser same as others
-        with open(os.path.join(base_dir, 'egg_machines.json')) as f:
-            self.egg_machines = json.load(f)
+        if not skip_bonus:
+            self.bonus_sets = {
+                'red': bonus.load_bonus_data(data_dir=base_dir, data_group='red'),
+                'blue': bonus.load_bonus_data(data_dir=base_dir, data_group='blue'),
+                'green': bonus.load_bonus_data(data_dir=base_dir, data_group='green'),
+            }
+
+        if not skip_skills:
+            self.skills = skill.load_skill_data(data_dir=base_dir)
+            self.raw_skills = skill.load_raw_skill_data(data_dir=base_dir)
+        self.enemy_skills = enemy_skill.load_enemy_skill_data(data_dir=base_dir)
+
+        if not skip_extra:
+            self.exchange = exchange.load_data(data_dir=base_dir)
+            # TODO move this to egg machines parser same as others
+            with open(os.path.join(base_dir, 'egg_machines.json')) as f:
+                self.egg_machines = json.load(f)
 
         self.bonuses = _clean_bonuses(self.pg_server, self.bonus_sets, self.dungeons)
         self.enemies = _clean_enemy(self.raw_cards, self.enemy_skills)
