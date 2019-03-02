@@ -108,10 +108,12 @@ class Context(object):
         self.is_preemptive = False
         self.do_preemptive = False
         self.flags = 0
+        self.onetime_flags = 0
         self.counter = 0
         self.hp = 100
         self.level = level
         self.enemies = 999
+        self.cards = set()
 
     def reset(self):
         self.is_preemptive = False
@@ -137,7 +139,7 @@ def loop_through(ctx: Context, behaviors):
         b = behaviors[idx]
         b_type = type(b)
 
-        if b == None or b_type == ESNone:
+        if b is None or b_type == ESNone:
             idx += 1
             continue
 
@@ -149,9 +151,32 @@ def loop_through(ctx: Context, behaviors):
             continue
 
         if b_type == EnemySkillUnknown or issubclass(b_type, ESAction):
-            idx += 1
-            results.append(b)
-            continue
+            cond = b.condition
+            if cond:
+                # This check might be wrong? This is checking if all flags are unset, maybe just one needs to be unset.
+                if cond.hp_threshold and ctx.hp >= cond.hp_threshold:
+                    idx += 1
+                    continue
+
+                if cond.one_time:
+                    if not ctx.onetime_flags & cond.one_time:
+                        ctx.onetime_flags = ctx.onetime_flags | cond.one_time
+                        results.append(b)
+                        return results
+                    else:
+                        idx += 1
+                        continue
+
+                if cond.ai == 100:
+                    results.append(b)
+                    return results
+                else:
+                    results.append(b)
+                    idx += 1
+                    continue
+            else:
+                results.append(b)
+                return results
 
         if b_type == ESBranchFlag:
             if b.branch_value == b.branch_value & ctx.flags:
@@ -169,7 +194,7 @@ def loop_through(ctx: Context, behaviors):
             elif b.operation == 'UNSET':
                 ctx.flags = ctx.flags & ~b.flag
             else:
-                raise ValueError('unsupported operation:', b.operation)
+                raise ValueError('unsupported flag operation:', b.operation)
             idx += 1
             continue
 
@@ -225,6 +250,14 @@ def loop_through(ctx: Context, behaviors):
                 idx += 1
             continue
 
+        if b_type == ESBranchCard:
+            if any([card in ctx.cards for card in b.branch_value]):
+                idx = b.target_round
+            else:
+                idx += 1
+            continue
+
+
         # if b_type == ESCountdown:
         #    if ctx.counter == 0:
         #        idx += 1
@@ -249,6 +282,7 @@ def convert(enemy: MergedEnemy, level: int):
 
     hp_checkpoints = set()
     hp_checkpoints.add(100)
+    card_checkpoints = set()
     for idx, es in enumerate(behaviors):
         # Extract the passives and null them out to simplify processing
         if type(es) in PASSIVE_MAP.values():
@@ -257,25 +291,24 @@ def convert(enemy: MergedEnemy, level: int):
 
         # Find candidate branch HP values
         if type(es) == ESBranchHP:
-            # Probably the wrong way to handle this
-            hp_checkpoints.add(es.branch_value - 1)
-            hp_checkpoints.add(es.branch_value + 1)
             hp_checkpoints.add(es.branch_value)
-#             if es.compare == '<':
-#                 hp_checkpoints.add(es.branch_value)
-#             else:
-#                 hp_checkpoints.add(es.branch_value - 1)
+            if es.branch_value != 100:
+                hp_checkpoints.add(es.branch_value + 1)
+            if es.branch_value != 0:
+                hp_checkpoints.add(es.branch_value - 1)
 
         # Find candidate action HP values
         if hasattr(es, 'condition'):
             cond = es.condition
             if cond.hp_threshold:
                 hp_checkpoints.add(cond.hp_threshold)
-                # Probably the wrong way to handle this
-                hp_checkpoints.add(cond.hp_threshold - 1)
-                hp_checkpoints.add(cond.hp_threshold + 1)
+                if cond.hp_threshold != 100:
+                    hp_checkpoints.add(cond.hp_threshold + 1)
+                if cond.hp_threshold != 0:
+                    hp_checkpoints.add(cond.hp_threshold - 1)
 
-        # TODO: Find card candidate values
+        if type(es) == ESBranchCard:
+            card_checkpoints.update(es.branch_value)
 
     ctx = Context(level)
     last_ctx = ctx.clone()
