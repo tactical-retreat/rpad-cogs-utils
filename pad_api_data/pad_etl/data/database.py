@@ -91,6 +91,11 @@ class Database(object):
         self.cards = []
         self.enemies = []
 
+        # Faster lookups
+        self.dungeon_id_to_dungeon = {}
+        self.card_id_to_raw_card = {}
+        self.enemy_id_to_enemy = {}
+
     def load_database(self, skip_skills=False, skip_bonus=False, skip_extra=False):
         base_dir = self.base_dir
         self.raw_cards = card.load_card_data(data_dir=base_dir)
@@ -118,6 +123,10 @@ class Database(object):
         self.enemies = _clean_enemy(self.raw_cards, self.enemy_skills)
         self.cards = _clean_cards(self.raw_cards, self.skills, self.enemies)
 
+        self.dungeon_id_to_dungeon = {d.dungeon_id: d for d in self.dungeons}
+        self.card_id_to_raw_card = {c.card_id: c for c in self.raw_cards}
+        self.enemy_id_to_enemy = {e.enemy_id: e for e in self.enemies}
+
     def save_all(self, output_dir: str, pretty: bool):
         def save(file_name: str, obj: object):
             output_file = os.path.join(output_dir, '{}_{}.json'.format(self.pg_server, file_name))
@@ -134,3 +143,12 @@ class Database(object):
         save('cards', self.cards)
         save('exchange', self.exchange)
         save('enemies', self.enemies)
+
+    def dungeon_by_id(self, dungeon_id):
+        return self.dungeon_id_to_dungeon.get(dungeon_id, None)
+
+    def raw_card_by_id(self, card_id):
+        return self.card_id_to_raw_card.get(card_id, None)
+
+    def enemy_by_id(self, enemy_id):
+        return self.enemy_id_to_enemy.get(enemy_id, None)
