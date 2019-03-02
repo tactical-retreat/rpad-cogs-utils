@@ -1,8 +1,6 @@
 from collections import OrderedDict
 import json
 
-from docutils.nodes import description
-
 from ..common import pad_util
 
 
