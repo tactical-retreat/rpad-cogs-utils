@@ -87,7 +87,7 @@ class ProcessedSkillset(object):
         for x in self.enemycount_skill_groups:
             msg += '\n\nEnemies {}'.format(x.count)
             for y in x.skills:
-                msg += '\n'.format(dump_obj(y))
+                msg += '\n{}'.format(dump_obj(y))
 
         msg += '\n\nHP Groups:'
         for x in self.hp_skill_groups:
@@ -438,6 +438,8 @@ def clean_skillset(skillset: ProcessedSkillset):
     # groups and also in random HP buckets (generally the 100% one due to
     # earlier cleanups).
     #
+    # TODO: is this still the case post-changes with ai/onetime flags?
+    #
     # Extract the ones in the HP buckets to a unique set, then only remove
     # timed entries that match (to prevent removing things like, <50% in turn 1).
     #
@@ -464,3 +466,8 @@ def clean_skillset(skillset: ProcessedSkillset):
                 break
         if not placed:
             skillset.hp_skill_groups.append(HpSkillGroup(hp_threshold, [es]))
+
+    # Iterate over every skillset group and remove now-empty ones
+    skillset.timed_skill_groups = [x for x in skillset.timed_skill_groups if x.skills]
+    skillset.enemycount_skill_groups = [x for x in skillset.enemycount_skill_groups if x.skills]
+    skillset.hp_skill_groups = [x for x in skillset.hp_skill_groups if x.skills]
