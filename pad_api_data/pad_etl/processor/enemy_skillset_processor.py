@@ -139,6 +139,10 @@ def loop_through(ctx: Context, behaviors):
         b = behaviors[idx]
         b_type = type(b)
 
+        if b_type == ESAttackUp:
+            pass
+            # TODO: is there something that needs to be done here (flag flipping?)
+
         if b is None or b_type == ESNone:
             idx += 1
             continue
@@ -414,9 +418,9 @@ def convert(enemy: MergedEnemy, level: int):
 
     # Simulate HP decreasing
     globally_seen_behavior = []
+    hp_ctx = ctx.clone()
     for checkpoint in sorted(hp_checkpoints, reverse=True):
         locally_seen_behavior = []
-        hp_ctx = ctx.clone()
         hp_ctx.hp = checkpoint
         cur_loop = loop_through(hp_ctx, behaviors)
         while cur_loop not in globally_seen_behavior and cur_loop not in locally_seen_behavior:
