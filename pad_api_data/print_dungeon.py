@@ -1,8 +1,5 @@
 import argparse
-import json
 import logging
-import csv
-import os
 from collections import defaultdict
 
 from pad_etl.data import database
