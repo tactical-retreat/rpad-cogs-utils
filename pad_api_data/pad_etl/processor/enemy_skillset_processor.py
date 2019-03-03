@@ -283,6 +283,7 @@ def convert(enemy: MergedEnemy, level: int):
     hp_checkpoints = set()
     hp_checkpoints.add(100)
     card_checkpoints = set()
+    has_enemy_remaining_branch = False
     for idx, es in enumerate(behaviors):
         # Extract the passives and null them out to simplify processing
         if type(es) in PASSIVE_MAP.values():
@@ -309,6 +310,9 @@ def convert(enemy: MergedEnemy, level: int):
 
         if type(es) == ESBranchCard:
             card_checkpoints.update(es.branch_value)
+
+        if type(es) == ESBranchRemainingEnemies:
+            has_enemy_remaining_branch = True
 
     ctx = Context(level)
     last_ctx = ctx.clone()
@@ -388,24 +392,25 @@ def convert(enemy: MergedEnemy, level: int):
         pass
 
     # Simulate enemies being defeated
-    default_enemy_action = loop_through(ctx, behaviors)
-    seen_skillsets = [default_enemy_action]
-    for ecount in range(6, 0, -1):
-        ctx.enemies = ecount
-        cur_loop = loop_through(ctx, behaviors)
+    if has_enemy_remaining_branch:
+        default_enemy_action = loop_through(ctx, behaviors)
+        seen_skillsets = [default_enemy_action]
+        for ecount in range(6, 0, -1):
+            ctx.enemies = ecount
+            cur_loop = loop_through(ctx, behaviors)
 
-        if cur_loop in seen_skillsets:
-            continue
+            if cur_loop in seen_skillsets:
+                continue
 
-        seen_skillsets.append(cur_loop)
+            seen_skillsets.append(cur_loop)
 
-        # Check for the first action being one-time. Kind of a hacky special case for loops.
-        follow_loop = loop_through(ctx, behaviors)
-        if follow_loop == cur_loop:
-            follow_loop = None
-        else:
-            seen_skillsets.append(follow_loop)
-        skillset.enemycount_skill_groups.append(EnemyCountSkillGroup(ecount, cur_loop, follow_loop))
+            # Check for the first action being one-time. Kind of a hacky special case for loops.
+            follow_loop = loop_through(ctx, behaviors)
+            if follow_loop == cur_loop:
+                follow_loop = None
+            else:
+                seen_skillsets.append(follow_loop)
+            skillset.enemycount_skill_groups.append(EnemyCountSkillGroup(ecount, cur_loop, follow_loop))
 
     # Simulate HP decreasing
     globally_seen_behavior = []
