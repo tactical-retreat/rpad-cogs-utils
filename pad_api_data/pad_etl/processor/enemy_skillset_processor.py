@@ -54,7 +54,7 @@ def dump_obj(o):
         if hasattr(o, 'condition') and o.condition:
             msg += 'Condition: {}\n'.format(json.dumps(o.condition,
                                                        sort_keys=True, default=lambda x: x.__dict__))
-        msg += '{} {} {}'.format(type(o).__name__, o.name, o.description)
+        msg += '{} [{}] {}'.format(type(o).__name__, o.name, o.full_description())
         return msg
 
 
@@ -80,6 +80,8 @@ class ProcessedSkillset(object):
         msg += '\n\nTimed Groups:'
         for x in self.timed_skill_groups:
             msg += '\n\nTurn {}'.format(x.turn)
+            if x.hp is not None and x.hp < 100:
+                msg += ' (HP <= {})'.format(x.hp)
             for y in x.skills:
                 msg += '\n{}'.format(dump_obj(y))
 
@@ -99,7 +101,7 @@ class ProcessedSkillset(object):
 
 
 def to_item(action: ESAction):
-    return SkillItem(action.name, action.description, 0)
+    return SkillItem(action.name, action.full_description(), 0)
 
 
 class Context(object):
@@ -114,6 +116,7 @@ class Context(object):
         self.level = level
         self.enemies = 999
         self.cards = set()
+        self.enraged = 0
 
     def reset(self):
         self.is_preemptive = False
@@ -139,9 +142,17 @@ def loop_through(ctx: Context, behaviors):
         b = behaviors[idx]
         b_type = type(b)
 
-        if b_type == ESAttackUp:
-            pass
-            # TODO: is there something that needs to be done here (flag flipping?)
+        if ctx.enraged > 0:
+            # count down enraged turns
+            ctx.enraged -= 1
+        if b_type == ESAttackUp or b_type == ESAttackUpStatus:
+            if ctx.enraged > 0:
+                # skip this skill since already enraged
+                idx += 1
+                continue
+            else:
+                # update enraged turns
+                ctx.enraged = b.turns
 
         if b is None or b_type == ESNone:
             idx += 1
@@ -190,7 +201,7 @@ def loop_through(ctx: Context, behaviors):
             continue
 
         if b_type == ESEndPath:
-            break
+            return results
 
         if b_type == ESFlagOperation:
             if b.operation == 'SET' or b.operation == 'OR':
@@ -345,9 +356,9 @@ def convert(enemy: MergedEnemy, level: int):
     if preemptives is not None:
         skillset.preemptives = preemptives
 
-    # For the first 10 turns, compute actions at every HP checkpoint
+    # For the first 20 turns, compute actions at every HP checkpoint
     turn_data = []
-    for idx in range(0, 10):
+    for idx in range(0, 20):
         next_ctx = None
         hp_data = {}
         seen_behavior = []

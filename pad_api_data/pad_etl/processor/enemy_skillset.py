@@ -189,7 +189,7 @@ class Describe:
         if 0 < chance < 100 and not one_time:
             output.append('{:d}% chance'.format(chance))
         if hp:
-            output.append('when <{:d}% HP'.format(hp))
+            output.append('when < {:d}% HP'.format(hp))
         if one_time:
             if len(output) > 0:
                 output.append(',')
@@ -315,7 +315,7 @@ class Describe:
 
     @staticmethod
     def void(threshold, turns):
-        return 'Void damage>{:d} for {:d} turns'.format(threshold, turns)
+        return 'Void damage >= {:d} for {:d} turns'.format(threshold, turns)
 
     @staticmethod
     def damage_reduction(source, percent=None, turns=None):
@@ -329,7 +329,7 @@ class Describe:
 
     @staticmethod
     def resolve(percent):
-        return 'Survive attacks with 1 HP when HP>{:d}%'.format(percent)
+        return 'Survive attacks with 1 HP when HP > {:d}%'.format(percent)
 
     @staticmethod
     def leadswap(turns):
@@ -395,7 +395,7 @@ class Describe:
     @staticmethod
     def turn_change(turn_counter, threshold=None):
         if threshold:
-            return 'Enemy turn counter change to {:d} when HP<{:d}%'.format(turn_counter, threshold)
+            return 'Enemy turn counter change to {:d} when HP <= {:d}%'.format(turn_counter, threshold)
         else:
             return 'Enemy turn counter change to {:d}'.format(turn_counter)
 
@@ -455,6 +455,15 @@ class ESAttack(pad_util.JsonDictEncodable):
 
 # Action
 class ESAction(pad_util.JsonDictEncodable):
+    def full_description(self):
+        if self.description == 'Enemy action':
+            return self.attack.description
+        else:
+            output = self.description
+            if self.attack:
+                output += ', {:s}'.format(self.attack.description)
+            return output
+
     def __init__(self, skill, effect='enemy_skill', description='Enemy action', attack=None):
         self.CATEGORY = 'ACTION'
         self.enemy_skill_id = es_id(skill)
@@ -465,15 +474,6 @@ class ESAction(pad_util.JsonDictEncodable):
         self.condition = None if ai(skill) is None or rnd(skill) is None \
             else ESCondition(ai(skill), rnd(skill), params(skill))
         self.attack = attack if attack is not None else ESAttack.new_instance(params(skill)[14])
-
-        desc_arr = []
-        if attack is not None:
-            if description != 'Enemy action':
-                desc_arr.append(description)
-            desc_arr.append(attack.description)
-        else:
-            desc_arr.append(description)
-        self.description = ' & '.join(desc_arr)
         # param 15 controls displaying sprites on screen, used by Gintama
 
 
@@ -597,7 +597,7 @@ class ESBindSkill(ESAction):
         super(ESBindSkill, self).__init__(
             skill,
             effect='skill_bind',
-            description=Describe.bind(self.min_turns, self.max_turns)
+            description=Describe.bind(self.min_turns, self.max_turns, target_type='active skills')
         )
 
 
@@ -793,18 +793,24 @@ class ESStorePower(ESEnrage):
 
 class ESAttackUp(ESEnrage):
     def __init__(self, skill):
-        if params(skill)[3] is None:
-            super(ESAttackUp, self).__init__(
-                skill,
-                multiplier=params(skill)[2],
-                turns=params(skill)[1]
-            )
-        else:
-            super(ESAttackUp, self).__init__(
-                skill,
-                multiplier=params(skill)[3],
-                turns=params(skill)[2]
-            )
+        # param[1] is turn cooldown according to skyo, i.e. enrage can only be used every X turns after it expires
+        self.turn_cooldown = params(skill)[1]
+        super(ESAttackUp, self).__init__(
+            skill,
+            multiplier=params(skill)[3],
+            turns=params(skill)[2]
+        )
+
+
+class ESAttackUpStatus(ESEnrage):
+    def __init__(self, skill):
+        super(ESAttackUpStatus, self).__init__(
+            skill,
+            multiplier=params(skill)[2],
+            turns=params(skill)[1]
+        )
+        if self.condition:
+            self.condition.description = 'after being affected by a status effect'
 
 
 class ESDebuff(ESAction):
@@ -1350,6 +1356,9 @@ class ESTurnChangeActive(ESAction):
 
 # Passive
 class ESPassive(pad_util.JsonDictEncodable):
+    def full_description(self):
+        return self.description
+
     def __init__(self, skill, effect, description):
         self.CATEGORY = 'PASSIVE'
         self.enemy_skill_id = es_id(skill)
@@ -1575,7 +1584,7 @@ BEHAVIOR_MAP = {
     15: ESAttackMultihit,
     16: ESInactivity,
     17: ESAttackUp,
-    18: ESAttackUp,
+    18: ESAttackUpStatus,
     19: ESAttackUp,
     20: ESStatusShield,
     39: ESDebuffMovetime,
