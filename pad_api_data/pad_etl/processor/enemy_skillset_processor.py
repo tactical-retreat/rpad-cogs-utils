@@ -87,7 +87,7 @@ class ProcessedSkillset(object):
         for x in self.enemycount_skill_groups:
             msg += '\n\nEnemies {}'.format(x.count)
             for y in x.skills:
-                msg += '\n'.format(dump_obj(y))
+                msg += '\n{}'.format(dump_obj(y))
 
         msg += '\n\nHP Groups:'
         for x in self.hp_skill_groups:
@@ -139,6 +139,10 @@ def loop_through(ctx: Context, behaviors):
         b = behaviors[idx]
         b_type = type(b)
 
+        if b_type == ESAttackUp:
+            pass
+            # TODO: is there something that needs to be done here (flag flipping?)
+
         if b is None or b_type == ESNone:
             idx += 1
             continue
@@ -153,11 +157,11 @@ def loop_through(ctx: Context, behaviors):
         if b_type == EnemySkillUnknown or issubclass(b_type, ESAction):
             cond = b.condition
             if cond:
-                # This check might be wrong? This is checking if all flags are unset, maybe just one needs to be unset.
                 if cond.hp_threshold and ctx.hp >= cond.hp_threshold:
                     idx += 1
                     continue
 
+                # This check might be wrong? This is checking if all flags are unset, maybe just one needs to be unset.
                 if cond.one_time:
                     if not ctx.onetime_flags & cond.one_time:
                         ctx.onetime_flags = ctx.onetime_flags | cond.one_time
@@ -199,7 +203,6 @@ def loop_through(ctx: Context, behaviors):
             continue
 
         if b_type == ESBranchHP:
-            take_branch = False
             if b.compare == '<':
                 take_branch = ctx.hp < b.branch_value
             else:
@@ -211,7 +214,6 @@ def loop_through(ctx: Context, behaviors):
             continue
 
         if b_type == ESBranchLevel:
-            take_branch = False
             if b.compare == '<':
                 take_branch = ctx.level < b.branch_value
             else:
@@ -239,11 +241,12 @@ def loop_through(ctx: Context, behaviors):
             continue
 
         if b_type == ESBranchCounter:
-            take_branch = False
             if b.compare == '<':
                 take_branch = ctx.counter < b.branch_value
+            elif b.compare == '=':
+                take_branch = ctx.counter == b.branch_value
             else:
-                take_branch = ctx.counter >= b.branch_value
+                take_branch = ctx.counter > b.branch_value
             if take_branch:
                 idx = b.target_round
             else:
@@ -274,58 +277,73 @@ def loop_through(ctx: Context, behaviors):
     return results
 
 
-def convert(enemy: MergedEnemy, level: int):
-    skillset = ProcessedSkillset()
-
-    # Behavior is 1-indexed, so stick a fake row in to start
-    behaviors = [None] + list(enemy.behavior)
-
+def info_from_behaviors(behaviors):
+    """Extract some static info from the behavior list and clean it up where necessary."""
+    base_abilities = []
     hp_checkpoints = set()
     hp_checkpoints.add(100)
     card_checkpoints = set()
+    has_enemy_remaining_branch = False
+
     for idx, es in enumerate(behaviors):
         # Extract the passives and null them out to simplify processing
         if type(es) in PASSIVE_MAP.values():
-            skillset.base_abilities.append(es)
+            base_abilities.append(es)
             behaviors[idx] = None
 
         # Find candidate branch HP values
         if type(es) == ESBranchHP:
             hp_checkpoints.add(es.branch_value)
-            if es.branch_value != 100:
-                hp_checkpoints.add(es.branch_value + 1)
-            if es.branch_value != 0:
-                hp_checkpoints.add(es.branch_value - 1)
+            hp_checkpoints.add(es.branch_value - 1)
 
         # Find candidate action HP values
         if hasattr(es, 'condition'):
             cond = es.condition
             if cond.hp_threshold:
                 hp_checkpoints.add(cond.hp_threshold)
-                if cond.hp_threshold != 100:
-                    hp_checkpoints.add(cond.hp_threshold + 1)
-                if cond.hp_threshold != 0:
-                    hp_checkpoints.add(cond.hp_threshold - 1)
+                hp_checkpoints.add(cond.hp_threshold - 1)
 
         if type(es) == ESBranchCard:
             card_checkpoints.update(es.branch_value)
 
-    ctx = Context(level)
-    last_ctx = ctx.clone()
+        if type(es) == ESBranchRemainingEnemies:
+            has_enemy_remaining_branch = True
+
+    return base_abilities, hp_checkpoints, card_checkpoints, has_enemy_remaining_branch
+
+
+def extract_preemptives(ctx: Context, behaviors):
+    original_ctx = ctx.clone()
 
     cur_loop = loop_through(ctx, behaviors)
     if not cur_loop:
         # Some monsters have no skillset at all
-        return skillset
+        return None, None
 
     if ctx.is_preemptive:
         # Save the current loop as preempt
-        skillset.preemptives = cur_loop
-        cur_loop = []
-        last_ctx = ctx.clone()
+        return ctx, cur_loop
     else:
         # Roll back the context.
-        ctx = last_ctx.clone()
+        return original_ctx, None
+
+def convert(enemy: MergedEnemy, level: int):
+    skillset = ProcessedSkillset()
+
+    # Behavior is 1-indexed, so stick a fake row in to start
+    behaviors = [None] + list(enemy.behavior)
+
+    base_abilities, hp_checkpoints, card_checkpoints, has_enemy_remaining_branch = info_from_behaviors(behaviors)
+    skillset.base_abilities = base_abilities
+
+    ctx = Context(level)
+    ctx, preemptives = extract_preemptives(ctx, behaviors)
+    if ctx is None:
+        # Some monsters have no skillset at all
+        return skillset
+
+    if preemptives is not None:
+        skillset.preemptives = preemptives
 
     # For the first 10 turns, compute actions at every HP checkpoint
     turn_data = []
@@ -343,10 +361,11 @@ def convert(enemy: MergedEnemy, level: int):
 
             if next_ctx is None:
                 # We need to flip flags, so arbitrarily pick the first ctx to roll over.
-                next_ctx = hp_ctx
+                next_ctx = hp_ctx.clone()
 
         turn_data.append(hp_data)
         ctx = next_ctx
+        ctx.turn += 1
 
     # Loop over every turn
     loop_start = None
@@ -361,14 +380,31 @@ def convert(enemy: MergedEnemy, level: int):
                 loop_found_idx = j_idx
                 break
 
+        if not loop_found_idx:
+            continue
+
+        # Now that we found a loop, confirm that it continues
+        loop_behavior = turn_data[i_idx:loop_found_idx]
+
+        for j_idx in range(loop_found_idx, len(turn_data), len(loop_behavior)):
+            # Check to make sure we don't run over the edge of the array
+            j_loop_end_idx = j_idx + len(loop_behavior)
+            if j_loop_end_idx > len(turn_data):
+                # We've overlapped the end of the array with no breaks, quit
+                break
+
+            comp_data = turn_data[j_idx:j_loop_end_idx]
+            if loop_behavior != comp_data:
+                # The loop didn't continue so this is a bad selection, keep going
+                loop_found_idx = None
+                break
+
         if loop_found_idx:
             # We found a loop, trim the rest of the moveset.
             turn_data = turn_data[:loop_found_idx]
             loop_start = i_idx
             loop_end = loop_found_idx
             break
-
-    # Need a processing loop in here to break HP conditions out from other actions
 
     loop_size = loop_end - loop_start
     if loop_size == 1 and loop_start > 0:
@@ -388,30 +424,31 @@ def convert(enemy: MergedEnemy, level: int):
         pass
 
     # Simulate enemies being defeated
-    default_enemy_action = loop_through(ctx, behaviors)
-    seen_skillsets = [default_enemy_action]
-    for ecount in range(6, 0, -1):
-        ctx.enemies = ecount
-        cur_loop = loop_through(ctx, behaviors)
+    if has_enemy_remaining_branch:
+        default_enemy_action = loop_through(ctx, behaviors)
+        seen_skillsets = [default_enemy_action]
+        for ecount in range(6, 0, -1):
+            ctx.enemies = ecount
+            cur_loop = loop_through(ctx, behaviors)
 
-        if cur_loop in seen_skillsets:
-            continue
+            if cur_loop in seen_skillsets:
+                continue
 
-        seen_skillsets.append(cur_loop)
+            seen_skillsets.append(cur_loop)
 
-        # Check for the first action being one-time. Kind of a hacky special case for loops.
-        follow_loop = loop_through(ctx, behaviors)
-        if follow_loop == cur_loop:
-            follow_loop = None
-        else:
-            seen_skillsets.append(follow_loop)
-        skillset.enemycount_skill_groups.append(EnemyCountSkillGroup(ecount, cur_loop, follow_loop))
+            # Check for the first action being one-time. Kind of a hacky special case for loops.
+            follow_loop = loop_through(ctx, behaviors)
+            if follow_loop == cur_loop:
+                follow_loop = None
+            else:
+                seen_skillsets.append(follow_loop)
+            skillset.enemycount_skill_groups.append(EnemyCountSkillGroup(ecount, cur_loop, follow_loop))
 
     # Simulate HP decreasing
     globally_seen_behavior = []
+    hp_ctx = ctx.clone()
     for checkpoint in sorted(hp_checkpoints, reverse=True):
         locally_seen_behavior = []
-        hp_ctx = ctx.clone()
         hp_ctx.hp = checkpoint
         cur_loop = loop_through(hp_ctx, behaviors)
         while cur_loop not in globally_seen_behavior and cur_loop not in locally_seen_behavior:
@@ -437,6 +474,8 @@ def clean_skillset(skillset: ProcessedSkillset):
     # First cleanup: items with a condition attached can show up in timed
     # groups and also in random HP buckets (generally the 100% one due to
     # earlier cleanups).
+    #
+    # TODO: is this still the case post-changes with ai/onetime flags?
     #
     # Extract the ones in the HP buckets to a unique set, then only remove
     # timed entries that match (to prevent removing things like, <50% in turn 1).
@@ -464,3 +503,8 @@ def clean_skillset(skillset: ProcessedSkillset):
                 break
         if not placed:
             skillset.hp_skill_groups.append(HpSkillGroup(hp_threshold, [es]))
+
+    # Iterate over every skillset group and remove now-empty ones
+    skillset.timed_skill_groups = [x for x in skillset.timed_skill_groups if x.skills]
+    skillset.enemycount_skill_groups = [x for x in skillset.enemycount_skill_groups if x.skills]
+    skillset.hp_skill_groups = [x for x in skillset.hp_skill_groups if x.skills]

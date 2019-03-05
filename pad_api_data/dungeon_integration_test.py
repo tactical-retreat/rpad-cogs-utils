@@ -57,7 +57,11 @@ def run_test(args):
         dungeon_id_to_wavedata[w.dungeon_id].add((w.floor_id, w.stage, w.monster_id, w.monster_level))
 
     dungeons = [
-        2707, # Amnel
+        # Amnel
+        2707,
+        # Ogres, Tyranos are good, valhalla is busted, i&i is close, nidhogg's magic before/after hp bullshit is
+        # impossible.
+        3607,
     ]
 
     for dungeon_id in dungeons:
@@ -85,7 +89,7 @@ def run_test(args):
             shutil.copy(new_file, golden_file)
             continue
 
-        if not filecmp.cmp(new_file, golden_file):
+        if not filecmp.cmp(new_file, golden_file, shallow=False):
             print('ERROR')
             print('golden file differs from new file for', file)
             print('ERROR')
