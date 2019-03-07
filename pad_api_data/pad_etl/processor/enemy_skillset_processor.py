@@ -163,6 +163,7 @@ def loop_through(ctx: Context, behaviors):
 
         if b_type == ESAttackUp or b_type == ESAttackUpStatus:
             if ctx.enraged is None:
+                # apply enrage or turn cooldown
                 if b.turn_cooldown is None:
                     ctx.enraged = b.turns
                 else:
@@ -171,8 +172,10 @@ def loop_through(ctx: Context, behaviors):
                     continue
             else:
                 if ctx.enraged == 0:
+                    # turn cooldown has expired, enrage
                     ctx.enraged = b.turns
                 else:
+                    # still enraged, do nothing
                     idx += 1
                     continue
 
@@ -291,6 +294,11 @@ def loop_through(ctx: Context, behaviors):
                 idx = b.target_round
             else:
                 idx += 1
+            continue
+
+        if b_type == ESBranchRemainingEnemies:
+            # TODO: not implemented correctly
+            idx += 1
             continue
 
 
