@@ -271,6 +271,11 @@ def loop_through(ctx: Context, behaviors):
                 idx += 1
             continue
 
+        if b_type == ESBranchRemainingEnemies:
+            # TODO: not implemented correctly
+            idx += 1
+            continue
+
 
         # if b_type == ESCountdown:
         #    if ctx.counter == 0:

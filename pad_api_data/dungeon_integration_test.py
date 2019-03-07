@@ -62,6 +62,8 @@ def run_test(args):
         # Ogres, Tyranos are good, valhalla is busted, i&i is close, nidhogg's magic before/after hp bullshit is
         # impossible.
         3607,
+        # Quetzal
+        3655
     ]
 
     for dungeon_id in dungeons:
