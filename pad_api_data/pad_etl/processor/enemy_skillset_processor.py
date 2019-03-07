@@ -63,6 +63,7 @@ class ProcessedSkillset(object):
         self.base_abilities = []  # List[SkillItem]
         self.preemptives = []  # List[SkillItem]
         self.timed_skill_groups = []  # List[StandardSkillGroup]
+        self.repeating_skill_groups = []  # List[StandardSkillGroup]
         self.enemycount_skill_groups = []  # List[StandardSkillGroup]
         self.hp_skill_groups = []  # List[StandardSkillGroup]
 
@@ -79,6 +80,14 @@ class ProcessedSkillset(object):
 
         msg += '\n\nTimed Groups:'
         for x in self.timed_skill_groups:
+            msg += '\n\nTurn {}'.format(x.turn)
+            if x.hp is not None and x.hp < 100:
+                msg += ' (HP <= {})'.format(x.hp)
+            for y in x.skills:
+                msg += '\n{}'.format(dump_obj(y))
+
+        msg += '\n\nRepeating Groups:'
+        for x in self.repeating_skill_groups:
             msg += '\n\nTurn {}'.format(x.turn)
             if x.hp is not None and x.hp < 100:
                 msg += ' (HP <= {})'.format(x.hp)
@@ -116,13 +125,23 @@ class Context(object):
         self.level = level
         self.enemies = 999
         self.cards = set()
-        self.enraged = 0
+        self.enraged = None
 
     def reset(self):
         self.is_preemptive = False
 
     def clone(self):
         return copy.deepcopy(self)
+
+    def turn_event(self):
+        self.turn += 1
+        if self.enraged is not None:
+            if self.enraged > 0:
+                # count down enraged turns
+                self.enraged -= 1
+            elif self.enraged < 0:
+                # count up enraged cooldown turns
+                self.enraged += 1
 
 
 def loop_through(ctx: Context, behaviors):
@@ -142,17 +161,20 @@ def loop_through(ctx: Context, behaviors):
         b = behaviors[idx]
         b_type = type(b)
 
-        if ctx.enraged > 0:
-            # count down enraged turns
-            ctx.enraged -= 1
         if b_type == ESAttackUp or b_type == ESAttackUpStatus:
-            if ctx.enraged > 0:
-                # skip this skill since already enraged
-                idx += 1
-                continue
+            if ctx.enraged is None:
+                if b.turn_cooldown is None:
+                    ctx.enraged = b.turns
+                else:
+                    ctx.enraged = -b.turn_cooldown + 1
+                    idx += 1
+                    continue
             else:
-                # update enraged turns
-                ctx.enraged = b.turns
+                if ctx.enraged == 0:
+                    ctx.enraged = b.turns
+                else:
+                    idx += 1
+                    continue
 
         if b is None or b_type == ESNone:
             idx += 1
@@ -182,7 +204,7 @@ def loop_through(ctx: Context, behaviors):
                         idx += 1
                         continue
 
-                if cond.ai == 100:
+                if cond.ai == 100 and b_type != ESDispel:
                     results.append(b)
                     return results
                 else:
@@ -252,12 +274,12 @@ def loop_through(ctx: Context, behaviors):
             continue
 
         if b_type == ESBranchCounter:
-            if b.compare == '<':
-                take_branch = ctx.counter < b.branch_value
-            elif b.compare == '=':
+            if b.compare == '=':
                 take_branch = ctx.counter == b.branch_value
-            else:
-                take_branch = ctx.counter > b.branch_value
+            elif b.compare == '<':
+                take_branch = ctx.counter <= b.branch_value
+            elif b.compare == '>':
+                take_branch = ctx.counter >= b.branch_value
             if take_branch:
                 idx = b.target_round
             else:
@@ -284,7 +306,6 @@ def loop_through(ctx: Context, behaviors):
 
     if iter_count == 1000:
         print('error, iter count exceeded 1000')
-
     return results
 
 
@@ -376,63 +397,79 @@ def convert(enemy: MergedEnemy, level: int):
 
         turn_data.append(hp_data)
         ctx = next_ctx
-        ctx.turn += 1
+        ctx.turn_event()
 
     # Loop over every turn
-    loop_start = None
-    loop_end = None
+    behavior_loops = []
     for i_idx, check_data in enumerate(turn_data):
         # Loop over every following turn. If the outer turn matches an inner turn moveset,
         # we found a loop.
-        loop_found_idx = None
-        for j_idx in range(i_idx + 1, len(turn_data)):
+        possible_loops = []
+        for j_idx in range(i_idx + 1, len(turn_data) // 2):
             comp_data = turn_data[j_idx]
             if check_data == comp_data:
-                loop_found_idx = j_idx
-                break
-
-        if not loop_found_idx:
+                # # do not include overlapping loops
+                # loop_overlap = False
+                # for comp_i, comp_j in behavior_loops:
+                #     if i_idx < comp_j:
+                #         loop_overlap = True
+                # if not loop_overlap:
+                possible_loops.append((i_idx, j_idx))
+        if len(possible_loops) == 0:
             continue
 
-        # Now that we found a loop, confirm that it continues
-        loop_behavior = turn_data[i_idx:loop_found_idx]
+        # Check all possible loops
+        for check_start, check_end in possible_loops.copy():
+            # Now that we found a loop, confirm that it continues
+            loop_behavior = turn_data[check_start:check_end]
 
-        for j_idx in range(loop_found_idx, len(turn_data), len(loop_behavior)):
-            # Check to make sure we don't run over the edge of the array
-            j_loop_end_idx = j_idx + len(loop_behavior)
-            if j_loop_end_idx > len(turn_data):
-                # We've overlapped the end of the array with no breaks, quit
-                break
+            for j_idx in range(check_end, len(turn_data), len(loop_behavior)):
+                # Check to make sure we don't run over the edge of the array
+                j_loop_end_idx = j_idx + len(loop_behavior)
+                if j_loop_end_idx > len(turn_data):
+                    # We've overlapped the end of the array with no breaks, quit
+                    break
 
-            comp_data = turn_data[j_idx:j_loop_end_idx]
-            if loop_behavior != comp_data:
-                # The loop didn't continue so this is a bad selection, keep going
-                loop_found_idx = None
-                break
+                comp_data = turn_data[j_idx:j_loop_end_idx]
+                if loop_behavior != comp_data:
+                    # The loop didn't continue so this is a bad selection, remove
+                    possible_loops.remove((check_start, check_end))
+                    break
 
-        if loop_found_idx:
-            # We found a loop, trim the rest of the moveset.
-            turn_data = turn_data[:loop_found_idx]
-            loop_start = i_idx
-            loop_end = loop_found_idx
-            break
+        if len(possible_loops) > 0:
+            behavior_loops.append(possible_loops[0])
 
-    loop_size = loop_end - loop_start
-    if loop_size == 1 and loop_start > 0:
-        # Since this isn't a multi-turn looping moveset, try to trim the earlier turns.
-        looping_behavior = turn_data[loop_start]
-        for idx in range(loop_start):
-            check_turn_data = turn_data[idx]
-            for hp, hp_behavior in looping_behavior.items():
-                if check_turn_data.get(hp, None) == hp_behavior:
-                    check_turn_data.pop(hp)
+    print(behavior_loops)
 
-            for hp, hp_behavior in check_turn_data.items():
-                skillset.timed_skill_groups.append(TimedSkillGroup(idx + 1, hp, hp_behavior))
+    # Process loops
+    looped_behavior = []
+    if len(behavior_loops) > 0:
+        loop_start, loop_end = behavior_loops[0]
+        loop_size = loop_end - loop_start
+        if loop_size == 1:
+            # Since this isn't a multi-turn looping moveset, try to trim the earlier turns.
+            looping_behavior = turn_data[loop_start]
+            for idx in range(loop_start):
+                check_turn_data = turn_data[idx]
+                for hp, hp_behavior in looping_behavior.items():
+                    if check_turn_data.get(hp, None) == hp_behavior:
+                        check_turn_data.pop(hp)
 
-    if loop_size > 1:
-        # TODO: for loop_size > 1, extract stable behaviors
-        pass
+                for hp, hp_behavior in check_turn_data.items():
+                    skillset.timed_skill_groups.append(TimedSkillGroup(idx + 1, hp, hp_behavior))
+                    looped_behavior.append((hp, hp_behavior))
+        else:
+            # exclude any behavior present on all turns of the loop
+            common_behaviors = [hp_b for hp_b in turn_data[loop_start].items()]
+            for idx in range(loop_start + 1, loop_end):
+                for hp_b in common_behaviors.copy():
+                    if hp_b not in turn_data[idx].items():
+                        common_behaviors.remove(hp_b)
+            for idx in range(loop_start, loop_end):
+                for hp, hp_behavior in turn_data[idx].items():
+                    if (hp, hp_behavior) not in common_behaviors:
+                        skillset.repeating_skill_groups.append(TimedSkillGroup(idx + 1, hp, hp_behavior))
+                        looped_behavior.append((hp, hp_behavior))
 
     # Simulate enemies being defeated
     if has_enemy_remaining_branch:
@@ -463,9 +500,11 @@ def convert(enemy: MergedEnemy, level: int):
         hp_ctx.hp = checkpoint
         cur_loop = loop_through(hp_ctx, behaviors)
         while cur_loop not in globally_seen_behavior and cur_loop not in locally_seen_behavior:
+            # exclude behavior already included in a repeat loop
+            if (checkpoint, cur_loop) not in looped_behavior:
+                skillset.hp_skill_groups.append(HpSkillGroup(checkpoint, cur_loop))
             globally_seen_behavior.append(cur_loop)
             locally_seen_behavior.append(cur_loop)
-            skillset.hp_skill_groups.append(HpSkillGroup(checkpoint, cur_loop))
             cur_loop = loop_through(hp_ctx, behaviors)
 
     clean_skillset(skillset)
@@ -505,6 +544,11 @@ def clean_skillset(skillset: ProcessedSkillset):
             if es in extracted:
                 timed_skills.skills.remove(es)
 
+    for repeating_skills in skillset.repeating_skill_groups:
+        for es in list(repeating_skills.skills):
+            if es in extracted:
+                repeating_skills.skills.remove(es)
+
     for es in extracted:
         hp_threshold = es.condition.hp_threshold
         placed = False
@@ -517,5 +561,6 @@ def clean_skillset(skillset: ProcessedSkillset):
 
     # Iterate over every skillset group and remove now-empty ones
     skillset.timed_skill_groups = [x for x in skillset.timed_skill_groups if x.skills]
+    skillset.repeating_skill_groups = [x for x in skillset.repeating_skill_groups if x.skills]
     skillset.enemycount_skill_groups = [x for x in skillset.enemycount_skill_groups if x.skills]
     skillset.hp_skill_groups = [x for x in skillset.hp_skill_groups if x.skills]
