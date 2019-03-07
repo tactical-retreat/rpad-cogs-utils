@@ -464,6 +464,9 @@ class ESAction(pad_util.JsonDictEncodable):
                 output += ', {:s}'.format(self.attack.description)
             return output
 
+    def __eq__(self, other):
+        return self.enemy_skill_id == other.enemy_skill_id
+
     def __init__(self, skill, effect='enemy_skill', description='Enemy action', attack=None):
         self.CATEGORY = 'ACTION'
         self.enemy_skill_id = es_id(skill)
