@@ -125,7 +125,9 @@ class Context(object):
         self.level = level
         self.enemies = 999
         self.cards = set()
+        # TODO: implement enemy status flags correctly
         self.enraged = None
+        self.damage_shield = 0
 
     def reset(self):
         self.is_preemptive = False
@@ -446,8 +448,6 @@ def convert(enemy: MergedEnemy, level: int):
 
         if len(possible_loops) > 0:
             behavior_loops.append(possible_loops[0])
-
-    print(behavior_loops)
 
     # Process loops
     looped_behavior = []
