@@ -26,6 +26,30 @@ def parse_args():
     return parser.parse_args()
 
 
+def process_card(card):
+    print('processing', card.card.name)
+    enemy_behavior = card.enemy_behavior
+    if not enemy_behavior:
+        return
+
+    levels = enemy_skillset_processor.extract_levels(enemy_behavior)
+    skill_listings = []
+    for level in sorted(levels):
+        skillset = enemy_skillset_processor.convert(enemy_behavior, level)
+        flattened = enemy_skillset_dump.flatten_skillset(level, skillset)
+        if not flattened.records:
+            continue
+        skill_listings.append(flattened)
+
+    if not skill_listings:
+        return
+
+    entry_info = enemy_skillset_dump.EntryInfo(
+        card.card.card_id, card.card.name, 'not yet populated')
+    summary = enemy_skillset_dump.EnemySummary(entry_info, skill_listings)
+    enemy_skillset_dump.dump_summary_to_file(summary, enemy_behavior)
+
+
 def run(args):
     raw_input_dir = os.path.join(args.input_dir, 'raw')
     db = database.Database('na', raw_input_dir)
@@ -33,27 +57,11 @@ def run(args):
     db.load_database(skip_skills=True, skip_bonus=True, skip_extra=True)
 
     for card in db.cards:
-        print('processing', card.card.name)
-        enemy_behavior = card.enemy_behavior
-        if not enemy_behavior:
-            continue
-
-        levels = enemy_skillset_processor.extract_levels(enemy_behavior)
-        skill_listings = []
-        for level in sorted(levels):
-            skillset = enemy_skillset_processor.convert(enemy_behavior, level)
-            flattened = enemy_skillset_dump.flatten_skillset(level, skillset)
-            if not flattened.records:
-                continue
-            skill_listings.append(flattened)
-
-        if not skill_listings:
-            continue
-
-        entry_info = enemy_skillset_dump.EntryInfo(
-            card.card.card_id, card.card.name, 'not yet populated')
-        summary = enemy_skillset_dump.EnemySummary(entry_info, skill_listings)
-        enemy_skillset_dump.dump_summary_to_file(summary, enemy_behavior)
+        try:
+            process_card(card)
+        except Exception as ex:
+            print('failed to process', card.card.name)
+            print(ex)
 
 
 if __name__ == '__main__':
