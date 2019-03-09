@@ -4,7 +4,7 @@ from collections import defaultdict
 
 from pad_etl.data import database
 from pad_etl.data import wave
-from pad_etl.processor import enemy_skillset_processor
+from pad_etl.processor import enemy_skillset_processor, enemy_skillset, enemy_skillset_dump
 
 fail_logger = logging.getLogger('processor_failures')
 fail_logger.disabled = True
@@ -81,16 +81,4 @@ for stage in sorted(stage_to_monsters.keys()):
         monster_id = monster_info[0]
         monster_level = monster_info[1]
         card = na_database.raw_card_by_id(monster_id)
-        enemy = na_database.enemy_by_id(monster_id)
-        if not enemy:
-            print('\nError! failed to find enemy data for', card.name, monster_id)
-            continue
-
-        print('\n', monster_id, '-', card.name, '@ level', monster_level, '\n')
-
-        # for idx, behavior in enumerate(enemy.behavior):
-        #     print(idx+1, enemy_skillset.dump_obj(behavior), '\n')
-        #     print(flush=True)
-
-        ss = enemy_skillset_processor.convert(enemy, monster_level)
-        print(ss.dump())
+        print(enemy_skillset_dump.load_summary_as_dump_text(card, monster_id, monster_level))
