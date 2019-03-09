@@ -20,7 +20,7 @@ def dump_obj(o):
 def simple_dump_obj(o):
     if isinstance(o, ESSkillSet):
         msg = 'SkillSet:'
-        msg += '\n\tCondition: {}'.format(json.dumps(o.condition.description)),
+        msg += '\n\tCondition: {}'.format(o.condition.description)
         for idx, behavior in enumerate(o.skill_list):
             msg += '\n\t[{}] {} -> {}\n\t{}'.format(
                 idx, type(behavior).__name__, behavior.name, behavior.description)
@@ -823,6 +823,7 @@ class ESAttackUp(ESEnrage):
 
 class ESAttackUpStatus(ESEnrage):
     def __init__(self, skill):
+        self.turn_cooldown = None
         super(ESAttackUpStatus, self).__init__(
             skill,
             multiplier=params(skill)[2],
@@ -1438,6 +1439,15 @@ class ESLogic(pad_util.JsonDictEncodable):
         self.enemy_skill_id = es_id(skill)
         self.effect = effect
         self.type = es_type(skill)
+
+    @property
+    def name(self):
+        return type(self).__name__
+
+    @property
+    def description(self):
+        return self.effect
+
 
 
 class ESNone(ESLogic):
