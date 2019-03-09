@@ -15,7 +15,7 @@ import shutil
 from collections import defaultdict
 
 from pad_etl.data import database
-from pad_etl.processor import enemy_skillset_processor
+from pad_etl.processor import enemy_skillset_dump
 from pad_etl.data import wave
 
 fail_logger = logging.getLogger('processor_failures')
@@ -76,11 +76,9 @@ def run_test(args):
                 monster_id = data[2]
                 monster_level = data[3]
                 card = db.raw_card_by_id(monster_id)
-                enemy = db.enemy_by_id(monster_id)
-                f.write('{} - {} @ level {}'.format(monster_id, card.name, monster_level))
-
-                ss = enemy_skillset_processor.convert(enemy, monster_level)
-                f.write('{}\n'.format(ss.dump()))
+                f.write('{} - {} @ level {}\n'.format(monster_id, card.name, monster_level))
+                f.write(enemy_skillset_dump.load_summary_as_dump_text(card, monster_id, monster_level))
+                f.write('\n\n')
 
 
     for file in os.listdir(new_output_dir):
@@ -100,3 +98,4 @@ def run_test(args):
 if __name__ == '__main__':
     args = parse_args()
     run_test(args)
+    print('done')
