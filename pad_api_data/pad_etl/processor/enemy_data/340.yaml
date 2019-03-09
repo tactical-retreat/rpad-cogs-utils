@@ -1,0 +1,65 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 340
+monster_name_en: Wooden Dark Tiamat
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Change Random 6 to Poison
+  desc_jp: Change Random 6 to Poison
+  name_en: Poison Breath
+  name_jp: Poison Breath
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage (2 hits, 50% each)
+  desc_jp: Deal 100% damage (2 hits, 50% each)
+  name_en: Hell Breath
+  name_jp: Hell Breath
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 150% damage (2 hits, 75% each)
+  desc_jp: Deal 150% damage (2 hits, 75% each)
+  name_en: God Gaia Breath
+  name_jp: God Gaia Breath
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESPoisonChangeRandom -> Poison Breath
+# Condition: One-time use
+# Change Random 6 to Poison
+# [3] ESBranchHP -> ESBranchHP
+# branch
+# [4] ESAttackMultihit -> God Gaia Breath
+# Condition: When < 50% hp
+# Enemy action
+# [5] ESAttackMultihit -> Hell Breath
+# Condition: None
+# Enemy action

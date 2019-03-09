@@ -1,0 +1,64 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 793
+monster_name_en: Cyclops
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Player -75% HP
+  desc_jp: Player -75% HP
+  name_en: Heavy Blow
+  name_jp: Heavy Blow
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 150% damage
+  desc_jp: Deal 150% damage
+  name_en: Mega Impact
+  name_jp: Mega Impact
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Player -75% HP
+  desc_jp: Player -75% HP
+  name_en: Heavy Blow
+  name_jp: Heavy Blow
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESBranchHP -> ESBranchHP
+# branch
+# [4] ESAttackMultihit -> Mega Impact
+# Condition: 70% chance
+# Enemy action
+# [5] ESGravity -> Heavy Blow
+# Condition: 50% chance
+# Player -75% HP

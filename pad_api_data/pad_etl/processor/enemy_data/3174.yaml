@@ -1,0 +1,52 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3174
+monster_name_en: Abyssal Dragon, Apocalypse X
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 1 turns
+  desc_jp: Increase damage to 200% for the next 1 turns
+  name_en: Super Berserk
+  name_jp: Super Berserk
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 60% damage (3 hits, 20% each)
+  desc_jp: Deal 60% damage (3 hits, 20% each)
+  name_en: Catastrophe
+  name_jp: Catastrophe
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESAttackUp -> Super Berserk
+# Condition: One-time use
+# Increase damage to 200% for the next 1 turns
+# [2] ESAttackMultihit -> Catastrophe
+# Condition: None
+# Enemy action

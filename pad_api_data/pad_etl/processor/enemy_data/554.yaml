@@ -1,0 +1,41 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 554
+monster_name_en: Mid Dark Ninja
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 360% damage (6 hits, 60% each)
+  desc_jp: Deal 360% damage (6 hits, 60% each)
+  name_en: Crimson Claw
+  name_jp: Crimson Claw
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESAttackMultihit -> Crimson Claw
+# Condition: None
+# Enemy action

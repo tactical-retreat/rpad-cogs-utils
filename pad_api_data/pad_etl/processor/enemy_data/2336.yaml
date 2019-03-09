@@ -1,0 +1,75 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2336
+monster_name_en: Wood Armor Dragon, Becrux
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb Wood damage for 5 turns
+  desc_jp: Absorb Wood damage for 5 turns
+  name_en: Plant Core
+  name_jp: Plant Core
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy ally recover 45% hp
+  desc_jp: Enemy ally recover 45% hp
+  name_en: Follow Repair
+  name_jp: Follow Repair
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESAbsorbAttribute -> Plant Core
+# Condition: None
+# Absorb Wood damage for 5 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESRecoverEnemyAlly -> Follow Repair
+# Condition: When enemy ally is killed
+# Enemy ally recover 45% hp
+# [9] ESAttackMultihit -> Limit Burst
+# Condition: When < 10% hp
+# Enemy action
+# [10] ESSkillDelay -> Absorption
+# Condition: When < 80% hp , one-time use
+# Delay active skills by 1 turns
+# [11] ESSkyfall -> Green Energy
+# Condition: 20% chance
+# Wood skyfall +20% for 99 turns
+# [12] ESRowSpawnMulti -> Leaf Wind
+# Condition: 40% chance
+# Change 5th row to Wood orbs
+# [13] ESAttackMultihit -> Aero Blast
+# Condition: 40% chance
+# Enemy action
+# [14] ESEndPath -> ESEndPath
+# end_turn

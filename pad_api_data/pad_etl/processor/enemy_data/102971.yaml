@@ -1,0 +1,194 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 102971
+monster_name_en: Alt. Indigo Ocean Water Dragon Caller, Sumire
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Dragon by 50%
+  desc_jp: Reduce damage from Dragon by 50%
+  name_en: Tsuba Kae Sumi Dragon Halved
+  name_jp: Tsuba Kae Sumi Dragon Halved
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Fire, Wood, Light, Dark skyfall +100%
+    for 3 turns
+  desc_jp: Voids status ailments for 999 turns + Fire, Wood, Light, Dark skyfall +100%
+    for 3 turns
+  name_en: Water Dragon's Armor + Vanishing Lifespring-Blue Life
+  name_jp: Water Dragon's Armor + Vanishing Lifespring-Blue Life
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Heal to Poison, Deal 300% damage
+  desc_jp: Change Heal to Poison, Deal 300% damage
+  name_en: Current
+  name_jp: Current
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 2
+  desc_jp: ''
+  name_en: Turn 2
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Heal to Poison, Deal 3000% damage
+  desc_jp: Change Heal to Poison, Deal 3000% damage
+  name_en: Godspring Current
+  name_jp: Godspring Current
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 3
+  desc_jp: ''
+  name_en: Turn 3
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Heal to Poison, Deal 3000% damage
+  desc_jp: Change Heal to Poison, Deal 3000% damage
+  name_en: Godspring Current
+  name_jp: Godspring Current
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 4
+  desc_jp: ''
+  name_en: Turn 4
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb combo <= 6 damage for 5 turns + Absorb damage >= 5000000 damage
+    for 5 turns
+  desc_jp: Absorb combo <= 6 damage for 5 turns + Absorb damage >= 5000000 damage
+    for 5 turns
+  name_en: Obelisk of Ice + Forget-me-not Magatama
+  name_jp: Obelisk of Ice + Forget-me-not Magatama
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 1500% damage (5 hits, 300% each)
+  desc_jp: Deal 1500% damage (5 hits, 300% each)
+  name_en: Indigo Beam Zero-Wave
+  name_jp: Indigo Beam Zero-Wave
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 89
+  desc_jp: ''
+  name_en: HP <= 89
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Lock 8 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 280% damage
+  desc_jp: Lock 8 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 280% damage
+  name_en: Skyward Aqua Blade
+  name_jp: Skyward Aqua Blade
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 89
+  desc_jp: ''
+  name_en: HP <= 89
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 320% damage (2 hits, 160% each)
+  desc_jp: Deal 320% damage (2 hits, 160% each)
+  name_en: Scale Blade
+  name_jp: Scale Blade
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 20
+  desc_jp: ''
+  name_en: HP <= 20
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 1500% damage (5 hits, 300% each)
+  desc_jp: Deal 1500% damage (5 hits, 300% each)
+  name_en: Indigo Beam Zero-Wave
+  name_jp: Indigo Beam Zero-Wave
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESStatusShield -> Water Dragon's Armor
+# 	Voids status ailments for 999 turns
+# 	[1] ESSkyfall -> Vanishing Lifespring-Blue Life
+# 	Fire, Wood, Light, Dark skyfall +100% for 3 turns
+# [3] ESAttackMultihit -> Indigo Beam Zero-Wave
+# Condition: When < 20% hp
+# Enemy action
+# [4] ESOrbChangeAttack -> Current
+# Condition: One-time use
+# Change Heal to Poison
+# [5] ESDebuffMovetime -> Vortex Cascade
+# Condition: One-time use
+# Movetime -2s for 3 turns
+# [6] ESOrbChangeAttack -> Godspring Current
+# Condition: One-time use
+# Change Heal to Poison
+# [7] ESRecoverPlayer -> Hidden Waters
+# Condition: One-time use
+# Player recover 100% hp
+# [8] ESOrbChangeAttack -> Godspring Current
+# Condition: One-time use
+# Change Heal to Poison
+# [9] ESAttackMultihit -> Scale Blade
+# Condition: One-time use
+# Enemy action
+# [10] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESAbsorbCombo -> Obelisk of Ice
+# 	Absorb combo <= 6 damage for 5 turns
+# 	[1] ESAbsorbThreshold -> Forget-me-not Magatama
+# 	Absorb damage >= 5000000 damage for 5 turns
+# [11] ESBranchHP -> ESBranchHP
+# branch
+# [12] ESBranchFlag -> ESBranchFlag
+# branch
+# [13] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [14] ESOrbLock -> Skyward Aqua Blade
+# Condition: None
+# Lock 8 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] ESAttackMultihit -> Scale Blade
+# Condition: None
+# Enemy action
+# [17] ESEndPath -> ESEndPath
+# end_turn
+# [18] ESAttackMultihit -> Indigo Beam Zero-Wave
+# Condition: None
+# Enemy action
+# [19] ESEndPath -> ESEndPath
+# end_turn
+# [20] ESTypeResist -> Tsuba Kae Sumi Dragon Halved
+# Reduce damage from Dragon by 50%

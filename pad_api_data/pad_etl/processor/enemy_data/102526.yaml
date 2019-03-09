@@ -1,0 +1,230 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 102526
+monster_name_en: Alt. Awoken Machine Hera
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Light by 50%
+  desc_jp: Reduce damage from Light by 50%
+  name_en: '*****'
+  name_jp: '*****'
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 81%
+  desc_jp: Survive attacks with 1 HP when HP > 81%
+  name_en: Machine Zeus Hera Resolve
+  name_jp: Machine Zeus Hera Resolve
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Absorb Light, Dark damage for 2 turns + Voids status ailments for 999 turns
+  desc_jp: Absorb Light, Dark damage for 2 turns + Voids status ailments for 999 turns
+  name_en: Singularity + Machinery Body
+  name_jp: Singularity + Machinery Body
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Absorb Light, Dark damage for 2 turns + Voids status ailments for 999 turns
+  desc_jp: Absorb Light, Dark damage for 2 turns + Voids status ailments for 999 turns
+  name_en: Singularity + Machinery Body
+  name_jp: Singularity + Machinery Body
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Absorb Light, Dark damage for 2 turns + Voids status ailments for 999 turns
+  desc_jp: Absorb Light, Dark damage for 2 turns + Voids status ailments for 999 turns
+  name_en: Singularity + Machinery Body
+  name_jp: Singularity + Machinery Body
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Absorb Light, Dark damage for 2 turns + Voids status ailments for 999 turns
+  desc_jp: Absorb Light, Dark damage for 2 turns + Voids status ailments for 999 turns
+  name_en: Singularity + Machinery Body
+  name_jp: Singularity + Machinery Body
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Absorb Light, Dark damage for 2 turns + Voids status ailments for 999 turns
+  desc_jp: Absorb Light, Dark damage for 2 turns + Voids status ailments for 999 turns
+  name_en: Singularity + Machinery Body
+  name_jp: Singularity + Machinery Body
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind awoken skills for 2 turns + Spawn random 12 Jammer orbs
+  desc_jp: Bind awoken skills for 2 turns + Spawn random 12 Jammer orbs
+  name_en: Limit Signal + Rust Generate
+  name_jp: Limit Signal + Rust Generate
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 150%~240% damage (5~8 hits, 30% each)
+  desc_jp: Deal 150%~240% damage (5~8 hits, 30% each)
+  name_en: Myriad Swords Wings
+  name_jp: Myriad Swords Wings
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 50% hp
+  desc_jp: Enemy recover 50% hp
+  name_en: Half Repair
+  name_jp: Half Repair
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 20
+  desc_jp: ''
+  name_en: HP <= 20
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Player -1000% HP
+  desc_jp: Player -1000% HP
+  name_en: Dark Railgun
+  name_jp: Dark Railgun
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: 20% chance
+# 	[0] ESAbsorbAttribute -> Singularity
+# 	Absorb Light, Dark damage for 2 turns
+# 	[1] ESStatusShield -> Machinery Body
+# 	Voids status ailments for 999 turns
+# [5] SkillSet:
+# 	Condition: 20% chance
+# 	[0] ESAbsorbAttribute -> Singularity
+# 	Absorb Light, Dark damage for 2 turns
+# 	[1] ESStatusShield -> Machinery Body
+# 	Voids status ailments for 999 turns
+# [6] SkillSet:
+# 	Condition: 20% chance
+# 	[0] ESAbsorbAttribute -> Singularity
+# 	Absorb Light, Dark damage for 2 turns
+# 	[1] ESStatusShield -> Machinery Body
+# 	Voids status ailments for 999 turns
+# [7] SkillSet:
+# 	Condition: 20% chance
+# 	[0] ESAbsorbAttribute -> Singularity
+# 	Absorb Light, Dark damage for 2 turns
+# 	[1] ESStatusShield -> Machinery Body
+# 	Voids status ailments for 999 turns
+# [8] SkillSet:
+# 	Condition: 20% chance
+# 	[0] ESAbsorbAttribute -> Singularity
+# 	Absorb Light, Dark damage for 2 turns
+# 	[1] ESStatusShield -> Machinery Body
+# 	Voids status ailments for 999 turns
+# [9] ESEndPath -> ESEndPath
+# end_turn
+# [10] ESGravity -> Dark Railgun
+# Condition: When < 20% hp
+# Player -1000% HP
+# [11] ESBranchHP -> ESBranchHP
+# branch
+# [12] ESBranchFlag -> ESBranchFlag
+# branch
+# [13] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [14] ESSkillDelay -> Black Weapon
+# Condition: 33% chance
+# Delay active skills by 3 turns
+# [15] ESOrbLock -> Black Weapon
+# Condition: 50% chance
+# Lock 8 random Fire, Water, Wood, Light, Dark, Heal, Jammer orbs
+# [16] ESRandomSpawn -> Black Weapon
+# Condition: When fire, water, wood, light, dark, heal, jammer, poison orbs are on the board
+# Spawn random 3 Mortal Poison orbs
+# [17] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [18] SkillSet:
+# 	Condition: 20% chance
+# 	[0] ESAbsorbAttribute -> Elemental Absorber
+# 	Absorb Fire damage for 2 turns
+# 	[1] ESOrbChangeAttack -> Flare Combat
+# 	Change Random to Fire
+# [19] SkillSet:
+# 	Condition: 20% chance
+# 	[0] ESAbsorbAttribute -> Elemental Absorber
+# 	Absorb Water damage for 2 turns
+# 	[1] ESOrbChangeAttack -> Aqua Combat
+# 	Change Random to Water
+# [20] SkillSet:
+# 	Condition: 20% chance
+# 	[0] ESAbsorbAttribute -> Elemental Absorber
+# 	Absorb Wood damage for 2 turns
+# 	[1] ESOrbChangeAttack -> Earth Combat
+# 	Change Random to Wood
+# [21] SkillSet:
+# 	Condition: 20% chance
+# 	[0] ESAbsorbAttribute -> Elemental Absorber
+# 	Absorb Light damage for 2 turns
+# 	[1] ESOrbChangeAttack -> Light Combat
+# 	Change Random to Light
+# [22] SkillSet:
+# 	Condition: 20% chance
+# 	[0] ESAbsorbAttribute -> Elemental Absorber
+# 	Absorb Dark damage for 2 turns
+# 	[1] ESOrbChangeAttack -> Dark Combat
+# 	Change Random to Dark
+# [23] ESEndPath -> ESEndPath
+# end_turn
+# [24] ESBranchHP -> ESBranchHP
+# branch
+# [25] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESBindAwoken -> Limit Signal
+# 	Bind awoken skills for 2 turns
+# 	[1] ESRandomSpawn -> Rust Generate
+# 	Spawn random 12 Jammer orbs
+# [26] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESBindRandom -> Numb Signal
+# 	Bind 4 random cards for 3 turns
+# 	[1] ESAttackUp -> Power Steel
+# 	Increase damage to 200% for the next 1 turns
+# [27] ESAttackMultihit -> Myriad Swords Wings
+# Condition: None
+# Enemy action
+# [28] ESBranchFlag -> ESBranchFlag
+# branch
+# [29] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [30] ESRecoverEnemy -> Half Repair
+# Condition: None
+# Enemy recover 50% hp
+# [31] ESAttributeResist -> *****
+# Reduce damage from Light by 50%
+# [32] ESResolve -> Machine Zeus Hera Resolve
+# Survive attacks with 1 HP when HP > 81%

@@ -1,0 +1,111 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2740
+monster_name_en: Reincarnated Torrential Fenrir Knight, Kamui
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Bind active skills for 5 turns + Movetime -1s for 5 turns
+  desc_jp: Bind active skills for 5 turns + Movetime -1s for 5 turns
+  name_en: Fenrir Knight's Soul + Ice Axe
+  name_jp: Fenrir Knight's Soul + Ice Axe
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 50% damage
+  desc_jp: Deal 50% damage
+  name_en: Instant Strike
+  name_jp: Instant Strike
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 2
+  desc_jp: ''
+  name_en: Turn 2
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage (2 hits, 50% each)
+  desc_jp: Deal 100% damage (2 hits, 50% each)
+  name_en: Heavy Strike
+  name_jp: Heavy Strike
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 3
+  desc_jp: ''
+  name_en: Turn 3
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 150% damage (3 hits, 50% each)
+  desc_jp: Deal 150% damage (3 hits, 50% each)
+  name_en: Roaring Strike
+  name_jp: Roaring Strike
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 4
+  desc_jp: ''
+  name_en: Turn 4
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 200% damage (4 hits, 50% each)
+  desc_jp: Deal 200% damage (4 hits, 50% each)
+  name_en: Slicing Strike
+  name_jp: Slicing Strike
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 800% damage (4 hits, 200% each)
+  desc_jp: Deal 800% damage (4 hits, 200% each)
+  name_en: Destroying Strike
+  name_jp: Destroying Strike
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESBindSkill -> Fenrir Knight's Soul
+# 	Bind active skills for 5 turns
+# 	[1] ESDebuffMovetime -> Ice Axe
+# 	Movetime -1s for 5 turns
+# [3] ESAttackMultihit -> Instant Strike
+# Condition: One-time use
+# Enemy action
+# [4] ESAttackMultihit -> Heavy Strike
+# Condition: One-time use
+# Enemy action
+# [5] ESAttackMultihit -> Roaring Strike
+# Condition: One-time use
+# Enemy action
+# [6] ESAttackMultihit -> Slicing Strike
+# Condition: One-time use
+# Enemy action
+# [7] ESAttackMultihit -> Destroying Strike
+# Condition: None
+# Enemy action

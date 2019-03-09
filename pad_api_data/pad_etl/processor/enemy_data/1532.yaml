@@ -1,0 +1,142 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1532
+monster_name_en: Awoken Zeus Mercury
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 3
+############################################################
+!SkillRecordListing
+level: 3
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  name_en: Protection of the Gods
+  name_jp: Protection of the Gods
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Water skyfall +25% for 99 turns
+  desc_jp: Water skyfall +25% for 99 turns
+  name_en: The Nectar of Welcome Rains
+  name_jp: The Nectar of Welcome Rains
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Water, Deal 100% damage
+  desc_jp: Change Random to Water, Deal 100% damage
+  name_en: Crystal Bullet
+  name_jp: Crystal Bullet
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 74
+  desc_jp: ''
+  name_en: HP <= 74
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Water, Deal 100% damage
+  desc_jp: Change Random to Water, Deal 100% damage
+  name_en: Crystal Bullet
+  name_jp: Crystal Bullet
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 75
+  desc_jp: ''
+  name_en: HP <= 75
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 3 subs for 1~2 turns, Deal 75% damage
+  desc_jp: Bind 3 subs for 1~2 turns, Deal 75% damage
+  name_en: Deucalion Flood
+  name_jp: Deucalion Flood
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb combo <= 5 damage for 1 turns
+  desc_jp: Absorb combo <= 5 damage for 1 turns
+  name_en: Deep Aquarius
+  name_jp: Deep Aquarius
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 175% damage (5 hits, 35% each)
+  desc_jp: Deal 175% damage (5 hits, 35% each)
+  name_en: Galaxy Swarm
+  name_jp: Galaxy Swarm
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 175% damage (5 hits, 35% each)
+  desc_jp: Deal 175% damage (5 hits, 35% each)
+  name_en: Galaxy Swarm
+  name_jp: Galaxy Swarm
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESStatusShield -> Protection of the Gods
+# Condition: None
+# Voids status ailments for 999 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchFlag -> ESBranchFlag
+# branch
+# [9] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [10] ESSkyfall -> The Nectar of Welcome Rains
+# Condition: None
+# Water skyfall +25% for 99 turns
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESAbsorbCombo -> Deep Aquarius
+# Condition: When < 50% hp , one-time use
+# Absorb combo <= 5 damage for 1 turns
+# [13] ESAttackMultihit -> Galaxy Swarm
+# Condition: When < 50% hp
+# Enemy action
+# [14] ESBindAttack -> Deucalion Flood
+# Condition: 25% chance when < 75% hp
+# Bind 3 subs for 1~2 turns
+# [15] ESOrbChangeAttack -> Crystal Bullet
+# Condition: None
+# Change Random to Water

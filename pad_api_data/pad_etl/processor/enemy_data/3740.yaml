@@ -1,0 +1,195 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3740
+monster_name_en: "Placid Boneclad Dragonbound, Herm\xE9-Ku"
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Spawn random 13 Poison orbs + Lock
+    13 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
+    orbs
+  desc_jp: Voids status ailments for 999 turns + Spawn random 13 Poison orbs + Lock
+    13 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
+    orbs
+  name_en: You're not going anywhere! + Have a taste of true fear! + World Grudge
+  name_jp: You're not going anywhere! + Have a taste of true fear! + World Grudge
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Poison to Mortal Poison, Deal 200% damage
+  desc_jp: Change Poison to Mortal Poison, Deal 200% damage
+  name_en: Agonizing Sacrifice
+  name_jp: Agonizing Sacrifice
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 2
+  desc_jp: ''
+  name_en: Turn 2
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb Fire damage for 3 turns + Change Random to Jammer
+  desc_jp: Absorb Fire damage for 3 turns + Change Random to Jammer
+  name_en: Desperation + Acid Breath
+  name_jp: Desperation + Acid Breath
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 1st column to Water orbs, Deal 130% damage
+  desc_jp: Change 1st column to Water orbs, Deal 130% damage
+  name_en: Blue Dragon Liquid
+  name_jp: Blue Dragon Liquid
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Poison skyfall +10% for 10 turns
+  desc_jp: Poison skyfall +10% for 10 turns
+  name_en: Corpse Dragon's Curse
+  name_jp: Corpse Dragon's Curse
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 150% damage (3 hits, 50% each)
+  desc_jp: Deal 150% damage (3 hits, 50% each)
+  name_en: Abyssal Pain
+  name_jp: Abyssal Pain
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 14
+  desc_jp: ''
+  name_en: HP <= 14
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Blind random 13 orbs for 13 turns, Deal 100% damage
+  desc_jp: Blind random 13 orbs for 13 turns, Deal 100% damage
+  name_en: Accursed Eclipse
+  name_jp: Accursed Eclipse
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 14
+  desc_jp: ''
+  name_en: HP <= 14
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind awoken skills for 10 turns + Change Random to Mortal Poison
+  desc_jp: Bind awoken skills for 10 turns + Change Random to Mortal Poison
+  name_en: Virulent Sorcery + Deadly Poison
+  name_jp: Virulent Sorcery + Deadly Poison
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESStatusShield -> You're not going anywhere!
+# 	Voids status ailments for 999 turns
+# 	[1] ESRandomSpawn -> Have a taste of true fear!
+# 	Spawn random 13 Poison orbs
+# 	[2] ESOrbLock -> World Grudge
+# 	Lock 13 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] ESBranchFlag -> ESBranchFlag
+# branch
+# [8] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [9] ESOrbChangeAttack -> Agonizing Sacrifice
+# Condition: None
+# Change Poison to Mortal Poison
+# [10] SkillSet:
+# 	Condition: None
+# 	[0] ESRecoverPlayer -> A Reward For Your Agony
+# 	Player recover 100% hp
+# 	[1] ESBindAwoken -> Ominous Sorcery
+# 	Bind awoken skills for 1 turns
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESAbsorbAttribute -> Desperation
+# 	Absorb Fire damage for 3 turns
+# 	[1] ESOrbChangeAttack -> Acid Breath
+# 	Change Random to Jammer
+# [13] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESAbsorbAttribute -> Desperation
+# 	Absorb Water damage for 3 turns
+# 	[1] ESOrbChangeAttack -> Acid Breath
+# 	Change Random to Jammer
+# [14] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESAbsorbAttribute -> Desperation
+# 	Absorb Wood damage for 3 turns
+# 	[1] ESOrbChangeAttack -> Acid Breath
+# 	Change Random to Jammer
+# [15] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESAbsorbAttribute -> Desperation
+# 	Absorb Light damage for 3 turns
+# 	[1] ESOrbChangeAttack -> Acid Breath
+# 	Change Random to Jammer
+# [16] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESAbsorbAttribute -> Desperation
+# 	Absorb Dark damage for 3 turns
+# 	[1] ESOrbChangeAttack -> Acid Breath
+# 	Change Random to Jammer
+# [17] ESColumnSpawnMulti -> Blue Dragon Liquid
+# Condition: 40% chance
+# Change 1st column to Water orbs
+# [18] ESSkyfall -> Corpse Dragon's Curse
+# Condition: 20% chance
+# Poison skyfall +10% for 10 turns
+# [19] ESAttackMultihit -> Abyssal Pain
+# Condition: 40% chance
+# Enemy action
+# [20] ESEndPath -> ESEndPath
+# end_turn
+# [21] ESBranchFlag -> ESBranchFlag
+# branch
+# [22] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [23] ESBlindStickyRandom -> Accursed Eclipse
+# Condition: None
+# Blind random 13 orbs for 13 turns
+# [24] ESEndPath -> ESEndPath
+# end_turn
+# [25] SkillSet:
+# 	Condition: None
+# 	[0] ESBindAwoken -> Virulent Sorcery
+# 	Bind awoken skills for 10 turns
+# 	[1] ESOrbChangeAttack -> Deadly Poison
+# 	Change Random to Mortal Poison
+# [26] ESEndPath -> ESEndPath
+# end_turn

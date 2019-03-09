@@ -1,0 +1,210 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2892
+monster_name_en: Enlightened Meditating God, Sandalphon
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Dark by 50%
+  desc_jp: Reduce damage from Dark by 50%
+  name_en: Dark damage halved
+  name_jp: Dark damage halved
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Random 30 orbs change every 1.0s for 1 turns + Voids status ailments for
+    999 turns + Absorb combo <= 5 damage for 999 turns
+  desc_jp: Random 30 orbs change every 1.0s for 1 turns + Voids status ailments for
+    999 turns + Absorb combo <= 5 damage for 999 turns
+  name_en: Eyes of Truth + Wings of Infinity + Cage of Eternity
+  name_jp: Eyes of Truth + Wings of Infinity + Cage of Eternity
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Void damage >= 10000000 for 999 turns + Change Dark, Heal to Jammer, Poison
+  desc_jp: Void damage >= 10000000 for 999 turns + Change Dark, Heal to Jammer, Poison
+  name_en: Keshuon Ring + Painful Retribution
+  name_jp: Keshuon Ring + Painful Retribution
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Void damage >= 10000000 for 999 turns + Reduce damage from all sources
+    by 50% for 10 turns + Change Dark, Heal to Jammer, Poison
+  desc_jp: Void damage >= 10000000 for 999 turns + Reduce damage from all sources
+    by 50% for 10 turns + Change Dark, Heal to Jammer, Poison
+  name_en: Keshuon Ring + Angelus + Painful Retribution
+  name_jp: Keshuon Ring + Angelus + Painful Retribution
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 2
+  desc_jp: ''
+  name_en: Turn 2
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind awoken skills for 2 turns, Deal 270% damage
+  desc_jp: Bind awoken skills for 2 turns, Deal 270% damage
+  name_en: Unyielding Chains
+  name_jp: Unyielding Chains
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 300% damage (5 hits, 60% each)
+  desc_jp: Deal 300% damage (5 hits, 60% each)
+  name_en: Barches Voltro
+  name_jp: Barches Voltro
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 19
+  desc_jp: ''
+  name_en: HP <= 19
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb Fire damage for 10 turns
+  desc_jp: Absorb Fire damage for 10 turns
+  name_en: Margoshie
+  name_jp: Margoshie
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Absorb Water damage for 10 turns
+  desc_jp: Absorb Water damage for 10 turns
+  name_en: Margoshie
+  name_jp: Margoshie
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Absorb Wood damage for 10 turns
+  desc_jp: Absorb Wood damage for 10 turns
+  name_en: Margoshie
+  name_jp: Margoshie
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Absorb Light damage for 10 turns
+  desc_jp: Absorb Light damage for 10 turns
+  name_en: Margoshie
+  name_jp: Margoshie
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Absorb Dark damage for 10 turns
+  desc_jp: Absorb Dark damage for 10 turns
+  name_en: Margoshie
+  name_jp: Margoshie
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 5
+  desc_jp: ''
+  name_en: HP <= 5
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 10000% damage (10 hits, 1000% each)
+  desc_jp: Deal 10000% damage (10 hits, 1000% each)
+  name_en: Seth Velkshell
+  name_jp: Seth Velkshell
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESSpinnersRandom -> Eyes of Truth
+# 	Random 30 orbs change every 1.0s for 1 turns
+# 	[1] ESStatusShield -> Wings of Infinity
+# 	Voids status ailments for 999 turns
+# 	[2] ESAbsorbCombo -> Cage of Eternity
+# 	Absorb combo <= 5 damage for 999 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] ESBranchFlag -> ESBranchFlag
+# branch
+# [8] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [9] SkillSet:
+# 	Condition: When < 50% hp
+# 	[0] ESVoidShield -> Keshuon Ring
+# 	Void damage >= 10000000 for 999 turns
+# 	[1] ESDamageShield -> Angelus
+# 	Reduce damage from all sources by 50% for 10 turns
+# 	[2] ESOrbChangeAttackBits -> Painful Retribution
+# 	Change Dark, Heal to Jammer, Poison
+# [10] SkillSet:
+# 	Condition: None
+# 	[0] ESVoidShield -> Keshuon Ring
+# 	Void damage >= 10000000 for 999 turns
+# 	[1] ESOrbChangeAttackBits -> Painful Retribution
+# 	Change Dark, Heal to Jammer, Poison
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESBindAwoken -> Unyielding Chains
+# Condition: One-time use
+# Bind awoken skills for 2 turns
+# [13] ESAttackMultihit -> Barches Voltro
+# Condition: None
+# Enemy action
+# [14] ESEndPath -> ESEndPath
+# end_turn
+# [15] ESBranchFlag -> ESBranchFlag
+# branch
+# [16] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [17] ESAbsorbAttribute -> Margoshie
+# Condition: 20% chance
+# Absorb Fire damage for 10 turns
+# [18] ESAbsorbAttribute -> Margoshie
+# Condition: 20% chance
+# Absorb Water damage for 10 turns
+# [19] ESAbsorbAttribute -> Margoshie
+# Condition: 20% chance
+# Absorb Wood damage for 10 turns
+# [20] ESAbsorbAttribute -> Margoshie
+# Condition: 20% chance
+# Absorb Light damage for 10 turns
+# [21] ESAbsorbAttribute -> Margoshie
+# Condition: 20% chance
+# Absorb Dark damage for 10 turns
+# [22] ESEndPath -> ESEndPath
+# end_turn
+# [23] ESAttackMultihit -> Seth Velkshell
+# Condition: When < 5% hp
+# Enemy action
+# [24] ESBranchFlag -> ESBranchFlag
+# branch
+# [25] ESEndPath -> ESEndPath
+# end_turn
+# [26] ESAttributeResist -> Dark damage halved
+# Reduce damage from Dark by 50%

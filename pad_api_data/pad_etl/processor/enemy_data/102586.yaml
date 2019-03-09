@@ -1,0 +1,181 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 102586
+monster_name_en: Alt. Wind Keeper
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Enemy turn counter change to 1 when HP <= 50%
+  desc_jp: Enemy turn counter change to 1 when HP <= 50%
+  name_en: Enemy's next turn changed
+  name_jp: Enemy's next turn changed
+  record_type_name: PASSIVE
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Enemy turn counter change to 1 when HP <= 50%
+  desc_jp: Enemy turn counter change to 1 when HP <= 50%
+  name_en: Enemy's next turn changed
+  name_jp: Enemy's next turn changed
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 75% for 10 turns
+  desc_jp: Reduce damage from all sources by 75% for 10 turns
+  name_en: Metal Shield
+  name_jp: Metal Shield
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Blind random 5 orbs for 2 turns, Deal 140% damage
+  desc_jp: Blind random 5 orbs for 2 turns, Deal 140% damage
+  name_en: Exhaust Hit
+  name_jp: Exhaust Hit
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Delay active skills by 2 turns + Spawn random 7 Poison orbs
+  desc_jp: Delay active skills by 2 turns + Spawn random 7 Poison orbs
+  name_en: Warning + Seven Smog
+  name_jp: Warning + Seven Smog
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
+    orbs, Deal 160% damage
+  desc_jp: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
+    orbs, Deal 160% damage
+  name_en: All Alert
+  name_jp: All Alert
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 2 random subs for 3 turns + Bind active skills for 5 turns
+  desc_jp: Bind 2 random subs for 3 turns + Bind active skills for 5 turns
+  name_en: Capture Net + Hold Wind
+  name_jp: Capture Net + Hold Wind
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Poison skyfall +15% for 10 turns
+  desc_jp: Poison skyfall +15% for 10 turns
+  name_en: Acid Rain
+  name_jp: Acid Rain
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 300% damage (6 hits, 50% each)
+  desc_jp: Deal 300% damage (6 hits, 50% each)
+  name_en: Killing Code
+  name_jp: Killing Code
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESDamageShield -> Metal Shield
+# Condition: None
+# Reduce damage from all sources by 75% for 10 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESBlindStickyRandom -> Exhaust Hit
+# Condition: 50% chance
+# Blind random 5 orbs for 2 turns
+# [10] SkillSet:
+# 	Condition: 20% chance
+# 	[0] ESSkillDelay -> Warning
+# 	Delay active skills by 2 turns
+# 	[1] ESRandomSpawn -> Seven Smog
+# 	Spawn random 7 Poison orbs
+# [11] ESOrbLock -> All Alert
+# Condition: 30% chance
+# Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [12] ESEndPath -> ESEndPath
+# end_turn
+# [13] ESBranchFlag -> ESBranchFlag
+# branch
+# [14] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [15] SkillSet:
+# 	Condition: None
+# 	[0] ESBindRandomSub -> Capture Net
+# 	Bind 2 random subs for 3 turns
+# 	[1] ESBindSkill -> Hold Wind
+# 	Bind active skills for 5 turns
+# [16] ESBranchHP -> ESBranchHP
+# branch
+# [17] ESBlindStickyRandom -> Exhaust Hit
+# Condition: 50% chance
+# Blind random 5 orbs for 2 turns
+# [18] SkillSet:
+# 	Condition: 20% chance
+# 	[0] ESSkillDelay -> Warning
+# 	Delay active skills by 2 turns
+# 	[1] ESRandomSpawn -> Seven Smog
+# 	Spawn random 7 Poison orbs
+# [19] ESOrbLock -> All Alert
+# Condition: 30% chance
+# Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [20] ESEndPath -> ESEndPath
+# end_turn
+# [21] ESBranchFlag -> ESBranchFlag
+# branch
+# [22] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [23] ESSkyfall -> Acid Rain
+# Condition: None
+# Poison skyfall +15% for 10 turns
+# [24] ESAttackMultihit -> Killing Code
+# Condition: None
+# Enemy action
+# [25] ESEndPath -> ESEndPath
+# end_turn
+# [26] ESTurnChangePassive -> Enemy's next turn changed
+# Enemy turn counter change to 1 when HP <= 50%

@@ -1,0 +1,164 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1253
+monster_name_en: Blazing Dragonfire Angel, Uriel
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Do nothing + Reduce damage from all sources by 50% for 10 turns
+  desc_jp: Do nothing + Reduce damage from all sources by 50% for 10 turns
+  name_en: 5 Blazing Spheres appear + Holy Talisman protect me!
+  name_jp: 5 Blazing Spheres appear + Holy Talisman protect me!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing + Change all orbs to Fire, Water, Wood, Light, Dark
+  desc_jp: Do nothing + Change all orbs to Fire, Water, Wood, Light, Dark
+  name_en: Uses 4 Blazing Spheres + Divine Explosion!
+  name_jp: Uses 4 Blazing Spheres + Divine Explosion!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESInactivity -> 5 Blazing Spheres appear
+# 	Do nothing
+# 	[1] ESDamageShield -> Holy Talisman protect me!
+# 	Reduce damage from all sources by 50% for 10 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] ESBranchFlag -> ESBranchFlag
+# branch
+# [8] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [9] ESBindAttribute -> Saintly Chains of Water Admonition
+# Condition: None
+# Bind Water cards for 10 turns
+# [10] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESInactivity -> Uses 3 Blazing Spheres
+# 	Do nothing
+# 	[1] ESRowSpawnMulti -> Saint Blast!
+# 	Change 2nd, 4th row to Fire, Light orbs
+# [11] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESInactivity -> Uses 2 Blazing Spheres
+# 	Do nothing
+# 	[1] ESColumnSpawnMulti -> Holy Pillar!
+# 	Change 3rd column to Light orbs, 4th column to Fire orbs
+# [12] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESInactivity -> Uses 1 Blazing Sphere
+# 	Do nothing
+# 	[1] ESOrbChangeAttack -> Photon Flare!
+# 	Change Random to Jammer
+# [13] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESInactivity -> Uses 1 Blazing Sphere
+# 	Do nothing
+# 	[1] ESRowSpawnMulti -> Photon Slash!
+# 	Change 3rd row to Fire, Light orbs
+# [14] ESBranchFlag -> ESBranchFlag
+# branch
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] SkillSet:
+# 	Condition: None
+# 	[0] ESGravity -> Heat Stab
+# 	Player -99% HP
+# 	[1] ESSkillDelay -> Skill Melt
+# 	Delay active skills by 1~3 turns
+# [17] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [18] SkillSet:
+# 	Condition: None
+# 	[0] ESRowSpawnMulti -> Glory...
+# 	Change 2nd row to Fire orbs
+# 	[1] ESColumnSpawnMulti -> Cross!
+# 	Change 2nd column to Light orbs
+# [19] ESBranchFlag -> ESBranchFlag
+# branch
+# [20] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [21] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESInactivity -> Uses 5 Blazing Spheres
+# 	Do nothing
+# 	[1] ESBoardChangeAttackBits -> Sacred Explosion!
+# 	Change all orbs to Fire, Water, Wood, Light, Dark, Heal
+# [22] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESInactivity -> Uses 4 Blazing Spheres
+# 	Do nothing
+# 	[1] ESBoardChangeAttackBits -> Divine Explosion!
+# 	Change all orbs to Fire, Water, Wood, Light, Dark
+# [23] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESInactivity -> Uses 3 Blazing Spheres
+# 	Do nothing
+# 	[1] ESBoardChangeAttackBits -> Saint Explosion!
+# 	Change all orbs to Fire, Water, Wood, Light
+# [24] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESInactivity -> Uses 2 Blazing Spheres
+# 	Do nothing
+# 	[1] ESBoardChangeAttackBits -> Holy Explosion!
+# 	Change all orbs to Fire, Wood, Light
+# [25] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESInactivity -> Uses 1 Blazing Sphere
+# 	Do nothing
+# 	[1] ESBoardChangeAttackBits -> Photon Explosion!
+# 	Change all orbs to Fire, Light
+# [26] ESBoardChangeAttackBits -> Explosion
+# Condition: None
+# Change all orbs to Fire
+# [27] ESBranchFlag -> ESBranchFlag
+# branch
+# [28] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [29] SkillSet:
+# 	Condition: None
+# 	[0] ESRowSpawnMulti -> Glory...
+# 	Change 2nd row to Fire orbs
+# 	[1] ESColumnSpawnMulti -> Cross!
+# 	Change 2nd column to Light orbs
+# [30] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [31] SkillSet:
+# 	Condition: None
+# 	[0] ESGravity -> Heat Stab
+# 	Player -99% HP
+# 	[1] ESSkillDelay -> Skill Melt
+# 	Delay active skills by 1~3 turns
+# [32] SkillSet:
+# 	Condition: On death
+# 	[0] ESSkyfall -> Holy Flame Oracle
+# 	Fire skyfall +15% for 5 turns

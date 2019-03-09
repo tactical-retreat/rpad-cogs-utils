@@ -1,0 +1,75 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 101172
+monster_name_en: Alt. Puchirose
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Change 2nd row to Water orbs, Deal 30% damage
+  desc_jp: Change 2nd row to Water orbs, Deal 30% damage
+  name_en: Snake Aqua
+  name_jp: Snake Aqua
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Delay active skills by 1 turns
+  desc_jp: Delay active skills by 1 turns
+  name_en: Flower Snake's Gaze
+  name_jp: Flower Snake's Gaze
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 99
+  desc_jp: ''
+  name_en: HP <= 99
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Heal, Deal 70% damage
+  desc_jp: Change Random to Heal, Deal 70% damage
+  name_en: Flower Tail
+  name_jp: Flower Tail
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESRowSpawnMulti -> Snake Aqua
+# Condition: None
+# Change 2nd row to Water orbs
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] ESOrbChangeAttack -> Flower Tail
+# Condition: None
+# Change Random to Heal
+# [8] ESEndPath -> ESEndPath
+# end_turn
+# [9] ESSkillDelay -> Flower Snake's Gaze
+# Condition: None
+# Delay active skills by 1 turns
+# [10] ESEndPath -> ESEndPath
+# end_turn

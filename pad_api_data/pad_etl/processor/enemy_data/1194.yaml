@@ -1,0 +1,102 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1194
+monster_name_en: Thunder Horn Master, Fuma Kotaro
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Bind awoken skills for 3 turns + Bind 1 both leaders for 3 turns
+  desc_jp: Bind awoken skills for 3 turns + Bind 1 both leaders for 3 turns
+  name_en: 'Who?! + Ninja Flash: Thunderbind'
+  name_jp: 'Who?! + Ninja Flash: Thunderbind'
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids status ailments for 2 turns + Reduce damage from all sources by 50%
+    for 2 turns
+  desc_jp: Voids status ailments for 2 turns + Reduce damage from all sources by 50%
+    for 2 turns
+  name_en: I won't let you do that! + Now is the time for endurance
+  name_jp: I won't let you do that! + Now is the time for endurance
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 3
+  desc_jp: ''
+  name_en: Turn 3
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 500% for the next 1 turns
+  desc_jp: Increase damage to 500% for the next 1 turns
+  name_en: The Purpose of Physical Training
+  name_jp: The Purpose of Physical Training
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 84% damage (4 hits, 21% each)
+  desc_jp: Deal 84% damage (4 hits, 21% each)
+  name_en: Thunderblade Dominance
+  name_jp: Thunderblade Dominance
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] SkillSet:
+# 	Condition: None
+# 	[0] ESBindAwoken -> Who?!
+# 	Bind awoken skills for 3 turns
+# 	[1] ESBindTarget -> Ninja Flash: Thunderbind
+# 	Bind 1 both leaders for 3 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchFlag -> ESBranchFlag
+# branch
+# [9] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [10] SkillSet:
+# 	Condition: None
+# 	[0] ESStatusShield -> I won't let you do that!
+# 	Voids status ailments for 2 turns
+# 	[1] ESDamageShield -> Now is the time for endurance
+# 	Reduce damage from all sources by 50% for 2 turns
+# [11] ESAttackUp -> The Purpose of Physical Training
+# Condition: One-time use
+# Increase damage to 500% for the next 1 turns
+# [12] ESAttackMultihit -> Thunderblade Dominance
+# Condition: None
+# Enemy action
+# [13] ESEndPath -> ESEndPath
+# end_turn

@@ -1,0 +1,99 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 104963
+monster_name_en: "\u3058\u3093\u3081\u3093\u72AC"
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Spawn random 6 Heal orbs
+  desc_jp: Spawn random 6 Heal orbs
+  name_en: Spoil it!
+  name_jp: Spoil it!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 110% damage
+  desc_jp: Deal 110% damage
+  name_en: Grrrrr!
+  name_jp: Grrrrr!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Random to Fire, Deal 90% damage
+  desc_jp: Change Random to Fire, Deal 90% damage
+  name_en: It's hot! It's HOOOT!!
+  name_jp: It's hot! It's HOOOT!!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 14
+  desc_jp: ''
+  name_en: HP <= 14
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 180% damage (3 hits, 60% each)
+  desc_jp: Deal 180% damage (3 hits, 60% each)
+  name_en: Creepy Superbite
+  name_jp: Creepy Superbite
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESRandomSpawn -> Spoil it!
+# Condition: When fire, water, wood, light, dark, jammer, poison, mortal poison orbs are on the board
+# Spawn random 6 Heal orbs
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
+# branch
+# [10] ESAttackMultihit -> Grrrrr!
+# Condition: 40% chance
+# Enemy action
+# [11] ESOrbChangeAttack -> It's hot! It's HOOOT!!
+# Condition: 40% chance
+# Change Random to Fire
+# [12] ESEndPath -> ESEndPath
+# end_turn
+# [13] ESBranchFlag -> ESBranchFlag
+# branch
+# [14] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [15] ESGravity -> Damn!
+# Condition: None
+# Player -99% HP
+# [16] ESEndPath -> ESEndPath
+# end_turn
+# [17] ESAttackMultihit -> Creepy Superbite
+# Condition: None
+# Enemy action
+# [18] ESEndPath -> ESEndPath
+# end_turn

@@ -1,0 +1,97 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2620
+monster_name_en: Conqueror of the Universe, Emperor Zarkon
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Delay active skills by 2~4 turns
+  desc_jp: Voids status ailments for 999 turns + Delay active skills by 2~4 turns
+  name_en: 'You''re a fool to bring Voltron here. + I know better than anyone
+
+    the power of Voltron.'
+  name_jp: 'You''re a fool to bring Voltron here. + I know better than anyone
+
+    the power of Voltron.'
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 2
+  desc_jp: ''
+  name_en: Turn 2
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 150% for the next 999 turns
+  desc_jp: Increase damage to 150% for the next 999 turns
+  name_en: No, it will only make me more powerful.
+  name_jp: No, it will only make me more powerful.
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 2 turns
+  desc_jp: Reduce damage from all sources by 50% for 2 turns
+  name_en: Black Bayard, Shield Form
+  name_jp: Black Bayard, Shield Form
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 160% damage (2 hits, 80% each)
+  desc_jp: Deal 160% damage (2 hits, 80% each)
+  name_en: Apex Glaive
+  name_jp: Apex Glaive
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Bind 1 random for 1 turns, Deal 140% damage
+  desc_jp: Bind 1 random for 1 turns, Deal 140% damage
+  name_en: Black Bayard, Whip Form
+  name_jp: Black Bayard, Whip Form
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESStatusShield -> You're a fool to bring Voltron here.
+# 	Voids status ailments for 999 turns
+# 	[1] ESSkillDelay -> I know better than anyone
+# the power of Voltron.
+# 	Delay active skills by 2~4 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESAttackUp -> No, it will only make me more powerful.
+# Condition: When < 50% hp , one-time use
+# Increase damage to 150% for the next 999 turns
+# [7] ESDamageShield -> Black Bayard, Shield Form
+# Condition: 30% chance
+# Reduce damage from all sources by 50% for 2 turns
+# [8] ESAttackMultihit -> Apex Glaive
+# Condition: 35% chance
+# Enemy action
+# [9] ESBindAttack -> Black Bayard, Whip Form
+# Condition: 35% chance
+# Bind 1 random for 1 turns
+# [10] ESEndPath -> ESEndPath
+# end_turn

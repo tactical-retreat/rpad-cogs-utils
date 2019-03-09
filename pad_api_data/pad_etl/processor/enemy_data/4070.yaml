@@ -1,0 +1,73 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4070
+monster_name_en: Candle Knight, Paran
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 2 turns
+  desc_jp: Reduce damage from all sources by 50% for 2 turns
+  name_en: Wax Shield
+  name_jp: Wax Shield
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 2
+  desc_jp: ''
+  name_en: Turn 2
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Random 1 orbs change every 1.0s for 1 turns, Deal 100% damage
+  desc_jp: Random 1 orbs change every 1.0s for 1 turns, Deal 100% damage
+  name_en: Fervor Flame
+  name_jp: Fervor Flame
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 3 Fire orbs, Deal 100% damage
+  desc_jp: Spawn random 3 Fire orbs, Deal 100% damage
+  name_en: Candle Sword
+  name_jp: Candle Sword
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESDamageShield -> Wax Shield
+# Condition: One-time use
+# Reduce damage from all sources by 50% for 2 turns
+# [4] ESSpinnersRandom -> Fervor Flame
+# Condition: One-time use
+# Random 1 orbs change every 1.0s for 1 turns
+# [5] ESRandomSpawn -> Candle Sword
+# Condition: When water, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board
+# Spawn random 3 Fire orbs
+# [6] ESEndPath -> ESEndPath
+# end_turn

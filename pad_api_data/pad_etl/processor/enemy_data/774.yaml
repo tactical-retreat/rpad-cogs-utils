@@ -1,0 +1,54 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 774
+monster_name_en: Omega Wood Skydragon, Horai
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 40% damage
+  desc_jp: Deal 40% damage
+  name_en: Preemptive
+  name_jp: Preemptive
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESAttackPreemptive -> Skydragon Flight
+# Condition: None
+# Enemy action
+# [2] ESBranchHP -> ESBranchHP
+# branch
+# [3] ESAttackUp -> Imperial Wrath
+# Condition: None
+# Increase damage to 200% for the next 999 turns
+# [4] ESAttackMultihit -> Breath of the Red Sky
+# Condition: None
+# Enemy action
+# [5] ESNone -> ESNone
+# None
+# [6] ESNone -> ESNone
+# None
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESAttackMultihit -> Breath of the Wood Sky
+# Condition: None
+# Enemy action

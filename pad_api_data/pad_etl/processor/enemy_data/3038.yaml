@@ -1,0 +1,211 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3038
+monster_name_en: Shishio Makoto
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Do nothing + Do nothing
+  desc_jp: Do nothing + Do nothing
+  name_en: 'Neither of us has any reason
+
+    to hold back. + There must be a winner!!'
+  name_jp: 'Neither of us has any reason
+
+    to hold back. + There must be a winner!!'
+  record_type_name: PREEMPT
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Change 1st, 6th column to Fire orbs
+  desc_jp: Voids status ailments for 999 turns + Change 1st, 6th column to Fire orbs
+  name_en: 'Neither of us has any reason
+
+    to hold back. + There must be a winner!!'
+  name_jp: 'Neither of us has any reason
+
+    to hold back. + There must be a winner!!'
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 3 Fire orbs, Deal 100% damage
+  desc_jp: Spawn random 3 Fire orbs, Deal 100% damage
+  name_en: The First Secret Blow, "Homura Dama"!!
+  name_jp: The First Secret Blow, "Homura Dama"!!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 2
+  desc_jp: ''
+  name_en: Turn 2
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 3 Fire orbs + Change 3rd row to Fire orbs
+  desc_jp: Spawn random 3 Fire orbs + Change 3rd row to Fire orbs
+  name_en: Shaaaah!! + Shaaah!!
+  name_jp: Shaaaah!! + Shaaah!!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  name_en: Hyohh!!!
+  name_jp: Hyohh!!!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind active skills for 1 turns + Reduce damage from all sources by 30%
+    for 2 turns
+  desc_jp: Bind active skills for 1 turns + Reduce damage from all sources by 30%
+    for 2 turns
+  name_en: In this world, the strong live... + ...and the weak die.
+  name_jp: In this world, the strong live... + ...and the weak die.
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Fire, Deal 180% damage
+  desc_jp: Change Random to Fire, Deal 180% damage
+  name_en: The Second Secret, "Guren Kaina"!!
+  name_jp: The Second Secret, "Guren Kaina"!!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 140%~210% damage (2~3 hits, 70% each)
+  desc_jp: Deal 140%~210% damage (2~3 hits, 70% each)
+  name_en: Hyohh!!!
+  name_jp: Hyohh!!!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 150% damage (3 hits, 50% each)
+  desc_jp: Deal 150% damage (3 hits, 50% each)
+  name_en: One way or another, you will fall!
+  name_jp: One way or another, you will fall!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESBranchLevel -> ESBranchLevel
+# branch
+# [5] SkillSet:
+# 	Condition: None
+# 	[0] ESInactivity -> Neither of us has any reason
+# to hold back.
+# 	Do nothing
+# 	[1] ESInactivity -> There must be a winner!!
+# 	Do nothing
+# [6] SkillSet:
+# 	Condition: None
+# 	[0] ESStatusShield -> Neither of us has any reason
+# to hold back.
+# 	Voids status ailments for 999 turns
+# 	[1] ESColumnSpawnMulti -> There must be a winner!!
+# 	Change 1st, 6th column to Fire orbs
+# [7] ESBranchLevel -> ESBranchLevel
+# branch
+# [8] ESEndPath -> ESEndPath
+# end_turn
+# [9] ESBranchFlag -> ESBranchFlag
+# branch
+# [10] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [11] ESRandomSpawn -> The First Secret Blow, "Homura Dama"!!
+# Condition: When water, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board
+# Spawn random 3 Fire orbs
+# [12] ESBranchFlag -> ESBranchFlag
+# branch
+# [13] ESBranchHP -> ESBranchHP
+# branch
+# [14] ESBranchFlag -> ESBranchFlag
+# branch
+# [15] ESBranchHP -> ESBranchHP
+# branch
+# [16] ESAttackMultihit -> One way or another, you will fall!
+# Condition: When < 50% hp
+# Enemy action
+# [17] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESRandomSpawn -> Shaaaah!!
+# 	Spawn random 3 Fire orbs
+# 	[1] ESRowSpawnMulti -> Shaaah!!
+# 	Change 3rd row to Fire orbs
+# [18] ESAttackMultihit -> Hyohh!!!
+# Condition: None
+# Enemy action
+# [19] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [20] SkillSet:
+# 	Condition: None
+# 	[0] ESBindSkill -> In this world, the strong live...
+# 	Bind active skills for 1 turns
+# 	[1] ESDamageShield -> ...and the weak die.
+# 	Reduce damage from all sources by 30% for 2 turns
+# [21] ESEndPath -> ESEndPath
+# end_turn
+# [22] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [23] ESOrbChangeAttack -> The Second Secret, "Guren Kaina"!!
+# Condition: None
+# Change Random to Fire
+# [24] ESAttackMultihit -> Hyohh!!!
+# Condition: None
+# Enemy action
+# [25] SkillSet:
+# 	Condition: On death
+# 	[0] ESInactivity -> Feh! You disappoint me.
+# 	Do nothing

@@ -1,0 +1,84 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2075
+monster_name_en: Awoken Meimei
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Wood, Light, Dark by 30%
+  desc_jp: Reduce damage from Wood, Light, Dark by 30%
+  name_en: Passive - Awoken MeiMei
+  name_jp: Passive - Awoken MeiMei
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Player recover 100% hp
+  desc_jp: Player recover 100% hp
+  name_en: Huhu, welcome!
+  name_jp: Huhu, welcome!
+  record_type_name: PREEMPT
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESRecoverPlayer -> Huhu, welcome!
+# Condition: None
+# Player recover 100% hp
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchFlag -> ESBranchFlag
+# branch
+# [7] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [8] ESBoardChangeAttackFlat -> Northern Seven-Star Formation
+# Condition: None
+# Change all orbs to Wood, Light, Dark
+# [9] ESEndPath -> ESEndPath
+# end_turn
+# [10] ESBranchFlag -> ESBranchFlag
+# branch
+# [11] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [12] ESRowSpawnMulti -> Holy Water - Star Drop
+# Condition: None
+# Change 1st row to Heal orbs
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESBranchFlag -> ESBranchFlag
+# branch
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] ESAttackMultihit -> Blade Dance
+# Condition: None
+# Enemy action
+# [17] ESEndPath -> ESEndPath
+# end_turn
+# [18] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [19] SkillSet:
+# 	Condition: None
+# 	[0] ESSkillDelay -> Here I go!
+# 	Delay active skills by 1 turns
+# 	[1] ESBoardChangeAttackFlat -> Seven Star Formation - Genbu
+# 	Change all orbs to Wood, Light, Dark
+# [20] ESEndPath -> ESEndPath
+# end_turn
+# [21] ESAttributeResist -> Passive - Awoken MeiMei
+# Reduce damage from Wood, Light, Dark by 30%

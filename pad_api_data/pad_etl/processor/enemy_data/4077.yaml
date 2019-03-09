@@ -1,0 +1,131 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4077
+monster_name_en: Scion of the Flame, Kyo Kusanagi
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Jammer skyfall +15% for 3 turns
+  desc_jp: Jammer skyfall +15% for 3 turns
+  name_en: Let's go!
+  name_jp: Let's go!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 24
+  desc_jp: ''
+  name_en: HP <= 24
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 2nd row to Fire orbs, 3rd row to Fire orbs, 4th row to Fire orbs,
+    Deal 100% damage
+  desc_jp: Change 2nd row to Fire orbs, 3rd row to Fire orbs, 4th row to Fire orbs,
+    Deal 100% damage
+  name_en: 'Ura 108 Shiki: Orochinagi'
+  name_jp: 'Ura 108 Shiki: Orochinagi'
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 24
+  desc_jp: ''
+  name_en: HP <= 24
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 150% for the next 1 turns
+  desc_jp: Increase damage to 150% for the next 1 turns
+  name_en: Haaaa...
+  name_jp: Haaaa...
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESBranchCard -> ESBranchCard
+# branch
+# [7] ESBranchCard -> ESBranchCard
+# branch
+# [8] ESSkyfall -> Let's go!
+# Condition: None
+# Jammer skyfall +15% for 3 turns
+# [9] ESSkyfall -> The flames are calling you!
+# Condition: None
+# Jammer skyfall +15% for 3 turns
+# [10] ESSkyfall -> Shall we fight, Benimaru?
+# Condition: None
+# Jammer skyfall +15% for 3 turns
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESBranchHP -> ESBranchHP
+# branch
+# [13] ESBranchFlag -> ESBranchFlag
+# branch
+# [14] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [15] ESSetCounter -> ESSetCounter
+# set_counter
+# [16] SkillSet:
+# 	Condition: 33% chance
+# 	[0] ESRowSpawnMulti -> 114 Shiki: Aragami
+# 	Change 2nd row to Fire orbs
+# 	[1] ESColumnSpawnMulti -> 128 Shiki: Konokizu
+# 	Change 4th column to Fire orbs
+# [17] SkillSet:
+# 	Condition: 50% chance
+# 	[0] ESRowSpawnMulti -> 114 Shiki: Aragami
+# 	Change 2nd row to Fire orbs
+# 	[1] ESRowSpawnMulti -> 127 Shiki: Yanosabi
+# 	Change 3rd row to Fire orbs
+# [18] SkillSet:
+# 	Condition: None
+# 	[0] ESRowSpawnMulti -> 114 Shiki: Aragami
+# 	Change 2nd row to Fire orbs
+# 	[1] ESAttackMultihit -> 125 Shiki: Nanase
+# 	Enemy action
+# [19] ESEndPath -> ESEndPath
+# end_turn
+# [20] ESBranchCounter -> ESBranchCounter
+# branch
+# [21] ESSetCounter -> ESSetCounter
+# set_counter
+# [22] ESAttackMultihit -> R.E.D. Kick
+# Condition: 50% chance
+# Enemy action
+# [23] ESAttackMultihit -> 75 Shiki: Kai
+# Condition: None
+# Enemy action
+# [24] ESEndPath -> ESEndPath
+# end_turn
+# [25] ESAttackUp -> Haaaa...
+# Condition: One-time use
+# Increase damage to 150% for the next 1 turns
+# [26] ESRowSpawnMulti -> Ura 108 Shiki: Orochinagi
+# Condition: None
+# Change 2nd row to Fire orbs, 3rd row to Fire orbs, 4th row to Fire orbs
+# [27] ESEndPath -> ESEndPath
+# end_turn
+# [28] SkillSet:
+# 	Condition: On death
+# 	[0] ESInactivity -> Aaaaaaaaah!
+# 	Do nothing

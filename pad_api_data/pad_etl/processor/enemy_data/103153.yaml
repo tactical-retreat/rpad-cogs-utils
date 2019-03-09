@@ -1,0 +1,125 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 103153
+monster_name_en: Alt. Azure Spring Dragon Goddess, Kuramitsuha
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Delay active skills by 2~3 turns + Jammer skyfall +20% for 15 turns
+  desc_jp: Delay active skills by 2~3 turns + Jammer skyfall +20% for 15 turns
+  name_en: Let us head into the darkness... + Mist of Hidden Sorrow
+  name_jp: Let us head into the darkness... + Mist of Hidden Sorrow
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb damage >= 800000 damage for 10 turns
+  desc_jp: Absorb damage >= 800000 damage for 10 turns
+  name_en: Thousand-Year Imprisonment
+  name_jp: Thousand-Year Imprisonment
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Blind orbs in specific positions for 1 turns, Deal 600% damage
+  desc_jp: Blind orbs in specific positions for 1 turns, Deal 600% damage
+  name_en: Stirring the Eternal Grudge
+  name_jp: Stirring the Eternal Grudge
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESSkillDelay -> Let us head into the darkness...
+# 	Delay active skills by 2~3 turns
+# 	[1] ESSkyfall -> Mist of Hidden Sorrow
+# 	Jammer skyfall +20% for 15 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchFlag -> ESBranchFlag
+# branch
+# [7] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [8] SkillSet:
+# 	Condition: None
+# 	[0] ESDamageShield -> Elemental Shield Protection
+# 	Reduce damage from all sources by 50% for 10 turns
+# 	[1] ESBlindStickyFixed -> Veiled Boundaries
+# 	Blind orbs in specific positions for 1 turns
+# [9] ESEndPath -> ESEndPath
+# end_turn
+# [10] ESBranchHP -> ESBranchHP
+# branch
+# [11] ESBranchFlag -> ESBranchFlag
+# branch
+# [12] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [13] ESBlindStickyFixed -> A Shroud from the East
+# Condition: 25% chance
+# Blind orbs in specific positions for 1 turns
+# [14] ESBlindStickyFixed -> A Shroud from the West
+# Condition: 25% chance
+# Blind orbs in specific positions for 1 turns
+# [15] ESBlindStickyFixed -> Blackened Heavens
+# Condition: 25% chance
+# Blind orbs in specific positions for 1 turns
+# [16] ESBlindStickyFixed -> Blackened Earth
+# Condition: 25% chance
+# Blind orbs in specific positions for 1 turns
+# [17] ESEndPath -> ESEndPath
+# end_turn
+# [18] ESBranchFlag -> ESBranchFlag
+# branch
+# [19] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [20] ESRowSpawnMulti -> Shadow Blade Storm
+# Condition: 50% chance
+# Change 3rd row to Water, Jammer orbs
+# [21] ESBindAttack -> Dark Water Roaring Chains
+# Condition: 50% chance
+# Bind 1 random for 1 turns
+# [22] ESEndPath -> ESEndPath
+# end_turn
+# [23] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [24] ESAttackMultihit -> A Pounding in the Night
+# Condition: None
+# Enemy action
+# [25] ESEndPath -> ESEndPath
+# end_turn
+# [26] ESAbsorbThreshold -> Thousand-Year Imprisonment
+# Condition: One-time use
+# Absorb damage >= 800000 damage for 10 turns
+# [27] ESBlindStickyFixed -> Stirring the Eternal Grudge
+# Condition: None
+# Blind orbs in specific positions for 1 turns
+# [28] ESEndPath -> ESEndPath
+# end_turn

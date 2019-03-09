@@ -1,0 +1,107 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4068
+monster_name_en: Patissiere of the Sanctuary, Cockatrice
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  name_en: "\u266A"
+  name_jp: "\u266A"
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  name_en: Disable Skill
+  name_jp: Disable Skill
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Bind 1 random subs for 2 turns
+  desc_jp: Bind 1 random subs for 2 turns
+  name_en: Whip Bind
+  name_jp: Whip Bind
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 2
+  desc_jp: ''
+  name_en: Turn 2
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  name_en: Disable Skill
+  name_jp: Disable Skill
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: 2x1 cloud appear for 1 turns at random location
+  desc_jp: 2x1 cloud appear for 1 turns at random location
+  name_en: Sweet Temptation
+  name_jp: Sweet Temptation
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  name_en: Disable Skill
+  name_jp: Disable Skill
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESBranchCard -> ESBranchCard
+# branch
+# [7] ESInactivity -> ♪
+# Condition: None
+# Do nothing
+# [8] ESDebuffRCV -> Resonance of Cockatrice
+# Condition: None
+# Rcv 200% for 5 turns
+# [9] ESEndPath -> ESEndPath
+# end_turn
+# [10] ESAttackSinglehit -> Disable Skill
+# Condition: 80% chance
+# Enemy action
+# [11] ESBindRandomSub -> Whip Bind
+# Condition: One-time use
+# Bind 1 random subs for 2 turns
+# [12] ESCloud -> Sweet Temptation
+# Condition: One-time use
+# 2x1 cloud appear for 1 turns at random location
+# [13] ESEndPath -> ESEndPath
+# end_turn

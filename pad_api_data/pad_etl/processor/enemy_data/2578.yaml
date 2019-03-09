@@ -1,0 +1,96 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2578
+monster_name_en: Ancient Lightning Dragon, Ammonite
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 1 turns
+  desc_jp: Reduce damage from all sources by 50% for 1 turns
+  name_en: Shell Seclusion
+  name_jp: Shell Seclusion
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Light
+  desc_jp: Change all orbs to Light
+  name_en: Corona Ocean
+  name_jp: Corona Ocean
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 10
+  desc_jp: ''
+  name_en: HP <= 10
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Player -100% HP
+  desc_jp: Player -100% HP
+  name_en: Full Spiral
+  name_jp: Full Spiral
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESDamageShield -> Shell Seclusion
+# Condition: None
+# Reduce damage from all sources by 50% for 1 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESAttackUp -> Wind-Up Full Throttle
+# Condition: None
+# Increase damage to 200% for the next 999 turns
+# [9] ESRandomSpawn -> Corona Ocean
+# Condition: When < 50% hp , one-time use & when Fire, Water, Wood, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Change all orbs to Light
+# [10] ESGravity -> Full Spiral
+# Condition: When < 10% hp
+# Player -100% HP
+# [11] ESBranchFlag -> ESBranchFlag
+# branch
+# [12] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [13] ESRandomSpawn -> Three Hearts Clutch
+# Condition: 34% chance & when Fire, Water, Wood, Light, Dark, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 3 Heal orbs
+# [14] ESOrbLock -> Seven Ties Tentacle
+# Condition: 33% chance
+# Lock 7 random Fire, Water, Wood, Light, Dark orbs
+# [15] ESRandomSpawn -> Nine Sparkles Breath
+# Condition: 33% chance & when Fire, Water, Wood, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 9 Light orbs
+# [16] ESEndPath -> ESEndPath
+# end_turn
+# [17] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [18] ESDamageShield -> Shell Seclusion
+# Condition: None
+# Reduce damage from all sources by 50% for 1 turns

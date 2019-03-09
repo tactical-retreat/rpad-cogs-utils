@@ -1,0 +1,83 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1080
+monster_name_en: Green Sky Fruit, Melon Dragon
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Player recover 100% hp
+  desc_jp: Player recover 100% hp
+  name_en: Fruity Goodness
+  name_jp: Fruity Goodness
+  record_type_name: PREEMPT
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESRecoverPlayer -> Fruity Goodness
+# Condition: None
+# Player recover 100% hp
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESOrbChangeAttack -> Melon Shower
+# Condition: One-time use
+# Change Random to Heal
+# [9] ESBranchFlag -> ESBranchFlag
+# branch
+# [10] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [11] ESAttackMultihit -> Fruit Basket
+# Condition: None
+# Enemy action
+# [12] ESBranchFlag -> ESBranchFlag
+# branch
+# [13] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [14] ESAttackMultihit -> Fruit Basket
+# Condition: None
+# Enemy action
+# [15] ESBranchFlag -> ESBranchFlag
+# branch
+# [16] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [17] ESAttackMultihit -> Fruit Basket
+# Condition: None
+# Enemy action
+# [18] ESBranchFlag -> ESBranchFlag
+# branch
+# [19] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [20] ESAttackMultihit -> Fruit Basket
+# Condition: None
+# Enemy action
+# [21] ESBranchFlag -> ESBranchFlag
+# branch
+# [22] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [23] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [24] ESAttackMultihit -> Fruit Basket
+# Condition: None
+# Enemy action

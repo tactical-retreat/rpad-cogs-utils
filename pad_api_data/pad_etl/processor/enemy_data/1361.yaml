@@ -1,0 +1,111 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1361
+monster_name_en: Scorched Land Dragon Knight, Himiko
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 3 turns
+  desc_jp: Voids status ailments for 3 turns
+  name_en: God Beast Mirror
+  name_jp: God Beast Mirror
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 1 subs for 2 turns, Deal 50% damage
+  desc_jp: Bind 1 subs for 2 turns, Deal 50% damage
+  name_en: Flame Tomb
+  name_jp: Flame Tomb
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Fire, Deal 80% damage
+  desc_jp: Change Random to Fire, Deal 80% damage
+  name_en: Clay TAMADRA Lob
+  name_jp: Clay TAMADRA Lob
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  name_en: Clay Figure Chaos
+  name_jp: Clay Figure Chaos
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 200% damage (5 hits, 40% each)
+  desc_jp: Deal 200% damage (5 hits, 40% each)
+  name_en: Burning Yamataikoku
+  name_jp: Burning Yamataikoku
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESStatusShield -> God Beast Mirror
+# Condition: None
+# Voids status ailments for 3 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESBindAttack -> Flame Tomb
+# Condition: One-time use
+# Bind 1 subs for 2 turns
+# [10] ESOrbChangeAttack -> Clay TAMADRA Lob
+# Condition: 50% chance
+# Change Random to Fire
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESBranchFlag -> ESBranchFlag
+# branch
+# [13] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [14] ESInactivity -> Clay Figure Chaos
+# Condition: None
+# Do nothing
+# [15] ESAttackMultihit -> Burning Yamataikoku
+# Condition: None
+# Enemy action

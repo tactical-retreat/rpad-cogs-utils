@@ -1,0 +1,41 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 553
+monster_name_en: Low Dark Ninja
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Blind all orbs on the board
+  desc_jp: Blind all orbs on the board
+  name_en: Smoke Screen
+  name_jp: Smoke Screen
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESBlind -> Smoke Screen
+# Condition: 25% chance
+# Blind all orbs on the board

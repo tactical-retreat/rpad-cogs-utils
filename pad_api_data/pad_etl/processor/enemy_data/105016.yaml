@@ -1,0 +1,75 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 105016
+monster_name_en: Servant, Rider
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb combo <= 5 damage for 99 turns
+  desc_jp: Absorb combo <= 5 damage for 99 turns
+  name_en: I shall give you a merciful death.
+  name_jp: I shall give you a merciful death.
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
+    orbs, Deal 90% damage
+  desc_jp: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
+    orbs, Deal 90% damage
+  name_en: Chain Attack
+  name_jp: Chain Attack
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  name_en: Kick
+  name_jp: Kick
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESAbsorbCombo -> I shall give you a merciful death.
+# Condition: One-time use
+# Absorb combo <= 5 damage for 99 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESRandomSpawn -> Blood Fort: Andromeda: 
+# Outer Seal/ Blood Temple
+# Condition: One-time use
+# Spawn random 15 Fire orbs
+# [9] ESOrbLock -> Chain Attack
+# Condition: 50% chance
+# Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [10] ESAttackMultihit -> Kick
+# Condition: 50% chance
+# Enemy action
+# [11] ESEndPath -> ESEndPath
+# end_turn

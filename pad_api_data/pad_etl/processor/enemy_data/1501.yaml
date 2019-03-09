@@ -1,0 +1,72 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1501
+monster_name_en: '***** (Bikkuriman)'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Player recover 100% hp
+  desc_jp: Player recover 100% hp
+  name_en: '***** (Bikkuriman)'
+  name_jp: '***** (Bikkuriman)'
+  record_type_name: PREEMPT
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Player recover 100% hp
+  desc_jp: Player recover 100% hp
+  name_en: '***** (Bikkuriman)'
+  name_jp: '***** (Bikkuriman)'
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  name_en: '***** (Bikkuriman)'
+  name_jp: '***** (Bikkuriman)'
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESRecoverPlayer -> ***** (Bikkuriman)
+# Condition: None
+# Player recover 100% hp
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchLevel -> ESBranchLevel
+# branch
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESInactivity -> ***** (Bikkuriman)
+# Condition: One-time use
+# Do nothing

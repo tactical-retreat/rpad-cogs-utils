@@ -1,0 +1,91 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1623
+monster_name_en: Ebon Sorcerer, Dill Sirius
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Jammer, Poison skyfall +15% for 10 turns + Blind random 12 orbs for 4 turns
+  desc_jp: Jammer, Poison skyfall +15% for 10 turns + Blind random 12 orbs for 4 turns
+  name_en: Thanatos! Rain death upon them all! + Death Count
+  name_jp: Thanatos! Rain death upon them all! + Death Count
+  record_type_name: PREEMPT
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESSkyfall -> Thanatos! Rain death upon them all!
+# 	Jammer, Poison skyfall +15% for 10 turns
+# 	[1] ESBlindStickyRandom -> Death Count
+# 	Blind random 12 orbs for 4 turns
+# [5] ESBlindStickyRandom -> Death Count
+# Condition: None
+# Blind random 12 orbs for 4 turns
+# [6] ESEndPath -> ESEndPath
+# end_turn
+# [7] ESBranchFlag -> ESBranchFlag
+# branch
+# [8] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [9] SkillSet:
+# 	Condition: None
+# 	[0] ESColumnSpawnMulti -> Dark Spell
+# 	Change 6th column to Dark orbs
+# 	[1] ESGravity -> Die once!
+# 	Player -25% HP
+# [10] ESEndPath -> ESEndPath
+# end_turn
+# [11] ESBranchFlag -> ESBranchFlag
+# branch
+# [12] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [13] SkillSet:
+# 	Condition: None
+# 	[0] ESColumnSpawnMulti -> Dark Spell
+# 	Change 6th column to Dark orbs
+# 	[1] ESGravity -> Die twice!
+# 	Player -50% HP
+# [14] ESEndPath -> ESEndPath
+# end_turn
+# [15] ESBranchFlag -> ESBranchFlag
+# branch
+# [16] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [17] SkillSet:
+# 	Condition: None
+# 	[0] ESColumnSpawnMulti -> Dark Spell
+# 	Change 6th column to Dark orbs
+# 	[1] ESGravity -> Die thrice!
+# 	Player -75% HP
+# [18] ESEndPath -> ESEndPath
+# end_turn
+# [19] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [20] SkillSet:
+# 	Condition: None
+# 	[0] ESColumnSpawnMulti -> Dark Spell
+# 	Change 6th column to Dark orbs
+# 	[1] ESGravity -> Just die!
+# 	Player -100% HP
+# [21] ESEndPath -> ESEndPath
+# end_turn

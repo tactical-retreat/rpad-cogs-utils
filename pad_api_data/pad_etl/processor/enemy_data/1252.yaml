@@ -1,0 +1,73 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1252
+monster_name_en: Awoken Zeus Vulcan
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 3
+############################################################
+!SkillRecordListing
+level: 3
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb combo <= 4 damage for 999 turns
+  desc_jp: Absorb combo <= 4 damage for 999 turns
+  name_en: God-King's Test
+  name_jp: God-King's Test
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Water to Fire, Deal 120% damage
+  desc_jp: Change Water to Fire, Deal 120% damage
+  name_en: Draconic Blade
+  name_jp: Draconic Blade
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 30
+  desc_jp: ''
+  name_en: HP <= 30
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 150% damage (3 hits, 50% each)
+  desc_jp: Deal 150% damage (3 hits, 50% each)
+  name_en: Mars Daylight
+  name_jp: Mars Daylight
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESAbsorbCombo -> God-King's Test
+# Condition: None
+# Absorb combo <= 4 damage for 999 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESAttackMultihit -> Mars Daylight
+# Condition: When < 30% hp
+# Enemy action
+# [9] ESOrbChangeAttack -> Draconic Blade
+# Condition: One-time use
+# Change Water to Fire

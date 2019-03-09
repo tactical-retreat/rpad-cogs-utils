@@ -1,0 +1,56 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2547
+monster_name_en: Mugamazake
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Heal, Deal 100% damage
+  desc_jp: Change Random to Heal, Deal 100% damage
+  name_en: MugMug White
+  name_jp: MugMug White
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 30
+  desc_jp: ''
+  name_en: HP <= 30
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 3 random cards for 2~3 turns
+  desc_jp: Bind 3 random cards for 2~3 turns
+  name_en: "Warming Tea Time\u266A"
+  name_jp: "Warming Tea Time\u266A"
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESBindRandom -> Warming Tea Time♪
+# Condition: When < 30% hp , one-time use
+# Bind 3 random cards for 2~3 turns
+# [4] ESOrbChangeAttack -> MugMug White
+# Condition: None
+# Change Random to Heal

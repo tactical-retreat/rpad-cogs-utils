@@ -1,0 +1,69 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1342
+monster_name_en: Gleaming Kouryu Emperor, Fagan
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Bind active skills for 5 turns
+  desc_jp: Bind active skills for 5 turns
+  name_en: Gleam of the Dragon Star
+  name_jp: Gleam of the Dragon Star
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 70
+  desc_jp: ''
+  name_en: HP <= 70
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 200% damage (2 hits, 100% each)
+  desc_jp: Deal 200% damage (2 hits, 100% each)
+  name_en: True Twin Dragon Palms
+  name_jp: True Twin Dragon Palms
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 30
+  desc_jp: ''
+  name_en: HP <= 30
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 1200% damage (4 hits, 300% each)
+  desc_jp: Deal 1200% damage (4 hits, 300% each)
+  name_en: True Boisterous Dance
+  name_jp: True Boisterous Dance
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESBindSkill -> Gleam of the Dragon Star
+# Condition: None
+# Bind active skills for 5 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESAttackMultihit -> True Boisterous Dance
+# Condition: When < 30% hp
+# Enemy action
+# [7] ESAttackMultihit -> True Twin Dragon Palms
+# Condition: When < 70% hp
+# Enemy action

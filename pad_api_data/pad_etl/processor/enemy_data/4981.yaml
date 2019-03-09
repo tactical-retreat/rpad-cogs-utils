@@ -1,0 +1,116 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4981
+monster_name_en: '*****'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: 4x1 cloud appear for 3 turns at 3rd row, 2nd column
+  desc_jp: 4x1 cloud appear for 3 turns at 3rd row, 2nd column
+  name_en: Well...are you my playmate?
+  name_jp: Well...are you my playmate?
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Fire + Locked Fire skyfall +100% for 10 turns
+  desc_jp: Change Random to Fire + Locked Fire skyfall +100% for 10 turns
+  name_en: I'll get your heart pounding... + I don't know, even if I get burned!
+  name_jp: I'll get your heart pounding... + I don't know, even if I get burned!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Player -30% HP + Enemy action
+  desc_jp: Player -30% HP + Enemy action
+  name_en: Hey, over here! + You're a dirty one, aren't you?
+  name_jp: Hey, over here! + You're a dirty one, aren't you?
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy action + Increase damage to 150% for the next 1 turns + Rcv 50% for
+    1 turns
+  desc_jp: Enemy action + Increase damage to 150% for the next 1 turns + Rcv 50% for
+    1 turns
+  name_en: Well, won't you play with me for a bit?... + Well then, how about this
+    one? + Well, let's liven things up some more!
+  name_jp: Well, won't you play with me for a bit?... + Well then, how about this
+    one? + Well, let's liven things up some more!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 14
+  desc_jp: ''
+  name_en: HP <= 14
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 250% damage
+  desc_jp: Deal 250% damage
+  name_en: Crimson Hell
+  name_jp: Crimson Hell
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESCloud -> Well...are you my playmate?
+# Condition: None
+# 4x1 cloud appear for 3 turns at 3rd row, 2nd column
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] ESBranchHP -> ESBranchHP
+# branch
+# [8] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESAttackMultihit -> Well, won't you play with me for a bit?...
+# 	Enemy action
+# 	[1] ESAttackUp -> Well then, how about this one?
+# 	Increase damage to 150% for the next 1 turns
+# 	[2] ESDebuffRCV -> Well, let's liven things up some more!
+# 	Rcv 50% for 1 turns
+# [9] SkillSet:
+# 	Condition: 50% chance
+# 	[0] ESOrbChangeAttack -> I'll get your heart pounding...
+# 	Change Random to Fire
+# 	[1] ESSkyfall -> I don't know, even if I get burned!
+# 	Locked Fire skyfall +100% for 10 turns
+# [10] SkillSet:
+# 	Condition: 50% chance
+# 	[0] ESGravity -> Hey, over here!
+# 	Player -30% HP
+# 	[1] ESAttackMultihit -> You're a dirty one, aren't you?
+# 	Enemy action
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESAttackMultihit -> Crimson Hell
+# Condition: None
+# Enemy action
+# [13] ESEndPath -> ESEndPath
+# end_turn

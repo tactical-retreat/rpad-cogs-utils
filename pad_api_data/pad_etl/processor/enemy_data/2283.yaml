@@ -1,0 +1,183 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2283
+monster_name_en: Paradise Celeb, Hera-Is
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  name_en: You're on vacation, take a rest
+  name_jp: You're on vacation, take a rest
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind active skills for 2~3 turns
+  desc_jp: Bind active skills for 2~3 turns
+  name_en: It's a little cold, but do you want a drink?
+  name_jp: It's a little cold, but do you want a drink?
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 3 Water orbs, Deal 100% damage
+  desc_jp: Spawn random 3 Water orbs, Deal 100% damage
+  name_en: A cold wave washes over you
+  name_jp: A cold wave washes over you
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 3 Water orbs, Deal 100% damage
+  desc_jp: Spawn random 3 Water orbs, Deal 100% damage
+  name_en: A cold wave washes over you
+  name_jp: A cold wave washes over you
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 19
+  desc_jp: ''
+  name_en: HP <= 19
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Player -100% HP
+  desc_jp: Player -100% HP
+  name_en: Absolute Zero Summer
+  name_jp: Absolute Zero Summer
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 19
+  desc_jp: ''
+  name_en: HP <= 19
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 210% damage (3 hits, 70% each)
+  desc_jp: Deal 210% damage (3 hits, 70% each)
+  name_en: A blizzard rages
+  name_jp: A blizzard rages
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 3 random cards for 2 turns
+  desc_jp: Bind 3 random cards for 2 turns
+  name_en: You'll freeze this close to me
+  name_jp: You'll freeze this close to me
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Spawn random 4 Water orbs, Deal 120% damage
+  desc_jp: Spawn random 4 Water orbs, Deal 120% damage
+  name_en: A cold wind blows
+  name_jp: A cold wind blows
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 4 Water orbs, Deal 120% damage
+  desc_jp: Spawn random 4 Water orbs, Deal 120% damage
+  name_en: A cold wind blows
+  name_jp: A cold wind blows
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESStatusShield -> You're on vacation, take a rest
+# Condition: None
+# Voids status ailments for 999 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchCard -> ESBranchCard
+# branch
+# [9] ESBranchFlag -> ESBranchFlag
+# branch
+# [10] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [11] ESBindSkill -> It's a little cold, but do you want a drink?
+# Condition: None
+# Bind active skills for 2~3 turns
+# [12] ESBranchHP -> ESBranchHP
+# branch
+# [13] ESBindRandom -> You'll freeze this close to me
+# Condition: When < 50% hp , one-time use
+# Bind 3 random cards for 2 turns
+# [14] ESRandomSpawn -> A cold wind blows
+# Condition: 70% chance when < 50% hp & when Fire, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 4 Water orbs
+# [15] ESRandomSpawn -> A cold wave washes over you
+# Condition: 90% chance & when Fire, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 3 Water orbs
+# [16] ESEndPath -> ESEndPath
+# end_turn
+# [17] ESBranchCard -> ESBranchCard
+# branch
+# [18] ESBranchFlag -> ESBranchFlag
+# branch
+# [19] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [20] ESRecoverPlayer -> I'm so happy you came!
+# Condition: None
+# Player recover 100% hp
+# [21] ESBranchFlag -> ESBranchFlag
+# branch
+# [22] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [23] ESSkillDelay -> Hey, who's that girl?
+# Condition: None
+# Delay active skills by 99 turns
+# [24] ESEndPath -> ESEndPath
+# end_turn
+# [25] ESBranchFlag -> ESBranchFlag
+# branch
+# [26] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [27] ESGravity -> Absolute Zero Summer
+# Condition: None
+# Player -100% HP
+# [28] ESAttackMultihit -> A blizzard rages
+# Condition: None
+# Enemy action

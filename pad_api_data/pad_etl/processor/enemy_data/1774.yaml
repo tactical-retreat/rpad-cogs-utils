@@ -1,0 +1,77 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1774
+monster_name_en: Sea Bowl Demon, Tunabowl
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Water to Jammer, Deal 100% damage
+  desc_jp: Change Water to Jammer, Deal 100% damage
+  name_en: Tuna Smash
+  name_jp: Tuna Smash
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 200% damage
+  desc_jp: Deal 200% damage
+  name_en: Taste Stinger
+  name_jp: Taste Stinger
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Enemy recover 50% hp
+  desc_jp: Enemy recover 50% hp
+  name_en: Munching Time
+  name_jp: Munching Time
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 50% hp
+  desc_jp: Enemy recover 50% hp
+  name_en: Munching Time
+  name_jp: Munching Time
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESAttackMultihit -> Taste Stinger
+# Condition: When < 50% hp , one-time use
+# Enemy action
+# [4] ESRecoverEnemy -> Munching Time
+# Condition: When < 50% hp
+# Enemy recover 50% hp
+# [5] ESOrbChangeAttack -> Tuna Smash
+# Condition: None
+# Change Water to Jammer

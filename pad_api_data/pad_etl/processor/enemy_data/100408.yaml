@@ -1,0 +1,101 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 100408
+monster_name_en: Alt. Infernodragon Muspelheim
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from God by 50%
+  desc_jp: Reduce damage from God by 50%
+  name_en: God halved
+  name_jp: God halved
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Delay active skills by 3~6 turns + Absorb combo <= 7 damage for 5 turns
+  desc_jp: Delay active skills by 3~6 turns + Absorb combo <= 7 damage for 5 turns
+  name_en: Blaze + Burning Giant
+  name_jp: Blaze + Burning Giant
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 2
+  desc_jp: ''
+  name_en: Turn 2
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 99 turns
+  desc_jp: Increase damage to 200% for the next 99 turns
+  name_en: Flame Up
+  name_jp: Flame Up
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 5
+  desc_jp: ''
+  name_en: Turn 5
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Rcv 50% for 5 turns
+  desc_jp: Rcv 50% for 5 turns
+  name_en: Scorching Heat
+  name_jp: Scorching Heat
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 4 Bomb orbs, Deal 200% damage
+  desc_jp: Spawn random 4 Bomb orbs, Deal 200% damage
+  name_en: Explosion Breath
+  name_jp: Explosion Breath
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESSkillDelay -> Blaze
+# 	Delay active skills by 3~6 turns
+# 	[1] ESAbsorbCombo -> Burning Giant
+# 	Absorb combo <= 7 damage for 5 turns
+# [3] ESBranchCounter -> ESBranchCounter
+# branch
+# [4] ESSetCounter -> ESSetCounter
+# set_counter
+# [5] ESAttackUp -> Flame Up
+# Condition: When < 20% hp , one-time use
+# Increase damage to 200% for the next 99 turns
+# [6] ESBombRandomSpawn -> Explosion Breath
+# Condition: None
+# Spawn random 4 Bomb orbs
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchFlag -> ESBranchFlag
+# branch
+# [9] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [10] ESDebuffRCV -> Scorching Heat
+# Condition: None
+# Rcv 50% for 5 turns
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESTypeResist -> God halved
+# Reduce damage from God by 50%

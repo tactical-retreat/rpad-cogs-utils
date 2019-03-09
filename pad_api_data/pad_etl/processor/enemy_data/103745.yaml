@@ -1,0 +1,129 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 103745
+monster_name_en: Alt. Dragonbound Shanje
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Dark by 50%
+  desc_jp: Reduce damage from Dark by 50%
+  name_en: Dark damage halved
+  name_jp: Dark damage halved
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 80%
+  desc_jp: Survive attacks with 1 HP when HP > 80%
+  name_en: Dragonbound Chibi Resolve
+  name_jp: Dragonbound Chibi Resolve
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Fix orb movement starting point to random position on the board
+  desc_jp: Fix orb movement starting point to random position on the board
+  name_en: You! Get on the ground!
+  name_jp: You! Get on the ground!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 3rd, 4th column to Dark, Jammer orbs
+  desc_jp: Change 3rd, 4th column to Dark, Jammer orbs
+  name_en: It's go time, Sharrus!
+  name_jp: It's go time, Sharrus!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 2
+  desc_jp: ''
+  name_en: Turn 2
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Player -90% HP
+  desc_jp: Player -90% HP
+  name_en: Now get to work!
+  name_jp: Now get to work!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 3
+  desc_jp: ''
+  name_en: Turn 3
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 170% damage
+  desc_jp: Blind all orbs on the board, Deal 170% damage
+  name_en: Sharrus is whimpering
+  name_jp: Sharrus is whimpering
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 50% hp
+  desc_jp: Enemy recover 50% hp
+  name_en: "Twinkle \u2606 Shadow"
+  name_jp: "Twinkle \u2606 Shadow"
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESFixedStart -> You! Get on the ground!
+# Condition: None
+# Fix orb movement starting point to random position on the board
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchFlag -> ESBranchFlag
+# branch
+# [7] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [8] ESColumnSpawnMulti -> It's go time, Sharrus!
+# Condition: None
+# Change 3rd, 4th column to Dark, Jammer orbs
+# [9] ESEndPath -> ESEndPath
+# end_turn
+# [10] ESBranchFlag -> ESBranchFlag
+# branch
+# [11] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [12] ESGravity -> Now get to work!
+# Condition: None
+# Player -90% HP
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESBlind -> Sharrus is whimpering
+# Condition: One-time use
+# Blind all orbs on the board
+# [15] ESRecoverEnemy -> Twinkle ☆ Shadow
+# Condition: None
+# Enemy recover 50% hp
+# [16] ESEndPath -> ESEndPath
+# end_turn
+# [17] ESAttributeResist -> Dark damage halved
+# Reduce damage from Dark by 50%
+# [18] ESResolve -> Dragonbound Chibi Resolve
+# Survive attacks with 1 HP when HP > 80%

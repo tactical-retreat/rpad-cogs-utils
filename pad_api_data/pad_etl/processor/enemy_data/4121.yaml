@@ -1,0 +1,146 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4121
+monster_name_en: Gilles Legato
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Immune to damage from all sources for 999 turns
+  desc_jp: Immune to damage from all sources for 999 turns
+  name_en: Overcoat of Immortality
+  name_jp: Overcoat of Immortality
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 2nd column to Dark orbs, Deal 160% damage
+  desc_jp: Change 2nd column to Dark orbs, Deal 160% damage
+  name_en: Vampire Blade
+  name_jp: Vampire Blade
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 180% damage (2 hits, 90% each)
+  desc_jp: Deal 180% damage (2 hits, 90% each)
+  name_en: Blood Needle
+  name_jp: Blood Needle
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESInvulnerableOn -> Overcoat of Immortality
+# Condition: None
+# Immune to damage from all sources for 999 turns
+# [5] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
+# branch
+# [6] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
+# branch
+# [7] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
+# branch
+# [8] ESSetCounter -> ESSetCounter
+# set_counter
+# [9] ESColumnSpawnMulti -> Vampire Blade
+# Condition: 30% chance
+# Change 2nd column to Dark orbs
+# [10] ESAttackMultihit -> Blood Needle
+# Condition: None
+# Enemy action
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESSetCounter -> ESSetCounter
+# set_counter
+# [13] ESBranchCounter -> ESBranchCounter
+# branch
+# [14] ESLeaderSwap -> Dance!
+# Condition: None
+# Leader changes to random sub for 1 turns
+# [15] ESBlind -> Dark World
+# Condition: 60% chance
+# Blind all orbs on the board
+# [16] ESGravity -> Pain
+# Condition: None
+# Player -99% HP
+# [17] ESBranchCounter -> ESBranchCounter
+# branch
+# [18] ESRecoverEnemyAlly -> Futile...
+# Condition: When enemy ally is killed
+# Enemy ally recover 100% hp
+# [19] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESInvulnerableOff -> Cunning...
+# 	Remove damage immunity effect
+# 	[1] ESAttackUp -> I'll end you!
+# 	Increase damage to 150% for the next 999 turns
+# 	[2] ESStatusShield -> War Demon's Armor
+# 	Voids status ailments for 99 turns
+# [20] ESBranchFlag -> ESBranchFlag
+# branch
+# [21] ESBranchHP -> ESBranchHP
+# branch
+# [22] ESBlind -> Darkness Pulse
+# Condition: 50% chance
+# Blind all orbs on the board
+# [23] ESAttackMultihit -> Blood Bullet
+# Condition: None
+# Enemy action
+# [24] ESEndPath -> ESEndPath
+# end_turn
+# [25] ESBranchHP -> ESBranchHP
+# branch
+# [26] ESBranchFlag -> ESBranchFlag
+# branch
+# [27] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [28] SkillSet:
+# 	Condition: None
+# 	[0] ESChangeAttribute -> Magic Garment
+# 	Change own attribute to random one of Fire, Water
+# 	[1] ESAbsorbCombo -> Your skills are quite good
+# 	Absorb combo <= 6 damage for 20 turns
+# 	[2] ESCloud -> Show me what you've got
+# 	1x1 cloud appear for 20 turns at random location
+# [29] ESEndPath -> ESEndPath
+# end_turn
+# [30] ESOrbChangeAttackBits -> Despair
+# Condition: 20% chance
+# Change Heal to Dark
+# [31] ESOrbLock -> Shadow Fangs
+# Condition: 30% chance
+# Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [32] ESAttackMultihit -> Chase into the Abyss
+# Condition: None
+# Enemy action
+# [33] ESBranchFlag -> ESBranchFlag
+# branch
+# [34] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [35] ESBindAwoken -> Descend into Darkness
+# Condition: None
+# Bind awoken skills for 3 turns
+# [36] ESAttackMultihit -> Chaos Flame
+# Condition: None
+# Enemy action
+# [37] ESEndPath -> ESEndPath
+# end_turn

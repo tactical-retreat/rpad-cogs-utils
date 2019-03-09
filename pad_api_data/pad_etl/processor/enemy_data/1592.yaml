@@ -1,0 +1,189 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1592
+monster_name_en: Water Insect Dragon, Deadjumper
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb combo <= 3 damage for 5 turns
+  desc_jp: Absorb combo <= 3 damage for 5 turns
+  name_en: Insect Dragon's Chitin
+  name_jp: Insect Dragon's Chitin
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 20% damage
+  desc_jp: Change Random to Jammer, Deal 20% damage
+  name_en: High Jump
+  name_jp: High Jump
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Jammer to Water, Deal 125% damage
+  desc_jp: Change Jammer to Water, Deal 125% damage
+  name_en: Locust Press
+  name_jp: Locust Press
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind Wood cards for 3 turns
+  desc_jp: Bind Wood cards for 3 turns
+  name_en: Plant Feast
+  name_jp: Plant Feast
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 30
+  desc_jp: ''
+  name_en: HP <= 30
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Jammer to Water, Deal 200% damage
+  desc_jp: Change Jammer to Water, Deal 200% damage
+  name_en: Meteor Strike
+  name_jp: Meteor Strike
+  record_type_name: ACTION
+
+############################################################
+### Data @ 10
+############################################################
+!SkillRecordListing
+level: 10
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb combo <= 4 damage for 10 turns
+  desc_jp: Absorb combo <= 4 damage for 10 turns
+  name_en: Insect Dragon's Steel Chitin
+  name_jp: Insect Dragon's Steel Chitin
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 20% damage
+  desc_jp: Change Random to Jammer, Deal 20% damage
+  name_en: High Jump
+  name_jp: High Jump
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Jammer to Water, Deal 125% damage
+  desc_jp: Change Jammer to Water, Deal 125% damage
+  name_en: Locust Press
+  name_jp: Locust Press
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind Wood cards for 3 turns
+  desc_jp: Bind Wood cards for 3 turns
+  name_en: Plant Feast
+  name_jp: Plant Feast
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 30
+  desc_jp: ''
+  name_en: HP <= 30
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Jammer to Water, Deal 200% damage
+  desc_jp: Change Jammer to Water, Deal 200% damage
+  name_en: Meteor Strike
+  name_jp: Meteor Strike
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESBranchLevel -> ESBranchLevel
+# branch
+# [4] ESEndPath -> ESEndPath
+# end_turn
+# [5] ESBranchFlag -> ESBranchFlag
+# branch
+# [6] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [7] ESAbsorbCombo -> Insect Dragon's Chitin
+# Condition: None
+# Absorb combo <= 3 damage for 5 turns
+# [8] ESEndPath -> ESEndPath
+# end_turn
+# [9] ESBranchFlag -> ESBranchFlag
+# branch
+# [10] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [11] ESAbsorbCombo -> Insect Dragon's Steel Chitin
+# Condition: None
+# Absorb combo <= 4 damage for 10 turns
+# [12] ESEndPath -> ESEndPath
+# end_turn
+# [13] ESBranchHP -> ESBranchHP
+# branch
+# [14] ESOrbChangeAttack -> High Jump
+# Condition: One-time use
+# Change Random to Jammer
+# [15] ESOrbChangeAttack -> Meteor Strike
+# Condition: When < 30% hp
+# Change Jammer to Water
+# [16] ESOrbChangeAttack -> Locust Press
+# Condition: None
+# Change Jammer to Water
+# [17] ESAttackMultihit -> Jumping Breath
+# Condition: None
+# Enemy action
+# [18] ESEndPath -> ESEndPath
+# end_turn
+# [19] ESBranchFlag -> ESBranchFlag
+# branch
+# [20] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [21] ESBindAttribute -> Plant Feast
+# Condition: None
+# Bind Wood cards for 3 turns
+# [22] ESEndPath -> ESEndPath
+# end_turn

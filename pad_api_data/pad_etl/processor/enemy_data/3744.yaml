@@ -1,0 +1,121 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3744
+monster_name_en: "Dragonbound Shynj\xE9"
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Light by 50%
+  desc_jp: Reduce damage from Light by 50%
+  name_en: Light damage halved
+  name_jp: Light damage halved
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Delay active skills by 3 turns
+  desc_jp: Delay active skills by 3 turns
+  name_en: Sigh... I'm exhausted...
+  name_jp: Sigh... I'm exhausted...
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 3rd, 4th column to Light, Jammer orbs
+  desc_jp: Change 3rd, 4th column to Light, Jammer orbs
+  name_en: Over here, Bolthas!
+  name_jp: Over here, Bolthas!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 2
+  desc_jp: ''
+  name_en: Turn 2
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Player -90% HP
+  desc_jp: Player -90% HP
+  name_en: Well, Bolthas, they're all yours!
+  name_jp: Well, Bolthas, they're all yours!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 3
+  desc_jp: ''
+  name_en: Turn 3
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 1 subs for 1 turns, Deal 170% damage
+  desc_jp: Bind 1 subs for 1 turns, Deal 170% damage
+  name_en: Bolthas is shaking
+  name_jp: Bolthas is shaking
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 50% hp
+  desc_jp: Enemy recover 50% hp
+  name_en: "Twinkle \u2606 Bolt"
+  name_jp: "Twinkle \u2606 Bolt"
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESSkillDelay -> Sigh... I'm exhausted...
+# Condition: None
+# Delay active skills by 3 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchFlag -> ESBranchFlag
+# branch
+# [7] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [8] ESColumnSpawnMulti -> Over here, Bolthas!
+# Condition: None
+# Change 3rd, 4th column to Light, Jammer orbs
+# [9] ESEndPath -> ESEndPath
+# end_turn
+# [10] ESBranchFlag -> ESBranchFlag
+# branch
+# [11] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [12] ESGravity -> Well, Bolthas, they're all yours!
+# Condition: None
+# Player -90% HP
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESBindAttack -> Bolthas is shaking
+# Condition: One-time use
+# Bind 1 subs for 1 turns
+# [15] ESRecoverEnemy -> Twinkle ☆ Bolt
+# Condition: None
+# Enemy recover 50% hp
+# [16] ESEndPath -> ESEndPath
+# end_turn
+# [17] ESAttributeResist -> Light damage halved
+# Reduce damage from Light by 50%

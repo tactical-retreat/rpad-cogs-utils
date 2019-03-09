@@ -1,0 +1,86 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3064
+monster_name_en: Endless Blue Dragon Caller, Sonia TAMADRA
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  name_en: Protect TAMA!
+  name_jp: Protect TAMA!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Water, Deal 100% damage
+  desc_jp: Change Random to Water, Deal 100% damage
+  name_en: Blue Sphere
+  name_jp: Blue Sphere
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 39
+  desc_jp: ''
+  name_en: HP <= 39
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  name_en: Draco Summon TAMA!
+  name_jp: Draco Summon TAMA!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 39
+  desc_jp: ''
+  name_en: HP <= 39
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 2nd, 5th column to Water orbs, Deal 500% damage
+  desc_jp: Change 2nd, 5th column to Water orbs, Deal 500% damage
+  name_en: Crystal Fang
+  name_jp: Crystal Fang
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESStatusShield -> Protect TAMA!
+# Condition: One-time use
+# Voids status ailments for 999 turns
+# [3] ESBranchHP -> ESBranchHP
+# branch
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESOrbChangeAttack -> Blue Sphere
+# Condition: None
+# Change Random to Water
+# [6] ESBranchFlag -> ESBranchFlag
+# branch
+# [7] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [8] ESInactivity -> Draco Summon TAMA!
+# Condition: None
+# Do nothing
+# [9] ESColumnSpawnMulti -> Crystal Fang
+# Condition: None
+# Change 2nd, 5th column to Water orbs

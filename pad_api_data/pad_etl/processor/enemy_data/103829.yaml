@@ -1,0 +1,110 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 103829
+monster_name_en: Alt. Crazy Archangel of Foresight, Camael
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 50%
+  desc_jp: Survive attacks with 1 HP when HP > 50%
+  name_en: Camael Resolve
+  name_jp: Camael Resolve
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Bind awoken skills for 4 turns
+  desc_jp: Voids status ailments for 999 turns + Bind awoken skills for 4 turns
+  name_en: Red Leopard Battle Armor + Colored Wings of Delirium
+  name_jp: Red Leopard Battle Armor + Colored Wings of Delirium
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 4 locked Bomb orbs, Deal 300% damage
+  desc_jp: Spawn random 4 locked Bomb orbs, Deal 300% damage
+  name_en: Baleful Crimson Sword
+  name_jp: Baleful Crimson Sword
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Random 1 orbs change every 0.5s for 1 turns, Deal 300% damage
+  desc_jp: Random 1 orbs change every 0.5s for 1 turns, Deal 300% damage
+  name_en: Shyucess Verdant Sword
+  name_jp: Shyucess Verdant Sword
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 10
+  desc_jp: ''
+  name_en: HP <= 10
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change own attribute to random one of Fire, Wood + Enemy action
+  desc_jp: Change own attribute to random one of Fire, Wood + Enemy action
+  name_en: Strange Heavens + Enturione
+  name_jp: Strange Heavens + Enturione
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESStatusShield -> Red Leopard Battle Armor
+# 	Voids status ailments for 999 turns
+# 	[1] ESBindAwoken -> Colored Wings of Delirium
+# 	Bind awoken skills for 4 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] SkillSet:
+# 	Condition: When < 10% hp
+# 	[0] ESChangeAttribute -> Strange Heavens
+# 	Change own attribute to random one of Fire, Wood
+# 	[1] ESAttackMultihit -> Enturione
+# 	Enemy action
+# [7] ESBranchCounter -> ESBranchCounter
+# branch
+# [8] ESSetCounter -> ESSetCounter
+# set_counter
+# [9] ESBombRandomSpawn -> Baleful Crimson Sword
+# Condition: 50% chance
+# Spawn random 4 locked Bomb orbs
+# [10] ESSpinnersRandom -> Shyucess Verdant Sword
+# Condition: None
+# Random 1 orbs change every 0.5s for 1 turns
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESBranchFlag -> ESBranchFlag
+# branch
+# [13] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [14] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESRowSpawnMulti -> Deadly Scorpion Poison
+# 	Change 1st, 5th row to Heal, Poison orbs, 3rd row to Mortal Poison orbs
+# 	[1] ESAttackUp -> Order of Destruction
+# 	Increase damage to 150% for the next 999 turns
+# [15] ESEndPath -> ESEndPath
+# end_turn
+# [16] ESResolve -> Camael Resolve
+# Survive attacks with 1 HP when HP > 50%

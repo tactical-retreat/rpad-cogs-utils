@@ -1,0 +1,63 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3232
+monster_name_en: Old Castle Lantern, Flemin
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Void damage >= 100 for 3 turns
+  desc_jp: Void damage >= 100 for 3 turns
+  name_en: Spooky Light
+  name_jp: Spooky Light
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 1 Fire orbs, Deal 70% damage
+  desc_jp: Spawn random 1 Fire orbs, Deal 70% damage
+  name_en: Cat Fire
+  name_jp: Cat Fire
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESVoidShield -> Spooky Light
+# Condition: One-time use
+# Void damage >= 100 for 3 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESRandomSpawn -> Eerie Flare
+# Condition: One-time use
+# Spawn random 3 Poison orbs
+# [9] ESRandomSpawn -> Cat Fire
+# Condition: None
+# Spawn random 1 Fire orbs
+# [10] ESEndPath -> ESEndPath
+# end_turn

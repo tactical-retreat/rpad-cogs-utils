@@ -1,0 +1,109 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 395
+monster_name_en: Love Deity, Chaos Venus
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb Dark damage for 10 turns
+  desc_jp: Absorb Dark damage for 10 turns
+  name_en: Chaotic Defense
+  name_jp: Chaotic Defense
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 80% damage (4 hits, 20% each)
+  desc_jp: Deal 80% damage (4 hits, 20% each)
+  name_en: Love Hurricane
+  name_jp: Love Hurricane
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 3 random subs for 2~3 turns
+  desc_jp: Bind 3 random subs for 2~3 turns
+  name_en: Temptation
+  name_jp: Temptation
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Heal
+  desc_jp: Change Random to Heal
+  name_en: Candy &
+  name_jp: Candy &
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 200% damage (5 hits, 40% each)
+  desc_jp: Deal 200% damage (5 hits, 40% each)
+  name_en: Death
+  name_jp: Death
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESAbsorbAttribute -> Chaotic Defense
+# Condition: None
+# Absorb Dark damage for 10 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] ESBranchFlag -> ESBranchFlag
+# branch
+# [8] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [9] ESBindRandomSub -> Temptation
+# Condition: None
+# Bind 3 random subs for 2~3 turns
+# [10] ESEndPath -> ESEndPath
+# end_turn
+# [11] ESOrbChangeSingle -> Candy &
+# Condition: One-time use
+# Change Random to Heal
+# [12] ESAttackMultihit -> Death
+# Condition: None
+# Enemy action
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESAttackMultihit -> Love Hurricane
+# Condition: None
+# Enemy action

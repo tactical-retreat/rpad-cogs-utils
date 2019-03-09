@@ -1,0 +1,56 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 782
+monster_name_en: Mystic Megalith Dragon, Baalbek
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  name_en: Weight of the Trilithon
+  name_jp: Weight of the Trilithon
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100%~140% damage (5~7 hits, 20% each)
+  desc_jp: Deal 100%~140% damage (5~7 hits, 20% each)
+  name_en: Meteor Storm
+  name_jp: Meteor Storm
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchHP -> ESBranchHP
+# branch
+# [5] ESAttackMultihit -> Meteor Storm
+# Condition: None
+# Enemy action
+# [6] ESEndPath -> ESEndPath
+# end_turn
+# [7] ESGravity -> Weight of the Trilithon
+# Condition: One-time use
+# Player -99% HP

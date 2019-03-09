@@ -1,0 +1,119 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 105015
+monster_name_en: Servant, Berserker
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 10 turns
+  desc_jp: Reduce damage from all sources by 50% for 10 turns
+  name_en: GROOOO!!
+  name_jp: GROOOO!!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 110% damage
+  desc_jp: Deal 110% damage
+  name_en: GRAAAAAA!!!
+  name_jp: GRAAAAAA!!!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 2
+  desc_jp: ''
+  name_en: Turn 2
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 150% for the next 3 turns
+  desc_jp: Increase damage to 150% for the next 3 turns
+  name_en: "\u2026GRUAAA!"
+  name_jp: "\u2026GRUAAA!"
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 3
+  desc_jp: ''
+  name_en: Turn 3
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 120% damage (2 hits, 60% each)
+  desc_jp: Deal 120% damage (2 hits, 60% each)
+  name_en: GAAA
+  name_jp: GAAA
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 135% damage (3 hits, 45% each)
+  desc_jp: Deal 135% damage (3 hits, 45% each)
+  name_en: Guguhh... Guah... GAAAA!!!
+  name_jp: Guguhh... Guah... GAAAA!!!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESDamageShield -> GROOOO!!
+# Condition: None
+# Reduce damage from all sources by 50% for 10 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESAttackUp -> …GRUAAA!
+# Condition: One-time use
+# Increase damage to 150% for the next 3 turns
+# [9] ESBranchFlag -> ESBranchFlag
+# branch
+# [10] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [11] ESAttackMultihit -> GRAAAAAA!!!
+# Condition: None
+# Enemy action
+# [12] ESEndPath -> ESEndPath
+# end_turn
+# [13] ESBranchFlag -> ESBranchFlag
+# branch
+# [14] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [15] ESAttackMultihit -> GAAA
+# Condition: None
+# Enemy action
+# [16] ESEndPath -> ESEndPath
+# end_turn
+# [17] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [18] ESAttackMultihit -> Guguhh... Guah... GAAAA!!!
+# Condition: None
+# Enemy action
+# [19] ESEndPath -> ESEndPath
+# end_turn

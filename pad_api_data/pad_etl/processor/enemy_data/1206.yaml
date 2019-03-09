@@ -1,0 +1,114 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1206
+monster_name_en: 5 Mechdragon Fusion, God Canopus
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 3
+############################################################
+!SkillRecordListing
+level: 3
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  name_en: God Dragons' Field
+  name_jp: God Dragons' Field
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 24
+  desc_jp: ''
+  name_en: HP <= 24
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 200% damage
+  desc_jp: Deal 200% damage
+  name_en: Final God Cannon
+  name_jp: Final God Cannon
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 24
+  desc_jp: ''
+  name_en: HP <= 24
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 999 turns
+  desc_jp: Increase damage to 200% for the next 999 turns
+  name_en: God Mode Activated!!
+  name_jp: God Mode Activated!!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESStatusShield -> God Dragons' Field
+# Condition: None
+# Voids status ailments for 999 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESBranchFlag -> ESBranchFlag
+# branch
+# [10] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [11] ESOrbChangeAttack -> Super Hadar Missile
+# Condition: None
+# Change Random to Jammer
+# [12] ESBranchFlag -> ESBranchFlag
+# branch
+# [13] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [14] ESAttackMultihit -> Lightning Regulus Claw
+# Condition: None
+# Enemy action
+# [15] ESBranchFlag -> ESBranchFlag
+# branch
+# [16] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [17] ESBindAttack -> Canopus Tornado Cutter
+# Condition: None
+# Bind 1 subs for 2~3 turns
+# [18] ESBranchFlag -> ESBranchFlag
+# branch
+# [19] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [20] ESOrbChangeAttack -> Betelgeuse Bomb
+# Condition: None
+# Change Random to Fire
+# [21] ESBranchFlag -> ESBranchFlag
+# branch
+# [22] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [23] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [24] ESGravity -> Aldebaran Crusher
+# Condition: None
+# Player -99% HP
+# [25] ESEndPath -> ESEndPath
+# end_turn
+# [26] ESAttackUp -> God Mode Activated!!
+# Condition: One-time use
+# Increase damage to 200% for the next 999 turns
+# [27] ESAttackMultihit -> Final God Cannon
+# Condition: None
+# Enemy action

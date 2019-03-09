@@ -1,0 +1,60 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1290
+monster_name_en: Henry Boram
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Light by 50%
+  desc_jp: Reduce damage from Light by 50%
+  name_en: Halve Light
+  name_jp: Halve Light
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 50% hp
+  desc_jp: Enemy recover 50% hp
+  name_en: Heal!
+  name_jp: Heal!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 20
+  desc_jp: ''
+  name_en: HP <= 20
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 100% hp
+  desc_jp: Enemy recover 100% hp
+  name_en: Resurrection
+  name_jp: Resurrection
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESRecoverEnemy -> Resurrection
+# Condition: When < 20% hp , one-time use
+# Enemy recover 100% hp
+# [2] ESRecoverEnemy -> Heal!
+# Condition: None
+# Enemy recover 50% hp
+# [3] ESAttributeResist -> Halve Light
+# Reduce damage from Light by 50%

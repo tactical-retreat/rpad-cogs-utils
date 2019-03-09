@@ -1,0 +1,76 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1262
+monster_name_en: Divine Flower Suzaku, Leilan
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Heal to Fire, Deal 80% damage
+  desc_jp: Change Heal to Fire, Deal 80% damage
+  name_en: Crimson Slash
+  name_jp: Crimson Slash
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 100%~125% damage (4~5 hits, 25% each)
+  desc_jp: Deal 100%~125% damage (4~5 hits, 25% each)
+  name_en: Fenghuang Sword Dance
+  name_jp: Fenghuang Sword Dance
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind Light cards for 3~4 turns
+  desc_jp: Bind Light cards for 3~4 turns
+  name_en: Light Absorbing Vine Snare
+  name_jp: Light Absorbing Vine Snare
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 30
+  desc_jp: ''
+  name_en: HP <= 30
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 350% damage (7 hits, 50% each)
+  desc_jp: Deal 350% damage (7 hits, 50% each)
+  name_en: Southern Seven-Star Formation
+  name_jp: Southern Seven-Star Formation
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBindAttribute -> Light Absorbing Vine Snare
+# Condition: When < 50% hp , one-time use
+# Bind Light cards for 3~4 turns
+# [2] ESAttackMultihit -> Southern Seven-Star Formation
+# Condition: When < 30% hp
+# Enemy action
+# [3] ESOrbChangeAttack -> Crimson Slash
+# Condition: 50% chance
+# Change Heal to Fire
+# [4] ESAttackMultihit -> Fenghuang Sword Dance
+# Condition: None
+# Enemy action

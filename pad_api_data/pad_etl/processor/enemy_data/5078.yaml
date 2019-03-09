@@ -1,0 +1,171 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 5078
+monster_name_en: Ryu
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
+    orbs
+  desc_jp: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
+    orbs
+  name_en: This is the path of my destiny!
+  name_jp: This is the path of my destiny!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy action + Enemy action + Enemy action
+  desc_jp: Enemy action + Enemy action + Enemy action
+  name_en: Collarbone Breaker + Disable Skill + Hadoken
+  name_jp: Collarbone Breaker + Disable Skill + Hadoken
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Bind 1 subs for 1~2 turns + Enemy action + Enemy action
+  desc_jp: Bind 1 subs for 1~2 turns + Enemy action + Enemy action
+  name_en: Solar Plexus Strike + Disable Skill + Shoryuken
+  name_jp: Solar Plexus Strike + Disable Skill + Shoryuken
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Player -25% HP + Enemy action + Absorb combo <= 5 damage for 1 turns
+  desc_jp: Player -25% HP + Enemy action + Absorb combo <= 5 damage for 1 turns
+  name_en: Axe Kick + Disable Skill + Tatsumaki Senpukyaku
+  name_jp: Axe Kick + Disable Skill + Tatsumaki Senpukyaku
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 150% for the next 10 turns + Do nothing
+  desc_jp: Increase damage to 150% for the next 10 turns + Do nothing
+  name_en: 'Denjin Renki + Now the fight''s begun! '
+  name_jp: 'Denjin Renki + Now the fight''s begun! '
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy action + Enemy action + Change 3rd row to Light orbs
+  desc_jp: Enemy action + Enemy action + Change 3rd row to Light orbs
+  name_en: Collarbone Breaker + Disable Skill + Ooo!
+  name_jp: Collarbone Breaker + Disable Skill + Ooo!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Bind 1 subs for 1~2 turns + Enemy action + Change 4th column to Light orbs
+  desc_jp: Bind 1 subs for 1~2 turns + Enemy action + Change 4th column to Light orbs
+  name_en: Solar Plexus Strike + Disable Skill + Shoryuken
+  name_jp: Solar Plexus Strike + Disable Skill + Shoryuken
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 14
+  desc_jp: ''
+  name_en: HP <= 14
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 4th, 5th column to Light orbs, Deal 400% damage
+  desc_jp: Change 4th, 5th column to Light orbs, Deal 400% damage
+  name_en: Denjin Hadoken
+  name_jp: Denjin Hadoken
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESOrbLock -> This is the path of my destiny!
+# Condition: One-time use
+# Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [3] ESBranchHP -> ESBranchHP
+# branch
+# [4] ESBranchCounter -> ESBranchCounter
+# branch
+# [5] ESSetCounter -> ESSetCounter
+# set_counter
+# [6] SkillSet:
+# 	Condition: 33% chance
+# 	[0] ESAttackMultihit -> Collarbone Breaker
+# 	Enemy action
+# 	[1] ESAttackSinglehit -> Disable Skill
+# 	Enemy action
+# 	[2] ESAttackMultihit -> Hadoken
+# 	Enemy action
+# [7] SkillSet:
+# 	Condition: 33% chance
+# 	[0] ESBindAttack -> Solar Plexus Strike
+# 	Bind 1 subs for 1~2 turns
+# 	[1] ESAttackSinglehit -> Disable Skill
+# 	Enemy action
+# 	[2] ESAttackMultihit -> Shoryuken
+# 	Enemy action
+# [8] SkillSet:
+# 	Condition: 34% chance
+# 	[0] ESGravity -> Axe Kick
+# 	Player -25% HP
+# 	[1] ESAttackSinglehit -> Disable Skill
+# 	Enemy action
+# 	[2] ESAbsorbCombo -> Tatsumaki Senpukyaku
+# 	Absorb combo <= 5 damage for 1 turns
+# [9] ESEndPath -> ESEndPath
+# end_turn
+# [10] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESAttackUp -> Denjin Renki
+# 	Increase damage to 150% for the next 10 turns
+# 	[1] ESInactivity -> Now the fight's begun! 
+# 	Do nothing
+# [11] ESBranchHP -> ESBranchHP
+# branch
+# [12] SkillSet:
+# 	Condition: 50% chance
+# 	[0] ESAttackMultihit -> Collarbone Breaker
+# 	Enemy action
+# 	[1] ESAttackSinglehit -> Disable Skill
+# 	Enemy action
+# 	[2] ESRowSpawnMulti -> Ooo!
+# 	Change 3rd row to Light orbs
+# [13] SkillSet:
+# 	Condition: 50% chance
+# 	[0] ESBindAttack -> Solar Plexus Strike
+# 	Bind 1 subs for 1~2 turns
+# 	[1] ESAttackSinglehit -> Disable Skill
+# 	Enemy action
+# 	[2] ESColumnSpawnMulti -> Shoryuken
+# 	Change 4th column to Light orbs
+# [14] ESEndPath -> ESEndPath
+# end_turn
+# [15] ESColumnSpawnMulti -> Denjin Hadoken
+# Condition: None
+# Change 4th, 5th column to Light orbs
+# [16] ESEndPath -> ESEndPath
+# end_turn
+# [17] ESSetCounter -> ESSetCounter
+# set_counter
+# [18] ESAttackMultihit -> Shinku Hadoken
+# Condition: None
+# Enemy action
+# [19] ESEndPath -> ESEndPath
+# end_turn

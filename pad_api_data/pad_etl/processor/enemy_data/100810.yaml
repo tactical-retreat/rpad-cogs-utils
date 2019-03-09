@@ -1,0 +1,125 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 100810
+monster_name_en: Alt. War God of Metal, Takeminakata
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Absorb combo <= 7 damage for 6 turns
+    + Reduce damage from all sources by 90% for 6 turns
+  desc_jp: Voids status ailments for 999 turns + Absorb combo <= 7 damage for 6 turns
+    + Reduce damage from all sources by 90% for 6 turns
+  name_en: Divine Wind of Suwa + The Pinnacle of Warfare + Divine Pillar
+  name_jp: Divine Wind of Suwa + The Pinnacle of Warfare + Divine Pillar
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 1000% damage
+  desc_jp: Change Random to Jammer, Deal 1000% damage
+  name_en: Wisteria Branch of Rust
+  name_jp: Wisteria Branch of Rust
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 2
+  desc_jp: ''
+  name_en: Turn 2
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Jammer, Poison skyfall +20% for 10 turns + Enemy action
+  desc_jp: Jammer, Poison skyfall +20% for 10 turns + Enemy action
+  name_en: Dead Leaves of the God Tree + Divine Katana of Yasaka
+  name_jp: Dead Leaves of the God Tree + Divine Katana of Yasaka
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 3
+  desc_jp: ''
+  name_en: Turn 3
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 99 turns + Absorb damage >= 10000000
+    damage for 10 turns
+  desc_jp: Increase damage to 200% for the next 99 turns + Absorb damage >= 10000000
+    damage for 10 turns
+  name_en: Unforgivable Compilation + War God's Robes
+  name_jp: Unforgivable Compilation + War God's Robes
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 320% damage (8 hits, 40% each)
+  desc_jp: Deal 320% damage (8 hits, 40% each)
+  name_en: Divine Katana of Yasaka
+  name_jp: Divine Katana of Yasaka
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 25
+  desc_jp: ''
+  name_en: HP <= 25
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 650% damage (2 hits, 325% each)
+  desc_jp: Deal 650% damage (2 hits, 325% each)
+  name_en: God Skill, God Channeling
+  name_jp: God Skill, God Channeling
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESStatusShield -> Divine Wind of Suwa
+# 	Voids status ailments for 999 turns
+# 	[1] ESAbsorbCombo -> The Pinnacle of Warfare
+# 	Absorb combo <= 7 damage for 6 turns
+# 	[2] ESDamageShield -> Divine Pillar
+# 	Reduce damage from all sources by 90% for 6 turns
+# [3] ESOrbChangeAttack -> Wisteria Branch of Rust
+# Condition: One-time use
+# Change Random to Jammer
+# [4] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESSkyfall -> Dead Leaves of the God Tree
+# 	Jammer, Poison skyfall +20% for 10 turns
+# 	[1] ESAttackMultihit -> Divine Katana of Yasaka
+# 	Enemy action
+# [5] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESAttackUp -> Unforgivable Compilation
+# 	Increase damage to 200% for the next 99 turns
+# 	[1] ESAbsorbThreshold -> War God's Robes
+# 	Absorb damage >= 10000000 damage for 10 turns
+# [6] ESAttackMultihit -> God Skill, God Channeling
+# Condition: When < 25% hp
+# Enemy action
+# [7] ESAttackMultihit -> Divine Katana of Yasaka
+# Condition: None
+# Enemy action
+# [8] ESEndPath -> ESEndPath
+# end_turn

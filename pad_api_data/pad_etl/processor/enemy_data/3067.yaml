@@ -1,0 +1,65 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3067
+monster_name_en: Dark Mode, Pepper
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  name_en: I'm Pepper, nice to meet you
+  name_jp: I'm Pepper, nice to meet you
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  name_en: Pe, pe, pe, pper!
+  name_jp: Pe, pe, pe, pper!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  name_en: Let's line up Orbs!
+  name_jp: Let's line up Orbs!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESInactivity -> I'm Pepper, nice to meet you
+# Condition: None
+# Do nothing
+# [5] ESInactivity -> Pe, pe, pe, pper!
+# Condition: 50% chance
+# Do nothing
+# [6] ESInactivity -> Let's line up Orbs!
+# Condition: None
+# Do nothing
+# [7] SkillSet:
+# 	Condition: On death
+# 	[0] ESInactivity -> I'm looking forward to working with you
+# 	Do nothing

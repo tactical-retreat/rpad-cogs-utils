@@ -1,0 +1,155 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1379
+monster_name_en: '***** (Dragon Ball)'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 75% damage
+  desc_jp: Change Random to Jammer, Deal 75% damage
+  name_en: '***** (Dragon Ball)'
+  name_jp: '***** (Dragon Ball)'
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 75
+  desc_jp: ''
+  name_en: HP <= 75
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  name_en: '***** (Dragon Ball)'
+  name_jp: '***** (Dragon Ball)'
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 250% damage
+  desc_jp: Deal 250% damage
+  name_en: '***** (Dragon Ball)'
+  name_jp: '***** (Dragon Ball)'
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 75
+  desc_jp: ''
+  name_en: HP <= 75
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 250% damage
+  desc_jp: Deal 250% damage
+  name_en: '***** (Dragon Ball)'
+  name_jp: '***** (Dragon Ball)'
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 125% damage
+  desc_jp: Blind all orbs on the board, Deal 125% damage
+  name_en: '***** (Dragon Ball)'
+  name_jp: '***** (Dragon Ball)'
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 30
+  desc_jp: ''
+  name_en: HP <= 30
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  name_en: '***** (Dragon Ball)'
+  name_jp: '***** (Dragon Ball)'
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 1000% damage
+  desc_jp: Deal 1000% damage
+  name_en: '***** (Dragon Ball)'
+  name_jp: '***** (Dragon Ball)'
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 30
+  desc_jp: ''
+  name_en: HP <= 30
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 1000% damage
+  desc_jp: Deal 1000% damage
+  name_en: '***** (Dragon Ball)'
+  name_jp: '***** (Dragon Ball)'
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESNone -> ESNone
+# None
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchHP -> ESBranchHP
+# branch
+# [5] ESAttackUp -> ***** (Dragon Ball)
+# Condition: When < 50% hp
+# Increase damage to 200% for the next 999 turns
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] ESBlind -> ***** (Dragon Ball)
+# Condition: When < 50% hp , one-time use
+# Blind all orbs on the board
+# [8] ESOrbChangeAttack -> ***** (Dragon Ball)
+# Condition: 50% chance
+# Change Random to Jammer
+# [9] ESEndPath -> ESEndPath
+# end_turn
+# [10] ESBranchFlag -> ESBranchFlag
+# branch
+# [11] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [12] ESStatusShield -> ***** (Dragon Ball)
+# Condition: When < 75% hp
+# Voids status ailments for 999 turns
+# [13] ESBranchFlag -> ESBranchFlag
+# branch
+# [14] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [15] ESAttackMultihit -> ***** (Dragon Ball)
+# Condition: When < 75% hp
+# Enemy action
+# [16] ESEndPath -> ESEndPath
+# end_turn
+# [17] ESBranchFlag -> ESBranchFlag
+# branch
+# [18] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [19] ESInactivity -> ***** (Dragon Ball)
+# Condition: When < 30% hp
+# Do nothing
+# [20] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [21] ESAttackMultihit -> ***** (Dragon Ball)
+# Condition: When < 30% hp
+# Enemy action

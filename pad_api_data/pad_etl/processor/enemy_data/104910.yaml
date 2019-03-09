@@ -1,0 +1,115 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 104910
+monster_name_en: "\u4EEE\u9762\u30E9\u30A4\u30C0\u30FC\uFF22\uFF2C\uFF21\uFF23\uFF2B"
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  name_en: Multi Eye
+  name_jp: Multi Eye
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing + Enemy action
+  desc_jp: Do nothing + Enemy action
+  name_en: Rider Jump + Rider Kick
+  name_jp: Rider Jump + Rider Kick
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Do nothing + Enemy action
+  desc_jp: Do nothing + Enemy action
+  name_en: Rider Jump + Rider Punch
+  name_jp: Rider Jump + Rider Punch
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Do nothing + Enemy action
+  desc_jp: Do nothing + Enemy action
+  name_en: Rider Jump + Rider Chop
+  name_jp: Rider Jump + Rider Chop
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Leader changes to random sub for 1 turns
+  desc_jp: Leader changes to random sub for 1 turns
+  name_en: Rider Throw
+  name_jp: Rider Throw
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESStatusShield -> Multi Eye
+# Condition: One-time use
+# Voids status ailments for 999 turns
+# [5] ESBranchHP -> ESBranchHP
+# branch
+# [6] SkillSet:
+# 	Condition: 34% chance
+# 	[0] ESInactivity -> Rider Jump
+# 	Do nothing
+# 	[1] ESAttackMultihit -> Rider Kick
+# 	Enemy action
+# [7] SkillSet:
+# 	Condition: 33% chance
+# 	[0] ESInactivity -> Rider Jump
+# 	Do nothing
+# 	[1] ESAttackMultihit -> Rider Punch
+# 	Enemy action
+# [8] SkillSet:
+# 	Condition: 33% chance
+# 	[0] ESInactivity -> Rider Jump
+# 	Do nothing
+# 	[1] ESAttackMultihit -> Rider Chop
+# 	Enemy action
+# [9] ESEndPath -> ESEndPath
+# end_turn
+# [10] ESBranchHP -> ESBranchHP
+# branch
+# [11] ESBranchFlag -> ESBranchFlag
+# branch
+# [12] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [13] ESLeaderSwap -> Rider Throw
+# Condition: None
+# Leader changes to random sub for 1 turns
+# [14] ESEndPath -> ESEndPath
+# end_turn
+# [15] ESBranchFlag -> ESBranchFlag
+# branch
+# [16] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [17] ESAttackUp -> Vital Charge
+# Condition: None
+# Increase damage to 150% for the next 999 turns
+# [18] ESEndPath -> ESEndPath
+# end_turn

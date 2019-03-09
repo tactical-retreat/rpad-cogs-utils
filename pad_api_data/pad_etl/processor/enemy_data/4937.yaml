@@ -1,0 +1,175 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4937
+monster_name_en: '*****'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 5 turns
+  desc_jp: Voids status ailments for 5 turns
+  name_en: Declaration of War
+  name_jp: Declaration of War
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  name_en: Shadow Punch
+  name_jp: Shadow Punch
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 120% damage
+  desc_jp: Deal 120% damage
+  name_en: Shadow Kick
+  name_jp: Shadow Kick
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Random to Wood, Deal 100% damage
+  desc_jp: Change Random to Wood, Deal 100% damage
+  name_en: Shadow Beam
+  name_jp: Shadow Beam
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 74
+  desc_jp: ''
+  name_en: HP <= 74
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 100% hp
+  desc_jp: Enemy recover 100% hp
+  name_en: Moon Rock - Kingstone
+  name_jp: Moon Rock - Kingstone
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb combo <= 4 damage for 5 turns
+  desc_jp: Absorb combo <= 4 damage for 5 turns
+  name_en: Moon Rock - Kingstone
+  name_jp: Moon Rock - Kingstone
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  name_en: Satan Saber
+  name_jp: Satan Saber
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Dark, Deal 120% damage
+  desc_jp: Change Random to Dark, Deal 120% damage
+  name_en: Destruction Beam
+  name_jp: Destruction Beam
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Spawn random 5 Light orbs, Deal 100% damage
+  desc_jp: Spawn random 5 Light orbs, Deal 100% damage
+  name_en: Intense Yellow Beam
+  name_jp: Intense Yellow Beam
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchCard -> ESBranchCard
+# branch
+# [5] ESStatusShield -> Declaration of War
+# Condition: One-time use
+# Voids status ailments for 5 turns
+# [6] ESStatusShield -> I'll send you to hell this time
+# Condition: One-time use
+# Voids status ailments for 5 turns
+# [7] ESBranchHP -> ESBranchHP
+# branch
+# [8] ESAttackMultihit -> Shadow Punch
+# Condition: 33% chance
+# Enemy action
+# [9] ESAttackMultihit -> Shadow Kick
+# Condition: 33% chance
+# Enemy action
+# [10] ESOrbChangeAttack -> Shadow Beam
+# Condition: 34% chance
+# Change Random to Wood
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESBranchHP -> ESBranchHP
+# branch
+# [13] ESBranchFlag -> ESBranchFlag
+# branch
+# [14] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [15] ESRecoverEnemy -> Moon Rock - Kingstone
+# Condition: None
+# Enemy recover 100% hp
+# [16] ESEndPath -> ESEndPath
+# end_turn
+# [17] ESBranchHP -> ESBranchHP
+# branch
+# [18] ESBranchFlag -> ESBranchFlag
+# branch
+# [19] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [20] ESAbsorbCombo -> Moon Rock - Kingstone
+# Condition: None
+# Absorb combo <= 4 damage for 5 turns
+# [21] ESEndPath -> ESEndPath
+# end_turn
+# [22] ESGravity -> Satan Saber
+# Condition: One-time use
+# Player -99% HP
+# [23] ESOrbChangeAttack -> Destruction Beam
+# Condition: 33% chance
+# Change Random to Dark
+# [24] ESRandomSpawn -> Intense Yellow Beam
+# Condition: 34% chance & when Fire, Water, Wood, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 5 Light orbs
+# [25] ESEndPath -> ESEndPath
+# end_turn
+# [26] ESBranchFlag -> ESBranchFlag
+# branch
+# [27] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [28] ESAttackUp -> Moon Rock - Kingstone
+# Condition: None
+# Increase damage to 150% for the next 5 turns
+# [29] ESEndPath -> ESEndPath
+# end_turn

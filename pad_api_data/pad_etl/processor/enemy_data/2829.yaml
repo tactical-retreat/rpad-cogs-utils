@@ -1,0 +1,86 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2829
+monster_name_en: Assault Superman Soldier (Film)
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Turn 2
+  desc_jp: ''
+  name_en: Turn 2
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 120% for the next 999 turns
+  desc_jp: Increase damage to 120% for the next 999 turns
+  name_en: Advance
+  name_jp: Advance
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage (2 hits, 50% each)
+  desc_jp: Deal 100% damage (2 hits, 50% each)
+  name_en: Full Auto
+  name_jp: Full Auto
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next attack
+  desc_jp: Increase damage to 200% for the next attack
+  name_en: Encircle
+  name_jp: Encircle
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 20
+  desc_jp: ''
+  name_en: HP <= 20
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Delay active skills by 1 turns, Deal 120% damage
+  desc_jp: Delay active skills by 1 turns, Deal 120% damage
+  name_en: Tackle
+  name_jp: Tackle
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESAttackUp -> Advance
+# Condition: None
+# Increase damage to 120% for the next 999 turns
+# [4] ESSkillDelay -> Tackle
+# Condition: When < 20% hp
+# Delay active skills by 1 turns
+# [5] ESStorePower -> Encircle
+# Condition: When < 50% hp , one-time use
+# Increase damage to 200% for the next attack
+# [6] ESAttackMultihit -> Full Auto
+# Condition: None
+# Enemy action

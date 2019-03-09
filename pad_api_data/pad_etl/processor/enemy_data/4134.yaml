@@ -1,0 +1,141 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4134
+monster_name_en: Brachydios
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Spawn Bomb orbs in the specified positions, Deal 100% damage
+  desc_jp: Spawn Bomb orbs in the specified positions, Deal 100% damage
+  name_en: Jumping Strike Attack
+  name_jp: Jumping Strike Attack
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 39
+  desc_jp: ''
+  name_en: HP <= 39
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 1 random subs for 1 turns + Increase damage to 126% for the next 10
+    turns
+  desc_jp: Bind 1 random subs for 1 turns + Increase damage to 126% for the next 10
+    turns
+  name_en: Roar + Anger
+  name_jp: Roar + Anger
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 39
+  desc_jp: ''
+  name_en: HP <= 39
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 4 Fire orbs, Deal 105% damage
+  desc_jp: Spawn random 4 Fire orbs, Deal 105% damage
+  name_en: Foreleg Slam
+  name_jp: Foreleg Slam
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Blind orbs in specific positions for 1 turns, Deal 105% damage
+  desc_jp: Blind orbs in specific positions for 1 turns, Deal 105% damage
+  name_en: Charge
+  name_jp: Charge
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change 2nd, 5th column to Fire orbs, Deal 105% damage
+  desc_jp: Change 2nd, 5th column to Fire orbs, Deal 105% damage
+  name_en: Jumping Strike Attack
+  name_jp: Jumping Strike Attack
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 110% damage
+  desc_jp: Deal 110% damage
+  name_en: Spinning Tail Attack
+  name_jp: Spinning Tail Attack
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESBombFixedSpawn -> Jumping Strike Attack
+# Condition: None
+# Spawn Bomb orbs in the specified positions
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESBranchCounter -> ESBranchCounter
+# branch
+# [10] ESSetCounter -> ESSetCounter
+# set_counter
+# [11] ESBombRandomSpawn -> Foreleg Slam
+# Condition: 30% chance
+# Spawn random 3 Bomb orbs
+# [12] ESBombFixedSpawn -> Charge
+# Condition: 15% chance
+# Spawn Bomb orbs in the specified positions
+# [13] ESBombFixedSpawn -> Slime-Coated Headbutt
+# Condition: 15% chance
+# Spawn Bomb orbs in the specified positions
+# [14] ESAttackMultihit -> Spinning Tail Attack
+# Condition: 40% chance
+# Enemy action
+# [15] ESEndPath -> ESEndPath
+# end_turn
+# [16] ESSetCounter -> ESSetCounter
+# set_counter
+# [17] ESInactivity -> Spreading Slime
+# Condition: None
+# Do nothing
+# [18] ESBranchFlag -> ESBranchFlag
+# branch
+# [19] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [20] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESBindRandomSub -> Roar
+# 	Bind 1 random subs for 1 turns
+# 	[1] ESAttackUp -> Anger
+# 	Increase damage to 126% for the next 10 turns
+# [21] ESEndPath -> ESEndPath
+# end_turn
+# [22] ESBoardChangeAttackBits -> Slime Mold Explosion
+# Condition: One-time use
+# Change all orbs to Fire, Jammer
+# [23] ESRandomSpawn -> Foreleg Slam
+# Condition: 30% chance & when Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 4 Fire orbs
+# [24] ESBlindStickyFixed -> Charge
+# Condition: 20% chance
+# Blind orbs in specific positions for 1 turns
+# [25] ESColumnSpawnMulti -> Jumping Strike Attack
+# Condition: 20% chance
+# Change 2nd, 5th column to Fire orbs
+# [26] ESAttackMultihit -> Spinning Tail Attack
+# Condition: 30% chance
+# Enemy action
+# [27] ESEndPath -> ESEndPath
+# end_turn

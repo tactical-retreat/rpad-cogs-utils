@@ -1,0 +1,96 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2948
+monster_name_en: Almighty Awoken Zeus-Dios
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 99% for 6 turns + Enemy action
+  desc_jp: Reduce damage from all sources by 99% for 6 turns + Enemy action
+  name_en: Atmospheric Barrier + Jupiter Judgment
+  name_jp: Atmospheric Barrier + Jupiter Judgment
+  record_type_name: PREEMPT
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESDamageShield -> Atmospheric Barrier
+# 	Reduce damage from all sources by 99% for 6 turns
+# 	[1] ESAttackMultihit -> Jupiter Judgment
+# 	Enemy action
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESStatusShield -> Protection of the Gods
+# 	Voids status ailments for 999 turns
+# 	[1] ESAbsorbThreshold -> Storm Vesture
+# 	Absorb damage >= 3000000 damage for 5 turns
+# 	[2] ESOrbLock -> Shall we begin?
+# 	Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [7] ESBranchFlag -> ESBranchFlag
+# branch
+# [8] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [9] ESBoardChangeAttackBits -> Jupiter Genesis
+# Condition: None
+# Change all orbs to Wood
+# [10] ESEndPath -> ESEndPath
+# end_turn
+# [11] ESBranchFlag -> ESBranchFlag
+# branch
+# [12] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [13] ESBoardChangeAttackBits -> Jupiter Genesis
+# Condition: None
+# Change all orbs to Wood
+# [14] ESEndPath -> ESEndPath
+# end_turn
+# [15] ESBranchFlag -> ESBranchFlag
+# branch
+# [16] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [17] ESBoardChangeAttackBits -> Jupiter Genesis
+# Condition: None
+# Change all orbs to Wood
+# [18] ESEndPath -> ESEndPath
+# end_turn
+# [19] ESBranchFlag -> ESBranchFlag
+# branch
+# [20] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [21] ESBoardChangeAttackBits -> Jupiter Genesis
+# Condition: None
+# Change all orbs to Wood
+# [22] ESEndPath -> ESEndPath
+# end_turn
+# [23] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [24] ESOrbLock -> Catching breath
+# Condition: None
+# Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [25] ESInactivity -> Catching breath
+# Condition: None
+# Do nothing
+# [26] ESEndPath -> ESEndPath
+# end_turn

@@ -1,0 +1,122 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2651
+monster_name_en: Metallic Star Dragon, Aries
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb combo <= 4 damage for 3 turns
+  desc_jp: Absorb combo <= 4 damage for 3 turns
+  name_en: Asteroid Steps
+  name_jp: Asteroid Steps
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 80% damage
+  desc_jp: Blind all orbs on the board, Deal 80% damage
+  name_en: Black Cloud
+  name_jp: Black Cloud
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 8 Dark orbs, Deal 100% damage
+  desc_jp: Spawn random 8 Dark orbs, Deal 100% damage
+  name_en: Dark Satellite
+  name_jp: Dark Satellite
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Spawn random 6 Poison orbs
+  desc_jp: Spawn random 6 Poison orbs
+  name_en: Death Erosion
+  name_jp: Death Erosion
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Delay active skills by 2 turns
+  desc_jp: Delay active skills by 2 turns
+  name_en: Helical Horns' Curse
+  name_jp: Helical Horns' Curse
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 10
+  desc_jp: ''
+  name_en: HP <= 10
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 300%~500% damage (3~5 hits, 100% each)
+  desc_jp: Deal 300%~500% damage (3~5 hits, 100% each)
+  name_en: Aries's Crest - Chaos
+  name_jp: Aries's Crest - Chaos
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESAbsorbCombo -> Asteroid Steps
+# Condition: None
+# Absorb combo <= 4 damage for 3 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESAttackMultihit -> Aries's Crest - Chaos
+# Condition: When < 10% hp
+# Enemy action
+# [10] ESBlind -> Black Cloud
+# Condition: One-time use
+# Blind all orbs on the board
+# [11] ESRandomSpawn -> Dark Satellite
+# Condition: 40% chance & when Fire, Water, Wood, Light, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 8 Dark orbs
+# [12] ESRandomSpawn -> Death Erosion
+# Condition: 30% chance & when Fire, Water, Wood, Light, Dark, Heal, Jammer, Mortal Poison orbs are on the board
+# Spawn random 6 Poison orbs
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESBranchFlag -> ESBranchFlag
+# branch
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] ESSkillDelay -> Helical Horns' Curse
+# Condition: None
+# Delay active skills by 2 turns
+# [17] ESEndPath -> ESEndPath
+# end_turn

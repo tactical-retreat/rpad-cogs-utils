@@ -1,0 +1,50 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4577
+monster_name_en: Dark Paths Guardian Genbu, Meimei
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Wood, Dark skyfall +15% for 3 turns
+  desc_jp: Wood, Dark skyfall +15% for 3 turns
+  name_en: Radiance of the Black Kingfisher
+  name_jp: Radiance of the Black Kingfisher
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage (2 hits, 50% each)
+  desc_jp: Deal 100% damage (2 hits, 50% each)
+  name_en: Black Mist of Genbu
+  name_jp: Black Mist of Genbu
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESSkyfall -> Radiance of the Black Kingfisher
+# Condition: One-time use
+# Wood, Dark skyfall +15% for 3 turns
+# [3] ESAttackMultihit -> Black Mist of Genbu
+# Condition: None
+# Enemy action
+# [4] ESEndPath -> ESEndPath
+# end_turn

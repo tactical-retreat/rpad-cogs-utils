@@ -1,0 +1,104 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2059
+monster_name_en: Dancing Mad, Kefka
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Light, Dark by 50%
+  desc_jp: Reduce damage from Light, Dark by 50%
+  name_en: '*****'
+  name_jp: '*****'
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  name_en: I'll destroy them all!
+  name_jp: I'll destroy them all!
+  record_type_name: PREEMPT
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Light, Dark by 50%
+  desc_jp: Reduce damage from Light, Dark by 50%
+  name_en: '*****'
+  name_jp: '*****'
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  name_en: I'll destroy them all!
+  name_jp: I'll destroy them all!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  name_en: I'll destroy them all!
+  name_jp: I'll destroy them all!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESBranchFlag -> ESBranchFlag
+# branch
+# [4] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [5] ESInactivity -> I'll destroy them all!
+# Condition: None
+# Do nothing
+# [6] ESBranchFlag -> ESBranchFlag
+# branch
+# [7] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [8] ESStatusShield -> I'll destroy them all!
+# Condition: None
+# Voids status ailments for 999 turns
+# [9] ESBranchHP -> ESBranchHP
+# branch
+# [10] ESGravity -> Heartless Angel
+# Condition: One-time use
+# Player -99% HP
+# [11] ESAttackMultihit -> Havoc Wing
+# Condition: 40% chance
+# Enemy action
+# [12] ESBindSkill -> Trine
+# Condition: 40% chance
+# Bind active skills for 2 turns
+# [13] ESAttackSinglehit -> Disable Skill
+# Condition: 20% chance
+# Enemy action
+# [14] ESEndPath -> ESEndPath
+# end_turn
+# [15] ESBranchFlag -> ESBranchFlag
+# branch
+# [16] ESFlagOperation -> ESFlagOperation
+# flag_operation

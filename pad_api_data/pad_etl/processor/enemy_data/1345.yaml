@@ -1,0 +1,140 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1345
+monster_name_en: Eternal Twin Stars, Idunn & Idunna
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Player recover 100% hp
+  desc_jp: Player recover 100% hp
+  name_en: Golden Apple of Immortality
+  name_jp: Golden Apple of Immortality
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 150% damage (3 hits, 50% each)
+  desc_jp: Deal 150% damage (3 hits, 50% each)
+  name_en: Walnut Shot
+  name_jp: Walnut Shot
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Spawn random 5 Water orbs, Deal 130% damage
+  desc_jp: Spawn random 5 Water orbs, Deal 130% damage
+  name_en: Arrow Rain
+  name_jp: Arrow Rain
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change 1st, 6th column to Water orbs, Deal 140% damage
+  desc_jp: Change 1st, 6th column to Water orbs, Deal 140% damage
+  name_en: Twin Aqua Feather
+  name_jp: Twin Aqua Feather
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 69
+  desc_jp: ''
+  name_en: HP <= 69
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind active skills for 3 turns
+  desc_jp: Bind active skills for 3 turns
+  name_en: Angel Kiss
+  name_jp: Angel Kiss
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 100% hp
+  desc_jp: Enemy recover 100% hp
+  name_en: Twinkle Apple
+  name_jp: Twinkle Apple
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 20
+  desc_jp: ''
+  name_en: HP <= 20
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Player -100% HP
+  desc_jp: Player -100% HP
+  name_en: End of Eternity
+  name_jp: End of Eternity
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESRecoverPlayer -> Golden Apple of Immortality
+# Condition: None
+# Player recover 100% hp
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchCard -> ESBranchCard
+# branch
+# [7] ESBranchHP -> ESBranchHP
+# branch
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESGravity -> End of Eternity
+# Condition: When < 20% hp , one-time use
+# Player -100% HP
+# [10] ESAttackMultihit -> Walnut Shot
+# Condition: 33% chance
+# Enemy action
+# [11] ESRandomSpawn -> Arrow Rain
+# Condition: 34% chance & when Fire, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 5 Water orbs
+# [12] ESColumnSpawnMulti -> Twin Aqua Feather
+# Condition: 33% chance
+# Change 1st, 6th column to Water orbs
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESBranchFlag -> ESBranchFlag
+# branch
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] ESStatusShield -> Don't come any closer!
+# Condition: None
+# Voids status ailments for 999 turns
+# [17] ESBranchFlag -> ESBranchFlag
+# branch
+# [18] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [19] ESRecoverEnemy -> Twinkle Apple
+# Condition: None
+# Enemy recover 100% hp
+# [20] ESBranchFlag -> ESBranchFlag
+# branch
+# [21] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [22] ESBindSkill -> Angel Kiss
+# Condition: None
+# Bind active skills for 3 turns

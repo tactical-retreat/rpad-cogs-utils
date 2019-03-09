@@ -1,0 +1,133 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1168
+monster_name_en: Green Flower Dragon, Casablanca
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  name_en: Fertile Guard
+  name_jp: Fertile Guard
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Heal, Deal 200% damage
+  desc_jp: Change Random to Heal, Deal 200% damage
+  name_en: Mystic Bulb
+  name_jp: Mystic Bulb
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Player -50% HP
+  desc_jp: Player -50% HP
+  name_en: Mystic Bulb
+  name_jp: Mystic Bulb
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 75% damage
+  desc_jp: Blind all orbs on the board, Deal 75% damage
+  name_en: Mystic Bulb
+  name_jp: Mystic Bulb
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Fire to Wood, Deal 75% damage
+  desc_jp: Change Fire to Wood, Deal 75% damage
+  name_en: Mystic Bulb
+  name_jp: Mystic Bulb
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb Fire damage for 3 turns
+  desc_jp: Absorb Fire damage for 3 turns
+  name_en: Gabriel's Protection
+  name_jp: Gabriel's Protection
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 30
+  desc_jp: ''
+  name_en: HP <= 30
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 240% damage (3 hits, 80% each)
+  desc_jp: Deal 240% damage (3 hits, 80% each)
+  name_en: Mystic Blossom
+  name_jp: Mystic Blossom
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESStatusShield -> Fertile Guard
+# Condition: None
+# Voids status ailments for 999 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESAttackMultihit -> Mystic Blossom
+# Condition: When < 30% hp
+# Enemy action
+# [10] ESOrbChangeAttack -> Mystic Bulb
+# Condition: One-time use
+# Change Random to Heal
+# [11] ESGravity -> Mystic Bulb
+# Condition: 30% chance
+# Player -50% HP
+# [12] ESBlind -> Mystic Bulb
+# Condition: 30% chance
+# Blind all orbs on the board
+# [13] ESOrbChangeAttack -> Mystic Bulb
+# Condition: 30% chance
+# Change Fire to Wood
+# [14] ESNone -> ESNone
+# None
+# [15] ESEndPath -> ESEndPath
+# end_turn
+# [16] ESBranchFlag -> ESBranchFlag
+# branch
+# [17] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [18] ESAbsorbAttribute -> Gabriel's Protection
+# Condition: None
+# Absorb Fire damage for 3 turns
+# [19] ESEndPath -> ESEndPath
+# end_turn

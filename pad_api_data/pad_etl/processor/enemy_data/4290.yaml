@@ -1,0 +1,326 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4290
+monster_name_en: '*****'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 90%
+  desc_jp: Survive attacks with 1 HP when HP > 90%
+  name_en: Resolve 90
+  name_jp: Resolve 90
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Reduce damage from Wood by 50%
+  desc_jp: Reduce damage from Wood by 50%
+  name_en: Halve Wood
+  name_jp: Halve Wood
+  record_type_name: PASSIVE
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 90%
+  desc_jp: Survive attacks with 1 HP when HP > 90%
+  name_en: Resolve 90
+  name_jp: Resolve 90
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Reduce damage from Wood by 50%
+  desc_jp: Reduce damage from Wood by 50%
+  name_en: Halve Wood
+  name_jp: Halve Wood
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Turn 4
+  desc_jp: ''
+  name_en: Turn 4
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Bind 1 random cards for 2 turns
+  desc_jp: Voids status ailments for 999 turns + Bind 1 random cards for 2 turns
+  name_en: Massacre Force + Roar
+  name_jp: Massacre Force + Roar
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Blind orbs in specific positions for 1 turns, Deal 100% damage
+  desc_jp: Blind orbs in specific positions for 1 turns, Deal 100% damage
+  name_en: Pixel Punch
+  name_jp: Pixel Punch
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Blind orbs in specific positions for 1 turns, Deal 100% damage
+  desc_jp: Blind orbs in specific positions for 1 turns, Deal 100% damage
+  name_en: Pixel Punch
+  name_jp: Pixel Punch
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Blind orbs in specific positions for 1 turns, Deal 100% damage
+  desc_jp: Blind orbs in specific positions for 1 turns, Deal 100% damage
+  name_en: Pixel Punch
+  name_jp: Pixel Punch
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Blind orbs in specific positions for 1 turns, Deal 100% damage
+  desc_jp: Blind orbs in specific positions for 1 turns, Deal 100% damage
+  name_en: Pixel Punch
+  name_jp: Pixel Punch
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Blind orbs in specific positions for 1 turns, Deal 100% damage
+  desc_jp: Blind orbs in specific positions for 1 turns, Deal 100% damage
+  name_en: Pixel Punch
+  name_jp: Pixel Punch
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Blind orbs in specific positions for 1 turns, Deal 100% damage
+  desc_jp: Blind orbs in specific positions for 1 turns, Deal 100% damage
+  name_en: Pixel Punch
+  name_jp: Pixel Punch
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchCounter -> ESBranchCounter
+# branch
+# [2] ESSetCounter -> ESSetCounter
+# set_counter
+# [3] ESBranchLevel -> ESBranchLevel
+# branch
+# [4] ESEndPath -> ESEndPath
+# end_turn
+# [5] ESBlindStickyFixed -> Pixel Punch
+# Condition: 17% chance
+# Blind orbs in specific positions for 1 turns
+# [6] ESBlindStickyFixed -> Pixel Punch
+# Condition: 17% chance
+# Blind orbs in specific positions for 1 turns
+# [7] ESBlindStickyFixed -> Pixel Punch
+# Condition: 17% chance
+# Blind orbs in specific positions for 1 turns
+# [8] ESBlindStickyFixed -> Pixel Punch
+# Condition: 17% chance
+# Blind orbs in specific positions for 1 turns
+# [9] ESBlindStickyFixed -> Pixel Punch
+# Condition: 16% chance
+# Blind orbs in specific positions for 1 turns
+# [10] ESBlindStickyFixed -> Pixel Punch
+# Condition: 16% chance
+# Blind orbs in specific positions for 1 turns
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESNone -> ESNone
+# None
+# [13] ESNone -> ESNone
+# None
+# [14] ESNone -> ESNone
+# None
+# [15] ESNone -> ESNone
+# None
+# [16] ESNone -> ESNone
+# None
+# [17] ESNone -> ESNone
+# None
+# [18] ESNone -> ESNone
+# None
+# [19] ESNone -> ESNone
+# None
+# [20] ESNone -> ESNone
+# None
+# [21] ESNone -> ESNone
+# None
+# [22] ESNone -> ESNone
+# None
+# [23] ESNone -> ESNone
+# None
+# [24] ESNone -> ESNone
+# None
+# [25] ESNone -> ESNone
+# None
+# [26] ESNone -> ESNone
+# None
+# [27] ESNone -> ESNone
+# None
+# [28] ESNone -> ESNone
+# None
+# [29] ESNone -> ESNone
+# None
+# [30] ESNone -> ESNone
+# None
+# [31] ESNone -> ESNone
+# None
+# [32] ESNone -> ESNone
+# None
+# [33] ESBranchCounter -> ESBranchCounter
+# branch
+# [34] ESSetCounter -> ESSetCounter
+# set_counter
+# [35] ESBranchFlag -> ESBranchFlag
+# branch
+# [36] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [37] SkillSet:
+# 	Condition: None
+# 	[0] ESStatusShield -> Massacre Force
+# 	Voids status ailments for 999 turns
+# 	[1] ESBindRandom -> Roar
+# 	Bind 1 random cards for 2 turns
+# [38] ESEndPath -> ESEndPath
+# end_turn
+# [39] SkillSet:
+# 	Condition: When < 1% hp , one-time use
+# 	[0] ESBindSkill -> Roar
+# 	Bind active skills for 3 turns
+# 	[1] ESRecoverEnemy -> Enter Fury State
+# 	Enemy recover 60% hp
+# 	[2] ESDamageShield -> Burrow
+# 	Reduce damage from all sources by 75% for 1 turns
+# [40] ESBranchHP -> ESBranchHP
+# branch
+# [41] ESAttackMultihit -> Body Slam
+# Condition: 33% chance
+# Enemy action
+# [42] ESAttackMultihit -> Tail Swing
+# Condition: 33% chance
+# Enemy action
+# [43] ESRandomSpawn -> Dash Attack
+# Condition: 34% chance
+# Spawn random 3 Jammer orbs
+# [44] ESEndPath -> ESEndPath
+# end_turn
+# [45] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESBindSkill -> Roar
+# 	Bind active skills for 3 turns
+# 	[1] ESInactivity -> Enter Fury State
+# 	Do nothing
+# 	[2] ESDamageShield -> Burrow
+# 	Reduce damage from all sources by 75% for 1 turns
+# [46] ESAttackMultihit -> Burrowed Assault
+# Condition: One-time use
+# Enemy action
+# [47] ESBranchHP -> ESBranchHP
+# branch
+# [48] SkillSet:
+# 	Condition: 33% chance when < 40% hp
+# 	[0] ESAttackUp -> Rage
+# 	Increase damage to 150% for the next 1 turns
+# 	[1] ESOrbChangeAttack -> Horn Gouge
+# 	Change Random to Jammer
+# [49] SkillSet:
+# 	Condition: 50% chance when < 40% hp
+# 	[0] ESAttackUp -> Rage
+# 	Increase damage to 150% for the next 1 turns
+# 	[1] ESBlind -> Springing Burrow
+# 	Blind all orbs on the board
+# [50] SkillSet:
+# 	Condition: When < 40% hp
+# 	[0] ESAttackUp -> Rage
+# 	Increase damage to 150% for the next 1 turns
+# 	[1] ESAttackMultihit -> Combo Horn Thrash
+# 	Enemy action
+# [51] SkillSet:
+# 	Condition: 33% chance when < 60% hp
+# 	[0] ESAttackUp -> Rage
+# 	Increase damage to 140% for the next 1 turns
+# 	[1] ESOrbChangeAttack -> Horn Gouge
+# 	Change Random to Jammer
+# [52] SkillSet:
+# 	Condition: 50% chance when < 60% hp
+# 	[0] ESAttackUp -> Rage
+# 	Increase damage to 140% for the next 1 turns
+# 	[1] ESBlind -> Springing Burrow
+# 	Blind all orbs on the board
+# [53] SkillSet:
+# 	Condition: When < 60% hp
+# 	[0] ESAttackUp -> Rage
+# 	Increase damage to 140% for the next 1 turns
+# 	[1] ESAttackMultihit -> Combo Horn Thrash
+# 	Enemy action
+# [54] SkillSet:
+# 	Condition: 33% chance when < 70% hp
+# 	[0] ESAttackUp -> Rage
+# 	Increase damage to 130% for the next 1 turns
+# 	[1] ESOrbChangeAttack -> Horn Gouge
+# 	Change Random to Jammer
+# [55] SkillSet:
+# 	Condition: 50% chance when < 70% hp
+# 	[0] ESAttackUp -> Rage
+# 	Increase damage to 130% for the next 1 turns
+# 	[1] ESBlind -> Springing Burrow
+# 	Blind all orbs on the board
+# [56] SkillSet:
+# 	Condition: When < 70% hp
+# 	[0] ESAttackUp -> Rage
+# 	Increase damage to 130% for the next 1 turns
+# 	[1] ESAttackMultihit -> Combo Horn Thrash
+# 	Enemy action
+# [57] SkillSet:
+# 	Condition: 33% chance when < 90% hp
+# 	[0] ESAttackUp -> Rage
+# 	Increase damage to 120% for the next 1 turns
+# 	[1] ESOrbChangeAttack -> Horn Gouge
+# 	Change Random to Jammer
+# [58] SkillSet:
+# 	Condition: 50% chance when < 90% hp
+# 	[0] ESAttackUp -> Rage
+# 	Increase damage to 120% for the next 1 turns
+# 	[1] ESBlind -> Springing Burrow
+# 	Blind all orbs on the board
+# [59] SkillSet:
+# 	Condition: When < 90% hp
+# 	[0] ESAttackUp -> Rage
+# 	Increase damage to 120% for the next 1 turns
+# 	[1] ESAttackMultihit -> Combo Horn Thrash
+# 	Enemy action
+# [60] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESBindAwoken -> Roar
+# 	Bind awoken skills for 3 turns
+# 	[1] ESInactivity -> Enter Rampaging State
+# 	Do nothing
+# 	[2] ESDamageShield -> Burrow
+# 	Reduce damage from all sources by 75% for 1 turns
+# [61] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESAttackMultihit -> Burrowed Assault
+# 	Enemy action
+# 	[1] ESGravity -> Rampaging Downstrike
+# 	Player -99% HP
+# 	[2] ESBoardChangeAttackBits -> Rampaging Geyser
+# 	Change all orbs to Water
+# [62] SkillSet:
+# 	Condition: None
+# 	[0] ESAttackMultihit -> Rampaging Triple Dash
+# 	Enemy action
+# 	[1] ESBoardChangeAttackBits -> Rampaging Geyser
+# 	Change all orbs to Water
+# [63] ESResolve -> Resolve 90
+# Survive attacks with 1 HP when HP > 90%
+# [64] ESAttributeResist -> Halve Wood
+# Reduce damage from Wood by 50%

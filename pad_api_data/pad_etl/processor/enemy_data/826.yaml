@@ -1,0 +1,57 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 826
+monster_name_en: Chaos Dragon Knight, Voice
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb Dark damage for 3 turns
+  desc_jp: Absorb Dark damage for 3 turns
+  name_en: Cloak of Confusion
+  name_jp: Cloak of Confusion
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Jammer to Dark, Deal 200% damage
+  desc_jp: Change Jammer to Dark, Deal 200% damage
+  name_en: Black Storm
+  name_jp: Black Storm
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESAbsorbAttribute -> Cloak of Confusion
+# Condition: None
+# Absorb Dark damage for 3 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESOrbChangeAttack -> Black Storm
+# Condition: None
+# Change Jammer to Dark
+# [7] ESOrbChangeAttack -> Chaos Scythe
+# Condition: None
+# Change Random to Jammer

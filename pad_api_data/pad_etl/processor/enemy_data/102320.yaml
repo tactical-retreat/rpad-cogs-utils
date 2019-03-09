@@ -1,0 +1,164 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 102320
+monster_name_en: Alt. Awoken Jord
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Delay active skills by 2 turns
+  desc_jp: Delay active skills by 2 turns
+  name_en: Pride of the Aesir
+  name_jp: Pride of the Aesir
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Lock all Light orbs, Deal 90% damage
+  desc_jp: Lock all Light orbs, Deal 90% damage
+  name_en: Earth-Shattering Thunder Hammer
+  name_jp: Earth-Shattering Thunder Hammer
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Spawn random 1 Light orbs, Deal 100% damage
+  desc_jp: Spawn random 1 Light orbs, Deal 100% damage
+  name_en: Lightning Punch
+  name_jp: Lightning Punch
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change 4th, 5th row to Wood, Light orbs, Deal 120% damage
+  desc_jp: Change 4th, 5th row to Wood, Light orbs, Deal 120% damage
+  name_en: Bolt Impact
+  name_jp: Bolt Impact
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 75% for 1 turns
+  desc_jp: Reduce damage from all sources by 75% for 1 turns
+  name_en: Sacred Realm of Vingolf
+  name_jp: Sacred Realm of Vingolf
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Lock all Light orbs, Deal 90% damage
+  desc_jp: Lock all Light orbs, Deal 90% damage
+  name_en: Earth-Shattering Thunder Hammer
+  name_jp: Earth-Shattering Thunder Hammer
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Spawn random 1 Light orbs, Deal 100% damage
+  desc_jp: Spawn random 1 Light orbs, Deal 100% damage
+  name_en: Lightning Punch
+  name_jp: Lightning Punch
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change 4th, 5th row to Wood, Light orbs, Deal 120% damage
+  desc_jp: Change 4th, 5th row to Wood, Light orbs, Deal 120% damage
+  name_en: Bolt Impact
+  name_jp: Bolt Impact
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 2nd, 3rd column to Wood, Jammer orbs, Deal 150% damage
+  desc_jp: Change 2nd, 3rd column to Wood, Jammer orbs, Deal 150% damage
+  name_en: Swing
+  name_jp: Swing
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESSkillDelay -> Pride of the Aesir
+# Condition: One-time use
+# Delay active skills by 2 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchCard -> ESBranchCard
+# branch
+# [7] ESBranchCard -> ESBranchCard
+# branch
+# [8] ESBranchCard -> ESBranchCard
+# branch
+# [9] ESAttackMultihit -> Earth God's Rage
+# Condition: One-time use
+# Enemy action
+# [10] ESBranchHP -> ESBranchHP
+# branch
+# [11] ESOrbLock -> Earth-Shattering Thunder Hammer
+# Condition: 10% chance
+# Lock all Light orbs
+# [12] ESRandomSpawn -> Lightning Punch
+# Condition: 30% chance & when Fire, Water, Wood, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 1 Light orbs
+# [13] ESRowSpawnMulti -> Bolt Impact
+# Condition: 30% chance
+# Change 4th, 5th row to Wood, Light orbs
+# [14] ESColumnSpawnMulti -> Swing
+# Condition: 30% chance when < 50% hp
+# Change 2nd, 3rd column to Wood, Jammer orbs
+# [15] ESEndPath -> ESEndPath
+# end_turn
+# [16] ESBranchFlag -> ESBranchFlag
+# branch
+# [17] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [18] ESRandomSpawn -> Don't go anywhere!
+# Condition: When fire, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board
+# Spawn random 1 Water orbs
+# [19] ESBranchFlag -> ESBranchFlag
+# branch
+# [20] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [21] ESBindRandom -> Enough struggling!
+# Condition: None
+# Bind 6 random cards for 1 turns
+# [22] ESBranchFlag -> ESBranchFlag
+# branch
+# [23] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [24] ESRecoverPlayer -> That look suits you!
+# Condition: None
+# Player recover 100% hp
+# [25] ESBranchFlag -> ESBranchFlag
+# branch
+# [26] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [27] ESDamageShield -> Sacred Realm of Vingolf
+# Condition: None
+# Reduce damage from all sources by 75% for 1 turns

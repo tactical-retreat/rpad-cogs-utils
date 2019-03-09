@@ -1,0 +1,134 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1897
+monster_name_en: Earth Dragon Knight
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids player buff effects
+  desc_jp: Voids player buff effects
+  name_en: Earth Dragon's Insight
+  name_jp: Earth Dragon's Insight
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Absorb combo <= 4 damage for 4 turns
+  desc_jp: Absorb combo <= 4 damage for 4 turns
+  name_en: Earth Dragon's Jewel
+  name_jp: Earth Dragon's Jewel
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb Wood damage for 3 turns
+  desc_jp: Absorb Wood damage for 3 turns
+  name_en: Green Element
+  name_jp: Green Element
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 4th row to Wood, Jammer orbs, Deal 80% damage
+  desc_jp: Change 4th row to Wood, Jammer orbs, Deal 80% damage
+  name_en: Earthlight Blade
+  name_jp: Earthlight Blade
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Bind active skills for 2 turns, Deal 90% damage
+  desc_jp: Bind active skills for 2 turns, Deal 90% damage
+  name_en: Earth Dragon Binding
+  name_jp: Earth Dragon Binding
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  name_en: Disable Skill
+  name_jp: Disable Skill
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 30% hp
+  desc_jp: Enemy recover 30% hp
+  name_en: Supernatural
+  name_jp: Supernatural
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 20
+  desc_jp: ''
+  name_en: HP <= 20
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Player -100% HP
+  desc_jp: Player -100% HP
+  name_en: Ground Burst
+  name_jp: Ground Burst
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESDispel -> Earth Dragon's Insight
+# Condition: None
+# Voids player buff effects
+# [5] ESAbsorbCombo -> Earth Dragon's Jewel
+# Condition: None
+# Absorb combo <= 4 damage for 4 turns
+# [6] ESEndPath -> ESEndPath
+# end_turn
+# [7] ESAbsorbAttribute -> Green Element
+# Condition: One-time use
+# Absorb Wood damage for 3 turns
+# [8] ESGravity -> Ground Burst
+# Condition: When < 20% hp
+# Player -100% HP
+# [9] ESBranchHP -> ESBranchHP
+# branch
+# [10] ESRowSpawnMulti -> Earthlight Blade
+# Condition: 30% chance
+# Change 4th row to Wood, Jammer orbs
+# [11] ESBindSkill -> Earth Dragon Binding
+# Condition: 30% chance
+# Bind active skills for 2 turns
+# [12] ESAttackSinglehit -> Disable Skill
+# Condition: 30% chance
+# Enemy action
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESBranchFlag -> ESBranchFlag
+# branch
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] ESRecoverEnemy -> Supernatural
+# Condition: None
+# Enemy recover 30% hp

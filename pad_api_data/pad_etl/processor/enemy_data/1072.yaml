@@ -1,0 +1,52 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1072
+monster_name_en: Golden Monkey King, Sun Wukong
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage (4 hits, 25% each)
+  desc_jp: Deal 100% damage (4 hits, 25% each)
+  name_en: Compliant Rod Barrage
+  name_jp: Compliant Rod Barrage
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 300% damage
+  desc_jp: Deal 300% damage
+  name_en: Max Length Compliant Rod
+  name_jp: Max Length Compliant Rod
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESAttackMultihit -> Max Length Compliant Rod
+# Condition: When < 50% hp
+# Enemy action
+# [2] ESAttackMultihit -> Compliant Rod Barrage
+# Condition: None
+# Enemy action

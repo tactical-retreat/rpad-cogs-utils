@@ -1,0 +1,49 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 300650
+monster_name_en: Zeus-Dios
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 75% damage
+  desc_jp: Deal 75% damage
+  name_en: Preemptive
+  name_jp: Preemptive
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESAttackPreemptive -> Heavenly Awakening
+# Condition: None
+# Enemy action
+# [2] ESStatusShield -> Protection of the Gods
+# Condition: None
+# Voids status ailments for 999 turns
+# [3] ESBindTyping -> Glare of Zeus
+# Condition: When < 50% hp , one-time use
+# Bind God cards for 2~4 turns
+# [4] ESAttackMultihit -> Jupiter Genesis
+# Condition: 75% chance when < 30% hp
+# Enemy action
+# [5] ESAttackMultihit -> Dios Blade
+# Condition: 75% chance when < 70% hp
+# Enemy action

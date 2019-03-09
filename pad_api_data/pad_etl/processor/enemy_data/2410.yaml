@@ -1,0 +1,169 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2410
+monster_name_en: Moonlit Prowler, Vampire Lord
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 50%
+  desc_jp: Survive attacks with 1 HP when HP > 50%
+  name_en: Resolve
+  name_jp: Resolve
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Delay active skills by 3 turns
+  desc_jp: Voids status ailments for 999 turns + Delay active skills by 3 turns
+  name_en: Haughty + Bow before me
+  name_jp: Haughty + Bow before me
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 10% hp, Deal 110% damage
+  desc_jp: Enemy recover 10% hp, Deal 110% damage
+  name_en: Bloody Fangs
+  name_jp: Bloody Fangs
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Dark, Deal 115% damage
+  desc_jp: Change Random to Dark, Deal 115% damage
+  name_en: Blood Pain
+  name_jp: Blood Pain
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 130% damage (2 hits, 65% each)
+  desc_jp: Deal 130% damage (2 hits, 65% each)
+  name_en: Nightmare Raid
+  name_jp: Nightmare Raid
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb combo <= 6 damage for 99 turns + Reduce damage from all sources
+    by 50% for 10 turns
+  desc_jp: Absorb combo <= 6 damage for 99 turns + Reduce damage from all sources
+    by 50% for 10 turns
+  name_en: Gleam of the Red Moon + Stand in awe of my power
+  name_jp: Gleam of the Red Moon + Stand in awe of my power
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 19
+  desc_jp: ''
+  name_en: HP <= 19
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 400% damage (8 hits, 50% each)
+  desc_jp: Deal 400% damage (8 hits, 50% each)
+  name_en: Infinity Claws
+  name_jp: Infinity Claws
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 0
+  desc_jp: ''
+  name_en: HP <= 0
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 100% hp + Mortal Poison skyfall +20% for 1 turns
+  desc_jp: Enemy recover 100% hp + Mortal Poison skyfall +20% for 1 turns
+  name_en: I can't be defeated + Don't underestimate me
+  name_jp: I can't be defeated + Don't underestimate me
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESStatusShield -> Haughty
+# 	Voids status ailments for 999 turns
+# 	[1] ESSkillDelay -> Bow before me
+# 	Delay active skills by 3 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] ESBranchHP -> ESBranchHP
+# branch
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESRecoverEnemy -> Bloody Fangs
+# Condition: One-time use
+# Enemy recover 10% hp
+# [10] ESOrbChangeAttack -> Blood Pain
+# Condition: 50% chance
+# Change Random to Dark
+# [11] ESAttackMultihit -> Nightmare Raid
+# Condition: None
+# Enemy action
+# [12] ESEndPath -> ESEndPath
+# end_turn
+# [13] ESBranchFlag -> ESBranchFlag
+# branch
+# [14] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [15] SkillSet:
+# 	Condition: None
+# 	[0] ESAbsorbCombo -> Gleam of the Red Moon
+# 	Absorb combo <= 6 damage for 99 turns
+# 	[1] ESDamageShield -> Stand in awe of my power
+# 	Reduce damage from all sources by 50% for 10 turns
+# [16] ESEndPath -> ESEndPath
+# end_turn
+# [17] ESBranchFlag -> ESBranchFlag
+# branch
+# [18] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [19] ESAttackUp -> Let me finish this
+# Condition: None
+# Increase damage to 150% for the next 99 turns
+# [20] ESEndPath -> ESEndPath
+# end_turn
+# [21] ESAttackMultihit -> Infinity Claws
+# Condition: None
+# Enemy action
+# [22] ESEndPath -> ESEndPath
+# end_turn
+# [23] SkillSet:
+# 	Condition: None
+# 	[0] ESRecoverEnemy -> I can't be defeated
+# 	Enemy recover 100% hp
+# 	[1] ESSkyfall -> Don't underestimate me
+# 	Mortal Poison skyfall +20% for 1 turns
+# [24] ESEndPath -> ESEndPath
+# end_turn
+# [25] ESResolve -> Resolve
+# Survive attacks with 1 HP when HP > 50%

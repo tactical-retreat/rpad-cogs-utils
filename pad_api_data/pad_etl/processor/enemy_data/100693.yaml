@@ -1,0 +1,111 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 100693
+monster_name_en: Alt. Noble Wolf King Hero, Cu Chulainn
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Water by 50%
+  desc_jp: Reduce damage from Water by 50%
+  name_en: Water halved
+  name_jp: Water halved
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 3 turns
+  desc_jp: Voids status ailments for 3 turns
+  name_en: You'll have to get through me!
+  name_jp: You'll have to get through me!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 70% damage
+  desc_jp: Change Random to Jammer, Deal 70% damage
+  name_en: Wolf Attack
+  name_jp: Wolf Attack
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  name_en: Pitch Black Assassin's Dagger
+  name_jp: Pitch Black Assassin's Dagger
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100%~150% damage (4~6 hits, 25% each)
+  desc_jp: Deal 100%~150% damage (4~6 hits, 25% each)
+  name_en: Whirlwind Barrage
+  name_jp: Whirlwind Barrage
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 200% damage
+  desc_jp: Deal 200% damage
+  name_en: Demise
+  name_jp: Demise
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESStatusShield -> You'll have to get through me!
+# Condition: None
+# Voids status ailments for 3 turns
+# [5] ESBranchHP -> ESBranchHP
+# branch
+# [6] ESGravity -> Pitch Black Assassin's Dagger
+# Condition: One-time use
+# Player -99% HP
+# [7] ESAttackMultihit -> Demise
+# Condition: None
+# Enemy action
+# [8] ESEndPath -> ESEndPath
+# end_turn
+# [9] ESOrbChangeAttack -> Wolf Attack
+# Condition: One-time use
+# Change Random to Jammer
+# [10] ESAttackMultihit -> Whirlwind Barrage
+# Condition: 70% chance
+# Enemy action
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESAttributeResist -> Water halved
+# Reduce damage from Water by 50%

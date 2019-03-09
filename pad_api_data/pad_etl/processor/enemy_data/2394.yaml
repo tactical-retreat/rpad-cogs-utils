@@ -1,0 +1,175 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2394
+monster_name_en: Awoken Freyja
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 50%
+  desc_jp: Survive attacks with 1 HP when HP > 50%
+  name_en: Freyja Resolve
+  name_jp: Freyja Resolve
+  record_type_name: PASSIVE
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 50%
+  desc_jp: Survive attacks with 1 HP when HP > 50%
+  name_en: Freyja Resolve
+  name_jp: Freyja Resolve
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Mortal Poison skyfall +15% for 5
+    turns
+  desc_jp: Voids status ailments for 999 turns + Mortal Poison skyfall +15% for 5
+    turns
+  name_en: Welcome! + Take it easy please
+  name_jp: Welcome! + Take it easy please
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Mortal Poison to Heal, Deal 150% damage
+  desc_jp: Change Mortal Poison to Heal, Deal 150% damage
+  name_en: It's as dangerous as a beautiful flower
+  name_jp: It's as dangerous as a beautiful flower
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 2nd row to Wood, Dark orbs, 4th row to Wood, Dark orbs + Delay active
+    skills by 1~2 turns
+  desc_jp: Change 2nd row to Wood, Dark orbs, 4th row to Wood, Dark orbs + Delay active
+    skills by 1~2 turns
+  name_en: This flower is beautiful, right? + This one is cute too
+  name_jp: This flower is beautiful, right? + This one is cute too
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change 2nd row to Wood, Dark orbs, 4th row to Wood, Dark orbs + Enemy action
+  desc_jp: Change 2nd row to Wood, Dark orbs, 4th row to Wood, Dark orbs + Enemy action
+  name_en: This flower is beautiful, right? + Lovely Aroma
+  name_jp: This flower is beautiful, right? + Lovely Aroma
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 19
+  desc_jp: ''
+  name_en: HP <= 19
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Mortal Poison, Deal 100% damage
+  desc_jp: Change all orbs to Mortal Poison, Deal 100% damage
+  name_en: Flowers in full bloom are splendid!
+  name_jp: Flowers in full bloom are splendid!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 0
+  desc_jp: ''
+  name_en: HP <= 0
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 50% hp + Movetime 50% for 10 turns
+  desc_jp: Enemy recover 50% hp + Movetime 50% for 10 turns
+  name_en: 'Covering myself in flowers
+
+    heals all wounds + Rudeness is no good!'
+  name_jp: 'Covering myself in flowers
+
+    heals all wounds + Rudeness is no good!'
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] SkillSet:
+# 	Condition: None
+# 	[0] ESStatusShield -> Welcome!
+# 	Voids status ailments for 999 turns
+# 	[1] ESSkyfall -> Take it easy please
+# 	Mortal Poison skyfall +15% for 5 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESOrbChangeAttackBits -> It's as dangerous as a beautiful flower
+# Condition: One-time use
+# Change Mortal Poison to Heal
+# [10] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESRowSpawnMulti -> This flower is beautiful, right?
+# 	Change 2nd row to Wood, Dark orbs, 4th row to Wood, Dark orbs
+# 	[1] ESLeaderSwap -> Those ones are splendid too
+# 	Leader changes to random sub for 1 turns
+# [11] SkillSet:
+# 	Condition: 50% chance
+# 	[0] ESRowSpawnMulti -> This flower is beautiful, right?
+# 	Change 2nd row to Wood, Dark orbs, 4th row to Wood, Dark orbs
+# 	[1] ESSkillDelay -> This one is cute too
+# 	Delay active skills by 1~2 turns
+# [12] SkillSet:
+# 	Condition: None
+# 	[0] ESRowSpawnMulti -> This flower is beautiful, right?
+# 	Change 2nd row to Wood, Dark orbs, 4th row to Wood, Dark orbs
+# 	[1] ESAttackMultihit -> Lovely Aroma
+# 	Enemy action
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESBranchHP -> ESBranchHP
+# branch
+# [15] ESBoardChangeAttackBits -> Flowers in full bloom are splendid!
+# Condition: None
+# Change all orbs to Mortal Poison
+# [16] ESEndPath -> ESEndPath
+# end_turn
+# [17] ESBranchFlag -> ESBranchFlag
+# branch
+# [18] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [19] SkillSet:
+# 	Condition: None
+# 	[0] ESRecoverEnemy -> Covering myself in flowers
+# heals all wounds
+# 	Enemy recover 50% hp
+# 	[1] ESDebuffMovetime -> Rudeness is no good!
+# 	Movetime 50% for 10 turns
+# [20] ESEndPath -> ESEndPath
+# end_turn
+# [21] ESResolve -> Freyja Resolve
+# Survive attacks with 1 HP when HP > 50%

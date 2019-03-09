@@ -1,0 +1,79 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 556
+monster_name_en: Flame Shrine Maiden, Chiyome
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Fire, Deal 80% damage
+  desc_jp: Change Random to Fire, Deal 80% damage
+  name_en: Rose Balsam Blaze
+  name_jp: Rose Balsam Blaze
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind Water cards for 2~3 turns
+  desc_jp: Bind Water cards for 2~3 turns
+  name_en: Fire Flight - Circle of Drought
+  name_jp: Fire Flight - Circle of Drought
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 30
+  desc_jp: ''
+  name_en: HP <= 30
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 160% damage (4 hits, 40% each)
+  desc_jp: Deal 160% damage (4 hits, 40% each)
+  name_en: Blaze Flight - Fire Blossom Dance
+  name_jp: Blaze Flight - Fire Blossom Dance
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESBranchHP -> ESBranchHP
+# branch
+# [4] ESAttackMultihit -> Blaze Flight - Fire Blossom Dance
+# Condition: When < 30% hp
+# Enemy action
+# [5] ESOrbChangeAttack -> Rose Balsam Blaze
+# Condition: One-time use
+# Change Random to Fire
+# [6] ESEndPath -> ESEndPath
+# end_turn
+# [7] ESBranchFlag -> ESBranchFlag
+# branch
+# [8] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [9] ESBindAttribute -> Fire Flight - Circle of Drought
+# Condition: When < 50% hp
+# Bind Water cards for 2~3 turns

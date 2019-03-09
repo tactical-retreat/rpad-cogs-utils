@@ -1,0 +1,45 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2724
+monster_name_en: Bubtan
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 3
+############################################################
+!SkillRecordListing
+level: 3
+overrides: []
+records:
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 1 Water orbs, Deal 100% damage
+  desc_jp: Spawn random 1 Water orbs, Deal 100% damage
+  name_en: Water Soul Carry
+  name_jp: Water Soul Carry
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESBranchLevel -> ESBranchLevel
+# branch
+# [4] ESRandomSpawn -> Water Soul Carry
+# Condition: When fire, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board
+# Spawn random 1 Water orbs
+# [5] ESEndPath -> ESEndPath
+# end_turn

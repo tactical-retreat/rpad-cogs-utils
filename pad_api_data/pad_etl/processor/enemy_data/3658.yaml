@@ -1,0 +1,129 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3658
+monster_name_en: Glavenus
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Bind 1 random subs for 1 turns + Do nothing
+  desc_jp: Bind 1 random subs for 1 turns + Do nothing
+  name_en: Roar + Fireball Charge
+  name_jp: Roar + Fireball Charge
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 6 Fire orbs, Deal 110% damage
+  desc_jp: Spawn random 6 Fire orbs, Deal 110% damage
+  name_en: Fire Wave
+  name_jp: Fire Wave
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 120% damage
+  desc_jp: Deal 120% damage
+  name_en: Tail Slam
+  name_jp: Tail Slam
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Player -70% HP
+  desc_jp: Player -70% HP
+  name_en: Jumping Tail Strike
+  name_jp: Jumping Tail Strike
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 40
+  desc_jp: ''
+  name_en: HP <= 40
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 6 Bomb orbs, Deal 100% damage
+  desc_jp: Spawn random 6 Bomb orbs, Deal 100% damage
+  name_en: Three-hit Fireball Breath
+  name_jp: Three-hit Fireball Breath
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 140% damage (2 hits, 70% each)
+  desc_jp: Deal 140% damage (2 hits, 70% each)
+  name_en: Combo Jumping Tail Strike
+  name_jp: Combo Jumping Tail Strike
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 40
+  desc_jp: ''
+  name_en: HP <= 40
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 140% damage (2 hits, 70% each)
+  desc_jp: Deal 140% damage (2 hits, 70% each)
+  name_en: Combo Jumping Tail Strike
+  name_jp: Combo Jumping Tail Strike
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESBindRandomSub -> Roar
+# 	Bind 1 random subs for 1 turns
+# 	[1] ESInactivity -> Fireball Charge
+# 	Do nothing
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESAttackUp -> Scalding Tail
+# Condition: One-time use
+# Increase damage to 150% for the next 10 turns
+# [9] ESStorePower -> Great Tailspin Stance
+# Condition: One-time use
+# Increase damage to 4100% for the next attack
+# [10] ESBombRandomSpawn -> Three-hit Fireball Breath
+# Condition: 50% chance when < 40% hp
+# Spawn random 6 Bomb orbs
+# [11] ESAttackMultihit -> Combo Jumping Tail Strike
+# Condition: When < 40% hp
+# Enemy action
+# [12] ESRandomSpawn -> Bite
+# Condition: One-time use
+# Spawn random 3 Fire orbs
+# [13] ESBombRandomSpawn -> Fireball Breath
+# Condition: One-time use
+# Spawn random 3 Bomb orbs
+# [14] ESRandomSpawn -> Fire Wave
+# Condition: 20% chance
+# Spawn random 6 Fire orbs
+# [15] ESAttackMultihit -> Tail Slam
+# Condition: 20% chance
+# Enemy action
+# [16] ESGravity -> Jumping Tail Strike
+# Condition: 20% chance
+# Player -70% HP
+# [17] ESEndPath -> ESEndPath
+# end_turn

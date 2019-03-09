@@ -1,0 +1,202 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2877
+monster_name_en: Storm Hawk Dragon, Kuarje
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Fire by 50%
+  desc_jp: Reduce damage from Fire by 50%
+  name_en: Fire Halven
+  name_jp: Fire Halven
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 50%
+  desc_jp: Survive attacks with 1 HP when HP > 50%
+  name_en: Dragonbound's Resolve
+  name_jp: Dragonbound's Resolve
+  record_type_name: PASSIVE
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Fire by 50%
+  desc_jp: Reduce damage from Fire by 50%
+  name_en: Fire Halven
+  name_jp: Fire Halven
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 50%
+  desc_jp: Survive attacks with 1 HP when HP > 50%
+  name_en: Dragonbound's Resolve
+  name_jp: Dragonbound's Resolve
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 5 turns + Change all orbs to Wood, Light, Heal
+  desc_jp: Voids status ailments for 5 turns + Change all orbs to Wood, Light, Heal
+  name_en: I don't care about your hopes! + Storm Lightning
+  name_jp: I don't care about your hopes! + Storm Lightning
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 1 turns
+  desc_jp: Increase damage to 200% for the next 1 turns
+  name_en: You're a troublesome one, aren't you?
+  name_jp: You're a troublesome one, aren't you?
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 50% hp + Increase damage to 200% for the next 1 turns
+  desc_jp: Enemy recover 50% hp + Increase damage to 200% for the next 1 turns
+  name_en: Overcoming Will + Raising Flap
+  name_jp: Overcoming Will + Raising Flap
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 110% damage (2 hits, 55% each)
+  desc_jp: Deal 110% damage (2 hits, 55% each)
+  name_en: Storm Raid
+  name_jp: Storm Raid
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change 3rd column to Light orbs, 4th column to Wood orbs, Deal 95% damage
+  desc_jp: Change 3rd column to Light orbs, 4th column to Wood orbs, Deal 95% damage
+  name_en: Green Wind Soul Cutter
+  name_jp: Green Wind Soul Cutter
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Spawn random 8 Wood orbs, Deal 90% damage
+  desc_jp: Spawn random 8 Wood orbs, Deal 90% damage
+  name_en: Mountain Haze's Guidance
+  name_jp: Mountain Haze's Guidance
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb Wood damage for 1 turns + Change 2nd, 4th row to Wood, Jammer orbs
+  desc_jp: Absorb Wood damage for 1 turns + Change 2nd, 4th row to Wood, Jammer orbs
+  name_en: Storm Hawk Dragon's Trial + Splitting Storm Wind
+  name_jp: Storm Hawk Dragon's Trial + Splitting Storm Wind
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 20
+  desc_jp: ''
+  name_en: HP <= 20
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy action + Change all orbs to Wood, Light, Heal
+  desc_jp: Enemy action + Change all orbs to Wood, Light, Heal
+  name_en: Storm Raid + Storm Lightning
+  name_jp: Storm Raid + Storm Lightning
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] SkillSet:
+# 	Condition: None
+# 	[0] ESStatusShield -> I don't care about your hopes!
+# 	Voids status ailments for 5 turns
+# 	[1] ESBoardChangeAttackBits -> Storm Lightning
+# 	Change all orbs to Wood, Light, Heal
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] SkillSet:
+# 	Condition: When < 1% hp , one-time use
+# 	[0] ESRecoverEnemy -> Overcoming Will
+# 	Enemy recover 50% hp
+# 	[1] ESAttackUp -> Raising Flap
+# 	Increase damage to 200% for the next 1 turns
+# [9] SkillSet:
+# 	Condition: When < 20% hp
+# 	[0] ESAttackMultihit -> Storm Raid
+# 	Enemy action
+# 	[1] ESBoardChangeAttackBits -> Storm Lightning
+# 	Change all orbs to Wood, Light, Heal
+# [10] ESBranchHP -> ESBranchHP
+# branch
+# [11] ESBranchFlag -> ESBranchFlag
+# branch
+# [12] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [13] ESBranchCard -> ESBranchCard
+# branch
+# [14] ESAttackUp -> Raising Flap
+# Condition: One-time use
+# Increase damage to 200% for the next 1 turns
+# [15] ESAttackUp -> You're a troublesome one, aren't you?
+# Condition: One-time use
+# Increase damage to 200% for the next 1 turns
+# [16] ESAttackUp -> Raising Flap
+# Condition: One-time use
+# Increase damage to 200% for the next 1 turns
+# [17] ESAttackMultihit -> Storm Raid
+# Condition: 20% chance
+# Enemy action
+# [18] ESColumnSpawnMulti -> Green Wind Soul Cutter
+# Condition: 50% chance
+# Change 3rd column to Light orbs, 4th column to Wood orbs
+# [19] ESRandomSpawn -> Mountain Haze's Guidance
+# Condition: When fire, water, light, dark, heal, jammer, poison, mortal poison orbs are on the board
+# Spawn random 8 Wood orbs
+# [20] ESBranchFlag -> ESBranchFlag
+# branch
+# [21] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [22] SkillSet:
+# 	Condition: None
+# 	[0] ESAbsorbAttribute -> Storm Hawk Dragon's Trial
+# 	Absorb Wood damage for 1 turns
+# 	[1] ESRowSpawnMulti -> Splitting Storm Wind
+# 	Change 2nd, 4th row to Wood, Jammer orbs
+# [23] ESAttributeResist -> Fire Halven
+# Reduce damage from Fire by 50%
+# [24] ESResolve -> Dragonbound's Resolve
+# Survive attacks with 1 HP when HP > 50%

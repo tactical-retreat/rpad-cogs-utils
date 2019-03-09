@@ -1,0 +1,90 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 104915
+monster_name_en: "\u4EEE\u9762\u30E9\u30A4\u30C0\u30FC\u96FB\u738B"
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Deal 80% damage
+  desc_jp: Deal 80% damage
+  name_en: My Secret Move - Part 1
+  name_jp: My Secret Move - Part 1
+  record_type_name: PREEMPT
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESSetCounter -> ESSetCounter
+# set_counter
+# [5] ESBranchCounter -> ESBranchCounter
+# branch
+# [6] ESBranchCounter -> ESBranchCounter
+# branch
+# [7] ESBranchCounter -> ESBranchCounter
+# branch
+# [8] ESBranchCounter -> ESBranchCounter
+# branch
+# [9] ESBranchCounter -> ESBranchCounter
+# branch
+# [10] ESBranchCounter -> ESBranchCounter
+# branch
+# [11] ESAttackMultihit -> My Secret Move - Part 1
+# Condition: None
+# Enemy action
+# [12] ESEndPath -> ESEndPath
+# end_turn
+# [13] SkillSet:
+# 	Condition: None
+# 	[0] ESRowSpawnMulti -> My Secret Move
+# 	Change 3rd row to Fire orbs
+# 	[1] ESColumnSpawnMulti -> Part 2
+# 	Change 3rd, 4th column to Fire orbs
+# [14] ESRowSpawnMulti -> My Secret Move - Part 2'
+# Condition: None
+# Change 3rd row to Fire orbs
+# [15] SkillSet:
+# 	Condition: None
+# 	[0] ESBlindStickyFixed -> My Secret Move
+# 	Blind orbs in specific positions for 1 turns
+# 	[1] ESColumnSpawnMulti -> Part 3
+# 	Change 3rd, 4th column to Fire orbs
+# [16] SkillSet:
+# 	Condition: None
+# 	[0] ESBlindStickyFixed -> My Secret Move - Part 3
+# 	Blind orbs in specific positions for 2 turns
+# 	[1] ESInactivity -> Pretend to do...
+# Pretend...
+# 	Do nothing
+# 	[2] ESRowSpawnMulti -> Right in the middle!!!
+# 	Change 3rd row to Fire orbs
+# [17] SkillSet:
+# 	Condition: None
+# 	[0] ESRowSpawnMulti -> My Secret Move
+# 	Change 2nd, 4th row to Fire orbs
+# 	[1] ESColumnSpawnMulti -> Part 5
+# 	Change 3rd, 4th column to Fire orbs
+# [18] ESSetCounter -> ESSetCounter
+# set_counter
+# [19] ESOrbSealRow -> My Special Secret Move
+# Condition: None
+# Seal 5th row for 3 turns
+# [20] ESEndPath -> ESEndPath
+# end_turn

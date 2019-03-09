@@ -1,0 +1,120 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 100204
+monster_name_en: Alt. Messenger of God, Archangel
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Unable to Dark orbs for 2 turns
+  desc_jp: Unable to Dark orbs for 2 turns
+  name_en: Holy Effect
+  name_jp: Holy Effect
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 2
+  desc_jp: ''
+  name_en: Turn 2
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 75% for 2 turns
+  desc_jp: Reduce damage from all sources by 75% for 2 turns
+  name_en: Deity's Robe
+  name_jp: Deity's Robe
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 4
+  desc_jp: ''
+  name_en: Turn 4
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 300% for the next 999 turns + Delay active skills by
+    1 turns
+  desc_jp: Increase damage to 300% for the next 999 turns + Delay active skills by
+    1 turns
+  name_en: Angel's Wrath + Skill Corrosion
+  name_jp: Angel's Wrath + Skill Corrosion
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 3 Light orbs, Deal 100% damage
+  desc_jp: Spawn random 3 Light orbs, Deal 100% damage
+  name_en: Lightning
+  name_jp: Lightning
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 19
+  desc_jp: ''
+  name_en: HP <= 19
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 100% hp
+  desc_jp: Enemy recover 100% hp
+  name_en: Resurrection
+  name_jp: Resurrection
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESAttributeBlock -> Holy Effect
+# Condition: One-time use
+# Unable to Dark orbs for 2 turns
+# [3] ESBranchHP -> ESBranchHP
+# branch
+# [4] ESBranchCounter -> ESBranchCounter
+# branch
+# [5] ESBranchCounter -> ESBranchCounter
+# branch
+# [6] ESSetCounter -> ESSetCounter
+# set_counter
+# [7] ESRandomSpawn -> Lightning
+# Condition: When fire, water, wood, heal, jammer, poison, mortal poison orbs are on the board
+# Spawn random 3 Light orbs
+# [8] ESEndPath -> ESEndPath
+# end_turn
+# [9] ESDamageShield -> Deity's Robe
+# Condition: One-time use
+# Reduce damage from all sources by 75% for 2 turns
+# [10] ESBranchCounter -> ESBranchCounter
+# branch
+# [11] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESAttackUp -> Angel's Wrath
+# 	Increase damage to 300% for the next 999 turns
+# 	[1] ESSkillDelay -> Skill Corrosion
+# 	Delay active skills by 1 turns
+# [12] ESBranchCounter -> ESBranchCounter
+# branch
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESBranchFlag -> ESBranchFlag
+# branch
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] ESRecoverEnemy -> Resurrection
+# Condition: None
+# Enemy recover 100% hp
+# [17] ESEndPath -> ESEndPath
+# end_turn

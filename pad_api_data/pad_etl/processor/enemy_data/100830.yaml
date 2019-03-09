@@ -1,0 +1,98 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 100830
+monster_name_en: Alt. Protection Demon of Dark, Jyaki
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Dark by 50%
+  desc_jp: Reduce damage from Dark by 50%
+  name_en: Dark Half Reduced
+  name_jp: Dark Half Reduced
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Seal 1st, 5th row for 1 turns
+  desc_jp: Seal 1st, 5th row for 1 turns
+  name_en: '...you shall not pass!'
+  name_jp: '...you shall not pass!'
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 150% damage
+  desc_jp: Deal 150% damage
+  name_en: Chop Off
+  name_jp: Chop Off
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 3
+  desc_jp: ''
+  name_en: Turn 3
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 300% for the next 999 turns
+  desc_jp: Increase damage to 300% for the next 999 turns
+  name_en: Lone Force
+  name_jp: Lone Force
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 200% damage
+  desc_jp: Deal 200% damage
+  name_en: Iron Fist of Anger
+  name_jp: Iron Fist of Anger
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESOrbSealRow -> ...you shall not pass!
+# Condition: None
+# Seal 1st, 5th row for 1 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchFlag -> ESBranchFlag
+# branch
+# [7] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [8] ESAttackMultihit -> Chop Off
+# Condition: None
+# Enemy action
+# [9] ESEndPath -> ESEndPath
+# end_turn
+# [10] ESAttackUp -> Lone Force
+# Condition: None
+# Increase damage to 300% for the next 999 turns
+# [11] ESAttackMultihit -> Iron Fist of Anger
+# Condition: None
+# Enemy action
+# [12] ESAttributeResist -> Dark Half Reduced
+# Reduce damage from Dark by 50%

@@ -1,0 +1,110 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4133
+monster_name_en: Barioth
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Specific orbs change every 1.0s for 3 turns
+  desc_jp: Specific orbs change every 1.0s for 3 turns
+  name_en: Ice Breath
+  name_jp: Ice Breath
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 1 random subs for 1 turns + Increase damage to 140% for the next 10
+    turns
+  desc_jp: Bind 1 random subs for 1 turns + Increase damage to 140% for the next 10
+    turns
+  name_en: Roar + Anger
+  name_jp: Roar + Anger
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESSpinnersFixed -> Ice Breath
+# Condition: None
+# Specific orbs change every 1.0s for 3 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchFlag -> ESBranchFlag
+# branch
+# [9] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [10] ESBranchHP -> ESBranchHP
+# branch
+# [11] ESSkillDelay -> Short Tackle
+# Condition: 15% chance
+# Delay active skills by 1 turns
+# [12] ESGravity -> Charge
+# Condition: 15% chance
+# Player -70% HP
+# [13] ESRowSpawnMulti -> Tail Attack
+# Condition: 35% chance
+# Change 5th row to Water orbs
+# [14] ESAbsorbCombo -> Take Off
+# Condition: One-time use
+# Absorb combo <= 5 damage for 1 turns
+# [15] ESEndPath -> ESEndPath
+# end_turn
+# [16] ESBranchFlag -> ESBranchFlag
+# branch
+# [17] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [18] ESOrbLock -> Diagonal Strike Attack
+# Condition: One-time use
+# Lock 5 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [19] ESRowSpawnMulti -> Tail Attack
+# Condition: One-time use
+# Change 5th row to Water orbs
+# [20] ESSpinnersFixed -> Gliding Ice Breath
+# Condition: When < 30% hp
+# Specific orbs change every 1.0s for 2 turns
+# [21] ESAttackMultihit -> Gliding Strike Attack
+# Condition: None
+# Enemy action
+# [22] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [23] ESDamageShield -> Sneak Behind
+# Condition: None
+# Reduce damage from all sources by 50% for 1 turns
+# [24] ESBranchCounter -> ESBranchCounter
+# branch
+# [25] ESSetCounter -> ESSetCounter
+# set_counter
+# [26] SkillSet:
+# 	Condition: None
+# 	[0] ESBindRandomSub -> Roar
+# 	Bind 1 random subs for 1 turns
+# 	[1] ESAttackUp -> Anger
+# 	Increase damage to 140% for the next 10 turns
+# [27] ESEndPath -> ESEndPath
+# end_turn

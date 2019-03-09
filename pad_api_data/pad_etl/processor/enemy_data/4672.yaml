@@ -1,0 +1,105 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4672
+monster_name_en: '*****'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb combo <= 4 damage for 5 turns
+  desc_jp: Absorb combo <= 4 damage for 5 turns
+  name_en: I'll do it as long as it's Pro!
+  name_jp: I'll do it as long as it's Pro!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Heal to Jammer, Deal 80% damage
+  desc_jp: Change Heal to Jammer, Deal 80% damage
+  name_en: On a diet?
+  name_jp: On a diet?
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Wood, Deal 100% damage
+  desc_jp: Change Random to Wood, Deal 100% damage
+  name_en: Curve
+  name_jp: Curve
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 9
+  desc_jp: ''
+  name_en: HP <= 9
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 5th row to Water orbs, Deal 200% damage
+  desc_jp: Change 5th row to Water orbs, Deal 200% damage
+  name_en: Marine Ball
+  name_jp: Marine Ball
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESAbsorbCombo -> I'll do it as long as it's Pro!
+# Condition: None
+# Absorb combo <= 4 damage for 5 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESBranchHP -> ESBranchHP
+# branch
+# [10] ESOrbChangeAttackBits -> On a diet?
+# Condition: One-time use
+# Change Heal to Jammer
+# [11] ESOrbChangeAttack -> Curve
+# Condition: 50% chance
+# Change Random to Wood
+# [12] ESEndPath -> ESEndPath
+# end_turn
+# [13] ESBranchFlag -> ESBranchFlag
+# branch
+# [14] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [15] ESAttackUp -> What you believe in will be deceived
+# Condition: None
+# Increase damage to 150% for the next 5 turns
+# [16] ESEndPath -> ESEndPath
+# end_turn
+# [17] ESRowSpawnMulti -> Marine Ball
+# Condition: None
+# Change 5th row to Water orbs
+# [18] ESEndPath -> ESEndPath
+# end_turn

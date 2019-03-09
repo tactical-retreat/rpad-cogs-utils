@@ -1,0 +1,77 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1523
+monster_name_en: Flame Knight Areon
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids status ailments for 10 turns
+  desc_jp: Voids status ailments for 10 turns
+  name_en: Super Armor
+  name_jp: Super Armor
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage (2 hits, 50% each)
+  desc_jp: Deal 100% damage (2 hits, 50% each)
+  name_en: Have at you!
+  name_jp: Have at you!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 30
+  desc_jp: ''
+  name_en: HP <= 30
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 150% damage
+  desc_jp: Deal 150% damage
+  name_en: Megaton Slash
+  name_jp: Megaton Slash
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESBranchFlag -> ESBranchFlag
+# branch
+# [4] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [5] ESStatusShield -> Super Armor
+# Condition: None
+# Voids status ailments for 10 turns
+# [6] ESEndPath -> ESEndPath
+# end_turn
+# [7] ESAttackMultihit -> Megaton Slash
+# Condition: When < 30% hp
+# Enemy action
+# [8] ESAttackMultihit -> Have at you!
+# Condition: None
+# Enemy action

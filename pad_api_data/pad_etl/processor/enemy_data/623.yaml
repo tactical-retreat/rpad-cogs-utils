@@ -1,0 +1,92 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 623
+monster_name_en: Water Dominion Gabriel
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Bind 1 own leader for 5 turns
+  desc_jp: Bind 1 own leader for 5 turns
+  name_en: Angelic Murmur
+  name_jp: Angelic Murmur
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  name_en: Divine Word - The Final Day
+  name_jp: Divine Word - The Final Day
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 160% damage (2 hits, 80% each)
+  desc_jp: Deal 160% damage (2 hits, 80% each)
+  name_en: Summon Casablanca
+  name_jp: Summon Casablanca
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 100% hp
+  desc_jp: Enemy recover 100% hp
+  name_en: Mystic White Lily
+  name_jp: Mystic White Lily
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESBindTarget -> Angelic Murmur
+# Condition: None
+# Bind 1 own leader for 5 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] ESGravity -> Divine Word - The Final Day
+# Condition: One-time use
+# Player -99% HP
+# [8] ESAttackMultihit -> Summon Casablanca
+# Condition: None
+# Enemy action
+# [9] ESEndPath -> ESEndPath
+# end_turn
+# [10] ESBranchFlag -> ESBranchFlag
+# branch
+# [11] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [12] ESRecoverEnemy -> Mystic White Lily
+# Condition: None
+# Enemy recover 100% hp

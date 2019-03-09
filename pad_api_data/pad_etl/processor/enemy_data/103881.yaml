@@ -1,0 +1,140 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 103881
+monster_name_en: Alt. Demonic Phantom, Hashihime
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Light, Dark by 50%
+  desc_jp: Reduce damage from Light, Dark by 50%
+  name_en: Rashomon Light Dark Halved
+  name_jp: Rashomon Light Dark Halved
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Absorb Light, Dark damage for 5 turns + Voids status ailments for 5 turns
+  desc_jp: Absorb Light, Dark damage for 5 turns + Voids status ailments for 5 turns
+  name_en: My severed arm still aches... + What do you want with me?
+  name_jp: My severed arm still aches... + What do you want with me?
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Delay active skills by 1 turns, Deal 270% damage
+  desc_jp: Delay active skills by 1 turns, Deal 270% damage
+  name_en: Helmet Splitter
+  name_jp: Helmet Splitter
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Lock 6 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 270% damage
+  desc_jp: Lock 6 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 270% damage
+  name_en: Forward Kick
+  name_jp: Forward Kick
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 300% damage
+  desc_jp: Deal 300% damage
+  name_en: Strike
+  name_jp: Strike
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 5
+  desc_jp: ''
+  name_en: HP <= 5
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 5000% damage (5 hits, 1000% each)
+  desc_jp: Deal 5000% damage (5 hits, 1000% each)
+  name_en: Wildflower Bonebreaker
+  name_jp: Wildflower Bonebreaker
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESAbsorbAttribute -> My severed arm still aches...
+# 	Absorb Light, Dark damage for 5 turns
+# 	[1] ESStatusShield -> What do you want with me?
+# 	Voids status ailments for 5 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESAttackMultihit -> Wildflower Bonebreaker
+# Condition: When < 5% hp
+# Enemy action
+# [7] ESSetCounter -> ESSetCounter
+# set_counter
+# [8] ESAttackUpStatus -> Crafty
+# Condition: after being affected by a status effect
+# Increase damage to 200% for the next 999 turns
+# [9] ESBranchCounter -> ESBranchCounter
+# branch
+# [10] ESSkillDelay -> Helmet Splitter
+# Condition: 33% chance
+# Delay active skills by 1 turns
+# [11] ESOrbLock -> Forward Kick
+# Condition: 50% chance
+# Lock 6 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [12] ESAttackMultihit -> Strike
+# Condition: None
+# Enemy action
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESDebuffRCV -> Don't mess with a demon!
+# 	Rcv 50% for 7 turns
+# 	[1] ESDamageShield -> Steel Demonskin
+# 	Reduce damage from all sources by 75% for 7 turns
+# [15] ESBranchCounter -> ESBranchCounter
+# branch
+# [16] ESSkillDelay -> Helmet Splitter
+# Condition: 33% chance
+# Delay active skills by 1 turns
+# [17] ESOrbLock -> Forward Kick
+# Condition: 50% chance
+# Lock 6 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [18] ESAttackMultihit -> Strike
+# Condition: None
+# Enemy action
+# [19] ESEndPath -> ESEndPath
+# end_turn
+# [20] ESBranchFlag -> ESBranchFlag
+# branch
+# [21] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [22] SkillSet:
+# 	Condition: None
+# 	[0] ESBindAwoken -> You gonna keep dancing?
+# 	Bind awoken skills for 1 turns
+# 	[1] ESAttackMultihit -> Fall here!
+# 	Enemy action
+# [23] ESEndPath -> ESEndPath
+# end_turn
+# [24] ESAttributeResist -> Rashomon Light Dark Halved
+# Reduce damage from Light, Dark by 50%

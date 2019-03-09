@@ -1,0 +1,39 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4088
+monster_name_en: Mai Shiranui
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  name_en: Come at me!
+  name_jp: Come at me!
+  record_type_name: PREEMPT
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESInactivity -> Come at me!
+# Condition: One-time use
+# Do nothing
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] SkillSet:
+# 	Condition: On death
+# 	[0] ESInactivity -> Andyyyy!
+# 	Do nothing

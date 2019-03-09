@@ -1,0 +1,142 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1827
+monster_name_en: Red-Winged Star Angel, Rozuel
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Water by 50%
+  desc_jp: Reduce damage from Water by 50%
+  name_en: Water damage halved
+  name_jp: Water damage halved
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Spawn Bomb orbs in the specified positions + Blind orbs in specific positions
+    for 1 turns
+  desc_jp: Spawn Bomb orbs in the specified positions + Blind orbs in specific positions
+    for 1 turns
+  name_en: Flare Bomb + Flashburn
+  name_jp: Flare Bomb + Flashburn
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Heal + Change 2nd, 3rd row to Fire, Water orbs
+  desc_jp: Change Random to Heal + Change 2nd, 3rd row to Fire, Water orbs
+  name_en: Healing Hymn + Scarlet Azure Blade
+  name_jp: Healing Hymn + Scarlet Azure Blade
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 70
+  desc_jp: ''
+  name_en: HP <= 70
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Jammer skyfall +20% for 5 turns
+  desc_jp: Jammer skyfall +20% for 5 turns
+  name_en: Light Punishment
+  name_jp: Light Punishment
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Enemy recover 100% hp + Increase damage to 150% for the next 999 turns
+  desc_jp: Enemy recover 100% hp + Increase damage to 150% for the next 999 turns
+  name_en: Angel's Holy Grail + Battle Anthem
+  name_jp: Angel's Holy Grail + Battle Anthem
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 70
+  desc_jp: ''
+  name_en: HP <= 70
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 100% hp + Increase damage to 150% for the next 999 turns
+  desc_jp: Enemy recover 100% hp + Increase damage to 150% for the next 999 turns
+  name_en: Angel's Holy Grail + Battle Anthem
+  name_jp: Angel's Holy Grail + Battle Anthem
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 15
+  desc_jp: ''
+  name_en: HP <= 15
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 1st, 3rd, 5th row to Fire orbs, 2nd, 4th row to Water orbs, Deal
+    1500% damage
+  desc_jp: Change 1st, 3rd, 5th row to Fire orbs, 2nd, 4th row to Water orbs, Deal
+    1500% damage
+  name_en: Lotus Sky Blades
+  name_jp: Lotus Sky Blades
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESBombFixedSpawn -> Flare Bomb
+# 	Spawn Bomb orbs in the specified positions
+# 	[1] ESBlindStickyFixed -> Flashburn
+# 	Blind orbs in specific positions for 1 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESRowSpawnMulti -> Lotus Sky Blades
+# Condition: When < 15% hp
+# Change 1st, 3rd, 5th row to Fire orbs, 2nd, 4th row to Water orbs
+# [7] ESSkyfall -> Full Punishment
+# Condition: When < 30% hp , one-time use
+# Mortal Poison skyfall +20% for 5 turns
+# [8] ESSkyfall -> Moderate Punishment
+# Condition: When < 50% hp , one-time use
+# Poison skyfall +20% for 5 turns
+# [9] ESSkyfall -> Light Punishment
+# Condition: When < 70% hp , one-time use
+# Jammer skyfall +20% for 5 turns
+# [10] ESBranchHP -> ESBranchHP
+# branch
+# [11] SkillSet:
+# 	Condition: None
+# 	[0] ESOrbChangeSingle -> Healing Hymn
+# 	Change Random to Heal
+# 	[1] ESRowSpawnMulti -> Scarlet Azure Blade
+# 	Change 2nd, 3rd row to Fire, Water orbs
+# [12] ESEndPath -> ESEndPath
+# end_turn
+# [13] ESBranchFlag -> ESBranchFlag
+# branch
+# [14] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [15] SkillSet:
+# 	Condition: When < 70% hp
+# 	[0] ESRecoverEnemy -> Angel's Holy Grail
+# 	Enemy recover 100% hp
+# 	[1] ESAttackUp -> Battle Anthem
+# 	Increase damage to 150% for the next 999 turns
+# [16] ESEndPath -> ESEndPath
+# end_turn
+# [17] ESAttributeResist -> Water damage halved
+# Reduce damage from Water by 50%

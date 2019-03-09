@@ -1,0 +1,150 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1752
+monster_name_en: Blue Time Sorceress, Ars Paulina
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Light, Dark by 50%
+  desc_jp: Reduce damage from Light, Dark by 50%
+  name_en: Light & Dark Resistance
+  name_jp: Light & Dark Resistance
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  name_en: Solomon's Little Key
+  name_jp: Solomon's Little Key
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Heal to Water, Deal 50% damage
+  desc_jp: Change Heal to Water, Deal 50% damage
+  name_en: Grimoire of Water
+  name_jp: Grimoire of Water
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 74
+  desc_jp: ''
+  name_en: HP <= 74
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Heal to Water, Deal 50% damage
+  desc_jp: Change Heal to Water, Deal 50% damage
+  name_en: Grimoire of Water
+  name_jp: Grimoire of Water
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 75
+  desc_jp: ''
+  name_en: HP <= 75
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random 5 to Poison, Deal 25% damage
+  desc_jp: Change Random 5 to Poison, Deal 25% damage
+  name_en: Poison Rain
+  name_jp: Poison Rain
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Water skyfall +25% for 99 turns
+  desc_jp: Water skyfall +25% for 99 turns
+  name_en: Aqua Evocation
+  name_jp: Aqua Evocation
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 30
+  desc_jp: ''
+  name_en: HP <= 30
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Water, Deal 200% damage
+  desc_jp: Change Random to Water, Deal 200% damage
+  name_en: Tidal Hurricane
+  name_jp: Tidal Hurricane
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Random to Wood, Deal 200% damage
+  desc_jp: Change Random to Wood, Deal 200% damage
+  name_en: Tidal Hurricane
+  name_jp: Tidal Hurricane
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 30
+  desc_jp: ''
+  name_en: HP <= 30
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Wood, Deal 200% damage
+  desc_jp: Change Random to Wood, Deal 200% damage
+  name_en: Tidal Hurricane
+  name_jp: Tidal Hurricane
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESStatusShield -> Solomon's Little Key
+# Condition: None
+# Voids status ailments for 999 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] ESOrbChangeAttack -> Tidal Hurricane
+# Condition: 50% chance when < 30% hp
+# Change Random to Water
+# [8] ESOrbChangeAttack -> Tidal Hurricane
+# Condition: When < 30% hp
+# Change Random to Wood
+# [9] ESOrbChangeAttack -> Grimoire of Water
+# Condition: 30% chance
+# Change Heal to Water
+# [10] ESPoisonChangeRandomAttack -> Poison Rain
+# Condition: When < 75% hp , one-time use
+# Change Random 5 to Poison
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESBranchFlag -> ESBranchFlag
+# branch
+# [13] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [14] ESSkyfall -> Aqua Evocation
+# Condition: When < 50% hp
+# Water skyfall +25% for 99 turns
+# [15] ESEndPath -> ESEndPath
+# end_turn
+# [16] ESAttributeResist -> Light & Dark Resistance
+# Reduce damage from Light, Dark by 50%

@@ -1,0 +1,104 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 103625
+monster_name_en: Warlock, Fei Wang Reed
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 4 turns + Player -99% HP
+  desc_jp: Voids status ailments for 4 turns + Player -99% HP
+  name_en: Let me grant your wish + Death Seal
+  name_jp: Let me grant your wish + Death Seal
+  record_type_name: PREEMPT
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchCard -> ESBranchCard
+# branch
+# [3] ESBranchCard -> ESBranchCard
+# branch
+# [4] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESStatusShield -> Let me grant your wish
+# 	Voids status ailments for 4 turns
+# 	[1] ESGravity -> Death Seal
+# 	Player -99% HP
+# [5] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESStatusShield -> I shall erase you from all dimensions!
+# 	Voids status ailments for 4 turns
+# 	[1] ESGravity -> Death Seal
+# 	Player -99% HP
+# [6] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESStatusShield -> You're nothing more than a puppet!
+# 	Voids status ailments for 4 turns
+# 	[1] ESGravity -> Death Seal
+# 	Player -99% HP
+# [7] ESBranchFlag -> ESBranchFlag
+# branch
+# [8] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [9] ESRandomSpawn -> Black wings overturn the corpses
+# Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board
+# Spawn random 3 Jammer orbs
+# [10] ESEndPath -> ESEndPath
+# end_turn
+# [11] ESBranchFlag -> ESBranchFlag
+# branch
+# [12] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [13] ESRandomSpawn -> Black wings overturn the corpses
+# Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board
+# Spawn random 6 Jammer orbs
+# [14] ESEndPath -> ESEndPath
+# end_turn
+# [15] ESBranchFlag -> ESBranchFlag
+# branch
+# [16] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [17] ESRandomSpawn -> Black wings overturn the corpses
+# Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board
+# Spawn random 12 Jammer orbs
+# [18] ESEndPath -> ESEndPath
+# end_turn
+# [19] ESBranchFlag -> ESBranchFlag
+# branch
+# [20] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [21] ESRandomSpawn -> Black wings overturn the corpses
+# Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board
+# Spawn random 24 Jammer orbs
+# [22] ESEndPath -> ESEndPath
+# end_turn
+# [23] ESBranchFlag -> ESBranchFlag
+# branch
+# [24] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [25] ESBoardChangeAttackBits -> Black wings overturned all the corpses
+# Condition: None
+# Change all orbs to Jammer
+# [26] ESEndPath -> ESEndPath
+# end_turn
+# [27] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [28] ESGravity -> Death Seal
+# Condition: None
+# Player -99% HP
+# [29] ESEndPath -> ESEndPath
+# end_turn

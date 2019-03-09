@@ -1,0 +1,207 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2184
+monster_name_en: Gluttonous Mystic, Zhu Bajie
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  name_en: Charge!!
+  name_jp: Charge!!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 1st, 3rd, 5th column to Fire orbs, Deal 120% damage
+  desc_jp: Change 1st, 3rd, 5th column to Fire orbs, Deal 120% damage
+  name_en: Smack
+  name_jp: Smack
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  name_en: Disable Skill
+  name_jp: Disable Skill
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 79
+  desc_jp: ''
+  name_en: HP <= 79
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 1st, 3rd, 5th column to Fire orbs, Deal 120% damage
+  desc_jp: Change 1st, 3rd, 5th column to Fire orbs, Deal 120% damage
+  name_en: Smack
+  name_jp: Smack
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  name_en: Disable Skill
+  name_jp: Disable Skill
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 79
+  desc_jp: ''
+  name_en: HP <= 79
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 1st, 3rd, 5th column to Fire orbs, Deal 120% damage
+  desc_jp: Change 1st, 3rd, 5th column to Fire orbs, Deal 120% damage
+  name_en: Smack
+  name_jp: Smack
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  name_en: Disable Skill
+  name_jp: Disable Skill
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 80
+  desc_jp: ''
+  name_en: HP <= 80
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 10% hp + Change 5th row to Fire orbs
+  desc_jp: Enemy recover 10% hp + Change 5th row to Fire orbs
+  name_en: Dim Sum Snack + Burning Hoof
+  name_jp: Dim Sum Snack + Burning Hoof
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Bind Water cards for 2 turns, Deal 75% damage
+  desc_jp: Bind Water cards for 2 turns, Deal 75% damage
+  name_en: Water Battle Strategy
+  name_jp: Water Battle Strategy
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 80
+  desc_jp: ''
+  name_en: HP <= 80
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind Water cards for 2 turns, Deal 75% damage
+  desc_jp: Bind Water cards for 2 turns, Deal 75% damage
+  name_en: Water Battle Strategy
+  name_jp: Water Battle Strategy
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 75% for 1 turns
+  desc_jp: Reduce damage from all sources by 75% for 1 turns
+  name_en: Marshal Canopy's Secret Plan
+  name_jp: Marshal Canopy's Secret Plan
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Player -100% HP
+  desc_jp: Player -100% HP
+  name_en: Wild Boar Charge
+  name_jp: Wild Boar Charge
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Player -100% HP
+  desc_jp: Player -100% HP
+  name_en: Wild Boar Charge
+  name_jp: Wild Boar Charge
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 30
+  desc_jp: ''
+  name_en: HP <= 30
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 1st, 3rd, 5th column to Fire orbs, 2nd, 4th, 6th column to Light
+    orbs, Deal 200% damage
+  desc_jp: Change 1st, 3rd, 5th column to Fire orbs, 2nd, 4th, 6th column to Light
+    orbs, Deal 200% damage
+  name_en: Bursting Milky Way!
+  name_jp: Bursting Milky Way!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESGravity -> Charge!!
+# Condition: None
+# Player -99% HP
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] ESColumnSpawnMulti -> Bursting Milky Way!
+# Condition: When < 30% hp
+# Change 1st, 3rd, 5th column to Fire orbs, 2nd, 4th, 6th column to Light orbs
+# [8] ESColumnSpawnMulti -> Smack
+# Condition: 20% chance
+# Change 1st, 3rd, 5th column to Fire orbs
+# [9] ESAttackSinglehit -> Disable Skill
+# Condition: 20% chance
+# Enemy action
+# [10] SkillSet:
+# 	Condition: 20% chance when < 80% hp
+# 	[0] ESRecoverEnemy -> Dim Sum Snack
+# 	Enemy recover 10% hp
+# 	[1] ESRowSpawnMulti -> Burning Hoof
+# 	Change 5th row to Fire orbs
+# [11] ESBindAttribute -> Water Battle Strategy
+# Condition: When < 80% hp , one-time use
+# Bind Water cards for 2 turns
+# [12] ESEndPath -> ESEndPath
+# end_turn
+# [13] ESBranchFlag -> ESBranchFlag
+# branch
+# [14] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [15] ESDamageShield -> Marshal Canopy's Secret Plan
+# Condition: When < 50% hp
+# Reduce damage from all sources by 75% for 1 turns
+# [16] ESEndPath -> ESEndPath
+# end_turn
+# [17] ESBranchFlag -> ESBranchFlag
+# branch
+# [18] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [19] ESGravity -> Wild Boar Charge
+# Condition: When < 50% hp
+# Player -100% HP
+# [20] ESEndPath -> ESEndPath
+# end_turn

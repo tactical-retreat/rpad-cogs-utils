@@ -1,0 +1,122 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2808
+monster_name_en: Green Light's Blossom, Kaguya-Hime
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 71%
+  desc_jp: Survive attacks with 1 HP when HP > 71%
+  name_en: Kaguya Resolve
+  name_jp: Kaguya Resolve
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Bind awoken skills for 3 turns + Voids status ailments for 999 turns +
+    Reduce damage from all sources by 50% for 5 turns
+  desc_jp: Bind awoken skills for 3 turns + Voids status ailments for 999 turns +
+    Reduce damage from all sources by 50% for 5 turns
+  name_en: I'll punish you, insolent fool! + Angel's Feathered Robe + Spinning Moonlight
+  name_jp: I'll punish you, insolent fool! + Angel's Feathered Robe + Spinning Moonlight
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind awoken skills for 3 turns
+  desc_jp: Bind awoken skills for 3 turns
+  name_en: I'll punish you, insolent fool!
+  name_jp: I'll punish you, insolent fool!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 70
+  desc_jp: ''
+  name_en: HP <= 70
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 2 subs for 1 turns, Deal 7500% damage
+  desc_jp: Bind 2 subs for 1 turns, Deal 7500% damage
+  name_en: Moon Purification
+  name_jp: Moon Purification
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 30
+  desc_jp: ''
+  name_en: HP <= 30
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 3rd column to Light orbs, 4th column to Light orbs + Enemy recover
+    100% hp
+  desc_jp: Change 3rd column to Light orbs, 4th column to Light orbs + Enemy recover
+    100% hp
+  name_en: Ascension + Elixir of Life
+  name_jp: Ascension + Elixir of Life
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESBindAwoken -> I'll punish you, insolent fool!
+# 	Bind awoken skills for 3 turns
+# 	[1] ESStatusShield -> Angel's Feathered Robe
+# 	Voids status ailments for 999 turns
+# 	[2] ESDamageShield -> Spinning Moonlight
+# 	Reduce damage from all sources by 50% for 5 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] SkillSet:
+# 	Condition: When < 30% hp
+# 	[0] ESColumnSpawnMulti -> Ascension
+# 	Change 3rd column to Light orbs, 4th column to Light orbs
+# 	[1] ESRecoverEnemy -> Elixir of Life
+# 	Enemy recover 100% hp
+# [7] ESBindAttack -> Moon Purification
+# Condition: When < 70% hp
+# Bind 2 subs for 1 turns
+# [8] ESBindAwoken -> I'll punish you, insolent fool!
+# Condition: None
+# Bind awoken skills for 3 turns
+# [9] ESDamageShield -> Moonlight Robe
+# Condition: None
+# Reduce damage from all sources by 75% for 10 turns
+# [10] ESBindTarget -> Jeweled Branch of Horai
+# Condition: One-time use
+# Bind 1 own leader for 1 turns
+# [11] ESGravity -> Buddha's Stone Bowl
+# Condition: One-time use
+# Player -99% HP
+# [12] ESOrbChangeAttack -> Fire Rat Fur Robe
+# Condition: 34% chance
+# Change Heal to Fire
+# [13] ESOrbChangeAttack -> Swallow's Cowry Shell
+# Condition: 50% chance
+# Change Random to Heal
+# [14] ESBoardChangeAttackBits -> Dragon Neck Jewel
+# Condition: None
+# Change all orbs to Fire, Water, Wood, Light, Dark
+# [15] ESResolve -> Kaguya Resolve
+# Survive attacks with 1 HP when HP > 71%

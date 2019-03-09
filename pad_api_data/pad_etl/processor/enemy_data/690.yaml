@@ -1,0 +1,54 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 690
+monster_name_en: Marine Spec Ops Goblin
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  name_en: Charge
+  name_jp: Charge
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 50%~200% damage (2~8 hits, 25% each)
+  desc_jp: Deal 50%~200% damage (2~8 hits, 25% each)
+  name_en: Wild Strikes
+  name_jp: Wild Strikes
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESAttackMultihit -> Charge
+# Condition: None
+# Enemy action
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESAttackMultihit -> Wild Strikes
+# Condition: None
+# Enemy action

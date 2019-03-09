@@ -1,0 +1,146 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 102298
+monster_name_en: Alt. Green Puppet Master of Creation, Courage Machina
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Water, Wood by 50%
+  desc_jp: Reduce damage from Water, Wood by 50%
+  name_en: Courage Wd Wt Halved
+  name_jp: Courage Wd Wt Halved
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Absorb Light, Dark damage for 5 turns + Change Heal to Wood
+  desc_jp: Absorb Light, Dark damage for 5 turns + Change Heal to Wood
+  name_en: Sangen Mechanism + Heal-to-Green Twist Puppetry
+  name_jp: Sangen Mechanism + Heal-to-Green Twist Puppetry
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change own attribute to random one of Water, Wood + Change Fire to Water
+  desc_jp: Change own attribute to random one of Water, Wood + Change Fire to Water
+  name_en: Elemental Flip + Red-to-Blue Twist Puppetry
+  name_jp: Elemental Flip + Red-to-Blue Twist Puppetry
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change own attribute to random one of Water, Wood + Change Heal to Wood
+  desc_jp: Change own attribute to random one of Water, Wood + Change Heal to Wood
+  name_en: Elemental Flip + Heal-to-Green Twist Puppetry
+  name_jp: Elemental Flip + Heal-to-Green Twist Puppetry
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change own attribute to random one of Water, Wood + Change 3rd row to Water
+    orbs
+  desc_jp: Change own attribute to random one of Water, Wood + Change 3rd row to Water
+    orbs
+  name_en: Elemental Flip + Blue Line Stitch Puppetry
+  name_jp: Elemental Flip + Blue Line Stitch Puppetry
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids status ailments for 1 turns + Movetime -3s for 1 turns
+  desc_jp: Voids status ailments for 1 turns + Movetime -3s for 1 turns
+  name_en: Impassive + Marionette Operation
+  name_jp: Impassive + Marionette Operation
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 1st, 3rd, 5th row to Wood orbs, 2nd, 4th row to Water orbs, Deal
+    220% damage
+  desc_jp: Change 1st, 3rd, 5th row to Wood orbs, 2nd, 4th row to Water orbs, Deal
+    220% damage
+  name_en: Green-to-Blue Stitch Puppetry
+  name_jp: Green-to-Blue Stitch Puppetry
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESAbsorbAttribute -> Sangen Mechanism
+# 	Absorb Light, Dark damage for 5 turns
+# 	[1] ESOrbChangeAttack -> Heal-to-Green Twist Puppetry
+# 	Change Heal to Wood
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] SkillSet:
+# 	Condition: 40% chance
+# 	[0] ESChangeAttribute -> Elemental Flip
+# 	Change own attribute to random one of Water, Wood
+# 	[1] ESOrbChangeAttack -> Red-to-Blue Twist Puppetry
+# 	Change Fire to Water
+# [8] SkillSet:
+# 	Condition: 25% chance
+# 	[0] ESChangeAttribute -> Elemental Flip
+# 	Change own attribute to random one of Water, Wood
+# 	[1] ESOrbChangeAttack -> Heal-to-Green Twist Puppetry
+# 	Change Heal to Wood
+# [9] SkillSet:
+# 	Condition: 35% chance
+# 	[0] ESChangeAttribute -> Elemental Flip
+# 	Change own attribute to random one of Water, Wood
+# 	[1] ESRowSpawnMulti -> Blue Line Stitch Puppetry
+# 	Change 3rd row to Water orbs
+# [10] ESEndPath -> ESEndPath
+# end_turn
+# [11] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESStatusShield -> Impassive
+# 	Voids status ailments for 1 turns
+# 	[1] ESDebuffMovetime -> Marionette Operation
+# 	Movetime -3s for 1 turns
+# [12] ESRowSpawnMulti -> Green-to-Blue Stitch Puppetry
+# Condition: None
+# Change 1st, 3rd, 5th row to Wood orbs, 2nd, 4th row to Water orbs
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESAttributeResist -> Courage Wd Wt Halved
+# Reduce damage from Water, Wood by 50%
+# [15] ESNone -> ESNone
+# None
+# [16] ESNone -> ESNone
+# None
+# [17] ESNone -> ESNone
+# None
+# [18] ESNone -> ESNone
+# None
+# [19] ESRowSpawnMulti -> Green-to-Blue Stitch Puppetry
+# Condition: None
+# Change 1st, 3rd, 5th row to Wood orbs, 2nd, 4th row to Water orbs

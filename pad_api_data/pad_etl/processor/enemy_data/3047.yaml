@@ -1,0 +1,167 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3047
+monster_name_en: Juppongatana "Sword Hunter", Sawagejo Cho
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Wood skyfall +20% for 1 turns
+  desc_jp: Wood skyfall +20% for 1 turns
+  name_en: A fair fight, huh?
+  name_jp: A fair fight, huh?
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind active skills for 1 turns, Deal 100% damage
+  desc_jp: Bind active skills for 1 turns, Deal 100% damage
+  name_en: Gotcha!
+  name_jp: Gotcha!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 39
+  desc_jp: ''
+  name_en: HP <= 39
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 125% damage
+  desc_jp: Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 125% damage
+  name_en: '"Orochi" Pose. Take this.'
+  name_jp: '"Orochi" Pose. Take this.'
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 39
+  desc_jp: ''
+  name_en: HP <= 39
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 150% damage
+  desc_jp: Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 150% damage
+  name_en: '"Orochi" Pose'
+  name_jp: '"Orochi" Pose'
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 70
+  desc_jp: ''
+  name_en: HP <= 70
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  name_en: 'They call me "Sword Hunter" Cho.
+
+    Now see my true skill.'
+  name_jp: 'They call me "Sword Hunter" Cho.
+
+    Now see my true skill.'
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Lock 2 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 125% damage
+  desc_jp: Lock 2 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 125% damage
+  name_en: '"Hakujin" - The Thin One'
+  name_jp: '"Hakujin" - The Thin One'
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 70
+  desc_jp: ''
+  name_en: HP <= 70
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Lock 2 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 125% damage
+  desc_jp: Lock 2 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 125% damage
+  name_en: '"Hakujin" - The Thin One'
+  name_jp: '"Hakujin" - The Thin One'
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESSkyfall -> A fair fight, huh?
+# Condition: None
+# Wood skyfall +20% for 1 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESStatusShield -> They call me "Sword Hunter" Cho.
+# Now see my true skill.
+# Condition: When < 70% hp , one-time use
+# Voids status ailments for 999 turns
+# [9] ESAttackUp -> You're all... annoying!!
+# Condition: When < 20% hp , one-time use
+# Increase damage to 200% for the next 999 turns
+# [10] ESBranchHP -> ESBranchHP
+# branch
+# [11] ESBranchHP -> ESBranchHP
+# branch
+# [12] ESBranchHP -> ESBranchHP
+# branch
+# [13] ESBranchFlag -> ESBranchFlag
+# branch
+# [14] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [15] ESBindSkill -> Gotcha!
+# Condition: None
+# Bind active skills for 1 turns
+# [16] ESAttackMultihit -> Gotcha!
+# Condition: None
+# Enemy action
+# [17] ESEndPath -> ESEndPath
+# end_turn
+# [18] ESOrbLock -> "Hakujin" - The Thin One
+# Condition: 70% chance when < 70% hp
+# Lock 2 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [19] ESEndPath -> ESEndPath
+# end_turn
+# [20] ESBranchFlag -> ESBranchFlag
+# branch
+# [21] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [22] ESOrbLock -> "Orochi" Pose. Take this.
+# Condition: None
+# Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [23] ESOrbLock -> "Orochi" Pose
+# Condition: None
+# Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [24] ESEndPath -> ESEndPath
+# end_turn
+# [25] SkillSet:
+# 	Condition: On death
+# 	[0] ESInactivity -> You'll never get to Shishio-sama!
+# 	Do nothing

@@ -1,0 +1,218 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4744
+monster_name_en: "Glowing Celestial Divinities, S\xF3l & M\xE1ni"
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Wood, Light by 50%
+  desc_jp: Reduce damage from Wood, Light by 50%
+  name_en: Light & Wood Resistance
+  name_jp: Light & Wood Resistance
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Locked random skyfall +10% for 15
+    turns + Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs
+  desc_jp: Voids status ailments for 999 turns + Locked random skyfall +10% for 15
+    turns + Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs
+  name_en: "Here I go, M\xE1ni! + OK, S\xF3l! + Inseparable Sides"
+  name_jp: "Here I go, M\xE1ni! + OK, S\xF3l! + Inseparable Sides"
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Heal + Blind all orbs on the board
+  desc_jp: Change Random to Heal + Blind all orbs on the board
+  name_en: Noctilucence + Gloom
+  name_jp: Noctilucence + Gloom
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Random 3 to Poison + Blind all orbs on the board
+  desc_jp: Change Random 3 to Poison + Blind all orbs on the board
+  name_en: Rotting Heat + Gloom
+  name_jp: Rotting Heat + Gloom
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Random to Heal + Bind 1 subs for 1 turns
+  desc_jp: Change Random to Heal + Bind 1 subs for 1 turns
+  name_en: Noctilucence + Drought
+  name_jp: Noctilucence + Drought
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Random 3 to Poison + Bind 1 subs for 1 turns
+  desc_jp: Change Random 3 to Poison + Bind 1 subs for 1 turns
+  name_en: Rotting Heat + Drought
+  name_jp: Rotting Heat + Drought
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Delay active skills by 3 turns + Enemy action
+  desc_jp: Delay active skills by 3 turns + Enemy action
+  name_en: "R\xFAro Pari + Synchronized Burst"
+  name_jp: "R\xFAro Pari + Synchronized Burst"
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy action + Blind all orbs on the board
+  desc_jp: Enemy action + Blind all orbs on the board
+  name_en: Synchronized Burst + Gloom
+  name_jp: Synchronized Burst + Gloom
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Player -75% HP + Blind all orbs on the board
+  desc_jp: Player -75% HP + Blind all orbs on the board
+  name_en: Deteri + Gloom
+  name_jp: Deteri + Gloom
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Player -75% HP + Bind 1 subs for 1 turns
+  desc_jp: Player -75% HP + Bind 1 subs for 1 turns
+  name_en: Deteri + Drought
+  name_jp: Deteri + Drought
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 9
+  desc_jp: ''
+  name_en: HP <= 9
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change own attribute to random one of Fire, Water, Wood, Light, Dark +
+    Enemy action
+  desc_jp: Change own attribute to random one of Fire, Water, Wood, Light, Dark +
+    Enemy action
+  name_en: Dusk + Demina Miracle
+  name_jp: Dusk + Demina Miracle
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESStatusShield -> Here I go, Máni!
+# 	Voids status ailments for 999 turns
+# 	[1] ESSkyfall -> OK, Sól!
+# 	Locked random skyfall +10% for 15 turns
+# 	[2] ESOrbLock -> Inseparable Sides
+# 	Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] SkillSet:
+# 	Condition: 25% chance
+# 	[0] ESOrbChangeAttack -> Noctilucence
+# 	Change Random to Heal
+# 	[1] ESBlind -> Gloom
+# 	Blind all orbs on the board
+# [8] SkillSet:
+# 	Condition: 25% chance
+# 	[0] ESPoisonChangeRandomAttack -> Rotting Heat
+# 	Change Random 3 to Poison
+# 	[1] ESBlind -> Gloom
+# 	Blind all orbs on the board
+# [9] SkillSet:
+# 	Condition: 25% chance
+# 	[0] ESOrbChangeAttack -> Noctilucence
+# 	Change Random to Heal
+# 	[1] ESBindAttack -> Drought
+# 	Bind 1 subs for 1 turns
+# [10] SkillSet:
+# 	Condition: 25% chance
+# 	[0] ESPoisonChangeRandomAttack -> Rotting Heat
+# 	Change Random 3 to Poison
+# 	[1] ESBindAttack -> Drought
+# 	Bind 1 subs for 1 turns
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESBranchFlag -> ESBranchFlag
+# branch
+# [13] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [14] SkillSet:
+# 	Condition: None
+# 	[0] ESSkillDelay -> Rúro Pari
+# 	Delay active skills by 3 turns
+# 	[1] ESAttackMultihit -> Synchronized Burst
+# 	Enemy action
+# [15] ESEndPath -> ESEndPath
+# end_turn
+# [16] ESBranchHP -> ESBranchHP
+# branch
+# [17] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESAttackMultihit -> Synchronized Burst
+# 	Enemy action
+# 	[1] ESBlind -> Gloom
+# 	Blind all orbs on the board
+# [18] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESAttackMultihit -> Synchronized Burst
+# 	Enemy action
+# 	[1] ESBindAttack -> Drought
+# 	Bind 1 subs for 1 turns
+# [19] SkillSet:
+# 	Condition: 25% chance
+# 	[0] ESGravity -> Deteri
+# 	Player -75% HP
+# 	[1] ESBlind -> Gloom
+# 	Blind all orbs on the board
+# [20] SkillSet:
+# 	Condition: 25% chance
+# 	[0] ESGravity -> Deteri
+# 	Player -75% HP
+# 	[1] ESBindAttack -> Drought
+# 	Bind 1 subs for 1 turns
+# [21] ESEndPath -> ESEndPath
+# end_turn
+# [22] SkillSet:
+# 	Condition: None
+# 	[0] ESChangeAttribute -> Dusk
+# 	Change own attribute to random one of Fire, Water, Wood, Light, Dark
+# 	[1] ESAttackMultihit -> Demina Miracle
+# 	Enemy action
+# [23] ESEndPath -> ESEndPath
+# end_turn
+# [24] ESAttributeResist -> Light & Wood Resistance
+# Reduce damage from Wood, Light by 50%

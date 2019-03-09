@@ -1,0 +1,62 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1907
+monster_name_en: '***** (Crystal Defender)'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Light by 50%
+  desc_jp: Reduce damage from Light by 50%
+  name_en: '*****'
+  name_jp: '*****'
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  name_en: Mighty Guard
+  name_jp: Mighty Guard
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  name_en: Mighty Guard
+  name_jp: Mighty Guard
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESStatusShield -> Mighty Guard
+# Condition: None
+# Voids status ailments for 999 turns
+# [3] ESSetCounterIf -> ESSetCounterIf
+# set_counter_if
+# [4] ESCountdown -> ESCountdown
+# countdown
+# [5] ESAttackMultihit -> *****
+# Condition: None
+# Enemy action
+# [6] ESEndPath -> ESEndPath
+# end_turn
+# [7] ESAttributeResist -> *****
+# Reduce damage from Light by 50%

@@ -1,0 +1,124 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 101189
+monster_name_en: Alt. Awoken Hera-Beorc
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb Light damage for 10 turns
+  desc_jp: Absorb Light damage for 10 turns
+  name_en: Photosynthesis
+  name_jp: Photosynthesis
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Fire to Wood, Deal 70% damage
+  desc_jp: Change Fire to Wood, Deal 70% damage
+  name_en: Arboreal Queen's Allure
+  name_jp: Arboreal Queen's Allure
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Bind 1 subs for 3 turns, Deal 40% damage
+  desc_jp: Bind 1 subs for 3 turns, Deal 40% damage
+  name_en: Tie Up
+  name_jp: Tie Up
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 1 subs for 3 turns, Deal 40% damage
+  desc_jp: Bind 1 subs for 3 turns, Deal 40% damage
+  name_en: Tie Up
+  name_jp: Tie Up
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Fire to Wood, Deal 70% damage
+  desc_jp: Change Fire to Wood, Deal 70% damage
+  name_en: Arboreal Queen's Allure
+  name_jp: Arboreal Queen's Allure
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Dark to Light, Deal 100% damage
+  desc_jp: Change Dark to Light, Deal 100% damage
+  name_en: Arboreal Queen's Temptation
+  name_jp: Arboreal Queen's Temptation
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 30
+  desc_jp: ''
+  name_en: HP <= 30
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 200% damage
+  desc_jp: Deal 200% damage
+  name_en: Jupiter Genesis
+  name_jp: Jupiter Genesis
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESAbsorbAttribute -> Photosynthesis
+# Condition: None
+# Absorb Light damage for 10 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] ESAttackMultihit -> Jupiter Genesis
+# Condition: When < 30% hp
+# Enemy action
+# [8] ESOrbChangeAttack -> Arboreal Queen's Temptation
+# Condition: 70% chance when < 50% hp
+# Change Dark to Light
+# [9] ESBindAttack -> Tie Up
+# Condition: One-time use
+# Bind 1 subs for 3 turns
+# [10] ESEndPath -> ESEndPath
+# end_turn
+# [11] ESOrbChangeAttack -> Arboreal Queen's Allure
+# Condition: 70% chance
+# Change Fire to Wood
+# [12] ESBindAttack -> Tie Up
+# Condition: One-time use
+# Bind 1 subs for 3 turns

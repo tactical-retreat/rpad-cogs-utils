@@ -1,0 +1,58 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1541
+monster_name_en: Green Shieldra
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb Wood damage for 10 turns
+  desc_jp: Absorb Wood damage for 10 turns
+  name_en: Wind Shield
+  name_jp: Wind Shield
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  name_en: Shield Bash
+  name_jp: Shield Bash
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESAbsorbAttribute -> Wind Shield
+# Condition: None
+# Absorb Wood damage for 10 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESAttackMultihit -> Shield Bash
+# Condition: None
+# Enemy action

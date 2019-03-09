@@ -1,0 +1,100 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 103232
+monster_name_en: Alt. Old Castle Lantern, Flemin
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Void damage >= 100 for 3 turns
+  desc_jp: Void damage >= 100 for 3 turns
+  name_en: Spooky Light
+  name_jp: Spooky Light
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 3 Mortal Poison orbs, Deal 75% damage
+  desc_jp: Spawn random 3 Mortal Poison orbs, Deal 75% damage
+  name_en: Eerie Flare
+  name_jp: Eerie Flare
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Spawn random 1 Bomb orbs, Deal 75% damage
+  desc_jp: Spawn random 1 Bomb orbs, Deal 75% damage
+  name_en: Cat Bomb
+  name_jp: Cat Bomb
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 2
+  desc_jp: ''
+  name_en: Turn 2
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 3 Mortal Poison orbs, Deal 75% damage
+  desc_jp: Spawn random 3 Mortal Poison orbs, Deal 75% damage
+  name_en: Eerie Flare
+  name_jp: Eerie Flare
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Spawn random 1 Bomb orbs, Deal 75% damage
+  desc_jp: Spawn random 1 Bomb orbs, Deal 75% damage
+  name_en: Cat Bomb
+  name_jp: Cat Bomb
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 5 Bomb orbs, Deal 160% damage
+  desc_jp: Spawn random 5 Bomb orbs, Deal 160% damage
+  name_en: Candle Bomb
+  name_jp: Candle Bomb
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESVoidShield -> Spooky Light
+# Condition: One-time use
+# Void damage >= 100 for 3 turns
+# [3] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
+# branch
+# [4] ESBranchCounter -> ESBranchCounter
+# branch
+# [5] ESSetCounter -> ESSetCounter
+# set_counter
+# [6] ESRandomSpawn -> Eerie Flare
+# Condition: 50% chance & when Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison orbs are on the board
+# Spawn random 3 Mortal Poison orbs
+# [7] ESBombRandomSpawn -> Cat Bomb
+# Condition: None
+# Spawn random 1 Bomb orbs
+# [8] ESEndPath -> ESEndPath
+# end_turn
+# [9] ESBombRandomSpawn -> Candle Bomb
+# Condition: None
+# Spawn random 5 Bomb orbs
+# [10] ESEndPath -> ESEndPath
+# end_turn

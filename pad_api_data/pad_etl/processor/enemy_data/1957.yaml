@@ -1,0 +1,162 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1957
+monster_name_en: Fire Cat Dragon, Tabby Nyadra
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 50%
+  desc_jp: Survive attacks with 1 HP when HP > 50%
+  name_en: '*****'
+  name_jp: '*****'
+  record_type_name: PASSIVE
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 50%
+  desc_jp: Survive attacks with 1 HP when HP > 50%
+  name_en: '*****'
+  name_jp: '*****'
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Bind active skills for 2 turns
+  desc_jp: Bind active skills for 2 turns
+  name_en: Cat Wave
+  name_jp: Cat Wave
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Fire to Jammer, Deal 150% damage
+  desc_jp: Change Fire to Jammer, Deal 150% damage
+  name_en: Surreptitious Snack
+  name_jp: Surreptitious Snack
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 4th, 6th column to Fire orbs, Deal 300% damage
+  desc_jp: Change 4th, 6th column to Fire orbs, Deal 300% damage
+  name_en: Flame Meow Slash
+  name_jp: Flame Meow Slash
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 30
+  desc_jp: ''
+  name_en: HP <= 30
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Fire, Deal 200% damage
+  desc_jp: Change all orbs to Fire, Deal 200% damage
+  name_en: Lick Lick Meow!
+  name_jp: Lick Lick Meow!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 1
+  desc_jp: ''
+  name_en: HP <= 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 6 random for 1 turns, Deal 200% damage
+  desc_jp: Bind 6 random for 1 turns, Deal 200% damage
+  name_en: 9 Lives!
+  name_jp: 9 Lives!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 1000% damage
+  desc_jp: Deal 1000% damage
+  name_en: Irritated Swat
+  name_jp: Irritated Swat
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 1
+  desc_jp: ''
+  name_en: HP <= 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 1000% damage
+  desc_jp: Deal 1000% damage
+  name_en: Irritated Swat
+  name_jp: Irritated Swat
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESBindSkill -> Cat Wave
+# Condition: None
+# Bind active skills for 2 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESBranchHP -> ESBranchHP
+# branch
+# [10] ESColumnSpawnMulti -> Flame Meow Slash
+# Condition: When < 50% hp , one-time use
+# Change 4th, 6th column to Fire orbs
+# [11] ESOrbChangeAttack -> Surreptitious Snack
+# Condition: None
+# Change Fire to Jammer
+# [12] ESEndPath -> ESEndPath
+# end_turn
+# [13] ESBranchFlag -> ESBranchFlag
+# branch
+# [14] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [15] ESBoardChangeAttackBits -> Lick Lick Meow!
+# Condition: When < 30% hp
+# Change all orbs to Fire
+# [16] ESEndPath -> ESEndPath
+# end_turn
+# [17] ESBranchFlag -> ESBranchFlag
+# branch
+# [18] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [19] ESBindAttack -> 9 Lives!
+# Condition: When < 1% hp
+# Bind 6 random for 1 turns
+# [20] ESAttackMultihit -> Irritated Swat
+# Condition: When < 1% hp
+# Enemy action
+# [21] ESResolve -> *****
+# Survive attacks with 1 HP when HP > 50%

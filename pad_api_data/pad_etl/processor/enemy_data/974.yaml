@@ -1,0 +1,64 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 974
+monster_name_en: Red Pirate Dragon, Bartholomew
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 20 turns
+  desc_jp: Voids status ailments for 20 turns
+  name_en: Diamond Cross
+  name_jp: Diamond Cross
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids status ailments for 20 turns
+  desc_jp: Voids status ailments for 20 turns
+  name_en: Diamond Cross
+  name_jp: Diamond Cross
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESStatusShield -> Diamond Cross
+# Condition: None
+# Voids status ailments for 20 turns
+# [5] ESBranchFlag -> ESBranchFlag
+# branch
+# [6] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [7] ESAttackUp -> Black Bird
+# Condition: None
+# Increase damage to 300% for the next 3 turns
+# [8] ESEndPath -> ESEndPath
+# end_turn
+# [9] ESOrbChangeAttack -> Main Battery Discharge
+# Condition: One-time use
+# Change Random to Fire
+# [10] ESAttackMultihit -> Royal Fortune
+# Condition: When < 50% hp
+# Enemy action

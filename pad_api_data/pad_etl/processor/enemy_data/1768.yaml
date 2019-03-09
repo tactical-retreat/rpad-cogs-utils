@@ -1,0 +1,56 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1768
+monster_name_en: Mugcha
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Wood, Deal 100% damage
+  desc_jp: Change Random to Wood, Deal 100% damage
+  name_en: MugMug Green
+  name_jp: MugMug Green
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 30
+  desc_jp: ''
+  name_en: HP <= 30
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 3 random cards for 2~3 turns
+  desc_jp: Bind 3 random cards for 2~3 turns
+  name_en: Quiet Tea Time!
+  name_jp: Quiet Tea Time!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESBindRandom -> Quiet Tea Time!
+# Condition: When < 30% hp , one-time use
+# Bind 3 random cards for 2~3 turns
+# [4] ESOrbChangeAttack -> MugMug Green
+# Condition: None
+# Change Random to Wood

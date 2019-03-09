@@ -1,0 +1,45 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 382
+monster_name_en: Marine Rider
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 10 turns
+  desc_jp: Voids status ailments for 10 turns
+  name_en: Skill Guard
+  name_jp: Skill Guard
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids status ailments for 10 turns
+  desc_jp: Voids status ailments for 10 turns
+  name_en: Skill Guard
+  name_jp: Skill Guard
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESStatusShield -> Skill Guard
+# Condition: None
+# Voids status ailments for 10 turns

@@ -1,0 +1,83 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 482
+monster_name_en: Flowerdragon Gaia Brachys
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 3
+############################################################
+!SkillRecordListing
+level: 3
+overrides: []
+records:
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage (2 hits, 50% each)
+  desc_jp: Deal 100% damage (2 hits, 50% each)
+  name_en: Gaia Breath
+  name_jp: Gaia Breath
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 6 random cards for 1~4 turns
+  desc_jp: Bind 6 random cards for 1~4 turns
+  name_en: Sleeping Powder
+  name_jp: Sleeping Powder
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 150% damage (2 hits, 75% each)
+  desc_jp: Deal 150% damage (2 hits, 75% each)
+  name_en: God Gaia Breath
+  name_jp: God Gaia Breath
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 150% damage (2 hits, 75% each)
+  desc_jp: Deal 150% damage (2 hits, 75% each)
+  name_en: God Gaia Breath
+  name_jp: God Gaia Breath
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESBindRandom -> Sleeping Powder
+# Condition: When < 50% hp , one-time use
+# Bind 6 random cards for 1~4 turns
+# [4] ESBranchHP -> ESBranchHP
+# branch
+# [5] ESAttackMultihit -> God Gaia Breath
+# Condition: When < 50% hp
+# Enemy action
+# [6] ESEndPath -> ESEndPath
+# end_turn
+# [7] ESNone -> ESNone
+# None
+# [8] ESAttackMultihit -> Gaia Breath
+# Condition: None
+# Enemy action

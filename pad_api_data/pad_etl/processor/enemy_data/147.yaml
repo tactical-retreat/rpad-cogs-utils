@@ -1,0 +1,40 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 147
+monster_name_en: Keeper of Flame
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 75% damage
+  desc_jp: Deal 75% damage
+  name_en: Preemptive
+  name_jp: Preemptive
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESAttackPreemptive -> Surprise Attack
+# Condition: None
+# Enemy action
+# [2] ESAttackMultihit -> Big Lance
+# Condition: When < 25% hp
+# Enemy action

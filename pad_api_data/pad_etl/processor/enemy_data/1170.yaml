@@ -1,0 +1,118 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1170
+monster_name_en: Purple Flower Dragon, Orchid
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  name_en: Fertile Guard
+  name_jp: Fertile Guard
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Poison to Heal, Deal 120% damage
+  desc_jp: Change Poison to Heal, Deal 120% damage
+  name_en: Curing Breath
+  name_jp: Curing Breath
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 2 random subs for 3 turns
+  desc_jp: Bind 2 random subs for 3 turns
+  name_en: Serpent Eye
+  name_jp: Serpent Eye
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 30
+  desc_jp: ''
+  name_en: HP <= 30
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random 3 to Poison
+  desc_jp: Change Random 3 to Poison
+  name_en: Poison Marking
+  name_jp: Poison Marking
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 150% damage (3 hits, 50% each)
+  desc_jp: Deal 150% damage (3 hits, 50% each)
+  name_en: Purple Orbit
+  name_jp: Purple Orbit
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 30
+  desc_jp: ''
+  name_en: HP <= 30
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 150% damage (3 hits, 50% each)
+  desc_jp: Deal 150% damage (3 hits, 50% each)
+  name_en: Purple Orbit
+  name_jp: Purple Orbit
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESStatusShield -> Fertile Guard
+# Condition: None
+# Voids status ailments for 999 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESBranchFlag -> ESBranchFlag
+# branch
+# [10] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [11] ESBindRandomSub -> Serpent Eye
+# Condition: None
+# Bind 2 random subs for 3 turns
+# [12] ESPoisonChangeRandom -> Poison Marking
+# Condition: When < 30% hp , one-time use
+# Change Random 3 to Poison
+# [13] ESAttackMultihit -> Purple Orbit
+# Condition: When < 30% hp
+# Enemy action
+# [14] ESOrbChangeAttack -> Curing Breath
+# Condition: None
+# Change Poison to Heal
+# [15] ESPoisonChangeRandomAttack -> Poison Fog
+# Condition: None
+# Change Random 6 to Poison

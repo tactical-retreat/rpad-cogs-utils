@@ -1,0 +1,48 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1825
+monster_name_en: I Love DeviBear
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  name_en: I'm from BEAMS!
+  name_jp: I'm from BEAMS!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  name_en: Thanks for the collab, Yamamoto-san!
+  name_jp: Thanks for the collab, Yamamoto-san!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESInactivity -> I'm from BEAMS!
+# Condition: One-time use
+# Do nothing
+# [3] ESInactivity -> Thanks for the collab, Yamamoto-san!
+# Condition: None
+# Do nothing

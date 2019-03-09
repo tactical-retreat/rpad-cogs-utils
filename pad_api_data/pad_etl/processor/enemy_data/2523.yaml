@@ -1,0 +1,50 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2523
+monster_name_en: Santa Claus
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Do nothing + Do nothing + Reduce self HP to 0
+  desc_jp: Do nothing + Do nothing + Reduce self HP to 0
+  name_en: Merry Christmaaas! + Presents for the nice children! + Take care of yourself!
+  name_jp: Merry Christmaaas! + Presents for the nice children! + Take care of yourself!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing + Do nothing + Reduce self HP to 0
+  desc_jp: Do nothing + Do nothing + Reduce self HP to 0
+  name_en: Merry Christmaaas! + Presents for the nice children! + Take care of yourself!
+  name_jp: Merry Christmaaas! + Presents for the nice children! + Take care of yourself!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] SkillSet:
+# 	Condition: None
+# 	[0] ESInactivity -> Merry Christmaaas!
+# 	Do nothing
+# 	[1] ESInactivity -> Presents for the nice children!
+# 	Do nothing
+# 	[2] ESEndBattle -> Take care of yourself!
+# 	Reduce self HP to 0

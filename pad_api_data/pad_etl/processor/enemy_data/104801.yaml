@@ -1,0 +1,94 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 104801
+monster_name_en: Ambush Master Dragon Caller, Valeria
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  name_en: Great Tactics
+  name_jp: Great Tactics
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 3 Bomb orbs, Deal 100% damage
+  desc_jp: Spawn random 3 Bomb orbs, Deal 100% damage
+  name_en: Burst of Dust
+  name_jp: Burst of Dust
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 120% damage (4 hits, 30% each)
+  desc_jp: Deal 120% damage (4 hits, 30% each)
+  name_en: Double-Edged Sword Technique
+  name_jp: Double-Edged Sword Technique
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 75% for 1 turns + Change 3rd, 4th column
+    to Fire orbs
+  desc_jp: Reduce damage from all sources by 75% for 1 turns + Change 3rd, 4th column
+    to Fire orbs
+  name_en: Toughen Up + Flare Slash
+  name_jp: Toughen Up + Flare Slash
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 10
+  desc_jp: ''
+  name_en: HP <= 10
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 240% damage (6 hits, 40% each)
+  desc_jp: Deal 240% damage (6 hits, 40% each)
+  name_en: Special Move
+  name_jp: Special Move
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESStatusShield -> Great Tactics
+# Condition: One-time use
+# Voids status ailments for 999 turns
+# [3] SkillSet:
+# 	Condition: When < 50% hp , one-time use
+# 	[0] ESDamageShield -> Toughen Up
+# 	Reduce damage from all sources by 75% for 1 turns
+# 	[1] ESColumnSpawnMulti -> Flare Slash
+# 	Change 3rd, 4th column to Fire orbs
+# [4] ESAttackMultihit -> Special Move
+# Condition: When < 10% hp
+# Enemy action
+# [5] ESBombRandomSpawn -> Burst of Dust
+# Condition: 50% chance
+# Spawn random 3 Bomb orbs
+# [6] ESAttackMultihit -> Double-Edged Sword Technique
+# Condition: None
+# Enemy action
+# [7] ESEndPath -> ESEndPath
+# end_turn

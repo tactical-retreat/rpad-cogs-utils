@@ -1,0 +1,79 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 204
+monster_name_en: Messenger of God, Archangel
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  name_en: Glaring...
+  name_jp: Glaring...
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 74
+  desc_jp: ''
+  name_en: HP <= 74
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  name_en: Glaring...
+  name_jp: Glaring...
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 75
+  desc_jp: ''
+  name_en: HP <= 75
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Dark to Jammer
+  desc_jp: Change Dark to Jammer
+  name_en: Dark change to Block
+  name_jp: Dark change to Block
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 20
+  desc_jp: ''
+  name_en: HP <= 20
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 100% hp
+  desc_jp: Enemy recover 100% hp
+  name_en: Resurrection
+  name_jp: Resurrection
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESRecoverEnemy -> Resurrection
+# Condition: When < 20% hp , one-time use
+# Enemy recover 100% hp
+# [2] ESJammerChangeSingle -> Dark change to Block
+# Condition: 20% chance when < 75% hp
+# Change Dark to Jammer
+# [3] ESInactivity -> Glaring...
+# Condition: 10% chance
+# Do nothing

@@ -1,0 +1,95 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 101964
+monster_name_en: Alt. Green DeviNyan
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 1 turns
+  desc_jp: Reduce damage from all sources by 50% for 1 turns
+  name_en: Dancing around
+  name_jp: Dancing around
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 75% for 1 turns
+  desc_jp: Reduce damage from all sources by 75% for 1 turns
+  name_en: Dancing around
+  name_jp: Dancing around
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 2
+  desc_jp: ''
+  name_en: Turn 2
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 99% for 1 turns
+  desc_jp: Reduce damage from all sources by 99% for 1 turns
+  name_en: Dancing around
+  name_jp: Dancing around
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 3
+  desc_jp: ''
+  name_en: Turn 3
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 999 turns
+  desc_jp: Increase damage to 200% for the next 999 turns
+  name_en: Got angry
+  name_jp: Got angry
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 400% damage (4 hits, 100% each)
+  desc_jp: Deal 400% damage (4 hits, 100% each)
+  name_en: Amazing Attack
+  name_jp: Amazing Attack
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESDamageShield -> Dancing around
+# Condition: One-time use
+# Reduce damage from all sources by 50% for 1 turns
+# [3] ESDamageShield -> Dancing around
+# Condition: One-time use
+# Reduce damage from all sources by 75% for 1 turns
+# [4] ESDamageShield -> Dancing around
+# Condition: One-time use
+# Reduce damage from all sources by 99% for 1 turns
+# [5] ESAttackUp -> Got angry
+# Condition: One-time use
+# Increase damage to 200% for the next 999 turns
+# [6] ESAttackMultihit -> Amazing Attack
+# Condition: None
+# Enemy action
+# [7] ESEndPath -> ESEndPath
+# end_turn

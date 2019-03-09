@@ -1,0 +1,152 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1838
+monster_name_en: Stubborn Dragon King, Gainaut
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: 'Show message: Ohhhh!! I....can still....shiiiine!!!'
+  desc_jp: 'Show message: Ohhhh!! I....can still....shiiiine!!!'
+  name_en: Gainaut Transform
+  name_jp: Gainaut Transform
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 35% for 3 turns + Change 4th row to Fire
+    orbs
+  desc_jp: Reduce damage from all sources by 35% for 3 turns + Change 4th row to Fire
+    orbs
+  name_en: You have guts to point your sword at me! + Burn!!
+  name_jp: You have guts to point your sword at me! + Burn!!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: 'Show message: Ohhhh!! I....can still....shiiiine!!!'
+  desc_jp: 'Show message: Ohhhh!! I....can still....shiiiine!!!'
+  name_en: Gainaut Transform
+  name_jp: Gainaut Transform
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Delay active skills by 2 turns, Deal 75% damage
+  desc_jp: Delay active skills by 2 turns, Deal 75% damage
+  name_en: Burning Cannon
+  name_jp: Burning Cannon
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: 'Show message: Ohhhh!! I....can still....shiiiine!!!'
+  desc_jp: 'Show message: Ohhhh!! I....can still....shiiiine!!!'
+  name_en: Gainaut Transform
+  name_jp: Gainaut Transform
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Bind 1 random for 3 turns, Deal 80% damage
+  desc_jp: Bind 1 random for 3 turns, Deal 80% damage
+  name_en: Miraculous Vortex
+  name_jp: Miraculous Vortex
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 100% damage (2 hits, 50% each)
+  desc_jp: Deal 100% damage (2 hits, 50% each)
+  name_en: Fire Prison
+  name_jp: Fire Prison
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: 'Show message: Ohhhh!! I....can still....shiiiine!!!'
+  desc_jp: 'Show message: Ohhhh!! I....can still....shiiiine!!!'
+  name_en: Gainaut Transform
+  name_jp: Gainaut Transform
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 19
+  desc_jp: ''
+  name_en: HP <= 19
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: 'Show message: Ohhhh!! I....can still....shiiiine!!!'
+  desc_jp: 'Show message: Ohhhh!! I....can still....shiiiine!!!'
+  name_en: Gainaut Transform
+  name_jp: Gainaut Transform
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 20
+  desc_jp: ''
+  name_en: HP <= 20
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 300% damage
+  desc_jp: Deal 300% damage
+  name_en: Extreme Blaze
+  name_jp: Extreme Blaze
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESDeathCry -> Gainaut Transform
+# Condition: On death
+# Show message: Ohhhh!! I....can still....shiiiine!!!
+# [3] ESBranchFlag -> ESBranchFlag
+# branch
+# [4] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [5] SkillSet:
+# 	Condition: None
+# 	[0] ESDamageShield -> You have guts to point your sword at me!
+# 	Reduce damage from all sources by 35% for 3 turns
+# 	[1] ESRowSpawnMulti -> Burn!!
+# 	Change 4th row to Fire orbs
+# [6] ESEndPath -> ESEndPath
+# end_turn
+# [7] ESAttackMultihit -> Extreme Blaze
+# Condition: When < 20% hp
+# Enemy action
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESSkillDelay -> Burning Cannon
+# Condition: One-time use
+# Delay active skills by 2 turns
+# [10] ESBindAttack -> Miraculous Vortex
+# Condition: 30% chance
+# Bind 1 random for 3 turns
+# [11] ESAttackMultihit -> Fire Prison
+# Condition: None
+# Enemy action
+# [12] ESBranchFlag -> ESBranchFlag
+# branch
+# [13] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [14] ESAttackUp -> Guooohhh!! I won't forgive you!!
+# Condition: None
+# Increase damage to 200% for the next 999 turns

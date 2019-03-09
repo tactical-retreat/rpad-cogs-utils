@@ -1,0 +1,104 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2896
+monster_name_en: Infernal Ice Demon's Frozen Horn, Agni
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Wood, Light by 50%
+  desc_jp: Reduce damage from Wood, Light by 50%
+  name_en: Wood & Light Halven
+  name_jp: Wood & Light Halven
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Player -99% HP + Leader changes to random sub for 2 turns
+  desc_jp: Player -99% HP + Leader changes to random sub for 2 turns
+  name_en: Clash + Viparyaya
+  name_jp: Clash + Viparyaya
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 150% damage (3 hits, 50% each)
+  desc_jp: Deal 150% damage (3 hits, 50% each)
+  name_en: Rampage
+  name_jp: Rampage
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 34
+  desc_jp: ''
+  name_en: HP <= 34
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Delay active skills by 2~4 turns
+  desc_jp: Delay active skills by 2~4 turns
+  name_en: Roar
+  name_jp: Roar
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 34
+  desc_jp: ''
+  name_en: HP <= 34
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 1800% damage (6 hits, 300% each)
+  desc_jp: Deal 1800% damage (6 hits, 300% each)
+  name_en: Paryavasaanam
+  name_jp: Paryavasaanam
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESGravity -> Clash
+# 	Player -99% HP
+# 	[1] ESLeaderSwap -> Viparyaya
+# 	Leader changes to random sub for 2 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] ESColumnSpawnMulti -> Wild Frozen Poison
+# Condition: One-time use
+# Change 2nd, 5th column to Water, Dark, Poison orbs
+# [8] ESAttackMultihit -> Rampage
+# Condition: None
+# Enemy action
+# [9] ESBranchFlag -> ESBranchFlag
+# branch
+# [10] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [11] ESSkillDelay -> Roar
+# Condition: None
+# Delay active skills by 2~4 turns
+# [12] ESAttackMultihit -> Paryavasaanam
+# Condition: None
+# Enemy action
+# [13] ESAttributeResist -> Wood & Light Halven
+# Reduce damage from Wood, Light by 50%

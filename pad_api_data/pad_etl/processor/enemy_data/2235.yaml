@@ -1,0 +1,141 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2235
+monster_name_en: Avenging War Deity, Ares
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 50%
+  desc_jp: Survive attacks with 1 HP when HP > 50%
+  name_en: '****'
+  name_jp: '****'
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Change 3rd row to Jammer orbs
+  desc_jp: Voids status ailments for 999 turns + Change 3rd row to Jammer orbs
+  name_en: War Deity's Ambition + Rapid Scalding
+  name_jp: War Deity's Ambition + Rapid Scalding
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Void damage >= 1000000 for 10 turns
+  desc_jp: Void damage >= 1000000 for 10 turns
+  name_en: Divine Body's Shining Flames
+  name_jp: Divine Body's Shining Flames
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 70
+  desc_jp: ''
+  name_en: HP <= 70
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind Water cards for 5 turns
+  desc_jp: Bind Water cards for 5 turns
+  name_en: Revenge Full of Hatred
+  name_jp: Revenge Full of Hatred
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 10
+  desc_jp: ''
+  name_en: HP <= 10
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 40% hp + Change 1st, 3rd, 4th, 6th column to Fire orbs
+  desc_jp: Enemy recover 40% hp + Change 1st, 3rd, 4th, 6th column to Fire orbs
+  name_en: Blazing Spirit + Wall Eruption
+  name_jp: Blazing Spirit + Wall Eruption
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESStatusShield -> War Deity's Ambition
+# 	Voids status ailments for 999 turns
+# 	[1] ESRowSpawnMulti -> Rapid Scalding
+# 	Change 3rd row to Jammer orbs
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] SkillSet:
+# 	Condition: When < 10% hp , one-time use
+# 	[0] ESRecoverEnemy -> Blazing Spirit
+# 	Enemy recover 40% hp
+# 	[1] ESVoidShield -> Divine Body's Shining Flames
+# 	Void damage >= 1000000 for 10 turns
+# [7] ESVoidShield -> Divine Body's Shining Flames
+# Condition: When < 50% hp , one-time use
+# Void damage >= 1000000 for 10 turns
+# [8] SkillSet:
+# 	Condition: When < 10% hp
+# 	[0] ESRecoverEnemy -> Blazing Spirit
+# 	Enemy recover 40% hp
+# 	[1] ESColumnSpawnMulti -> Wall Eruption
+# 	Change 1st, 3rd, 4th, 6th column to Fire orbs
+# [9] ESBranchFlag -> ESBranchFlag
+# branch
+# [10] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [11] ESBindAttribute -> Revenge Full of Hatred
+# Condition: When < 70% hp
+# Bind Water cards for 5 turns
+# [12] ESBindAttack -> Trembling Lance
+# Condition: 20% chance
+# Bind 4 subs for 1 turns
+# [13] SkillSet:
+# 	Condition: 50% chance
+# 	[0] ESBlind -> Cinder Storm
+# 	Blind all orbs on the board
+# 	[1] ESOrbChangeAttack -> Hidden Ember
+# 	Change Random to Fire
+# [14] ESJammerChangeRandom -> Wall Burst
+# Condition: None
+# Change Random 3 to Jammer
+# [15] ESBranchFlag -> ESBranchFlag
+# branch
+# [16] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [17] ESOrbChangeAttack -> Rubble Incineration
+# Condition: None
+# Change Jammer to Fire
+# [18] ESOrbLock -> Constant Grimness
+# Condition: None
+# Lock all Fire, Light orbs
+# [19] ESAttackMultihit -> Thrust Combination
+# Condition: None
+# Enemy action
+# [20] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [21] SkillSet:
+# 	Condition: None
+# 	[0] ESAbsorbAttribute -> Mars Core
+# 	Absorb Fire damage for 1 turns
+# 	[1] ESColumnSpawnMulti -> Wall Eruption
+# 	Change 1st, 3rd, 4th, 6th column to Fire orbs
+# [22] ESResolve -> ****
+# Survive attacks with 1 HP when HP > 50%

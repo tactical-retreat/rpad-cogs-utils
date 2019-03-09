@@ -1,0 +1,57 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4076
+monster_name_en: Kyo Kusanagi
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  name_en: Let's go!
+  name_jp: Let's go!
+  record_type_name: PREEMPT
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESBranchCard -> ESBranchCard
+# branch
+# [7] ESBranchCard -> ESBranchCard
+# branch
+# [8] ESInactivity -> Let's go!
+# Condition: One-time use
+# Do nothing
+# [9] ESInactivity -> The flames are calling you!
+# Condition: One-time use
+# Do nothing
+# [10] ESInactivity -> Shall we fight, Benimaru?
+# Condition: One-time use
+# Do nothing
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] SkillSet:
+# 	Condition: On death
+# 	[0] ESInactivity -> Aaaaaaaaah!
+# 	Do nothing

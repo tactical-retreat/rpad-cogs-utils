@@ -1,0 +1,60 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2655
+monster_name_en: Yellow Gadget
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Spawn random 1 Light orbs, Deal 110% damage
+  desc_jp: Spawn random 1 Light orbs, Deal 110% damage
+  name_en: Fast Star
+  name_jp: Fast Star
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Lock all Light orbs, Deal 70% damage
+  desc_jp: Lock all Light orbs, Deal 70% damage
+  name_en: white cosmos
+  name_jp: white cosmos
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESRandomSpawn -> Fast Star
+# Condition: When fire, water, wood, dark, heal, jammer, poison, mortal poison orbs are on the board
+# Spawn random 1 Light orbs
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESOrbLock -> white cosmos
+# Condition: One-time use
+# Lock all Light orbs
+# [9] ESEndPath -> ESEndPath
+# end_turn

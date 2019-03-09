@@ -1,0 +1,132 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4938
+monster_name_en: '*****'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 5 turns
+  desc_jp: Voids status ailments for 5 turns
+  name_en: The festivities are here...
+  name_jp: The festivities are here...
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  name_en: Veno Visor
+  name_jp: Veno Visor
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Spawn random 3 Poison orbs, Deal 80% damage
+  desc_jp: Spawn random 3 Poison orbs, Deal 80% damage
+  name_en: Veno Snaker
+  name_jp: Veno Snaker
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing + Enemy action
+  desc_jp: Do nothing + Enemy action
+  name_en: Sword Vent + Veno Saber
+  name_jp: Sword Vent + Veno Saber
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  name_en: Veno Visor
+  name_jp: Veno Visor
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Spawn random 3 Poison orbs, Deal 80% damage
+  desc_jp: Spawn random 3 Poison orbs, Deal 80% damage
+  name_en: Veno Snaker
+  name_jp: Veno Snaker
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 150% for the next 5 turns
+  desc_jp: Increase damage to 150% for the next 5 turns
+  name_en: You're getting on my nerves!
+  name_jp: You're getting on my nerves!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 14
+  desc_jp: ''
+  name_en: HP <= 14
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing + Enemy action
+  desc_jp: Do nothing + Enemy action
+  name_en: Final Vent + Veno Crush
+  name_jp: Final Vent + Veno Crush
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESStatusShield -> The festivities are here...
+# Condition: One-time use
+# Voids status ailments for 5 turns
+# [5] ESBranchHP -> ESBranchHP
+# branch
+# [6] ESAttackUp -> You're getting on my nerves!
+# Condition: One-time use
+# Increase damage to 150% for the next 5 turns
+# [7] ESBranchHP -> ESBranchHP
+# branch
+# [8] SkillSet:
+# 	Condition: 33% chance
+# 	[0] ESInactivity -> Sword Vent
+# 	Do nothing
+# 	[1] ESAttackMultihit -> Veno Saber
+# 	Enemy action
+# [9] ESAttackMultihit -> Veno Visor
+# Condition: 50% chance
+# Enemy action
+# [10] ESRandomSpawn -> Veno Snaker
+# Condition: When fire, water, wood, light, dark, heal, jammer, mortal poison orbs are on the board
+# Spawn random 3 Poison orbs
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] SkillSet:
+# 	Condition: None
+# 	[0] ESInactivity -> Final Vent
+# 	Do nothing
+# 	[1] ESAttackMultihit -> Veno Crush
+# 	Enemy action
+# [13] ESEndPath -> ESEndPath
+# end_turn

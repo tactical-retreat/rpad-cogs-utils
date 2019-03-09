@@ -1,0 +1,157 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 390
+monster_name_en: Sea Deity, Heaven Neptune
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Water, Light by 50%
+  desc_jp: Reduce damage from Water, Light by 50%
+  name_en: '*****'
+  name_jp: '*****'
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 7 turns + Reduce damage from all sources by 75%
+    for 4 turns
+  desc_jp: Voids status ailments for 7 turns + Reduce damage from all sources by 75%
+    for 4 turns
+  name_en: Heaven's Ocean + Celestial Ocean's Holy Waves
+  name_jp: Heaven's Ocean + Celestial Ocean's Holy Waves
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  name_en: Dawn Trident
+  name_jp: Dawn Trident
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 2
+  desc_jp: ''
+  name_en: Turn 2
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage (2 hits, 50% each)
+  desc_jp: Deal 100% damage (2 hits, 50% each)
+  name_en: Bi-Tentacles
+  name_jp: Bi-Tentacles
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 3
+  desc_jp: ''
+  name_en: Turn 3
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 200% damage
+  desc_jp: Deal 200% damage
+  name_en: Dusk Trident
+  name_jp: Dusk Trident
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 4
+  desc_jp: ''
+  name_en: Turn 4
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 200% damage (4 hits, 50% each)
+  desc_jp: Deal 200% damage (4 hits, 50% each)
+  name_en: Tetra-Tentacles
+  name_jp: Tetra-Tentacles
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 5
+  desc_jp: ''
+  name_en: Turn 5
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 300% damage
+  desc_jp: Deal 300% damage
+  name_en: Midnight Trident
+  name_jp: Midnight Trident
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 6
+  desc_jp: ''
+  name_en: Turn 6
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 300% damage (6 hits, 50% each)
+  desc_jp: Deal 300% damage (6 hits, 50% each)
+  name_en: Hexa-Tentacles
+  name_jp: Hexa-Tentacles
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Mortal Poison, Deal 300% damage
+  desc_jp: Change all orbs to Mortal Poison, Deal 300% damage
+  name_en: Abyss of Despair
+  name_jp: Abyss of Despair
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESStatusShield -> Heaven's Ocean
+# 	Voids status ailments for 7 turns
+# 	[1] ESDamageShield -> Celestial Ocean's Holy Waves
+# 	Reduce damage from all sources by 75% for 4 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESAttackMultihit -> Dawn Trident
+# Condition: One-time use
+# Enemy action
+# [7] ESAttackMultihit -> Bi-Tentacles
+# Condition: One-time use
+# Enemy action
+# [8] ESAttackMultihit -> Dusk Trident
+# Condition: One-time use
+# Enemy action
+# [9] ESAttackMultihit -> Tetra-Tentacles
+# Condition: One-time use
+# Enemy action
+# [10] ESAttackMultihit -> Midnight Trident
+# Condition: One-time use
+# Enemy action
+# [11] ESAttackMultihit -> Hexa-Tentacles
+# Condition: One-time use
+# Enemy action
+# [12] ESBoardChangeAttackBits -> Abyss of Despair
+# Condition: None
+# Change all orbs to Mortal Poison
+# [13] ESAttributeResist -> *****
+# Reduce damage from Water, Light by 50%

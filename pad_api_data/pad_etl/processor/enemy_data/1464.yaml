@@ -1,0 +1,80 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1464
+monster_name_en: Thoth
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  name_en: Hieroglyphic Carvings
+  name_jp: Hieroglyphic Carvings
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy ally recover 50% hp
+  desc_jp: Enemy ally recover 50% hp
+  name_en: Ceremony of Rebirth
+  name_jp: Ceremony of Rebirth
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESStatusShield -> Hieroglyphic Carvings
+# Condition: None
+# Voids status ailments for 999 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESRecoverEnemyAlly -> Ceremony of Rebirth
+# Condition: When enemy ally is killed
+# Enemy ally recover 50% hp
+# [7] ESAttackMultihit -> Genesis Gleam
+# Condition: When < 20% hp
+# Enemy action
+# [8] ESBranchFlag -> ESBranchFlag
+# branch
+# [9] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [10] ESJammerChangeSingle -> Arcane Spell
+# Condition: None
+# Change Fire to Jammer
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESBranchFlag -> ESBranchFlag
+# branch
+# [13] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [14] ESPoisonChangeRandomAttack -> Judgement of the Dead
+# Condition: None
+# Change Random 6 to Poison
+# [15] ESEndPath -> ESEndPath
+# end_turn
+# [16] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [17] ESBindAttack -> Playing with Time & Space
+# Condition: None
+# Bind 1 random for 3 turns

@@ -1,0 +1,65 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 738
+monster_name_en: Blue Stone Dragon, Mythril
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 20 turns
+  desc_jp: Voids status ailments for 20 turns
+  name_en: Mystic Armor
+  name_jp: Mystic Armor
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids status ailments for 20 turns
+  desc_jp: Voids status ailments for 20 turns
+  name_en: Mystic Armor
+  name_jp: Mystic Armor
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESStatusShield -> Mystic Armor
+# Condition: None
+# Voids status ailments for 20 turns
+# [3] ESBranchHP -> ESBranchHP
+# branch
+# [4] ESBranchHP -> ESBranchHP
+# branch
+# [5] ESAttackMultihit -> Blue Fang
+# Condition: 70% chance
+# Enemy action
+# [6] ESEndPath -> ESEndPath
+# end_turn
+# [7] ESBindAttribute -> Fire Bind
+# Condition: One-time use
+# Bind Fire cards for 2~4 turns
+# [8] ESAttackMultihit -> Green Wing
+# Condition: 70% chance
+# Enemy action
+# [9] ESEndPath -> ESEndPath
+# end_turn
+# [10] ESAttackMultihit -> Metal Burst
+# Condition: None
+# Enemy action

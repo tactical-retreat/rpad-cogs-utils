@@ -1,0 +1,88 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1919
+monster_name_en: Rumbling Firedragon, Armored Tyrannos
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb combo <= 6 damage for 999 turns + Poison skyfall +5% for 10 turns
+  desc_jp: Absorb combo <= 6 damage for 999 turns + Poison skyfall +5% for 10 turns
+  name_en: Gigantic Body + Black Missile
+  name_jp: Gigantic Body + Black Missile
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Movetime -1s for 10 turns, Deal 100% damage
+  desc_jp: Movetime -1s for 10 turns, Deal 100% damage
+  name_en: Jamming Missile
+  name_jp: Jamming Missile
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESAbsorbCombo -> Gigantic Body
+# 	Absorb combo <= 6 damage for 999 turns
+# 	[1] ESSkyfall -> Black Missile
+# 	Poison skyfall +5% for 10 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESDebuffMovetime -> Jamming Missile
+# Condition: When < 50% hp , one-time use
+# Movetime -1s for 10 turns
+# [7] ESAttackUp -> Red Device
+# Condition: When < 20% hp
+# Increase damage to 200% for the next 999 turns
+# [8] ESBranchFlag -> ESBranchFlag
+# branch
+# [9] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [10] ESSkillDelay -> Hyper Claw
+# Condition: 50% chance
+# Delay active skills by 1 turns
+# [11] ESAttackMultihit -> Claw Rush
+# Condition: None
+# Enemy action
+# [12] ESEndPath -> ESEndPath
+# end_turn
+# [13] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [14] ESBombFixedSpawn -> Line Bomb
+# Condition: 25% chance
+# Spawn Bomb orbs in the specified positions
+# [15] ESBombFixedSpawn -> Line Bomb
+# Condition: 25% chance
+# Spawn Bomb orbs in the specified positions
+# [16] ESBombFixedSpawn -> Line Bomb
+# Condition: 25% chance
+# Spawn Bomb orbs in the specified positions
+# [17] ESBombFixedSpawn -> Line Bomb
+# Condition: 25% chance
+# Spawn Bomb orbs in the specified positions
+# [18] ESEndPath -> ESEndPath
+# end_turn

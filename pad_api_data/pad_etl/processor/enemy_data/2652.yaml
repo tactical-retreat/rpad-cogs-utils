@@ -1,0 +1,60 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2652
+monster_name_en: Red Gadget
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Spawn random 3 Jammer orbs, Deal 100% damage
+  desc_jp: Spawn random 3 Jammer orbs, Deal 100% damage
+  name_en: Ash Star
+  name_jp: Ash Star
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Lock all Fire orbs, Deal 70% damage
+  desc_jp: Lock all Fire orbs, Deal 70% damage
+  name_en: red meteor
+  name_jp: red meteor
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESRandomSpawn -> Ash Star
+# Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board
+# Spawn random 3 Jammer orbs
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESOrbLock -> red meteor
+# Condition: One-time use
+# Lock all Fire orbs
+# [9] ESEndPath -> ESEndPath
+# end_turn

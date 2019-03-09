@@ -1,0 +1,67 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3961
+monster_name_en: Flame Text Dragon
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 10 Fire orbs, Deal 100% damage
+  desc_jp: Spawn random 10 Fire orbs, Deal 100% damage
+  name_en: Blazing Flare
+  name_jp: Blazing Flare
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 140% damage (2 hits, 70% each)
+  desc_jp: Deal 140% damage (2 hits, 70% each)
+  name_en: Vivid Slash
+  name_jp: Vivid Slash
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb combo <= 5 damage for 3 turns
+  desc_jp: Absorb combo <= 5 damage for 3 turns
+  name_en: Toon Dragon Sense
+  name_jp: Toon Dragon Sense
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESAbsorbCombo -> Toon Dragon Sense
+# Condition: When < 50% hp , one-time use
+# Absorb combo <= 5 damage for 3 turns
+# [4] ESRandomSpawn -> Blazing Flare
+# Condition: 30% chance & when Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 10 Fire orbs
+# [5] ESAttackMultihit -> Vivid Slash
+# Condition: 40% chance
+# Enemy action
+# [6] ESEndPath -> ESEndPath
+# end_turn

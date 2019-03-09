@@ -1,0 +1,136 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4638
+monster_name_en: Holy Inferno Companion Dragon, Harnis
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Unable to Wood orbs for 3 turns
+  desc_jp: Unable to Wood orbs for 3 turns
+  name_en: Green Exception
+  name_jp: Green Exception
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: When 6 enemy remains
+  desc_jp: ''
+  name_en: When 6 enemy remains
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Fire, Wood, Light, Heal, Deal 120% damage
+  desc_jp: Change all orbs to Fire, Wood, Light, Heal, Deal 120% damage
+  name_en: Flame Enclosure
+  name_jp: Flame Enclosure
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 15
+  desc_jp: ''
+  name_en: HP <= 15
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Fire, Wood, Light, Heal, Deal 120% damage
+  desc_jp: Change all orbs to Fire, Wood, Light, Heal, Deal 120% damage
+  name_en: Flame Enclosure
+  name_jp: Flame Enclosure
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 14
+  desc_jp: ''
+  name_en: HP <= 14
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 200% damage (4 hits, 50% each)
+  desc_jp: Deal 200% damage (4 hits, 50% each)
+  name_en: Blaze Rush
+  name_jp: Blaze Rush
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESAttributeBlock -> Green Exception
+# Condition: None
+# Unable to Wood orbs for 3 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchFlag -> ESBranchFlag
+# branch
+# [9] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [10] ESBombFixedSpawn -> Affliction Bombing
+# Condition: None
+# Spawn Bomb orbs in the specified positions
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESBranchHP -> ESBranchHP
+# branch
+# [13] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
+# branch
+# [14] ESSetCounter -> ESSetCounter
+# set_counter
+# [15] ESBranchCounter -> ESBranchCounter
+# branch
+# [16] ESOrbChangeAttack -> Soppy Flame
+# Condition: 33% chance
+# Change Random to Fire
+# [17] ESAttackMultihit -> Flame Rush
+# Condition: 33% chance
+# Enemy action
+# [18] ESBombRandomSpawn -> Affliction Bombing
+# Condition: 34% chance
+# Spawn random 3 Bomb orbs
+# [19] ESEndPath -> ESEndPath
+# end_turn
+# [20] ESBranchFlag -> ESBranchFlag
+# branch
+# [21] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [22] SkillSet:
+# 	Condition: None
+# 	[0] ESGravity -> Burning Affliction
+# 	Player -99% HP
+# 	[1] ESAttackUp -> Blazing Fire
+# 	Increase damage to 200% for the next 99 turns
+# [23] ESEndPath -> ESEndPath
+# end_turn
+# [24] ESAttackMultihit -> Blaze Rush
+# Condition: None
+# Enemy action
+# [25] ESEndPath -> ESEndPath
+# end_turn
+# [26] ESSetCounter -> ESSetCounter
+# set_counter
+# [27] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
+# branch
+# [28] ESBoardChangeAttackBits -> Flame Enclosure
+# Condition: None
+# Change all orbs to Fire, Wood, Light, Heal
+# [29] ESBombRandomSpawn -> Affliction Bombing
+# Condition: None
+# Spawn random 1 locked Bomb orbs
+# [30] ESEndPath -> ESEndPath
+# end_turn

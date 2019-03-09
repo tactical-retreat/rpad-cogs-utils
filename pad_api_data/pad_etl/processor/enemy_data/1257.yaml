@@ -1,0 +1,116 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1257
+monster_name_en: Surging Demon Lord, Belial
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Bind active skills for 5 turns
+  desc_jp: Bind active skills for 5 turns
+  name_en: I'm not even going to wait 1 turn!
+  name_jp: I'm not even going to wait 1 turn!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 3rd row to Fire orbs, Deal 150% damage
+  desc_jp: Change 3rd row to Fire orbs, Deal 150% damage
+  name_en: Burn!
+  name_jp: Burn!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 99
+  desc_jp: ''
+  name_en: HP <= 99
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  name_en: I'll show you hell!
+  name_jp: I'll show you hell!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 99
+  desc_jp: ''
+  name_en: HP <= 99
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 1st column to Fire orbs, 3rd column to Poison orbs, Deal 80% damage
+  desc_jp: Change 1st column to Fire orbs, 3rd column to Poison orbs, Deal 80% damage
+  name_en: Flame Curse
+  name_jp: Flame Curse
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 20
+  desc_jp: ''
+  name_en: HP <= 20
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 3rd, 4th column to Fire orbs, Deal 300% damage
+  desc_jp: Change 3rd, 4th column to Fire orbs, Deal 300% damage
+  name_en: Flame Road
+  name_jp: Flame Road
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESBindSkill -> I'm not even going to wait 1 turn!
+# Condition: None
+# Bind active skills for 5 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] ESBranchCard -> ESBranchCard
+# branch
+# [8] ESBranchFlag -> ESBranchFlag
+# branch
+# [9] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [10] ESStatusShield -> I'll show you hell!
+# Condition: None
+# Voids status ailments for 999 turns
+# [11] ESColumnSpawnMulti -> Flame Road
+# Condition: When < 20% hp
+# Change 3rd, 4th column to Fire orbs
+# [12] ESColumnSpawnMulti -> Flame Curse
+# Condition: One-time use
+# Change 1st column to Fire orbs, 3rd column to Poison orbs
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESBranchFlag -> ESBranchFlag
+# branch
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] ESDamageShield -> Why are you there?!
+# Condition: None
+# Reduce damage from all sources by 50% for 1 turns
+# [17] ESRowSpawnMulti -> Burn!
+# Condition: None
+# Change 3rd row to Fire orbs

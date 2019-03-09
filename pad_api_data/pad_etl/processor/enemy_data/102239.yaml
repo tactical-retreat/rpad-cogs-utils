@@ -1,0 +1,186 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 102239
+monster_name_en: Alt. Cradle of Hell Goddess, Persephone
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 10 turns + Movetime 50% for 10
+    turns
+  desc_jp: Reduce damage from all sources by 50% for 10 turns + Movetime 50% for 10
+    turns
+  name_en: Harbinger of Corrosion + Realm of Hades's Law
+  name_jp: Harbinger of Corrosion + Realm of Hades's Law
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 2 random subs for 2 turns
+  desc_jp: Bind 2 random subs for 2 turns
+  name_en: Light Sleep's Cradle
+  name_jp: Light Sleep's Cradle
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Bind 4 random subs for 1 turns
+  desc_jp: Bind 4 random subs for 1 turns
+  name_en: Nap's Cradle
+  name_jp: Nap's Cradle
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 9 Mortal Poison orbs, Deal 400% damage
+  desc_jp: Spawn random 9 Mortal Poison orbs, Deal 400% damage
+  name_en: Bane Harvest
+  name_jp: Bane Harvest
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Mortal Poison to Heal, Deal 400% damage
+  desc_jp: Change Mortal Poison to Heal, Deal 400% damage
+  name_en: Bloody Blossom - Anemone
+  name_jp: Bloody Blossom - Anemone
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESDamageShield -> Harbinger of Corrosion
+# 	Reduce damage from all sources by 50% for 10 turns
+# 	[1] ESDebuffMovetime -> Realm of Hades's Law
+# 	Movetime 50% for 10 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchFlag -> ESBranchFlag
+# branch
+# [7] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [8] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESBindAwoken -> Poppy's Lethargy
+# 	Bind awoken skills for 2 turns
+# 	[1] ESRowSpawnMulti -> Cocytus's Erosion
+# 	Change 5th row to Mortal Poison orbs
+# [9] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESSkillDelay -> Narcissus's Temptation
+# 	Delay active skills by 2 turns
+# 	[1] ESRowSpawnMulti -> Cocytus's Erosion
+# 	Change 5th row to Mortal Poison orbs
+# [10] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESBindSkill -> Pomegranate's Folly
+# 	Bind active skills for 2 turns
+# 	[1] ESRowSpawnMulti -> Cocytus's Erosion
+# 	Change 5th row to Mortal Poison orbs
+# [11] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESBindAwoken -> Poppy's Lethargy
+# 	Bind awoken skills for 2 turns
+# 	[1] ESRowSpawnMulti -> Cocytus's Erosion
+# 	Change 5th row to Mortal Poison orbs
+# [12] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESSkillDelay -> Narcissus's Temptation
+# 	Delay active skills by 2 turns
+# 	[1] ESRowSpawnMulti -> Cocytus's Erosion
+# 	Change 5th row to Mortal Poison orbs
+# [13] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESBindAwoken -> Poppy's Lethargy
+# 	Bind awoken skills for 2 turns
+# 	[1] ESRowSpawnMulti -> Cocytus's Erosion
+# 	Change 5th row to Mortal Poison orbs
+# [14] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESBindSkill -> Pomegranate's Folly
+# 	Bind active skills for 2 turns
+# 	[1] ESRowSpawnMulti -> Cocytus's Erosion
+# 	Change 5th row to Mortal Poison orbs
+# [15] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESSkillDelay -> Narcissus's Temptation
+# 	Delay active skills by 2 turns
+# 	[1] ESRowSpawnMulti -> Cocytus's Erosion
+# 	Change 5th row to Mortal Poison orbs
+# [16] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESBindSkill -> Pomegranate's Folly
+# 	Bind active skills for 2 turns
+# 	[1] ESRowSpawnMulti -> Cocytus's Erosion
+# 	Change 5th row to Mortal Poison orbs
+# [17] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESBindAwoken -> Poppy's Lethargy
+# 	Bind awoken skills for 2 turns
+# 	[1] ESRowSpawnMulti -> Cocytus's Erosion
+# 	Change 5th row to Mortal Poison orbs
+# [18] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESSkillDelay -> Narcissus's Temptation
+# 	Delay active skills by 2 turns
+# 	[1] ESRowSpawnMulti -> Cocytus's Erosion
+# 	Change 5th row to Mortal Poison orbs
+# [19] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESBindSkill -> Pomegranate's Folly
+# 	Bind active skills for 2 turns
+# 	[1] ESRowSpawnMulti -> Cocytus's Erosion
+# 	Change 5th row to Mortal Poison orbs
+# [20] ESRandomSpawn -> Bane Harvest
+# Condition: When fire, water, wood, light, dark, heal, jammer, poison orbs are on the board
+# Spawn random 9 Mortal Poison orbs
+# [21] ESBranchFlag -> ESBranchFlag
+# branch
+# [22] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [23] ESOrbChangeAttack -> Bloody Blossom - Anemone
+# Condition: None
+# Change Mortal Poison to Heal
+# [24] ESOrbChangeAttack -> Cursed Flower - Mint
+# Condition: None
+# Change Heal to Mortal Poison
+# [25] ESRowSpawnMulti -> Cocytus's Erosion
+# Condition: None
+# Change 5th row to Mortal Poison orbs
+# [26] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [27] ESBindRandomSub -> Light Sleep's Cradle
+# Condition: 50% chance
+# Bind 2 random subs for 2 turns
+# [28] ESBindRandomSub -> Nap's Cradle
+# Condition: None
+# Bind 4 random subs for 1 turns

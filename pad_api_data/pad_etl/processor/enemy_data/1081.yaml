@@ -1,0 +1,84 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1081
+monster_name_en: Lemon Dragon
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 3
+############################################################
+!SkillRecordListing
+level: 3
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Spawn random 3 Light orbs
+  desc_jp: Spawn random 3 Light orbs
+  name_en: Lemon... Sour... I want some...
+  name_jp: Lemon... Sour... I want some...
+  record_type_name: PREEMPT
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESRandomSpawn -> Lemon... Sour... I want some...
+# Condition: When fire, water, wood, dark, heal, jammer, poison, mortal poison orbs are on the board
+# Spawn random 3 Light orbs
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchFlag -> ESBranchFlag
+# branch
+# [9] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [10] ESRandomSpawn -> It's tart, so just one...
+# Condition: When light orbs are on the board
+# Spawn random 1 Heal orbs
+# [11] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [12] ESAttackMultihit -> There is no lemon!
+# Condition: None
+# Enemy action
+# [13] ESBranchFlag -> ESBranchFlag
+# branch
+# [14] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [15] ESRandomSpawn -> It's tart, but I'll take another one...
+# Condition: When light orbs are on the board
+# Spawn random 1 Heal orbs
+# [16] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [17] ESAttackMultihit -> There is no lemon!
+# Condition: None
+# Enemy action
+# [18] ESBranchFlag -> ESBranchFlag
+# branch
+# [19] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [20] ESRandomSpawn -> It's tart... But I can't stop
+# Condition: When light orbs are on the board
+# Spawn random 1 Heal orbs
+# [21] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [22] ESAttackMultihit -> There is no lemon!
+# Condition: None
+# Enemy action
+# [23] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [24] ESAttackMultihit -> It's tart!!
+# Condition: None
+# Enemy action

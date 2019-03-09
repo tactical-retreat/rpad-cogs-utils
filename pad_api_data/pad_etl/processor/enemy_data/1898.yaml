@@ -1,0 +1,108 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1898
+monster_name_en: Dark Dragon Swordsman
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids player buff effects
+  desc_jp: Voids player buff effects
+  name_en: Let's do this
+  name_jp: Let's do this
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Deal 10% damage
+  desc_jp: Deal 10% damage
+  name_en: Let's do this
+  name_jp: Let's do this
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage (2 hits, 50% each)
+  desc_jp: Deal 100% damage (2 hits, 50% each)
+  name_en: You wanna fight?
+  name_jp: You wanna fight?
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 80
+  desc_jp: ''
+  name_en: HP <= 80
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  name_en: Hmm?
+  name_jp: Hmm?
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 20
+  desc_jp: ''
+  name_en: HP <= 20
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 200% damage (2 hits, 100% each)
+  desc_jp: Deal 200% damage (2 hits, 100% each)
+  name_en: Decisive Lead
+  name_jp: Decisive Lead
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESDispel -> Let's do this
+# Condition: None
+# Voids player buff effects
+# [7] ESAttackMultihit -> Let's do this
+# Condition: None
+# Enemy action
+# [8] ESEndPath -> ESEndPath
+# end_turn
+# [9] ESBranchHP -> ESBranchHP
+# branch
+# [10] ESAttackMultihit -> Decisive Lead
+# Condition: When < 20% hp
+# Enemy action
+# [11] ESAttackMultihit -> Hmm?
+# Condition: When < 80% hp , one-time use
+# Enemy action
+# [12] ESAttackMultihit -> You wanna fight?
+# Condition: None
+# Enemy action
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESBranchFlag -> ESBranchFlag
+# branch
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] ESGravity -> Revenge Attack
+# Condition: When < 30% hp
+# Player -99% HP

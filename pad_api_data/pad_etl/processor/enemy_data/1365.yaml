@@ -1,0 +1,122 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1365
+monster_name_en: Shadow Moon Dragon Knight, Mulan
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 5 turns
+  desc_jp: Voids status ailments for 5 turns
+  name_en: Here I go
+  name_jp: Here I go
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Movetime -1s for 4 turns
+  desc_jp: Movetime -1s for 4 turns
+  name_en: Moonflower Gaze
+  name_jp: Moonflower Gaze
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Light to Dark, Deal 85% damage
+  desc_jp: Change Light to Dark, Deal 85% damage
+  name_en: Moon Heaven Strike
+  name_jp: Moon Heaven Strike
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 120% damage (3 hits, 40% each)
+  desc_jp: Deal 120% damage (3 hits, 40% each)
+  name_en: Nine Dragon Claws
+  name_jp: Nine Dragon Claws
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 10% damage
+  desc_jp: Blind all orbs on the board, Deal 10% damage
+  name_en: Get ready for this
+  name_jp: Get ready for this
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 160% damage (4 hits, 40% each)
+  desc_jp: Deal 160% damage (4 hits, 40% each)
+  name_en: Moonshadow Dance
+  name_jp: Moonshadow Dance
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESStatusShield -> Here I go
+# Condition: None
+# Voids status ailments for 5 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchFlag -> ESBranchFlag
+# branch
+# [9] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [10] ESDebuffMovetime -> Moonflower Gaze
+# Condition: None
+# Movetime -1s for 4 turns
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESBranchHP -> ESBranchHP
+# branch
+# [13] ESOrbChangeAttack -> Moon Heaven Strike
+# Condition: 50% chance
+# Change Light to Dark
+# [14] ESAttackMultihit -> Nine Dragon Claws
+# Condition: None
+# Enemy action
+# [15] ESEndPath -> ESEndPath
+# end_turn
+# [16] ESBlind -> Get ready for this
+# Condition: One-time use
+# Blind all orbs on the board
+# [17] ESAttackMultihit -> Moonshadow Dance
+# Condition: None
+# Enemy action

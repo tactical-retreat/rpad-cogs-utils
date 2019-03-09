@@ -1,0 +1,43 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1856
+monster_name_en: Ken-Oh, Raoh
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  name_en: As you wish, I'll be your opponent
+  name_jp: As you wish, I'll be your opponent
+  record_type_name: PREEMPT
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESInactivity -> As you wish, I'll be your opponent
+# Condition: None
+# Do nothing
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] SkillSet:
+# 	Condition: On death
+# 	[0] ESInactivity -> I have no regrets in my life!
+# 	Do nothing

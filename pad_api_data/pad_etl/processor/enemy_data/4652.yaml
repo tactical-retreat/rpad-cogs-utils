@@ -1,0 +1,320 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4652
+monster_name_en: Malice Dracosnake of the Blazehorns, Nidhogg
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Enemy turn counter change to 1 when HP <= 50%
+  desc_jp: Enemy turn counter change to 1 when HP <= 50%
+  name_en: It spread its wings wide
+  name_jp: It spread its wings wide
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Void damage >= 40000000 for 99 turns + Delay active skills by 7 turns
+  desc_jp: Void damage >= 40000000 for 99 turns + Delay active skills by 7 turns
+  name_en: Heat Armor + Form Collapse
+  name_jp: Heat Armor + Form Collapse
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Jammer + Bind 3 random for 2 turns
+  desc_jp: Change all orbs to Jammer + Bind 3 random for 2 turns
+  name_en: Breath of Decay + Liberation from Freedom
+  name_jp: Breath of Decay + Liberation from Freedom
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change all orbs to Jammer + Change 3rd row to Poison orbs
+  desc_jp: Change all orbs to Jammer + Change 3rd row to Poison orbs
+  name_en: Breath of Decay + Abundant Maliciousness
+  name_jp: Breath of Decay + Abundant Maliciousness
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change all orbs to Jammer + Jammer skyfall +20% for 1 turns
+  desc_jp: Change all orbs to Jammer + Jammer skyfall +20% for 1 turns
+  name_en: Breath of Decay + Corrosive Dust
+  name_jp: Breath of Decay + Corrosive Dust
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change all orbs to Jammer + Enemy action
+  desc_jp: Change all orbs to Jammer + Enemy action
+  name_en: Breath of Decay + Gnaw Away
+  name_jp: Breath of Decay + Gnaw Away
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Reduce damage from all sources by
+    75% for 1 turns
+  desc_jp: Voids status ailments for 999 turns + Reduce damage from all sources by
+    75% for 1 turns
+  name_en: Blazing Dragon Scales + Flames are gathering in the mouth
+  name_jp: Blazing Dragon Scales + Flames are gathering in the mouth
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change own attribute to Fire + Change all orbs to Fire
+  desc_jp: Change own attribute to Fire + Change all orbs to Fire
+  name_en: Its flames changed + Scorching Firelands
+  name_jp: Its flames changed + Scorching Firelands
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Movetime -3s for 1 turns, Deal 100% damage
+  desc_jp: Movetime -3s for 1 turns, Deal 100% damage
+  name_en: Lamplight of the Echoing Sphere
+  name_jp: Lamplight of the Echoing Sphere
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: 3x3 cloud appear for 1 turns at random location, Deal 108% damage
+  desc_jp: 3x3 cloud appear for 1 turns at random location, Deal 108% damage
+  name_en: Enshrouding Miasma
+  name_jp: Enshrouding Miasma
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Spawn random 8 Jammer orbs, Deal 108% damage
+  desc_jp: Spawn random 8 Jammer orbs, Deal 108% damage
+  name_en: Rotting Desire
+  name_jp: Rotting Desire
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 4
+  desc_jp: ''
+  name_en: HP <= 4
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change own attribute to random one of Dark, Fire + Enemy action
+  desc_jp: Change own attribute to random one of Dark, Fire + Enemy action
+  name_en: Spiral Flames + Devastating Flames
+  name_jp: Spiral Flames + Devastating Flames
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESVoidShield -> Heat Armor
+# 	Void damage >= 40000000 for 99 turns
+# 	[1] ESSkillDelay -> Form Collapse
+# 	Delay active skills by 7 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] SkillSet:
+# 	Condition: 25% chance
+# 	[0] ESBoardChange -> Breath of Decay
+# 	Change all orbs to Jammer
+# 	[1] ESBindAttack -> Liberation from Freedom
+# 	Bind 3 random for 2 turns
+# [8] SkillSet:
+# 	Condition: 25% chance
+# 	[0] ESBoardChange -> Breath of Decay
+# 	Change all orbs to Jammer
+# 	[1] ESRowSpawnMulti -> Abundant Maliciousness
+# 	Change 3rd row to Poison orbs
+# [9] SkillSet:
+# 	Condition: 25% chance
+# 	[0] ESBoardChange -> Breath of Decay
+# 	Change all orbs to Jammer
+# 	[1] ESSkyfall -> Corrosive Dust
+# 	Jammer skyfall +20% for 1 turns
+# [10] SkillSet:
+# 	Condition: 25% chance
+# 	[0] ESBoardChange -> Breath of Decay
+# 	Change all orbs to Jammer
+# 	[1] ESAttackMultihit -> Gnaw Away
+# 	Enemy action
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESBranchHP -> ESBranchHP
+# branch
+# [13] ESBranchFlag -> ESBranchFlag
+# branch
+# [14] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [15] ESBranchHP -> ESBranchHP
+# branch
+# [16] ESBranchHP -> ESBranchHP
+# branch
+# [17] ESBranchHP -> ESBranchHP
+# branch
+# [18] ESBranchHP -> ESBranchHP
+# branch
+# [19] ESBranchHP -> ESBranchHP
+# branch
+# [20] ESBranchHP -> ESBranchHP
+# branch
+# [21] ESSetCounter -> ESSetCounter
+# set_counter
+# [22] SkillSet:
+# 	Condition: None
+# 	[0] ESStatusShield -> Blazing Dragon Scales
+# 	Voids status ailments for 999 turns
+# 	[1] ESDamageShield -> Flames are gathering in the mouth
+# 	Reduce damage from all sources by 75% for 1 turns
+# [23] ESSetCounter -> ESSetCounter
+# set_counter
+# [24] SkillSet:
+# 	Condition: None
+# 	[0] ESStatusShield -> Blazing Dragon Scales
+# 	Voids status ailments for 999 turns
+# 	[1] ESDamageShield -> Flames are gathering in the mouth
+# 	Reduce damage from all sources by 75% for 1 turns
+# [25] ESSetCounter -> ESSetCounter
+# set_counter
+# [26] SkillSet:
+# 	Condition: None
+# 	[0] ESStatusShield -> Blazing Dragon Scales
+# 	Voids status ailments for 999 turns
+# 	[1] ESDamageShield -> Flames are gathering in the mouth
+# 	Reduce damage from all sources by 75% for 1 turns
+# [27] ESSetCounter -> ESSetCounter
+# set_counter
+# [28] SkillSet:
+# 	Condition: None
+# 	[0] ESStatusShield -> Blazing Dragon Scales
+# 	Voids status ailments for 999 turns
+# 	[1] ESDamageShield -> Flames are gathering in the mouth
+# 	Reduce damage from all sources by 75% for 1 turns
+# [29] ESSetCounter -> ESSetCounter
+# set_counter
+# [30] SkillSet:
+# 	Condition: None
+# 	[0] ESStatusShield -> Blazing Dragon Scales
+# 	Voids status ailments for 999 turns
+# 	[1] ESDamageShield -> Flames are gathering in the mouth
+# 	Reduce damage from all sources by 75% for 1 turns
+# [31] ESSetCounter -> ESSetCounter
+# set_counter
+# [32] SkillSet:
+# 	Condition: None
+# 	[0] ESStatusShield -> Blazing Dragon Scales
+# 	Voids status ailments for 999 turns
+# 	[1] ESDamageShield -> Flames are gathering in the mouth
+# 	Reduce damage from all sources by 75% for 1 turns
+# [33] ESSetCounter -> ESSetCounter
+# set_counter
+# [34] SkillSet:
+# 	Condition: None
+# 	[0] ESStatusShield -> Blazing Dragon Scales
+# 	Voids status ailments for 999 turns
+# 	[1] ESDamageShield -> Flames are gathering in the mouth
+# 	Reduce damage from all sources by 75% for 1 turns
+# [35] ESEndPath -> ESEndPath
+# end_turn
+# [36] ESBranchFlag -> ESBranchFlag
+# branch
+# [37] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [38] ESBranchCounter -> ESBranchCounter
+# branch
+# [39] ESBranchCounter -> ESBranchCounter
+# branch
+# [40] ESBranchCounter -> ESBranchCounter
+# branch
+# [41] ESBranchCounter -> ESBranchCounter
+# branch
+# [42] ESBranchCounter -> ESBranchCounter
+# branch
+# [43] ESBranchCounter -> ESBranchCounter
+# branch
+# [44] ESBranchCounter -> ESBranchCounter
+# branch
+# [45] ESBranchHP -> ESBranchHP
+# branch
+# [46] ESBranchHP -> ESBranchHP
+# branch
+# [47] ESBranchHP -> ESBranchHP
+# branch
+# [48] ESBranchHP -> ESBranchHP
+# branch
+# [49] ESBranchHP -> ESBranchHP
+# branch
+# [50] ESBranchHP -> ESBranchHP
+# branch
+# [51] SkillSet:
+# 	Condition: None
+# 	[0] ESChangeAttribute -> Its flames changed
+# 	Change own attribute to Fire
+# 	[1] ESBoardChangeAttackBits -> Scorching Firelands
+# 	Change all orbs to Fire
+# [52] ESEndPath -> ESEndPath
+# end_turn
+# [53] SkillSet:
+# 	Condition: None
+# 	[0] ESInactivity -> Broken Stance
+# 	Do nothing
+# 	[1] ESColumnSpawnMulti -> Symmetrical Destruction Flames
+# 	Change 5th, 6th column to Fire orbs
+# [54] ESEndPath -> ESEndPath
+# end_turn
+# [55] ESDebuffMovetime -> Lamplight of the Echoing Sphere
+# Condition: One-time use
+# Movetime -3s for 1 turns
+# [56] ESBindAwoken -> Withering Darkflame
+# Condition: One-time use
+# Bind awoken skills for 1 turns
+# [57] ESCloud -> Enshrouding Miasma
+# Condition: 50% chance
+# 3x3 cloud appear for 1 turns at random location
+# [58] ESRandomSpawn -> Rotting Desire
+# Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board
+# Spawn random 8 Jammer orbs
+# [59] ESEndPath -> ESEndPath
+# end_turn
+# [60] SkillSet:
+# 	Condition: None
+# 	[0] ESChangeAttribute -> Spiral Flames
+# 	Change own attribute to random one of Dark, Fire
+# 	[1] ESAttackMultihit -> Devastating Flames
+# 	Enemy action
+# [61] ESEndPath -> ESEndPath
+# end_turn
+# [62] ESTurnChangePassive -> It spread its wings wide
+# Enemy turn counter change to 1 when HP <= 50%

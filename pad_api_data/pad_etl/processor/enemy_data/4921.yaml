@@ -1,0 +1,125 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4921
+monster_name_en: '*****'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Bind 2 random subs for 2 turns
+  desc_jp: Bind 2 random subs for 2 turns
+  name_en: V3 Electric Heat Chop
+  name_jp: V3 Electric Heat Chop
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 14
+  desc_jp: ''
+  name_en: HP <= 14
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 1 turns + Reduce damage from all sources
+    by 50% for 1 turns
+  desc_jp: Increase damage to 200% for the next 1 turns + Reduce damage from all sources
+    by 50% for 1 turns
+  name_en: Red Bone Power + Red Lamp Power
+  name_jp: Red Bone Power + Red Lamp Power
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 14
+  desc_jp: ''
+  name_en: HP <= 14
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage (2 hits, 50% each)
+  desc_jp: Deal 100% damage (2 hits, 50% each)
+  name_en: V3 Double Rotation Kick
+  name_jp: V3 Double Rotation Kick
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBindRandomSub -> V3 Electric Heat Chop
+# Condition: One-time use
+# Bind 2 random subs for 2 turns
+# [5] ESBranchHP -> ESBranchHP
+# branch
+# [6] ESSetCounter -> ESSetCounter
+# set_counter
+# [7] ESBranchCounter -> ESBranchCounter
+# branch
+# [8] ESBranchCounter -> ESBranchCounter
+# branch
+# [9] ESBranchCounter -> ESBranchCounter
+# branch
+# [10] ESBranchHP -> ESBranchHP
+# branch
+# [11] ESAttackMultihit -> V3 Chop
+# Condition: 33% chance
+# Enemy action
+# [12] ESAttackMultihit -> V3 Punch
+# Condition: 34% chance
+# Enemy action
+# [13] ESAttackMultihit -> Hurricane Last Dash
+# Condition: 33% chance
+# Enemy action
+# [14] ESEndPath -> ESEndPath
+# end_turn
+# [15] ESBranchFlag -> ESBranchFlag
+# branch
+# [16] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [17] ESGravity -> Red Bone Ring
+# Condition: None
+# Player -99% HP
+# [18] ESEndPath -> ESEndPath
+# end_turn
+# [19] SkillSet:
+# 	Condition: None
+# 	[0] ESAttackMultihit -> V3 Kick
+# 	Enemy action
+# 	[1] ESAttackMultihit -> V3 Reverse Kick
+# 	Enemy action
+# [20] SkillSet:
+# 	Condition: None
+# 	[0] ESAttackMultihit -> V3 Corkscrew Kick
+# 	Enemy action
+# 	[1] ESSpinnersRandom -> V3 Reverse Corkscrew Kick
+# 	Random 2 orbs change every 1.0s for 1 turns
+# [21] ESSetCounter -> ESSetCounter
+# set_counter
+# [22] ESAttackMultihit -> V3 Reverse Rotation Corkscrew Kick
+# Condition: None
+# Enemy action
+# [23] ESEndPath -> ESEndPath
+# end_turn
+# [24] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESAttackUp -> Red Bone Power
+# 	Increase damage to 200% for the next 1 turns
+# 	[1] ESDamageShield -> Red Lamp Power
+# 	Reduce damage from all sources by 50% for 1 turns
+# [25] ESAttackMultihit -> V3 Double Rotation Kick
+# Condition: None
+# Enemy action
+# [26] ESEndPath -> ESEndPath
+# end_turn

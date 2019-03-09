@@ -1,0 +1,214 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3088
+monster_name_en: Valkyrie Rose Armor X Dragon Caller, Ana
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 50%
+  desc_jp: Survive attacks with 1 HP when HP > 50%
+  name_en: Ana resolve
+  name_jp: Ana resolve
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 3 turns + Change Random to Heal
+  desc_jp: Voids status ailments for 3 turns + Change Random to Heal
+  name_en: Cross On! + Mercy Flash
+  name_jp: Cross On! + Mercy Flash
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 35
+  desc_jp: ''
+  name_en: HP <= 35
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 100% hp
+  desc_jp: Enemy recover 100% hp
+  name_en: Resurrection
+  name_jp: Resurrection
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Enemy recover 79% hp + Change Heal to Light
+  desc_jp: Enemy recover 79% hp + Change Heal to Light
+  name_en: Resurrection + Life Cutting Flash
+  name_jp: Resurrection + Life Cutting Flash
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Enemy recover 59% hp + Change Random to Heal
+  desc_jp: Enemy recover 59% hp + Change Random to Heal
+  name_en: Resurrection + Mercy Flash
+  name_jp: Resurrection + Mercy Flash
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Enemy recover 19% hp + Reduce damage from all sources by 75% for 3 turns
+  desc_jp: Enemy recover 19% hp + Reduce damage from all sources by 75% for 3 turns
+  name_en: Resurrection + Pure Plumage
+  name_jp: Resurrection + Pure Plumage
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 35
+  desc_jp: ''
+  name_en: HP <= 35
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 79% hp + Change Heal to Light
+  desc_jp: Enemy recover 79% hp + Change Heal to Light
+  name_en: Resurrection + Life Cutting Flash
+  name_jp: Resurrection + Life Cutting Flash
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 35
+  desc_jp: ''
+  name_en: HP <= 35
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 59% hp + Change Random to Heal
+  desc_jp: Enemy recover 59% hp + Change Random to Heal
+  name_en: Resurrection + Mercy Flash
+  name_jp: Resurrection + Mercy Flash
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 35
+  desc_jp: ''
+  name_en: HP <= 35
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 19% hp + Reduce damage from all sources by 75% for 3 turns
+  desc_jp: Enemy recover 19% hp + Reduce damage from all sources by 75% for 3 turns
+  name_en: Resurrection + Pure Plumage
+  name_jp: Resurrection + Pure Plumage
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 20
+  desc_jp: ''
+  name_en: HP <= 20
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy action + Change Heal to Light
+  desc_jp: Enemy action + Change Heal to Light
+  name_en: 10 combos!! + Life Cutting Flash
+  name_jp: 10 combos!! + Life Cutting Flash
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESStatusShield -> Cross On!
+# 	Voids status ailments for 3 turns
+# 	[1] ESOrbChangeAttack -> Mercy Flash
+# 	Change Random to Heal
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESRecoverEnemy -> Resurrection
+# Condition: When < 35% hp , one-time use
+# Enemy recover 100% hp
+# [7] SkillSet:
+# 	Condition: When < 35% hp , one-time use
+# 	[0] ESRecoverEnemy -> Resurrection
+# 	Enemy recover 79% hp
+# 	[1] ESOrbChangeAttack -> Life Cutting Flash
+# 	Change Heal to Light
+# [8] SkillSet:
+# 	Condition: When < 35% hp , one-time use
+# 	[0] ESRecoverEnemy -> Resurrection
+# 	Enemy recover 59% hp
+# 	[1] ESOrbChangeAttack -> Mercy Flash
+# 	Change Random to Heal
+# [9] SkillSet:
+# 	Condition: When < 35% hp , one-time use
+# 	[0] ESRecoverEnemy -> Resurrection
+# 	Enemy recover 19% hp
+# 	[1] ESDamageShield -> Pure Plumage
+# 	Reduce damage from all sources by 75% for 3 turns
+# [10] SkillSet:
+# 	Condition: When < 20% hp
+# 	[0] ESAttackMultihit -> 10 combos!!
+# 	Enemy action
+# 	[1] ESOrbChangeAttack -> Life Cutting Flash
+# 	Change Heal to Light
+# [11] ESBranchFlag -> ESBranchFlag
+# branch
+# [12] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [13] ESAttackUp -> Innocent Bravery
+# Condition: When < 40% hp
+# Increase damage to 400% for the next 1 turns
+# [14] ESAttackUp -> Innocent Soul
+# Condition: When < 60% hp
+# Increase damage to 300% for the next 1 turns
+# [15] ESAttackUp -> Innocent Will
+# Condition: When < 80% hp
+# Increase damage to 200% for the next 1 turns
+# [16] ESAttackUp -> Innocent Mind
+# Condition: None
+# Increase damage to 150% for the next 1 turns
+# [17] ESBranchFlag -> ESBranchFlag
+# branch
+# [18] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [19] ESOrbChangeAttack -> Life Cutting Flash
+# Condition: None
+# Change Heal to Light
+# [20] ESBindAttack -> Deadly Thorn Shackles
+# Condition: When < 40% hp
+# Bind 4 subs for 3 turns
+# [21] ESBindAttack -> Scattering Thorn Shackles
+# Condition: When < 60% hp
+# Bind 3 subs for 3 turns
+# [22] ESBindAttack -> Double Thorn Shackles
+# Condition: When < 80% hp
+# Bind 2 subs for 3 turns
+# [23] ESBindAttack -> Thorn Shackles
+# Condition: None
+# Bind 1 subs for 3 turns
+# [24] ESBranchFlag -> ESBranchFlag
+# branch
+# [25] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [26] ESSkillDelay -> Divine Law's Aura
+# Condition: When < 40% hp
+# Delay active skills by 4 turns
+# [27] ESSkillDelay -> Fighting Maiden's Aura
+# Condition: When < 60% hp
+# Delay active skills by 3 turns
+# [28] ESSkillDelay -> Goddess' Aura
+# Condition: When < 80% hp
+# Delay active skills by 2 turns
+# [29] ESSkillDelay -> Maiden's Aura
+# Condition: None
+# Delay active skills by 1 turns
+# [30] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [31] SkillSet:
+# 	Condition: None
+# 	[0] ESStatusShield -> White Shield Protection
+# 	Voids status ailments for 3 turns
+# 	[1] ESOrbChangeAttack -> Mercy Flash
+# 	Change Random to Heal
+# [32] ESResolve -> Ana resolve
+# Survive attacks with 1 HP when HP > 50%

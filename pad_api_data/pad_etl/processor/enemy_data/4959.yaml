@@ -1,0 +1,199 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4959
+monster_name_en: '*****'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Enemy turn counter change to 1 when HP <= 50%
+  desc_jp: Enemy turn counter change to 1 when HP <= 50%
+  name_en: You're slow!
+  name_jp: You're slow!
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Lock all Fire, Water, Wood, Dark, Heal orbs + Player -75% HP
+  desc_jp: Lock all Fire, Water, Wood, Dark, Heal orbs + Player -75% HP
+  name_en: You will understand what the spirit world is! + I won't let you go through!
+  name_jp: You will understand what the spirit world is! + I won't let you go through!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 1 random subs for 2 turns, Deal 85% damage
+  desc_jp: Bind 1 random subs for 2 turns, Deal 85% damage
+  name_en: Don't move!
+  name_jp: Don't move!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Enemy recover 5% hp, Deal 90% damage
+  desc_jp: Enemy recover 5% hp, Deal 90% damage
+  name_en: It's lukewarm!
+  name_jp: It's lukewarm!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  name_en: Hmm!
+  name_jp: Hmm!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Random to Dark, Deal 95% damage
+  desc_jp: Change Random to Dark, Deal 95% damage
+  name_en: Dye in darkness!
+  name_jp: Dye in darkness!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change 5th row to Poison orbs, Deal 80% damage
+  desc_jp: Change 5th row to Poison orbs, Deal 80% damage
+  name_en: Receive my fairy!
+  name_jp: Receive my fairy!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 1 random subs for 2 turns, Deal 85% damage
+  desc_jp: Bind 1 random subs for 2 turns, Deal 85% damage
+  name_en: Don't move!
+  name_jp: Don't move!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Enemy recover 5% hp, Deal 90% damage
+  desc_jp: Enemy recover 5% hp, Deal 90% damage
+  name_en: It's lukewarm!
+  name_jp: It's lukewarm!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  name_en: Hmm!
+  name_jp: Hmm!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Random to Dark, Deal 95% damage
+  desc_jp: Change Random to Dark, Deal 95% damage
+  name_en: Dye in darkness!
+  name_jp: Dye in darkness!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Movetime 50% for 5 turns + Rcv 50% for 5 turns
+  desc_jp: Movetime 50% for 5 turns + Rcv 50% for 5 turns
+  name_en: It's seems I underestimated you... + Fight with all your strength!
+  name_jp: It's seems I underestimated you... + Fight with all your strength!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 14
+  desc_jp: ''
+  name_en: HP <= 14
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 50% hp
+  desc_jp: Enemy recover 50% hp
+  name_en: To be driven this far...
+  name_jp: To be driven this far...
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 14
+  desc_jp: ''
+  name_en: HP <= 14
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 200% damage
+  desc_jp: Deal 200% damage
+  name_en: Judging Superwave
+  name_jp: Judging Superwave
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESOrbLock -> You will understand what the spirit world is!
+# 	Lock all Fire, Water, Wood, Dark, Heal orbs
+# 	[1] ESGravity -> I won't let you go through!
+# 	Player -75% HP
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] ESBranchHP -> ESBranchHP
+# branch
+# [8] ESBindRandomSub -> Don't move!
+# Condition: 20% chance
+# Bind 1 random subs for 2 turns
+# [9] ESRecoverEnemy -> It's lukewarm!
+# Condition: 20% chance
+# Enemy recover 5% hp
+# [10] ESAttackMultihit -> Hmm!
+# Condition: 20% chance
+# Enemy action
+# [11] ESOrbChangeAttack -> Dye in darkness!
+# Condition: 20% chance
+# Change Random to Dark
+# [12] ESRowSpawnMulti -> Receive my fairy!
+# Condition: One-time use
+# Change 5th row to Poison orbs
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESBranchFlag -> ESBranchFlag
+# branch
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] SkillSet:
+# 	Condition: None
+# 	[0] ESDebuffMovetime -> It's seems I underestimated you...
+# 	Movetime 50% for 5 turns
+# 	[1] ESDebuffRCV -> Fight with all your strength!
+# 	Rcv 50% for 5 turns
+# [17] ESEndPath -> ESEndPath
+# end_turn
+# [18] ESBranchFlag -> ESBranchFlag
+# branch
+# [19] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [20] ESRecoverEnemy -> To be driven this far...
+# Condition: None
+# Enemy recover 50% hp
+# [21] ESEndPath -> ESEndPath
+# end_turn
+# [22] ESAttackMultihit -> Judging Superwave
+# Condition: None
+# Enemy action
+# [23] ESEndPath -> ESEndPath
+# end_turn
+# [24] ESTurnChangePassive -> You're slow!
+# Enemy turn counter change to 1 when HP <= 50%

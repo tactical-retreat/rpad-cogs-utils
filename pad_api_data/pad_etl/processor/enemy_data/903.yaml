@@ -1,0 +1,54 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 903
+monster_name_en: Lightning Chaser
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 110% damage
+  desc_jp: Deal 110% damage
+  name_en: Volt Axe
+  name_jp: Volt Axe
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESAttackUp -> Chase Mode
+# Condition: When < 50% hp
+# Increase damage to 200% for the next 5 turns
+# [4] ESBranchHP -> ESBranchHP
+# branch
+# [5] ESOrbChangeAttack -> Thunder Weapon
+# Condition: None
+# Change Random to Light
+# [6] ESEndPath -> ESEndPath
+# end_turn
+# [7] ESOrbChangeAttack -> Discharge
+# Condition: One-time use
+# Change Random to Light
+# [8] ESAttackMultihit -> Volt Axe
+# Condition: None
+# Enemy action

@@ -1,0 +1,98 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 745
+monster_name_en: Incarnation of Suzaku, Leilan
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  name_en: Here I come!
+  name_jp: Here I come!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Heal to Fire, Deal 110% damage
+  desc_jp: Change Heal to Fire, Deal 110% damage
+  name_en: Crimson Slash
+  name_jp: Crimson Slash
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 59
+  desc_jp: ''
+  name_en: HP <= 59
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Heal to Fire, Deal 110% damage
+  desc_jp: Change Heal to Fire, Deal 110% damage
+  name_en: Crimson Slash
+  name_jp: Crimson Slash
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 60
+  desc_jp: ''
+  name_en: HP <= 60
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 140%~175% damage (4~5 hits, 35% each)
+  desc_jp: Deal 140%~175% damage (4~5 hits, 35% each)
+  name_en: Phoenix Sword Dance
+  name_jp: Phoenix Sword Dance
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 20
+  desc_jp: ''
+  name_en: HP <= 20
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 560% damage (7 hits, 80% each)
+  desc_jp: Deal 560% damage (7 hits, 80% each)
+  name_en: Southern Seven-Star Formation
+  name_jp: Southern Seven-Star Formation
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESInactivity -> Here I come!
+# Condition: None
+# Do nothing
+# [7] ESAttackMultihit -> Southern Seven-Star Formation
+# Condition: When < 20% hp
+# Enemy action
+# [8] ESAttackMultihit -> Phoenix Sword Dance
+# Condition: 60% chance when < 60% hp
+# Enemy action
+# [9] ESOrbChangeAttack -> Crimson Slash
+# Condition: 70% chance
+# Change Heal to Fire

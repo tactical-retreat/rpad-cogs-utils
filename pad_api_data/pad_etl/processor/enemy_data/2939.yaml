@@ -1,0 +1,111 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2939
+monster_name_en: Treasure Blade Dragon, Drahklist
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 50%
+  desc_jp: Survive attacks with 1 HP when HP > 50%
+  name_en: Drahklist Resolve
+  name_jp: Drahklist Resolve
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Absorb Fire, Wood damage for 5 turns + Voids status ailments for 999 turns
+  desc_jp: Absorb Fire, Wood damage for 5 turns + Voids status ailments for 999 turns
+  name_en: Antifield + Hundred Sword Armor
+  name_jp: Antifield + Hundred Sword Armor
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 75% for 3 turns
+  desc_jp: Reduce damage from all sources by 75% for 3 turns
+  name_en: Parade
+  name_jp: Parade
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 15
+  desc_jp: ''
+  name_en: HP <= 15
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 1st, 3rd, 5th column to Fire orbs, 2nd, 4th, 6th column to Wood
+    orbs, Deal 750% damage
+  desc_jp: Change 1st, 3rd, 5th column to Fire orbs, 2nd, 4th, 6th column to Wood
+    orbs, Deal 750% damage
+  name_en: Sky Dashing Hundred Dragon Blades
+  name_jp: Sky Dashing Hundred Dragon Blades
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESAbsorbAttribute -> Antifield
+# 	Absorb Fire, Wood damage for 5 turns
+# 	[1] ESStatusShield -> Hundred Sword Armor
+# 	Voids status ailments for 999 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESColumnSpawnMulti -> Sky Dashing Hundred Dragon Blades
+# Condition: When < 15% hp
+# Change 1st, 3rd, 5th column to Fire orbs, 2nd, 4th, 6th column to Wood orbs
+# [7] ESDamageShield -> Parade
+# Condition: When < 50% hp , one-time use
+# Reduce damage from all sources by 75% for 3 turns
+# [8] ESDamageShield -> Parade
+# Condition: When < 50% hp , one-time use
+# Reduce damage from all sources by 50% for 3 turns
+# [9] ESBranchFlag -> ESBranchFlag
+# branch
+# [10] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [11] ESGravity -> Fresh
+# Condition: One-time use
+# Player -99% HP
+# [12] ESBranchFlag -> ESBranchFlag
+# branch
+# [13] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [14] ESBlindStickyFixed -> Shadow Rapier
+# Condition: None
+# Blind orbs in specific positions for 3 turns
+# [15] ESBranchFlag -> ESBranchFlag
+# branch
+# [16] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [17] ESSkillDelay -> Bone Breaker
+# Condition: None
+# Delay active skills by 1 turns
+# [18] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [19] ESAttackMultihit -> Asura Slash
+# Condition: None
+# Enemy action
+# [20] ESResolve -> Drahklist Resolve
+# Survive attacks with 1 HP when HP > 50%

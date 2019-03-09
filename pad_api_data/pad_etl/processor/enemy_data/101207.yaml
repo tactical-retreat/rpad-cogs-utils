@@ -1,0 +1,141 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 101207
+monster_name_en: Alt. 5 Mechdragon Combo, Demon Hadar
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Fire, Dark by 50%
+  desc_jp: Reduce damage from Fire, Dark by 50%
+  name_en: Hadar Halved
+  name_jp: Hadar Halved
+  record_type_name: PASSIVE
+
+############################################################
+### Data @ 3
+############################################################
+!SkillRecordListing
+level: 3
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Fire, Dark by 50%
+  desc_jp: Reduce damage from Fire, Dark by 50%
+  name_en: Hadar Halved
+  name_jp: Hadar Halved
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Rcv 50% for 4 turns
+  desc_jp: Voids status ailments for 999 turns + Rcv 50% for 4 turns
+  name_en: Barrier Field + Demon Cyclone
+  name_jp: Barrier Field + Demon Cyclone
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 24
+  desc_jp: ''
+  name_en: HP <= 24
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  name_en: Limiter Off
+  name_jp: Limiter Off
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 24
+  desc_jp: ''
+  name_en: HP <= 24
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 900% damage (3 hits, 300% each)
+  desc_jp: Deal 900% damage (3 hits, 300% each)
+  name_en: Ultimate Stream
+  name_jp: Ultimate Stream
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] SkillSet:
+# 	Condition: None
+# 	[0] ESStatusShield -> Barrier Field
+# 	Voids status ailments for 999 turns
+# 	[1] ESDebuffRCV -> Demon Cyclone
+# 	Rcv 50% for 4 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESBranchFlag -> ESBranchFlag
+# branch
+# [10] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [11] ESPoisonChangeRandomAttack -> Genocide Missile Type 0
+# Condition: None
+# Change Random 6 to Poison
+# [12] ESBranchFlag -> ESBranchFlag
+# branch
+# [13] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [14] ESAttackMultihit -> Improved Endless Noble Claws
+# Condition: None
+# Enemy action
+# [15] ESBranchFlag -> ESBranchFlag
+# branch
+# [16] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [17] ESBlind -> Dark Cyclone Blast
+# Condition: None
+# Blind all orbs on the board
+# [18] ESBranchFlag -> ESBranchFlag
+# branch
+# [19] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [20] ESAttackMultihit -> High Megiddo Cannon
+# Condition: None
+# Enemy action
+# [21] ESBranchFlag -> ESBranchFlag
+# branch
+# [22] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [23] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [24] ESBindAttack -> Freezing Crusher
+# Condition: None
+# Bind 4 subs for 2 turns
+# [25] ESEndPath -> ESEndPath
+# end_turn
+# [26] ESInactivity -> Limiter Off
+# Condition: One-time use
+# Do nothing
+# [27] ESAttackMultihit -> Ultimate Stream
+# Condition: None
+# Enemy action
+# [28] ESEndPath -> ESEndPath
+# end_turn
+# [29] ESAttributeResist -> Hadar Halved
+# Reduce damage from Fire, Dark by 50%

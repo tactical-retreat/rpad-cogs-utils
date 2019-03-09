@@ -1,0 +1,119 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 744
+monster_name_en: Ancient Draggie Knight
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids player buff effects
+  desc_jp: Voids player buff effects
+  name_en: Wave of Nothingness
+  name_jp: Wave of Nothingness
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Bind Fire cards for 2~4 turns
+  desc_jp: Bind Fire cards for 2~4 turns
+  name_en: I HATE Fire!
+  name_jp: I HATE Fire!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids player buff effects
+  desc_jp: Voids player buff effects
+  name_en: Wave of Nothingness
+  name_jp: Wave of Nothingness
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 120% damage (2 hits, 60% each)
+  desc_jp: Deal 120% damage (2 hits, 60% each)
+  name_en: Draggie Fang
+  name_jp: Draggie Fang
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids player buff effects
+  desc_jp: Voids player buff effects
+  name_en: Wave of Nothingness
+  name_jp: Wave of Nothingness
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 24
+  desc_jp: ''
+  name_en: HP <= 24
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids player buff effects
+  desc_jp: Voids player buff effects
+  name_en: Wave of Nothingness
+  name_jp: Wave of Nothingness
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 25
+  desc_jp: ''
+  name_en: HP <= 25
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 170% damage (2 hits, 85% each)
+  desc_jp: Deal 170% damage (2 hits, 85% each)
+  name_en: Dragon Fang
+  name_jp: Dragon Fang
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESDispel -> Wave of Nothingness
+# Condition: None
+# Voids player buff effects
+# [2] ESBranchHP -> ESBranchHP
+# branch
+# [3] ESBindAttribute -> I HATE Fire!
+# Condition: One-time use
+# Bind Fire cards for 2~4 turns
+# [4] ESAttackMultihit -> Draggie Fang
+# Condition: None
+# Enemy action
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchFlag -> ESBranchFlag
+# branch
+# [7] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [8] ESAttackUp -> Draggie Enhance
+# Condition: None
+# Increase damage to 200% for the next 999 turns
+# [9] ESEndPath -> ESEndPath
+# end_turn
+# [10] ESAttackMultihit -> Dragon Fang
+# Condition: When < 25% hp
+# Enemy action

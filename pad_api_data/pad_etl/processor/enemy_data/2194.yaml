@@ -1,0 +1,101 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2194
+monster_name_en: Evil Eye CyberBeast, Kakkab
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 3
+############################################################
+!SkillRecordListing
+level: 3
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb Light damage for 10 turns
+  desc_jp: Absorb Light damage for 10 turns
+  name_en: Black Energy Barrier
+  name_jp: Black Energy Barrier
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Delay active skills by 2~5 turns, Deal 1200% damage
+  desc_jp: Delay active skills by 2~5 turns, Deal 1200% damage
+  name_en: Dark Railgun
+  name_jp: Dark Railgun
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 5
+  desc_jp: ''
+  name_en: HP <= 5
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 2500% damage (5 hits, 500% each)
+  desc_jp: Deal 2500% damage (5 hits, 500% each)
+  name_en: Metal Deadly Fang
+  name_jp: Metal Deadly Fang
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESAbsorbAttribute -> Black Energy Barrier
+# Condition: None
+# Absorb Light damage for 10 turns
+# [7] ESAttackUpStatus -> Shining Eyes
+# Condition: after being affected by a status effect
+# Increase damage to 1000% for the next 999 turns
+# [8] ESAttackMultihit -> Metal Deadly Fang
+# Condition: When < 5% hp
+# Enemy action
+# [9] ESInactivity -> Quietly gazes in your direction
+# Condition: One-time use
+# Do nothing
+# [10] ESInactivity -> Quietly gazes in your direction
+# Condition: One-time use
+# Do nothing
+# [11] ESInactivity -> Quietly gazes in your direction
+# Condition: One-time use
+# Do nothing
+# [12] ESBoardChange -> Mechanical Wolf Howling
+# Condition: One-time use
+# Change all orbs to Fire, Water, Wood, Dark, Heal
+# [13] ESAttackMultihit -> Ur Flare
+# Condition: One-time use
+# Enemy action
+# [14] ESInactivity -> Quietly gazes in your direction
+# Condition: One-time use
+# Do nothing
+# [15] ESInactivity -> Quietly gazes in your direction
+# Condition: One-time use
+# Do nothing
+# [16] ESInactivity -> Quietly gazes in your direction
+# Condition: One-time use
+# Do nothing
+# [17] ESInactivity -> Quietly gazes in your direction
+# Condition: One-time use
+# Do nothing
+# [18] ESSkillDelay -> Dark Railgun
+# Condition: None
+# Delay active skills by 2~5 turns

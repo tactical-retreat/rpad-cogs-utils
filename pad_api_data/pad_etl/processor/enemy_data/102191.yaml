@@ -1,0 +1,103 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 102191
+monster_name_en: Alt. Frost-Fanged CyberBeast, Alfecca
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 76%
+  desc_jp: Survive attacks with 1 HP when HP > 76%
+  name_en: Alfecca Resolve
+  name_jp: Alfecca Resolve
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 5 turns + Change all orbs to Water, Wood, Light,
+    Dark, Poison
+  desc_jp: Voids status ailments for 5 turns + Change all orbs to Water, Wood, Light,
+    Dark, Poison
+  name_en: Arctic Coating + Frozen Grounds
+  name_jp: Arctic Coating + Frozen Grounds
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Jammer to Water, Deal 300% damage
+  desc_jp: Change Jammer to Water, Deal 300% damage
+  name_en: Auto Sweeper
+  name_jp: Auto Sweeper
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESStatusShield -> Arctic Coating
+# 	Voids status ailments for 5 turns
+# 	[1] ESBoardChange -> Frozen Grounds
+# 	Change all orbs to Water, Wood, Light, Dark, Poison
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESOrbChangeAttack -> Auto Sweeper
+# Condition: None
+# Change Jammer to Water
+# [7] ESOrbChangeAttack -> Auto Freezer
+# Condition: None
+# Change Poison to Water
+# [8] SkillSet:
+# 	Condition: When < 1% hp
+# 	[0] ESRowSpawnMulti -> Blizzard All Signal
+# 	Change 1st, 2nd, 3rd, 4th, 5th, 6th row to Water orbs
+# 	[1] ESRecoverEnemy -> Metal Repair
+# 	Enemy recover 76% hp
+# [9] ESRowSpawnMulti -> Blizzard All Signal
+# Condition: When < 20% hp
+# Change 1st, 2nd, 3rd, 4th, 5th, 6th row to Water orbs
+# [10] SkillSet:
+# 	Condition: When < 75% hp , one-time use
+# 	[0] ESAbsorbAttribute -> Sapphire Drive
+# 	Absorb Water damage for 3 turns
+# 	[1] ESColumnSpawnMulti -> Blizzard Double Signal
+# 	Change 5th, 6th column to Water orbs
+# [11] SkillSet:
+# 	Condition: 20% chance
+# 	[0] ESColumnSpawnMulti -> Blizzard Signal
+# 	Change 6th column to Water orbs
+# 	[1] ESBlind -> Steam Release
+# 	Blind all orbs on the board
+# [12] SkillSet:
+# 	Condition: 50% chance
+# 	[0] ESColumnSpawnMulti -> Blizzard Signal
+# 	Change 6th column to Water orbs
+# 	[1] ESPoisonChangeRandom -> Toxic Gas Cloud
+# 	Change Random 3 to Poison
+# [13] SkillSet:
+# 	Condition: None
+# 	[0] ESColumnSpawnMulti -> Blizzard Signal
+# 	Change 6th column to Water orbs
+# 	[1] ESRandomSpawn -> Scattered Clump of Earth
+# 	Spawn random 3 Jammer orbs
+# [14] ESResolve -> Alfecca Resolve
+# Survive attacks with 1 HP when HP > 76%

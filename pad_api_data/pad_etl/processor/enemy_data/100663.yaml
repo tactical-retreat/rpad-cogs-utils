@@ -1,0 +1,50 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 100663
+monster_name_en: "Romantic\u2605Cathy"
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 50% damage
+  desc_jp: Blind all orbs on the board, Deal 50% damage
+  name_en: Well, it's bed-time!
+  name_jp: Well, it's bed-time!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 200% damage (2 hits, 100% each)
+  desc_jp: Deal 200% damage (2 hits, 100% each)
+  name_en: You and you, get out of here!
+  name_jp: You and you, get out of here!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBlind -> Well, it's bed-time!
+# Condition: One-time use
+# Blind all orbs on the board
+# [3] ESAttackMultihit -> You and you, get out of here!
+# Condition: When < 50% hp
+# Enemy action
+# [4] ESEndPath -> ESEndPath
+# end_turn

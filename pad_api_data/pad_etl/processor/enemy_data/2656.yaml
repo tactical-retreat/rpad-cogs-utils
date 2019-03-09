@@ -1,0 +1,60 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2656
+monster_name_en: Purple Gadget
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 50% damage
+  desc_jp: Blind all orbs on the board, Deal 50% damage
+  name_en: Blacken Star
+  name_jp: Blacken Star
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Lock all Dark orbs, Deal 70% damage
+  desc_jp: Lock all Dark orbs, Deal 70% damage
+  name_en: black chaos
+  name_jp: black chaos
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESBlind -> Blacken Star
+# Condition: None
+# Blind all orbs on the board
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESOrbLock -> black chaos
+# Condition: One-time use
+# Lock all Dark orbs
+# [9] ESEndPath -> ESEndPath
+# end_turn

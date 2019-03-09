@@ -1,0 +1,128 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 103982
+monster_name_en: Parademon Shock Trooper (Film)
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Wood by 50%
+  desc_jp: Reduce damage from Wood by 50%
+  name_en: Halve Wood
+  name_jp: Halve Wood
+  record_type_name: PASSIVE
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Wood by 50%
+  desc_jp: Reduce damage from Wood by 50%
+  name_en: Halve Wood
+  name_jp: Halve Wood
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Bind 1 subs for 3 turns, Deal 100% damage
+  desc_jp: Bind 1 subs for 3 turns, Deal 100% damage
+  name_en: Blitz
+  name_jp: Blitz
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 5
+  desc_jp: ''
+  name_en: Turn 5
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 195% damage (3 hits, 65% each)
+  desc_jp: Deal 195% damage (3 hits, 65% each)
+  name_en: All-Out Attack
+  name_jp: All-Out Attack
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 105%~150% damage (7~10 hits, 15% each)
+  desc_jp: Deal 105%~150% damage (7~10 hits, 15% each)
+  name_en: Rapid Fire
+  name_jp: Rapid Fire
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Delay active skills by 2 turns, Deal 110% damage
+  desc_jp: Delay active skills by 2 turns, Deal 110% damage
+  name_en: Flanking Assault
+  name_jp: Flanking Assault
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Random to Fire, Deal 130% damage
+  desc_jp: Change Random to Fire, Deal 130% damage
+  name_en: Apokaliptan Weaponry
+  name_jp: Apokaliptan Weaponry
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESBindAttack -> Blitz
+# Condition: None
+# Bind 1 subs for 3 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchCounter -> ESBranchCounter
+# branch
+# [9] ESSetCounter -> ESSetCounter
+# set_counter
+# [10] ESAttackMultihit -> Rapid Fire
+# Condition: 34% chance
+# Enemy action
+# [11] ESSkillDelay -> Flanking Assault
+# Condition: 33% chance
+# Delay active skills by 2 turns
+# [12] ESOrbChangeAttack -> Apokaliptan Weaponry
+# Condition: 33% chance
+# Change Random to Fire
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESBranchFlag -> ESBranchFlag
+# branch
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] ESAttackUp -> Mindless Loyalty
+# Condition: None
+# Increase damage to 300% for the next 999 turns
+# [17] ESAttackMultihit -> All-Out Attack
+# Condition: None
+# Enemy action
+# [18] ESEndPath -> ESEndPath
+# end_turn
+# [19] ESAttributeResist -> Halve Wood
+# Reduce damage from Wood by 50%

@@ -1,0 +1,57 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 100308
+monster_name_en: Alt. Emerald Pengdra
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Lock all Wood orbs, Deal 20% damage
+  desc_jp: Lock all Wood orbs, Deal 20% damage
+  name_en: Wings of Wood
+  name_jp: Wings of Wood
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Water to Heal
+  desc_jp: Change Water to Heal
+  name_en: Guard Stance-Wood
+  name_jp: Guard Stance-Wood
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESOrbLock -> Wings of Wood
+# Condition: None
+# Lock all Wood orbs
+# [5] ESRandomSpawn -> Wings of Wood
+# Condition: When fire, water, light, dark, heal, jammer, poison, mortal poison orbs are on the board
+# Spawn random 3 Wood orbs
+# [6] ESOrbChangeSingle -> Guard Stance-Wood
+# Condition: One-time use
+# Change Water to Heal
+# [7] ESEndPath -> ESEndPath
+# end_turn

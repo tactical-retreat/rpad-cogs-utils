@@ -1,0 +1,67 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1263
+monster_name_en: Divine Harbinger Suzaku, Leilan
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 120% damage (3 hits, 40% each)
+  desc_jp: Deal 120% damage (3 hits, 40% each)
+  name_en: Flame Dance
+  name_jp: Flame Dance
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind Dark cards for 3~4 turns
+  desc_jp: Bind Dark cards for 3~4 turns
+  name_en: Sun Disc Sparkle
+  name_jp: Sun Disc Sparkle
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 30
+  desc_jp: ''
+  name_en: HP <= 30
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 350% damage (7 hits, 50% each)
+  desc_jp: Deal 350% damage (7 hits, 50% each)
+  name_en: Southern Seven-Star Formation
+  name_jp: Southern Seven-Star Formation
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBindAttribute -> Sun Disc Sparkle
+# Condition: When < 50% hp , one-time use
+# Bind Dark cards for 3~4 turns
+# [2] ESAttackMultihit -> Southern Seven-Star Formation
+# Condition: When < 30% hp
+# Enemy action
+# [3] ESAttackMultihit -> Flame Dance
+# Condition: None
+# Enemy action

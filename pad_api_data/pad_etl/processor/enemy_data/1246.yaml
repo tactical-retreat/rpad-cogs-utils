@@ -1,0 +1,153 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1246
+monster_name_en: Gleaming-Eyed Dragon Monk, Xuanzang
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Dark by 50%
+  desc_jp: Reduce damage from Dark by 50%
+  name_en: Xuanzang Passive
+  name_jp: Xuanzang Passive
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Player recover 100% hp
+  desc_jp: Player recover 100% hp
+  name_en: You made it!
+  name_jp: You made it!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 1 random for 4 turns, Deal 100% damage
+  desc_jp: Bind 1 random for 4 turns, Deal 100% damage
+  name_en: Dragon Monk Binding Law of Tathagata
+  name_jp: Dragon Monk Binding Law of Tathagata
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 150% damage (3 hits, 50% each)
+  desc_jp: Deal 150% damage (3 hits, 50% each)
+  name_en: Rakshasa Power
+  name_jp: Rakshasa Power
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Void damage >= 100000 for 2 turns
+  desc_jp: Void damage >= 100000 for 2 turns
+  name_en: Dragon God's Mysterious Power
+  name_jp: Dragon God's Mysterious Power
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 1st, 5th row to Light, Jammer orbs + Change 1st, 3rd, 5th column
+    to Light, Heal, Jammer orbs + Movetime -3s for 1 turns
+  desc_jp: Change 1st, 5th row to Light, Jammer orbs + Change 1st, 3rd, 5th column
+    to Light, Heal, Jammer orbs + Movetime -3s for 1 turns
+  name_en: Scriptures of the Dragon God Caste + Puzzle is rearranged + Alright, let's
+    see you get rid of the evil
+  name_jp: Scriptures of the Dragon God Caste + Puzzle is rearranged + Alright, let's
+    see you get rid of the evil
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Jammer to Light, Deal 1000% damage
+  desc_jp: Change Jammer to Light, Deal 1000% damage
+  name_en: Chaos
+  name_jp: Chaos
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 70
+  desc_jp: ''
+  name_en: HP <= 70
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Delay active skills by 4 turns
+  desc_jp: Delay active skills by 4 turns
+  name_en: Dragon Monk Telekinesis
+  name_jp: Dragon Monk Telekinesis
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESRecoverPlayer -> You made it!
+# Condition: None
+# Player recover 100% hp
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] ESSkillDelay -> Dragon Monk Telekinesis
+# Condition: When < 70% hp , one-time use
+# Delay active skills by 4 turns
+# [8] ESBindAttack -> Dragon Monk Binding Law of Tathagata
+# Condition: 30% chance
+# Bind 1 random for 4 turns
+# [9] ESAttackMultihit -> Rakshasa Power
+# Condition: None
+# Enemy action
+# [10] ESBranchFlag -> ESBranchFlag
+# branch
+# [11] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [12] ESVoidShield -> Dragon God's Mysterious Power
+# Condition: None
+# Void damage >= 100000 for 2 turns
+# [13] ESBranchFlag -> ESBranchFlag
+# branch
+# [14] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [15] SkillSet:
+# 	Condition: None
+# 	[0] ESRowSpawnMulti -> Scriptures of the Dragon God Caste
+# 	Change 1st, 5th row to Light, Jammer orbs
+# 	[1] ESColumnSpawnMulti -> Puzzle is rearranged
+# 	Change 1st, 3rd, 5th column to Light, Heal, Jammer orbs
+# 	[2] ESDebuffMovetime -> Alright, let's see you get rid of the evil
+# 	Movetime -3s for 1 turns
+# [16] ESOrbChangeAttack -> Chaos
+# Condition: None
+# Change Jammer to Light
+# [17] ESAttackMultihit -> Vicious Khakkhara Thrust
+# Condition: None
+# Enemy action
+# [18] ESAttributeResist -> Xuanzang Passive
+# Reduce damage from Dark by 50%

@@ -1,0 +1,65 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2741
+monster_name_en: Reincarnated Ancient Dragon Knight, Zeal
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Void damage >= 100 for 10 turns + Enemy action
+  desc_jp: Void damage >= 100 for 10 turns + Enemy action
+  name_en: Old Dragon Knight's Soul + Rock Sword
+  name_jp: Old Dragon Knight's Soul + Rock Sword
+  record_type_name: PREEMPT
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESVoidShield -> Old Dragon Knight's Soul
+# 	Void damage >= 100 for 10 turns
+# 	[1] ESAttackMultihit -> Rock Sword
+# 	Enemy action
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESAttackUpStatus -> Power Released
+# Condition: after being affected by a status effect
+# Increase damage to 200% for the next 999 turns
+# [7] ESBranchFlag -> ESBranchFlag
+# branch
+# [8] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [9] ESRandomSpawn -> Mind Breaking Hell Guidance
+# Condition: When heal orbs are on the board
+# Change all orbs to Jammer
+# [10] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [11] ESRandomSpawn -> Celestial Wicked Exorcism
+# Condition: When < 10% hp & when Jammer orbs are on the board
+# Change all orbs to Wood
+# [12] ESRandomSpawn -> Nothingness Light
+# Condition: When jammer orbs are on the board
+# Change all orbs to Heal
+# [13] ESRandomSpawn -> Mind Breaking Hell Guidance
+# Condition: When heal orbs are on the board
+# Change all orbs to Jammer
+# [14] ESEndPath -> ESEndPath
+# end_turn

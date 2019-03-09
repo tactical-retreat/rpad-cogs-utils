@@ -1,0 +1,52 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 710
+monster_name_en: The Sixth Angel - Assault Mode
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  name_en: Deploy A.T. Field
+  name_jp: Deploy A.T. Field
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  name_en: Deploy A.T. Field
+  name_jp: Deploy A.T. Field
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESStatusShield -> Deploy A.T. Field
+# Condition: None
+# Voids status ailments for 999 turns
+# [5] ESAttackMultihit -> Charged Particle Beam
+# Condition: None
+# Enemy action

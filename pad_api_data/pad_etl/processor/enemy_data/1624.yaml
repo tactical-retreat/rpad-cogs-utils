@@ -1,0 +1,117 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1624
+monster_name_en: Wandering Wizard, Wee Jas
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Reduce damage from all sources by
+    75% for 3 turns
+  desc_jp: Voids status ailments for 999 turns + Reduce damage from all sources by
+    75% for 3 turns
+  name_en: Who will be my opponent? + Space-Time Barrier
+  name_jp: Who will be my opponent? + Space-Time Barrier
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Locked random skyfall +30% for 5 turns
+  desc_jp: Locked random skyfall +30% for 5 turns
+  name_en: Time Sealing Lock
+  name_jp: Time Sealing Lock
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 10
+  desc_jp: ''
+  name_en: HP <= 10
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 400% damage (4 hits, 100% each)
+  desc_jp: Deal 400% damage (4 hits, 100% each)
+  name_en: Space-Time Destruction
+  name_jp: Space-Time Destruction
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESStatusShield -> Who will be my opponent?
+# 	Voids status ailments for 999 turns
+# 	[1] ESDamageShield -> Space-Time Barrier
+# 	Reduce damage from all sources by 75% for 3 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESSkyfall -> Time Sealing Lock
+# Condition: When < 50% hp , one-time use
+# Locked random skyfall +30% for 5 turns
+# [7] ESAttackMultihit -> Space-Time Destruction
+# Condition: When < 10% hp
+# Enemy action
+# [8] ESBranchFlag -> ESBranchFlag
+# branch
+# [9] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [10] SkillSet:
+# 	Condition: None
+# 	[0] ESDebuffMovetime -> Time Illusion
+# 	Movetime -1s for 5 turns
+# 	[1] ESPoisonChangeRandomAttack -> Termination's Guidance
+# 	Change Random 3 to Poison
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESBranchFlag -> ESBranchFlag
+# branch
+# [13] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [14] ESRandomSpawn -> Time Purification
+# Condition: When poison orbs are on the board
+# Change all orbs to Jammer
+# [15] ESRowSpawnMulti -> Break Time
+# Condition: None
+# Change 5th row to Heal orbs
+# [16] ESEndPath -> ESEndPath
+# end_turn
+# [17] ESBranchFlag -> ESBranchFlag
+# branch
+# [18] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [19] ESPoisonChangeRandomAttack -> Termination's Guidance
+# Condition: None
+# Change Random 3 to Poison
+# [20] ESEndPath -> ESEndPath
+# end_turn
+# [21] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [22] ESRandomSpawn -> Time Purification
+# Condition: When poison orbs are on the board
+# Change all orbs to Jammer
+# [23] ESRowSpawnMulti -> Break Time
+# Condition: None
+# Change 5th row to Heal orbs
+# [24] ESEndPath -> ESEndPath
+# end_turn

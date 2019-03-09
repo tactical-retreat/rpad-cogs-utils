@@ -1,0 +1,56 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 717
+monster_name_en: Neneko
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind Fire cards for 2~4 turns
+  desc_jp: Bind Fire cards for 2~4 turns
+  name_en: Fire Bind
+  name_jp: Fire Bind
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Dark to Water
+  desc_jp: Change Dark to Water
+  name_en: Dark Shift - Wt
+  name_jp: Dark Shift - Wt
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESBindAttribute -> Fire Bind
+# Condition: One-time use
+# Bind Fire cards for 2~4 turns
+# [4] ESOrbChangeSingle -> Dark Shift - Wt
+# Condition: 50% chance
+# Change Dark to Water

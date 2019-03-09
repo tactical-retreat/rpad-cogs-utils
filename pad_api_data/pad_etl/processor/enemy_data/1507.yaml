@@ -1,0 +1,104 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1507
+monster_name_en: Shining Dragon Knight
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Bind 1 own leader for 3 turns
+  desc_jp: Bind 1 own leader for 3 turns
+  name_en: Shock Sword
+  name_jp: Shock Sword
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 160% damage (2 hits, 80% each)
+  desc_jp: Deal 160% damage (2 hits, 80% each)
+  name_en: Thunder Wave
+  name_jp: Thunder Wave
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change 3rd column to Light orbs, Deal 120% damage
+  desc_jp: Change 3rd column to Light orbs, Deal 120% damage
+  name_en: Shining Pulse
+  name_jp: Shining Pulse
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  name_en: Disable Skill
+  name_jp: Disable Skill
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 70
+  desc_jp: ''
+  name_en: HP <= 70
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 2 turns
+  desc_jp: Reduce damage from all sources by 50% for 2 turns
+  name_en: Shining Dragon's Armor
+  name_jp: Shining Dragon's Armor
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 20
+  desc_jp: ''
+  name_en: HP <= 20
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 2 random for 2 turns, Deal 300% damage
+  desc_jp: Bind 2 random for 2 turns, Deal 300% damage
+  name_en: Shining Dragon's Sword
+  name_jp: Shining Dragon's Sword
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESBindTarget -> Shock Sword
+# Condition: None
+# Bind 1 own leader for 3 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBindAttack -> Shining Dragon's Sword
+# Condition: When < 20% hp
+# Bind 2 random for 2 turns
+# [7] ESDamageShield -> Shining Dragon's Armor
+# Condition: When < 70% hp , one-time use
+# Reduce damage from all sources by 50% for 2 turns
+# [8] ESAttackMultihit -> Thunder Wave
+# Condition: 30% chance
+# Enemy action
+# [9] ESColumnSpawnMulti -> Shining Pulse
+# Condition: 30% chance
+# Change 3rd column to Light orbs
+# [10] ESAttackSinglehit -> Disable Skill
+# Condition: 30% chance
+# Enemy action
+# [11] ESEndPath -> ESEndPath
+# end_turn

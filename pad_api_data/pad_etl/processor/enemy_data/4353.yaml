@@ -1,0 +1,260 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4353
+monster_name_en: Spirit Numen of Water, Zapan
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Water by 50%
+  desc_jp: Reduce damage from Water by 50%
+  name_en: Water Att. Half Reduced
+  name_jp: Water Att. Half Reduced
+  record_type_name: PASSIVE
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Water by 50%
+  desc_jp: Reduce damage from Water by 50%
+  name_en: Water Att. Half Reduced
+  name_jp: Water Att. Half Reduced
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Player -99% HP + Change 1st column
+    to Water, Jammer, Poison orbs, 3rd, 4th column to Water, Jammer, Poison orbs +
+    Void damage >= 15000000 for 999 turns
+  desc_jp: Voids status ailments for 999 turns + Player -99% HP + Change 1st column
+    to Water, Jammer, Poison orbs, 3rd, 4th column to Water, Jammer, Poison orbs +
+    Void damage >= 15000000 for 999 turns
+  name_en: Overcoat of Grand Style + Explosive Wave + Blowing Dirty Water + Surging
+    Waves
+  name_jp: Overcoat of Grand Style + Explosive Wave + Blowing Dirty Water + Surging
+    Waves
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 8 Water orbs, Deal 100% damage
+  desc_jp: Spawn random 8 Water orbs, Deal 100% damage
+  name_en: Water Hazard
+  name_jp: Water Hazard
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Lock 14 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 110% damage
+  desc_jp: Lock 14 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 110% damage
+  name_en: Blizzard Wave
+  name_jp: Blizzard Wave
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Bind 2 random cards for 1 turns, Deal 105% damage
+  desc_jp: Bind 2 random cards for 1 turns, Deal 105% damage
+  name_en: Frozen Tentacle
+  name_jp: Frozen Tentacle
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 120% damage (4 hits, 30% each)
+  desc_jp: Deal 120% damage (4 hits, 30% each)
+  name_en: Frost Hurricane
+  name_jp: Frost Hurricane
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Heal, Poison + Rcv 50% for 99 turns + Bind 6 random
+    cards for 10 turns
+  desc_jp: Change all orbs to Heal, Poison + Rcv 50% for 99 turns + Bind 6 random
+    cards for 10 turns
+  name_en: Untamable Raging Waves + Ocean Current Mayhem + Freeze Wave
+  name_jp: Untamable Raging Waves + Ocean Current Mayhem + Freeze Wave
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Water skyfall +25% for 1 turns + Enemy action
+  desc_jp: Water skyfall +25% for 1 turns + Enemy action
+  name_en: Heavy Rain + Tidal Wave
+  name_jp: Heavy Rain + Tidal Wave
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Movetime 50% for 1 turns + Enemy action
+  desc_jp: Movetime 50% for 1 turns + Enemy action
+  name_en: Sand Disaster + Tidal Wave
+  name_jp: Sand Disaster + Tidal Wave
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 9
+  desc_jp: ''
+  name_en: HP <= 9
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 2400% damage (6 hits, 400% each)
+  desc_jp: Deal 2400% damage (6 hits, 400% each)
+  name_en: Neo Tidal Wave
+  name_jp: Neo Tidal Wave
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] SkillSet:
+# 	Condition: None
+# 	[0] ESStatusShield -> Overcoat of Grand Style
+# 	Voids status ailments for 999 turns
+# 	[1] ESGravity -> Explosive Wave
+# 	Player -99% HP
+# 	[2] ESColumnSpawnMulti -> Blowing Dirty Water
+# 	Change 1st column to Water, Jammer, Poison orbs, 3rd, 4th column to Water, Jammer, Poison orbs
+# 	[3] ESVoidShield -> Surging Waves
+# 	Void damage >= 15000000 for 999 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESSetCounter -> ESSetCounter
+# set_counter
+# [10] ESBranchCounter -> ESBranchCounter
+# branch
+# [11] ESRandomSpawn -> Water Hazard
+# Condition: 25% chance & when Fire, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 8 Water orbs
+# [12] ESOrbLock -> Blizzard Wave
+# Condition: 25% chance
+# Lock 14 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [13] ESBindRandom -> Frozen Tentacle
+# Condition: 25% chance
+# Bind 2 random cards for 1 turns
+# [14] ESAttackMultihit -> Frost Hurricane
+# Condition: 25% chance
+# Enemy action
+# [15] ESEndPath -> ESEndPath
+# end_turn
+# [16] ESSetCounter -> ESSetCounter
+# set_counter
+# [17] ESBranchFlag -> ESBranchFlag
+# branch
+# [18] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [19] SkillSet:
+# 	Condition: None
+# 	[0] ESBindSkill -> Rough Seas
+# 	Bind active skills for 3 turns
+# 	[1] ESOrbSealRow -> Land Subsidence
+# 	Seal 5th row for 3 turns
+# [20] ESEndPath -> ESEndPath
+# end_turn
+# [21] ESBranchHP -> ESBranchHP
+# branch
+# [22] ESBranchFlag -> ESBranchFlag
+# branch
+# [23] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [24] ESSetCounter -> ESSetCounter
+# set_counter
+# [25] SkillSet:
+# 	Condition: None
+# 	[0] ESBoardChange -> Untamable Raging Waves
+# 	Change all orbs to Heal, Poison
+# 	[1] ESDebuffRCV -> Ocean Current Mayhem
+# 	Rcv 50% for 99 turns
+# 	[2] ESBindRandom -> Freeze Wave
+# 	Bind 6 random cards for 10 turns
+# [26] ESEndPath -> ESEndPath
+# end_turn
+# [27] ESSetCounter -> ESSetCounter
+# set_counter
+# [28] ESBranchCounter -> ESBranchCounter
+# branch
+# [29] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESSkyfall -> Heavy Rain
+# 	Water skyfall +25% for 1 turns
+# 	[1] ESAttackMultihit -> Tidal Wave
+# 	Enemy action
+# [30] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESAbsorbAttribute -> Misery Water
+# 	Absorb Water damage for 1 turns
+# 	[1] ESAttackMultihit -> Tidal Wave
+# 	Enemy action
+# [31] SkillSet:
+# 	Condition: None
+# 	[0] ESDebuffMovetime -> Sand Disaster
+# 	Movetime 50% for 1 turns
+# 	[1] ESAttackMultihit -> Tidal Wave
+# 	Enemy action
+# [32] ESEndPath -> ESEndPath
+# end_turn
+# [33] ESSetCounter -> ESSetCounter
+# set_counter
+# [34] ESBranchFlag -> ESBranchFlag
+# branch
+# [35] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [36] SkillSet:
+# 	Condition: None
+# 	[0] ESBindAwoken -> Ocean Ripple
+# 	Bind awoken skills for 3 turns
+# 	[1] ESBlindStickyRandom -> Depths of the Abyss
+# 	Blind all orbs for 3 turns
+# [37] ESEndPath -> ESEndPath
+# end_turn
+# [38] ESAttackMultihit -> Neo Tidal Wave
+# Condition: None
+# Enemy action
+# [39] ESEndPath -> ESEndPath
+# end_turn
+# [40] ESStorePower -> Unleashing the Great Sea
+# Condition: None
+# Increase damage to 230% for the next attack
+# [41] ESEndPath -> ESEndPath
+# end_turn
+# [42] ESAttributeResist -> Water Att. Half Reduced
+# Reduce damage from Water by 50%

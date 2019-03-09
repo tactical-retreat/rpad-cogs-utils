@@ -1,0 +1,105 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1461
+monster_name_en: Awoken Noah
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Player recover 100% hp
+  desc_jp: Player recover 100% hp
+  name_en: Are you worth saving?
+  name_jp: Are you worth saving?
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random 2 to Jammer
+  desc_jp: Change Random 2 to Jammer
+  name_en: Ark Judgement
+  name_jp: Ark Judgement
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 1000% damage
+  desc_jp: Deal 1000% damage
+  name_en: Punishment Thunder
+  name_jp: Punishment Thunder
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESRecoverPlayer -> Are you worth saving?
+# Condition: None
+# Player recover 100% hp
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] ESBranchFlag -> ESBranchFlag
+# branch
+# [8] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [9] ESGravity -> Ark Impact
+# Condition: None
+# Player -99% HP
+# [10] ESEndPath -> ESEndPath
+# end_turn
+# [11] ESBranchFlag -> ESBranchFlag
+# branch
+# [12] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [13] ESBindAttack -> Sacred Sacrifice
+# Condition: None
+# Bind 1 subs for 2 turns
+# [14] ESEndPath -> ESEndPath
+# end_turn
+# [15] ESBranchFlag -> ESBranchFlag
+# branch
+# [16] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [17] ESOrbChangeAttack -> Rainbow Contract
+# Condition: None
+# Change Random to Random
+# [18] ESEndPath -> ESEndPath
+# end_turn
+# [19] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [20] ESOrbChangeAttack -> Twinkle Hope
+# Condition: None
+# Change Random to Heal
+# [21] ESEndPath -> ESEndPath
+# end_turn
+# [22] ESJammerChangeRandom -> Ark Judgement
+# Condition: One-time use
+# Change Random 2 to Jammer
+# [23] ESAttackMultihit -> Punishment Thunder
+# Condition: None
+# Enemy action

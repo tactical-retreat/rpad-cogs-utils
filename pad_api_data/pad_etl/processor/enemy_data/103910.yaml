@@ -1,0 +1,99 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 103910
+monster_name_en: White Flash Dragon Caller, Sonia Elle
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: 4x5 cloud appear for 1 turns at 1st row, 2nd column
+  desc_jp: 4x5 cloud appear for 1 turns at 1st row, 2nd column
+  name_en: Radiant Dragon Tribe's Wave
+  name_jp: Radiant Dragon Tribe's Wave
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 2 random subs for 2 turns, Deal 70% damage
+  desc_jp: Bind 2 random subs for 2 turns, Deal 70% damage
+  name_en: Radiant Dragon Tribe's Curse
+  name_jp: Radiant Dragon Tribe's Curse
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 120% damage (6 hits, 20% each)
+  desc_jp: Deal 120% damage (6 hits, 20% each)
+  name_en: Whiteout - Nemesis
+  name_jp: Whiteout - Nemesis
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 14
+  desc_jp: ''
+  name_en: HP <= 14
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  name_en: Draco Summoning
+  name_jp: Draco Summoning
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 14
+  desc_jp: ''
+  name_en: HP <= 14
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 200% damage (2 hits, 100% each)
+  desc_jp: Deal 200% damage (2 hits, 100% each)
+  name_en: Clearing Tempest
+  name_jp: Clearing Tempest
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESCloud -> Radiant Dragon Tribe's Wave
+# Condition: One-time use
+# 4x5 cloud appear for 1 turns at 1st row, 2nd column
+# [3] ESBindRandomSub -> Radiant Dragon Tribe's Curse
+# Condition: One-time use
+# Bind 2 random subs for 2 turns
+# [4] ESBranchHP -> ESBranchHP
+# branch
+# [5] ESAttackMultihit -> Whiteout - Nemesis
+# Condition: None
+# Enemy action
+# [6] ESEndPath -> ESEndPath
+# end_turn
+# [7] ESInactivity -> Draco Summoning
+# Condition: One-time use
+# Do nothing
+# [8] ESAttackMultihit -> Clearing Tempest
+# Condition: None
+# Enemy action
+# [9] ESEndPath -> ESEndPath
+# end_turn

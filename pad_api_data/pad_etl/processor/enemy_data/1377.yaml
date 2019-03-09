@@ -1,0 +1,67 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1377
+monster_name_en: '***** (Dragon Ball)'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: 'Show message: You are the first ones to ever see this!|Thank you for waiting...'
+  desc_jp: 'Show message: You are the first ones to ever see this!|Thank you for waiting...'
+  name_en: It's the first time I ever used this transformation!
+  name_jp: It's the first time I ever used this transformation!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESDeathCry -> It's the first time I ever used this transformation!
+# Condition: On death
+# Show message: You are the first ones to ever see this!|Thank you for waiting...
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESOrbChangeAttack -> ***** (Dragon Ball)
+# Condition: None
+# Change Random to Fire
+# [7] ESBranchFlag -> ESBranchFlag
+# branch
+# [8] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [9] ESInactivity -> ***** (Dragon Ball)
+# Condition: None
+# Do nothing
+# [10] ESBranchFlag -> ESBranchFlag
+# branch
+# [11] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [12] ESBindAttack -> ***** (Dragon Ball)
+# Condition: None
+# Bind 1 subs for 3 turns
+# [13] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [14] ESAttackMultihit -> ***** (Dragon Ball)
+# Condition: None
+# Enemy action

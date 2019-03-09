@@ -1,0 +1,56 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1698
+monster_name_en: Master Toxicologist, Poison Ivy (Comics)
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random 7 to Poison, Deal 100% damage
+  desc_jp: Change Random 7 to Poison, Deal 100% damage
+  name_en: Poison Kiss
+  name_jp: Poison Kiss
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind Water cards for 3 turns
+  desc_jp: Bind Water cards for 3 turns
+  name_en: Chlorokinesis
+  name_jp: Chlorokinesis
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESBindAttribute -> Chlorokinesis
+# Condition: When < 50% hp , one-time use
+# Bind Water cards for 3 turns
+# [4] ESPoisonChangeRandomAttack -> Poison Kiss
+# Condition: None
+# Change Random 7 to Poison

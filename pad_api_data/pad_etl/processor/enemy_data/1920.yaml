@@ -1,0 +1,106 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1920
+monster_name_en: Phantom Icedragon, Mirage Plesios
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Fire, Wood by 50%
+  desc_jp: Reduce damage from Fire, Wood by 50%
+  name_en: Halves Plessios Fire-Wood
+  name_jp: Halves Plessios Fire-Wood
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Bind active skills for 5 turns + Locked Water, Heal skyfall +100% for 10
+    turns
+  desc_jp: Bind active skills for 5 turns + Locked Water, Heal skyfall +100% for 10
+    turns
+  name_en: Mirage Temptation + Frozen Celestial Ocean
+  name_jp: Mirage Temptation + Frozen Celestial Ocean
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 4 Water orbs, Deal 150% damage
+  desc_jp: Spawn random 4 Water orbs, Deal 150% damage
+  name_en: Cold air is building up
+  name_jp: Cold air is building up
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 2
+  desc_jp: ''
+  name_en: Turn 2
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 8 Water orbs, Deal 200% damage
+  desc_jp: Spawn random 8 Water orbs, Deal 200% damage
+  name_en: Cold air is building up
+  name_jp: Cold air is building up
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 3
+  desc_jp: ''
+  name_en: Turn 3
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 16 Water orbs, Deal 250% damage
+  desc_jp: Spawn random 16 Water orbs, Deal 250% damage
+  name_en: Cold air is building up
+  name_jp: Cold air is building up
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Water, Deal 500% damage
+  desc_jp: Change all orbs to Water, Deal 500% damage
+  name_en: Brinicle
+  name_jp: Brinicle
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESBindSkill -> Mirage Temptation
+# 	Bind active skills for 5 turns
+# 	[1] ESSkyfall -> Frozen Celestial Ocean
+# 	Locked Water, Heal skyfall +100% for 10 turns
+# [3] ESRandomSpawn -> Cold air is building up
+# Condition: One-time use & when Fire, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 4 Water orbs
+# [4] ESRandomSpawn -> Cold air is building up
+# Condition: One-time use & when Fire, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 8 Water orbs
+# [5] ESRandomSpawn -> Cold air is building up
+# Condition: One-time use & when Fire, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 16 Water orbs
+# [6] ESRandomSpawn -> Brinicle
+# Condition: When fire, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board
+# Change all orbs to Water
+# [7] ESAttributeResist -> Halves Plessios Fire-Wood
+# Reduce damage from Fire, Wood by 50%

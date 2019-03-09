@@ -1,0 +1,150 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2927
+monster_name_en: Horus Armor X Dragon Caller, Ace
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 3 turns + Change all orbs to
+    Fire, Water, Wood, Light, Dark
+  desc_jp: Reduce damage from all sources by 50% for 3 turns + Change all orbs to
+    Fire, Water, Wood, Light, Dark
+  name_en: Cross On! + Flame Falcon Blinding Light
+  name_jp: Cross On! + Flame Falcon Blinding Light
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 20
+  desc_jp: ''
+  name_en: HP <= 20
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Fire, Water, Wood, Light, Dark + Enemy action
+  desc_jp: Change all orbs to Fire, Water, Wood, Light, Dark + Enemy action
+  name_en: Flame Falcon Blinding Light + 10 combos!!
+  name_jp: Flame Falcon Blinding Light + 10 combos!!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESDamageShield -> Cross On!
+# 	Reduce damage from all sources by 50% for 3 turns
+# 	[1] ESBoardChangeAttackBits -> Flame Falcon Blinding Light
+# 	Change all orbs to Fire, Water, Wood, Light, Dark
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] SkillSet:
+# 	Condition: When < 20% hp , one-time use
+# 	[0] ESStatusShield -> Sky God Protection
+# 	Voids status ailments for 999 turns
+# 	[1] ESBoardChangeAttackBits -> Flame Falcon Blinding Light
+# 	Change all orbs to Fire, Water, Wood, Light, Dark
+# 	[2] ESAttackMultihit -> 10 combos!!
+# 	Enemy action
+# [7] SkillSet:
+# 	Condition: When < 20% hp
+# 	[0] ESBoardChangeAttackBits -> Flame Falcon Blinding Light
+# 	Change all orbs to Fire, Water, Wood, Light, Dark
+# 	[1] ESAttackMultihit -> 10 combos!!
+# 	Enemy action
+# [8] SkillSet:
+# 	Condition: When < 50% hp , one-time use
+# 	[0] ESStatusShield -> Sky God Protection
+# 	Voids status ailments for 999 turns
+# 	[1] ESBindAttack -> Dragon Summoning!!!
+# 	Bind 4 subs for 3 turns
+# [9] SkillSet:
+# 	Condition: When < 80% hp , one-time use
+# 	[0] ESStatusShield -> Sky God Protection
+# 	Voids status ailments for 999 turns
+# 	[1] ESOrbChangeAttack -> Dragon Summoning!!!
+# 	Change Random to Jammer
+# [10] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESStatusShield -> Sky God Protection
+# 	Voids status ailments for 999 turns
+# 	[1] ESAttackMultihit -> Dragon Summoning!!!
+# 	Enemy action
+# [11] ESBranchFlag -> ESBranchFlag
+# branch
+# [12] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [13] SkillSet:
+# 	Condition: None
+# 	[0] ESDebuffMovetime -> Eye of Wadjet
+# 	Movetime -2s for 1 turns
+# 	[1] ESOrbChangeAttack -> Flame Falcon's Furious Attack
+# 	Change Random to Fire
+# [14] ESBranchFlag -> ESBranchFlag
+# branch
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] SkillSet:
+# 	Condition: 34% chance
+# 	[0] ESAbsorbCombo -> Five Origins' Sanctuary
+# 	Absorb combo <= 4 damage for 2 turns
+# 	[1] ESRowSpawnMulti -> Inferno Blast
+# 	Change 1st row to Fire orbs
+# [17] SkillSet:
+# 	Condition: 50% chance
+# 	[0] ESAbsorbCombo -> Five Origins' Sanctuary
+# 	Absorb combo <= 4 damage for 2 turns
+# 	[1] ESRowSpawnMulti -> Mirage Blade
+# 	Change 1st row to Water orbs
+# [18] SkillSet:
+# 	Condition: None
+# 	[0] ESAbsorbCombo -> Five Origins' Sanctuary
+# 	Absorb combo <= 4 damage for 2 turns
+# 	[1] ESRowSpawnMulti -> Wind Spiral
+# 	Change 1st row to Wood orbs
+# [19] ESBranchFlag -> ESBranchFlag
+# branch
+# [20] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [21] SkillSet:
+# 	Condition: None
+# 	[0] ESDebuffMovetime -> Eye of Wadjet
+# 	Movetime -2s for 1 turns
+# 	[1] ESOrbChangeAttack -> Flame Falcon's Furious Attack
+# 	Change Random to Fire
+# [22] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [23] SkillSet:
+# 	Condition: 34% chance
+# 	[0] ESBoardChange -> Five Origins' Tuning
+# 	Change all orbs to Fire, Water, Wood, Light, Dark
+# 	[1] ESRowSpawnMulti -> Inferno Blast
+# 	Change 1st row to Fire orbs
+# [24] SkillSet:
+# 	Condition: 50% chance
+# 	[0] ESBoardChange -> Five Origins' Tuning
+# 	Change all orbs to Fire, Water, Wood, Light, Dark
+# 	[1] ESRowSpawnMulti -> Mirage Blade
+# 	Change 1st row to Water orbs
+# [25] SkillSet:
+# 	Condition: None
+# 	[0] ESBoardChange -> Five Origins' Tuning
+# 	Change all orbs to Fire, Water, Wood, Light, Dark
+# 	[1] ESRowSpawnMulti -> Wind Spiral
+# 	Change 1st row to Wood orbs

@@ -1,0 +1,170 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2416
+monster_name_en: Thorned Mechanical Star God, Antares
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from God, Machine by 50%
+  desc_jp: Reduce damage from God, Machine by 50%
+  name_en: God Machine Halved
+  name_jp: God Machine Halved
+  record_type_name: PASSIVE
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from God, Machine by 50%
+  desc_jp: Reduce damage from God, Machine by 50%
+  name_en: God Machine Halved
+  name_jp: God Machine Halved
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Poison skyfall +20% for 5 turns + Locked Poison skyfall +100% for 30 turns
+  desc_jp: Poison skyfall +20% for 5 turns + Locked Poison skyfall +100% for 30 turns
+  name_en: Look! + That's a lot of meteors!
+  name_jp: Look! + That's a lot of meteors!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb combo <= 6 damage for 15 turns + Unable to Poison orbs for 1 turns
+  desc_jp: Absorb combo <= 6 damage for 15 turns + Unable to Poison orbs for 1 turns
+  name_en: Like the stars in the night sky... + Show me your locus...
+  name_jp: Like the stars in the night sky... + Show me your locus...
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 95% damage
+  desc_jp: Change Random to Jammer, Deal 95% damage
+  name_en: Shooting Stardust
+  name_jp: Shooting Stardust
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Delay active skills by 2 turns, Deal 90% damage
+  desc_jp: Delay active skills by 2 turns, Deal 90% damage
+  name_en: Star Symphony
+  name_jp: Star Symphony
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 105% damage (3 hits, 35% each)
+  desc_jp: Deal 105% damage (3 hits, 35% each)
+  name_en: Meteor Rain
+  name_jp: Meteor Rain
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 150% for the next 99 turns + Blind all orbs on the board
+  desc_jp: Increase damage to 150% for the next 99 turns + Blind all orbs on the board
+  name_en: I'll end this with my own hands! + The stars are bright tonight...
+  name_jp: I'll end this with my own hands! + The stars are bright tonight...
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind awoken skills for 1 turns, Deal 400% damage
+  desc_jp: Bind awoken skills for 1 turns, Deal 400% damage
+  name_en: At least peacefully...
+  name_jp: At least peacefully...
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] SkillSet:
+# 	Condition: None
+# 	[0] ESSkyfall -> Look!
+# 	Poison skyfall +20% for 5 turns
+# 	[1] ESSkyfall -> That's a lot of meteors!
+# 	Locked Poison skyfall +100% for 30 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchFlag -> ESBranchFlag
+# branch
+# [9] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [10] SkillSet:
+# 	Condition: None
+# 	[0] ESAbsorbCombo -> Like the stars in the night sky...
+# 	Absorb combo <= 6 damage for 15 turns
+# 	[1] ESAttributeBlock -> Show me your locus...
+# 	Unable to Poison orbs for 1 turns
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESBranchHP -> ESBranchHP
+# branch
+# [13] ESOrbChangeAttack -> Shooting Stardust
+# Condition: 33% chance
+# Change Random to Jammer
+# [14] ESSkillDelay -> Star Symphony
+# Condition: 33% chance
+# Delay active skills by 2 turns
+# [15] ESAttackMultihit -> Meteor Rain
+# Condition: 34% chance
+# Enemy action
+# [16] ESEndPath -> ESEndPath
+# end_turn
+# [17] ESBranchFlag -> ESBranchFlag
+# branch
+# [18] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [19] SkillSet:
+# 	Condition: None
+# 	[0] ESAttackUp -> I'll end this with my own hands!
+# 	Increase damage to 150% for the next 99 turns
+# 	[1] ESBlind -> The stars are bright tonight...
+# 	Blind all orbs on the board
+# [20] ESEndPath -> ESEndPath
+# end_turn
+# [21] ESBindAwoken -> At least peacefully...
+# Condition: None
+# Bind awoken skills for 1 turns
+# [22] ESEndPath -> ESEndPath
+# end_turn
+# [23] ESTypeResist -> God Machine Halved
+# Reduce damage from God, Machine by 50%

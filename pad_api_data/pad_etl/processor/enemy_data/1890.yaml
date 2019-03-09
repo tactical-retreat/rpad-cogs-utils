@@ -1,0 +1,79 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1890
+monster_name_en: '***** (Bikkuriman)'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  name_en: "\u30D2\u30EC\u30D5\u30BB\u305F\u307E\u3041\u2015\u30C3\uFF01"
+  name_jp: "\u30D2\u30EC\u30D5\u30BB\u305F\u307E\u3041\u2015\u30C3\uFF01"
+  record_type_name: ACTION
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Movetime -1s for 1 turns
+  desc_jp: Movetime -1s for 1 turns
+  name_en: "\u30D2\u30EC\u30D5\u30BB\u305F\u307E\u3041\u2015\u30C3\uFF01"
+  name_jp: "\u30D2\u30EC\u30D5\u30BB\u305F\u307E\u3041\u2015\u30C3\uFF01"
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 2nd column to Light orbs, 5th column to Light orbs, Deal 100% damage
+  desc_jp: Change 2nd column to Light orbs, 5th column to Light orbs, Deal 100% damage
+  name_en: "\u53CC\u5B50\u661F\u306E\u8F1D\u304D\u305F\u307E\u3041"
+  name_jp: "\u53CC\u5B50\u661F\u306E\u8F1D\u304D\u305F\u307E\u3041"
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESInactivity -> ヒレフセたまぁ―ッ！
+# Condition: None
+# Do nothing
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESDebuffMovetime -> ヒレフセたまぁ―ッ！
+# Condition: One-time use
+# Movetime -1s for 1 turns
+# [5] ESColumnSpawnMulti -> 双子星の輝きたまぁ
+# Condition: 70% chance
+# Change 2nd column to Light orbs, 5th column to Light orbs

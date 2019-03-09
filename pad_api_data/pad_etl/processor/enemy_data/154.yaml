@@ -1,0 +1,52 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 154
+monster_name_en: Dragon Flower
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Deal 10% damage
+  desc_jp: Deal 10% damage
+  name_en: Pollen Omen
+  name_jp: Pollen Omen
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 1500% damage (3 hits, 500% each)
+  desc_jp: Deal 1500% damage (3 hits, 500% each)
+  name_en: Flower Beam
+  name_jp: Flower Beam
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESAttackMultihit -> Pollen Omen
+# Condition: One-time use
+# Enemy action
+# [5] ESAttackMultihit -> Flower Beam
+# Condition: None
+# Enemy action

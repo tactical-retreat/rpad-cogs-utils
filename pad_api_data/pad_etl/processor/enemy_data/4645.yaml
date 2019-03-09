@@ -1,0 +1,148 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4645
+monster_name_en: Dark Companion Dragon, Doltos
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: 'Show message: Doltos''s appearance is changing|Help has been summoned'
+  desc_jp: 'Show message: Doltos''s appearance is changing|Help has been summoned'
+  name_en: Spe Dun Dragon Dark Transformation
+  name_jp: Spe Dun Dragon Dark Transformation
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 100% damage
+  desc_jp: Blind all orbs on the board, Deal 100% damage
+  name_en: Call of Darkness
+  name_jp: Call of Darkness
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: 'Show message: Doltos''s appearance is changing|Help has been summoned'
+  desc_jp: 'Show message: Doltos''s appearance is changing|Help has been summoned'
+  name_en: Spe Dun Dragon Dark Transformation
+  name_jp: Spe Dun Dragon Dark Transformation
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Spawn random 3 Dark orbs, Deal 100% damage
+  desc_jp: Spawn random 3 Dark orbs, Deal 100% damage
+  name_en: The Chosen Darkness
+  name_jp: The Chosen Darkness
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Random to Dark, Deal 105% damage
+  desc_jp: Change Random to Dark, Deal 105% damage
+  name_en: Dark Pillar
+  name_jp: Dark Pillar
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 120% damage (2 hits, 60% each)
+  desc_jp: Deal 120% damage (2 hits, 60% each)
+  name_en: Spirit Darkness
+  name_jp: Spirit Darkness
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 19
+  desc_jp: ''
+  name_en: HP <= 19
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: 'Show message: Doltos''s appearance is changing|Help has been summoned'
+  desc_jp: 'Show message: Doltos''s appearance is changing|Help has been summoned'
+  name_en: Spe Dun Dragon Dark Transformation
+  name_jp: Spe Dun Dragon Dark Transformation
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Blind random 8 orbs for 1 turns + Change Random to Dark
+  desc_jp: Blind random 8 orbs for 1 turns + Change Random to Dark
+  name_en: Swallowing Darkness + Dark Pillar
+  name_jp: Swallowing Darkness + Dark Pillar
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 19
+  desc_jp: ''
+  name_en: HP <= 19
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: 'Show message: Doltos''s appearance is changing|Help has been summoned'
+  desc_jp: 'Show message: Doltos''s appearance is changing|Help has been summoned'
+  name_en: Spe Dun Dragon Dark Transformation
+  name_jp: Spe Dun Dragon Dark Transformation
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 150% damage (2 hits, 75% each)
+  desc_jp: Deal 150% damage (2 hits, 75% each)
+  name_en: Shadow Wings
+  name_jp: Shadow Wings
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESDeathCry -> Spe Dun Dragon Dark Transformation
+# Condition: On death
+# Show message: Doltos's appearance is changing|Help has been summoned
+# [5] ESBranchFlag -> ESBranchFlag
+# branch
+# [6] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [7] ESBlind -> Call of Darkness
+# Condition: None
+# Blind all orbs on the board
+# [8] ESEndPath -> ESEndPath
+# end_turn
+# [9] ESBranchHP -> ESBranchHP
+# branch
+# [10] ESRandomSpawn -> The Chosen Darkness
+# Condition: 33% chance & when Fire, Water, Wood, Light, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 3 Dark orbs
+# [11] ESOrbChangeAttack -> Dark Pillar
+# Condition: 33% chance
+# Change Random to Dark
+# [12] ESAttackMultihit -> Spirit Darkness
+# Condition: 34% chance
+# Enemy action
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESBranchFlag -> ESBranchFlag
+# branch
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] SkillSet:
+# 	Condition: None
+# 	[0] ESBlindStickyRandom -> Swallowing Darkness
+# 	Blind random 8 orbs for 1 turns
+# 	[1] ESOrbChangeAttack -> Dark Pillar
+# 	Change Random to Dark
+# [17] ESEndPath -> ESEndPath
+# end_turn
+# [18] ESAttackMultihit -> Shadow Wings
+# Condition: None
+# Enemy action
+# [19] ESEndPath -> ESEndPath
+# end_turn

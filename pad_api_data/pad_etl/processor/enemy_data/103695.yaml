@@ -1,0 +1,157 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 103695
+monster_name_en: Alt. Awoken Oichi
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Balanced, Dragon by 50%
+  desc_jp: Reduce damage from Balanced, Dragon by 50%
+  name_en: Oichi Dragon Balanced Halved
+  name_jp: Oichi Dragon Balanced Halved
+  record_type_name: PASSIVE
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Balanced, Dragon by 50%
+  desc_jp: Reduce damage from Balanced, Dragon by 50%
+  name_en: Oichi Dragon Balanced Halved
+  name_jp: Oichi Dragon Balanced Halved
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Absorb combo <= 8 damage for 5 turns
+  desc_jp: Voids status ailments for 999 turns + Absorb combo <= 8 damage for 5 turns
+  name_en: Who are you? + I'll cherish this
+  name_jp: Who are you? + I'll cherish this
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  name_en: Uhuhuh
+  name_jp: Uhuhuh
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 2
+  desc_jp: ''
+  name_en: Turn 2
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  name_en: Uhuhuh
+  name_jp: Uhuhuh
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 3
+  desc_jp: ''
+  name_en: Turn 3
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  name_en: Uhuhuh
+  name_jp: Uhuhuh
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 4
+  desc_jp: ''
+  name_en: Turn 4
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  name_en: Uhuhuh
+  name_jp: Uhuhuh
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 5
+  desc_jp: ''
+  name_en: Turn 5
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Delay active skills by 99 turns
+  desc_jp: Delay active skills by 99 turns
+  name_en: I want you
+  name_jp: I want you
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 10000% damage
+  desc_jp: Deal 10000% damage
+  name_en: We're together forever
+  name_jp: We're together forever
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] SkillSet:
+# 	Condition: None
+# 	[0] ESStatusShield -> Who are you?
+# 	Voids status ailments for 999 turns
+# 	[1] ESAbsorbCombo -> I'll cherish this
+# 	Absorb combo <= 8 damage for 5 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchCounter -> ESBranchCounter
+# branch
+# [9] ESSetCounter -> ESSetCounter
+# set_counter
+# [10] ESGravity -> Uhuhuh
+# Condition: None
+# Player -99% HP
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESSkillDelay -> I want you
+# Condition: One-time use
+# Delay active skills by 99 turns
+# [13] ESAttackMultihit -> We're together forever
+# Condition: None
+# Enemy action
+# [14] ESEndPath -> ESEndPath
+# end_turn
+# [15] ESTypeResist -> Oichi Dragon Balanced Halved
+# Reduce damage from Balanced, Dragon by 50%

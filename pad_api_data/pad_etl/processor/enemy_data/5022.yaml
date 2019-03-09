@@ -1,0 +1,119 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 5022
+monster_name_en: Servant, True Assassin
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  name_en: Unleash me.
+  name_jp: Unleash me.
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Blind random 3~6 orbs for 1 turns, Deal 100% damage
+  desc_jp: Blind random 3~6 orbs for 1 turns, Deal 100% damage
+  name_en: Knives painted black
+  name_jp: Knives painted black
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 95% damage
+  desc_jp: Blind all orbs on the board, Deal 95% damage
+  name_en: If you don't move, it will swallow you.
+  name_jp: If you don't move, it will swallow you.
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 99
+  desc_jp: ''
+  name_en: HP <= 99
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 6 Poison orbs
+  desc_jp: Spawn random 6 Poison orbs
+  name_en: You saw my face, did you?
+  name_jp: You saw my face, did you?
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb combo <= 4 damage for 5 turns
+  desc_jp: Absorb combo <= 4 damage for 5 turns
+  name_en: Protection Against the Wind
+  name_jp: Protection Against the Wind
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 19
+  desc_jp: ''
+  name_en: HP <= 19
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Player -50% HP + Enemy action
+  desc_jp: Player -50% HP + Enemy action
+  name_en: Noble Phantasm... Zabaniya! + You... lose!
+  name_jp: Noble Phantasm... Zabaniya! + You... lose!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESGravity -> Unleash me.
+# Condition: One-time use
+# Player -99% HP
+# [5] ESBranchHP -> ESBranchHP
+# branch
+# [6] ESRandomSpawn -> You saw my face, did you?
+# Condition: One-time use & when Fire, Water, Wood, Light, Dark, Heal, Jammer, Mortal Poison orbs are on the board
+# Spawn random 6 Poison orbs
+# [7] ESBranchHP -> ESBranchHP
+# branch
+# [8] ESAbsorbCombo -> Protection Against the Wind
+# Condition: One-time use
+# Absorb combo <= 4 damage for 5 turns
+# [9] ESBranchHP -> ESBranchHP
+# branch
+# [10] ESBlindStickyRandom -> Knives painted black
+# Condition: 50% chance
+# Blind random 3~6 orbs for 1 turns
+# [11] ESBlind -> If you don't move, it will swallow you.
+# Condition: 50% chance
+# Blind all orbs on the board
+# [12] ESEndPath -> ESEndPath
+# end_turn
+# [13] SkillSet:
+# 	Condition: None
+# 	[0] ESGravity -> Noble Phantasm... Zabaniya!
+# 	Player -50% HP
+# 	[1] ESAttackMultihit -> You... lose!
+# 	Enemy action
+# [14] ESEndPath -> ESEndPath
+# end_turn

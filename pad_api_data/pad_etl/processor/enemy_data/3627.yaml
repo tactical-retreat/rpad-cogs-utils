@@ -1,0 +1,86 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3627
+monster_name_en: Great Holy Knight, Hendrickson
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Poison skyfall +15% for 5 turns
+  desc_jp: Poison skyfall +15% for 5 turns
+  name_en: Dark Snow
+  name_jp: Dark Snow
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 19
+  desc_jp: ''
+  name_en: HP <= 19
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing + Do nothing + Player -150% HP
+  desc_jp: Do nothing + Do nothing + Player -150% HP
+  name_en: Be consumed by the darkness... + That swallows even the void of night...
+    + Dead End
+  name_jp: Be consumed by the darkness... + That swallows even the void of night...
+    + Dead End
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESSkyfall -> Dark Snow
+# Condition: One-time use
+# Poison skyfall +15% for 5 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] ESAttackMultihit -> Dark Nebula
+# Condition: One-time use
+# Enemy action
+# [8] ESEndPath -> ESEndPath
+# end_turn
+# [9] ESBranchCard -> ESBranchCard
+# branch
+# [10] SkillSet:
+# 	Condition: None
+# 	[0] ESInactivity -> Be consumed by the darkness...
+# 	Do nothing
+# 	[1] ESInactivity -> That swallows even the void of night...
+# 	Do nothing
+# 	[2] ESGravity -> Dead End
+# 	Player -150% HP
+# [11] ESBranchFlag -> ESBranchFlag
+# branch
+# [12] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [13] SkillSet:
+# 	Condition: None
+# 	[0] ESInactivity -> You are a remarkable man...
+# 	Do nothing
+# 	[1] ESInactivity -> Be consumed by the darkness...
+# 	Do nothing
+# 	[2] ESInactivity -> That swallows even the void of night...
+# 	Do nothing
+# 	[3] ESGravity -> Dead End
+# 	Player -150% HP
+# [14] ESEndPath -> ESEndPath
+# end_turn

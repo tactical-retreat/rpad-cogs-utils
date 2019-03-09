@@ -1,0 +1,152 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4644
+monster_name_en: Gleaming Star Companion Dragon, Goteene
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Leader changes to random sub for 2 turns
+  desc_jp: Leader changes to random sub for 2 turns
+  name_en: Holy Judgment
+  name_jp: Holy Judgment
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: When 6 enemy remains
+  desc_jp: ''
+  name_en: When 6 enemy remains
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Fire, Water, Light, Heal, Deal 120% damage
+  desc_jp: Change all orbs to Fire, Water, Light, Heal, Deal 120% damage
+  name_en: Lightning Enclosure
+  name_jp: Lightning Enclosure
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Fire, Water, Light, Heal, Deal 120% damage
+  desc_jp: Change all orbs to Fire, Water, Light, Heal, Deal 120% damage
+  name_en: Lightning Enclosure
+  name_jp: Lightning Enclosure
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 14
+  desc_jp: ''
+  name_en: HP <= 14
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 180% damage (3 hits, 60% each)
+  desc_jp: Deal 180% damage (3 hits, 60% each)
+  name_en: Final Judgment
+  name_jp: Final Judgment
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESLeaderSwap -> Holy Judgment
+# Condition: None
+# Leader changes to random sub for 2 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchFlag -> ESBranchFlag
+# branch
+# [9] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [10] ESAttributeBlock -> Purple Exception
+# Condition: None
+# Unable to Dark orbs for 3 turns
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESBranchHP -> ESBranchHP
+# branch
+# [13] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
+# branch
+# [14] ESSetCounter -> ESSetCounter
+# set_counter
+# [15] ESBranchCounter -> ESBranchCounter
+# branch
+# [16] ESBranchHP -> ESBranchHP
+# branch
+# [17] ESOrbChangeAttack -> Flash Pillar
+# Condition: 33% chance
+# Change Random to Light
+# [18] ESRandomSpawn -> Subjective Heart
+# Condition: 33% chance & when Fire, Water, Wood, Light, Dark, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 1 Heal orbs
+# [19] ESAttackMultihit -> Judging Rush
+# Condition: 34% chance
+# Enemy action
+# [20] ESEndPath -> ESEndPath
+# end_turn
+# [21] ESBranchFlag -> ESBranchFlag
+# branch
+# [22] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [23] SkillSet:
+# 	Condition: None
+# 	[0] ESBindSkill -> Trial of Judgment
+# 	Bind active skills for 1 turns
+# 	[1] ESAttackUp -> Conviction
+# 	Increase damage to 200% for the next 99 turns
+# [24] ESEndPath -> ESEndPath
+# end_turn
+# [25] ESOrbChangeAttack -> Trial Sin
+# Condition: One-time use
+# Change Random to Jammer
+# [26] ESOrbChangeAttack -> Flash Pillar
+# Condition: 33% chance
+# Change Random to Light
+# [27] ESRandomSpawn -> Subjective Heart
+# Condition: 33% chance & when Fire, Water, Wood, Light, Dark, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 1 Heal orbs
+# [28] ESAttackMultihit -> Judging Rush
+# Condition: 34% chance
+# Enemy action
+# [29] ESEndPath -> ESEndPath
+# end_turn
+# [30] ESAttackMultihit -> Final Judgment
+# Condition: None
+# Enemy action
+# [31] ESEndPath -> ESEndPath
+# end_turn
+# [32] ESSetCounter -> ESSetCounter
+# set_counter
+# [33] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
+# branch
+# [34] ESBoardChangeAttackBits -> Lightning Enclosure
+# Condition: None
+# Change all orbs to Fire, Water, Light, Heal
+# [35] ESOrbSealRow -> Liberty Shackles
+# Condition: None
+# Seal 5th row for 2 turns
+# [36] ESEndPath -> ESEndPath
+# end_turn

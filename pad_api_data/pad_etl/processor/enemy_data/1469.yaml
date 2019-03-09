@@ -1,0 +1,69 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1469
+monster_name_en: Voice of God, Metatron TAMADRA
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Player recover 100% hp
+  desc_jp: Player recover 100% hp
+  name_en: Heal-TAMA!
+  name_jp: Heal-TAMA!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 1 random for 2 turns, Deal 100% damage
+  desc_jp: Bind 1 random for 2 turns, Deal 100% damage
+  name_en: Quick-TAMA!
+  name_jp: Quick-TAMA!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 1 random cards for 3 turns
+  desc_jp: Bind 1 random cards for 3 turns
+  name_en: Pure Smile
+  name_jp: Pure Smile
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESRecoverPlayer -> Heal-TAMA!
+# Condition: None
+# Player recover 100% hp
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBindAttack -> Quick-TAMA!
+# Condition: One-time use
+# Bind 1 random for 2 turns
+# [7] ESBindRandom -> Pure Smile
+# Condition: None
+# Bind 1 random cards for 3 turns

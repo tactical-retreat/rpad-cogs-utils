@@ -1,0 +1,95 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4606
+monster_name_en: Shivan Dragon
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  name_en: Firebreathing
+  name_jp: Firebreathing
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Fire to Jammer, Deal 300% damage
+  desc_jp: Change Fire to Jammer, Deal 300% damage
+  name_en: Wildfire
+  name_jp: Wildfire
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESAttackMultihit -> Firebreathing
+# Condition: None
+# Enemy action
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESSetCounter -> ESSetCounter
+# set_counter
+# [9] ESBranchCounter -> ESBranchCounter
+# branch
+# [10] ESBranchCounter -> ESBranchCounter
+# branch
+# [11] ESBranchCounter -> ESBranchCounter
+# branch
+# [12] ESBranchCounter -> ESBranchCounter
+# branch
+# [13] ESBranchCounter -> ESBranchCounter
+# branch
+# [14] ESRandomSpawn -> Cinder Stench
+# Condition: One-time use & when Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 1 Fire orbs
+# [15] ESRandomSpawn -> Cinder Stench
+# Condition: One-time use & when Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 2 Fire orbs
+# [16] ESRandomSpawn -> Cinder Stench
+# Condition: One-time use & when Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 3 Fire orbs
+# [17] ESRandomSpawn -> Cinder Stench
+# Condition: One-time use & when Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 4 Fire orbs
+# [18] ESOrbChangeAttack -> Wildfire
+# Condition: None
+# Change Fire to Jammer
+# [19] ESRandomSpawn -> Cinder Stench
+# Condition: When water, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board
+# Spawn random 5 Fire orbs
+# [20] ESEndPath -> ESEndPath
+# end_turn
+# [21] ESAttackMultihit -> Shivan Fire
+# Condition: None
+# Enemy action
+# [22] ESAttackMultihit -> Shivan Fire
+# Condition: None
+# Enemy action
+# [23] ESEndPath -> ESEndPath
+# end_turn

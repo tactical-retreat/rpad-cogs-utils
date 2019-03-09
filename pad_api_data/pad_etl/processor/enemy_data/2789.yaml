@@ -1,0 +1,127 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2789
+monster_name_en: Gabranth
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Do nothing + Reduce damage from all sources by 50% for 3 turns
+  desc_jp: Do nothing + Reduce damage from all sources by 50% for 3 turns
+  name_en: 'Without power what future
+
+    can you claim? + Protect'
+  name_jp: 'Without power what future
+
+    can you claim? + Protect'
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 69
+  desc_jp: ''
+  name_en: HP <= 69
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing + Voids status ailments for 999 turns
+  desc_jp: Do nothing + Voids status ailments for 999 turns
+  name_en: Preen and strut as you like! + Anti-Magick
+  name_jp: Preen and strut as you like! + Anti-Magick
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 69
+  desc_jp: ''
+  name_en: HP <= 69
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
+    orbs, Deal 130% damage
+  desc_jp: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
+    orbs, Deal 130% damage
+  name_en: Judgment
+  name_jp: Judgment
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change 1st, 5th row to Dark orbs, Deal 180% damage
+  desc_jp: Change 1st, 5th row to Dark orbs, Deal 180% damage
+  name_en: Execution
+  name_jp: Execution
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] SkillSet:
+# 	Condition: None
+# 	[0] ESInactivity -> Without power what future
+# can you claim?
+# 	Do nothing
+# 	[1] ESDamageShield -> Protect
+# 	Reduce damage from all sources by 50% for 3 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESBranchFlag -> ESBranchFlag
+# branch
+# [10] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [11] ESRandomSpawn -> Kick
+# Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board
+# Spawn random 1 Jammer orbs
+# [12] ESBranchFlag -> ESBranchFlag
+# branch
+# [13] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [14] ESRandomSpawn -> Lunge
+# Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board
+# Spawn random 5 Jammer orbs
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] ESOrbLock -> Sentence
+# Condition: None
+# Lock 6 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [17] ESBranchFlag -> ESBranchFlag
+# branch
+# [18] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [19] SkillSet:
+# 	Condition: None
+# 	[0] ESInactivity -> Preen and strut as you like!
+# 	Do nothing
+# 	[1] ESStatusShield -> Anti-Magick
+# 	Voids status ailments for 999 turns
+# [20] ESOrbLock -> Judgment
+# Condition: 20% chance
+# Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [21] ESRowSpawnMulti -> Execution
+# Condition: None
+# Change 1st, 5th row to Dark orbs
+# [22] ESEndPath -> ESEndPath
+# end_turn
+# [23] SkillSet:
+# 	Condition: On death
+# 	[0] ESInactivity -> You, too, would leave
+# your debts unpaid?
+# 	Do nothing

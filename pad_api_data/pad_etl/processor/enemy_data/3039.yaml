@@ -1,0 +1,225 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3039
+monster_name_en: Demon Who Commands Flames, Shishio Makoto
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Do nothing + Do nothing
+  desc_jp: Do nothing + Do nothing
+  name_en: Heh + How this brings me back...
+  name_jp: Heh + How this brings me back...
+  record_type_name: PREEMPT
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 7 turns + Spawn random 5 Wood orbs
+  desc_jp: Voids status ailments for 7 turns + Spawn random 5 Wood orbs
+  name_en: Heh + How this brings me back...
+  name_jp: Heh + How this brings me back...
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Player -70% HP
+  desc_jp: Player -70% HP
+  name_en: Hyaah!
+  name_jp: Hyaah!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change 3rd column to Fire orbs, Deal 130% damage
+  desc_jp: Change 3rd column to Fire orbs, Deal 130% damage
+  name_en: Shaaah!!
+  name_jp: Shaaah!!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 3 random subs for 1 turns
+  desc_jp: Bind 3 random subs for 1 turns
+  name_en: Final round. Here comes.
+  name_jp: Final round. Here comes.
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Fire + Enemy action
+  desc_jp: Change all orbs to Fire + Enemy action
+  name_en: Hyaaah!! + The Final Secret Sword, "Kaguzuchi"!!
+  name_jp: Hyaaah!! + The Final Secret Sword, "Kaguzuchi"!!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Player -70% HP
+  desc_jp: Player -70% HP
+  name_en: Hyaah!
+  name_jp: Hyaah!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 360% damage (3 hits, 120% each)
+  desc_jp: Deal 360% damage (3 hits, 120% each)
+  name_en: Hyaaah!!
+  name_jp: Hyaaah!!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 65
+  desc_jp: ''
+  name_en: HP <= 65
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 50% hp + Reduce damage from all sources by 50% for 2 turns
+  desc_jp: Enemy recover 50% hp + Reduce damage from all sources by 50% for 2 turns
+  name_en: Is that... + ..all you have?!
+  name_jp: Is that... + ..all you have?!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESBranchLevel -> ESBranchLevel
+# branch
+# [5] ESBranchCard -> ESBranchCard
+# branch
+# [6] SkillSet:
+# 	Condition: None
+# 	[0] ESInactivity -> Heh
+# 	Do nothing
+# 	[1] ESInactivity -> How this brings me back...
+# 	Do nothing
+# [7] SkillSet:
+# 	Condition: None
+# 	[0] ESInactivity -> Heh
+# 	Do nothing
+# 	[1] ESInactivity -> Ah, how this brings me back...
+# 	Do nothing
+# [8] ESBranchCard -> ESBranchCard
+# branch
+# [9] SkillSet:
+# 	Condition: None
+# 	[0] ESStatusShield -> Heh
+# 	Voids status ailments for 7 turns
+# 	[1] ESRandomSpawn -> How this brings me back...
+# 	Spawn random 5 Wood orbs
+# [10] SkillSet:
+# 	Condition: None
+# 	[0] ESStatusShield -> Heh
+# 	Voids status ailments for 7 turns
+# 	[1] ESRandomSpawn -> Ah, how this brings me back...
+# 	Spawn random 5 Wood orbs
+# [11] ESBranchLevel -> ESBranchLevel
+# branch
+# [12] ESEndPath -> ESEndPath
+# end_turn
+# [13] ESBranchHP -> ESBranchHP
+# branch
+# [14] SkillSet:
+# 	Condition: When < 65% hp , one-time use
+# 	[0] ESRecoverEnemy -> Is that...
+# 	Enemy recover 50% hp
+# 	[1] ESDamageShield -> ..all you have?!
+# 	Reduce damage from all sources by 50% for 2 turns
+# [15] ESBranchHP -> ESBranchHP
+# branch
+# [16] ESBranchFlag -> ESBranchFlag
+# branch
+# [17] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [18] ESGravity -> Hyaah!
+# Condition: 40% chance
+# Player -70% HP
+# [19] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [20] ESColumnSpawnMulti -> Shaaah!!
+# Condition: None
+# Change 3rd column to Fire orbs
+# [21] ESBranchFlag -> ESBranchFlag
+# branch
+# [22] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [23] ESBindRandomSub -> Final round. Here comes.
+# Condition: One-time use
+# Bind 3 random subs for 1 turns
+# [24] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESBoardChange -> Hyaaah!!
+# 	Change all orbs to Fire
+# 	[1] ESAttackMultihit -> The Final Secret Sword, "Kaguzuchi"!!
+# 	Enemy action
+# [25] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESBoardChange -> Hyaaah!!
+# 	Change all orbs to Fire
+# 	[1] ESAttackMultihit -> The Final Secret Sword, "Kaguzuchi"!!
+# 	Enemy action
+# [26] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESBoardChange -> Hyaaah!!
+# 	Change all orbs to Fire
+# 	[1] ESAttackMultihit -> The Final Secret Sword, "Kaguzuchi"!!
+# 	Enemy action
+# [27] ESBranchFlag -> ESBranchFlag
+# branch
+# [28] ESAttackMultihit -> Hyaaah!!
+# Condition: None
+# Enemy action
+# [29] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [30] ESGravity -> Hyaah!
+# Condition: None
+# Player -70% HP
+# [31] SkillSet:
+# 	Condition: On death
+# 	[0] ESInactivity -> Nyah... Nyah, ha, hah... Nyahh,
+# hah, hah, hah!!
+# 	Do nothing
+# [32] ESInactivity -> Hold
+# Condition: None
+# Do nothing

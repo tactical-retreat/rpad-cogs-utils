@@ -1,0 +1,44 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 100195
+monster_name_en: Alt. Taur Devil
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Spawn random 1 Poison orbs, Deal 10% damage
+  desc_jp: Spawn random 1 Poison orbs, Deal 10% damage
+  name_en: Tiny Poison
+  name_jp: Tiny Poison
+  record_type_name: PREEMPT
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESRandomSpawn -> Tiny Poison
+# Condition: When fire, water, wood, light, dark, heal, jammer, mortal poison orbs are on the board
+# Spawn random 1 Poison orbs
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESAttackUp -> Anger
+# Condition: None
+# Increase damage to 130% for the next 3 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn

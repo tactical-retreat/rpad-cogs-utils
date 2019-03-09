@@ -1,0 +1,41 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 321
+monster_name_en: Keeper of Rainbow
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 2
+############################################################
+!SkillRecordListing
+level: 2
+overrides: []
+records:
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 240% damage (3 hits, 80% each)
+  desc_jp: Deal 240% damage (3 hits, 80% each)
+  name_en: Lance Attacks
+  name_jp: Lance Attacks
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESAttackMultihit -> Lance Attacks
+# Condition: None
+# Enemy action

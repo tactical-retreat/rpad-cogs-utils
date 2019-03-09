@@ -1,0 +1,43 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 839
+monster_name_en: Jewel of Toyama Bay, Velvet Shrimp
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 800% damage (4 hits, 200% each)
+  desc_jp: Deal 800% damage (4 hits, 200% each)
+  name_en: Fry to a Crisp
+  name_jp: Fry to a Crisp
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESNone -> ESNone
+# None
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESAttackMultihit -> Fry to a Crisp
+# Condition: None
+# Enemy action

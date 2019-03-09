@@ -1,0 +1,155 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3074
+monster_name_en: Awoken Machine Athena
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Delay active skills by 4~6 turns + Voids status ailments for 999 turns
+    + Absorb damage >= 4000000 damage for 99 turns
+  desc_jp: Delay active skills by 4~6 turns + Voids status ailments for 999 turns
+    + Absorb damage >= 4000000 damage for 99 turns
+  name_en: Why do you fight? + I won't go easy on you + Iron DEF of Aegis
+  name_jp: Why do you fight? + I won't go easy on you + Iron DEF of Aegis
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 2nd column to Wood orbs, 5th column to Light orbs, Deal 380% damage
+  desc_jp: Change 2nd column to Wood orbs, 5th column to Light orbs, Deal 380% damage
+  name_en: C-Shining Spear
+  name_jp: C-Shining Spear
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change own attribute to random one of Wood, Light, Deal 380% damage
+  desc_jp: Change own attribute to random one of Wood, Light, Deal 380% damage
+  name_en: EB & Self Convert
+  name_jp: EB & Self Convert
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 99% for 2 turns
+  desc_jp: Reduce damage from all sources by 99% for 2 turns
+  name_en: AS-Complete Protection
+  name_jp: AS-Complete Protection
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 1200% damage (6 hits, 200% each)
+  desc_jp: Deal 1200% damage (6 hits, 200% each)
+  name_en: Storm Punisher FPE
+  name_jp: Storm Punisher FPE
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 19
+  desc_jp: ''
+  name_en: HP <= 19
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 50% hp
+  desc_jp: Enemy recover 50% hp
+  name_en: AS-Overhaul
+  name_jp: AS-Overhaul
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 19
+  desc_jp: ''
+  name_en: HP <= 19
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 10000% damage (10 hits, 1000% each)
+  desc_jp: Deal 10000% damage (10 hits, 1000% each)
+  name_en: Starburst SSE
+  name_jp: Starburst SSE
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESSkillDelay -> Why do you fight?
+# 	Delay active skills by 4~6 turns
+# 	[1] ESStatusShield -> I won't go easy on you
+# 	Voids status ailments for 999 turns
+# 	[2] ESAbsorbThreshold -> Iron DEF of Aegis
+# 	Absorb damage >= 4000000 damage for 99 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] ESBranchHP -> ESBranchHP
+# branch
+# [8] ESGravity -> LB-Siculus Strike
+# Condition: One-time use
+# Player -150% HP
+# [9] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESBlindStickyFixed -> Color Delete
+# 	Blind orbs in specific positions for 3 turns
+# 	[1] ESBindAttack -> CFM-Pulse
+# 	Bind 1 random for 3 turns
+# [10] ESColumnSpawnMulti -> C-Shining Spear
+# Condition: 50% chance
+# Change 2nd column to Wood orbs, 5th column to Light orbs
+# [11] ESChangeAttribute -> EB & Self Convert
+# Condition: None
+# Change own attribute to random one of Wood, Light
+# [12] ESBranchFlag -> ESBranchFlag
+# branch
+# [13] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [14] ESDamageShield -> AS-Complete Protection
+# Condition: None
+# Reduce damage from all sources by 99% for 2 turns
+# [15] ESBranchFlag -> ESBranchFlag
+# branch
+# [16] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [17] ESAttackMultihit -> Storm Punisher FPE
+# Condition: None
+# Enemy action
+# [18] ESBranchFlag -> ESBranchFlag
+# branch
+# [19] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [20] ESRecoverEnemy -> AS-Overhaul
+# Condition: None
+# Enemy recover 50% hp
+# [21] ESAttackMultihit -> Starburst SSE
+# Condition: None
+# Enemy action

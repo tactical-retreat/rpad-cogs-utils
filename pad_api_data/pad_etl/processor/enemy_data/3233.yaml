@@ -1,0 +1,153 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3233
+monster_name_en: Morning Sun Dragon Caller, Kanna
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Absorb damage >= 6000000 damage for
+    999 turns
+  desc_jp: Voids status ailments for 999 turns + Absorb damage >= 6000000 damage for
+    999 turns
+  name_en: Barrier Charm + Heavenly Mirror Scales
+  name_jp: Barrier Charm + Heavenly Mirror Scales
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 10
+  desc_jp: ''
+  name_en: HP <= 10
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind awoken skills for 1 turns + Change all orbs to Light
+  desc_jp: Bind awoken skills for 1 turns + Change all orbs to Light
+  name_en: Light Mist + Light
+  name_jp: Light Mist + Light
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESStatusShield -> Barrier Charm
+# 	Voids status ailments for 999 turns
+# 	[1] ESAbsorbThreshold -> Heavenly Mirror Scales
+# 	Absorb damage >= 6000000 damage for 999 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] SkillSet:
+# 	Condition: When < 10% hp
+# 	[0] ESBindAwoken -> Light Mist
+# 	Bind awoken skills for 1 turns
+# 	[1] ESBoardChangeAttackBits -> Light
+# 	Change all orbs to Light
+# [7] ESBranchFlag -> ESBranchFlag
+# branch
+# [8] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [9] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESAbsorbAttribute -> Thousand-Seal Prison
+# 	Absorb Dark damage for 2 turns
+# 	[1] ESBindAttack -> Silk Chains
+# 	Bind 1 random for 2 turns
+# [10] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESAbsorbAttribute -> Thousand-Seal Prison
+# 	Absorb Light damage for 2 turns
+# 	[1] ESBindAttack -> Silk Chains
+# 	Bind 1 random for 2 turns
+# [11] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESAbsorbAttribute -> Thousand-Seal Prison
+# 	Absorb Wood damage for 2 turns
+# 	[1] ESBindAttack -> Silk Chains
+# 	Bind 1 random for 2 turns
+# [12] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESAbsorbAttribute -> Thousand-Seal Prison
+# 	Absorb Water damage for 2 turns
+# 	[1] ESBindAttack -> Silk Chains
+# 	Bind 1 random for 2 turns
+# [13] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESAbsorbAttribute -> Thousand-Seal Prison
+# 	Absorb Fire damage for 2 turns
+# 	[1] ESBindAttack -> Silk Chains
+# 	Bind 1 random for 2 turns
+# [14] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESDebuffRCV -> Disturbed Forest
+# 	Rcv 50% for 2 turns
+# 	[1] ESBindAttack -> Silk Chains
+# 	Bind 1 random for 2 turns
+# [15] ESEndPath -> ESEndPath
+# end_turn
+# [16] ESBranchFlag -> ESBranchFlag
+# branch
+# [17] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [18] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESOrbLock -> Fire Beacon
+# 	Lock all Fire orbs
+# 	[1] ESAttackMultihit -> Glistening Sword
+# 	Enemy action
+# [19] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESOrbLock -> Water Beacon
+# 	Lock all Water orbs
+# 	[1] ESAttackMultihit -> Glistening Sword
+# 	Enemy action
+# [20] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESOrbLock -> Wood Beacon
+# 	Lock all Wood orbs
+# 	[1] ESAttackMultihit -> Glistening Sword
+# 	Enemy action
+# [21] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESOrbLock -> Light Beacon
+# 	Lock all Light orbs
+# 	[1] ESAttackMultihit -> Glistening Sword
+# 	Enemy action
+# [22] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESOrbLock -> Dark Beacon
+# 	Lock all Dark orbs
+# 	[1] ESAttackMultihit -> Glistening Sword
+# 	Enemy action
+# [23] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESRandomSpawn -> Sky Dragon's Tears
+# 	Spawn random 3 Heal orbs
+# 	[1] ESGravity -> Vulnerable Scent
+# 	Player -99% HP
+# [24] ESEndPath -> ESEndPath
+# end_turn
+# [25] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [26] ESBlind -> Lightraider Amulet
+# Condition: None
+# Blind all orbs on the board
+# [27] ESEndPath -> ESEndPath
+# end_turn

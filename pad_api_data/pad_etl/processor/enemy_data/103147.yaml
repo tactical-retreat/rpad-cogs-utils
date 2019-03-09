@@ -1,0 +1,213 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 103147
+monster_name_en: God of Intelligence, Kinnikuman Super Phoenix
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Leader changes to random sub for
+    2 turns
+  desc_jp: Voids status ailments for 999 turns + Leader changes to random sub for
+    2 turns
+  name_en: Watch and learn! + Psycho Phoenix Wave
+  name_jp: Watch and learn! + Psycho Phoenix Wave
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Light, Deal 100% damage
+  desc_jp: Change Random to Light, Deal 100% damage
+  name_en: Face Flash
+  name_jp: Face Flash
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Random to Light, Deal 100% damage
+  desc_jp: Change Random to Light, Deal 100% damage
+  name_en: Face Flash
+  name_jp: Face Flash
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Random to Light, Deal 100% damage
+  desc_jp: Change Random to Light, Deal 100% damage
+  name_en: Face Flash
+  name_jp: Face Flash
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 89
+  desc_jp: ''
+  name_en: HP <= 89
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 3 random for 1 turns, Deal 100% damage
+  desc_jp: Bind 3 random for 1 turns, Deal 100% damage
+  name_en: Phoenix Stretch
+  name_jp: Phoenix Stretch
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 69
+  desc_jp: ''
+  name_en: HP <= 69
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 3rd row to Fire orbs, Deal 150% damage
+  desc_jp: Change 3rd row to Fire orbs, Deal 150% damage
+  name_en: Muscle Inferno
+  name_jp: Muscle Inferno
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Delay active skills by 2 turns, Deal 80% damage
+  desc_jp: Delay active skills by 2 turns, Deal 80% damage
+  name_en: Pendulum Backbreaker
+  name_jp: Pendulum Backbreaker
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 90
+  desc_jp: ''
+  name_en: HP <= 90
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Void damage >= 5000000 for 1 turns
+  desc_jp: Void damage >= 5000000 for 1 turns
+  name_en: God of Flight's Power
+  name_jp: God of Flight's Power
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 70
+  desc_jp: ''
+  name_en: HP <= 70
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb combo <= 6 damage for 1 turns
+  desc_jp: Absorb combo <= 6 damage for 1 turns
+  name_en: God of Technique's Power
+  name_jp: God of Technique's Power
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 30
+  desc_jp: ''
+  name_en: HP <= 30
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 1 both leaders for 1 turns
+  desc_jp: Bind 1 both leaders for 1 turns
+  name_en: God of Brutality's Power
+  name_jp: God of Brutality's Power
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 10
+  desc_jp: ''
+  name_en: HP <= 10
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 360% damage (6 hits, 60% each)
+  desc_jp: Deal 360% damage (6 hits, 60% each)
+  name_en: Muscle Revenger
+  name_jp: Muscle Revenger
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] SkillSet:
+# 	Condition: None
+# 	[0] ESStatusShield -> Watch and learn!
+# 	Voids status ailments for 999 turns
+# 	[1] ESLeaderSwap -> Psycho Phoenix Wave
+# 	Leader changes to random sub for 2 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESAttackMultihit -> Muscle Revenger
+# Condition: When < 10% hp
+# Enemy action
+# [9] ESBranchFlag -> ESBranchFlag
+# branch
+# [10] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [11] ESVoidShield -> God of Flight's Power
+# Condition: When < 90% hp , one-time use
+# Void damage >= 5000000 for 1 turns
+# [12] ESVoidShield -> God of Flight's Power
+# Condition: When < 90% hp , one-time use
+# Void damage >= 5000000 for 1 turns
+# [13] ESAbsorbCombo -> God of Technique's Power
+# Condition: When < 70% hp , one-time use
+# Absorb combo <= 6 damage for 1 turns
+# [14] ESAttackUp -> God of Brute Strength's Power
+# Condition: When < 50% hp , one-time use
+# Increase damage to 200% for the next 1 turns
+# [15] ESBindTarget -> God of Brutality's Power
+# Condition: When < 30% hp , one-time use
+# Bind 1 both leaders for 1 turns
+# [16] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [17] ESBranchCard -> ESBranchCard
+# branch
+# [18] ESOrbChangeAttack -> Face Flash
+# Condition: 20% chance
+# Change Random to Light
+# [19] ESOrbChangeAttack -> Face Flash
+# Condition: 50% chance
+# Change Random to Light
+# [20] ESOrbChangeAttack -> Face Flash
+# Condition: None
+# Change Random to Light
+# [21] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [22] ESBindAttack -> Phoenix Stretch
+# Condition: One-time use
+# Bind 3 random for 1 turns
+# [23] ESRowSpawnMulti -> Muscle Inferno
+# Condition: One-time use
+# Change 3rd row to Fire orbs
+# [24] ESSkillDelay -> Pendulum Backbreaker
+# Condition: One-time use
+# Delay active skills by 2 turns
+# [25] ESBindSkill -> Choujin Raging Ox Execution
+# Condition: One-time use
+# Bind active skills for 3 turns
+# [26] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESInactivity -> Yo, Kinnikuman!
+# 	Do nothing
+# 	[1] ESOrbChangeAttack -> Face Flash
+# 	Change Random to Light
+# [27] ESBranchFlag -> ESBranchFlag
+# branch

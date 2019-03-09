@@ -1,0 +1,104 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4870
+monster_name_en: Klein
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  name_en: Could you give me some tips?
+  name_jp: Could you give me some tips?
+  record_type_name: PREEMPT
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Change all orbs to Fire, Water, Wood, Light, Dark, Heal
+  desc_jp: Change all orbs to Fire, Water, Wood, Light, Dark, Heal
+  name_en: Could you give me some tips?
+  name_jp: Could you give me some tips?
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 3rd row to Fire orbs, Deal 100% damage
+  desc_jp: Change 3rd row to Fire orbs, Deal 100% damage
+  name_en: Hiyaaa!
+  name_jp: Hiyaaa!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Spawn random 4 Jammer orbs, Deal 90% damage
+  desc_jp: Spawn random 4 Jammer orbs, Deal 90% damage
+  name_en: Huaaa!
+  name_jp: Huaaa!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 110% damage
+  desc_jp: Deal 110% damage
+  name_en: Ahh ghaaa!
+  name_jp: Ahh ghaaa!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESInactivity -> Could you give me some tips?
+# Condition: One-time use
+# Do nothing
+# [4] ESEndPath -> ESEndPath
+# end_turn
+# [5] ESBoardChange -> Could you give me some tips?
+# Condition: One-time use
+# Change all orbs to Fire, Water, Wood, Light, Dark, Heal
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] ESRowSpawnMulti -> Hiyaaa!
+# Condition: 33% chance
+# Change 3rd row to Fire orbs
+# [8] ESRandomSpawn -> Huaaa!
+# Condition: 33% chance & when Fire, Water, Wood, Light, Dark, Heal, Poison, Mortal Poison orbs are on the board
+# Spawn random 4 Jammer orbs
+# [9] ESAttackMultihit -> Ahh ghaaa!
+# Condition: 34% chance
+# Enemy action
+# [10] ESEndPath -> ESEndPath
+# end_turn
+# [11] ESBranchFlag -> ESBranchFlag
+# branch
+# [12] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [13] ESAttackUp -> Let's keep going!
+# Condition: None
+# Increase damage to 150% for the next 3 turns
+# [14] ESEndPath -> ESEndPath
+# end_turn
+# [15] SkillSet:
+# 	Condition: On death
+# 	[0] ESInactivity -> I'm really hungry. I have to log out.
+# 	Do nothing

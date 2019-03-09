@@ -1,0 +1,209 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3286
+monster_name_en: Soul Reaper's Disciple, Melissa
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Row of cloud appear for 1 turns at
+    1st column
+  desc_jp: Voids status ailments for 999 turns + Row of cloud appear for 1 turns at
+    1st column
+  name_en: 'Behold: the results of my training! + Go, my Demon Minions!'
+  name_jp: 'Behold: the results of my training! + Go, my Demon Minions!'
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 120% damage (2 hits, 60% each)
+  desc_jp: Deal 120% damage (2 hits, 60% each)
+  name_en: The Demon Minions are acting up
+  name_jp: The Demon Minions are acting up
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 2
+  desc_jp: ''
+  name_en: Turn 2
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 8 Jammer orbs, Deal 140% damage
+  desc_jp: Spawn random 8 Jammer orbs, Deal 140% damage
+  name_en: The Demon Minions are at it again
+  name_jp: The Demon Minions are at it again
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 100% damage
+  desc_jp: Blind all orbs on the board, Deal 100% damage
+  name_en: Darkness Mist
+  name_jp: Darkness Mist
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 110% damage
+  desc_jp: Deal 110% damage
+  name_en: Chaos Ray
+  name_jp: Chaos Ray
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Delay active skills by 2 turns
+  desc_jp: Delay active skills by 2 turns
+  name_en: 'Imma show you a big one!
+
+    Wait right there!'
+  name_jp: 'Imma show you a big one!
+
+    Wait right there!'
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing + Do nothing
+  desc_jp: Do nothing + Do nothing
+  name_en: Grr, my magic spell page got eaten... + 3
+  name_jp: Grr, my magic spell page got eaten... + 3
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 220% damage
+  desc_jp: Change Random to Jammer, Deal 220% damage
+  name_en: Hidden Dagger
+  name_jp: Hidden Dagger
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  name_en: "Oh, a magic spell page fell out\u266A"
+  name_jp: "Oh, a magic spell page fell out\u266A"
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 360% damage (6 hits, 60% each)
+  desc_jp: Deal 360% damage (6 hits, 60% each)
+  name_en: Endless Nightmare
+  name_jp: Endless Nightmare
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESBranchCard -> ESBranchCard
+# branch
+# [7] SkillSet:
+# 	Condition: None
+# 	[0] ESStatusShield -> Behold: the results of my training!
+# 	Voids status ailments for 999 turns
+# 	[1] ESCloud -> Go, my Demon Minions!
+# 	Row of cloud appear for 1 turns at 1st column
+# [8] SkillSet:
+# 	Condition: None
+# 	[0] ESStatusShield -> Master! Please duel with me!
+# 	Voids status ailments for 999 turns
+# 	[1] ESCloud -> Go, my Demon Minions!
+# 	Row of cloud appear for 1 turns at 1st column
+# [9] ESEndPath -> ESEndPath
+# end_turn
+# [10] ESBranchHP -> ESBranchHP
+# branch
+# [11] ESBranchFlag -> ESBranchFlag
+# branch
+# [12] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [13] ESAttackMultihit -> The Demon Minions are acting up
+# Condition: None
+# Enemy action
+# [14] ESBranchFlag -> ESBranchFlag
+# branch
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] ESRandomSpawn -> The Demon Minions are at it again
+# Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board
+# Spawn random 8 Jammer orbs
+# [17] ESEndPath -> ESEndPath
+# end_turn
+# [18] ESBlind -> Darkness Mist
+# Condition: 50% chance
+# Blind all orbs on the board
+# [19] ESAttackMultihit -> Chaos Ray
+# Condition: None
+# Enemy action
+# [20] ESEndPath -> ESEndPath
+# end_turn
+# [21] ESSkillDelay -> Imma show you a big one!
+# Wait right there!
+# Condition: One-time use
+# Delay active skills by 2 turns
+# [22] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESInactivity -> Grr, my magic spell page got eaten...
+# 	Do nothing
+# 	[1] ESInactivity -> 3
+# 	Do nothing
+# [23] ESOrbChangeAttack -> Hidden Dagger
+# Condition: One-time use
+# Change Random to Jammer
+# [24] ESInactivity -> Oh, a magic spell page fell out♪
+# Condition: One-time use
+# Do nothing
+# [25] ESAttackMultihit -> Endless Nightmare
+# Condition: None
+# Enemy action
+# [26] ESEndPath -> ESEndPath
+# end_turn

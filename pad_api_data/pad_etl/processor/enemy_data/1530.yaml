@@ -1,0 +1,54 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1530
+monster_name_en: High Dark Ninja
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Bind 1 random subs for 2~4 turns
+  desc_jp: Bind 1 random subs for 2~4 turns
+  name_en: Ninja Marionette
+  name_jp: Ninja Marionette
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 110% damage
+  desc_jp: Change Random to Jammer, Deal 110% damage
+  name_en: Karakuri Dance
+  name_jp: Karakuri Dance
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESBindRandomSub -> Ninja Marionette
+# Condition: None
+# Bind 1 random subs for 2~4 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESOrbChangeAttack -> Karakuri Dance
+# Condition: When < 50% hp
+# Change Random to Jammer

@@ -1,0 +1,142 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2014
+monster_name_en: Student Council President, Lucifer
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 4 turns
+  desc_jp: Voids status ailments for 4 turns
+  name_en: You're a freshman, huh?
+  name_jp: You're a freshman, huh?
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 1 random subs for 3 turns
+  desc_jp: Bind 1 random subs for 3 turns
+  name_en: Watch your back at THIS school
+  name_jp: Watch your back at THIS school
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 2
+  desc_jp: ''
+  name_en: Turn 2
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 3rd row to Light orbs, Deal 50% damage
+  desc_jp: Change 3rd row to Light orbs, Deal 50% damage
+  name_en: One Flash
+  name_jp: One Flash
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 3
+  desc_jp: ''
+  name_en: Turn 3
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 2nd, 4th row to Light orbs, Deal 100% damage
+  desc_jp: Change 2nd, 4th row to Light orbs, Deal 100% damage
+  name_en: Two Flashes
+  name_jp: Two Flashes
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 4
+  desc_jp: ''
+  name_en: Turn 4
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 1st, 3rd, 5th row to Light orbs, Deal 150% damage
+  desc_jp: Change 1st, 3rd, 5th row to Light orbs, Deal 150% damage
+  name_en: Three Flashes
+  name_jp: Three Flashes
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 500% damage
+  desc_jp: Deal 500% damage
+  name_en: The Morning Star
+  name_jp: The Morning Star
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESStatusShield -> You're a freshman, huh?
+# Condition: None
+# Voids status ailments for 4 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchFlag -> ESBranchFlag
+# branch
+# [9] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [10] ESBindRandomSub -> Watch your back at THIS school
+# Condition: None
+# Bind 1 random subs for 3 turns
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESBranchFlag -> ESBranchFlag
+# branch
+# [13] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [14] ESRowSpawnMulti -> One Flash
+# Condition: None
+# Change 3rd row to Light orbs
+# [15] ESEndPath -> ESEndPath
+# end_turn
+# [16] ESBranchFlag -> ESBranchFlag
+# branch
+# [17] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [18] ESRowSpawnMulti -> Two Flashes
+# Condition: None
+# Change 2nd, 4th row to Light orbs
+# [19] ESEndPath -> ESEndPath
+# end_turn
+# [20] ESBranchFlag -> ESBranchFlag
+# branch
+# [21] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [22] ESRowSpawnMulti -> Three Flashes
+# Condition: None
+# Change 1st, 3rd, 5th row to Light orbs
+# [23] ESEndPath -> ESEndPath
+# end_turn
+# [24] ESAttackMultihit -> The Morning Star
+# Condition: None
+# Enemy action

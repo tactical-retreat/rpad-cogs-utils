@@ -1,0 +1,51 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1096
+monster_name_en: Wind Twin Star Fafnir
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  name_en: '*Snores*'
+  name_jp: '*Snores*'
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage (2 hits, 50% each)
+  desc_jp: Deal 100% damage (2 hits, 50% each)
+  name_en: Dragon Star
+  name_jp: Dragon Star
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESInactivity -> *Snores*
+# Condition: One-time use
+# Do nothing
+# [3] ESAttackUp -> Awakening
+# Condition: None
+# Increase damage to 300% for the next 999 turns
+# [4] ESAttackMultihit -> Dragon Star
+# Condition: None
+# Enemy action

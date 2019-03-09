@@ -1,0 +1,96 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4213
+monster_name_en: Aurora Loving Goddess, Sakuya
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 3 turns
+  desc_jp: Voids status ailments for 3 turns
+  name_en: It's special, right?
+  name_jp: It's special, right?
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Delay active skills by 2 turns, Deal 120% damage
+  desc_jp: Delay active skills by 2 turns, Deal 120% damage
+  name_en: Don't rush!
+  name_jp: Don't rush!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb Light damage for 2 turns
+  desc_jp: Absorb Light damage for 2 turns
+  name_en: Kirin's Perception
+  name_jp: Kirin's Perception
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 10
+  desc_jp: ''
+  name_en: HP <= 10
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Fire, Water, Wood, Light, Deal 180% damage
+  desc_jp: Change all orbs to Fire, Water, Wood, Light, Deal 180% damage
+  name_en: Kirin Four Origin Perception
+  name_jp: Kirin Four Origin Perception
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESStatusShield -> It's special, right?
+# Condition: One-time use
+# Voids status ailments for 3 turns
+# [5] ESAbsorbAttribute -> Kirin's Perception
+# Condition: When < 50% hp , one-time use
+# Absorb Light damage for 2 turns
+# [6] ESBoardChangeAttackBits -> Kirin Four Origin Perception
+# Condition: When < 10% hp
+# Change all orbs to Fire, Water, Wood, Light
+# [7] ESBranchCounter -> ESBranchCounter
+# branch
+# [8] ESSetCounter -> ESSetCounter
+# set_counter
+# [9] ESBindAttack -> Chocolate Kiss
+# Condition: 15% chance
+# Bind 1 subs for 1 turns
+# [10] ESAttackMultihit -> Sweet Combo
+# Condition: None
+# Enemy action
+# [11] ESSetCounter -> ESSetCounter
+# set_counter
+# [12] ESSkillDelay -> Don't rush!
+# Condition: None
+# Delay active skills by 2 turns
+# [13] ESEndPath -> ESEndPath
+# end_turn

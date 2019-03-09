@@ -1,0 +1,221 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3953
+monster_name_en: Thundershock Tiger Dragon, Balidoora
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 5 turns + Absorb combo <= 5 damage for 5 turns
+  desc_jp: Voids status ailments for 5 turns + Absorb combo <= 5 damage for 5 turns
+  name_en: '...Hyah + Thunder Bound Chitin'
+  name_jp: '...Hyah + Thunder Bound Chitin'
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 2nd, 4th, 6th column to Jammer orbs, Deal 140% damage
+  desc_jp: Change 2nd, 4th, 6th column to Jammer orbs, Deal 140% damage
+  name_en: Tear to Pieces
+  name_jp: Tear to Pieces
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change 1st, 3rd, 5th row to Jammer orbs, Deal 140% damage
+  desc_jp: Change 1st, 3rd, 5th row to Jammer orbs, Deal 140% damage
+  name_en: Tear to Pieces
+  name_jp: Tear to Pieces
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Player -70% HP
+  desc_jp: Player -70% HP
+  name_en: Lightning Zen
+  name_jp: Lightning Zen
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  name_en: Disable Skill
+  name_jp: Disable Skill
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb Fire damage for 3 turns + Reduce damage from all sources by 50%
+    for 1 turns
+  desc_jp: Absorb Fire damage for 3 turns + Reduce damage from all sources by 50%
+    for 1 turns
+  name_en: Anti-Fire + Body hardened
+  name_jp: Anti-Fire + Body hardened
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Absorb Water damage for 3 turns + Reduce damage from all sources by 50%
+    for 1 turns
+  desc_jp: Absorb Water damage for 3 turns + Reduce damage from all sources by 50%
+    for 1 turns
+  name_en: Anti-Water + Body hardened
+  name_jp: Anti-Water + Body hardened
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Absorb Wood damage for 3 turns + Reduce damage from all sources by 50%
+    for 1 turns
+  desc_jp: Absorb Wood damage for 3 turns + Reduce damage from all sources by 50%
+    for 1 turns
+  name_en: Anti-Wind + Body hardened
+  name_jp: Anti-Wind + Body hardened
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Absorb Light damage for 3 turns + Reduce damage from all sources by 50%
+    for 1 turns
+  desc_jp: Absorb Light damage for 3 turns + Reduce damage from all sources by 50%
+    for 1 turns
+  name_en: Anti-Light + Body hardened
+  name_jp: Anti-Light + Body hardened
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Absorb Dark damage for 3 turns + Reduce damage from all sources by 50%
+    for 1 turns
+  desc_jp: Absorb Dark damage for 3 turns + Reduce damage from all sources by 50%
+    for 1 turns
+  name_en: Anti-Dark + Body hardened
+  name_jp: Anti-Dark + Body hardened
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 19
+  desc_jp: ''
+  name_en: HP <= 19
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 1000% damage (10 hits, 100% each)
+  desc_jp: Deal 1000% damage (10 hits, 100% each)
+  name_en: Hyahhhh!!!
+  name_jp: Hyahhhh!!!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 19
+  desc_jp: ''
+  name_en: HP <= 19
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 1000% for the next 999 turns
+  desc_jp: Increase damage to 1000% for the next 999 turns
+  name_en: Hyah!
+  name_jp: Hyah!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 150%~250% damage (3~5 hits, 50% each)
+  desc_jp: Deal 150%~250% damage (3~5 hits, 50% each)
+  name_en: Run Amok
+  name_jp: Run Amok
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] SkillSet:
+# 	Condition: None
+# 	[0] ESStatusShield -> ...Hyah
+# 	Voids status ailments for 5 turns
+# 	[1] ESAbsorbCombo -> Thunder Bound Chitin
+# 	Absorb combo <= 5 damage for 5 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESBranchHP -> ESBranchHP
+# branch
+# [10] ESAttackMultihit -> Run Amok
+# Condition: When < 50% hp
+# Enemy action
+# [11] ESColumnSpawnMulti -> Tear to Pieces
+# Condition: 25% chance
+# Change 2nd, 4th, 6th column to Jammer orbs
+# [12] ESRowSpawnMulti -> Tear to Pieces
+# Condition: 25% chance
+# Change 1st, 3rd, 5th row to Jammer orbs
+# [13] ESGravity -> Lightning Zen
+# Condition: 25% chance
+# Player -70% HP
+# [14] ESAttackSinglehit -> Disable Skill
+# Condition: 25% chance
+# Enemy action
+# [15] ESEndPath -> ESEndPath
+# end_turn
+# [16] ESBranchFlag -> ESBranchFlag
+# branch
+# [17] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [18] SkillSet:
+# 	Condition: 20% chance
+# 	[0] ESAbsorbAttribute -> Anti-Fire
+# 	Absorb Fire damage for 3 turns
+# 	[1] ESDamageShield -> Body hardened
+# 	Reduce damage from all sources by 50% for 1 turns
+# [19] SkillSet:
+# 	Condition: 20% chance
+# 	[0] ESAbsorbAttribute -> Anti-Water
+# 	Absorb Water damage for 3 turns
+# 	[1] ESDamageShield -> Body hardened
+# 	Reduce damage from all sources by 50% for 1 turns
+# [20] SkillSet:
+# 	Condition: 20% chance
+# 	[0] ESAbsorbAttribute -> Anti-Wind
+# 	Absorb Wood damage for 3 turns
+# 	[1] ESDamageShield -> Body hardened
+# 	Reduce damage from all sources by 50% for 1 turns
+# [21] SkillSet:
+# 	Condition: 20% chance
+# 	[0] ESAbsorbAttribute -> Anti-Light
+# 	Absorb Light damage for 3 turns
+# 	[1] ESDamageShield -> Body hardened
+# 	Reduce damage from all sources by 50% for 1 turns
+# [22] SkillSet:
+# 	Condition: 20% chance
+# 	[0] ESAbsorbAttribute -> Anti-Dark
+# 	Absorb Dark damage for 3 turns
+# 	[1] ESDamageShield -> Body hardened
+# 	Reduce damage from all sources by 50% for 1 turns
+# [23] ESEndPath -> ESEndPath
+# end_turn
+# [24] ESAttackUp -> Hyah!
+# Condition: None
+# Increase damage to 1000% for the next 999 turns
+# [25] ESAttackMultihit -> Hyahhhh!!!
+# Condition: None
+# Enemy action

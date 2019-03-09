@@ -1,0 +1,118 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2151
+monster_name_en: '***** (Duel Masters)'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Absorb combo <= 4 damage for 4 turns
+  desc_jp: Voids status ailments for 999 turns + Absorb combo <= 4 damage for 4 turns
+  name_en: '***** (Duel Master) + ***** (Duel Master)'
+  name_jp: '***** (Duel Master) + ***** (Duel Master)'
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage (2 hits, 50% each)
+  desc_jp: Deal 100% damage (2 hits, 50% each)
+  name_en: '***** (Duel Master)'
+  name_jp: '***** (Duel Master)'
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 64
+  desc_jp: ''
+  name_en: HP <= 64
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage (2 hits, 50% each)
+  desc_jp: Deal 100% damage (2 hits, 50% each)
+  name_en: '***** (Duel Master)'
+  name_jp: '***** (Duel Master)'
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 80
+  desc_jp: ''
+  name_en: HP <= 80
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 2 random for 2 turns, Deal 80% damage
+  desc_jp: Bind 2 random for 2 turns, Deal 80% damage
+  name_en: '***** (Duel Master)'
+  name_jp: '***** (Duel Master)'
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 65
+  desc_jp: ''
+  name_en: HP <= 65
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 5th row to Jammer orbs, Deal 140% damage
+  desc_jp: Change 5th row to Jammer orbs, Deal 140% damage
+  name_en: '***** (Duel Master)'
+  name_jp: '***** (Duel Master)'
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 30
+  desc_jp: ''
+  name_en: HP <= 30
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 160% damage (2 hits, 80% each)
+  desc_jp: Deal 160% damage (2 hits, 80% each)
+  name_en: '***** (Duel Master)'
+  name_jp: '***** (Duel Master)'
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] SkillSet:
+# 	Condition: None
+# 	[0] ESStatusShield -> ***** (Duel Master)
+# 	Voids status ailments for 999 turns
+# 	[1] ESAbsorbCombo -> ***** (Duel Master)
+# 	Absorb combo <= 4 damage for 4 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESAttackMultihit -> ***** (Duel Master)
+# Condition: When < 30% hp
+# Enemy action
+# [9] ESBindAttack -> ***** (Duel Master)
+# Condition: When < 80% hp , one-time use
+# Bind 2 random for 2 turns
+# [10] ESRowSpawnMulti -> ***** (Duel Master)
+# Condition: 50% chance when < 65% hp
+# Change 5th row to Jammer orbs
+# [11] ESAttackMultihit -> ***** (Duel Master)
+# Condition: None
+# Enemy action

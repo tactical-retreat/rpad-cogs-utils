@@ -1,0 +1,100 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 379
+monster_name_en: Dino Rider Drake
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Change Random 2 to Jammer
+  desc_jp: Change Random 2 to Jammer
+  name_en: Jurassic Howling
+  name_jp: Jurassic Howling
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Water to Fire, Deal 90% damage
+  desc_jp: Change Water to Fire, Deal 90% damage
+  name_en: Heat Axe
+  name_jp: Heat Axe
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  name_en: Ride On
+  name_jp: Ride On
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 150% damage
+  desc_jp: Deal 150% damage
+  name_en: Golden Hind
+  name_jp: Golden Hind
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESJammerChangeRandom -> Jurassic Howling
+# Condition: None
+# Change Random 2 to Jammer
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESOrbChangeAttack -> Heat Axe
+# Condition: None
+# Change Water to Fire
+# [10] ESNone -> ESNone
+# None
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESBranchFlag -> ESBranchFlag
+# branch
+# [13] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [14] ESInactivity -> Ride On
+# Condition: None
+# Do nothing
+# [15] ESEndPath -> ESEndPath
+# end_turn
+# [16] ESAttackMultihit -> Golden Hind
+# Condition: None
+# Enemy action

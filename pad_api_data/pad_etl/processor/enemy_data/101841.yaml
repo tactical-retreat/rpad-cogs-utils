@@ -1,0 +1,203 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 101841
+monster_name_en: Alt. Giant Arched Sea Dragon King, Volsung
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 54%
+  desc_jp: Survive attacks with 1 HP when HP > 54%
+  name_en: Vol Spirit
+  name_jp: Vol Spirit
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Reduce damage from Fire, Water by 50%
+  desc_jp: Reduce damage from Fire, Water by 50%
+  name_en: Volsung Fire Water Halved
+  name_jp: Volsung Fire Water Halved
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Fire, Water skyfall +20% for 10 turns + Locked Fire, Water skyfall +100%
+    for 10 turns
+  desc_jp: Fire, Water skyfall +20% for 10 turns + Locked Fire, Water skyfall +100%
+    for 10 turns
+  name_en: Aquaflame Evocation + Enchant Lock
+  name_jp: Aquaflame Evocation + Enchant Lock
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Delay active skills by 3 turns
+  desc_jp: Delay active skills by 3 turns
+  name_en: Power Suction
+  name_jp: Power Suction
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 89
+  desc_jp: ''
+  name_en: HP <= 89
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 150% damage (3 hits, 50% each)
+  desc_jp: Deal 150% damage (3 hits, 50% each)
+  name_en: Vortex Breath
+  name_jp: Vortex Breath
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change 3rd row to Water orbs, Deal 100% damage
+  desc_jp: Change 3rd row to Water orbs, Deal 100% damage
+  name_en: Press Wave
+  name_jp: Press Wave
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Player -99% HP + Bind active skills for 10 turns
+  desc_jp: Player -99% HP + Bind active skills for 10 turns
+  name_en: Flare Tick Explosion + Sea King's Eye
+  name_jp: Flare Tick Explosion + Sea King's Eye
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 65
+  desc_jp: ''
+  name_en: HP <= 65
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb Wood damage for 3 turns
+  desc_jp: Absorb Wood damage for 3 turns
+  name_en: Anti-Plant
+  name_jp: Anti-Plant
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 20
+  desc_jp: ''
+  name_en: HP <= 20
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 500% damage (5 hits, 100% each)
+  desc_jp: Deal 500% damage (5 hits, 100% each)
+  name_en: Flare Stream
+  name_jp: Flare Stream
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 1
+  desc_jp: ''
+  name_en: HP <= 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Delay active skills by 5 turns + Bind 6 random for 5 turns
+  desc_jp: Delay active skills by 5 turns + Bind 6 random for 5 turns
+  name_en: Wrath of Water + Swirl Cage
+  name_jp: Wrath of Water + Swirl Cage
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESSkyfall -> Aquaflame Evocation
+# 	Fire, Water skyfall +20% for 10 turns
+# 	[1] ESSkyfall -> Enchant Lock
+# 	Locked Fire, Water skyfall +100% for 10 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] SkillSet:
+# 	Condition: When < 1% hp
+# 	[0] ESSkillDelay -> Wrath of Water
+# 	Delay active skills by 5 turns
+# 	[1] ESBindAttack -> Swirl Cage
+# 	Bind 6 random for 5 turns
+# [7] ESAttackMultihit -> Flare Stream
+# Condition: When < 20% hp
+# Enemy action
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESBranchHP -> ESBranchHP
+# branch
+# [10] ESBranchHP -> ESBranchHP
+# branch
+# [11] ESAttackMultihit -> Vortex Breath
+# Condition: 50% chance
+# Enemy action
+# [12] ESRowSpawnMulti -> Press Wave
+# Condition: 50% chance
+# Change 3rd row to Water orbs
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESSkillDelay -> Power Suction
+# Condition: None
+# Delay active skills by 3 turns
+# [15] ESAttackMultihit -> Vortex Breath
+# Condition: None
+# Enemy action
+# [16] ESBranchFlag -> ESBranchFlag
+# branch
+# [17] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [18] ESBranchCard -> ESBranchCard
+# branch
+# [19] ESBranchCard -> ESBranchCard
+# branch
+# [20] SkillSet:
+# 	Condition: None
+# 	[0] ESGravity -> Flare Tick Explosion
+# 	Player -99% HP
+# 	[1] ESBindSkill -> Sea King's Eye
+# 	Bind active skills for 10 turns
+# [21] ESGravity -> Can you fight through my trial?
+# Condition: None
+# Player -99% HP
+# [22] ESBindSkill -> I don't need to fight with you.
+# Condition: None
+# Bind active skills for 10 turns
+# [23] ESBranchFlag -> ESBranchFlag
+# branch
+# [24] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [25] ESBranchHP -> ESBranchHP
+# branch
+# [26] ESAttackMultihit -> Vortex Breath
+# Condition: None
+# Enemy action
+# [27] ESAbsorbAttribute -> Anti-Plant
+# Condition: When < 65% hp
+# Absorb Wood damage for 3 turns
+# [28] ESEndPath -> ESEndPath
+# end_turn
+# [29] ESResolve -> Vol Spirit
+# Survive attacks with 1 HP when HP > 54%
+# [30] ESEndPath -> ESEndPath
+# end_turn
+# [31] ESAttributeResist -> Volsung Fire Water Halved
+# Reduce damage from Fire, Water by 50%

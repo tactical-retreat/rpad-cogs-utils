@@ -1,0 +1,71 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 100549
+monster_name_en: Alt. Low Wood Ninja
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Bind 1 random cards for 5 turns
+  desc_jp: Bind 1 random cards for 5 turns
+  name_en: Kusarigama
+  name_jp: Kusarigama
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 90% damage (3 hits, 30% each)
+  desc_jp: Deal 90% damage (3 hits, 30% each)
+  name_en: Shuriken Strike
+  name_jp: Shuriken Strike
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 1 random cards for 5 turns
+  desc_jp: Bind 1 random cards for 5 turns
+  name_en: Ninja Trick Shadow Tagging
+  name_jp: Ninja Trick Shadow Tagging
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESBindRandom -> Kusarigama
+# Condition: None
+# Bind 1 random cards for 5 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBindRandom -> Ninja Trick Shadow Tagging
+# Condition: When < 50% hp , one-time use
+# Bind 1 random cards for 5 turns
+# [7] ESAttackMultihit -> Shuriken Strike
+# Condition: None
+# Enemy action
+# [8] ESEndPath -> ESEndPath
+# end_turn

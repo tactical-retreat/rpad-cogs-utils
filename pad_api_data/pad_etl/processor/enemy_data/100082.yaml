@@ -1,0 +1,50 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 100082
+monster_name_en: Alt. Earth Golem
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Blind orbs in specific positions for 3 turns
+  desc_jp: Blind orbs in specific positions for 3 turns
+  name_en: Grip Fist
+  name_jp: Grip Fist
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 1 Wood orbs, Deal 400% damage
+  desc_jp: Spawn random 1 Wood orbs, Deal 400% damage
+  name_en: Rock Punch
+  name_jp: Rock Punch
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBlindStickyFixed -> Grip Fist
+# Condition: One-time use
+# Blind orbs in specific positions for 3 turns
+# [3] ESRandomSpawn -> Rock Punch
+# Condition: When fire, water, light, dark, heal, jammer, poison, mortal poison orbs are on the board
+# Spawn random 1 Wood orbs
+# [4] ESEndPath -> ESEndPath
+# end_turn

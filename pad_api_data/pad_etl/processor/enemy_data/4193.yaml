@@ -1,0 +1,86 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4193
+monster_name_en: Water Scroll Dragon
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Player -50% HP
+  desc_jp: Player -50% HP
+  name_en: Gyah!
+  name_jp: Gyah!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Seal 1st row for 2 turns
+  desc_jp: Seal 1st row for 2 turns
+  name_en: Gyoooun!
+  name_jp: Gyoooun!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 135% damage (3 hits, 45% each)
+  desc_jp: Deal 135% damage (3 hits, 45% each)
+  name_en: Grrroarrr!
+  name_jp: Grrroarrr!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Player -50% HP
+  desc_jp: Player -50% HP
+  name_en: Gyah!
+  name_jp: Gyah!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESBranchHP -> ESBranchHP
+# branch
+# [4] ESGravity -> Gyah!
+# Condition: 50% chance
+# Player -50% HP
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESOrbSealRow -> Gyoooun!
+# Condition: One-time use
+# Seal 1st row for 2 turns
+# [7] ESAttackMultihit -> Grrroarrr!
+# Condition: 50% chance
+# Enemy action
+# [8] ESGravity -> Gyah!
+# Condition: 50% chance
+# Player -50% HP
+# [9] ESEndPath -> ESEndPath
+# end_turn

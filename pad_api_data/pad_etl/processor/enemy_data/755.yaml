@@ -1,0 +1,86 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 755
+monster_name_en: Red Dragon God, Hino Kagutsuchi
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Player recover 100% hp
+  desc_jp: Player recover 100% hp
+  name_en: Dragon God's Tears
+  name_jp: Dragon God's Tears
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Fire, Deal 100% damage
+  desc_jp: Change Random to Fire, Deal 100% damage
+  name_en: Crimson Bolt
+  name_jp: Crimson Bolt
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind Devil cards for 3~5 turns
+  desc_jp: Bind Devil cards for 3~5 turns
+  name_en: Holy Binding Flame
+  name_jp: Holy Binding Flame
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 150% damage (3 hits, 50% each)
+  desc_jp: Deal 150% damage (3 hits, 50% each)
+  name_en: Dragon Sword Amenoohabari
+  name_jp: Dragon Sword Amenoohabari
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESRecoverPlayer -> Dragon God's Tears
+# Condition: None
+# Player recover 100% hp
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] ESBindTyping -> Holy Binding Flame
+# Condition: One-time use
+# Bind Devil cards for 3~5 turns
+# [8] ESAttackMultihit -> Dragon Sword Amenoohabari
+# Condition: None
+# Enemy action
+# [9] ESOrbChangeAttack -> Crimson Bolt
+# Condition: None
+# Change Random to Fire

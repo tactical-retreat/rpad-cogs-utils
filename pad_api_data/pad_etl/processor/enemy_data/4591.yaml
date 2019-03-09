@@ -1,0 +1,46 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4591
+monster_name_en: Celebrating Guest, Wind Imp
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Wood, Heal skyfall +20% for 5 turns
+  desc_jp: Wood, Heal skyfall +20% for 5 turns
+  name_en: Flower Shower
+  name_jp: Flower Shower
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESSkyfall -> Flower Shower
+# Condition: None
+# Wood, Heal skyfall +20% for 5 turns
+# [4] ESAttackMultihit -> Imp Punch
+# Condition: None
+# Enemy action
+# [5] ESEndPath -> ESEndPath
+# end_turn

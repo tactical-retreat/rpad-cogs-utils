@@ -1,0 +1,97 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2155
+monster_name_en: '***** (Duel Masters)'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids player buff effects
+  desc_jp: Voids player buff effects
+  name_en: '***** (Duel Master)'
+  name_jp: '***** (Duel Master)'
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 79
+  desc_jp: ''
+  name_en: HP <= 79
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids player buff effects
+  desc_jp: Voids player buff effects
+  name_en: '***** (Duel Master)'
+  name_jp: '***** (Duel Master)'
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids player buff effects
+  desc_jp: Voids player buff effects
+  name_en: '***** (Duel Master)'
+  name_jp: '***** (Duel Master)'
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 80
+  desc_jp: ''
+  name_en: HP <= 80
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 2nd, 3rd column to Water orbs, Deal 120% damage
+  desc_jp: Change 2nd, 3rd column to Water orbs, Deal 120% damage
+  name_en: '***** (Duel Master)'
+  name_jp: '***** (Duel Master)'
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Delay active skills by 1 turns
+  desc_jp: Delay active skills by 1 turns
+  name_en: '***** (Duel Master)'
+  name_jp: '***** (Duel Master)'
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESDispel -> ***** (Duel Master)
+# Condition: None
+# Voids player buff effects
+# [4] ESSkillDelay -> ***** (Duel Master)
+# Condition: When < 50% hp , one-time use
+# Delay active skills by 1 turns
+# [5] ESColumnSpawnMulti -> ***** (Duel Master)
+# Condition: 50% chance when < 80% hp
+# Change 2nd, 3rd column to Water orbs
+# [6] ESEndPath -> ESEndPath
+# end_turn

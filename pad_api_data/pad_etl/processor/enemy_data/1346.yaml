@@ -1,0 +1,142 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1346
+monster_name_en: Bountiful Arbor Goddess, Freyja
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Player recover 100% hp + Voids status ailments for 999 turns
+  desc_jp: Player recover 100% hp + Voids status ailments for 999 turns
+  name_en: Welcome! + I'll do my best, too!
+  name_jp: Welcome! + I'll do my best, too!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 3 Wood orbs, Deal 90% damage
+  desc_jp: Spawn random 3 Wood orbs, Deal 90% damage
+  name_en: Piggy Attack
+  name_jp: Piggy Attack
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 120% damage (2 hits, 60% each)
+  desc_jp: Deal 120% damage (2 hits, 60% each)
+  name_en: Kitty Attack
+  name_jp: Kitty Attack
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Spawn random 3 Light orbs, Deal 90% damage
+  desc_jp: Spawn random 3 Light orbs, Deal 90% damage
+  name_en: Hawk Attack
+  name_jp: Hawk Attack
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 6 random cards for 2~3 turns
+  desc_jp: Bind 6 random cards for 2~3 turns
+  name_en: Fertility Goddess's Embrace
+  name_jp: Fertility Goddess's Embrace
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 19
+  desc_jp: ''
+  name_en: HP <= 19
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 300% damage (3 hits, 100% each)
+  desc_jp: Deal 300% damage (3 hits, 100% each)
+  name_en: Simultaneous Animal Attack
+  name_jp: Simultaneous Animal Attack
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 70
+  desc_jp: ''
+  name_en: HP <= 70
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind active skills for 2 turns
+  desc_jp: Bind active skills for 2 turns
+  name_en: Collar of Brisingar
+  name_jp: Collar of Brisingar
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESRecoverPlayer -> Welcome!
+# 	Player recover 100% hp
+# 	[1] ESStatusShield -> I'll do my best, too!
+# 	Voids status ailments for 999 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchCard -> ESBranchCard
+# branch
+# [7] ESBranchHP -> ESBranchHP
+# branch
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESBindSkill -> Collar of Brisingar
+# Condition: When < 70% hp , one-time use
+# Bind active skills for 2 turns
+# [10] ESDebuffMovetime -> Sessrumnir
+# Condition: When < 70% hp , one-time use
+# Movetime -2s for 5 turns
+# [11] ESRandomSpawn -> Piggy Attack
+# Condition: 35% chance & when Fire, Water, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 3 Wood orbs
+# [12] ESAttackMultihit -> Kitty Attack
+# Condition: 35% chance
+# Enemy action
+# [13] ESRandomSpawn -> Hawk Attack
+# Condition: 30% chance & when Fire, Water, Wood, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 3 Light orbs
+# [14] ESEndPath -> ESEndPath
+# end_turn
+# [15] ESBranchFlag -> ESBranchFlag
+# branch
+# [16] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [17] ESRandomSpawn -> Keep it up, big brother!
+# Condition: When fire, water, wood, light, dark, jammer, poison, mortal poison orbs are on the board
+# Spawn random 3 Heal orbs
+# [18] ESBranchFlag -> ESBranchFlag
+# branch
+# [19] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [20] ESBindRandom -> Fertility Goddess's Embrace
+# Condition: None
+# Bind 6 random cards for 2~3 turns
+# [21] ESAttackMultihit -> Simultaneous Animal Attack
+# Condition: None
+# Enemy action

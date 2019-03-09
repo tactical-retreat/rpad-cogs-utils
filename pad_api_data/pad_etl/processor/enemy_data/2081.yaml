@@ -1,0 +1,166 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2081
+monster_name_en: Divine Creator of Order, Vishnu
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Heal, Jammer skyfall +15% for 99 turns + Absorb damage >= 1000000 damage
+    for 999 turns
+  desc_jp: Heal, Jammer skyfall +15% for 99 turns + Absorb damage >= 1000000 damage
+    for 999 turns
+  name_en: Trimurti [Prosperity] + Garuda's Wind Guard
+  name_jp: Trimurti [Prosperity] + Garuda's Wind Guard
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Heal to Jammer + Enemy recover 10% hp
+  desc_jp: Change Heal to Jammer + Enemy recover 10% hp
+  name_en: Khakkhara of the Creation + Avatar
+  name_jp: Khakkhara of the Creation + Avatar
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Enemy action + Enemy recover 10% hp
+  desc_jp: Enemy action + Enemy recover 10% hp
+  name_en: Chakram of Order + Avatar
+  name_jp: Chakram of Order + Avatar
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change 1st row to Heal orbs, 5th row to Wood orbs + Enemy recover 10% hp
+  desc_jp: Change 1st row to Heal orbs, 5th row to Wood orbs + Enemy recover 10% hp
+  name_en: Lotus Flower of Prosperity + Avatar
+  name_jp: Lotus Flower of Prosperity + Avatar
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 5 random for 2 turns + Enemy recover 10% hp
+  desc_jp: Bind 5 random for 2 turns + Enemy recover 10% hp
+  name_en: Shankha + Avatar
+  name_jp: Shankha + Avatar
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 30
+  desc_jp: ''
+  name_en: HP <= 30
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Blind all orbs on the board
+  desc_jp: Blind all orbs on the board
+  name_en: Giant Form
+  name_jp: Giant Form
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 3000% damage (3 hits, 1000% each)
+  desc_jp: Deal 3000% damage (3 hits, 1000% each)
+  name_en: Trivikrama
+  name_jp: Trivikrama
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 30
+  desc_jp: ''
+  name_en: HP <= 30
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 3000% damage (3 hits, 1000% each)
+  desc_jp: Deal 3000% damage (3 hits, 1000% each)
+  name_en: Trivikrama
+  name_jp: Trivikrama
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESSkyfall -> Trimurti [Prosperity]
+# 	Heal, Jammer skyfall +15% for 99 turns
+# 	[1] ESAbsorbThreshold -> Garuda's Wind Guard
+# 	Absorb damage >= 1000000 damage for 999 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchCard -> ESBranchCard
+# branch
+# [7] SkillSet:
+# 	Condition: When < 50% hp , one-time use
+# 	[0] ESBindAttack -> Shankha
+# 	Bind 5 random for 2 turns
+# 	[1] ESRecoverEnemy -> Avatar
+# 	Enemy recover 10% hp
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] SkillSet:
+# 	Condition: 30% chance
+# 	[0] ESOrbChangeAttack -> Khakkhara of the Creation
+# 	Change Heal to Jammer
+# 	[1] ESRecoverEnemy -> Avatar
+# 	Enemy recover 10% hp
+# [10] SkillSet:
+# 	Condition: 30% chance
+# 	[0] ESAttackMultihit -> Chakram of Order
+# 	Enemy action
+# 	[1] ESRecoverEnemy -> Avatar
+# 	Enemy recover 10% hp
+# [11] SkillSet:
+# 	Condition: 30% chance
+# 	[0] ESRowSpawnMulti -> Lotus Flower of Prosperity
+# 	Change 1st row to Heal orbs, 5th row to Wood orbs
+# 	[1] ESRecoverEnemy -> Avatar
+# 	Enemy recover 10% hp
+# [12] ESEndPath -> ESEndPath
+# end_turn
+# [13] ESBranchFlag -> ESBranchFlag
+# branch
+# [14] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [15] SkillSet:
+# 	Condition: None
+# 	[0] ESInactivity -> hng...!
+# 	Do nothing
+# 	[1] ESStatusShield -> Meditation
+# 	Voids status ailments for 999 turns
+# [16] ESEndPath -> ESEndPath
+# end_turn
+# [17] ESBranchFlag -> ESBranchFlag
+# branch
+# [18] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [19] ESBlind -> Giant Form
+# Condition: When < 30% hp
+# Blind all orbs on the board
+# [20] ESEndPath -> ESEndPath
+# end_turn
+# [21] ESAttackMultihit -> Trivikrama
+# Condition: When < 30% hp
+# Enemy action
+# [22] ESEndPath -> ESEndPath
+# end_turn

@@ -1,0 +1,97 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 102405
+monster_name_en: Alt. Master Candy Collector, Wicked Lady
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Blind all orbs on the board
+  desc_jp: Blind all orbs on the board
+  name_en: Halloween World
+  name_jp: Halloween World
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 4 Mortal Poison orbs
+  desc_jp: Spawn random 4 Mortal Poison orbs
+  name_en: "Hi\u266A Want some sweets?"
+  name_jp: "Hi\u266A Want some sweets?"
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 110% damage (2 hits, 55% each)
+  desc_jp: Deal 110% damage (2 hits, 55% each)
+  name_en: Candle Nails
+  name_jp: Candle Nails
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Spawn random 9 Poison orbs, Deal 100% damage
+  desc_jp: Spawn random 9 Poison orbs, Deal 100% damage
+  name_en: Sweet Wink
+  name_jp: Sweet Wink
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 4 random subs for 2~3 turns, Deal 100% damage
+  desc_jp: Bind 4 random subs for 2~3 turns, Deal 100% damage
+  name_en: Pumpkin Charm
+  name_jp: Pumpkin Charm
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBlind -> Halloween World
+# Condition: One-time use
+# Blind all orbs on the board
+# [3] ESRandomSpawn -> Hi♪ Want some sweets?
+# Condition: One-time use & when Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison orbs are on the board
+# Spawn random 4 Mortal Poison orbs
+# [4] ESBranchHP -> ESBranchHP
+# branch
+# [5] ESAttackMultihit -> Candle Nails
+# Condition: 50% chance
+# Enemy action
+# [6] ESRandomSpawn -> Sweet Wink
+# Condition: When fire, water, wood, light, dark, heal, jammer, mortal poison orbs are on the board
+# Spawn random 9 Poison orbs
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchFlag -> ESBranchFlag
+# branch
+# [9] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [10] ESBindRandomSub -> Pumpkin Charm
+# Condition: None
+# Bind 4 random subs for 2~3 turns
+# [11] ESEndPath -> ESEndPath
+# end_turn

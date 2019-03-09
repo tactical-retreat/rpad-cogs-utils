@@ -1,0 +1,56 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 315
+monster_name_en: Ice Armor Ogre
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind Water cards for 2~4 turns
+  desc_jp: Bind Water cards for 2~4 turns
+  name_en: Water Bind
+  name_jp: Water Bind
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 150% damage
+  desc_jp: Deal 150% damage
+  name_en: Freeze Strike
+  name_jp: Freeze Strike
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchHP -> ESBranchHP
+# branch
+# [2] ESBindAttribute -> Water Bind
+# Condition: One-time use
+# Bind Water cards for 2~4 turns
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESAttackMultihit -> Freeze Strike
+# Condition: None
+# Enemy action

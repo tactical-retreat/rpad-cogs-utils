@@ -1,0 +1,125 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4961
+monster_name_en: '*****'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb combo <= 4 damage for 5 turns
+  desc_jp: Absorb combo <= 4 damage for 5 turns
+  name_en: Great!!
+  name_jp: Great!!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Rcv 50% for 1 turns, Deal 80% damage
+  desc_jp: Rcv 50% for 1 turns, Deal 80% damage
+  name_en: I won't lose!
+  name_jp: I won't lose!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  name_en: Cool!
+  name_jp: Cool!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Random to Light, Deal 95% damage
+  desc_jp: Change Random to Light, Deal 95% damage
+  name_en: Thunder Technique!
+  name_jp: Thunder Technique!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Locked random skyfall +100% for 5 turns
+  desc_jp: Locked random skyfall +100% for 5 turns
+  name_en: I want you to go easy on me!
+  name_jp: I want you to go easy on me!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 19
+  desc_jp: ''
+  name_en: HP <= 19
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Movetime -2s for 5 turns
+  desc_jp: Movetime -2s for 5 turns
+  name_en: Brother... I'll try my best!
+  name_jp: Brother... I'll try my best!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 19
+  desc_jp: ''
+  name_en: HP <= 19
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 180% damage (3 hits, 60% each)
+  desc_jp: Deal 180% damage (3 hits, 60% each)
+  name_en: Wind-Bringing Thunder
+  name_jp: Wind-Bringing Thunder
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESAbsorbCombo -> Great!!
+# Condition: One-time use
+# Absorb combo <= 4 damage for 5 turns
+# [3] ESBranchHP -> ESBranchHP
+# branch
+# [4] ESBranchHP -> ESBranchHP
+# branch
+# [5] ESDebuffRCV -> I won't lose!
+# Condition: 33% chance
+# Rcv 50% for 1 turns
+# [6] ESAttackMultihit -> Cool!
+# Condition: 33% chance
+# Enemy action
+# [7] ESOrbChangeAttack -> Thunder Technique!
+# Condition: 34% chance
+# Change Random to Light
+# [8] ESEndPath -> ESEndPath
+# end_turn
+# [9] ESBranchFlag -> ESBranchFlag
+# branch
+# [10] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [11] ESSkyfall -> I want you to go easy on me!
+# Condition: None
+# Locked random skyfall +100% for 5 turns
+# [12] ESEndPath -> ESEndPath
+# end_turn
+# [13] ESDebuffMovetime -> Brother... I'll try my best!
+# Condition: One-time use
+# Movetime -2s for 5 turns
+# [14] ESAttackMultihit -> Wind-Bringing Thunder
+# Condition: None
+# Enemy action
+# [15] ESEndPath -> ESEndPath
+# end_turn

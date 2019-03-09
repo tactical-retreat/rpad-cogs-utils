@@ -1,0 +1,109 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 778
+monster_name_en: Twisted Mountain God, Grand Tengu
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 3 random cards for 3 turns
+  desc_jp: Bind 3 random cards for 3 turns
+  name_en: Bind!
+  name_jp: Bind!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 150% damage
+  desc_jp: Deal 150% damage
+  name_en: Destroy!
+  name_jp: Destroy!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 70% damage
+  desc_jp: Change Random to Jammer, Deal 70% damage
+  name_en: Terminate!
+  name_jp: Terminate!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 39
+  desc_jp: ''
+  name_en: HP <= 39
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  name_en: Focus my mind...
+  name_jp: Focus my mind...
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 39
+  desc_jp: ''
+  name_en: HP <= 39
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 800% damage (4 hits, 200% each)
+  desc_jp: Deal 800% damage (4 hits, 200% each)
+  name_en: What lives must die...
+  name_jp: What lives must die...
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchHP -> ESBranchHP
+# branch
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESNone -> ESNone
+# None
+# [5] ESBranchHP -> ESBranchHP
+# branch
+# [6] ESInactivity -> Focus my mind...
+# Condition: One-time use
+# Do nothing
+# [7] ESAttackMultihit -> What lives must die...
+# Condition: None
+# Enemy action
+# [8] ESEndPath -> ESEndPath
+# end_turn
+# [9] ESBranchFlag -> ESBranchFlag
+# branch
+# [10] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [11] ESBindRandom -> Bind!
+# Condition: None
+# Bind 3 random cards for 3 turns
+# [12] ESEndPath -> ESEndPath
+# end_turn
+# [13] ESAttackMultihit -> Destroy!
+# Condition: 60% chance
+# Enemy action
+# [14] ESOrbChangeAttack -> Terminate!
+# Condition: 60% chance
+# Change Random to Jammer

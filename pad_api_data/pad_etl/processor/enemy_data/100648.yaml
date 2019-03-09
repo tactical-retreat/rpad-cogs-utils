@@ -1,0 +1,141 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 100648
+monster_name_en: Alt. Athena
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Player recover 100% hp + Delay active skills by 3~5 turns
+  desc_jp: Player recover 100% hp + Delay active skills by 3~5 turns
+  name_en: You've done well to make it here. + See if you can get through me!
+  name_jp: You've done well to make it here. + See if you can get through me!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  name_en: Aegis Shield
+  name_jp: Aegis Shield
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Light, Deal 80% damage
+  desc_jp: Change Random to Light, Deal 80% damage
+  name_en: Shining Spear
+  name_jp: Shining Spear
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 59
+  desc_jp: ''
+  name_en: HP <= 59
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Light, Deal 80% damage
+  desc_jp: Change Random to Light, Deal 80% damage
+  name_en: Shining Spear
+  name_jp: Shining Spear
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 60
+  desc_jp: ''
+  name_en: HP <= 60
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 120% damage (6 hits, 20% each)
+  desc_jp: Deal 120% damage (6 hits, 20% each)
+  name_en: Storm Punisher
+  name_jp: Storm Punisher
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 35
+  desc_jp: ''
+  name_en: HP <= 35
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: 2x5 cloud appear for 2 turns at 1st row, 3rd column
+  desc_jp: 2x5 cloud appear for 2 turns at 1st row, 3rd column
+  name_en: End of the line!
+  name_jp: End of the line!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 2000% damage (10 hits, 200% each)
+  desc_jp: Deal 2000% damage (10 hits, 200% each)
+  name_en: Lightning Starburst
+  name_jp: Lightning Starburst
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 35
+  desc_jp: ''
+  name_en: HP <= 35
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 2000% damage (10 hits, 200% each)
+  desc_jp: Deal 2000% damage (10 hits, 200% each)
+  name_en: Lightning Starburst
+  name_jp: Lightning Starburst
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESRecoverPlayer -> You've done well to make it here.
+# 	Player recover 100% hp
+# 	[1] ESSkillDelay -> See if you can get through me!
+# 	Delay active skills by 3~5 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchFlag -> ESBranchFlag
+# branch
+# [7] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [8] ESStatusShield -> Aegis Shield
+# Condition: None
+# Voids status ailments for 999 turns
+# [9] ESCloud -> End of the line!
+# Condition: When < 35% hp , one-time use
+# 2x5 cloud appear for 2 turns at 1st row, 3rd column
+# [10] ESAttackMultihit -> Lightning Starburst
+# Condition: When < 35% hp
+# Enemy action
+# [11] ESAttackMultihit -> Storm Punisher
+# Condition: 50% chance when < 60% hp
+# Enemy action
+# [12] ESOrbChangeAttack -> Shining Spear
+# Condition: None
+# Change Random to Light
+# [13] ESEndPath -> ESEndPath
+# end_turn

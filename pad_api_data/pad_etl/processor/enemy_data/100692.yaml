@@ -1,0 +1,146 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 100692
+monster_name_en: Alt. Earth-Rending Emperor, Siegfried
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Enemy turn counter change to 1 when HP <= 99%
+  desc_jp: Enemy turn counter change to 1 when HP <= 99%
+  name_en: Next turn changed
+  name_jp: Next turn changed
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 75% for 4 turns
+  desc_jp: Reduce damage from all sources by 75% for 4 turns
+  name_en: The end is nigh
+  name_jp: The end is nigh
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  name_en: Strikes an imposing stance
+  name_jp: Strikes an imposing stance
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 2
+  desc_jp: ''
+  name_en: Turn 2
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  name_en: Strikes an imposing stance
+  name_jp: Strikes an imposing stance
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Player -500% HP
+  desc_jp: Player -500% HP
+  name_en: Farewell
+  name_jp: Farewell
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 99
+  desc_jp: ''
+  name_en: HP <= 99
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Water, Deal 70% damage
+  desc_jp: Change Random to Water, Deal 70% damage
+  name_en: Splash Blade
+  name_jp: Splash Blade
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 99
+  desc_jp: ''
+  name_en: HP <= 99
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 300% for the next 999 turns
+  desc_jp: Increase damage to 300% for the next 999 turns
+  name_en: King Bubblie ENHANCE!
+  name_jp: King Bubblie ENHANCE!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 88% damage
+  desc_jp: Deal 88% damage
+  name_en: Dragon-Slaying Crimson Blade
+  name_jp: Dragon-Slaying Crimson Blade
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESDamageShield -> The end is nigh
+# Condition: None
+# Reduce damage from all sources by 75% for 4 turns
+# [5] ESBranchHP -> ESBranchHP
+# branch
+# [6] ESAttackUp -> King Bubblie ENHANCE!
+# Condition: None
+# Increase damage to 300% for the next 999 turns
+# [7] ESBranchHP -> ESBranchHP
+# branch
+# [8] ESAttackMultihit -> Dragon-Slaying Crimson Blade
+# Condition: None
+# Enemy action
+# [9] ESEndPath -> ESEndPath
+# end_turn
+# [10] ESOrbChangeAttack -> Splash Blade
+# Condition: None
+# Change Random to Water
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESBranchCounter -> ESBranchCounter
+# branch
+# [13] ESSetCounter -> ESSetCounter
+# set_counter
+# [14] ESInactivity -> Strikes an imposing stance
+# Condition: None
+# Do nothing
+# [15] ESGravity -> Farewell
+# Condition: None
+# Player -500% HP
+# [16] ESEndPath -> ESEndPath
+# end_turn
+# [17] ESTurnChangePassive -> Next turn changed
+# Enemy turn counter change to 1 when HP <= 99%

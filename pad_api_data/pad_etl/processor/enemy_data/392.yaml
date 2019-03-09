@@ -1,0 +1,95 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 392
+monster_name_en: Fertility Deity, Holy Ceres
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Heal, Deal 75% damage
+  desc_jp: Change Random to Heal, Deal 75% damage
+  name_en: Signs of Blooming
+  name_jp: Signs of Blooming
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Heal to Wood, Deal 150% damage
+  desc_jp: Change Heal to Wood, Deal 150% damage
+  name_en: Flower World
+  name_jp: Flower World
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind Fire cards for 3~5 turns
+  desc_jp: Bind Fire cards for 3~5 turns
+  name_en: Extinguishing Prayer
+  name_jp: Extinguishing Prayer
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 160%~200% damage (4~5 hits, 40% each)
+  desc_jp: Deal 160%~200% damage (4~5 hits, 40% each)
+  name_en: Shining Storm
+  name_jp: Shining Storm
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchHP -> ESBranchHP
+# branch
+# [2] ESOrbChangeAttack -> Signs of Blooming
+# Condition: One-time use
+# Change Random to Heal
+# [3] ESOrbChangeAttack -> Flower World
+# Condition: None
+# Change Heal to Wood
+# [4] ESEndPath -> ESEndPath
+# end_turn
+# [5] ESBranchFlag -> ESBranchFlag
+# branch
+# [6] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [7] ESBindAttribute -> Extinguishing Prayer
+# Condition: None
+# Bind Fire cards for 3~5 turns
+# [8] ESEndPath -> ESEndPath
+# end_turn
+# [9] ESInactivity -> Charging Magical Power
+# Condition: One-time use
+# Do nothing
+# [10] ESAttackMultihit -> Shining Storm
+# Condition: None
+# Enemy action

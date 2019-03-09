@@ -1,0 +1,84 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3231
+monster_name_en: Earl of Halloween Fever, Count Pumpkin
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Blind random 3 orbs for 2 turns
+  desc_jp: Blind random 3 orbs for 2 turns
+  name_en: Pumpkin Night
+  name_jp: Pumpkin Night
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Fix orb movement starting point to random position on the board
+  desc_jp: Fix orb movement starting point to random position on the board
+  name_en: Pumpkin Magic
+  name_jp: Pumpkin Magic
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 120% damage (2 hits, 60% each)
+  desc_jp: Deal 120% damage (2 hits, 60% each)
+  name_en: Nightmare Cane
+  name_jp: Nightmare Cane
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Movetime 200% for 5 turns, Deal 200% damage
+  desc_jp: Movetime 200% for 5 turns, Deal 200% damage
+  name_en: Trick & Trick
+  name_jp: Trick & Trick
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESBlindStickyRandom -> Pumpkin Night
+# Condition: None
+# Blind random 3 orbs for 2 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESDebuffMovetime -> Trick & Trick
+# Condition: When < 50% hp , one-time use
+# Movetime 200% for 5 turns
+# [9] ESFixedStart -> Pumpkin Magic
+# Condition: 20% chance
+# Fix orb movement starting point to random position on the board
+# [10] ESAttackMultihit -> Nightmare Cane
+# Condition: None
+# Enemy action
+# [11] ESEndPath -> ESEndPath
+# end_turn

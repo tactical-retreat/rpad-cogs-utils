@@ -1,0 +1,52 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3178
+monster_name_en: Yomitsukami-no-miko, Kuninue
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb combo <= 2 damage for 1 turns
+  desc_jp: Absorb combo <= 2 damage for 1 turns
+  name_en: Divine Speed
+  name_jp: Divine Speed
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage (2 hits, 50% each)
+  desc_jp: Deal 100% damage (2 hits, 50% each)
+  name_en: Moonlight Claws
+  name_jp: Moonlight Claws
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESAbsorbCombo -> Divine Speed
+# Condition: One-time use
+# Absorb combo <= 2 damage for 1 turns
+# [2] ESAttackMultihit -> Moonlight Claws
+# Condition: None
+# Enemy action

@@ -1,0 +1,210 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3416
+monster_name_en: Yellow-Horned Demon Princess, Raijin
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Bind 4 random cards for 1~2 turns, Deal 100% damage
+  desc_jp: Bind 4 random cards for 1~2 turns, Deal 100% damage
+  name_en: Entahaz Masaka
+  name_jp: Entahaz Masaka
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 4
+  desc_jp: ''
+  name_en: Turn 4
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Blind all orbs for 3 turns
+  desc_jp: Blind all orbs for 3 turns
+  name_en: Solomon's Secret Key
+  name_jp: Solomon's Secret Key
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 100% damage
+  desc_jp: Blind all orbs on the board, Deal 100% damage
+  name_en: Kokzaram
+  name_jp: Kokzaram
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Spawn random 6 Dark orbs, Deal 100% damage
+  desc_jp: Spawn random 6 Dark orbs, Deal 100% damage
+  name_en: Sanaa Aswad
+  name_jp: Sanaa Aswad
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Bind awoken skills for 3 turns
+  desc_jp: Bind awoken skills for 3 turns
+  name_en: Mahatuha
+  name_jp: Mahatuha
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 108% damage (3 hits, 36% each)
+  desc_jp: Deal 108% damage (3 hits, 36% each)
+  name_en: Sout Yadoreb
+  name_jp: Sout Yadoreb
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy action + Blind random 6 orbs for 1 turns
+  desc_jp: Enemy action + Blind random 6 orbs for 1 turns
+  name_en: Sout Yadoreb + Yasurek Sitta
+  name_jp: Sout Yadoreb + Yasurek Sitta
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 9
+  desc_jp: ''
+  name_en: HP <= 9
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 60% damage (2 hits, 30% each)
+  desc_jp: Deal 60% damage (2 hits, 30% each)
+  name_en: Pentacle of the Demonic Sword
+  name_jp: Pentacle of the Demonic Sword
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Void damage >= 40000000 for 99 turns
+    + Change player HP to 500000 for 99 turns + Voids player buff effects
+  desc_jp: Voids status ailments for 999 turns + Void damage >= 40000000 for 99 turns
+    + Change player HP to 500000 for 99 turns + Voids player buff effects
+  name_en: I wonder if your life means anything + Defense of the Twin Ships + Ark
+    Contract + Requiem
+  name_jp: I wonder if your life means anything + Defense of the Twin Ships + Ark
+    Contract + Requiem
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESBindRandom -> Entahaz Masaka
+# Condition: None
+# Bind 4 random cards for 1~2 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] ESSetCounter -> ESSetCounter
+# set_counter
+# [8] ESBranchCounter -> ESBranchCounter
+# branch
+# [9] ESBlind -> Kokzaram
+# Condition: 33% chance
+# Blind all orbs on the board
+# [10] ESRandomSpawn -> Sanaa Aswad
+# Condition: 33% chance & when Fire, Water, Wood, Light, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 6 Dark orbs
+# [11] ESBindAwoken -> Mahatuha
+# Condition: 34% chance
+# Bind awoken skills for 3 turns
+# [12] ESEndPath -> ESEndPath
+# end_turn
+# [13] ESBlindStickyRandom -> Solomon's Secret Key
+# Condition: None
+# Blind all orbs for 3 turns
+# [14] ESEndPath -> ESEndPath
+# end_turn
+# [15] ESBranchHP -> ESBranchHP
+# branch
+# [16] ESBranchFlag -> ESBranchFlag
+# branch
+# [17] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [18] ESAttackMultihit -> Sout Yadoreb
+# Condition: None
+# Enemy action
+# [19] ESEndPath -> ESEndPath
+# end_turn
+# [20] SkillSet:
+# 	Condition: None
+# 	[0] ESAttackMultihit -> Sout Yadoreb
+# 	Enemy action
+# 	[1] ESBlindStickyRandom -> Yasurek Sitta
+# 	Blind random 6 orbs for 1 turns
+# [21] ESEndPath -> ESEndPath
+# end_turn
+# [22] ESAttackMultihit -> Pentacle of the Demonic Sword
+# Condition: None
+# Enemy action
+# [23] SkillSet:
+# 	Condition: None
+# 	[0] ESStatusShield -> I wonder if your life means anything
+# 	Voids status ailments for 999 turns
+# 	[1] ESVoidShield -> Defense of the Twin Ships
+# 	Void damage >= 40000000 for 99 turns
+# 	[2] ESMaxHPChange -> Ark Contract
+# 	Change player HP to 500000 for 99 turns
+# 	[3] ESDispel -> Requiem
+# 	Voids player buff effects
+# [24] ESEndPath -> ESEndPath
+# end_turn
+# [25] ESAttackMultihit -> Intee Kamkadam
+# Condition: None
+# Enemy action
+# [26] ESNone -> ESNone
+# None
+# [27] ESNone -> ESNone
+# None
+# [28] ESNone -> ESNone
+# None
+# [29] ESNone -> ESNone
+# None
+# [30] ESNone -> ESNone
+# None
+# [31] ESNone -> ESNone
+# None
+# [32] ESNone -> ESNone
+# None
+# [33] SkillSet:
+# 	Condition: None
+# 	[0] ESDamageShield -> Defense Instinct
+# 	Reduce damage from all sources by 50% for 3 turns
+# 	[1] ESCloud -> Mass Clouds
+# 	3x3 cloud appear for 1 turns at random location
+# [34] ESEndPath -> ESEndPath
+# end_turn
+# [35] ESAttributeBlock -> Red Exception
+# Condition: None
+# Unable to Fire orbs for 3 turns
+# [36] ESEndPath -> ESEndPath
+# end_turn
+# [37] ESBombRandomSpawn -> Affliction Bombing
+# Condition: None
+# Spawn random 3 Bomb orbs

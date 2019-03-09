@@ -1,0 +1,77 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 419
+monster_name_en: Ruka, the Lady of the Sea
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb Wood damage for 3 turns
+  desc_jp: Absorb Wood damage for 3 turns
+  name_en: Aqua Labyrinth
+  name_jp: Aqua Labyrinth
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 3rd, 4th column to Water orbs, Deal 100% damage
+  desc_jp: Change 3rd, 4th column to Water orbs, Deal 100% damage
+  name_en: Dolphin Jump
+  name_jp: Dolphin Jump
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 30
+  desc_jp: ''
+  name_en: HP <= 30
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 300% damage
+  desc_jp: Blind all orbs on the board, Deal 300% damage
+  name_en: Deep Blue
+  name_jp: Deep Blue
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESBranchFlag -> ESBranchFlag
+# branch
+# [4] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [5] ESAbsorbAttribute -> Aqua Labyrinth
+# Condition: None
+# Absorb Wood damage for 3 turns
+# [6] ESBlind -> Deep Blue
+# Condition: When < 30% hp
+# Blind all orbs on the board
+# [7] ESColumnSpawnMulti -> Dolphin Jump
+# Condition: None
+# Change 3rd, 4th column to Water orbs
+# [8] ESEndPath -> ESEndPath
+# end_turn

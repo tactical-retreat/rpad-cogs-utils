@@ -1,0 +1,143 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4940
+monster_name_en: '*****'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  name_en: I'm the Game Master, I'm God!
+  name_jp: I'm the Game Master, I'm God!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Movetime -3s for 10 turns + Reduce damage from all sources by 50% for 10
+    turns
+  desc_jp: Movetime -3s for 10 turns + Reduce damage from all sources by 50% for 10
+    turns
+  name_en: Anti Bugster Area + Dangerous Breaker
+  name_jp: Anti Bugster Area + Dangerous Breaker
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  name_en: "Living Dead Shoes \u03B1"
+  name_jp: "Living Dead Shoes \u03B1"
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Spawn random 4 Jammer orbs, Deal 95% damage
+  desc_jp: Spawn random 4 Jammer orbs, Deal 95% damage
+  name_en: Spike Attack
+  name_jp: Spike Attack
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 19
+  desc_jp: ''
+  name_en: HP <= 19
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
+    orbs + Absorb combo <= 6 damage for 10 turns
+  desc_jp: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
+    orbs + Absorb combo <= 6 damage for 10 turns
+  name_en: Revenant Dischargers + Bone Build Guard
+  name_jp: Revenant Dischargers + Bone Build Guard
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 19
+  desc_jp: ''
+  name_en: HP <= 19
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 300% damage
+  desc_jp: Deal 300% damage
+  name_en: Dangerous Critical Strike
+  name_jp: Dangerous Critical Strike
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESStatusShield -> I'm the Game Master, I'm God!
+# Condition: None
+# Voids status ailments for 999 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESDebuffMovetime -> Anti Bugster Area
+# 	Movetime -3s for 10 turns
+# 	[1] ESDamageShield -> Dangerous Breaker
+# 	Reduce damage from all sources by 50% for 10 turns
+# [9] ESBranchHP -> ESBranchHP
+# branch
+# [10] ESAttackMultihit -> Living Dead Shoes α
+# Condition: 50% chance
+# Enemy action
+# [11] ESRandomSpawn -> Spike Attack
+# Condition: 50% chance & when Fire, Water, Wood, Light, Dark, Heal, Poison, Mortal Poison orbs are on the board
+# Spawn random 4 Jammer orbs
+# [12] ESEndPath -> ESEndPath
+# end_turn
+# [13] ESBranchHP -> ESBranchHP
+# branch
+# [14] ESBranchFlag -> ESBranchFlag
+# branch
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] ESAttackUp -> Gain Riser
+# Condition: None
+# Increase damage to 150% for the next 999 turns
+# [17] ESEndPath -> ESEndPath
+# end_turn
+# [18] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESOrbLock -> Revenant Dischargers
+# 	Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# 	[1] ESAbsorbCombo -> Bone Build Guard
+# 	Absorb combo <= 6 damage for 10 turns
+# [19] ESAttackMultihit -> Dangerous Critical Strike
+# Condition: None
+# Enemy action
+# [20] ESEndPath -> ESEndPath
+# end_turn
+# [21] SkillSet:
+# 	Condition: On death
+# 	[0] ESInactivity -> I am God!
+# 	Do nothing

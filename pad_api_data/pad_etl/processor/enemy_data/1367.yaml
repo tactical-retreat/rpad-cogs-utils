@@ -1,0 +1,56 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1367
+monster_name_en: Waron
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Water, Deal 80% damage
+  desc_jp: Change Random to Water, Deal 80% damage
+  name_en: Petit Ice
+  name_jp: Petit Ice
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 80%~160% damage (2~4 hits, 40% each)
+  desc_jp: Deal 80%~160% damage (2~4 hits, 40% each)
+  name_en: Swinging a weapon
+  name_jp: Swinging a weapon
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESOrbChangeAttack -> Petit Ice
+# Condition: One-time use
+# Change Random to Water
+# [4] ESAttackMultihit -> Swinging a weapon
+# Condition: 50% chance when < 50% hp
+# Enemy action

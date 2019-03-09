@@ -1,0 +1,81 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 719
+monster_name_en: Green Skydragon, Elysium
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Deal 180% damage (4 hits, 45% each)
+  desc_jp: Deal 180% damage (4 hits, 45% each)
+  name_en: Rock Breath
+  name_jp: Rock Breath
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 180% damage (4 hits, 45% each)
+  desc_jp: Deal 180% damage (4 hits, 45% each)
+  name_en: Rock Breath
+  name_jp: Rock Breath
+  record_type_name: ACTION
+
+############################################################
+### Data @ 8
+############################################################
+!SkillRecordListing
+level: 8
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Deal 40% damage
+  desc_jp: Deal 40% damage
+  name_en: Skydragon Flight
+  name_jp: Skydragon Flight
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 180% damage (4 hits, 45% each)
+  desc_jp: Deal 180% damage (4 hits, 45% each)
+  name_en: Rock Breath
+  name_jp: Rock Breath
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESAttackMultihit -> Rock Breath
+# Condition: 75% chance
+# Enemy action
+# [4] ESEndPath -> ESEndPath
+# end_turn
+# [5] ESAttackMultihit -> Skydragon Flight
+# Condition: One-time use
+# Enemy action
+# [6] ESAttackMultihit -> Rock Breath
+# Condition: 75% chance
+# Enemy action

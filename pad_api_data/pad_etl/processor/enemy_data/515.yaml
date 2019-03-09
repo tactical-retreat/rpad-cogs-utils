@@ -1,0 +1,278 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 515
+monster_name_en: Princess Valkyrie
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 50%
+  desc_jp: Survive attacks with 1 HP when HP > 50%
+  name_en: Valkyrie Resolve
+  name_jp: Valkyrie Resolve
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Void damage >= 10000000 for 999 turns
+    + Rcv 50% for 20 turns
+  desc_jp: Voids status ailments for 999 turns + Void damage >= 10000000 for 999 turns
+    + Rcv 50% for 20 turns
+  name_en: 'White Valkyrie Shield + Fylgja Fur + Discerning Lifechains '
+  name_jp: 'White Valkyrie Shield + Fylgja Fur + Discerning Lifechains '
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change own attribute to random one of Fire, Water, Wood, Light, Dark +
+    Enemy action
+  desc_jp: Change own attribute to random one of Fire, Water, Wood, Light, Dark +
+    Enemy action
+  name_en: Sweeping Spirit Garments + Saintly Valkyrie Blade
+  name_jp: Sweeping Spirit Garments + Saintly Valkyrie Blade
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 94
+  desc_jp: ''
+  name_en: HP <= 94
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Player -50% HP + Enemy action
+  desc_jp: Player -50% HP + Enemy action
+  name_en: Bash + Double Slash
+  name_jp: Bash + Double Slash
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 100% hp + Change own attribute to random one of Fire, Water,
+    Wood, Light, Dark
+  desc_jp: Enemy recover 100% hp + Change own attribute to random one of Fire, Water,
+    Wood, Light, Dark
+  name_en: Resurrection + Sweeping Spirit Garments
+  name_jp: Resurrection + Sweeping Spirit Garments
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Heal to Light + Spawn random 3 Heal orbs + Lock all Fire, Water,
+    Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+  desc_jp: Change Heal to Light + Spawn random 3 Heal orbs + Lock all Fire, Water,
+    Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+  name_en: Attack Stance - Light + Philanthropy + Decision
+  name_jp: Attack Stance - Light + Philanthropy + Decision
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Player -55% HP + Enemy action
+  desc_jp: Player -55% HP + Enemy action
+  name_en: Mighty Bash + Triple Slash
+  name_jp: Mighty Bash + Triple Slash
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 90
+  desc_jp: ''
+  name_en: HP <= 90
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb combo <= 5 damage for 10 turns
+  desc_jp: Absorb combo <= 5 damage for 10 turns
+  name_en: Test of Skill
+  name_jp: Test of Skill
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 80
+  desc_jp: ''
+  name_en: HP <= 80
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: 2x3 cloud appear for 10 turns at 2nd row, 3rd column
+  desc_jp: 2x3 cloud appear for 10 turns at 2nd row, 3rd column
+  name_en: Test of Perception
+  name_jp: Test of Perception
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 70
+  desc_jp: ''
+  name_en: HP <= 70
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Movetime 50% for 10 turns
+  desc_jp: Movetime 50% for 10 turns
+  name_en: Test of Speed
+  name_jp: Test of Speed
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 20
+  desc_jp: ''
+  name_en: HP <= 20
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change own attribute to random one of Fire, Water, Wood, Light, Dark +
+    Enemy action
+  desc_jp: Change own attribute to random one of Fire, Water, Wood, Light, Dark +
+    Enemy action
+  name_en: Sweeping Spirit Garments + Saintly Valkyrie Blade
+  name_jp: Sweeping Spirit Garments + Saintly Valkyrie Blade
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESStatusShield -> White Valkyrie Shield
+# 	Voids status ailments for 999 turns
+# 	[1] ESVoidShield -> Fylgja Fur
+# 	Void damage >= 10000000 for 999 turns
+# 	[2] ESDebuffRCV -> Discerning Lifechains 
+# 	Rcv 50% for 20 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] ESBranchHP -> ESBranchHP
+# branch
+# [8] SkillSet:
+# 	Condition: When < 60% hp , one-time use
+# 	[0] ESAbsorbCombo -> Test of Skill
+# 	Absorb combo <= 5 damage for 10 turns
+# 	[1] ESCloud -> Test of Perception
+# 	2x3 cloud appear for 10 turns at 2nd row, 3rd column
+# 	[2] ESDebuffMovetime -> Test of Speed
+# 	Movetime 50% for 10 turns
+# 	[3] ESAttackUp -> Test of Endurance
+# 	Increase damage to 150% for the next 10 turns
+# [9] SkillSet:
+# 	Condition: When < 70% hp , one-time use
+# 	[0] ESAbsorbCombo -> Test of Skill
+# 	Absorb combo <= 5 damage for 10 turns
+# 	[1] ESCloud -> Test of Perception
+# 	2x3 cloud appear for 10 turns at 2nd row, 3rd column
+# 	[2] ESDebuffMovetime -> Test of Speed
+# 	Movetime 50% for 10 turns
+# [10] SkillSet:
+# 	Condition: When < 80% hp , one-time use
+# 	[0] ESAbsorbCombo -> Test of Skill
+# 	Absorb combo <= 5 damage for 10 turns
+# 	[1] ESCloud -> Test of Perception
+# 	2x3 cloud appear for 10 turns at 2nd row, 3rd column
+# [11] ESAbsorbCombo -> Test of Skill
+# Condition: When < 90% hp , one-time use
+# Absorb combo <= 5 damage for 10 turns
+# [12] SkillSet:
+# 	Condition: When < 60% hp , one-time use
+# 	[0] ESCloud -> Test of Perception
+# 	2x3 cloud appear for 10 turns at 2nd row, 3rd column
+# 	[1] ESDebuffMovetime -> Test of Speed
+# 	Movetime 50% for 10 turns
+# 	[2] ESAttackUp -> Test of Endurance
+# 	Increase damage to 150% for the next 10 turns
+# [13] SkillSet:
+# 	Condition: When < 70% hp , one-time use
+# 	[0] ESCloud -> Test of Perception
+# 	2x3 cloud appear for 10 turns at 2nd row, 3rd column
+# 	[1] ESDebuffMovetime -> Test of Speed
+# 	Movetime 50% for 10 turns
+# [14] ESCloud -> Test of Perception
+# Condition: When < 80% hp , one-time use
+# 2x3 cloud appear for 10 turns at 2nd row, 3rd column
+# [15] SkillSet:
+# 	Condition: When < 60% hp , one-time use
+# 	[0] ESDebuffMovetime -> Test of Speed
+# 	Movetime 50% for 10 turns
+# 	[1] ESAttackUp -> Test of Endurance
+# 	Increase damage to 150% for the next 10 turns
+# [16] ESDebuffMovetime -> Test of Speed
+# Condition: When < 70% hp , one-time use
+# Movetime 50% for 10 turns
+# [17] ESAttackUp -> Test of Endurance
+# Condition: When < 60% hp , one-time use
+# Increase damage to 150% for the next 10 turns
+# [18] SkillSet:
+# 	Condition: None
+# 	[0] ESGravity -> Bash
+# 	Player -50% HP
+# 	[1] ESAttackMultihit -> Double Slash
+# 	Enemy action
+# [19] ESEndPath -> ESEndPath
+# end_turn
+# [20] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESRecoverEnemy -> Resurrection
+# 	Enemy recover 100% hp
+# 	[1] ESChangeAttribute -> Sweeping Spirit Garments
+# 	Change own attribute to random one of Fire, Water, Wood, Light, Dark
+# [21] ESBranchFlag -> ESBranchFlag
+# branch
+# [22] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [23] SkillSet:
+# 	Condition: None
+# 	[0] ESOrbChangeAttack -> Attack Stance - Light
+# 	Change Heal to Light
+# 	[1] ESRandomSpawn -> Philanthropy
+# 	Spawn random 3 Heal orbs
+# 	[2] ESOrbLock -> Decision
+# 	Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [24] SkillSet:
+# 	Condition: When < 20% hp
+# 	[0] ESChangeAttribute -> Sweeping Spirit Garments
+# 	Change own attribute to random one of Fire, Water, Wood, Light, Dark
+# 	[1] ESAttackMultihit -> Saintly Valkyrie Blade
+# 	Enemy action
+# [25] SkillSet:
+# 	Condition: None
+# 	[0] ESGravity -> Mighty Bash
+# 	Player -55% HP
+# 	[1] ESAttackMultihit -> Triple Slash
+# 	Enemy action
+# [26] ESEndPath -> ESEndPath
+# end_turn
+# [27] SkillSet:
+# 	Condition: None
+# 	[0] ESChangeAttribute -> Sweeping Spirit Garments
+# 	Change own attribute to random one of Fire, Water, Wood, Light, Dark
+# 	[1] ESAttackMultihit -> Saintly Valkyrie Blade
+# 	Enemy action
+# [28] ESEndPath -> ESEndPath
+# end_turn
+# [29] ESResolve -> Valkyrie Resolve
+# Survive attacks with 1 HP when HP > 50%

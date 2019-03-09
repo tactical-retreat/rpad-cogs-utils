@@ -1,0 +1,106 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3214
+monster_name_en: Wind Imp
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Change Random 2 to Jammer
+  desc_jp: Change Random 2 to Jammer
+  name_en: Blow it hard!
+  name_jp: Blow it hard!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Jammer, Deal 60%
+    damage
+  desc_jp: Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Jammer, Deal 60%
+    damage
+  name_en: Shakuhachi Whirlwind
+  name_jp: Shakuhachi Whirlwind
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 2
+  desc_jp: ''
+  name_en: Turn 2
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 300% for the next 999 turns
+  desc_jp: Increase damage to 300% for the next 999 turns
+  name_en: Demon Solo
+  name_jp: Demon Solo
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 3
+  desc_jp: ''
+  name_en: Turn 3
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Wood skyfall +15% for 10 turns, Deal 50% damage
+  desc_jp: Wood skyfall +15% for 10 turns, Deal 50% damage
+  name_en: Resonating Wood
+  name_jp: Resonating Wood
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESJammerChangeRandom -> Blow it hard!
+# Condition: None
+# Change Random 2 to Jammer
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchFlag -> ESBranchFlag
+# branch
+# [9] ESBranchFlag -> ESBranchFlag
+# branch
+# [10] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [11] ESAttackUp -> Demon Solo
+# Condition: None
+# Increase damage to 300% for the next 999 turns
+# [12] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [13] ESBoardChangeAttackBits -> Shakuhachi Whirlwind
+# Condition: One-time use
+# Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Jammer
+# [14] ESEndPath -> ESEndPath
+# end_turn
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] ESSkyfall -> Resonating Wood
+# Condition: None
+# Wood skyfall +15% for 10 turns
+# [17] ESBranchFlag -> ESBranchFlag
+# branch
+# [18] ESEndPath -> ESEndPath
+# end_turn

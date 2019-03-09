@@ -1,0 +1,58 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 596
+monster_name_en: Hera-Is
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 5 random cards for 1~2 turns
+  desc_jp: Bind 5 random cards for 1~2 turns
+  name_en: Ice Coffin
+  name_jp: Ice Coffin
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchFlag -> ESBranchFlag
+# branch
+# [2] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [3] ESBindRandom -> Ice Coffin
+# Condition: None
+# Bind 5 random cards for 1~2 turns
+# [4] ESBranchHP -> ESBranchHP
+# branch
+# [5] ESJammerChangeRandom -> Mischief by God
+# Condition: When < 55% hp , one-time use
+# Change Random 2 to Jammer
+# [6] ESAttackMultihit -> Freeze Blast
+# Condition: 75% chance when < 75% hp
+# Enemy action
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchFlag -> ESBranchFlag
+# branch
+# [9] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [10] ESBindRandom -> Crystal Coffin
+# Condition: None
+# Bind 3 random cards for 2~3 turns

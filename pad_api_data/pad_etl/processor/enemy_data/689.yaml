@@ -1,0 +1,52 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 689
+monster_name_en: Rowdy Red Samurai Goblin
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Turn 2
+  desc_jp: ''
+  name_en: Turn 2
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 99 turns
+  desc_jp: Increase damage to 200% for the next 99 turns
+  name_en: Offensive Formation
+  name_jp: Offensive Formation
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 90%~180% damage (3~6 hits, 30% each)
+  desc_jp: Deal 90%~180% damage (3~6 hits, 30% each)
+  name_en: Wild Slashes
+  name_jp: Wild Slashes
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESAttackUp -> Offensive Formation
+# Condition: None
+# Increase damage to 200% for the next 99 turns
+# [2] ESAttackMultihit -> Wild Slashes
+# Condition: 70% chance
+# Enemy action

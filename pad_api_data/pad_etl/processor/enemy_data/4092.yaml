@@ -1,0 +1,151 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4092
+monster_name_en: Raging Blue Flame, Iori Yagami
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Lock all Dark orbs
+  desc_jp: Lock all Dark orbs
+  name_en: I will end your pain.
+  name_jp: I will end your pain.
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Leader changes to random sub for 2 turns
+  desc_jp: Leader changes to random sub for 2 turns
+  name_en: Kuzukaze
+  name_jp: Kuzukaze
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 2
+  desc_jp: ''
+  name_en: Turn 2
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 5th row to Dark orbs, Deal 100% damage
+  desc_jp: Change 5th row to Dark orbs, Deal 100% damage
+  name_en: '108 Shiki: Yamibarai'
+  name_jp: '108 Shiki: Yamibarai'
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 105% damage (3 hits, 35% each)
+  desc_jp: Deal 105% damage (3 hits, 35% each)
+  name_en: '127 Shiki: Aoibana'
+  name_jp: '127 Shiki: Aoibana'
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 19
+  desc_jp: ''
+  name_en: HP <= 19
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 1 own leader for 1 turns
+  desc_jp: Bind 1 own leader for 1 turns
+  name_en: You won't die that easy!
+  name_jp: You won't die that easy!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 19
+  desc_jp: ''
+  name_en: HP <= 19
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 2nd column to Dark orbs, 4th column to Dark orbs, 6th column to
+    Dark orbs, Deal 150% damage
+  desc_jp: Change 2nd column to Dark orbs, 4th column to Dark orbs, 6th column to
+    Dark orbs, Deal 150% damage
+  name_en: 'Ura 108 Shiki: Yasakazuki'
+  name_jp: 'Ura 108 Shiki: Yasakazuki'
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESBranchCard -> ESBranchCard
+# branch
+# [7] ESOrbLock -> I will end your pain.
+# Condition: None
+# Lock all Dark orbs
+# [8] ESOrbLock -> I will end your pain.
+# Condition: None
+# Lock 4 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [9] ESOrbLock -> Then let it burn, as it demands.
+# Condition: None
+# Lock all Dark orbs
+# [10] ESOrbLock -> Then let it burn, as it demands.
+# Condition: None
+# Lock 4 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESBranchHP -> ESBranchHP
+# branch
+# [13] ESBranchFlag -> ESBranchFlag
+# branch
+# [14] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [15] ESLeaderSwap -> Kuzukaze
+# Condition: None
+# Leader changes to random sub for 2 turns
+# [16] ESRowSpawnMulti -> 108 Shiki: Yamibarai
+# Condition: One-time use
+# Change 5th row to Dark orbs
+# [17] ESAttackMultihit -> 127 Shiki: Aoibana
+# Condition: None
+# Enemy action
+# [18] ESEndPath -> ESEndPath
+# end_turn
+# [19] ESBranchCounter -> ESBranchCounter
+# branch
+# [20] ESSetCounter -> ESSetCounter
+# set_counter
+# [21] ESBindTarget -> You won't die that easy!
+# Condition: None
+# Bind 1 own leader for 1 turns
+# [22] ESSetCounter -> ESSetCounter
+# set_counter
+# [23] ESColumnSpawnMulti -> Ura 108 Shiki: Yasakazuki
+# Condition: None
+# Change 2nd column to Dark orbs, 4th column to Dark orbs, 6th column to Dark orbs
+# [24] ESEndPath -> ESEndPath
+# end_turn
+# [25] SkillSet:
+# 	Condition: On death
+# 	[0] ESInactivity -> It can't end like this!
+# 	Do nothing

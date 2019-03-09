@@ -1,0 +1,221 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 393
+monster_name_en: Fertility Deity, Evil Ceres
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 30%
+  desc_jp: Survive attacks with 1 HP when HP > 30%
+  name_en: 30% Resolve
+  name_jp: 30% Resolve
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Absorb combo <= 6 damage for 999 turns + Voids status ailments for 999
+    turns
+  desc_jp: Absorb combo <= 6 damage for 999 turns + Voids status ailments for 999
+    turns
+  name_en: Dark Melancholy + Divine Protection of the Good Harvest
+  name_jp: Dark Melancholy + Divine Protection of the Good Harvest
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Deal 240% damage
+  desc_jp: Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Deal 240% damage
+  name_en: Sephiroth Anger
+  name_jp: Sephiroth Anger
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb Light damage for 1 turns
+  desc_jp: Absorb Light damage for 1 turns
+  name_en: Light Fascination
+  name_jp: Light Fascination
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Light skyfall +20% for 5 turns + Change all orbs to Fire, Water, Wood,
+    Light, Dark, Heal
+  desc_jp: Light skyfall +20% for 5 turns + Change all orbs to Fire, Water, Wood,
+    Light, Dark, Heal
+  name_en: Lucent Blessing + Sephiroth Rage
+  name_jp: Lucent Blessing + Sephiroth Rage
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Deal 340% damage
+  desc_jp: Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Deal 340% damage
+  name_en: Sephiroth Rage
+  name_jp: Sephiroth Rage
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Void damage >= 500000 for 99 turns + Absorb Wood damage for 1 turns
+  desc_jp: Void damage >= 500000 for 99 turns + Absorb Wood damage for 1 turns
+  name_en: God Tree's Basket + Plant Fascination
+  name_jp: God Tree's Basket + Plant Fascination
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb Fire damage for 1 turns + Change 5th row to Heal orbs
+  desc_jp: Absorb Fire damage for 1 turns + Change 5th row to Heal orbs
+  name_en: Flame Fascination + Natural Disaster
+  name_jp: Flame Fascination + Natural Disaster
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Absorb Water damage for 1 turns + Change 5th row to Heal orbs
+  desc_jp: Absorb Water damage for 1 turns + Change 5th row to Heal orbs
+  name_en: Ice Fascination + Natural Disaster
+  name_jp: Ice Fascination + Natural Disaster
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Absorb Dark damage for 1 turns + Change 5th row to Heal orbs
+  desc_jp: Absorb Dark damage for 1 turns + Change 5th row to Heal orbs
+  name_en: Dark Fascination + Natural Disaster
+  name_jp: Dark Fascination + Natural Disaster
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Absorb Wood damage for 1 turns + Change 5th row to Heal orbs
+  desc_jp: Absorb Wood damage for 1 turns + Change 5th row to Heal orbs
+  name_en: Plant Fascination + Natural Disaster
+  name_jp: Plant Fascination + Natural Disaster
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 1
+  desc_jp: ''
+  name_en: HP <= 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 50% hp + Player -500% HP
+  desc_jp: Enemy recover 50% hp + Player -500% HP
+  name_en: Healing Wind + Evil Eye
+  name_jp: Healing Wind + Evil Eye
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESAbsorbCombo -> Dark Melancholy
+# 	Absorb combo <= 6 damage for 999 turns
+# 	[1] ESStatusShield -> Divine Protection of the Good Harvest
+# 	Voids status ailments for 999 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] SkillSet:
+# 	Condition: When < 1% hp
+# 	[0] ESRecoverEnemy -> Healing Wind
+# 	Enemy recover 50% hp
+# 	[1] ESGravity -> Evil Eye
+# 	Player -500% HP
+# [7] ESBranchHP -> ESBranchHP
+# branch
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESBoardChangeAttackBits -> Sephiroth Anger
+# Condition: One-time use
+# Change all orbs to Fire, Water, Wood, Light, Dark, Heal
+# [10] ESAbsorbAttribute -> Light Fascination
+# Condition: None
+# Absorb Light damage for 1 turns
+# [11] ESBranchFlag -> ESBranchFlag
+# branch
+# [12] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [13] SkillSet:
+# 	Condition: None
+# 	[0] ESSkyfall -> Lucent Blessing
+# 	Light skyfall +20% for 5 turns
+# 	[1] ESBoardChangeAttackBits -> Sephiroth Rage
+# 	Change all orbs to Fire, Water, Wood, Light, Dark, Heal
+# [14] ESBoardChangeAttackBits -> Sephiroth Rage
+# Condition: None
+# Change all orbs to Fire, Water, Wood, Light, Dark, Heal
+# [15] ESBranchFlag -> ESBranchFlag
+# branch
+# [16] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [17] SkillSet:
+# 	Condition: None
+# 	[0] ESVoidShield -> God Tree's Basket
+# 	Void damage >= 500000 for 99 turns
+# 	[1] ESAbsorbAttribute -> Plant Fascination
+# 	Absorb Wood damage for 1 turns
+# [18] SkillSet:
+# 	Condition: 25% chance
+# 	[0] ESAbsorbAttribute -> Flame Fascination
+# 	Absorb Fire damage for 1 turns
+# 	[1] ESRowSpawnMulti -> Natural Disaster
+# 	Change 5th row to Heal orbs
+# [19] SkillSet:
+# 	Condition: 25% chance
+# 	[0] ESAbsorbAttribute -> Ice Fascination
+# 	Absorb Water damage for 1 turns
+# 	[1] ESRowSpawnMulti -> Natural Disaster
+# 	Change 5th row to Heal orbs
+# [20] SkillSet:
+# 	Condition: 25% chance
+# 	[0] ESAbsorbAttribute -> Dark Fascination
+# 	Absorb Dark damage for 1 turns
+# 	[1] ESRowSpawnMulti -> Natural Disaster
+# 	Change 5th row to Heal orbs
+# [21] SkillSet:
+# 	Condition: 25% chance
+# 	[0] ESAbsorbAttribute -> Plant Fascination
+# 	Absorb Wood damage for 1 turns
+# 	[1] ESRowSpawnMulti -> Natural Disaster
+# 	Change 5th row to Heal orbs
+# [22] ESEndPath -> ESEndPath
+# end_turn
+# [23] ESResolve -> 30% Resolve
+# Survive attacks with 1 HP when HP > 30%

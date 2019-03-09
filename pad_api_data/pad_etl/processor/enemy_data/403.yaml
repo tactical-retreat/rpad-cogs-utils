@@ -1,0 +1,58 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 403
+monster_name_en: Griffin, the Hunter of Tempests
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 10
+############################################################
+!SkillRecordListing
+level: 10
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Deal 50% damage
+  desc_jp: Deal 50% damage
+  name_en: Divine Speed
+  name_jp: Divine Speed
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 30
+  desc_jp: ''
+  name_en: HP <= 30
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 400% damage (4 hits, 100% each)
+  desc_jp: Deal 400% damage (4 hits, 100% each)
+  name_en: Kamikaze
+  name_jp: Kamikaze
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESAttackMultihit -> Divine Speed
+# Condition: None
+# Enemy action
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESAttackMultihit -> Kamikaze
+# Condition: When < 30% hp
+# Enemy action

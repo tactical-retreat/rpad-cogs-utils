@@ -1,0 +1,79 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 102760
+monster_name_en: Yellow Chrysanthemum Virtue, Xiu Min
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Jammer, Poison skyfall +20% for 10 turns + Void damage >= 1000000 for 99
+    turns
+  desc_jp: Jammer, Poison skyfall +20% for 10 turns + Void damage >= 1000000 for 99
+    turns
+  name_en: Melancholic Colors + Colorless
+  name_jp: Melancholic Colors + Colorless
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Fire, Water, Wood, Light, Dark, Deal 100% damage
+  desc_jp: Change all orbs to Fire, Water, Wood, Light, Dark, Deal 100% damage
+  name_en: Vibrant Petals
+  name_jp: Vibrant Petals
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Random 1 orbs change every 1.5s for 1 turns, Deal 100% damage
+  desc_jp: Random 1 orbs change every 1.5s for 1 turns, Deal 100% damage
+  name_en: Chill-Flower's Rising
+  name_jp: Chill-Flower's Rising
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 10
+  desc_jp: ''
+  name_en: HP <= 10
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 200% damage (10 hits, 20% each)
+  desc_jp: Deal 200% damage (10 hits, 20% each)
+  name_en: Polychrome Chrysanthemum
+  name_jp: Polychrome Chrysanthemum
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESSkyfall -> Melancholic Colors
+# 	Jammer, Poison skyfall +20% for 10 turns
+# 	[1] ESVoidShield -> Colorless
+# 	Void damage >= 1000000 for 99 turns
+# [3] ESAttackMultihit -> Polychrome Chrysanthemum
+# Condition: When < 10% hp
+# Enemy action
+# [4] ESBoardChangeAttackBits -> Vibrant Petals
+# Condition: 50% chance
+# Change all orbs to Fire, Water, Wood, Light, Dark
+# [5] ESSpinnersRandom -> Chill-Flower's Rising
+# Condition: None
+# Random 1 orbs change every 1.5s for 1 turns
+# [6] ESEndPath -> ESEndPath
+# end_turn

@@ -1,0 +1,44 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3910
+monster_name_en: Flash White Dragon Caller, Sonia Elle
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Change all orbs to Fire, Light, Heal, Deal 100% damage
+  desc_jp: Change all orbs to Fire, Light, Heal, Deal 100% damage
+  name_en: Draco Summon - Light, Fire & Life
+  name_jp: Draco Summon - Light, Fire & Life
+  record_type_name: PREEMPT
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESBoardChangeAttackBits -> Draco Summon - Light, Fire & Life
+# Condition: One-time use
+# Change all orbs to Fire, Light, Heal
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBoardChangeAttackBits -> Draco Summon - Light, Fire & Life
+# Condition: One-time use
+# Change all orbs to Fire, Light, Heal
+# [7] ESEndPath -> ESEndPath
+# end_turn

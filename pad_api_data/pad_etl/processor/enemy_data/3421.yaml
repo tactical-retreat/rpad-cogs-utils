@@ -1,0 +1,77 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3421
+monster_name_en: New Year's Fortune Cat, Monyako
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs
+  desc_jp: Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs
+  name_en: So sticky!
+  name_jp: So sticky!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: 1x1 cloud appear for 2 turns at random location
+  desc_jp: 1x1 cloud appear for 2 turns at random location
+  name_en: Mochi Steam
+  name_jp: Mochi Steam
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage (2 hits, 50% each)
+  desc_jp: Deal 100% damage (2 hits, 50% each)
+  name_en: Mochi Pound
+  name_jp: Mochi Pound
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESOrbLock -> So sticky!
+# Condition: None
+# Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESCloud -> Mochi Steam
+# Condition: One-time use
+# 1x1 cloud appear for 2 turns at random location
+# [9] ESAttackMultihit -> Mochi Pound
+# Condition: None
+# Enemy action
+# [10] ESEndPath -> ESEndPath
+# end_turn

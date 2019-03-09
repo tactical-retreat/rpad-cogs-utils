@@ -1,0 +1,232 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3992
+monster_name_en: '*****'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 99 turns
+  desc_jp: Reduce damage from all sources by 50% for 99 turns
+  name_en: Happy Halloween!
+  name_jp: Happy Halloween!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 130% damage
+  desc_jp: Deal 130% damage
+  name_en: Halloween REMDra Punch!
+  name_jp: Halloween REMDra Punch!
+  record_type_name: ACTION
+
+############################################################
+### Data @ 2
+############################################################
+!SkillRecordListing
+level: 2
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Blind orbs in specific positions for 1 turns + Voids status ailments for
+    5 turns + Reduce damage from all sources by 75% for 1 turns
+  desc_jp: Blind orbs in specific positions for 1 turns + Voids status ailments for
+    5 turns + Reduce damage from all sources by 75% for 1 turns
+  name_en: Happy Halloween! + Suspicious Aura + Pull!
+  name_jp: Happy Halloween! + Suspicious Aura + Pull!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 1 turns, Deal 100% damage
+  desc_jp: Reduce damage from all sources by 50% for 1 turns, Deal 100% damage
+  name_en: Pull it!
+  name_jp: Pull it!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 1 turns, Deal 120% damage
+  desc_jp: Reduce damage from all sources by 50% for 1 turns, Deal 120% damage
+  name_en: Come on! Pull!
+  name_jp: Come on! Pull!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 79
+  desc_jp: ''
+  name_en: HP <= 79
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing + Bind 1 subs for 4 turns
+  desc_jp: Do nothing + Bind 1 subs for 4 turns
+  name_en: It's putting some back into it + Jack-o'-Lantern
+  name_jp: It's putting some back into it + Jack-o'-Lantern
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Do nothing + Change all orbs to Water, Dark
+  desc_jp: Do nothing + Change all orbs to Water, Dark
+  name_en: It's putting some back into it + Holiday Tuning Circle - Water & Dark
+  name_jp: It's putting some back into it + Holiday Tuning Circle - Water & Dark
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Do nothing + Change 5th row to Dark orbs
+  desc_jp: Do nothing + Change 5th row to Dark orbs
+  name_en: It's putting some back into it + Midnight Spell
+  name_jp: It's putting some back into it + Midnight Spell
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Do nothing + Change Random to Heal
+  desc_jp: Do nothing + Change Random to Heal
+  name_en: It's putting some back into it + Pumpkin Season
+  name_jp: It's putting some back into it + Pumpkin Season
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Do nothing + Change Wood to Dark
+  desc_jp: Do nothing + Change Wood to Dark
+  name_en: It's putting some back into it + Costume Changing Technique - Dark
+  name_jp: It's putting some back into it + Costume Changing Technique - Dark
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Do nothing + Change all orbs to Wood, Dark, Heal
+  desc_jp: Do nothing + Change all orbs to Wood, Dark, Heal
+  name_en: It's putting some back into it + Holiday Tuning Circle - Wood, Dark & Life
+  name_jp: It's putting some back into it + Holiday Tuning Circle - Wood, Dark & Life
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Do nothing + Change all orbs to Water, Dark, Heal
+  desc_jp: Do nothing + Change all orbs to Water, Dark, Heal
+  name_en: It's putting some back into it + Nene's Seal of Approval
+  name_jp: It's putting some back into it + Nene's Seal of Approval
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 14
+  desc_jp: ''
+  name_en: HP <= 14
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 900% damage (3 hits, 300% each)
+  desc_jp: Deal 900% damage (3 hits, 300% each)
+  name_en: Throw me some more Magic Stones!
+  name_jp: Throw me some more Magic Stones!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESDamageShield -> Happy Halloween!
+# Condition: One-time use
+# Reduce damage from all sources by 50% for 99 turns
+# [4] ESAttackMultihit -> Halloween REMDra Punch!
+# Condition: None
+# Enemy action
+# [5] ESBranchFlag -> ESBranchFlag
+# branch
+# [6] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [7] SkillSet:
+# 	Condition: None
+# 	[0] ESBlindStickyFixed -> Happy Halloween!
+# 	Blind orbs in specific positions for 1 turns
+# 	[1] ESStatusShield -> Suspicious Aura
+# 	Voids status ailments for 5 turns
+# 	[2] ESDamageShield -> Pull!
+# 	Reduce damage from all sources by 75% for 1 turns
+# [8] ESEndPath -> ESEndPath
+# end_turn
+# [9] ESBranchHP -> ESBranchHP
+# branch
+# [10] ESBranchFlag -> ESBranchFlag
+# branch
+# [11] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [12] ESDamageShield -> Pull it!
+# Condition: None
+# Reduce damage from all sources by 50% for 1 turns
+# [13] ESDamageShield -> Come on! Pull!
+# Condition: None
+# Reduce damage from all sources by 50% for 1 turns
+# [14] ESEndPath -> ESEndPath
+# end_turn
+# [15] ESBranchHP -> ESBranchHP
+# branch
+# [16] SkillSet:
+# 	Condition: 5% chance
+# 	[0] ESInactivity -> It's putting some back into it
+# 	Do nothing
+# 	[1] ESBindAttack -> Jack-o'-Lantern
+# 	Bind 1 subs for 4 turns
+# [17] SkillSet:
+# 	Condition: 16% chance
+# 	[0] ESInactivity -> It's putting some back into it
+# 	Do nothing
+# 	[1] ESBoardChangeAttackBits -> Holiday Tuning Circle - Water & Dark
+# 	Change all orbs to Water, Dark
+# [18] SkillSet:
+# 	Condition: 16% chance
+# 	[0] ESInactivity -> It's putting some back into it
+# 	Do nothing
+# 	[1] ESRowSpawnMulti -> Midnight Spell
+# 	Change 5th row to Dark orbs
+# [19] SkillSet:
+# 	Condition: 16% chance
+# 	[0] ESInactivity -> It's putting some back into it
+# 	Do nothing
+# 	[1] ESOrbChangeAttack -> Pumpkin Season
+# 	Change Random to Heal
+# [20] SkillSet:
+# 	Condition: 16% chance
+# 	[0] ESInactivity -> It's putting some back into it
+# 	Do nothing
+# 	[1] ESOrbChangeAttack -> Costume Changing Technique - Dark
+# 	Change Wood to Dark
+# [21] SkillSet:
+# 	Condition: 16% chance
+# 	[0] ESInactivity -> It's putting some back into it
+# 	Do nothing
+# 	[1] ESBoardChangeAttackBits -> Holiday Tuning Circle - Wood, Dark & Life
+# 	Change all orbs to Wood, Dark, Heal
+# [22] SkillSet:
+# 	Condition: 15% chance
+# 	[0] ESInactivity -> It's putting some back into it
+# 	Do nothing
+# 	[1] ESBoardChangeAttackBits -> Nene's Seal of Approval
+# 	Change all orbs to Water, Dark, Heal
+# [23] ESEndPath -> ESEndPath
+# end_turn
+# [24] ESAttackMultihit -> Throw me some more Magic Stones!
+# Condition: None
+# Enemy action
+# [25] ESEndPath -> ESEndPath
+# end_turn
+# [26] ESDeathCry -> REMDra death performance
+# Condition: On death
+# Show death effect

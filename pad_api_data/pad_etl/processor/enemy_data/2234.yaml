@@ -1,0 +1,210 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2234
+monster_name_en: Awoken Deus ex Machina
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 5 turns
+  desc_jp: Reduce damage from all sources by 50% for 5 turns
+  name_en: Battle Initiation
+  name_jp: Battle Initiation
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 4 random for 2 turns, Deal 120% damage
+  desc_jp: Bind 4 random for 2 turns, Deal 120% damage
+  name_en: Illusory Faith Theatre
+  name_jp: Illusory Faith Theatre
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 99
+  desc_jp: ''
+  name_en: HP <= 99
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change own attribute to random one of Fire, Water, Wood, Light, Dark, Deal
+    120% damage
+  desc_jp: Change own attribute to random one of Fire, Water, Wood, Light, Dark, Deal
+    120% damage
+  name_en: Elemental Turn
+  name_jp: Elemental Turn
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 99
+  desc_jp: ''
+  name_en: HP <= 99
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 150% damage (3 hits, 50% each)
+  desc_jp: Deal 150% damage (3 hits, 50% each)
+  name_en: Allegro Step
+  name_jp: Allegro Step
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 79
+  desc_jp: ''
+  name_en: HP <= 79
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Leader changes to random sub for 1 turns
+  desc_jp: Leader changes to random sub for 1 turns
+  name_en: Waltz
+  name_jp: Waltz
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change 1st, 3rd, 5th, 7th column to Fire, Water, Wood, Light, Dark orbs,
+    2nd, 4th, 6th column to Jammer, Poison orbs, Deal 100% damage
+  desc_jp: Change 1st, 3rd, 5th, 7th column to Fire, Water, Wood, Light, Dark orbs,
+    2nd, 4th, 6th column to Jammer, Poison orbs, Deal 100% damage
+  name_en: Rondo
+  name_jp: Rondo
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Delay active skills by 3 turns
+  desc_jp: Delay active skills by 3 turns
+  name_en: Requiem
+  name_jp: Requiem
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 79
+  desc_jp: ''
+  name_en: HP <= 79
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 150% damage (3 hits, 50% each)
+  desc_jp: Deal 150% damage (3 hits, 50% each)
+  name_en: Allegro Step
+  name_jp: Allegro Step
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 19
+  desc_jp: ''
+  name_en: HP <= 19
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Delay active skills by 1 turns, Deal 130% damage
+  desc_jp: Delay active skills by 1 turns, Deal 130% damage
+  name_en: Preparation
+  name_jp: Preparation
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 19
+  desc_jp: ''
+  name_en: HP <= 19
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 1000% damage
+  desc_jp: Deal 1000% damage
+  name_en: Sudden Curtain Call
+  name_jp: Sudden Curtain Call
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 80
+  desc_jp: ''
+  name_en: HP <= 80
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 30% hp, Deal 80% damage
+  desc_jp: Enemy recover 30% hp, Deal 80% damage
+  name_en: Arabesque Repair
+  name_jp: Arabesque Repair
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESDamageShield -> Battle Initiation
+# Condition: None
+# Reduce damage from all sources by 50% for 5 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] ESBranchHP -> ESBranchHP
+# branch
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESChangeAttribute -> Elemental Turn
+# Condition: One-time use
+# Change own attribute to random one of Fire, Water, Wood, Light, Dark
+# [10] ESRecoverEnemy -> Arabesque Repair
+# Condition: 20% chance when < 80% hp
+# Enemy recover 30% hp
+# [11] ESAttackMultihit -> Allegro Step
+# Condition: None
+# Enemy action
+# [12] ESBranchCard -> ESBranchCard
+# branch
+# [13] ESBindAttack -> Illusory Faith Theatre
+# Condition: None
+# Bind 4 random for 2 turns
+# [14] ESEndPath -> ESEndPath
+# end_turn
+# [15] ESBranchFlag -> ESBranchFlag
+# branch
+# [16] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [17] ESRecoverPlayer -> Homogeneity Check
+# Condition: One-time use
+# Player recover 100% hp
+# [18] ESBranchFlag -> ESBranchFlag
+# branch
+# [19] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [20] ESLeaderSwap -> Waltz
+# Condition: 33% chance
+# Leader changes to random sub for 1 turns
+# [21] ESColumnSpawnMulti -> Rondo
+# Condition: 33% chance
+# Change 1st, 3rd, 5th, 7th column to Fire, Water, Wood, Light, Dark orbs, 2nd, 4th, 6th column to Jammer, Poison orbs
+# [22] ESSkillDelay -> Requiem
+# Condition: 34% chance
+# Delay active skills by 3 turns
+# [23] ESEndPath -> ESEndPath
+# end_turn
+# [24] ESBranchFlag -> ESBranchFlag
+# branch
+# [25] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [26] ESSkillDelay -> Preparation
+# Condition: None
+# Delay active skills by 1 turns
+# [27] ESBranchCard -> ESBranchCard
+# branch
+# [28] ESAttackMultihit -> Sudden Curtain Call
+# Condition: None
+# Enemy action
+# [29] ESAttackMultihit -> Elimination of all of Master's Enemies
+# Condition: None
+# Enemy action

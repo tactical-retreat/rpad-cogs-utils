@@ -1,0 +1,77 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 481
+monster_name_en: Icedragon Depth Plesios
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 3
+############################################################
+!SkillRecordListing
+level: 3
+overrides: []
+records:
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage (2 hits, 50% each)
+  desc_jp: Deal 100% damage (2 hits, 50% each)
+  name_en: Blizzard Breath
+  name_jp: Blizzard Breath
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 24
+  desc_jp: ''
+  name_en: HP <= 24
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 1000% damage (5 hits, 200% each)
+  desc_jp: Deal 1000% damage (5 hits, 200% each)
+  name_en: God Blizzard Breath
+  name_jp: God Blizzard Breath
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 75
+  desc_jp: ''
+  name_en: HP <= 75
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 80% damage
+  desc_jp: Change Random to Jammer, Deal 80% damage
+  name_en: Freezing Breath
+  name_jp: Freezing Breath
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESNone -> ESNone
+# None
+# [4] ESBranchHP -> ESBranchHP
+# branch
+# [5] ESAttackMultihit -> God Blizzard Breath
+# Condition: None
+# Enemy action
+# [6] ESEndPath -> ESEndPath
+# end_turn
+# [7] ESOrbChangeAttack -> Freezing Breath
+# Condition: When < 75% hp , one-time use
+# Change Random to Jammer
+# [8] ESAttackMultihit -> Blizzard Breath
+# Condition: None
+# Enemy action

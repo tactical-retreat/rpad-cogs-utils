@@ -1,0 +1,93 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1763
+monster_name_en: Rich Bowl Dragon, Katsumin
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Fire by 50%
+  desc_jp: Reduce damage from Fire by 50%
+  name_en: Halve Fire
+  name_jp: Halve Fire
+  record_type_name: PASSIVE
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Fire by 50%
+  desc_jp: Reduce damage from Fire by 50%
+  name_en: Halve Fire
+  name_jp: Halve Fire
+  record_type_name: PASSIVE
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESAttackUp -> Victory will be mine!
+# Condition: None
+# Increase damage to 200% for the next 1 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchFlag -> ESBranchFlag
+# branch
+# [9] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [10] ESOrbChangeAttack -> Hoof of Victory
+# Condition: None
+# Change Random to Jammer
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESBranchHP -> ESBranchHP
+# branch
+# [13] ESAttackUp -> I'll win at any cost!
+# Condition: When < 30% hp , one-time use
+# Increase damage to 300% for the next 1 turns
+# [14] ESAttackMultihit -> Double Hooves of Victory
+# Condition: When < 30% hp
+# Enemy action
+# [15] ESOrbChangeAttack -> Hoof of Victory
+# Condition: 50% chance
+# Change Random to Jammer
+# [16] ESRowSpawnMulti -> Tail Snap
+# Condition: 60% chance
+# Change 3rd row to Wood orbs
+# [17] ESEndPath -> ESEndPath
+# end_turn
+# [18] ESBranchFlag -> ESBranchFlag
+# branch
+# [19] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [20] ESBindTarget -> Best Smile
+# Condition: None
+# Bind 1 both leaders for 2~4 turns
+# [21] ESEndPath -> ESEndPath
+# end_turn
+# [22] ESAttributeResist -> Halve Fire
+# Reduce damage from Fire by 50%

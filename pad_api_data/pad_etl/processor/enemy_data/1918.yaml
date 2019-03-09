@@ -1,0 +1,84 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1918
+monster_name_en: Battle Flower Spirit, Mandrake
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Delay active skills by 3 turns
+  desc_jp: Delay active skills by 3 turns
+  name_en: Strange Scream
+  name_jp: Strange Scream
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 150% damage (5 hits, 30% each)
+  desc_jp: Deal 150% damage (5 hits, 30% each)
+  name_en: Rock of Mandragora
+  name_jp: Rock of Mandragora
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  name_en: Gets excited
+  name_jp: Gets excited
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 30
+  desc_jp: ''
+  name_en: HP <= 30
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 3rd row to Wood orbs, Deal 200% damage
+  desc_jp: Change 3rd row to Wood orbs, Deal 200% damage
+  name_en: Mandrake Beam
+  name_jp: Mandrake Beam
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESSkillDelay -> Strange Scream
+# Condition: None
+# Delay active skills by 3 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESRowSpawnMulti -> Mandrake Beam
+# Condition: When < 30% hp
+# Change 3rd row to Wood orbs
+# [7] ESAttackMultihit -> Rock of Mandragora
+# Condition: One-time use
+# Enemy action
+# [8] ESInactivity -> Gets excited
+# Condition: None
+# Do nothing

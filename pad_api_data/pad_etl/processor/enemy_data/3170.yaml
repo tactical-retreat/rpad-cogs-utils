@@ -1,0 +1,84 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3170
+monster_name_en: No.1 Wind, Hamukatsuman Buster
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Player -50% HP
+  desc_jp: Player -50% HP
+  name_en: Speed Attacker
+  name_jp: Speed Attacker
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids status ailments for 3 turns
+  desc_jp: Voids status ailments for 3 turns
+  name_en: Team Hamukatsu will protect the world!
+  name_jp: Team Hamukatsu will protect the world!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage (2 hits, 50% each)
+  desc_jp: Deal 100% damage (2 hits, 50% each)
+  name_en: Attack!
+  name_jp: Attack!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 1 random subs for 2~3 turns
+  desc_jp: Bind 1 random subs for 2~3 turns
+  name_en: Come on, let's fight!
+  name_jp: Come on, let's fight!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESGravity -> Speed Attacker
+# Condition: One-time use
+# Player -50% HP
+# [5] ESStatusShield -> Team Hamukatsu will protect the world!
+# Condition: One-time use
+# Voids status ailments for 3 turns
+# [6] ESBindRandomSub -> Come on, let's fight!
+# Condition: When < 49% hp , one-time use
+# Bind 1 random subs for 2~3 turns
+# [7] ESAttackMultihit -> Attack!
+# Condition: None
+# Enemy action
+# [8] ESEndPath -> ESEndPath
+# end_turn

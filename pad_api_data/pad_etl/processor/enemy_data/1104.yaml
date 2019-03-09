@@ -1,0 +1,84 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1104
+monster_name_en: Sanctuary Guardian, Archangel
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Change Random 1 to Jammer
+  desc_jp: Change Random 1 to Jammer
+  name_en: Cold Angelic Smile
+  name_jp: Cold Angelic Smile
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Light, Deal 75% damage
+  desc_jp: Change Random to Light, Deal 75% damage
+  name_en: Shining Ray
+  name_jp: Shining Ray
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Light, Deal 75% damage
+  desc_jp: Change Random to Light, Deal 75% damage
+  name_en: Shining Ray
+  name_jp: Shining Ray
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 30
+  desc_jp: ''
+  name_en: HP <= 30
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Heal to Jammer, Deal 50% damage
+  desc_jp: Change Heal to Jammer, Deal 50% damage
+  name_en: Heart Break
+  name_jp: Heart Break
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESJammerChangeRandom -> Cold Angelic Smile
+# Condition: None
+# Change Random 1 to Jammer
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESAttackUp -> Sadistic Switch
+# Condition: When < 75% hp , one-time use
+# Increase damage to 200% for the next 999 turns
+# [7] ESOrbChangeAttack -> Shining Ray
+# Condition: 40% chance
+# Change Random to Light
+# [8] ESOrbChangeAttack -> Heart Break
+# Condition: When < 30% hp
+# Change Heal to Jammer

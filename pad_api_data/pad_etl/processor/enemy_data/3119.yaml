@@ -1,0 +1,140 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3119
+monster_name_en: Cool Evening Sorceress, Almadel
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Spawn random 6 Heal orbs, Deal 100% damage
+  desc_jp: Spawn random 6 Heal orbs, Deal 100% damage
+  name_en: Why don't you cool off too?
+  name_jp: Why don't you cool off too?
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Heal to Wood, Deal 80% damage
+  desc_jp: Change Heal to Wood, Deal 80% damage
+  name_en: Grimoire Summer
+  name_jp: Grimoire Summer
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 1 subs for 1~2 turns, Deal 80% damage
+  desc_jp: Bind 1 subs for 1~2 turns, Deal 80% damage
+  name_en: Sunset Cage
+  name_jp: Sunset Cage
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
+    orbs, Deal 100% damage
+  desc_jp: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
+    orbs, Deal 100% damage
+  name_en: Glimmering Beach
+  name_jp: Glimmering Beach
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  name_en: She closed her book
+  name_jp: She closed her book
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Wood, Deal 500% damage
+  desc_jp: Change Random to Wood, Deal 500% damage
+  name_en: Summer Explosion
+  name_jp: Summer Explosion
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESRandomSpawn -> Why don't you cool off too?
+# Condition: When fire, water, wood, light, dark, jammer, poison, mortal poison orbs are on the board
+# Spawn random 6 Heal orbs
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESBranchHP -> ESBranchHP
+# branch
+# [10] ESOrbChangeAttackBits -> Grimoire Summer
+# Condition: One-time use
+# Change Heal to Wood
+# [11] ESBindAttack -> Sunset Cage
+# Condition: None
+# Bind 1 subs for 1~2 turns
+# [12] ESEndPath -> ESEndPath
+# end_turn
+# [13] ESBranchFlag -> ESBranchFlag
+# branch
+# [14] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [15] ESOrbLock -> Glimmering Beach
+# Condition: None
+# Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [16] ESEndPath -> ESEndPath
+# end_turn
+# [17] ESBranchFlag -> ESBranchFlag
+# branch
+# [18] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [19] ESInactivity -> She closed her book
+# Condition: None
+# Do nothing
+# [20] ESEndPath -> ESEndPath
+# end_turn
+# [21] ESOrbChangeAttack -> Summer Explosion
+# Condition: None
+# Change Random to Wood
+# [22] ESEndPath -> ESEndPath
+# end_turn

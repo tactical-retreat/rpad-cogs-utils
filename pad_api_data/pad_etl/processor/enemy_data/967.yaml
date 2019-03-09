@@ -1,0 +1,52 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 967
+monster_name_en: Stormy Sea Dragon, Levia
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Water, Deal 125% damage
+  desc_jp: Change Random to Water, Deal 125% damage
+  name_en: Blizzard Ball
+  name_jp: Blizzard Ball
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 1 friend leader for 4 turns
+  desc_jp: Bind 1 friend leader for 4 turns
+  name_en: Constrict
+  name_jp: Constrict
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBindTarget -> Constrict
+# Condition: When < 50% hp
+# Bind 1 friend leader for 4 turns
+# [2] ESOrbChangeAttack -> Blizzard Ball
+# Condition: One-time use
+# Change Random to Water

@@ -1,0 +1,142 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4856
+monster_name_en: Black Swordsman, Kirito
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb combo <= 6 damage for 5 turns + Movetime -3s for 5 turns
+  desc_jp: Absorb combo <= 6 damage for 5 turns + Movetime -3s for 5 turns
+  name_en: Ok, who's next? + Ok then. Let's finish it.
+  name_jp: Ok, who's next? + Ok then. Let's finish it.
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 120% damage (2 hits, 60% each)
+  desc_jp: Deal 120% damage (2 hits, 60% each)
+  name_en: Move!
+  name_jp: Move!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change 1st column to Water orbs, 6th column to Dark orbs, Deal 100% damage
+  desc_jp: Change 1st column to Water orbs, 6th column to Dark orbs, Deal 100% damage
+  name_en: Haaaaaaaa!
+  name_jp: Haaaaaaaa!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change 1st row to Water orbs, 5th row to Dark orbs, Deal 100% damage
+  desc_jp: Change 1st row to Water orbs, 5th row to Dark orbs, Deal 100% damage
+  name_en: Haaargh!
+  name_jp: Haaargh!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind awoken skills for 2 turns
+  desc_jp: Bind awoken skills for 2 turns
+  name_en: This isn't some in-game duel.
+  name_jp: This isn't some in-game duel.
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 19
+  desc_jp: ''
+  name_en: HP <= 19
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Blind all orbs on the board + Lock all Fire, Water, Wood, Light, Dark,
+    Heal, Jammer, Poison, Mortal Poison orbs
+  desc_jp: Blind all orbs on the board + Lock all Fire, Water, Wood, Light, Dark,
+    Heal, Jammer, Poison, Mortal Poison orbs
+  name_en: Oh, crap! + This will take forever...
+  name_jp: Oh, crap! + This will take forever...
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 19
+  desc_jp: ''
+  name_en: HP <= 19
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 150% for the next 1 turns + Enemy action
+  desc_jp: Increase damage to 150% for the next 1 turns + Enemy action
+  name_en: Not yet... + Starburst...Stream!
+  name_jp: Not yet... + Starburst...Stream!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESAbsorbCombo -> Ok, who's next?
+# 	Absorb combo <= 6 damage for 5 turns
+# 	[1] ESDebuffMovetime -> Ok then. Let's finish it.
+# 	Movetime -3s for 5 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] ESBranchHP -> ESBranchHP
+# branch
+# [8] ESAttackMultihit -> Move!
+# Condition: 34% chance
+# Enemy action
+# [9] ESColumnSpawnMulti -> Haaaaaaaa!
+# Condition: 33% chance
+# Change 1st column to Water orbs, 6th column to Dark orbs
+# [10] ESRowSpawnMulti -> Haaargh!
+# Condition: 33% chance
+# Change 1st row to Water orbs, 5th row to Dark orbs
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESBranchFlag -> ESBranchFlag
+# branch
+# [13] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [14] ESBindAwoken -> This isn't some in-game duel.
+# Condition: None
+# Bind awoken skills for 2 turns
+# [15] ESEndPath -> ESEndPath
+# end_turn
+# [16] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESBlind -> Oh, crap!
+# 	Blind all orbs on the board
+# 	[1] ESOrbLock -> This will take forever...
+# 	Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [17] SkillSet:
+# 	Condition: None
+# 	[0] ESAttackUp -> Not yet...
+# 	Increase damage to 150% for the next 1 turns
+# 	[1] ESAttackMultihit -> Starburst...Stream!
+# 	Enemy action
+# [18] ESEndPath -> ESEndPath
+# end_turn

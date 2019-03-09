@@ -1,0 +1,108 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2531
+monster_name_en: Green Flame Armor Dragon, Shedir
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Deal 240% damage (2 hits, 120% each)
+  desc_jp: Deal 240% damage (2 hits, 120% each)
+  name_en: Fury Horn
+  name_jp: Fury Horn
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 2
+  desc_jp: ''
+  name_en: Turn 2
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 999 turns
+  desc_jp: Increase damage to 200% for the next 999 turns
+  name_en: Gear Charge
+  name_jp: Gear Charge
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Poison to Wood, Deal 150% damage
+  desc_jp: Change Poison to Wood, Deal 150% damage
+  name_en: Clean Nap
+  name_jp: Clean Nap
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 80
+  desc_jp: ''
+  name_en: HP <= 80
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Delay active skills by 1 turns
+  desc_jp: Delay active skills by 1 turns
+  name_en: Absorption
+  name_jp: Absorption
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 10
+  desc_jp: ''
+  name_en: HP <= 10
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 1000% damage (2 hits, 500% each)
+  desc_jp: Deal 1000% damage (2 hits, 500% each)
+  name_en: Limit Burst
+  name_jp: Limit Burst
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESAttackMultihit -> Fury Horn
+# Condition: None
+# Enemy action
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESAttackUp -> Gear Charge
+# Condition: None
+# Increase damage to 200% for the next 999 turns
+# [9] ESAttackMultihit -> Limit Burst
+# Condition: When < 10% hp
+# Enemy action
+# [10] ESSkillDelay -> Absorption
+# Condition: When < 80% hp , one-time use
+# Delay active skills by 1 turns
+# [11] ESOrbChangeAttack -> Clean Nap
+# Condition: None
+# Change Poison to Wood
+# [12] ESRowSpawnMulti -> Aero Burn
+# Condition: None
+# Change 1st row to Fire orbs, 5th row to Wood orbs
+# [13] ESEndPath -> ESEndPath
+# end_turn

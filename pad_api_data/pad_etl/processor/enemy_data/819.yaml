@@ -1,0 +1,84 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 819
+monster_name_en: Hrungnir
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  name_en: Wave of Cold Air
+  name_jp: Wave of Cold Air
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Water, Deal 80% damage
+  desc_jp: Change Random to Water, Deal 80% damage
+  name_en: Ice Pillar Creation
+  name_jp: Ice Pillar Creation
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 120%~150% damage (4~5 hits, 30% each)
+  desc_jp: Deal 120%~150% damage (4~5 hits, 30% each)
+  name_en: Ice Block Bullets
+  name_jp: Ice Block Bullets
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 30
+  desc_jp: ''
+  name_en: HP <= 30
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 200%~250% damage (4~5 hits, 50% each)
+  desc_jp: Deal 200%~250% damage (4~5 hits, 50% each)
+  name_en: Target-Seeking Ice Block Bullets
+  name_jp: Target-Seeking Ice Block Bullets
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESGravity -> Wave of Cold Air
+# Condition: None
+# Player -99% HP
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESAttackMultihit -> Target-Seeking Ice Block Bullets
+# Condition: When < 30% hp
+# Enemy action
+# [7] ESOrbChangeAttack -> Ice Pillar Creation
+# Condition: One-time use
+# Change Random to Water
+# [8] ESAttackMultihit -> Ice Block Bullets
+# Condition: None
+# Enemy action

@@ -1,0 +1,185 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1363
+monster_name_en: Heavenly Wind Dragon Knight, Ishtar
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 4 turns
+  desc_jp: Voids status ailments for 4 turns
+  name_en: Wind Warrior God's Talisman
+  name_jp: Wind Warrior God's Talisman
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 2
+  desc_jp: ''
+  name_en: Turn 2
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 50% damage
+  desc_jp: Blind all orbs on the board, Deal 50% damage
+  name_en: Sandstorm
+  name_jp: Sandstorm
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 3
+  desc_jp: ''
+  name_en: Turn 3
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Wood, Deal 75% damage
+  desc_jp: Change Random to Wood, Deal 75% damage
+  name_en: Gust Shot
+  name_jp: Gust Shot
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 4
+  desc_jp: ''
+  name_en: Turn 4
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage (5 hits, 20% each)
+  desc_jp: Deal 100% damage (5 hits, 20% each)
+  name_en: Gale Thrust
+  name_jp: Gale Thrust
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 5
+  desc_jp: ''
+  name_en: Turn 5
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  name_en: Hang...hang on a second...
+  name_jp: Hang...hang on a second...
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  name_en: Y-you're pretty tough!
+  name_jp: Y-you're pretty tough!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  name_en: Father, help me!!
+  name_jp: Father, help me!!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 1200% damage (6 hits, 200% each)
+  desc_jp: Deal 1200% damage (6 hits, 200% each)
+  name_en: Anu's Judgement
+  name_jp: Anu's Judgement
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESStatusShield -> Wind Warrior God's Talisman
+# Condition: None
+# Voids status ailments for 4 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESBranchFlag -> ESBranchFlag
+# branch
+# [10] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [11] ESAttackUp -> Here we go! Ninurta!
+# Condition: None
+# Increase damage to 300% for the next 3 turns
+# [12] ESEndPath -> ESEndPath
+# end_turn
+# [13] ESBranchFlag -> ESBranchFlag
+# branch
+# [14] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [15] ESBlind -> Sandstorm
+# Condition: None
+# Blind all orbs on the board
+# [16] ESEndPath -> ESEndPath
+# end_turn
+# [17] ESBranchFlag -> ESBranchFlag
+# branch
+# [18] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [19] ESOrbChangeAttack -> Gust Shot
+# Condition: None
+# Change Random to Wood
+# [20] ESEndPath -> ESEndPath
+# end_turn
+# [21] ESBranchFlag -> ESBranchFlag
+# branch
+# [22] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [23] ESAttackMultihit -> Gale Thrust
+# Condition: None
+# Enemy action
+# [24] ESEndPath -> ESEndPath
+# end_turn
+# [25] ESBranchFlag -> ESBranchFlag
+# branch
+# [26] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [27] ESInactivity -> Hang...hang on a second...
+# Condition: None
+# Do nothing
+# [28] ESEndPath -> ESEndPath
+# end_turn
+# [29] ESInactivity -> Y-you're pretty tough!
+# Condition: 25% chance
+# Do nothing
+# [30] ESEndPath -> ESEndPath
+# end_turn
+# [31] ESInactivity -> Father, help me!!
+# Condition: One-time use
+# Do nothing
+# [32] ESAttackMultihit -> Anu's Judgement
+# Condition: None
+# Enemy action

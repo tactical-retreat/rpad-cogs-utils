@@ -1,0 +1,122 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 989
+monster_name_en: War Deity of the Night, Tsukuyomi
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Blind all orbs on the board
+  desc_jp: Blind all orbs on the board
+  name_en: New Moon
+  name_jp: New Moon
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 150% damage
+  desc_jp: Deal 150% damage
+  name_en: Night Sword
+  name_jp: Night Sword
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Random to Dark, Deal 100% damage
+  desc_jp: Change Random to Dark, Deal 100% damage
+  name_en: Shadowed Moon
+  name_jp: Shadowed Moon
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 150% damage
+  desc_jp: Deal 150% damage
+  name_en: Night Sword
+  name_jp: Night Sword
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Random to Light, Deal 100% damage
+  desc_jp: Change Random to Light, Deal 100% damage
+  name_en: Moonlight
+  name_jp: Moonlight
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  name_en: Change the...
+  name_jp: Change the...
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 1200% damage (12 hits, 100% each)
+  desc_jp: Deal 1200% damage (12 hits, 100% each)
+  name_en: World!
+  name_jp: World!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESBlind -> New Moon
+# Condition: None
+# Blind all orbs on the board
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] ESAttackMultihit -> Night Sword
+# Condition: 40% chance
+# Enemy action
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESOrbChangeAttack -> Moonlight
+# Condition: None
+# Change Random to Light
+# [10] ESEndPath -> ESEndPath
+# end_turn
+# [11] ESOrbChangeAttack -> Shadowed Moon
+# Condition: None
+# Change Random to Dark
+# [12] ESEndPath -> ESEndPath
+# end_turn
+# [13] ESInactivity -> Change the...
+# Condition: One-time use
+# Do nothing
+# [14] ESAttackMultihit -> World!
+# Condition: None
+# Enemy action

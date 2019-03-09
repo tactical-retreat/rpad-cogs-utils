@@ -1,0 +1,149 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2894
+monster_name_en: Loyal Demon Prince, Cauchemar
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Absorb combo <= 6 damage for 999
+    turns + Specific orbs change every 1.0s for 4 turns
+  desc_jp: Voids status ailments for 999 turns + Absorb combo <= 6 damage for 999
+    turns + Specific orbs change every 1.0s for 4 turns
+  name_en: Cauchemar Zone + Cauchemar Liberate + Cauchemar Despair
+  name_jp: Cauchemar Zone + Cauchemar Liberate + Cauchemar Despair
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Jammer to Wood, Deal 240% damage
+  desc_jp: Change Jammer to Wood, Deal 240% damage
+  name_en: Cauchemar Infinity
+  name_jp: Cauchemar Infinity
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 3 random subs for 4 turns + Movetime 50% for 5 turns
+  desc_jp: Bind 3 random subs for 4 turns + Movetime 50% for 5 turns
+  name_en: Cauchemar Mind + Astaroth's Murmurs
+  name_jp: Cauchemar Mind + Astaroth's Murmurs
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 19
+  desc_jp: ''
+  name_en: HP <= 19
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Random 4 orbs change every 1.5s for 4 turns + Blind all orbs on the board
+  desc_jp: Random 4 orbs change every 1.5s for 4 turns + Blind all orbs on the board
+  name_en: Cauchemar Despair + Astaroth's Judgment
+  name_jp: Cauchemar Despair + Astaroth's Judgment
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 19
+  desc_jp: ''
+  name_en: HP <= 19
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Jammer, Deal 500% damage
+  desc_jp: Change all orbs to Jammer, Deal 500% damage
+  name_en: Cauchemar Destruction
+  name_jp: Cauchemar Destruction
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESStatusShield -> Cauchemar Zone
+# 	Voids status ailments for 999 turns
+# 	[1] ESAbsorbCombo -> Cauchemar Liberate
+# 	Absorb combo <= 6 damage for 999 turns
+# 	[2] ESSpinnersFixed -> Cauchemar Despair
+# 	Specific orbs change every 1.0s for 4 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESSetCounter -> ESSetCounter
+# set_counter
+# [7] ESBranchHP -> ESBranchHP
+# branch
+# [8] ESOrbChangeAttack -> Cauchemar Infinity
+# Condition: None
+# Change Jammer to Wood
+# [9] ESBranchCounter -> ESBranchCounter
+# branch
+# [10] ESRandomSpawn -> Cauchemar Fragment
+# Condition: 33% chance & when Fire, Water, Wood, Light, Dark, Heal, Mortal Poison orbs are on the board
+# Spawn random 2 Jammer, Poison orbs
+# [11] ESOrbChangeAttack -> Cauchemar Tempest
+# Condition: 33% chance
+# Change Random to Jammer
+# [12] ESAttackMultihit -> Cauchemar Impact
+# Condition: 34% chance
+# Enemy action
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESSetCounter -> ESSetCounter
+# set_counter
+# [15] SkillSet:
+# 	Condition: None
+# 	[0] ESSpinnersRandom -> Cauchemar Despair
+# 	Random 4 orbs change every 1.5s for 4 turns
+# 	[1] ESRowSpawnMulti -> Cauchemar Catastrophe
+# 	Change 1st, 3rd, 5th row to Jammer orbs
+# [16] ESEndPath -> ESEndPath
+# end_turn
+# [17] ESBranchHP -> ESBranchHP
+# branch
+# [18] ESBranchFlag -> ESBranchFlag
+# branch
+# [19] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [20] SkillSet:
+# 	Condition: None
+# 	[0] ESBindRandomSub -> Cauchemar Mind
+# 	Bind 3 random subs for 4 turns
+# 	[1] ESDebuffMovetime -> Astaroth's Murmurs
+# 	Movetime 50% for 5 turns
+# [21] ESEndPath -> ESEndPath
+# end_turn
+# [22] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESSpinnersRandom -> Cauchemar Despair
+# 	Random 4 orbs change every 1.5s for 4 turns
+# 	[1] ESBlind -> Astaroth's Judgment
+# 	Blind all orbs on the board
+# [23] ESBoardChangeAttackBits -> Cauchemar Destruction
+# Condition: None
+# Change all orbs to Jammer
+# [24] ESEndPath -> ESEndPath
+# end_turn

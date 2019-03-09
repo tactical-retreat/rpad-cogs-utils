@@ -1,0 +1,41 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 876
+monster_name_en: King Metal Cat
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  name_en: "Meow meeow meooow\u266A"
+  name_jp: "Meow meeow meooow\u266A"
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESInactivity -> Meow meeow meooow♪
+# Condition: 30% chance
+# Do nothing
+# [3] ESEndPath -> ESEndPath
+# end_turn

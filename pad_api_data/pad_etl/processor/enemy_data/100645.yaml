@@ -1,0 +1,143 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 100645
+monster_name_en: Alt. Archdemon Beelzebub
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Enemy action + Absorb damage >= 6000000 damage for 5 turns
+  desc_jp: Enemy action + Absorb damage >= 6000000 damage for 5 turns
+  name_en: Move, move, move---!! + Demon Wheelie
+  name_jp: Move, move, move---!! + Demon Wheelie
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random 7 to Poison
+  desc_jp: Change Random 7 to Poison
+  name_en: Take this!
+  name_jp: Take this!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 74
+  desc_jp: ''
+  name_en: HP <= 74
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random 7 to Poison
+  desc_jp: Change Random 7 to Poison
+  name_en: Take this!
+  name_jp: Take this!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 39
+  desc_jp: ''
+  name_en: HP <= 39
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Mortal Poison
+  desc_jp: Change all orbs to Mortal Poison
+  name_en: Sink into a sea of poison!!
+  name_jp: Sink into a sea of poison!!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 75
+  desc_jp: ''
+  name_en: HP <= 75
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 150% damage (3 hits, 50% each)
+  desc_jp: Deal 150% damage (3 hits, 50% each)
+  name_en: Deadly Drive!
+  name_jp: Deadly Drive!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 40
+  desc_jp: ''
+  name_en: HP <= 40
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Poison to Mortal Poison, Deal 100% damage
+  desc_jp: Change Poison to Mortal Poison, Deal 100% damage
+  name_en: Not going easy anymore!
+  name_jp: Not going easy anymore!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESAttackMultihit -> Move, move, move---!!
+# 	Enemy action
+# 	[1] ESAbsorbThreshold -> Demon Wheelie
+# 	Absorb damage >= 6000000 damage for 5 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] ESAttackMultihit -> Deadly Drive!
+# Condition: 50% chance when < 75% hp
+# Enemy action
+# [8] ESPoisonChangeRandom -> Take this!
+# Condition: 50% chance
+# Change Random 7 to Poison
+# [9] ESEndPath -> ESEndPath
+# end_turn
+# [10] ESOrbChangeAttack -> Not going easy anymore!
+# Condition: When < 40% hp , one-time use
+# Change Poison to Mortal Poison
+# [11] ESAttackUp -> Not going easy anymore!
+# Condition: When < 40% hp , one-time use
+# Increase damage to 150% for the next 99 turns
+# [12] ESBranchCounter -> ESBranchCounter
+# branch
+# [13] ESSetCounter -> ESSetCounter
+# set_counter
+# [14] ESBoardChange -> Sink into a sea of poison!!
+# Condition: None
+# Change all orbs to Mortal Poison
+# [15] ESEndPath -> ESEndPath
+# end_turn
+# [16] ESBranchCounter -> ESBranchCounter
+# branch
+# [17] ESSetCounter -> ESSetCounter
+# set_counter
+# [18] ESAttackMultihit -> Deadly Drive!
+# Condition: When < 75% hp
+# Enemy action
+# [19] ESEndPath -> ESEndPath
+# end_turn
+# [20] ESSetCounter -> ESSetCounter
+# set_counter
+# [21] ESBoardChange -> Sink into a sea of poison!!
+# Condition: None
+# Change all orbs to Mortal Poison
+# [22] ESEndPath -> ESEndPath
+# end_turn

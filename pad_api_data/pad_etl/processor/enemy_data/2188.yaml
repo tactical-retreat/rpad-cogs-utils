@@ -1,0 +1,128 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2188
+monster_name_en: Thundering CyberDragon, Shedar
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Light by 50%
+  desc_jp: Reduce damage from Light by 50%
+  name_en: Light halved
+  name_jp: Light halved
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + 1x3 cloud appear for 30 turns at
+    random location
+  desc_jp: Voids status ailments for 999 turns + 1x3 cloud appear for 30 turns at
+    random location
+  name_en: Balance the World + Esenshi
+  name_jp: Balance the World + Esenshi
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Movetime -1s for 1 turns, Deal 200% damage
+  desc_jp: Movetime -1s for 1 turns, Deal 200% damage
+  name_en: Anzel Sou
+  name_jp: Anzel Sou
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 240% damage (3 hits, 80% each)
+  desc_jp: Deal 240% damage (3 hits, 80% each)
+  name_en: Redeon Radel
+  name_jp: Redeon Radel
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 150% for the next 999 turns + Player -99% HP
+  desc_jp: Increase damage to 150% for the next 999 turns + Player -99% HP
+  name_en: Judgment day has come + Accept your demise!
+  name_jp: Judgment day has come + Accept your demise!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 5
+  desc_jp: ''
+  name_en: HP <= 5
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 500% damage (5 hits, 100% each)
+  desc_jp: Deal 500% damage (5 hits, 100% each)
+  name_en: Kalreshi Osaryu
+  name_jp: Kalreshi Osaryu
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESStatusShield -> Balance the World
+# 	Voids status ailments for 999 turns
+# 	[1] ESCloud -> Esenshi
+# 	1x3 cloud appear for 30 turns at random location
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESAttackMultihit -> Kalreshi Osaryu
+# Condition: When < 5% hp
+# Enemy action
+# [7] ESBranchHP -> ESBranchHP
+# branch
+# [8] ESDebuffMovetime -> Anzel Sou
+# Condition: One-time use
+# Movetime -1s for 1 turns
+# [9] ESSkillDelay -> Guasa
+# Condition: One-time use
+# Delay active skills by 2 turns
+# [10] ESAttackMultihit -> Redeon Radel
+# Condition: 34% chance
+# Enemy action
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESBranchFlag -> ESBranchFlag
+# branch
+# [13] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [14] SkillSet:
+# 	Condition: When < 50% hp
+# 	[0] ESAttackUp -> Judgment day has come
+# 	Increase damage to 150% for the next 999 turns
+# 	[1] ESGravity -> Accept your demise!
+# 	Player -99% HP
+# [15] ESEndPath -> ESEndPath
+# end_turn
+# [16] ESAttributeResist -> Light halved
+# Reduce damage from Light by 50%

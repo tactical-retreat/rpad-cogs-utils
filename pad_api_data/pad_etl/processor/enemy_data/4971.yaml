@@ -1,0 +1,125 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4971
+monster_name_en: '*****'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb combo <= 4 damage for 5 turns
+  desc_jp: Absorb combo <= 4 damage for 5 turns
+  name_en: Starviiiiing
+  name_jp: Starviiiiing
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 110% damage
+  desc_jp: Deal 110% damage
+  name_en: Starve!
+  name_jp: Starve!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Spawn random 3 Heal orbs, Deal 120% damage
+  desc_jp: Spawn random 3 Heal orbs, Deal 120% damage
+  name_en: Time for a snack!
+  name_jp: Time for a snack!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 100% hp
+  desc_jp: Enemy recover 100% hp
+  name_en: Hungry Impact
+  name_jp: Hungry Impact
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Water, Deal 100% damage
+  desc_jp: Change Random to Water, Deal 100% damage
+  name_en: I can't stop drooling!
+  name_jp: I can't stop drooling!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 110% damage
+  desc_jp: Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 110% damage
+  name_en: This is my snack!
+  name_jp: This is my snack!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESAbsorbCombo -> Starviiiiing
+# Condition: None
+# Absorb combo <= 4 damage for 5 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
+# branch
+# [10] ESAttackMultihit -> Starve!
+# Condition: 40% chance
+# Enemy action
+# [11] ESRandomSpawn -> Time for a snack!
+# Condition: 40% chance & when Fire, Water, Wood, Light, Dark, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 3 Heal orbs
+# [12] ESEndPath -> ESEndPath
+# end_turn
+# [13] ESBranchFlag -> ESBranchFlag
+# branch
+# [14] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [15] ESBindAwoken -> I'm starving...
+# Condition: None
+# Bind awoken skills for 2 turns
+# [16] ESEndPath -> ESEndPath
+# end_turn
+# [17] ESRecoverEnemy -> Hungry Impact
+# Condition: One-time use
+# Enemy recover 100% hp
+# [18] ESOrbChangeAttack -> I can't stop drooling!
+# Condition: 50% chance
+# Change Random to Water
+# [19] ESOrbLock -> This is my snack!
+# Condition: 50% chance
+# Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [20] ESEndPath -> ESEndPath
+# end_turn

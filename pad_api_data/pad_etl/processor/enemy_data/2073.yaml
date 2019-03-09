@@ -1,0 +1,130 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2073
+monster_name_en: Awoken Leilan
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Fire, Wood, Light by 30%
+  desc_jp: Reduce damage from Fire, Wood, Light by 30%
+  name_en: Fire Wood Light Reduced Damage
+  name_jp: Fire Wood Light Reduced Damage
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Absorb combo <= 6 damage for 5 turns
+  desc_jp: Absorb combo <= 6 damage for 5 turns
+  name_en: "Okay! Here I go\u266A"
+  name_jp: "Okay! Here I go\u266A"
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Fire, Wood, Light, Deal 100% damage
+  desc_jp: Change all orbs to Fire, Wood, Light, Deal 100% damage
+  name_en: Southern Seven-Star Formation
+  name_jp: Southern Seven-Star Formation
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 1 Bomb orbs, Deal 80% damage
+  desc_jp: Spawn random 1 Bomb orbs, Deal 80% damage
+  name_en: Blazing Bullet
+  name_jp: Blazing Bullet
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Random to Fire, Deal 120% damage
+  desc_jp: Change Random to Fire, Deal 120% damage
+  name_en: Massive Crimson Iron Spear
+  name_jp: Massive Crimson Iron Spear
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 19
+  desc_jp: ''
+  name_en: HP <= 19
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Delay active skills by 1 turns + Change all orbs to Fire, Wood, Light
+  desc_jp: Delay active skills by 1 turns + Change all orbs to Fire, Wood, Light
+  name_en: "Try and take it\u266A + Suzaku Seven-Star Formation"
+  name_jp: "Try and take it\u266A + Suzaku Seven-Star Formation"
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 19
+  desc_jp: ''
+  name_en: HP <= 19
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Fire, Wood, Light, Deal 100% damage
+  desc_jp: Change all orbs to Fire, Wood, Light, Deal 100% damage
+  name_en: Southern Seven-Star Formation
+  name_jp: Southern Seven-Star Formation
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESAbsorbCombo -> Okay! Here I go♪
+# Condition: None
+# Absorb combo <= 6 damage for 5 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchFlag -> ESBranchFlag
+# branch
+# [7] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [8] ESBoardChangeAttackBits -> Southern Seven-Star Formation
+# Condition: None
+# Change all orbs to Fire, Wood, Light
+# [9] ESEndPath -> ESEndPath
+# end_turn
+# [10] ESBranchHP -> ESBranchHP
+# branch
+# [11] ESBombRandomSpawn -> Blazing Bullet
+# Condition: 50% chance
+# Spawn random 1 Bomb orbs
+# [12] ESOrbChangeAttack -> Massive Crimson Iron Spear
+# Condition: None
+# Change Random to Fire
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [15] SkillSet:
+# 	Condition: None
+# 	[0] ESSkillDelay -> Try and take it♪
+# 	Delay active skills by 1 turns
+# 	[1] ESBoardChangeAttackBits -> Suzaku Seven-Star Formation
+# 	Change all orbs to Fire, Wood, Light
+# [16] ESEndPath -> ESEndPath
+# end_turn
+# [17] ESAttributeResist -> Fire Wood Light Reduced Damage
+# Reduce damage from Fire, Wood, Light by 30%

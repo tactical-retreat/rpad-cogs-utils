@@ -1,0 +1,122 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 812
+monster_name_en: Empress of Creation, Izanami
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Bind active skills for 10 turns
+  desc_jp: Bind active skills for 10 turns
+  name_en: Request for Peace
+  name_jp: Request for Peace
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Wood to Fire, Deal 90% damage
+  desc_jp: Change Wood to Fire, Deal 90% damage
+  name_en: Young Holy Dragon's Breath
+  name_jp: Young Holy Dragon's Breath
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Dark to Light, Deal 100% damage
+  desc_jp: Change Dark to Light, Deal 100% damage
+  name_en: Exalted Light
+  name_jp: Exalted Light
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Wood to Fire, Deal 90% damage
+  desc_jp: Change Wood to Fire, Deal 90% damage
+  name_en: Young Holy Dragon's Breath
+  name_jp: Young Holy Dragon's Breath
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Fire to Water, Deal 110% damage
+  desc_jp: Change Fire to Water, Deal 110% damage
+  name_en: Mother Ocean
+  name_jp: Mother Ocean
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 250% damage (5 hits, 50% each)
+  desc_jp: Deal 250% damage (5 hits, 50% each)
+  name_en: Creation
+  name_jp: Creation
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random 3 to Jammer
+  desc_jp: Change Random 3 to Jammer
+  name_en: Fragile Fantasy
+  name_jp: Fragile Fantasy
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBindSkill -> Request for Peace
+# Condition: One-time use
+# Bind active skills for 10 turns
+# [3] ESNone -> ESNone
+# None
+# [4] ESBranchHP -> ESBranchHP
+# branch
+# [5] ESOrbChangeAttack -> Young Holy Dragon's Breath
+# Condition: 50% chance
+# Change Wood to Fire
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] ESOrbChangeAttack -> Mother Ocean
+# Condition: None
+# Change Fire to Water
+# [8] ESEndPath -> ESEndPath
+# end_turn
+# [9] ESOrbChangeAttack -> Exalted Light
+# Condition: None
+# Change Dark to Light
+# [10] ESEndPath -> ESEndPath
+# end_turn
+# [11] ESBranchFlag -> ESBranchFlag
+# branch
+# [12] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [13] ESJammerChangeRandom -> Fragile Fantasy
+# Condition: When < 50% hp
+# Change Random 3 to Jammer
+# [14] ESAttackMultihit -> Creation
+# Condition: None
+# Enemy action

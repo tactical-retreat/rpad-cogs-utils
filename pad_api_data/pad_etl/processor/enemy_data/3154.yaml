@@ -1,0 +1,136 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3154
+monster_name_en: Cosmo Crusader
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Dark by 50%
+  desc_jp: Reduce damage from Dark by 50%
+  name_en: Robot Dark Halved
+  name_jp: Robot Dark Halved
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: 'Show message: Generator started|Attribute energy increasing'
+  desc_jp: 'Show message: Generator started|Attribute energy increasing'
+  name_en: Light Robot Transformation
+  name_jp: Light Robot Transformation
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Player recover 100% hp
+  desc_jp: Player recover 100% hp
+  name_en: Heilung Licht
+  name_jp: Heilung Licht
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 69
+  desc_jp: ''
+  name_en: HP <= 69
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: 'Show message: Generator started|Attribute energy increasing'
+  desc_jp: 'Show message: Generator started|Attribute energy increasing'
+  name_en: Light Robot Transformation
+  name_jp: Light Robot Transformation
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 9
+  desc_jp: ''
+  name_en: HP <= 9
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: 'Show message: Generator started|Attribute energy increasing'
+  desc_jp: 'Show message: Generator started|Attribute energy increasing'
+  name_en: Light Robot Transformation
+  name_jp: Light Robot Transformation
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 70
+  desc_jp: ''
+  name_en: HP <= 70
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Blind random 8 orbs for 5 turns
+  desc_jp: Blind random 8 orbs for 5 turns
+  name_en: Beleuchten
+  name_jp: Beleuchten
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 10
+  desc_jp: ''
+  name_en: HP <= 10
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 3rd, 4th column to Light orbs, Deal 300% damage
+  desc_jp: Change 3rd, 4th column to Light orbs, Deal 300% damage
+  name_en: Sieg Speer
+  name_jp: Sieg Speer
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESDeathCry -> Light Robot Transformation
+# Condition: On death
+# Show message: Generator started|Attribute energy increasing
+# [3] ESBranchFlag -> ESBranchFlag
+# branch
+# [4] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [5] ESRecoverPlayer -> Heilung Licht
+# Condition: None
+# Player recover 100% hp
+# [6] ESEndPath -> ESEndPath
+# end_turn
+# [7] ESBlindStickyRandom -> Beleuchten
+# Condition: When < 70% hp , one-time use
+# Blind random 8 orbs for 5 turns
+# [8] ESColumnSpawnMulti -> Sieg Speer
+# Condition: When < 10% hp
+# Change 3rd, 4th column to Light orbs
+# [9] ESBranchFlag -> ESBranchFlag
+# branch
+# [10] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [11] ESRandomSpawn -> Angriff
+# Condition: When fire, water, wood, light, dark, jammer, poison, mortal poison orbs are on the board
+# Spawn random 3 Heal orbs
+# [12] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [13] ESAbsorbAttribute -> Verteidigung
+# Condition: 20% chance
+# Absorb Fire damage for 2 turns
+# [14] ESAbsorbAttribute -> Verteidigung
+# Condition: 20% chance
+# Absorb Water damage for 2 turns
+# [15] ESAbsorbAttribute -> Verteidigung
+# Condition: 20% chance
+# Absorb Wood damage for 2 turns
+# [16] ESAbsorbAttribute -> Verteidigung
+# Condition: 20% chance
+# Absorb Light damage for 2 turns
+# [17] ESAbsorbAttribute -> Verteidigung
+# Condition: 20% chance
+# Absorb Dark damage for 2 turns
+# [18] ESEndPath -> ESEndPath
+# end_turn
+# [19] ESAttributeResist -> Robot Dark Halved
+# Reduce damage from Dark by 50%

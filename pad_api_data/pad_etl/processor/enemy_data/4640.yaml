@@ -1,0 +1,136 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4640
+monster_name_en: Seven Seas Companion Dragon, Renya
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 75% for 2 turns
+  desc_jp: Reduce damage from all sources by 75% for 2 turns
+  name_en: Major Protection
+  name_jp: Major Protection
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: When 6 enemy remains
+  desc_jp: ''
+  name_en: When 6 enemy remains
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Water, Wood, Dark, Heal, Deal 120% damage
+  desc_jp: Change all orbs to Water, Wood, Dark, Heal, Deal 120% damage
+  name_en: Wasser Enclosure
+  name_jp: Wasser Enclosure
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 15
+  desc_jp: ''
+  name_en: HP <= 15
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Water, Wood, Dark, Heal, Deal 120% damage
+  desc_jp: Change all orbs to Water, Wood, Dark, Heal, Deal 120% damage
+  name_en: Wasser Enclosure
+  name_jp: Wasser Enclosure
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 14
+  desc_jp: ''
+  name_en: HP <= 14
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 180% damage (2 hits, 90% each)
+  desc_jp: Deal 180% damage (2 hits, 90% each)
+  name_en: "Zwei Fl\xFCgel"
+  name_jp: "Zwei Fl\xFCgel"
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESDamageShield -> Major Protection
+# Condition: None
+# Reduce damage from all sources by 75% for 2 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchFlag -> ESBranchFlag
+# branch
+# [9] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [10] ESAttributeBlock -> Red Exception
+# Condition: None
+# Unable to Fire orbs for 3 turns
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESBranchHP -> ESBranchHP
+# branch
+# [13] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
+# branch
+# [14] ESSetCounter -> ESSetCounter
+# set_counter
+# [15] ESBranchCounter -> ESBranchCounter
+# branch
+# [16] ESOrbChangeAttack -> Träne Gerinnsel
+# Condition: 33% chance
+# Change Random to Water
+# [17] ESOrbChangeAttackBits -> Veränderung
+# Condition: 33% chance
+# Change Dark to Water
+# [18] ESAttackMultihit -> Claw Slasher
+# Condition: 34% chance
+# Enemy action
+# [19] ESEndPath -> ESEndPath
+# end_turn
+# [20] ESBranchFlag -> ESBranchFlag
+# branch
+# [21] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [22] SkillSet:
+# 	Condition: None
+# 	[0] ESCloud -> Groß Wolke
+# 	3x3 cloud appear for 1 turns at random location
+# 	[1] ESAttackUp -> Calm Fighting Spirit
+# 	Increase damage to 200% for the next 99 turns
+# [23] ESEndPath -> ESEndPath
+# end_turn
+# [24] ESAttackMultihit -> Zwei Flügel
+# Condition: None
+# Enemy action
+# [25] ESEndPath -> ESEndPath
+# end_turn
+# [26] ESSetCounter -> ESSetCounter
+# set_counter
+# [27] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
+# branch
+# [28] ESBoardChangeAttackBits -> Wasser Enclosure
+# Condition: None
+# Change all orbs to Water, Wood, Dark, Heal
+# [29] ESDebuffMovetime -> Brechen Feder
+# Condition: None
+# Movetime -1s for 2 turns
+# [30] ESEndPath -> ESEndPath
+# end_turn

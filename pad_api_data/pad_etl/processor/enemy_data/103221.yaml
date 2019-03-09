@@ -1,0 +1,228 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 103221
+monster_name_en: Alt. Draconic Songstress of Blue Echoes, Mion
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Water, Wood by 50%
+  desc_jp: Reduce damage from Water, Wood by 50%
+  name_en: Half Water Wood
+  name_jp: Half Water Wood
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Reduce damage from all sources by
+    99% for 1 turns
+  desc_jp: Voids status ailments for 999 turns + Reduce damage from all sources by
+    99% for 1 turns
+  name_en: Transparent Melody + Overture for the Impenetrable
+  name_jp: Transparent Melody + Overture for the Impenetrable
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb combo <= 6 damage for 2 turns
+  desc_jp: Absorb combo <= 6 damage for 2 turns
+  name_en: Barcarole for the River of Woe
+  name_jp: Barcarole for the River of Woe
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Row of cloud appear for 1 turns at random location
+  desc_jp: Row of cloud appear for 1 turns at random location
+  name_en: This is your last performance!
+  name_jp: This is your last performance!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 5000% damage (10 hits, 500% each)
+  desc_jp: Deal 5000% damage (10 hits, 500% each)
+  name_en: Requiem of a Thousand Creeds
+  name_jp: Requiem of a Thousand Creeds
+  record_type_name: ACTION
+
+############################################################
+### Data @ 6
+############################################################
+!SkillRecordListing
+level: 6
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Water, Wood by 50%
+  desc_jp: Reduce damage from Water, Wood by 50%
+  name_en: Half Water Wood
+  name_jp: Half Water Wood
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Reduce damage from all sources by
+    99% for 1 turns
+  desc_jp: Voids status ailments for 999 turns + Reduce damage from all sources by
+    99% for 1 turns
+  name_en: Transparent Melody + Overture for the Impenetrable
+  name_jp: Transparent Melody + Overture for the Impenetrable
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb combo <= 6 damage for 2 turns
+  desc_jp: Absorb combo <= 6 damage for 2 turns
+  name_en: Barcarole for the River of Woe
+  name_jp: Barcarole for the River of Woe
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Row of cloud appear for 1 turns at random location
+  desc_jp: Row of cloud appear for 1 turns at random location
+  name_en: This is your last performance!
+  name_jp: This is your last performance!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 5000% damage (10 hits, 500% each)
+  desc_jp: Deal 5000% damage (10 hits, 500% each)
+  name_en: Requiem of a Thousand Creeds
+  name_jp: Requiem of a Thousand Creeds
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESStatusShield -> Transparent Melody
+# 	Voids status ailments for 999 turns
+# 	[1] ESDamageShield -> Overture for the Impenetrable
+# 	Reduce damage from all sources by 99% for 1 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchFlag -> ESBranchFlag
+# branch
+# [7] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [8] ESBranchLevel -> ESBranchLevel
+# branch
+# [9] SkillSet:
+# 	Condition: None
+# 	[0] ESAbsorbCombo -> Play me your puzzle's song ♪
+# 	Absorb combo <= 4 damage for 1 turns
+# 	[1] ESDebuffMovetime -> Hesitant Opening Notes
+# 	Movetime 25% for 1 turns
+# [10] SkillSet:
+# 	Condition: None
+# 	[0] ESAbsorbCombo -> Play me your puzzle's song ♪
+# 	Absorb combo <= 6 damage for 1 turns
+# 	[1] ESDebuffMovetime -> Hesitant Opening Notes
+# 	Movetime 25% for 1 turns
+# [11] ESBranchFlag -> ESBranchFlag
+# branch
+# [12] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [13] SkillSet:
+# 	Condition: When < 99% hp
+# 	[0] ESBindAttack -> I simply can't lose ♪
+# 	Bind 1 random for 4 turns
+# 	[1] ESDamageShield -> Steel Arabesque
+# 	Reduce damage from all sources by 50% for 5 turns
+# [14] SkillSet:
+# 	Condition: None
+# 	[0] ESGravity -> You should sound better than this!
+# 	Player -99% HP
+# 	[1] ESVoidShield -> Blessed Fantasia
+# 	Void damage >= 500000 for 5 turns
+# [15] ESEndPath -> ESEndPath
+# end_turn
+# [16] ESBranchHP -> ESBranchHP
+# branch
+# [17] ESBranchFlag -> ESBranchFlag
+# branch
+# [18] ESAttackUp -> Warrior's March
+# Condition: When < 50% hp
+# Increase damage to 150% for the next 999 turns
+# [19] ESBranchFlag -> ESBranchFlag
+# branch
+# [20] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [21] SkillSet:
+# 	Condition: 50% chance
+# 	[0] ESBlindStickyFixed -> Surely you can hear the Orbs' song ♪
+# 	Blind orbs in specific positions for 1 turns
+# 	[1] ESBoardChangeAttackBits -> Rainbow Septet
+# 	Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Jammer
+# [22] SkillSet:
+# 	Condition: None
+# 	[0] ESBlindStickyFixed -> Feel the music in your heart ♪
+# 	Blind orbs in specific positions for 1 turns
+# 	[1] ESBoardChangeAttackBits -> Rainbow Septet
+# 	Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Jammer
+# [23] ESEndPath -> ESEndPath
+# end_turn
+# [24] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [25] ESOrbLock -> Obbligato of Ice Blades
+# Condition: 50% chance
+# Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [26] ESAttackMultihit -> Ice Blossom Quartet
+# Condition: None
+# Enemy action
+# [27] ESEndPath -> ESEndPath
+# end_turn
+# [28] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [29] ESAbsorbCombo -> Barcarole for the River of Woe
+# Condition: One-time use
+# Absorb combo <= 6 damage for 2 turns
+# [30] ESCloud -> This is your last performance!
+# Condition: One-time use
+# Row of cloud appear for 1 turns at random location
+# [31] ESAttackMultihit -> Requiem of a Thousand Creeds
+# Condition: None
+# Enemy action
+# [32] ESAttributeResist -> Half Water Wood
+# Reduce damage from Water, Wood by 50%

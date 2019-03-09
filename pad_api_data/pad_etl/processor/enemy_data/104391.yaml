@@ -1,0 +1,85 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 104391
+monster_name_en: Beguiling Girl, Pixie
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 1 subs for 2 turns, Deal 120% damage
+  desc_jp: Bind 1 subs for 2 turns, Deal 120% damage
+  name_en: Zio
+  name_jp: Zio
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 30% hp
+  desc_jp: Enemy recover 30% hp
+  name_en: Dia
+  name_jp: Dia
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
+# branch
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESBindAttack -> Zio
+# Condition: None
+# Bind 1 subs for 2 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESBindAttack -> Zio
+# Condition: 50% chance
+# Bind 1 subs for 2 turns
+# [10] ESEndPath -> ESEndPath
+# end_turn
+# [11] ESRecoverEnemy -> Dia
+# Condition: One-time use
+# Enemy recover 30% hp
+# [12] ESBindAttack -> Zio
+# Condition: 50% chance
+# Bind 1 subs for 2 turns
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESBranchFlag -> ESBranchFlag
+# branch
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] ESAttackUp -> Tarukaja
+# Condition: None
+# Increase damage to 150% for the next 3 turns
+# [17] ESEndPath -> ESEndPath
+# end_turn

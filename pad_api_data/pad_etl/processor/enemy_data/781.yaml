@@ -1,0 +1,63 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 781
+monster_name_en: Kouryu the Star Emperor, Fagan
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Player recover 100% hp
+  desc_jp: Player recover 100% hp
+  name_en: Hahaha! Good of you to come!
+  name_jp: Hahaha! Good of you to come!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 70
+  desc_jp: ''
+  name_en: HP <= 70
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 200% damage (2 hits, 100% each)
+  desc_jp: Deal 200% damage (2 hits, 100% each)
+  name_en: True Twin Dragon Palms
+  name_jp: True Twin Dragon Palms
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 30
+  desc_jp: ''
+  name_en: HP <= 30
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 1200% damage (4 hits, 300% each)
+  desc_jp: Deal 1200% damage (4 hits, 300% each)
+  name_en: True Boisterous Dance
+  name_jp: True Boisterous Dance
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESRecoverPlayer -> Hahaha! Good of you to come!
+# Condition: One-time use
+# Player recover 100% hp
+# [3] ESAttackMultihit -> True Boisterous Dance
+# Condition: When < 30% hp
+# Enemy action
+# [4] ESAttackMultihit -> True Twin Dragon Palms
+# Condition: 70% chance when < 70% hp
+# Enemy action

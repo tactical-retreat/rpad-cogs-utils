@@ -1,0 +1,140 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2277
+monster_name_en: Barbed Frost Dragon Emperor, Ilsix
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 30%
+  desc_jp: Survive attacks with 1 HP when HP > 30%
+  name_en: '*****'
+  name_jp: '*****'
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  name_en: Ice Armor
+  name_jp: Ice Armor
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  name_en: Powerful Claws
+  name_jp: Powerful Claws
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 120% damage
+  desc_jp: Deal 120% damage
+  name_en: Ice Edge Hammer
+  name_jp: Ice Edge Hammer
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 140% damage (2 hits, 70% each)
+  desc_jp: Deal 140% damage (2 hits, 70% each)
+  name_en: Blizzard of Destruction
+  name_jp: Blizzard of Destruction
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Water, Heal, Jammer + Lock all Jammer orbs
+  desc_jp: Change all orbs to Water, Heal, Jammer + Lock all Jammer orbs
+  name_en: Frenzy + Enraged Glare
+  name_jp: Frenzy + Enraged Glare
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 500% damage (5 hits, 100% each)
+  desc_jp: Deal 500% damage (5 hits, 100% each)
+  name_en: Abyssal Tempest
+  name_jp: Abyssal Tempest
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 1
+  desc_jp: ''
+  name_en: HP <= 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 50% hp, Deal 80% damage
+  desc_jp: Enemy recover 50% hp, Deal 80% damage
+  name_en: Freezing Zone
+  name_jp: Freezing Zone
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESStatusShield -> Ice Armor
+# Condition: None
+# Voids status ailments for 999 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESRecoverEnemy -> Freezing Zone
+# Condition: When < 1% hp
+# Enemy recover 50% hp
+# [7] ESBranchHP -> ESBranchHP
+# branch
+# [8] ESGravity -> Powerful Claws
+# Condition: One-time use
+# Player -99% HP
+# [9] ESAttackMultihit -> Ice Edge Hammer
+# Condition: 70% chance
+# Enemy action
+# [10] ESAttackMultihit -> Blizzard of Destruction
+# Condition: None
+# Enemy action
+# [11] ESBranchFlag -> ESBranchFlag
+# branch
+# [12] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [13] SkillSet:
+# 	Condition: None
+# 	[0] ESBoardChangeAttackBits -> Frenzy
+# 	Change all orbs to Water, Heal, Jammer
+# 	[1] ESOrbLock -> Enraged Glare
+# 	Lock all Jammer orbs
+# [14] ESAttackMultihit -> Abyssal Tempest
+# Condition: None
+# Enemy action
+# [15] ESResolve -> *****
+# Survive attacks with 1 HP when HP > 30%

@@ -1,0 +1,216 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4191
+monster_name_en: Supersonic Legendary Dragon Caller, Pralinae
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Water by 50%
+  desc_jp: Reduce damage from Water by 50%
+  name_en: Water damage halved
+  name_jp: Water damage halved
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Player recover 100% hp
+  desc_jp: Player recover 100% hp
+  name_en: Are you worth saving?
+  name_jp: Are you worth saving?
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Lock 8 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 300% damage
+  desc_jp: Lock 8 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 300% damage
+  name_en: Sharptooth
+  name_jp: Sharptooth
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Bind active skills for 5 turns, Deal 350% damage
+  desc_jp: Bind active skills for 5 turns, Deal 350% damage
+  name_en: Sanctifying Waters
+  name_jp: Sanctifying Waters
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Blind random 5 orbs for 1 turns, Deal 300% damage
+  desc_jp: Blind random 5 orbs for 1 turns, Deal 300% damage
+  name_en: Ice Metal Needle
+  name_jp: Ice Metal Needle
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 79
+  desc_jp: ''
+  name_en: HP <= 79
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb Wood damage for 3 turns + Enemy action
+  desc_jp: Absorb Wood damage for 3 turns + Enemy action
+  name_en: Deep Aqua + Ether Screw
+  name_jp: Deep Aqua + Ether Screw
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Mortal Poison skyfall +15% for 3 turns + Enemy action
+  desc_jp: Mortal Poison skyfall +15% for 3 turns + Enemy action
+  name_en: Poison Swirl + Ether Screw
+  name_jp: Poison Swirl + Ether Screw
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 29
+  desc_jp: ''
+  name_en: HP <= 29
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Mortal Poison skyfall +15% for 3 turns + Enemy action
+  desc_jp: Mortal Poison skyfall +15% for 3 turns + Enemy action
+  name_en: Poison Swirl + Ether Screw
+  name_jp: Poison Swirl + Ether Screw
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 20
+  desc_jp: ''
+  name_en: HP <= 20
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids player buff effects + Change all orbs to Mortal Poison
+  desc_jp: Voids player buff effects + Change all orbs to Mortal Poison
+  name_en: Cold Break + Blue Calamity Abyss
+  name_jp: Cold Break + Blue Calamity Abyss
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESRecoverPlayer -> Are you worth saving?
+# Condition: None
+# Player recover 100% hp
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] SkillSet:
+# 	Condition: When < 20% hp
+# 	[0] ESDispel -> Cold Break
+# 	Voids player buff effects
+# 	[1] ESBoardChangeAttackBits -> Blue Calamity Abyss
+# 	Change all orbs to Mortal Poison
+# [7] ESBranchHP -> ESBranchHP
+# branch
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESBranchHP -> ESBranchHP
+# branch
+# [10] ESOrbLock -> Sharptooth
+# Condition: 40% chance
+# Lock 8 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [11] ESBindSkill -> Sanctifying Waters
+# Condition: 20% chance
+# Bind active skills for 5 turns
+# [12] ESBlindStickyRandom -> Ice Metal Needle
+# Condition: 40% chance
+# Blind random 5 orbs for 1 turns
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESBranchFlag -> ESBranchFlag
+# branch
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESAbsorbAttribute -> Deep Aqua
+# 	Absorb Wood damage for 3 turns
+# 	[1] ESAttackMultihit -> Ether Screw
+# 	Enemy action
+# [17] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESSkyfall -> Poison Swirl
+# 	Mortal Poison skyfall +15% for 3 turns
+# 	[1] ESAttackMultihit -> Ether Screw
+# 	Enemy action
+# [18] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESDamageShield -> Shell Scales
+# 	Reduce damage from all sources by 75% for 3 turns
+# 	[1] ESAttackMultihit -> Ether Screw
+# 	Enemy action
+# [19] ESEndPath -> ESEndPath
+# end_turn
+# [20] ESBranchFlag -> ESBranchFlag
+# branch
+# [21] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [22] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESSkyfall -> Poison Swirl
+# 	Mortal Poison skyfall +15% for 3 turns
+# 	[1] ESAttackMultihit -> Ether Screw
+# 	Enemy action
+# [23] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESDamageShield -> Shell Scales
+# 	Reduce damage from all sources by 75% for 3 turns
+# 	[1] ESAttackMultihit -> Ether Screw
+# 	Enemy action
+# [24] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESAbsorbAttribute -> Deep Aqua
+# 	Absorb Wood damage for 3 turns
+# 	[1] ESAttackMultihit -> Ether Screw
+# 	Enemy action
+# [25] ESEndPath -> ESEndPath
+# end_turn
+# [26] ESBranchFlag -> ESBranchFlag
+# branch
+# [27] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [28] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESSkyfall -> Poison Swirl
+# 	Mortal Poison skyfall +15% for 3 turns
+# 	[1] ESAttackMultihit -> Ether Screw
+# 	Enemy action
+# [29] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESDamageShield -> Shell Scales
+# 	Reduce damage from all sources by 75% for 3 turns
+# 	[1] ESAttackMultihit -> Ether Screw
+# 	Enemy action
+# [30] SkillSet:
+# 	Condition: None
+# 	[0] ESAbsorbAttribute -> Deep Aqua
+# 	Absorb Wood damage for 3 turns
+# 	[1] ESAttackMultihit -> Ether Screw
+# 	Enemy action
+# [31] ESNone -> ESNone
+# None
+# [32] ESAttributeResist -> Water damage halved
+# Reduce damage from Water by 50%

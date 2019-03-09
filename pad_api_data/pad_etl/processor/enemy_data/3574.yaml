@@ -1,0 +1,142 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3574
+monster_name_en: Fifth Dragon Caller, Skyblazer Diara
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Fire by 50%
+  desc_jp: Reduce damage from Fire by 50%
+  name_en: Fire Halved damage
+  name_jp: Fire Halved damage
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Void damage >= 10000000 for 999 turns + Rcv 200% for 9 turns + Enemy action
+  desc_jp: Void damage >= 10000000 for 999 turns + Rcv 200% for 9 turns + Enemy action
+  name_en: Blaze Armor + Salvation Flame + Crossdraw Breath
+  name_jp: Blaze Armor + Salvation Flame + Crossdraw Breath
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Fix orb movement starting point to random position on the board + Enemy
+    action
+  desc_jp: Fix orb movement starting point to random position on the board + Enemy
+    action
+  name_en: First Glisten + Triple Blaze
+  name_jp: First Glisten + Triple Blaze
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change own attribute to random one of Fire, Light + Voids status ailments
+    for 999 turns + Unable to Dark orbs for 3 turns
+  desc_jp: Change own attribute to random one of Fire, Light + Voids status ailments
+    for 999 turns + Unable to Dark orbs for 3 turns
+  name_en: Bonfire + Guardian Dragon Formation + Pure Blaze
+  name_jp: Bonfire + Guardian Dragon Formation + Pure Blaze
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Fix orb movement starting point to random position on the board + Enemy
+    action
+  desc_jp: Fix orb movement starting point to random position on the board + Enemy
+    action
+  name_en: First Glisten + Fanning Breath
+  name_jp: First Glisten + Fanning Breath
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Fix orb movement starting point to random position on the board + Enemy
+    action
+  desc_jp: Fix orb movement starting point to random position on the board + Enemy
+    action
+  name_en: First Glisten + Fanning Breath
+  name_jp: First Glisten + Fanning Breath
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 10
+  desc_jp: ''
+  name_en: HP <= 10
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change own attribute to random one of Fire, Light + Enemy action
+  desc_jp: Change own attribute to random one of Fire, Light + Enemy action
+  name_en: Bonfire + Burst End
+  name_jp: Bonfire + Burst End
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESVoidShield -> Blaze Armor
+# 	Void damage >= 10000000 for 999 turns
+# 	[1] ESDebuffRCV -> Salvation Flame
+# 	Rcv 200% for 9 turns
+# 	[2] ESAttackMultihit -> Crossdraw Breath
+# 	Enemy action
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] SkillSet:
+# 	Condition: When < 10% hp
+# 	[0] ESChangeAttribute -> Bonfire
+# 	Change own attribute to random one of Fire, Light
+# 	[1] ESAttackMultihit -> Burst End
+# 	Enemy action
+# [7] SkillSet:
+# 	Condition: When < 50% hp , one-time use
+# 	[0] ESChangeAttribute -> Bonfire
+# 	Change own attribute to random one of Fire, Light
+# 	[1] ESStatusShield -> Guardian Dragon Formation
+# 	Voids status ailments for 999 turns
+# 	[2] ESAttributeBlock -> Pure Blaze
+# 	Unable to Dark orbs for 3 turns
+# [8] SkillSet:
+# 	Condition: When < 50% hp
+# 	[0] ESFixedStart -> First Glisten
+# 	Fix orb movement starting point to random position on the board
+# 	[1] ESAttackMultihit -> Fanning Breath
+# 	Enemy action
+# [9] SkillSet:
+# 	Condition: None
+# 	[0] ESFixedStart -> First Glisten
+# 	Fix orb movement starting point to random position on the board
+# 	[1] ESAttackMultihit -> Triple Blaze
+# 	Enemy action
+# [10] ESEndPath -> ESEndPath
+# end_turn
+# [11] ESAttributeResist -> Fire Halved damage
+# Reduce damage from Fire by 50%

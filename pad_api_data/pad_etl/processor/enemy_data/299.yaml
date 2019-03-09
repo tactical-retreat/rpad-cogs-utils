@@ -1,0 +1,52 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 299
+monster_name_en: Angelion
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind Dark cards for 2~4 turns
+  desc_jp: Bind Dark cards for 2~4 turns
+  name_en: Dark Bind
+  name_jp: Dark Bind
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 20
+  desc_jp: ''
+  name_en: HP <= 20
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 100% hp
+  desc_jp: Enemy recover 100% hp
+  name_en: Resurrection
+  name_jp: Resurrection
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESRecoverEnemy -> Resurrection
+# Condition: When < 20% hp , one-time use
+# Enemy recover 100% hp
+# [2] ESBindAttribute -> Dark Bind
+# Condition: 40% chance
+# Bind Dark cards for 2~4 turns

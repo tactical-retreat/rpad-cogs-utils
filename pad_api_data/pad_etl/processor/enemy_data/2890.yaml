@@ -1,0 +1,167 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2890
+monster_name_en: Heaven Winged Machine, Seraphis
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Dark by 50%
+  desc_jp: Reduce damage from Dark by 50%
+  name_en: Robot Dark Halven
+  name_jp: Robot Dark Halven
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 50%
+  desc_jp: Survive attacks with 1 HP when HP > 50%
+  name_en: Robot Resolve
+  name_jp: Robot Resolve
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Reduce damage from all sources by
+    50% for 5 turns + Locked random skyfall +15% for 10 turns
+  desc_jp: Voids status ailments for 999 turns + Reduce damage from all sources by
+    50% for 5 turns + Locked random skyfall +15% for 10 turns
+  name_en: Heaven's Armor + Limited Barrier + Electromagnetic Field
+  name_jp: Heaven's Armor + Limited Barrier + Electromagnetic Field
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 20
+  desc_jp: ''
+  name_en: HP <= 20
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 999 turns
+  desc_jp: Increase damage to 200% for the next 999 turns
+  name_en: Awaken Force
+  name_jp: Awaken Force
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 800% damage (2 hits, 400% each)
+  desc_jp: Deal 800% damage (2 hits, 400% each)
+  name_en: Limit Break
+  name_jp: Limit Break
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 20
+  desc_jp: ''
+  name_en: HP <= 20
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 800% damage (2 hits, 400% each)
+  desc_jp: Deal 800% damage (2 hits, 400% each)
+  name_en: Limit Break
+  name_jp: Limit Break
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 1
+  desc_jp: ''
+  name_en: HP <= 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 19% hp + Enemy action
+  desc_jp: Enemy recover 19% hp + Enemy action
+  name_en: Holy Repair + Limit Break
+  name_jp: Holy Repair + Limit Break
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESStatusShield -> Heaven's Armor
+# 	Voids status ailments for 999 turns
+# 	[1] ESDamageShield -> Limited Barrier
+# 	Reduce damage from all sources by 50% for 5 turns
+# 	[2] ESSkyfall -> Electromagnetic Field
+# 	Locked random skyfall +15% for 10 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] SkillSet:
+# 	Condition: When < 1% hp
+# 	[0] ESRecoverEnemy -> Holy Repair
+# 	Enemy recover 19% hp
+# 	[1] ESAttackMultihit -> Limit Break
+# 	Enemy action
+# [7] ESAttackMultihit -> Limit Break
+# Condition: When < 20% hp
+# Enemy action
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESBranchFlag -> ESBranchFlag
+# branch
+# [10] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [11] ESOrbLock -> Shock Ray
+# Condition: One-time use
+# Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [12] ESRandomSpawn -> Flash Bomb
+# Condition: One-time use & when Fire, Water, Wood, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 3 Light orbs
+# [13] ESDebuffMovetime -> Machine Glare
+# Condition: One-time use
+# Movetime -1s for 1 turns
+# [14] ESInactivity -> Gathering magical power
+# Condition: 25% chance
+# Do nothing
+# [15] ESEndPath -> ESEndPath
+# end_turn
+# [16] ESBranchFlag -> ESBranchFlag
+# branch
+# [17] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [18] ESInactivity -> Full Charge
+# Condition: One-time use
+# Do nothing
+# [19] ESSkillDelay -> Suppressive Wave
+# Condition: 25% chance
+# Delay active skills by 3 turns
+# [20] ESAbsorbCombo -> Ordeal Section
+# Condition: 25% chance
+# Absorb combo <= 6 damage for 1 turns
+# [21] ESSkyfall -> Jamming
+# Condition: 25% chance
+# Jammer skyfall +20% for 1 turns
+# [22] ESEndPath -> ESEndPath
+# end_turn
+# [23] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [24] ESAttackMultihit -> Steel Wing
+# Condition: One-time use
+# Enemy action
+# [25] ESBindAttack -> Paralysis Sight
+# Condition: One-time use
+# Bind 1 random for 3 turns
+# [26] ESAttackMultihit -> Core Full Burst
+# Condition: None
+# Enemy action
+# [27] ESAttackUp -> Awaken Force
+# Condition: None
+# Increase damage to 200% for the next 999 turns
+# [28] ESBranchFlag -> ESBranchFlag
+# branch
+# [29] ESAttributeResist -> Robot Dark Halven
+# Reduce damage from Dark by 50%
+# [30] ESResolve -> Robot Resolve
+# Survive attacks with 1 HP when HP > 50%

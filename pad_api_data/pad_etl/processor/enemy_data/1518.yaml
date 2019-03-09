@@ -1,0 +1,152 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1518
+monster_name_en: Keeper of Paradise, Metatron
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Bind 1 both leaders for 2 turns
+  desc_jp: Bind 1 both leaders for 2 turns
+  name_en: Let's stretch before swimming!
+  name_jp: Let's stretch before swimming!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 1 turns
+  desc_jp: Reduce damage from all sources by 50% for 1 turns
+  name_en: Can't forget the sunscreen!
+  name_jp: Can't forget the sunscreen!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 2
+  desc_jp: ''
+  name_en: Turn 2
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 1st, 2nd, 3rd, 4th, 5th row to Water orbs, Deal 100% damage
+  desc_jp: Change 1st, 2nd, 3rd, 4th, 5th row to Water orbs, Deal 100% damage
+  name_en: Here I go!
+  name_jp: Here I go!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 3
+  desc_jp: ''
+  name_en: Turn 3
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 1 Heal orbs + Bind 1 subs for 2 turns
+  desc_jp: Spawn random 1 Heal orbs + Bind 1 subs for 2 turns
+  name_en: Beach volleyball time! + ATTACK!!
+  name_jp: Beach volleyball time! + ATTACK!!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 4
+  desc_jp: ''
+  name_en: Turn 4
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Wood + Change 3rd, 4th column to Fire orbs
+  desc_jp: Change all orbs to Wood + Change 3rd, 4th column to Fire orbs
+  name_en: Next let's split watermelons! + Ha!
+  name_jp: Next let's split watermelons! + Ha!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 400% damage (2 hits, 200% each)
+  desc_jp: Deal 400% damage (2 hits, 200% each)
+  name_en: That was fun! This is for you!
+  name_jp: That was fun! This is for you!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESBindTarget -> Let's stretch before swimming!
+# Condition: None
+# Bind 1 both leaders for 2 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchFlag -> ESBranchFlag
+# branch
+# [9] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [10] ESDamageShield -> Can't forget the sunscreen!
+# Condition: None
+# Reduce damage from all sources by 50% for 1 turns
+# [11] ESBranchFlag -> ESBranchFlag
+# branch
+# [12] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [13] ESRowSpawnMulti -> Here I go!
+# Condition: None
+# Change 1st, 2nd, 3rd, 4th, 5th row to Water orbs
+# [14] ESBranchFlag -> ESBranchFlag
+# branch
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] SkillSet:
+# 	Condition: None
+# 	[0] ESRandomSpawn -> Beach volleyball time!
+# 	Spawn random 1 Heal orbs
+# 	[1] ESBindAttack -> ATTACK!!
+# 	Bind 1 subs for 2 turns
+# [17] ESBranchFlag -> ESBranchFlag
+# branch
+# [18] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [19] SkillSet:
+# 	Condition: None
+# 	[0] ESBoardChange -> Next let's split watermelons!
+# 	Change all orbs to Wood
+# 	[1] ESColumnSpawnMulti -> Ha!
+# 	Change 3rd, 4th column to Fire orbs
+# [20] ESBranchCard -> ESBranchCard
+# branch
+# [21] ESBranchCard -> ESBranchCard
+# branch
+# [22] ESAttackMultihit -> That was fun! This is for you!
+# Condition: None
+# Enemy action
+# [23] ESEndPath -> ESEndPath
+# end_turn
+# [24] ESAttackMultihit -> ...Aren't you hot with that on your head?
+# Condition: None
+# Enemy action
+# [25] ESAttackMultihit -> Why do you resist me?
+# Condition: None
+# Enemy action

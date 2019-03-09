@@ -1,0 +1,73 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2154
+monster_name_en: '***** (Duel Masters)'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Deal 40% damage
+  desc_jp: Deal 40% damage
+  name_en: '***** (Duel Master)'
+  name_jp: '***** (Duel Master)'
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 120% damage
+  desc_jp: Deal 120% damage
+  name_en: '***** (Duel Master)'
+  name_jp: '***** (Duel Master)'
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind Dragon cards for 1 turns
+  desc_jp: Bind Dragon cards for 1 turns
+  name_en: '***** (Duel Master)'
+  name_jp: '***** (Duel Master)'
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESAttackMultihit -> ***** (Duel Master)
+# Condition: None
+# Enemy action
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBindTyping -> ***** (Duel Master)
+# Condition: When < 50% hp , one-time use
+# Bind Dragon cards for 1 turns
+# [9] ESAttackMultihit -> ***** (Duel Master)
+# Condition: None
+# Enemy action

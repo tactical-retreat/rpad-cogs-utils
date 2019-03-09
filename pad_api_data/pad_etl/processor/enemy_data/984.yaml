@@ -1,0 +1,85 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 984
+monster_name_en: Gigas the Great
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  name_en: Great Lariat
+  name_jp: Great Lariat
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  name_en: Grrrreat!
+  name_jp: Grrrreat!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  name_en: Super Final Big Bang Great!
+  name_jp: Super Final Big Bang Great!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESAttackMultihit -> Great Lariat
+# Condition: One-time use
+# Enemy action
+# [5] ESBranchHP -> ESBranchHP
+# branch
+# [6] ESGravity -> Great Press
+# Condition: One-time use
+# Player -99% HP
+# [7] ESAttackMultihit -> Great Chop
+# Condition: One-time use
+# Enemy action
+# [8] ESInactivity -> Grrrreat!
+# Condition: None
+# Do nothing
+# [9] ESBranchFlag -> ESBranchFlag
+# branch
+# [10] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [11] ESInactivity -> Super Final Big Bang Great!
+# Condition: None
+# Do nothing
+# [12] ESAttackMultihit -> Fire!!
+# Condition: One-time use
+# Enemy action
+# [13] ESInactivity -> Grrrreat!
+# Condition: None
+# Do nothing

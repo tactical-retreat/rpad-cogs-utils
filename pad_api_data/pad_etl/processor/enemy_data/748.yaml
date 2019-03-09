@@ -1,0 +1,62 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 748
+monster_name_en: Guardian of Life Seiryuu, Karin
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 3
+############################################################
+!SkillRecordListing
+level: 3
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Bind active skills for 5 turns
+  desc_jp: Bind active skills for 5 turns
+  name_en: Binding Wave
+  name_jp: Binding Wave
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 20
+  desc_jp: ''
+  name_en: HP <= 20
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 490% damage (7 hits, 70% each)
+  desc_jp: Deal 490% damage (7 hits, 70% each)
+  name_en: Eastern Seven-Star Formation
+  name_jp: Eastern Seven-Star Formation
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESBindSkill -> Binding Wave
+# Condition: One-time use
+# Bind active skills for 5 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESEndPath -> ESEndPath
+# end_turn
+# [10] ESAttackMultihit -> Eastern Seven-Star Formation
+# Condition: When < 20% hp
+# Enemy action

@@ -1,0 +1,169 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 102947
+monster_name_en: Alt. Nocturnal Corpse Wyrm, Dragon Zombie
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Void damage >= 10000000 for 999 turns
+    + Mortal Poison skyfall +5% for 5 turns
+  desc_jp: Voids status ailments for 999 turns + Void damage >= 10000000 for 999 turns
+    + Mortal Poison skyfall +5% for 5 turns
+  name_en: Cruel Malice + Lifeline + Death Miasma
+  name_jp: Cruel Malice + Lifeline + Death Miasma
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 2
+  desc_jp: ''
+  name_en: Turn 2
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 150% for the next 999 turns
+  desc_jp: Increase damage to 150% for the next 999 turns
+  name_en: Corpse Dragon's Wail
+  name_jp: Corpse Dragon's Wail
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Mortal Poison skyfall +5% for 5 turns
+  desc_jp: Mortal Poison skyfall +5% for 5 turns
+  name_en: Death Miasma
+  name_jp: Death Miasma
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 10
+  desc_jp: ''
+  name_en: HP <= 10
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Mortal Poison, Deal 1200% damage
+  desc_jp: Change Random to Mortal Poison, Deal 1200% damage
+  name_en: Deadly Poison Breath
+  name_jp: Deadly Poison Breath
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESStatusShield -> Cruel Malice
+# 	Voids status ailments for 999 turns
+# 	[1] ESVoidShield -> Lifeline
+# 	Void damage >= 10000000 for 999 turns
+# 	[2] ESSkyfall -> Death Miasma
+# 	Mortal Poison skyfall +5% for 5 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESOrbChangeAttack -> Deadly Poison Breath
+# Condition: When < 10% hp
+# Change Random to Mortal Poison
+# [7] ESAttackUp -> Corpse Dragon's Wail
+# Condition: When < 50% hp , one-time use
+# Increase damage to 150% for the next 999 turns
+# [8] ESSkyfall -> Death Miasma
+# Condition: None
+# Mortal Poison skyfall +5% for 5 turns
+# [9] ESBranchFlag -> ESBranchFlag
+# branch
+# [10] ESBranchFlag -> ESBranchFlag
+# branch
+# [11] ESBranchFlag -> ESBranchFlag
+# branch
+# [12] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [13] SkillSet:
+# 	Condition: 34% chance
+# 	[0] ESColumnSpawnMulti -> Castaway Cataract
+# 	Change 1st, 3rd, 5th column to Jammer orbs
+# 	[1] ESGravity -> Hellish Ambience
+# 	Player -50% HP
+# [14] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [15] SkillSet:
+# 	Condition: 50% chance
+# 	[0] ESRowSpawnMulti -> Test of Mortality
+# 	Change 1st row to Heal orbs, 5th row to Mortal Poison orbs
+# 	[1] ESGravity -> Hellish Ambience
+# 	Player -50% HP
+# [16] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [17] ESBlindStickyFixed -> Evil Seal of Repulsion
+# Condition: 50% chance
+# Blind orbs in specific positions for 1 turns
+# [18] ESBlindStickyFixed -> Evil Seal of Repulsion
+# Condition: None
+# Blind orbs in specific positions for 1 turns
+# [19] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [20] SkillSet:
+# 	Condition: 50% chance
+# 	[0] ESColumnSpawnMulti -> Castaway Cataract
+# 	Change 1st, 3rd, 5th column to Jammer orbs
+# 	[1] ESGravity -> Hellish Ambience
+# 	Player -50% HP
+# [21] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [22] SkillSet:
+# 	Condition: None
+# 	[0] ESRowSpawnMulti -> Test of Mortality
+# 	Change 1st row to Heal orbs, 5th row to Mortal Poison orbs
+# 	[1] ESGravity -> Hellish Ambience
+# 	Player -50% HP
+# [23] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [24] SkillSet:
+# 	Condition: 50% chance
+# 	[0] ESRowSpawnMulti -> Test of Mortality
+# 	Change 1st row to Heal orbs, 5th row to Mortal Poison orbs
+# 	[1] ESGravity -> Hellish Ambience
+# 	Player -50% HP
+# [25] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [26] ESBlindStickyFixed -> Evil Seal of Repulsion
+# Condition: 50% chance
+# Blind orbs in specific positions for 1 turns
+# [27] ESBlindStickyFixed -> Evil Seal of Repulsion
+# Condition: None
+# Blind orbs in specific positions for 1 turns
+# [28] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [29] SkillSet:
+# 	Condition: 50% chance
+# 	[0] ESColumnSpawnMulti -> Castaway Cataract
+# 	Change 1st, 3rd, 5th column to Jammer orbs
+# 	[1] ESGravity -> Hellish Ambience
+# 	Player -50% HP
+# [30] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [31] ESBlindStickyFixed -> Evil Seal of Repulsion
+# Condition: 50% chance
+# Blind orbs in specific positions for 1 turns
+# [32] ESBlindStickyFixed -> Evil Seal of Repulsion
+# Condition: None
+# Blind orbs in specific positions for 1 turns

@@ -1,0 +1,84 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1343
+monster_name_en: Dark Kouryu Emperor, Fagan
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Movetime -2s for 5 turns
+  desc_jp: Movetime -2s for 5 turns
+  name_en: Wave of Awe
+  name_jp: Wave of Awe
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Dark, Deal 150% damage
+  desc_jp: Change Random to Dark, Deal 150% damage
+  name_en: Dark Dragon Wave
+  name_jp: Dark Dragon Wave
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 70
+  desc_jp: ''
+  name_en: HP <= 70
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 200% damage (2 hits, 100% each)
+  desc_jp: Deal 200% damage (2 hits, 100% each)
+  name_en: Extreme Twin Dragon Palms
+  name_jp: Extreme Twin Dragon Palms
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 30
+  desc_jp: ''
+  name_en: HP <= 30
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Dark, Deal 300% damage
+  desc_jp: Change Random to Dark, Deal 300% damage
+  name_en: Extreme Dark Dragon Wave
+  name_jp: Extreme Dark Dragon Wave
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESDebuffMovetime -> Wave of Awe
+# Condition: None
+# Movetime -2s for 5 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESOrbChangeAttack -> Extreme Dark Dragon Wave
+# Condition: When < 30% hp
+# Change Random to Dark
+# [7] ESOrbChangeAttack -> Dark Dragon Wave
+# Condition: One-time use
+# Change Random to Dark
+# [8] ESAttackMultihit -> Extreme Twin Dragon Palms
+# Condition: When < 70% hp
+# Enemy action

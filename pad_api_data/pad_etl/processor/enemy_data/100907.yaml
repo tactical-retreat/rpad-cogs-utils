@@ -1,0 +1,105 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 100907
+monster_name_en: Alt. Aqua Baron
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Balanced, Physical by 50%
+  desc_jp: Reduce damage from Balanced, Physical by 50%
+  name_en: Physical Balanced Halved
+  name_jp: Physical Balanced Halved
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Water skyfall +20% for 20 turns + Specific orbs change every 1.0s for 10
+    turns
+  desc_jp: Water skyfall +20% for 20 turns + Specific orbs change every 1.0s for 10
+    turns
+  name_en: Blizzard + Crystal Force
+  name_jp: Blizzard + Crystal Force
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 300% damage (2 hits, 150% each)
+  desc_jp: Deal 300% damage (2 hits, 150% each)
+  name_en: Ice Rush
+  name_jp: Ice Rush
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Specific orbs change every 1.0s for 10 turns, Deal 260% damage
+  desc_jp: Specific orbs change every 1.0s for 10 turns, Deal 260% damage
+  name_en: Crystal Reversal
+  name_jp: Crystal Reversal
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 360% damage (3 hits, 120% each)
+  desc_jp: Deal 360% damage (3 hits, 120% each)
+  name_en: Cold Trident
+  name_jp: Cold Trident
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 360% damage (3 hits, 120% each)
+  desc_jp: Deal 360% damage (3 hits, 120% each)
+  name_en: Cold Trident
+  name_jp: Cold Trident
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESSkyfall -> Blizzard
+# 	Water skyfall +20% for 20 turns
+# 	[1] ESSpinnersFixed -> Crystal Force
+# 	Specific orbs change every 1.0s for 10 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESSpinnersFixed -> Crystal Reversal
+# Condition: When < 50% hp , one-time use
+# Specific orbs change every 1.0s for 10 turns
+# [7] ESAttackMultihit -> Cold Trident
+# Condition: When < 50% hp
+# Enemy action
+# [8] ESAttackMultihit -> Ice Rush
+# Condition: None
+# Enemy action
+# [9] ESEndPath -> ESEndPath
+# end_turn
+# [10] ESTypeResist -> Physical Balanced Halved
+# Reduce damage from Balanced, Physical by 50%

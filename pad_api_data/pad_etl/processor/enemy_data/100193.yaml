@@ -1,0 +1,46 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 100193
+monster_name_en: Alt. Frost Devil
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Lock 1 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 10% damage
+  desc_jp: Lock 1 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 10% damage
+  name_en: Tiny Frost
+  name_jp: Tiny Frost
+  record_type_name: PREEMPT
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESOrbLock -> Tiny Frost
+# Condition: None
+# Lock 1 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESAttackUp -> Anger
+# Condition: None
+# Increase damage to 130% for the next 3 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn

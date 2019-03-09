@@ -1,0 +1,64 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 101227
+monster_name_en: Alt. Icewing Twin Dragon King, Beyzul
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Water by 50%
+  desc_jp: Reduce damage from Water by 50%
+  name_en: Ilsix Water Halved
+  name_jp: Ilsix Water Halved
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Water skyfall +25% for 5 turns
+  desc_jp: Water skyfall +25% for 5 turns
+  name_en: Ice Age
+  name_jp: Ice Age
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Water, Deal 500% damage
+  desc_jp: Change Random to Water, Deal 500% damage
+  name_en: Absolute End
+  name_jp: Absolute End
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESSkyfall -> Ice Age
+# Condition: None
+# Water skyfall +25% for 5 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESOrbChangeAttack -> Absolute End
+# Condition: None
+# Change Random to Water
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESAttributeResist -> Ilsix Water Halved
+# Reduce damage from Water by 50%

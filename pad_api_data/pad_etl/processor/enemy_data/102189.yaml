@@ -1,0 +1,133 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 102189
+monster_name_en: Alt. Destroying CyberDragon, Diadem
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Spawn random 15 Jammer orbs + Lock all Jammer orbs
+  desc_jp: Spawn random 15 Jammer orbs + Lock all Jammer orbs
+  name_en: Star Onyx + Four Strikes Leading to Destruction
+  name_jp: Star Onyx + Four Strikes Leading to Destruction
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Turn 1
+  desc_jp: ''
+  name_en: Turn 1
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 6 random cards for 4 turns, Deal 100% damage
+  desc_jp: Bind 6 random cards for 4 turns, Deal 100% damage
+  name_en: First Strike - Fear Bringer
+  name_jp: First Strike - Fear Bringer
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 2
+  desc_jp: ''
+  name_en: Turn 2
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind active skills for 4 turns, Deal 100% damage
+  desc_jp: Bind active skills for 4 turns, Deal 100% damage
+  name_en: Second Strike - Curse Bringer
+  name_jp: Second Strike - Curse Bringer
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 3
+  desc_jp: ''
+  name_en: Turn 3
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 100% damage
+  desc_jp: Blind all orbs on the board, Deal 100% damage
+  name_en: Third Strike - Darkness Bringer
+  name_jp: Third Strike - Darkness Bringer
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Turn 4
+  desc_jp: ''
+  name_en: Turn 4
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Delay active skills by 4 turns
+  desc_jp: Delay active skills by 4 turns
+  name_en: Fourth Strike - Despair Bringer
+  name_jp: Fourth Strike - Despair Bringer
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 1600% damage (8 hits, 200% each)
+  desc_jp: Deal 1600% damage (8 hits, 200% each)
+  name_en: Hour of Destruction - Ruin Advent
+  name_jp: Hour of Destruction - Ruin Advent
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: None
+# 	[0] ESRandomSpawn -> Star Onyx
+# 	Spawn random 15 Jammer orbs
+# 	[1] ESOrbLock -> Four Strikes Leading to Destruction
+# 	Lock all Jammer orbs
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchFlag -> ESBranchFlag
+# branch
+# [7] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [8] ESBindRandom -> First Strike - Fear Bringer
+# Condition: None
+# Bind 6 random cards for 4 turns
+# [9] ESBranchFlag -> ESBranchFlag
+# branch
+# [10] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [11] ESBindSkill -> Second Strike - Curse Bringer
+# Condition: None
+# Bind active skills for 4 turns
+# [12] ESBranchFlag -> ESBranchFlag
+# branch
+# [13] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [14] ESBlind -> Third Strike - Darkness Bringer
+# Condition: None
+# Blind all orbs on the board
+# [15] ESBranchFlag -> ESBranchFlag
+# branch
+# [16] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [17] ESSkillDelay -> Fourth Strike - Despair Bringer
+# Condition: None
+# Delay active skills by 4 turns
+# [18] ESAttackMultihit -> Hour of Destruction - Ruin Advent
+# Condition: None
+# Enemy action

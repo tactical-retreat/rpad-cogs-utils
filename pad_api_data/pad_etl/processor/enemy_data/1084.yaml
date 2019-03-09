@@ -1,0 +1,61 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1084
+monster_name_en: Purple Sky Fruit, Grape Dragon
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Player recover 100% hp
+  desc_jp: Player recover 100% hp
+  name_en: Fruity Goodness
+  name_jp: Fruity Goodness
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Heal to Dark, Deal 125% damage
+  desc_jp: Change Heal to Dark, Deal 125% damage
+  name_en: Bubbly Grape
+  name_jp: Bubbly Grape
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESRecoverPlayer -> Fruity Goodness
+# Condition: None
+# Player recover 100% hp
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESOrbChangeAttack -> Bubbly Grape
+# Condition: None
+# Change Heal to Dark
+# [9] ESOrbChangeAttack -> Grape Shower
+# Condition: None
+# Change Random to Heal

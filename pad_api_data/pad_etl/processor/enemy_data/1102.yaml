@@ -1,0 +1,107 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1102
+monster_name_en: Creation Tree Spirit, Alraune
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Bind 4 random subs for 4 turns
+  desc_jp: Bind 4 random subs for 4 turns
+  name_en: Nap Lullaby
+  name_jp: Nap Lullaby
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 5th row to Wood, Jammer orbs, Deal 110% damage
+  desc_jp: Change 5th row to Wood, Jammer orbs, Deal 110% damage
+  name_en: Breath of Life
+  name_jp: Breath of Life
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Spawn random 5 Water orbs, Deal 75% damage
+  desc_jp: Spawn random 5 Water orbs, Deal 75% damage
+  name_en: Holy Watering
+  name_jp: Holy Watering
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 5 turns + Increase damage to
+    200% for the next 5 turns
+  desc_jp: Reduce damage from all sources by 50% for 5 turns + Increase damage to
+    200% for the next 5 turns
+  name_en: "Good Luck Charm + Now I'm serious \u266A"
+  name_jp: "Good Luck Charm + Now I'm serious \u266A"
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Enemy recover 100% hp
+  desc_jp: Enemy recover 100% hp
+  name_en: Cure
+  name_jp: Cure
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 100% hp
+  desc_jp: Enemy recover 100% hp
+  name_en: Cure
+  name_jp: Cure
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESBindRandomSub -> Nap Lullaby
+# Condition: None
+# Bind 4 random subs for 4 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] SkillSet:
+# 	Condition: When < 50% hp , one-time use
+# 	[0] ESDamageShield -> Good Luck Charm
+# 	Reduce damage from all sources by 50% for 5 turns
+# 	[1] ESAttackUp -> Now I'm serious ♪
+# 	Increase damage to 200% for the next 5 turns
+# [7] ESRecoverEnemy -> Cure
+# Condition: When < 50% hp , one-time use
+# Enemy recover 100% hp
+# [8] ESRowSpawnMulti -> Breath of Life
+# Condition: 40% chance
+# Change 5th row to Wood, Jammer orbs
+# [9] ESRandomSpawn -> Holy Watering
+# Condition: When fire, heal, jammer, poison, mortal poison orbs are on the board
+# Spawn random 5 Water orbs
+# [10] ESRandomSpawn -> Holy Watering
+# Condition: When water, wood, light, dark, jammer, poison, mortal poison orbs are on the board
+# Spawn random 10 Water orbs

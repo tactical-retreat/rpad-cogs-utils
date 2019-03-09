@@ -1,0 +1,100 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 111
+monster_name_en: Vampire Lord
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids player buff effects
+  desc_jp: Voids player buff effects
+  name_en: Reset Wave
+  name_jp: Reset Wave
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Blind all orbs on the board
+  desc_jp: Blind all orbs on the board
+  name_en: Dark World
+  name_jp: Dark World
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 19
+  desc_jp: ''
+  name_en: HP <= 19
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids player buff effects
+  desc_jp: Voids player buff effects
+  name_en: Reset Wave
+  name_jp: Reset Wave
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Blind all orbs on the board
+  desc_jp: Blind all orbs on the board
+  name_en: Dark World
+  name_jp: Dark World
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 20
+  desc_jp: ''
+  name_en: HP <= 20
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 100% hp
+  desc_jp: Enemy recover 100% hp
+  name_en: Resurrection
+  name_jp: Resurrection
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 180% damage (3 hits, 60% each)
+  desc_jp: Deal 180% damage (3 hits, 60% each)
+  name_en: Nightmare Slash
+  name_jp: Nightmare Slash
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 20
+  desc_jp: ''
+  name_en: HP <= 20
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 180% damage (3 hits, 60% each)
+  desc_jp: Deal 180% damage (3 hits, 60% each)
+  name_en: Nightmare Slash
+  name_jp: Nightmare Slash
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESRecoverEnemy -> Resurrection
+# Condition: When < 20% hp , one-time use
+# Enemy recover 100% hp
+# [2] ESAttackMultihit -> Nightmare Slash
+# Condition: 70% chance when < 20% hp
+# Enemy action
+# [3] ESDispel -> Reset Wave
+# Condition: 50% chance
+# Voids player buff effects
+# [4] ESBlind -> Dark World
+# Condition: 10% chance
+# Blind all orbs on the board

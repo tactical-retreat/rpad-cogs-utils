@@ -1,0 +1,94 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1851
+monster_name_en: Tyrannical Pupil, Jagi
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Movetime -2s for 2 turns
+  desc_jp: Movetime -2s for 2 turns
+  name_en: Say my name!
+  name_jp: Say my name!
+  record_type_name: PREEMPT
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Movetime -2s for 2 turns
+  desc_jp: Movetime -2s for 2 turns
+  name_en: Say my name!
+  name_jp: Say my name!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 100% damage
+  desc_jp: Change Random to Jammer, Deal 100% damage
+  name_en: Hokuto Rakan Geki!!
+  name_jp: Hokuto Rakan Geki!!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 50
+  desc_jp: ''
+  name_en: HP <= 50
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 3rd column to Dark orbs, Deal 150% damage
+  desc_jp: Change 3rd column to Dark orbs, Deal 150% damage
+  name_en: You can't see through my Nanto Seiken!
+  name_jp: You can't see through my Nanto Seiken!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESDebuffMovetime -> Say my name!
+# Condition: One-time use
+# Movetime -2s for 2 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchLevel -> ESBranchLevel
+# branch
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESDebuffMovetime -> Say my name!
+# Condition: One-time use
+# Movetime -2s for 2 turns
+# [9] ESColumnSpawnMulti -> You can't see through my Nanto Seiken!
+# Condition: When < 50% hp
+# Change 3rd column to Dark orbs
+# [10] ESOrbChangeAttack -> Hokuto Rakan Geki!!
+# Condition: None
+# Change Random to Jammer
+# [11] SkillSet:
+# 	Condition: On death
+# 	[0] ESInactivity -> Bawa!!
+# 	Do nothing

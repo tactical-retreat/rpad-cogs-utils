@@ -1,0 +1,140 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3725
+monster_name_en: Dark Orb Dragon, Eyro
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Blind orbs in specific positions for 1 turns + Spawn random 6 locked Bomb
+    orbs
+  desc_jp: Blind orbs in specific positions for 1 turns + Spawn random 6 locked Bomb
+    orbs
+  name_en: Black Smokescreen + Timed Explosion
+  name_jp: Black Smokescreen + Timed Explosion
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 19
+  desc_jp: ''
+  name_en: HP <= 19
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Jammer
+  desc_jp: Change all orbs to Jammer
+  name_en: Extreme Dragon Eyes
+  name_jp: Extreme Dragon Eyes
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 19
+  desc_jp: ''
+  name_en: HP <= 19
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Dark, Jammer, Deal 3000% damage
+  desc_jp: Change all orbs to Dark, Jammer, Deal 3000% damage
+  name_en: Darklight Calamity
+  name_jp: Darklight Calamity
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] SkillSet:
+# 	Condition: None
+# 	[0] ESBlindStickyFixed -> Black Smokescreen
+# 	Blind orbs in specific positions for 1 turns
+# 	[1] ESBombRandomSpawn -> Timed Explosion
+# 	Spawn random 6 locked Bomb orbs
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESBranchFlag -> ESBranchFlag
+# branch
+# [10] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [11] ESBranchHP -> ESBranchHP
+# branch
+# [12] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESDamageShield -> Darkened Scale Armor
+# 	Reduce damage from all sources by 75% for 4 turns
+# 	[1] ESSkyfall -> Usurper's Divine Protection
+# 	Locked random skyfall +25% for 7 turns
+# [13] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESDamageShield -> Darkened Scale Armor
+# 	Reduce damage from all sources by 75% for 4 turns
+# 	[1] ESSkyfall -> Fortuitous Yin and Yang
+# 	Heal, Jammer skyfall +20% for 7 turns
+# [14] ESEndPath -> ESEndPath
+# end_turn
+# [15] ESAttackUp -> Resentful Stare
+# Condition: One-time use
+# Increase damage to 150% for the next 999 turns
+# [16] ESDamageShield -> Darkened Scale Armor
+# Condition: One-time use
+# Reduce damage from all sources by 75% for 4 turns
+# [17] ESBranchFlag -> ESBranchFlag
+# branch
+# [18] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [19] ESOrbChangeAttackBits -> Anarchy
+# Condition: None
+# Change Jammer to Poison
+# [20] ESPoisonChangeRandomAttack -> Anarchy
+# Condition: None
+# Change Random 4 to Poison
+# [21] ESBranchFlag -> ESBranchFlag
+# branch
+# [22] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [23] ESOrbChangeAttackBits -> Gnawing Fangs
+# Condition: None
+# Change Poison to Jammer
+# [24] ESOrbChangeAttackBits -> Gnawing Fangs
+# Condition: None
+# Change Heal to Jammer
+# [25] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [26] ESOrbLock -> Black Tempered Bow
+# Condition: None
+# Lock all Jammer orbs
+# [27] ESGravity -> Black Tempered Bow
+# Condition: None
+# Player -90% HP
+# [28] ESEndPath -> ESEndPath
+# end_turn
+# [29] ESBranchFlag -> ESBranchFlag
+# branch
+# [30] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [31] ESBoardChange -> Extreme Dragon Eyes
+# Condition: None
+# Change all orbs to Jammer
+# [32] ESBoardChangeAttackBits -> Darklight Calamity
+# Condition: None
+# Change all orbs to Dark, Jammer

@@ -1,0 +1,105 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 692
+monster_name_en: Earth-Rending Emperor, Siegfried
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Player recover 100% hp
+  desc_jp: Player recover 100% hp
+  name_en: En Garde!
+  name_jp: En Garde!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  name_en: Strikes an imposing stance
+  name_jp: Strikes an imposing stance
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 99
+  desc_jp: ''
+  name_en: HP <= 99
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Water, Deal 70% damage
+  desc_jp: Change Random to Water, Deal 70% damage
+  name_en: Splash Blade
+  name_jp: Splash Blade
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 99
+  desc_jp: ''
+  name_en: HP <= 99
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 300% for the next 999 turns
+  desc_jp: Increase damage to 300% for the next 999 turns
+  name_en: King Bubblie ENHANCE!
+  name_jp: King Bubblie ENHANCE!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: HP <= 49
+  desc_jp: ''
+  name_en: HP <= 49
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 88% damage
+  desc_jp: Deal 88% damage
+  name_en: Dragon-Slaying Crimson Blade
+  name_jp: Dragon-Slaying Crimson Blade
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESRecoverPlayer -> En Garde!
+# Condition: One-time use
+# Player recover 100% hp
+# [5] ESBranchHP -> ESBranchHP
+# branch
+# [6] ESAttackUp -> King Bubblie ENHANCE!
+# Condition: None
+# Increase damage to 300% for the next 999 turns
+# [7] ESBranchHP -> ESBranchHP
+# branch
+# [8] ESAttackMultihit -> Dragon-Slaying Crimson Blade
+# Condition: None
+# Enemy action
+# [9] ESEndPath -> ESEndPath
+# end_turn
+# [10] ESOrbChangeAttack -> Splash Blade
+# Condition: None
+# Change Random to Water
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESInactivity -> Strikes an imposing stance
+# Condition: None
+# Do nothing

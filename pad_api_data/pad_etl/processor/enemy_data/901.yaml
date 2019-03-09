@@ -1,0 +1,54 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 901
+monster_name_en: Wind Chaser
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: HP <= 100
+  desc_jp: ''
+  name_en: HP <= 100
+  name_jp: ''
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage (5 hits, 20% each)
+  desc_jp: Deal 100% damage (5 hits, 20% each)
+  name_en: Wind Edge
+  name_jp: Wind Edge
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESAttackUp -> Chase Mode
+# Condition: When < 50% hp
+# Increase damage to 200% for the next 5 turns
+# [4] ESBranchHP -> ESBranchHP
+# branch
+# [5] ESOrbChangeAttack -> Aero Stream
+# Condition: None
+# Change Random to Wood
+# [6] ESEndPath -> ESEndPath
+# end_turn
+# [7] ESOrbChangeAttack -> Air Slash
+# Condition: One-time use
+# Change Random to Wood
+# [8] ESAttackMultihit -> Wind Edge
+# Condition: None
+# Enemy action
