@@ -184,7 +184,6 @@ def dump_summary_to_file(enemy_summary: EnemySummary, enemy_behavior=None):
             f.write('{}\n'.format(_header('Raw Behavior')))
             for idx, behavior in enumerate(enemy_behavior):
                 behavior_str = enemy_skillset.simple_dump_obj(behavior)
-                print(behavior_str)
                 behavior_str = behavior_str.replace('\n', '\n# ').rstrip('#').rstrip()
                 f.write('# [{}] {}\n'.format(idx + 1, behavior_str, '\n'))
 

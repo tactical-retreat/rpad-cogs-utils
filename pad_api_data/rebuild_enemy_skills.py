@@ -33,6 +33,7 @@ def run(args):
     db.load_database(skip_skills=True, skip_bonus=True, skip_extra=True)
 
     for card in db.cards:
+        print('processing', card.card.name)
         enemy_behavior = card.enemy_behavior
         if not enemy_behavior:
             continue
