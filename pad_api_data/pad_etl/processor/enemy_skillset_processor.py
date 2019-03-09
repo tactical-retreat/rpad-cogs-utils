@@ -111,7 +111,18 @@ class ProcessedSkillset(object):
 
 
 def to_item(action: ESAction):
-    return SkillItem(action.name, action.full_description(), 0)
+    name = action.name
+    description = action.full_description()
+    if type(action) == ESSkillSet:
+        name = ' + '.join(map(lambda s: s.name, action.skill_list))
+        description = ' + '.join(map(lambda s: s.description, action.skill_list))
+
+    if type(action) == ESPassive:
+        name = 'Ability'
+
+    if type(action) in [ESPreemptive, ESAttackPreemptive]:
+        name = 'Preemptive'
+    return SkillItem(name, description, 0)
 
 
 class Context(object):
