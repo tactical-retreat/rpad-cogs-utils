@@ -1,5 +1,6 @@
+import io
 from enum import Enum, auto
-from typing import List
+from typing import List, Optional
 import os
 import yaml
 
@@ -79,6 +80,18 @@ class EnemySummary(object):
         self.info = info
         self.data = data or []
 
+    def data_for_level(self, level: int) -> Optional[SkillRecordListing]:
+        if not self.data:
+            return None
+
+        viable_levels = [d.level for d in self.data if level >= d.level]
+        if not viable_levels:
+            return None
+
+        selected_level = min(viable_levels)
+        return next(filter(lambda d: d.level == selected_level, self.data))
+
+
 
 def skillitem_to_skillrecord(record_type: RecordType, es_item: any) -> SkillRecord:
     skill_item = enemy_skillset_processor.to_item(es_item)
@@ -124,10 +137,11 @@ def flatten_skillset(level: int, skillset: ProcessedSkillset) -> SkillRecordList
     return SkillRecordListing(level=level, records=records)
 
 
-def load_summary(enemy_summary: EnemySummary) -> EnemySummary:
-    file_path = _file_by_id(enemy_summary.info.monster_id)
+# TODO: need a method to merge loaded ES with computed
+def load_summary(monster_id: int) -> Optional[EnemySummary]:
+    file_path = _file_by_id(monster_id)
     if not os.path.exists(file_path):
-        return enemy_summary
+        return None
 
     with open(file_path) as f:
         line = f.readline()
@@ -140,33 +154,36 @@ def load_summary(enemy_summary: EnemySummary) -> EnemySummary:
             line = f.readline()
 
         all_listings = []
-        while True:
-            if line is None:
-                break
+        while line:
 
             while line.startswith('#'):
                 line = f.readline()
 
             cur_listing_data = []
-            while line is not None and not line.startswith('#'):
+            while line and not line.startswith('#'):
                 cur_listing_data.append(line)
                 line = f.readline()
-            all_listings.append(cur_listing_data)
 
-    enemy_summary.info = yaml.load('\n'.join(entry_info_data))
-    enemy_summary.info.warnings = []
+            if cur_listing_data:
+                all_listings.append(cur_listing_data)
 
-    listings = [yaml.load('\n'.join(x) for x in all_listings)]
-    listings_by_level = {x.level: x for x in listings}
-    listings_have_overrides = any(map(lambda x: len(x.overrides), listings))
+    enemy_info = yaml.load(''.join(entry_info_data))
+    enemy_info.warnings = []
+    enemy_summary = EnemySummary(enemy_info)
 
-    for computed_listing in enemy_summary.data:
-        stored_listing = listings_by_level.get(computed_listing.level, None)
-        if stored_listing is None and listings_have_overrides:
-            enemy_summary.info.warnings.append(
-                'Override missing for {}'.format(computed_listing.level))
-        else:
-            computed_listing.overrides = stored_listing.overrides
+    listings = [yaml.load(''.join(x)) for x in all_listings]
+    enemy_summary.data = listings
+    # listings_by_level = {x.level: x for x in listings}
+    # listings_have_overrides = any(map(lambda x: len(x.overrides), listings))
+
+    # TODO: this needs fixing I had merging in but i removed it??
+    # for computed_listing in enemy_summary.data:
+    #     stored_listing = listings_by_level.get(computed_listing.level, None)
+    #     if stored_listing is None and listings_have_overrides:
+    #         enemy_summary.info.warnings.append(
+    #             'Override missing for {}'.format(computed_listing.level))
+    #     else:
+    #         computed_listing.overrides = stored_listing.overrides
 
     return enemy_summary
 
@@ -198,3 +215,26 @@ def _header(header_text: str) -> str:
 
 def _file_by_id(monster_id):
     return os.path.join(os.path.dirname(__file__), 'enemy_data', '{}.yaml'.format(monster_id))
+
+def load_summary_as_dump_text(card, monster_id: int, monster_level: int):
+    summary = load_summary(monster_id)
+    if not summary:
+        return 'Error! failed to find enemy data for {} {}'.format(card.name, monster_id)
+
+    skill_data = summary.data_for_level(monster_level)
+    if not skill_data:
+        return 'Error! failed to find correct enemy level data for {} {} {}'.format(card.name, monster_id, monster_level)
+
+    enemy_info = skill_data.overrides or skill_data.records
+    if not enemy_info:
+        return 'This monster will only use basic attacks'
+
+    msg = ''
+    for row in enemy_info:
+        header = row.name_en
+        if row.record_type_name == 'DIVIDER':
+            header = '{} {} {}'.format('-' * 5, header, '-' * 5)
+        msg += header
+        msg += '\n' + row.desc_en + '\n'
+
+    return msg
