@@ -3,7 +3,10 @@ from typing import List
 import os
 import yaml
 
+
 from .enemy_skillset_processor import SkillItem, ProcessedSkillset
+from . import enemy_skillset_processor
+from . import enemy_skillset
 
 
 class RecordType(Enum):
@@ -27,13 +30,13 @@ class RecordType(Enum):
 
 class SkillRecord(yaml.YAMLObject):
     """A skill line item, placeholder, or other text."""
-    # yaml_tag = u'!SkillRecord'
+    yaml_tag = u'!SkillRecord'
 
     def __init__(self,
                  record_type=RecordType.TEXT,
                  name_en='', name_jp='',
                  desc_en='', desc_jp=''):
-        self.record_type = record_type
+        self.record_type_name = record_type.name
         self.name_en = name_en
         self.name_jp = name_jp
         self.desc_en = desc_en
@@ -46,14 +49,17 @@ class SkillRecordListing(yaml.YAMLObject):
     Level is used to distinguish between different sets of skills based on the specific dungeon.
     """
 
+    yaml_tag = u'!SkillRecordListing'
+
     def __init__(self, level: int, records: List[SkillRecord], overrides: List[SkillRecord] = None):
         self.level = level
         self.records = records
-        self.overrides = overrides
+        self.overrides = overrides or []
 
 
 class EntryInfo(yaml.YAMLObject):
     """Extra info about the entry."""
+    yaml_tag = u'!EntryInfo'
 
     def __init__(self,
                  monster_id: int, monster_name_en: str, monster_name_jp: str,
@@ -74,7 +80,8 @@ class EnemySummary(object):
         self.data = data or []
 
 
-def skillitem_to_skillrecord(record_type: RecordType, skill_item: SkillItem) -> SkillRecord:
+def skillitem_to_skillrecord(record_type: RecordType, es_item: any) -> SkillRecord:
+    skill_item = enemy_skillset_processor.to_item(es_item)
     return SkillRecord(record_type=record_type,
                        name_en=skill_item.name,
                        name_jp=skill_item.name,
@@ -84,10 +91,10 @@ def skillitem_to_skillrecord(record_type: RecordType, skill_item: SkillItem) -> 
 
 def create_divider(divider_text: str) -> SkillRecord:
     return SkillRecord(record_type=RecordType.DIVIDER,
-                       name_en='',
-                       name_jp=divider_text,
-                       desc_en='',
-                       desc_jp=divider_text)
+                       name_en=divider_text,
+                       name_jp='',
+                       desc_en=divider_text,
+                       desc_jp='')
 
 
 def flatten_skillset(level: int, skillset: ProcessedSkillset) -> SkillRecordListing:
@@ -101,15 +108,18 @@ def flatten_skillset(level: int, skillset: ProcessedSkillset) -> SkillRecordList
 
     for idx, item in enumerate(skillset.timed_skill_groups):
         records.append(create_divider('Turn {}'.format(item.turn)))
-        records.append(skillitem_to_skillrecord(RecordType.ACTION, item))
+        for sub_item in item.skills:
+            records.append(skillitem_to_skillrecord(RecordType.ACTION, sub_item))
 
     for item in skillset.enemycount_skill_groups:
         records.append(create_divider('When {} enemy remains'.format(item.count)))
-        records.append(skillitem_to_skillrecord(RecordType.ACTION, item))
+        for sub_item in item.skills:
+            records.append(skillitem_to_skillrecord(RecordType.ACTION, sub_item))
 
     for item in skillset.hp_skill_groups:
         records.append(create_divider('HP <= {}'.format(item.hp_ceiling)))
-        records.append(skillitem_to_skillrecord(RecordType.ACTION, item))
+        for sub_item in item.skills:
+            records.append(skillitem_to_skillrecord(RecordType.ACTION, sub_item))
 
     return SkillRecordListing(level=level, records=records)
 
@@ -161,7 +171,7 @@ def load_summary(enemy_summary: EnemySummary) -> EnemySummary:
     return enemy_summary
 
 
-def dump_summary_to_file(enemy_summary: EnemySummary):
+def dump_summary_to_file(enemy_summary: EnemySummary, enemy_behavior=None):
     file_path = _file_by_id(enemy_summary.info.monster_id)
     with open(file_path, 'w', encoding='utf-8') as f:
         f.write('{}\n'.format(_header('Info')))
@@ -169,6 +179,14 @@ def dump_summary_to_file(enemy_summary: EnemySummary):
         for listing in enemy_summary.data:
             f.write('{}\n'.format(_header('Data @ {}'.format(listing.level))))
             f.write('{}\n'.format(yaml.dump(listing, default_flow_style=False)))
+
+        if enemy_behavior:
+            f.write('{}\n'.format(_header('Raw Behavior')))
+            for idx, behavior in enumerate(enemy_behavior):
+                behavior_str = enemy_skillset.simple_dump_obj(behavior)
+                print(behavior_str)
+                behavior_str = behavior_str.replace('\n', '\n# ').rstrip('#').rstrip()
+                f.write('# [{}] {}\n'.format(idx + 1, behavior_str, '\n'))
 
 
 def _header(header_text: str) -> str:
