@@ -17,6 +17,22 @@ def dump_obj(o):
         return '{} {}'.format(type(o).__name__, json.dumps(o, sort_keys=True, default=lambda x: x.__dict__))
 
 
+def simple_dump_obj(o):
+    if isinstance(o, ESSkillSet):
+        msg = 'SkillSet:'
+        msg += '\n\tCondition: {}'.format(json.dumps(o.condition.description)),
+        for idx, behavior in enumerate(o.skill_list):
+            msg += '\n\t[{}] {} -> {}\n\t{}'.format(
+                idx, type(behavior).__name__, behavior.name, behavior.description)
+        return msg
+    else:
+        msg = '{} -> {}'.format(type(o).__name__, o.name)
+        if hasattr(o, 'condition'):
+            msg += '\nCondition: {}'.format(o.condition.description)
+        msg += '\n{}'.format(o.description)
+        return msg
+
+
 ATTRIBUTE_MAP = {
     -1: 'Random',
     None: 'Fire',
