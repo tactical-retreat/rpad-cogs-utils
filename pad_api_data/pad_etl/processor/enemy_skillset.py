@@ -20,7 +20,8 @@ def dump_obj(o):
 def simple_dump_obj(o):
     if isinstance(o, ESSkillSet):
         msg = 'SkillSet:'
-        msg += '\n\tCondition: {}'.format(o.condition.description)
+        if o.condition.description:
+            msg += '\n\tCondition: {}'.format(o.condition.description)
         for idx, behavior in enumerate(o.skill_list):
             msg += '\n\t[{}] {} -> {}\n\t{}'.format(
                 idx, type(behavior).__name__, behavior.name, behavior.description)
@@ -28,7 +29,8 @@ def simple_dump_obj(o):
     else:
         msg = '{} -> {}'.format(type(o).__name__, o.name)
         if hasattr(o, 'condition'):
-            msg += '\nCondition: {}'.format(o.condition.description)
+            if o.condition.description:
+                msg += '\nCondition: {}'.format(o.condition.description)
         msg += '\n{}'.format(o.description)
         return msg
 
@@ -467,6 +469,12 @@ class ESAttack(pad_util.JsonDictEncodable):
             return None
         else:
             return ESAttack(atk_multiplier, min_hits, max_hits)
+
+    def max_damage_pct(self) -> int:
+        return self.atk_multiplier * self.max_hits
+
+    def min_damage_pct(self) -> int:
+        return self.atk_multiplier * self.min_hits
 
 
 # Action

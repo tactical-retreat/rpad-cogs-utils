@@ -35,12 +35,14 @@ class SkillRecord(yaml.YAMLObject):
     def __init__(self,
                  record_type=RecordType.TEXT,
                  name_en='', name_jp='',
-                 desc_en='', desc_jp=''):
+                 desc_en='', desc_jp='',
+                 max_atk_pct=0):
         self.record_type_name = record_type.name
         self.name_en = name_en
         self.name_jp = name_jp
         self.desc_en = desc_en
         self.desc_jp = desc_jp
+        self.max_atk_pct = max_atk_pct or None
 
 
 class SkillRecordListing(yaml.YAMLObject):
@@ -97,7 +99,8 @@ def skillitem_to_skillrecord(record_type: RecordType, es_item: any) -> SkillReco
                        name_en=skill_item.name,
                        name_jp=skill_item.name,
                        desc_en=skill_item.comment,
-                       desc_jp=skill_item.comment)
+                       desc_jp=skill_item.comment,
+                       max_atk_pct=skill_item.max_damage_pct)
 
 
 def create_divider(divider_text: str) -> SkillRecord:
@@ -259,12 +262,17 @@ def load_summary_as_dump_text(card: BookCard, monster_level: int):
     if not enemy_info:
         return 'This monster will only use basic attacks'
 
+    atk = card.enemy().atk.value_at(monster_level)
     msg = ''
     for row in enemy_info:
         header = row.name_en
         if row.record_type_name == 'DIVIDER':
             header = '{} {} {}'.format('-' * 5, header, '-' * 5)
-        msg += header
-        msg += '\n' + row.desc_en + '\n'
+
+        desc = row.desc_en
+        if row.max_atk_pct:
+            desc = '{} Damage - {}'.format(int(row.max_atk_pct * atk / 100), desc)
+        msg += header + '\n'
+        msg += desc + '\n'
 
     return msg
