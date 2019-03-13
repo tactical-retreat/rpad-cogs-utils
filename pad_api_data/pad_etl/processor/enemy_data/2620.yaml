@@ -19,6 +19,7 @@ records:
 - !SkillRecord
   desc_en: Voids status ailments for 999 turns + Delay active skills by 2~4 turns
   desc_jp: Voids status ailments for 999 turns + Delay active skills by 2~4 turns
+  max_atk_pct: null
   name_en: 'You''re a fool to bring Voltron here. + I know better than anyone
 
     the power of Voltron.'
@@ -29,36 +30,42 @@ records:
 - !SkillRecord
   desc_en: Turn 2
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 2
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Increase damage to 150% for the next 999 turns
   desc_jp: Increase damage to 150% for the next 999 turns
+  max_atk_pct: null
   name_en: No, it will only make me more powerful.
   name_jp: No, it will only make me more powerful.
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Reduce damage from all sources by 50% for 2 turns
   desc_jp: Reduce damage from all sources by 50% for 2 turns
+  max_atk_pct: null
   name_en: Black Bayard, Shield Form
   name_jp: Black Bayard, Shield Form
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Deal 160% damage (2 hits, 80% each)
   desc_jp: Deal 160% damage (2 hits, 80% each)
+  max_atk_pct: 160
   name_en: Apex Glaive
   name_jp: Apex Glaive
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Bind 1 random for 1 turns, Deal 140% damage
   desc_jp: Bind 1 random for 1 turns, Deal 140% damage
+  max_atk_pct: 140
   name_en: Black Bayard, Whip Form
   name_jp: Black Bayard, Whip Form
   record_type_name: ACTION
@@ -73,7 +80,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] SkillSet:
-# 	Condition: None
 # 	[0] ESStatusShield -> You're a fool to bring Voltron here.
 # 	Voids status ailments for 999 turns
 # 	[1] ESSkillDelay -> I know better than anyone

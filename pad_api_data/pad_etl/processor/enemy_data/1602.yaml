@@ -19,42 +19,49 @@ records:
 - !SkillRecord
   desc_en: Absorb damage >= 400000 damage for 99 turns
   desc_jp: Absorb damage >= 400000 damage for 99 turns
+  max_atk_pct: null
   name_en: Translucent Cold
   name_jp: Translucent Cold
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change all orbs to Water, Poison, Deal 300% damage
   desc_jp: Change all orbs to Water, Poison, Deal 300% damage
+  max_atk_pct: 300
   name_en: Frozen Pain
   name_jp: Frozen Pain
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 99
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 99
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Delay active skills by 2 turns
   desc_jp: Delay active skills by 2 turns
+  max_atk_pct: null
   name_en: Sigh of Sadness
   name_jp: Sigh of Sadness
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 99
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 99
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Lock all Wood orbs, Deal 120% damage
   desc_jp: Lock all Wood orbs, Deal 120% damage
+  max_atk_pct: 120
   name_en: Glass Leaf
   name_jp: Glass Leaf
   record_type_name: ACTION
@@ -63,6 +70,7 @@ records:
     Poison orbs, Deal 80% damage
   desc_jp: Change 1st column to Water orbs, 2nd column to Wood orbs, 3rd column to
     Poison orbs, Deal 80% damage
+  max_atk_pct: 80
   name_en: Ice and Roses
   name_jp: Ice and Roses
   record_type_name: ACTION
@@ -77,7 +85,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] ESAbsorbThreshold -> Translucent Cold
-# Condition: None
 # Absorb damage >= 400000 damage for 99 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
@@ -92,8 +99,6 @@ records:
 # Condition: 70% chance
 # Lock all Wood orbs
 # [10] ESColumnSpawnMulti -> Ice and Roses
-# Condition: None
 # Change 1st column to Water orbs, 2nd column to Wood orbs, 3rd column to Poison orbs
 # [11] ESBoardChangeAttackBits -> Frozen Pain
-# Condition: None
 # Change all orbs to Water, Poison

@@ -21,72 +21,84 @@ records:
     + Absorb damage >= 4000000 damage for 99 turns
   desc_jp: Delay active skills by 4~6 turns + Voids status ailments for 999 turns
     + Absorb damage >= 4000000 damage for 99 turns
+  max_atk_pct: null
   name_en: Why do you fight? + I won't go easy on you + Iron DEF of Aegis
   name_jp: Why do you fight? + I won't go easy on you + Iron DEF of Aegis
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change 2nd column to Wood orbs, 5th column to Light orbs, Deal 380% damage
   desc_jp: Change 2nd column to Wood orbs, 5th column to Light orbs, Deal 380% damage
+  max_atk_pct: 380
   name_en: C-Shining Spear
   name_jp: C-Shining Spear
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Change own attribute to random one of Wood, Light, Deal 380% damage
   desc_jp: Change own attribute to random one of Wood, Light, Deal 380% damage
+  max_atk_pct: 380
   name_en: EB & Self Convert
   name_jp: EB & Self Convert
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Reduce damage from all sources by 99% for 2 turns
   desc_jp: Reduce damage from all sources by 99% for 2 turns
+  max_atk_pct: null
   name_en: AS-Complete Protection
   name_jp: AS-Complete Protection
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 1200% damage (6 hits, 200% each)
   desc_jp: Deal 1200% damage (6 hits, 200% each)
+  max_atk_pct: 1200
   name_en: Storm Punisher FPE
   name_jp: Storm Punisher FPE
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 19
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 19
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Enemy recover 50% hp
   desc_jp: Enemy recover 50% hp
+  max_atk_pct: null
   name_en: AS-Overhaul
   name_jp: AS-Overhaul
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 19
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 19
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 10000% damage (10 hits, 1000% each)
   desc_jp: Deal 10000% damage (10 hits, 1000% each)
+  max_atk_pct: 10000
   name_en: Starburst SSE
   name_jp: Starburst SSE
   record_type_name: ACTION
@@ -127,29 +139,24 @@ records:
 # Condition: 50% chance
 # Change 2nd column to Wood orbs, 5th column to Light orbs
 # [11] ESChangeAttribute -> EB & Self Convert
-# Condition: None
 # Change own attribute to random one of Wood, Light
 # [12] ESBranchFlag -> ESBranchFlag
 # branch
 # [13] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [14] ESDamageShield -> AS-Complete Protection
-# Condition: None
 # Reduce damage from all sources by 99% for 2 turns
 # [15] ESBranchFlag -> ESBranchFlag
 # branch
 # [16] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [17] ESAttackMultihit -> Storm Punisher FPE
-# Condition: None
 # Enemy action
 # [18] ESBranchFlag -> ESBranchFlag
 # branch
 # [19] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [20] ESRecoverEnemy -> AS-Overhaul
-# Condition: None
 # Enemy recover 50% hp
 # [21] ESAttackMultihit -> Starburst SSE
-# Condition: None
 # Enemy action

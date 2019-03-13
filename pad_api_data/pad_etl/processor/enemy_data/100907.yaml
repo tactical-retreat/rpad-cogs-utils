@@ -19,6 +19,7 @@ records:
 - !SkillRecord
   desc_en: Reduce damage from Balanced, Physical by 50%
   desc_jp: Reduce damage from Balanced, Physical by 50%
+  max_atk_pct: null
   name_en: Physical Balanced Halved
   name_jp: Physical Balanced Halved
   record_type_name: PASSIVE
@@ -27,48 +28,56 @@ records:
     turns
   desc_jp: Water skyfall +20% for 20 turns + Specific orbs change every 1.0s for 10
     turns
+  max_atk_pct: null
   name_en: Blizzard + Crystal Force
   name_jp: Blizzard + Crystal Force
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 300% damage (2 hits, 150% each)
   desc_jp: Deal 300% damage (2 hits, 150% each)
+  max_atk_pct: 300
   name_en: Ice Rush
   name_jp: Ice Rush
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 50
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 50
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Specific orbs change every 1.0s for 10 turns, Deal 260% damage
   desc_jp: Specific orbs change every 1.0s for 10 turns, Deal 260% damage
+  max_atk_pct: 260
   name_en: Crystal Reversal
   name_jp: Crystal Reversal
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Deal 360% damage (3 hits, 120% each)
   desc_jp: Deal 360% damage (3 hits, 120% each)
+  max_atk_pct: 360
   name_en: Cold Trident
   name_jp: Cold Trident
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 50
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 50
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 360% damage (3 hits, 120% each)
   desc_jp: Deal 360% damage (3 hits, 120% each)
+  max_atk_pct: 360
   name_en: Cold Trident
   name_jp: Cold Trident
   record_type_name: ACTION
@@ -83,7 +92,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] SkillSet:
-# 	Condition: None
 # 	[0] ESSkyfall -> Blizzard
 # 	Water skyfall +20% for 20 turns
 # 	[1] ESSpinnersFixed -> Crystal Force
@@ -97,7 +105,6 @@ records:
 # Condition: When < 50% hp
 # Enemy action
 # [8] ESAttackMultihit -> Ice Rush
-# Condition: None
 # Enemy action
 # [9] ESEndPath -> ESEndPath
 # end_turn

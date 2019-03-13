@@ -19,12 +19,14 @@ records:
 - !SkillRecord
   desc_en: Absorb damage >= 200000 damage for 2 turns
   desc_jp: Absorb damage >= 200000 damage for 2 turns
+  max_atk_pct: null
   name_en: Innocent Brush Strokes
   name_jp: Innocent Brush Strokes
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 25
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 25
   name_jp: ''
   record_type_name: DIVIDER
@@ -33,24 +35,28 @@ records:
     orbs
   desc_jp: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
     orbs
+  max_atk_pct: null
   name_en: "Victor Book\u266A"
   name_jp: "Victor Book\u266A"
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Deal 500% damage (5 hits, 100% each)
   desc_jp: Deal 500% damage (5 hits, 100% each)
+  max_atk_pct: 500
   name_en: The Sword Kusanagi
   name_jp: The Sword Kusanagi
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 25
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 25
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 500% damage (5 hits, 100% each)
   desc_jp: Deal 500% damage (5 hits, 100% each)
+  max_atk_pct: 500
   name_en: The Sword Kusanagi
   name_jp: The Sword Kusanagi
   record_type_name: ACTION
@@ -69,7 +75,6 @@ records:
 # [5] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [6] ESAbsorbThreshold -> Innocent Brush Strokes
-# Condition: None
 # Absorb damage >= 200000 damage for 2 turns
 # [7] ESEndPath -> ESEndPath
 # end_turn
@@ -84,12 +89,10 @@ records:
 # [11] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [12] ESBombFixedSpawn -> Explosive Writing
-# Condition: None
 # Spawn Bomb orbs in the specified positions
 # [13] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [14] ESOrbChangeAttack -> Fire Spirit's Writing
-# Condition: None
 # Change Random to Fire
 # [15] ESEndPath -> ESEndPath
 # end_turn

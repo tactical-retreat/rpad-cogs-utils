@@ -19,42 +19,49 @@ records:
 - !SkillRecord
   desc_en: Reduce damage from Devil by 50%
   desc_jp: Reduce damage from Devil by 50%
+  max_atk_pct: null
   name_en: Devil Passive
   name_jp: Devil Passive
   record_type_name: PASSIVE
 - !SkillRecord
   desc_en: Change Jammer to Fire, Deal 500% damage
   desc_jp: Change Jammer to Fire, Deal 500% damage
+  max_atk_pct: 500
   name_en: Holy Jagged Horn - Purification
   name_jp: Holy Jagged Horn - Purification
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Blind random 3 orbs for 2 turns + Enemy action
   desc_jp: Blind random 3 orbs for 2 turns + Enemy action
+  max_atk_pct: null
   name_en: Jagged Flash + Multi Attack
   name_jp: Jagged Flash + Multi Attack
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Deal 430% damage (2 hits, 215% each)
   desc_jp: Deal 430% damage (2 hits, 215% each)
+  max_atk_pct: 430
   name_en: Dual Heavenly Javelin Attack
   name_jp: Dual Heavenly Javelin Attack
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 29
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 29
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 600% damage (6 hits, 100% each)
   desc_jp: Deal 600% damage (6 hits, 100% each)
+  max_atk_pct: 600
   name_en: Sacred Full Burst
   name_jp: Sacred Full Burst
   record_type_name: ACTION
@@ -69,10 +76,8 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] ESOrbChangeAttack -> Holy Jagged Horn - Purification
-# Condition: None
 # Change Jammer to Fire
 # [5] ESAbsorbThreshold -> Holy Jagged Horn - Bewitching
-# Condition: None
 # Absorb damage >= 1000000 damage for 10 turns
 # [6] ESBranchCounter -> ESBranchCounter
 # branch
@@ -83,7 +88,6 @@ records:
 # [9] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [10] ESGravity -> Sacred Burst
-# Condition: None
 # Player -99% HP
 # [11] ESBranchHP -> ESBranchHP
 # branch
@@ -94,7 +98,6 @@ records:
 # 	[1] ESRecoverEnemy -> Sacred Horn
 # 	Enemy recover 10% hp
 # [13] SkillSet:
-# 	Condition: None
 # 	[0] ESBlindStickyRandom -> Jagged Flash
 # 	Blind random 3 orbs for 2 turns
 # 	[1] ESAttackMultihit -> Multi Attack
@@ -108,7 +111,6 @@ records:
 # 	[1] ESRecoverEnemy -> Sacred Horn
 # 	Enemy recover 10% hp
 # [16] ESAttackMultihit -> Dual Heavenly Javelin Attack
-# Condition: None
 # Enemy action
 # [17] ESEndPath -> ESEndPath
 # end_turn
@@ -117,7 +119,6 @@ records:
 # [19] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [20] SkillSet:
-# 	Condition: None
 # 	[0] ESAttackUp -> Holy Crimson Phantom
 # 	Increase damage to 150% for the next 99 turns
 # 	[1] ESDamageShield -> Holy Crimson Flame
@@ -131,10 +132,8 @@ records:
 # 	[1] ESAttackMultihit -> Multi Attack
 # 	Enemy action
 # [23] ESAttackMultihit -> Dual Heavenly Javelin Attack
-# Condition: None
 # Enemy action
 # [24] ESAttackMultihit -> Sacred Full Burst
-# Condition: None
 # Enemy action
 # [25] ESEndPath -> ESEndPath
 # end_turn

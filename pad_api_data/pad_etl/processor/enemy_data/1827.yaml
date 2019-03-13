@@ -19,6 +19,7 @@ records:
 - !SkillRecord
   desc_en: Reduce damage from Water by 50%
   desc_jp: Reduce damage from Water by 50%
+  max_atk_pct: null
   name_en: Water damage halved
   name_jp: Water damage halved
   record_type_name: PASSIVE
@@ -27,54 +28,63 @@ records:
     for 1 turns
   desc_jp: Spawn Bomb orbs in the specified positions + Blind orbs in specific positions
     for 1 turns
+  max_atk_pct: null
   name_en: Flare Bomb + Flashburn
   name_jp: Flare Bomb + Flashburn
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change Random to Heal + Change 2nd, 3rd row to Fire, Water orbs
   desc_jp: Change Random to Heal + Change 2nd, 3rd row to Fire, Water orbs
+  max_atk_pct: null
   name_en: Healing Hymn + Scarlet Azure Blade
   name_jp: Healing Hymn + Scarlet Azure Blade
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 70
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 70
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Jammer skyfall +20% for 5 turns
   desc_jp: Jammer skyfall +20% for 5 turns
+  max_atk_pct: null
   name_en: Light Punishment
   name_jp: Light Punishment
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Enemy recover 100% hp + Increase damage to 150% for the next 999 turns
   desc_jp: Enemy recover 100% hp + Increase damage to 150% for the next 999 turns
+  max_atk_pct: null
   name_en: Angel's Holy Grail + Battle Anthem
   name_jp: Angel's Holy Grail + Battle Anthem
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 70
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 70
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Enemy recover 100% hp + Increase damage to 150% for the next 999 turns
   desc_jp: Enemy recover 100% hp + Increase damage to 150% for the next 999 turns
+  max_atk_pct: null
   name_en: Angel's Holy Grail + Battle Anthem
   name_jp: Angel's Holy Grail + Battle Anthem
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 15
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 15
   name_jp: ''
   record_type_name: DIVIDER
@@ -83,6 +93,7 @@ records:
     1500% damage
   desc_jp: Change 1st, 3rd, 5th row to Fire orbs, 2nd, 4th row to Water orbs, Deal
     1500% damage
+  max_atk_pct: 1500
   name_en: Lotus Sky Blades
   name_jp: Lotus Sky Blades
   record_type_name: ACTION
@@ -97,7 +108,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] SkillSet:
-# 	Condition: None
 # 	[0] ESBombFixedSpawn -> Flare Bomb
 # 	Spawn Bomb orbs in the specified positions
 # 	[1] ESBlindStickyFixed -> Flashburn
@@ -119,7 +129,6 @@ records:
 # [10] ESBranchHP -> ESBranchHP
 # branch
 # [11] SkillSet:
-# 	Condition: None
 # 	[0] ESOrbChangeSingle -> Healing Hymn
 # 	Change Random to Heal
 # 	[1] ESRowSpawnMulti -> Scarlet Azure Blade

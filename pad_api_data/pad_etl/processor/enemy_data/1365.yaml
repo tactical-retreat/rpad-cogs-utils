@@ -19,60 +19,70 @@ records:
 - !SkillRecord
   desc_en: Voids status ailments for 5 turns
   desc_jp: Voids status ailments for 5 turns
+  max_atk_pct: null
   name_en: Here I go
   name_jp: Here I go
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Movetime -1s for 4 turns
   desc_jp: Movetime -1s for 4 turns
+  max_atk_pct: null
   name_en: Moonflower Gaze
   name_jp: Moonflower Gaze
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change Light to Dark, Deal 85% damage
   desc_jp: Change Light to Dark, Deal 85% damage
+  max_atk_pct: 85
   name_en: Moon Heaven Strike
   name_jp: Moon Heaven Strike
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Deal 120% damage (3 hits, 40% each)
   desc_jp: Deal 120% damage (3 hits, 40% each)
+  max_atk_pct: 120
   name_en: Nine Dragon Claws
   name_jp: Nine Dragon Claws
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Blind all orbs on the board, Deal 10% damage
   desc_jp: Blind all orbs on the board, Deal 10% damage
+  max_atk_pct: 10
   name_en: Get ready for this
   name_jp: Get ready for this
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 160% damage (4 hits, 40% each)
   desc_jp: Deal 160% damage (4 hits, 40% each)
+  max_atk_pct: 160
   name_en: Moonshadow Dance
   name_jp: Moonshadow Dance
   record_type_name: ACTION
@@ -91,7 +101,6 @@ records:
 # [5] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [6] ESStatusShield -> Here I go
-# Condition: None
 # Voids status ailments for 5 turns
 # [7] ESEndPath -> ESEndPath
 # end_turn
@@ -100,7 +109,6 @@ records:
 # [9] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [10] ESDebuffMovetime -> Moonflower Gaze
-# Condition: None
 # Movetime -1s for 4 turns
 # [11] ESEndPath -> ESEndPath
 # end_turn
@@ -110,7 +118,6 @@ records:
 # Condition: 50% chance
 # Change Light to Dark
 # [14] ESAttackMultihit -> Nine Dragon Claws
-# Condition: None
 # Enemy action
 # [15] ESEndPath -> ESEndPath
 # end_turn
@@ -118,5 +125,4 @@ records:
 # Condition: One-time use
 # Blind all orbs on the board
 # [17] ESAttackMultihit -> Moonshadow Dance
-# Condition: None
 # Enemy action

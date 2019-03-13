@@ -19,42 +19,49 @@ records:
 - !SkillRecord
   desc_en: Reduce damage from all sources by 75% for 2 turns
   desc_jp: Reduce damage from all sources by 75% for 2 turns
+  max_atk_pct: null
   name_en: Major Protection
   name_jp: Major Protection
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: When 6 enemy remains
   desc_jp: ''
+  max_atk_pct: null
   name_en: When 6 enemy remains
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change all orbs to Water, Wood, Dark, Heal, Deal 120% damage
   desc_jp: Change all orbs to Water, Wood, Dark, Heal, Deal 120% damage
+  max_atk_pct: 120
   name_en: Wasser Enclosure
   name_jp: Wasser Enclosure
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 15
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 15
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change all orbs to Water, Wood, Dark, Heal, Deal 120% damage
   desc_jp: Change all orbs to Water, Wood, Dark, Heal, Deal 120% damage
+  max_atk_pct: 120
   name_en: Wasser Enclosure
   name_jp: Wasser Enclosure
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 14
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 14
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 180% damage (2 hits, 90% each)
   desc_jp: Deal 180% damage (2 hits, 90% each)
+  max_atk_pct: 180
   name_en: "Zwei Fl\xFCgel"
   name_jp: "Zwei Fl\xFCgel"
   record_type_name: ACTION
@@ -73,7 +80,6 @@ records:
 # [5] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [6] ESDamageShield -> Major Protection
-# Condition: None
 # Reduce damage from all sources by 75% for 2 turns
 # [7] ESEndPath -> ESEndPath
 # end_turn
@@ -82,7 +88,6 @@ records:
 # [9] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [10] ESAttributeBlock -> Red Exception
-# Condition: None
 # Unable to Fire orbs for 3 turns
 # [11] ESEndPath -> ESEndPath
 # end_turn
@@ -110,7 +115,6 @@ records:
 # [21] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [22] SkillSet:
-# 	Condition: None
 # 	[0] ESCloud -> Groß Wolke
 # 	3x3 cloud appear for 1 turns at random location
 # 	[1] ESAttackUp -> Calm Fighting Spirit
@@ -118,7 +122,6 @@ records:
 # [23] ESEndPath -> ESEndPath
 # end_turn
 # [24] ESAttackMultihit -> Zwei Flügel
-# Condition: None
 # Enemy action
 # [25] ESEndPath -> ESEndPath
 # end_turn
@@ -127,10 +130,8 @@ records:
 # [27] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
 # branch
 # [28] ESBoardChangeAttackBits -> Wasser Enclosure
-# Condition: None
 # Change all orbs to Water, Wood, Dark, Heal
 # [29] ESDebuffMovetime -> Brechen Feder
-# Condition: None
 # Movetime -1s for 2 turns
 # [30] ESEndPath -> ESEndPath
 # end_turn

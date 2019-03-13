@@ -19,72 +19,84 @@ records:
 - !SkillRecord
   desc_en: Reduce damage from Fire, Water, Dark by 30%
   desc_jp: Reduce damage from Fire, Water, Dark by 30%
+  max_atk_pct: null
   name_en: Fire Water Dark Reduced Damage
   name_jp: Fire Water Dark Reduced Damage
   record_type_name: PASSIVE
 - !SkillRecord
   desc_en: Absorb damage >= 500000 damage for 5 turns
   desc_jp: Absorb damage >= 500000 damage for 5 turns
+  max_atk_pct: null
   name_en: What did you come here for?
   name_jp: What did you come here for?
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change all orbs to Fire, Water, Dark, Deal 100% damage
   desc_jp: Change all orbs to Fire, Water, Dark, Deal 100% damage
+  max_atk_pct: 100
   name_en: Western Seven-Star Formation
   name_jp: Western Seven-Star Formation
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Turn 2
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 2
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Player -99% HP
   desc_jp: Player -99% HP
+  max_atk_pct: null
   name_en: Unbreakable Fangs
   name_jp: Unbreakable Fangs
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Blind orbs in specific positions for 1 turns, Deal 100% damage
   desc_jp: Blind orbs in specific positions for 1 turns, Deal 100% damage
+  max_atk_pct: 100
   name_en: Dark Tiger Claw
   name_jp: Dark Tiger Claw
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 14
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 14
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Delay active skills by 1 turns + Change all orbs to Fire, Water, Dark
   desc_jp: Delay active skills by 1 turns + Change all orbs to Fire, Water, Dark
+  max_atk_pct: null
   name_en: I'm sorry... + Byakko Seven-Star Formation
   name_jp: I'm sorry... + Byakko Seven-Star Formation
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 14
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 14
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change all orbs to Fire, Water, Dark, Deal 100% damage
   desc_jp: Change all orbs to Fire, Water, Dark, Deal 100% damage
+  max_atk_pct: 100
   name_en: Western Seven-Star Formation
   name_jp: Western Seven-Star Formation
   record_type_name: ACTION
@@ -99,7 +111,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] ESAbsorbThreshold -> What did you come here for?
-# Condition: None
 # Absorb damage >= 500000 damage for 5 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
@@ -108,7 +119,6 @@ records:
 # [7] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [8] ESBoardChangeAttackBits -> Western Seven-Star Formation
-# Condition: None
 # Change all orbs to Fire, Water, Dark
 # [9] ESEndPath -> ESEndPath
 # end_turn
@@ -118,14 +128,12 @@ records:
 # Condition: One-time use
 # Player -99% HP
 # [12] ESBlindStickyFixed -> Dark Tiger Claw
-# Condition: None
 # Blind orbs in specific positions for 1 turns
 # [13] ESEndPath -> ESEndPath
 # end_turn
 # [14] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [15] SkillSet:
-# 	Condition: None
 # 	[0] ESSkillDelay -> I'm sorry...
 # 	Delay active skills by 1 turns
 # 	[1] ESBoardChangeAttackBits -> Byakko Seven-Star Formation

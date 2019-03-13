@@ -19,18 +19,21 @@ records:
 - !SkillRecord
   desc_en: Bind 1 random subs for 1 turns + Change 3rd column to Fire orbs
   desc_jp: Bind 1 random subs for 1 turns + Change 3rd column to Fire orbs
+  max_atk_pct: null
   name_en: Roar + Flame Breath
   name_jp: Roar + Flame Breath
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 100% damage
   desc_jp: Deal 100% damage
+  max_atk_pct: 100
   name_en: Tailspin
   name_jp: Tailspin
   record_type_name: ACTION
@@ -39,12 +42,14 @@ records:
     Poison orbs, Deal 80% damage
   desc_jp: Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
     Poison orbs, Deal 80% damage
+  max_atk_pct: 80
   name_en: Rushing Bite
   name_jp: Rushing Bite
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 70
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 70
   name_jp: ''
   record_type_name: DIVIDER
@@ -53,24 +58,28 @@ records:
     for 999 turns
   desc_jp: Increase damage to 126% for the next 10 turns + Absorb combo <= 5 damage
     for 999 turns
+  max_atk_pct: null
   name_en: Rage + Take Flight
   name_jp: Rage + Take Flight
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Change 3rd column to Fire orbs, Deal 100% damage
   desc_jp: Change 3rd column to Fire orbs, Deal 100% damage
+  max_atk_pct: 100
   name_en: Flame Breath
   name_jp: Flame Breath
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Spawn random 4 Poison orbs, Deal 120% damage
   desc_jp: Spawn random 4 Poison orbs, Deal 120% damage
+  max_atk_pct: 120
   name_en: Flying Kick
   name_jp: Flying Kick
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Change 2nd row to Fire orbs, Deal 110% damage
   desc_jp: Change 2nd row to Fire orbs, Deal 110% damage
+  max_atk_pct: 110
   name_en: Airborne Heat Breath
   name_jp: Airborne Heat Breath
   record_type_name: ACTION
@@ -79,48 +88,56 @@ records:
     Poison orbs, Deal 90% damage
   desc_jp: Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
     Poison orbs, Deal 90% damage
+  max_atk_pct: 90
   name_en: Airborne Bite
   name_jp: Airborne Bite
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 70
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 70
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change 3rd column to Fire orbs, Deal 100% damage
   desc_jp: Change 3rd column to Fire orbs, Deal 100% damage
+  max_atk_pct: 100
   name_en: Flame Breath
   name_jp: Flame Breath
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 70
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 70
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Spawn random 4 Poison orbs, Deal 120% damage
   desc_jp: Spawn random 4 Poison orbs, Deal 120% damage
+  max_atk_pct: 120
   name_en: Flying Kick
   name_jp: Flying Kick
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 70
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 70
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change 2nd row to Fire orbs, Deal 110% damage
   desc_jp: Change 2nd row to Fire orbs, Deal 110% damage
+  max_atk_pct: 110
   name_en: Airborne Heat Breath
   name_jp: Airborne Heat Breath
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 70
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 70
   name_jp: ''
   record_type_name: DIVIDER
@@ -129,18 +146,21 @@ records:
     Poison orbs, Deal 90% damage
   desc_jp: Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
     Poison orbs, Deal 90% damage
+  max_atk_pct: 90
   name_en: Airborne Bite
   name_jp: Airborne Bite
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 15
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 15
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 300% damage (3 hits, 100% each)
   desc_jp: Deal 300% damage (3 hits, 100% each)
+  max_atk_pct: 300
   name_en: Triple Flame Breath
   name_jp: Triple Flame Breath
   record_type_name: ACTION
@@ -159,7 +179,6 @@ records:
 # [5] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [6] SkillSet:
-# 	Condition: None
 # 	[0] ESBindRandomSub -> Roar
 # 	Bind 1 random subs for 1 turns
 # 	[1] ESColumnSpawnMulti -> Flame Breath
@@ -181,7 +200,6 @@ records:
 # Condition: 50% chance
 # Enemy action
 # [12] ESOrbLock -> Rushing Bite
-# Condition: None
 # Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [13] ESEndPath -> ESEndPath
 # end_turn

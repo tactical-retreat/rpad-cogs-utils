@@ -19,24 +19,28 @@ records:
 - !SkillRecord
   desc_en: Immune to damage from all sources for 999 turns
   desc_jp: Immune to damage from all sources for 999 turns
+  max_atk_pct: null
   name_en: Overcoat of Immortality
   name_jp: Overcoat of Immortality
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change 2nd column to Dark orbs, Deal 160% damage
   desc_jp: Change 2nd column to Dark orbs, Deal 160% damage
+  max_atk_pct: 160
   name_en: Vampire Blade
   name_jp: Vampire Blade
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Deal 180% damage (2 hits, 90% each)
   desc_jp: Deal 180% damage (2 hits, 90% each)
+  max_atk_pct: 180
   name_en: Blood Needle
   name_jp: Blood Needle
   record_type_name: ACTION
@@ -51,7 +55,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] ESInvulnerableOn -> Overcoat of Immortality
-# Condition: None
 # Immune to damage from all sources for 999 turns
 # [5] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
 # branch
@@ -65,7 +68,6 @@ records:
 # Condition: 30% chance
 # Change 2nd column to Dark orbs
 # [10] ESAttackMultihit -> Blood Needle
-# Condition: None
 # Enemy action
 # [11] ESEndPath -> ESEndPath
 # end_turn
@@ -74,13 +76,11 @@ records:
 # [13] ESBranchCounter -> ESBranchCounter
 # branch
 # [14] ESLeaderSwap -> Dance!
-# Condition: None
 # Leader changes to random sub for 1 turns
 # [15] ESBlind -> Dark World
 # Condition: 60% chance
 # Blind all orbs on the board
 # [16] ESGravity -> Pain
-# Condition: None
 # Player -99% HP
 # [17] ESBranchCounter -> ESBranchCounter
 # branch
@@ -103,7 +103,6 @@ records:
 # Condition: 50% chance
 # Blind all orbs on the board
 # [23] ESAttackMultihit -> Blood Bullet
-# Condition: None
 # Enemy action
 # [24] ESEndPath -> ESEndPath
 # end_turn
@@ -114,7 +113,6 @@ records:
 # [27] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [28] SkillSet:
-# 	Condition: None
 # 	[0] ESChangeAttribute -> Magic Garment
 # 	Change own attribute to random one of Fire, Water
 # 	[1] ESAbsorbCombo -> Your skills are quite good
@@ -130,17 +128,14 @@ records:
 # Condition: 30% chance
 # Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [32] ESAttackMultihit -> Chase into the Abyss
-# Condition: None
 # Enemy action
 # [33] ESBranchFlag -> ESBranchFlag
 # branch
 # [34] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [35] ESBindAwoken -> Descend into Darkness
-# Condition: None
 # Bind awoken skills for 3 turns
 # [36] ESAttackMultihit -> Chaos Flame
-# Condition: None
 # Enemy action
 # [37] ESEndPath -> ESEndPath
 # end_turn

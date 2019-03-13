@@ -19,18 +19,21 @@ records:
 - !SkillRecord
   desc_en: Voids status ailments for 1 turns
   desc_jp: Voids status ailments for 1 turns
+  max_atk_pct: null
   name_en: Hushenfu
   name_jp: Hushenfu
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 50
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 50
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Lock all Light orbs, Deal 50% damage
   desc_jp: Lock all Light orbs, Deal 50% damage
+  max_atk_pct: 50
   name_en: Guangshufu
   name_jp: Guangshufu
   record_type_name: ACTION
@@ -51,10 +54,8 @@ records:
 # [6] ESBranchLevel -> ESBranchLevel
 # branch
 # [7] ESAbsorbAttribute -> Guanghushenfu
-# Condition: None
 # Absorb Light damage for 2~6 turns
 # [8] ESStatusShield -> Hushenfu
-# Condition: None
 # Voids status ailments for 1 turns
 # [9] ESEndPath -> ESEndPath
 # end_turn
@@ -62,14 +63,12 @@ records:
 # Condition: When < 50% hp , one-time use
 # Lock all Light orbs
 # [11] ESAttackUp -> Fennu
-# Condition: None
 # Increase damage to 150% for the next 999 turns
 # [12] ESBranchFlag -> ESBranchFlag
 # branch
 # [13] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [14] ESDamageShield -> Shandian
-# Condition: None
 # Reduce damage from all sources by 35% for 2 turns
 # [15] ESEndPath -> ESEndPath
 # end_turn
@@ -78,14 +77,12 @@ records:
 # [17] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [18] ESAttackMultihit -> Gongji
-# Condition: None
 # Enemy action
 # [19] ESEndPath -> ESEndPath
 # end_turn
 # [20] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [21] ESInactivity -> Jumping, jumping
-# Condition: None
 # Do nothing
 # [22] ESEndPath -> ESEndPath
 # end_turn

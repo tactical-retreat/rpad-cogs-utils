@@ -19,54 +19,63 @@ records:
 - !SkillRecord
   desc_en: Blind all orbs for 10 turns
   desc_jp: Blind all orbs for 10 turns
+  max_atk_pct: null
   name_en: W-Well, you can't get through!...
   name_jp: W-Well, you can't get through!...
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Poison skyfall +15% for 10 turns + Rcv 50% for 10 turns
   desc_jp: Poison skyfall +15% for 10 turns + Rcv 50% for 10 turns
+  max_atk_pct: null
   name_en: G-Go back! + It's d-d-dangerous!
   name_jp: G-Go back! + It's d-d-dangerous!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Turn 2
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 2
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change Poison to Heal, Deal 150% damage
   desc_jp: Change Poison to Heal, Deal 150% damage
+  max_atk_pct: 150
   name_en: P-Please be patient!
   name_jp: P-Please be patient!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Spawn random 3 Heal, Mortal Poison orbs
   desc_jp: Spawn random 3 Heal, Mortal Poison orbs
+  max_atk_pct: null
   name_en: B-Be careful!
   name_jp: B-Be careful!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Deal 100% damage
   desc_jp: Deal 100% damage
+  max_atk_pct: 100
   name_en: S-Sorry!
   name_jp: S-Sorry!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
@@ -75,30 +84,35 @@ records:
     damage from all sources by 50% for 99 turns
   desc_jp: Change 1st column to Mortal Poison orbs, 6th column to Heal orbs + Reduce
     damage from all sources by 50% for 99 turns
+  max_atk_pct: null
   name_en: Go away! + I hate p-pain...
   name_jp: Go away! + I hate p-pain...
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 24
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 24
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change all orbs to Heal
   desc_jp: Change all orbs to Heal
+  max_atk_pct: null
   name_en: Any more of it and...
   name_jp: Any more of it and...
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 24
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 24
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change all orbs to Mortal Poison, Deal 100% damage
   desc_jp: Change all orbs to Mortal Poison, Deal 100% damage
+  max_atk_pct: 100
   name_en: Oh stop it already!
   name_jp: Oh stop it already!
   record_type_name: ACTION
@@ -115,10 +129,8 @@ records:
 # [4] ESBranchCard -> ESBranchCard
 # branch
 # [5] ESBlindStickyRandom -> W-Well, you can't get through!...
-# Condition: None
 # Blind all orbs for 10 turns
 # [6] ESBlindStickyRandom -> Huh, oh, Suou?!...
-# Condition: None
 # Blind all orbs for 10 turns
 # [7] ESEndPath -> ESEndPath
 # end_turn
@@ -129,7 +141,6 @@ records:
 # [10] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [11] SkillSet:
-# 	Condition: None
 # 	[0] ESSkyfall -> G-Go back!
 # 	Poison skyfall +15% for 10 turns
 # 	[1] ESDebuffRCV -> It's d-d-dangerous!
@@ -154,7 +165,6 @@ records:
 # [19] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [20] SkillSet:
-# 	Condition: None
 # 	[0] ESColumnSpawnMulti -> Go away!
 # 	Change 1st column to Mortal Poison orbs, 6th column to Heal orbs
 # 	[1] ESDamageShield -> I hate p-pain...
@@ -166,12 +176,10 @@ records:
 # [23] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [24] ESBoardChange -> Any more of it and...
-# Condition: None
 # Change all orbs to Heal
 # [25] ESEndPath -> ESEndPath
 # end_turn
 # [26] ESBoardChangeAttackBits -> Oh stop it already!
-# Condition: None
 # Change all orbs to Mortal Poison
 # [27] ESEndPath -> ESEndPath
 # end_turn

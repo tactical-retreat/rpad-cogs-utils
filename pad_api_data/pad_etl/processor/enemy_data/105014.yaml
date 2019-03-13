@@ -19,30 +19,35 @@ records:
 - !SkillRecord
   desc_en: Seal 5th row for 5 turns
   desc_jp: Seal 5th row for 5 turns
+  max_atk_pct: null
   name_en: Hey... Was that your handiwork?
   name_jp: Hey... Was that your handiwork?
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Bind 2 random subs for 3 turns, Deal 90% damage
   desc_jp: Bind 2 random subs for 3 turns, Deal 90% damage
+  max_atk_pct: 90
   name_en: I'm not letting you get away.
   name_jp: I'm not letting you get away.
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Do nothing + Enemy action
   desc_jp: Do nothing + Enemy action
+  max_atk_pct: null
   name_en: 'I''ll have your heart! + Gae Bolg:
 
     Barbed Spear that Pierces with Death'
@@ -53,24 +58,28 @@ records:
 - !SkillRecord
   desc_en: HP <= 50
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 50
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Absorb combo <= 5 damage for 99 turns
   desc_jp: Absorb combo <= 5 damage for 99 turns
+  max_atk_pct: null
   name_en: Protection from Arrows
   name_jp: Protection from Arrows
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 14
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 14
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Do nothing + Change 3rd row to Water orbs
   desc_jp: Do nothing + Change 3rd row to Water orbs
+  max_atk_pct: null
   name_en: 'It''s a bit far, but I''ll settle it now! + Gae Bolg:
 
     Soaring Spear of Piercing Death'
@@ -103,14 +112,12 @@ records:
 # [9] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [10] ESBindRandomSub -> I'm not letting you get away.
-# Condition: None
 # Bind 2 random subs for 3 turns
 # [11] ESEndPath -> ESEndPath
 # end_turn
 # [12] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [13] SkillSet:
-# 	Condition: None
 # 	[0] ESInactivity -> I'll have your heart!
 # 	Do nothing
 # 	[1] ESAttackMultihit -> Gae Bolg:
@@ -119,7 +126,6 @@ records:
 # [14] ESEndPath -> ESEndPath
 # end_turn
 # [15] SkillSet:
-# 	Condition: None
 # 	[0] ESInactivity -> It's a bit far, but I'll settle it now!
 # 	Do nothing
 # 	[1] ESRowSpawnMulti -> Gae Bolg:

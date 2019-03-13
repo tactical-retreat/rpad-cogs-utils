@@ -19,42 +19,49 @@ records:
 - !SkillRecord
   desc_en: Bind active skills for 5 turns + Bind awoken skills for 6 turns
   desc_jp: Bind active skills for 5 turns + Bind awoken skills for 6 turns
+  max_atk_pct: null
   name_en: Hell Gate + Anima Oblio
   name_jp: Hell Gate + Anima Oblio
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Delay active skills by 2 turns
   desc_jp: Delay active skills by 2 turns
+  max_atk_pct: null
   name_en: Acheron River of Woe
   name_jp: Acheron River of Woe
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 99
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 99
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change 1st column to Water orbs, Deal 140% damage
   desc_jp: Change 1st column to Water orbs, Deal 140% damage
+  max_atk_pct: 140
   name_en: Ondulazione
   name_jp: Ondulazione
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Change 6th column to Wood orbs, Deal 140% damage
   desc_jp: Change 6th column to Wood orbs, Deal 140% damage
+  max_atk_pct: 140
   name_en: Bufera
   name_jp: Bufera
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
@@ -63,54 +70,63 @@ records:
     1 turns
   desc_jp: Change own attribute to Dark + Reduce damage from all sources by 99% for
     1 turns
+  max_atk_pct: null
   name_en: Devil's Half Divinity + Dephaser
   name_jp: Devil's Half Divinity + Dephaser
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 80
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 80
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Blind all orbs on the board, Deal 140% damage
   desc_jp: Blind all orbs on the board, Deal 140% damage
+  max_atk_pct: 140
   name_en: The First Circle, Limbo
   name_jp: The First Circle, Limbo
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 60
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 60
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change Random 5 to Poison, Deal 150% damage
   desc_jp: Change Random 5 to Poison, Deal 150% damage
+  max_atk_pct: 150
   name_en: The Fourth Circle, Greed
   name_jp: The Fourth Circle, Greed
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 40
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 40
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Bind 3 random for 3 turns, Deal 160% damage
   desc_jp: Bind 3 random for 3 turns, Deal 160% damage
+  max_atk_pct: 160
   name_en: The Eighth Circle, Fraud
   name_jp: The Eighth Circle, Fraud
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 20
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 20
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 750% damage (5 hits, 150% each)
   desc_jp: Deal 750% damage (5 hits, 150% each)
+  max_atk_pct: 750
   name_en: The Last Circle, Cocytus
   name_jp: The Last Circle, Cocytus
   record_type_name: ACTION
@@ -166,18 +182,15 @@ records:
 # Condition: 50% chance
 # Change 1st column to Water orbs
 # [13] ESColumnSpawnMulti -> Bufera
-# Condition: None
 # Change 6th column to Wood orbs
 # [14] ESBranchFlag -> ESBranchFlag
 # branch
 # [15] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [16] SkillSet:
-# 	Condition: None
 # 	[0] ESChangeAttribute -> Devil's Half Divinity
 # 	Change own attribute to Dark
 # 	[1] ESDamageShield -> Dephaser
 # 	Reduce damage from all sources by 99% for 1 turns
 # [17] ESSkillDelay -> Acheron River of Woe
-# Condition: None
 # Delay active skills by 2 turns

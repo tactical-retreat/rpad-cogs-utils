@@ -19,12 +19,14 @@ records:
 - !SkillRecord
   desc_en: Blind random 3 orbs for 5 turns
   desc_jp: Blind random 3 orbs for 5 turns
+  max_atk_pct: null
   name_en: Draggie Eye
   name_jp: Draggie Eye
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
@@ -33,18 +35,21 @@ records:
     Poison orbs, Deal 100% damage
   desc_jp: Lock 1 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
     Poison orbs, Deal 100% damage
+  max_atk_pct: 100
   name_en: dragon lance
   name_jp: dragon lance
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 99
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 99
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Reduce damage from all sources by 50% for 1 turns
   desc_jp: Reduce damage from all sources by 50% for 1 turns
+  max_atk_pct: null
   name_en: protection
   name_jp: protection
   record_type_name: ACTION
@@ -59,7 +64,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] ESBlindStickyRandom -> Draggie Eye
-# Condition: None
 # Blind random 3 orbs for 5 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
@@ -67,7 +71,6 @@ records:
 # Condition: When < 99% hp , one-time use
 # Reduce damage from all sources by 50% for 1 turns
 # [7] ESOrbLock -> dragon lance
-# Condition: None
 # Lock 1 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [8] ESEndPath -> ESEndPath
 # end_turn

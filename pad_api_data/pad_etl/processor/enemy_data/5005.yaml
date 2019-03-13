@@ -21,6 +21,7 @@ records:
     for 3 turns
   desc_jp: Reduce damage from all sources by 50% for 10 turns + Void damage >= 1000000
     for 3 turns
+  max_atk_pct: null
   name_en: 'Who is it, you ask? + That''s something...
 
     that should be obvious with one look.'
@@ -31,60 +32,70 @@ records:
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change Random to Jammer, Deal 95% damage
   desc_jp: Change Random to Jammer, Deal 95% damage
+  max_atk_pct: 95
   name_en: Ha!
   name_jp: Ha!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Delay active skills by 2 turns, Deal 100% damage
   desc_jp: Delay active skills by 2 turns, Deal 100% damage
+  max_atk_pct: 100
   name_en: Yah!
   name_jp: Yah!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Deal 115% damage
   desc_jp: Deal 115% damage
+  max_atk_pct: 115
   name_en: Hmph!
   name_jp: Hmph!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Rcv 50% for 3 turns
   desc_jp: Rcv 50% for 3 turns
+  max_atk_pct: null
   name_en: Don't bother.
   name_jp: Don't bother.
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 19
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 19
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Bind awoken skills for 1 turns
   desc_jp: Bind awoken skills for 1 turns
+  max_atk_pct: null
   name_en: I'm telling you, don't bother with it.
   name_jp: I'm telling you, don't bother with it.
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 19
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 19
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change 3rd, 4th column to Dark orbs, Deal 250% damage
   desc_jp: Change 3rd, 4th column to Dark orbs, Deal 250% damage
+  max_atk_pct: 250
   name_en: Excalibur Morgan
   name_jp: Excalibur Morgan
   record_type_name: ACTION
@@ -125,7 +136,6 @@ records:
 # [12] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [13] ESDebuffRCV -> Don't bother.
-# Condition: None
 # Rcv 50% for 3 turns
 # [14] ESEndPath -> ESEndPath
 # end_turn
@@ -133,7 +143,6 @@ records:
 # Condition: One-time use
 # Bind awoken skills for 1 turns
 # [16] ESColumnSpawnMulti -> Excalibur Morgan
-# Condition: None
 # Change 3rd, 4th column to Dark orbs
 # [17] ESEndPath -> ESEndPath
 # end_turn

@@ -19,72 +19,84 @@ records:
 - !SkillRecord
   desc_en: Voids status ailments for 999 turns
   desc_jp: Voids status ailments for 999 turns
+  max_atk_pct: null
   name_en: Immovable Protection
   name_jp: Immovable Protection
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 3
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 3
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Increase damage to 300% for the next 999 turns
   desc_jp: Increase damage to 300% for the next 999 turns
+  max_atk_pct: null
   name_en: The flames have begun to dance
   name_jp: The flames have begun to dance
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Do nothing
   desc_jp: Do nothing
+  max_atk_pct: null
   name_en: It's looking at you
   name_jp: It's looking at you
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 1200% damage (12 hits, 100% each)
   desc_jp: Deal 1200% damage (12 hits, 100% each)
+  max_atk_pct: 1200
   name_en: Raging Charge
   name_jp: Raging Charge
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 50
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 50
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 120% damage
   desc_jp: Deal 120% damage
+  max_atk_pct: 120
   name_en: Trample
   name_jp: Trample
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Deal 120% damage
   desc_jp: Deal 120% damage
+  max_atk_pct: 120
   name_en: Trample
   name_jp: Trample
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 50
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 50
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 120% damage
   desc_jp: Deal 120% damage
+  max_atk_pct: 120
   name_en: Trample
   name_jp: Trample
   record_type_name: ACTION
@@ -98,7 +110,6 @@ records:
 # Condition: One-time use
 # Voids status ailments for 999 turns
 # [3] ESAttackUp -> The flames have begun to dance
-# Condition: None
 # Increase damage to 300% for the next 999 turns
 # [4] ESBranchHP -> ESBranchHP
 # branch
@@ -109,12 +120,10 @@ records:
 # Condition: When < 50% hp , one-time use
 # Enemy action
 # [7] ESAttackMultihit -> Raging Charge
-# Condition: None
 # Enemy action
 # [8] ESEndPath -> ESEndPath
 # end_turn
 # [9] ESInactivity -> It's looking at you
-# Condition: None
 # Do nothing
 # [10] ESEndPath -> ESEndPath
 # end_turn

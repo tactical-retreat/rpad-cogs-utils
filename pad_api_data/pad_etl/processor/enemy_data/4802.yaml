@@ -19,54 +19,63 @@ records:
 - !SkillRecord
   desc_en: Seal 1st row for 5 turns + Absorb combo <= 6 damage for 999 turns
   desc_jp: Seal 1st row for 5 turns + Absorb combo <= 6 damage for 999 turns
+  max_atk_pct: null
   name_en: Wait! This is off limits! + I've been entrusted to be on lookout!
   name_jp: Wait! This is off limits! + I've been entrusted to be on lookout!
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change Jammer to Fire, Deal 150% damage
   desc_jp: Change Jammer to Fire, Deal 150% damage
+  max_atk_pct: 150
   name_en: Need to burn more!
   name_jp: Need to burn more!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Spawn Bomb orbs in the specified positions + Movetime 50% for 5 turns
   desc_jp: Spawn Bomb orbs in the specified positions + Movetime 50% for 5 turns
+  max_atk_pct: null
   name_en: Your life is at an end! + You will regret that
   name_jp: Your life is at an end! + You will regret that
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 19
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 19
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change all orbs to Fire, Deal 250% damage
   desc_jp: Change all orbs to Fire, Deal 250% damage
+  max_atk_pct: 250
   name_en: Get out of my sight!
   name_jp: Get out of my sight!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 19
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 19
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Increase damage to 200% for the next 99 turns
   desc_jp: Increase damage to 200% for the next 99 turns
+  max_atk_pct: null
   name_en: I'll end this for you NOW!
   name_jp: I'll end this for you NOW!
   record_type_name: ACTION
@@ -83,13 +92,11 @@ records:
 # [4] ESBranchCard -> ESBranchCard
 # branch
 # [5] SkillSet:
-# 	Condition: None
 # 	[0] ESOrbSealRow -> Wait! This is off limits!
 # 	Seal 1st row for 5 turns
 # 	[1] ESAbsorbCombo -> I've been entrusted to be on lookout!
 # 	Absorb combo <= 6 damage for 999 turns
 # [6] SkillSet:
-# 	Condition: None
 # 	[0] ESOrbSealRow -> Wait! This is off limits!
 # 	Seal 1st row for 5 turns
 # 	[1] ESAbsorbCombo -> What are you doing, stupid Suou?!
@@ -99,7 +106,6 @@ records:
 # [8] ESBranchHP -> ESBranchHP
 # branch
 # [9] ESOrbChangeAttackBits -> Need to burn more!
-# Condition: None
 # Change Jammer to Fire
 # [10] ESSkillDelay -> I'll make you suffer!
 # Condition: 33% chance
@@ -119,7 +125,6 @@ records:
 # [16] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [17] SkillSet:
-# 	Condition: None
 # 	[0] ESBombFixedSpawn -> Your life is at an end!
 # 	Spawn Bomb orbs in the specified positions
 # 	[1] ESDebuffMovetime -> You will regret that
@@ -130,7 +135,6 @@ records:
 # Condition: One-time use
 # Increase damage to 200% for the next 99 turns
 # [20] ESBoardChange -> Get out of my sight!
-# Condition: None
 # Change all orbs to Fire
 # [21] ESEndPath -> ESEndPath
 # end_turn

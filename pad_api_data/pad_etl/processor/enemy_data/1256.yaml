@@ -19,6 +19,7 @@ records:
 - !SkillRecord
   desc_en: Reduce damage from Dark by 50%
   desc_jp: Reduce damage from Dark by 50%
+  max_atk_pct: null
   name_en: Raphael Resolve
   name_jp: Raphael Resolve
   record_type_name: PASSIVE
@@ -33,6 +34,7 @@ records:
 - !SkillRecord
   desc_en: Reduce damage from Dark by 50%
   desc_jp: Reduce damage from Dark by 50%
+  max_atk_pct: null
   name_en: Raphael Resolve
   name_jp: Raphael Resolve
   record_type_name: PASSIVE
@@ -41,6 +43,7 @@ records:
     Heal + Unable to Heal orbs for 6 turns
   desc_jp: Reduce damage from all sources by 75% for 99 turns + Change all orbs to
     Heal + Unable to Heal orbs for 6 turns
+  max_atk_pct: null
   name_en: I'm beat! + You can heal up now + Is that what you thought I would say?
   name_jp: I'm beat! + You can heal up now + Is that what you thought I would say?
   record_type_name: PREEMPT
@@ -59,7 +62,6 @@ records:
 # [5] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [6] SkillSet:
-# 	Condition: None
 # 	[0] ESDamageShield -> I'm beat!
 # 	Reduce damage from all sources by 75% for 99 turns
 # 	[1] ESBoardChange -> You can heal up now
@@ -81,24 +83,18 @@ records:
 # [13] ESBranchCounter -> ESBranchCounter
 # branch
 # [14] ESRowSpawnMulti -> One
-# Condition: None
 # Change 3rd row to Fire orbs
 # [15] ESColumnSpawnMulti -> Two
-# Condition: None
 # Change 2nd column to Water orbs, 5th column to Wood orbs
 # [16] ESRowSpawnMulti -> Three
-# Condition: None
 # Change 1st row to Light orbs, 3rd row to Dark orbs
 # [17] ESColumnSpawnMulti -> Four
-# Condition: None
 # Change 1st column to Water orbs, 3rd column to Wood orbs
 # [18] ESBoardChange -> Five
-# Condition: None
 # Change all orbs to Heal
 # [19] ESSetCounter -> ESSetCounter
 # set_counter
 # [20] ESAttackMultihit -> Sleep for eternity
-# Condition: None
 # Enemy action
 # [21] ESEndPath -> ESEndPath
 # end_turn

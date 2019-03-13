@@ -19,42 +19,49 @@ records:
 - !SkillRecord
   desc_en: Player recover 100% hp
   desc_jp: Player recover 100% hp
+  max_atk_pct: null
   name_en: Lucky Encounter
   name_jp: Lucky Encounter
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change Random to Light, Deal 80% damage
   desc_jp: Change Random to Light, Deal 80% damage
+  max_atk_pct: 80
   name_en: Light Spirit's Writing
   name_jp: Light Spirit's Writing
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 25% damage
   desc_jp: Deal 25% damage
+  max_atk_pct: 25
   name_en: Magical Book
   name_jp: Magical Book
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 280% damage (2 hits, 140% each)
   desc_jp: Deal 280% damage (2 hits, 140% each)
+  max_atk_pct: 280
   name_en: The Compliant Rod
   name_jp: The Compliant Rod
   record_type_name: ACTION
@@ -73,7 +80,6 @@ records:
 # [5] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [6] ESRecoverPlayer -> Lucky Encounter
-# Condition: None
 # Player recover 100% hp
 # [7] ESEndPath -> ESEndPath
 # end_turn
@@ -83,7 +89,6 @@ records:
 # Condition: One-time use
 # Enemy action
 # [10] ESAttackMultihit -> The Compliant Rod
-# Condition: None
 # Enemy action
 # [11] ESOrbChangeAttack -> Light Spirit's Writing
 # Condition: 50% chance

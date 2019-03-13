@@ -21,90 +21,105 @@ records:
     turns
   desc_jp: Voids status ailments for 999 turns + Locked Heal skyfall +100% for 10
     turns
+  max_atk_pct: null
   name_en: Let the ceremony begin! + Love's Lock Banquet
   name_jp: Let the ceremony begin! + Love's Lock Banquet
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Voids player buff effects
   desc_jp: Voids player buff effects
+  max_atk_pct: null
   name_en: What a great day!
   name_jp: What a great day!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Water skyfall +15% for 3 turns
   desc_jp: Water skyfall +15% for 3 turns
+  max_atk_pct: null
   name_en: Celebration Water
   name_jp: Celebration Water
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Change Random to Water, Deal 100% damage
   desc_jp: Change Random to Water, Deal 100% damage
+  max_atk_pct: 100
   name_en: Dolphin Surprise
   name_jp: Dolphin Surprise
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Voids player buff effects
   desc_jp: Voids player buff effects
+  max_atk_pct: null
   name_en: What a great day!
   name_jp: What a great day!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 19
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 19
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Voids player buff effects
   desc_jp: Voids player buff effects
+  max_atk_pct: null
   name_en: What a great day!
   name_jp: What a great day!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Lock all Water, Light orbs
   desc_jp: Lock all Water, Light orbs
+  max_atk_pct: null
   name_en: Oracle
   name_jp: Oracle
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 19
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 19
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Voids player buff effects
   desc_jp: Voids player buff effects
+  max_atk_pct: null
   name_en: What a great day!
   name_jp: What a great day!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Deal 300% damage (3 hits, 100% each)
   desc_jp: Deal 300% damage (3 hits, 100% each)
+  max_atk_pct: 300
   name_en: Divine Contract Jaws
   name_jp: Divine Contract Jaws
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 50
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 50
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Absorb combo <= 5 damage for 1 turns
   desc_jp: Absorb combo <= 5 damage for 1 turns
+  max_atk_pct: null
   name_en: Pledge your love!!
   name_jp: Pledge your love!!
   record_type_name: ACTION
@@ -123,7 +138,6 @@ records:
 # [5] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [6] SkillSet:
-# 	Condition: None
 # 	[0] ESStatusShield -> Let the ceremony begin!
 # 	Voids status ailments for 999 turns
 # 	[1] ESSkyfall -> Love's Lock Banquet
@@ -131,7 +145,6 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESDispel -> What a great day!
-# Condition: None
 # Voids player buff effects
 # [9] ESAbsorbCombo -> Pledge your love!!
 # Condition: When < 50% hp , one-time use
@@ -142,7 +155,6 @@ records:
 # Condition: 30% chance
 # Water skyfall +15% for 3 turns
 # [12] ESOrbChangeAttack -> Dolphin Surprise
-# Condition: None
 # Change Random to Water
 # [13] ESEndPath -> ESEndPath
 # end_turn
@@ -151,8 +163,6 @@ records:
 # [15] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [16] ESOrbLock -> Oracle
-# Condition: None
 # Lock all Water, Light orbs
 # [17] ESAttackMultihit -> Divine Contract Jaws
-# Condition: None
 # Enemy action

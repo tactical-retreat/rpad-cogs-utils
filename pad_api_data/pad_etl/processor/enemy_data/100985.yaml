@@ -19,60 +19,70 @@ records:
 - !SkillRecord
   desc_en: Survive attacks with 1 HP when HP > 90%
   desc_jp: Survive attacks with 1 HP when HP > 90%
+  max_atk_pct: null
   name_en: Alt. Hera Normal Resolve
   name_jp: Alt. Hera Normal Resolve
   record_type_name: PASSIVE
 - !SkillRecord
   desc_en: Bind 1 random for 3 turns, Deal 400% damage
   desc_jp: Bind 1 random for 3 turns, Deal 400% damage
+  max_atk_pct: 400
   name_en: Divine Queen's Time Seal
   name_jp: Divine Queen's Time Seal
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change Light to Jammer, Deal 90% damage
   desc_jp: Change Light to Jammer, Deal 90% damage
+  max_atk_pct: 90
   name_en: Black Nightmare
   name_jp: Black Nightmare
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 29
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 29
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Player -99% HP
   desc_jp: Player -99% HP
+  max_atk_pct: null
   name_en: Ultra Gravity
   name_jp: Ultra Gravity
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 29
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 29
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 500% damage
   desc_jp: Deal 500% damage
+  max_atk_pct: 500
   name_en: Ultra Graviton Bomb
   name_jp: Ultra Graviton Bomb
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 50
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 50
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Bind God cards for 5 turns
   desc_jp: Bind God cards for 5 turns
+  max_atk_pct: null
   name_en: Divine Queen's Breath
   name_jp: Divine Queen's Breath
   record_type_name: ACTION
@@ -87,7 +97,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] ESBindAttack -> Divine Queen's Time Seal
-# Condition: None
 # Bind 1 random for 3 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
@@ -97,7 +106,6 @@ records:
 # [7] ESBranchHP -> ESBranchHP
 # branch
 # [8] ESOrbChangeAttack -> Black Nightmare
-# Condition: None
 # Change Light to Jammer
 # [9] ESEndPath -> ESEndPath
 # end_turn
@@ -106,12 +114,10 @@ records:
 # [11] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [12] ESGravity -> Ultra Gravity
-# Condition: None
 # Player -99% HP
 # [13] ESEndPath -> ESEndPath
 # end_turn
 # [14] ESAttackMultihit -> Ultra Graviton Bomb
-# Condition: None
 # Enemy action
 # [15] ESResolve -> Alt. Hera Normal Resolve
 # Survive attacks with 1 HP when HP > 90%

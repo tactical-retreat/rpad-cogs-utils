@@ -19,6 +19,7 @@ records:
 - !SkillRecord
   desc_en: Do nothing + Reduce damage from all sources by 50% for 3 turns
   desc_jp: Do nothing + Reduce damage from all sources by 50% for 3 turns
+  max_atk_pct: null
   name_en: 'Without power what future
 
     can you claim? + Protect'
@@ -29,18 +30,21 @@ records:
 - !SkillRecord
   desc_en: HP <= 69
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 69
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Do nothing + Voids status ailments for 999 turns
   desc_jp: Do nothing + Voids status ailments for 999 turns
+  max_atk_pct: null
   name_en: Preen and strut as you like! + Anti-Magick
   name_jp: Preen and strut as you like! + Anti-Magick
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 69
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 69
   name_jp: ''
   record_type_name: DIVIDER
@@ -49,12 +53,14 @@ records:
     orbs, Deal 130% damage
   desc_jp: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
     orbs, Deal 130% damage
+  max_atk_pct: 130
   name_en: Judgment
   name_jp: Judgment
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Change 1st, 5th row to Dark orbs, Deal 180% damage
   desc_jp: Change 1st, 5th row to Dark orbs, Deal 180% damage
+  max_atk_pct: 180
   name_en: Execution
   name_jp: Execution
   record_type_name: ACTION
@@ -73,7 +79,6 @@ records:
 # [5] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [6] SkillSet:
-# 	Condition: None
 # 	[0] ESInactivity -> Without power what future
 # can you claim?
 # 	Do nothing
@@ -100,14 +105,12 @@ records:
 # [15] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [16] ESOrbLock -> Sentence
-# Condition: None
 # Lock 6 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [17] ESBranchFlag -> ESBranchFlag
 # branch
 # [18] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [19] SkillSet:
-# 	Condition: None
 # 	[0] ESInactivity -> Preen and strut as you like!
 # 	Do nothing
 # 	[1] ESStatusShield -> Anti-Magick
@@ -116,7 +119,6 @@ records:
 # Condition: 20% chance
 # Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [21] ESRowSpawnMulti -> Execution
-# Condition: None
 # Change 1st, 5th row to Dark orbs
 # [22] ESEndPath -> ESEndPath
 # end_turn

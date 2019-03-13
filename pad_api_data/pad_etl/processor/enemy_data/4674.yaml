@@ -19,72 +19,84 @@ records:
 - !SkillRecord
   desc_en: Voids status ailments for 10 turns + Delay active skills by 2 turns
   desc_jp: Voids status ailments for 10 turns + Delay active skills by 2 turns
+  max_atk_pct: null
   name_en: Inner-Thigh-Propping Twist Down + Intimidating Air
   name_jp: Inner-Thigh-Propping Twist Down + Intimidating Air
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Player -99% HP
   desc_jp: Player -99% HP
+  max_atk_pct: null
   name_en: Phantom Ball
   name_jp: Phantom Ball
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change Random to Water, Deal 100% damage
   desc_jp: Change Random to Water, Deal 100% damage
+  max_atk_pct: 100
   name_en: Slider
   name_jp: Slider
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Change Random to Dark, Deal 100% damage
   desc_jp: Change Random to Dark, Deal 100% damage
+  max_atk_pct: 100
   name_en: Sinker
   name_jp: Sinker
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Spawn random 9 Dark orbs + Blind all orbs on the board
   desc_jp: Spawn random 9 Dark orbs + Blind all orbs on the board
+  max_atk_pct: null
   name_en: Black Stars + Black Vanguard
   name_jp: Black Stars + Black Vanguard
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 19
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 19
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Reduce damage from all sources by 50% for 5 turns
   desc_jp: Reduce damage from all sources by 50% for 5 turns
+  max_atk_pct: null
   name_en: YOU'RE here
   name_jp: YOU'RE here
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 19
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 19
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Blind all orbs on the board, Deal 300% damage
   desc_jp: Blind all orbs on the board, Deal 300% damage
+  max_atk_pct: 300
   name_en: Gloomy Star Cloud
   name_jp: Gloomy Star Cloud
   record_type_name: ACTION
@@ -103,7 +115,6 @@ records:
 # [5] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [6] SkillSet:
-# 	Condition: None
 # 	[0] ESStatusShield -> Inner-Thigh-Propping Twist Down
 # 	Voids status ailments for 10 turns
 # 	[1] ESSkillDelay -> Intimidating Air
@@ -139,7 +150,6 @@ records:
 # [19] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [20] SkillSet:
-# 	Condition: None
 # 	[0] ESRandomSpawn -> Black Stars
 # 	Spawn random 9 Dark orbs
 # 	[1] ESBlind -> Black Vanguard
@@ -151,12 +161,10 @@ records:
 # [23] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [24] ESDamageShield -> YOU'RE here
-# Condition: None
 # Reduce damage from all sources by 50% for 5 turns
 # [25] ESEndPath -> ESEndPath
 # end_turn
 # [26] ESBlind -> Gloomy Star Cloud
-# Condition: None
 # Blind all orbs on the board
 # [27] ESEndPath -> ESEndPath
 # end_turn

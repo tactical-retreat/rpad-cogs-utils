@@ -19,30 +19,35 @@ records:
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Spawn random 3 Water orbs, Deal 100% damage
   desc_jp: Spawn random 3 Water orbs, Deal 100% damage
+  max_atk_pct: 100
   name_en: Cold Breath
   name_jp: Cold Breath
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Spawn random 3 Water orbs, Deal 100% damage
   desc_jp: Spawn random 3 Water orbs, Deal 100% damage
+  max_atk_pct: 100
   name_en: Cold Breath
   name_jp: Cold Breath
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Delay active skills by 2 turns, Deal 95% damage
   desc_jp: Delay active skills by 2 turns, Deal 95% damage
+  max_atk_pct: 95
   name_en: Expelling Hydrogen
   name_jp: Expelling Hydrogen
   record_type_name: ACTION
@@ -71,7 +76,6 @@ records:
 # Condition: 50% chance & when Fire, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 3 Water orbs
 # [10] ESSkillDelay -> Expelling Hydrogen
-# Condition: None
 # Delay active skills by 2 turns
 # [11] ESEndPath -> ESEndPath
 # end_turn
@@ -80,7 +84,6 @@ records:
 # [13] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [14] ESDamageShield -> Wave Protection
-# Condition: None
 # Reduce damage from all sources by 50% for 5 turns
 # [15] ESEndPath -> ESEndPath
 # end_turn
@@ -88,7 +91,6 @@ records:
 # Condition: One-time use
 # Increase damage to 300% for the next 99 turns
 # [17] ESAttackMultihit -> Blizzard Breath
-# Condition: None
 # Enemy action
 # [18] ESEndPath -> ESEndPath
 # end_turn

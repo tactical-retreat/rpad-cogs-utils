@@ -19,24 +19,28 @@ records:
 - !SkillRecord
   desc_en: Survive attacks with 1 HP when HP > 80%
   desc_jp: Survive attacks with 1 HP when HP > 80%
+  max_atk_pct: null
   name_en: Thoth Resolve
   name_jp: Thoth Resolve
   record_type_name: PASSIVE
 - !SkillRecord
   desc_en: Delay active skills by 5 turns
   desc_jp: Delay active skills by 5 turns
+  max_atk_pct: null
   name_en: Creation of the Hieroglyphs
   name_jp: Creation of the Hieroglyphs
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 20
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 20
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 200% damage (4 hits, 50% each)
   desc_jp: Deal 200% damage (4 hits, 50% each)
+  max_atk_pct: 200
   name_en: Creation's Judgement
   name_jp: Creation's Judgement
   record_type_name: ACTION
@@ -51,7 +55,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] ESSkillDelay -> Creation of the Hieroglyphs
-# Condition: None
 # Delay active skills by 5 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
@@ -63,7 +66,6 @@ records:
 # [8] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [9] ESOrbChangeAttack -> Protector of the Night
-# Condition: None
 # Change Random to Jammer
 # [10] ESEndPath -> ESEndPath
 # end_turn
@@ -72,14 +74,12 @@ records:
 # [12] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [13] ESPoisonChangeRandomAttack -> Leaf of the Ished Tree
-# Condition: None
 # Change Random 4 to Poison
 # [14] ESEndPath -> ESEndPath
 # end_turn
 # [15] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [16] ESBindAttack -> Time Mastery
-# Condition: None
 # Bind 1 subs for 4 turns
 # [17] ESResolve -> Thoth Resolve
 # Survive attacks with 1 HP when HP > 80%

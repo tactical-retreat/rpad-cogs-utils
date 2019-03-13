@@ -19,36 +19,42 @@ records:
 - !SkillRecord
   desc_en: Enemy action + Bind awoken skills for 5 turns
   desc_jp: Enemy action + Bind awoken skills for 5 turns
+  max_atk_pct: null
   name_en: Holy Shot + Purification
   name_jp: Holy Shot + Purification
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Player -99% HP + Voids status ailments for 10 turns
   desc_jp: Player -99% HP + Voids status ailments for 10 turns
+  max_atk_pct: null
   name_en: Mortal Shot + Divine Protection of the Secret Stone
   name_jp: Mortal Shot + Divine Protection of the Secret Stone
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Delay active skills by 2 turns, Deal 120% damage
   desc_jp: Delay active skills by 2 turns, Deal 120% damage
+  max_atk_pct: 120
   name_en: Reduce Shot
   name_jp: Reduce Shot
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Change 3rd row to Wood orbs, Deal 130% damage
   desc_jp: Change 3rd row to Wood orbs, Deal 130% damage
+  max_atk_pct: 130
   name_en: Earth Wind Shot
   name_jp: Earth Wind Shot
   record_type_name: ACTION
@@ -57,36 +63,42 @@ records:
     Poison orbs, Deal 120% damage
   desc_jp: Lock 5 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
     Poison orbs, Deal 120% damage
+  max_atk_pct: 120
   name_en: Snipe Shot
   name_jp: Snipe Shot
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Absorb combo <= 7 damage for 1 turns + Movetime -2s for 1 turns
   desc_jp: Absorb combo <= 7 damage for 1 turns + Movetime -2s for 1 turns
+  max_atk_pct: null
   name_en: Hunting Breath + Drawing her bow
   name_jp: Hunting Breath + Drawing her bow
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 180% damage (3 hits, 60% each)
   desc_jp: Deal 180% damage (3 hits, 60% each)
+  max_atk_pct: 180
   name_en: Rapid Shot
   name_jp: Rapid Shot
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 20
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 20
   name_jp: ''
   record_type_name: DIVIDER
@@ -95,18 +107,21 @@ records:
     turns
   desc_jp: Bind active skills for 5 turns + Increase damage to 200% for the next 99
     turns
+  max_atk_pct: null
   name_en: Skill Trap + Capture
   name_jp: Skill Trap + Capture
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 15
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 15
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 500% damage (5 hits, 100% each)
   desc_jp: Deal 500% damage (5 hits, 100% each)
+  max_atk_pct: 500
   name_en: Certainty Shot
   name_jp: Certainty Shot
   record_type_name: ACTION
@@ -121,7 +136,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] SkillSet:
-# 	Condition: None
 # 	[0] ESAttackMultihit -> Holy Shot
 # 	Enemy action
 # 	[1] ESBindAwoken -> Purification
@@ -144,7 +158,6 @@ records:
 # [10] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [11] SkillSet:
-# 	Condition: None
 # 	[0] ESGravity -> Mortal Shot
 # 	Player -99% HP
 # 	[1] ESStatusShield -> Divine Protection of the Secret Stone
@@ -165,7 +178,6 @@ records:
 # [17] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [18] SkillSet:
-# 	Condition: None
 # 	[0] ESAbsorbCombo -> Hunting Breath
 # 	Absorb combo <= 7 damage for 1 turns
 # 	[1] ESDebuffMovetime -> Drawing her bow
@@ -175,7 +187,6 @@ records:
 # [20] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [21] ESAttackMultihit -> Rapid Shot
-# Condition: None
 # Enemy action
 # [22] ESSkillDelay -> Reduce Shot
 # Condition: 30% chance

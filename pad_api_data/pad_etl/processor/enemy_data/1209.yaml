@@ -19,54 +19,63 @@ records:
 - !SkillRecord
   desc_en: Voids status ailments for 5 turns
   desc_jp: Voids status ailments for 5 turns
+  max_atk_pct: null
   name_en: Hero's Armor
   name_jp: Hero's Armor
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Spawn random 8 Jammer orbs, Deal 120% damage
   desc_jp: Spawn random 8 Jammer orbs, Deal 120% damage
+  max_atk_pct: 120
   name_en: Wolf Ash
   name_jp: Wolf Ash
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Spawn random 8 Wood orbs, Deal 100% damage
   desc_jp: Spawn random 8 Wood orbs, Deal 100% damage
+  max_atk_pct: 100
   name_en: "G\xE1e Bulg"
   name_jp: "G\xE1e Bulg"
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Player -99% HP
   desc_jp: Player -99% HP
+  max_atk_pct: null
   name_en: Crimson Imperial Blade
   name_jp: Crimson Imperial Blade
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 100% damage (2 hits, 50% each)
   desc_jp: Deal 100% damage (2 hits, 50% each)
+  max_atk_pct: 100
   name_en: Cut off the World
   name_jp: Cut off the World
   record_type_name: ACTION
@@ -81,7 +90,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] ESStatusShield -> Hero's Armor
-# Condition: None
 # Voids status ailments for 5 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
@@ -94,7 +102,6 @@ records:
 # Condition: When jammer orbs are on the board
 # Spawn random 8 Wood orbs
 # [9] ESOrbChangeSingle -> Gáe Bulg
-# Condition: None
 # Change Heal to Wood
 # [10] ESRandomSpawn -> Gáe Bulg
 # Condition: When fire, water, light, dark, poison, mortal poison orbs are on the board
@@ -104,10 +111,8 @@ records:
 # [12] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [13] ESGravity -> Crimson Imperial Blade
-# Condition: None
 # Player -99% HP
 # [14] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [15] ESAttackMultihit -> Cut off the World
-# Condition: None
 # Enemy action

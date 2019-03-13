@@ -19,18 +19,21 @@ records:
 - !SkillRecord
   desc_en: Bind awoken skills for 6 turns + Bind active skills for 6 turns
   desc_jp: Bind awoken skills for 6 turns + Bind active skills for 6 turns
+  max_atk_pct: null
   name_en: Let's plaaay! + It's Puzzle Fight Time!
   name_jp: Let's plaaay! + It's Puzzle Fight Time!
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change Jammer to Water, Deal 1000% damage
   desc_jp: Change Jammer to Water, Deal 1000% damage
+  max_atk_pct: 1000
   name_en: Nope! Wrooong!
   name_jp: Nope! Wrooong!
   record_type_name: ACTION
@@ -45,7 +48,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] SkillSet:
-# 	Condition: None
 # 	[0] ESBindAwoken -> Let's plaaay!
 # 	Bind awoken skills for 6 turns
 # 	[1] ESBindSkill -> It's Puzzle Fight Time!
@@ -53,7 +55,6 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESOrbChangeAttack -> Nope! Wrooong!
-# Condition: None
 # Change Jammer to Water
 # [7] ESBranchFlag -> ESBranchFlag
 # branch
@@ -87,7 +88,6 @@ records:
 # [20] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [21] SkillSet:
-# 	Condition: None
 # 	[0] ESBlind -> However, this here...
 # 	Blind all orbs on the board
 # 	[1] ESRandomSpawn -> Can you erase these!?
@@ -99,7 +99,6 @@ records:
 # [24] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [25] SkillSet:
-# 	Condition: None
 # 	[0] ESDebuffMovetime -> You're impressive!
 # 	Movetime -1s for 1 turns
 # 	[1] ESRandomSpawn -> This will finish it!
@@ -107,5 +106,4 @@ records:
 # [26] ESEndPath -> ESEndPath
 # end_turn
 # [27] ESEndBattle -> That was fun! See ya!
-# Condition: None
 # Reduce self HP to 0

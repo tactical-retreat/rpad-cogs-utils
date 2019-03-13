@@ -19,12 +19,14 @@ records:
 - !SkillRecord
   desc_en: Immune to damage from all sources for 999 turns
   desc_jp: Immune to damage from all sources for 999 turns
+  max_atk_pct: null
   name_en: Protected from damage by the Augites
   name_jp: Protected from damage by the Augites
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
@@ -33,6 +35,7 @@ records:
     orbs, Deal 100% damage
   desc_jp: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
     orbs, Deal 100% damage
+  max_atk_pct: 100
   name_en: Stellar Dragon's Glare
   name_jp: Stellar Dragon's Glare
   record_type_name: ACTION
@@ -47,7 +50,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] ESInvulnerableOn -> Protected from damage by the Augites
-# Condition: None
 # Immune to damage from all sources for 999 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
@@ -60,16 +62,12 @@ records:
 # [9] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
 # branch
 # [10] ESOrbLock -> Stellar Dragon's Glare
-# Condition: None
 # Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [11] ESInactivity -> Wait and See
-# Condition: None
 # Do nothing
 # [12] ESCloud -> Dragon Cloud
-# Condition: None
 # 6x2 cloud appear for 3 turns at random location
 # [13] ESInactivity -> Wait and See
-# Condition: None
 # Do nothing
 # [14] ESOrbSealColumn -> Sealing Pulse
 # Condition: 25% chance
@@ -131,14 +129,12 @@ records:
 # Condition: 25% chance
 # Change Random to Jammer
 # [27] ESAttackMultihit -> Four Resonating Guns
-# Condition: None
 # Enemy action
 # [28] ESBranchFlag -> ESBranchFlag
 # branch
 # [29] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [30] SkillSet:
-# 	Condition: None
 # 	[0] ESOrbLock -> Stellar Dragon's Glare
 # 	Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # 	[1] ESBindAwoken -> Barbed Chain Cage
@@ -146,7 +142,6 @@ records:
 # [31] ESEndPath -> ESEndPath
 # end_turn
 # [32] SkillSet:
-# 	Condition: None
 # 	[0] ESChangeAttribute -> Metamorphosis
 # 	Change own attribute to random one of Water, Light
 # 	[1] ESAttackMultihit -> Six Limitless Flashes
@@ -154,5 +149,4 @@ records:
 # [33] ESEndPath -> ESEndPath
 # end_turn
 # [34] ESTurnChangeActive -> An adventurer! Splendid!
-# Condition: None
 # Enemy turn counter change to 1

@@ -19,12 +19,14 @@ records:
 - !SkillRecord
   desc_en: Survive attacks with 1 HP when HP > 50%
   desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
   name_en: Resolve
   name_jp: Resolve
   record_type_name: PASSIVE
 - !SkillRecord
   desc_en: Reduce damage from Dark by 50%
   desc_jp: Reduce damage from Dark by 50%
+  max_atk_pct: null
   name_en: Dark Halved
   name_jp: Dark Halved
   record_type_name: PASSIVE
@@ -33,36 +35,42 @@ records:
     turns
   desc_jp: Voids status ailments for 999 turns + Absorb combo <= 6 damage for 999
     turns
+  max_atk_pct: null
   name_en: My name is Orpharion! + Paradiso Puma
   name_jp: My name is Orpharion! + Paradiso Puma
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Delay active skills by 99 turns
   desc_jp: Delay active skills by 99 turns
+  max_atk_pct: null
   name_en: Disperazione
   name_jp: Disperazione
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Seal 1st row for 1 turns, Deal 100% damage
   desc_jp: Seal 1st row for 1 turns, Deal 100% damage
+  max_atk_pct: 100
   name_en: Sopra Perdere
   name_jp: Sopra Perdere
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Blind random 4~10 orbs for 1 turns, Deal 100% damage
   desc_jp: Blind random 4~10 orbs for 1 turns, Deal 100% damage
+  max_atk_pct: 100
   name_en: "Oscurit\xE0 Alcuni"
   name_jp: "Oscurit\xE0 Alcuni"
   record_type_name: ACTION
@@ -71,36 +79,42 @@ records:
     Poison orbs, Deal 100% damage
   desc_jp: Lock 11 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
     Poison orbs, Deal 100% damage
+  max_atk_pct: 100
   name_en: Chiave Spina
   name_jp: Chiave Spina
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Bind 1 random for 2 turns, Deal 100% damage
   desc_jp: Bind 1 random for 2 turns, Deal 100% damage
+  max_atk_pct: 100
   name_en: Anestesia Spada
   name_jp: Anestesia Spada
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Bind awoken skills for 1 turns, Deal 100% damage
   desc_jp: Bind awoken skills for 1 turns, Deal 100% damage
+  max_atk_pct: 100
   name_en: Niente Spazio
   name_jp: Niente Spazio
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Seal 1st row for 1 turns, Deal 100% damage
   desc_jp: Seal 1st row for 1 turns, Deal 100% damage
+  max_atk_pct: 100
   name_en: Sopra Perdere
   name_jp: Sopra Perdere
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Blind random 4~10 orbs for 1 turns, Deal 100% damage
   desc_jp: Blind random 4~10 orbs for 1 turns, Deal 100% damage
+  max_atk_pct: 100
   name_en: "Oscurit\xE0 Alcuni"
   name_jp: "Oscurit\xE0 Alcuni"
   record_type_name: ACTION
@@ -109,30 +123,35 @@ records:
     Poison orbs, Deal 100% damage
   desc_jp: Lock 11 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
     Poison orbs, Deal 100% damage
+  max_atk_pct: 100
   name_en: Chiave Spina
   name_jp: Chiave Spina
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Bind 1 random for 2 turns, Deal 100% damage
   desc_jp: Bind 1 random for 2 turns, Deal 100% damage
+  max_atk_pct: 100
   name_en: Anestesia Spada
   name_jp: Anestesia Spada
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Bind awoken skills for 1 turns, Deal 100% damage
   desc_jp: Bind awoken skills for 1 turns, Deal 100% damage
+  max_atk_pct: 100
   name_en: Niente Spazio
   name_jp: Niente Spazio
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Voids player buff effects + Enemy action
   desc_jp: Voids player buff effects + Enemy action
+  max_atk_pct: null
   name_en: Angelo Lacrima + Innumerevole Ferita
   name_jp: Angelo Lacrima + Innumerevole Ferita
   record_type_name: ACTION
@@ -147,7 +166,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] SkillSet:
-# 	Condition: None
 # 	[0] ESStatusShield -> My name is Orpharion!
 # 	Voids status ailments for 999 turns
 # 	[1] ESAbsorbCombo -> Paradiso Puma
@@ -176,7 +194,6 @@ records:
 # [13] ESEndPath -> ESEndPath
 # end_turn
 # [14] SkillSet:
-# 	Condition: None
 # 	[0] ESDispel -> Angelo Lacrima
 # 	Voids player buff effects
 # 	[1] ESAttackMultihit -> Innumerevole Ferita
@@ -188,7 +205,6 @@ records:
 # [17] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [18] ESSkillDelay -> Disperazione
-# Condition: None
 # Delay active skills by 99 turns
 # [19] ESEndPath -> ESEndPath
 # end_turn

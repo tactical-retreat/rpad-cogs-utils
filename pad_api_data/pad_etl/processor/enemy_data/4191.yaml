@@ -19,18 +19,21 @@ records:
 - !SkillRecord
   desc_en: Reduce damage from Water by 50%
   desc_jp: Reduce damage from Water by 50%
+  max_atk_pct: null
   name_en: Water damage halved
   name_jp: Water damage halved
   record_type_name: PASSIVE
 - !SkillRecord
   desc_en: Player recover 100% hp
   desc_jp: Player recover 100% hp
+  max_atk_pct: null
   name_en: Are you worth saving?
   name_jp: Are you worth saving?
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
@@ -39,66 +42,77 @@ records:
     Poison orbs, Deal 300% damage
   desc_jp: Lock 8 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
     Poison orbs, Deal 300% damage
+  max_atk_pct: 300
   name_en: Sharptooth
   name_jp: Sharptooth
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Bind active skills for 5 turns, Deal 350% damage
   desc_jp: Bind active skills for 5 turns, Deal 350% damage
+  max_atk_pct: 350
   name_en: Sanctifying Waters
   name_jp: Sanctifying Waters
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Blind random 5 orbs for 1 turns, Deal 300% damage
   desc_jp: Blind random 5 orbs for 1 turns, Deal 300% damage
+  max_atk_pct: 300
   name_en: Ice Metal Needle
   name_jp: Ice Metal Needle
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 79
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 79
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Absorb Wood damage for 3 turns + Enemy action
   desc_jp: Absorb Wood damage for 3 turns + Enemy action
+  max_atk_pct: null
   name_en: Deep Aqua + Ether Screw
   name_jp: Deep Aqua + Ether Screw
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Mortal Poison skyfall +15% for 3 turns + Enemy action
   desc_jp: Mortal Poison skyfall +15% for 3 turns + Enemy action
+  max_atk_pct: null
   name_en: Poison Swirl + Ether Screw
   name_jp: Poison Swirl + Ether Screw
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 29
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 29
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Mortal Poison skyfall +15% for 3 turns + Enemy action
   desc_jp: Mortal Poison skyfall +15% for 3 turns + Enemy action
+  max_atk_pct: null
   name_en: Poison Swirl + Ether Screw
   name_jp: Poison Swirl + Ether Screw
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 20
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 20
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Voids player buff effects + Change all orbs to Mortal Poison
   desc_jp: Voids player buff effects + Change all orbs to Mortal Poison
+  max_atk_pct: null
   name_en: Cold Break + Blue Calamity Abyss
   name_jp: Cold Break + Blue Calamity Abyss
   record_type_name: ACTION
@@ -113,7 +127,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] ESRecoverPlayer -> Are you worth saving?
-# Condition: None
 # Player recover 100% hp
 # [5] ESEndPath -> ESEndPath
 # end_turn
@@ -205,7 +218,6 @@ records:
 # 	[1] ESAttackMultihit -> Ether Screw
 # 	Enemy action
 # [30] SkillSet:
-# 	Condition: None
 # 	[0] ESAbsorbAttribute -> Deep Aqua
 # 	Absorb Wood damage for 3 turns
 # 	[1] ESAttackMultihit -> Ether Screw

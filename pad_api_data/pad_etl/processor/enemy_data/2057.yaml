@@ -19,60 +19,70 @@ records:
 - !SkillRecord
   desc_en: Do nothing + Do nothing + Voids status ailments for 1 turns
   desc_jp: Do nothing + Do nothing + Voids status ailments for 1 turns
+  max_atk_pct: null
   name_en: Took you long enough! + I was worried you'd gotten lost! + It's go time!
   name_jp: Took you long enough! + I was worried you'd gotten lost! + It's go time!
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 80% damage (8 hits, 10% each)
   desc_jp: Deal 80% damage (8 hits, 10% each)
+  max_atk_pct: 80
   name_en: Goblin Punch
   name_jp: Goblin Punch
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Change Random to Wood, Deal 100% damage
   desc_jp: Change Random to Wood, Deal 100% damage
+  max_atk_pct: 100
   name_en: Aera
   name_jp: Aera
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Change Random to Jammer, Deal 120% damage
   desc_jp: Change Random to Jammer, Deal 120% damage
+  max_atk_pct: 120
   name_en: Wind Slash
   name_jp: Wind Slash
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Deal 100% damage
   desc_jp: Deal 100% damage
+  max_atk_pct: 100
   name_en: Disable Skill
   name_jp: Disable Skill
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Bind 1 subs for 2 turns, Deal 80% damage
   desc_jp: Bind 1 subs for 2 turns, Deal 80% damage
+  max_atk_pct: 80
   name_en: Electrocute
   name_jp: Electrocute
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Deal 120% damage
   desc_jp: Deal 120% damage
+  max_atk_pct: 120
   name_en: Jump
   name_jp: Jump
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 50
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 50
   name_jp: ''
   record_type_name: DIVIDER
@@ -83,6 +93,7 @@ records:
   desc_jp: Increase damage to 200% for the next 999 turns + Reduce damage from all
     sources by 50% for 1 turns + Voids status ailments for 999 turns + Do nothing
     + Enemy action
+  max_atk_pct: null
   name_en: I suppose I misjudged! + Fighting all four of you... + ...is just too tough
     for me... + ...NOT! Ha, I lied! Like a rug! Oh, I kill me! + Jump
   name_jp: I suppose I misjudged! + Fighting all four of you... + ...is just too tough
@@ -105,7 +116,6 @@ records:
 # [6] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [7] SkillSet:
-# 	Condition: None
 # 	[0] ESInactivity -> Took you long enough!
 # 	Do nothing
 # 	[1] ESInactivity -> I was worried you'd gotten lost!
@@ -146,7 +156,6 @@ records:
 # Condition: 30% chance
 # Change Random to Jammer
 # [17] ESAttackSinglehit -> Disable Skill
-# Condition: None
 # Enemy action
 # [18] SkillSet:
 # 	Condition: On death

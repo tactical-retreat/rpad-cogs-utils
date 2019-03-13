@@ -21,6 +21,7 @@ records:
     turns + Void damage >= 100000000 for 999 turns + Voids player buff effects
   desc_jp: Voids status ailments for 999 turns + Absorb combo <= 10 damage for 10
     turns + Void damage >= 100000000 for 999 turns + Voids player buff effects
+  max_atk_pct: null
   name_en: Protection of the Gods + Raging Thunder's Might + Divine King's Armor +
     Almighty Gods' Majesty
   name_jp: Protection of the Gods + Raging Thunder's Might + Divine King's Armor +
@@ -29,48 +30,56 @@ records:
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 200% damage
   desc_jp: Deal 200% damage
+  max_atk_pct: 200
   name_en: Divine King's Imperial Lightning
   name_jp: Divine King's Imperial Lightning
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Voids player buff effects + Enemy action
   desc_jp: Voids player buff effects + Enemy action
+  max_atk_pct: null
   name_en: Almighty Gods' Majesty + Divine King's Imperial Lightning
   name_jp: Almighty Gods' Majesty + Divine King's Imperial Lightning
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 6
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 6
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Bind awoken skills for 1 turns + Enemy action
   desc_jp: Bind awoken skills for 1 turns + Enemy action
+  max_atk_pct: null
   name_en: Divine King's Wave + Divine King's Imperial Lightning
   name_jp: Divine King's Wave + Divine King's Imperial Lightning
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 6
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 6
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Increase damage to 500% for the next 99 turns
   desc_jp: Increase damage to 500% for the next 99 turns
+  max_atk_pct: null
   name_en: "Almighty Gods' Fighting Spirit\u200B"
   name_jp: "Almighty Gods' Fighting Spirit\u200B"
   record_type_name: ACTION
@@ -111,7 +120,6 @@ records:
 # 	[1] ESAttackMultihit -> Divine King's Imperial Lightning
 # 	Enemy action
 # [11] ESAttackMultihit -> Divine King's Imperial Lightning
-# Condition: None
 # Enemy action
 # [12] ESEndPath -> ESEndPath
 # end_turn
@@ -120,7 +128,6 @@ records:
 # [14] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [15] SkillSet:
-# 	Condition: None
 # 	[0] ESDispel -> Almighty Gods' Majesty
 # 	Voids player buff effects
 # 	[1] ESAttackMultihit -> Divine King's Imperial Lightning
@@ -132,15 +139,12 @@ records:
 # [18] ESSetCounter -> ESSetCounter
 # set_counter
 # [19] ESDamageShield -> Divine King's Lightning Cloak
-# Condition: None
 # Reduce damage from all sources by 75% for 999 turns
 # [20] ESEndPath -> ESEndPath
 # end_turn
 # [21] ESAttackUp -> Almighty Gods' Fighting Spirit​
-# Condition: None
 # Increase damage to 500% for the next 99 turns
 # [22] SkillSet:
-# 	Condition: None
 # 	[0] ESBindAwoken -> Divine King's Wave
 # 	Bind awoken skills for 1 turns
 # 	[1] ESAttackMultihit -> Divine King's Imperial Lightning

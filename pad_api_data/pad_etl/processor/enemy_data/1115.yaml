@@ -19,66 +19,77 @@ records:
 - !SkillRecord
   desc_en: Player recover 100% hp
   desc_jp: Player recover 100% hp
+  max_atk_pct: null
   name_en: Welcome! I'm glad you're here.
   name_jp: Welcome! I'm glad you're here.
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Water skyfall +20% for 99 turns
   desc_jp: Water skyfall +20% for 99 turns
+  max_atk_pct: null
   name_en: Waterways Verification
   name_jp: Waterways Verification
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change Heal to Water, Deal 150% damage
   desc_jp: Change Heal to Water, Deal 150% damage
+  max_atk_pct: 150
   name_en: Lotus Drop
   name_jp: Lotus Drop
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 70
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 70
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Leader changes to random sub for 3 turns
   desc_jp: Leader changes to random sub for 3 turns
+  max_atk_pct: null
   name_en: Chanchala
   name_jp: Chanchala
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 50
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 50
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Enemy recover 30% hp, Deal 100% damage
   desc_jp: Enemy recover 30% hp, Deal 100% damage
+  max_atk_pct: 100
   name_en: Magic Absorbing Eye
   name_jp: Magic Absorbing Eye
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 20
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 20
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 250% damage
   desc_jp: Deal 250% damage
+  max_atk_pct: 250
   name_en: Wave Current Attack
   name_jp: Wave Current Attack
   record_type_name: ACTION
@@ -93,7 +104,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] ESRecoverPlayer -> Welcome! I'm glad you're here.
-# Condition: None
 # Player recover 100% hp
 # [5] ESEndPath -> ESEndPath
 # end_turn
@@ -102,7 +112,6 @@ records:
 # [7] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [8] ESSkyfall -> Waterways Verification
-# Condition: None
 # Water skyfall +20% for 99 turns
 # [9] ESLeaderSwap -> Chanchala
 # Condition: When < 70% hp , one-time use

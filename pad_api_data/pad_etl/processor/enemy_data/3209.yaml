@@ -21,54 +21,63 @@ records:
     6th column to Heal, Jammer orbs, 3rd, 4th column to Fire, Water, Light, Dark orbs
   desc_jp: Bind awoken skills for 2 turns + Change 2nd, 5th column to Wood orbs, 1st,
     6th column to Heal, Jammer orbs, 3rd, 4th column to Fire, Water, Light, Dark orbs
+  max_atk_pct: null
   name_en: Immutable Divine Power + Windy Realm of Salvation
   name_jp: Immutable Divine Power + Windy Realm of Salvation
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Bind 1 random subs for 3~5 turns
   desc_jp: Bind 1 random subs for 3~5 turns
+  max_atk_pct: null
   name_en: Wind God's Lasso
   name_jp: Wind God's Lasso
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change all orbs to Wood, Heal, Jammer, Poison
   desc_jp: Change all orbs to Wood, Heal, Jammer, Poison
+  max_atk_pct: null
   name_en: Vajra Wind Blade
   name_jp: Vajra Wind Blade
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change 3rd row to Wood orbs, Deal 100% damage
   desc_jp: Change 3rd row to Wood orbs, Deal 100% damage
+  max_atk_pct: 100
   name_en: Garuda's Slashing Claws
   name_jp: Garuda's Slashing Claws
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Change 3rd column to Wood orbs, Deal 100% damage
   desc_jp: Change 3rd column to Wood orbs, Deal 100% damage
+  max_atk_pct: 100
   name_en: Garuda's Slashing Claws
   name_jp: Garuda's Slashing Claws
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
@@ -77,24 +86,28 @@ records:
     999 turns
   desc_jp: Bind active skills for 10 turns + Increase damage to 200% for the next
     999 turns
+  max_atk_pct: null
   name_en: Wave of Compassion + Formed the hand sign for "Power"
   name_jp: Wave of Compassion + Formed the hand sign for "Power"
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 80
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 80
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Player -99% HP
   desc_jp: Player -99% HP
+  max_atk_pct: null
   name_en: Garuda's Double Palm
   name_jp: Garuda's Double Palm
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 20
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 20
   name_jp: ''
   record_type_name: DIVIDER
@@ -103,6 +116,7 @@ records:
     Dark, Heal orbs, Deal 1000% damage
   desc_jp: Change 2nd, 4th row to Wood orbs, 1st, 3rd, 5th row to Fire, Water, Light,
     Dark, Heal orbs, Deal 1000% damage
+  max_atk_pct: 1000
   name_en: Sky Splitting Jetstream
   name_jp: Sky Splitting Jetstream
   record_type_name: ACTION
@@ -121,7 +135,6 @@ records:
 # [5] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [6] SkillSet:
-# 	Condition: None
 # 	[0] ESBindAwoken -> Immutable Divine Power
 # 	Bind awoken skills for 2 turns
 # 	[1] ESColumnSpawnMulti -> Windy Realm of Salvation
@@ -135,10 +148,8 @@ records:
 # [10] ESBranchHP -> ESBranchHP
 # branch
 # [11] ESBindRandomSub -> Wind God's Lasso
-# Condition: None
 # Bind 1 random subs for 3~5 turns
 # [12] ESBoardChange -> Vajra Wind Blade
-# Condition: None
 # Change all orbs to Wood, Heal, Jammer, Poison
 # [13] ESBranchHP -> ESBranchHP
 # branch
@@ -152,14 +163,12 @@ records:
 # Condition: 50% chance
 # Change 3rd row to Wood orbs
 # [17] ESColumnSpawnMulti -> Garuda's Slashing Claws
-# Condition: None
 # Change 3rd column to Wood orbs
 # [18] ESBranchFlag -> ESBranchFlag
 # branch
 # [19] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [20] SkillSet:
-# 	Condition: None
 # 	[0] ESBindSkill -> Wave of Compassion
 # 	Bind active skills for 10 turns
 # 	[1] ESAttackUp -> Formed the hand sign for "Power"

@@ -19,24 +19,28 @@ records:
 - !SkillRecord
   desc_en: Survive attacks with 1 HP when HP > 50%
   desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
   name_en: Resolve
   name_jp: Resolve
   record_type_name: PASSIVE
 - !SkillRecord
   desc_en: Enemy turn counter change to 1 when HP <= 50%
   desc_jp: Enemy turn counter change to 1 when HP <= 50%
+  max_atk_pct: null
   name_en: Enemy's next turn changed
   name_jp: Enemy's next turn changed
   record_type_name: PASSIVE
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 100% damage
   desc_jp: Deal 100% damage
+  max_atk_pct: 100
   name_en: Big Blade
   name_jp: Big Blade
   record_type_name: ACTION
@@ -47,7 +51,6 @@ records:
 # [1] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
 # branch
 # [2] ESAttackMultihit -> Big Blade
-# Condition: None
 # Enemy action
 # [3] ESEndPath -> ESEndPath
 # end_turn
@@ -56,7 +59,6 @@ records:
 # [5] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [6] SkillSet:
-# 	Condition: None
 # 	[0] ESRecoverEnemy -> Pouring Fighting Spirit
 # 	Enemy recover 100% hp
 # 	[1] ESDamageShield -> Counterattack

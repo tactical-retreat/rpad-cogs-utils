@@ -19,54 +19,63 @@ records:
 - !SkillRecord
   desc_en: Enemy turn counter change to 1 when HP <= 30%
   desc_jp: Enemy turn counter change to 1 when HP <= 30%
+  max_atk_pct: null
   name_en: Enemy's next turn changed
   name_jp: Enemy's next turn changed
   record_type_name: PASSIVE
 - !SkillRecord
   desc_en: Blind orbs in specific positions for 3 turns, Deal 50% damage
   desc_jp: Blind orbs in specific positions for 3 turns, Deal 50% damage
+  max_atk_pct: 50
   name_en: Black Breath
   name_jp: Black Breath
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Spawn random 6 Dark orbs, Deal 80% damage
   desc_jp: Spawn random 6 Dark orbs, Deal 80% damage
+  max_atk_pct: 80
   name_en: Blood Needle
   name_jp: Blood Needle
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Deal 105% damage (3 hits, 35% each)
   desc_jp: Deal 105% damage (3 hits, 35% each)
+  max_atk_pct: 105
   name_en: Triple Fang
   name_jp: Triple Fang
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 29
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 29
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Do nothing
   desc_jp: Do nothing
+  max_atk_pct: null
   name_en: Mouth opened wide
   name_jp: Mouth opened wide
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 29
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 29
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 400% damage
   desc_jp: Deal 400% damage
+  max_atk_pct: 400
   name_en: Chaos Ray
   name_jp: Chaos Ray
   record_type_name: ACTION
@@ -81,7 +90,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] ESBlindStickyFixed -> Black Breath
-# Condition: None
 # Blind orbs in specific positions for 3 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
@@ -91,13 +99,11 @@ records:
 # Condition: 50% chance & when Fire, Water, Wood, Light, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 6 Dark orbs
 # [8] ESAttackMultihit -> Triple Fang
-# Condition: None
 # Enemy action
 # [9] ESInactivity -> Mouth opened wide
 # Condition: One-time use
 # Do nothing
 # [10] ESAttackMultihit -> Chaos Ray
-# Condition: None
 # Enemy action
 # [11] ESEndPath -> ESEndPath
 # end_turn

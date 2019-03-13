@@ -19,60 +19,70 @@ records:
 - !SkillRecord
   desc_en: Fire skyfall +15% for 99 turns
   desc_jp: Fire skyfall +15% for 99 turns
+  max_atk_pct: null
   name_en: Burn!!
   name_jp: Burn!!
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change 2nd column to Fire orbs + Change 2nd row to Wood orbs
   desc_jp: Change 2nd column to Fire orbs + Change 2nd row to Wood orbs
+  max_atk_pct: null
   name_en: Heat! + Christmas!
   name_jp: Heat! + Christmas!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change Wood to Fire, Deal 110% damage
   desc_jp: Change Wood to Fire, Deal 110% damage
+  max_atk_pct: 110
   name_en: Green Fire Transformation
   name_jp: Green Fire Transformation
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Deal 120% damage
   desc_jp: Deal 120% damage
+  max_atk_pct: 120
   name_en: Flame Dragon Sword
   name_jp: Flame Dragon Sword
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Blind all orbs on the board, Deal 130% damage
   desc_jp: Blind all orbs on the board, Deal 130% damage
+  max_atk_pct: 130
   name_en: Flame Dance
   name_jp: Flame Dance
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 25
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 25
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Movetime -2s for 3 turns, Deal 250% damage
   desc_jp: Movetime -2s for 3 turns, Deal 250% damage
+  max_atk_pct: 250
   name_en: Blazing Banquet
   name_jp: Blazing Banquet
   record_type_name: ACTION
@@ -87,7 +97,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] ESSkyfall -> Burn!!
-# Condition: None
 # Fire skyfall +15% for 99 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
@@ -108,19 +117,16 @@ records:
 # Condition: 50% chance
 # Change Wood to Fire
 # [11] ESAttackMultihit -> Flame Dragon Sword
-# Condition: None
 # Enemy action
 # [12] ESBranchFlag -> ESBranchFlag
 # branch
 # [13] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [14] ESBlind -> Flame Dance
-# Condition: None
 # Blind all orbs on the board
 # [15] ESBranchFlag -> ESBranchFlag
 # branch
 # [16] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [17] ESRecoverPlayer -> Can you feel the heat, brother?
-# Condition: None
 # Player recover 100% hp

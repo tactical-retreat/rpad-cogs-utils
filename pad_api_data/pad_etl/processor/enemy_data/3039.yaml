@@ -19,6 +19,7 @@ records:
 - !SkillRecord
   desc_en: Do nothing + Do nothing
   desc_jp: Do nothing + Do nothing
+  max_atk_pct: null
   name_en: Heh + How this brings me back...
   name_jp: Heh + How this brings me back...
   record_type_name: PREEMPT
@@ -33,84 +34,98 @@ records:
 - !SkillRecord
   desc_en: Voids status ailments for 7 turns + Spawn random 5 Wood orbs
   desc_jp: Voids status ailments for 7 turns + Spawn random 5 Wood orbs
+  max_atk_pct: null
   name_en: Heh + How this brings me back...
   name_jp: Heh + How this brings me back...
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Player -70% HP
   desc_jp: Player -70% HP
+  max_atk_pct: null
   name_en: Hyaah!
   name_jp: Hyaah!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Change 3rd column to Fire orbs, Deal 130% damage
   desc_jp: Change 3rd column to Fire orbs, Deal 130% damage
+  max_atk_pct: 130
   name_en: Shaaah!!
   name_jp: Shaaah!!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 29
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 29
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Bind 3 random subs for 1 turns
   desc_jp: Bind 3 random subs for 1 turns
+  max_atk_pct: null
   name_en: Final round. Here comes.
   name_jp: Final round. Here comes.
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 29
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 29
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change all orbs to Fire + Enemy action
   desc_jp: Change all orbs to Fire + Enemy action
+  max_atk_pct: null
   name_en: Hyaaah!! + The Final Secret Sword, "Kaguzuchi"!!
   name_jp: Hyaaah!! + The Final Secret Sword, "Kaguzuchi"!!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 29
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 29
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Player -70% HP
   desc_jp: Player -70% HP
+  max_atk_pct: null
   name_en: Hyaah!
   name_jp: Hyaah!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 29
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 29
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 360% damage (3 hits, 120% each)
   desc_jp: Deal 360% damage (3 hits, 120% each)
+  max_atk_pct: 360
   name_en: Hyaaah!!
   name_jp: Hyaaah!!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 65
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 65
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Enemy recover 50% hp + Reduce damage from all sources by 50% for 2 turns
   desc_jp: Enemy recover 50% hp + Reduce damage from all sources by 50% for 2 turns
+  max_atk_pct: null
   name_en: Is that... + ..all you have?!
   name_jp: Is that... + ..all you have?!
   record_type_name: ACTION
@@ -129,13 +144,11 @@ records:
 # [5] ESBranchCard -> ESBranchCard
 # branch
 # [6] SkillSet:
-# 	Condition: None
 # 	[0] ESInactivity -> Heh
 # 	Do nothing
 # 	[1] ESInactivity -> How this brings me back...
 # 	Do nothing
 # [7] SkillSet:
-# 	Condition: None
 # 	[0] ESInactivity -> Heh
 # 	Do nothing
 # 	[1] ESInactivity -> Ah, how this brings me back...
@@ -143,13 +156,11 @@ records:
 # [8] ESBranchCard -> ESBranchCard
 # branch
 # [9] SkillSet:
-# 	Condition: None
 # 	[0] ESStatusShield -> Heh
 # 	Voids status ailments for 7 turns
 # 	[1] ESRandomSpawn -> How this brings me back...
 # 	Spawn random 5 Wood orbs
 # [10] SkillSet:
-# 	Condition: None
 # 	[0] ESStatusShield -> Heh
 # 	Voids status ailments for 7 turns
 # 	[1] ESRandomSpawn -> Ah, how this brings me back...
@@ -178,7 +189,6 @@ records:
 # [19] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [20] ESColumnSpawnMulti -> Shaaah!!
-# Condition: None
 # Change 3rd column to Fire orbs
 # [21] ESBranchFlag -> ESBranchFlag
 # branch
@@ -208,12 +218,10 @@ records:
 # [27] ESBranchFlag -> ESBranchFlag
 # branch
 # [28] ESAttackMultihit -> Hyaaah!!
-# Condition: None
 # Enemy action
 # [29] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [30] ESGravity -> Hyaah!
-# Condition: None
 # Player -70% HP
 # [31] SkillSet:
 # 	Condition: On death
@@ -221,5 +229,4 @@ records:
 # hah, hah, hah!!
 # 	Do nothing
 # [32] ESInactivity -> Hold
-# Condition: None
 # Do nothing

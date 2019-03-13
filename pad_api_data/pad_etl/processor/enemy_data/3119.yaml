@@ -19,36 +19,42 @@ records:
 - !SkillRecord
   desc_en: Spawn random 6 Heal orbs, Deal 100% damage
   desc_jp: Spawn random 6 Heal orbs, Deal 100% damage
+  max_atk_pct: 100
   name_en: Why don't you cool off too?
   name_jp: Why don't you cool off too?
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change Heal to Wood, Deal 80% damage
   desc_jp: Change Heal to Wood, Deal 80% damage
+  max_atk_pct: 80
   name_en: Grimoire Summer
   name_jp: Grimoire Summer
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Bind 1 subs for 1~2 turns, Deal 80% damage
   desc_jp: Bind 1 subs for 1~2 turns, Deal 80% damage
+  max_atk_pct: 80
   name_en: Sunset Cage
   name_jp: Sunset Cage
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
@@ -57,30 +63,35 @@ records:
     orbs, Deal 100% damage
   desc_jp: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
     orbs, Deal 100% damage
+  max_atk_pct: 100
   name_en: Glimmering Beach
   name_jp: Glimmering Beach
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 29
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 29
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Do nothing
   desc_jp: Do nothing
+  max_atk_pct: null
   name_en: She closed her book
   name_jp: She closed her book
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 29
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 29
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change Random to Wood, Deal 500% damage
   desc_jp: Change Random to Wood, Deal 500% damage
+  max_atk_pct: 500
   name_en: Summer Explosion
   name_jp: Summer Explosion
   record_type_name: ACTION
@@ -111,7 +122,6 @@ records:
 # Condition: One-time use
 # Change Heal to Wood
 # [11] ESBindAttack -> Sunset Cage
-# Condition: None
 # Bind 1 subs for 1~2 turns
 # [12] ESEndPath -> ESEndPath
 # end_turn
@@ -120,7 +130,6 @@ records:
 # [14] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [15] ESOrbLock -> Glimmering Beach
-# Condition: None
 # Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [16] ESEndPath -> ESEndPath
 # end_turn
@@ -129,12 +138,10 @@ records:
 # [18] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [19] ESInactivity -> She closed her book
-# Condition: None
 # Do nothing
 # [20] ESEndPath -> ESEndPath
 # end_turn
 # [21] ESOrbChangeAttack -> Summer Explosion
-# Condition: None
 # Change Random to Wood
 # [22] ESEndPath -> ESEndPath
 # end_turn

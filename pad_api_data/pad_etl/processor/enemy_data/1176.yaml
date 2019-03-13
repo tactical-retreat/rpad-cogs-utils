@@ -19,42 +19,49 @@ records:
 - !SkillRecord
   desc_en: Absorb Dark damage for 3 turns
   desc_jp: Absorb Dark damage for 3 turns
+  max_atk_pct: null
   name_en: TAMADRA Shield
   name_jp: TAMADRA Shield
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 100% damage
   desc_jp: Deal 100% damage
+  max_atk_pct: 100
   name_en: Punch
   name_jp: Punch
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Turn 2
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 2
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 100% damage
   desc_jp: Deal 100% damage
+  max_atk_pct: 100
   name_en: Punch
   name_jp: Punch
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 1000% damage (2 hits, 500% each)
   desc_jp: Deal 1000% damage (2 hits, 500% each)
+  max_atk_pct: 1000
   name_en: Hand of Destruction
   name_jp: Hand of Destruction
   record_type_name: ACTION
@@ -69,7 +76,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] ESAbsorbAttribute -> TAMADRA Shield
-# Condition: None
 # Absorb Dark damage for 3 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
@@ -82,7 +88,6 @@ records:
 # [9] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [10] ESAttackMultihit -> Punch
-# Condition: None
 # Enemy action
 # [11] ESEndPath -> ESEndPath
 # end_turn
@@ -91,10 +96,8 @@ records:
 # [13] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [14] ESAttackMultihit -> Punch
-# Condition: None
 # Enemy action
 # [15] ESEndPath -> ESEndPath
 # end_turn
 # [16] ESAttackMultihit -> Hand of Destruction
-# Condition: None
 # Enemy action

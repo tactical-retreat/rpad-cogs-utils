@@ -19,24 +19,28 @@ records:
 - !SkillRecord
   desc_en: Reduce damage from Fire, Light by 50%
   desc_jp: Reduce damage from Fire, Light by 50%
+  max_atk_pct: null
   name_en: Fire/Light halved
   name_jp: Fire/Light halved
   record_type_name: PASSIVE
 - !SkillRecord
   desc_en: Seal 1st, 5th row for 4 turns + Voids status ailments for 999 turns
   desc_jp: Seal 1st, 5th row for 4 turns + Voids status ailments for 999 turns
+  max_atk_pct: null
   name_en: Fallen Angel's Wings + Scapegoat
   name_jp: Fallen Angel's Wings + Scapegoat
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 15
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 15
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 700% damage (7 hits, 100% each)
   desc_jp: Deal 700% damage (7 hits, 100% each)
+  max_atk_pct: 700
   name_en: Nightmare Spiral
   name_jp: Nightmare Spiral
   record_type_name: ACTION
@@ -51,7 +55,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] SkillSet:
-# 	Condition: None
 # 	[0] ESOrbSealRow -> Fallen Angel's Wings
 # 	Seal 1st, 5th row for 4 turns
 # 	[1] ESStatusShield -> Scapegoat
@@ -78,7 +81,6 @@ records:
 # 	[1] ESAttackMultihit -> Negative Chain
 # 	Enemy action
 # [11] SkillSet:
-# 	Condition: None
 # 	[0] ESSkillDelay -> Devil Snake's Evil Eye
 # 	Delay active skills by 6 turns
 # 	[1] ESAttackMultihit -> Negative Chain
@@ -90,7 +92,6 @@ records:
 # [14] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [15] ESOrbLock -> Black Rebellion
-# Condition: None
 # Lock 10 random Wood, Dark, Jammer, Poison orbs
 # [16] ESEndPath -> ESEndPath
 # end_turn
@@ -100,7 +101,6 @@ records:
 # Condition: 50% chance & when Fire, Water, Wood, Light, Dark, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 12 Poison orbs
 # [19] ESColumnSpawnMulti -> Agahara
-# Condition: None
 # Change 1st, 2nd column to Fire, Water, Jammer orbs, 3rd, 4th column to Wood, Light, Jammer orbs, 5th, 6th column to Dark, Heal, Jammer orbs
 # [20] ESEndPath -> ESEndPath
 # end_turn

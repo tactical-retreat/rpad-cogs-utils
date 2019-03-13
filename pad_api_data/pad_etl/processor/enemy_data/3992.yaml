@@ -19,18 +19,21 @@ records:
 - !SkillRecord
   desc_en: Reduce damage from all sources by 50% for 99 turns
   desc_jp: Reduce damage from all sources by 50% for 99 turns
+  max_atk_pct: null
   name_en: Happy Halloween!
   name_jp: Happy Halloween!
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 130% damage
   desc_jp: Deal 130% damage
+  max_atk_pct: 130
   name_en: Halloween REMDra Punch!
   name_jp: Halloween REMDra Punch!
   record_type_name: ACTION
@@ -47,90 +50,105 @@ records:
     5 turns + Reduce damage from all sources by 75% for 1 turns
   desc_jp: Blind orbs in specific positions for 1 turns + Voids status ailments for
     5 turns + Reduce damage from all sources by 75% for 1 turns
+  max_atk_pct: null
   name_en: Happy Halloween! + Suspicious Aura + Pull!
   name_jp: Happy Halloween! + Suspicious Aura + Pull!
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Reduce damage from all sources by 50% for 1 turns, Deal 100% damage
   desc_jp: Reduce damage from all sources by 50% for 1 turns, Deal 100% damage
+  max_atk_pct: 100
   name_en: Pull it!
   name_jp: Pull it!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Reduce damage from all sources by 50% for 1 turns, Deal 120% damage
   desc_jp: Reduce damage from all sources by 50% for 1 turns, Deal 120% damage
+  max_atk_pct: 120
   name_en: Come on! Pull!
   name_jp: Come on! Pull!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 79
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 79
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Do nothing + Bind 1 subs for 4 turns
   desc_jp: Do nothing + Bind 1 subs for 4 turns
+  max_atk_pct: null
   name_en: It's putting some back into it + Jack-o'-Lantern
   name_jp: It's putting some back into it + Jack-o'-Lantern
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Do nothing + Change all orbs to Water, Dark
   desc_jp: Do nothing + Change all orbs to Water, Dark
+  max_atk_pct: null
   name_en: It's putting some back into it + Holiday Tuning Circle - Water & Dark
   name_jp: It's putting some back into it + Holiday Tuning Circle - Water & Dark
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Do nothing + Change 5th row to Dark orbs
   desc_jp: Do nothing + Change 5th row to Dark orbs
+  max_atk_pct: null
   name_en: It's putting some back into it + Midnight Spell
   name_jp: It's putting some back into it + Midnight Spell
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Do nothing + Change Random to Heal
   desc_jp: Do nothing + Change Random to Heal
+  max_atk_pct: null
   name_en: It's putting some back into it + Pumpkin Season
   name_jp: It's putting some back into it + Pumpkin Season
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Do nothing + Change Wood to Dark
   desc_jp: Do nothing + Change Wood to Dark
+  max_atk_pct: null
   name_en: It's putting some back into it + Costume Changing Technique - Dark
   name_jp: It's putting some back into it + Costume Changing Technique - Dark
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Do nothing + Change all orbs to Wood, Dark, Heal
   desc_jp: Do nothing + Change all orbs to Wood, Dark, Heal
+  max_atk_pct: null
   name_en: It's putting some back into it + Holiday Tuning Circle - Wood, Dark & Life
   name_jp: It's putting some back into it + Holiday Tuning Circle - Wood, Dark & Life
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Do nothing + Change all orbs to Water, Dark, Heal
   desc_jp: Do nothing + Change all orbs to Water, Dark, Heal
+  max_atk_pct: null
   name_en: It's putting some back into it + Nene's Seal of Approval
   name_jp: It's putting some back into it + Nene's Seal of Approval
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 14
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 14
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 900% damage (3 hits, 300% each)
   desc_jp: Deal 900% damage (3 hits, 300% each)
+  max_atk_pct: 900
   name_en: Throw me some more Magic Stones!
   name_jp: Throw me some more Magic Stones!
   record_type_name: ACTION
@@ -146,14 +164,12 @@ records:
 # Condition: One-time use
 # Reduce damage from all sources by 50% for 99 turns
 # [4] ESAttackMultihit -> Halloween REMDra Punch!
-# Condition: None
 # Enemy action
 # [5] ESBranchFlag -> ESBranchFlag
 # branch
 # [6] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [7] SkillSet:
-# 	Condition: None
 # 	[0] ESBlindStickyFixed -> Happy Halloween!
 # 	Blind orbs in specific positions for 1 turns
 # 	[1] ESStatusShield -> Suspicious Aura
@@ -169,10 +185,8 @@ records:
 # [11] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [12] ESDamageShield -> Pull it!
-# Condition: None
 # Reduce damage from all sources by 50% for 1 turns
 # [13] ESDamageShield -> Come on! Pull!
-# Condition: None
 # Reduce damage from all sources by 50% for 1 turns
 # [14] ESEndPath -> ESEndPath
 # end_turn
@@ -223,7 +237,6 @@ records:
 # [23] ESEndPath -> ESEndPath
 # end_turn
 # [24] ESAttackMultihit -> Throw me some more Magic Stones!
-# Condition: None
 # Enemy action
 # [25] ESEndPath -> ESEndPath
 # end_turn

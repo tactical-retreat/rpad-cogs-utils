@@ -19,6 +19,7 @@ records:
 - !SkillRecord
   desc_en: Do nothing + Do nothing
   desc_jp: Do nothing + Do nothing
+  max_atk_pct: null
   name_en: Bang! + I am curious as to why...
   name_jp: Bang! + I am curious as to why...
   record_type_name: PREEMPT
@@ -33,18 +34,21 @@ records:
 - !SkillRecord
   desc_en: Voids status ailments for 5 turns + Do nothing
   desc_jp: Voids status ailments for 5 turns + Do nothing
+  max_atk_pct: null
   name_en: Bang! + I am curious as to why...
   name_jp: Bang! + I am curious as to why...
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Do nothing + Do nothing + Spawn random 1 Bomb orbs
   desc_jp: Do nothing + Do nothing + Spawn random 1 Bomb orbs
+  max_atk_pct: null
   name_en: 'Like they say,  + I wouldn''t want you to miss
 
     a single beat. + Deleterious bomb!'
@@ -55,48 +59,56 @@ records:
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Spawn random 4 Bomb orbs, Deal 100% damage
   desc_jp: Spawn random 4 Bomb orbs, Deal 100% damage
+  max_atk_pct: 100
   name_en: Trace Eyes
   name_jp: Trace Eyes
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Spawn Bomb orbs in the specified positions, Deal 100% damage
   desc_jp: Spawn Bomb orbs in the specified positions, Deal 100% damage
+  max_atk_pct: 100
   name_en: That's what I call my Mad Bomb.
   name_jp: That's what I call my Mad Bomb.
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Spawn Bomb orbs in the specified positions, Deal 100% damage
   desc_jp: Spawn Bomb orbs in the specified positions, Deal 100% damage
+  max_atk_pct: 100
   name_en: That's what I call my Mad Bomb.
   name_jp: That's what I call my Mad Bomb.
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Spawn Bomb orbs in the specified positions, Deal 100% damage
   desc_jp: Spawn Bomb orbs in the specified positions, Deal 100% damage
+  max_atk_pct: 100
   name_en: My my, looks like you're surrounded.
   name_jp: My my, looks like you're surrounded.
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 19
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 19
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Spawn Bomb orbs in the specified positions, Deal 100% damage
   desc_jp: Spawn Bomb orbs in the specified positions, Deal 100% damage
+  max_atk_pct: 100
   name_en: Hahahahahaha!
   name_jp: Hahahahahaha!
   record_type_name: ACTION
@@ -117,7 +129,6 @@ records:
 # [6] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [7] SkillSet:
-# 	Condition: None
 # 	[0] ESStatusShield -> Bang!
 # 	Voids status ailments for 5 turns
 # 	[1] ESInactivity -> I am curious as to why...
@@ -129,7 +140,6 @@ records:
 # [10] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [11] SkillSet:
-# 	Condition: None
 # 	[0] ESInactivity -> Like they say, 
 # 	Do nothing
 # 	[1] ESInactivity -> I wouldn't want you to miss
@@ -159,12 +169,10 @@ records:
 # [20] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [21] ESBombFixedSpawn -> My my, looks like you're surrounded.
-# Condition: None
 # Spawn Bomb orbs in the specified positions
 # [22] ESEndPath -> ESEndPath
 # end_turn
 # [23] ESBombFixedSpawn -> Hahahahahaha!
-# Condition: None
 # Spawn Bomb orbs in the specified positions
 # [24] ESEndPath -> ESEndPath
 # end_turn
@@ -173,7 +181,6 @@ records:
 # [26] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [27] SkillSet:
-# 	Condition: None
 # 	[0] ESInactivity -> Bang!
 # 	Do nothing
 # 	[1] ESInactivity -> I am curious as to why...

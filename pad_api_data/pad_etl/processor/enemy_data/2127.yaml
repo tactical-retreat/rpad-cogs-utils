@@ -19,24 +19,28 @@ records:
 - !SkillRecord
   desc_en: Survive attacks with 1 HP when HP > 50%
   desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
   name_en: Golem Spirit
   name_jp: Golem Spirit
   record_type_name: PASSIVE
 - !SkillRecord
   desc_en: Delay active skills by 1~3 turns
   desc_jp: Delay active skills by 1~3 turns
+  max_atk_pct: null
   name_en: Downer Bullet
   name_jp: Downer Bullet
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 120% damage (6 hits, 20% each)
   desc_jp: Deal 120% damage (6 hits, 20% each)
+  max_atk_pct: 120
   name_en: Energy Shotgun
   name_jp: Energy Shotgun
   record_type_name: ACTION
@@ -45,42 +49,49 @@ records:
     damage
   desc_jp: Change 2nd column to Jammer orbs, 4th column to Poison orbs, Deal 100%
     damage
+  max_atk_pct: 100
   name_en: Keen Edge
   name_jp: Keen Edge
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Increase damage to 200% for the next 999 turns + Player -99% HP
   desc_jp: Increase damage to 200% for the next 999 turns + Player -99% HP
+  max_atk_pct: null
   name_en: High-End Booster + Energy Counter
   name_jp: High-End Booster + Energy Counter
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 10
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 10
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 500% damage
   desc_jp: Deal 500% damage
+  max_atk_pct: 500
   name_en: Backward Impact
   name_jp: Backward Impact
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Movetime -2s for 10 turns, Deal 150% damage
   desc_jp: Movetime -2s for 10 turns, Deal 150% damage
+  max_atk_pct: 150
   name_en: Backdraft
   name_jp: Backdraft
   record_type_name: ACTION
@@ -95,7 +106,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] ESSkillDelay -> Downer Bullet
-# Condition: None
 # Delay active skills by 1~3 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
@@ -120,7 +130,6 @@ records:
 # [13] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [14] SkillSet:
-# 	Condition: None
 # 	[0] ESAttackUp -> High-End Booster
 # 	Increase damage to 200% for the next 999 turns
 # 	[1] ESGravity -> Energy Counter

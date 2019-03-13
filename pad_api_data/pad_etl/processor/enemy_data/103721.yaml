@@ -19,6 +19,7 @@ records:
 - !SkillRecord
   desc_en: Reduce damage from Wood by 50%
   desc_jp: Reduce damage from Wood by 50%
+  max_atk_pct: null
   name_en: Wood Halved for Fire Jewel
   name_jp: Wood Halved for Fire Jewel
   record_type_name: PASSIVE
@@ -33,6 +34,7 @@ records:
 - !SkillRecord
   desc_en: Reduce damage from Wood by 50%
   desc_jp: Reduce damage from Wood by 50%
+  max_atk_pct: null
   name_en: Wood Halved for Fire Jewel
   name_jp: Wood Halved for Fire Jewel
   record_type_name: PASSIVE
@@ -41,12 +43,14 @@ records:
     for 1 turns
   desc_jp: Change 4th, 5th, 6th column to Fire, Jammer orbs + Absorb combo <= 6 damage
     for 1 turns
+  max_atk_pct: null
   name_en: One-Eyed Hellfire + Seething Fire
   name_jp: One-Eyed Hellfire + Seething Fire
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 19
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 19
   name_jp: ''
   record_type_name: DIVIDER
@@ -55,18 +59,21 @@ records:
     orbs
   desc_jp: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
     orbs
+  max_atk_pct: null
   name_en: Glare of the Fire Dragon
   name_jp: Glare of the Fire Dragon
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 19
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 19
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change all orbs to Fire, Jammer, Deal 3000% damage
   desc_jp: Change all orbs to Fire, Jammer, Deal 3000% damage
+  max_atk_pct: 3000
   name_en: Final Burning Devotion
   name_jp: Final Burning Devotion
   record_type_name: ACTION
@@ -85,7 +92,6 @@ records:
 # [5] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [6] SkillSet:
-# 	Condition: None
 # 	[0] ESColumnSpawnMulti -> One-Eyed Hellfire
 # 	Change 4th, 5th, 6th column to Fire, Jammer orbs
 # 	[1] ESAbsorbCombo -> Seething Fire
@@ -125,19 +131,16 @@ records:
 # [18] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [19] ESRowSpawnMulti -> Raging Flash Wildfire
-# Condition: None
 # Change 3rd row to Jammer orbs
 # [20] ESBranchFlag -> ESBranchFlag
 # branch
 # [21] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [22] ESOrbChangeAttack -> Inferno Claw
-# Condition: None
 # Change Heal to Fire
 # [23] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [24] ESGravity -> Incinerator Charge
-# Condition: None
 # Player -90% HP
 # [25] ESEndPath -> ESEndPath
 # end_turn
@@ -146,10 +149,8 @@ records:
 # [27] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [28] ESOrbLock -> Glare of the Fire Dragon
-# Condition: None
 # Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [29] ESBoardChangeAttackBits -> Final Burning Devotion
-# Condition: None
 # Change all orbs to Fire, Jammer
 # [30] ESAttributeResist -> Wood Halved for Fire Jewel
 # Reduce damage from Wood by 50%

@@ -19,42 +19,49 @@ records:
 - !SkillRecord
   desc_en: Player recover 100% hp
   desc_jp: Player recover 100% hp
+  max_atk_pct: null
   name_en: Song of Rest
   name_jp: Song of Rest
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change Heal to Wood, Deal 80% damage
   desc_jp: Change Heal to Wood, Deal 80% damage
+  max_atk_pct: 80
   name_en: Guardian of the World Tree
   name_jp: Guardian of the World Tree
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 50
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 50
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Bind 4 random subs for 2~4 turns
   desc_jp: Bind 4 random subs for 2~4 turns
+  max_atk_pct: null
   name_en: Lullaby
   name_jp: Lullaby
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 30
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 30
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 150% damage (3 hits, 50% each)
   desc_jp: Deal 150% damage (3 hits, 50% each)
+  max_atk_pct: 150
   name_en: Flower Storm
   name_jp: Flower Storm
   record_type_name: ACTION
@@ -69,7 +76,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] ESRecoverPlayer -> Song of Rest
-# Condition: None
 # Player recover 100% hp
 # [5] ESEndPath -> ESEndPath
 # end_turn
@@ -80,5 +86,4 @@ records:
 # Condition: When < 30% hp
 # Enemy action
 # [8] ESOrbChangeAttack -> Guardian of the World Tree
-# Condition: None
 # Change Heal to Wood

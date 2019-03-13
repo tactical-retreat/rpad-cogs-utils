@@ -19,6 +19,7 @@ records:
 - !SkillRecord
   desc_en: Survive attacks with 1 HP when HP > 50%
   desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
   name_en: Hera Resolve
   name_jp: Hera Resolve
   record_type_name: PASSIVE
@@ -27,6 +28,7 @@ records:
     + Enemy action
   desc_jp: Voids status ailments for 999 turns + Void damage >= 30000000 for 999 turns
     + Enemy action
+  max_atk_pct: null
   name_en: Here at last... Shall we begin? + Demon Star Crest + See how you handle
     my fist!!
   name_jp: Here at last... Shall we begin? + Demon Star Crest + See how you handle
@@ -35,102 +37,119 @@ records:
 - !SkillRecord
   desc_en: HP <= 9
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 9
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change own attribute to random one of Fire, Water, Wood + Enemy action
   desc_jp: Change own attribute to random one of Fire, Water, Wood + Enemy action
+  max_atk_pct: null
   name_en: It was fun, but let's end this + This is my full power!!!
   name_jp: It was fun, but let's end this + This is my full power!!!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 9
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 9
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 50000% damage (10 hits, 5000% each)
   desc_jp: Deal 50000% damage (10 hits, 5000% each)
+  max_atk_pct: 50000
   name_en: Whirling Magical Power
   name_jp: Whirling Magical Power
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 50
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 50
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Absorb combo <= 7 damage for 999 turns + Movetime -1s for 10 turns
   desc_jp: Absorb combo <= 7 damage for 999 turns + Movetime -1s for 10 turns
+  max_atk_pct: null
   name_en: I'll have to get serious soon + Hurry up!!
   name_jp: I'll have to get serious soon + Hurry up!!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Blind random 6 orbs for 2 turns, Deal 350% damage
   desc_jp: Blind random 6 orbs for 2 turns, Deal 350% damage
+  max_atk_pct: 350
   name_en: Black Screw Blow
   name_jp: Black Screw Blow
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Deal 480% damage (6 hits, 80% each)
   desc_jp: Deal 480% damage (6 hits, 80% each)
+  max_atk_pct: 480
   name_en: Full Spin Kick
   name_jp: Full Spin Kick
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Deal 700% damage
   desc_jp: Deal 700% damage
+  max_atk_pct: 700
   name_en: Hell Shot Punch
   name_jp: Hell Shot Punch
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 50
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 50
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Blind random 6 orbs for 2 turns, Deal 350% damage
   desc_jp: Blind random 6 orbs for 2 turns, Deal 350% damage
+  max_atk_pct: 350
   name_en: Black Screw Blow
   name_jp: Black Screw Blow
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 50
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 50
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 480% damage (6 hits, 80% each)
   desc_jp: Deal 480% damage (6 hits, 80% each)
+  max_atk_pct: 480
   name_en: Full Spin Kick
   name_jp: Full Spin Kick
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 50
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 50
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 700% damage
   desc_jp: Deal 700% damage
+  max_atk_pct: 700
   name_en: Hell Shot Punch
   name_jp: Hell Shot Punch
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Enemy recover 100% hp + Increase damage to 150% for the next 999 turns
   desc_jp: Enemy recover 100% hp + Increase damage to 150% for the next 999 turns
+  max_atk_pct: null
   name_en: Demon Star's Radiance + I won't let it happen!
   name_jp: Demon Star's Radiance + I won't let it happen!
   record_type_name: ACTION
@@ -186,26 +205,22 @@ records:
 # [12] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [13] ESAttackMultihit -> Spin Kick
-# Condition: None
 # Enemy action
 # [14] ESBranchFlag -> ESBranchFlag
 # branch
 # [15] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [16] ESSkillDelay -> Body Blow
-# Condition: None
 # Delay active skills by 3 turns
 # [17] ESBranchFlag -> ESBranchFlag
 # branch
 # [18] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [19] ESAttackMultihit -> Combo Rush
-# Condition: None
 # Enemy action
 # [20] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [21] ESSpinnersFixed -> Axe Kick
-# Condition: None
 # Specific orbs change every 1.0s for 1 turns
 # [22] ESEndPath -> ESEndPath
 # end_turn
@@ -214,13 +229,11 @@ records:
 # [24] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [25] SkillSet:
-# 	Condition: None
 # 	[0] ESChangeAttribute -> It was fun, but let's end this
 # 	Change own attribute to random one of Fire, Water, Wood
 # 	[1] ESAttackMultihit -> This is my full power!!!
 # 	Enemy action
 # [26] ESAttackMultihit -> Whirling Magical Power
-# Condition: None
 # Enemy action
 # [27] ESEndPath -> ESEndPath
 # end_turn

@@ -19,18 +19,21 @@ records:
 - !SkillRecord
   desc_en: Survive attacks with 1 HP when HP > 1%
   desc_jp: Survive attacks with 1 HP when HP > 1%
+  max_atk_pct: null
   name_en: '*****'
   name_jp: '*****'
   record_type_name: PASSIVE
 - !SkillRecord
   desc_en: Absorb damage >= 300000 damage for 99 turns
   desc_jp: Absorb damage >= 300000 damage for 99 turns
+  max_atk_pct: null
   name_en: It's about to get more dangerous
   name_jp: It's about to get more dangerous
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
@@ -39,12 +42,14 @@ records:
     Deal 100% damage
   desc_jp: Change 1st row to Heal orbs, 3rd row to Wood orbs, 5th row to Heal orbs,
     Deal 100% damage
+  max_atk_pct: 100
   name_en: Calming Mountain Wind
   name_jp: Calming Mountain Wind
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
@@ -53,36 +58,42 @@ records:
     Fire orbs, Deal 100% damage
   desc_jp: Change 1st column to Fire orbs, 3rd column to Fire orbs, 5th column to
     Fire orbs, Deal 100% damage
+  max_atk_pct: 100
   name_en: Trishula
   name_jp: Trishula
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Deal 90%~120% damage (3~4 hits, 30% each)
   desc_jp: Deal 90%~120% damage (3~4 hits, 30% each)
+  max_atk_pct: 120
   name_en: Tiger Rush
   name_jp: Tiger Rush
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 30
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 30
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change 1st row to Jammer orbs, Deal 200% damage
   desc_jp: Change 1st row to Jammer orbs, Deal 200% damage
+  max_atk_pct: 200
   name_en: Himalayan Anger
   name_jp: Himalayan Anger
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Spawn random 15 Jammer orbs + Reduce self HP to 0
   desc_jp: Spawn random 15 Jammer orbs + Reduce self HP to 0
+  max_atk_pct: null
   name_en: Golden Deity's Lamentation + Foolishness...
   name_jp: Golden Deity's Lamentation + Foolishness...
   record_type_name: ACTION
@@ -97,7 +108,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] ESAbsorbThreshold -> It's about to get more dangerous
-# Condition: None
 # Absorb damage >= 300000 damage for 99 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
@@ -117,7 +127,6 @@ records:
 # Condition: 50% chance
 # Change 1st column to Fire orbs, 3rd column to Fire orbs, 5th column to Fire orbs
 # [10] ESAttackMultihit -> Tiger Rush
-# Condition: None
 # Enemy action
 # [11] ESEndPath -> ESEndPath
 # end_turn

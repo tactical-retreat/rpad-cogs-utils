@@ -19,78 +19,91 @@ records:
 - !SkillRecord
   desc_en: Bind 4 random cards for 1~2 turns, Deal 100% damage
   desc_jp: Bind 4 random cards for 1~2 turns, Deal 100% damage
+  max_atk_pct: 100
   name_en: Entahaz Masaka
   name_jp: Entahaz Masaka
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 4
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 4
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Blind all orbs for 3 turns
   desc_jp: Blind all orbs for 3 turns
+  max_atk_pct: null
   name_en: Solomon's Secret Key
   name_jp: Solomon's Secret Key
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Blind all orbs on the board, Deal 100% damage
   desc_jp: Blind all orbs on the board, Deal 100% damage
+  max_atk_pct: 100
   name_en: Kokzaram
   name_jp: Kokzaram
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Spawn random 6 Dark orbs, Deal 100% damage
   desc_jp: Spawn random 6 Dark orbs, Deal 100% damage
+  max_atk_pct: 100
   name_en: Sanaa Aswad
   name_jp: Sanaa Aswad
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Bind awoken skills for 3 turns
   desc_jp: Bind awoken skills for 3 turns
+  max_atk_pct: null
   name_en: Mahatuha
   name_jp: Mahatuha
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 108% damage (3 hits, 36% each)
   desc_jp: Deal 108% damage (3 hits, 36% each)
+  max_atk_pct: 108
   name_en: Sout Yadoreb
   name_jp: Sout Yadoreb
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Enemy action + Blind random 6 orbs for 1 turns
   desc_jp: Enemy action + Blind random 6 orbs for 1 turns
+  max_atk_pct: null
   name_en: Sout Yadoreb + Yasurek Sitta
   name_jp: Sout Yadoreb + Yasurek Sitta
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 9
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 9
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 60% damage (2 hits, 30% each)
   desc_jp: Deal 60% damage (2 hits, 30% each)
+  max_atk_pct: 60
   name_en: Pentacle of the Demonic Sword
   name_jp: Pentacle of the Demonic Sword
   record_type_name: ACTION
@@ -99,6 +112,7 @@ records:
     + Change player HP to 500000 for 99 turns + Voids player buff effects
   desc_jp: Voids status ailments for 999 turns + Void damage >= 40000000 for 99 turns
     + Change player HP to 500000 for 99 turns + Voids player buff effects
+  max_atk_pct: null
   name_en: I wonder if your life means anything + Defense of the Twin Ships + Ark
     Contract + Requiem
   name_jp: I wonder if your life means anything + Defense of the Twin Ships + Ark
@@ -115,7 +129,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] ESBindRandom -> Entahaz Masaka
-# Condition: None
 # Bind 4 random cards for 1~2 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
@@ -137,7 +150,6 @@ records:
 # [12] ESEndPath -> ESEndPath
 # end_turn
 # [13] ESBlindStickyRandom -> Solomon's Secret Key
-# Condition: None
 # Blind all orbs for 3 turns
 # [14] ESEndPath -> ESEndPath
 # end_turn
@@ -148,12 +160,10 @@ records:
 # [17] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [18] ESAttackMultihit -> Sout Yadoreb
-# Condition: None
 # Enemy action
 # [19] ESEndPath -> ESEndPath
 # end_turn
 # [20] SkillSet:
-# 	Condition: None
 # 	[0] ESAttackMultihit -> Sout Yadoreb
 # 	Enemy action
 # 	[1] ESBlindStickyRandom -> Yasurek Sitta
@@ -161,10 +171,8 @@ records:
 # [21] ESEndPath -> ESEndPath
 # end_turn
 # [22] ESAttackMultihit -> Pentacle of the Demonic Sword
-# Condition: None
 # Enemy action
 # [23] SkillSet:
-# 	Condition: None
 # 	[0] ESStatusShield -> I wonder if your life means anything
 # 	Voids status ailments for 999 turns
 # 	[1] ESVoidShield -> Defense of the Twin Ships
@@ -176,7 +184,6 @@ records:
 # [24] ESEndPath -> ESEndPath
 # end_turn
 # [25] ESAttackMultihit -> Intee Kamkadam
-# Condition: None
 # Enemy action
 # [26] ESNone -> ESNone
 # None
@@ -193,7 +200,6 @@ records:
 # [32] ESNone -> ESNone
 # None
 # [33] SkillSet:
-# 	Condition: None
 # 	[0] ESDamageShield -> Defense Instinct
 # 	Reduce damage from all sources by 50% for 3 turns
 # 	[1] ESCloud -> Mass Clouds
@@ -201,10 +207,8 @@ records:
 # [34] ESEndPath -> ESEndPath
 # end_turn
 # [35] ESAttributeBlock -> Red Exception
-# Condition: None
 # Unable to Fire orbs for 3 turns
 # [36] ESEndPath -> ESEndPath
 # end_turn
 # [37] ESBombRandomSpawn -> Affliction Bombing
-# Condition: None
 # Spawn random 3 Bomb orbs

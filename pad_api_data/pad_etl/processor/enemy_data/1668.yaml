@@ -19,6 +19,7 @@ records:
 - !SkillRecord
   desc_en: Survive attacks with 1 HP when HP > 50%
   desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
   name_en: Nephthys Resolve
   name_jp: Nephthys Resolve
   record_type_name: PASSIVE
@@ -33,18 +34,21 @@ records:
 - !SkillRecord
   desc_en: Survive attacks with 1 HP when HP > 50%
   desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
   name_en: Nephthys Resolve
   name_jp: Nephthys Resolve
   record_type_name: PASSIVE
 - !SkillRecord
   desc_en: Blind orbs in specific positions for 3 turns + Bind God cards for 10 turns
   desc_jp: Blind orbs in specific positions for 3 turns + Bind God cards for 10 turns
+  max_atk_pct: null
   name_en: Hey, it's daaark! + You're no good!
   name_jp: Hey, it's daaark! + You're no good!
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
@@ -53,42 +57,49 @@ records:
     positions
   desc_jp: Change all orbs to Fire, Dark, Poison + Spawn Bomb orbs in the specified
     positions
+  max_atk_pct: null
   name_en: "I'll give it to you like thiiis + Have this too \u266A"
   name_jp: "I'll give it to you like thiiis + Have this too \u266A"
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 19
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 19
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Absorb Fire, Dark damage for 1 turns
   desc_jp: Absorb Fire, Dark damage for 1 turns
+  max_atk_pct: null
   name_en: I won't give up!
   name_jp: I won't give up!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 19
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 19
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Player -300% HP
   desc_jp: Player -300% HP
+  max_atk_pct: null
   name_en: OK, this is the end!
   name_jp: OK, this is the end!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 0
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 0
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Enemy recover 50% hp + Enemy action
   desc_jp: Enemy recover 50% hp + Enemy action
+  max_atk_pct: null
   name_en: It huuurts! + I won't forgive you!
   name_jp: It huuurts! + I won't forgive you!
   record_type_name: ACTION
@@ -107,7 +118,6 @@ records:
 # [5] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [6] SkillSet:
-# 	Condition: None
 # 	[0] ESBlindStickyFixed -> Hey, it's daaark!
 # 	Blind orbs in specific positions for 3 turns
 # 	[1] ESBindTyping -> You're no good!
@@ -144,7 +154,6 @@ records:
 # 	[1] ESRandomSpawn -> Understand how I feel!
 # 	Spawn random 6 Poison orbs
 # [19] SkillSet:
-# 	Condition: None
 # 	[0] ESBlindStickyFixed -> Hey, it's daaark!
 # 	Blind orbs in specific positions for 3 turns
 # 	[1] ESRandomSpawn -> Understand how I feel!
@@ -156,7 +165,6 @@ records:
 # [22] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [23] SkillSet:
-# 	Condition: None
 # 	[0] ESBoardChange -> I'll give it to you like thiiis
 # 	Change all orbs to Fire, Dark, Poison
 # 	[1] ESBombFixedSpawn -> Have this too ♪
@@ -167,12 +175,10 @@ records:
 # Condition: One-time use
 # Absorb Fire, Dark damage for 1 turns
 # [26] ESGravity -> OK, this is the end!
-# Condition: None
 # Player -300% HP
 # [27] ESEndPath -> ESEndPath
 # end_turn
 # [28] SkillSet:
-# 	Condition: None
 # 	[0] ESRecoverEnemy -> It huuurts!
 # 	Enemy recover 50% hp
 # 	[1] ESAttackMultihit -> I won't forgive you!

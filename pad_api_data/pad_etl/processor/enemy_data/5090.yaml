@@ -19,12 +19,14 @@ records:
 - !SkillRecord
   desc_en: Movetime -1s for 10 turns
   desc_jp: Movetime -1s for 10 turns
+  max_atk_pct: null
   name_en: Humph, so it's you.
   name_jp: Humph, so it's you.
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
@@ -33,6 +35,7 @@ records:
     by 2 turns
   desc_jp: Reduce damage from all sources by 50% for 1 turns + Delay active skills
     by 2 turns
+  max_atk_pct: null
   name_en: Rakan + No use! Rakan Gosho
   name_jp: Rakan + No use! Rakan Gosho
   record_type_name: ACTION
@@ -41,54 +44,63 @@ records:
     Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
   desc_jp: Reduce damage from all sources by 50% for 1 turns + Lock 10 random Fire,
     Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+  max_atk_pct: null
   name_en: Rakan + Rakan Gokyaku
   name_jp: Rakan + Rakan Gokyaku
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Change 3rd row to Dark orbs + Absorb combo <= 5 damage for 1 turns
   desc_jp: Change 3rd row to Dark orbs + Absorb combo <= 5 damage for 1 turns
+  max_atk_pct: null
   name_en: Gohadoken + Tatsumaki Zankukyaku
   name_jp: Gohadoken + Tatsumaki Zankukyaku
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Change 3rd row to Fire orbs + Enemy action
   desc_jp: Change 3rd row to Fire orbs + Enemy action
+  max_atk_pct: null
   name_en: Sekia Goshoha + Goshoryuken
   name_jp: Sekia Goshoha + Goshoryuken
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 11
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 11
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Increase damage to 150% for the next 10 turns
   desc_jp: Increase damage to 150% for the next 10 turns
+  max_atk_pct: null
   name_en: Dohatsu Shoten
   name_jp: Dohatsu Shoten
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 10
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 10
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Leader changes to random sub for 1 turns
   desc_jp: Leader changes to random sub for 1 turns
+  max_atk_pct: null
   name_en: Ashura Senku
   name_jp: Ashura Senku
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 10
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 10
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 400% damage (10 hits, 40% each)
   desc_jp: Deal 400% damage (10 hits, 40% each)
+  max_atk_pct: 400
   name_en: Shun Goku Satsu
   name_jp: Shun Goku Satsu
   record_type_name: ACTION
@@ -143,21 +155,18 @@ records:
 # [14] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [15] ESLeaderSwap -> Ashura Senku
-# Condition: None
 # Leader changes to random sub for 1 turns
 # [16] ESEndPath -> ESEndPath
 # end_turn
 # [17] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [18] ESAttackMultihit -> Shun Goku Satsu
-# Condition: None
 # Enemy action
 # [19] ESEndPath -> ESEndPath
 # end_turn
 # [20] ESSetCounter -> ESSetCounter
 # set_counter
 # [21] ESColumnSpawnMulti -> Sekia Kuretsuha
-# Condition: None
 # Change 3rd, 4th column to Fire orbs
 # [22] ESEndPath -> ESEndPath
 # end_turn

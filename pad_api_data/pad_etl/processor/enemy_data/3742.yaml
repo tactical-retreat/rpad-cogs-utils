@@ -19,42 +19,49 @@ records:
 - !SkillRecord
   desc_en: Reduce damage from Fire by 50%
   desc_jp: Reduce damage from Fire by 50%
+  max_atk_pct: null
   name_en: Fire damage halved
   name_jp: Fire damage halved
   record_type_name: PASSIVE
 - !SkillRecord
   desc_en: Movetime -2s for 3 turns
   desc_jp: Movetime -2s for 3 turns
+  max_atk_pct: null
   name_en: Woo-hoo!
   name_jp: Woo-hoo!
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change 3rd, 4th column to Water, Jammer orbs
   desc_jp: Change 3rd, 4th column to Water, Jammer orbs
+  max_atk_pct: null
   name_en: Ackris! Yoo-hoo!
   name_jp: Ackris! Yoo-hoo!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Turn 2
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 2
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Player -90% HP
   desc_jp: Player -90% HP
+  max_atk_pct: null
   name_en: Do your best, Ackris!
   name_jp: Do your best, Ackris!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Turn 3
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 3
   name_jp: ''
   record_type_name: DIVIDER
@@ -63,18 +70,21 @@ records:
     Poison orbs, Deal 160% damage
   desc_jp: Lock 8 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
     Poison orbs, Deal 160% damage
+  max_atk_pct: 160
   name_en: Ackris is spinning around
   name_jp: Ackris is spinning around
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Enemy recover 50% hp
   desc_jp: Enemy recover 50% hp
+  max_atk_pct: null
   name_en: "Twinkle \u2606 Aqua"
   name_jp: "Twinkle \u2606 Aqua"
   record_type_name: ACTION
@@ -89,7 +99,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] ESDebuffMovetime -> Woo-hoo!
-# Condition: None
 # Movetime -2s for 3 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
@@ -98,7 +107,6 @@ records:
 # [7] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [8] ESColumnSpawnMulti -> Ackris! Yoo-hoo!
-# Condition: None
 # Change 3rd, 4th column to Water, Jammer orbs
 # [9] ESEndPath -> ESEndPath
 # end_turn
@@ -107,7 +115,6 @@ records:
 # [11] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [12] ESGravity -> Do your best, Ackris!
-# Condition: None
 # Player -90% HP
 # [13] ESEndPath -> ESEndPath
 # end_turn
@@ -115,7 +122,6 @@ records:
 # Condition: One-time use
 # Lock 8 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [15] ESRecoverEnemy -> Twinkle ☆ Aqua
-# Condition: None
 # Enemy recover 50% hp
 # [16] ESEndPath -> ESEndPath
 # end_turn

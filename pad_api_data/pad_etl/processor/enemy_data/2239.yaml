@@ -21,48 +21,56 @@ records:
     turns
   desc_jp: Reduce damage from all sources by 50% for 10 turns + Movetime -3s for 10
     turns
+  max_atk_pct: null
   name_en: Harbinger of Corrosion + Realm of Hades's Law
   name_jp: Harbinger of Corrosion + Realm of Hades's Law
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Bind 2 random subs for 2 turns
   desc_jp: Bind 2 random subs for 2 turns
+  max_atk_pct: null
   name_en: Light Sleep's Cradle
   name_jp: Light Sleep's Cradle
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Bind 4 random subs for 1 turns
   desc_jp: Bind 4 random subs for 1 turns
+  max_atk_pct: null
   name_en: Nap's Cradle
   name_jp: Nap's Cradle
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Spawn random 9 Mortal Poison orbs, Deal 400% damage
   desc_jp: Spawn random 9 Mortal Poison orbs, Deal 400% damage
+  max_atk_pct: 400
   name_en: Bane Harvest
   name_jp: Bane Harvest
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change Mortal Poison to Heal, Deal 400% damage
   desc_jp: Change Mortal Poison to Heal, Deal 400% damage
+  max_atk_pct: 400
   name_en: Bloody Blossom - Anemone
   name_jp: Bloody Blossom - Anemone
   record_type_name: ACTION
@@ -77,7 +85,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] SkillSet:
-# 	Condition: None
 # 	[0] ESDamageShield -> Harbinger of Corrosion
 # 	Reduce damage from all sources by 50% for 10 turns
 # 	[1] ESDebuffMovetime -> Realm of Hades's Law
@@ -168,13 +175,10 @@ records:
 # [22] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [23] ESOrbChangeAttack -> Bloody Blossom - Anemone
-# Condition: None
 # Change Mortal Poison to Heal
 # [24] ESOrbChangeAttack -> Cursed Flower - Mint
-# Condition: None
 # Change Heal to Mortal Poison
 # [25] ESRowSpawnMulti -> Cocytus's Erosion
-# Condition: None
 # Change 5th row to Mortal Poison orbs
 # [26] ESFlagOperation -> ESFlagOperation
 # flag_operation
@@ -182,5 +186,4 @@ records:
 # Condition: 50% chance
 # Bind 2 random subs for 2 turns
 # [28] ESBindRandomSub -> Nap's Cradle
-# Condition: None
 # Bind 4 random subs for 1 turns

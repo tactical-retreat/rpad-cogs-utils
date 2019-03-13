@@ -19,6 +19,7 @@ records:
 - !SkillRecord
   desc_en: Reduce damage from God, Machine by 50%
   desc_jp: Reduce damage from God, Machine by 50%
+  max_atk_pct: null
   name_en: Kotarou God Machine Halved
   name_jp: Kotarou God Machine Halved
   record_type_name: PASSIVE
@@ -33,18 +34,21 @@ records:
 - !SkillRecord
   desc_en: Reduce damage from God, Machine by 50%
   desc_jp: Reduce damage from God, Machine by 50%
+  max_atk_pct: null
   name_en: Kotarou God Machine Halved
   name_jp: Kotarou God Machine Halved
   record_type_name: PASSIVE
 - !SkillRecord
   desc_en: Bind awoken skills for 3 turns + Bind 1 both leaders for 3 turns
   desc_jp: Bind awoken skills for 3 turns + Bind 1 both leaders for 3 turns
+  max_atk_pct: null
   name_en: 'Who?! + Ninja Flash: Thunderbind'
   name_jp: 'Who?! + Ninja Flash: Thunderbind'
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
@@ -53,30 +57,35 @@ records:
     for 2 turns
   desc_jp: Voids status ailments for 2 turns + Reduce damage from all sources by 50%
     for 2 turns
+  max_atk_pct: null
   name_en: I won't let you do that! + Now is the time for endurance
   name_jp: I won't let you do that! + Now is the time for endurance
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Turn 3
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 3
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Increase damage to 500% for the next 1 turns
   desc_jp: Increase damage to 500% for the next 1 turns
+  max_atk_pct: null
   name_en: The Purpose of Physical Training
   name_jp: The Purpose of Physical Training
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 84% damage (4 hits, 21% each)
   desc_jp: Deal 84% damage (4 hits, 21% each)
+  max_atk_pct: 84
   name_en: Thunderblade Dominance
   name_jp: Thunderblade Dominance
   record_type_name: ACTION
@@ -95,7 +104,6 @@ records:
 # [5] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [6] SkillSet:
-# 	Condition: None
 # 	[0] ESBindAwoken -> Who?!
 # 	Bind awoken skills for 3 turns
 # 	[1] ESBindTarget -> Ninja Flash: Thunderbind
@@ -107,7 +115,6 @@ records:
 # [9] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [10] SkillSet:
-# 	Condition: None
 # 	[0] ESStatusShield -> I won't let you do that!
 # 	Voids status ailments for 2 turns
 # 	[1] ESDamageShield -> Now is the time for endurance
@@ -116,7 +123,6 @@ records:
 # Condition: One-time use
 # Increase damage to 500% for the next 1 turns
 # [12] ESAttackMultihit -> Thunderblade Dominance
-# Condition: None
 # Enemy action
 # [13] ESEndPath -> ESEndPath
 # end_turn

@@ -19,84 +19,98 @@ records:
 - !SkillRecord
   desc_en: Voids status ailments for 5 turns
   desc_jp: Voids status ailments for 5 turns
+  max_atk_pct: null
   name_en: Egotistical Healing
   name_jp: Egotistical Healing
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change Random to Heal, Deal 125% damage
   desc_jp: Change Random to Heal, Deal 125% damage
+  max_atk_pct: 125
   name_en: Whip of Love
   name_jp: Whip of Love
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change Random to Water, Deal 100% damage
   desc_jp: Change Random to Water, Deal 100% damage
+  max_atk_pct: 100
   name_en: Water Orb Kick
   name_jp: Water Orb Kick
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Deal 150% damage (3 hits, 50% each)
   desc_jp: Deal 150% damage (3 hits, 50% each)
+  max_atk_pct: 150
   name_en: Blue Dragon Screw
   name_jp: Blue Dragon Screw
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Bind friend leader for 1 turns, Deal 50% damage
   desc_jp: Bind friend leader for 1 turns, Deal 50% damage
+  max_atk_pct: 50
   name_en: Frozen Cobra Twist
   name_jp: Frozen Cobra Twist
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Blind all orbs on the board, Deal 75% damage
   desc_jp: Blind all orbs on the board, Deal 75% damage
+  max_atk_pct: 75
   name_en: Poison Mist
   name_jp: Poison Mist
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Do nothing
   desc_jp: Do nothing
+  max_atk_pct: null
   name_en: Serpent Top
   name_jp: Serpent Top
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Bind 6 random for 1~2 turns, Deal 25% damage
   desc_jp: Bind 6 random for 1~2 turns, Deal 25% damage
+  max_atk_pct: 25
   name_en: Nile-Style Moonsault Press
   name_jp: Nile-Style Moonsault Press
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 5000% damage
   desc_jp: Deal 5000% damage
+  max_atk_pct: 5000
   name_en: Pinfall
   name_jp: Pinfall
   record_type_name: ACTION
@@ -115,7 +129,6 @@ records:
 # [5] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [6] ESStatusShield -> Egotistical Healing
-# Condition: None
 # Voids status ailments for 5 turns
 # [7] ESEndPath -> ESEndPath
 # end_turn
@@ -134,7 +147,6 @@ records:
 # Condition: 60% chance
 # Bind friend leader for 1 turns
 # [13] ESBlind -> Poison Mist
-# Condition: None
 # Blind all orbs on the board
 # [14] ESEndPath -> ESEndPath
 # end_turn
@@ -143,7 +155,6 @@ records:
 # [16] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [17] ESInactivity -> Serpent Top
-# Condition: None
 # Do nothing
 # [18] ESEndPath -> ESEndPath
 # end_turn
@@ -152,7 +163,6 @@ records:
 # [20] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [21] ESBindAttack -> Nile-Style Moonsault Press
-# Condition: None
 # Bind 6 random for 1~2 turns
 # [22] ESEndPath -> ESEndPath
 # end_turn
@@ -160,5 +170,4 @@ records:
 # Condition: One-time use
 # Do nothing
 # [24] ESAttackMultihit -> Pinfall
-# Condition: None
 # Enemy action

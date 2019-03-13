@@ -19,36 +19,42 @@ records:
 - !SkillRecord
   desc_en: Bind active skills for 5 turns
   desc_jp: Bind active skills for 5 turns
+  max_atk_pct: null
   name_en: Silent Brush Strokes
   name_jp: Silent Brush Strokes
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 25
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 25
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Delay active skills by 2 turns
   desc_jp: Delay active skills by 2 turns
+  max_atk_pct: null
   name_en: "Lyrical Book\u266A"
   name_jp: "Lyrical Book\u266A"
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Bind 2 subs for 3 turns, Deal 300% damage
   desc_jp: Bind 2 subs for 3 turns, Deal 300% damage
+  max_atk_pct: 300
   name_en: Blue Saintly Chains
   name_jp: Blue Saintly Chains
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 25
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 25
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Bind 2 subs for 3 turns, Deal 300% damage
   desc_jp: Bind 2 subs for 3 turns, Deal 300% damage
+  max_atk_pct: 300
   name_en: Blue Saintly Chains
   name_jp: Blue Saintly Chains
   record_type_name: ACTION
@@ -67,7 +73,6 @@ records:
 # [5] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [6] ESBindSkill -> Silent Brush Strokes
-# Condition: None
 # Bind active skills for 5 turns
 # [7] ESEndPath -> ESEndPath
 # end_turn
@@ -82,12 +87,10 @@ records:
 # [11] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [12] ESBlind -> Fog Writing
-# Condition: None
 # Blind all orbs on the board
 # [13] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [14] ESOrbChangeAttack -> Water Spirit's Writing
-# Condition: None
 # Change Random to Water
 # [15] ESEndPath -> ESEndPath
 # end_turn

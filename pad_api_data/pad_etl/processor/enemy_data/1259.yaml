@@ -19,36 +19,42 @@ records:
 - !SkillRecord
   desc_en: Voids status ailments for 999 turns + Bind 6 random cards for 4 turns
   desc_jp: Voids status ailments for 999 turns + Bind 6 random cards for 4 turns
+  max_atk_pct: null
   name_en: I don't want to do anything! + Such a hassle...
   name_jp: I don't want to do anything! + Such a hassle...
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Bind active skills for 10 turns + Movetime -2s for 10 turns
   desc_jp: Bind active skills for 10 turns + Movetime -2s for 10 turns
+  max_atk_pct: null
   name_en: "No skills for you! + Hyah \u266A"
   name_jp: "No skills for you! + Hyah \u266A"
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Turn 2
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 2
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Player -99% HP
   desc_jp: Player -99% HP
+  max_atk_pct: null
   name_en: "Here I come \u266A"
   name_jp: "Here I come \u266A"
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
@@ -57,36 +63,42 @@ records:
     70% damage
   desc_jp: Change 1st row to Wood, Jammer orbs, 5th row to Wood, Poison orbs, Deal
     70% damage
+  max_atk_pct: 70
   name_en: How about this?
   name_jp: How about this?
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Spawn random 6 Wood, Jammer, Poison orbs, Deal 100% damage
   desc_jp: Spawn random 6 Wood, Jammer, Poison orbs, Deal 100% damage
+  max_atk_pct: 100
   name_en: I'm going to block you!
   name_jp: I'm going to block you!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 74
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 74
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Absorb combo <= 7 damage for 6 turns
   desc_jp: Absorb combo <= 7 damage for 6 turns
+  max_atk_pct: null
   name_en: "Okay, now it's playtime\u266A"
   name_jp: "Okay, now it's playtime\u266A"
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 29
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 29
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 240% damage (3 hits, 80% each)
   desc_jp: Deal 240% damage (3 hits, 80% each)
+  max_atk_pct: 240
   name_en: Playtime's over!
   name_jp: Playtime's over!
   record_type_name: ACTION
@@ -105,7 +117,6 @@ records:
 # [5] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [6] SkillSet:
-# 	Condition: None
 # 	[0] ESStatusShield -> I don't want to do anything!
 # 	Voids status ailments for 999 turns
 # 	[1] ESBindRandom -> Such a hassle...
@@ -121,7 +132,6 @@ records:
 # [11] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [12] SkillSet:
-# 	Condition: None
 # 	[0] ESBindSkill -> No skills for you!
 # 	Bind active skills for 10 turns
 # 	[1] ESDebuffMovetime -> Hyah ♪
@@ -144,7 +154,6 @@ records:
 # [19] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [20] ESAbsorbCombo -> Okay, now it's playtime♪
-# Condition: None
 # Absorb combo <= 7 damage for 6 turns
 # [21] ESEndPath -> ESEndPath
 # end_turn
@@ -153,12 +162,10 @@ records:
 # [23] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [24] ESAttackUp -> Unforgivable!
-# Condition: None
 # Increase damage to 200% for the next 99 turns
 # [25] ESEndPath -> ESEndPath
 # end_turn
 # [26] ESAttackMultihit -> Playtime's over!
-# Condition: None
 # Enemy action
 # [27] ESEndPath -> ESEndPath
 # end_turn

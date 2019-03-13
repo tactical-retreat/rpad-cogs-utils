@@ -19,30 +19,35 @@ records:
 - !SkillRecord
   desc_en: Bind 1 random cards for 5 turns
   desc_jp: Bind 1 random cards for 5 turns
+  max_atk_pct: null
   name_en: Kusarigama
   name_jp: Kusarigama
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 90% damage (3 hits, 30% each)
   desc_jp: Deal 90% damage (3 hits, 30% each)
+  max_atk_pct: 90
   name_en: Shuriken Strike
   name_jp: Shuriken Strike
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 50
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 50
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Bind 1 random cards for 5 turns
   desc_jp: Bind 1 random cards for 5 turns
+  max_atk_pct: null
   name_en: Ninja Trick Shadow Tagging
   name_jp: Ninja Trick Shadow Tagging
   record_type_name: ACTION
@@ -57,7 +62,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] ESBindRandom -> Kusarigama
-# Condition: None
 # Bind 1 random cards for 5 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
@@ -65,7 +69,6 @@ records:
 # Condition: When < 50% hp , one-time use
 # Bind 1 random cards for 5 turns
 # [7] ESAttackMultihit -> Shuriken Strike
-# Condition: None
 # Enemy action
 # [8] ESEndPath -> ESEndPath
 # end_turn

@@ -19,6 +19,7 @@ records:
 - !SkillRecord
   desc_en: Survive attacks with 1 HP when HP > 50%
   desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
   name_en: Dragon Dimension Resolve
   name_jp: Dragon Dimension Resolve
   record_type_name: PASSIVE
@@ -33,30 +34,35 @@ records:
 - !SkillRecord
   desc_en: Survive attacks with 1 HP when HP > 50%
   desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
   name_en: Dragon Dimension Resolve
   name_jp: Dragon Dimension Resolve
   record_type_name: PASSIVE
 - !SkillRecord
   desc_en: Delay active skills by 2 turns + Lock all Wood, Heal orbs
   desc_jp: Delay active skills by 2 turns + Lock all Wood, Heal orbs
+  max_atk_pct: null
   name_en: Visitor, come here but do not rush + Dimension-Miracle
   name_jp: Visitor, come here but do not rush + Dimension-Miracle
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Reduce damage from all sources by 75% for 1 turns
   desc_jp: Reduce damage from all sources by 75% for 1 turns
+  max_atk_pct: null
   name_en: Magatama of Yin and Yang
   name_jp: Magatama of Yin and Yang
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
@@ -65,6 +71,7 @@ records:
     Poison orbs, Deal 80% damage
   desc_jp: Lock 18 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
     Poison orbs, Deal 80% damage
+  max_atk_pct: 80
   name_en: Summit Miracle
   name_jp: Summit Miracle
   record_type_name: ACTION
@@ -83,7 +90,6 @@ records:
 # [5] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [6] SkillSet:
-# 	Condition: None
 # 	[0] ESSkillDelay -> Visitor, come here but do not rush
 # 	Delay active skills by 2 turns
 # 	[1] ESOrbLock -> Dimension-Miracle
@@ -99,13 +105,11 @@ records:
 # [11] ESBranchCard -> ESBranchCard
 # branch
 # [12] SkillSet:
-# 	Condition: None
 # 	[0] ESStatusShield -> Mountain Dragon God's Protection
 # 	Voids status ailments for 999 turns
 # 	[1] ESBoardChangeAttackBits -> Sacred Grounds of the Green Earth
 # 	Change all orbs to Jammer
 # [13] SkillSet:
-# 	Condition: None
 # 	[0] ESStatusShield -> Tranquility suits you well
 # 	Voids status ailments for 999 turns
 # 	[1] ESBoardChangeAttackBits -> Sacred Grounds of the Green Earth
@@ -126,7 +130,6 @@ records:
 # [19] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [20] ESBoardChangeAttackBits -> Sacred Grounds of the Green Earth
-# Condition: None
 # Change all orbs to Jammer
 # [21] ESBranchFlag -> ESBranchFlag
 # branch
@@ -135,7 +138,6 @@ records:
 # [23] ESBranchCard -> ESBranchCard
 # branch
 # [24] SkillSet:
-# 	Condition: None
 # 	[0] ESStatusShield -> Mountain Dragon God's Protection
 # 	Voids status ailments for 999 turns
 # 	[1] ESBoardChangeAttackBits -> Sacred Grounds of the Green Earth
@@ -143,7 +145,6 @@ records:
 # 	[2] ESDamageShield -> Magatama of Yin and Yang
 # 	Reduce damage from all sources by 75% for 1 turns
 # [25] SkillSet:
-# 	Condition: None
 # 	[0] ESStatusShield -> Tranquility suits you well
 # 	Voids status ailments for 999 turns
 # 	[1] ESBoardChangeAttackBits -> Sacred Grounds of the Green Earth
@@ -155,7 +156,6 @@ records:
 # [27] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [28] ESDamageShield -> Magatama of Yin and Yang
-# Condition: None
 # Reduce damage from all sources by 75% for 1 turns
 # [29] ESBoardChangeAttackBits -> Raging Wind of the Earth
 # Condition: One-time use
@@ -163,7 +163,6 @@ records:
 # [30] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [31] ESOrbLock -> Summit Miracle
-# Condition: None
 # Lock 18 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [32] ESResolve -> Dragon Dimension Resolve
 # Survive attacks with 1 HP when HP > 50%

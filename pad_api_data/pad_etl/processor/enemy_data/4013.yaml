@@ -19,6 +19,7 @@ records:
 - !SkillRecord
   desc_en: Survive attacks with 1 HP when HP > 50%
   desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
   name_en: Resolve
   name_jp: Resolve
   record_type_name: PASSIVE
@@ -27,30 +28,35 @@ records:
     turns
   desc_jp: Voids status ailments for 999 turns + Void damage >= 100000000 for 999
     turns
+  max_atk_pct: null
   name_en: Protection of the Gods + Divine King's Armor
   name_jp: Protection of the Gods + Divine King's Armor
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Blind random 1~5 orbs for 3 turns, Deal 140% damage
   desc_jp: Blind random 1~5 orbs for 3 turns, Deal 140% damage
+  max_atk_pct: 140
   name_en: Black Thunderstorm
   name_jp: Black Thunderstorm
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Spawn random 3 Mortal Poison orbs, Deal 140% damage
   desc_jp: Spawn random 3 Mortal Poison orbs, Deal 140% damage
+  max_atk_pct: 140
   name_en: Black Thunderstorm
   name_jp: Black Thunderstorm
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 9
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 9
   name_jp: ''
   record_type_name: DIVIDER
@@ -59,12 +65,14 @@ records:
     10 turns
   desc_jp: Increase damage to 1000% for the next 999 turns + Bind awoken skills for
     10 turns
+  max_atk_pct: null
   name_en: "Playtime's over... + \xC9lenchos"
   name_jp: "Playtime's over... + \xC9lenchos"
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 50
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 50
   name_jp: ''
   record_type_name: DIVIDER
@@ -73,24 +81,28 @@ records:
     to Dark orbs, 4th column to Light orbs
   desc_jp: Change own attribute to random one of Fire, Water, Wood + Change 3rd column
     to Dark orbs, 4th column to Light orbs
+  max_atk_pct: null
   name_en: "Psevdaisth\xEDseis + ...Grovel at my feet"
   name_jp: "Psevdaisth\xEDseis + ...Grovel at my feet"
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Change own attribute to Dark + Movetime -1s for 10 turns
   desc_jp: Change own attribute to Dark + Movetime -1s for 10 turns
+  max_atk_pct: null
   name_en: "Dread + Keraun\xF3s"
   name_jp: "Dread + Keraun\xF3s"
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 50
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 50
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change own attribute to Dark + Movetime -1s for 10 turns
   desc_jp: Change own attribute to Dark + Movetime -1s for 10 turns
+  max_atk_pct: null
   name_en: "Dread + Keraun\xF3s"
   name_jp: "Dread + Keraun\xF3s"
   record_type_name: ACTION
@@ -125,7 +137,6 @@ records:
 # [7] ESSetCounter -> ESSetCounter
 # set_counter
 # [8] ESAttackMultihit -> Royal Sword
-# Condition: None
 # Enemy action
 # [9] ESSetCounter -> ESSetCounter
 # set_counter
@@ -142,7 +153,6 @@ records:
 # [14] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [15] SkillSet:
-# 	Condition: None
 # 	[0] ESAttackUp -> Playtime's over...
 # 	Increase damage to 1000% for the next 999 turns
 # 	[1] ESBindAwoken -> Élenchos

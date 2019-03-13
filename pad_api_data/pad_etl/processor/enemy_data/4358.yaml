@@ -19,12 +19,14 @@ records:
 - !SkillRecord
   desc_en: Survive attacks with 1 HP when HP > 50%
   desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
   name_en: Resolve
   name_jp: Resolve
   record_type_name: PASSIVE
 - !SkillRecord
   desc_en: Enemy turn counter change to 1 when HP <= 20%
   desc_jp: Enemy turn counter change to 1 when HP <= 20%
+  max_atk_pct: null
   name_en: Enemies' turn changed in anger
   name_jp: Enemies' turn changed in anger
   record_type_name: PASSIVE
@@ -33,24 +35,28 @@ records:
     1 orbs change every 1.5s for 10 turns
   desc_jp: Absorb combo <= 7 damage for 10 turns + Movetime 150% for 10 turns + Random
     1 orbs change every 1.5s for 10 turns
+  max_atk_pct: null
   name_en: Crimson Giant + Underworld Charity + Swirling Fire
   name_jp: Crimson Giant + Underworld Charity + Swirling Fire
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Voids status ailments for 4 turns + Blind all orbs on the board
   desc_jp: Voids status ailments for 4 turns + Blind all orbs on the board
+  max_atk_pct: null
   name_en: Excited State + Thornwing Attack
   name_jp: Excited State + Thornwing Attack
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Turn 5
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 5
   name_jp: ''
   record_type_name: DIVIDER
@@ -59,78 +65,91 @@ records:
     10 turns
   desc_jp: Leader changes to random sub for 10 turns + Void damage >= 5000000 for
     10 turns
+  max_atk_pct: null
   name_en: Swoop Shot + Hardened Wings
   name_jp: Swoop Shot + Hardened Wings
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Spawn random 3 Poison orbs, Deal 220% damage
   desc_jp: Spawn random 3 Poison orbs, Deal 220% damage
+  max_atk_pct: 220
   name_en: Poison Spear
   name_jp: Poison Spear
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Deal 240% damage (4 hits, 60% each)
   desc_jp: Deal 240% damage (4 hits, 60% each)
+  max_atk_pct: 240
   name_en: Green Thrashing Claws
   name_jp: Green Thrashing Claws
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 50
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 50
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: 2x3 cloud appear for 4 turns at 2nd row, 3rd column, Deal 120% damage
   desc_jp: 2x3 cloud appear for 4 turns at 2nd row, 3rd column, Deal 120% damage
+  max_atk_pct: 120
   name_en: Eruption
   name_jp: Eruption
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 20
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 20
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Seal 1st, 5th row for 2 turns
   desc_jp: Seal 1st, 5th row for 2 turns
+  max_atk_pct: null
   name_en: Heat Wave
   name_jp: Heat Wave
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Deal 1200% damage (10 hits, 120% each)
   desc_jp: Deal 1200% damage (10 hits, 120% each)
+  max_atk_pct: 1200
   name_en: Demon Fury Attack
   name_jp: Demon Fury Attack
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 20
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 20
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 1200% damage (10 hits, 120% each)
   desc_jp: Deal 1200% damage (10 hits, 120% each)
+  max_atk_pct: 1200
   name_en: Demon Fury Attack
   name_jp: Demon Fury Attack
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Enemy recover 50% hp + Increase damage to 120% for the next 99 turns
   desc_jp: Enemy recover 50% hp + Increase damage to 120% for the next 99 turns
+  max_atk_pct: null
   name_en: Self Healing + Flare up
   name_jp: Self Healing + Flare up
   record_type_name: ACTION
@@ -177,7 +196,6 @@ records:
 # Condition: 50% chance & when Fire, Water, Wood, Light, Dark, Jammer, Mortal Poison orbs are on the board
 # Spawn random 3 Poison orbs
 # [11] ESAttackMultihit -> Green Thrashing Claws
-# Condition: None
 # Enemy action
 # [12] ESEndPath -> ESEndPath
 # end_turn
@@ -186,7 +204,6 @@ records:
 # [14] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [15] SkillSet:
-# 	Condition: None
 # 	[0] ESLeaderSwap -> Swoop Shot
 # 	Leader changes to random sub for 10 turns
 # 	[1] ESVoidShield -> Hardened Wings

@@ -19,12 +19,14 @@ records:
 - !SkillRecord
   desc_en: Survive attacks with 1 HP when HP > 50%
   desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
   name_en: Resolve
   name_jp: Resolve
   record_type_name: PASSIVE
 - !SkillRecord
   desc_en: Reduce damage from Wood by 50%
   desc_jp: Reduce damage from Wood by 50%
+  max_atk_pct: null
   name_en: Wood damage halved
   name_jp: Wood damage halved
   record_type_name: PASSIVE
@@ -33,54 +35,63 @@ records:
     at 1st column
   desc_jp: Voids status ailments for 999 turns + Row of cloud appear for 30 turns
     at 1st column
+  max_atk_pct: null
   name_en: Concept of Boundless Worlds + Dormant Oceanic Evil
   name_jp: Concept of Boundless Worlds + Dormant Oceanic Evil
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Mortal Poison skyfall +15% for 15 turns, Deal 550% damage
   desc_jp: Mortal Poison skyfall +15% for 15 turns, Deal 550% damage
+  max_atk_pct: 550
   name_en: 'Nature''s Encroaching Nightmare '
   name_jp: 'Nature''s Encroaching Nightmare '
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Absorb combo <= 6 damage for 999 turns
   desc_jp: Absorb combo <= 6 damage for 999 turns
+  max_atk_pct: null
   name_en: Doomsday Sanctuary
   name_jp: Doomsday Sanctuary
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 10
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 10
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 30000% damage (10 hits, 3000% each)
   desc_jp: Deal 30000% damage (10 hits, 3000% each)
+  max_atk_pct: 30000
   name_en: Veracity of the Cosmic Grotesque
   name_jp: Veracity of the Cosmic Grotesque
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Enemy recover 100% hp + Enemy action
   desc_jp: Enemy recover 100% hp + Enemy action
+  max_atk_pct: null
   name_en: Eternal Cell Regeneration + Veracity of the Cosmic Grotesque
   name_jp: Eternal Cell Regeneration + Veracity of the Cosmic Grotesque
   record_type_name: ACTION
@@ -95,7 +106,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] SkillSet:
-# 	Condition: None
 # 	[0] ESStatusShield -> Concept of Boundless Worlds
 # 	Voids status ailments for 999 turns
 # 	[1] ESCloud -> Dormant Oceanic Evil
@@ -115,7 +125,6 @@ records:
 # Condition: One-time use
 # Mortal Poison skyfall +15% for 15 turns
 # [9] ESAbsorbCombo -> Doomsday Sanctuary
-# Condition: None
 # Absorb combo <= 6 damage for 999 turns
 # [10] ESRandomSpawn -> Ruler of the One and Only Ocean
 # Condition: 25% chance & when Fire, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board

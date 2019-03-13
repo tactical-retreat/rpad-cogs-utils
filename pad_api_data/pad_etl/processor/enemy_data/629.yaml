@@ -23,6 +23,7 @@ records:
   desc_jp: Bind awoken skills for 1 turns + Bind active skills for 2 turns + Absorb
     combo <= 3 damage for 1 turns + Change all orbs to Fire, Water, Wood, Light, Dark,
     Heal
+  max_atk_pct: null
   name_en: Pass this trial if you wish to advance + Clear a path with your puzzle
     + Let's start by changing attributes + Come!
   name_jp: Pass this trial if you wish to advance + Clear a path with your puzzle
@@ -31,18 +32,21 @@ records:
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Player -500% HP
   desc_jp: Player -500% HP
+  max_atk_pct: null
   name_en: Come at me again!
   name_jp: Come at me again!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 50
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 50
   name_jp: ''
   record_type_name: DIVIDER
@@ -51,6 +55,7 @@ records:
     Wood, Light, Dark, Heal
   desc_jp: Absorb combo <= 6 damage for 1 turns + Change all orbs to Fire, Water,
     Wood, Light, Dark, Heal
+  max_atk_pct: null
   name_en: Fine then, try to strike me down! + If you can't do it, this ends here!
   name_jp: Fine then, try to strike me down! + If you can't do it, this ends here!
   record_type_name: ACTION
@@ -65,7 +70,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] SkillSet:
-# 	Condition: None
 # 	[0] ESBindAwoken -> Pass this trial if you wish to advance
 # 	Bind awoken skills for 1 turns
 # 	[1] ESBindSkill -> Clear a path with your puzzle
@@ -85,8 +89,6 @@ records:
 # 	[1] ESBoardChange -> If you can't do it, this ends here!
 # 	Change all orbs to Fire, Water, Wood, Light, Dark, Heal
 # [8] ESGravity -> Come at me again!
-# Condition: None
 # Player -500% HP
 # [9] ESGravity -> Come at me again!
-# Condition: None
 # Player -500% HP

@@ -19,84 +19,98 @@ records:
 - !SkillRecord
   desc_en: Survive attacks with 1 HP when HP > 31%
   desc_jp: Survive attacks with 1 HP when HP > 31%
+  max_atk_pct: null
   name_en: Resolve
   name_jp: Resolve
   record_type_name: PASSIVE
 - !SkillRecord
   desc_en: Bind awoken skills for 5 turns + Locked random skyfall +30% for 20 turns
   desc_jp: Bind awoken skills for 5 turns + Locked random skyfall +30% for 20 turns
+  max_atk_pct: null
   name_en: Disappearing Mist + Stone Rain
   name_jp: Disappearing Mist + Stone Rain
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Player -99% HP + Rcv 50% for 10 turns
   desc_jp: Player -99% HP + Rcv 50% for 10 turns
+  max_atk_pct: null
   name_en: Drought + Lost Water of Life
   name_jp: Drought + Lost Water of Life
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Bind 1 random subs for 2~3 turns, Deal 95% damage
   desc_jp: Bind 1 random subs for 2~3 turns, Deal 95% damage
+  max_atk_pct: 95
   name_en: Torrential Downpour
   name_jp: Torrential Downpour
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Delay active skills by 2 turns, Deal 100% damage
   desc_jp: Delay active skills by 2 turns, Deal 100% damage
+  max_atk_pct: 100
   name_en: Overflow
   name_jp: Overflow
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Change Random to Water, Deal 95% damage
   desc_jp: Change Random to Water, Deal 95% damage
+  max_atk_pct: 95
   name_en: High Water
   name_jp: High Water
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Deal 105% damage (3 hits, 35% each)
   desc_jp: Deal 105% damage (3 hits, 35% each)
+  max_atk_pct: 105
   name_en: Overflowing
   name_jp: Overflowing
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 29
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 29
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Bind awoken skills for 1 turns
   desc_jp: Bind awoken skills for 1 turns
+  max_atk_pct: null
   name_en: Disappearing Mist
   name_jp: Disappearing Mist
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 29
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 29
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change all orbs to Water, Deal 300% damage
   desc_jp: Change all orbs to Water, Deal 300% damage
+  max_atk_pct: 300
   name_en: Muddy Stream
   name_jp: Muddy Stream
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 0
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 0
   name_jp: ''
   record_type_name: DIVIDER
@@ -105,6 +119,7 @@ records:
     Jammer, Poison, Mortal Poison orbs
   desc_jp: Enemy recover 100% hp + Lock all Fire, Water, Wood, Light, Dark, Heal,
     Jammer, Poison, Mortal Poison orbs
+  max_atk_pct: null
   name_en: Spring of Life + Arrested
   name_jp: Spring of Life + Arrested
   record_type_name: ACTION
@@ -149,20 +164,16 @@ records:
 # [12] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [13] ESBindAwoken -> Disappearing Mist
-# Condition: None
 # Bind awoken skills for 1 turns
 # [14] ESBindRandomSub -> Torrential Downpour
-# Condition: None
 # Bind 4 random subs for 1 turns
 # [15] ESEndPath -> ESEndPath
 # end_turn
 # [16] ESBoardChangeAttackBits -> Muddy Stream
-# Condition: None
 # Change all orbs to Water
 # [17] ESEndPath -> ESEndPath
 # end_turn
 # [18] SkillSet:
-# 	Condition: None
 # 	[0] ESRecoverEnemy -> Spring of Life
 # 	Enemy recover 100% hp
 # 	[1] ESOrbLock -> Arrested

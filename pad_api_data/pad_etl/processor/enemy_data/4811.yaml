@@ -21,6 +21,7 @@ records:
     75% for 1 turns + Void damage >= 50000000 for 999 turns
   desc_jp: Voids status ailments for 999 turns + Reduce damage from all sources by
     75% for 1 turns + Void damage >= 50000000 for 999 turns
+  max_atk_pct: null
   name_en: Oh, welcome to my shop + You're the one doing errands huh? + Show me the
     result of your errand
   name_jp: Oh, welcome to my shop + You're the one doing errands huh? + Show me the
@@ -29,6 +30,7 @@ records:
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
@@ -37,12 +39,14 @@ records:
     for 99 turns
   desc_jp: Jammer, Poison skyfall +10% for 99 turns + Specific orbs change every 1.0s
     for 99 turns
+  max_atk_pct: null
   name_en: You're just a small-fry + Well, try your best!
   name_jp: You're just a small-fry + Well, try your best!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
@@ -51,12 +55,14 @@ records:
     by 10 turns
   desc_jp: Reduce damage from all sources by 50% for 99 turns + Delay active skills
     by 10 turns
+  max_atk_pct: null
   name_en: You're doing quite well + This is fine, right?
   name_jp: You're doing quite well + This is fine, right?
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
@@ -65,84 +71,98 @@ records:
     Poison orbs, Deal 100% damage
   desc_jp: Lock 15 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
     Poison orbs, Deal 100% damage
+  max_atk_pct: 100
   name_en: Viscid Dragon
   name_jp: Viscid Dragon
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Deal 105% damage (3 hits, 35% each)
   desc_jp: Deal 105% damage (3 hits, 35% each)
+  max_atk_pct: 105
   name_en: Snappy
   name_jp: Snappy
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Change Random to Dark, Deal 100% damage
   desc_jp: Change Random to Dark, Deal 100% damage
+  max_atk_pct: 100
   name_en: Colorful Palette
   name_jp: Colorful Palette
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Movetime -4s for 1 turns, Deal 95% damage
   desc_jp: Movetime -4s for 1 turns, Deal 95% damage
+  max_atk_pct: 95
   name_en: Cracked Hourglass
   name_jp: Cracked Hourglass
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Spawn random 5 Bomb orbs, Deal 100% damage
   desc_jp: Spawn random 5 Bomb orbs, Deal 100% damage
+  max_atk_pct: 100
   name_en: Dangerous Tools
   name_jp: Dangerous Tools
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Bind 3 random cards for 2 turns, Deal 95% damage
   desc_jp: Bind 3 random cards for 2 turns, Deal 95% damage
+  max_atk_pct: 95
   name_en: Welding
   name_jp: Welding
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 74
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 74
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Player -50% HP + Spawn random 10 Mortal Poison orbs
   desc_jp: Player -50% HP + Spawn random 10 Mortal Poison orbs
+  max_atk_pct: null
   name_en: It huuurts! + Eat this!
   name_jp: It huuurts! + Eat this!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Player -75% HP + Spawn random 20 Mortal Poison orbs
   desc_jp: Player -75% HP + Spawn random 20 Mortal Poison orbs
+  max_atk_pct: null
   name_en: It huuurts! + Drown!
   name_jp: It huuurts! + Drown!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 24
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 24
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Player -99% HP + Change all orbs to Mortal Poison
   desc_jp: Player -99% HP + Change all orbs to Mortal Poison
+  max_atk_pct: null
   name_en: It huuurts! + Sink!
   name_jp: It huuurts! + Sink!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 9
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 9
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 3000% damage (3 hits, 1000% each)
   desc_jp: Deal 3000% damage (3 hits, 1000% each)
+  max_atk_pct: 3000
   name_en: Right, good job!
   name_jp: Right, good job!
   record_type_name: ACTION
@@ -157,7 +177,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] SkillSet:
-# 	Condition: None
 # 	[0] ESStatusShield -> Oh, welcome to my shop
 # 	Voids status ailments for 999 turns
 # 	[1] ESDamageShield -> You're the one doing errands huh?
@@ -173,7 +192,6 @@ records:
 # [8] ESBranchHP -> ESBranchHP
 # branch
 # [9] SkillSet:
-# 	Condition: None
 # 	[0] ESSkyfall -> You're just a small-fry
 # 	Jammer, Poison skyfall +10% for 99 turns
 # 	[1] ESSpinnersFixed -> Well, try your best!
@@ -181,7 +199,6 @@ records:
 # [10] ESSetCounter -> ESSetCounter
 # set_counter
 # [11] SkillSet:
-# 	Condition: None
 # 	[0] ESDamageShield -> You're doing quite well
 # 	Reduce damage from all sources by 50% for 99 turns
 # 	[1] ESSkillDelay -> This is fine, right?
@@ -223,13 +240,11 @@ records:
 # [26] ESBranchCounter -> ESBranchCounter
 # branch
 # [27] SkillSet:
-# 	Condition: None
 # 	[0] ESGravity -> It huuurts!
 # 	Player -50% HP
 # 	[1] ESRandomSpawn -> Eat this!
 # 	Spawn random 10 Mortal Poison orbs
 # [28] SkillSet:
-# 	Condition: None
 # 	[0] ESGravity -> It huuurts!
 # 	Player -50% HP
 # 	[1] ESAbsorbCombo -> How about this?
@@ -243,13 +258,11 @@ records:
 # [32] ESBranchCounter -> ESBranchCounter
 # branch
 # [33] SkillSet:
-# 	Condition: None
 # 	[0] ESGravity -> It huuurts!
 # 	Player -75% HP
 # 	[1] ESRandomSpawn -> Drown!
 # 	Spawn random 20 Mortal Poison orbs
 # [34] SkillSet:
-# 	Condition: None
 # 	[0] ESGravity -> It huuurts!
 # 	Player -75% HP
 # 	[1] ESBindAwoken -> You won't have me again
@@ -263,13 +276,11 @@ records:
 # [38] ESBranchCounter -> ESBranchCounter
 # branch
 # [39] SkillSet:
-# 	Condition: None
 # 	[0] ESGravity -> It huuurts!
 # 	Player -99% HP
 # 	[1] ESRandomSpawn -> Sink!
 # 	Change all orbs to Mortal Poison
 # [40] SkillSet:
-# 	Condition: None
 # 	[0] ESGravity -> It huuurts!
 # 	Player -99% HP
 # 	[1] ESAbsorbAttribute -> Is it over already?
@@ -281,7 +292,6 @@ records:
 # [43] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [44] ESAttackMultihit -> Right, good job!
-# Condition: None
 # Enemy action
 # [45] ESEndPath -> ESEndPath
 # end_turn

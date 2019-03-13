@@ -19,42 +19,49 @@ records:
 - !SkillRecord
   desc_en: Deal 50% damage
   desc_jp: Deal 50% damage
+  max_atk_pct: 50
   name_en: From this point...
   name_jp: From this point...
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Player -99% HP
   desc_jp: Player -99% HP
+  max_atk_pct: null
   name_en: Sucker Punch
   name_jp: Sucker Punch
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Turn 3
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 3
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Increase damage to 300% for the next 999 turns
   desc_jp: Increase damage to 300% for the next 999 turns
+  max_atk_pct: null
   name_en: Lone Force
   name_jp: Lone Force
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 200% damage
   desc_jp: Deal 200% damage
+  max_atk_pct: 200
   name_en: Iron Fist of Anger
   name_jp: Iron Fist of Anger
   record_type_name: ACTION
@@ -69,7 +76,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] ESAttackMultihit -> From this point...
-# Condition: None
 # Enemy action
 # [5] ESEndPath -> ESEndPath
 # end_turn
@@ -78,13 +84,10 @@ records:
 # [7] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [8] ESGravity -> Sucker Punch
-# Condition: None
 # Player -99% HP
 # [9] ESEndPath -> ESEndPath
 # end_turn
 # [10] ESAttackUp -> Lone Force
-# Condition: None
 # Increase damage to 300% for the next 999 turns
 # [11] ESAttackMultihit -> Iron Fist of Anger
-# Condition: None
 # Enemy action

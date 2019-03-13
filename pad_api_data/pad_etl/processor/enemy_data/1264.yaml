@@ -19,54 +19,63 @@ records:
 - !SkillRecord
   desc_en: Voids status ailments for 3 turns
   desc_jp: Voids status ailments for 3 turns
+  max_atk_pct: null
   name_en: Let's do this!
   name_jp: Let's do this!
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Do nothing
   desc_jp: Do nothing
+  max_atk_pct: null
   name_en: I'll finish you in three moves!
   name_jp: I'll finish you in three moves!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Turn 2
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 2
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 140% damage (7 hits, 20% each)
   desc_jp: Deal 140% damage (7 hits, 20% each)
+  max_atk_pct: 140
   name_en: Shichika Hachiretsu
   name_jp: Shichika Hachiretsu
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Turn 3
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 3
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change Random to Heal, Deal 100% damage
   desc_jp: Change Random to Heal, Deal 100% damage
+  max_atk_pct: 100
   name_en: Seisei Ruten
   name_jp: Seisei Ruten
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change Heal to Wood, Deal 5000% damage
   desc_jp: Change Heal to Wood, Deal 5000% damage
+  max_atk_pct: 5000
   name_en: Garyou Tensei
   name_jp: Garyou Tensei
   record_type_name: ACTION
@@ -81,7 +90,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] ESStatusShield -> Let's do this!
-# Condition: None
 # Voids status ailments for 3 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
@@ -90,7 +98,6 @@ records:
 # [7] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [8] ESInactivity -> I'll finish you in three moves!
-# Condition: None
 # Do nothing
 # [9] ESEndPath -> ESEndPath
 # end_turn
@@ -99,7 +106,6 @@ records:
 # [11] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [12] ESAttackMultihit -> Shichika Hachiretsu
-# Condition: None
 # Enemy action
 # [13] ESEndPath -> ESEndPath
 # end_turn
@@ -108,13 +114,10 @@ records:
 # [15] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [16] ESOrbChangeAttack -> Seisei Ruten
-# Condition: None
 # Change Random to Heal
 # [17] ESEndPath -> ESEndPath
 # end_turn
 # [18] ESOrbChangeAttack -> Garyou Tensei
-# Condition: None
 # Change Heal to Wood
 # [19] ESInactivity -> Garyou...huh?
-# Condition: None
 # Do nothing

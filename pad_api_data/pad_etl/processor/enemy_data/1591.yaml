@@ -19,42 +19,49 @@ records:
 - !SkillRecord
   desc_en: Absorb combo <= 3 damage for 5 turns
   desc_jp: Absorb combo <= 3 damage for 5 turns
+  max_atk_pct: null
   name_en: Insect Dragon's Chitin
   name_jp: Insect Dragon's Chitin
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change Jammer to Fire, Deal 200% damage
   desc_jp: Change Jammer to Fire, Deal 200% damage
+  max_atk_pct: 200
   name_en: Crushing Jaws
   name_jp: Crushing Jaws
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Movetime -1s for 5 turns
   desc_jp: Movetime -1s for 5 turns
+  max_atk_pct: null
   name_en: Flame Wings Spread
   name_jp: Flame Wings Spread
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 25
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 25
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 240% damage (6 hits, 40% each)
   desc_jp: Deal 240% damage (6 hits, 40% each)
+  max_atk_pct: 240
   name_en: Scorching Mantis Dragon Fist
   name_jp: Scorching Mantis Dragon Fist
   record_type_name: ACTION
@@ -69,42 +76,49 @@ records:
 - !SkillRecord
   desc_en: Absorb combo <= 4 damage for 10 turns
   desc_jp: Absorb combo <= 4 damage for 10 turns
+  max_atk_pct: null
   name_en: Insect Dragon's Steel Chitin
   name_jp: Insect Dragon's Steel Chitin
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change Jammer to Fire, Deal 200% damage
   desc_jp: Change Jammer to Fire, Deal 200% damage
+  max_atk_pct: 200
   name_en: Crushing Jaws
   name_jp: Crushing Jaws
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Movetime -1s for 5 turns
   desc_jp: Movetime -1s for 5 turns
+  max_atk_pct: null
   name_en: Flame Wings Spread
   name_jp: Flame Wings Spread
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 25
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 25
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 240% damage (6 hits, 40% each)
   desc_jp: Deal 240% damage (6 hits, 40% each)
+  max_atk_pct: 240
   name_en: Scorching Mantis Dragon Fist
   name_jp: Scorching Mantis Dragon Fist
   record_type_name: ACTION
@@ -125,7 +139,6 @@ records:
 # [6] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [7] ESAbsorbCombo -> Insect Dragon's Chitin
-# Condition: None
 # Absorb combo <= 3 damage for 5 turns
 # [8] ESEndPath -> ESEndPath
 # end_turn
@@ -134,7 +147,6 @@ records:
 # [10] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [11] ESAbsorbCombo -> Insect Dragon's Steel Chitin
-# Condition: None
 # Absorb combo <= 4 damage for 10 turns
 # [12] ESEndPath -> ESEndPath
 # end_turn
@@ -144,13 +156,11 @@ records:
 # Condition: When < 25% hp
 # Enemy action
 # [15] ESOrbChangeAttack -> Crushing Jaws
-# Condition: None
 # Change Jammer to Fire
 # [16] ESOrbChangeAttack -> Fire Eating Sickle
 # Condition: 70% chance
 # Change Fire to Jammer
 # [17] ESAttackMultihit -> Mantis Dragon Fist
-# Condition: None
 # Enemy action
 # [18] ESEndPath -> ESEndPath
 # end_turn
@@ -159,7 +169,6 @@ records:
 # [20] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [21] ESDebuffMovetime -> Flame Wings Spread
-# Condition: None
 # Movetime -1s for 5 turns
 # [22] ESEndPath -> ESEndPath
 # end_turn

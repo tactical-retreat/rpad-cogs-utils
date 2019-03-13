@@ -19,66 +19,77 @@ records:
 - !SkillRecord
   desc_en: Absorb Light damage for 5 turns + Movetime -2s for 5 turns
   desc_jp: Absorb Light damage for 5 turns + Movetime -2s for 5 turns
+  max_atk_pct: null
   name_en: Madness + Mind Rot
   name_jp: Madness + Mind Rot
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Reduce damage from all sources by 50% for 4 turns
   desc_jp: Reduce damage from all sources by 50% for 4 turns
+  max_atk_pct: null
   name_en: Rite of Belzenlok I
   name_jp: Rite of Belzenlok I
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Bind 6 random cards for 2 turns
   desc_jp: Bind 6 random cards for 2 turns
+  max_atk_pct: null
   name_en: Rite of Belzenlok II
   name_jp: Rite of Belzenlok II
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Bind awoken skills for 1 turns
   desc_jp: Bind awoken skills for 1 turns
+  max_atk_pct: null
   name_en: Rite of Belzenlok III
   name_jp: Rite of Belzenlok III
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Spawn random 3 Dark orbs
   desc_jp: Spawn random 3 Dark orbs
+  max_atk_pct: null
   name_en: Dark Ritual
   name_jp: Dark Ritual
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change all orbs to Poison, Deal 350% damage
   desc_jp: Change all orbs to Poison, Deal 350% damage
+  max_atk_pct: 350
   name_en: Damnation
   name_jp: Damnation
   record_type_name: ACTION
@@ -99,7 +110,6 @@ records:
 # [6] ESSetCounter -> ESSetCounter
 # set_counter
 # [7] SkillSet:
-# 	Condition: None
 # 	[0] ESAbsorbAttribute -> Madness
 # 	Absorb Light damage for 5 turns
 # 	[1] ESDebuffMovetime -> Mind Rot
@@ -118,14 +128,12 @@ records:
 # Condition: 50% chance
 # Delay active skills by 1~2 turns
 # [14] ESRecoverEnemy -> Drain Life
-# Condition: None
 # Enemy recover 10% hp
 # [15] ESEndPath -> ESEndPath
 # end_turn
 # [16] ESSetCounter -> ESSetCounter
 # set_counter
 # [17] ESBindRandom -> Grasp of Darkness
-# Condition: None
 # Bind 1 random cards for 4 turns
 # [18] ESEndPath -> ESEndPath
 # end_turn
@@ -144,7 +152,6 @@ records:
 # Condition: One-time use & when Fire, Water, Wood, Light, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 3 Dark orbs
 # [24] ESBoardChangeAttackBits -> Damnation
-# Condition: None
 # Change all orbs to Poison
 # [25] ESEndPath -> ESEndPath
 # end_turn

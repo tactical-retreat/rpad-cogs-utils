@@ -19,12 +19,14 @@ records:
 - !SkillRecord
   desc_en: Survive attacks with 1 HP when HP > 50%
   desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
   name_en: Dragonbound's Resolve
   name_jp: Dragonbound's Resolve
   record_type_name: PASSIVE
 - !SkillRecord
   desc_en: Reduce damage from Wood by 50%
   desc_jp: Reduce damage from Wood by 50%
+  max_atk_pct: null
   name_en: Toa Wood Halven
   name_jp: Toa Wood Halven
   record_type_name: PASSIVE
@@ -39,96 +41,112 @@ records:
 - !SkillRecord
   desc_en: Survive attacks with 1 HP when HP > 50%
   desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
   name_en: Dragonbound's Resolve
   name_jp: Dragonbound's Resolve
   record_type_name: PASSIVE
 - !SkillRecord
   desc_en: Reduce damage from Wood by 50%
   desc_jp: Reduce damage from Wood by 50%
+  max_atk_pct: null
   name_en: Toa Wood Halven
   name_jp: Toa Wood Halven
   record_type_name: PASSIVE
 - !SkillRecord
   desc_en: Movetime -4s for 5 turns + Change all orbs to Water, Dark, Heal
   desc_jp: Movetime -4s for 5 turns + Change all orbs to Water, Dark, Heal
+  max_atk_pct: null
   name_en: Let's confirm your wishes + Abyss Dark Ring
   name_jp: Let's confirm your wishes + Abyss Dark Ring
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Delay active skills by 2 turns
   desc_jp: Delay active skills by 2 turns
+  max_atk_pct: null
   name_en: Wave of Calmness
   name_jp: Wave of Calmness
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change 1st column to Dark orbs, 2nd column to Water orbs, Deal 100% damage
   desc_jp: Change 1st column to Dark orbs, 2nd column to Water orbs, Deal 100% damage
+  max_atk_pct: 100
   name_en: Blue Ice Revival
   name_jp: Blue Ice Revival
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Deal 120% damage (4 hits, 30% each)
   desc_jp: Deal 120% damage (4 hits, 30% each)
+  max_atk_pct: 120
   name_en: Abyss Hole
   name_jp: Abyss Hole
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Spawn random 8 Water orbs, Deal 100% damage
   desc_jp: Spawn random 8 Water orbs, Deal 100% damage
+  max_atk_pct: 100
   name_en: Abyss' Guidance
   name_jp: Abyss' Guidance
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Absorb Water damage for 1 turns + Change Heal to Poison
   desc_jp: Absorb Water damage for 1 turns + Change Heal to Poison
+  max_atk_pct: null
   name_en: Abyssal Shark Dragon's Trial + Chopping Ring of the Deep Sea
   name_jp: Abyssal Shark Dragon's Trial + Chopping Ring of the Deep Sea
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 20
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 20
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Enemy recover 55% hp + Increase damage to 200% for the next 999 turns
   desc_jp: Enemy recover 55% hp + Increase damage to 200% for the next 999 turns
+  max_atk_pct: null
   name_en: Conquering Will + Dragonbound's Wrath
   name_jp: Conquering Will + Dragonbound's Wrath
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Enemy action + Change all orbs to Water, Dark, Heal
   desc_jp: Enemy action + Change all orbs to Water, Dark, Heal
+  max_atk_pct: null
   name_en: Abyss Hole + Abyss Dark Ring
   name_jp: Abyss Hole + Abyss Dark Ring
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 20
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 20
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Enemy action + Change all orbs to Water, Dark, Heal
   desc_jp: Enemy action + Change all orbs to Water, Dark, Heal
+  max_atk_pct: null
   name_en: Abyss Hole + Abyss Dark Ring
   name_jp: Abyss Hole + Abyss Dark Ring
   record_type_name: ACTION
@@ -147,7 +165,6 @@ records:
 # [5] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [6] SkillSet:
-# 	Condition: None
 # 	[0] ESDebuffMovetime -> Let's confirm your wishes
 # 	Movetime -4s for 5 turns
 # 	[1] ESBoardChangeAttackBits -> Abyss Dark Ring
@@ -175,10 +192,8 @@ records:
 # [13] ESBranchCard -> ESBranchCard
 # branch
 # [14] ESSkillDelay -> Wave of Calmness
-# Condition: None
 # Delay active skills by 2 turns
 # [15] ESSkillDelay -> Use the Claws's power as you wish
-# Condition: None
 # Delay active skills by 2 turns
 # [16] ESColumnSpawnMulti -> Blue Ice Revival
 # Condition: 40% chance
@@ -194,7 +209,6 @@ records:
 # [20] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [21] SkillSet:
-# 	Condition: None
 # 	[0] ESAbsorbAttribute -> Abyssal Shark Dragon's Trial
 # 	Absorb Water damage for 1 turns
 # 	[1] ESOrbChangeAttack -> Chopping Ring of the Deep Sea

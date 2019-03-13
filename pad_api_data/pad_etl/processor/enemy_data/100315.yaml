@@ -19,36 +19,42 @@ records:
 - !SkillRecord
   desc_en: Survive attacks with 1 HP when HP > 50%
   desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
   name_en: Ogre Resolve
   name_jp: Ogre Resolve
   record_type_name: PASSIVE
 - !SkillRecord
   desc_en: Deal 60% damage (2 hits, 30% each)
   desc_jp: Deal 60% damage (2 hits, 30% each)
+  max_atk_pct: 60
   name_en: Strike
   name_jp: Strike
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Bind Water cards for 2~4 turns
   desc_jp: Bind Water cards for 2~4 turns
+  max_atk_pct: null
   name_en: Water Bind
   name_jp: Water Bind
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 150% damage
   desc_jp: Deal 150% damage
+  max_atk_pct: 150
   name_en: Freeze Strike
   name_jp: Freeze Strike
   record_type_name: ACTION
@@ -63,7 +69,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] ESAttackMultihit -> Strike
-# Condition: None
 # Enemy action
 # [5] ESEndPath -> ESEndPath
 # end_turn
@@ -75,7 +80,6 @@ records:
 # [8] ESEndPath -> ESEndPath
 # end_turn
 # [9] ESAttackMultihit -> Freeze Strike
-# Condition: None
 # Enemy action
 # [10] ESResolve -> Ogre Resolve
 # Survive attacks with 1 HP when HP > 50%

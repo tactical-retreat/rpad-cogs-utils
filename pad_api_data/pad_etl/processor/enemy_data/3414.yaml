@@ -19,6 +19,7 @@ records:
 - !SkillRecord
   desc_en: Survive attacks with 1 HP when HP > 50%
   desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
   name_en: Resolve
   name_jp: Resolve
   record_type_name: PASSIVE
@@ -27,36 +28,42 @@ records:
     150% for the next 99 turns
   desc_jp: Reduce damage from all sources by 75% for 1 turns + Increase damage to
     150% for the next 99 turns
+  max_atk_pct: null
   name_en: Protection of the Planets + Limit of the Sky
   name_jp: Protection of the Planets + Limit of the Sky
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 4
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 4
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 108% damage (6 hits, 18% each)
   desc_jp: Deal 108% damage (6 hits, 18% each)
+  max_atk_pct: 108
   name_en: Mhidofa Uvundukia
   name_jp: Mhidofa Uvundukia
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Absorb damage >= 30000000 damage for 30 turns
   desc_jp: Absorb damage >= 30000000 damage for 30 turns
+  max_atk_pct: null
   name_en: Preserving Bottle
   name_jp: Preserving Bottle
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Fire, Water skyfall +20% for 3 turns
   desc_jp: Fire, Water skyfall +20% for 3 turns
+  max_atk_pct: null
   name_en: Waking Sun - Aqua
   name_jp: Waking Sun - Aqua
   record_type_name: ACTION
@@ -65,42 +72,49 @@ records:
     for 30 turns + Fire, Water skyfall +20% for 3 turns
   desc_jp: Voids status ailments for 999 turns + Absorb damage >= 30000000 damage
     for 30 turns + Fire, Water skyfall +20% for 3 turns
+  max_atk_pct: null
   name_en: Protection of the Stars + Preserving Bottle + Waking Sun - Aqua
   name_jp: Protection of the Stars + Preserving Bottle + Waking Sun - Aqua
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Spawn random 6 Water orbs, Deal 100% damage
   desc_jp: Spawn random 6 Water orbs, Deal 100% damage
+  max_atk_pct: 100
   name_en: Sana Azlak
   name_jp: Sana Azlak
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Rcv 50% for 3 turns
   desc_jp: Rcv 50% for 3 turns
+  max_atk_pct: null
   name_en: Shifa'a
   name_jp: Shifa'a
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 9
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 9
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Column of cloud appear for 1 turns at random location
   desc_jp: Column of cloud appear for 1 turns at random location
+  max_atk_pct: null
   name_en: Gunpowder Smoke
   name_jp: Gunpowder Smoke
   record_type_name: ACTION
@@ -145,7 +159,6 @@ records:
 # [12] ESEndPath -> ESEndPath
 # end_turn
 # [13] ESAttackMultihit -> Mhidofa Uvundukia
-# Condition: None
 # Enemy action
 # [14] ESEndPath -> ESEndPath
 # end_turn
@@ -161,15 +174,12 @@ records:
 # [19] ESEndPath -> ESEndPath
 # end_turn
 # [20] ESDebuffRCV -> Shifa'a
-# Condition: None
 # Rcv 50% for 3 turns
 # [21] ESEndPath -> ESEndPath
 # end_turn
 # [22] ESCloud -> Gunpowder Smoke
-# Condition: None
 # Column of cloud appear for 1 turns at random location
 # [23] SkillSet:
-# 	Condition: None
 # 	[0] ESAttackMultihit -> Mhidofa Uvundukia
 # 	Enemy action
 # 	[1] ESCloud -> Gunpowder Smoke
@@ -191,15 +201,12 @@ records:
 # [31] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [32] ESOrbChangeAttack -> Soppy Flame
-# Condition: None
 # Change Random to Fire
 # [33] ESBombRandomSpawn -> Affliction Bombing
-# Condition: None
 # Spawn random 1 locked Bomb orbs
 # [34] ESEndPath -> ESEndPath
 # end_turn
 # [35] ESAttackMultihit -> Flame Rush
-# Condition: None
 # Enemy action
 # [36] ESEndPath -> ESEndPath
 # end_turn

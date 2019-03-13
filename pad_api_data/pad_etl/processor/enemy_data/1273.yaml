@@ -19,66 +19,77 @@ records:
 - !SkillRecord
   desc_en: Water skyfall +15% for 10 turns
   desc_jp: Water skyfall +15% for 10 turns
+  max_atk_pct: null
   name_en: Defense System Activated
   name_jp: Defense System Activated
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Do nothing
   desc_jp: Do nothing
+  max_atk_pct: null
   name_en: Target Apprehended
   name_jp: Target Apprehended
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Turn 2
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 2
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 100% damage
   desc_jp: Deal 100% damage
+  max_atk_pct: 100
   name_en: Diversionary Attack
   name_jp: Diversionary Attack
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Turn 3
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 3
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Bind 1 random subs for 2~3 turns
   desc_jp: Bind 1 random subs for 2~3 turns
+  max_atk_pct: null
   name_en: Restrict the enemy's actions
   name_jp: Restrict the enemy's actions
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Turn 4
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 4
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Do nothing
   desc_jp: Do nothing
+  max_atk_pct: null
   name_en: Lock On
   name_jp: Lock On
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 500% damage (5 hits, 100% each)
   desc_jp: Deal 500% damage (5 hits, 100% each)
+  max_atk_pct: 500
   name_en: Hailstorm Shot
   name_jp: Hailstorm Shot
   record_type_name: ACTION
@@ -93,7 +104,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] ESSkyfall -> Defense System Activated
-# Condition: None
 # Water skyfall +15% for 10 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
@@ -102,7 +112,6 @@ records:
 # [7] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [8] ESInactivity -> Target Apprehended
-# Condition: None
 # Do nothing
 # [9] ESEndPath -> ESEndPath
 # end_turn
@@ -111,7 +120,6 @@ records:
 # [11] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [12] ESAttackMultihit -> Diversionary Attack
-# Condition: None
 # Enemy action
 # [13] ESEndPath -> ESEndPath
 # end_turn
@@ -120,7 +128,6 @@ records:
 # [15] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [16] ESBindRandomSub -> Restrict the enemy's actions
-# Condition: None
 # Bind 1 random subs for 2~3 turns
 # [17] ESEndPath -> ESEndPath
 # end_turn
@@ -129,10 +136,8 @@ records:
 # [19] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [20] ESInactivity -> Lock On
-# Condition: None
 # Do nothing
 # [21] ESEndPath -> ESEndPath
 # end_turn
 # [22] ESAttackMultihit -> Hailstorm Shot
-# Condition: None
 # Enemy action

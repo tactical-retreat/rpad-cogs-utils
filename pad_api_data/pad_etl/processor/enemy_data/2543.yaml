@@ -19,6 +19,7 @@ records:
 - !SkillRecord
   desc_en: Player recover 100% hp
   desc_jp: Player recover 100% hp
+  max_atk_pct: null
   name_en: "Happy New Year !\u2606"
   name_jp: "Happy New Year !\u2606"
   record_type_name: PREEMPT
@@ -33,24 +34,28 @@ records:
 - !SkillRecord
   desc_en: Player recover 100% hp
   desc_jp: Player recover 100% hp
+  max_atk_pct: null
   name_en: "Happy New Year !\u2606"
   name_jp: "Happy New Year !\u2606"
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change 1st, 6th column to Fire orbs, Deal 130% damage
   desc_jp: Change 1st, 6th column to Fire orbs, Deal 130% damage
+  max_atk_pct: 130
   name_en: Fantastic Yamatai
   name_jp: Fantastic Yamatai
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
@@ -59,48 +64,56 @@ records:
     Deal 130% damage
   desc_jp: Change 1st, 3rd, 5th row to Fire, Water, Wood, Light, Dark, Heal orbs,
     Deal 130% damage
+  max_atk_pct: 130
   name_en: Omikuji Blizzard
   name_jp: Omikuji Blizzard
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Deal 150% damage (3 hits, 50% each)
   desc_jp: Deal 150% damage (3 hits, 50% each)
+  max_atk_pct: 150
   name_en: Clay TAMADRA Multi Throw
   name_jp: Clay TAMADRA Multi Throw
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Reduce damage from all sources by 50% for 1 turns
   desc_jp: Reduce damage from all sources by 50% for 1 turns
+  max_atk_pct: null
   name_en: Power of Magatama
   name_jp: Power of Magatama
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 19
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 19
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Do nothing
   desc_jp: Do nothing
+  max_atk_pct: null
   name_en: okimiH suineG etuC
   name_jp: okimiH suineG etuC
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 20
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 20
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Player -150% HP
   desc_jp: Player -150% HP
+  max_atk_pct: null
   name_en: Huge Clay TAMADRA Press
   name_jp: Huge Clay TAMADRA Press
   record_type_name: ACTION
@@ -136,7 +149,6 @@ records:
 # Condition: 50% chance
 # Change 1st, 3rd, 5th row to Fire, Water, Wood, Light, Dark, Heal orbs
 # [13] ESAttackMultihit -> Clay TAMADRA Multi Throw
-# Condition: None
 # Enemy action
 # [14] ESEndPath -> ESEndPath
 # end_turn
@@ -152,7 +164,6 @@ records:
 # [19] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [20] ESInactivity -> okimiH suineG etuC
-# Condition: None
 # Do nothing
 # [21] ESGravity -> Huge Clay TAMADRA Press
 # Condition: When < 20% hp
@@ -162,5 +173,4 @@ records:
 # [23] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [24] ESDamageShield -> Power of Magatama
-# Condition: None
 # Reduce damage from all sources by 50% for 1 turns

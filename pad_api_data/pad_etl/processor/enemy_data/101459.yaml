@@ -19,6 +19,7 @@ records:
 - !SkillRecord
   desc_en: Reduce damage from Light by 50%
   desc_jp: Reduce damage from Light by 50%
+  max_atk_pct: null
   name_en: Kotodama Light Halved
   name_jp: Kotodama Light Halved
   record_type_name: PASSIVE
@@ -27,18 +28,21 @@ records:
     Dark, Heal, Jammer, Poison, Mortal Poison orbs
   desc_jp: Delay active skills by 5 turns + Spawn random 5 Fire, Water, Wood, Light,
     Dark, Heal, Jammer, Poison, Mortal Poison orbs
+  max_atk_pct: null
   name_en: Echoing Howl + Quinary Prism
   name_jp: Echoing Howl + Quinary Prism
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change Poison to Heal, Deal 500% damage
   desc_jp: Change Poison to Heal, Deal 500% damage
+  max_atk_pct: 500
   name_en: Glitter Purge
   name_jp: Glitter Purge
   record_type_name: ACTION
@@ -53,7 +57,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] SkillSet:
-# 	Condition: None
 # 	[0] ESSkillDelay -> Echoing Howl
 # 	Delay active skills by 5 turns
 # 	[1] ESRandomSpawn -> Quinary Prism
@@ -61,10 +64,8 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESOrbChangeAttack -> Glitter Purge
-# Condition: None
 # Change Poison to Heal
 # [7] ESOrbChangeAttack -> Skull Lens
-# Condition: None
 # Change Jammer to Mortal Poison
 # [8] ESBranchHP -> ESBranchHP
 # branch
@@ -73,7 +74,6 @@ records:
 # [10] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [11] ESDamageShield -> Crystallizing Force
-# Condition: None
 # Reduce damage from all sources by 75% for 2 turns
 # [12] ESEndPath -> ESEndPath
 # end_turn
@@ -101,7 +101,6 @@ records:
 # [21] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [22] SkillSet:
-# 	Condition: None
 # 	[0] ESSkillDelay -> Echoing Howl
 # 	Delay active skills by 5 turns
 # 	[1] ESBoardChangeAttackBits -> Linking Rays

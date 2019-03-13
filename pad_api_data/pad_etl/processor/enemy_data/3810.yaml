@@ -19,18 +19,21 @@ records:
 - !SkillRecord
   desc_en: Enemy turn counter change to 1 when HP <= 50%
   desc_jp: Enemy turn counter change to 1 when HP <= 50%
+  max_atk_pct: null
   name_en: Next turn changed
   name_jp: Next turn changed
   record_type_name: PASSIVE
 - !SkillRecord
   desc_en: 'Show message: Ooohh, you''re strong!|Ha... Hahaha... Ahahahaha!'
   desc_jp: 'Show message: Ooohh, you''re strong!|Ha... Hahaha... Ahahahaha!'
+  max_atk_pct: null
   name_en: Transformation
   name_jp: Transformation
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Absorb combo <= 6 damage for 999 turns
   desc_jp: Absorb combo <= 6 damage for 999 turns
+  max_atk_pct: null
   name_en: 'You dare set foot in this castle?!
 
     Hmph. How brave of you.'
@@ -41,60 +44,70 @@ records:
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: 'Show message: Ooohh, you''re strong!|Ha... Hahaha... Ahahahaha!'
   desc_jp: 'Show message: Ooohh, you''re strong!|Ha... Hahaha... Ahahahaha!'
+  max_atk_pct: null
   name_en: Transformation
   name_jp: Transformation
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Deal 180% damage (3 hits, 60% each)
   desc_jp: Deal 180% damage (3 hits, 60% each)
+  max_atk_pct: 180
   name_en: Clear Stream
   name_jp: Clear Stream
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: 'Show message: Ooohh, you''re strong!|Ha... Hahaha... Ahahahaha!'
   desc_jp: 'Show message: Ooohh, you''re strong!|Ha... Hahaha... Ahahahaha!'
+  max_atk_pct: null
   name_en: Transformation
   name_jp: Transformation
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Voids status ailments for 999 turns + Rcv 50% for 3 turns
   desc_jp: Voids status ailments for 999 turns + Rcv 50% for 3 turns
+  max_atk_pct: null
   name_en: Intriguing... + Let's have a little more fun
   name_jp: Intriguing... + Let's have a little more fun
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: 'Show message: Ooohh, you''re strong!|Ha... Hahaha... Ahahahaha!'
   desc_jp: 'Show message: Ooohh, you''re strong!|Ha... Hahaha... Ahahahaha!'
+  max_atk_pct: null
   name_en: Transformation
   name_jp: Transformation
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Movetime 50% for 1 turns, Deal 150% damage
   desc_jp: Movetime 50% for 1 turns, Deal 150% damage
+  max_atk_pct: 150
   name_en: Icicle Sting
   name_jp: Icicle Sting
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Spawn random 5 Bomb orbs, Deal 150% damage
   desc_jp: Spawn random 5 Bomb orbs, Deal 150% damage
+  max_atk_pct: 150
   name_en: Bubble Bomb
   name_jp: Bubble Bomb
   record_type_name: ACTION
@@ -113,14 +126,12 @@ records:
 # flag_operation
 # [5] ESAbsorbCombo -> You dare set foot in this castle?!
 # Hmph. How brave of you.
-# Condition: None
 # Absorb combo <= 6 damage for 999 turns
 # [6] ESEndPath -> ESEndPath
 # end_turn
 # [7] ESBranchHP -> ESBranchHP
 # branch
 # [8] ESAttackMultihit -> Clear Stream
-# Condition: None
 # Enemy action
 # [9] ESEndPath -> ESEndPath
 # end_turn
@@ -134,7 +145,6 @@ records:
 # Condition: 50% chance
 # Movetime 50% for 1 turns
 # [12] ESBombRandomSpawn -> Bubble Bomb
-# Condition: None
 # Spawn random 5 Bomb orbs
 # [13] ESEndPath -> ESEndPath
 # end_turn
@@ -155,12 +165,10 @@ records:
 # [21] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [22] ESOrbChangeAttack -> Hushed Windweaver
-# Condition: None
 # Change Heal to Wood
 # [23] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [24] ESGravity -> Splintering Windblast
-# Condition: None
 # Player -90% HP
 # [25] ESEndPath -> ESEndPath
 # end_turn
@@ -169,8 +177,6 @@ records:
 # [27] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [28] ESDebuffMovetime -> Eye of the Storm Dragon
-# Condition: None
 # Movetime 50% for 5 turns
 # [29] ESBoardChangeAttackBits -> Valiant Gale
-# Condition: None
 # Change all orbs to Wood, Jammer

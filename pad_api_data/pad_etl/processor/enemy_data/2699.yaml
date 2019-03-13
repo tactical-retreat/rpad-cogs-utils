@@ -19,84 +19,98 @@ records:
 - !SkillRecord
   desc_en: Absorb combo <= 4 damage for 3 turns
   desc_jp: Absorb combo <= 4 damage for 3 turns
+  max_atk_pct: null
   name_en: Come.
   name_jp: Come.
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 114% damage (3 hits, 38% each)
   desc_jp: Deal 114% damage (3 hits, 38% each)
+  max_atk_pct: 114
   name_en: Roar Zabimaru!!!
   name_jp: Roar Zabimaru!!!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Turn 2
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 2
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Blind all orbs on the board, Deal 90% damage
   desc_jp: Blind all orbs on the board, Deal 90% damage
+  max_atk_pct: 90
   name_en: There's still no way you can defeat me!
   name_jp: There's still no way you can defeat me!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Bind active skills for 1 turns
   desc_jp: Bind active skills for 1 turns
+  max_atk_pct: null
   name_en: It's over!
   name_jp: It's over!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 120% damage
   desc_jp: Deal 120% damage
+  max_atk_pct: 120
   name_en: You scum!!!
   name_jp: You scum!!!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Do nothing + Increase damage to 200% for the next 999 turns
   desc_jp: Do nothing + Increase damage to 200% for the next 999 turns
+  max_atk_pct: null
   name_en: Bankai + Hihio Zabimaru
   name_jp: Bankai + Hihio Zabimaru
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 114% damage (3 hits, 38% each)
   desc_jp: Deal 114% damage (3 hits, 38% each)
+  max_atk_pct: 114
   name_en: I see you!!
   name_jp: I see you!!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 90% damage (2 hits, 45% each)
   desc_jp: Deal 90% damage (2 hits, 45% each)
+  max_atk_pct: 90
   name_en: Joint attack
   name_jp: Joint attack
   record_type_name: ACTION
@@ -111,7 +125,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] ESAbsorbCombo -> Come.
-# Condition: None
 # Absorb combo <= 4 damage for 3 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
@@ -122,7 +135,6 @@ records:
 # [8] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [9] ESAttackMultihit -> Roar Zabimaru!!!
-# Condition: None
 # Enemy action
 # [10] ESBranchFlag -> ESBranchFlag
 # branch
@@ -132,10 +144,8 @@ records:
 # Condition: 50% chance
 # Blind all orbs on the board
 # [13] ESBindSkill -> It's over!
-# Condition: None
 # Bind active skills for 1 turns
 # [14] ESAttackMultihit -> You scum!!!
-# Condition: None
 # Enemy action
 # [15] ESBranchFlag -> ESBranchFlag
 # branch
@@ -144,13 +154,11 @@ records:
 # [17] ESBranchCard -> ESBranchCard
 # branch
 # [18] SkillSet:
-# 	Condition: None
 # 	[0] ESInactivity -> Bankai
 # 	Do nothing
 # 	[1] ESAttackUp -> Hihio Zabimaru
 # 	Increase damage to 200% for the next 999 turns
 # [19] SkillSet:
-# 	Condition: None
 # 	[0] ESInactivity -> I will surpass you, Captain Kuchiki.
 # 	Do nothing
 # 	[1] ESInactivity -> Bankai
@@ -161,7 +169,6 @@ records:
 # Condition: One-time use
 # Enemy action
 # [21] ESAttackMultihit -> Joint attack
-# Condition: None
 # Enemy action
 # [22] SkillSet:
 # 	Condition: On death

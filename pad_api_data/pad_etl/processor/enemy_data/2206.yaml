@@ -19,24 +19,28 @@ records:
 - !SkillRecord
   desc_en: Voids status ailments for 999 turns + Movetime -1s for 99 turns
   desc_jp: Voids status ailments for 999 turns + Movetime -1s for 99 turns
+  max_atk_pct: null
   name_en: OK! I'm ready now + The Beast is checking...
   name_jp: OK! I'm ready now + The Beast is checking...
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change Jammer to Fire, Deal 150% damage
   desc_jp: Change Jammer to Fire, Deal 150% damage
+  max_atk_pct: 150
   name_en: Rose Burst
   name_jp: Rose Burst
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 50
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 50
   name_jp: ''
   record_type_name: DIVIDER
@@ -45,30 +49,35 @@ records:
     999 turns
   desc_jp: Bind 1 both leaders for 1 turns + Increase damage to 200% for the next
     999 turns
+  max_atk_pct: null
   name_en: Can you wait a little bit please? + Grrrrr...
   name_jp: Can you wait a little bit please? + Grrrrr...
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Reduce damage from all sources by 50% for 1 turns + Enemy action
   desc_jp: Reduce damage from all sources by 50% for 1 turns + Enemy action
+  max_atk_pct: null
   name_en: Dark Heat Bulwark + Beast Attack
   name_jp: Dark Heat Bulwark + Beast Attack
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 50
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 50
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Reduce damage from all sources by 50% for 1 turns + Enemy action
   desc_jp: Reduce damage from all sources by 50% for 1 turns + Enemy action
+  max_atk_pct: null
   name_en: Dark Heat Bulwark + Beast Attack
   name_jp: Dark Heat Bulwark + Beast Attack
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 20
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 20
   name_jp: ''
   record_type_name: DIVIDER
@@ -77,6 +86,7 @@ records:
     Enemy action
   desc_jp: Change 1st, 2nd, 3rd, 4th, 5th row to Fire, Dark, Jammer, Poison orbs +
     Enemy action
+  max_atk_pct: null
   name_en: Crows of Sorrow + Beast Last Attack
   name_jp: Crows of Sorrow + Beast Last Attack
   record_type_name: ACTION
@@ -91,7 +101,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] SkillSet:
-# 	Condition: None
 # 	[0] ESStatusShield -> OK! I'm ready now
 # 	Voids status ailments for 999 turns
 # 	[1] ESDebuffMovetime -> The Beast is checking...
@@ -101,7 +110,6 @@ records:
 # [6] ESBranchHP -> ESBranchHP
 # branch
 # [7] ESOrbChangeAttack -> Rose Burst
-# Condition: None
 # Change Jammer to Fire
 # [8] SkillSet:
 # 	Condition: 60% chance when < 80% hp
@@ -110,7 +118,6 @@ records:
 # 	[1] ESSkillDelay -> Beast's Ambition
 # 	Delay active skills by 2 turns
 # [9] SkillSet:
-# 	Condition: None
 # 	[0] ESPoisonChangeRandom -> Serpent Poison
 # 	Change Random 5 to Poison
 # 	[1] ESAttackMultihit -> Beast Attack

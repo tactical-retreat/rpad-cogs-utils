@@ -19,66 +19,77 @@ records:
 - !SkillRecord
   desc_en: Survive attacks with 1 HP when HP > 50%
   desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
   name_en: '*****'
   name_jp: '*****'
   record_type_name: PASSIVE
 - !SkillRecord
   desc_en: Delay active skills by 4 turns
   desc_jp: Delay active skills by 4 turns
+  max_atk_pct: null
   name_en: Yomi Wave
   name_jp: Yomi Wave
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Spawn random 4 Fire, Dark orbs, Deal 100% damage
   desc_jp: Spawn random 4 Fire, Dark orbs, Deal 100% damage
+  max_atk_pct: 100
   name_en: Divine Hellfire
   name_jp: Divine Hellfire
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change Fire to Jammer, Deal 75% damage
   desc_jp: Change Fire to Jammer, Deal 75% damage
+  max_atk_pct: 75
   name_en: Hell Bolt
   name_jp: Hell Bolt
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Change Dark to Poison, Deal 50% damage
   desc_jp: Change Dark to Poison, Deal 50% damage
+  max_atk_pct: 50
   name_en: Snake God's Venomous Fangs
   name_jp: Snake God's Venomous Fangs
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Bind 6 random cards for 2 turns
   desc_jp: Bind 6 random cards for 2 turns
+  max_atk_pct: null
   name_en: Snake Eye Curse
   name_jp: Snake Eye Curse
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 29
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 29
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 4000% damage (4 hits, 1000% each)
   desc_jp: Deal 4000% damage (4 hits, 1000% each)
+  max_atk_pct: 4000
   name_en: Serpent King's Annihilating Strike
   name_jp: Serpent King's Annihilating Strike
   record_type_name: ACTION
@@ -93,7 +104,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] ESSkillDelay -> Yomi Wave
-# Condition: None
 # Delay active skills by 4 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
@@ -119,12 +129,10 @@ records:
 # [14] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [15] ESBindRandom -> Snake Eye Curse
-# Condition: None
 # Bind 6 random cards for 2 turns
 # [16] ESEndPath -> ESEndPath
 # end_turn
 # [17] ESAttackMultihit -> Serpent King's Annihilating Strike
-# Condition: None
 # Enemy action
 # [18] ESEndPath -> ESEndPath
 # end_turn
@@ -133,7 +141,6 @@ records:
 # [20] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [21] ESSkillDelay -> Grudge Howl
-# Condition: None
 # Delay active skills by 99 turns
 # [22] ESEndPath -> ESEndPath
 # end_turn

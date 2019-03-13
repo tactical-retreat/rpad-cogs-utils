@@ -19,18 +19,21 @@ records:
 - !SkillRecord
   desc_en: Increase damage to 200% for the next 1 turns
   desc_jp: Increase damage to 200% for the next 1 turns
+  max_atk_pct: null
   name_en: The Green Augite is pulsating
   name_jp: The Green Augite is pulsating
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 180% damage
   desc_jp: Deal 180% damage
+  max_atk_pct: 180
   name_en: Slash
   name_jp: Slash
   record_type_name: ACTION
@@ -45,18 +48,15 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] ESAttackUp -> The Green Augite is pulsating
-# Condition: None
 # Increase damage to 200% for the next 1 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
 # branch
 # [7] ESAttackMultihit -> Slash
-# Condition: None
 # Enemy action
 # [8] ESRecoverEnemyAlly -> Radiance of Regeneration
 # Condition: When enemy ally is killed
 # Enemy ally recover 100% hp
 # [9] ESAttackMultihit -> Slash
-# Condition: None
 # Enemy action

@@ -19,18 +19,21 @@ records:
 - !SkillRecord
   desc_en: Deal 200% damage
   desc_jp: Deal 200% damage
+  max_atk_pct: 200
   name_en: Shoryuken
   name_jp: Shoryuken
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 200% damage
   desc_jp: Deal 200% damage
+  max_atk_pct: 200
   name_en: Shoryuken
   name_jp: Shoryuken
   record_type_name: ACTION
@@ -45,72 +48,84 @@ records:
 - !SkillRecord
   desc_en: Locked Fire skyfall +100% for 5 turns
   desc_jp: Locked Fire skyfall +100% for 5 turns
+  max_atk_pct: null
   name_en: Come on! I'll turn up the heat!
   name_jp: Come on! I'll turn up the heat!
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Bind 1 subs for 1~2 turns + Enemy action + Enemy action
   desc_jp: Bind 1 subs for 1~2 turns + Enemy action + Enemy action
+  max_atk_pct: null
   name_en: Thunder Kick + Disable Skill + Hadoken
   name_jp: Thunder Kick + Disable Skill + Hadoken
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Player -25% HP + Enemy action + Enemy action
   desc_jp: Player -25% HP + Enemy action + Enemy action
+  max_atk_pct: null
   name_en: Inazuma Kick + Disable Skill + Shoryuken
   name_jp: Inazuma Kick + Disable Skill + Shoryuken
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Enemy action + Enemy action + Absorb combo <= 4 damage for 1 turns
   desc_jp: Enemy action + Enemy action + Absorb combo <= 4 damage for 1 turns
+  max_atk_pct: null
   name_en: Lion Breaker + Disable Skill + Tatsumaki Senpukyaku
   name_jp: Lion Breaker + Disable Skill + Tatsumaki Senpukyaku
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Increase damage to 150% for the next 5 turns + Do nothing
   desc_jp: Increase damage to 150% for the next 5 turns + Do nothing
+  max_atk_pct: null
   name_en: Heat Rush + I hit my boiling point!
   name_jp: Heat Rush + I hit my boiling point!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Bind 1 subs for 1~2 turns + Enemy action + Change 3rd row to Fire orbs
   desc_jp: Bind 1 subs for 1~2 turns + Enemy action + Change 3rd row to Fire orbs
+  max_atk_pct: null
   name_en: Thunder Kick + Disable Skill + Hadoken
   name_jp: Thunder Kick + Disable Skill + Hadoken
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Player -25% HP + Enemy action + Change 4th column to Fire orbs
   desc_jp: Player -25% HP + Enemy action + Change 4th column to Fire orbs
+  max_atk_pct: null
   name_en: Inazuma Kick + Disable Skill + Shoryuken
   name_jp: Inazuma Kick + Disable Skill + Shoryuken
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 14
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 14
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change 4th, 5th column to Fire orbs, Deal 400% damage
   desc_jp: Change 4th, 5th column to Fire orbs, Deal 400% damage
+  max_atk_pct: 400
   name_en: Guren Enjinkyaku
   name_jp: Guren Enjinkyaku
   record_type_name: ACTION
@@ -123,7 +138,6 @@ records:
 # [2] ESBranchLevel -> ESBranchLevel
 # branch
 # [3] ESAttackMultihit -> Shoryuken
-# Condition: None
 # Enemy action
 # [4] ESEndPath -> ESEndPath
 # end_turn
@@ -163,7 +177,6 @@ records:
 # [12] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [13] SkillSet:
-# 	Condition: None
 # 	[0] ESAttackUp -> Heat Rush
 # 	Increase damage to 150% for the next 5 turns
 # 	[1] ESInactivity -> I hit my boiling point!
@@ -191,7 +204,6 @@ records:
 # [18] ESEndPath -> ESEndPath
 # end_turn
 # [19] ESColumnSpawnMulti -> Guren Enjinkyaku
-# Condition: None
 # Change 4th, 5th column to Fire orbs
 # [20] ESEndPath -> ESEndPath
 # end_turn

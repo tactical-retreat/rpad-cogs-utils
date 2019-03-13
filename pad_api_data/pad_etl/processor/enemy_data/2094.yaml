@@ -19,18 +19,21 @@ records:
 - !SkillRecord
   desc_en: Player recover 100% hp + Absorb damage >= 2000000 damage for 5 turns
   desc_jp: Player recover 100% hp + Absorb damage >= 2000000 damage for 5 turns
+  max_atk_pct: null
   name_en: Gleam of the Phoenix + Heavenly Phantom Stance
   name_jp: Gleam of the Phoenix + Heavenly Phantom Stance
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 99
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 99
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Enemy recover 100% hp + Change all orbs to Heal
   desc_jp: Enemy recover 100% hp + Change all orbs to Heal
+  max_atk_pct: null
   name_en: Flames of Reincarnation + Immortal Eruption
   name_jp: Flames of Reincarnation + Immortal Eruption
   record_type_name: ACTION
@@ -45,7 +48,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] SkillSet:
-# 	Condition: None
 # 	[0] ESRecoverPlayer -> Gleam of the Phoenix
 # 	Player recover 100% hp
 # 	[1] ESAbsorbThreshold -> Heavenly Phantom Stance
@@ -61,25 +63,21 @@ records:
 # [9] ESBranchHP -> ESBranchHP
 # branch
 # [10] ESDamageShield -> Immortal Guard
-# Condition: None
 # Reduce damage from all sources by 75% for 4 turns
 # [11] ESGravity -> Caaaaw!!
 # Condition: One-time use
 # Player -99% HP
 # [12] ESOrbChangeAttack -> Immortal Flame
-# Condition: None
 # Change Random to Heal
 # [13] ESEndPath -> ESEndPath
 # end_turn
 # [14] ESAttackMultihit -> Eternal Flare
-# Condition: None
 # Enemy action
 # [15] ESEndPath -> ESEndPath
 # end_turn
 # [16] ESSetCounter -> ESSetCounter
 # set_counter
 # [17] SkillSet:
-# 	Condition: None
 # 	[0] ESRecoverEnemy -> Flames of Reincarnation
 # 	Enemy recover 100% hp
 # 	[1] ESBoardChangeAttackBits -> Immortal Eruption

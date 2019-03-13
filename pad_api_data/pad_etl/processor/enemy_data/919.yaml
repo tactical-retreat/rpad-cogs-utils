@@ -19,54 +19,63 @@ records:
 - !SkillRecord
   desc_en: Change 3rd row to Fire, Jammer orbs, Deal 130% damage
   desc_jp: Change 3rd row to Fire, Jammer orbs, Deal 130% damage
+  max_atk_pct: 130
   name_en: I will devour you!
   name_jp: I will devour you!
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Bind 3 random cards for 3 turns
   desc_jp: Bind 3 random cards for 3 turns
+  max_atk_pct: null
   name_en: Flame Cage
   name_jp: Flame Cage
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Turn 2
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 2
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 150% damage (2 hits, 75% each)
   desc_jp: Deal 150% damage (2 hits, 75% each)
+  max_atk_pct: 150
   name_en: Burn Knuckle
   name_jp: Burn Knuckle
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change all orbs to Jammer, Deal 100% damage
   desc_jp: Change all orbs to Jammer, Deal 100% damage
+  max_atk_pct: 100
   name_en: Dusky Malice
   name_jp: Dusky Malice
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Bind active skills for 5 turns
   desc_jp: Bind active skills for 5 turns
+  max_atk_pct: null
   name_en: Flame Commandment
   name_jp: Flame Commandment
   record_type_name: ACTION
@@ -81,7 +90,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] ESRowSpawnMulti -> I will devour you!
-# Condition: None
 # Change 3rd row to Fire, Jammer orbs
 # [5] ESEndPath -> ESEndPath
 # end_turn
@@ -90,7 +98,6 @@ records:
 # [7] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [8] ESBindRandom -> Flame Cage
-# Condition: None
 # Bind 3 random cards for 3 turns
 # [9] ESBranchHP -> ESBranchHP
 # branch
@@ -110,5 +117,4 @@ records:
 # [15] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [16] ESBindSkill -> Flame Commandment
-# Condition: None
 # Bind active skills for 5 turns

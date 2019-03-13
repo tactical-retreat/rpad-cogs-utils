@@ -19,6 +19,7 @@ records:
 - !SkillRecord
   desc_en: Do nothing + Do nothing + Voids status ailments for 999 turns
   desc_jp: Do nothing + Do nothing + Voids status ailments for 999 turns
+  max_atk_pct: null
   name_en: All memories...dimensions...existence... + All that is shall be returned
     to nothing. + Then I, too, can disappear...forever!!!
   name_jp: All memories...dimensions...existence... + All that is shall be returned
@@ -27,84 +28,98 @@ records:
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Voids player buff effects
   desc_jp: Voids player buff effects
+  max_atk_pct: null
   name_en: Dispel
   name_jp: Dispel
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Deal 120%~160% damage (3~4 hits, 40% each)
   desc_jp: Deal 120%~160% damage (3~4 hits, 40% each)
+  max_atk_pct: 160
   name_en: Almagest
   name_jp: Almagest
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Bind 1 subs for 3 turns, Deal 90% damage
   desc_jp: Bind 1 subs for 3 turns, Deal 90% damage
+  max_atk_pct: 90
   name_en: Delta Attack
   name_jp: Delta Attack
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Deal 100% damage
   desc_jp: Deal 100% damage
+  max_atk_pct: 100
   name_en: Disable Skill
   name_jp: Disable Skill
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 39
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 39
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Enemy action + Player -99% HP
   desc_jp: Enemy action + Player -99% HP
+  max_atk_pct: null
   name_en: Meteor + Maelstrom
   name_jp: Meteor + Maelstrom
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Enemy action + Enemy action
   desc_jp: Enemy action + Enemy action
+  max_atk_pct: null
   name_en: Almagest + Comet
   name_jp: Almagest + Comet
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Enemy action + Enemy action
   desc_jp: Enemy action + Enemy action
+  max_atk_pct: null
   name_en: Comet + Vacuum Wave
   name_jp: Comet + Vacuum Wave
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 40
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 40
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Do nothing
   desc_jp: Do nothing
+  max_atk_pct: null
   name_en: The Laws of the universe mean nothing!
   name_jp: The Laws of the universe mean nothing!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Bind 2 random for 1~3 turns, Deal 120% damage
   desc_jp: Bind 2 random for 1~3 turns, Deal 120% damage
+  max_atk_pct: 120
   name_en: Grand Cross
   name_jp: Grand Cross
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 40
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 40
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Bind 2 random for 1~3 turns, Deal 120% damage
   desc_jp: Bind 2 random for 1~3 turns, Deal 120% damage
+  max_atk_pct: 120
   name_en: Grand Cross
   name_jp: Grand Cross
   record_type_name: ACTION
@@ -123,7 +138,6 @@ records:
 # [5] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [6] SkillSet:
-# 	Condition: None
 # 	[0] ESInactivity -> All memories...dimensions...existence...
 # 	Do nothing
 # 	[1] ESInactivity -> All that is shall be returned to nothing.
@@ -135,7 +149,6 @@ records:
 # [8] ESBranchHP -> ESBranchHP
 # branch
 # [9] ESDispel -> Dispel
-# Condition: None
 # Voids player buff effects
 # [10] ESAttackMultihit -> Almagest
 # Condition: 40% chance

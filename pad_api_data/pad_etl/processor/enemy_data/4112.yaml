@@ -19,6 +19,7 @@ records:
 - !SkillRecord
   desc_en: Do nothing + Do nothing
   desc_jp: Do nothing + Do nothing
+  max_atk_pct: null
   name_en: Ooowah! + Let's go!
   name_jp: Ooowah! + Let's go!
   record_type_name: PREEMPT
@@ -35,72 +36,84 @@ records:
     50% for 3 turns
   desc_jp: Voids status ailments for 999 turns + Reduce damage from all sources by
     50% for 3 turns
+  max_atk_pct: null
   name_en: Ooowah! + Let's go!
   name_jp: Ooowah! + Let's go!
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Void damage >= 1000000 for 1 turns, Deal 80% damage
   desc_jp: Void damage >= 1000000 for 1 turns, Deal 80% damage
+  max_atk_pct: 80
   name_en: Gravity Smash
   name_jp: Gravity Smash
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Spawn random 3 Dark orbs, Deal 100% damage
   desc_jp: Spawn random 3 Dark orbs, Deal 100% damage
+  max_atk_pct: 100
   name_en: Genocide Cutter
   name_jp: Genocide Cutter
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Deal 90% damage (6 hits, 15% each)
   desc_jp: Deal 90% damage (6 hits, 15% each)
+  max_atk_pct: 90
   name_en: Vanishing Rush
   name_jp: Vanishing Rush
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 130% damage
   desc_jp: Deal 130% damage
+  max_atk_pct: 130
   name_en: Destruction Omega
   name_jp: Destruction Omega
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Spawn random 3 Dark orbs, Deal 100% damage
   desc_jp: Spawn random 3 Dark orbs, Deal 100% damage
+  max_atk_pct: 100
   name_en: Genocide Cutter
   name_jp: Genocide Cutter
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Deal 90% damage (6 hits, 15% each)
   desc_jp: Deal 90% damage (6 hits, 15% each)
+  max_atk_pct: 90
   name_en: Vanishing Rush
   name_jp: Vanishing Rush
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 19
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 19
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change 6th column to Dark orbs + Change 1st column to Dark orbs
   desc_jp: Change 6th column to Dark orbs + Change 1st column to Dark orbs
+  max_atk_pct: null
   name_en: Gigantic Pressure + Die!
   name_jp: Gigantic Pressure + Die!
   record_type_name: ACTION
@@ -121,7 +134,6 @@ records:
 # [6] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [7] SkillSet:
-# 	Condition: None
 # 	[0] ESStatusShield -> Ooowah!
 # 	Voids status ailments for 999 turns
 # 	[1] ESDamageShield -> Let's go!
@@ -139,7 +151,6 @@ records:
 # Condition: 50% chance & when Fire, Water, Wood, Light, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 3 Dark orbs
 # [13] ESAttackMultihit -> Vanishing Rush
-# Condition: None
 # Enemy action
 # [14] ESEndPath -> ESEndPath
 # end_turn
@@ -153,12 +164,10 @@ records:
 # Condition: 50% chance & when Fire, Water, Wood, Light, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 3 Dark orbs
 # [18] ESAttackMultihit -> Vanishing Rush
-# Condition: None
 # Enemy action
 # [19] ESEndPath -> ESEndPath
 # end_turn
 # [20] SkillSet:
-# 	Condition: None
 # 	[0] ESColumnSpawnMulti -> Gigantic Pressure
 # 	Change 6th column to Dark orbs
 # 	[1] ESColumnSpawnMulti -> Die!
@@ -170,7 +179,6 @@ records:
 # [23] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [24] SkillSet:
-# 	Condition: None
 # 	[0] ESInactivity -> Ooowah!
 # 	Do nothing
 # 	[1] ESInactivity -> Let's go!

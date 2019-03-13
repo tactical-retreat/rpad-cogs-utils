@@ -19,6 +19,7 @@ records:
 - !SkillRecord
   desc_en: Reduce damage from Fire by 50%
   desc_jp: Reduce damage from Fire by 50%
+  max_atk_pct: null
   name_en: Fire Att. Halved
   name_jp: Fire Att. Halved
   record_type_name: PASSIVE
@@ -27,36 +28,42 @@ records:
     turns at random location
   desc_jp: Absorb damage >= 4000000 damage for 10 turns + 1x2 cloud appear for 10
     turns at random location
+  max_atk_pct: null
   name_en: Crown of Death + Dark Cloud
   name_jp: Crown of Death + Dark Cloud
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change 2nd, 3rd row to Wood, Jammer orbs, Deal 120% damage
   desc_jp: Change 2nd, 3rd row to Wood, Jammer orbs, Deal 120% damage
+  max_atk_pct: 120
   name_en: Hudr Leaf
   name_jp: Hudr Leaf
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Delay active skills by 3 turns, Deal 120% damage
   desc_jp: Delay active skills by 3 turns, Deal 120% damage
+  max_atk_pct: 120
   name_en: Uwaaba
   name_jp: Uwaaba
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 20
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 20
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 270% damage (3 hits, 90% each)
   desc_jp: Deal 270% damage (3 hits, 90% each)
+  max_atk_pct: 270
   name_en: Almulk Ghadab
   name_jp: Almulk Ghadab
   record_type_name: ACTION
@@ -71,7 +78,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] SkillSet:
-# 	Condition: None
 # 	[0] ESAbsorbThreshold -> Crown of Death
 # 	Absorb damage >= 4000000 damage for 10 turns
 # 	[1] ESCloud -> Dark Cloud
@@ -89,7 +95,6 @@ records:
 # Condition: 50% chance
 # Change 2nd, 3rd row to Wood, Jammer orbs
 # [10] ESSkillDelay -> Uwaaba
-# Condition: None
 # Delay active skills by 3 turns
 # [11] ESEndPath -> ESEndPath
 # end_turn
@@ -103,7 +108,6 @@ records:
 # Condition: 50% chance
 # Change 2nd, 3rd row to Wood, Jammer orbs
 # [14] ESSkillDelay -> Uwaaba
-# Condition: None
 # Delay active skills by 3 turns
 # [15] ESEndPath -> ESEndPath
 # end_turn

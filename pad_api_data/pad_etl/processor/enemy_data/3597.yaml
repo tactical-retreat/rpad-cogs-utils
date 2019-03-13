@@ -19,12 +19,14 @@ records:
 - !SkillRecord
   desc_en: Reduce damage from Light by 50%
   desc_jp: Reduce damage from Light by 50%
+  max_atk_pct: null
   name_en: Robo Light halved
   name_jp: Robo Light halved
   record_type_name: PASSIVE
 - !SkillRecord
   desc_en: Survive attacks with 1 HP when HP > 50%
   desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
   name_en: Robo Resovle
   name_jp: Robo Resovle
   record_type_name: PASSIVE
@@ -33,12 +35,14 @@ records:
     positions + Locked random skyfall +100% for 1 turns
   desc_jp: Voids status ailments for 999 turns + Spawn locked Bomb orbs in the specified
     positions + Locked random skyfall +100% for 1 turns
+  max_atk_pct: null
   name_en: Hell Armor + Demon Flare + Chaos Field
   name_jp: Hell Armor + Demon Flare + Chaos Field
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
@@ -47,78 +51,91 @@ records:
     damage
   desc_jp: Fix orb movement starting point to random position on the board, Deal 200%
     damage
+  max_atk_pct: 200
   name_en: Energy Ray
   name_jp: Energy Ray
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Turn 2
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 2
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Movetime -2s for 2 turns, Deal 130% damage
   desc_jp: Movetime -2s for 2 turns, Deal 130% damage
+  max_atk_pct: 130
   name_en: Black Metal Glare
   name_jp: Black Metal Glare
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Spawn random 3 Bomb orbs, Deal 130% damage
   desc_jp: Spawn random 3 Bomb orbs, Deal 130% damage
+  max_atk_pct: 130
   name_en: Evil Bomb
   name_jp: Evil Bomb
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Spawn random 3 Bomb orbs, Deal 160% damage
   desc_jp: Spawn random 3 Bomb orbs, Deal 160% damage
+  max_atk_pct: 160
   name_en: Evil Bomb
   name_jp: Evil Bomb
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 50
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 50
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Absorb combo <= 5 damage for 999 turns + Jammer skyfall +20% for 10 turns
   desc_jp: Absorb combo <= 5 damage for 999 turns + Jammer skyfall +20% for 10 turns
+  max_atk_pct: null
   name_en: Trauma Dimension + Jamming
   name_jp: Trauma Dimension + Jamming
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 20
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 20
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 6000% damage (3 hits, 2000% each)
   desc_jp: Deal 6000% damage (3 hits, 2000% each)
+  max_atk_pct: 6000
   name_en: Limit Break
   name_jp: Limit Break
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Enemy recover 51% hp + Increase damage to 200% for the next 999 turns
   desc_jp: Enemy recover 51% hp + Increase damage to 200% for the next 999 turns
+  max_atk_pct: null
   name_en: Cell Proliferate + Helter-Skelter
   name_jp: Cell Proliferate + Helter-Skelter
   record_type_name: ACTION
@@ -133,7 +150,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] SkillSet:
-# 	Condition: None
 # 	[0] ESStatusShield -> Hell Armor
 # 	Voids status ailments for 999 turns
 # 	[1] ESBombFixedSpawn -> Demon Flare
@@ -153,7 +169,6 @@ records:
 # [8] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [9] ESFixedStart -> Energy Ray
-# Condition: None
 # Fix orb movement starting point to random position on the board
 # [10] ESBranchHP -> ESBranchHP
 # branch

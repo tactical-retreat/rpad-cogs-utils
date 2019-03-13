@@ -19,24 +19,28 @@ records:
 - !SkillRecord
   desc_en: 'Show message: Justice Gate!! |Equipping External Unit'
   desc_jp: 'Show message: Justice Gate!! |Equipping External Unit'
+  max_atk_pct: null
   name_en: Robot Transformation
   name_jp: Robot Transformation
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Player -99% HP
   desc_jp: Player -99% HP
+  max_atk_pct: null
   name_en: Justice Execution
   name_jp: Justice Execution
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: 'Show message: Justice Gate!! |Equipping External Unit'
   desc_jp: 'Show message: Justice Gate!! |Equipping External Unit'
+  max_atk_pct: null
   name_en: Robot Transformation
   name_jp: Robot Transformation
   record_type_name: ACTION
@@ -45,54 +49,63 @@ records:
     to random position on the board
   desc_jp: Spawn random 3 Heal, Jammer, Poison orbs + Fix orb movement starting point
     to random position on the board
+  max_atk_pct: null
   name_en: Justice Jamming + Justice Road
   name_jp: Justice Jamming + Justice Road
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: 'Show message: Justice Gate!! |Equipping External Unit'
   desc_jp: 'Show message: Justice Gate!! |Equipping External Unit'
+  max_atk_pct: null
   name_en: Robot Transformation
   name_jp: Robot Transformation
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Deal 120% damage (6 hits, 20% each)
   desc_jp: Deal 120% damage (6 hits, 20% each)
+  max_atk_pct: 120
   name_en: Justice Gatling
   name_jp: Justice Gatling
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Change 2nd row to Wood, Heal orbs, Deal 130% damage
   desc_jp: Change 2nd row to Wood, Heal orbs, Deal 130% damage
+  max_atk_pct: 130
   name_en: Justice Cutter
   name_jp: Justice Cutter
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 29
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 29
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: 'Show message: Justice Gate!! |Equipping External Unit'
   desc_jp: 'Show message: Justice Gate!! |Equipping External Unit'
+  max_atk_pct: null
   name_en: Robot Transformation
   name_jp: Robot Transformation
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 30
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 30
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Movetime -2s for 1 turns, Deal 150% damage
   desc_jp: Movetime -2s for 1 turns, Deal 150% damage
+  max_atk_pct: 150
   name_en: Justice Beam Cannon
   name_jp: Justice Beam Cannon
   record_type_name: ACTION
@@ -110,7 +123,6 @@ records:
 # [4] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [5] ESGravity -> Justice Execution
-# Condition: None
 # Player -99% HP
 # [6] ESEndPath -> ESEndPath
 # end_turn
@@ -119,7 +131,6 @@ records:
 # [8] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [9] SkillSet:
-# 	Condition: None
 # 	[0] ESRandomSpawn -> Justice Jamming
 # 	Spawn random 3 Heal, Jammer, Poison orbs
 # 	[1] ESFixedStart -> Justice Road
@@ -131,7 +142,6 @@ records:
 # Condition: 50% chance
 # Enemy action
 # [12] ESRowSpawnMulti -> Justice Cutter
-# Condition: None
 # Change 2nd row to Wood, Heal orbs
 # [13] ESEndPath -> ESEndPath
 # end_turn

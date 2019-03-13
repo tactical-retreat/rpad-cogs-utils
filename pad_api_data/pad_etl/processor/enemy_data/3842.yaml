@@ -21,42 +21,49 @@ records:
     random position on the board
   desc_jp: Voids status ailments for 3 turns + Fix orb movement starting point to
     random position on the board
+  max_atk_pct: null
   name_en: Target Confirmed + Lock-On
   name_jp: Target Confirmed + Lock-On
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Player -99% HP
   desc_jp: Player -99% HP
+  max_atk_pct: null
   name_en: Focused Laser
   name_jp: Focused Laser
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 120% damage (3 hits, 40% each)
   desc_jp: Deal 120% damage (3 hits, 40% each)
+  max_atk_pct: 120
   name_en: Spread Laser
   name_jp: Spread Laser
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 50
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 50
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Reduce damage from all sources by 75% for 1 turns
   desc_jp: Reduce damage from all sources by 75% for 1 turns
+  max_atk_pct: null
   name_en: Safety Mode Activated
   name_jp: Safety Mode Activated
   record_type_name: ACTION
@@ -71,7 +78,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] SkillSet:
-# 	Condition: None
 # 	[0] ESStatusShield -> Target Confirmed
 # 	Voids status ailments for 3 turns
 # 	[1] ESFixedStart -> Lock-On
@@ -84,7 +90,6 @@ records:
 # Condition: One-time use
 # Player -99% HP
 # [8] ESAttackMultihit -> Spread Laser
-# Condition: None
 # Enemy action
 # [9] ESEndPath -> ESEndPath
 # end_turn

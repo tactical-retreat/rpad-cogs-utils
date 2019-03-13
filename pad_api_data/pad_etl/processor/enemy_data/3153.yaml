@@ -19,30 +19,35 @@ records:
 - !SkillRecord
   desc_en: Delay active skills by 2~3 turns + Jammer skyfall +20% for 15 turns
   desc_jp: Delay active skills by 2~3 turns + Jammer skyfall +20% for 15 turns
+  max_atk_pct: null
   name_en: Let us head into the darkness... + Mist of Hidden Sorrow
   name_jp: Let us head into the darkness... + Mist of Hidden Sorrow
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 29
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 29
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Absorb damage >= 800000 damage for 10 turns
   desc_jp: Absorb damage >= 800000 damage for 10 turns
+  max_atk_pct: null
   name_en: Thousand-Year Imprisonment
   name_jp: Thousand-Year Imprisonment
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 29
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 29
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Blind orbs in specific positions for 1 turns, Deal 600% damage
   desc_jp: Blind orbs in specific positions for 1 turns, Deal 600% damage
+  max_atk_pct: 600
   name_en: Stirring the Eternal Grudge
   name_jp: Stirring the Eternal Grudge
   record_type_name: ACTION
@@ -57,7 +62,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] SkillSet:
-# 	Condition: None
 # 	[0] ESSkillDelay -> Let us head into the darkness...
 # 	Delay active skills by 2~3 turns
 # 	[1] ESSkyfall -> Mist of Hidden Sorrow
@@ -69,7 +73,6 @@ records:
 # [7] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [8] SkillSet:
-# 	Condition: None
 # 	[0] ESDamageShield -> Elemental Shield Protection
 # 	Reduce damage from all sources by 50% for 10 turns
 # 	[1] ESBlindStickyFixed -> Veiled Boundaries
@@ -111,7 +114,6 @@ records:
 # [23] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [24] ESAttackMultihit -> A Pounding in the Night
-# Condition: None
 # Enemy action
 # [25] ESEndPath -> ESEndPath
 # end_turn
@@ -119,7 +121,6 @@ records:
 # Condition: One-time use
 # Absorb damage >= 800000 damage for 10 turns
 # [27] ESBlindStickyFixed -> Stirring the Eternal Grudge
-# Condition: None
 # Blind orbs in specific positions for 1 turns
 # [28] ESEndPath -> ESEndPath
 # end_turn

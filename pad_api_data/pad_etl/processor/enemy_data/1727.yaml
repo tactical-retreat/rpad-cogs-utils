@@ -19,6 +19,7 @@ records:
 - !SkillRecord
   desc_en: Survive attacks with 1 HP when HP > 50%
   desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
   name_en: Valkyrie Resolve
   name_jp: Valkyrie Resolve
   record_type_name: PASSIVE
@@ -27,24 +28,28 @@ records:
     + Rcv 50% for 20 turns
   desc_jp: Voids status ailments for 999 turns + Void damage >= 10000000 for 999 turns
     + Rcv 50% for 20 turns
+  max_atk_pct: null
   name_en: 'White Valkyrie Shield + Fylgja Fur + Discerning Lifechains '
   name_jp: 'White Valkyrie Shield + Fylgja Fur + Discerning Lifechains '
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Player -50% HP + Enemy action
   desc_jp: Player -50% HP + Enemy action
+  max_atk_pct: null
   name_en: Bash + Double Slash
   name_jp: Bash + Double Slash
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
@@ -53,12 +58,14 @@ records:
     Wood, Light, Dark
   desc_jp: Enemy recover 100% hp + Change own attribute to random one of Fire, Water,
     Wood, Light, Dark
+  max_atk_pct: null
   name_en: Resurrection + Sweeping Spirit Garments
   name_jp: Resurrection + Sweeping Spirit Garments
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
@@ -67,60 +74,70 @@ records:
     Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
   desc_jp: Change Heal to Light + Spawn random 3 Heal orbs + Lock all Fire, Water,
     Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+  max_atk_pct: null
   name_en: Attack Stance - Light + Philanthropy + Decision
   name_jp: Attack Stance - Light + Philanthropy + Decision
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Player -55% HP + Enemy action
   desc_jp: Player -55% HP + Enemy action
+  max_atk_pct: null
   name_en: Mighty Bash + Triple Slash
   name_jp: Mighty Bash + Triple Slash
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 90
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 90
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Absorb combo <= 5 damage for 10 turns
   desc_jp: Absorb combo <= 5 damage for 10 turns
+  max_atk_pct: null
   name_en: Test of Skill
   name_jp: Test of Skill
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 80
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 80
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: 2x3 cloud appear for 10 turns at 2nd row, 3rd column
   desc_jp: 2x3 cloud appear for 10 turns at 2nd row, 3rd column
+  max_atk_pct: null
   name_en: Test of Perception
   name_jp: Test of Perception
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 70
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 70
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Movetime 50% for 10 turns
   desc_jp: Movetime 50% for 10 turns
+  max_atk_pct: null
   name_en: Test of Speed
   name_jp: Test of Speed
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 20
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 20
   name_jp: ''
   record_type_name: DIVIDER
@@ -129,6 +146,7 @@ records:
     Enemy action
   desc_jp: Change own attribute to random one of Fire, Water, Wood, Light, Dark +
     Enemy action
+  max_atk_pct: null
   name_en: Sweeping Spirit Garments + Saintly Valkyrie Blade
   name_jp: Sweeping Spirit Garments + Saintly Valkyrie Blade
   record_type_name: ACTION
@@ -143,7 +161,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] SkillSet:
-# 	Condition: None
 # 	[0] ESStatusShield -> White Valkyrie Shield
 # 	Voids status ailments for 999 turns
 # 	[1] ESVoidShield -> Fylgja Fur
@@ -191,7 +208,6 @@ records:
 # Condition: When < 60% hp , one-time use
 # Increase damage to 150% for the next 10 turns
 # [14] SkillSet:
-# 	Condition: None
 # 	[0] ESGravity -> Bash
 # 	Player -50% HP
 # 	[1] ESAttackMultihit -> Double Slash
@@ -209,7 +225,6 @@ records:
 # [18] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [19] SkillSet:
-# 	Condition: None
 # 	[0] ESOrbChangeAttack -> Attack Stance - Light
 # 	Change Heal to Light
 # 	[1] ESRandomSpawn -> Philanthropy
@@ -223,7 +238,6 @@ records:
 # 	[1] ESAttackMultihit -> Saintly Valkyrie Blade
 # 	Enemy action
 # [21] SkillSet:
-# 	Condition: None
 # 	[0] ESGravity -> Mighty Bash
 # 	Player -55% HP
 # 	[1] ESAttackMultihit -> Triple Slash

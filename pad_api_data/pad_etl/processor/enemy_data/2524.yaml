@@ -19,42 +19,49 @@ records:
 - !SkillRecord
   desc_en: Blind all orbs on the board, Deal 100% damage
   desc_jp: Blind all orbs on the board, Deal 100% damage
+  max_atk_pct: 100
   name_en: Chimney Drop
   name_jp: Chimney Drop
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 19
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 19
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Delay active skills by 2 turns, Deal 160% damage
   desc_jp: Delay active skills by 2 turns, Deal 160% damage
+  max_atk_pct: 160
   name_en: Rudolph Tackle
   name_jp: Rudolph Tackle
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 19
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 19
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 600% damage (6 hits, 100% each)
   desc_jp: Deal 600% damage (6 hits, 100% each)
+  max_atk_pct: 600
   name_en: Chicken Barrel
   name_jp: Chicken Barrel
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 70
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 70
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Bind 3 random cards for 3 turns
   desc_jp: Bind 3 random cards for 3 turns
+  max_atk_pct: null
   name_en: Lullaby
   name_jp: Lullaby
   record_type_name: ACTION
@@ -69,7 +76,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] ESBlind -> Chimney Drop
-# Condition: None
 # Blind all orbs on the board
 # [5] ESEndPath -> ESEndPath
 # end_turn
@@ -79,7 +85,6 @@ records:
 # Condition: When < 70% hp , one-time use
 # Bind 3 random cards for 3 turns
 # [8] ESDispel -> Rudolph's Steely Gaze
-# Condition: None
 # Voids player buff effects
 # [9] ESBranchFlag -> ESBranchFlag
 # branch
@@ -102,15 +107,12 @@ records:
 # Condition: 50% chance
 # Enemy action
 # [17] ESOrbLock -> Rudolph Antler Lock
-# Condition: None
 # Lock 5 random Fire, Water, Wood, Light, Dark, Heal, Jammer orbs
 # [18] ESBranchFlag -> ESBranchFlag
 # branch
 # [19] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [20] ESSkillDelay -> Rudolph Tackle
-# Condition: None
 # Delay active skills by 2 turns
 # [21] ESAttackMultihit -> Chicken Barrel
-# Condition: None
 # Enemy action

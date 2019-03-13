@@ -19,6 +19,7 @@ records:
 - !SkillRecord
   desc_en: Reduce damage from Wood by 50%
   desc_jp: Reduce damage from Wood by 50%
+  max_atk_pct: null
   name_en: Halve Wood
   name_jp: Halve Wood
   record_type_name: PASSIVE
@@ -33,48 +34,56 @@ records:
 - !SkillRecord
   desc_en: Reduce damage from Wood by 50%
   desc_jp: Reduce damage from Wood by 50%
+  max_atk_pct: null
   name_en: Halve Wood
   name_jp: Halve Wood
   record_type_name: PASSIVE
 - !SkillRecord
   desc_en: Bind 1 subs for 3 turns, Deal 100% damage
   desc_jp: Bind 1 subs for 3 turns, Deal 100% damage
+  max_atk_pct: 100
   name_en: Blitz
   name_jp: Blitz
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 5
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 5
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 195% damage (3 hits, 65% each)
   desc_jp: Deal 195% damage (3 hits, 65% each)
+  max_atk_pct: 195
   name_en: All-Out Attack
   name_jp: All-Out Attack
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 105%~150% damage (7~10 hits, 15% each)
   desc_jp: Deal 105%~150% damage (7~10 hits, 15% each)
+  max_atk_pct: 150
   name_en: Rapid Fire
   name_jp: Rapid Fire
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Delay active skills by 2 turns, Deal 110% damage
   desc_jp: Delay active skills by 2 turns, Deal 110% damage
+  max_atk_pct: 110
   name_en: Flanking Assault
   name_jp: Flanking Assault
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Change Random to Fire, Deal 130% damage
   desc_jp: Change Random to Fire, Deal 130% damage
+  max_atk_pct: 130
   name_en: Apokaliptan Weaponry
   name_jp: Apokaliptan Weaponry
   record_type_name: ACTION
@@ -93,7 +102,6 @@ records:
 # [5] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [6] ESBindAttack -> Blitz
-# Condition: None
 # Bind 1 subs for 3 turns
 # [7] ESEndPath -> ESEndPath
 # end_turn
@@ -117,10 +125,8 @@ records:
 # [15] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [16] ESAttackUp -> Mindless Loyalty
-# Condition: None
 # Increase damage to 300% for the next 999 turns
 # [17] ESAttackMultihit -> All-Out Attack
-# Condition: None
 # Enemy action
 # [18] ESEndPath -> ESEndPath
 # end_turn

@@ -19,12 +19,14 @@ records:
 - !SkillRecord
   desc_en: Reduce damage from all sources by 75% for 5 turns
   desc_jp: Reduce damage from all sources by 75% for 5 turns
+  max_atk_pct: null
   name_en: Dance of the Shrine Maiden
   name_jp: Dance of the Shrine Maiden
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 99
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 99
   name_jp: ''
   record_type_name: DIVIDER
@@ -33,66 +35,77 @@ records:
     for 999 turns
   desc_jp: Increase damage to 1000% for the next 999 turns + Voids status ailments
     for 999 turns
+  max_atk_pct: null
   name_en: Awful! Now I'm mad! + Cheeks puffing up in anger
   name_jp: Awful! Now I'm mad! + Cheeks puffing up in anger
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 99
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 99
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: 2x2 cloud appear for 5 turns at random location
   desc_jp: 2x2 cloud appear for 5 turns at random location
+  max_atk_pct: null
   name_en: I'm hiding them, okay?
   name_jp: I'm hiding them, okay?
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 99
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 99
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Delay active skills by 7 turns
   desc_jp: Delay active skills by 7 turns
+  max_atk_pct: null
   name_en: Ritual Chimes
   name_jp: Ritual Chimes
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 99
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 99
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 100% damage (2 hits, 50% each)
   desc_jp: Deal 100% damage (2 hits, 50% each)
+  max_atk_pct: 100
   name_en: Ailanthus Umbrella
   name_jp: Ailanthus Umbrella
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 29
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 29
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 100% damage (2 hits, 50% each)
   desc_jp: Deal 100% damage (2 hits, 50% each)
+  max_atk_pct: 100
   name_en: Ailanthus Umbrella
   name_jp: Ailanthus Umbrella
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 30
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 30
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change all orbs to Fire, Wood, Deal 150% damage
   desc_jp: Change all orbs to Fire, Wood, Deal 150% damage
+  max_atk_pct: 150
   name_en: Maple Leaf Revolt Dance
   name_jp: Maple Leaf Revolt Dance
   record_type_name: ACTION
@@ -107,7 +120,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] ESDamageShield -> Dance of the Shrine Maiden
-# Condition: None
 # Reduce damage from all sources by 75% for 5 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
@@ -129,7 +141,6 @@ records:
 # Condition: 40% chance when < 30% hp
 # Change all orbs to Fire, Wood
 # [11] ESAttackMultihit -> Ailanthus Umbrella
-# Condition: None
 # Enemy action
 # [12] ESEndPath -> ESEndPath
 # end_turn
@@ -138,12 +149,10 @@ records:
 # [14] ESSetCounter -> ESSetCounter
 # set_counter
 # [15] ESInactivity -> Smiling joyfully
-# Condition: None
 # Do nothing
 # [16] ESSetCounter -> ESSetCounter
 # set_counter
 # [17] ESDamageShield -> Dance of the Shrine Maiden
-# Condition: None
 # Reduce damage from all sources by 75% for 5 turns
 # [18] ESEndPath -> ESEndPath
 # end_turn

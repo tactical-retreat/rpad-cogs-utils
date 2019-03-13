@@ -19,6 +19,7 @@ records:
 - !SkillRecord
   desc_en: Enemy turn counter change to 1 when HP <= 50%
   desc_jp: Enemy turn counter change to 1 when HP <= 50%
+  max_atk_pct: null
   name_en: Enemy's next turn changed
   name_jp: Enemy's next turn changed
   record_type_name: PASSIVE
@@ -33,30 +34,35 @@ records:
 - !SkillRecord
   desc_en: Enemy turn counter change to 1 when HP <= 50%
   desc_jp: Enemy turn counter change to 1 when HP <= 50%
+  max_atk_pct: null
   name_en: Enemy's next turn changed
   name_jp: Enemy's next turn changed
   record_type_name: PASSIVE
 - !SkillRecord
   desc_en: Reduce damage from all sources by 75% for 10 turns
   desc_jp: Reduce damage from all sources by 75% for 10 turns
+  max_atk_pct: null
   name_en: Metal Shield
   name_jp: Metal Shield
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Blind random 5 orbs for 2 turns, Deal 140% damage
   desc_jp: Blind random 5 orbs for 2 turns, Deal 140% damage
+  max_atk_pct: 140
   name_en: Exhaust Hit
   name_jp: Exhaust Hit
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Delay active skills by 2 turns + Spawn random 7 Poison orbs
   desc_jp: Delay active skills by 2 turns + Spawn random 7 Poison orbs
+  max_atk_pct: null
   name_en: Warning + Seven Smog
   name_jp: Warning + Seven Smog
   record_type_name: ACTION
@@ -65,42 +71,49 @@ records:
     orbs, Deal 160% damage
   desc_jp: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
     orbs, Deal 160% damage
+  max_atk_pct: 160
   name_en: All Alert
   name_jp: All Alert
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Bind 2 random subs for 3 turns + Bind active skills for 5 turns
   desc_jp: Bind 2 random subs for 3 turns + Bind active skills for 5 turns
+  max_atk_pct: null
   name_en: Capture Net + Hold Wind
   name_jp: Capture Net + Hold Wind
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 29
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 29
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Poison skyfall +15% for 10 turns
   desc_jp: Poison skyfall +15% for 10 turns
+  max_atk_pct: null
   name_en: Acid Rain
   name_jp: Acid Rain
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 29
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 29
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 300% damage (6 hits, 50% each)
   desc_jp: Deal 300% damage (6 hits, 50% each)
+  max_atk_pct: 300
   name_en: Killing Code
   name_jp: Killing Code
   record_type_name: ACTION
@@ -119,7 +132,6 @@ records:
 # [5] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [6] ESDamageShield -> Metal Shield
-# Condition: None
 # Reduce damage from all sources by 75% for 10 turns
 # [7] ESEndPath -> ESEndPath
 # end_turn
@@ -144,7 +156,6 @@ records:
 # [14] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [15] SkillSet:
-# 	Condition: None
 # 	[0] ESBindRandomSub -> Capture Net
 # 	Bind 2 random subs for 3 turns
 # 	[1] ESBindSkill -> Hold Wind
@@ -170,10 +181,8 @@ records:
 # [22] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [23] ESSkyfall -> Acid Rain
-# Condition: None
 # Poison skyfall +15% for 10 turns
 # [24] ESAttackMultihit -> Killing Code
-# Condition: None
 # Enemy action
 # [25] ESEndPath -> ESEndPath
 # end_turn

@@ -19,6 +19,7 @@ records:
 - !SkillRecord
   desc_en: Do nothing
   desc_jp: Do nothing
+  max_atk_pct: null
   name_en: Let me tell you somethin' , mate!
   name_jp: Let me tell you somethin' , mate!
   record_type_name: PREEMPT
@@ -33,48 +34,56 @@ records:
 - !SkillRecord
   desc_en: Deal 70% damage
   desc_jp: Deal 70% damage
+  max_atk_pct: 70
   name_en: Let me tell you somethin' , mate!
   name_jp: Let me tell you somethin' , mate!
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 100% damage (5 hits, 20% each)
   desc_jp: Deal 100% damage (5 hits, 20% each)
+  max_atk_pct: 100
   name_en: We're going to enjoy this!
   name_jp: We're going to enjoy this!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Turn 2
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 2
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Do nothing + Do nothing + Increase damage to 150% for the next 99 turns
   desc_jp: Do nothing + Do nothing + Increase damage to 150% for the next 99 turns
+  max_atk_pct: null
   name_en: 'This is the strongest alchy ever made. + Urrrggh..! + That hit the spot! '
   name_jp: 'This is the strongest alchy ever made. + Urrrggh..! + That hit the spot! '
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Turn 3
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 3
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Do nothing + Change 3rd row to Water, Wood orbs
   desc_jp: Do nothing + Change 3rd row to Water, Wood orbs
+  max_atk_pct: null
   name_en: Time for us to test our powers. + Raaaaah!
   name_jp: Time for us to test our powers. + Raaaaah!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
@@ -83,6 +92,7 @@ records:
     Poison orbs + Enemy action
   desc_jp: Lock 9 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
     Poison orbs + Enemy action
+  max_atk_pct: null
   name_en: Now I have you! + One last go!!
   name_jp: Now I have you! + One last go!!
   record_type_name: ACTION
@@ -103,7 +113,6 @@ records:
 # [6] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [7] ESAttackMultihit -> Let me tell you somethin' , mate!
-# Condition: None
 # Enemy action
 # [8] ESEndPath -> ESEndPath
 # end_turn
@@ -125,7 +134,6 @@ records:
 # 	[1] ESRowSpawnMulti -> Raaaaah!
 # 	Change 3rd row to Water, Wood orbs
 # [12] SkillSet:
-# 	Condition: None
 # 	[0] ESOrbLock -> Now I have you!
 # 	Lock 9 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # 	[1] ESAttackMultihit -> One last go!!
@@ -137,7 +145,6 @@ records:
 # [15] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [16] ESInactivity -> Let me tell you somethin' , mate!
-# Condition: None
 # Do nothing
 # [17] ESEndPath -> ESEndPath
 # end_turn

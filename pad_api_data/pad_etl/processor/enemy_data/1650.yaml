@@ -19,6 +19,7 @@ records:
 - !SkillRecord
   desc_en: Reduce damage from Fire, Water by 50%
   desc_jp: Reduce damage from Fire, Water by 50%
+  max_atk_pct: null
   name_en: Halve Fire & Water
   name_jp: Halve Fire & Water
   record_type_name: PASSIVE
@@ -27,18 +28,21 @@ records:
     turns
   desc_jp: Bind awoken skills for 3 turns + Random 1 orbs change every 1.0s for 10
     turns
+  max_atk_pct: null
   name_en: I'm your opponent! + Pinpoint
   name_jp: I'm your opponent! + Pinpoint
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Spawn random 3 Bomb orbs, Deal 360% damage
   desc_jp: Spawn random 3 Bomb orbs, Deal 360% damage
+  max_atk_pct: 360
   name_en: Fire Shot
   name_jp: Fire Shot
   record_type_name: ACTION
@@ -47,12 +51,14 @@ records:
     Poison orbs, Deal 360% damage
   desc_jp: Lock 9 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
     Poison orbs, Deal 360% damage
+  max_atk_pct: 360
   name_en: Freeze Shot
   name_jp: Freeze Shot
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Deal 400% damage (4 hits, 100% each)
   desc_jp: Deal 400% damage (4 hits, 100% each)
+  max_atk_pct: 400
   name_en: Quadruple Shot
   name_jp: Quadruple Shot
   record_type_name: ACTION
@@ -67,7 +73,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] SkillSet:
-# 	Condition: None
 # 	[0] ESBindAwoken -> I'm your opponent!
 # 	Bind awoken skills for 3 turns
 # 	[1] ESSpinnersRandom -> Pinpoint
@@ -94,7 +99,6 @@ records:
 # [13] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [14] ESSkillDelay -> Weak Point
-# Condition: None
 # Delay active skills by 5 turns
 # [15] ESEndPath -> ESEndPath
 # end_turn

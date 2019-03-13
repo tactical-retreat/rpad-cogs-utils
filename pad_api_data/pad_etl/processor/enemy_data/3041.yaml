@@ -19,6 +19,7 @@ records:
 - !SkillRecord
   desc_en: Do nothing + Do nothing
   desc_jp: Do nothing + Do nothing
+  max_atk_pct: null
   name_en: Shishio-sama! + Hurry! The killing blow!!
   name_jp: Shishio-sama! + Hurry! The killing blow!!
   record_type_name: PREEMPT
@@ -33,18 +34,21 @@ records:
 - !SkillRecord
   desc_en: Spawn random 2 Jammer orbs + Movetime -1s for 2 turns
   desc_jp: Spawn random 2 Jammer orbs + Movetime -1s for 2 turns
+  max_atk_pct: null
   name_en: Shishio-sama! + Hurry! The killing blow!!
   name_jp: Shishio-sama! + Hurry! The killing blow!!
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Player -100% HP
   desc_jp: Player -100% HP
+  max_atk_pct: null
   name_en: Shot
   name_jp: Shot
   record_type_name: ACTION
@@ -61,13 +65,11 @@ records:
 # [4] ESBranchLevel -> ESBranchLevel
 # branch
 # [5] SkillSet:
-# 	Condition: None
 # 	[0] ESInactivity -> Shishio-sama!
 # 	Do nothing
 # 	[1] ESInactivity -> Hurry! The killing blow!!
 # 	Do nothing
 # [6] SkillSet:
-# 	Condition: None
 # 	[0] ESRandomSpawn -> Shishio-sama!
 # 	Spawn random 2 Jammer orbs
 # 	[1] ESDebuffMovetime -> Hurry! The killing blow!!
@@ -77,7 +79,6 @@ records:
 # [8] ESEndPath -> ESEndPath
 # end_turn
 # [9] ESGravity -> Shot
-# Condition: None
 # Player -100% HP
 # [10] ESEndPath -> ESEndPath
 # end_turn

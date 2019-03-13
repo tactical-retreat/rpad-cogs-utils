@@ -19,48 +19,56 @@ records:
 - !SkillRecord
   desc_en: Reduce damage from all sources by 50% for 5 turns
   desc_jp: Reduce damage from all sources by 50% for 5 turns
+  max_atk_pct: null
   name_en: Your words are not needed.
   name_jp: Your words are not needed.
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 15
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 15
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Absorb combo <= 4 damage for 5 turns + Do nothing
   desc_jp: Absorb combo <= 4 damage for 5 turns + Do nothing
+  max_atk_pct: null
   name_en: Tiger Assault + Prepare!
   name_jp: Tiger Assault + Prepare!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 15
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 15
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Delay active skills by 2 turns, Deal 120% damage
   desc_jp: Delay active skills by 2 turns, Deal 120% damage
+  max_atk_pct: 120
   name_en: Tiger Spike
   name_jp: Tiger Spike
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Deal 140% damage (2 hits, 70% each)
   desc_jp: Deal 140% damage (2 hits, 70% each)
+  max_atk_pct: 140
   name_en: Tiger Rush
   name_jp: Tiger Rush
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 14
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 14
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 210% damage (6 hits, 35% each)
   desc_jp: Deal 210% damage (6 hits, 35% each)
+  max_atk_pct: 210
   name_en: Tiger Rampage
   name_jp: Tiger Rampage
   record_type_name: ACTION
@@ -79,7 +87,6 @@ records:
 # [5] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [6] ESDamageShield -> Your words are not needed.
-# Condition: None
 # Reduce damage from all sources by 50% for 5 turns
 # [7] ESEndPath -> ESEndPath
 # end_turn
@@ -109,7 +116,6 @@ records:
 # [16] ESSetCounter -> ESSetCounter
 # set_counter
 # [17] ESAttackMultihit -> Tiger Uppercut
-# Condition: None
 # Enemy action
 # [18] ESEndPath -> ESEndPath
 # end_turn
@@ -118,7 +124,6 @@ records:
 # [20] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [21] SkillSet:
-# 	Condition: None
 # 	[0] ESAbsorbCombo -> Tiger Assault
 # 	Absorb combo <= 4 damage for 5 turns
 # 	[1] ESInactivity -> Prepare!
@@ -136,7 +141,6 @@ records:
 # [26] ESEndPath -> ESEndPath
 # end_turn
 # [27] ESAttackMultihit -> Tiger Rampage
-# Condition: None
 # Enemy action
 # [28] ESEndPath -> ESEndPath
 # end_turn

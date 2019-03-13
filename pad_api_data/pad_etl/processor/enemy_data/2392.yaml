@@ -19,6 +19,7 @@ records:
 - !SkillRecord
   desc_en: Survive attacks with 1 HP when HP > 50%
   desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
   name_en: Resolve
   name_jp: Resolve
   record_type_name: PASSIVE
@@ -27,6 +28,7 @@ records:
     combo <= 6 damage for 10 turns
   desc_jp: Voids status ailments for 999 turns + Seal 1st row for 5 turns + Absorb
     combo <= 6 damage for 10 turns
+  max_atk_pct: null
   name_en: Do you mean to challenge me? + Just the right time to warm up + You can
     really do it?
   name_jp: Do you mean to challenge me? + Just the right time to warm up + You can
@@ -35,18 +37,21 @@ records:
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change Jammer to Heal, Deal 140% damage
   desc_jp: Change Jammer to Heal, Deal 140% damage
+  max_atk_pct: 140
   name_en: "S\xE6hrimnir"
   name_jp: "S\xE6hrimnir"
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
@@ -55,30 +60,35 @@ records:
     orbs + Movetime -4s for 5 turns
   desc_jp: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
     orbs + Movetime -4s for 5 turns
+  max_atk_pct: 100
   name_en: This just became interesting! + Can you still fight?
   name_jp: This just became interesting! + Can you still fight?
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 19
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 19
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Bind 6 random cards for 2 turns + Change all orbs to Heal
   desc_jp: Bind 6 random cards for 2 turns + Change all orbs to Heal
+  max_atk_pct: null
   name_en: Next, victory will be achieved! + This is your last rest
   name_jp: Next, victory will be achieved! + This is your last rest
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 19
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 19
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 1200% damage (4 hits, 300% each)
   desc_jp: Deal 1200% damage (4 hits, 300% each)
+  max_atk_pct: 1200
   name_en: Reginna Hel
   name_jp: Reginna Hel
   record_type_name: ACTION
@@ -93,7 +103,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] SkillSet:
-# 	Condition: None
 # 	[0] ESStatusShield -> Do you mean to challenge me?
 # 	Voids status ailments for 999 turns
 # 	[1] ESOrbSealRow -> Just the right time to warm up
@@ -107,7 +116,6 @@ records:
 # [7] ESBranchHP -> ESBranchHP
 # branch
 # [8] ESOrbChangeAttackBits -> Sæhrimnir
-# Condition: None
 # Change Jammer to Heal
 # [9] ESRandomSpawn -> Drómi Call
 # Condition: 50% chance & when Water, Wood, Light, Dark, Heal, Poison, Mortal Poison orbs are on the board
@@ -124,7 +132,6 @@ records:
 # [14] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [15] SkillSet:
-# 	Condition: None
 # 	[0] ESOrbLock -> This just became interesting!
 # 	Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # 	[1] ESDebuffMovetime -> Can you still fight?
@@ -140,7 +147,6 @@ records:
 # 	[1] ESRandomSpawn -> This is your last rest
 # 	Change all orbs to Heal
 # [19] ESAttackMultihit -> Reginna Hel
-# Condition: None
 # Enemy action
 # [20] ESEndPath -> ESEndPath
 # end_turn

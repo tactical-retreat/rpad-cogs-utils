@@ -19,6 +19,7 @@ records:
 - !SkillRecord
   desc_en: Survive attacks with 1 HP when HP > 50%
   desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
   name_en: Resolve
   name_jp: Resolve
   record_type_name: PASSIVE
@@ -27,12 +28,14 @@ records:
     + Blind all orbs on the board
   desc_jp: Voids status ailments for 999 turns + Absorb Water damage for 10 turns
     + Blind all orbs on the board
+  max_atk_pct: null
   name_en: Yoooooo!! + !! Flood Warning !! + Ultimate Smokescreen
   name_jp: Yoooooo!! + !! Flood Warning !! + Ultimate Smokescreen
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 10
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 10
   name_jp: ''
   record_type_name: DIVIDER
@@ -41,18 +44,21 @@ records:
     Fire
   desc_jp: Change own attribute to random one of Fire, Light + Change all orbs to
     Fire
+  max_atk_pct: null
   name_en: Karakuri Change + Type 5 Karakuri Cannon
   name_jp: Karakuri Change + Type 5 Karakuri Cannon
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Enemy recover 51% hp + Leader changes to random sub for 99 turns
   desc_jp: Enemy recover 51% hp + Leader changes to random sub for 99 turns
+  max_atk_pct: null
   name_en: Simple Repairs + Pipe Impact
   name_jp: Simple Repairs + Pipe Impact
   record_type_name: ACTION
@@ -67,7 +73,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] SkillSet:
-# 	Condition: None
 # 	[0] ESStatusShield -> Yoooooo!!
 # 	Voids status ailments for 999 turns
 # 	[1] ESAbsorbAttribute -> !! Flood Warning !!
@@ -93,7 +98,6 @@ records:
 # [9] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [10] ESBombFixedSpawn -> Crossfire HANABI
-# Condition: None
 # Spawn Bomb orbs in the specified positions
 # [11] ESEndPath -> ESEndPath
 # end_turn
@@ -105,7 +109,6 @@ records:
 # Condition: 50% chance
 # Bind 6 random cards for 1 turns
 # [15] ESSkillDelay -> Whirling Odachi
-# Condition: None
 # Delay active skills by 2 turns
 # [16] ESEndPath -> ESEndPath
 # end_turn
@@ -115,7 +118,6 @@ records:
 # Condition: 50% chance
 # Player -99% HP
 # [19] ESAttackMultihit -> Coin Machine Gun
-# Condition: None
 # Enemy action
 # [20] ESEndPath -> ESEndPath
 # end_turn

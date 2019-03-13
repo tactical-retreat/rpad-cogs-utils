@@ -19,6 +19,7 @@ records:
 - !SkillRecord
   desc_en: Survive attacks with 1 HP when HP > 50%
   desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
   name_en: Resolve
   name_jp: Resolve
   record_type_name: PASSIVE
@@ -27,6 +28,7 @@ records:
     + Change player HP to 500000 for 99 turns + Voids player buff effects
   desc_jp: Voids status ailments for 999 turns + Void damage >= 40000000 for 99 turns
     + Change player HP to 500000 for 99 turns + Voids player buff effects
+  max_atk_pct: null
   name_en: I wonder if your life means anything + Defense of the Twin Ships + Ark
     Contract + Requiem
   name_jp: I wonder if your life means anything + Defense of the Twin Ships + Ark
@@ -35,30 +37,35 @@ records:
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change player HP to 500000 for 99 turns
   desc_jp: Change player HP to 500000 for 99 turns
+  max_atk_pct: null
   name_en: Ark Contract
   name_jp: Ark Contract
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Bind awoken skills for 5 turns + Player -99% HP
   desc_jp: Bind awoken skills for 5 turns + Player -99% HP
+  max_atk_pct: null
   name_en: Deminishing Fighting Spirit + Vanishing Judgment
   name_jp: Deminishing Fighting Spirit + Vanishing Judgment
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 9
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 9
   name_jp: ''
   record_type_name: DIVIDER
@@ -67,6 +74,7 @@ records:
     Enemy action
   desc_jp: Change own attribute to random one of Fire, Water, Wood, Light, Dark +
     Enemy action
+  max_atk_pct: null
   name_en: Gear Shift + Banishing Lightning
   name_jp: Gear Shift + Banishing Lightning
   record_type_name: ACTION
@@ -81,7 +89,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] SkillSet:
-# 	Condition: None
 # 	[0] ESStatusShield -> I wonder if your life means anything
 # 	Voids status ailments for 999 turns
 # 	[1] ESVoidShield -> Defense of the Twin Ships
@@ -97,7 +104,6 @@ records:
 # [7] ESSetCounter -> ESSetCounter
 # set_counter
 # [8] ESMaxHPChange -> Ark Contract
-# Condition: None
 # Change player HP to 500000 for 99 turns
 # [9] ESBranchCounter -> ESBranchCounter
 # branch
@@ -118,52 +124,43 @@ records:
 # [17] ESBranchCounter -> ESBranchCounter
 # branch
 # [18] SkillSet:
-# 	Condition: None
 # 	[0] ESDebuffRCV -> Salvation of the Holy Ship
 # 	Rcv 300% for 9 turns
 # 	[1] ESOrbChangeAttackBits -> Charity from Heaven
 # 	Change Wood to Heal
 # [19] ESAttackMultihit -> Strike from the Heavens
-# Condition: None
 # Enemy action
 # [20] SkillSet:
-# 	Condition: None
 # 	[0] ESBlind -> Veil of Darkness
 # 	Blind all orbs on the board
 # 	[1] ESAttackMultihit -> Tempest Rain
 # 	Enemy action
 # [21] SkillSet:
-# 	Condition: None
 # 	[0] ESCloud -> Shrouding Mist
 # 	2x3 cloud appear for 1 turns at 2nd row, 3rd column
 # 	[1] ESAttackMultihit -> Wave Pulse
 # 	Enemy action
 # [22] SkillSet:
-# 	Condition: None
 # 	[0] ESBlindStickyRandom -> Darkness of the Lingering Night
 # 	Blind random 15 orbs for 1 turns
 # 	[1] ESAttackMultihit -> Wave Pulse
 # 	Enemy action
 # [23] SkillSet:
-# 	Condition: None
 # 	[0] ESSpinnersFixed -> Whirlpool
 # 	Specific orbs change every 1.0s for 1 turns
 # 	[1] ESAttackMultihit -> Wave Pulse
 # 	Enemy action
 # [24] SkillSet:
-# 	Condition: None
 # 	[0] ESBlind -> Veil of Darkness
 # 	Blind all orbs on the board
 # 	[1] ESAttackMultihit -> Tempest Rain
 # 	Enemy action
 # [25] SkillSet:
-# 	Condition: None
 # 	[0] ESCloud -> Shrouding Mist
 # 	2x3 cloud appear for 1 turns at 2nd row, 3rd column
 # 	[1] ESAttackMultihit -> Wave Pulse
 # 	Enemy action
 # [26] SkillSet:
-# 	Condition: None
 # 	[0] ESBlindStickyRandom -> Darkness of the Lingering Night
 # 	Blind random 15 orbs for 1 turns
 # 	[1] ESAttackMultihit -> Wave Pulse
@@ -173,7 +170,6 @@ records:
 # [28] ESSetCounter -> ESSetCounter
 # set_counter
 # [29] SkillSet:
-# 	Condition: None
 # 	[0] ESDebuffRCV -> Salvation of the Holy Ship
 # 	Rcv 300% for 9 turns
 # 	[1] ESOrbChangeAttackBits -> Charity from Heaven
@@ -187,7 +183,6 @@ records:
 # [33] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [34] SkillSet:
-# 	Condition: None
 # 	[0] ESBindAwoken -> Deminishing Fighting Spirit
 # 	Bind awoken skills for 5 turns
 # 	[1] ESGravity -> Vanishing Judgment
@@ -195,7 +190,6 @@ records:
 # [35] ESEndPath -> ESEndPath
 # end_turn
 # [36] SkillSet:
-# 	Condition: None
 # 	[0] ESChangeAttribute -> Gear Shift
 # 	Change own attribute to random one of Fire, Water, Wood, Light, Dark
 # 	[1] ESAttackMultihit -> Banishing Lightning

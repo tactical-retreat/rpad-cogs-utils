@@ -19,42 +19,49 @@ records:
 - !SkillRecord
   desc_en: Bind 2 both leaders for 3 turns + Bind 2 both leaders for 1 turns
   desc_jp: Bind 2 both leaders for 3 turns + Bind 2 both leaders for 1 turns
+  max_atk_pct: null
   name_en: Poor Hospitality + H-huh?!
   name_jp: Poor Hospitality + H-huh?!
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 3
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 3
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Movetime 150% for 10 turns
   desc_jp: Movetime 150% for 10 turns
+  max_atk_pct: null
   name_en: Patience Reward
   name_jp: Patience Reward
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change Random to Jammer, Deal 150% damage
   desc_jp: Change Random to Jammer, Deal 150% damage
+  max_atk_pct: 150
   name_en: Grovel before me!
   name_jp: Grovel before me!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 50
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 50
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 240% damage (3 hits, 80% each)
   desc_jp: Deal 240% damage (3 hits, 80% each)
+  max_atk_pct: 240
   name_en: Hoo hoo hoo!
   name_jp: Hoo hoo hoo!
   record_type_name: ACTION
@@ -69,7 +76,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] SkillSet:
-# 	Condition: None
 # 	[0] ESBindAttack -> Poor Hospitality
 # 	Bind 2 both leaders for 3 turns
 # 	[1] ESBindAttack -> H-huh?!
@@ -84,7 +90,6 @@ records:
 # Condition: When < 50% hp
 # Enemy action
 # [9] ESOrbChangeAttack -> Grovel before me!
-# Condition: None
 # Change Random to Jammer
 # [10] ESEndPath -> ESEndPath
 # end_turn
@@ -93,7 +98,6 @@ records:
 # [12] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [13] ESDebuffMovetime -> Patience Reward
-# Condition: None
 # Movetime 150% for 10 turns
 # [14] ESEndPath -> ESEndPath
 # end_turn

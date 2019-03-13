@@ -19,6 +19,7 @@ records:
 - !SkillRecord
   desc_en: Do nothing + Do nothing
   desc_jp: Do nothing + Do nothing
+  max_atk_pct: null
   name_en: There's something missing in your eyes... + ...and that something is fear.
   name_jp: There's something missing in your eyes... + ...and that something is fear.
   record_type_name: PREEMPT
@@ -35,54 +36,63 @@ records:
     turns
   desc_jp: Reduce damage from all sources by 75% for 3 turns + Movetime -2s for 3
     turns
+  max_atk_pct: null
   name_en: There's something missing in your eyes... + ...and that something is fear.
   name_jp: There's something missing in your eyes... + ...and that something is fear.
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 100% damage
   desc_jp: Deal 100% damage
+  max_atk_pct: 100
   name_en: Thumb Bullet
   name_jp: Thumb Bullet
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Turn 2
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 2
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 120% damage (4 hits, 30% each)
   desc_jp: Deal 120% damage (4 hits, 30% each)
+  max_atk_pct: 120
   name_en: Now I will do it rapid-fire!
   name_jp: Now I will do it rapid-fire!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Turn 3
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 3
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Voids player buff effects
   desc_jp: Voids player buff effects
+  max_atk_pct: null
   name_en: Oooooooaaah!!!
   name_jp: Oooooooaaah!!!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Turn 4
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 4
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Spawn random 6 Jammer orbs + Enemy recover 30% hp
   desc_jp: Spawn random 6 Jammer orbs + Enemy recover 30% hp
+  max_atk_pct: null
   name_en: Remaining at top strength is demanding... + ...and my body gets an impulse
     to devour.
   name_jp: Remaining at top strength is demanding... + ...and my body gets an impulse
@@ -91,24 +101,28 @@ records:
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 100% damage
   desc_jp: Deal 100% damage
+  max_atk_pct: 100
   name_en: Thumb Bullet
   name_jp: Thumb Bullet
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Deal 120% damage (4 hits, 30% each)
   desc_jp: Deal 120% damage (4 hits, 30% each)
+  max_atk_pct: 120
   name_en: Now I will do it rapid-fire!
   name_jp: Now I will do it rapid-fire!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Spawn random 6 Jammer orbs, Deal 80% damage
   desc_jp: Spawn random 6 Jammer orbs, Deal 80% damage
+  max_atk_pct: 80
   name_en: 'All you weaklings had best
 
     remain in your seats.'
@@ -119,36 +133,42 @@ records:
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Bind awoken skills for 3 turns
   desc_jp: Bind awoken skills for 3 turns
+  max_atk_pct: null
   name_en: You are powerless.
   name_jp: You are powerless.
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 19
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 19
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Blind all orbs on the board
   desc_jp: Blind all orbs on the board
+  max_atk_pct: null
   name_en: This is the fight I hoped for!
   name_jp: This is the fight I hoped for!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 19
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 19
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 300% damage (3 hits, 100% each)
   desc_jp: Deal 300% damage (3 hits, 100% each)
+  max_atk_pct: 300
   name_en: Full power! 100 percent of 100 percent!
   name_jp: Full power! 100 percent of 100 percent!
   record_type_name: ACTION
@@ -169,7 +189,6 @@ records:
 # [6] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [7] SkillSet:
-# 	Condition: None
 # 	[0] ESDamageShield -> There's something missing in your eyes...
 # 	Reduce damage from all sources by 75% for 3 turns
 # 	[1] ESDebuffMovetime -> ...and that something is fear.
@@ -183,7 +202,6 @@ records:
 # [11] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [12] ESAttackMultihit -> Thumb Bullet
-# Condition: None
 # Enemy action
 # [13] ESEndPath -> ESEndPath
 # end_turn
@@ -192,7 +210,6 @@ records:
 # [15] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [16] ESAttackMultihit -> Now I will do it rapid-fire!
-# Condition: None
 # Enemy action
 # [17] ESEndPath -> ESEndPath
 # end_turn
@@ -204,7 +221,6 @@ records:
 # [20] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [21] SkillSet:
-# 	Condition: None
 # 	[0] ESRandomSpawn -> Remaining at top strength is demanding...
 # 	Spawn random 6 Jammer orbs
 # 	[1] ESRecoverEnemy -> ...and my body gets an impulse to devour.
@@ -221,7 +237,6 @@ records:
 # Enemy action
 # [26] ESRandomSpawn -> All you weaklings had best
 # remain in your seats.
-# Condition: None
 # Spawn random 6 Jammer orbs
 # [27] ESEndPath -> ESEndPath
 # end_turn
@@ -230,7 +245,6 @@ records:
 # [29] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [30] ESBindAwoken -> You are powerless.
-# Condition: None
 # Bind awoken skills for 3 turns
 # [31] ESEndPath -> ESEndPath
 # end_turn
@@ -239,12 +253,10 @@ records:
 # [33] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [34] ESBlind -> This is the fight I hoped for!
-# Condition: None
 # Blind all orbs on the board
 # [35] ESEndPath -> ESEndPath
 # end_turn
 # [36] ESAttackMultihit -> Full power! 100 percent of 100 percent!
-# Condition: None
 # Enemy action
 # [37] ESEndPath -> ESEndPath
 # end_turn
@@ -253,7 +265,6 @@ records:
 # [39] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [40] SkillSet:
-# 	Condition: None
 # 	[0] ESInactivity -> There's something missing in your eyes...
 # 	Do nothing
 # 	[1] ESInactivity -> ...and that something is fear.

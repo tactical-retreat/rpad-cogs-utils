@@ -19,36 +19,42 @@ records:
 - !SkillRecord
   desc_en: Reduce damage from all sources by 50% for 5 turns
   desc_jp: Reduce damage from all sources by 50% for 5 turns
+  max_atk_pct: null
   name_en: Invincible Body
   name_jp: Invincible Body
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change Random to Fire, Deal 150% damage
   desc_jp: Change Random to Fire, Deal 150% damage
+  max_atk_pct: 150
   name_en: Ignis Saw
   name_jp: Ignis Saw
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Turn 2
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 2
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Bind 2 random subs for 5 turns, Deal 180% damage
   desc_jp: Bind 2 random subs for 5 turns, Deal 180% damage
+  max_atk_pct: 180
   name_en: Destroy Arm
   name_jp: Destroy Arm
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
@@ -57,6 +63,7 @@ records:
     500% damage
   desc_jp: Change 3rd column to Mortal Poison orbs, 4th column to Poison orbs, Deal
     500% damage
+  max_atk_pct: 500
   name_en: Desperia Ray
   name_jp: Desperia Ray
   record_type_name: ACTION
@@ -71,7 +78,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] ESDamageShield -> Invincible Body
-# Condition: None
 # Reduce damage from all sources by 50% for 5 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
@@ -80,15 +86,12 @@ records:
 # [7] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [8] ESOrbChangeAttack -> Ignis Saw
-# Condition: None
 # Change Random to Fire
 # [9] ESBranchFlag -> ESBranchFlag
 # branch
 # [10] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [11] ESBindRandomSub -> Destroy Arm
-# Condition: None
 # Bind 2 random subs for 5 turns
 # [12] ESColumnSpawnMulti -> Desperia Ray
-# Condition: None
 # Change 3rd column to Mortal Poison orbs, 4th column to Poison orbs

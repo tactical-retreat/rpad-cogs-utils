@@ -19,12 +19,14 @@ records:
 - !SkillRecord
   desc_en: Reduce damage from Light by 50%
   desc_jp: Reduce damage from Light by 50%
+  max_atk_pct: null
   name_en: Light damage halved
   name_jp: Light damage halved
   record_type_name: PASSIVE
 - !SkillRecord
   desc_en: Survive attacks with 1 HP when HP > 99%
   desc_jp: Survive attacks with 1 HP when HP > 99%
+  max_atk_pct: null
   name_en: Dragonbound Soul Spirit
   name_jp: Dragonbound Soul Spirit
   record_type_name: PASSIVE
@@ -33,78 +35,91 @@ records:
     + Bind 4 random subs for 15 turns
   desc_jp: Void damage >= 10000000 for 999 turns + Voids status ailments for 999 turns
     + Bind 4 random subs for 15 turns
+  max_atk_pct: null
   name_en: Light Dragon Barrier + Guardian Dragon Formation + Acid Prison
   name_jp: Light Dragon Barrier + Guardian Dragon Formation + Acid Prison
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change own attribute to random one of Light, Water, Deal 320% damage
   desc_jp: Change own attribute to random one of Light, Water, Deal 320% damage
+  max_atk_pct: 320
   name_en: Change mon Attaque
   name_jp: Change mon Attaque
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Bind awoken skills for 1 turns, Deal 290% damage
   desc_jp: Bind awoken skills for 1 turns, Deal 290% damage
+  max_atk_pct: 290
   name_en: Divine Charm
   name_jp: Divine Charm
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Absorb combo <= 8 damage for 1 turns, Deal 290% damage
   desc_jp: Absorb combo <= 8 damage for 1 turns, Deal 290% damage
+  max_atk_pct: 290
   name_en: Prism Burst
   name_jp: Prism Burst
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 79
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 79
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Absorb Dark damage for 3 turns + Enemy action
   desc_jp: Absorb Dark damage for 3 turns + Enemy action
+  max_atk_pct: null
   name_en: Deep Shadow + Shining Stream
   name_jp: Deep Shadow + Shining Stream
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Enemy action + Enemy action
   desc_jp: Enemy action + Enemy action
+  max_atk_pct: null
   name_en: Cyclone + Shining Stream
   name_jp: Cyclone + Shining Stream
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 29
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 29
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Enemy action + Enemy action
   desc_jp: Enemy action + Enemy action
+  max_atk_pct: null
   name_en: Cyclone + Shining Stream
   name_jp: Cyclone + Shining Stream
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 10
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 10
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Voids player buff effects + Enemy action
   desc_jp: Voids player buff effects + Enemy action
+  max_atk_pct: null
   name_en: Photon Break + Myriad Meteor Ray
   name_jp: Photon Break + Myriad Meteor Ray
   record_type_name: ACTION
@@ -119,7 +134,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] SkillSet:
-# 	Condition: None
 # 	[0] ESVoidShield -> Light Dragon Barrier
 # 	Void damage >= 10000000 for 999 turns
 # 	[1] ESStatusShield -> Guardian Dragon Formation
@@ -216,7 +230,6 @@ records:
 # 	[1] ESAttackMultihit -> Shining Stream
 # 	Enemy action
 # [30] SkillSet:
-# 	Condition: None
 # 	[0] ESAbsorbAttribute -> Deep Shadow
 # 	Absorb Dark damage for 3 turns
 # 	[1] ESAttackMultihit -> Shining Stream

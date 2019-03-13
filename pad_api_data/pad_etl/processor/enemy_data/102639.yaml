@@ -19,24 +19,28 @@ records:
 - !SkillRecord
   desc_en: Reduce damage from Light by 50%
   desc_jp: Reduce damage from Light by 50%
+  max_atk_pct: null
   name_en: Halve Light
   name_jp: Halve Light
   record_type_name: PASSIVE
 - !SkillRecord
   desc_en: Voids status ailments for 5 turns + Jammer, Poison skyfall +8% for 5 turns
   desc_jp: Voids status ailments for 5 turns + Jammer, Poison skyfall +8% for 5 turns
+  max_atk_pct: null
   name_en: Snake Scale + Chaos Rain
   name_jp: Snake Scale + Chaos Rain
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 110% damage
   desc_jp: Deal 110% damage
+  max_atk_pct: 110
   name_en: Hell Bite
   name_jp: Hell Bite
   record_type_name: ACTION
@@ -45,72 +49,84 @@ records:
     Poison orbs, Deal 100% damage
   desc_jp: Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
     Poison orbs, Deal 100% damage
+  max_atk_pct: 100
   name_en: Snake's Glare
   name_jp: Snake's Glare
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Player -99% HP
   desc_jp: Player -99% HP
+  max_atk_pct: null
   name_en: Constrict
   name_jp: Constrict
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Blind all orbs on the board, Deal 60% damage
   desc_jp: Blind all orbs on the board, Deal 60% damage
+  max_atk_pct: 60
   name_en: Swallowing Whole
   name_jp: Swallowing Whole
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 140% damage (2 hits, 70% each)
   desc_jp: Deal 140% damage (2 hits, 70% each)
+  max_atk_pct: 140
   name_en: Thorn Tail
   name_jp: Thorn Tail
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Spawn random 2 Jammer, Mortal Poison orbs, Deal 130% damage
   desc_jp: Spawn random 2 Jammer, Mortal Poison orbs, Deal 130% damage
+  max_atk_pct: 130
   name_en: Serpent Hate
   name_jp: Serpent Hate
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 39
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 39
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Bind 1 random for 3 turns, Deal 120% damage
   desc_jp: Bind 1 random for 3 turns, Deal 120% damage
+  max_atk_pct: 120
   name_en: Snake's Deadening Fang
   name_jp: Snake's Deadening Fang
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 15
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 15
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 500% damage
   desc_jp: Deal 500% damage
+  max_atk_pct: 500
   name_en: Overwhelming Force
   name_jp: Overwhelming Force
   record_type_name: ACTION
@@ -141,7 +157,6 @@ records:
 # Condition: 50% chance
 # Enemy action
 # [9] ESOrbLock -> Snake's Glare
-# Condition: None
 # Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [10] ESEndPath -> ESEndPath
 # end_turn
@@ -150,14 +165,12 @@ records:
 # [12] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [13] ESGravity -> Constrict
-# Condition: None
 # Player -99% HP
 # [14] ESBranchFlag -> ESBranchFlag
 # branch
 # [15] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [16] ESBlind -> Swallowing Whole
-# Condition: None
 # Blind all orbs on the board
 # [17] ESAttackMultihit -> Overwhelming Force
 # Condition: When < 15% hp
@@ -177,7 +190,6 @@ records:
 # [23] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [24] ESBindAttack -> Snake's Deadening Fang
-# Condition: None
 # Bind 1 random for 3 turns
 # [25] ESEndPath -> ESEndPath
 # end_turn

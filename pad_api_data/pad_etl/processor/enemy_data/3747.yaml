@@ -19,6 +19,7 @@ records:
 - !SkillRecord
   desc_en: Voids status ailments for 999 turns + Absorb Water, Wood damage for 1 turns
   desc_jp: Voids status ailments for 999 turns + Absorb Water, Wood damage for 1 turns
+  max_atk_pct: null
   name_en: Don't come here, it's dangerous! + Bellows of the Smelting Furnace
   name_jp: Don't come here, it's dangerous! + Bellows of the Smelting Furnace
   record_type_name: PREEMPT
@@ -27,84 +28,98 @@ records:
     turns
   desc_jp: Voids status ailments for 999 turns + Absorb Water, Light damage for 1
     turns
+  max_atk_pct: null
   name_en: Don't come here, it's dangerous! + Bellows of the Smelting Furnace
   name_jp: Don't come here, it's dangerous! + Bellows of the Smelting Furnace
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Voids status ailments for 999 turns + Absorb Wood, Dark damage for 1 turns
   desc_jp: Voids status ailments for 999 turns + Absorb Wood, Dark damage for 1 turns
+  max_atk_pct: null
   name_en: Don't come here, it's dangerous! + Bellows of the Smelting Furnace
   name_jp: Don't come here, it's dangerous! + Bellows of the Smelting Furnace
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Voids status ailments for 999 turns + Absorb Light, Dark damage for 1 turns
   desc_jp: Voids status ailments for 999 turns + Absorb Light, Dark damage for 1 turns
+  max_atk_pct: null
   name_en: Don't come here, it's dangerous! + Bellows of the Smelting Furnace
   name_jp: Don't come here, it's dangerous! + Bellows of the Smelting Furnace
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Absorb combo <= 7 damage for 1 turns + Delay active skills by 3~10 turns
   desc_jp: Absorb combo <= 7 damage for 1 turns + Delay active skills by 3~10 turns
+  max_atk_pct: null
   name_en: That's it? + You won't beat me like that!
   name_jp: That's it? + You won't beat me like that!
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 99
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 99
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Absorb Water, Wood damage for 1 turns + Enemy action
   desc_jp: Absorb Water, Wood damage for 1 turns + Enemy action
+  max_atk_pct: null
   name_en: Bellows of the Smelting Furnace + Garbage Disposal
   name_jp: Bellows of the Smelting Furnace + Garbage Disposal
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Absorb Water, Light damage for 1 turns + Change Random to Jammer
   desc_jp: Absorb Water, Light damage for 1 turns + Change Random to Jammer
+  max_atk_pct: null
   name_en: Bellows of the Smelting Furnace + Sacred Fire Dust
   name_jp: Bellows of the Smelting Furnace + Sacred Fire Dust
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Absorb Wood, Dark damage for 1 turns + Change 2nd, 4th row to Fire orbs
   desc_jp: Absorb Wood, Dark damage for 1 turns + Change 2nd, 4th row to Fire orbs
+  max_atk_pct: null
   name_en: Bellows of the Smelting Furnace + Incineration
   name_jp: Bellows of the Smelting Furnace + Incineration
   record_type_name: ACTION
 - !SkillRecord
   desc_en: Absorb Light, Dark damage for 1 turns + Change 1st, 5th row to Fire orbs
   desc_jp: Absorb Light, Dark damage for 1 turns + Change 1st, 5th row to Fire orbs
+  max_atk_pct: null
   name_en: Bellows of the Smelting Furnace + Incineration
   name_jp: Bellows of the Smelting Furnace + Incineration
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 50
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 50
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Jammer skyfall +20% for 10 turns + Rcv 50% for 10 turns
   desc_jp: Jammer skyfall +20% for 10 turns + Rcv 50% for 10 turns
+  max_atk_pct: null
   name_en: Ashes + Sacrifice to the Furnace
   name_jp: Ashes + Sacrifice to the Furnace
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 9
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 9
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change all orbs to Fire, Jammer, Deal 500% damage
   desc_jp: Change all orbs to Fire, Jammer, Deal 500% damage
+  max_atk_pct: 500
   name_en: Burn it all!
   name_jp: Burn it all!
   record_type_name: ACTION
@@ -183,12 +198,10 @@ records:
 # [17] ESEndPath -> ESEndPath
 # end_turn
 # [18] ESBoardChangeAttackBits -> Burn it all!
-# Condition: None
 # Change all orbs to Fire, Jammer
 # [19] ESEndPath -> ESEndPath
 # end_turn
 # [20] SkillSet:
-# 	Condition: None
 # 	[0] ESAbsorbCombo -> That's it?
 # 	Absorb combo <= 7 damage for 1 turns
 # 	[1] ESSkillDelay -> You won't beat me like that!

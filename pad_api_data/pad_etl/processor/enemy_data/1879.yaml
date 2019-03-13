@@ -19,72 +19,84 @@ records:
 - !SkillRecord
   desc_en: Reduce damage from Dark by 50%
   desc_jp: Reduce damage from Dark by 50%
+  max_atk_pct: null
   name_en: Halve Dark
   name_jp: Halve Dark
   record_type_name: PASSIVE
 - !SkillRecord
   desc_en: Voids status ailments for 999 turns
   desc_jp: Voids status ailments for 999 turns
+  max_atk_pct: null
   name_en: Light Sword Scale
   name_jp: Light Sword Scale
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: Turn 1
   desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 1
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change 3rd row to Jammer orbs, Deal 100% damage
   desc_jp: Change 3rd row to Jammer orbs, Deal 100% damage
+  max_atk_pct: 100
   name_en: Tail Slash
   name_jp: Tail Slash
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Deal 90%~150% damage (3~5 hits, 30% each)
   desc_jp: Deal 90%~150% damage (3~5 hits, 30% each)
+  max_atk_pct: 150
   name_en: Sword Phalanx
   name_jp: Sword Phalanx
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Absorb combo <= 4 damage for 2 turns
   desc_jp: Absorb combo <= 4 damage for 2 turns
+  max_atk_pct: null
   name_en: Sword Mountain Stance
   name_jp: Sword Mountain Stance
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change Random to Light, Deal 85% damage
   desc_jp: Change Random to Light, Deal 85% damage
+  max_atk_pct: 85
   name_en: Pouring Light Blade
   name_jp: Pouring Light Blade
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Change 2nd, 3rd, 4th row to Light orbs, Deal 300% damage
   desc_jp: Change 2nd, 3rd, 4th row to Light orbs, Deal 300% damage
+  max_atk_pct: 300
   name_en: Lightning Horizon
   name_jp: Lightning Horizon
   record_type_name: ACTION
@@ -99,7 +111,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] ESStatusShield -> Light Sword Scale
-# Condition: None
 # Voids status ailments for 999 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
@@ -111,7 +122,6 @@ records:
 # Condition: One-time use
 # Change 3rd row to Jammer orbs
 # [9] ESAttackMultihit -> Sword Phalanx
-# Condition: None
 # Enemy action
 # [10] ESEndPath -> ESEndPath
 # end_turn
@@ -122,7 +132,6 @@ records:
 # [13] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [14] ESAbsorbCombo -> Sword Mountain Stance
-# Condition: None
 # Absorb combo <= 4 damage for 2 turns
 # [15] ESEndPath -> ESEndPath
 # end_turn
@@ -131,14 +140,12 @@ records:
 # [17] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [18] ESOrbChangeAttack -> Pouring Light Blade
-# Condition: None
 # Change Random to Light
 # [19] ESEndPath -> ESEndPath
 # end_turn
 # [20] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [21] ESRowSpawnMulti -> Lightning Horizon
-# Condition: None
 # Change 2nd, 3rd, 4th row to Light orbs
 # [22] ESEndPath -> ESEndPath
 # end_turn

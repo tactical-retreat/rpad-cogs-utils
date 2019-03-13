@@ -19,6 +19,7 @@ records:
 - !SkillRecord
   desc_en: Survive attacks with 1 HP when HP > 95%
   desc_jp: Survive attacks with 1 HP when HP > 95%
+  max_atk_pct: null
   name_en: Resolve
   name_jp: Resolve
   record_type_name: PASSIVE
@@ -27,12 +28,14 @@ records:
     Bind active skills for 1 turns
   desc_jp: Voids status ailments for 999 turns + Bind awoken skills for 1 turns +
     Bind active skills for 1 turns
+  max_atk_pct: null
   name_en: Halo of the Goddess + Let the test begin + Well, win your freedom
   name_jp: Halo of the Goddess + Let the test begin + Well, win your freedom
   record_type_name: PREEMPT
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
@@ -41,12 +44,14 @@ records:
     Jammer
   desc_jp: Random 2 orbs change every 1.0s for 10 turns + Change all orbs to Light,
     Jammer
+  max_atk_pct: null
   name_en: Flowing Agony + Light of Hope and Despair
   name_jp: Flowing Agony + Light of Hope and Despair
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 100
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: ''
   record_type_name: DIVIDER
@@ -55,6 +60,7 @@ records:
     orbs + Blind random 7~10 orbs for 1 turns
   desc_jp: Change 2nd, 3rd, 4th row to Fire, Water, Wood, Light, Dark, Heal, Poison
     orbs + Blind random 7~10 orbs for 1 turns
+  max_atk_pct: null
   name_en: Seven Lands and Seas + Torch Light
   name_jp: Seven Lands and Seas + Torch Light
   record_type_name: ACTION
@@ -63,6 +69,7 @@ records:
     + Blind random 7~10 orbs for 1 turns
   desc_jp: Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Mortal Poison
     + Blind random 7~10 orbs for 1 turns
+  max_atk_pct: null
   name_en: Seven Lands and Seas + Torch Light
   name_jp: Seven Lands and Seas + Torch Light
   record_type_name: ACTION
@@ -73,6 +80,7 @@ records:
   desc_jp: Change 2nd, 3rd, 4th row to Fire, Water, Wood, Light, Dark, Heal, Poison
     orbs + Lock 15 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
     Poison orbs
+  max_atk_pct: null
   name_en: Seven Lands and Seas + Starlight Road
   name_jp: Seven Lands and Seas + Starlight Road
   record_type_name: ACTION
@@ -83,36 +91,42 @@ records:
   desc_jp: Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Mortal Poison
     + Lock 15 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
     Poison orbs
+  max_atk_pct: null
   name_en: Seven Lands and Seas + Starlight Road
   name_jp: Seven Lands and Seas + Starlight Road
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Bind awoken skills for 5 turns + Voids player buff effects
   desc_jp: Bind awoken skills for 5 turns + Voids player buff effects
+  max_atk_pct: null
   name_en: I won't let you do as you like + Saint Judge
   name_jp: I won't let you do as you like + Saint Judge
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 49
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: ''
   record_type_name: DIVIDER
 - !SkillRecord
   desc_en: Bind active skills for 10 turns + Voids player buff effects
   desc_jp: Bind active skills for 10 turns + Voids player buff effects
+  max_atk_pct: null
   name_en: I will seal your power + Saint Judge
   name_jp: I will seal your power + Saint Judge
   record_type_name: ACTION
 - !SkillRecord
   desc_en: HP <= 4
   desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 4
   name_jp: ''
   record_type_name: DIVIDER
@@ -121,6 +135,7 @@ records:
     Change all orbs to Light, Jammer
   desc_jp: Change own attribute to random one of Fire, Water, Wood, Light, Dark +
     Change all orbs to Light, Jammer
+  max_atk_pct: null
   name_en: Liberation + Light of Hope and Despair
   name_jp: Liberation + Light of Hope and Despair
   record_type_name: ACTION
@@ -135,7 +150,6 @@ records:
 # [3] ESFlagOperation -> ESFlagOperation
 # flag_operation
 # [4] SkillSet:
-# 	Condition: None
 # 	[0] ESStatusShield -> Halo of the Goddess
 # 	Voids status ailments for 999 turns
 # 	[1] ESBindAwoken -> Let the test begin
@@ -151,7 +165,6 @@ records:
 # [8] ESBranchHP -> ESBranchHP
 # branch
 # [9] SkillSet:
-# 	Condition: None
 # 	[0] ESAbsorbAttribute -> ...until you can be free
 # 	Absorb Wood, Dark damage for 10 turns
 # 	[1] ESDamageShield -> This is the time you have left...
@@ -159,7 +172,6 @@ records:
 # [10] ESSetCounter -> ESSetCounter
 # set_counter
 # [11] SkillSet:
-# 	Condition: None
 # 	[0] ESOrbSealRow -> ...while impaired
 # 	Seal 1st, 5th row for 5 turns
 # 	[1] ESVoidShield -> Find your freedom...
@@ -213,14 +225,12 @@ records:
 # [25] ESSetCounter -> ESSetCounter
 # set_counter
 # [26] ESSpinnersRandom -> Flowing Agony
-# Condition: None
 # Random 3 orbs change every 1.0s for 5 turns
 # [27] ESEndPath -> ESEndPath
 # end_turn
 # [28] ESSetCounter -> ESSetCounter
 # set_counter
 # [29] SkillSet:
-# 	Condition: None
 # 	[0] ESSpinnersRandom -> Flowing Agony
 # 	Random 2 orbs change every 1.0s for 10 turns
 # 	[1] ESBoardChangeAttackBits -> Light of Hope and Despair
@@ -234,7 +244,6 @@ records:
 # [33] ESSetCounter -> ESSetCounter
 # set_counter
 # [34] SkillSet:
-# 	Condition: None
 # 	[0] ESBindAwoken -> I won't let you do as you like
 # 	Bind awoken skills for 5 turns
 # 	[1] ESDispel -> Saint Judge
@@ -248,7 +257,6 @@ records:
 # [38] ESSetCounter -> ESSetCounter
 # set_counter
 # [39] SkillSet:
-# 	Condition: None
 # 	[0] ESBindSkill -> I will seal your power
 # 	Bind active skills for 10 turns
 # 	[1] ESDispel -> Saint Judge
@@ -256,7 +264,6 @@ records:
 # [40] ESEndPath -> ESEndPath
 # end_turn
 # [41] SkillSet:
-# 	Condition: None
 # 	[0] ESChangeAttribute -> Liberation
 # 	Change own attribute to random one of Fire, Water, Wood, Light, Dark
 # 	[1] ESBoardChangeAttackBits -> Light of Hope and Despair
