@@ -15,7 +15,7 @@ import shutil
 from collections import defaultdict
 
 from pad_etl.data import database
-from pad_etl.processor import enemy_skillset_dump
+from pad_etl.processor import enemy_skillset_dump as esd
 from pad_etl.data import wave
 
 fail_logger = logging.getLogger('processor_failures')
@@ -56,30 +56,26 @@ def run_test(args):
     for w in wave_summary_data:
         dungeon_id_to_wavedata[w.dungeon_id].add((w.floor_id, w.stage, w.monster_id, w.monster_level))
 
-    dungeons = [
-        # Amnel
-        2707,
-        # Ogres, Tyranos are good, valhalla is busted, i&i is close, nidhogg's magic before/after hp bullshit is
-        # impossible.
-        3607,
-        # Quetzal
-        3655
+    golden_dungeons = [
+        # Currently no golden dungeons, put them here after verification
     ]
 
-    for dungeon_id in dungeons:
-        file_name = '{}.txt'.format(dungeon_id)
+    for dungeon_id, wave_data in dungeon_id_to_wavedata.items():
         dungeon = db.dungeon_by_id(dungeon_id)
-        with open(os.path.join(new_output_dir, file_name), encoding='utf-8', mode='w') as f:
-            f.write('{} {}\n'.format(dungeon_id, dungeon.clean_name))
-            for data in sorted(dungeon_id_to_wavedata.get(dungeon_id)):
-                f.write(','.join(map(str, data)) + '\n')
-                monster_id = data[2]
-                monster_level = data[3]
-                card = db.raw_card_by_id(monster_id)
-                f.write('{} - {} @ level {}\n'.format(monster_id, card.name, monster_level))
-                f.write(enemy_skillset_dump.load_summary_as_dump_text(card, monster_id, monster_level))
-                f.write('\n\n')
-
+        if not dungeon:
+            print('skipping', dungeon_id)
+            continue
+        print('processing', dungeon_id, dungeon.clean_name)
+        if dungeon_id in split_dungeons:
+            for floor in dungeon.floors:
+                floor_id = floor.floor_number
+                file_name = '{}_{}.txt'.format(dungeon_id, floor_id)
+                with open(os.path.join(new_output_dir, file_name), encoding='utf-8', mode='w') as f:
+                    f.write(flatten_data(wave_data, dungeon, db, limit_floor_id=floor_id))
+        else:
+            file_name = '{}.txt'.format(dungeon_id)
+            with open(os.path.join(new_output_dir, file_name), encoding='utf-8', mode='w') as f:
+                f.write(flatten_data(wave_data, dungeon, db))
 
     for file in os.listdir(new_output_dir):
         new_file = os.path.join(new_output_dir, file)
@@ -93,6 +89,40 @@ def run_test(args):
             print('ERROR')
             print('golden file differs from new file for', file)
             print('ERROR')
+
+
+def flatten_data(wave_data, dungeon_data, db, limit_floor_id=None):
+    output = ''
+    floor_stage_to_monsters = defaultdict(list)
+    for w in wave_data:
+        floor_id = w.floor_id
+        stage = w.stage
+        monster_id = w.monster_id
+        monster_level = w.monster_level
+        if w.spawn_type == 2:
+            continue
+        floor_stage_to_monsters[(floor_id, stage)].append((monster_id, monster_level))
+
+    for floor in reversed(dungeon_data.floors):
+        if limit_floor_id is not None and limit_floor_id != floor.floor_number:
+            continue
+        header = '{} - {}\n'.format(dungeon_data.clean_name, floor.clean_name)
+        print(header)
+        output += header
+
+        for floor_stage in sorted(floor_stage_to_monsters.keys()):
+            stage = floor_stage[1]
+            output += '\nstage {}\n'.format(stage)
+            for monster_info in floor_stage_to_monsters[floor_stage]:
+                monster_id = monster_info[0]
+                monster_level = monster_info[1]
+                card = db.raw_card_by_id(monster_id)
+                output += '\n{} - {} @ level {}'.format(monster_id, card.name, monster_level)
+                output += '\n{}'.format(esd.load_summary_as_dump_text(card, monster_level))
+
+        output += '\n'
+
+    return output
 
 
 if __name__ == '__main__':

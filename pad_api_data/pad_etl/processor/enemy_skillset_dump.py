@@ -1,10 +1,9 @@
-import io
 from enum import Enum, auto
-from typing import List, Optional
+from typing import List, Optional, TextIO
 import os
 import yaml
 
-
+from ..data.card import BookCard
 from .enemy_skillset_processor import SkillItem, ProcessedSkillset
 from . import enemy_skillset_processor
 from . import enemy_skillset
@@ -92,7 +91,6 @@ class EnemySummary(object):
         return next(filter(lambda d: d.level == selected_level, self.data))
 
 
-
 def skillitem_to_skillrecord(record_type: RecordType, es_item: any) -> SkillRecord:
     skill_item = enemy_skillset_processor.to_item(es_item)
     return SkillRecord(record_type=record_type,
@@ -137,16 +135,14 @@ def flatten_skillset(level: int, skillset: ProcessedSkillset) -> SkillRecordList
     return SkillRecordListing(level=level, records=records)
 
 
-# TODO: need a method to merge loaded ES with computed
 def load_summary(monster_id: int) -> Optional[EnemySummary]:
+    """Load an EnemySummary from disk, returning None if no data is available (probably an error)."""
     file_path = _file_by_id(monster_id)
     if not os.path.exists(file_path):
         return None
 
     with open(file_path) as f:
-        line = f.readline()
-        while line.startswith('#'):
-            line = f.readline()
+        line = _consume_comments(f)
 
         entry_info_data = []
         while not line.startswith('#'):
@@ -155,9 +151,7 @@ def load_summary(monster_id: int) -> Optional[EnemySummary]:
 
         all_listings = []
         while line:
-
-            while line.startswith('#'):
-                line = f.readline()
+            line = _consume_comments(f, initial_line=line)
 
             cur_listing_data = []
             while line and not line.startswith('#'):
@@ -170,25 +164,54 @@ def load_summary(monster_id: int) -> Optional[EnemySummary]:
     enemy_info = yaml.load(''.join(entry_info_data))
     enemy_info.warnings = []
     enemy_summary = EnemySummary(enemy_info)
-
-    listings = [yaml.load(''.join(x)) for x in all_listings]
-    enemy_summary.data = listings
-    # listings_by_level = {x.level: x for x in listings}
-    # listings_have_overrides = any(map(lambda x: len(x.overrides), listings))
-
-    # TODO: this needs fixing I had merging in but i removed it??
-    # for computed_listing in enemy_summary.data:
-    #     stored_listing = listings_by_level.get(computed_listing.level, None)
-    #     if stored_listing is None and listings_have_overrides:
-    #         enemy_summary.info.warnings.append(
-    #             'Override missing for {}'.format(computed_listing.level))
-    #     else:
-    #         computed_listing.overrides = stored_listing.overrides
+    enemy_summary.data = [yaml.load(''.join(x)) for x in all_listings]
 
     return enemy_summary
 
 
-def dump_summary_to_file(enemy_summary: EnemySummary, enemy_behavior=None):
+def _consume_comments(f: TextIO, initial_line=None) -> str:
+    line = initial_line or f.readline()
+    while line and line.startswith('#'):
+        line = f.readline()
+    return line
+
+
+def load_and_merge_summary(enemy_summary: EnemySummary) -> EnemySummary:
+    """Loads any stored data from disk and merges with the supplied summary."""
+    saved_summary = load_summary(enemy_summary.info.monster_id)
+    if saved_summary is None:
+        return enemy_summary
+
+    # Merge any new items into the stored summary.
+    for attr, new_value in enemy_summary.info.__dict__.items():
+        stored_value = getattr(saved_summary.info, attr)
+        if new_value is not None and stored_value is None:
+            setattr(saved_summary.info, attr, new_value)
+
+    listings_by_level = {x.level: x for x in saved_summary.data}
+    overrides_exist = any(map(lambda x: len(x.overrides), saved_summary.data))
+
+    # Update stored data with newly computed data.
+    for computed_listing in enemy_summary.data:
+        stored_listing = listings_by_level.get(computed_listing.level, None)
+        if stored_listing is None:
+            # No existing data was found.
+            stored_listing = computed_listing
+            saved_summary.data.append(computed_listing)
+        else:
+            # Found existing data so just update the computed part
+            stored_listing.records = computed_listing.records
+
+        # There were overrides in general but not on this item (probably because it is new).
+        if overrides_exist and not stored_listing.overrides:
+            saved_summary.info.warnings.append(
+                'Override missing for {}'.format(computed_listing.level))
+
+    return saved_summary
+
+
+def dump_summary_to_file(enemy_summary: EnemySummary, enemy_behavior: List):
+    """Writes the enemy info, actions by level, and enemy behavior to a file."""
     file_path = _file_by_id(enemy_summary.info.monster_id)
     with open(file_path, 'w', encoding='utf-8') as f:
         f.write('{}\n'.format(_header('Info')))
@@ -216,7 +239,14 @@ def _header(header_text: str) -> str:
 def _file_by_id(monster_id):
     return os.path.join(os.path.dirname(__file__), 'enemy_data', '{}.yaml'.format(monster_id))
 
-def load_summary_as_dump_text(card, monster_id: int, monster_level: int):
+
+def load_summary_as_dump_text(card: BookCard, monster_level: int):
+    """Produce a textual description of enemy behavior.
+
+    Loads the enemy summary from disk, identifies the behavior appropriate for the level,
+    and converts it into human-friendly output.
+    """
+    monster_id = card.card_id
     summary = load_summary(monster_id)
     if not summary:
         return 'Error! failed to find enemy data for {} {}'.format(card.name, monster_id)

@@ -81,4 +81,4 @@ for stage in sorted(stage_to_monsters.keys()):
         monster_id = monster_info[0]
         monster_level = monster_info[1]
         card = na_database.raw_card_by_id(monster_id)
-        print(enemy_skillset_dump.load_summary_as_dump_text(card, monster_id, monster_level))
+        print(enemy_skillset_dump.load_summary_as_dump_text(card, monster_level))
