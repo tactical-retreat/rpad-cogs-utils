@@ -106,8 +106,8 @@ def skillitem_to_skillrecord(record_type: RecordType, es_item: any) -> SkillReco
 def create_divider(divider_text: str) -> SkillRecord:
     return SkillRecord(record_type=RecordType.DIVIDER,
                        name_en=divider_text,
-                       name_jp='',
-                       desc_en=divider_text,
+                       name_jp=divider_text,
+                       desc_en='',
                        desc_jp='')
 
 
@@ -273,6 +273,7 @@ def load_summary_as_dump_text(card: BookCard, monster_level: int):
         if row.max_atk_pct:
             desc = '{} Damage - {}'.format(int(row.max_atk_pct * atk / 100), desc)
         msg += header + '\n'
-        msg += desc + '\n'
+        if desc:
+            msg += desc + '\n'
 
     return msg
