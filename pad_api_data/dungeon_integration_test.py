@@ -54,7 +54,12 @@ def run_test(args):
     dungeon_id_to_wavedata = defaultdict(set)
     wave_summary_data = wave.load_wave_summary(processed_input_dir)
     for w in wave_summary_data:
-        dungeon_id_to_wavedata[w.dungeon_id].add((w.floor_id, w.stage, w.monster_id, w.monster_level))
+        dungeon_id_to_wavedata[w.dungeon_id].add(w)
+
+    split_dungeons = [
+        # Marks dungeons which are enormous and should be broken into subfiles
+        110, # Endless Corridors
+    ]
 
     golden_dungeons = [
         # Currently no golden dungeons, put them here after verification
