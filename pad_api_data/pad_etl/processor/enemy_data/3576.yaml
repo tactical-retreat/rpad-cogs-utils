@@ -1,0 +1,182 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3576
+monster_name_en: Seventh Dragon Caller, Shapeshifter Wallace
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Wood by 50%
+  desc_jp: Reduce damage from Wood by 50%
+  max_atk_pct: null
+  name_en: Wood damage halved
+  name_jp: Wood damage halved
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Void damage >= 10000000 for 999 turns + Voids status ailments for 999 turns
+    + Reduce damage from all sources by 75% for 7 turns
+  desc_jp: Void damage >= 10000000 for 999 turns + Voids status ailments for 999 turns
+    + Reduce damage from all sources by 75% for 7 turns
+  max_atk_pct: null
+  name_en: Concealed Mountain Path + Guardian Dragon Formation + Mucus Skin
+  name_jp: Concealed Mountain Path + Guardian Dragon Formation + Mucus Skin
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change own attribute to random one of Fire, Water, Wood, Light, Dark +
+    Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Poison
+  desc_jp: Change own attribute to random one of Fire, Water, Wood, Light, Dark +
+    Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Poison
+  max_atk_pct: null
+  name_en: Rainbow Cloak + Seven Gardens
+  name_jp: Rainbow Cloak + Seven Gardens
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change own attribute to random one of Fire, Water, Wood, Light, Dark +
+    Enemy action
+  desc_jp: Change own attribute to random one of Fire, Water, Wood, Light, Dark +
+    Enemy action
+  max_atk_pct: null
+  name_en: Rainbow Cloak + Cyclone Rave
+  name_jp: Rainbow Cloak + Cyclone Rave
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change own attribute to random one of Fire, Water, Wood, Light, Dark +
+    Change Random 14 to Poison
+  desc_jp: Change own attribute to random one of Fire, Water, Wood, Light, Dark +
+    Change Random 14 to Poison
+  max_atk_pct: null
+  name_en: Rainbow Cloak + Dead Poison Rave
+  name_jp: Rainbow Cloak + Dead Poison Rave
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 15
+  name_jp: HP <= 15
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change own attribute to random one of Fire, Water, Wood, Light, Dark +
+    Enemy action
+  desc_jp: Change own attribute to random one of Fire, Water, Wood, Light, Dark +
+    Enemy action
+  max_atk_pct: null
+  name_en: Rainbow Cloak + Everstorm Rainbow Blade
+  name_jp: Rainbow Cloak + Everstorm Rainbow Blade
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESVoidShield -> Concealed Mountain Path
+# 	Void damage >= 10000000 for 999 turns
+# 	[1] ESStatusShield -> Guardian Dragon Formation
+# 	Voids status ailments for 999 turns
+# 	[2] ESDamageShield -> Mucus Skin
+# 	Reduce damage from all sources by 75% for 7 turns
+# [3] SkillSet:
+# 	Condition: When < 15% hp
+# 	[0] ESChangeAttribute -> Rainbow Cloak
+# 	Change own attribute to random one of Fire, Water, Wood, Light, Dark
+# 	[1] ESAttackMultihit -> Everstorm Rainbow Blade
+# 	Enemy action
+# [4] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESChangeAttribute -> Rainbow Cloak
+# 	Change own attribute to Fire
+# 	[1] ESPoisonChangeRandomAttack -> Hell Poison Claw
+# 	Change Random 7 to Poison
+# [5] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESChangeAttribute -> Rainbow Cloak
+# 	Change own attribute to Water
+# 	[1] ESPoisonChangeRandomAttack -> Hell Venom Claw
+# 	Change Random 5 to Poison
+# [6] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESChangeAttribute -> Rainbow Cloak
+# 	Change own attribute to Wood
+# 	[1] ESBindAttack -> Paralysis Vine
+# 	Bind 1 subs for 7 turns
+# [7] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESChangeAttribute -> Rainbow Cloak
+# 	Change own attribute to Light
+# 	[1] ESPoisonChangeRandomAttack -> Poison Rave
+# 	Change Random 10 to Poison
+# [8] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESChangeAttribute -> Rainbow Cloak
+# 	Change own attribute to Dark
+# 	[1] ESPoisonChangeRandomAttack -> Hell Poison Rave
+# 	Change Random 7 to Poison
+# [9] ESOrbChangeAttack -> Hell Bloom
+# Condition: One-time use
+# Change Poison to Jammer
+# [10] ESOrbLock -> Thousand-Blade Strike
+# Condition: One-time use
+# Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [11] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESSkyfall -> The Allure of Swift Death
+# 	Mortal Poison skyfall +20% for 7 turns
+# 	[1] ESAttributeBlock -> The Art of Contamination
+# 	Unable to Poison, Mortal Poison orbs for 2 turns
+# 	[2] ESAttackMultihit -> Storm Rave
+# 	Enemy action
+# [12] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESChangeAttribute -> Rainbow Cloak
+# 	Change own attribute to random one of Fire, Water, Wood, Light, Dark
+# 	[1] ESBindAttack -> Paralysis Vine
+# 	Bind 1 subs for 7 turns
+# [13] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESSkyfall -> Thorned Husk Fang
+# 	Locked Poison, Mortal Poison skyfall +100% for 5 turns
+# 	[1] ESAttackMultihit -> Cyclone Rave
+# 	Enemy action
+# [14] SkillSet:
+# 	Condition: 45% chance
+# 	[0] ESChangeAttribute -> Rainbow Cloak
+# 	Change own attribute to random one of Fire, Water, Wood, Light, Dark
+# 	[1] ESBoardChangeAttackBits -> Seven Gardens
+# 	Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Poison
+# [15] SkillSet:
+# 	Condition: 40% chance
+# 	[0] ESChangeAttribute -> Rainbow Cloak
+# 	Change own attribute to random one of Fire, Water, Wood, Light, Dark
+# 	[1] ESAttackMultihit -> Cyclone Rave
+# 	Enemy action
+# [16] SkillSet:
+# 	Condition: 15% chance
+# 	[0] ESChangeAttribute -> Rainbow Cloak
+# 	Change own attribute to random one of Fire, Water, Wood, Light, Dark
+# 	[1] ESPoisonChangeRandomAttack -> Dead Poison Rave
+# 	Change Random 14 to Poison
+# [17] ESEndPath -> ESEndPath
+# end_turn
+# [18] ESAttributeResist -> Wood damage halved
+# Reduce damage from Wood by 50%

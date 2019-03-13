@@ -1,0 +1,154 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4086
+monster_name_en: Assassination Arts Heir, Leona Heidern
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Spawn random 3 Bomb orbs
+  desc_jp: Spawn random 3 Bomb orbs
+  max_atk_pct: null
+  name_en: Fulfilling mission
+  name_jp: Fulfilling mission
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Blind orbs in specific positions for 1 turns, Deal 100% damage
+  desc_jp: Blind orbs in specific positions for 1 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: X-Calibur
+  name_jp: X-Calibur
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 1 Wood orbs, Deal 90% damage
+  desc_jp: Spawn random 1 Wood orbs, Deal 90% damage
+  max_atk_pct: 90
+  name_en: Baltic Launcher
+  name_jp: Baltic Launcher
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 80% damage
+  desc_jp: Deal 80% damage
+  max_atk_pct: 80
+  name_en: I-Slasher
+  name_jp: I-Slasher
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 24
+  name_jp: HP <= 24
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 30% damage
+  desc_jp: Deal 30% damage
+  max_atk_pct: 30
+  name_en: Rebel Spark
+  name_jp: Rebel Spark
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 24
+  name_jp: HP <= 24
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn Bomb orbs in the specified positions
+  desc_jp: Spawn Bomb orbs in the specified positions
+  max_atk_pct: null
+  name_en: Goodbye!
+  name_jp: Goodbye!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 24
+  name_jp: HP <= 24
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn Bomb orbs in the specified positions, Deal 100% damage
+  desc_jp: Spawn Bomb orbs in the specified positions, Deal 100% damage
+  max_atk_pct: 100
+  name_en: V-Slasher
+  name_jp: V-Slasher
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESBombRandomSpawn -> Fulfilling mission
+# Spawn random 3 Bomb orbs
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESBlindStickyFixed -> X-Calibur
+# Condition: One-time use
+# Blind orbs in specific positions for 1 turns
+# [10] ESRandomSpawn -> Baltic Launcher
+# Condition: 50% chance & when Fire, Water, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 1 Wood orbs
+# [11] ESAttackMultihit -> I-Slasher
+# Enemy action
+# [12] ESEndPath -> ESEndPath
+# end_turn
+# [13] ESBranchCounter -> ESBranchCounter
+# branch
+# [14] ESSetCounter -> ESSetCounter
+# set_counter
+# [15] ESAttackMultihit -> Rebel Spark
+# Enemy action
+# [16] ESBranchCounter -> ESBranchCounter
+# branch
+# [17] ESSetCounter -> ESSetCounter
+# set_counter
+# [18] ESBombFixedSpawn -> Goodbye!
+# Spawn Bomb orbs in the specified positions
+# [19] ESEndPath -> ESEndPath
+# end_turn
+# [20] ESBombFixedSpawn -> V-Slasher
+# Spawn Bomb orbs in the specified positions
+# [21] ESEndPath -> ESEndPath
+# end_turn
+# [22] SkillSet:
+# 	Condition: On death
+# 	[0] ESInactivity -> Aaaaaaah!
+# 	Do nothing

@@ -1,0 +1,59 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1314
+monster_name_en: Skeggiold
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  max_atk_pct: null
+  name_en: Safety Wall
+  name_jp: Safety Wall
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 25000% damage (5 hits, 5000% each)
+  desc_jp: Deal 25000% damage (5 hits, 5000% each)
+  max_atk_pct: 25000
+  name_en: Soul Strike
+  name_jp: Soul Strike
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESStatusShield -> Safety Wall
+# Voids status ailments for 999 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESAttackMultihit -> Soul Strike
+# Enemy action

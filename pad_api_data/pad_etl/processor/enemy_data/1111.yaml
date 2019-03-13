@@ -1,0 +1,89 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1111
+monster_name_en: Dark Twin Star Tiamat
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Jammer skyfall +10% for 5 turns
+  desc_jp: Jammer skyfall +10% for 5 turns
+  max_atk_pct: null
+  name_en: Wicked Dragon's Howl
+  name_jp: Wicked Dragon's Howl
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 80% damage
+  desc_jp: Blind all orbs on the board, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Blind Breath
+  name_jp: Blind Breath
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 60%~160% damage (3~8 hits, 20% each)
+  desc_jp: Deal 60%~160% damage (3~8 hits, 20% each)
+  max_atk_pct: 160
+  name_en: Rampage
+  name_jp: Rampage
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 30
+  name_jp: HP <= 30
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 160% damage (2 hits, 80% each)
+  desc_jp: Deal 160% damage (2 hits, 80% each)
+  max_atk_pct: 160
+  name_en: Wicked Twin Headed Blade
+  name_jp: Wicked Twin Headed Blade
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESSkyfall -> Wicked Dragon's Howl
+# Jammer skyfall +10% for 5 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESAttackMultihit -> Wicked Twin Headed Blade
+# Condition: When < 30% hp
+# Enemy action
+# [7] ESBlind -> Blind Breath
+# Condition: One-time use
+# Blind all orbs on the board
+# [8] ESAttackMultihit -> Rampage
+# Enemy action

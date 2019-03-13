@@ -1,0 +1,135 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 975
+monster_name_en: Blue Pirate Dragon, Awilda
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Change Random to Heal, Deal 150% damage
+  desc_jp: Change Random to Heal, Deal 150% damage
+  max_atk_pct: 150
+  name_en: I'll Stomp You Under My Heel!
+  name_jp: I'll Stomp You Under My Heel!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Heal to Poison
+  desc_jp: Change Heal to Poison
+  max_atk_pct: null
+  name_en: Honey Poison
+  name_jp: Honey Poison
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Random to Water, Deal 100% damage
+  desc_jp: Change Random to Water, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Blue Slash
+  name_jp: Blue Slash
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 59
+  name_jp: HP <= 59
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 1 own leader for 3 turns
+  desc_jp: Bind 1 own leader for 3 turns
+  max_atk_pct: null
+  name_en: Tempting Embrace
+  name_jp: Tempting Embrace
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 29
+  name_jp: HP <= 29
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 5% damage
+  desc_jp: Deal 5% damage
+  max_atk_pct: 5
+  name_en: Princess's Order
+  name_jp: Princess's Order
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 29
+  name_jp: HP <= 29
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 1500% damage (5 hits, 300% each)
+  desc_jp: Deal 1500% damage (5 hits, 300% each)
+  max_atk_pct: 1500
+  name_en: Sea Dragon's Massive Strike
+  name_jp: Sea Dragon's Massive Strike
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESOrbChangeAttack -> I'll Stomp You Under My Heel!
+# Condition: One-time use
+# Change Random to Heal
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESBranchFlag -> ESBranchFlag
+# branch
+# [10] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [11] ESBindTarget -> Tempting Embrace
+# Bind 1 own leader for 3 turns
+# [12] ESBranchHP -> ESBranchHP
+# branch
+# [13] ESBranchFlag -> ESBranchFlag
+# branch
+# [14] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [15] ESAttackMultihit -> Princess's Order
+# Enemy action
+# [16] ESAttackMultihit -> Sea Dragon's Massive Strike
+# Enemy action
+# [17] ESEndPath -> ESEndPath
+# end_turn
+# [18] ESOrbChangeAttack -> I'll Stomp You Under My Heel!
+# Condition: One-time use
+# Change Random to Heal
+# [19] ESPoisonChangeSingle -> Honey Poison
+# Condition: 50% chance
+# Change Heal to Poison
+# [20] ESOrbChangeAttack -> Blue Slash
+# Change Random to Water

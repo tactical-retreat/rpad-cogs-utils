@@ -1,0 +1,108 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 103457
+monster_name_en: Alt. Lawless Demonic Gentleman, Azazel
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Fire, Light by 50%
+  desc_jp: Reduce damage from Fire, Light by 50%
+  max_atk_pct: null
+  name_en: Fire/Light halved
+  name_jp: Fire/Light halved
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Seal 1st, 5th row for 4 turns + Voids status ailments for 999 turns
+  desc_jp: Seal 1st, 5th row for 4 turns + Voids status ailments for 999 turns
+  max_atk_pct: null
+  name_en: Fallen Angel's Wings + Scapegoat
+  name_jp: Fallen Angel's Wings + Scapegoat
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 15
+  name_jp: HP <= 15
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 700% damage (7 hits, 100% each)
+  desc_jp: Deal 700% damage (7 hits, 100% each)
+  max_atk_pct: 700
+  name_en: Nightmare Spiral
+  name_jp: Nightmare Spiral
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	[0] ESOrbSealRow -> Fallen Angel's Wings
+# 	Seal 1st, 5th row for 4 turns
+# 	[1] ESStatusShield -> Scapegoat
+# 	Voids status ailments for 999 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] SkillSet:
+# 	Condition: When < 40% hp , one-time use
+# 	[0] ESRecoverEnemy -> Fresh Blood of a Male Goat
+# 	Enemy recover 50% hp
+# 	[1] ESDamageShield -> Devil's Influence
+# 	Reduce damage from all sources by 75% for 99 turns
+# [7] ESAttackMultihit -> Nightmare Spiral
+# Condition: When < 15% hp
+# Enemy action
+# [8] ESBranchFlag -> ESBranchFlag
+# branch
+# [9] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [10] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESSkillDelay -> Devil Snake's Glare
+# 	Delay active skills by 4 turns
+# 	[1] ESAttackMultihit -> Negative Chain
+# 	Enemy action
+# [11] SkillSet:
+# 	[0] ESSkillDelay -> Devil Snake's Evil Eye
+# 	Delay active skills by 6 turns
+# 	[1] ESAttackMultihit -> Negative Chain
+# 	Enemy action
+# [12] ESEndPath -> ESEndPath
+# end_turn
+# [13] ESBranchFlag -> ESBranchFlag
+# branch
+# [14] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [15] ESOrbLock -> Black Rebellion
+# Lock 10 random Wood, Dark, Jammer, Poison orbs
+# [16] ESEndPath -> ESEndPath
+# end_turn
+# [17] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [18] ESRandomSpawn -> Venomous
+# Condition: 50% chance & when Fire, Water, Wood, Light, Dark, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 12 Poison orbs
+# [19] ESColumnSpawnMulti -> Agahara
+# Change 1st, 2nd column to Fire, Water, Jammer orbs, 3rd, 4th column to Wood, Light, Jammer orbs, 5th, 6th column to Dark, Heal, Jammer orbs
+# [20] ESEndPath -> ESEndPath
+# end_turn
+# [21] ESAttributeResist -> Fire/Light halved
+# Reduce damage from Fire, Light by 50%

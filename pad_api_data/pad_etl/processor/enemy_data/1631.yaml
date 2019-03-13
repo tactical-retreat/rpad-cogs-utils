@@ -1,0 +1,123 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1631
+monster_name_en: Dark Sky Star Dragon Emperor, Defoud
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb combo <= 5 damage for 99 turns
+  desc_jp: Absorb combo <= 5 damage for 99 turns
+  max_atk_pct: null
+  name_en: Star Emperor's Gleam
+  name_jp: Star Emperor's Gleam
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Light, Deal 80% damage
+  desc_jp: Change Random to Light, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Heavenly Lightning
+  name_jp: Heavenly Lightning
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 150% damage (3 hits, 50% each)
+  desc_jp: Deal 150% damage (3 hits, 50% each)
+  max_atk_pct: 150
+  name_en: Photon Breath
+  name_jp: Photon Breath
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 150% damage (3 hits, 50% each)
+  desc_jp: Deal 150% damage (3 hits, 50% each)
+  max_atk_pct: 150
+  name_en: Photon Breath
+  name_jp: Photon Breath
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Dark, Deal 80% damage
+  desc_jp: Change Random to Dark, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Dark Rumble
+  name_jp: Dark Rumble
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 30
+  name_jp: HP <= 30
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 250% damage (5 hits, 50% each)
+  desc_jp: Deal 250% damage (5 hits, 50% each)
+  max_atk_pct: 250
+  name_en: Divine Star
+  name_jp: Divine Star
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESAbsorbCombo -> Star Emperor's Gleam
+# Condition: One-time use
+# Absorb combo <= 5 damage for 99 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBlind -> Nebula Inferno
+# Condition: One-time use
+# Blind all orbs on the board
+# [7] ESBranchHP -> ESBranchHP
+# branch
+# [8] ESOrbChangeAttack -> Heavenly Lightning
+# Condition: 60% chance
+# Change Random to Light
+# [9] ESAttackMultihit -> Photon Breath
+# Enemy action
+# [10] ESEndPath -> ESEndPath
+# end_turn
+# [11] ESAttackMultihit -> Divine Star
+# Condition: When < 30% hp
+# Enemy action
+# [12] ESOrbChangeAttack -> Dark Rumble
+# Condition: 60% chance when < 50% hp
+# Change Random to Dark
+# [13] ESAttackMultihit -> Photon Breath
+# Enemy action

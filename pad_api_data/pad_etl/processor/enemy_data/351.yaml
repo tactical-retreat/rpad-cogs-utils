@@ -1,0 +1,47 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 351
+monster_name_en: Sacred Flame Dragon, Formula
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  max_atk_pct: 100
+  name_en: Preemptive
+  name_jp: Preemptive
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESAttackPreemptive -> Wing of Light
+# Enemy action
+# [2] ESBranchHP -> ESBranchHP
+# branch
+# [3] ESAttackMultihit -> Spark Edge
+# Condition: 70% chance
+# Enemy action
+# [4] ESEndPath -> ESEndPath
+# end_turn
+# [5] ESAttackMultihit -> Flame Burst
+# Enemy action

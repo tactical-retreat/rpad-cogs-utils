@@ -1,0 +1,76 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1316
+monster_name_en: Underworld Tyrant, Baphomet
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Light to Dark, Deal 120% damage
+  desc_jp: Change Light to Dark, Deal 120% damage
+  max_atk_pct: 120
+  name_en: Darkstrike
+  name_jp: Darkstrike
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 75
+  name_jp: HP <= 75
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind own leader for 3 turns, Deal 75% damage
+  desc_jp: Bind own leader for 3 turns, Deal 75% damage
+  max_atk_pct: 75
+  name_en: Break Armor
+  name_jp: Break Armor
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 150% damage
+  desc_jp: Blind all orbs on the board, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Lord of Vermilion
+  name_jp: Lord of Vermilion
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESBindAttack -> Break Armor
+# Condition: When < 75% hp , one-time use
+# Bind own leader for 3 turns
+# [4] ESBlind -> Lord of Vermilion
+# Condition: When < 50% hp
+# Blind all orbs on the board
+# [5] ESOrbChangeAttack -> Darkstrike
+# Change Light to Dark

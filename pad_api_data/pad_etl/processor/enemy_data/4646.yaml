@@ -1,0 +1,153 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4646
+monster_name_en: Heavenly King Companion Dragon, Doltos
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Blind random 8 orbs for 2 turns
+  desc_jp: Blind random 8 orbs for 2 turns
+  max_atk_pct: null
+  name_en: Swallowing Darkness
+  name_jp: Swallowing Darkness
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: When 6 enemy remains
+  name_jp: When 6 enemy remains
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Fire, Water, Dark, Heal, Deal 120% damage
+  desc_jp: Change all orbs to Fire, Water, Dark, Heal, Deal 120% damage
+  max_atk_pct: 120
+  name_en: Gloomy Enclosure
+  name_jp: Gloomy Enclosure
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Fire, Water, Dark, Heal, Deal 120% damage
+  desc_jp: Change all orbs to Fire, Water, Dark, Heal, Deal 120% damage
+  max_atk_pct: 120
+  name_en: Gloomy Enclosure
+  name_jp: Gloomy Enclosure
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 14
+  name_jp: HP <= 14
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 180% damage (4 hits, 45% each)
+  desc_jp: Deal 180% damage (4 hits, 45% each)
+  max_atk_pct: 180
+  name_en: Liberation from Life
+  name_jp: Liberation from Life
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESBlindStickyRandom -> Swallowing Darkness
+# Blind random 8 orbs for 2 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchFlag -> ESBranchFlag
+# branch
+# [9] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [10] ESAttributeBlock -> Yellow Exception
+# Unable to Light orbs for 3 turns
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESBranchHP -> ESBranchHP
+# branch
+# [13] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
+# branch
+# [14] ESSetCounter -> ESSetCounter
+# set_counter
+# [15] ESBranchCounter -> ESBranchCounter
+# branch
+# [16] ESBranchHP -> ESBranchHP
+# branch
+# [17] ESRandomSpawn -> Accepting Spirit
+# Condition: 33% chance & when Water, Wood, Light, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 4 Fire, Dark orbs
+# [18] ESOrbChangeAttack -> Darkness Pillar
+# Condition: 33% chance
+# Change Random to Dark
+# [19] ESAttackMultihit -> Darkness Rush
+# Condition: 34% chance
+# Enemy action
+# [20] ESEndPath -> ESEndPath
+# end_turn
+# [21] ESBranchFlag -> ESBranchFlag
+# branch
+# [22] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [23] SkillSet:
+# 	[0] ESBindAwoken -> Eroding Sleep
+# 	Bind awoken skills for 1 turns
+# 	[1] ESAttackUp -> Counterattack from the Abyss
+# 	Increase damage to 200% for the next 99 turns
+# [24] ESEndPath -> ESEndPath
+# end_turn
+# [25] ESRandomSpawn -> Eroding Mist
+# Condition: One-time use & when Fire, Water, Wood, Light, Dark, Heal, Jammer, Mortal Poison orbs are on the board
+# Spawn random 8 Poison orbs
+# [26] ESRandomSpawn -> Accepting Spirit
+# Condition: 33% chance & when Water, Wood, Light, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 4 Fire, Dark orbs
+# [27] ESOrbChangeAttack -> Darkness Pillar
+# Condition: 33% chance
+# Change Random to Dark
+# [28] ESAttackMultihit -> Darkness Rush
+# Condition: 34% chance
+# Enemy action
+# [29] ESEndPath -> ESEndPath
+# end_turn
+# [30] ESAttackMultihit -> Liberation from Life
+# Enemy action
+# [31] ESEndPath -> ESEndPath
+# end_turn
+# [32] ESSetCounter -> ESSetCounter
+# set_counter
+# [33] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
+# branch
+# [34] ESBoardChangeAttackBits -> Gloomy Enclosure
+# Change all orbs to Fire, Water, Dark, Heal
+# [35] ESAbsorbAttribute -> Welcoming Mist
+# Absorb Fire, Dark damage for 2 turns
+# [36] ESEndPath -> ESEndPath
+# end_turn

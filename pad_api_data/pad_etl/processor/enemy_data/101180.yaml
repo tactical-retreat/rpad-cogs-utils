@@ -1,0 +1,67 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 101180
+monster_name_en: Blue Fairy
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Do nothing + Do nothing + Change all orbs to Fire, Water, Wood, Light,
+    Dark, Heal + Reduce self HP to 0
+  desc_jp: Do nothing + Do nothing + Change all orbs to Fire, Water, Wood, Light,
+    Dark, Heal + Reduce self HP to 0
+  max_atk_pct: null
+  name_en: '! + There''s a big, white serpent somewhere
+
+    in this labyrinth! + Just be on your guard, okay? + Well, see ya!'
+  name_jp: '! + There''s a big, white serpent somewhere
+
+    in this labyrinth! + Just be on your guard, okay? + Well, see ya!'
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing + Do nothing + Change all orbs to Fire, Water, Wood, Light,
+    Dark, Heal + Reduce self HP to 0
+  desc_jp: Do nothing + Do nothing + Change all orbs to Fire, Water, Wood, Light,
+    Dark, Heal + Reduce self HP to 0
+  max_atk_pct: null
+  name_en: '! + There''s a big, white serpent somewhere
+
+    in this labyrinth! + Just be on your guard, okay? + Well, see ya!'
+  name_jp: '! + There''s a big, white serpent somewhere
+
+    in this labyrinth! + Just be on your guard, okay? + Well, see ya!'
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] SkillSet:
+# 	[0] ESInactivity -> !
+# 	Do nothing
+# 	[1] ESInactivity -> There's a big, white serpent somewhere
+# in this labyrinth!
+# 	Do nothing
+# 	[2] ESBoardChange -> Just be on your guard, okay?
+# 	Change all orbs to Fire, Water, Wood, Light, Dark, Heal
+# 	[3] ESEndBattle -> Well, see ya!
+# 	Reduce self HP to 0

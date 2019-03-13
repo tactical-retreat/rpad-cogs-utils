@@ -1,0 +1,60 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1031
+monster_name_en: '***** (HxH)'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 100% damage
+  desc_jp: Change Random to Jammer, Deal 100% damage
+  max_atk_pct: 100
+  name_en: '***** (HxH)'
+  name_jp: '***** (HxH)'
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 160% damage (4 hits, 40% each)
+  desc_jp: Deal 160% damage (4 hits, 40% each)
+  max_atk_pct: 160
+  name_en: '***** (HxH)'
+  name_jp: '***** (HxH)'
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESOrbChangeAttack -> ***** (HxH)
+# Condition: One-time use
+# Change Random to Jammer
+# [4] ESAttackMultihit -> ***** (HxH)
+# Condition: When < 50% hp
+# Enemy action

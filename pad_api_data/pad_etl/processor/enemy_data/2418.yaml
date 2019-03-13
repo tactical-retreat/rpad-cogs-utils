@@ -1,0 +1,171 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2418
+monster_name_en: Milky Way Mechanical Star God, Alrescha
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from God, Machine by 50%
+  desc_jp: Reduce damage from God, Machine by 50%
+  max_atk_pct: null
+  name_en: God Machine Half Reduced
+  name_jp: God Machine Half Reduced
+  record_type_name: PASSIVE
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from God, Machine by 50%
+  desc_jp: Reduce damage from God, Machine by 50%
+  max_atk_pct: null
+  name_en: God Machine Half Reduced
+  name_jp: God Machine Half Reduced
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Absorb Fire damage for 10 turns
+  desc_jp: Voids status ailments for 999 turns + Absorb Fire damage for 10 turns
+  max_atk_pct: null
+  name_en: I won't lose! + Starpath
+  name_jp: I won't lose! + Starpath
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Heal to Water, Deal 125% damage
+  desc_jp: Change Heal to Water, Deal 125% damage
+  max_atk_pct: 125
+  name_en: "Aqua\u2606Conversion"
+  name_jp: "Aqua\u2606Conversion"
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Seal 1st row for 1 turns, Deal 120% damage
+  desc_jp: Seal 1st row for 1 turns, Deal 120% damage
+  max_atk_pct: 120
+  name_en: "Area\u2606Restriction"
+  name_jp: "Area\u2606Restriction"
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 135% damage (3 hits, 45% each)
+  desc_jp: Deal 135% damage (3 hits, 45% each)
+  max_atk_pct: 135
+  name_en: "Astro\u2606Dance"
+  name_jp: "Astro\u2606Dance"
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 300% for the next 1 turns + Change Heal to Water
+  desc_jp: Increase damage to 300% for the next 1 turns + Change Heal to Water
+  max_atk_pct: null
+  name_en: "I'm angry! + Fight through the pain, yeah? \u266A"
+  name_jp: "I'm angry! + Fight through the pain, yeah? \u266A"
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 9
+  name_jp: HP <= 9
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 220% damage (4 hits, 55% each)
+  desc_jp: Deal 220% damage (4 hits, 55% each)
+  max_atk_pct: 220
+  name_en: "Miracle\u2606Star"
+  name_jp: "Miracle\u2606Star"
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] SkillSet:
+# 	[0] ESStatusShield -> I won't lose!
+# 	Voids status ailments for 999 turns
+# 	[1] ESAbsorbAttribute -> Starpath
+# 	Absorb Fire damage for 10 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESSetCounter -> ESSetCounter
+# set_counter
+# [9] ESBranchCounter -> ESBranchCounter
+# branch
+# [10] ESBranchHP -> ESBranchHP
+# branch
+# [11] ESBranchHP -> ESBranchHP
+# branch
+# [12] ESOrbChangeAttackBits -> Aqua☆Conversion
+# Condition: 33% chance
+# Change Heal to Water
+# [13] ESOrbSealRow -> Area☆Restriction
+# Condition: 33% chance
+# Seal 1st row for 1 turns
+# [14] ESAttackMultihit -> Astro☆Dance
+# Condition: 34% chance
+# Enemy action
+# [15] ESEndPath -> ESEndPath
+# end_turn
+# [16] ESBranchFlag -> ESBranchFlag
+# branch
+# [17] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [18] SkillSet:
+# 	[0] ESAttackUp -> I'm angry!
+# 	Increase damage to 300% for the next 1 turns
+# 	[1] ESOrbChangeSingle -> Fight through the pain, yeah? ♪
+# 	Change Heal to Water
+# [19] ESEndPath -> ESEndPath
+# end_turn
+# [20] ESAttackMultihit -> Miracle☆Star
+# Enemy action
+# [21] ESEndPath -> ESEndPath
+# end_turn
+# [22] ESBranchCounter -> ESBranchCounter
+# branch
+# [23] ESSetCounter -> ESSetCounter
+# set_counter
+# [24] SkillSet:
+# 	[0] ESDamageShield -> Miracle☆Shield
+# 	Reduce damage from all sources by 90% for 99 turns
+# 	[1] ESOrbLock -> Nice!
+# 	Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [25] ESEndPath -> ESEndPath
+# end_turn
+# [26] ESTypeResist -> God Machine Half Reduced
+# Reduce damage from God, Machine by 50%

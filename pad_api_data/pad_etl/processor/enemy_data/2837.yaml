@@ -1,0 +1,74 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2837
+monster_name_en: Hanuman
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb combo <= 8 damage for 1 turns
+  desc_jp: Absorb combo <= 8 damage for 1 turns
+  max_atk_pct: null
+  name_en: Huhihihiiii
+  name_jp: Huhihihiiii
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 5000% damage
+  desc_jp: Deal 5000% damage
+  max_atk_pct: 5000
+  name_en: Hyah!
+  name_jp: Hyah!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 20
+  name_jp: HP <= 20
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 9000% damage (3 hits, 3000% each)
+  desc_jp: Deal 9000% damage (3 hits, 3000% each)
+  max_atk_pct: 9000
+  name_en: Daurmanasya
+  name_jp: Daurmanasya
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESAbsorbCombo -> Huhihihiiii
+# Absorb combo <= 8 damage for 1 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESAttackMultihit -> Daurmanasya
+# Condition: When < 20% hp
+# Enemy action
+# [7] ESAttackMultihit -> Hyah!
+# Enemy action
+# [8] ESEndPath -> ESEndPath
+# end_turn

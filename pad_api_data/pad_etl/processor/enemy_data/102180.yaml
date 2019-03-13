@@ -1,0 +1,166 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 102180
+monster_name_en: Alt. Pacifying Yomi Goddess, Izanami
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Fire, Dark by 50%
+  desc_jp: Reduce damage from Fire, Dark by 50%
+  max_atk_pct: null
+  name_en: Dark Izanami Dark Fire Halved
+  name_jp: Dark Izanami Dark Fire Halved
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 88%
+  desc_jp: Survive attacks with 1 HP when HP > 88%
+  max_atk_pct: null
+  name_en: Dark Izanami Resolve
+  name_jp: Dark Izanami Resolve
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 10 turns + Reduce damage from all sources by
+    50% for 3 turns + Movetime 50% for 10 turns
+  desc_jp: Voids status ailments for 10 turns + Reduce damage from all sources by
+    50% for 3 turns + Movetime 50% for 10 turns
+  max_atk_pct: null
+  name_en: Dark Protection of Yomi + The Feathered Garment of Yomi + Malicious Laughter
+  name_jp: Dark Protection of Yomi + The Feathered Garment of Yomi + Malicious Laughter
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Movetime 50% for 10 turns
+  desc_jp: Movetime 50% for 10 turns
+  max_atk_pct: null
+  name_en: Malicious Laughter
+  name_jp: Malicious Laughter
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 4
+  name_jp: HP <= 4
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 150% damage (5 hits, 30% each)
+  desc_jp: Deal 150% damage (5 hits, 30% each)
+  max_atk_pct: 150
+  name_en: Fires of Deicide
+  name_jp: Fires of Deicide
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb combo <= 7 damage for 999 turns + Blind orbs in specific positions
+    for 4 turns + Increase damage to 400% for the next 999 turns
+  desc_jp: Absorb combo <= 7 damage for 999 turns + Blind orbs in specific positions
+    for 4 turns + Increase damage to 400% for the next 999 turns
+  max_atk_pct: null
+  name_en: Protection of the Eight Thunders + Boundary of Disdain + The Nature of
+    Death
+  name_jp: Protection of the Eight Thunders + Boundary of Disdain + The Nature of
+    Death
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	[0] ESStatusShield -> Dark Protection of Yomi
+# 	Voids status ailments for 10 turns
+# 	[1] ESDamageShield -> The Feathered Garment of Yomi
+# 	Reduce damage from all sources by 50% for 3 turns
+# 	[2] ESDebuffMovetime -> Malicious Laughter
+# 	Movetime 50% for 10 turns
+# [5] SkillSet:
+# 	Condition: When < 1% hp , one-time use
+# 	[0] ESRecoverEnemy -> Unwavering Light
+# 	Enemy recover 4% hp
+# 	[1] ESAbsorbCombo -> Protection of the Eight Thunders
+# 	Absorb combo <= 7 damage for 999 turns
+# 	[2] ESBlindStickyFixed -> Boundary of Disdain
+# 	Blind orbs in specific positions for 4 turns
+# 	[3] ESAttackUp -> The Nature of Death
+# 	Increase damage to 400% for the next 999 turns
+# [6] SkillSet:
+# 	Condition: When < 50% hp , one-time use
+# 	[0] ESAbsorbCombo -> Protection of the Eight Thunders
+# 	Absorb combo <= 7 damage for 999 turns
+# 	[1] ESBlindStickyFixed -> Boundary of Disdain
+# 	Blind orbs in specific positions for 4 turns
+# 	[2] ESAttackUp -> The Nature of Death
+# 	Increase damage to 400% for the next 999 turns
+# [7] ESBranchHP -> ESBranchHP
+# branch
+# [8] ESBranchFlag -> ESBranchFlag
+# branch
+# [9] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [10] ESDebuffMovetime -> Malicious Laughter
+# Movetime 50% for 10 turns
+# [11] SkillSet:
+# 	[0] ESPoisonChangeRandom -> An Invitation to Death & Decay
+# 	Change Random 11 to Poison
+# 	[1] ESOrbLock -> Curse of the Eternal Land
+# 	Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [12] ESEndPath -> ESEndPath
+# end_turn
+# [13] ESBranchFlag -> ESBranchFlag
+# branch
+# [14] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [15] ESDebuffMovetime -> Malicious Laughter
+# Movetime 50% for 10 turns
+# [16] ESOrbChangeAttack -> Anguished Wailing
+# Change Heal to Jammer
+# [17] ESAttackMultihit -> Fires of Deicide
+# Enemy action
+# [18] ESEndPath -> ESEndPath
+# end_turn
+# [19] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [20] ESDebuffMovetime -> Malicious Laughter
+# Movetime 50% for 10 turns
+# [21] SkillSet:
+# 	[0] ESDamageShield -> The Feathered Garment of Yomi
+# 	Reduce damage from all sources by 50% for 3 turns
+# 	[1] ESGravity -> Last Embrace
+# 	Player -100% HP
+# [22] ESEndPath -> ESEndPath
+# end_turn
+# [23] ESAttackMultihit -> Fires of Deicide
+# Enemy action
+# [24] ESAttributeResist -> Dark Izanami Dark Fire Halved
+# Reduce damage from Fire, Dark by 50%
+# [25] ESResolve -> Dark Izanami Resolve
+# Survive attacks with 1 HP when HP > 88%

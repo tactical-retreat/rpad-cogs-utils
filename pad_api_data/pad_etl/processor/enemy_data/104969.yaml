@@ -1,0 +1,154 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 104969
+monster_name_en: "\u30D5\u30A5\u30DF\u30F3"
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Bind active skills for 5 turns
+  desc_jp: Bind active skills for 5 turns
+  max_atk_pct: null
+  name_en: Never Sleep Ever
+  name_jp: Never Sleep Ever
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 110% damage
+  desc_jp: Deal 110% damage
+  max_atk_pct: 110
+  name_en: There! There!
+  name_jp: There! There!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Random to Water, Deal 90% damage
+  desc_jp: Change Random to Water, Deal 90% damage
+  max_atk_pct: 90
+  name_en: "Hey, refreshing \u266A"
+  name_jp: "Hey, refreshing \u266A"
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Delay active skills by 2 turns, Deal 95% damage
+  desc_jp: Delay active skills by 2 turns, Deal 95% damage
+  max_atk_pct: 95
+  name_en: Let's talk some more!
+  name_jp: Let's talk some more!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: 1x3 cloud appear for 1 turns at random location, Deal 90% damage
+  desc_jp: 1x3 cloud appear for 1 turns at random location, Deal 90% damage
+  max_atk_pct: 90
+  name_en: "Let's make things a little misty \u266A"
+  name_jp: "Let's make things a little misty \u266A"
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 150% for the next 5 turns
+  desc_jp: Increase damage to 150% for the next 5 turns
+  max_atk_pct: null
+  name_en: "Here I come \u266A"
+  name_jp: "Here I come \u266A"
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 5 Poison orbs, Deal 80% damage
+  desc_jp: Spawn random 5 Poison orbs, Deal 80% damage
+  max_atk_pct: 80
+  name_en: "Hahaaah \u266A"
+  name_jp: "Hahaaah \u266A"
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESBindSkill -> Never Sleep Ever
+# Bind active skills for 5 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
+# branch
+# [10] ESAttackMultihit -> There! There!
+# Condition: 40% chance
+# Enemy action
+# [11] ESOrbChangeAttack -> Hey, refreshing ♪
+# Condition: 40% chance
+# Change Random to Water
+# [12] ESEndPath -> ESEndPath
+# end_turn
+# [13] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESDebuffMovetime -> Humf... Sorry?
+# 	Movetime -2s for 5 turns
+# 	[1] ESColumnSpawnMulti -> Sorry for the intrusion ♪
+# 	Change 3rd, 4th column to Jammer orbs
+# [14] ESBranchHP -> ESBranchHP
+# branch
+# [15] ESSkillDelay -> Let's talk some more!
+# Condition: 50% chance
+# Delay active skills by 2 turns
+# [16] ESCloud -> Let's make things a little misty ♪
+# Condition: 50% chance
+# 1x3 cloud appear for 1 turns at random location
+# [17] ESEndPath -> ESEndPath
+# end_turn
+# [18] ESBranchFlag -> ESBranchFlag
+# branch
+# [19] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [20] ESAttackUp -> Here I come ♪
+# Increase damage to 150% for the next 5 turns
+# [21] ESEndPath -> ESEndPath
+# end_turn
+# [22] ESRandomSpawn -> Hahaaah ♪
+# Condition: When fire, water, wood, light, dark, heal, jammer, mortal poison orbs are on the board
+# Spawn random 5 Poison orbs
+# [23] ESEndPath -> ESEndPath
+# end_turn

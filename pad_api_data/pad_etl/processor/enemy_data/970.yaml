@@ -1,0 +1,56 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 970
+monster_name_en: Boulder Dragon, Garmut
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  max_atk_pct: null
+  name_en: Wood Stamp
+  name_jp: Wood Stamp
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Wood, Deal 125% damage
+  desc_jp: Change Random to Wood, Deal 125% damage
+  max_atk_pct: 125
+  name_en: Gaia Ball
+  name_jp: Gaia Ball
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESGravity -> Wood Stamp
+# Player -99% HP
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESOrbChangeAttack -> Gaia Ball
+# Condition: One-time use
+# Change Random to Wood

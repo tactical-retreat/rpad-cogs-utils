@@ -1,0 +1,96 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 100002
+monster_name_en: Alt. Tyran
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 3 Fire orbs, Deal 100% damage
+  desc_jp: Spawn random 3 Fire orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Heat Breath
+  name_jp: Heat Breath
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 3 Fire orbs, Deal 100% damage
+  desc_jp: Spawn random 3 Fire orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Heat Breath
+  name_jp: Heat Breath
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Delay active skills by 2 turns, Deal 95% damage
+  desc_jp: Delay active skills by 2 turns, Deal 95% damage
+  max_atk_pct: 95
+  name_en: Easing Friction
+  name_jp: Easing Friction
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESBranchFlag -> ESBranchFlag
+# branch
+# [4] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [5] ESRandomSpawn -> Heat Breath
+# Condition: When water, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board
+# Spawn random 3 Fire orbs
+# [6] ESEndPath -> ESEndPath
+# end_turn
+# [7] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
+# branch
+# [8] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
+# branch
+# [9] ESRandomSpawn -> Heat Breath
+# Condition: 50% chance & when Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 3 Fire orbs
+# [10] ESSkillDelay -> Easing Friction
+# Delay active skills by 2 turns
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESBranchFlag -> ESBranchFlag
+# branch
+# [13] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [14] ESDamageShield -> Mountain Protection
+# Reduce damage from all sources by 50% for 5 turns
+# [15] ESEndPath -> ESEndPath
+# end_turn
+# [16] ESAttackUp -> Jagged Mountain Range
+# Condition: One-time use
+# Increase damage to 300% for the next 99 turns
+# [17] ESAttackMultihit -> Magma Breath
+# Enemy action
+# [18] ESEndPath -> ESEndPath
+# end_turn

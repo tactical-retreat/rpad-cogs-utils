@@ -1,0 +1,53 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1324
+monster_name_en: Extreme King Metal Dragon
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: He looks full
+  name_jp: He looks full
+  record_type_name: PREEMPT
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESInactivity -> He looks full
+# Condition: One-time use
+# Do nothing
+# [4] ESEndPath -> ESEndPath
+# end_turn
+# [5] ESBranchFlag -> ESBranchFlag
+# branch
+# [6] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [7] ESAttackUp -> Hangry!
+# Condition: One-time use
+# Increase damage to 200% for the next 5 turns
+# [8] ESEndPath -> ESEndPath
+# end_turn
+# [9] ESAttackMultihit -> Chomp!
+# Condition: One-time use
+# Enemy action
+# [10] ESOrbChangeAttack -> Lick!
+# Condition: 40% chance
+# Change Random to Jammer

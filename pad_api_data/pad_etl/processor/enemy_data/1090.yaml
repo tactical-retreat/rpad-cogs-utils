@@ -1,0 +1,108 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1090
+monster_name_en: Hurricane Volcano Dragon
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 3
+############################################################
+!SkillRecordListing
+level: 3
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb Fire damage for 10 turns
+  desc_jp: Absorb Fire damage for 10 turns
+  max_atk_pct: null
+  name_en: Fire Scales
+  name_jp: Fire Scales
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Fire skyfall +25% for 5 turns
+  desc_jp: Fire skyfall +25% for 5 turns
+  max_atk_pct: null
+  name_en: Volcano Dragon's Howl
+  name_jp: Volcano Dragon's Howl
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Wood to Fire, Deal 80% damage
+  desc_jp: Change Wood to Fire, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Magma Ball
+  name_jp: Magma Ball
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Wood to Fire, Deal 80% damage
+  desc_jp: Change Wood to Fire, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Magma Ball
+  name_jp: Magma Ball
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 90%~150% damage (3~5 hits, 30% each)
+  desc_jp: Deal 90%~150% damage (3~5 hits, 30% each)
+  max_atk_pct: 150
+  name_en: Hurricane Fang
+  name_jp: Hurricane Fang
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESAbsorbAttribute -> Fire Scales
+# Absorb Fire damage for 10 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESSkyfall -> Volcano Dragon's Howl
+# Condition: One-time use
+# Fire skyfall +25% for 5 turns
+# [9] ESAttackMultihit -> Hurricane Fang
+# Condition: 50% chance when < 50% hp
+# Enemy action
+# [10] ESOrbChangeAttack -> Magma Ball
+# Condition: 50% chance
+# Change Wood to Fire

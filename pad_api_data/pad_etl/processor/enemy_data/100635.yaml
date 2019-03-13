@@ -1,0 +1,91 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 100635
+monster_name_en: Alt. Wind Archdemon Astaroth
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Blind orbs in specific positions for 3 turns
+  desc_jp: Blind orbs in specific positions for 3 turns
+  max_atk_pct: null
+  name_en: Let's have some fun!
+  name_jp: Let's have some fun!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Heal to Random, Deal 50% damage
+  desc_jp: Change Heal to Random, Deal 50% damage
+  max_atk_pct: 50
+  name_en: No healing for you!
+  name_jp: No healing for you!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Player -75% HP
+  desc_jp: Player -75% HP
+  max_atk_pct: null
+  name_en: Here I come!
+  name_jp: Here I come!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 30
+  name_jp: HP <= 30
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 320% damage (4 hits, 80% each)
+  desc_jp: Deal 320% damage (4 hits, 80% each)
+  max_atk_pct: 320
+  name_en: Do it Cauchemar!
+  name_jp: Do it Cauchemar!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESBlindStickyFixed -> Let's have some fun!
+# Blind orbs in specific positions for 3 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESAttackMultihit -> Do it Cauchemar!
+# Condition: When < 30% hp
+# Enemy action
+# [7] ESOrbChangeAttack -> No healing for you!
+# Condition: One-time use
+# Change Heal to Random
+# [8] ESGravity -> Here I come!
+# Player -75% HP
+# [9] ESEndPath -> ESEndPath
+# end_turn

@@ -1,0 +1,121 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2391
+monster_name_en: White Rainbow Ark, Noah
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Rcv 50% for 6 turns + Reduce damage from all sources by 75% for 6 turns
+    + Player -99% HP
+  desc_jp: Rcv 50% for 6 turns + Reduce damage from all sources by 75% for 6 turns
+    + Player -99% HP
+  max_atk_pct: null
+  name_en: Show me your worth! + Holy Ark of Sanctuary + Ark Impact
+  name_jp: Show me your worth! + Holy Ark of Sanctuary + Ark Impact
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Change all orbs to Water + Specific
+    orbs change every 2.0s for 5 turns
+  desc_jp: Voids status ailments for 999 turns + Change all orbs to Water + Specific
+    orbs change every 2.0s for 5 turns
+  max_atk_pct: null
+  name_en: Ark Protection + Dusky Glimmer + Hope on the Horizon
+  name_jp: Ark Protection + Dusky Glimmer + Hope on the Horizon
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Water + Jammer skyfall +20% for 3 turns
+  desc_jp: Change all orbs to Water + Jammer skyfall +20% for 3 turns
+  max_atk_pct: null
+  name_en: Dusky Glimmer + Judgment Rain
+  name_jp: Dusky Glimmer + Judgment Rain
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Water + Locked random skyfall +100% for 1 turns
+  desc_jp: Change all orbs to Water + Locked random skyfall +100% for 1 turns
+  max_atk_pct: null
+  name_en: Dusky Glimmer + Calvary Rain
+  name_jp: Dusky Glimmer + Calvary Rain
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 2000% damage (2 hits, 1000% each)
+  desc_jp: Deal 2000% damage (2 hits, 1000% each)
+  max_atk_pct: 2000
+  name_en: Punishment Bolt
+  name_jp: Punishment Bolt
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESDebuffRCV -> Show me your worth!
+# 	Rcv 50% for 6 turns
+# 	[1] ESDamageShield -> Holy Ark of Sanctuary
+# 	Reduce damage from all sources by 75% for 6 turns
+# 	[2] ESGravity -> Ark Impact
+# 	Player -99% HP
+# [3] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESStatusShield -> Ark Protection
+# 	Voids status ailments for 999 turns
+# 	[1] ESBoardChangeAttackBits -> Dusky Glimmer
+# 	Change all orbs to Water
+# 	[2] ESSpinnersFixed -> Hope on the Horizon
+# 	Specific orbs change every 2.0s for 5 turns
+# [4] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESBoardChangeAttackBits -> Dusky Glimmer
+# 	Change all orbs to Water
+# 	[1] ESSkyfall -> Judgment Rain
+# 	Jammer skyfall +20% for 3 turns
+# [5] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESBoardChangeAttackBits -> Dusky Glimmer
+# 	Change all orbs to Water
+# 	[1] ESSkyfall -> Calvary Rain
+# 	Locked random skyfall +100% for 1 turns
+# [6] ESAttackMultihit -> Punishment Bolt
+# Enemy action

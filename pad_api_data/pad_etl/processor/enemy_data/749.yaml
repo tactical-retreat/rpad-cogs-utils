@@ -1,0 +1,92 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 749
+monster_name_en: Incarnation of Genbu, Meimei
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Oh, come on in!
+  name_jp: Oh, come on in!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 1 both leaders for 3~4 turns
+  desc_jp: Bind 1 both leaders for 3~4 turns
+  max_atk_pct: null
+  name_en: Snake Seal
+  name_jp: Snake Seal
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 90% damage
+  desc_jp: Change Random to Jammer, Deal 90% damage
+  max_atk_pct: 90
+  name_en: Special Sake - Ryuugoroshi
+  name_jp: Special Sake - Ryuugoroshi
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 20
+  name_jp: HP <= 20
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 210% damage (7 hits, 30% each)
+  desc_jp: Deal 210% damage (7 hits, 30% each)
+  max_atk_pct: 210
+  name_en: Northern Seven-Star Formation
+  name_jp: Northern Seven-Star Formation
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESInactivity -> Oh, come on in!
+# Do nothing
+# [7] ESAttackMultihit -> Northern Seven-Star Formation
+# Condition: When < 20% hp
+# Enemy action
+# [8] ESBindTarget -> Snake Seal
+# Condition: One-time use
+# Bind 1 both leaders for 3~4 turns
+# [9] ESOrbChangeAttack -> Special Sake - Ryuugoroshi
+# Condition: 70% chance
+# Change Random to Jammer

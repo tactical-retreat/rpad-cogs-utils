@@ -1,0 +1,137 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2567
+monster_name_en: Past Life Jade Dragon Caller, Sonia
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  max_atk_pct: null
+  name_en: You're not getting through!
+  name_jp: You're not getting through!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 3rd column to Wood orbs, Deal 150% damage
+  desc_jp: Change 3rd column to Wood orbs, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Gale Shot
+  name_jp: Gale Shot
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 2 Poison orbs, Deal 110% damage
+  desc_jp: Spawn random 2 Poison orbs, Deal 110% damage
+  max_atk_pct: 110
+  name_en: Poison Arrow
+  name_jp: Poison Arrow
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 69
+  name_jp: HP <= 69
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind active skills for 6 turns
+  desc_jp: Bind active skills for 6 turns
+  max_atk_pct: null
+  name_en: Ancient Dragon Tribe's Dark Curse
+  name_jp: Ancient Dragon Tribe's Dark Curse
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 29
+  name_jp: HP <= 29
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Draco Summon-Swift Dragon Emperor
+  name_jp: Draco Summon-Swift Dragon Emperor
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 29
+  name_jp: HP <= 29
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 2500% damage (5 hits, 500% each)
+  desc_jp: Deal 2500% damage (5 hits, 500% each)
+  max_atk_pct: 2500
+  name_en: World-Wrecking Windstorm
+  name_jp: World-Wrecking Windstorm
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESGravity -> You're not getting through!
+# Player -99% HP
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] ESBranchHP -> ESBranchHP
+# branch
+# [8] ESColumnSpawnMulti -> Gale Shot
+# Condition: One-time use
+# Change 3rd column to Wood orbs
+# [9] ESRandomSpawn -> Poison Arrow
+# Condition: When fire, water, wood, light, dark, heal, jammer, mortal poison orbs are on the board
+# Spawn random 2 Poison orbs
+# [10] ESEndPath -> ESEndPath
+# end_turn
+# [11] ESBranchFlag -> ESBranchFlag
+# branch
+# [12] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [13] ESBindSkill -> Ancient Dragon Tribe's Dark Curse
+# Bind active skills for 6 turns
+# [14] ESBranchFlag -> ESBranchFlag
+# branch
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] ESInactivity -> Draco Summon-Swift Dragon Emperor
+# Do nothing
+# [17] ESEndPath -> ESEndPath
+# end_turn
+# [18] ESAttackMultihit -> World-Wrecking Windstorm
+# Enemy action

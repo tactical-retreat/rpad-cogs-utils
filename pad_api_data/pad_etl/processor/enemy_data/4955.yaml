@@ -1,0 +1,115 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4955
+monster_name_en: '*****'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Increase damage to 150% for the next 3 turns + Movetime -2s for 3 turns
+  desc_jp: Increase damage to 150% for the next 3 turns + Movetime -2s for 3 turns
+  max_atk_pct: null
+  name_en: You don't wanna play with snow? + Hurry up or it's gonna melt!
+  name_jp: You don't wanna play with snow? + Hurry up or it's gonna melt!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 20
+  name_jp: HP <= 20
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: The summer heat is killing me...
+  name_jp: The summer heat is killing me...
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 20
+  name_jp: HP <= 20
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 150% for the next 3 turns + Movetime -2s for 3 turns
+  desc_jp: Increase damage to 150% for the next 3 turns + Movetime -2s for 3 turns
+  max_atk_pct: null
+  name_en: You don't wanna play with snow? + Hurry up or it's gonna melt!
+  name_jp: You don't wanna play with snow? + Hurry up or it's gonna melt!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	[0] ESAttackUp -> You don't wanna play with snow?
+# 	Increase damage to 150% for the next 3 turns
+# 	[1] ESDebuffMovetime -> Hurry up or it's gonna melt!
+# 	Movetime -2s for 3 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESSetCounter -> ESSetCounter
+# set_counter
+# [7] ESBranchCounter -> ESBranchCounter
+# branch
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESBranchCounter -> ESBranchCounter
+# branch
+# [10] SkillSet:
+# 	Condition: 34% chance
+# 	[0] ESGravity -> Let's chill things down!
+# 	Player -25% HP
+# 	[1] ESAttackMultihit -> Get frozen!
+# 	Enemy action
+# [11] SkillSet:
+# 	Condition: 33% chance
+# 	[0] ESOrbChangeAttack -> Frozen Gift♪
+# 	Change Random to Water
+# 	[1] ESSkillDelay -> Don't ever melt, okay?
+# 	Delay active skills by 1 turns
+# [12] SkillSet:
+# 	Condition: 33% chance
+# 	[0] ESOrbLock -> I'll let you freeze a little!
+# 	Lock 8 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# 	[1] ESBindAttack -> Brrrr♪
+# 	Bind 1 subs for 2 turns
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESInactivity -> The summer heat is killing me...
+# Do nothing
+# [15] ESEndPath -> ESEndPath
+# end_turn
+# [16] ESSetCounter -> ESSetCounter
+# set_counter
+# [17] SkillSet:
+# 	[0] ESAttackUp -> You don't wanna play with snow?
+# 	Increase damage to 150% for the next 3 turns
+# 	[1] ESDebuffMovetime -> Hurry up or it's gonna melt!
+# 	Movetime -2s for 3 turns
+# [18] ESEndPath -> ESEndPath
+# end_turn
+# [19] ESAttackMultihit -> Glittering Snow Make-Up
+# Enemy action
+# [20] ESEndPath -> ESEndPath
+# end_turn

@@ -1,0 +1,101 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 789
+monster_name_en: Cockatrice
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Chirping
+  name_jp: Chirping
+  record_type_name: ACTION
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Chirping
+  name_jp: Chirping
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Random 2 to Jammer
+  desc_jp: Change Random 2 to Jammer
+  max_atk_pct: null
+  name_en: Chaos Eye
+  name_jp: Chaos Eye
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 29
+  name_jp: HP <= 29
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Chirping
+  name_jp: Chirping
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Bind 1 random cards for 5 turns
+  desc_jp: Bind 1 random cards for 5 turns
+  max_atk_pct: null
+  name_en: Evil Eye
+  name_jp: Evil Eye
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESInactivity -> Chirping
+# Condition: 25% chance
+# Do nothing
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchHP -> ESBranchHP
+# branch
+# [5] ESBindRandom -> Evil Eye
+# Condition: One-time use
+# Bind 1 random cards for 5 turns
+# [6] ESJammerChangeRandom -> Chaos Eye
+# Condition: 20% chance
+# Change Random 2 to Jammer

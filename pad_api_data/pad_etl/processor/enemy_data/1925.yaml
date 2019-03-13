@@ -1,0 +1,88 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1925
+monster_name_en: War Deity of the Magic Spear, Odin
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 50%
+  desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
+  name_en: Resolve
+  name_jp: Resolve
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Change 1st row to Dark orbs, 5th row to Heal orbs, Deal 90% damage
+  desc_jp: Change 1st row to Dark orbs, 5th row to Heal orbs, Deal 90% damage
+  max_atk_pct: 90
+  name_en: Demonic Dual Spears
+  name_jp: Demonic Dual Spears
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 1st column to Water orbs, Deal 100% damage
+  desc_jp: Change 1st column to Water orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Azure Blade
+  name_jp: Azure Blade
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change 6th column to Dark orbs, Deal 100% damage
+  desc_jp: Change 6th column to Dark orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Purple Thrust
+  name_jp: Purple Thrust
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 10
+  name_jp: HP <= 10
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 150% damage
+  desc_jp: Deal 150% damage
+  max_atk_pct: 150
+  name_en: "B\xF6lverkr's Strike"
+  name_jp: "B\xF6lverkr's Strike"
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESRowSpawnMulti -> Demonic Dual Spears
+# Condition: One-time use
+# Change 1st row to Dark orbs, 5th row to Heal orbs
+# [3] ESAttackMultihit -> Bölverkr's Strike
+# Condition: When < 10% hp
+# Enemy action
+# [4] ESColumnSpawnMulti -> Azure Blade
+# Condition: 50% chance
+# Change 1st column to Water orbs
+# [5] ESColumnSpawnMulti -> Purple Thrust
+# Change 6th column to Dark orbs
+# [6] ESEndPath -> ESEndPath
+# end_turn
+# [7] ESResolve -> Resolve
+# Survive attacks with 1 HP when HP > 50%

@@ -1,0 +1,75 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1211
+monster_name_en: Devil of the Depths, Kraken
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Bind Wood cards for 3 turns
+  desc_jp: Bind Wood cards for 3 turns
+  max_atk_pct: null
+  name_en: Creeping Hand of Evil
+  name_jp: Creeping Hand of Evil
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 2 subs for 2 turns, Deal 75% damage
+  desc_jp: Bind 2 subs for 2 turns, Deal 75% damage
+  max_atk_pct: 75
+  name_en: Tentacle Attack
+  name_jp: Tentacle Attack
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 30
+  name_jp: HP <= 30
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 150% damage (3 hits, 50% each)
+  desc_jp: Deal 150% damage (3 hits, 50% each)
+  max_atk_pct: 150
+  name_en: Hard Tentacle
+  name_jp: Hard Tentacle
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESBindAttribute -> Creeping Hand of Evil
+# Bind Wood cards for 3 turns
+# [5] ESBlind -> Blackout
+# Blind all orbs on the board
+# [6] ESEndPath -> ESEndPath
+# end_turn
+# [7] ESBindAttack -> Tentacle Attack
+# Condition: One-time use
+# Bind 2 subs for 2 turns
+# [8] ESAttackMultihit -> Hard Tentacle
+# Condition: When < 30% hp
+# Enemy action

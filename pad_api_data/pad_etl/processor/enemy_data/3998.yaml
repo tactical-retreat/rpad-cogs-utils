@@ -1,0 +1,61 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3998
+monster_name_en: Ancient Castle Guards, Poltergift
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Random 1 orbs change every 1.0s for 1 turns, Deal 100% damage
+  desc_jp: Random 1 orbs change every 1.0s for 1 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Wonder Candle
+  name_jp: Wonder Candle
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Jammer skyfall +20% for 1 turns, Deal 100% damage
+  desc_jp: Jammer skyfall +20% for 1 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Candy Rain
+  name_jp: Candy Rain
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESSpinnersRandom -> Wonder Candle
+# Condition: One-time use
+# Random 1 orbs change every 1.0s for 1 turns
+# [4] ESSkyfall -> Candy Rain
+# Jammer skyfall +20% for 1 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn

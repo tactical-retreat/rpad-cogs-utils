@@ -1,0 +1,143 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 100320
+monster_name_en: Alt. Dark Golem Mk.III
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Enemy turn counter change to 1 when HP <= 50%
+  desc_jp: Enemy turn counter change to 1 when HP <= 50%
+  max_atk_pct: null
+  name_en: Enemy's next turn changed
+  name_jp: Enemy's next turn changed
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Absorb Light damage for 3 turns
+  desc_jp: Absorb Light damage for 3 turns
+  max_atk_pct: null
+  name_en: Dark Barrier
+  name_jp: Dark Barrier
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 4 Mortal Poison orbs, Deal 150% damage
+  desc_jp: Spawn random 4 Mortal Poison orbs, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Dark Spark
+  name_jp: Dark Spark
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 40
+  name_jp: HP <= 40
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 4 Mortal Poison orbs, Deal 150% damage
+  desc_jp: Spawn random 4 Mortal Poison orbs, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Dark Spark
+  name_jp: Dark Spark
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 60%~180% damage (2~6 hits, 30% each)
+  desc_jp: Deal 60%~180% damage (2~6 hits, 30% each)
+  max_atk_pct: 180
+  name_en: Genocide Bit
+  name_jp: Genocide Bit
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 39
+  name_jp: HP <= 39
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 4 Mortal Poison orbs, Deal 150% damage
+  desc_jp: Spawn random 4 Mortal Poison orbs, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Dark Spark
+  name_jp: Dark Spark
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 125% for the next 5 turns
+  desc_jp: Increase damage to 125% for the next 5 turns
+  max_atk_pct: null
+  name_en: Attack Stance
+  name_jp: Attack Stance
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 40
+  name_jp: HP <= 40
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 60%~180% damage (2~6 hits, 30% each)
+  desc_jp: Deal 60%~180% damage (2~6 hits, 30% each)
+  max_atk_pct: 180
+  name_en: Genocide Bit
+  name_jp: Genocide Bit
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESAbsorbAttribute -> Dark Barrier
+# Absorb Light damage for 3 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] ESRandomSpawn -> Dark Spark
+# Condition: When fire, water, wood, light, dark, heal, jammer, poison orbs are on the board
+# Spawn random 4 Mortal Poison orbs
+# [8] ESEndPath -> ESEndPath
+# end_turn
+# [9] ESAttackUp -> Attack Stance
+# Condition: 30% chance when < 50% hp
+# Increase damage to 125% for the next 5 turns
+# [10] ESAttackMultihit -> Genocide Bit
+# Condition: 40% chance when < 40% hp
+# Enemy action
+# [11] ESRandomSpawn -> Dark Spark
+# Condition: When fire, water, wood, light, dark, heal, jammer, poison orbs are on the board
+# Spawn random 4 Mortal Poison orbs
+# [12] ESEndPath -> ESEndPath
+# end_turn
+# [13] ESTurnChangePassive -> Enemy's next turn changed
+# Enemy turn counter change to 1 when HP <= 50%

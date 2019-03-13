@@ -1,0 +1,103 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4215
+monster_name_en: West Loving Goddess, Haku
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Dark skyfall +15% for 3 turns
+  desc_jp: Dark skyfall +15% for 3 turns
+  max_atk_pct: null
+  name_en: Do you like it?
+  name_jp: Do you like it?
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Fix orb movement starting point to random position on the board, Deal 120%
+    damage
+  desc_jp: Fix orb movement starting point to random position on the board, Deal 120%
+    damage
+  max_atk_pct: 120
+  name_en: Don't get cocky now
+  name_jp: Don't get cocky now
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb Dark damage for 2 turns
+  desc_jp: Absorb Dark damage for 2 turns
+  max_atk_pct: null
+  name_en: Byakko's Perception
+  name_jp: Byakko's Perception
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 10
+  name_jp: HP <= 10
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Fire, Water, Dark, Deal 180% damage
+  desc_jp: Change all orbs to Fire, Water, Dark, Deal 180% damage
+  max_atk_pct: 180
+  name_en: Byakko Seven-Star Perception
+  name_jp: Byakko Seven-Star Perception
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESSkyfall -> Do you like it?
+# Condition: One-time use
+# Dark skyfall +15% for 3 turns
+# [5] ESAbsorbAttribute -> Byakko's Perception
+# Condition: When < 50% hp , one-time use
+# Absorb Dark damage for 2 turns
+# [6] ESBoardChangeAttackBits -> Byakko Seven-Star Perception
+# Condition: When < 10% hp
+# Change all orbs to Fire, Water, Dark
+# [7] ESBranchCounter -> ESBranchCounter
+# branch
+# [8] ESSetCounter -> ESSetCounter
+# set_counter
+# [9] ESAbsorbCombo -> Rosy Cheeks
+# Condition: 15% chance
+# Absorb combo <= 5 damage for 2 turns
+# [10] ESAttackMultihit -> Sweet Combo
+# Enemy action
+# [11] ESSetCounter -> ESSetCounter
+# set_counter
+# [12] ESFixedStart -> Don't get cocky now
+# Fix orb movement starting point to random position on the board
+# [13] ESEndPath -> ESEndPath
+# end_turn

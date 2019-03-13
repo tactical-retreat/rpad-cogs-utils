@@ -1,0 +1,60 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 718
+monster_name_en: Hamahime
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind Light cards for 2~4 turns
+  desc_jp: Bind Light cards for 2~4 turns
+  max_atk_pct: null
+  name_en: Flash Bind
+  name_jp: Flash Bind
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Fire to Dark
+  desc_jp: Change Fire to Dark
+  max_atk_pct: null
+  name_en: Hellfire Transformation - Dk
+  name_jp: Hellfire Transformation - Dk
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESBindAttribute -> Flash Bind
+# Condition: One-time use
+# Bind Light cards for 2~4 turns
+# [4] ESOrbChangeSingle -> Hellfire Transformation - Dk
+# Condition: 50% chance
+# Change Fire to Dark

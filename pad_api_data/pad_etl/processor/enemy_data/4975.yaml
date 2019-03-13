@@ -1,0 +1,176 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4975
+monster_name_en: '*****'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 50%
+  desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
+  name_en: Resolve
+  name_jp: Resolve
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Bind 1 random subs for 3 turns + Player -75% HP
+  desc_jp: Bind 1 random subs for 3 turns + Player -75% HP
+  max_atk_pct: null
+  name_en: I am Shogunyan! + Now, die!
+  name_jp: I am Shogunyan! + Now, die!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 1 turns
+  desc_jp: Increase damage to 200% for the next 1 turns
+  max_atk_pct: null
+  name_en: My mind is concentrating...
+  name_jp: My mind is concentrating...
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 5 Jammer orbs, Deal 90% damage
+  desc_jp: Spawn random 5 Jammer orbs, Deal 90% damage
+  max_atk_pct: 90
+  name_en: Are you here to kill me?
+  name_jp: Are you here to kill me?
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 105% damage (3 hits, 35% each)
+  desc_jp: Deal 105% damage (3 hits, 35% each)
+  max_atk_pct: 105
+  name_en: Flash Slash!
+  name_jp: Flash Slash!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Random to Wood, Deal 95% damage
+  desc_jp: Change Random to Wood, Deal 95% damage
+  max_atk_pct: 95
+  name_en: Whirlwind Slash!!
+  name_jp: Whirlwind Slash!!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 150% for the next 5 turns + Absorb combo <= 5 damage
+    for 5 turns
+  desc_jp: Increase damage to 150% for the next 5 turns + Absorb combo <= 5 damage
+    for 5 turns
+  max_atk_pct: null
+  name_en: This is secret skill! + Haha! I am victorious!
+  name_jp: This is secret skill! + Haha! I am victorious!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 4 random subs for 1 turns + Do nothing
+  desc_jp: Bind 4 random subs for 1 turns + Do nothing
+  max_atk_pct: null
+  name_en: S-Sympathy of a samurai... + Wait a moment!
+  name_jp: S-Sympathy of a samurai... + Wait a moment!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 210% damage (6 hits, 35% each)
+  desc_jp: Deal 210% damage (6 hits, 35% each)
+  max_atk_pct: 210
+  name_en: Katsuobushi Slice
+  name_jp: Katsuobushi Slice
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESBindRandomSub -> I am Shogunyan!
+# 	Bind 1 random subs for 3 turns
+# 	[1] ESGravity -> Now, die!
+# 	Player -75% HP
+# [3] ESBranchHP -> ESBranchHP
+# branch
+# [4] ESBranchHP -> ESBranchHP
+# branch
+# [5] ESAttackUp -> My mind is concentrating...
+# Condition: One-time use
+# Increase damage to 200% for the next 1 turns
+# [6] ESRandomSpawn -> Are you here to kill me?
+# Condition: 33% chance & when Fire, Water, Wood, Light, Dark, Heal, Poison, Mortal Poison orbs are on the board
+# Spawn random 5 Jammer orbs
+# [7] ESAttackMultihit -> Flash Slash!
+# Condition: 33% chance
+# Enemy action
+# [8] ESOrbChangeAttack -> Whirlwind Slash!!
+# Condition: 34% chance
+# Change Random to Wood
+# [9] ESEndPath -> ESEndPath
+# end_turn
+# [10] ESBranchFlag -> ESBranchFlag
+# branch
+# [11] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [12] SkillSet:
+# 	[0] ESAttackUp -> This is secret skill!
+# 	Increase damage to 150% for the next 5 turns
+# 	[1] ESAbsorbCombo -> Haha! I am victorious!
+# 	Absorb combo <= 5 damage for 5 turns
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESBranchFlag -> ESBranchFlag
+# branch
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] SkillSet:
+# 	[0] ESBindRandomSub -> S-Sympathy of a samurai...
+# 	Bind 4 random subs for 1 turns
+# 	[1] ESInactivity -> Wait a moment!
+# 	Do nothing
+# [17] ESEndPath -> ESEndPath
+# end_turn
+# [18] ESAttackMultihit -> Katsuobushi Slice
+# Enemy action
+# [19] ESEndPath -> ESEndPath
+# end_turn
+# [20] ESResolve -> Resolve
+# Survive attacks with 1 HP when HP > 50%

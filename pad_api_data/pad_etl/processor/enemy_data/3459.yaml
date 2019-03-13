@@ -1,0 +1,117 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3459
+monster_name_en: Demonic Gentleman of Heresy, Azazel
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Dark by 50%
+  desc_jp: Reduce damage from Dark by 50%
+  max_atk_pct: null
+  name_en: Dark damage halved
+  name_jp: Dark damage halved
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 50%
+  desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
+  name_en: Azazel Resolve
+  name_jp: Azazel Resolve
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Seal 1st row for 6 turns
+  desc_jp: Voids status ailments for 999 turns + Seal 1st row for 6 turns
+  max_atk_pct: null
+  name_en: Worship me! + Wings of Restraint
+  name_jp: Worship me! + Wings of Restraint
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 15
+  name_jp: HP <= 15
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 1000% damage (10 hits, 100% each)
+  desc_jp: Deal 1000% damage (10 hits, 100% each)
+  max_atk_pct: 1000
+  name_en: Sanction Spiral
+  name_jp: Sanction Spiral
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	[0] ESStatusShield -> Worship me!
+# 	Voids status ailments for 999 turns
+# 	[1] ESOrbSealRow -> Wings of Restraint
+# 	Seal 1st row for 6 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] SkillSet:
+# 	Condition: When < 50% hp , one-time use
+# 	[0] ESRecoverEnemy -> Sacred Goat Blood
+# 	Enemy recover 100% hp
+# 	[1] ESDamageShield -> God's Echo
+# 	Reduce damage from all sources by 50% for 99 turns
+# [7] ESAttackMultihit -> Sanction Spiral
+# Condition: When < 15% hp
+# Enemy action
+# [8] ESBranchFlag -> ESBranchFlag
+# branch
+# [9] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [10] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESAbsorbThreshold -> Eye of Reality
+# 	Absorb damage >= 15000000 damage for 999 turns
+# 	[1] ESAttackMultihit -> Lethal Chain
+# 	Enemy action
+# [11] SkillSet:
+# 	[0] ESSkillDelay -> Heavenly Eye of Reality
+# 	Delay active skills by 7 turns
+# 	[1] ESAttackMultihit -> Lethal Chain
+# 	Enemy action
+# [12] ESEndPath -> ESEndPath
+# end_turn
+# [13] ESBranchFlag -> ESBranchFlag
+# branch
+# [14] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [15] ESOrbLock -> Pearl Face
+# Lock 10 random Light, Heal, Poison, Mortal Poison orbs
+# [16] ESEndPath -> ESEndPath
+# end_turn
+# [17] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [18] ESRandomSpawn -> Shenisa
+# Condition: 50% chance & when Fire, Water, Wood, Light, Dark, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 7 Mortal Poison orbs
+# [19] ESColumnSpawnMulti -> Erythra
+# Change 1st, 2nd column to Fire, Water, Poison orbs, 3rd, 4th column to Wood, Light, Poison orbs, 5th, 6th column to Dark, Heal, Poison orbs
+# [20] ESEndPath -> ESEndPath
+# end_turn
+# [21] ESAttributeResist -> Dark damage halved
+# Reduce damage from Dark by 50%
+# [22] ESResolve -> Azazel Resolve
+# Survive attacks with 1 HP when HP > 50%

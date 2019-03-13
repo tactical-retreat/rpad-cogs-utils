@@ -1,0 +1,135 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 105014
+monster_name_en: Servant, Lancer
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Seal 5th row for 5 turns
+  desc_jp: Seal 5th row for 5 turns
+  max_atk_pct: null
+  name_en: Hey... Was that your handiwork?
+  name_jp: Hey... Was that your handiwork?
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 2 random subs for 3 turns, Deal 90% damage
+  desc_jp: Bind 2 random subs for 3 turns, Deal 90% damage
+  max_atk_pct: 90
+  name_en: I'm not letting you get away.
+  name_jp: I'm not letting you get away.
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing + Enemy action
+  desc_jp: Do nothing + Enemy action
+  max_atk_pct: null
+  name_en: 'I''ll have your heart! + Gae Bolg:
+
+    Barbed Spear that Pierces with Death'
+  name_jp: 'I''ll have your heart! + Gae Bolg:
+
+    Barbed Spear that Pierces with Death'
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb combo <= 5 damage for 99 turns
+  desc_jp: Absorb combo <= 5 damage for 99 turns
+  max_atk_pct: null
+  name_en: Protection from Arrows
+  name_jp: Protection from Arrows
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 14
+  name_jp: HP <= 14
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing + Change 3rd row to Water orbs
+  desc_jp: Do nothing + Change 3rd row to Water orbs
+  max_atk_pct: null
+  name_en: 'It''s a bit far, but I''ll settle it now! + Gae Bolg:
+
+    Soaring Spear of Piercing Death'
+  name_jp: 'It''s a bit far, but I''ll settle it now! + Gae Bolg:
+
+    Soaring Spear of Piercing Death'
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESOrbSealRow -> Hey... Was that your handiwork?
+# Condition: One-time use
+# Seal 5th row for 5 turns
+# [5] ESBranchHP -> ESBranchHP
+# branch
+# [6] ESAbsorbCombo -> Protection from Arrows
+# Condition: One-time use
+# Absorb combo <= 5 damage for 99 turns
+# [7] ESBranchHP -> ESBranchHP
+# branch
+# [8] ESBranchFlag -> ESBranchFlag
+# branch
+# [9] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [10] ESBindRandomSub -> I'm not letting you get away.
+# Bind 2 random subs for 3 turns
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [13] SkillSet:
+# 	[0] ESInactivity -> I'll have your heart!
+# 	Do nothing
+# 	[1] ESAttackMultihit -> Gae Bolg:
+# Barbed Spear that Pierces with Death
+# 	Enemy action
+# [14] ESEndPath -> ESEndPath
+# end_turn
+# [15] SkillSet:
+# 	[0] ESInactivity -> It's a bit far, but I'll settle it now!
+# 	Do nothing
+# 	[1] ESRowSpawnMulti -> Gae Bolg:
+# Soaring Spear of Piercing Death
+# 	Change 3rd row to Water orbs
+# [16] ESEndPath -> ESEndPath
+# end_turn

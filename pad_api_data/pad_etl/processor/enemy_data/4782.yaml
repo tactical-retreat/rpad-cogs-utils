@@ -1,0 +1,131 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4782
+monster_name_en: '*****'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Change Light to Jammer
+  desc_jp: Change Light to Jammer
+  max_atk_pct: null
+  name_en: This time! This time, I will grasp happiness!
+  name_jp: This time! This time, I will grasp happiness!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 1 subs for 1 turns, Deal 120% damage
+  desc_jp: Bind 1 subs for 1 turns, Deal 120% damage
+  max_atk_pct: 120
+  name_en: The spiral staircase of pain keeps going!
+  name_jp: The spiral staircase of pain keeps going!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Random 2 orbs change every 1.0s for 1 turns, Deal 80% damage
+  desc_jp: Random 2 orbs change every 1.0s for 1 turns, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Life is like gambling
+  name_jp: Life is like gambling
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 1 subs for 1 turns, Deal 120% damage
+  desc_jp: Bind 1 subs for 1 turns, Deal 120% damage
+  max_atk_pct: 120
+  name_en: The spiral staircase of pain keeps going!
+  name_jp: The spiral staircase of pain keeps going!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Random 2 orbs change every 1.0s for 1 turns, Deal 80% damage
+  desc_jp: Random 2 orbs change every 1.0s for 1 turns, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Life is like gambling
+  name_jp: Life is like gambling
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Poison skyfall +10% for 3 turns
+  desc_jp: Poison skyfall +10% for 3 turns
+  max_atk_pct: null
+  name_en: This sucks already...
+  name_jp: This sucks already...
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 150% damage
+  desc_jp: Deal 150% damage
+  max_atk_pct: 150
+  name_en: I'll end this for you!!
+  name_jp: I'll end this for you!!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 150% damage
+  desc_jp: Deal 150% damage
+  max_atk_pct: 150
+  name_en: I'll end this for you!!
+  name_jp: I'll end this for you!!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESOrbChangeAttackBits -> This time! This time, I will grasp happiness!
+# Condition: One-time use
+# Change Light to Jammer
+# [5] ESRandomSpawn -> NOW! NOW I will grasp happiness!
+# Condition: One-time use & when Fire, Water, Wood, Light, Dark, Heal, Poison, Mortal Poison orbs are on the board
+# Spawn random 4 Jammer orbs
+# [6] ESSkyfall -> This sucks already...
+# Condition: When < 50% hp , one-time use
+# Poison skyfall +10% for 3 turns
+# [7] ESAttackMultihit -> I'll end this for you!!
+# Condition: 30% chance when < 50% hp
+# Enemy action
+# [8] ESBindAttack -> The spiral staircase of pain keeps going!
+# Condition: 50% chance
+# Bind 1 subs for 1 turns
+# [9] ESSpinnersRandom -> Life is like gambling
+# Random 2 orbs change every 1.0s for 1 turns
+# [10] ESEndPath -> ESEndPath
+# end_turn

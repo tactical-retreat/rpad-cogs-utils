@@ -1,0 +1,185 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1662
+monster_name_en: Goddess of the Starry Sky, Nut
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 50%
+  desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
+  name_en: Resolve
+  name_jp: Resolve
+  record_type_name: PASSIVE
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 50%
+  desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
+  name_en: Resolve
+  name_jp: Resolve
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Movetime 50% for 10 turns + Change Heal to Jammer + Voids status ailments
+    for 999 turns
+  desc_jp: Movetime 50% for 10 turns + Change Heal to Jammer + Voids status ailments
+    for 999 turns
+  max_atk_pct: null
+  name_en: Swirling Black Emotions + Threat Removal + Quat Dafiea Easifah
+  name_jp: Swirling Black Emotions + Threat Removal + Quat Dafiea Easifah
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn locked Bomb orbs in the specified positions + Rcv 50% for 10 turns
+  desc_jp: Spawn locked Bomb orbs in the specified positions + Rcv 50% for 10 turns
+  max_atk_pct: null
+  name_en: Exploding Heresy + Look of False Evil
+  name_jp: Exploding Heresy + Look of False Evil
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 5 locked Bomb orbs, Deal 100% damage
+  desc_jp: Spawn random 5 locked Bomb orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Khunbala Rogzu
+  name_jp: Khunbala Rogzu
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Spawn random 8 Jammer orbs, Deal 110% damage
+  desc_jp: Spawn random 8 Jammer orbs, Deal 110% damage
+  max_atk_pct: 110
+  name_en: Nuqta Mahjur
+  name_jp: Nuqta Mahjur
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 120% damage (4 hits, 30% each)
+  desc_jp: Deal 120% damage (4 hits, 30% each)
+  max_atk_pct: 120
+  name_en: Geela Ahsefah
+  name_jp: Geela Ahsefah
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 9
+  name_jp: HP <= 9
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 400% damage (4 hits, 100% each)
+  desc_jp: Deal 400% damage (4 hits, 100% each)
+  max_atk_pct: 400
+  name_en: Torrent of Magical Powers
+  name_jp: Torrent of Magical Powers
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 0
+  name_jp: HP <= 0
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind awoken skills for 2 turns + Bind active skills for 2 turns
+  desc_jp: Bind awoken skills for 2 turns + Bind active skills for 2 turns
+  max_atk_pct: null
+  name_en: Breaking Distance + Delusion and Doubt
+  name_jp: Breaking Distance + Delusion and Doubt
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] SkillSet:
+# 	[0] ESDebuffMovetime -> Swirling Black Emotions
+# 	Movetime 50% for 10 turns
+# 	[1] ESOrbChangeAttack -> Threat Removal
+# 	Change Heal to Jammer
+# 	[2] ESStatusShield -> Quat Dafiea Easifah
+# 	Voids status ailments for 999 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchFlag -> ESBranchFlag
+# branch
+# [9] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [10] SkillSet:
+# 	[0] ESBombFixedSpawn -> Exploding Heresy
+# 	Spawn locked Bomb orbs in the specified positions
+# 	[1] ESDebuffRCV -> Look of False Evil
+# 	Rcv 50% for 10 turns
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESBranchHP -> ESBranchHP
+# branch
+# [13] ESBombRandomSpawn -> Khunbala Rogzu
+# Condition: 33% chance
+# Spawn random 5 locked Bomb orbs
+# [14] ESRandomSpawn -> Nuqta Mahjur
+# Condition: 33% chance & when Fire, Water, Wood, Light, Dark, Heal, Poison, Mortal Poison orbs are on the board
+# Spawn random 8 Jammer orbs
+# [15] ESAttackMultihit -> Geela Ahsefah
+# Condition: 34% chance
+# Enemy action
+# [16] ESEndPath -> ESEndPath
+# end_turn
+# [17] ESBranchHP -> ESBranchHP
+# branch
+# [18] ESAttackMultihit -> Torrent of Magical Powers
+# Enemy action
+# [19] ESEndPath -> ESEndPath
+# end_turn
+# [20] ESBranchFlag -> ESBranchFlag
+# branch
+# [21] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [22] SkillSet:
+# 	[0] ESBindAwoken -> Breaking Distance
+# 	Bind awoken skills for 2 turns
+# 	[1] ESBindSkill -> Delusion and Doubt
+# 	Bind active skills for 2 turns
+# [23] ESEndPath -> ESEndPath
+# end_turn
+# [24] ESResolve -> Resolve
+# Survive attacks with 1 HP when HP > 50%

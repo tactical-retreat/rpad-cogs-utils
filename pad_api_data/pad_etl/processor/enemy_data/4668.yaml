@@ -1,0 +1,109 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4668
+monster_name_en: '*****'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Player -75% HP
+  desc_jp: Player -75% HP
+  max_atk_pct: null
+  name_en: Malice Prince
+  name_jp: Malice Prince
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Light, Deal 120% damage
+  desc_jp: Change Random to Light, Deal 120% damage
+  max_atk_pct: 120
+  name_en: H-Shot
+  name_jp: H-Shot
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 2 turns, Deal 100% damage
+  desc_jp: Reduce damage from all sources by 50% for 2 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Heavy Ball
+  name_jp: Heavy Ball
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Delay active skills by 2 turns, Deal 100% damage
+  desc_jp: Delay active skills by 2 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Wild Ball
+  name_jp: Wild Ball
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 9
+  name_jp: HP <= 9
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Specific orbs change every 2.0s for 1 turns, Deal 150% damage
+  desc_jp: Specific orbs change every 2.0s for 1 turns, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Excalibur!!!
+  name_jp: Excalibur!!!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESGravity -> Malice Prince
+# Player -75% HP
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESOrbChangeAttack -> H-Shot
+# Condition: One-time use
+# Change Random to Light
+# [10] ESDamageShield -> Heavy Ball
+# Condition: 50% chance
+# Reduce damage from all sources by 50% for 2 turns
+# [11] ESSkillDelay -> Wild Ball
+# Condition: 50% chance
+# Delay active skills by 2 turns
+# [12] ESEndPath -> ESEndPath
+# end_turn
+# [13] ESSpinnersFixed -> Excalibur!!!
+# Specific orbs change every 2.0s for 1 turns
+# [14] ESEndPath -> ESEndPath
+# end_turn

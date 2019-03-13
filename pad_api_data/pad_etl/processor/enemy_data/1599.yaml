@@ -1,0 +1,60 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1599
+monster_name_en: Cuaton
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Light to Jammer, Deal 80% damage
+  desc_jp: Change Light to Jammer, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Light Eating Attack
+  name_jp: Light Eating Attack
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 30
+  name_jp: HP <= 30
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 200% damage
+  desc_jp: Deal 200% damage
+  max_atk_pct: 200
+  name_en: Bugs Bomb
+  name_jp: Bugs Bomb
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESAttackMultihit -> Bugs Bomb
+# Condition: When < 30% hp
+# Enemy action
+# [4] ESOrbChangeAttack -> Light Eating Attack
+# Condition: One-time use
+# Change Light to Jammer

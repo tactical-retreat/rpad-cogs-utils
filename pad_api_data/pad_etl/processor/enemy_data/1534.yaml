@@ -1,0 +1,84 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1534
+monster_name_en: Awoken Neptune
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Light, Dark by 50%
+  desc_jp: Reduce damage from Light, Dark by 50%
+  max_atk_pct: null
+  name_en: '*****'
+  name_jp: '*****'
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 4 turns
+  desc_jp: Voids status ailments for 4 turns
+  max_atk_pct: null
+  name_en: Strike me down!
+  name_jp: Strike me down!
+  record_type_name: PREEMPT
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESStatusShield -> Strike me down!
+# Voids status ailments for 4 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchFlag -> ESBranchFlag
+# branch
+# [7] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [8] ESRowSpawnMulti -> Heavenstrom
+# Change 1st row to Poison orbs, 5th row to Heal orbs
+# [9] ESEndPath -> ESEndPath
+# end_turn
+# [10] ESBranchFlag -> ESBranchFlag
+# branch
+# [11] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [12] ESColumnSpawnMulti -> Heavenstrom
+# Change 1st column to Poison orbs, 6th column to Heal orbs
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESBranchFlag -> ESBranchFlag
+# branch
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] ESRowSpawnMulti -> Heavenstrom
+# Change 1st row to Heal orbs, 5th row to Poison orbs
+# [17] ESEndPath -> ESEndPath
+# end_turn
+# [18] ESBranchFlag -> ESBranchFlag
+# branch
+# [19] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [20] ESColumnSpawnMulti -> Heavenstrom
+# Change 1st column to Heal orbs, 6th column to Poison orbs
+# [21] ESEndPath -> ESEndPath
+# end_turn
+# [22] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [23] ESRowSpawnMulti -> Abysstrom
+# Change 1st row to Poison orbs, 5th row to Poison orbs
+# [24] ESAttributeResist -> *****
+# Reduce damage from Light, Dark by 50%

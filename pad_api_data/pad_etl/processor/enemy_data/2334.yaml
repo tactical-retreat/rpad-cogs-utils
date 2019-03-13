@@ -1,0 +1,77 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2334
+monster_name_en: Water Armor Dragon, Gienah
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb Water damage for 5 turns
+  desc_jp: Absorb Water damage for 5 turns
+  max_atk_pct: null
+  name_en: Hydro Core
+  name_jp: Hydro Core
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy ally recover 45% hp
+  desc_jp: Enemy ally recover 45% hp
+  max_atk_pct: null
+  name_en: Follow Repair
+  name_jp: Follow Repair
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESAbsorbAttribute -> Hydro Core
+# Absorb Water damage for 5 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESRecoverEnemyAlly -> Follow Repair
+# Condition: When enemy ally is killed
+# Enemy ally recover 45% hp
+# [9] ESAttackMultihit -> Limit Burst
+# Condition: When < 10% hp
+# Enemy action
+# [10] ESSkillDelay -> Absorption
+# Condition: When < 80% hp , one-time use
+# Delay active skills by 1 turns
+# [11] ESRandomSpawn -> Super Water Surge
+# Condition: 40% chance & when Fire, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 4 Water orbs
+# [12] ESColumnSpawnMulti -> Aqua Gun
+# Condition: 40% chance
+# Change 3rd column to Water orbs
+# [13] ESOrbChangeAttack -> Blue Charger
+# Condition: 20% chance
+# Change Water to Jammer
+# [14] ESEndPath -> ESEndPath
+# end_turn

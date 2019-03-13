@@ -1,0 +1,184 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2893
+monster_name_en: Soul Binding Princess of Darkness, Hel
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Light, Dark by 50%
+  desc_jp: Reduce damage from Light, Dark by 50%
+  max_atk_pct: null
+  name_en: Light Dark Halved
+  name_jp: Light Dark Halved
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Specific orbs change every 1.0s for 10 turns + Voids status ailments for
+    999 turns + Change Random 8 to Poison
+  desc_jp: Specific orbs change every 1.0s for 10 turns + Voids status ailments for
+    999 turns + Change Random 8 to Poison
+  max_atk_pct: null
+  name_en: Determine your own destiny! + Half-Demon + Double Pain
+  name_jp: Determine your own destiny! + Half-Demon + Double Pain
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Poison skyfall +20% for 99 turns + Enemy action
+  desc_jp: Poison skyfall +20% for 99 turns + Enemy action
+  max_atk_pct: null
+  name_en: Eternal Suffering + Garm's Rotten Fangs
+  name_jp: Eternal Suffering + Garm's Rotten Fangs
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 100% hp + Reduce damage from all sources by 75% for 10 turns
+  desc_jp: Enemy recover 100% hp + Reduce damage from all sources by 75% for 10 turns
+  max_atk_pct: null
+  name_en: Color of Life + Naglfar
+  name_jp: Color of Life + Naglfar
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 100% hp + Reduce damage from all sources by 75% for 10 turns
+  desc_jp: Enemy recover 100% hp + Reduce damage from all sources by 75% for 10 turns
+  max_atk_pct: null
+  name_en: Color of Life + Naglfar
+  name_jp: Color of Life + Naglfar
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Lock 1 random Poison, Mortal Poison orbs, Deal 160% damage
+  desc_jp: Lock 1 random Poison, Mortal Poison orbs, Deal 160% damage
+  max_atk_pct: 160
+  name_en: Dead Judgment
+  name_jp: Dead Judgment
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Random 6 to Poison, Deal 160% damage
+  desc_jp: Change Random 6 to Poison, Deal 160% damage
+  max_atk_pct: 160
+  name_en: Poison Thorn
+  name_jp: Poison Thorn
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Player -99% HP + Delay active skills by 2~6 turns
+  desc_jp: Player -99% HP + Delay active skills by 2~6 turns
+  max_atk_pct: null
+  name_en: Color of Death + Nightmare
+  name_jp: Color of Death + Nightmare
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 10
+  name_jp: HP <= 10
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random 10 to Poison, Deal 3000% damage
+  desc_jp: Change Random 10 to Poison, Deal 3000% damage
+  max_atk_pct: 3000
+  name_en: Grief of Helheim
+  name_jp: Grief of Helheim
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	[0] ESSpinnersFixed -> Determine your own destiny!
+# 	Specific orbs change every 1.0s for 10 turns
+# 	[1] ESStatusShield -> Half-Demon
+# 	Voids status ailments for 999 turns
+# 	[2] ESPoisonChangeRandomAttack -> Double Pain
+# 	Change Random 8 to Poison
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESPoisonChangeRandomAttack -> Grief of Helheim
+# Condition: When < 10% hp
+# Change Random 10 to Poison
+# [7] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESSkyfall -> Eternal Suffering
+# 	Poison skyfall +20% for 99 turns
+# 	[1] ESAttackMultihit -> Garm's Rotten Fangs
+# 	Enemy action
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESSetCounter -> ESSetCounter
+# set_counter
+# [10] ESOrbLock -> Dead Judgment
+# Condition: 50% chance
+# Lock 1 random Poison, Mortal Poison orbs
+# [11] ESPoisonChangeRandomAttack -> Poison Thorn
+# Change Random 6 to Poison
+# [12] ESEndPath -> ESEndPath
+# end_turn
+# [13] ESBranchFlag -> ESBranchFlag
+# branch
+# [14] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [15] ESBranchCounter -> ESBranchCounter
+# branch
+# [16] SkillSet:
+# 	[0] ESRecoverEnemy -> Color of Life
+# 	Enemy recover 100% hp
+# 	[1] ESDamageShield -> Naglfar
+# 	Reduce damage from all sources by 75% for 10 turns
+# [17] SkillSet:
+# 	[0] ESGravity -> Color of Death
+# 	Player -99% HP
+# 	[1] ESSkillDelay -> Nightmare
+# 	Delay active skills by 2~6 turns
+# [18] ESEndPath -> ESEndPath
+# end_turn
+# [19] ESAttributeResist -> Light Dark Halved
+# Reduce damage from Light, Dark by 50%

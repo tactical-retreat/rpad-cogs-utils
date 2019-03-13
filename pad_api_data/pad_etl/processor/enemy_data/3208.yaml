@@ -1,0 +1,142 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3208
+monster_name_en: Water Guardian Dragon, Naro
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 75% for 2 turns + Change all orbs to
+    Fire, Water, Wood, Heal
+  desc_jp: Reduce damage from all sources by 75% for 2 turns + Change all orbs to
+    Fire, Water, Wood, Heal
+  max_atk_pct: null
+  name_en: Nectar of the Dragon + Soaring Lotus Strike
+  name_jp: Nectar of the Dragon + Soaring Lotus Strike
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 75% for 2 turns + Change all orbs to
+    Fire, Water, Wood, Heal
+  desc_jp: Reduce damage from all sources by 75% for 2 turns + Change all orbs to
+    Fire, Water, Wood, Heal
+  max_atk_pct: null
+  name_en: Nectar of the Dragon + Soaring Lotus Strike
+  name_jp: Nectar of the Dragon + Soaring Lotus Strike
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 800% damage (8 hits, 100% each)
+  desc_jp: Deal 800% damage (8 hits, 100% each)
+  max_atk_pct: 800
+  name_en: Enlightened Dragon Stream
+  name_jp: Enlightened Dragon Stream
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb combo <= 6 damage for 6 turns
+  desc_jp: Absorb combo <= 6 damage for 6 turns
+  max_atk_pct: null
+  name_en: Vitality Spiral
+  name_jp: Vitality Spiral
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] SkillSet:
+# 	[0] ESDamageShield -> Nectar of the Dragon
+# 	Reduce damage from all sources by 75% for 2 turns
+# 	[1] ESBoardChangeAttackBits -> Soaring Lotus Strike
+# 	Change all orbs to Fire, Water, Wood, Heal
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchFlag -> ESBranchFlag
+# branch
+# [9] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [10] ESBranchHP -> ESBranchHP
+# branch
+# [11] ESAttackUp -> Viper Tree Ascension
+# Increase damage to 200% for the next 8 turns
+# [12] ESOrbSealRow -> Lingering Snaketracks
+# Seal 5th row for 4 turns
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESBranchFlag -> ESBranchFlag
+# branch
+# [15] ESBranchHP -> ESBranchHP
+# branch
+# [16] ESAbsorbCombo -> Vitality Spiral
+# Condition: When < 50% hp , one-time use
+# Absorb combo <= 6 damage for 6 turns
+# [17] ESBranchFlag -> ESBranchFlag
+# branch
+# [18] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [19] ESPoisonChangeRandomAttack -> Harmful Poison
+# Change Random 6 to Poison
+# [20] ESBranchFlag -> ESBranchFlag
+# branch
+# [21] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [22] ESRowSpawnMulti -> Crystal Stream
+# Change 1st, 5th row to Water orbs
+# [23] ESBranchFlag -> ESBranchFlag
+# branch
+# [24] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [25] ESGravity -> Harmful Ocean
+# Player -99% HP
+# [26] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [27] ESAttackMultihit -> Dragon Stream
+# Enemy action
+# [28] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [29] SkillSet:
+# 	[0] ESDamageShield -> Nectar of the Dragon
+# 	Reduce damage from all sources by 75% for 2 turns
+# 	[1] ESBoardChangeAttackBits -> Soaring Lotus Strike
+# 	Change all orbs to Fire, Water, Wood, Heal
+# [30] ESAttackMultihit -> Enlightened Dragon Stream
+# Enemy action

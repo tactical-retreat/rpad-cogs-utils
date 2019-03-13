@@ -1,0 +1,132 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3329
+monster_name_en: Serpent Steel Star Healer, Ras
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Leader changes to random sub for
+    1 turns
+  desc_jp: Voids status ailments for 999 turns + Leader changes to random sub for
+    1 turns
+  max_atk_pct: null
+  name_en: Antibodies + Hypnotism
+  name_jp: Antibodies + Hypnotism
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Poison skyfall +30% for 1 turns + Seal 1st, 5th row for 1 turns
+  desc_jp: Poison skyfall +30% for 1 turns + Seal 1st, 5th row for 1 turns
+  max_atk_pct: null
+  name_en: Mournful Meteor + Forbidden Area
+  name_jp: Mournful Meteor + Forbidden Area
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 25
+  name_jp: HP <= 25
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 999 turns + Enemy recover 20% hp
+  desc_jp: Increase damage to 200% for the next 999 turns + Enemy recover 20% hp
+  max_atk_pct: null
+  name_en: Glitter Force + Remedy
+  name_jp: Glitter Force + Remedy
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 20
+  name_jp: HP <= 20
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 900% damage (9 hits, 100% each)
+  desc_jp: Deal 900% damage (9 hits, 100% each)
+  max_atk_pct: 900
+  name_en: Stardust Comet
+  name_jp: Stardust Comet
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	[0] ESStatusShield -> Antibodies
+# 	Voids status ailments for 999 turns
+# 	[1] ESLeaderSwap -> Hypnotism
+# 	Leader changes to random sub for 1 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] SkillSet:
+# 	Condition: When < 25% hp , one-time use
+# 	[0] ESAttackUp -> Glitter Force
+# 	Increase damage to 200% for the next 999 turns
+# 	[1] ESRecoverEnemy -> Remedy
+# 	Enemy recover 20% hp
+# [7] SkillSet:
+# 	Condition: When < 25% hp , one-time use
+# 	[0] ESAttackUp -> Glitter Force
+# 	Increase damage to 200% for the next 999 turns
+# 	[1] ESRecoverEnemy -> Remedy
+# 	Enemy recover 20% hp
+# [8] ESAttackMultihit -> Stardust Comet
+# Condition: When < 20% hp
+# Enemy action
+# [9] SkillSet:
+# 	Condition: When < 50% hp , one-time use
+# 	[0] ESSkyfall -> Mournful Meteor
+# 	Poison skyfall +30% for 1 turns
+# 	[1] ESOrbSealRow -> Forbidden Area
+# 	Seal 1st, 5th row for 1 turns
+# [10] ESBranchFlag -> ESBranchFlag
+# branch
+# [11] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [12] SkillSet:
+# 	Condition: 50% chance
+# 	[0] ESAbsorbCombo -> Multiple Walls
+# 	Absorb combo <= 6 damage for 1 turns
+# 	[1] ESChangeAttribute -> Elemental Purée
+# 	Change own attribute to random one of Fire, Water, Wood, Light, Dark
+# [13] SkillSet:
+# 	[0] ESDamageShield -> Reflescale
+# 	Reduce damage from all sources by 75% for 1 turns
+# 	[1] ESChangeAttribute -> Elemental Purée
+# 	Change own attribute to random one of Fire, Water, Wood, Light, Dark
+# [14] ESEndPath -> ESEndPath
+# end_turn
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] ESLeaderSwap -> Hypno Pursuit
+# Leader changes to random sub for 1 turns
+# [17] ESBindAwoken -> Helpless Suggestion
+# Bind awoken skills for 1 turns
+# [18] ESEndPath -> ESEndPath
+# end_turn

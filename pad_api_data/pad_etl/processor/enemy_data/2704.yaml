@@ -1,0 +1,168 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2704
+monster_name_en: Zangetsu
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Player recover 100% hp
+  desc_jp: Player recover 100% hp
+  max_atk_pct: null
+  name_en: Try to defeat me if you can!!
+  name_jp: Try to defeat me if you can!!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 1 turns
+  desc_jp: Reduce damage from all sources by 50% for 1 turns
+  max_atk_pct: null
+  name_en: Too weak.
+  name_jp: Too weak.
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids player buff effects
+  desc_jp: Voids player buff effects
+  max_atk_pct: null
+  name_en: 'You haven''t the time
+
+    to be crawling around!!'
+  name_jp: 'You haven''t the time
+
+    to be crawling around!!'
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Voids status ailments for 3 turns
+  desc_jp: Voids status ailments for 3 turns
+  max_atk_pct: null
+  name_en: You don't have time to be kneeling!
+  name_jp: You don't have time to be kneeling!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 4
+  name_jp: Turn 4
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Lock all Dark orbs, Deal 100% damage
+  desc_jp: Lock all Dark orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Move on to the next one!
+  name_jp: Move on to the next one!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 6
+  name_jp: Turn 6
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 1 turns
+  desc_jp: Increase damage to 200% for the next 1 turns
+  max_atk_pct: null
+  name_en: Never take your eyes off the enemy.
+  name_jp: Never take your eyes off the enemy.
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  max_atk_pct: 100
+  name_en: Disable Skill
+  name_jp: Disable Skill
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESBranchCard -> ESBranchCard
+# branch
+# [7] ESRecoverPlayer -> Try to defeat me if you can!!
+# Player recover 100% hp
+# [8] SkillSet:
+# 	[0] ESInactivity -> Amongst these swords, there is one...
+# that is the true me.
+# 	Do nothing
+# 	[1] ESRecoverPlayer -> Try to defeat me if you can!!
+# 	Player recover 100% hp
+# [9] ESEndPath -> ESEndPath
+# end_turn
+# [10] ESBranchFlag -> ESBranchFlag
+# branch
+# [11] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [12] ESDamageShield -> Too weak.
+# Reduce damage from all sources by 50% for 1 turns
+# [13] ESBranchFlag -> ESBranchFlag
+# branch
+# [14] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [15] ESAttackSinglehit -> Disable Skill
+# Enemy action
+# [16] ESBranchFlag -> ESBranchFlag
+# branch
+# [17] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [18] ESDispel -> You haven't the time
+# to be crawling around!!
+# Voids player buff effects
+# [19] ESStatusShield -> You don't have time to be kneeling!
+# Voids status ailments for 3 turns
+# [20] ESBranchFlag -> ESBranchFlag
+# branch
+# [21] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [22] ESOrbLock -> Move on to the next one!
+# Lock all Dark orbs
+# [23] ESAttackUp -> Never take your eyes off the enemy.
+# Condition: One-time use
+# Increase damage to 200% for the next 1 turns
+# [24] ESAttackSinglehit -> Disable Skill
+# Enemy action
+# [25] SkillSet:
+# 	Condition: On death
+# 	[0] ESRandomSpawn -> Can you still stand and continue?
+# 	Spawn random 3 Heal orbs

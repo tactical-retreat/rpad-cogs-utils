@@ -1,0 +1,127 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2720
+monster_name_en: Darkness Goddess, Hera Dragon
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Absorb damage >= 2000000 damage for
+    999 turns + Enemy action
+  desc_jp: Voids status ailments for 999 turns + Absorb damage >= 2000000 damage for
+    999 turns + Enemy action
+  max_atk_pct: null
+  name_en: Black Body + Dark Ball + Darkdragon's Baptism
+  name_jp: Black Body + Dark Ball + Darkdragon's Baptism
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Gathering Magical Power
+  name_jp: Gathering Magical Power
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids player buff effects + Enemy action
+  desc_jp: Voids player buff effects + Enemy action
+  max_atk_pct: null
+  name_en: Dark Eyes + Ultra Graviton Breath
+  name_jp: Dark Eyes + Ultra Graviton Breath
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESStatusShield -> Black Body
+# 	Voids status ailments for 999 turns
+# 	[1] ESAbsorbThreshold -> Dark Ball
+# 	Absorb damage >= 2000000 damage for 999 turns
+# 	[2] ESAttackMultihit -> Darkdragon's Baptism
+# 	Enemy action
+# [3] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESInactivity -> Summon Vinus
+# 	Do nothing
+# 	[1] ESRecoverPlayer -> Breath of Compassion
+# 	Player recover 100% hp
+# [4] ESAttackMultihit -> Brilliant World
+# Condition: One-time use
+# Enemy action
+# [5] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESInactivity -> Summon Mineva
+# 	Do nothing
+# 	[1] ESRecoverPlayer -> Breath of Compassion
+# 	Player recover 100% hp
+# [6] ESAttackMultihit -> Celestial Prison's Scorching Heat
+# Condition: One-time use
+# Enemy action
+# [7] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESInactivity -> Summon Seres
+# 	Do nothing
+# 	[1] ESRecoverPlayer -> Breath of Compassion
+# 	Player recover 100% hp
+# [8] ESAttackMultihit -> Soul Burst
+# Condition: One-time use
+# Enemy action
+# [9] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESInactivity -> Summon Neptunus
+# 	Do nothing
+# 	[1] ESRecoverPlayer -> Breath of Compassion
+# 	Player recover 100% hp
+# [10] ESAttackMultihit -> Abysstrom
+# Condition: One-time use
+# Enemy action
+# [11] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESInactivity -> Summon Ades
+# 	Do nothing
+# 	[1] ESRecoverPlayer -> Breath of Compassion
+# 	Player recover 100% hp
+# [12] ESAttackMultihit -> Death Scythe
+# Condition: One-time use
+# Enemy action
+# [13] ESBranchFlag -> ESBranchFlag
+# branch
+# [14] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [15] ESInactivity -> Gathering Magical Power
+# Do nothing
+# [16] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [17] SkillSet:
+# 	[0] ESDispel -> Dark Eyes
+# 	Voids player buff effects
+# 	[1] ESAttackMultihit -> Ultra Graviton Breath
+# 	Enemy action

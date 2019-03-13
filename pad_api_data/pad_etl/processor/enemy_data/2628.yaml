@@ -1,0 +1,83 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2628
+monster_name_en: Robeast, Myzax
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 3 turns
+  desc_jp: Voids status ailments for 3 turns
+  max_atk_pct: null
+  name_en: War Cry
+  name_jp: War Cry
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 4 Light orbs, Deal 100% damage
+  desc_jp: Spawn random 4 Light orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Approaching Light Ball
+  name_jp: Approaching Light Ball
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 10
+  name_jp: HP <= 10
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 250% damage
+  desc_jp: Deal 250% damage
+  max_atk_pct: 250
+  name_en: Focused Attack
+  name_jp: Focused Attack
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESStatusShield -> War Cry
+# Condition: One-time use
+# Voids status ailments for 3 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESAttackMultihit -> Focused Attack
+# Condition: When < 10% hp
+# Enemy action
+# [7] ESStorePower -> Charging
+# Condition: One-time use
+# Increase damage to 200% for the next attack
+# [8] ESRandomSpawn -> Approaching Light Ball
+# Condition: When fire, water, wood, dark, heal, jammer, poison, mortal poison orbs are on the board
+# Spawn random 4 Light orbs
+# [9] ESEndPath -> ESEndPath
+# end_turn
+# [10] SkillSet:
+# 	Condition: On death
+# 	[0] ESInactivity -> Growl!!
+# 	Do nothing

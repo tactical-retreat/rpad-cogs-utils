@@ -1,0 +1,139 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2644
+monster_name_en: Metallic Star Dragon, Virgo
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Spawn random 6 Jammer orbs
+  desc_jp: Spawn random 6 Jammer orbs
+  max_atk_pct: null
+  name_en: Idol Debris
+  name_jp: Idol Debris
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 2 random subs for 1 turns
+  desc_jp: Bind 2 random subs for 1 turns
+  max_atk_pct: null
+  name_en: Adorable Eye
+  name_jp: Adorable Eye
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Delay active skills by 1 turns
+  desc_jp: Delay active skills by 1 turns
+  max_atk_pct: null
+  name_en: Lovable Eye
+  name_jp: Lovable Eye
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 2 random subs for 1 turns
+  desc_jp: Bind 2 random subs for 1 turns
+  max_atk_pct: null
+  name_en: Adorable Eye
+  name_jp: Adorable Eye
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 110% damage (2 hits, 55% each)
+  desc_jp: Deal 110% damage (2 hits, 55% each)
+  max_atk_pct: 110
+  name_en: Optical Eraser
+  name_jp: Optical Eraser
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 10 Jammer orbs
+  desc_jp: Spawn random 10 Jammer orbs
+  max_atk_pct: null
+  name_en: Wind Princess's Prayer
+  name_jp: Wind Princess's Prayer
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 10
+  name_jp: HP <= 10
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 300% damage (5 hits, 60% each)
+  desc_jp: Deal 300% damage (5 hits, 60% each)
+  max_atk_pct: 300
+  name_en: Virgo's Crest - Ray
+  name_jp: Virgo's Crest - Ray
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESRandomSpawn -> Idol Debris
+# Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board
+# Spawn random 6 Jammer orbs
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESAttackMultihit -> Virgo's Crest - Ray
+# Condition: When < 10% hp
+# Enemy action
+# [10] ESBindRandomSub -> Adorable Eye
+# Condition: 25% chance
+# Bind 2 random subs for 1 turns
+# [11] ESSkillDelay -> Lovable Eye
+# Condition: One-time use
+# Delay active skills by 1 turns
+# [12] ESAttackMultihit -> Optical Eraser
+# Condition: 50% chance
+# Enemy action
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESBranchFlag -> ESBranchFlag
+# branch
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] ESRandomSpawn -> Wind Princess's Prayer
+# Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board
+# Spawn random 10 Jammer orbs
+# [17] ESEndPath -> ESEndPath
+# end_turn

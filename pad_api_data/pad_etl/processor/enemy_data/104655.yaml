@@ -1,0 +1,112 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 104655
+monster_name_en: '*****'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 75% for 1 turns
+  desc_jp: Reduce damage from all sources by 75% for 1 turns
+  max_atk_pct: null
+  name_en: Victory Star
+  name_jp: Victory Star
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Water, Deal 100% damage
+  desc_jp: Change Random to Water, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Slider
+  name_jp: Slider
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Random to Wood, Deal 100% damage
+  desc_jp: Change Random to Wood, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Curve
+  name_jp: Curve
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Random to Fire, Deal 100% damage
+  desc_jp: Change Random to Fire, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Fork
+  name_jp: Fork
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Random to Dark, Deal 100% damage
+  desc_jp: Change Random to Dark, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Sinker
+  name_jp: Sinker
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Random to Light, Deal 100% damage
+  desc_jp: Change Random to Light, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Shoot
+  name_jp: Shoot
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESDamageShield -> Victory Star
+# Reduce damage from all sources by 75% for 1 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESOrbChangeAttack -> Slider
+# Condition: 20% chance
+# Change Random to Water
+# [10] ESOrbChangeAttack -> Curve
+# Condition: 20% chance
+# Change Random to Wood
+# [11] ESOrbChangeAttack -> Fork
+# Condition: 20% chance
+# Change Random to Fire
+# [12] ESOrbChangeAttack -> Sinker
+# Condition: 20% chance
+# Change Random to Dark
+# [13] ESOrbChangeAttack -> Shoot
+# Condition: 20% chance
+# Change Random to Light
+# [14] ESEndPath -> ESEndPath
+# end_turn
+# [15] ESBranchFlag -> ESBranchFlag
+# branch
+# [16] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [17] ESAttackUp -> Spirit of Persistence
+# Increase damage to 200% for the next 9 turns
+# [18] ESEndPath -> ESEndPath
+# end_turn

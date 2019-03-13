@@ -1,9 +1,12 @@
 from enum import Enum, auto
-from typing import List
+from typing import List, Optional, TextIO
 import os
 import yaml
 
+from ..data.card import BookCard
 from .enemy_skillset_processor import SkillItem, ProcessedSkillset
+from . import enemy_skillset_processor
+from . import enemy_skillset
 
 
 class RecordType(Enum):
@@ -27,17 +30,19 @@ class RecordType(Enum):
 
 class SkillRecord(yaml.YAMLObject):
     """A skill line item, placeholder, or other text."""
-    # yaml_tag = u'!SkillRecord'
+    yaml_tag = u'!SkillRecord'
 
     def __init__(self,
                  record_type=RecordType.TEXT,
                  name_en='', name_jp='',
-                 desc_en='', desc_jp=''):
-        self.record_type = record_type
+                 desc_en='', desc_jp='',
+                 max_atk_pct=0):
+        self.record_type_name = record_type.name
         self.name_en = name_en
         self.name_jp = name_jp
         self.desc_en = desc_en
         self.desc_jp = desc_jp
+        self.max_atk_pct = max_atk_pct or None
 
 
 class SkillRecordListing(yaml.YAMLObject):
@@ -46,14 +51,17 @@ class SkillRecordListing(yaml.YAMLObject):
     Level is used to distinguish between different sets of skills based on the specific dungeon.
     """
 
+    yaml_tag = u'!SkillRecordListing'
+
     def __init__(self, level: int, records: List[SkillRecord], overrides: List[SkillRecord] = None):
         self.level = level
         self.records = records
-        self.overrides = overrides
+        self.overrides = overrides or []
 
 
 class EntryInfo(yaml.YAMLObject):
     """Extra info about the entry."""
+    yaml_tag = u'!EntryInfo'
 
     def __init__(self,
                  monster_id: int, monster_name_en: str, monster_name_jp: str,
@@ -73,21 +81,34 @@ class EnemySummary(object):
         self.info = info
         self.data = data or []
 
+    def data_for_level(self, level: int) -> Optional[SkillRecordListing]:
+        if not self.data:
+            return None
 
-def skillitem_to_skillrecord(record_type: RecordType, skill_item: SkillItem) -> SkillRecord:
+        viable_levels = [d.level for d in self.data if level >= d.level]
+        if not viable_levels:
+            return None
+
+        selected_level = min(viable_levels)
+        return next(filter(lambda d: d.level == selected_level, self.data))
+
+
+def skillitem_to_skillrecord(record_type: RecordType, es_item: any) -> SkillRecord:
+    skill_item = enemy_skillset_processor.to_item(es_item)
     return SkillRecord(record_type=record_type,
                        name_en=skill_item.name,
                        name_jp=skill_item.name,
                        desc_en=skill_item.comment,
-                       desc_jp=skill_item.comment)
+                       desc_jp=skill_item.comment,
+                       max_atk_pct=skill_item.max_damage_pct)
 
 
 def create_divider(divider_text: str) -> SkillRecord:
     return SkillRecord(record_type=RecordType.DIVIDER,
-                       name_en='',
+                       name_en=divider_text,
                        name_jp=divider_text,
                        desc_en='',
-                       desc_jp=divider_text)
+                       desc_jp='')
 
 
 def flatten_skillset(level: int, skillset: ProcessedSkillset) -> SkillRecordListing:
@@ -101,28 +122,30 @@ def flatten_skillset(level: int, skillset: ProcessedSkillset) -> SkillRecordList
 
     for idx, item in enumerate(skillset.timed_skill_groups):
         records.append(create_divider('Turn {}'.format(item.turn)))
-        records.append(skillitem_to_skillrecord(RecordType.ACTION, item))
+        for sub_item in item.skills:
+            records.append(skillitem_to_skillrecord(RecordType.ACTION, sub_item))
 
     for item in skillset.enemycount_skill_groups:
         records.append(create_divider('When {} enemy remains'.format(item.count)))
-        records.append(skillitem_to_skillrecord(RecordType.ACTION, item))
+        for sub_item in item.skills:
+            records.append(skillitem_to_skillrecord(RecordType.ACTION, sub_item))
 
     for item in skillset.hp_skill_groups:
         records.append(create_divider('HP <= {}'.format(item.hp_ceiling)))
-        records.append(skillitem_to_skillrecord(RecordType.ACTION, item))
+        for sub_item in item.skills:
+            records.append(skillitem_to_skillrecord(RecordType.ACTION, sub_item))
 
     return SkillRecordListing(level=level, records=records)
 
 
-def load_summary(enemy_summary: EnemySummary) -> EnemySummary:
-    file_path = _file_by_id(enemy_summary.info.monster_id)
+def load_summary(monster_id: int) -> Optional[EnemySummary]:
+    """Load an EnemySummary from disk, returning None if no data is available (probably an error)."""
+    file_path = _file_by_id(monster_id)
     if not os.path.exists(file_path):
-        return enemy_summary
+        return None
 
     with open(file_path) as f:
-        line = f.readline()
-        while line.startswith('#'):
-            line = f.readline()
+        line = _consume_comments(f)
 
         entry_info_data = []
         while not line.startswith('#'):
@@ -130,38 +153,68 @@ def load_summary(enemy_summary: EnemySummary) -> EnemySummary:
             line = f.readline()
 
         all_listings = []
-        while True:
-            if line is None:
-                break
-
-            while line.startswith('#'):
-                line = f.readline()
+        while line:
+            line = _consume_comments(f, initial_line=line)
 
             cur_listing_data = []
-            while line is not None and not line.startswith('#'):
+            while line and not line.startswith('#'):
                 cur_listing_data.append(line)
                 line = f.readline()
-            all_listings.append(cur_listing_data)
 
-    enemy_summary.info = yaml.load('\n'.join(entry_info_data))
-    enemy_summary.info.warnings = []
+            if cur_listing_data:
+                all_listings.append(cur_listing_data)
 
-    listings = [yaml.load('\n'.join(x) for x in all_listings)]
-    listings_by_level = {x.level: x for x in listings}
-    listings_have_overrides = any(map(lambda x: len(x.overrides), listings))
-
-    for computed_listing in enemy_summary.data:
-        stored_listing = listings_by_level.get(computed_listing.level, None)
-        if stored_listing is None and listings_have_overrides:
-            enemy_summary.info.warnings.append(
-                'Override missing for {}'.format(computed_listing.level))
-        else:
-            computed_listing.overrides = stored_listing.overrides
+    enemy_info = yaml.load(''.join(entry_info_data))
+    enemy_info.warnings = []
+    enemy_summary = EnemySummary(enemy_info)
+    enemy_summary.data = [yaml.load(''.join(x)) for x in all_listings]
 
     return enemy_summary
 
 
-def dump_summary_to_file(enemy_summary: EnemySummary):
+def _consume_comments(f: TextIO, initial_line=None) -> str:
+    line = initial_line or f.readline()
+    while line and line.startswith('#'):
+        line = f.readline()
+    return line
+
+
+def load_and_merge_summary(enemy_summary: EnemySummary) -> EnemySummary:
+    """Loads any stored data from disk and merges with the supplied summary."""
+    saved_summary = load_summary(enemy_summary.info.monster_id)
+    if saved_summary is None:
+        return enemy_summary
+
+    # Merge any new items into the stored summary.
+    for attr, new_value in enemy_summary.info.__dict__.items():
+        stored_value = getattr(saved_summary.info, attr)
+        if new_value is not None and stored_value is None:
+            setattr(saved_summary.info, attr, new_value)
+
+    listings_by_level = {x.level: x for x in saved_summary.data}
+    overrides_exist = any(map(lambda x: len(x.overrides), saved_summary.data))
+
+    # Update stored data with newly computed data.
+    for computed_listing in enemy_summary.data:
+        stored_listing = listings_by_level.get(computed_listing.level, None)
+        if stored_listing is None:
+            # No existing data was found.
+            stored_listing = computed_listing
+            saved_summary.data.append(computed_listing)
+        else:
+            # Found existing data so just update the computed part
+            stored_listing.records = computed_listing.records
+
+        # There were overrides in general but not on this item (probably because it is new).
+        if overrides_exist and not stored_listing.overrides:
+            saved_summary.info.warnings.append(
+                'Override missing for {}'.format(computed_listing.level))
+
+    return saved_summary
+
+
+def dump_summary_to_file(enemy_summary: EnemySummary, enemy_behavior: List):
+    """Writes the enemy info, actions by level, and enemy behavior to a file."""
     file_path = _file_by_id(enemy_summary.info.monster_id)
     with open(file_path, 'w', encoding='utf-8') as f:
         f.write('{}\n'.format(_header('Info')))
@@ -169,6 +222,13 @@ def dump_summary_to_file(enemy_summary: EnemySummary):
         for listing in enemy_summary.data:
             f.write('{}\n'.format(_header('Data @ {}'.format(listing.level))))
             f.write('{}\n'.format(yaml.dump(listing, default_flow_style=False)))
+
+        if enemy_behavior:
+            f.write('{}\n'.format(_header('Raw Behavior')))
+            for idx, behavior in enumerate(enemy_behavior):
+                behavior_str = enemy_skillset.simple_dump_obj(behavior)
+                behavior_str = behavior_str.replace('\n', '\n# ').rstrip('#').rstrip()
+                f.write('# [{}] {}\n'.format(idx + 1, behavior_str, '\n'))
 
 
 def _header(header_text: str) -> str:
@@ -181,3 +241,39 @@ def _header(header_text: str) -> str:
 
 def _file_by_id(monster_id):
     return os.path.join(os.path.dirname(__file__), 'enemy_data', '{}.yaml'.format(monster_id))
+
+
+def load_summary_as_dump_text(card: BookCard, monster_level: int):
+    """Produce a textual description of enemy behavior.
+
+    Loads the enemy summary from disk, identifies the behavior appropriate for the level,
+    and converts it into human-friendly output.
+    """
+    monster_id = card.card_id
+    summary = load_summary(monster_id)
+    if not summary:
+        return 'Basic attacks (1)\n'
+
+    skill_data = summary.data_for_level(monster_level)
+    if not skill_data:
+        return 'Basic attacks (2)\n'
+
+    enemy_info = skill_data.overrides or skill_data.records
+    if not enemy_info:
+        return 'Basic attacks (3)\n'
+
+    atk = card.enemy().atk.value_at(monster_level)
+    msg = ''
+    for row in enemy_info:
+        header = row.name_en
+        if row.record_type_name == 'DIVIDER':
+            header = '{} {} {}'.format('-' * 5, header, '-' * 5)
+
+        desc = row.desc_en
+        if row.max_atk_pct:
+            desc = '{} Damage - {}'.format(int(row.max_atk_pct * atk / 100), desc)
+        msg += header + '\n'
+        if desc:
+            msg += desc + '\n'
+
+    return msg

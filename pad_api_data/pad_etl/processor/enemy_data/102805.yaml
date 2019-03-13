@@ -1,0 +1,211 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 102805
+monster_name_en: Alt. Demon Leader, Shuten-doji
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 50%
+  desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
+  name_en: Shuten-doji Resolve
+  name_jp: Shuten-doji Resolve
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 5 turns + Absorb Fire damage for 1 turns
+  desc_jp: Voids status ailments for 5 turns + Absorb Fire damage for 1 turns
+  max_atk_pct: null
+  name_en: Mount Ooe's Soul Guardian + Heat Demon's Sake
+  name_jp: Mount Ooe's Soul Guardian + Heat Demon's Sake
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Voids status ailments for 5 turns + Absorb Water damage for 1 turns
+  desc_jp: Voids status ailments for 5 turns + Absorb Water damage for 1 turns
+  max_atk_pct: null
+  name_en: Mount Ooe's Soul Guardian + Ice Demon's Sake
+  name_jp: Mount Ooe's Soul Guardian + Ice Demon's Sake
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Voids status ailments for 5 turns + Absorb Wood damage for 1 turns
+  desc_jp: Voids status ailments for 5 turns + Absorb Wood damage for 1 turns
+  max_atk_pct: null
+  name_en: Mount Ooe's Soul Guardian + Storm Demon's Sake
+  name_jp: Mount Ooe's Soul Guardian + Storm Demon's Sake
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Voids status ailments for 5 turns + Absorb Light damage for 1 turns
+  desc_jp: Voids status ailments for 5 turns + Absorb Light damage for 1 turns
+  max_atk_pct: null
+  name_en: Mount Ooe's Soul Guardian + Sunlight Demon's Sake
+  name_jp: Mount Ooe's Soul Guardian + Sunlight Demon's Sake
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Voids status ailments for 5 turns + Absorb Dark damage for 1 turns
+  desc_jp: Voids status ailments for 5 turns + Absorb Dark damage for 1 turns
+  max_atk_pct: null
+  name_en: Mount Ooe's Soul Guardian + Shadow Demon's Sake
+  name_jp: Mount Ooe's Soul Guardian + Shadow Demon's Sake
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Voids status ailments for 5 turns + Void damage >= 500000 for 1 turns
+  desc_jp: Voids status ailments for 5 turns + Void damage >= 500000 for 1 turns
+  max_atk_pct: null
+  name_en: Mount Ooe's Soul Guardian + Steel Demon's Sake
+  name_jp: Mount Ooe's Soul Guardian + Steel Demon's Sake
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Voids status ailments for 5 turns + Reduce damage from all sources by 75%
+    for 1 turns
+  desc_jp: Voids status ailments for 5 turns + Reduce damage from all sources by 75%
+    for 1 turns
+  max_atk_pct: null
+  name_en: Mount Ooe's Soul Guardian + Armored Demon's Sake
+  name_jp: Mount Ooe's Soul Guardian + Armored Demon's Sake
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Voids status ailments for 5 turns + Absorb combo <= 7 damage for 1 turns
+  desc_jp: Voids status ailments for 5 turns + Absorb combo <= 7 damage for 1 turns
+  max_atk_pct: null
+  name_en: Mount Ooe's Soul Guardian + Refined Demon's Sake
+  name_jp: Mount Ooe's Soul Guardian + Refined Demon's Sake
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 20
+  name_jp: HP <= 20
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 1000% damage (10 hits, 100% each)
+  desc_jp: Deal 1000% damage (10 hits, 100% each)
+  max_atk_pct: 1000
+  name_en: Night Parade of One Hundred Demons
+  name_jp: Night Parade of One Hundred Demons
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: 5% chance
+# 	[0] ESStatusShield -> Mount Ooe's Soul Guardian
+# 	Voids status ailments for 5 turns
+# 	[1] ESAbsorbAttribute -> Heat Demon's Sake
+# 	Absorb Fire damage for 1 turns
+# [5] SkillSet:
+# 	Condition: 5% chance
+# 	[0] ESStatusShield -> Mount Ooe's Soul Guardian
+# 	Voids status ailments for 5 turns
+# 	[1] ESAbsorbAttribute -> Ice Demon's Sake
+# 	Absorb Water damage for 1 turns
+# [6] SkillSet:
+# 	Condition: 5% chance
+# 	[0] ESStatusShield -> Mount Ooe's Soul Guardian
+# 	Voids status ailments for 5 turns
+# 	[1] ESAbsorbAttribute -> Storm Demon's Sake
+# 	Absorb Wood damage for 1 turns
+# [7] SkillSet:
+# 	Condition: 5% chance
+# 	[0] ESStatusShield -> Mount Ooe's Soul Guardian
+# 	Voids status ailments for 5 turns
+# 	[1] ESAbsorbAttribute -> Sunlight Demon's Sake
+# 	Absorb Light damage for 1 turns
+# [8] SkillSet:
+# 	Condition: 5% chance
+# 	[0] ESStatusShield -> Mount Ooe's Soul Guardian
+# 	Voids status ailments for 5 turns
+# 	[1] ESAbsorbAttribute -> Shadow Demon's Sake
+# 	Absorb Dark damage for 1 turns
+# [9] SkillSet:
+# 	Condition: 25% chance
+# 	[0] ESStatusShield -> Mount Ooe's Soul Guardian
+# 	Voids status ailments for 5 turns
+# 	[1] ESVoidShield -> Steel Demon's Sake
+# 	Void damage >= 500000 for 1 turns
+# [10] SkillSet:
+# 	Condition: 25% chance
+# 	[0] ESStatusShield -> Mount Ooe's Soul Guardian
+# 	Voids status ailments for 5 turns
+# 	[1] ESDamageShield -> Armored Demon's Sake
+# 	Reduce damage from all sources by 75% for 1 turns
+# [11] SkillSet:
+# 	Condition: 25% chance
+# 	[0] ESStatusShield -> Mount Ooe's Soul Guardian
+# 	Voids status ailments for 5 turns
+# 	[1] ESAbsorbCombo -> Refined Demon's Sake
+# 	Absorb combo <= 7 damage for 1 turns
+# [12] ESEndPath -> ESEndPath
+# end_turn
+# [13] ESAttackMultihit -> Night Parade of One Hundred Demons
+# Condition: When < 20% hp
+# Enemy action
+# [14] ESResolve -> Shuten-doji Resolve
+# Survive attacks with 1 HP when HP > 50%
+# [15] ESBranchFlag -> ESBranchFlag
+# branch
+# [16] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [17] ESSkillDelay -> Demon's Violent Suppression
+# Condition: 20% chance
+# Delay active skills by 1 turns
+# [18] ESBindSkill -> Cursed Mask's Sealing Technique
+# Condition: 20% chance
+# Bind active skills for 1 turns
+# [19] ESBindAwoken -> Holy Genius Odachi
+# Condition: 20% chance
+# Bind awoken skills for 1 turns
+# [20] ESBlind -> Miasma of Grudge
+# Condition: 20% chance
+# Blind all orbs on the board
+# [21] ESDebuffMovetime -> Corpse Crushing Fist
+# Condition: 20% chance
+# Movetime -2s for 1 turns
+# [22] ESEndPath -> ESEndPath
+# end_turn
+# [23] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [24] ESAbsorbAttribute -> Heat Demon's Sake
+# Condition: 5% chance
+# Absorb Fire damage for 1 turns
+# [25] ESAbsorbAttribute -> Ice Demon's Sake
+# Condition: 5% chance
+# Absorb Water damage for 1 turns
+# [26] ESAbsorbAttribute -> Storm Demon's Sake
+# Condition: 5% chance
+# Absorb Wood damage for 1 turns
+# [27] ESAbsorbAttribute -> Sunlight Demon's Sake
+# Condition: 5% chance
+# Absorb Light damage for 1 turns
+# [28] ESAbsorbAttribute -> Shadow Demon's Sake
+# Condition: 5% chance
+# Absorb Dark damage for 1 turns
+# [29] ESVoidShield -> Steel Demon's Sake
+# Condition: 25% chance
+# Void damage >= 500000 for 1 turns
+# [30] ESDamageShield -> Armored Demon's Sake
+# Condition: 25% chance
+# Reduce damage from all sources by 75% for 1 turns
+# [31] ESAbsorbCombo -> Refined Demon's Sake
+# Condition: 25% chance
+# Absorb combo <= 7 damage for 1 turns
+# [32] ESEndPath -> ESEndPath
+# end_turn

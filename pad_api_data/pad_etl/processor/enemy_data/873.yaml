@@ -1,0 +1,75 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 873
+monster_name_en: Icedragon Plesios & Felyne
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  max_atk_pct: null
+  name_en: Big Barrel Bomb nya!
+  name_jp: Big Barrel Bomb nya!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 75
+  name_jp: HP <= 75
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Water, Deal 120% damage
+  desc_jp: Change Random to Water, Deal 120% damage
+  max_atk_pct: 120
+  name_en: Blizzard Breath nya!
+  name_jp: Blizzard Breath nya!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 25
+  name_jp: HP <= 25
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 180% damage (3 hits, 60% each)
+  desc_jp: Deal 180% damage (3 hits, 60% each)
+  max_atk_pct: 180
+  name_en: Combinyaation Attack!
+  name_jp: Combinyaation Attack!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESGravity -> Big Barrel Bomb nya!
+# Player -99% HP
+# [7] ESAttackMultihit -> Combinyaation Attack!
+# Condition: 70% chance when < 25% hp
+# Enemy action
+# [8] ESOrbChangeAttack -> Blizzard Breath nya!
+# Condition: When < 75% hp , one-time use
+# Change Random to Water

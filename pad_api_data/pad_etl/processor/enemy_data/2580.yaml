@@ -1,0 +1,201 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2580
+monster_name_en: Ancient Ocean Dragon, Coelacanth
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 76%
+  desc_jp: Survive attacks with 1 HP when HP > 76%
+  max_atk_pct: null
+  name_en: Coelacanth's Temper
+  name_jp: Coelacanth's Temper
+  record_type_name: PASSIVE
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 76%
+  desc_jp: Survive attacks with 1 HP when HP > 76%
+  max_atk_pct: null
+  name_en: Coelacanth's Temper
+  name_jp: Coelacanth's Temper
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Player -50% HP
+  desc_jp: Player -50% HP
+  max_atk_pct: null
+  name_en: Dark Pressure
+  name_jp: Dark Pressure
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 999 turns
+  desc_jp: Increase damage to 200% for the next 999 turns
+  max_atk_pct: null
+  name_en: Wind-Up Full Throttle
+  name_jp: Wind-Up Full Throttle
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 1 Dark orbs, Deal 100% damage
+  desc_jp: Spawn random 1 Dark orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Single Shadow
+  name_jp: Single Shadow
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Absorb Light damage for 1 turns
+  desc_jp: Absorb Light damage for 1 turns
+  max_atk_pct: null
+  name_en: Secret Plan of the Living Fossil
+  name_jp: Secret Plan of the Living Fossil
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 75
+  name_jp: HP <= 75
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 1 Dark orbs, Deal 100% damage
+  desc_jp: Spawn random 1 Dark orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Single Shadow
+  name_jp: Single Shadow
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Absorb Light damage for 1 turns
+  desc_jp: Absorb Light damage for 1 turns
+  max_atk_pct: null
+  name_en: Secret Plan of the Living Fossil
+  name_jp: Secret Plan of the Living Fossil
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 76
+  name_jp: HP <= 76
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 10% hp, Deal 90% damage
+  desc_jp: Enemy recover 10% hp, Deal 90% damage
+  max_atk_pct: 90
+  name_en: Longevity Attack
+  name_jp: Longevity Attack
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 150% damage
+  desc_jp: Blind all orbs on the board, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Attack from the Deep Sea
+  name_jp: Attack from the Deep Sea
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 10
+  name_jp: HP <= 10
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 300% damage (3 hits, 100% each)
+  desc_jp: Deal 300% damage (3 hits, 100% each)
+  max_atk_pct: 300
+  name_en: Screw Headbutt
+  name_jp: Screw Headbutt
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 1
+  name_jp: HP <= 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 9% hp, Deal 160% damage
+  desc_jp: Enemy recover 9% hp, Deal 160% damage
+  max_atk_pct: 160
+  name_en: Longevity Invasion
+  name_jp: Longevity Invasion
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESGravity -> Dark Pressure
+# Player -50% HP
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESRecoverEnemy -> Longevity Invasion
+# Condition: When < 1% hp
+# Enemy recover 9% hp
+# [9] ESAttackUp -> Wind-Up Full Throttle
+# Increase damage to 200% for the next 999 turns
+# [10] ESBlind -> Attack from the Deep Sea
+# Condition: When < 50% hp , one-time use
+# Blind all orbs on the board
+# [11] ESAttackMultihit -> Screw Headbutt
+# Condition: When < 10% hp
+# Enemy action
+# [12] ESRecoverEnemy -> Longevity Attack
+# Condition: 40% chance when < 76% hp
+# Enemy recover 10% hp
+# [13] ESRandomSpawn -> Single Shadow
+# Condition: 40% chance & when Fire, Water, Wood, Light, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 1 Dark orbs
+# [14] ESAbsorbAttribute -> Secret Plan of the Living Fossil
+# Condition: 20% chance
+# Absorb Light damage for 1 turns
+# [15] ESEndPath -> ESEndPath
+# end_turn
+# [16] ESResolve -> Coelacanth's Temper
+# Survive attacks with 1 HP when HP > 76%

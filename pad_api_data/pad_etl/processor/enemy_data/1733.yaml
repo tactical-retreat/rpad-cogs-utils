@@ -1,0 +1,206 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1733
+monster_name_en: Blue Chain Starsea Goddess, Andromeda
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Enemy turn counter change to 1 when HP <= 90%
+  desc_jp: Enemy turn counter change to 1 when HP <= 90%
+  max_atk_pct: null
+  name_en: Enemy's next turn changed
+  name_jp: Enemy's next turn changed
+  record_type_name: PASSIVE
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Enemy turn counter change to 1 when HP <= 90%
+  desc_jp: Enemy turn counter change to 1 when HP <= 90%
+  max_atk_pct: null
+  name_en: Enemy's next turn changed
+  name_jp: Enemy's next turn changed
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Reduce damage from all sources by
+    90% for 2 turns
+  desc_jp: Voids status ailments for 999 turns + Reduce damage from all sources by
+    90% for 2 turns
+  max_atk_pct: null
+  name_en: I'll reinforce my defenses + Can you hit me?
+  name_jp: I'll reinforce my defenses + Can you hit me?
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Water, Deal 250% damage
+  desc_jp: Change all orbs to Water, Deal 250% damage
+  max_atk_pct: 250
+  name_en: Time's up!
+  name_jp: Time's up!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 89
+  name_jp: HP <= 89
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Movetime 50% for 10 turns
+  desc_jp: Movetime 50% for 10 turns
+  max_atk_pct: null
+  name_en: I'm really going to give my all now!
+  name_jp: I'm really going to give my all now!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 89
+  name_jp: HP <= 89
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 2nd row to Water, Jammer orbs, 4th row to Water, Jammer orbs, Deal
+    100% damage
+  desc_jp: Change 2nd row to Water, Jammer orbs, 4th row to Water, Jammer orbs, Deal
+    100% damage
+  max_atk_pct: 100
+  name_en: How about this?
+  name_jp: How about this?
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 89
+  name_jp: HP <= 89
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Random 3 orbs change every 1.0s for 2 turns, Deal 90% damage
+  desc_jp: Random 3 orbs change every 1.0s for 2 turns, Deal 90% damage
+  max_atk_pct: 90
+  name_en: Blue Metal Flash
+  name_jp: Blue Metal Flash
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 110% damage (2 hits, 55% each)
+  desc_jp: Deal 110% damage (2 hits, 55% each)
+  max_atk_pct: 110
+  name_en: Take it!
+  name_jp: Take it!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 29
+  name_jp: HP <= 29
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Seal 1st, 6th column for 1 turns
+  desc_jp: Seal 1st, 6th column for 1 turns
+  max_atk_pct: null
+  name_en: Azure Star Blockade
+  name_jp: Azure Star Blockade
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] SkillSet:
+# 	[0] ESStatusShield -> I'll reinforce my defenses
+# 	Voids status ailments for 999 turns
+# 	[1] ESDamageShield -> Can you hit me?
+# 	Reduce damage from all sources by 90% for 2 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESSetCounter -> ESSetCounter
+# set_counter
+# [9] ESBranchCounter -> ESBranchCounter
+# branch
+# [10] ESBranchHP -> ESBranchHP
+# branch
+# [11] ESBranchHP -> ESBranchHP
+# branch
+# [12] ESBranchFlag -> ESBranchFlag
+# branch
+# [13] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [14] SkillSet:
+# 	[0] ESAbsorbThreshold -> Not yet, ok?
+# 	Absorb damage >= 4000000 damage for 10 turns
+# 	[1] ESAttackUp -> Prepare yourself
+# 	Increase damage to 150% for the next 2 turns
+# [15] ESEndPath -> ESEndPath
+# end_turn
+# [16] ESBranchFlag -> ESBranchFlag
+# branch
+# [17] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [18] ESDebuffMovetime -> I'm really going to give my all now!
+# Movetime 50% for 10 turns
+# [19] ESEndPath -> ESEndPath
+# end_turn
+# [20] ESRowSpawnMulti -> How about this?
+# Condition: One-time use
+# Change 2nd row to Water, Jammer orbs, 4th row to Water, Jammer orbs
+# [21] ESSpinnersRandom -> Blue Metal Flash
+# Condition: 50% chance
+# Random 3 orbs change every 1.0s for 2 turns
+# [22] ESAttackMultihit -> Take it!
+# Enemy action
+# [23] ESEndPath -> ESEndPath
+# end_turn
+# [24] ESBranchFlag -> ESBranchFlag
+# branch
+# [25] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [26] ESOrbSealColumn -> Azure Star Blockade
+# Seal 1st, 6th column for 1 turns
+# [27] ESEndPath -> ESEndPath
+# end_turn
+# [28] ESColumnSpawnMulti -> Binding Azure Bladewings
+# Change 2nd column to Water, Jammer orbs, 5th column to Water, Jammer orbs
+# [29] ESEndPath -> ESEndPath
+# end_turn
+# [30] ESSetCounter -> ESSetCounter
+# set_counter
+# [31] ESBoardChangeAttackBits -> Time's up!
+# Change all orbs to Water
+# [32] ESEndPath -> ESEndPath
+# end_turn
+# [33] ESTurnChangePassive -> Enemy's next turn changed
+# Enemy turn counter change to 1 when HP <= 90%

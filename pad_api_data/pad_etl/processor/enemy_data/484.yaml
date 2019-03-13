@@ -1,0 +1,89 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 484
+monster_name_en: Moondragon Lunar D'spinas
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 3
+############################################################
+!SkillRecordListing
+level: 3
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage (2 hits, 50% each)
+  desc_jp: Deal 100% damage (2 hits, 50% each)
+  max_atk_pct: 100
+  name_en: Hell Breath
+  name_jp: Hell Breath
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 75
+  name_jp: HP <= 75
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  max_atk_pct: null
+  name_en: Gravity Breath
+  name_jp: Gravity Breath
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 225% damage (3 hits, 75% each)
+  desc_jp: Deal 225% damage (3 hits, 75% each)
+  max_atk_pct: 225
+  name_en: God Hell Breath
+  name_jp: God Hell Breath
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 75
+  name_jp: HP <= 75
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 225% damage (3 hits, 75% each)
+  desc_jp: Deal 225% damage (3 hits, 75% each)
+  max_atk_pct: 225
+  name_en: God Hell Breath
+  name_jp: God Hell Breath
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESNone -> ESNone
+# None
+# [4] ESBranchHP -> ESBranchHP
+# branch
+# [5] ESAttackMultihit -> God Hell Breath
+# Condition: When < 75% hp
+# Enemy action
+# [6] ESEndPath -> ESEndPath
+# end_turn
+# [7] ESGravity -> Gravity Breath
+# Condition: When < 75% hp , one-time use
+# Player -99% HP
+# [8] ESAttackMultihit -> Hell Breath
+# Enemy action

@@ -1,0 +1,91 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 825
+monster_name_en: Godly Knight of the Sky, Verche
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Dark by 50%
+  desc_jp: Reduce damage from Dark by 50%
+  max_atk_pct: null
+  name_en: Verche Dark Halven
+  name_jp: Verche Dark Halven
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Bind Dark cards for 10 turns
+  desc_jp: Bind Dark cards for 10 turns
+  max_atk_pct: null
+  name_en: Sanction
+  name_jp: Sanction
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Jammer to Light, Deal 220% damage
+  desc_jp: Change Jammer to Light, Deal 220% damage
+  max_atk_pct: 220
+  name_en: Conviction
+  name_jp: Conviction
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 70
+  name_jp: HP <= 70
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Void damage >= 1000000 for 99 turns
+  desc_jp: Void damage >= 1000000 for 99 turns
+  max_atk_pct: null
+  name_en: Celestial Armor
+  name_jp: Celestial Armor
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESBindAttribute -> Sanction
+# Bind Dark cards for 10 turns
+# [5] ESSkillDelay -> Penalty
+# Delay active skills by 3 turns
+# [6] ESEndPath -> ESEndPath
+# end_turn
+# [7] ESAbsorbAttribute -> Saint Barrier
+# Condition: When < 50% hp , one-time use
+# Absorb Dark damage for 5 turns
+# [8] ESVoidShield -> Celestial Armor
+# Condition: When < 70% hp , one-time use
+# Void damage >= 1000000 for 99 turns
+# [9] ESOrbChangeAttack -> Conviction
+# Change Jammer to Light
+# [10] ESOrbChangeAttack -> Justice Spear
+# Change Dark to Jammer
+# [11] ESRandomSpawn -> Force Lightning
+# Condition: When fire, water, wood, dark, heal, jammer, poison, mortal poison orbs are on the board
+# Spawn random 4 Light orbs
+# [12] ESAttributeResist -> Verche Dark Halven
+# Reduce damage from Dark by 50%

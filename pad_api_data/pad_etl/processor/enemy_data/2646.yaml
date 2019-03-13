@@ -1,0 +1,130 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2646
+monster_name_en: Metallic Star Dragon, Dark Gemini
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb Light damage for 3 turns
+  desc_jp: Absorb Light damage for 3 turns
+  max_atk_pct: null
+  name_en: Cloaking Light
+  name_jp: Cloaking Light
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind active skills for 1 turns
+  desc_jp: Bind active skills for 1 turns
+  max_atk_pct: null
+  name_en: Deflective Dark
+  name_jp: Deflective Dark
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 3 Dark orbs, Deal 100% damage
+  desc_jp: Spawn random 3 Dark orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Bleak Fellow
+  name_jp: Bleak Fellow
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Spawn random 2 Jammer orbs, Deal 100% damage
+  desc_jp: Spawn random 2 Jammer orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Little Jam
+  name_jp: Little Jam
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 1st, 2nd column to Dark orbs
+  desc_jp: Change 1st, 2nd column to Dark orbs
+  max_atk_pct: null
+  name_en: Dark Child's Five Fingers
+  name_jp: Dark Child's Five Fingers
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 10
+  name_jp: HP <= 10
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 300%~500% damage (3~5 hits, 100% each)
+  desc_jp: Deal 300%~500% damage (3~5 hits, 100% each)
+  max_atk_pct: 500
+  name_en: Gemini's Crest - Chaos
+  name_jp: Gemini's Crest - Chaos
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESAbsorbAttribute -> Cloaking Light
+# Absorb Light damage for 3 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESAttackMultihit -> Gemini's Crest - Chaos
+# Condition: When < 10% hp
+# Enemy action
+# [10] ESBindSkill -> Deflective Dark
+# Condition: One-time use
+# Bind active skills for 1 turns
+# [11] ESRandomSpawn -> Bleak Fellow
+# Condition: 40% chance & when Fire, Water, Wood, Light, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 3 Dark orbs
+# [12] ESRandomSpawn -> Little Jam
+# Condition: 40% chance & when Fire, Water, Wood, Light, Dark, Heal, Poison, Mortal Poison orbs are on the board
+# Spawn random 2 Jammer orbs
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESBranchFlag -> ESBranchFlag
+# branch
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] ESColumnSpawnMulti -> Dark Child's Five Fingers
+# Change 1st, 2nd column to Dark orbs
+# [17] ESEndPath -> ESEndPath
+# end_turn

@@ -1,0 +1,170 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4674
+monster_name_en: '*****'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 10 turns + Delay active skills by 2 turns
+  desc_jp: Voids status ailments for 10 turns + Delay active skills by 2 turns
+  max_atk_pct: null
+  name_en: Inner-Thigh-Propping Twist Down + Intimidating Air
+  name_jp: Inner-Thigh-Propping Twist Down + Intimidating Air
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  max_atk_pct: null
+  name_en: Phantom Ball
+  name_jp: Phantom Ball
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Water, Deal 100% damage
+  desc_jp: Change Random to Water, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Slider
+  name_jp: Slider
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Random to Dark, Deal 100% damage
+  desc_jp: Change Random to Dark, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Sinker
+  name_jp: Sinker
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 9 Dark orbs + Blind all orbs on the board
+  desc_jp: Spawn random 9 Dark orbs + Blind all orbs on the board
+  max_atk_pct: null
+  name_en: Black Stars + Black Vanguard
+  name_jp: Black Stars + Black Vanguard
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 5 turns
+  desc_jp: Reduce damage from all sources by 50% for 5 turns
+  max_atk_pct: null
+  name_en: YOU'RE here
+  name_jp: YOU'RE here
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 300% damage
+  desc_jp: Blind all orbs on the board, Deal 300% damage
+  max_atk_pct: 300
+  name_en: Gloomy Star Cloud
+  name_jp: Gloomy Star Cloud
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] SkillSet:
+# 	[0] ESStatusShield -> Inner-Thigh-Propping Twist Down
+# 	Voids status ailments for 10 turns
+# 	[1] ESSkillDelay -> Intimidating Air
+# 	Delay active skills by 2 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchFlag -> ESBranchFlag
+# branch
+# [9] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [10] ESGravity -> Phantom Ball
+# Condition: One-time use
+# Player -99% HP
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESBranchHP -> ESBranchHP
+# branch
+# [13] ESBranchHP -> ESBranchHP
+# branch
+# [14] ESGravity -> Phantom Ball
+# Condition: One-time use
+# Player -99% HP
+# [15] ESOrbChangeAttack -> Slider
+# Condition: 33% chance
+# Change Random to Water
+# [16] ESOrbChangeAttack -> Sinker
+# Condition: 34% chance
+# Change Random to Dark
+# [17] ESEndPath -> ESEndPath
+# end_turn
+# [18] ESBranchFlag -> ESBranchFlag
+# branch
+# [19] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [20] SkillSet:
+# 	[0] ESRandomSpawn -> Black Stars
+# 	Spawn random 9 Dark orbs
+# 	[1] ESBlind -> Black Vanguard
+# 	Blind all orbs on the board
+# [21] ESEndPath -> ESEndPath
+# end_turn
+# [22] ESBranchFlag -> ESBranchFlag
+# branch
+# [23] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [24] ESDamageShield -> YOU'RE here
+# Reduce damage from all sources by 50% for 5 turns
+# [25] ESEndPath -> ESEndPath
+# end_turn
+# [26] ESBlind -> Gloomy Star Cloud
+# Blind all orbs on the board
+# [27] ESEndPath -> ESEndPath
+# end_turn

@@ -1,0 +1,69 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4203
+monster_name_en: Green Devilcat's Disciple, Meowin
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Wood, Deal 80% damage
+  desc_jp: Change Random to Wood, Deal 80% damage
+  max_atk_pct: 80
+  name_en: I'm feline bored!
+  name_jp: I'm feline bored!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Movetime -2s for 2 turns
+  desc_jp: Movetime -2s for 2 turns
+  max_atk_pct: null
+  name_en: Don't puss your luck!
+  name_jp: Don't puss your luck!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESBranchHP -> ESBranchHP
+# branch
+# [4] ESOrbChangeAttack -> I'm feline bored!
+# Condition: One-time use
+# Change Random to Wood
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchFlag -> ESBranchFlag
+# branch
+# [7] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [8] ESDebuffMovetime -> Don't puss your luck!
+# Movetime -2s for 2 turns
+# [9] ESEndPath -> ESEndPath
+# end_turn

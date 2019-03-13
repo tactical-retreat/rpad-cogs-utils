@@ -1,0 +1,86 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1100
+monster_name_en: Sea God's Songstress, Siren
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  max_atk_pct: null
+  name_en: Abyssal Pressure
+  name_jp: Abyssal Pressure
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind Wood cards for 2~3 turns
+  desc_jp: Bind Wood cards for 2~3 turns
+  max_atk_pct: null
+  name_en: Voice of Misfortune
+  name_jp: Voice of Misfortune
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESGravity -> Abyssal Pressure
+# Player -99% HP
+# [5] ESNone -> ESNone
+# None
+# [6] ESBindAttribute -> Voice of Misfortune
+# Condition: When < 50% hp , one-time use
+# Bind Wood cards for 2~3 turns
+# [7] ESNone -> ESNone
+# None
+# [8] ESNone -> ESNone
+# None
+# [9] ESBranchFlag -> ESBranchFlag
+# branch
+# [10] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [11] ESAttackMultihit -> Song of Destruction
+# Enemy action
+# [12] ESBranchFlag -> ESBranchFlag
+# branch
+# [13] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [14] ESAttackMultihit -> Song of Destruction
+# Enemy action
+# [15] ESBranchFlag -> ESBranchFlag
+# branch
+# [16] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [17] ESAttackMultihit -> Song of Destruction
+# Enemy action
+# [18] ESBranchFlag -> ESBranchFlag
+# branch
+# [19] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [20] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [21] ESAttackMultihit -> Song of Destruction
+# Enemy action

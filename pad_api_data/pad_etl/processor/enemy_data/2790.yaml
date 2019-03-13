@@ -1,0 +1,189 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2790
+monster_name_en: Orphan, First Form
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: 'Show message: Hahahaha!| Don''t you want eternity?'
+  desc_jp: 'Show message: Hahahaha!| Don''t you want eternity?'
+  max_atk_pct: null
+  name_en: Orphan Transformation
+  name_jp: Orphan Transformation
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Do nothing + Do nothing
+  desc_jp: Do nothing + Do nothing
+  max_atk_pct: null
+  name_en: 'Our name is Orphan. + By our hand, the world
+
+    shall know redemption.'
+  name_jp: 'Our name is Orphan. + By our hand, the world
+
+    shall know redemption.'
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: 'Show message: Hahahaha!| Don''t you want eternity?'
+  desc_jp: 'Show message: Hahahaha!| Don''t you want eternity?'
+  max_atk_pct: null
+  name_en: Orphan Transformation
+  name_jp: Orphan Transformation
+  record_type_name: ACTION
+
+############################################################
+### Data @ 3
+############################################################
+!SkillRecordListing
+level: 3
+overrides: []
+records:
+- !SkillRecord
+  desc_en: 'Show message: Hahahaha!| Don''t you want eternity?'
+  desc_jp: 'Show message: Hahahaha!| Don''t you want eternity?'
+  max_atk_pct: null
+  name_en: Orphan Transformation
+  name_jp: Orphan Transformation
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Player recover 100% hp
+  desc_jp: Voids status ailments for 999 turns + Player recover 100% hp
+  max_atk_pct: null
+  name_en: 'Our name is Orphan. + By our hand, the world
+
+    shall know redemption.'
+  name_jp: 'Our name is Orphan. + By our hand, the world
+
+    shall know redemption.'
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: 'Show message: Hahahaha!| Don''t you want eternity?'
+  desc_jp: 'Show message: Hahahaha!| Don''t you want eternity?'
+  max_atk_pct: null
+  name_en: Orphan Transformation
+  name_jp: Orphan Transformation
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Enemy recover 10% hp, Deal 200% damage
+  desc_jp: Enemy recover 10% hp, Deal 200% damage
+  max_atk_pct: 200
+  name_en: Vile Exploitation
+  name_jp: Vile Exploitation
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 200%~500% damage (2~5 hits, 100% each)
+  desc_jp: Deal 200%~500% damage (2~5 hits, 100% each)
+  max_atk_pct: 500
+  name_en: Progenitorial Wrath
+  name_jp: Progenitorial Wrath
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESDeathCry -> Orphan Transformation
+# Condition: On death
+# Show message: Hahahaha!| Don't you want eternity?
+# [3] ESBranchLevel -> ESBranchLevel
+# branch
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] SkillSet:
+# 	[0] ESStatusShield -> Our name is Orphan.
+# 	Voids status ailments for 999 turns
+# 	[1] ESRecoverPlayer -> By our hand, the world
+# shall know redemption.
+# 	Player recover 100% hp
+# [7] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESInactivity -> Our name is Orphan.
+# 	Do nothing
+# 	[1] ESInactivity -> By our hand, the world
+# shall know redemption.
+# 	Do nothing
+# [8] ESEndPath -> ESEndPath
+# end_turn
+# [9] ESBranchHP -> ESBranchHP
+# branch
+# [10] ESBranchFlag -> ESBranchFlag
+# branch
+# [11] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESAbsorbCombo -> Consummate Light
+# 	Absorb combo <= 3 damage for 3 turns
+# 	[1] ESGravity -> Merciless Judgment
+# 	Player -99% HP
+# [12] ESAttackMultihit -> Hammer
+# Condition: One-time use
+# Enemy action
+# [13] ESAttackMultihit -> Requiem
+# Condition: One-time use
+# Enemy action
+# [14] ESAttackMultihit -> Progenitorial Wrath
+# Condition: One-time use
+# Enemy action
+# [15] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESChangeAttribute -> Consummate Darkness
+# 	Change own attribute to Dark
+# 	[1] ESGravity -> Merciless Judgment
+# 	Player -99% HP
+# [16] ESPoisonChangeRandomAttack -> Chains of Torment
+# Condition: One-time use
+# Change Random 5 to Poison
+# [17] ESAttackMultihit -> Black Ruin
+# Condition: One-time use
+# Enemy action
+# [18] ESRecoverEnemy -> Vile Exploitation
+# Condition: One-time use
+# Enemy recover 10% hp
+# [19] ESBranchFlag -> ESBranchFlag
+# branch
+# [20] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [21] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESGravity -> Merciless Judgment
+# 	Player -99% HP
+# 	[1] ESChangeAttribute -> Opposite Extremes
+# 	Change own attribute to random one of Light, Dark
+# [22] ESRecoverEnemy -> Vile Exploitation
+# Condition: 65% chance
+# Enemy recover 10% hp
+# [23] ESAttackUp -> Dies Irae
+# Condition: 20% chance
+# Increase damage to 200% for the next 999 turns
+# [24] ESAttackMultihit -> Progenitorial Wrath
+# Condition: 15% chance
+# Enemy action
+# [25] ESEndPath -> ESEndPath
+# end_turn

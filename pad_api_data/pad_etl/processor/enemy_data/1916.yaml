@@ -1,0 +1,91 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1916
+monster_name_en: Music Dragon, Legelonte
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  max_atk_pct: null
+  name_en: The show begins
+  name_jp: The show begins
+  record_type_name: PREEMPT
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESStatusShield -> The show begins
+# Voids status ailments for 999 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchFlag -> ESBranchFlag
+# branch
+# [7] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [8] ESBindRandomSub -> Piano
+# Bind 2 random subs for 3 turns
+# [9] ESEndPath -> ESEndPath
+# end_turn
+# [10] ESBranchFlag -> ESBranchFlag
+# branch
+# [11] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [12] ESAttackMultihit -> Forte
+# Enemy action
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESBranchFlag -> ESBranchFlag
+# branch
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] ESBindSkill -> Pianissimo
+# Bind active skills for 2 turns
+# [17] ESEndPath -> ESEndPath
+# end_turn
+# [18] ESBranchFlag -> ESBranchFlag
+# branch
+# [19] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [20] ESAttackMultihit -> Fortissimo
+# Enemy action
+# [21] ESEndPath -> ESEndPath
+# end_turn
+# [22] ESBranchFlag -> ESBranchFlag
+# branch
+# [23] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [24] ESGravity -> Pianississimo
+# Player -99% HP
+# [25] ESEndPath -> ESEndPath
+# end_turn
+# [26] ESBranchFlag -> ESBranchFlag
+# branch
+# [27] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [28] ESAttackMultihit -> Fortississimo
+# Enemy action
+# [29] ESEndPath -> ESEndPath
+# end_turn
+# [30] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [31] ESAttackMultihit -> Finale
+# Enemy action

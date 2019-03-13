@@ -1,0 +1,225 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4062
+monster_name_en: Ruining Hands War Goddess, Morrigu
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Machine by 50%
+  desc_jp: Reduce damage from Machine by 50%
+  max_atk_pct: null
+  name_en: Machine Boss Resistance
+  name_jp: Machine Boss Resistance
+  record_type_name: PASSIVE
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Machine by 50%
+  desc_jp: Reduce damage from Machine by 50%
+  max_atk_pct: null
+  name_en: Machine Boss Resistance
+  name_jp: Machine Boss Resistance
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Void damage >= 25000000 for 99 turns
+    + Absorb combo <= 6 damage for 99 turns
+  desc_jp: Voids status ailments for 999 turns + Void damage >= 25000000 for 99 turns
+    + Absorb combo <= 6 damage for 99 turns
+  max_atk_pct: null
+  name_en: I'm...the strongest!!! + X Wall + Absorb Sechs
+  name_jp: I'm...the strongest!!! + X Wall + Absorb Sechs
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Hold
+  name_jp: Hold
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Jammer, Deal 370% damage
+  desc_jp: Change all orbs to Jammer, Deal 370% damage
+  max_atk_pct: 370
+  name_en: Extreme Burst
+  name_jp: Extreme Burst
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 30% hp + Bind awoken skills for 5 turns
+  desc_jp: Enemy recover 30% hp + Bind awoken skills for 5 turns
+  max_atk_pct: null
+  name_en: Aaaahhhhhh! I won't forgive you!! + I'll weaken you!!
+  name_jp: Aaaahhhhhh! I won't forgive you!! + I'll weaken you!!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Fire, Dark, Deal 400% damage
+  desc_jp: Change all orbs to Fire, Dark, Deal 400% damage
+  max_atk_pct: 400
+  name_en: Twin Explosion
+  name_jp: Twin Explosion
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] SkillSet:
+# 	[0] ESStatusShield -> I'm...the strongest!!!
+# 	Voids status ailments for 999 turns
+# 	[1] ESVoidShield -> X Wall
+# 	Void damage >= 25000000 for 99 turns
+# 	[2] ESAbsorbCombo -> Absorb Sechs
+# 	Absorb combo <= 6 damage for 99 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchCounter -> ESBranchCounter
+# branch
+# [9] ESSetCounter -> ESSetCounter
+# set_counter
+# [10] ESBranchHP -> ESBranchHP
+# branch
+# [11] ESInactivity -> Hold
+# Do nothing
+# [12] ESOrbChangeAttack -> Sacrifice Saber
+# Change Poison to Dark
+# [13] ESOrbChangeAttack -> Drill Break
+# Change Jammer to Fire
+# [14] ESBranchHP -> ESBranchHP
+# branch
+# [15] ESBranchFlag -> ESBranchFlag
+# branch
+# [16] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [17] SkillSet:
+# 	[0] ESColumnSpawnMulti -> Double Sacrifice
+# 	Change 1st column to Poison orbs, 6th column to Jammer orbs
+# 	[1] ESAttributeBlock -> Twin Protection
+# 	Unable to Jammer, Poison orbs for 1 turns
+# [18] ESEndPath -> ESEndPath
+# end_turn
+# [19] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESOrbSealColumn -> Protective Wall
+# 	Seal 6th column for 1 turns
+# 	[1] ESBombFixedSpawn -> Burst Out
+# 	Spawn Bomb orbs in the specified positions
+# 	[2] ESAttackMultihit -> Hyah!!!
+# 	Enemy action
+# [20] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESOrbSealColumn -> Protective Wall
+# 	Seal 1st column for 1 turns
+# 	[1] ESBlindStickyFixed -> Cross Saber
+# 	Blind orbs in specific positions for 1 turns
+# 	[2] ESAttackMultihit -> Hyah!!!
+# 	Enemy action
+# [21] ESColumnSpawnMulti -> Double Sacrifice
+# Condition: 50% chance
+# Change 1st column to Poison orbs, 6th column to Jammer orbs
+# [22] ESColumnSpawnMulti -> Twin Strike
+# Change 1st column to Dark orbs, 6th column to Fire orbs
+# [23] ESEndPath -> ESEndPath
+# end_turn
+# [24] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESBlindStickyFixed -> Double Saber
+# 	Blind orbs in specific positions for 1 turns
+# 	[1] ESOrbLock -> X Field
+# 	Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# 	[2] ESAttackMultihit -> Hyah!!!
+# 	Enemy action
+# [25] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESOrbSealRow -> Protective Wall
+# 	Seal 1st row for 1 turns
+# 	[1] ESBlindStickyFixed -> Cross Saber
+# 	Blind orbs in specific positions for 1 turns
+# 	[2] ESBombFixedSpawn -> Burst Out
+# 	Spawn Bomb orbs in the specified positions
+# [26] ESRowSpawnMulti -> Double Sacrifice
+# Condition: 33% chance
+# Change 1st row to Poison orbs, 5th row to Jammer orbs
+# [27] ESRowSpawnMulti -> Twin Strike
+# Condition: 50% chance
+# Change 1st row to Dark orbs, 5th row to Fire orbs
+# [28] ESAttackMultihit -> Cross Rush
+# Enemy action
+# [29] ESEndPath -> ESEndPath
+# end_turn
+# [30] ESBranchFlag -> ESBranchFlag
+# branch
+# [31] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [32] SkillSet:
+# 	[0] ESRecoverEnemy -> Aaaahhhhhh! I won't forgive you!!
+# 	Enemy recover 30% hp
+# 	[1] ESBindAwoken -> I'll weaken you!!
+# 	Bind awoken skills for 5 turns
+# [33] ESEndPath -> ESEndPath
+# end_turn
+# [34] ESBoardChangeAttackBits -> Twin Explosion
+# Change all orbs to Fire, Dark
+# [35] ESEndPath -> ESEndPath
+# end_turn
+# [36] ESSetCounter -> ESSetCounter
+# set_counter
+# [37] ESBoardChangeAttackBits -> Extreme Burst
+# Change all orbs to Jammer
+# [38] ESEndPath -> ESEndPath
+# end_turn
+# [39] ESTypeResist -> Machine Boss Resistance
+# Reduce damage from Machine by 50%

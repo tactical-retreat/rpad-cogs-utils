@@ -1,0 +1,73 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 907
+monster_name_en: Aqua Baron
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Player recover 100% hp
+  desc_jp: Player recover 100% hp
+  max_atk_pct: null
+  name_en: Chivalric Spirit
+  name_jp: Chivalric Spirit
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Water, Deal 80% damage
+  desc_jp: Change Random to Water, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Ice Force
+  name_jp: Ice Force
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 25
+  name_jp: HP <= 25
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Water, Deal 125% damage
+  desc_jp: Change Random to Water, Deal 125% damage
+  max_atk_pct: 125
+  name_en: Ocean Spear
+  name_jp: Ocean Spear
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESRecoverPlayer -> Chivalric Spirit
+# Player recover 100% hp
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESOrbChangeAttack -> Ocean Spear
+# Condition: When < 25% hp
+# Change Random to Water
+# [7] ESOrbChangeAttack -> Ice Force
+# Condition: One-time use
+# Change Random to Water

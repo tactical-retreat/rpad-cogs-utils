@@ -1,0 +1,132 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2514
+monster_name_en: Lively Banquet Dragon Hero, Liu Bei
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Fire skyfall +15% for 99 turns
+  desc_jp: Fire skyfall +15% for 99 turns
+  max_atk_pct: null
+  name_en: Burn!!
+  name_jp: Burn!!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 2nd column to Fire orbs + Change 2nd row to Wood orbs
+  desc_jp: Change 2nd column to Fire orbs + Change 2nd row to Wood orbs
+  max_atk_pct: null
+  name_en: Heat! + Christmas!
+  name_jp: Heat! + Christmas!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Wood to Fire, Deal 110% damage
+  desc_jp: Change Wood to Fire, Deal 110% damage
+  max_atk_pct: 110
+  name_en: Green Fire Transformation
+  name_jp: Green Fire Transformation
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 120% damage
+  desc_jp: Deal 120% damage
+  max_atk_pct: 120
+  name_en: Flame Dragon Sword
+  name_jp: Flame Dragon Sword
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 130% damage
+  desc_jp: Blind all orbs on the board, Deal 130% damage
+  max_atk_pct: 130
+  name_en: Flame Dance
+  name_jp: Flame Dance
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 25
+  name_jp: HP <= 25
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Movetime -2s for 3 turns, Deal 250% damage
+  desc_jp: Movetime -2s for 3 turns, Deal 250% damage
+  max_atk_pct: 250
+  name_en: Blazing Banquet
+  name_jp: Blazing Banquet
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESSkyfall -> Burn!!
+# Fire skyfall +15% for 99 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchCard -> ESBranchCard
+# branch
+# [7] ESBranchHP -> ESBranchHP
+# branch
+# [8] ESDebuffMovetime -> Blazing Banquet
+# Condition: When < 25% hp
+# Movetime -2s for 3 turns
+# [9] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESColumnSpawnMulti -> Heat!
+# 	Change 2nd column to Fire orbs
+# 	[1] ESRowSpawnMulti -> Christmas!
+# 	Change 2nd row to Wood orbs
+# [10] ESOrbChangeAttack -> Green Fire Transformation
+# Condition: 50% chance
+# Change Wood to Fire
+# [11] ESAttackMultihit -> Flame Dragon Sword
+# Enemy action
+# [12] ESBranchFlag -> ESBranchFlag
+# branch
+# [13] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [14] ESBlind -> Flame Dance
+# Blind all orbs on the board
+# [15] ESBranchFlag -> ESBranchFlag
+# branch
+# [16] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [17] ESRecoverPlayer -> Can you feel the heat, brother?
+# Player recover 100% hp

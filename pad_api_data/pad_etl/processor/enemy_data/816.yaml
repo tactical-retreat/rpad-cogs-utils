@@ -1,0 +1,51 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 816
+monster_name_en: Don Domovoi
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Player -50% HP
+  desc_jp: Player -50% HP
+  max_atk_pct: null
+  name_en: Nervous Attack
+  name_jp: Nervous Attack
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 30
+  name_jp: HP <= 30
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 1000% for the next attack
+  desc_jp: Increase damage to 1000% for the next attack
+  max_atk_pct: null
+  name_en: High Tension
+  name_jp: High Tension
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESGravity -> Nervous Attack
+# Condition: One-time use
+# Player -50% HP
+# [3] ESStorePower -> High Tension
+# Condition: When < 30% hp
+# Increase damage to 1000% for the next attack

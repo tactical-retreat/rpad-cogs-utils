@@ -1,0 +1,216 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3547
+monster_name_en: Crescent Moon Wisedragon, Diena
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Dark by 50%
+  desc_jp: Reduce damage from Dark by 50%
+  max_atk_pct: null
+  name_en: Dark damage halved
+  name_jp: Dark damage halved
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 10 turns + Spawn random 3 locked Bomb orbs +
+    Spawn random 3 Jammer, Mortal Poison orbs
+  desc_jp: Voids status ailments for 10 turns + Spawn random 3 locked Bomb orbs +
+    Spawn random 3 Jammer, Mortal Poison orbs
+  max_atk_pct: null
+  name_en: Abnormal Dimension + Terror + Impurity
+  name_jp: Abnormal Dimension + Terror + Impurity
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Dark, Deal 1200% damage
+  desc_jp: Change all orbs to Dark, Deal 1200% damage
+  max_atk_pct: 1200
+  name_en: Arced Horn of Truth
+  name_jp: Arced Horn of Truth
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Mortal Poison skyfall +25% for 1 turns, Deal 2400% damage
+  desc_jp: Mortal Poison skyfall +25% for 1 turns, Deal 2400% damage
+  max_atk_pct: 2400
+  name_en: Curse Invasion
+  name_jp: Curse Invasion
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 99
+  name_jp: HP <= 99
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Blind orbs in specific positions for 1 turns, Deal 300% damage
+  desc_jp: Blind orbs in specific positions for 1 turns, Deal 300% damage
+  max_atk_pct: 300
+  name_en: Eclipse Touch
+  name_jp: Eclipse Touch
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Blind orbs in specific positions for 1 turns, Deal 300% damage
+  desc_jp: Blind orbs in specific positions for 1 turns, Deal 300% damage
+  max_atk_pct: 300
+  name_en: Eclipse Touch
+  name_jp: Eclipse Touch
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Movetime -1s for 1 turns, Deal 300% damage
+  desc_jp: Movetime -1s for 1 turns, Deal 300% damage
+  max_atk_pct: 300
+  name_en: Time Mixup
+  name_jp: Time Mixup
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Movetime -2s for 1 turns, Deal 300% damage
+  desc_jp: Movetime -2s for 1 turns, Deal 300% damage
+  max_atk_pct: 300
+  name_en: Time Mixup
+  name_jp: Time Mixup
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Movetime -3s for 1 turns, Deal 300% damage
+  desc_jp: Movetime -3s for 1 turns, Deal 300% damage
+  max_atk_pct: 300
+  name_en: Time Mixup
+  name_jp: Time Mixup
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Movetime 50% for 1 turns, Deal 300% damage
+  desc_jp: Movetime 50% for 1 turns, Deal 300% damage
+  max_atk_pct: 300
+  name_en: Time Mixup
+  name_jp: Time Mixup
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Movetime 150% for 1 turns, Deal 300% damage
+  desc_jp: Movetime 150% for 1 turns, Deal 300% damage
+  max_atk_pct: 300
+  name_en: Time Mixup
+  name_jp: Time Mixup
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 350% damage (7 hits, 50% each)
+  desc_jp: Deal 350% damage (7 hits, 50% each)
+  max_atk_pct: 350
+  name_en: Wonder Bolt
+  name_jp: Wonder Bolt
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 5
+  name_jp: HP <= 5
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Mortal Poison skyfall +25% for 1 turns, Deal 2400% damage
+  desc_jp: Mortal Poison skyfall +25% for 1 turns, Deal 2400% damage
+  max_atk_pct: 2400
+  name_en: Curse Invasion
+  name_jp: Curse Invasion
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	[0] ESStatusShield -> Abnormal Dimension
+# 	Voids status ailments for 10 turns
+# 	[1] ESBombRandomSpawn -> Terror
+# 	Spawn random 3 locked Bomb orbs
+# 	[2] ESRandomSpawn -> Impurity
+# 	Spawn random 3 Jammer, Mortal Poison orbs
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESSkyfall -> Curse Invasion
+# Condition: When < 5% hp
+# Mortal Poison skyfall +25% for 1 turns
+# [7] ESBranchFlag -> ESBranchFlag
+# branch
+# [8] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [9] ESRandomSpawn -> Arced Horn of Truth
+# Condition: One-time use & when Jammer, Mortal Poison orbs are on the board
+# Change all orbs to Dark
+# [10] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESOrbSealColumn -> Orb Rust
+# 	Seal 6th column for 5 turns
+# 	[1] ESAbsorbCombo -> Distortion Field
+# 	Absorb combo <= 5 damage for 5 turns
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESBranchHP -> ESBranchHP
+# branch
+# [13] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESDamageShield -> Shadow Wall
+# 	Reduce damage from all sources by 75% for 5 turns
+# 	[1] ESAttackUp -> Wicked
+# 	Increase damage to 150% for the next 4 turns
+# [14] ESBlindStickyFixed -> Eclipse Touch
+# Condition: 20% chance
+# Blind orbs in specific positions for 1 turns
+# [15] ESBlindStickyFixed -> Eclipse Touch
+# Condition: 20% chance
+# Blind orbs in specific positions for 1 turns
+# [16] ESDebuffMovetime -> Time Mixup
+# Condition: 6% chance
+# Movetime -1s for 1 turns
+# [17] ESDebuffMovetime -> Time Mixup
+# Condition: 6% chance
+# Movetime -2s for 1 turns
+# [18] ESDebuffMovetime -> Time Mixup
+# Condition: 6% chance
+# Movetime -3s for 1 turns
+# [19] ESDebuffMovetime -> Time Mixup
+# Condition: 6% chance
+# Movetime 50% for 1 turns
+# [20] ESDebuffMovetime -> Time Mixup
+# Condition: 6% chance
+# Movetime 150% for 1 turns
+# [21] ESAttackMultihit -> Wonder Bolt
+# Condition: 30% chance
+# Enemy action
+# [22] ESEndPath -> ESEndPath
+# end_turn
+# [23] ESSkyfall -> Curse Invasion
+# Mortal Poison skyfall +25% for 1 turns
+# [24] ESEndPath -> ESEndPath
+# end_turn
+# [25] ESAttributeResist -> Dark damage halved
+# Reduce damage from Dark by 50%

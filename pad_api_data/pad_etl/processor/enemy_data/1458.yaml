@@ -1,0 +1,152 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1458
+monster_name_en: Mystic Pentad Dragon, Folklore
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Bind awoken skills for 3 turns, Deal 70% damage
+  desc_jp: Bind awoken skills for 3 turns, Deal 70% damage
+  max_atk_pct: 70
+  name_en: Wisdom from Very Ancient Times
+  name_jp: Wisdom from Very Ancient Times
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Blind all orbs on the board + Change own attribute to random one of Fire,
+    Water, Wood, Light, Dark
+  desc_jp: Blind all orbs on the board + Change own attribute to random one of Fire,
+    Water, Wood, Light, Dark
+  max_atk_pct: null
+  name_en: Cattle Mutilation + Full Element
+  name_jp: Cattle Mutilation + Full Element
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  max_atk_pct: null
+  name_en: Weight of the Trilithon
+  name_jp: Weight of the Trilithon
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 80% damage
+  desc_jp: Change Random to Jammer, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Glyph of Plunder, Monkey
+  name_jp: Glyph of Plunder, Monkey
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 120% damage (2 hits, 60% each)
+  desc_jp: Deal 120% damage (2 hits, 60% each)
+  max_atk_pct: 120
+  name_en: Crystal Fang
+  name_jp: Crystal Fang
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 140% damage (7 hits, 20% each)
+  desc_jp: Deal 140% damage (7 hits, 20% each)
+  max_atk_pct: 140
+  name_en: Annihilating Light of the Pleiades
+  name_jp: Annihilating Light of the Pleiades
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Movetime -2s for 5 turns
+  desc_jp: Movetime -2s for 5 turns
+  max_atk_pct: null
+  name_en: Lost Technology
+  name_jp: Lost Technology
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 20
+  name_jp: HP <= 20
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 300% damage (3 hits, 100% each)
+  desc_jp: Deal 300% damage (3 hits, 100% each)
+  max_atk_pct: 300
+  name_en: Gear Tempest
+  name_jp: Gear Tempest
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESBindAwoken -> Wisdom from Very Ancient Times
+# Condition: One-time use
+# Bind awoken skills for 3 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] ESAttackMultihit -> Gear Tempest
+# Condition: When < 20% hp
+# Enemy action
+# [8] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESBlind -> Cattle Mutilation
+# 	Blind all orbs on the board
+# 	[1] ESChangeAttribute -> Full Element
+# 	Change own attribute to random one of Fire, Water, Wood, Light, Dark
+# [9] ESGravity -> Weight of the Trilithon
+# Condition: 20% chance
+# Player -99% HP
+# [10] ESOrbChangeAttack -> Glyph of Plunder, Monkey
+# Condition: 20% chance
+# Change Random to Jammer
+# [11] ESAttackMultihit -> Crystal Fang
+# Condition: 30% chance
+# Enemy action
+# [12] ESAttackMultihit -> Annihilating Light of the Pleiades
+# Condition: 30% chance
+# Enemy action
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESBranchFlag -> ESBranchFlag
+# branch
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] ESDebuffMovetime -> Lost Technology
+# Movetime -2s for 5 turns
+# [17] ESEndPath -> ESEndPath
+# end_turn

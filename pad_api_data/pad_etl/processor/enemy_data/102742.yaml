@@ -1,0 +1,76 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 102742
+monster_name_en: Alt. Reincarnated Godly Knight of the Sky, Verche
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Light, Heal skyfall +25% for 5 turns
+  desc_jp: Voids status ailments for 999 turns + Light, Heal skyfall +25% for 5 turns
+  max_atk_pct: null
+  name_en: Heaven Dragon Knight's Soul + Celestial Wings
+  name_jp: Heaven Dragon Knight's Soul + Celestial Wings
+  record_type_name: PREEMPT
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	[0] ESStatusShield -> Heaven Dragon Knight's Soul
+# 	Voids status ailments for 999 turns
+# 	[1] ESSkyfall -> Celestial Wings
+# 	Light, Heal skyfall +25% for 5 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchFlag -> ESBranchFlag
+# branch
+# [7] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [8] SkillSet:
+# 	[0] ESGravity -> Saint Decision
+# 	Player -60% HP
+# 	[1] ESPoisonChangeRandomAttack -> Saint Poison
+# 	Change Random 1 to Poison
+# [9] ESBranchFlag -> ESBranchFlag
+# branch
+# [10] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [11] SkillSet:
+# 	[0] ESGravity -> Saint Decision
+# 	Player -60% HP
+# 	[1] ESPoisonChangeRandomAttack -> Saint Poison
+# 	Change Random 1 to Poison
+# [12] ESBranchFlag -> ESBranchFlag
+# branch
+# [13] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [14] SkillSet:
+# 	[0] ESGravity -> Saint Decision
+# 	Player -60% HP
+# 	[1] ESPoisonChangeRandomAttack -> Saint Poison
+# 	Change Random 1 to Poison
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] ESRandomSpawn -> Shining Railgun
+# Condition: When mortal poison orbs are on the board
+# Change all orbs to Light
+# [17] ESRecoverPlayer -> Heaven's Compassion
+# Player recover 100% hp

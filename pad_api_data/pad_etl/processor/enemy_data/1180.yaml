@@ -1,0 +1,97 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1180
+monster_name_en: Blue Fairy
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Player recover 100% hp
+  desc_jp: Player recover 100% hp
+  max_atk_pct: null
+  name_en: Lucky Encounter
+  name_jp: Lucky Encounter
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Water, Deal 80% damage
+  desc_jp: Change Random to Water, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Water Spirit's Writing
+  name_jp: Water Spirit's Writing
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 25% damage
+  desc_jp: Deal 25% damage
+  max_atk_pct: 25
+  name_en: Magical Book
+  name_jp: Magical Book
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 1 subs for 3 turns, Deal 150% damage
+  desc_jp: Bind 1 subs for 3 turns, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Blue Saintly Chains
+  name_jp: Blue Saintly Chains
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESRecoverPlayer -> Lucky Encounter
+# Player recover 100% hp
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESAttackMultihit -> Magical Book
+# Condition: One-time use
+# Enemy action
+# [10] ESBindAttack -> Blue Saintly Chains
+# Bind 1 subs for 3 turns
+# [11] ESOrbChangeAttack -> Water Spirit's Writing
+# Condition: 50% chance
+# Change Random to Water
+# [12] ESEndPath -> ESEndPath
+# end_turn

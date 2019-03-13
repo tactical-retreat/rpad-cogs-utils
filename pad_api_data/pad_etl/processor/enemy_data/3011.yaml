@@ -1,0 +1,103 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3011
+monster_name_en: Achtros
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 75%
+  desc_jp: Survive attacks with 1 HP when HP > 75%
+  max_atk_pct: null
+  name_en: Eight Resolve
+  name_jp: Eight Resolve
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Absorb Wood damage for 3 turns
+  desc_jp: Absorb Wood damage for 3 turns
+  max_atk_pct: null
+  name_en: Deep Aqua
+  name_jp: Deep Aqua
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy ally recover 100% hp
+  desc_jp: Enemy ally recover 100% hp
+  max_atk_pct: null
+  name_en: Resuscitation
+  name_jp: Resuscitation
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESAbsorbAttribute -> Deep Aqua
+# Condition: One-time use
+# Absorb Wood damage for 3 turns
+# [3] ESRecoverEnemyAlly -> Resuscitation
+# Condition: When enemy ally is killed
+# Enemy ally recover 100% hp
+# [4] ESBoardChangeAttackBits -> Blue Calamity
+# Condition: When < 15% hp
+# Change all orbs to Poison
+# [5] ESDebuffMovetime -> Extreme Cold
+# Condition: When < 70% hp , one-time use
+# Movetime -1s for 3 turns
+# [6] ESAbsorbCombo -> Bubble Wall
+# Condition: When < 50% hp , one-time use
+# Absorb combo <= 5 damage for 3 turns
+# [7] ESBranchFlag -> ESBranchFlag
+# branch
+# [8] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [9] ESAbsorbAttribute -> Deep Aqua
+# Absorb Wood damage for 3 turns
+# [10] ESBranchFlag -> ESBranchFlag
+# branch
+# [11] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [12] ESSkyfall -> Poison Swirl
+# Mortal Poison skyfall +20% for 1 turns
+# [13] ESBranchFlag -> ESBranchFlag
+# branch
+# [14] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [15] ESOrbLock -> Sharp Teeth
+# Lock 8 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [16] ESBranchFlag -> ESBranchFlag
+# branch
+# [17] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [18] ESDamageShield -> Shell Scale
+# Reduce damage from all sources by 75% for 3 turns
+# [19] ESBranchFlag -> ESBranchFlag
+# branch
+# [20] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [21] ESSkyfall -> Poison Swirl
+# Mortal Poison skyfall +20% for 1 turns
+# [22] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [23] ESOrbLock -> Sharp Teeth
+# Lock 8 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [24] ESResolve -> Eight Resolve
+# Survive attacks with 1 HP when HP > 75%

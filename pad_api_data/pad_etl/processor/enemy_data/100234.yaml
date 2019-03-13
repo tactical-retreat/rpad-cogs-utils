@@ -1,0 +1,85 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 100234
+monster_name_en: Alt. Mystic Mask
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Delay active skills by 1~3 turns
+  desc_jp: Delay active skills by 1~3 turns
+  max_atk_pct: null
+  name_en: Mysterious Wave
+  name_jp: Mysterious Wave
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy ally recover 100% hp
+  desc_jp: Enemy ally recover 100% hp
+  max_atk_pct: null
+  name_en: Resurrection Ceremony
+  name_jp: Resurrection Ceremony
+  record_type_name: ACTION
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Delay active skills by 1~3 turns
+  desc_jp: Delay active skills by 1~3 turns
+  max_atk_pct: null
+  name_en: Mysterious Wave
+  name_jp: Mysterious Wave
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy ally recover 100% hp
+  desc_jp: Enemy ally recover 100% hp
+  max_atk_pct: null
+  name_en: Resurrection Ceremony
+  name_jp: Resurrection Ceremony
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESSkillDelay -> Mysterious Wave
+# Condition: One-time use
+# Delay active skills by 1~3 turns
+# [3] ESRecoverEnemyAlly -> Resurrection Ceremony
+# Condition: When enemy ally is killed
+# Enemy ally recover 100% hp
+# [4] ESAttackMultihit -> Mysterious Beam
+# Condition: 50% chance when < 50% hp
+# Enemy action
+# [5] ESEndPath -> ESEndPath
+# end_turn

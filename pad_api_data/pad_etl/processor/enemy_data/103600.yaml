@@ -1,0 +1,152 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 103600
+monster_name_en: Alt. Heaven Scribe, Enoch
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Light, Dark by 50%
+  desc_jp: Reduce damage from Light, Dark by 50%
+  max_atk_pct: null
+  name_en: Light Dark Halved
+  name_jp: Light Dark Halved
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 76%
+  desc_jp: Survive attacks with 1 HP when HP > 76%
+  max_atk_pct: null
+  name_en: Resolve
+  name_jp: Resolve
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Unable to Heal orbs for 3 turns
+  desc_jp: Voids status ailments for 999 turns + Unable to Heal orbs for 3 turns
+  max_atk_pct: null
+  name_en: Saint's Robe + Staff of Destiny
+  name_jp: Saint's Robe + Staff of Destiny
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 35
+  name_jp: HP <= 35
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb combo <= 6 damage for 999 turns
+  desc_jp: Absorb combo <= 6 damage for 999 turns
+  max_atk_pct: null
+  name_en: Sage Wisdom
+  name_jp: Sage Wisdom
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 1
+  name_jp: HP <= 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 15% hp + Absorb combo <= 6 damage for 999 turns
+  desc_jp: Enemy recover 15% hp + Absorb combo <= 6 damage for 999 turns
+  max_atk_pct: null
+  name_en: Divine Cure + Sage Wisdom
+  name_jp: Divine Cure + Sage Wisdom
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESStatusShield -> Saint's Robe
+# 	Voids status ailments for 999 turns
+# 	[1] ESAttributeBlock -> Staff of Destiny
+# 	Unable to Heal orbs for 3 turns
+# [3] SkillSet:
+# 	Condition: When < 1% hp
+# 	[0] ESRecoverEnemy -> Divine Cure
+# 	Enemy recover 15% hp
+# 	[1] ESAbsorbCombo -> Sage Wisdom
+# 	Absorb combo <= 6 damage for 999 turns
+# [4] ESAbsorbCombo -> Sage Wisdom
+# Condition: When < 35% hp
+# Absorb combo <= 6 damage for 999 turns
+# [5] ESAttackMultihit -> Rizentbard
+# Condition: When < 20% hp
+# Enemy action
+# [6] ESDamageShield -> Sanctuary
+# Condition: When < 80% hp , one-time use
+# Reduce damage from all sources by 50% for 10 turns
+# [7] ESGravity -> Corsier
+# Condition: One-time use
+# Player -50% HP
+# [8] ESDamageShield -> Sanctuary
+# Condition: When < 70% hp , one-time use
+# Reduce damage from all sources by 50% for 10 turns
+# [9] ESAttackMultihit -> Arentillia
+# Condition: One-time use
+# Enemy action
+# [10] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESBlind -> Goudenbel
+# 	Blind all orbs on the board
+# 	[1] ESRecoverPlayer -> Cure
+# 	Player recover 100% hp
+# [11] SkillSet:
+# 	Condition: When < 50% hp , one-time use
+# 	[0] ESChangeAttribute -> Apotheosis Omen
+# 	Change own attribute to Light
+# 	[1] ESAttackMultihit -> Arentillia
+# 	Enemy action
+# [12] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESChangeAttribute -> Another Fate
+# 	Change own attribute to random one of Dark, Light
+# 	[1] ESAttackMultihit -> Arentillia
+# 	Enemy action
+# [13] ESBranchFlag -> ESBranchFlag
+# branch
+# [14] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [15] ESAttributeBlock -> Staff of Destiny
+# Condition: 20% chance
+# Unable to Fire orbs for 2 turns
+# [16] ESAttributeBlock -> Staff of Destiny
+# Condition: 20% chance
+# Unable to Water orbs for 2 turns
+# [17] ESAttributeBlock -> Staff of Destiny
+# Condition: 20% chance
+# Unable to Wood orbs for 2 turns
+# [18] ESAttributeBlock -> Staff of Destiny
+# Condition: 20% chance
+# Unable to Light orbs for 2 turns
+# [19] ESAttributeBlock -> Staff of Destiny
+# Condition: 20% chance
+# Unable to Dark orbs for 2 turns
+# [20] ESEndPath -> ESEndPath
+# end_turn
+# [21] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [22] ESSkillDelay -> Misheliente
+# Delay active skills by 1 turns
+# [23] ESEndPath -> ESEndPath
+# end_turn
+# [24] ESAttributeResist -> Light Dark Halved
+# Reduce damage from Light, Dark by 50%
+# [25] ESResolve -> Resolve
+# Survive attacks with 1 HP when HP > 76%

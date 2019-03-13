@@ -1,0 +1,115 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1717
+monster_name_en: steadfast bearded deity, guan yu
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Bind active skills for 3 turns
+  desc_jp: Bind active skills for 3 turns
+  max_atk_pct: null
+  name_en: Guan Yunchang, attacking now!
+  name_jp: Guan Yunchang, attacking now!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Water, Deal 90% damage
+  desc_jp: Change Random to Water, Deal 90% damage
+  max_atk_pct: 90
+  name_en: Blue Dragon Crescent Moon Blade
+  name_jp: Blue Dragon Crescent Moon Blade
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage (5 hits, 20% each)
+  desc_jp: Deal 100% damage (5 hits, 20% each)
+  max_atk_pct: 100
+  name_en: Blue Dragon Boisterous Dance
+  name_jp: Blue Dragon Boisterous Dance
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 210% damage (3 hits, 70% each)
+  desc_jp: Deal 210% damage (3 hits, 70% each)
+  max_atk_pct: 210
+  name_en: Eastern Crescent Moon Formation
+  name_jp: Eastern Crescent Moon Formation
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: You fight well...how about this!
+  name_jp: You fight well...how about this!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESBindSkill -> Guan Yunchang, attacking now!
+# Bind active skills for 3 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] ESOrbChangeAttack -> Blue Dragon Crescent Moon Blade
+# Condition: One-time use
+# Change Random to Water
+# [8] ESAttackMultihit -> Blue Dragon Boisterous Dance
+# Enemy action
+# [9] ESEndPath -> ESEndPath
+# end_turn
+# [10] ESBranchFlag -> ESBranchFlag
+# branch
+# [11] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [12] ESInactivity -> You fight well...how about this!
+# Condition: When < 50% hp
+# Do nothing
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESAttackMultihit -> Eastern Crescent Moon Formation
+# Enemy action

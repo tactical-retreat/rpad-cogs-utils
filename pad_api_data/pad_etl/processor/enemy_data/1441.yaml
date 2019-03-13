@@ -1,0 +1,84 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1441
+monster_name_en: '***** (Saint Seiya)'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Movetime -1s for 3 turns
+  desc_jp: Movetime -1s for 3 turns
+  max_atk_pct: null
+  name_en: '***** (Saint Seiya)'
+  name_jp: '***** (Saint Seiya)'
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 300% damage
+  desc_jp: Deal 300% damage
+  max_atk_pct: 300
+  name_en: '***** (Saint Seiya)'
+  name_jp: '***** (Saint Seiya)'
+  record_type_name: ACTION
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Movetime -1s for 3 turns
+  desc_jp: Movetime -1s for 3 turns
+  max_atk_pct: null
+  name_en: '***** (Saint Seiya)'
+  name_jp: '***** (Saint Seiya)'
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 300% damage
+  desc_jp: Deal 300% damage
+  max_atk_pct: 300
+  name_en: '***** (Saint Seiya)'
+  name_jp: '***** (Saint Seiya)'
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESDebuffMovetime -> ***** (Saint Seiya)
+# Movetime -1s for 3 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESAttackMultihit -> ***** (Saint Seiya)
+# Enemy action

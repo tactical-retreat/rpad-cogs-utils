@@ -1,0 +1,156 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 102403
+monster_name_en: Alt. Master of the Masquerade, Pumpkin Joker
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Rcv 50% for 10 turns + Void damage >= 10000000 for 99 turns
+  desc_jp: Rcv 50% for 10 turns + Void damage >= 10000000 for 99 turns
+  max_atk_pct: null
+  name_en: Bad Halloween! + Trick or Treat
+  name_jp: Bad Halloween! + Trick or Treat
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Player -99% HP + Leader changes to random sub for 3 turns
+  desc_jp: Player -99% HP + Leader changes to random sub for 3 turns
+  max_atk_pct: null
+  name_en: Jack-o'-Lantern + Medje Trick or Treat
+  name_jp: Jack-o'-Lantern + Medje Trick or Treat
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Lock 15 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 100% damage
+  desc_jp: Lock 15 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Patched Sweet Memories
+  name_jp: Patched Sweet Memories
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 111% damage (3 hits, 37% each)
+  desc_jp: Deal 111% damage (3 hits, 37% each)
+  max_atk_pct: 111
+  name_en: Candy Shot
+  name_jp: Candy Shot
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 105% damage
+  desc_jp: Blind all orbs on the board, Deal 105% damage
+  max_atk_pct: 105
+  name_en: Mysterious Night
+  name_jp: Mysterious Night
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Delay active skills by 2~5 turns + Change Heal to Jammer
+  desc_jp: Delay active skills by 2~5 turns + Change Heal to Jammer
+  max_atk_pct: null
+  name_en: Wicked Smile + Cauchemar Pumpkin
+  name_jp: Wicked Smile + Cauchemar Pumpkin
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 6 Jammer, Mortal Poison orbs, Deal 150% damage
+  desc_jp: Spawn random 6 Jammer, Mortal Poison orbs, Deal 150% damage
+  max_atk_pct: 150
+  name_en: The End of Halloween
+  name_jp: The End of Halloween
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESDebuffRCV -> Bad Halloween!
+# 	Rcv 50% for 10 turns
+# 	[1] ESVoidShield -> Trick or Treat
+# 	Void damage >= 10000000 for 99 turns
+# [3] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESGravity -> Jack-o'-Lantern
+# 	Player -99% HP
+# 	[1] ESLeaderSwap -> Medje Trick or Treat
+# 	Leader changes to random sub for 3 turns
+# [4] ESBranchHP -> ESBranchHP
+# branch
+# [5] ESBranchHP -> ESBranchHP
+# branch
+# [6] ESOrbLock -> Patched Sweet Memories
+# Condition: 33% chance
+# Lock 15 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [7] ESAttackMultihit -> Candy Shot
+# Condition: 33% chance
+# Enemy action
+# [8] ESBlind -> Mysterious Night
+# Condition: 34% chance
+# Blind all orbs on the board
+# [9] ESEndPath -> ESEndPath
+# end_turn
+# [10] ESBranchFlag -> ESBranchFlag
+# branch
+# [11] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [12] SkillSet:
+# 	[0] ESSkillDelay -> Wicked Smile
+# 	Delay active skills by 2~5 turns
+# 	[1] ESOrbChangeAttackBits -> Cauchemar Pumpkin
+# 	Change Heal to Jammer
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESRandomSpawn -> The End of Halloween
+# Condition: When fire, water, wood, light, dark, heal, poison orbs are on the board
+# Spawn random 6 Jammer, Mortal Poison orbs
+# [15] ESEndPath -> ESEndPath
+# end_turn
+# [16] ESNone -> ESNone
+# None
+# [17] ESNone -> ESNone
+# None
+# [18] ESNone -> ESNone
+# None
+# [19] ESNone -> ESNone
+# None
+# [20] ESEndPath -> ESEndPath
+# end_turn

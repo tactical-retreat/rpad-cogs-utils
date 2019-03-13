@@ -1,0 +1,58 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 100651
+monster_name_en: Alt. Awoken Zeus-Dios
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Deal 130% damage
+  desc_jp: Deal 130% damage
+  max_atk_pct: 130
+  name_en: Divine King's Warning
+  name_jp: Divine King's Warning
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  max_atk_pct: null
+  name_en: Protection of the Gods
+  name_jp: Protection of the Gods
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESAttackMultihit -> Divine King's Warning
+# Condition: One-time use
+# Enemy action
+# [3] ESStatusShield -> Protection of the Gods
+# Voids status ailments for 999 turns
+# [4] ESAttackMultihit -> Jupiter Genesis
+# Condition: 75% chance when < 30% hp
+# Enemy action
+# [5] ESOrbChangeAttack -> Evil Vanquishing Divine Light
+# Condition: When < 50% hp
+# Change Dark to Jammer
+# [6] ESOrbChangeAttack -> Flame-Extinguishing Gale
+# Change Fire to Jammer

@@ -1,0 +1,44 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 355
+monster_name_en: Undine, the Water Elemental
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids status ailments for 10 turns
+  desc_jp: Voids status ailments for 10 turns
+  max_atk_pct: null
+  name_en: Skill Guard
+  name_jp: Skill Guard
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESStatusShield -> Skill Guard
+# Voids status ailments for 10 turns
+# [2] ESRecoverEnemy -> Cure
+# Condition: When < 30% hp , one-time use
+# Enemy recover 50% hp
+# [3] ESAttackMultihit -> Aqua Storm
+# Condition: 30% chance when < 40% hp
+# Enemy action

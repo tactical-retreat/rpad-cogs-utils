@@ -1,0 +1,83 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 200681
+monster_name_en: Manekimewdra
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Beckoning...
+  name_jp: Beckoning...
+  record_type_name: ACTION
+
+############################################################
+### Data @ 3
+############################################################
+!SkillRecordListing
+level: 3
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Beckoning...
+  name_jp: Beckoning...
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 1000% damage
+  desc_jp: Deal 1000% damage
+  max_atk_pct: 1000
+  name_en: Cat Paw!
+  name_jp: Cat Paw!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESInactivity -> Beckoning...
+# Condition: One-time use
+# Do nothing
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESAttackMultihit -> Cat Paw!
+# Enemy action
+# [5] ESEndPath -> ESEndPath
+# end_turn

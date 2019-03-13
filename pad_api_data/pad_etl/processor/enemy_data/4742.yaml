@@ -1,0 +1,112 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4742
+monster_name_en: Cthugha, the Bizarre Flame
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 50%
+  desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
+  name_en: Resolve
+  name_jp: Resolve
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Reduce damage from Water by 50%
+  desc_jp: Reduce damage from Water by 50%
+  max_atk_pct: null
+  name_en: Water damage halved
+  name_jp: Water damage halved
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Void damage >= 20000000 for 999 turns
+  desc_jp: Voids status ailments for 999 turns + Void damage >= 20000000 for 999 turns
+  max_atk_pct: null
+  name_en: Concept of Boundless Worlds + Cycle of Scorched-Earth Madness
+  name_jp: Concept of Boundless Worlds + Cycle of Scorched-Earth Madness
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Fire, Deal 140% damage
+  desc_jp: Change all orbs to Fire, Deal 140% damage
+  max_atk_pct: 140
+  name_en: Spreading Dark God's Blazing Forest
+  name_jp: Spreading Dark God's Blazing Forest
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 10
+  name_jp: HP <= 10
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 50% hp + Increase damage to 200% for the next 99 turns
+  desc_jp: Enemy recover 50% hp + Increase damage to 200% for the next 99 turns
+  max_atk_pct: null
+  name_en: Eternally Burning Wails of Calamity + King of the Fire Subduing Flame
+  name_jp: Eternally Burning Wails of Calamity + King of the Fire Subduing Flame
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESStatusShield -> Concept of Boundless Worlds
+# 	Voids status ailments for 999 turns
+# 	[1] ESVoidShield -> Cycle of Scorched-Earth Madness
+# 	Void damage >= 20000000 for 999 turns
+# [3] SkillSet:
+# 	Condition: When < 10% hp
+# 	[0] ESRecoverEnemy -> Eternally Burning Wails of Calamity
+# 	Enemy recover 50% hp
+# 	[1] ESAttackUp -> King of the Fire Subduing Flame
+# 	Increase damage to 200% for the next 99 turns
+# [4] ESBoardChangeAttackBits -> Spreading Dark God's Blazing Forest
+# Condition: When < 50% hp , one-time use
+# Change all orbs to Fire
+# [5] ESDispel -> Death of Sudden Help
+# Condition: 10% chance
+# Voids player buff effects
+# [6] ESBranchFlag -> ESBranchFlag
+# branch
+# [7] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [8] ESGravity -> Reminiscence of Universe's Last Flame
+# Player -99% HP
+# [9] ESEndPath -> ESEndPath
+# end_turn
+# [10] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [11] ESBlindStickyRandom -> Scraping Jet-Black Flames
+# Condition: 50% chance
+# Blind random 1~3 orbs for 4 turns
+# [12] ESAttackMultihit -> Annihilation of a Straitened Existence
+# Enemy action
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESResolve -> Resolve
+# Survive attacks with 1 HP when HP > 50%
+# [15] ESAttributeResist -> Water damage halved
+# Reduce damage from Water by 50%

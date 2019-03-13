@@ -1,0 +1,74 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 100410
+monster_name_en: Alt. Gaiadragon Yggdrasil
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Enemy turn counter change to 2 when HP <= 50%
+  desc_jp: Enemy turn counter change to 2 when HP <= 50%
+  max_atk_pct: null
+  name_en: Next turn changed
+  name_jp: Next turn changed
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Bind 6 random cards for 4 turns
+  desc_jp: Voids status ailments for 999 turns + Bind 6 random cards for 4 turns
+  max_atk_pct: null
+  name_en: Field Resistance + Plant Net
+  name_jp: Field Resistance + Plant Net
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage (2 hits, 50% each)
+  desc_jp: Deal 100% damage (2 hits, 50% each)
+  max_atk_pct: 100
+  name_en: God Gaia Breath
+  name_jp: God Gaia Breath
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESStatusShield -> Field Resistance
+# 	Voids status ailments for 999 turns
+# 	[1] ESBindRandom -> Plant Net
+# 	Bind 6 random cards for 4 turns
+# [3] ESBranchHP -> ESBranchHP
+# branch
+# [4] ESAttackMultihit -> God Gaia Breath
+# Enemy action
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchFlag -> ESBranchFlag
+# branch
+# [7] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [8] ESAttackUp -> Force of Nature
+# Increase damage to 500% for the next 99 turns
+# [9] ESEndPath -> ESEndPath
+# end_turn
+# [10] ESTurnChangePassive -> Next turn changed
+# Enemy turn counter change to 2 when HP <= 50%

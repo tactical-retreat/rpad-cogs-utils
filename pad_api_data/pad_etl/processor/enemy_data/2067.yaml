@@ -1,0 +1,96 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2067
+monster_name_en: Extreme King Metal TAMADRA
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Growing stronger-TAMA!
+  name_jp: Growing stronger-TAMA!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Growing stronger-TAMA!
+  name_jp: Growing stronger-TAMA!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Delicious-TAMA!
+  name_jp: Delicious-TAMA!
+  record_type_name: ACTION
+
+############################################################
+### Data @ 2
+############################################################
+!SkillRecordListing
+level: 2
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Growing stronger-TAMA!
+  name_jp: Growing stronger-TAMA!
+  record_type_name: PREEMPT
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESBranchLevel -> ESBranchLevel
+# branch
+# [4] ESEndPath -> ESEndPath
+# end_turn
+# [5] ESBranchFlag -> ESBranchFlag
+# branch
+# [6] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [7] ESInactivity -> Growing stronger-TAMA!
+# Do nothing
+# [8] ESEndPath -> ESEndPath
+# end_turn
+# [9] ESInactivity -> Growing stronger-TAMA!
+# Condition: 50% chance
+# Do nothing
+# [10] ESInactivity -> Delicious-TAMA!
+# Do nothing
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESBranchFlag -> ESBranchFlag
+# branch
+# [13] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [14] ESInactivity -> Growing stronger-TAMA!
+# Do nothing
+# [15] ESEndPath -> ESEndPath
+# end_turn

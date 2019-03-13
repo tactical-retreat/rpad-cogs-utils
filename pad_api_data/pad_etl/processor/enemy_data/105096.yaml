@@ -1,0 +1,146 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 105096
+monster_name_en: Sagat
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 10 turns
+  desc_jp: Reduce damage from all sources by 50% for 10 turns
+  max_atk_pct: null
+  name_en: Your words are not needed.
+  name_jp: Your words are not needed.
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 15
+  name_jp: HP <= 15
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb combo <= 5 damage for 10 turns + Do nothing
+  desc_jp: Absorb combo <= 5 damage for 10 turns + Do nothing
+  max_atk_pct: null
+  name_en: Tiger Assault + Prepare!
+  name_jp: Tiger Assault + Prepare!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 15
+  name_jp: HP <= 15
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Delay active skills by 2 turns, Deal 120% damage
+  desc_jp: Delay active skills by 2 turns, Deal 120% damage
+  max_atk_pct: 120
+  name_en: Tiger Spike
+  name_jp: Tiger Spike
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 140% damage (2 hits, 70% each)
+  desc_jp: Deal 140% damage (2 hits, 70% each)
+  max_atk_pct: 140
+  name_en: Tiger Rush
+  name_jp: Tiger Rush
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 14
+  name_jp: HP <= 14
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 210% damage (6 hits, 35% each)
+  desc_jp: Deal 210% damage (6 hits, 35% each)
+  max_atk_pct: 210
+  name_en: Tiger Rampage
+  name_jp: Tiger Rampage
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESDamageShield -> Your words are not needed.
+# Reduce damage from all sources by 50% for 10 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchCounter -> ESBranchCounter
+# branch
+# [9] ESBranchHP -> ESBranchHP
+# branch
+# [10] ESSetCounter -> ESSetCounter
+# set_counter
+# [11] ESRowSpawnMulti -> Tiger Shot
+# Condition: 33% chance
+# Change 2nd row to Fire orbs
+# [12] ESRowSpawnMulti -> Grand Tiger Shot
+# Condition: 33% chance
+# Change 4th row to Fire orbs
+# [13] SkillSet:
+# 	Condition: 34% chance
+# 	[0] ESGravity -> Tiger Knee Crush
+# 	Player -30% HP
+# 	[1] ESAttackMultihit -> Tiger Uppercut
+# 	Enemy action
+# [14] ESEndPath -> ESEndPath
+# end_turn
+# [15] ESAttackUp -> Angry Charge
+# Condition: One-time use
+# Increase damage to 200% for the next 1 turns
+# [16] ESSetCounter -> ESSetCounter
+# set_counter
+# [17] ESAttackMultihit -> Tiger Uppercut
+# Enemy action
+# [18] ESEndPath -> ESEndPath
+# end_turn
+# [19] ESBranchFlag -> ESBranchFlag
+# branch
+# [20] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [21] SkillSet:
+# 	[0] ESAbsorbCombo -> Tiger Assault
+# 	Absorb combo <= 5 damage for 10 turns
+# 	[1] ESInactivity -> Prepare!
+# 	Do nothing
+# [22] ESEndPath -> ESEndPath
+# end_turn
+# [23] ESBranchHP -> ESBranchHP
+# branch
+# [24] ESSkillDelay -> Tiger Spike
+# Condition: 50% chance
+# Delay active skills by 2 turns
+# [25] ESAttackMultihit -> Tiger Rush
+# Condition: 50% chance
+# Enemy action
+# [26] ESEndPath -> ESEndPath
+# end_turn
+# [27] ESAttackMultihit -> Tiger Rampage
+# Enemy action
+# [28] ESEndPath -> ESEndPath
+# end_turn

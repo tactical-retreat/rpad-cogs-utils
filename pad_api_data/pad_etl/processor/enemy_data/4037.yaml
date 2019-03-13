@@ -1,0 +1,127 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4037
+monster_name_en: Envy
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Jammer skyfall +15% for 3 turns
+  desc_jp: Jammer skyfall +15% for 3 turns
+  max_atk_pct: null
+  name_en: Who should I take care of first?
+  name_jp: Who should I take care of first?
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 80
+  name_jp: HP <= 80
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 120% damage
+  desc_jp: Deal 120% damage
+  max_atk_pct: 120
+  name_en: That hurt!
+  name_jp: That hurt!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids status ailments for 3 turns + Increase damage to 150% for the next
+    999 turns
+  desc_jp: Voids status ailments for 3 turns + Increase damage to 150% for the next
+    999 turns
+  max_atk_pct: null
+  name_en: 'As a sign of my respect,
+
+    I''ll fight you using my true strength. + Don''t say I didn''t warn you!'
+  name_jp: 'As a sign of my respect,
+
+    I''ll fight you using my true strength. + Don''t say I didn''t warn you!'
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 120% damage (3 hits, 40% each)
+  desc_jp: Deal 120% damage (3 hits, 40% each)
+  max_atk_pct: 120
+  name_en: I'll beat you like a rag doll and throw you!
+  name_jp: I'll beat you like a rag doll and throw you!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 120% damage (3 hits, 40% each)
+  desc_jp: Deal 120% damage (3 hits, 40% each)
+  max_atk_pct: 120
+  name_en: I'll beat you like a rag doll and throw you!
+  name_jp: I'll beat you like a rag doll and throw you!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESSkyfall -> Who should I take care of first?
+# Jammer skyfall +15% for 3 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESAttackMultihit -> That hurt!
+# Condition: When < 80% hp , one-time use
+# Enemy action
+# [9] SkillSet:
+# 	Condition: When < 50% hp , one-time use
+# 	[0] ESStatusShield -> As a sign of my respect,
+# I'll fight you using my true strength.
+# 	Voids status ailments for 3 turns
+# 	[1] ESAttackUp -> Don't say I didn't warn you!
+# 	Increase damage to 150% for the next 999 turns
+# [10] ESAttackMultihit -> I'll beat you like a rag doll and throw you!
+# Condition: When < 50% hp , one-time use
+# Enemy action
+# [11] ESBranchCounter -> ESBranchCounter
+# branch
+# [12] ESSetCounter -> ESSetCounter
+# set_counter
+# [13] ESChangeAttribute -> Transform
+# Change own attribute to random one of Fire, Water, Wood, Light, Dark
+# [14] ESSetCounter -> ESSetCounter
+# set_counter
+# [15] ESAttackMultihit -> Ha hah!!
+# Enemy action
+# [16] ESEndPath -> ESEndPath
+# end_turn
+# [17] SkillSet:
+# 	Condition: On death
+# 	[0] ESInactivity -> Goodbye...
+# 	Do nothing

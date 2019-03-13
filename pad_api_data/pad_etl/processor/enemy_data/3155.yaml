@@ -1,0 +1,122 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3155
+monster_name_en: Flash Machine King, Cosmo Crusader
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Dark by 50%
+  desc_jp: Reduce damage from Dark by 50%
+  max_atk_pct: null
+  name_en: Robot Dark Halved
+  name_jp: Robot Dark Halved
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 10 turns + Change Random to Water
+  desc_jp: Voids status ailments for 10 turns + Change Random to Water
+  max_atk_pct: null
+  name_en: Welcome to the big leagues + Wasser Biene
+  name_jp: Welcome to the big leagues + Wasser Biene
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 70
+  name_jp: HP <= 70
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Light skyfall +15% for 10 turns
+  desc_jp: Light skyfall +15% for 10 turns
+  max_atk_pct: null
+  name_en: Licht Regen
+  name_jp: Licht Regen
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Movetime 50% for 3 turns
+  desc_jp: Movetime 50% for 3 turns
+  max_atk_pct: null
+  name_en: Zeit Rauben
+  name_jp: Zeit Rauben
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 15
+  name_jp: HP <= 15
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 1500% damage (5 hits, 300% each)
+  desc_jp: Deal 1500% damage (5 hits, 300% each)
+  max_atk_pct: 1500
+  name_en: Eisen Zorn
+  name_jp: Eisen Zorn
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	[0] ESStatusShield -> Welcome to the big leagues
+# 	Voids status ailments for 10 turns
+# 	[1] ESOrbChangeAttack -> Wasser Biene
+# 	Change Random to Water
+# [5] ESDamageShield -> Prima Schild
+# Condition: When < 50% hp , one-time use
+# Reduce damage from all sources by 50% for 3 turns
+# [6] ESDebuffMovetime -> Zeit Rauben
+# Condition: When < 50% hp , one-time use
+# Movetime 50% for 3 turns
+# [7] ESSkyfall -> Licht Regen
+# Condition: When < 70% hp , one-time use
+# Light skyfall +15% for 10 turns
+# [8] ESAttackMultihit -> Eisen Zorn
+# Condition: When < 15% hp
+# Enemy action
+# [9] ESBranchFlag -> ESBranchFlag
+# branch
+# [10] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [11] ESRandomSpawn -> Blitzen Schwert
+# Condition: When fire, water, wood, light, dark, jammer, poison, mortal poison orbs are on the board
+# Spawn random 4 Heal orbs
+# [12] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [13] ESRandomSpawn -> Drehung Klinge
+# Condition: 50% chance & when Heal orbs are on the board
+# Change all orbs to Jammer
+# [14] ESRandomSpawn -> Windhose
+# Condition: When heal orbs are on the board
+# Change all orbs to Mortal Poison
+# [15] ESColumnSpawnMulti -> Blitz Lanze
+# Change 3rd, 4th column to Light, Heal orbs
+# [16] ESEndPath -> ESEndPath
+# end_turn
+# [17] ESAttributeResist -> Robot Dark Halved
+# Reduce damage from Dark by 50%

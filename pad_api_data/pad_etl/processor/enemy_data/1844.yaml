@@ -1,0 +1,96 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1844
+monster_name_en: Knight Dragon King, Nordis
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Wood, Light by 50%
+  desc_jp: Reduce damage from Wood, Light by 50%
+  max_atk_pct: null
+  name_en: '*****'
+  name_jp: '*****'
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: 'Show message: Well done! I too must evolve!'
+  desc_jp: 'Show message: Well done! I too must evolve!'
+  max_atk_pct: null
+  name_en: '*****'
+  name_jp: '*****'
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  max_atk_pct: null
+  name_en: I'm honored to face you!
+  name_jp: I'm honored to face you!
+  record_type_name: PREEMPT
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESDeathCry -> *****
+# Condition: On death
+# Show message: Well done! I too must evolve!
+# [3] ESBranchFlag -> ESBranchFlag
+# branch
+# [4] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [5] ESStatusShield -> I'm honored to face you!
+# Voids status ailments for 999 turns
+# [6] ESEndPath -> ESEndPath
+# end_turn
+# [7] ESBranchFlag -> ESBranchFlag
+# branch
+# [8] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [9] ESAttackMultihit -> Ha!
+# Enemy action
+# [10] ESEndPath -> ESEndPath
+# end_turn
+# [11] ESBranchFlag -> ESBranchFlag
+# branch
+# [12] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [13] ESDamageShield -> His shield is raised
+# Reduce damage from all sources by 50% for 1 turns
+# [14] ESEndPath -> ESEndPath
+# end_turn
+# [15] ESBranchFlag -> ESBranchFlag
+# branch
+# [16] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [17] ESAttackMultihit -> Take that!
+# Enemy action
+# [18] ESEndPath -> ESEndPath
+# end_turn
+# [19] ESBranchFlag -> ESBranchFlag
+# branch
+# [20] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [21] ESDamageShield -> His shield is raised
+# Reduce damage from all sources by 50% for 1 turns
+# [22] ESEndPath -> ESEndPath
+# end_turn
+# [23] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [24] ESAttackMultihit -> Triple Thrust
+# Enemy action
+# [25] ESEndPath -> ESEndPath
+# end_turn
+# [26] ESAttributeResist -> *****
+# Reduce damage from Wood, Light by 50%

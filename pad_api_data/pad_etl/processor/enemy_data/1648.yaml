@@ -1,0 +1,109 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1648
+monster_name_en: Corpse Armor Dark Knight, Gravis
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  max_atk_pct: null
+  name_en: Armor of Darkness
+  name_jp: Armor of Darkness
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random 3 to Poison, Deal 60% damage
+  desc_jp: Change Random 3 to Poison, Deal 60% damage
+  max_atk_pct: 60
+  name_en: Shield of Destruction
+  name_jp: Shield of Destruction
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Light to Fire, Deal 100% damage
+  desc_jp: Change Light to Fire, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Magic Flame
+  name_jp: Magic Flame
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 80% damage
+  desc_jp: Blind all orbs on the board, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Darkness
+  name_jp: Darkness
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind Light cards for 3 turns
+  desc_jp: Bind Light cards for 3 turns
+  max_atk_pct: null
+  name_en: Black Binding
+  name_jp: Black Binding
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 30
+  name_jp: HP <= 30
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 180% damage (3 hits, 60% each)
+  desc_jp: Deal 180% damage (3 hits, 60% each)
+  max_atk_pct: 180
+  name_en: Bloody Execution
+  name_jp: Bloody Execution
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESStatusShield -> Armor of Darkness
+# Voids status ailments for 999 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBindAttribute -> Black Binding
+# Condition: When < 50% hp , one-time use
+# Bind Light cards for 3 turns
+# [7] ESAttackMultihit -> Bloody Execution
+# Condition: When < 30% hp
+# Enemy action
+# [8] ESPoisonChangeRandomAttack -> Shield of Destruction
+# Condition: 60% chance
+# Change Random 3 to Poison
+# [9] ESOrbChangeAttack -> Magic Flame
+# Condition: 60% chance
+# Change Light to Fire
+# [10] ESBlind -> Darkness
+# Blind all orbs on the board

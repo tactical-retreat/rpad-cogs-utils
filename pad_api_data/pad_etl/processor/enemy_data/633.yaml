@@ -1,0 +1,89 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 633
+monster_name_en: Blizzard Archdemon Amon
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Bind 1 both leaders for 3 turns
+  desc_jp: Bind 1 both leaders for 3 turns
+  max_atk_pct: null
+  name_en: Poor Hospitality
+  name_jp: Poor Hospitality
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 80% damage
+  desc_jp: Change Random to Jammer, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Grovel before me!
+  name_jp: Grovel before me!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 80% damage
+  desc_jp: Change Random to Jammer, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Grovel before me!
+  name_jp: Grovel before me!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 105% damage (3 hits, 35% each)
+  desc_jp: Deal 105% damage (3 hits, 35% each)
+  max_atk_pct: 105
+  name_en: Hoo hoo hoo!
+  name_jp: Hoo hoo hoo!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESBindTarget -> Poor Hospitality
+# Bind 1 both leaders for 3 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESNone -> ESNone
+# None
+# [7] ESAttackMultihit -> Hoo hoo hoo!
+# Condition: 70% chance when < 50% hp
+# Enemy action
+# [8] ESOrbChangeAttack -> Grovel before me!
+# Condition: 70% chance
+# Change Random to Jammer

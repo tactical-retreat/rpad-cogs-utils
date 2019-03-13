@@ -1,0 +1,86 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 889
+monster_name_en: War Deity of Fury, Ares
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 3
+############################################################
+!SkillRecordListing
+level: 3
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 50% damage
+  desc_jp: Blind all orbs on the board, Deal 50% damage
+  max_atk_pct: 50
+  name_en: Cruel War
+  name_jp: Cruel War
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  max_atk_pct: null
+  name_en: Fiery Spear of Destruction
+  name_jp: Fiery Spear of Destruction
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 150% damage (2 hits, 75% each)
+  desc_jp: Deal 150% damage (2 hits, 75% each)
+  max_atk_pct: 150
+  name_en: Wallbreaker
+  name_jp: Wallbreaker
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESBlind -> Cruel War
+# Condition: One-time use
+# Blind all orbs on the board
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESOrbChangeAttack -> Dark Spear of Insanity
+# Condition: One-time use
+# Change Random to Jammer
+# [10] ESGravity -> Fiery Spear of Destruction
+# Player -99% HP
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESBlind -> Cruel War
+# Condition: One-time use
+# Blind all orbs on the board
+# [13] ESAttackMultihit -> Wallbreaker
+# Enemy action

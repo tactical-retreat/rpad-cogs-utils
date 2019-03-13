@@ -1,0 +1,136 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 877
+monster_name_en: King Metal Dragon & King Metal Cat
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: "Meow meeow meooow\u266A"
+  name_jp: "Meow meeow meooow\u266A"
+  record_type_name: ACTION
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 120% damage (2 hits, 60% each)
+  desc_jp: Deal 120% damage (2 hits, 60% each)
+  max_atk_pct: 120
+  name_en: Chomp chomp nya!
+  name_jp: Chomp chomp nya!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 74
+  name_jp: HP <= 74
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 120% damage (2 hits, 60% each)
+  desc_jp: Deal 120% damage (2 hits, 60% each)
+  max_atk_pct: 120
+  name_en: Chomp chomp nya!
+  name_jp: Chomp chomp nya!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 24
+  name_jp: HP <= 24
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 180% damage (3 hits, 60% each)
+  desc_jp: Deal 180% damage (3 hits, 60% each)
+  max_atk_pct: 180
+  name_en: Meowtal Burst!
+  name_jp: Meowtal Burst!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 75
+  name_jp: HP <= 75
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 90% damage
+  desc_jp: Change Random to Jammer, Deal 90% damage
+  max_atk_pct: 90
+  name_en: Hip Drop nya!
+  name_jp: Hip Drop nya!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 3 random cards for 2~3 turns
+  desc_jp: Bind 3 random cards for 2~3 turns
+  max_atk_pct: null
+  name_en: Sing and Dance nya!
+  name_jp: Sing and Dance nya!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESInactivity -> Meow meeow meooow♪
+# Condition: 30% chance
+# Do nothing
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBindRandom -> Sing and Dance nya!
+# Condition: When < 50% hp , one-time use
+# Bind 3 random cards for 2~3 turns
+# [5] ESBranchHP -> ESBranchHP
+# branch
+# [6] ESAttackMultihit -> Meowtal Burst!
+# Enemy action
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESOrbChangeAttack -> Hip Drop nya!
+# Condition: 50% chance when < 75% hp
+# Change Random to Jammer
+# [9] ESAttackMultihit -> Chomp chomp nya!
+# Condition: 70% chance
+# Enemy action

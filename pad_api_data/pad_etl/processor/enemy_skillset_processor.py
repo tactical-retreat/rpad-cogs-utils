@@ -1,23 +1,27 @@
 import copy
 
 from .enemy_skillset import *
-from .merged_data import MergedEnemy
+from typing import List, Union
 
 
 class SkillItem(object):
-    def __init__(self, name: str, comment: str, damage: int=None):
+    def __init__(self, name: str, comment: str, min_damage_pct: int, max_damage_pct: int):
         self.name = name
         self.comment = comment
-        self.damage = damage
+        # 0 if no attack, or the damage % expressed as an integer.
+        # e.g. 100 for one hit with normal damage, 200 for two hits with normal damage,
+        # 300 for one hit with 3x damage.
+        self.min_damage_pct = min_damage_pct
+        self.max_damage_pct = max_damage_pct
 
 
 class StandardSkillGroup(object):
-    def __init__(self, skills=[]):
+    def __init__(self, skills: List):
         self.skills = skills
 
 
 class TimedSkillGroup(StandardSkillGroup):
-    def __init__(self, turn: int, hp: int, skills=[]):
+    def __init__(self, turn: int, hp: int, skills: List):
         StandardSkillGroup.__init__(self, skills)
         self.turn = turn
         self.hp = hp
@@ -25,7 +29,7 @@ class TimedSkillGroup(StandardSkillGroup):
 
 
 class EnemyCountSkillGroup(StandardSkillGroup):
-    def __init__(self, count: int, skills=[], following_skills=[]):
+    def __init__(self, count: int, skills: List, following_skills: List):
         StandardSkillGroup.__init__(self, skills)
         self.count = count
         self.following_skills = following_skills
@@ -59,7 +63,8 @@ def dump_obj(o):
 
 
 class ProcessedSkillset(object):
-    def __init__(self):
+    def __init__(self, level):
+        self.level = level
         self.base_abilities = []  # List[SkillItem]
         self.preemptives = []  # List[SkillItem]
         self.timed_skill_groups = []  # List[StandardSkillGroup]
@@ -109,8 +114,27 @@ class ProcessedSkillset(object):
         return msg
 
 
-def to_item(action: ESAction):
-    return SkillItem(action.name, action.full_description(), 0)
+def to_item(action: Union[ESAction, ESLogic]) -> SkillItem:
+    name = action.name
+    description = action.full_description()
+    min_damage = 0
+    max_damage = 0
+    if type(action) == ESSkillSet:
+        name = ' + '.join(map(lambda s: s.name, action.skill_list))
+        description = ' + '.join(map(lambda s: s.description, action.skill_list))
+
+    if type(action) == ESPassive:
+        name = 'Ability'
+
+    if type(action) in [ESPreemptive, ESAttackPreemptive]:
+        name = 'Preemptive'
+
+    attack = getattr(action, 'attack', None)
+    if attack is not None:
+        min_damage = attack.min_damage_pct()
+        max_damage = attack.max_damage_pct()
+
+    return SkillItem(name, description, min_damage, max_damage)
 
 
 class Context(object):
@@ -303,7 +327,6 @@ def loop_through(ctx: Context, behaviors):
             idx += 1
             continue
 
-
         # if b_type == ESCountdown:
         #    if ctx.counter == 0:
         #        idx += 1
@@ -369,13 +392,15 @@ def extract_preemptives(ctx: Context, behaviors):
         # Roll back the context.
         return original_ctx, None
 
-def convert(enemy: MergedEnemy, level: int):
-    skillset = ProcessedSkillset()
+
+def convert(enemy_behavior: List, level: int):
+    skillset = ProcessedSkillset(level)
 
     # Behavior is 1-indexed, so stick a fake row in to start
-    behaviors = [None] + list(enemy.behavior)
+    behaviors = [None] + list(enemy_behavior)
 
-    base_abilities, hp_checkpoints, card_checkpoints, has_enemy_remaining_branch = info_from_behaviors(behaviors)
+    base_abilities, hp_checkpoints, card_checkpoints, has_enemy_remaining_branch = info_from_behaviors(
+        behaviors)
     skillset.base_abilities = base_abilities
 
     ctx = Context(level)
@@ -476,7 +501,8 @@ def convert(enemy: MergedEnemy, level: int):
             for idx in range(loop_start, loop_end):
                 for hp, hp_behavior in turn_data[idx].items():
                     if (hp, hp_behavior) not in common_behaviors:
-                        skillset.repeating_skill_groups.append(TimedSkillGroup(idx + 1, hp, hp_behavior))
+                        skillset.repeating_skill_groups.append(
+                            TimedSkillGroup(idx + 1, hp, hp_behavior))
                         looped_behavior.append((hp, hp_behavior))
 
     # Simulate enemies being defeated
@@ -498,7 +524,8 @@ def convert(enemy: MergedEnemy, level: int):
                 follow_loop = None
             else:
                 seen_skillsets.append(follow_loop)
-            skillset.enemycount_skill_groups.append(EnemyCountSkillGroup(ecount, cur_loop, follow_loop))
+            skillset.enemycount_skill_groups.append(
+                EnemyCountSkillGroup(ecount, cur_loop, follow_loop))
 
     # Simulate HP decreasing
     globally_seen_behavior = []
@@ -572,3 +599,14 @@ def clean_skillset(skillset: ProcessedSkillset):
     skillset.repeating_skill_groups = [x for x in skillset.repeating_skill_groups if x.skills]
     skillset.enemycount_skill_groups = [x for x in skillset.enemycount_skill_groups if x.skills]
     skillset.hp_skill_groups = [x for x in skillset.hp_skill_groups if x.skills]
+
+
+def extract_levels(enemy_behavior: List):
+    levels = set()
+    levels.add(1)
+    for b in enemy_behavior:
+        if type(b) == ESBranchLevel:
+            levels.add(b.branch_value)
+        elif hasattr(b, 'level'):
+            levels.add(b.level)
+    return levels

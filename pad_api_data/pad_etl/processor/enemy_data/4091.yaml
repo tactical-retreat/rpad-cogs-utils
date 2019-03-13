@@ -1,0 +1,53 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4091
+monster_name_en: Iori Yagami
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: I will end your pain.
+  name_jp: I will end your pain.
+  record_type_name: PREEMPT
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESBranchCard -> ESBranchCard
+# branch
+# [7] ESInactivity -> I will end your pain.
+# Condition: One-time use
+# Do nothing
+# [8] ESInactivity -> Then let it burn, as it demands.
+# Condition: One-time use
+# Do nothing
+# [9] ESEndPath -> ESEndPath
+# end_turn
+# [10] SkillSet:
+# 	Condition: On death
+# 	[0] ESInactivity -> It can't end like this!
+# 	Do nothing

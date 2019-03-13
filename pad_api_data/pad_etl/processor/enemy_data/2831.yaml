@@ -1,0 +1,132 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2831
+monster_name_en: Genius Scientist, Lex Luthor (Film)
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Bind active skills for 2 turns
+  desc_jp: Bind active skills for 2 turns
+  max_atk_pct: null
+  name_en: Cunning Intelligence
+  name_jp: Cunning Intelligence
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids player buff effects
+  desc_jp: Voids player buff effects
+  max_atk_pct: null
+  name_en: Puppet Master
+  name_jp: Puppet Master
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Light, Deal 110% damage
+  desc_jp: Change Random to Light, Deal 110% damage
+  max_atk_pct: 110
+  name_en: LexCorp Technology
+  name_jp: LexCorp Technology
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 70
+  name_jp: HP <= 70
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 1 turns
+  desc_jp: Reduce damage from all sources by 50% for 1 turns
+  max_atk_pct: null
+  name_en: Power cannot be innocent!
+  name_jp: Power cannot be innocent!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Delay active skills by 2 turns, Deal 80% damage
+  desc_jp: Delay active skills by 2 turns, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Ruthless Schemer
+  name_jp: Ruthless Schemer
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 10
+  name_jp: HP <= 10
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 2 subs for 2 turns, Deal 150% damage
+  desc_jp: Bind 2 subs for 2 turns, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Hired Mercenary Attack
+  name_jp: Hired Mercenary Attack
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESBindSkill -> Cunning Intelligence
+# Bind active skills for 2 turns
+# [7] ESBindAttack -> Hired Mercenary Attack
+# Condition: When < 10% hp
+# Bind 2 subs for 2 turns
+# [8] ESDamageShield -> Power cannot be innocent!
+# Condition: When < 70% hp , one-time use
+# Reduce damage from all sources by 50% for 1 turns
+# [9] ESSkillDelay -> Ruthless Schemer
+# Condition: When < 50% hp , one-time use
+# Delay active skills by 2 turns
+# [10] ESDispel -> Puppet Master
+# Condition: One-time use
+# Voids player buff effects
+# [11] ESOrbChangeAttack -> LexCorp Technology
+# Condition: 50% chance
+# Change Random to Light
+# [12] ESEndPath -> ESEndPath
+# end_turn
+# [13] SkillSet:
+# 	Condition: On death
+# 	[0] ESSkyfall -> Stolen Kryptonian Technology
+# 	Jammer skyfall +10% for 3 turns

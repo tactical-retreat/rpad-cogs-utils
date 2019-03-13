@@ -1,0 +1,79 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2544
+monster_name_en: Prayer's Sacred Bird, Yatagarasu
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Change Random to Light, Deal 120% damage
+  desc_jp: Change Random to Light, Deal 120% damage
+  max_atk_pct: 120
+  name_en: First Sunrise's Crow
+  name_jp: First Sunrise's Crow
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage (2 hits, 50% each)
+  desc_jp: Deal 100% damage (2 hits, 50% each)
+  max_atk_pct: 100
+  name_en: Hanetsuki
+  name_jp: Hanetsuki
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Delay active skills by 2 turns
+  desc_jp: Delay active skills by 2 turns
+  max_atk_pct: null
+  name_en: Dance of the New Year
+  name_jp: Dance of the New Year
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESOrbChangeAttack -> First Sunrise's Crow
+# Change Random to Light
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESSkillDelay -> Dance of the New Year
+# Condition: When < 50% hp , one-time use
+# Delay active skills by 2 turns
+# [9] ESAttackMultihit -> Hanetsuki
+# Condition: 80% chance
+# Enemy action
+# [10] ESEndPath -> ESEndPath
+# end_turn

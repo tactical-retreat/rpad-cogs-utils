@@ -1,0 +1,75 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 645
+monster_name_en: Archdemon Beelzebub
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 70% damage
+  desc_jp: Deal 70% damage
+  max_atk_pct: 70
+  name_en: Preemptive
+  name_jp: Preemptive
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESAttackPreemptive -> Move, move, move---!!
+# Enemy action
+# [2] ESBranchHP -> ESBranchHP
+# branch
+# [3] ESBranchFlag -> ESBranchFlag
+# branch
+# [4] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [5] ESOrbChangeAttack -> Not going easy anymore!
+# Change Poison to Dark
+# [6] ESGravity -> Not going easy anymore!
+# Player -50% HP
+# [7] ESPoisonChangeRandom -> Take this!
+# Condition: One-time use
+# Change Random 5 to Poison
+# [8] ESAttackMultihit -> Deadly Drive!
+# Condition: 70% chance when < 75% hp
+# Enemy action
+# [9] ESEndPath -> ESEndPath
+# end_turn
+# [10] ESBranchFlag -> ESBranchFlag
+# branch
+# [11] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [12] ESRandomSpawn -> Sink into a sea of poison!!
+# Condition: One-time use
+# Change all orbs to Poison
+# [13] ESBranchFlag -> ESBranchFlag
+# branch
+# [14] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [15] ESAttackMultihit -> Deadly Drive!
+# Condition: When < 75% hp
+# Enemy action
+# [16] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [17] ESAttackMultihit -> Deadly Drive!
+# Condition: When < 75% hp
+# Enemy action

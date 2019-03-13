@@ -1,0 +1,198 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 103654
+monster_name_en: Kirin
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  max_atk_pct: null
+  name_en: Dash Attack
+  name_jp: Dash Attack
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind own leader for 1 turns, Deal 100% damage
+  desc_jp: Bind own leader for 1 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Thunderbolt
+  name_jp: Thunderbolt
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Bind friend leader for 1 turns, Deal 100% damage
+  desc_jp: Bind friend leader for 1 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Thunderbolt
+  name_jp: Thunderbolt
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Bind 2 subs for 1 turns, Deal 100% damage
+  desc_jp: Bind 2 subs for 1 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Thunderbolt
+  name_jp: Thunderbolt
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 150% damage
+  desc_jp: Deal 150% damage
+  max_atk_pct: 150
+  name_en: Back Kick
+  name_jp: Back Kick
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 150% damage
+  desc_jp: Deal 150% damage
+  max_atk_pct: 150
+  name_en: Back Kick
+  name_jp: Back Kick
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind own leader for 2 turns, Deal 100% damage
+  desc_jp: Bind own leader for 2 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Thunderbolt
+  name_jp: Thunderbolt
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Bind friend leader for 2 turns, Deal 100% damage
+  desc_jp: Bind friend leader for 2 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Thunderbolt
+  name_jp: Thunderbolt
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Bind 2 subs for 2 turns, Deal 100% damage
+  desc_jp: Bind 2 subs for 2 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Thunderbolt
+  name_jp: Thunderbolt
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind friend leader for 2 turns, Deal 100% damage
+  desc_jp: Bind friend leader for 2 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Thunderbolt
+  name_jp: Thunderbolt
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 2 subs for 2 turns, Deal 100% damage
+  desc_jp: Bind 2 subs for 2 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Thunderbolt
+  name_jp: Thunderbolt
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 10
+  name_jp: HP <= 10
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 6 random for 5 turns, Deal 250% damage
+  desc_jp: Bind 6 random for 5 turns, Deal 250% damage
+  max_atk_pct: 250
+  name_en: Great Thunderbolt
+  name_jp: Great Thunderbolt
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESGravity -> Dash Attack
+# Player -99% HP
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESAttackUp -> Rage
+# Condition: When < 50% hp , one-time use
+# Increase damage to 145% for the next 10 turns
+# [9] ESBindAttack -> Great Thunderbolt
+# Condition: When < 10% hp
+# Bind 6 random for 5 turns
+# [10] ESBranchHP -> ESBranchHP
+# branch
+# [11] ESBindAttack -> Thunderbolt
+# Condition: 25% chance
+# Bind own leader for 1 turns
+# [12] ESBindAttack -> Thunderbolt
+# Condition: 25% chance
+# Bind friend leader for 1 turns
+# [13] ESBindAttack -> Thunderbolt
+# Condition: 25% chance
+# Bind 2 subs for 1 turns
+# [14] ESAttackMultihit -> Back Kick
+# Condition: 25% chance
+# Enemy action
+# [15] ESEndPath -> ESEndPath
+# end_turn
+# [16] ESBindAttack -> Thunderbolt
+# Condition: 25% chance when < 50% hp
+# Bind own leader for 2 turns
+# [17] ESBindAttack -> Thunderbolt
+# Condition: 25% chance when < 50% hp
+# Bind friend leader for 2 turns
+# [18] ESBindAttack -> Thunderbolt
+# Condition: 25% chance when < 50% hp
+# Bind 2 subs for 2 turns
+# [19] ESAttackMultihit -> Back Kick
+# Condition: 25% chance
+# Enemy action
+# [20] ESEndPath -> ESEndPath
+# end_turn

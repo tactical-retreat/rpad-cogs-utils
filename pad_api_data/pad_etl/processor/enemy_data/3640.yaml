@@ -1,0 +1,157 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3640
+monster_name_en: Nyarlathotep, the Faceless God
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Fire by 50%
+  desc_jp: Reduce damage from Fire by 50%
+  max_atk_pct: null
+  name_en: Fire damage halved
+  name_jp: Fire damage halved
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Blind orbs in specific positions
+    for 30 turns
+  desc_jp: Voids status ailments for 999 turns + Blind orbs in specific positions
+    for 30 turns
+  max_atk_pct: null
+  name_en: Concept of Boundless Worlds + Creeping Chaos Continuum
+  name_jp: Concept of Boundless Worlds + Creeping Chaos Continuum
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  max_atk_pct: null
+  name_en: Omen of a Faceless Calamity
+  name_jp: Omen of a Faceless Calamity
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change own attribute to random one of Fire, Water, Wood, Light, Dark, Deal
+    320% damage
+  desc_jp: Change own attribute to random one of Fire, Water, Wood, Light, Dark, Deal
+    320% damage
+  max_atk_pct: 320
+  name_en: A Thousand Enslaved Manifestations
+  name_jp: A Thousand Enslaved Manifestations
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Bind 3 random for 10 turns, Deal 310% damage
+  desc_jp: Bind 3 random for 10 turns, Deal 310% damage
+  max_atk_pct: 310
+  name_en: Haunter of the Dark
+  name_jp: Haunter of the Dark
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  max_atk_pct: null
+  name_en: Omen of a Faceless Calamity
+  name_jp: Omen of a Faceless Calamity
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change own attribute to random one of Fire, Water, Wood, Light, Dark, Deal
+    320% damage
+  desc_jp: Change own attribute to random one of Fire, Water, Wood, Light, Dark, Deal
+    320% damage
+  max_atk_pct: 320
+  name_en: A Thousand Enslaved Manifestations
+  name_jp: A Thousand Enslaved Manifestations
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Absorb Fire damage for 5 turns, Deal 380% damage
+  desc_jp: Absorb Fire damage for 5 turns, Deal 380% damage
+  max_atk_pct: 380
+  name_en: Disparaging Sentient Flame's Denial
+  name_jp: Disparaging Sentient Flame's Denial
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 450% damage (3 hits, 150% each)
+  desc_jp: Deal 450% damage (3 hits, 150% each)
+  max_atk_pct: 450
+  name_en: Raid of the Subservient Shantaks
+  name_jp: Raid of the Subservient Shantaks
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 10
+  name_jp: HP <= 10
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 30000% damage (10 hits, 3000% each)
+  desc_jp: Deal 30000% damage (10 hits, 3000% each)
+  max_atk_pct: 30000
+  name_en: Enforcing Infinite Will
+  name_jp: Enforcing Infinite Will
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	[0] ESStatusShield -> Concept of Boundless Worlds
+# 	Voids status ailments for 999 turns
+# 	[1] ESBlindStickyFixed -> Creeping Chaos Continuum
+# 	Blind orbs in specific positions for 30 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESAttackMultihit -> Enforcing Infinite Will
+# Condition: When < 10% hp
+# Enemy action
+# [7] ESGravity -> Omen of a Faceless Calamity
+# Condition: 20% chance
+# Player -99% HP
+# [8] ESChangeAttribute -> A Thousand Enslaved Manifestations
+# Condition: 20% chance
+# Change own attribute to random one of Fire, Water, Wood, Light, Dark
+# [9] ESBindAttack -> Haunter of the Dark
+# Condition: One-time use
+# Bind 3 random for 10 turns
+# [10] ESAttributeBlock -> Insanity Emerging from the Darkness
+# Condition: One-time use
+# Unable to Heal orbs for 2 turns
+# [11] ESAbsorbAttribute -> Disparaging Sentient Flame's Denial
+# Condition: 20% chance
+# Absorb Fire damage for 5 turns
+# [12] ESAttackMultihit -> Raid of the Subservient Shantaks
+# Condition: 20% chance
+# Enemy action
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESAttributeResist -> Fire damage halved
+# Reduce damage from Fire by 50%

@@ -1,0 +1,168 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2722
+monster_name_en: Awoken Hephaestus
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 75% for 5 turns
+  desc_jp: Reduce damage from all sources by 75% for 5 turns
+  max_atk_pct: null
+  name_en: Blazing Furnace
+  name_jp: Blazing Furnace
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 80% damage (2 hits, 40% each)
+  desc_jp: Deal 80% damage (2 hits, 40% each)
+  max_atk_pct: 80
+  name_en: Forging
+  name_jp: Forging
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage (2 hits, 50% each)
+  desc_jp: Deal 100% damage (2 hits, 50% each)
+  max_atk_pct: 100
+  name_en: Forging
+  name_jp: Forging
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 120% damage (2 hits, 60% each)
+  desc_jp: Deal 120% damage (2 hits, 60% each)
+  max_atk_pct: 120
+  name_en: Forging
+  name_jp: Forging
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 4
+  name_jp: Turn 4
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 140% damage (2 hits, 70% each)
+  desc_jp: Deal 140% damage (2 hits, 70% each)
+  max_atk_pct: 140
+  name_en: Forging
+  name_jp: Forging
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 5
+  name_jp: Turn 5
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 160% damage
+  desc_jp: Deal 160% damage
+  max_atk_pct: 160
+  name_en: Creation of the Sacred Treasures
+  name_jp: Creation of the Sacred Treasures
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 700% damage (7 hits, 100% each)
+  desc_jp: Deal 700% damage (7 hits, 100% each)
+  max_atk_pct: 700
+  name_en: Iron Rampage
+  name_jp: Iron Rampage
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESDamageShield -> Blazing Furnace
+# Reduce damage from all sources by 75% for 5 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchFlag -> ESBranchFlag
+# branch
+# [7] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [8] ESAttackMultihit -> Forging
+# Enemy action
+# [9] ESEndPath -> ESEndPath
+# end_turn
+# [10] ESBranchFlag -> ESBranchFlag
+# branch
+# [11] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [12] ESAttackMultihit -> Forging
+# Enemy action
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESBranchFlag -> ESBranchFlag
+# branch
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] ESAttackMultihit -> Forging
+# Enemy action
+# [17] ESEndPath -> ESEndPath
+# end_turn
+# [18] ESBranchFlag -> ESBranchFlag
+# branch
+# [19] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [20] ESAttackMultihit -> Forging
+# Condition: One-time use
+# Enemy action
+# [21] ESEndPath -> ESEndPath
+# end_turn
+# [22] ESBranchFlag -> ESBranchFlag
+# branch
+# [23] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [24] ESAttackMultihit -> Creation of the Sacred Treasures
+# Enemy action
+# [25] ESEndPath -> ESEndPath
+# end_turn
+# [26] ESAttackMultihit -> Iron Rampage
+# Enemy action
+# [27] ESEndPath -> ESEndPath
+# end_turn

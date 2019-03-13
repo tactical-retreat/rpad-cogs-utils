@@ -1,0 +1,121 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 102758
+monster_name_en: Blue Bamboo Virtue, You Yu
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 80%
+  desc_jp: Survive attacks with 1 HP when HP > 80%
+  max_atk_pct: null
+  name_en: You Yu Resolve
+  name_jp: You Yu Resolve
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Change 2nd, 3rd row to Heal orbs, Deal 100% damage
+  desc_jp: Change 2nd, 3rd row to Heal orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Blue Life Dance
+  name_jp: Blue Life Dance
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 1st, 5th row to Water orbs, Deal 150% damage
+  desc_jp: Change 1st, 5th row to Water orbs, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Stream Fan
+  name_jp: Stream Fan
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 360% damage (2 hits, 180% each)
+  desc_jp: Deal 360% damage (2 hits, 180% each)
+  max_atk_pct: 360
+  name_en: Flash of Dual Water Fangs
+  name_jp: Flash of Dual Water Fangs
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 80
+  name_jp: HP <= 80
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 3 turns
+  desc_jp: Reduce damage from all sources by 50% for 3 turns
+  max_atk_pct: null
+  name_en: Enchanting Bamboo Grove
+  name_jp: Enchanting Bamboo Grove
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 10
+  name_jp: HP <= 10
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 400% damage (10 hits, 40% each)
+  desc_jp: Deal 400% damage (10 hits, 40% each)
+  max_atk_pct: 400
+  name_en: Thick Binding of 1000 Bamboos
+  name_jp: Thick Binding of 1000 Bamboos
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESRowSpawnMulti -> Blue Life Dance
+# Condition: One-time use
+# Change 2nd, 3rd row to Heal orbs
+# [3] ESDamageShield -> Enchanting Bamboo Grove
+# Condition: When < 80% hp , one-time use
+# Reduce damage from all sources by 50% for 3 turns
+# [4] ESBranchCounter -> ESBranchCounter
+# branch
+# [5] ESSetCounter -> ESSetCounter
+# set_counter
+# [6] ESAttackUp -> Blue Season
+# Condition: When < 50% hp
+# Increase damage to 150% for the next 1 turns
+# [7] ESRowSpawnMulti -> Stream Fan
+# Condition: 50% chance
+# Change 1st, 5th row to Water orbs
+# [8] ESAttackMultihit -> Flash of Dual Water Fangs
+# Enemy action
+# [9] ESEndPath -> ESEndPath
+# end_turn
+# [10] ESSetCounter -> ESSetCounter
+# set_counter
+# [11] ESAttackMultihit -> Thick Binding of 1000 Bamboos
+# Condition: When < 10% hp
+# Enemy action
+# [12] ESRowSpawnMulti -> Stream Fan
+# Condition: 50% chance
+# Change 1st, 5th row to Water orbs
+# [13] ESAttackMultihit -> Flash of Dual Water Fangs
+# Enemy action
+# [14] ESEndPath -> ESEndPath
+# end_turn
+# [15] ESResolve -> You Yu Resolve
+# Survive attacks with 1 HP when HP > 80%

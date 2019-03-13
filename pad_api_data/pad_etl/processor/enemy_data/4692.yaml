@@ -1,0 +1,78 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4692
+monster_name_en: Twin Stars of Purgatory, Belial
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 75% for 2 turns
+  desc_jp: Reduce damage from all sources by 75% for 2 turns
+  max_atk_pct: null
+  name_en: Take care, sister!
+  name_jp: Take care, sister!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 75
+  name_jp: HP <= 75
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb combo <= 5 damage for 3 turns
+  desc_jp: Absorb combo <= 5 damage for 3 turns
+  max_atk_pct: null
+  name_en: Humph, I'll play around with you
+  name_jp: Humph, I'll play around with you
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 30
+  name_jp: HP <= 30
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn Bomb orbs in the specified positions, Deal 200% damage
+  desc_jp: Spawn Bomb orbs in the specified positions, Deal 200% damage
+  max_atk_pct: 200
+  name_en: Evil Vanguard that dwells in death
+  name_jp: Evil Vanguard that dwells in death
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESDamageShield -> Take care, sister!
+# Reduce damage from all sources by 75% for 2 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESAbsorbCombo -> Humph, I'll play around with you
+# Condition: When < 75% hp , one-time use
+# Absorb combo <= 5 damage for 3 turns
+# [7] ESAttackUp -> Wisdom of the Twin Star
+# Condition: When < 30% hp , one-time use
+# Increase damage to 300% for the next 1 turns
+# [8] ESBombFixedSpawn -> Evil Vanguard that dwells in death
+# Condition: When < 30% hp
+# Spawn Bomb orbs in the specified positions
+# [9] ESEndPath -> ESEndPath
+# end_turn

@@ -19,6 +19,24 @@ def dump_obj(o):
         return '{} {}'.format(type(o).__name__, json.dumps(o, sort_keys=True, default=lambda x: x.__dict__))
 
 
+def simple_dump_obj(o):
+    if isinstance(o, ESSkillSet):
+        msg = 'SkillSet:'
+        if o.condition.description:
+            msg += '\n\tCondition: {}'.format(o.condition.description)
+        for idx, behavior in enumerate(o.skill_list):
+            msg += '\n\t[{}] {} -> {}\n\t{}'.format(
+                idx, type(behavior).__name__, behavior.name, behavior.description)
+        return msg
+    else:
+        msg = '{} -> {}'.format(type(o).__name__, o.name)
+        if hasattr(o, 'condition'):
+            if o.condition.description:
+                msg += '\nCondition: {}'.format(o.condition.description)
+        msg += '\n{}'.format(o.description)
+        return msg
+
+
 ATTRIBUTE_MAP = {
     -1: 'Random',
     None: 'Fire',
@@ -454,6 +472,12 @@ class ESAttack(pad_util.JsonDictEncodable):
         else:
             return ESAttack(atk_multiplier, min_hits, max_hits)
 
+    def max_damage_pct(self) -> int:
+        return self.atk_multiplier * self.max_hits
+
+    def min_damage_pct(self) -> int:
+        return self.atk_multiplier * self.min_hits
+
 
 # Action
 class ESAction(pad_util.JsonDictEncodable):
@@ -809,6 +833,7 @@ class ESAttackUp(ESEnrage):
 
 class ESAttackUpStatus(ESEnrage):
     def __init__(self, skill):
+        self.turn_cooldown = None
         super(ESAttackUpStatus, self).__init__(
             skill,
             multiplier=params(skill)[2],
@@ -1424,6 +1449,15 @@ class ESLogic(pad_util.JsonDictEncodable):
         self.enemy_skill_id = es_id(skill)
         self.effect = effect
         self.type = es_type(skill)
+
+    @property
+    def name(self):
+        return type(self).__name__
+
+    @property
+    def description(self):
+        return self.effect
+
 
 
 class ESNone(ESLogic):

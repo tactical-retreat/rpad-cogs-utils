@@ -1,0 +1,172 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 5090
+monster_name_en: Akuma
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Movetime -1s for 10 turns
+  desc_jp: Movetime -1s for 10 turns
+  max_atk_pct: null
+  name_en: Humph, so it's you.
+  name_jp: Humph, so it's you.
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 1 turns + Delay active skills
+    by 2 turns
+  desc_jp: Reduce damage from all sources by 50% for 1 turns + Delay active skills
+    by 2 turns
+  max_atk_pct: null
+  name_en: Rakan + No use! Rakan Gosho
+  name_jp: Rakan + No use! Rakan Gosho
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 1 turns + Lock 10 random Fire,
+    Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+  desc_jp: Reduce damage from all sources by 50% for 1 turns + Lock 10 random Fire,
+    Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+  max_atk_pct: null
+  name_en: Rakan + Rakan Gokyaku
+  name_jp: Rakan + Rakan Gokyaku
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change 3rd row to Dark orbs + Absorb combo <= 5 damage for 1 turns
+  desc_jp: Change 3rd row to Dark orbs + Absorb combo <= 5 damage for 1 turns
+  max_atk_pct: null
+  name_en: Gohadoken + Tatsumaki Zankukyaku
+  name_jp: Gohadoken + Tatsumaki Zankukyaku
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change 3rd row to Fire orbs + Enemy action
+  desc_jp: Change 3rd row to Fire orbs + Enemy action
+  max_atk_pct: null
+  name_en: Sekia Goshoha + Goshoryuken
+  name_jp: Sekia Goshoha + Goshoryuken
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 11
+  name_jp: HP <= 11
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 150% for the next 10 turns
+  desc_jp: Increase damage to 150% for the next 10 turns
+  max_atk_pct: null
+  name_en: Dohatsu Shoten
+  name_jp: Dohatsu Shoten
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 10
+  name_jp: HP <= 10
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Leader changes to random sub for 1 turns
+  desc_jp: Leader changes to random sub for 1 turns
+  max_atk_pct: null
+  name_en: Ashura Senku
+  name_jp: Ashura Senku
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 10
+  name_jp: HP <= 10
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 400% damage (10 hits, 40% each)
+  desc_jp: Deal 400% damage (10 hits, 40% each)
+  max_atk_pct: 400
+  name_en: Shun Goku Satsu
+  name_jp: Shun Goku Satsu
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESDebuffMovetime -> Humph, so it's you.
+# Condition: One-time use
+# Movetime -1s for 10 turns
+# [3] ESSetCounter -> ESSetCounter
+# set_counter
+# [4] ESBranchHP -> ESBranchHP
+# branch
+# [5] ESBranchCounter -> ESBranchCounter
+# branch
+# [6] SkillSet:
+# 	Condition: 25% chance
+# 	[0] ESDamageShield -> Rakan
+# 	Reduce damage from all sources by 50% for 1 turns
+# 	[1] ESSkillDelay -> No use! Rakan Gosho
+# 	Delay active skills by 2 turns
+# [7] SkillSet:
+# 	Condition: 25% chance
+# 	[0] ESDamageShield -> Rakan
+# 	Reduce damage from all sources by 50% for 1 turns
+# 	[1] ESOrbLock -> Rakan Gokyaku
+# 	Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [8] SkillSet:
+# 	Condition: 25% chance
+# 	[0] ESRowSpawnMulti -> Gohadoken
+# 	Change 3rd row to Dark orbs
+# 	[1] ESAbsorbCombo -> Tatsumaki Zankukyaku
+# 	Absorb combo <= 5 damage for 1 turns
+# [9] SkillSet:
+# 	Condition: 25% chance
+# 	[0] ESRowSpawnMulti -> Sekia Goshoha
+# 	Change 3rd row to Fire orbs
+# 	[1] ESAttackMultihit -> Goshoryuken
+# 	Enemy action
+# [10] ESEndPath -> ESEndPath
+# end_turn
+# [11] ESAttackUp -> Dohatsu Shoten
+# Condition: One-time use
+# Increase damage to 150% for the next 10 turns
+# [12] ESBranchHP -> ESBranchHP
+# branch
+# [13] ESBranchFlag -> ESBranchFlag
+# branch
+# [14] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [15] ESLeaderSwap -> Ashura Senku
+# Leader changes to random sub for 1 turns
+# [16] ESEndPath -> ESEndPath
+# end_turn
+# [17] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [18] ESAttackMultihit -> Shun Goku Satsu
+# Enemy action
+# [19] ESEndPath -> ESEndPath
+# end_turn
+# [20] ESSetCounter -> ESSetCounter
+# set_counter
+# [21] ESColumnSpawnMulti -> Sekia Kuretsuha
+# Change 3rd, 4th column to Fire orbs
+# [22] ESEndPath -> ESEndPath
+# end_turn

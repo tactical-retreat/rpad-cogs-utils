@@ -1,0 +1,200 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4794
+monster_name_en: Awoken Machine Noah
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 50%
+  desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
+  name_en: Resolve
+  name_jp: Resolve
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Void damage >= 40000000 for 99 turns
+    + Change player HP to 500000 for 99 turns + Voids player buff effects
+  desc_jp: Voids status ailments for 999 turns + Void damage >= 40000000 for 99 turns
+    + Change player HP to 500000 for 99 turns + Voids player buff effects
+  max_atk_pct: null
+  name_en: I wonder if your life means anything + Defense of the Twin Ships + Ark
+    Contract + Requiem
+  name_jp: I wonder if your life means anything + Defense of the Twin Ships + Ark
+    Contract + Requiem
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change player HP to 500000 for 99 turns
+  desc_jp: Change player HP to 500000 for 99 turns
+  max_atk_pct: null
+  name_en: Ark Contract
+  name_jp: Ark Contract
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind awoken skills for 5 turns + Player -99% HP
+  desc_jp: Bind awoken skills for 5 turns + Player -99% HP
+  max_atk_pct: null
+  name_en: Deminishing Fighting Spirit + Vanishing Judgment
+  name_jp: Deminishing Fighting Spirit + Vanishing Judgment
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 9
+  name_jp: HP <= 9
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change own attribute to random one of Fire, Water, Wood, Light, Dark +
+    Enemy action
+  desc_jp: Change own attribute to random one of Fire, Water, Wood, Light, Dark +
+    Enemy action
+  max_atk_pct: null
+  name_en: Gear Shift + Banishing Lightning
+  name_jp: Gear Shift + Banishing Lightning
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	[0] ESStatusShield -> I wonder if your life means anything
+# 	Voids status ailments for 999 turns
+# 	[1] ESVoidShield -> Defense of the Twin Ships
+# 	Void damage >= 40000000 for 99 turns
+# 	[2] ESMaxHPChange -> Ark Contract
+# 	Change player HP to 500000 for 99 turns
+# 	[3] ESDispel -> Requiem
+# 	Voids player buff effects
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] ESSetCounter -> ESSetCounter
+# set_counter
+# [8] ESMaxHPChange -> Ark Contract
+# Change player HP to 500000 for 99 turns
+# [9] ESBranchCounter -> ESBranchCounter
+# branch
+# [10] ESBranchCounter -> ESBranchCounter
+# branch
+# [11] ESBranchCounter -> ESBranchCounter
+# branch
+# [12] ESBranchCounter -> ESBranchCounter
+# branch
+# [13] ESBranchCounter -> ESBranchCounter
+# branch
+# [14] ESBranchCounter -> ESBranchCounter
+# branch
+# [15] ESBranchCounter -> ESBranchCounter
+# branch
+# [16] ESBranchCounter -> ESBranchCounter
+# branch
+# [17] ESBranchCounter -> ESBranchCounter
+# branch
+# [18] SkillSet:
+# 	[0] ESDebuffRCV -> Salvation of the Holy Ship
+# 	Rcv 300% for 9 turns
+# 	[1] ESOrbChangeAttackBits -> Charity from Heaven
+# 	Change Wood to Heal
+# [19] ESAttackMultihit -> Strike from the Heavens
+# Enemy action
+# [20] SkillSet:
+# 	[0] ESBlind -> Veil of Darkness
+# 	Blind all orbs on the board
+# 	[1] ESAttackMultihit -> Tempest Rain
+# 	Enemy action
+# [21] SkillSet:
+# 	[0] ESCloud -> Shrouding Mist
+# 	2x3 cloud appear for 1 turns at 2nd row, 3rd column
+# 	[1] ESAttackMultihit -> Wave Pulse
+# 	Enemy action
+# [22] SkillSet:
+# 	[0] ESBlindStickyRandom -> Darkness of the Lingering Night
+# 	Blind random 15 orbs for 1 turns
+# 	[1] ESAttackMultihit -> Wave Pulse
+# 	Enemy action
+# [23] SkillSet:
+# 	[0] ESSpinnersFixed -> Whirlpool
+# 	Specific orbs change every 1.0s for 1 turns
+# 	[1] ESAttackMultihit -> Wave Pulse
+# 	Enemy action
+# [24] SkillSet:
+# 	[0] ESBlind -> Veil of Darkness
+# 	Blind all orbs on the board
+# 	[1] ESAttackMultihit -> Tempest Rain
+# 	Enemy action
+# [25] SkillSet:
+# 	[0] ESCloud -> Shrouding Mist
+# 	2x3 cloud appear for 1 turns at 2nd row, 3rd column
+# 	[1] ESAttackMultihit -> Wave Pulse
+# 	Enemy action
+# [26] SkillSet:
+# 	[0] ESBlindStickyRandom -> Darkness of the Lingering Night
+# 	Blind random 15 orbs for 1 turns
+# 	[1] ESAttackMultihit -> Wave Pulse
+# 	Enemy action
+# [27] ESEndPath -> ESEndPath
+# end_turn
+# [28] ESSetCounter -> ESSetCounter
+# set_counter
+# [29] SkillSet:
+# 	[0] ESDebuffRCV -> Salvation of the Holy Ship
+# 	Rcv 300% for 9 turns
+# 	[1] ESOrbChangeAttackBits -> Charity from Heaven
+# 	Change Wood to Heal
+# [30] ESEndPath -> ESEndPath
+# end_turn
+# [31] ESBranchHP -> ESBranchHP
+# branch
+# [32] ESBranchFlag -> ESBranchFlag
+# branch
+# [33] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [34] SkillSet:
+# 	[0] ESBindAwoken -> Deminishing Fighting Spirit
+# 	Bind awoken skills for 5 turns
+# 	[1] ESGravity -> Vanishing Judgment
+# 	Player -99% HP
+# [35] ESEndPath -> ESEndPath
+# end_turn
+# [36] SkillSet:
+# 	[0] ESChangeAttribute -> Gear Shift
+# 	Change own attribute to random one of Fire, Water, Wood, Light, Dark
+# 	[1] ESAttackMultihit -> Banishing Lightning
+# 	Enemy action
+# [37] ESEndPath -> ESEndPath
+# end_turn
+# [38] ESResolve -> Resolve
+# Survive attacks with 1 HP when HP > 50%

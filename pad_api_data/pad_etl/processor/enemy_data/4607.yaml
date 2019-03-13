@@ -1,0 +1,166 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4607
+monster_name_en: Serra Angel
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  max_atk_pct: null
+  name_en: Forfend
+  name_jp: Forfend
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 10% hp, Deal 90% damage
+  desc_jp: Enemy recover 10% hp, Deal 90% damage
+  max_atk_pct: 90
+  name_en: Swift Justice
+  name_jp: Swift Justice
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 1 turns, Deal 100% damage
+  desc_jp: Reduce damage from all sources by 50% for 1 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Hero's Resolve
+  name_jp: Hero's Resolve
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Bind 1 random cards for 1~2 turns, Deal 95% damage
+  desc_jp: Bind 1 random cards for 1~2 turns, Deal 95% damage
+  max_atk_pct: 95
+  name_en: Angelic Shield
+  name_jp: Angelic Shield
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 10% hp + Reduce damage from all sources by 50% for 1 turns
+  desc_jp: Enemy recover 10% hp + Reduce damage from all sources by 50% for 1 turns
+  max_atk_pct: null
+  name_en: Convalescence + Hero's Resolve
+  name_jp: Convalescence + Hero's Resolve
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Enemy recover 10% hp + Bind 1 random cards for 1~2 turns
+  desc_jp: Enemy recover 10% hp + Bind 1 random cards for 1~2 turns
+  max_atk_pct: null
+  name_en: Convalescence + Angelic Shield
+  name_jp: Convalescence + Angelic Shield
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind active skills for 1 turns
+  desc_jp: Bind active skills for 1 turns
+  max_atk_pct: null
+  name_en: Silence
+  name_jp: Silence
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 250% damage
+  desc_jp: Deal 250% damage
+  max_atk_pct: 250
+  name_en: Wave of Reckoning
+  name_jp: Wave of Reckoning
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESStatusShield -> Forfend
+# Voids status ailments for 999 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESRecoverEnemy -> Swift Justice
+# Condition: One-time use
+# Enemy recover 10% hp
+# [10] ESDamageShield -> Hero's Resolve
+# Condition: 50% chance
+# Reduce damage from all sources by 50% for 1 turns
+# [11] ESBindRandom -> Angelic Shield
+# Bind 1 random cards for 1~2 turns
+# [12] ESEndPath -> ESEndPath
+# end_turn
+# [13] ESBranchHP -> ESBranchHP
+# branch
+# [14] SkillSet:
+# 	Condition: 50% chance
+# 	[0] ESRecoverEnemy -> Convalescence
+# 	Enemy recover 10% hp
+# 	[1] ESDamageShield -> Hero's Resolve
+# 	Reduce damage from all sources by 50% for 1 turns
+# [15] SkillSet:
+# 	[0] ESRecoverEnemy -> Convalescence
+# 	Enemy recover 10% hp
+# 	[1] ESBindRandom -> Angelic Shield
+# 	Bind 1 random cards for 1~2 turns
+# [16] ESEndPath -> ESEndPath
+# end_turn
+# [17] ESBranchFlag -> ESBranchFlag
+# branch
+# [18] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [19] ESBindSkill -> Silence
+# Bind active skills for 1 turns
+# [20] ESEndPath -> ESEndPath
+# end_turn
+# [21] ESAttackMultihit -> Wave of Reckoning
+# Enemy action
+# [22] ESEndPath -> ESEndPath
+# end_turn

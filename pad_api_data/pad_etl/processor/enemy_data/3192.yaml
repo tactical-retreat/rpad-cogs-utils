@@ -1,0 +1,50 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3192
+monster_name_en: Shimmering Thunder Goddess, Hera Dragon
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Deal 100% damage (4 hits, 25% each)
+  desc_jp: Deal 100% damage (4 hits, 25% each)
+  max_atk_pct: 100
+  name_en: Thunder Dragon Baptism
+  name_jp: Thunder Dragon Baptism
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 150% damage (10 hits, 15% each)
+  desc_jp: Deal 150% damage (10 hits, 15% each)
+  max_atk_pct: 150
+  name_en: Giga Graviton Breath
+  name_jp: Giga Graviton Breath
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESAttackMultihit -> Thunder Dragon Baptism
+# Condition: One-time use
+# Enemy action
+# [3] ESAttackMultihit -> Giga Graviton Breath
+# Enemy action

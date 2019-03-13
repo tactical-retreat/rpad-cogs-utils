@@ -1,0 +1,143 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4923
+monster_name_en: '*****'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Deal 80% damage
+  desc_jp: Deal 80% damage
+  max_atk_pct: 80
+  name_en: Fin Cutter
+  name_jp: Fin Cutter
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Random 1 orbs change every 2.0s for 1 turns, Deal 90% damage
+  desc_jp: Random 1 orbs change every 2.0s for 1 turns, Deal 90% damage
+  max_atk_pct: 90
+  name_en: Spin Kick
+  name_jp: Spin Kick
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Enemy recover 5% hp, Deal 85% damage
+  desc_jp: Enemy recover 5% hp, Deal 85% damage
+  max_atk_pct: 85
+  name_en: Jaguar Shock
+  name_jp: Jaguar Shock
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 100% damage (2 hits, 50% each)
+  desc_jp: Deal 100% damage (2 hits, 50% each)
+  max_atk_pct: 100
+  name_en: Monkey Attack
+  name_jp: Monkey Attack
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Player -25% HP + Enemy action
+  desc_jp: Player -25% HP + Enemy action
+  max_atk_pct: null
+  name_en: Condor Jump + Amazon Kick
+  name_jp: Condor Jump + Amazon Kick
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 150% damage
+  desc_jp: Deal 150% damage
+  max_atk_pct: 150
+  name_en: Super Slice
+  name_jp: Super Slice
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESAttackMultihit -> Fin Cutter
+# Enemy action
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESSpinnersRandom -> Spin Kick
+# Condition: 33% chance
+# Random 1 orbs change every 2.0s for 1 turns
+# [10] ESRecoverEnemy -> Jaguar Shock
+# Condition: 33% chance
+# Enemy recover 5% hp
+# [11] ESAttackMultihit -> Monkey Attack
+# Condition: 34% chance
+# Enemy action
+# [12] ESEndPath -> ESEndPath
+# end_turn
+# [13] ESBranchFlag -> ESBranchFlag
+# branch
+# [14] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [15] ESAttackUp -> Beast Instinct
+# Increase damage to 150% for the next 5 turns
+# [16] ESEndPath -> ESEndPath
+# end_turn
+# [17] ESBranchHP -> ESBranchHP
+# branch
+# [18] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESGravity -> Condor Jump
+# 	Player -25% HP
+# 	[1] ESAttackMultihit -> Amazon Kick
+# 	Enemy action
+# [19] ESSpinnersRandom -> Spin Kick
+# Condition: 33% chance
+# Random 1 orbs change every 2.0s for 1 turns
+# [20] ESRecoverEnemy -> Jaguar Shock
+# Condition: 33% chance
+# Enemy recover 5% hp
+# [21] ESAttackMultihit -> Monkey Attack
+# Condition: 34% chance
+# Enemy action
+# [22] ESEndPath -> ESEndPath
+# end_turn
+# [23] ESAttackMultihit -> Super Slice
+# Enemy action
+# [24] ESEndPath -> ESEndPath
+# end_turn

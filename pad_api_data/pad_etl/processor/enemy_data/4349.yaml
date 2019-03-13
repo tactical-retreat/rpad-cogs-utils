@@ -1,0 +1,119 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4349
+monster_name_en: Model of Chivalry, Leor
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 50%
+  desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
+  name_en: Dog Resolve
+  name_jp: Dog Resolve
+  record_type_name: PASSIVE
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 50%
+  desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
+  name_en: Dog Resolve
+  name_jp: Dog Resolve
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: You came...
+  name_jp: You came...
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  max_atk_pct: 100
+  name_en: School Axe
+  name_jp: School Axe
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 20
+  name_jp: HP <= 20
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 135% damage (3 hits, 45% each)
+  desc_jp: Deal 135% damage (3 hits, 45% each)
+  max_atk_pct: 135
+  name_en: School Combo
+  name_jp: School Combo
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 2
+  name_jp: HP <= 2
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb combo <= 6 damage for 1 turns
+  desc_jp: Absorb combo <= 6 damage for 1 turns
+  max_atk_pct: null
+  name_en: If it's a battle, I won't lose!
+  name_jp: If it's a battle, I won't lose!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESInactivity -> You came...
+# Do nothing
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESAbsorbCombo -> If it's a battle, I won't lose!
+# Condition: When < 2% hp , one-time use
+# Absorb combo <= 6 damage for 1 turns
+# [9] ESAttackMultihit -> School Combo
+# Condition: When < 20% hp
+# Enemy action
+# [10] ESAttackMultihit -> School Axe
+# Enemy action
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESResolve -> Dog Resolve
+# Survive attacks with 1 HP when HP > 50%

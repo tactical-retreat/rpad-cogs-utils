@@ -1,0 +1,74 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1269
+monster_name_en: Banishing Claw Byakko, Haku
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Change Mortal Poison to Heal
+  desc_jp: Change Mortal Poison to Heal
+  max_atk_pct: null
+  name_en: Can I have this?...
+  name_jp: Can I have this?...
+  record_type_name: PREEMPT
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESOrbChangeAttackBits -> Can I have this?...
+# Change Mortal Poison to Heal
+# [7] SkillSet:
+# 	[0] ESSkyfall -> What are you doing here?
+# 	Fire, Water, Dark skyfall +25% for 3 turns
+# 	[1] ESAbsorbAttribute -> Stay away!
+# 	Absorb Fire, Water, Dark damage for 3 turns
+# [8] ESEndPath -> ESEndPath
+# end_turn
+# [9] ESBranchCounter -> ESBranchCounter
+# branch
+# [10] ESSetCounter -> ESSetCounter
+# set_counter
+# [11] ESOrbChangeAttack -> Blazing Tiger Claws
+# Condition: 33% chance
+# Change Random to Fire
+# [12] ESOrbChangeAttack -> Water Tiger Claws
+# Condition: 50% chance
+# Change Random to Water
+# [13] ESOrbChangeAttack -> Shadow Tiger Claws
+# Change Random to Dark
+# [14] ESEndPath -> ESEndPath
+# end_turn
+# [15] ESBindAwoken -> Stop it already
+# Condition: One-time use
+# Bind awoken skills for 1 turns
+# [16] ESSetCounter -> ESSetCounter
+# set_counter
+# [17] SkillSet:
+# 	[0] ESBoardChange -> Western Seven-Star Formation
+# 	Change all orbs to Fire, Water, Dark
+# 	[1] ESGravity -> Unbreakable Fangs
+# 	Player -150% HP
+# [18] ESEndPath -> ESEndPath
+# end_turn

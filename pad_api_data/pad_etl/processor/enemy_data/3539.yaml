@@ -1,0 +1,115 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3539
+monster_name_en: Flame Wing Wisedragon, Nerva
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Fire by 50%
+  desc_jp: Reduce damage from Fire by 50%
+  max_atk_pct: null
+  name_en: Fire damage halved
+  name_jp: Fire damage halved
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 75% for 3 turns
+  desc_jp: Reduce damage from all sources by 75% for 3 turns
+  max_atk_pct: null
+  name_en: Fireform
+  name_jp: Fireform
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 5000% damage (10 hits, 500% each)
+  desc_jp: Deal 5000% damage (10 hits, 500% each)
+  max_atk_pct: 5000
+  name_en: Vasahal Vorzen
+  name_jp: Vasahal Vorzen
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESDamageShield -> Fireform
+# Condition: One-time use
+# Reduce damage from all sources by 75% for 3 turns
+# [3] ESBranchHP -> ESBranchHP
+# branch
+# [4] ESDebuffMovetime -> Burn Claw
+# Condition: One-time use
+# Movetime 50% for 1 turns
+# [5] ESBlind -> Flash Burn
+# Condition: One-time use
+# Blind all orbs on the board
+# [6] SkillSet:
+# 	Condition: When < 85% hp , one-time use
+# 	[0] ESStatusShield -> Margo Cult
+# 	Voids status ailments for 999 turns
+# 	[1] ESBoardChangeAttackBits -> Lava Flare
+# 	Change all orbs to Fire
+# [7] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESStatusShield -> Margo Cult
+# 	Voids status ailments for 999 turns
+# 	[1] ESAttackMultihit -> Crimson Breath
+# 	Enemy action
+# [8] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESDamageShield -> Fireform
+# 	Reduce damage from all sources by 75% for 3 turns
+# 	[1] ESBindAttack -> Giant Iceflame Talons
+# 	Bind 1 random for 4 turns
+# [9] ESAttackMultihit -> Pyro Breath
+# Condition: One-time use
+# Enemy action
+# [10] ESOrbLock -> Freeze Ignis
+# Condition: One-time use
+# Lock 15 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [11] ESBoardChangeAttackBits -> Lava Flare
+# Condition: When < 50% hp , one-time use
+# Change all orbs to Fire
+# [12] ESAttackMultihit -> Crimson Breath
+# Condition: One-time use
+# Enemy action
+# [13] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESDamageShield -> Fireform
+# 	Reduce damage from all sources by 75% for 3 turns
+# 	[1] ESBindAttack -> Giant Iceflame Talons
+# 	Bind 1 random for 4 turns
+# [14] ESAttackMultihit -> Inferno Breath
+# Condition: One-time use
+# Enemy action
+# [15] ESAttackMultihit -> Inferno Breath
+# Condition: One-time use
+# Enemy action
+# [16] ESAttackMultihit -> Vasahal Vorzen
+# Enemy action
+# [17] ESEndPath -> ESEndPath
+# end_turn
+# [18] ESAttackMultihit -> Vasahal Vorzen
+# Enemy action
+# [19] ESEndPath -> ESEndPath
+# end_turn
+# [20] ESAttributeResist -> Fire damage halved
+# Reduce damage from Fire by 50%

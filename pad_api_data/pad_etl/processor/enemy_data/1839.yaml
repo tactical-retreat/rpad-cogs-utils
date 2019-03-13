@@ -1,0 +1,149 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1839
+monster_name_en: Lightning Sky Stubborn Dragon King, Gainaut
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Locked random skyfall +30% for 99 turns + Voids status ailments for 999
+    turns
+  desc_jp: Locked random skyfall +30% for 99 turns + Voids status ailments for 999
+    turns
+  max_atk_pct: null
+  name_en: You better watch this radiance!! + Crystal Aura
+  name_jp: You better watch this radiance!! + Crystal Aura
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Lock all Jammer orbs, Deal 220% damage
+  desc_jp: Lock all Jammer orbs, Deal 220% damage
+  max_atk_pct: 220
+  name_en: Brilliant Flare
+  name_jp: Brilliant Flare
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 70
+  name_jp: HP <= 70
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind Water cards for 5 turns
+  desc_jp: Bind Water cards for 5 turns
+  max_atk_pct: null
+  name_en: Evaporate
+  name_jp: Evaporate
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 20
+  name_jp: HP <= 20
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 600% damage (6 hits, 100% each)
+  desc_jp: Deal 600% damage (6 hits, 100% each)
+  max_atk_pct: 600
+  name_en: Crossing Ray
+  name_jp: Crossing Ray
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	[0] ESSkyfall -> You better watch this radiance!!
+# 	Locked random skyfall +30% for 99 turns
+# 	[1] ESStatusShield -> Crystal Aura
+# 	Voids status ailments for 999 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESAttackMultihit -> Crossing Ray
+# Condition: When < 20% hp
+# Enemy action
+# [7] ESBranchCard -> ESBranchCard
+# branch
+# [8] ESBranchCard -> ESBranchCard
+# branch
+# [9] ESBindAttribute -> Evaporate
+# Condition: When < 70% hp , one-time use
+# Bind Water cards for 5 turns
+# [10] ESDispel -> Erase Light
+# Condition: When < 70% hp , one-time use
+# Voids player buff effects
+# [11] ESSkyfall -> Poison Mist
+# Condition: When < 70% hp , one-time use
+# Mortal Poison skyfall +20% for 2 turns
+# [12] ESBranchHP -> ESBranchHP
+# branch
+# [13] ESOrbLock -> Brilliant Flare
+# Lock all Jammer orbs
+# [14] ESColumnSpawnMulti -> Reflection Ray
+# Condition: 16% chance
+# Change 1st column to Jammer orbs
+# [15] ESColumnSpawnMulti -> Reflection Ray
+# Condition: 16% chance
+# Change 2nd column to Jammer orbs
+# [16] ESColumnSpawnMulti -> Reflection Ray
+# Condition: 17% chance
+# Change 3rd column to Jammer orbs
+# [17] ESColumnSpawnMulti -> Reflection Ray
+# Condition: 17% chance
+# Change 4th column to Jammer orbs
+# [18] ESColumnSpawnMulti -> Reflection Ray
+# Condition: 17% chance
+# Change 5th column to Jammer orbs
+# [19] ESColumnSpawnMulti -> Reflection Ray
+# Condition: 17% chance
+# Change 6th column to Jammer orbs
+# [20] ESEndPath -> ESEndPath
+# end_turn
+# [21] ESOrbLock -> Brilliant Flare
+# Lock all Jammer orbs
+# [22] ESColumnSpawnMulti -> Reflection Ray
+# Condition: 33% chance
+# Change 1st, 4th column to Jammer orbs
+# [23] ESColumnSpawnMulti -> Reflection Ray
+# Condition: 33% chance
+# Change 2nd, 5th column to Jammer orbs
+# [24] ESColumnSpawnMulti -> Reflection Ray
+# Condition: 34% chance
+# Change 4th, 6th column to Jammer orbs
+# [25] ESEndPath -> ESEndPath
+# end_turn
+# [26] ESBranchFlag -> ESBranchFlag
+# branch
+# [27] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [28] ESBranchCard -> ESBranchCard
+# branch
+# [29] ESAttackMultihit -> You foolish Devilbound creature
+# Enemy action
+# [30] ESAttackMultihit -> If you want power, sacrifice him to me!
+# Enemy action

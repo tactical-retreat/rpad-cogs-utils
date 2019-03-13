@@ -1,0 +1,96 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 104805
+monster_name_en: Gentle-Guard Rising Dragon Caller, Omega
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb combo <= 5 damage for 3 turns
+  desc_jp: Absorb combo <= 5 damage for 3 turns
+  max_atk_pct: null
+  name_en: Wings of Wind
+  name_jp: Wings of Wind
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Rcv 50% for 1 turns, Deal 100% damage
+  desc_jp: Rcv 50% for 1 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Sad Verse of Wind
+  name_jp: Sad Verse of Wind
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 120% damage (2 hits, 60% each)
+  desc_jp: Deal 120% damage (2 hits, 60% each)
+  max_atk_pct: 120
+  name_en: Fuldofa Rulia
+  name_jp: Fuldofa Rulia
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Jammer skyfall +20% for 3 turns
+  desc_jp: Jammer skyfall +20% for 3 turns
+  max_atk_pct: null
+  name_en: Burden
+  name_jp: Burden
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 10
+  name_jp: HP <= 10
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Wood, Deal 200% damage
+  desc_jp: Change all orbs to Wood, Deal 200% damage
+  max_atk_pct: 200
+  name_en: Faldia le Shent
+  name_jp: Faldia le Shent
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESAbsorbCombo -> Wings of Wind
+# Condition: One-time use
+# Absorb combo <= 5 damage for 3 turns
+# [3] ESSkyfall -> Burden
+# Condition: When < 50% hp , one-time use
+# Jammer skyfall +20% for 3 turns
+# [4] ESBoardChangeAttackBits -> Faldia le Shent
+# Condition: When < 10% hp
+# Change all orbs to Wood
+# [5] ESDebuffRCV -> Sad Verse of Wind
+# Condition: 50% chance
+# Rcv 50% for 1 turns
+# [6] ESAttackMultihit -> Fuldofa Rulia
+# Enemy action
+# [7] ESEndPath -> ESEndPath
+# end_turn

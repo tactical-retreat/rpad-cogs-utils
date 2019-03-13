@@ -1,0 +1,81 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3656
+monster_name_en: Nargacuga
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 5 turns + Spawn random 5 Jammer orbs
+  desc_jp: Voids status ailments for 5 turns + Spawn random 5 Jammer orbs
+  max_atk_pct: null
+  name_en: Threaten + Thorn Shot
+  name_jp: Threaten + Thorn Shot
+  record_type_name: PREEMPT
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] SkillSet:
+# 	[0] ESStatusShield -> Threaten
+# 	Voids status ailments for 5 turns
+# 	[1] ESRandomSpawn -> Thorn Shot
+# 	Spawn random 5 Jammer orbs
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchFlag -> ESBranchFlag
+# branch
+# [9] SkillSet:
+# 	Condition: When < 50% hp , one-time use
+# 	[0] ESBindRandomSub -> Roar
+# 	Bind 1 random subs for 1 turns
+# 	[1] ESAttackUp -> Rage
+# 	Increase damage to 120% for the next 10 turns
+# [10] ESRowSpawnMulti -> Tail Sweep
+# Condition: 14% chance
+# Change 3rd row to Dark orbs
+# [11] ESAttackMultihit -> Great Tailspin
+# Condition: 16% chance
+# Enemy action
+# [12] ESBlind -> Springing Strike
+# Condition: 19% chance
+# Blind all orbs on the board
+# [13] ESAttackMultihit -> Cutwing
+# Condition: 24% chance
+# Enemy action
+# [14] ESDamageShield -> Dash
+# Condition: 31% chance
+# Reduce damage from all sources by 50% for 1 turns
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] ESAttackMultihit -> Tail Slam
+# Enemy action
+# [17] ESEndPath -> ESEndPath
+# end_turn
+# [18] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [19] ESInactivity -> Tail is stuck and can't move!
+# Do nothing
+# [20] ESEndPath -> ESEndPath
+# end_turn

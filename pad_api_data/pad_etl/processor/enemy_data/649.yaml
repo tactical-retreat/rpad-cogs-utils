@@ -1,0 +1,114 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 649
+monster_name_en: Awoken Athena
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb combo <= 4 damage for 999 turns
+  desc_jp: Absorb combo <= 4 damage for 999 turns
+  max_atk_pct: null
+  name_en: Aegis Sparkle
+  name_jp: Aegis Sparkle
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Light, Deal 80% damage
+  desc_jp: Change Random to Light, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Shining Spear
+  name_jp: Shining Spear
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 120% damage (6 hits, 20% each)
+  desc_jp: Deal 120% damage (6 hits, 20% each)
+  max_atk_pct: 120
+  name_en: Storm Punisher
+  name_jp: Storm Punisher
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 14
+  name_jp: HP <= 14
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: The end is nigh!
+  name_jp: The end is nigh!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 14
+  name_jp: HP <= 14
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 1000% damage (10 hits, 100% each)
+  desc_jp: Deal 1000% damage (10 hits, 100% each)
+  max_atk_pct: 1000
+  name_en: Starburst
+  name_jp: Starburst
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESAbsorbCombo -> Aegis Sparkle
+# Condition: One-time use
+# Absorb combo <= 4 damage for 999 turns
+# [3] ESNone -> ESNone
+# None
+# [4] ESBranchHP -> ESBranchHP
+# branch
+# [5] ESBranchHP -> ESBranchHP
+# branch
+# [6] ESBranchFlag -> ESBranchFlag
+# branch
+# [7] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [8] ESInactivity -> The end is nigh!
+# Do nothing
+# [9] ESAttackMultihit -> Starburst
+# Enemy action
+# [10] ESEndPath -> ESEndPath
+# end_turn
+# [11] ESOrbChangeAttack -> Shining Spear
+# Condition: 60% chance
+# Change Random to Light
+# [12] ESEndPath -> ESEndPath
+# end_turn
+# [13] ESAttackMultihit -> Storm Punisher
+# Condition: 70% chance
+# Enemy action

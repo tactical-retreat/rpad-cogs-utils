@@ -1,0 +1,55 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 585
+monster_name_en: Pixie
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 80% damage
+  desc_jp: Change Random to Jammer, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Fairies' Mischief
+  name_jp: Fairies' Mischief
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 25
+  name_jp: HP <= 25
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 2 random cards for 2 turns
+  desc_jp: Bind 2 random cards for 2 turns
+  max_atk_pct: null
+  name_en: Charm of Sleep
+  name_jp: Charm of Sleep
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESOrbChangeAttack -> Fairies' Mischief
+# Condition: One-time use
+# Change Random to Jammer
+# [5] ESBindRandom -> Charm of Sleep
+# Condition: When < 25% hp
+# Bind 2 random cards for 2 turns

@@ -1,0 +1,109 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 872
+monster_name_en: Plessie Felyne
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: "Meow meeow meooow\u266A"
+  name_jp: "Meow meeow meooow\u266A"
+  record_type_name: ACTION
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Water, Deal 50% damage
+  desc_jp: Change Random to Water, Deal 50% damage
+  max_atk_pct: 50
+  name_en: Cold Breath nya!
+  name_jp: Cold Breath nya!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: "Meow meeow meooow\u266A"
+  name_jp: "Meow meeow meooow\u266A"
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 29
+  name_jp: HP <= 29
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Player -75% HP
+  desc_jp: Player -75% HP
+  max_atk_pct: null
+  name_en: Barrel Bomb nya!
+  name_jp: Barrel Bomb nya!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESInactivity -> Meow meeow meooow♪
+# Condition: 30% chance
+# Do nothing
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchHP -> ESBranchHP
+# branch
+# [5] ESBranchFlag -> ESBranchFlag
+# branch
+# [6] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [7] ESGravity -> Barrel Bomb nya!
+# Player -75% HP
+# [8] ESEndPath -> ESEndPath
+# end_turn
+# [9] ESOrbChangeAttack -> Cold Breath nya!
+# Condition: One-time use
+# Change Random to Water
+# [10] ESInactivity -> Meow meeow meooow♪
+# Condition: 15% chance
+# Do nothing

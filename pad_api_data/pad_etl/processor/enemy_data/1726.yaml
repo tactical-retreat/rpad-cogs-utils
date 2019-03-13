@@ -1,0 +1,148 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1726
+monster_name_en: Awoken Hino Kagutsuchi
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 50%
+  desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
+  name_en: '*****'
+  name_jp: '*****'
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Delay active skills by 4 turns
+  desc_jp: Delay active skills by 4 turns
+  max_atk_pct: null
+  name_en: Yomi Wave
+  name_jp: Yomi Wave
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 4 Fire, Dark orbs, Deal 100% damage
+  desc_jp: Spawn random 4 Fire, Dark orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Divine Hellfire
+  name_jp: Divine Hellfire
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Fire to Jammer, Deal 75% damage
+  desc_jp: Change Fire to Jammer, Deal 75% damage
+  max_atk_pct: 75
+  name_en: Hell Bolt
+  name_jp: Hell Bolt
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Dark to Poison, Deal 50% damage
+  desc_jp: Change Dark to Poison, Deal 50% damage
+  max_atk_pct: 50
+  name_en: Snake God's Venomous Fangs
+  name_jp: Snake God's Venomous Fangs
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 6 random cards for 2 turns
+  desc_jp: Bind 6 random cards for 2 turns
+  max_atk_pct: null
+  name_en: Snake Eye Curse
+  name_jp: Snake Eye Curse
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 29
+  name_jp: HP <= 29
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 4000% damage (4 hits, 1000% each)
+  desc_jp: Deal 4000% damage (4 hits, 1000% each)
+  max_atk_pct: 4000
+  name_en: Serpent King's Annihilating Strike
+  name_jp: Serpent King's Annihilating Strike
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESSkillDelay -> Yomi Wave
+# Delay active skills by 4 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] ESBranchHP -> ESBranchHP
+# branch
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESRandomSpawn -> Divine Hellfire
+# Condition: One-time use & when Water, Wood, Light, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 4 Fire, Dark orbs
+# [10] ESOrbChangeAttack -> Hell Bolt
+# Condition: 50% chance
+# Change Fire to Jammer
+# [11] ESPoisonChangeSingle -> Snake God's Venomous Fangs
+# Condition: 50% chance
+# Change Dark to Poison
+# [12] ESEndPath -> ESEndPath
+# end_turn
+# [13] ESBranchFlag -> ESBranchFlag
+# branch
+# [14] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [15] ESBindRandom -> Snake Eye Curse
+# Bind 6 random cards for 2 turns
+# [16] ESEndPath -> ESEndPath
+# end_turn
+# [17] ESAttackMultihit -> Serpent King's Annihilating Strike
+# Enemy action
+# [18] ESEndPath -> ESEndPath
+# end_turn
+# [19] ESBranchFlag -> ESBranchFlag
+# branch
+# [20] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [21] ESSkillDelay -> Grudge Howl
+# Delay active skills by 99 turns
+# [22] ESEndPath -> ESEndPath
+# end_turn
+# [23] ESResolve -> *****
+# Survive attacks with 1 HP when HP > 50%

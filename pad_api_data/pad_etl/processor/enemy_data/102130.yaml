@@ -1,0 +1,111 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 102130
+monster_name_en: Alt. Unwavering Demon Dragon, Nobunaga
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Change 1st, 2nd, 5th, 6th column
+    to Fire, Mortal Poison orbs + Locked random skyfall +50% for 10 turns
+  desc_jp: Voids status ailments for 999 turns + Change 1st, 2nd, 5th, 6th column
+    to Fire, Mortal Poison orbs + Locked random skyfall +50% for 10 turns
+  max_atk_pct: null
+  name_en: Silver Armor + Burning Grudge + Immortal Ambition
+  name_jp: Silver Armor + Burning Grudge + Immortal Ambition
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 170% damage
+  desc_jp: Change Random to Jammer, Deal 170% damage
+  max_atk_pct: 170
+  name_en: Work of the Devil
+  name_jp: Work of the Devil
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 190% damage (2 hits, 95% each)
+  desc_jp: Deal 190% damage (2 hits, 95% each)
+  max_atk_pct: 190
+  name_en: Devil Dragon's Blade
+  name_jp: Devil Dragon's Blade
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Absorb combo <= 6 damage for 1 turns, Deal 180% damage
+  desc_jp: Absorb combo <= 6 damage for 1 turns, Deal 180% damage
+  max_atk_pct: 180
+  name_en: No Mercy
+  name_jp: No Mercy
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb Fire, Water, Wood damage for 2 turns
+  desc_jp: Absorb Fire, Water, Wood damage for 2 turns
+  max_atk_pct: null
+  name_en: Injustice
+  name_jp: Injustice
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESStatusShield -> Silver Armor
+# 	Voids status ailments for 999 turns
+# 	[1] ESColumnSpawnMulti -> Burning Grudge
+# 	Change 1st, 2nd, 5th, 6th column to Fire, Mortal Poison orbs
+# 	[2] ESSkyfall -> Immortal Ambition
+# 	Locked random skyfall +50% for 10 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESOrbLock -> Soaring Destruction
+# Condition: One-time use
+# Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [7] ESBranchHP -> ESBranchHP
+# branch
+# [8] ESOrbChangeAttack -> Work of the Devil
+# Condition: 34% chance
+# Change Random to Jammer
+# [9] ESAttackMultihit -> Devil Dragon's Blade
+# Condition: 33% chance
+# Enemy action
+# [10] ESAbsorbCombo -> No Mercy
+# Condition: 33% chance
+# Absorb combo <= 6 damage for 1 turns
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESBranchFlag -> ESBranchFlag
+# branch
+# [13] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [14] ESAbsorbAttribute -> Injustice
+# Absorb Fire, Water, Wood damage for 2 turns

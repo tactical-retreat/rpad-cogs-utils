@@ -1,0 +1,191 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 102987
+monster_name_en: Alt. Iron Machine King, Star Justice
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 50%
+  desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
+  name_en: Resolve Robot
+  name_jp: Resolve Robot
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Delay active skills by 6 turns
+  desc_jp: Voids status ailments for 999 turns + Delay active skills by 6 turns
+  max_atk_pct: null
+  name_en: Mode-Ground Armor + Justice Aura
+  name_jp: Mode-Ground Armor + Justice Aura
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids player buff effects
+  desc_jp: Voids player buff effects
+  max_atk_pct: null
+  name_en: Justice Eye
+  name_jp: Justice Eye
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  max_atk_pct: null
+  name_en: Justice Punch
+  name_jp: Justice Punch
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids player buff effects
+  desc_jp: Voids player buff effects
+  max_atk_pct: null
+  name_en: Justice Eye
+  name_jp: Justice Eye
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 120% damage (3 hits, 40% each)
+  desc_jp: Deal 120% damage (3 hits, 40% each)
+  max_atk_pct: 120
+  name_en: Justice Star Boomerang
+  name_jp: Justice Star Boomerang
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids player buff effects
+  desc_jp: Voids player buff effects
+  max_atk_pct: null
+  name_en: Justice Eye
+  name_jp: Justice Eye
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change 2nd row to Wood orbs, Deal 100% damage
+  desc_jp: Change 2nd row to Wood orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Justice Blade
+  name_jp: Justice Blade
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 70
+  name_jp: HP <= 70
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 6 turns
+  desc_jp: Reduce damage from all sources by 50% for 6 turns
+  max_atk_pct: null
+  name_en: Justice Barrier
+  name_jp: Justice Barrier
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Wood, Jammer, Poison skyfall +10% for 5 turns, Deal 100% damage
+  desc_jp: Wood, Jammer, Poison skyfall +10% for 5 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Justice Tornado
+  name_jp: Justice Tornado
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 15
+  name_jp: HP <= 15
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 800% damage (8 hits, 100% each)
+  desc_jp: Deal 800% damage (8 hits, 100% each)
+  max_atk_pct: 800
+  name_en: Justice Ultimate Storm
+  name_jp: Justice Ultimate Storm
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	[0] ESStatusShield -> Mode-Ground Armor
+# 	Voids status ailments for 999 turns
+# 	[1] ESSkillDelay -> Justice Aura
+# 	Delay active skills by 6 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESAttackUp -> Justice Booster
+# Increase damage to 200% for the next 999 turns
+# [7] ESAttackMultihit -> Justice Ultimate Storm
+# Condition: When < 15% hp
+# Enemy action
+# [8] ESDamageShield -> Justice Barrier
+# Condition: When < 70% hp , one-time use
+# Reduce damage from all sources by 50% for 6 turns
+# [9] ESSkyfall -> Justice Tornado
+# Condition: When < 50% hp , one-time use
+# Wood, Jammer, Poison skyfall +10% for 5 turns
+# [10] ESBranchFlag -> ESBranchFlag
+# branch
+# [11] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [12] ESDispel -> Justice Eye
+# Voids player buff effects
+# [13] ESRowSpawnMulti -> Justice Blade
+# Change 2nd row to Wood orbs
+# [14] ESBranchFlag -> ESBranchFlag
+# branch
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] ESDispel -> Justice Eye
+# Voids player buff effects
+# [17] ESGravity -> Justice Punch
+# Player -99% HP
+# [18] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [19] ESDispel -> Justice Eye
+# Voids player buff effects
+# [20] ESAttackMultihit -> Justice Star Boomerang
+# Enemy action
+# [21] ESEndPath -> ESEndPath
+# end_turn
+# [22] ESResolve -> Resolve Robot
+# Survive attacks with 1 HP when HP > 50%

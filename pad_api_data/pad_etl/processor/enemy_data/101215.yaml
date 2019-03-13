@@ -1,0 +1,109 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 101215
+monster_name_en: Alt. Maleficent Dragon Lord Zaerog
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Dark by 50%
+  desc_jp: Reduce damage from Dark by 50%
+  max_atk_pct: null
+  name_en: Ninegaruda Dark Halved
+  name_jp: Ninegaruda Dark Halved
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Absorb Light damage for 4 turns
+  desc_jp: Absorb Light damage for 4 turns
+  max_atk_pct: null
+  name_en: Light Dragon Scale
+  name_jp: Light Dragon Scale
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Absorb Dark damage for 4 turns
+  desc_jp: Absorb Dark damage for 4 turns
+  max_atk_pct: null
+  name_en: Dark Dragon Scale
+  name_jp: Dark Dragon Scale
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb Light damage for 4 turns
+  desc_jp: Absorb Light damage for 4 turns
+  max_atk_pct: null
+  name_en: Light Dragon Scale
+  name_jp: Light Dragon Scale
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Absorb Dark damage for 4 turns
+  desc_jp: Absorb Dark damage for 4 turns
+  max_atk_pct: null
+  name_en: Dark Dragon Scale
+  name_jp: Dark Dragon Scale
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESAbsorbAttribute -> Light Dragon Scale
+# Condition: 50% chance
+# Absorb Light damage for 4 turns
+# [5] ESAbsorbAttribute -> Dark Dragon Scale
+# Absorb Dark damage for 4 turns
+# [6] ESEndPath -> ESEndPath
+# end_turn
+# [7] ESAbsorbAttribute -> Light Dragon Scale
+# Condition: 50% chance
+# Absorb Light damage for 4 turns
+# [8] ESAbsorbAttribute -> Dark Dragon Scale
+# Absorb Dark damage for 4 turns
+# [9] ESBranchFlag -> ESBranchFlag
+# branch
+# [10] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [11] ESGravity -> Zero Blast
+# Condition: When < 30% hp
+# Player -100% HP
+# [12] ESGravity -> Gravity Breath
+# Player -99% HP
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESBranchFlag -> ESBranchFlag
+# branch
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] ESBindAttack -> Dragon Lord's Claw
+# Bind 1 subs for 1~2 turns
+# [17] ESEndPath -> ESEndPath
+# end_turn
+# [18] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [19] ESOrbChangeAttack -> Black Disaster
+# Change Random to Jammer
+# [20] ESEndPath -> ESEndPath
+# end_turn
+# [21] ESAttributeResist -> Ninegaruda Dark Halved
+# Reduce damage from Dark by 50%

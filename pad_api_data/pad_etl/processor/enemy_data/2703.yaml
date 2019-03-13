@@ -1,0 +1,184 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2703
+monster_name_en: Squad 6 Captain, Byakuya Kuchiki
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Do nothing + Do nothing
+  desc_jp: Do nothing + Do nothing
+  max_atk_pct: null
+  name_en: This is the true form of Senbonzakura. + Senkei... Senbonzakura Kageyoshi.
+  name_jp: This is the true form of Senbonzakura. + Senkei... Senbonzakura Kageyoshi.
+  record_type_name: PREEMPT
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Enemy action
+  desc_jp: Voids status ailments for 999 turns + Enemy action
+  max_atk_pct: null
+  name_en: Then feast your eyes... + Senbonzakura Kageyoshi
+  name_jp: Then feast your eyes... + Senbonzakura Kageyoshi
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 3rd column to Water orbs, 4th column to Fire orbs, Deal 90% damage
+  desc_jp: Change 3rd column to Water orbs, 4th column to Fire orbs, Deal 90% damage
+  max_atk_pct: 90
+  name_en: Hado Thirty-Three... Soukatsui.
+  name_jp: Hado Thirty-Three... Soukatsui.
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 110% damage (10 hits, 11% each)
+  desc_jp: Deal 110% damage (10 hits, 11% each)
+  max_atk_pct: 110
+  name_en: Infinite blades attack
+  name_jp: Infinite blades attack
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing + Increase damage to 200% for the next 999 turns
+  desc_jp: Do nothing + Increase damage to 200% for the next 999 turns
+  max_atk_pct: null
+  name_en: This is the true form of Senbonzakura. + Senkei Senbonzakura Kageyoshi
+  name_jp: This is the true form of Senbonzakura. + Senkei Senbonzakura Kageyoshi
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 110% damage
+  desc_jp: Deal 110% damage
+  max_atk_pct: 110
+  name_en: Slash
+  name_jp: Slash
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 15
+  name_jp: HP <= 15
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 600% damage
+  desc_jp: Deal 600% damage
+  max_atk_pct: 600
+  name_en: 'Senbonzakura Kageyoshi...
+
+    Shukei Hakuteiken'
+  name_jp: 'Senbonzakura Kageyoshi...
+
+    Shukei Hakuteiken'
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESBranchFlag -> ESBranchFlag
+# branch
+# [4] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [5] SkillSet:
+# 	[0] ESInactivity -> This is the true form of Senbonzakura.
+# 	Do nothing
+# 	[1] ESInactivity -> Senkei... Senbonzakura Kageyoshi.
+# 	Do nothing
+# [6] ESEndPath -> ESEndPath
+# end_turn
+# [7] ESBranchFlag -> ESBranchFlag
+# branch
+# [8] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [9] SkillSet:
+# 	[0] ESStatusShield -> Then feast your eyes...
+# 	Voids status ailments for 999 turns
+# 	[1] ESAttackMultihit -> Senbonzakura Kageyoshi
+# 	Enemy action
+# [10] ESEndPath -> ESEndPath
+# end_turn
+# [11] ESBranchHP -> ESBranchHP
+# branch
+# [12] ESColumnSpawnMulti -> Hado Thirty-Three... Soukatsui.
+# Condition: One-time use
+# Change 3rd column to Water orbs, 4th column to Fire orbs
+# [13] ESAttackMultihit -> Infinite blades attack
+# Enemy action
+# [14] ESBranchFlag -> ESBranchFlag
+# branch
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] ESBranchCard -> ESBranchCard
+# branch
+# [17] SkillSet:
+# 	[0] ESInactivity -> This is the true form of Senbonzakura.
+# 	Do nothing
+# 	[1] ESAttackUp -> Senkei Senbonzakura Kageyoshi
+# 	Increase damage to 200% for the next 999 turns
+# [18] SkillSet:
+# 	[0] ESInactivity -> This is the true form of Senbonzakura.
+# 	Do nothing
+# 	[1] ESAttackUp -> Senkei Senbonzakura Kageyoshi
+# 	Increase damage to 200% for the next 999 turns
+# 	[2] ESInactivity -> You are only the second to ever see it.
+# 	Do nothing
+# [19] ESAttackMultihit -> Senbonzakura Kageyoshi...
+# Shukei Hakuteiken
+# Condition: When < 15% hp
+# Enemy action
+# [20] ESGravity -> Hado Four... Byakurai.
+# Condition: One-time use
+# Player -99% HP
+# [21] ESAttackMultihit -> Slash
+# Enemy action
+# [22] ESEndPath -> ESEndPath
+# end_turn
+# [23] SkillSet:
+# 	Condition: On death
+# 	[0] ESInactivity -> The battle... is yours.
+# 	Do nothing

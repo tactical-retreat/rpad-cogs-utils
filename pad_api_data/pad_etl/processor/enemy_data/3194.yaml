@@ -1,0 +1,50 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3194
+monster_name_en: Burning Time Dragonbound, Myr
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Fix orb movement starting point to random position on the board
+  desc_jp: Fix orb movement starting point to random position on the board
+  max_atk_pct: null
+  name_en: Time Warp
+  name_jp: Time Warp
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage (2 hits, 50% each)
+  desc_jp: Deal 100% damage (2 hits, 50% each)
+  max_atk_pct: 100
+  name_en: Hour Hand Strike
+  name_jp: Hour Hand Strike
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESFixedStart -> Time Warp
+# Condition: One-time use
+# Fix orb movement starting point to random position on the board
+# [3] ESAttackMultihit -> Hour Hand Strike
+# Enemy action

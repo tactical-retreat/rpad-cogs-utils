@@ -1,0 +1,136 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2483
+monster_name_en: New Form, Naraku
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Movetime -1s for 5 turns
+  desc_jp: Movetime -1s for 5 turns
+  max_atk_pct: null
+  name_en: Hehehehe
+  name_jp: Hehehehe
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 3 Poison orbs
+  desc_jp: Spawn random 3 Poison orbs
+  max_atk_pct: null
+  name_en: Summoning Saimyosho
+  name_jp: Summoning Saimyosho
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Random to Poison, Deal 120% damage
+  desc_jp: Change Random to Poison, Deal 120% damage
+  max_atk_pct: 120
+  name_en: Miasma
+  name_jp: Miasma
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Tentacles are spreading around
+  name_jp: Tentacles are spreading around
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Mortal Poison
+  desc_jp: Change all orbs to Mortal Poison
+  max_atk_pct: null
+  name_en: Death by Illusion
+  name_jp: Death by Illusion
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 70
+  name_jp: HP <= 70
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb combo <= 3 damage for 10 turns
+  desc_jp: Absorb combo <= 3 damage for 10 turns
+  max_atk_pct: null
+  name_en: Barrier
+  name_jp: Barrier
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESDebuffMovetime -> Hehehehe
+# Movetime -1s for 5 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchCard -> ESBranchCard
+# branch
+# [9] ESAbsorbCombo -> Barrier
+# Condition: When < 70% hp , one-time use
+# Absorb combo <= 3 damage for 10 turns
+# [10] ESBranchHP -> ESBranchHP
+# branch
+# [11] ESRandomSpawn -> Summoning Saimyosho
+# Condition: 30% chance & when Fire, Water, Wood, Light, Dark, Heal, Jammer, Mortal Poison orbs are on the board
+# Spawn random 3 Poison orbs
+# [12] ESOrbChangeAttack -> Miasma
+# Condition: 50% chance
+# Change Random to Poison
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESBranchFlag -> ESBranchFlag
+# branch
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] ESAttackMultihit -> Share a grave with your comrades!
+# Enemy action
+# [17] ESBranchFlag -> ESBranchFlag
+# branch
+# [18] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [19] ESInactivity -> Tentacles are spreading around
+# Do nothing
+# [20] ESRandomSpawn -> Death by Illusion
+# Condition: When fire, water, wood, light, dark, heal, jammer, poison orbs are on the board
+# Change all orbs to Mortal Poison

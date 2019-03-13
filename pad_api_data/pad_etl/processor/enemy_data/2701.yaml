@@ -1,0 +1,177 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2701
+monster_name_en: Squad 12 Captain, Mayuri Kurotsuchi
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Do nothing + Delay active skills by 2 turns
+  desc_jp: Do nothing + Delay active skills by 2 turns
+  max_atk_pct: null
+  name_en: 'I''m the Captain of Squad 12,
+
+    Mayuri Kurotsuchi. + because soon you will
+
+    no longer know anything.'
+  name_jp: 'I''m the Captain of Squad 12,
+
+    Mayuri Kurotsuchi. + because soon you will
+
+    no longer know anything.'
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 1 subs for 3 turns, Deal 90% damage
+  desc_jp: Bind 1 subs for 3 turns, Deal 90% damage
+  max_atk_pct: 90
+  name_en: Claw out! Ashisogijizo.
+  name_jp: Claw out! Ashisogijizo.
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 90% damage
+  desc_jp: Deal 90% damage
+  max_atk_pct: 90
+  name_en: Here!
+  name_jp: Here!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage (2 hits, 50% each)
+  desc_jp: Deal 100% damage (2 hits, 50% each)
+  max_atk_pct: 100
+  name_en: And here! And here!
+  name_jp: And here! And here!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing + Spawn random 6 Poison orbs
+  desc_jp: Do nothing + Spawn random 6 Poison orbs
+  max_atk_pct: null
+  name_en: Bankai + Konjiki Ashisogijizo
+  name_jp: Bankai + Konjiki Ashisogijizo
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 1 Poison orbs, Deal 120% damage
+  desc_jp: Spawn random 1 Poison orbs, Deal 120% damage
+  max_atk_pct: 120
+  name_en: Hya Ha!!
+  name_jp: Hya Ha!!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 15
+  name_jp: HP <= 15
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 200% damage (2 hits, 100% each)
+  desc_jp: Deal 200% damage (2 hits, 100% each)
+  max_atk_pct: 200
+  name_en: Aaarrgghh!
+  name_jp: Aaarrgghh!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	[0] ESInactivity -> I'm the Captain of Squad 12,
+# Mayuri Kurotsuchi.
+# 	Do nothing
+# 	[1] ESSkillDelay -> because soon you will
+# no longer know anything.
+# 	Delay active skills by 2 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] ESBranchFlag -> ESBranchFlag
+# branch
+# [8] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [9] ESBindAttack -> Claw out! Ashisogijizo.
+# Bind 1 subs for 3 turns
+# [10] ESAttackMultihit -> Here!
+# Condition: One-time use
+# Enemy action
+# [11] ESAttackMultihit -> And here! And here!
+# Enemy action
+# [12] ESBranchFlag -> ESBranchFlag
+# branch
+# [13] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [14] ESBranchCard -> ESBranchCard
+# branch
+# [15] SkillSet:
+# 	[0] ESInactivity -> Bankai
+# 	Do nothing
+# 	[1] ESRandomSpawn -> Konjiki Ashisogijizo
+# 	Spawn random 6 Poison orbs
+# [16] SkillSet:
+# 	[0] ESInactivity -> Don't get carried away!!!!
+# 	Do nothing
+# 	[1] ESInactivity -> Bankai
+# 	Do nothing
+# 	[2] ESRandomSpawn -> Konjiki Ashisogijizo
+# 	Spawn random 6 Poison orbs
+# [17] ESAttackMultihit -> Aaarrgghh!
+# Condition: When < 15% hp
+# Enemy action
+# [18] ESRandomSpawn -> Hya Ha!!
+# Condition: When fire, water, wood, light, dark, heal, jammer, mortal poison orbs are on the board
+# Spawn random 1 Poison orbs
+# [19] SkillSet:
+# 	Condition: On death
+# 	[0] ESRowSpawnMulti -> That was a close one... Goodbye.
+# 	Change 5th row to Water orbs

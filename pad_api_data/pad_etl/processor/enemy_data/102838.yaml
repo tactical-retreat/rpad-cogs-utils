@@ -1,0 +1,181 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 102838
+monster_name_en: Alt. White Monkey Retainer, Hanuman
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Delay active skills by 10 turns + Absorb damage >= 1000000 damage for 99
+    turns
+  desc_jp: Delay active skills by 10 turns + Absorb damage >= 1000000 damage for 99
+    turns
+  max_atk_pct: null
+  name_en: Fight is Everything!! + Vayu's Divine Protection
+  name_jp: Fight is Everything!! + Vayu's Divine Protection
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 1 random for 3 turns, Deal 150% damage
+  desc_jp: Bind 1 random for 3 turns, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Pratibandhii
+  name_jp: Pratibandhii
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 29
+  name_jp: HP <= 29
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 5%~8% hp, Deal 100% damage
+  desc_jp: Enemy recover 5%~8% hp, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Aatma Yogah
+  name_jp: Aatma Yogah
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 29
+  name_jp: HP <= 29
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 132% damage (3 hits, 44% each)
+  desc_jp: Deal 132% damage (3 hits, 44% each)
+  max_atk_pct: 132
+  name_en: Nairantarya
+  name_jp: Nairantarya
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 29
+  name_jp: HP <= 29
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb combo <= 6 damage for 1 turns, Deal 140% damage
+  desc_jp: Absorb combo <= 6 damage for 1 turns, Deal 140% damage
+  max_atk_pct: 140
+  name_en: Guruh Karma
+  name_jp: Guruh Karma
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 29
+  name_jp: HP <= 29
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  max_atk_pct: null
+  name_en: Pramaada Dukkha
+  name_jp: Pramaada Dukkha
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 30
+  name_jp: HP <= 30
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Heal to Jammer, Deal 160% damage
+  desc_jp: Change Heal to Jammer, Deal 160% damage
+  max_atk_pct: 160
+  name_en: Pratisedha
+  name_jp: Pratisedha
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 10
+  name_jp: HP <= 10
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 300% damage (3 hits, 100% each)
+  desc_jp: Deal 300% damage (3 hits, 100% each)
+  max_atk_pct: 300
+  name_en: Daurmanasya
+  name_jp: Daurmanasya
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESSkillDelay -> Fight is Everything!!
+# 	Delay active skills by 10 turns
+# 	[1] ESAbsorbThreshold -> Vayu's Divine Protection
+# 	Absorb damage >= 1000000 damage for 99 turns
+# [3] ESAttackMultihit -> Daurmanasya
+# Condition: When < 10% hp
+# Enemy action
+# [4] ESSkyfall -> Prasaadah Tapah
+# Condition: One-time use
+# Heal skyfall +10% for 5 turns
+# [5] ESRandomSpawn -> Maitrii Kleza
+# Condition: One-time use & when Fire, Water, Wood, Light, Dark, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 3 Heal orbs
+# [6] ESBlind -> Darsana Layaanaam
+# Condition: One-time use
+# Blind all orbs on the board
+# [7] ESBranchHP -> ESBranchHP
+# branch
+# [8] ESBranchFlag -> ESBranchFlag
+# branch
+# [9] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [10] ESGravity -> Pramaada Dukkha
+# Player -99% HP
+# [11] ESBranchFlag -> ESBranchFlag
+# branch
+# [12] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [13] ESRecoverEnemy -> Aatma Yogah
+# Enemy recover 5%~8% hp
+# [14] ESBranchFlag -> ESBranchFlag
+# branch
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] ESAttackMultihit -> Nairantarya
+# Enemy action
+# [17] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [18] ESAbsorbCombo -> Guruh Karma
+# Absorb combo <= 6 damage for 1 turns
+# [19] ESBindAttack -> Pratibandhii
+# Condition: One-time use
+# Bind 1 random for 3 turns
+# [20] ESOrbChangeAttack -> Pratisedha
+# Condition: 15% chance when < 30% hp
+# Change Heal to Jammer
+# [21] ESBranchHP -> ESBranchHP
+# branch

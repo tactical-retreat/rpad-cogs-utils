@@ -1,0 +1,191 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4112
+monster_name_en: Omega Rugal
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Do nothing + Do nothing
+  desc_jp: Do nothing + Do nothing
+  max_atk_pct: null
+  name_en: Ooowah! + Let's go!
+  name_jp: Ooowah! + Let's go!
+  record_type_name: PREEMPT
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Reduce damage from all sources by
+    50% for 3 turns
+  desc_jp: Voids status ailments for 999 turns + Reduce damage from all sources by
+    50% for 3 turns
+  max_atk_pct: null
+  name_en: Ooowah! + Let's go!
+  name_jp: Ooowah! + Let's go!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Void damage >= 1000000 for 1 turns, Deal 80% damage
+  desc_jp: Void damage >= 1000000 for 1 turns, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Gravity Smash
+  name_jp: Gravity Smash
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 3 Dark orbs, Deal 100% damage
+  desc_jp: Spawn random 3 Dark orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Genocide Cutter
+  name_jp: Genocide Cutter
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 90% damage (6 hits, 15% each)
+  desc_jp: Deal 90% damage (6 hits, 15% each)
+  max_atk_pct: 90
+  name_en: Vanishing Rush
+  name_jp: Vanishing Rush
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 130% damage
+  desc_jp: Deal 130% damage
+  max_atk_pct: 130
+  name_en: Destruction Omega
+  name_jp: Destruction Omega
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Spawn random 3 Dark orbs, Deal 100% damage
+  desc_jp: Spawn random 3 Dark orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Genocide Cutter
+  name_jp: Genocide Cutter
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 90% damage (6 hits, 15% each)
+  desc_jp: Deal 90% damage (6 hits, 15% each)
+  max_atk_pct: 90
+  name_en: Vanishing Rush
+  name_jp: Vanishing Rush
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 6th column to Dark orbs + Change 1st column to Dark orbs
+  desc_jp: Change 6th column to Dark orbs + Change 1st column to Dark orbs
+  max_atk_pct: null
+  name_en: Gigantic Pressure + Die!
+  name_jp: Gigantic Pressure + Die!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESBranchLevel -> ESBranchLevel
+# branch
+# [4] ESEndPath -> ESEndPath
+# end_turn
+# [5] ESBranchFlag -> ESBranchFlag
+# branch
+# [6] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [7] SkillSet:
+# 	[0] ESStatusShield -> Ooowah!
+# 	Voids status ailments for 999 turns
+# 	[1] ESDamageShield -> Let's go!
+# 	Reduce damage from all sources by 50% for 3 turns
+# [8] ESEndPath -> ESEndPath
+# end_turn
+# [9] ESBranchHP -> ESBranchHP
+# branch
+# [10] ESBranchHP -> ESBranchHP
+# branch
+# [11] ESVoidShield -> Gravity Smash
+# Condition: One-time use
+# Void damage >= 1000000 for 1 turns
+# [12] ESRandomSpawn -> Genocide Cutter
+# Condition: 50% chance & when Fire, Water, Wood, Light, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 3 Dark orbs
+# [13] ESAttackMultihit -> Vanishing Rush
+# Enemy action
+# [14] ESEndPath -> ESEndPath
+# end_turn
+# [15] ESVoidShield -> Gravity Smash
+# Condition: One-time use
+# Void damage >= 1000000 for 1 turns
+# [16] ESAttackMultihit -> Destruction Omega
+# Condition: 20% chance
+# Enemy action
+# [17] ESRandomSpawn -> Genocide Cutter
+# Condition: 50% chance & when Fire, Water, Wood, Light, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 3 Dark orbs
+# [18] ESAttackMultihit -> Vanishing Rush
+# Enemy action
+# [19] ESEndPath -> ESEndPath
+# end_turn
+# [20] SkillSet:
+# 	[0] ESColumnSpawnMulti -> Gigantic Pressure
+# 	Change 6th column to Dark orbs
+# 	[1] ESColumnSpawnMulti -> Die!
+# 	Change 1st column to Dark orbs
+# [21] ESEndPath -> ESEndPath
+# end_turn
+# [22] ESBranchFlag -> ESBranchFlag
+# branch
+# [23] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [24] SkillSet:
+# 	[0] ESInactivity -> Ooowah!
+# 	Do nothing
+# 	[1] ESInactivity -> Let's go!
+# 	Do nothing
+# [25] ESEndPath -> ESEndPath
+# end_turn
+# [26] SkillSet:
+# 	Condition: On death
+# 	[0] ESInactivity -> HOAAAAAAAAAA!
+# 	Do nothing

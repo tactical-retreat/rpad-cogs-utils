@@ -1,0 +1,158 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 103159
+monster_name_en: Alt. Blue Sky Goddess of Dawn, Khepri
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Healer, Machine by 50%
+  desc_jp: Reduce damage from Healer, Machine by 50%
+  max_atk_pct: null
+  name_en: Khepri Healer Machine Halved
+  name_jp: Khepri Healer Machine Halved
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Absorb damage >= 3000000 damage for
+    3 turns
+  desc_jp: Voids status ailments for 999 turns + Absorb damage >= 3000000 damage for
+    3 turns
+  max_atk_pct: null
+  name_en: Good morning! + Divine Dawn Light
+  name_jp: Good morning! + Divine Dawn Light
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 2500% damage (5 hits, 500% each)
+  desc_jp: Deal 2500% damage (5 hits, 500% each)
+  max_atk_pct: 2500
+  name_en: Morning Glow Comet
+  name_jp: Morning Glow Comet
+  record_type_name: ACTION
+
+############################################################
+### Data @ 6
+############################################################
+!SkillRecordListing
+level: 6
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Healer, Machine by 50%
+  desc_jp: Reduce damage from Healer, Machine by 50%
+  max_atk_pct: null
+  name_en: Khepri Healer Machine Halved
+  name_jp: Khepri Healer Machine Halved
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Absorb damage >= 3000000 damage for
+    3 turns
+  desc_jp: Voids status ailments for 999 turns + Absorb damage >= 3000000 damage for
+    3 turns
+  max_atk_pct: null
+  name_en: Good morning! + Divine Dawn Light
+  name_jp: Good morning! + Divine Dawn Light
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 2500% damage (5 hits, 500% each)
+  desc_jp: Deal 2500% damage (5 hits, 500% each)
+  max_atk_pct: 2500
+  name_en: Morning Glow Comet
+  name_jp: Morning Glow Comet
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESStatusShield -> Good morning!
+# 	Voids status ailments for 999 turns
+# 	[1] ESAbsorbThreshold -> Divine Dawn Light
+# 	Absorb damage >= 3000000 damage for 3 turns
+# [3] ESBranchHP -> ESBranchHP
+# branch
+# [4] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESOrbSealColumn -> Rolling, rolling, rolling ♪
+# 	Seal 1st column for 1 turns
+# 	[1] ESColumnSpawnMulti -> Eat this!
+# 	Change 6th column to Heal, Jammer orbs
+# [5] ESRandomSpawn -> Drops from Heaven
+# Condition: One-time use & when Jammer orbs are on the board
+# Change all orbs to Poison
+# [6] ESBlind -> Holy Rays of the Sun
+# Condition: One-time use
+# Blind all orbs on the board
+# [7] ESBindAwoken -> Scarab's Heavenly Wings
+# Condition: One-time use
+# Bind awoken skills for 3 turns
+# [8] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESOrbSealRow -> Eeny, meeny, miny, moe♪
+# 	Seal 1st row for 1 turns
+# 	[1] ESRowSpawnMulti -> Eat this!
+# 	Change 5th row to Heal, Jammer orbs
+# [9] ESRandomSpawn -> Drops from Heaven
+# Condition: One-time use & when Jammer orbs are on the board
+# Change all orbs to Poison
+# [10] ESBlind -> Holy Rays of the Sun
+# Condition: One-time use
+# Blind all orbs on the board
+# [11] ESBranchLevel -> ESBranchLevel
+# branch
+# [12] ESDamageShield -> Ash-Shams Cloak
+# Condition: One-time use
+# Reduce damage from all sources by 50% for 3 turns
+# [13] ESDamageShield -> Ash-Shams Divine Cloak
+# Condition: One-time use
+# Reduce damage from all sources by 75% for 3 turns
+# [14] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESOrbSealColumn -> Rolling, rolling, rolling, rolling ♪
+# 	Seal 6th column for 1 turns
+# 	[1] ESColumnSpawnMulti -> Eat this!
+# 	Change 1st column to Heal, Jammer orbs
+# [15] ESRandomSpawn -> Drops from Heaven
+# Condition: One-time use & when Jammer orbs are on the board
+# Change all orbs to Poison
+# [16] ESBlind -> Holy Rays of the Sun
+# Condition: One-time use
+# Blind all orbs on the board
+# [17] ESAbsorbCombo -> Here we go!
+# Condition: One-time use
+# Absorb combo <= 5 damage for 1 turns
+# [18] ESAttackMultihit -> Morning Glow Comet
+# Enemy action
+# [19] ESAttackMultihit -> Morning Glow Comet
+# Enemy action
+# [20] ESEndPath -> ESEndPath
+# end_turn
+# [21] ESTypeResist -> Khepri Healer Machine Halved
+# Reduce damage from Healer, Machine by 50%

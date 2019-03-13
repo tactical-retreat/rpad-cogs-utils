@@ -1,0 +1,190 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2716
+monster_name_en: Smithing God, Hephaestus Dragon
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 50%
+  desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
+  name_en: Hephaestus Resolve
+  name_jp: Hephaestus Resolve
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Reduce damage from Water by 50%
+  desc_jp: Reduce damage from Water by 50%
+  max_atk_pct: null
+  name_en: Hephaestus Passive
+  name_jp: Hephaestus Passive
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Delay active skills by 15 turns
+  desc_jp: Voids status ailments for 999 turns + Delay active skills by 15 turns
+  max_atk_pct: null
+  name_en: Sturdy Flame Scales + Face to Face Match
+  name_jp: Sturdy Flame Scales + Face to Face Match
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 101% damage
+  desc_jp: Deal 101% damage
+  max_atk_pct: 101
+  name_en: Hell Fire Greataxe
+  name_jp: Hell Fire Greataxe
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 204% damage (2 hits, 102% each)
+  desc_jp: Deal 204% damage (2 hits, 102% each)
+  max_atk_pct: 204
+  name_en: Double Hammer Hit
+  name_jp: Double Hammer Hit
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 309% damage (3 hits, 103% each)
+  desc_jp: Deal 309% damage (3 hits, 103% each)
+  max_atk_pct: 309
+  name_en: 3 Blazing Blades
+  name_jp: 3 Blazing Blades
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 4
+  name_jp: Turn 4
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 416% damage (4 hits, 104% each)
+  desc_jp: Deal 416% damage (4 hits, 104% each)
+  max_atk_pct: 416
+  name_en: Crimson Lion
+  name_jp: Crimson Lion
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 5
+  name_jp: Turn 5
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 525% damage (5 hits, 105% each)
+  desc_jp: Deal 525% damage (5 hits, 105% each)
+  max_atk_pct: 525
+  name_en: Painless Time-Split
+  name_jp: Painless Time-Split
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 6
+  name_jp: Turn 6
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 636% damage (6 hits, 106% each)
+  desc_jp: Deal 636% damage (6 hits, 106% each)
+  max_atk_pct: 636
+  name_en: Resounding Destructive Strength
+  name_jp: Resounding Destructive Strength
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 3619% damage (7 hits, 517% each)
+  desc_jp: Deal 3619% damage (7 hits, 517% each)
+  max_atk_pct: 3619
+  name_en: Divine Might
+  name_jp: Divine Might
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 1
+  name_jp: HP <= 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 50% hp
+  desc_jp: Enemy recover 50% hp
+  max_atk_pct: null
+  name_en: Fortitude
+  name_jp: Fortitude
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESStatusShield -> Sturdy Flame Scales
+# 	Voids status ailments for 999 turns
+# 	[1] ESSkillDelay -> Face to Face Match
+# 	Delay active skills by 15 turns
+# [3] ESRecoverEnemy -> Fortitude
+# Condition: When < 1% hp
+# Enemy recover 50% hp
+# [4] ESAttackMultihit -> Hell Fire Greataxe
+# Condition: One-time use
+# Enemy action
+# [5] ESAttackMultihit -> Double Hammer Hit
+# Condition: One-time use
+# Enemy action
+# [6] ESAttackMultihit -> 3 Blazing Blades
+# Condition: One-time use
+# Enemy action
+# [7] ESAttackMultihit -> Crimson Lion
+# Condition: One-time use
+# Enemy action
+# [8] ESAttackMultihit -> Painless Time-Split
+# Condition: One-time use
+# Enemy action
+# [9] ESAttackMultihit -> Resounding Destructive Strength
+# Condition: One-time use
+# Enemy action
+# [10] ESAttackMultihit -> Divine Might
+# Enemy action
+# [11] ESResolve -> Hephaestus Resolve
+# Survive attacks with 1 HP when HP > 50%
+# [12] ESAttributeResist -> Hephaestus Passive
+# Reduce damage from Water by 50%

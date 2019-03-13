@@ -1,0 +1,146 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1451
+monster_name_en: '***** (Saint Seiya)'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: '***** (Saint Seiya)'
+  name_jp: '***** (Saint Seiya)'
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Fire, Deal 100% damage
+  desc_jp: Change Random to Fire, Deal 100% damage
+  max_atk_pct: 100
+  name_en: '***** (Saint Seiya)'
+  name_jp: '***** (Saint Seiya)'
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 75
+  name_jp: HP <= 75
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind Devil cards for 3 turns
+  desc_jp: Bind Devil cards for 3 turns
+  max_atk_pct: null
+  name_en: '***** (Saint Seiya)'
+  name_jp: '***** (Saint Seiya)'
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 30
+  name_jp: HP <= 30
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Fire, Deal 150% damage
+  desc_jp: Change Random to Fire, Deal 150% damage
+  max_atk_pct: 150
+  name_en: '***** (Saint Seiya)'
+  name_jp: '***** (Saint Seiya)'
+  record_type_name: ACTION
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: '***** (Saint Seiya)'
+  name_jp: '***** (Saint Seiya)'
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Fire, Deal 100% damage
+  desc_jp: Change Random to Fire, Deal 100% damage
+  max_atk_pct: 100
+  name_en: '***** (Saint Seiya)'
+  name_jp: '***** (Saint Seiya)'
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 75
+  name_jp: HP <= 75
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind Devil cards for 3 turns
+  desc_jp: Bind Devil cards for 3 turns
+  max_atk_pct: null
+  name_en: '***** (Saint Seiya)'
+  name_jp: '***** (Saint Seiya)'
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 30
+  name_jp: HP <= 30
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Fire, Deal 150% damage
+  desc_jp: Change Random to Fire, Deal 150% damage
+  max_atk_pct: 150
+  name_en: '***** (Saint Seiya)'
+  name_jp: '***** (Saint Seiya)'
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESInactivity -> ***** (Saint Seiya)
+# Do nothing
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBindTyping -> ***** (Saint Seiya)
+# Condition: When < 75% hp , one-time use
+# Bind Devil cards for 3 turns
+# [7] ESOrbChangeAttack -> ***** (Saint Seiya)
+# Condition: When < 30% hp
+# Change Random to Fire
+# [8] ESOrbChangeAttack -> ***** (Saint Seiya)
+# Change Random to Fire

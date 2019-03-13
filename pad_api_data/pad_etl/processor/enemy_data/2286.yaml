@@ -1,0 +1,189 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2286
+monster_name_en: Incognito Queen, Awilda
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Player recover 100% hp + Player -80% HP
+  desc_jp: Player recover 100% hp + Player -80% HP
+  max_atk_pct: null
+  name_en: I haven't seen you in a while + I'll step on you again
+  name_jp: I haven't seen you in a while + I'll step on you again
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 80% damage (2 hits, 40% each)
+  desc_jp: Deal 80% damage (2 hits, 40% each)
+  max_atk_pct: 80
+  name_en: My eyes are up here!
+  name_jp: My eyes are up here!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 69
+  name_jp: HP <= 69
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 80% damage (2 hits, 40% each)
+  desc_jp: Deal 80% damage (2 hits, 40% each)
+  max_atk_pct: 80
+  name_en: My eyes are up here!
+  name_jp: My eyes are up here!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 70
+  name_jp: HP <= 70
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 4 Poison orbs, Deal 80% damage
+  desc_jp: Spawn random 4 Poison orbs, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Summer Poison
+  name_jp: Summer Poison
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 1 own leader for 3 turns
+  desc_jp: Bind 1 own leader for 3 turns
+  max_atk_pct: null
+  name_en: Mid-Summer Embrace
+  name_jp: Mid-Summer Embrace
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 30
+  name_jp: HP <= 30
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Summer Princess's Command
+  name_jp: Summer Princess's Command
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 500% damage (5 hits, 100% each)
+  desc_jp: Deal 500% damage (5 hits, 100% each)
+  max_atk_pct: 500
+  name_en: Sea Dragon Summer Offensive
+  name_jp: Sea Dragon Summer Offensive
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 30
+  name_jp: HP <= 30
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 500% damage (5 hits, 100% each)
+  desc_jp: Deal 500% damage (5 hits, 100% each)
+  max_atk_pct: 500
+  name_en: Sea Dragon Summer Offensive
+  name_jp: Sea Dragon Summer Offensive
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] SkillSet:
+# 	[0] ESRecoverPlayer -> I haven't seen you in a while
+# 	Player recover 100% hp
+# 	[1] ESGravity -> I'll step on you again
+# 	Player -80% HP
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchCard -> ESBranchCard
+# branch
+# [9] ESBranchCard -> ESBranchCard
+# branch
+# [10] ESBranchCard -> ESBranchCard
+# branch
+# [11] ESBranchCard -> ESBranchCard
+# branch
+# [12] ESBranchHP -> ESBranchHP
+# branch
+# [13] ESBindTarget -> Mid-Summer Embrace
+# Condition: When < 50% hp , one-time use
+# Bind 1 own leader for 3 turns
+# [14] ESRandomSpawn -> Summer Poison
+# Condition: 30% chance when < 70% hp & when Fire, Water, Wood, Light, Dark, Heal, Jammer, Mortal Poison orbs are on the board
+# Spawn random 4 Poison orbs
+# [15] ESAttackMultihit -> My eyes are up here!
+# Enemy action
+# [16] ESBranchFlag -> ESBranchFlag
+# branch
+# [17] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [18] ESAttackMultihit -> You're too close!
+# Enemy action
+# [19] ESBranchFlag -> ESBranchFlag
+# branch
+# [20] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [21] ESAttackMultihit -> I'll shave off your beard!
+# Enemy action
+# [22] ESBranchFlag -> ESBranchFlag
+# branch
+# [23] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [24] ESAttackMultihit -> Would the two of you like some tea?
+# Enemy action
+# [25] ESBranchFlag -> ESBranchFlag
+# branch
+# [26] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [27] ESAttackMultihit -> E-Evil eye??
+# Enemy action
+# [28] ESBranchFlag -> ESBranchFlag
+# branch
+# [29] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [30] ESInactivity -> Summer Princess's Command
+# Condition: When < 30% hp
+# Do nothing
+# [31] ESAttackMultihit -> Sea Dragon Summer Offensive
+# Condition: When < 30% hp
+# Enemy action

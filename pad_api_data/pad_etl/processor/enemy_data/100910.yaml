@@ -1,0 +1,85 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 100910
+monster_name_en: Alt. Black Baron
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Healer, Attacker by 50%
+  desc_jp: Reduce damage from Healer, Attacker by 50%
+  max_atk_pct: null
+  name_en: Healer & Attacker Type Halved
+  name_jp: Healer & Attacker Type Halved
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Poison skyfall +15% for 7 turns + Specific orbs change every 1.0s for 7
+    turns
+  desc_jp: Poison skyfall +15% for 7 turns + Specific orbs change every 1.0s for 7
+    turns
+  max_atk_pct: null
+  name_en: Summon Poison Orbs!... + If you don't want to die
+  name_jp: Summon Poison Orbs!... + If you don't want to die
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 999 turns
+  desc_jp: Increase damage to 200% for the next 999 turns
+  max_atk_pct: null
+  name_en: Resentment
+  name_jp: Resentment
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Poison to Dark, Deal 290% damage
+  desc_jp: Change Poison to Dark, Deal 290% damage
+  max_atk_pct: 290
+  name_en: Dark Slash
+  name_jp: Dark Slash
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESSkyfall -> Summon Poison Orbs!...
+# 	Poison skyfall +15% for 7 turns
+# 	[1] ESSpinnersFixed -> If you don't want to die
+# 	Specific orbs change every 1.0s for 7 turns
+# [3] ESAttackUpStatus -> Resentment
+# Condition: after being affected by a status effect
+# Increase damage to 200% for the next 999 turns
+# [4] ESOrbChangeAttackBits -> Dark Slash
+# Change Poison to Dark
+# [5] ESAttackMultihit -> Death Edge
+# Enemy action
+# [6] ESEndPath -> ESEndPath
+# end_turn
+# [7] ESTypeResist -> Healer & Attacker Type Halved
+# Reduce damage from Healer, Attacker by 50%

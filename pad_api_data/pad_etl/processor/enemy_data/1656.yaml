@@ -1,0 +1,79 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1656
+monster_name_en: Armored Blue Blade Knight, Arcline
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Absorb damage >= 5000000 damage for
+    3 turns
+  desc_jp: Voids status ailments for 999 turns + Absorb damage >= 5000000 damage for
+    3 turns
+  max_atk_pct: null
+  name_en: Resolute Justice + Pierced Belief
+  name_jp: Resolute Justice + Pierced Belief
+  record_type_name: PREEMPT
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESStatusShield -> Resolute Justice
+# 	Voids status ailments for 999 turns
+# 	[1] ESAbsorbThreshold -> Pierced Belief
+# 	Absorb damage >= 5000000 damage for 3 turns
+# [3] ESSetCounter -> ESSetCounter
+# set_counter
+# [4] ESBranchCounter -> ESBranchCounter
+# branch
+# [5] ESBranchCounter -> ESBranchCounter
+# branch
+# [6] ESBranchCounter -> ESBranchCounter
+# branch
+# [7] ESOrbChangeAttack -> Lame du Tonnerre
+# Condition: 33% chance
+# Change Random to Light
+# [8] ESRecoverEnemy -> Épée Consolatrice
+# Condition: 33% chance
+# Enemy recover 5% hp
+# [9] ESAttackMultihit -> Atout Durée
+# Condition: 34% chance
+# Enemy action
+# [10] ESEndPath -> ESEndPath
+# end_turn
+# [11] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESAbsorbThreshold -> Pierced Belief
+# 	Absorb damage >= 10000000 damage for 3 turns
+# 	[1] ESAttackUp -> Sharpened Mind
+# 	Increase damage to 150% for the next 2 turns
+# [12] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESAbsorbThreshold -> Pierced Belief
+# 	Absorb damage >= 15000000 damage for 99 turns
+# 	[1] ESAttackUp -> Sharpened Mind
+# 	Increase damage to 200% for the next 99 turns
+# [13] ESSetCounter -> ESSetCounter
+# set_counter
+# [14] SkillSet:
+# 	[0] ESGravity -> Convicting Justice
+# 	Player -99% HP
+# 	[1] ESDebuffRCV -> Life Deprivation
+# 	Rcv 50% for 3 turns
+# [15] ESEndPath -> ESEndPath
+# end_turn

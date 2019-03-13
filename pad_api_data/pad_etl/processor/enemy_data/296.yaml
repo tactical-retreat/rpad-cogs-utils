@@ -1,0 +1,70 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 296
+monster_name_en: Fortoytops
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind Fire cards for 2~4 turns
+  desc_jp: Bind Fire cards for 2~4 turns
+  max_atk_pct: null
+  name_en: Fire Bind
+  name_jp: Fire Bind
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind Fire cards for 2~4 turns
+  desc_jp: Bind Fire cards for 2~4 turns
+  max_atk_pct: null
+  name_en: Fire Bind
+  name_jp: Fire Bind
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next attack
+  desc_jp: Increase damage to 200% for the next attack
+  max_atk_pct: null
+  name_en: Energy Charge
+  name_jp: Energy Charge
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESStorePower -> Energy Charge
+# Condition: 30% chance when < 50% hp
+# Increase damage to 200% for the next attack
+# [2] ESBindAttribute -> Fire Bind
+# Condition: 40% chance
+# Bind Fire cards for 2~4 turns

@@ -1,0 +1,185 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2551
+monster_name_en: Awoken Takemikazuchi
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 50%
+  desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
+  name_en: Takemi Resolve
+  name_jp: Takemi Resolve
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Lock 10 random Fire, Water, Wood, Light, Dark orbs
+  desc_jp: Lock 10 random Fire, Water, Wood, Light, Dark orbs
+  max_atk_pct: null
+  name_en: I'll do it! Hey! Come here!!
+  name_jp: I'll do it! Hey! Come here!!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 1 random cards for 3 turns, Deal 240% damage
+  desc_jp: Bind 1 random cards for 3 turns, Deal 240% damage
+  max_atk_pct: 240
+  name_en: War God Grapevine Stretch
+  name_jp: War God Grapevine Stretch
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Delay active skills by 1 turns, Deal 240% damage
+  desc_jp: Delay active skills by 1 turns, Deal 240% damage
+  max_atk_pct: 240
+  name_en: Quintessence of the Low Kick
+  name_jp: Quintessence of the Low Kick
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change 3rd, 4th column to Light orbs, Deal 240% damage
+  desc_jp: Change 3rd, 4th column to Light orbs, Deal 240% damage
+  max_atk_pct: 240
+  name_en: Lightning Strike
+  name_jp: Lightning Strike
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 300% damage
+  desc_jp: Deal 300% damage
+  max_atk_pct: 300
+  name_en: Martial God Hell Thrust
+  name_jp: Martial God Hell Thrust
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 8 Poison orbs
+  desc_jp: Spawn random 8 Poison orbs
+  max_atk_pct: null
+  name_en: Onamazu's Poison Mist
+  name_jp: Onamazu's Poison Mist
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 29
+  name_jp: HP <= 29
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Blind all orbs on the board
+  desc_jp: Blind all orbs on the board
+  max_atk_pct: null
+  name_en: I'm gonna end this! Get ready!
+  name_jp: I'm gonna end this! Get ready!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 29
+  name_jp: HP <= 29
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 1st, 2nd, 5th, 6th column to Jammer orbs, Deal 1000% damage
+  desc_jp: Change 1st, 2nd, 5th, 6th column to Jammer orbs, Deal 1000% damage
+  max_atk_pct: 1000
+  name_en: Itsu-no-Ohabari's Breaking Thunder
+  name_jp: Itsu-no-Ohabari's Breaking Thunder
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 1
+  name_jp: HP <= 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 999 turns + Enemy recover 100% hp
+  desc_jp: Increase damage to 200% for the next 999 turns + Enemy recover 100% hp
+  max_atk_pct: null
+  name_en: It hurts!! + I'm not finished!!
+  name_jp: It hurts!! + I'm not finished!!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESOrbLock -> I'll do it! Hey! Come here!!
+# Lock 10 random Fire, Water, Wood, Light, Dark orbs
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] SkillSet:
+# 	Condition: When < 1% hp
+# 	[0] ESAttackUp -> It hurts!!
+# 	Increase damage to 200% for the next 999 turns
+# 	[1] ESRecoverEnemy -> I'm not finished!!
+# 	Enemy recover 100% hp
+# [7] ESBranchHP -> ESBranchHP
+# branch
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESBindRandom -> War God Grapevine Stretch
+# Condition: One-time use
+# Bind 1 random cards for 3 turns
+# [10] ESSkillDelay -> Quintessence of the Low Kick
+# Condition: 33% chance
+# Delay active skills by 1 turns
+# [11] ESColumnSpawnMulti -> Lightning Strike
+# Condition: 34% chance
+# Change 3rd, 4th column to Light orbs
+# [12] ESAttackMultihit -> Martial God Hell Thrust
+# Condition: 33% chance
+# Enemy action
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESBranchFlag -> ESBranchFlag
+# branch
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] ESRandomSpawn -> Onamazu's Poison Mist
+# Condition: When fire, water, wood, light, dark, heal, jammer, mortal poison orbs are on the board
+# Spawn random 8 Poison orbs
+# [17] ESBranchFlag -> ESBranchFlag
+# branch
+# [18] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [19] ESBlind -> I'm gonna end this! Get ready!
+# Blind all orbs on the board
+# [20] ESColumnSpawnMulti -> Itsu-no-Ohabari's Breaking Thunder
+# Change 1st, 2nd, 5th, 6th column to Jammer orbs
+# [21] ESResolve -> Takemi Resolve
+# Survive attacks with 1 HP when HP > 50%

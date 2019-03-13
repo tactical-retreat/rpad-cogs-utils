@@ -1,0 +1,191 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2383
+monster_name_en: Awoken Aegir
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Locked Water, Wood skyfall +100%
+    for 99 turns
+  desc_jp: Voids status ailments for 999 turns + Locked Water, Wood skyfall +100%
+    for 99 turns
+  max_atk_pct: null
+  name_en: It's a feast!!! + Sea Banquet Green Lock
+  name_jp: It's a feast!!! + Sea Banquet Green Lock
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 190% damage (2 hits, 95% each)
+  desc_jp: Deal 190% damage (2 hits, 95% each)
+  max_atk_pct: 190
+  name_en: What's wrong, get it together!!
+  name_jp: What's wrong, get it together!!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 79
+  name_jp: HP <= 79
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 3 random cards for 3 turns
+  desc_jp: Bind 3 random cards for 3 turns
+  max_atk_pct: null
+  name_en: Blue-Eyed White Delusion
+  name_jp: Blue-Eyed White Delusion
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Spawn random 9 Water orbs, Deal 100% damage
+  desc_jp: Spawn random 9 Water orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Stormy God Waves
+  name_jp: Stormy God Waves
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 120% damage
+  desc_jp: Deal 120% damage
+  max_atk_pct: 120
+  name_en: Spear of Poseidon
+  name_jp: Spear of Poseidon
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb combo <= 7 damage for 3 turns
+  desc_jp: Absorb combo <= 7 damage for 3 turns
+  max_atk_pct: null
+  name_en: Let me enjoy this!
+  name_jp: Let me enjoy this!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 99
+  name_jp: HP <= 99
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Delay active skills by 1~4 turns
+  desc_jp: Delay active skills by 1~4 turns
+  max_atk_pct: null
+  name_en: Don't ruin this party!
+  name_jp: Don't ruin this party!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 55
+  name_jp: HP <= 55
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 190% damage (2 hits, 95% each)
+  desc_jp: Deal 190% damage (2 hits, 95% each)
+  max_atk_pct: 190
+  name_en: Naive little brat!!
+  name_jp: Naive little brat!!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 20
+  name_jp: HP <= 20
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 420% damage (3 hits, 140% each)
+  desc_jp: Deal 420% damage (3 hits, 140% each)
+  max_atk_pct: 420
+  name_en: Jaw of Rage
+  name_jp: Jaw of Rage
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	[0] ESStatusShield -> It's a feast!!!
+# 	Voids status ailments for 999 turns
+# 	[1] ESSkyfall -> Sea Banquet Green Lock
+# 	Locked Water, Wood skyfall +100% for 99 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESSkillDelay -> Don't ruin this party!
+# Condition: When < 99% hp , one-time use
+# Delay active skills by 1~4 turns
+# [7] ESBranchHP -> ESBranchHP
+# branch
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESBranchHP -> ESBranchHP
+# branch
+# [10] ESAttackMultihit -> Jaw of Rage
+# Condition: When < 20% hp
+# Enemy action
+# [11] ESBindRandom -> Blue-Eyed White Delusion
+# Condition: 10% chance
+# Bind 3 random cards for 3 turns
+# [12] ESRandomSpawn -> Stormy God Waves
+# Condition: 45% chance & when Fire, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 9 Water orbs
+# [13] ESAttackMultihit -> Spear of Poseidon
+# Condition: 45% chance
+# Enemy action
+# [14] ESEndPath -> ESEndPath
+# end_turn
+# [15] ESBranchFlag -> ESBranchFlag
+# branch
+# [16] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [17] ESAbsorbCombo -> Let me enjoy this!
+# Absorb combo <= 7 damage for 3 turns
+# [18] ESEndPath -> ESEndPath
+# end_turn
+# [19] ESAttackMultihit -> What's wrong, get it together!!
+# Enemy action
+# [20] ESEndPath -> ESEndPath
+# end_turn
+# [21] ESAttackMultihit -> Naive little brat!!
+# Condition: When < 55% hp
+# Enemy action
+# [22] ESBindRandom -> Blue-Eyed White Delusion
+# Condition: 10% chance
+# Bind 3 random cards for 3 turns
+# [23] ESRandomSpawn -> Stormy God Waves
+# Condition: 45% chance & when Fire, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 9 Water orbs
+# [24] ESAttackMultihit -> Spear of Poseidon
+# Condition: 45% chance
+# Enemy action
+# [25] ESEndPath -> ESEndPath
+# end_turn

@@ -1,0 +1,94 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 758
+monster_name_en: Drilling Shark Dragon, Megalodran
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb Wood damage for 5 turns
+  desc_jp: Absorb Wood damage for 5 turns
+  max_atk_pct: null
+  name_en: Burning Shield
+  name_jp: Burning Shield
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Water, Deal 120% damage
+  desc_jp: Change Random to Water, Deal 120% damage
+  max_atk_pct: 120
+  name_en: Aqua Jet
+  name_jp: Aqua Jet
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 140% damage (2 hits, 70% each)
+  desc_jp: Deal 140% damage (2 hits, 70% each)
+  max_atk_pct: 140
+  name_en: Crunch Fang
+  name_jp: Crunch Fang
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 59
+  name_jp: HP <= 59
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Lock all Fire, Water orbs, Deal 80% damage
+  desc_jp: Lock all Fire, Water orbs, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Vortex Cage
+  name_jp: Vortex Cage
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESAbsorbAttribute -> Burning Shield
+# Condition: One-time use
+# Absorb Wood damage for 5 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBindAttack -> Shark Horn Blade
+# Condition: One-time use
+# Bind 1 random for 2 turns
+# [7] ESBranchHP -> ESBranchHP
+# branch
+# [8] ESOrbChangeAttack -> Aqua Jet
+# Condition: 70% chance
+# Change Random to Water
+# [9] ESAttackMultihit -> Crunch Fang
+# Condition: 70% chance
+# Enemy action
+# [10] ESEndPath -> ESEndPath
+# end_turn
+# [11] ESBranchFlag -> ESBranchFlag
+# branch
+# [12] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [13] ESOrbLock -> Vortex Cage
+# Lock all Fire, Water orbs

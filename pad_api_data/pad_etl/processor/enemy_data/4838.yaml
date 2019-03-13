@@ -1,0 +1,153 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4838
+monster_name_en: Guardian of the City of Gods, Athena - Non
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Reduce damage from all sources by
+    75% for 20 turns
+  desc_jp: Voids status ailments for 999 turns + Reduce damage from all sources by
+    75% for 20 turns
+  max_atk_pct: null
+  name_en: Aegis' Protection + Blessing of Nike
+  name_jp: Aegis' Protection + Blessing of Nike
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 155% damage (5 hits, 31% each)
+  desc_jp: Deal 155% damage (5 hits, 31% each)
+  max_atk_pct: 155
+  name_en: Divine Saber
+  name_jp: Divine Saber
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Lock 15 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 150% damage
+  desc_jp: Lock 15 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Siculus Chain
+  name_jp: Siculus Chain
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Movetime -2s for 1 turns, Deal 150% damage
+  desc_jp: Movetime -2s for 1 turns, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Steel Strike
+  name_jp: Steel Strike
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 74
+  name_jp: HP <= 74
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change player HP to 50% for 2 turns + Change 2nd, 4th row to Light orbs
+  desc_jp: Change player HP to 50% for 2 turns + Change 2nd, 4th row to Light orbs
+  max_atk_pct: null
+  name_en: Evil Eye of the Gorgon + Shining Spear
+  name_jp: Evil Eye of the Gorgon + Shining Spear
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 24
+  name_jp: HP <= 24
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids player buff effects + Enemy action
+  desc_jp: Voids player buff effects + Enemy action
+  max_atk_pct: null
+  name_en: Victoria's Will + Divine Burst
+  name_jp: Victoria's Will + Divine Burst
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	[0] ESStatusShield -> Aegis' Protection
+# 	Voids status ailments for 999 turns
+# 	[1] ESDamageShield -> Blessing of Nike
+# 	Reduce damage from all sources by 75% for 20 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchCounter -> ESBranchCounter
+# branch
+# [7] ESSetCounter -> ESSetCounter
+# set_counter
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESBranchHP -> ESBranchHP
+# branch
+# [10] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESMaxHPChange -> Evil Eye of the Gorgon
+# 	Change player HP to 50000 for 2 turns
+# 	[1] ESRowSpawnMulti -> Shining Spear
+# 	Change 3rd row to Light orbs
+# [11] ESAttackMultihit -> Divine Saber
+# Condition: 25% chance
+# Enemy action
+# [12] ESOrbLock -> Siculus Chain
+# Condition: 25% chance
+# Lock 15 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [13] ESDebuffMovetime -> Steel Strike
+# Condition: 25% chance
+# Movetime -2s for 1 turns
+# [14] ESEndPath -> ESEndPath
+# end_turn
+# [15] ESBranchFlag -> ESBranchFlag
+# branch
+# [16] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [17] SkillSet:
+# 	[0] ESMaxHPChange -> Evil Eye of the Gorgon
+# 	Change player HP to 50% for 2 turns
+# 	[1] ESRowSpawnMulti -> Shining Spear
+# 	Change 2nd, 4th row to Light orbs
+# [18] ESEndPath -> ESEndPath
+# end_turn
+# [19] SkillSet:
+# 	[0] ESDispel -> Victoria's Will
+# 	Voids player buff effects
+# 	[1] ESAttackMultihit -> Divine Burst
+# 	Enemy action
+# [20] ESEndPath -> ESEndPath
+# end_turn
+# [21] ESBranchCounter -> ESBranchCounter
+# branch
+# [22] ESSetCounter -> ESSetCounter
+# set_counter
+# [23] ESAttackUp -> Victoria's Victory Song
+# Increase damage to 1000% for the next 99 turns
+# [24] ESEndPath -> ESEndPath
+# end_turn

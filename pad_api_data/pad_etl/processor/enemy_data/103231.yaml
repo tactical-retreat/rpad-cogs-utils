@@ -1,0 +1,105 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 103231
+monster_name_en: Alt. Earl of Halloween Fever, Count Pumpkin
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Blind random 10 orbs for 2 turns
+  desc_jp: Blind random 10 orbs for 2 turns
+  max_atk_pct: null
+  name_en: Pumpkin Night
+  name_jp: Pumpkin Night
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Movetime 25% for 2 turns, Deal 100% damage
+  desc_jp: Movetime 25% for 2 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Trick & Trick
+  name_jp: Trick & Trick
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Fix orb movement starting point to random position on the board, Deal 100%
+    damage
+  desc_jp: Fix orb movement starting point to random position on the board, Deal 100%
+    damage
+  max_atk_pct: 100
+  name_en: Pumpkin Magic
+  name_jp: Pumpkin Magic
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 110% damage (2 hits, 55% each)
+  desc_jp: Deal 110% damage (2 hits, 55% each)
+  max_atk_pct: 110
+  name_en: Nightmare Stick
+  name_jp: Nightmare Stick
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Random 3 orbs change every 1.5s for 5 turns, Deal 100% damage
+  desc_jp: Random 3 orbs change every 1.5s for 5 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Wonder Card
+  name_jp: Wonder Card
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBlindStickyRandom -> Pumpkin Night
+# Condition: One-time use
+# Blind random 10 orbs for 2 turns
+# [3] ESDebuffMovetime -> Trick & Trick
+# Condition: One-time use
+# Movetime 25% for 2 turns
+# [4] ESBranchHP -> ESBranchHP
+# branch
+# [5] ESFixedStart -> Pumpkin Magic
+# Condition: 50% chance
+# Fix orb movement starting point to random position on the board
+# [6] ESAttackMultihit -> Nightmare Stick
+# Enemy action
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchFlag -> ESBranchFlag
+# branch
+# [9] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [10] ESSpinnersRandom -> Wonder Card
+# Random 3 orbs change every 1.5s for 5 turns
+# [11] ESEndPath -> ESEndPath
+# end_turn

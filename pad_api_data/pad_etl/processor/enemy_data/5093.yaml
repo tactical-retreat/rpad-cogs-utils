@@ -1,0 +1,185 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 5093
+monster_name_en: Sakura Kasugano
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Locked random skyfall +10% for 5 turns
+  desc_jp: Locked random skyfall +10% for 5 turns
+  max_atk_pct: null
+  name_en: Uh-oh Pleased to meet you!
+  name_jp: Uh-oh Pleased to meet you!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Lock 1 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs + Do nothing + Enemy action
+  desc_jp: Lock 1 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs + Do nothing + Enemy action
+  max_atk_pct: null
+  name_en: Haru Kaze + Yoisho!  + Sakura Otoshi
+  name_jp: Haru Kaze + Yoisho!  + Sakura Otoshi
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Lock 1 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs + Do nothing + Change Random to Fire
+  desc_jp: Lock 1 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs + Do nothing + Change Random to Fire
+  max_atk_pct: null
+  name_en: Haru Kaze + Yoisho!  + Oukakyaku
+  name_jp: Haru Kaze + Yoisho!  + Oukakyaku
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Lock 1 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs + Do nothing + Bind 1 subs for 1 turns
+  desc_jp: Lock 1 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs + Do nothing + Bind 1 subs for 1 turns
+  max_atk_pct: null
+  name_en: Haru Kaze + Yoisho!  + Kashinfu
+  name_jp: Haru Kaze + Yoisho!  + Kashinfu
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Fire skyfall +15% for 3 turns + Do nothing
+  desc_jp: Fire skyfall +15% for 3 turns + Do nothing
+  max_atk_pct: null
+  name_en: Haru Arashi + You're gonna get it now!
+  name_jp: Haru Arashi + You're gonna get it now!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy action + Enemy action + Absorb combo <= 4 damage for 1 turns
+  desc_jp: Enemy action + Enemy action + Absorb combo <= 4 damage for 1 turns
+  max_atk_pct: null
+  name_en: Disable Skill + Hadoken + Shunpukyaku
+  name_jp: Disable Skill + Hadoken + Shunpukyaku
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Enemy action + Enemy action + Absorb combo <= 4 damage for 1 turns
+  desc_jp: Enemy action + Enemy action + Absorb combo <= 4 damage for 1 turns
+  max_atk_pct: null
+  name_en: Shouoken + Disable Skill + Shunpukyaku
+  name_jp: Shouoken + Disable Skill + Shunpukyaku
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Delay active skills by 2 turns, Deal 130% damage
+  desc_jp: Delay active skills by 2 turns, Deal 130% damage
+  max_atk_pct: 130
+  name_en: Hogasho
+  name_jp: Hogasho
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 14
+  name_jp: HP <= 14
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 210% damage (7 hits, 30% each)
+  desc_jp: Deal 210% damage (7 hits, 30% each)
+  max_atk_pct: 210
+  name_en: Sakura Rain
+  name_jp: Sakura Rain
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESSkyfall -> Uh-oh Pleased to meet you!
+# Condition: One-time use
+# Locked random skyfall +10% for 5 turns
+# [3] ESBranchHP -> ESBranchHP
+# branch
+# [4] SkillSet:
+# 	Condition: 33% chance
+# 	[0] ESOrbLock -> Haru Kaze
+# 	Lock 1 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# 	[1] ESInactivity -> Yoisho! 
+# 	Do nothing
+# 	[2] ESAttackMultihit -> Sakura Otoshi
+# 	Enemy action
+# [5] SkillSet:
+# 	Condition: 33% chance
+# 	[0] ESOrbLock -> Haru Kaze
+# 	Lock 1 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# 	[1] ESInactivity -> Yoisho! 
+# 	Do nothing
+# 	[2] ESOrbChangeAttack -> Oukakyaku
+# 	Change Random to Fire
+# [6] SkillSet:
+# 	Condition: 34% chance
+# 	[0] ESOrbLock -> Haru Kaze
+# 	Lock 1 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# 	[1] ESInactivity -> Yoisho! 
+# 	Do nothing
+# 	[2] ESBindAttack -> Kashinfu
+# 	Bind 1 subs for 1 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESSkyfall -> Haru Arashi
+# 	Fire skyfall +15% for 3 turns
+# 	[1] ESInactivity -> You're gonna get it now!
+# 	Do nothing
+# [9] ESBranchHP -> ESBranchHP
+# branch
+# [10] SkillSet:
+# 	Condition: 33% chance
+# 	[0] ESAttackSinglehit -> Disable Skill
+# 	Enemy action
+# 	[1] ESAttackMultihit -> Hadoken
+# 	Enemy action
+# 	[2] ESAbsorbCombo -> Shunpukyaku
+# 	Absorb combo <= 4 damage for 1 turns
+# [11] SkillSet:
+# 	Condition: 33% chance
+# 	[0] ESAttackMultihit -> Shouoken
+# 	Enemy action
+# 	[1] ESAttackSinglehit -> Disable Skill
+# 	Enemy action
+# 	[2] ESAbsorbCombo -> Shunpukyaku
+# 	Absorb combo <= 4 damage for 1 turns
+# [12] ESSkillDelay -> Hogasho
+# Condition: 34% chance
+# Delay active skills by 2 turns
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESAttackMultihit -> Sakura Rain
+# Enemy action
+# [15] ESEndPath -> ESEndPath
+# end_turn

@@ -1,0 +1,138 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2189
+monster_name_en: Destroying CyberDragon, Diadem
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Spawn random 10 Jammer orbs + Lock all Jammer orbs
+  desc_jp: Spawn random 10 Jammer orbs + Lock all Jammer orbs
+  max_atk_pct: null
+  name_en: Star Onyx + Four Strikes Leading to Destruction
+  name_jp: Star Onyx + Four Strikes Leading to Destruction
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 6 random cards for 4 turns, Deal 100% damage
+  desc_jp: Bind 6 random cards for 4 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: First Strike - Fear Bringer
+  name_jp: First Strike - Fear Bringer
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind active skills for 4 turns, Deal 100% damage
+  desc_jp: Bind active skills for 4 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Second Strike - Curse Bringer
+  name_jp: Second Strike - Curse Bringer
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 100% damage
+  desc_jp: Blind all orbs on the board, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Third Strike - Darkness Bringer
+  name_jp: Third Strike - Darkness Bringer
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 4
+  name_jp: Turn 4
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Delay active skills by 4 turns
+  desc_jp: Delay active skills by 4 turns
+  max_atk_pct: null
+  name_en: Fourth Strike - Despair Bringer
+  name_jp: Fourth Strike - Despair Bringer
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 1600% damage (8 hits, 200% each)
+  desc_jp: Deal 1600% damage (8 hits, 200% each)
+  max_atk_pct: 1600
+  name_en: Hour of Destruction - Ruin Advent
+  name_jp: Hour of Destruction - Ruin Advent
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	[0] ESRandomSpawn -> Star Onyx
+# 	Spawn random 10 Jammer orbs
+# 	[1] ESOrbLock -> Four Strikes Leading to Destruction
+# 	Lock all Jammer orbs
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchFlag -> ESBranchFlag
+# branch
+# [7] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [8] ESBindRandom -> First Strike - Fear Bringer
+# Bind 6 random cards for 4 turns
+# [9] ESBranchFlag -> ESBranchFlag
+# branch
+# [10] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [11] ESBindSkill -> Second Strike - Curse Bringer
+# Bind active skills for 4 turns
+# [12] ESBranchFlag -> ESBranchFlag
+# branch
+# [13] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [14] ESBlind -> Third Strike - Darkness Bringer
+# Blind all orbs on the board
+# [15] ESBranchFlag -> ESBranchFlag
+# branch
+# [16] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [17] ESSkillDelay -> Fourth Strike - Despair Bringer
+# Delay active skills by 4 turns
+# [18] ESAttackMultihit -> Hour of Destruction - Ruin Advent
+# Enemy action

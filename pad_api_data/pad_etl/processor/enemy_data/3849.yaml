@@ -1,0 +1,67 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3849
+monster_name_en: Horse Enjoying the Cool Evening, Kelpie
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: 1x1 cloud appear for 1 turns at random location, Deal 90% damage
+  desc_jp: 1x1 cloud appear for 1 turns at random location, Deal 90% damage
+  max_atk_pct: 90
+  name_en: Dry Ice
+  name_jp: Dry Ice
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb Water damage for 2 turns
+  desc_jp: Absorb Water damage for 2 turns
+  max_atk_pct: null
+  name_en: Water Horse Neigh
+  name_jp: Water Horse Neigh
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESBranchHP -> ESBranchHP
+# branch
+# [4] ESCloud -> Dry Ice
+# Condition: One-time use
+# 1x1 cloud appear for 1 turns at random location
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchFlag -> ESBranchFlag
+# branch
+# [7] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [8] ESAbsorbAttribute -> Water Horse Neigh
+# Absorb Water damage for 2 turns

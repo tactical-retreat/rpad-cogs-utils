@@ -1,0 +1,132 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2575
+monster_name_en: Ancient Fire Dragon, Anomalocaris
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Fire skyfall +15% for 99 turns
+  desc_jp: Fire skyfall +15% for 99 turns
+  max_atk_pct: null
+  name_en: Crimson Cambria
+  name_jp: Crimson Cambria
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 999 turns
+  desc_jp: Increase damage to 200% for the next 999 turns
+  max_atk_pct: null
+  name_en: Wind-Up Full Throttle
+  name_jp: Wind-Up Full Throttle
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Water to Jammer, Deal 100% damage
+  desc_jp: Change Water to Jammer, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Target Predation - Water
+  name_jp: Target Predation - Water
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Heal to Jammer, Deal 120% damage
+  desc_jp: Change Heal to Jammer, Deal 120% damage
+  max_atk_pct: 120
+  name_en: Target Predation - Heal
+  name_jp: Target Predation - Heal
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Spawn random 4 Fire orbs, Deal 120% damage
+  desc_jp: Spawn random 4 Fire orbs, Deal 120% damage
+  max_atk_pct: 120
+  name_en: Red Whip
+  name_jp: Red Whip
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 1 turns
+  desc_jp: Reduce damage from all sources by 50% for 1 turns
+  max_atk_pct: null
+  name_en: Sensing Danger
+  name_jp: Sensing Danger
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 10
+  name_jp: HP <= 10
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 300% damage
+  desc_jp: Deal 300% damage
+  max_atk_pct: 300
+  name_en: Enraged Tentacles Annihilation
+  name_jp: Enraged Tentacles Annihilation
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESSkyfall -> Crimson Cambria
+# Fire skyfall +15% for 99 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESAttackUp -> Wind-Up Full Throttle
+# Increase damage to 200% for the next 999 turns
+# [9] ESDamageShield -> Sensing Danger
+# Condition: When < 50% hp , one-time use
+# Reduce damage from all sources by 50% for 1 turns
+# [10] ESAttackMultihit -> Enraged Tentacles Annihilation
+# Condition: When < 10% hp
+# Enemy action
+# [11] ESOrbChangeAttack -> Target Predation - Water
+# Condition: 50% chance
+# Change Water to Jammer
+# [12] ESOrbChangeAttack -> Target Predation - Heal
+# Condition: 20% chance
+# Change Heal to Jammer
+# [13] ESRandomSpawn -> Red Whip
+# Condition: 30% chance & when Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 4 Fire orbs
+# [14] ESEndPath -> ESEndPath
+# end_turn

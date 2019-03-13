@@ -1,0 +1,97 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 891
+monster_name_en: Hunt God of the Holy Bow, Artemis
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 3
+############################################################
+!SkillRecordListing
+level: 3
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Jammer skyfall +10% for 10 turns
+  desc_jp: Jammer skyfall +10% for 10 turns
+  max_atk_pct: null
+  name_en: Hunting Mastery
+  name_jp: Hunting Mastery
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind own leader for 2 turns, Deal 50% damage
+  desc_jp: Bind own leader for 2 turns, Deal 50% damage
+  max_atk_pct: 50
+  name_en: Head Snipe
+  name_jp: Head Snipe
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 80%~120% damage (4~6 hits, 20% each)
+  desc_jp: Deal 80%~120% damage (4~6 hits, 20% each)
+  max_atk_pct: 120
+  name_en: Barrage Shot
+  name_jp: Barrage Shot
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 150% damage
+  desc_jp: Deal 150% damage
+  max_atk_pct: 150
+  name_en: Arrow of Judgement
+  name_jp: Arrow of Judgement
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESSkyfall -> Hunting Mastery
+# Jammer skyfall +10% for 10 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBindAttack -> Head Snipe
+# Condition: One-time use
+# Bind own leader for 2 turns
+# [9] ESBranchHP -> ESBranchHP
+# branch
+# [10] ESAttackMultihit -> Barrage Shot
+# Enemy action
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESAttackMultihit -> Arrow of Judgement
+# Condition: When < 50% hp
+# Enemy action

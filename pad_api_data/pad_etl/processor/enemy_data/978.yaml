@@ -1,0 +1,104 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 978
+monster_name_en: Black Pirate Dragon, Blackbeard
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 5 turns
+  desc_jp: Voids status ailments for 5 turns
+  max_atk_pct: null
+  name_en: Curse of the Evil Eye
+  name_jp: Curse of the Evil Eye
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids status ailments for 5 turns
+  desc_jp: Voids status ailments for 5 turns
+  max_atk_pct: null
+  name_en: Curse of the Evil Eye
+  name_jp: Curse of the Evil Eye
+  record_type_name: ACTION
+
+############################################################
+### Data @ 8
+############################################################
+!SkillRecordListing
+level: 8
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 5 turns
+  desc_jp: Voids status ailments for 5 turns
+  max_atk_pct: null
+  name_en: Curse of the Evil Eye
+  name_jp: Curse of the Evil Eye
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids status ailments for 5 turns
+  desc_jp: Voids status ailments for 5 turns
+  max_atk_pct: null
+  name_en: Curse of the Evil Eye
+  name_jp: Curse of the Evil Eye
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESStatusShield -> Curse of the Evil Eye
+# Voids status ailments for 5 turns
+# [5] ESBranchFlag -> ESBranchFlag
+# branch
+# [6] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [7] ESBlind -> So it's you...
+# Blind all orbs on the board
+# [8] ESBranchFlag -> ESBranchFlag
+# branch
+# [9] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [10] ESBlind -> Fools who oppose the queen!
+# Blind all orbs on the board
+# [11] ESBranchFlag -> ESBranchFlag
+# branch
+# [12] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [13] ESBlind -> Drift in the sea of death!
+# Condition: One-time use
+# Blind all orbs on the board
+# [14] ESAttackMultihit -> This darkness can't be lifted!
+# Condition: One-time use
+# Enemy action
+# [15] ESAttackMultihit -> Queen Anne's Revenge
+# Enemy action

@@ -1,0 +1,58 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1470
+monster_name_en: Hand of the Dark God, Metatron TAMADRA
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Void damage >= 50 for 99 turns
+  desc_jp: Void damage >= 50 for 99 turns
+  max_atk_pct: null
+  name_en: dispelling breath TAMA!
+  name_jp: dispelling breath TAMA!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  max_atk_pct: null
+  name_en: protection TAMA!
+  name_jp: protection TAMA!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESVoidShield -> dispelling breath TAMA!
+# Condition: One-time use
+# Void damage >= 50 for 99 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESStatusShield -> protection TAMA!
+# Voids status ailments for 999 turns
+# [7] ESAttackMultihit -> judgment TAMA!
+# Enemy action

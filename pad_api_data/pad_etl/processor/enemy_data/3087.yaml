@@ -1,0 +1,188 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3087
+monster_name_en: Lovely Dragon Caller, Ana
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: 'Show message: Armor Drop set on D-Gear! |Divine Law Goddess, Valkyrie
+    Rose''s Energy grants
+
+    Ana new powers'
+  desc_jp: 'Show message: Armor Drop set on D-Gear! |Divine Law Goddess, Valkyrie
+    Rose''s Energy grants
+
+    Ana new powers'
+  max_atk_pct: null
+  name_en: Changing Ana
+  name_jp: Changing Ana
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: Do nothing + Change 1st column to Fire orbs, 6th column to Water orbs
+  desc_jp: Do nothing + Change 1st column to Fire orbs, 6th column to Water orbs
+  max_atk_pct: null
+  name_en: Monsters! + Dragon Summoning!!!
+  name_jp: Monsters! + Dragon Summoning!!!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: 'Show message: Armor Drop set on D-Gear! |Divine Law Goddess, Valkyrie
+    Rose''s Energy grants
+
+    Ana new powers'
+  desc_jp: 'Show message: Armor Drop set on D-Gear! |Divine Law Goddess, Valkyrie
+    Rose''s Energy grants
+
+    Ana new powers'
+  max_atk_pct: null
+  name_en: Changing Ana
+  name_jp: Changing Ana
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 20
+  name_jp: HP <= 20
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Delay active skills by 3 turns + Enemy action
+  desc_jp: Delay active skills by 3 turns + Enemy action
+  max_atk_pct: null
+  name_en: Ana starts crying + 10 combos!!
+  name_jp: Ana starts crying + 10 combos!!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESDeathCry -> Changing Ana
+# Condition: On death
+# Show message: Armor Drop set on D-Gear! |Divine Law Goddess, Valkyrie Rose's Energy grants
+# Ana new powers
+# [3] SkillSet:
+# 	Condition: When < 20% hp
+# 	[0] ESSkillDelay -> Ana starts crying
+# 	Delay active skills by 3 turns
+# 	[1] ESAttackMultihit -> 10 combos!!
+# 	Enemy action
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESInactivity -> Monsters!
+# 	Do nothing
+# 	[1] ESColumnSpawnMulti -> Dragon Summoning!!!
+# 	Change 1st column to Fire orbs, 6th column to Water orbs
+# [7] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [8] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESInactivity -> Monsters!
+# 	Do nothing
+# 	[1] ESColumnSpawnMulti -> Dragon Summoning!!!
+# 	Change 1st column to Water orbs, 6th column to Wood orbs
+# [9] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [10] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESInactivity -> Monsters!
+# 	Do nothing
+# 	[1] ESColumnSpawnMulti -> Dragon Summoning!!!
+# 	Change 1st column to Wood orbs, 6th column to Fire orbs
+# [11] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [12] SkillSet:
+# 	Condition: 34% chance
+# 	[0] ESColumnSpawnMulti -> Dragon Summoning!!!
+# 	Change 1st column to Fire orbs, 6th column to Water orbs
+# 	[1] ESDamageShield -> The Monsters block the way
+# 	Reduce damage from all sources by 50% for 2 turns
+# [13] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [14] SkillSet:
+# 	Condition: 50% chance
+# 	[0] ESColumnSpawnMulti -> Dragon Summoning!!!
+# 	Change 1st column to Water orbs, 6th column to Wood orbs
+# 	[1] ESDamageShield -> The Monsters block the way
+# 	Reduce damage from all sources by 50% for 2 turns
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] SkillSet:
+# 	[0] ESColumnSpawnMulti -> Dragon Summoning!!!
+# 	Change 1st column to Wood orbs, 6th column to Fire orbs
+# 	[1] ESDamageShield -> The Monsters block the way
+# 	Reduce damage from all sources by 50% for 2 turns
+# [17] ESBranchFlag -> ESBranchFlag
+# branch
+# [18] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [19] ESBranchFlag -> ESBranchFlag
+# branch
+# [20] ESBranchFlag -> ESBranchFlag
+# branch
+# [21] ESBranchFlag -> ESBranchFlag
+# branch
+# [22] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [23] ESBranchFlag -> ESBranchFlag
+# branch
+# [24] ESBranchFlag -> ESBranchFlag
+# branch
+# [25] ESBranchFlag -> ESBranchFlag
+# branch
+# [26] SkillSet:
+# 	Condition: 50% chance
+# 	[0] ESGravity -> Heat Breath
+# 	Player -50% HP
+# 	[1] ESAttackMultihit -> 3 combos ♪
+# 	Enemy action
+# [27] SkillSet:
+# 	[0] ESOrbChangeAttack -> Ice Blade
+# 	Change Random to Water
+# 	[1] ESAttackMultihit -> 3 combos ♪
+# 	Enemy action
+# [28] SkillSet:
+# 	Condition: 50% chance
+# 	[0] ESOrbChangeAttack -> Ice Blade
+# 	Change Random to Water
+# 	[1] ESAttackMultihit -> 3 combos ♪
+# 	Enemy action
+# [29] SkillSet:
+# 	[0] ESOrbChangeAttack -> Gale
+# 	Change Random to Jammer
+# 	[1] ESAttackMultihit -> 3 combos ♪
+# 	Enemy action
+# [30] SkillSet:
+# 	Condition: 50% chance
+# 	[0] ESGravity -> Heat Breath
+# 	Player -50% HP
+# 	[1] ESAttackMultihit -> 3 combos ♪
+# 	Enemy action
+# [31] SkillSet:
+# 	[0] ESOrbChangeAttack -> Gale
+# 	Change Random to Jammer
+# 	[1] ESAttackMultihit -> 3 combos ♪
+# 	Enemy action

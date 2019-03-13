@@ -1,0 +1,201 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 105084
+monster_name_en: M. Bison
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Delay active skills by 5 turns, Deal 100% damage
+  desc_jp: Delay active skills by 5 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Bow down before my Psycho Power!
+  name_jp: Bow down before my Psycho Power!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy action + Enemy action + Change Random to Dark
+  desc_jp: Enemy action + Enemy action + Change Random to Dark
+  max_atk_pct: null
+  name_en: Psycho Axe + Disable Skill + Shadow Axe
+  name_jp: Psycho Axe + Disable Skill + Shadow Axe
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Enemy action + Change Random to Dark
+  desc_jp: Enemy action + Change Random to Dark
+  max_atk_pct: null
+  name_en: Head Press + Somersault Skull Diver
+  name_jp: Head Press + Somersault Skull Diver
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Random to Poison + Enemy action
+  desc_jp: Change Random to Poison + Enemy action
+  max_atk_pct: null
+  name_en: Psycho Blast + Double Knee Press
+  name_jp: Psycho Blast + Double Knee Press
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Random to Poison + Enemy action
+  desc_jp: Change Random to Poison + Enemy action
+  max_atk_pct: null
+  name_en: Psycho Blast + Psycho Inferno
+  name_jp: Psycho Blast + Psycho Inferno
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 75% for 10 turns
+  desc_jp: Reduce damage from all sources by 75% for 10 turns
+  max_atk_pct: null
+  name_en: Scurry! Psycho Nightmare
+  name_jp: Scurry! Psycho Nightmare
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 2 subs for 2 turns + Spawn random 4 Bomb orbs
+  desc_jp: Bind 2 subs for 2 turns + Spawn random 4 Bomb orbs
+  max_atk_pct: null
+  name_en: Psycho Charge + Burst! Psycho Judgement
+  name_jp: Psycho Charge + Burst! Psycho Judgement
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change 3rd row to Dark orbs, Deal 250% damage
+  desc_jp: Change 3rd row to Dark orbs, Deal 250% damage
+  max_atk_pct: 250
+  name_en: Psycho Crusher
+  name_jp: Psycho Crusher
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Random to Poison + Enemy action
+  desc_jp: Change Random to Poison + Enemy action
+  max_atk_pct: null
+  name_en: Psycho Blast + Double Knee Press
+  name_jp: Psycho Blast + Double Knee Press
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Random to Poison + Enemy action
+  desc_jp: Change Random to Poison + Enemy action
+  max_atk_pct: null
+  name_en: Psycho Blast + Psycho Inferno
+  name_jp: Psycho Blast + Psycho Inferno
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 14
+  name_jp: HP <= 14
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing + Change 3rd, 4th row to Dark orbs
+  desc_jp: Do nothing + Change 3rd, 4th row to Dark orbs
+  max_atk_pct: null
+  name_en: Away with you! + Ultimate Psycho Crusher
+  name_jp: Away with you! + Ultimate Psycho Crusher
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESSkillDelay -> Bow down before my Psycho Power!
+# Condition: One-time use
+# Delay active skills by 5 turns
+# [5] ESBranchHP -> ESBranchHP
+# branch
+# [6] SkillSet:
+# 	Condition: 25% chance
+# 	[0] ESAttackMultihit -> Psycho Axe
+# 	Enemy action
+# 	[1] ESAttackSinglehit -> Disable Skill
+# 	Enemy action
+# 	[2] ESOrbChangeAttack -> Shadow Axe
+# 	Change Random to Dark
+# [7] SkillSet:
+# 	Condition: 25% chance
+# 	[0] ESAttackMultihit -> Head Press
+# 	Enemy action
+# 	[1] ESOrbChangeAttack -> Somersault Skull Diver
+# 	Change Random to Dark
+# [8] SkillSet:
+# 	Condition: 25% chance
+# 	[0] ESOrbChangeAttack -> Psycho Blast
+# 	Change Random to Poison
+# 	[1] ESAttackMultihit -> Double Knee Press
+# 	Enemy action
+# [9] SkillSet:
+# 	Condition: 25% chance
+# 	[0] ESOrbChangeAttack -> Psycho Blast
+# 	Change Random to Poison
+# 	[1] ESAttackMultihit -> Psycho Inferno
+# 	Enemy action
+# [10] ESEndPath -> ESEndPath
+# end_turn
+# [11] ESDamageShield -> Scurry! Psycho Nightmare
+# Condition: One-time use
+# Reduce damage from all sources by 75% for 10 turns
+# [12] ESBranchHP -> ESBranchHP
+# branch
+# [13] SkillSet:
+# 	Condition: 25% chance
+# 	[0] ESBindAttack -> Psycho Charge
+# 	Bind 2 subs for 2 turns
+# 	[1] ESBombRandomSpawn -> Burst! Psycho Judgement
+# 	Spawn random 4 Bomb orbs
+# [14] ESRowSpawnMulti -> Psycho Crusher
+# Condition: 25% chance
+# Change 3rd row to Dark orbs
+# [15] SkillSet:
+# 	Condition: 25% chance
+# 	[0] ESOrbChangeAttack -> Psycho Blast
+# 	Change Random to Poison
+# 	[1] ESAttackMultihit -> Double Knee Press
+# 	Enemy action
+# [16] SkillSet:
+# 	Condition: 25% chance
+# 	[0] ESOrbChangeAttack -> Psycho Blast
+# 	Change Random to Poison
+# 	[1] ESAttackMultihit -> Psycho Inferno
+# 	Enemy action
+# [17] ESEndPath -> ESEndPath
+# end_turn
+# [18] SkillSet:
+# 	[0] ESInactivity -> Away with you!
+# 	Do nothing
+# 	[1] ESRowSpawnMulti -> Ultimate Psycho Crusher
+# 	Change 3rd, 4th row to Dark orbs
+# [19] ESEndPath -> ESEndPath
+# end_turn

@@ -1,0 +1,55 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 818
+monster_name_en: Bronzed Grendel
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Pounding its chest
+  name_jp: Pounding its chest
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 500% damage
+  desc_jp: Deal 500% damage
+  max_atk_pct: 500
+  name_en: Super Body Press
+  name_jp: Super Body Press
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESInactivity -> Pounding its chest
+# Condition: One-time use
+# Do nothing
+# [2] ESAttackMultihit -> Super Body Press
+# Enemy action

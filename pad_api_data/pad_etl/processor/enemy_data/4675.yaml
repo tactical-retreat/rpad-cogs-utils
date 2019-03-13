@@ -1,0 +1,118 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4675
+monster_name_en: '*****'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Spawn random 4 Poison orbs
+  desc_jp: Spawn random 4 Poison orbs
+  max_atk_pct: null
+  name_en: Hades Showdown
+  name_jp: Hades Showdown
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 2 turns, Deal 100% damage
+  desc_jp: Reduce damage from all sources by 50% for 2 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Heavy Ball
+  name_jp: Heavy Ball
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Blind orbs in specific positions for 2 turns
+  desc_jp: Blind orbs in specific positions for 2 turns
+  max_atk_pct: null
+  name_en: Black Zero Seizure
+  name_jp: Black Zero Seizure
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 4
+  name_jp: Turn 4
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 150% for the next 2 turns, Deal 100% damage
+  desc_jp: Increase damage to 150% for the next 2 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Rampage Ball
+  name_jp: Rampage Ball
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 200% damage (10 hits, 20% each)
+  desc_jp: Deal 200% damage (10 hits, 20% each)
+  max_atk_pct: 200
+  name_en: Hell Cape of Reverse Menace
+  name_jp: Hell Cape of Reverse Menace
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESRandomSpawn -> Hades Showdown
+# Condition: When fire, water, wood, light, dark, heal, jammer, mortal poison orbs are on the board
+# Spawn random 4 Poison orbs
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchFlag -> ESBranchFlag
+# branch
+# [9] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [10] ESDamageShield -> Heavy Ball
+# Reduce damage from all sources by 50% for 2 turns
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESBlindStickyFixed -> Black Zero Seizure
+# Condition: One-time use
+# Blind orbs in specific positions for 2 turns
+# [13] ESAttackUp -> Rampage Ball
+# Condition: One-time use
+# Increase damage to 150% for the next 2 turns
+# [14] ESAttackMultihit -> Hell Cape of Reverse Menace
+# Enemy action
+# [15] ESEndPath -> ESEndPath
+# end_turn

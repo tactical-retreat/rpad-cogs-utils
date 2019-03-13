@@ -1,0 +1,246 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4906
+monster_name_en: Stone Dracosnake of the Purewings, Quetzalcoatl
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Fire, Water by 50%
+  desc_jp: Reduce damage from Fire, Water by 50%
+  max_atk_pct: null
+  name_en: Fire Water Halves
+  name_jp: Fire Water Halves
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Void damage >= 15000000 for 3 turns
+    + Absorb combo <= 7 damage for 3 turns
+  desc_jp: Voids status ailments for 999 turns + Void damage >= 15000000 for 3 turns
+    + Absorb combo <= 7 damage for 3 turns
+  max_atk_pct: null
+  name_en: Wind Maker + Started making a whirlwind + Wind obstructs the strikes
+  name_jp: Wind Maker + Started making a whirlwind + Wind obstructs the strikes
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Void damage >= 15000000 for 3 turns + Absorb combo <= 7 damage for 3 turns
+  desc_jp: Void damage >= 15000000 for 3 turns + Absorb combo <= 7 damage for 3 turns
+  max_atk_pct: null
+  name_en: Started making a whirlwind + Wind obstructs the strikes
+  name_jp: Started making a whirlwind + Wind obstructs the strikes
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 5 Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs + Lock 15 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison,
+    Mortal Poison orbs
+  desc_jp: Spawn random 5 Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs + Lock 15 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison,
+    Mortal Poison orbs
+  max_atk_pct: null
+  name_en: Blazing Cyclone + Aero Feather
+  name_jp: Blazing Cyclone + Aero Feather
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Bind 3 random cards for 1 turns + Enemy action
+  desc_jp: Bind 3 random cards for 1 turns + Enemy action
+  max_atk_pct: null
+  name_en: Whirling Tornado + Burst Wing
+  name_jp: Whirling Tornado + Burst Wing
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids player buff effects + Delay active skills by 5 turns + Specific orbs
+    change every 1.0s for 5 turns
+  desc_jp: Voids player buff effects + Delay active skills by 5 turns + Specific orbs
+    change every 1.0s for 5 turns
+  max_atk_pct: null
+  name_en: Wind Eraser + Deaerate + Dust Storm
+  name_jp: Wind Eraser + Deaerate + Dust Storm
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 9
+  name_jp: HP <= 9
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Movetime 50% for 10 turns + Increase damage to 200% for the next 999 turns
+  desc_jp: Movetime 50% for 10 turns + Increase damage to 200% for the next 999 turns
+  max_atk_pct: null
+  name_en: Against the Wind + Burst of Rage
+  name_jp: Against the Wind + Burst of Rage
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 9
+  name_jp: HP <= 9
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change own attribute to random one of Fire, Water, Wood, Light, Dark +
+    Enemy action
+  desc_jp: Change own attribute to random one of Fire, Water, Wood, Light, Dark +
+    Enemy action
+  max_atk_pct: null
+  name_en: Molting + Aero Burst End
+  name_jp: Molting + Aero Burst End
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESSetCounter -> ESSetCounter
+# set_counter
+# [5] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESStatusShield -> Wind Maker
+# 	Voids status ailments for 999 turns
+# 	[1] ESVoidShield -> Started making a whirlwind
+# 	Void damage >= 15000000 for 3 turns
+# 	[2] ESAbsorbCombo -> Wind obstructs the strikes
+# 	Absorb combo <= 7 damage for 3 turns
+# [6] ESEndPath -> ESEndPath
+# end_turn
+# [7] ESSetCounter -> ESSetCounter
+# set_counter
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESBranchHP -> ESBranchHP
+# branch
+# [10] ESBranchCounter -> ESBranchCounter
+# branch
+# [11] ESBranchCounter -> ESBranchCounter
+# branch
+# [12] ESBranchCounter -> ESBranchCounter
+# branch
+# [13] ESBranchCounter -> ESBranchCounter
+# branch
+# [14] ESSetCounter -> ESSetCounter
+# set_counter
+# [15] SkillSet:
+# 	[0] ESVoidShield -> Started making a whirlwind
+# 	Void damage >= 15000000 for 3 turns
+# 	[1] ESAbsorbCombo -> Wind obstructs the strikes
+# 	Absorb combo <= 7 damage for 3 turns
+# [16] SkillSet:
+# 	Condition: 33% chance
+# 	[0] ESRandomSpawn -> Blazing Cyclone
+# 	Spawn random 5 Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# 	[1] ESOrbLock -> Aero Feather
+# 	Lock 15 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [17] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESBindAwoken -> Stormy Hurricane
+# 	Bind awoken skills for 1 turns
+# 	[1] ESGravity -> Storm Blast
+# 	Player -99% HP
+# [18] SkillSet:
+# 	Condition: 34% chance
+# 	[0] ESBindRandom -> Whirling Tornado
+# 	Bind 3 random cards for 1 turns
+# 	[1] ESAttackMultihit -> Burst Wing
+# 	Enemy action
+# [19] ESEndPath -> ESEndPath
+# end_turn
+# [20] SkillSet:
+# 	[0] ESLeaderSwap -> Wind Mischief
+# 	Leader changes to random sub for 3 turns
+# 	[1] ESDamageShield -> Wind Follower
+# 	Reduce damage from all sources by 50% for 3 turns
+# 	[2] ESInactivity -> The wind died down
+# 	Do nothing
+# [21] ESBranchCounter -> ESBranchCounter
+# branch
+# [22] ESOrbChangeAttack -> Breeze Mist
+# Condition: 33% chance
+# Change Random to Wood
+# [23] ESRandomSpawn -> Fire Storm
+# Condition: 33% chance & when Water, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 4 Fire, Wood orbs
+# [24] ESAttackMultihit -> Climatic Gale
+# Condition: 34% chance
+# Enemy action
+# [25] ESEndPath -> ESEndPath
+# end_turn
+# [26] ESBranchFlag -> ESBranchFlag
+# branch
+# [27] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [28] ESBranchCounter -> ESBranchCounter
+# branch
+# [29] SkillSet:
+# 	[0] ESDispel -> Wind Eraser
+# 	Voids player buff effects
+# 	[1] ESSkillDelay -> Deaerate
+# 	Delay active skills by 5 turns
+# 	[2] ESSpinnersFixed -> Dust Storm
+# 	Specific orbs change every 1.0s for 5 turns
+# [30] ESSetCounter -> ESSetCounter
+# set_counter
+# [31] SkillSet:
+# 	[0] ESDispel -> Wind Eraser
+# 	Voids player buff effects
+# 	[1] ESSkillDelay -> Deaerate
+# 	Delay active skills by 5 turns
+# 	[2] ESSpinnersFixed -> Dust Storm
+# 	Specific orbs change every 1.0s for 5 turns
+# [32] ESEndPath -> ESEndPath
+# end_turn
+# [33] ESBranchFlag -> ESBranchFlag
+# branch
+# [34] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [35] SkillSet:
+# 	[0] ESDebuffMovetime -> Against the Wind
+# 	Movetime 50% for 10 turns
+# 	[1] ESAttackUp -> Burst of Rage
+# 	Increase damage to 200% for the next 999 turns
+# [36] ESEndPath -> ESEndPath
+# end_turn
+# [37] SkillSet:
+# 	[0] ESChangeAttribute -> Molting
+# 	Change own attribute to random one of Fire, Water, Wood, Light, Dark
+# 	[1] ESAttackMultihit -> Aero Burst End
+# 	Enemy action
+# [38] ESEndPath -> ESEndPath
+# end_turn
+# [39] ESAttributeResist -> Fire Water Halves
+# Reduce damage from Fire, Water by 50%

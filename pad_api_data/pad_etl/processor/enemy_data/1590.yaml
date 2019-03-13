@@ -1,0 +1,148 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1590
+monster_name_en: Peach Garden General, Guan Yinping
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb combo <= 3 damage for 999 turns
+  desc_jp: Absorb combo <= 3 damage for 999 turns
+  max_atk_pct: null
+  name_en: Here I come!
+  name_jp: Here I come!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Fire, Deal 90% damage
+  desc_jp: Change Random to Fire, Deal 90% damage
+  max_atk_pct: 90
+  name_en: Blue Dragon Flame Moon Blade
+  name_jp: Blue Dragon Flame Moon Blade
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Wood, Deal 90% damage
+  desc_jp: Change Random to Wood, Deal 90% damage
+  max_atk_pct: 90
+  name_en: Wind Blade
+  name_jp: Wind Blade
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind Fire cards for 3 turns
+  desc_jp: Bind Fire cards for 3 turns
+  max_atk_pct: null
+  name_en: Anti-Magic Jade Pearl
+  name_jp: Anti-Magic Jade Pearl
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Enemy recover 50% hp
+  desc_jp: Enemy recover 50% hp
+  max_atk_pct: null
+  name_en: Time for a snack!
+  name_jp: Time for a snack!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 50% hp
+  desc_jp: Enemy recover 50% hp
+  max_atk_pct: null
+  name_en: Time for a snack!
+  name_jp: Time for a snack!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 30
+  name_jp: HP <= 30
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 150% damage (3 hits, 50% each)
+  desc_jp: Deal 150% damage (3 hits, 50% each)
+  max_atk_pct: 150
+  name_en: Southern Blossom Dance Formation
+  name_jp: Southern Blossom Dance Formation
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESAbsorbCombo -> Here I come!
+# Absorb combo <= 3 damage for 999 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] ESBranchFlag -> ESBranchFlag
+# branch
+# [8] ESOrbChangeAttack -> Blue Dragon Flame Moon Blade
+# Condition: 60% chance
+# Change Random to Fire
+# [9] ESEndPath -> ESEndPath
+# end_turn
+# [10] ESBranchFlag -> ESBranchFlag
+# branch
+# [11] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [12] ESBindAttribute -> Anti-Magic Jade Pearl
+# Condition: When < 50% hp
+# Bind Fire cards for 3 turns
+# [13] ESRecoverEnemy -> Time for a snack!
+# Condition: When < 50% hp , one-time use
+# Enemy recover 50% hp
+# [14] ESEndPath -> ESEndPath
+# end_turn
+# [15] ESRecoverEnemy -> Time for a snack!
+# Condition: When < 50% hp , one-time use
+# Enemy recover 50% hp
+# [16] ESAttackMultihit -> Southern Blossom Dance Formation
+# Condition: When < 30% hp
+# Enemy action
+# [17] ESOrbChangeAttack -> Wind Blade
+# Condition: 60% chance
+# Change Random to Wood
+# [18] ESEndPath -> ESEndPath
+# end_turn

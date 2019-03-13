@@ -1,0 +1,71 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 100691
+monster_name_en: Alt. Heavy Infantry Hobgoblin
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 50%
+  desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
+  name_en: Resolve
+  name_jp: Resolve
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Enemy turn counter change to 1 when HP <= 50%
+  desc_jp: Enemy turn counter change to 1 when HP <= 50%
+  max_atk_pct: null
+  name_en: Enemy's next turn changed
+  name_jp: Enemy's next turn changed
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  max_atk_pct: 100
+  name_en: Big Blade
+  name_jp: Big Blade
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
+# branch
+# [2] ESAttackMultihit -> Big Blade
+# Enemy action
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] SkillSet:
+# 	[0] ESRecoverEnemy -> Pouring Fighting Spirit
+# 	Enemy recover 100% hp
+# 	[1] ESDamageShield -> Counterattack
+# 	Reduce damage from all sources by 75% for 99 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESResolve -> Resolve
+# Survive attacks with 1 HP when HP > 50%
+# [9] ESTurnChangePassive -> Enemy's next turn changed
+# Enemy turn counter change to 1 when HP <= 50%

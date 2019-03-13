@@ -1,0 +1,152 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 102092
+monster_name_en: Alt. Storm Mighty Dragon Emperor, Lifive
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Fire by 50%
+  desc_jp: Reduce damage from Fire by 50%
+  max_atk_pct: null
+  name_en: Lifive Fire Halved
+  name_jp: Lifive Fire Halved
+  record_type_name: PASSIVE
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Fire by 50%
+  desc_jp: Reduce damage from Fire by 50%
+  max_atk_pct: null
+  name_en: Lifive Fire Halved
+  name_jp: Lifive Fire Halved
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 5 turns + Enemy action
+  desc_jp: Voids status ailments for 5 turns + Enemy action
+  max_atk_pct: null
+  name_en: Flame Body + Crossdraw Breath
+  name_jp: Flame Body + Crossdraw Breath
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb combo <= 5 damage for 5 turns + Enemy action
+  desc_jp: Absorb combo <= 5 damage for 5 turns + Enemy action
+  max_atk_pct: null
+  name_en: Blaze Aura + Triple Breath
+  name_jp: Blaze Aura + Triple Breath
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Void damage >= 5000000 for 5 turns + Enemy action
+  desc_jp: Void damage >= 5000000 for 5 turns + Enemy action
+  max_atk_pct: null
+  name_en: Fire Armor + Fanning Breath
+  name_jp: Fire Armor + Fanning Breath
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 5 random for 5 turns, Deal 150% damage
+  desc_jp: Bind 5 random for 5 turns, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Inferno Bullet
+  name_jp: Inferno Bullet
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 5000% damage (5 hits, 1000% each)
+  desc_jp: Deal 5000% damage (5 hits, 1000% each)
+  max_atk_pct: 5000
+  name_en: Burst End
+  name_jp: Burst End
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] SkillSet:
+# 	[0] ESStatusShield -> Flame Body
+# 	Voids status ailments for 5 turns
+# 	[1] ESAttackMultihit -> Crossdraw Breath
+# 	Enemy action
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchFlag -> ESBranchFlag
+# branch
+# [9] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [10] SkillSet:
+# 	[0] ESAbsorbCombo -> Blaze Aura
+# 	Absorb combo <= 5 damage for 5 turns
+# 	[1] ESAttackMultihit -> Triple Breath
+# 	Enemy action
+# [11] ESBranchFlag -> ESBranchFlag
+# branch
+# [12] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [13] SkillSet:
+# 	[0] ESVoidShield -> Fire Armor
+# 	Void damage >= 5000000 for 5 turns
+# 	[1] ESAttackMultihit -> Fanning Breath
+# 	Enemy action
+# [14] ESBranchFlag -> ESBranchFlag
+# branch
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] ESBindAttack -> Inferno Bullet
+# Bind 5 random for 5 turns
+# [17] ESAttackMultihit -> Burst End
+# Enemy action
+# [18] ESAttributeResist -> Lifive Fire Halved
+# Reduce damage from Fire by 50%

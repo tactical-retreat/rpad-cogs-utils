@@ -1,0 +1,168 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4751
+monster_name_en: '*****'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb combo <= 3 damage for 3 turns
+  desc_jp: Absorb combo <= 3 damage for 3 turns
+  max_atk_pct: null
+  name_en: Come! I'll show you a real fight!
+  name_jp: Come! I'll show you a real fight!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 120% damage
+  desc_jp: Deal 120% damage
+  max_atk_pct: 120
+  name_en: I'll slay all the enemies who stand before me
+  name_jp: I'll slay all the enemies who stand before me
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change 3rd column to Wood orbs, Deal 100% damage
+  desc_jp: Change 3rd column to Wood orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Don't lose the initiative!!
+  name_jp: Don't lose the initiative!!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Lock 6 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 100% damage
+  desc_jp: Lock 6 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: No one will soil our true selection!
+  name_jp: No one will soil our true selection!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 70
+  name_jp: HP <= 70
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 2 turns
+  desc_jp: Reduce damage from all sources by 50% for 2 turns
+  max_atk_pct: null
+  name_en: Looks like it's gonna be an fun fight!
+  name_jp: Looks like it's gonna be an fun fight!
+  record_type_name: ACTION
+
+############################################################
+### Data @ 6
+############################################################
+!SkillRecordListing
+level: 6
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb combo <= 4 damage for 4 turns
+  desc_jp: Absorb combo <= 4 damage for 4 turns
+  max_atk_pct: null
+  name_en: Come! I'll show you a real fight!
+  name_jp: Come! I'll show you a real fight!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 120% damage
+  desc_jp: Deal 120% damage
+  max_atk_pct: 120
+  name_en: I'll slay all the enemies who stand before me
+  name_jp: I'll slay all the enemies who stand before me
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change 3rd column to Wood orbs, Deal 100% damage
+  desc_jp: Change 3rd column to Wood orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Don't lose the initiative!!
+  name_jp: Don't lose the initiative!!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Lock 6 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 100% damage
+  desc_jp: Lock 6 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: No one will soil our true selection!
+  name_jp: No one will soil our true selection!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 70
+  name_jp: HP <= 70
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 2 turns
+  desc_jp: Reduce damage from all sources by 50% for 2 turns
+  max_atk_pct: null
+  name_en: Looks like it's gonna be an fun fight!
+  name_jp: Looks like it's gonna be an fun fight!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchCard -> ESBranchCard
+# branch
+# [5] ESBranchLevel -> ESBranchLevel
+# branch
+# [6] ESAbsorbCombo -> Come! I'll show you a real fight!
+# Condition: One-time use
+# Absorb combo <= 3 damage for 3 turns
+# [7] ESAbsorbCombo -> Come! I'll show you a real fight!
+# Condition: One-time use
+# Absorb combo <= 4 damage for 4 turns
+# [8] ESAbsorbCombo -> If you want to die then take this!!
+# Condition: One-time use
+# Absorb combo <= 3 damage for 3 turns
+# [9] ESDamageShield -> Looks like it's gonna be an fun fight!
+# Condition: When < 70% hp , one-time use
+# Reduce damage from all sources by 50% for 2 turns
+# [10] ESAttackUp -> Let's exchange our life force!!
+# Condition: When < 30% hp , one-time use
+# Increase damage to 300% for the next 99 turns
+# [11] ESAttackMultihit -> I'll slay all the enemies who stand before me
+# Condition: 33% chance
+# Enemy action
+# [12] ESColumnSpawnMulti -> Don't lose the initiative!!
+# Condition: 33% chance
+# Change 3rd column to Wood orbs
+# [13] ESOrbLock -> No one will soil our true selection!
+# Condition: 34% chance
+# Lock 6 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [14] ESEndPath -> ESEndPath
+# end_turn

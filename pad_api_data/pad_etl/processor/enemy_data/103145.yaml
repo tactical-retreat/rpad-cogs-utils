@@ -1,0 +1,152 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 103145
+monster_name_en: God of Technique, Kinnikuman Zebra
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 3 turns
+  desc_jp: Reduce damage from all sources by 50% for 3 turns
+  max_atk_pct: null
+  name_en: Shadow Cloak
+  name_jp: Shadow Cloak
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind own leader for 1 turns, Deal 100% damage
+  desc_jp: Bind own leader for 1 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Flying Headbutt
+  name_jp: Flying Headbutt
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Blind orbs in specific positions for 1 turns
+  desc_jp: Blind orbs in specific positions for 1 turns
+  max_atk_pct: null
+  name_en: Flying Headbutt
+  name_jp: Flying Headbutt
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Bind 2 both leaders for 1 turns, Deal 100% damage
+  desc_jp: Bind 2 both leaders for 1 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: 'Brutal Art: Canvas Presser'
+  name_jp: 'Brutal Art: Canvas Presser'
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change 3rd row to Fire orbs, Deal 250% damage
+  desc_jp: Change 3rd row to Fire orbs, Deal 250% damage
+  max_atk_pct: 250
+  name_en: Muscle Inferno
+  name_jp: Muscle Inferno
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Blind orbs in specific positions for 1 turns
+  desc_jp: Blind orbs in specific positions for 1 turns
+  max_atk_pct: null
+  name_en: Flying Headbutt
+  name_jp: Flying Headbutt
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 2 both leaders for 1 turns, Deal 100% damage
+  desc_jp: Bind 2 both leaders for 1 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: 'Brutal Art: Canvas Presser'
+  name_jp: 'Brutal Art: Canvas Presser'
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 3rd row to Fire orbs, Deal 250% damage
+  desc_jp: Change 3rd row to Fire orbs, Deal 250% damage
+  max_atk_pct: 250
+  name_en: Muscle Inferno
+  name_jp: Muscle Inferno
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESBranchCard -> ESBranchCard
+# branch
+# [7] ESDamageShield -> Shadow Cloak
+# Reduce damage from all sources by 50% for 3 turns
+# [8] ESDamageShield -> Hehehe...
+# Reduce damage from all sources by 50% for 3 turns
+# [9] ESEndPath -> ESEndPath
+# end_turn
+# [10] ESBindAttack -> Flying Headbutt
+# Condition: When < 50% hp , one-time use
+# Bind own leader for 1 turns
+# [11] ESBlindStickyFixed -> Flying Headbutt
+# Condition: When < 50% hp , one-time use
+# Blind orbs in specific positions for 1 turns
+# [12] ESBindAttack -> Brutal Art: Canvas Presser
+# Condition: When < 50% hp , one-time use
+# Bind 2 both leaders for 1 turns
+# [13] ESRowSpawnMulti -> Muscle Inferno
+# Condition: When < 50% hp
+# Change 3rd row to Fire orbs
+# [14] ESBranchFlag -> ESBranchFlag
+# branch
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] ESOrbChangeAttack -> Savanna Punch
+# Change Random to Jammer
+# [17] ESBranchFlag -> ESBranchFlag
+# branch
+# [18] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [19] ESOrbLock -> Thoroughbred Hook
+# Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [20] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [21] ESGravity -> Thoroughbred Upper
+# Player -99% HP

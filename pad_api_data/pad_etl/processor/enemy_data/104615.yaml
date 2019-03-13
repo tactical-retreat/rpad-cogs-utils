@@ -1,0 +1,103 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 104615
+monster_name_en: Llanowar Elves
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Change Random to Wood, Deal 100% damage
+  desc_jp: Change Random to Wood, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Nature's Knowledge
+  name_jp: Nature's Knowledge
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 8 Wood orbs
+  desc_jp: Spawn random 8 Wood orbs
+  max_atk_pct: null
+  name_en: Animist's Awakening
+  name_jp: Animist's Awakening
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 240% damage (4 hits, 60% each)
+  desc_jp: Deal 240% damage (4 hits, 60% each)
+  max_atk_pct: 240
+  name_en: Pierce the Sky
+  name_jp: Pierce the Sky
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESOrbChangeAttack -> Nature's Knowledge
+# Change Random to Wood
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESSetCounter -> ESSetCounter
+# set_counter
+# [10] ESBranchCounter -> ESBranchCounter
+# branch
+# [11] ESDispel -> Naturalize
+# Condition: One-time use
+# Voids player buff effects
+# [12] ESOrbChangeAttack -> Nature's Knowledge
+# Change Random to Wood
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESSetCounter -> ESSetCounter
+# set_counter
+# [15] ESAttackUp -> Giant Growth
+# Increase damage to 300% for the next 1 turns
+# [16] ESEndPath -> ESEndPath
+# end_turn
+# [17] ESBranchFlag -> ESBranchFlag
+# branch
+# [18] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [19] ESRandomSpawn -> Animist's Awakening
+# Condition: When fire, water, light, dark, heal, jammer, poison, mortal poison orbs are on the board
+# Spawn random 8 Wood orbs
+# [20] ESEndPath -> ESEndPath
+# end_turn
+# [21] ESAttackMultihit -> Pierce the Sky
+# Enemy action
+# [22] ESEndPath -> ESEndPath
+# end_turn

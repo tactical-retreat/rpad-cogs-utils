@@ -1,0 +1,139 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2481
+monster_name_en: Final Form, Tendo Jigoku
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  max_atk_pct: null
+  name_en: Eat me! Tendo Jigoku Absorbing Form!
+  name_jp: Eat me! Tendo Jigoku Absorbing Form!
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  max_atk_pct: 100
+  name_en: Absorbing Form Bite
+  name_jp: Absorbing Form Bite
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 120% damage
+  desc_jp: Deal 120% damage
+  max_atk_pct: 120
+  name_en: Strong Blow
+  name_jp: Strong Blow
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb Fire damage for 3 turns
+  desc_jp: Absorb Fire damage for 3 turns
+  max_atk_pct: null
+  name_en: Absorption
+  name_jp: Absorption
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 20
+  name_jp: HP <= 20
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 30% hp
+  desc_jp: Enemy recover 30% hp
+  max_atk_pct: null
+  name_en: Regeneration
+  name_jp: Regeneration
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Spawn random 8 Fire orbs, Deal 260% damage
+  desc_jp: Spawn random 8 Fire orbs, Deal 260% damage
+  max_atk_pct: 260
+  name_en: Flame Arrow
+  name_jp: Flame Arrow
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 20
+  name_jp: HP <= 20
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 8 Fire orbs, Deal 260% damage
+  desc_jp: Spawn random 8 Fire orbs, Deal 260% damage
+  max_atk_pct: 260
+  name_en: Flame Arrow
+  name_jp: Flame Arrow
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESStatusShield -> Eat me! Tendo Jigoku Absorbing Form!
+# Voids status ailments for 999 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESRecoverEnemy -> Regeneration
+# Condition: When < 20% hp , one-time use
+# Enemy recover 30% hp
+# [10] ESRandomSpawn -> Flame Arrow
+# Condition: When < 20% hp & when Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 8 Fire orbs
+# [11] ESAttackMultihit -> Absorbing Form Bite
+# Condition: 70% chance
+# Enemy action
+# [12] ESAttackMultihit -> Strong Blow
+# Condition: 70% chance
+# Enemy action
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESBranchFlag -> ESBranchFlag
+# branch
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] ESBranchCard -> ESBranchCard
+# branch
+# [17] ESAbsorbAttribute -> Absorption
+# Absorb Fire damage for 3 turns
+# [18] ESAbsorbAttribute -> Shall I devour your 8 dragons as well?
+# Absorb Fire damage for 3 turns

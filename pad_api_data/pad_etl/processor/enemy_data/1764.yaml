@@ -1,0 +1,147 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1764
+monster_name_en: Sunrise Bowl Dragon, Gasho
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Dark by 50%
+  desc_jp: Reduce damage from Dark by 50%
+  max_atk_pct: null
+  name_en: Halve Dark
+  name_jp: Halve Dark
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Player recover 100% hp
+  desc_jp: Player recover 100% hp
+  max_atk_pct: null
+  name_en: Celebratory Feast
+  name_jp: Celebratory Feast
+  record_type_name: PREEMPT
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Dark by 50%
+  desc_jp: Reduce damage from Dark by 50%
+  max_atk_pct: null
+  name_en: Halve Dark
+  name_jp: Halve Dark
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Player recover 100% hp
+  desc_jp: Player recover 100% hp
+  max_atk_pct: null
+  name_en: Celebratory Feast
+  name_jp: Celebratory Feast
+  record_type_name: PREEMPT
+
+############################################################
+### Data @ 10
+############################################################
+!SkillRecordListing
+level: 10
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Dark by 50%
+  desc_jp: Reduce damage from Dark by 50%
+  max_atk_pct: null
+  name_en: Halve Dark
+  name_jp: Halve Dark
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Player recover 100% hp
+  desc_jp: Player recover 100% hp
+  max_atk_pct: null
+  name_en: Celebratory Feast
+  name_jp: Celebratory Feast
+  record_type_name: PREEMPT
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESRecoverPlayer -> Celebratory Feast
+# Player recover 100% hp
+# [5] ESAttributeResist -> Halve Dark
+# Reduce damage from Dark by 50%
+# [6] ESBranchLevel -> ESBranchLevel
+# branch
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBindRandomSub -> Gaze
+# Condition: One-time use
+# Bind 1 random subs for 2~3 turns
+# [9] ESBranchLevel -> ESBranchLevel
+# branch
+# [10] ESBranchFlag -> ESBranchFlag
+# branch
+# [11] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [12] ESInactivity -> Swelling
+# Do nothing
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESBranchFlag -> ESBranchFlag
+# branch
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] ESInactivity -> Swelling
+# Do nothing
+# [17] ESEndPath -> ESEndPath
+# end_turn
+# [18] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [19] ESAttackMultihit -> Mochi Explosion
+# Condition: 80% chance
+# Enemy action
+# [20] ESOrbChangeAttack -> Scent of Good Fortune
+# Change Random to Heal
+# [21] ESEndPath -> ESEndPath
+# end_turn
+# [22] ESBranchFlag -> ESBranchFlag
+# branch
+# [23] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [24] ESJammerChangeRandom -> Swelling
+# Change Random 2 to Jammer
+# [25] ESEndPath -> ESEndPath
+# end_turn
+# [26] ESBranchFlag -> ESBranchFlag
+# branch
+# [27] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [28] ESJammerChangeRandom -> Swelling
+# Change Random 2 to Jammer
+# [29] ESEndPath -> ESEndPath
+# end_turn
+# [30] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [31] ESAttackMultihit -> Mochi Explosion
+# Condition: 80% chance
+# Enemy action
+# [32] ESOrbChangeAttack -> Scent of Good Fortune
+# Change Random to Heal

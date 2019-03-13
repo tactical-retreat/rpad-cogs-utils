@@ -1,0 +1,56 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1526
+monster_name_en: High Fire Ninja
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 80% damage
+  desc_jp: Change Random to Jammer, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Ninja Dog Technique
+  name_jp: Ninja Dog Technique
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 100%~160% damage (5~8 hits, 20% each)
+  desc_jp: Deal 100%~160% damage (5~8 hits, 20% each)
+  max_atk_pct: 160
+  name_en: Ninja Dog Scramble
+  name_jp: Ninja Dog Scramble
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESOrbChangeAttack -> Ninja Dog Technique
+# Condition: One-time use
+# Change Random to Jammer
+# [2] ESAttackMultihit -> Ninja Dog Scramble
+# Condition: When < 50% hp
+# Enemy action

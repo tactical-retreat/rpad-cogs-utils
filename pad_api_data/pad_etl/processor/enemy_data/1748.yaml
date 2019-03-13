@@ -1,0 +1,64 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1748
+monster_name_en: Awoken Hades
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Wood, Dark by 50%
+  desc_jp: Reduce damage from Wood, Dark by 50%
+  max_atk_pct: null
+  name_en: '*****'
+  name_jp: '*****'
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  max_atk_pct: null
+  name_en: '..........'
+  name_jp: '..........'
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 3rd row to Dark orbs, Deal 1000% damage
+  desc_jp: Change 3rd row to Dark orbs, Deal 1000% damage
+  max_atk_pct: 1000
+  name_en: Death Scythe
+  name_jp: Death Scythe
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESGravity -> ..........
+# Player -99% HP
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESRowSpawnMulti -> Death Scythe
+# Change 3rd row to Dark orbs
+# [7] ESAttributeResist -> *****
+# Reduce damage from Wood, Dark by 50%

@@ -1,0 +1,153 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 102739
+monster_name_en: Alt. Reincarnated Burning Phoenix Knight, Homura
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 76%
+  desc_jp: Survive attacks with 1 HP when HP > 76%
+  max_atk_pct: null
+  name_en: Resolve Homura
+  name_jp: Resolve Homura
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Absorb combo <= 4 damage for 99 turns + Void damage >= 5000000 for 999
+    turns
+  desc_jp: Absorb combo <= 4 damage for 99 turns + Void damage >= 5000000 for 999
+    turns
+  max_atk_pct: null
+  name_en: Phoenix Knight's Soul + Phoenix Armor
+  name_jp: Phoenix Knight's Soul + Phoenix Armor
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 150% damage (3 hits, 50% each)
+  desc_jp: Deal 150% damage (3 hits, 50% each)
+  max_atk_pct: 150
+  name_en: Blazing Cutting Dance
+  name_jp: Blazing Cutting Dance
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 74
+  name_jp: HP <= 74
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 10% hp + Player -99% HP
+  desc_jp: Enemy recover 10% hp + Player -99% HP
+  max_atk_pct: null
+  name_en: Flame Eating Net + Scold
+  name_jp: Flame Eating Net + Scold
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 75% for 3 turns
+  desc_jp: Reduce damage from all sources by 75% for 3 turns
+  max_atk_pct: null
+  name_en: High Temperature
+  name_jp: High Temperature
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 5 Jammer orbs, Deal 50% damage
+  desc_jp: Spawn random 5 Jammer orbs, Deal 50% damage
+  max_atk_pct: 50
+  name_en: Ash followed by Flare
+  name_jp: Ash followed by Flare
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 0
+  name_jp: HP <= 0
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind awoken skills for 3 turns
+  desc_jp: Bind awoken skills for 3 turns
+  max_atk_pct: null
+  name_en: Suppression Flames
+  name_jp: Suppression Flames
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	[0] ESAbsorbCombo -> Phoenix Knight's Soul
+# 	Absorb combo <= 4 damage for 99 turns
+# 	[1] ESVoidShield -> Phoenix Armor
+# 	Void damage >= 5000000 for 999 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] ESBranchHP -> ESBranchHP
+# branch
+# [8] ESAttackMultihit -> Blazing Cutting Dance
+# Enemy action
+# [9] ESBranchHP -> ESBranchHP
+# branch
+# [10] SkillSet:
+# 	[0] ESRecoverEnemy -> Flame Eating Net
+# 	Enemy recover 10% hp
+# 	[1] ESGravity -> Scold
+# 	Player -99% HP
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESBranchFlag -> ESBranchFlag
+# branch
+# [13] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [14] ESDamageShield -> High Temperature
+# Reduce damage from all sources by 75% for 3 turns
+# [15] ESRandomSpawn -> Ash followed by Flare
+# Condition: When water, wood, light, dark, heal, poison, mortal poison orbs are on the board
+# Spawn random 5 Jammer orbs
+# [16] ESBindAwoken -> Suppression Flames
+# Bind awoken skills for 3 turns
+# [17] ESGravity -> Burnout
+# Player -300% HP
+# [18] ESEndPath -> ESEndPath
+# end_turn
+# [19] ESResolve -> Resolve Homura
+# Survive attacks with 1 HP when HP > 76%

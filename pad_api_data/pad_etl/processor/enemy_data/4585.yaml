@@ -1,0 +1,181 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4585
+monster_name_en: Yog-Sothoth, the Limitless
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Enemy turn counter change to 1 when HP <= 50%
+  desc_jp: Enemy turn counter change to 1 when HP <= 50%
+  max_atk_pct: null
+  name_en: Enemies' turn changed in anger
+  name_jp: Enemies' turn changed in anger
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Reduce damage from Dark by 50%
+  desc_jp: Reduce damage from Dark by 50%
+  max_atk_pct: null
+  name_en: Dark damage halved
+  name_jp: Dark damage halved
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  max_atk_pct: null
+  name_en: Concept of Boundless Worlds
+  name_jp: Concept of Boundless Worlds
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids player buff effects
+  desc_jp: Voids player buff effects
+  max_atk_pct: null
+  name_en: Death of Sudden Help
+  name_jp: Death of Sudden Help
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 100% damage (2 hits, 50% each)
+  desc_jp: Deal 100% damage (2 hits, 50% each)
+  max_atk_pct: 100
+  name_en: A Sound like Nothing from this Universe
+  name_jp: A Sound like Nothing from this Universe
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change all orbs to Light, Heal, Jammer, Poison, Deal 90% damage
+  desc_jp: Change all orbs to Light, Heal, Jammer, Poison, Deal 90% damage
+  max_atk_pct: 90
+  name_en: Holiness That Transcends All Existence
+  name_jp: Holiness That Transcends All Existence
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Random 2 orbs change every 1.0s for 1 turns, Deal 90% damage
+  desc_jp: Random 2 orbs change every 1.0s for 1 turns, Deal 90% damage
+  max_atk_pct: 90
+  name_en: Gathering of the Repulsive Suns
+  name_jp: Gathering of the Repulsive Suns
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Blind random 5 orbs for 2 turns, Deal 95% damage
+  desc_jp: Blind random 5 orbs for 2 turns, Deal 95% damage
+  max_atk_pct: 95
+  name_en: Emptiness of The Eternal One
+  name_jp: Emptiness of The Eternal One
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb Fire, Water damage for 5 turns
+  desc_jp: Absorb Fire, Water damage for 5 turns
+  max_atk_pct: null
+  name_en: Dark Dreams of Suffering Delusion
+  name_jp: Dark Dreams of Suffering Delusion
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 15
+  name_jp: HP <= 15
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind awoken skills for 5 turns
+  desc_jp: Bind awoken skills for 5 turns
+  max_atk_pct: null
+  name_en: He Who Shall Not Be Named
+  name_jp: He Who Shall Not Be Named
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 10
+  name_jp: HP <= 10
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 3000% damage (6 hits, 500% each)
+  desc_jp: Deal 3000% damage (6 hits, 500% each)
+  max_atk_pct: 3000
+  name_en: The Ultimate Origin of All Things
+  name_jp: The Ultimate Origin of All Things
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESStatusShield -> Concept of Boundless Worlds
+# Condition: One-time use
+# Voids status ailments for 999 turns
+# [3] ESBranchHP -> ESBranchHP
+# branch
+# [4] ESBindAwoken -> He Who Shall Not Be Named
+# Condition: When < 15% hp , one-time use
+# Bind awoken skills for 5 turns
+# [5] ESAttackMultihit -> The Ultimate Origin of All Things
+# Condition: When < 10% hp
+# Enemy action
+# [6] ESDispel -> Death of Sudden Help
+# Condition: 10% chance
+# Voids player buff effects
+# [7] ESAttackMultihit -> A Sound like Nothing from this Universe
+# Condition: 60% chance
+# Enemy action
+# [8] ESBoardChangeAttackBits -> Holiness That Transcends All Existence
+# Condition: 20% chance
+# Change all orbs to Light, Heal, Jammer, Poison
+# [9] ESSpinnersRandom -> Gathering of the Repulsive Suns
+# Condition: 20% chance
+# Random 2 orbs change every 1.0s for 1 turns
+# [10] ESBlindStickyRandom -> Emptiness of The Eternal One
+# Blind random 5 orbs for 2 turns
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESBranchFlag -> ESBranchFlag
+# branch
+# [13] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [14] ESAbsorbAttribute -> Dark Dreams of Suffering Delusion
+# Condition: When < 50% hp , one-time use
+# Absorb Fire, Water damage for 5 turns
+# [15] ESAbsorbAttribute -> Dark Dreams of Suffering Delusion
+# Condition: When < 50% hp , one-time use
+# Absorb Wood, Dark damage for 5 turns
+# [16] ESAbsorbAttribute -> Dark Dreams of Suffering Delusion
+# Condition: When < 50% hp , one-time use
+# Absorb Water, Light damage for 5 turns
+# [17] ESAbsorbAttribute -> Dark Dreams of Suffering Delusion
+# Condition: When < 50% hp , one-time use
+# Absorb Light, Dark damage for 5 turns
+# [18] ESAbsorbAttribute -> Dark Dreams of Suffering Delusion
+# Condition: When < 50% hp , one-time use
+# Absorb Fire, Wood damage for 5 turns
+# [19] ESEndPath -> ESEndPath
+# end_turn
+# [20] ESTurnChangePassive -> Enemies' turn changed in anger
+# Enemy turn counter change to 1 when HP <= 50%
+# [21] ESAttributeResist -> Dark damage halved
+# Reduce damage from Dark by 50%

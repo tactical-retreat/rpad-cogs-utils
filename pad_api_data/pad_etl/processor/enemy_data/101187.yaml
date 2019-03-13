@@ -1,0 +1,100 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 101187
+monster_name_en: Alt. Dark Sprite, Cattleya
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Blind orbs in specific positions for 3 turns
+  desc_jp: Blind orbs in specific positions for 3 turns
+  max_atk_pct: null
+  name_en: Affectionate Brush Strokes
+  name_jp: Affectionate Brush Strokes
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 25
+  name_jp: HP <= 25
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Poison skyfall +20% for 1 turns
+  desc_jp: Poison skyfall +20% for 1 turns
+  max_atk_pct: null
+  name_en: "Book of Wonders\u266A"
+  name_jp: "Book of Wonders\u266A"
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Spawn random 6 Poison orbs, Deal 200% damage
+  desc_jp: Spawn random 6 Poison orbs, Deal 200% damage
+  max_atk_pct: 200
+  name_en: Secret Chest
+  name_jp: Secret Chest
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 25
+  name_jp: HP <= 25
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 6 Poison orbs, Deal 200% damage
+  desc_jp: Spawn random 6 Poison orbs, Deal 200% damage
+  max_atk_pct: 200
+  name_en: Secret Chest
+  name_jp: Secret Chest
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESBlindStickyFixed -> Affectionate Brush Strokes
+# Blind orbs in specific positions for 3 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESSkyfall -> Book of Wonders♪
+# Condition: When < 25% hp , one-time use
+# Poison skyfall +20% for 1 turns
+# [9] ESRandomSpawn -> Secret Chest
+# Condition: When < 25% hp & when Fire, Water, Wood, Light, Dark, Heal, Jammer, Mortal Poison orbs are on the board
+# Spawn random 6 Poison orbs
+# [10] ESBranchFlag -> ESBranchFlag
+# branch
+# [11] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [12] ESGravity -> Destructive Writing
+# Player -99% HP
+# [13] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [14] ESOrbChangeAttack -> Dark Spirit's Writing
+# Change Random to Dark
+# [15] ESEndPath -> ESEndPath
+# end_turn
+# [16] SkillSet:
+# 	Condition: On death
+# 	[0] ESRandomSpawn -> Tee-hee!
+# 	Spawn random 3 Mortal Poison orbs

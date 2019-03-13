@@ -1,0 +1,75 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 823
+monster_name_en: Torrential Fenrir Knight, Kamui
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Movetime -1s for 3 turns
+  desc_jp: Movetime -1s for 3 turns
+  max_atk_pct: null
+  name_en: Attack Signal
+  name_jp: Attack Signal
+  record_type_name: PREEMPT
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESDebuffMovetime -> Attack Signal
+# Movetime -1s for 3 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchFlag -> ESBranchFlag
+# branch
+# [7] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [8] ESAttackMultihit -> First Strike
+# Enemy action
+# [9] ESEndPath -> ESEndPath
+# end_turn
+# [10] ESBranchFlag -> ESBranchFlag
+# branch
+# [11] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [12] ESAttackMultihit -> Second Strike
+# Enemy action
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESBranchFlag -> ESBranchFlag
+# branch
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] ESAttackMultihit -> Third Strike
+# Enemy action
+# [17] ESEndPath -> ESEndPath
+# end_turn
+# [18] ESBranchFlag -> ESBranchFlag
+# branch
+# [19] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [20] ESAttackMultihit -> Fourth Strike
+# Enemy action
+# [21] ESEndPath -> ESEndPath
+# end_turn
+# [22] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [23] ESAttackMultihit -> Final Strike
+# Enemy action

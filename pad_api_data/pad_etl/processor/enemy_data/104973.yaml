@@ -1,0 +1,120 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 104973
+monster_name_en: "\u30D0\u30AF\u30ED\u5A46"
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Spawn random 3 Mortal Poison orbs
+  desc_jp: Spawn random 3 Mortal Poison orbs
+  max_atk_pct: null
+  name_en: Babaan! (I'm here!)
+  name_jp: Babaan! (I'm here!)
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 110% damage
+  desc_jp: Deal 110% damage
+  max_atk_pct: 110
+  name_en: Baba!
+  name_jp: Baba!
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Random to Heal, Deal 90% damage
+  desc_jp: Change Random to Heal, Deal 90% damage
+  max_atk_pct: 90
+  name_en: Babaan? (Do you want some tea?)
+  name_jp: Babaan? (Do you want some tea?)
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Leader changes to random sub for 1 turns
+  desc_jp: Leader changes to random sub for 1 turns
+  max_atk_pct: null
+  name_en: Babaan! (Don't cave in)
+  name_jp: Babaan! (Don't cave in)
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 200% damage
+  desc_jp: Deal 200% damage
+  max_atk_pct: 200
+  name_en: Loving Slap
+  name_jp: Loving Slap
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESRandomSpawn -> Babaan! (I'm here!)
+# Condition: When fire, water, wood, light, dark, heal, jammer, poison orbs are on the board
+# Spawn random 3 Mortal Poison orbs
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
+# branch
+# [10] ESAttackMultihit -> Baba!
+# Condition: 40% chance
+# Enemy action
+# [11] ESOrbChangeAttack -> Babaan? (Do you want some tea?)
+# Condition: 40% chance
+# Change Random to Heal
+# [12] ESEndPath -> ESEndPath
+# end_turn
+# [13] ESBranchFlag -> ESBranchFlag
+# branch
+# [14] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [15] ESDebuffRCV -> Babaan... (It's hard for you too)
+# Rcv 50% for 5 turns
+# [16] ESEndPath -> ESEndPath
+# end_turn
+# [17] ESLeaderSwap -> Babaan! (Don't cave in)
+# Condition: One-time use
+# Leader changes to random sub for 1 turns
+# [18] ESAttackMultihit -> Loving Slap
+# Enemy action
+# [19] ESEndPath -> ESEndPath
+# end_turn

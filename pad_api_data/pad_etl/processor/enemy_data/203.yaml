@@ -1,0 +1,87 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 203
+monster_name_en: Mystical Forest Pixie, Alraune
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Gently Smiling...
+  name_jp: Gently Smiling...
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 74
+  name_jp: HP <= 74
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Gently Smiling...
+  name_jp: Gently Smiling...
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 75
+  name_jp: HP <= 75
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Fire to Jammer
+  desc_jp: Change Fire to Jammer
+  max_atk_pct: null
+  name_en: Fire change to Block
+  name_jp: Fire change to Block
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 20
+  name_jp: HP <= 20
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 100% hp
+  desc_jp: Enemy recover 100% hp
+  max_atk_pct: null
+  name_en: Resurrection
+  name_jp: Resurrection
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESRecoverEnemy -> Resurrection
+# Condition: When < 20% hp , one-time use
+# Enemy recover 100% hp
+# [2] ESJammerChangeSingle -> Fire change to Block
+# Condition: 20% chance when < 75% hp
+# Change Fire to Jammer
+# [3] ESInactivity -> Gently Smiling...
+# Condition: 10% chance
+# Do nothing

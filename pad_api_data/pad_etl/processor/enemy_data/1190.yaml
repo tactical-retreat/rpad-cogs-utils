@@ -1,0 +1,113 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1190
+monster_name_en: Ancient Draggie Knight, Zeal
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Rcv 50% for 10 turns + Reduce damage from all sources by 99% for 5 turns
+  desc_jp: Rcv 50% for 10 turns + Reduce damage from all sources by 99% for 5 turns
+  max_atk_pct: null
+  name_en: Ancient Field + Hyper Dragon Shield
+  name_jp: Ancient Field + Hyper Dragon Shield
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids player buff effects
+  desc_jp: Voids player buff effects
+  max_atk_pct: null
+  name_en: Wave of Nothingness
+  name_jp: Wave of Nothingness
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  max_atk_pct: null
+  name_en: Ready...Set...Fight!
+  name_jp: Ready...Set...Fight!
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	[0] ESDebuffRCV -> Ancient Field
+# 	Rcv 50% for 10 turns
+# 	[1] ESDamageShield -> Hyper Dragon Shield
+# 	Reduce damage from all sources by 99% for 5 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESDispel -> Wave of Nothingness
+# Condition: One-time use
+# Voids player buff effects
+# [7] ESStatusShield -> Ready...Set...Fight!
+# Voids status ailments for 999 turns
+# [8] ESBranchFlag -> ESBranchFlag
+# branch
+# [9] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [10] ESDamageShield -> Super Dragon Shield
+# Reduce damage from all sources by 75% for 5 turns
+# [11] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [12] ESAttackMultihit -> Dragon Fang
+# Enemy action
+# [13] ESBranchFlag -> ESBranchFlag
+# branch
+# [14] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [15] ESDebuffMovetime -> That's all you've got?!
+# Movetime -3s for 10 turns
+# [16] ESEndPath -> ESEndPath
+# end_turn
+# [17] ESBranchFlag -> ESBranchFlag
+# branch
+# [18] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [19] ESDamageShield -> Dragon Shield
+# Reduce damage from all sources by 50% for 5 turns
+# [20] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [21] ESAttackMultihit -> Dragon Fang
+# Enemy action
+# [22] ESBranchFlag -> ESBranchFlag
+# branch
+# [23] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [24] ESAttackUp -> This is my true power!
+# Increase damage to 300% for the next 999 turns
+# [25] ESEndPath -> ESEndPath
+# end_turn
+# [26] ESAttackMultihit -> Dragon Fang
+# Enemy action

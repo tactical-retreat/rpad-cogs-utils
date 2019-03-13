@@ -1,0 +1,183 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3660
+monster_name_en: Astalos
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Bind 3 random subs for 1 turns + Voids status ailments for 999 turns
+  desc_jp: Bind 3 random subs for 1 turns + Voids status ailments for 999 turns
+  max_atk_pct: null
+  name_en: Roar + Astalos Scale
+  name_jp: Roar + Astalos Scale
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Lock all Light, Dark orbs, Deal 200% damage
+  desc_jp: Lock all Light, Dark orbs, Deal 200% damage
+  max_atk_pct: 200
+  name_en: Wingtalon Sweep
+  name_jp: Wingtalon Sweep
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Lock all Wood, Heal orbs, Deal 200% damage
+  desc_jp: Lock all Wood, Heal orbs, Deal 200% damage
+  max_atk_pct: 200
+  name_en: Tailspin
+  name_jp: Tailspin
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Lock all Fire, Water orbs, Deal 200% damage
+  desc_jp: Lock all Fire, Water orbs, Deal 200% damage
+  max_atk_pct: 200
+  name_en: Crest Swing
+  name_jp: Crest Swing
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 4
+  name_jp: Turn 4
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Lock 8 random Light, Dark, Heal orbs, Deal 200% damage
+  desc_jp: Lock 8 random Light, Dark, Heal orbs, Deal 200% damage
+  max_atk_pct: 200
+  name_en: Lightning Breath
+  name_jp: Lightning Breath
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 5
+  name_jp: Turn 5
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Increase damage to 120% for the next 10 turns + Do nothing
+  desc_jp: Increase damage to 120% for the next 10 turns + Do nothing
+  max_atk_pct: null
+  name_en: Rage + Thunder-charged
+  name_jp: Rage + Thunder-charged
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Lock 12 random Fire, Water, Wood, Light, Dark, Heal orbs, Deal 220% damage
+  desc_jp: Lock 12 random Fire, Water, Wood, Light, Dark, Heal orbs, Deal 220% damage
+  max_atk_pct: 220
+  name_en: Lightning Breath
+  name_jp: Lightning Breath
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Lock all Fire, Water orbs, Deal 220% damage
+  desc_jp: Lock all Fire, Water orbs, Deal 220% damage
+  max_atk_pct: 220
+  name_en: Crest Thrash
+  name_jp: Crest Thrash
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Lock all Wood, Heal orbs, Deal 220% damage
+  desc_jp: Lock all Wood, Heal orbs, Deal 220% damage
+  max_atk_pct: 220
+  name_en: Charged Tail Strike
+  name_jp: Charged Tail Strike
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Lock all Light, Dark orbs, Deal 220% damage
+  desc_jp: Lock all Light, Dark orbs, Deal 220% damage
+  max_atk_pct: 220
+  name_en: Wingtalon Strike
+  name_jp: Wingtalon Strike
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	[0] ESBindRandomSub -> Roar
+# 	Bind 3 random subs for 1 turns
+# 	[1] ESStatusShield -> Astalos Scale
+# 	Voids status ailments for 999 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESOrbLock -> Wingtalon Sweep
+# Condition: One-time use
+# Lock all Light, Dark orbs
+# [7] ESOrbLock -> Tailspin
+# Condition: One-time use
+# Lock all Wood, Heal orbs
+# [8] ESOrbLock -> Crest Swing
+# Condition: One-time use
+# Lock all Fire, Water orbs
+# [9] ESOrbLock -> Lightning Breath
+# Condition: One-time use
+# Lock 8 random Light, Dark, Heal orbs
+# [10] ESAttackMultihit -> Rushing Bite
+# Condition: One-time use
+# Enemy action
+# [11] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESAttackUp -> Rage
+# 	Increase damage to 120% for the next 10 turns
+# 	[1] ESInactivity -> Thunder-charged
+# 	Do nothing
+# [12] ESOrbLock -> Lightning Breath
+# Condition: 25% chance
+# Lock 12 random Fire, Water, Wood, Light, Dark, Heal orbs
+# [13] ESOrbLock -> Crest Thrash
+# Condition: 33% chance
+# Lock all Fire, Water orbs
+# [14] ESOrbLock -> Charged Tail Strike
+# Condition: 50% chance
+# Lock all Wood, Heal orbs
+# [15] ESOrbLock -> Wingtalon Strike
+# Lock all Light, Dark orbs
+# [16] ESAttackMultihit -> Spinning Dive
+# Enemy action
+# [17] ESEndPath -> ESEndPath
+# end_turn

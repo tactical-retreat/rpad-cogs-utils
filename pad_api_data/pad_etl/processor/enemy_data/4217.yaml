@@ -1,0 +1,72 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4217
+monster_name_en: Charming Patissiere, Minotauria
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb combo <= 5 damage for 2 turns
+  desc_jp: Absorb combo <= 5 damage for 2 turns
+  max_atk_pct: null
+  name_en: Looks yummy, right?
+  name_jp: Looks yummy, right?
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 1 turns
+  desc_jp: Reduce damage from all sources by 50% for 1 turns
+  max_atk_pct: null
+  name_en: Coating
+  name_jp: Coating
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 110% damage (2 hits, 55% each)
+  desc_jp: Deal 110% damage (2 hits, 55% each)
+  max_atk_pct: 110
+  name_en: White Flare
+  name_jp: White Flare
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESAbsorbCombo -> Looks yummy, right?
+# Condition: One-time use
+# Absorb combo <= 5 damage for 2 turns
+# [4] ESDamageShield -> Coating
+# Condition: 20% chance
+# Reduce damage from all sources by 50% for 1 turns
+# [5] ESAttackMultihit -> White Flare
+# Condition: 60% chance
+# Enemy action
+# [6] ESEndPath -> ESEndPath
+# end_turn

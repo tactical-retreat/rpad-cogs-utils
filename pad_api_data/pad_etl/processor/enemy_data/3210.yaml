@@ -1,0 +1,206 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3210
+monster_name_en: Light Guardian Dragon, Hokurai
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 71%
+  desc_jp: Survive attacks with 1 HP when HP > 71%
+  max_atk_pct: null
+  name_en: Resolve Light Wisdom King Dragon
+  name_jp: Resolve Light Wisdom King Dragon
+  record_type_name: PASSIVE
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 71%
+  desc_jp: Survive attacks with 1 HP when HP > 71%
+  max_atk_pct: null
+  name_en: Resolve Light Wisdom King Dragon
+  name_jp: Resolve Light Wisdom King Dragon
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 1 turns + Change all orbs to Fire, Water, Wood,
+    Light, Dark, Heal
+  desc_jp: Voids status ailments for 1 turns + Change all orbs to Fire, Water, Wood,
+    Light, Dark, Heal
+  max_atk_pct: null
+  name_en: Northern Lightning's Divine Protection + Purifying Thunderplains
+  name_jp: Northern Lightning's Divine Protection + Purifying Thunderplains
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Delay active skills by 3 turns
+  desc_jp: Delay active skills by 3 turns
+  max_atk_pct: null
+  name_en: Diverging Flash
+  name_jp: Diverging Flash
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 1 own leader for 2 turns
+  desc_jp: Bind 1 own leader for 2 turns
+  max_atk_pct: null
+  name_en: Converging Flash
+  name_jp: Converging Flash
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 5 Heal orbs, Deal 150% damage
+  desc_jp: Spawn random 5 Heal orbs, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Thunder Vajra
+  name_jp: Thunder Vajra
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Lock 5 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 100% damage
+  desc_jp: Lock 5 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Lightning Vajra
+  name_jp: Lightning Vajra
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 9
+  name_jp: HP <= 9
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 10% hp + Bind 6 random cards for 4 turns
+  desc_jp: Enemy recover 10% hp + Bind 6 random cards for 4 turns
+  max_atk_pct: null
+  name_en: Crisis Wisdom + Lightning strikes the field
+  name_jp: Crisis Wisdom + Lightning strikes the field
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 9
+  name_jp: HP <= 9
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 600% damage (6 hits, 100% each)
+  desc_jp: Deal 600% damage (6 hits, 100% each)
+  max_atk_pct: 600
+  name_en: Six Flash Thunder Blade
+  name_jp: Six Flash Thunder Blade
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 70
+  name_jp: HP <= 70
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Heal to Jammer, Deal 110% damage
+  desc_jp: Change Heal to Jammer, Deal 110% damage
+  max_atk_pct: 110
+  name_en: Bolt Vajra
+  name_jp: Bolt Vajra
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] SkillSet:
+# 	[0] ESStatusShield -> Northern Lightning's Divine Protection
+# 	Voids status ailments for 1 turns
+# 	[1] ESBoardChangeAttackBits -> Purifying Thunderplains
+# 	Change all orbs to Fire, Water, Wood, Light, Dark, Heal
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchFlag -> ESBranchFlag
+# branch
+# [9] ESBranchHP -> ESBranchHP
+# branch
+# [10] ESBranchFlag -> ESBranchFlag
+# branch
+# [11] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [12] ESBranchHP -> ESBranchHP
+# branch
+# [13] ESSkillDelay -> Diverging Flash
+# Delay active skills by 3 turns
+# [14] ESEndPath -> ESEndPath
+# end_turn
+# [15] ESBindTarget -> Converging Flash
+# Bind 1 own leader for 2 turns
+# [16] ESEndPath -> ESEndPath
+# end_turn
+# [17] ESOrbChangeAttack -> Bolt Vajra
+# Condition: When < 70% hp , one-time use
+# Change Heal to Jammer
+# [18] ESRandomSpawn -> Thunder Vajra
+# Condition: 40% chance & when Fire, Water, Wood, Light, Dark, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 5 Heal orbs
+# [19] ESOrbLock -> Lightning Vajra
+# Lock 5 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [20] ESEndPath -> ESEndPath
+# end_turn
+# [21] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [22] SkillSet:
+# 	[0] ESRecoverEnemy -> Crisis Wisdom
+# 	Enemy recover 10% hp
+# 	[1] ESBindRandom -> Lightning strikes the field
+# 	Bind 6 random cards for 4 turns
+# [23] ESEndPath -> ESEndPath
+# end_turn
+# [24] ESAttackMultihit -> Six Flash Thunder Blade
+# Enemy action
+# [25] ESEndPath -> ESEndPath
+# end_turn
+# [26] ESResolve -> Resolve Light Wisdom King Dragon
+# Survive attacks with 1 HP when HP > 71%

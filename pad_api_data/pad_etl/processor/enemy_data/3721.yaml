@@ -1,0 +1,132 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3721
+monster_name_en: Fire Orb Dragon, Kajin
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Change 4th, 5th, 6th column to Fire, Jammer orbs + Absorb combo <= 6 damage
+    for 1 turns
+  desc_jp: Change 4th, 5th, 6th column to Fire, Jammer orbs + Absorb combo <= 6 damage
+    for 1 turns
+  max_atk_pct: null
+  name_en: One-Eyed Hellfire + Seething Fire
+  name_jp: One-Eyed Hellfire + Seething Fire
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
+    orbs
+  desc_jp: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
+    orbs
+  max_atk_pct: null
+  name_en: Glare of the Fire Dragon
+  name_jp: Glare of the Fire Dragon
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change all orbs to Fire, Jammer, Deal 3000% damage
+  desc_jp: Change all orbs to Fire, Jammer, Deal 3000% damage
+  max_atk_pct: 3000
+  name_en: Final Burning Devotion
+  name_jp: Final Burning Devotion
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] SkillSet:
+# 	[0] ESColumnSpawnMulti -> One-Eyed Hellfire
+# 	Change 4th, 5th, 6th column to Fire, Jammer orbs
+# 	[1] ESAbsorbCombo -> Seething Fire
+# 	Absorb combo <= 6 damage for 1 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESBranchFlag -> ESBranchFlag
+# branch
+# [10] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [11] ESBranchHP -> ESBranchHP
+# branch
+# [12] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESDamageShield -> Insulating Firescales
+# 	Reduce damage from all sources by 75% for 4 turns
+# 	[1] ESDebuffMovetime -> Exalted Flame
+# 	Movetime 150% for 5 turns
+# [13] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESDamageShield -> Insulating Firescales
+# 	Reduce damage from all sources by 75% for 4 turns
+# 	[1] ESStatusShield -> Brave Warrior's Divine Protection
+# 	Voids status ailments for 10 turns
+# [14] ESEndPath -> ESEndPath
+# end_turn
+# [15] ESAttackUp -> Resentful Stare
+# Condition: One-time use
+# Increase damage to 150% for the next 999 turns
+# [16] ESDamageShield -> Insulating Firescales
+# Condition: One-time use
+# Reduce damage from all sources by 75% for 4 turns
+# [17] ESBranchFlag -> ESBranchFlag
+# branch
+# [18] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [19] ESRowSpawnMulti -> Raging Flash Wildfire
+# Change 3rd row to Jammer orbs
+# [20] ESBranchFlag -> ESBranchFlag
+# branch
+# [21] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [22] ESOrbChangeAttack -> Inferno Claw
+# Change Heal to Fire
+# [23] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [24] ESGravity -> Incinerator Charge
+# Player -90% HP
+# [25] ESEndPath -> ESEndPath
+# end_turn
+# [26] ESBranchFlag -> ESBranchFlag
+# branch
+# [27] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [28] ESOrbLock -> Glare of the Fire Dragon
+# Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [29] ESBoardChangeAttackBits -> Final Burning Devotion
+# Change all orbs to Fire, Jammer

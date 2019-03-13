@@ -1,0 +1,138 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3642
+monster_name_en: Azathoth, the Primal Chaos
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Enemy turn counter change to 1 when HP <= 70%
+  desc_jp: Enemy turn counter change to 1 when HP <= 70%
+  max_atk_pct: null
+  name_en: Enemy's next turn changed in anger
+  name_jp: Enemy's next turn changed in anger
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Reduce damage from Light by 50%
+  desc_jp: Reduce damage from Light by 50%
+  max_atk_pct: null
+  name_en: Light damage halved
+  name_jp: Light damage halved
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Void damage >= 30000000 for 999 turns + Locked random skyfall +100% for
+    99 turns
+  desc_jp: Void damage >= 30000000 for 999 turns + Locked random skyfall +100% for
+    99 turns
+  max_atk_pct: null
+  name_en: Absolute Original Sin + Sovereign Creator of Space-Time
+  name_jp: Absolute Original Sin + Sovereign Creator of Space-Time
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 69
+  name_jp: HP <= 69
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Bind active skills for 10 turns
+  desc_jp: Voids status ailments for 999 turns + Bind active skills for 10 turns
+  max_atk_pct: null
+  name_en: Concept of Boundless Worlds + Driven Mad by Starvation
+  name_jp: Concept of Boundless Worlds + Driven Mad by Starvation
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 69
+  name_jp: HP <= 69
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Jammer skyfall +30% for 1 turns, Deal 120% damage
+  desc_jp: Jammer skyfall +30% for 1 turns, Deal 120% damage
+  max_atk_pct: 120
+  name_en: Source of Infinite Disorder
+  name_jp: Source of Infinite Disorder
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Bind awoken skills for 1 turns, Deal 110% damage
+  desc_jp: Bind awoken skills for 1 turns, Deal 110% damage
+  max_atk_pct: 110
+  name_en: Somber, Impure Utterances
+  name_jp: Somber, Impure Utterances
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Blind orbs in specific positions for 1 turns, Deal 90% damage
+  desc_jp: Blind orbs in specific positions for 1 turns, Deal 90% damage
+  max_atk_pct: 90
+  name_en: Seething, Swirling, Frenzied Darkness
+  name_jp: Seething, Swirling, Frenzied Darkness
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  max_atk_pct: 100
+  name_en: Disable Skill
+  name_jp: Disable Skill
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	[0] ESVoidShield -> Absolute Original Sin
+# 	Void damage >= 30000000 for 999 turns
+# 	[1] ESSkyfall -> Sovereign Creator of Space-Time
+# 	Locked random skyfall +100% for 99 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchHP -> ESBranchHP
+# branch
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESStatusShield -> Concept of Boundless Worlds
+# 	Voids status ailments for 999 turns
+# 	[1] ESBindSkill -> Driven Mad by Starvation
+# 	Bind active skills for 10 turns
+# [9] ESAttackUp -> Indescribable Heart of Empty Space
+# Condition: When < 10% hp
+# Increase damage to 1000% for the next 999 turns
+# [10] ESSkyfall -> Source of Infinite Disorder
+# Condition: 25% chance
+# Jammer skyfall +30% for 1 turns
+# [11] ESBindAwoken -> Somber, Impure Utterances
+# Condition: 25% chance
+# Bind awoken skills for 1 turns
+# [12] ESBlindStickyFixed -> Seething, Swirling, Frenzied Darkness
+# Condition: 25% chance
+# Blind orbs in specific positions for 1 turns
+# [13] ESAttackSinglehit -> Disable Skill
+# Condition: 25% chance
+# Enemy action
+# [14] ESEndPath -> ESEndPath
+# end_turn
+# [15] ESTurnChangePassive -> Enemy's next turn changed in anger
+# Enemy turn counter change to 1 when HP <= 70%
+# [16] ESAttributeResist -> Light damage halved
+# Reduce damage from Light by 50%

@@ -1,0 +1,70 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 814
+monster_name_en: Yomi Mistress, Izanami
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Movetime -2s for 10 turns
+  desc_jp: Movetime -2s for 10 turns
+  max_atk_pct: null
+  name_en: Mirthless Smile
+  name_jp: Mirthless Smile
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Movetime -2s for 10 turns
+  desc_jp: Movetime -2s for 10 turns
+  max_atk_pct: null
+  name_en: Mirthless Smile
+  name_jp: Mirthless Smile
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESDebuffMovetime -> Mirthless Smile
+# Movetime -2s for 10 turns
+# [3] ESBranchHP -> ESBranchHP
+# branch
+# [4] ESBindTyping -> Divine Wrath
+# Condition: One-time use
+# Bind God cards for 1~3 turns
+# [5] ESBranchFlag -> ESBranchFlag
+# branch
+# [6] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [7] ESPoisonChangeRandom -> An Invitation to Corruption
+# Change Random 8 to Poison
+# [8] ESBranchFlag -> ESBranchFlag
+# branch
+# [9] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [10] ESOrbChangeAttack -> Despairing Lament
+# Change Random to Jammer
+# [11] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [12] ESAttackMultihit -> Fires of Deicide
+# Enemy action
+# [13] ESAttackMultihit -> Fires of Deicide
+# Enemy action

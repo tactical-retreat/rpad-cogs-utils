@@ -1,0 +1,57 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 786
+monster_name_en: Mystic Astro Dragon, Nebradisk
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  max_atk_pct: null
+  name_en: Wisdom of the Ancients
+  name_jp: Wisdom of the Ancients
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  max_atk_pct: null
+  name_en: Wisdom of the Ancients
+  name_jp: Wisdom of the Ancients
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESStatusShield -> Wisdom of the Ancients
+# Voids status ailments for 999 turns
+# [5] ESSetCounterIf -> ESSetCounterIf
+# set_counter_if
+# [6] ESCountdown -> ESCountdown
+# countdown
+# [7] ESAttackMultihit -> Annihilating Light of the Pleiades 
+# Enemy action

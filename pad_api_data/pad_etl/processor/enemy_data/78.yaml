@@ -1,0 +1,44 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 78
+monster_name_en: Flame Golem
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 20
+############################################################
+!SkillRecordListing
+level: 20
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 2000% damage (2 hits, 1000% each)
+  desc_jp: Deal 2000% damage (2 hits, 1000% each)
+  max_atk_pct: 2000
+  name_en: Boost Knuckle
+  name_jp: Boost Knuckle
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESAttackMultihit -> Boost Knuckle
+# Enemy action
+# [4] ESEndPath -> ESEndPath
+# end_turn

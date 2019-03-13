@@ -1,0 +1,56 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 661
+monster_name_en: Chaos Blizzard Dragon
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Opening mouth...
+  name_jp: Opening mouth...
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 25
+  name_jp: HP <= 25
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 400% damage
+  desc_jp: Deal 400% damage
+  max_atk_pct: 400
+  name_en: Chaos Ray
+  name_jp: Chaos Ray
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESInactivity -> Opening mouth...
+# Condition: One-time use
+# Do nothing
+# [2] ESAttackMultihit -> Chaos Ray
+# Condition: When < 25% hp
+# Enemy action

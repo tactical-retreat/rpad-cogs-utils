@@ -1,0 +1,112 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 656
+monster_name_en: Loki, the Finisher
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Leader changes to random sub for 3 turns
+  desc_jp: Leader changes to random sub for 3 turns
+  max_atk_pct: null
+  name_en: Sly Trick
+  name_jp: Sly Trick
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 120% damage (2 hits, 60% each)
+  desc_jp: Deal 120% damage (2 hits, 60% each)
+  max_atk_pct: 120
+  name_en: Fear Gift
+  name_jp: Fear Gift
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 79
+  name_jp: HP <= 79
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Movetime -2s for 3 turns
+  desc_jp: Movetime -2s for 3 turns
+  max_atk_pct: null
+  name_en: Steel Puzzle
+  name_jp: Steel Puzzle
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 20
+  name_jp: HP <= 20
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Spawn random 6 Mortal Poison orbs, Deal 200% damage
+  desc_jp: Spawn random 6 Mortal Poison orbs, Deal 200% damage
+  max_atk_pct: 200
+  name_en: Black Pain
+  name_jp: Black Pain
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESLeaderSwap -> Sly Trick
+# Condition: One-time use
+# Leader changes to random sub for 3 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchCard -> ESBranchCard
+# branch
+# [7] ESBranchHP -> ESBranchHP
+# branch
+# [8] ESRandomSpawn -> Black Pain
+# Condition: When < 20% hp & when Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison orbs are on the board
+# Spawn random 6 Mortal Poison orbs
+# [9] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESBlind -> Surprise Attack
+# 	Blind all orbs on the board
+# 	[1] ESChangeAttribute -> Transformation
+# 	Change own attribute to random one of Fire, Water, Wood
+# [10] ESAttackMultihit -> Fear Gift
+# Condition: 60% chance
+# Enemy action
+# [11] ESEndPath -> ESEndPath
+# end_turn
+# [12] ESBranchFlag -> ESBranchFlag
+# branch
+# [13] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [14] ESRecoverPlayer -> My friend! How've you been?
+# Player recover 100% hp
+# [15] ESBranchFlag -> ESBranchFlag
+# branch
+# [16] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [17] ESDebuffMovetime -> Steel Puzzle
+# Movetime -2s for 3 turns

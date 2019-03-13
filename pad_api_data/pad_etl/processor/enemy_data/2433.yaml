@@ -1,0 +1,169 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2433
+monster_name_en: Dark Dog Dragon, Chinwandra
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 60% damage
+  desc_jp: Blind all orbs on the board, Deal 60% damage
+  max_atk_pct: 60
+  name_en: Stealth Eye
+  name_jp: Stealth Eye
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids player buff effects
+  desc_jp: Voids player buff effects
+  max_atk_pct: null
+  name_en: Lovely Pose
+  name_jp: Lovely Pose
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Lock 4 random Fire, Water, Wood, Light, Dark orbs, Deal 100% damage
+  desc_jp: Lock 4 random Fire, Water, Wood, Light, Dark orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Skipping about
+  name_jp: Skipping about
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Bind 1 random cards for 1 turns
+  desc_jp: Bind 1 random cards for 1 turns
+  max_atk_pct: null
+  name_en: Shadow Bind
+  name_jp: Shadow Bind
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  max_atk_pct: 100
+  name_en: Snarl
+  name_jp: Snarl
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 120% damage (3 hits, 40% each)
+  desc_jp: Deal 120% damage (3 hits, 40% each)
+  max_atk_pct: 120
+  name_en: Abyss Corona
+  name_jp: Abyss Corona
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 69
+  name_jp: HP <= 69
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids player buff effects
+  desc_jp: Voids player buff effects
+  max_atk_pct: null
+  name_en: Lovely Pose
+  name_jp: Lovely Pose
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 9
+  name_jp: HP <= 9
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Voids player buff effects
+  desc_jp: Voids player buff effects
+  max_atk_pct: null
+  name_en: Lovely Pose
+  name_jp: Lovely Pose
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 70
+  name_jp: HP <= 70
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Leader changes to random sub for 1 turns
+  desc_jp: Leader changes to random sub for 1 turns
+  max_atk_pct: null
+  name_en: Whim
+  name_jp: Whim
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 10
+  name_jp: HP <= 10
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 270% damage (3 hits, 90% each)
+  desc_jp: Deal 270% damage (3 hits, 90% each)
+  max_atk_pct: 270
+  name_en: Meteorite
+  name_jp: Meteorite
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESBlind -> Stealth Eye
+# Blind all orbs on the board
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESDispel -> Lovely Pose
+# Voids player buff effects
+# [9] ESBranchHP -> ESBranchHP
+# branch
+# [10] ESAttackMultihit -> Meteorite
+# Condition: When < 10% hp
+# Enemy action
+# [11] ESOrbLock -> Skipping about
+# Condition: 25% chance
+# Lock 4 random Fire, Water, Wood, Light, Dark orbs
+# [12] ESBindRandom -> Shadow Bind
+# Condition: 25% chance
+# Bind 1 random cards for 1 turns
+# [13] ESAttackMultihit -> Snarl
+# Condition: 25% chance
+# Enemy action
+# [14] ESAttackMultihit -> Abyss Corona
+# Condition: 25% chance
+# Enemy action
+# [15] ESEndPath -> ESEndPath
+# end_turn
+# [16] ESBranchFlag -> ESBranchFlag
+# branch
+# [17] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [18] ESLeaderSwap -> Whim
+# Condition: When < 70% hp
+# Leader changes to random sub for 1 turns

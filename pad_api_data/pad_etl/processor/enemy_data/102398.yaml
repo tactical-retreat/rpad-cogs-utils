@@ -1,0 +1,155 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 102398
+monster_name_en: Alt. Awoken Surtr
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Fire by 50%
+  desc_jp: Reduce damage from Fire by 50%
+  max_atk_pct: null
+  name_en: Fire Halve
+  name_jp: Fire Halve
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  max_atk_pct: null
+  name_en: Ragnarok Victor
+  name_jp: Ragnarok Victor
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Fire to Jammer, Deal 120% damage
+  desc_jp: Change Fire to Jammer, Deal 120% damage
+  max_atk_pct: 120
+  name_en: Black Flame
+  name_jp: Black Flame
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Spawn random 6 Fire orbs, Deal 130% damage
+  desc_jp: Spawn random 6 Fire orbs, Deal 130% damage
+  max_atk_pct: 130
+  name_en: Laevateinn
+  name_jp: Laevateinn
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 79
+  name_jp: HP <= 79
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Delay active skills by 2 turns
+  desc_jp: Delay active skills by 2 turns
+  max_atk_pct: null
+  name_en: Muspell's Army
+  name_jp: Muspell's Army
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Fire skyfall +25% for 99 turns + Change own attribute to Fire
+  desc_jp: Fire skyfall +25% for 99 turns + Change own attribute to Fire
+  max_atk_pct: null
+  name_en: Overheat + Body burns up even more
+  name_jp: Overheat + Body burns up even more
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 20
+  name_jp: HP <= 20
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 280% damage (4 hits, 70% each)
+  desc_jp: Deal 280% damage (4 hits, 70% each)
+  max_atk_pct: 280
+  name_en: Last Flame
+  name_jp: Last Flame
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESStatusShield -> Ragnarok Victor
+# Condition: One-time use
+# Voids status ailments for 999 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchCard -> ESBranchCard
+# branch
+# [7] ESAttackMultihit -> Last Flame
+# Condition: When < 20% hp
+# Enemy action
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESBranchHP -> ESBranchHP
+# branch
+# [10] ESRandomSpawn -> Corona
+# Condition: One-time use & when Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Change all orbs to Fire
+# [11] ESOrbChangeAttack -> Black Flame
+# Condition: 50% chance
+# Change Fire to Jammer
+# [12] ESRandomSpawn -> Laevateinn
+# Condition: When water, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board
+# Spawn random 6 Fire orbs
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESBranchFlag -> ESBranchFlag
+# branch
+# [15] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [16] ESAttackMultihit -> You think you can beat me with that?
+# Enemy action
+# [17] ESBranchFlag -> ESBranchFlag
+# branch
+# [18] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [19] ESSkillDelay -> Muspell's Army
+# Delay active skills by 2 turns
+# [20] ESBranchFlag -> ESBranchFlag
+# branch
+# [21] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [22] SkillSet:
+# 	[0] ESSkyfall -> Overheat
+# 	Fire skyfall +25% for 99 turns
+# 	[1] ESChangeAttribute -> Body burns up even more
+# 	Change own attribute to Fire
+# [23] ESEndPath -> ESEndPath
+# end_turn
+# [24] ESAttributeResist -> Fire Halve
+# Reduce damage from Fire by 50%

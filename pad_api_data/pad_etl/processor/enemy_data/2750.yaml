@@ -1,0 +1,112 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2750
+monster_name_en: Awoken Apollo
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 50%
+  desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
+  name_en: Apollo Resolve
+  name_jp: Apollo Resolve
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Absorb combo <= 7 damage for 3 turns + Voids status ailments for 3 turns
+  desc_jp: Absorb combo <= 7 damage for 3 turns + Voids status ailments for 3 turns
+  max_atk_pct: null
+  name_en: Celestial Prelude + I'd be glad if you could listen quietly
+  name_jp: Celestial Prelude + I'd be glad if you could listen quietly
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 10
+  name_jp: HP <= 10
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Player -500% HP
+  desc_jp: Player -500% HP
+  max_atk_pct: null
+  name_en: Glorious Postlude
+  name_jp: Glorious Postlude
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESAbsorbCombo -> Celestial Prelude
+# 	Absorb combo <= 7 damage for 3 turns
+# 	[1] ESStatusShield -> I'd be glad if you could listen quietly
+# 	Voids status ailments for 3 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESGravity -> Glorious Postlude
+# Condition: When < 10% hp
+# Player -500% HP
+# [7] ESBranchFlag -> ESBranchFlag
+# branch
+# [8] ESRowSpawnMulti -> Holy Tree's Staff
+# Condition: One-time use
+# Change 1st, 3rd, 5th row to Light orbs, 2nd, 4th row to Wood orbs
+# [9] ESBoardChangeAttackBits -> Six Strings' Timbre
+# Condition: One-time use
+# Change all orbs to Fire, Water, Wood, Light, Dark, Heal
+# [10] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [11] SkillSet:
+# 	[0] ESOrbChangeAttack -> Last Movement - Flash
+# 	Change Random to Light
+# 	[1] ESDamageShield -> The show is over...
+# 	Reduce damage from all sources by 50% for 3 turns
+# [12] ESBranchFlag -> ESBranchFlag
+# branch
+# [13] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [14] ESBindTyping -> Blinding Chain of God's Ruin
+# Bind God cards for 5 turns
+# [15] ESBindAttribute -> Blinding Chain of Devil's Ruin
+# Bind Dark cards for 5 turns
+# [16] ESBindTarget -> Blinding Chain of Good & Evil's Ruin
+# Bind 1 both leaders for 5 turns
+# [17] ESBranchFlag -> ESBranchFlag
+# branch
+# [18] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [19] ESBoardChangeAttackBits -> Hyacinth's Lamentation
+# Change all orbs to Fire, Wood, Light, Jammer
+# [20] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [21] ESOrbChangeAttack -> Sunlight Gift
+# Change Jammer to Heal
+# [22] ESOrbChangeAttack -> Sunlight Glow
+# Change Wood to Fire
+# [23] ESOrbChangeAttack -> Sunlight Tears
+# Change Fire to Water
+# [24] ESOrbLock -> Sunlight Flash
+# Lock all Light orbs
+# [25] ESBoardChangeAttackBits -> Hyacinth's Lamentation
+# Change all orbs to Fire, Wood, Light, Jammer
+# [26] ESResolve -> Apollo Resolve
+# Survive attacks with 1 HP when HP > 50%

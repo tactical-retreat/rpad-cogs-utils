@@ -1,0 +1,88 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 100091
+monster_name_en: Alt. Siren
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Change all orbs to Heal
+  desc_jp: Change all orbs to Heal
+  max_atk_pct: null
+  name_en: Guard Stance-Water
+  name_jp: Guard Stance-Water
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 6th column to Poison orbs
+  desc_jp: Change 6th column to Poison orbs
+  max_atk_pct: null
+  name_en: Noise Affliction
+  name_jp: Noise Affliction
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind 1 subs for 2 turns, Deal 80% damage
+  desc_jp: Bind 1 subs for 2 turns, Deal 80% damage
+  max_atk_pct: 80
+  name_en: The Sound of Confinement
+  name_jp: The Sound of Confinement
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Spawn random 1 Water orbs, Deal 100% damage
+  desc_jp: Spawn random 1 Water orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Sparkling Voice
+  name_jp: Sparkling Voice
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESRandomSpawn -> Guard Stance-Water
+# Condition: When fire orbs are on the board
+# Change all orbs to Heal
+# [5] ESBindAttack -> The Sound of Confinement
+# Bind 1 subs for 2 turns
+# [6] ESEndPath -> ESEndPath
+# end_turn
+# [7] ESColumnSpawnMulti -> Noise Affliction
+# Condition: One-time use
+# Change 6th column to Poison orbs
+# [8] ESBindAttack -> The Sound of Confinement
+# Condition: 50% chance
+# Bind 1 subs for 2 turns
+# [9] ESRandomSpawn -> Sparkling Voice
+# Condition: When fire, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board
+# Spawn random 1 Water orbs
+# [10] ESEndPath -> ESEndPath
+# end_turn

@@ -1,0 +1,62 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 837
+monster_name_en: Mystery of Toyama Bay, Firefly Squid
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Blind all orbs on the board
+  desc_jp: Blind all orbs on the board
+  max_atk_pct: null
+  name_en: Squid Ink
+  name_jp: Squid Ink
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 70
+  name_jp: HP <= 70
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 80% damage
+  desc_jp: Change Random to Jammer, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Illuminate
+  name_jp: Illuminate
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESNone -> ESNone
+# None
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESOrbChangeAttack -> Illuminate
+# Condition: When < 70% hp , one-time use
+# Change Random to Jammer
+# [5] ESBlind -> Squid Ink
+# Condition: 40% chance
+# Blind all orbs on the board

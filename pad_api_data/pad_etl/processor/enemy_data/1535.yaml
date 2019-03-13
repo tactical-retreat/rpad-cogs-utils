@@ -1,0 +1,109 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1535
+monster_name_en: Awoken Ceres
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Light, Dark by 50%
+  desc_jp: Reduce damage from Light, Dark by 50%
+  max_atk_pct: null
+  name_en: '*****'
+  name_jp: '*****'
+  record_type_name: PASSIVE
+- !SkillRecord
+  desc_en: Bind active skills for 5 turns
+  desc_jp: Bind active skills for 5 turns
+  max_atk_pct: null
+  name_en: Can you escape me?
+  name_jp: Can you escape me?
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Bind own leader for 1~2 turns, Deal 75% damage
+  desc_jp: Bind own leader for 1~2 turns, Deal 75% damage
+  max_atk_pct: 75
+  name_en: Bonds of the Sacred Tree
+  name_jp: Bonds of the Sacred Tree
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Bind 3 subs for 1~2 turns, Deal 50% damage
+  desc_jp: Bind 3 subs for 1~2 turns, Deal 50% damage
+  max_atk_pct: 50
+  name_en: Cage of Thorns
+  name_jp: Cage of Thorns
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 120%~160% damage (3~4 hits, 40% each)
+  desc_jp: Deal 120%~160% damage (3~4 hits, 40% each)
+  max_atk_pct: 160
+  name_en: Whiplash
+  name_jp: Whiplash
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Enemy recover 100% hp
+  desc_jp: Enemy recover 100% hp
+  max_atk_pct: null
+  name_en: Soul Cure
+  name_jp: Soul Cure
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESBindSkill -> Can you escape me?
+# Condition: One-time use
+# Bind active skills for 5 turns
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBoardChangeAttackFlat -> Soul Burst
+# Condition: One-time use
+# Change all orbs to Wood, Heal
+# [7] ESRecoverEnemy -> Soul Cure
+# Condition: When < 50% hp
+# Enemy recover 100% hp
+# [8] ESRecoverEnemy -> Soul Cure
+# Condition: When < 50% hp
+# Enemy recover 100% hp
+# [9] ESBindAttack -> Bonds of the Sacred Tree
+# Condition: 20% chance
+# Bind own leader for 1~2 turns
+# [10] ESBindAttack -> Cage of Thorns
+# Condition: 20% chance
+# Bind 3 subs for 1~2 turns
+# [11] ESAttackMultihit -> Whiplash
+# Condition: 60% chance
+# Enemy action
+# [12] ESAttributeResist -> *****
+# Reduce damage from Light, Dark by 50%

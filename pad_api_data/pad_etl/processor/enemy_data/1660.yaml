@@ -1,0 +1,190 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1660
+monster_name_en: Burning God, Set
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Locked random skyfall +20% for 10
+    turns + Absorb combo <= 9 damage for 1 turns
+  desc_jp: Voids status ailments for 999 turns + Locked random skyfall +20% for 10
+    turns + Absorb combo <= 9 damage for 1 turns
+  max_atk_pct: null
+  name_en: Ard al Marad Difae + Kafr Matar + Hajmat Mueakasa Aiqtirah
+  name_jp: Ard al Marad Difae + Kafr Matar + Hajmat Mueakasa Aiqtirah
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Movetime -4s for 4 turns
+  desc_jp: Movetime -4s for 4 turns
+  max_atk_pct: null
+  name_en: Tahdhir Waqt
+  name_jp: Tahdhir Waqt
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Absorb damage >= 5000000 damage for 4 turns
+  desc_jp: Absorb damage >= 5000000 damage for 4 turns
+  max_atk_pct: null
+  name_en: Tahdhir Difae
+  name_jp: Tahdhir Difae
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 500% damage (5 hits, 100% each)
+  desc_jp: Deal 500% damage (5 hits, 100% each)
+  max_atk_pct: 500
+  name_en: Easifah Khms Sayf
+  name_jp: Easifah Khms Sayf
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 99
+  name_jp: HP <= 99
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 2nd, 5th column to Fire orbs + Spawn random 5 Bomb orbs
+  desc_jp: Change 2nd, 5th column to Fire orbs + Spawn random 5 Bomb orbs
+  max_atk_pct: null
+  name_en: Athnan nar Sayf + Qunbula Ainfijar
+  name_jp: Athnan nar Sayf + Qunbula Ainfijar
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Heal to Jammer, Deal 80% damage
+  desc_jp: Change Heal to Jammer, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Yahtariq Ramad
+  name_jp: Yahtariq Ramad
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Player -75% HP + Increase damage to 150% for the next 1 turns
+  desc_jp: Player -75% HP + Increase damage to 150% for the next 1 turns
+  max_atk_pct: null
+  name_en: Jadhibiatan Hujum + Aiqtirah Ghadab
+  name_jp: Jadhibiatan Hujum + Aiqtirah Ghadab
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 99
+  name_jp: HP <= 99
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Change 2nd, 5th column to Fire orbs + Spawn random 5 Bomb orbs
+  desc_jp: Change 2nd, 5th column to Fire orbs + Spawn random 5 Bomb orbs
+  max_atk_pct: null
+  name_en: Athnan nar Sayf + Qunbula Ainfijar
+  name_jp: Athnan nar Sayf + Qunbula Ainfijar
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Change Heal to Jammer, Deal 80% damage
+  desc_jp: Change Heal to Jammer, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Yahtariq Ramad
+  name_jp: Yahtariq Ramad
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Deal 105% damage (3 hits, 35% each)
+  desc_jp: Deal 105% damage (3 hits, 35% each)
+  max_atk_pct: 105
+  name_en: Shaeila Thlath Hajmat
+  name_jp: Shaeila Thlath Hajmat
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] SkillSet:
+# 	[0] ESStatusShield -> Ard al Marad Difae
+# 	Voids status ailments for 999 turns
+# 	[1] ESSkyfall -> Kafr Matar
+# 	Locked random skyfall +20% for 10 turns
+# 	[2] ESAbsorbCombo -> Hajmat Mueakasa Aiqtirah
+# 	Absorb combo <= 9 damage for 1 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchFlag -> ESBranchFlag
+# branch
+# [9] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [10] ESBranchHP -> ESBranchHP
+# branch
+# [11] ESDebuffMovetime -> Tahdhir Waqt
+# Movetime -4s for 4 turns
+# [12] ESEndPath -> ESEndPath
+# end_turn
+# [13] ESBranchHP -> ESBranchHP
+# branch
+# [14] ESBranchHP -> ESBranchHP
+# branch
+# [15] SkillSet:
+# 	Condition: 25% chance
+# 	[0] ESColumnSpawnMulti -> Athnan nar Sayf
+# 	Change 2nd, 5th column to Fire orbs
+# 	[1] ESBombRandomSpawn -> Qunbula Ainfijar
+# 	Spawn random 5 Bomb orbs
+# [16] ESOrbChangeAttackBits -> Yahtariq Ramad
+# Condition: 25% chance
+# Change Heal to Jammer
+# [17] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESGravity -> Jadhibiatan Hujum
+# 	Player -75% HP
+# 	[1] ESAttackUp -> Aiqtirah Ghadab
+# 	Increase damage to 150% for the next 1 turns
+# [18] ESAttackMultihit -> Shaeila Thlath Hajmat
+# Condition: 25% chance
+# Enemy action
+# [19] ESEndPath -> ESEndPath
+# end_turn
+# [20] ESAbsorbThreshold -> Tahdhir Difae
+# Absorb damage >= 5000000 damage for 4 turns
+# [21] ESEndPath -> ESEndPath
+# end_turn
+# [22] ESAttackMultihit -> Easifah Khms Sayf
+# Enemy action
+# [23] ESEndPath -> ESEndPath
+# end_turn

@@ -1,0 +1,59 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2816
+monster_name_en: Pet Caretaking's Club, Red Riding Hood
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Do nothing + Reduce self HP to 0
+  desc_jp: Do nothing + Reduce self HP to 0
+  max_atk_pct: null
+  name_en: 'I''m the Red Riding Hood
+
+    from the Caretaking''s Club! + Nice to meet you!'
+  name_jp: 'I''m the Red Riding Hood
+
+    from the Caretaking''s Club! + Nice to meet you!'
+  record_type_name: PREEMPT
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Do nothing + Reduce self HP to 0
+  desc_jp: Do nothing + Reduce self HP to 0
+  max_atk_pct: null
+  name_en: 'I''m the Red Riding Hood
+
+    from the Caretaking''s Club! + Nice to meet you!'
+  name_jp: 'I''m the Red Riding Hood
+
+    from the Caretaking''s Club! + Nice to meet you!'
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] SkillSet:
+# 	[0] ESInactivity -> I'm the Red Riding Hood
+# from the Caretaking's Club!
+# 	Do nothing
+# 	[1] ESEndBattle -> Nice to meet you!
+# 	Reduce self HP to 0
