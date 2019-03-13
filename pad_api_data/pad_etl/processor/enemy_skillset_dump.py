@@ -249,11 +249,11 @@ def load_summary_as_dump_text(card: BookCard, monster_level: int):
     monster_id = card.card_id
     summary = load_summary(monster_id)
     if not summary:
-        return 'Error! failed to find enemy data for {} {}'.format(card.name, monster_id)
+        return 'This monster will only use basic attacks (or computing enemy skills failed)'
 
     skill_data = summary.data_for_level(monster_level)
     if not skill_data:
-        return 'Error! failed to find correct enemy level data for {} {} {}'.format(card.name, monster_id, monster_level)
+        return 'This monster will only use basic attacks (or missing data for level {})'.format(monster_level)
 
     enemy_info = skill_data.overrides or skill_data.records
     if not enemy_info:
