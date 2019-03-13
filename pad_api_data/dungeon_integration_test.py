@@ -42,8 +42,6 @@ def run_test(args):
     processed_input_dir = os.path.join(args.input_dir, 'processed')
 
     output_dir = args.output_dir
-    new_output_dir = os.path.join(output_dir, 'new')
-    pathlib.Path(new_output_dir).mkdir(parents=True, exist_ok=True)
     golden_output_dir = os.path.join(output_dir, 'golden')
     pathlib.Path(golden_output_dir).mkdir(parents=True, exist_ok=True)
 
@@ -75,25 +73,12 @@ def run_test(args):
             for floor in dungeon.floors:
                 floor_id = floor.floor_number
                 file_name = '{}_{}.txt'.format(dungeon_id, floor_id)
-                with open(os.path.join(new_output_dir, file_name), encoding='utf-8', mode='w') as f:
+                with open(os.path.join(golden_output_dir, file_name), encoding='utf-8', mode='w') as f:
                     f.write(flatten_data(wave_data, dungeon, db, limit_floor_id=floor_id))
         else:
             file_name = '{}.txt'.format(dungeon_id)
-            with open(os.path.join(new_output_dir, file_name), encoding='utf-8', mode='w') as f:
+            with open(os.path.join(golden_output_dir, file_name), encoding='utf-8', mode='w') as f:
                 f.write(flatten_data(wave_data, dungeon, db))
-
-    for file in os.listdir(new_output_dir):
-        new_file = os.path.join(new_output_dir, file)
-        golden_file = os.path.join(golden_output_dir, file)
-        if not os.path.exists(golden_file):
-            print('golden file does not exist, creating', golden_file)
-            shutil.copy(new_file, golden_file)
-            continue
-
-        if not filecmp.cmp(new_file, golden_file, shallow=False):
-            print('ERROR')
-            print('golden file differs from new file for', file)
-            print('ERROR')
 
 
 def flatten_data(wave_data, dungeon_data, db, limit_floor_id=None):
