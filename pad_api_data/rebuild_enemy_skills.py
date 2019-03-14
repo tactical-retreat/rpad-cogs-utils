@@ -19,6 +19,8 @@ def parse_args():
     inputGroup = parser.add_argument_group("Input")
     inputGroup.add_argument("--input_dir", required=True,
                             help="Path to a folder where the input data is")
+    inputGroup.add_argument("--card_id", required=False,
+                            help="Process only this card")
 
     helpGroup = parser.add_argument_group("Help")
     helpGroup.add_argument("-h", "--help", action="help",
@@ -58,6 +60,8 @@ def run(args):
     db.load_database(skip_skills=True, skip_bonus=True, skip_extra=True)
 
     for card in db.cards:
+        if args.card_id and card.card.card_id != int(args.card_id):
+            continue
         try:
             process_card(card)
         except Exception as ex:
