@@ -1,0 +1,51 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 931
+monster_name_en: Venom-Enhanced Bane
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute below actions in order repeatedly
+  name_jp: Execute below actions in order repeatedly
+  record_type_name: DIVIDER
+- !SkillRecord
+  desc_en: Deal 200% damage
+  desc_jp: Deal 200% damage
+  max_atk_pct: 200
+  name_en: Brute Strength
+  name_jp: Brute Strength
+  record_type_name: ACTION
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 2 turns
+  desc_jp: Increase damage to 200% for the next 2 turns
+  max_atk_pct: null
+  name_en: Venom Strength
+  name_jp: Venom Strength
+  record_type_name: ACTION
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESAttackUp -> Venom Strength
+# Increase damage to 200% for the next 2 turns
+# [4] ESAttackMultihit -> Brute Strength
+# Enemy action
