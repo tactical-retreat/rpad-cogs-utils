@@ -105,8 +105,8 @@ class EnemySummary(object):
 def behavior_to_skillrecord(record_type: RecordType, action: Union[ESAction, ESLogic]) -> SkillRecord:
     name = action.name
     description = action.full_description()
-    min_damage = 0
-    max_damage = 0
+    min_damage = None
+    max_damage = None
     usage_pct = 100
     if type(action) == ESSkillSet:
         name = ' + '.join(map(lambda s: s.name, action.skill_list))
