@@ -44,23 +44,24 @@ db_wrapper = db_util.DbWrapper(dry_run=False)
 db_wrapper.connect(db_config)
 
 
-SELECT_QUERY = 'SELECT * FROM wave_data'
-with db_wrapper.connection.cursor() as cursor:
-    output_file = os.path.join(args.processed_dir, 'wave_data.zip')
-    print('writing full wave data to', output_file)
-
-    raw_file = None
-    with tempfile.NamedTemporaryFile(mode='w', delete=False) as tmp_file:
-        cursor.execute(SELECT_QUERY)
-        dump_cursor_to_csv(cursor, tmp_file)
-        raw_file = tmp_file.name
-
-    print('finished dumping to', raw_file)
-
-    with zipfile.ZipFile(output_file, mode='w', compression=zipfile.ZIP_DEFLATED) as wave_zip:
-        wave_zip.write(raw_file, arcname='wave_data.csv')
-
-    os.remove(raw_file)
+# Full wave data dump disabled for now.
+# It has some non-obvious bug that is sucking up all the memory on the box.
+# SELECT_QUERY = 'SELECT * FROM wave_data'
+# with db_wrapper.connection.cursor() as cursor:
+#     output_file = os.path.join(args.processed_dir, 'wave_data.zip')
+#     print('writing full wave data to', output_file)
+#
+#     with tempfile.NamedTemporaryFile(mode='w', delete=False) as tmp_file:
+#         cursor.execute(SELECT_QUERY)
+#         dump_cursor_to_csv(cursor, tmp_file)
+#         raw_file = tmp_file.name
+#
+#     print('finished dumping to', raw_file)
+#
+#     with zipfile.ZipFile(output_file, mode='w', compression=zipfile.ZIP_DEFLATED) as wave_zip:
+#         wave_zip.write(raw_file, arcname='wave_data.csv')
+#
+#     os.remove(raw_file)
 
 
 SELECT_QUERY = """

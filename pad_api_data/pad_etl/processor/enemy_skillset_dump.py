@@ -3,10 +3,10 @@ from typing import List, Optional, TextIO, Union
 import os
 import yaml
 
+from pad_etl.processor import debug_utils
 from pad_etl.processor.enemy_skillset_processor import ProcessedSkillset
 from ..data.card import BookCard
 from .enemy_skillset import *
-from . import enemy_skillset
 
 
 class RecordType(Enum):
@@ -168,6 +168,13 @@ def flatten_skillset(level: int, skillset: ProcessedSkillset) -> SkillRecordList
         for sub_item in item.skills:
             records.append(skillitem_to_skillrecord(RecordType.ACTION, sub_item))
 
+    if skillset.repeating_skill_groups:
+        records.append(create_divider('Execute below actions in order repeatedly'))
+
+    for item in skillset.repeating_skill_groups:
+        for sub_item in item.skills:
+            records.append(skillitem_to_skillrecord(RecordType.ACTION, sub_item))
+
     return SkillRecordListing(level=level, records=records)
 
 
@@ -259,7 +266,7 @@ def dump_summary_to_file(enemy_summary: EnemySummary, enemy_behavior: List):
         if enemy_behavior:
             f.write('{}\n'.format(_header('Raw Behavior')))
             for idx, behavior in enumerate(enemy_behavior):
-                behavior_str = enemy_skillset.simple_dump_obj(behavior)
+                behavior_str = debug_utils.simple_dump_obj(behavior)
                 behavior_str = behavior_str.replace('\n', '\n# ').rstrip('#').rstrip()
                 f.write('# [{}] {}\n'.format(idx + 1, behavior_str, '\n'))
 

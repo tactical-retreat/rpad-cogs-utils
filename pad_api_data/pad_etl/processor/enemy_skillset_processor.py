@@ -88,8 +88,6 @@ class Context(object):
         self.onetime_flags = 0
         # Special flag that is modified by the 'counter' operations.
         self.counter = 0
-        # If the monster is counting down
-        self.countdown = False
         # Current HP value.
         self.hp = 100
         # Monster level, toggles some behaviors.
@@ -98,10 +96,9 @@ class Context(object):
         self.enemies = 999
         # Cards on the team.
         self.cards = set()
+        # TODO: implement enemy status flags correctly
         # If the monster is currently enraged, for how long.
         self.enraged = None
-        # If the monster currently has a shield
-        self.damage_shield = 0
 
     def reset(self):
         self.is_preemptive = False
@@ -118,40 +115,6 @@ class Context(object):
             elif self.enraged < 0:
                 # count up enraged cooldown turns
                 self.enraged += 1
-        if self.damage_shield > 0:
-            # count down shield turns
-            self.damage_shield -= 1
-        if self.countdown and self.counter > 0:
-            self.counter -= 1
-
-
-def apply_skill_effects(ctx: Context, behavior):
-    """
-    Check if the skill is allowed to be used, and apply appropriate changes to ctx
-    """
-    b_type = type(behavior)
-    if b_type == ESAttackUp or b_type == ESAttackUpStatus:
-        if ctx.enraged is None:
-            if behavior.turn_cooldown is None:
-                ctx.enraged = behavior.turns
-                return True
-            else:
-                ctx.enraged = -behavior.turn_cooldown + 1
-                return False
-        else:
-            if ctx.enraged == 0:
-                # turn cooldown has expired, enrage
-                ctx.enraged = behavior.turns
-                return True
-            else:
-                return False
-    if b_type == ESDamageShield:
-        if ctx.damage_shield == 0:
-            ctx.damage_shield = behavior.turns
-            return True
-        else:
-            return False
-    return True
 
 
 def loop_through(ctx: Context, behaviors: List[Any]):
@@ -182,6 +145,24 @@ def loop_through(ctx: Context, behaviors: List[Any]):
         b = behaviors[idx]
         b_type = type(b)
 
+        # Processing for enrages.
+        if b_type == ESAttackUp or b_type == ESAttackUpStatus:
+            if ctx.enraged is None:
+                if b.turn_cooldown is None:
+                    ctx.enraged = b.turns
+                    # TODO: this should append to results (assuming flags are checked)
+                else:
+                    ctx.enraged = -b.turn_cooldown + 1
+                    idx += 1
+                    continue
+            else:
+                if ctx.enraged == 0:
+                    ctx.enraged = b.turns
+                    # TODO: this should append to results (assuming flags are checked)
+                else:
+                    idx += 1
+                    continue
+
         # The current action could be None because we nulled it out in preprocessing, just continue.
         if b is None or b_type == ESNone:
             idx += 1
@@ -210,9 +191,6 @@ def loop_through(ctx: Context, behaviors: List[Any]):
                 # This check might be wrong? This is checking if all flags are unset, maybe just one needs to be unset.
                 if cond.one_time:
                     if not ctx.onetime_flags & cond.one_time:
-                        if not apply_skill_effects(ctx, b):
-                            idx += 1
-                            continue
                         ctx.onetime_flags = ctx.onetime_flags | cond.one_time
                         results.append(b)
                         return results
@@ -221,9 +199,6 @@ def loop_through(ctx: Context, behaviors: List[Any]):
                         continue
 
                 if cond.ai == 100 and b_type != ESDispel:
-                    if not apply_skill_effects(ctx, b):
-                        idx += 1
-                        continue
                     # This always executes so it is a terminal action.
                     results.append(b)
                     return results
@@ -323,8 +298,14 @@ def loop_through(ctx: Context, behaviors: List[Any]):
             idx += 1
             continue
 
-        if b_type == ESCountdown:
-           ctx.countdown = True
+        # TODO: not implemented correctly
+        # if b_type == ESCountdown:
+        #    if ctx.counter == 0:
+        #        idx += 1
+        #        continue
+        #    else:
+        #        ctx.counter -= 1
+        #        break
 
         raise ValueError('unsupported operation:', b_type, b)
 
@@ -474,7 +455,6 @@ def convert(enemy_behavior: List, level: int):
     # Process loops
     looped_behavior = []
     if len(behavior_loops) > 0:
-        print(behavior_loops)
         loop_start, loop_end = behavior_loops[0]
         loop_size = loop_end - loop_start
         if loop_size == 1:
@@ -598,6 +578,7 @@ def clean_skillset(skillset: ProcessedSkillset):
     skillset.repeating_skill_groups = [x for x in skillset.repeating_skill_groups if x.skills]
     skillset.enemycount_skill_groups = [x for x in skillset.enemycount_skill_groups if x.skills]
     skillset.hp_skill_groups = [x for x in skillset.hp_skill_groups if x.skills]
+    skillset.hp_skill_groups.sort(key=lambda x: x.hp_ceiling, reverse=True)
 
 
 def extract_levels(enemy_behavior: List[Any]):
