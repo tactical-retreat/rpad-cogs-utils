@@ -578,6 +578,7 @@ def clean_skillset(skillset: ProcessedSkillset):
     skillset.repeating_skill_groups = [x for x in skillset.repeating_skill_groups if x.skills]
     skillset.enemycount_skill_groups = [x for x in skillset.enemycount_skill_groups if x.skills]
     skillset.hp_skill_groups = [x for x in skillset.hp_skill_groups if x.skills]
+    skillset.hp_skill_groups.sort(key=lambda x: x.hp_ceiling, reverse=True)
 
 
 def extract_levels(enemy_behavior: List[Any]):
