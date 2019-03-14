@@ -1432,6 +1432,9 @@ class ESLogic(pad_util.JsonDictEncodable):
     def description(self):
         return self.effect
 
+    def full_description(self):
+        return self.effect
+
 
 class ESNone(ESLogic):
     def __init__(self, skill):
@@ -1544,6 +1547,9 @@ class ESCountdown(ESLogic):
     def __init__(self, skill):
         # decrement counter and end path
         super(ESCountdown, self).__init__(skill, effect='countdown')
+
+    def full_description(self):
+        return 'Display <COUNTER> and skip turn'
 
 
 class ESPreemptive(ESLogic):
