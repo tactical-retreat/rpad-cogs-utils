@@ -1,11 +1,11 @@
 from enum import Enum, auto
-from typing import List, Optional, TextIO
+from typing import List, Optional, TextIO, Union
 import os
 import yaml
 
+from pad_etl.processor.enemy_skillset_processor import ProcessedSkillset
 from ..data.card import BookCard
-from .enemy_skillset_processor import SkillItem, ProcessedSkillset
-from . import enemy_skillset_processor
+from .enemy_skillset import *
 from . import enemy_skillset
 
 
@@ -50,7 +50,6 @@ class SkillRecordListing(yaml.YAMLObject):
 
     Level is used to distinguish between different sets of skills based on the specific dungeon.
     """
-
     yaml_tag = u'!SkillRecordListing'
 
     def __init__(self, level: int, records: List[SkillRecord], overrides: List[SkillRecord] = None):
@@ -93,8 +92,42 @@ class EnemySummary(object):
         return next(filter(lambda d: d.level == selected_level, self.data))
 
 
+class SkillItem(object):
+    def __init__(self, name: str, comment: str, min_damage_pct: int, max_damage_pct: int):
+        self.name = name
+        self.comment = comment
+        # 0 if no attack, or the damage % expressed as an integer.
+        # e.g. 100 for one hit with normal damage, 200 for two hits with normal damage,
+        # 300 for one hit with 3x damage.
+        self.min_damage_pct = min_damage_pct
+        self.max_damage_pct = max_damage_pct
+
+
+def behavior_to_item(action: Union[ESAction, ESLogic]) -> SkillItem:
+    name = action.name
+    description = action.full_description()
+    min_damage = 0
+    max_damage = 0
+    if type(action) == ESSkillSet:
+        name = ' + '.join(map(lambda s: s.name, action.skill_list))
+        description = ' + '.join(map(lambda s: s.description, action.skill_list))
+
+    if type(action) == ESPassive:
+        name = 'Ability'
+
+    if type(action) in [ESPreemptive, ESAttackPreemptive]:
+        name = 'Preemptive'
+
+    attack = getattr(action, 'attack', None)
+    if attack is not None:
+        min_damage = attack.min_damage_pct()
+        max_damage = attack.max_damage_pct()
+
+    return SkillItem(name, description, min_damage, max_damage)
+
+
 def skillitem_to_skillrecord(record_type: RecordType, es_item: any) -> SkillRecord:
-    skill_item = enemy_skillset_processor.to_item(es_item)
+    skill_item = behavior_to_item(es_item)
     return SkillRecord(record_type=record_type,
                        name_en=skill_item.name,
                        name_jp=skill_item.name,

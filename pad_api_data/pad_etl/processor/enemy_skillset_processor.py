@@ -1,156 +1,106 @@
+"""
+Contains code to convert a list of enemy behavior logic into a flattened structure
+called a ProcessedSkillset.
+"""
+
 import copy
 
 from .enemy_skillset import *
-from typing import List, Union
-
-
-class SkillItem(object):
-    def __init__(self, name: str, comment: str, min_damage_pct: int, max_damage_pct: int):
-        self.name = name
-        self.comment = comment
-        # 0 if no attack, or the damage % expressed as an integer.
-        # e.g. 100 for one hit with normal damage, 200 for two hits with normal damage,
-        # 300 for one hit with 3x damage.
-        self.min_damage_pct = min_damage_pct
-        self.max_damage_pct = max_damage_pct
+from typing import List, Any
 
 
 class StandardSkillGroup(object):
-    def __init__(self, skills: List):
+    """Base class storing a list of skills."""
+
+    def __init__(self, skills: List[ESAction]):
+        # List of skills which execute.
         self.skills = skills
 
 
 class TimedSkillGroup(StandardSkillGroup):
-    def __init__(self, turn: int, hp: int, skills: List):
+    """Set of skills which execute on a specific turn, possibly with a HP threshold."""
+
+    def __init__(self, turn: int, hp: int, skills: List[ESAction]):
         StandardSkillGroup.__init__(self, skills)
+        # The turn that this group executes on.
         self.turn = turn
+        # The hp threshold that this group executes on, always present, even if 100.
         self.hp = hp
-        self.loops = False
 
 
 class EnemyCountSkillGroup(StandardSkillGroup):
-    def __init__(self, count: int, skills: List, following_skills: List):
+    """Set of skills which execute when a specific number of enemies are present."""
+
+    def __init__(self, count: int, skills: List, following_skills: List[ESAction]):
         StandardSkillGroup.__init__(self, skills)
+        # Number of enemies required to trigger this set of actions.
         self.count = count
+        # I don't remember what I was thinking this would be used for =(
         self.following_skills = following_skills
 
 
 class HpSkillGroup(StandardSkillGroup):
-    def __init__(self, hp_ceiling: int, skills=[]):
+    """Set of skills which execute when a HP threshold is reached."""
+
+    def __init__(self, hp_ceiling: int, skills: List[ESAction]):
         StandardSkillGroup.__init__(self, skills)
-        # TODO: this is the wrong way to handle this. Should combine a HP value
-        # and a directional check.
+        # The hp threshold that this group executes on, always present, even if 100.
         self.hp_ceiling = hp_ceiling
 
 
-def dump_obj(o):
-    if isinstance(o, ESSkillSet):
-        msg = 'SkillSet:'
-        msg += '\n\tCondition: {}'.format(json.dumps(o.condition,
-                                                     sort_keys=True, default=lambda x: x.__dict__))
-        for idx, behavior in enumerate(o.skill_list):
-            msg += '\n\t{} {}'.format(idx, dump_obj(behavior))
-        return msg
-    elif isinstance(o, EnemySkillUnknown):
-        return 'Unknown skill:{}'.format(o.name)
-    else:
-        msg = ''
-        if hasattr(o, 'condition') and o.condition:
-            msg += 'Condition: {}\n'.format(json.dumps(o.condition,
-                                                       sort_keys=True, default=lambda x: x.__dict__))
-        msg += '{} [{}] {}'.format(type(o).__name__, o.name, o.full_description())
-        return msg
-
-
 class ProcessedSkillset(object):
-    def __init__(self, level):
+    """Flattened set of enemy skills.
+
+    Skills are broken into chunks which are intended to be output independently,
+    roughly in the order in which they're declared here.
+    """
+
+    def __init__(self, level: int):
+        # The monster level this skillset applies to.
         self.level = level
-        self.base_abilities = []  # List[SkillItem]
-        self.preemptives = []  # List[SkillItem]
+        # Things like color/type resists, resolve, etc.
+        self.base_abilities = []  # List[ESAction]
+        # Preemptive attacks, shields, combo guards.
+        self.preemptives = []  # List[ESAction]
+        # Actions which execute according to the current turn before behavior
+        # enters a stable loop state.
         self.timed_skill_groups = []  # List[StandardSkillGroup]
-        self.repeating_skill_groups = []  # List[StandardSkillGroup]
+        # Actions which execute depending on the enemy on-screen count.
         self.enemycount_skill_groups = []  # List[StandardSkillGroup]
+        # Multi-turn stable action loops.
+        self.repeating_skill_groups = []  # List[StandardSkillGroup]
+        # Single-turn stable action loops.
         self.hp_skill_groups = []  # List[StandardSkillGroup]
-
-    def dump(self):
-        msg = 'ProcessedSkillset'
-
-        msg += '\nBase:'
-        for x in self.base_abilities:
-            msg += '\n' + dump_obj(x)
-
-        msg += '\n\nPreemptives:'
-        for x in self.preemptives:
-            msg += '\n' + dump_obj(x)
-
-        msg += '\n\nTimed Groups:'
-        for x in self.timed_skill_groups:
-            msg += '\n\nTurn {}'.format(x.turn)
-            if x.hp is not None and x.hp < 100:
-                msg += ' (HP <= {})'.format(x.hp)
-            for y in x.skills:
-                msg += '\n{}'.format(dump_obj(y))
-
-        msg += '\n\nRepeating Groups:'
-        for x in self.repeating_skill_groups:
-            msg += '\n\nTurn {}'.format(x.turn)
-            if x.hp is not None and x.hp < 100:
-                msg += ' (HP <= {})'.format(x.hp)
-            for y in x.skills:
-                msg += '\n{}'.format(dump_obj(y))
-
-        msg += '\n\nEnemyCount Groups:'
-        for x in self.enemycount_skill_groups:
-            msg += '\n\nEnemies {}'.format(x.count)
-            for y in x.skills:
-                msg += '\n{}'.format(dump_obj(y))
-
-        msg += '\n\nHP Groups:'
-        for x in self.hp_skill_groups:
-            msg += '\n\nHP Ceiling {}'.format(x.hp_ceiling)
-            for y in x.skills:
-                msg += '\n{}'.format(dump_obj(y))
-
-        return msg
-
-
-def to_item(action: Union[ESAction, ESLogic]) -> SkillItem:
-    name = action.name
-    description = action.full_description()
-    min_damage = 0
-    max_damage = 0
-    if type(action) == ESSkillSet:
-        name = ' + '.join(map(lambda s: s.name, action.skill_list))
-        description = ' + '.join(map(lambda s: s.description, action.skill_list))
-
-    if type(action) == ESPassive:
-        name = 'Ability'
-
-    if type(action) in [ESPreemptive, ESAttackPreemptive]:
-        name = 'Preemptive'
-
-    attack = getattr(action, 'attack', None)
-    if attack is not None:
-        min_damage = attack.min_damage_pct()
-        max_damage = attack.max_damage_pct()
-
-    return SkillItem(name, description, min_damage, max_damage)
 
 
 class Context(object):
+    """Represents the game state when running through the simulator."""
+
     def __init__(self, level):
         self.turn = 1
+        # Whether the current turn triggered a preempt flag.
         self.is_preemptive = False
+        # Whether we are allowed to preempt based on level flags.
         self.do_preemptive = False
+        # A bitmask for flag values which can be updated.
         self.flags = 0
+        # A bitmask for flag values which can only be set.
         self.onetime_flags = 0
+        # Special flag that is modified by the 'counter' operations.
         self.counter = 0
+        # If the monster is counting down
+        self.countdown = False
+        # Current HP value.
         self.hp = 100
+        # Monster level, toggles some behaviors.
         self.level = level
+        # Number of enemies on the screen.
         self.enemies = 999
+        # Cards on the team.
         self.cards = set()
-        # TODO: implement enemy status flags correctly
+        # If the monster is currently enraged, for how long.
         self.enraged = None
+        # If the monster currently has a shield
         self.damage_shield = 0
 
     def reset(self):
@@ -169,7 +119,10 @@ class Context(object):
                 # count up enraged cooldown turns
                 self.enraged += 1
         if self.damage_shield > 0:
+            # count down shield turns
             self.damage_shield -= 1
+        if self.countdown and self.counter > 0:
+            self.counter -= 1
 
 
 def apply_skill_effects(ctx: Context, behavior):
@@ -201,41 +154,59 @@ def apply_skill_effects(ctx: Context, behavior):
     return True
 
 
-def loop_through(ctx: Context, behaviors):
-    ctx.reset()
-    results = []
-    traversed = []
-    errors = []
+def loop_through(ctx: Context, behaviors: List[Any]):
+    """Executes a single turn through the simulator.
 
+    This is called multiple times with varying Context values to probe the action set
+    of the monster.
+    """
+    ctx.reset()
+    # The list of behaviors identified for this loop.
+    results = []
+    # A list of behaviors which have been iterated over.
+    traversed = []
+
+    # The current spot in the behavior array.
     idx = 0
+    # Number of iterations we've done.
     iter_count = 0
     while iter_count < 1000:
+        # Safety measures against infinite loops, check if we've looped too many
+        # times or if we've seen this behavior before in the current loop.
         iter_count += 1
         if idx >= len(behaviors) or idx in traversed:
             break
         traversed.append(idx)
 
+        # Extract the current behavior and its type.
         b = behaviors[idx]
         b_type = type(b)
 
+        # The current action could be None because we nulled it out in preprocessing, just continue.
         if b is None or b_type == ESNone:
             idx += 1
             continue
 
+        # Detection for preempts, null the behavior afterwards so we don't trigger it again.
         if b_type == ESPreemptive:
             behaviors[idx] = None
-            idx += 1
             ctx.is_preemptive = True
             ctx.do_preemptive = b.level <= ctx.level
+            idx += 1
             continue
 
+        # Processing for actions and unparsed stuff, this section should accumulate
+        # items into results.
         if b_type == EnemySkillUnknown or issubclass(b_type, ESAction):
+            # Check if we should execute this action at all.
             cond = b.condition
             if cond:
+                # HP based checks.
                 if cond.hp_threshold and ctx.hp >= cond.hp_threshold:
                     idx += 1
                     continue
 
+                # Flag based checks (one-time and global flags).
                 # This check might be wrong? This is checking if all flags are unset, maybe just one needs to be unset.
                 if cond.one_time:
                     if not ctx.onetime_flags & cond.one_time:
@@ -253,28 +224,37 @@ def loop_through(ctx: Context, behaviors):
                     if not apply_skill_effects(ctx, b):
                         idx += 1
                         continue
+                    # This always executes so it is a terminal action.
                     results.append(b)
                     return results
                 else:
+                    # Not a terminal action, so accumulate it and continue.
                     results.append(b)
                     idx += 1
                     continue
             else:
+                # Stuff without a condition is always terminal.
                 results.append(b)
                 return results
 
         if b_type == ESBranchFlag:
             if b.branch_value == b.branch_value & ctx.flags:
+                # If we satisfy the flag, branch to it.
                 idx = b.target_round
             else:
+                # Otherwise move to the next action.
                 idx += 1
             continue
 
         if b_type == ESEndPath:
+            # Forcibly ends the loop, generally used after multiple <100% actions.
             return results
 
         if b_type == ESFlagOperation:
+            # Operations which change flag state, we always move to the next behavior after.
             if b.operation == 'SET' or b.operation == 'OR':
+                # This is a bit suspicious that they have both SET and OR, possibly
+                # these should be broken apart?
                 ctx.flags = ctx.flags | b.flag
             elif b.operation == 'UNSET':
                 ctx.flags = ctx.flags & ~b.flag
@@ -284,28 +264,25 @@ def loop_through(ctx: Context, behaviors):
             continue
 
         if b_type == ESBranchHP:
+            # Branch based on current HP.
             if b.compare == '<':
                 take_branch = ctx.hp < b.branch_value
             else:
                 take_branch = ctx.hp >= b.branch_value
-            if take_branch:
-                idx = b.target_round
-            else:
-                idx += 1
+            idx = b.target_round if take_branch else idx + 1
             continue
 
         if b_type == ESBranchLevel:
+            # Branch based on monster level.
             if b.compare == '<':
                 take_branch = ctx.level < b.branch_value
             else:
                 take_branch = ctx.level >= b.branch_value
-            if take_branch:
-                idx = b.target_round
-            else:
-                idx += 1
+            idx = b.target_round if take_branch else idx + 1
             continue
 
         if b_type == ESSetCounter:
+            # Adjust the global counter value.
             if b.set == '=':
                 ctx.counter = b.counter
             elif b.set == '+':
@@ -316,29 +293,29 @@ def loop_through(ctx: Context, behaviors):
             continue
 
         if b_type == ESSetCounterIf:
+            # Adjust the counter if it has a specific value.
             if ctx.counter == b.counter_is:
                 ctx.counter = b.counter
             idx += 1
             continue
 
         if b_type == ESBranchCounter:
+            # Branch based on the counter value.
             if b.compare == '=':
                 take_branch = ctx.counter == b.branch_value
             elif b.compare == '<':
                 take_branch = ctx.counter <= b.branch_value
             elif b.compare == '>':
                 take_branch = ctx.counter >= b.branch_value
-            if take_branch:
-                idx = b.target_round
             else:
-                idx += 1
+                raise ValueError('unsupported counter operation:', b.compare)
+            idx = b.target_round if take_branch else idx + 1
             continue
 
         if b_type == ESBranchCard:
-            if any([card in ctx.cards for card in b.branch_value]):
-                idx = b.target_round
-            else:
-                idx += 1
+            # Branch if it's checking for a card we have on the team.
+            card_on_team = any([card in ctx.cards for card in b.branch_value])
+            idx = b.target_round if card_on_team else idx + 1
             continue
 
         if b_type == ESBranchRemainingEnemies:
@@ -346,13 +323,8 @@ def loop_through(ctx: Context, behaviors):
             idx += 1
             continue
 
-        # if b_type == ESCountdown:
-        #    if ctx.counter == 0:
-        #        idx += 1
-        #        continue
-        #    else:
-        #        ctx.counter -= 1
-        #        break
+        if b_type == ESCountdown:
+           ctx.countdown = True
 
         raise ValueError('unsupported operation:', b_type, b)
 
@@ -387,16 +359,22 @@ def info_from_behaviors(behaviors):
                 hp_checkpoints.add(cond.hp_threshold)
                 hp_checkpoints.add(cond.hp_threshold - 1)
 
+        # Find checks for specific cards.
         if type(es) == ESBranchCard:
             card_checkpoints.update(es.branch_value)
 
+        # Find checks for specific amounts of enemies.
         if type(es) == ESBranchRemainingEnemies:
             has_enemy_remaining_branch = True
 
     return base_abilities, hp_checkpoints, card_checkpoints, has_enemy_remaining_branch
 
 
-def extract_preemptives(ctx: Context, behaviors):
+def extract_preemptives(ctx: Context, behaviors: List[Any]):
+    """Simulate the initial run through the behaviors looking for preemptives.
+
+    If we find a preemptive, continue onwards. If not, roll the context back.
+    """
     original_ctx = ctx.clone()
 
     cur_loop = loop_through(ctx, behaviors)
@@ -456,10 +434,6 @@ def convert(enemy_behavior: List, level: int):
     # Loop over every turn
     behavior_loops = []
     for i_idx, check_data in enumerate(turn_data):
-        print('\nTurn {}'.format(i_idx))
-        for i, val in check_data.items():
-            for lue in val:
-                print(dump_obj(lue))
         # Loop over every following turn. If the outer turn matches an inner turn moveset,
         # we found a loop.
         possible_loops = []
@@ -572,6 +546,7 @@ def convert(enemy_behavior: List, level: int):
 
 
 def extract_hp_threshold(es):
+    """If the action has a HP threshold, extracts it."""
     if hasattr(es, 'condition'):
         c = es.condition
         if hasattr(c, 'hp_threshold'):
@@ -625,7 +600,8 @@ def clean_skillset(skillset: ProcessedSkillset):
     skillset.hp_skill_groups = [x for x in skillset.hp_skill_groups if x.skills]
 
 
-def extract_levels(enemy_behavior: List):
+def extract_levels(enemy_behavior: List[Any]):
+    """Scan through the behavior list and compile a list of level values, always including 1."""
     levels = set()
     levels.add(1)
     for b in enemy_behavior:

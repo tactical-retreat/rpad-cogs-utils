@@ -6,37 +6,6 @@ from docutils.nodes import description
 from ..common import pad_util
 
 
-def dump_obj(o):
-    if isinstance(o, ESSkillSet):
-        msg = 'SkillSet:'
-        msg += '\n\tCondition: {}'.format(json.dumps(o.condition,
-                                                     sort_keys=True, default=lambda x: x.__dict__))
-        for idx, behavior in enumerate(o.skill_list):
-            msg += '\n\t{} {} {}'.format(idx, type(behavior).__name__,
-                                         json.dumps(behavior, sort_keys=True, default=lambda x: x.__dict__))
-        return msg
-    else:
-        return '{} {}'.format(type(o).__name__, json.dumps(o, sort_keys=True, default=lambda x: x.__dict__))
-
-
-def simple_dump_obj(o):
-    if isinstance(o, ESSkillSet):
-        msg = 'SkillSet:'
-        if o.condition.description:
-            msg += '\n\tCondition: {}'.format(o.condition.description)
-        for idx, behavior in enumerate(o.skill_list):
-            msg += '\n\t[{}] {} -> {}\n\t{}'.format(
-                idx, type(behavior).__name__, behavior.name, behavior.description)
-        return msg
-    else:
-        msg = '{} -> {}'.format(type(o).__name__, o.name)
-        if hasattr(o, 'condition'):
-            if o.condition.description:
-                msg += '\nCondition: {}'.format(o.condition.description)
-        msg += '\n{}'.format(o.description)
-        return msg
-
-
 ATTRIBUTE_MAP = {
     -1: 'Random',
     None: 'Fire',
@@ -563,7 +532,8 @@ class ESBind(ESAction):
         super(ESBind, self).__init__(
             skill,
             effect='bind',
-            description=Describe.bind(self.min_turns, self.max_turns, target_count, target_type_description),
+            description=Describe.bind(self.min_turns, self.max_turns,
+                                      target_count, target_type_description),
             attack=attack
         )
 
@@ -910,8 +880,8 @@ class ESGravity(ESAction):
         self.percent = params(skill)[1]
         super(ESGravity, self).__init__(
             skill,
-            effect = 'gravity',
-            description = Describe.gravity(self.percent)
+            effect='gravity',
+            description=Describe.gravity(self.percent)
         )
 
 
@@ -1009,13 +979,15 @@ class ESSkyfall(ESAction):
             super(ESSkyfall, self).__init__(
                 skill,
                 effect='skyfall_increase',
-                description=Describe.skyfall(self.attributes, self.chance, self.min_turns, self.max_turns)
+                description=Describe.skyfall(self.attributes, self.chance,
+                                             self.min_turns, self.max_turns)
             )
         elif es_type(skill) == 96:
             super(ESSkyfall, self).__init__(
                 skill,
                 effect='skyfall_lock',
-                description=Describe.skyfall(self.attributes, self.chance, self.min_turns, self.max_turns, True)
+                description=Describe.skyfall(self.attributes, self.chance,
+                                             self.min_turns, self.max_turns, True)
             )
 
 
@@ -1130,9 +1102,11 @@ class ESRandomSpawn(ESAction):
         )
         if self.condition and self.condition_attributes:
             if self.condition.description:
-                self.condition.description += " & " + Describe.attribute_exists(self.condition_attributes)
+                self.condition.description += " & " + \
+                    Describe.attribute_exists(self.condition_attributes)
             else:
-                self.condition.description = Describe.attribute_exists(self.condition_attributes).capitalize()
+                self.condition.description = Describe.attribute_exists(
+                    self.condition_attributes).capitalize()
 
 
 class ESBombRandomSpawn(ESAction):
@@ -1142,7 +1116,8 @@ class ESBombRandomSpawn(ESAction):
         super(ESBombRandomSpawn, self).__init__(
             skill,
             effect='random_bomb_spawn',
-            description=Describe.random_orb_spawn(self.count, ['locked Bomb'] if self.locked else ['Bomb'])
+            description=Describe.random_orb_spawn(
+                self.count, ['locked Bomb'] if self.locked else ['Bomb'])
         )
 
 
@@ -1234,7 +1209,7 @@ class ESSkillDelay(ESAction):
         self.max_turns = params(skill)[2]
         super(ESSkillDelay, self).__init__(
             skill,
-            effect = 'skill_delay',
+            effect='skill_delay',
             description=Describe.skill_delay(self.min_turns, self.max_turns)
         )
 
@@ -1310,8 +1285,8 @@ class ESAttributeBlock(ESAction):
         self.attributes = attribute_bitmap(params(skill)[2])
         super(ESAttributeBlock, self).__init__(
             skill,
-            effect = 'attribute_block',
-            description = Describe.attribute_block(self.turns, self.attributes)
+            effect='attribute_block',
+            description=Describe.attribute_block(self.turns, self.attributes)
         )
 
 
@@ -1415,7 +1390,7 @@ class ESResolve(ESPassive):
         self.hp_threshold = params(skill)[1]
         super(ESResolve, self).__init__(
             skill,
-            effect = 'resolve',
+            effect='resolve',
             description=Describe.resolve(self.hp_threshold)
         )
 
@@ -1426,7 +1401,7 @@ class ESTurnChangePassive(ESPassive):
         self.turn_counter = params(skill)[2]
         super(ESTurnChangePassive, self).__init__(
             skill,
-            effect = 'turn_change_passive',
+            effect='turn_change_passive',
             description=Describe.turn_change(self.turn_counter, self.hp_threshold)
         )
 
@@ -1437,8 +1412,9 @@ class ESTypeResist(ESPassive):
         self.shield_percent = params(skill)[2]
         super(ESTypeResist, self).__init__(
             skill,
-            effect = 'resist_type',
-            description=Describe.damage_reduction(', '.join(self.types), percent=self.shield_percent)
+            effect='resist_type',
+            description=Describe.damage_reduction(
+                ', '.join(self.types), percent=self.shield_percent)
         )
 
 
@@ -1457,7 +1433,6 @@ class ESLogic(pad_util.JsonDictEncodable):
     @property
     def description(self):
         return self.effect
-
 
 
 class ESNone(ESLogic):

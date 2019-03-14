@@ -378,15 +378,4 @@ def update_sub_dungeon(sub_dungeon: dbdungeon.SubDungeon,
             monster.comment_jp = slot.comment
             monster.comment_us = slot.comment
 
-            if False:
-                print(card.card_id, card.name)
-                enemy = enemy_id_to_enemy[slot.monster_id]
-                for idx, behavior in enumerate(enemy.behavior):
-                    print(idx, enemy_skillset.dump_obj(behavior), '\n')
-                    print()
-
-                ss = enemy_skillset_processor.convert(enemy, enemy_level)
-                print(ss.dump())
-                print()
-
             monster.tstamp = int(time.time()) * 1000
