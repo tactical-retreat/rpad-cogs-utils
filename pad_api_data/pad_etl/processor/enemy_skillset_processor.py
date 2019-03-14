@@ -593,6 +593,7 @@ def clean_skillset(skillset: ProcessedSkillset):
         for hp_group in skillset.hp_skill_groups:
             if hp_group.hp_ceiling == hp_threshold:
                 hp_group.skills.append(es)
+                placed = True
                 break
         if not placed:
             skillset.hp_skill_groups.append(HpSkillGroup(hp_threshold, [es]))

@@ -32,17 +32,25 @@ class SkillRecord(yaml.YAMLObject):
     """A skill line item, placeholder, or other text."""
     yaml_tag = u'!SkillRecord'
 
-    def __init__(self,
-                 record_type=RecordType.TEXT,
-                 name_en='', name_jp='',
-                 desc_en='', desc_jp='',
-                 max_atk_pct=0):
+    def __init__(self, record_type=RecordType.TEXT, name_en='', name_jp='', desc_en='', desc_jp='', min_atk_pct=None,
+                 max_atk_pct=None, usage_pct=100, one_time=False):
         self.record_type_name = record_type.name
+        # For actions, the name that is displayed in-game.
+        # For dividers, contains the divider text.
         self.name_en = name_en
         self.name_jp = name_jp
+        # A description of what occurs when this skill is triggered.
         self.desc_en = desc_en
         self.desc_jp = desc_jp
-        self.max_atk_pct = max_atk_pct or None
+        # None if no attack, or the damage % expressed as an integer.
+        # e.g. 100 for one hit with normal damage, 200 for two hits with normal damage,
+        # 300 for one hit with 3x damage.
+        self.max_atk_pct = min_atk_pct
+        self.max_atk_pct = max_atk_pct
+        # Likelihood of this action occurring, 0 < usage_pct <= 100.
+        self.usage_pct = usage_pct
+        # If the action only executes once.
+        self.one_time = one_time
 
 
 class SkillRecordListing(yaml.YAMLObject):
@@ -92,22 +100,13 @@ class EnemySummary(object):
         return next(filter(lambda d: d.level == selected_level, self.data))
 
 
-class SkillItem(object):
-    def __init__(self, name: str, comment: str, min_damage_pct: int, max_damage_pct: int):
-        self.name = name
-        self.comment = comment
-        # 0 if no attack, or the damage % expressed as an integer.
-        # e.g. 100 for one hit with normal damage, 200 for two hits with normal damage,
-        # 300 for one hit with 3x damage.
-        self.min_damage_pct = min_damage_pct
-        self.max_damage_pct = max_damage_pct
-
-
-def behavior_to_item(action: Union[ESAction, ESLogic]) -> SkillItem:
+def behavior_to_skillrecord(record_type: RecordType, action: Union[ESAction, ESLogic]) -> SkillRecord:
     name = action.name
     description = action.full_description()
-    min_damage = 0
-    max_damage = 0
+    min_damage = None
+    max_damage = None
+    usage_pct = 100
+    one_time = False
     if type(action) == ESSkillSet:
         name = ' + '.join(map(lambda s: s.name, action.skill_list))
         description = ' + '.join(map(lambda s: s.description, action.skill_list))
@@ -123,24 +122,26 @@ def behavior_to_item(action: Union[ESAction, ESLogic]) -> SkillItem:
         min_damage = attack.min_damage_pct()
         max_damage = attack.max_damage_pct()
 
-    return SkillItem(name, description, min_damage, max_damage)
+    cond = getattr(action, 'condition', None)
+    if cond is not None:
+        usage_pct = cond.ai
+        if cond.one_time:
+            one_time = True
 
 
-def skillitem_to_skillrecord(record_type: RecordType, es_item: any) -> SkillRecord:
-    skill_item = behavior_to_item(es_item)
     return SkillRecord(record_type=record_type,
-                       name_en=skill_item.name,
-                       name_jp=skill_item.name,
-                       desc_en=skill_item.comment,
-                       desc_jp=skill_item.comment,
-                       max_atk_pct=skill_item.max_damage_pct)
+                       name_en=name,
+                       name_jp=name,
+                       desc_en=description,
+                       desc_jp=description,
+                       max_atk_pct=max_damage,
+                       min_atk_pct=min_damage,
+                       usage_pct=usage_pct,
+                       one_time=one_time)
 
 
 def create_divider(divider_text: str) -> SkillRecord:
-    return SkillRecord(record_type=RecordType.DIVIDER,
-                       name_en=divider_text,
-                       name_jp=divider_text,
-                       desc_en='',
+    return SkillRecord(record_type=RecordType.DIVIDER, name_en=divider_text, name_jp=divider_text, desc_en='',
                        desc_jp='')
 
 
@@ -148,32 +149,32 @@ def flatten_skillset(level: int, skillset: ProcessedSkillset) -> SkillRecordList
     records = []  # List[SkillRecord]
 
     for item in skillset.base_abilities:
-        records.append(skillitem_to_skillrecord(RecordType.PASSIVE, item))
+        records.append(behavior_to_skillrecord(RecordType.PASSIVE, item))
 
     for item in skillset.preemptives:
-        records.append(skillitem_to_skillrecord(RecordType.PREEMPT, item))
+        records.append(behavior_to_skillrecord(RecordType.PREEMPT, item))
 
     for idx, item in enumerate(skillset.timed_skill_groups):
         records.append(create_divider('Turn {}'.format(item.turn)))
         for sub_item in item.skills:
-            records.append(skillitem_to_skillrecord(RecordType.ACTION, sub_item))
+            records.append(behavior_to_skillrecord(RecordType.ACTION, sub_item))
 
     for item in skillset.enemycount_skill_groups:
         records.append(create_divider('When {} enemy remains'.format(item.count)))
         for sub_item in item.skills:
-            records.append(skillitem_to_skillrecord(RecordType.ACTION, sub_item))
+            records.append(behavior_to_skillrecord(RecordType.ACTION, sub_item))
 
     for item in skillset.hp_skill_groups:
         records.append(create_divider('HP <= {}'.format(item.hp_ceiling)))
         for sub_item in item.skills:
-            records.append(skillitem_to_skillrecord(RecordType.ACTION, sub_item))
+            records.append(behavior_to_skillrecord(RecordType.ACTION, sub_item))
 
     if skillset.repeating_skill_groups:
         records.append(create_divider('Execute below actions in order repeatedly'))
 
     for item in skillset.repeating_skill_groups:
         for sub_item in item.skills:
-            records.append(skillitem_to_skillrecord(RecordType.ACTION, sub_item))
+            records.append(behavior_to_skillrecord(RecordType.ACTION, sub_item))
 
     return SkillRecordListing(level=level, records=records)
 
@@ -312,6 +313,10 @@ def load_summary_as_dump_text(card: BookCard, monster_level: int):
         desc = row.desc_en
         if row.max_atk_pct:
             desc = '{} Damage - {}'.format(int(row.max_atk_pct * atk / 100), desc)
+        if row.usage_pct not in [100, 0]:
+            desc += ' ({}% chance)'.format(row.usage_pct)
+        if row.one_time:
+            desc += ' (1 time use)'
         msg += header + '\n'
         if desc:
             msg += desc + '\n'
