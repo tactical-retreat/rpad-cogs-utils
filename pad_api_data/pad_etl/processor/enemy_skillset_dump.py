@@ -168,6 +168,13 @@ def flatten_skillset(level: int, skillset: ProcessedSkillset) -> SkillRecordList
         for sub_item in item.skills:
             records.append(skillitem_to_skillrecord(RecordType.ACTION, sub_item))
 
+    if skillset.repeating_skill_groups:
+        records.append(create_divider('Execute below actions in order repeatedly'))
+
+    for item in skillset.repeating_skill_groups:
+        for sub_item in item.skills:
+            records.append(skillitem_to_skillrecord(RecordType.ACTION, sub_item))
+
     return SkillRecordListing(level=level, records=records)
 
 
