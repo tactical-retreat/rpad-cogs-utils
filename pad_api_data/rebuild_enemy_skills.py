@@ -5,6 +5,7 @@ Regenerates the flattened enemy skill list for all monsters.
 import argparse
 import logging
 import os
+import filecmp
 
 from pad_etl.data import database
 from pad_etl.processor import enemy_skillset_processor
@@ -12,6 +13,12 @@ from pad_etl.processor import enemy_skillset_dump
 
 fail_logger = logging.getLogger('processor_failures')
 fail_logger.disabled = True
+
+
+def filecmp_by_id(monster_id):
+    file_a = os.path.join(os.path.dirname(__file__), 'pad_etl/processor/enemy_data', '{}.yaml'.format(monster_id))
+    file_b = os.path.join(os.path.dirname(__file__), 'pad_etl/processor/enemy_data_comp', '{}.yaml'.format(monster_id))
+    return not filecmp.cmp(file_a, file_b)
 
 
 def parse_args():
@@ -32,7 +39,7 @@ def process_card(card):
     # print('processing', card.card.name)
     enemy_behavior = card.enemy_behavior
     if not enemy_behavior:
-        return
+        return False
 
     levels = enemy_skillset_processor.extract_levels(enemy_behavior)
     skill_listings = []
@@ -44,13 +51,14 @@ def process_card(card):
         skill_listings.append(flattened)
 
     if not skill_listings:
-        return
+        return False
 
     entry_info = enemy_skillset_dump.EntryInfo(
         card.card.card_id, card.card.name, 'not yet populated')
     summary = enemy_skillset_dump.EnemySummary(entry_info, skill_listings)
 
     enemy_skillset_dump.dump_summary_to_file(summary, enemy_behavior)
+    return True
 
 
 def run(args):
@@ -63,7 +71,9 @@ def run(args):
         if args.card_id and card.card.card_id != int(args.card_id):
             continue
         try:
-            process_card(card)
+            if process_card(card):
+                if filecmp_by_id(card.card.card_id):
+                    print('{}-{} changed'.format(card.card.card_id, card.card.name))
         except Exception as ex:
             print('failed to process', card.card.name)
             print(ex)

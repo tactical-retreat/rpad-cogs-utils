@@ -88,8 +88,6 @@ class Context(object):
         self.onetime_flags = 0
         # Special flag that is modified by the 'counter' operations.
         self.counter = 0
-        # Countdown on/off
-        self.countdown = False
         # Current HP value.
         self.hp = 100
         # Monster level, toggles some behaviors.
@@ -98,10 +96,9 @@ class Context(object):
         self.enemies = 999
         # Cards on the team.
         self.cards = set()
-        # Turns of enrage, initial:None -> (enrage cooldown period:int<0 ->) enrage:int>0 -> expire:int=0
+        # TODO: implement enemy status flags correctly
+        # If the monster is currently enraged, for how long.
         self.enraged = None
-        # Turns of shield, initial:int=0 -> shield up:int>0 -> expire:int=0
-        self.damage_shield = 0
 
     def reset(self):
         self.is_preemptive = False
@@ -118,39 +115,6 @@ class Context(object):
             elif self.enraged < 0:
                 # count up enraged cooldown turns
                 self.enraged += 1
-        if self.damage_shield > 0:
-            # count down shield turns
-            self.damage_shield -= 1
-        if self.countdown:
-            if self.counter > 0:
-                self.counter -= 1
-            else:
-                self.countdown = False
-
-    def apply_skill_effects(self, behavior):
-        """Check context to see if a skill is allowed to be used, and update flag accordingly"""
-        b_type = type(behavior)
-        if b_type == ESAttackUp or b_type == ESAttackUpStatus:
-            if self.enraged is None:
-                if behavior.turn_cooldown is None:
-                    self.enraged = behavior.turns
-                    return True
-                else:
-                    self.enraged = -behavior.turn_cooldown + 1
-                    return False
-            else:
-                if self.enraged == 0:
-                    self.enraged = behavior.turns
-                    return True
-                else:
-                    return False
-        elif b_type == ESDamageShield:
-            if self.damage_shield == 0:
-                self.damage_shield = behavior.turns
-                return True
-            else:
-                return False
-        return True
 
 
 def loop_through(ctx: Context, behaviors: List[Any]):
@@ -181,6 +145,24 @@ def loop_through(ctx: Context, behaviors: List[Any]):
         b = behaviors[idx]
         b_type = type(b)
 
+        # Processing for enrages.
+        if b_type == ESAttackUp or b_type == ESAttackUpStatus:
+            if ctx.enraged is None:
+                if b.turn_cooldown is None:
+                    ctx.enraged = b.turns
+                    # TODO: this should append to results (assuming flags are checked)
+                else:
+                    ctx.enraged = -b.turn_cooldown + 1
+                    idx += 1
+                    continue
+            else:
+                if ctx.enraged == 0:
+                    ctx.enraged = b.turns
+                    # TODO: this should append to results (assuming flags are checked)
+                else:
+                    idx += 1
+                    continue
+
         # The current action could be None because we nulled it out in preprocessing, just continue.
         if b is None or b_type == ESNone:
             idx += 1
@@ -193,15 +175,6 @@ def loop_through(ctx: Context, behaviors: List[Any]):
             ctx.do_preemptive = b.level <= ctx.level
             idx += 1
             continue
-
-        if b_type == ESCountdown:
-            ctx.countdown = True
-            if ctx.counter == 1:
-                idx += 1
-                continue
-            else:
-                results.append(b)
-                return results
 
         # Processing for actions and unparsed stuff, this section should accumulate
         # items into results.
@@ -218,9 +191,6 @@ def loop_through(ctx: Context, behaviors: List[Any]):
                 # This check might be wrong? This is checking if all flags are unset, maybe just one needs to be unset.
                 if cond.one_time:
                     if not ctx.onetime_flags & cond.one_time:
-                        if not ctx.apply_skill_effects(b):
-                            idx += 1
-                            continue
                         ctx.onetime_flags = ctx.onetime_flags | cond.one_time
                         results.append(b)
                         return results
@@ -230,9 +200,6 @@ def loop_through(ctx: Context, behaviors: List[Any]):
 
                 if cond.ai == 100 and b_type != ESDispel:
                     # This always executes so it is a terminal action.
-                    if not ctx.apply_skill_effects(b):
-                        idx += 1
-                        continue
                     results.append(b)
                     return results
                 else:
@@ -242,9 +209,6 @@ def loop_through(ctx: Context, behaviors: List[Any]):
                     continue
             else:
                 # Stuff without a condition is always terminal.
-                if not ctx.apply_skill_effects(b):
-                    idx += 1
-                    continue
                 results.append(b)
                 return results
 
@@ -333,6 +297,15 @@ def loop_through(ctx: Context, behaviors: List[Any]):
             # TODO: not implemented correctly
             idx += 1
             continue
+
+        # TODO: not implemented correctly
+        # if b_type == ESCountdown:
+        #    if ctx.counter == 0:
+        #        idx += 1
+        #        continue
+        #    else:
+        #        ctx.counter -= 1
+        #        break
 
         raise ValueError('unsupported operation:', b_type, b)
 
@@ -430,10 +403,13 @@ def convert(enemy_behavior: List, level: int):
             if cur_behavior not in seen_behavior:
                 hp_data[checkpoint] = cur_behavior
                 seen_behavior.append(cur_behavior)
-            # use last ctx
-            next_ctx = hp_ctx
+
+            if next_ctx is None:
+                # We need to flip flags, so arbitrarily pick the first ctx to roll over.
+                next_ctx = hp_ctx.clone()
+
         turn_data.append(hp_data)
-        ctx = next_ctx.clone()
+        ctx = next_ctx
         ctx.turn_event()
 
     # Loop over every turn
@@ -441,16 +417,16 @@ def convert(enemy_behavior: List, level: int):
     for i_idx, check_data in enumerate(turn_data):
         # Loop over every following turn. If the outer turn matches an inner turn moveset,
         # we found a loop.
-
-        # for k, v in check_data.items():
-        #     print('\nTURN {} HP {}'.format(i_idx, k))
-        #     for b in v:
-        #         print(b.name)
-
         possible_loops = []
         for j_idx in range(i_idx + 1, len(turn_data) // 2):
             comp_data = turn_data[j_idx]
             if check_data == comp_data:
+                # # do not include overlapping loops
+                # loop_overlap = False
+                # for comp_i, comp_j in behavior_loops:
+                #     if i_idx < comp_j:
+                #         loop_overlap = True
+                # if not loop_overlap:
                 possible_loops.append((i_idx, j_idx))
         if len(possible_loops) == 0:
             continue
