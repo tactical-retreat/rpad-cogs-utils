@@ -32,12 +32,8 @@ class SkillRecord(yaml.YAMLObject):
     """A skill line item, placeholder, or other text."""
     yaml_tag = u'!SkillRecord'
 
-    def __init__(self, record_type=RecordType.TEXT,
-                 name_en='', name_jp='',
-                 desc_en='', desc_jp='',
-                 min_atk_pct=None,
-                 max_atk_pct=None,
-                 usage_pct=100):
+    def __init__(self, record_type=RecordType.TEXT, name_en='', name_jp='', desc_en='', desc_jp='', min_atk_pct=None,
+                 max_atk_pct=None, usage_pct=100, one_time=False):
         self.record_type_name = record_type.name
         # For actions, the name that is displayed in-game.
         # For dividers, contains the divider text.
@@ -53,6 +49,8 @@ class SkillRecord(yaml.YAMLObject):
         self.max_atk_pct = max_atk_pct
         # Likelihood of this action occurring, 0 < usage_pct <= 100.
         self.usage_pct = usage_pct
+        # If the action only executes once.
+        self.one_time = one_time
 
 
 class SkillRecordListing(yaml.YAMLObject):
@@ -108,6 +106,7 @@ def behavior_to_skillrecord(record_type: RecordType, action: Union[ESAction, ESL
     min_damage = None
     max_damage = None
     usage_pct = 100
+    one_time = False
     if type(action) == ESSkillSet:
         name = ' + '.join(map(lambda s: s.name, action.skill_list))
         description = ' + '.join(map(lambda s: s.description, action.skill_list))
@@ -126,6 +125,9 @@ def behavior_to_skillrecord(record_type: RecordType, action: Union[ESAction, ESL
     cond = getattr(action, 'condition', None)
     if cond is not None:
         usage_pct = cond.ai
+        if cond.one_time:
+            one_time = True
+
 
     return SkillRecord(record_type=record_type,
                        name_en=name,
@@ -134,7 +136,8 @@ def behavior_to_skillrecord(record_type: RecordType, action: Union[ESAction, ESL
                        desc_jp=description,
                        max_atk_pct=max_damage,
                        min_atk_pct=min_damage,
-                       usage_pct=usage_pct)
+                       usage_pct=usage_pct,
+                       one_time=one_time)
 
 
 def create_divider(divider_text: str) -> SkillRecord:
@@ -312,6 +315,8 @@ def load_summary_as_dump_text(card: BookCard, monster_level: int):
             desc = '{} Damage - {}'.format(int(row.max_atk_pct * atk / 100), desc)
         if row.usage_pct not in [100, 0]:
             desc += ' ({}% chance)'.format(row.usage_pct)
+        if row.one_time:
+            desc += ' (1 time use)'
         msg += header + '\n'
         if desc:
             msg += desc + '\n'
