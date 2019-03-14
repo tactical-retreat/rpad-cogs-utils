@@ -168,6 +168,37 @@ class Context(object):
             elif self.enraged < 0:
                 # count up enraged cooldown turns
                 self.enraged += 1
+        if self.damage_shield > 0:
+            self.damage_shield -= 1
+
+
+def apply_skill_effects(ctx: Context, behavior):
+    """
+    Check if the skill is allowed to be used, and apply appropriate changes to ctx
+    """
+    b_type = type(behavior)
+    if b_type == ESAttackUp or b_type == ESAttackUpStatus:
+        if ctx.enraged is None:
+            if behavior.turn_cooldown is None:
+                ctx.enraged = behavior.turns
+                return True
+            else:
+                ctx.enraged = -behavior.turn_cooldown + 1
+                return False
+        else:
+            if ctx.enraged == 0:
+                # turn cooldown has expired, enrage
+                ctx.enraged = behavior.turns
+                return True
+            else:
+                return False
+    if b_type == ESDamageShield:
+        if ctx.damage_shield == 0:
+            ctx.damage_shield = behavior.turns
+            return True
+        else:
+            return False
+    return True
 
 
 def loop_through(ctx: Context, behaviors):
@@ -186,24 +217,6 @@ def loop_through(ctx: Context, behaviors):
 
         b = behaviors[idx]
         b_type = type(b)
-
-        if b_type == ESAttackUp or b_type == ESAttackUpStatus:
-            if ctx.enraged is None:
-                # apply enrage or turn cooldown
-                if b.turn_cooldown is None:
-                    ctx.enraged = b.turns
-                else:
-                    ctx.enraged = -b.turn_cooldown + 1
-                    idx += 1
-                    continue
-            else:
-                if ctx.enraged == 0:
-                    # turn cooldown has expired, enrage
-                    ctx.enraged = b.turns
-                else:
-                    # still enraged, do nothing
-                    idx += 1
-                    continue
 
         if b is None or b_type == ESNone:
             idx += 1
@@ -226,6 +239,9 @@ def loop_through(ctx: Context, behaviors):
                 # This check might be wrong? This is checking if all flags are unset, maybe just one needs to be unset.
                 if cond.one_time:
                     if not ctx.onetime_flags & cond.one_time:
+                        if not apply_skill_effects(ctx, b):
+                            idx += 1
+                            continue
                         ctx.onetime_flags = ctx.onetime_flags | cond.one_time
                         results.append(b)
                         return results
@@ -234,6 +250,9 @@ def loop_through(ctx: Context, behaviors):
                         continue
 
                 if cond.ai == 100 and b_type != ESDispel:
+                    if not apply_skill_effects(ctx, b):
+                        idx += 1
+                        continue
                     results.append(b)
                     return results
                 else:
@@ -437,6 +456,10 @@ def convert(enemy_behavior: List, level: int):
     # Loop over every turn
     behavior_loops = []
     for i_idx, check_data in enumerate(turn_data):
+        print('\nTurn {}'.format(i_idx))
+        for i, val in check_data.items():
+            for lue in val:
+                print(dump_obj(lue))
         # Loop over every following turn. If the outer turn matches an inner turn moveset,
         # we found a loop.
         possible_loops = []
@@ -477,6 +500,7 @@ def convert(enemy_behavior: List, level: int):
     # Process loops
     looped_behavior = []
     if len(behavior_loops) > 0:
+        print(behavior_loops)
         loop_start, loop_end = behavior_loops[0]
         loop_size = loop_end - loop_start
         if loop_size == 1:
