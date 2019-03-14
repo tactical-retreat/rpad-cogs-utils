@@ -149,23 +149,17 @@ def loop_through(ctx: Context, behaviors: List[Any]):
         if b_type == ESAttackUp or b_type == ESAttackUpStatus:
             if ctx.enraged is None:
                 if b.turn_cooldown is None:
-                    # If we enraged, mark it and stop processing.
                     ctx.enraged = b.turns
-                    results.append(b)
-                    return results
+                    # TODO: this should append to results (assuming flags are checked)
                 else:
-                    # I'm not really sure what this is doing.
                     ctx.enraged = -b.turn_cooldown + 1
                     idx += 1
                     continue
             else:
                 if ctx.enraged == 0:
-                    # If we enraged, mark it and stop processing.
                     ctx.enraged = b.turns
-                    results.append(b)
-                    return results
+                    # TODO: this should append to results (assuming flags are checked)
                 else:
-                    # We're already enraged, move to the next item.
                     idx += 1
                     continue
 
