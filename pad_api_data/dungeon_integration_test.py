@@ -103,7 +103,7 @@ def flatten_data(wave_data, dungeon_data, db, limit_floor_id=None):
         for floor_stage in sorted(floor_stage_to_monsters.keys()):
             stage = floor_stage[1]
             output += '\nstage {}\n'.format(stage)
-            for monster_info in floor_stage_to_monsters[floor_stage]:
+            for monster_info in sorted(floor_stage_to_monsters[floor_stage], key=lambda x: x[0]):
                 monster_id = monster_info[0]
                 monster_level = monster_info[1]
                 card = db.raw_card_by_id(monster_id)
