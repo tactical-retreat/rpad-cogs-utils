@@ -310,7 +310,7 @@ def load_summary_as_dump_text(card: BookCard, monster_level: int):
         desc = row.desc_en
         if row.max_atk_pct:
             desc = '{} Damage - {}'.format(int(row.max_atk_pct * atk / 100), desc)
-        if row.usage_pct != 100:
+        if row.usage_pct not in [100, 0]:
             desc += ' ({}% chance)'.format(row.usage_pct)
         msg += header + '\n'
         if desc:
