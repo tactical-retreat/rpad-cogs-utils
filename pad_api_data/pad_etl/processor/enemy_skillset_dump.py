@@ -3,6 +3,7 @@ from typing import List, Optional, TextIO, Union
 import os
 import yaml
 
+from pad_etl.processor.enemy_skillset_processor import ProcessedSkillset
 from ..data.card import BookCard
 from .enemy_skillset import *
 from . import enemy_skillset
