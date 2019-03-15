@@ -128,6 +128,15 @@ class Context(object):
                 self.countdown = False
 
 
+def default_attack():
+    skill = DictWithAttributeAccess({
+        'enemy_skill_id': 1,
+        'enemy_ai': 100,
+        'enemy_rnd': 0,
+    })
+    return ESAttackSinglehit(skill)
+
+
 def loop_through(ctx: Context, behaviors: List[Any]):
     """Executes a single turn through the simulator.
 
@@ -149,7 +158,10 @@ def loop_through(ctx: Context, behaviors: List[Any]):
         # times or if we've seen this behavior before in the current loop.
         iter_count += 1
         if idx >= len(behaviors) or idx in traversed:
-            break
+            if len(results) == 0:
+                # if the result set is empty, add something
+                results.append(default_attack())
+            return results
         traversed.append(idx)
 
         # Extract the current behavior and its type.
@@ -243,6 +255,9 @@ def loop_through(ctx: Context, behaviors: List[Any]):
 
         if b_type == ESEndPath:
             # Forcibly ends the loop, generally used after multiple <100% actions.
+            if len(results) == 0:
+                # if the result set is empty, add something
+                results.append(default_attack())
             return results
 
         if b_type == ESFlagOperation:

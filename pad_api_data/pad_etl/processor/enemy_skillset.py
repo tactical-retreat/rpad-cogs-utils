@@ -50,7 +50,7 @@ def name(skill):
     return enemy_skill_map[skill.enemy_skill_id].name
 
 
-def params(skill, ids=None):
+def params(skill):
     return enemy_skill_map[skill.enemy_skill_id].params
 
 
@@ -1438,7 +1438,7 @@ class ESLogic(pad_util.JsonDictEncodable):
 
 class ESNone(ESLogic):
     def __init__(self, skill):
-        super(ESNone, self).__init__(skill)
+        super(ESNone, self).__init__(skill, 'nothing')
 
 
 class ESFlagOperation(ESLogic):
@@ -1455,6 +1455,10 @@ class ESFlagOperation(ESLogic):
         self.flag_bin = bin(self.flag)
         self.operation = self.FLAG_OPERATION_MAP[es_type(skill)]
 
+    @property
+    def description(self):
+        return 'flag {} {}'.format(self.operation, self.flag_bin)
+
 
 class ESSetCounter(ESLogic):
     COUNTER_SET_MAP = {
@@ -1468,6 +1472,10 @@ class ESSetCounter(ESLogic):
         self.counter = ai(skill) if es_type(skill) == 25 else 1
         self.set = self.COUNTER_SET_MAP[es_type(skill)]
 
+    @property
+    def description(self):
+        return 'counter {} {}'.format(self.set, self.counter)
+
 
 class ESSetCounterIf(ESLogic):
     def __init__(self, skill):
@@ -1476,13 +1484,23 @@ class ESSetCounterIf(ESLogic):
         self.counter_is = ai(skill)
         self.counter = rnd(skill)
 
+    @property
+    def description(self):
+        return 'counter {} {} if counter = {}'.format(self.set, self.counter, self.counter_is)
+
 
 class ESBranch(ESLogic):
     def __init__(self, skill, branch_condition):
         self.branch_condition = branch_condition
         self.branch_value = ai(skill)
         self.target_round = rnd(skill)
+        self.compare = '='
         super(ESBranch, self).__init__(skill, effect='branch')
+
+    @property
+    def description(self):
+        return 'Branch on {} {} {}, target rnd {}'.format(
+            self.branch_condition, self.compare, str(self.branch_value), self.target_round)
 
 
 class ESBranchFlag(ESBranch):
@@ -1491,6 +1509,7 @@ class ESBranchFlag(ESBranch):
             skill,
             branch_condition='flag'
         )
+        self.compare = '&'
         self.branch_value_bin = bin(ai(skill))
 
 
@@ -1556,6 +1575,10 @@ class ESPreemptive(ESLogic):
     def __init__(self, skill):
         super(ESPreemptive, self).__init__(skill, effect='preemptive')
         self.level = params(skill)[1]
+
+    @property
+    def description(self):
+        return 'Enable preempt if level {}'.format(self.level)
 
 
 class ESBranchCard(ESBranch):
@@ -1724,6 +1747,9 @@ def reformat_json(card_data):
         if len(enemy.enemy_skill_refs) == 0:
             continue
 
+        # t_15 = None
+        # t_16 = None
+
         behavior = {}
         passives = {}
         unknown = {}
@@ -1734,6 +1760,10 @@ def reformat_json(card_data):
             # print(str(enemy['monster_no']) + ':' + str(es_type(skill)))
             if es_type(skill) in BEHAVIOR_MAP:
                 behavior[idx] = BEHAVIOR_MAP[es_type(skill)](skill)
+                # if es_type(skill) == 15 and t_16 is not None:
+                #     t_15 = skill
+                # if es_type(skill) == 16 and t_15 is None:
+                #     t_16 = skill
             elif es_type(skill) in PASSIVE_MAP:
                 passives[idx] = PASSIVE_MAP[es_type(skill)](skill)
             else:  # skills not parsed
@@ -1744,6 +1774,10 @@ def reformat_json(card_data):
             'PASSIVE': passives,
             'UNKNOWN': unknown
         })
+        # if t_15 and t_16:
+        #     print('\n[{}]{}'.format(enemy.card_id, enemy.name))
+        #     print('16 - {}\n{}'.format(name(t_16), str(params(t_16))))
+        #     print('15 - {}\n{}'.format(name(t_15), str(params(t_15))))
 
     return reformatted
 
