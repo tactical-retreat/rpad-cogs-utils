@@ -572,6 +572,8 @@ def clean_skillset(skillset: ProcessedSkillset):
             if es in extracted:
                 repeating_skills.skills.remove(es)
 
+    # Insert any extracted skills from the one-time/timed/repeating skillsets
+    # back into the correct HP bucket.
     for es in extracted:
         hp_threshold = es.condition.hp_threshold
         placed = False
@@ -582,6 +584,21 @@ def clean_skillset(skillset: ProcessedSkillset):
                 break
         if not placed:
             skillset.hp_skill_groups.append(HpSkillGroup(hp_threshold, [es]))
+
+    # Now, starting from the max HP bucket and working our way down, identify the
+    # current 'default' moveset (any items with no condition attached). If we find
+    # that moveset in another bucket, remove it. If we find a new moveset, replace it.
+    def extract_moveset(hp_group):
+        return [s for s in hp_group.skills if not skill_has_nonpct_condition(s)]
+
+    cur_moveset = extract_moveset(skillset.hp_skill_groups[0])
+    for hp_group in skillset.hp_skill_groups[1:]:
+        check_moveset = extract_moveset(hp_group)
+        if check_moveset == cur_moveset:
+            for move in cur_moveset:
+                hp_group.skills.remove(move)
+        elif check_moveset:
+            cur_moveset = check_moveset
 
     # Iterate over every skillset group and remove now-empty ones
     skillset.timed_skill_groups = [x for x in skillset.timed_skill_groups if x.skills]
@@ -601,3 +618,11 @@ def extract_levels(enemy_behavior: List[Any]):
         elif hasattr(b, 'level'):
             levels.add(b.level)
     return levels
+
+def skill_has_nonpct_condition(es):
+    """Detects if a skill activates always or on a %, vs onetime/thresholded."""
+    if not hasattr(es, 'condition'):
+        return False
+    # Is checking the threshold here right? Maybe it should just be checking one_time.
+    # Or maybe it's redundant.
+    return es.condition.hp_threshold or es.condition.one_time
