@@ -1,0 +1,208 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 670
+monster_name_en: Joker+A. Blossom
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Change Random 2 to Jammer
+  desc_jp: Change Random 2 to Jammer
+  max_atk_pct: null
+  name_en: It's Show Time!
+  name_jp: It's Show Time!
+  one_time: false
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute below actions in order repeatedly
+  name_jp: Execute below actions in order repeatedly
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Display <COUNTER> and skip turn
+  desc_jp: Display <COUNTER> and skip turn
+  max_atk_pct: null
+  name_en: ESCountdown
+  name_jp: ESCountdown
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Display <COUNTER> and skip turn
+  desc_jp: Display <COUNTER> and skip turn
+  max_atk_pct: null
+  name_en: ESCountdown
+  name_jp: ESCountdown
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Display <COUNTER> and skip turn
+  desc_jp: Display <COUNTER> and skip turn
+  max_atk_pct: null
+  name_en: ESCountdown
+  name_jp: ESCountdown
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Display <COUNTER> and skip turn
+  desc_jp: Display <COUNTER> and skip turn
+  max_atk_pct: null
+  name_en: ESCountdown
+  name_jp: ESCountdown
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 1000% damage (5 hits, 200% each)
+  desc_jp: Deal 1000% damage (5 hits, 200% each)
+  max_atk_pct: 1000
+  name_en: Maniac Mastermind
+  name_jp: Maniac Mastermind
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Change Random 2 to Jammer
+  desc_jp: Change Random 2 to Jammer
+  max_atk_pct: null
+  name_en: It's Show Time!
+  name_jp: It's Show Time!
+  one_time: false
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute below actions in order repeatedly
+  name_jp: Execute below actions in order repeatedly
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Display <COUNTER> and skip turn
+  desc_jp: Display <COUNTER> and skip turn
+  max_atk_pct: null
+  name_en: ESCountdown
+  name_jp: ESCountdown
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Display <COUNTER> and skip turn
+  desc_jp: Display <COUNTER> and skip turn
+  max_atk_pct: null
+  name_en: ESCountdown
+  name_jp: ESCountdown
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Display <COUNTER> and skip turn
+  desc_jp: Display <COUNTER> and skip turn
+  max_atk_pct: null
+  name_en: ESCountdown
+  name_jp: ESCountdown
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Display <COUNTER> and skip turn
+  desc_jp: Display <COUNTER> and skip turn
+  max_atk_pct: null
+  name_en: ESCountdown
+  name_jp: ESCountdown
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 1000% damage (5 hits, 200% each)
+  desc_jp: Deal 1000% damage (5 hits, 200% each)
+  max_atk_pct: 1000
+  name_en: Maniac Mastermind
+  name_jp: Maniac Mastermind
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchFlag -> ESBranchFlag
+# branch
+# [3] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [4] ESJammerChangeRandom -> It's Show Time!
+# Change Random 2 to Jammer
+# [5] ESEndPath -> ESEndPath
+# end_turn
+# [6] ESBranchFlag -> ESBranchFlag
+# branch
+# [7] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [8] ESAttackMultihit -> Killing Joke
+# Enemy action
+# [9] ESBranchFlag -> ESBranchFlag
+# branch
+# [10] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [11] ESPoisonChangeRandom -> Acid Blossom
+# Change Random 6 to Poison
+# [12] ESBranchFlag -> ESBranchFlag
+# branch
+# [13] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [14] ESAttackMultihit -> Killing Joke
+# Enemy action
+# [15] ESBranchFlag -> ESBranchFlag
+# branch
+# [16] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [17] ESOrbChangeAttack -> Laughing Gas
+# Change Random to Jammer
+# [18] ESBranchFlag -> ESBranchFlag
+# branch
+# [19] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [20] ESAttackMultihit -> Killing Joke
+# Enemy action
+# [21] ESBranchFlag -> ESBranchFlag
+# branch
+# [22] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [23] ESPoisonChangeRandom -> Acid Blossom
+# Change Random 6 to Poison
+# [24] ESSetCounterIf -> ESSetCounterIf
+# set_counter_if
+# [25] ESCountdown -> ESCountdown
+# countdown
+# [26] ESAttackMultihit -> Maniac Mastermind
+# Enemy action
