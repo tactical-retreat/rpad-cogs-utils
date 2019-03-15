@@ -370,10 +370,6 @@ def extract_preemptives(ctx: Context, behaviors: List[Any]):
     original_ctx = ctx.clone()
 
     cur_loop = loop_through(ctx, behaviors)
-    if not cur_loop:
-        # Some monsters have no skillset at all
-        return None, None
-
     if ctx.is_preemptive:
         # Save the current loop as preempt
         return ctx, cur_loop
