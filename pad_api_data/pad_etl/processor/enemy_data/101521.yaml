@@ -1,0 +1,50 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 101521
+monster_name_en: Royal Green Hawk
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 200% damage
+  desc_jp: Deal 200% damage
+  max_atk_pct: 200
+  name_en: Swoop
+  name_jp: Swoop
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESAttackUp -> *Flapping Wings*
+# Condition: When < 50% hp
+# Increase damage to 200% for the next 1 turns
+# [4] ESAttackMultihit -> Swoop
+# Condition: When < 30% hp
+# Enemy action

@@ -1,0 +1,43 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 206
+monster_name_en: Mars Light Carbuncle
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 30
+  name_jp: HP <= 30
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy recover 50% hp
+  desc_jp: Enemy recover 50% hp
+  max_atk_pct: null
+  name_en: Cure
+  name_jp: Cure
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 50
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESRecoverEnemy -> Cure
+# Condition: When < 30% hp , one-time use
+# Enemy recover 50% hp

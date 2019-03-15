@@ -1,0 +1,43 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 67
+monster_name_en: Armor Ogre
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next attack
+  desc_jp: Increase damage to 200% for the next attack
+  max_atk_pct: null
+  name_en: Energy Charge
+  name_jp: Energy Charge
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 10
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESStorePower -> Energy Charge
+# Condition: 50% chance when < 50% hp
+# Increase damage to 200% for the next attack

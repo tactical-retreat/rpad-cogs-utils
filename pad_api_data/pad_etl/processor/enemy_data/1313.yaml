@@ -1,0 +1,68 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1313
+monster_name_en: Purple Queen Bee, Mistress
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 75
+  name_jp: HP <= 75
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Random to Light, Deal 120% damage
+  desc_jp: Change Random to Light, Deal 120% damage
+  max_atk_pct: 120
+  name_en: Jupiter's Thunder
+  name_jp: Jupiter's Thunder
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 70
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind 1 random subs for 3 turns
+  desc_jp: Bind 1 random subs for 3 turns
+  max_atk_pct: null
+  name_en: Hold Web
+  name_jp: Hold Web
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESBindRandomSub -> Hold Web
+# Condition: When < 50% hp , one-time use
+# Bind 1 random subs for 3 turns
+# [4] ESOrbChangeAttack -> Jupiter's Thunder
+# Condition: 70% chance when < 75% hp
+# Change Random to Light

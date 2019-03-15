@@ -1,0 +1,68 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 708
+monster_name_en: The Fifth Angel - Assault Mode
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 75
+  name_jp: HP <= 75
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 90%~150% damage (3~5 hits, 30% each)
+  desc_jp: Deal 90%~150% damage (3~5 hits, 30% each)
+  max_atk_pct: 150
+  name_en: Cut Down
+  name_jp: Cut Down
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 70
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind God cards for 2~4 turns
+  desc_jp: Bind God cards for 2~4 turns
+  max_atk_pct: null
+  name_en: Tentacles
+  name_jp: Tentacles
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESBindTyping -> Tentacles
+# Condition: When < 50% hp , one-time use
+# Bind God cards for 2~4 turns
+# [4] ESAttackMultihit -> Cut Down
+# Condition: 70% chance when < 75% hp
+# Enemy action

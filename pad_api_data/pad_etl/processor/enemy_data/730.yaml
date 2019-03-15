@@ -1,0 +1,47 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 730
+monster_name_en: CoC P.E.K.K.A
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 25
+  name_jp: HP <= 25
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 200% damage
+  desc_jp: Deal 200% damage
+  max_atk_pct: 200
+  name_en: Clean Cut
+  name_jp: Clean Cut
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESAttackMultihit -> Clean Cut
+# Condition: When < 25% hp
+# Enemy action
