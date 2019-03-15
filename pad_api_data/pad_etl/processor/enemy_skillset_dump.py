@@ -155,7 +155,10 @@ def flatten_skillset(level: int, skillset: ProcessedSkillset) -> SkillRecordList
         records.append(behavior_to_skillrecord(RecordType.PREEMPT, item))
 
     for idx, item in enumerate(skillset.timed_skill_groups):
-        records.append(create_divider('Turn {}'.format(item.turn)))
+        if item.hp == 100:
+            records.append(create_divider('Turn {}'.format(item.turn)))
+        else:
+            records.append(create_divider('Turn {} (HP <= {})'.format(item.turn, item.hp)))
         for sub_item in item.skills:
             records.append(behavior_to_skillrecord(RecordType.ACTION, sub_item))
 
@@ -173,6 +176,10 @@ def flatten_skillset(level: int, skillset: ProcessedSkillset) -> SkillRecordList
         records.append(create_divider('Execute below actions in order repeatedly'))
 
     for item in skillset.repeating_skill_groups:
+        if item.hp == 100:
+            records.append(create_divider('Turn {}'.format(item.turn)))
+        else:
+            records.append(create_divider('Turn {} (HP <= {})'.format(item.turn, item.hp)))
         for sub_item in item.skills:
             records.append(behavior_to_skillrecord(RecordType.ACTION, sub_item))
 
