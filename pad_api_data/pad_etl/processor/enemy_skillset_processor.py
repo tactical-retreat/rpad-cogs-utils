@@ -648,10 +648,8 @@ def extract_levels(enemy_behavior: List[Any]):
             levels.add(b.branch_value)
         elif hasattr(b, 'level'):
             levels.add(b.level)
-<<<<<<< HEAD
     return levels
-=======
-    return levels
+
 
 def skill_has_nonpct_condition(es):
     """Detects if a skill activates always or on a %, vs onetime/thresholded."""
@@ -660,4 +658,3 @@ def skill_has_nonpct_condition(es):
     # Is checking the threshold here right? Maybe it should just be checking one_time.
     # Or maybe it's redundant.
     return es.condition.hp_threshold or es.condition.one_time
->>>>>>> 7f2bdc535366b4be7963608943eca3830ef8c680
