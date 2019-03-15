@@ -1,0 +1,53 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4729
+monster_name_en: Leaf Treant
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 98
+  name_jp: HP <= 98
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Spawn random 4 Poison orbs
+  desc_jp: Spawn random 4 Poison orbs
+  max_atk_pct: null
+  name_en: Curse of the Tree
+  name_jp: Curse of the Tree
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESBranchHP -> ESBranchHP
+# branch
+# [4] ESEndPath -> ESEndPath
+# end_turn
+# [5] ESRandomSpawn -> Curse of the Tree
+# Condition: When fire, water, wood, light, dark, heal, jammer, mortal poison orbs are on the board
+# Spawn random 4 Poison orbs
+# [6] ESEndPath -> ESEndPath
+# end_turn

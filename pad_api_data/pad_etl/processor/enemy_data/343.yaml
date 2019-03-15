@@ -1,0 +1,64 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 343
+monster_name_en: ECO Salamander Alma
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 60
+  name_jp: HP <= 60
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 125% damage
+  desc_jp: Deal 125% damage
+  max_atk_pct: 125
+  name_en: Fire Blast
+  name_jp: Fire Blast
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 30
+  name_jp: HP <= 30
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 100%~250% damage (2~5 hits, 50% each)
+  desc_jp: Deal 100%~250% damage (2~5 hits, 50% each)
+  max_atk_pct: 250
+  name_en: Burn Baby Burn!
+  name_jp: Burn Baby Burn!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 60
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESAttackMultihit -> Burn Baby Burn!
+# Condition: 60% chance when < 30% hp
+# Enemy action
+# [2] ESAttackMultihit -> Fire Blast
+# Condition: 25% chance when < 60% hp
+# Enemy action

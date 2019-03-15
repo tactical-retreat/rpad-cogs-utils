@@ -1,0 +1,45 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 386
+monster_name_en: Gryps Rider
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind 3 random cards for 2~4 turns
+  desc_jp: Bind 3 random cards for 2~4 turns
+  max_atk_pct: null
+  name_en: Tri Bind
+  name_jp: Tri Bind
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBindRandom -> Tri Bind
+# Condition: When < 50% hp
+# Bind 3 random cards for 2~4 turns

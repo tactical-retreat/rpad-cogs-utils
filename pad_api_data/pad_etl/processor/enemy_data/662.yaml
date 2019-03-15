@@ -1,0 +1,43 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 662
+monster_name_en: Cathy Crazy
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 75
+  name_jp: HP <= 75
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 300% for the next attack
+  desc_jp: Increase damage to 300% for the next attack
+  max_atk_pct: null
+  name_en: Dark Emotion
+  name_jp: Dark Emotion
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 75
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESStorePower -> Dark Emotion
+# Condition: 75% chance when < 75% hp
+# Increase damage to 300% for the next attack

@@ -1,0 +1,118 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 349
+monster_name_en: ECO Tiny
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 80
+  name_jp: HP <= 80
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind 2 random cards for 2~4 turns
+  desc_jp: Bind 2 random cards for 2~4 turns
+  max_atk_pct: null
+  name_en: Poke Poke
+  name_jp: Poke Poke
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 60
+  name_jp: HP <= 60
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind 3 random cards for 2~4 turns
+  desc_jp: Bind 3 random cards for 2~4 turns
+  max_atk_pct: null
+  name_en: Poke Poke
+  name_jp: Poke Poke
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 40
+  name_jp: HP <= 40
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy recover 30% hp
+  desc_jp: Enemy recover 30% hp
+  max_atk_pct: null
+  name_en: Heal
+  name_jp: Heal
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 60
+- !SkillRecord
+  desc_en: Bind 4 random cards for 2~4 turns
+  desc_jp: Bind 4 random cards for 2~4 turns
+  max_atk_pct: null
+  name_en: Poke Poke
+  name_jp: Poke Poke
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 30
+  name_jp: HP <= 30
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 100%~250% damage (2~5 hits, 50% each)
+  desc_jp: Deal 100%~250% damage (2~5 hits, 50% each)
+  max_atk_pct: 250
+  name_en: Miraculous Star
+  name_jp: Miraculous Star
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESAttackMultihit -> Miraculous Star
+# Condition: 50% chance when < 30% hp
+# Enemy action
+# [2] ESRecoverEnemy -> Heal
+# Condition: When < 40% hp , one-time use
+# Enemy recover 30% hp
+# [3] ESBindRandom -> Poke Poke
+# Condition: 15% chance when < 60% hp
+# Bind 3 random cards for 2~4 turns
+# [4] ESBindRandom -> Poke Poke
+# Condition: 8% chance when < 80% hp
+# Bind 2 random cards for 2~4 turns
+# [5] ESBindRandom -> Poke Poke
+# Condition: 7% chance when < 40% hp
+# Bind 4 random cards for 2~4 turns

@@ -1,0 +1,64 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 127
+monster_name_en: Fertility Deity Ceres
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 40
+  name_jp: HP <= 40
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind 3 random cards for 6 turns
+  desc_jp: Bind 3 random cards for 6 turns
+  max_atk_pct: null
+  name_en: Embrace of Peace
+  name_jp: Embrace of Peace
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 25
+  name_jp: HP <= 25
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 150% damage (3 hits, 50% each)
+  desc_jp: Deal 150% damage (3 hits, 50% each)
+  max_atk_pct: 150
+  name_en: Flower Storm
+  name_jp: Flower Storm
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 70
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBindRandom -> Embrace of Peace
+# Condition: When < 40% hp , one-time use
+# Bind 3 random cards for 6 turns
+# [2] ESAttackMultihit -> Flower Storm
+# Condition: 70% chance when < 25% hp
+# Enemy action

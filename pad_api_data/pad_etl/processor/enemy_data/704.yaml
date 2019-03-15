@@ -1,0 +1,43 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 704
+monster_name_en: Kaworu&Mark.06
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 30
+  name_jp: HP <= 30
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 150% damage (3 hits, 50% each)
+  desc_jp: Deal 150% damage (3 hits, 50% each)
+  max_atk_pct: 150
+  name_en: Purple Orbit
+  name_jp: Purple Orbit
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESAttackMultihit -> Purple Orbit
+# Condition: When < 30% hp
+# Enemy action

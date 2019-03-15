@@ -1,0 +1,124 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 100111
+monster_name_en: Alt. Vampire Lord
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 9
+############################################################
+!SkillRecordListing
+level: 9
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy recover 10% hp, Deal 70% damage
+  desc_jp: Enemy recover 10% hp, Deal 70% damage
+  max_atk_pct: 70
+  name_en: Bloody Stealing
+  name_jp: Bloody Stealing
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+
+############################################################
+### Data @ 10
+############################################################
+!SkillRecordListing
+level: 10
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Blind all orbs on the board
+  desc_jp: Blind all orbs on the board
+  max_atk_pct: null
+  name_en: World of Darkness
+  name_jp: World of Darkness
+  one_time: false
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy recover 10% hp, Deal 70% damage
+  desc_jp: Enemy recover 10% hp, Deal 70% damage
+  max_atk_pct: 70
+  name_en: Bloody Stealing
+  name_jp: Bloody Stealing
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESBranchLevel -> ESBranchLevel
+# branch
+# [4] ESEndPath -> ESEndPath
+# end_turn
+# [5] ESBranchFlag -> ESBranchFlag
+# branch
+# [6] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [7] ESBlind -> World of Darkness
+# Blind all orbs on the board
+# [8] ESEndPath -> ESEndPath
+# end_turn
+# [9] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
+# branch
+# [10] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
+# branch
+# [11] ESRecoverEnemy -> Bloody Stealing
+# Condition: 50% chance
+# Enemy recover 10% hp
+# [12] ESEndPath -> ESEndPath
+# end_turn
+# [13] ESRecoverEnemyAlly -> Bloody Sharing
+# Condition: When enemy ally is killed
+# Enemy ally recover 50% hp
+# [14] ESRecoverEnemy -> Bloody Stealing
+# Enemy recover 10% hp
+# [15] ESEndPath -> ESEndPath
+# end_turn
+# [16] ESAttackMultihit -> Nightmare Crush
+# Enemy action
+# [17] ESEndPath -> ESEndPath
+# end_turn
+# [18] ESBranchFlag -> ESBranchFlag
+# branch
+# [19] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [20] ESEndPath -> ESEndPath
+# end_turn
+# [21] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
+# branch
+# [22] ESRecoverEnemy -> Bloody Stealing
+# Condition: 50% chance
+# Enemy recover 10% hp
+# [23] ESEndPath -> ESEndPath
+# end_turn
