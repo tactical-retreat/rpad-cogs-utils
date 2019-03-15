@@ -1,0 +1,192 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1840
+monster_name_en: Sea Dragon King, Volsung
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: 'Show message: You''re strong! Time to show you my true form...'
+  desc_jp: 'Show message: You''re strong! Time to show you my true form...'
+  max_atk_pct: null
+  name_en: Vol Transformation
+  name_jp: Vol Transformation
+  one_time: false
+  record_type_name: PREEMPT
+  usage_pct: 0
+- !SkillRecord
+  desc_en: Absorb combo <= 4 damage for 99 turns
+  desc_jp: Absorb combo <= 4 damage for 99 turns
+  max_atk_pct: null
+  name_en: Water Defense
+  name_jp: Water Defense
+  one_time: false
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: 'Show message: You''re strong! Time to show you my true form...'
+  desc_jp: 'Show message: You''re strong! Time to show you my true form...'
+  max_atk_pct: null
+  name_en: Vol Transformation
+  name_jp: Vol Transformation
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: Change 2nd row to Water orbs, Deal 180% damage
+  desc_jp: Change 2nd row to Water orbs, Deal 180% damage
+  max_atk_pct: 180
+  name_en: Water Flash
+  name_jp: Water Flash
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: Spawn random 7 Water orbs, Deal 150% damage
+  desc_jp: Spawn random 7 Water orbs, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Icicle Burst
+  name_jp: Icicle Burst
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 79
+  name_jp: HP <= 79
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: 'Show message: You''re strong! Time to show you my true form...'
+  desc_jp: 'Show message: You''re strong! Time to show you my true form...'
+  max_atk_pct: null
+  name_en: Vol Transformation
+  name_jp: Vol Transformation
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: Delay active skills by 1~3 turns
+  desc_jp: Delay active skills by 1~3 turns
+  max_atk_pct: null
+  name_en: Downstream
+  name_jp: Downstream
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 1 turns
+  desc_jp: Reduce damage from all sources by 50% for 1 turns
+  max_atk_pct: null
+  name_en: Defensive Water Position
+  name_jp: Defensive Water Position
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: 'Show message: You''re strong! Time to show you my true form...'
+  desc_jp: 'Show message: You''re strong! Time to show you my true form...'
+  max_atk_pct: null
+  name_en: Vol Transformation
+  name_jp: Vol Transformation
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 30
+  name_jp: HP <= 30
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy recover 50% hp
+  desc_jp: Enemy recover 50% hp
+  max_atk_pct: null
+  name_en: Super Regeneration
+  name_jp: Super Regeneration
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESDeathCry -> Vol Transformation
+# Condition: On death
+# Show message: You're strong! Time to show you my true form...
+# [3] ESBranchFlag -> ESBranchFlag
+# branch
+# [4] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [5] ESAbsorbCombo -> Water Defense
+# Absorb combo <= 4 damage for 99 turns
+# [6] ESEndPath -> ESEndPath
+# end_turn
+# [7] ESRecoverEnemy -> Super Regeneration
+# Condition: When < 30% hp
+# Enemy recover 50% hp
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESDamageShield -> Defensive Water Position
+# Condition: When < 50% hp , one-time use
+# Reduce damage from all sources by 50% for 1 turns
+# [10] ESRowSpawnMulti -> Water Flash
+# Condition: 50% chance
+# Change 2nd row to Water orbs
+# [11] ESRandomSpawn -> Icicle Burst
+# Condition: 50% chance & when Fire, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 7 Water orbs
+# [12] ESEndPath -> ESEndPath
+# end_turn
+# [13] ESBranchFlag -> ESBranchFlag
+# branch
+# [14] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [15] ESSkillDelay -> Downstream
+# Delay active skills by 1~3 turns

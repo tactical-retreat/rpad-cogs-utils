@@ -1,0 +1,167 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1881
+monster_name_en: Twin Blade Brave, Shotel
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Healer by 50%
+  desc_jp: Reduce damage from Healer by 50%
+  max_atk_pct: null
+  name_en: Heal Half Reduced
+  name_jp: Heal Half Reduced
+  one_time: false
+  record_type_name: PASSIVE
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 90% for 1 turns + Voids status ailments
+    for 6 turns
+  desc_jp: Reduce damage from all sources by 90% for 1 turns + Voids status ailments
+    for 6 turns
+  max_atk_pct: null
+  name_en: Dance of the Stronghold + Hero's Pride
+  name_jp: Dance of the Stronghold + Hero's Pride
+  one_time: true
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change own attribute to Wood + Unable to Fire orbs for 2 turns
+  desc_jp: Change own attribute to Wood + Unable to Fire orbs for 2 turns
+  max_atk_pct: null
+  name_en: Style Change + Fire Chain
+  name_jp: Style Change + Fire Chain
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 6
+  name_jp: Turn 6
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Absorb damage >= 4000000 damage for 5 turns + Player -99% HP
+  desc_jp: Absorb damage >= 4000000 damage for 5 turns + Player -99% HP
+  max_atk_pct: null
+  name_en: Dance of Aggression + Axe Kick
+  name_jp: Dance of Aggression + Axe Kick
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change 1st column to Fire orbs, Deal 130% damage
+  desc_jp: Change 1st column to Fire orbs, Deal 130% damage
+  max_atk_pct: 130
+  name_en: Flame Sword
+  name_jp: Flame Sword
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Spawn random 5 Wood orbs, Deal 130% damage
+  desc_jp: Spawn random 5 Wood orbs, Deal 130% damage
+  max_atk_pct: 130
+  name_en: Wind Sword
+  name_jp: Wind Sword
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 40
+  name_jp: HP <= 40
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change 1st, 2nd, 3rd column to Fire orbs, 4th, 5th, 6th column to Wood
+    orbs, Deal 180% damage
+  desc_jp: Change 1st, 2nd, 3rd column to Fire orbs, 4th, 5th, 6th column to Wood
+    orbs, Deal 180% damage
+  max_atk_pct: 180
+  name_en: Twin Blade Dance
+  name_jp: Twin Blade Dance
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 70
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESDamageShield -> Dance of the Stronghold
+# 	Reduce damage from all sources by 90% for 1 turns
+# 	[1] ESStatusShield -> Hero's Pride
+# 	Voids status ailments for 6 turns
+# [3] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESChangeAttribute -> Style Change
+# 	Change own attribute to Wood
+# 	[1] ESAttributeBlock -> Fire Chain
+# 	Unable to Fire orbs for 2 turns
+# [4] ESBranchCounter -> ESBranchCounter
+# branch
+# [5] ESSetCounter -> ESSetCounter
+# set_counter
+# [6] ESColumnSpawnMulti -> Twin Blade Dance
+# Condition: 70% chance when < 40% hp
+# Change 1st, 2nd, 3rd column to Fire orbs, 4th, 5th, 6th column to Wood orbs
+# [7] ESColumnSpawnMulti -> Flame Sword
+# Condition: 50% chance
+# Change 1st column to Fire orbs
+# [8] ESRandomSpawn -> Wind Sword
+# Condition: When fire, water, light, dark, heal, jammer, poison, mortal poison orbs are on the board
+# Spawn random 5 Wood orbs
+# [9] ESEndPath -> ESEndPath
+# end_turn
+# [10] ESBranchFlag -> ESBranchFlag
+# branch
+# [11] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [12] SkillSet:
+# 	[0] ESAbsorbThreshold -> Dance of Aggression
+# 	Absorb damage >= 4000000 damage for 5 turns
+# 	[1] ESGravity -> Axe Kick
+# 	Player -99% HP
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESTypeResist -> Heal Half Reduced
+# Reduce damage from Healer by 50%

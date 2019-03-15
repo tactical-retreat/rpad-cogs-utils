@@ -1,0 +1,121 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1604
+monster_name_en: Seregios & Regios Cat
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 75% damage
+  desc_jp: Change Random to Jammer, Deal 75% damage
+  max_atk_pct: 75
+  name_en: '*****'
+  name_jp: '*****'
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 80
+  name_jp: HP <= 80
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind 1 subs for 2~3 turns, Deal 50% damage
+  desc_jp: Bind 1 subs for 2~3 turns, Deal 50% damage
+  max_atk_pct: 50
+  name_en: '*****'
+  name_jp: '*****'
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 120% damage (3 hits, 40% each)
+  desc_jp: Deal 120% damage (3 hits, 40% each)
+  max_atk_pct: 120
+  name_en: '*****'
+  name_jp: '*****'
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 75
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute below actions in order repeatedly
+  name_jp: Execute below actions in order repeatedly
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 2 turns
+  desc_jp: Increase damage to 200% for the next 2 turns
+  max_atk_pct: null
+  name_en: Anger
+  name_jp: Anger
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel -> ESBranchLevel
+# branch
+# [2] ESEndPath -> ESEndPath
+# end_turn
+# [3] ESBranchHP -> ESBranchHP
+# branch
+# [4] ESAttackUp -> Anger
+# Condition: When < 30% hp
+# Increase damage to 200% for the next 2 turns
+# [5] ESAttackMultihit -> *****
+# Condition: 75% chance when < 50% hp
+# Enemy action
+# [6] ESBindAttack -> *****
+# Condition: When < 80% hp , one-time use
+# Bind 1 subs for 2~3 turns
+# [7] ESOrbChangeAttack -> *****
+# Change Random to Jammer
+# [8] ESEndPath -> ESEndPath
+# end_turn
+# [9] ESBranchFlag -> ESBranchFlag
+# branch
+# [10] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [11] ESAttackUp -> Anger
+# Increase damage to 200% for the next 2 turns
+# [12] ESEndPath -> ESEndPath
+# end_turn

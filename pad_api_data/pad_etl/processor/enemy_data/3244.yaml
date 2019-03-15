@@ -1,0 +1,171 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3244
+monster_name_en: Steel Dragon Emperor, Ninegaruda
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: 'Show message: It''s acting differently...|The restraints fall away'
+  desc_jp: 'Show message: It''s acting differently...|The restraints fall away'
+  max_atk_pct: null
+  name_en: Nine Transformation
+  name_jp: Nine Transformation
+  one_time: false
+  record_type_name: PREEMPT
+  usage_pct: 0
+- !SkillRecord
+  desc_en: Spawn Bomb orbs in the specified positions + Change Heal to Jammer
+  desc_jp: Spawn Bomb orbs in the specified positions + Change Heal to Jammer
+  max_atk_pct: null
+  name_en: Death Bomb + Heart Crush
+  name_jp: Death Bomb + Heart Crush
+  one_time: false
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: 'Show message: It''s acting differently...|The restraints fall away'
+  desc_jp: 'Show message: It''s acting differently...|The restraints fall away'
+  max_atk_pct: null
+  name_en: Nine Transformation
+  name_jp: Nine Transformation
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: Spawn Bomb orbs in the specified positions, Deal 100% damage
+  desc_jp: Spawn Bomb orbs in the specified positions, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Exploding Fist
+  name_jp: Exploding Fist
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 9 turns
+  desc_jp: Reduce damage from all sources by 50% for 9 turns
+  max_atk_pct: null
+  name_en: Iron Shackles
+  name_jp: Iron Shackles
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change all orbs to Jammer, Deal 150% damage
+  desc_jp: Change all orbs to Jammer, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Heart Smash
+  name_jp: Heart Smash
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Spawn Bomb orbs in the specified positions, Deal 170% damage
+  desc_jp: Spawn Bomb orbs in the specified positions, Deal 170% damage
+  max_atk_pct: 170
+  name_en: Burst Bomb
+  name_jp: Burst Bomb
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: 'Show message: It''s acting differently...|The restraints fall away'
+  desc_jp: 'Show message: It''s acting differently...|The restraints fall away'
+  max_atk_pct: null
+  name_en: Nine Transformation
+  name_jp: Nine Transformation
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 15
+  name_jp: HP <= 15
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 1000% damage (2 hits, 500% each)
+  desc_jp: Deal 1000% damage (2 hits, 500% each)
+  max_atk_pct: 1000
+  name_en: Suppressed Torment
+  name_jp: Suppressed Torment
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESDeathCry -> Nine Transformation
+# Condition: On death
+# Show message: It's acting differently...|The restraints fall away
+# [3] ESBranchFlag -> ESBranchFlag
+# branch
+# [4] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [5] SkillSet:
+# 	[0] ESBombFixedSpawn -> Death Bomb
+# 	Spawn Bomb orbs in the specified positions
+# 	[1] ESOrbChangeAttack -> Heart Crush
+# 	Change Heal to Jammer
+# [6] ESEndPath -> ESEndPath
+# end_turn
+# [7] ESDamageShield -> Iron Shackles
+# Condition: When < 50% hp , one-time use
+# Reduce damage from all sources by 50% for 9 turns
+# [8] ESAttackMultihit -> Suppressed Torment
+# Condition: When < 15% hp
+# Enemy action
+# [9] ESRandomSpawn -> Heart Smash
+# Condition: 50% chance when < 50% hp & when Heal orbs are on the board
+# Change all orbs to Jammer
+# [10] ESBombFixedSpawn -> Burst Bomb
+# Condition: When < 50% hp
+# Spawn Bomb orbs in the specified positions
+# [11] ESBombFixedSpawn -> Exploding Fist
+# Spawn Bomb orbs in the specified positions
+# [12] ESEndPath -> ESEndPath
+# end_turn

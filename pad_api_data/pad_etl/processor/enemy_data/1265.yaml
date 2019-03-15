@@ -1,0 +1,84 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1265
+monster_name_en: Ethereal Guardian Seiryuu, Karin
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 120% damage (2 hits, 60% each)
+  desc_jp: Deal 120% damage (2 hits, 60% each)
+  max_atk_pct: 120
+  name_en: Twin Dragon Palms
+  name_jp: Twin Dragon Palms
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 60
+  name_jp: HP <= 60
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 140%~175% damage (4~5 hits, 35% each)
+  desc_jp: Deal 140%~175% damage (4~5 hits, 35% each)
+  max_atk_pct: 175
+  name_en: Multiple Dragon Kicks
+  name_jp: Multiple Dragon Kicks
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 20
+  name_jp: HP <= 20
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 490% damage (7 hits, 70% each)
+  desc_jp: Deal 490% damage (7 hits, 70% each)
+  max_atk_pct: 490
+  name_en: Eastern Seven-Star Formation
+  name_jp: Eastern Seven-Star Formation
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESAttackMultihit -> Eastern Seven-Star Formation
+# Condition: When < 20% hp
+# Enemy action
+# [2] ESAttackMultihit -> Multiple Dragon Kicks
+# Condition: 50% chance when < 60% hp
+# Enemy action
+# [3] ESAttackMultihit -> Twin Dragon Palms
+# Enemy action
