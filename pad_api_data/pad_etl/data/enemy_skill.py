@@ -8,6 +8,7 @@ from ..common import pad_util
 
 FILE_NAME = 'download_enemy_skill_data.json'
 
+
 class EnemySkill(pad_util.JsonDictEncodable):
 
     def __init__(self, raw: List[Any]):

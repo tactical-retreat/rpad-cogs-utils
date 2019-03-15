@@ -700,6 +700,7 @@ def load_data(args):
 
     print('done')
 
+
 if __name__ == '__main__':
     args = parse_args()
     load_data(args)

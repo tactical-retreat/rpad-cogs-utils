@@ -127,31 +127,6 @@ class Context(object):
             else:
                 self.countdown = False
 
-    def apply_skill_effects(self, behavior):
-        """Check context to see if a skill is allowed to be used, and update flag accordingly"""
-        b_type = type(behavior)
-        if b_type == ESAttackUp or b_type == ESAttackUpStatus:
-            if self.enraged is None:
-                if behavior.turn_cooldown is None:
-                    self.enraged = behavior.turns
-                    return True
-                else:
-                    self.enraged = -behavior.turn_cooldown + 1
-                    return False
-            else:
-                if self.enraged == 0:
-                    self.enraged = behavior.turns
-                    return True
-                else:
-                    return False
-        elif b_type == ESDamageShield:
-            if self.damage_shield == 0:
-                self.damage_shield = behavior.turns
-                return True
-            else:
-                return False
-        return True
-
 
 def loop_through(ctx: Context, behaviors: List[Any]):
     """Executes a single turn through the simulator.
@@ -180,6 +155,24 @@ def loop_through(ctx: Context, behaviors: List[Any]):
         # Extract the current behavior and its type.
         b = behaviors[idx]
         b_type = type(b)
+
+        # Processing for enrages.
+        if b_type == ESAttackUp or b_type == ESAttackUpStatus:
+            if ctx.enraged is None:
+                if b.turn_cooldown is None:
+                    ctx.enraged = b.turns
+                    # TODO: this should append to results (assuming flags are checked)
+                else:
+                    ctx.enraged = -b.turn_cooldown + 1
+                    idx += 1
+                    continue
+            else:
+                if ctx.enraged == 0:
+                    ctx.enraged = b.turns
+                    # TODO: this should append to results (assuming flags are checked)
+                else:
+                    idx += 1
+                    continue
 
         # The current action could be None because we nulled it out in preprocessing, just continue.
         if b is None or b_type == ESNone:
@@ -218,9 +211,6 @@ def loop_through(ctx: Context, behaviors: List[Any]):
                 # This check might be wrong? This is checking if all flags are unset, maybe just one needs to be unset.
                 if cond.one_time:
                     if not ctx.onetime_flags & cond.one_time:
-                        if not ctx.apply_skill_effects(b):
-                            idx += 1
-                            continue
                         ctx.onetime_flags = ctx.onetime_flags | cond.one_time
                         results.append(b)
                         return results
@@ -230,24 +220,15 @@ def loop_through(ctx: Context, behaviors: List[Any]):
 
                 if cond.ai == 100 and b_type != ESDispel:
                     # This always executes so it is a terminal action.
-                    if not ctx.apply_skill_effects(b):
-                        idx += 1
-                        continue
                     results.append(b)
                     return results
                 else:
                     # Not a terminal action, so accumulate it and continue.
-                    if not ctx.apply_skill_effects(b):
-                        idx += 1
-                        continue
                     results.append(b)
                     idx += 1
                     continue
             else:
                 # Stuff without a condition is always terminal.
-                if not ctx.apply_skill_effects(b):
-                    idx += 1
-                    continue
                 results.append(b)
                 return results
 
@@ -439,17 +420,11 @@ def convert(enemy_behavior: List, level: int):
                 next_ctx = hp_ctx.clone()
 
         turn_data.append(hp_data)
-        ctx = next_ctx.clone()
+        ctx = next_ctx
         ctx.turn_event()
 
-    # for i_idx, check_data in enumerate(turn_data):
-    #     for k, v in check_data.items():
-    #         print('\nTURN {} HP {}'.format(i_idx, k))
-    #         for b in v:
-    #             print(b.name)
-
     # Loop over every turn
-    behavior_loop = None
+    behavior_loops = []
     for i_idx, check_data in enumerate(turn_data):
         # Loop over every following turn. If the outer turn matches an inner turn moveset,
         # we found a loop.
@@ -484,17 +459,26 @@ def convert(enemy_behavior: List, level: int):
                 possible_loops.remove((check_start, check_end))
 
         if len(possible_loops) > 0:
-            behavior_loop = possible_loops[0]
-            break
+            behavior_loops.append(possible_loops[0])
 
     # Process loops
-    seen_in_loop = []
-    if behavior_loop is not None:
-        loop_start, loop_end = behavior_loop
+    looped_behavior = []
+    if len(behavior_loops) > 0:
+        loop_start, loop_end = behavior_loops[0]
         loop_size = loop_end - loop_start
+        if loop_size == 1:
+            # Since this isn't a multi-turn looping moveset, try to trim the earlier turns.
+            looping_behavior = turn_data[loop_start]
+            for idx in range(loop_start):
+                check_turn_data = turn_data[idx]
+                for hp, hp_behavior in looping_behavior.items():
+                    if check_turn_data.get(hp, None) == hp_behavior:
+                        check_turn_data.pop(hp)
 
-        # Handle multi-turn loop
-        if loop_size > 1:
+                for hp, hp_behavior in check_turn_data.items():
+                    skillset.timed_skill_groups.append(TimedSkillGroup(idx + 1, hp, hp_behavior))
+                    looped_behavior.append((hp, hp_behavior))
+        else:
             # exclude any behavior present on all turns of the loop
             common_behaviors = [hp_b for hp_b in turn_data[loop_start].items()]
             for idx in range(loop_start + 1, loop_end):
@@ -506,23 +490,7 @@ def convert(enemy_behavior: List, level: int):
                     if (hp, hp_behavior) not in common_behaviors:
                         skillset.repeating_skill_groups.append(
                             TimedSkillGroup(idx + 1, hp, hp_behavior))
-                        seen_in_loop.append((hp, hp_behavior))
-
-        # Trim earlier turns
-        looping_behavior = turn_data[loop_start]
-        for idx in range(loop_start):
-            check_turn_data = turn_data[idx]
-            for hp, hp_behavior in seen_in_loop:
-                if check_turn_data.get(hp, None) == hp_behavior:
-                    check_turn_data.pop(hp)
-
-            for hp, hp_behavior in looping_behavior.items():
-                if check_turn_data.get(hp, None) == hp_behavior:
-                    check_turn_data.pop(hp)
-
-            for hp, hp_behavior in check_turn_data.items():
-                skillset.timed_skill_groups.append(TimedSkillGroup(idx + 1, hp, hp_behavior))
-                seen_in_loop.append((hp, hp_behavior))
+                        looped_behavior.append((hp, hp_behavior))
 
     # Simulate enemies being defeated
     if has_enemy_remaining_branch:
@@ -555,7 +523,7 @@ def convert(enemy_behavior: List, level: int):
         cur_loop = loop_through(hp_ctx, behaviors)
         while cur_loop not in globally_seen_behavior and cur_loop not in locally_seen_behavior:
             # exclude behavior already included in a repeat loop
-            if (checkpoint, cur_loop) not in seen_in_loop:
+            if (checkpoint, cur_loop) not in looped_behavior:
                 skillset.hp_skill_groups.append(HpSkillGroup(checkpoint, cur_loop))
             globally_seen_behavior.append(cur_loop)
             locally_seen_behavior.append(cur_loop)
@@ -612,6 +580,7 @@ def clean_skillset(skillset: ProcessedSkillset):
         for hp_group in skillset.hp_skill_groups:
             if hp_group.hp_ceiling == hp_threshold:
                 hp_group.skills.append(es)
+                placed = True
                 break
         if not placed:
             skillset.hp_skill_groups.append(HpSkillGroup(hp_threshold, [es]))
@@ -649,7 +618,6 @@ def extract_levels(enemy_behavior: List[Any]):
         elif hasattr(b, 'level'):
             levels.add(b.level)
     return levels
-
 
 def skill_has_nonpct_condition(es):
     """Detects if a skill activates always or on a %, vs onetime/thresholded."""
