@@ -88,6 +88,8 @@ class Context(object):
         self.onetime_flags = 0
         # Special flag that is modified by the 'counter' operations.
         self.counter = 0
+        # Countdown on/off
+        self.countdown = False
         # Current HP value.
         self.hp = 100
         # Monster level, toggles some behaviors.
@@ -96,9 +98,10 @@ class Context(object):
         self.enemies = 999
         # Cards on the team.
         self.cards = set()
-        # TODO: implement enemy status flags correctly
-        # If the monster is currently enraged, for how long.
+        # Turns of enrage, initial:None -> (enrage cooldown period:int<0 ->) enrage:int>0 -> expire:int=0
         self.enraged = None
+        # Turns of shield, initial:int=0 -> shield up:int>0 -> expire:int=0
+        self.damage_shield = 0
 
     def reset(self):
         self.is_preemptive = False
@@ -115,6 +118,14 @@ class Context(object):
             elif self.enraged < 0:
                 # count up enraged cooldown turns
                 self.enraged += 1
+        if self.damage_shield > 0:
+            # count down shield turns
+            self.damage_shield -= 1
+        if self.countdown:
+            if self.counter > 0:
+                self.counter -= 1
+            else:
+                self.countdown = False
 
 
 def loop_through(ctx: Context, behaviors: List[Any]):
@@ -175,6 +186,15 @@ def loop_through(ctx: Context, behaviors: List[Any]):
             ctx.do_preemptive = b.level <= ctx.level
             idx += 1
             continue
+
+        if b_type == ESCountdown:
+            ctx.countdown = True
+            if ctx.counter == 1:
+                idx += 1
+                continue
+            else:
+                results.append(b)
+                return results
 
         # Processing for actions and unparsed stuff, this section should accumulate
         # items into results.
@@ -298,15 +318,6 @@ def loop_through(ctx: Context, behaviors: List[Any]):
             idx += 1
             continue
 
-        # TODO: not implemented correctly
-        # if b_type == ESCountdown:
-        #    if ctx.counter == 0:
-        #        idx += 1
-        #        continue
-        #    else:
-        #        ctx.counter -= 1
-        #        break
-
         raise ValueError('unsupported operation:', b_type, b)
 
     if iter_count == 1000:
@@ -418,15 +429,9 @@ def convert(enemy_behavior: List, level: int):
         # Loop over every following turn. If the outer turn matches an inner turn moveset,
         # we found a loop.
         possible_loops = []
-        for j_idx in range(i_idx + 1, len(turn_data) // 2):
+        for j_idx in range(i_idx + 1, len(turn_data)):
             comp_data = turn_data[j_idx]
             if check_data == comp_data:
-                # # do not include overlapping loops
-                # loop_overlap = False
-                # for comp_i, comp_j in behavior_loops:
-                #     if i_idx < comp_j:
-                #         loop_overlap = True
-                # if not loop_overlap:
                 possible_loops.append((i_idx, j_idx))
         if len(possible_loops) == 0:
             continue
@@ -435,6 +440,7 @@ def convert(enemy_behavior: List, level: int):
         for check_start, check_end in possible_loops.copy():
             # Now that we found a loop, confirm that it continues
             loop_behavior = turn_data[check_start:check_end]
+            loop_verified = False
 
             for j_idx in range(check_end, len(turn_data), len(loop_behavior)):
                 # Check to make sure we don't run over the edge of the array
@@ -444,10 +450,13 @@ def convert(enemy_behavior: List, level: int):
                     break
 
                 comp_data = turn_data[j_idx:j_loop_end_idx]
-                if loop_behavior != comp_data:
-                    # The loop didn't continue so this is a bad selection, remove
-                    possible_loops.remove((check_start, check_end))
+                loop_verified = loop_behavior == comp_data
+                if not loop_verified:
                     break
+
+            if not loop_verified:
+                # The loop didn't continue so this is a bad selection, remove
+                possible_loops.remove((check_start, check_end))
 
         if len(possible_loops) > 0:
             behavior_loops.append(possible_loops[0])
