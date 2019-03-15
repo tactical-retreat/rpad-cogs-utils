@@ -1,0 +1,105 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 923
+monster_name_en: Elemental of True Death, Thanatos
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Balanced by 50%
+  desc_jp: Reduce damage from Balanced by 50%
+  max_atk_pct: null
+  name_en: Balanced Halved
+  name_jp: Balanced Halved
+  one_time: false
+  record_type_name: PASSIVE
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
+    orbs + Locked random skyfall +100% for 3 turns
+  desc_jp: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
+    orbs + Locked random skyfall +100% for 3 turns
+  max_atk_pct: null
+  name_en: Announcement of Fate + End of the Omen
+  name_jp: Announcement of Fate + End of the Omen
+  one_time: true
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute below actions in order repeatedly
+  name_jp: Execute below actions in order repeatedly
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Display <COUNTER> and skip turn
+  desc_jp: Display <COUNTER> and skip turn
+  max_atk_pct: null
+  name_en: ESCountdown
+  name_jp: ESCountdown
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Display <COUNTER> and skip turn
+  desc_jp: Display <COUNTER> and skip turn
+  max_atk_pct: null
+  name_en: ESCountdown
+  name_jp: ESCountdown
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Display <COUNTER> and skip turn
+  desc_jp: Display <COUNTER> and skip turn
+  max_atk_pct: null
+  name_en: ESCountdown
+  name_jp: ESCountdown
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 2000% damage (10 hits, 200% each)
+  desc_jp: Deal 2000% damage (10 hits, 200% each)
+  max_atk_pct: 2000
+  name_en: Sound of Death
+  name_jp: Sound of Death
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] SkillSet:
+# 	Condition: One-time use
+# 	[0] ESOrbLock -> Announcement of Fate
+# 	Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# 	[1] ESSkyfall -> End of the Omen
+# 	Locked random skyfall +100% for 3 turns
+# [3] ESSetCounterIf -> ESSetCounterIf
+# set_counter_if
+# [4] ESCountdown -> ESCountdown
+# countdown
+# [5] ESAttackMultihit -> Sound of Death
+# Enemy action
+# [6] ESEndPath -> ESEndPath
+# end_turn
+# [7] ESTypeResist -> Balanced Halved
+# Reduce damage from Balanced by 50%

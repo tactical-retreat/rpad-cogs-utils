@@ -1,0 +1,141 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1098
+monster_name_en: Champion of Olympus, Heracles
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Bind active skills for 2 turns
+  desc_jp: Bind active skills for 2 turns
+  max_atk_pct: null
+  name_en: The First Labor
+  name_jp: The First Labor
+  one_time: true
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute below actions in order repeatedly
+  name_jp: Execute below actions in order repeatedly
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Display <COUNTER> and skip turn
+  desc_jp: Display <COUNTER> and skip turn
+  max_atk_pct: null
+  name_en: ESCountdown
+  name_jp: ESCountdown
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Display <COUNTER> and skip turn
+  desc_jp: Display <COUNTER> and skip turn
+  max_atk_pct: null
+  name_en: ESCountdown
+  name_jp: ESCountdown
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Display <COUNTER> and skip turn
+  desc_jp: Display <COUNTER> and skip turn
+  max_atk_pct: null
+  name_en: ESCountdown
+  name_jp: ESCountdown
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Display <COUNTER> and skip turn
+  desc_jp: Display <COUNTER> and skip turn
+  max_atk_pct: null
+  name_en: ESCountdown
+  name_jp: ESCountdown
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 2000% damage (2 hits, 1000% each)
+  desc_jp: Deal 2000% damage (2 hits, 1000% each)
+  max_atk_pct: 2000
+  name_en: Gigantic Break!
+  name_jp: Gigantic Break!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBindSkill -> The First Labor
+# Condition: One-time use
+# Bind active skills for 2 turns
+# [3] ESBranchFlag -> ESBranchFlag
+# branch
+# [4] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [5] ESGravity -> Sucker Punch
+# Player -99% HP
+# [6] ESBranchFlag -> ESBranchFlag
+# branch
+# [7] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [8] ESAttackMultihit -> Million Punches
+# Enemy action
+# [9] ESBranchFlag -> ESBranchFlag
+# branch
+# [10] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [11] ESBindRandom -> The Second Labor
+# Bind 6 random cards for 2 turns
+# [12] ESBranchFlag -> ESBranchFlag
+# branch
+# [13] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [14] ESPoisonChangeRandom -> Hydra's Poison Dart
+# Change Random 7 to Poison
+# [15] ESBranchFlag -> ESBranchFlag
+# branch
+# [16] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [17] ESAttackMultihit -> Million Punches
+# Enemy action
+# [18] ESBranchFlag -> ESBranchFlag
+# branch
+# [19] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [20] ESAttackUp -> The Third Labor
+# Increase damage to 200% for the next 1 turns
+# [21] ESBranchFlag -> ESBranchFlag
+# branch
+# [22] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [23] ESAttackMultihit -> Double Million Punches
+# Enemy action
+# [24] ESInactivity -> The Final Labor
+# Condition: One-time use
+# Do nothing
+# [25] ESSetCounterIf -> ESSetCounterIf
+# set_counter_if
+# [26] ESCountdown -> ESCountdown
+# countdown
+# [27] ESAttackMultihit -> Gigantic Break!
+# Enemy action

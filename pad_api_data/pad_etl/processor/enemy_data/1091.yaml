@@ -1,0 +1,120 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1091
+monster_name_en: Blast Aurora Dragon
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 3
+############################################################
+!SkillRecordListing
+level: 3
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 3 turns
+  desc_jp: Voids status ailments for 3 turns
+  max_atk_pct: null
+  name_en: Ark Guardian Dragon
+  name_jp: Ark Guardian Dragon
+  one_time: false
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind 1 random for 1 turns, Deal 80% damage
+  desc_jp: Bind 1 random for 1 turns, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Aurora Blast
+  name_jp: Aurora Blast
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 74
+  name_jp: HP <= 74
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Water skyfall +25% for 5 turns
+  desc_jp: Water skyfall +25% for 5 turns
+  max_atk_pct: null
+  name_en: God Tears
+  name_jp: God Tears
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 74
+  name_jp: HP <= 74
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Display <COUNTER> and skip turn
+  desc_jp: Display <COUNTER> and skip turn
+  max_atk_pct: null
+  name_en: ESCountdown
+  name_jp: ESCountdown
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# preemptive
+# [2] ESBranchLevel -> ESBranchLevel
+# branch
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESBranchFlag -> ESBranchFlag
+# branch
+# [5] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [6] ESStatusShield -> Ark Guardian Dragon
+# Voids status ailments for 3 turns
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchHP -> ESBranchHP
+# branch
+# [9] ESBindAttack -> Aurora Blast
+# Condition: One-time use
+# Bind 1 random for 1 turns
+# [10] ESEndPath -> ESEndPath
+# end_turn
+# [11] ESBranchFlag -> ESBranchFlag
+# branch
+# [12] ESFlagOperation -> ESFlagOperation
+# flag_operation
+# [13] ESSkyfall -> God Tears
+# Water skyfall +25% for 5 turns
+# [14] ESEndPath -> ESEndPath
+# end_turn
+# [15] ESSetCounterIf -> ESSetCounterIf
+# set_counter_if
+# [16] ESCountdown -> ESCountdown
+# countdown
+# [17] ESAttackMultihit -> Blue Out Nemesis
+# Enemy action

@@ -451,7 +451,7 @@ def convert(enemy_behavior: List, level: int):
         #         print(b.name)
 
         possible_loops = []
-        for j_idx in range(i_idx + 1, len(turn_data) // 2):
+        for j_idx in range(i_idx + 1, len(turn_data)):
             comp_data = turn_data[j_idx]
             if check_data == comp_data:
                 possible_loops.append((i_idx, j_idx))
@@ -462,6 +462,7 @@ def convert(enemy_behavior: List, level: int):
         for check_start, check_end in possible_loops.copy():
             # Now that we found a loop, confirm that it continues
             loop_behavior = turn_data[check_start:check_end]
+            loop_verified = False
 
             for j_idx in range(check_end, len(turn_data), len(loop_behavior)):
                 # Check to make sure we don't run over the edge of the array
@@ -471,10 +472,13 @@ def convert(enemy_behavior: List, level: int):
                     break
 
                 comp_data = turn_data[j_idx:j_loop_end_idx]
-                if loop_behavior != comp_data:
-                    # The loop didn't continue so this is a bad selection, remove
-                    possible_loops.remove((check_start, check_end))
+                loop_verified = loop_behavior == comp_data
+                if not loop_verified:
                     break
+
+            if not loop_verified:
+                # The loop didn't continue so this is a bad selection, remove
+                possible_loops.remove((check_start, check_end))
 
         if len(possible_loops) > 0:
             behavior_loops.append(possible_loops[0])
