@@ -1744,16 +1744,24 @@ PASSIVE_MAP = {
     118: ESTypeResist,
 }
 
+# ES ids put in here will force the condition to one_time=True
 _FORCE_ONE_TIME = [
-    88
+    88, 99, 100, # Hera-Is skills
 ]
 
+# ES ids put in here will force the condition to the specified HP threshold.
+# If the threshold is 0, it is removed.
 _FORCE_HP_THRESHOLD = {
-    87: 0,
+    87: 0, # Chaos Devil Dragon's Chaos Ray
 }
 
 
 def apply_es_overrides(es):
+    """Apply manually configured overrides to some skills.
+
+    The thought is currently that extremely old skills have some kind of manual override that is
+    not accounted for in the behavior data, so force apply it.
+    """
     if es.enemy_skill_id in _FORCE_ONE_TIME:
         es.condition.one_time = True
     if es.enemy_skill_id in _FORCE_HP_THRESHOLD:
