@@ -1506,11 +1506,11 @@ class ESSetCounterIf(ESLogic):
 
 
 class ESBranch(ESLogic):
-    def __init__(self, skill, branch_condition):
+    def __init__(self, skill, branch_condition, compare='='):
         self.branch_condition = branch_condition
         self.branch_value = ai(skill)
         self.target_round = rnd(skill)
-        self.compare = '='
+        self.compare = compare
         super(ESBranch, self).__init__(skill, effect='branch')
 
     @property
@@ -1523,10 +1523,9 @@ class ESBranchFlag(ESBranch):
     def __init__(self, skill):
         super(ESBranchFlag, self).__init__(
             skill,
-            branch_condition='flag'
+            branch_condition='flag',
+            compare = '&'
         )
-        self.compare = '&'
-        self.branch_value_bin = bin(ai(skill))
 
 
 class ESBranchHP(ESBranch):
@@ -1536,10 +1535,10 @@ class ESBranchHP(ESBranch):
     }
 
     def __init__(self, skill):
-        self.compare = self.HP_COMPARE_MAP[es_type(skill)]
         super(ESBranchHP, self).__init__(
             skill,
-            branch_condition='hp'
+            branch_condition='hp',
+            compare=self.HP_COMPARE_MAP[es_type(skill)]
         )
 
 
@@ -1551,10 +1550,10 @@ class ESBranchCounter(ESBranch):
     }
 
     def __init__(self, skill):
-        self.compare = self.COUNTER_COMPARE_MAP[es_type(skill)]
         super(ESBranchCounter, self).__init__(
             skill,
-            branch_condition='counter'
+            branch_condition='counter',
+            compare = self.COUNTER_COMPARE_MAP[es_type(skill)]
         )
 
 
@@ -1566,10 +1565,10 @@ class ESBranchLevel(ESBranch):
     }
 
     def __init__(self, skill):
-        self.compare = self.LEVEL_COMPARE_MAP[es_type(skill)]
         super(ESBranchLevel, self).__init__(
             skill,
-            branch_condition='level'
+            branch_condition='level',
+            compare = self.LEVEL_COMPARE_MAP[es_type(skill)]
         )
 
 
@@ -1599,21 +1598,18 @@ class ESPreemptive(ESLogic):
 
 class ESBranchCard(ESBranch):
     def __init__(self, skill):
-        super(ESBranchCard, self).__init__(skill, branch_condition='player_cards')
+        super(ESBranchCard, self).__init__(skill, branch_condition='player_cards', compare = 'HAS')
         self.branch_value = [x for x in params(skill) if x is not None]
-        self.compare = 'HAS'
 
 
 class ESBranchCombo(ESBranch):
     def __init__(self, skill):
-        super(ESBranchCombo, self).__init__(skill, branch_condition='combo')
-        self.compare = '>'
+        super(ESBranchCombo, self).__init__(skill, branch_condition='combo', compare = '>')
 
 
 class ESBranchRemainingEnemies(ESBranch):
     def __init__(self, skill):
-        super(ESBranchRemainingEnemies, self).__init__(skill, branch_condition='remaining enemies')
-        self.compare = '='
+        super(ESBranchRemainingEnemies, self).__init__(skill, branch_condition='remaining enemies', compare = '=')
 
 
 # Unknown
