@@ -154,9 +154,10 @@ def loop_through(ctx: Context, behaviors: List[Any]):
         # times or if we've seen this behavior before in the current loop.
         iter_count += 1
         if idx >= len(behaviors) or idx in traversed:
-            if len(results) == 0:
-                # if the result set is empty, add something
-                results.append(default_attack())
+            # Disabling default action for now; doesn't seem to improve things?
+            # if len(results) == 0:
+            #     # if the result set is empty, add something
+            #     results.append(default_attack())
             return results
         traversed.append(idx)
 
@@ -251,9 +252,10 @@ def loop_through(ctx: Context, behaviors: List[Any]):
 
         if b_type == ESEndPath:
             # Forcibly ends the loop, generally used after multiple <100% actions.
-            if len(results) == 0:
-                # if the result set is empty, add something
-                results.append(default_attack())
+            # Disabling default action for now; doesn't seem to improve things?
+            # if len(results) == 0:
+            #     # if the result set is empty, add something
+            #     results.append(default_attack())
             return results
 
         if b_type == ESFlagOperation:
