@@ -35,6 +35,24 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
+  desc_en: Deal 150% damage (3 hits, 50% each)
+  desc_jp: Deal 150% damage (3 hits, 50% each)
+  max_atk_pct: 150
+  name_en: Photon Breath
+  name_jp: Photon Breath
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
   desc_en: Change Random to Light, Deal 80% damage
   desc_jp: Change Random to Light, Deal 80% damage
   max_atk_pct: 80
@@ -52,70 +70,16 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change Random to Dark, Deal 80% damage
-  desc_jp: Change Random to Dark, Deal 80% damage
-  max_atk_pct: 80
-  name_en: Dark Rumble
-  name_jp: Dark Rumble
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 60
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 150% damage (3 hits, 50% each)
-  desc_jp: Deal 150% damage (3 hits, 50% each)
-  max_atk_pct: 150
-  name_en: Photon Breath
-  name_jp: Photon Breath
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 30
-  name_jp: HP <= 30
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 250% damage (5 hits, 50% each)
-  desc_jp: Deal 250% damage (5 hits, 50% each)
-  max_atk_pct: 250
-  name_en: Divine Star
-  name_jp: Divine Star
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESAbsorbCombo -> Star Emperor's Gleam
 # Condition: One-time use
 # Absorb combo <= 5 damage for 99 turns
@@ -125,7 +89,7 @@ records:
 # Condition: One-time use
 # Blind all orbs on the board
 # [7] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 11
 # [8] ESOrbChangeAttack -> Heavenly Lightning
 # Condition: 60% chance
 # Change Random to Light

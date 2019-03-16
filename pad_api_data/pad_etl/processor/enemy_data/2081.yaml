@@ -31,8 +31,26 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind 5 random for 2 turns + Enemy recover 10% hp
+  desc_jp: Bind 5 random for 2 turns + Enemy recover 10% hp
+  max_atk_pct: null
+  name_en: Shankha + Avatar
+  name_jp: Shankha + Avatar
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 29
+  name_jp: HP <= 29
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -63,61 +81,16 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 0
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Bind 5 random for 2 turns + Enemy recover 10% hp
-  desc_jp: Bind 5 random for 2 turns + Enemy recover 10% hp
-  max_atk_pct: null
-  name_en: Shankha + Avatar
-  name_jp: Shankha + Avatar
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 30
-  name_jp: HP <= 30
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Blind all orbs on the board
-  desc_jp: Blind all orbs on the board
-  max_atk_pct: null
-  name_en: Giant Form
-  name_jp: Giant Form
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 3000% damage (3 hits, 1000% each)
-  desc_jp: Deal 3000% damage (3 hits, 1000% each)
-  max_atk_pct: 3000
-  name_en: Trivikrama
-  name_jp: Trivikrama
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESSkyfall -> Trimurti [Prosperity]
 # 	Heal, Jammer skyfall +15% for 99 turns
@@ -126,7 +99,7 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [238, 239, 1114, 1115, 1955], target rnd 13
 # [7] SkillSet:
 # 	Condition: When < 50% hp , one-time use
 # 	[0] ESBindAttack -> Shankha
@@ -134,7 +107,7 @@ records:
 # 	[1] ESRecoverEnemy -> Avatar
 # 	Enemy recover 10% hp
 # [8] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 30, target rnd 17
 # [9] SkillSet:
 # 	Condition: 30% chance
 # 	[0] ESOrbChangeAttack -> Khakkhara of the Creation
@@ -156,9 +129,9 @@ records:
 # [12] ESEndPath -> ESEndPath
 # end_turn
 # [13] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 7
 # [14] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [15] SkillSet:
 # 	[0] ESInactivity -> hng...!
 # 	Do nothing
@@ -167,9 +140,9 @@ records:
 # [16] ESEndPath -> ESEndPath
 # end_turn
 # [17] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 21
 # [18] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [19] ESBlind -> Giant Form
 # Condition: When < 30% hp
 # Blind all orbs on the board

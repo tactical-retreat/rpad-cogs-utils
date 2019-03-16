@@ -108,15 +108,15 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] ESSkyfall -> Who should I take care of first?
 # Jammer skyfall +15% for 3 turns
 # [7] ESEndPath -> ESEndPath
@@ -135,13 +135,13 @@ records:
 # Condition: When < 50% hp , one-time use
 # Enemy action
 # [11] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 1, target rnd 14
 # [12] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [13] ESChangeAttribute -> Transform
 # Change own attribute to random one of Fire, Water, Wood, Light, Dark
 # [14] ESSetCounter -> ESSetCounter
-# set_counter
+# counter = 0
 # [15] ESAttackMultihit -> Ha hah!!
 # Enemy action
 # [16] ESEndPath -> ESEndPath

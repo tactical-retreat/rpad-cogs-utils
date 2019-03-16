@@ -40,80 +40,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Player -50% HP + Enemy action
-  desc_jp: Player -50% HP + Enemy action
-  max_atk_pct: null
-  name_en: Bash + Double Slash
-  name_jp: Bash + Double Slash
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 90
-  name_jp: HP <= 90
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Absorb combo <= 5 damage for 10 turns
-  desc_jp: Absorb combo <= 5 damage for 10 turns
-  max_atk_pct: null
-  name_en: Test of Skill
-  name_jp: Test of Skill
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 80
-  name_jp: HP <= 80
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: 2x3 cloud appear for 10 turns at 2nd row, 3rd column
-  desc_jp: 2x3 cloud appear for 10 turns at 2nd row, 3rd column
-  max_atk_pct: null
-  name_en: Test of Perception
-  name_jp: Test of Perception
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 70
-  name_jp: HP <= 70
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Movetime 50% for 10 turns
-  desc_jp: Movetime 50% for 10 turns
-  max_atk_pct: null
-  name_en: Test of Speed
-  name_jp: Test of Speed
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 1
+  name_jp: Turn 1
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -132,8 +60,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 2
+  name_jp: Turn 2
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -152,8 +80,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -170,19 +98,39 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 20
-  name_jp: HP <= 20
+  name_en: HP <= 60
+  name_jp: HP <= 60
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change own attribute to random one of Fire, Water, Wood, Light, Dark +
-    Enemy action
-  desc_jp: Change own attribute to random one of Fire, Water, Wood, Light, Dark +
-    Enemy action
+  desc_en: Absorb combo <= 5 damage for 10 turns + 2x3 cloud appear for 10 turns at
+    2nd row, 3rd column + Movetime 50% for 10 turns + Increase damage to 150% for
+    the next 10 turns
+  desc_jp: Absorb combo <= 5 damage for 10 turns + 2x3 cloud appear for 10 turns at
+    2nd row, 3rd column + Movetime 50% for 10 turns + Increase damage to 150% for
+    the next 10 turns
   max_atk_pct: null
-  name_en: Sweeping Spirit Garments + Saintly Valkyrie Blade
-  name_jp: Sweeping Spirit Garments + Saintly Valkyrie Blade
+  name_en: Test of Skill + Test of Perception + Test of Speed + Test of Endurance
+  name_jp: Test of Skill + Test of Perception + Test of Speed + Test of Endurance
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Player -50% HP + Enemy action
+  desc_jp: Player -50% HP + Enemy action
+  max_atk_pct: null
+  name_en: Bash + Double Slash
+  name_jp: Bash + Double Slash
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -191,11 +139,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESStatusShield -> White Valkyrie Shield
 # 	Voids status ailments for 999 turns
@@ -206,7 +154,7 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 16
 # [7] SkillSet:
 # 	Condition: When < 60% hp , one-time use
 # 	[0] ESAbsorbCombo -> Test of Skill
@@ -257,9 +205,9 @@ records:
 # 	[1] ESChangeAttribute -> Sweeping Spirit Garments
 # 	Change own attribute to random one of Fire, Water, Wood, Light, Dark
 # [17] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 20
 # [18] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [19] SkillSet:
 # 	[0] ESOrbChangeAttack -> Attack Stance - Light
 # 	Change Heal to Light

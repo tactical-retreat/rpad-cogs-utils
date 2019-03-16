@@ -55,6 +55,42 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 300% for the next 1 turns + Change Heal to Water
+  desc_jp: Increase damage to 300% for the next 1 turns + Change Heal to Water
+  max_atk_pct: null
+  name_en: "I'm angry! + Fight through the pain, yeah? \u266A"
+  name_jp: "I'm angry! + Fight through the pain, yeah? \u266A"
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 220% damage (4 hits, 55% each)
+  desc_jp: Deal 220% damage (4 hits, 55% each)
+  max_atk_pct: 220
+  name_en: "Miracle\u2606Star"
+  name_jp: "Miracle\u2606Star"
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 10
   name_jp: Turn 10
   one_time: false
@@ -77,6 +113,24 @@ records:
   max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 220% damage (4 hits, 55% each)
+  desc_jp: Deal 220% damage (4 hits, 55% each)
+  max_atk_pct: 220
+  name_en: "Miracle\u2606Star"
+  name_jp: "Miracle\u2606Star"
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 9
+  name_jp: HP <= 9
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -107,56 +161,20 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 0
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Increase damage to 300% for the next 1 turns + Change Heal to Water
-  desc_jp: Increase damage to 300% for the next 1 turns + Change Heal to Water
-  max_atk_pct: null
-  name_en: "I'm angry! + Fight through the pain, yeah? \u266A"
-  name_jp: "I'm angry! + Fight through the pain, yeah? \u266A"
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 9
-  name_jp: HP <= 9
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 220% damage (4 hits, 55% each)
-  desc_jp: Deal 220% damage (4 hits, 55% each)
-  max_atk_pct: 220
-  name_en: "Miracle\u2606Star"
-  name_jp: "Miracle\u2606Star"
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] SkillSet:
 # 	[0] ESStatusShield -> I won't lose!
 # 	Voids status ailments for 999 turns
@@ -165,13 +183,13 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [9] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 10, target rnd 22
 # [10] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 16
 # [11] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 10, target rnd 20
 # [12] ESOrbChangeAttackBits -> Aqua☆Conversion
 # Condition: 33% chance
 # Change Heal to Water
@@ -184,9 +202,9 @@ records:
 # [15] ESEndPath -> ESEndPath
 # end_turn
 # [16] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 11
 # [17] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [18] SkillSet:
 # 	[0] ESAttackUp -> I'm angry!
 # 	Increase damage to 300% for the next 1 turns
@@ -199,9 +217,9 @@ records:
 # [21] ESEndPath -> ESEndPath
 # end_turn
 # [22] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 11, target rnd 10
 # [23] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [24] SkillSet:
 # 	[0] ESDamageShield -> Miracle☆Shield
 # 	Reduce damage from all sources by 90% for 99 turns

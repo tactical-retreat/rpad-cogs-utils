@@ -49,8 +49,26 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 6400% damage (8 hits, 800% each)
+  desc_jp: Deal 6400% damage (8 hits, 800% each)
+  max_atk_pct: 6400
+  name_en: Hyper Nova
+  name_jp: Hyper Nova
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -67,8 +85,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: HP <= 19
+  name_jp: HP <= 19
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -81,88 +99,16 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 69
-  name_jp: HP <= 69
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Bind God cards for 10 turns
-  desc_jp: Bind God cards for 10 turns
-  max_atk_pct: null
-  name_en: Machine King Gaze
-  name_jp: Machine King Gaze
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Absorb damage >= 2000000 damage for 5 turns + Do nothing
-  desc_jp: Absorb damage >= 2000000 damage for 5 turns + Do nothing
-  max_atk_pct: null
-  name_en: Aegis Invisible Field + Sword Bit Deployment
-  name_jp: Aegis Invisible Field + Sword Bit Deployment
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change 1st, 5th row to Light, Jammer, Mortal Poison orbs + Enemy action
-  desc_jp: Change 1st, 5th row to Light, Jammer, Mortal Poison orbs + Enemy action
-  max_atk_pct: null
-  name_en: Delta Dead Lightning + Sword Bit Rush
-  name_jp: Delta Dead Lightning + Sword Bit Rush
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 6400% damage (8 hits, 800% each)
-  desc_jp: Deal 6400% damage (8 hits, 800% each)
-  max_atk_pct: 6400
-  name_en: Hyper Nova
-  name_jp: Hyper Nova
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 7
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESAbsorbCombo -> High Technique Field
 # 	Absorb combo <= 7 damage for 999 turns
@@ -173,11 +119,11 @@ records:
 # [6] ESEndPath -> ESEndPath
 # end_turn
 # [7] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 20, target rnd 21
 # [8] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 16
 # [9] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 70, target rnd 12
 # [10] ESBindRandomSub -> ZEUS Cannon
 # Condition: One-time use
 # Bind 1 random subs for 3 turns
@@ -185,17 +131,17 @@ records:
 # Condition: When fire, water, wood, light, dark, heal, jammer, poison orbs are on the board
 # Spawn random 5 Mortal Poison orbs
 # [12] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 10
 # [13] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [14] ESBindTyping -> Machine King Gaze
 # Bind God cards for 10 turns
 # [15] ESBindRandom -> Machine King Gaze
 # Bind 2 random cards for 10 turns
 # [16] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 19
 # [17] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [18] SkillSet:
 # 	[0] ESAbsorbThreshold -> Aegis Invisible Field
 # 	Absorb damage >= 2000000 damage for 5 turns

@@ -29,8 +29,26 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 24
-  name_jp: HP <= 24
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 999 turns
+  desc_jp: Increase damage to 200% for the next 999 turns
+  max_atk_pct: null
+  name_en: God Mode Activated!!
+  name_jp: God Mode Activated!!
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -53,24 +71,6 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Increase damage to 200% for the next 999 turns
-  desc_jp: Increase damage to 200% for the next 999 turns
-  max_atk_pct: null
-  name_en: God Mode Activated!!
-  name_jp: God Mode Activated!!
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Execute below actions in order repeatedly
-  name_jp: Execute below actions in order repeatedly
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Change Random to Jammer, Deal 125% damage
   desc_jp: Change Random to Jammer, Deal 125% damage
   max_atk_pct: 125
@@ -78,6 +78,15 @@ records:
   name_jp: Super Hadar Missile
   one_time: false
   record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 24
+  name_jp: HP <= 24
+  one_time: false
+  record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
   desc_en: Deal 175% damage (5 hits, 35% each)
@@ -89,6 +98,15 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 24
+  name_jp: HP <= 24
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
   desc_en: Bind 1 subs for 2~3 turns, Deal 100% damage
   desc_jp: Bind 1 subs for 2~3 turns, Deal 100% damage
   max_atk_pct: 100
@@ -98,6 +116,15 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 24
+  name_jp: HP <= 24
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
   desc_en: Change Random to Fire, Deal 150% damage
   desc_jp: Change Random to Fire, Deal 150% damage
   max_atk_pct: 150
@@ -105,6 +132,15 @@ records:
   name_jp: Betelgeuse Bomb
   one_time: false
   record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 24
+  name_jp: HP <= 24
+  one_time: false
+  record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
   desc_en: Player -99% HP
@@ -120,51 +156,51 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 3
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 3, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] ESStatusShield -> God Dragons' Field
 # Voids status ailments for 999 turns
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 25, target rnd 26
 # [9] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 12
 # [10] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [11] ESOrbChangeAttack -> Super Hadar Missile
 # Change Random to Jammer
 # [12] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 15
 # [13] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [14] ESAttackMultihit -> Lightning Regulus Claw
 # Enemy action
 # [15] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 8, target rnd 18
 # [16] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1111
 # [17] ESBindAttack -> Canopus Tornado Cutter
 # Bind 1 subs for 2~3 turns
 # [18] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 16, target rnd 21
 # [19] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11111
 # [20] ESOrbChangeAttack -> Betelgeuse Bomb
 # Change Random to Fire
 # [21] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 32, target rnd 23
 # [22] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111111
 # [23] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b111110
 # [24] ESGravity -> Aldebaran Crusher
 # Player -99% HP
 # [25] ESEndPath -> ESEndPath

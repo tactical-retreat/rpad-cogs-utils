@@ -10,10 +10,10 @@ reviewed_by: unreviewed
 warnings: []
 
 ############################################################
-### Data @ 1
+### Data @ 3
 ############################################################
 !SkillRecordListing
-level: 1
+level: 3
 overrides: []
 records:
 - !SkillRecord
@@ -74,6 +74,24 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
+  desc_en: Spawn Bomb orbs in the specified positions, Deal 100% damage
+  desc_jp: Spawn Bomb orbs in the specified positions, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Hahahahahaha!
+  name_jp: Hahahahahaha!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
   desc_en: Spawn random 4 Bomb orbs, Deal 100% damage
   desc_jp: Spawn random 4 Bomb orbs, Deal 100% damage
   max_atk_pct: 100
@@ -100,58 +118,22 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 0
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Spawn Bomb orbs in the specified positions, Deal 100% damage
-  desc_jp: Spawn Bomb orbs in the specified positions, Deal 100% damage
-  max_atk_pct: 100
-  name_en: My my, looks like you're surrounded.
-  name_jp: My my, looks like you're surrounded.
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Spawn Bomb orbs in the specified positions, Deal 100% damage
-  desc_jp: Spawn Bomb orbs in the specified positions, Deal 100% damage
-  max_atk_pct: 100
-  name_en: Hahahahahaha!
-  name_jp: Hahahahahaha!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 5
 # [3] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 3, target rnd 25
 # [4] ESEndPath -> ESEndPath
 # end_turn
 # [5] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 9
 # [6] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [7] SkillSet:
 # 	[0] ESStatusShield -> Bang!
 # 	Voids status ailments for 5 turns
@@ -160,9 +142,9 @@ records:
 # [8] ESEndPath -> ESEndPath
 # end_turn
 # [9] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 13
 # [10] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [11] SkillSet:
 # 	[0] ESInactivity -> Like they say, 
 # 	Do nothing
@@ -174,9 +156,9 @@ records:
 # [12] ESEndPath -> ESEndPath
 # end_turn
 # [13] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 20, target rnd 23
 # [14] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 19
 # [15] ESBombRandomSpawn -> Trace Eyes
 # Condition: 50% chance
 # Spawn random 4 Bomb orbs
@@ -189,9 +171,9 @@ records:
 # [18] ESEndPath -> ESEndPath
 # end_turn
 # [19] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 15
 # [20] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [21] ESBombFixedSpawn -> My my, looks like you're surrounded.
 # Spawn Bomb orbs in the specified positions
 # [22] ESEndPath -> ESEndPath
@@ -201,9 +183,9 @@ records:
 # [24] ESEndPath -> ESEndPath
 # end_turn
 # [25] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 28
 # [26] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [27] SkillSet:
 # 	[0] ESInactivity -> Bang!
 # 	Do nothing

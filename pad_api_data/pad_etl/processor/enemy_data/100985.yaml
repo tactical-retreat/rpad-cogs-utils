@@ -38,17 +38,35 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  max_atk_pct: null
+  name_en: Ultra Gravity
+  name_jp: Ultra Gravity
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change Light to Jammer, Deal 90% damage
-  desc_jp: Change Light to Jammer, Deal 90% damage
-  max_atk_pct: 90
-  name_en: Black Nightmare
-  name_jp: Black Nightmare
+  desc_en: Deal 500% damage
+  desc_jp: Deal 500% damage
+  max_atk_pct: 500
+  name_en: Ultra Graviton Bomb
+  name_jp: Ultra Graviton Bomb
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -80,29 +98,11 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Player -99% HP
-  desc_jp: Player -99% HP
-  max_atk_pct: null
-  name_en: Ultra Gravity
-  name_jp: Ultra Gravity
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 29
-  name_jp: HP <= 29
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 500% damage
-  desc_jp: Deal 500% damage
-  max_atk_pct: 500
-  name_en: Ultra Graviton Bomb
-  name_jp: Ultra Graviton Bomb
+  desc_en: Change Light to Jammer, Deal 90% damage
+  desc_jp: Change Light to Jammer, Deal 90% damage
+  max_atk_pct: 90
+  name_en: Black Nightmare
+  name_jp: Black Nightmare
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -111,11 +111,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESBindAttack -> Divine Queen's Time Seal
 # Bind 1 random for 3 turns
 # [5] ESEndPath -> ESEndPath
@@ -124,15 +124,15 @@ records:
 # Condition: When < 50% hp , one-time use
 # Bind God cards for 5 turns
 # [7] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 30, target rnd 10
 # [8] ESOrbChangeAttack -> Black Nightmare
 # Change Light to Jammer
 # [9] ESEndPath -> ESEndPath
 # end_turn
 # [10] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 14
 # [11] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [12] ESGravity -> Ultra Gravity
 # Player -99% HP
 # [13] ESEndPath -> ESEndPath

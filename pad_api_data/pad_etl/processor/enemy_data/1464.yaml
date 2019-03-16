@@ -48,11 +48,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESStatusShield -> Hieroglyphic Carvings
 # Voids status ailments for 999 turns
 # [5] ESEndPath -> ESEndPath
@@ -64,22 +64,22 @@ records:
 # Condition: When < 20% hp
 # Enemy action
 # [8] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 12
 # [9] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [10] ESJammerChangeSingle -> Arcane Spell
 # Change Fire to Jammer
 # [11] ESEndPath -> ESEndPath
 # end_turn
 # [12] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 16
 # [13] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [14] ESPoisonChangeRandomAttack -> Judgement of the Dead
 # Change Random 6 to Poison
 # [15] ESEndPath -> ESEndPath
 # end_turn
 # [16] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b110
 # [17] ESBindAttack -> Playing with Time & Space
 # Bind 1 random for 3 turns

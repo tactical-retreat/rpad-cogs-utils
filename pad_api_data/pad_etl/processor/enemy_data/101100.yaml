@@ -102,49 +102,49 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESGravity -> Abyssal Pressure
 # 	Player -99% HP
 # 	[1] ESDebuffRCV -> Song of Life Binding
 # 	Rcv 50% for 3 turns
 # [5] ESNone -> ESNone
-# None
+# nothing
 # [6] ESBindAttribute -> Voice of Misfortune
 # Condition: When < 50% hp , one-time use
 # Bind Wood cards for 2~3 turns
 # [7] ESNone -> ESNone
-# None
+# nothing
 # [8] ESNone -> ESNone
-# None
+# nothing
 # [9] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 12
 # [10] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [11] ESAttackMultihit -> Song of Destruction
 # Enemy action
 # [12] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 15
 # [13] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [14] ESAttackMultihit -> Song of Destruction
 # Enemy action
 # [15] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 8, target rnd 18
 # [16] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1111
 # [17] ESAttackMultihit -> Song of Destruction
 # Enemy action
 # [18] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 16, target rnd 21
 # [19] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11111
 # [20] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b11110
 # [21] ESAttackMultihit -> Song of Destruction
 # Enemy action
 # [22] ESEndPath -> ESEndPath

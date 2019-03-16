@@ -194,15 +194,15 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] SkillSet:
 # 	[0] ESStatusShield -> Watch and learn!
 # 	Voids status ailments for 999 turns
@@ -214,9 +214,9 @@ records:
 # Condition: When < 10% hp
 # Enemy action
 # [9] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 21
 # [10] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [11] ESVoidShield -> God of Flight's Power
 # Condition: When < 90% hp , one-time use
 # Void damage >= 5000000 for 1 turns
@@ -233,9 +233,9 @@ records:
 # Condition: When < 30% hp , one-time use
 # Bind 1 both leaders for 1 turns
 # [16] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b10
 # [17] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [3124, 3125, 3850], target rnd 26
 # [18] ESOrbChangeAttack -> Face Flash
 # Condition: 20% chance
 # Change Random to Light
@@ -245,7 +245,7 @@ records:
 # [20] ESOrbChangeAttack -> Face Flash
 # Change Random to Light
 # [21] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b10
 # [22] ESBindAttack -> Phoenix Stretch
 # Condition: One-time use
 # Bind 3 random for 1 turns
@@ -265,4 +265,4 @@ records:
 # 	[1] ESOrbChangeAttack -> Face Flash
 # 	Change Random to Light
 # [27] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 18

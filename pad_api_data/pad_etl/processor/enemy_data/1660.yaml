@@ -37,11 +37,11 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Movetime -4s for 4 turns
-  desc_jp: Movetime -4s for 4 turns
+  desc_en: Absorb damage >= 5000000 damage for 4 turns
+  desc_jp: Absorb damage >= 5000000 damage for 4 turns
   max_atk_pct: null
-  name_en: Tahdhir Waqt
-  name_jp: Tahdhir Waqt
+  name_en: Tahdhir Difae
+  name_jp: Tahdhir Difae
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -55,11 +55,11 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Absorb damage >= 5000000 damage for 4 turns
-  desc_jp: Absorb damage >= 5000000 damage for 4 turns
+  desc_en: Movetime -4s for 4 turns
+  desc_jp: Movetime -4s for 4 turns
   max_atk_pct: null
-  name_en: Tahdhir Difae
-  name_jp: Tahdhir Difae
+  name_en: Tahdhir Waqt
+  name_jp: Tahdhir Waqt
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -85,8 +85,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 99
-  name_jp: HP <= 99
+  name_en: HP <= 4
+  name_jp: HP <= 4
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -121,8 +121,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 99
-  name_jp: HP <= 99
+  name_en: HP <= 4
+  name_jp: HP <= 4
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -158,15 +158,15 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] SkillSet:
 # 	[0] ESStatusShield -> Ard al Marad Difae
 # 	Voids status ailments for 999 turns
@@ -177,19 +177,19 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 13
 # [9] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [10] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 20
 # [11] ESDebuffMovetime -> Tahdhir Waqt
 # Movetime -4s for 4 turns
 # [12] ESEndPath -> ESEndPath
 # end_turn
 # [13] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 100, target rnd 22
 # [14] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 5, target rnd 22
 # [15] SkillSet:
 # 	Condition: 25% chance
 # 	[0] ESColumnSpawnMulti -> Athnan nar Sayf

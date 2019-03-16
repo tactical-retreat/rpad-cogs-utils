@@ -104,11 +104,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESAbsorbCombo -> Green Whirlwind's Dance
 # 	Absorb combo <= 6 damage for 1 turns
@@ -117,23 +117,23 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 100, target rnd 16
 # [7] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 10
 # [8] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [9] ESRowSpawnMulti -> Wind Spiral
 # Change 1st row to Wood orbs
 # [10] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 13
 # [11] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [12] ESAbsorbAttribute -> Fire-Extinguishing Wind
 # Absorb Fire damage for 3 turns
 # [13] ESOrbChangeAttack -> Lightning
 # Change Jammer to Light
 # [14] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 16
 # [15] ESOrbChangeAttack -> Gale
 # Change Random to Jammer
 # [16] ESBoardChangeAttackBits -> Feather Rain

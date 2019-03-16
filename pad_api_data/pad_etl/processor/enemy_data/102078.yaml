@@ -135,11 +135,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESStatusShield -> Dance of the Goddess
 # 	Voids status ailments for 999 turns
@@ -151,11 +151,11 @@ records:
 # Condition: When < 5% hp
 # Enemy action
 # [7] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 65, target rnd 15
 # [8] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 2, target rnd 16
 # [9] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [10] SkillSet:
 # 	Condition: 20% chance when < 65% hp
 # 	[0] ESBlind -> Nirmanakaya
@@ -182,8 +182,8 @@ records:
 # [15] ESAttackMultihit -> Mahasukha-Kamala
 # Enemy action
 # [16] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 9
 # [17] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [18] ESVoidShield -> Dark Times
 # Void damage >= 10000000 for 999 turns

@@ -73,6 +73,24 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
+  desc_en: Player -99% HP + Bind active skills for 10 turns
+  desc_jp: Player -99% HP + Bind active skills for 10 turns
+  max_atk_pct: null
+  name_en: Flare Tick Explosion + Sea King's Eye
+  name_jp: Flare Tick Explosion + Sea King's Eye
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 89
+  name_jp: HP <= 89
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
   desc_en: Deal 150% damage (3 hits, 50% each)
   desc_jp: Deal 150% damage (3 hits, 50% each)
   max_atk_pct: 150
@@ -90,42 +108,6 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 0
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 65
-  name_jp: HP <= 65
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Absorb Wood damage for 3 turns
-  desc_jp: Absorb Wood damage for 3 turns
-  max_atk_pct: null
-  name_en: Anti-Plant
-  name_jp: Anti-Plant
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Player -99% HP + Bind active skills for 10 turns
-  desc_jp: Player -99% HP + Bind active skills for 10 turns
-  max_atk_pct: null
-  name_en: Flare Tick Explosion + Sea King's Eye
-  name_jp: Flare Tick Explosion + Sea King's Eye
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
@@ -167,11 +149,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESSkyfall -> Aquaflame Evocation
 # 	Fire, Water skyfall +20% for 10 turns
@@ -189,11 +171,11 @@ records:
 # Condition: When < 20% hp
 # Enemy action
 # [8] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 90, target rnd 14
 # [9] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 16
 # [10] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 65, target rnd 23
 # [11] ESAttackMultihit -> Vortex Breath
 # Condition: 50% chance
 # Enemy action
@@ -207,13 +189,13 @@ records:
 # [15] ESAttackMultihit -> Vortex Breath
 # Enemy action
 # [16] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 11
 # [17] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [18] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [1948, 1949], target rnd 21
 # [19] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [2442, 2443], target rnd 22
 # [20] SkillSet:
 # 	[0] ESGravity -> Flare Tick Explosion
 # 	Player -99% HP
@@ -224,11 +206,11 @@ records:
 # [22] ESBindSkill -> I don't need to fight with you.
 # Bind active skills for 10 turns
 # [23] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 11
 # [24] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [25] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 27
 # [26] ESAttackMultihit -> Vortex Breath
 # Enemy action
 # [27] ESAbsorbAttribute -> Anti-Plant

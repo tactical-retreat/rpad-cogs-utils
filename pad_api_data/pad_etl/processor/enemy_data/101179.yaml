@@ -86,15 +86,15 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 5
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 5, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] ESAbsorbThreshold -> Innocent Brush Strokes
 # Absorb damage >= 200000 damage for 2 turns
 # [7] ESEndPath -> ESEndPath
@@ -106,13 +106,13 @@ records:
 # Condition: When < 25% hp
 # Enemy action
 # [10] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 13
 # [11] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [12] ESBombFixedSpawn -> Explosive Writing
 # Spawn Bomb orbs in the specified positions
 # [13] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b10
 # [14] ESOrbChangeAttack -> Fire Spirit's Writing
 # Change Random to Fire
 # [15] ESEndPath -> ESEndPath

@@ -38,8 +38,44 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind God cards for 2~4 turns + Do nothing
+  desc_jp: Bind God cards for 2~4 turns + Do nothing
+  max_atk_pct: null
+  name_en: Glare of Zeus + Time to finish you off!
+  name_jp: Glare of Zeus + Time to finish you off!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy action + Enemy action
+  desc_jp: Enemy action + Enemy action
+  max_atk_pct: null
+  name_en: Super Nova + Graviton Bomb
+  name_jp: Super Nova + Graviton Bomb
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 39
+  name_jp: HP <= 39
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -94,42 +130,6 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 39
-  name_jp: HP <= 39
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Bind God cards for 2~4 turns + Do nothing
-  desc_jp: Bind God cards for 2~4 turns + Do nothing
-  max_atk_pct: null
-  name_en: Glare of Zeus + Time to finish you off!
-  name_jp: Glare of Zeus + Time to finish you off!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 39
-  name_jp: HP <= 39
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Enemy action + Enemy action
-  desc_jp: Enemy action + Enemy action
-  max_atk_pct: null
-  name_en: Super Nova + Graviton Bomb
-  name_jp: Super Nova + Graviton Bomb
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 10
   name_jp: HP <= 10
   one_time: false
@@ -149,11 +149,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESStatusShield -> You've done well to come this far
@@ -169,9 +169,9 @@ records:
 # 	[1] ESRecoverEnemy -> Blessing of the Gods
 # 	Enemy recover 50% hp
 # [7] ESNone -> ESNone
-# None
+# nothing
 # [8] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 40, target rnd 20
 # [9] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESColumnSpawnMulti -> Lightning of God
@@ -211,9 +211,9 @@ records:
 # [15] ESEndPath -> ESEndPath
 # end_turn
 # [16] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 8
 # [17] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [18] SkillSet:
 # 	[0] ESBindTyping -> Glare of Zeus
 # 	Bind God cards for 2~4 turns
@@ -222,9 +222,9 @@ records:
 # [19] ESEndPath -> ESEndPath
 # end_turn
 # [20] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 24
 # [21] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [22] SkillSet:
 # 	[0] ESBindTyping -> Glare of Zeus
 # 	Bind God cards for 2~4 turns

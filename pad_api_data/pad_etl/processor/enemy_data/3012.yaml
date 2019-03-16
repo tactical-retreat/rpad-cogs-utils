@@ -57,7 +57,7 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESDamageShield -> Shell Scale
 # Condition: One-time use
 # Reduce damage from all sources by 75% for 3 turns
@@ -74,37 +74,37 @@ records:
 # Condition: When < 50% hp , one-time use
 # Bind 1 subs for 5 turns
 # [7] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 10
 # [8] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [9] ESDamageShield -> Shell Scale
 # Reduce damage from all sources by 75% for 3 turns
 # [10] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 13
 # [11] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [12] ESAttackMultihit -> Cyclone
 # Enemy action
 # [13] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 16
 # [14] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [15] ESFixedStart -> Flash Induction
 # Fix orb movement starting point to random position on the board
 # [16] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 8, target rnd 19
 # [17] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1111
 # [18] ESAbsorbAttribute -> Deep Shadow
 # Absorb Dark damage for 3 turns
 # [19] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 16, target rnd 22
 # [20] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11111
 # [21] ESAttackMultihit -> Cyclone
 # Enemy action
 # [22] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b11111
 # [23] ESFixedStart -> Flash Induction
 # Fix orb movement starting point to random position on the board
 # [24] ESResolve -> Eight Resolve

@@ -73,8 +73,35 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: 'Show message: Hey, hey! You finally joined!!|Hyaaaaaaaa!!'
+  desc_jp: 'Show message: Hey, hey! You finally joined!!|Hyaaaaaaaa!!'
+  max_atk_pct: null
+  name_en: Machine Transformation
+  name_jp: Machine Transformation
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: Deal 210% damage (6 hits, 35% each)
+  desc_jp: Deal 210% damage (6 hits, 35% each)
+  max_atk_pct: 210
+  name_en: Sechs Knuckles
+  name_jp: Sechs Knuckles
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 9
+  name_jp: HP <= 9
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -100,8 +127,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
+  name_en: HP <= 9
+  name_jp: HP <= 9
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -127,8 +154,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: HP <= 9
+  name_jp: HP <= 9
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -159,116 +186,35 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: 'Show message: Hey, hey! You finally joined!!|Hyaaaaaaaa!!'
-  desc_jp: 'Show message: Hey, hey! You finally joined!!|Hyaaaaaaaa!!'
-  max_atk_pct: null
-  name_en: Machine Transformation
-  name_jp: Machine Transformation
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 0
-- !SkillRecord
-  desc_en: Movetime -2s for 5 turns
-  desc_jp: Movetime -2s for 5 turns
-  max_atk_pct: null
-  name_en: Double Smoke
-  name_jp: Double Smoke
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: 'Show message: Hey, hey! You finally joined!!|Hyaaaaaaaa!!'
-  desc_jp: 'Show message: Hey, hey! You finally joined!!|Hyaaaaaaaa!!'
-  max_atk_pct: null
-  name_en: Machine Transformation
-  name_jp: Machine Transformation
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 0
-- !SkillRecord
-  desc_en: Delay active skills by 2 turns, Deal 120% damage
-  desc_jp: Delay active skills by 2 turns, Deal 120% damage
-  max_atk_pct: 120
-  name_en: Grief Punch
-  name_jp: Grief Punch
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 9
-  name_jp: HP <= 9
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: 'Show message: Hey, hey! You finally joined!!|Hyaaaaaaaa!!'
-  desc_jp: 'Show message: Hey, hey! You finally joined!!|Hyaaaaaaaa!!'
-  max_atk_pct: null
-  name_en: Machine Transformation
-  name_jp: Machine Transformation
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 0
-- !SkillRecord
-  desc_en: Deal 210% damage (6 hits, 35% each)
-  desc_jp: Deal 210% damage (6 hits, 35% each)
-  max_atk_pct: 210
-  name_en: Sechs Knuckles
-  name_jp: Sechs Knuckles
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 4
 # [2] ESDeathCry -> Machine Transformation
 # Condition: On death
 # Show message: Hey, hey! You finally joined!!|Hyaaaaaaaa!!
 # [3] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 5
 # [4] ESEndPath -> ESEndPath
 # end_turn
 # [5] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 9
 # [6] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [7] ESBindRandom -> I got you! Let's battle!!
 # Bind 6 random cards for 2 turns
 # [8] ESEndPath -> ESEndPath
 # end_turn
 # [9] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 10, target rnd 26
 # [10] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 19
 # [11] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 15
 # [12] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [13] ESGravity -> Giant Fist
 # Player -99% HP
 # [14] ESEndPath -> ESEndPath
@@ -284,9 +230,9 @@ records:
 # [18] ESEndPath -> ESEndPath
 # end_turn
 # [19] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 23
 # [20] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [21] ESDebuffMovetime -> Double Smoke
 # Movetime -2s for 5 turns
 # [22] ESEndPath -> ESEndPath

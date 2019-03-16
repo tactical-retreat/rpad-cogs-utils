@@ -120,11 +120,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESRandomSpawn -> Star Onyx
 # 	Spawn random 15 Jammer orbs
@@ -133,27 +133,27 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 9
 # [7] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [8] ESBindRandom -> First Strike - Fear Bringer
 # Bind 6 random cards for 4 turns
 # [9] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 12
 # [10] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [11] ESBindSkill -> Second Strike - Curse Bringer
 # Bind active skills for 4 turns
 # [12] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 8, target rnd 15
 # [13] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1111
 # [14] ESBlind -> Third Strike - Darkness Bringer
 # Blind all orbs on the board
 # [15] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 16, target rnd 18
 # [16] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11111
 # [17] ESSkillDelay -> Fourth Strike - Despair Bringer
 # Delay active skills by 4 turns
 # [18] ESAttackMultihit -> Hour of Destruction - Ruin Advent

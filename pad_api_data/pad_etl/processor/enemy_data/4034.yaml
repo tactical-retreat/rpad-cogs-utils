@@ -17,23 +17,6 @@ level: 1
 overrides: []
 records:
 - !SkillRecord
-  desc_en: Do nothing
-  desc_jp: Do nothing
-  max_atk_pct: null
-  name_en: I have to thank you for it, my friend.
-  name_jp: I have to thank you for it, my friend.
-  one_time: true
-  record_type_name: PREEMPT
-  usage_pct: 100
-
-############################################################
-### Data @ 3
-############################################################
-!SkillRecordListing
-level: 3
-overrides: []
-records:
-- !SkillRecord
   desc_en: Voids status ailments for 999 turns + Bind active skills for 3 turns
   desc_jp: Voids status ailments for 999 turns + Bind active skills for 3 turns
   max_atk_pct: null
@@ -142,6 +125,23 @@ records:
   name_jp: Nuclear Fusion
   one_time: false
   record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Data @ 3
+############################################################
+!SkillRecordListing
+level: 3
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: I have to thank you for it, my friend.
+  name_jp: I have to thank you for it, my friend.
+  one_time: true
+  record_type_name: PREEMPT
   usage_pct: 100
 
 ############################################################
@@ -266,11 +266,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 4
 # [3] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 3, target rnd 15
 # [4] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESStatusShield -> I thank you for your help. All of you.

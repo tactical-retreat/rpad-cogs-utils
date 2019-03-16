@@ -79,6 +79,24 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
+  desc_en: Absorb Water damage for 1 turns + Change Heal to Poison
+  desc_jp: Absorb Water damage for 1 turns + Change Heal to Poison
+  max_atk_pct: null
+  name_en: Abyssal Shark Dragon's Trial + Chopping Ring of the Deep Sea
+  name_jp: Abyssal Shark Dragon's Trial + Chopping Ring of the Deep Sea
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
   desc_en: Delay active skills by 2 turns
   desc_jp: Delay active skills by 2 turns
   max_atk_pct: null
@@ -127,24 +145,6 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Absorb Water damage for 1 turns + Change Heal to Poison
-  desc_jp: Absorb Water damage for 1 turns + Change Heal to Poison
-  max_atk_pct: null
-  name_en: Abyssal Shark Dragon's Trial + Chopping Ring of the Deep Sea
-  name_jp: Abyssal Shark Dragon's Trial + Chopping Ring of the Deep Sea
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 20
   name_jp: HP <= 20
   one_time: false
@@ -173,15 +173,15 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] SkillSet:
 # 	[0] ESStatusShield -> Let's confirm your wishes
 # 	Voids status ailments for 5 turns
@@ -202,13 +202,13 @@ records:
 # 	[1] ESBoardChangeAttackBits -> Abyss Dark Ring
 # 	Change all orbs to Water, Dark, Heal
 # [10] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 19
 # [11] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 16
 # [12] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [13] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [2442, 2443], target rnd 15
 # [14] ESSkillDelay -> Wave of Calmness
 # Delay active skills by 2 turns
 # [15] ESSkillDelay -> Use the Claws's power as you wish
@@ -223,9 +223,9 @@ records:
 # Condition: When fire, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board
 # Spawn random 8 Water orbs
 # [19] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 16
 # [20] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [21] SkillSet:
 # 	[0] ESAbsorbAttribute -> Abyssal Shark Dragon's Trial
 # 	Absorb Water damage for 1 turns

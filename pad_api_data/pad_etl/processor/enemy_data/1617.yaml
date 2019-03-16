@@ -35,6 +35,24 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
+  desc_en: Enemy recover 50% hp + Do nothing
+  desc_jp: Enemy recover 50% hp + Do nothing
+  max_atk_pct: null
+  name_en: Sharon! Take this potion! + Thanks Undine!
+  name_jp: Sharon! Take this potion! + Thanks Undine!
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
   desc_en: Change 1st, 2nd, 3rd, 4th row to Fire, Wood, Light, Dark orbs, 5th row
     to Water orbs, Deal 200% damage
   desc_jp: Change 1st, 2nd, 3rd, 4th row to Fire, Wood, Light, Dark orbs, 5th row
@@ -49,17 +67,17 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
+  name_en: Turn 2
+  name_jp: Turn 2
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Enemy recover 50% hp + Do nothing
-  desc_jp: Enemy recover 50% hp + Do nothing
+  desc_en: Enemy recover 30% hp + Change Random 6 to Mortal Poison
+  desc_jp: Enemy recover 30% hp + Change Random 6 to Mortal Poison
   max_atk_pct: null
-  name_en: Sharon! Take this potion! + Thanks Undine!
-  name_jp: Sharon! Take this potion! + Thanks Undine!
+  name_en: Drink some more potion! + I can't drink this much...
+  name_jp: Drink some more potion! + I can't drink this much...
   one_time: true
   record_type_name: ACTION
   usage_pct: 100
@@ -85,17 +103,17 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
+  name_en: Turn 3
+  name_jp: Turn 3
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Enemy recover 50% hp + Do nothing
-  desc_jp: Enemy recover 50% hp + Do nothing
+  desc_en: Enemy recover 10% hp + Change Random 18 to Mortal Poison
+  desc_jp: Enemy recover 10% hp + Change Random 18 to Mortal Poison
   max_atk_pct: null
-  name_en: Sharon! Take this potion! + Thanks Undine!
-  name_jp: Sharon! Take this potion! + Thanks Undine!
+  name_en: If you don't drink it, you'll lose! + I can't...take any more...
+  name_jp: If you don't drink it, you'll lose! + I can't...take any more...
   one_time: true
   record_type_name: ACTION
   usage_pct: 100
@@ -123,17 +141,17 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 3
-  name_jp: Turn 3
+  name_en: Turn 4
+  name_jp: Turn 4
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Enemy recover 50% hp + Do nothing
-  desc_jp: Enemy recover 50% hp + Do nothing
+  desc_en: Do nothing + Change all orbs to Mortal Poison
+  desc_jp: Do nothing + Change all orbs to Mortal Poison
   max_atk_pct: null
-  name_en: Sharon! Take this potion! + Thanks Undine!
-  name_jp: Sharon! Take this potion! + Thanks Undine!
+  name_en: Come on, open wide... + Aaaaahhhh!
+  name_jp: Come on, open wide... + Aaaaahhhh!
   one_time: true
   record_type_name: ACTION
   usage_pct: 100
@@ -153,24 +171,6 @@ records:
   name_en: Abyss Pressure
   name_jp: Abyss Pressure
   one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 4
-  name_jp: Turn 4
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Enemy recover 50% hp + Do nothing
-  desc_jp: Enemy recover 50% hp + Do nothing
-  max_atk_pct: null
-  name_en: Sharon! Take this potion! + Thanks Undine!
-  name_jp: Sharon! Take this potion! + Thanks Undine!
-  one_time: true
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -218,11 +218,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESStatusShield -> Undine, here I go...
 # 	Voids status ailments for 999 turns
@@ -231,41 +231,41 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 10
 # [7] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [8] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 26
 # [9] ESRowSpawnMulti -> Elemental Stream
 # Change 1st, 2nd, 3rd, 4th row to Fire, Wood, Light, Dark orbs, 5th row to Water orbs
 # [10] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 14
 # [11] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [12] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 26
 # [13] ESGravity -> Marine Pressure
 # Player -99% HP
 # [14] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 8, target rnd 18
 # [15] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1111
 # [16] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 26
 # [17] ESColumnSpawnMulti -> Abyssal Stream
 # Change 1st column to Water orbs, 2nd, 3rd, 4th, 5th column to Fire, Wood, Light, Dark orbs, 6th column to Mortal Poison orbs
 # [18] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 16, target rnd 22
 # [19] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11111
 # [20] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 26
 # [21] ESGravity -> Abyss Pressure
 # Player -100% HP
 # [22] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 32, target rnd 25
 # [23] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111111
 # [24] SkillSet:
 # 	[0] ESBindAwoken -> No! The barrier's gonna break!
 # 	Bind awoken skills for 2 turns

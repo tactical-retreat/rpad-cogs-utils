@@ -48,11 +48,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESBindSkill -> Shining Death Queen's Whisper
 # Bind active skills for 5 turns
 # [5] ESEndPath -> ESEndPath
@@ -60,23 +60,10 @@ records:
 # [6] ESStatusShield -> Protection of the Gods
 # Voids status ailments for 999 turns
 # [7] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 10
 # [8] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 15
 # [9] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [10] ESAbsorbCombo -> Shining Death Queen's Test
 # Absorb combo <= 5 damage for 5 turns
-# [11] ESSetCounterIf -> ESSetCounterIf
-# set_counter_if
-# [12] ESCountdown -> ESCountdown
-# countdown
-# [13] ESAttackMultihit -> Shining Death Queen's Judgement
-# Enemy action
-# [14] ESEndPath -> ESEndPath
-# end_turn
-# [15] ESBindAttack -> Thunder Arrow
-# Condition: One-time use
-# Bind 1 subs for 2 turns
-# [16] ESOrbChangeAttack -> Shining Blast
-# Change Dark to Light

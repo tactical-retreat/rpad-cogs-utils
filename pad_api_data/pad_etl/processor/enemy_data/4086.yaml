@@ -29,18 +29,18 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
+  name_en: Turn 2
+  name_jp: Turn 2
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Blind orbs in specific positions for 1 turns, Deal 100% damage
-  desc_jp: Blind orbs in specific positions for 1 turns, Deal 100% damage
-  max_atk_pct: 100
-  name_en: X-Calibur
-  name_jp: X-Calibur
-  one_time: true
+  desc_en: Spawn Bomb orbs in the specified positions
+  desc_jp: Spawn Bomb orbs in the specified positions
+  max_atk_pct: null
+  name_en: Goodbye!
+  name_jp: Goodbye!
+  one_time: false
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -49,33 +49,6 @@ records:
   max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Spawn random 1 Wood orbs, Deal 90% damage
-  desc_jp: Spawn random 1 Wood orbs, Deal 90% damage
-  max_atk_pct: 90
-  name_en: Baltic Launcher
-  name_jp: Baltic Launcher
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 50
-- !SkillRecord
-  desc_en: Deal 80% damage
-  desc_jp: Deal 80% damage
-  max_atk_pct: 80
-  name_en: I-Slasher
-  name_jp: I-Slasher
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 24
-  name_jp: HP <= 24
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -98,12 +71,12 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Spawn Bomb orbs in the specified positions
-  desc_jp: Spawn Bomb orbs in the specified positions
-  max_atk_pct: null
-  name_en: Goodbye!
-  name_jp: Goodbye!
-  one_time: false
+  desc_en: Blind orbs in specific positions for 1 turns, Deal 100% damage
+  desc_jp: Blind orbs in specific positions for 1 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: X-Calibur
+  name_jp: X-Calibur
+  one_time: true
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -116,11 +89,20 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Spawn Bomb orbs in the specified positions, Deal 100% damage
-  desc_jp: Spawn Bomb orbs in the specified positions, Deal 100% damage
-  max_atk_pct: 100
-  name_en: V-Slasher
-  name_jp: V-Slasher
+  desc_en: Spawn random 1 Wood orbs, Deal 90% damage
+  desc_jp: Spawn random 1 Wood orbs, Deal 90% damage
+  max_atk_pct: 90
+  name_en: Baltic Launcher
+  name_jp: Baltic Launcher
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Deal 80% damage
+  desc_jp: Deal 80% damage
+  max_atk_pct: 80
+  name_en: I-Slasher
+  name_jp: I-Slasher
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -129,21 +111,21 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] ESBombRandomSpawn -> Fulfilling mission
 # Spawn random 3 Bomb orbs
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 25, target rnd 13
 # [9] ESBlindStickyFixed -> X-Calibur
 # Condition: One-time use
 # Blind orbs in specific positions for 1 turns
@@ -155,15 +137,15 @@ records:
 # [12] ESEndPath -> ESEndPath
 # end_turn
 # [13] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 1, target rnd 16
 # [14] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [15] ESAttackMultihit -> Rebel Spark
 # Enemy action
 # [16] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 2, target rnd 20
 # [17] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [18] ESBombFixedSpawn -> Goodbye!
 # Spawn Bomb orbs in the specified positions
 # [19] ESEndPath -> ESEndPath

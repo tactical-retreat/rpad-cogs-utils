@@ -74,18 +74,18 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 5, target rnd 5
 # [3] ESInactivity -> He looks full
 # Condition: One-time use
 # Do nothing
 # [4] ESEndPath -> ESEndPath
 # end_turn
 # [5] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 9
 # [6] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [7] ESAttackUp -> Hangry!
 # Condition: One-time use
 # Increase damage to 200% for the next 5 turns

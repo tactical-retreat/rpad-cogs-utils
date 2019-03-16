@@ -95,11 +95,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESSkyfall -> Observe this glorious spectacle!!
 # 	Locked random skyfall +30% for 10 turns
@@ -111,9 +111,9 @@ records:
 # Condition: When < 20% hp
 # Enemy action
 # [7] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [2440, 2441], target rnd 26
 # [8] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [1946, 1947], target rnd 26
 # [9] ESBindAttribute -> Evaporate
 # Condition: When < 70% hp , one-time use
 # Bind Water cards for 5 turns
@@ -124,7 +124,7 @@ records:
 # Condition: When < 70% hp , one-time use
 # Mortal Poison skyfall +20% for 2 turns
 # [12] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 21
 # [13] ESOrbLock -> Brilliant Flare
 # Lock all Jammer orbs
 # [14] ESColumnSpawnMulti -> Reflection Ray
@@ -161,11 +161,11 @@ records:
 # [25] ESEndPath -> ESEndPath
 # end_turn
 # [26] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 9
 # [27] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [28] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [1946, 1947], target rnd 30
 # [29] ESAttackMultihit -> You foolish Devilbound creature
 # Enemy action
 # [30] ESAttackMultihit -> If you want power, sacrifice him to me!

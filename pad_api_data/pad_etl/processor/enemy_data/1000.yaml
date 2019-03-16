@@ -155,13 +155,13 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 6, target rnd 6
 # [5] ESAbsorbCombo -> Dark Wolf Trial
 # Absorb combo <= 7 damage for 10 turns
 # [6] ESAbsorbCombo -> Dark Wolf Revelations
@@ -172,7 +172,7 @@ records:
 # Condition: When < 50% hp , one-time use
 # Increase damage to 1000% for the next 999 turns
 # [9] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 100, target rnd 12
 # [10] ESRandomSpawn -> Path to the Underworld
 # Condition: When fire, water, wood, light, dark, poison orbs are on the board
 # Spawn random 2 Heal, Jammer, Mortal Poison orbs

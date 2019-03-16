@@ -97,11 +97,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESOrbSealRow -> Fallen Angel's Wings
 # 	Seal 1st, 5th row for 4 turns
@@ -119,9 +119,9 @@ records:
 # Condition: When < 15% hp
 # Enemy action
 # [8] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 13
 # [9] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [10] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESSkillDelay -> Devil Snake's Glare
@@ -136,15 +136,15 @@ records:
 # [12] ESEndPath -> ESEndPath
 # end_turn
 # [13] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 17
 # [14] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [15] ESOrbLock -> Black Rebellion
 # Lock 10 random Wood, Dark, Jammer, Poison orbs
 # [16] ESEndPath -> ESEndPath
 # end_turn
 # [17] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b100
 # [18] ESRandomSpawn -> Venomous
 # Condition: 50% chance & when Fire, Water, Wood, Light, Dark, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 12 Poison orbs

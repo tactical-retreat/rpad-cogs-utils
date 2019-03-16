@@ -104,6 +104,102 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
+  desc_en: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
+    orbs + Player -115% HP
+  desc_jp: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
+    orbs + Player -115% HP
+  max_atk_pct: null
+  name_en: Orb Flash + Rubilushent
+  name_jp: Orb Flash + Rubilushent
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Absorb combo <= 8 damage for 9 turns + Reduce damage from all sources by
+    50% for 9 turns
+  desc_jp: Absorb combo <= 8 damage for 9 turns + Reduce damage from all sources by
+    50% for 9 turns
+  max_atk_pct: null
+  name_en: Nine Seek + Metal Armor
+  name_jp: Nine Seek + Metal Armor
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Blind random 3~5 orbs for 2 turns, Deal 400% damage
+  desc_jp: Blind random 3~5 orbs for 2 turns, Deal 400% damage
+  max_atk_pct: 400
+  name_en: Orb Veil
+  name_jp: Orb Veil
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 4
+  name_jp: Turn 4
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Absorb combo <= 8 damage for 9 turns + Reduce damage from all sources by
+    50% for 9 turns
+  desc_jp: Absorb combo <= 8 damage for 9 turns + Reduce damage from all sources by
+    50% for 9 turns
+  max_atk_pct: null
+  name_en: Nine Seek + Metal Armor
+  name_jp: Nine Seek + Metal Armor
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 4
+  name_jp: Turn 4
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Blind random 3~5 orbs for 2 turns, Deal 400% damage
+  desc_jp: Blind random 3~5 orbs for 2 turns, Deal 400% damage
+  max_atk_pct: 400
+  name_en: Orb Veil
+  name_jp: Orb Veil
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 5
+  name_jp: Turn 5
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
   desc_en: Blind random 3~5 orbs for 2 turns, Deal 400% damage
   desc_jp: Blind random 3~5 orbs for 2 turns, Deal 400% damage
   max_atk_pct: 400
@@ -154,46 +250,6 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
-    orbs + Player -115% HP
-  desc_jp: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
-    orbs + Player -115% HP
-  max_atk_pct: null
-  name_en: Orb Flash + Rubilushent
-  name_jp: Orb Flash + Rubilushent
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 14
-  name_jp: HP <= 14
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Absorb combo <= 8 damage for 9 turns + Reduce damage from all sources by
-    50% for 9 turns
-  desc_jp: Absorb combo <= 8 damage for 9 turns + Reduce damage from all sources by
-    50% for 9 turns
-  max_atk_pct: null
-  name_en: Nine Seek + Metal Armor
-  name_jp: Nine Seek + Metal Armor
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 9
   name_jp: HP <= 9
   one_time: false
@@ -213,11 +269,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESAttributeBlock -> Battle Preparations
 # 	Unable to Fire, Water, Wood, Light, Dark orbs for 1 turns
@@ -228,18 +284,18 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 9
 # [7] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [8] SkillSet:
 # 	[0] ESAbsorbCombo -> Simple Nine Seek
 # 	Absorb combo <= 8 damage for 1 turns
 # 	[1] ESAttackUp -> Storing energy...
 # 	Increase damage to 900% for the next 1 turns
 # [9] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 14
 # [10] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [11] SkillSet:
 # 	Condition: When < 99% hp
 # 	[0] ESOrbChangeAttack -> Elemental Purge
@@ -257,9 +313,9 @@ records:
 # Condition: When < 9% hp
 # Spawn Bomb orbs in the specified positions
 # [15] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 22
 # [16] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 15, target rnd 26
 # [17] ESBlindStickyRandom -> Orb Veil
 # Condition: One-time use
 # Blind random 3~5 orbs for 2 turns
@@ -275,9 +331,9 @@ records:
 # [21] ESEndPath -> ESEndPath
 # end_turn
 # [22] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 8, target rnd 16
 # [23] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1111
 # [24] SkillSet:
 # 	[0] ESOrbLock -> Orb Flash
 # 	Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
@@ -286,9 +342,9 @@ records:
 # [25] ESEndPath -> ESEndPath
 # end_turn
 # [26] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 16, target rnd 17
 # [27] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11111
 # [28] SkillSet:
 # 	[0] ESAbsorbCombo -> Nine Seek
 # 	Absorb combo <= 8 damage for 9 turns

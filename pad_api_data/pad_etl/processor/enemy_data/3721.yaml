@@ -31,8 +31,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
+  name_en: Turn 1
+  name_jp: Turn 1
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -51,8 +51,28 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 75% for 4 turns + Movetime 150% for 5
+    turns
+  desc_jp: Reduce damage from all sources by 75% for 4 turns + Movetime 150% for 5
+    turns
+  max_atk_pct: null
+  name_en: Insulating Firescales + Exalted Flame
+  name_jp: Insulating Firescales + Exalted Flame
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -69,8 +89,44 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute below actions in order repeatedly
-  name_jp: Execute below actions in order repeatedly
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 75% for 4 turns
+  desc_jp: Reduce damage from all sources by 75% for 4 turns
+  max_atk_pct: null
+  name_en: Insulating Firescales
+  name_jp: Insulating Firescales
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Player -90% HP
+  desc_jp: Player -90% HP
+  max_atk_pct: null
+  name_en: Incinerator Charge
+  name_jp: Incinerator Charge
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -84,6 +140,15 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
   desc_en: Change Heal to Fire, Deal 130% damage
   desc_jp: Change Heal to Fire, Deal 130% damage
   max_atk_pct: 130
@@ -92,29 +157,20 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: Player -90% HP
-  desc_jp: Player -90% HP
-  max_atk_pct: null
-  name_en: Incinerator Charge
-  name_jp: Incinerator Charge
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] SkillSet:
 # 	[0] ESColumnSpawnMulti -> One-Eyed Hellfire
 # 	Change 4th, 5th, 6th column to Fire, Jammer orbs
@@ -123,13 +179,13 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 20, target rnd 26
 # [9] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 15
 # [10] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [11] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 100, target rnd 13
 # [12] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESDamageShield -> Insulating Firescales
@@ -151,27 +207,27 @@ records:
 # Condition: One-time use
 # Reduce damage from all sources by 75% for 4 turns
 # [17] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 20
 # [18] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [19] ESRowSpawnMulti -> Raging Flash Wildfire
 # Change 3rd row to Jammer orbs
 # [20] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 8, target rnd 23
 # [21] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1111
 # [22] ESOrbChangeAttack -> Inferno Claw
 # Change Heal to Fire
 # [23] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b1100
 # [24] ESGravity -> Incinerator Charge
 # Player -90% HP
 # [25] ESEndPath -> ESEndPath
 # end_turn
 # [26] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 16, target rnd 29
 # [27] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11111
 # [28] ESOrbLock -> Glare of the Fire Dragon
 # Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [29] ESBoardChangeAttackBits -> Final Burning Devotion

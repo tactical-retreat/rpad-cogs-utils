@@ -83,17 +83,17 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESInactivity -> I respect your reckless courage!!
 # Do nothing
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 5, target rnd 8
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBindSkill -> Taizan-ryu Senjo Ben!!
@@ -102,7 +102,7 @@ records:
 # [9] ESAttackMultihit -> Moko Hakyoku Do!
 # Enemy action
 # [10] ESNone -> ESNone
-# None
+# nothing
 # [11] SkillSet:
 # 	Condition: On death
 # 	[0] ESInactivity -> Oroa!!

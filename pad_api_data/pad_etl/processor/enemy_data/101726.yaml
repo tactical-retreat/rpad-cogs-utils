@@ -44,6 +44,42 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
+  desc_en: Delay active skills by 99 turns
+  desc_jp: Delay active skills by 99 turns
+  max_atk_pct: null
+  name_en: Grudge Howl
+  name_jp: Grudge Howl
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 4000% damage (4 hits, 1000% each)
+  desc_jp: Deal 4000% damage (4 hits, 1000% each)
+  max_atk_pct: 4000
+  name_en: Serpent King's Annihilating Strike
+  name_jp: Serpent King's Annihilating Strike
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 0
+  name_jp: HP <= 0
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
   desc_en: Spawn random 4 Fire, Dark orbs, Deal 100% damage
   desc_jp: Spawn random 4 Fire, Dark orbs, Deal 100% damage
   max_atk_pct: 100
@@ -56,8 +92,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: HP <= 0
+  name_jp: HP <= 0
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -79,62 +115,26 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 0
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Bind 6 random cards for 2 turns
-  desc_jp: Bind 6 random cards for 2 turns
-  max_atk_pct: null
-  name_en: Snake Eye Curse
-  name_jp: Snake Eye Curse
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 29
-  name_jp: HP <= 29
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 4000% damage (4 hits, 1000% each)
-  desc_jp: Deal 4000% damage (4 hits, 1000% each)
-  max_atk_pct: 4000
-  name_en: Serpent King's Annihilating Strike
-  name_jp: Serpent King's Annihilating Strike
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESSkillDelay -> Drumming of the Underworld
 # Delay active skills by 7 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 1, target rnd 19
 # [7] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 13
 # [8] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 30, target rnd 17
 # [9] ESRandomSpawn -> Divine Hellfire
 # Condition: One-time use & when Water, Wood, Light, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 4 Fire, Dark orbs
@@ -147,9 +147,9 @@ records:
 # [12] ESEndPath -> ESEndPath
 # end_turn
 # [13] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 8
 # [14] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [15] ESBindRandom -> Snake Eye Curse
 # Bind 6 random cards for 2 turns
 # [16] ESEndPath -> ESEndPath
@@ -159,9 +159,9 @@ records:
 # [18] ESEndPath -> ESEndPath
 # end_turn
 # [19] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 17
 # [20] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [21] ESSkillDelay -> Grudge Howl
 # Delay active skills by 99 turns
 # [22] ESEndPath -> ESEndPath

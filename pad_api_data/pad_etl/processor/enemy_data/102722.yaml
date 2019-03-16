@@ -142,11 +142,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESDamageShield -> Blazing Furnace
 # 	Reduce damage from all sources by 75% for 5 turns
@@ -155,42 +155,42 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 10
 # [7] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [8] ESAttackMultihit -> Forging
 # Enemy action
 # [9] ESEndPath -> ESEndPath
 # end_turn
 # [10] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 14
 # [11] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [12] ESAttackMultihit -> Forging
 # Enemy action
 # [13] ESEndPath -> ESEndPath
 # end_turn
 # [14] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 8, target rnd 18
 # [15] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1111
 # [16] ESAttackMultihit -> Forging
 # Enemy action
 # [17] ESEndPath -> ESEndPath
 # end_turn
 # [18] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 16, target rnd 22
 # [19] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11111
 # [20] ESAttackMultihit -> Forging
 # Condition: One-time use
 # Enemy action
 # [21] ESEndPath -> ESEndPath
 # end_turn
 # [22] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 32, target rnd 26
 # [23] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111111
 # [24] SkillSet:
 # 	[0] ESAttackMultihit -> Creation of the Sacred Treasures
 # 	Enemy action

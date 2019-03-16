@@ -84,8 +84,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: Turn 2
+  name_jp: Turn 2
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -102,17 +102,17 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Bind active skills for 5 turns + Enemy recover 100% hp
-  desc_jp: Bind active skills for 5 turns + Enemy recover 100% hp
-  max_atk_pct: null
-  name_en: King's Gaze + Re-Zero
-  name_jp: King's Gaze + Re-Zero
+  desc_en: Change Poison to Mortal Poison, Deal 200% damage
+  desc_jp: Change Poison to Mortal Poison, Deal 200% damage
+  max_atk_pct: 200
+  name_en: King Cannon Type Zero
+  name_jp: King Cannon Type Zero
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -148,15 +148,15 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 5
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 5, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] SkillSet:
 # 	[0] ESStatusShield -> Let's continue!
 # 	Voids status ailments for 999 turns
@@ -165,15 +165,15 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 12
 # [9] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [10] ESDispel -> Return to Zero
 # Voids player buff effects
 # [11] ESBindRandom -> Sacrifice
 # Bind 3 random cards for 2 turns
 # [12] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 20
 # [13] ESGravity -> End of Pain
 # Condition: When < 30% hp , one-time use
 # Player -100% HP
@@ -197,9 +197,9 @@ records:
 # [19] ESEndPath -> ESEndPath
 # end_turn
 # [20] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 13
 # [21] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [22] SkillSet:
 # 	Condition: When < 50% hp
 # 	[0] ESBindSkill -> King's Gaze

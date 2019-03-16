@@ -29,6 +29,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 75% for 1 turns
+  desc_jp: Reduce damage from all sources by 75% for 1 turns
+  max_atk_pct: null
+  name_en: Sacred Realm of Vingolf
+  name_jp: Sacred Realm of Vingolf
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -79,86 +97,32 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 0
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Reduce damage from all sources by 75% for 1 turns
-  desc_jp: Reduce damage from all sources by 75% for 1 turns
-  max_atk_pct: null
-  name_en: Sacred Realm of Vingolf
-  name_jp: Sacred Realm of Vingolf
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Lock all Light orbs, Deal 90% damage
-  desc_jp: Lock all Light orbs, Deal 90% damage
-  max_atk_pct: 90
-  name_en: Earth-Shattering Thunder Hammer
-  name_jp: Earth-Shattering Thunder Hammer
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 0
-- !SkillRecord
-  desc_en: Spawn random 1 Light orbs, Deal 100% damage
-  desc_jp: Spawn random 1 Light orbs, Deal 100% damage
-  max_atk_pct: 100
-  name_en: Lightning Punch
-  name_jp: Lightning Punch
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 0
-- !SkillRecord
-  desc_en: Change 4th, 5th row to Wood, Light orbs, Deal 120% damage
-  desc_jp: Change 4th, 5th row to Wood, Light orbs, Deal 120% damage
-  max_atk_pct: 120
-  name_en: Bolt Impact
-  name_jp: Bolt Impact
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 0
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESSkillDelay -> Pride of the Aesir
 # Condition: One-time use
 # Delay active skills by 2 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [362, 363, 1423], target rnd 16
 # [7] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [1347], target rnd 22
 # [8] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [374, 375, 655], target rnd 19
 # [9] ESAttackMultihit -> Earth God's Rage
 # Condition: One-time use
 # Enemy action
 # [10] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 25
 # [11] ESOrbLock -> Earth-Shattering Thunder Hammer
 # Condition: 10% chance
 # Lock all Light orbs
@@ -174,27 +138,27 @@ records:
 # [15] ESEndPath -> ESEndPath
 # end_turn
 # [16] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 8
 # [17] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [18] ESRandomSpawn -> Don't go anywhere!
 # Condition: When fire, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board
 # Spawn random 1 Water orbs
 # [19] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 9
 # [20] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [21] ESBindRandom -> Enough struggling!
 # Bind 6 random cards for 1 turns
 # [22] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 8, target rnd 9
 # [23] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1111
 # [24] ESRecoverPlayer -> That look suits you!
 # Player recover 100% hp
 # [25] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 16, target rnd 11
 # [26] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11111
 # [27] ESDamageShield -> Sacred Realm of Vingolf
 # Reduce damage from all sources by 75% for 1 turns

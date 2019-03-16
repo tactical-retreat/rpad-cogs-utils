@@ -80,11 +80,11 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Blind random 3 orbs for 2 turns + Enemy action
-  desc_jp: Blind random 3 orbs for 2 turns + Enemy action
-  max_atk_pct: null
-  name_en: Jagged Flash + Multi Attack
-  name_jp: Jagged Flash + Multi Attack
+  desc_en: Deal 430% damage (2 hits, 215% each)
+  desc_jp: Deal 430% damage (2 hits, 215% each)
+  max_atk_pct: 430
+  name_en: Dual Heavenly Javelin Attack
+  name_jp: Dual Heavenly Javelin Attack
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -98,24 +98,6 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 430% damage (2 hits, 215% each)
-  desc_jp: Deal 430% damage (2 hits, 215% each)
-  max_atk_pct: 430
-  name_en: Dual Heavenly Javelin Attack
-  name_jp: Dual Heavenly Javelin Attack
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 4
-  name_jp: Turn 4
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Blind random 3 orbs for 2 turns + Enemy action
   desc_jp: Blind random 3 orbs for 2 turns + Enemy action
   max_atk_pct: null
@@ -146,8 +128,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 5
-  name_jp: Turn 5
+  name_en: Turn 4
+  name_jp: Turn 4
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -182,8 +164,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 6
-  name_jp: Turn 6
+  name_en: Turn 5
+  name_jp: Turn 5
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -218,8 +200,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 7
-  name_jp: Turn 7
+  name_en: Turn 6
+  name_jp: Turn 6
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -254,8 +236,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 8
-  name_jp: Turn 8
+  name_en: Turn 7
+  name_jp: Turn 7
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -290,8 +272,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 9
-  name_jp: Turn 9
+  name_en: Turn 8
+  name_jp: Turn 8
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -319,6 +301,24 @@ records:
   max_atk_pct: 430
   name_en: Dual Heavenly Javelin Attack
   name_jp: Dual Heavenly Javelin Attack
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 9
+  name_jp: Turn 9
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Blind random 3 orbs for 2 turns + Enemy action
+  desc_jp: Blind random 3 orbs for 2 turns + Enemy action
+  max_atk_pct: null
+  name_en: Jagged Flash + Multi Attack
+  name_jp: Jagged Flash + Multi Attack
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -352,6 +352,24 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
+  desc_en: Deal 600% damage (6 hits, 100% each)
+  desc_jp: Deal 600% damage (6 hits, 100% each)
+  max_atk_pct: 600
+  name_en: Sacred Full Burst
+  name_jp: Sacred Full Burst
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 29
+  name_jp: HP <= 29
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
   desc_en: Blind random 3 orbs for 2 turns + Enemy action
   desc_jp: Blind random 3 orbs for 2 turns + Enemy action
   max_atk_pct: null
@@ -369,50 +387,32 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 29
-  name_jp: HP <= 29
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 600% damage (6 hits, 100% each)
-  desc_jp: Deal 600% damage (6 hits, 100% each)
-  max_atk_pct: 600
-  name_en: Sacred Full Burst
-  name_jp: Sacred Full Burst
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESOrbChangeAttack -> Holy Jagged Horn - Purification
 # Change Jammer to Fire
 # [5] ESAbsorbThreshold -> Holy Jagged Horn - Bewitching
 # Absorb damage >= 1000000 damage for 10 turns
 # [6] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 9, target rnd 18
 # [7] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [8] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 11
 # [9] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [10] ESGravity -> Sacred Burst
 # Player -99% HP
 # [11] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 15
 # [12] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESSkillDelay -> Unicorn Neigh
@@ -437,16 +437,16 @@ records:
 # [17] ESEndPath -> ESEndPath
 # end_turn
 # [18] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 21
 # [19] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [20] SkillSet:
 # 	[0] ESAttackUp -> Holy Crimson Phantom
 # 	Increase damage to 150% for the next 99 turns
 # 	[1] ESDamageShield -> Holy Crimson Flame
 # 	Reduce damage from all sources by 75% for 99 turns
 # [21] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 30, target rnd 24
 # [22] SkillSet:
 # 	Condition: 50% chance
 # 	[0] ESBlindStickyRandom -> Jagged Flash

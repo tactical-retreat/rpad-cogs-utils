@@ -84,11 +84,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESDamageShield -> Froda's Peace
 # Condition: One-time use
 # Reduce damage from all sources by 50% for 2 turns
@@ -101,7 +101,7 @@ records:
 # Condition: One-time use
 # Enemy action
 # [8] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [372, 373, 654, 1346], target rnd 13
 # [9] ESGravity -> Skidbladnir Giant Form
 # Condition: 20% chance
 # Player -99% HP
@@ -114,8 +114,8 @@ records:
 # [12] ESEndPath -> ESEndPath
 # end_turn
 # [13] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 9
 # [14] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [15] ESRecoverPlayer -> I'm always on your side!
 # Player recover 100% hp

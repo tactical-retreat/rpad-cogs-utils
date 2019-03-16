@@ -37,6 +37,42 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
+  desc_en: Enemy action + Player -99% HP
+  desc_jp: Enemy action + Player -99% HP
+  max_atk_pct: null
+  name_en: Meteor + Maelstrom
+  name_jp: Meteor + Maelstrom
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: Enemy action + Enemy action
+  desc_jp: Enemy action + Enemy action
+  max_atk_pct: null
+  name_en: Almagest + Comet
+  name_jp: Almagest + Comet
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: Enemy action + Enemy action
+  desc_jp: Enemy action + Enemy action
+  max_atk_pct: null
+  name_en: Comet + Vacuum Wave
+  name_jp: Comet + Vacuum Wave
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 39
+  name_jp: HP <= 39
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
   desc_en: Voids player buff effects
   desc_jp: Voids player buff effects
   max_atk_pct: null
@@ -72,83 +108,20 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 0
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 40
-  name_jp: HP <= 40
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Do nothing
-  desc_jp: Do nothing
-  max_atk_pct: null
-  name_en: The Laws of the universe mean nothing!
-  name_jp: The Laws of the universe mean nothing!
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Bind 2 random for 1~3 turns, Deal 120% damage
-  desc_jp: Bind 2 random for 1~3 turns, Deal 120% damage
-  max_atk_pct: 120
-  name_en: Grand Cross
-  name_jp: Grand Cross
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 39
-  name_jp: HP <= 39
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Enemy action + Player -99% HP
-  desc_jp: Enemy action + Player -99% HP
-  max_atk_pct: null
-  name_en: Meteor + Maelstrom
-  name_jp: Meteor + Maelstrom
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 0
-- !SkillRecord
-  desc_en: Enemy action + Enemy action
-  desc_jp: Enemy action + Enemy action
-  max_atk_pct: null
-  name_en: Almagest + Comet
-  name_jp: Almagest + Comet
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 0
-- !SkillRecord
-  desc_en: Enemy action + Enemy action
-  desc_jp: Enemy action + Enemy action
-  max_atk_pct: null
-  name_en: Comet + Vacuum Wave
-  name_jp: Comet + Vacuum Wave
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 0
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 5
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 5, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] SkillSet:
 # 	[0] ESInactivity -> All memories...dimensions...existence...
 # 	Do nothing
@@ -159,7 +132,7 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 40, target rnd 14
 # [9] ESDispel -> Dispel
 # Voids player buff effects
 # [10] ESAttackMultihit -> Almagest
@@ -174,18 +147,18 @@ records:
 # [13] ESEndPath -> ESEndPath
 # end_turn
 # [14] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 18
 # [15] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [16] ESInactivity -> The Laws of the universe mean nothing!
 # Condition: When < 40% hp , one-time use
 # Do nothing
 # [17] ESEndPath -> ESEndPath
 # end_turn
 # [18] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 22
 # [19] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [20] ESBindAttack -> Grand Cross
 # Condition: When < 40% hp
 # Bind 2 random for 1~3 turns

@@ -20,26 +20,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Bind 1 random cards for 10 turns
-  desc_jp: Bind 1 random cards for 10 turns
-  max_atk_pct: null
-  name_en: Binding Move
-  name_jp: Binding Move
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -52,12 +34,30 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind 1 random cards for 10 turns
+  desc_jp: Bind 1 random cards for 10 turns
+  max_atk_pct: null
+  name_en: Binding Move
+  name_jp: Binding Move
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 4
 # [2] ESBindRandom -> Binding Move
 # Condition: One-time use
 # Bind 1 random cards for 10 turns

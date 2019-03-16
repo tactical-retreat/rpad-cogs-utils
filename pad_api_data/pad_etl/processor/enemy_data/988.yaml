@@ -26,42 +26,6 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change Dark to Light, Deal 50% damage
-  desc_jp: Change Dark to Light, Deal 50% damage
-  max_atk_pct: 50
-  name_en: Sacred Mirror of Yata
-  name_jp: Sacred Mirror of Yata
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change 5th row to Heal orbs, Deal 100% damage
-  desc_jp: Change 5th row to Heal orbs, Deal 100% damage
-  max_atk_pct: 100
-  name_en: Sacred Fertility Dance
-  name_jp: Sacred Fertility Dance
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 39
-  name_jp: HP <= 39
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Enemy recover 100% hp
   desc_jp: Enemy recover 100% hp
   max_atk_pct: null
@@ -74,8 +38,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 39
-  name_jp: HP <= 39
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -88,22 +52,58 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 39
+  name_jp: HP <= 39
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Dark to Light, Deal 50% damage
+  desc_jp: Change Dark to Light, Deal 50% damage
+  max_atk_pct: 50
+  name_en: Sacred Mirror of Yata
+  name_jp: Sacred Mirror of Yata
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 39
+  name_jp: HP <= 39
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change 5th row to Heal orbs, Deal 100% damage
+  desc_jp: Change 5th row to Heal orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Sacred Fertility Dance
+  name_jp: Sacred Fertility Dance
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESNone -> ESNone
-# None
+# nothing
 # [2] ESNone -> ESNone
-# None
+# nothing
 # [3] ESNone -> ESNone
-# None
+# nothing
 # [4] ESNone -> ESNone
-# None
+# nothing
 # [5] ESNone -> ESNone
-# None
+# nothing
 # [6] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 40, target rnd 10
 # [7] ESOrbChangeAttack -> Sacred Mirror of Yata
 # Condition: One-time use
 # Change Dark to Light
@@ -112,9 +112,9 @@ records:
 # [9] ESEndPath -> ESEndPath
 # end_turn
 # [10] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 14
 # [11] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [12] ESRecoverEnemy -> Shower of Healing
 # Enemy recover 100% hp
 # [13] ESEndPath -> ESEndPath

@@ -49,6 +49,42 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind God cards for 2~4 turns
+  desc_jp: Bind God cards for 2~4 turns
+  max_atk_pct: null
+  name_en: Glare of Zeus
+  name_jp: Glare of Zeus
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Heal to Jammer, Deal 70% damage
+  desc_jp: Change Heal to Jammer, Deal 70% damage
+  max_atk_pct: 70
+  name_en: Tera Bolt
+  name_jp: Tera Bolt
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 30
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -85,24 +121,6 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Bind God cards for 2~4 turns
-  desc_jp: Bind God cards for 2~4 turns
-  max_atk_pct: null
-  name_en: Glare of Zeus
-  name_jp: Glare of Zeus
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 20
   name_jp: HP <= 20
   one_time: false
@@ -122,11 +140,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESOrbLock -> Supercell
 # 	Lock 20 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
@@ -144,7 +162,7 @@ records:
 # 	[1] ESOrbLock -> Constrain
 # 	Lock all Mortal Poison orbs
 # [8] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 12
 # [9] ESAttackMultihit -> Lightning of God
 # Condition: 50% chance when < 75% hp
 # Enemy action
@@ -154,8 +172,8 @@ records:
 # [11] ESEndPath -> ESEndPath
 # end_turn
 # [12] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 9
 # [13] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [14] ESBindTyping -> Glare of Zeus
 # Bind God cards for 2~4 turns

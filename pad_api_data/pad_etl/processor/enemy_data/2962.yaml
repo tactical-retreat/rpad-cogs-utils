@@ -35,6 +35,42 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
+  desc_en: Bind 1 random subs for 5 turns
+  desc_jp: Bind 1 random subs for 5 turns
+  max_atk_pct: null
+  name_en: Hug of Happiness
+  name_jp: Hug of Happiness
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 300% damage
+  desc_jp: Deal 300% damage
+  max_atk_pct: 300
+  name_en: Happy Genesis
+  name_jp: Happy Genesis
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
   desc_en: Movetime -2s for 1 turns, Deal 100% damage
   desc_jp: Movetime -2s for 1 turns, Deal 100% damage
   max_atk_pct: 100
@@ -47,8 +83,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: HP <= 19
+  name_jp: HP <= 19
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -63,76 +99,22 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 69
-  name_jp: HP <= 69
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Reduce damage from all sources by 50% for 3 turns
-  desc_jp: Reduce damage from all sources by 50% for 3 turns
-  max_atk_pct: null
-  name_en: White Flower
-  name_jp: White Flower
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Bind 1 random subs for 5 turns
-  desc_jp: Bind 1 random subs for 5 turns
-  max_atk_pct: null
-  name_en: Hug of Happiness
-  name_jp: Hug of Happiness
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 300% damage
-  desc_jp: Deal 300% damage
-  max_atk_pct: 300
-  name_en: Happy Genesis
-  name_jp: Happy Genesis
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 10
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [650, 651, 2948], target rnd 8
 # [7] ESRecoverPlayer -> I am very happy!
 # Player recover 100% hp
 # [8] ESRecoverPlayer -> Please make me happy ♪
@@ -140,24 +122,24 @@ records:
 # [9] ESEndPath -> ESEndPath
 # end_turn
 # [10] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 20, target rnd 17
 # [11] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 70, target rnd 14
 # [12] ESDebuffMovetime -> Cake Cutting
 # Condition: One-time use
 # Movetime -2s for 1 turns
 # [13] ESOrbLock -> Bouquet Toss
 # Lock 1 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [14] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 12
 # [15] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [16] ESDamageShield -> White Flower
 # Reduce damage from all sources by 50% for 3 turns
 # [17] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 20
 # [18] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [19] ESBindRandomSub -> Hug of Happiness
 # Bind 1 random subs for 5 turns
 # [20] ESAttackMultihit -> Happy Genesis

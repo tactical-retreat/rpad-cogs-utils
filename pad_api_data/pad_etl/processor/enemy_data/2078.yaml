@@ -126,11 +126,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESStatusShield -> Dance of the Goddess
 # 	Voids status ailments for 999 turns
@@ -142,7 +142,7 @@ records:
 # Condition: When < 5% hp
 # Enemy action
 # [7] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 65, target rnd 13
 # [8] SkillSet:
 # 	Condition: 20% chance when < 65% hp
 # 	[0] ESBlind -> Nirmanakaya

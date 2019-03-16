@@ -35,6 +35,42 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
+  desc_en: Increase damage to 200% for the next attack
+  desc_jp: Increase damage to 200% for the next attack
+  max_atk_pct: null
+  name_en: Alright, let's be serious.
+  name_jp: Alright, let's be serious.
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Player -40% HP
+  desc_jp: Player -40% HP
+  max_atk_pct: null
+  name_en: Soryaaa!!
+  name_jp: Soryaaa!!
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
   desc_en: Player -40% HP
   desc_jp: Player -40% HP
   max_atk_pct: null
@@ -79,40 +115,22 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 0
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Increase damage to 200% for the next attack
-  desc_jp: Increase damage to 200% for the next attack
-  max_atk_pct: null
-  name_en: Alright, let's be serious.
-  name_jp: Alright, let's be serious.
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 10
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [2859, 2860], target rnd 8
 # [7] ESStatusShield -> This kid!
 # Voids status ailments for 3 turns
 # [8] ESStatusShield -> You know, I don't mind going 1 vs 2 guys!
@@ -120,7 +138,7 @@ records:
 # [9] ESEndPath -> ESEndPath
 # end_turn
 # [10] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 16
 # [11] ESGravity -> Soryaaa!!
 # Condition: One-time use
 # Player -40% HP
@@ -136,8 +154,8 @@ records:
 # [15] ESEndPath -> ESEndPath
 # end_turn
 # [16] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 11
 # [17] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [18] ESStorePower -> Alright, let's be serious.
 # Increase damage to 200% for the next attack

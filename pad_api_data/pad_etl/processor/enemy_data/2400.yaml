@@ -56,8 +56,62 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 2 turns
+  desc_jp: Reduce damage from all sources by 50% for 2 turns
+  max_atk_pct: null
+  name_en: Shield of First Light
+  name_jp: Shield of First Light
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 2 turns
+  desc_jp: Reduce damage from all sources by 50% for 2 turns
+  max_atk_pct: null
+  name_en: Shield of First Light
+  name_jp: Shield of First Light
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change 3rd column to Light orbs, Deal 130% damage
+  desc_jp: Change 3rd column to Light orbs, Deal 130% damage
+  max_atk_pct: 130
+  name_en: Slam
+  name_jp: Slam
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -79,82 +133,28 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 0
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 69
-  name_jp: HP <= 69
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Blind all orbs on the board, Deal 100% damage
-  desc_jp: Blind all orbs on the board, Deal 100% damage
-  max_atk_pct: 100
-  name_en: Not quite yet!!
-  name_jp: Not quite yet!!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Reduce damage from all sources by 50% for 2 turns
-  desc_jp: Reduce damage from all sources by 50% for 2 turns
-  max_atk_pct: null
-  name_en: Shield of First Light
-  name_jp: Shield of First Light
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change 3rd column to Light orbs, Deal 130% damage
-  desc_jp: Change 3rd column to Light orbs, Deal 130% damage
-  max_atk_pct: 130
-  name_en: Slam
-  name_jp: Slam
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESAbsorbAttribute -> Gjallarhorn Horn
 # Absorb Dark damage for 5 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [376, 377, 656, 1348, 2396], target rnd 13
 # [7] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 70, target rnd 16
 # [8] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 22
 # [9] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 70, target rnd 19
 # [10] ESSkillDelay -> Headbutt
 # Condition: 30% chance
 # Delay active skills by 1 turns
@@ -164,27 +164,27 @@ records:
 # [12] ESEndPath -> ESEndPath
 # end_turn
 # [13] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 7
 # [14] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [15] ESBindAttribute -> I'll stop you
 # Bind Dark cards for 1 turns
 # [16] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 8
 # [17] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [18] ESStatusShield -> Guardian God's Five Senses
 # Voids status ailments for 999 turns
 # [19] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 8, target rnd 10
 # [20] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1111
 # [21] ESBlind -> Not quite yet!!
 # Blind all orbs on the board
 # [22] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 16, target rnd 25
 # [23] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11111
 # [24] ESDamageShield -> Shield of First Light
 # Condition: One-time use
 # Reduce damage from all sources by 50% for 2 turns

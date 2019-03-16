@@ -10,10 +10,10 @@ reviewed_by: unreviewed
 warnings: []
 
 ############################################################
-### Data @ 1
+### Data @ 3
 ############################################################
 !SkillRecordListing
-level: 1
+level: 3
 overrides: []
 records:
 - !SkillRecord
@@ -121,17 +121,17 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 5
 # [3] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 3, target rnd 14
 # [4] ESEndPath -> ESEndPath
 # end_turn
 # [5] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 9
 # [6] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [7] ESAttackMultihit -> Let me tell you somethin' , mate!
 # Enemy action
 # [8] ESEndPath -> ESEndPath
@@ -161,9 +161,9 @@ records:
 # [13] ESEndPath -> ESEndPath
 # end_turn
 # [14] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 17
 # [15] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [16] ESInactivity -> Let me tell you somethin' , mate!
 # Do nothing
 # [17] ESEndPath -> ESEndPath

@@ -84,11 +84,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESBindAttack -> Poor Hospitality
 # 	Bind 2 both leaders for 3 turns
@@ -97,9 +97,9 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 2, target rnd 11
 # [7] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [8] ESAttackMultihit -> Hoo hoo hoo!
 # Condition: When < 50% hp
 # Enemy action
@@ -108,9 +108,9 @@ records:
 # [10] ESEndPath -> ESEndPath
 # end_turn
 # [11] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 8
 # [12] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [13] ESDebuffMovetime -> Patience Reward
 # Movetime 150% for 10 turns
 # [14] ESEndPath -> ESEndPath

@@ -44,14 +44,14 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 120% damage (2 hits, 60% each)
-  desc_jp: Deal 120% damage (2 hits, 60% each)
-  max_atk_pct: 120
-  name_en: Swarm Tactics
-  name_jp: Swarm Tactics
+  desc_en: Deal 150% damage (5 hits, 30% each)
+  desc_jp: Deal 150% damage (5 hits, 30% each)
+  max_atk_pct: 150
+  name_en: Vicious Attack
+  name_jp: Vicious Attack
   one_time: false
   record_type_name: ACTION
-  usage_pct: 60
+  usage_pct: 100
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
@@ -62,28 +62,28 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 150% damage (5 hits, 30% each)
-  desc_jp: Deal 150% damage (5 hits, 30% each)
-  max_atk_pct: 150
-  name_en: Vicious Attack
-  name_jp: Vicious Attack
+  desc_en: Deal 120% damage (2 hits, 60% each)
+  desc_jp: Deal 120% damage (2 hits, 60% each)
+  max_atk_pct: 120
+  name_en: Swarm Tactics
+  name_jp: Swarm Tactics
   one_time: false
   record_type_name: ACTION
-  usage_pct: 100
+  usage_pct: 60
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 9
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] ESStatusShield -> Genetically Engineered Strength
 # Condition: 50% chance
 # Voids status ailments for 5 turns
@@ -92,7 +92,7 @@ records:
 # [8] ESEndPath -> ESEndPath
 # end_turn
 # [9] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 20, target rnd 12
 # [10] ESAttackMultihit -> Swarm Tactics
 # Condition: 60% chance
 # Enemy action

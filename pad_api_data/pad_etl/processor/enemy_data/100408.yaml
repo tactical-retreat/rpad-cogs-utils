@@ -93,7 +93,7 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESSkillDelay -> Blaze
@@ -101,9 +101,9 @@ records:
 # 	[1] ESAbsorbCombo -> Burning Giant
 # 	Absorb combo <= 7 damage for 5 turns
 # [3] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 4, target rnd 8
 # [4] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [5] ESAttackUp -> Flame Up
 # Condition: When < 20% hp , one-time use
 # Increase damage to 200% for the next 99 turns
@@ -112,9 +112,9 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 5
 # [9] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [10] ESDebuffRCV -> Scorching Heat
 # Rcv 50% for 5 turns
 # [11] ESEndPath -> ESEndPath

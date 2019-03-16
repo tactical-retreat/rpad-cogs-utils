@@ -31,62 +31,26 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 3
-  name_jp: Turn 3
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Bind awoken skills for 1 turns
-  desc_jp: Bind awoken skills for 1 turns
-  max_atk_pct: null
-  name_en: Well, what are you going to do?
-  name_jp: Well, what are you going to do?
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 4
-  name_jp: Turn 4
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Bind awoken skills for 3 turns
-  desc_jp: Bind awoken skills for 3 turns
-  max_atk_pct: null
-  name_en: What are you doing?!
-  name_jp: What are you doing?!
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 7
-  name_jp: Turn 7
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Delay active skills by 10 turns
-  desc_jp: Delay active skills by 10 turns
-  max_atk_pct: null
-  name_en: You're in trouble now!
-  name_jp: You're in trouble now!
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 450% damage (3 hits, 150% each)
+  desc_jp: Deal 450% damage (3 hits, 150% each)
+  max_atk_pct: 450
+  name_en: This is my victory!
+  name_jp: This is my victory!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 14
+  name_jp: HP <= 14
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -117,50 +81,12 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 0
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Absorb combo <= 7 damage for 10 turns + Change 1st column to Water, Jammer
-    orbs, 6th column to Fire, Jammer orbs
-  desc_jp: Absorb combo <= 7 damage for 10 turns + Change 1st column to Water, Jammer
-    orbs, 6th column to Fire, Jammer orbs
-  max_atk_pct: null
-  name_en: I'm...not done...yet + Athnan Musmar
-  name_jp: I'm...not done...yet + Athnan Musmar
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 14
-  name_jp: HP <= 14
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 450% damage (3 hits, 150% each)
-  desc_jp: Deal 450% damage (3 hits, 150% each)
-  max_atk_pct: 450
-  name_en: This is my victory!
-  name_jp: This is my victory!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESStatusShield -> Let's battle!
@@ -168,13 +94,13 @@ records:
 # 	[1] ESDamageShield -> I wonder if you can strike me down
 # 	Reduce damage from all sources by 75% for 3 turns
 # [3] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 15, target rnd 22
 # [4] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 2, target rnd 11
 # [5] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [6] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 18
 # [7] ESOrbChangeAttackBits -> Taghyir Zahar
 # Condition: 33% chance
 # Change Jammer to Heal
@@ -196,18 +122,18 @@ records:
 # Condition: One-time use
 # Bind active skills for 3 turns
 # [14] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 3, target rnd 5
 # [15] ESSkillDelay -> You're in trouble now!
 # Condition: One-time use
 # Delay active skills by 10 turns
 # [16] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 4, target rnd 6
 # [17] ESEndPath -> ESEndPath
 # end_turn
 # [18] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 7
 # [19] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [20] SkillSet:
 # 	[0] ESAbsorbCombo -> I'm...not done...yet
 # 	Absorb combo <= 7 damage for 10 turns

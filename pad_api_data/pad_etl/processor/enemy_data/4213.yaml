@@ -156,9 +156,9 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESStatusShield -> It's special, right?
@@ -171,16 +171,16 @@ records:
 # Condition: When < 10% hp
 # Change all orbs to Fire, Water, Wood, Light
 # [7] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 3, target rnd 11
 # [8] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [9] ESBindAttack -> Chocolate Kiss
 # Condition: 15% chance
 # Bind 1 subs for 1 turns
 # [10] ESAttackMultihit -> Sweet Combo
 # Enemy action
 # [11] ESSetCounter -> ESSetCounter
-# set_counter
+# counter = 0
 # [12] ESSkillDelay -> Don't rush!
 # Delay active skills by 2 turns
 # [13] ESEndPath -> ESEndPath

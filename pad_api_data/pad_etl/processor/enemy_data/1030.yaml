@@ -29,20 +29,20 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: Turn 1
+  name_jp: Turn 1
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change Random to Jammer, Deal 100% damage
-  desc_jp: Change Random to Jammer, Deal 100% damage
-  max_atk_pct: 100
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
   name_en: '***** (HxH)'
   name_jp: '***** (HxH)'
-  one_time: false
+  one_time: true
   record_type_name: ACTION
-  usage_pct: 60
+  usage_pct: 100
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
@@ -65,60 +65,42 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 25
-  name_jp: HP <= 25
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 400% damage (4 hits, 100% each)
-  desc_jp: Deal 400% damage (4 hits, 100% each)
-  max_atk_pct: 400
-  name_en: '***** (HxH)'
-  name_jp: '***** (HxH)'
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 24
   name_jp: HP <= 24
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Do nothing
-  desc_jp: Do nothing
-  max_atk_pct: null
+  desc_en: Change Random to Jammer, Deal 100% damage
+  desc_jp: Change Random to Jammer, Deal 100% damage
+  max_atk_pct: 100
   name_en: '***** (HxH)'
   name_jp: '***** (HxH)'
-  one_time: true
+  one_time: false
   record_type_name: ACTION
-  usage_pct: 100
+  usage_pct: 60
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESRecoverPlayer -> ***** (HxH)
 # Player recover 100% hp
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 25, target rnd 14
 # [7] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 75, target rnd 12
 # [8] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 12
 # [9] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [10] ESStorePower -> ***** (HxH)
 # Condition: When < 75% hp
 # Increase damage to 200% for the next attack

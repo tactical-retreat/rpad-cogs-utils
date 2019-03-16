@@ -65,24 +65,6 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 12
-  name_jp: Turn 12
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Bind awoken skills for 1 turns + Enemy action
-  desc_jp: Bind awoken skills for 1 turns + Enemy action
-  max_atk_pct: null
-  name_en: You gonna keep dancing? + Fall here!
-  name_jp: You gonna keep dancing? + Fall here!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -140,11 +122,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESAbsorbAttribute -> My severed arm still aches...
 # 	Absorb Light, Dark damage for 5 turns
@@ -156,12 +138,12 @@ records:
 # Condition: When < 5% hp
 # Enemy action
 # [7] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [8] ESAttackUpStatus -> Crafty
 # Condition: after being affected by a status effect
 # Increase damage to 200% for the next 999 turns
 # [9] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 5, target rnd 14
 # [10] ESSkillDelay -> Helmet Splitter
 # Condition: 33% chance
 # Delay active skills by 1 turns
@@ -179,7 +161,7 @@ records:
 # 	[1] ESDamageShield -> Steel Demonskin
 # 	Reduce damage from all sources by 75% for 7 turns
 # [15] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 12, target rnd 20
 # [16] ESSkillDelay -> Helmet Splitter
 # Condition: 33% chance
 # Delay active skills by 1 turns
@@ -191,9 +173,9 @@ records:
 # [19] ESEndPath -> ESEndPath
 # end_turn
 # [20] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 16
 # [21] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [22] SkillSet:
 # 	[0] ESBindAwoken -> You gonna keep dancing?
 # 	Bind awoken skills for 1 turns

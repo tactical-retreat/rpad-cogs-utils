@@ -75,11 +75,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 7
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESAbsorbAttribute -> Light Dragon Scale
 # Condition: 50% chance
 # Absorb Light damage for 4 turns
@@ -93,9 +93,9 @@ records:
 # [8] ESAbsorbAttribute -> Dark Dragon Scale
 # Absorb Dark damage for 4 turns
 # [9] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 14
 # [10] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [11] ESGravity -> Zero Blast
 # Condition: When < 30% hp
 # Player -100% HP
@@ -104,15 +104,15 @@ records:
 # [13] ESEndPath -> ESEndPath
 # end_turn
 # [14] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 18
 # [15] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [16] ESBindAttack -> Dragon Lord's Claw
 # Bind 1 subs for 1~2 turns
 # [17] ESEndPath -> ESEndPath
 # end_turn
 # [18] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b110
 # [19] ESOrbChangeAttack -> Black Disaster
 # Change Random to Jammer
 # [20] ESEndPath -> ESEndPath

@@ -84,11 +84,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESAbsorbCombo -> Celestial Prelude
@@ -101,7 +101,7 @@ records:
 # Condition: When < 10% hp
 # Player -500% HP
 # [7] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 12
 # [8] ESRowSpawnMulti -> Holy Tree's Staff
 # Condition: One-time use
 # Change 1st, 3rd, 5th row to Light orbs, 2nd, 4th row to Wood orbs
@@ -109,16 +109,16 @@ records:
 # Condition: One-time use
 # Change all orbs to Fire, Water, Wood, Light, Dark, Heal
 # [10] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [11] SkillSet:
 # 	[0] ESOrbChangeAttack -> Last Movement - Flash
 # 	Change Random to Light
 # 	[1] ESDamageShield -> The show is over...
 # 	Reduce damage from all sources by 50% for 3 turns
 # [12] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 17
 # [13] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [14] ESBindTyping -> Blinding Chain of God's Ruin
 # Bind God cards for 5 turns
 # [15] ESBindAttribute -> Blinding Chain of Devil's Ruin
@@ -126,13 +126,13 @@ records:
 # [16] ESBindTarget -> Blinding Chain of Good & Evil's Ruin
 # Bind 1 both leaders for 5 turns
 # [17] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 8, target rnd 20
 # [18] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1111
 # [19] ESBoardChangeAttackBits -> Hyacinth's Lamentation
 # Change all orbs to Fire, Wood, Light, Jammer
 # [20] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b1000
 # [21] ESOrbChangeAttack -> Sunlight Gift
 # Change Jammer to Heal
 # [22] ESOrbChangeAttack -> Sunlight Glow

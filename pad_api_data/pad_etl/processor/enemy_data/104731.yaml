@@ -29,6 +29,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Heal to Dark, Deal 80% damage
+  desc_jp: Change Heal to Dark, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Devotion to a Great Man
+  name_jp: Devotion to a Great Man
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -48,29 +66,29 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] ESOrbChangeAttackBits -> Devotion to a Great Man
 # Change Heal to Dark
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 11
 # [9] ESOrbChangeAttackBits -> Devotion to a Great Man
 # Change Heal to Dark
 # [10] ESAttackMultihit -> Swordsmanship
 # Enemy action
 # [11] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 9
 # [12] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [13] ESAttackUp -> Memento Tears
 # Increase damage to 200% for the next 5 turns
 # [14] ESEndPath -> ESEndPath

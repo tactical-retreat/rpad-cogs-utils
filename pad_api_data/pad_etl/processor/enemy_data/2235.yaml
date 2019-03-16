@@ -149,11 +149,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESStatusShield -> War Deity's Ambition
 # 	Voids status ailments for 999 turns
@@ -177,9 +177,9 @@ records:
 # 	[1] ESColumnSpawnMulti -> Wall Eruption
 # 	Change 1st, 3rd, 4th, 6th column to Fire orbs
 # [9] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 15
 # [10] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [11] ESBindAttribute -> Revenge Full of Hatred
 # Condition: When < 70% hp
 # Bind Water cards for 5 turns
@@ -195,9 +195,9 @@ records:
 # [14] ESJammerChangeRandom -> Wall Burst
 # Change Random 3 to Jammer
 # [15] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 20
 # [16] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [17] ESOrbChangeAttack -> Rubble Incineration
 # Change Jammer to Fire
 # [18] ESOrbLock -> Constant Grimness
@@ -205,7 +205,7 @@ records:
 # [19] ESAttackMultihit -> Thrust Combination
 # Enemy action
 # [20] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b110
 # [21] SkillSet:
 # 	[0] ESAbsorbAttribute -> Mars Core
 # 	Absorb Fire damage for 1 turns

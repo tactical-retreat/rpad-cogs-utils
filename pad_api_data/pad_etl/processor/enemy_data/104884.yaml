@@ -151,30 +151,12 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Enemy recover 100% hp
-  desc_jp: Enemy recover 100% hp
-  max_atk_pct: null
-  name_en: White Great Holy Tree
-  name_jp: White Great Holy Tree
+  desc_en: Deal 300% damage (3 hits, 100% each)
+  desc_jp: Deal 300% damage (3 hits, 100% each)
+  max_atk_pct: 300
+  name_en: Spear Throw
+  name_jp: Spear Throw
   one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Blind orbs in specific positions for 2 turns + Change Random to Wood
-  desc_jp: Blind orbs in specific positions for 2 turns + Change Random to Wood
-  max_atk_pct: null
-  name_en: Massive Dust Cloud + Splitting Ground
-  name_jp: Massive Dust Cloud + Splitting Ground
-  one_time: true
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -187,12 +169,12 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 300% damage (3 hits, 100% each)
-  desc_jp: Deal 300% damage (3 hits, 100% each)
-  max_atk_pct: 300
-  name_en: Spear Throw
-  name_jp: Spear Throw
-  one_time: false
+  desc_en: Blind orbs in specific positions for 2 turns + Change Random to Wood
+  desc_jp: Blind orbs in specific positions for 2 turns + Change Random to Wood
+  max_atk_pct: null
+  name_en: Massive Dust Cloud + Splitting Ground
+  name_jp: Massive Dust Cloud + Splitting Ground
+  one_time: true
   record_type_name: ACTION
   usage_pct: 100
 
@@ -200,27 +182,27 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] ESGravity -> Slam
 # Player -99% HP
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 15
 # [9] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [10] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 16
 # [11] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 96, target rnd 13
 # [12] ESAttackMultihit -> Black Great Holy Tree
 # Enemy action
 # [13] ESRecoverEnemy -> White Great Holy Tree
@@ -228,17 +210,17 @@ records:
 # [14] ESEndPath -> ESEndPath
 # end_turn
 # [15] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 51, target rnd 22
 # [16] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 20
 # [17] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [18] ESRecoverEnemy -> White Great Holy Tree
 # Enemy recover 100% hp
 # [19] ESEndPath -> ESEndPath
 # end_turn
 # [20] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 10, target rnd 28
 # [21] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESBlindStickyFixed -> Massive Dust Cloud

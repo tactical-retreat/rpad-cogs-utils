@@ -70,6 +70,24 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
+  desc_en: Absorb combo <= 6 damage for 5 turns
+  desc_jp: Absorb combo <= 6 damage for 5 turns
+  max_atk_pct: null
+  name_en: The next one will be even bigger.
+  name_jp: The next one will be even bigger.
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 99
+  name_jp: HP <= 99
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
   desc_en: Lock 20 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
     Poison orbs, Deal 110% damage
   desc_jp: Lock 20 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
@@ -89,50 +107,14 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 0
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 74
-  name_jp: HP <= 74
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Absorb combo <= 6 damage for 5 turns
-  desc_jp: Absorb combo <= 6 damage for 5 turns
-  max_atk_pct: null
-  name_en: The next one will be even bigger.
-  name_jp: The next one will be even bigger.
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 20
-  name_jp: HP <= 20
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 150% damage
-  desc_jp: Deal 150% damage
-  max_atk_pct: 150
-  name_en: VR never hurt like that, did it?
-  name_jp: VR never hurt like that, did it?
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 5
 # [3] ESInactivity -> Tonight, you're the prey!
 # Condition: One-time use
 # Do nothing
@@ -142,9 +124,9 @@ records:
 # Condition: One-time use
 # Movetime -2s for 5 turns
 # [6] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 100, target rnd 18
 # [7] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 75, target rnd 11
 # [8] ESOrbLock -> Now let's have some fun.
 # Condition: 50% chance
 # Lock 20 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
@@ -154,15 +136,15 @@ records:
 # [10] ESEndPath -> ESEndPath
 # end_turn
 # [11] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 15
 # [12] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [13] ESAbsorbCombo -> The next one will be even bigger.
 # Absorb combo <= 6 damage for 5 turns
 # [14] ESEndPath -> ESEndPath
 # end_turn
 # [15] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 21, target rnd 8
 # [16] ESAttackMultihit -> VR never hurt like that, did it?
 # Enemy action
 # [17] ESEndPath -> ESEndPath

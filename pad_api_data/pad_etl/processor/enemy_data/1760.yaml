@@ -102,11 +102,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESStatusShield -> You've come far, brave one!
 # Voids status ailments for 999 turns
 # [5] ESEndPath -> ESEndPath
@@ -118,23 +118,23 @@ records:
 # Condition: When < 50% hp
 # Increase damage to 250% for the next 999 turns
 # [8] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 13
 # [9] ESInactivity -> Draco Summon-Corpse Wyrm
 # Condition: One-time use
 # Do nothing
 # [10] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [11] ESPoisonChangeRandomAttack -> Hell Poison Breath
 # Change Random 9 to Poison
 # [12] ESEndPath -> ESEndPath
 # end_turn
 # [13] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 18
 # [14] ESInactivity -> Draco Summon-Star Dragon Emperor
 # Condition: One-time use
 # Do nothing
 # [15] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [16] ESAttackMultihit -> Divine Star
 # Enemy action
 # [17] ESEndPath -> ESEndPath
@@ -143,7 +143,7 @@ records:
 # Condition: One-time use
 # Do nothing
 # [19] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b110
 # [20] ESGravity -> Zero Blast
 # Player -100% HP
 # [21] ESEndPath -> ESEndPath

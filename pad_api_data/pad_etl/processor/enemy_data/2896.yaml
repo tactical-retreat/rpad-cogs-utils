@@ -38,26 +38,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 150% damage (3 hits, 50% each)
-  desc_jp: Deal 150% damage (3 hits, 50% each)
-  max_atk_pct: 150
-  name_en: Rampage
-  name_jp: Rampage
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 34
-  name_jp: HP <= 34
+  name_en: Turn 1
+  name_jp: Turn 1
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -74,8 +56,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 34
-  name_jp: HP <= 34
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -88,16 +70,34 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 34
+  name_jp: HP <= 34
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 150% damage (3 hits, 50% each)
+  desc_jp: Deal 150% damage (3 hits, 50% each)
+  max_atk_pct: 150
+  name_en: Rampage
+  name_jp: Rampage
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESGravity -> Clash
@@ -107,16 +107,16 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 35, target rnd 9
 # [7] ESColumnSpawnMulti -> Wild Frozen Poison
 # Condition: One-time use
 # Change 2nd, 5th column to Water, Dark, Poison orbs
 # [8] ESAttackMultihit -> Rampage
 # Enemy action
 # [9] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 12
 # [10] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [11] ESSkillDelay -> Roar
 # Delay active skills by 2~4 turns
 # [12] ESAttackMultihit -> Paryavasaanam

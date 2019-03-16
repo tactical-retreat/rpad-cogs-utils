@@ -111,11 +111,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESDamageShield -> Scorching Heat Mantle
 # Reduce damage from all sources by 75% for 2 turns
 # [5] ESEndPath -> ESEndPath
@@ -127,15 +127,15 @@ records:
 # Condition: When < 30% hp
 # Change 1st row to Fire orbs
 # [8] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 80, target rnd 14
 # [9] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 12
 # [10] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [11] ESGravity -> Blazing Tail
 # Player -99% HP
 # [12] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b10
 # [13] ESAttackMultihit -> Hellfire Claw
 # Enemy action
 # [14] ESRandomSpawn -> Powerful Blaze

@@ -53,6 +53,42 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
+  desc_en: Bind active skills for 5 turns
+  desc_jp: Bind active skills for 5 turns
+  max_atk_pct: null
+  name_en: Flame Commandment
+  name_jp: Flame Commandment
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 150% damage (2 hits, 75% each)
+  desc_jp: Deal 150% damage (2 hits, 75% each)
+  max_atk_pct: 150
+  name_en: Burn Knuckle
+  name_jp: Burn Knuckle
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
   desc_en: Deal 150% damage (2 hits, 75% each)
   desc_jp: Deal 150% damage (2 hits, 75% each)
   max_atk_pct: 150
@@ -79,46 +115,28 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Bind active skills for 5 turns
-  desc_jp: Bind active skills for 5 turns
-  max_atk_pct: null
-  name_en: Flame Commandment
-  name_jp: Flame Commandment
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESRowSpawnMulti -> I will devour you!
 # Change 3rd row to Fire, Jammer orbs
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 9
 # [7] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [8] ESBindRandom -> Flame Cage
 # Bind 3 random cards for 3 turns
 # [9] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 14
 # [10] ESAttackMultihit -> Burn Knuckle
 # Condition: One-time use
 # Enemy action
@@ -131,8 +149,8 @@ records:
 # [13] ESEndPath -> ESEndPath
 # end_turn
 # [14] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 10
 # [15] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [16] ESBindSkill -> Flame Commandment
 # Bind active skills for 5 turns

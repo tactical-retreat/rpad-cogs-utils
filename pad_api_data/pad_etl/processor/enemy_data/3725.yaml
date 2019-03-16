@@ -31,8 +31,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
+  name_en: Turn 1
+  name_jp: Turn 1
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -49,8 +49,28 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 75% for 4 turns + Locked random skyfall
+    +25% for 7 turns
+  desc_jp: Reduce damage from all sources by 75% for 4 turns + Locked random skyfall
+    +25% for 7 turns
+  max_atk_pct: null
+  name_en: Darkened Scale Armor + Usurper's Divine Protection
+  name_jp: Darkened Scale Armor + Usurper's Divine Protection
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -67,8 +87,44 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute below actions in order repeatedly
-  name_jp: Execute below actions in order repeatedly
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 75% for 4 turns
+  desc_jp: Reduce damage from all sources by 75% for 4 turns
+  max_atk_pct: null
+  name_en: Darkened Scale Armor
+  name_jp: Darkened Scale Armor
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Lock all Jammer orbs, Deal 100% damage
+  desc_jp: Lock all Jammer orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Black Tempered Bow
+  name_jp: Black Tempered Bow
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -82,6 +138,15 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
   desc_en: Change Poison to Jammer, Deal 130% damage
   desc_jp: Change Poison to Jammer, Deal 130% damage
   max_atk_pct: 130
@@ -90,29 +155,20 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: Lock all Jammer orbs, Deal 100% damage
-  desc_jp: Lock all Jammer orbs, Deal 100% damage
-  max_atk_pct: 100
-  name_en: Black Tempered Bow
-  name_jp: Black Tempered Bow
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] SkillSet:
 # 	[0] ESBlindStickyFixed -> Black Smokescreen
 # 	Blind orbs in specific positions for 1 turns
@@ -121,13 +177,13 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 20, target rnd 29
 # [9] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 15
 # [10] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [11] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 70, target rnd 13
 # [12] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESDamageShield -> Darkened Scale Armor
@@ -149,23 +205,23 @@ records:
 # Condition: One-time use
 # Reduce damage from all sources by 75% for 4 turns
 # [17] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 21
 # [18] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [19] ESOrbChangeAttackBits -> Anarchy
 # Change Jammer to Poison
 # [20] ESPoisonChangeRandomAttack -> Anarchy
 # Change Random 4 to Poison
 # [21] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 8, target rnd 25
 # [22] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1111
 # [23] ESOrbChangeAttackBits -> Gnawing Fangs
 # Change Poison to Jammer
 # [24] ESOrbChangeAttackBits -> Gnawing Fangs
 # Change Heal to Jammer
 # [25] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b1100
 # [26] ESOrbLock -> Black Tempered Bow
 # Lock all Jammer orbs
 # [27] ESGravity -> Black Tempered Bow
@@ -173,9 +229,9 @@ records:
 # [28] ESEndPath -> ESEndPath
 # end_turn
 # [29] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 16, target rnd 32
 # [30] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11111
 # [31] ESBoardChange -> Extreme Dragon Eyes
 # Change all orbs to Jammer
 # [32] ESBoardChangeAttackBits -> Darklight Calamity

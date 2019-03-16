@@ -70,40 +70,22 @@ records:
   one_time: true
   record_type_name: ACTION
   usage_pct: 75
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Bind 5 random for 1~3 turns, Deal 25% damage
-  desc_jp: Bind 5 random for 1~3 turns, Deal 25% damage
-  max_atk_pct: 25
-  name_en: Ice Coffin
-  name_jp: Ice Coffin
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESBindSkill -> World of the Permafrost Queen
 # Bind active skills for 5 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 11
 # [7] ESGravity -> Absolute Zero - Burst
 # Condition: When < 30% hp , one-time use
 # Player -500% HP
@@ -115,9 +97,9 @@ records:
 # [10] ESEndPath -> ESEndPath
 # end_turn
 # [11] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 7
 # [12] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [13] ESBindAttack -> Ice Coffin
 # Condition: When < 50% hp
 # Bind 5 random for 1~3 turns

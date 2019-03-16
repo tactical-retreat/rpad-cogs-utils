@@ -39,6 +39,24 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
+  desc_en: Blind random 13 orbs for 13 turns, Deal 100% damage
+  desc_jp: Blind random 13 orbs for 13 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Accursed Eclipse
+  name_jp: Accursed Eclipse
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
   desc_en: Change Poison to Mortal Poison, Deal 200% damage
   desc_jp: Change Poison to Mortal Poison, Deal 200% damage
   max_atk_pct: 200
@@ -51,8 +69,26 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind awoken skills for 10 turns + Change Random to Mortal Poison
+  desc_jp: Bind awoken skills for 10 turns + Change Random to Mortal Poison
+  max_atk_pct: null
+  name_en: Virulent Sorcery + Deadly Poison
+  name_jp: Virulent Sorcery + Deadly Poison
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 14
+  name_jp: HP <= 14
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -69,8 +105,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: HP <= 14
+  name_jp: HP <= 14
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -101,52 +137,16 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 0
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 14
-  name_jp: HP <= 14
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Blind random 13 orbs for 13 turns, Deal 100% damage
-  desc_jp: Blind random 13 orbs for 13 turns, Deal 100% damage
-  max_atk_pct: 100
-  name_en: Accursed Eclipse
-  name_jp: Accursed Eclipse
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 14
-  name_jp: HP <= 14
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Bind awoken skills for 10 turns + Change Random to Mortal Poison
-  desc_jp: Bind awoken skills for 10 turns + Change Random to Mortal Poison
-  max_atk_pct: null
-  name_en: Virulent Sorcery + Deadly Poison
-  name_jp: Virulent Sorcery + Deadly Poison
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESStatusShield -> You're not going anywhere!
 # 	Voids status ailments for 999 turns
@@ -157,11 +157,11 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 15, target rnd 21
 # [7] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 12
 # [8] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [9] ESOrbChangeAttack -> Agonizing Sacrifice
 # Change Poison to Mortal Poison
 # [10] SkillSet:
@@ -213,9 +213,9 @@ records:
 # [20] ESEndPath -> ESEndPath
 # end_turn
 # [21] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 25
 # [22] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [23] ESBlindStickyRandom -> Accursed Eclipse
 # Blind random 13 orbs for 13 turns
 # [24] ESEndPath -> ESEndPath

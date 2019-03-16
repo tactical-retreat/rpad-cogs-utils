@@ -49,8 +49,68 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
+    orbs, Deal 150% damage
+  desc_jp: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
+    orbs, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Mabufudyne
+  name_jp: Mabufudyne
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
+    orbs, Deal 150% damage
+  desc_jp: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
+    orbs, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Mabufudyne
+  name_jp: Mabufudyne
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: Deal 120% damage
+  desc_jp: Deal 120% damage
+  max_atk_pct: 120
+  name_en: Megaton Raid
+  name_jp: Megaton Raid
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 110% damage
+  desc_jp: Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 110% damage
+  max_atk_pct: 110
+  name_en: Bufudyne
+  name_jp: Bufudyne
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -74,80 +134,20 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
-    orbs, Deal 150% damage
-  desc_jp: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
-    orbs, Deal 150% damage
-  max_atk_pct: 150
-  name_en: Mabufudyne
-  name_jp: Mabufudyne
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
-    orbs, Deal 150% damage
-  desc_jp: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
-    orbs, Deal 150% damage
-  max_atk_pct: 150
-  name_en: Mabufudyne
-  name_jp: Mabufudyne
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 0
-- !SkillRecord
-  desc_en: Deal 120% damage
-  desc_jp: Deal 120% damage
-  max_atk_pct: 120
-  name_en: Megaton Raid
-  name_jp: Megaton Raid
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 0
-- !SkillRecord
-  desc_en: Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
-    Poison orbs, Deal 110% damage
-  desc_jp: Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
-    Poison orbs, Deal 110% damage
-  max_atk_pct: 110
-  name_en: Bufudyne
-  name_jp: Bufudyne
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 0
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] SkillSet:
 # 	[0] ESAttackUp -> Matarukaja
 # 	Increase damage to 150% for the next 3 turns
@@ -156,15 +156,15 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 12
 # [9] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [10] ESAttackMultihit -> Megaton Raid
 # Enemy action
 # [11] ESEndPath -> ESEndPath
 # end_turn
 # [12] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 16
 # [13] ESAttackMultihit -> Megaton Raid
 # Condition: 50% chance
 # Enemy action
@@ -173,9 +173,9 @@ records:
 # [15] ESEndPath -> ESEndPath
 # end_turn
 # [16] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 20
 # [17] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [18] ESOrbLock -> Mabufudyne
 # Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [19] ESEndPath -> ESEndPath

@@ -86,11 +86,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESOrbLock -> Wisdom of the Freezing Divine Beast
 # Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [5] ESEndPath -> ESEndPath
@@ -99,13 +99,13 @@ records:
 # Condition: When < 20% hp
 # Change 5th row to Water orbs
 # [7] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 2, target rnd 10
 # [8] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [9] ESEndPath -> ESEndPath
 # end_turn
 # [10] ESSetCounter -> ESSetCounter
-# set_counter
+# counter = 0
 # [11] ESAttackUp -> I can't go easy on you
 # Condition: 50% chance
 # Increase damage to 150% for the next 2 turns

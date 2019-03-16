@@ -128,35 +128,35 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESStatusShield -> I'm 3rd-Seat Assistant Adjutant,
 # Squad 11, Ikkaku Madarame!
 # Voids status ailments for 3 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [2675, 2676, 2677, 3353, 3354], target rnd 18
 # [7] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 10
 # [8] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [9] ESGravity -> Extend! Hozukimaru!
 # Player -70% HP
 # [10] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 8, target rnd 13
 # [11] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1111
 # [12] ESRandomSpawn -> No mistakes!!
 # Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board
 # Spawn random 3 Jammer orbs
 # [13] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 16, target rnd 16
 # [14] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11111
 # [15] ESAttackMultihit -> Split apart! Hozukimaru!
 # Enemy action
 # [16] ESAttackMultihit -> Ikkaku Madarame was
@@ -166,9 +166,9 @@ records:
 # [17] ESAttackMultihit -> Ha!
 # Enemy action
 # [18] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 7
 # [19] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [20] ESOrbLock -> Well, "ichi", what say we be friends!
 # Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer orbs
 # [21] SkillSet:

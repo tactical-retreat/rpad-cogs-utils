@@ -255,11 +255,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 15
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	Condition: 10% chance
 # 	[0] ESRecoverPlayer -> Are you worth saving?
@@ -326,9 +326,9 @@ records:
 # Condition: When < 20% hp
 # Enemy action
 # [16] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 21
 # [17] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [18] ESBindAttack -> Sacred Sacrifice
 # Condition: 30% chance
 # Bind 1 subs for 2 turns
@@ -338,7 +338,7 @@ records:
 # [20] ESOrbChangeAttack -> Twinkle Hope
 # Change Random to Heal
 # [21] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b10
 # [22] SkillSet:
 # 	Condition: 10% chance
 # 	[0] ESGravity -> Ark Impact

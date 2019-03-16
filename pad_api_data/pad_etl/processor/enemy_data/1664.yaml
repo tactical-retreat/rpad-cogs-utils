@@ -104,11 +104,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESAbsorbThreshold -> Crown of Death
 # 	Absorb damage >= 4000000 damage for 10 turns
@@ -120,9 +120,9 @@ records:
 # Condition: When < 20% hp
 # Enemy action
 # [7] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 9, target rnd 12
 # [8] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [9] ESRowSpawnMulti -> Hudr Leaf
 # Condition: 50% chance
 # Change 2nd, 3rd row to Wood, Jammer orbs

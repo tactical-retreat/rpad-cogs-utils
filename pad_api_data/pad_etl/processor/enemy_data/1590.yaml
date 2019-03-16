@@ -29,8 +29,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: Turn 1
+  name_jp: Turn 1
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -47,35 +47,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Bind Fire cards for 3 turns
-  desc_jp: Bind Fire cards for 3 turns
-  max_atk_pct: null
-  name_en: Anti-Magic Jade Pearl
-  name_jp: Anti-Magic Jade Pearl
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Enemy recover 50% hp
-  desc_jp: Enemy recover 50% hp
-  max_atk_pct: null
-  name_en: Time for a snack!
-  name_jp: Time for a snack!
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -88,6 +61,24 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 60
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy recover 50% hp
+  desc_jp: Enemy recover 50% hp
+  max_atk_pct: null
+  name_en: Time for a snack!
+  name_jp: Time for a snack!
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
@@ -111,28 +102,28 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESAbsorbCombo -> Here I come!
 # Absorb combo <= 3 damage for 999 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 10
 # [7] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 15
 # [8] ESOrbChangeAttack -> Blue Dragon Flame Moon Blade
 # Condition: 60% chance
 # Change Random to Fire
 # [9] ESEndPath -> ESEndPath
 # end_turn
 # [10] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 15
 # [11] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [12] ESBindAttribute -> Anti-Magic Jade Pearl
 # Condition: When < 50% hp
 # Bind Fire cards for 3 turns

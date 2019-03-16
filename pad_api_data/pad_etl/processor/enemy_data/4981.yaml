@@ -35,29 +35,20 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change Random to Fire + Locked Fire skyfall +100% for 10 turns
-  desc_jp: Change Random to Fire + Locked Fire skyfall +100% for 10 turns
-  max_atk_pct: null
-  name_en: I'll get your heart pounding... + I don't know, even if I get burned!
-  name_jp: I'll get your heart pounding... + I don't know, even if I get burned!
+  desc_en: Deal 250% damage
+  desc_jp: Deal 250% damage
+  max_atk_pct: 250
+  name_en: Crimson Hell
+  name_jp: Crimson Hell
   one_time: false
   record_type_name: ACTION
-  usage_pct: 0
-- !SkillRecord
-  desc_en: Player -30% HP + Enemy action
-  desc_jp: Player -30% HP + Enemy action
-  max_atk_pct: null
-  name_en: Hey, over here! + You're a dirty one, aren't you?
-  name_jp: Hey, over here! + You're a dirty one, aren't you?
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 0
+  usage_pct: 100
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
+  name_en: HP <= 14
+  name_jp: HP <= 14
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -84,32 +75,41 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 250% damage
-  desc_jp: Deal 250% damage
-  max_atk_pct: 250
-  name_en: Crimson Hell
-  name_jp: Crimson Hell
+  desc_en: Change Random to Fire + Locked Fire skyfall +100% for 10 turns
+  desc_jp: Change Random to Fire + Locked Fire skyfall +100% for 10 turns
+  max_atk_pct: null
+  name_en: I'll get your heart pounding... + I don't know, even if I get burned!
+  name_jp: I'll get your heart pounding... + I don't know, even if I get burned!
   one_time: false
   record_type_name: ACTION
-  usage_pct: 100
+  usage_pct: 0
+- !SkillRecord
+  desc_en: Player -30% HP + Enemy action
+  desc_jp: Player -30% HP + Enemy action
+  max_atk_pct: null
+  name_en: Hey, over here! + You're a dirty one, aren't you?
+  name_jp: Hey, over here! + You're a dirty one, aren't you?
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESCloud -> Well...are you my playmate?
 # 4x1 cloud appear for 3 turns at 3rd row, 2nd column
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 15, target rnd 12
 # [7] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 51, target rnd 9
 # [8] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESAttackMultihit -> Well, won't you play with me for a bit?...

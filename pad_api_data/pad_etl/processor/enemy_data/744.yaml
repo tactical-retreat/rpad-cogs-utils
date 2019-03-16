@@ -20,33 +20,6 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Voids player buff effects
-  desc_jp: Voids player buff effects
-  max_atk_pct: null
-  name_en: Wave of Nothingness
-  name_jp: Wave of Nothingness
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Bind Fire cards for 2~4 turns
-  desc_jp: Bind Fire cards for 2~4 turns
-  max_atk_pct: null
-  name_en: I HATE Fire!
-  name_jp: I HATE Fire!
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -62,12 +35,21 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 120% damage (2 hits, 60% each)
-  desc_jp: Deal 120% damage (2 hits, 60% each)
-  max_atk_pct: 120
-  name_en: Draggie Fang
-  name_jp: Draggie Fang
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
   one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind Fire cards for 2~4 turns
+  desc_jp: Bind Fire cards for 2~4 turns
+  max_atk_pct: null
+  name_en: I HATE Fire!
+  name_jp: I HATE Fire!
+  one_time: true
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -89,20 +71,11 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 25
-  name_jp: HP <= 25
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 170% damage (2 hits, 85% each)
-  desc_jp: Deal 170% damage (2 hits, 85% each)
-  max_atk_pct: 170
-  name_en: Dragon Fang
-  name_jp: Dragon Fang
+  desc_en: Deal 120% damage (2 hits, 60% each)
+  desc_jp: Deal 120% damage (2 hits, 60% each)
+  max_atk_pct: 120
+  name_en: Draggie Fang
+  name_jp: Draggie Fang
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -113,7 +86,7 @@ records:
 # [1] ESDispel -> Wave of Nothingness
 # Voids player buff effects
 # [2] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 6
 # [3] ESBindAttribute -> I HATE Fire!
 # Condition: One-time use
 # Bind Fire cards for 2~4 turns
@@ -122,9 +95,9 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 10
 # [7] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [8] ESAttackUp -> Draggie Enhance
 # Increase damage to 200% for the next 999 turns
 # [9] ESEndPath -> ESEndPath

@@ -48,34 +48,34 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESInvulnerableOn -> Augite's Resonance
 # Immune to damage from all sources for 999 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
-# branch
+# Branch on remaining enemies = 2, target rnd 14
 # [7] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
-# branch
+# Branch on remaining enemies = 3, target rnd 11
 # [8] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
-# branch
+# Branch on remaining enemies = 4, target rnd 9
 # [9] ESSetCounter -> ESSetCounter
-# set_counter
+# counter = 0
 # [10] ESAttackMultihit -> Flash
 # Enemy action
 # [11] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [12] ESDebuffMovetime -> Instant Ripped Death
 # Condition: One-time use
 # Movetime 50% for 1 turns
 # [13] ESAttackMultihit -> Disorientating Flash
 # Enemy action
 # [14] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 1, target rnd 17
 # [15] ESRecoverEnemyAlly -> Radiance of Regeneration
 # Condition: When enemy ally is killed
 # Enemy ally recover 100% hp

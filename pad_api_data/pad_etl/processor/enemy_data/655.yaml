@@ -38,26 +38,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Lock 5 random Fire, Water, Wood, Light, Dark orbs, Deal 90% damage
-  desc_jp: Lock 5 random Fire, Water, Wood, Light, Dark orbs, Deal 90% damage
-  max_atk_pct: 90
-  name_en: Mjolnir
-  name_jp: Mjolnir
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 50
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 1
+  name_jp: Turn 1
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -83,6 +65,42 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Lock 5 random Fire, Water, Wood, Light, Dark orbs, Deal 90% damage
+  desc_jp: Lock 5 random Fire, Water, Wood, Light, Dark orbs, Deal 90% damage
+  max_atk_pct: 90
+  name_en: Mjolnir
+  name_jp: Mjolnir
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Lock 5 random Fire, Water, Wood, Light, Dark orbs, Deal 90% damage
+  desc_jp: Lock 5 random Fire, Water, Wood, Light, Dark orbs, Deal 90% damage
+  max_atk_pct: 90
+  name_en: Mjolnir
+  name_jp: Mjolnir
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 20
   name_jp: HP <= 20
   one_time: false
@@ -102,37 +120,37 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESSkillDelay -> Warrior God's Ambition
 # Delay active skills by 2~4 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 14
 # [7] ESRandomSpawn -> Heaven Lightning
 # Condition: When < 20% hp & when Fire, Water, Wood, Light, Dark, Heal, Poison, Mortal Poison orbs are on the board
 # Spawn random 15 Jammer orbs
 # [8] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [376, 377, 656, 1348, 2396], target rnd 11
 # [9] ESOrbLock -> Mjolnir
 # Condition: 50% chance
 # Lock 5 random Fire, Water, Wood, Light, Dark orbs
 # [10] ESEndPath -> ESEndPath
 # end_turn
 # [11] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 9
 # [12] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [13] ESAttackMultihit -> Why!? Loki!!
 # Enemy action
 # [14] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 7
 # [15] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [16] ESRecoverEnemy -> Megingjord
 # Condition: 50% chance
 # Enemy recover 30% hp

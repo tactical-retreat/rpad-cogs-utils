@@ -35,24 +35,6 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change Random to Jammer, Deal 75% damage
-  desc_jp: Change Random to Jammer, Deal 75% damage
-  max_atk_pct: 75
-  name_en: '***** (Dragon Ball)'
-  name_jp: '***** (Dragon Ball)'
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 74
-  name_jp: HP <= 74
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Bind active skills for 3 turns
   desc_jp: Bind active skills for 3 turns
   max_atk_pct: null
@@ -65,18 +47,36 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 30
-  name_jp: HP <= 30
+  name_en: Turn 1
+  name_jp: Turn 1
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 150% damage (3 hits, 50% each)
-  desc_jp: Deal 150% damage (3 hits, 50% each)
-  max_atk_pct: 150
+  desc_en: Change Random to Jammer, Deal 75% damage
+  desc_jp: Change Random to Jammer, Deal 75% damage
+  max_atk_pct: 75
   name_en: '***** (Dragon Ball)'
   name_jp: '***** (Dragon Ball)'
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
   one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 75% damage
+  desc_jp: Change Random to Jammer, Deal 75% damage
+  max_atk_pct: 75
+  name_en: '***** (Dragon Ball)'
+  name_jp: '***** (Dragon Ball)'
+  one_time: true
   record_type_name: ACTION
   usage_pct: 100
 
@@ -84,30 +84,30 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 5
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 5, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] ESStatusShield -> ***** (Dragon Ball)
 # Voids status ailments for 999 turns
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 75, target rnd 11
 # [9] ESOrbChangeAttack -> ***** (Dragon Ball)
 # Condition: One-time use
 # Change Random to Jammer
 # [10] ESEndPath -> ESEndPath
 # end_turn
 # [11] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 15
 # [12] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [13] ESBindSkill -> ***** (Dragon Ball)
 # Bind active skills for 3 turns
 # [14] ESEndPath -> ESEndPath

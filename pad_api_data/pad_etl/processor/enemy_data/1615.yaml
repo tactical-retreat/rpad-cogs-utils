@@ -93,22 +93,22 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESStatusShield -> Shaitan! You're up!
 # Condition: One-time use
 # Voids status ailments for 7 turns
 # [3] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 16, target rnd 30
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 8, target rnd 18
 # [5] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 21
 # [6] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 24
 # [7] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 27
 # [8] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1111
 # [9] SkillSet:
 # 	Condition: When < 50% hp , one-time use
 # 	[0] ESSkillDelay -> Now you've done it! I'm going all out!
@@ -116,7 +116,7 @@ records:
 # 	[1] ESBoardChangeAttackBits -> Inferno Spell!
 # 	Change all orbs to Fire, Jammer
 # [10] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11111
 # [11] SkillSet:
 # 	Condition: When < 50% hp
 # 	[0] ESSkillDelay -> Now you've done it! I'm going all out!
@@ -124,17 +124,17 @@ records:
 # 	[1] ESBoardChange -> Infe...
 # 	Change all orbs to Jammer
 # [12] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [13] ESInactivity -> Hear me, Serpents of Fiery Dawn!
 # Condition: One-time use
 # Do nothing
 # [14] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b10
 # [15] ESInactivity -> Go now, Scorpions of Creeping Flame!
 # Condition: One-time use
 # Do nothing
 # [16] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b100
 # [17] ESInactivity -> Come forth, Wolves of Wildfire!
 # Condition: One-time use
 # Do nothing
@@ -142,11 +142,11 @@ records:
 # Condition: One-time use
 # Change all orbs to Fire, Jammer
 # [19] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11111
 # [20] ESBoardChange -> Infe...
 # Change all orbs to Jammer
 # [21] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b1
 # [22] SkillSet:
 # 	Condition: When < 50% hp
 # 	[0] ESInactivity -> Let me give you a hand
@@ -156,7 +156,7 @@ records:
 # [23] ESBindAttack -> Coiling Blaze!
 # Bind 2 subs for 3 turns
 # [24] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b10
 # [25] SkillSet:
 # 	Condition: When < 50% hp
 # 	[0] ESInactivity -> Let me give you a hand
@@ -166,7 +166,7 @@ records:
 # [26] ESBoardChangeAttackBits -> Venom Detonation!
 # Change all orbs to Fire, Poison
 # [27] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b100
 # [28] SkillSet:
 # 	Condition: When < 50% hp
 # 	[0] ESInactivity -> Let me give you a hand

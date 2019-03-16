@@ -47,8 +47,44 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 10% damage
+  desc_jp: Blind all orbs on the board, Deal 10% damage
+  max_atk_pct: 10
+  name_en: Get ready for this
+  name_jp: Get ready for this
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 160% damage (4 hits, 40% each)
+  desc_jp: Deal 160% damage (4 hits, 40% each)
+  max_atk_pct: 160
+  name_en: Moonshadow Dance
+  name_jp: Moonshadow Dance
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -70,70 +106,34 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Blind all orbs on the board, Deal 10% damage
-  desc_jp: Blind all orbs on the board, Deal 10% damage
-  max_atk_pct: 10
-  name_en: Get ready for this
-  name_jp: Get ready for this
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 160% damage (4 hits, 40% each)
-  desc_jp: Deal 160% damage (4 hits, 40% each)
-  max_atk_pct: 160
-  name_en: Moonshadow Dance
-  name_jp: Moonshadow Dance
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 5
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 5, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] ESStatusShield -> Here I go
 # Voids status ailments for 5 turns
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 12
 # [9] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [10] ESDebuffMovetime -> Moonflower Gaze
 # Movetime -1s for 4 turns
 # [11] ESEndPath -> ESEndPath
 # end_turn
 # [12] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 16
 # [13] ESOrbChangeAttack -> Moon Heaven Strike
 # Condition: 50% chance
 # Change Light to Dark

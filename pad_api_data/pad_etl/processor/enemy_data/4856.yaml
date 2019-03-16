@@ -29,8 +29,46 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Blind all orbs on the board + Lock all Fire, Water, Wood, Light, Dark,
+    Heal, Jammer, Poison, Mortal Poison orbs
+  desc_jp: Blind all orbs on the board + Lock all Fire, Water, Wood, Light, Dark,
+    Heal, Jammer, Poison, Mortal Poison orbs
+  max_atk_pct: null
+  name_en: Oh, crap! + This will take forever...
+  name_jp: Oh, crap! + This will take forever...
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 150% for the next 1 turns + Enemy action
+  desc_jp: Increase damage to 150% for the next 1 turns + Enemy action
+  max_atk_pct: null
+  name_en: Not yet... + Starburst...Stream!
+  name_jp: Not yet... + Starburst...Stream!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -61,72 +99,16 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 0
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Bind awoken skills for 2 turns
-  desc_jp: Bind awoken skills for 2 turns
-  max_atk_pct: null
-  name_en: This isn't some in-game duel.
-  name_jp: This isn't some in-game duel.
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Blind all orbs on the board + Lock all Fire, Water, Wood, Light, Dark,
-    Heal, Jammer, Poison, Mortal Poison orbs
-  desc_jp: Blind all orbs on the board + Lock all Fire, Water, Wood, Light, Dark,
-    Heal, Jammer, Poison, Mortal Poison orbs
-  max_atk_pct: null
-  name_en: Oh, crap! + This will take forever...
-  name_jp: Oh, crap! + This will take forever...
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Increase damage to 150% for the next 1 turns + Enemy action
-  desc_jp: Increase damage to 150% for the next 1 turns + Enemy action
-  max_atk_pct: null
-  name_en: Not yet... + Starburst...Stream!
-  name_jp: Not yet... + Starburst...Stream!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESAbsorbCombo -> Ok, who's next?
 # 	Absorb combo <= 6 damage for 5 turns
@@ -135,9 +117,9 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 20, target rnd 16
 # [7] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 12
 # [8] ESAttackMultihit -> Move!
 # Condition: 34% chance
 # Enemy action
@@ -150,9 +132,9 @@ records:
 # [11] ESEndPath -> ESEndPath
 # end_turn
 # [12] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 8
 # [13] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [14] ESBindAwoken -> This isn't some in-game duel.
 # Bind awoken skills for 2 turns
 # [15] ESEndPath -> ESEndPath

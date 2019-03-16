@@ -84,11 +84,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESRecoverPlayer -> Want some ice cream?
 # Player recover 100% hp
 # [5] ESEndPath -> ESEndPath
@@ -97,7 +97,7 @@ records:
 # Condition: When < 50% hp
 # Increase damage to 300% for the next 999 turns
 # [7] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 30, target rnd 10
 # [8] ESAttackMultihit -> Flavor Combination
 # Enemy action
 # [9] ESEndPath -> ESEndPath

@@ -133,11 +133,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESStatusShield -> Yoooooo!!
 # 	Voids status ailments for 999 turns
@@ -160,17 +160,17 @@ records:
 # 	[1] ESBoardChangeAttackBits -> Type 5 Karakuri Cannon
 # 	Change all orbs to Fire
 # [8] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 12
 # [9] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [10] ESBombFixedSpawn -> Crossfire HANABI
 # Spawn Bomb orbs in the specified positions
 # [11] ESEndPath -> ESEndPath
 # end_turn
 # [12] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 17
 # [13] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [14] ESBindRandom -> WAV - Large Net
 # Condition: 50% chance
 # Bind 6 random cards for 1 turns
@@ -179,7 +179,7 @@ records:
 # [16] ESEndPath -> ESEndPath
 # end_turn
 # [17] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b110
 # [18] ESGravity -> Rocket Slap
 # Condition: 50% chance
 # Player -99% HP

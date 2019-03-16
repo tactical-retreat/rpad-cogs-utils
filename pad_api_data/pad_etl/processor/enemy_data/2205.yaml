@@ -104,50 +104,6 @@ records:
   record_type_name: ACTION
   usage_pct: 0
 - !SkillRecord
-  desc_en: Change Jammer to Fire, Deal 70% damage
-  desc_jp: Change Jammer to Fire, Deal 70% damage
-  max_atk_pct: 70
-  name_en: Rose Flare
-  name_jp: Rose Flare
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 3
-  name_jp: Turn 3
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: 'Show message: You''re....you''re pretty strong.
-
-    Well then, let''s summon this thing.|By releasing its magical power,
-
-    the staff turned into a beast.'
-  desc_jp: 'Show message: You''re....you''re pretty strong.
-
-    Well then, let''s summon this thing.|By releasing its magical power,
-
-    the staff turned into a beast.'
-  max_atk_pct: null
-  name_en: '*****'
-  name_jp: '*****'
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 0
-- !SkillRecord
-  desc_en: Increase damage to 200% for the next 999 turns
-  desc_jp: Increase damage to 200% for the next 999 turns
-  max_atk_pct: null
-  name_en: Let's Go!
-  name_jp: Let's Go!
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
@@ -174,38 +130,37 @@ records:
   record_type_name: ACTION
   usage_pct: 0
 - !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: 'Show message: You''re....you''re pretty strong.
+
+    Well then, let''s summon this thing.|By releasing its magical power,
+
+    the staff turned into a beast.'
+  desc_jp: 'Show message: You''re....you''re pretty strong.
+
+    Well then, let''s summon this thing.|By releasing its magical power,
+
+    the staff turned into a beast.'
+  max_atk_pct: null
+  name_en: '*****'
+  name_jp: '*****'
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
   desc_en: Change Jammer to Fire, Deal 70% damage
   desc_jp: Change Jammer to Fire, Deal 70% damage
   max_atk_pct: 70
   name_en: Rose Flare
   name_jp: Rose Flare
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Bind 1 random cards for 1 turns
-  desc_jp: Bind 1 random cards for 1 turns
-  max_atk_pct: null
-  name_en: Black Magic Charge
-  name_jp: Black Magic Charge
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Spawn random 11 Jammer orbs
-  desc_jp: Spawn random 11 Jammer orbs
-  max_atk_pct: null
-  name_en: Violet Flaaa!
-  name_jp: Violet Flaaa!
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -236,21 +191,12 @@ records:
   record_type_name: ACTION
   usage_pct: 0
 - !SkillRecord
-  desc_en: ''
-  desc_jp: ''
+  desc_en: Increase damage to 200% for the next 999 turns
+  desc_jp: Increase damage to 200% for the next 999 turns
   max_atk_pct: null
-  name_en: HP <= 45
-  name_jp: HP <= 45
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 160% damage (2 hits, 80% each)
-  desc_jp: Deal 160% damage (2 hits, 80% each)
-  max_atk_pct: 160
-  name_en: Violet Flame
-  name_jp: Violet Flame
-  one_time: false
+  name_en: Let's Go!
+  name_jp: Let's Go!
+  one_time: true
   record_type_name: ACTION
   usage_pct: 100
 
@@ -258,24 +204,24 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESDeathCry -> *****
 # Condition: On death
 # Show message: You're....you're pretty strong.
 # Well then, let's summon this thing.|By releasing its magical power,
 # the staff turned into a beast.
 # [3] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 7
 # [4] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [5] ESVoidShield -> Oh! Raiders?
 # Void damage >= 100000 for 2 turns
 # [6] ESEndPath -> ESEndPath
 # end_turn
 # [7] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 100, target rnd 18
 # [8] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 13
 # [9] ESAttackUp -> Let's Go!
 # Condition: One-time use
 # Increase damage to 200% for the next 999 turns
@@ -287,9 +233,9 @@ records:
 # [12] ESBlind -> Shadow Tail
 # Blind all orbs on the board
 # [13] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 16
 # [14] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [15] ESBindRandom -> Black Magic Charge
 # Condition: When < 50% hp
 # Bind 1 random cards for 1 turns
@@ -300,8 +246,8 @@ records:
 # Condition: When < 50% hp
 # Spawn random 11 Jammer orbs
 # [18] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 8
 # [19] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [20] ESSkillDelay -> What Happened?
 # Delay active skills by 2 turns

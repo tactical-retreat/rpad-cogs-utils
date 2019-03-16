@@ -149,11 +149,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESAbsorbCombo -> Crimson Fury
 # 	Absorb combo <= 7 damage for 10 turns
@@ -171,9 +171,9 @@ records:
 # 	[1] ESGravity -> Fiery Spear of Destruction
 # 	Player -99% HP
 # [8] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 10, target rnd 17
 # [9] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [10] SkillSet:
 # 	Condition: 30% chance
 # 	[0] ESOrbChangeAttack -> Burn Drive
@@ -213,9 +213,9 @@ records:
 # [16] ESEndPath -> ESEndPath
 # end_turn
 # [17] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 10
 # [18] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [19] ESDamageShield -> Flare Effect
 # Reduce damage from all sources by 75% for 10 turns
 # [20] ESEndPath -> ESEndPath

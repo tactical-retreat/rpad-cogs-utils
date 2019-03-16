@@ -78,60 +78,6 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Spawn random 3 Fire orbs + Change 3rd row to Fire orbs
-  desc_jp: Spawn random 3 Fire orbs + Change 3rd row to Fire orbs
-  max_atk_pct: null
-  name_en: Shaaaah!! + Shaaah!!
-  name_jp: Shaaaah!! + Shaaah!!
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 100% damage
-  desc_jp: Deal 100% damage
-  max_atk_pct: 100
-  name_en: Hyohh!!!
-  name_jp: Hyohh!!!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 150% damage (3 hits, 50% each)
-  desc_jp: Deal 150% damage (3 hits, 50% each)
-  max_atk_pct: 150
-  name_en: One way or another, you will fall!
-  name_jp: One way or another, you will fall!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Bind active skills for 1 turns + Reduce damage from all sources by 30%
     for 2 turns
   desc_jp: Bind active skills for 1 turns + Reduce damage from all sources by 30%
@@ -146,8 +92,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 29
-  name_jp: HP <= 29
+  name_en: Turn 2
+  name_jp: Turn 2
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -164,8 +110,62 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 29
-  name_jp: HP <= 29
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 150% damage (3 hits, 50% each)
+  desc_jp: Deal 150% damage (3 hits, 50% each)
+  max_atk_pct: 150
+  name_en: One way or another, you will fall!
+  name_jp: One way or another, you will fall!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Random to Fire, Deal 180% damage
+  desc_jp: Change Random to Fire, Deal 180% damage
+  max_atk_pct: 180
+  name_en: The Second Secret, "Guren Kaina"!!
+  name_jp: The Second Secret, "Guren Kaina"!!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 150% damage (3 hits, 50% each)
+  desc_jp: Deal 150% damage (3 hits, 50% each)
+  max_atk_pct: 150
+  name_en: One way or another, you will fall!
+  name_jp: One way or another, you will fall!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -183,13 +183,13 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 7
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 6
 # [5] SkillSet:
 # 	[0] ESInactivity -> Neither of us has any reason
 # to hold back.
@@ -203,24 +203,24 @@ records:
 # 	[1] ESColumnSpawnMulti -> There must be a winner!!
 # 	Change 1st, 6th column to Fire orbs
 # [7] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 9
 # [8] ESEndPath -> ESEndPath
 # end_turn
 # [9] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 12
 # [10] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [11] ESRandomSpawn -> The First Secret Blow, "Homura Dama"!!
 # Condition: When water, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board
 # Spawn random 3 Fire orbs
 # [12] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 14
 # [13] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 19
 # [14] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 8, target rnd 24
 # [15] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 30, target rnd 22
 # [16] ESAttackMultihit -> One way or another, you will fall!
 # Condition: When < 50% hp
 # Enemy action
@@ -233,7 +233,7 @@ records:
 # [18] ESAttackMultihit -> Hyohh!!!
 # Enemy action
 # [19] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [20] SkillSet:
 # 	[0] ESBindSkill -> In this world, the strong live...
 # 	Bind active skills for 1 turns
@@ -242,7 +242,7 @@ records:
 # [21] ESEndPath -> ESEndPath
 # end_turn
 # [22] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1111
 # [23] ESOrbChangeAttack -> The Second Secret, "Guren Kaina"!!
 # Change Random to Fire
 # [24] ESAttackMultihit -> Hyohh!!!

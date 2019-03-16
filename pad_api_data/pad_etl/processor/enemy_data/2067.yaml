@@ -74,17 +74,17 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 2, target rnd 12
 # [3] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 1, target rnd 5
 # [4] ESEndPath -> ESEndPath
 # end_turn
 # [5] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 9
 # [6] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [7] ESInactivity -> Growing stronger-TAMA!
 # Do nothing
 # [8] ESEndPath -> ESEndPath
@@ -97,9 +97,9 @@ records:
 # [11] ESEndPath -> ESEndPath
 # end_turn
 # [12] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 16
 # [13] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [14] ESInactivity -> Growing stronger-TAMA!
 # Do nothing
 # [15] ESEndPath -> ESEndPath

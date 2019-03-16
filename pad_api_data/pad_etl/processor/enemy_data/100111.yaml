@@ -74,25 +74,25 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 10, target rnd 5
 # [3] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 9, target rnd 18
 # [4] ESEndPath -> ESEndPath
 # end_turn
 # [5] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 9
 # [6] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [7] ESBlind -> World of Darkness
 # Blind all orbs on the board
 # [8] ESEndPath -> ESEndPath
 # end_turn
 # [9] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
-# branch
+# Branch on remaining enemies = 1, target rnd 16
 # [10] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
-# branch
+# Branch on remaining enemies = 2, target rnd 13
 # [11] ESRecoverEnemy -> Bloody Stealing
 # Condition: 50% chance
 # Enemy recover 10% hp
@@ -110,13 +110,13 @@ records:
 # [17] ESEndPath -> ESEndPath
 # end_turn
 # [18] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 21
 # [19] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [20] ESEndPath -> ESEndPath
 # end_turn
 # [21] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
-# branch
+# Branch on remaining enemies = 1, target rnd 16
 # [22] ESRecoverEnemy -> Bloody Stealing
 # Condition: 50% chance
 # Enemy recover 10% hp

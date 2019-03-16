@@ -42,46 +42,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change Jammer to Heal, Deal 140% damage
-  desc_jp: Change Jammer to Heal, Deal 140% damage
-  max_atk_pct: 140
-  name_en: "S\xE6hrimnir"
-  name_jp: "S\xE6hrimnir"
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
-    orbs + Movetime -4s for 5 turns
-  desc_jp: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
-    orbs + Movetime -4s for 5 turns
-  max_atk_pct: 100
-  name_en: This just became interesting! + Can you still fight?
-  name_jp: This just became interesting! + Can you still fight?
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
+  name_en: Turn 1
+  name_jp: Turn 1
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -98,8 +60,26 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Jammer to Heal, Deal 140% damage
+  desc_jp: Change Jammer to Heal, Deal 140% damage
+  max_atk_pct: 140
+  name_en: "S\xE6hrimnir"
+  name_jp: "S\xE6hrimnir"
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -117,11 +97,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESStatusShield -> Do you mean to challenge me?
 # 	Voids status ailments for 999 turns
@@ -132,9 +112,9 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 1, target rnd 18
 # [7] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 12
 # [8] ESOrbChangeAttackBits -> Sæhrimnir
 # Change Jammer to Heal
 # [9] ESRandomSpawn -> Drómi Call
@@ -146,11 +126,11 @@ records:
 # [11] ESEndPath -> ESEndPath
 # end_turn
 # [12] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 20, target rnd 17
 # [13] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 8
 # [14] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [15] SkillSet:
 # 	[0] ESOrbLock -> This just became interesting!
 # 	Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
@@ -159,7 +139,7 @@ records:
 # [16] ESEndPath -> ESEndPath
 # end_turn
 # [17] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [18] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESBindRandom -> Next, victory will be achieved!

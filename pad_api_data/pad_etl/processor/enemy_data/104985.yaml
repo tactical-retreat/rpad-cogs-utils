@@ -31,102 +31,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Player -99% HP
-  desc_jp: Player -99% HP
-  max_atk_pct: null
-  name_en: Gyoro Dokkan
-  name_jp: Gyoro Dokkan
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 0
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Fix orb movement starting point to random position on the board, Deal 100%
-    damage
-  desc_jp: Fix orb movement starting point to random position on the board, Deal 100%
-    damage
-  max_atk_pct: 100
-  name_en: Gyorogyoro!
-  name_jp: Gyorogyoro!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 50
-- !SkillRecord
-  desc_en: Player -99% HP
-  desc_jp: Player -99% HP
-  max_atk_pct: null
-  name_en: Gyoro Dokkan
-  name_jp: Gyoro Dokkan
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 0
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change Random to Fire, Deal 90% damage
-  desc_jp: Change Random to Fire, Deal 90% damage
-  max_atk_pct: 90
-  name_en: Gyoro! How about this!
-  name_jp: Gyoro! How about this!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 0
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Fix orb movement starting point to random position on the board, Deal 100%
-    damage
-  desc_jp: Fix orb movement starting point to random position on the board, Deal 100%
-    damage
-  max_atk_pct: 100
-  name_en: Gyorogyoro!
-  name_jp: Gyorogyoro!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 50
-- !SkillRecord
-  desc_en: Change Random to Fire, Deal 90% damage
-  desc_jp: Change Random to Fire, Deal 90% damage
-  max_atk_pct: 90
-  name_en: Gyoro! How about this!
-  name_jp: Gyoro! How about this!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 0
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -139,20 +45,78 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Fix orb movement starting point to random position on the board, Deal 100%
+    damage
+  desc_jp: Fix orb movement starting point to random position on the board, Deal 100%
+    damage
+  max_atk_pct: 100
+  name_en: Gyorogyoro!
+  name_jp: Gyorogyoro!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  max_atk_pct: null
+  name_en: Gyoro Dokkan
+  name_jp: Gyoro Dokkan
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Fix orb movement starting point to random position on the board, Deal 100%
+    damage
+  desc_jp: Fix orb movement starting point to random position on the board, Deal 100%
+    damage
+  max_atk_pct: 100
+  name_en: Gyorogyoro!
+  name_jp: Gyorogyoro!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Change Random to Fire, Deal 90% damage
+  desc_jp: Change Random to Fire, Deal 90% damage
+  max_atk_pct: 90
+  name_en: Gyoro! How about this!
+  name_jp: Gyoro! How about this!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] SkillSet:
 # 	[0] ESStatusShield -> Gyororon!
 # 	Voids status ailments for 999 turns
@@ -161,9 +125,9 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 20, target rnd 14
 # [9] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 51, target rnd 11
 # [10] ESFixedStart -> Gyorogyoro!
 # Condition: 50% chance
 # Fix orb movement starting point to random position on the board

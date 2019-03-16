@@ -48,11 +48,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESBindAwoken -> Let's plaaay!
 # 	Bind awoken skills for 6 turns
@@ -63,36 +63,36 @@ records:
 # [6] ESOrbChangeAttack -> Nope! Wrooong!
 # Change Jammer to Water
 # [7] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 11
 # [8] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [9] ESRandomSpawn -> Can you erase my Jammers?
 # Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board
 # Spawn random 5 Jammer orbs
 # [10] ESEndPath -> ESEndPath
 # end_turn
 # [11] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 15
 # [12] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [13] ESRandomSpawn -> Here I gooo!
 # Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board
 # Spawn random 6 Jammer orbs
 # [14] ESEndPath -> ESEndPath
 # end_turn
 # [15] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 8, target rnd 19
 # [16] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1111
 # [17] ESRandomSpawn -> My... You're not bad!
 # Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board
 # Spawn random 10 Jammer orbs
 # [18] ESEndPath -> ESEndPath
 # end_turn
 # [19] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 16, target rnd 23
 # [20] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11111
 # [21] SkillSet:
 # 	[0] ESBlind -> However, this here...
 # 	Blind all orbs on the board
@@ -101,9 +101,9 @@ records:
 # [22] ESEndPath -> ESEndPath
 # end_turn
 # [23] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 32, target rnd 27
 # [24] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111111
 # [25] SkillSet:
 # 	[0] ESDebuffMovetime -> You're impressive!
 # 	Movetime -1s for 1 turns

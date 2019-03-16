@@ -58,6 +58,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Movetime -1s for 1 turns, Deal 200% damage
+  desc_jp: Movetime -1s for 1 turns, Deal 200% damage
+  max_atk_pct: 200
+  name_en: Anzel Sou
+  name_jp: Anzel Sou
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -72,24 +90,6 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 0
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Increase damage to 150% for the next 999 turns + Player -99% HP
-  desc_jp: Increase damage to 150% for the next 999 turns + Player -99% HP
-  max_atk_pct: null
-  name_en: Judgment day has come + Accept your demise!
-  name_jp: Judgment day has come + Accept your demise!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
@@ -113,11 +113,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESStatusShield -> Balance the World
 # 	Voids status ailments for 999 turns
@@ -129,7 +129,7 @@ records:
 # Condition: When < 5% hp
 # Enemy action
 # [7] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 12
 # [8] ESDebuffMovetime -> Anzel Sou
 # Condition: One-time use
 # Movetime -1s for 1 turns
@@ -142,9 +142,9 @@ records:
 # [11] ESEndPath -> ESEndPath
 # end_turn
 # [12] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 8
 # [13] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [14] SkillSet:
 # 	Condition: When < 50% hp
 # 	[0] ESAttackUp -> Judgment day has come

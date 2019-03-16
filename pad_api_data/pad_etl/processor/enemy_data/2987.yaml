@@ -156,11 +156,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESStatusShield -> Mode-Ground Armor
 # 	Voids status ailments for 999 turns
@@ -180,23 +180,23 @@ records:
 # Condition: When < 50% hp , one-time use
 # Wood, Jammer, Poison skyfall +10% for 5 turns
 # [10] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 14
 # [11] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [12] ESDispel -> Justice Eye
 # Voids player buff effects
 # [13] ESRowSpawnMulti -> Justice Blade
 # Change 2nd row to Wood orbs
 # [14] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 18
 # [15] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [16] ESDispel -> Justice Eye
 # Voids player buff effects
 # [17] ESGravity -> Justice Punch
 # Player -99% HP
 # [18] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b110
 # [19] ESDispel -> Justice Eye
 # Voids player buff effects
 # [20] ESAttackMultihit -> Justice Star Boomerang

@@ -57,21 +57,21 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 5
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESInvulnerableOn -> Overcoat of Immortality
 # Immune to damage from all sources for 999 turns
 # [5] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
-# branch
+# Branch on remaining enemies = 1, target rnd 17
 # [6] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
-# branch
+# Branch on remaining enemies = 2, target rnd 12
 # [7] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
-# branch
+# Branch on remaining enemies = 3, target rnd 8
 # [8] ESSetCounter -> ESSetCounter
-# set_counter
+# counter = 0
 # [9] ESColumnSpawnMulti -> Vampire Blade
 # Condition: 30% chance
 # Change 2nd column to Dark orbs
@@ -80,9 +80,9 @@ records:
 # [11] ESEndPath -> ESEndPath
 # end_turn
 # [12] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [13] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 2, target rnd 15
 # [14] ESLeaderSwap -> Dance!
 # Leader changes to random sub for 1 turns
 # [15] ESBlind -> Dark World
@@ -91,7 +91,7 @@ records:
 # [16] ESGravity -> Pain
 # Player -99% HP
 # [17] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 1, target rnd 19
 # [18] ESRecoverEnemyAlly -> Futile...
 # Condition: When enemy ally is killed
 # Enemy ally recover 100% hp
@@ -104,9 +104,9 @@ records:
 # 	[2] ESStatusShield -> War Demon's Armor
 # 	Voids status ailments for 99 turns
 # [20] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 36
 # [21] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 70, target rnd 25
 # [22] ESBlind -> Darkness Pulse
 # Condition: 50% chance
 # Blind all orbs on the board
@@ -115,11 +115,11 @@ records:
 # [24] ESEndPath -> ESEndPath
 # end_turn
 # [25] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 15, target rnd 33
 # [26] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 30
 # [27] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [28] SkillSet:
 # 	[0] ESChangeAttribute -> Magic Garment
 # 	Change own attribute to random one of Fire, Water
@@ -138,9 +138,9 @@ records:
 # [32] ESAttackMultihit -> Chase into the Abyss
 # Enemy action
 # [33] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 36
 # [34] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [35] ESBindAwoken -> Descend into Darkness
 # Bind awoken skills for 3 turns
 # [36] ESAttackMultihit -> Chaos Flame

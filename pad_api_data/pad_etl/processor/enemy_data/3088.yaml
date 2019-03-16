@@ -174,11 +174,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESStatusShield -> Cross On!
 # 	Voids status ailments for 3 turns
@@ -214,9 +214,9 @@ records:
 # 	[1] ESOrbChangeAttack -> Life Cutting Flash
 # 	Change Heal to Light
 # [11] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 17
 # [12] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [13] ESAttackUp -> Innocent Bravery
 # Condition: When < 40% hp
 # Increase damage to 400% for the next 1 turns
@@ -229,9 +229,9 @@ records:
 # [16] ESAttackUp -> Innocent Mind
 # Increase damage to 150% for the next 1 turns
 # [17] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 24
 # [18] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [19] ESOrbChangeAttack -> Life Cutting Flash
 # Change Heal to Light
 # [20] ESBindAttack -> Deadly Thorn Shackles
@@ -246,9 +246,9 @@ records:
 # [23] ESBindAttack -> Thorn Shackles
 # Bind 1 subs for 3 turns
 # [24] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 8, target rnd 30
 # [25] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1111
 # [26] ESSkillDelay -> Divine Law's Aura
 # Condition: When < 40% hp
 # Delay active skills by 4 turns
@@ -261,7 +261,7 @@ records:
 # [29] ESSkillDelay -> Maiden's Aura
 # Delay active skills by 1 turns
 # [30] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b1110
 # [31] SkillSet:
 # 	[0] ESStatusShield -> White Shield Protection
 # 	Voids status ailments for 3 turns

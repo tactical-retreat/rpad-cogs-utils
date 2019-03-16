@@ -50,23 +50,23 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESInvulnerableOn -> Protected from damage by the Augites
 # Immune to damage from all sources for 999 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
-# branch
+# Branch on remaining enemies = 1, target rnd 19
 # [7] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
-# branch
+# Branch on remaining enemies = 2, target rnd 14
 # [8] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
-# branch
+# Branch on remaining enemies = 3, target rnd 12
 # [9] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
-# branch
+# Branch on remaining enemies = 4, target rnd 10
 # [10] ESOrbLock -> Stellar Dragon's Glare
 # Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [11] ESInactivity -> Wait and See
@@ -112,7 +112,7 @@ records:
 # 	[2] ESGravity -> Wave
 # 	Player -99% HP
 # [22] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 20, target rnd 28
 # [23] SkillSet:
 # 	Condition: When < 50% hp , one-time use
 # 	[0] ESDebuffMovetime -> Deprivation
@@ -137,9 +137,9 @@ records:
 # [27] ESAttackMultihit -> Four Resonating Guns
 # Enemy action
 # [28] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 32
 # [29] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [30] SkillSet:
 # 	[0] ESOrbLock -> Stellar Dragon's Glare
 # 	Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs

@@ -126,17 +126,17 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 5
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 5, target rnd 5
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESEndPath -> ESEndPath
 # end_turn
 # [5] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 9
 # [6] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [7] SkillSet:
 # 	[0] ESInactivity -> Took you long enough!
 # 	Do nothing
@@ -159,7 +159,7 @@ records:
 # 	[4] ESAttackMultihit -> Jump
 # 	Enemy action
 # [10] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 14
 # [11] ESBindAttack -> Electrocute
 # Condition: 50% chance
 # Bind 1 subs for 2 turns

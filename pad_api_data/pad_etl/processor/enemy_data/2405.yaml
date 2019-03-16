@@ -66,30 +66,30 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] ESBlind -> Halloween World
 # Blind all orbs on the board
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [788, 790, 792, 794], target rnd 11
 # [9] ESBindRandomSub -> Pumpkin Charm
 # Condition: When < 50% hp , one-time use
 # Bind 3 random subs for 1~2 turns
 # [10] ESAttackMultihit -> Candle Nail
 # Enemy action
 # [11] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 9
 # [12] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [13] ESRecoverPlayer -> Hello! Want some candy?
 # Player recover 100% hp
 # [14] ESEndPath -> ESEndPath

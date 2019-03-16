@@ -44,65 +44,11 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 150% damage (3 hits, 50% each)
-  desc_jp: Deal 150% damage (3 hits, 50% each)
-  max_atk_pct: 150
-  name_en: Blazing Cutting Dance
-  name_jp: Blazing Cutting Dance
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
+  desc_en: Bind awoken skills for 3 turns
+  desc_jp: Bind awoken skills for 3 turns
   max_atk_pct: null
-  name_en: HP <= 74
-  name_jp: HP <= 74
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Enemy recover 10% hp + Player -99% HP
-  desc_jp: Enemy recover 10% hp + Player -99% HP
-  max_atk_pct: null
-  name_en: Flame Eating Net + Scold
-  name_jp: Flame Eating Net + Scold
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Reduce damage from all sources by 75% for 3 turns
-  desc_jp: Reduce damage from all sources by 75% for 3 turns
-  max_atk_pct: null
-  name_en: High Temperature
-  name_jp: High Temperature
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Spawn random 5 Jammer orbs, Deal 50% damage
-  desc_jp: Spawn random 5 Jammer orbs, Deal 50% damage
-  max_atk_pct: 50
-  name_en: Ash followed by Flare
-  name_jp: Ash followed by Flare
+  name_en: Suppression Flames
+  name_jp: Suppression Flames
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -116,11 +62,11 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Bind awoken skills for 3 turns
-  desc_jp: Bind awoken skills for 3 turns
-  max_atk_pct: null
-  name_en: Suppression Flames
-  name_jp: Suppression Flames
+  desc_en: Deal 150% damage (3 hits, 50% each)
+  desc_jp: Deal 150% damage (3 hits, 50% each)
+  max_atk_pct: 150
+  name_en: Blazing Cutting Dance
+  name_jp: Blazing Cutting Dance
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -129,11 +75,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESAbsorbCombo -> Phoenix Knight's Soul
 # 	Absorb combo <= 4 damage for 99 turns
@@ -142,13 +88,13 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 1, target rnd 16
 # [7] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 75, target rnd 9
 # [8] ESAttackMultihit -> Blazing Cutting Dance
 # Enemy action
 # [9] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 12
 # [10] SkillSet:
 # 	[0] ESRecoverEnemy -> Flame Eating Net
 # 	Enemy recover 10% hp
@@ -157,9 +103,9 @@ records:
 # [11] ESEndPath -> ESEndPath
 # end_turn
 # [12] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 15
 # [13] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [14] ESDamageShield -> High Temperature
 # Reduce damage from all sources by 75% for 3 turns
 # [15] ESRandomSpawn -> Ash followed by Flare

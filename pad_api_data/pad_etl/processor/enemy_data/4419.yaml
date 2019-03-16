@@ -40,8 +40,26 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 1300% damage (10 hits, 130% each)
+  desc_jp: Deal 1300% damage (10 hits, 130% each)
+  max_atk_pct: 1300
+  name_en: Meso-Cyclone
+  name_jp: Meso-Cyclone
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 9
+  name_jp: HP <= 9
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -60,8 +78,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
+  name_en: HP <= 9
+  name_jp: HP <= 9
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -80,8 +98,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 3
-  name_jp: Turn 3
+  name_en: HP <= 9
+  name_jp: HP <= 9
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -98,8 +116,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 4
-  name_jp: Turn 4
+  name_en: HP <= 9
+  name_jp: HP <= 9
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -118,8 +136,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 5
-  name_jp: Turn 5
+  name_en: HP <= 9
+  name_jp: HP <= 9
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -138,8 +156,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 6
-  name_jp: Turn 6
+  name_en: HP <= 9
+  name_jp: HP <= 9
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -156,8 +174,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: HP <= 9
+  name_jp: HP <= 9
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -167,80 +185,6 @@ records:
   max_atk_pct: 260
   name_en: Heaven's Breaching
   name_jp: Heaven's Breaching
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Reduce damage from all sources by 75% for 10 turns + Bind 1 both leaders
-    for 3 turns
-  desc_jp: Reduce damage from all sources by 75% for 10 turns + Bind 1 both leaders
-    for 3 turns
-  max_atk_pct: null
-  name_en: Colossal Cumulonimbus Cloud + Plasma Chain
-  name_jp: Colossal Cumulonimbus Cloud + Plasma Chain
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change all orbs to Fire, Light, Heal, Jammer, Poison, Deal 246% damage
-  desc_jp: Change all orbs to Fire, Light, Heal, Jammer, Poison, Deal 246% damage
-  max_atk_pct: 246
-  name_en: Grimy Cloud
-  name_jp: Grimy Cloud
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Bind 2 random subs for 1~2 turns, Deal 220% damage
-  desc_jp: Bind 2 random subs for 1~2 turns, Deal 220% damage
-  max_atk_pct: 220
-  name_en: Lightning Chain
-  name_jp: Lightning Chain
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 9
-  name_jp: HP <= 9
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 1300% damage (10 hits, 130% each)
-  desc_jp: Deal 1300% damage (10 hits, 130% each)
-  max_atk_pct: 1300
-  name_en: Meso-Cyclone
-  name_jp: Meso-Cyclone
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -269,11 +213,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESCloud -> Cloud Cluster
 # 	6x2 cloud appear for 1 turns at 4th row, 1st column
@@ -292,9 +236,9 @@ records:
 # 	[2] ESCloud -> Disastrous Cloud
 # 	2x5 cloud appear for 1 turns at 1st row, 3rd column
 # [7] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 10, target rnd 30
 # [8] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 19
 # [9] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESCloud -> Cloud Cluster
@@ -343,9 +287,9 @@ records:
 # [18] ESEndPath -> ESEndPath
 # end_turn
 # [19] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 23
 # [20] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [21] SkillSet:
 # 	[0] ESDamageShield -> Colossal Cumulonimbus Cloud
 # 	Reduce damage from all sources by 75% for 10 turns
@@ -354,15 +298,15 @@ records:
 # [22] ESEndPath -> ESEndPath
 # end_turn
 # [23] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 27
 # [24] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [25] ESBoardChange -> Grimy Cloud
 # Change all orbs to Fire, Light, Heal, Jammer, Poison
 # [26] ESEndPath -> ESEndPath
 # end_turn
 # [27] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b100
 # [28] ESBindRandomSub -> Lightning Chain
 # Bind 2 random subs for 1~2 turns
 # [29] ESEndPath -> ESEndPath

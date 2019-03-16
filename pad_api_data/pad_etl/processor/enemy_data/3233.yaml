@@ -68,11 +68,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESStatusShield -> Barrier Charm
 # 	Voids status ailments for 999 turns
@@ -87,9 +87,9 @@ records:
 # 	[1] ESBoardChangeAttackBits -> Light
 # 	Change all orbs to Light
 # [7] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 16
 # [8] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [9] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESAbsorbAttribute -> Thousand-Seal Prison
@@ -129,9 +129,9 @@ records:
 # [15] ESEndPath -> ESEndPath
 # end_turn
 # [16] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 25
 # [17] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [18] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESOrbLock -> Fire Beacon
@@ -171,7 +171,7 @@ records:
 # [24] ESEndPath -> ESEndPath
 # end_turn
 # [25] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b110
 # [26] ESBlind -> Lightraider Amulet
 # Blind all orbs on the board
 # [27] ESEndPath -> ESEndPath

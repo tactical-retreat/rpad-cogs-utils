@@ -69,8 +69,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: HP <= 10
+  name_jp: HP <= 10
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -89,26 +89,6 @@ records:
   max_atk_pct: 140
   name_en: Black Thunderstorm
   name_jp: Black Thunderstorm
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 9
-  name_jp: HP <= 9
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Increase damage to 1000% for the next 999 turns + Bind awoken skills for
-    10 turns
-  desc_jp: Increase damage to 1000% for the next 999 turns + Bind awoken skills for
-    10 turns
-  max_atk_pct: null
-  name_en: "Playtime's over... + \xC9lenchos"
-  name_jp: "Playtime's over... + \xC9lenchos"
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -189,7 +169,7 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESStatusShield -> Protection of the Gods
@@ -197,7 +177,7 @@ records:
 # 	[1] ESVoidShield -> Divine King's Armor
 # 	Void damage >= 100000000 for 999 turns
 # [3] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 10, target rnd 13
 # [4] SkillSet:
 # 	Condition: When < 50% hp , one-time use
 # 	[0] ESChangeAttribute -> Psevdaisthíseis
@@ -211,13 +191,13 @@ records:
 # 	[1] ESDebuffMovetime -> Keraunós
 # 	Movetime -1s for 10 turns
 # [6] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 5, target rnd 9
 # [7] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [8] ESAttackMultihit -> Royal Sword
 # Enemy action
 # [9] ESSetCounter -> ESSetCounter
-# set_counter
+# counter = 0
 # [10] ESBlindStickyRandom -> Black Thunderstorm
 # Condition: 50% chance
 # Blind random 1~5 orbs for 3 turns
@@ -227,9 +207,9 @@ records:
 # [12] ESEndPath -> ESEndPath
 # end_turn
 # [13] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 4
 # [14] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [15] SkillSet:
 # 	[0] ESAttackUp -> Playtime's over...
 # 	Increase damage to 1000% for the next 999 turns

@@ -35,6 +35,42 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
+  desc_en: Enemy recover 100% hp
+  desc_jp: Enemy recover 100% hp
+  max_atk_pct: null
+  name_en: Mystic White Lily
+  name_jp: Mystic White Lily
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  max_atk_pct: null
+  name_en: Divine Word - The Final Day
+  name_jp: Divine Word - The Final Day
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
   desc_en: Player -99% HP
   desc_jp: Player -99% HP
   max_atk_pct: null
@@ -61,40 +97,22 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Enemy recover 100% hp
-  desc_jp: Enemy recover 100% hp
-  max_atk_pct: null
-  name_en: Mystic White Lily
-  name_jp: Mystic White Lily
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESBindTarget -> Angelic Murmur
 # Bind 1 own leader for 5 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 10
 # [7] ESGravity -> Divine Word - The Final Day
 # Condition: One-time use
 # Player -99% HP
@@ -103,8 +121,8 @@ records:
 # [9] ESEndPath -> ESEndPath
 # end_turn
 # [10] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 7
 # [11] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [12] ESRecoverEnemy -> Mystic White Lily
 # Enemy recover 100% hp

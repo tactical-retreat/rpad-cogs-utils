@@ -115,11 +115,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESStatusShield -> White Valkyrie Shield
 # 	Voids status ailments for 10 turns
@@ -128,12 +128,12 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 1, target rnd 10
 # [7] ESRecoverEnemy -> Resurrection
 # Condition: When < 50% hp
 # Enemy recover 100% hp
 # [8] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [9] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESBindRandom -> Gleipnir

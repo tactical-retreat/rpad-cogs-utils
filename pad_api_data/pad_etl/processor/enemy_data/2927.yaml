@@ -137,11 +137,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESDamageShield -> Cross On!
 # 	Reduce damage from all sources by 50% for 3 turns
@@ -182,18 +182,18 @@ records:
 # 	[1] ESAttackMultihit -> Dragon Summoning!!!
 # 	Enemy action
 # [11] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 14
 # [12] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [13] SkillSet:
 # 	[0] ESDebuffMovetime -> Eye of Wadjet
 # 	Movetime -2s for 1 turns
 # 	[1] ESOrbChangeAttack -> Flame Falcon's Furious Attack
 # 	Change Random to Fire
 # [14] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 19
 # [15] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [16] SkillSet:
 # 	Condition: 34% chance
 # 	[0] ESAbsorbCombo -> Five Origins' Sanctuary
@@ -212,16 +212,16 @@ records:
 # 	[1] ESRowSpawnMulti -> Wind Spiral
 # 	Change 1st row to Wood orbs
 # [19] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 8, target rnd 22
 # [20] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1111
 # [21] SkillSet:
 # 	[0] ESDebuffMovetime -> Eye of Wadjet
 # 	Movetime -2s for 1 turns
 # 	[1] ESOrbChangeAttack -> Flame Falcon's Furious Attack
 # 	Change Random to Fire
 # [22] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b1110
 # [23] SkillSet:
 # 	Condition: 34% chance
 # 	[0] ESBoardChange -> Five Origins' Tuning

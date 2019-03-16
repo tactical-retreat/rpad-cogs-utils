@@ -31,8 +31,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
+  name_en: HP <= 19
+  name_jp: HP <= 19
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -58,8 +58,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: HP <= 19
+  name_jp: HP <= 19
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -85,28 +85,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Increase damage to 150% for the next 5 turns + Bind 4 random subs for 2
-    turns
-  desc_jp: Increase damage to 150% for the next 5 turns + Bind 4 random subs for 2
-    turns
-  max_atk_pct: null
-  name_en: My S-Power is boiling up... + I'm not gonna let up!!
-  name_jp: My S-Power is boiling up... + I'm not gonna let up!!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
+  name_en: Execute below actions in order repeatedly
+  name_jp: Execute below actions in order repeatedly
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -118,15 +98,6 @@ records:
   name_jp: I'm gonna end this!
   one_time: false
   record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
-  one_time: false
-  record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
   desc_en: Deal 200% damage (5 hits, 40% each)
@@ -142,11 +113,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESAbsorbCombo -> I'm all fired up!
 # 	Absorb combo <= 5 damage for 5 turns
@@ -155,9 +126,9 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 20, target rnd 16
 # [7] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 12
 # [8] ESAttackMultihit -> Burnburnburn!
 # Condition: 34% chance
 # Enemy action
@@ -170,9 +141,9 @@ records:
 # [11] ESEndPath -> ESEndPath
 # end_turn
 # [12] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 8
 # [13] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [14] SkillSet:
 # 	[0] ESAttackUp -> My S-Power is boiling up...
 # 	Increase damage to 150% for the next 5 turns
@@ -181,13 +152,13 @@ records:
 # [15] ESEndPath -> ESEndPath
 # end_turn
 # [16] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 1, target rnd 19
 # [17] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [18] ESBindAwoken -> I'm gonna end this!
 # Bind awoken skills for 1 turns
 # [19] ESSetCounter -> ESSetCounter
-# set_counter
+# counter = 0
 # [20] ESAttackMultihit -> Dance of the Disembodied Soul
 # Enemy action
 # [21] ESEndPath -> ESEndPath

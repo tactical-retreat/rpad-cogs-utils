@@ -38,39 +38,39 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 10
-  name_jp: HP <= 10
+  name_en: Turn 2
+  name_jp: Turn 2
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Player -99% HP
-  desc_jp: Player -99% HP
+  desc_en: Blind all orbs on the board
+  desc_jp: Blind all orbs on the board
   max_atk_pct: null
-  name_en: Avenger Edge
-  name_jp: Avenger Edge
-  one_time: false
+  name_en: Blinding Smog
+  name_jp: Blinding Smog
+  one_time: true
   record_type_name: ACTION
-  usage_pct: 100
+  usage_pct: 50
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 5, target rnd 3
 # [2] ESEndPath -> ESEndPath
 # end_turn
 # [3] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 10, target rnd 6
 # [4] ESBlind -> Blinding Smog
 # Condition: One-time use
 # Blind all orbs on the board
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 4
 # [7] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [8] ESGravity -> Avenger Edge
 # Condition: When < 10% hp
 # Player -99% HP

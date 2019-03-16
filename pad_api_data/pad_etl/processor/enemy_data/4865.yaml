@@ -38,8 +38,26 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Spawn random 8 Bomb orbs
+  desc_jp: Spawn random 8 Bomb orbs
+  max_atk_pct: null
+  name_en: They're pulling out all the stops tonight.
+  name_jp: They're pulling out all the stops tonight.
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -58,17 +76,19 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Spawn random 8 Bomb orbs
-  desc_jp: Spawn random 8 Bomb orbs
+  desc_en: Fix orb movement starting point to random position on the board + Enemy
+    action
+  desc_jp: Fix orb movement starting point to random position on the board + Enemy
+    action
   max_atk_pct: null
-  name_en: They're pulling out all the stops tonight.
-  name_jp: They're pulling out all the stops tonight.
+  name_en: He won't even know what hit him. + Why you!
+  name_jp: He won't even know what hit him. + Why you!
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -77,7 +97,7 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESBombRandomSpawn -> Then let's light him up!
@@ -85,7 +105,7 @@ records:
 # 	[1] ESStatusShield -> I'll be playing to win.
 # 	Voids status ailments for 5 turns
 # [3] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 6
 # [4] SkillSet:
 # 	[0] ESFixedStart -> He won't even know what hit him.
 # 	Fix orb movement starting point to random position on the board
@@ -94,9 +114,9 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 4
 # [7] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [8] ESBombRandomSpawn -> They're pulling out all the stops tonight.
 # Spawn random 8 Bomb orbs
 # [9] ESEndPath -> ESEndPath

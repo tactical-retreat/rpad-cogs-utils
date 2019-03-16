@@ -176,17 +176,17 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESDamageShield -> Dance of the Shrine Maiden
 # Reduce damage from all sources by 50% for 5 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 100, target rnd 13
 # [7] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESAttackUp -> Awful! Now I'm mad!
@@ -207,13 +207,13 @@ records:
 # [12] ESEndPath -> ESEndPath
 # end_turn
 # [13] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 4, target rnd 16
 # [14] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [15] ESInactivity -> Smiling joyfully
 # Do nothing
 # [16] ESSetCounter -> ESSetCounter
-# set_counter
+# counter = 0
 # [17] ESDamageShield -> Dance of the Shrine Maiden
 # Reduce damage from all sources by 50% for 5 turns
 # [18] ESEndPath -> ESEndPath

@@ -29,17 +29,19 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Bind active skills for 1 turns, Deal 100% damage
-  desc_jp: Bind active skills for 1 turns, Deal 100% damage
-  max_atk_pct: 100
-  name_en: Gotcha!
-  name_jp: Gotcha!
+  desc_en: Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 150% damage
+  desc_jp: Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 150% damage
+  max_atk_pct: 150
+  name_en: '"Orochi" Pose'
+  name_jp: '"Orochi" Pose'
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -66,53 +68,20 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
-  desc_en: Lock 2 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
-    Poison orbs, Deal 125% damage
-  desc_jp: Lock 2 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
-    Poison orbs, Deal 125% damage
-  max_atk_pct: 125
-  name_en: '"Hakujin" - The Thin One'
-  name_jp: '"Hakujin" - The Thin One'
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 70
-- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 39
-  name_jp: HP <= 39
+  name_en: HP <= 19
+  name_jp: HP <= 19
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
-    Poison orbs, Deal 125% damage
-  desc_jp: Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
-    Poison orbs, Deal 125% damage
-  max_atk_pct: 125
-  name_en: '"Orochi" Pose. Take this.'
-  name_jp: '"Orochi" Pose. Take this.'
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 39
-  name_jp: HP <= 39
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
-    Poison orbs, Deal 150% damage
-  desc_jp: Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
-    Poison orbs, Deal 150% damage
-  max_atk_pct: 150
-  name_en: '"Orochi" Pose'
-  name_jp: '"Orochi" Pose'
+  desc_en: Bind active skills for 1 turns, Deal 100% damage
+  desc_jp: Bind active skills for 1 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Gotcha!
+  name_jp: Gotcha!
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -121,15 +90,15 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] ESSkyfall -> A fair fight, huh?
 # Wood skyfall +20% for 1 turns
 # [7] ESEndPath -> ESEndPath
@@ -142,15 +111,15 @@ records:
 # Condition: When < 20% hp , one-time use
 # Increase damage to 200% for the next 999 turns
 # [10] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 20, target rnd 23
 # [11] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 40, target rnd 20
 # [12] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 70, target rnd 18
 # [13] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 17
 # [14] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [15] ESBindSkill -> Gotcha!
 # Bind active skills for 1 turns
 # [16] ESAttackMultihit -> Gotcha!
@@ -163,9 +132,9 @@ records:
 # [19] ESEndPath -> ESEndPath
 # end_turn
 # [20] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 23
 # [21] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [22] ESOrbLock -> "Orochi" Pose. Take this.
 # Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [23] ESOrbLock -> "Orochi" Pose

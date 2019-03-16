@@ -64,24 +64,6 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: 'Show message: Parts fall from the heavens|Seraphis and the parts are combining'
-  desc_jp: 'Show message: Parts fall from the heavens|Seraphis and the parts are combining'
-  max_atk_pct: null
-  name_en: Orpharion Transformation
-  name_jp: Orpharion Transformation
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 0
-- !SkillRecord
-  desc_en: Increase damage to 200% for the next 999 turns
-  desc_jp: Increase damage to 200% for the next 999 turns
-  max_atk_pct: null
-  name_en: Awaken Force
-  name_jp: Awaken Force
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
   desc_en: Deal 800% damage (2 hits, 400% each)
   desc_jp: Deal 800% damage (2 hits, 400% each)
   max_atk_pct: 800
@@ -212,14 +194,14 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESDeathCry -> Orpharion Transformation
 # Condition: On death
 # Show message: Parts fall from the heavens|Seraphis and the parts are combining
 # [3] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 7
 # [4] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [5] SkillSet:
 # 	[0] ESStatusShield -> Heaven's Armor
 # 	Voids status ailments for 999 turns
@@ -239,11 +221,11 @@ records:
 # Condition: When < 20% hp
 # Enemy action
 # [9] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 28
 # [10] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 17
 # [11] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [12] ESOrbLock -> Shock Ray
 # Condition: One-time use
 # Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
@@ -259,9 +241,9 @@ records:
 # [16] ESEndPath -> ESEndPath
 # end_turn
 # [17] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 24
 # [18] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [19] ESInactivity -> Full Charge
 # Condition: One-time use
 # Do nothing
@@ -277,7 +259,7 @@ records:
 # [23] ESEndPath -> ESEndPath
 # end_turn
 # [24] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b110
 # [25] ESAttackMultihit -> Steel Wing
 # Condition: One-time use
 # Enemy action
@@ -289,7 +271,7 @@ records:
 # [28] ESAttackUp -> Awaken Force
 # Increase damage to 200% for the next 999 turns
 # [29] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 10
 # [30] ESEndPath -> ESEndPath
 # end_turn
 # [31] ESAttributeResist -> Robot Dark Halven

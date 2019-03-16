@@ -38,8 +38,26 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy recover 100% hp + Leader changes to random sub for 3 turns
+  desc_jp: Enemy recover 100% hp + Leader changes to random sub for 3 turns
+  max_atk_pct: null
+  name_en: Blessed Rain + Rondo of Life and Death
+  name_jp: Blessed Rain + Rondo of Life and Death
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 0
+  name_jp: HP <= 0
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -67,8 +85,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: HP <= 0
+  name_jp: HP <= 0
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -148,92 +166,16 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 0
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Player -99% HP + Delay active skills by 7 turns
-  desc_jp: Player -99% HP + Delay active skills by 7 turns
-  max_atk_pct: null
-  name_en: Life Constricting + Glint of Despair
-  name_jp: Life Constricting + Glint of Despair
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Bind awoken skills for 1 turns + Specific orbs change every 1.0s for 1
-    turns
-  desc_jp: Bind awoken skills for 1 turns + Specific orbs change every 1.0s for 1
-    turns
-  max_atk_pct: null
-  name_en: Crimson Snake Eyes + Groans of the Dancing Frenzy
-  name_jp: Crimson Snake Eyes + Groans of the Dancing Frenzy
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change own attribute to random one of Fire, Water, Wood, Light, Dark +
-    Enemy action
-  desc_jp: Change own attribute to random one of Fire, Water, Wood, Light, Dark +
-    Enemy action
-  max_atk_pct: null
-  name_en: Morph Scales + Frenzy of Absolute Power
-  name_jp: Morph Scales + Frenzy of Absolute Power
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 0
-  name_jp: HP <= 0
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Enemy recover 100% hp + Leader changes to random sub for 3 turns
-  desc_jp: Enemy recover 100% hp + Leader changes to random sub for 3 turns
-  max_atk_pct: null
-  name_en: Blessed Rain + Rondo of Life and Death
-  name_jp: Blessed Rain + Rondo of Life and Death
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESStatusShield -> Flowing Green Scales
 # 	Voids status ailments for 999 turns
@@ -242,11 +184,11 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 1, target rnd 28
 # [7] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 20, target rnd 23
 # [8] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 19
 # [9] SkillSet:
 # 	Condition: 20% chance
 # 	[0] ESVoidShield -> Longing for Life
@@ -304,9 +246,9 @@ records:
 # [18] ESEndPath -> ESEndPath
 # end_turn
 # [19] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 9
 # [20] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [21] SkillSet:
 # 	[0] ESGravity -> Life Constricting
 # 	Player -99% HP
@@ -315,9 +257,9 @@ records:
 # [22] ESEndPath -> ESEndPath
 # end_turn
 # [23] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 1, target rnd 26
 # [24] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [25] SkillSet:
 # 	[0] ESBindAwoken -> Crimson Snake Eyes
 # 	Bind awoken skills for 1 turns

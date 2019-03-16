@@ -48,20 +48,20 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] SkillSet:
 # 	[0] ESInactivity -> Away with you!
 # 	Do nothing
 # 	[1] ESRowSpawnMulti -> Ultimate Psycho Crusher
 # 	Change 3rd, 4th row to Dark orbs
 # [3] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [4] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 12
 # [5] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 10, target rnd 16
 # [6] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 51, target rnd 8
 # [7] ESColumnSpawnMulti -> Misogi
 # Condition: 25% chance
 # Change 3rd, 4th column to Dark orbs
@@ -86,13 +86,13 @@ records:
 # Condition: One-time use
 # Increase damage to 150% for the next 10 turns
 # [13] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 11, target rnd 5
 # [14] ESAttackMultihit -> Shun Goku Satsu
 # Enemy action
 # [15] ESEndPath -> ESEndPath
 # end_turn
 # [16] ESSetCounter -> ESSetCounter
-# set_counter
+# counter = 0
 # [17] SkillSet:
 # 	[0] ESInactivity -> This will be your grave!
 # 	Do nothing

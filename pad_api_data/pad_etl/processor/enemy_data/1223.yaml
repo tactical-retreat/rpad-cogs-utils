@@ -29,8 +29,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 29
-  name_jp: HP <= 29
+  name_en: Turn 1
+  name_jp: Turn 1
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -47,8 +47,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 29
-  name_jp: HP <= 29
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -65,8 +65,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute below actions in order repeatedly
-  name_jp: Execute below actions in order repeatedly
+  name_en: HP <= 29
+  name_jp: HP <= 29
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -80,6 +80,15 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 29
+  name_jp: HP <= 29
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
   desc_en: Player -99% HP
   desc_jp: Player -99% HP
   max_atk_pct: null
@@ -87,6 +96,15 @@ records:
   name_jp: Earth Gravity
   one_time: false
   record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 29
+  name_jp: HP <= 29
+  one_time: false
+  record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
   desc_en: Deal 60% damage (2 hits, 30% each)
@@ -102,31 +120,31 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESAbsorbAttribute -> Earth's Core
 # Absorb Fire damage for 5 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 30, target rnd 16
 # [7] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 10
 # [8] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [9] ESOrbChangeAttack -> Clod of Blessing
 # Change Random to Heal
 # [10] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 13
 # [11] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [12] ESGravity -> Earth Gravity
 # Player -99% HP
 # [13] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b110
 # [14] ESAttackMultihit -> Stone Grave
 # Enemy action
 # [15] ESEndPath -> ESEndPath

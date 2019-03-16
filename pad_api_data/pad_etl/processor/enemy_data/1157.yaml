@@ -26,11 +26,11 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change Fire to Jammer, Deal 80% damage
-  desc_jp: Change Fire to Jammer, Deal 80% damage
-  max_atk_pct: 80
-  name_en: Fire Eating Attack
-  name_jp: Fire Eating Attack
+  desc_en: Change Random to Fire, Deal 75% damage
+  desc_jp: Change Random to Fire, Deal 75% damage
+  max_atk_pct: 75
+  name_en: Red Tackle
+  name_jp: Red Tackle
   one_time: true
   record_type_name: ACTION
   usage_pct: 0
@@ -44,11 +44,11 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change Random to Fire, Deal 75% damage
-  desc_jp: Change Random to Fire, Deal 75% damage
-  max_atk_pct: 75
-  name_en: Red Tackle
-  name_jp: Red Tackle
+  desc_en: Change Fire to Jammer, Deal 80% damage
+  desc_jp: Change Fire to Jammer, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Fire Eating Attack
+  name_jp: Fire Eating Attack
   one_time: true
   record_type_name: ACTION
   usage_pct: 0
@@ -70,32 +70,14 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 0
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 25
-  name_jp: HP <= 25
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 200% damage
-  desc_jp: Deal 200% damage
-  max_atk_pct: 200
-  name_en: Buster Horn
-  name_jp: Buster Horn
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 50
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 25, target rnd 9
 # [2] ESNone -> ESNone
-# None
+# nothing
 # [3] ESOrbChangeAttack -> Fire Eating Attack
 # Condition: One-time use
 # Change Fire to Jammer

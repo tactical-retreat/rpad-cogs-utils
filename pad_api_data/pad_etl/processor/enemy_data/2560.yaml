@@ -166,11 +166,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 9
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	Condition: 25% chance
 # 	[0] ESChangeAttribute -> Constellation Shift
@@ -206,9 +206,9 @@ records:
 # [8] ESEndPath -> ESEndPath
 # end_turn
 # [9] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 13
 # [10] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [11] ESBoardChangeAttackBits -> Necrostar
 # Change all orbs to Poison
 # [12] ESEndPath -> ESEndPath
@@ -225,9 +225,9 @@ records:
 # 	[2] ESSkyfall -> Calamity Rain
 # 	Poison skyfall +15% for 5 turns
 # [15] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 20
 # [16] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [17] SkillSet:
 # 	Condition: 50% chance
 # 	[0] ESCloud -> Aries' Golden Fleece
@@ -242,15 +242,15 @@ records:
 # [19] ESEndPath -> ESEndPath
 # end_turn
 # [20] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 8, target rnd 24
 # [21] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1111
 # [22] ESBindAttack -> Dark Star Luster
 # Bind 1 random for 1 turns
 # [23] ESEndPath -> ESEndPath
 # end_turn
 # [24] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b1100
 # [25] ESBindAttack -> Dark Star Luster
 # Bind 1 random for 1 turns
 # [26] ESEndPath -> ESEndPath

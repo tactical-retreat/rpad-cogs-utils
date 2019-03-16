@@ -47,20 +47,38 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Player -100% HP
+  desc_jp: Player -100% HP
+  max_atk_pct: null
+  name_en: Absolute Zero Summer
+  name_jp: Absolute Zero Summer
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Spawn random 3 Water orbs, Deal 100% damage
-  desc_jp: Spawn random 3 Water orbs, Deal 100% damage
-  max_atk_pct: 100
-  name_en: A cold wave washes over you
-  name_jp: A cold wave washes over you
+  desc_en: Deal 210% damage (3 hits, 70% each)
+  desc_jp: Deal 210% damage (3 hits, 70% each)
+  max_atk_pct: 210
+  name_en: A blizzard rages
+  name_jp: A blizzard rages
   one_time: false
   record_type_name: ACTION
-  usage_pct: 90
+  usage_pct: 100
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
@@ -98,60 +116,42 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Player -100% HP
-  desc_jp: Player -100% HP
-  max_atk_pct: null
-  name_en: Absolute Zero Summer
-  name_jp: Absolute Zero Summer
+  desc_en: Spawn random 3 Water orbs, Deal 100% damage
+  desc_jp: Spawn random 3 Water orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: A cold wave washes over you
+  name_jp: A cold wave washes over you
   one_time: false
   record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 210% damage (3 hits, 70% each)
-  desc_jp: Deal 210% damage (3 hits, 70% each)
-  max_atk_pct: 210
-  name_en: A blizzard rages
-  name_jp: A blizzard rages
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
+  usage_pct: 90
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 5
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 5, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] ESStatusShield -> You're on vacation, take a rest
 # Voids status ailments for 999 turns
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [1531, 1532], target rnd 17
 # [9] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 8, target rnd 12
 # [10] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1111
 # [11] ESBindSkill -> It's a little cold, but do you want a drink?
 # Bind active skills for 2~3 turns
 # [12] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 20, target rnd 25
 # [13] ESBindRandom -> You'll freeze this close to me
 # Condition: When < 50% hp , one-time use
 # Bind 3 random cards for 2 turns
@@ -164,25 +164,25 @@ records:
 # [16] ESEndPath -> ESEndPath
 # end_turn
 # [17] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [190, 985, 599, 1536, 1189, 2807, 1250, 2946], target rnd 21
 # [18] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 9
 # [19] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [20] ESRecoverPlayer -> I'm so happy you came!
 # Player recover 100% hp
 # [21] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 9
 # [22] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [23] ESSkillDelay -> Hey, who's that girl?
 # Delay active skills by 99 turns
 # [24] ESEndPath -> ESEndPath
 # end_turn
 # [25] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 16, target rnd 28
 # [26] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11111
 # [27] ESGravity -> Absolute Zero Summer
 # Player -100% HP
 # [28] ESAttackMultihit -> A blizzard rages

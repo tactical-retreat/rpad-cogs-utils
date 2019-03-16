@@ -52,6 +52,24 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
+  desc_en: Change 3rd column to Light orbs, Deal 150% damage
+  desc_jp: Change 3rd column to Light orbs, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Game over.
+  name_jp: Game over.
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 14
+  name_jp: HP <= 14
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
   desc_en: Reduce damage from all sources by 50% for 1 turns, Deal 100% damage
   desc_jp: Reduce damage from all sources by 50% for 1 turns, Deal 100% damage
   max_atk_pct: 100
@@ -69,34 +87,16 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 0
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 14
-  name_jp: HP <= 14
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change 3rd column to Light orbs, Deal 150% damage
-  desc_jp: Change 3rd column to Light orbs, Deal 150% damage
-  max_atk_pct: 150
-  name_en: Game over.
-  name_jp: Game over.
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 7
 # [3] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [4855, 4856], target rnd 5
 # [4] ESInactivity -> Actually, I kind of like that angle.
 # Condition: One-time use
 # Do nothing
@@ -107,11 +107,11 @@ records:
 # [6] ESEndPath -> ESEndPath
 # end_turn
 # [7] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 13
 # [8] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [9] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [4855, 4856], target rnd 11
 # [10] ESBindRandomSub -> Actually, I kind of like that angle.
 # Bind 1 random subs for 3 turns
 # [11] ESBindRandomSub -> I always thought you'd be the one
@@ -120,7 +120,7 @@ records:
 # [12] ESEndPath -> ESEndPath
 # end_turn
 # [13] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 15, target rnd 17
 # [14] ESDamageShield -> I'll consider this as your first mission.
 # Condition: 50% chance
 # Reduce damage from all sources by 50% for 1 turns

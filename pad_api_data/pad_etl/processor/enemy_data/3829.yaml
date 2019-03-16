@@ -75,11 +75,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESStatusShield -> Red Leopard Battle Armor
@@ -95,9 +95,9 @@ records:
 # 	[1] ESAttackMultihit -> Enturione
 # 	Enemy action
 # [7] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 4, target rnd 12
 # [8] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [9] ESBombRandomSpawn -> Baleful Crimson Sword
 # Condition: 50% chance
 # Spawn random 4 locked Bomb orbs
@@ -106,9 +106,9 @@ records:
 # [11] ESEndPath -> ESEndPath
 # end_turn
 # [12] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 9
 # [13] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [14] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESRowSpawnMulti -> Deadly Scorpion Poison

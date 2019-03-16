@@ -119,9 +119,9 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESDamageShield -> Flight
@@ -131,9 +131,9 @@ records:
 # Condition: One-time use
 # Player -80% HP
 # [6] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 3, target rnd 11
 # [7] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [8] ESAttackMultihit -> Swarm Tactics
 # Condition: 50% chance
 # Enemy action
@@ -142,9 +142,9 @@ records:
 # [10] ESEndPath -> ESEndPath
 # end_turn
 # [11] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [12] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [13] ESAttackUp -> Mindless Loyalty
 # Increase damage to 300% for the next 999 turns
 # [14] ESAttackMultihit -> All-Out Attack

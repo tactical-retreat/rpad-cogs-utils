@@ -33,17 +33,17 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 10
-  name_jp: Turn 10
+  name_en: Turn 2
+  name_jp: Turn 2
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Reduce damage from all sources by 75% for 999 turns
-  desc_jp: Reduce damage from all sources by 75% for 999 turns
+  desc_en: Increase damage to 500% for the next 99 turns
+  desc_jp: Increase damage to 500% for the next 99 turns
   max_atk_pct: null
-  name_en: Divine King's Lightning Cloak
-  name_jp: Divine King's Lightning Cloak
+  name_en: "Almighty Gods' Fighting Spirit\u200B"
+  name_jp: "Almighty Gods' Fighting Spirit\u200B"
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -53,42 +53,6 @@ records:
   max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 200% damage
-  desc_jp: Deal 200% damage
-  max_atk_pct: 200
-  name_en: Divine King's Imperial Lightning
-  name_jp: Divine King's Imperial Lightning
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Voids player buff effects + Enemy action
-  desc_jp: Voids player buff effects + Enemy action
-  max_atk_pct: null
-  name_en: Almighty Gods' Majesty + Divine King's Imperial Lightning
-  name_jp: Almighty Gods' Majesty + Divine King's Imperial Lightning
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 6
-  name_jp: HP <= 6
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -111,11 +75,11 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Increase damage to 500% for the next 99 turns
-  desc_jp: Increase damage to 500% for the next 99 turns
-  max_atk_pct: null
-  name_en: "Almighty Gods' Fighting Spirit\u200B"
-  name_jp: "Almighty Gods' Fighting Spirit\u200B"
+  desc_en: Deal 200% damage
+  desc_jp: Deal 200% damage
+  max_atk_pct: 200
+  name_en: Divine King's Imperial Lightning
+  name_jp: Divine King's Imperial Lightning
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -124,11 +88,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESStatusShield -> Protection of the Gods
@@ -142,13 +106,13 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 7, target rnd 21
 # [7] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 9, target rnd 17
 # [8] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [9] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 13
 # [10] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESChangeAttribute -> Divine King's Changing Cloak
@@ -160,9 +124,9 @@ records:
 # [12] ESEndPath -> ESEndPath
 # end_turn
 # [13] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 10
 # [14] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [15] SkillSet:
 # 	[0] ESDispel -> Almighty Gods' Majesty
 # 	Voids player buff effects
@@ -171,9 +135,9 @@ records:
 # [16] ESEndPath -> ESEndPath
 # end_turn
 # [17] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 10, target rnd 9
 # [18] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [19] ESDamageShield -> Divine King's Lightning Cloak
 # Reduce damage from all sources by 75% for 999 turns
 # [20] ESEndPath -> ESEndPath

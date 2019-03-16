@@ -29,26 +29,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Spawn random 3 Fire orbs, Deal 100% damage
-  desc_jp: Spawn random 3 Fire orbs, Deal 100% damage
-  max_atk_pct: 100
-  name_en: Dragon Flare
-  name_jp: Dragon Flare
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 39
-  name_jp: HP <= 39
+  name_en: Turn 1
+  name_jp: Turn 1
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -65,8 +47,26 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 39
-  name_jp: HP <= 39
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Spawn random 3 Fire orbs, Deal 100% damage
+  desc_jp: Spawn random 3 Fire orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Dragon Flare
+  name_jp: Dragon Flare
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -84,21 +84,21 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESAbsorbCombo -> Stop TAMA!
 # Condition: One-time use
 # Absorb combo <= 5 damage for 99 turns
 # [3] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 40, target rnd 6
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 9
 # [5] ESRandomSpawn -> Dragon Flare
 # Condition: When water, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board
 # Spawn random 3 Fire orbs
 # [6] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 9
 # [7] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [8] ESInactivity -> Draco Summon TAMA!
 # Do nothing
 # [9] ESRandomSpawn -> Meteo Flame

@@ -26,19 +26,6 @@ records:
   record_type_name: PREEMPT
   usage_pct: 0
 - !SkillRecord
-  desc_en: Do nothing
-  desc_jp: Do nothing
-  max_atk_pct: null
-  name_en: 'It''s been ages since
-
-    I was contracted for such a fight.'
-  name_jp: 'It''s been ages since
-
-    I was contracted for such a fight.'
-  one_time: false
-  record_type_name: PREEMPT
-  usage_pct: 100
-- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
@@ -73,6 +60,19 @@ records:
   one_time: false
   record_type_name: PREEMPT
   usage_pct: 0
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: 'It''s been ages since
+
+    I was contracted for such a fight.'
+  name_jp: 'It''s been ages since
+
+    I was contracted for such a fight.'
+  one_time: false
+  record_type_name: PREEMPT
+  usage_pct: 100
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
@@ -125,33 +125,6 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: 'Show message: First, let''s have a dry run.|I''ll start with 80 percent!'
-  desc_jp: 'Show message: First, let''s have a dry run.|I''ll start with 80 percent!'
-  max_atk_pct: null
-  name_en: "\u5909\u8EAB\uFF11\u56DE\u76EE\u6238\u611A\u5442\u5F1F"
-  name_jp: "\u5909\u8EAB\uFF11\u56DE\u76EE\u6238\u611A\u5442\u5F1F"
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 0
-- !SkillRecord
-  desc_en: Change 4th column to Jammer orbs, Deal 60% damage
-  desc_jp: Change 4th column to Jammer orbs, Deal 60% damage
-  max_atk_pct: 60
-  name_en: No. This does not involve you.
-  name_jp: No. This does not involve you.
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: Turn 4
   name_jp: Turn 4
   one_time: false
@@ -185,11 +158,11 @@ records:
   record_type_name: ACTION
   usage_pct: 0
 - !SkillRecord
-  desc_en: Deal 70% damage
-  desc_jp: Deal 70% damage
-  max_atk_pct: 70
-  name_en: I do not remember selling my character.
-  name_jp: I do not remember selling my character.
+  desc_en: Spawn random 5 Jammer orbs, Deal 100% damage
+  desc_jp: Spawn random 5 Jammer orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: I won't let anyone get in my way.
+  name_jp: I won't let anyone get in my way.
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -212,11 +185,38 @@ records:
   record_type_name: ACTION
   usage_pct: 0
 - !SkillRecord
-  desc_en: Spawn random 5 Jammer orbs, Deal 100% damage
-  desc_jp: Spawn random 5 Jammer orbs, Deal 100% damage
-  max_atk_pct: 100
-  name_en: I won't let anyone get in my way.
-  name_jp: I won't let anyone get in my way.
+  desc_en: Change 4th column to Jammer orbs, Deal 60% damage
+  desc_jp: Change 4th column to Jammer orbs, Deal 60% damage
+  max_atk_pct: 60
+  name_en: No. This does not involve you.
+  name_jp: No. This does not involve you.
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: 'Show message: First, let''s have a dry run.|I''ll start with 80 percent!'
+  desc_jp: 'Show message: First, let''s have a dry run.|I''ll start with 80 percent!'
+  max_atk_pct: null
+  name_en: "\u5909\u8EAB\uFF11\u56DE\u76EE\u6238\u611A\u5442\u5F1F"
+  name_jp: "\u5909\u8EAB\uFF11\u56DE\u76EE\u6238\u611A\u5442\u5F1F"
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: Deal 70% damage
+  desc_jp: Deal 70% damage
+  max_atk_pct: 70
+  name_en: I do not remember selling my character.
+  name_jp: I do not remember selling my character.
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -225,20 +225,20 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESDeathCry -> 変身１回目戸愚呂弟
 # Condition: On death
 # Show message: First, let's have a dry run.|I'll start with 80 percent!
 # [3] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 6
 # [4] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 3, target rnd 22
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 10
 # [7] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [8] SkillSet:
 # 	[0] ESInactivity -> It's been ages since
 # I was contracted for such a fight.
@@ -248,11 +248,11 @@ records:
 # [9] ESEndPath -> ESEndPath
 # end_turn
 # [10] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 3, target rnd 18
 # [11] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [12] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 20, target rnd 16
 # [13] ESColumnSpawnMulti -> No. This does not involve you.
 # Condition: One-time use
 # Change 4th column to Jammer orbs
@@ -266,17 +266,17 @@ records:
 # [17] ESEndPath -> ESEndPath
 # end_turn
 # [18] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 12
 # [19] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [20] ESAttackUp -> Muscle Manipulation
 # Increase damage to 160% for the next 99 turns
 # [21] ESEndPath -> ESEndPath
 # end_turn
 # [22] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 25
 # [23] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [24] ESInactivity -> It's been ages since
 # I was contracted for such a fight.
 # Do nothing

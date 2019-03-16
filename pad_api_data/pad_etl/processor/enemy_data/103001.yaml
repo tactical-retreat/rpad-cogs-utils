@@ -74,15 +74,15 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] SkillSet:
 # 	[0] ESSkillDelay -> Which one of you will be my opponent?
 # 	Delay active skills by 2 turns
@@ -93,13 +93,13 @@ records:
 # [8] ESOrbChangeAttack -> Sea Punishment
 # Change Jammer to Poison
 # [9] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 19
 # [10] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 15
 # [11] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [12] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [2143, 2144, 2971], target rnd 14
 # [13] SkillSet:
 # 	[0] ESStatusShield -> Sea Dragon God's Protection
 # 	Voids status ailments for 999 turns
@@ -111,9 +111,9 @@ records:
 # 	[1] ESOrbChangeAttack -> Dimension-Curse of the Sacred Waters
 # 	Change Random to Heal
 # [15] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [16] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [2143, 2144, 2971], target rnd 18
 # [17] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESStatusShield -> Sea Dragon God's Protection
@@ -137,14 +137,14 @@ records:
 # Condition: When < 20% hp
 # Enemy action
 # [21] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 24
 # [22] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [23] ESRandomSpawn -> Blue Life Calm Waves
 # Condition: When fire, wood, light, dark, poison, mortal poison orbs are on the board
 # Spawn random 3 Water, Heal orbs
 # [24] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b100
 # [25] ESRandomSpawn -> Blue Dust Raging Wave
 # Condition: When fire, wood, light, dark, poison, mortal poison orbs are on the board
 # Spawn random 3 Water, Jammer orbs

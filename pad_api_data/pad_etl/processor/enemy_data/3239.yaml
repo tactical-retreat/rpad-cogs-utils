@@ -49,18 +49,18 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 3
-  name_jp: Turn 3
+  name_en: Turn 1
+  name_jp: Turn 1
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Absorb combo <= 7 damage for 99 turns
-  desc_jp: Absorb combo <= 7 damage for 99 turns
+  desc_en: Enemy recover 50% hp + Reduce damage from all sources by 75% for 99 turns
+  desc_jp: Enemy recover 50% hp + Reduce damage from all sources by 75% for 99 turns
   max_atk_pct: null
-  name_en: Novice
-  name_jp: Novice
-  one_time: false
+  name_en: How regrettable + Finally, you will struggle
+  name_jp: How regrettable + Finally, you will struggle
+  one_time: true
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -73,44 +73,6 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change Poison to Mortal Poison, Deal 150% damage
-  desc_jp: Change Poison to Mortal Poison, Deal 150% damage
-  max_atk_pct: 150
-  name_en: Chaostrom
-  name_jp: Chaostrom
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Reduce damage from all sources by 50% for 99 turns + Movetime 50% for 10
-    turns
-  desc_jp: Reduce damage from all sources by 50% for 99 turns + Movetime 50% for 10
-    turns
-  max_atk_pct: null
-  name_en: Finally, you will struggle... + Prepare yourself!
-  name_jp: Finally, you will struggle... + Prepare yourself!
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Deal 1000% damage (5 hits, 200% each)
   desc_jp: Deal 1000% damage (5 hits, 200% each)
   max_atk_pct: 1000
@@ -119,12 +81,30 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 0
+  name_jp: HP <= 0
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Poison to Mortal Poison, Deal 150% damage
+  desc_jp: Change Poison to Mortal Poison, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Chaostrom
+  name_jp: Chaostrom
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESStatusShield -> That's a good look
@@ -134,13 +114,13 @@ records:
 # 	[2] ESSkillDelay -> Darkstrom
 # 	Delay active skills by 3 turns
 # [3] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 1, target rnd 11
 # [4] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 12
 # [5] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 2, target rnd 15
 # [6] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [7] ESOrbChangeAttackBits -> Chaostrom
 # Change Poison to Mortal Poison
 # [8] ESRandomSpawn -> Abysstrom
@@ -168,9 +148,9 @@ records:
 # [14] ESEndPath -> ESEndPath
 # end_turn
 # [15] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 3, target rnd 7
 # [16] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [17] ESAbsorbCombo -> Novice
 # Absorb combo <= 7 damage for 99 turns
 # [18] ESEndPath -> ESEndPath

@@ -129,11 +129,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 5
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESStatusShield -> To think it would come to this....
 # 	Voids status ailments for 10 turns
@@ -152,14 +152,14 @@ records:
 # Condition: When < 15% hp
 # Enemy action
 # [9] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 12
 # [10] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [11] ESRandomSpawn -> Luft Schwert
 # Condition: When fire, water, wood, light, dark, jammer, poison, mortal poison orbs are on the board
 # Spawn random 4 Heal orbs
 # [12] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b10
 # [13] ESRandomSpawn -> Gewitter Klinge
 # Condition: 50% chance & when Heal orbs are on the board
 # Change all orbs to Jammer

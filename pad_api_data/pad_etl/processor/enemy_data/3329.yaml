@@ -126,11 +126,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESStatusShield -> Antibodies
 # 	Voids status ailments for 999 turns
@@ -160,9 +160,9 @@ records:
 # 	[1] ESOrbSealRow -> Forbidden Area
 # 	Seal 1st, 5th row for 1 turns
 # [10] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 15
 # [11] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [12] SkillSet:
 # 	Condition: 50% chance
 # 	[0] ESAbsorbCombo -> Multiple Walls
@@ -177,7 +177,7 @@ records:
 # [14] ESEndPath -> ESEndPath
 # end_turn
 # [15] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b10
 # [16] ESLeaderSwap -> Hypno Pursuit
 # Leader changes to random sub for 1 turns
 # [17] ESBindAwoken -> Helpless Suggestion

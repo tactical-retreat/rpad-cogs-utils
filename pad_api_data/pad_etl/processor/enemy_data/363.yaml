@@ -57,6 +57,24 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
+  desc_en: Movetime -1s for 7 turns + Player -99% HP
+  desc_jp: Movetime -1s for 7 turns + Player -99% HP
+  max_atk_pct: null
+  name_en: Skilfing + Hnikar
+  name_jp: Skilfing + Hnikar
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 99
+  name_jp: HP <= 99
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
   desc_en: Enemy action + Enemy recover 10% hp
   desc_jp: Enemy action + Enemy recover 10% hp
   max_atk_pct: null
@@ -105,24 +123,6 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Movetime -1s for 7 turns + Player -99% HP
-  desc_jp: Movetime -1s for 7 turns + Player -99% HP
-  max_atk_pct: null
-  name_en: Skilfing + Hnikar
-  name_jp: Skilfing + Hnikar
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 15
   name_jp: HP <= 15
   one_time: false
@@ -142,11 +142,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESDamageShield -> Garment of Protection
 # 	Reduce damage from all sources by 80% for 1 turns
@@ -155,9 +155,9 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 100, target rnd 20
 # [7] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 14
 # [8] ESAttackMultihit -> Vak Sigfodr
 # Condition: When < 15% hp
 # Enemy action
@@ -181,11 +181,11 @@ records:
 # [13] ESEndPath -> ESEndPath
 # end_turn
 # [14] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 8
 # [15] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [16] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [2640, 2641, 2899, 2900], target rnd 18
 # [17] SkillSet:
 # 	[0] ESDebuffMovetime -> Skilfing
 # 	Movetime -1s for 7 turns

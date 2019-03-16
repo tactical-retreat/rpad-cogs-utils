@@ -285,9 +285,9 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 7, target rnd 4
 # [3] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESAbsorbCombo -> Burning Flame
@@ -319,9 +319,9 @@ records:
 # Condition: One-time use
 # Blind all orbs on the board
 # [10] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 16
 # [11] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [12] ESAttackUp -> Heat Up
 # Condition: When < 50% hp
 # Increase damage to 150% for the next 999 turns
@@ -334,9 +334,9 @@ records:
 # [15] ESOrbChangeAttack -> Crushing Claw
 # Change Random to Jammer
 # [16] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 21
 # [17] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [18] ESAttackUp -> Heat Up
 # Condition: When < 50% hp
 # Increase damage to 150% for the next 999 turns
@@ -346,7 +346,7 @@ records:
 # [20] ESOrbLock -> Element Hold
 # Lock 7 random Fire, Water, Wood, Light, Dark, Heal orbs
 # [21] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b11
 # [22] ESAttackUp -> Heat Up
 # Condition: When < 50% hp
 # Increase damage to 150% for the next 999 turns

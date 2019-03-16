@@ -160,11 +160,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESBlindStickyFixed -> Dark Night of the Witches
 # 	Blind orbs in specific positions for 10 turns
@@ -173,29 +173,29 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 9
 # [7] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [8] ESRowSpawnMulti -> Moonlight Scythe
 # Change 5th row to Light orbs
 # [9] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 12
 # [10] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [11] ESRowSpawnMulti -> Moonlight Scythe
 # Change 3rd row to Light orbs
 # [12] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 8, target rnd 15
 # [13] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1111
 # [14] ESRowSpawnMulti -> Moonlight Scythe
 # Change 1st row to Light orbs
 # [15] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 16, target rnd 20
 # [16] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11111
 # [17] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 100, target rnd 19
 # [18] SkillSet:
 # 	[0] ESSkyfall -> Hahaha! Now you're talking!
 # 	Poison skyfall +10% for 10 turns

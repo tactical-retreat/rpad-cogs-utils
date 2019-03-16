@@ -29,8 +29,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
+  name_en: HP <= 49
+  name_jp: HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -47,8 +47,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: HP <= 49
+  name_jp: HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -65,8 +65,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Execute below actions in order repeatedly
+  name_jp: Execute below actions in order repeatedly
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -78,15 +78,6 @@ records:
   name_jp: Crimson Imperial Blade
   one_time: false
   record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
   desc_en: Deal 100% damage (2 hits, 50% each)
@@ -102,17 +93,17 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESStatusShield -> Hero's Armor
 # Voids status ailments for 5 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 11
 # [7] ESRandomSpawn -> Wolf Ash
 # Condition: One-time use & when Fire, Water, Wood, Light, Dark, Poison, Mortal Poison orbs are on the board
 # Spawn random 8 Jammer orbs
@@ -125,12 +116,12 @@ records:
 # Condition: When fire, water, light, dark, poison, mortal poison orbs are on the board
 # Spawn random 3 Wood orbs
 # [11] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 14
 # [12] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [13] ESGravity -> Crimson Imperial Blade
 # Player -99% HP
 # [14] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b10
 # [15] ESAttackMultihit -> Cut off the World
 # Enemy action

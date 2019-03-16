@@ -56,6 +56,33 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 150% damage (3 hits, 50% each)
+  desc_jp: Deal 150% damage (3 hits, 50% each)
+  max_atk_pct: 150
+  name_en: Beetle Combo
+  name_jp: Beetle Combo
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  max_atk_pct: null
+  name_en: Gigantic Blow
+  name_jp: Gigantic Blow
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -145,6 +172,33 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 150% damage (3 hits, 50% each)
+  desc_jp: Deal 150% damage (3 hits, 50% each)
+  max_atk_pct: 150
+  name_en: Beetle Combo
+  name_jp: Beetle Combo
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  max_atk_pct: null
+  name_en: Gigantic Blow
+  name_jp: Gigantic Blow
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -191,31 +245,31 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 5
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 10, target rnd 9
 # [3] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 5, target rnd 5
 # [4] ESEndPath -> ESEndPath
 # end_turn
 # [5] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 13
 # [6] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [7] ESAbsorbCombo -> Insect Dragon's Chitin
 # Absorb combo <= 3 damage for 5 turns
 # [8] ESEndPath -> ESEndPath
 # end_turn
 # [9] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 13
 # [10] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [11] ESAbsorbCombo -> Insect Dragon's Steel Chitin
 # Absorb combo <= 4 damage for 10 turns
 # [12] ESEndPath -> ESEndPath
 # end_turn
 # [13] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 19
 # [14] ESAttackMultihit -> Buster Horn
 # Condition: When < 25% hp
 # Enemy action
@@ -230,9 +284,9 @@ records:
 # [18] ESEndPath -> ESEndPath
 # end_turn
 # [19] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 14
 # [20] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [21] ESAttackUp -> Insect Beat
 # Increase damage to 200% for the next 6 turns
 # [22] ESEndPath -> ESEndPath

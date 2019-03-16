@@ -29,8 +29,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: HP <= 49
+  name_jp: HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -43,65 +43,16 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Bind 1 both leaders for 1 turns + Increase damage to 200% for the next
-    999 turns
-  desc_jp: Bind 1 both leaders for 1 turns + Increase damage to 200% for the next
-    999 turns
-  max_atk_pct: null
-  name_en: Can you wait a little bit please? + Grrrrr...
-  name_jp: Can you wait a little bit please? + Grrrrr...
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Reduce damage from all sources by 50% for 1 turns + Enemy action
-  desc_jp: Reduce damage from all sources by 50% for 1 turns + Enemy action
-  max_atk_pct: null
-  name_en: Dark Heat Bulwark + Beast Attack
-  name_jp: Dark Heat Bulwark + Beast Attack
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 20
-  name_jp: HP <= 20
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change 1st, 2nd, 3rd, 4th, 5th row to Fire, Dark, Jammer, Poison orbs +
-    Enemy action
-  desc_jp: Change 1st, 2nd, 3rd, 4th, 5th row to Fire, Dark, Jammer, Poison orbs +
-    Enemy action
-  max_atk_pct: null
-  name_en: Crows of Sorrow + Beast Last Attack
-  name_jp: Crows of Sorrow + Beast Last Attack
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESStatusShield -> OK! I'm ready now
 # 	Voids status ailments for 999 turns
@@ -110,7 +61,7 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 10
 # [7] ESOrbChangeAttack -> Rose Burst
 # Change Jammer to Fire
 # [8] SkillSet:
@@ -125,9 +76,9 @@ records:
 # 	[1] ESAttackMultihit -> Beast Attack
 # 	Enemy action
 # [10] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 13
 # [11] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [12] SkillSet:
 # 	Condition: When < 50% hp
 # 	[0] ESBindTarget -> Can you wait a little bit please?

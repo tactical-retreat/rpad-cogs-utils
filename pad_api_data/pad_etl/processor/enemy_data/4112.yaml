@@ -48,8 +48,26 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change 6th column to Dark orbs + Change 1st column to Dark orbs
+  desc_jp: Change 6th column to Dark orbs + Change 1st column to Dark orbs
+  max_atk_pct: null
+  name_en: Gigantic Pressure + Die!
+  name_jp: Gigantic Pressure + Die!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -66,80 +84,26 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Spawn random 3 Dark orbs, Deal 100% damage
-  desc_jp: Spawn random 3 Dark orbs, Deal 100% damage
-  max_atk_pct: 100
-  name_en: Genocide Cutter
-  name_jp: Genocide Cutter
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 50
-- !SkillRecord
-  desc_en: Deal 90% damage (6 hits, 15% each)
-  desc_jp: Deal 90% damage (6 hits, 15% each)
-  max_atk_pct: 90
-  name_en: Vanishing Rush
-  name_jp: Vanishing Rush
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 130% damage
-  desc_jp: Deal 130% damage
-  max_atk_pct: 130
-  name_en: Destruction Omega
-  name_jp: Destruction Omega
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 20
-- !SkillRecord
-  desc_en: Spawn random 3 Dark orbs, Deal 100% damage
-  desc_jp: Spawn random 3 Dark orbs, Deal 100% damage
-  max_atk_pct: 100
-  name_en: Genocide Cutter
-  name_jp: Genocide Cutter
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 50
-- !SkillRecord
-  desc_en: Deal 90% damage (6 hits, 15% each)
-  desc_jp: Deal 90% damage (6 hits, 15% each)
-  max_atk_pct: 90
-  name_en: Vanishing Rush
-  name_jp: Vanishing Rush
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 19
   name_jp: HP <= 19
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change 6th column to Dark orbs + Change 1st column to Dark orbs
-  desc_jp: Change 6th column to Dark orbs + Change 1st column to Dark orbs
-  max_atk_pct: null
-  name_en: Gigantic Pressure + Die!
-  name_jp: Gigantic Pressure + Die!
+  desc_en: Spawn random 3 Dark orbs, Deal 100% damage
+  desc_jp: Spawn random 3 Dark orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Genocide Cutter
+  name_jp: Genocide Cutter
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Deal 90% damage (6 hits, 15% each)
+  desc_jp: Deal 90% damage (6 hits, 15% each)
+  max_atk_pct: 90
+  name_en: Vanishing Rush
+  name_jp: Vanishing Rush
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -148,17 +112,17 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 5
 # [3] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 1, target rnd 22
 # [4] ESEndPath -> ESEndPath
 # end_turn
 # [5] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 9
 # [6] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [7] SkillSet:
 # 	[0] ESStatusShield -> Ooowah!
 # 	Voids status ailments for 999 turns
@@ -167,9 +131,9 @@ records:
 # [8] ESEndPath -> ESEndPath
 # end_turn
 # [9] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 20, target rnd 20
 # [10] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 15
 # [11] ESVoidShield -> Gravity Smash
 # Condition: One-time use
 # Void damage >= 1000000 for 1 turns
@@ -201,9 +165,9 @@ records:
 # [21] ESEndPath -> ESEndPath
 # end_turn
 # [22] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 25
 # [23] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [24] SkillSet:
 # 	[0] ESInactivity -> Ooowah!
 # 	Do nothing

@@ -66,8 +66,26 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 900% damage (3 hits, 300% each)
+  desc_jp: Deal 900% damage (3 hits, 300% each)
+  max_atk_pct: 900
+  name_en: Throw me some more Magic Stones!
+  name_jp: Throw me some more Magic Stones!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 79
+  name_jp: HP <= 79
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -84,8 +102,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: HP <= 79
+  name_jp: HP <= 79
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -98,95 +116,23 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 79
-  name_jp: HP <= 79
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Do nothing + Change all orbs to Fire, Dark, Heal
-  desc_jp: Do nothing + Change all orbs to Fire, Dark, Heal
-  max_atk_pct: null
-  name_en: It's putting some back into it + Draco Nesting Circle - Dk, Fr & Life
-  name_jp: It's putting some back into it + Draco Nesting Circle - Dk, Fr & Life
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 0
-- !SkillRecord
-  desc_en: Do nothing + Change all orbs to Water, Dark, Heal
-  desc_jp: Do nothing + Change all orbs to Water, Dark, Heal
-  max_atk_pct: null
-  name_en: It's putting some back into it + Draco Nesting Circle - Dk, Wt & Life
-  name_jp: It's putting some back into it + Draco Nesting Circle - Dk, Wt & Life
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 0
-- !SkillRecord
-  desc_en: Do nothing + Change all orbs to Wood, Dark, Heal
-  desc_jp: Do nothing + Change all orbs to Wood, Dark, Heal
-  max_atk_pct: null
-  name_en: It's putting some back into it + Draco Nesting Circle - Dk, Wd & Life
-  name_jp: It's putting some back into it + Draco Nesting Circle - Dk, Wd & Life
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 0
-- !SkillRecord
-  desc_en: Do nothing + Change all orbs to Light, Dark, Heal
-  desc_jp: Do nothing + Change all orbs to Light, Dark, Heal
-  max_atk_pct: null
-  name_en: It's putting some back into it + Draco Nesting Circle - Dk, Lt & Life
-  name_jp: It's putting some back into it + Draco Nesting Circle - Dk, Lt & Life
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 0
-- !SkillRecord
-  desc_en: Do nothing + Change all orbs to Dark, Heal, Jammer
-  desc_jp: Do nothing + Change all orbs to Dark, Heal, Jammer
-  max_atk_pct: 150
-  name_en: It's putting some back into it + Draco Nesting Circle - Dk, Demon & Life
-  name_jp: It's putting some back into it + Draco Nesting Circle - Dk, Demon & Life
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 0
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 14
-  name_jp: HP <= 14
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 900% damage (3 hits, 300% each)
-  desc_jp: Deal 900% damage (3 hits, 300% each)
-  max_atk_pct: 900
-  name_en: Throw me some more Magic Stones!
-  name_jp: Throw me some more Magic Stones!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 2, target rnd 5
 # [3] ESDamageShield -> I love dragons!
 # Condition: One-time use
 # Reduce damage from all sources by 50% for 99 turns
 # [4] ESAttackMultihit -> Dragon REM Punch!
 # Enemy action
 # [5] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 9
 # [6] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [7] SkillSet:
 # 	[0] ESBlindStickyFixed -> I love dragons!
 # 	Blind orbs in specific positions for 1 turns
@@ -197,11 +143,11 @@ records:
 # [8] ESEndPath -> ESEndPath
 # end_turn
 # [9] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 80, target rnd 15
 # [10] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 13
 # [11] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [12] ESDamageShield -> Pull it!
 # Reduce damage from all sources by 50% for 1 turns
 # [13] ESDamageShield -> Come on! Pull!
@@ -209,7 +155,7 @@ records:
 # [14] ESEndPath -> ESEndPath
 # end_turn
 # [15] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 15, target rnd 22
 # [16] SkillSet:
 # 	Condition: 20% chance
 # 	[0] ESInactivity -> It's putting some back into it

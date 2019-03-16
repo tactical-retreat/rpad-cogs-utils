@@ -183,14 +183,14 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESDeathCry -> Light Robot Transformation
 # Condition: On death
 # Show message: Generator started|Attribute energy increasing
 # [3] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 7
 # [4] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [5] ESRecoverPlayer -> Heilung Licht
 # Player recover 100% hp
 # [6] ESEndPath -> ESEndPath
@@ -202,14 +202,14 @@ records:
 # Condition: When < 10% hp
 # Change 3rd, 4th column to Light orbs
 # [9] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 12
 # [10] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [11] ESRandomSpawn -> Angriff
 # Condition: When fire, water, wood, light, dark, jammer, poison, mortal poison orbs are on the board
 # Spawn random 3 Heal orbs
 # [12] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b10
 # [13] ESAbsorbAttribute -> Verteidigung
 # Condition: 20% chance
 # Absorb Fire damage for 2 turns

@@ -146,15 +146,15 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 5
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 5, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] SkillSet:
 # 	[0] ESStatusShield -> Tenka Gomen
 # 	Voids status ailments for 999 turns
@@ -169,7 +169,7 @@ records:
 # Condition: When < 30% hp
 # Enemy action
 # [10] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 80, target rnd 15
 # [11] ESBlind -> Grand Smokescreen
 # Condition: 33% chance
 # Blind all orbs on the board

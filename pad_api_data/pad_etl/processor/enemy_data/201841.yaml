@@ -55,6 +55,24 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
+  desc_en: Player -99% HP + Bind active skills for 10 turns
+  desc_jp: Player -99% HP + Bind active skills for 10 turns
+  max_atk_pct: null
+  name_en: Flare Tick Explosion + Sea King's Eye
+  name_jp: Flare Tick Explosion + Sea King's Eye
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 89
+  name_jp: HP <= 89
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
   desc_en: Deal 150% damage (3 hits, 50% each)
   desc_jp: Deal 150% damage (3 hits, 50% each)
   max_atk_pct: 150
@@ -72,42 +90,6 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 0
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 65
-  name_jp: HP <= 65
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Absorb Wood damage for 3 turns
-  desc_jp: Absorb Wood damage for 3 turns
-  max_atk_pct: null
-  name_en: Anti-Plant
-  name_jp: Anti-Plant
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Player -99% HP + Bind active skills for 10 turns
-  desc_jp: Player -99% HP + Bind active skills for 10 turns
-  max_atk_pct: null
-  name_en: Flare Tick Explosion + Sea King's Eye
-  name_jp: Flare Tick Explosion + Sea King's Eye
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
@@ -149,13 +131,13 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [2442, 2443, 3768, 3769, 4812], target rnd 6
 # [5] SkillSet:
 # 	[0] ESStatusShield -> Are thou worthy of mine power?
 # 	Voids status ailments for 999 turns
@@ -178,11 +160,11 @@ records:
 # Condition: When < 20% hp
 # Enemy action
 # [10] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 90, target rnd 16
 # [11] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 18
 # [12] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 65, target rnd 25
 # [13] ESAttackMultihit -> Vortex Breath
 # Condition: 50% chance
 # Enemy action
@@ -196,13 +178,13 @@ records:
 # [17] ESAttackMultihit -> Vortex Breath
 # Enemy action
 # [18] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 12
 # [19] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [20] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [1948, 1949], target rnd 23
 # [21] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [2442, 2443], target rnd 24
 # [22] SkillSet:
 # 	[0] ESGravity -> Flare Tick Explosion
 # 	Player -99% HP
@@ -219,11 +201,11 @@ records:
 # 	[1] ESBindSkill -> Sea King's Eye
 # 	Bind active skills for 10 turns
 # [25] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 13
 # [26] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [27] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 29
 # [28] ESAttackMultihit -> Vortex Breath
 # Enemy action
 # [29] ESAbsorbAttribute -> Anti-Plant

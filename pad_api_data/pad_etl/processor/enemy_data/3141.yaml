@@ -29,26 +29,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 80%~120% damage (2~3 hits, 40% each)
-  desc_jp: Deal 80%~120% damage (2~3 hits, 40% each)
-  max_atk_pct: 120
-  name_en: Muscle Revenger
-  name_jp: Muscle Revenger
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 1
+  name_jp: Turn 1
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -65,8 +47,26 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 80%~120% damage (2~3 hits, 40% each)
+  desc_jp: Deal 80%~120% damage (2~3 hits, 40% each)
+  max_atk_pct: 120
+  name_en: Muscle Revenger
+  name_jp: Muscle Revenger
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -83,8 +83,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 3
+  name_jp: Turn 3
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -101,8 +101,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 4
+  name_jp: Turn 4
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -119,8 +119,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 5
+  name_jp: Turn 5
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -137,8 +137,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 6
+  name_jp: Turn 6
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -155,8 +155,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 7
+  name_jp: Turn 7
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -173,8 +173,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -192,15 +192,15 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 9
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] ESOrbLock -> Senton Quebradora
 # Lock all Fire orbs
 # [7] ESAttackMultihit -> Senton Quebradora
@@ -208,17 +208,17 @@ records:
 # [8] ESEndPath -> ESEndPath
 # end_turn
 # [9] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 15
 # [10] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 13
 # [11] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [12] ESAttackMultihit -> Muscle Revenger
 # Enemy action
 # [13] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 24
 # [14] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [15] ESAbsorbAttribute -> Moctezuma Defense
 # Condition: One-time use
 # Absorb Fire damage for 3 turns
@@ -246,10 +246,10 @@ records:
 # [23] ESEndBattle -> Divine Retribution
 # Reduce self HP to 0
 # [24] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [25] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [3132, 3133], target rnd 27
 # [26] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 15
 # [27] ESInactivity -> Well played, Robin Mask!
 # Do nothing

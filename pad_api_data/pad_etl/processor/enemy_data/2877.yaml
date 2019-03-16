@@ -79,6 +79,24 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
+  desc_en: Absorb Wood damage for 1 turns + Change 2nd, 4th row to Wood, Jammer orbs
+  desc_jp: Absorb Wood damage for 1 turns + Change 2nd, 4th row to Wood, Jammer orbs
+  max_atk_pct: null
+  name_en: Storm Hawk Dragon's Trial + Splitting Storm Wind
+  name_jp: Storm Hawk Dragon's Trial + Splitting Storm Wind
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
   desc_en: Increase damage to 200% for the next 1 turns
   desc_jp: Increase damage to 200% for the next 1 turns
   max_atk_pct: null
@@ -93,6 +111,60 @@ records:
   max_atk_pct: null
   name_en: Turn 1
   name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy recover 50% hp + Increase damage to 200% for the next 1 turns
+  desc_jp: Enemy recover 50% hp + Increase damage to 200% for the next 1 turns
+  max_atk_pct: null
+  name_en: Overcoming Will + Raising Flap
+  name_jp: Overcoming Will + Raising Flap
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy recover 50% hp + Increase damage to 200% for the next 1 turns
+  desc_jp: Enemy recover 50% hp + Increase damage to 200% for the next 1 turns
+  max_atk_pct: null
+  name_en: Overcoming Will + Raising Flap
+  name_jp: Overcoming Will + Raising Flap
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 1 turns
+  desc_jp: Increase damage to 200% for the next 1 turns
+  max_atk_pct: null
+  name_en: Raising Flap
+  name_jp: Raising Flap
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -145,24 +217,6 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Absorb Wood damage for 1 turns + Change 2nd, 4th row to Wood, Jammer orbs
-  desc_jp: Absorb Wood damage for 1 turns + Change 2nd, 4th row to Wood, Jammer orbs
-  max_atk_pct: null
-  name_en: Storm Hawk Dragon's Trial + Splitting Storm Wind
-  name_jp: Storm Hawk Dragon's Trial + Splitting Storm Wind
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 20
   name_jp: HP <= 20
   one_time: false
@@ -182,15 +236,15 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] SkillSet:
 # 	[0] ESStatusShield -> I don't care about your hopes!
 # 	Voids status ailments for 5 turns
@@ -211,13 +265,13 @@ records:
 # 	[1] ESBoardChangeAttackBits -> Storm Lightning
 # 	Change all orbs to Wood, Light, Heal
 # [10] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 20
 # [11] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 16
 # [12] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [13] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [2508, 2509], target rnd 15
 # [14] ESAttackUp -> Raising Flap
 # Condition: One-time use
 # Increase damage to 200% for the next 1 turns
@@ -237,9 +291,9 @@ records:
 # Condition: When fire, water, light, dark, heal, jammer, poison, mortal poison orbs are on the board
 # Spawn random 8 Wood orbs
 # [20] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 11
 # [21] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [22] SkillSet:
 # 	[0] ESAbsorbAttribute -> Storm Hawk Dragon's Trial
 # 	Absorb Wood damage for 1 turns

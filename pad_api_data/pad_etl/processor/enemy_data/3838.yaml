@@ -53,132 +53,6 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Voids status ailments for 999 turns + Bind 1 subs for 4 turns
-  desc_jp: Voids status ailments for 999 turns + Bind 1 subs for 4 turns
-  max_atk_pct: null
-  name_en: White Scales + Lightning Release
-  name_jp: White Scales + Lightning Release
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 3
-  name_jp: Turn 3
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Voids status ailments for 999 turns + Bind 1 subs for 5 turns
-  desc_jp: Voids status ailments for 999 turns + Bind 1 subs for 5 turns
-  max_atk_pct: null
-  name_en: White Scales + Lightning Release
-  name_jp: White Scales + Lightning Release
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 4
-  name_jp: Turn 4
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Voids status ailments for 999 turns + Bind 1 subs for 6 turns
-  desc_jp: Voids status ailments for 999 turns + Bind 1 subs for 6 turns
-  max_atk_pct: null
-  name_en: White Scales + Lightning Release
-  name_jp: White Scales + Lightning Release
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 5
-  name_jp: Turn 5
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Voids status ailments for 999 turns + Bind 1 subs for 7 turns
-  desc_jp: Voids status ailments for 999 turns + Bind 1 subs for 7 turns
-  max_atk_pct: null
-  name_en: White Scales + Lightning Release
-  name_jp: White Scales + Lightning Release
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 180% damage (2 hits, 90% each)
-  desc_jp: Deal 180% damage (2 hits, 90% each)
-  max_atk_pct: 180
-  name_en: Swift Stabbing Claws
-  name_jp: Swift Stabbing Claws
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Voids status ailments for 999 turns + Bind 1 subs for 8 turns
-  desc_jp: Voids status ailments for 999 turns + Bind 1 subs for 8 turns
-  max_atk_pct: null
-  name_en: White Scales + Lightning Release
-  name_jp: White Scales + Lightning Release
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 270% damage (3 hits, 90% each)
-  desc_jp: Deal 270% damage (3 hits, 90% each)
-  max_atk_pct: 270
-  name_en: Flashing Swift Stabbing Claws
-  name_jp: Flashing Swift Stabbing Claws
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Bind 3 subs for 4 turns, Deal 1000% damage
   desc_jp: Bind 3 subs for 4 turns, Deal 1000% damage
   max_atk_pct: 1000
@@ -191,8 +65,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -205,20 +79,38 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 180% damage (2 hits, 90% each)
+  desc_jp: Deal 180% damage (2 hits, 90% each)
+  max_atk_pct: 180
+  name_en: Swift Stabbing Claws
+  name_jp: Swift Stabbing Claws
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] SkillSet:
 # 	[0] ESAbsorbAttribute -> Electrified Golden Fur
 # 	Absorb Light damage for 5 turns
@@ -227,25 +119,25 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 11
 # [9] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [10] ESAttackMultihit -> Swift Stabbing Claws
 # Enemy action
 # [11] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 25
 # [12] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [13] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 5, target rnd 23
 # [14] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 4, target rnd 22
 # [15] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 3, target rnd 21
 # [16] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 2, target rnd 20
 # [17] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 1, target rnd 19
 # [18] SkillSet:
 # 	[0] ESStatusShield -> White Scales
 # 	Voids status ailments for 999 turns
@@ -279,7 +171,7 @@ records:
 # [24] ESEndPath -> ESEndPath
 # end_turn
 # [25] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 10, target rnd 27
 # [26] ESAttackMultihit -> Flashing Swift Stabbing Claws
 # Condition: One-time use
 # Enemy action

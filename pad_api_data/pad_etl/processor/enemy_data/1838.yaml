@@ -55,6 +55,51 @@ records:
   record_type_name: ACTION
   usage_pct: 0
 - !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: 'Show message: Ohhhh!! I....can still....shiiiine!!!'
+  desc_jp: 'Show message: Ohhhh!! I....can still....shiiiine!!!'
+  max_atk_pct: null
+  name_en: Gainaut Transform
+  name_jp: Gainaut Transform
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: Delay active skills by 2 turns, Deal 75% damage
+  desc_jp: Delay active skills by 2 turns, Deal 75% damage
+  max_atk_pct: 75
+  name_en: Burning Cannon
+  name_jp: Burning Cannon
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: 'Show message: Ohhhh!! I....can still....shiiiine!!!'
+  desc_jp: 'Show message: Ohhhh!! I....can still....shiiiine!!!'
+  max_atk_pct: null
+  name_en: Gainaut Transform
+  name_jp: Gainaut Transform
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
   desc_en: Delay active skills by 2 turns, Deal 75% damage
   desc_jp: Delay active skills by 2 turns, Deal 75% damage
   max_atk_pct: 75
@@ -103,24 +148,6 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: 'Show message: Ohhhh!! I....can still....shiiiine!!!'
-  desc_jp: 'Show message: Ohhhh!! I....can still....shiiiine!!!'
-  max_atk_pct: null
-  name_en: Gainaut Transform
-  name_jp: Gainaut Transform
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 0
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 20
   name_jp: HP <= 20
   one_time: false
@@ -135,19 +162,37 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: 'Show message: Ohhhh!! I....can still....shiiiine!!!'
+  desc_jp: 'Show message: Ohhhh!! I....can still....shiiiine!!!'
+  max_atk_pct: null
+  name_en: Gainaut Transform
+  name_jp: Gainaut Transform
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESDeathCry -> Gainaut Transform
 # Condition: On death
 # Show message: Ohhhh!! I....can still....shiiiine!!!
 # [3] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 7
 # [4] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [5] SkillSet:
 # 	[0] ESDamageShield -> You have guts to point your sword at me!
 # 	Reduce damage from all sources by 35% for 3 turns
@@ -159,7 +204,7 @@ records:
 # Condition: When < 20% hp
 # Enemy action
 # [8] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 12
 # [9] ESSkillDelay -> Burning Cannon
 # Condition: One-time use
 # Delay active skills by 2 turns
@@ -169,8 +214,8 @@ records:
 # [11] ESAttackMultihit -> Fire Prison
 # Enemy action
 # [12] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 9
 # [13] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [14] ESAttackUp -> Guooohhh!! I won't forgive you!!
 # Increase damage to 200% for the next 999 turns

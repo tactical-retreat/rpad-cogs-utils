@@ -84,39 +84,39 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] ESPoisonChangeRandom -> Suffer...
 # Change Random 2 to Poison
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 13
 # [9] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 15
 # [10] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [11] ESAttackUp -> Demon Solo
 # Increase damage to 300% for the next 999 turns
 # [12] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b10
 # [13] ESPoisonChangeRandomAttack -> Poisonous Sanshin
 # Condition: One-time use
 # Change Random 3 to Poison
 # [14] ESEndPath -> ESEndPath
 # end_turn
 # [15] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [16] ESSkyfall -> Resonating Darkness
 # Dark skyfall +15% for 10 turns
 # [17] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 13
 # [18] ESEndPath -> ESEndPath
 # end_turn

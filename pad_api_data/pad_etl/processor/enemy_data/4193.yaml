@@ -20,26 +20,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Player -50% HP
-  desc_jp: Player -50% HP
-  max_atk_pct: null
-  name_en: Gyah!
-  name_jp: Gyah!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 50
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 1
+  name_jp: Turn 1
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -56,8 +38,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -79,16 +61,34 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Player -50% HP
+  desc_jp: Player -50% HP
+  max_atk_pct: null
+  name_en: Gyah!
+  name_jp: Gyah!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 3
 # [2] ESEndPath -> ESEndPath
 # end_turn
 # [3] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 6
 # [4] ESGravity -> Gyah!
 # Condition: 50% chance
 # Player -50% HP

@@ -84,11 +84,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESSkillDelay -> Creation of the Hieroglyphs
 # Delay active skills by 5 turns
 # [5] ESEndPath -> ESEndPath
@@ -97,22 +97,22 @@ records:
 # Condition: When < 20% hp
 # Enemy action
 # [7] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 11
 # [8] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [9] ESOrbChangeAttack -> Protector of the Night
 # Change Random to Jammer
 # [10] ESEndPath -> ESEndPath
 # end_turn
 # [11] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 15
 # [12] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [13] ESPoisonChangeRandomAttack -> Leaf of the Ished Tree
 # Change Random 4 to Poison
 # [14] ESEndPath -> ESEndPath
 # end_turn
 # [15] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b110
 # [16] ESBindAttack -> Time Mastery
 # Bind 1 subs for 4 turns

@@ -178,7 +178,7 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESAbsorbCombo -> Crimson Giant
@@ -194,9 +194,9 @@ records:
 # 	[1] ESAttackUp -> Flare up
 # 	Increase damage to 120% for the next 99 turns
 # [4] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 4, target rnd 13
 # [5] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [6] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESStatusShield -> Excited State
@@ -220,9 +220,9 @@ records:
 # [12] ESEndPath -> ESEndPath
 # end_turn
 # [13] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [14] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [15] SkillSet:
 # 	[0] ESLeaderSwap -> Swoop Shot
 # 	Leader changes to random sub for 10 turns

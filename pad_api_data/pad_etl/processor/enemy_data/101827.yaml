@@ -73,15 +73,6 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
-  desc_en: Enemy recover 100% hp + Increase damage to 150% for the next 999 turns
-  desc_jp: Enemy recover 100% hp + Increase damage to 150% for the next 999 turns
-  max_atk_pct: null
-  name_en: Angel's Holy Grail + Battle Anthem
-  name_jp: Angel's Holy Grail + Battle Anthem
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
@@ -106,11 +97,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESBombFixedSpawn -> Flare Bomb
 # 	Spawn Bomb orbs in the specified positions
@@ -131,7 +122,7 @@ records:
 # Condition: When < 70% hp , one-time use
 # Jammer skyfall +20% for 5 turns
 # [10] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 70, target rnd 13
 # [11] SkillSet:
 # 	[0] ESOrbChangeSingle -> Healing Hymn
 # 	Change Random to Heal
@@ -140,9 +131,9 @@ records:
 # [12] ESEndPath -> ESEndPath
 # end_turn
 # [13] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 11
 # [14] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [15] SkillSet:
 # 	Condition: When < 70% hp
 # 	[0] ESRecoverEnemy -> Angel's Holy Grail

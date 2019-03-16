@@ -87,17 +87,17 @@ records:
 # Condition: When < 50% hp , one-time use
 # Enemy recover 100% hp
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESBindRandom -> Poke Poke EX
 # Bind 5 random cards for 1~3 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 10
 # [7] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [8] ESInactivity -> Yah!
 # Do nothing
 # [9] ESEndPath -> ESEndPath

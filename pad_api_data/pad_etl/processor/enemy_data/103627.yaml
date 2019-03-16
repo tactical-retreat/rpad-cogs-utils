@@ -29,8 +29,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -50,25 +50,25 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESSkyfall -> Dark Snow
 # Condition: One-time use
 # Poison skyfall +15% for 5 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 20, target rnd 9
 # [7] ESAttackMultihit -> Dark Nebula
 # Condition: One-time use
 # Enemy action
 # [8] ESEndPath -> ESEndPath
 # end_turn
 # [9] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [3608, 3609], target rnd 11
 # [10] SkillSet:
 # 	[0] ESInactivity -> Be consumed by the darkness...
 # 	Do nothing
@@ -77,9 +77,9 @@ records:
 # 	[2] ESGravity -> Dead End
 # 	Player -150% HP
 # [11] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 10
 # [12] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [13] SkillSet:
 # 	[0] ESInactivity -> You are a remarkable man...
 # 	Do nothing

@@ -29,8 +29,28 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 29
-  name_jp: HP <= 29
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 10 turns + Blind orbs in specific
+    positions for 1 turns
+  desc_jp: Reduce damage from all sources by 50% for 10 turns + Blind orbs in specific
+    positions for 1 turns
+  max_atk_pct: null
+  name_en: Elemental Shield Protection + Veiled Boundaries
+  name_jp: Elemental Shield Protection + Veiled Boundaries
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -47,8 +67,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 29
-  name_jp: HP <= 29
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -65,8 +85,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute below actions in order repeatedly
-  name_jp: Execute below actions in order repeatedly
+  name_en: HP <= 29
+  name_jp: HP <= 29
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -107,6 +127,15 @@ records:
   record_type_name: ACTION
   usage_pct: 0
 - !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 29
+  name_jp: HP <= 29
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
   desc_en: Change 3rd row to Water, Jammer orbs, Deal 110% damage
   desc_jp: Change 3rd row to Water, Jammer orbs, Deal 110% damage
   max_atk_pct: 110
@@ -125,6 +154,15 @@ records:
   record_type_name: ACTION
   usage_pct: 0
 - !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 29
+  name_jp: HP <= 29
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
   desc_en: Deal 180% damage (3 hits, 60% each)
   desc_jp: Deal 180% damage (3 hits, 60% each)
   max_atk_pct: 180
@@ -138,11 +176,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESSkillDelay -> Let us head into the darkness...
 # 	Delay active skills by 2~3 turns
@@ -151,9 +189,9 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 10
 # [7] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [8] SkillSet:
 # 	[0] ESDamageShield -> Elemental Shield Protection
 # 	Reduce damage from all sources by 50% for 10 turns
@@ -162,11 +200,11 @@ records:
 # [9] ESEndPath -> ESEndPath
 # end_turn
 # [10] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 30, target rnd 26
 # [11] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 18
 # [12] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [13] ESBlindStickyFixed -> A Shroud from the East
 # Condition: 25% chance
 # Blind orbs in specific positions for 1 turns
@@ -182,9 +220,9 @@ records:
 # [17] ESEndPath -> ESEndPath
 # end_turn
 # [18] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 8, target rnd 23
 # [19] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1111
 # [20] ESRowSpawnMulti -> Shadow Blade Storm
 # Condition: 50% chance
 # Change 3rd row to Water, Jammer orbs
@@ -194,7 +232,7 @@ records:
 # [22] ESEndPath -> ESEndPath
 # end_turn
 # [23] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b1100
 # [24] ESAttackMultihit -> A Pounding in the Night
 # Enemy action
 # [25] ESEndPath -> ESEndPath

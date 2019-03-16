@@ -29,44 +29,26 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 99 turns
+  desc_jp: Increase damage to 200% for the next 99 turns
+  max_atk_pct: null
+  name_en: I'll end this for you NOW!
+  name_jp: I'll end this for you NOW!
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change Jammer to Fire, Deal 150% damage
-  desc_jp: Change Jammer to Fire, Deal 150% damage
-  max_atk_pct: 150
-  name_en: Need to burn more!
-  name_jp: Need to burn more!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Spawn Bomb orbs in the specified positions + Movetime 50% for 5 turns
-  desc_jp: Spawn Bomb orbs in the specified positions + Movetime 50% for 5 turns
-  max_atk_pct: null
-  name_en: Your life is at an end! + You will regret that
-  name_jp: Your life is at an end! + You will regret that
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -83,18 +65,18 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
+  name_en: HP <= 49
+  name_jp: HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Increase damage to 200% for the next 99 turns
-  desc_jp: Increase damage to 200% for the next 99 turns
-  max_atk_pct: null
-  name_en: I'll end this for you NOW!
-  name_jp: I'll end this for you NOW!
-  one_time: true
+  desc_en: Change Jammer to Fire, Deal 150% damage
+  desc_jp: Change Jammer to Fire, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Need to burn more!
+  name_jp: Need to burn more!
+  one_time: false
   record_type_name: ACTION
   usage_pct: 100
 
@@ -102,13 +84,13 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [4796, 4797], target rnd 6
 # [5] SkillSet:
 # 	[0] ESOrbSealRow -> Wait! This is off limits!
 # 	Seal 1st row for 5 turns
@@ -122,7 +104,7 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 14
 # [9] ESOrbChangeAttackBits -> Need to burn more!
 # Change Jammer to Fire
 # [10] ESSkillDelay -> I'll make you suffer!
@@ -137,11 +119,11 @@ records:
 # [13] ESEndPath -> ESEndPath
 # end_turn
 # [14] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 20, target rnd 19
 # [15] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 9
 # [16] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [17] SkillSet:
 # 	[0] ESBombFixedSpawn -> Your life is at an end!
 # 	Spawn Bomb orbs in the specified positions

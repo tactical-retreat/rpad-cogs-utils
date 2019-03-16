@@ -55,8 +55,64 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Specific orbs change every 1.0s for 3 turns + Blind orbs in specific positions
+    for 3 turns + Increase damage to 150% for the next 99 turns
+  desc_jp: Specific orbs change every 1.0s for 3 turns + Blind orbs in specific positions
+    for 3 turns + Increase damage to 150% for the next 99 turns
+  max_atk_pct: null
+  name_en: I didn't want to use this but... + Let me use this + Let me end this
+  name_jp: I didn't want to use this but... + Let me use this + Let me end this
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 500% damage (5 hits, 100% each)
+  desc_jp: Deal 500% damage (5 hits, 100% each)
+  max_atk_pct: 500
+  name_en: Not...not yet!
+  name_jp: Not...not yet!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 500% damage (5 hits, 100% each)
+  desc_jp: Deal 500% damage (5 hits, 100% each)
+  max_atk_pct: 500
+  name_en: Not...not yet!
+  name_jp: Not...not yet!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 9
+  name_jp: HP <= 9
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -87,66 +143,28 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Specific orbs change every 1.0s for 3 turns + Blind orbs in specific positions
-    for 3 turns + Increase damage to 150% for the next 99 turns
-  desc_jp: Specific orbs change every 1.0s for 3 turns + Blind orbs in specific positions
-    for 3 turns + Increase damage to 150% for the next 99 turns
-  max_atk_pct: null
-  name_en: I didn't want to use this but... + Let me use this + Let me end this
-  name_jp: I didn't want to use this but... + Let me use this + Let me end this
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 9
-  name_jp: HP <= 9
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 500% damage (5 hits, 100% each)
-  desc_jp: Deal 500% damage (5 hits, 100% each)
-  max_atk_pct: 500
-  name_en: Not...not yet!
-  name_jp: Not...not yet!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] ESSkillDelay -> Allow me to get us started
 # Delay active skills by 5 turns
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 14
 # [9] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 10, target rnd 18
 # [10] ESOrbChangeAttack -> I don't need this!
 # Condition: 33% chance
 # Change Random to Dark
@@ -159,9 +177,9 @@ records:
 # [13] ESEndPath -> ESEndPath
 # end_turn
 # [14] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 9
 # [15] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [16] SkillSet:
 # 	[0] ESSpinnersFixed -> I didn't want to use this but...
 # 	Specific orbs change every 1.0s for 3 turns

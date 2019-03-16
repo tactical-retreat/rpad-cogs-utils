@@ -124,11 +124,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESStatusShield -> Universal Protection
 # 	Voids status ailments for 10 turns
@@ -139,9 +139,9 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 10
 # [7] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [8] SkillSet:
 # 	[0] ESJammerChangeRandom -> Fragile Fantasy
 # 	Change Random 3 to Jammer
@@ -168,9 +168,9 @@ records:
 # Condition: When < 30% hp
 # Enemy action
 # [14] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 19
 # [15] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [16] ESOrbChangeAttack -> Celestial Purification
 # Change Jammer to Heal
 # [17] SkillSet:
@@ -181,9 +181,9 @@ records:
 # [18] ESEndPath -> ESEndPath
 # end_turn
 # [19] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 8, target rnd 24
 # [20] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1111
 # [21] ESOrbChangeAttack -> Celestial Purification
 # Change Jammer to Heal
 # [22] SkillSet:
@@ -194,7 +194,7 @@ records:
 # [23] ESEndPath -> ESEndPath
 # end_turn
 # [24] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b1100
 # [25] ESOrbChangeAttack -> Celestial Purification
 # Change Jammer to Heal
 # [26] SkillSet:

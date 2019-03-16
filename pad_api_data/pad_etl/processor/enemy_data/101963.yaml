@@ -48,18 +48,18 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESRandomSpawn -> Souvenir
 # Condition: When fire, water, wood, light, dark, heal, jammer, mortal poison orbs are on the board
 # Spawn random 1 Poison orbs
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
-# branch
+# Branch on remaining enemies = 2, target rnd 9
 # [7] ESRandomSpawn -> Souvenir
 # Condition: When fire, water, wood, light, dark, heal, jammer, mortal poison orbs are on the board
 # Spawn random 1 Poison orbs

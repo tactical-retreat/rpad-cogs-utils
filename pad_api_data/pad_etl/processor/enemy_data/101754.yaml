@@ -38,6 +38,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Heal to Wood, Deal 50% damage
+  desc_jp: Change Heal to Wood, Deal 50% damage
+  max_atk_pct: 50
+  name_en: Grimoire of Earth
+  name_jp: Grimoire of Earth
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 30
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -101,24 +119,6 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Wood skyfall +25% for 99 turns
-  desc_jp: Wood skyfall +25% for 99 turns
-  max_atk_pct: null
-  name_en: Earth Evocation
-  name_jp: Earth Evocation
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 30
   name_jp: HP <= 30
   one_time: false
@@ -147,17 +147,17 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESBlindStickyRandom -> Solomon's Secret Key
 # Blind all orbs for 3 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 12
 # [7] ESOrbChangeAttack -> Ground Explosion
 # Condition: 50% chance when < 30% hp
 # Change Random to Wood
@@ -173,9 +173,9 @@ records:
 # [11] ESAttackMultihit -> Pentacle of the Demonic Sword
 # Enemy action
 # [12] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 7
 # [13] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [14] ESSkyfall -> Earth Evocation
 # Condition: When < 50% hp
 # Wood skyfall +25% for 99 turns

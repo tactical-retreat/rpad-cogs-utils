@@ -237,11 +237,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESStatusShield -> Enhancement of the 5 Senses
 # 	Voids status ailments for 30 turns
@@ -250,9 +250,9 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 2, target rnd 12
 # [7] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [8] ESLeaderSwap -> Forceful Throw
 # Condition: When < 20% hp
 # Leader changes to random sub for 5 turns
@@ -265,7 +265,7 @@ records:
 # [11] ESAttackMultihit -> Battering
 # Enemy action
 # [12] ESSetCounter -> ESSetCounter
-# set_counter
+# counter = 0
 # [13] ESLeaderSwap -> Forceful Throw
 # Condition: When < 20% hp
 # Leader changes to random sub for 5 turns

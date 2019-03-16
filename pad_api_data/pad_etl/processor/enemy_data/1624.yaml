@@ -95,11 +95,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESStatusShield -> Who will be my opponent?
 # 	Voids status ailments for 999 turns
@@ -114,9 +114,9 @@ records:
 # Condition: When < 10% hp
 # Enemy action
 # [8] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 12
 # [9] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [10] SkillSet:
 # 	[0] ESDebuffMovetime -> Time Illusion
 # 	Movetime -1s for 5 turns
@@ -125,9 +125,9 @@ records:
 # [11] ESEndPath -> ESEndPath
 # end_turn
 # [12] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 17
 # [13] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [14] ESRandomSpawn -> Time Purification
 # Condition: When poison orbs are on the board
 # Change all orbs to Jammer
@@ -136,15 +136,15 @@ records:
 # [16] ESEndPath -> ESEndPath
 # end_turn
 # [17] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 8, target rnd 21
 # [18] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1111
 # [19] ESPoisonChangeRandomAttack -> Termination's Guidance
 # Change Random 3 to Poison
 # [20] ESEndPath -> ESEndPath
 # end_turn
 # [21] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b1000
 # [22] ESRandomSpawn -> Time Purification
 # Condition: When poison orbs are on the board
 # Change all orbs to Jammer

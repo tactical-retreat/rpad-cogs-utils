@@ -47,8 +47,26 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind 4 random subs for 2~3 turns, Deal 100% damage
+  desc_jp: Bind 4 random subs for 2~3 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Pumpkin Charm
+  name_jp: Pumpkin Charm
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -74,17 +92,26 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Bind 4 random subs for 2~3 turns, Deal 100% damage
-  desc_jp: Bind 4 random subs for 2~3 turns, Deal 100% damage
+  desc_en: Deal 110% damage (2 hits, 55% each)
+  desc_jp: Deal 110% damage (2 hits, 55% each)
+  max_atk_pct: 110
+  name_en: Candle Nails
+  name_jp: Candle Nails
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Spawn random 9 Poison orbs, Deal 100% damage
+  desc_jp: Spawn random 9 Poison orbs, Deal 100% damage
   max_atk_pct: 100
-  name_en: Pumpkin Charm
-  name_jp: Pumpkin Charm
+  name_en: Sweet Wink
+  name_jp: Sweet Wink
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -93,7 +120,7 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBlind -> Halloween World
 # Condition: One-time use
 # Blind all orbs on the board
@@ -101,7 +128,7 @@ records:
 # Condition: One-time use & when Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison orbs are on the board
 # Spawn random 4 Mortal Poison orbs
 # [4] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 8
 # [5] ESAttackMultihit -> Candle Nails
 # Condition: 50% chance
 # Enemy action
@@ -111,9 +138,9 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 5
 # [9] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [10] ESBindRandomSub -> Pumpkin Charm
 # Bind 4 random subs for 2~3 turns
 # [11] ESEndPath -> ESEndPath

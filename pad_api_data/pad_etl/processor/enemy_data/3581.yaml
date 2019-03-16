@@ -113,11 +113,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESSkillDelay -> Demonic Eye of Truth
 # 	Delay active skills by 10 turns
@@ -134,9 +134,9 @@ records:
 # Condition: When < 5% hp
 # Change all orbs to Dark
 # [8] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 12
 # [9] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [10] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESGravity -> Bone-Shaking Bloom Hammer

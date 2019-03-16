@@ -31,44 +31,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change Jammer to Wood, Deal 240% damage
-  desc_jp: Change Jammer to Wood, Deal 240% damage
-  max_atk_pct: 240
-  name_en: Cauchemar Infinity
-  name_jp: Cauchemar Infinity
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Bind 3 random subs for 4 turns + Movetime 50% for 5 turns
-  desc_jp: Bind 3 random subs for 4 turns + Movetime 50% for 5 turns
-  max_atk_pct: null
-  name_en: Cauchemar Mind + Astaroth's Murmurs
-  name_jp: Cauchemar Mind + Astaroth's Murmurs
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
+  name_en: Turn 1
+  name_jp: Turn 1
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -85,8 +49,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -99,16 +63,34 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Jammer to Wood, Deal 240% damage
+  desc_jp: Change Jammer to Wood, Deal 240% damage
+  max_atk_pct: 240
+  name_en: Cauchemar Infinity
+  name_jp: Cauchemar Infinity
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESStatusShield -> Cauchemar Zone
 # 	Voids status ailments for 999 turns
@@ -119,13 +101,13 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [7] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 17
 # [8] ESOrbChangeAttack -> Cauchemar Infinity
 # Change Jammer to Wood
 # [9] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 4, target rnd 14
 # [10] ESRandomSpawn -> Cauchemar Fragment
 # Condition: 33% chance & when Fire, Water, Wood, Light, Dark, Heal, Mortal Poison orbs are on the board
 # Spawn random 2 Jammer, Poison orbs
@@ -138,7 +120,7 @@ records:
 # [13] ESEndPath -> ESEndPath
 # end_turn
 # [14] ESSetCounter -> ESSetCounter
-# set_counter
+# counter = 0
 # [15] SkillSet:
 # 	[0] ESSpinnersRandom -> Cauchemar Despair
 # 	Random 4 orbs change every 1.5s for 4 turns
@@ -147,11 +129,11 @@ records:
 # [16] ESEndPath -> ESEndPath
 # end_turn
 # [17] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 20, target rnd 22
 # [18] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 8
 # [19] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [20] SkillSet:
 # 	[0] ESBindRandomSub -> Cauchemar Mind
 # 	Bind 3 random subs for 4 turns

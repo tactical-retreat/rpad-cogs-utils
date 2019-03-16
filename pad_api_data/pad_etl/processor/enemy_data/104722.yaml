@@ -31,19 +31,28 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute below actions in order repeatedly
-  name_jp: Execute below actions in order repeatedly
+  name_en: HP <= 24
+  name_jp: HP <= 24
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Spawn random 3 Wood orbs + Enemy action
-  desc_jp: Spawn random 3 Wood orbs + Enemy action
+  desc_en: Spawn random 3 Wood orbs + Increase damage to 200% for the next 1 turns
+  desc_jp: Spawn random 3 Wood orbs + Increase damage to 200% for the next 1 turns
   max_atk_pct: null
-  name_en: Magia Points have recovered + Overdrive
-  name_jp: Magia Points have recovered + Overdrive
-  one_time: false
+  name_en: Magia Points have recovered + Persephone's Return
+  name_jp: Magia Points have recovered + Persephone's Return
+  one_time: true
   record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute below actions in order repeatedly
+  name_jp: Execute below actions in order repeatedly
+  one_time: false
+  record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
   desc_en: Spawn random 3 Wood orbs + Increase damage to 200% for the next 1 turns
@@ -54,20 +63,38 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
+- !SkillRecord
+  desc_en: Spawn random 3 Wood orbs + Change 4th column to Light orbs
+  desc_jp: Spawn random 3 Wood orbs + Change 4th column to Light orbs
+  max_atk_pct: null
+  name_en: Magia Points have recovered + Lightning of Zeus
+  name_jp: Magia Points have recovered + Lightning of Zeus
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 25
+- !SkillRecord
+  desc_en: Spawn random 3 Wood orbs + Enemy action
+  desc_jp: Spawn random 3 Wood orbs + Enemy action
+  max_atk_pct: null
+  name_en: Magia Points have recovered + Overdrive
+  name_jp: Magia Points have recovered + Overdrive
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] SkillSet:
 # 	[0] ESRandomSpawn -> Magia Points have recovered
 # 	Spawn random 3 Wood orbs
@@ -78,25 +105,25 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 9, target rnd 40
 # [9] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 25, target rnd 40
 # [10] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 36
 # [11] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 75, target rnd 32
 # [12] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [13] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [14] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [15] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 7, target rnd 25
 # [16] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 6, target rnd 23
 # [17] ESSetCounter -> ESSetCounter
-# set_counter
+# counter - 1
 # [18] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESRandomSpawn -> Magia Points have recovered
@@ -110,7 +137,7 @@ records:
 # 	[1] ESAttackMultihit -> Arrow of Artemis
 # 	Enemy action
 # [20] ESSetCounter -> ESSetCounter
-# set_counter
+# counter - 1
 # [21] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESRandomSpawn -> Magia Points have recovered
@@ -124,7 +151,7 @@ records:
 # 	[1] ESBindAttack -> Gaze of the Gorgon
 # 	Bind 1 subs for 2 turns
 # [23] ESSetCounter -> ESSetCounter
-# set_counter
+# counter = 1
 # [24] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESRandomSpawn -> Magia Points have recovered
@@ -132,7 +159,7 @@ records:
 # 	[1] ESSkillDelay -> Cattle Thief
 # 	Delay active skills by 2 turns
 # [25] ESSetCounter -> ESSetCounter
-# set_counter
+# counter = 1
 # [26] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESRandomSpawn -> Magia Points have recovered
@@ -140,7 +167,7 @@ records:
 # 	[1] ESAttackMultihit -> Talaria, the Winged Sandals
 # 	Enemy action
 # [27] ESSetCounter -> ESSetCounter
-# set_counter
+# counter = 9
 # [28] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESRandomSpawn -> Magia Points have recovered
@@ -148,7 +175,7 @@ records:
 # 	[1] ESAttackUp -> Persephone's Return
 # 	Increase damage to 200% for the next 1 turns
 # [29] ESSetCounter -> ESSetCounter
-# set_counter
+# counter = 10
 # [30] SkillSet:
 # 	[0] ESRandomSpawn -> Magia Points have recovered
 # 	Spawn random 3 Wood orbs
@@ -157,9 +184,9 @@ records:
 # [31] ESEndPath -> ESEndPath
 # end_turn
 # [32] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 12
 # [33] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [34] SkillSet:
 # 	[0] ESRandomSpawn -> Magia Points have recovered
 # 	Spawn random 3 Wood orbs
@@ -168,9 +195,9 @@ records:
 # [35] ESEndPath -> ESEndPath
 # end_turn
 # [36] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 12
 # [37] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [38] SkillSet:
 # 	[0] ESRandomSpawn -> Magia Points have recovered
 # 	Spawn random 3 Wood orbs
@@ -179,9 +206,9 @@ records:
 # [39] ESEndPath -> ESEndPath
 # end_turn
 # [40] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 9, target rnd 29
 # [41] ESSetCounter -> ESSetCounter
-# set_counter
+# counter = 9
 # [42] SkillSet:
 # 	[0] ESRandomSpawn -> Magia Points have recovered
 # 	Spawn random 3 Wood orbs

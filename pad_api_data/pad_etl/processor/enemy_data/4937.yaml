@@ -29,8 +29,53 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  max_atk_pct: null
+  name_en: Satan Saber
+  name_jp: Satan Saber
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Random to Dark, Deal 120% damage
+  desc_jp: Change Random to Dark, Deal 120% damage
+  max_atk_pct: 120
+  name_en: Destruction Beam
+  name_jp: Destruction Beam
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: Spawn random 5 Light orbs, Deal 100% damage
+  desc_jp: Spawn random 5 Light orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Intense Yellow Beam
+  name_jp: Intense Yellow Beam
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 74
+  name_jp: HP <= 74
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -61,99 +106,18 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 0
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 74
-  name_jp: HP <= 74
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Enemy recover 100% hp
-  desc_jp: Enemy recover 100% hp
-  max_atk_pct: null
-  name_en: Moon Rock - Kingstone
-  name_jp: Moon Rock - Kingstone
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Absorb combo <= 4 damage for 5 turns
-  desc_jp: Absorb combo <= 4 damage for 5 turns
-  max_atk_pct: null
-  name_en: Moon Rock - Kingstone
-  name_jp: Moon Rock - Kingstone
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Player -99% HP
-  desc_jp: Player -99% HP
-  max_atk_pct: null
-  name_en: Satan Saber
-  name_jp: Satan Saber
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 0
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change Random to Dark, Deal 120% damage
-  desc_jp: Change Random to Dark, Deal 120% damage
-  max_atk_pct: 120
-  name_en: Destruction Beam
-  name_jp: Destruction Beam
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 0
-- !SkillRecord
-  desc_en: Spawn random 5 Light orbs, Deal 100% damage
-  desc_jp: Spawn random 5 Light orbs, Deal 100% damage
-  max_atk_pct: 100
-  name_en: Intense Yellow Beam
-  name_jp: Intense Yellow Beam
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 0
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [4910], target rnd 6
 # [5] ESStatusShield -> Declaration of War
 # Condition: One-time use
 # Voids status ailments for 5 turns
@@ -161,7 +125,7 @@ records:
 # Condition: One-time use
 # Voids status ailments for 5 turns
 # [7] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 75, target rnd 12
 # [8] ESAttackMultihit -> Shadow Punch
 # Condition: 33% chance
 # Enemy action
@@ -174,21 +138,21 @@ records:
 # [11] ESEndPath -> ESEndPath
 # end_turn
 # [12] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 17
 # [13] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [14] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [15] ESRecoverEnemy -> Moon Rock - Kingstone
 # Enemy recover 100% hp
 # [16] ESEndPath -> ESEndPath
 # end_turn
 # [17] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 25, target rnd 26
 # [18] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 22
 # [19] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [20] ESAbsorbCombo -> Moon Rock - Kingstone
 # Absorb combo <= 4 damage for 5 turns
 # [21] ESEndPath -> ESEndPath
@@ -205,9 +169,9 @@ records:
 # [25] ESEndPath -> ESEndPath
 # end_turn
 # [26] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 22
 # [27] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [28] ESAttackUp -> Moon Rock - Kingstone
 # Increase damage to 150% for the next 5 turns
 # [29] ESEndPath -> ESEndPath

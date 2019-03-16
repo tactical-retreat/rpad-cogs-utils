@@ -93,15 +93,15 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 5
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 5, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 9
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] ESDispel -> Let's do this
 # Voids player buff effects
 # [7] ESAttackMultihit -> Let's do this
@@ -109,7 +109,7 @@ records:
 # [8] ESEndPath -> ESEndPath
 # end_turn
 # [9] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 14
 # [10] ESAttackMultihit -> Decisive Lead
 # Condition: When < 20% hp
 # Enemy action
@@ -121,9 +121,9 @@ records:
 # [13] ESEndPath -> ESEndPath
 # end_turn
 # [14] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 10
 # [15] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [16] ESGravity -> Revenge Attack
 # Condition: When < 30% hp
 # Player -99% HP

@@ -29,17 +29,30 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 4
-  name_jp: Turn 4
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Blind all orbs for 3 turns
-  desc_jp: Blind all orbs for 3 turns
+  desc_en: Deal 60% damage (2 hits, 30% each)
+  desc_jp: Deal 60% damage (2 hits, 30% each)
+  max_atk_pct: 60
+  name_en: Pentacle of the Demonic Sword
+  name_jp: Pentacle of the Demonic Sword
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Void damage >= 40000000 for 99 turns
+    + Change player HP to 500000 for 99 turns + Voids player buff effects
+  desc_jp: Voids status ailments for 999 turns + Void damage >= 40000000 for 99 turns
+    + Change player HP to 500000 for 99 turns + Voids player buff effects
   max_atk_pct: null
-  name_en: Solomon's Secret Key
-  name_jp: Solomon's Secret Key
+  name_en: I wonder if your life means anything + Defense of the Twin Ships + Ark
+    Contract + Requiem
+  name_jp: I wonder if your life means anything + Defense of the Twin Ships + Ark
+    Contract + Requiem
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -47,8 +60,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: HP <= 49
+  name_jp: HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -83,66 +96,17 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 108% damage (3 hits, 36% each)
-  desc_jp: Deal 108% damage (3 hits, 36% each)
-  max_atk_pct: 108
-  name_en: Sout Yadoreb
-  name_jp: Sout Yadoreb
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Enemy action + Blind random 6 orbs for 1 turns
-  desc_jp: Enemy action + Blind random 6 orbs for 1 turns
-  max_atk_pct: null
-  name_en: Sout Yadoreb + Yasurek Sitta
-  name_jp: Sout Yadoreb + Yasurek Sitta
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 9
   name_jp: HP <= 9
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 60% damage (2 hits, 30% each)
-  desc_jp: Deal 60% damage (2 hits, 30% each)
-  max_atk_pct: 60
-  name_en: Pentacle of the Demonic Sword
-  name_jp: Pentacle of the Demonic Sword
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 0
-- !SkillRecord
-  desc_en: Voids status ailments for 999 turns + Void damage >= 40000000 for 99 turns
-    + Change player HP to 500000 for 99 turns + Voids player buff effects
-  desc_jp: Voids status ailments for 999 turns + Void damage >= 40000000 for 99 turns
-    + Change player HP to 500000 for 99 turns + Voids player buff effects
+  desc_en: Blind all orbs for 3 turns
+  desc_jp: Blind all orbs for 3 turns
   max_atk_pct: null
-  name_en: I wonder if your life means anything + Defense of the Twin Ships + Ark
-    Contract + Requiem
-  name_jp: I wonder if your life means anything + Defense of the Twin Ships + Ark
-    Contract + Requiem
+  name_en: Solomon's Secret Key
+  name_jp: Solomon's Secret Key
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -151,21 +115,21 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESBindRandom -> Entahaz Masaka
 # Bind 4 random cards for 1~2 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 15
 # [7] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [8] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 4, target rnd 13
 # [9] ESBlind -> Kokzaram
 # Condition: 33% chance
 # Blind all orbs on the board
@@ -182,11 +146,11 @@ records:
 # [14] ESEndPath -> ESEndPath
 # end_turn
 # [15] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 10, target rnd 22
 # [16] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 20
 # [17] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [18] ESAttackMultihit -> Sout Yadoreb
 # Enemy action
 # [19] ESEndPath -> ESEndPath
@@ -214,19 +178,19 @@ records:
 # [25] ESAttackMultihit -> Intee Kamkadam
 # Enemy action
 # [26] ESNone -> ESNone
-# None
+# nothing
 # [27] ESNone -> ESNone
-# None
+# nothing
 # [28] ESNone -> ESNone
-# None
+# nothing
 # [29] ESNone -> ESNone
-# None
+# nothing
 # [30] ESNone -> ESNone
-# None
+# nothing
 # [31] ESNone -> ESNone
-# None
+# nothing
 # [32] ESNone -> ESNone
-# None
+# nothing
 # [33] SkillSet:
 # 	[0] ESDamageShield -> Defense Instinct
 # 	Reduce damage from all sources by 50% for 3 turns

@@ -83,24 +83,6 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Enemy recover 30% hp, Deal 100% damage
-  desc_jp: Enemy recover 30% hp, Deal 100% damage
-  max_atk_pct: 100
-  name_en: Magic Absorbing Eye
-  name_jp: Magic Absorbing Eye
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 20
   name_jp: HP <= 20
   one_time: false
@@ -120,26 +102,26 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESRecoverPlayer -> Welcome! I'm glad you're here.
 # Player recover 100% hp
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 9
 # [7] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [8] ESSkyfall -> Waterways Verification
 # Water skyfall +20% for 99 turns
 # [9] ESLeaderSwap -> Chanchala
 # Condition: When < 70% hp , one-time use
 # Leader changes to random sub for 3 turns
 # [10] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 14
 # [11] ESAttackMultihit -> Wave Current Attack
 # Condition: When < 20% hp
 # Enemy action
@@ -149,14 +131,14 @@ records:
 # [13] ESEndPath -> ESEndPath
 # end_turn
 # [14] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 11
 # [15] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [16] ESRecoverEnemy -> Magic Absorbing Eye
 # Condition: When < 50% hp
 # Enemy recover 30% hp
 # [17] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [18] ESRecoverEnemy -> Magic Absorbing Eye
 # Condition: When < 50% hp
 # Enemy recover 30% hp

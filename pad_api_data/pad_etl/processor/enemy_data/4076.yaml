@@ -30,19 +30,19 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 1, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 11
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [4091, 4092, 4093], target rnd 9
 # [7] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [4094, 4095], target rnd 10
 # [8] ESInactivity -> Let's go!
 # Condition: One-time use
 # Do nothing

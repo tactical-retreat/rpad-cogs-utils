@@ -29,17 +29,17 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: When 6 enemy remains
-  name_jp: When 6 enemy remains
+  name_en: Turn 1
+  name_jp: Turn 1
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change all orbs to Fire, Water, Dark, Heal, Deal 120% damage
-  desc_jp: Change all orbs to Fire, Water, Dark, Heal, Deal 120% damage
-  max_atk_pct: 120
-  name_en: Gloomy Enclosure
-  name_jp: Gloomy Enclosure
+  desc_en: Unable to Light orbs for 3 turns
+  desc_jp: Unable to Light orbs for 3 turns
+  max_atk_pct: null
+  name_en: Yellow Exception
+  name_jp: Yellow Exception
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -47,26 +47,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change all orbs to Fire, Water, Dark, Heal, Deal 120% damage
-  desc_jp: Change all orbs to Fire, Water, Dark, Heal, Deal 120% damage
-  max_atk_pct: 120
-  name_en: Gloomy Enclosure
-  name_jp: Gloomy Enclosure
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 14
-  name_jp: HP <= 14
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -83,8 +65,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute below actions in order repeatedly
-  name_jp: Execute below actions in order repeatedly
+  name_en: HP <= 14
+  name_jp: HP <= 14
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -115,96 +97,42 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 0
-- !SkillRecord
-  desc_en: Spawn random 8 Poison orbs
-  desc_jp: Spawn random 8 Poison orbs
-  max_atk_pct: null
-  name_en: Eroding Mist
-  name_jp: Eroding Mist
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 0
-- !SkillRecord
-  desc_en: Spawn random 4 Fire, Dark orbs, Deal 100% damage
-  desc_jp: Spawn random 4 Fire, Dark orbs, Deal 100% damage
-  max_atk_pct: 100
-  name_en: Accepting Spirit
-  name_jp: Accepting Spirit
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 0
-- !SkillRecord
-  desc_en: Change Random to Dark, Deal 105% damage
-  desc_jp: Change Random to Dark, Deal 105% damage
-  max_atk_pct: 105
-  name_en: Darkness Pillar
-  name_jp: Darkness Pillar
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 0
-- !SkillRecord
-  desc_en: Deal 120% damage (2 hits, 60% each)
-  desc_jp: Deal 120% damage (2 hits, 60% each)
-  max_atk_pct: 120
-  name_en: Darkness Rush
-  name_jp: Darkness Rush
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 0
-- !SkillRecord
-  desc_en: Spawn random 8 Poison orbs
-  desc_jp: Spawn random 8 Poison orbs
-  max_atk_pct: null
-  name_en: Eroding Mist
-  name_jp: Eroding Mist
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 0
-- !SkillRecord
-  desc_en: Change all orbs to Fire, Water, Dark, Heal, Deal 120% damage
-  desc_jp: Change all orbs to Fire, Water, Dark, Heal, Deal 120% damage
-  max_atk_pct: 120
-  name_en: Gloomy Enclosure
-  name_jp: Gloomy Enclosure
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] ESBlindStickyRandom -> Swallowing Darkness
 # Blind random 8 orbs for 2 turns
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 12
 # [9] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [10] ESAttributeBlock -> Yellow Exception
 # Unable to Light orbs for 3 turns
 # [11] ESEndPath -> ESEndPath
 # end_turn
 # [12] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 15, target rnd 30
 # [13] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
-# branch
+# Branch on remaining enemies = 1, target rnd 21
 # [14] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [15] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 3, target rnd 32
 # [16] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 25
 # [17] ESRandomSpawn -> Accepting Spirit
 # Condition: 33% chance & when Water, Wood, Light, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 4 Fire, Dark orbs
@@ -217,9 +145,9 @@ records:
 # [20] ESEndPath -> ESEndPath
 # end_turn
 # [21] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 14
 # [22] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [23] SkillSet:
 # 	[0] ESBindAwoken -> Eroding Sleep
 # 	Bind awoken skills for 1 turns
@@ -246,9 +174,9 @@ records:
 # [31] ESEndPath -> ESEndPath
 # end_turn
 # [32] ESSetCounter -> ESSetCounter
-# set_counter
+# counter = 0
 # [33] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
-# branch
+# Branch on remaining enemies = 2, target rnd 35
 # [34] ESBoardChangeAttackBits -> Gloomy Enclosure
 # Change all orbs to Fire, Water, Dark, Heal
 # [35] ESAbsorbAttribute -> Welcoming Mist

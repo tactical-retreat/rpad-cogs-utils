@@ -138,15 +138,15 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] SkillSet:
 # 	[0] ESStatusShield -> Who are you?
 # 	Voids status ailments for 999 turns
@@ -155,9 +155,9 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 4, target rnd 12
 # [9] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [10] ESGravity -> Uhuhuh
 # Player -99% HP
 # [11] ESEndPath -> ESEndPath

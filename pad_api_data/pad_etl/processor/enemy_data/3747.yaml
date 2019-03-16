@@ -82,6 +82,42 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
+  desc_en: Change all orbs to Fire, Jammer, Deal 500% damage
+  desc_jp: Change all orbs to Fire, Jammer, Deal 500% damage
+  max_atk_pct: 500
+  name_en: Burn it all!
+  name_jp: Burn it all!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 9
+  name_jp: HP <= 9
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Jammer skyfall +20% for 10 turns + Rcv 50% for 10 turns
+  desc_jp: Jammer skyfall +20% for 10 turns + Rcv 50% for 10 turns
+  max_atk_pct: null
+  name_en: Ashes + Sacrifice to the Furnace
+  name_jp: Ashes + Sacrifice to the Furnace
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 9
+  name_jp: HP <= 9
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
   desc_en: Absorb Water, Wood damage for 1 turns + Enemy action
   desc_jp: Absorb Water, Wood damage for 1 turns + Enemy action
   max_atk_pct: null
@@ -117,52 +153,16 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 0
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Jammer skyfall +20% for 10 turns + Rcv 50% for 10 turns
-  desc_jp: Jammer skyfall +20% for 10 turns + Rcv 50% for 10 turns
-  max_atk_pct: null
-  name_en: Ashes + Sacrifice to the Furnace
-  name_jp: Ashes + Sacrifice to the Furnace
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 9
-  name_jp: HP <= 9
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change all orbs to Fire, Jammer, Deal 500% damage
-  desc_jp: Change all orbs to Fire, Jammer, Deal 500% damage
-  max_atk_pct: 500
-  name_en: Burn it all!
-  name_jp: Burn it all!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 9
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	Condition: 25% chance
 # 	[0] ESStatusShield -> Don't come here, it's dangerous!
@@ -190,11 +190,11 @@ records:
 # [8] ESEndPath -> ESEndPath
 # end_turn
 # [9] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 100, target rnd 20
 # [10] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 10, target rnd 18
 # [11] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 51, target rnd 13
 # [12] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESSkyfall -> Ashes

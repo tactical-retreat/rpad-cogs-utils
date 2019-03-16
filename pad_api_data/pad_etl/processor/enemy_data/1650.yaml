@@ -97,11 +97,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESBindAwoken -> I'm your opponent!
 # 	Bind awoken skills for 3 turns
@@ -110,9 +110,9 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 8, target rnd 12
 # [7] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [8] ESBombRandomSpawn -> Fire Shot
 # Condition: 33% chance
 # Spawn random 3 Bomb orbs
@@ -125,9 +125,9 @@ records:
 # [11] ESEndPath -> ESEndPath
 # end_turn
 # [12] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 8
 # [13] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [14] ESSkillDelay -> Weak Point
 # Delay active skills by 5 turns
 # [15] ESEndPath -> ESEndPath

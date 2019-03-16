@@ -37,6 +37,51 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
+  desc_en: Movetime -2s for 2 turns + Blind random 5 orbs for 3 turns
+  desc_jp: Movetime -2s for 2 turns + Blind random 5 orbs for 3 turns
+  max_atk_pct: null
+  name_en: Astaroth's Whispers + Cauchemar Darkness
+  name_jp: Astaroth's Whispers + Cauchemar Darkness
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Heal to Jammer, Deal 50% damage
+  desc_jp: Change Heal to Jammer, Deal 50% damage
+  max_atk_pct: 50
+  name_en: Cauchemar Illusion
+  name_jp: Cauchemar Illusion
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 40
+- !SkillRecord
+  desc_en: Bind 3 subs for 2 turns, Deal 75% damage
+  desc_jp: Bind 3 subs for 2 turns, Deal 75% damage
+  max_atk_pct: 75
+  name_en: Cauchemar Nightmare
+  name_jp: Cauchemar Nightmare
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
   desc_en: Change Heal to Jammer, Deal 50% damage
   desc_jp: Change Heal to Jammer, Deal 50% damage
   max_atk_pct: 50
@@ -85,24 +130,6 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Movetime -2s for 2 turns + Blind random 5 orbs for 3 turns
-  desc_jp: Movetime -2s for 2 turns + Blind random 5 orbs for 3 turns
-  max_atk_pct: null
-  name_en: Astaroth's Whispers + Cauchemar Darkness
-  name_jp: Astaroth's Whispers + Cauchemar Darkness
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 20
   name_jp: HP <= 20
   one_time: false
@@ -122,11 +149,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESAbsorbCombo -> Cauchemar Phantom
 # 	Absorb combo <= 5 damage for 999 turns
@@ -135,7 +162,7 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 12
 # [7] ESOrbChangeAttack -> Cauchemar Tempest
 # Condition: When < 20% hp
 # Change Random to Jammer
@@ -150,9 +177,9 @@ records:
 # [11] ESEndPath -> ESEndPath
 # end_turn
 # [12] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 7
 # [13] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [14] SkillSet:
 # 	[0] ESDebuffMovetime -> Astaroth's Whispers
 # 	Movetime -2s for 2 turns

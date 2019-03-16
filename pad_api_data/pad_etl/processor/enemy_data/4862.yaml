@@ -39,6 +39,60 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
+  desc_en: Spawn random 8 Poison orbs
+  desc_jp: Spawn random 8 Poison orbs
+  max_atk_pct: null
+  name_en: Oh no... Now what?
+  name_jp: Oh no... Now what?
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Random to Wood + Enemy action
+  desc_jp: Change Random to Wood + Enemy action
+  max_atk_pct: null
+  name_en: We can win this! + Haa!
+  name_jp: We can win this! + Haa!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Random to Wood + Enemy action
+  desc_jp: Change Random to Wood + Enemy action
+  max_atk_pct: null
+  name_en: We can win this! + Haa!
+  name_jp: We can win this! + Haa!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
   desc_en: Change Random to Wood + Enemy action
   desc_jp: Change Random to Wood + Enemy action
   max_atk_pct: null
@@ -65,30 +119,12 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Spawn random 8 Poison orbs
-  desc_jp: Spawn random 8 Poison orbs
-  max_atk_pct: null
-  name_en: Oh no... Now what?
-  name_jp: Oh no... Now what?
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESAbsorbCombo -> Prepare for battle!
@@ -97,11 +133,11 @@ records:
 # but I know a lot about this game.
 # 	Wood skyfall +20% for 5 turns
 # [3] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 11
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] SkillSet:
 # 	[0] ESOrbChangeAttack -> We can win this!
 # 	Change Random to Wood
@@ -110,7 +146,7 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b0
 # [9] SkillSet:
 # 	[0] ESColumnSpawnMulti -> Next time you're going down.
 # 	Change 3rd column to Wood, Light orbs
@@ -122,15 +158,15 @@ records:
 # Condition: One-time use & when Fire, Water, Wood, Light, Dark, Heal, Jammer, Mortal Poison orbs are on the board
 # Spawn random 8 Poison orbs
 # [12] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 30, target rnd 15
 # [13] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 1, target rnd 4
 # [14] ESEndPath -> ESEndPath
 # end_turn
 # [15] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 1, target rnd 4
 # [16] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [17] ESAttackUp -> I'll cut you in half.
 # Increase damage to 150% for the next 99 turns
 # [18] ESEndPath -> ESEndPath

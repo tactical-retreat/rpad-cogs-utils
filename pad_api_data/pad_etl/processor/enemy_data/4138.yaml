@@ -57,8 +57,26 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 600% damage (3 hits, 200% each)
+  desc_jp: Deal 600% damage (3 hits, 200% each)
+  max_atk_pct: 600
+  name_en: Aerial Annihilation Spike Whirl
+  name_jp: Aerial Annihilation Spike Whirl
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 9
+  name_jp: HP <= 9
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -75,26 +93,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Bind awoken skills for 1 turns + Change Light to Jammer
-  desc_jp: Bind awoken skills for 1 turns + Change Light to Jammer
-  max_atk_pct: null
-  name_en: Roar + Pounce Attack
-  name_jp: Roar + Pounce Attack
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 50
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: HP <= 9
+  name_jp: HP <= 9
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -116,128 +116,20 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 74
-  name_jp: HP <= 74
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Enemy action + Seal 1st row for 4 turns
-  desc_jp: Enemy action + Seal 1st row for 4 turns
-  max_atk_pct: null
-  name_en: Tail Scythe + Annihilation Spike Whirl
-  name_jp: Tail Scythe + Annihilation Spike Whirl
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Delay active skills by 1 turns, Deal 90% damage
-  desc_jp: Delay active skills by 1 turns, Deal 90% damage
-  max_atk_pct: 90
-  name_en: Foreleg Uppercut
-  name_jp: Foreleg Uppercut
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Player -50% HP + Enemy action
-  desc_jp: Player -50% HP + Enemy action
-  max_atk_pct: null
-  name_en: Head Strike + Spike Shot
-  name_jp: Head Strike + Spike Shot
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Increase damage to 150% for the next 3 turns
-  desc_jp: Increase damage to 150% for the next 3 turns
-  max_atk_pct: null
-  name_en: Destruction Impulse
-  name_jp: Destruction Impulse
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Enemy recover 10% hp + Enemy action
-  desc_jp: Enemy recover 10% hp + Enemy action
-  max_atk_pct: null
-  name_en: Spike Regeneration + Annihilation Fist
-  name_jp: Spike Regeneration + Annihilation Fist
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 9
-  name_jp: HP <= 9
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 600% damage (3 hits, 200% each)
-  desc_jp: Deal 600% damage (3 hits, 200% each)
-  max_atk_pct: 600
-  name_en: Aerial Annihilation Spike Whirl
-  name_jp: Aerial Annihilation Spike Whirl
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] SkillSet:
 # 	[0] ESDamageShield -> Extinction Dragon's Force
 # 	Reduce damage from all sources by 50% for 5 turns
@@ -246,11 +138,11 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 10, target rnd 29
 # [9] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 25
 # [10] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 75, target rnd 15
 # [11] ESRowSpawnMulti -> Spread Wing Attack
 # Condition: One-time use
 # Change 3rd row to Jammer orbs
@@ -262,13 +154,13 @@ records:
 # [14] ESEndPath -> ESEndPath
 # end_turn
 # [15] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [16] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 4, target rnd 22
 # [17] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 3, target rnd 21
 # [18] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 2, target rnd 20
 # [19] ESAttackUp -> Destruction Impulse
 # Increase damage to 150% for the next 3 turns
 # [20] SkillSet:
@@ -279,7 +171,7 @@ records:
 # [21] ESSkillDelay -> Foreleg Uppercut
 # Delay active skills by 1 turns
 # [22] ESSetCounter -> ESSetCounter
-# set_counter
+# counter = 0
 # [23] SkillSet:
 # 	[0] ESGravity -> Head Strike
 # 	Player -50% HP

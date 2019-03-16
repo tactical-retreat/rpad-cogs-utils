@@ -35,29 +35,11 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change 1st column to Fire orbs, 6th column to Wood orbs, Deal 140% damage
-  desc_jp: Change 1st column to Fire orbs, 6th column to Wood orbs, Deal 140% damage
-  max_atk_pct: 140
-  name_en: Vanir Rose
-  name_jp: Vanir Rose
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
+  desc_en: Bind active skills for 10 turns
+  desc_jp: Bind active skills for 10 turns
   max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 150% damage (3 hits, 50% each)
-  desc_jp: Deal 150% damage (3 hits, 50% each)
-  max_atk_pct: 150
-  name_en: Glass Storm
-  name_jp: Glass Storm
+  name_en: No way! I won't let you end this yet!
+  name_jp: No way! I won't let you end this yet!
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -71,20 +53,11 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 150% damage (3 hits, 50% each)
-  desc_jp: Deal 150% damage (3 hits, 50% each)
-  max_atk_pct: 150
-  name_en: Glass Storm
-  name_jp: Glass Storm
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 50
-- !SkillRecord
-  desc_en: Change 1st column to Fire orbs, 6th column to Wood orbs, Deal 140% damage
-  desc_jp: Change 1st column to Fire orbs, 6th column to Wood orbs, Deal 140% damage
-  max_atk_pct: 140
-  name_en: Vanir Rose
-  name_jp: Vanir Rose
+  desc_en: Deal 600% damage (2 hits, 300% each)
+  desc_jp: Deal 600% damage (2 hits, 300% each)
+  max_atk_pct: 600
+  name_en: Ventus Anima
+  name_jp: Ventus Anima
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -133,54 +106,18 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 39
-  name_jp: HP <= 39
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Bind active skills for 10 turns
-  desc_jp: Bind active skills for 10 turns
-  max_atk_pct: null
-  name_en: No way! I won't let you end this yet!
-  name_jp: No way! I won't let you end this yet!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 600% damage (2 hits, 300% each)
-  desc_jp: Deal 600% damage (2 hits, 300% each)
-  max_atk_pct: 600
-  name_en: Ventus Anima
-  name_jp: Ventus Anima
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [2508, 2509, 3770, 3771, 4813], target rnd 6
 # [5] SkillSet:
 # 	[0] ESDebuffMovetime -> Is it fine to leave it with you?
 # 	Movetime -2s for 10 turns
@@ -194,7 +131,7 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 40, target rnd 24
 # [9] ESBindRandom -> Petal Chain
 # Condition: When < 90% hp , one-time use
 # Bind 3 random cards for 3 turns
@@ -205,21 +142,21 @@ records:
 # Condition: When < 50% hp
 # Blind all orbs on the board
 # [12] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 17
 # [13] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [14] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [2508, 2509], target rnd 16
 # [15] ESColumnSpawnMulti -> Vanir Rose
 # Change 1st column to Fire orbs, 6th column to Wood orbs
 # [16] ESColumnSpawnMulti -> Vanir Rose
 # Change 1st column to Fire orbs, 6th column to Wood orbs
 # [17] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 22
 # [18] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [19] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [1950, 1951], target rnd 21
 # [20] ESAttackMultihit -> Glass Storm
 # Enemy action
 # [21] ESAttackMultihit -> Glass Storm
@@ -230,13 +167,13 @@ records:
 # [23] ESColumnSpawnMulti -> Vanir Rose
 # Change 1st column to Fire orbs, 6th column to Wood orbs
 # [24] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 8, target rnd 27
 # [25] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1111
 # [26] ESBindSkill -> No way! I won't let you end this yet!
 # Bind active skills for 10 turns
 # [27] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 20, target rnd 30
 # [28] ESColumnSpawnMulti -> Gale Impact
 # Condition: 50% chance when < 50% hp
 # Change 3rd, 4th column to Wood orbs

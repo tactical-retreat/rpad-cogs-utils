@@ -38,6 +38,114 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Delay active skills by 2 turns
+  desc_jp: Delay active skills by 2 turns
+  max_atk_pct: null
+  name_en: Muspell's Army
+  name_jp: Muspell's Army
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Fire skyfall +25% for 99 turns + Change own attribute to Fire
+  desc_jp: Fire skyfall +25% for 99 turns + Change own attribute to Fire
+  max_atk_pct: null
+  name_en: Overheat + Body burns up even more
+  name_jp: Overheat + Body burns up even more
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Fire to Jammer, Deal 120% damage
+  desc_jp: Change Fire to Jammer, Deal 120% damage
+  max_atk_pct: 120
+  name_en: Black Flame
+  name_jp: Black Flame
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Spawn random 6 Fire orbs, Deal 130% damage
+  desc_jp: Spawn random 6 Fire orbs, Deal 130% damage
+  max_atk_pct: 130
+  name_en: Laevateinn
+  name_jp: Laevateinn
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Fire skyfall +25% for 99 turns + Change own attribute to Fire
+  desc_jp: Fire skyfall +25% for 99 turns + Change own attribute to Fire
+  max_atk_pct: null
+  name_en: Overheat + Body burns up even more
+  name_jp: Overheat + Body burns up even more
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Fire to Jammer, Deal 120% damage
+  desc_jp: Change Fire to Jammer, Deal 120% damage
+  max_atk_pct: 120
+  name_en: Black Flame
+  name_jp: Black Flame
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Spawn random 6 Fire orbs, Deal 130% damage
+  desc_jp: Spawn random 6 Fire orbs, Deal 130% damage
+  max_atk_pct: 130
+  name_en: Laevateinn
+  name_jp: Laevateinn
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -65,42 +173,6 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 79
-  name_jp: HP <= 79
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Delay active skills by 2 turns
-  desc_jp: Delay active skills by 2 turns
-  max_atk_pct: null
-  name_en: Muspell's Army
-  name_jp: Muspell's Army
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Fire skyfall +25% for 99 turns + Change own attribute to Fire
-  desc_jp: Fire skyfall +25% for 99 turns + Change own attribute to Fire
-  max_atk_pct: null
-  name_en: Overheat + Body burns up even more
-  name_jp: Overheat + Body burns up even more
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 20
   name_jp: HP <= 20
   one_time: false
@@ -120,25 +192,25 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESStatusShield -> Ragnarok Victor
 # Condition: One-time use
 # Voids status ailments for 999 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [368, 369, 652, 1344], target rnd 14
 # [7] ESAttackMultihit -> Last Flame
 # Condition: When < 20% hp
 # Enemy action
 # [8] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 80, target rnd 17
 # [9] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 20
 # [10] ESRandomSpawn -> Corona
 # Condition: One-time use & when Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Change all orbs to Fire
@@ -151,21 +223,21 @@ records:
 # [13] ESEndPath -> ESEndPath
 # end_turn
 # [14] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 7
 # [15] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [16] ESAttackMultihit -> You think you can beat me with that?
 # Enemy action
 # [17] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 9
 # [18] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [19] ESSkillDelay -> Muspell's Army
 # Delay active skills by 2 turns
 # [20] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 8, target rnd 10
 # [21] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1111
 # [22] SkillSet:
 # 	[0] ESSkyfall -> Overheat
 # 	Fire skyfall +25% for 99 turns

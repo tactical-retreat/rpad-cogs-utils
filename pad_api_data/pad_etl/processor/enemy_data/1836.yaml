@@ -35,44 +35,6 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Lock 1 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
-    Poison orbs, Deal 100% damage
-  desc_jp: Lock 1 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
-    Poison orbs, Deal 100% damage
-  max_atk_pct: 100
-  name_en: Medje Kick
-  name_jp: Medje Kick
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Delay active skills by 1 turns, Deal 80% damage
-  desc_jp: Delay active skills by 1 turns, Deal 80% damage
-  max_atk_pct: 80
-  name_en: Medje Tackle
-  name_jp: Medje Tackle
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Leader changes to random sub for 3 turns
   desc_jp: Leader changes to random sub for 3 turns
   max_atk_pct: null
@@ -85,8 +47,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 14
-  name_jp: HP <= 14
+  name_en: Turn 1
+  name_jp: Turn 1
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -103,8 +65,26 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 14
-  name_jp: HP <= 14
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind active skills for 5 turns
+  desc_jp: Bind active skills for 5 turns
+  max_atk_pct: null
+  name_en: Maga Maga
+  name_jp: Maga Maga
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -117,16 +97,54 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 14
+  name_jp: HP <= 14
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Lock 1 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 100% damage
+  desc_jp: Lock 1 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Medje Kick
+  name_jp: Medje Kick
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 14
+  name_jp: HP <= 14
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Delay active skills by 1 turns, Deal 80% damage
+  desc_jp: Delay active skills by 1 turns, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Medje Tackle
+  name_jp: Medje Tackle
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 7
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESOrbLock -> Medjetic Eye
 # Lock all Poison, Mortal Poison orbs
 # [5] ESBindAwoken -> Medjetic Eye
@@ -134,9 +152,9 @@ records:
 # [6] ESEndPath -> ESEndPath
 # end_turn
 # [7] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 12
 # [8] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 15, target rnd 16
 # [9] ESOrbLock -> Medje Kick
 # Condition: One-time use
 # Lock 1 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
@@ -145,17 +163,17 @@ records:
 # [11] ESEndPath -> ESEndPath
 # end_turn
 # [12] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 8
 # [13] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [14] ESLeaderSwap -> Medjellusion
 # Leader changes to random sub for 3 turns
 # [15] ESEndPath -> ESEndPath
 # end_turn
 # [16] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 19
 # [17] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [18] ESBindSkill -> Maga Maga
 # Bind active skills for 5 turns
 # [19] ESAttackMultihit -> Medje The End

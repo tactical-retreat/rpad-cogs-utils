@@ -35,11 +35,11 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Reduce damage from all sources by 75% for 1 turns
-  desc_jp: Reduce damage from all sources by 75% for 1 turns
-  max_atk_pct: null
-  name_en: Magatama of Yin and Yang
-  name_jp: Magatama of Yin and Yang
+  desc_en: Change all orbs to Jammer, Deal 60% damage
+  desc_jp: Change all orbs to Jammer, Deal 60% damage
+  max_atk_pct: 60
+  name_en: Sacred Grounds of the Green Earth
+  name_jp: Sacred Grounds of the Green Earth
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -49,6 +49,24 @@ records:
   max_atk_pct: null
   name_en: HP <= 49
   name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Spawn random 3 Wood, Heal orbs, Deal 140% damage
+  desc_jp: Spawn random 3 Wood, Heal orbs, Deal 140% damage
+  max_atk_pct: 140
+  name_en: Blue Wind of the Green Fate
+  name_jp: Blue Wind of the Green Fate
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute below actions in order repeatedly
+  name_jp: Execute below actions in order repeatedly
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -64,29 +82,11 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
-  desc_en: ''
-  desc_jp: ''
+  desc_en: Reduce damage from all sources by 75% for 1 turns
+  desc_jp: Reduce damage from all sources by 75% for 1 turns
   max_atk_pct: null
-  name_en: Execute below actions in order repeatedly
-  name_jp: Execute below actions in order repeatedly
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change all orbs to Jammer, Deal 60% damage
-  desc_jp: Change all orbs to Jammer, Deal 60% damage
-  max_atk_pct: 60
-  name_en: Sacred Grounds of the Green Earth
-  name_jp: Sacred Grounds of the Green Earth
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Spawn random 3 Wood, Heal orbs, Deal 140% damage
-  desc_jp: Spawn random 3 Wood, Heal orbs, Deal 140% damage
-  max_atk_pct: 140
-  name_en: Blue Wind of the Green Fate
-  name_jp: Blue Wind of the Green Fate
+  name_en: Magatama of Yin and Yang
+  name_jp: Magatama of Yin and Yang
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -95,15 +95,15 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] SkillSet:
 # 	[0] ESSkillDelay -> Visitor, come here but do not rush
 # 	Delay active skills by 2 turns
@@ -112,13 +112,13 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 21
 # [9] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 14
 # [10] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [11] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [2145, 2146, 2972], target rnd 13
 # [12] SkillSet:
 # 	[0] ESStatusShield -> Mountain Dragon God's Protection
 # 	Voids status ailments for 999 turns
@@ -130,9 +130,9 @@ records:
 # 	[1] ESBoardChangeAttackBits -> Sacred Grounds of the Green Earth
 # 	Change all orbs to Jammer
 # [14] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 17
 # [15] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [16] ESRandomSpawn -> Blue Wind of the Green Fate
 # Condition: When fire, water, light, dark, jammer, poison, mortal poison orbs are on the board
 # Spawn random 3 Wood, Heal orbs
@@ -143,15 +143,15 @@ records:
 # Condition: One-time use
 # Lock 6 random Fire, Water, Wood, Light, Dark orbs
 # [19] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b100
 # [20] ESBoardChangeAttackBits -> Sacred Grounds of the Green Earth
 # Change all orbs to Jammer
 # [21] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 26
 # [22] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1111
 # [23] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [2145, 2146, 2972], target rnd 25
 # [24] SkillSet:
 # 	[0] ESStatusShield -> Mountain Dragon God's Protection
 # 	Voids status ailments for 999 turns
@@ -167,15 +167,15 @@ records:
 # 	[2] ESDamageShield -> Magatama of Yin and Yang
 # 	Reduce damage from all sources by 75% for 1 turns
 # [26] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 8, target rnd 29
 # [27] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1111
 # [28] ESDamageShield -> Magatama of Yin and Yang
 # Reduce damage from all sources by 75% for 1 turns
 # [29] ESBoardChangeAttackBits -> Raging Wind of the Earth
 # Condition: One-time use
 # Change all orbs to Wood, Jammer, Poison
 # [30] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b1000
 # [31] ESOrbLock -> Summit Miracle
 # Lock 18 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs

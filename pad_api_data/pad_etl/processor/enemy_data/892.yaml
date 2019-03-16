@@ -29,24 +29,6 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change Random to Fire, Deal 125% damage
-  desc_jp: Change Random to Fire, Deal 125% damage
-  max_atk_pct: 125
-  name_en: Sunlight Bullet
-  name_jp: Sunlight Bullet
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 50
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 50
   name_jp: HP <= 50
   one_time: false
@@ -65,43 +47,34 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 30
-  name_jp: HP <= 30
+  name_en: HP <= 29
+  name_jp: HP <= 29
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Do nothing
-  desc_jp: Do nothing
-  max_atk_pct: null
-  name_en: Burn to ashes
-  name_jp: Burn to ashes
+  desc_en: Change Random to Fire, Deal 125% damage
+  desc_jp: Change Random to Fire, Deal 125% damage
+  max_atk_pct: 125
+  name_en: Sunlight Bullet
+  name_jp: Sunlight Bullet
   one_time: false
   record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 1000% damage
-  desc_jp: Deal 1000% damage
-  max_atk_pct: 1000
-  name_en: Grand Sun
-  name_jp: Grand Sun
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
+  usage_pct: 50
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 3
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 3, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 9
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] ESBindAttribute -> Flame Cage
 # Bind Wood cards for 3 turns
 # [7] ESOrbChangeAttack -> Lightning Arrow
@@ -112,16 +85,16 @@ records:
 # Condition: When < 50% hp , one-time use
 # Bind Devil cards for 3 turns
 # [10] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 30, target rnd 13
 # [11] ESOrbChangeAttack -> Sunlight Bullet
 # Condition: 50% chance
 # Change Random to Fire
 # [12] ESEndPath -> ESEndPath
 # end_turn
 # [13] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 17
 # [14] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [15] ESInactivity -> Burn to ashes
 # Condition: When < 30% hp
 # Do nothing

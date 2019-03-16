@@ -95,11 +95,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESBoardChangeAttackBits -> You'll regret coming here
 # 	Change all orbs to Fire, Water, Wood, Light, Dark, Jammer, Poison
@@ -108,9 +108,9 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [1257], target rnd 13
 # [7] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [1947], target rnd 16
 # [8] ESDamageShield -> Purple Soul Shield
 # Condition: When < 80% hp , one-time use
 # Reduce damage from all sources by 30% for 3 turns
@@ -126,14 +126,14 @@ records:
 # [12] ESEndPath -> ESEndPath
 # end_turn
 # [13] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 7
 # [14] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [15] ESSkillDelay -> You must have guts to face me!
 # Delay active skills by 1~2 turns
 # [16] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 8
 # [17] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [18] ESBindRandom -> You shall not pass
 # Bind 6 random cards for 2 turns

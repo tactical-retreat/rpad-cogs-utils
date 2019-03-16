@@ -57,11 +57,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESDebuffMovetime -> Be gentle with me
 # Movetime -2s for 5 turns
 # [5] ESEndPath -> ESEndPath
@@ -69,7 +69,7 @@ records:
 # [6] ESDebuffMovetime -> This is just the beginning
 # Movetime -3s for 3 turns
 # [7] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 30, target rnd 11
 # [8] ESBindAttack -> Beautiful World
 # Condition: One-time use
 # Bind 2 random for 1~2 turns
@@ -79,9 +79,9 @@ records:
 # [10] ESEndPath -> ESEndPath
 # end_turn
 # [11] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 15
 # [12] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [13] ESBindRandomSub -> High Temptation
 # Bind 4 random subs for 2~3 turns
 # [14] ESEndPath -> ESEndPath

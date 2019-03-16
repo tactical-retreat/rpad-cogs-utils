@@ -53,6 +53,24 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
+  desc_en: Spawn random 6 Jammer, Mortal Poison orbs, Deal 150% damage
+  desc_jp: Spawn random 6 Jammer, Mortal Poison orbs, Deal 150% damage
+  max_atk_pct: 150
+  name_en: The End of Halloween
+  name_jp: The End of Halloween
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
   desc_en: Lock 15 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
     Poison orbs, Deal 100% damage
   desc_jp: Lock 15 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
@@ -81,48 +99,12 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 0
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Delay active skills by 2~5 turns + Change Heal to Jammer
-  desc_jp: Delay active skills by 2~5 turns + Change Heal to Jammer
-  max_atk_pct: null
-  name_en: Wicked Smile + Cauchemar Pumpkin
-  name_jp: Wicked Smile + Cauchemar Pumpkin
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Spawn random 6 Jammer, Mortal Poison orbs, Deal 150% damage
-  desc_jp: Spawn random 6 Jammer, Mortal Poison orbs, Deal 150% damage
-  max_atk_pct: 150
-  name_en: The End of Halloween
-  name_jp: The End of Halloween
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESDebuffRCV -> Bad Halloween!
@@ -136,9 +118,9 @@ records:
 # 	[1] ESLeaderSwap -> Medje Trick or Treat
 # 	Leader changes to random sub for 3 turns
 # [4] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 20, target rnd 14
 # [5] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 50, target rnd 10
 # [6] ESOrbLock -> Patched Sweet Memories
 # Condition: 33% chance
 # Lock 15 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
@@ -151,9 +133,9 @@ records:
 # [9] ESEndPath -> ESEndPath
 # end_turn
 # [10] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [11] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [12] SkillSet:
 # 	[0] ESSkillDelay -> Wicked Smile
 # 	Delay active skills by 2~5 turns
@@ -167,12 +149,12 @@ records:
 # [15] ESEndPath -> ESEndPath
 # end_turn
 # [16] ESNone -> ESNone
-# None
+# nothing
 # [17] ESNone -> ESNone
-# None
+# nothing
 # [18] ESNone -> ESNone
-# None
+# nothing
 # [19] ESNone -> ESNone
-# None
+# nothing
 # [20] ESEndPath -> ESEndPath
 # end_turn
