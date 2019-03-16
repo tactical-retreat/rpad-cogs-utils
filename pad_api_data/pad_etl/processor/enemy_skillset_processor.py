@@ -100,8 +100,10 @@ class Context(object):
         self.cards = set()
         # Turns of enrage, initial:None -> (enrage cooldown period:int<0 ->) enrage:int>0 -> expire:int=0
         self.enraged = None
-        # Turns of shield, initial:int=0 -> shield up:int>0 -> expire:int=0
+        # Turns of damage shield, initial:int=0 -> shield up:int>0 -> expire:int=0
         self.damage_shield = 0
+        # Turns of status shield, initial:int=0 -> shield up:int>0 -> expire:int=0
+        self.status_shield = 0
 
     def reset(self):
         self.is_preemptive = False
@@ -121,6 +123,9 @@ class Context(object):
         if self.damage_shield > 0:
             # count down shield turns
             self.damage_shield -= 1
+        if self.status_shield > 0:
+            # count down shield turns
+            self.status_shield -= 1
         if self.countdown:
             if self.counter > 0:
                 self.counter -= 1
@@ -147,6 +152,12 @@ class Context(object):
         elif b_type == ESDamageShield:
             if self.damage_shield == 0:
                 self.damage_shield = behavior.turns
+                return True
+            else:
+                return False
+        elif b_type == ESStatusShield:
+            if self.status_shield == 0:
+                self.status_shield = behavior.turns
                 return True
             else:
                 return False
