@@ -152,6 +152,7 @@ class Context(object):
                 return False
         return True
 
+
 def default_attack():
     """Indicates that the monster uses its standard attack."""
     return ESDefaultAttack()
@@ -215,8 +216,8 @@ def loop_through(ctx: Context, behaviors: List[Any]):
         # items into results.
         if b_type == EnemySkillUnknown or issubclass(b_type, ESAction):
             # Check if we should execute this action at all.
-            cond = b.condition
-            if cond:
+            if skill_has_condition(b):
+                cond = b.condition
                 # HP based checks.
                 if cond.hp_threshold and ctx.hp >= cond.hp_threshold:
                     idx += 1
@@ -523,7 +524,6 @@ def convert(enemy_behavior: List, level: int):
                 skillset.timed_skill_groups.append(TimedSkillGroup(idx + 1, hp, hp_behavior))
                 # looped_behavior.append((hp, hp_behavior))
 
-
     # Simulate enemies being defeated
     if has_enemy_remaining_branch:
         default_enemy_action = loop_through(ctx, behaviors)
@@ -578,6 +578,7 @@ def clean_skillset(skillset: ProcessedSkillset):
     # for some monsters with mostly empty/broken behavior.
     def has_action(skills):
         return any([type(s) != ESDefaultAttack for s in skills])
+
     def group_has_action(group):
         return any([has_action(sg.skills) for sg in group])
 
@@ -665,6 +666,7 @@ def extract_levels(enemy_behavior: List[Any]):
             levels.add(b.level)
     return levels
 
+
 def skill_has_nonpct_condition(es):
     """Detects if a skill activates always or on a %, vs onetime/thresholded."""
     if not skill_has_condition(es):
@@ -672,6 +674,7 @@ def skill_has_nonpct_condition(es):
     # Is checking the threshold here right? Maybe it should just be checking one_time.
     # Or maybe it's redundant.
     return es.condition.hp_threshold or es.condition.one_time
+
 
 def skill_has_condition(es):
     if not hasattr(es, 'condition'):
