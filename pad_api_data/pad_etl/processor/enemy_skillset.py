@@ -502,11 +502,13 @@ class ESAttackSinglehit(ESAction):
             attack=ESAttack.new_instance(atk_multiplier)
         )
 
+
 class ESDefaultAttack(ESAttackSinglehit):
     """Not a real behavior, used in place of a behavior when none is detected.
 
     Implies that a monster uses its normal attack.
     """
+
     def __init__(self):
         skill = DictWithAttributeAccess({
             'enemy_skill_id': 1,
@@ -1500,7 +1502,7 @@ class ESSetCounterIf(ESLogic):
 
     @property
     def description(self):
-        return 'counter {} {} if counter = {}'.format(self.set, self.counter, self.counter_is)
+        return 'counter {} {} if counter = {}'.format(self.effect, self.counter, self.counter_is)
 
 
 class ESBranch(ESLogic):
@@ -1617,10 +1619,13 @@ class ESBranchRemainingEnemies(ESBranch):
 # Unknown
 class EnemySkillUnknown(pad_util.JsonDictEncodable):
     def __init__(self, skill):
-        self.es_id = es_id(skill)
+        self.enemy_skill_id = es_id(skill)
         self.name = name(skill)
         self.type = es_type(skill)
+        self.description = 'unknown'
 
+    def full_description(self):
+        return self.description
 
 BEHAVIOR_MAP = {
     # SKILLS
@@ -1739,6 +1744,21 @@ PASSIVE_MAP = {
     118: ESTypeResist,
 }
 
+_FORCE_ONE_TIME = [
+    88
+]
+
+_FORCE_HP_THRESHOLD = {
+    87: 0,
+}
+
+
+def apply_es_overrides(es):
+    if es.enemy_skill_id in _FORCE_ONE_TIME:
+        es.condition.one_time = True
+    if es.enemy_skill_id in _FORCE_HP_THRESHOLD:
+        es.condition.hp_threshold = _FORCE_HP_THRESHOLD[es.enemy_skill_id] or None
+
 
 def extract_behavior(enemy_skillset):
     if enemy_skill_map is None:
@@ -1747,11 +1767,13 @@ def extract_behavior(enemy_skillset):
     for skill in enemy_skillset:
         skill_type = es_type(skill)
         if skill_type in BEHAVIOR_MAP:
-            behavior.append(BEHAVIOR_MAP[skill_type](skill))
+            new_es = BEHAVIOR_MAP[skill_type](skill)
         elif skill_type in PASSIVE_MAP:
-            behavior.append(PASSIVE_MAP[skill_type](skill))
+            new_es = PASSIVE_MAP[skill_type](skill)
         else:  # skills not parsed
-            behavior.append(EnemySkillUnknown(skill))
+            new_es = EnemySkillUnknown(skill)
+        apply_es_overrides(new_es)
+        behavior.append(new_es)
     return behavior
 
 

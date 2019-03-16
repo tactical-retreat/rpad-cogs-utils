@@ -208,8 +208,8 @@ def loop_through(ctx: Context, behaviors: List[Any]):
         # items into results.
         if b_type == EnemySkillUnknown or issubclass(b_type, ESAction):
             # Check if we should execute this action at all.
-            cond = b.condition
-            if cond:
+            if skill_has_condition(b):
+                cond = b.condition
                 # HP based checks.
                 if cond.hp_threshold and ctx.hp >= cond.hp_threshold:
                     idx += 1
@@ -356,9 +356,9 @@ def info_from_behaviors(behaviors):
             hp_checkpoints.add(es.branch_value - 1)
 
         # Find candidate action HP values
-        if hasattr(es, 'condition'):
+        if skill_has_condition(es):
             cond = es.condition
-            if cond.hp_threshold:
+            if cond and cond.hp_threshold:
                 hp_checkpoints.add(cond.hp_threshold)
                 hp_checkpoints.add(cond.hp_threshold - 1)
 
@@ -541,7 +541,7 @@ def convert(enemy_behavior: List, level: int):
 
 def extract_hp_threshold(es):
     """If the action has a HP threshold, extracts it."""
-    if hasattr(es, 'condition'):
+    if skill_has_condition(es):
         c = es.condition
         if hasattr(c, 'hp_threshold'):
             return c.hp_threshold
@@ -609,14 +609,15 @@ def clean_skillset(skillset: ProcessedSkillset):
     def extract_moveset(hp_group):
         return [s for s in hp_group.skills if not skill_has_nonpct_condition(s)]
 
-    cur_moveset = extract_moveset(skillset.hp_skill_groups[0])
-    for hp_group in skillset.hp_skill_groups[1:]:
-        check_moveset = extract_moveset(hp_group)
-        if check_moveset == cur_moveset:
-            for move in cur_moveset:
-                hp_group.skills.remove(move)
-        elif check_moveset:
-            cur_moveset = check_moveset
+    if skillset.hp_skill_groups:
+        cur_moveset = extract_moveset(skillset.hp_skill_groups[0])
+        for hp_group in skillset.hp_skill_groups[1:]:
+            check_moveset = extract_moveset(hp_group)
+            if check_moveset == cur_moveset:
+                for move in cur_moveset:
+                    hp_group.skills.remove(move)
+            elif check_moveset:
+                cur_moveset = check_moveset
 
     # Iterate over every skillset group and remove now-empty ones
     skillset.timed_skill_groups = [x for x in skillset.timed_skill_groups if x.skills]
@@ -641,8 +642,13 @@ def extract_levels(enemy_behavior: List[Any]):
 
 def skill_has_nonpct_condition(es):
     """Detects if a skill activates always or on a %, vs onetime/thresholded."""
-    if not hasattr(es, 'condition'):
+    if not skill_has_condition(es):
         return False
     # Is checking the threshold here right? Maybe it should just be checking one_time.
     # Or maybe it's redundant.
     return es.condition.hp_threshold or es.condition.one_time
+
+def skill_has_condition(es):
+    if not hasattr(es, 'condition'):
+        return False
+    return es.condition is not None
