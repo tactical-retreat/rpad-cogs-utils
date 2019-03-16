@@ -38,46 +38,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Voids status ailments for 1 turns + Bind 1 both leaders for 1 turns
-  desc_jp: Voids status ailments for 1 turns + Bind 1 both leaders for 1 turns
-  max_atk_pct: null
-  name_en: Impassive + Hold Twin
-  name_jp: Impassive + Hold Twin
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change 1st, 3rd, 5th row to Water orbs, 2nd, 4th row to Fire orbs, Deal
-    220% damage
-  desc_jp: Change 1st, 3rd, 5th row to Water orbs, 2nd, 4th row to Fire orbs, Deal
-    220% damage
-  max_atk_pct: 220
-  name_en: Blue-to-Red Stitch Puppetry
-  name_jp: Blue-to-Red Stitch Puppetry
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -110,6 +72,44 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 35
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Voids status ailments for 1 turns + Bind 1 both leaders for 1 turns
+  desc_jp: Voids status ailments for 1 turns + Bind 1 both leaders for 1 turns
+  max_atk_pct: null
+  name_en: Impassive + Hold Twin
+  name_jp: Impassive + Hold Twin
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change 1st, 3rd, 5th row to Water orbs, 2nd, 4th row to Fire orbs, Deal
+    220% damage
+  desc_jp: Change 1st, 3rd, 5th row to Water orbs, 2nd, 4th row to Fire orbs, Deal
+    220% damage
+  max_atk_pct: 220
+  name_en: Blue-to-Red Stitch Puppetry
+  name_jp: Blue-to-Red Stitch Puppetry
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -128,7 +128,7 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 11
+# Branch on hp < 50, target rnd 11
 # [7] SkillSet:
 # 	Condition: 40% chance
 # 	[0] ESChangeAttribute -> Elemental Flip

@@ -29,8 +29,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -65,38 +65,20 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: HP <= 49
+  name_jp: HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Do nothing + Enemy action
-  desc_jp: Do nothing + Enemy action
+  desc_en: Leader changes to random sub for 1 turns
+  desc_jp: Leader changes to random sub for 1 turns
   max_atk_pct: null
-  name_en: Rider Jump + Rider Kick
-  name_jp: Rider Jump + Rider Kick
+  name_en: Rider Throw
+  name_jp: Rider Throw
   one_time: false
   record_type_name: ACTION
-  usage_pct: 34
-- !SkillRecord
-  desc_en: Do nothing + Enemy action
-  desc_jp: Do nothing + Enemy action
-  max_atk_pct: null
-  name_en: Rider Jump + Rider Punch
-  name_jp: Rider Jump + Rider Punch
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 33
-- !SkillRecord
-  desc_en: Do nothing + Enemy action
-  desc_jp: Do nothing + Enemy action
-  max_atk_pct: null
-  name_en: Rider Jump + Rider Chop
-  name_jp: Rider Jump + Rider Chop
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 33
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -104,14 +86,14 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 4
+# Branch on level > 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESStatusShield -> Multi Eye
 # Condition: One-time use
 # Voids status ailments for 999 turns
 # [5] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 10
+# Branch on hp < 50, target rnd 10
 # [6] SkillSet:
 # 	Condition: 34% chance
 # 	[0] ESInactivity -> Rider Jump
@@ -133,7 +115,7 @@ records:
 # [9] ESEndPath -> ESEndPath
 # end_turn
 # [10] ESBranchHP -> ESBranchHP
-# Branch on hp = 20, target rnd 15
+# Branch on hp < 20, target rnd 15
 # [11] ESBranchFlag -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
 # [12] ESFlagOperation -> ESFlagOperation

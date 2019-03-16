@@ -31,26 +31,26 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
+  name_en: HP <= 50
+  name_jp: HP <= 50
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Seal 5th row for 4 turns
-  desc_jp: Seal 5th row for 4 turns
+  desc_en: Absorb combo <= 6 damage for 6 turns
+  desc_jp: Absorb combo <= 6 damage for 6 turns
   max_atk_pct: null
-  name_en: Lingering Snaketracks
-  name_jp: Lingering Snaketracks
-  one_time: false
+  name_en: Vitality Spiral
+  name_jp: Vitality Spiral
+  one_time: true
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
+  name_en: HP <= 19
+  name_jp: HP <= 19
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -69,26 +69,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Absorb combo <= 6 damage for 6 turns
-  desc_jp: Absorb combo <= 6 damage for 6 turns
-  max_atk_pct: null
-  name_en: Vitality Spiral
-  name_jp: Vitality Spiral
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: HP <= 19
+  name_jp: HP <= 19
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -101,6 +83,51 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute below actions in order repeatedly
+  name_jp: Execute below actions in order repeatedly
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Random 6 to Poison, Deal 50% damage
+  desc_jp: Change Random 6 to Poison, Deal 50% damage
+  max_atk_pct: 50
+  name_en: Harmful Poison
+  name_jp: Harmful Poison
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change 1st, 5th row to Water orbs, Deal 100% damage
+  desc_jp: Change 1st, 5th row to Water orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Crystal Stream
+  name_jp: Crystal Stream
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  max_atk_pct: null
+  name_en: Harmful Ocean
+  name_jp: Harmful Ocean
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 200% damage (4 hits, 50% each)
+  desc_jp: Deal 200% damage (4 hits, 50% each)
+  max_atk_pct: 200
+  name_en: Dragon Stream
+  name_jp: Dragon Stream
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -108,7 +135,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 4
+# Branch on level > 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
@@ -127,7 +154,7 @@ records:
 # [9] ESFlagOperation -> ESFlagOperation
 # flag SET 0b11
 # [10] ESBranchHP -> ESBranchHP
-# Branch on hp = 90, target rnd 12
+# Branch on hp < 90, target rnd 12
 # [11] ESAttackUp -> Viper Tree Ascension
 # Increase damage to 200% for the next 8 turns
 # [12] ESOrbSealRow -> Lingering Snaketracks
@@ -137,7 +164,7 @@ records:
 # [14] ESBranchFlag -> ESBranchFlag
 # Branch on flag & 32, target rnd 30
 # [15] ESBranchHP -> ESBranchHP
-# Branch on hp = 20, target rnd 28
+# Branch on hp < 20, target rnd 28
 # [16] ESAbsorbCombo -> Vitality Spiral
 # Condition: When < 50% hp , one-time use
 # Absorb combo <= 6 damage for 6 turns

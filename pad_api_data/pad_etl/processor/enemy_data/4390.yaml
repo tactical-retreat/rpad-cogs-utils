@@ -29,8 +29,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
+  name_en: HP <= 49
+  name_jp: HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -51,8 +51,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
+  name_en: Execute below actions in order repeatedly
+  name_jp: Execute below actions in order repeatedly
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -64,15 +64,6 @@ records:
   name_jp: Vorpal Blade + Riot Gun
   one_time: false
   record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 3
-  name_jp: Turn 3
-  one_time: false
-  record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
   desc_en: Change 2nd, 3rd, 4th row to Fire, Jammer orbs + Lock all Fire, Water, Wood,
@@ -86,20 +77,38 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
-  desc_en: ''
-  desc_jp: ''
+  desc_en: Bind 2 random for 3 turns + Delay active skills by 1~2 turns
+  desc_jp: Bind 2 random for 3 turns + Delay active skills by 1~2 turns
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: Thunder Reign + Panta Rhei
+  name_jp: Thunder Reign + Panta Rhei
   one_time: false
-  record_type_name: DIVIDER
+  record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
-  desc_en: Enemy action + Enemy action
-  desc_jp: Enemy action + Enemy action
+  desc_en: Blind random 5 orbs for 2 turns + Bind awoken skills for 2 turns
+  desc_jp: Blind random 5 orbs for 2 turns + Bind awoken skills for 2 turns
   max_atk_pct: null
-  name_en: Vorpal Blade + Riot Gun
-  name_jp: Vorpal Blade + Riot Gun
+  name_en: Psycho Force + Atomic Flare
+  name_jp: Psycho Force + Atomic Flare
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Player -50% HP + Player -50% HP
+  desc_jp: Player -50% HP + Player -50% HP
+  max_atk_pct: null
+  name_en: Divine Judgement + Demonic Decree
+  name_jp: Divine Judgement + Demonic Decree
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 300% damage (10 hits, 30% each)
+  desc_jp: Deal 300% damage (10 hits, 30% each)
+  max_atk_pct: 300
+  name_en: All-Out Attack
+  name_jp: All-Out Attack
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -110,9 +119,9 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 1
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 5
+# Branch on level > 4, target rnd 5
 # [3] ESBranchLevel -> ESBranchLevel
-# Branch on level = 3, target rnd 31
+# Branch on level < 3, target rnd 31
 # [4] ESEndPath -> ESEndPath
 # end_turn
 # [5] SkillSet:
@@ -122,11 +131,11 @@ records:
 # 	[1] ESGravity -> Let's go!
 # 	Player -50% HP
 # [6] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 26
+# Branch on hp < 50, target rnd 26
 # [7] ESSetCounter -> ESSetCounter
 # counter + 1
 # [8] ESBranchCounter -> ESBranchCounter
-# Branch on counter = 2, target rnd 11
+# Branch on counter > 2, target rnd 11
 # [9] SkillSet:
 # 	[0] ESAttackMultihit -> Vorpal Blade
 # 	Enemy action
@@ -135,7 +144,7 @@ records:
 # [10] ESEndPath -> ESEndPath
 # end_turn
 # [11] ESBranchCounter -> ESBranchCounter
-# Branch on counter = 3, target rnd 14
+# Branch on counter > 3, target rnd 14
 # [12] SkillSet:
 # 	[0] ESRowSpawnMulti -> Blazing Hell
 # 	Change 2nd, 3rd, 4th row to Fire, Jammer orbs
@@ -144,7 +153,7 @@ records:
 # [13] ESEndPath -> ESEndPath
 # end_turn
 # [14] ESBranchCounter -> ESBranchCounter
-# Branch on counter = 4, target rnd 17
+# Branch on counter > 4, target rnd 17
 # [15] SkillSet:
 # 	[0] ESBindAttack -> Thunder Reign
 # 	Bind 2 random for 3 turns
@@ -153,7 +162,7 @@ records:
 # [16] ESEndPath -> ESEndPath
 # end_turn
 # [17] ESBranchCounter -> ESBranchCounter
-# Branch on counter = 5, target rnd 20
+# Branch on counter > 5, target rnd 20
 # [18] SkillSet:
 # 	[0] ESBlindStickyRandom -> Psycho Force
 # 	Blind random 5 orbs for 2 turns
@@ -162,7 +171,7 @@ records:
 # [19] ESEndPath -> ESEndPath
 # end_turn
 # [20] ESBranchCounter -> ESBranchCounter
-# Branch on counter = 6, target rnd 23
+# Branch on counter > 6, target rnd 23
 # [21] SkillSet:
 # 	[0] ESGravity -> Divine Judgement
 # 	Player -50% HP

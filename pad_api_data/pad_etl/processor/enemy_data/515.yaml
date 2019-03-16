@@ -66,6 +66,78 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
+  desc_en: Player -50% HP + Enemy action
+  desc_jp: Player -50% HP + Enemy action
+  max_atk_pct: null
+  name_en: Bash + Double Slash
+  name_jp: Bash + Double Slash
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 90
+  name_jp: HP <= 90
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Absorb combo <= 5 damage for 10 turns
+  desc_jp: Absorb combo <= 5 damage for 10 turns
+  max_atk_pct: null
+  name_en: Test of Skill
+  name_jp: Test of Skill
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 80
+  name_jp: HP <= 80
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: 2x3 cloud appear for 10 turns at 2nd row, 3rd column
+  desc_jp: 2x3 cloud appear for 10 turns at 2nd row, 3rd column
+  max_atk_pct: null
+  name_en: Test of Perception
+  name_jp: Test of Perception
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 70
+  name_jp: HP <= 70
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Movetime 50% for 10 turns
+  desc_jp: Movetime 50% for 10 turns
+  max_atk_pct: null
+  name_en: Test of Speed
+  name_jp: Test of Speed
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
   desc_en: Enemy recover 100% hp + Change own attribute to random one of Fire, Water,
     Wood, Light, Dark
   desc_jp: Enemy recover 100% hp + Change own attribute to random one of Fire, Water,
@@ -80,8 +152,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 94
-  name_jp: HP <= 94
+  name_en: HP <= 49
+  name_jp: HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -100,8 +172,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 94
-  name_jp: HP <= 94
+  name_en: HP <= 49
+  name_jp: HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -118,39 +190,19 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 60
-  name_jp: HP <= 60
+  name_en: HP <= 20
+  name_jp: HP <= 20
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Absorb combo <= 5 damage for 10 turns + 2x3 cloud appear for 10 turns at
-    2nd row, 3rd column + Movetime 50% for 10 turns + Increase damage to 150% for
-    the next 10 turns
-  desc_jp: Absorb combo <= 5 damage for 10 turns + 2x3 cloud appear for 10 turns at
-    2nd row, 3rd column + Movetime 50% for 10 turns + Increase damage to 150% for
-    the next 10 turns
+  desc_en: Change own attribute to random one of Fire, Water, Wood, Light, Dark +
+    Enemy action
+  desc_jp: Change own attribute to random one of Fire, Water, Wood, Light, Dark +
+    Enemy action
   max_atk_pct: null
-  name_en: Test of Skill + Test of Perception + Test of Speed + Test of Endurance
-  name_jp: Test of Skill + Test of Perception + Test of Speed + Test of Endurance
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Player -50% HP + Enemy action
-  desc_jp: Player -50% HP + Enemy action
-  max_atk_pct: null
-  name_en: Bash + Double Slash
-  name_jp: Bash + Double Slash
+  name_en: Sweeping Spirit Garments + Saintly Valkyrie Blade
+  name_jp: Sweeping Spirit Garments + Saintly Valkyrie Blade
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -174,9 +226,9 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchHP -> ESBranchHP
-# Branch on hp = 95, target rnd 27
+# Branch on hp > 95, target rnd 27
 # [7] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 20
+# Branch on hp < 50, target rnd 20
 # [8] SkillSet:
 # 	Condition: When < 60% hp , one-time use
 # 	[0] ESAbsorbCombo -> Test of Skill

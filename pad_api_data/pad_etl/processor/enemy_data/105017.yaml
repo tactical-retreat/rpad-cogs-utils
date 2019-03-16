@@ -33,44 +33,35 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Bind awoken skills for 1 turns
-  desc_jp: Bind awoken skills for 1 turns
-  max_atk_pct: null
-  name_en: Rule Breaker
-  name_jp: Rule Breaker
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Do nothing + Enemy action
-  desc_jp: Do nothing + Enemy action
-  max_atk_pct: null
-  name_en: Are you surprised? + This is my Noble Phantasm, Rule Breaker.
-  name_jp: Are you surprised? + This is my Noble Phantasm, Rule Breaker.
+  desc_en: Change Random to Dark, Deal 95% damage
+  desc_jp: Change Random to Dark, Deal 95% damage
+  max_atk_pct: 95
+  name_en: How does that feel?
+  name_jp: How does that feel?
   one_time: false
   record_type_name: ACTION
-  usage_pct: 100
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Deal 120% damage (3 hits, 40% each)
+  desc_jp: Deal 120% damage (3 hits, 40% each)
+  max_atk_pct: 120
+  name_en: I have no use for you,
+  name_jp: I have no use for you,
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
+  name_en: HP <= 50
+  name_jp: HP <= 50
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -93,23 +84,32 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change Random to Dark, Deal 95% damage
-  desc_jp: Change Random to Dark, Deal 95% damage
-  max_atk_pct: 95
-  name_en: How does that feel?
-  name_jp: How does that feel?
+  desc_en: Bind awoken skills for 1 turns
+  desc_jp: Bind awoken skills for 1 turns
+  max_atk_pct: null
+  name_en: Rule Breaker
+  name_jp: Rule Breaker
   one_time: false
   record_type_name: ACTION
-  usage_pct: 50
+  usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 120% damage (3 hits, 40% each)
-  desc_jp: Deal 120% damage (3 hits, 40% each)
-  max_atk_pct: 120
-  name_en: I have no use for you,
-  name_jp: I have no use for you,
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Do nothing + Enemy action
+  desc_jp: Do nothing + Enemy action
+  max_atk_pct: null
+  name_en: Are you surprised? + This is my Noble Phantasm, Rule Breaker.
+  name_jp: Are you surprised? + This is my Noble Phantasm, Rule Breaker.
   one_time: false
   record_type_name: ACTION
-  usage_pct: 50
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -117,7 +117,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 4
+# Branch on level > 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
@@ -130,9 +130,9 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchHP -> ESBranchHP
-# Branch on hp = 20, target rnd 14
+# Branch on hp < 20, target rnd 14
 # [9] ESBranchHP -> ESBranchHP
-# Branch on hp = 51, target rnd 11
+# Branch on hp > 51, target rnd 11
 # [10] ESGravity -> You are a nuisance, so die!
 # Condition: One-time use
 # Player -99% HP

@@ -143,8 +143,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 75
-  name_jp: HP <= 75
+  name_en: HP <= 16
+  name_jp: HP <= 16
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -155,6 +155,24 @@ records:
   name_en: Delta Drive
   name_jp: Delta Drive
   one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 15
+  name_jp: HP <= 15
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change 1st, 3rd, 5th column to Fire, Wood orbs, Deal 350% damage
+  desc_jp: Change 1st, 3rd, 5th column to Fire, Wood orbs, Deal 350% damage
+  max_atk_pct: 350
+  name_en: Cross Stinger Assault
+  name_jp: Cross Stinger Assault
+  one_time: false
   record_type_name: ACTION
   usage_pct: 100
 
@@ -168,9 +186,9 @@ records:
 # Condition: One-time use
 # Absorb combo <= 4 damage for 5 turns
 # [3] ESBranchHP -> ESBranchHP
-# Branch on hp = 76, target rnd 9
+# Branch on hp > 76, target rnd 9
 # [4] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 13
+# Branch on hp < 50, target rnd 13
 # [5] SkillSet:
 # 	Condition: 15% chance
 # 	[0] ESSpinnersRandom -> Hooligan Combination
@@ -218,7 +236,7 @@ records:
 # Condition: One-time use
 # Increase damage to 150% for the next 5 turns
 # [14] ESBranchHP -> ESBranchHP
-# Branch on hp = 16, target rnd 5
+# Branch on hp > 16, target rnd 5
 # [15] ESColumnSpawnMulti -> Cross Stinger Assault
 # Change 1st, 3rd, 5th column to Fire, Wood orbs
 # [16] ESEndPath -> ESEndPath

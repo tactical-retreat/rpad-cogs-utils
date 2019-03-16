@@ -121,6 +121,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Absorb combo <= 7 damage for 3 turns
+  desc_jp: Absorb combo <= 7 damage for 3 turns
+  max_atk_pct: null
+  name_en: Let me enjoy this!
+  name_jp: Let me enjoy this!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 20
   name_jp: HP <= 20
   one_time: false
@@ -156,11 +174,11 @@ records:
 # Condition: When < 99% hp , one-time use
 # Delay active skills by 1~4 turns
 # [7] ESBranchHP -> ESBranchHP
-# Branch on hp = 80, target rnd 19
+# Branch on hp > 80, target rnd 19
 # [8] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 21
+# Branch on hp > 50, target rnd 21
 # [9] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 15
+# Branch on hp < 50, target rnd 15
 # [10] ESAttackMultihit -> Jaw of Rage
 # Condition: When < 20% hp
 # Enemy action

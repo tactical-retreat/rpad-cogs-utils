@@ -76,26 +76,17 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
+  name_en: Turn 3
+  name_jp: Turn 3
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Lock 1 random Poison, Mortal Poison orbs, Deal 160% damage
-  desc_jp: Lock 1 random Poison, Mortal Poison orbs, Deal 160% damage
-  max_atk_pct: 160
-  name_en: Dead Judgment
-  name_jp: Dead Judgment
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 50
-- !SkillRecord
-  desc_en: Change Random 6 to Poison, Deal 160% damage
-  desc_jp: Change Random 6 to Poison, Deal 160% damage
-  max_atk_pct: 160
-  name_en: Poison Thorn
-  name_jp: Poison Thorn
+  desc_en: Enemy recover 100% hp + Reduce damage from all sources by 75% for 10 turns
+  desc_jp: Enemy recover 100% hp + Reduce damage from all sources by 75% for 10 turns
+  max_atk_pct: null
+  name_en: Color of Life + Naglfar
+  name_jp: Color of Life + Naglfar
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -123,6 +114,24 @@ records:
   max_atk_pct: 160
   name_en: Poison Thorn
   name_jp: Poison Thorn
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Player -99% HP + Delay active skills by 2~6 turns
+  desc_jp: Player -99% HP + Delay active skills by 2~6 turns
+  max_atk_pct: null
+  name_en: Color of Death + Nightmare
+  name_jp: Color of Death + Nightmare
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -173,7 +182,7 @@ records:
 # 	[1] ESAttackMultihit -> Garm's Rotten Fangs
 # 	Enemy action
 # [8] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 13
+# Branch on hp < 50, target rnd 13
 # [9] ESSetCounter -> ESSetCounter
 # counter + 1
 # [10] ESOrbLock -> Dead Judgment
@@ -188,7 +197,7 @@ records:
 # [14] ESFlagOperation -> ESFlagOperation
 # flag SET 0b11
 # [15] ESBranchCounter -> ESBranchCounter
-# Branch on counter = 2, target rnd 17
+# Branch on counter > 2, target rnd 17
 # [16] SkillSet:
 # 	[0] ESRecoverEnemy -> Color of Life
 # 	Enemy recover 100% hp

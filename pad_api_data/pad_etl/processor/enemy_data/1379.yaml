@@ -20,15 +20,42 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 3
-  name_jp: Turn 3
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Increase damage to 200% for the next 999 turns
-  desc_jp: Increase damage to 200% for the next 999 turns
+  desc_en: Change Random to Jammer, Deal 75% damage
+  desc_jp: Change Random to Jammer, Deal 75% damage
+  max_atk_pct: 75
+  name_en: '***** (Dragon Ball)'
+  name_jp: '***** (Dragon Ball)'
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
   max_atk_pct: null
+  name_en: HP <= 75
+  name_jp: HP <= 75
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  max_atk_pct: null
+  name_en: '***** (Dragon Ball)'
+  name_jp: '***** (Dragon Ball)'
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 250% damage
+  desc_jp: Deal 250% damage
+  max_atk_pct: 250
   name_en: '***** (Dragon Ball)'
   name_jp: '***** (Dragon Ball)'
   one_time: false
@@ -79,24 +106,6 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change Random to Jammer, Deal 75% damage
-  desc_jp: Change Random to Jammer, Deal 75% damage
-  max_atk_pct: 75
-  name_en: '***** (Dragon Ball)'
-  name_jp: '***** (Dragon Ball)'
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 50
 
 ############################################################
 ### Raw Behavior
@@ -104,16 +113,16 @@ records:
 # [1] ESNone -> ESNone
 # nothing
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 5, target rnd 4
+# Branch on level > 5, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchHP -> ESBranchHP
-# Branch on hp = 75, target rnd 10
+# Branch on hp < 75, target rnd 10
 # [5] ESAttackUp -> ***** (Dragon Ball)
 # Condition: When < 50% hp
 # Increase damage to 200% for the next 999 turns
 # [6] ESBranchHP -> ESBranchHP
-# Branch on hp = 20, target rnd 17
+# Branch on hp < 20, target rnd 17
 # [7] ESBlind -> ***** (Dragon Ball)
 # Condition: When < 50% hp , one-time use
 # Blind all orbs on the board

@@ -56,60 +56,6 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Enemy recover 30% hp
-  desc_jp: Enemy recover 30% hp
-  max_atk_pct: null
-  name_en: Supernatural
-  name_jp: Supernatural
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change 4th row to Wood, Jammer orbs, Deal 80% damage
-  desc_jp: Change 4th row to Wood, Jammer orbs, Deal 80% damage
-  max_atk_pct: 80
-  name_en: Earthlight Blade
-  name_jp: Earthlight Blade
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 30
-- !SkillRecord
-  desc_en: Bind active skills for 2 turns, Deal 90% damage
-  desc_jp: Bind active skills for 2 turns, Deal 90% damage
-  max_atk_pct: 90
-  name_en: Earth Dragon Binding
-  name_jp: Earth Dragon Binding
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 30
-- !SkillRecord
-  desc_en: Deal 100% damage
-  desc_jp: Deal 100% damage
-  max_atk_pct: 100
-  name_en: Disable Skill
-  name_jp: Disable Skill
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 30
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -142,6 +88,24 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 30
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy recover 30% hp
+  desc_jp: Enemy recover 30% hp
+  max_atk_pct: null
+  name_en: Supernatural
+  name_jp: Supernatural
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
@@ -183,7 +147,7 @@ records:
 # Condition: When < 20% hp
 # Player -100% HP
 # [9] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 14
+# Branch on hp < 50, target rnd 14
 # [10] ESRowSpawnMulti -> Earthlight Blade
 # Condition: 30% chance
 # Change 4th row to Wood, Jammer orbs

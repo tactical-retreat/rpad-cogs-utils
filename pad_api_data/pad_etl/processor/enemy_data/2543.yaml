@@ -35,60 +35,6 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Reduce damage from all sources by 50% for 1 turns
-  desc_jp: Reduce damage from all sources by 50% for 1 turns
-  max_atk_pct: null
-  name_en: Power of Magatama
-  name_jp: Power of Magatama
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Do nothing
-  desc_jp: Do nothing
-  max_atk_pct: null
-  name_en: okimiH suineG etuC
-  name_jp: okimiH suineG etuC
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Do nothing
-  desc_jp: Do nothing
-  max_atk_pct: null
-  name_en: okimiH suineG etuC
-  name_jp: okimiH suineG etuC
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Change 1st, 6th column to Fire orbs, Deal 130% damage
   desc_jp: Change 1st, 6th column to Fire orbs, Deal 130% damage
   max_atk_pct: 130
@@ -101,8 +47,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -126,6 +72,60 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 1 turns
+  desc_jp: Reduce damage from all sources by 50% for 1 turns
+  max_atk_pct: null
+  name_en: Power of Magatama
+  name_jp: Power of Magatama
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 20
+  name_jp: HP <= 20
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Player -150% HP
+  desc_jp: Player -150% HP
+  max_atk_pct: null
+  name_en: Huge Clay TAMADRA Press
+  name_jp: Huge Clay TAMADRA Press
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: okimiH suineG etuC
+  name_jp: okimiH suineG etuC
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -142,15 +142,15 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 8
+# Branch on level > 4, target rnd 8
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchCard -> ESBranchCard
 # Branch on player_cards HAS [1362, 1363, 1364, 1365], target rnd 15
 # [9] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 22
+# Branch on hp < 50, target rnd 22
 # [10] ESBranchHP -> ESBranchHP
-# Branch on hp = 20, target rnd 18
+# Branch on hp < 20, target rnd 18
 # [11] ESColumnSpawnMulti -> Fantastic Yamatai
 # Condition: One-time use
 # Change 1st, 6th column to Fire orbs

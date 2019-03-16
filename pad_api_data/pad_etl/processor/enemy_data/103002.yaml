@@ -44,11 +44,11 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change all orbs to Jammer, Deal 60% damage
-  desc_jp: Change all orbs to Jammer, Deal 60% damage
-  max_atk_pct: 60
-  name_en: Sacred Grounds of the Green Earth
-  name_jp: Sacred Grounds of the Green Earth
+  desc_en: Reduce damage from all sources by 75% for 1 turns
+  desc_jp: Reduce damage from all sources by 75% for 1 turns
+  max_atk_pct: null
+  name_en: Magatama of Yin and Yang
+  name_jp: Magatama of Yin and Yang
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -58,24 +58,6 @@ records:
   max_atk_pct: null
   name_en: HP <= 49
   name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Spawn random 3 Wood, Heal orbs, Deal 140% damage
-  desc_jp: Spawn random 3 Wood, Heal orbs, Deal 140% damage
-  max_atk_pct: 140
-  name_en: Blue Wind of the Green Fate
-  name_jp: Blue Wind of the Green Fate
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Execute below actions in order repeatedly
-  name_jp: Execute below actions in order repeatedly
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -91,11 +73,29 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
-  desc_en: Reduce damage from all sources by 75% for 1 turns
-  desc_jp: Reduce damage from all sources by 75% for 1 turns
+  desc_en: ''
+  desc_jp: ''
   max_atk_pct: null
-  name_en: Magatama of Yin and Yang
-  name_jp: Magatama of Yin and Yang
+  name_en: Execute below actions in order repeatedly
+  name_jp: Execute below actions in order repeatedly
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change all orbs to Jammer, Deal 60% damage
+  desc_jp: Change all orbs to Jammer, Deal 60% damage
+  max_atk_pct: 60
+  name_en: Sacred Grounds of the Green Earth
+  name_jp: Sacred Grounds of the Green Earth
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Spawn random 3 Wood, Heal orbs, Deal 140% damage
+  desc_jp: Spawn random 3 Wood, Heal orbs, Deal 140% damage
+  max_atk_pct: 140
+  name_en: Blue Wind of the Green Fate
+  name_jp: Blue Wind of the Green Fate
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -106,7 +106,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 4
+# Branch on level > 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
@@ -121,7 +121,7 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 21
+# Branch on hp < 50, target rnd 21
 # [9] ESBranchFlag -> ESBranchFlag
 # Branch on flag & 2, target rnd 14
 # [10] ESFlagOperation -> ESFlagOperation

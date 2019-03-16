@@ -37,11 +37,11 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change all orbs to Wood, Heal, Jammer, Poison
-  desc_jp: Change all orbs to Wood, Heal, Jammer, Poison
+  desc_en: Bind 1 random subs for 3~5 turns
+  desc_jp: Bind 1 random subs for 3~5 turns
   max_atk_pct: null
-  name_en: Vajra Wind Blade
-  name_jp: Vajra Wind Blade
+  name_en: Wind God's Lasso
+  name_jp: Wind God's Lasso
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -55,31 +55,11 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Bind 1 random subs for 3~5 turns
-  desc_jp: Bind 1 random subs for 3~5 turns
+  desc_en: Change all orbs to Wood, Heal, Jammer, Poison
+  desc_jp: Change all orbs to Wood, Heal, Jammer, Poison
   max_atk_pct: null
-  name_en: Wind God's Lasso
-  name_jp: Wind God's Lasso
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Bind active skills for 10 turns + Increase damage to 200% for the next
-    999 turns
-  desc_jp: Bind active skills for 10 turns + Increase damage to 200% for the next
-    999 turns
-  max_atk_pct: null
-  name_en: Wave of Compassion + Formed the hand sign for "Power"
-  name_jp: Wave of Compassion + Formed the hand sign for "Power"
+  name_en: Vajra Wind Blade
+  name_jp: Vajra Wind Blade
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -132,6 +112,26 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind active skills for 10 turns + Increase damage to 200% for the next
+    999 turns
+  desc_jp: Bind active skills for 10 turns + Increase damage to 200% for the next
+    999 turns
+  max_atk_pct: null
+  name_en: Wave of Compassion + Formed the hand sign for "Power"
+  name_jp: Wave of Compassion + Formed the hand sign for "Power"
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 20
   name_jp: HP <= 20
   one_time: false
@@ -155,7 +155,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 4
+# Branch on level > 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
@@ -174,13 +174,13 @@ records:
 # [9] ESFlagOperation -> ESFlagOperation
 # flag SET 0b11
 # [10] ESBranchHP -> ESBranchHP
-# Branch on hp = 80, target rnd 12
+# Branch on hp < 80, target rnd 12
 # [11] ESBindRandomSub -> Wind God's Lasso
 # Bind 1 random subs for 3~5 turns
 # [12] ESBoardChange -> Vajra Wind Blade
 # Change all orbs to Wood, Heal, Jammer, Poison
 # [13] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 18
+# Branch on hp < 50, target rnd 18
 # [14] ESRowSpawnMulti -> Sky Splitting Jetstream
 # Condition: When < 20% hp
 # Change 2nd, 4th row to Wood orbs, 1st, 3rd, 5th row to Fire, Water, Light, Dark, Heal orbs

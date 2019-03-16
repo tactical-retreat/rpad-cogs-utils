@@ -48,13 +48,11 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change own attribute to random one of Fire, Water, Wood, Light, Dark +
-    Enemy action
-  desc_jp: Change own attribute to random one of Fire, Water, Wood, Light, Dark +
-    Enemy action
+  desc_en: Change player HP to 500000 for 99 turns
+  desc_jp: Change player HP to 500000 for 99 turns
   max_atk_pct: null
-  name_en: Gear Shift + Banishing Lightning
-  name_jp: Gear Shift + Banishing Lightning
+  name_en: Ark Contract
+  name_jp: Ark Contract
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -68,11 +66,31 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change player HP to 500000 for 99 turns
-  desc_jp: Change player HP to 500000 for 99 turns
+  desc_en: Bind awoken skills for 5 turns + Player -99% HP
+  desc_jp: Bind awoken skills for 5 turns + Player -99% HP
   max_atk_pct: null
-  name_en: Ark Contract
-  name_jp: Ark Contract
+  name_en: Deminishing Fighting Spirit + Vanishing Judgment
+  name_jp: Deminishing Fighting Spirit + Vanishing Judgment
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 9
+  name_jp: HP <= 9
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change own attribute to random one of Fire, Water, Wood, Light, Dark +
+    Enemy action
+  desc_jp: Change own attribute to random one of Fire, Water, Wood, Light, Dark +
+    Enemy action
+  max_atk_pct: null
+  name_en: Gear Shift + Banishing Lightning
+  name_jp: Gear Shift + Banishing Lightning
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -98,29 +116,29 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 31
+# Branch on hp < 50, target rnd 31
 # [7] ESSetCounter -> ESSetCounter
 # counter + 1
 # [8] ESMaxHPChange -> Ark Contract
 # Change player HP to 500000 for 99 turns
 # [9] ESBranchCounter -> ESBranchCounter
-# Branch on counter = 10, target rnd 28
+# Branch on counter > 10, target rnd 28
 # [10] ESBranchCounter -> ESBranchCounter
-# Branch on counter = 9, target rnd 26
+# Branch on counter > 9, target rnd 26
 # [11] ESBranchCounter -> ESBranchCounter
-# Branch on counter = 8, target rnd 25
+# Branch on counter > 8, target rnd 25
 # [12] ESBranchCounter -> ESBranchCounter
-# Branch on counter = 7, target rnd 24
+# Branch on counter > 7, target rnd 24
 # [13] ESBranchCounter -> ESBranchCounter
-# Branch on counter = 6, target rnd 23
+# Branch on counter > 6, target rnd 23
 # [14] ESBranchCounter -> ESBranchCounter
-# Branch on counter = 5, target rnd 22
+# Branch on counter > 5, target rnd 22
 # [15] ESBranchCounter -> ESBranchCounter
-# Branch on counter = 4, target rnd 21
+# Branch on counter > 4, target rnd 21
 # [16] ESBranchCounter -> ESBranchCounter
-# Branch on counter = 3, target rnd 20
+# Branch on counter > 3, target rnd 20
 # [17] ESBranchCounter -> ESBranchCounter
-# Branch on counter = 2, target rnd 19
+# Branch on counter > 2, target rnd 19
 # [18] SkillSet:
 # 	[0] ESDebuffRCV -> Salvation of the Holy Ship
 # 	Rcv 300% for 9 turns
@@ -175,7 +193,7 @@ records:
 # [30] ESEndPath -> ESEndPath
 # end_turn
 # [31] ESBranchHP -> ESBranchHP
-# Branch on hp = 10, target rnd 36
+# Branch on hp < 10, target rnd 36
 # [32] ESBranchFlag -> ESBranchFlag
 # Branch on flag & 2, target rnd 7
 # [33] ESFlagOperation -> ESFlagOperation

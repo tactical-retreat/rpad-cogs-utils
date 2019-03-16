@@ -35,24 +35,6 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Do nothing + Increase damage to 200% for the next 999 turns
-  desc_jp: Do nothing + Increase damage to 200% for the next 999 turns
-  max_atk_pct: null
-  name_en: Bankai + Hihio Zabimaru
-  name_jp: Bankai + Hihio Zabimaru
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Deal 114% damage (3 hits, 38% each)
   desc_jp: Deal 114% damage (3 hits, 38% each)
   max_atk_pct: 114
@@ -71,12 +53,21 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 114% damage (3 hits, 38% each)
-  desc_jp: Deal 114% damage (3 hits, 38% each)
-  max_atk_pct: 114
-  name_en: I see you!!
-  name_jp: I see you!!
-  one_time: true
+  desc_en: Blind all orbs on the board, Deal 90% damage
+  desc_jp: Blind all orbs on the board, Deal 90% damage
+  max_atk_pct: 90
+  name_en: There's still no way you can defeat me!
+  name_jp: There's still no way you can defeat me!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Bind active skills for 1 turns
+  desc_jp: Bind active skills for 1 turns
+  max_atk_pct: null
+  name_en: It's over!
+  name_jp: It's over!
+  one_time: false
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -89,11 +80,11 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 90% damage (2 hits, 45% each)
-  desc_jp: Deal 90% damage (2 hits, 45% each)
-  max_atk_pct: 90
-  name_en: Joint attack
-  name_jp: Joint attack
+  desc_en: Deal 120% damage
+  desc_jp: Deal 120% damage
+  max_atk_pct: 120
+  name_en: You scum!!!
+  name_jp: You scum!!!
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -107,11 +98,47 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 120% damage
-  desc_jp: Deal 120% damage
-  max_atk_pct: 120
-  name_en: You scum!!!
-  name_jp: You scum!!!
+  desc_en: Do nothing + Increase damage to 200% for the next 999 turns
+  desc_jp: Do nothing + Increase damage to 200% for the next 999 turns
+  max_atk_pct: null
+  name_en: Bankai + Hihio Zabimaru
+  name_jp: Bankai + Hihio Zabimaru
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 114% damage (3 hits, 38% each)
+  desc_jp: Deal 114% damage (3 hits, 38% each)
+  max_atk_pct: 114
+  name_en: I see you!!
+  name_jp: I see you!!
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 90% damage (2 hits, 45% each)
+  desc_jp: Deal 90% damage (2 hits, 45% each)
+  max_atk_pct: 90
+  name_en: Joint attack
+  name_jp: Joint attack
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -130,7 +157,7 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 15
+# Branch on hp < 50, target rnd 15
 # [7] ESBranchFlag -> ESBranchFlag
 # Branch on flag & 2, target rnd 10
 # [8] ESFlagOperation -> ESFlagOperation

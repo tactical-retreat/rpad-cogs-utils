@@ -38,28 +38,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Enemy recover 100% hp + Lock all Fire, Water, Wood, Light, Dark, Heal,
-    Jammer, Poison, Mortal Poison orbs
-  desc_jp: Enemy recover 100% hp + Lock all Fire, Water, Wood, Light, Dark, Heal,
-    Jammer, Poison, Mortal Poison orbs
-  max_atk_pct: null
-  name_en: Spring of Life + Arrested
-  name_jp: Spring of Life + Arrested
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 0
-  name_jp: HP <= 0
+  name_en: Turn 1
+  name_jp: Turn 1
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -76,8 +56,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 0
-  name_jp: HP <= 0
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -117,6 +97,62 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 25
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 29
+  name_jp: HP <= 29
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind awoken skills for 1 turns
+  desc_jp: Bind awoken skills for 1 turns
+  max_atk_pct: null
+  name_en: Disappearing Mist
+  name_jp: Disappearing Mist
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 29
+  name_jp: HP <= 29
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change all orbs to Water, Deal 300% damage
+  desc_jp: Change all orbs to Water, Deal 300% damage
+  max_atk_pct: 300
+  name_en: Muddy Stream
+  name_jp: Muddy Stream
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 0
+  name_jp: HP <= 0
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy recover 100% hp + Lock all Fire, Water, Wood, Light, Dark, Heal,
+    Jammer, Poison, Mortal Poison orbs
+  desc_jp: Enemy recover 100% hp + Lock all Fire, Water, Wood, Light, Dark, Heal,
+    Jammer, Poison, Mortal Poison orbs
+  max_atk_pct: null
+  name_en: Spring of Life + Arrested
+  name_jp: Spring of Life + Arrested
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -130,9 +166,9 @@ records:
 # 	[1] ESSkyfall -> Stone Rain
 # 	Locked random skyfall +30% for 20 turns
 # [3] ESBranchHP -> ESBranchHP
-# Branch on hp = 1, target rnd 18
+# Branch on hp < 1, target rnd 18
 # [4] ESBranchHP -> ESBranchHP
-# Branch on hp = 30, target rnd 11
+# Branch on hp < 30, target rnd 11
 # [5] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESGravity -> Drought

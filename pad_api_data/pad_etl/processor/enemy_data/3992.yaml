@@ -66,26 +66,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 900% damage (3 hits, 300% each)
-  desc_jp: Deal 900% damage (3 hits, 300% each)
-  max_atk_pct: 900
-  name_en: Throw me some more Magic Stones!
-  name_jp: Throw me some more Magic Stones!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 79
-  name_jp: HP <= 79
+  name_en: Turn 1
+  name_jp: Turn 1
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -102,8 +84,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 79
-  name_jp: HP <= 79
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -116,6 +98,96 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 79
+  name_jp: HP <= 79
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Do nothing + Bind 1 subs for 4 turns
+  desc_jp: Do nothing + Bind 1 subs for 4 turns
+  max_atk_pct: null
+  name_en: It's putting some back into it + Jack-o'-Lantern
+  name_jp: It's putting some back into it + Jack-o'-Lantern
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 5
+- !SkillRecord
+  desc_en: Do nothing + Change all orbs to Water, Dark
+  desc_jp: Do nothing + Change all orbs to Water, Dark
+  max_atk_pct: null
+  name_en: It's putting some back into it + Holiday Tuning Circle - Water & Dark
+  name_jp: It's putting some back into it + Holiday Tuning Circle - Water & Dark
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 16
+- !SkillRecord
+  desc_en: Do nothing + Change 5th row to Dark orbs
+  desc_jp: Do nothing + Change 5th row to Dark orbs
+  max_atk_pct: null
+  name_en: It's putting some back into it + Midnight Spell
+  name_jp: It's putting some back into it + Midnight Spell
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 16
+- !SkillRecord
+  desc_en: Do nothing + Change Random to Heal
+  desc_jp: Do nothing + Change Random to Heal
+  max_atk_pct: null
+  name_en: It's putting some back into it + Pumpkin Season
+  name_jp: It's putting some back into it + Pumpkin Season
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 16
+- !SkillRecord
+  desc_en: Do nothing + Change Wood to Dark
+  desc_jp: Do nothing + Change Wood to Dark
+  max_atk_pct: null
+  name_en: It's putting some back into it + Costume Changing Technique - Dark
+  name_jp: It's putting some back into it + Costume Changing Technique - Dark
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 16
+- !SkillRecord
+  desc_en: Do nothing + Change all orbs to Wood, Dark, Heal
+  desc_jp: Do nothing + Change all orbs to Wood, Dark, Heal
+  max_atk_pct: null
+  name_en: It's putting some back into it + Holiday Tuning Circle - Wood, Dark & Life
+  name_jp: It's putting some back into it + Holiday Tuning Circle - Wood, Dark & Life
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 16
+- !SkillRecord
+  desc_en: Do nothing + Change all orbs to Water, Dark, Heal
+  desc_jp: Do nothing + Change all orbs to Water, Dark, Heal
+  max_atk_pct: null
+  name_en: It's putting some back into it + Nene's Seal of Approval
+  name_jp: It's putting some back into it + Nene's Seal of Approval
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 15
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 14
+  name_jp: HP <= 14
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 900% damage (3 hits, 300% each)
+  desc_jp: Deal 900% damage (3 hits, 300% each)
+  max_atk_pct: 900
+  name_en: Throw me some more Magic Stones!
+  name_jp: Throw me some more Magic Stones!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -123,7 +195,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 1
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 2, target rnd 5
+# Branch on level > 2, target rnd 5
 # [3] ESDamageShield -> Happy Halloween!
 # Condition: One-time use
 # Reduce damage from all sources by 50% for 99 turns
@@ -143,7 +215,7 @@ records:
 # [8] ESEndPath -> ESEndPath
 # end_turn
 # [9] ESBranchHP -> ESBranchHP
-# Branch on hp = 80, target rnd 15
+# Branch on hp < 80, target rnd 15
 # [10] ESBranchFlag -> ESBranchFlag
 # Branch on flag & 2, target rnd 13
 # [11] ESFlagOperation -> ESFlagOperation
@@ -155,7 +227,7 @@ records:
 # [14] ESEndPath -> ESEndPath
 # end_turn
 # [15] ESBranchHP -> ESBranchHP
-# Branch on hp = 15, target rnd 24
+# Branch on hp < 15, target rnd 24
 # [16] SkillSet:
 # 	Condition: 5% chance
 # 	[0] ESInactivity -> It's putting some back into it

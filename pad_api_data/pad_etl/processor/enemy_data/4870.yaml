@@ -29,42 +29,6 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change 3rd row to Fire orbs, Deal 100% damage
-  desc_jp: Change 3rd row to Fire orbs, Deal 100% damage
-  max_atk_pct: 100
-  name_en: Hiyaaa!
-  name_jp: Hiyaaa!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 33
-- !SkillRecord
-  desc_en: Spawn random 4 Jammer orbs, Deal 90% damage
-  desc_jp: Spawn random 4 Jammer orbs, Deal 90% damage
-  max_atk_pct: 90
-  name_en: Huaaa!
-  name_jp: Huaaa!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 33
-- !SkillRecord
-  desc_en: Deal 110% damage
-  desc_jp: Deal 110% damage
-  max_atk_pct: 110
-  name_en: Ahh ghaaa!
-  name_jp: Ahh ghaaa!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 34
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -104,7 +68,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 1
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 5
+# Branch on level > 4, target rnd 5
 # [3] ESInactivity -> Could you give me some tips?
 # Condition: One-time use
 # Do nothing
@@ -114,7 +78,7 @@ records:
 # Condition: One-time use
 # Change all orbs to Fire, Water, Wood, Light, Dark, Heal
 # [6] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 11
+# Branch on hp < 50, target rnd 11
 # [7] ESRowSpawnMulti -> Hiyaaa!
 # Condition: 33% chance
 # Change 3rd row to Fire orbs

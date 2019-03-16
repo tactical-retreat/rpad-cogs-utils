@@ -55,11 +55,11 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Enemy recover 10% hp + Bind 6 random cards for 4 turns
-  desc_jp: Enemy recover 10% hp + Bind 6 random cards for 4 turns
+  desc_en: Delay active skills by 3 turns
+  desc_jp: Delay active skills by 3 turns
   max_atk_pct: null
-  name_en: Crisis Wisdom + Lightning strikes the field
-  name_jp: Crisis Wisdom + Lightning strikes the field
+  name_en: Diverging Flash
+  name_jp: Diverging Flash
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -73,11 +73,11 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Delay active skills by 3 turns
-  desc_jp: Delay active skills by 3 turns
+  desc_en: Bind 1 own leader for 2 turns
+  desc_jp: Bind 1 own leader for 2 turns
   max_atk_pct: null
-  name_en: Diverging Flash
-  name_jp: Diverging Flash
+  name_en: Converging Flash
+  name_jp: Converging Flash
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -87,6 +87,71 @@ records:
   max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Spawn random 5 Heal orbs, Deal 150% damage
+  desc_jp: Spawn random 5 Heal orbs, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Thunder Vajra
+  name_jp: Thunder Vajra
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 40
+- !SkillRecord
+  desc_en: Lock 5 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 100% damage
+  desc_jp: Lock 5 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Lightning Vajra
+  name_jp: Lightning Vajra
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 70
+  name_jp: HP <= 70
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Heal to Jammer, Deal 110% damage
+  desc_jp: Change Heal to Jammer, Deal 110% damage
+  max_atk_pct: 110
+  name_en: Bolt Vajra
+  name_jp: Bolt Vajra
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 9
+  name_jp: HP <= 9
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy recover 10% hp + Bind 6 random cards for 4 turns
+  desc_jp: Enemy recover 10% hp + Bind 6 random cards for 4 turns
+  max_atk_pct: null
+  name_en: Crisis Wisdom + Lightning strikes the field
+  name_jp: Crisis Wisdom + Lightning strikes the field
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 9
+  name_jp: HP <= 9
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -106,7 +171,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 4
+# Branch on level > 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
@@ -123,13 +188,13 @@ records:
 # [8] ESBranchFlag -> ESBranchFlag
 # Branch on flag & 4, target rnd 24
 # [9] ESBranchHP -> ESBranchHP
-# Branch on hp = 10, target rnd 21
+# Branch on hp < 10, target rnd 21
 # [10] ESBranchFlag -> ESBranchFlag
 # Branch on flag & 2, target rnd 17
 # [11] ESFlagOperation -> ESFlagOperation
 # flag SET 0b11
 # [12] ESBranchHP -> ESBranchHP
-# Branch on hp = 70, target rnd 15
+# Branch on hp < 70, target rnd 15
 # [13] ESSkillDelay -> Diverging Flash
 # Delay active skills by 3 turns
 # [14] ESEndPath -> ESEndPath

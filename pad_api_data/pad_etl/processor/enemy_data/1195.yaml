@@ -70,6 +70,24 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 20
+  name_jp: HP <= 20
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change 2nd row to Dark orbs, 4th row to Dark orbs, Deal 300% damage
+  desc_jp: Change 2nd row to Dark orbs, 4th row to Dark orbs, Deal 300% damage
+  max_atk_pct: 300
+  name_en: Moon Cutting Circle
+  name_jp: Moon Cutting Circle
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -89,7 +107,7 @@ records:
 # Condition: When < 50% hp
 # Increase damage to 200% for the next 999 turns
 # [7] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 13
+# Branch on hp < 50, target rnd 13
 # [8] ESBoardChange -> Shadow Concealment Technique
 # Condition: One-time use
 # Change all orbs to Jammer

@@ -29,42 +29,6 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Spawn locked Bomb orbs in the specified positions
-  desc_jp: Spawn locked Bomb orbs in the specified positions
-  max_atk_pct: null
-  name_en: Zip it
-  name_jp: Zip it
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Spawn random 2 Jammer, Poison orbs, Deal 70% damage
-  desc_jp: Spawn random 2 Jammer, Poison orbs, Deal 70% damage
-  max_atk_pct: 70
-  name_en: "So fuuun \u266A"
-  name_jp: "So fuuun \u266A"
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 50
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -79,6 +43,44 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 74
+  name_jp: HP <= 74
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change 2nd column to Jammer, Poison orbs, 5th column to Jammer, Poison
+    orbs
+  desc_jp: Change 2nd column to Jammer, Poison orbs, 5th column to Jammer, Poison
+    orbs
+  max_atk_pct: null
+  name_en: "Have a blast \u266A"
+  name_jp: "Have a blast \u266A"
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 29
+  name_jp: HP <= 29
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Spawn locked Bomb orbs in the specified positions
+  desc_jp: Spawn locked Bomb orbs in the specified positions
+  max_atk_pct: null
+  name_en: Zip it
+  name_jp: Zip it
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -86,7 +88,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 4
+# Branch on level > 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
@@ -98,9 +100,9 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchHP -> ESBranchHP
-# Branch on hp = 30, target rnd 16
+# Branch on hp < 30, target rnd 16
 # [9] ESBranchHP -> ESBranchHP
-# Branch on hp = 75, target rnd 12
+# Branch on hp < 75, target rnd 12
 # [10] ESRandomSpawn -> So fuuun ♪
 # Condition: 50% chance & when Fire, Water, Wood, Light, Dark, Heal, Mortal Poison orbs are on the board
 # Spawn random 2 Jammer, Poison orbs

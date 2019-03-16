@@ -29,78 +29,6 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Voids player buff effects
-  desc_jp: Voids player buff effects
-  max_atk_pct: null
-  name_en: Lovely Pose
-  name_jp: Lovely Pose
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Voids player buff effects
-  desc_jp: Voids player buff effects
-  max_atk_pct: null
-  name_en: Lovely Pose
-  name_jp: Lovely Pose
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Lock 4 random Fire, Water, Wood, Light, Dark orbs, Deal 100% damage
-  desc_jp: Lock 4 random Fire, Water, Wood, Light, Dark orbs, Deal 100% damage
-  max_atk_pct: 100
-  name_en: Skipping about
-  name_jp: Skipping about
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 25
-- !SkillRecord
-  desc_en: Bind 1 random cards for 1 turns
-  desc_jp: Bind 1 random cards for 1 turns
-  max_atk_pct: null
-  name_en: Lick Bind
-  name_jp: Lick Bind
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 25
-- !SkillRecord
-  desc_en: Deal 100% damage
-  desc_jp: Deal 100% damage
-  max_atk_pct: 100
-  name_en: Snarl
-  name_jp: Snarl
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 25
-- !SkillRecord
-  desc_en: Change 2nd, 4th column to Light orbs, Deal 70% damage
-  desc_jp: Change 2nd, 4th column to Light orbs, Deal 70% damage
-  max_atk_pct: 70
-  name_en: Saint Corona
-  name_jp: Saint Corona
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 25
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -155,6 +83,42 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: HP <= 70
+  name_jp: HP <= 70
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Leader changes to random sub for 1 turns
+  desc_jp: Leader changes to random sub for 1 turns
+  max_atk_pct: null
+  name_en: Whim
+  name_jp: Whim
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 69
+  name_jp: HP <= 69
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Voids player buff effects
+  desc_jp: Voids player buff effects
+  max_atk_pct: null
+  name_en: Lovely Pose
+  name_jp: Lovely Pose
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 10
   name_jp: HP <= 10
   one_time: false
@@ -169,24 +133,6 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 9
-  name_jp: HP <= 9
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Voids player buff effects
-  desc_jp: Voids player buff effects
-  max_atk_pct: null
-  name_en: Lovely Pose
-  name_jp: Lovely Pose
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -194,7 +140,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 4
+# Branch on level > 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
@@ -208,7 +154,7 @@ records:
 # [8] ESDispel -> Lovely Pose
 # Voids player buff effects
 # [9] ESBranchHP -> ESBranchHP
-# Branch on hp = 70, target rnd 16
+# Branch on hp < 70, target rnd 16
 # [10] ESAttackMultihit -> Meteorite
 # Condition: When < 10% hp
 # Enemy action

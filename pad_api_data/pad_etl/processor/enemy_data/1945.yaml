@@ -83,51 +83,6 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change Dark to Heal, Deal 125% damage
-  desc_jp: Change Dark to Heal, Deal 125% damage
-  max_atk_pct: 125
-  name_en: Swallow's Cowry Shell
-  name_jp: Swallow's Cowry Shell
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 60
-- !SkillRecord
-  desc_en: Change all orbs to Fire, Water, Wood, Light, Dark, Deal 75% damage
-  desc_jp: Change all orbs to Fire, Water, Wood, Light, Dark, Deal 75% damage
-  max_atk_pct: 75
-  name_en: Dragon Neck Jewel
-  name_jp: Dragon Neck Jewel
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 20
-- !SkillRecord
-  desc_en: Change Heal to Fire, Deal 75% damage
-  desc_jp: Change Heal to Fire, Deal 75% damage
-  max_atk_pct: 75
-  name_en: Fire Rat Fur Robe
-  name_jp: Fire Rat Fur Robe
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 10
-- !SkillRecord
-  desc_en: Player -99% HP
-  desc_jp: Player -99% HP
-  max_atk_pct: null
-  name_en: Buddha's Stone Bowl
-  name_jp: Buddha's Stone Bowl
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 10
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -160,6 +115,24 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 10
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 75
+  name_jp: HP <= 75
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind Devil cards for 2~3 turns
+  desc_jp: Bind Devil cards for 2~3 turns
+  max_atk_pct: null
+  name_en: Jeweled Branch of Horai
+  name_jp: Jeweled Branch of Horai
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
@@ -214,7 +187,7 @@ records:
 # Condition: When < 1% hp
 # Enemy recover 100% hp
 # [7] ESBranchHP -> ESBranchHP
-# Branch on hp = 75, target rnd 14
+# Branch on hp < 75, target rnd 14
 # [8] ESColumnSpawnMulti -> Ascension
 # Condition: When < 30% hp
 # Change 3rd column to Light orbs, 4th column to Light orbs

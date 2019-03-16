@@ -29,26 +29,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Do nothing
-  desc_jp: Do nothing
-  max_atk_pct: null
-  name_en: Draco Summon TAMA!
-  name_jp: Draco Summon TAMA!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -65,8 +47,26 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: HP <= 39
+  name_jp: HP <= 39
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Draco Summon TAMA!
+  name_jp: Draco Summon TAMA!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 39
+  name_jp: HP <= 39
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -89,7 +89,7 @@ records:
 # Condition: One-time use
 # Voids status ailments for 999 turns
 # [3] ESBranchHP -> ESBranchHP
-# Branch on hp = 40, target rnd 6
+# Branch on hp < 40, target rnd 6
 # [4] ESBranchFlag -> ESBranchFlag
 # Branch on flag & 1, target rnd 9
 # [5] ESOrbChangeAttack -> Blue Sphere

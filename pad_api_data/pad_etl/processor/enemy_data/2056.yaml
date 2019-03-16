@@ -37,42 +37,6 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Enemy action + Player -99% HP
-  desc_jp: Enemy action + Player -99% HP
-  max_atk_pct: null
-  name_en: Meteor + Maelstrom
-  name_jp: Meteor + Maelstrom
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 30
-- !SkillRecord
-  desc_en: Enemy action + Enemy action
-  desc_jp: Enemy action + Enemy action
-  max_atk_pct: null
-  name_en: Almagest + Comet
-  name_jp: Almagest + Comet
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 30
-- !SkillRecord
-  desc_en: Enemy action + Enemy action
-  desc_jp: Enemy action + Enemy action
-  max_atk_pct: null
-  name_en: Comet + Vacuum Wave
-  name_jp: Comet + Vacuum Wave
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 30
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 39
-  name_jp: HP <= 39
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Voids player buff effects
   desc_jp: Voids player buff effects
   max_atk_pct: null
@@ -108,6 +72,69 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 20
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 40
+  name_jp: HP <= 40
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: The Laws of the universe mean nothing!
+  name_jp: The Laws of the universe mean nothing!
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind 2 random for 1~3 turns, Deal 120% damage
+  desc_jp: Bind 2 random for 1~3 turns, Deal 120% damage
+  max_atk_pct: 120
+  name_en: Grand Cross
+  name_jp: Grand Cross
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 39
+  name_jp: HP <= 39
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy action + Player -99% HP
+  desc_jp: Enemy action + Player -99% HP
+  max_atk_pct: null
+  name_en: Meteor + Maelstrom
+  name_jp: Meteor + Maelstrom
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 30
+- !SkillRecord
+  desc_en: Enemy action + Enemy action
+  desc_jp: Enemy action + Enemy action
+  max_atk_pct: null
+  name_en: Almagest + Comet
+  name_jp: Almagest + Comet
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 30
+- !SkillRecord
+  desc_en: Enemy action + Enemy action
+  desc_jp: Enemy action + Enemy action
+  max_atk_pct: null
+  name_en: Comet + Vacuum Wave
+  name_jp: Comet + Vacuum Wave
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 30
 
 ############################################################
 ### Raw Behavior
@@ -115,7 +142,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 5
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 5, target rnd 4
+# Branch on level > 5, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
@@ -132,7 +159,7 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchHP -> ESBranchHP
-# Branch on hp = 40, target rnd 14
+# Branch on hp < 40, target rnd 14
 # [9] ESDispel -> Dispel
 # Voids player buff effects
 # [10] ESAttackMultihit -> Almagest

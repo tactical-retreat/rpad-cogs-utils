@@ -35,24 +35,6 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 150% damage
-  desc_jp: Deal 150% damage
-  max_atk_pct: 150
-  name_en: Super Slice
-  name_jp: Super Slice
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Random 1 orbs change every 2.0s for 1 turns, Deal 90% damage
   desc_jp: Random 1 orbs change every 2.0s for 1 turns, Deal 90% damage
   max_atk_pct: 90
@@ -79,6 +61,42 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 34
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Player -25% HP + Enemy action
+  desc_jp: Player -25% HP + Enemy action
+  max_atk_pct: null
+  name_en: Condor Jump + Amazon Kick
+  name_jp: Condor Jump + Amazon Kick
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 150% damage
+  desc_jp: Deal 150% damage
+  max_atk_pct: 150
+  name_en: Super Slice
+  name_jp: Super Slice
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -86,7 +104,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 4
+# Branch on level > 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
@@ -98,7 +116,7 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 13
+# Branch on hp < 50, target rnd 13
 # [9] ESSpinnersRandom -> Spin Kick
 # Condition: 33% chance
 # Random 1 orbs change every 2.0s for 1 turns
@@ -119,7 +137,7 @@ records:
 # [16] ESEndPath -> ESEndPath
 # end_turn
 # [17] ESBranchHP -> ESBranchHP
-# Branch on hp = 20, target rnd 23
+# Branch on hp < 20, target rnd 23
 # [18] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESGravity -> Condor Jump

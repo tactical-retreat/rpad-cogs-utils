@@ -74,8 +74,44 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind awoken skills for 2 turns + Spawn random 12 Jammer orbs
+  desc_jp: Bind awoken skills for 2 turns + Spawn random 12 Jammer orbs
+  max_atk_pct: null
+  name_en: Limit Signal + Rust Generate
+  name_jp: Limit Signal + Rust Generate
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 150%~240% damage (5~8 hits, 30% each)
+  desc_jp: Deal 150%~240% damage (5~8 hits, 30% each)
+  max_atk_pct: 240
+  name_en: Myriad Swords Wings
+  name_jp: Myriad Swords Wings
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 29
+  name_jp: HP <= 29
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -92,8 +128,26 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
+  name_en: HP <= 20
+  name_jp: HP <= 20
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Player -1000% HP
+  desc_jp: Player -1000% HP
+  max_atk_pct: null
+  name_en: Dark Railgun
+  name_jp: Dark Railgun
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute below actions in order repeatedly
+  name_jp: Execute below actions in order repeatedly
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -126,51 +180,6 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 34
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Bind awoken skills for 2 turns + Spawn random 12 Jammer orbs
-  desc_jp: Bind awoken skills for 2 turns + Spawn random 12 Jammer orbs
-  max_atk_pct: null
-  name_en: Limit Signal + Rust Generate
-  name_jp: Limit Signal + Rust Generate
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 50
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 150%~240% damage (5~8 hits, 30% each)
-  desc_jp: Deal 150%~240% damage (5~8 hits, 30% each)
-  max_atk_pct: 240
-  name_en: Myriad Swords Wings
-  name_jp: Myriad Swords Wings
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
 - !SkillRecord
   desc_en: Absorb Fire damage for 2 turns + Change Random to Fire
   desc_jp: Absorb Fire damage for 2 turns + Change Random to Fire
@@ -216,24 +225,6 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 20
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 20
-  name_jp: HP <= 20
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Player -1000% HP
-  desc_jp: Player -1000% HP
-  max_atk_pct: null
-  name_en: Dark Railgun
-  name_jp: Dark Railgun
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -280,7 +271,7 @@ records:
 # Condition: When < 20% hp
 # Player -1000% HP
 # [11] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 25
+# Branch on hp < 50, target rnd 25
 # [12] ESBranchFlag -> ESBranchFlag
 # Branch on flag & 2, target rnd 18
 # [13] ESFlagOperation -> ESFlagOperation
@@ -331,7 +322,7 @@ records:
 # [24] ESEndPath -> ESEndPath
 # end_turn
 # [25] ESBranchHP -> ESBranchHP
-# Branch on hp = 30, target rnd 29
+# Branch on hp < 30, target rnd 29
 # [26] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESBindAwoken -> Limit Signal

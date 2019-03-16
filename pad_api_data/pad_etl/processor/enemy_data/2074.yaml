@@ -38,8 +38,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute below actions in order repeatedly
-  name_jp: Execute below actions in order repeatedly
+  name_en: Turn 1
+  name_jp: Turn 1
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -53,13 +53,13 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
-  desc_en: Delay active skills by 1 turns + Change all orbs to Water, Wood, Dark
-  desc_jp: Delay active skills by 1 turns + Change all orbs to Water, Wood, Dark
+  desc_en: ''
+  desc_jp: ''
   max_atk_pct: null
-  name_en: Alright! + Seiryuu Seven-Star Formation
-  name_jp: Alright! + Seiryuu Seven-Star Formation
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
-  record_type_name: ACTION
+  record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
   desc_en: Deal 120% damage
@@ -76,6 +76,42 @@ records:
   max_atk_pct: 105
   name_en: Spinning Whirlwind Kick!
   name_jp: Spinning Whirlwind Kick!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 14
+  name_jp: HP <= 14
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Delay active skills by 1 turns + Change all orbs to Water, Wood, Dark
+  desc_jp: Delay active skills by 1 turns + Change all orbs to Water, Wood, Dark
+  max_atk_pct: null
+  name_en: Alright! + Seiryuu Seven-Star Formation
+  name_jp: Alright! + Seiryuu Seven-Star Formation
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 14
+  name_jp: HP <= 14
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change all orbs to Water, Wood, Dark, Deal 100% damage
+  desc_jp: Change all orbs to Water, Wood, Dark, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Eastern Seven-Star Formation
+  name_jp: Eastern Seven-Star Formation
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -102,7 +138,7 @@ records:
 # [9] ESEndPath -> ESEndPath
 # end_turn
 # [10] ESBranchHP -> ESBranchHP
-# Branch on hp = 15, target rnd 14
+# Branch on hp < 15, target rnd 14
 # [11] ESAttackMultihit -> Dragon Uppercut!
 # Condition: 50% chance
 # Enemy action

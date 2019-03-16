@@ -38,18 +38,18 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: Turn 1
+  name_jp: Turn 1
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 150% damage
-  desc_jp: Deal 150% damage
-  max_atk_pct: 150
-  name_en: Freeze Strike
-  name_jp: Freeze Strike
-  one_time: false
+  desc_en: Bind Water cards for 2~4 turns
+  desc_jp: Bind Water cards for 2~4 turns
+  max_atk_pct: null
+  name_en: Water Bind
+  name_jp: Water Bind
+  one_time: true
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -62,12 +62,12 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Bind Water cards for 2~4 turns
-  desc_jp: Bind Water cards for 2~4 turns
-  max_atk_pct: null
-  name_en: Water Bind
-  name_jp: Water Bind
-  one_time: true
+  desc_en: Deal 150% damage
+  desc_jp: Deal 150% damage
+  max_atk_pct: 150
+  name_en: Freeze Strike
+  name_jp: Freeze Strike
+  one_time: false
   record_type_name: ACTION
   usage_pct: 100
 
@@ -85,7 +85,7 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 9
+# Branch on hp < 50, target rnd 9
 # [7] ESBindAttribute -> Water Bind
 # Condition: One-time use
 # Bind Water cards for 2~4 turns

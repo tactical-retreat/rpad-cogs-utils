@@ -26,42 +26,6 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Enemy recover 100% hp
-  desc_jp: Enemy recover 100% hp
-  max_atk_pct: null
-  name_en: Shower of Healing
-  name_jp: Shower of Healing
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Blind all orbs on the board, Deal 350% damage
-  desc_jp: Blind all orbs on the board, Deal 350% damage
-  max_atk_pct: 350
-  name_en: Cave of the Sun Goddess
-  name_jp: Cave of the Sun Goddess
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 39
-  name_jp: HP <= 39
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Change Dark to Light, Deal 50% damage
   desc_jp: Change Dark to Light, Deal 50% damage
   max_atk_pct: 50
@@ -74,8 +38,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 39
-  name_jp: HP <= 39
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -85,6 +49,42 @@ records:
   max_atk_pct: 100
   name_en: Sacred Fertility Dance
   name_jp: Sacred Fertility Dance
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 39
+  name_jp: HP <= 39
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy recover 100% hp
+  desc_jp: Enemy recover 100% hp
+  max_atk_pct: null
+  name_en: Shower of Healing
+  name_jp: Shower of Healing
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 39
+  name_jp: HP <= 39
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 350% damage
+  desc_jp: Blind all orbs on the board, Deal 350% damage
+  max_atk_pct: 350
+  name_en: Cave of the Sun Goddess
+  name_jp: Cave of the Sun Goddess
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -103,7 +103,7 @@ records:
 # [5] ESNone -> ESNone
 # nothing
 # [6] ESBranchHP -> ESBranchHP
-# Branch on hp = 40, target rnd 10
+# Branch on hp < 40, target rnd 10
 # [7] ESOrbChangeAttack -> Sacred Mirror of Yata
 # Condition: One-time use
 # Change Dark to Light

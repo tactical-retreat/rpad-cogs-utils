@@ -43,42 +43,6 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Bind active skills for 3 turns
-  desc_jp: Bind active skills for 3 turns
-  max_atk_pct: null
-  name_en: Our plan worked!
-  name_jp: Our plan worked!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Leader changes to random sub for 1 turns, Deal 90% damage
-  desc_jp: Leader changes to random sub for 1 turns, Deal 90% damage
-  max_atk_pct: 90
-  name_en: Switch with me!
-  name_jp: Switch with me!
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Leader changes to random sub for 1 turns, Deal 90% damage
   desc_jp: Leader changes to random sub for 1 turns, Deal 90% damage
   max_atk_pct: 90
@@ -114,6 +78,42 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind active skills for 3 turns
+  desc_jp: Bind active skills for 3 turns
+  max_atk_pct: null
+  name_en: Our plan worked!
+  name_jp: Our plan worked!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 15
+  name_jp: HP <= 15
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 200% damage (8 hits, 25% each)
+  desc_jp: Deal 200% damage (8 hits, 25% each)
+  max_atk_pct: 200
+  name_en: I know what skill to use.
+  name_jp: I know what skill to use.
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -134,7 +134,7 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 11
+# Branch on hp < 50, target rnd 11
 # [7] ESLeaderSwap -> Switch with me!
 # Condition: One-time use
 # Leader changes to random sub for 1 turns
@@ -155,7 +155,7 @@ records:
 # [14] ESEndPath -> ESEndPath
 # end_turn
 # [15] ESBranchHP -> ESBranchHP
-# Branch on hp = 16, target rnd 7
+# Branch on hp > 16, target rnd 7
 # [16] ESAttackMultihit -> I know what skill to use.
 # Enemy action
 # [17] ESEndPath -> ESEndPath

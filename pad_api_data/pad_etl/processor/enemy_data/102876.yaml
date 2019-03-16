@@ -53,24 +53,6 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Absorb Water damage for 1 turns + Change Heal to Poison
-  desc_jp: Absorb Water damage for 1 turns + Change Heal to Poison
-  max_atk_pct: null
-  name_en: Abyssal Shark Dragon's Trial + Chopping Ring of the Deep Sea
-  name_jp: Abyssal Shark Dragon's Trial + Chopping Ring of the Deep Sea
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Delay active skills by 2 turns
   desc_jp: Delay active skills by 2 turns
   max_atk_pct: null
@@ -119,6 +101,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Absorb Water damage for 1 turns + Change Heal to Poison
+  desc_jp: Absorb Water damage for 1 turns + Change Heal to Poison
+  max_atk_pct: null
+  name_en: Abyssal Shark Dragon's Trial + Chopping Ring of the Deep Sea
+  name_jp: Abyssal Shark Dragon's Trial + Chopping Ring of the Deep Sea
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 20
   name_jp: HP <= 20
   one_time: false
@@ -149,7 +149,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 4
+# Branch on level > 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
@@ -176,7 +176,7 @@ records:
 # 	[1] ESBoardChangeAttackBits -> Abyss Dark Ring
 # 	Change all orbs to Water, Dark, Heal
 # [10] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 19
+# Branch on hp < 50, target rnd 19
 # [11] ESBranchFlag -> ESBranchFlag
 # Branch on flag & 2, target rnd 16
 # [12] ESFlagOperation -> ESFlagOperation

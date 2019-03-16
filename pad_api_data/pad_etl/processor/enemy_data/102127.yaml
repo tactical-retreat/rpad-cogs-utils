@@ -38,53 +38,6 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Increase damage to 200% for the next 999 turns + Player -99% HP
-  desc_jp: Increase damage to 200% for the next 999 turns + Player -99% HP
-  max_atk_pct: null
-  name_en: High-End Booster + Energy Counter
-  name_jp: High-End Booster + Energy Counter
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 120% damage (6 hits, 20% each)
-  desc_jp: Deal 120% damage (6 hits, 20% each)
-  max_atk_pct: 120
-  name_en: Energy Shotgun
-  name_jp: Energy Shotgun
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 60
-- !SkillRecord
-  desc_en: Change 2nd column to Jammer orbs, 4th column to Poison orbs, Deal 100%
-    damage
-  desc_jp: Change 2nd column to Jammer orbs, 4th column to Poison orbs, Deal 100%
-    damage
-  max_atk_pct: 100
-  name_en: Keen Edge
-  name_jp: Keen Edge
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 40
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -110,6 +63,24 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 40
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 999 turns + Player -99% HP
+  desc_jp: Increase damage to 200% for the next 999 turns + Player -99% HP
+  max_atk_pct: null
+  name_en: High-End Booster + Energy Counter
+  name_jp: High-End Booster + Energy Counter
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
@@ -167,7 +138,7 @@ records:
 # Condition: When < 10% hp
 # Enemy action
 # [8] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 12
+# Branch on hp < 50, target rnd 12
 # [9] ESAttackMultihit -> Energy Shotgun
 # Condition: 60% chance
 # Enemy action

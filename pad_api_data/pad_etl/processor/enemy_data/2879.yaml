@@ -46,24 +46,6 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Absorb Dark damage for 1 turns + Change 2nd, 5th column to Dark orbs
-  desc_jp: Absorb Dark damage for 1 turns + Change 2nd, 5th column to Dark orbs
-  max_atk_pct: null
-  name_en: Destroying Thunder Dragon's Trial + Dark Slash
-  name_jp: Destroying Thunder Dragon's Trial + Dark Slash
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Blind all orbs on the board + Change all orbs to Fire, Water, Dark, Heal
   desc_jp: Blind all orbs on the board + Change all orbs to Fire, Water, Dark, Heal
   max_atk_pct: null
@@ -78,35 +60,6 @@ records:
   max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Blind all orbs on the board + Change 3rd column to Dark orbs, 5th column
-    to Water orbs
-  desc_jp: Blind all orbs on the board + Change 3rd column to Dark orbs, 5th column
-    to Water orbs
-  max_atk_pct: null
-  name_en: Vesperal Gloom + Purple Lightning
-  name_jp: Vesperal Gloom + Purple Lightning
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 50
-- !SkillRecord
-  desc_en: Blind all orbs on the board + Change 3rd row to Heal orbs
-  desc_jp: Blind all orbs on the board + Change 3rd row to Heal orbs
-  max_atk_pct: null
-  name_en: Vesperal Gloom + Dusk Guidance
-  name_jp: Vesperal Gloom + Dusk Guidance
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -134,6 +87,71 @@ records:
   max_atk_pct: 120
   name_en: Dual Shade
   name_jp: Dual Shade
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 74
+  name_jp: HP <= 74
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Blind all orbs on the board + Change all orbs to Fire, Water, Dark, Heal
+  desc_jp: Blind all orbs on the board + Change all orbs to Fire, Water, Dark, Heal
+  max_atk_pct: null
+  name_en: Vesperal Gloom + Sunset Zone
+  name_jp: Vesperal Gloom + Sunset Zone
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Absorb Dark damage for 1 turns + Change 2nd, 5th column to Dark orbs
+  desc_jp: Absorb Dark damage for 1 turns + Change 2nd, 5th column to Dark orbs
+  max_atk_pct: null
+  name_en: Destroying Thunder Dragon's Trial + Dark Slash
+  name_jp: Destroying Thunder Dragon's Trial + Dark Slash
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Blind all orbs on the board + Change 3rd column to Dark orbs, 5th column
+    to Water orbs
+  desc_jp: Blind all orbs on the board + Change 3rd column to Dark orbs, 5th column
+    to Water orbs
+  max_atk_pct: null
+  name_en: Vesperal Gloom + Purple Lightning
+  name_jp: Vesperal Gloom + Purple Lightning
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Blind all orbs on the board + Change 3rd row to Heal orbs
+  desc_jp: Blind all orbs on the board + Change 3rd row to Heal orbs
+  max_atk_pct: null
+  name_en: Vesperal Gloom + Dusk Guidance
+  name_jp: Vesperal Gloom + Dusk Guidance
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -171,7 +189,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 4
+# Branch on level > 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
@@ -198,7 +216,7 @@ records:
 # 	[1] ESBoardChangeAttackBits -> Sunset Zone
 # 	Change all orbs to Fire, Water, Dark, Heal
 # [10] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 23
+# Branch on hp < 50, target rnd 23
 # [11] ESBranchFlag -> ESBranchFlag
 # Branch on flag & 2, target rnd 16
 # [12] ESFlagOperation -> ESFlagOperation
@@ -220,7 +238,7 @@ records:
 # [17] ESFlagOperation -> ESFlagOperation
 # flag SET 0b111
 # [18] ESBranchHP -> ESBranchHP
-# Branch on hp = 75, target rnd 14
+# Branch on hp < 75, target rnd 14
 # [19] ESFlagOperation -> ESFlagOperation
 # flag UNSET 0b100
 # [20] ESRowSpawnMulti -> Dusk Guidance

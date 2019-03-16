@@ -35,42 +35,6 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Bind active skills for 1 turns
-  desc_jp: Bind active skills for 1 turns
-  max_atk_pct: null
-  name_en: Silence
-  name_jp: Silence
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 250% damage
-  desc_jp: Deal 250% damage
-  max_atk_pct: 250
-  name_en: Wave of Reckoning
-  name_jp: Wave of Reckoning
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Enemy recover 10% hp, Deal 90% damage
   desc_jp: Enemy recover 10% hp, Deal 90% damage
   max_atk_pct: 90
@@ -83,8 +47,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -106,6 +70,69 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy recover 10% hp + Reduce damage from all sources by 50% for 1 turns
+  desc_jp: Enemy recover 10% hp + Reduce damage from all sources by 50% for 1 turns
+  max_atk_pct: null
+  name_en: Convalescence + Hero's Resolve
+  name_jp: Convalescence + Hero's Resolve
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Enemy recover 10% hp + Bind 1 random cards for 1~2 turns
+  desc_jp: Enemy recover 10% hp + Bind 1 random cards for 1~2 turns
+  max_atk_pct: null
+  name_en: Convalescence + Angelic Shield
+  name_jp: Convalescence + Angelic Shield
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind active skills for 1 turns
+  desc_jp: Bind active skills for 1 turns
+  max_atk_pct: null
+  name_en: Silence
+  name_jp: Silence
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 250% damage
+  desc_jp: Deal 250% damage
+  max_atk_pct: 250
+  name_en: Wave of Reckoning
+  name_jp: Wave of Reckoning
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -113,7 +140,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 4
+# Branch on level > 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
@@ -125,7 +152,7 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 13
+# Branch on hp < 50, target rnd 13
 # [9] ESRecoverEnemy -> Swift Justice
 # Condition: One-time use
 # Enemy recover 10% hp
@@ -137,7 +164,7 @@ records:
 # [12] ESEndPath -> ESEndPath
 # end_turn
 # [13] ESBranchHP -> ESBranchHP
-# Branch on hp = 20, target rnd 17
+# Branch on hp < 20, target rnd 17
 # [14] SkillSet:
 # 	Condition: 50% chance
 # 	[0] ESRecoverEnemy -> Convalescence

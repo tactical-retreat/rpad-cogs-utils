@@ -58,26 +58,6 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Increase damage to 200% for the next 2 turns + Change 3rd row to Light
-    orbs
-  desc_jp: Increase damage to 200% for the next 2 turns + Change 3rd row to Light
-    orbs
-  max_atk_pct: null
-  name_en: His sword is raised + Proud Slash
-  name_jp: His sword is raised + Proud Slash
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 30
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -101,6 +81,33 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 30
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Voids player buff effects
+  desc_jp: Voids player buff effects
+  max_atk_pct: null
+  name_en: Brave Resistance
+  name_jp: Brave Resistance
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  max_atk_pct: null
+  name_en: Brave Resistance
+  name_jp: Brave Resistance
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
@@ -140,7 +147,7 @@ records:
 # Condition: When < 20% hp
 # Enemy action
 # [7] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 12
+# Branch on hp < 50, target rnd 12
 # [8] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESAttackUp -> His sword is raised

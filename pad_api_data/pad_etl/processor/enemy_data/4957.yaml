@@ -31,64 +31,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Increase damage to 150% for the next 99 turns + Bind 4 random subs for
-    1 turns
-  desc_jp: Increase damage to 150% for the next 99 turns + Bind 4 random subs for
-    1 turns
-  max_atk_pct: null
-  name_en: How! Nice one! + You can do better than that!
-  name_jp: How! Nice one! + You can do better than that!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 200% damage
-  desc_jp: Deal 200% damage
-  max_atk_pct: 200
-  name_en: Great King Enma Ball
-  name_jp: Great King Enma Ball
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: 2x2 cloud appear for 1 turns at random location, Deal 90% damage
-  desc_jp: 2x2 cloud appear for 1 turns at random location, Deal 90% damage
-  max_atk_pct: 90
-  name_en: This is Enma's power!
-  name_jp: This is Enma's power!
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 50
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -130,6 +74,80 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 25
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: 2x2 cloud appear for 1 turns at random location, Deal 90% damage
+  desc_jp: 2x2 cloud appear for 1 turns at random location, Deal 90% damage
+  max_atk_pct: 90
+  name_en: This is Enma's power!
+  name_jp: This is Enma's power!
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy action + Enemy recover 50% hp
+  desc_jp: Enemy action + Enemy recover 50% hp
+  max_atk_pct: null
+  name_en: Great King Enma Ball + Let's get serious...!
+  name_jp: Great King Enma Ball + Let's get serious...!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 150% for the next 99 turns + Bind 4 random subs for
+    1 turns
+  desc_jp: Increase damage to 150% for the next 99 turns + Bind 4 random subs for
+    1 turns
+  max_atk_pct: null
+  name_en: How! Nice one! + You can do better than that!
+  name_jp: How! Nice one! + You can do better than that!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 200% damage
+  desc_jp: Deal 200% damage
+  max_atk_pct: 200
+  name_en: Great King Enma Ball
+  name_jp: Great King Enma Ball
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -148,11 +166,11 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchHP -> ESBranchHP
-# Branch on hp = 20, target rnd 20
+# Branch on hp < 20, target rnd 20
 # [7] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 16
+# Branch on hp < 50, target rnd 16
 # [8] ESBranchHP -> ESBranchHP
-# Branch on hp = 51, target rnd 11
+# Branch on hp > 51, target rnd 11
 # [9] ESCloud -> This is Enma's power!
 # Condition: One-time use
 # 2x2 cloud appear for 1 turns at random location

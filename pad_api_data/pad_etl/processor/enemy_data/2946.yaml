@@ -47,26 +47,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Absorb combo <= 8 damage for 8 turns
-  desc_jp: Absorb combo <= 8 damage for 8 turns
-  max_atk_pct: null
-  name_en: Gleaming Queen's Trial
-  name_jp: Gleaming Queen's Trial
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -92,26 +74,26 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 10
-  name_jp: Turn 10
+  name_en: HP <= 49
+  name_jp: HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Player -99% HP + Enemy action
-  desc_jp: Player -99% HP + Enemy action
+  desc_en: Absorb combo <= 8 damage for 8 turns
+  desc_jp: Absorb combo <= 8 damage for 8 turns
   max_atk_pct: null
-  name_en: Sorry + Gleaming Queen's Judgment
-  name_jp: Sorry + Gleaming Queen's Judgment
-  one_time: false
+  name_en: Gleaming Queen's Trial
+  name_jp: Gleaming Queen's Trial
+  one_time: true
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: HP <= 49
+  name_jp: HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -150,7 +132,7 @@ records:
 # Condition: One-time use
 # Bind 2 both leaders for 10 turns
 # [8] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 14
+# Branch on hp < 50, target rnd 14
 # [9] ESBranchFlag -> ESBranchFlag
 # Branch on flag & 2, target rnd 14
 # [10] ESOrbChangeAttack -> Shine Blast
@@ -170,7 +152,7 @@ records:
 # [16] ESSetCounter -> ESSetCounter
 # counter + 1
 # [17] ESBranchCounter -> ESBranchCounter
-# Branch on counter = 8, target rnd 19
+# Branch on counter > 8, target rnd 19
 # [18] ESFixedStart -> Gleaming Chains
 # Fix orb movement starting point to random position on the board
 # [19] SkillSet:

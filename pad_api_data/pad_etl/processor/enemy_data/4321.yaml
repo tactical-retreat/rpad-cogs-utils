@@ -37,24 +37,6 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Blind all orbs on the board
-  desc_jp: Blind all orbs on the board
-  max_atk_pct: null
-  name_en: This is the fight I hoped for!
-  name_jp: This is the fight I hoped for!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Deal 100% damage
   desc_jp: Deal 100% damage
   max_atk_pct: 100
@@ -67,17 +49,17 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: Turn 2
+  name_jp: Turn 2
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 300% damage (3 hits, 100% each)
-  desc_jp: Deal 300% damage (3 hits, 100% each)
-  max_atk_pct: 300
-  name_en: Full power! 100 percent of 100 percent!
-  name_jp: Full power! 100 percent of 100 percent!
+  desc_en: Deal 120% damage (4 hits, 30% each)
+  desc_jp: Deal 120% damage (4 hits, 30% each)
+  max_atk_pct: 120
+  name_en: Now I will do it rapid-fire!
+  name_jp: Now I will do it rapid-fire!
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -85,8 +67,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
+  name_en: Turn 3
+  name_jp: Turn 3
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -103,8 +85,28 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
+  name_en: Turn 4
+  name_jp: Turn 4
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Spawn random 6 Jammer orbs + Enemy recover 30% hp
+  desc_jp: Spawn random 6 Jammer orbs + Enemy recover 30% hp
+  max_atk_pct: null
+  name_en: Remaining at top strength is demanding... + ...and my body gets an impulse
+    to devour.
+  name_jp: Remaining at top strength is demanding... + ...and my body gets an impulse
+    to devour.
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -139,6 +141,60 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind awoken skills for 3 turns
+  desc_jp: Bind awoken skills for 3 turns
+  max_atk_pct: null
+  name_en: You are powerless.
+  name_jp: You are powerless.
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Blind all orbs on the board
+  desc_jp: Blind all orbs on the board
+  max_atk_pct: null
+  name_en: This is the fight I hoped for!
+  name_jp: This is the fight I hoped for!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 300% damage (3 hits, 100% each)
+  desc_jp: Deal 300% damage (3 hits, 100% each)
+  max_atk_pct: 300
+  name_en: Full power! 100 percent of 100 percent!
+  name_jp: Full power! 100 percent of 100 percent!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -146,9 +202,9 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 1
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 5
+# Branch on level > 4, target rnd 5
 # [3] ESBranchLevel -> ESBranchLevel
-# Branch on level = 3, target rnd 38
+# Branch on level < 3, target rnd 38
 # [4] ESEndPath -> ESEndPath
 # end_turn
 # [5] ESBranchFlag -> ESBranchFlag
@@ -163,7 +219,7 @@ records:
 # [8] ESEndPath -> ESEndPath
 # end_turn
 # [9] ESBranchHP -> ESBranchHP
-# Branch on hp = 20, target rnd 32
+# Branch on hp < 20, target rnd 32
 # [10] ESBranchFlag -> ESBranchFlag
 # Branch on flag & 2, target rnd 14
 # [11] ESFlagOperation -> ESFlagOperation
@@ -195,7 +251,7 @@ records:
 # [22] ESEndPath -> ESEndPath
 # end_turn
 # [23] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 28
+# Branch on hp < 50, target rnd 28
 # [24] ESAttackMultihit -> Thumb Bullet
 # Condition: 33% chance
 # Enemy action

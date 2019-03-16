@@ -10,10 +10,98 @@ reviewed_by: unreviewed
 warnings: []
 
 ############################################################
-### Data @ 1
+### Data @ 4
 ############################################################
 !SkillRecordListing
-level: 1
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Change Random to Wood, Deal 80% damage
+  desc_jp: Change Random to Wood, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Wind Lance
+  name_jp: Wind Lance
+  one_time: true
+  record_type_name: PREEMPT
+  usage_pct: 70
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 300% for the next 999 turns
+  desc_jp: Increase damage to 300% for the next 999 turns
+  max_atk_pct: null
+  name_en: Lone Force
+  name_jp: Lone Force
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Data @ 9
+############################################################
+!SkillRecordListing
+level: 9
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Deal 60% damage
+  desc_jp: Deal 60% damage
+  max_atk_pct: 60
+  name_en: Gale Thrust
+  name_jp: Gale Thrust
+  one_time: false
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Random to Wood, Deal 80% damage
+  desc_jp: Change Random to Wood, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Wind Lance
+  name_jp: Wind Lance
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 70
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 300% for the next 999 turns
+  desc_jp: Increase damage to 300% for the next 999 turns
+  max_atk_pct: null
+  name_en: Lone Force
+  name_jp: Lone Force
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Data @ 10
+############################################################
+!SkillRecordListing
+level: 10
 overrides: []
 records:
 - !SkillRecord
@@ -68,9 +156,9 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 10
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 7
+# Branch on level < 4, target rnd 7
 # [3] ESBranchLevel -> ESBranchLevel
-# Branch on level = 9, target rnd 8
+# Branch on level < 9, target rnd 8
 # [4] ESBranchFlag -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation -> ESFlagOperation

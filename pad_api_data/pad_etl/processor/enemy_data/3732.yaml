@@ -37,6 +37,62 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
+  desc_en: Spawn Bomb orbs in the specified positions, Deal 250% damage
+  desc_jp: Spawn Bomb orbs in the specified positions, Deal 250% damage
+  max_atk_pct: 250
+  name_en: Ignited
+  name_jp: Ignited
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 20
+- !SkillRecord
+  desc_en: Change Water to Fire, Deal 265% damage
+  desc_jp: Change Water to Fire, Deal 265% damage
+  max_atk_pct: 265
+  name_en: Flare Breath
+  name_jp: Flare Breath
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 20
+- !SkillRecord
+  desc_en: Lock 4 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 260% damage
+  desc_jp: Lock 4 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 260% damage
+  max_atk_pct: 260
+  name_en: Nova
+  name_jp: Nova
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 20
+- !SkillRecord
+  desc_en: 1x1 cloud appear for 1 turns at random location, Deal 260% damage
+  desc_jp: 1x1 cloud appear for 1 turns at random location, Deal 260% damage
+  max_atk_pct: 260
+  name_en: Heat Haze
+  name_jp: Heat Haze
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 20
+- !SkillRecord
+  desc_en: Deal 270% damage (3 hits, 90% each)
+  desc_jp: Deal 270% damage (3 hits, 90% each)
+  max_atk_pct: 270
+  name_en: Meteor
+  name_jp: Meteor
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 20
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
   desc_en: Reduce damage from all sources by 50% for 3 turns + Leader changes to random
     sub for 3 turns
   desc_jp: Reduce damage from all sources by 50% for 3 turns + Leader changes to random
@@ -58,6 +114,62 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Spawn Bomb orbs in the specified positions, Deal 250% damage
+  desc_jp: Spawn Bomb orbs in the specified positions, Deal 250% damage
+  max_atk_pct: 250
+  name_en: Ignited
+  name_jp: Ignited
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 20
+- !SkillRecord
+  desc_en: Change Water to Fire, Deal 265% damage
+  desc_jp: Change Water to Fire, Deal 265% damage
+  max_atk_pct: 265
+  name_en: Flare Breath
+  name_jp: Flare Breath
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 20
+- !SkillRecord
+  desc_en: Lock 4 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 260% damage
+  desc_jp: Lock 4 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 260% damage
+  max_atk_pct: 260
+  name_en: Nova
+  name_jp: Nova
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 20
+- !SkillRecord
+  desc_en: 1x1 cloud appear for 1 turns at random location, Deal 260% damage
+  desc_jp: 1x1 cloud appear for 1 turns at random location, Deal 260% damage
+  max_atk_pct: 260
+  name_en: Heat Haze
+  name_jp: Heat Haze
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 20
+- !SkillRecord
+  desc_en: Deal 270% damage (3 hits, 90% each)
+  desc_jp: Deal 270% damage (3 hits, 90% each)
+  max_atk_pct: 270
+  name_en: Meteor
+  name_jp: Meteor
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 20
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
@@ -192,7 +304,7 @@ records:
 # 	[1] ESLeaderSwap -> Rejection
 # 	Leader changes to random sub for 3 turns
 # [11] ESBranchHP -> ESBranchHP
-# Branch on hp = 100, target rnd 19
+# Branch on hp < 100, target rnd 19
 # [12] ESEndPath -> ESEndPath
 # end_turn
 # [13] ESBranchFlag -> ESBranchFlag
@@ -212,7 +324,7 @@ records:
 # 	[1] ESBindAwoken -> Suppression
 # 	Bind awoken skills for 3 turns
 # [17] ESBranchHP -> ESBranchHP
-# Branch on hp = 100, target rnd 19
+# Branch on hp < 100, target rnd 19
 # [18] ESEndPath -> ESEndPath
 # end_turn
 # [19] ESBombFixedSpawn -> Ignited
