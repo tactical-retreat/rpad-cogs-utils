@@ -74,6 +74,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 12
+  name_jp: Turn 12
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind awoken skills for 1 turns + Enemy action
+  desc_jp: Bind awoken skills for 1 turns + Enemy action
+  max_atk_pct: null
+  name_en: You gonna keep dancing? + Fall here!
+  name_jp: You gonna keep dancing? + Fall here!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -152,7 +170,7 @@ records:
 # Condition: after being affected by a status effect
 # Increase damage to 200% for the next 999 turns
 # [9] ESBranchCounter -> ESBranchCounter
-# Branch on counter = 5, target rnd 14
+# Branch on counter > 5, target rnd 14
 # [10] ESSkillDelay -> Helmet Splitter
 # Condition: 33% chance
 # Delay active skills by 1 turns
@@ -170,7 +188,7 @@ records:
 # 	[1] ESDamageShield -> Steel Demonskin
 # 	Reduce damage from all sources by 75% for 7 turns
 # [15] ESBranchCounter -> ESBranchCounter
-# Branch on counter = 12, target rnd 20
+# Branch on counter > 12, target rnd 20
 # [16] ESSkillDelay -> Helmet Splitter
 # Condition: 33% chance
 # Delay active skills by 1 turns

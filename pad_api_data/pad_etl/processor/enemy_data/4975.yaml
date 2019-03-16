@@ -38,18 +38,18 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
+  name_en: Turn 2
+  name_jp: Turn 2
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Bind 4 random subs for 1 turns + Do nothing
-  desc_jp: Bind 4 random subs for 1 turns + Do nothing
+  desc_en: Increase damage to 200% for the next 1 turns
+  desc_jp: Increase damage to 200% for the next 1 turns
   max_atk_pct: null
-  name_en: S-Sympathy of a samurai... + Wait a moment!
-  name_jp: S-Sympathy of a samurai... + Wait a moment!
-  one_time: false
+  name_en: My mind is concentrating...
+  name_jp: My mind is concentrating...
+  one_time: true
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -58,24 +58,6 @@ records:
   max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 210% damage (6 hits, 35% each)
-  desc_jp: Deal 210% damage (6 hits, 35% each)
-  max_atk_pct: 210
-  name_en: Katsuobushi Slice
-  name_jp: Katsuobushi Slice
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -110,18 +92,56 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 150% for the next 5 turns + Absorb combo <= 5 damage
+    for 5 turns
+  desc_jp: Increase damage to 150% for the next 5 turns + Absorb combo <= 5 damage
+    for 5 turns
+  max_atk_pct: null
+  name_en: This is secret skill! + Haha! I am victorious!
+  name_jp: This is secret skill! + Haha! I am victorious!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 19
   name_jp: HP <= 19
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Increase damage to 200% for the next 1 turns
-  desc_jp: Increase damage to 200% for the next 1 turns
+  desc_en: Bind 4 random subs for 1 turns + Do nothing
+  desc_jp: Bind 4 random subs for 1 turns + Do nothing
   max_atk_pct: null
-  name_en: My mind is concentrating...
-  name_jp: My mind is concentrating...
-  one_time: true
+  name_en: S-Sympathy of a samurai... + Wait a moment!
+  name_jp: S-Sympathy of a samurai... + Wait a moment!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 210% damage (6 hits, 35% each)
+  desc_jp: Deal 210% damage (6 hits, 35% each)
+  max_atk_pct: 210
+  name_en: Katsuobushi Slice
+  name_jp: Katsuobushi Slice
+  one_time: false
   record_type_name: ACTION
   usage_pct: 100
 
@@ -137,9 +157,9 @@ records:
 # 	[1] ESGravity -> Now, die!
 # 	Player -75% HP
 # [3] ESBranchHP -> ESBranchHP
-# Branch on hp = 20, target rnd 14
+# Branch on hp < 20, target rnd 14
 # [4] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 10
+# Branch on hp < 50, target rnd 10
 # [5] ESAttackUp -> My mind is concentrating...
 # Condition: One-time use
 # Increase damage to 200% for the next 1 turns

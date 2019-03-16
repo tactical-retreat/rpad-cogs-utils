@@ -31,26 +31,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 200% damage
-  desc_jp: Deal 200% damage
-  max_atk_pct: 200
-  name_en: Lightning Rider Kick
-  name_jp: Lightning Rider Kick
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
+  name_en: Turn 1
+  name_jp: Turn 1
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -67,8 +49,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -99,6 +81,24 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 33
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 200% damage
+  desc_jp: Deal 200% damage
+  max_atk_pct: 200
+  name_en: Lightning Rider Kick
+  name_jp: Lightning Rider Kick
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -106,7 +106,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 4
+# Branch on level > 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
@@ -121,7 +121,7 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchHP -> ESBranchHP
-# Branch on hp = 20, target rnd 15
+# Branch on hp < 20, target rnd 15
 # [9] ESBindRandomSub -> Rider Scissors
 # Condition: One-time use
 # Bind 1 random subs for 2 turns

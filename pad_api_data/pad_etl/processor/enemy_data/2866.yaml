@@ -35,42 +35,6 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Increase damage to 200% for the next attack
-  desc_jp: Increase damage to 200% for the next attack
-  max_atk_pct: null
-  name_en: Alright, let's be serious.
-  name_jp: Alright, let's be serious.
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Player -40% HP
-  desc_jp: Player -40% HP
-  max_atk_pct: null
-  name_en: Soryaaa!!
-  name_jp: Soryaaa!!
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Player -40% HP
   desc_jp: Player -40% HP
   max_atk_pct: null
@@ -115,6 +79,24 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 20
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next attack
+  desc_jp: Increase damage to 200% for the next attack
+  max_atk_pct: null
+  name_en: Alright, let's be serious.
+  name_jp: Alright, let's be serious.
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -122,7 +104,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 4
+# Branch on level > 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
@@ -138,7 +120,7 @@ records:
 # [9] ESEndPath -> ESEndPath
 # end_turn
 # [10] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 16
+# Branch on hp < 50, target rnd 16
 # [11] ESGravity -> Soryaaa!!
 # Condition: One-time use
 # Player -40% HP

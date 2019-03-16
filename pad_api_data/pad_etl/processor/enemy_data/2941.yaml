@@ -53,26 +53,6 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change own attribute to Dark + Reduce damage from all sources by 99% for
-    1 turns
-  desc_jp: Change own attribute to Dark + Reduce damage from all sources by 99% for
-    1 turns
-  max_atk_pct: null
-  name_en: Devil's Half Divinity + Dephaser
-  name_jp: Devil's Half Divinity + Dephaser
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 99
-  name_jp: HP <= 99
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Change 1st column to Water orbs, Deal 140% damage
   desc_jp: Change 1st column to Water orbs, Deal 140% damage
   max_atk_pct: 140
@@ -130,6 +110,26 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change own attribute to Dark + Reduce damage from all sources by 99% for
+    1 turns
+  desc_jp: Change own attribute to Dark + Reduce damage from all sources by 99% for
+    1 turns
+  max_atk_pct: null
+  name_en: Devil's Half Divinity + Dephaser
+  name_jp: Devil's Half Divinity + Dephaser
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 40
   name_jp: HP <= 40
   one_time: false
@@ -178,9 +178,9 @@ records:
 # Condition: When < 20% hp
 # Enemy action
 # [4] ESBranchHP -> ESBranchHP
-# Branch on hp = 100, target rnd 17
+# Branch on hp > 100, target rnd 17
 # [5] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 14
+# Branch on hp < 50, target rnd 14
 # [6] SkillSet:
 # 	Condition: When < 40% hp , one-time use
 # 	[0] ESBlind -> The First Circle, Limbo

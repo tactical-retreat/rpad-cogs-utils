@@ -20,24 +20,6 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Enemy recover 30% hp, Deal 160% damage
-  desc_jp: Enemy recover 30% hp, Deal 160% damage
-  max_atk_pct: 160
-  name_en: Vampire Sword
-  name_jp: Vampire Sword
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -83,6 +65,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: HP <= 29
+  name_jp: HP <= 29
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy recover 30% hp, Deal 160% damage
+  desc_jp: Enemy recover 30% hp, Deal 160% damage
+  max_atk_pct: 160
+  name_en: Vampire Sword
+  name_jp: Vampire Sword
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 20
   name_jp: HP <= 20
   one_time: false
@@ -102,11 +102,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 3
+# Branch on level > 4, target rnd 3
 # [2] ESEndPath -> ESEndPath
 # end_turn
 # [3] ESBranchHP -> ESBranchHP
-# Branch on hp = 30, target rnd 9
+# Branch on hp < 30, target rnd 9
 # [4] ESAttackMultihit -> Darkside
 # Condition: When < 20% hp
 # Enemy action

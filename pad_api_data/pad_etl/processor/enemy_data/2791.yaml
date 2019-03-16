@@ -73,11 +73,11 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Jammer skyfall +15% for 3 turns + Enemy action
-  desc_jp: Jammer skyfall +15% for 3 turns + Enemy action
+  desc_en: Reduce damage from all sources by 75% for 2 turns + Enemy action
+  desc_jp: Reduce damage from all sources by 75% for 2 turns + Enemy action
   max_atk_pct: null
-  name_en: It's acting differently. + Black Ruin
-  name_jp: It's acting differently. + Black Ruin
+  name_en: Destruction is inevitable. + Sanction
+  name_jp: Destruction is inevitable. + Sanction
   one_time: true
   record_type_name: ACTION
   usage_pct: 100
@@ -91,29 +91,11 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Reduce damage from all sources by 75% for 2 turns + Enemy action
-  desc_jp: Reduce damage from all sources by 75% for 2 turns + Enemy action
+  desc_en: Jammer skyfall +15% for 3 turns + Enemy action
+  desc_jp: Jammer skyfall +15% for 3 turns + Enemy action
   max_atk_pct: null
-  name_en: Destruction is inevitable. + Sanction
-  name_jp: Destruction is inevitable. + Sanction
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 4
-  name_jp: Turn 4
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 100% damage
-  desc_jp: Deal 100% damage
-  max_atk_pct: 100
-  name_en: Black Ruin
-  name_jp: Black Ruin
+  name_en: It's acting differently. + Black Ruin
+  name_jp: It's acting differently. + Black Ruin
   one_time: true
   record_type_name: ACTION
   usage_pct: 100
@@ -145,11 +127,11 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Reduce damage from all sources by 75% for 2 turns + Change Random to Heal
-  desc_jp: Reduce damage from all sources by 75% for 2 turns + Change Random to Heal
+  desc_en: Reduce damage from all sources by 75% for 2 turns + Enemy action
+  desc_jp: Reduce damage from all sources by 75% for 2 turns + Enemy action
   max_atk_pct: null
-  name_en: Ignorant slaves of Pulse. + Rebirth
-  name_jp: Ignorant slaves of Pulse. + Rebirth
+  name_en: Ignorant slaves of Pulse. + Sanction
+  name_jp: Ignorant slaves of Pulse. + Sanction
   one_time: true
   record_type_name: ACTION
   usage_pct: 100
@@ -175,24 +157,6 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 5
-  name_jp: Turn 5
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Reduce damage from all sources by 75% for 2 turns + Enemy action
-  desc_jp: Reduce damage from all sources by 75% for 2 turns + Enemy action
-  max_atk_pct: null
-  name_en: Ignorant slaves of Pulse. + Sanction
-  name_jp: Ignorant slaves of Pulse. + Sanction
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: Turn 6
   name_jp: Turn 6
   one_time: false
@@ -211,24 +175,6 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 6
-  name_jp: Turn 6
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 100% damage
-  desc_jp: Deal 100% damage
-  max_atk_pct: 100
-  name_en: Black Ruin
-  name_jp: Black Ruin
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: Turn 7
   name_jp: Turn 7
   one_time: false
@@ -240,24 +186,6 @@ records:
   max_atk_pct: null
   name_en: Surrender your will. + Sanction
   name_jp: Surrender your will. + Sanction
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 7
-  name_jp: Turn 7
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Reduce damage from all sources by 75% for 2 turns + Change Random to Heal
-  desc_jp: Reduce damage from all sources by 75% for 2 turns + Change Random to Heal
-  max_atk_pct: null
-  name_en: Surrender your will. + Rebirth
-  name_jp: Surrender your will. + Rebirth
   one_time: true
   record_type_name: ACTION
   usage_pct: 100
@@ -304,7 +232,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 1
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 6
+# Branch on level > 4, target rnd 6
 # [3] ESInactivity -> Go back to oblivion!
 # Condition: One-time use
 # Do nothing
@@ -325,7 +253,7 @@ records:
 # Condition: One-time use
 # Delay active skills by 1 turns
 # [9] ESBranchHP -> ESBranchHP
-# Branch on hp = 60, target rnd 22
+# Branch on hp < 60, target rnd 22
 # [10] ESFlagOperation -> ESFlagOperation
 # flag SET 0b111
 # [11] SkillSet:
@@ -344,7 +272,7 @@ records:
 # Condition: One-time use
 # Enemy action
 # [15] ESBranchHP -> ESBranchHP
-# Branch on hp = 40, target rnd 27
+# Branch on hp < 40, target rnd 27
 # [16] ESFlagOperation -> ESFlagOperation
 # flag SET 0b1111
 # [17] SkillSet:
@@ -385,7 +313,7 @@ records:
 # 	[1] ESOrbChangeAttack -> Rebirth
 # 	Change Random to Heal
 # [26] ESBranchHP -> ESBranchHP
-# Branch on hp = 60, target rnd 18
+# Branch on hp < 60, target rnd 18
 # [27] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESSkyfall -> It's acting differently.
@@ -404,7 +332,7 @@ records:
 # 	[1] ESOrbChangeAttack -> Rebirth
 # 	Change Random to Heal
 # [31] ESBranchHP -> ESBranchHP
-# Branch on hp = 40, target rnd 20
+# Branch on hp < 40, target rnd 20
 # [32] ESDeathCry -> ****
 # Condition: On death
 # Show death effect

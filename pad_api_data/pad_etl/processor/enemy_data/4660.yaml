@@ -35,60 +35,6 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Do nothing
-  desc_jp: Do nothing
-  max_atk_pct: null
-  name_en: Let's end this!
-  name_jp: Let's end this!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Do nothing
-  desc_jp: Do nothing
-  max_atk_pct: null
-  name_en: Let's end this!
-  name_jp: Let's end this!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 300% damage (10 hits, 30% each)
-  desc_jp: Deal 300% damage (10 hits, 30% each)
-  max_atk_pct: 300
-  name_en: Starburst!!!
-  name_jp: Starburst!!!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Change Heal to Light, Deal 100% damage
   desc_jp: Change Heal to Light, Deal 100% damage
   max_atk_pct: 100
@@ -101,8 +47,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -115,6 +61,42 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Let's end this!
+  name_jp: Let's end this!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 300% damage (10 hits, 30% each)
+  desc_jp: Deal 300% damage (10 hits, 30% each)
+  max_atk_pct: 300
+  name_en: Starburst!!!
+  name_jp: Starburst!!!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -122,7 +104,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 4
+# Branch on level > 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
@@ -137,9 +119,9 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 14
+# Branch on hp < 50, target rnd 14
 # [9] ESBranchHP -> ESBranchHP
-# Branch on hp = 20, target rnd 18
+# Branch on hp < 20, target rnd 18
 # [10] ESOrbChangeAttackBits -> Shining Straight
 # Condition: One-time use
 # Change Heal to Light

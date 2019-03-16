@@ -47,26 +47,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 240% damage (3 hits, 80% each)
-  desc_jp: Deal 240% damage (3 hits, 80% each)
-  max_atk_pct: 240
-  name_en: Playtime's over!
-  name_jp: Playtime's over!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 29
-  name_jp: HP <= 29
+  name_en: Turn 2
+  name_jp: Turn 2
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -83,8 +65,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 29
-  name_jp: HP <= 29
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -108,6 +90,42 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 74
+  name_jp: HP <= 74
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Absorb combo <= 7 damage for 6 turns
+  desc_jp: Absorb combo <= 7 damage for 6 turns
+  max_atk_pct: null
+  name_en: "Okay, now it's playtime\u266A"
+  name_jp: "Okay, now it's playtime\u266A"
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 29
+  name_jp: HP <= 29
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 240% damage (3 hits, 80% each)
+  desc_jp: Deal 240% damage (3 hits, 80% each)
+  max_atk_pct: 240
+  name_en: Playtime's over!
+  name_jp: Playtime's over!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -115,7 +133,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 4
+# Branch on level > 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
@@ -130,9 +148,9 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchHP -> ESBranchHP
-# Branch on hp = 30, target rnd 22
+# Branch on hp < 30, target rnd 22
 # [9] ESBranchHP -> ESBranchHP
-# Branch on hp = 75, target rnd 18
+# Branch on hp < 75, target rnd 18
 # [10] ESBranchFlag -> ESBranchFlag
 # Branch on flag & 2, target rnd 14
 # [11] ESFlagOperation -> ESFlagOperation

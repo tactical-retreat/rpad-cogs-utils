@@ -29,8 +29,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
+  name_en: HP <= 29
+  name_jp: HP <= 29
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -47,8 +47,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: HP <= 29
+  name_jp: HP <= 29
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -65,8 +65,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 29
-  name_jp: HP <= 29
+  name_en: Execute below actions in order repeatedly
+  name_jp: Execute below actions in order repeatedly
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -80,15 +80,6 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 29
-  name_jp: HP <= 29
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Bind 1 subs for 2 turns, Deal 50% damage
   desc_jp: Bind 1 subs for 2 turns, Deal 50% damage
   max_atk_pct: 50
@@ -98,15 +89,6 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 29
-  name_jp: HP <= 29
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Change Random to Random, Deal 75% damage
   desc_jp: Change Random to Random, Deal 75% damage
   max_atk_pct: 75
@@ -114,15 +96,6 @@ records:
   name_jp: Rainbow Contract
   one_time: false
   record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 29
-  name_jp: HP <= 29
-  one_time: false
-  record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
   desc_en: Change Random to Heal, Deal 100% damage
@@ -148,7 +121,7 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchHP -> ESBranchHP
-# Branch on hp = 30, target rnd 22
+# Branch on hp < 30, target rnd 22
 # [7] ESBranchFlag -> ESBranchFlag
 # Branch on flag & 2, target rnd 11
 # [8] ESFlagOperation -> ESFlagOperation

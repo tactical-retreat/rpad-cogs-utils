@@ -47,6 +47,42 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Random to Fire, Deal 100% damage
+  desc_jp: Change Random to Fire, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Flame Breath
+  name_jp: Flame Breath
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change 1st row to Fire orbs, Deal 200% damage
+  desc_jp: Change 1st row to Fire orbs, Deal 200% damage
+  max_atk_pct: 200
+  name_en: Inferno Blast
+  name_jp: Inferno Blast
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 2
   name_jp: Turn 2
   one_time: false
@@ -65,6 +101,42 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Random to Fire, Deal 100% damage
+  desc_jp: Change Random to Fire, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Flame Breath
+  name_jp: Flame Breath
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change 1st row to Fire orbs, Deal 200% damage
+  desc_jp: Change 1st row to Fire orbs, Deal 200% damage
+  max_atk_pct: 200
+  name_en: Inferno Blast
+  name_jp: Inferno Blast
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 3
   name_jp: Turn 3
   one_time: false
@@ -76,6 +148,24 @@ records:
   max_atk_pct: null
   name_en: Blazing Tail
   name_jp: Blazing Tail
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change 1st row to Fire orbs, Deal 200% damage
+  desc_jp: Change 1st row to Fire orbs, Deal 200% damage
+  max_atk_pct: 200
+  name_en: Inferno Blast
+  name_jp: Inferno Blast
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -119,9 +209,9 @@ records:
 # [7] ESFlagOperation -> ESFlagOperation
 # flag SET 0b11
 # [8] ESBranchHP -> ESBranchHP
-# Branch on hp = 20, target rnd 23
+# Branch on hp < 20, target rnd 23
 # [9] ESBranchHP -> ESBranchHP
-# Branch on hp = 80, target rnd 24
+# Branch on hp < 80, target rnd 24
 # [10] ESRandomSpawn -> Powerful Blaze
 # Condition: When water, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board
 # Spawn random 6 Fire orbs
@@ -132,9 +222,9 @@ records:
 # [13] ESFlagOperation -> ESFlagOperation
 # flag SET 0b111
 # [14] ESBranchHP -> ESBranchHP
-# Branch on hp = 20, target rnd 23
+# Branch on hp < 20, target rnd 23
 # [15] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 24
+# Branch on hp < 50, target rnd 24
 # [16] ESAttackMultihit -> Hellfire Claw
 # Enemy action
 # [17] ESEndPath -> ESEndPath
@@ -144,7 +234,7 @@ records:
 # [19] ESFlagOperation -> ESFlagOperation
 # flag SET 0b1111
 # [20] ESBranchHP -> ESBranchHP
-# Branch on hp = 20, target rnd 23
+# Branch on hp < 20, target rnd 23
 # [21] ESGravity -> Blazing Tail
 # Player -99% HP
 # [22] ESEndPath -> ESEndPath

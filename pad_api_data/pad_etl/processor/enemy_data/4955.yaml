@@ -29,8 +29,26 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
+  name_en: HP <= 20
+  name_jp: HP <= 20
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: The summer heat is killing me...
+  name_jp: The summer heat is killing me...
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 20
+  name_jp: HP <= 20
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -51,15 +69,6 @@ records:
   name_jp: Execute below actions in order repeatedly
   one_time: false
   record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 200% damage (4 hits, 50% each)
-  desc_jp: Deal 200% damage (4 hits, 50% each)
-  max_atk_pct: 200
-  name_en: Glittering Snow Make-Up
-  name_jp: Glittering Snow Make-Up
-  one_time: false
-  record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
   desc_en: Player -25% HP + Enemy action
@@ -147,6 +156,15 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
+  desc_en: Deal 200% damage (4 hits, 50% each)
+  desc_jp: Deal 200% damage (4 hits, 50% each)
+  max_atk_pct: 200
+  name_en: Glittering Snow Make-Up
+  name_jp: Glittering Snow Make-Up
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
   desc_en: Increase damage to 150% for the next 3 turns + Movetime -2s for 3 turns
   desc_jp: Increase damage to 150% for the next 3 turns + Movetime -2s for 3 turns
   max_atk_pct: null
@@ -175,11 +193,11 @@ records:
 # [6] ESSetCounter -> ESSetCounter
 # counter + 1
 # [7] ESBranchCounter -> ESBranchCounter
-# Branch on counter = 4, target rnd 16
+# Branch on counter > 4, target rnd 16
 # [8] ESBranchHP -> ESBranchHP
-# Branch on hp = 20, target rnd 19
+# Branch on hp < 20, target rnd 19
 # [9] ESBranchCounter -> ESBranchCounter
-# Branch on counter = 3, target rnd 14
+# Branch on counter > 3, target rnd 14
 # [10] SkillSet:
 # 	Condition: 34% chance
 # 	[0] ESGravity -> Let's chill things down!

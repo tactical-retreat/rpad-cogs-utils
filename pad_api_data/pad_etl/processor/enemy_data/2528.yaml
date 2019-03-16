@@ -40,26 +40,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 6400% damage (8 hits, 800% each)
-  desc_jp: Deal 6400% damage (8 hits, 800% each)
-  max_atk_pct: 6400
-  name_en: Hyper Nova
-  name_jp: Hyper Nova
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
+  name_en: Turn 1
+  name_jp: Turn 1
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -76,8 +58,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -87,6 +69,78 @@ records:
   max_atk_pct: 190
   name_en: ZEUS Sword
   name_jp: ZEUS Sword
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 69
+  name_jp: HP <= 69
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind God cards for 10 turns
+  desc_jp: Bind God cards for 10 turns
+  max_atk_pct: null
+  name_en: Machine King Gaze
+  name_jp: Machine King Gaze
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Absorb damage >= 2000000 damage for 5 turns + Do nothing
+  desc_jp: Absorb damage >= 2000000 damage for 5 turns + Do nothing
+  max_atk_pct: null
+  name_en: Aegis Invisible Field + Sword Bit Deployment
+  name_jp: Aegis Invisible Field + Sword Bit Deployment
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change 1st, 5th row to Light, Jammer, Mortal Poison orbs + Enemy action
+  desc_jp: Change 1st, 5th row to Light, Jammer, Mortal Poison orbs + Enemy action
+  max_atk_pct: null
+  name_en: Delta Dead Lightning + Sword Bit Rush
+  name_jp: Delta Dead Lightning + Sword Bit Rush
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 6400% damage (8 hits, 800% each)
+  desc_jp: Deal 6400% damage (8 hits, 800% each)
+  max_atk_pct: 6400
+  name_en: Hyper Nova
+  name_jp: Hyper Nova
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -110,11 +164,11 @@ records:
 # [6] ESEndPath -> ESEndPath
 # end_turn
 # [7] ESBranchHP -> ESBranchHP
-# Branch on hp = 20, target rnd 21
+# Branch on hp < 20, target rnd 21
 # [8] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 16
+# Branch on hp < 50, target rnd 16
 # [9] ESBranchHP -> ESBranchHP
-# Branch on hp = 70, target rnd 12
+# Branch on hp < 70, target rnd 12
 # [10] ESBindRandomSub -> ZEUS Cannon
 # Condition: One-time use
 # Bind 1 random subs for 3 turns

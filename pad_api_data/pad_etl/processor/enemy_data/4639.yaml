@@ -38,64 +38,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: 'Show message: Renya''s appearance is changing|Help have been summoned'
-  desc_jp: 'Show message: Renya''s appearance is changing|Help have been summoned'
-  max_atk_pct: null
-  name_en: Spe Dun Dragon Water Transformation
-  name_jp: Spe Dun Dragon Water Transformation
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 0
-- !SkillRecord
-  desc_en: Reduce damage from all sources by 50% for 3 turns + 3x3 cloud appear for
-    1 turns at random location
-  desc_jp: Reduce damage from all sources by 50% for 3 turns + 3x3 cloud appear for
-    1 turns at random location
-  max_atk_pct: null
-  name_en: Defense Instinct + Mass Clouds
-  name_jp: Defense Instinct + Mass Clouds
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: 'Show message: Renya''s appearance is changing|Help have been summoned'
-  desc_jp: 'Show message: Renya''s appearance is changing|Help have been summoned'
-  max_atk_pct: null
-  name_en: Spe Dun Dragon Water Transformation
-  name_jp: Spe Dun Dragon Water Transformation
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 0
-- !SkillRecord
-  desc_en: Deal 160% damage (2 hits, 80% each)
-  desc_jp: Deal 160% damage (2 hits, 80% each)
-  max_atk_pct: 160
-  name_en: Twin Feathers
-  name_jp: Twin Feathers
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -135,6 +79,62 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 34
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: 'Show message: Renya''s appearance is changing|Help have been summoned'
+  desc_jp: 'Show message: Renya''s appearance is changing|Help have been summoned'
+  max_atk_pct: null
+  name_en: Spe Dun Dragon Water Transformation
+  name_jp: Spe Dun Dragon Water Transformation
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 3 turns + 3x3 cloud appear for
+    1 turns at random location
+  desc_jp: Reduce damage from all sources by 50% for 3 turns + 3x3 cloud appear for
+    1 turns at random location
+  max_atk_pct: null
+  name_en: Defense Instinct + Mass Clouds
+  name_jp: Defense Instinct + Mass Clouds
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: 'Show message: Renya''s appearance is changing|Help have been summoned'
+  desc_jp: 'Show message: Renya''s appearance is changing|Help have been summoned'
+  max_atk_pct: null
+  name_en: Spe Dun Dragon Water Transformation
+  name_jp: Spe Dun Dragon Water Transformation
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: Deal 160% damage (2 hits, 80% each)
+  desc_jp: Deal 160% damage (2 hits, 80% each)
+  max_atk_pct: 160
+  name_en: Twin Feathers
+  name_jp: Twin Feathers
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -142,7 +142,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 4
+# Branch on level > 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESDeathCry -> Spe Dun Dragon Water Transformation
@@ -157,7 +157,7 @@ records:
 # [8] ESEndPath -> ESEndPath
 # end_turn
 # [9] ESBranchHP -> ESBranchHP
-# Branch on hp = 20, target rnd 14
+# Branch on hp < 20, target rnd 14
 # [10] ESRandomSpawn -> Teardrop
 # Condition: 33% chance & when Fire, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 3 Water orbs

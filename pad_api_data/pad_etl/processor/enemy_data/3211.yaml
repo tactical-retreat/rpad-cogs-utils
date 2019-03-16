@@ -44,11 +44,11 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Player -99% HP + Change all orbs to Dark, Mortal Poison
-  desc_jp: Player -99% HP + Change all orbs to Dark, Mortal Poison
-  max_atk_pct: null
-  name_en: Dark Realm of Exorcism + Orbs are dyed the color of death
-  name_jp: Dark Realm of Exorcism + Orbs are dyed the color of death
+  desc_en: Spawn random 6 Heal orbs, Deal 140% damage
+  desc_jp: Spawn random 6 Heal orbs, Deal 140% damage
+  max_atk_pct: 140
+  name_en: Spear of Birth & Death
+  name_jp: Spear of Birth & Death
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -62,11 +62,11 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Spawn random 6 Heal orbs, Deal 140% damage
-  desc_jp: Spawn random 6 Heal orbs, Deal 140% damage
-  max_atk_pct: 140
-  name_en: Spear of Birth & Death
-  name_jp: Spear of Birth & Death
+  desc_en: Movetime -2s for 6 turns
+  desc_jp: Movetime -2s for 6 turns
+  max_atk_pct: null
+  name_en: Spear of Burning Anguish
+  name_jp: Spear of Burning Anguish
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -76,6 +76,42 @@ records:
   max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Jammer to Light, Deal 150% damage
+  desc_jp: Change Jammer to Light, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Jaws of Divine Justice
+  name_jp: Jaws of Divine Justice
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 9
+  name_jp: HP <= 9
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Player -99% HP + Change all orbs to Dark, Mortal Poison
+  desc_jp: Player -99% HP + Change all orbs to Dark, Mortal Poison
+  max_atk_pct: null
+  name_en: Dark Realm of Exorcism + Orbs are dyed the color of death
+  name_jp: Dark Realm of Exorcism + Orbs are dyed the color of death
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 9
+  name_jp: HP <= 9
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -95,7 +131,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 4
+# Branch on level > 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
@@ -113,13 +149,13 @@ records:
 # [8] ESBranchFlag -> ESBranchFlag
 # Branch on flag & 4, target rnd 24
 # [9] ESBranchHP -> ESBranchHP
-# Branch on hp = 10, target rnd 21
+# Branch on hp < 10, target rnd 21
 # [10] ESBranchFlag -> ESBranchFlag
 # Branch on flag & 2, target rnd 17
 # [11] ESFlagOperation -> ESFlagOperation
 # flag SET 0b11
 # [12] ESBranchHP -> ESBranchHP
-# Branch on hp = 75, target rnd 15
+# Branch on hp < 75, target rnd 15
 # [13] ESRandomSpawn -> Spear of Birth & Death
 # Condition: When fire, water, wood, light, dark, jammer, poison, mortal poison orbs are on the board
 # Spawn random 6 Heal orbs

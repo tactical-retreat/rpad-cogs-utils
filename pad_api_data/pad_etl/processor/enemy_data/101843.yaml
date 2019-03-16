@@ -44,11 +44,29 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Bind active skills for 10 turns
-  desc_jp: Bind active skills for 10 turns
+  desc_en: Change 1st column to Fire orbs, 6th column to Wood orbs, Deal 140% damage
+  desc_jp: Change 1st column to Fire orbs, 6th column to Wood orbs, Deal 140% damage
+  max_atk_pct: 140
+  name_en: Vanir Rose
+  name_jp: Vanir Rose
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
   max_atk_pct: null
-  name_en: No way! I won't let you end this yet!
-  name_jp: No way! I won't let you end this yet!
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 150% damage (3 hits, 50% each)
+  desc_jp: Deal 150% damage (3 hits, 50% each)
+  max_atk_pct: 150
+  name_en: Glass Storm
+  name_jp: Glass Storm
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -62,11 +80,20 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 600% damage (2 hits, 300% each)
-  desc_jp: Deal 600% damage (2 hits, 300% each)
-  max_atk_pct: 600
-  name_en: Ventus Anima
-  name_jp: Ventus Anima
+  desc_en: Deal 150% damage (3 hits, 50% each)
+  desc_jp: Deal 150% damage (3 hits, 50% each)
+  max_atk_pct: 150
+  name_en: Glass Storm
+  name_jp: Glass Storm
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Change 1st column to Fire orbs, 6th column to Wood orbs, Deal 140% damage
+  desc_jp: Change 1st column to Fire orbs, 6th column to Wood orbs, Deal 140% damage
+  max_atk_pct: 140
+  name_en: Vanir Rose
+  name_jp: Vanir Rose
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -115,6 +142,42 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 39
+  name_jp: HP <= 39
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind active skills for 10 turns
+  desc_jp: Bind active skills for 10 turns
+  max_atk_pct: null
+  name_en: No way! I won't let you end this yet!
+  name_jp: No way! I won't let you end this yet!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 600% damage (2 hits, 300% each)
+  desc_jp: Deal 600% damage (2 hits, 300% each)
+  max_atk_pct: 600
+  name_en: Ventus Anima
+  name_jp: Ventus Anima
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -133,7 +196,7 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchHP -> ESBranchHP
-# Branch on hp = 40, target rnd 22
+# Branch on hp < 40, target rnd 22
 # [7] ESBindRandom -> Petal Chain
 # Condition: When < 90% hp , one-time use
 # Bind 3 random cards for 3 turns
@@ -175,7 +238,7 @@ records:
 # [24] ESBindSkill -> No way! I won't let you end this yet!
 # Bind active skills for 10 turns
 # [25] ESBranchHP -> ESBranchHP
-# Branch on hp = 20, target rnd 28
+# Branch on hp < 20, target rnd 28
 # [26] ESColumnSpawnMulti -> Gale Impact
 # Condition: 50% chance when < 50% hp
 # Change 3rd, 4th column to Wood orbs

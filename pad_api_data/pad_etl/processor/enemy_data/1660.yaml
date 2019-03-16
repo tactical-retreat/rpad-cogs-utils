@@ -37,11 +37,11 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Absorb damage >= 5000000 damage for 4 turns
-  desc_jp: Absorb damage >= 5000000 damage for 4 turns
+  desc_en: Movetime -4s for 4 turns
+  desc_jp: Movetime -4s for 4 turns
   max_atk_pct: null
-  name_en: Tahdhir Difae
-  name_jp: Tahdhir Difae
+  name_en: Tahdhir Waqt
+  name_jp: Tahdhir Waqt
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -55,11 +55,11 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Movetime -4s for 4 turns
-  desc_jp: Movetime -4s for 4 turns
+  desc_en: Absorb damage >= 5000000 damage for 4 turns
+  desc_jp: Absorb damage >= 5000000 damage for 4 turns
   max_atk_pct: null
-  name_en: Tahdhir Waqt
-  name_jp: Tahdhir Waqt
+  name_en: Tahdhir Difae
+  name_jp: Tahdhir Difae
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -85,8 +85,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 4
-  name_jp: HP <= 4
+  name_en: HP <= 99
+  name_jp: HP <= 99
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -121,8 +121,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 4
-  name_jp: HP <= 4
+  name_en: HP <= 99
+  name_jp: HP <= 99
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -160,7 +160,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 4
+# Branch on level > 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
@@ -181,15 +181,15 @@ records:
 # [9] ESFlagOperation -> ESFlagOperation
 # flag SET 0b11
 # [10] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 20
+# Branch on hp < 50, target rnd 20
 # [11] ESDebuffMovetime -> Tahdhir Waqt
 # Movetime -4s for 4 turns
 # [12] ESEndPath -> ESEndPath
 # end_turn
 # [13] ESBranchHP -> ESBranchHP
-# Branch on hp = 100, target rnd 22
+# Branch on hp > 100, target rnd 22
 # [14] ESBranchHP -> ESBranchHP
-# Branch on hp = 5, target rnd 22
+# Branch on hp < 5, target rnd 22
 # [15] SkillSet:
 # 	Condition: 25% chance
 # 	[0] ESColumnSpawnMulti -> Athnan nar Sayf

@@ -35,48 +35,30 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
+  desc_en: Change Random to Fire, Deal 80% damage
+  desc_jp: Change Random to Fire, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Take this clawsome attack!
+  name_jp: Take this clawsome attack!
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
   desc_en: Player -50% HP
   desc_jp: Player -50% HP
   max_atk_pct: null
   name_en: You have a nice cattitude
   name_jp: You have a nice cattitude
   one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change Random to Fire, Deal 80% damage
-  desc_jp: Change Random to Fire, Deal 80% damage
-  max_atk_pct: 80
-  name_en: Take this clawsome attack!
-  name_jp: Take this clawsome attack!
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change Random to Fire, Deal 80% damage
-  desc_jp: Change Random to Fire, Deal 80% damage
-  max_atk_pct: 80
-  name_en: Take this clawsome attack!
-  name_jp: Take this clawsome attack!
-  one_time: true
   record_type_name: ACTION
   usage_pct: 100
 
@@ -86,7 +68,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 4
+# Branch on level > 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
@@ -98,7 +80,7 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 11
+# Branch on hp < 50, target rnd 11
 # [9] ESOrbChangeAttack -> Take this clawsome attack!
 # Condition: One-time use
 # Change Random to Fire

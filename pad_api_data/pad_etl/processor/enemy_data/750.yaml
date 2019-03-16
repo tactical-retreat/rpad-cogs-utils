@@ -10,41 +10,6 @@ reviewed_by: unreviewed
 warnings: []
 
 ############################################################
-### Data @ 1
-############################################################
-!SkillRecordListing
-level: 1
-overrides: []
-records:
-- !SkillRecord
-  desc_en: Deal 100% damage
-  desc_jp: Deal 100% damage
-  max_atk_pct: 100
-  name_en: Disable Skill
-  name_jp: Disable Skill
-  one_time: false
-  record_type_name: PREEMPT
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 100% damage
-  desc_jp: Deal 100% damage
-  max_atk_pct: 100
-  name_en: Disable Skill
-  name_jp: Disable Skill
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-
-############################################################
 ### Data @ 3
 ############################################################
 !SkillRecordListing
@@ -64,17 +29,17 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: HP <= 20
+  name_jp: HP <= 20
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 100% damage
-  desc_jp: Deal 100% damage
-  max_atk_pct: 100
-  name_en: Disable Skill
-  name_jp: Disable Skill
+  desc_en: Deal 210% damage (7 hits, 30% each)
+  desc_jp: Deal 210% damage (7 hits, 30% each)
+  max_atk_pct: 210
+  name_en: Northern Seven-Star Formation
+  name_jp: Northern Seven-Star Formation
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -85,7 +50,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 3
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 3, target rnd 4
+# Branch on level > 3, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
@@ -98,7 +63,7 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchHP -> ESBranchHP
-# Branch on hp = 20, target rnd 10
+# Branch on hp < 20, target rnd 10
 # [9] ESEndPath -> ESEndPath
 # end_turn
 # [10] ESAttackMultihit -> Northern Seven-Star Formation

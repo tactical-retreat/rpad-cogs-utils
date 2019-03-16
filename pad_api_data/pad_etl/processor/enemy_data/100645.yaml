@@ -35,14 +35,14 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change all orbs to Mortal Poison
-  desc_jp: Change all orbs to Mortal Poison
+  desc_en: Change Random 7 to Poison
+  desc_jp: Change Random 7 to Poison
   max_atk_pct: null
-  name_en: Sink into a sea of poison!!
-  name_jp: Sink into a sea of poison!!
+  name_en: Take this!
+  name_jp: Take this!
   one_time: false
   record_type_name: ACTION
-  usage_pct: 100
+  usage_pct: 50
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
@@ -65,20 +65,38 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: HP <= 40
+  name_jp: HP <= 40
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Poison to Mortal Poison, Deal 100% damage
+  desc_jp: Change Poison to Mortal Poison, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Not going easy anymore!
+  name_jp: Not going easy anymore!
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 39
   name_jp: HP <= 39
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change Random 7 to Poison
-  desc_jp: Change Random 7 to Poison
+  desc_en: Change all orbs to Mortal Poison
+  desc_jp: Change all orbs to Mortal Poison
   max_atk_pct: null
-  name_en: Take this!
-  name_jp: Take this!
+  name_en: Sink into a sea of poison!!
+  name_jp: Sink into a sea of poison!!
   one_time: false
   record_type_name: ACTION
-  usage_pct: 50
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -97,7 +115,7 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchHP -> ESBranchHP
-# Branch on hp = 40, target rnd 10
+# Branch on hp < 40, target rnd 10
 # [7] ESAttackMultihit -> Deadly Drive!
 # Condition: 50% chance when < 75% hp
 # Enemy action
@@ -113,7 +131,7 @@ records:
 # Condition: When < 40% hp , one-time use
 # Increase damage to 150% for the next 99 turns
 # [12] ESBranchCounter -> ESBranchCounter
-# Branch on counter = 1, target rnd 16
+# Branch on counter > 1, target rnd 16
 # [13] ESSetCounter -> ESSetCounter
 # counter + 1
 # [14] ESBoardChange -> Sink into a sea of poison!!
@@ -121,7 +139,7 @@ records:
 # [15] ESEndPath -> ESEndPath
 # end_turn
 # [16] ESBranchCounter -> ESBranchCounter
-# Branch on counter = 3, target rnd 20
+# Branch on counter > 3, target rnd 20
 # [17] ESSetCounter -> ESSetCounter
 # counter + 1
 # [18] ESAttackMultihit -> Deadly Drive!

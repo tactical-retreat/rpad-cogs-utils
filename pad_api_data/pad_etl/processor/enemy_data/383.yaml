@@ -35,29 +35,29 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 25% damage
-  desc_jp: Deal 25% damage
-  max_atk_pct: 25
-  name_en: Ride-by Attack
-  name_jp: Ride-by Attack
-  one_time: false
+  desc_en: Bind friend leader for 2 turns, Deal 50% damage
+  desc_jp: Bind friend leader for 2 turns, Deal 50% damage
+  max_atk_pct: 50
+  name_en: Leg Snipe
+  name_jp: Leg Snipe
+  one_time: true
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: HP <= 49
+  name_jp: HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 150% damage
-  desc_jp: Deal 150% damage
-  max_atk_pct: 150
-  name_en: Critical Arrow
-  name_jp: Critical Arrow
+  desc_en: Deal 25% damage
+  desc_jp: Deal 25% damage
+  max_atk_pct: 25
+  name_en: Ride-by Attack
+  name_jp: Ride-by Attack
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -71,12 +71,12 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Bind friend leader for 2 turns, Deal 50% damage
-  desc_jp: Bind friend leader for 2 turns, Deal 50% damage
-  max_atk_pct: 50
-  name_en: Leg Snipe
-  name_jp: Leg Snipe
-  one_time: true
+  desc_en: Deal 150% damage
+  desc_jp: Deal 150% damage
+  max_atk_pct: 150
+  name_en: Critical Arrow
+  name_jp: Critical Arrow
+  one_time: false
   record_type_name: ACTION
   usage_pct: 100
 
@@ -86,7 +86,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 5
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 5, target rnd 4
+# Branch on level > 5, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
@@ -98,7 +98,7 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 12
+# Branch on hp < 50, target rnd 12
 # [9] ESBindAttack -> Leg Snipe
 # Condition: One-time use
 # Bind friend leader for 2 turns

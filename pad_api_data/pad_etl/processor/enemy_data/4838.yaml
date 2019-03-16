@@ -37,42 +37,6 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Voids player buff effects + Enemy action
-  desc_jp: Voids player buff effects + Enemy action
-  max_atk_pct: null
-  name_en: Victoria's Will + Divine Burst
-  name_jp: Victoria's Will + Divine Burst
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 24
-  name_jp: HP <= 24
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change player HP to 50000 for 2 turns + Change 3rd row to Light orbs
-  desc_jp: Change player HP to 50000 for 2 turns + Change 3rd row to Light orbs
-  max_atk_pct: null
-  name_en: Evil Eye of the Gorgon + Shining Spear
-  name_jp: Evil Eye of the Gorgon + Shining Spear
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 25
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 24
-  name_jp: HP <= 24
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Deal 155% damage (5 hits, 31% each)
   desc_jp: Deal 155% damage (5 hits, 31% each)
   max_atk_pct: 155
@@ -101,6 +65,42 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 25
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 74
+  name_jp: HP <= 74
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change player HP to 50% for 2 turns + Change 2nd, 4th row to Light orbs
+  desc_jp: Change player HP to 50% for 2 turns + Change 2nd, 4th row to Light orbs
+  max_atk_pct: null
+  name_en: Evil Eye of the Gorgon + Shining Spear
+  name_jp: Evil Eye of the Gorgon + Shining Spear
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 24
+  name_jp: HP <= 24
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Voids player buff effects + Enemy action
+  desc_jp: Voids player buff effects + Enemy action
+  max_atk_pct: null
+  name_en: Victoria's Will + Divine Burst
+  name_jp: Victoria's Will + Divine Burst
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -119,13 +119,13 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchCounter -> ESBranchCounter
-# Branch on counter = 18, target rnd 21
+# Branch on counter > 18, target rnd 21
 # [7] ESSetCounter -> ESSetCounter
 # counter + 1
 # [8] ESBranchHP -> ESBranchHP
-# Branch on hp = 25, target rnd 19
+# Branch on hp < 25, target rnd 19
 # [9] ESBranchHP -> ESBranchHP
-# Branch on hp = 75, target rnd 15
+# Branch on hp < 75, target rnd 15
 # [10] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESMaxHPChange -> Evil Eye of the Gorgon
@@ -162,7 +162,7 @@ records:
 # [20] ESEndPath -> ESEndPath
 # end_turn
 # [21] ESBranchCounter -> ESBranchCounter
-# Branch on counter = 19, target rnd 8
+# Branch on counter > 19, target rnd 8
 # [22] ESSetCounter -> ESSetCounter
 # counter + 1
 # [23] ESAttackUp -> Victoria's Victory Song

@@ -35,6 +35,24 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 75% damage
+  desc_jp: Blind all orbs on the board, Deal 75% damage
+  max_atk_pct: 75
+  name_en: Blind
+  name_jp: Blind
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
   desc_en: Deal 140% damage
   desc_jp: Deal 140% damage
   max_atk_pct: 140
@@ -53,11 +71,11 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Blind all orbs on the board, Deal 75% damage
-  desc_jp: Blind all orbs on the board, Deal 75% damage
-  max_atk_pct: 75
-  name_en: Blind
-  name_jp: Blind
+  desc_en: Bind active skills for 2 turns
+  desc_jp: Bind active skills for 2 turns
+  max_atk_pct: null
+  name_en: Curse
+  name_jp: Curse
   one_time: true
   record_type_name: ACTION
   usage_pct: 50
@@ -104,7 +122,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 5
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 5, target rnd 5
+# Branch on level > 5, target rnd 5
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESEndPath -> ESEndPath
@@ -118,7 +136,7 @@ records:
 # [8] ESEndPath -> ESEndPath
 # end_turn
 # [9] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 15
+# Branch on hp < 50, target rnd 15
 # [10] ESBlind -> Blind
 # Condition: One-time use
 # Blind all orbs on the board

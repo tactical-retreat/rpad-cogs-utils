@@ -29,28 +29,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Reduce damage from all sources by 75% for 10 turns + Blind orbs in specific
-    positions for 1 turns
-  desc_jp: Reduce damage from all sources by 75% for 10 turns + Blind orbs in specific
-    positions for 1 turns
-  max_atk_pct: null
-  name_en: Elemental Sphere Protection + Veiled Boundaries
-  name_jp: Elemental Sphere Protection + Veiled Boundaries
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
+  name_en: HP <= 29
+  name_jp: HP <= 29
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -67,8 +47,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: HP <= 29
+  name_jp: HP <= 29
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -85,8 +65,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 29
-  name_jp: HP <= 29
+  name_en: Execute below actions in order repeatedly
+  name_jp: Execute below actions in order repeatedly
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -127,15 +107,6 @@ records:
   record_type_name: ACTION
   usage_pct: 25
 - !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 29
-  name_jp: HP <= 29
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Change 3rd row to Fire, Poison orbs, Deal 120% damage
   desc_jp: Change 3rd row to Fire, Poison orbs, Deal 120% damage
   max_atk_pct: 120
@@ -153,15 +124,6 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 50
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 29
-  name_jp: HP <= 29
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
 - !SkillRecord
   desc_en: Deal 180% damage (3 hits, 60% each)
   desc_jp: Deal 180% damage (3 hits, 60% each)
@@ -200,7 +162,7 @@ records:
 # [9] ESEndPath -> ESEndPath
 # end_turn
 # [10] ESBranchHP -> ESBranchHP
-# Branch on hp = 30, target rnd 26
+# Branch on hp < 30, target rnd 26
 # [11] ESBranchFlag -> ESBranchFlag
 # Branch on flag & 4, target rnd 18
 # [12] ESFlagOperation -> ESFlagOperation

@@ -29,8 +29,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 74
-  name_jp: HP <= 74
+  name_en: Turn 1
+  name_jp: Turn 1
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -47,8 +47,26 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute below actions in order repeatedly
-  name_jp: Execute below actions in order repeatedly
+  name_en: HP <= 74
+  name_jp: HP <= 74
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Water skyfall +25% for 5 turns
+  desc_jp: Water skyfall +25% for 5 turns
+  max_atk_pct: null
+  name_en: God Tears
+  name_jp: God Tears
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 74
+  name_jp: HP <= 74
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -61,33 +79,6 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: Display <COUNTER> and skip turn
-  desc_jp: Display <COUNTER> and skip turn
-  max_atk_pct: null
-  name_en: ESCountdown
-  name_jp: ESCountdown
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Display <COUNTER> and skip turn
-  desc_jp: Display <COUNTER> and skip turn
-  max_atk_pct: null
-  name_en: ESCountdown
-  name_jp: ESCountdown
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 500% damage (5 hits, 100% each)
-  desc_jp: Deal 500% damage (5 hits, 100% each)
-  max_atk_pct: 500
-  name_en: Blue Out Nemesis
-  name_jp: Blue Out Nemesis
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -95,7 +86,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 3
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 3, target rnd 4
+# Branch on level > 3, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
@@ -107,7 +98,7 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchHP -> ESBranchHP
-# Branch on hp = 75, target rnd 11
+# Branch on hp < 75, target rnd 11
 # [9] ESBindAttack -> Aurora Blast
 # Condition: One-time use
 # Bind 1 random for 1 turns

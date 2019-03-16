@@ -38,8 +38,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
+  name_en: HP <= 19
+  name_jp: HP <= 19
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -56,26 +56,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change Jammer to Heal, Deal 280% damage
-  desc_jp: Change Jammer to Heal, Deal 280% damage
-  max_atk_pct: 280
-  name_en: Beautiful Nebulous Glow
-  name_jp: Beautiful Nebulous Glow
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: HP <= 19
+  name_jp: HP <= 19
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -92,44 +74,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Absorb damage >= 1000000 damage for 4 turns
-  desc_jp: Absorb damage >= 1000000 damage for 4 turns
-  max_atk_pct: null
-  name_en: Pure White Damask Scales
-  name_jp: Pure White Damask Scales
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Player -90% HP
-  desc_jp: Player -90% HP
-  max_atk_pct: null
-  name_en: Brutal Wisp Fangs
-  name_jp: Brutal Wisp Fangs
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
+  name_en: Execute below actions in order repeatedly
+  name_jp: Execute below actions in order repeatedly
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -143,20 +89,20 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Spawn random 3 Mortal Poison orbs, Deal 110% damage
   desc_jp: Spawn random 3 Mortal Poison orbs, Deal 110% damage
   max_atk_pct: 110
   name_en: Golden Flower Thorns
   name_jp: Golden Flower Thorns
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Player -90% HP
+  desc_jp: Player -90% HP
+  max_atk_pct: null
+  name_en: Brutal Wisp Fangs
+  name_jp: Brutal Wisp Fangs
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -167,7 +113,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 4
+# Branch on level > 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
@@ -182,7 +128,7 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchHP -> ESBranchHP
-# Branch on hp = 20, target rnd 26
+# Branch on hp < 20, target rnd 26
 # [9] ESBranchFlag -> ESBranchFlag
 # Branch on flag & 2, target rnd 15
 # [10] ESFlagOperation -> ESFlagOperation

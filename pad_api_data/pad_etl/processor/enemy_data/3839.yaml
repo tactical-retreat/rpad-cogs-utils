@@ -29,10 +29,73 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 8
-  name_jp: Turn 8
+  name_en: Execute below actions in order repeatedly
+  name_jp: Execute below actions in order repeatedly
   one_time: false
   record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Lock all Poison, Mortal Poison orbs, Deal 250% damage
+  desc_jp: Lock all Poison, Mortal Poison orbs, Deal 250% damage
+  max_atk_pct: 250
+  name_en: Poison Stinger
+  name_jp: Poison Stinger
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Lock all Poison, Mortal Poison orbs, Deal 250% damage
+  desc_jp: Lock all Poison, Mortal Poison orbs, Deal 250% damage
+  max_atk_pct: 250
+  name_en: Poison Stinger
+  name_jp: Poison Stinger
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Lock all Poison, Mortal Poison orbs, Deal 250% damage
+  desc_jp: Lock all Poison, Mortal Poison orbs, Deal 250% damage
+  max_atk_pct: 250
+  name_en: Poison Stinger
+  name_jp: Poison Stinger
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Lock all Poison, Mortal Poison orbs, Deal 250% damage
+  desc_jp: Lock all Poison, Mortal Poison orbs, Deal 250% damage
+  max_atk_pct: 250
+  name_en: Poison Stinger
+  name_jp: Poison Stinger
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Lock all Poison, Mortal Poison orbs, Deal 250% damage
+  desc_jp: Lock all Poison, Mortal Poison orbs, Deal 250% damage
+  max_atk_pct: 250
+  name_en: Poison Stinger
+  name_jp: Poison Stinger
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Lock all Poison, Mortal Poison orbs, Deal 250% damage
+  desc_jp: Lock all Poison, Mortal Poison orbs, Deal 250% damage
+  max_atk_pct: 250
+  name_en: Poison Stinger
+  name_jp: Poison Stinger
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Lock all Poison, Mortal Poison orbs, Deal 250% damage
+  desc_jp: Lock all Poison, Mortal Poison orbs, Deal 250% damage
+  max_atk_pct: 250
+  name_en: Poison Stinger
+  name_jp: Poison Stinger
+  one_time: false
+  record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
   desc_en: Reduce damage from all sources by 99% for 1 turns + Spawn random 4 Poison,
@@ -46,20 +109,11 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Lock all Poison, Mortal Poison orbs, Deal 250% damage
-  desc_jp: Lock all Poison, Mortal Poison orbs, Deal 250% damage
-  max_atk_pct: 250
-  name_en: Poison Stinger
-  name_jp: Poison Stinger
+  desc_en: Change Poison, Mortal Poison to Dark, Deal 6000% damage
+  desc_jp: Change Poison, Mortal Poison to Dark, Deal 6000% damage
+  max_atk_pct: 6000
+  name_en: Great Demon Serpent of the Dusk
+  name_jp: Great Demon Serpent of the Dusk
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -70,7 +124,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 4
+# Branch on level > 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
@@ -85,7 +139,7 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchCounter -> ESBranchCounter
-# Branch on counter = 7, target rnd 13
+# Branch on counter > 7, target rnd 13
 # [9] ESSetCounter -> ESSetCounter
 # counter + 1
 # [10] ESOrbLock -> Poison Stinger
@@ -96,7 +150,7 @@ records:
 # [12] ESEndPath -> ESEndPath
 # end_turn
 # [13] ESBranchCounter -> ESBranchCounter
-# Branch on counter = 8, target rnd 17
+# Branch on counter > 8, target rnd 17
 # [14] ESSetCounter -> ESSetCounter
 # counter + 1
 # [15] SkillSet:

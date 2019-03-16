@@ -29,6 +29,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 80% damage (2 hits, 40% each)
+  desc_jp: Deal 80% damage (2 hits, 40% each)
+  max_atk_pct: 80
+  name_en: My eyes are up here!
+  name_jp: My eyes are up here!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 70
   name_jp: HP <= 70
   one_time: false
@@ -65,17 +83,26 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 29
-  name_jp: HP <= 29
+  name_en: HP <= 30
+  name_jp: HP <= 30
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 80% damage (2 hits, 40% each)
-  desc_jp: Deal 80% damage (2 hits, 40% each)
-  max_atk_pct: 80
-  name_en: My eyes are up here!
-  name_jp: My eyes are up here!
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Summer Princess's Command
+  name_jp: Summer Princess's Command
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 500% damage (5 hits, 100% each)
+  desc_jp: Deal 500% damage (5 hits, 100% each)
+  max_atk_pct: 500
+  name_en: Sea Dragon Summer Offensive
+  name_jp: Sea Dragon Summer Offensive
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -86,7 +113,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 5
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 5, target rnd 4
+# Branch on level > 5, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
@@ -109,7 +136,7 @@ records:
 # [11] ESBranchCard -> ESBranchCard
 # Branch on player_cards HAS [978], target rnd 25
 # [12] ESBranchHP -> ESBranchHP
-# Branch on hp = 30, target rnd 28
+# Branch on hp < 30, target rnd 28
 # [13] ESBindTarget -> Mid-Summer Embrace
 # Condition: When < 50% hp , one-time use
 # Bind 1 own leader for 3 turns

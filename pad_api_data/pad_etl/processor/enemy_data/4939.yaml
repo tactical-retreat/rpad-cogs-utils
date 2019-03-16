@@ -31,11 +31,83 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: HP <= 21
+  name_jp: HP <= 21
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 150% for the next 3 turns, Deal 100% damage
+  desc_jp: Increase damage to 150% for the next 3 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Gain Riser
+  name_jp: Gain Riser
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 20
+  name_jp: HP <= 20
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Absorb Fire damage for 3 turns
+  desc_jp: Absorb Fire damage for 3 turns
+  max_atk_pct: null
+  name_en: Mech Build Guard
+  name_jp: Mech Build Guard
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 20
+  name_jp: HP <= 20
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Spawn random 6 Dark orbs + Enemy action
+  desc_jp: Spawn random 6 Dark orbs + Enemy action
+  max_atk_pct: null
+  name_en: Gashat! Finishing Move! + Mighty Critical Strike
+  name_jp: Gashat! Finishing Move! + Mighty Critical Strike
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: Execute below actions in order repeatedly
   name_jp: Execute below actions in order repeatedly
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  max_atk_pct: 100
+  name_en: GM Glows Arm
+  name_jp: GM Glows Arm
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Spawn random 4 Dark orbs, Deal 95% damage
+  desc_jp: Spawn random 4 Dark orbs, Deal 95% damage
+  max_atk_pct: 95
+  name_en: Alfight Shoes
+  name_jp: Alfight Shoes
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
 - !SkillRecord
   desc_en: Deal 100% damage
   desc_jp: Deal 100% damage
@@ -108,24 +180,6 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 50
-- !SkillRecord
-  desc_en: Deal 100% damage
-  desc_jp: Deal 100% damage
-  max_atk_pct: 100
-  name_en: GM Glows Arm
-  name_jp: GM Glows Arm
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 50
-- !SkillRecord
-  desc_en: Spawn random 4 Dark orbs, Deal 95% damage
-  desc_jp: Spawn random 4 Dark orbs, Deal 95% damage
-  max_atk_pct: 95
-  name_en: Alfight Shoes
-  name_jp: Alfight Shoes
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 50
 
 ############################################################
 ### Raw Behavior
@@ -133,7 +187,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 4
+# Branch on level > 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
@@ -151,9 +205,9 @@ records:
 # Condition: One-time use
 # Movetime -1s for 5 turns
 # [9] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 19
+# Branch on hp < 50, target rnd 19
 # [10] ESBranchCounter -> ESBranchCounter
-# Branch on counter = 4, target rnd 15
+# Branch on counter > 4, target rnd 15
 # [11] ESSetCounter -> ESSetCounter
 # counter + 1
 # [12] ESAttackMultihit -> GM Glows Arm
@@ -178,7 +232,7 @@ records:
 # Condition: One-time use
 # Increase damage to 150% for the next 3 turns
 # [20] ESBranchHP -> ESBranchHP
-# Branch on hp = 21, target rnd 10
+# Branch on hp > 21, target rnd 10
 # [21] ESAbsorbAttribute -> Mech Build Guard
 # Condition: One-time use
 # Absorb Fire damage for 3 turns

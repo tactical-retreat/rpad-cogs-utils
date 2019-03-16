@@ -53,11 +53,11 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Absorb Light damage for 1 turns + Change 2nd, 5th column to Light orbs
-  desc_jp: Absorb Light damage for 1 turns + Change 2nd, 5th column to Light orbs
+  desc_en: Bind active skills for 3 turns
+  desc_jp: Bind active skills for 3 turns
   max_atk_pct: null
-  name_en: Gleaming Rabbit Dragon's Trial + Flower Piercing Light
-  name_jp: Gleaming Rabbit Dragon's Trial + Flower Piercing Light
+  name_en: Brightness Blink
+  name_jp: Brightness Blink
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -71,12 +71,12 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Bind active skills for 3 turns
-  desc_jp: Bind active skills for 3 turns
+  desc_en: Enemy recover 19% hp + Reduce damage from all sources by 75% for 1 turns
+  desc_jp: Enemy recover 19% hp + Reduce damage from all sources by 75% for 1 turns
   max_atk_pct: null
-  name_en: Brightness Blink
-  name_jp: Brightness Blink
-  one_time: false
+  name_en: Overcoming Will + Big Jump
+  name_jp: Overcoming Will + Big Jump
+  one_time: true
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -94,24 +94,6 @@ records:
   max_atk_pct: null
   name_en: Leap
   name_jp: Leap
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Reduce damage from all sources by 75% for 1 turns
-  desc_jp: Reduce damage from all sources by 75% for 1 turns
-  max_atk_pct: null
-  name_en: Big Jump
-  name_jp: Big Jump
   one_time: true
   record_type_name: ACTION
   usage_pct: 100
@@ -173,6 +155,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Absorb Light damage for 1 turns + Change 2nd, 5th column to Light orbs
+  desc_jp: Absorb Light damage for 1 turns + Change 2nd, 5th column to Light orbs
+  max_atk_pct: null
+  name_en: Gleaming Rabbit Dragon's Trial + Flower Piercing Light
+  name_jp: Gleaming Rabbit Dragon's Trial + Flower Piercing Light
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 20
   name_jp: HP <= 20
   one_time: false
@@ -194,7 +194,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 4
+# Branch on level > 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
@@ -211,7 +211,7 @@ records:
 # [8] ESBranchFlag -> ESBranchFlag
 # Branch on flag & 2, target rnd 15
 # [9] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 14
+# Branch on hp < 50, target rnd 14
 # [10] ESFlagOperation -> ESFlagOperation
 # flag SET 0b11
 # [11] ESBranchCard -> ESBranchCard
@@ -237,7 +237,7 @@ records:
 # [17] ESBranchFlag -> ESBranchFlag
 # Branch on flag & 4, target rnd 19
 # [18] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 24
+# Branch on hp < 50, target rnd 24
 # [19] ESDamageShield -> Big Jump
 # Condition: When < 50% hp , one-time use
 # Reduce damage from all sources by 75% for 1 turns

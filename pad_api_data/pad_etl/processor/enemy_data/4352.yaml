@@ -46,24 +46,6 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 2500% damage (5 hits, 500% each)
-  desc_jp: Deal 2500% damage (5 hits, 500% each)
-  max_atk_pct: 2500
-  name_en: Conflagration of Hell
-  name_jp: Conflagration of Hell
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison
     + Enemy action
   desc_jp: Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison
@@ -92,6 +74,124 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 74
+  name_jp: HP <= 74
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Unable to Fire orbs for 3 turns + Fire skyfall +15% for 3 turns
+  desc_jp: Unable to Fire orbs for 3 turns + Fire skyfall +15% for 3 turns
+  max_atk_pct: null
+  name_en: The Gates of Hell + Beacon Fire from the Underworld
+  name_jp: The Gates of Hell + Beacon Fire from the Underworld
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change all orbs to Fire, Jammer + Row of cloud appear for 3 turns at 1st
+    column + Absorb combo <= 7 damage for 99 turns
+  desc_jp: Change all orbs to Fire, Jammer + Row of cloud appear for 3 turns at 1st
+    column + Absorb combo <= 7 damage for 99 turns
+  max_atk_pct: null
+  name_en: Purgatory Flames of Damnation + Heat Haze + Flame Dance Incarnation
+  name_jp: Purgatory Flames of Damnation + Heat Haze + Flame Dance Incarnation
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Spawn random 3 Light, Heal, Jammer, Poison, Mortal Poison orbs + Player
+    -75% HP
+  desc_jp: Spawn random 3 Light, Heal, Jammer, Poison, Mortal Poison orbs + Player
+    -75% HP
+  max_atk_pct: null
+  name_en: Alabaster Flame + Judgment Carving
+  name_jp: Alabaster Flame + Judgment Carving
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Jammer + Bind
+    awoken skills for 1 turns
+  desc_jp: Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Jammer + Bind
+    awoken skills for 1 turns
+  max_atk_pct: null
+  name_en: Scarlet Flame + Judgment Carving
+  name_jp: Scarlet Flame + Judgment Carving
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 33
+- !SkillRecord
+  desc_en: Change 2nd, 5th column to Water, Jammer orbs + Delay active skills by 1~2
+    turns
+  desc_jp: Change 2nd, 5th column to Water, Jammer orbs + Delay active skills by 1~2
+    turns
+  max_atk_pct: null
+  name_en: Cerulean Flame + Judgment Carving
+  name_jp: Cerulean Flame + Judgment Carving
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Change 2nd, 4th row to Wood, Heal, Poison orbs + Leader changes to random
+    sub for 1 turns
+  desc_jp: Change 2nd, 4th row to Wood, Heal, Poison orbs + Leader changes to random
+    sub for 1 turns
+  max_atk_pct: null
+  name_en: Virescent Flame + Judgment Carving
+  name_jp: Virescent Flame + Judgment Carving
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 9
+  name_jp: HP <= 9
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 2500% damage (5 hits, 500% each)
+  desc_jp: Deal 2500% damage (5 hits, 500% each)
+  max_atk_pct: 2500
+  name_en: Conflagration of Hell
+  name_jp: Conflagration of Hell
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -99,7 +199,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 4
+# Branch on level > 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
@@ -116,9 +216,9 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 18
+# Branch on hp < 50, target rnd 18
 # [9] ESBranchHP -> ESBranchHP
-# Branch on hp = 75, target rnd 14
+# Branch on hp < 75, target rnd 14
 # [10] SkillSet:
 # 	Condition: 33% chance
 # 	[0] ESBoardChangeAttackBits -> All Encompassing Conflagration
@@ -150,7 +250,7 @@ records:
 # [17] ESEndPath -> ESEndPath
 # end_turn
 # [18] ESBranchHP -> ESBranchHP
-# Branch on hp = 10, target rnd 29
+# Branch on hp < 10, target rnd 29
 # [19] ESBranchFlag -> ESBranchFlag
 # Branch on flag & 4, target rnd 23
 # [20] ESFlagOperation -> ESFlagOperation

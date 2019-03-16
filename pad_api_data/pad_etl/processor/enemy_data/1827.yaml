@@ -73,6 +73,15 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
+  desc_en: Enemy recover 100% hp + Increase damage to 150% for the next 999 turns
+  desc_jp: Enemy recover 100% hp + Increase damage to 150% for the next 999 turns
+  max_atk_pct: null
+  name_en: Angel's Holy Grail + Battle Anthem
+  name_jp: Angel's Holy Grail + Battle Anthem
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
@@ -122,7 +131,7 @@ records:
 # Condition: When < 70% hp , one-time use
 # Jammer skyfall +20% for 5 turns
 # [10] ESBranchHP -> ESBranchHP
-# Branch on hp = 70, target rnd 13
+# Branch on hp < 70, target rnd 13
 # [11] SkillSet:
 # 	[0] ESOrbChangeSingle -> Healing Hymn
 # 	Change Random to Heal

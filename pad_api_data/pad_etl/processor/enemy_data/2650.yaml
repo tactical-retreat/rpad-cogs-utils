@@ -35,42 +35,6 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Light skyfall +15% for 10 turns
-  desc_jp: Light skyfall +15% for 10 turns
-  max_atk_pct: null
-  name_en: Torchlight of Saintly Horns
-  name_jp: Torchlight of Saintly Horns
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Increase damage to 200% for the next attack
-  desc_jp: Increase damage to 200% for the next attack
-  max_atk_pct: null
-  name_en: Inner Anger
-  name_jp: Inner Anger
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 20
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Increase damage to 200% for the next attack
   desc_jp: Increase damage to 200% for the next attack
   max_atk_pct: null
@@ -110,6 +74,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Light skyfall +15% for 10 turns
+  desc_jp: Light skyfall +15% for 10 turns
+  max_atk_pct: null
+  name_en: Torchlight of Saintly Horns
+  name_jp: Torchlight of Saintly Horns
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 10
   name_jp: HP <= 10
   one_time: false
@@ -131,7 +113,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 4
+# Branch on level > 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
@@ -143,7 +125,7 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 14
+# Branch on hp < 50, target rnd 14
 # [9] ESGravity -> Taurus's Crest - Cosmos
 # Condition: When < 10% hp
 # Player -100% HP

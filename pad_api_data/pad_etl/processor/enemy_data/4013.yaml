@@ -69,8 +69,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 10
-  name_jp: HP <= 10
+  name_en: HP <= 49
+  name_jp: HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -89,6 +89,26 @@ records:
   max_atk_pct: 140
   name_en: Black Thunderstorm
   name_jp: Black Thunderstorm
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 9
+  name_jp: HP <= 9
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 1000% for the next 999 turns + Bind awoken skills for
+    10 turns
+  desc_jp: Increase damage to 1000% for the next 999 turns + Bind awoken skills for
+    10 turns
+  max_atk_pct: null
+  name_en: "Playtime's over... + \xC9lenchos"
+  name_jp: "Playtime's over... + \xC9lenchos"
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -177,7 +197,7 @@ records:
 # 	[1] ESVoidShield -> Divine King's Armor
 # 	Void damage >= 100000000 for 999 turns
 # [3] ESBranchHP -> ESBranchHP
-# Branch on hp = 10, target rnd 13
+# Branch on hp < 10, target rnd 13
 # [4] SkillSet:
 # 	Condition: When < 50% hp , one-time use
 # 	[0] ESChangeAttribute -> Psevdaisthíseis
@@ -191,7 +211,7 @@ records:
 # 	[1] ESDebuffMovetime -> Keraunós
 # 	Movetime -1s for 10 turns
 # [6] ESBranchCounter -> ESBranchCounter
-# Branch on counter = 5, target rnd 9
+# Branch on counter > 5, target rnd 9
 # [7] ESSetCounter -> ESSetCounter
 # counter + 1
 # [8] ESAttackMultihit -> Royal Sword

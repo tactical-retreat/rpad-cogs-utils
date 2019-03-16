@@ -17,6 +17,41 @@ level: 1
 overrides: []
 records:
 - !SkillRecord
+  desc_en: Change Random 2 to Jammer
+  desc_jp: Change Random 2 to Jammer
+  max_atk_pct: null
+  name_en: Chaos Eye
+  name_jp: Chaos Eye
+  one_time: false
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Random 2 to Jammer
+  desc_jp: Change Random 2 to Jammer
+  max_atk_pct: null
+  name_en: Chaos Eye
+  name_jp: Chaos Eye
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
   desc_en: Forces attacks to hit this enemy
   desc_jp: Forces attacks to hit this enemy
   max_atk_pct: null
@@ -72,18 +107,18 @@ records:
   usage_pct: 100
 
 ############################################################
-### Data @ 4
+### Data @ 5
 ############################################################
 !SkillRecordListing
-level: 4
+level: 5
 overrides: []
 records:
 - !SkillRecord
-  desc_en: Change Random 2 to Jammer
-  desc_jp: Change Random 2 to Jammer
+  desc_en: Forces attacks to hit this enemy
+  desc_jp: Forces attacks to hit this enemy
   max_atk_pct: null
-  name_en: Chaos Eye
-  name_jp: Chaos Eye
+  name_en: Charming Demon Eye
+  name_jp: Charming Demon Eye
   one_time: false
   record_type_name: PREEMPT
   usage_pct: 100
@@ -96,6 +131,15 @@ records:
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 130% damage (2 hits, 65% each)
+  desc_jp: Deal 130% damage (2 hits, 65% each)
+  max_atk_pct: 130
+  name_en: Snake Bite
+  name_jp: Snake Bite
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 70
 - !SkillRecord
   desc_en: Change Random 2 to Jammer
   desc_jp: Change Random 2 to Jammer
@@ -105,39 +149,22 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
-
-############################################################
-### Data @ 5
-############################################################
-!SkillRecordListing
-level: 5
-overrides: []
-records:
-- !SkillRecord
-  desc_en: Change Random 2 to Jammer
-  desc_jp: Change Random 2 to Jammer
-  max_atk_pct: null
-  name_en: Chaos Eye
-  name_jp: Chaos Eye
-  one_time: false
-  record_type_name: PREEMPT
-  usage_pct: 100
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: HP <= 29
+  name_jp: HP <= 29
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change Random 2 to Jammer
-  desc_jp: Change Random 2 to Jammer
+  desc_en: Bind 2 random cards for 4 turns
+  desc_jp: Bind 2 random cards for 4 turns
   max_atk_pct: null
-  name_en: Chaos Eye
-  name_jp: Chaos Eye
-  one_time: false
+  name_en: Pupil of the Evil Eye
+  name_jp: Pupil of the Evil Eye
+  one_time: true
   record_type_name: ACTION
   usage_pct: 100
 
@@ -147,7 +174,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 5
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 9
+# Branch on level < 4, target rnd 9
 # [3] ESBranchFlag -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
 # [4] ESFlagOperation -> ESFlagOperation
@@ -155,7 +182,7 @@ records:
 # [5] ESFixedTarget -> Charming Demon Eye
 # Forces attacks to hit this enemy
 # [6] ESBranchHP -> ESBranchHP
-# Branch on hp = 30, target rnd 8
+# Branch on hp > 30, target rnd 8
 # [7] ESBindRandom -> Pupil of the Evil Eye
 # Condition: One-time use
 # Bind 2 random cards for 4 turns

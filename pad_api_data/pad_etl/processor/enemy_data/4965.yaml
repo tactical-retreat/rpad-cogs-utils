@@ -29,26 +29,98 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Increase damage to 150% for the next 5 turns
-  desc_jp: Increase damage to 150% for the next 5 turns
+  desc_en: Deal 110% damage (2 hits, 55% each)
+  desc_jp: Deal 110% damage (2 hits, 55% each)
+  max_atk_pct: 110
+  name_en: Guts!!
+  name_jp: Guts!!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Change Random to Wood, Deal 95% damage
+  desc_jp: Change Random to Wood, Deal 95% damage
+  max_atk_pct: 95
+  name_en: Gulp it down!
+  name_jp: Gulp it down!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
   max_atk_pct: null
-  name_en: All people are friends! I will protect them all!
-  name_jp: All people are friends! I will protect them all!
-  one_time: true
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy recover 30% hp
+  desc_jp: Enemy recover 30% hp
+  max_atk_pct: null
+  name_en: If I don't charge my guts...!
+  name_jp: If I don't charge my guts...!
+  one_time: false
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change 1st column to Water orbs, Deal 100% damage
+  desc_jp: Change 1st column to Water orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Super Gutsy... Left Paw Strike!
+  name_jp: Super Gutsy... Left Paw Strike!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 25
+- !SkillRecord
+  desc_en: Change 6th column to Dark orbs, Deal 100% damage
+  desc_jp: Change 6th column to Dark orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Super Gutsy... Right Paw Strike!
+  name_jp: Super Gutsy... Right Paw Strike!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 25
+- !SkillRecord
+  desc_en: Deal 110% damage (2 hits, 55% each)
+  desc_jp: Deal 110% damage (2 hits, 55% each)
+  max_atk_pct: 110
+  name_en: Guts!!
+  name_jp: Guts!!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 25
+- !SkillRecord
+  desc_en: Change Random to Wood, Deal 95% damage
+  desc_jp: Change Random to Wood, Deal 95% damage
+  max_atk_pct: 95
+  name_en: Gulp it down!
+  name_jp: Gulp it down!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 25
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -71,23 +143,14 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 110% damage (2 hits, 55% each)
-  desc_jp: Deal 110% damage (2 hits, 55% each)
-  max_atk_pct: 110
-  name_en: Guts!!
-  name_jp: Guts!!
-  one_time: false
+  desc_en: Increase damage to 150% for the next 5 turns
+  desc_jp: Increase damage to 150% for the next 5 turns
+  max_atk_pct: null
+  name_en: All people are friends! I will protect them all!
+  name_jp: All people are friends! I will protect them all!
+  one_time: true
   record_type_name: ACTION
-  usage_pct: 50
-- !SkillRecord
-  desc_en: Change Random to Wood, Deal 95% damage
-  desc_jp: Change Random to Wood, Deal 95% damage
-  max_atk_pct: 95
-  name_en: Gulp it down!
-  name_jp: Gulp it down!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 50
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -98,9 +161,9 @@ records:
 # Condition: One-time use
 # Bind awoken skills for 3 turns
 # [3] ESBranchHP -> ESBranchHP
-# Branch on hp = 20, target rnd 17
+# Branch on hp < 20, target rnd 17
 # [4] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 8
+# Branch on hp < 50, target rnd 8
 # [5] ESAttackMultihit -> Guts!!
 # Condition: 50% chance
 # Enemy action

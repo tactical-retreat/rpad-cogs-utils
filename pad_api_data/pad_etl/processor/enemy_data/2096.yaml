@@ -44,42 +44,6 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Bind awoken skills for 2 turns + Enemy recover 14% hp
-  desc_jp: Bind awoken skills for 2 turns + Enemy recover 14% hp
-  max_atk_pct: null
-  name_en: Losing Power + Predation
-  name_jp: Losing Power + Predation
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 0
-  name_jp: HP <= 0
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Player -75% HP + Blind random 15 orbs for 3 turns
-  desc_jp: Player -75% HP + Blind random 15 orbs for 3 turns
-  max_atk_pct: null
-  name_en: Embracing Pain + Darkness Bullet
-  name_jp: Embracing Pain + Darkness Bullet
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 0
-  name_jp: HP <= 0
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Blind all orbs on the board, Deal 105% damage
   desc_jp: Blind all orbs on the board, Deal 105% damage
   max_atk_pct: 105
@@ -108,6 +72,60 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 34
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Player -75% HP + Blind random 15 orbs for 3 turns
+  desc_jp: Player -75% HP + Blind random 15 orbs for 3 turns
+  max_atk_pct: null
+  name_en: Embracing Pain + Darkness Bullet
+  name_jp: Embracing Pain + Darkness Bullet
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 14
+  name_jp: HP <= 14
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Blind all orbs for 1 turns, Deal 250% damage
+  desc_jp: Blind all orbs for 1 turns, Deal 250% damage
+  max_atk_pct: 250
+  name_en: Black Javelins
+  name_jp: Black Javelins
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 0
+  name_jp: HP <= 0
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind awoken skills for 2 turns + Enemy recover 14% hp
+  desc_jp: Bind awoken skills for 2 turns + Enemy recover 14% hp
+  max_atk_pct: null
+  name_en: Losing Power + Predation
+  name_jp: Losing Power + Predation
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -121,11 +139,11 @@ records:
 # 	[1] ESBindSkill -> Frightening Scream
 # 	Bind active skills for 5 turns
 # [3] ESBranchHP -> ESBranchHP
-# Branch on hp = 1, target rnd 13
+# Branch on hp < 1, target rnd 13
 # [4] ESBranchHP -> ESBranchHP
-# Branch on hp = 15, target rnd 11
+# Branch on hp < 15, target rnd 11
 # [5] ESBranchHP -> ESBranchHP
-# Branch on hp = 51, target rnd 7
+# Branch on hp > 51, target rnd 7
 # [6] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESGravity -> Embracing Pain

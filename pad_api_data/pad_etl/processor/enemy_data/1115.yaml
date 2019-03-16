@@ -83,6 +83,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy recover 30% hp, Deal 100% damage
+  desc_jp: Enemy recover 30% hp, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Magic Absorbing Eye
+  name_jp: Magic Absorbing Eye
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 20
   name_jp: HP <= 20
   one_time: false
@@ -121,7 +139,7 @@ records:
 # Condition: When < 70% hp , one-time use
 # Leader changes to random sub for 3 turns
 # [10] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 14
+# Branch on hp < 50, target rnd 14
 # [11] ESAttackMultihit -> Wave Current Attack
 # Condition: When < 20% hp
 # Enemy action

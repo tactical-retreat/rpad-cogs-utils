@@ -29,44 +29,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Reduce damage from all sources by 50% for 10 turns
-  desc_jp: Reduce damage from all sources by 50% for 10 turns
-  max_atk_pct: null
-  name_en: Give me a break!
-  name_jp: Give me a break!
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 240% damage (4 hits, 60% each)
-  desc_jp: Deal 240% damage (4 hits, 60% each)
-  max_atk_pct: 240
-  name_en: Sorry but I've had enough now
-  name_jp: Sorry but I've had enough now
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -97,6 +61,60 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 34
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Absorb combo <= 5 damage for 999 turns + Player -99% HP
+  desc_jp: Absorb combo <= 5 damage for 999 turns + Player -99% HP
+  max_atk_pct: null
+  name_en: That one was effective... + I'll return the favor
+  name_jp: That one was effective... + I'll return the favor
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 10 turns
+  desc_jp: Reduce damage from all sources by 50% for 10 turns
+  max_atk_pct: null
+  name_en: Give me a break!
+  name_jp: Give me a break!
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 240% damage (4 hits, 60% each)
+  desc_jp: Deal 240% damage (4 hits, 60% each)
+  max_atk_pct: 240
+  name_en: Sorry but I've had enough now
+  name_jp: Sorry but I've had enough now
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -116,7 +134,7 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 13
+# Branch on hp < 50, target rnd 13
 # [9] ESBombRandomSpawn -> Entertain me!
 # Condition: 33% chance
 # Spawn random 4 Bomb orbs
@@ -129,7 +147,7 @@ records:
 # [12] ESEndPath -> ESEndPath
 # end_turn
 # [13] ESBranchHP -> ESBranchHP
-# Branch on hp = 20, target rnd 18
+# Branch on hp < 20, target rnd 18
 # [14] ESBranchFlag -> ESBranchFlag
 # Branch on flag & 2, target rnd 9
 # [15] ESFlagOperation -> ESFlagOperation

@@ -46,13 +46,76 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change 2nd column to Water, Jammer orbs, 5th column to Water, Jammer orbs,
-    Deal 300% damage
-  desc_jp: Change 2nd column to Water, Jammer orbs, 5th column to Water, Jammer orbs,
-    Deal 300% damage
-  max_atk_pct: 300
-  name_en: Binding Azure Bladewings
-  name_jp: Binding Azure Bladewings
+  desc_en: Change all orbs to Water, Deal 250% damage
+  desc_jp: Change all orbs to Water, Deal 250% damage
+  max_atk_pct: 250
+  name_en: Time's up!
+  name_jp: Time's up!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 89
+  name_jp: HP <= 89
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Movetime 50% for 10 turns
+  desc_jp: Movetime 50% for 10 turns
+  max_atk_pct: null
+  name_en: I'm really going to give my all now!
+  name_jp: I'm really going to give my all now!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 89
+  name_jp: HP <= 89
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change 2nd row to Water, Jammer orbs, 4th row to Water, Jammer orbs, Deal
+    100% damage
+  desc_jp: Change 2nd row to Water, Jammer orbs, 4th row to Water, Jammer orbs, Deal
+    100% damage
+  max_atk_pct: 100
+  name_en: How about this?
+  name_jp: How about this?
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 89
+  name_jp: HP <= 89
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Random 3 orbs change every 1.0s for 2 turns, Deal 90% damage
+  desc_jp: Random 3 orbs change every 1.0s for 2 turns, Deal 90% damage
+  max_atk_pct: 90
+  name_en: Blue Metal Flash
+  name_jp: Blue Metal Flash
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Deal 110% damage (2 hits, 55% each)
+  desc_jp: Deal 110% damage (2 hits, 55% each)
+  max_atk_pct: 110
+  name_en: Take it!
+  name_jp: Take it!
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -66,11 +129,11 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change all orbs to Water, Deal 250% damage
-  desc_jp: Change all orbs to Water, Deal 250% damage
-  max_atk_pct: 250
-  name_en: Time's up!
-  name_jp: Time's up!
+  desc_en: Seal 1st, 6th column for 1 turns
+  desc_jp: Seal 1st, 6th column for 1 turns
+  max_atk_pct: null
+  name_en: Azure Star Blockade
+  name_jp: Azure Star Blockade
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -81,7 +144,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 4
+# Branch on level > 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
@@ -98,11 +161,11 @@ records:
 # [8] ESSetCounter -> ESSetCounter
 # counter + 1
 # [9] ESBranchCounter -> ESBranchCounter
-# Branch on counter = 10, target rnd 30
+# Branch on counter > 10, target rnd 30
 # [10] ESBranchHP -> ESBranchHP
-# Branch on hp = 30, target rnd 24
+# Branch on hp < 30, target rnd 24
 # [11] ESBranchHP -> ESBranchHP
-# Branch on hp = 90, target rnd 16
+# Branch on hp < 90, target rnd 16
 # [12] ESBranchFlag -> ESBranchFlag
 # Branch on flag & 2, target rnd 31
 # [13] ESFlagOperation -> ESFlagOperation

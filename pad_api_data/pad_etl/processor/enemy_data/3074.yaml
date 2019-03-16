@@ -31,44 +31,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Enemy recover 50% hp
-  desc_jp: Enemy recover 50% hp
-  max_atk_pct: null
-  name_en: AS-Overhaul
-  name_jp: AS-Overhaul
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 10000% damage (10 hits, 1000% each)
-  desc_jp: Deal 10000% damage (10 hits, 1000% each)
-  max_atk_pct: 10000
-  name_en: Starburst SSE
-  name_jp: Starburst SSE
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -87,6 +51,78 @@ records:
   max_atk_pct: 380
   name_en: EB & Self Convert
   name_jp: EB & Self Convert
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 99% for 2 turns
+  desc_jp: Reduce damage from all sources by 99% for 2 turns
+  max_atk_pct: null
+  name_en: AS-Complete Protection
+  name_jp: AS-Complete Protection
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 1200% damage (6 hits, 200% each)
+  desc_jp: Deal 1200% damage (6 hits, 200% each)
+  max_atk_pct: 1200
+  name_en: Storm Punisher FPE
+  name_jp: Storm Punisher FPE
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy recover 50% hp
+  desc_jp: Enemy recover 50% hp
+  max_atk_pct: null
+  name_en: AS-Overhaul
+  name_jp: AS-Overhaul
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 10000% damage (10 hits, 1000% each)
+  desc_jp: Deal 10000% damage (10 hits, 1000% each)
+  max_atk_pct: 10000
+  name_en: Starburst SSE
+  name_jp: Starburst SSE
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -111,9 +147,9 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchHP -> ESBranchHP
-# Branch on hp = 20, target rnd 18
+# Branch on hp < 20, target rnd 18
 # [7] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 12
+# Branch on hp < 50, target rnd 12
 # [8] ESGravity -> LB-Siculus Strike
 # Condition: One-time use
 # Player -150% HP

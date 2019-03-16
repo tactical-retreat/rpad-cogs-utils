@@ -39,26 +39,6 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Reduce damage from all sources by 50% for 99 turns + Delay active skills
-    by 10 turns
-  desc_jp: Reduce damage from all sources by 50% for 99 turns + Delay active skills
-    by 10 turns
-  max_atk_pct: null
-  name_en: You're doing quite well + This is fine, right?
-  name_jp: You're doing quite well + This is fine, right?
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Jammer, Poison skyfall +10% for 99 turns + Specific orbs change every 1.0s
     for 99 turns
   desc_jp: Jammer, Poison skyfall +10% for 99 turns + Specific orbs change every 1.0s
@@ -73,17 +53,19 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: Turn 1
+  name_jp: Turn 1
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 3000% damage (3 hits, 1000% each)
-  desc_jp: Deal 3000% damage (3 hits, 1000% each)
-  max_atk_pct: 3000
-  name_en: Right, good job!
-  name_jp: Right, good job!
+  desc_en: Reduce damage from all sources by 50% for 99 turns + Delay active skills
+    by 10 turns
+  desc_jp: Reduce damage from all sources by 50% for 99 turns + Delay active skills
+    by 10 turns
+  max_atk_pct: null
+  name_en: You're doing quite well + This is fine, right?
+  name_jp: You're doing quite well + This is fine, right?
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -91,8 +73,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 9
-  name_jp: HP <= 9
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -152,6 +134,78 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 17
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 74
+  name_jp: HP <= 74
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Player -50% HP + Spawn random 10 Mortal Poison orbs
+  desc_jp: Player -50% HP + Spawn random 10 Mortal Poison orbs
+  max_atk_pct: null
+  name_en: It huuurts! + Eat this!
+  name_jp: It huuurts! + Eat this!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Player -75% HP + Spawn random 20 Mortal Poison orbs
+  desc_jp: Player -75% HP + Spawn random 20 Mortal Poison orbs
+  max_atk_pct: null
+  name_en: It huuurts! + Drown!
+  name_jp: It huuurts! + Drown!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 24
+  name_jp: HP <= 24
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Player -99% HP + Change all orbs to Mortal Poison
+  desc_jp: Player -99% HP + Change all orbs to Mortal Poison
+  max_atk_pct: null
+  name_en: It huuurts! + Sink!
+  name_jp: It huuurts! + Sink!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 9
+  name_jp: HP <= 9
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 3000% damage (3 hits, 1000% each)
+  desc_jp: Deal 3000% damage (3 hits, 1000% each)
+  max_atk_pct: 3000
+  name_en: Right, good job!
+  name_jp: Right, good job!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -176,7 +230,7 @@ records:
 # [7] ESFlagOperation -> ESFlagOperation
 # flag SET 0b11
 # [8] ESBranchHP -> ESBranchHP
-# Branch on hp = 90, target rnd 10
+# Branch on hp < 90, target rnd 10
 # [9] SkillSet:
 # 	[0] ESSkyfall -> You're just a small-fry
 # 	Jammer, Poison skyfall +10% for 99 turns
@@ -192,13 +246,13 @@ records:
 # [12] ESEndPath -> ESEndPath
 # end_turn
 # [13] ESBranchHP -> ESBranchHP
-# Branch on hp = 10, target rnd 42
+# Branch on hp < 10, target rnd 42
 # [14] ESBranchHP -> ESBranchHP
-# Branch on hp = 25, target rnd 36
+# Branch on hp < 25, target rnd 36
 # [15] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 30
+# Branch on hp < 50, target rnd 30
 # [16] ESBranchHP -> ESBranchHP
-# Branch on hp = 75, target rnd 24
+# Branch on hp < 75, target rnd 24
 # [17] ESOrbLock -> Viscid Dragon
 # Condition: 16% chance
 # Lock 15 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
@@ -224,7 +278,7 @@ records:
 # [25] ESFlagOperation -> ESFlagOperation
 # flag SET 0b111
 # [26] ESBranchCounter -> ESBranchCounter
-# Branch on counter = 1, target rnd 28
+# Branch on counter > 1, target rnd 28
 # [27] SkillSet:
 # 	[0] ESGravity -> It huuurts!
 # 	Player -50% HP
@@ -242,7 +296,7 @@ records:
 # [31] ESFlagOperation -> ESFlagOperation
 # flag SET 0b1111
 # [32] ESBranchCounter -> ESBranchCounter
-# Branch on counter = 1, target rnd 34
+# Branch on counter > 1, target rnd 34
 # [33] SkillSet:
 # 	[0] ESGravity -> It huuurts!
 # 	Player -75% HP
@@ -260,7 +314,7 @@ records:
 # [37] ESFlagOperation -> ESFlagOperation
 # flag SET 0b11111
 # [38] ESBranchCounter -> ESBranchCounter
-# Branch on counter = 1, target rnd 40
+# Branch on counter > 1, target rnd 40
 # [39] SkillSet:
 # 	[0] ESGravity -> It huuurts!
 # 	Player -99% HP

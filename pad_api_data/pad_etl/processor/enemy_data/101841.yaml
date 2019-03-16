@@ -73,24 +73,6 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Player -99% HP + Bind active skills for 10 turns
-  desc_jp: Player -99% HP + Bind active skills for 10 turns
-  max_atk_pct: null
-  name_en: Flare Tick Explosion + Sea King's Eye
-  name_jp: Flare Tick Explosion + Sea King's Eye
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 89
-  name_jp: HP <= 89
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Deal 150% damage (3 hits, 50% each)
   desc_jp: Deal 150% damage (3 hits, 50% each)
   max_atk_pct: 150
@@ -108,6 +90,42 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 65
+  name_jp: HP <= 65
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Absorb Wood damage for 3 turns
+  desc_jp: Absorb Wood damage for 3 turns
+  max_atk_pct: null
+  name_en: Anti-Plant
+  name_jp: Anti-Plant
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Player -99% HP + Bind active skills for 10 turns
+  desc_jp: Player -99% HP + Bind active skills for 10 turns
+  max_atk_pct: null
+  name_en: Flare Tick Explosion + Sea King's Eye
+  name_jp: Flare Tick Explosion + Sea King's Eye
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
@@ -171,11 +189,11 @@ records:
 # Condition: When < 20% hp
 # Enemy action
 # [8] ESBranchHP -> ESBranchHP
-# Branch on hp = 90, target rnd 14
+# Branch on hp > 90, target rnd 14
 # [9] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 16
+# Branch on hp < 50, target rnd 16
 # [10] ESBranchHP -> ESBranchHP
-# Branch on hp = 65, target rnd 23
+# Branch on hp < 65, target rnd 23
 # [11] ESAttackMultihit -> Vortex Breath
 # Condition: 50% chance
 # Enemy action
@@ -210,7 +228,7 @@ records:
 # [24] ESFlagOperation -> ESFlagOperation
 # flag SET 0b11
 # [25] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 27
+# Branch on hp > 50, target rnd 27
 # [26] ESAttackMultihit -> Vortex Breath
 # Enemy action
 # [27] ESAbsorbAttribute -> Anti-Plant

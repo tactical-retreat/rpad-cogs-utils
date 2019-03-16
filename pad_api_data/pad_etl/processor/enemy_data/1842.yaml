@@ -65,8 +65,35 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: 'Show message: You''re so cruel|I wanted to play more with you...!'
+  desc_jp: 'Show message: You''re so cruel|I wanted to play more with you...!'
+  max_atk_pct: null
+  name_en: Linthia Transformation
+  name_jp: Linthia Transformation
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: Deal 110% damage
+  desc_jp: Deal 110% damage
+  max_atk_pct: 110
+  name_en: Aero Ball
+  name_jp: Aero Ball
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -92,8 +119,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: HP <= 49
+  name_jp: HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -124,33 +151,6 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: 'Show message: You''re so cruel|I wanted to play more with you...!'
-  desc_jp: 'Show message: You''re so cruel|I wanted to play more with you...!'
-  max_atk_pct: null
-  name_en: Linthia Transformation
-  name_jp: Linthia Transformation
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 0
-- !SkillRecord
-  desc_en: Deal 110% damage
-  desc_jp: Deal 110% damage
-  max_atk_pct: 110
-  name_en: Aero Ball
-  name_jp: Aero Ball
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -172,7 +172,7 @@ records:
 # Condition: One-time use
 # Void damage >= 400000 for 5 turns
 # [8] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 11
+# Branch on hp < 50, target rnd 11
 # [9] ESAttackMultihit -> Aero Ball
 # Enemy action
 # [10] ESEndPath -> ESEndPath

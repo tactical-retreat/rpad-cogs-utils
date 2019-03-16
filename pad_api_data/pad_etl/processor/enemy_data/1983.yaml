@@ -29,8 +29,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 79
-  name_jp: HP <= 79
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -47,8 +47,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute below actions in order repeatedly
-  name_jp: Execute below actions in order repeatedly
+  name_en: HP <= 79
+  name_jp: HP <= 79
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -61,33 +61,6 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: Display <COUNTER> and skip turn
-  desc_jp: Display <COUNTER> and skip turn
-  max_atk_pct: null
-  name_en: ESCountdown
-  name_jp: ESCountdown
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Display <COUNTER> and skip turn
-  desc_jp: Display <COUNTER> and skip turn
-  max_atk_pct: null
-  name_en: ESCountdown
-  name_jp: ESCountdown
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 1000% damage
-  desc_jp: Deal 1000% damage
-  max_atk_pct: 1000
-  name_en: Twin Pole Oni Flame Slash
-  name_jp: Twin Pole Oni Flame Slash
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -95,7 +68,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 5
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 5, target rnd 4
+# Branch on level > 5, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
@@ -107,7 +80,7 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchHP -> ESBranchHP
-# Branch on hp = 80, target rnd 11
+# Branch on hp < 80, target rnd 11
 # [9] ESRowSpawnMulti -> Oni Flame Slash
 # Change 3rd row to Fire orbs
 # [10] ESEndPath -> ESEndPath

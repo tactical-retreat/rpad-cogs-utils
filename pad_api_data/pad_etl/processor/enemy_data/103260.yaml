@@ -46,11 +46,20 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change Jammer to Fire, Deal 800% damage
-  desc_jp: Change Jammer to Fire, Deal 800% damage
-  max_atk_pct: 800
-  name_en: Banishing Firebrand
-  name_jp: Banishing Firebrand
+  desc_en: Reduce damage from all sources by 50% for 1 turns, Deal 320% damage
+  desc_jp: Reduce damage from all sources by 50% for 1 turns, Deal 320% damage
+  max_atk_pct: 320
+  name_en: Fire Guardian's Sunblade
+  name_jp: Fire Guardian's Sunblade
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Bind active skills for 5 turns, Deal 320% damage
+  desc_jp: Bind active skills for 5 turns, Deal 320% damage
+  max_atk_pct: 320
+  name_en: Firechain Thrust
+  name_jp: Firechain Thrust
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -82,20 +91,11 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Reduce damage from all sources by 50% for 1 turns, Deal 320% damage
-  desc_jp: Reduce damage from all sources by 50% for 1 turns, Deal 320% damage
-  max_atk_pct: 320
-  name_en: Fire Guardian's Sunblade
-  name_jp: Fire Guardian's Sunblade
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 50
-- !SkillRecord
-  desc_en: Bind active skills for 5 turns, Deal 320% damage
-  desc_jp: Bind active skills for 5 turns, Deal 320% damage
-  max_atk_pct: 320
-  name_en: Firechain Thrust
-  name_jp: Firechain Thrust
+  desc_en: Change Jammer to Fire, Deal 800% damage
+  desc_jp: Change Jammer to Fire, Deal 800% damage
+  max_atk_pct: 800
+  name_en: Banishing Firebrand
+  name_jp: Banishing Firebrand
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -146,7 +146,7 @@ records:
 # 	[1] ESAbsorbCombo -> Crimson Blossom Storm
 # 	Absorb combo <= 6 damage for 5 turns
 # [8] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 13
+# Branch on hp < 50, target rnd 13
 # [9] ESDamageShield -> Fire Guardian's Sunblade
 # Condition: 50% chance
 # Reduce damage from all sources by 50% for 1 turns

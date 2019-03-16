@@ -29,38 +29,29 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Do nothing
-  desc_jp: Do nothing
-  max_atk_pct: null
-  name_en: Tentacles are spreading around
-  name_jp: Tentacles are spreading around
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change all orbs to Mortal Poison
-  desc_jp: Change all orbs to Mortal Poison
+  desc_en: Spawn random 3 Poison orbs
+  desc_jp: Spawn random 3 Poison orbs
   max_atk_pct: null
-  name_en: Death by Illusion
-  name_jp: Death by Illusion
+  name_en: Summoning Saimyosho
+  name_jp: Summoning Saimyosho
   one_time: false
   record_type_name: ACTION
-  usage_pct: 100
+  usage_pct: 30
+- !SkillRecord
+  desc_en: Change Random to Poison, Deal 120% damage
+  desc_jp: Change Random to Poison, Deal 120% damage
+  max_atk_pct: 120
+  name_en: Miasma
+  name_jp: Miasma
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
@@ -89,23 +80,32 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Spawn random 3 Poison orbs
-  desc_jp: Spawn random 3 Poison orbs
+  desc_en: Do nothing
+  desc_jp: Do nothing
   max_atk_pct: null
-  name_en: Summoning Saimyosho
-  name_jp: Summoning Saimyosho
+  name_en: Tentacles are spreading around
+  name_jp: Tentacles are spreading around
   one_time: false
   record_type_name: ACTION
-  usage_pct: 30
+  usage_pct: 100
 - !SkillRecord
-  desc_en: Change Random to Poison, Deal 120% damage
-  desc_jp: Change Random to Poison, Deal 120% damage
-  max_atk_pct: 120
-  name_en: Miasma
-  name_jp: Miasma
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change all orbs to Mortal Poison
+  desc_jp: Change all orbs to Mortal Poison
+  max_atk_pct: null
+  name_en: Death by Illusion
+  name_jp: Death by Illusion
   one_time: false
   record_type_name: ACTION
-  usage_pct: 50
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -113,7 +113,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 4
+# Branch on level > 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
@@ -130,7 +130,7 @@ records:
 # Condition: When < 70% hp , one-time use
 # Absorb combo <= 3 damage for 10 turns
 # [10] ESBranchHP -> ESBranchHP
-# Branch on hp = 20, target rnd 17
+# Branch on hp < 20, target rnd 17
 # [11] ESRandomSpawn -> Summoning Saimyosho
 # Condition: 30% chance & when Fire, Water, Wood, Light, Dark, Heal, Jammer, Mortal Poison orbs are on the board
 # Spawn random 3 Poison orbs

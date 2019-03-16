@@ -47,80 +47,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Spawn random 9 Dark orbs + Blind all orbs on the board
-  desc_jp: Spawn random 9 Dark orbs + Blind all orbs on the board
-  max_atk_pct: null
-  name_en: Black Stars + Black Vanguard
-  name_jp: Black Stars + Black Vanguard
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Reduce damage from all sources by 50% for 5 turns
-  desc_jp: Reduce damage from all sources by 50% for 5 turns
-  max_atk_pct: null
-  name_en: YOU'RE here
-  name_jp: YOU'RE here
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 3
-  name_jp: Turn 3
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Reduce damage from all sources by 50% for 5 turns
-  desc_jp: Reduce damage from all sources by 50% for 5 turns
-  max_atk_pct: null
-  name_en: YOU'RE here
-  name_jp: YOU'RE here
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Blind all orbs on the board, Deal 300% damage
-  desc_jp: Blind all orbs on the board, Deal 300% damage
-  max_atk_pct: 300
-  name_en: Gloomy Star Cloud
-  name_jp: Gloomy Star Cloud
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -142,6 +70,60 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 34
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Spawn random 9 Dark orbs + Blind all orbs on the board
+  desc_jp: Spawn random 9 Dark orbs + Blind all orbs on the board
+  max_atk_pct: null
+  name_en: Black Stars + Black Vanguard
+  name_jp: Black Stars + Black Vanguard
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 5 turns
+  desc_jp: Reduce damage from all sources by 50% for 5 turns
+  max_atk_pct: null
+  name_en: YOU'RE here
+  name_jp: YOU'RE here
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 300% damage
+  desc_jp: Blind all orbs on the board, Deal 300% damage
+  max_atk_pct: 300
+  name_en: Gloomy Star Cloud
+  name_jp: Gloomy Star Cloud
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -149,7 +131,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 4
+# Branch on level > 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
@@ -173,9 +155,9 @@ records:
 # [11] ESEndPath -> ESEndPath
 # end_turn
 # [12] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 18
+# Branch on hp < 50, target rnd 18
 # [13] ESBranchHP -> ESBranchHP
-# Branch on hp = 20, target rnd 22
+# Branch on hp < 20, target rnd 22
 # [14] ESGravity -> Phantom Ball
 # Condition: One-time use
 # Player -99% HP

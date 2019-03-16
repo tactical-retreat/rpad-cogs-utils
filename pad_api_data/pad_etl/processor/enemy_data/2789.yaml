@@ -33,8 +33,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
+  name_en: HP <= 69
+  name_jp: HP <= 69
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -51,26 +51,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Spawn random 1 Jammer orbs, Deal 100% damage
-  desc_jp: Spawn random 1 Jammer orbs, Deal 100% damage
-  max_atk_pct: 100
-  name_en: Kick
-  name_jp: Kick
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: HP <= 69
+  name_jp: HP <= 69
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -98,10 +80,28 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 69
-  name_jp: HP <= 69
+  name_en: Execute below actions in order repeatedly
+  name_jp: Execute below actions in order repeatedly
   one_time: false
   record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Spawn random 1 Jammer orbs, Deal 100% damage
+  desc_jp: Spawn random 1 Jammer orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Kick
+  name_jp: Kick
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Spawn random 5 Jammer orbs, Deal 150% damage
+  desc_jp: Spawn random 5 Jammer orbs, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Lunge
+  name_jp: Lunge
+  one_time: false
+  record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
   desc_en: Lock 6 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
@@ -114,24 +114,6 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 69
-  name_jp: HP <= 69
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Spawn random 5 Jammer orbs, Deal 150% damage
-  desc_jp: Spawn random 5 Jammer orbs, Deal 150% damage
-  max_atk_pct: 150
-  name_en: Lunge
-  name_jp: Lunge
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -139,7 +121,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 4
+# Branch on level > 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
@@ -155,7 +137,7 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchHP -> ESBranchHP
-# Branch on hp = 70, target rnd 17
+# Branch on hp < 70, target rnd 17
 # [9] ESBranchFlag -> ESBranchFlag
 # Branch on flag & 2, target rnd 12
 # [10] ESFlagOperation -> ESFlagOperation

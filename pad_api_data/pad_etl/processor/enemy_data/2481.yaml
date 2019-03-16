@@ -29,51 +29,6 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Absorb Fire damage for 3 turns
-  desc_jp: Absorb Fire damage for 3 turns
-  max_atk_pct: null
-  name_en: Absorption
-  name_jp: Absorption
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 100% damage
-  desc_jp: Deal 100% damage
-  max_atk_pct: 100
-  name_en: Absorbing Form Bite
-  name_jp: Absorbing Form Bite
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 70
-- !SkillRecord
-  desc_en: Deal 120% damage
-  desc_jp: Deal 120% damage
-  max_atk_pct: 120
-  name_en: Strong Blow
-  name_jp: Strong Blow
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 70
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -97,6 +52,24 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 70
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Absorb Fire damage for 3 turns
+  desc_jp: Absorb Fire damage for 3 turns
+  max_atk_pct: null
+  name_en: Absorption
+  name_jp: Absorption
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
@@ -131,7 +104,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 4
+# Branch on level > 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
@@ -143,7 +116,7 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 14
+# Branch on hp < 50, target rnd 14
 # [9] ESRecoverEnemy -> Regeneration
 # Condition: When < 20% hp , one-time use
 # Enemy recover 30% hp

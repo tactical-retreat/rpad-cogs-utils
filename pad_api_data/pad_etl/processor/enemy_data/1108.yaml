@@ -35,65 +35,11 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Lock all Fire, Dark orbs + Player -99% HP
-  desc_jp: Lock all Fire, Dark orbs + Player -99% HP
-  max_atk_pct: null
-  name_en: Baleyg + Hnikar
-  name_jp: Baleyg + Hnikar
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Enemy action + Bind Fire cards for 1 turns
-  desc_jp: Enemy action + Bind Fire cards for 1 turns
-  max_atk_pct: null
-  name_en: Triple Slash + Flame Suppression
-  name_jp: Triple Slash + Flame Suppression
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Enemy action + Bind Fire cards for 1 turns
   desc_jp: Enemy action + Bind Fire cards for 1 turns
   max_atk_pct: null
   name_en: Double Slash + Flame Suppression
   name_jp: Double Slash + Flame Suppression
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Enemy action + Bind Fire cards for 1 turns
-  desc_jp: Enemy action + Bind Fire cards for 1 turns
-  max_atk_pct: null
-  name_en: Triple Slash + Flame Suppression
-  name_jp: Triple Slash + Flame Suppression
   one_time: true
   record_type_name: ACTION
   usage_pct: 100
@@ -137,6 +83,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Lock all Fire, Dark orbs + Player -99% HP
+  desc_jp: Lock all Fire, Dark orbs + Player -99% HP
+  max_atk_pct: null
+  name_en: Baleyg + Hnikar
+  name_jp: Baleyg + Hnikar
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 15
   name_jp: HP <= 15
   one_time: false
@@ -169,7 +133,7 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 13
+# Branch on hp < 50, target rnd 13
 # [7] ESAttackMultihit -> Vak Sigfodr
 # Condition: When < 15% hp
 # Enemy action

@@ -35,42 +35,6 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change 5th row to Water orbs, Deal 200% damage
-  desc_jp: Change 5th row to Water orbs, Deal 200% damage
-  max_atk_pct: 200
-  name_en: Marine Ball
-  name_jp: Marine Ball
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change 5th row to Water orbs, Deal 200% damage
-  desc_jp: Change 5th row to Water orbs, Deal 200% damage
-  max_atk_pct: 200
-  name_en: Marine Ball
-  name_jp: Marine Ball
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 9
-  name_jp: HP <= 9
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Change Heal to Jammer, Deal 80% damage
   desc_jp: Change Heal to Jammer, Deal 80% damage
   max_atk_pct: 80
@@ -83,8 +47,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 9
-  name_jp: HP <= 9
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -97,6 +61,24 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 9
+  name_jp: HP <= 9
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change 5th row to Water orbs, Deal 200% damage
+  desc_jp: Change 5th row to Water orbs, Deal 200% damage
+  max_atk_pct: 200
+  name_en: Marine Ball
+  name_jp: Marine Ball
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -104,7 +86,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 4
+# Branch on level > 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
@@ -116,9 +98,9 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 13
+# Branch on hp < 50, target rnd 13
 # [9] ESBranchHP -> ESBranchHP
-# Branch on hp = 10, target rnd 17
+# Branch on hp < 10, target rnd 17
 # [10] ESOrbChangeAttackBits -> On a diet?
 # Condition: One-time use
 # Change Heal to Jammer

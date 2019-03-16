@@ -106,6 +106,24 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 10
+  name_jp: HP <= 10
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind 6 random cards for 10 turns
+  desc_jp: Bind 6 random cards for 10 turns
+  max_atk_pct: null
+  name_en: Blue-Eyed Grudge
+  name_jp: Blue-Eyed Grudge
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -113,7 +131,7 @@ records:
 # [1] ESPreemptive -> ESPreemptive
 # Enable preempt if level 5
 # [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 5, target rnd 4
+# Branch on level > 5, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
@@ -125,7 +143,7 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchHP -> ESBranchHP
-# Branch on hp = 10, target rnd 14
+# Branch on hp < 10, target rnd 14
 # [9] ESStatusShield -> Emerald Eye
 # Condition: When < 80% hp , one-time use
 # Voids status ailments for 3 turns

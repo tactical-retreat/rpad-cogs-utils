@@ -42,46 +42,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Delay active skills by 3 turns + Enemy action
-  desc_jp: Delay active skills by 3 turns + Enemy action
-  max_atk_pct: null
-  name_en: "R\xFAro Pari + Synchronized Burst"
-  name_jp: "R\xFAro Pari + Synchronized Burst"
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change own attribute to random one of Fire, Water, Wood, Light, Dark +
-    Enemy action
-  desc_jp: Change own attribute to random one of Fire, Water, Wood, Light, Dark +
-    Enemy action
-  max_atk_pct: null
-  name_en: Dusk + Demina Miracle
-  name_jp: Dusk + Demina Miracle
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -121,6 +83,89 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 25
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Delay active skills by 3 turns + Enemy action
+  desc_jp: Delay active skills by 3 turns + Enemy action
+  max_atk_pct: null
+  name_en: "R\xFAro Pari + Synchronized Burst"
+  name_jp: "R\xFAro Pari + Synchronized Burst"
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy action + Blind all orbs on the board
+  desc_jp: Enemy action + Blind all orbs on the board
+  max_atk_pct: null
+  name_en: Synchronized Burst + Gloom
+  name_jp: Synchronized Burst + Gloom
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 25
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Player -75% HP + Blind all orbs on the board
+  desc_jp: Player -75% HP + Blind all orbs on the board
+  max_atk_pct: null
+  name_en: Deteri + Gloom
+  name_jp: Deteri + Gloom
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 25
+- !SkillRecord
+  desc_en: Player -75% HP + Bind 1 subs for 1 turns
+  desc_jp: Player -75% HP + Bind 1 subs for 1 turns
+  max_atk_pct: null
+  name_en: Deteri + Drought
+  name_jp: Deteri + Drought
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 25
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 9
+  name_jp: HP <= 9
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change own attribute to random one of Fire, Water, Wood, Light, Dark +
+    Enemy action
+  desc_jp: Change own attribute to random one of Fire, Water, Wood, Light, Dark +
+    Enemy action
+  max_atk_pct: null
+  name_en: Dusk + Demina Miracle
+  name_jp: Dusk + Demina Miracle
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -141,7 +186,7 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchHP -> ESBranchHP
-# Branch on hp = 50, target rnd 12
+# Branch on hp < 50, target rnd 12
 # [7] SkillSet:
 # 	Condition: 25% chance
 # 	[0] ESOrbChangeAttack -> Noctilucence
@@ -180,7 +225,7 @@ records:
 # [15] ESEndPath -> ESEndPath
 # end_turn
 # [16] ESBranchHP -> ESBranchHP
-# Branch on hp = 10, target rnd 22
+# Branch on hp < 10, target rnd 22
 # [17] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESAttackMultihit -> Synchronized Burst
