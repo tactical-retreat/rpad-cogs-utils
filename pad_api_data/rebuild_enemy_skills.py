@@ -70,8 +70,9 @@ def run(args):
         except Exception as ex:
             print('failed to process', card.card.name)
             print(ex)
-            # import traceback
-            # traceback.print_exc()
+            if 'unsupported operation' not in str(ex):
+                import traceback
+                traceback.print_exc()
 
 
 if __name__ == '__main__':
