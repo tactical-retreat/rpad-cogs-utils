@@ -179,9 +179,9 @@ def loop_through(ctx: Context, behaviors: List[Any]):
         iter_count += 1
         if idx >= len(behaviors) or idx in traversed:
             # Disabling default action for now; doesn't seem to improve things?
-            if len(results) == 0:
-                # if the result set is empty, add something
-                results.append(default_attack())
+            # if len(results) == 0:
+            #     # if the result set is empty, add something
+            #     results.append(default_attack())
             return results
         traversed.append(idx)
 
@@ -449,7 +449,7 @@ def convert(enemy_behavior: List, level: int):
         ctx.turn_event()
 
     # Loop over every turn
-    behavior_loops = []
+    behavior_loop = None
     for i_idx, check_data in enumerate(turn_data):
         # Loop over every following turn. If the outer turn matches an inner turn moveset,
         # we found a loop.
@@ -484,12 +484,13 @@ def convert(enemy_behavior: List, level: int):
                 possible_loops.remove((check_start, check_end))
 
         if len(possible_loops) > 0:
-            behavior_loops.append(possible_loops[0])
+            behavior_loop = possible_loops[0]
+            break
 
     # Process loops
-    looped_behavior = []
-    if len(behavior_loops) > 0:
-        loop_start, loop_end = behavior_loops[0]
+    looped_behavior = []  # keep track of behaviour added to loops
+    if behavior_loop is not None:
+        loop_start, loop_end = behavior_loop
         loop_size = loop_end - loop_start
         if loop_size == 1:
             # Since this isn't a multi-turn looping moveset, try to trim the earlier turns.
