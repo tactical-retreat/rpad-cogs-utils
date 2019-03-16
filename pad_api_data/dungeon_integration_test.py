@@ -42,6 +42,8 @@ def run_test(args):
     processed_input_dir = os.path.join(args.input_dir, 'processed')
 
     output_dir = args.output_dir
+    new_output_dir = os.path.join(output_dir, 'new')
+    pathlib.Path(new_output_dir).mkdir(parents=True, exist_ok=True)
     golden_output_dir = os.path.join(output_dir, 'golden')
     pathlib.Path(golden_output_dir).mkdir(parents=True, exist_ok=True)
 
@@ -60,7 +62,7 @@ def run_test(args):
     ]
 
     golden_dungeons = [
-        # Currently no golden dungeons, put them here after verification
+        307, # Hera-Is
     ]
 
     for dungeon_id, wave_data in dungeon_id_to_wavedata.items():
@@ -68,16 +70,19 @@ def run_test(args):
         if not dungeon:
             print('skipping', dungeon_id)
             continue
+
         print('processing', dungeon_id, dungeon.clean_name)
+        file_output_dir = golden_output_dir if dungeon_id in golden_dungeons else new_output_dir
+
         if dungeon_id in split_dungeons:
             for floor in dungeon.floors:
                 floor_id = floor.floor_number
                 file_name = '{}_{}.txt'.format(dungeon_id, floor_id)
-                with open(os.path.join(golden_output_dir, file_name), encoding='utf-8', mode='w') as f:
+                with open(os.path.join(file_output_dir, file_name), encoding='utf-8', mode='w') as f:
                     f.write(flatten_data(wave_data, dungeon, db, limit_floor_id=floor_id))
         else:
             file_name = '{}.txt'.format(dungeon_id)
-            with open(os.path.join(golden_output_dir, file_name), encoding='utf-8', mode='w') as f:
+            with open(os.path.join(file_output_dir, file_name), encoding='utf-8', mode='w') as f:
                 f.write(flatten_data(wave_data, dungeon, db))
 
 
