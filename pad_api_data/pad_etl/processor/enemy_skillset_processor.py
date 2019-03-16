@@ -127,6 +127,30 @@ class Context(object):
             else:
                 self.countdown = False
 
+    def apply_skill_effects(self, behavior):
+        """Check context to see if a skill is allowed to be used, and update flag accordingly"""
+        b_type = type(behavior)
+        if b_type == ESAttackUp or b_type == ESAttackUpStatus:
+            if self.enraged is None:
+                if behavior.turn_cooldown is None:
+                    self.enraged = behavior.turns
+                    return True
+                else:
+                    self.enraged = -behavior.turn_cooldown + 1
+                    return False
+            else:
+                if self.enraged == 0:
+                    self.enraged = behavior.turns
+                    return True
+                else:
+                    return False
+        elif b_type == ESDamageShield:
+            if self.damage_shield == 0:
+                self.damage_shield = behavior.turns
+                return True
+            else:
+                return False
+        return True
 
 def default_attack():
     """Indicates that the monster uses its standard attack."""
@@ -155,33 +179,15 @@ def loop_through(ctx: Context, behaviors: List[Any]):
         iter_count += 1
         if idx >= len(behaviors) or idx in traversed:
             # Disabling default action for now; doesn't seem to improve things?
-            # if len(results) == 0:
-            #     # if the result set is empty, add something
-            #     results.append(default_attack())
+            if len(results) == 0:
+                # if the result set is empty, add something
+                results.append(default_attack())
             return results
         traversed.append(idx)
 
         # Extract the current behavior and its type.
         b = behaviors[idx]
         b_type = type(b)
-
-        # Processing for enrages.
-        if b_type == ESAttackUp or b_type == ESAttackUpStatus:
-            if ctx.enraged is None:
-                if b.turn_cooldown is None:
-                    ctx.enraged = b.turns
-                    # TODO: this should append to results (assuming flags are checked)
-                else:
-                    ctx.enraged = -b.turn_cooldown + 1
-                    idx += 1
-                    continue
-            else:
-                if ctx.enraged == 0:
-                    ctx.enraged = b.turns
-                    # TODO: this should append to results (assuming flags are checked)
-                else:
-                    idx += 1
-                    continue
 
         # The current action could be None because we nulled it out in preprocessing, just continue.
         if b is None or b_type == ESNone:
@@ -220,6 +226,9 @@ def loop_through(ctx: Context, behaviors: List[Any]):
                 # This check might be wrong? This is checking if all flags are unset, maybe just one needs to be unset.
                 if cond.one_time:
                     if not ctx.onetime_flags & cond.one_time:
+                        if not ctx.apply_skill_effects(b):
+                            idx += 1
+                            continue
                         ctx.onetime_flags = ctx.onetime_flags | cond.one_time
                         results.append(b)
                         return results
@@ -229,15 +238,22 @@ def loop_through(ctx: Context, behaviors: List[Any]):
 
                 if cond.ai == 100 and b_type != ESDispel:
                     # This always executes so it is a terminal action.
+                    if not ctx.apply_skill_effects(b):
+                        idx += 1
+                        continue
                     results.append(b)
                     return results
                 else:
                     # Not a terminal action, so accumulate it and continue.
-                    results.append(b)
+                    if ctx.apply_skill_effects(b):
+                        results.append(b)
                     idx += 1
                     continue
             else:
                 # Stuff without a condition is always terminal.
+                if not ctx.apply_skill_effects(b):
+                    idx += 1
+                    continue
                 results.append(b)
                 return results
 
