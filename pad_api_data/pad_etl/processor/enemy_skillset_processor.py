@@ -129,12 +129,8 @@ class Context(object):
 
 
 def default_attack():
-    skill = DictWithAttributeAccess({
-        'enemy_skill_id': 1,
-        'enemy_ai': 100,
-        'enemy_rnd': 0,
-    })
-    return ESAttackSinglehit(skill)
+    """Indicates that the monster uses its standard attack."""
+    return ESDefaultAttack()
 
 
 def loop_through(ctx: Context, behaviors: List[Any]):
@@ -540,9 +536,7 @@ def convert(enemy_behavior: List, level: int):
             locally_seen_behavior.append(cur_loop)
             cur_loop = loop_through(hp_ctx, behaviors)
 
-    clean_skillset(skillset)
-
-    return skillset
+    return clean_skillset(skillset)
 
 
 def extract_hp_threshold(es):
@@ -555,6 +549,19 @@ def extract_hp_threshold(es):
 
 
 def clean_skillset(skillset: ProcessedSkillset):
+    # Check to see if the skillset is functionally empty (only default actions). These are created
+    # for some monsters with mostly empty/broken behavior.
+    def has_action(skills):
+        return any([type(s) != ESDefaultAttack for s in skills])
+    def group_has_action(group):
+        return any([has_action(sg.skills) for sg in group])
+
+    if not (group_has_action(skillset.timed_skill_groups) or
+            group_has_action(skillset.repeating_skill_groups) or
+            group_has_action(skillset.enemycount_skill_groups) or
+            group_has_action(skillset.hp_skill_groups)):
+        return ProcessedSkillset(skillset.level)
+
     # First cleanup: items with a condition attached can show up in timed
     # groups and also in random HP buckets (generally the 100% one due to
     # earlier cleanups).
@@ -617,6 +624,8 @@ def clean_skillset(skillset: ProcessedSkillset):
     skillset.enemycount_skill_groups = [x for x in skillset.enemycount_skill_groups if x.skills]
     skillset.hp_skill_groups = [x for x in skillset.hp_skill_groups if x.skills]
     skillset.hp_skill_groups.sort(key=lambda x: x.hp_ceiling, reverse=True)
+
+    return skillset
 
 
 def extract_levels(enemy_behavior: List[Any]):

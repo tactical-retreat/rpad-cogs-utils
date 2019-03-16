@@ -502,6 +502,20 @@ class ESAttackSinglehit(ESAction):
             attack=ESAttack.new_instance(atk_multiplier)
         )
 
+class ESDefaultAttack(ESAttackSinglehit):
+    """Not a real behavior, used in place of a behavior when none is detected.
+
+    Implies that a monster uses its normal attack.
+    """
+    def __init__(self):
+        skill = DictWithAttributeAccess({
+            'enemy_skill_id': 1,
+            'enemy_ai': 100,
+            'enemy_rnd': 0,
+        })
+        super(ESDefaultAttack, self).__init__(skill)
+        self.name = 'Default Attack'
+
 
 class ESAttackMultihit(ESAction):
     def __init__(self, skill):
