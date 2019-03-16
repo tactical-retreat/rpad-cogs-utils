@@ -29,7 +29,6 @@ def parse_args():
 
 
 def process_card(card):
-    print('processing', card.card.name)
     enemy_behavior = card.enemy_behavior
     if not enemy_behavior:
         return
@@ -59,14 +58,20 @@ def run(args):
     print('loading')
     db.load_database(skip_skills=True, skip_bonus=True, skip_extra=True)
 
+    count = 0
     for card in db.cards:
         if args.card_id and card.card.card_id != int(args.card_id):
             continue
         try:
+            count += 1
+            if count % 50 == 0:
+                print('processing {} of {}'.format(count, len(db.cards)))
             process_card(card)
         except Exception as ex:
             print('failed to process', card.card.name)
             print(ex)
+            # import traceback
+            # traceback.print_exc()
 
 
 if __name__ == '__main__':
