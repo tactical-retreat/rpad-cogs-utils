@@ -1,0 +1,149 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2053
+monster_name_en: Emperor of Palamecia
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Man can never defeat the lord of Hell!
+  name_jp: Man can never defeat the lord of Hell!
+  one_time: false
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 140% damage
+  desc_jp: Deal 140% damage
+  max_atk_pct: 140
+  name_en: Flare
+  name_jp: Flare
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 75% damage
+  desc_jp: Blind all orbs on the board, Deal 75% damage
+  max_atk_pct: 75
+  name_en: Blind
+  name_jp: Blind
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: unknown
+  desc_jp: unknown
+  max_atk_pct: null
+  name_en: '*****'
+  name_jp: '*****'
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: unknown
+  desc_jp: unknown
+  max_atk_pct: null
+  name_en: '*****'
+  name_jp: '*****'
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# Enable preempt if level 5
+# [2] ESBranchLevel -> ESBranchLevel
+# Branch on level = 5, target rnd 5
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESEndPath -> ESEndPath
+# end_turn
+# [5] ESBranchFlag -> ESBranchFlag
+# Branch on flag & 1, target rnd 9
+# [6] ESFlagOperation -> ESFlagOperation
+# flag SET 0b1
+# [7] ESInactivity -> Man can never defeat the lord of Hell!
+# Do nothing
+# [8] ESEndPath -> ESEndPath
+# end_turn
+# [9] ESBranchHP -> ESBranchHP
+# Branch on hp = 50, target rnd 15
+# [10] ESBlind -> Blind
+# Condition: One-time use
+# Blind all orbs on the board
+# [11] ESSkillDelay -> Slow
+# Condition: One-time use
+# Delay active skills by 1 turns
+# [12] EnemySkillUnknown -> *****
+# unknown
+# [13] ESAttackMultihit -> Starfall
+# Enemy action
+# [14] ESEndPath -> ESEndPath
+# end_turn
+# [15] ESBindSkill -> Curse
+# Condition: When < 30% hp , one-time use
+# Bind active skills for 2 turns
+# [16] ESAttackMultihit -> Flare
+# Condition: One-time use
+# Enemy action
+# [17] EnemySkillUnknown -> *****
+# unknown
+# [18] ESAttackMultihit -> Starfall
+# Enemy action
+# [19] ESEndPath -> ESEndPath
+# end_turn
+# [20] SkillSet:
+# 	Condition: On death
+# 	[0] ESInactivity -> Rrrraaaaagh!
+# 	Do nothing

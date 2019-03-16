@@ -1,0 +1,156 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2055
+monster_name_en: Zeromus
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Grr...gh...agh...
+  name_jp: Grr...gh...agh...
+  one_time: true
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute below actions in order repeatedly
+  name_jp: Execute below actions in order repeatedly
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Gh-gh-gh-gh...
+  name_jp: Gh-gh-gh-gh...
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: unknown
+  desc_jp: unknown
+  max_atk_pct: null
+  name_en: '*****'
+  name_jp: '*****'
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 80% damage
+  desc_jp: Change Random to Jammer, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Black Hole
+  name_jp: Black Hole
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  max_atk_pct: null
+  name_en: Whirl
+  name_jp: Whirl
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Random 5 to Poison, Deal 80% damage
+  desc_jp: Change Random 5 to Poison, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Bio
+  name_jp: Bio
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 120% damage (4 hits, 30% each)
+  desc_jp: Deal 120% damage (4 hits, 30% each)
+  max_atk_pct: 120
+  name_en: Meteor
+  name_jp: Meteor
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# Enable preempt if level 5
+# [2] ESBranchLevel -> ESBranchLevel
+# Branch on level = 5, target rnd 5
+# [3] ESEndPath -> ESEndPath
+# end_turn
+# [4] ESEndPath -> ESEndPath
+# end_turn
+# [5] ESBranchFlag -> ESBranchFlag
+# Branch on flag & 1, target rnd 10
+# [6] ESInactivity -> Grr...gh...agh...
+# Condition: One-time use
+# Do nothing
+# [7] ESFlagOperation -> ESFlagOperation
+# flag SET 0b1
+# [8] ESAttackMultihit -> Meteor
+# Condition: When < 50% hp
+# Enemy action
+# [9] ESEndPath -> ESEndPath
+# end_turn
+# [10] ESBranchFlag -> ESBranchFlag
+# Branch on flag & 2, target rnd 14
+# [11] ESFlagOperation -> ESFlagOperation
+# flag SET 0b11
+# [12] ESInactivity -> Gh-gh-gh-gh...
+# Do nothing
+# [13] ESEndPath -> ESEndPath
+# end_turn
+# [14] ESBranchFlag -> ESBranchFlag
+# Branch on flag & 4, target rnd 19
+# [15] ESFlagOperation -> ESFlagOperation
+# flag SET 0b111
+# [16] EnemySkillUnknown -> *****
+# unknown
+# [17] ESAttackMultihit -> Big Bang
+# Enemy action
+# [18] ESEndPath -> ESEndPath
+# end_turn
+# [19] ESBranchFlag -> ESBranchFlag
+# Branch on flag & 8, target rnd 24
+# [20] ESFlagOperation -> ESFlagOperation
+# flag SET 0b1111
+# [21] ESGravity -> Whirl
+# Condition: When < 50% hp
+# Player -99% HP
+# [22] ESOrbChangeAttack -> Black Hole
+# Change Random to Jammer
+# [23] ESEndPath -> ESEndPath
+# end_turn
+# [24] ESFlagOperation -> ESFlagOperation
+# flag UNSET 0b1110
+# [25] ESAttackMultihit -> Meteor
+# Condition: When < 50% hp
+# Enemy action
+# [26] ESPoisonChangeRandomAttack -> Bio
+# Change Random 5 to Poison
+# [27] ESEndPath -> ESEndPath
+# end_turn
+# [28] SkillSet:
+# 	Condition: On death
+# 	[0] ESInactivity -> I will never die...
+# 	Do nothing

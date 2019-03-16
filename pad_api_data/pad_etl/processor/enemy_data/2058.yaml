@@ -1,0 +1,189 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2058
+monster_name_en: Kefka
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: "Show message: Life... Dreams... Hope...  \nWhere do they come from?|Such\
+    \ meaningless things...\n"
+  desc_jp: "Show message: Life... Dreams... Hope...  \nWhere do they come from?|Such\
+    \ meaningless things...\n"
+  max_atk_pct: null
+  name_en: '*****'
+  name_jp: '*****'
+  one_time: false
+  record_type_name: PREEMPT
+  usage_pct: 0
+- !SkillRecord
+  desc_en: unknown
+  desc_jp: unknown
+  max_atk_pct: null
+  name_en: '*****'
+  name_jp: '*****'
+  one_time: false
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: "Show message: Life... Dreams... Hope...  \nWhere do they come from?|Such\
+    \ meaningless things...\n"
+  desc_jp: "Show message: Life... Dreams... Hope...  \nWhere do they come from?|Such\
+    \ meaningless things...\n"
+  max_atk_pct: null
+  name_en: '*****'
+  name_jp: '*****'
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: Change Random 8 to Poison
+  desc_jp: Change Random 8 to Poison
+  max_atk_pct: null
+  name_en: Poison
+  name_jp: Poison
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 20
+- !SkillRecord
+  desc_en: Change 3rd row to Water orbs, Deal 100% damage
+  desc_jp: Change 3rd row to Water orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Blizzara
+  name_jp: Blizzara
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 30
+- !SkillRecord
+  desc_en: Bind 1 random for 2 turns, Deal 80% damage
+  desc_jp: Bind 1 random for 2 turns, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Thunder
+  name_jp: Thunder
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 10
+- !SkillRecord
+  desc_en: Spawn random 4 Water orbs, Deal 80% damage
+  desc_jp: Spawn random 4 Water orbs, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Blizzard
+  name_jp: Blizzard
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 20
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  max_atk_pct: 100
+  name_en: Disable Skill
+  name_jp: Disable Skill
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 20
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: "Show message: Life... Dreams... Hope...  \nWhere do they come from?|Such\
+    \ meaningless things...\n"
+  desc_jp: "Show message: Life... Dreams... Hope...  \nWhere do they come from?|Such\
+    \ meaningless things...\n"
+  max_atk_pct: null
+  name_en: '*****'
+  name_jp: '*****'
+  one_time: false
+  record_type_name: PREEMPT
+  usage_pct: 0
+- !SkillRecord
+  desc_en: unknown
+  desc_jp: unknown
+  max_atk_pct: null
+  name_en: '*****'
+  name_jp: '*****'
+  one_time: false
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: "Show message: Life... Dreams... Hope...  \nWhere do they come from?|Such\
+    \ meaningless things...\n"
+  desc_jp: "Show message: Life... Dreams... Hope...  \nWhere do they come from?|Such\
+    \ meaningless things...\n"
+  max_atk_pct: null
+  name_en: '*****'
+  name_jp: '*****'
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
+
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESDeathCry -> *****
+# Condition: On death
+# Show message: Life... Dreams... Hope...  
+# Where do they come from?|Such meaningless things...
+#
+# [3] ESBranchFlag -> ESBranchFlag
+# Branch on flag & 1, target rnd 8
+# [4] ESFlagOperation -> ESFlagOperation
+# flag SET 0b1
+# [5] EnemySkillUnknown -> *****
+# unknown
+# [6] ESInactivity -> Now I won't have to hunt you down!
+# Do nothing
+# [7] ESEndPath -> ESEndPath
+# end_turn
+# [8] ESBranchLevel -> ESBranchLevel
+# Branch on level = 4, target rnd 7
+# [9] ESPoisonChangeRandom -> Poison
+# Condition: 20% chance
+# Change Random 8 to Poison
+# [10] ESRowSpawnMulti -> Blizzara
+# Condition: 30% chance
+# Change 3rd row to Water orbs
+# [11] ESBindAttack -> Thunder
+# Condition: 10% chance
+# Bind 1 random for 2 turns
+# [12] ESRandomSpawn -> Blizzard
+# Condition: 20% chance & when Fire, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# Spawn random 4 Water orbs
+# [13] ESAttackSinglehit -> Disable Skill
+# Condition: 20% chance
+# Enemy action
