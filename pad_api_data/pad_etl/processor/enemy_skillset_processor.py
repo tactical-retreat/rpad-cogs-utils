@@ -203,6 +203,13 @@ def loop_through(ctx: Context, behaviors: List[Any]):
             idx += 1
             continue
 
+        if b_type == ESAttackPreemptive:
+            behaviors[idx] = None
+            ctx.is_preemptive = True
+            ctx.do_preemptive = True
+            results.append(b)
+            return results
+
         if b_type == ESCountdown:
             ctx.countdown = True
             if ctx.counter == 1:
