@@ -84,11 +84,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 7
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESSkyfall -> Thanatos! Rain death upon them all!
@@ -100,9 +100,9 @@ records:
 # [6] ESEndPath -> ESEndPath
 # end_turn
 # [7] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 11
 # [8] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [9] SkillSet:
 # 	[0] ESColumnSpawnMulti -> Dark Spell
 # 	Change 6th column to Dark orbs
@@ -111,9 +111,9 @@ records:
 # [10] ESEndPath -> ESEndPath
 # end_turn
 # [11] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 15
 # [12] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [13] SkillSet:
 # 	[0] ESColumnSpawnMulti -> Dark Spell
 # 	Change 6th column to Dark orbs
@@ -122,9 +122,9 @@ records:
 # [14] ESEndPath -> ESEndPath
 # end_turn
 # [15] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 8, target rnd 19
 # [16] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1111
 # [17] SkillSet:
 # 	[0] ESColumnSpawnMulti -> Dark Spell
 # 	Change 6th column to Dark orbs
@@ -133,7 +133,7 @@ records:
 # [18] ESEndPath -> ESEndPath
 # end_turn
 # [19] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b1111
 # [20] SkillSet:
 # 	[0] ESColumnSpawnMulti -> Dark Spell
 # 	Change 6th column to Dark orbs

@@ -44,7 +44,7 @@ records:
   name_jp: Lame du Tonnerre
   one_time: false
   record_type_name: ACTION
-  usage_pct: 0
+  usage_pct: 33
 - !SkillRecord
   desc_en: Enemy recover 5% hp, Deal 90% damage
   desc_jp: Enemy recover 5% hp, Deal 90% damage
@@ -53,7 +53,7 @@ records:
   name_jp: "\xC9p\xE9e Consolatrice"
   one_time: false
   record_type_name: ACTION
-  usage_pct: 0
+  usage_pct: 33
 - !SkillRecord
   desc_en: Deal 111% damage (3 hits, 37% each)
   desc_jp: Deal 111% damage (3 hits, 37% each)
@@ -62,7 +62,7 @@ records:
   name_jp: "Atout Dur\xE9e"
   one_time: false
   record_type_name: ACTION
-  usage_pct: 0
+  usage_pct: 34
 - !SkillRecord
   desc_en: Change Random to Light, Deal 100% damage
   desc_jp: Change Random to Light, Deal 100% damage
@@ -71,7 +71,7 @@ records:
   name_jp: Lame du Tonnerre
   one_time: false
   record_type_name: ACTION
-  usage_pct: 0
+  usage_pct: 33
 - !SkillRecord
   desc_en: Enemy recover 5% hp, Deal 90% damage
   desc_jp: Enemy recover 5% hp, Deal 90% damage
@@ -80,7 +80,7 @@ records:
   name_jp: "\xC9p\xE9e Consolatrice"
   one_time: false
   record_type_name: ACTION
-  usage_pct: 0
+  usage_pct: 33
 - !SkillRecord
   desc_en: Deal 111% damage (3 hits, 37% each)
   desc_jp: Deal 111% damage (3 hits, 37% each)
@@ -89,7 +89,7 @@ records:
   name_jp: "Atout Dur\xE9e"
   one_time: false
   record_type_name: ACTION
-  usage_pct: 0
+  usage_pct: 34
 - !SkillRecord
   desc_en: Player -99% HP + Rcv 50% for 3 turns
   desc_jp: Player -99% HP + Rcv 50% for 3 turns
@@ -104,7 +104,7 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESStatusShield -> Resolute Justice
@@ -112,13 +112,13 @@ records:
 # 	[1] ESAbsorbThreshold -> Pierced Belief
 # 	Absorb damage >= 5000000 damage for 3 turns
 # [3] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [4] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 9, target rnd 13
 # [5] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 6, target rnd 12
 # [6] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 3, target rnd 11
 # [7] ESOrbChangeAttack -> Lame du Tonnerre
 # Condition: 33% chance
 # Change Random to Light
@@ -143,7 +143,7 @@ records:
 # 	[1] ESAttackUp -> Sharpened Mind
 # 	Increase damage to 200% for the next 99 turns
 # [13] ESSetCounter -> ESSetCounter
-# set_counter
+# counter = 6
 # [14] SkillSet:
 # 	[0] ESGravity -> Convicting Justice
 # 	Player -99% HP

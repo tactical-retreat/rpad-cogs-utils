@@ -43,21 +43,30 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  max_atk_pct: 100
+  name_en: Default Attack
+  name_jp: Default Attack
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESSkillDelay -> Glacial Eyes
 # Condition: One-time use
 # Delay active skills by 2 turns
 # [5] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [2861, 2862], target rnd 7
 # [6] ESAttackMultihit -> This ends here!!!
 # Condition: One-time use
 # Enemy action
@@ -68,12 +77,12 @@ records:
 # Condition: One-time use
 # Movetime -1s for 2 turns
 # [9] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 12
 # [10] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [11] ESPoisonChangeRandomAttack -> APTX4869
 # Change Random 5 to Poison
 # [12] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b1
 # [13] ESEndPath -> ESEndPath
 # end_turn

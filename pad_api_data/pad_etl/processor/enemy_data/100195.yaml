@@ -35,6 +35,15 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  max_atk_pct: 100
+  name_en: Default Attack
+  name_jp: Default Attack
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
   desc_en: Increase damage to 130% for the next 3 turns
   desc_jp: Increase damage to 130% for the next 3 turns
   max_atk_pct: null
@@ -43,16 +52,25 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  max_atk_pct: 100
+  name_en: Default Attack
+  name_jp: Default Attack
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESRandomSpawn -> Tiny Poison
 # Condition: When fire, water, wood, light, dark, heal, jammer, mortal poison orbs are on the board
 # Spawn random 1 Poison orbs

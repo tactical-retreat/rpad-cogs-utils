@@ -129,15 +129,15 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 9
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] ESOrbChangeAttackBits -> Can I have this?...
 # Change Mortal Poison to Heal
 # [7] SkillSet:
@@ -148,9 +148,9 @@ records:
 # [8] ESEndPath -> ESEndPath
 # end_turn
 # [9] ESBranchCounter -> ESBranchCounter
-# branch
+# Branch on counter = 3, target rnd 15
 # [10] ESSetCounter -> ESSetCounter
-# set_counter
+# counter + 1
 # [11] ESOrbChangeAttack -> Blazing Tiger Claws
 # Condition: 33% chance
 # Change Random to Fire
@@ -165,7 +165,7 @@ records:
 # Condition: One-time use
 # Bind awoken skills for 1 turns
 # [16] ESSetCounter -> ESSetCounter
-# set_counter
+# counter = 0
 # [17] SkillSet:
 # 	[0] ESBoardChange -> Western Seven-Star Formation
 # 	Change all orbs to Fire, Water, Dark

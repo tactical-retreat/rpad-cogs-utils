@@ -75,11 +75,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESRecoverPlayer -> Welcome!
 # 	Player recover 100% hp
@@ -88,30 +88,30 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 10
 # [7] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [8] ESColumnSpawnMulti -> Graffiti of the Gods
 # Change 2nd column to Jammer orbs
 # [9] ESEndPath -> ESEndPath
 # end_turn
 # [10] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 14
 # [11] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [12] ESRowSpawnMulti -> Graffiti of the Gods
 # Change 3rd row to Jammer orbs
 # [13] ESEndPath -> ESEndPath
 # end_turn
 # [14] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 8, target rnd 18
 # [15] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1111
 # [16] ESColumnSpawnMulti -> Graffiti of the Gods
 # Change 5th column to Jammer orbs
 # [17] ESEndPath -> ESEndPath
 # end_turn
 # [18] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b1110
 # [19] ESBlind -> Ink Spill of the Gods
 # Blind all orbs on the board

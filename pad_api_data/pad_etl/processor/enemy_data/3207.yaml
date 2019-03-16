@@ -31,80 +31,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Blind random 8 orbs for 5 turns
-  desc_jp: Blind random 8 orbs for 5 turns
-  max_atk_pct: null
-  name_en: Coals of Enlightenment
-  name_jp: Coals of Enlightenment
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Reduce damage from all sources by 50% for 10 turns
-  desc_jp: Reduce damage from all sources by 50% for 10 turns
-  max_atk_pct: null
-  name_en: Protective Flames of Retribution
-  name_jp: Protective Flames of Retribution
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Lock all Jammer, Poison orbs, Deal 150% damage
-  desc_jp: Lock all Jammer, Poison orbs, Deal 150% damage
-  max_atk_pct: 150
-  name_en: Sacred Exorcist Flame
-  name_jp: Sacred Exorcist Flame
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 20
-  name_jp: HP <= 20
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Absorb combo <= 7 damage for 1 turns + Movetime 25% for 1 turns
-  desc_jp: Absorb combo <= 7 damage for 1 turns + Movetime 25% for 1 turns
-  max_atk_pct: null
-  name_en: Bonfire of Enlightenment + Blazing Brand of Retribution
-  name_jp: Bonfire of Enlightenment + Blazing Brand of Retribution
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
+  name_en: Execute below actions in order repeatedly
+  name_jp: Execute below actions in order repeatedly
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -117,20 +45,38 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  max_atk_pct: 100
+  name_en: Default Attack
+  name_jp: Default Attack
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Lock all Jammer, Poison orbs, Deal 150% damage
+  desc_jp: Lock all Jammer, Poison orbs, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Sacred Exorcist Flame
+  name_jp: Sacred Exorcist Flame
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 4
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 4, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] SkillSet:
 # 	[0] ESAbsorbCombo -> Bonfire of Enlightenment
 # 	Absorb combo <= 7 damage for 1 turns
@@ -139,15 +85,15 @@ records:
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 24
 # [9] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 20, target rnd 21
 # [10] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 17
 # [11] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [12] ESBranchHP -> ESBranchHP
-# branch
+# Branch on hp = 60, target rnd 15
 # [13] ESBlindStickyRandom -> Coals of Enlightenment
 # Blind random 8 orbs for 5 turns
 # [14] ESEndPath -> ESEndPath
@@ -167,7 +113,7 @@ records:
 # [20] ESEndPath -> ESEndPath
 # end_turn
 # [21] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [22] SkillSet:
 # 	Condition: When < 20% hp
 # 	[0] ESAbsorbCombo -> Bonfire of Enlightenment
@@ -177,7 +123,7 @@ records:
 # [23] ESEndPath -> ESEndPath
 # end_turn
 # [24] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b100
 # [25] ESBoardChangeAttackBits -> Fireball Destruction
 # Change all orbs to Fire, Jammer
 # [26] ESEndPath -> ESEndPath

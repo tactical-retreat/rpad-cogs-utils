@@ -75,54 +75,54 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 3
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 3, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] ESRandomSpawn -> Lemon... Sour... I want some...
 # Condition: When fire, water, wood, dark, heal, jammer, poison, mortal poison orbs are on the board
 # Spawn random 3 Light orbs
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 13
 # [9] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [10] ESRandomSpawn -> It's tart, so just one...
 # Condition: When light orbs are on the board
 # Spawn random 1 Heal orbs
 # [11] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b10
 # [12] ESAttackMultihit -> There is no lemon!
 # Enemy action
 # [13] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 18
 # [14] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [15] ESRandomSpawn -> It's tart, but I'll take another one...
 # Condition: When light orbs are on the board
 # Spawn random 1 Heal orbs
 # [16] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b100
 # [17] ESAttackMultihit -> There is no lemon!
 # Enemy action
 # [18] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 8, target rnd 23
 # [19] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1111
 # [20] ESRandomSpawn -> It's tart... But I can't stop
 # Condition: When light orbs are on the board
 # Spawn random 1 Heal orbs
 # [21] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b1000
 # [22] ESAttackMultihit -> There is no lemon!
 # Enemy action
 # [23] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b1110
 # [24] ESAttackMultihit -> It's tart!!
 # Enemy action

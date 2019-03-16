@@ -77,9 +77,9 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [3617, 3618], target rnd 4
 # [3] ESGravity -> GAAAAAHH!
 # Condition: One-time use
 # Player -50% HP
@@ -87,31 +87,31 @@ records:
 # Condition: One-time use
 # Player -50% HP
 # [5] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 9
 # [6] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [7] ESBlind -> Fugasumi
 # Blind all orbs on the board
 # [8] ESEndPath -> ESEndPath
 # end_turn
 # [9] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 13
 # [10] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [11] ESOrbLock -> Funokazura Rouga
 # Lock 6 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [12] ESEndPath -> ESEndPath
 # end_turn
 # [13] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 17
 # [14] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [15] ESAttackMultihit -> Kogetsu
 # Enemy action
 # [16] ESEndPath -> ESEndPath
 # end_turn
 # [17] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b111
 # [18] ESBindAttack -> Fuwaenmei-Ryu Hidden Art, Kamui
 # Bind 1 random for 1 turns
 # [19] ESEndPath -> ESEndPath

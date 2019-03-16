@@ -59,7 +59,7 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESStatusShield -> Black Body
@@ -114,13 +114,13 @@ records:
 # Condition: One-time use
 # Enemy action
 # [13] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 16
 # [14] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [15] ESInactivity -> Gathering Magical Power
 # Do nothing
 # [16] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b1
 # [17] SkillSet:
 # 	[0] ESDispel -> Dark Eyes
 # 	Voids player buff effects

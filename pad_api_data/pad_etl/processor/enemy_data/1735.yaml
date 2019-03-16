@@ -86,19 +86,19 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESStatusShield -> Let's Fight!
 # Voids status ailments for 999 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 10
 # [7] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [8] SkillSet:
 # 	[0] ESRowSpawnMulti -> Golden Scepter
 # 	Change 2nd, 4th row to Light, Jammer orbs
@@ -107,17 +107,17 @@ records:
 # [9] ESEndPath -> ESEndPath
 # end_turn
 # [10] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 14
 # [11] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [12] ESOrbChangeAttack -> Supersonic Cloud
 # Change Light to Poison
 # [13] ESEndPath -> ESEndPath
 # end_turn
 # [14] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 8, target rnd 18
 # [15] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1111
 # [16] SkillSet:
 # 	[0] ESDamageShield -> Alter Ego!
 # 	Reduce damage from all sources by 50% for 1 turns
@@ -126,15 +126,15 @@ records:
 # [17] ESEndPath -> ESEndPath
 # end_turn
 # [18] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 16, target rnd 22
 # [19] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11111
 # [20] ESInactivity -> Alter ego disappeared
 # Do nothing
 # [21] ESEndPath -> ESEndPath
 # end_turn
 # [22] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b11110
 # [23] ESAttackMultihit -> Golden Staff Monkey Dance
 # Enemy action
 # [24] ESEndPath -> ESEndPath

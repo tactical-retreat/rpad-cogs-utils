@@ -75,11 +75,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESStatusShield -> Heaven Dragon Knight's Soul
 # 	Voids status ailments for 999 turns
@@ -88,34 +88,34 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 9
 # [7] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [8] SkillSet:
 # 	[0] ESGravity -> Saint Decision
 # 	Player -60% HP
 # 	[1] ESPoisonChangeRandomAttack -> Saint Poison
 # 	Change Random 1 to Poison
 # [9] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 12
 # [10] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [11] SkillSet:
 # 	[0] ESGravity -> Saint Decision
 # 	Player -60% HP
 # 	[1] ESPoisonChangeRandomAttack -> Saint Poison
 # 	Change Random 1 to Poison
 # [12] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 8, target rnd 15
 # [13] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1111
 # [14] SkillSet:
 # 	[0] ESGravity -> Saint Decision
 # 	Player -60% HP
 # 	[1] ESPoisonChangeRandomAttack -> Saint Poison
 # 	Change Random 1 to Poison
 # [15] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b1110
 # [16] ESRandomSpawn -> Shining Railgun
 # Condition: When mortal poison orbs are on the board
 # Change all orbs to Light

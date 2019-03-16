@@ -77,11 +77,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESDamageShield -> Harbinger of Corrosion
 # 	Reduce damage from all sources by 50% for 10 turns
@@ -90,9 +90,9 @@ records:
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 21
 # [7] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [8] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESBindAwoken -> Poppy's Lethargy
@@ -169,9 +169,9 @@ records:
 # Condition: When fire, water, wood, light, dark, heal, jammer, poison orbs are on the board
 # Spawn random 9 Mortal Poison orbs
 # [21] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 26
 # [22] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [23] ESOrbChangeAttack -> Bloody Blossom - Anemone
 # Change Mortal Poison to Heal
 # [24] ESOrbChangeAttack -> Cursed Flower - Mint
@@ -179,7 +179,7 @@ records:
 # [25] ESRowSpawnMulti -> Cocytus's Erosion
 # Change 5th row to Mortal Poison orbs
 # [26] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b110
 # [27] ESBindRandomSub -> Light Sleep's Cradle
 # Condition: 50% chance
 # Bind 2 random subs for 2 turns

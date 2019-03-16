@@ -66,43 +66,43 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 3
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 3, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] ESRandomSpawn -> I've found some blueberries
 # Condition: When fire, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board
 # Spawn random 3 Water orbs
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 13
 # [9] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [10] ESRandomSpawn -> Munch Munch Munch
 # Condition: When water orbs are on the board
 # Spawn random 3 Jammer orbs
 # [11] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b10
 # [12] ESSkillDelay -> You don't have a snack for me?
 # Delay active skills by 2~4 turns
 # [13] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 18
 # [14] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [15] ESRandomSpawn -> Munch Munch Munch
 # Condition: When water orbs are on the board
 # Spawn random 3 Jammer orbs
 # [16] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b100
 # [17] ESSkillDelay -> You don't have a snack for me?
 # Delay active skills by 2~4 turns
 # [18] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b110
 # [19] ESGravity -> Spit!
 # Player -75% HP

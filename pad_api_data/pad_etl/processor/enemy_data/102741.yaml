@@ -66,11 +66,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESVoidShield -> Old Dragon Knight's Soul
 # 	Void damage >= 100 for 10 turns
@@ -82,14 +82,14 @@ records:
 # Condition: after being affected by a status effect
 # Increase damage to 200% for the next 999 turns
 # [7] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 10
 # [8] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [9] ESRandomSpawn -> Mind Breaking Hell Guidance
 # Condition: When heal orbs are on the board
 # Change all orbs to Jammer
 # [10] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b10
 # [11] ESRandomSpawn -> Celestial Wicked Exorcism
 # Condition: When < 10% hp & when Jammer orbs are on the board
 # Change all orbs to Wood

@@ -94,11 +94,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESBombRandomSpawn -> Toon Bomb
 # 	Spawn random 3 Bomb orbs
@@ -113,34 +113,34 @@ records:
 # 	[1] ESStatusShield -> Ice Mirror Barrier
 # 	Voids status ailments for 4 turns
 # [7] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 10
 # [8] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [9] SkillSet:
 # 	[0] ESColumnSpawnMulti -> Frost Left
 # 	Change 1st column to Water orbs, 2nd column to Water, Dark orbs
 # 	[1] ESOrbLock -> Chilled Aqua
 # 	Lock all Water orbs
 # [10] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 13
 # [11] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [12] SkillSet:
 # 	[0] ESColumnSpawnMulti -> Nightmare Right
 # 	Change 5th column to Water, Dark orbs, 6th column to Dark orbs
 # 	[1] ESOrbLock -> Chilled Darkness
 # 	Lock all Dark orbs
 # [13] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 8, target rnd 16
 # [14] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1111
 # [15] SkillSet:
 # 	[0] ESColumnSpawnMulti -> Median Joker
 # 	Change 3rd column to Dark orbs, 4th column to Water orbs
 # 	[1] ESOrbLock -> Chilled Shuffle
 # 	Lock 12 random Fire, Water, Wood, Light, Dark orbs
 # [16] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b1110
 # [17] SkillSet:
 # 	[0] ESColumnSpawnMulti -> Frost Left
 # 	Change 1st column to Water orbs, 2nd column to Water, Dark orbs

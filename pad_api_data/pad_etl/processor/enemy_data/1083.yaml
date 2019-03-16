@@ -75,59 +75,59 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 3
 # [2] ESBranchLevel -> ESBranchLevel
-# branch
+# Branch on level = 3, target rnd 4
 # [3] ESEndPath -> ESEndPath
 # end_turn
 # [4] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [6] ESRandomSpawn -> Let's eat grapes together!
 # Condition: When fire, water, wood, light, heal, jammer, poison, mortal poison orbs are on the board
 # Spawn random 3 Dark orbs
 # [7] ESEndPath -> ESEndPath
 # end_turn
 # [8] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 14
 # [9] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [10] ESRandomSpawn -> I'll take one
 # Condition: When dark orbs are on the board
 # Spawn random 1 Heal orbs
 # [11] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b10
 # [12] ESOrbChangeAttack -> No grapes? Let's eat this instead then!
 # Change Heal to Jammer
 # [13] ESRandomSpawn -> Let's eat grapes together!
 # Condition: When fire, water, wood, light, heal, jammer, poison, mortal poison orbs are on the board
 # Spawn random 3 Dark orbs
 # [14] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 18
 # [15] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [16] ESRandomSpawn -> Seed Gun!
 # Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board
 # Spawn random 1 Jammer orbs
 # [17] ESEndPath -> ESEndPath
 # end_turn
 # [18] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 8, target rnd 24
 # [19] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1111
 # [20] ESRandomSpawn -> I'll take another one
 # Condition: When dark orbs are on the board
 # Spawn random 1 Heal orbs
 # [21] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b1000
 # [22] ESOrbChangeAttack -> No grapes? Let's eat this instead then!
 # Change Heal to Jammer
 # [23] ESRandomSpawn -> Let's eat grapes together!
 # Condition: When fire, water, wood, light, heal, jammer, poison, mortal poison orbs are on the board
 # Spawn random 3 Dark orbs
 # [24] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b1110
 # [25] ESRandomSpawn -> Seed Cannon!
 # Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board
 # Spawn random 3 Jammer orbs

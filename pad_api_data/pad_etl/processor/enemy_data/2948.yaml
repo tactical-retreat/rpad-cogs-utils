@@ -86,11 +86,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESDamageShield -> Atmospheric Barrier
 # 	Reduce damage from all sources by 99% for 6 turns
@@ -107,39 +107,39 @@ records:
 # 	[2] ESOrbLock -> Shall we begin?
 # 	Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [7] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 11
 # [8] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [9] ESBoardChangeAttackBits -> Jupiter Genesis
 # Change all orbs to Wood
 # [10] ESEndPath -> ESEndPath
 # end_turn
 # [11] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 15
 # [12] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [13] ESBoardChangeAttackBits -> Jupiter Genesis
 # Change all orbs to Wood
 # [14] ESEndPath -> ESEndPath
 # end_turn
 # [15] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 8, target rnd 19
 # [16] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1111
 # [17] ESBoardChangeAttackBits -> Jupiter Genesis
 # Change all orbs to Wood
 # [18] ESEndPath -> ESEndPath
 # end_turn
 # [19] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 16, target rnd 23
 # [20] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11111
 # [21] ESBoardChangeAttackBits -> Jupiter Genesis
 # Change all orbs to Wood
 # [22] ESEndPath -> ESEndPath
 # end_turn
 # [23] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b11110
 # [24] ESOrbLock -> Catching breath
 # Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [25] ESInactivity -> Catching breath

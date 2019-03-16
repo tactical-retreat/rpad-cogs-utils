@@ -66,25 +66,25 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [4] ESAbsorbThreshold -> Protection of the Nile
 # Absorb damage >= 200000 damage for 999 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
 # [6] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 10
 # [7] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [8] ESInactivity -> I'll wait two turns for you
 # Do nothing
 # [9] ESEndPath -> ESEndPath
 # end_turn
 # [10] ESSetCounterIf -> ESSetCounterIf
-# set_counter_if
+# counter set_counter_if 3 if counter = 0
 # [11] ESCountdown -> ESCountdown
 # countdown
 # [12] ESAttackMultihit -> Goodbye

@@ -93,11 +93,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESPreemptive -> ESPreemptive
-# preemptive
+# Enable preempt if level 1
 # [2] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [3611, 3612], target rnd 5
 # [3] ESBranchCard -> ESBranchCard
-# branch
+# Branch on player_cards HAS [3613], target rnd 6
 # [4] SkillSet:
 # 	Condition: One-time use
 # 	[0] ESStatusShield -> Let me grant your wish
@@ -117,51 +117,51 @@ records:
 # 	[1] ESGravity -> Death Seal
 # 	Player -99% HP
 # [7] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 1, target rnd 11
 # [8] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1
 # [9] ESRandomSpawn -> Black wings overturn the corpses
 # Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board
 # Spawn random 3 Jammer orbs
 # [10] ESEndPath -> ESEndPath
 # end_turn
 # [11] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 2, target rnd 15
 # [12] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11
 # [13] ESRandomSpawn -> Black wings overturn the corpses
 # Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board
 # Spawn random 6 Jammer orbs
 # [14] ESEndPath -> ESEndPath
 # end_turn
 # [15] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 4, target rnd 19
 # [16] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b111
 # [17] ESRandomSpawn -> Black wings overturn the corpses
 # Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board
 # Spawn random 12 Jammer orbs
 # [18] ESEndPath -> ESEndPath
 # end_turn
 # [19] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 8, target rnd 23
 # [20] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b1111
 # [21] ESRandomSpawn -> Black wings overturn the corpses
 # Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board
 # Spawn random 24 Jammer orbs
 # [22] ESEndPath -> ESEndPath
 # end_turn
 # [23] ESBranchFlag -> ESBranchFlag
-# branch
+# Branch on flag & 16, target rnd 27
 # [24] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag SET 0b11111
 # [25] ESBoardChangeAttackBits -> Black wings overturned all the corpses
 # Change all orbs to Jammer
 # [26] ESEndPath -> ESEndPath
 # end_turn
 # [27] ESFlagOperation -> ESFlagOperation
-# flag_operation
+# flag UNSET 0b11111
 # [28] ESGravity -> Death Seal
 # Player -99% HP
 # [29] ESEndPath -> ESEndPath
