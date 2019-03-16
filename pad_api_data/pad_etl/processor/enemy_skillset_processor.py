@@ -492,19 +492,9 @@ def convert(enemy_behavior: List, level: int):
     if behavior_loop is not None:
         loop_start, loop_end = behavior_loop
         loop_size = loop_end - loop_start
-        if loop_size == 1:
-            # Since this isn't a multi-turn looping moveset, try to trim the earlier turns.
-            looping_behavior = turn_data[loop_start]
-            for idx in range(loop_start):
-                check_turn_data = turn_data[idx]
-                for hp, hp_behavior in looping_behavior.items():
-                    if check_turn_data.get(hp, None) == hp_behavior:
-                        check_turn_data.pop(hp)
 
-                for hp, hp_behavior in check_turn_data.items():
-                    skillset.timed_skill_groups.append(TimedSkillGroup(idx + 1, hp, hp_behavior))
-                    looped_behavior.append((hp, hp_behavior))
-        else:
+        # Handle a multi-turn loop
+        if loop_size > 1:
             # exclude any behavior present on all turns of the loop
             common_behaviors = [hp_b for hp_b in turn_data[loop_start].items()]
             for idx in range(loop_start + 1, loop_end):
@@ -517,6 +507,22 @@ def convert(enemy_behavior: List, level: int):
                         skillset.repeating_skill_groups.append(
                             TimedSkillGroup(idx + 1, hp, hp_behavior))
                         looped_behavior.append((hp, hp_behavior))
+
+        # Trim turns before the loop
+        looping_behavior = turn_data[loop_start]
+        for idx in range(loop_start):
+            check_turn_data = turn_data[idx]
+            for hp, hp_behavior in looped_behavior:
+                if check_turn_data.get(hp, None) == hp_behavior:
+                    check_turn_data.pop(hp)
+            for hp, hp_behavior in looping_behavior.items():
+                if check_turn_data.get(hp, None) == hp_behavior:
+                    check_turn_data.pop(hp)
+
+            for hp, hp_behavior in check_turn_data.items():
+                skillset.timed_skill_groups.append(TimedSkillGroup(idx + 1, hp, hp_behavior))
+                # looped_behavior.append((hp, hp_behavior))
+
 
     # Simulate enemies being defeated
     if has_enemy_remaining_branch:
