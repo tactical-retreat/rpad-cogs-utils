@@ -2,7 +2,7 @@
 Contains code to convert a list of enemy behavior logic into a flattened structure
 called a ProcessedSkillset.
 """
-
+import collections
 import copy
 
 from .enemy_skillset import *
@@ -569,6 +569,72 @@ def extract_enemy_remaining(ec_ctx: Context, hp_checkpoints: Set[int], behaviors
 
     return results
 
+
+def extract_timed_actions(looped_behavior: List[Any], turn_data: List[Any], loop_start: int) -> List[TimedSkillGroup]:
+    # TODO: This seems wrong? it only compares to the first turn of the loop and loop_size could be > 1
+    # Trim turns before the loop
+    results = []
+    looping_behavior = turn_data[loop_start]
+
+    for idx in range(loop_start):
+        check_turn_data = turn_data[idx]
+        for hp, hp_behavior in looped_behavior:
+            if check_turn_data.get(hp, None) == hp_behavior:
+                check_turn_data.pop(hp)
+        for hp, hp_behavior in looping_behavior.items():
+            if check_turn_data.get(hp, None) == hp_behavior:
+                check_turn_data.pop(hp)
+
+        for hp, hp_behavior in check_turn_data.items():
+            results.append(TimedSkillGroup(idx + 1, hp, hp_behavior))
+
+    return results
+
+
+def extract_timed_actions_multi(looped_behavior: List[Any], turn_data: List[Any], loop_start: int, loop_end: int) -> List[TimedSkillGroup]:
+    # This is an alternative to the above which uses all the turns of the loop, but it doesn't seem to have any
+    # practical effect
+    results = []
+    loop_hp_to_actions = collections.defaultdict(list)
+
+    for turn in turn_data[loop_start:loop_end]:
+        for hp, hp_behavior in turn.items():
+            loop_hp_to_actions[hp].append(hp_behavior)
+    for idx in range(loop_start):
+        check_turn_data = turn_data[idx]
+        for hp, hp_behavior in looped_behavior:
+            if check_turn_data.get(hp, None) == hp_behavior:
+                check_turn_data.pop(hp)
+        for hp, hp_behavior_list in loop_hp_to_actions.items():
+            if check_turn_data.get(hp, None) in hp_behavior_list:
+                check_turn_data.pop(hp)
+
+        for hp, hp_behavior in check_turn_data.items():
+            results.append(TimedSkillGroup(idx + 1, hp, hp_behavior))
+            # looped_behavior.append((hp, hp_behavior))
+
+    return results
+
+
+def extract_hp_groups(ctx: Context, hp_checkpoints: Set[int], behaviors: List[Any], looped_behavior: List[Any]) -> Tuple[List[HpSkillGroup], List[Any]]:
+    results = []
+    # Simulate HP decreasing
+    globally_seen_behavior = []
+    hp_ctx = ctx.clone()
+    for checkpoint in sorted(hp_checkpoints, reverse=True):
+        locally_seen_behavior = []
+        hp_ctx.hp = checkpoint
+        cur_loop = loop_through(hp_ctx, behaviors)
+        while cur_loop not in globally_seen_behavior and cur_loop not in locally_seen_behavior:
+            # exclude behavior already included in a repeat loop
+            if (checkpoint, cur_loop) not in looped_behavior:
+                results.append(HpSkillGroup(checkpoint, cur_loop))
+            globally_seen_behavior.append(cur_loop)
+            locally_seen_behavior.append(cur_loop)
+            cur_loop = loop_through(hp_ctx, behaviors)
+
+    return results, globally_seen_behavior
+
 def convert(enemy_behavior: List, level: int):
     skillset = ProcessedSkillset(level)
 
@@ -603,43 +669,21 @@ def convert(enemy_behavior: List, level: int):
             looped_behavior.extend(repeating_looped_behavior)
             skillset.repeating_skill_groups.extend(repeating_skill_groups)
 
-        # TODO: This seems wrong? it only compares to the first turn of the loop and loop_size could be >1
-        # Trim turns before the loop
-        looping_behavior = turn_data[loop_start]
-        for idx in range(loop_start):
-            check_turn_data = turn_data[idx]
-            for hp, hp_behavior in looped_behavior:
-                if check_turn_data.get(hp, None) == hp_behavior:
-                    check_turn_data.pop(hp)
-            for hp, hp_behavior in looping_behavior.items():
-                if check_turn_data.get(hp, None) == hp_behavior:
-                    check_turn_data.pop(hp)
+        timed_skills = extract_timed_actions(looped_behavior, turn_data, loop_start)
+        # Disabled, seems no better than above
+        # timed_skills =  extract_timed_actions_multi(looped_behavior, turn_data, loop_start, loop_end)
 
-            for hp, hp_behavior in check_turn_data.items():
-                skillset.timed_skill_groups.append(TimedSkillGroup(idx + 1, hp, hp_behavior))
-                # looped_behavior.append((hp, hp_behavior))
+        skillset.timed_skill_groups.extend(timed_skills)
 
     # Simulate HP decreasing
-    globally_seen_behavior = []
-    hp_ctx = ctx.clone()
-    for checkpoint in sorted(hp_checkpoints, reverse=True):
-        locally_seen_behavior = []
-        hp_ctx.hp = checkpoint
-        cur_loop = loop_through(hp_ctx, behaviors)
-        while cur_loop not in globally_seen_behavior and cur_loop not in locally_seen_behavior:
-            # exclude behavior already included in a repeat loop
-            if (checkpoint, cur_loop) not in looped_behavior:
-                skillset.hp_skill_groups.append(HpSkillGroup(checkpoint, cur_loop))
-            globally_seen_behavior.append(cur_loop)
-            locally_seen_behavior.append(cur_loop)
-            cur_loop = loop_through(hp_ctx, behaviors)
+    hp_skill_groups, globally_seen_behavior = extract_hp_groups(ctx.clone(), hp_checkpoints, behaviors, looped_behavior)
+    skillset.hp_skill_groups.extend(hp_skill_groups)
 
     # Simulate enemies being defeated
     if has_enemy_remaining_branch:
         # TODO: The fact that this takes globally_seen_behavior is suspicious to me
         enemy_skill_groups = extract_enemy_remaining(ctx.clone(), hp_checkpoints, behaviors, globally_seen_behavior)
         skillset.enemycount_skill_groups.extend(enemy_skill_groups)
-
 
     return clean_skillset(skillset)
 
