@@ -6,7 +6,7 @@ called a ProcessedSkillset.
 import copy
 
 from .enemy_skillset import *
-from typing import List, Any
+from typing import List, Any, Set, Tuple
 
 
 class StandardSkillGroup(object):
@@ -434,25 +434,7 @@ def extract_preemptives(ctx: Context, behaviors: List[Any]):
         return original_ctx, None
 
 
-def convert(enemy_behavior: List, level: int):
-    skillset = ProcessedSkillset(level)
-
-    # Behavior is 1-indexed, so stick a fake row in to start
-    behaviors = [None] + list(enemy_behavior)
-
-    base_abilities, hp_checkpoints, card_checkpoints, has_enemy_remaining_branch = info_from_behaviors(
-        behaviors)
-    skillset.base_abilities = base_abilities
-
-    ctx = Context(level)
-    ctx, preemptives = extract_preemptives(ctx, behaviors)
-    if ctx is None:
-        # Some monsters have no skillset at all
-        return skillset
-
-    if preemptives is not None:
-        skillset.preemptives = preemptives
-
+def extract_turn_behaviors(ctx: Context, behaviors: List, hp_checkpoints: Set[int]):
     # For the first 20 turns, compute actions at every HP checkpoint
     turn_data = []
     for idx in range(0, 20):
@@ -475,12 +457,10 @@ def convert(enemy_behavior: List, level: int):
         ctx = next_ctx
         ctx.turn_event()
 
-    # for i_idx, check_data in enumerate(turn_data):
-    #     for hp, hp_b in check_data.items():
-    #         print('TURN {} HP {}'.format(i_idx, hp))
-    #         for b in hp_b:
-    #             print(b.name)
+    return turn_data, ctx
 
+
+def extract_loop_indexes(turn_data: List) -> Tuple[int, int]:
     # Loop over every turn
     behavior_loop = None
     for i_idx, check_data in enumerate(turn_data):
@@ -520,6 +500,97 @@ def convert(enemy_behavior: List, level: int):
             behavior_loop = possible_loops[0]
             break
 
+    return behavior_loop
+
+
+def extract_repeating_skills(turn_data: List, loop_start: int, loop_end: int) -> Tuple[List, List[TimedSkillGroup]]:
+    looped_behavior = []  # keep track of behaviour added to loops
+    repeating_skill_groups = []
+
+    # exclude any behavior present on all turns of the loop
+    common_behaviors = [hp_b for hp_b in turn_data[loop_start].items()]
+    for idx in range(loop_start + 1, loop_end):
+        for hp_b in common_behaviors.copy():
+            if hp_b not in turn_data[idx].items():
+                common_behaviors.remove(hp_b)
+    for idx in range(loop_start, loop_end):
+        for hp, hp_behavior in turn_data[idx].items():
+            if (hp, hp_behavior) not in common_behaviors:
+                repeating_skill_groups.append(TimedSkillGroup(idx + 1, hp, hp_behavior))
+                looped_behavior.append((hp, hp_behavior))
+
+    return looped_behavior, repeating_skill_groups
+
+
+def extract_enemy_remaining(ec_ctx: Context, hp_checkpoints: Set[int], behaviors: List[Any], globally_seen_behavior: List[Any]) -> List[EnemyCountSkillGroup]:
+    results = []
+    ec_data = {}
+    for ecount in [999] + list(range(6, 0, -1)):
+        ec_ctx.enemies = ecount
+        current_ec_data = {}
+        for checkpoint in sorted(hp_checkpoints, reverse=True):
+            ec_ctx.hp = checkpoint
+            cur_loop = loop_through(ec_ctx, behaviors)
+
+            if cur_loop in globally_seen_behavior:
+                continue
+
+            current_ec_data[checkpoint] = cur_loop
+
+            # # Check for the first action being one-time. Kind of a hacky special case for loops.
+            # follow_loop = loop_through(ec_ctx, behaviors)
+            # if follow_loop != cur_loop:
+            #     ec_data[ecount].extend(follow_loop)
+
+        if all([x != current_ec_data for ec, x in ec_data.items()]):
+            ec_data[ecount] = current_ec_data
+
+    # prune actions
+    for ecount, loop in ec_data.items():
+        if loop is None:
+            continue
+        # remove skillsets already seen from decreasing HP
+        for hp, b_set in loop.copy().items():
+            if b_set in globally_seen_behavior:
+                loop.pop(hp)
+        # remove skillsets found on more than 1 turn
+        for comp_ecount, comp_loop in ec_data.items():
+            if comp_loop is None:
+                continue
+            if ecount != comp_ecount and loop == comp_loop:
+                ec_data[ecount] = None
+                ec_data[comp_ecount] = None
+
+    for ecount, loop in ec_data.items():
+        if loop is None:
+            continue
+        for hp, b_set in loop.items():
+            results.append(EnemyCountSkillGroup(ecount, hp, b_set))
+
+    return results
+
+def convert(enemy_behavior: List, level: int):
+    skillset = ProcessedSkillset(level)
+
+    # Behavior is 1-indexed, so stick a fake row in to start
+    behaviors = [None] + list(enemy_behavior)
+
+    base_abilities, hp_checkpoints, card_checkpoints, has_enemy_remaining_branch = info_from_behaviors(
+        behaviors)
+    skillset.base_abilities = base_abilities
+
+    ctx = Context(level)
+    ctx, preemptives = extract_preemptives(ctx, behaviors)
+    if ctx is None:
+        # Some monsters have no skillset at all
+        return skillset
+
+    if preemptives is not None:
+        skillset.preemptives = preemptives
+
+    turn_data, ctx = extract_turn_behaviors(ctx, behaviors, hp_checkpoints)
+    behavior_loop = extract_loop_indexes(turn_data)
+
     # Process loops
     looped_behavior = []  # keep track of behaviour added to loops
     if behavior_loop is not None:
@@ -528,19 +599,11 @@ def convert(enemy_behavior: List, level: int):
 
         # Handle a multi-turn loop
         if loop_size > 1:
-            # exclude any behavior present on all turns of the loop
-            common_behaviors = [hp_b for hp_b in turn_data[loop_start].items()]
-            for idx in range(loop_start + 1, loop_end):
-                for hp_b in common_behaviors.copy():
-                    if hp_b not in turn_data[idx].items():
-                        common_behaviors.remove(hp_b)
-            for idx in range(loop_start, loop_end):
-                for hp, hp_behavior in turn_data[idx].items():
-                    if (hp, hp_behavior) not in common_behaviors:
-                        skillset.repeating_skill_groups.append(
-                            TimedSkillGroup(idx + 1, hp, hp_behavior))
-                        looped_behavior.append((hp, hp_behavior))
+            repeating_looped_behavior, repeating_skill_groups = extract_repeating_skills(turn_data, loop_start, loop_end)
+            looped_behavior.extend(repeating_looped_behavior)
+            skillset.repeating_skill_groups.extend(repeating_skill_groups)
 
+        # TODO: This seems wrong? it only compares to the first turn of the loop and loop_size could be >1
         # Trim turns before the loop
         looping_behavior = turn_data[loop_start]
         for idx in range(loop_start):
@@ -573,51 +636,10 @@ def convert(enemy_behavior: List, level: int):
 
     # Simulate enemies being defeated
     if has_enemy_remaining_branch:
-        ec_ctx = ctx.clone()
-        ec_data = {}
-        for ecount in [999] + list(range(6, 0, -1)):
-            ec_ctx.enemies = ecount
-            current_ec_data = {}
-            for checkpoint in sorted(hp_checkpoints, reverse=True):
-                ec_ctx.hp = checkpoint
-                cur_loop = loop_through(ec_ctx, behaviors)
+        # TODO: The fact that this takes globally_seen_behavior is suspicious to me
+        enemy_skill_groups = extract_enemy_remaining(ctx.clone(), hp_checkpoints, behaviors, globally_seen_behavior)
+        skillset.enemycount_skill_groups.extend(enemy_skill_groups)
 
-                if cur_loop in globally_seen_behavior:
-                    continue
-
-                current_ec_data[checkpoint] = cur_loop
-
-                # # Check for the first action being one-time. Kind of a hacky special case for loops.
-                # follow_loop = loop_through(ec_ctx, behaviors)
-                # if follow_loop != cur_loop:
-                #     ec_data[ecount].extend(follow_loop)
-
-            if all([x != current_ec_data for ec, x in ec_data.items()]):
-                ec_data[ecount] = current_ec_data
-
-
-        # prune actions
-        for ecount, loop in ec_data.items():
-            if loop is None:
-                continue
-            # remove skillsets already seen from decreasing HP
-            for hp, b_set in loop.copy().items():
-                if b_set in globally_seen_behavior:
-                    loop.pop(hp)
-            # remove skillsets found on more than 1 turn
-            for comp_ecount, comp_loop in ec_data.items():
-                if comp_loop is None:
-                    continue
-                if ecount != comp_ecount and loop == comp_loop:
-                    ec_data[ecount] = None
-                    ec_data[comp_ecount] = None
-
-        for ecount, loop in ec_data.items():
-            if loop is None:
-                continue
-            for hp, b_set in loop.items():
-                skillset.enemycount_skill_groups.append(
-                    EnemyCountSkillGroup(ecount, hp, b_set))
 
     return clean_skillset(skillset)
 
