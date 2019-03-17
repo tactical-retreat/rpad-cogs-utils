@@ -265,7 +265,7 @@ def dump_summary_to_file(card: BookCard, enemy_summary: EnemySummary, enemy_beha
             f.write('{}\n'.format(yaml.dump(listing, default_flow_style=False)))
 
         f.write('{}\n'.format(_header('Card Unknowns')))
-        for i in ['09'] + list(range(51, 57)):
+        for i in ['09'] + list(range(52, 55)):
             field = 'unknown_0{}'.format(i)
             value = getattr(card, field)
             f.write('# [{}] {} - {:8b}\n'.format(i, value, value))

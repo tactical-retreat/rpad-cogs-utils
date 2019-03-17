@@ -39,7 +39,9 @@ def simple_dump_obj(o):
     if isinstance(o, ESSkillSet):
         msg = 'SkillSet:'
         if o.condition.description:
-            msg += '\n\tCondition: {}'.format(o.condition.description)
+            msg += '\n\tCondition: {} (ai:{} rnd:{})'.format(o.condition.description, o.condition.ai, o.condition.rnd)
+        if o.condition.one_time:
+            msg += ' (one-time: {})'.format(o.condition.one_time)
         for idx, behavior in enumerate(o.skill_list):
             msg += '\n\t[{}] {}({}:{}) -> {}\n\t{}'.format(
                 idx, type(behavior).__name__, behavior.type, behavior.enemy_skill_id, behavior.name, behavior.description)
@@ -48,7 +50,9 @@ def simple_dump_obj(o):
         msg = '{}({}:{}) -> {}'.format(type(o).__name__, o.type, o.enemy_skill_id, o.name)
         if hasattr(o, 'condition'):
             if o.condition.description:
-                msg += '\nCondition: {}'.format(o.condition.description)
+                msg += '\n\tCondition: {} (ai:{} rnd:{})'.format(o.condition.description, o.condition.ai, o.condition.rnd)
+                if o.condition.one_time:
+                    msg += ' (one-time: {})'.format(o.condition.one_time)
         msg += '\n{}'.format(o.description)
         return msg
 
