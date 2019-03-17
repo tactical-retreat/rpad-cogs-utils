@@ -38,6 +38,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 999 turns
+  desc_jp: Increase damage to 200% for the next 999 turns
+  max_atk_pct: null
+  name_en: Blood of Iga
+  name_jp: Blood of Iga
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -49,24 +67,6 @@ records:
   max_atk_pct: 120
   name_en: Slash
   name_jp: Slash
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Increase damage to 200% for the next 999 turns
-  desc_jp: Increase damage to 200% for the next 999 turns
-  max_atk_pct: null
-  name_en: Blood of Iga
-  name_jp: Blood of Iga
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -103,8 +103,8 @@ records:
 # Voids status ailments for 3 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
-# [6] ESAttackUp -> Blood of Iga
-# Condition: When < 50% hp
+# [6] ESAttackUPRemainingEnemies -> Blood of Iga
+# Condition: When < 50% hp, when <= 1 enemies remain
 # Increase damage to 200% for the next 999 turns
 # [7] ESBranchHP -> ESBranchHP
 # Branch on hp < 50, target rnd 13

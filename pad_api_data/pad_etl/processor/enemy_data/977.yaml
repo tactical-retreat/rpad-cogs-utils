@@ -65,6 +65,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 150% for the next 5 turns
+  desc_jp: Increase damage to 150% for the next 5 turns
+  max_atk_pct: null
+  name_en: Triple Combination
+  name_jp: Triple Combination
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -99,8 +117,8 @@ records:
 # end_turn
 # [8] ESBranchHP -> ESBranchHP
 # Branch on hp > 50, target rnd 12
-# [9] ESAttackUp -> Triple Combination
-# Condition: When < 50% hp
+# [9] ESAttackUPRemainingEnemies -> Triple Combination
+# Condition: When < 50% hp, when <= 1 enemies remain
 # Increase damage to 150% for the next 5 turns
 # [10] ESAttackMultihit -> Cross Cutlass
 # Enemy action

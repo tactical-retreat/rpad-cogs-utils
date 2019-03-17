@@ -56,6 +56,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 99 turns
+  desc_jp: Increase damage to 200% for the next 99 turns
+  max_atk_pct: null
+  name_en: Flame Up
+  name_jp: Flame Up
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -86,8 +104,8 @@ records:
 # Branch on counter > 4, target rnd 8
 # [4] ESSetCounter -> ESSetCounter
 # counter + 1
-# [5] ESAttackUp -> Flame Up
-# Condition: When < 20% hp , one-time use
+# [5] ESAttackUPRemainingEnemies -> Flame Up
+# Condition: When < 20% hp , one-time use, when <= 1 enemies remain
 # Increase damage to 200% for the next 99 turns
 # [6] ESBombRandomSpawn -> Explosion Breath
 # Spawn random 4 Bomb orbs

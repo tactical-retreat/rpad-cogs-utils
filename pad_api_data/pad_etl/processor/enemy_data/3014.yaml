@@ -40,8 +40,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 7
-  name_jp: Turn 7
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -71,24 +71,6 @@ records:
   name_jp: Execute below actions in order repeatedly
   one_time: false
   record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: 'Show message: This... is not... the end!|Limiters have been released'
-  desc_jp: 'Show message: This... is not... the end!|Limiters have been released'
-  max_atk_pct: null
-  name_en: Black Robot Transformation
-  name_jp: Black Robot Transformation
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 0
-- !SkillRecord
-  desc_en: Change all orbs to Fire, Deal 1000% damage
-  desc_jp: Change all orbs to Fire, Deal 1000% damage
-  max_atk_pct: 1000
-  name_en: Burning Destruction Fist
-  name_jp: Burning Destruction Fist
-  one_time: false
-  record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
   desc_en: 'Show message: This... is not... the end!|Limiters have been released'
@@ -144,6 +126,24 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
+- !SkillRecord
+  desc_en: 'Show message: This... is not... the end!|Limiters have been released'
+  desc_jp: 'Show message: This... is not... the end!|Limiters have been released'
+  max_atk_pct: null
+  name_en: Black Robot Transformation
+  name_jp: Black Robot Transformation
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: Change all orbs to Fire, Deal 1000% damage
+  desc_jp: Change all orbs to Fire, Deal 1000% damage
+  max_atk_pct: 1000
+  name_en: Burning Destruction Fist
+  name_jp: Burning Destruction Fist
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -178,7 +178,8 @@ records:
 # Branch on flag & 4, target rnd 15
 # [12] ESFlagOperation -> ESFlagOperation
 # flag SET 0b111
-# [13] ESAttackUp -> 1
+# [13] ESAttackUPRemainingEnemies -> 1
+# Condition: when <= 1 enemies remain
 # Increase damage to 1000% for the next 999 turns
 # [14] ESInactivity -> 1
 # Do nothing

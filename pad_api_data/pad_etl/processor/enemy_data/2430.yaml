@@ -53,30 +53,30 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Increase damage to 200% for the next 999 turns
-  desc_jp: Increase damage to 200% for the next 999 turns
-  max_atk_pct: null
-  name_en: Battle Soul
-  name_jp: Battle Soul
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 3
-  name_jp: Turn 3
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Spawn random 4 Water orbs, Deal 100% damage
   desc_jp: Spawn random 4 Water orbs, Deal 100% damage
   max_atk_pct: 100
   name_en: Cold Horn
   name_jp: Cold Horn
   one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 999 turns
+  desc_jp: Increase damage to 200% for the next 999 turns
+  max_atk_pct: null
+  name_en: Battle Soul
+  name_jp: Battle Soul
+  one_time: false
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -151,7 +151,8 @@ records:
 # Bind 1 random cards for 3 turns
 # [7] ESEndPath -> ESEndPath
 # end_turn
-# [8] ESAttackUp -> Battle Soul
+# [8] ESAttackUPRemainingEnemies -> Battle Soul
+# Condition: when <= 1 enemies remain
 # Increase damage to 200% for the next 999 turns
 # [9] ESBranchHP -> ESBranchHP
 # Branch on hp < 50, target rnd 15

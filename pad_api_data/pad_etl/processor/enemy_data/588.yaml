@@ -20,20 +20,11 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute below actions in order repeatedly
-  name_jp: Execute below actions in order repeatedly
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 125% damage (5 hits, 25% each)
-  desc_jp: Deal 125% damage (5 hits, 25% each)
-  max_atk_pct: 125
-  name_en: Wolf Combo
-  name_jp: Wolf Combo
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 70
 - !SkillRecord
   desc_en: Increase damage to 300% for the next 10 turns
   desc_jp: Increase damage to 300% for the next 10 turns
@@ -44,68 +35,14 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 125% damage (5 hits, 25% each)
-  desc_jp: Deal 125% damage (5 hits, 25% each)
-  max_atk_pct: 125
-  name_en: Wolf Combo
-  name_jp: Wolf Combo
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 70
+  name_jp: HP <= 70
   one_time: false
-  record_type_name: ACTION
-  usage_pct: 70
-- !SkillRecord
-  desc_en: Deal 125% damage (5 hits, 25% each)
-  desc_jp: Deal 125% damage (5 hits, 25% each)
-  max_atk_pct: 125
-  name_en: Wolf Combo
-  name_jp: Wolf Combo
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 70
-- !SkillRecord
-  desc_en: Deal 125% damage (5 hits, 25% each)
-  desc_jp: Deal 125% damage (5 hits, 25% each)
-  max_atk_pct: 125
-  name_en: Wolf Combo
-  name_jp: Wolf Combo
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 70
-- !SkillRecord
-  desc_en: Deal 125% damage (5 hits, 25% each)
-  desc_jp: Deal 125% damage (5 hits, 25% each)
-  max_atk_pct: 125
-  name_en: Wolf Combo
-  name_jp: Wolf Combo
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 70
-- !SkillRecord
-  desc_en: Deal 125% damage (5 hits, 25% each)
-  desc_jp: Deal 125% damage (5 hits, 25% each)
-  max_atk_pct: 125
-  name_en: Wolf Combo
-  name_jp: Wolf Combo
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 70
-- !SkillRecord
-  desc_en: Deal 125% damage (5 hits, 25% each)
-  desc_jp: Deal 125% damage (5 hits, 25% each)
-  max_atk_pct: 125
-  name_en: Wolf Combo
-  name_jp: Wolf Combo
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 70
-- !SkillRecord
-  desc_en: Deal 125% damage (5 hits, 25% each)
-  desc_jp: Deal 125% damage (5 hits, 25% each)
-  max_atk_pct: 125
-  name_en: Wolf Combo
-  name_jp: Wolf Combo
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 70
+  record_type_name: DIVIDER
+  usage_pct: 100
 - !SkillRecord
   desc_en: Deal 125% damage (5 hits, 25% each)
   desc_jp: Deal 125% damage (5 hits, 25% each)
@@ -123,7 +60,8 @@ records:
 # Branch on level > 5, target rnd 3
 # [2] ESEndPath -> ESEndPath
 # end_turn
-# [3] ESAttackUp -> Howl of Anger
+# [3] ESAttackUPRemainingEnemies -> Howl of Anger
+# Condition: when <= 1 enemies remain
 # Increase damage to 300% for the next 10 turns
 # [4] ESAttackMultihit -> Wolf Combo
 # Condition: 70% chance when < 70% hp

@@ -47,17 +47,17 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: When 6 enemy remains
-  name_jp: When 6 enemy remains
+  name_en: When 2 enemy remains
+  name_jp: When 2 enemy remains
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change all orbs to Wood, Light, Dark, Heal, Deal 120% damage
-  desc_jp: Change all orbs to Wood, Light, Dark, Heal, Deal 120% damage
-  max_atk_pct: 120
-  name_en: Wind Enclosure
-  name_jp: Wind Enclosure
+  desc_en: Spawn random 6 Wood orbs, Deal 110% damage
+  desc_jp: Spawn random 6 Wood orbs, Deal 110% damage
+  max_atk_pct: 110
+  name_en: Double Burying
+  name_jp: Double Burying
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -65,17 +65,19 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 15
-  name_jp: HP <= 15
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change all orbs to Wood, Light, Dark, Heal, Deal 120% damage
-  desc_jp: Change all orbs to Wood, Light, Dark, Heal, Deal 120% damage
-  max_atk_pct: 120
-  name_en: Wind Enclosure
-  name_jp: Wind Enclosure
+  desc_en: Bind 6 random cards for 1 turns + Increase damage to 200% for the next
+    99 turns
+  desc_jp: Bind 6 random cards for 1 turns + Increase damage to 200% for the next
+    99 turns
+  max_atk_pct: null
+  name_en: All Restrain + Serene Zephyr
+  name_jp: All Restrain + Serene Zephyr
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -216,7 +218,7 @@ records:
 # [12] ESBranchHP -> ESBranchHP
 # Branch on hp < 15, target rnd 25
 # [13] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
-# Branch on remaining enemies = 1, target rnd 21
+# Branch on remaining enemies <= 1, target rnd 21
 # [14] ESSetCounter -> ESSetCounter
 # counter + 1
 # [15] ESBranchCounter -> ESBranchCounter
@@ -242,7 +244,7 @@ records:
 # [23] SkillSet:
 # 	[0] ESBindRandom -> All Restrain
 # 	Bind 6 random cards for 1 turns
-# 	[1] ESAttackUp -> Serene Zephyr
+# 	[1] ESAttackUPRemainingEnemies -> Serene Zephyr
 # 	Increase damage to 200% for the next 99 turns
 # [24] ESEndPath -> ESEndPath
 # end_turn
@@ -253,7 +255,7 @@ records:
 # [27] ESSetCounter -> ESSetCounter
 # counter = 0
 # [28] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
-# Branch on remaining enemies = 2, target rnd 30
+# Branch on remaining enemies <= 2, target rnd 30
 # [29] ESBoardChangeAttackBits -> Wind Enclosure
 # Change all orbs to Wood, Light, Dark, Heal
 # [30] ESRandomSpawn -> Double Burying

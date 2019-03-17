@@ -38,6 +38,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 300% for the next 999 turns
+  desc_jp: Increase damage to 300% for the next 999 turns
+  max_atk_pct: null
+  name_en: Hell Crown
+  name_jp: Hell Crown
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -124,24 +142,6 @@ records:
   name_en: Black Qualm
   name_jp: Black Qualm
   one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 16
-  name_jp: HP <= 16
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Increase damage to 300% for the next 999 turns
-  desc_jp: Increase damage to 300% for the next 999 turns
-  max_atk_pct: null
-  name_en: Hell Crown
-  name_jp: Hell Crown
-  one_time: false
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -192,6 +192,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 300% for the next 999 turns
+  desc_jp: Increase damage to 300% for the next 999 turns
+  max_atk_pct: null
+  name_en: Hell Crown
+  name_jp: Hell Crown
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -278,24 +296,6 @@ records:
   name_en: Black Qualm
   name_jp: Black Qualm
   one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 16
-  name_jp: HP <= 16
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Increase damage to 300% for the next 999 turns
-  desc_jp: Increase damage to 300% for the next 999 turns
-  max_atk_pct: null
-  name_en: Hell Crown
-  name_jp: Hell Crown
-  one_time: false
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -361,8 +361,8 @@ records:
 # [11] ESDebuffMovetime -> Black Qualm
 # Condition: When < 33% hp , one-time use
 # Movetime 50% for 99 turns
-# [12] ESAttackUp -> Hell Crown
-# Condition: When < 16% hp
+# [12] ESAttackUPRemainingEnemies -> Hell Crown
+# Condition: When < 16% hp, when <= 1 enemies remain
 # Increase damage to 300% for the next 999 turns
 # [13] SkillSet:
 # 	Condition: 33% chance when < 50% hp

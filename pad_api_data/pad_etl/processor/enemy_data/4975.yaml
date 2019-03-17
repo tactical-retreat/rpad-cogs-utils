@@ -38,8 +38,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -160,8 +160,8 @@ records:
 # Branch on hp < 20, target rnd 14
 # [4] ESBranchHP -> ESBranchHP
 # Branch on hp < 50, target rnd 10
-# [5] ESAttackUp -> My mind is concentrating...
-# Condition: One-time use
+# [5] ESAttackUPRemainingEnemies -> My mind is concentrating...
+# Condition: One-time use, when <= 1 enemies remain
 # Increase damage to 200% for the next 1 turns
 # [6] ESRandomSpawn -> Are you here to kill me?
 # Condition: 33% chance & when Fire, Water, Wood, Light, Dark, Heal, Poison, Mortal Poison orbs are on the board
@@ -179,7 +179,7 @@ records:
 # [11] ESFlagOperation -> ESFlagOperation
 # flag SET 0b1
 # [12] SkillSet:
-# 	[0] ESAttackUp -> This is secret skill!
+# 	[0] ESAttackUPRemainingEnemies -> This is secret skill!
 # 	Increase damage to 150% for the next 5 turns
 # 	[1] ESAbsorbCombo -> Haha! I am victorious!
 # 	Absorb combo <= 5 damage for 5 turns

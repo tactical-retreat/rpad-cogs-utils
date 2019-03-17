@@ -33,6 +33,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 150% for the next 999 turns
+  desc_jp: Increase damage to 150% for the next 999 turns
+  max_atk_pct: null
+  name_en: No, it will only make me more powerful.
+  name_jp: No, it will only make me more powerful.
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: Execute below actions in order repeatedly
   name_jp: Execute below actions in order repeatedly
   one_time: false
@@ -101,8 +119,8 @@ records:
 # 	Delay active skills by 2~4 turns
 # [5] ESEndPath -> ESEndPath
 # end_turn
-# [6] ESAttackUp -> No, it will only make me more powerful.
-# Condition: When < 50% hp , one-time use
+# [6] ESAttackUPRemainingEnemies -> No, it will only make me more powerful.
+# Condition: When < 50% hp , one-time use, when <= 1 enemies remain
 # Increase damage to 150% for the next 999 turns
 # [7] ESDamageShield -> Black Bayard, Shield Form
 # Condition: 30% chance

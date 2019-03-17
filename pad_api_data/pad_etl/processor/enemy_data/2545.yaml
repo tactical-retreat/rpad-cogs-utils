@@ -35,30 +35,30 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Increase damage to 200% for the next 999 turns
-  desc_jp: Increase damage to 200% for the next 999 turns
-  max_atk_pct: null
-  name_en: Curse you!
-  name_jp: Curse you!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 3
-  name_jp: Turn 3
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Bind 1 random cards for 3 turns
   desc_jp: Bind 1 random cards for 3 turns
   max_atk_pct: null
   name_en: Boiling
   name_jp: Boiling
   one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 999 turns
+  desc_jp: Increase damage to 200% for the next 999 turns
+  max_atk_pct: null
+  name_en: Curse you!
+  name_jp: Curse you!
+  one_time: false
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -106,7 +106,8 @@ records:
 # Blind all orbs on the board
 # [7] ESEndPath -> ESEndPath
 # end_turn
-# [8] ESAttackUp -> Curse you!
+# [8] ESAttackUPRemainingEnemies -> Curse you!
+# Condition: when <= 1 enemies remain
 # Increase damage to 200% for the next 999 turns
 # [9] ESBranchFlag -> ESBranchFlag
 # Branch on flag & 2, target rnd 12

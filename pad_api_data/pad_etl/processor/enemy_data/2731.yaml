@@ -34,6 +34,24 @@ records:
   one_time: true
   record_type_name: ACTION
   usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 99 turns
+  desc_jp: Increase damage to 200% for the next 99 turns
+  max_atk_pct: null
+  name_en: Takkun Boost
+  name_jp: Takkun Boost
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -47,6 +65,6 @@ records:
 # [4] ESDebuffMovetime -> Spacetime Phone
 # Condition: One-time use
 # Movetime -1s for 5 turns
-# [5] ESAttackUp -> Takkun Boost
-# Condition: When < 50% hp , one-time use
+# [5] ESAttackUPRemainingEnemies -> Takkun Boost
+# Condition: When < 50% hp , one-time use, when <= 1 enemies remain
 # Increase damage to 200% for the next 99 turns

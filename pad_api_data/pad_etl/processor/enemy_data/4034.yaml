@@ -29,6 +29,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 1000% for the next 999 turns
+  desc_jp: Increase damage to 1000% for the next 999 turns
+  max_atk_pct: null
+  name_en: Disappear from my sight.
+  name_jp: Disappear from my sight.
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -180,15 +198,6 @@ records:
   name_en: Nuclear Fusion
   name_jp: Nuclear Fusion
   one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Increase damage to 1000% for the next 999 turns
-  desc_jp: Increase damage to 1000% for the next 999 turns
-  max_atk_pct: null
-  name_en: Disappear from my sight.
-  name_jp: Disappear from my sight.
-  one_time: true
   record_type_name: ACTION
   usage_pct: 100
 
@@ -212,6 +221,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 1000% for the next 999 turns
+  desc_jp: Increase damage to 1000% for the next 999 turns
+  max_atk_pct: null
+  name_en: Disappear from my sight.
+  name_jp: Disappear from my sight.
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -365,15 +392,6 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: Increase damage to 1000% for the next 999 turns
-  desc_jp: Increase damage to 1000% for the next 999 turns
-  max_atk_pct: null
-  name_en: Disappear from my sight.
-  name_jp: Disappear from my sight.
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Raw Behavior
@@ -393,8 +411,8 @@ records:
 # [5] ESVoidShield -> How sad
 # Condition: When < 80% hp , one-time use
 # Void damage >= 500000 for 3 turns
-# [6] ESAttackUp -> Disappear from my sight.
-# Condition: When < 30% hp , one-time use
+# [6] ESAttackUPRemainingEnemies -> Disappear from my sight.
+# Condition: When < 30% hp , one-time use, when <= 1 enemies remain
 # Increase damage to 1000% for the next 999 turns
 # [7] ESBoardChangeAttackBits -> Nuclear Fusion
 # Condition: When < 30% hp

@@ -38,6 +38,33 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 125% for the next 5 turns
+  desc_jp: Increase damage to 125% for the next 5 turns
+  max_atk_pct: null
+  name_en: Attack Stance
+  name_jp: Attack Stance
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 30
+- !SkillRecord
+  desc_en: Spawn random 4 Mortal Poison orbs, Deal 150% damage
+  desc_jp: Spawn random 4 Mortal Poison orbs, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Dark Spark
+  name_jp: Dark Spark
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -52,24 +79,6 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Increase damage to 125% for the next 5 turns
-  desc_jp: Increase damage to 125% for the next 5 turns
-  max_atk_pct: null
-  name_en: Attack Stance
-  name_jp: Attack Stance
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 30
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
@@ -109,8 +118,8 @@ records:
 # Spawn random 4 Mortal Poison orbs
 # [8] ESEndPath -> ESEndPath
 # end_turn
-# [9] ESAttackUp -> Attack Stance
-# Condition: 30% chance when < 50% hp
+# [9] ESAttackUPRemainingEnemies -> Attack Stance
+# Condition: 30% chance when < 50% hp, when <= 1 enemies remain
 # Increase damage to 125% for the next 5 turns
 # [10] ESAttackMultihit -> Genocide Bit
 # Condition: 40% chance when < 40% hp

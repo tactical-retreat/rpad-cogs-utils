@@ -56,8 +56,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -67,6 +67,33 @@ records:
   max_atk_pct: null
   name_en: Heat Up
   name_jp: Heat Up
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 30
+  name_jp: HP <= 30
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 160% damage (4 hits, 40% each)
+  desc_jp: Deal 160% damage (4 hits, 40% each)
+  max_atk_pct: 160
+  name_en: Melting Claw
+  name_jp: Melting Claw
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Spawn random 4 Jammer, Poison orbs, Deal 110% damage
+  desc_jp: Spawn random 4 Jammer, Poison orbs, Deal 110% damage
+  max_atk_pct: 110
+  name_en: Destroying Claw
+  name_jp: Destroying Claw
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -118,15 +145,6 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
-  desc_en: Spawn random 4 Jammer, Poison orbs, Deal 110% damage
-  desc_jp: Spawn random 4 Jammer, Poison orbs, Deal 110% damage
-  max_atk_pct: 110
-  name_en: Destroying Claw
-  name_jp: Destroying Claw
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
   desc_en: Lock all Jammer, Poison orbs, Deal 120% damage
   desc_jp: Lock all Jammer, Poison orbs, Deal 120% damage
   max_atk_pct: 120
@@ -159,15 +177,6 @@ records:
   max_atk_pct: 140
   name_en: Cleave Rush
   name_jp: Cleave Rush
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 160% damage (4 hits, 40% each)
-  desc_jp: Deal 160% damage (4 hits, 40% each)
-  max_atk_pct: 160
-  name_en: Melting Claw
-  name_jp: Melting Claw
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -219,8 +228,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -230,6 +239,33 @@ records:
   max_atk_pct: null
   name_en: Heat Up
   name_jp: Heat Up
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 30
+  name_jp: HP <= 30
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 160% damage (4 hits, 40% each)
+  desc_jp: Deal 160% damage (4 hits, 40% each)
+  max_atk_pct: 160
+  name_en: Melting Claw
+  name_jp: Melting Claw
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Spawn random 4 Jammer, Poison orbs, Deal 110% damage
+  desc_jp: Spawn random 4 Jammer, Poison orbs, Deal 110% damage
+  max_atk_pct: 110
+  name_en: Destroying Claw
+  name_jp: Destroying Claw
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -281,15 +317,6 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
-  desc_en: Spawn random 4 Jammer, Poison orbs, Deal 110% damage
-  desc_jp: Spawn random 4 Jammer, Poison orbs, Deal 110% damage
-  max_atk_pct: 110
-  name_en: Destroying Claw
-  name_jp: Destroying Claw
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
   desc_en: Lock all Jammer, Poison orbs, Deal 120% damage
   desc_jp: Lock all Jammer, Poison orbs, Deal 120% damage
   max_atk_pct: 120
@@ -322,15 +349,6 @@ records:
   max_atk_pct: 140
   name_en: Cleave Rush
   name_jp: Cleave Rush
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 160% damage (4 hits, 40% each)
-  desc_jp: Deal 160% damage (4 hits, 40% each)
-  max_atk_pct: 160
-  name_en: Melting Claw
-  name_jp: Melting Claw
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -376,8 +394,8 @@ records:
 # Branch on flag & 1, target rnd 16
 # [11] ESFlagOperation -> ESFlagOperation
 # flag SET 0b1
-# [12] ESAttackUp -> Heat Up
-# Condition: When < 50% hp
+# [12] ESAttackUPRemainingEnemies -> Heat Up
+# Condition: When < 50% hp, when <= 1 enemies remain
 # Increase damage to 150% for the next 999 turns
 # [13] ESRandomSpawn -> Destroying Claw
 # Condition: When < 30% hp & when Fire, Water, Wood, Light, Dark, Heal, Mortal Poison orbs are on the board
@@ -391,8 +409,8 @@ records:
 # Branch on flag & 2, target rnd 21
 # [17] ESFlagOperation -> ESFlagOperation
 # flag SET 0b11
-# [18] ESAttackUp -> Heat Up
-# Condition: When < 50% hp
+# [18] ESAttackUPRemainingEnemies -> Heat Up
+# Condition: When < 50% hp, when <= 1 enemies remain
 # Increase damage to 150% for the next 999 turns
 # [19] ESOrbLock -> Evil Hold
 # Condition: 50% chance
@@ -401,8 +419,8 @@ records:
 # Lock 7 random Fire, Water, Wood, Light, Dark, Heal orbs
 # [21] ESFlagOperation -> ESFlagOperation
 # flag UNSET 0b11
-# [22] ESAttackUp -> Heat Up
-# Condition: When < 50% hp
+# [22] ESAttackUPRemainingEnemies -> Heat Up
+# Condition: When < 50% hp, when <= 1 enemies remain
 # Increase damage to 150% for the next 999 turns
 # [23] ESAttackMultihit -> Melting Claw
 # Condition: When < 30% hp

@@ -38,6 +38,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 5 turns
+  desc_jp: Increase damage to 200% for the next 5 turns
+  max_atk_pct: null
+  name_en: Chase Mode
+  name_jp: Chase Mode
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -49,24 +67,6 @@ records:
   max_atk_pct: 100
   name_en: Quad Size
   name_jp: Quad Size
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Increase damage to 200% for the next 5 turns
-  desc_jp: Increase damage to 200% for the next 5 turns
-  max_atk_pct: null
-  name_en: Chase Mode
-  name_jp: Chase Mode
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -96,8 +96,8 @@ records:
 # Branch on level > 5, target rnd 3
 # [2] ESEndPath -> ESEndPath
 # end_turn
-# [3] ESAttackUp -> Chase Mode
-# Condition: When < 50% hp
+# [3] ESAttackUPRemainingEnemies -> Chase Mode
+# Condition: When < 50% hp, when <= 1 enemies remain
 # Increase damage to 200% for the next 5 turns
 # [4] ESBranchHP -> ESBranchHP
 # Branch on hp > 25, target rnd 7

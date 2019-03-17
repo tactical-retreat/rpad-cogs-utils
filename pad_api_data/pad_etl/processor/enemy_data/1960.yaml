@@ -38,6 +38,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 1 turns
+  desc_jp: Increase damage to 200% for the next 1 turns
+  max_atk_pct: null
+  name_en: Cat Flop
+  name_jp: Cat Flop
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -86,24 +104,6 @@ records:
   name_en: Cat Surprise
   name_jp: Cat Surprise
   one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Increase damage to 200% for the next 1 turns
-  desc_jp: Increase damage to 200% for the next 1 turns
-  max_atk_pct: null
-  name_en: Cat Flop
-  name_jp: Cat Flop
-  one_time: true
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -168,8 +168,8 @@ records:
 # [9] ESColumnSpawnMulti -> Cat Roll
 # Condition: When < 30% hp
 # Change 2nd, 3rd, 4th, 5th column to Light, Jammer, Poison orbs
-# [10] ESAttackUp -> Cat Flop
-# Condition: When < 50% hp , one-time use
+# [10] ESAttackUPRemainingEnemies -> Cat Flop
+# Condition: When < 50% hp , one-time use, when <= 1 enemies remain
 # Increase damage to 200% for the next 1 turns
 # [11] ESAttackMultihit -> Cat Thrust
 # Condition: 30% chance when < 99% hp

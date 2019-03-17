@@ -47,6 +47,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: HP <= 75
+  name_jp: HP <= 75
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 999 turns
+  desc_jp: Increase damage to 200% for the next 999 turns
+  max_atk_pct: null
+  name_en: Sadistic Switch
+  name_jp: Sadistic Switch
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 30
   name_jp: HP <= 30
   one_time: false
@@ -75,8 +93,8 @@ records:
 # Change Random 1 to Jammer
 # [5] ESEndPath -> ESEndPath
 # end_turn
-# [6] ESAttackUp -> Sadistic Switch
-# Condition: When < 75% hp , one-time use
+# [6] ESAttackUPRemainingEnemies -> Sadistic Switch
+# Condition: When < 75% hp , one-time use, when <= 999 enemies remain
 # Increase damage to 200% for the next 999 turns
 # [7] ESOrbChangeAttack -> Shining Ray
 # Condition: 40% chance

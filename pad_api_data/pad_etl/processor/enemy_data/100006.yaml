@@ -38,6 +38,42 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: When 2 enemy remains
+  name_jp: When 2 enemy remains
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 5 turns
+  desc_jp: Reduce damage from all sources by 50% for 5 turns
+  max_atk_pct: null
+  name_en: Wave Protection
+  name_jp: Wave Protection
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 300% for the next 99 turns
+  desc_jp: Increase damage to 300% for the next 99 turns
+  max_atk_pct: null
+  name_en: Waking from the Abyss
+  name_jp: Waking from the Abyss
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -79,9 +115,9 @@ records:
 # [6] ESEndPath -> ESEndPath
 # end_turn
 # [7] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
-# Branch on remaining enemies = 1, target rnd 16
+# Branch on remaining enemies <= 1, target rnd 16
 # [8] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
-# Branch on remaining enemies = 2, target rnd 12
+# Branch on remaining enemies <= 2, target rnd 12
 # [9] ESRandomSpawn -> Cold Breath
 # Condition: 50% chance & when Fire, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 3 Water orbs
@@ -97,8 +133,8 @@ records:
 # Reduce damage from all sources by 50% for 5 turns
 # [15] ESEndPath -> ESEndPath
 # end_turn
-# [16] ESAttackUp -> Waking from the Abyss
-# Condition: One-time use
+# [16] ESAttackUPRemainingEnemies -> Waking from the Abyss
+# Condition: One-time use, when <= 1 enemies remain
 # Increase damage to 300% for the next 99 turns
 # [17] ESAttackMultihit -> Blizzard Breath
 # Enemy action

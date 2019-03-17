@@ -38,6 +38,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 150% for the next 3 turns
+  desc_jp: Increase damage to 150% for the next 3 turns
+  max_atk_pct: null
+  name_en: Rebellion
+  name_jp: Rebellion
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -88,7 +106,7 @@ records:
 # [2] ESEndPath -> ESEndPath
 # end_turn
 # [3] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
-# Branch on remaining enemies = 1, target rnd 13
+# Branch on remaining enemies <= 1, target rnd 13
 # [4] ESBranchFlag -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation -> ESFlagOperation
@@ -115,7 +133,8 @@ records:
 # Branch on flag & 2, target rnd 17
 # [14] ESFlagOperation -> ESFlagOperation
 # flag SET 0b11
-# [15] ESAttackUp -> Rebellion
+# [15] ESAttackUPRemainingEnemies -> Rebellion
+# Condition: when <= 1 enemies remain
 # Increase damage to 150% for the next 3 turns
 # [16] ESEndPath -> ESEndPath
 # end_turn

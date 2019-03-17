@@ -29,8 +29,26 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 16
-  name_jp: HP <= 16
+  name_en: When 6 enemy remains
+  name_jp: When 6 enemy remains
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 300% damage (6 hits, 50% each)
+  desc_jp: Deal 300% damage (6 hits, 50% each)
+  max_atk_pct: 300
+  name_en: Sonic Hurricane
+  name_jp: Sonic Hurricane
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -697,8 +715,8 @@ records:
 # Enemy action
 # [14] ESEndPath -> ESEndPath
 # end_turn
-# [15] ESAttackUp -> Solid Puncher
-# Condition: One-time use
+# [15] ESAttackUPRemainingEnemies -> Solid Puncher
+# Condition: One-time use, when <= 1 enemies remain
 # Increase damage to 150% for the next 5 turns
 # [16] ESBranchHP -> ESBranchHP
 # Branch on hp > 16, target rnd 4

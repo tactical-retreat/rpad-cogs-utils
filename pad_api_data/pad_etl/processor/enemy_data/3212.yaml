@@ -49,8 +49,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -60,24 +60,6 @@ records:
   max_atk_pct: null
   name_en: Demon Solo
   name_jp: Demon Solo
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 3
-  name_jp: Turn 3
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Fire skyfall +15% for 10 turns, Deal 50% damage
-  desc_jp: Fire skyfall +15% for 10 turns, Deal 50% damage
-  max_atk_pct: 50
-  name_en: Resonating Fire
-  name_jp: Resonating Fire
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -105,7 +87,8 @@ records:
 # Branch on flag & 2, target rnd 15
 # [10] ESFlagOperation -> ESFlagOperation
 # flag SET 0b11
-# [11] ESAttackUp -> Demon Solo
+# [11] ESAttackUPRemainingEnemies -> Demon Solo
+# Condition: when <= 1 enemies remain
 # Increase damage to 300% for the next 999 turns
 # [12] ESFlagOperation -> ESFlagOperation
 # flag UNSET 0b10

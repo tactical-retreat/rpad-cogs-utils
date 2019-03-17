@@ -29,6 +29,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Movetime -2s for 5 turns + Change 3rd, 4th column to Jammer orbs
+  desc_jp: Movetime -2s for 5 turns + Change 3rd, 4th column to Jammer orbs
+  max_atk_pct: null
+  name_en: "Humf... Sorry? + Sorry for the intrusion \u266A"
+  name_jp: "Humf... Sorry? + Sorry for the intrusion \u266A"
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -136,7 +154,7 @@ records:
 # [8] ESBranchHP -> ESBranchHP
 # Branch on hp < 50, target rnd 14
 # [9] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
-# Branch on remaining enemies = 1, target rnd 13
+# Branch on remaining enemies <= 1, target rnd 13
 # [10] ESAttackMultihit -> There! There!
 # Condition: 40% chance
 # Enemy action
@@ -165,7 +183,7 @@ records:
 # Branch on flag & 2, target rnd 22
 # [19] ESFlagOperation -> ESFlagOperation
 # flag SET 0b11
-# [20] ESAttackUp -> Here I come ♪
+# [20] ESAttackUPCooldown -> Here I come ♪
 # Increase damage to 150% for the next 5 turns
 # [21] ESEndPath -> ESEndPath
 # end_turn

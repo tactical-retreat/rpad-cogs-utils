@@ -47,17 +47,17 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: When 6 enemy remains
-  name_jp: When 6 enemy remains
+  name_en: When 2 enemy remains
+  name_jp: When 2 enemy remains
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change all orbs to Fire, Wood, Light, Heal, Deal 120% damage
-  desc_jp: Change all orbs to Fire, Wood, Light, Heal, Deal 120% damage
-  max_atk_pct: 120
-  name_en: Flame Enclosure
-  name_jp: Flame Enclosure
+  desc_en: Spawn random 1 locked Bomb orbs
+  desc_jp: Spawn random 1 locked Bomb orbs
+  max_atk_pct: null
+  name_en: Affliction Bombing
+  name_jp: Affliction Bombing
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -65,17 +65,17 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 15
-  name_jp: HP <= 15
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change all orbs to Fire, Wood, Light, Heal, Deal 120% damage
-  desc_jp: Change all orbs to Fire, Wood, Light, Heal, Deal 120% damage
-  max_atk_pct: 120
-  name_en: Flame Enclosure
-  name_jp: Flame Enclosure
+  desc_en: Player -99% HP + Increase damage to 200% for the next 99 turns
+  desc_jp: Player -99% HP + Increase damage to 200% for the next 99 turns
+  max_atk_pct: null
+  name_en: Burning Affliction + Blazing Fire
+  name_jp: Burning Affliction + Blazing Fire
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -198,7 +198,7 @@ records:
 # [12] ESBranchHP -> ESBranchHP
 # Branch on hp < 15, target rnd 24
 # [13] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
-# Branch on remaining enemies = 1, target rnd 20
+# Branch on remaining enemies <= 1, target rnd 20
 # [14] ESSetCounter -> ESSetCounter
 # counter + 1
 # [15] ESBranchCounter -> ESBranchCounter
@@ -221,7 +221,7 @@ records:
 # [22] SkillSet:
 # 	[0] ESGravity -> Burning Affliction
 # 	Player -99% HP
-# 	[1] ESAttackUp -> Blazing Fire
+# 	[1] ESAttackUPRemainingEnemies -> Blazing Fire
 # 	Increase damage to 200% for the next 99 turns
 # [23] ESEndPath -> ESEndPath
 # end_turn
@@ -232,7 +232,7 @@ records:
 # [26] ESSetCounter -> ESSetCounter
 # counter = 0
 # [27] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
-# Branch on remaining enemies = 2, target rnd 29
+# Branch on remaining enemies <= 2, target rnd 29
 # [28] ESBoardChangeAttackBits -> Flame Enclosure
 # Change all orbs to Fire, Wood, Light, Heal
 # [29] ESBombRandomSpawn -> Affliction Bombing

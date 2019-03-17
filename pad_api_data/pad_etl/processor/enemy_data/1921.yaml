@@ -29,6 +29,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 999 turns
+  desc_jp: Increase damage to 200% for the next 999 turns
+  max_atk_pct: null
+  name_en: Ripening of the Land
+  name_jp: Ripening of the Land
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -80,8 +98,8 @@ records:
 # end_turn
 # [6] ESBranchHP -> ESBranchHP
 # Branch on hp > 21, target rnd 8
-# [7] ESAttackUp -> Ripening of the Land
-# Condition: One-time use
+# [7] ESAttackUPRemainingEnemies -> Ripening of the Land
+# Condition: One-time use, when <= 1 enemies remain
 # Increase damage to 200% for the next 999 turns
 # [8] ESRandomSpawn -> Fluttering Flower Petals
 # Condition: 33% chance & when Fire, Water, Wood, Light, Dark, Heal, Poison, Mortal Poison orbs are on the board

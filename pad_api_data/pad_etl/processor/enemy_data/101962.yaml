@@ -29,6 +29,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: When 2 enemy remains
+  name_jp: When 2 enemy remains
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 999 turns
+  desc_jp: Increase damage to 200% for the next 999 turns
+  max_atk_pct: null
+  name_en: Angry
+  name_jp: Angry
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -53,12 +71,12 @@ records:
 # Condition: One-time use
 # Forces attacks to hit this enemy
 # [3] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
-# Branch on remaining enemies = 2, target rnd 6
+# Branch on remaining enemies <= 2, target rnd 6
 # [4] ESAttackMultihit -> Powerful Attack
 # Enemy action
 # [5] ESEndPath -> ESEndPath
 # end_turn
-# [6] ESAttackUp -> Angry
+# [6] ESAttackUPCooldown -> Angry
 # Increase damage to 200% for the next 999 turns
 # [7] ESAttackMultihit -> Powerful Attack
 # Enemy action

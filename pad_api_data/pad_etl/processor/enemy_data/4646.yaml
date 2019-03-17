@@ -47,17 +47,17 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: When 6 enemy remains
-  name_jp: When 6 enemy remains
+  name_en: When 2 enemy remains
+  name_jp: When 2 enemy remains
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change all orbs to Fire, Water, Dark, Heal, Deal 120% damage
-  desc_jp: Change all orbs to Fire, Water, Dark, Heal, Deal 120% damage
-  max_atk_pct: 120
-  name_en: Gloomy Enclosure
-  name_jp: Gloomy Enclosure
+  desc_en: Absorb Fire, Dark damage for 2 turns
+  desc_jp: Absorb Fire, Dark damage for 2 turns
+  max_atk_pct: null
+  name_en: Welcoming Mist
+  name_jp: Welcoming Mist
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -65,18 +65,38 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change all orbs to Fire, Water, Dark, Heal, Deal 120% damage
-  desc_jp: Change all orbs to Fire, Water, Dark, Heal, Deal 120% damage
-  max_atk_pct: 120
-  name_en: Gloomy Enclosure
-  name_jp: Gloomy Enclosure
+  desc_en: Bind awoken skills for 1 turns + Increase damage to 200% for the next 99
+    turns
+  desc_jp: Bind awoken skills for 1 turns + Increase damage to 200% for the next 99
+    turns
+  max_atk_pct: null
+  name_en: Eroding Sleep + Counterattack from the Abyss
+  name_jp: Eroding Sleep + Counterattack from the Abyss
   one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 15
+  name_jp: HP <= 15
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Spawn random 8 Poison orbs
+  desc_jp: Spawn random 8 Poison orbs
+  max_atk_pct: null
+  name_en: Eroding Mist
+  name_jp: Eroding Mist
+  one_time: true
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -216,7 +236,7 @@ records:
 # [12] ESBranchHP -> ESBranchHP
 # Branch on hp < 15, target rnd 30
 # [13] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
-# Branch on remaining enemies = 1, target rnd 21
+# Branch on remaining enemies <= 1, target rnd 21
 # [14] ESSetCounter -> ESSetCounter
 # counter + 1
 # [15] ESBranchCounter -> ESBranchCounter
@@ -241,7 +261,7 @@ records:
 # [23] SkillSet:
 # 	[0] ESBindAwoken -> Eroding Sleep
 # 	Bind awoken skills for 1 turns
-# 	[1] ESAttackUp -> Counterattack from the Abyss
+# 	[1] ESAttackUPRemainingEnemies -> Counterattack from the Abyss
 # 	Increase damage to 200% for the next 99 turns
 # [24] ESEndPath -> ESEndPath
 # end_turn
@@ -266,7 +286,7 @@ records:
 # [32] ESSetCounter -> ESSetCounter
 # counter = 0
 # [33] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
-# Branch on remaining enemies = 2, target rnd 35
+# Branch on remaining enemies <= 2, target rnd 35
 # [34] ESBoardChangeAttackBits -> Gloomy Enclosure
 # Change all orbs to Fire, Water, Dark, Heal
 # [35] ESAbsorbAttribute -> Welcoming Mist
