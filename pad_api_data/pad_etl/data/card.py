@@ -145,6 +145,8 @@ class BookCard(pad_util.JsonDictEncodable):
         self.unknown_052 = raw[52]
         self.unknown_053 = raw[53]
         self.unknown_054 = raw[54]
+
+        # Boolean, unlikely to be anything useful, only populated for 495 and 111.
         self.unknown_055 = raw[55]
 
         # Unused
