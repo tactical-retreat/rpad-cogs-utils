@@ -651,12 +651,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 3 -       11
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -664,7 +661,7 @@ records:
 # [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
 # [2] ESDebuffMovetime(39:12545) -> No need for talk. Let's do this.
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
 # Movetime -1s for 10 turns
 # [3] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 15
@@ -675,19 +672,19 @@ records:
 # [6] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 51, target rnd 8
 # [7] SkillSet:
-# 	Condition: 25% chance
+# 	Condition: 25% chance (ai:25 rnd:0)
 # 	[0] ESOrbChangeAttack(48:12558) -> Sonic Break
 # 	Change Random to Wood
 # 	[1] ESOrbChangeAttack(48:12558) -> Sonic Break
 # 	Change Random to Wood
 # [8] SkillSet:
-# 	Condition: 33% chance
+# 	Condition: 33% chance (ai:0 rnd:33)
 # 	[0] ESAttackMultihit(15:12547) -> Bullet Revolver
 # 	Enemy action
 # 	[1] ESRowSpawnMulti(79:12548) -> Sonic Boom
 # 	Change 3rd row to Wood orbs
 # [9] SkillSet:
-# 	Condition: 33% chance
+# 	Condition: 33% chance (ai:0 rnd:33)
 # 	[0] ESAttackMultihit(15:12550) -> Taurus Combination
 # 	Enemy action
 # 	[1] ESAttackSinglehit(82:1) -> Disable Skill
@@ -695,7 +692,7 @@ records:
 # 	[2] ESColumnSpawnMulti(77:12551) -> Somersault Kick
 # 	Change 4th column to Wood orbs
 # [10] SkillSet:
-# 	Condition: 34% chance
+# 	Condition: 34% chance (ai:0 rnd:34)
 # 	[0] ESRandomSpawn(92:12553) -> Sonic Blade
 # 	Spawn random 1 Wood orbs
 # 	[1] ESRowSpawnMulti(79:12554) -> Sonic Cross
@@ -709,7 +706,7 @@ records:
 # [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [15] ESAttackUp(17:12556) -> Solid Puncher
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Increase damage to 150% for the next 5 turns
 # [16] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 16, target rnd 4

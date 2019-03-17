@@ -93,12 +93,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 0 -        0
 # [53] 1 -        1
 # [54] 1 -        1
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -108,7 +105,7 @@ records:
 # [2] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [3] ESAttackUp(17:638) -> Chase Mode
-# Condition: When < 50% hp
+# 	Condition: When < 50% hp (ai:100 rnd:0)
 # Increase damage to 200% for the next 5 turns
 # [4] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 25, target rnd 7
@@ -117,7 +114,7 @@ records:
 # [6] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [7] ESOrbChangeAttack(48:636) -> Red Heat
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Change Random to Fire
 # [8] ESAttackMultihit(15:635) -> Flame Blade
 # Enemy action

@@ -93,12 +93,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -121,26 +118,26 @@ records:
 # [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [8] ESRecoverEnemy(86:3901) -> Curaga
-# Condition: When < 60% hp , one-time use
+# 	Condition: When < 60% hp , one-time use (ai:40 rnd:0) (one-time: 1)
 # Enemy recover 100% hp
 # [9] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 14
 # [10] ESOrbLock(94:3899) -> Flare
-# Condition: 75% chance
+# 	Condition: 75% chance (ai:0 rnd:75)
 # Lock 3 random Fire, Water, Wood, Light, Dark orbs
 # [11] ESRowSpawnMulti(79:3898) -> Holy
-# Condition: 25% chance
+# 	Condition: 25% chance (ai:0 rnd:25)
 # Change 2nd, 4th row to Light orbs
 # [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [14] ESRandomSpawn(92:3900) -> Flare Star
-# Condition: When water, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board
+# 	Condition: When water, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 8 Fire orbs
 # [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [16] SkillSet:
-# 	Condition: On death
+# 	Condition: On death (ai:100 rnd:0)
 # 	[0] ESInactivity(66:3902) -> I'm not gonna die alone...
 # 	Do nothing

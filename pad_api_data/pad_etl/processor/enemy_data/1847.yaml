@@ -131,12 +131,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -169,24 +166,24 @@ records:
 # [12] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 20
 # [13] ESGravity(50:2344) -> End of Pain
-# Condition: When < 30% hp , one-time use
+# 	Condition: When < 30% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Player -100% HP
 # [14] ESAttackMultihit(15:2345) -> Beyond the Pain
-# Condition: When < 30% hp
+# 	Condition: When < 30% hp (ai:100 rnd:0)
 # Enemy action
 # [15] ESOrbChangeAttack(48:2338) -> King Cannon Type Zero
 # Change Poison to Mortal Poison
 # [16] SkillSet:
-# 	Condition: 33% chance
+# 	Condition: 33% chance (ai:0 rnd:33)
 # 	[0] ESRecoverEnemy(86:2335) -> Blue Sphere
 # 	Enemy recover 10% hp
 # 	[1] ESRandomSpawn(92:2336) -> Chaos Bolt
 # 	Spawn random 4 Poison orbs
 # [17] ESBlind(62:2339) -> Dark Pulse
-# Condition: 33% chance
+# 	Condition: 33% chance (ai:0 rnd:33)
 # Blind all orbs on the board
 # [18] ESAttackMultihit(15:2340) -> Dragon King Cannon
-# Condition: 33% chance
+# 	Condition: 33% chance (ai:0 rnd:33)
 # Enemy action
 # [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
@@ -195,7 +192,7 @@ records:
 # [21] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [22] SkillSet:
-# 	Condition: When < 50% hp
+# 	Condition: When < 50% hp (ai:100 rnd:0)
 # 	[0] ESBindSkill(14:2341) -> King's Gaze
 # 	Bind active skills for 5 turns
 # 	[1] ESRecoverEnemy(86:2342) -> Re-Zero

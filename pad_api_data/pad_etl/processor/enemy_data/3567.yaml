@@ -245,12 +245,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 1 -        1
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -258,7 +255,7 @@ records:
 # [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
 # [2] ESDeathCry(69:8862) -> Machine Transformation
-# Condition: On death
+# 	Condition: On death (ai:0 rnd:0)
 # Show message: Hey, hey! You finally joined!!|Hyaaaaaaaa!!
 # [3] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 5
@@ -285,10 +282,10 @@ records:
 # [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [15] ESBlindStickyFixed(98:8856) -> X Knuckles
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Blind orbs in specific positions for 1 turns
 # [16] ESRowSpawnMulti(79:8857) -> Shadow Punch
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:50 rnd:0)
 # Change 3rd row to Dark orbs
 # [17] ESOrbChangeAttackBits(108:8858) -> Killing Knuckles
 # Change Heal to Poison
@@ -303,7 +300,7 @@ records:
 # [22] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [23] ESBlindStickyFixed(98:8856) -> X Knuckles
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Blind orbs in specific positions for 1 turns
 # [24] ESSkillDelay(89:8859) -> Grief Punch
 # Delay active skills by 2 turns

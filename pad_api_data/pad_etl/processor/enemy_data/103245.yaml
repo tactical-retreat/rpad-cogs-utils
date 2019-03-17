@@ -153,12 +153,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 2 -       10
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -181,7 +178,7 @@ records:
 # [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 1, target rnd 19
 # [7] ESBombFixedSpawn(103:5641) -> Void Burn
-# Condition: When < 20% hp
+# 	Condition: When < 20% hp (ai:100 rnd:0)
 # Spawn Bomb orbs in the specified positions
 # [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 15
@@ -197,7 +194,7 @@ records:
 # [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [13] ESBombFixedSpawn(103:5638) -> Zelvarn
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:50 rnd:0)
 # Spawn Bomb orbs in the specified positions
 # [14] ESColumnSpawnMulti(77:5637) -> Cruel Flare
 # Change 2nd, 5th column to Jammer orbs
@@ -206,18 +203,18 @@ records:
 # [16] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [17] ESAbsorbCombo(67:5639) -> Nine Seek
-# Condition: When < 50% hp
+# 	Condition: When < 50% hp (ai:100 rnd:0)
 # Absorb combo <= 8 damage for 9 turns
 # [18] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [19] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESRecoverEnemy(86:5640) -> Death Avoidance
 # 	Enemy recover 100% hp
 # 	[1] ESBindAttack(63:5675) -> Nampulse
 # 	Bind 1 random for 9 turns
 # [20] ESBombFixedSpawn(103:5641) -> Void Burn
-# Condition: When < 20% hp
+# 	Condition: When < 20% hp (ai:100 rnd:0)
 # Spawn Bomb orbs in the specified positions
 # [21] ESEndPath(36:26) -> ESEndPath
 # end_turn

@@ -147,12 +147,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 0 -        0
 # [53] 1 -        1
 # [54] 1 -        1
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -170,16 +167,16 @@ records:
 # [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 12
 # [7] ESOrbChangeAttack(48:1733) -> Tidal Hurricane
-# Condition: 50% chance when < 30% hp
+# 	Condition: 50% chance when < 30% hp (ai:50 rnd:0)
 # Change Random to Water
 # [8] ESOrbChangeAttack(48:1734) -> Tidal Hurricane
-# Condition: When < 30% hp
+# 	Condition: When < 30% hp (ai:100 rnd:0)
 # Change Random to Wood
 # [9] ESOrbChangeAttack(48:1731) -> Grimoire of Water
-# Condition: 30% chance
+# 	Condition: 30% chance (ai:30 rnd:0)
 # Change Heal to Water
 # [10] ESPoisonChangeRandomAttack(64:1732) -> Poison Rain
-# Condition: When < 75% hp , one-time use
+# 	Condition: When < 75% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Change Random 5 to Poison
 # [11] ESAttackMultihit(15:10930) -> Pentacle of the Demonic Sword
 # Enemy action
@@ -188,7 +185,7 @@ records:
 # [13] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [14] ESSkyfall(68:1730) -> Aqua Evocation
-# Condition: When < 50% hp
+# 	Condition: When < 50% hp (ai:100 rnd:0)
 # Water skyfall +25% for 99 turns
 # [15] ESEndPath(36:26) -> ESEndPath
 # end_turn

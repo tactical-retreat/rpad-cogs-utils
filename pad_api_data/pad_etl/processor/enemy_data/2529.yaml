@@ -93,12 +93,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 4 -      100
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -118,19 +115,19 @@ records:
 # [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [8] ESAttackMultihit(15:3241) -> Limit Burst
-# Condition: When < 10% hp
+# 	Condition: When < 10% hp (ai:100 rnd:0)
 # Enemy action
 # [9] ESSkillDelay(89:3240) -> Absorption
-# Condition: When < 80% hp , one-time use
+# 	Condition: When < 80% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Delay active skills by 1 turns
 # [10] ESBindAttack(63:3743) -> Root Chain
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:50 rnd:0)
 # Bind 1 random for 3 turns
 # [11] ESColumnSpawnMulti(77:3742) -> Splash Hell Gale
 # Change 3rd, 4th column to Water, Wood orbs
 # [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [13] SkillSet:
-# 	Condition: On death
+# 	Condition: On death (ai:100 rnd:0)
 # 	[0] ESRandomSpawn(92:3739) -> Mechanical Toxin
 # 	Spawn random 6 Mortal Poison orbs

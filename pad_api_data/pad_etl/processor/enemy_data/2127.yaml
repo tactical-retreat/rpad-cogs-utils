@@ -122,12 +122,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -143,18 +140,18 @@ records:
 # [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] ESDebuffMovetime(39:3216) -> Backdraft
-# Condition: When < 1% hp , one-time use
+# 	Condition: When < 1% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Movetime -2s for 10 turns
 # [7] ESAttackMultihit(15:3200) -> Backward Impact
-# Condition: When < 10% hp
+# 	Condition: When < 10% hp (ai:100 rnd:0)
 # Enemy action
 # [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 12
 # [9] ESAttackMultihit(15:3197) -> Energy Shotgun
-# Condition: 60% chance
+# 	Condition: 60% chance (ai:0 rnd:60)
 # Enemy action
 # [10] ESColumnSpawnMulti(77:3198) -> Keen Edge
-# Condition: 40% chance
+# 	Condition: 40% chance (ai:0 rnd:40)
 # Change 2nd column to Jammer orbs, 4th column to Poison orbs
 # [11] ESEndPath(36:26) -> ESEndPath
 # end_turn

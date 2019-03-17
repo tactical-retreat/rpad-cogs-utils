@@ -142,12 +142,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -177,10 +174,10 @@ records:
 # [12] ESSkillDelay(89:4991) -> There's nothing you can hide from me.
 # Delay active skills by 1 turns
 # [13] ESAttackMultihit(15:4993) -> Heritage Sword "Hyakka Ryoran"
-# Condition: When < 80% hp , one-time use
+# 	Condition: When < 80% hp , one-time use (ai:50 rnd:0) (one-time: 1)
 # Enemy action
 # [14] ESRandomSpawn(92:4992) -> This is nothing!
-# Condition: When fire, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board
+# 	Condition: When fire, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 3 Water orbs
 # [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
@@ -196,7 +193,7 @@ records:
 # [19] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
 # [20] ESRandomSpawn(92:4997) -> Rochin
-# Condition: When heal orbs are on the board
+# 	Condition: When heal orbs are on the board (ai:100 rnd:0)
 # Spawn random 1 Jammer orbs
 # [21] ESAttackMultihit(15:4998) -> Rochin
 # Enemy action
@@ -207,11 +204,11 @@ records:
 # [24] ESBlind(62:4999) -> What now, then?!
 # Blind all orbs on the board
 # [25] ESRandomSpawn(92:4997) -> Rochin
-# Condition: When heal orbs are on the board
+# 	Condition: When heal orbs are on the board (ai:100 rnd:0)
 # Spawn random 1 Jammer orbs
 # [26] ESAttackMultihit(15:4998) -> Rochin
 # Enemy action
 # [27] SkillSet:
-# 	Condition: On death
+# 	Condition: On death (ai:0 rnd:0)
 # 	[0] ESInactivity(66:4966) -> ...Feh.
 # 	Do nothing

@@ -165,12 +165,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 0 -        0
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -196,7 +193,7 @@ records:
 # [10] ESAttackSinglehit(82:3915) -> Attack
 # Enemy action
 # [11] ESBindAttack(63:3907) -> Jecht Beam
-# Condition: 20% chance
+# 	Condition: 20% chance (ai:20 rnd:0)
 # Bind 1 subs for 2~3 turns
 # [12] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 15
@@ -208,7 +205,7 @@ records:
 # 	[1] ESRecoverEnemy(86:3913) -> Power Wave
 # 	Enemy recover 10% hp
 # [15] ESBindAttack(63:3907) -> Jecht Beam
-# Condition: 20% chance
+# 	Condition: 20% chance (ai:20 rnd:0)
 # Bind 1 subs for 2~3 turns
 # [16] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 19
@@ -217,19 +214,19 @@ records:
 # [18] ESAttackSinglehit(82:3915) -> Attack
 # Enemy action
 # [19] ESBindAttack(63:3907) -> Jecht Beam
-# Condition: 20% chance
+# 	Condition: 20% chance (ai:20 rnd:0)
 # Bind 1 subs for 2~3 turns
 # [20] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b1110
 # [21] ESBlind(62:3908) -> Ultimate Jecht Shot
-# Condition: When < 40% hp
+# 	Condition: When < 40% hp (ai:100 rnd:0)
 # Blind all orbs on the board
 # [22] ESRandomSpawn(92:3911) -> Triumphant Grasp
-# Condition: When fire, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board
+# 	Condition: When fire, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 4 Water orbs
 # [23] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [24] SkillSet:
-# 	Condition: On death
+# 	Condition: On death (ai:100 rnd:0)
 # 	[0] ESInactivity(66:3909) -> Ughh...
 # 	Do nothing

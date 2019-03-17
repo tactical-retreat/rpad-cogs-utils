@@ -129,12 +129,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -162,16 +159,16 @@ records:
 # [11] ESBranchCard(90:3315) -> ESBranchCard
 # Branch on player_cards HAS [2363, 2364, 2361, 2362], target rnd 23
 # [12] ESDamageShield(74:7569) -> Hard Form
-# Condition: When < 50% hp , one-time use
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Reduce damage from all sources by 50% for 3 turns
 # [13] ESSkillDelay(89:7567) -> Quick Low Kick
-# Condition: 40% chance
+# 	Condition: 40% chance (ai:0 rnd:40)
 # Delay active skills by 2 turns
 # [14] ESBlind(62:7568) -> Powerful High Kick
-# Condition: 40% chance when < 80% hp
+# 	Condition: 40% chance when < 80% hp (ai:0 rnd:40)
 # Blind all orbs on the board
 # [15] ESAttackSinglehit(82:1) -> Disable Skill
-# Condition: 20% chance
+# 	Condition: 20% chance (ai:0 rnd:20)
 # Enemy action
 # [16] ESEndPath(36:26) -> ESEndPath
 # end_turn

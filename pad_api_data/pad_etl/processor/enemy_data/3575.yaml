@@ -151,12 +151,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 10 -     1010
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -177,7 +174,7 @@ records:
 # [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] SkillSet:
-# 	Condition: When < 20% hp
+# 	Condition: When < 20% hp (ai:100 rnd:0)
 # 	[0] ESDispel(6:6783) -> Cold Break
 # 	Voids player buff effects
 # 	[1] ESBoardChangeAttackBits(85:6784) -> Blue Calamity Abyss
@@ -189,13 +186,13 @@ records:
 # [9] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 30, target rnd 26
 # [10] ESOrbLock(94:6780) -> Sharptooth
-# Condition: 40% chance
+# 	Condition: 40% chance (ai:0 rnd:40)
 # Lock 8 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [11] ESBindSkill(14:6781) -> Sanctifying Waters
-# Condition: 20% chance
+# 	Condition: 20% chance (ai:0 rnd:20)
 # Bind active skills for 5 turns
 # [12] ESBlindStickyRandom(97:6782) -> Ice Metal Needle
-# Condition: 40% chance
+# 	Condition: 40% chance (ai:0 rnd:40)
 # Blind random 5 orbs for 1 turns
 # [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
@@ -204,19 +201,19 @@ records:
 # [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [16] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:0 rnd:34) (one-time: 1)
 # 	[0] ESAbsorbAttribute(53:6767) -> Deep Aqua
 # 	Absorb Wood damage for 3 turns
 # 	[1] ESAttackMultihit(15:6770) -> Ether Screw
 # 	Enemy action
 # [17] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:0 rnd:33) (one-time: 3)
 # 	[0] ESSkyfall(68:6768) -> Poison Swirl
 # 	Mortal Poison skyfall +15% for 3 turns
 # 	[1] ESAttackMultihit(15:6770) -> Ether Screw
 # 	Enemy action
 # [18] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:0 rnd:33) (one-time: 6)
 # 	[0] ESDamageShield(74:6769) -> Shell Scales
 # 	Reduce damage from all sources by 75% for 3 turns
 # 	[1] ESAttackMultihit(15:6770) -> Ether Screw
@@ -228,19 +225,19 @@ records:
 # [21] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [22] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 8)
 # 	[0] ESSkyfall(68:6768) -> Poison Swirl
 # 	Mortal Poison skyfall +15% for 3 turns
 # 	[1] ESAttackMultihit(15:6770) -> Ether Screw
 # 	Enemy action
 # [23] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 7)
 # 	[0] ESDamageShield(74:6769) -> Shell Scales
 # 	Reduce damage from all sources by 75% for 3 turns
 # 	[1] ESAttackMultihit(15:6770) -> Ether Screw
 # 	Enemy action
 # [24] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
 # 	[0] ESAbsorbAttribute(53:6767) -> Deep Aqua
 # 	Absorb Wood damage for 3 turns
 # 	[1] ESAttackMultihit(15:6770) -> Ether Screw
@@ -252,13 +249,13 @@ records:
 # [27] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
 # [28] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
 # 	[0] ESSkyfall(68:6768) -> Poison Swirl
 # 	Mortal Poison skyfall +15% for 3 turns
 # 	[1] ESAttackMultihit(15:6770) -> Ether Screw
 # 	Enemy action
 # [29] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESDamageShield(74:6769) -> Shell Scales
 # 	Reduce damage from all sources by 75% for 3 turns
 # 	[1] ESAttackMultihit(15:6770) -> Ether Screw

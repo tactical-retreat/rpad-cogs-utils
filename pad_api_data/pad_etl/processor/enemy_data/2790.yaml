@@ -631,12 +631,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 511 - 111111111
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -644,7 +641,7 @@ records:
 # [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
 # [2] ESDeathCry(69:2963) -> Orphan Transformation
-# Condition: On death
+# 	Condition: On death (ai:0 rnd:0)
 # Show message: Hahahaha!| Don't you want eternity?
 # [3] ESBranchLevel(33:23) -> ESBranchLevel
 # Branch on level < 3, target rnd 7
@@ -659,7 +656,7 @@ records:
 # shall know redemption.
 # 	Player recover 100% hp
 # [7] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 511)
 # 	[0] ESInactivity(66:3935) -> Our name is Orphan.
 # 	Do nothing
 # 	[1] ESInactivity(66:3984) -> By our hand, the world
@@ -672,53 +669,53 @@ records:
 # [10] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 22
 # [11] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 256)
 # 	[0] ESAbsorbCombo(67:3951) -> Consummate Light
 # 	Absorb combo <= 3 damage for 3 turns
 # 	[1] ESGravity(50:3936) -> Merciless Judgment
 # 	Player -99% HP
 # [12] ESAttackMultihit(15:3937) -> Hammer
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 128)
 # Enemy action
 # [13] ESAttackMultihit(15:3938) -> Requiem
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 64)
 # Enemy action
 # [14] ESAttackMultihit(15:3939) -> Progenitorial Wrath
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 32)
 # Enemy action
 # [15] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 16)
 # 	[0] ESChangeAttribute(46:3940) -> Consummate Darkness
 # 	Change own attribute to Dark
 # 	[1] ESGravity(50:3936) -> Merciless Judgment
 # 	Player -99% HP
 # [16] ESPoisonChangeRandomAttack(64:3942) -> Chains of Torment
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 8)
 # Change Random 5 to Poison
 # [17] ESAttackMultihit(15:3941) -> Black Ruin
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 4)
 # Enemy action
 # [18] ESRecoverEnemy(86:3943) -> Vile Exploitation
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
 # Enemy recover 10% hp
 # [19] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 22
 # [20] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [21] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESGravity(50:3936) -> Merciless Judgment
 # 	Player -99% HP
 # 	[1] ESChangeAttribute(46:3944) -> Opposite Extremes
 # 	Change own attribute to random one of Light, Dark
 # [22] ESRecoverEnemy(86:3948) -> Vile Exploitation
-# Condition: 65% chance
+# 	Condition: 65% chance (ai:0 rnd:65)
 # Enemy recover 10% hp
 # [23] ESAttackUp(17:3949) -> Dies Irae
-# Condition: 20% chance
+# 	Condition: 20% chance (ai:0 rnd:20)
 # Increase damage to 200% for the next 999 turns
 # [24] ESAttackMultihit(15:3950) -> Progenitorial Wrath
-# Condition: 15% chance
+# 	Condition: 15% chance (ai:0 rnd:15)
 # Enemy action
 # [25] ESEndPath(36:26) -> ESEndPath
 # end_turn

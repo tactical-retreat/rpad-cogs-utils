@@ -187,12 +187,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -215,13 +212,13 @@ records:
 # [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [8] SkillSet:
-# 	Condition: When < 20% hp , one-time use
+# 	Condition: When < 20% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESRecoverEnemy(86:4381) -> Overcoming Will
 # 	Enemy recover 29% hp
 # 	[1] ESAttackUp(17:4222) -> Dragonbound's Wrath
 # 	Increase damage to 200% for the next 999 turns
 # [9] SkillSet:
-# 	Condition: When < 20% hp
+# 	Condition: When < 20% hp (ai:100 rnd:0)
 # 	[0] ESAttackMultihit(15:4695) -> Dual Shade
 # 	Enemy action
 # 	[1] ESBoardChangeAttackBits(85:4686) -> Sunset Zone
@@ -253,10 +250,10 @@ records:
 # [19] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b100
 # [20] ESRowSpawnMulti(79:4691) -> Dusk Guidance
-# Condition: 30% chance
+# 	Condition: 30% chance (ai:30 rnd:0)
 # Change 3rd row to Heal orbs
 # [21] ESColumnSpawnMulti(77:4694) -> Purple Lightning
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:50 rnd:0)
 # Change 3rd column to Dark orbs, 5th column to Water orbs
 # [22] ESAttackMultihit(15:4695) -> Dual Shade
 # Enemy action
@@ -270,7 +267,7 @@ records:
 # 	[1] ESColumnSpawnMulti(77:4699) -> Dark Slash
 # 	Change 2nd, 5th column to Dark orbs
 # [26] SkillSet:
-# 	Condition: 50% chance
+# 	Condition: 50% chance (ai:50 rnd:0)
 # 	[0] ESBlind(5:4690) -> Vesperal Gloom
 # 	Blind all orbs on the board
 # 	[1] ESColumnSpawnMulti(77:4694) -> Purple Lightning

@@ -129,12 +129,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -163,20 +160,20 @@ records:
 # [10] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 10, target rnd 21
 # [11] ESOrbChangeAttack(48:10101) -> White Out
-# Condition: 33% chance
+# 	Condition: 33% chance (ai:0 rnd:33)
 # Change Heal to Light
 # [12] ESOrbLock(94:10102) -> Restraining Star
-# Condition: 33% chance
+# 	Condition: 33% chance (ai:0 rnd:33)
 # Lock all Water, Dark orbs
 # [13] ESAttackMultihit(15:10103) -> Star Quasar
-# Condition: 34% chance
+# 	Condition: 34% chance (ai:0 rnd:34)
 # Enemy action
 # [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [15] ESSetCounter(25:15) -> ESSetCounter
 # counter = 0
 # [16] ESAbsorbThreshold(87:10099) -> Gigantic Power Shield
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Absorb damage >= 2000000 damage for 5 turns
 # [17] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 10

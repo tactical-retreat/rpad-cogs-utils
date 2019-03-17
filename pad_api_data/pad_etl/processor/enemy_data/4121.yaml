@@ -57,12 +57,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 4 -      100
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -84,7 +81,7 @@ records:
 # [8] ESSetCounter(25:15) -> ESSetCounter
 # counter = 0
 # [9] ESColumnSpawnMulti(77:8714) -> Vampire Blade
-# Condition: 30% chance
+# 	Condition: 30% chance (ai:30 rnd:0)
 # Change 2nd column to Dark orbs
 # [10] ESAttackMultihit(15:8715) -> Blood Needle
 # Enemy action
@@ -97,17 +94,17 @@ records:
 # [14] ESLeaderSwap(75:8716) -> Dance!
 # Leader changes to random sub for 1 turns
 # [15] ESBlind(5:8721) -> Dark World
-# Condition: 60% chance
+# 	Condition: 60% chance (ai:60 rnd:0)
 # Blind all orbs on the board
 # [16] ESGravity(50:8722) -> Pain
 # Player -99% HP
 # [17] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 1, target rnd 19
 # [18] ESRecoverEnemyAlly(52:8723) -> Futile...
-# Condition: When enemy ally is killed
+# 	Condition: When enemy ally is killed (ai:100 rnd:0)
 # Enemy ally recover 100% hp
 # [19] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESInvulnerableOff(121:8724) -> Cunning...
 # 	Remove damage immunity effect
 # 	[1] ESAttackUp(19:8725) -> I'll end you!
@@ -119,7 +116,7 @@ records:
 # [21] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 70, target rnd 25
 # [22] ESBlind(62:8729) -> Darkness Pulse
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:50 rnd:0)
 # Blind all orbs on the board
 # [23] ESAttackMultihit(15:8728) -> Blood Bullet
 # Enemy action
@@ -141,10 +138,10 @@ records:
 # [29] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [30] ESOrbChangeAttackBits(108:8720) -> Despair
-# Condition: 20% chance
+# 	Condition: 20% chance (ai:20 rnd:0)
 # Change Heal to Dark
 # [31] ESOrbLock(94:8719) -> Shadow Fangs
-# Condition: 30% chance
+# 	Condition: 30% chance (ai:30 rnd:0)
 # Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [32] ESAttackMultihit(15:8734) -> Chase into the Abyss
 # Enemy action

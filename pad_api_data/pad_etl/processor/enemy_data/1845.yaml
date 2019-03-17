@@ -131,12 +131,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 2 -       10
 # [54] 1 -        1
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -155,24 +152,24 @@ records:
 # [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] ESAttackMultihit(15:2466) -> Last Belief
-# Condition: When < 20% hp
+# 	Condition: When < 20% hp (ai:100 rnd:0)
 # Enemy action
 # [7] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 12
 # [8] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:0 rnd:30) (one-time: 2)
 # 	[0] ESAttackUp(17:2469) -> His sword is raised
 # 	Increase damage to 200% for the next 2 turns
 # 	[1] ESRowSpawnMulti(79:2470) -> Proud Slash
 # 	Change 3rd row to Light orbs
 # [9] SkillSet:
-# 	Condition: 30% chance
+# 	Condition: 30% chance (ai:0 rnd:30)
 # 	[0] ESAttackMultihit(15:2471) -> Ruthless Saw
 # 	Enemy action
 # 	[1] ESAbsorbAttribute(53:2472) -> Dragontree Shield
 # 	Absorb Water damage for 1 turns
 # [10] SkillSet:
-# 	Condition: 30% chance
+# 	Condition: 30% chance (ai:0 rnd:30)
 # 	[0] ESSkillDelay(89:2473) -> Stun Buckler
 # 	Delay active skills by 1 turns
 # 	[1] ESAttackMultihit(15:2474) -> Slash and Thrust
@@ -184,10 +181,10 @@ records:
 # [13] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [14] ESDispel(6:2467) -> Brave Resistance
-# Condition: When < 50% hp
+# 	Condition: When < 50% hp (ai:100 rnd:0)
 # Voids player buff effects
 # [15] ESGravity(50:2468) -> Brave Resistance
-# Condition: When < 50% hp
+# 	Condition: When < 50% hp (ai:100 rnd:0)
 # Player -99% HP
 # [16] ESAttributeResist(72:2456) -> *****
 # Reduce damage from Wood, Light by 50%

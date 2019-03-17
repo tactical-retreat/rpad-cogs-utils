@@ -192,12 +192,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 1 -        1
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -234,13 +231,13 @@ records:
 # [14] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [15] SkillSet:
-# 	Condition: When < 20% hp , one-time use
+# 	Condition: When < 20% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESRecoverEnemy(86:4502) -> Overcoming Will
 # 	Enemy recover 19% hp
 # 	[1] ESDamageShield(74:4508) -> Big Jump
 # 	Reduce damage from all sources by 75% for 1 turns
 # [16] SkillSet:
-# 	Condition: When < 20% hp
+# 	Condition: When < 20% hp (ai:100 rnd:0)
 # 	[0] ESAttackMultihit(15:4498) -> Shining Claw
 # 	Enemy action
 # 	[1] ESBoardChangeAttackBits(85:4490) -> Shine Flare Ring
@@ -250,19 +247,19 @@ records:
 # [18] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 24
 # [19] ESDamageShield(74:4503) -> Big Jump
-# Condition: When < 50% hp , one-time use
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Reduce damage from all sources by 75% for 1 turns
 # [20] ESDamageShield(74:4495) -> Leap
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Reduce damage from all sources by 50% for 1 turns
 # [21] ESAttackMultihit(15:4498) -> Shining Claw
-# Condition: 30% chance
+# 	Condition: 30% chance (ai:30 rnd:0)
 # Enemy action
 # [22] ESColumnSpawnMulti(77:4496) -> Orange Light's Judging Spirit
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:50 rnd:0)
 # Change 5th column to Light orbs, 6th column to Fire orbs
 # [23] ESRandomSpawn(92:4497) -> Brightness Guidance
-# Condition: When fire, water, wood, dark, heal, jammer, poison, mortal poison orbs are on the board
+# 	Condition: When fire, water, wood, dark, heal, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 8 Light orbs
 # [24] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111

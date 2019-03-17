@@ -156,12 +156,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -169,7 +166,7 @@ records:
 # [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
 # [2] ESDeathCry(69:3342) -> Vol Transformation
-# Condition: On death
+# 	Condition: On death (ai:0 rnd:0)
 # Show message: You're strong! Time to show you my true form...
 # [3] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 7
@@ -180,18 +177,18 @@ records:
 # [6] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [7] ESRecoverEnemy(86:3345) -> Super Regeneration
-# Condition: When < 30% hp
+# 	Condition: When < 30% hp (ai:100 rnd:0)
 # Enemy recover 50% hp
 # [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 80, target rnd 13
 # [9] ESDamageShield(74:3346) -> Defensive Water Position
-# Condition: When < 50% hp , one-time use
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Reduce damage from all sources by 50% for 1 turns
 # [10] ESRowSpawnMulti(79:3344) -> Water Flash
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:0 rnd:50)
 # Change 2nd row to Water orbs
 # [11] ESRandomSpawn(92:3347) -> Icicle Burst
-# Condition: 50% chance & when Fire, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# 	Condition: 50% chance & when Fire, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:0 rnd:50)
 # Spawn random 7 Water orbs
 # [12] ESEndPath(36:26) -> ESEndPath
 # end_turn

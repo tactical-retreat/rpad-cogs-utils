@@ -113,12 +113,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 10 -     1010
 # [54] 1 -        1
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -139,17 +136,17 @@ records:
 # [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] ESAttackUpStatus(18:6998) -> Accursed Tiara
-# Condition: after being affected by a status effect
+# 	Condition: after being affected by a status effect (ai:100 rnd:0)
 # Increase damage to 200% for the next 999 turns
 # [7] ESBoardChangeAttackBits(85:6999) -> Darkness
-# Condition: When < 5% hp
+# 	Condition: When < 5% hp (ai:100 rnd:0)
 # Change all orbs to Dark
 # [8] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 12
 # [9] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [10] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 9)
 # 	[0] ESGravity(50:6990) -> Bone-Shaking Bloom Hammer
 # 	Player -99% HP
 # 	[1] ESRandomSpawn(92:6991) -> Demonheart
@@ -157,13 +154,13 @@ records:
 # [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [12] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 9)
 # 	[0] ESBindAwoken(88:6995) -> Dark Demon Cage
 # 	Bind awoken skills for 5 turns
 # 	[1] ESStatusShield(20:6996) -> Seal of Darkness
 # 	Voids status ailments for 9 turns
 # [13] ESOrbChangeAttack(48:6994) -> Shadow Drop
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:50 rnd:0)
 # Change Water to Dark
 # [14] ESAttackMultihit(15:6993) -> Concealed Mirror Kunai
 # Enemy action

@@ -131,12 +131,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 3 -       11
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -148,7 +145,7 @@ records:
 # [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [4] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
 # 	[0] ESStatusShield(20:11750) -> Terminal Eye
 # 	Voids status ailments for 5 turns
 # 	[1] ESBlindStickyFixed(98:11751) -> Double Feeler
@@ -156,18 +153,18 @@ records:
 # [5] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 51, target rnd 9
 # [6] ESAbsorbCombo(67:11754) -> Wind Control
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Absorb combo <= 4 damage for 5 turns
 # [7] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 15, target rnd 12
 # [8] ESRowSpawnMulti(79:11755) -> Charged Wind Power Kick
-# Condition: 33% chance
+# 	Condition: 33% chance (ai:33 rnd:0)
 # Change 3rd row to Wood orbs
 # [9] ESRandomSpawn(92:11752) -> Cyclone Knuckle
-# Condition: 50% chance & when Fire, Water, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# 	Condition: 50% chance & when Fire, Water, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:50 rnd:0)
 # Spawn random 5 Wood orbs
 # [10] ESRandomSpawn(92:11753) -> Joker Knuckle
-# Condition: When fire, water, wood, light, heal, jammer, poison, mortal poison orbs are on the board
+# 	Condition: When fire, water, wood, light, heal, jammer, poison, mortal poison orbs are on the board (ai:0 rnd:100)
 # Spawn random 5 Dark orbs
 # [11] ESEndPath(36:26) -> ESEndPath
 # end_turn

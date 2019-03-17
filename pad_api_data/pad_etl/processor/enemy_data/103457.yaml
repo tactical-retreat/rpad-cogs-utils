@@ -133,12 +133,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -157,20 +154,20 @@ records:
 # [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] SkillSet:
-# 	Condition: When < 40% hp , one-time use
+# 	Condition: When < 40% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESRecoverEnemy(86:6313) -> Fresh Blood of a Male Goat
 # 	Enemy recover 50% hp
 # 	[1] ESDamageShield(74:6314) -> Devil's Influence
 # 	Reduce damage from all sources by 75% for 99 turns
 # [7] ESAttackMultihit(15:6325) -> Nightmare Spiral
-# Condition: When < 15% hp
+# 	Condition: When < 15% hp (ai:100 rnd:0)
 # Enemy action
 # [8] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 13
 # [9] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [10] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESSkillDelay(89:6316) -> Devil Snake's Glare
 # 	Delay active skills by 4 turns
 # 	[1] ESAttackMultihit(15:6317) -> Negative Chain
@@ -193,7 +190,7 @@ records:
 # [17] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b100
 # [18] ESRandomSpawn(92:6324) -> Venomous
-# Condition: 50% chance & when Fire, Water, Wood, Light, Dark, Jammer, Poison, Mortal Poison orbs are on the board
+# 	Condition: 50% chance & when Fire, Water, Wood, Light, Dark, Jammer, Poison, Mortal Poison orbs are on the board (ai:50 rnd:0)
 # Spawn random 12 Poison orbs
 # [19] ESColumnSpawnMulti(77:6322) -> Agahara
 # Change 1st, 2nd column to Fire, Water, Jammer orbs, 3rd, 4th column to Wood, Light, Jammer orbs, 5th, 6th column to Dark, Heal, Jammer orbs

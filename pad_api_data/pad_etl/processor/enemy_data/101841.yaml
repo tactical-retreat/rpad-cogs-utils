@@ -167,12 +167,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -191,13 +188,13 @@ records:
 # [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] SkillSet:
-# 	Condition: When < 1% hp
+# 	Condition: When < 1% hp (ai:100 rnd:0)
 # 	[0] ESSkillDelay(89:3250) -> Wrath of Water
 # 	Delay active skills by 5 turns
 # 	[1] ESBindAttack(63:3251) -> Swirl Cage
 # 	Bind 6 random for 5 turns
 # [7] ESAttackMultihit(15:3247) -> Flare Stream
-# Condition: When < 20% hp
+# 	Condition: When < 20% hp (ai:100 rnd:0)
 # Enemy action
 # [8] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 90, target rnd 14
@@ -206,10 +203,10 @@ records:
 # [10] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 65, target rnd 23
 # [11] ESAttackMultihit(15:3246) -> Vortex Breath
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:0 rnd:50)
 # Enemy action
 # [12] ESRowSpawnMulti(79:3248) -> Press Wave
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:0 rnd:50)
 # Change 3rd row to Water orbs
 # [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
@@ -243,7 +240,7 @@ records:
 # [26] ESAttackMultihit(15:3246) -> Vortex Breath
 # Enemy action
 # [27] ESAbsorbAttribute(53:3249) -> Anti-Plant
-# Condition: When < 65% hp
+# 	Condition: When < 65% hp (ai:100 rnd:0)
 # Absorb Wood damage for 3 turns
 # [28] ESEndPath(36:26) -> ESEndPath
 # end_turn

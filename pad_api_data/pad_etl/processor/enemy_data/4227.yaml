@@ -50,12 +50,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 15 -     1111
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -87,21 +84,21 @@ records:
 # [13] ESInactivity(66:9182) -> Wait and See
 # Do nothing
 # [14] ESOrbSealColumn(99:9141) -> Sealing Pulse
-# Condition: 25% chance
+# 	Condition: 25% chance (ai:0 rnd:25)
 # Seal 1st column for 3 turns
 # [15] ESOrbSealColumn(99:9142) -> Sealing Pulse
-# Condition: 25% chance
+# 	Condition: 25% chance (ai:0 rnd:25)
 # Seal 6th column for 3 turns
 # [16] ESOrbSealRow(100:9143) -> Sealing Pulse
-# Condition: 25% chance
+# 	Condition: 25% chance (ai:0 rnd:25)
 # Seal 1st row for 3 turns
 # [17] ESOrbSealRow(100:9144) -> Sealing Pulse
-# Condition: 25% chance
+# 	Condition: 25% chance (ai:0 rnd:25)
 # Seal 5th row for 3 turns
 # [18] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [19] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 8)
 # 	[0] ESInvulnerableOff(121:9146) -> All Augites have successfully shattered
 # 	Remove damage immunity effect
 # 	[1] ESStatusShield(20:9147) -> Chest Core's Shine
@@ -109,13 +106,13 @@ records:
 # 	[2] ESVoidShield(71:9148) -> Fortified Scales
 # 	Void damage >= 66666666 for 999 turns
 # [20] SkillSet:
-# 	Condition: When < 90% hp , one-time use
+# 	Condition: When < 90% hp , one-time use (ai:100 rnd:0) (one-time: 4)
 # 	[0] ESAbsorbCombo(67:9153) -> Secular Sword
 # 	Absorb combo <= 6 damage for 66 turns
 # 	[1] ESSpinnersFixed(110:9154) -> Empty Teachings
 # 	Specific orbs change every 1.0s for 6 turns
 # [21] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 4)
 # 	[0] ESSkillDelay(89:9150) -> Time Binding
 # 	Delay active skills by 1 turns
 # 	[1] ESGravity(50:9151) -> Wave
@@ -125,25 +122,25 @@ records:
 # [22] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 28
 # [23] SkillSet:
-# 	Condition: When < 50% hp , one-time use
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 2)
 # 	[0] ESDebuffMovetime(39:9156) -> Deprivation
 # 	Movetime -3s for 6 turns
 # 	[1] ESSkyfall(68:9157) -> Holy Charity
 # 	Heal skyfall +15% for 6 turns
 # [24] SkillSet:
-# 	Condition: 30% chance when < 50% hp
+# 	Condition: 30% chance when < 50% hp (ai:30 rnd:0)
 # 	[0] ESOrbChangeAttack(48:9160) -> Rotting Pain
 # 	Change Random to Jammer
 # 	[1] ESGravity(50:9161) -> Wave
 # 	Player -99% HP
 # [25] SkillSet:
-# 	Condition: When < 50% hp
+# 	Condition: When < 50% hp (ai:100 rnd:0)
 # 	[0] ESAttackMultihit(15:9159) -> Four Resonating Guns
 # 	Enemy action
 # 	[1] ESGravity(50:9161) -> Wave
 # 	Player -99% HP
 # [26] ESOrbChangeAttack(48:9160) -> Rotting Pain
-# Condition: 25% chance
+# 	Condition: 25% chance (ai:25 rnd:0)
 # Change Random to Jammer
 # [27] ESAttackMultihit(15:9159) -> Four Resonating Guns
 # Enemy action

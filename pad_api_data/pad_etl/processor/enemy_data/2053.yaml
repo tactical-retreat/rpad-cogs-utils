@@ -120,12 +120,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 1 -        1
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -149,10 +146,10 @@ records:
 # [9] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 15
 # [10] ESBlind(62:2106) -> Blind
-# Condition: One-time use
+# 	Condition: One-time use (ai:50 rnd:0) (one-time: 1)
 # Blind all orbs on the board
 # [11] ESSkillDelay(89:2105) -> Slow
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Delay active skills by 1 turns
 # [12] EnemySkillUnknown(93:2043) -> *****
 # unknown
@@ -161,10 +158,10 @@ records:
 # [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [15] ESBindSkill(14:2104) -> Curse
-# Condition: When < 30% hp , one-time use
+# 	Condition: When < 30% hp , one-time use (ai:50 rnd:0) (one-time: 1)
 # Bind active skills for 2 turns
 # [16] ESAttackMultihit(15:2182) -> Flare
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Enemy action
 # [17] EnemySkillUnknown(93:2043) -> *****
 # unknown
@@ -173,6 +170,6 @@ records:
 # [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [20] SkillSet:
-# 	Condition: On death
+# 	Condition: On death (ai:100 rnd:0)
 # 	[0] ESInactivity(66:2156) -> Rrrraaaaagh!
 # 	Do nothing

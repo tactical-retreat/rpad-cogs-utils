@@ -121,12 +121,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 3 -       11
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -147,10 +144,10 @@ records:
 # end_turn
 # [8] ESStatusShield(20:4977) -> They call me "Sword Hunter" Cho.
 # Now see my true skill.
-# Condition: When < 70% hp , one-time use
+# 	Condition: When < 70% hp , one-time use (ai:100 rnd:0) (one-time: 2)
 # Voids status ailments for 999 turns
 # [9] ESAttackUp(17:4981) -> You're all... annoying!!
-# Condition: When < 20% hp , one-time use
+# 	Condition: When < 20% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Increase damage to 200% for the next 999 turns
 # [10] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 23
@@ -169,7 +166,7 @@ records:
 # [17] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [18] ESOrbLock(94:4978) -> "Hakujin" - The Thin One
-# Condition: 70% chance when < 70% hp
+# 	Condition: 70% chance when < 70% hp (ai:70 rnd:0)
 # Lock 2 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
@@ -184,6 +181,6 @@ records:
 # [24] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [25] SkillSet:
-# 	Condition: On death
+# 	Condition: On death (ai:0 rnd:0)
 # 	[0] ESInactivity(66:4962) -> You'll never get to Shishio-sama!
 # 	Do nothing

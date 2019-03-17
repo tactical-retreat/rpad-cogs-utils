@@ -209,12 +209,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -222,7 +219,7 @@ records:
 # [1] ESPreemptive(49:355) -> ESPreemptive
 # Enable preempt if level 5
 # [2] ESDeathCry(69:2330) -> Zero Transformation
-# Condition: On death
+# 	Condition: On death (ai:0 rnd:0)
 # Show message: Not bad! No holding back now!
 # [3] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 5, target rnd 5
@@ -255,13 +252,13 @@ records:
 # [14] ESBlind(62:2326) -> Not enough damage!
 # Blind all orbs on the board
 # [15] ESAttackUp(17:2327) -> Here I go!
-# Condition: When < 50% hp , one-time use
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Increase damage to 200% for the next 999 turns
 # [16] ESAttackMultihit(15:2328) -> Chaotic Ball
-# Condition: 50% chance when < 50% hp
+# 	Condition: 50% chance when < 50% hp (ai:50 rnd:0)
 # Enemy action
 # [17] ESBindAttack(63:2329) -> Steel Tail
-# Condition: When < 50% hp
+# 	Condition: When < 50% hp (ai:100 rnd:0)
 # Bind 1 random for 2 turns
 # [18] ESAttackMultihit(15:2322) -> Not good enough
 # Enemy action

@@ -104,12 +104,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 3 -       11
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -128,22 +125,22 @@ records:
 # [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] SkillSet:
-# 	Condition: When < 55% hp , one-time use
+# 	Condition: When < 55% hp , one-time use (ai:100 rnd:0) (one-time: 2)
 # 	[0] ESJammerChangeRandom(13:9379) -> Divine Mischief
 # 	Change Random 2 to Jammer
 # 	[1] ESOrbLock(94:9380) -> Freeze
 # 	Lock all Jammer orbs
 # [7] SkillSet:
-# 	Condition: When < 30% hp , one-time use
+# 	Condition: When < 30% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESBindRandom(1:9382) -> Crystal Coffin
 # 	Bind 3 random cards for 2~3 turns
 # 	[1] ESAttackUp(19:9383) -> Serene Wrath
 # 	Increase damage to 200% for the next 999 turns
 # [8] ESAttackMultihit(15:9378) -> Freeze Blast
-# Condition: 80% chance when < 75% hp
+# 	Condition: 80% chance when < 75% hp (ai:80 rnd:0)
 # Enemy action
 # [9] ESRandomSpawn(92:9377) -> Cooling Poison
-# Condition: When fire, water, wood, light, dark, heal, jammer, mortal poison orbs are on the board
+# 	Condition: When fire, water, wood, light, dark, heal, jammer, mortal poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 1 Poison orbs
 # [10] ESEndPath(36:26) -> ESEndPath
 # end_turn

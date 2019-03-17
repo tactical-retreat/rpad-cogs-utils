@@ -84,12 +84,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 3 -       11
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -97,14 +94,14 @@ records:
 # [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
 # [2] ESAbsorbCombo(67:5053) -> Stop TAMA!
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Absorb combo <= 5 damage for 99 turns
 # [3] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 40, target rnd 6
 # [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 9
 # [5] ESRandomSpawn(92:5054) -> Dragon Flare
-# Condition: When water, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board
+# 	Condition: When water, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 3 Fire orbs
 # [6] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 9
@@ -113,5 +110,5 @@ records:
 # [8] ESInactivity(66:5062) -> Draco Summon TAMA!
 # Do nothing
 # [9] ESRandomSpawn(92:5055) -> Meteo Flame
-# Condition: When water, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board
+# 	Condition: When water, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 10 Fire orbs

@@ -122,12 +122,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 10 -     1010
 # [54] 1 -        1
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -146,30 +143,30 @@ records:
 # [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] SkillSet:
-# 	Condition: When < 1% hp
+# 	Condition: When < 1% hp (ai:100 rnd:0)
 # 	[0] ESRecoverEnemy(86:6797) -> Eternal Cell Regeneration
 # 	Enemy recover 100% hp
 # 	[1] ESAttackMultihit(15:6794) -> Veracity of the Cosmic Grotesque
 # 	Enemy action
 # [7] ESAttackMultihit(15:6794) -> Veracity of the Cosmic Grotesque
-# Condition: When < 10% hp
+# 	Condition: When < 10% hp (ai:100 rnd:0)
 # Enemy action
 # [8] ESSkyfall(68:6790) -> Nature's Encroaching Nightmare 
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 10)
 # Mortal Poison skyfall +15% for 15 turns
 # [9] ESAbsorbCombo(67:6791) -> Doomsday Sanctuary
 # Absorb combo <= 6 damage for 999 turns
 # [10] ESRandomSpawn(92:6792) -> Ruler of the One and Only Ocean
-# Condition: 25% chance & when Fire, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# 	Condition: 25% chance & when Fire, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:0 rnd:25)
 # Spawn random 9 Water orbs
 # [11] ESAttackMultihit(15:6793) -> Father Dagon and His Deep Ones
-# Condition: 25% chance
+# 	Condition: 25% chance (ai:0 rnd:25)
 # Enemy action
 # [12] ESDebuffMovetime(39:6795) -> Sealing Silence of the Deep
-# Condition: 25% chance
+# 	Condition: 25% chance (ai:0 rnd:25)
 # Movetime 25% for 1 turns
 # [13] ESOrbLock(94:6796) -> Dreaded Celestial
-# Condition: 25% chance
+# 	Condition: 25% chance (ai:0 rnd:25)
 # Lock 15 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [14] ESEndPath(36:26) -> ESEndPath
 # end_turn

@@ -184,12 +184,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -201,7 +198,7 @@ records:
 # [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	Condition: 25% chance
+# 	Condition: 25% chance (ai:0 rnd:25)
 # 	[0] ESChangeAttribute(46:6635) -> Constellation Shift
 # 	Change own attribute to Fire
 # 	[1] ESAbsorbAttribute(53:6636) -> Star Saucer
@@ -209,7 +206,7 @@ records:
 # 	[2] ESOrbLock(94:6643) -> Wicked Revelation
 # 	Lock all Heal orbs
 # [5] SkillSet:
-# 	Condition: 25% chance
+# 	Condition: 25% chance (ai:0 rnd:25)
 # 	[0] ESChangeAttribute(46:6637) -> Constellation Shift
 # 	Change own attribute to Water
 # 	[1] ESAbsorbAttribute(53:6638) -> Star Saucer
@@ -217,7 +214,7 @@ records:
 # 	[2] ESOrbLock(94:6643) -> Wicked Revelation
 # 	Lock all Heal orbs
 # [6] SkillSet:
-# 	Condition: 25% chance
+# 	Condition: 25% chance (ai:0 rnd:25)
 # 	[0] ESChangeAttribute(46:6639) -> Constellation Shift
 # 	Change own attribute to Wood
 # 	[1] ESAbsorbAttribute(53:6640) -> Star Saucer
@@ -225,7 +222,7 @@ records:
 # 	[2] ESOrbLock(94:6643) -> Wicked Revelation
 # 	Lock all Heal orbs
 # [7] SkillSet:
-# 	Condition: 25% chance
+# 	Condition: 25% chance (ai:0 rnd:25)
 # 	[0] ESChangeAttribute(46:6641) -> Constellation Shift
 # 	Change own attribute to Light
 # 	[1] ESAbsorbAttribute(53:6642) -> Star Saucer
@@ -243,10 +240,10 @@ records:
 # [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [13] ESBoardChangeAttackBits(85:6659) -> Cruelty Star
-# Condition: When < 20% hp
+# 	Condition: When < 20% hp (ai:100 rnd:0)
 # Change all orbs to Poison
 # [14] SkillSet:
-# 	Condition: When < 50% hp , one-time use
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESChangeAttribute(46:6655) -> Altered Orbit
 # 	Change own attribute to Dark
 # 	[1] ESAttackUp(17:6656) -> God King's Resonance
@@ -258,7 +255,7 @@ records:
 # [16] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [17] SkillSet:
-# 	Condition: 50% chance
+# 	Condition: 50% chance (ai:50 rnd:0)
 # 	[0] ESCloud(104:6649) -> Aries' Golden Fleece
 # 	3x1 cloud appear for 2 turns at random location
 # 	[1] ESAttackMultihit(15:6651) -> Dark Nail

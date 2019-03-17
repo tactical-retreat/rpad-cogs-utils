@@ -111,12 +111,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -138,15 +135,15 @@ records:
 # [8] ESBranchCard(90:3497) -> ESBranchCard
 # Branch on player_cards HAS [2457, 2458, 2459], target rnd 14
 # [9] ESAbsorbCombo(67:3494) -> Barrier
-# Condition: When < 70% hp , one-time use
+# 	Condition: When < 70% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Absorb combo <= 3 damage for 10 turns
 # [10] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 17
 # [11] ESRandomSpawn(92:3493) -> Summoning Saimyosho
-# Condition: 30% chance & when Fire, Water, Wood, Light, Dark, Heal, Jammer, Mortal Poison orbs are on the board
+# 	Condition: 30% chance & when Fire, Water, Wood, Light, Dark, Heal, Jammer, Mortal Poison orbs are on the board (ai:30 rnd:0)
 # Spawn random 3 Poison orbs
 # [12] ESOrbChangeAttack(48:3495) -> Miasma
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:50 rnd:0)
 # Change Random to Poison
 # [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
@@ -163,5 +160,5 @@ records:
 # [19] ESInactivity(66:3480) -> Tentacles are spreading around
 # Do nothing
 # [20] ESRandomSpawn(92:3496) -> Death by Illusion
-# Condition: When fire, water, wood, light, dark, heal, jammer, poison orbs are on the board
+# 	Condition: When fire, water, wood, light, dark, heal, jammer, poison orbs are on the board (ai:100 rnd:0)
 # Change all orbs to Mortal Poison

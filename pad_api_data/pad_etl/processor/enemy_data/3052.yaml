@@ -102,12 +102,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 3 -       11
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 3 -       11
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -115,22 +112,22 @@ records:
 # [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
 # [2] ESOrbSealRow(100:8812) -> Whirlwind Bindings
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
 # Seal 1st row for 3 turns
 # [3] ESStatusShield(20:8813) -> I won't lose!
-# Condition: When < 70% hp , one-time use
+# 	Condition: When < 70% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Voids status ailments for 10 turns
 # [4] ESAttackUp(17:8818) -> My strength won't waver yet!
-# Condition: When < 20% hp
+# 	Condition: When < 20% hp (ai:100 rnd:0)
 # Increase damage to 300% for the next 999 turns
 # [5] ESSkillDelay(89:8816) -> Blast Bash
-# Condition: 30% chance when < 40% hp
+# 	Condition: 30% chance when < 40% hp (ai:30 rnd:0)
 # Delay active skills by 3 turns
 # [6] ESAttackMultihit(15:8817) -> Tempest Slash
-# Condition: When < 40% hp
+# 	Condition: When < 40% hp (ai:100 rnd:0)
 # Enemy action
 # [7] ESColumnSpawnMulti(77:8815) -> Dragon Gale
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:50 rnd:0)
 # Change 3rd, 4th column to Wood orbs
 # [8] ESAttackMultihit(15:8814) -> Storm Slash
 # Enemy action

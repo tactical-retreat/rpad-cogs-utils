@@ -131,12 +131,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 2 -       10
 # [54] 1 -        1
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -148,7 +145,7 @@ records:
 # [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] ESRecoverPlayer(55:3671) -> Happy New Year !☆
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Player recover 100% hp
 # [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
@@ -163,10 +160,10 @@ records:
 # [10] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 18
 # [11] ESColumnSpawnMulti(77:3685) -> Fantastic Yamatai
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
 # Change 1st, 6th column to Fire orbs
 # [12] ESRowSpawnMulti(79:3674) -> Omikuji Blizzard
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:50 rnd:0)
 # Change 1st, 3rd, 5th row to Fire, Water, Wood, Light, Dark, Heal orbs
 # [13] ESAttackMultihit(15:3684) -> Clay TAMADRA Multi Throw
 # Enemy action
@@ -177,7 +174,7 @@ records:
 # [16] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [17] ESRandomSpawn(92:3688) -> May thee have a great one!
-# Condition: When fire, water, wood, light, dark, jammer, poison, mortal poison orbs are on the board
+# 	Condition: When fire, water, wood, light, dark, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 3 Heal orbs
 # [18] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 21
@@ -186,7 +183,7 @@ records:
 # [20] ESInactivity(66:3673) -> okimiH suineG etuC
 # Do nothing
 # [21] ESGravity(50:3686) -> Huge Clay TAMADRA Press
-# Condition: When < 20% hp
+# 	Condition: When < 20% hp (ai:100 rnd:0)
 # Player -150% HP
 # [22] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 10

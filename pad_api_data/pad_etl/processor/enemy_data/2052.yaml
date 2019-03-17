@@ -111,12 +111,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -136,24 +133,24 @@ records:
 # [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [8] ESAttackUp(17:2131) -> Haste
-# Condition: When < 50% hp
+# 	Condition: When < 50% hp (ai:100 rnd:0)
 # Increase damage to 200% for the next 999 turns
 # [9] ESRecoverEnemy(86:2157) -> Curaga
-# Condition: When < 70% hp , one-time use
+# 	Condition: When < 70% hp , one-time use (ai:30 rnd:0) (one-time: 1)
 # Enemy recover 100% hp
 # [10] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 90, target rnd 16
 # [11] ESOrbChangeAttack(48:2101) -> Blaze
-# Condition: 40% chance
+# 	Condition: 40% chance (ai:0 rnd:40)
 # Change Random to Fire
 # [12] ESAttackMultihit(15:2103) -> Flare
-# Condition: 30% chance when < 70% hp
+# 	Condition: 30% chance when < 70% hp (ai:0 rnd:30)
 # Enemy action
 # [13] ESGravity(50:2102) -> Cyclone
-# Condition: 10% chance
+# 	Condition: 10% chance (ai:0 rnd:10)
 # Player -70% HP
 # [14] ESAttackSinglehit(82:1) -> Disable Skill
-# Condition: 20% chance
+# 	Condition: 20% chance (ai:0 rnd:20)
 # Enemy action
 # [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
@@ -162,7 +159,7 @@ records:
 # [17] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [18] ESRowSpawnMulti(79:2155) -> Blizzaga
-# Condition: When < 90% hp
+# 	Condition: When < 90% hp (ai:100 rnd:0)
 # Change 1st, 5th row to Water orbs
 # [19] ESEndPath(36:26) -> ESEndPath
 # end_turn

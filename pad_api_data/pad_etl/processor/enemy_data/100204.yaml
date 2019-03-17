@@ -104,12 +104,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 1 -        1
 # [52] 1 -        1
 # [53] 7 -      111
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -117,7 +114,7 @@ records:
 # [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
 # [2] ESAttributeBlock(107:9317) -> Holy Effect
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 4)
 # Unable to Dark orbs for 2 turns
 # [3] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 14
@@ -128,17 +125,17 @@ records:
 # [6] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
 # [7] ESRandomSpawn(92:9318) -> Lightning
-# Condition: When fire, water, wood, heal, jammer, poison, mortal poison orbs are on the board
+# 	Condition: When fire, water, wood, heal, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 3 Light orbs
 # [8] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [9] ESDamageShield(74:9320) -> Deity's Robe
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
 # Reduce damage from all sources by 75% for 2 turns
 # [10] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 1, target rnd 6
 # [11] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESAttackUp(19:9321) -> Angel's Wrath
 # 	Increase damage to 300% for the next 999 turns
 # 	[1] ESSkillDelay(89:9322) -> Skill Corrosion

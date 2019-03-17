@@ -266,12 +266,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 2 -       10
 # [54] 1 -        1
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -309,7 +306,7 @@ records:
 # [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [14] ESRandomSpawn(92:10236) -> You're useless!
-# Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board
+# 	Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 3 Jammer orbs
 # [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
@@ -327,18 +324,18 @@ records:
 # [20] ESOrbChangeAttackBits(108:10230) -> It suits you!
 # Change Jammer to Mortal Poison
 # [21] ESOrbChangeAttackBits(108:10228) -> Let me get rid of these!
-# Condition: 33% chance
+# 	Condition: 33% chance (ai:0 rnd:33)
 # Change Dark to Jammer
 # [22] ESGravity(50:10224) -> You're OK with this, right?
-# Condition: 33% chance
+# 	Condition: 33% chance (ai:0 rnd:33)
 # Player -99% HP
 # [23] ESAttackMultihit(15:10231) -> Hey now, what's up with you?
-# Condition: 34% chance
+# 	Condition: 34% chance (ai:0 rnd:34)
 # Enemy action
 # [24] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [25] ESBindAwoken(88:10226) -> How about that?
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
 # Bind awoken skills for 2 turns
 # [26] ESBranchRemainingEnemies(120:8595) -> ESBranchRemainingEnemies
 # Branch on remaining enemies = 1, target rnd 10

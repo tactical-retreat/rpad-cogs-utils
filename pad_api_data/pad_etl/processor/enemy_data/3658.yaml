@@ -93,12 +93,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 7 -      111
 # [54] 1 -        1
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -114,7 +111,7 @@ records:
 # [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [6] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 7)
 # 	[0] ESBindRandomSub(65:7203) -> Roar
 # 	Bind 1 random subs for 1 turns
 # 	[1] ESInactivity(66:7204) -> Fireball Charge
@@ -122,31 +119,31 @@ records:
 # [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [8] ESAttackUp(17:7211) -> Scalding Tail
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 3)
 # Increase damage to 150% for the next 10 turns
 # [9] ESStorePower(8:7212) -> Great Tailspin Stance
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 5)
 # Increase damage to 4100% for the next attack
 # [10] ESBombRandomSpawn(102:7213) -> Three-hit Fireball Breath
-# Condition: 50% chance when < 40% hp
+# 	Condition: 50% chance when < 40% hp (ai:50 rnd:0)
 # Spawn random 6 Bomb orbs
 # [11] ESAttackMultihit(15:7214) -> Combo Jumping Tail Strike
-# Condition: When < 40% hp
+# 	Condition: When < 40% hp (ai:100 rnd:0)
 # Enemy action
 # [12] ESRandomSpawn(92:7206) -> Bite
-# Condition: One-time use
+# 	Condition: One-time use (ai:0 rnd:20) (one-time: 1)
 # Spawn random 3 Fire orbs
 # [13] ESBombRandomSpawn(102:7207) -> Fireball Breath
-# Condition: One-time use
+# 	Condition: One-time use (ai:0 rnd:20) (one-time: 1)
 # Spawn random 3 Bomb orbs
 # [14] ESRandomSpawn(92:7208) -> Fire Wave
-# Condition: 20% chance
+# 	Condition: 20% chance (ai:0 rnd:20)
 # Spawn random 6 Fire orbs
 # [15] ESAttackMultihit(15:7209) -> Tail Slam
-# Condition: 20% chance
+# 	Condition: 20% chance (ai:0 rnd:20)
 # Enemy action
 # [16] ESGravity(50:7210) -> Jumping Tail Strike
-# Condition: 20% chance
+# 	Condition: 20% chance (ai:0 rnd:20)
 # Player -70% HP
 # [17] ESEndPath(36:26) -> ESEndPath
 # end_turn

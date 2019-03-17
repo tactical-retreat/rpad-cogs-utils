@@ -104,12 +104,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 1 -        1
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -138,13 +135,13 @@ records:
 # [9] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 4, target rnd 14
 # [10] ESRandomSpawn(92:10987) -> Cauchemar Fragment
-# Condition: 33% chance & when Fire, Water, Wood, Light, Dark, Heal, Mortal Poison orbs are on the board
+# 	Condition: 33% chance & when Fire, Water, Wood, Light, Dark, Heal, Mortal Poison orbs are on the board (ai:0 rnd:33)
 # Spawn random 2 Jammer, Poison orbs
 # [11] ESOrbChangeAttack(48:10988) -> Cauchemar Tempest
-# Condition: 33% chance
+# 	Condition: 33% chance (ai:0 rnd:33)
 # Change Random to Jammer
 # [12] ESAttackMultihit(15:10989) -> Cauchemar Impact
-# Condition: 34% chance
+# 	Condition: 34% chance (ai:0 rnd:34)
 # Enemy action
 # [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
@@ -171,7 +168,7 @@ records:
 # [21] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [22] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESSpinnersRandom(109:10991) -> Cauchemar Despair
 # 	Random 4 orbs change every 1.5s for 4 turns
 # 	[1] ESBlind(5:10997) -> Astaroth's Judgment

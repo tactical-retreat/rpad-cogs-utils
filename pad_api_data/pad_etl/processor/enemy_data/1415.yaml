@@ -102,12 +102,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 4 -      100
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -125,15 +122,15 @@ records:
 # [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 10
 # [7] ESOrbChangeSingle(4:10881) -> Bitten Fruit
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:0 rnd:50)
 # Change Heal to Poison
 # [8] ESBindRandom(1:10882) -> Completely Consumed Fruit
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:0 rnd:50)
 # Bind 1 random cards for 10 turns
 # [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [10] ESRecoverEnemy(86:10883) -> Dwarven Rebirth
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Enemy recover 100% hp
 # [11] ESAttackMultihit(15:10884) -> Raging Dwarf
 # Enemy action

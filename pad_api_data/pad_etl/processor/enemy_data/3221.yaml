@@ -427,12 +427,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 3 -       11
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -471,7 +468,7 @@ records:
 # [12] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [13] SkillSet:
-# 	Condition: When < 99% hp
+# 	Condition: When < 99% hp (ai:100 rnd:0)
 # 	[0] ESBindAttack(63:5649) -> I simply can't lose ♪
 # 	Bind 1 random for 4 turns
 # 	[1] ESDamageShield(74:5659) -> Steel Arabesque
@@ -488,14 +485,14 @@ records:
 # [17] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 16, target rnd 30
 # [18] ESAttackUp(17:5672) -> Warrior's March
-# Condition: When < 50% hp
+# 	Condition: When < 50% hp (ai:100 rnd:0)
 # Increase damage to 150% for the next 999 turns
 # [19] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 24
 # [20] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
 # [21] SkillSet:
-# 	Condition: 50% chance
+# 	Condition: 50% chance (ai:50 rnd:0)
 # 	[0] ESBlindStickyFixed(98:5650) -> Surely you can hear the Orbs' song ♪
 # 	Blind orbs in specific positions for 1 turns
 # 	[1] ESBoardChangeAttackBits(85:5652) -> Rainbow Septet
@@ -510,7 +507,7 @@ records:
 # [24] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b1000
 # [25] ESOrbLock(94:5655) -> Obbligato of Ice Blades
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:50 rnd:0)
 # Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [26] ESAttackMultihit(15:5662) -> Ice Blossom Quartet
 # Enemy action
@@ -519,10 +516,10 @@ records:
 # [28] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11111
 # [29] ESAbsorbCombo(67:5656) -> Barcarole for the River of Woe
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
 # Absorb combo <= 6 damage for 2 turns
 # [30] ESCloud(104:5673) -> This is your last performance!
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Row of cloud appear for 1 turns at random location
 # [31] ESAttackMultihit(15:5657) -> Requiem of a Thousand Creeds
 # Enemy action

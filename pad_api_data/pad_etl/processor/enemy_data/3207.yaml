@@ -122,12 +122,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 2 -       10
 # [54] 1 -        1
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -170,17 +167,17 @@ records:
 # [17] ESOrbLock(94:5707) -> Sacred Exorcist Flame
 # Lock all Jammer, Poison orbs
 # [18] ESBoardChangeAttackBits(85:5708) -> Fireball of Mass Destruction
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
 # Change all orbs to Fire, Dark, Heal, Poison
 # [19] ESRandomSpawn(92:5706) -> Triple Abaddon Wave
-# Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board
+# 	Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 3 Jammer orbs
 # [20] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [21] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [22] SkillSet:
-# 	Condition: When < 20% hp
+# 	Condition: When < 20% hp (ai:100 rnd:0)
 # 	[0] ESAbsorbCombo(67:5699) -> Bonfire of Enlightenment
 # 	Absorb combo <= 7 damage for 1 turns
 # 	[1] ESDebuffMovetime(39:5704) -> Blazing Brand of Retribution

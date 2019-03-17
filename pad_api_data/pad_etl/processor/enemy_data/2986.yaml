@@ -140,12 +140,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 1 -        1
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -153,7 +150,7 @@ records:
 # [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
 # [2] ESDeathCry(69:4884) -> Robot Transformation
-# Condition: On death
+# 	Condition: On death (ai:0 rnd:0)
 # Show message: Justice Gate!! |Equipping External Unit
 # [3] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 7
@@ -173,10 +170,10 @@ records:
 # 	[1] ESFixedStart(101:4889) -> Justice Road
 # 	Fix orb movement starting point to random position on the board
 # [10] ESDebuffMovetime(39:4891) -> Justice Beam Cannon
-# Condition: When < 30% hp , one-time use
+# 	Condition: When < 30% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Movetime -2s for 1 turns
 # [11] ESAttackMultihit(15:4886) -> Justice Gatling
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:50 rnd:0)
 # Enemy action
 # [12] ESRowSpawnMulti(79:4887) -> Justice Cutter
 # Change 2nd row to Wood, Heal orbs

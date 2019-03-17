@@ -111,12 +111,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 3 -       11
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -132,13 +129,13 @@ records:
 # [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] ESAbsorbAttribute(53:4624) -> Fire-Extinguishing Wind
-# Condition: When < 60% hp , one-time use
+# 	Condition: When < 60% hp , one-time use (ai:100 rnd:0) (one-time: 2)
 # Absorb Fire damage for 5 turns
 # [7] ESRandomSpawn(92:4625) -> A quick wind disturbs the Orbs
-# Condition: When < 30% hp , one-time use & when Fire, Water, Wood, Light, Dark, Heal, Poison, Mortal Poison orbs are on the board
+# 	Condition: When < 30% hp , one-time use & when Fire, Water, Wood, Light, Dark, Heal, Poison, Mortal Poison orbs are on the board (ai:100 rnd:0) (one-time: 1)
 # Spawn random 15 Jammer orbs
 # [8] ESRowSpawnMulti(79:4626) -> Wind Spiral
-# Condition: When < 30% hp
+# 	Condition: When < 30% hp (ai:100 rnd:0)
 # Change 1st row to Wood orbs
 # [9] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 100, target rnd 12

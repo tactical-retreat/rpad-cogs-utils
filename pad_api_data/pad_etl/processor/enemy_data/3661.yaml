@@ -200,12 +200,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -230,28 +227,28 @@ records:
 # [8] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 100, target rnd 17
 # [9] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESBindRandomSub(65:7194) -> Roar
 # 	Bind 1 random subs for 1 turns
 # 	[1] ESAttackUp(17:7195) -> Rage
 # 	Increase damage to 120% for the next 10 turns
 # [10] ESColumnSpawnMulti(77:7202) -> Water Jet
-# Condition: When < 20% hp
+# 	Condition: When < 20% hp (ai:100 rnd:0)
 # Change 3rd column to Water orbs
 # [11] ESGravity(50:7197) -> Dash Attack
-# Condition: 20% chance
+# 	Condition: 20% chance (ai:0 rnd:20)
 # Player -70% HP
 # [12] ESAttackMultihit(15:7198) -> Combo Bite
-# Condition: 20% chance
+# 	Condition: 20% chance (ai:0 rnd:20)
 # Enemy action
 # [13] ESRandomSpawn(92:7199) -> Body Press
-# Condition: 20% chance
+# 	Condition: 20% chance (ai:0 rnd:20)
 # Spawn random 5 Water orbs
 # [14] ESSkillDelay(89:7200) -> Tail Somersault
-# Condition: 20% chance
+# 	Condition: 20% chance (ai:0 rnd:20)
 # Delay active skills by 1 turns
 # [15] ESDebuffMovetime(39:7201) -> Spin Attack
-# Condition: 20% chance
+# 	Condition: 20% chance (ai:0 rnd:20)
 # Movetime -1s for 1 turns
 # [16] ESEndPath(36:26) -> ESEndPath
 # end_turn

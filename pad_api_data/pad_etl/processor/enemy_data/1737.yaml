@@ -84,12 +84,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 0 -        0
 # [53] 1 -        1
 # [54] 1 -        1
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -107,10 +104,10 @@ records:
 # [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 11
 # [7] ESGravity(50:1684) -> Absolute Zero
-# Condition: When < 30% hp , one-time use
+# 	Condition: When < 30% hp , one-time use (ai:75 rnd:0) (one-time: 1)
 # Player -100% HP
 # [8] ESBindAttack(63:1686) -> Freezing Blast
-# Condition: When < 75% hp , one-time use
+# 	Condition: When < 75% hp , one-time use (ai:75 rnd:0) (one-time: 1)
 # Bind 1 random for 2~4 turns
 # [9] ESOrbChangeAttack(48:1685) -> Blue Blizzard
 # Change Random to Water
@@ -121,7 +118,7 @@ records:
 # [12] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [13] ESBindAttack(63:1687) -> Ice Coffin
-# Condition: When < 50% hp
+# 	Condition: When < 50% hp (ai:100 rnd:0)
 # Bind 5 random for 1~3 turns
 # [14] ESEndPath(36:26) -> ESEndPath
 # end_turn

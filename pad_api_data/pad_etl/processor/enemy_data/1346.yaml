@@ -120,12 +120,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -150,19 +147,19 @@ records:
 # [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 21
 # [9] ESBindSkill(14:3179) -> Collar of Brisingar
-# Condition: When < 70% hp , one-time use
+# 	Condition: When < 70% hp , one-time use (ai:50 rnd:0) (one-time: 1)
 # Bind active skills for 2 turns
 # [10] ESDebuffMovetime(39:3180) -> Sessrumnir
-# Condition: When < 70% hp , one-time use
+# 	Condition: When < 70% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Movetime -2s for 5 turns
 # [11] ESRandomSpawn(92:3174) -> Piggy Attack
-# Condition: 35% chance & when Fire, Water, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# 	Condition: 35% chance & when Fire, Water, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:0 rnd:35)
 # Spawn random 3 Wood orbs
 # [12] ESAttackMultihit(15:3175) -> Kitty Attack
-# Condition: 35% chance
+# 	Condition: 35% chance (ai:0 rnd:35)
 # Enemy action
 # [13] ESRandomSpawn(92:3176) -> Hawk Attack
-# Condition: 30% chance & when Fire, Water, Wood, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# 	Condition: 30% chance & when Fire, Water, Wood, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:0 rnd:30)
 # Spawn random 3 Light orbs
 # [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
@@ -171,7 +168,7 @@ records:
 # [16] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [17] ESRandomSpawn(92:3182) -> Keep it up, big brother!
-# Condition: When fire, water, wood, light, dark, jammer, poison, mortal poison orbs are on the board
+# 	Condition: When fire, water, wood, light, dark, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 3 Heal orbs
 # [18] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 8

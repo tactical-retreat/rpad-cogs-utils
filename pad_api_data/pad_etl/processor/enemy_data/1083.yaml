@@ -75,12 +75,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 3 -       11
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 0 -        0
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -96,7 +93,7 @@ records:
 # [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [6] ESRandomSpawn(92:5290) -> Let's eat grapes together!
-# Condition: When fire, water, wood, light, heal, jammer, poison, mortal poison orbs are on the board
+# 	Condition: When fire, water, wood, light, heal, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 3 Dark orbs
 # [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
@@ -105,21 +102,21 @@ records:
 # [9] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [10] ESRandomSpawn(92:5285) -> I'll take one
-# Condition: When dark orbs are on the board
+# 	Condition: When dark orbs are on the board (ai:100 rnd:0)
 # Spawn random 1 Heal orbs
 # [11] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b10
 # [12] ESOrbChangeAttack(48:5289) -> No grapes? Let's eat this instead then!
 # Change Heal to Jammer
 # [13] ESRandomSpawn(92:5290) -> Let's eat grapes together!
-# Condition: When fire, water, wood, light, heal, jammer, poison, mortal poison orbs are on the board
+# 	Condition: When fire, water, wood, light, heal, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 3 Dark orbs
 # [14] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 18
 # [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [16] ESRandomSpawn(92:5286) -> Seed Gun!
-# Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board
+# 	Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 1 Jammer orbs
 # [17] ESEndPath(36:26) -> ESEndPath
 # end_turn
@@ -128,19 +125,19 @@ records:
 # [19] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
 # [20] ESRandomSpawn(92:5287) -> I'll take another one
-# Condition: When dark orbs are on the board
+# 	Condition: When dark orbs are on the board (ai:100 rnd:0)
 # Spawn random 1 Heal orbs
 # [21] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b1000
 # [22] ESOrbChangeAttack(48:5289) -> No grapes? Let's eat this instead then!
 # Change Heal to Jammer
 # [23] ESRandomSpawn(92:5290) -> Let's eat grapes together!
-# Condition: When fire, water, wood, light, heal, jammer, poison, mortal poison orbs are on the board
+# 	Condition: When fire, water, wood, light, heal, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 3 Dark orbs
 # [24] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b1110
 # [25] ESRandomSpawn(92:5288) -> Seed Cannon!
-# Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board
+# 	Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 3 Jammer orbs
 # [26] ESEndPath(36:26) -> ESEndPath
 # end_turn

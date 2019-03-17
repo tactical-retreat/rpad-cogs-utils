@@ -156,12 +156,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 3 -       11
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -173,20 +170,20 @@ records:
 # [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [4] ESStatusShield(20:8985) -> It's special, right?
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
 # Voids status ailments for 3 turns
 # [5] ESAbsorbAttribute(53:8986) -> Kirin's Perception
-# Condition: When < 50% hp , one-time use
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Absorb Light damage for 2 turns
 # [6] ESBoardChangeAttackBits(85:8989) -> Kirin Four Origin Perception
-# Condition: When < 10% hp
+# 	Condition: When < 10% hp (ai:100 rnd:0)
 # Change all orbs to Fire, Water, Wood, Light
 # [7] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 3, target rnd 11
 # [8] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
 # [9] ESBindAttack(63:8987) -> Chocolate Kiss
-# Condition: 15% chance
+# 	Condition: 15% chance (ai:15 rnd:0)
 # Bind 1 subs for 1 turns
 # [10] ESAttackMultihit(15:8995) -> Sweet Combo
 # Enemy action

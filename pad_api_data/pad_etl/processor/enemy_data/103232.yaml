@@ -102,12 +102,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 4 -      100
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -115,7 +112,7 @@ records:
 # [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
 # [2] ESVoidShield(71:11369) -> Spooky Light
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Void damage >= 100 for 3 turns
 # [3] ESBranchRemainingEnemies(120:8595) -> ESBranchRemainingEnemies
 # Branch on remaining enemies = 1, target rnd 9
@@ -124,7 +121,7 @@ records:
 # [5] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
 # [6] ESRandomSpawn(92:11370) -> Eerie Flare
-# Condition: 50% chance & when Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison orbs are on the board
+# 	Condition: 50% chance & when Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison orbs are on the board (ai:50 rnd:0)
 # Spawn random 3 Mortal Poison orbs
 # [7] ESBombRandomSpawn(102:11371) -> Cat Bomb
 # Spawn random 1 Bomb orbs

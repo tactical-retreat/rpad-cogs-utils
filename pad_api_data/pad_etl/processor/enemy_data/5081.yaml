@@ -106,12 +106,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 3 -       11
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -120,18 +117,18 @@ records:
 # Enable preempt if level 1
 # [2] ESAbsorbCombo(67:12560) -> Want to see my Kung-Fu?
 # I'll  show you.
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
 # Absorb combo <= 5 damage for 5 turns
 # [3] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 8
 # [4] SkillSet:
-# 	Condition: 33% chance
+# 	Condition: 33% chance (ai:0 rnd:33)
 # 	[0] ESAttackMultihit(15:12562) -> Rankyaku
 # 	Enemy action
 # 	[1] ESAttackMultihit(15:12563) -> Yosokyaku
 # 	Enemy action
 # [5] SkillSet:
-# 	Condition: 33% chance
+# 	Condition: 33% chance (ai:0 rnd:33)
 # 	[0] ESAttackMultihit(15:12565) -> Hyakuretsukyaku
 # 	Enemy action
 # 	[1] ESAttackSinglehit(82:1) -> Disable Skill
@@ -139,7 +136,7 @@ records:
 # 	[2] ESOrbChangeAttack(48:12566) -> Spinning Bird Kick
 # 	Change Random to Water
 # [6] SkillSet:
-# 	Condition: 34% chance
+# 	Condition: 34% chance (ai:0 rnd:34)
 # 	[0] ESRowSpawnMulti(79:12568) -> Kikoken
 # 	Change 3rd row to Water orbs
 # 	[1] ESAttackSinglehit(82:1) -> Disable Skill
@@ -149,7 +146,7 @@ records:
 # [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [8] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESAttackUp(17:12570) -> Renkiko
 # 	Increase damage to 150% for the next 10 turns
 # 	[1] ESInactivity(66:12672) ->  I won't let up on you!
@@ -157,7 +154,7 @@ records:
 # [9] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 16, target rnd 4
 # [10] ESRandomSpawn(92:12571) -> Hoyokusen
-# Condition: When fire, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board
+# 	Condition: When fire, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 10 Water orbs
 # [11] ESEndPath(36:26) -> ESEndPath
 # end_turn

@@ -124,12 +124,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 1 -        1
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -156,19 +153,19 @@ records:
 # [9] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 75, target rnd 15
 # [10] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:0 rnd:25) (one-time: 1)
 # 	[0] ESMaxHPChange(111:12316) -> Evil Eye of the Gorgon
 # 	Change player HP to 50000 for 2 turns
 # 	[1] ESRowSpawnMulti(79:12317) -> Shining Spear
 # 	Change 3rd row to Light orbs
 # [11] ESAttackMultihit(15:12318) -> Divine Saber
-# Condition: 25% chance
+# 	Condition: 25% chance (ai:0 rnd:25)
 # Enemy action
 # [12] ESOrbLock(94:12319) -> Siculus Chain
-# Condition: 25% chance
+# 	Condition: 25% chance (ai:0 rnd:25)
 # Lock 15 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [13] ESDebuffMovetime(39:12320) -> Steel Strike
-# Condition: 25% chance
+# 	Condition: 25% chance (ai:0 rnd:25)
 # Movetime -2s for 1 turns
 # [14] ESEndPath(36:26) -> ESEndPath
 # end_turn

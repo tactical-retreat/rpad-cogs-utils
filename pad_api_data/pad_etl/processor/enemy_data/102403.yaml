@@ -122,12 +122,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 3 -       11
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -135,13 +132,13 @@ records:
 # [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
 # [2] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
 # 	[0] ESDebuffRCV(105:11337) -> Bad Halloween!
 # 	Rcv 50% for 10 turns
 # 	[1] ESVoidShield(71:11338) -> Trick or Treat
 # 	Void damage >= 10000000 for 99 turns
 # [3] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESGravity(50:11340) -> Jack-o'-Lantern
 # 	Player -99% HP
 # 	[1] ESLeaderSwap(75:11341) -> Medje Trick or Treat
@@ -151,13 +148,13 @@ records:
 # [5] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 10
 # [6] ESOrbLock(94:11342) -> Patched Sweet Memories
-# Condition: 33% chance
+# 	Condition: 33% chance (ai:0 rnd:33)
 # Lock 15 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [7] ESAttackMultihit(15:11343) -> Candy Shot
-# Condition: 33% chance
+# 	Condition: 33% chance (ai:0 rnd:33)
 # Enemy action
 # [8] ESBlind(5:11344) -> Mysterious Night
-# Condition: 34% chance
+# 	Condition: 34% chance (ai:0 rnd:34)
 # Blind all orbs on the board
 # [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
@@ -173,7 +170,7 @@ records:
 # [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [14] ESRandomSpawn(92:11348) -> The End of Halloween
-# Condition: When fire, water, wood, light, dark, heal, poison orbs are on the board
+# 	Condition: When fire, water, wood, light, dark, heal, poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 6 Jammer, Mortal Poison orbs
 # [15] ESEndPath(36:26) -> ESEndPath
 # end_turn

@@ -147,12 +147,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 0 -        0
 # [53] 1 -        1
 # [54] 1 -        1
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -170,16 +167,16 @@ records:
 # [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 12
 # [7] ESOrbChangeAttack(48:1728) -> Burning Blizzard
-# Condition: 50% chance when < 30% hp
+# 	Condition: 50% chance when < 30% hp (ai:50 rnd:0)
 # Change Random to Fire
 # [8] ESOrbChangeAttack(48:1729) -> Burning Blizzard
-# Condition: When < 30% hp
+# 	Condition: When < 30% hp (ai:100 rnd:0)
 # Change Random to Water
 # [9] ESOrbChangeAttack(48:1726) -> Grimoire of Flame
-# Condition: 30% chance
+# 	Condition: 30% chance (ai:30 rnd:0)
 # Change Heal to Fire
 # [10] ESBlind(62:1727) -> Volcanic Smoke
-# Condition: When < 75% hp , one-time use
+# 	Condition: When < 75% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Blind all orbs on the board
 # [11] ESAttackMultihit(15:10930) -> Pentacle of the Demonic Sword
 # Enemy action
@@ -188,7 +185,7 @@ records:
 # [13] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [14] ESSkyfall(68:1725) -> Flame Evocation
-# Condition: When < 50% hp
+# 	Condition: When < 50% hp (ai:100 rnd:0)
 # Fire skyfall +25% for 99 turns
 # [15] ESEndPath(36:26) -> ESEndPath
 # end_turn

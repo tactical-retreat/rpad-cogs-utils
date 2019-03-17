@@ -108,12 +108,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 7 -      111
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -133,17 +130,17 @@ records:
 # [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [8] ESAttackMultihit(15:8503) -> That hurt!
-# Condition: When < 80% hp , one-time use
+# 	Condition: When < 80% hp , one-time use (ai:100 rnd:0) (one-time: 4)
 # Enemy action
 # [9] SkillSet:
-# 	Condition: When < 50% hp , one-time use
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 2)
 # 	[0] ESStatusShield(20:8504) -> As a sign of my respect,
 # I'll fight you using my true strength.
 # 	Voids status ailments for 3 turns
 # 	[1] ESAttackUp(17:8505) -> Don't say I didn't warn you!
 # 	Increase damage to 150% for the next 999 turns
 # [10] ESAttackMultihit(15:8508) -> I'll beat you like a rag doll and throw you!
-# Condition: When < 50% hp , one-time use
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Enemy action
 # [11] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 1, target rnd 14
@@ -158,6 +155,6 @@ records:
 # [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [17] SkillSet:
-# 	Condition: On death
+# 	Condition: On death (ai:0 rnd:0)
 # 	[0] ESInactivity(66:8509) -> Goodbye...
 # 	Do nothing

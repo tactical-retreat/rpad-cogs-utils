@@ -149,12 +149,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 1 -        1
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -189,13 +186,13 @@ records:
 # [13] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 18
 # [14] ESOrbChangeAttackBits(108:11168) -> P-Please be patient!
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Change Poison to Heal
 # [15] ESRandomSpawn(92:11167) -> B-Be careful!
-# Condition: 50% chance & when Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison orbs are on the board
+# 	Condition: 50% chance & when Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison orbs are on the board (ai:0 rnd:50)
 # Spawn random 3 Heal, Mortal Poison orbs
 # [16] ESAttackMultihit(15:11123) -> S-Sorry!
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:0 rnd:50)
 # Enemy action
 # [17] ESEndPath(36:26) -> ESEndPath
 # end_turn
@@ -225,6 +222,6 @@ records:
 # [28] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [29] SkillSet:
-# 	Condition: On death
+# 	Condition: On death (ai:0 rnd:0)
 # 	[0] ESInactivity(66:11174) -> Oh, you are not an intruder?!...
 # 	Do nothing

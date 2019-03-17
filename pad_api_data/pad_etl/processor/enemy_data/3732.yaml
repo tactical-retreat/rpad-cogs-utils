@@ -262,12 +262,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 9 -     1001
 # [54] 1 -        1
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -279,7 +276,7 @@ records:
 # [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 9)
 # 	[0] ESSpinnersFixed(110:7518) -> Confusion
 # 	Specific orbs change every 1.0s for 10 turns
 # 	[1] ESStatusShield(20:7519) -> Dragonscale
@@ -289,7 +286,7 @@ records:
 # [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 9)
 # 	[0] ESSpinnersRandom(109:7523) -> Confusion
 # 	Random 3 orbs change every 1.0s for 10 turns
 # 	[1] ESBindAwoken(88:7538) -> Suppression
@@ -303,13 +300,13 @@ records:
 # [8] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [9] SkillSet:
-# 	Condition: 50% chance when < 66% hp
+# 	Condition: 50% chance when < 66% hp (ai:50 rnd:0)
 # 	[0] ESDamageShield(74:7532) -> Wall
 # 	Reduce damage from all sources by 50% for 3 turns
 # 	[1] ESLeaderSwap(75:7530) -> Rejection
 # 	Leader changes to random sub for 3 turns
 # [10] SkillSet:
-# 	Condition: When < 66% hp
+# 	Condition: When < 66% hp (ai:100 rnd:0)
 # 	[0] ESDamageShield(74:7533) -> Wall
 # 	Reduce damage from all sources by 75% for 3 turns
 # 	[1] ESLeaderSwap(75:7530) -> Rejection
@@ -323,13 +320,13 @@ records:
 # [14] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [15] SkillSet:
-# 	Condition: 50% chance when < 31% hp
+# 	Condition: 50% chance when < 31% hp (ai:50 rnd:0)
 # 	[0] ESDamageShield(74:7532) -> Wall
 # 	Reduce damage from all sources by 50% for 3 turns
 # 	[1] ESBindAwoken(88:7531) -> Suppression
 # 	Bind awoken skills for 3 turns
 # [16] SkillSet:
-# 	Condition: When < 31% hp
+# 	Condition: When < 31% hp (ai:100 rnd:0)
 # 	[0] ESDamageShield(74:7533) -> Wall
 # 	Reduce damage from all sources by 75% for 3 turns
 # 	[1] ESBindAwoken(88:7531) -> Suppression
@@ -339,19 +336,19 @@ records:
 # [18] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [19] ESBombFixedSpawn(103:7525) -> Ignited
-# Condition: 20% chance
+# 	Condition: 20% chance (ai:0 rnd:20)
 # Spawn Bomb orbs in the specified positions
 # [20] ESOrbChangeAttack(48:7526) -> Flare Breath
-# Condition: 20% chance
+# 	Condition: 20% chance (ai:0 rnd:20)
 # Change Water to Fire
 # [21] ESOrbLock(94:7527) -> Nova
-# Condition: 20% chance
+# 	Condition: 20% chance (ai:0 rnd:20)
 # Lock 4 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [22] ESCloud(104:7528) -> Heat Haze
-# Condition: 20% chance
+# 	Condition: 20% chance (ai:0 rnd:20)
 # 1x1 cloud appear for 1 turns at random location
 # [23] ESAttackMultihit(15:7529) -> Meteor
-# Condition: 20% chance
+# 	Condition: 20% chance (ai:0 rnd:20)
 # Enemy action
 # [24] ESEndPath(36:26) -> ESEndPath
 # end_turn

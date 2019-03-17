@@ -258,12 +258,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -271,7 +268,7 @@ records:
 # [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
 # [2] ESDeathCry(69:3020) -> *****
-# Condition: On death
+# 	Condition: On death (ai:0 rnd:0)
 # Show message: You're....you're pretty strong.
 # Well then, let's summon this thing.|By releasing its magical power,
 # the staff turned into a beast.
@@ -288,12 +285,12 @@ records:
 # [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 13
 # [9] ESAttackUp(19:3023) -> Let's Go!
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Increase damage to 200% for the next 999 turns
 # [10] ESOrbChangeAttack(48:3024) -> Rose Flare
 # Change Jammer to Fire
 # [11] ESRandomSpawn(92:3025) -> Snake Bite
-# Condition: 60% chance
+# 	Condition: 60% chance (ai:60 rnd:0)
 # Spawn random 5 Jammer orbs
 # [12] ESBlind(62:3026) -> Shadow Tail
 # Blind all orbs on the board
@@ -302,13 +299,13 @@ records:
 # [14] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [15] ESBindRandom(1:3027) -> Black Magic Charge
-# Condition: When < 50% hp
+# 	Condition: When < 50% hp (ai:100 rnd:0)
 # Bind 1 random cards for 1 turns
 # [16] ESAttackMultihit(15:3029) -> Violet Flame
-# Condition: When < 45% hp
+# 	Condition: When < 45% hp (ai:100 rnd:0)
 # Enemy action
 # [17] ESRandomSpawn(92:3028) -> Violet Flaaa!
-# Condition: When < 50% hp
+# 	Condition: When < 50% hp (ai:100 rnd:0)
 # Spawn random 11 Jammer orbs
 # [18] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 8

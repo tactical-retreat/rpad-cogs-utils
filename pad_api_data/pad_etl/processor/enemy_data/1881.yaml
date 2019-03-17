@@ -124,12 +124,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 3 -       11
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -137,13 +134,13 @@ records:
 # [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
 # [2] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
 # 	[0] ESDamageShield(74:9519) -> Dance of the Stronghold
 # 	Reduce damage from all sources by 90% for 1 turns
 # 	[1] ESStatusShield(20:9520) -> Hero's Pride
 # 	Voids status ailments for 6 turns
 # [3] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESChangeAttribute(46:9522) -> Style Change
 # 	Change own attribute to Wood
 # 	[1] ESAttributeBlock(107:9523) -> Fire Chain
@@ -153,13 +150,13 @@ records:
 # [5] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
 # [6] ESColumnSpawnMulti(77:9530) -> Twin Blade Dance
-# Condition: 70% chance when < 40% hp
+# 	Condition: 70% chance when < 40% hp (ai:70 rnd:0)
 # Change 1st, 2nd, 3rd column to Fire orbs, 4th, 5th, 6th column to Wood orbs
 # [7] ESColumnSpawnMulti(77:9525) -> Flame Sword
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:50 rnd:0)
 # Change 1st column to Fire orbs
 # [8] ESRandomSpawn(92:9526) -> Wind Sword
-# Condition: When fire, water, light, dark, heal, jammer, poison, mortal poison orbs are on the board
+# 	Condition: When fire, water, light, dark, heal, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 5 Wood orbs
 # [9] ESEndPath(36:26) -> ESEndPath
 # end_turn

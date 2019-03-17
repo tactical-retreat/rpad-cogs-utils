@@ -165,12 +165,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 3 -       11
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -182,20 +179,20 @@ records:
 # [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [4] ESBlind(5:8980) -> Don't look!!
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
 # Blind all orbs on the board
 # [5] ESAbsorbAttribute(53:8981) -> Genbu's Perception
-# Condition: When < 50% hp , one-time use
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Absorb Wood damage for 2 turns
 # [6] ESBoardChangeAttackBits(85:8984) -> Genbu Seven-Star Perception
-# Condition: When < 10% hp
+# 	Condition: When < 10% hp (ai:100 rnd:0)
 # Change all orbs to Wood, Light, Dark
 # [7] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 3, target rnd 11
 # [8] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
 # [9] ESDamageShield(74:8982) -> Eternal Love Letter
-# Condition: 15% chance
+# 	Condition: 15% chance (ai:15 rnd:0)
 # Reduce damage from all sources by 75% for 1 turns
 # [10] ESAttackMultihit(15:8995) -> Sweet Combo
 # Enemy action

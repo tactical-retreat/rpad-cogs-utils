@@ -122,12 +122,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 1 -        1
 # [52] 1 -        1
 # [53] 3 -       11
 # [54] 1 -        1
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -146,10 +143,10 @@ records:
 # [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] ESAttackMultihit(15:4760) -> Super Nova
-# Condition: When < 20% hp
+# 	Condition: When < 20% hp (ai:100 rnd:0)
 # Enemy action
 # [7] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 3)
 # 	[0] ESPoisonChangeRandomAttack(64:4771) -> Poison Lightning
 # 	Change Random 6 to Poison
 # 	[1] ESOrbLock(94:4772) -> Constrain
@@ -157,10 +154,10 @@ records:
 # [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 12
 # [9] ESAttackMultihit(15:4761) -> Lightning of God
-# Condition: 50% chance when < 75% hp
+# 	Condition: 50% chance when < 75% hp (ai:50 rnd:0)
 # Enemy action
 # [10] ESOrbChangeAttack(48:4763) -> Tera Bolt
-# Condition: 30% chance
+# 	Condition: 30% chance (ai:30 rnd:0)
 # Change Heal to Jammer
 # [11] ESEndPath(36:26) -> ESEndPath
 # end_turn

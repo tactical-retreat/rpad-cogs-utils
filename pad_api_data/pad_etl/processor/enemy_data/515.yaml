@@ -229,12 +229,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 31 -    11111
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -259,7 +256,7 @@ records:
 # [7] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 20
 # [8] SkillSet:
-# 	Condition: When < 60% hp , one-time use
+# 	Condition: When < 60% hp , one-time use (ai:100 rnd:0) (one-time: 30)
 # 	[0] ESAbsorbCombo(67:6480) -> Test of Skill
 # 	Absorb combo <= 5 damage for 10 turns
 # 	[1] ESCloud(104:6481) -> Test of Perception
@@ -269,7 +266,7 @@ records:
 # 	[3] ESAttackUp(19:6483) -> Test of Endurance
 # 	Increase damage to 150% for the next 10 turns
 # [9] SkillSet:
-# 	Condition: When < 70% hp , one-time use
+# 	Condition: When < 70% hp , one-time use (ai:100 rnd:0) (one-time: 28)
 # 	[0] ESAbsorbCombo(67:6480) -> Test of Skill
 # 	Absorb combo <= 5 damage for 10 turns
 # 	[1] ESCloud(104:6481) -> Test of Perception
@@ -277,16 +274,16 @@ records:
 # 	[2] ESDebuffMovetime(39:6482) -> Test of Speed
 # 	Movetime 50% for 10 turns
 # [10] SkillSet:
-# 	Condition: When < 80% hp , one-time use
+# 	Condition: When < 80% hp , one-time use (ai:100 rnd:0) (one-time: 24)
 # 	[0] ESAbsorbCombo(67:6480) -> Test of Skill
 # 	Absorb combo <= 5 damage for 10 turns
 # 	[1] ESCloud(104:6481) -> Test of Perception
 # 	2x3 cloud appear for 10 turns at 2nd row, 3rd column
 # [11] ESAbsorbCombo(67:6480) -> Test of Skill
-# Condition: When < 90% hp , one-time use
+# 	Condition: When < 90% hp , one-time use (ai:100 rnd:0) (one-time: 16)
 # Absorb combo <= 5 damage for 10 turns
 # [12] SkillSet:
-# 	Condition: When < 60% hp , one-time use
+# 	Condition: When < 60% hp , one-time use (ai:100 rnd:0) (one-time: 14)
 # 	[0] ESCloud(104:6481) -> Test of Perception
 # 	2x3 cloud appear for 10 turns at 2nd row, 3rd column
 # 	[1] ESDebuffMovetime(39:6482) -> Test of Speed
@@ -294,25 +291,25 @@ records:
 # 	[2] ESAttackUp(19:6483) -> Test of Endurance
 # 	Increase damage to 150% for the next 10 turns
 # [13] SkillSet:
-# 	Condition: When < 70% hp , one-time use
+# 	Condition: When < 70% hp , one-time use (ai:100 rnd:0) (one-time: 12)
 # 	[0] ESCloud(104:6481) -> Test of Perception
 # 	2x3 cloud appear for 10 turns at 2nd row, 3rd column
 # 	[1] ESDebuffMovetime(39:6482) -> Test of Speed
 # 	Movetime 50% for 10 turns
 # [14] ESCloud(104:6481) -> Test of Perception
-# Condition: When < 80% hp , one-time use
+# 	Condition: When < 80% hp , one-time use (ai:100 rnd:0) (one-time: 8)
 # 2x3 cloud appear for 10 turns at 2nd row, 3rd column
 # [15] SkillSet:
-# 	Condition: When < 60% hp , one-time use
+# 	Condition: When < 60% hp , one-time use (ai:100 rnd:0) (one-time: 6)
 # 	[0] ESDebuffMovetime(39:6482) -> Test of Speed
 # 	Movetime 50% for 10 turns
 # 	[1] ESAttackUp(19:6483) -> Test of Endurance
 # 	Increase damage to 150% for the next 10 turns
 # [16] ESDebuffMovetime(39:6482) -> Test of Speed
-# Condition: When < 70% hp , one-time use
+# 	Condition: When < 70% hp , one-time use (ai:100 rnd:0) (one-time: 4)
 # Movetime 50% for 10 turns
 # [17] ESAttackUp(19:6483) -> Test of Endurance
-# Condition: When < 60% hp , one-time use
+# 	Condition: When < 60% hp , one-time use (ai:100 rnd:0) (one-time: 2)
 # Increase damage to 150% for the next 10 turns
 # [18] SkillSet:
 # 	[0] ESGravity(50:6491) -> Bash
@@ -322,7 +319,7 @@ records:
 # [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [20] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESRecoverEnemy(86:6488) -> Resurrection
 # 	Enemy recover 100% hp
 # 	[1] ESChangeAttribute(46:6489) -> Sweeping Spirit Garments
@@ -339,7 +336,7 @@ records:
 # 	[2] ESOrbLock(94:6499) -> Decision
 # 	Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [24] SkillSet:
-# 	Condition: When < 20% hp
+# 	Condition: When < 20% hp (ai:100 rnd:0)
 # 	[0] ESChangeAttribute(46:6501) -> Sweeping Spirit Garments
 # 	Change own attribute to random one of Fire, Water, Wood, Light, Dark
 # 	[1] ESAttackMultihit(15:6502) -> Saintly Valkyrie Blade

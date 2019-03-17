@@ -129,12 +129,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 3 -       11
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -151,31 +148,31 @@ records:
 # 	[1] ESOrbChangeAttack(48:5376) -> Baum Biene
 # 	Change Random to Wood
 # [5] ESDamageShield(74:5384) -> Starr Schild
-# Condition: When < 50% hp , one-time use
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 3)
 # Reduce damage from all sources by 50% for 5 turns
 # [6] ESDebuffMovetime(39:5381) -> Zeit Radieren
-# Condition: When < 50% hp , one-time use
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 2)
 # Movetime 25% for 5 turns
 # [7] ESSkyfall(68:5385) -> Tot Regen
-# Condition: When < 70% hp , one-time use
+# 	Condition: When < 70% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Poison skyfall +15% for 10 turns
 # [8] ESAttackMultihit(15:5382) -> Eisen Ärger
-# Condition: When < 15% hp
+# 	Condition: When < 15% hp (ai:100 rnd:0)
 # Enemy action
 # [9] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 12
 # [10] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [11] ESRandomSpawn(92:5378) -> Luft Schwert
-# Condition: When fire, water, wood, light, dark, jammer, poison, mortal poison orbs are on the board
+# 	Condition: When fire, water, wood, light, dark, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 4 Heal orbs
 # [12] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b10
 # [13] ESRandomSpawn(92:5379) -> Gewitter Klinge
-# Condition: 50% chance & when Heal orbs are on the board
+# 	Condition: 50% chance & when Heal orbs are on the board (ai:50 rnd:0)
 # Change all orbs to Jammer
 # [14] ESRandomSpawn(92:5380) -> Sturm Wind
-# Condition: When heal orbs are on the board
+# 	Condition: When heal orbs are on the board (ai:100 rnd:0)
 # Change all orbs to Mortal Poison
 # [15] ESColumnSpawnMulti(77:5383) -> Wirbel Lanze
 # Change 3rd, 4th column to Water, Wood, Poison orbs

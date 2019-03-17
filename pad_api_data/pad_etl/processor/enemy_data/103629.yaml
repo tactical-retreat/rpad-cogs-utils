@@ -115,12 +115,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 7 -      111
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -128,24 +125,24 @@ records:
 # [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
 # [2] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 4)
 # 	[0] ESBlindStickyFixed(98:6723) -> I am the true Dragon King!
 # 	Blind orbs in specific positions for 1 turns
 # 	[1] ESStatusShield(20:6724) -> Acnologia Transformation
 # 	Voids status ailments for 999 turns
 # [3] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
 # 	[0] ESFixedStart(101:6726) -> I recognize you as my enemy
 # 	Fix orb movement starting point to random position on the board
 # 	[1] ESAttackMultihit(15:6727) -> GWAAAH-
 # 	Enemy action
 # [4] ESDebuffMovetime(39:6728) -> You can't escape
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Movetime -1s for 3 turns
 # [5] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 35, target rnd 8
 # [6] ESAttackMultihit(15:6727) -> GWAAAH-
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:50 rnd:0)
 # Enemy action
 # [7] ESAttackMultihit(15:6730) -> DESTROY!!! DESTROY!!!
 # Enemy action

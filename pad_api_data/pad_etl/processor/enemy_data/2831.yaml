@@ -120,12 +120,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 7 -      111
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -143,23 +140,23 @@ records:
 # [6] ESBindSkill(14:4124) -> Cunning Intelligence
 # Bind active skills for 2 turns
 # [7] ESBindAttack(63:4107) -> Hired Mercenary Attack
-# Condition: When < 10% hp
+# 	Condition: When < 10% hp (ai:100 rnd:0)
 # Bind 2 subs for 2 turns
 # [8] ESDamageShield(74:4125) -> Power cannot be innocent!
-# Condition: When < 70% hp , one-time use
+# 	Condition: When < 70% hp , one-time use (ai:100 rnd:0) (one-time: 4)
 # Reduce damage from all sources by 50% for 1 turns
 # [9] ESSkillDelay(89:4126) -> Ruthless Schemer
-# Condition: When < 50% hp , one-time use
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 2)
 # Delay active skills by 2 turns
 # [10] ESDispel(6:4128) -> Puppet Master
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Voids player buff effects
 # [11] ESOrbChangeAttack(48:4127) -> LexCorp Technology
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:50 rnd:0)
 # Change Random to Light
 # [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [13] SkillSet:
-# 	Condition: On death
+# 	Condition: On death (ai:100 rnd:0)
 # 	[0] ESSkyfall(68:4067) -> Stolen Kryptonian Technology
 # 	Jammer skyfall +10% for 3 turns

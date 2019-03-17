@@ -102,12 +102,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -128,18 +125,18 @@ records:
 # [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 40, target rnd 10
 # [7] ESAttackMultihit(15:9496) -> Deadly Drive!
-# Condition: 50% chance when < 75% hp
+# 	Condition: 50% chance when < 75% hp (ai:50 rnd:0)
 # Enemy action
 # [8] ESPoisonChangeRandom(60:9498) -> Take this!
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:50 rnd:0)
 # Change Random 7 to Poison
 # [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [10] ESOrbChangeAttack(48:9495) -> Not going easy anymore!
-# Condition: When < 40% hp , one-time use
+# 	Condition: When < 40% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Change Poison to Mortal Poison
 # [11] ESAttackUp(17:9494) -> Not going easy anymore!
-# Condition: When < 40% hp , one-time use
+# 	Condition: When < 40% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Increase damage to 150% for the next 99 turns
 # [12] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 1, target rnd 16
@@ -154,7 +151,7 @@ records:
 # [17] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
 # [18] ESAttackMultihit(15:9496) -> Deadly Drive!
-# Condition: When < 75% hp
+# 	Condition: When < 75% hp (ai:100 rnd:0)
 # Enemy action
 # [19] ESEndPath(36:26) -> ESEndPath
 # end_turn

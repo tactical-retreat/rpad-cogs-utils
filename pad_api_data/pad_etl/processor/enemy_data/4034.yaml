@@ -379,12 +379,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 7 -      111
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -396,46 +393,46 @@ records:
 # [3] ESBranchLevel(33:23) -> ESBranchLevel
 # Branch on level < 3, target rnd 15
 # [4] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 4)
 # 	[0] ESStatusShield(20:8521) -> I thank you for your help. All of you.
 # 	Voids status ailments for 999 turns
 # 	[1] ESBindSkill(14:8522) -> You've fulfilled your purpose.
 # 	Bind active skills for 3 turns
 # [5] ESVoidShield(71:8524) -> How sad
-# Condition: When < 80% hp , one-time use
+# 	Condition: When < 80% hp , one-time use (ai:100 rnd:0) (one-time: 2)
 # Void damage >= 500000 for 3 turns
 # [6] ESAttackUp(17:8531) -> Disappear from my sight.
-# Condition: When < 30% hp , one-time use
+# 	Condition: When < 30% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Increase damage to 1000% for the next 999 turns
 # [7] ESBoardChangeAttackBits(85:8532) -> Nuclear Fusion
-# Condition: When < 30% hp
+# 	Condition: When < 30% hp (ai:100 rnd:0)
 # Change all orbs to Fire
 # [8] ESColumnSpawnMulti(77:8525) -> Stationary Transmutation
-# Condition: 10% chance
+# 	Condition: 10% chance (ai:0 rnd:10)
 # Change 4th column to Dark orbs
 # [9] ESRowSpawnMulti(79:8526) -> Stationary Transmutation
-# Condition: 10% chance
+# 	Condition: 10% chance (ai:0 rnd:10)
 # Change 3rd row to Light orbs
 # [10] ESRandomSpawn(92:8527) -> Stationary Transmutation
-# Condition: 20% chance
+# 	Condition: 20% chance (ai:0 rnd:20)
 # Spawn random 7 Jammer orbs
 # [11] ESDamageShield(74:8528) -> Stationary Transmutation
-# Condition: 20% chance
+# 	Condition: 20% chance (ai:0 rnd:20)
 # Reduce damage from all sources by 75% for 1 turns
 # [12] ESOrbLock(94:8529) -> Stationary Transmutation
-# Condition: 20% chance
+# 	Condition: 20% chance (ai:0 rnd:20)
 # Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [13] ESRandomSpawn(92:8530) -> Stationary Transmutation
-# Condition: 20% chance & when Fire, Water, Wood, Light, Dark, Heal, Poison, Mortal Poison orbs are on the board
+# 	Condition: 20% chance & when Fire, Water, Wood, Light, Dark, Heal, Poison, Mortal Poison orbs are on the board (ai:0 rnd:20)
 # Spawn random 4 Poison orbs
 # [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [15] ESInactivity(66:8596) -> I have to thank you for it, my friend.
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 7)
 # Do nothing
 # [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [17] SkillSet:
-# 	Condition: On death
+# 	Condition: On death (ai:0 rnd:0)
 # 	[0] ESInactivity(66:8533) -> AAAAAAAAAAAAAAAAAAA
 # 	Do nothing

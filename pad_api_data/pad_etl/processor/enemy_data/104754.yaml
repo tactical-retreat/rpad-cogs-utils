@@ -86,12 +86,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -105,25 +102,25 @@ records:
 # [4] ESBranchCard(90:11008) -> ESBranchCard
 # Branch on player_cards HAS [4751, 4752], target rnd 6
 # [5] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESBindRandomSub(65:11062) -> Arrested for obstructing public service
 # 	Bind 2 random subs for 3 turns
 # 	[1] ESRandomSpawn(92:11063) -> I hurt a policeman's heart
 # 	Spawn random 6 Dark orbs
 # [6] ESRandomSpawn(92:11003) -> Let's slurp mayonnaise in that world!
-# Condition: One-time use & when Fire, Water, Wood, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# 	Condition: One-time use & when Fire, Water, Wood, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:100 rnd:0) (one-time: 1)
 # Spawn random 3 Light orbs
 # [7] ESAttackMultihit(15:11007) -> This is the end
-# Condition: When < 10% hp
+# 	Condition: When < 10% hp (ai:100 rnd:0)
 # Enemy action
 # [8] ESSkillDelay(89:11004) -> Don't belittle an Earth policeman!
-# Condition: 33% chance
+# 	Condition: 33% chance (ai:0 rnd:33)
 # Delay active skills by 1 turns
 # [9] ESOrbLock(94:11005) -> You can't go one step further!
-# Condition: 33% chance
+# 	Condition: 33% chance (ai:0 rnd:33)
 # Lock 4 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [10] ESAttackMultihit(15:11006) -> I'll purge all of you fools!
-# Condition: 34% chance
+# 	Condition: 34% chance (ai:0 rnd:34)
 # Enemy action
 # [11] ESEndPath(36:26) -> ESEndPath
 # end_turn

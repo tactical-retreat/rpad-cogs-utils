@@ -266,12 +266,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 2 -       10
 # [54] 1 -        1
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -290,7 +287,7 @@ records:
 # [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] SkillSet:
-# 	Condition: When < 10% hp
+# 	Condition: When < 10% hp (ai:100 rnd:0)
 # 	[0] ESDispel(6:8171) -> Inactivity of the Five Skhandas
 # 	Voids player buff effects
 # 	[1] ESGravity(50:8172) -> Anuttara Samyak Sambodhi
@@ -313,32 +310,32 @@ records:
 # [13] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
 # [14] ESAbsorbCombo(67:8162) -> Central Vidyaraja Seal
-# Condition: 20% chance
+# 	Condition: 20% chance (ai:0 rnd:20)
 # Absorb combo <= 7 damage for 1 turns
 # [15] ESOrbChangeAttackBits(108:8163) -> Eastern Vidyaraja Seal
-# Condition: 20% chance
+# 	Condition: 20% chance (ai:0 rnd:20)
 # Change Heal to Light
 # [16] ESRecoverEnemy(86:8164) -> Southern Vidyaraja Seal
-# Condition: One-time use
+# 	Condition: One-time use (ai:0 rnd:20) (one-time: 2)
 # Enemy recover 10% hp
 # [17] ESSpinnersFixed(110:8165) -> Western Vidyaraja Seal
-# Condition: 20% chance
+# 	Condition: 20% chance (ai:0 rnd:20)
 # Specific orbs change every 1.0s for 1 turns
 # [18] ESDamageShield(74:8166) -> Northern Vidyaraja Seal
-# Condition: 20% chance
+# 	Condition: 20% chance (ai:0 rnd:20)
 # Reduce damage from all sources by 75% for 2 turns
 # [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [20] ESSetCounter(25:15) -> ESSetCounter
 # counter = 0
 # [21] ESOrbLock(94:8167) -> Jail of the Six Realms
-# Condition: 34% chance
+# 	Condition: 34% chance (ai:0 rnd:34)
 # Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [22] ESSkillDelay(89:8168) -> Jail of the Six Realms
-# Condition: 33% chance
+# 	Condition: 33% chance (ai:0 rnd:33)
 # Delay active skills by 2~5 turns
 # [23] ESSkyfall(68:8169) -> Jail of the Six Realms
-# Condition: 33% chance
+# 	Condition: 33% chance (ai:0 rnd:33)
 # Mortal Poison skyfall +25% for 1 turns
 # [24] ESEndPath(36:26) -> ESEndPath
 # end_turn

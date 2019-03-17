@@ -84,12 +84,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 2 -       10
 # [54] 1 -        1
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -101,7 +98,7 @@ records:
 # [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] ESLeaderSwap(75:3321) -> Sly Trick
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
 # Leader changes to random sub for 3 turns
 # [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
@@ -110,16 +107,16 @@ records:
 # [7] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 80, target rnd 15
 # [8] ESRandomSpawn(92:3326) -> Black Pain
-# Condition: When < 20% hp & when Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison orbs are on the board
+# 	Condition: When < 20% hp & when Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 6 Mortal Poison orbs
 # [9] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
 # 	[0] ESBlind(62:3324) -> Surprise Attack
 # 	Blind all orbs on the board
 # 	[1] ESChangeAttribute(46:3323) -> Transformation
 # 	Change own attribute to random one of Fire, Water, Wood
 # [10] ESAttackMultihit(15:3322) -> Fear Gift
-# Condition: 60% chance
+# 	Condition: 60% chance (ai:60 rnd:0)
 # Enemy action
 # [11] ESEndPath(36:26) -> ESEndPath
 # end_turn

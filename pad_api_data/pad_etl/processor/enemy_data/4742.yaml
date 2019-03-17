@@ -138,12 +138,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 3 -       11
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -151,22 +148,22 @@ records:
 # [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
 # [2] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
 # 	[0] ESStatusShield(20:11528) -> Concept of Boundless Worlds
 # 	Voids status ailments for 999 turns
 # 	[1] ESVoidShield(71:11529) -> Cycle of Scorched-Earth Madness
 # 	Void damage >= 20000000 for 999 turns
 # [3] SkillSet:
-# 	Condition: When < 10% hp
+# 	Condition: When < 10% hp (ai:100 rnd:0)
 # 	[0] ESRecoverEnemy(86:11531) -> Eternally Burning Wails of Calamity
 # 	Enemy recover 50% hp
 # 	[1] ESAttackUp(17:11532) -> King of the Fire Subduing Flame
 # 	Increase damage to 200% for the next 99 turns
 # [4] ESBoardChangeAttackBits(85:11534) -> Spreading Dark God's Blazing Forest
-# Condition: When < 50% hp , one-time use
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Change all orbs to Fire
 # [5] ESDispel(6:11541) -> Death of Sudden Help
-# Condition: 10% chance
+# 	Condition: 10% chance (ai:10 rnd:0)
 # Voids player buff effects
 # [6] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 10
@@ -179,7 +176,7 @@ records:
 # [10] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b1
 # [11] ESBlindStickyRandom(97:11537) -> Scraping Jet-Black Flames
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:50 rnd:0)
 # Blind random 1~3 orbs for 4 turns
 # [12] ESAttackMultihit(15:11536) -> Annihilation of a Straitened Existence
 # Enemy action

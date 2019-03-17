@@ -48,12 +48,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 4 -      100
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 1 -        1
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -73,24 +70,24 @@ records:
 # [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [8] ESRecoverEnemyAlly(52:3422) -> Friendly Thought
-# Condition: When enemy ally is killed
+# 	Condition: When enemy ally is killed (ai:100 rnd:0)
 # Enemy ally recover 45% hp
 # [9] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 70, target rnd 16
 # [10] ESGravity(50:3428) -> Wonder Bark
-# Condition: When < 10% hp , one-time use
+# 	Condition: When < 10% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Player -100% HP
 # [11] ESBindAttack(63:3423) -> Play-Bite
-# Condition: 20% chance
+# 	Condition: 20% chance (ai:0 rnd:20)
 # Bind 1 subs for 2 turns
 # [12] ESAttackMultihit(15:3426) -> Slash Woof
-# Condition: 35% chance
+# 	Condition: 35% chance (ai:0 rnd:35)
 # Enemy action
 # [13] ESColumnSpawnMulti(77:3530) -> Warming Beam
-# Condition: 35% chance
+# 	Condition: 35% chance (ai:0 rnd:35)
 # Change 3rd column to Wood orbs
 # [14] ESBlind(5:3424) -> Dig a Hole
-# Condition: 10% chance
+# 	Condition: 10% chance (ai:0 rnd:10)
 # Blind all orbs on the board
 # [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
@@ -99,5 +96,5 @@ records:
 # [17] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [18] ESDamageShield(74:3425) -> Stay
-# Condition: When < 70% hp
+# 	Condition: When < 70% hp (ai:100 rnd:0)
 # Reduce damage from all sources by 30% for 5 turns

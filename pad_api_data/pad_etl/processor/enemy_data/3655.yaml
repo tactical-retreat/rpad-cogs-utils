@@ -104,12 +104,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -128,22 +125,22 @@ records:
 # [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] SkillSet:
-# 	Condition: When < 70% hp , one-time use
+# 	Condition: When < 70% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESAttackUp(17:7301) -> Rage
 # 	Increase damage to 130% for the next 10 turns
 # 	[1] ESBindAttack(63:7300) -> Roar
 # 	Bind 2 random for 2 turns
 # [7] ESRandomSpawn(92:7296) -> Dash Attack
-# Condition: 25% chance
+# 	Condition: 25% chance (ai:0 rnd:25)
 # Spawn random 2 Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [8] ESAbsorbCombo(67:7297) -> Frontal Spin
-# Condition: 25% chance
+# 	Condition: 25% chance (ai:0 rnd:25)
 # Absorb combo <= 6 damage for 1 turns
 # [9] ESColumnSpawnMulti(77:7298) -> Boulder Throw
-# Condition: 25% chance
+# 	Condition: 25% chance (ai:0 rnd:25)
 # Change 1st, 3rd, 5th column to Jammer orbs
 # [10] ESBlind(62:7299) -> Jump Strike
-# Condition: 25% chance
+# 	Condition: 25% chance (ai:0 rnd:25)
 # Blind all orbs on the board
 # [11] ESEndPath(36:26) -> ESEndPath
 # end_turn

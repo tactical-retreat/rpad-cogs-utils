@@ -115,12 +115,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 3 -       11
-# [51] 1 -        1
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -141,21 +138,21 @@ records:
 # [6] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 1, target rnd 10
 # [7] ESRecoverEnemy(86:9363) -> Resurrection
-# Condition: When < 50% hp
+# 	Condition: When < 50% hp (ai:100 rnd:0)
 # Enemy recover 100% hp
 # [8] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
 # [9] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESBindRandom(1:9359) -> Gleipnir
 # 	Bind 2 random cards for 5 turns
 # 	[1] ESAbsorbCombo(67:9360) -> Fylgja's Protection
 # 	Absorb combo <= 6 damage for 10 turns
 # [10] ESAttackMultihit(15:9364) -> Valkyrie Blade
-# Condition: 90% chance when < 30% hp
+# 	Condition: 90% chance when < 30% hp (ai:90 rnd:0)
 # Enemy action
 # [11] ESAttackMultihit(15:9362) -> Double Slash
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:50 rnd:0)
 # Enemy action
 # [12] ESFixedStart(101:9365) -> Sword of Fate
 # Fix orb movement starting point to random position on the board

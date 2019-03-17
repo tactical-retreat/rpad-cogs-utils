@@ -93,12 +93,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -114,12 +111,12 @@ records:
 # [5] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 10
 # [6] ESInactivity(66:2184) -> Grr...gh...agh...
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Do nothing
 # [7] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [8] ESAttackMultihit(15:2188) -> Meteor
-# Condition: When < 50% hp
+# 	Condition: When < 50% hp (ai:100 rnd:0)
 # Enemy action
 # [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
@@ -146,7 +143,7 @@ records:
 # [20] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
 # [21] ESGravity(50:2110) -> Whirl
-# Condition: When < 50% hp
+# 	Condition: When < 50% hp (ai:100 rnd:0)
 # Player -99% HP
 # [22] ESOrbChangeAttack(48:2186) -> Black Hole
 # Change Random to Jammer
@@ -155,13 +152,13 @@ records:
 # [24] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b1110
 # [25] ESAttackMultihit(15:2188) -> Meteor
-# Condition: When < 50% hp
+# 	Condition: When < 50% hp (ai:100 rnd:0)
 # Enemy action
 # [26] ESPoisonChangeRandomAttack(64:2109) -> Bio
 # Change Random 5 to Poison
 # [27] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [28] SkillSet:
-# 	Condition: On death
+# 	Condition: On death (ai:100 rnd:0)
 # 	[0] ESInactivity(66:2187) -> I will never die...
 # 	Do nothing

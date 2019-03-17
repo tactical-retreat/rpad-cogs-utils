@@ -167,12 +167,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 15 -     1111
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -180,20 +177,20 @@ records:
 # [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
 # [2] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 8)
 # 	[0] ESBindSkill(14:5188) -> Hell Gate
 # 	Bind active skills for 5 turns
 # 	[1] ESBindAwoken(88:8232) -> Anima Oblio
 # 	Bind awoken skills for 6 turns
 # [3] ESAttackMultihit(15:5196) -> The Last Circle, Cocytus
-# Condition: When < 20% hp
+# 	Condition: When < 20% hp (ai:100 rnd:0)
 # Enemy action
 # [4] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 100, target rnd 17
 # [5] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 14
 # [6] SkillSet:
-# 	Condition: When < 40% hp , one-time use
+# 	Condition: When < 40% hp , one-time use (ai:100 rnd:0) (one-time: 7)
 # 	[0] ESBlind(62:5199) -> The First Circle, Limbo
 # 	Blind all orbs on the board
 # 	[1] ESPoisonChangeRandomAttack(64:5200) -> The Fourth Circle, Greed
@@ -201,28 +198,28 @@ records:
 # 	[2] ESBindAttack(63:5201) -> The Eighth Circle, Fraud
 # 	Bind 3 random for 3 turns
 # [7] SkillSet:
-# 	Condition: When < 60% hp , one-time use
+# 	Condition: When < 60% hp , one-time use (ai:100 rnd:0) (one-time: 6)
 # 	[0] ESBlind(62:5199) -> The First Circle, Limbo
 # 	Blind all orbs on the board
 # 	[1] ESPoisonChangeRandomAttack(64:5200) -> The Fourth Circle, Greed
 # 	Change Random 5 to Poison
 # [8] ESBlind(62:5193) -> The First Circle, Limbo
-# Condition: When < 80% hp , one-time use
+# 	Condition: When < 80% hp , one-time use (ai:100 rnd:0) (one-time: 4)
 # Blind all orbs on the board
 # [9] SkillSet:
-# 	Condition: When < 40% hp , one-time use
+# 	Condition: When < 40% hp , one-time use (ai:100 rnd:0) (one-time: 3)
 # 	[0] ESPoisonChangeRandomAttack(64:5200) -> The Fourth Circle, Greed
 # 	Change Random 5 to Poison
 # 	[1] ESBindAttack(63:5201) -> The Eighth Circle, Fraud
 # 	Bind 3 random for 3 turns
 # [10] ESPoisonChangeRandomAttack(64:5194) -> The Fourth Circle, Greed
-# Condition: When < 60% hp , one-time use
+# 	Condition: When < 60% hp , one-time use (ai:100 rnd:0) (one-time: 2)
 # Change Random 5 to Poison
 # [11] ESBindAttack(63:5195) -> The Eighth Circle, Fraud
-# Condition: When < 40% hp , one-time use
+# 	Condition: When < 40% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Bind 3 random for 3 turns
 # [12] ESColumnSpawnMulti(77:5197) -> Ondulazione
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:50 rnd:0)
 # Change 1st column to Water orbs
 # [13] ESColumnSpawnMulti(77:5198) -> Bufera
 # Change 6th column to Wood orbs

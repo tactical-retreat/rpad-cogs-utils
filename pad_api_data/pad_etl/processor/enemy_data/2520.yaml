@@ -93,12 +93,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 0 -        0
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -120,13 +117,13 @@ records:
 # [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 13
 # [9] ESAttackMultihit(15:3563) -> Gift Hurricane
-# Condition: When < 20% hp
+# 	Condition: When < 20% hp (ai:100 rnd:0)
 # Enemy action
 # [10] ESOrbChangeAttack(48:3560) -> Christmas of Aqua
-# Condition: 30% chance
+# 	Condition: 30% chance (ai:30 rnd:0)
 # Change Fire to Water
 # [11] ESRandomSpawn(92:3561) -> Holy Rain
-# Condition: When fire, water, wood, dark, heal, jammer, poison, mortal poison orbs are on the board
+# 	Condition: When fire, water, wood, dark, heal, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 5 Light orbs
 # [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
@@ -135,7 +132,7 @@ records:
 # [14] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [15] ESSkyfall(68:3562) -> Santa Evocation
-# Condition: When < 50% hp
+# 	Condition: When < 50% hp (ai:100 rnd:0)
 # Fire, Wood, Light skyfall +20% for 99 turns
 # [16] ESEndPath(36:26) -> ESEndPath
 # end_turn

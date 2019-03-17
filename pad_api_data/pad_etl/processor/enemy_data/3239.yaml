@@ -124,12 +124,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 3 -       11
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -137,7 +134,7 @@ records:
 # [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
 # [2] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
 # 	[0] ESStatusShield(20:11660) -> That's a good look
 # 	Voids status ailments for 999 turns
 # 	[1] ESVoidShield(71:11661) -> Try to beat me!
@@ -155,21 +152,21 @@ records:
 # [7] ESOrbChangeAttackBits(108:11663) -> Chaostrom
 # Change Poison to Mortal Poison
 # [8] ESRandomSpawn(92:11664) -> Abysstrom
-# Condition: 50% chance & when Fire, Water, Wood, Light, Dark, Heal, Jammer orbs are on the board
+# 	Condition: 50% chance & when Fire, Water, Wood, Light, Dark, Heal, Jammer orbs are on the board (ai:0 rnd:50)
 # Spawn random 8 Poison orbs
 # [9] ESAttackMultihit(15:11665) -> Double Scissors
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:0 rnd:50)
 # Enemy action
 # [10] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [11] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESRecoverEnemy(86:11670) -> How regrettable
 # 	Enemy recover 50% hp
 # 	[1] ESDamageShield(74:11671) -> Finally, you will struggle
 # 	Reduce damage from all sources by 75% for 99 turns
 # [12] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESDamageShield(74:11667) -> Finally, you will struggle...
 # 	Reduce damage from all sources by 50% for 99 turns
 # 	[1] ESDebuffMovetime(39:11668) -> Prepare yourself!

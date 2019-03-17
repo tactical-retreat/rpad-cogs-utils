@@ -205,12 +205,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 3 -       11
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -220,7 +217,7 @@ records:
 # [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 5
 # [3] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
 # 	[0] ESGravity(50:11058) -> YOOOU!
 # 	Player -1% HP
 # 	[1] ESStatusShield(20:11059) -> It still has a silver soul?!
@@ -228,22 +225,22 @@ records:
 # [4] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [5] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
 # 	[0] ESGravity(50:11037) -> YOOOU!
 # 	Player -80% HP
 # 	[1] ESStatusShield(20:11038) -> It still has a silver soul?!
 # 	Voids status ailments for 999 turns
 # [6] ESRecoverEnemy(86:11040) -> Well, eating parfait calms me down
-# Condition: When < 1% hp
+# 	Condition: When < 1% hp (ai:100 rnd:0)
 # Enemy recover 50% hp
 # [7] SkillSet:
-# 	Condition: When < 50% hp , one-time use
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESAttackUp(17:11045) -> I won't hold back from now!
 # 	Increase damage to 150% for the next 99 turns
 # 	[1] ESDebuffMovetime(39:11046) -> The puzzle game ends here!!
 # 	Movetime -2s for 3 turns
 # [8] SkillSet:
-# 	Condition: When < 10% hp
+# 	Condition: When < 10% hp (ai:100 rnd:0)
 # 	[0] ESOrbChangeAttack(48:11048) -> Even if I collab...
 # 	Change Random to Water
 # 	[1] ESBlind(62:11049) -> Until my body is destroyed...
@@ -257,39 +254,39 @@ records:
 # [11] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
 # [12] ESOrbLock(94:11041) -> PAD is not worthy of being feared!
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:0 rnd:50)
 # Lock 6 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [13] ESAttackMultihit(15:11042) -> Don't make fun of the Jump protagonist!
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:0 rnd:50)
 # Enemy action
 # [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [15] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
 # [16] ESDamageShield(74:11043) -> You won't bring me down so easily!
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:0 rnd:50)
 # Reduce damage from all sources by 50% for 1 turns
 # [17] ESRowSpawnMulti(79:11047) -> Don't mess with the Yorozuya Group!
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:0 rnd:50)
 # Change 3rd row to Water orbs
 # [18] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [19] ESSetCounter(25:15) -> ESSetCounter
 # counter = 0
 # [20] ESAbsorbAttribute(53:11052) -> There's not enough sugar!
-# Condition: 20% chance
+# 	Condition: 20% chance (ai:0 rnd:20)
 # Absorb Fire damage for 1 turns
 # [21] ESAbsorbAttribute(53:11053) -> There's not enough sugar!
-# Condition: 20% chance
+# 	Condition: 20% chance (ai:0 rnd:20)
 # Absorb Water damage for 1 turns
 # [22] ESAbsorbAttribute(53:11054) -> There's not enough sugar!
-# Condition: 20% chance
+# 	Condition: 20% chance (ai:0 rnd:20)
 # Absorb Wood damage for 1 turns
 # [23] ESAbsorbAttribute(53:11055) -> There's not enough sugar!
-# Condition: 20% chance
+# 	Condition: 20% chance (ai:0 rnd:20)
 # Absorb Light damage for 1 turns
 # [24] ESAbsorbAttribute(53:11056) -> There's not enough sugar!
-# Condition: 20% chance
+# 	Condition: 20% chance (ai:0 rnd:20)
 # Absorb Dark damage for 1 turns
 # [25] ESEndPath(36:26) -> ESEndPath
 # end_turn

@@ -158,12 +158,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 3 -       11
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -171,7 +168,7 @@ records:
 # [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
 # [2] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
 # 	[0] ESBindAwoken(88:11864) -> Disappearing Mist
 # 	Bind awoken skills for 5 turns
 # 	[1] ESSkyfall(96:11865) -> Stone Rain
@@ -181,22 +178,22 @@ records:
 # [4] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 30, target rnd 11
 # [5] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESGravity(50:11867) -> Drought
 # 	Player -99% HP
 # 	[1] ESDebuffRCV(105:11868) -> Lost Water of Life
 # 	Rcv 50% for 10 turns
 # [6] ESBindRandomSub(65:11869) -> Torrential Downpour
-# Condition: 25% chance
+# 	Condition: 25% chance (ai:0 rnd:25)
 # Bind 1 random subs for 2~3 turns
 # [7] ESSkillDelay(89:11870) -> Overflow
-# Condition: 25% chance
+# 	Condition: 25% chance (ai:0 rnd:25)
 # Delay active skills by 2 turns
 # [8] ESOrbChangeAttack(48:11871) -> High Water
-# Condition: 25% chance
+# 	Condition: 25% chance (ai:0 rnd:25)
 # Change Random to Water
 # [9] ESAttackMultihit(15:11872) -> Overflowing
-# Condition: 25% chance
+# 	Condition: 25% chance (ai:0 rnd:25)
 # Enemy action
 # [10] ESEndPath(36:26) -> ESEndPath
 # end_turn

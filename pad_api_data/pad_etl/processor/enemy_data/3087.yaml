@@ -210,12 +210,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -223,11 +220,11 @@ records:
 # [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
 # [2] ESDeathCry(69:5230) -> Changing Ana
-# Condition: On death
+# 	Condition: On death (ai:0 rnd:0)
 # Show message: Armor Drop set on D-Gear! |Divine Law Goddess, Valkyrie Rose's Energy grants
 # Ana new powers
 # [3] SkillSet:
-# 	Condition: When < 20% hp
+# 	Condition: When < 20% hp (ai:100 rnd:0)
 # 	[0] ESSkillDelay(89:5250) -> Ana starts crying
 # 	Delay active skills by 3 turns
 # 	[1] ESAttackMultihit(15:5251) -> 10 combos!!
@@ -237,7 +234,7 @@ records:
 # [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [6] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:34 rnd:0) (one-time: 1)
 # 	[0] ESInactivity(66:5234) -> Monsters!
 # 	Do nothing
 # 	[1] ESColumnSpawnMulti(77:5235) -> Dragon Summoning!!!
@@ -245,7 +242,7 @@ records:
 # [7] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1011
 # [8] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:50 rnd:0) (one-time: 1)
 # 	[0] ESInactivity(66:5234) -> Monsters!
 # 	Do nothing
 # 	[1] ESColumnSpawnMulti(77:5236) -> Dragon Summoning!!!
@@ -253,7 +250,7 @@ records:
 # [9] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b10011
 # [10] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESInactivity(66:5234) -> Monsters!
 # 	Do nothing
 # 	[1] ESColumnSpawnMulti(77:5237) -> Dragon Summoning!!!
@@ -261,7 +258,7 @@ records:
 # [11] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [12] SkillSet:
-# 	Condition: 34% chance
+# 	Condition: 34% chance (ai:34 rnd:0)
 # 	[0] ESColumnSpawnMulti(77:5235) -> Dragon Summoning!!!
 # 	Change 1st column to Fire orbs, 6th column to Water orbs
 # 	[1] ESDamageShield(74:5248) -> The Monsters block the way
@@ -269,7 +266,7 @@ records:
 # [13] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1011
 # [14] SkillSet:
-# 	Condition: 50% chance
+# 	Condition: 50% chance (ai:50 rnd:0)
 # 	[0] ESColumnSpawnMulti(77:5236) -> Dragon Summoning!!!
 # 	Change 1st column to Water orbs, 6th column to Wood orbs
 # 	[1] ESDamageShield(74:5248) -> The Monsters block the way
@@ -300,7 +297,7 @@ records:
 # [25] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 16, target rnd 30
 # [26] SkillSet:
-# 	Condition: 50% chance
+# 	Condition: 50% chance (ai:50 rnd:0)
 # 	[0] ESGravity(50:5239) -> Heat Breath
 # 	Player -50% HP
 # 	[1] ESAttackMultihit(15:5244) -> 3 combos ♪
@@ -311,7 +308,7 @@ records:
 # 	[1] ESAttackMultihit(15:5244) -> 3 combos ♪
 # 	Enemy action
 # [28] SkillSet:
-# 	Condition: 50% chance
+# 	Condition: 50% chance (ai:50 rnd:0)
 # 	[0] ESOrbChangeAttack(48:5241) -> Ice Blade
 # 	Change Random to Water
 # 	[1] ESAttackMultihit(15:5244) -> 3 combos ♪
@@ -322,7 +319,7 @@ records:
 # 	[1] ESAttackMultihit(15:5244) -> 3 combos ♪
 # 	Enemy action
 # [30] SkillSet:
-# 	Condition: 50% chance
+# 	Condition: 50% chance (ai:50 rnd:0)
 # 	[0] ESGravity(50:5239) -> Heat Breath
 # 	Player -50% HP
 # 	[1] ESAttackMultihit(15:5244) -> 3 combos ♪

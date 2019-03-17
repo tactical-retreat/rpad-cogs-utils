@@ -66,12 +66,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -81,23 +78,23 @@ records:
 # [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 5
 # [3] ESInactivity(66:11420) -> Could you give me some tips?
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Do nothing
 # [4] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [5] ESBoardChange(84:11421) -> Could you give me some tips?
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Change all orbs to Fire, Water, Wood, Light, Dark, Heal
 # [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 11
 # [7] ESRowSpawnMulti(79:11422) -> Hiyaaa!
-# Condition: 33% chance
+# 	Condition: 33% chance (ai:0 rnd:33)
 # Change 3rd row to Fire orbs
 # [8] ESRandomSpawn(92:11424) -> Huaaa!
-# Condition: 33% chance & when Fire, Water, Wood, Light, Dark, Heal, Poison, Mortal Poison orbs are on the board
+# 	Condition: 33% chance & when Fire, Water, Wood, Light, Dark, Heal, Poison, Mortal Poison orbs are on the board (ai:0 rnd:33)
 # Spawn random 4 Jammer orbs
 # [9] ESAttackMultihit(15:11425) -> Ahh ghaaa!
-# Condition: 34% chance
+# 	Condition: 34% chance (ai:0 rnd:34)
 # Enemy action
 # [10] ESEndPath(36:26) -> ESEndPath
 # end_turn
@@ -110,6 +107,6 @@ records:
 # [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [15] SkillSet:
-# 	Condition: On death
+# 	Condition: On death (ai:0 rnd:0)
 # 	[0] ESInactivity(66:11652) -> I'm really hungry. I have to log out.
 # 	Do nothing

@@ -126,12 +126,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -158,7 +155,7 @@ records:
 # [8] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [9] SkillSet:
-# 	Condition: When < 50% hp , one-time use
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESAttackUp(17:2130) -> I suppose I misjudged!
 # 	Increase damage to 200% for the next 999 turns
 # 	[1] ESDamageShield(74:2132) -> Fighting all four of you...
@@ -172,25 +169,25 @@ records:
 # [10] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 50, target rnd 14
 # [11] ESBindAttack(63:2139) -> Electrocute
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:50 rnd:0)
 # Bind 1 subs for 2 turns
 # [12] ESAttackMultihit(15:2137) -> Jump
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:50 rnd:0)
 # Enemy action
 # [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [14] ESAttackMultihit(15:2127) -> Goblin Punch
-# Condition: 30% chance
+# 	Condition: 30% chance (ai:30 rnd:0)
 # Enemy action
 # [15] ESOrbChangeAttack(48:2128) -> Aera
-# Condition: 30% chance
+# 	Condition: 30% chance (ai:30 rnd:0)
 # Change Random to Wood
 # [16] ESOrbChangeAttack(48:2129) -> Wind Slash
-# Condition: 30% chance
+# 	Condition: 30% chance (ai:30 rnd:0)
 # Change Random to Jammer
 # [17] ESAttackSinglehit(82:1) -> Disable Skill
 # Enemy action
 # [18] SkillSet:
-# 	Condition: On death
+# 	Condition: On death (ai:100 rnd:0)
 # 	[0] ESSkillSet(83:2143) -> *****
 # 	Perform multiple skills

@@ -66,12 +66,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 2 -       10
-# [51] 1 -        1
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -85,7 +82,7 @@ records:
 # [4] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [5] ESRandomSpawn(92:10421) -> Flash Breath
-# Condition: When fire, water, wood, dark, heal, jammer, poison, mortal poison orbs are on the board
+# 	Condition: When fire, water, wood, dark, heal, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 3 Light orbs
 # [6] ESEndPath(36:26) -> ESEndPath
 # end_turn
@@ -94,7 +91,7 @@ records:
 # [8] ESBranchRemainingEnemies(120:8595) -> ESBranchRemainingEnemies
 # Branch on remaining enemies = 2, target rnd 12
 # [9] ESRandomSpawn(92:10421) -> Flash Breath
-# Condition: 50% chance & when Fire, Water, Wood, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# 	Condition: 50% chance & when Fire, Water, Wood, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:50 rnd:0)
 # Spawn random 3 Light orbs
 # [10] ESSkillDelay(89:10422) -> Dimming Sunlight
 # Delay active skills by 2 turns
@@ -109,7 +106,7 @@ records:
 # [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [16] ESAttackUp(17:10424) -> Blessings from Above
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Increase damage to 300% for the next 99 turns
 # [17] ESAttackMultihit(15:10425) -> Holy Breath
 # Enemy action

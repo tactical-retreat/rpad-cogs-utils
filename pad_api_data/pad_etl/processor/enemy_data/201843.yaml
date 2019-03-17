@@ -174,12 +174,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -207,13 +204,13 @@ records:
 # [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 40, target rnd 24
 # [9] ESBindRandom(1:3549) -> Petal Chain
-# Condition: When < 90% hp , one-time use
+# 	Condition: When < 90% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Bind 3 random cards for 3 turns
 # [10] ESColumnSpawnMulti(77:3547) -> Gale Impact
-# Condition: 50% chance when < 50% hp
+# 	Condition: 50% chance when < 50% hp (ai:50 rnd:0)
 # Change 3rd, 4th column to Wood orbs
 # [11] ESBlind(62:3546) -> Floral Mist
-# Condition: When < 50% hp
+# 	Condition: When < 50% hp (ai:100 rnd:0)
 # Blind all orbs on the board
 # [12] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 17
@@ -236,7 +233,7 @@ records:
 # [21] ESAttackMultihit(15:3545) -> Glass Storm
 # Enemy action
 # [22] ESAttackMultihit(15:3545) -> Glass Storm
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:50 rnd:0)
 # Enemy action
 # [23] ESColumnSpawnMulti(77:3544) -> Vanir Rose
 # Change 1st column to Fire orbs, 6th column to Wood orbs
@@ -249,14 +246,14 @@ records:
 # [27] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 30
 # [28] ESColumnSpawnMulti(77:3547) -> Gale Impact
-# Condition: 50% chance when < 50% hp
+# 	Condition: 50% chance when < 50% hp (ai:50 rnd:0)
 # Change 3rd, 4th column to Wood orbs
 # [29] ESBlind(62:3546) -> Floral Mist
-# Condition: When < 50% hp
+# 	Condition: When < 50% hp (ai:100 rnd:0)
 # Blind all orbs on the board
 # [30] ESAttackMultihit(15:3548) -> Ventus Anima
 # Enemy action
 # [31] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [32] SkillSet:
-# 	Condition: On death
+# 	Condition: On death (ai:0 rnd:0)

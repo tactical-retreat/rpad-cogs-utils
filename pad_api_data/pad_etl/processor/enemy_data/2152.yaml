@@ -104,12 +104,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -132,16 +129,16 @@ records:
 # [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [8] SkillSet:
-# 	Condition: When < 50% hp , one-time use
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESBlind(5:2515) -> ***** (Duel Master)
 # 	Blind all orbs on the board
 # 	[1] ESBoardChange(84:2514) -> ***** (Duel Master)
 # 	Change all orbs to Fire, Water, Wood, Light, Dark
 # [9] ESAttackMultihit(15:2513) -> ***** (Duel Master)
-# Condition: When < 20% hp
+# 	Condition: When < 20% hp (ai:100 rnd:0)
 # Enemy action
 # [10] ESOrbChangeAttack(48:2517) -> ***** (Duel Master)
-# Condition: 50% chance when < 80% hp
+# 	Condition: 50% chance when < 80% hp (ai:50 rnd:0)
 # Change Heal to Jammer
 # [11] ESAttackMultihit(15:2499) -> ***** (Duel Master)
 # Enemy action

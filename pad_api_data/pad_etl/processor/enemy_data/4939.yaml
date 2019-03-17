@@ -203,12 +203,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 7 -      111
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -231,7 +228,7 @@ records:
 # [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [8] ESDebuffMovetime(39:11806) -> Anti Bugster Area
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 4)
 # Movetime -1s for 5 turns
 # [9] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 19
@@ -240,30 +237,30 @@ records:
 # [11] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
 # [12] ESAttackMultihit(15:11807) -> GM Glows Arm
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:0 rnd:50)
 # Enemy action
 # [13] ESRandomSpawn(92:11808) -> Alfight Shoes
-# Condition: 50% chance & when Fire, Water, Wood, Light, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# 	Condition: 50% chance & when Fire, Water, Wood, Light, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:0 rnd:50)
 # Spawn random 4 Dark orbs
 # [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [15] ESSetCounter(25:15) -> ESSetCounter
 # counter = 0
 # [16] ESCloud(104:11778) -> Mid-Air
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:0 rnd:50)
 # 2x1 cloud appear for 5 turns at random location
 # [17] ESAbsorbCombo(67:11779) -> Double Jump
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:0 rnd:50)
 # Absorb combo <= 4 damage for 5 turns
 # [18] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [19] ESAttackUp(17:11789) -> Gain Riser
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
 # Increase damage to 150% for the next 3 turns
 # [20] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 21, target rnd 10
 # [21] ESAbsorbAttribute(53:11790) -> Mech Build Guard
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Absorb Fire damage for 3 turns
 # [22] SkillSet:
 # 	[0] ESRandomSpawn(92:11810) -> Gashat! Finishing Move!
@@ -273,6 +270,6 @@ records:
 # [23] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [24] SkillSet:
-# 	Condition: On death
+# 	Condition: On death (ai:0 rnd:0)
 # 	[0] ESInactivity(66:11812) -> I'm... indestructible​!
 # 	Do nothing

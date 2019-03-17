@@ -84,12 +84,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 4 -      100
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -103,10 +100,10 @@ records:
 # [4] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 12
 # [5] ESBindAttack(63:10860) -> Great, right?
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:0 rnd:50)
 # Bind 1 subs for 1 turns
 # [6] ESBlindStickyRandom(97:10861) -> How many scoops?
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:0 rnd:50)
 # Blind random 1~9 orbs for 1 turns
 # [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
@@ -115,7 +112,7 @@ records:
 # [9] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [10] ESAttackUp(19:10862) -> It melted!
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Increase damage to 150% for the next 999 turns
 # [11] ESEndPath(36:26) -> ESEndPath
 # end_turn

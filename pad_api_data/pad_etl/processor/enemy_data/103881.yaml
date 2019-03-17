@@ -149,12 +149,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -173,27 +170,27 @@ records:
 # [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] ESAttackMultihit(15:8046) -> Wildflower Bonebreaker
-# Condition: When < 5% hp
+# 	Condition: When < 5% hp (ai:100 rnd:0)
 # Enemy action
 # [7] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
 # [8] ESAttackUpStatus(18:8042) -> Crafty
-# Condition: after being affected by a status effect
+# 	Condition: after being affected by a status effect (ai:100 rnd:0)
 # Increase damage to 200% for the next 999 turns
 # [9] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 5, target rnd 14
 # [10] ESSkillDelay(89:8043) -> Helmet Splitter
-# Condition: 33% chance
+# 	Condition: 33% chance (ai:33 rnd:0)
 # Delay active skills by 1 turns
 # [11] ESOrbLock(94:8044) -> Forward Kick
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:50 rnd:0)
 # Lock 6 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [12] ESAttackMultihit(15:8045) -> Strike
 # Enemy action
 # [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [14] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESDebuffRCV(105:8039) -> Don't mess with a demon!
 # 	Rcv 50% for 7 turns
 # 	[1] ESDamageShield(74:8040) -> Steel Demonskin
@@ -201,10 +198,10 @@ records:
 # [15] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 12, target rnd 20
 # [16] ESSkillDelay(89:8043) -> Helmet Splitter
-# Condition: 33% chance
+# 	Condition: 33% chance (ai:33 rnd:0)
 # Delay active skills by 1 turns
 # [17] ESOrbLock(94:8044) -> Forward Kick
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:50 rnd:0)
 # Lock 6 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [18] ESAttackMultihit(15:8045) -> Strike
 # Enemy action

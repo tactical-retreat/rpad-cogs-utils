@@ -93,12 +93,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 2 -       10
 # [54] 1 -        1
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -116,16 +113,16 @@ records:
 # [6] ESNone(0:0) -> ESNone
 # nothing
 # [7] ESSkillDelay(89:2261) -> Counting the Cost
-# Condition: When < 50% hp , one-time use
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 2)
 # Delay active skills by 2 turns
 # [8] ESAttackMultihit(15:2262) -> Celestial Spectacle
-# Condition: When < 30% hp
+# 	Condition: When < 30% hp (ai:100 rnd:0)
 # Enemy action
 # [9] ESRowSpawnMulti(79:2259) -> Celestial Observation
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:0 rnd:50)
 # Change 1st row to Light orbs, 5th row to Water orbs
 # [10] ESPoisonChangeRandomAttack(64:2260) -> Guardian Dragon's Venomous Talons
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:0 rnd:50)
 # Change Random 3 to Poison
 # [11] ESEndPath(36:26) -> ESEndPath
 # end_turn

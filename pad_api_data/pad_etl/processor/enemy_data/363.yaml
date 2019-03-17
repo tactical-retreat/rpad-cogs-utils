@@ -142,12 +142,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 1 -        1
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -170,19 +167,19 @@ records:
 # [7] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 14
 # [8] ESAttackMultihit(15:6136) -> Vak Sigfodr
-# Condition: When < 15% hp
+# 	Condition: When < 15% hp (ai:100 rnd:0)
 # Enemy action
 # [9] SkillSet:
-# 	Condition: When < 50% hp , one-time use
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESAttackMultihit(15:6131) -> Triple Slash
 # 	Enemy action
 # 	[1] ESRecoverEnemy(86:6132) -> Auto-recover
 # 	Enemy recover 10% hp
 # [10] ESRowSpawnMulti(79:6135) -> Divide Poison
-# Condition: When < 50% hp
+# 	Condition: When < 50% hp (ai:100 rnd:0)
 # Change 3rd row to Wood, Poison orbs
 # [11] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESAttackMultihit(15:6125) -> Double Slash
 # 	Enemy action
 # 	[1] ESRecoverEnemy(86:6126) -> Auto-recover

@@ -133,12 +133,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 2 -       10
 # [54] 1 -        1
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -168,22 +165,22 @@ records:
 # [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [10] ESAttackMultihit(15:2278) -> Celestial Dance
-# Condition: When < 20% hp
+# 	Condition: When < 20% hp (ai:100 rnd:0)
 # Enemy action
 # [11] SkillSet:
-# 	Condition: When < 75% hp , one-time use
+# 	Condition: When < 75% hp , one-time use (ai:100 rnd:0) (one-time: 2)
 # 	[0] ESRowSpawnMulti(79:2280) -> Besieged by Fire
 # 	Change 1st row to Fire orbs, 5th row to Fire orbs
 # 	[1] ESColumnSpawnMulti(77:2281) -> Can you prevail?
 # 	Change 1st column to Fire orbs, 6th column to Fire orbs
 # [12] ESAttackMultihit(15:2275) -> Sword Dance
-# Condition: 60% chance
+# 	Condition: 60% chance (ai:0 rnd:60)
 # Enemy action
 # [13] ESRandomSpawn(92:2296) -> Falling Rock Trap
-# Condition: 20% chance & when Fire, Water, Wood, Light, Dark, Heal, Poison, Mortal Poison orbs are on the board
+# 	Condition: 20% chance & when Fire, Water, Wood, Light, Dark, Heal, Poison, Mortal Poison orbs are on the board (ai:0 rnd:20)
 # Spawn random 5 Jammer orbs
 # [14] ESPoisonChangeRandomAttack(64:2276) -> Guardian Dragon's Venomous Talons
-# Condition: 20% chance
+# 	Condition: 20% chance (ai:0 rnd:20)
 # Change Random 4 to Poison
 # [15] ESEndPath(36:26) -> ESEndPath
 # end_turn

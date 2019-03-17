@@ -131,12 +131,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 3 -       11
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -144,7 +141,7 @@ records:
 # [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
 # [2] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
 # 	[0] ESBindTyping(3:11609) -> Encroaching Evil
 # 	Bind Attacker cards for 5 turns
 # 	[1] ESBindSkill(14:11610) -> Frightening Scream
@@ -156,19 +153,19 @@ records:
 # [5] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 51, target rnd 7
 # [6] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESGravity(50:11615) -> Embracing Pain
 # 	Player -75% HP
 # 	[1] ESBlindStickyRandom(97:11616) -> Darkness Bullet
 # 	Blind random 15 orbs for 3 turns
 # [7] ESBlind(5:11611) -> Black Bullet
-# Condition: 33% chance
+# 	Condition: 33% chance (ai:0 rnd:33)
 # Blind all orbs on the board
 # [8] ESOrbLock(94:11612) -> Paralysing Spear
-# Condition: 33% chance
+# 	Condition: 33% chance (ai:0 rnd:33)
 # Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [9] ESAttackMultihit(15:11613) -> Rushing Tentacle
-# Condition: 34% chance
+# 	Condition: 34% chance (ai:0 rnd:34)
 # Enemy action
 # [10] ESEndPath(36:26) -> ESEndPath
 # end_turn

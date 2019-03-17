@@ -59,12 +59,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -87,28 +84,28 @@ records:
 # [7] ESOrbChangeAttack(48:3711) -> Auto Freezer
 # Change Poison to Water
 # [8] SkillSet:
-# 	Condition: When < 1% hp
+# 	Condition: When < 1% hp (ai:100 rnd:0)
 # 	[0] ESRowSpawnMulti(79:3715) -> Blizzard All Signal
 # 	Change 1st, 2nd, 3rd, 4th, 5th, 6th row to Water orbs
 # 	[1] ESRecoverEnemy(7:3714) -> Metal Repair
 # 	Enemy recover 76% hp
 # [9] ESRowSpawnMulti(79:3715) -> Blizzard All Signal
-# Condition: When < 20% hp
+# 	Condition: When < 20% hp (ai:100 rnd:0)
 # Change 1st, 2nd, 3rd, 4th, 5th, 6th row to Water orbs
 # [10] SkillSet:
-# 	Condition: When < 75% hp , one-time use
+# 	Condition: When < 75% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESAbsorbAttribute(53:3712) -> Sapphire Drive
 # 	Absorb Water damage for 3 turns
 # 	[1] ESColumnSpawnMulti(77:3713) -> Blizzard Double Signal
 # 	Change 5th, 6th column to Water orbs
 # [11] SkillSet:
-# 	Condition: 20% chance
+# 	Condition: 20% chance (ai:20 rnd:0)
 # 	[0] ESColumnSpawnMulti(77:3706) -> Blizzard Signal
 # 	Change 6th column to Water orbs
 # 	[1] ESBlind(5:3709) -> Steam Release
 # 	Blind all orbs on the board
 # [12] SkillSet:
-# 	Condition: 50% chance
+# 	Condition: 50% chance (ai:50 rnd:0)
 # 	[0] ESColumnSpawnMulti(77:3706) -> Blizzard Signal
 # 	Change 6th column to Water orbs
 # 	[1] ESPoisonChangeRandom(60:3708) -> Toxic Gas Cloud

@@ -265,12 +265,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -293,13 +290,13 @@ records:
 # [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [8] SkillSet:
-# 	Condition: When < 20% hp , one-time use
+# 	Condition: When < 20% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESRecoverEnemy(86:4381) -> Overcoming Will
 # 	Enemy recover 29% hp
 # 	[1] ESAttackUp(17:4222) -> Dragonbound's Wrath
 # 	Increase damage to 200% for the next 999 turns
 # [9] SkillSet:
-# 	Condition: When < 20% hp
+# 	Condition: When < 20% hp (ai:100 rnd:0)
 # 	[0] ESAttackMultihit(15:4374) -> Twin Prominence
 # 	Enemy action
 # 	[1] ESBoardChangeAttackBits(85:4359) -> Sunrise Zone
@@ -331,28 +328,28 @@ records:
 # [19] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b100
 # [20] ESRandomSpawn(92:4362) -> Dawn Guidance
-# Condition: 30% chance when < 75% hp & when Water, Wood, Light, Dark, Jammer, Poison, Mortal Poison orbs are on the board
+# 	Condition: 30% chance when < 75% hp & when Water, Wood, Light, Dark, Jammer, Poison, Mortal Poison orbs are on the board (ai:0 rnd:30)
 # Spawn random 6 Heal orbs
 # [21] SkillSet:
-# 	Condition: 20% chance
+# 	Condition: 20% chance (ai:0 rnd:20)
 # 	[0] ESColumnSpawnMulti(77:4363) -> Thunder Roar
 # 	Change 2nd column to Light orbs
 # 	[1] ESColumnSpawnMulti(77:4364) -> Heat Roar
 # 	Change 4th column to Fire orbs
 # [22] SkillSet:
-# 	Condition: 15% chance
+# 	Condition: 15% chance (ai:0 rnd:15)
 # 	[0] ESColumnSpawnMulti(77:4363) -> Thunder Roar
 # 	Change 2nd column to Light orbs
 # 	[1] ESAttackMultihit(15:4366) -> Prominence Bullet
 # 	Enemy action
 # [23] SkillSet:
-# 	Condition: 15% chance
+# 	Condition: 15% chance (ai:0 rnd:15)
 # 	[0] ESAttackMultihit(15:4365) -> Prominence Breath
 # 	Enemy action
 # 	[1] ESColumnSpawnMulti(77:4364) -> Heat Roar
 # 	Change 4th column to Fire orbs
 # [24] SkillSet:
-# 	Condition: 20% chance
+# 	Condition: 20% chance (ai:0 rnd:20)
 # 	[0] ESAttackMultihit(15:4365) -> Prominence Breath
 # 	Enemy action
 # 	[1] ESAttackMultihit(15:4366) -> Prominence Bullet
@@ -369,19 +366,19 @@ records:
 # 	[1] ESBindAttack(63:4372) -> Rising Sun's Blazing Whirlpool
 # 	Bind 4 random for 1 turns
 # [29] SkillSet:
-# 	Condition: 34% chance
+# 	Condition: 34% chance (ai:34 rnd:0)
 # 	[0] ESAttackMultihit(15:4374) -> Twin Prominence
 # 	Enemy action
 # 	[1] ESOrbLock(94:4376) -> Double-headed Gaze
 # 	Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [30] SkillSet:
-# 	Condition: 50% chance
+# 	Condition: 50% chance (ai:50 rnd:0)
 # 	[0] ESColumnSpawnMulti(77:4375) -> Red Heat's Purifying Thunder
 # 	Change 2nd column to Light orbs, 4th column to Fire orbs
 # 	[1] ESOrbLock(94:4376) -> Double-headed Gaze
 # 	Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [31] ESRandomSpawn(92:4362) -> Dawn Guidance
-# Condition: When < 75% hp & when Water, Wood, Light, Dark, Jammer, Poison, Mortal Poison orbs are on the board
+# 	Condition: When < 75% hp & when Water, Wood, Light, Dark, Jammer, Poison, Mortal Poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 6 Heal orbs
 # [32] ESAttributeResist(72:4383) -> Water Halven
 # Reduce damage from Water by 50%

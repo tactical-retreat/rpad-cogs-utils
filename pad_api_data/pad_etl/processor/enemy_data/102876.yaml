@@ -147,12 +147,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -175,13 +172,13 @@ records:
 # [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [8] SkillSet:
-# 	Condition: When < 20% hp , one-time use
+# 	Condition: When < 20% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESRecoverEnemy(86:4221) -> Conquering Will
 # 	Enemy recover 55% hp
 # 	[1] ESAttackUp(17:4222) -> Dragonbound's Wrath
 # 	Increase damage to 200% for the next 999 turns
 # [9] SkillSet:
-# 	Condition: When < 20% hp
+# 	Condition: When < 20% hp (ai:100 rnd:0)
 # 	[0] ESAttackMultihit(15:4232) -> Abyss Hole
 # 	Enemy action
 # 	[1] ESBoardChangeAttackBits(85:4225) -> Abyss Dark Ring
@@ -199,13 +196,13 @@ records:
 # [15] ESSkillDelay(89:4228) -> Use the Claws's power as you wish
 # Delay active skills by 2 turns
 # [16] ESColumnSpawnMulti(77:4230) -> Blue Ice Revival
-# Condition: 40% chance
+# 	Condition: 40% chance (ai:40 rnd:0)
 # Change 1st column to Dark orbs, 2nd column to Water orbs
 # [17] ESAttackMultihit(15:4232) -> Abyss Hole
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:50 rnd:0)
 # Enemy action
 # [18] ESRandomSpawn(92:4231) -> Abyss' Guidance
-# Condition: When fire, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board
+# 	Condition: When fire, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 8 Water orbs
 # [19] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 16

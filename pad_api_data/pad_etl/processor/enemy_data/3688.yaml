@@ -303,12 +303,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -335,18 +332,18 @@ records:
 # [8] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
 # [9] ESOrbLock(94:10906) -> Calil Celcela
-# Condition: 33% chance
+# 	Condition: 33% chance (ai:0 rnd:33)
 # Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [10] ESSkillDelay(89:10907) -> Aidid Auda
-# Condition: 33% chance
+# 	Condition: 33% chance (ai:0 rnd:33)
 # Delay active skills by 2 turns
 # [11] ESRandomSpawn(92:10908) -> Sana Azlak
-# Condition: 34% chance & when Fire, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# 	Condition: 34% chance & when Fire, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:0 rnd:34)
 # Spawn random 6 Water orbs
 # [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [13] ESAttackUp(17:10901) -> Limit of the Sky
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Increase damage to 150% for the next 99 turns
 # [14] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 2, target rnd 9
@@ -375,7 +372,7 @@ records:
 # [23] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [24] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESDamageShield(74:10900) -> Protection of the Planets
 # 	Reduce damage from all sources by 75% for 1 turns
 # 	[1] ESAttackUp(17:10901) -> Limit of the Sky

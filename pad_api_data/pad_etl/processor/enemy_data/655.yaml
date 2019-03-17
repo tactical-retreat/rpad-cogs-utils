@@ -102,12 +102,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 0 -        0
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -125,12 +122,12 @@ records:
 # [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 14
 # [7] ESRandomSpawn(92:3441) -> Heaven Lightning
-# Condition: When < 20% hp & when Fire, Water, Wood, Light, Dark, Heal, Poison, Mortal Poison orbs are on the board
+# 	Condition: When < 20% hp & when Fire, Water, Wood, Light, Dark, Heal, Poison, Mortal Poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 15 Jammer orbs
 # [8] ESBranchCard(90:3454) -> ESBranchCard
 # Branch on player_cards HAS [376, 377, 656, 1348, 2396], target rnd 11
 # [9] ESOrbLock(94:3442) -> Mjolnir
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:50 rnd:0)
 # Lock 5 random Fire, Water, Wood, Light, Dark orbs
 # [10] ESEndPath(36:26) -> ESEndPath
 # end_turn
@@ -145,10 +142,10 @@ records:
 # [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [16] ESRecoverEnemy(86:3443) -> Megingjord
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:0 rnd:50)
 # Enemy recover 30% hp
 # [17] ESAbsorbCombo(67:3444) -> Bilskirnir's Divine Protection
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:0 rnd:50)
 # Absorb combo <= 5 damage for 2 turns
 # [18] ESEndPath(36:26) -> ESEndPath
 # end_turn

@@ -113,12 +113,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -139,7 +136,7 @@ records:
 # [6] ESBranchCard(90:2552) -> ESBranchCard
 # Branch on player_cards HAS [238, 239, 1114, 1115, 1955], target rnd 13
 # [7] SkillSet:
-# 	Condition: When < 50% hp , one-time use
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESBindAttack(63:2561) -> Shankha
 # 	Bind 5 random for 2 turns
 # 	[1] ESRecoverEnemy(86:2562) -> Avatar
@@ -147,19 +144,19 @@ records:
 # [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 30, target rnd 17
 # [9] SkillSet:
-# 	Condition: 30% chance
+# 	Condition: 30% chance (ai:0 rnd:30)
 # 	[0] ESOrbChangeAttack(48:2558) -> Khakkhara of the Creation
 # 	Change Heal to Jammer
 # 	[1] ESRecoverEnemy(86:2562) -> Avatar
 # 	Enemy recover 10% hp
 # [10] SkillSet:
-# 	Condition: 30% chance
+# 	Condition: 30% chance (ai:0 rnd:30)
 # 	[0] ESAttackMultihit(15:2559) -> Chakram of Order
 # 	Enemy action
 # 	[1] ESRecoverEnemy(86:2562) -> Avatar
 # 	Enemy recover 10% hp
 # [11] SkillSet:
-# 	Condition: 30% chance
+# 	Condition: 30% chance (ai:0 rnd:30)
 # 	[0] ESRowSpawnMulti(79:2560) -> Lotus Flower of Prosperity
 # 	Change 1st row to Heal orbs, 5th row to Wood orbs
 # 	[1] ESRecoverEnemy(86:2562) -> Avatar
@@ -182,12 +179,12 @@ records:
 # [18] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [19] ESBlind(5:2563) -> Giant Form
-# Condition: When < 30% hp
+# 	Condition: When < 30% hp (ai:100 rnd:0)
 # Blind all orbs on the board
 # [20] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [21] ESAttackMultihit(15:2551) -> Trivikrama
-# Condition: When < 30% hp
+# 	Condition: When < 30% hp (ai:100 rnd:0)
 # Enemy action
 # [22] ESEndPath(36:26) -> ESEndPath
 # end_turn

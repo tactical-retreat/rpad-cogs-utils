@@ -120,12 +120,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 4 -      100
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -147,19 +144,19 @@ records:
 # [8] ESAttackUp(17:3613) -> Wind-Up Full Throttle
 # Increase damage to 200% for the next 999 turns
 # [9] ESDamageShield(74:3619) -> Sensing Danger
-# Condition: When < 50% hp , one-time use
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Reduce damage from all sources by 50% for 1 turns
 # [10] ESAttackMultihit(15:3615) -> Enraged Tentacles Annihilation
-# Condition: When < 10% hp
+# 	Condition: When < 10% hp (ai:100 rnd:0)
 # Enemy action
 # [11] ESOrbChangeAttack(48:3758) -> Target Predation - Fire
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:0 rnd:50)
 # Change Fire to Jammer
 # [12] ESOrbChangeAttack(48:3618) -> Target Predation - Heal
-# Condition: 20% chance
+# 	Condition: 20% chance (ai:0 rnd:20)
 # Change Heal to Jammer
 # [13] ESRandomSpawn(92:3759) -> Green Whip
-# Condition: 30% chance & when Fire, Water, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# 	Condition: 30% chance & when Fire, Water, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:0 rnd:30)
 # Spawn random 4 Wood orbs
 # [14] ESEndPath(36:26) -> ESEndPath
 # end_turn

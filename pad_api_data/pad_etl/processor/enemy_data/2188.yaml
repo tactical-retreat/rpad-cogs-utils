@@ -113,12 +113,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 1 -        1
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -137,18 +134,18 @@ records:
 # [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] ESAttackMultihit(15:7841) -> Kalreshi Osaryu
-# Condition: When < 5% hp
+# 	Condition: When < 5% hp (ai:100 rnd:0)
 # Enemy action
 # [7] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 12
 # [8] ESDebuffMovetime(39:7835) -> Anzel Sou
-# Condition: One-time use
+# 	Condition: One-time use (ai:0 rnd:33) (one-time: 1)
 # Movetime -1s for 1 turns
 # [9] ESSkillDelay(89:7837) -> Guasa
-# Condition: One-time use
+# 	Condition: One-time use (ai:0 rnd:33) (one-time: 1)
 # Delay active skills by 2 turns
 # [10] ESAttackMultihit(15:7836) -> Redeon Radel
-# Condition: 34% chance
+# 	Condition: 34% chance (ai:0 rnd:34)
 # Enemy action
 # [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
@@ -157,7 +154,7 @@ records:
 # [13] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [14] SkillSet:
-# 	Condition: When < 50% hp
+# 	Condition: When < 50% hp (ai:100 rnd:0)
 # 	[0] ESAttackUp(17:7838) -> Judgment day has come
 # 	Increase damage to 150% for the next 999 turns
 # 	[1] ESGravity(50:7839) -> Accept your demise!

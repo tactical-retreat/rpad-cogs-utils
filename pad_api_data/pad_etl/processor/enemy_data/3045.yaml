@@ -138,12 +138,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -173,13 +170,13 @@ records:
 # [12] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 17
 # [13] ESAttackMultihit(15:4989) -> Hyoh!!
-# Condition: When < 10% hp
+# 	Condition: When < 10% hp (ai:100 rnd:0)
 # Enemy action
 # [14] ESBindAttack(63:4988) -> Long range
-# Condition: When < 45% hp , one-time use
+# 	Condition: When < 45% hp , one-time use (ai:50 rnd:0) (one-time: 1)
 # Bind 1 subs for 3 turns
 # [15] ESRandomSpawn(92:4987) -> Hyoh!!
-# Condition: When < 70% hp & when Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# 	Condition: When < 70% hp & when Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 3 Fire orbs
 # [16] ESAttackMultihit(15:4986) -> Futae no Kiwami
 # Enemy action
@@ -190,6 +187,6 @@ records:
 # [19] ESRecoverEnemy(86:4985) -> Hyoooh
 # Enemy recover 15% hp
 # [20] SkillSet:
-# 	Condition: On death
+# 	Condition: On death (ai:0 rnd:0)
 # 	[0] ESInactivity(66:4964) -> ...Uh......uh...
 # 	Do nothing

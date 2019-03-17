@@ -111,12 +111,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -132,10 +129,10 @@ records:
 # [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] ESDamageShield(74:4613) -> Scorching Heat Mantle
-# Condition: When < 30% hp , one-time use
+# 	Condition: When < 30% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Reduce damage from all sources by 75% for 2 turns
 # [7] ESRowSpawnMulti(79:4614) -> Inferno Blast
-# Condition: When < 30% hp
+# 	Condition: When < 30% hp (ai:100 rnd:0)
 # Change 1st row to Fire orbs
 # [8] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 80, target rnd 14
@@ -150,5 +147,5 @@ records:
 # [13] ESAttackMultihit(15:4612) -> Hellfire Claw
 # Enemy action
 # [14] ESRandomSpawn(92:4610) -> Powerful Blaze
-# Condition: When water, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board
+# 	Condition: When water, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 6 Fire orbs

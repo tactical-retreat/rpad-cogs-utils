@@ -131,12 +131,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 3 -       11
 # [54] 1 -        1
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -148,7 +145,7 @@ records:
 # [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESSkillDelay(89:5145) -> Why do you fight?
 # 	Delay active skills by 4~6 turns
 # 	[1] ESStatusShield(20:5146) -> I won't go easy on you
@@ -162,16 +159,16 @@ records:
 # [7] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 12
 # [8] ESGravity(50:5151) -> LB-Siculus Strike
-# Condition: One-time use
+# 	Condition: One-time use (ai:40 rnd:0) (one-time: 3)
 # Player -150% HP
 # [9] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 3)
 # 	[0] ESBlindStickyFixed(98:5153) -> Color Delete
 # 	Blind orbs in specific positions for 3 turns
 # 	[1] ESBindAttack(63:5165) -> CFM-Pulse
 # 	Bind 1 random for 3 turns
 # [10] ESColumnSpawnMulti(77:5150) -> C-Shining Spear
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:50 rnd:0)
 # Change 2nd column to Wood orbs, 5th column to Light orbs
 # [11] ESChangeAttribute(46:5152) -> EB & Self Convert
 # Change own attribute to random one of Wood, Light

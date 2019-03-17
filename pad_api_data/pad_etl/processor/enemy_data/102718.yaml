@@ -259,12 +259,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 63 -   111111
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -285,19 +282,19 @@ records:
 # [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] ESRandomSpawn(92:2972) -> The huge body started to move
-# Condition: One-time use & when Fire, Water, Wood, Light, Dark, Heal, Poison, Mortal Poison orbs are on the board
+# 	Condition: One-time use & when Fire, Water, Wood, Light, Dark, Heal, Poison, Mortal Poison orbs are on the board (ai:100 rnd:0) (one-time: 32)
 # Spawn random 3 Jammer orbs
 # [7] ESStorePower(8:2973) -> Raising its arm
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 16)
 # Increase damage to 690% for the next attack
 # [8] ESRandomSpawn(92:2974) -> Rearranging its posture
-# Condition: One-time use & when Fire, Water, Wood, Light, Dark, Heal, Poison, Mortal Poison orbs are on the board
+# 	Condition: One-time use & when Fire, Water, Wood, Light, Dark, Heal, Poison, Mortal Poison orbs are on the board (ai:100 rnd:0) (one-time: 8)
 # Spawn random 3 Jammer orbs
 # [9] ESStorePower(8:2975) -> Raising its arm again
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 4)
 # Increase damage to 690% for the next attack
 # [10] ESBlind(5:2976) -> Opening its mouth
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
 # Blind all orbs on the board
 # [11] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 21
@@ -306,31 +303,31 @@ records:
 # [13] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [14] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:0 rnd:20) (one-time: 1)
 # 	[0] ESColumnSpawnMulti(77:2977) -> Gaia Beam
 # 	Change 3rd, 4th column to Wood orbs
 # 	[1] ESAbsorbAttribute(53:2985) -> Inhale
 # 	Absorb Fire, Water damage for 3 turns
 # [15] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:0 rnd:20) (one-time: 1)
 # 	[0] ESColumnSpawnMulti(77:2977) -> Gaia Beam
 # 	Change 3rd, 4th column to Wood orbs
 # 	[1] ESAbsorbAttribute(53:2986) -> Inhale
 # 	Absorb Water, Wood damage for 3 turns
 # [16] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:0 rnd:20) (one-time: 1)
 # 	[0] ESColumnSpawnMulti(77:2977) -> Gaia Beam
 # 	Change 3rd, 4th column to Wood orbs
 # 	[1] ESAbsorbAttribute(53:2987) -> Inhale
 # 	Absorb Wood, Light damage for 3 turns
 # [17] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:0 rnd:20) (one-time: 1)
 # 	[0] ESColumnSpawnMulti(77:2977) -> Gaia Beam
 # 	Change 3rd, 4th column to Wood orbs
 # 	[1] ESAbsorbAttribute(53:2988) -> Inhale
 # 	Absorb Light, Dark damage for 3 turns
 # [18] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:0 rnd:20) (one-time: 1)
 # 	[0] ESColumnSpawnMulti(77:2977) -> Gaia Beam
 # 	Change 3rd, 4th column to Wood orbs
 # 	[1] ESAbsorbAttribute(53:2989) -> Inhale
@@ -340,19 +337,19 @@ records:
 # [20] ESSkillDelay(89:2979) -> Skill Break
 # Delay active skills by 3~5 turns
 # [21] ESGravity(50:2978) -> Grand Ray
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Player -500% HP
 # [22] ESGravity(50:2984) -> Grand Ray
-# Condition: When < 20% hp
+# 	Condition: When < 20% hp (ai:100 rnd:0)
 # Player -500% HP
 # [23] ESRecoverEnemy(86:2982) -> Cell Mending
-# Condition: 50% chance when < 30% hp
+# 	Condition: 50% chance when < 30% hp (ai:50 rnd:0)
 # Enemy recover 10% hp
 # [24] ESBindAttack(63:2983) -> Great Vine
-# Condition: When < 30% hp
+# 	Condition: When < 30% hp (ai:100 rnd:0)
 # Bind 1 random for 5 turns
 # [25] ESOrbLock(94:2980) -> Hardened Sign
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:50 rnd:0)
 # Lock 6 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [26] ESBlind(62:2981) -> Earth's Mantle Press
 # Blind all orbs on the board

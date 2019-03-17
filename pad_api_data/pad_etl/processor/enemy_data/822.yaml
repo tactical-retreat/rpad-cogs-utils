@@ -93,12 +93,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 5 -      101
 # [54] 1 -        1
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -110,7 +107,7 @@ records:
 # [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 5)
 # 	[0] ESAbsorbCombo(67:2806) -> Wings of the Blazing Knight
 # 	Absorb combo <= 3 damage for 5 turns
 # 	[1] ESSkyfall(68:2807) -> Burning Aura
@@ -118,16 +115,16 @@ records:
 # [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] ESRecoverEnemy(7:2812) -> Soul of the Phoenix
-# Condition: When < 1% hp
+# 	Condition: When < 1% hp (ai:100 rnd:0)
 # Enemy recover 100% hp
 # [7] ESOrbChangeAttack(48:2810) -> Orb Alteration - Flame
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 5)
 # Change Water to Fire
 # [8] ESRecoverEnemy(86:2809) -> Healing Heat
-# Condition: 70% chance when < 75% hp
+# 	Condition: 70% chance when < 75% hp (ai:0 rnd:70)
 # Enemy recover 10% hp
 # [9] ESRandomSpawn(92:2808) -> Flame Thrust
-# Condition: 30% chance & when Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# 	Condition: 30% chance & when Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:0 rnd:30)
 # Spawn random 4 Fire orbs
 # [10] ESEndPath(36:26) -> ESEndPath
 # end_turn

@@ -205,12 +205,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 63 -   111111
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -218,7 +215,7 @@ records:
 # [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
 # [2] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 32)
 # 	[0] ESStatusShield(20:8101) -> Here at last... Shall we begin?
 # 	Voids status ailments for 999 turns
 # 	[1] ESVoidShield(71:8102) -> Demon Star Crest
@@ -226,13 +223,13 @@ records:
 # 	[2] ESAttackMultihit(15:8103) -> See how you handle my fist!!
 # 	Enemy action
 # [3] SkillSet:
-# 	Condition: When < 1% hp
+# 	Condition: When < 1% hp (ai:100 rnd:0)
 # 	[0] ESRecoverEnemy(7:8122) -> Demon Star's Radiance
 # 	Enemy recover 100% hp
 # 	[1] ESAttackUp(17:8123) -> I won't let it happen!
 # 	Increase damage to 150% for the next 999 turns
 # [4] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 16)
 # 	[0] ESInactivity(66:8105) -> Splendid♪ Not over yet though...
 # 	Do nothing
 # 	[1] ESGravity(50:8106) -> Graviton Fist
@@ -240,7 +237,7 @@ records:
 # 	[2] ESBlind(62:8107) -> High Kick
 # 	Blind all orbs on the board
 # [5] SkillSet:
-# 	Condition: When < 50% hp , one-time use
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 8)
 # 	[0] ESAbsorbCombo(67:8113) -> I'll have to get serious soon
 # 	Absorb combo <= 7 damage for 999 turns
 # 	[1] ESDebuffMovetime(39:8114) -> Hurry up!!
@@ -250,13 +247,13 @@ records:
 # [7] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 23
 # [8] ESBlindStickyRandom(97:8116) -> Black Screw Blow
-# Condition: When < 50% hp , one-time use
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 4)
 # Blind random 6 orbs for 2 turns
 # [9] ESAttackMultihit(15:8117) -> Full Spin Kick
-# Condition: When < 50% hp , one-time use
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 2)
 # Enemy action
 # [10] ESAttackMultihit(15:8118) -> Hell Shot Punch
-# Condition: When < 50% hp , one-time use
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Enemy action
 # [11] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 14

@@ -111,12 +111,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 0 -        0
 # [53] 1 -        1
 # [54] 1 -        1
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -134,13 +131,13 @@ records:
 # [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 30, target rnd 11
 # [7] ESBlind(62:1705) -> Magic Dragon Sword - Chaos
-# Condition: 40% chance when < 50% hp
+# 	Condition: 40% chance when < 50% hp (ai:40 rnd:0)
 # Blind all orbs on the board
 # [8] ESBindAttack(63:1704) -> Magic Dragon Sword - Lightning
-# Condition: When < 75% hp , one-time use
+# 	Condition: When < 75% hp , one-time use (ai:50 rnd:0) (one-time: 1)
 # Bind 1 random for 2 turns
 # [9] ESOrbChangeAttack(48:1703) -> Magic Dragon Sword - Shooting Star
-# Condition: 70% chance
+# 	Condition: 70% chance (ai:70 rnd:0)
 # Change Random to Fire
 # [10] ESEndPath(36:26) -> ESEndPath
 # end_turn
@@ -149,10 +146,10 @@ records:
 # [12] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [13] ESInactivity(66:1706) -> Draco Summon-Twin Dragon King
-# Condition: When < 30% hp
+# 	Condition: When < 30% hp (ai:100 rnd:0)
 # Do nothing
 # [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [15] ESOrbChangeAttack(48:1707) -> Flame Emperor
-# Condition: When < 30% hp
+# 	Condition: When < 30% hp (ai:100 rnd:0)
 # Change Random to Fire

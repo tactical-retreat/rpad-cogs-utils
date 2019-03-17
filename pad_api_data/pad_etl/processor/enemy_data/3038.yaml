@@ -162,12 +162,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 1 -        1
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -201,7 +198,7 @@ records:
 # [10] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [11] ESRandomSpawn(92:5007) -> The First Secret Blow, "Homura Dama"!!
-# Condition: When water, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board
+# 	Condition: When water, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 3 Fire orbs
 # [12] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 14
@@ -212,10 +209,10 @@ records:
 # [15] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 30, target rnd 22
 # [16] ESAttackMultihit(15:5016) -> One way or another, you will fall!
-# Condition: When < 50% hp
+# 	Condition: When < 50% hp (ai:100 rnd:0)
 # Enemy action
 # [17] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESRandomSpawn(92:5011) -> Shaaaah!!
 # 	Spawn random 3 Fire orbs
 # 	[1] ESRowSpawnMulti(79:5012) -> Shaaah!!
@@ -238,6 +235,6 @@ records:
 # [24] ESAttackMultihit(15:5008) -> Hyohh!!!
 # Enemy action
 # [25] SkillSet:
-# 	Condition: On death
+# 	Condition: On death (ai:0 rnd:0)
 # 	[0] ESInactivity(66:4968) -> Feh! You disappoint me.
 # 	Do nothing

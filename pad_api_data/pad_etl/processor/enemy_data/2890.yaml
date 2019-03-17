@@ -169,12 +169,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 1 -        1
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -195,13 +192,13 @@ records:
 # [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] SkillSet:
-# 	Condition: When < 1% hp
+# 	Condition: When < 1% hp (ai:100 rnd:0)
 # 	[0] ESRecoverEnemy(86:4478) -> Holy Repair
 # 	Enemy recover 19% hp
 # 	[1] ESAttackMultihit(15:4296) -> Limit Break
 # 	Enemy action
 # [7] ESAttackMultihit(15:4296) -> Limit Break
-# Condition: When < 20% hp
+# 	Condition: When < 20% hp (ai:100 rnd:0)
 # Enemy action
 # [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 27
@@ -210,16 +207,16 @@ records:
 # [10] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [11] ESOrbLock(94:4284) -> Shock Ray
-# Condition: One-time use
+# 	Condition: One-time use (ai:0 rnd:25) (one-time: 1)
 # Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [12] ESRandomSpawn(92:4285) -> Flash Bomb
-# Condition: One-time use & when Fire, Water, Wood, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# 	Condition: One-time use & when Fire, Water, Wood, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:0 rnd:25) (one-time: 1)
 # Spawn random 3 Light orbs
 # [13] ESDebuffMovetime(39:4286) -> Machine Glare
-# Condition: One-time use
+# 	Condition: One-time use (ai:0 rnd:25) (one-time: 1)
 # Movetime -1s for 1 turns
 # [14] ESInactivity(66:4287) -> Gathering magical power
-# Condition: 25% chance
+# 	Condition: 25% chance (ai:0 rnd:25)
 # Do nothing
 # [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
@@ -228,26 +225,26 @@ records:
 # [17] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [18] ESInactivity(66:4291) -> Full Charge
-# Condition: One-time use
+# 	Condition: One-time use (ai:0 rnd:25) (one-time: 1)
 # Do nothing
 # [19] ESSkillDelay(89:4288) -> Suppressive Wave
-# Condition: 25% chance
+# 	Condition: 25% chance (ai:0 rnd:25)
 # Delay active skills by 3 turns
 # [20] ESAbsorbCombo(67:4289) -> Ordeal Section
-# Condition: 25% chance
+# 	Condition: 25% chance (ai:0 rnd:25)
 # Absorb combo <= 6 damage for 1 turns
 # [21] ESSkyfall(68:4290) -> Jamming
-# Condition: 25% chance
+# 	Condition: 25% chance (ai:0 rnd:25)
 # Jammer skyfall +20% for 1 turns
 # [22] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [23] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b110
 # [24] ESAttackMultihit(15:4292) -> Steel Wing
-# Condition: One-time use
+# 	Condition: One-time use (ai:60 rnd:0) (one-time: 1)
 # Enemy action
 # [25] ESBindAttack(63:4293) -> Paralysis Sight
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Bind 1 random for 3 turns
 # [26] ESAttackMultihit(15:4294) -> Core Full Burst
 # Enemy action

@@ -105,26 +105,23 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 0 -        0
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
 ############################################################
 # [1] ESDeathCry(69:1061) -> I'll show you then
-# Condition: On death
+# 	Condition: On death (ai:0 rnd:0)
 # Show message: If you want to die so badly, I'll show you!!|I won't be as gentle as I was before...
 # [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 5, target rnd 4
 # [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [4] ESDebuffMovetime(39:1105) -> ***** (Dragon Ball)
-# Condition: When < 75% hp , one-time use
+# 	Condition: When < 75% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Movetime -1s for 5 turns
 # [5] ESAttackMultihit(15:1120) -> ***** (Dragon Ball)
-# Condition: When < 30% hp
+# 	Condition: When < 30% hp (ai:100 rnd:0)
 # Enemy action

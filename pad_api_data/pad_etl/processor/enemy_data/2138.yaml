@@ -84,12 +84,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 1 -        1
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -111,7 +108,7 @@ records:
 # [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 12
 # [9] SkillSet:
-# 	Condition: When < 25% hp
+# 	Condition: When < 25% hp (ai:100 rnd:0)
 # 	[0] ESOrbChangeAttack(48:2574) -> Fear Gas
 # 	Change Random to Jammer
 # 	[1] ESOrbChangeAttack(48:2574) -> Fear Gas
@@ -119,7 +116,7 @@ records:
 # 	[2] ESOrbChangeAttack(48:2574) -> Fear Gas
 # 	Change Random to Jammer
 # [10] ESOrbChangeAttack(48:2574) -> Fear Gas
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Change Random to Jammer
 # [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
@@ -128,7 +125,7 @@ records:
 # [13] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [14] SkillSet:
-# 	Condition: When < 50% hp
+# 	Condition: When < 50% hp (ai:100 rnd:0)
 # 	[0] ESGravity(50:2575) -> Pay!
 # 	Player -75% HP
 # 	[1] ESPoisonChangeRandom(60:2576) -> For what you did to me!

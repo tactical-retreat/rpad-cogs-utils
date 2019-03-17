@@ -140,12 +140,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -164,7 +161,7 @@ records:
 # [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] ESAttackMultihit(15:2406) -> Sahasrara
-# Condition: When < 5% hp
+# 	Condition: When < 5% hp (ai:100 rnd:0)
 # Enemy action
 # [7] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 65, target rnd 16
@@ -173,31 +170,31 @@ records:
 # [9] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
 # [10] SkillSet:
-# 	Condition: 25% chance when < 65% hp
+# 	Condition: 25% chance when < 65% hp (ai:0 rnd:25)
 # 	[0] ESAttackMultihit(15:2412) -> Svadhishthana
 # 	Enemy action
 # 	[1] ESBindRandom(1:2413) -> Manipura
 # 	Bind 1 random cards for 2 turns
 # [11] SkillSet:
-# 	Condition: 25% chance when < 65% hp
+# 	Condition: 25% chance when < 65% hp (ai:0 rnd:25)
 # 	[0] ESAttackMultihit(15:2412) -> Svadhishthana
 # 	Enemy action
 # 	[1] ESBlind(5:2414) -> Anahata
 # 	Blind all orbs on the board
 # [12] SkillSet:
-# 	Condition: 25% chance when < 65% hp
+# 	Condition: 25% chance when < 65% hp (ai:0 rnd:25)
 # 	[0] ESAttackMultihit(15:2412) -> Svadhishthana
 # 	Enemy action
 # 	[1] ESPoisonChangeRandom(60:2415) -> Vishuddha
 # 	Change Random 3 to Poison
 # [13] SkillSet:
-# 	Condition: 25% chance when < 65% hp
+# 	Condition: 25% chance when < 65% hp (ai:0 rnd:25)
 # 	[0] ESAttackMultihit(15:2412) -> Svadhishthana
 # 	Enemy action
 # 	[1] ESGravity(50:2416) -> Ajna
 # 	Player -99% HP
 # [14] ESBindSkill(14:2395) -> Kalam
-# Condition: 25% chance
+# 	Condition: 25% chance (ai:0 rnd:25)
 # Bind active skills for 10 turns
 # [15] ESEndPath(36:26) -> ESEndPath
 # end_turn

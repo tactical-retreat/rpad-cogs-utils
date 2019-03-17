@@ -189,12 +189,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 7 -      111
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -202,7 +199,7 @@ records:
 # [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
 # [2] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 4)
 # 	[0] ESStatusShield(20:8405) -> Protection of the Gods
 # 	Voids status ailments for 999 turns
 # 	[1] ESVoidShield(71:8406) -> Divine King's Armor
@@ -210,13 +207,13 @@ records:
 # [3] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 10, target rnd 13
 # [4] SkillSet:
-# 	Condition: When < 50% hp , one-time use
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 2)
 # 	[0] ESChangeAttribute(46:8411) -> Psevdaisthíseis
 # 	Change own attribute to random one of Fire, Water, Wood
 # 	[1] ESColumnSpawnMulti(77:8412) -> ...Grovel at my feet
 # 	Change 3rd column to Dark orbs, 4th column to Light orbs
 # [5] SkillSet:
-# 	Condition: When < 50% hp , one-time use
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESChangeAttribute(46:8414) -> Dread
 # 	Change own attribute to Dark
 # 	[1] ESDebuffMovetime(39:8415) -> Keraunós
@@ -230,10 +227,10 @@ records:
 # [9] ESSetCounter(25:15) -> ESSetCounter
 # counter = 0
 # [10] ESBlindStickyRandom(97:8409) -> Black Thunderstorm
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:50 rnd:0)
 # Blind random 1~5 orbs for 3 turns
 # [11] ESRandomSpawn(92:8410) -> Black Thunderstorm
-# Condition: When fire, water, wood, light, dark, heal, jammer, poison orbs are on the board
+# 	Condition: When fire, water, wood, light, dark, heal, jammer, poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 3 Mortal Poison orbs
 # [12] ESEndPath(36:26) -> ESEndPath
 # end_turn

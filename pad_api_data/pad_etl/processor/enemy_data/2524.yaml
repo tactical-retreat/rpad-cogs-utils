@@ -158,12 +158,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -181,7 +178,7 @@ records:
 # [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 18
 # [7] ESBindRandom(1:3643) -> Lullaby
-# Condition: When < 70% hp , one-time use
+# 	Condition: When < 70% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Bind 3 random cards for 3 turns
 # [8] ESDispel(6:3645) -> Rudolph's Steely Gaze
 # Voids player buff effects
@@ -190,20 +187,20 @@ records:
 # [10] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [11] ESRandomSpawn(92:3639) -> Present Box
-# Condition: 34% chance & when Fire, Water, Wood, Light, Dark, Heal, Poison, Mortal Poison orbs are on the board
+# 	Condition: 34% chance & when Fire, Water, Wood, Light, Dark, Heal, Poison, Mortal Poison orbs are on the board (ai:0 rnd:34)
 # Spawn random 5 Jammer orbs
 # [12] ESRandomSpawn(92:3640) -> Present Box
-# Condition: 33% chance
+# 	Condition: 33% chance (ai:0 rnd:33)
 # Spawn random 3 Water orbs
 # [13] ESGravity(50:3641) -> Present Box
-# Condition: 33% chance
+# 	Condition: 33% chance (ai:0 rnd:33)
 # Player -80% HP
 # [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [15] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b10
 # [16] ESAttackMultihit(15:3642) -> Rudolph Attack
-# Condition: 50% chance
+# 	Condition: 50% chance (ai:50 rnd:0)
 # Enemy action
 # [17] ESOrbLock(94:3644) -> Rudolph Antler Lock
 # Lock 5 random Fire, Water, Wood, Light, Dark, Heal, Jammer orbs

@@ -66,12 +66,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 3 -       11
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -90,25 +87,25 @@ records:
 # [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
 # 	[0] ESStatusShield(20:8078) -> Don't leave the Jammers♪
 # 	Voids status ailments for 999 turns
 # 	[1] ESRandomSpawn(92:8079) -> Alluring Moth Scales
 # 	Spawn random 10 Jammer orbs
 # [7] ESRandomSpawn(92:8081) -> Demon Tree Creation
-# Condition: When jammer orbs are on the board
+# 	Condition: When jammer orbs are on the board (ai:100 rnd:0)
 # Change all orbs to Wood
 # [8] ESAttackMultihit(15:8087) -> Jupiter Origin
-# Condition: When < 10% hp
+# 	Condition: When < 10% hp (ai:100 rnd:0)
 # Enemy action
 # [9] SkillSet:
-# 	Condition: When < 50% hp , one-time use
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESBoardChangeAttackBits(85:8084) -> Hallucination
 # 	Change all orbs to Wood, Heal, Jammer, Poison
 # 	[1] ESFixedStart(101:8085) -> Start from here♪
 # 	Fix orb movement starting point to random position on the board
 # [10] ESRandomSpawn(92:8082) -> Dark Tree Thorns
-# Condition: 80% chance & when Fire, Heal orbs are on the board
+# 	Condition: 80% chance & when Fire, Heal orbs are on the board (ai:80 rnd:0)
 # Spawn random 5 Jammer orbs
 # [11] ESBindAttack(63:8083) -> Restrain
 # Bind 1 random for 5 turns

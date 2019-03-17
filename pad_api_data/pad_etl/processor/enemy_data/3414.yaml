@@ -151,12 +151,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -168,7 +165,7 @@ records:
 # [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESDamageShield(74:10900) -> Protection of the Planets
 # 	Reduce damage from all sources by 75% for 1 turns
 # 	[1] ESAttackUp(17:10901) -> Limit of the Sky
@@ -182,13 +179,13 @@ records:
 # [8] ESBranchCounter(31:21) -> ESBranchCounter
 # Branch on counter = 4, target rnd 13
 # [9] ESAbsorbThreshold(87:10903) -> Preserving Bottle
-# Condition: 33% chance
+# 	Condition: 33% chance (ai:0 rnd:33)
 # Absorb damage >= 30000000 damage for 30 turns
 # [10] ESSkyfall(68:10904) -> Waking Sun - Aqua
-# Condition: 33% chance
+# 	Condition: 33% chance (ai:0 rnd:33)
 # Fire, Water skyfall +20% for 3 turns
 # [11] SkillSet:
-# 	Condition: 34% chance
+# 	Condition: 34% chance (ai:0 rnd:34)
 # 	[0] ESStatusShield(20:10899) -> Protection of the Stars
 # 	Voids status ailments for 999 turns
 # 	[1] ESAbsorbThreshold(87:10903) -> Preserving Bottle
@@ -208,7 +205,7 @@ records:
 # [17] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [18] ESRandomSpawn(92:10908) -> Sana Azlak
-# Condition: When fire, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board
+# 	Condition: When fire, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 6 Water orbs
 # [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
@@ -250,5 +247,5 @@ records:
 # [36] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [37] ESDamageShield(74:10296) -> Rite of Belzenlok I
-# Condition: One-time use
+# 	Condition: One-time use (ai:0 rnd:0) (one-time: 8)
 # Reduce damage from all sources by 50% for 4 turns

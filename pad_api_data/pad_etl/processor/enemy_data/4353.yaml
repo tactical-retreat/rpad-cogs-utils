@@ -307,12 +307,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 1 -        1
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -345,16 +342,16 @@ records:
 # [10] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 5, target rnd 16
 # [11] ESRandomSpawn(92:9716) -> Water Hazard
-# Condition: 25% chance & when Fire, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# 	Condition: 25% chance & when Fire, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:0 rnd:25)
 # Spawn random 8 Water orbs
 # [12] ESOrbLock(94:9717) -> Blizzard Wave
-# Condition: 25% chance
+# 	Condition: 25% chance (ai:0 rnd:25)
 # Lock 14 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [13] ESBindRandom(1:9718) -> Frozen Tentacle
-# Condition: 25% chance
+# 	Condition: 25% chance (ai:0 rnd:25)
 # Bind 2 random cards for 1 turns
 # [14] ESAttackMultihit(15:9719) -> Frost Hurricane
-# Condition: 25% chance
+# 	Condition: 25% chance (ai:0 rnd:25)
 # Enemy action
 # [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
@@ -393,13 +390,13 @@ records:
 # [28] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 5, target rnd 33
 # [29] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:50 rnd:0) (one-time: 1)
 # 	[0] ESSkyfall(68:9727) -> Heavy Rain
 # 	Water skyfall +25% for 1 turns
 # 	[1] ESAttackMultihit(15:9730) -> Tidal Wave
 # 	Enemy action
 # [30] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESAbsorbAttribute(53:9728) -> Misery Water
 # 	Absorb Water damage for 1 turns
 # 	[1] ESAttackMultihit(15:9730) -> Tidal Wave

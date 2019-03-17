@@ -651,12 +651,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 3 -       11
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -664,7 +661,7 @@ records:
 # [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
 # [2] ESDebuffRCV(105:12589) -> Bow down before my Psycho Power!
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
 # Rcv 50% for 10 turns
 # [3] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
@@ -675,21 +672,21 @@ records:
 # [6] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 51, target rnd 8
 # [7] ESAttackMultihit(15:12454) -> Psycho Inferno
-# Condition: 25% chance
+# 	Condition: 25% chance (ai:25 rnd:0)
 # Enemy action
 # [8] ESOrbChangeAttack(48:12449) -> Somersault Skull Diver
-# Condition: 33% chance
+# 	Condition: 33% chance (ai:0 rnd:33)
 # Change Random to Dark
 # [9] ESAttackMultihit(15:12448) -> Head Press
-# Condition: 33% chance
+# 	Condition: 33% chance (ai:0 rnd:33)
 # Enemy action
 # [10] ESAttackMultihit(15:12453) -> Double Knee Press
-# Condition: 34% chance
+# 	Condition: 34% chance (ai:0 rnd:34)
 # Enemy action
 # [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [12] ESDamageShield(74:12455) -> Scurry! Psycho Nightmare
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Reduce damage from all sources by 50% for 10 turns
 # [13] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 11, target rnd 5

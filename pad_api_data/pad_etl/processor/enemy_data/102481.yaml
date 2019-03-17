@@ -102,12 +102,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -129,16 +126,16 @@ records:
 # [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 14
 # [9] ESRecoverEnemy(86:3487) -> Regeneration
-# Condition: When < 20% hp , one-time use
+# 	Condition: When < 20% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Enemy recover 30% hp
 # [10] ESRandomSpawn(92:3489) -> Flame Arrow
-# Condition: When < 20% hp & when Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# 	Condition: When < 20% hp & when Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 8 Fire orbs
 # [11] ESAttackMultihit(15:3485) -> Absorbing Form Bite
-# Condition: 70% chance
+# 	Condition: 70% chance (ai:70 rnd:0)
 # Enemy action
 # [12] ESAttackMultihit(15:3488) -> Strong Blow
-# Condition: 70% chance
+# 	Condition: 70% chance (ai:70 rnd:0)
 # Enemy action
 # [13] ESEndPath(36:26) -> ESEndPath
 # end_turn

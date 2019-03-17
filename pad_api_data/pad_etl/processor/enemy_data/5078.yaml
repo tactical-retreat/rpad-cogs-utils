@@ -356,12 +356,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 3 -       11
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -369,7 +366,7 @@ records:
 # [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
 # [2] ESOrbLock(94:12572) -> This is the path of my destiny!
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
 # Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [3] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 10
@@ -378,7 +375,7 @@ records:
 # [5] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
 # [6] SkillSet:
-# 	Condition: 33% chance
+# 	Condition: 33% chance (ai:0 rnd:33)
 # 	[0] ESAttackMultihit(15:12576) -> Collarbone Breaker
 # 	Enemy action
 # 	[1] ESAttackSinglehit(82:1) -> Disable Skill
@@ -386,7 +383,7 @@ records:
 # 	[2] ESAttackMultihit(15:12579) -> Hadoken
 # 	Enemy action
 # [7] SkillSet:
-# 	Condition: 33% chance
+# 	Condition: 33% chance (ai:0 rnd:33)
 # 	[0] ESBindAttack(63:12577) -> Solar Plexus Strike
 # 	Bind 1 subs for 1~2 turns
 # 	[1] ESAttackSinglehit(82:1) -> Disable Skill
@@ -394,7 +391,7 @@ records:
 # 	[2] ESAttackMultihit(15:12580) -> Shoryuken
 # 	Enemy action
 # [8] SkillSet:
-# 	Condition: 34% chance
+# 	Condition: 34% chance (ai:0 rnd:34)
 # 	[0] ESGravity(50:12578) -> Axe Kick
 # 	Player -25% HP
 # 	[1] ESAttackSinglehit(82:1) -> Disable Skill
@@ -404,7 +401,7 @@ records:
 # [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [10] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESAttackUp(17:12582) -> Denjin Renki
 # 	Increase damage to 150% for the next 10 turns
 # 	[1] ESInactivity(66:12670) -> Now the fight's begun! 
@@ -412,7 +409,7 @@ records:
 # [11] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 15, target rnd 15
 # [12] SkillSet:
-# 	Condition: 50% chance
+# 	Condition: 50% chance (ai:0 rnd:50)
 # 	[0] ESAttackMultihit(15:12576) -> Collarbone Breaker
 # 	Enemy action
 # 	[1] ESAttackSinglehit(82:1) -> Disable Skill
@@ -420,7 +417,7 @@ records:
 # 	[2] ESRowSpawnMulti(79:12585) -> Ooo!
 # 	Change 3rd row to Light orbs
 # [13] SkillSet:
-# 	Condition: 50% chance
+# 	Condition: 50% chance (ai:0 rnd:50)
 # 	[0] ESBindAttack(63:12577) -> Solar Plexus Strike
 # 	Bind 1 subs for 1~2 turns
 # 	[1] ESAttackSinglehit(82:1) -> Disable Skill

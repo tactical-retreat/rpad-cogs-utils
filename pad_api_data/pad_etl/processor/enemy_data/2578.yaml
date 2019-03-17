@@ -129,12 +129,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 4 -      100
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -156,23 +153,23 @@ records:
 # [8] ESAttackUp(17:3613) -> Wind-Up Full Throttle
 # Increase damage to 200% for the next 999 turns
 # [9] ESRandomSpawn(92:3662) -> Corona Ocean
-# Condition: When < 50% hp , one-time use & when Fire, Water, Wood, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# 	Condition: When < 50% hp , one-time use & when Fire, Water, Wood, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:100 rnd:0) (one-time: 1)
 # Change all orbs to Light
 # [10] ESGravity(50:3663) -> Full Spiral
-# Condition: When < 10% hp
+# 	Condition: When < 10% hp (ai:100 rnd:0)
 # Player -100% HP
 # [11] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 17
 # [12] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [13] ESRandomSpawn(92:3659) -> Three Hearts Clutch
-# Condition: 34% chance & when Fire, Water, Wood, Light, Dark, Jammer, Poison, Mortal Poison orbs are on the board
+# 	Condition: 34% chance & when Fire, Water, Wood, Light, Dark, Jammer, Poison, Mortal Poison orbs are on the board (ai:0 rnd:34)
 # Spawn random 3 Heal orbs
 # [14] ESOrbLock(94:3660) -> Seven Ties Tentacle
-# Condition: 33% chance
+# 	Condition: 33% chance (ai:0 rnd:33)
 # Lock 7 random Fire, Water, Wood, Light, Dark orbs
 # [15] ESRandomSpawn(92:3661) -> Nine Sparkles Breath
-# Condition: 33% chance & when Fire, Water, Wood, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# 	Condition: 33% chance & when Fire, Water, Wood, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:0 rnd:33)
 # Spawn random 9 Light orbs
 # [16] ESEndPath(36:26) -> ESEndPath
 # end_turn

@@ -48,12 +48,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 3 -       11
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -65,18 +62,18 @@ records:
 # [3] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 1, target rnd 4
 # [4] ESInactivity(16:157) -> Wait and See
-# Condition: One-time use
+# 	Condition: One-time use (ai:0 rnd:100) (one-time: 1)
 # Do nothing
 # [5] ESAttackUp(17:158) -> Overdrive
-# Condition: When < 40% hp
+# 	Condition: When < 40% hp (ai:100 rnd:0)
 # Increase damage to 150% for the next 15 turns
 # [6] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [7] ESGravity(50:2598) -> High Pressure
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Player -99% HP
 # [8] ESRandomSpawn(92:2599) -> Jotunn Flame
-# Condition: When water, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board
+# 	Condition: When water, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 5 Fire orbs
 # [9] ESEndPath(36:26) -> ESEndPath
 # end_turn

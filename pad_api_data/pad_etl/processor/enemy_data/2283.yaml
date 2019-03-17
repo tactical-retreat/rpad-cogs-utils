@@ -129,12 +129,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 0 -        0
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -164,13 +161,13 @@ records:
 # [12] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 25
 # [13] ESBindRandom(1:3145) -> You'll freeze this close to me
-# Condition: When < 50% hp , one-time use
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Bind 3 random cards for 2 turns
 # [14] ESRandomSpawn(92:3146) -> A cold wind blows
-# Condition: 70% chance when < 50% hp & when Fire, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# 	Condition: 70% chance when < 50% hp & when Fire, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:70 rnd:0)
 # Spawn random 4 Water orbs
 # [15] ESRandomSpawn(92:3144) -> A cold wave washes over you
-# Condition: 90% chance & when Fire, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
+# 	Condition: 90% chance & when Fire, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:90 rnd:0)
 # Spawn random 3 Water orbs
 # [16] ESEndPath(36:26) -> ESEndPath
 # end_turn

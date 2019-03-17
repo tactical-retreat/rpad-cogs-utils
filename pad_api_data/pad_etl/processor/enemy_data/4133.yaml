@@ -169,12 +169,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 1 -        1
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -200,16 +197,16 @@ records:
 # [10] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 40, target rnd 24
 # [11] ESSkillDelay(89:8901) -> Short Tackle
-# Condition: 15% chance
+# 	Condition: 15% chance (ai:0 rnd:15)
 # Delay active skills by 1 turns
 # [12] ESGravity(50:8902) -> Charge
-# Condition: 15% chance
+# 	Condition: 15% chance (ai:0 rnd:15)
 # Player -70% HP
 # [13] ESRowSpawnMulti(79:8903) -> Tail Attack
-# Condition: 35% chance
+# 	Condition: 35% chance (ai:0 rnd:35)
 # Change 5th row to Water orbs
 # [14] ESAbsorbCombo(67:8904) -> Take Off
-# Condition: One-time use
+# 	Condition: One-time use (ai:0 rnd:35) (one-time: 1)
 # Absorb combo <= 5 damage for 1 turns
 # [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
@@ -218,13 +215,13 @@ records:
 # [17] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [18] ESOrbLock(94:8907) -> Diagonal Strike Attack
-# Condition: One-time use
+# 	Condition: One-time use (ai:50 rnd:0) (one-time: 1)
 # Lock 5 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [19] ESRowSpawnMulti(79:8909) -> Tail Attack
-# Condition: One-time use
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Change 5th row to Water orbs
 # [20] ESSpinnersFixed(110:8906) -> Gliding Ice Breath
-# Condition: When < 30% hp
+# 	Condition: When < 30% hp (ai:100 rnd:0)
 # Specific orbs change every 1.0s for 2 turns
 # [21] ESAttackMultihit(15:8905) -> Gliding Strike Attack
 # Enemy action

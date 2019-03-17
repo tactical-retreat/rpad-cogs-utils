@@ -131,12 +131,9 @@ records:
 ### Card Unknowns
 ############################################################
 # [09] 5 -      101
-# [51] 0 -        0
 # [52] 1 -        1
 # [53] 1 -        1
 # [54] 1 -        1
-# [55] 0 -        0
-# [56] 0 -        0
 #
 ############################################################
 ### Raw Behavior
@@ -154,22 +151,22 @@ records:
 # [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 12
 # [7] ESRowSpawnMulti(79:2253) -> Dance of the Dragon War Princess
-# Condition: When < 30% hp
+# 	Condition: When < 30% hp (ai:100 rnd:0)
 # Change 1st row to Water orbs, 3rd row to Wood orbs, 5th row to Water orbs
 # [8] SkillSet:
-# 	Condition: 30% chance
+# 	Condition: 30% chance (ai:0 rnd:30)
 # 	[0] ESAttackMultihit(15:2246) -> Hyaaa!
 # 	Enemy action
 # 	[1] ESColumnSpawnMulti(77:2247) -> Blizzard Breath
 # 	Change 6th column to Water orbs
 # [9] SkillSet:
-# 	Condition: One-time use
+# 	Condition: One-time use (ai:0 rnd:30) (one-time: 1)
 # 	[0] ESRowSpawnMulti(79:2248) -> Heeeey!!
 # 	Change 3rd row to Wood orbs
 # 	[1] ESBindAttack(63:2249) -> Freeze Breath
 # 	Bind 1 subs for 1~2 turns
 # [10] SkillSet:
-# 	Condition: 30% chance
+# 	Condition: 30% chance (ai:0 rnd:30)
 # 	[0] ESRowSpawnMulti(79:2248) -> Heeeey!!
 # 	Change 3rd row to Wood orbs
 # 	[1] ESColumnSpawnMulti(77:2247) -> Blizzard Breath
