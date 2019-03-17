@@ -163,7 +163,7 @@ class BookCard(pad_util.JsonDictEncodable):
 
         self.sell_mp = int(raw[63])
         self.latent_on_feed = int(raw[64])
-        self.unknown_066 = raw[65]  # Might be which collab
+        self.collab_id = int(raw[65])
 
         self.random_flags = raw[66]
         self.inheritable = bool(self.random_flags & 1)
