@@ -75,6 +75,8 @@ def run_test(args):
         file_output_dir = golden_output_dir if dungeon_id in golden_dungeons else new_output_dir
 
         if dungeon_id in split_dungeons:
+            # Disable endless for now it takes a long time to run
+            continue
             for floor in dungeon.floors:
                 floor_id = floor.floor_number
                 file_name = '{}_{}.txt'.format(dungeon_id, floor_id)
