@@ -128,7 +128,6 @@ def behavior_to_skillrecord(record_type: RecordType, action: Union[ESAction, ESL
         if cond.one_time:
             one_time = True
 
-
     return SkillRecord(record_type=record_type,
                        name_en=name,
                        name_jp=name,
@@ -160,7 +159,10 @@ def flatten_skillset(level: int, skillset: ProcessedSkillset) -> SkillRecordList
             records.append(behavior_to_skillrecord(RecordType.ACTION, sub_item))
 
     for item in skillset.enemycount_skill_groups:
-        records.append(create_divider('When {} enemy remains'.format(item.count)))
+        header = 'When {} enemy remains'.format(item.count)
+        if item.hp != 100:
+            header += ' and HP <= {}'.format(item.hp)
+        records.append(create_divider(header))
         for sub_item in item.skills:
             records.append(behavior_to_skillrecord(RecordType.ACTION, sub_item))
 
