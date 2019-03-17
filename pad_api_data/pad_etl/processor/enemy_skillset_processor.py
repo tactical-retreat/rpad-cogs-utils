@@ -31,12 +31,14 @@ class TimedSkillGroup(StandardSkillGroup):
 class EnemyCountSkillGroup(StandardSkillGroup):
     """Set of skills which execute when a specific number of enemies are present."""
 
-    def __init__(self, count: int, skills: List, following_skills: List[ESAction]):
+    def __init__(self, count: int, hp: int, skills: List, following_skills=None):
         StandardSkillGroup.__init__(self, skills)
         # Number of enemies required to trigger this set of actions.
         self.count = count
+        # The hp threshold that this group executes on, always present, even if 100.
+        self.hp = hp
         # I don't remember what I was thinking this would be used for =(
-        self.following_skills = following_skills
+        # self.following_skills = following_skills
 
 
 class HpSkillGroup(StandardSkillGroup):
@@ -135,14 +137,18 @@ class Context(object):
     def apply_skill_effects(self, behavior):
         """Check context to see if a skill is allowed to be used, and update flag accordingly"""
         b_type = type(behavior)
-        if b_type == ESAttackUp or b_type == ESAttackUpStatus:
+        if issubclass(b_type, ESAttackUp):
+            if b_type == ESAttackUPRemainingEnemies \
+                    and behavior.enemy_count is not None \
+                    and self.enemies > behavior.enemy_count:
+                return False
             if self.enraged is None:
-                if behavior.turn_cooldown is None:
-                    self.enraged = behavior.turns
-                    return True
-                else:
+                if b_type == ESAttackUPCooldown and behavior.turn_cooldown is not None:
                     self.enraged = -behavior.turn_cooldown + 1
                     return False
+                else:
+                    self.enraged = behavior.turns
+                    return True
             else:
                 if self.enraged == 0:
                     self.enraged = behavior.turns
@@ -362,8 +368,10 @@ def loop_through(ctx: Context, behaviors: List[Any]):
             continue
 
         if b_type == ESBranchRemainingEnemies:
-            # TODO: not implemented correctly
-            idx += 1
+            if ctx.enemies == b.branch_value:
+                idx = b.target_round
+            else:
+                idx += 1
             continue
 
         raise ValueError('unsupported operation:', b_type, b)
@@ -404,7 +412,7 @@ def info_from_behaviors(behaviors):
             card_checkpoints.update(es.branch_value)
 
         # Find checks for specific amounts of enemies.
-        if type(es) == ESBranchRemainingEnemies:
+        if type(es) == ESBranchRemainingEnemies or type(es) == ESAttackUPRemainingEnemies:
             has_enemy_remaining_branch = True
 
     return base_abilities, hp_checkpoints, card_checkpoints, has_enemy_remaining_branch
@@ -466,6 +474,12 @@ def convert(enemy_behavior: List, level: int):
         turn_data.append(hp_data)
         ctx = next_ctx
         ctx.turn_event()
+
+    # for i_idx, check_data in enumerate(turn_data):
+    #     for hp, hp_b in check_data.items():
+    #         print('TURN {} HP {}'.format(i_idx, hp))
+    #         for b in hp_b:
+    #             print(b.name)
 
     # Loop over every turn
     behavior_loop = None
@@ -542,28 +556,6 @@ def convert(enemy_behavior: List, level: int):
                 skillset.timed_skill_groups.append(TimedSkillGroup(idx + 1, hp, hp_behavior))
                 # looped_behavior.append((hp, hp_behavior))
 
-    # Simulate enemies being defeated
-    if has_enemy_remaining_branch:
-        default_enemy_action = loop_through(ctx, behaviors)
-        seen_skillsets = [default_enemy_action]
-        for ecount in range(6, 0, -1):
-            ctx.enemies = ecount
-            cur_loop = loop_through(ctx, behaviors)
-
-            if cur_loop in seen_skillsets:
-                continue
-
-            seen_skillsets.append(cur_loop)
-
-            # Check for the first action being one-time. Kind of a hacky special case for loops.
-            follow_loop = loop_through(ctx, behaviors)
-            if follow_loop == cur_loop:
-                follow_loop = None
-            else:
-                seen_skillsets.append(follow_loop)
-            skillset.enemycount_skill_groups.append(
-                EnemyCountSkillGroup(ecount, cur_loop, follow_loop))
-
     # Simulate HP decreasing
     globally_seen_behavior = []
     hp_ctx = ctx.clone()
@@ -578,6 +570,54 @@ def convert(enemy_behavior: List, level: int):
             globally_seen_behavior.append(cur_loop)
             locally_seen_behavior.append(cur_loop)
             cur_loop = loop_through(hp_ctx, behaviors)
+
+    # Simulate enemies being defeated
+    if has_enemy_remaining_branch:
+        ec_ctx = ctx.clone()
+        ec_data = {}
+        for ecount in [999] + list(range(6, 0, -1)):
+            ec_ctx.enemies = ecount
+            current_ec_data = {}
+            for checkpoint in sorted(hp_checkpoints, reverse=True):
+                ec_ctx.hp = checkpoint
+                cur_loop = loop_through(ec_ctx, behaviors)
+
+                if cur_loop in globally_seen_behavior:
+                    continue
+
+                current_ec_data[checkpoint] = cur_loop
+
+                # # Check for the first action being one-time. Kind of a hacky special case for loops.
+                # follow_loop = loop_through(ec_ctx, behaviors)
+                # if follow_loop != cur_loop:
+                #     ec_data[ecount].extend(follow_loop)
+
+            if all([x != current_ec_data for ec, x in ec_data.items()]):
+                ec_data[ecount] = current_ec_data
+
+
+        # prune actions
+        for ecount, loop in ec_data.items():
+            if loop is None:
+                continue
+            # remove skillsets already seen from decreasing HP
+            for hp, b_set in loop.copy().items():
+                if b_set in globally_seen_behavior:
+                    loop.pop(hp)
+            # remove skillsets found on more than 1 turn
+            for comp_ecount, comp_loop in ec_data.items():
+                if comp_loop is None:
+                    continue
+                if ecount != comp_ecount and loop == comp_loop:
+                    ec_data[ecount] = None
+                    ec_data[comp_ecount] = None
+
+        for ecount, loop in ec_data.items():
+            if loop is None:
+                continue
+            for hp, b_set in loop.items():
+                skillset.enemycount_skill_groups.append(
+                    EnemyCountSkillGroup(ecount, hp, b_set))
 
     return clean_skillset(skillset)
 
