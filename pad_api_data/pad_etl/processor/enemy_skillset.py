@@ -179,8 +179,9 @@ class Describe:
             output.append('when < {:d}% HP'.format(hp))
         if one_time:
             if len(output) > 0:
-                output.append(',')
-            output.append('one-time use')
+                output.append(', one-time use')
+            else:
+                output.append('one-time use')
         return ' '.join(output).capitalize() if len(output) > 0 else None
 
     @staticmethod
@@ -823,9 +824,9 @@ class ESAttackUPRemainingEnemies(ESAttackUp):
         )
         if self.condition and self.enemy_count:
             if self.condition.description:
-                self.condition.description += ', when < {} enemies remain'.format(self.enemy_count+1)
+                self.condition.description += ', when <= {} enemies remain'.format(self.enemy_count)
             else:
-                self.condition.description = 'when < {} enemies remain'.format(self.enemy_count+1)
+                self.condition.description = 'when <= {} enemies remain'.format(self.enemy_count)
 
 
 class ESAttackUpStatus(ESAttackUp):
@@ -1555,7 +1556,7 @@ class ESBranchFlag(ESBranch):
         super(ESBranchFlag, self).__init__(
             skill,
             branch_condition='flag',
-            compare = '&'
+            compare='&'
         )
 
 
@@ -1584,7 +1585,7 @@ class ESBranchCounter(ESBranch):
         super(ESBranchCounter, self).__init__(
             skill,
             branch_condition='counter',
-            compare = self.COUNTER_COMPARE_MAP[es_type(skill)]
+            compare=self.COUNTER_COMPARE_MAP[es_type(skill)]
         )
 
 
@@ -1599,7 +1600,7 @@ class ESBranchLevel(ESBranch):
         super(ESBranchLevel, self).__init__(
             skill,
             branch_condition='level',
-            compare = self.LEVEL_COMPARE_MAP[es_type(skill)]
+            compare=self.LEVEL_COMPARE_MAP[es_type(skill)]
         )
 
 
@@ -1640,7 +1641,7 @@ class ESBranchCombo(ESBranch):
 
 class ESBranchRemainingEnemies(ESBranch):
     def __init__(self, skill):
-        super(ESBranchRemainingEnemies, self).__init__(skill, branch_condition='remaining enemies', compare='=')
+        super(ESBranchRemainingEnemies, self).__init__(skill, branch_condition='remaining enemies', compare='<=')
 
 
 # Unknown
