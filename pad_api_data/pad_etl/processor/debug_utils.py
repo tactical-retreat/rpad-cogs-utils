@@ -41,11 +41,11 @@ def simple_dump_obj(o):
         if o.condition.description:
             msg += '\n\tCondition: {}'.format(o.condition.description)
         for idx, behavior in enumerate(o.skill_list):
-            msg += '\n\t[{}] {} -> {}\n\t{}'.format(
-                idx, type(behavior).__name__, behavior.name, behavior.description)
+            msg += '\n\t[{}] {}({}:{}) -> {}\n\t{}'.format(
+                idx, type(behavior).__name__, behavior.type, behavior.enemy_skill_id, behavior.name, behavior.description)
         return msg
     else:
-        msg = '{} -> {}'.format(type(o).__name__, o.name)
+        msg = '{}({}:{}) -> {}'.format(type(o).__name__, o.type, o.enemy_skill_id, o.name)
         if hasattr(o, 'condition'):
             if o.condition.description:
                 msg += '\nCondition: {}'.format(o.condition.description)

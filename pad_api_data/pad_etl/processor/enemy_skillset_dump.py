@@ -254,7 +254,7 @@ def load_and_merge_summary(enemy_summary: EnemySummary) -> EnemySummary:
     return saved_summary
 
 
-def dump_summary_to_file(enemy_summary: EnemySummary, enemy_behavior: List):
+def dump_summary_to_file(card: BookCard, enemy_summary: EnemySummary, enemy_behavior: List):
     """Writes the enemy info, actions by level, and enemy behavior to a file."""
     file_path = _file_by_id(enemy_summary.info.monster_id)
     with open(file_path, 'w', encoding='utf-8') as f:
@@ -263,6 +263,13 @@ def dump_summary_to_file(enemy_summary: EnemySummary, enemy_behavior: List):
         for listing in enemy_summary.data:
             f.write('{}\n'.format(_header('Data @ {}'.format(listing.level))))
             f.write('{}\n'.format(yaml.dump(listing, default_flow_style=False)))
+
+        f.write('{}\n'.format(_header('Card Unknowns')))
+        for i in ['09'] + list(range(51, 57)):
+            field = 'unknown_0{}'.format(i)
+            value = getattr(card, field)
+            f.write('# [{}] {} - {:8b}\n'.format(i, value, value))
+        f.write('#\n')
 
         if enemy_behavior:
             f.write('{}\n'.format(_header('Raw Behavior')))

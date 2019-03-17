@@ -49,7 +49,7 @@ def process_card(card):
         card.card.card_id, card.card.name, 'not yet populated')
     summary = enemy_skillset_dump.EnemySummary(entry_info, skill_listings)
 
-    enemy_skillset_dump.dump_summary_to_file(summary, enemy_behavior)
+    enemy_skillset_dump.dump_summary_to_file(card.card, summary, enemy_behavior)
 
 
 def run(args):
