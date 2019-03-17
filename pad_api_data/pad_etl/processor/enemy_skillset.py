@@ -805,57 +805,26 @@ class ESStorePower(ESEnrage):
 
 
 class ESAttackUp(ESEnrage):
-    def __init__(self, skill, multiplier, turns):
-        super(ESAttackUp, self).__init__(
-            skill,
-            multiplier=multiplier,
-            turns=turns
-        )
-
-
-class ESAttackUPRemainingEnemies(ESAttackUp):
     def __init__(self, skill):
-        self.enemy_count = params(skill)[1]
-        super(ESAttackUPRemainingEnemies, self).__init__(
+        # param[1] is turn cooldown according to skyo, i.e. enrage can only be used every X turns after it expires
+        self.turn_cooldown = params(skill)[1]
+        super(ESAttackUp, self).__init__(
             skill,
             multiplier=params(skill)[3],
             turns=params(skill)[2]
         )
-        if self.condition and self.enemy_count:
-            if self.condition.description:
-                self.condition.description += ', when < {} enemies remain'.format(self.enemy_count+1)
-            else:
-                self.condition.description = 'when < {} enemies remain'.format(self.enemy_count+1)
 
 
-class ESAttackUpStatus(ESAttackUp):
+class ESAttackUpStatus(ESEnrage):
     def __init__(self, skill):
+        self.turn_cooldown = None
         super(ESAttackUpStatus, self).__init__(
             skill,
             multiplier=params(skill)[2],
             turns=params(skill)[1]
         )
         if self.condition:
-            if self.condition.description:
-                self.condition.description += ', after being affected by a status effect'
-            else:
-                self.condition.description = 'after being affected by a status effect'
-
-
-class ESAttackUPCooldown(ESAttackUp):
-    def __init__(self, skill):
-        # enrage cannot trigger until this many turns have passed
-        self.turn_cooldown = params(skill)[1]
-        super(ESAttackUPCooldown, self).__init__(
-            skill,
-            multiplier=params(skill)[3],
-            turns=params(skill)[2]
-        )
-        if self.condition and self.turn_cooldown:
-            if self.condition.description:
-                self.condition.description += ', after {} turns'.format(self.turn_cooldown)
-            else:
-                self.condition.description = 'after {} turns'.format(self.turn_cooldown)
+            self.condition.description = 'after being affected by a status effect'
 
 
 class ESDebuff(ESAction):
@@ -1629,18 +1598,18 @@ class ESPreemptive(ESLogic):
 
 class ESBranchCard(ESBranch):
     def __init__(self, skill):
-        super(ESBranchCard, self).__init__(skill, branch_condition='player_cards', compare='HAS')
+        super(ESBranchCard, self).__init__(skill, branch_condition='player_cards', compare = 'HAS')
         self.branch_value = [x for x in params(skill) if x is not None]
 
 
 class ESBranchCombo(ESBranch):
     def __init__(self, skill):
-        super(ESBranchCombo, self).__init__(skill, branch_condition='combo', compare='>')
+        super(ESBranchCombo, self).__init__(skill, branch_condition='combo', compare = '>')
 
 
 class ESBranchRemainingEnemies(ESBranch):
     def __init__(self, skill):
-        super(ESBranchRemainingEnemies, self).__init__(skill, branch_condition='remaining enemies', compare='=')
+        super(ESBranchRemainingEnemies, self).__init__(skill, branch_condition='remaining enemies', compare = '=')
 
 
 # Unknown
@@ -1670,9 +1639,9 @@ BEHAVIOR_MAP = {
     14: ESBindSkill,
     15: ESAttackMultihit,
     16: ESInactivity,
-    17: ESAttackUPRemainingEnemies,
+    17: ESAttackUp,
     18: ESAttackUpStatus,
-    19: ESAttackUPCooldown,
+    19: ESAttackUp,
     20: ESStatusShield,
     39: ESDebuffMovetime,
     40: ESEndBattle,
@@ -1712,7 +1681,7 @@ BEHAVIOR_MAP = {
     88: ESBindAwoken,
     89: ESSkillDelay,
     92: ESRandomSpawn,
-    93: ESNone,  # FF animation (???)
+    # 93: FF animation (???)
     94: ESOrbLock,
     95: ESSkillSetOnDeath,
     96: ESSkyfall,
@@ -1821,6 +1790,9 @@ def reformat_json(card_data):
         if len(enemy.enemy_skill_refs) == 0:
             continue
 
+        # t_15 = None
+        # t_16 = None
+
         behavior = {}
         passives = {}
         unknown = {}
@@ -1828,8 +1800,13 @@ def reformat_json(card_data):
         # Sequence of enemy skill is important for logic
         for idx, skill in enumerate(enemy.enemy_skill_refs):
             idx += 1
+            # print(str(enemy['monster_no']) + ':' + str(es_type(skill)))
             if es_type(skill) in BEHAVIOR_MAP:
                 behavior[idx] = BEHAVIOR_MAP[es_type(skill)](skill)
+                # if es_type(skill) == 15 and t_16 is not None:
+                #     t_15 = skill
+                # if es_type(skill) == 16 and t_15 is None:
+                #     t_16 = skill
             elif es_type(skill) in PASSIVE_MAP:
                 passives[idx] = PASSIVE_MAP[es_type(skill)](skill)
             else:  # skills not parsed
@@ -1840,6 +1817,10 @@ def reformat_json(card_data):
             'PASSIVE': passives,
             'UNKNOWN': unknown
         })
+        # if t_15 and t_16:
+        #     print('\n[{}]{}'.format(enemy.card_id, enemy.name))
+        #     print('16 - {}\n{}'.format(name(t_16), str(params(t_16))))
+        #     print('15 - {}\n{}'.format(name(t_15), str(params(t_15))))
 
     return reformatted
 
