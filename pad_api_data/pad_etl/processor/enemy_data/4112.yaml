@@ -128,73 +128,84 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 3 -       11
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 5
-# [3] ESBranchLevel -> ESBranchLevel
+# [3] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 1, target rnd 22
-# [4] ESEndPath -> ESEndPath
+# [4] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [5] ESBranchFlag -> ESBranchFlag
+# [5] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 9
-# [6] ESFlagOperation -> ESFlagOperation
+# [6] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [7] SkillSet:
-# 	[0] ESStatusShield -> Ooowah!
+# 	[0] ESStatusShield(20:8679) -> Ooowah!
 # 	Voids status ailments for 999 turns
-# 	[1] ESDamageShield -> Let's go!
+# 	[1] ESDamageShield(74:8680) -> Let's go!
 # 	Reduce damage from all sources by 50% for 3 turns
-# [8] ESEndPath -> ESEndPath
+# [8] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [9] ESBranchHP -> ESBranchHP
+# [9] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 20
-# [10] ESBranchHP -> ESBranchHP
+# [10] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 15
-# [11] ESVoidShield -> Gravity Smash
+# [11] ESVoidShield(71:8682) -> Gravity Smash
 # Condition: One-time use
 # Void damage >= 1000000 for 1 turns
-# [12] ESRandomSpawn -> Genocide Cutter
+# [12] ESRandomSpawn(92:8683) -> Genocide Cutter
 # Condition: 50% chance & when Fire, Water, Wood, Light, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 3 Dark orbs
-# [13] ESAttackMultihit -> Vanishing Rush
+# [13] ESAttackMultihit(15:8684) -> Vanishing Rush
 # Enemy action
-# [14] ESEndPath -> ESEndPath
+# [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [15] ESVoidShield -> Gravity Smash
+# [15] ESVoidShield(71:8682) -> Gravity Smash
 # Condition: One-time use
 # Void damage >= 1000000 for 1 turns
-# [16] ESAttackMultihit -> Destruction Omega
+# [16] ESAttackMultihit(15:8685) -> Destruction Omega
 # Condition: 20% chance
 # Enemy action
-# [17] ESRandomSpawn -> Genocide Cutter
+# [17] ESRandomSpawn(92:8683) -> Genocide Cutter
 # Condition: 50% chance & when Fire, Water, Wood, Light, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 3 Dark orbs
-# [18] ESAttackMultihit -> Vanishing Rush
+# [18] ESAttackMultihit(15:8684) -> Vanishing Rush
 # Enemy action
-# [19] ESEndPath -> ESEndPath
+# [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [20] SkillSet:
-# 	[0] ESColumnSpawnMulti -> Gigantic Pressure
+# 	[0] ESColumnSpawnMulti(77:8686) -> Gigantic Pressure
 # 	Change 6th column to Dark orbs
-# 	[1] ESColumnSpawnMulti -> Die!
+# 	[1] ESColumnSpawnMulti(77:8687) -> Die!
 # 	Change 1st column to Dark orbs
-# [21] ESEndPath -> ESEndPath
+# [21] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [22] ESBranchFlag -> ESBranchFlag
+# [22] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 25
-# [23] ESFlagOperation -> ESFlagOperation
+# [23] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [24] SkillSet:
-# 	[0] ESInactivity -> Ooowah!
+# 	[0] ESInactivity(66:8691) -> Ooowah!
 # 	Do nothing
-# 	[1] ESInactivity -> Let's go!
+# 	[1] ESInactivity(66:8692) -> Let's go!
 # 	Do nothing
-# [25] ESEndPath -> ESEndPath
+# [25] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [26] SkillSet:
 # 	Condition: On death
-# 	[0] ESInactivity -> HOAAAAAAAAAA!
+# 	[0] ESInactivity(66:8689) -> HOAAAAAAAAAA!
 # 	Do nothing

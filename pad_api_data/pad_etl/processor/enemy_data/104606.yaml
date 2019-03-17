@@ -207,56 +207,67 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 15 -     1111
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESAttackMultihit -> Firebreathing
+# [6] ESAttackMultihit(15:10271) -> Firebreathing
 # Enemy action
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESSetCounter -> ESSetCounter
+# [8] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [9] ESBranchCounter -> ESBranchCounter
+# [9] ESBranchCounter(31:21) -> ESBranchCounter
 # Branch on counter = 2, target rnd 21
-# [10] ESBranchCounter -> ESBranchCounter
+# [10] ESBranchCounter(31:21) -> ESBranchCounter
 # Branch on counter = 4, target rnd 22
-# [11] ESBranchCounter -> ESBranchCounter
+# [11] ESBranchCounter(31:21) -> ESBranchCounter
 # Branch on counter = 6, target rnd 21
-# [12] ESBranchCounter -> ESBranchCounter
+# [12] ESBranchCounter(31:21) -> ESBranchCounter
 # Branch on counter = 8, target rnd 22
-# [13] ESBranchCounter -> ESBranchCounter
+# [13] ESBranchCounter(31:21) -> ESBranchCounter
 # Branch on counter = 9, target rnd 19
-# [14] ESRandomSpawn -> Cinder Stench
+# [14] ESRandomSpawn(92:10272) -> Cinder Stench
 # Condition: One-time use & when Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 1 Fire orbs
-# [15] ESRandomSpawn -> Cinder Stench
+# [15] ESRandomSpawn(92:10273) -> Cinder Stench
 # Condition: One-time use & when Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 2 Fire orbs
-# [16] ESRandomSpawn -> Cinder Stench
+# [16] ESRandomSpawn(92:10274) -> Cinder Stench
 # Condition: One-time use & when Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 3 Fire orbs
-# [17] ESRandomSpawn -> Cinder Stench
+# [17] ESRandomSpawn(92:10275) -> Cinder Stench
 # Condition: One-time use & when Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 4 Fire orbs
-# [18] ESOrbChangeAttack -> Wildfire
+# [18] ESOrbChangeAttack(48:10279) -> Wildfire
 # Change Fire to Jammer
-# [19] ESRandomSpawn -> Cinder Stench
+# [19] ESRandomSpawn(92:10276) -> Cinder Stench
 # Condition: When water, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board
 # Spawn random 5 Fire orbs
-# [20] ESEndPath -> ESEndPath
+# [20] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [21] ESAttackMultihit -> Shivan Fire
+# [21] ESAttackMultihit(15:10277) -> Shivan Fire
 # Enemy action
-# [22] ESAttackMultihit -> Shivan Fire
+# [22] ESAttackMultihit(15:10278) -> Shivan Fire
 # Enemy action
-# [23] ESEndPath -> ESEndPath
+# [23] ESEndPath(36:26) -> ESEndPath
 # end_turn

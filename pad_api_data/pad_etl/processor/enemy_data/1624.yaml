@@ -110,63 +110,74 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESStatusShield -> Who will be my opponent?
+# 	[0] ESStatusShield(20:4595) -> Who will be my opponent?
 # 	Voids status ailments for 999 turns
-# 	[1] ESDamageShield -> Space-Time Barrier
+# 	[1] ESDamageShield(74:4596) -> Space-Time Barrier
 # 	Reduce damage from all sources by 75% for 3 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESSkyfall -> Time Sealing Lock
+# [6] ESSkyfall(96:4606) -> Time Sealing Lock
 # Condition: When < 50% hp , one-time use
 # Locked random skyfall +30% for 5 turns
-# [7] ESAttackMultihit -> Space-Time Destruction
+# [7] ESAttackMultihit(15:4607) -> Space-Time Destruction
 # Condition: When < 10% hp
 # Enemy action
-# [8] ESBranchFlag -> ESBranchFlag
+# [8] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 12
-# [9] ESFlagOperation -> ESFlagOperation
+# [9] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [10] SkillSet:
-# 	[0] ESDebuffMovetime -> Time Illusion
+# 	[0] ESDebuffMovetime(39:4597) -> Time Illusion
 # 	Movetime -1s for 5 turns
-# 	[1] ESPoisonChangeRandomAttack -> Termination's Guidance
+# 	[1] ESPoisonChangeRandomAttack(64:4600) -> Termination's Guidance
 # 	Change Random 3 to Poison
-# [11] ESEndPath -> ESEndPath
+# [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [12] ESBranchFlag -> ESBranchFlag
+# [12] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 17
-# [13] ESFlagOperation -> ESFlagOperation
+# [13] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [14] ESRandomSpawn -> Time Purification
+# [14] ESRandomSpawn(92:4605) -> Time Purification
 # Condition: When poison orbs are on the board
 # Change all orbs to Jammer
-# [15] ESRowSpawnMulti -> Break Time
+# [15] ESRowSpawnMulti(79:4604) -> Break Time
 # Change 5th row to Heal orbs
-# [16] ESEndPath -> ESEndPath
+# [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [17] ESBranchFlag -> ESBranchFlag
+# [17] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 21
-# [18] ESFlagOperation -> ESFlagOperation
+# [18] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
-# [19] ESPoisonChangeRandomAttack -> Termination's Guidance
+# [19] ESPoisonChangeRandomAttack(64:4600) -> Termination's Guidance
 # Change Random 3 to Poison
-# [20] ESEndPath -> ESEndPath
+# [20] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [21] ESFlagOperation -> ESFlagOperation
+# [21] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b1000
-# [22] ESRandomSpawn -> Time Purification
+# [22] ESRandomSpawn(92:4605) -> Time Purification
 # Condition: When poison orbs are on the board
 # Change all orbs to Jammer
-# [23] ESRowSpawnMulti -> Break Time
+# [23] ESRowSpawnMulti(79:4604) -> Break Time
 # Change 5th row to Heal orbs
-# [24] ESEndPath -> ESEndPath
+# [24] ESEndPath(36:26) -> ESEndPath
 # end_turn

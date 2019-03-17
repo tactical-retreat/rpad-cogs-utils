@@ -182,182 +182,193 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESVoidShield -> Heat Armor
+# 	[0] ESVoidShield(71:10800) -> Heat Armor
 # 	Void damage >= 40000000 for 99 turns
-# 	[1] ESSkillDelay -> Form Collapse
+# 	[1] ESSkillDelay(89:10801) -> Form Collapse
 # 	Delay active skills by 7 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchHP -> ESBranchHP
+# [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 12
 # [7] SkillSet:
 # 	Condition: 25% chance
-# 	[0] ESBoardChange -> Breath of Decay
+# 	[0] ESBoardChange(84:10803) -> Breath of Decay
 # 	Change all orbs to Jammer
-# 	[1] ESBindAttack -> Liberation from Freedom
+# 	[1] ESBindAttack(63:10804) -> Liberation from Freedom
 # 	Bind 3 random for 2 turns
 # [8] SkillSet:
 # 	Condition: 25% chance
-# 	[0] ESBoardChange -> Breath of Decay
+# 	[0] ESBoardChange(84:10803) -> Breath of Decay
 # 	Change all orbs to Jammer
-# 	[1] ESRowSpawnMulti -> Abundant Maliciousness
+# 	[1] ESRowSpawnMulti(79:10805) -> Abundant Maliciousness
 # 	Change 3rd row to Poison orbs
 # [9] SkillSet:
 # 	Condition: 25% chance
-# 	[0] ESBoardChange -> Breath of Decay
+# 	[0] ESBoardChange(84:10803) -> Breath of Decay
 # 	Change all orbs to Jammer
-# 	[1] ESSkyfall -> Corrosive Dust
+# 	[1] ESSkyfall(68:10806) -> Corrosive Dust
 # 	Jammer skyfall +20% for 1 turns
 # [10] SkillSet:
 # 	Condition: 25% chance
-# 	[0] ESBoardChange -> Breath of Decay
+# 	[0] ESBoardChange(84:10803) -> Breath of Decay
 # 	Change all orbs to Jammer
-# 	[1] ESAttackMultihit -> Gnaw Away
+# 	[1] ESAttackMultihit(15:10807) -> Gnaw Away
 # 	Enemy action
-# [11] ESEndPath -> ESEndPath
+# [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [12] ESBranchHP -> ESBranchHP
+# [12] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 5, target rnd 60
-# [13] ESBranchFlag -> ESBranchFlag
+# [13] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 36
-# [14] ESFlagOperation -> ESFlagOperation
+# [14] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [15] ESBranchHP -> ESBranchHP
+# [15] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 33
-# [16] ESBranchHP -> ESBranchHP
+# [16] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 25, target rnd 31
-# [17] ESBranchHP -> ESBranchHP
+# [17] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 30, target rnd 29
-# [18] ESBranchHP -> ESBranchHP
+# [18] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 35, target rnd 27
-# [19] ESBranchHP -> ESBranchHP
+# [19] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 40, target rnd 25
-# [20] ESBranchHP -> ESBranchHP
+# [20] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 45, target rnd 23
-# [21] ESSetCounter -> ESSetCounter
+# [21] ESSetCounter(25:15) -> ESSetCounter
 # counter = 1
 # [22] SkillSet:
-# 	[0] ESStatusShield -> Blazing Dragon Scales
+# 	[0] ESStatusShield(20:10813) -> Blazing Dragon Scales
 # 	Voids status ailments for 999 turns
-# 	[1] ESDamageShield -> Flames are gathering in the mouth
+# 	[1] ESDamageShield(74:10814) -> Flames are gathering in the mouth
 # 	Reduce damage from all sources by 75% for 1 turns
-# [23] ESSetCounter -> ESSetCounter
+# [23] ESSetCounter(25:15) -> ESSetCounter
 # counter = 2
 # [24] SkillSet:
-# 	[0] ESStatusShield -> Blazing Dragon Scales
+# 	[0] ESStatusShield(20:10813) -> Blazing Dragon Scales
 # 	Voids status ailments for 999 turns
-# 	[1] ESDamageShield -> Flames are gathering in the mouth
+# 	[1] ESDamageShield(74:10814) -> Flames are gathering in the mouth
 # 	Reduce damage from all sources by 75% for 1 turns
-# [25] ESSetCounter -> ESSetCounter
+# [25] ESSetCounter(25:15) -> ESSetCounter
 # counter = 3
 # [26] SkillSet:
-# 	[0] ESStatusShield -> Blazing Dragon Scales
+# 	[0] ESStatusShield(20:10813) -> Blazing Dragon Scales
 # 	Voids status ailments for 999 turns
-# 	[1] ESDamageShield -> Flames are gathering in the mouth
+# 	[1] ESDamageShield(74:10814) -> Flames are gathering in the mouth
 # 	Reduce damage from all sources by 75% for 1 turns
-# [27] ESSetCounter -> ESSetCounter
+# [27] ESSetCounter(25:15) -> ESSetCounter
 # counter = 4
 # [28] SkillSet:
-# 	[0] ESStatusShield -> Blazing Dragon Scales
+# 	[0] ESStatusShield(20:10813) -> Blazing Dragon Scales
 # 	Voids status ailments for 999 turns
-# 	[1] ESDamageShield -> Flames are gathering in the mouth
+# 	[1] ESDamageShield(74:10814) -> Flames are gathering in the mouth
 # 	Reduce damage from all sources by 75% for 1 turns
-# [29] ESSetCounter -> ESSetCounter
+# [29] ESSetCounter(25:15) -> ESSetCounter
 # counter = 5
 # [30] SkillSet:
-# 	[0] ESStatusShield -> Blazing Dragon Scales
+# 	[0] ESStatusShield(20:10813) -> Blazing Dragon Scales
 # 	Voids status ailments for 999 turns
-# 	[1] ESDamageShield -> Flames are gathering in the mouth
+# 	[1] ESDamageShield(74:10814) -> Flames are gathering in the mouth
 # 	Reduce damage from all sources by 75% for 1 turns
-# [31] ESSetCounter -> ESSetCounter
+# [31] ESSetCounter(25:15) -> ESSetCounter
 # counter = 6
 # [32] SkillSet:
-# 	[0] ESStatusShield -> Blazing Dragon Scales
+# 	[0] ESStatusShield(20:10813) -> Blazing Dragon Scales
 # 	Voids status ailments for 999 turns
-# 	[1] ESDamageShield -> Flames are gathering in the mouth
+# 	[1] ESDamageShield(74:10814) -> Flames are gathering in the mouth
 # 	Reduce damage from all sources by 75% for 1 turns
-# [33] ESSetCounter -> ESSetCounter
+# [33] ESSetCounter(25:15) -> ESSetCounter
 # counter = 7
 # [34] SkillSet:
-# 	[0] ESStatusShield -> Blazing Dragon Scales
+# 	[0] ESStatusShield(20:10813) -> Blazing Dragon Scales
 # 	Voids status ailments for 999 turns
-# 	[1] ESDamageShield -> Flames are gathering in the mouth
+# 	[1] ESDamageShield(74:10814) -> Flames are gathering in the mouth
 # 	Reduce damage from all sources by 75% for 1 turns
-# [35] ESEndPath -> ESEndPath
+# [35] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [36] ESBranchFlag -> ESBranchFlag
+# [36] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 55
-# [37] ESFlagOperation -> ESFlagOperation
+# [37] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [38] ESBranchCounter -> ESBranchCounter
+# [38] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 7, target rnd 60
-# [39] ESBranchCounter -> ESBranchCounter
+# [39] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 6, target rnd 50
-# [40] ESBranchCounter -> ESBranchCounter
+# [40] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 5, target rnd 49
-# [41] ESBranchCounter -> ESBranchCounter
+# [41] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 4, target rnd 48
-# [42] ESBranchCounter -> ESBranchCounter
+# [42] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 3, target rnd 47
-# [43] ESBranchCounter -> ESBranchCounter
+# [43] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 2, target rnd 46
-# [44] ESBranchCounter -> ESBranchCounter
+# [44] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 1, target rnd 45
-# [45] ESBranchHP -> ESBranchHP
+# [45] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 35, target rnd 53
-# [46] ESBranchHP -> ESBranchHP
+# [46] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 30, target rnd 53
-# [47] ESBranchHP -> ESBranchHP
+# [47] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 25, target rnd 53
-# [48] ESBranchHP -> ESBranchHP
+# [48] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 53
-# [49] ESBranchHP -> ESBranchHP
+# [49] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 15, target rnd 53
-# [50] ESBranchHP -> ESBranchHP
+# [50] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 10, target rnd 53
 # [51] SkillSet:
-# 	[0] ESChangeAttribute -> Its flames changed
+# 	[0] ESChangeAttribute(46:10816) -> Its flames changed
 # 	Change own attribute to Fire
-# 	[1] ESBoardChangeAttackBits -> Scorching Firelands
+# 	[1] ESBoardChangeAttackBits(85:10817) -> Scorching Firelands
 # 	Change all orbs to Fire
-# [52] ESEndPath -> ESEndPath
+# [52] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [53] SkillSet:
-# 	[0] ESInactivity -> Broken Stance
+# 	[0] ESInactivity(66:10799) -> Broken Stance
 # 	Do nothing
-# 	[1] ESColumnSpawnMulti -> Symmetrical Destruction Flames
+# 	[1] ESColumnSpawnMulti(77:10819) -> Symmetrical Destruction Flames
 # 	Change 5th, 6th column to Fire orbs
-# [54] ESEndPath -> ESEndPath
+# [54] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [55] ESDebuffMovetime -> Lamplight of the Echoing Sphere
+# [55] ESDebuffMovetime(39:10821) -> Lamplight of the Echoing Sphere
 # Condition: One-time use
 # Movetime -3s for 1 turns
-# [56] ESBindAwoken -> Withering Darkflame
+# [56] ESBindAwoken(88:10822) -> Withering Darkflame
 # Condition: One-time use
 # Bind awoken skills for 1 turns
-# [57] ESCloud -> Enshrouding Miasma
+# [57] ESCloud(104:10823) -> Enshrouding Miasma
 # Condition: 50% chance
 # 3x3 cloud appear for 1 turns at random location
-# [58] ESRandomSpawn -> Rotting Desire
+# [58] ESRandomSpawn(92:10824) -> Rotting Desire
 # Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board
 # Spawn random 8 Jammer orbs
-# [59] ESEndPath -> ESEndPath
+# [59] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [60] SkillSet:
-# 	[0] ESChangeAttribute -> Spiral Flames
+# 	[0] ESChangeAttribute(46:10825) -> Spiral Flames
 # 	Change own attribute to random one of Dark, Fire
-# 	[1] ESAttackMultihit -> Devastating Flames
+# 	[1] ESAttackMultihit(15:10826) -> Devastating Flames
 # 	Enemy action
-# [61] ESEndPath -> ESEndPath
+# [61] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [62] ESTurnChangePassive -> It spread its wings wide
+# [62] ESTurnChangePassive(106:10812) -> It spread its wings wide
 # Enemy turn counter change to 1 when HP <= 50%

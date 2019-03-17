@@ -146,77 +146,88 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESAbsorbCombo -> Crimson Fury
+# 	[0] ESAbsorbCombo(67:7843) -> Crimson Fury
 # 	Absorb combo <= 7 damage for 10 turns
-# 	[1] ESVoidShield -> Warrior Armor
+# 	[1] ESVoidShield(71:7844) -> Warrior Armor
 # 	Void damage >= 5000000 for 999 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESAttackMultihit -> Mad Rage
+# [6] ESAttackMultihit(15:7864) -> Mad Rage
 # Condition: When < 10% hp
 # Enemy action
 # [7] SkillSet:
 # 	Condition: When < 50% hp , one-time use
-# 	[0] ESBindRandomSub -> Eternal Chains
+# 	[0] ESBindRandomSub(65:7860) -> Eternal Chains
 # 	Bind 1 random subs for 30 turns
-# 	[1] ESGravity -> Fiery Spear of Destruction
+# 	[1] ESGravity(50:7861) -> Fiery Spear of Destruction
 # 	Player -99% HP
-# [8] ESBranchCounter -> ESBranchCounter
+# [8] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 10, target rnd 17
-# [9] ESSetCounter -> ESSetCounter
+# [9] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
 # [10] SkillSet:
 # 	Condition: 30% chance
-# 	[0] ESOrbChangeAttack -> Burn Drive
+# 	[0] ESOrbChangeAttack(48:7846) -> Burn Drive
 # 	Change Random to Fire
-# 	[1] ESRecoverEnemy -> Cure Flame
+# 	[1] ESRecoverEnemy(86:7847) -> Cure Flame
 # 	Enemy recover 5% hp
 # [11] SkillSet:
 # 	Condition: 14% chance
-# 	[0] ESAttackMultihit -> Heat Rush
+# 	[0] ESAttackMultihit(15:7849) -> Heat Rush
 # 	Enemy action
-# 	[1] ESAbsorbAttribute -> God Breath
+# 	[1] ESAbsorbAttribute(53:7850) -> God Breath
 # 	Absorb Fire damage for 1 turns
 # [12] SkillSet:
 # 	Condition: 14% chance
-# 	[0] ESAttackMultihit -> Heat Rush
+# 	[0] ESAttackMultihit(15:7849) -> Heat Rush
 # 	Enemy action
-# 	[1] ESAbsorbAttribute -> God Breath
+# 	[1] ESAbsorbAttribute(53:7851) -> God Breath
 # 	Absorb Water damage for 1 turns
 # [13] SkillSet:
 # 	Condition: 14% chance
-# 	[0] ESAttackMultihit -> Heat Rush
+# 	[0] ESAttackMultihit(15:7849) -> Heat Rush
 # 	Enemy action
-# 	[1] ESAbsorbAttribute -> God Breath
+# 	[1] ESAbsorbAttribute(53:7852) -> God Breath
 # 	Absorb Wood damage for 1 turns
 # [14] SkillSet:
 # 	Condition: 14% chance
-# 	[0] ESAttackMultihit -> Heat Rush
+# 	[0] ESAttackMultihit(15:7849) -> Heat Rush
 # 	Enemy action
-# 	[1] ESAbsorbAttribute -> God Breath
+# 	[1] ESAbsorbAttribute(53:7853) -> God Breath
 # 	Absorb Light damage for 1 turns
 # [15] SkillSet:
 # 	Condition: 14% chance
-# 	[0] ESAttackMultihit -> Heat Rush
+# 	[0] ESAttackMultihit(15:7849) -> Heat Rush
 # 	Enemy action
-# 	[1] ESAbsorbAttribute -> God Breath
+# 	[1] ESAbsorbAttribute(53:7854) -> God Breath
 # 	Absorb Dark damage for 1 turns
-# [16] ESEndPath -> ESEndPath
+# [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [17] ESBranchFlag -> ESBranchFlag
+# [17] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 10
-# [18] ESFlagOperation -> ESFlagOperation
+# [18] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [19] ESDamageShield -> Flare Effect
+# [19] ESDamageShield(74:7863) -> Flare Effect
 # Reduce damage from all sources by 75% for 10 turns
-# [20] ESEndPath -> ESEndPath
+# [20] ESEndPath(36:26) -> ESEndPath
 # end_turn

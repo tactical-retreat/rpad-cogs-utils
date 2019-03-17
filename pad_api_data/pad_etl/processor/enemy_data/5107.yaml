@@ -117,55 +117,66 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 2 -       10
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESDebuffMovetime -> I'm not very fond of conflict.
+# [4] ESDebuffMovetime(39:12489) -> I'm not very fond of conflict.
 # Movetime -1s for 5 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchHP -> ESBranchHP
+# [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 13
-# [7] ESAbsorbCombo -> Yoga Teleport
+# [7] ESAbsorbCombo(67:12490) -> Yoga Teleport
 # Condition: One-time use
 # Absorb combo <= 3 damage for 3 turns
-# [8] ESCloud -> Yoga Float
+# [8] ESCloud(104:12491) -> Yoga Float
 # Condition: One-time use
 # 2x1 cloud appear for 3 turns at random location
-# [9] ESRandomSpawn -> Yoga Flame
+# [9] ESRandomSpawn(92:12492) -> Yoga Flame
 # Condition: 34% chance & when Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 4 Fire orbs
 # [10] SkillSet:
 # 	Condition: 33% chance
-# 	[0] ESAttackMultihit -> Divine Kick
+# 	[0] ESAttackMultihit(15:12494) -> Divine Kick
 # 	Enemy action
-# 	[1] ESOrbSealColumn -> Yoga Anvil
+# 	[1] ESOrbSealColumn(99:12495) -> Yoga Anvil
 # 	Seal 1st column for 1 turns
 # [11] SkillSet:
 # 	Condition: 33% chance
-# 	[0] ESRowSpawnMulti -> Yoga Fire
+# 	[0] ESRowSpawnMulti(79:12497) -> Yoga Fire
 # 	Change 3rd row to Fire orbs
-# 	[1] ESOrbChangeAttack -> Yoga Gale
+# 	[1] ESOrbChangeAttack(48:12498) -> Yoga Gale
 # 	Change Random to Fire
-# [12] ESEndPath -> ESEndPath
+# [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [13] ESBranchHP -> ESBranchHP
+# [13] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 10, target rnd 18
-# [14] ESBranchFlag -> ESBranchFlag
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 7
-# [15] ESFlagOperation -> ESFlagOperation
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [16] ESRowSpawnMulti -> Yoga Burner
+# [16] ESRowSpawnMulti(79:12499) -> Yoga Burner
 # Change 5th row to Fire orbs
-# [17] ESEndPath -> ESEndPath
+# [17] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [18] ESRandomSpawn -> Yoga Sunburst
+# [18] ESRandomSpawn(92:12500) -> Yoga Sunburst
 # Condition: When water, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board
 # Spawn random 6 Fire orbs
-# [19] ESEndPath -> ESEndPath
+# [19] ESEndPath(36:26) -> ESEndPath
 # end_turn

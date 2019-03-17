@@ -197,105 +197,116 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 5
-# [3] ESBranchLevel -> ESBranchLevel
+# [3] ESBranchLevel(33:23) -> ESBranchLevel
 # Branch on level < 3, target rnd 38
-# [4] ESEndPath -> ESEndPath
+# [4] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [5] ESBranchFlag -> ESBranchFlag
+# [5] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 9
-# [6] ESFlagOperation -> ESFlagOperation
+# [6] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [7] SkillSet:
-# 	[0] ESDamageShield -> There's something missing in your eyes...
+# 	[0] ESDamageShield(74:9446) -> There's something missing in your eyes...
 # 	Reduce damage from all sources by 75% for 3 turns
-# 	[1] ESDebuffMovetime -> ...and that something is fear.
+# 	[1] ESDebuffMovetime(39:9447) -> ...and that something is fear.
 # 	Movetime -2s for 3 turns
-# [8] ESEndPath -> ESEndPath
+# [8] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [9] ESBranchHP -> ESBranchHP
+# [9] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 32
-# [10] ESBranchFlag -> ESBranchFlag
+# [10] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 14
-# [11] ESFlagOperation -> ESFlagOperation
+# [11] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [12] ESAttackMultihit -> Thumb Bullet
+# [12] ESAttackMultihit(15:9450) -> Thumb Bullet
 # Enemy action
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [14] ESBranchFlag -> ESBranchFlag
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 18
-# [15] ESFlagOperation -> ESFlagOperation
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [16] ESAttackMultihit -> Now I will do it rapid-fire!
+# [16] ESAttackMultihit(15:9451) -> Now I will do it rapid-fire!
 # Enemy action
-# [17] ESEndPath -> ESEndPath
+# [17] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [18] ESDispel -> Oooooooaaah!!!
+# [18] ESDispel(6:9449) -> Oooooooaaah!!!
 # Condition: One-time use
 # Voids player buff effects
-# [19] ESBranchFlag -> ESBranchFlag
+# [19] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 23
-# [20] ESFlagOperation -> ESFlagOperation
+# [20] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
 # [21] SkillSet:
-# 	[0] ESRandomSpawn -> Remaining at top strength is demanding...
+# 	[0] ESRandomSpawn(92:9452) -> Remaining at top strength is demanding...
 # 	Spawn random 6 Jammer orbs
-# 	[1] ESRecoverEnemy -> ...and my body gets an impulse to devour.
+# 	[1] ESRecoverEnemy(86:9453) -> ...and my body gets an impulse to devour.
 # 	Enemy recover 30% hp
-# [22] ESEndPath -> ESEndPath
+# [22] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [23] ESBranchHP -> ESBranchHP
+# [23] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 28
-# [24] ESAttackMultihit -> Thumb Bullet
+# [24] ESAttackMultihit(15:9450) -> Thumb Bullet
 # Condition: 33% chance
 # Enemy action
-# [25] ESAttackMultihit -> Now I will do it rapid-fire!
+# [25] ESAttackMultihit(15:9451) -> Now I will do it rapid-fire!
 # Condition: 50% chance
 # Enemy action
-# [26] ESRandomSpawn -> All you weaklings had best
+# [26] ESRandomSpawn(92:9455) -> All you weaklings had best
 # remain in your seats.
 # Spawn random 6 Jammer orbs
-# [27] ESEndPath -> ESEndPath
+# [27] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [28] ESBranchFlag -> ESBranchFlag
+# [28] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 16, target rnd 24
-# [29] ESFlagOperation -> ESFlagOperation
+# [29] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11111
-# [30] ESBindAwoken -> You are powerless.
+# [30] ESBindAwoken(88:9456) -> You are powerless.
 # Bind awoken skills for 3 turns
-# [31] ESEndPath -> ESEndPath
+# [31] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [32] ESBranchFlag -> ESBranchFlag
+# [32] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 32, target rnd 36
-# [33] ESFlagOperation -> ESFlagOperation
+# [33] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111111
-# [34] ESBlind -> This is the fight I hoped for!
+# [34] ESBlind(5:9457) -> This is the fight I hoped for!
 # Blind all orbs on the board
-# [35] ESEndPath -> ESEndPath
+# [35] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [36] ESAttackMultihit -> Full power! 100 percent of 100 percent!
+# [36] ESAttackMultihit(15:9458) -> Full power! 100 percent of 100 percent!
 # Enemy action
-# [37] ESEndPath -> ESEndPath
+# [37] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [38] ESBranchFlag -> ESBranchFlag
+# [38] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 41
-# [39] ESFlagOperation -> ESFlagOperation
+# [39] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [40] SkillSet:
-# 	[0] ESInactivity -> There's something missing in your eyes...
+# 	[0] ESInactivity(66:9461) -> There's something missing in your eyes...
 # 	Do nothing
-# 	[1] ESInactivity -> ...and that something is fear.
+# 	[1] ESInactivity(66:9462) -> ...and that something is fear.
 # 	Do nothing
-# [41] ESEndPath -> ESEndPath
+# [41] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [42] SkillSet:
 # 	Condition: On death
-# 	[0] ESInactivity -> When fighting for someone else, you
+# 	[0] ESInactivity(66:9459) -> When fighting for someone else, you
 # can put out 120 percent of your power...
 # 	Do nothing

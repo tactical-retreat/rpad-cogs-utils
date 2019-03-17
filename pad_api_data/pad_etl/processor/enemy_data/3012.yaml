@@ -54,58 +54,69 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 4 -      100
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 7 -      111
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESDamageShield -> Shell Scale
+# [2] ESDamageShield(74:5071) -> Shell Scale
 # Condition: One-time use
 # Reduce damage from all sources by 75% for 3 turns
-# [3] ESRecoverEnemyAlly -> Resuscitation
+# [3] ESRecoverEnemyAlly(52:5079) -> Resuscitation
 # Condition: When enemy ally is killed
 # Enemy ally recover 100% hp
-# [4] ESAttackMultihit -> Meteors Myriad
+# [4] ESAttackMultihit(15:5078) -> Meteors Myriad
 # Condition: When < 15% hp
 # Enemy action
-# [5] ESGravity -> Fin Drive
+# [5] ESGravity(50:5076) -> Fin Drive
 # Condition: When < 70% hp , one-time use
 # Player -99% HP
-# [6] ESBindAttack -> Sun Jail
+# [6] ESBindAttack(63:5077) -> Sun Jail
 # Condition: When < 50% hp , one-time use
 # Bind 1 subs for 5 turns
-# [7] ESBranchFlag -> ESBranchFlag
+# [7] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 10
-# [8] ESFlagOperation -> ESFlagOperation
+# [8] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [9] ESDamageShield -> Shell Scale
+# [9] ESDamageShield(74:5072) -> Shell Scale
 # Reduce damage from all sources by 75% for 3 turns
-# [10] ESBranchFlag -> ESBranchFlag
+# [10] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 13
-# [11] ESFlagOperation -> ESFlagOperation
+# [11] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [12] ESAttackMultihit -> Cyclone
+# [12] ESAttackMultihit(15:5073) -> Cyclone
 # Enemy action
-# [13] ESBranchFlag -> ESBranchFlag
+# [13] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 16
-# [14] ESFlagOperation -> ESFlagOperation
+# [14] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [15] ESFixedStart -> Flash Induction
+# [15] ESFixedStart(101:5074) -> Flash Induction
 # Fix orb movement starting point to random position on the board
-# [16] ESBranchFlag -> ESBranchFlag
+# [16] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 19
-# [17] ESFlagOperation -> ESFlagOperation
+# [17] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
-# [18] ESAbsorbAttribute -> Deep Shadow
+# [18] ESAbsorbAttribute(53:5075) -> Deep Shadow
 # Absorb Dark damage for 3 turns
-# [19] ESBranchFlag -> ESBranchFlag
+# [19] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 16, target rnd 22
-# [20] ESFlagOperation -> ESFlagOperation
+# [20] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11111
-# [21] ESAttackMultihit -> Cyclone
+# [21] ESAttackMultihit(15:5073) -> Cyclone
 # Enemy action
-# [22] ESFlagOperation -> ESFlagOperation
+# [22] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b11111
-# [23] ESFixedStart -> Flash Induction
+# [23] ESFixedStart(101:5074) -> Flash Induction
 # Fix orb movement starting point to random position on the board
-# [24] ESResolve -> Eight Resolve
+# [24] ESResolve(73:5144) -> Eight Resolve
 # Survive attacks with 1 HP when HP > 75%

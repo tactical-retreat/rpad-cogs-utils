@@ -108,45 +108,56 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 3 -       11
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESSkyfall -> Burn!!
+# [4] ESSkyfall(68:3648) -> Burn!!
 # Fire skyfall +15% for 99 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchCard -> ESBranchCard
+# [6] ESBranchCard(90:3654) -> ESBranchCard
 # Branch on player_cards HAS [1424, 1425, 1241, 1242, 1243, 1244], target rnd 15
-# [7] ESBranchHP -> ESBranchHP
+# [7] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 12
-# [8] ESDebuffMovetime -> Blazing Banquet
+# [8] ESDebuffMovetime(39:3657) -> Blazing Banquet
 # Condition: When < 25% hp
 # Movetime -2s for 3 turns
 # [9] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESColumnSpawnMulti -> Heat!
+# 	[0] ESColumnSpawnMulti(77:3649) -> Heat!
 # 	Change 2nd column to Fire orbs
-# 	[1] ESRowSpawnMulti -> Christmas!
+# 	[1] ESRowSpawnMulti(79:3650) -> Christmas!
 # 	Change 2nd row to Wood orbs
-# [10] ESOrbChangeAttack -> Green Fire Transformation
+# [10] ESOrbChangeAttack(48:3653) -> Green Fire Transformation
 # Condition: 50% chance
 # Change Wood to Fire
-# [11] ESAttackMultihit -> Flame Dragon Sword
+# [11] ESAttackMultihit(15:3652) -> Flame Dragon Sword
 # Enemy action
-# [12] ESBranchFlag -> ESBranchFlag
+# [12] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 8
-# [13] ESFlagOperation -> ESFlagOperation
+# [13] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [14] ESBlind -> Flame Dance
+# [14] ESBlind(62:3656) -> Flame Dance
 # Blind all orbs on the board
-# [15] ESBranchFlag -> ESBranchFlag
+# [15] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 7
-# [16] ESFlagOperation -> ESFlagOperation
+# [16] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [17] ESRecoverPlayer -> Can you feel the heat, brother?
+# [17] ESRecoverPlayer(55:3655) -> Can you feel the heat, brother?
 # Player recover 100% hp

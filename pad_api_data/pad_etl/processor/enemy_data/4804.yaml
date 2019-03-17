@@ -146,74 +146,85 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESBranchCard -> ESBranchCard
+# [4] ESBranchCard(90:11150) -> ESBranchCard
 # Branch on player_cards HAS [4796, 4797], target rnd 6
-# [5] ESBlindStickyRandom -> W-Well, you can't get through!...
+# [5] ESBlindStickyRandom(97:11162) -> W-Well, you can't get through!...
 # Blind all orbs for 10 turns
-# [6] ESBlindStickyRandom -> Huh, oh, Suou?!...
+# [6] ESBlindStickyRandom(97:11163) -> Huh, oh, Suou?!...
 # Blind all orbs for 10 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 25, target rnd 22
-# [9] ESBranchFlag -> ESBranchFlag
+# [9] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 13
-# [10] ESFlagOperation -> ESFlagOperation
+# [10] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [11] SkillSet:
-# 	[0] ESSkyfall -> G-Go back!
+# 	[0] ESSkyfall(68:11165) -> G-Go back!
 # 	Poison skyfall +15% for 10 turns
-# 	[1] ESDebuffRCV -> It's d-d-dangerous!
+# 	[1] ESDebuffRCV(105:11166) -> It's d-d-dangerous!
 # 	Rcv 50% for 10 turns
-# [12] ESEndPath -> ESEndPath
+# [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [13] ESBranchHP -> ESBranchHP
+# [13] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 18
-# [14] ESOrbChangeAttackBits -> P-Please be patient!
+# [14] ESOrbChangeAttackBits(108:11168) -> P-Please be patient!
 # Condition: One-time use
 # Change Poison to Heal
-# [15] ESRandomSpawn -> B-Be careful!
+# [15] ESRandomSpawn(92:11167) -> B-Be careful!
 # Condition: 50% chance & when Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison orbs are on the board
 # Spawn random 3 Heal, Mortal Poison orbs
-# [16] ESAttackMultihit -> S-Sorry!
+# [16] ESAttackMultihit(15:11123) -> S-Sorry!
 # Condition: 50% chance
 # Enemy action
-# [17] ESEndPath -> ESEndPath
+# [17] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [18] ESBranchFlag -> ESBranchFlag
+# [18] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 14
-# [19] ESFlagOperation -> ESFlagOperation
+# [19] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [20] SkillSet:
-# 	[0] ESColumnSpawnMulti -> Go away!
+# 	[0] ESColumnSpawnMulti(76:11170) -> Go away!
 # 	Change 1st column to Mortal Poison orbs, 6th column to Heal orbs
-# 	[1] ESDamageShield -> I hate p-pain...
+# 	[1] ESDamageShield(74:11171) -> I hate p-pain...
 # 	Reduce damage from all sources by 50% for 99 turns
-# [21] ESEndPath -> ESEndPath
+# [21] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [22] ESBranchFlag -> ESBranchFlag
+# [22] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 26
-# [23] ESFlagOperation -> ESFlagOperation
+# [23] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
-# [24] ESBoardChange -> Any more of it and...
+# [24] ESBoardChange(84:11172) -> Any more of it and...
 # Change all orbs to Heal
-# [25] ESEndPath -> ESEndPath
+# [25] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [26] ESBoardChangeAttackBits -> Oh stop it already!
+# [26] ESBoardChangeAttackBits(85:11173) -> Oh stop it already!
 # Change all orbs to Mortal Poison
-# [27] ESEndPath -> ESEndPath
+# [27] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [28] ESEndPath -> ESEndPath
+# [28] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [29] SkillSet:
 # 	Condition: On death
-# 	[0] ESInactivity -> Oh, you are not an intruder?!...
+# 	[0] ESInactivity(66:11174) -> Oh, you are not an intruder?!...
 # 	Do nothing

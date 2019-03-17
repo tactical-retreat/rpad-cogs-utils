@@ -90,36 +90,47 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 5 -      101
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESBindSkill -> Can you escape me?
+# [4] ESBindSkill(14:1895) -> Can you escape me?
 # Condition: One-time use
 # Bind active skills for 5 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBoardChangeAttackFlat -> Soul Burst
+# [6] ESBoardChangeAttackFlat(81:1900) -> Soul Burst
 # Condition: One-time use
 # Change all orbs to Wood, Heal
-# [7] ESRecoverEnemy -> Soul Cure
+# [7] ESRecoverEnemy(7:1896) -> Soul Cure
 # Condition: When < 50% hp
 # Enemy recover 100% hp
-# [8] ESRecoverEnemy -> Soul Cure
+# [8] ESRecoverEnemy(7:1896) -> Soul Cure
 # Condition: When < 50% hp
 # Enemy recover 100% hp
-# [9] ESBindAttack -> Bonds of the Sacred Tree
+# [9] ESBindAttack(63:1897) -> Bonds of the Sacred Tree
 # Condition: 20% chance
 # Bind own leader for 1~2 turns
-# [10] ESBindAttack -> Cage of Thorns
+# [10] ESBindAttack(63:1898) -> Cage of Thorns
 # Condition: 20% chance
 # Bind 3 subs for 1~2 turns
-# [11] ESAttackMultihit -> Whiplash
+# [11] ESAttackMultihit(15:1899) -> Whiplash
 # Condition: 60% chance
 # Enemy action
-# [12] ESAttributeResist -> *****
+# [12] ESAttributeResist(72:1882) -> *****
 # Reduce damage from Light, Dark by 50%

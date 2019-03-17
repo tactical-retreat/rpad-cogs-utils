@@ -105,80 +105,91 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 5
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESStatusShield -> Dark Protection of Yomi
+# 	[0] ESStatusShield(20:6457) -> Dark Protection of Yomi
 # 	Voids status ailments for 10 turns
-# 	[1] ESDamageShield -> The Feathered Garment of Yomi
+# 	[1] ESDamageShield(74:6458) -> The Feathered Garment of Yomi
 # 	Reduce damage from all sources by 50% for 3 turns
-# 	[2] ESDebuffMovetime -> Malicious Laughter
+# 	[2] ESDebuffMovetime(39:6459) -> Malicious Laughter
 # 	Movetime 50% for 10 turns
 # [5] SkillSet:
 # 	Condition: When < 1% hp , one-time use
-# 	[0] ESRecoverEnemy -> Unwavering Light
+# 	[0] ESRecoverEnemy(86:6510) -> Unwavering Light
 # 	Enemy recover 4% hp
-# 	[1] ESAbsorbCombo -> Protection of the Eight Thunders
+# 	[1] ESAbsorbCombo(67:6468) -> Protection of the Eight Thunders
 # 	Absorb combo <= 7 damage for 999 turns
-# 	[2] ESBlindStickyFixed -> Boundary of Disdain
+# 	[2] ESBlindStickyFixed(98:6469) -> Boundary of Disdain
 # 	Blind orbs in specific positions for 4 turns
-# 	[3] ESAttackUp -> The Nature of Death
+# 	[3] ESAttackUp(17:6470) -> The Nature of Death
 # 	Increase damage to 400% for the next 999 turns
 # [6] SkillSet:
 # 	Condition: When < 50% hp , one-time use
-# 	[0] ESAbsorbCombo -> Protection of the Eight Thunders
+# 	[0] ESAbsorbCombo(67:6468) -> Protection of the Eight Thunders
 # 	Absorb combo <= 7 damage for 999 turns
-# 	[1] ESBlindStickyFixed -> Boundary of Disdain
+# 	[1] ESBlindStickyFixed(98:6469) -> Boundary of Disdain
 # 	Blind orbs in specific positions for 4 turns
-# 	[2] ESAttackUp -> The Nature of Death
+# 	[2] ESAttackUp(17:6470) -> The Nature of Death
 # 	Increase damage to 400% for the next 999 turns
-# [7] ESBranchHP -> ESBranchHP
+# [7] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 5, target rnd 23
-# [8] ESBranchFlag -> ESBranchFlag
+# [8] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 13
-# [9] ESFlagOperation -> ESFlagOperation
+# [9] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [10] ESDebuffMovetime -> Malicious Laughter
+# [10] ESDebuffMovetime(39:6459) -> Malicious Laughter
 # Movetime 50% for 10 turns
 # [11] SkillSet:
-# 	[0] ESPoisonChangeRandom -> An Invitation to Death & Decay
+# 	[0] ESPoisonChangeRandom(60:6461) -> An Invitation to Death & Decay
 # 	Change Random 11 to Poison
-# 	[1] ESOrbLock -> Curse of the Eternal Land
+# 	[1] ESOrbLock(94:6462) -> Curse of the Eternal Land
 # 	Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [12] ESEndPath -> ESEndPath
+# [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [13] ESBranchFlag -> ESBranchFlag
+# [13] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 19
-# [14] ESFlagOperation -> ESFlagOperation
+# [14] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [15] ESDebuffMovetime -> Malicious Laughter
+# [15] ESDebuffMovetime(39:6459) -> Malicious Laughter
 # Movetime 50% for 10 turns
-# [16] ESOrbChangeAttack -> Anguished Wailing
+# [16] ESOrbChangeAttack(48:6463) -> Anguished Wailing
 # Change Heal to Jammer
-# [17] ESAttackMultihit -> Fires of Deicide
+# [17] ESAttackMultihit(15:6464) -> Fires of Deicide
 # Enemy action
-# [18] ESEndPath -> ESEndPath
+# [18] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [19] ESFlagOperation -> ESFlagOperation
+# [19] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b110
-# [20] ESDebuffMovetime -> Malicious Laughter
+# [20] ESDebuffMovetime(39:6459) -> Malicious Laughter
 # Movetime 50% for 10 turns
 # [21] SkillSet:
-# 	[0] ESDamageShield -> The Feathered Garment of Yomi
+# 	[0] ESDamageShield(74:6458) -> The Feathered Garment of Yomi
 # 	Reduce damage from all sources by 50% for 3 turns
-# 	[1] ESGravity -> Last Embrace
+# 	[1] ESGravity(50:6466) -> Last Embrace
 # 	Player -100% HP
-# [22] ESEndPath -> ESEndPath
+# [22] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [23] ESAttackMultihit -> Fires of Deicide
+# [23] ESAttackMultihit(15:6464) -> Fires of Deicide
 # Enemy action
-# [24] ESAttributeResist -> Dark Izanami Passive
+# [24] ESAttributeResist(72:6472) -> Dark Izanami Passive
 # Reduce damage from Dark by 50%
-# [25] ESResolve -> Dark Izanami Resolve
+# [25] ESResolve(73:6508) -> Dark Izanami Resolve
 # Survive attacks with 1 HP when HP > 88%

@@ -150,41 +150,52 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 31 -    11111
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
 # [2] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESDamageShield -> Protector's Giant Shield
+# 	[0] ESDamageShield(74:5870) -> Protector's Giant Shield
 # 	Reduce damage from all sources by 75% for 3 turns
-# 	[1] ESStatusShield -> Mystic Immunity Barrier
+# 	[1] ESStatusShield(20:5871) -> Mystic Immunity Barrier
 # 	Voids status ailments for 3 turns
-# [3] ESColumnSpawnMulti -> Kthyr Akrab
+# [3] ESColumnSpawnMulti(77:5883) -> Kthyr Akrab
 # Condition: When < 20% hp
 # Change 1st, 3rd, 5th column to Poison orbs, 2nd, 4th, 6th column to Mortal Poison orbs
-# [4] ESRandomSpawn -> Scorpion Needle
+# [4] ESRandomSpawn(92:5873) -> Scorpion Needle
 # Condition: One-time use & when Fire, Water, Wood, Light, Dark, Heal, Jammer, Mortal Poison orbs are on the board
 # Spawn random 6 Poison orbs
 # [5] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAbsorbCombo -> Gharib Difae
+# 	[0] ESAbsorbCombo(67:5874) -> Gharib Difae
 # 	Absorb combo <= 6 damage for 2 turns
-# 	[1] ESFixedStart -> A Glimpse of Light & Dark
+# 	[1] ESFixedStart(101:5875) -> A Glimpse of Light & Dark
 # 	Fix orb movement starting point to random position on the board
-# [6] ESBlind -> Protector's Blade
+# [6] ESBlind(62:5877) -> Protector's Blade
 # Condition: One-time use
 # Blind all orbs on the board
 # [7] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESDebuffMovetime -> Neurotoxins
+# 	[0] ESDebuffMovetime(39:5878) -> Neurotoxins
 # 	Movetime -1s for 10 turns
-# 	[1] ESOrbChangeAttack -> Sm Dhanab
+# 	[1] ESOrbChangeAttack(48:5879) -> Sm Dhanab
 # 	Change Random to Mortal Poison
-# [8] ESColumnSpawnMulti -> Scorpion Slash
+# [8] ESColumnSpawnMulti(77:5881) -> Scorpion Slash
 # Condition: 50% chance
 # Change 1st column to Poison orbs
-# [9] ESAttackMultihit -> Scorpion's Pincer Guillotine
+# [9] ESAttackMultihit(15:5882) -> Scorpion's Pincer Guillotine
 # Enemy action
-# [10] ESEndPath -> ESEndPath
+# [10] ESEndPath(36:26) -> ESEndPath
 # end_turn

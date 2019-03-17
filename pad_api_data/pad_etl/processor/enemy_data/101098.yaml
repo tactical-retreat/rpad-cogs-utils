@@ -155,72 +155,83 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 31 -    11111
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESStatusShield -> The Labor's Beginning
+# 	[0] ESStatusShield(20:9542) -> The Labor's Beginning
 # 	Voids status ailments for 999 turns
-# 	[1] ESBindSkill -> The First Labor
+# 	[1] ESBindSkill(14:9543) -> The First Labor
 # 	Bind active skills for 5 turns
-# 	[2] ESGravity -> Sucker Punch
+# 	[2] ESGravity(50:648) -> Sucker Punch
 # 	Player -99% HP
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchFlag -> ESBranchFlag
+# [6] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 10
-# [7] ESFlagOperation -> ESFlagOperation
+# [7] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [8] ESAttackMultihit -> Million Punches
+# [8] ESAttackMultihit(15:866) -> Million Punches
 # Enemy action
-# [9] ESEndPath -> ESEndPath
+# [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [10] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESBindRandom -> The Second Labor
+# 	[0] ESBindRandom(1:9545) -> The Second Labor
 # 	Bind 6 random cards for 4 turns
-# 	[1] ESPoisonChangeRandom -> Hydra's Poison Dart
+# 	[1] ESPoisonChangeRandom(60:9546) -> Hydra's Poison Dart
 # 	Change Random 7 to Poison
-# [11] ESAttackMultihit -> Double Million Punches
+# [11] ESAttackMultihit(15:9548) -> Double Million Punches
 # Condition: One-time use
 # Enemy action
-# [12] ESBlindStickyRandom -> The Third Labor
+# [12] ESBlindStickyRandom(97:9549) -> The Third Labor
 # Condition: One-time use
 # Blind random 7 orbs for 2 turns
-# [13] ESAttackMultihit -> Triple Million Punches
+# [13] ESAttackMultihit(15:9550) -> Triple Million Punches
 # Condition: One-time use
 # Enemy action
-# [14] ESBindAwoken -> The Final Labor
+# [14] ESBindAwoken(88:9551) -> The Final Labor
 # Condition: One-time use
 # Bind awoken skills for 1 turns
-# [15] ESAttackMultihit -> Gigantic Break!
+# [15] ESAttackMultihit(15:872) -> Gigantic Break!
 # Enemy action
-# [16] ESEndPath -> ESEndPath
+# [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [17] ESNone -> ESNone
+# [17] ESNone(0:0) -> ESNone
 # nothing
-# [18] ESNone -> ESNone
+# [18] ESNone(0:0) -> ESNone
 # nothing
-# [19] ESNone -> ESNone
+# [19] ESNone(0:0) -> ESNone
 # nothing
-# [20] ESNone -> ESNone
+# [20] ESNone(0:0) -> ESNone
 # nothing
-# [21] ESNone -> ESNone
+# [21] ESNone(0:0) -> ESNone
 # nothing
-# [22] ESNone -> ESNone
+# [22] ESNone(0:0) -> ESNone
 # nothing
-# [23] ESNone -> ESNone
+# [23] ESNone(0:0) -> ESNone
 # nothing
-# [24] ESNone -> ESNone
+# [24] ESNone(0:0) -> ESNone
 # nothing
-# [25] ESNone -> ESNone
+# [25] ESNone(0:0) -> ESNone
 # nothing
-# [26] ESCountdown -> ESCountdown
+# [26] ESCountdown(37:178) -> ESCountdown
 # countdown
-# [27] ESAttackMultihit -> Gigantic Break!
+# [27] ESAttackMultihit(15:872) -> Gigantic Break!
 # Enemy action

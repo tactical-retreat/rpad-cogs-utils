@@ -81,41 +81,52 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 2 -       10
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESDamageShield -> Froda's Peace
+# [4] ESDamageShield(74:3272) -> Froda's Peace
 # Condition: One-time use
 # Reduce damage from all sources by 50% for 2 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESAttackMultihit -> Volcanic Blade
+# [6] ESAttackMultihit(15:3279) -> Volcanic Blade
 # Condition: When < 10% hp
 # Enemy action
-# [7] ESAttackMultihit -> Gullinbursti's Charge
+# [7] ESAttackMultihit(15:3275) -> Gullinbursti's Charge
 # Condition: One-time use
 # Enemy action
-# [8] ESBranchCard -> ESBranchCard
+# [8] ESBranchCard(90:3273) -> ESBranchCard
 # Branch on player_cards HAS [372, 373, 654, 1346], target rnd 13
-# [9] ESGravity -> Skidbladnir Giant Form
+# [9] ESGravity(50:3276) -> Skidbladnir Giant Form
 # Condition: 20% chance
 # Player -99% HP
-# [10] ESRowSpawnMulti -> Victory Sword
+# [10] ESRowSpawnMulti(79:3277) -> Victory Sword
 # Condition: 50% chance
 # Change 3rd row to Fire orbs
-# [11] ESOrbLock -> Fairy King Blaze
+# [11] ESOrbLock(94:3278) -> Fairy King Blaze
 # Condition: 30% chance
 # Lock all Fire orbs
-# [12] ESEndPath -> ESEndPath
+# [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [13] ESBranchFlag -> ESBranchFlag
+# [13] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 9
-# [14] ESFlagOperation -> ESFlagOperation
+# [14] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [15] ESRecoverPlayer -> I'm always on your side!
+# [15] ESRecoverPlayer(55:3274) -> I'm always on your side!
 # Player recover 100% hp

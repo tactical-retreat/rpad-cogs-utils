@@ -270,86 +270,97 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 31 -    11111
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
 # [2] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESStatusShield -> Saint's Robe
+# 	[0] ESStatusShield(20:6536) -> Saint's Robe
 # 	Voids status ailments for 999 turns
-# 	[1] ESAttributeBlock -> Staff of Destiny
+# 	[1] ESAttributeBlock(107:6537) -> Staff of Destiny
 # 	Unable to Heal orbs for 3 turns
 # [3] SkillSet:
 # 	Condition: When < 1% hp
-# 	[0] ESRecoverEnemy -> Divine Cure
+# 	[0] ESRecoverEnemy(86:6531) -> Divine Cure
 # 	Enemy recover 15% hp
-# 	[1] ESAbsorbCombo -> Sage Wisdom
+# 	[1] ESAbsorbCombo(67:6553) -> Sage Wisdom
 # 	Absorb combo <= 6 damage for 999 turns
-# [4] ESAbsorbCombo -> Sage Wisdom
+# [4] ESAbsorbCombo(67:6553) -> Sage Wisdom
 # Condition: When < 35% hp
 # Absorb combo <= 6 damage for 999 turns
-# [5] ESAttackMultihit -> Rizentbard
+# [5] ESAttackMultihit(15:6554) -> Rizentbard
 # Condition: When < 20% hp
 # Enemy action
-# [6] ESDamageShield -> Sanctuary
+# [6] ESDamageShield(74:6544) -> Sanctuary
 # Condition: When < 80% hp , one-time use
 # Reduce damage from all sources by 50% for 10 turns
-# [7] ESGravity -> Corsier
+# [7] ESGravity(50:6539) -> Corsier
 # Condition: One-time use
 # Player -50% HP
-# [8] ESDamageShield -> Sanctuary
+# [8] ESDamageShield(74:6545) -> Sanctuary
 # Condition: When < 70% hp , one-time use
 # Reduce damage from all sources by 50% for 10 turns
-# [9] ESAttackMultihit -> Arentillia
+# [9] ESAttackMultihit(15:6540) -> Arentillia
 # Condition: One-time use
 # Enemy action
 # [10] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESBlind -> Goudenbel
+# 	[0] ESBlind(62:6541) -> Goudenbel
 # 	Blind all orbs on the board
-# 	[1] ESRecoverPlayer -> Cure
+# 	[1] ESRecoverPlayer(55:6542) -> Cure
 # 	Player recover 100% hp
 # [11] SkillSet:
 # 	Condition: When < 50% hp , one-time use
-# 	[0] ESChangeAttribute -> Apotheosis Omen
+# 	[0] ESChangeAttribute(46:6547) -> Apotheosis Omen
 # 	Change own attribute to Light
-# 	[1] ESAttackMultihit -> Arentillia
+# 	[1] ESAttackMultihit(15:6540) -> Arentillia
 # 	Enemy action
 # [12] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESChangeAttribute -> Another Fate
+# 	[0] ESChangeAttribute(46:6546) -> Another Fate
 # 	Change own attribute to random one of Dark, Light
-# 	[1] ESAttackMultihit -> Arentillia
+# 	[1] ESAttackMultihit(15:6540) -> Arentillia
 # 	Enemy action
-# [13] ESBranchFlag -> ESBranchFlag
+# [13] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 21
-# [14] ESFlagOperation -> ESFlagOperation
+# [14] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [15] ESAttributeBlock -> Staff of Destiny
+# [15] ESAttributeBlock(107:6548) -> Staff of Destiny
 # Condition: 20% chance
 # Unable to Fire orbs for 2 turns
-# [16] ESAttributeBlock -> Staff of Destiny
+# [16] ESAttributeBlock(107:6549) -> Staff of Destiny
 # Condition: 20% chance
 # Unable to Water orbs for 2 turns
-# [17] ESAttributeBlock -> Staff of Destiny
+# [17] ESAttributeBlock(107:6550) -> Staff of Destiny
 # Condition: 20% chance
 # Unable to Wood orbs for 2 turns
-# [18] ESAttributeBlock -> Staff of Destiny
+# [18] ESAttributeBlock(107:6551) -> Staff of Destiny
 # Condition: 20% chance
 # Unable to Light orbs for 2 turns
-# [19] ESAttributeBlock -> Staff of Destiny
+# [19] ESAttributeBlock(107:6552) -> Staff of Destiny
 # Condition: 20% chance
 # Unable to Dark orbs for 2 turns
-# [20] ESEndPath -> ESEndPath
+# [20] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [21] ESFlagOperation -> ESFlagOperation
+# [21] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b1
-# [22] ESSkillDelay -> Misheliente
+# [22] ESSkillDelay(89:6556) -> Misheliente
 # Delay active skills by 1 turns
-# [23] ESEndPath -> ESEndPath
+# [23] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [24] ESAttributeResist -> Light Dark Halved
+# [24] ESAttributeResist(72:6557) -> Light Dark Halved
 # Reduce damage from Light, Dark by 50%
-# [25] ESResolve -> Resolve
+# [25] ESResolve(73:6555) -> Resolve
 # Survive attacks with 1 HP when HP > 76%

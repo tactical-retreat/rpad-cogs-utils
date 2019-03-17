@@ -92,48 +92,59 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESBoardChangeAttackBits -> You'll regret coming here
+# 	[0] ESBoardChangeAttackBits(85:3086) -> You'll regret coming here
 # 	Change all orbs to Fire, Water, Wood, Light, Dark, Jammer, Poison
-# 	[1] ESOrbLock -> Freeze Lock
+# 	[1] ESOrbLock(94:3087) -> Freeze Lock
 # 	Lock all Jammer, Poison orbs
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchCard -> ESBranchCard
+# [6] ESBranchCard(90:3089) -> ESBranchCard
 # Branch on player_cards HAS [1257], target rnd 13
-# [7] ESBranchCard -> ESBranchCard
+# [7] ESBranchCard(90:3091) -> ESBranchCard
 # Branch on player_cards HAS [1947], target rnd 16
-# [8] ESDamageShield -> Purple Soul Shield
+# [8] ESDamageShield(74:3095) -> Purple Soul Shield
 # Condition: When < 80% hp , one-time use
 # Reduce damage from all sources by 30% for 3 turns
-# [9] ESAttackMultihit -> Super Snowstorm
+# [9] ESAttackMultihit(15:3096) -> Super Snowstorm
 # Condition: When < 30% hp
 # Enemy action
-# [10] ESOrbChangeAttack -> Ice Needle
+# [10] ESOrbChangeAttack(48:3093) -> Ice Needle
 # Condition: 60% chance
 # Change Wood to Water
-# [11] ESRowSpawnMulti -> Freezing Wind
+# [11] ESRowSpawnMulti(79:3094) -> Freezing Wind
 # Condition: 60% chance
 # Change 1st, 2nd row to Water, Jammer, Poison orbs
-# [12] ESEndPath -> ESEndPath
+# [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [13] ESBranchFlag -> ESBranchFlag
+# [13] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 7
-# [14] ESFlagOperation -> ESFlagOperation
+# [14] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [15] ESSkillDelay -> You must have guts to face me!
+# [15] ESSkillDelay(89:3090) -> You must have guts to face me!
 # Delay active skills by 1~2 turns
-# [16] ESBranchFlag -> ESBranchFlag
+# [16] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 8
-# [17] ESFlagOperation -> ESFlagOperation
+# [17] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [18] ESBindRandom -> You shall not pass
+# [18] ESBindRandom(1:3092) -> You shall not pass
 # Bind 6 random cards for 2 turns

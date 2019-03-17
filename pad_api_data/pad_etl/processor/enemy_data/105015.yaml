@@ -99,44 +99,55 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 3 -       11
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESDamageShield -> GROOOO!!
+# [6] ESDamageShield(74:12233) -> GROOOO!!
 # Reduce damage from all sources by 50% for 10 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESAttackUp -> …GRUAAA!
+# [8] ESAttackUp(17:12190) -> …GRUAAA!
 # Condition: One-time use
 # Increase damage to 150% for the next 3 turns
-# [9] ESBranchFlag -> ESBranchFlag
+# [9] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 13
-# [10] ESFlagOperation -> ESFlagOperation
+# [10] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [11] ESAttackMultihit -> GRAAAAAA!!!
+# [11] ESAttackMultihit(15:12191) -> GRAAAAAA!!!
 # Enemy action
-# [12] ESEndPath -> ESEndPath
+# [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [13] ESBranchFlag -> ESBranchFlag
+# [13] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 17
-# [14] ESFlagOperation -> ESFlagOperation
+# [14] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [15] ESAttackMultihit -> GAAA
+# [15] ESAttackMultihit(15:12192) -> GAAA
 # Enemy action
-# [16] ESEndPath -> ESEndPath
+# [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [17] ESFlagOperation -> ESFlagOperation
+# [17] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [18] ESAttackMultihit -> Guguhh... Guah... GAAAA!!!
+# [18] ESAttackMultihit(15:12193) -> Guguhh... Guah... GAAAA!!!
 # Enemy action
-# [19] ESEndPath -> ESEndPath
+# [19] ESEndPath(36:26) -> ESEndPath
 # end_turn

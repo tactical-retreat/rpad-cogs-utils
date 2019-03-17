@@ -81,39 +81,50 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 0 -        0
+# [53] 2 -       10
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESRecoverPlayer -> You've done well to make it here.
+# [4] ESRecoverPlayer(55:461) -> You've done well to make it here.
 # Condition: One-time use
 # Player recover 100% hp
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESRecoverEnemy -> Resurrection
+# [6] ESRecoverEnemy(7:1642) -> Resurrection
 # Condition: When < 50% hp , one-time use
 # Enemy recover 100% hp
-# [7] ESBindAttribute -> Hymn of Nike
+# [7] ESBindAttribute(2:1643) -> Hymn of Nike
 # Condition: When < 75% hp , one-time use
 # Bind Dark cards for 10 turns
-# [8] ESStatusShield -> Aegis Defense
+# [8] ESStatusShield(20:1644) -> Aegis Defense
 # Condition: When < 90% hp , one-time use
 # Voids status ailments for 999 turns
-# [9] ESBranchHP -> ESBranchHP
+# [9] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 30, target rnd 14
-# [10] ESOrbChangeAttack -> Shining Spear
+# [10] ESOrbChangeAttack(48:454) -> Shining Spear
 # Condition: 50% chance
 # Change Random to Light
-# [11] ESAttackMultihit -> Storm Punisher
+# [11] ESAttackMultihit(15:456) -> Storm Punisher
 # Condition: 60% chance
 # Enemy action
-# [12] ESGravity -> Siculus Strike
+# [12] ESGravity(50:1645) -> Siculus Strike
 # Player -99% HP
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [14] ESAttackMultihit -> Starburst
+# [14] ESAttackMultihit(15:458) -> Starburst
 # Enemy action

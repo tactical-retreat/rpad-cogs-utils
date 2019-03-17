@@ -310,151 +310,162 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 15 -     1111
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESStatusShield -> Massacre Force
+# 	[0] ESStatusShield(20:7251) -> Massacre Force
 # 	Voids status ailments for 999 turns
-# 	[1] ESBindRandom -> Roar
+# 	[1] ESBindRandom(1:7320) -> Roar
 # 	Bind 6 random cards for 3 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] SkillSet:
 # 	Condition: When < 1% hp , one-time use
-# 	[0] ESBindSkill -> Roar
+# 	[0] ESBindSkill(14:7321) -> Roar
 # 	Bind active skills for 5 turns
-# 	[1] ESRecoverEnemy -> Enter Fury State
+# 	[1] ESRecoverEnemy(86:7326) -> Enter Fury State
 # 	Enemy recover 60% hp
-# 	[2] ESDamageShield -> Burrow
+# 	[2] ESDamageShield(74:7259) -> Burrow
 # 	Reduce damage from all sources by 75% for 1 turns
-# [7] ESBranchHP -> ESBranchHP
+# [7] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 90, target rnd 12
-# [8] ESAttackMultihit -> Body Slam
+# [8] ESAttackMultihit(15:7254) -> Body Slam
 # Condition: 33% chance
 # Enemy action
-# [9] ESAttackMultihit -> Tail Swing
+# [9] ESAttackMultihit(15:7255) -> Tail Swing
 # Condition: 33% chance
 # Enemy action
-# [10] ESRandomSpawn -> Dash Attack
+# [10] ESRandomSpawn(92:7256) -> Dash Attack
 # Condition: 34% chance
 # Spawn random 3 Jammer orbs
-# [11] ESEndPath -> ESEndPath
+# [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [12] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESBindSkill -> Roar
+# 	[0] ESBindSkill(14:7321) -> Roar
 # 	Bind active skills for 5 turns
-# 	[1] ESInactivity -> Enter Fury State
+# 	[1] ESInactivity(66:7258) -> Enter Fury State
 # 	Do nothing
-# 	[2] ESDamageShield -> Burrow
+# 	[2] ESDamageShield(74:7259) -> Burrow
 # 	Reduce damage from all sources by 75% for 1 turns
-# [13] ESAttackMultihit -> Burrowed Assault
+# [13] ESAttackMultihit(15:7261) -> Burrowed Assault
 # Condition: One-time use
 # Enemy action
-# [14] ESBranchHP -> ESBranchHP
+# [14] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 28
 # [15] SkillSet:
 # 	Condition: 33% chance when < 40% hp
-# 	[0] ESAttackUp -> Rage
+# 	[0] ESAttackUp(17:7268) -> Rage
 # 	Increase damage to 150% for the next 1 turns
-# 	[1] ESOrbChangeAttack -> Horn Gouge
+# 	[1] ESOrbChangeAttack(48:7262) -> Horn Gouge
 # 	Change Random to Jammer
 # [16] SkillSet:
 # 	Condition: 50% chance when < 40% hp
-# 	[0] ESAttackUp -> Rage
+# 	[0] ESAttackUp(17:7268) -> Rage
 # 	Increase damage to 150% for the next 1 turns
-# 	[1] ESBlind -> Springing Burrow
+# 	[1] ESBlind(62:7263) -> Springing Burrow
 # 	Blind all orbs on the board
 # [17] SkillSet:
 # 	Condition: When < 40% hp
-# 	[0] ESAttackUp -> Rage
+# 	[0] ESAttackUp(17:7268) -> Rage
 # 	Increase damage to 150% for the next 1 turns
-# 	[1] ESAttackMultihit -> Combo Horn Thrash
+# 	[1] ESAttackMultihit(15:7264) -> Combo Horn Thrash
 # 	Enemy action
 # [18] SkillSet:
 # 	Condition: 33% chance when < 60% hp
-# 	[0] ESAttackUp -> Rage
+# 	[0] ESAttackUp(17:7267) -> Rage
 # 	Increase damage to 140% for the next 1 turns
-# 	[1] ESOrbChangeAttack -> Horn Gouge
+# 	[1] ESOrbChangeAttack(48:7262) -> Horn Gouge
 # 	Change Random to Jammer
 # [19] SkillSet:
 # 	Condition: 50% chance when < 60% hp
-# 	[0] ESAttackUp -> Rage
+# 	[0] ESAttackUp(17:7267) -> Rage
 # 	Increase damage to 140% for the next 1 turns
-# 	[1] ESBlind -> Springing Burrow
+# 	[1] ESBlind(62:7263) -> Springing Burrow
 # 	Blind all orbs on the board
 # [20] SkillSet:
 # 	Condition: When < 60% hp
-# 	[0] ESAttackUp -> Rage
+# 	[0] ESAttackUp(17:7267) -> Rage
 # 	Increase damage to 140% for the next 1 turns
-# 	[1] ESAttackMultihit -> Combo Horn Thrash
+# 	[1] ESAttackMultihit(15:7264) -> Combo Horn Thrash
 # 	Enemy action
 # [21] SkillSet:
 # 	Condition: 33% chance when < 70% hp
-# 	[0] ESAttackUp -> Rage
+# 	[0] ESAttackUp(17:7266) -> Rage
 # 	Increase damage to 130% for the next 1 turns
-# 	[1] ESOrbChangeAttack -> Horn Gouge
+# 	[1] ESOrbChangeAttack(48:7262) -> Horn Gouge
 # 	Change Random to Jammer
 # [22] SkillSet:
 # 	Condition: 50% chance when < 70% hp
-# 	[0] ESAttackUp -> Rage
+# 	[0] ESAttackUp(17:7266) -> Rage
 # 	Increase damage to 130% for the next 1 turns
-# 	[1] ESBlind -> Springing Burrow
+# 	[1] ESBlind(62:7263) -> Springing Burrow
 # 	Blind all orbs on the board
 # [23] SkillSet:
 # 	Condition: When < 70% hp
-# 	[0] ESAttackUp -> Rage
+# 	[0] ESAttackUp(17:7266) -> Rage
 # 	Increase damage to 130% for the next 1 turns
-# 	[1] ESAttackMultihit -> Combo Horn Thrash
+# 	[1] ESAttackMultihit(15:7264) -> Combo Horn Thrash
 # 	Enemy action
 # [24] SkillSet:
 # 	Condition: 33% chance when < 90% hp
-# 	[0] ESAttackUp -> Rage
+# 	[0] ESAttackUp(17:7265) -> Rage
 # 	Increase damage to 120% for the next 1 turns
-# 	[1] ESOrbChangeAttack -> Horn Gouge
+# 	[1] ESOrbChangeAttack(48:7262) -> Horn Gouge
 # 	Change Random to Jammer
 # [25] SkillSet:
 # 	Condition: 50% chance when < 90% hp
-# 	[0] ESAttackUp -> Rage
+# 	[0] ESAttackUp(17:7265) -> Rage
 # 	Increase damage to 120% for the next 1 turns
-# 	[1] ESBlind -> Springing Burrow
+# 	[1] ESBlind(62:7263) -> Springing Burrow
 # 	Blind all orbs on the board
 # [26] SkillSet:
 # 	Condition: When < 90% hp
-# 	[0] ESAttackUp -> Rage
+# 	[0] ESAttackUp(17:7265) -> Rage
 # 	Increase damage to 120% for the next 1 turns
-# 	[1] ESAttackMultihit -> Combo Horn Thrash
+# 	[1] ESAttackMultihit(15:7264) -> Combo Horn Thrash
 # 	Enemy action
-# [27] ESEndPath -> ESEndPath
+# [27] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [28] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESBindAwoken -> Roar
+# 	[0] ESBindAwoken(88:7322) -> Roar
 # 	Bind awoken skills for 5 turns
-# 	[1] ESInactivity -> Enter Rampaging State
+# 	[1] ESInactivity(66:7282) -> Enter Rampaging State
 # 	Do nothing
-# 	[2] ESDamageShield -> Burrow
+# 	[2] ESDamageShield(74:7283) -> Burrow
 # 	Reduce damage from all sources by 75% for 1 turns
 # [29] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAttackMultihit -> Burrowed Assault
+# 	[0] ESAttackMultihit(15:7285) -> Burrowed Assault
 # 	Enemy action
-# 	[1] ESGravity -> Rampaging Downstrike
+# 	[1] ESGravity(50:7286) -> Rampaging Downstrike
 # 	Player -99% HP
-# 	[2] ESBoardChangeAttackBits -> Rampaging Geyser
+# 	[2] ESBoardChangeAttackBits(85:7287) -> Rampaging Geyser
 # 	Change all orbs to Water
 # [30] SkillSet:
-# 	[0] ESAttackMultihit -> Rampaging Triple Dash
+# 	[0] ESAttackMultihit(15:7289) -> Rampaging Triple Dash
 # 	Enemy action
-# 	[1] ESBoardChangeAttackBits -> Rampaging Geyser
+# 	[1] ESBoardChangeAttackBits(85:7290) -> Rampaging Geyser
 # 	Change all orbs to Water
-# [31] ESEndPath -> ESEndPath
+# [31] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [32] ESResolve -> Resolve 90
+# [32] ESResolve(73:7292) -> Resolve 90
 # Survive attacks with 1 HP when HP > 90%

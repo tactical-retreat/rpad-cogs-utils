@@ -90,31 +90,42 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 0 -        0
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:355) -> ESPreemptive
 # Enable preempt if level 5
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 5, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESAbsorbCombo -> Kettle Cover Technique
+# [6] ESAbsorbCombo(67:1874) -> Kettle Cover Technique
 # Absorb combo <= 5 damage for 4 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBoardChangeAttackBits -> Dance of the Five Ingredients
+# [8] ESBoardChangeAttackBits(85:1877) -> Dance of the Five Ingredients
 # Condition: When < 50% hp
 # Change all orbs to Fire, Water, Wood, Light, Dark
-# [9] ESGravity -> Dark Kettle Drop Surprise
+# [9] ESGravity(50:1876) -> Dark Kettle Drop Surprise
 # Condition: One-time use
 # Player -99% HP
-# [10] ESAttackMultihit -> Shiitake Shuriken
+# [10] ESAttackMultihit(15:1875) -> Shiitake Shuriken
 # Enemy action
-# [11] ESEndPath -> ESEndPath
+# [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [12] ESAttributeResist -> Halve Light
+# [12] ESAttributeResist(72:1774) -> Halve Light
 # Reduce damage from Light by 50%

@@ -108,54 +108,65 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 0 -        0
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:355) -> ESPreemptive
 # Enable preempt if level 5
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 5, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 7
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESAttackMultihit -> Glyph of First Strike, Hummingbird
+# [6] ESAttackMultihit(15:545) -> Glyph of First Strike, Hummingbird
 # Enemy action
-# [7] ESNone -> ESNone
+# [7] ESNone(0:0) -> ESNone
 # nothing
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 30, target rnd 11
-# [9] ESGravity -> Glyph of Weight, Whale
+# [9] ESGravity(50:543) -> Glyph of Weight, Whale
 # Condition: One-time use
 # Player -99% HP
-# [10] ESAttackMultihit -> Glyph of Regret, Titan
+# [10] ESAttackMultihit(15:544) -> Glyph of Regret, Titan
 # Enemy action
-# [11] ESBranchFlag -> ESBranchFlag
+# [11] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 14
-# [12] ESFlagOperation -> ESFlagOperation
+# [12] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [13] ESOrbChangeAttack -> Glyph of Plunder, Monkey
+# [13] ESOrbChangeAttack(48:540) -> Glyph of Plunder, Monkey
 # Change Random to Jammer
-# [14] ESBranchFlag -> ESBranchFlag
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 17
-# [15] ESFlagOperation -> ESFlagOperation
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [16] ESBindRandom -> Glyph of Restraint, Spider
+# [16] ESBindRandom(1:542) -> Glyph of Restraint, Spider
 # Bind 1 random cards for 3 turns
-# [17] ESBranchFlag -> ESBranchFlag
+# [17] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 20
-# [18] ESFlagOperation -> ESFlagOperation
+# [18] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
-# [19] ESAttackMultihit -> Glyph of Fierce Assault, Condor
+# [19] ESAttackMultihit(15:539) -> Glyph of Fierce Assault, Condor
 # Enemy action
-# [20] ESBranchFlag -> ESBranchFlag
+# [20] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 16, target rnd 23
-# [21] ESFlagOperation -> ESFlagOperation
+# [21] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11111
-# [22] ESAttackUp -> Glyph of Hunting, Hound
+# [22] ESAttackUp(17:541) -> Glyph of Hunting, Hound
 # Increase damage to 200% for the next 3 turns
-# [23] ESFlagOperation -> ESFlagOperation
+# [23] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b11110
-# [24] ESBranchHP -> ESBranchHP
+# [24] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 30, target rnd 11

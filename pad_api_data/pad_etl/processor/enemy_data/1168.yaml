@@ -117,48 +117,59 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 0 -        0
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:355) -> ESPreemptive
 # Enable preempt if level 5
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 5, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESStatusShield -> Fertile Guard
+# [6] ESStatusShield(20:205) -> Fertile Guard
 # Voids status ailments for 999 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 16
-# [9] ESAttackMultihit -> Mystic Blossom
+# [9] ESAttackMultihit(15:982) -> Mystic Blossom
 # Condition: When < 30% hp
 # Enemy action
-# [10] ESOrbChangeAttack -> Mystic Bulb
+# [10] ESOrbChangeAttack(48:977) -> Mystic Bulb
 # Condition: One-time use
 # Change Random to Heal
-# [11] ESGravity -> Mystic Bulb
+# [11] ESGravity(50:978) -> Mystic Bulb
 # Condition: 30% chance
 # Player -50% HP
-# [12] ESBlind -> Mystic Bulb
+# [12] ESBlind(62:979) -> Mystic Bulb
 # Condition: 30% chance
 # Blind all orbs on the board
-# [13] ESOrbChangeAttack -> Mystic Bulb
+# [13] ESOrbChangeAttack(48:980) -> Mystic Bulb
 # Condition: 30% chance
 # Change Fire to Wood
-# [14] ESNone -> ESNone
+# [14] ESNone(0:0) -> ESNone
 # nothing
-# [15] ESEndPath -> ESEndPath
+# [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [16] ESBranchFlag -> ESBranchFlag
+# [16] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 9
-# [17] ESFlagOperation -> ESFlagOperation
+# [17] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [18] ESAbsorbAttribute -> Gabriel's Protection
+# [18] ESAbsorbAttribute(53:976) -> Gabriel's Protection
 # Absorb Fire damage for 3 turns
-# [19] ESEndPath -> ESEndPath
+# [19] ESEndPath(36:26) -> ESEndPath
 # end_turn

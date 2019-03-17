@@ -313,124 +313,135 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [6] SkillSet:
-# 	[0] ESStatusShield -> Overcoat of Grand Style
+# 	[0] ESStatusShield(20:9711) -> Overcoat of Grand Style
 # 	Voids status ailments for 999 turns
-# 	[1] ESGravity -> Explosive Wave
+# 	[1] ESGravity(50:9712) -> Explosive Wave
 # 	Player -99% HP
-# 	[2] ESColumnSpawnMulti -> Blowing Dirty Water
+# 	[2] ESColumnSpawnMulti(76:9713) -> Blowing Dirty Water
 # 	Change 1st column to Water, Jammer, Poison orbs, 3rd, 4th column to Water, Jammer, Poison orbs
-# 	[3] ESVoidShield -> Surging Waves
+# 	[3] ESVoidShield(71:9714) -> Surging Waves
 # 	Void damage >= 15000000 for 999 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 21
-# [9] ESSetCounter -> ESSetCounter
+# [9] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [10] ESBranchCounter -> ESBranchCounter
+# [10] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 5, target rnd 16
-# [11] ESRandomSpawn -> Water Hazard
+# [11] ESRandomSpawn(92:9716) -> Water Hazard
 # Condition: 25% chance & when Fire, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 8 Water orbs
-# [12] ESOrbLock -> Blizzard Wave
+# [12] ESOrbLock(94:9717) -> Blizzard Wave
 # Condition: 25% chance
 # Lock 14 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [13] ESBindRandom -> Frozen Tentacle
+# [13] ESBindRandom(1:9718) -> Frozen Tentacle
 # Condition: 25% chance
 # Bind 2 random cards for 1 turns
-# [14] ESAttackMultihit -> Frost Hurricane
+# [14] ESAttackMultihit(15:9719) -> Frost Hurricane
 # Condition: 25% chance
 # Enemy action
-# [15] ESEndPath -> ESEndPath
+# [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [16] ESSetCounter -> ESSetCounter
+# [16] ESSetCounter(25:15) -> ESSetCounter
 # counter = 0
-# [17] ESBranchFlag -> ESBranchFlag
+# [17] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 40
-# [18] ESFlagOperation -> ESFlagOperation
+# [18] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [19] SkillSet:
-# 	[0] ESBindSkill -> Rough Seas
+# 	[0] ESBindSkill(14:9720) -> Rough Seas
 # 	Bind active skills for 3 turns
-# 	[1] ESOrbSealRow -> Land Subsidence
+# 	[1] ESOrbSealRow(100:9721) -> Land Subsidence
 # 	Seal 5th row for 3 turns
-# [20] ESEndPath -> ESEndPath
+# [20] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [21] ESBranchHP -> ESBranchHP
+# [21] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 10, target rnd 38
-# [22] ESBranchFlag -> ESBranchFlag
+# [22] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 27
-# [23] ESFlagOperation -> ESFlagOperation
+# [23] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [24] ESSetCounter -> ESSetCounter
+# [24] ESSetCounter(25:15) -> ESSetCounter
 # counter = 0
 # [25] SkillSet:
-# 	[0] ESBoardChange -> Untamable Raging Waves
+# 	[0] ESBoardChange(84:9723) -> Untamable Raging Waves
 # 	Change all orbs to Heal, Poison
-# 	[1] ESDebuffRCV -> Ocean Current Mayhem
+# 	[1] ESDebuffRCV(105:9724) -> Ocean Current Mayhem
 # 	Rcv 50% for 99 turns
-# 	[2] ESBindRandom -> Freeze Wave
+# 	[2] ESBindRandom(1:9725) -> Freeze Wave
 # 	Bind 6 random cards for 10 turns
-# [26] ESEndPath -> ESEndPath
+# [26] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [27] ESSetCounter -> ESSetCounter
+# [27] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [28] ESBranchCounter -> ESBranchCounter
+# [28] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 5, target rnd 33
 # [29] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESSkyfall -> Heavy Rain
+# 	[0] ESSkyfall(68:9727) -> Heavy Rain
 # 	Water skyfall +25% for 1 turns
-# 	[1] ESAttackMultihit -> Tidal Wave
+# 	[1] ESAttackMultihit(15:9730) -> Tidal Wave
 # 	Enemy action
 # [30] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAbsorbAttribute -> Misery Water
+# 	[0] ESAbsorbAttribute(53:9728) -> Misery Water
 # 	Absorb Water damage for 1 turns
-# 	[1] ESAttackMultihit -> Tidal Wave
+# 	[1] ESAttackMultihit(15:9730) -> Tidal Wave
 # 	Enemy action
 # [31] SkillSet:
-# 	[0] ESDebuffMovetime -> Sand Disaster
+# 	[0] ESDebuffMovetime(39:9729) -> Sand Disaster
 # 	Movetime 50% for 1 turns
-# 	[1] ESAttackMultihit -> Tidal Wave
+# 	[1] ESAttackMultihit(15:9730) -> Tidal Wave
 # 	Enemy action
-# [32] ESEndPath -> ESEndPath
+# [32] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [33] ESSetCounter -> ESSetCounter
+# [33] ESSetCounter(25:15) -> ESSetCounter
 # counter = 0
-# [34] ESBranchFlag -> ESBranchFlag
+# [34] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 40
-# [35] ESFlagOperation -> ESFlagOperation
+# [35] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
 # [36] SkillSet:
-# 	[0] ESBindAwoken -> Ocean Ripple
+# 	[0] ESBindAwoken(88:9734) -> Ocean Ripple
 # 	Bind awoken skills for 3 turns
-# 	[1] ESBlindStickyRandom -> Depths of the Abyss
+# 	[1] ESBlindStickyRandom(97:9735) -> Depths of the Abyss
 # 	Blind all orbs for 3 turns
-# [37] ESEndPath -> ESEndPath
+# [37] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [38] ESAttackMultihit -> Neo Tidal Wave
+# [38] ESAttackMultihit(15:9738) -> Neo Tidal Wave
 # Enemy action
-# [39] ESEndPath -> ESEndPath
+# [39] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [40] ESStorePower -> Unleashing the Great Sea
+# [40] ESStorePower(8:9737) -> Unleashing the Great Sea
 # Increase damage to 230% for the next attack
-# [41] ESEndPath -> ESEndPath
+# [41] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [42] ESAttributeResist -> Water Att. Half Reduced
+# [42] ESAttributeResist(72:9710) -> Water Att. Half Reduced
 # Reduce damage from Water by 50%
-# [43] ESResolve -> Dragonbound Soul Spirit
+# [43] ESResolve(73:12175) -> Dragonbound Soul Spirit
 # Survive attacks with 1 HP when HP > 99%

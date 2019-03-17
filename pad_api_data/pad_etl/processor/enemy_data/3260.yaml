@@ -128,50 +128,61 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESStatusShield -> Scarlet Sky Robes
+# 	[0] ESStatusShield(20:6874) -> Scarlet Sky Robes
 # 	Voids status ailments for 999 turns
-# 	[1] ESBindTyping -> Dragonbind Kotodama
+# 	[1] ESBindTyping(3:6875) -> Dragonbind Kotodama
 # 	Bind Dragon cards for 10 turns
-# 	[2] ESAttackMultihit -> Flame Camellia
+# 	[2] ESAttackMultihit(15:6924) -> Flame Camellia
 # 	Enemy action
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESAttackMultihit -> Soaring Camellia Flame
+# [6] ESAttackMultihit(15:6885) -> Soaring Camellia Flame
 # Condition: When < 20% hp
 # Enemy action
 # [7] SkillSet:
 # 	Condition: When < 50% hp , one-time use
-# 	[0] ESRandomSpawn -> Vanishing Lifespring - Red Sun
+# 	[0] ESRandomSpawn(92:6879) -> Vanishing Lifespring - Red Sun
 # 	Change all orbs to Jammer
-# 	[1] ESAbsorbCombo -> Crimson Blossom Storm
+# 	[1] ESAbsorbCombo(67:6880) -> Crimson Blossom Storm
 # 	Absorb combo <= 6 damage for 5 turns
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 13
-# [9] ESDamageShield -> Fire Guardian's Sunblade
+# [9] ESDamageShield(74:6884) -> Fire Guardian's Sunblade
 # Condition: 50% chance
 # Reduce damage from all sources by 50% for 1 turns
-# [10] ESBindSkill -> Firechain Thrust
+# [10] ESBindSkill(14:6878) -> Firechain Thrust
 # Bind active skills for 5 turns
-# [11] ESAttackMultihit -> Scorched Edge
+# [11] ESAttackMultihit(15:6877) -> Scorched Edge
 # Enemy action
-# [12] ESEndPath -> ESEndPath
+# [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [13] ESOrbChangeAttack -> Banishing Firebrand
+# [13] ESOrbChangeAttack(48:6882) -> Banishing Firebrand
 # Change Jammer to Fire
-# [14] ESDamageShield -> Fire Guardian's Sunblade
+# [14] ESDamageShield(74:6884) -> Fire Guardian's Sunblade
 # Condition: 50% chance
 # Reduce damage from all sources by 50% for 1 turns
-# [15] ESRandomSpawn -> Scarlet Embers
+# [15] ESRandomSpawn(92:6883) -> Scarlet Embers
 # Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board
 # Spawn random 4 Jammer orbs
-# [16] ESEndPath -> ESEndPath
+# [16] ESEndPath(36:26) -> ESEndPath
 # end_turn

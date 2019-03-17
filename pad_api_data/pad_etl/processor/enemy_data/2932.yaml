@@ -108,36 +108,47 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESDamageShield -> Scorching Heat Mantle
+# [4] ESDamageShield(74:4609) -> Scorching Heat Mantle
 # Reduce damage from all sources by 75% for 2 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESDamageShield -> Scorching Heat Mantle
+# [6] ESDamageShield(74:4613) -> Scorching Heat Mantle
 # Condition: When < 30% hp , one-time use
 # Reduce damage from all sources by 75% for 2 turns
-# [7] ESRowSpawnMulti -> Inferno Blast
+# [7] ESRowSpawnMulti(79:4614) -> Inferno Blast
 # Condition: When < 30% hp
 # Change 1st row to Fire orbs
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 80, target rnd 14
-# [9] ESBranchFlag -> ESBranchFlag
+# [9] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 12
-# [10] ESFlagOperation -> ESFlagOperation
+# [10] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [11] ESGravity -> Blazing Tail
+# [11] ESGravity(50:4611) -> Blazing Tail
 # Player -99% HP
-# [12] ESFlagOperation -> ESFlagOperation
+# [12] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b10
-# [13] ESAttackMultihit -> Hellfire Claw
+# [13] ESAttackMultihit(15:4612) -> Hellfire Claw
 # Enemy action
-# [14] ESRandomSpawn -> Powerful Blaze
+# [14] ESRandomSpawn(92:4610) -> Powerful Blaze
 # Condition: When water, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board
 # Spawn random 6 Fire orbs

@@ -117,43 +117,54 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 1 -        1
+# [52] 1 -        1
+# [53] 0 -        0
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESAbsorbCombo -> Okay! Here I go♪
+# [4] ESAbsorbCombo(67:5820) -> Okay! Here I go♪
 # Absorb combo <= 6 damage for 5 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchFlag -> ESBranchFlag
+# [6] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 10
-# [7] ESFlagOperation -> ESFlagOperation
+# [7] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [8] ESBoardChangeAttackBits -> Southern Seven-Star Formation
+# [8] ESBoardChangeAttackBits(85:5823) -> Southern Seven-Star Formation
 # Change all orbs to Fire, Wood, Light
-# [9] ESEndPath -> ESEndPath
+# [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [10] ESBranchHP -> ESBranchHP
+# [10] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 14
-# [11] ESBombRandomSpawn -> Blazing Bullet
+# [11] ESBombRandomSpawn(102:5821) -> Blazing Bullet
 # Condition: 50% chance
 # Spawn random 1 Bomb orbs
-# [12] ESOrbChangeAttack -> Massive Crimson Iron Spear
+# [12] ESOrbChangeAttack(48:5822) -> Massive Crimson Iron Spear
 # Change Random to Fire
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [14] ESFlagOperation -> ESFlagOperation
+# [14] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b10
 # [15] SkillSet:
-# 	[0] ESSkillDelay -> Try and take it♪
+# 	[0] ESSkillDelay(89:5824) -> Try and take it♪
 # 	Delay active skills by 1 turns
-# 	[1] ESBoardChangeAttackBits -> Suzaku Seven-Star Formation
+# 	[1] ESBoardChangeAttackBits(85:5825) -> Suzaku Seven-Star Formation
 # 	Change all orbs to Fire, Wood, Light
-# [16] ESEndPath -> ESEndPath
+# [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [17] ESAttributeResist -> Fire Wood Light Reduced Damage
+# [17] ESAttributeResist(72:5827) -> Fire Wood Light Reduced Damage
 # Reduce damage from Fire, Wood, Light by 30%

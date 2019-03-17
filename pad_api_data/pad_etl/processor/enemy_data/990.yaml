@@ -117,39 +117,50 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESAbsorbCombo -> Don't touch me...
+# [4] ESAbsorbCombo(67:3878) -> Don't touch me...
 # Absorb combo <= 7 damage for 3 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchFlag -> ESBranchFlag
+# [6] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 15
-# [7] ESBranchHP -> ESBranchHP
+# [7] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 30, target rnd 13
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 100, target rnd 12
-# [9] ESDebuffMovetime -> Divine Song's Tuning
+# [9] ESDebuffMovetime(39:3881) -> Divine Song's Tuning
 # Condition: When < 70% hp , one-time use
 # Movetime -1s for 5 turns
-# [10] ESRandomSpawn -> Full Moon
+# [10] ESRandomSpawn(92:3880) -> Full Moon
 # Condition: When fire, water, wood, light, dark, jammer, mortal poison orbs are on the board
 # Spawn random 3 Heal, Poison orbs
-# [11] ESEndPath -> ESEndPath
+# [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [12] ESAttackMultihit -> Nocturnal Blades
+# [12] ESAttackMultihit(15:3879) -> Nocturnal Blades
 # Enemy action
-# [13] ESFlagOperation -> ESFlagOperation
+# [13] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [14] ESInactivity -> Time, stop...
+# [14] ESInactivity(66:3882) -> Time, stop...
 # Do nothing
-# [15] ESFlagOperation -> ESFlagOperation
+# [15] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b10
-# [16] ESGravity -> Nocturnal Sky Bell Execution
+# [16] ESGravity(50:3883) -> Nocturnal Sky Bell Execution
 # Player -500% HP

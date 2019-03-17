@@ -72,35 +72,46 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 2 -       10
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 5 -      101
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESAbsorbAttribute -> Burning Shield
+# [4] ESAbsorbAttribute(53:3097) -> Burning Shield
 # Condition: One-time use
 # Absorb Wood damage for 5 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBindAttack -> Shark Horn Blade
+# [6] ESBindAttack(63:3101) -> Shark Horn Blade
 # Condition: One-time use
 # Bind 1 random for 2 turns
-# [7] ESBranchHP -> ESBranchHP
+# [7] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 60, target rnd 11
-# [8] ESOrbChangeAttack -> Aqua Jet
+# [8] ESOrbChangeAttack(48:3098) -> Aqua Jet
 # Condition: 70% chance
 # Change Random to Water
-# [9] ESAttackMultihit -> Crunch Fang
+# [9] ESAttackMultihit(15:3100) -> Crunch Fang
 # Condition: 70% chance
 # Enemy action
-# [10] ESEndPath -> ESEndPath
+# [10] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [11] ESBranchFlag -> ESBranchFlag
+# [11] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 8
-# [12] ESFlagOperation -> ESFlagOperation
+# [12] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [13] ESOrbLock -> Vortex Cage
+# [13] ESOrbLock(94:3099) -> Vortex Cage
 # Lock all Fire, Water orbs

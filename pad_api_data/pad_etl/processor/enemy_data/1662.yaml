@@ -128,67 +128,78 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 0 -        0
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [6] SkillSet:
-# 	[0] ESDebuffMovetime -> Swirling Black Emotions
+# 	[0] ESDebuffMovetime(39:10106) -> Swirling Black Emotions
 # 	Movetime 50% for 10 turns
-# 	[1] ESOrbChangeAttack -> Threat Removal
+# 	[1] ESOrbChangeAttack(48:10107) -> Threat Removal
 # 	Change Heal to Jammer
-# 	[2] ESStatusShield -> Quat Dafiea Easifah
+# 	[2] ESStatusShield(20:10108) -> Quat Dafiea Easifah
 # 	Voids status ailments for 999 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchFlag -> ESBranchFlag
+# [8] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 12
-# [9] ESFlagOperation -> ESFlagOperation
+# [9] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [10] SkillSet:
-# 	[0] ESBombFixedSpawn -> Exploding Heresy
+# 	[0] ESBombFixedSpawn(103:10110) -> Exploding Heresy
 # 	Spawn locked Bomb orbs in the specified positions
-# 	[1] ESDebuffRCV -> Look of False Evil
+# 	[1] ESDebuffRCV(105:10111) -> Look of False Evil
 # 	Rcv 50% for 10 turns
-# [11] ESEndPath -> ESEndPath
+# [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [12] ESBranchHP -> ESBranchHP
+# [12] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 10, target rnd 17
-# [13] ESBombRandomSpawn -> Khunbala Rogzu
+# [13] ESBombRandomSpawn(102:10113) -> Khunbala Rogzu
 # Condition: 33% chance
 # Spawn random 5 locked Bomb orbs
-# [14] ESRandomSpawn -> Nuqta Mahjur
+# [14] ESRandomSpawn(92:10114) -> Nuqta Mahjur
 # Condition: 33% chance & when Fire, Water, Wood, Light, Dark, Heal, Poison, Mortal Poison orbs are on the board
 # Spawn random 8 Jammer orbs
-# [15] ESAttackMultihit -> Geela Ahsefah
+# [15] ESAttackMultihit(15:10115) -> Geela Ahsefah
 # Condition: 34% chance
 # Enemy action
-# [16] ESEndPath -> ESEndPath
+# [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [17] ESBranchHP -> ESBranchHP
+# [17] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 1, target rnd 20
-# [18] ESAttackMultihit -> Torrent of Magical Powers
+# [18] ESAttackMultihit(15:10119) -> Torrent of Magical Powers
 # Enemy action
-# [19] ESEndPath -> ESEndPath
+# [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [20] ESBranchFlag -> ESBranchFlag
+# [20] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 18
-# [21] ESFlagOperation -> ESFlagOperation
+# [21] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [22] SkillSet:
-# 	[0] ESBindAwoken -> Breaking Distance
+# 	[0] ESBindAwoken(88:10116) -> Breaking Distance
 # 	Bind awoken skills for 2 turns
-# 	[1] ESBindSkill -> Delusion and Doubt
+# 	[1] ESBindSkill(14:10117) -> Delusion and Doubt
 # 	Bind active skills for 2 turns
-# [23] ESEndPath -> ESEndPath
+# [23] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [24] ESResolve -> Resolve
+# [24] ESResolve(73:10105) -> Resolve
 # Survive attacks with 1 HP when HP > 50%

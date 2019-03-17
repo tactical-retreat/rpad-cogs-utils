@@ -162,35 +162,46 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 3 -       11
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBlind -> Don't look!!
+# [4] ESBlind(5:8980) -> Don't look!!
 # Condition: One-time use
 # Blind all orbs on the board
-# [5] ESAbsorbAttribute -> Genbu's Perception
+# [5] ESAbsorbAttribute(53:8981) -> Genbu's Perception
 # Condition: When < 50% hp , one-time use
 # Absorb Wood damage for 2 turns
-# [6] ESBoardChangeAttackBits -> Genbu Seven-Star Perception
+# [6] ESBoardChangeAttackBits(85:8984) -> Genbu Seven-Star Perception
 # Condition: When < 10% hp
 # Change all orbs to Wood, Light, Dark
-# [7] ESBranchCounter -> ESBranchCounter
+# [7] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 3, target rnd 11
-# [8] ESSetCounter -> ESSetCounter
+# [8] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [9] ESDamageShield -> Eternal Love Letter
+# [9] ESDamageShield(74:8982) -> Eternal Love Letter
 # Condition: 15% chance
 # Reduce damage from all sources by 75% for 1 turns
-# [10] ESAttackMultihit -> Sweet Combo
+# [10] ESAttackMultihit(15:8995) -> Sweet Combo
 # Enemy action
-# [11] ESSetCounter -> ESSetCounter
+# [11] ESSetCounter(25:15) -> ESSetCounter
 # counter = 0
-# [12] ESDebuffMovetime -> Don't laugh!
+# [12] ESDebuffMovetime(39:8983) -> Don't laugh!
 # Movetime -2s for 2 turns
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn

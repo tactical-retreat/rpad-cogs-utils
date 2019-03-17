@@ -126,63 +126,74 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 0 -        0
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [6] SkillSet:
-# 	[0] ESSkyfall -> Look!
+# 	[0] ESSkyfall(68:9818) -> Look!
 # 	Poison skyfall +20% for 5 turns
-# 	[1] ESSkyfall -> That's a lot of meteors!
+# 	[1] ESSkyfall(96:9819) -> That's a lot of meteors!
 # 	Locked Poison skyfall +100% for 30 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchFlag -> ESBranchFlag
+# [8] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 12
-# [9] ESFlagOperation -> ESFlagOperation
+# [9] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [10] SkillSet:
-# 	[0] ESAbsorbCombo -> Like the stars in the night sky...
+# 	[0] ESAbsorbCombo(67:9821) -> Like the stars in the night sky...
 # 	Absorb combo <= 6 damage for 15 turns
-# 	[1] ESAttributeBlock -> Show me your locus...
+# 	[1] ESAttributeBlock(107:9822) -> Show me your locus...
 # 	Unable to Poison orbs for 1 turns
-# [11] ESEndPath -> ESEndPath
+# [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [12] ESBranchHP -> ESBranchHP
+# [12] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 17
-# [13] ESOrbChangeAttack -> Shooting Stardust
+# [13] ESOrbChangeAttack(48:9824) -> Shooting Stardust
 # Condition: 33% chance
 # Change Random to Jammer
-# [14] ESSkillDelay -> Star Symphony
+# [14] ESSkillDelay(89:9825) -> Star Symphony
 # Condition: 33% chance
 # Delay active skills by 2 turns
-# [15] ESAttackMultihit -> Meteor Rain
+# [15] ESAttackMultihit(15:9826) -> Meteor Rain
 # Condition: 34% chance
 # Enemy action
-# [16] ESEndPath -> ESEndPath
+# [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [17] ESBranchFlag -> ESBranchFlag
+# [17] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 21
-# [18] ESFlagOperation -> ESFlagOperation
+# [18] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [19] SkillSet:
-# 	[0] ESAttackUp -> I'll end this with my own hands!
+# 	[0] ESAttackUp(17:9827) -> I'll end this with my own hands!
 # 	Increase damage to 150% for the next 99 turns
-# 	[1] ESBlind -> The stars are bright tonight...
+# 	[1] ESBlind(5:9828) -> The stars are bright tonight...
 # 	Blind all orbs on the board
-# [20] ESEndPath -> ESEndPath
+# [20] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [21] ESBindAwoken -> At least peacefully...
+# [21] ESBindAwoken(88:9830) -> At least peacefully...
 # Bind awoken skills for 1 turns
-# [22] ESEndPath -> ESEndPath
+# [22] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [23] ESTypeResist -> God Machine Halved
+# [23] ESTypeResist(118:9817) -> God Machine Halved
 # Reduce damage from God, Machine by 50%

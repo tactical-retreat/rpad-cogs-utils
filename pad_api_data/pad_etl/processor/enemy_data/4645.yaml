@@ -135,50 +135,61 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 4 -      100
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 0 -        0
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESDeathCry -> Spe Dun Dragon Dark Transformation
+# [4] ESDeathCry(69:10408) -> Spe Dun Dragon Dark Transformation
 # Condition: On death
 # Show message: Doltos's appearance is changing|Help has been summoned
-# [5] ESBranchFlag -> ESBranchFlag
+# [5] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 9
-# [6] ESFlagOperation -> ESFlagOperation
+# [6] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [7] ESBlind -> Call of Darkness
+# [7] ESBlind(5:10401) -> Call of Darkness
 # Blind all orbs on the board
-# [8] ESEndPath -> ESEndPath
+# [8] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [9] ESBranchHP -> ESBranchHP
+# [9] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 14
-# [10] ESRandomSpawn -> The Chosen Darkness
+# [10] ESRandomSpawn(92:10402) -> The Chosen Darkness
 # Condition: 33% chance & when Fire, Water, Wood, Light, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 3 Dark orbs
-# [11] ESOrbChangeAttack -> Dark Pillar
+# [11] ESOrbChangeAttack(48:10403) -> Dark Pillar
 # Condition: 33% chance
 # Change Random to Dark
-# [12] ESAttackMultihit -> Spirit Darkness
+# [12] ESAttackMultihit(15:10404) -> Spirit Darkness
 # Condition: 34% chance
 # Enemy action
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [14] ESBranchFlag -> ESBranchFlag
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 18
-# [15] ESFlagOperation -> ESFlagOperation
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [16] SkillSet:
-# 	[0] ESBlindStickyRandom -> Swallowing Darkness
+# 	[0] ESBlindStickyRandom(97:10405) -> Swallowing Darkness
 # 	Blind random 8 orbs for 1 turns
-# 	[1] ESOrbChangeAttack -> Dark Pillar
+# 	[1] ESOrbChangeAttack(48:10403) -> Dark Pillar
 # 	Change Random to Dark
-# [17] ESEndPath -> ESEndPath
+# [17] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [18] ESAttackMultihit -> Shadow Wings
+# [18] ESAttackMultihit(15:10407) -> Shadow Wings
 # Enemy action
-# [19] ESEndPath -> ESEndPath
+# [19] ESEndPath(36:26) -> ESEndPath
 # end_turn

@@ -92,29 +92,40 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 4 -      100
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 0 -        0
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESOrbLock -> From this point...
+# [4] ESOrbLock(94:9333) -> From this point...
 # Lock 8 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchFlag -> ESBranchFlag
+# [6] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 10
-# [7] ESFlagOperation -> ESFlagOperation
+# [7] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [8] ESGravity -> Sucker Punch
+# [8] ESGravity(50:648) -> Sucker Punch
 # Player -99% HP
-# [9] ESEndPath -> ESEndPath
+# [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [10] ESAttackUp -> Lone Force
+# [10] ESAttackUp(17:270) -> Lone Force
 # Increase damage to 300% for the next 999 turns
-# [11] ESAttackMultihit -> Iron Fist of Anger
+# [11] ESAttackMultihit(15:650) -> Iron Fist of Anger
 # Enemy action
-# [12] ESAttributeResist -> Light Half Reduced
+# [12] ESAttributeResist(72:9335) -> Light Half Reduced
 # Reduce damage from Light by 50%

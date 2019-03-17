@@ -90,35 +90,46 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 5 -      101
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAbsorbCombo -> Wings of the Blazing Knight
+# 	[0] ESAbsorbCombo(67:2806) -> Wings of the Blazing Knight
 # 	Absorb combo <= 3 damage for 5 turns
-# 	[1] ESSkyfall -> Burning Aura
+# 	[1] ESSkyfall(68:2807) -> Burning Aura
 # 	Fire skyfall +15% for 5 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESRecoverEnemy -> Soul of the Phoenix
+# [6] ESRecoverEnemy(7:2812) -> Soul of the Phoenix
 # Condition: When < 1% hp
 # Enemy recover 100% hp
-# [7] ESOrbChangeAttack -> Orb Alteration - Flame
+# [7] ESOrbChangeAttack(48:2810) -> Orb Alteration - Flame
 # Condition: One-time use
 # Change Water to Fire
-# [8] ESRecoverEnemy -> Healing Heat
+# [8] ESRecoverEnemy(86:2809) -> Healing Heat
 # Condition: 70% chance when < 75% hp
 # Enemy recover 10% hp
-# [9] ESRandomSpawn -> Flame Thrust
+# [9] ESRandomSpawn(92:2808) -> Flame Thrust
 # Condition: 30% chance & when Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 4 Fire orbs
-# [10] ESEndPath -> ESEndPath
+# [10] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [11] ESResolve -> Homura Resolve
+# [11] ESResolve(73:2811) -> Homura Resolve
 # Survive attacks with 1 HP when HP > 76%

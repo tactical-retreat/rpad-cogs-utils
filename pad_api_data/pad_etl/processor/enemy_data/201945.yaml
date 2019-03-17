@@ -171,48 +171,59 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESRecoverPlayer -> I'll purify you!
+# [4] ESRecoverPlayer(55:1972) -> I'll purify you!
 # Player recover 100% hp
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESRecoverEnemy -> Elixir of Life
+# [6] ESRecoverEnemy(86:1957) -> Elixir of Life
 # Condition: When < 1% hp
 # Enemy recover 100% hp
-# [7] ESBranchHP -> ESBranchHP
+# [7] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 75, target rnd 14
-# [8] ESColumnSpawnMulti -> Ascension
+# [8] ESColumnSpawnMulti(77:1958) -> Ascension
 # Condition: When < 30% hp
 # Change 3rd column to Light orbs, 4th column to Light orbs
-# [9] ESOrbChangeAttack -> Swallow's Cowry Shell
+# [9] ESOrbChangeAttack(48:1956) -> Swallow's Cowry Shell
 # Condition: 60% chance
 # Change Dark to Heal
-# [10] ESBoardChangeAttackBits -> Dragon Neck Jewel
+# [10] ESBoardChangeAttackBits(85:1955) -> Dragon Neck Jewel
 # Condition: 20% chance
 # Change all orbs to Fire, Water, Wood, Light, Dark
-# [11] ESOrbChangeAttack -> Fire Rat Fur Robe
+# [11] ESOrbChangeAttack(48:1952) -> Fire Rat Fur Robe
 # Condition: 10% chance
 # Change Heal to Fire
-# [12] ESGravity -> Buddha's Stone Bowl
+# [12] ESGravity(50:1953) -> Buddha's Stone Bowl
 # Condition: One-time use
 # Player -99% HP
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [14] ESBranchFlag -> ESBranchFlag
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 8
-# [15] ESFlagOperation -> ESFlagOperation
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [16] ESBindTyping -> Jeweled Branch of Horai
+# [16] ESBindTyping(3:1954) -> Jeweled Branch of Horai
 # Condition: When < 75% hp
 # Bind Devil cards for 2~3 turns
-# [17] ESEndPath -> ESEndPath
+# [17] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [18] ESResolve -> Kaguya Passive
+# [18] ESResolve(73:1959) -> Kaguya Passive
 # Survive attacks with 1 HP when HP > 75%

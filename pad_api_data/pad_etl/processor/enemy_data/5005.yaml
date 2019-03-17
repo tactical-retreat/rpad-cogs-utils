@@ -123,48 +123,59 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 3 -       11
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [4] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESDamageShield -> Who is it, you ask?
+# 	[0] ESDamageShield(74:12217) -> Who is it, you ask?
 # 	Reduce damage from all sources by 50% for 10 turns
-# 	[1] ESVoidShield -> That's something...
+# 	[1] ESVoidShield(71:12218) -> That's something...
 # that should be obvious with one look.
 # 	Void damage >= 1000000 for 3 turns
-# [5] ESBranchHP -> ESBranchHP
+# [5] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 15
-# [6] ESBranchHP -> ESBranchHP
+# [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 11
-# [7] ESOrbChangeAttack -> Ha!
+# [7] ESOrbChangeAttack(48:12220) -> Ha!
 # Condition: 33% chance
 # Change Random to Jammer
-# [8] ESSkillDelay -> Yah!
+# [8] ESSkillDelay(89:12221) -> Yah!
 # Condition: 33% chance
 # Delay active skills by 2 turns
-# [9] ESAttackMultihit -> Hmph!
+# [9] ESAttackMultihit(15:12222) -> Hmph!
 # Condition: 34% chance
 # Enemy action
-# [10] ESEndPath -> ESEndPath
+# [10] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [11] ESBranchFlag -> ESBranchFlag
+# [11] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 7
-# [12] ESFlagOperation -> ESFlagOperation
+# [12] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [13] ESDebuffRCV -> Don't bother.
+# [13] ESDebuffRCV(105:12219) -> Don't bother.
 # Rcv 50% for 3 turns
-# [14] ESEndPath -> ESEndPath
+# [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [15] ESBindAwoken -> I'm telling you, don't bother with it.
+# [15] ESBindAwoken(88:12223) -> I'm telling you, don't bother with it.
 # Condition: One-time use
 # Bind awoken skills for 1 turns
-# [16] ESColumnSpawnMulti -> Excalibur Morgan
+# [16] ESColumnSpawnMulti(77:12224) -> Excalibur Morgan
 # Change 3rd, 4th column to Dark orbs
-# [17] ESEndPath -> ESEndPath
+# [17] ESEndPath(36:26) -> ESEndPath
 # end_turn

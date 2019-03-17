@@ -116,33 +116,44 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESBranchLevel -> ESBranchLevel
+# [4] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 6, target rnd 6
-# [5] ESAbsorbCombo -> Dark Wolf Trial
+# [5] ESAbsorbCombo(67:7129) -> Dark Wolf Trial
 # Absorb combo <= 7 damage for 10 turns
-# [6] ESAbsorbCombo -> Dark Wolf Revelations
+# [6] ESAbsorbCombo(67:7128) -> Dark Wolf Revelations
 # Absorb combo <= 9 damage for 10 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESAttackUp -> Dark Wolf Howl
+# [8] ESAttackUp(17:7132) -> Dark Wolf Howl
 # Condition: When < 50% hp , one-time use
 # Increase damage to 1000% for the next 999 turns
-# [9] ESBranchHP -> ESBranchHP
+# [9] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 100, target rnd 12
-# [10] ESRandomSpawn -> Path to the Underworld
+# [10] ESRandomSpawn(92:7131) -> Path to the Underworld
 # Condition: When fire, water, wood, light, dark, poison orbs are on the board
 # Spawn random 2 Heal, Jammer, Mortal Poison orbs
-# [11] ESEndPath -> ESEndPath
+# [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [12] ESRandomSpawn -> Death Curse
+# [12] ESRandomSpawn(92:7130) -> Death Curse
 # Change all orbs to Poison
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn

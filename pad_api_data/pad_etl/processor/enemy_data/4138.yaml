@@ -209,89 +209,100 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [6] SkillSet:
-# 	[0] ESDamageShield -> Extinction Dragon's Force
+# 	[0] ESDamageShield(74:8831) -> Extinction Dragon's Force
 # 	Reduce damage from all sources by 50% for 5 turns
-# 	[1] ESBindRandom -> Roar
+# 	[1] ESBindRandom(1:8830) -> Roar
 # 	Bind 6 random cards for 1 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 10, target rnd 29
-# [9] ESBranchHP -> ESBranchHP
+# [9] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 25
-# [10] ESBranchHP -> ESBranchHP
+# [10] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 75, target rnd 15
-# [11] ESRowSpawnMulti -> Spread Wing Attack
+# [11] ESRowSpawnMulti(78:8835) -> Spread Wing Attack
 # Condition: One-time use
 # Change 3rd row to Jammer orbs
-# [12] ESAttackMultihit -> Heavy Slam
+# [12] ESAttackMultihit(15:8833) -> Heavy Slam
 # Condition: 50% chance
 # Enemy action
-# [13] ESAttackMultihit -> Headbutt
+# [13] ESAttackMultihit(15:8834) -> Headbutt
 # Enemy action
-# [14] ESEndPath -> ESEndPath
+# [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [15] ESSetCounter -> ESSetCounter
+# [15] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [16] ESBranchCounter -> ESBranchCounter
+# [16] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 4, target rnd 22
-# [17] ESBranchCounter -> ESBranchCounter
+# [17] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 3, target rnd 21
-# [18] ESBranchCounter -> ESBranchCounter
+# [18] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 2, target rnd 20
-# [19] ESAttackUp -> Destruction Impulse
+# [19] ESAttackUp(17:8836) -> Destruction Impulse
 # Increase damage to 150% for the next 3 turns
 # [20] SkillSet:
-# 	[0] ESAttackMultihit -> Tail Scythe
+# 	[0] ESAttackMultihit(15:8837) -> Tail Scythe
 # 	Enemy action
-# 	[1] ESOrbSealRow -> Annihilation Spike Whirl
+# 	[1] ESOrbSealRow(100:8838) -> Annihilation Spike Whirl
 # 	Seal 1st row for 4 turns
-# [21] ESSkillDelay -> Foreleg Uppercut
+# [21] ESSkillDelay(89:8840) -> Foreleg Uppercut
 # Delay active skills by 1 turns
-# [22] ESSetCounter -> ESSetCounter
+# [22] ESSetCounter(25:15) -> ESSetCounter
 # counter = 0
 # [23] SkillSet:
-# 	[0] ESGravity -> Head Strike
+# 	[0] ESGravity(50:8841) -> Head Strike
 # 	Player -50% HP
-# 	[1] ESAttackMultihit -> Spike Shot
+# 	[1] ESAttackMultihit(15:8842) -> Spike Shot
 # 	Enemy action
-# [24] ESEndPath -> ESEndPath
+# [24] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [25] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESBindAwoken -> Roar
+# 	[0] ESBindAwoken(88:8844) -> Roar
 # 	Bind awoken skills for 1 turns
-# 	[1] ESOrbChangeAttackBits -> Pounce Attack
+# 	[1] ESOrbChangeAttackBits(108:8845) -> Pounce Attack
 # 	Change Light to Jammer
 # [26] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESOrbChangeAttackBits -> Tail Strike
+# 	[0] ESOrbChangeAttackBits(108:8847) -> Tail Strike
 # 	Change Fire to Jammer
-# 	[1] ESBindTarget -> Binding Attack
+# 	[1] ESBindTarget(54:8848) -> Binding Attack
 # 	Bind 1 own leader for 1 turns
 # [27] SkillSet:
-# 	[0] ESRecoverEnemy -> Spike Regeneration
+# 	[0] ESRecoverEnemy(86:8850) -> Spike Regeneration
 # 	Enemy recover 10% hp
-# 	[1] ESAttackMultihit -> Annihilation Fist
+# 	[1] ESAttackMultihit(15:8851) -> Annihilation Fist
 # 	Enemy action
-# [28] ESEndPath -> ESEndPath
+# [28] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [29] ESAttackMultihit -> Aerial Annihilation Spike Whirl
+# [29] ESAttackMultihit(15:8853) -> Aerial Annihilation Spike Whirl
 # Enemy action
-# [30] ESEndPath -> ESEndPath
+# [30] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [31] ESAttributeResist -> ネルギガンテ・パッシブ
+# [31] ESAttributeResist(72:8829) -> ネルギガンテ・パッシブ
 # Reduce damage from Fire, Water by 50%

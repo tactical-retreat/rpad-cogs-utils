@@ -45,49 +45,60 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESInvulnerableOn -> Augite's Resonance
+# [4] ESInvulnerableOn(119:9168) -> Augite's Resonance
 # Immune to damage from all sources for 999 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
+# [6] ESBranchRemainingEnemies(120:8595) -> ESBranchRemainingEnemies
 # Branch on remaining enemies = 2, target rnd 14
-# [7] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
+# [7] ESBranchRemainingEnemies(120:8595) -> ESBranchRemainingEnemies
 # Branch on remaining enemies = 3, target rnd 11
-# [8] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
+# [8] ESBranchRemainingEnemies(120:8595) -> ESBranchRemainingEnemies
 # Branch on remaining enemies = 4, target rnd 9
-# [9] ESSetCounter -> ESSetCounter
+# [9] ESSetCounter(25:15) -> ESSetCounter
 # counter = 0
-# [10] ESAttackMultihit -> Flash
+# [10] ESAttackMultihit(15:9169) -> Flash
 # Enemy action
-# [11] ESSetCounter -> ESSetCounter
+# [11] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [12] ESDebuffMovetime -> Instant Ripped Death
+# [12] ESDebuffMovetime(39:9177) -> Instant Ripped Death
 # Condition: One-time use
 # Movetime 50% for 1 turns
-# [13] ESAttackMultihit -> Disorientating Flash
+# [13] ESAttackMultihit(15:9171) -> Disorientating Flash
 # Enemy action
-# [14] ESBranchCounter -> ESBranchCounter
+# [14] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 1, target rnd 17
-# [15] ESRecoverEnemyAlly -> Radiance of Regeneration
+# [15] ESRecoverEnemyAlly(52:9172) -> Radiance of Regeneration
 # Condition: When enemy ally is killed
 # Enemy ally recover 100% hp
-# [16] ESEndPath -> ESEndPath
+# [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [17] ESInvulnerableOff -> Augite's Resonance disappeared
+# [17] ESInvulnerableOff(121:9173) -> Augite's Resonance disappeared
 # Remove damage immunity effect
-# [18] ESAbsorbCombo -> Secular Sword's Reflexion
+# [18] ESAbsorbCombo(67:9174) -> Secular Sword's Reflexion
 # Absorb combo <= 6 damage for 6 turns
-# [19] ESAttackMultihit -> Disorientating Flash
+# [19] ESAttackMultihit(15:9171) -> Disorientating Flash
 # Enemy action
-# [20] ESEndPath -> ESEndPath
+# [20] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [21] ESTurnChangeActive -> The Yellow Augite is pulsating
+# [21] ESTurnChangeActive(122:9170) -> The Yellow Augite is pulsating
 # Enemy turn counter change to 1

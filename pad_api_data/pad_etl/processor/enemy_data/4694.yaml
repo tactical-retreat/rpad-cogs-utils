@@ -101,33 +101,44 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 0 -        0
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESOrbLock -> Wisdom of the Freezing Divine Beast
+# [4] ESOrbLock(94:10716) -> Wisdom of the Freezing Divine Beast
 # Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESRowSpawnMulti -> Blue Origin
+# [6] ESRowSpawnMulti(79:10717) -> Blue Origin
 # Condition: When < 20% hp
 # Change 5th row to Water orbs
-# [7] ESBranchCounter -> ESBranchCounter
+# [7] ESBranchCounter(31:21) -> ESBranchCounter
 # Branch on counter = 2, target rnd 10
-# [8] ESSetCounter -> ESSetCounter
+# [8] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [9] ESEndPath -> ESEndPath
+# [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [10] ESSetCounter -> ESSetCounter
+# [10] ESSetCounter(25:15) -> ESSetCounter
 # counter = 0
-# [11] ESAttackUp -> I can't go easy on you
+# [11] ESAttackUp(17:10732) -> I can't go easy on you
 # Condition: 50% chance
 # Increase damage to 150% for the next 2 turns
-# [12] ESColumnSpawnMulti -> How about THIS?!
+# [12] ESColumnSpawnMulti(77:10733) -> How about THIS?!
 # Change 3rd, 4th column to Water orbs
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn

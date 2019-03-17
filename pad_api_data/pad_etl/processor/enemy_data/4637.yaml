@@ -151,51 +151,62 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 4 -      100
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 0 -        0
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESDeathCry -> Special Dungeon
+# [4] ESDeathCry(69:10309) -> Special Dungeon
 # Fire Dragon Transformation
 # Condition: On death
 # Show message: Harnis's appearance is changing|Help have been summoned
-# [5] ESBranchFlag -> ESBranchFlag
+# [5] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 9
-# [6] ESFlagOperation -> ESFlagOperation
+# [6] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [7] ESGravity -> Flare Drive
+# [7] ESGravity(50:10301) -> Flare Drive
 # Player -99% HP
-# [8] ESEndPath -> ESEndPath
+# [8] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [9] ESBranchHP -> ESBranchHP
+# [9] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 14
-# [10] ESRandomSpawn -> Flare Wing
+# [10] ESRandomSpawn(92:10302) -> Flare Wing
 # Condition: 33% chance & when Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 3 Fire orbs
-# [11] ESBombRandomSpawn -> Property Bombing
+# [11] ESBombRandomSpawn(102:10303) -> Property Bombing
 # Condition: 33% chance
 # Spawn random 5 Bomb orbs
-# [12] ESAttackMultihit -> Strike
+# [12] ESAttackMultihit(15:10304) -> Strike
 # Condition: 34% chance
 # Enemy action
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [14] ESBranchFlag -> ESBranchFlag
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 18
-# [15] ESFlagOperation -> ESFlagOperation
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [16] SkillSet:
-# 	[0] ESAttackUp -> Raging
+# 	[0] ESAttackUp(17:10305) -> Raging
 # 	Increase damage to 200% for the next 99 turns
-# 	[1] ESBombRandomSpawn -> Property Bombing
+# 	[1] ESBombRandomSpawn(102:10306) -> Property Bombing
 # 	Spawn random 1 Bomb orbs
-# [17] ESEndPath -> ESEndPath
+# [17] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [18] ESAttackMultihit -> Flare Rush
+# [18] ESAttackMultihit(15:10308) -> Flare Rush
 # Enemy action
-# [19] ESEndPath -> ESEndPath
+# [19] ESEndPath(36:26) -> ESEndPath
 # end_turn

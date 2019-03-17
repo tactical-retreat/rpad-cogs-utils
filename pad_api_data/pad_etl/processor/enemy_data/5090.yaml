@@ -459,67 +459,78 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 3 -       11
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESDebuffMovetime -> Humph, so it's you.
+# [2] ESDebuffMovetime(39:12590) -> Humph, so it's you.
 # Condition: One-time use
 # Movetime -1s for 10 turns
-# [3] ESSetCounter -> ESSetCounter
+# [3] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [4] ESBranchHP -> ESBranchHP
+# [4] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 11
-# [5] ESBranchCounter -> ESBranchCounter
+# [5] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 10, target rnd 20
 # [6] SkillSet:
 # 	Condition: 25% chance
-# 	[0] ESDamageShield -> Rakan
+# 	[0] ESDamageShield(74:12594) -> Rakan
 # 	Reduce damage from all sources by 50% for 1 turns
-# 	[1] ESSkillDelay -> No use! Rakan Gosho
+# 	[1] ESSkillDelay(89:12595) -> No use! Rakan Gosho
 # 	Delay active skills by 2 turns
 # [7] SkillSet:
 # 	Condition: 25% chance
-# 	[0] ESDamageShield -> Rakan
+# 	[0] ESDamageShield(74:12594) -> Rakan
 # 	Reduce damage from all sources by 50% for 1 turns
-# 	[1] ESOrbLock -> Rakan Gokyaku
+# 	[1] ESOrbLock(94:12596) -> Rakan Gokyaku
 # 	Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [8] SkillSet:
 # 	Condition: 25% chance
-# 	[0] ESRowSpawnMulti -> Gohadoken
+# 	[0] ESRowSpawnMulti(79:12598) -> Gohadoken
 # 	Change 3rd row to Dark orbs
-# 	[1] ESAbsorbCombo -> Tatsumaki Zankukyaku
+# 	[1] ESAbsorbCombo(67:12599) -> Tatsumaki Zankukyaku
 # 	Absorb combo <= 5 damage for 1 turns
 # [9] SkillSet:
 # 	Condition: 25% chance
-# 	[0] ESRowSpawnMulti -> Sekia Goshoha
+# 	[0] ESRowSpawnMulti(79:12601) -> Sekia Goshoha
 # 	Change 3rd row to Fire orbs
-# 	[1] ESAttackMultihit -> Goshoryuken
+# 	[1] ESAttackMultihit(15:12602) -> Goshoryuken
 # 	Enemy action
-# [10] ESEndPath -> ESEndPath
+# [10] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [11] ESAttackUp -> Dohatsu Shoten
+# [11] ESAttackUp(17:12604) -> Dohatsu Shoten
 # Condition: One-time use
 # Increase damage to 150% for the next 10 turns
-# [12] ESBranchHP -> ESBranchHP
+# [12] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 11, target rnd 5
-# [13] ESBranchFlag -> ESBranchFlag
+# [13] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 17
-# [14] ESFlagOperation -> ESFlagOperation
+# [14] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [15] ESLeaderSwap -> Ashura Senku
+# [15] ESLeaderSwap(75:12603) -> Ashura Senku
 # Leader changes to random sub for 1 turns
-# [16] ESEndPath -> ESEndPath
+# [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [17] ESFlagOperation -> ESFlagOperation
+# [17] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b0
-# [18] ESAttackMultihit -> Shun Goku Satsu
+# [18] ESAttackMultihit(15:12606) -> Shun Goku Satsu
 # Enemy action
-# [19] ESEndPath -> ESEndPath
+# [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [20] ESSetCounter -> ESSetCounter
+# [20] ESSetCounter(25:15) -> ESSetCounter
 # counter = 0
-# [21] ESColumnSpawnMulti -> Sekia Kuretsuha
+# [21] ESColumnSpawnMulti(77:12605) -> Sekia Kuretsuha
 # Change 3rd, 4th column to Fire orbs
-# [22] ESEndPath -> ESEndPath
+# [22] ESEndPath(36:26) -> ESEndPath
 # end_turn

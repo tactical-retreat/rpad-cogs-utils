@@ -126,69 +126,80 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [6] SkillSet:
-# 	[0] ESStatusShield -> Inner-Thigh-Propping Twist Down
+# 	[0] ESStatusShield(20:10589) -> Inner-Thigh-Propping Twist Down
 # 	Voids status ailments for 10 turns
-# 	[1] ESSkillDelay -> Intimidating Air
+# 	[1] ESSkillDelay(89:10590) -> Intimidating Air
 # 	Delay active skills by 2 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchFlag -> ESBranchFlag
+# [8] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 12
-# [9] ESFlagOperation -> ESFlagOperation
+# [9] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [10] ESGravity -> Phantom Ball
+# [10] ESGravity(50:10592) -> Phantom Ball
 # Condition: One-time use
 # Player -99% HP
-# [11] ESEndPath -> ESEndPath
+# [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [12] ESBranchHP -> ESBranchHP
+# [12] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 18
-# [13] ESBranchHP -> ESBranchHP
+# [13] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 22
-# [14] ESGravity -> Phantom Ball
+# [14] ESGravity(50:10592) -> Phantom Ball
 # Condition: One-time use
 # Player -99% HP
-# [15] ESOrbChangeAttack -> Slider
+# [15] ESOrbChangeAttack(48:10608) -> Slider
 # Condition: 33% chance
 # Change Random to Water
-# [16] ESOrbChangeAttack -> Sinker
+# [16] ESOrbChangeAttack(48:10611) -> Sinker
 # Condition: 34% chance
 # Change Random to Dark
-# [17] ESEndPath -> ESEndPath
+# [17] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [18] ESBranchFlag -> ESBranchFlag
+# [18] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 13
-# [19] ESFlagOperation -> ESFlagOperation
+# [19] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [20] SkillSet:
-# 	[0] ESRandomSpawn -> Black Stars
+# 	[0] ESRandomSpawn(92:10593) -> Black Stars
 # 	Spawn random 9 Dark orbs
-# 	[1] ESBlind -> Black Vanguard
+# 	[1] ESBlind(5:10594) -> Black Vanguard
 # 	Blind all orbs on the board
-# [21] ESEndPath -> ESEndPath
+# [21] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [22] ESBranchFlag -> ESBranchFlag
+# [22] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 26
-# [23] ESFlagOperation -> ESFlagOperation
+# [23] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
-# [24] ESDamageShield -> YOU'RE here
+# [24] ESDamageShield(74:10596) -> YOU'RE here
 # Reduce damage from all sources by 50% for 5 turns
-# [25] ESEndPath -> ESEndPath
+# [25] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [26] ESBlind -> Gloomy Star Cloud
+# [26] ESBlind(62:10597) -> Gloomy Star Cloud
 # Blind all orbs on the board
-# [27] ESEndPath -> ESEndPath
+# [27] ESEndPath(36:26) -> ESEndPath
 # end_turn

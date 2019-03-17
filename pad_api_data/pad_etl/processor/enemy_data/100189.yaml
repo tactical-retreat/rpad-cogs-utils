@@ -90,36 +90,47 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESAbsorbCombo -> Dark Matter
+# 	[0] ESAbsorbCombo(67:4765) -> Dark Matter
 # 	Absorb combo <= 6 damage for 99 turns
-# 	[1] ESAttackMultihit -> Holy Rite
+# 	[1] ESAttackMultihit(15:4764) -> Holy Rite
 # 	Enemy action
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchHP -> ESBranchHP
+# [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 25, target rnd 10
-# [7] ESJammerChangeRandom -> Mischief by God
+# [7] ESJammerChangeRandom(13:4770) -> Mischief by God
 # Condition: 10% chance
 # Change Random 2 to Jammer
-# [8] ESAttackMultihit -> Double Slap
+# [8] ESAttackMultihit(15:4767) -> Double Slap
 # Condition: 50% chance
 # Enemy action
-# [9] ESEndPath -> ESEndPath
+# [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [10] ESBranchFlag -> ESBranchFlag
+# [10] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 13
-# [11] ESFlagOperation -> ESFlagOperation
+# [11] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [12] ESBindAwoken -> Gathering Energy
+# [12] ESBindAwoken(88:4768) -> Gathering Energy
 # Bind awoken skills for 1 turns
-# [13] ESAttackMultihit -> Graviton Bomb
+# [13] ESAttackMultihit(15:4769) -> Graviton Bomb
 # Enemy action

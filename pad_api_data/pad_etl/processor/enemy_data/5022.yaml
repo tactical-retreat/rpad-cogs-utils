@@ -108,41 +108,52 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 7 -      111
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESGravity -> Unleash me.
+# [4] ESGravity(50:12225) -> Unleash me.
 # Condition: One-time use
 # Player -99% HP
-# [5] ESBranchHP -> ESBranchHP
+# [5] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 100, target rnd 10
-# [6] ESRandomSpawn -> You saw my face, did you?
+# [6] ESRandomSpawn(92:12226) -> You saw my face, did you?
 # Condition: One-time use & when Fire, Water, Wood, Light, Dark, Heal, Jammer, Mortal Poison orbs are on the board
 # Spawn random 6 Poison orbs
-# [7] ESBranchHP -> ESBranchHP
+# [7] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 51, target rnd 10
-# [8] ESAbsorbCombo -> Protection Against the Wind
+# [8] ESAbsorbCombo(67:12229) -> Protection Against the Wind
 # Condition: One-time use
 # Absorb combo <= 4 damage for 5 turns
-# [9] ESBranchHP -> ESBranchHP
+# [9] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 13
-# [10] ESBlindStickyRandom -> Knives painted black
+# [10] ESBlindStickyRandom(97:12227) -> Knives painted black
 # Condition: 50% chance
 # Blind random 3~6 orbs for 1 turns
-# [11] ESBlind -> If you don't move, it will swallow you.
+# [11] ESBlind(5:12228) -> If you don't move, it will swallow you.
 # Condition: 50% chance
 # Blind all orbs on the board
-# [12] ESEndPath -> ESEndPath
+# [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [13] SkillSet:
-# 	[0] ESGravity -> Noble Phantasm... Zabaniya!
+# 	[0] ESGravity(50:12231) -> Noble Phantasm... Zabaniya!
 # 	Player -50% HP
-# 	[1] ESAttackMultihit -> You... lose!
+# 	[1] ESAttackMultihit(15:12232) -> You... lose!
 # 	Enemy action
-# [14] ESEndPath -> ESEndPath
+# [14] ESEndPath(36:26) -> ESEndPath
 # end_turn

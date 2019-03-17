@@ -90,31 +90,42 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 3 -       11
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 7
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESBoardChange -> Tell me, do you bleed?
+# [6] ESBoardChange(84:4119) -> Tell me, do you bleed?
 # Change all orbs to Fire, Water, Wood, Light, Dark, Heal
-# [7] ESBindAttack -> Kryptonite Gas Grenade
+# [7] ESBindAttack(63:4121) -> Kryptonite Gas Grenade
 # Condition: When < 30% hp , one-time use
 # Bind 1 subs for 3 turns
-# [8] ESColumnSpawnMulti -> Well, here I am!
+# [8] ESColumnSpawnMulti(77:4123) -> Well, here I am!
 # Condition: When < 15% hp , one-time use
 # Change 3rd, 4th column to Jammer orbs
-# [9] ESOrbChangeAttack -> Kryptonite Weaponry
+# [9] ESOrbChangeAttack(48:4120) -> Kryptonite Weaponry
 # Condition: 50% chance
 # Change Light to Dark
-# [10] ESOrbLock -> Kryptonite Spear
+# [10] ESOrbLock(94:4122) -> Kryptonite Spear
 # Condition: 60% chance
 # Lock all Dark orbs
-# [11] ESEndPath -> ESEndPath
+# [11] ESEndPath(36:26) -> ESEndPath
 # end_turn

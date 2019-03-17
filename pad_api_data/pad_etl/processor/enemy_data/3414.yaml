@@ -148,96 +148,107 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESDamageShield -> Protection of the Planets
+# 	[0] ESDamageShield(74:10900) -> Protection of the Planets
 # 	Reduce damage from all sources by 75% for 1 turns
-# 	[1] ESAttackUp -> Limit of the Sky
+# 	[1] ESAttackUp(17:10901) -> Limit of the Sky
 # 	Increase damage to 150% for the next 99 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchHP -> ESBranchHP
+# [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 15
-# [7] ESSetCounter -> ESSetCounter
+# [7] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [8] ESBranchCounter -> ESBranchCounter
+# [8] ESBranchCounter(31:21) -> ESBranchCounter
 # Branch on counter = 4, target rnd 13
-# [9] ESAbsorbThreshold -> Preserving Bottle
+# [9] ESAbsorbThreshold(87:10903) -> Preserving Bottle
 # Condition: 33% chance
 # Absorb damage >= 30000000 damage for 30 turns
-# [10] ESSkyfall -> Waking Sun - Aqua
+# [10] ESSkyfall(68:10904) -> Waking Sun - Aqua
 # Condition: 33% chance
 # Fire, Water skyfall +20% for 3 turns
 # [11] SkillSet:
 # 	Condition: 34% chance
-# 	[0] ESStatusShield -> Protection of the Stars
+# 	[0] ESStatusShield(20:10899) -> Protection of the Stars
 # 	Voids status ailments for 999 turns
-# 	[1] ESAbsorbThreshold -> Preserving Bottle
+# 	[1] ESAbsorbThreshold(87:10903) -> Preserving Bottle
 # 	Absorb damage >= 30000000 damage for 30 turns
-# 	[2] ESSkyfall -> Waking Sun - Aqua
+# 	[2] ESSkyfall(68:10904) -> Waking Sun - Aqua
 # 	Fire, Water skyfall +20% for 3 turns
-# [12] ESEndPath -> ESEndPath
+# [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [13] ESAttackMultihit -> Mhidofa Uvundukia
+# [13] ESAttackMultihit(15:10912) -> Mhidofa Uvundukia
 # Enemy action
-# [14] ESEndPath -> ESEndPath
+# [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [15] ESBranchHP -> ESBranchHP
+# [15] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 10, target rnd 22
-# [16] ESBranchFlag -> ESBranchFlag
+# [16] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 20
-# [17] ESFlagOperation -> ESFlagOperation
+# [17] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [18] ESRandomSpawn -> Sana Azlak
+# [18] ESRandomSpawn(92:10908) -> Sana Azlak
 # Condition: When fire, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board
 # Spawn random 6 Water orbs
-# [19] ESEndPath -> ESEndPath
+# [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [20] ESDebuffRCV -> Shifa'a
+# [20] ESDebuffRCV(105:10910) -> Shifa'a
 # Rcv 50% for 3 turns
-# [21] ESEndPath -> ESEndPath
+# [21] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [22] ESCloud -> Gunpowder Smoke
+# [22] ESCloud(104:10913) -> Gunpowder Smoke
 # Column of cloud appear for 1 turns at random location
 # [23] SkillSet:
-# 	[0] ESAttackMultihit -> Mhidofa Uvundukia
+# 	[0] ESAttackMultihit(15:10912) -> Mhidofa Uvundukia
 # 	Enemy action
-# 	[1] ESCloud -> Gunpowder Smoke
+# 	[1] ESCloud(104:10913) -> Gunpowder Smoke
 # 	Column of cloud appear for 1 turns at random location
-# [24] ESEndPath -> ESEndPath
+# [24] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [25] ESResolve -> Resolve
+# [25] ESResolve(73:10898) -> Resolve
 # Survive attacks with 1 HP when HP > 50%
-# [26] ESNone -> ESNone
+# [26] ESNone(0:0) -> ESNone
 # nothing
-# [27] ESNone -> ESNone
+# [27] ESNone(0:0) -> ESNone
 # nothing
-# [28] ESNone -> ESNone
+# [28] ESNone(0:0) -> ESNone
 # nothing
-# [29] ESNone -> ESNone
+# [29] ESNone(0:0) -> ESNone
 # nothing
-# [30] ESNone -> ESNone
+# [30] ESNone(0:0) -> ESNone
 # nothing
-# [31] ESFlagOperation -> ESFlagOperation
+# [31] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111111
-# [32] ESOrbChangeAttack -> Soppy Flame
+# [32] ESOrbChangeAttack(48:10314) -> Soppy Flame
 # Change Random to Fire
-# [33] ESBombRandomSpawn -> Affliction Bombing
+# [33] ESBombRandomSpawn(102:10312) -> Affliction Bombing
 # Spawn random 1 locked Bomb orbs
-# [34] ESEndPath -> ESEndPath
+# [34] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [35] ESAttackMultihit -> Flame Rush
+# [35] ESAttackMultihit(15:10315) -> Flame Rush
 # Enemy action
-# [36] ESEndPath -> ESEndPath
+# [36] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [37] ESDamageShield -> Rite of Belzenlok I
+# [37] ESDamageShield(74:10296) -> Rite of Belzenlok I
 # Condition: One-time use
 # Reduce damage from all sources by 50% for 4 turns

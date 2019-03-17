@@ -90,36 +90,47 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:697) -> ESPreemptive
 # Enable preempt if level 3
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 3, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESAttackMultihit -> Desperate Assault
+# [6] ESAttackMultihit(15:3294) -> Desperate Assault
 # Enemy action
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchFlag -> ESBranchFlag
+# [8] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 12
-# [9] ESFlagOperation -> ESFlagOperation
+# [9] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [10] ESRowSpawnMulti -> Mow-Down
+# [10] ESRowSpawnMulti(79:3297) -> Mow-Down
 # Condition: 50% chance
 # Change 1st row to Fire orbs
-# [11] ESRandomSpawn -> Pyro-Vapor
+# [11] ESRandomSpawn(92:3295) -> Pyro-Vapor
 # Condition: When water, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board
 # Spawn random 5 Fire orbs
-# [12] ESInactivity -> Raised Hand
+# [12] ESInactivity(66:3298) -> Raised Hand
 # Condition: One-time use
 # Do nothing
-# [13] ESAttackMultihit -> Severe Blow
+# [13] ESAttackMultihit(15:3296) -> Severe Blow
 # Enemy action
-# [14] ESEndPath -> ESEndPath
+# [14] ESEndPath(36:26) -> ESEndPath
 # end_turn

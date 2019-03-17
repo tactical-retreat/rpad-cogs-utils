@@ -150,70 +150,81 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESDamageShield -> Show me your strength!
+# 	[0] ESDamageShield(74:12047) -> Show me your strength!
 # 	Reduce damage from all sources by 90% for 3 turns
-# 	[1] ESAbsorbCombo -> Come and fight!
+# 	[1] ESAbsorbCombo(67:12048) -> Come and fight!
 # 	Absorb combo <= 5 damage for 99 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchHP -> ESBranchHP
+# [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 20
-# [7] ESBranchHP -> ESBranchHP
+# [7] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 16
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 51, target rnd 11
-# [9] ESCloud -> This is Enma's power!
+# [9] ESCloud(104:12053) -> This is Enma's power!
 # Condition: One-time use
 # 2x2 cloud appear for 1 turns at random location
-# [10] ESOrbSealRow -> Haha, can you move?
+# [10] ESOrbSealRow(100:12054) -> Haha, can you move?
 # Condition: One-time use
 # Seal 1st row for 1 turns
-# [11] ESAttackMultihit -> Can you withstand this !?
+# [11] ESAttackMultihit(15:12049) -> Can you withstand this !?
 # Condition: 25% chance
 # Enemy action
-# [12] ESOrbChangeAttack -> Burn! Purgatory's Flames!
+# [12] ESOrbChangeAttack(48:12050) -> Burn! Purgatory's Flames!
 # Condition: 25% chance
 # Change Random to Fire
-# [13] ESDebuffMovetime -> I won't let you!
+# [13] ESDebuffMovetime(39:12051) -> I won't let you!
 # Condition: 25% chance
 # Movetime -2s for 1 turns
-# [14] ESOrbLock -> Drowning in love, right?
+# [14] ESOrbLock(94:12052) -> Drowning in love, right?
 # Condition: 25% chance
 # Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [15] ESEndPath -> ESEndPath
+# [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [16] ESBranchFlag -> ESBranchFlag
+# [16] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 9
-# [17] ESFlagOperation -> ESFlagOperation
+# [17] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [18] SkillSet:
-# 	[0] ESAttackMultihit -> Great King Enma Ball
+# 	[0] ESAttackMultihit(15:12058) -> Great King Enma Ball
 # 	Enemy action
-# 	[1] ESRecoverEnemy -> Let's get serious...!
+# 	[1] ESRecoverEnemy(86:12059) -> Let's get serious...!
 # 	Enemy recover 50% hp
-# [19] ESEndPath -> ESEndPath
+# [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [20] ESBranchFlag -> ESBranchFlag
+# [20] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 24
-# [21] ESFlagOperation -> ESFlagOperation
+# [21] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [22] SkillSet:
-# 	[0] ESAttackUp -> How! Nice one!
+# 	[0] ESAttackUp(17:12056) -> How! Nice one!
 # 	Increase damage to 150% for the next 99 turns
-# 	[1] ESBindRandomSub -> You can do better than that!
+# 	[1] ESBindRandomSub(65:12057) -> You can do better than that!
 # 	Bind 4 random subs for 1 turns
-# [23] ESEndPath -> ESEndPath
+# [23] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [24] ESAttackMultihit -> Great King Enma Ball
+# [24] ESAttackMultihit(15:12058) -> Great King Enma Ball
 # Enemy action
-# [25] ESEndPath -> ESEndPath
+# [25] ESEndPath(36:26) -> ESEndPath
 # end_turn

@@ -186,60 +186,71 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 31 -    11111
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
 # [2] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESStatusShield -> Water Dragon's Armor
+# 	[0] ESStatusShield(20:6584) -> Water Dragon's Armor
 # 	Voids status ailments for 999 turns
-# 	[1] ESSkyfall -> Vanishing Lifespring-Blue Life
+# 	[1] ESSkyfall(68:6585) -> Vanishing Lifespring-Blue Life
 # 	Fire, Wood, Light, Dark skyfall +100% for 3 turns
-# [3] ESAttackMultihit -> Indigo Beam Zero-Wave
+# [3] ESAttackMultihit(15:6599) -> Indigo Beam Zero-Wave
 # Condition: When < 20% hp
 # Enemy action
-# [4] ESOrbChangeAttack -> Current
+# [4] ESOrbChangeAttack(48:6587) -> Current
 # Condition: One-time use
 # Change Heal to Poison
-# [5] ESDebuffMovetime -> Vortex Cascade
+# [5] ESDebuffMovetime(39:6588) -> Vortex Cascade
 # Condition: One-time use
 # Movetime -2s for 3 turns
-# [6] ESOrbChangeAttack -> Godspring Current
+# [6] ESOrbChangeAttack(48:6589) -> Godspring Current
 # Condition: One-time use
 # Change Heal to Poison
-# [7] ESRecoverPlayer -> Hidden Waters
+# [7] ESRecoverPlayer(55:6590) -> Hidden Waters
 # Condition: One-time use
 # Player recover 100% hp
-# [8] ESOrbChangeAttack -> Godspring Current
+# [8] ESOrbChangeAttack(48:6591) -> Godspring Current
 # Condition: One-time use
 # Change Heal to Poison
-# [9] ESAttackMultihit -> Scale Blade
+# [9] ESAttackMultihit(15:6592) -> Scale Blade
 # Condition: One-time use
 # Enemy action
 # [10] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAbsorbCombo -> Obelisk of Ice
+# 	[0] ESAbsorbCombo(67:6593) -> Obelisk of Ice
 # 	Absorb combo <= 6 damage for 5 turns
-# 	[1] ESAbsorbThreshold -> Forget-me-not Magatama
+# 	[1] ESAbsorbThreshold(87:6594) -> Forget-me-not Magatama
 # 	Absorb damage >= 5000000 damage for 5 turns
-# [11] ESBranchHP -> ESBranchHP
+# [11] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 90, target rnd 18
-# [12] ESBranchFlag -> ESBranchFlag
+# [12] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 15
-# [13] ESFlagOperation -> ESFlagOperation
+# [13] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [14] ESOrbLock -> Skyward Aqua Blade
+# [14] ESOrbLock(94:6598) -> Skyward Aqua Blade
 # Lock 8 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [15] ESFlagOperation -> ESFlagOperation
+# [15] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b1
-# [16] ESAttackMultihit -> Scale Blade
+# [16] ESAttackMultihit(15:6597) -> Scale Blade
 # Enemy action
-# [17] ESEndPath -> ESEndPath
+# [17] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [18] ESAttackMultihit -> Indigo Beam Zero-Wave
+# [18] ESAttackMultihit(15:6596) -> Indigo Beam Zero-Wave
 # Enemy action
-# [19] ESEndPath -> ESEndPath
+# [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [20] ESTypeResist -> Tsuba Kae Sumi Dragon Halved
+# [20] ESTypeResist(118:12149) -> Tsuba Kae Sumi Dragon Halved
 # Reduce damage from Dragon by 50%

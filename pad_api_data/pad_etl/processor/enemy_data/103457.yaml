@@ -130,63 +130,74 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESOrbSealRow -> Fallen Angel's Wings
+# 	[0] ESOrbSealRow(100:12101) -> Fallen Angel's Wings
 # 	Seal 1st, 5th row for 4 turns
-# 	[1] ESStatusShield -> Scapegoat
+# 	[1] ESStatusShield(20:12102) -> Scapegoat
 # 	Voids status ailments for 999 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] SkillSet:
 # 	Condition: When < 40% hp , one-time use
-# 	[0] ESRecoverEnemy -> Fresh Blood of a Male Goat
+# 	[0] ESRecoverEnemy(86:6313) -> Fresh Blood of a Male Goat
 # 	Enemy recover 50% hp
-# 	[1] ESDamageShield -> Devil's Influence
+# 	[1] ESDamageShield(74:6314) -> Devil's Influence
 # 	Reduce damage from all sources by 75% for 99 turns
-# [7] ESAttackMultihit -> Nightmare Spiral
+# [7] ESAttackMultihit(15:6325) -> Nightmare Spiral
 # Condition: When < 15% hp
 # Enemy action
-# [8] ESBranchFlag -> ESBranchFlag
+# [8] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 13
-# [9] ESFlagOperation -> ESFlagOperation
+# [9] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [10] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESSkillDelay -> Devil Snake's Glare
+# 	[0] ESSkillDelay(89:6316) -> Devil Snake's Glare
 # 	Delay active skills by 4 turns
-# 	[1] ESAttackMultihit -> Negative Chain
+# 	[1] ESAttackMultihit(15:6317) -> Negative Chain
 # 	Enemy action
 # [11] SkillSet:
-# 	[0] ESSkillDelay -> Devil Snake's Evil Eye
+# 	[0] ESSkillDelay(89:6319) -> Devil Snake's Evil Eye
 # 	Delay active skills by 6 turns
-# 	[1] ESAttackMultihit -> Negative Chain
+# 	[1] ESAttackMultihit(15:6320) -> Negative Chain
 # 	Enemy action
-# [12] ESEndPath -> ESEndPath
+# [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [13] ESBranchFlag -> ESBranchFlag
+# [13] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 17
-# [14] ESFlagOperation -> ESFlagOperation
+# [14] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [15] ESOrbLock -> Black Rebellion
+# [15] ESOrbLock(94:6323) -> Black Rebellion
 # Lock 10 random Wood, Dark, Jammer, Poison orbs
-# [16] ESEndPath -> ESEndPath
+# [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [17] ESFlagOperation -> ESFlagOperation
+# [17] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b100
-# [18] ESRandomSpawn -> Venomous
+# [18] ESRandomSpawn(92:6324) -> Venomous
 # Condition: 50% chance & when Fire, Water, Wood, Light, Dark, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 12 Poison orbs
-# [19] ESColumnSpawnMulti -> Agahara
+# [19] ESColumnSpawnMulti(77:6322) -> Agahara
 # Change 1st, 2nd column to Fire, Water, Jammer orbs, 3rd, 4th column to Wood, Light, Jammer orbs, 5th, 6th column to Dark, Heal, Jammer orbs
-# [20] ESEndPath -> ESEndPath
+# [20] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [21] ESAttributeResist -> Fire/Light halved
+# [21] ESAttributeResist(72:6331) -> Fire/Light halved
 # Reduce damage from Fire, Light by 50%

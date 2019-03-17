@@ -188,115 +188,126 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESBranchCard -> ESBranchCard
+# [4] ESBranchCard(90:11205) -> ESBranchCard
 # Branch on player_cards HAS [4802, 4803, 4804, 4805], target rnd 6
 # [5] SkillSet:
-# 	[0] ESStatusShield -> Oh, thanks for going through the trouble
+# 	[0] ESStatusShield(20:11202) -> Oh, thanks for going through the trouble
 # 	Voids status ailments for 999 turns
-# 	[1] ESAbsorbThreshold -> But it's not over yet, right?
+# 	[1] ESAbsorbThreshold(87:11203) -> But it's not over yet, right?
 # 	Absorb damage >= 15000000 damage for 99 turns
 # [6] SkillSet:
-# 	[0] ESStatusShield -> Oh, thanks for going through the trouble
+# 	[0] ESStatusShield(20:11202) -> Oh, thanks for going through the trouble
 # 	Voids status ailments for 999 turns
-# 	[1] ESAbsorbThreshold -> YOU came too?
+# 	[1] ESAbsorbThreshold(87:11204) -> YOU came too?
 # 	Absorb damage >= 15000000 damage for 99 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 75, target rnd 17
-# [9] ESBranchHP -> ESBranchHP
+# [9] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 100, target rnd 15
 # [10] SkillSet:
 # 	Condition: 25% chance
-# 	[0] ESSpinnersFixed -> Turn and turn!
+# 	[0] ESSpinnersFixed(110:11210) -> Turn and turn!
 # 	Specific orbs change every 2.0s for 1 turns
-# 	[1] ESBlindStickyRandom -> But, here comes darkness!
+# 	[1] ESBlindStickyRandom(97:11212) -> But, here comes darkness!
 # 	Blind random 6 orbs for 1 turns
 # [11] SkillSet:
 # 	Condition: 25% chance
-# 	[0] ESSpinnersFixed -> Turn and turn!
+# 	[0] ESSpinnersFixed(110:11210) -> Turn and turn!
 # 	Specific orbs change every 2.0s for 1 turns
-# 	[1] ESCloud -> But, here comes fluffiness!
+# 	[1] ESCloud(104:11213) -> But, here comes fluffiness!
 # 	3x2 cloud appear for 1 turns at random location
 # [12] SkillSet:
 # 	Condition: 25% chance
-# 	[0] ESSpinnersFixed -> Round and around!
+# 	[0] ESSpinnersFixed(110:11211) -> Round and around!
 # 	Specific orbs change every 1.0s for 1 turns
-# 	[1] ESRowSpawnMulti -> It's piping hot!
+# 	[1] ESRowSpawnMulti(79:11214) -> It's piping hot!
 # 	Change 3rd row to Fire orbs
 # [13] SkillSet:
 # 	Condition: 25% chance
-# 	[0] ESSpinnersFixed -> Round and around!
+# 	[0] ESSpinnersFixed(110:11211) -> Round and around!
 # 	Specific orbs change every 1.0s for 1 turns
-# 	[1] ESAttackMultihit -> Let's enjoy it some more!
+# 	[1] ESAttackMultihit(15:11215) -> Let's enjoy it some more!
 # 	Enemy action
-# [14] ESEndPath -> ESEndPath
+# [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [15] SkillSet:
-# 	[0] ESSkillDelay -> This is boring...
+# 	[0] ESSkillDelay(89:11217) -> This is boring...
 # 	Delay active skills by 3 turns
-# 	[1] ESLeaderSwap -> Show me something special
+# 	[1] ESLeaderSwap(75:11218) -> Show me something special
 # 	Leader changes to random sub for 1 turns
-# [16] ESEndPath -> ESEndPath
+# [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [17] ESBranchHP -> ESBranchHP
+# [17] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 22
-# [18] ESBranchFlag -> ESBranchFlag
+# [18] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 10
-# [19] ESFlagOperation -> ESFlagOperation
+# [19] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [20] SkillSet:
-# 	[0] ESAttributeBlock -> Shall we liven things up?
+# 	[0] ESAttributeBlock(107:11220) -> Shall we liven things up?
 # 	Unable to Water orbs for 1 turns
-# 	[1] ESGravity -> Now this is worth seeing!
+# 	[1] ESGravity(50:11221) -> Now this is worth seeing!
 # 	Player -99% HP
-# [21] ESEndPath -> ESEndPath
+# [21] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [22] ESBranchHP -> ESBranchHP
+# [22] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 27
-# [23] ESBranchFlag -> ESBranchFlag
+# [23] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 10
-# [24] ESFlagOperation -> ESFlagOperation
+# [24] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [25] SkillSet:
-# 	[0] ESAttributeBlock -> Shall we liven things up?
+# 	[0] ESAttributeBlock(107:11223) -> Shall we liven things up?
 # 	Unable to Heal orbs for 1 turns
-# 	[1] ESGravity -> Now this is worth seeing!
+# 	[1] ESGravity(50:11221) -> Now this is worth seeing!
 # 	Player -99% HP
-# [26] ESEndPath -> ESEndPath
+# [26] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [27] ESBranchHP -> ESBranchHP
+# [27] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 31
 # [28] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESBindAwoken -> Shall we end this soon?
+# 	[0] ESBindAwoken(88:11228) -> Shall we end this soon?
 # 	Bind awoken skills for 1 turns
-# 	[1] ESDebuffMovetime -> Keep the fun going!
+# 	[1] ESDebuffMovetime(39:11229) -> Keep the fun going!
 # 	Movetime 50% for 1 turns
-# [29] ESAttackMultihit -> That was a blast!
+# [29] ESAttackMultihit(15:11230) -> That was a blast!
 # Enemy action
-# [30] ESEndPath -> ESEndPath
+# [30] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [31] ESBranchCounter -> ESBranchCounter
+# [31] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 1, target rnd 28
-# [32] ESSetCounter -> ESSetCounter
+# [32] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
 # [33] SkillSet:
-# 	[0] ESDamageShield -> Oh scary, scary!
+# 	[0] ESDamageShield(74:11225) -> Oh scary, scary!
 # 	Reduce damage from all sources by 50% for 99 turns
-# 	[1] ESRecoverEnemy -> Well, you can take a breather
+# 	[1] ESRecoverEnemy(86:11226) -> Well, you can take a breather
 # 	Enemy recover 50% hp
-# [34] ESEndPath -> ESEndPath
+# [34] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [35] SkillSet:
 # 	Condition: On death
-# 	[0] ESInactivity -> Next is the last errand
+# 	[0] ESInactivity(66:11231) -> Next is the last errand
 # 	Do nothing

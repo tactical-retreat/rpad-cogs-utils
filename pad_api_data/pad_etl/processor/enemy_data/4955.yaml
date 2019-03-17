@@ -175,63 +175,74 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 4 -      100
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 0 -        0
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESAttackUp -> You don't wanna play with snow?
+# 	[0] ESAttackUp(17:11944) -> You don't wanna play with snow?
 # 	Increase damage to 150% for the next 3 turns
-# 	[1] ESDebuffMovetime -> Hurry up or it's gonna melt!
+# 	[1] ESDebuffMovetime(39:11945) -> Hurry up or it's gonna melt!
 # 	Movetime -2s for 3 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESSetCounter -> ESSetCounter
+# [6] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [7] ESBranchCounter -> ESBranchCounter
+# [7] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 4, target rnd 16
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 19
-# [9] ESBranchCounter -> ESBranchCounter
+# [9] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 3, target rnd 14
 # [10] SkillSet:
 # 	Condition: 34% chance
-# 	[0] ESGravity -> Let's chill things down!
+# 	[0] ESGravity(50:11949) -> Let's chill things down!
 # 	Player -25% HP
-# 	[1] ESAttackMultihit -> Get frozen!
+# 	[1] ESAttackMultihit(15:11952) -> Get frozen!
 # 	Enemy action
 # [11] SkillSet:
 # 	Condition: 33% chance
-# 	[0] ESOrbChangeAttack -> Frozen Gift♪
+# 	[0] ESOrbChangeAttack(48:11950) -> Frozen Gift♪
 # 	Change Random to Water
-# 	[1] ESSkillDelay -> Don't ever melt, okay?
+# 	[1] ESSkillDelay(89:11953) -> Don't ever melt, okay?
 # 	Delay active skills by 1 turns
 # [12] SkillSet:
 # 	Condition: 33% chance
-# 	[0] ESOrbLock -> I'll let you freeze a little!
+# 	[0] ESOrbLock(94:11954) -> I'll let you freeze a little!
 # 	Lock 8 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# 	[1] ESBindAttack -> Brrrr♪
+# 	[1] ESBindAttack(63:11951) -> Brrrr♪
 # 	Bind 1 subs for 2 turns
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [14] ESInactivity -> The summer heat is killing me...
+# [14] ESInactivity(66:11955) -> The summer heat is killing me...
 # Do nothing
-# [15] ESEndPath -> ESEndPath
+# [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [16] ESSetCounter -> ESSetCounter
+# [16] ESSetCounter(25:15) -> ESSetCounter
 # counter = 0
 # [17] SkillSet:
-# 	[0] ESAttackUp -> You don't wanna play with snow?
+# 	[0] ESAttackUp(17:11944) -> You don't wanna play with snow?
 # 	Increase damage to 150% for the next 3 turns
-# 	[1] ESDebuffMovetime -> Hurry up or it's gonna melt!
+# 	[1] ESDebuffMovetime(39:11945) -> Hurry up or it's gonna melt!
 # 	Movetime -2s for 3 turns
-# [18] ESEndPath -> ESEndPath
+# [18] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [19] ESAttackMultihit -> Glittering Snow Make-Up
+# [19] ESAttackMultihit(15:11956) -> Glittering Snow Make-Up
 # Enemy action
-# [20] ESEndPath -> ESEndPath
+# [20] ESEndPath(36:26) -> ESEndPath
 # end_turn

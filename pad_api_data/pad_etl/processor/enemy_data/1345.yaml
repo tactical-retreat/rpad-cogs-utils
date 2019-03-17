@@ -117,53 +117,64 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESRecoverPlayer -> Golden Apple of Immortality
+# [4] ESRecoverPlayer(55:3367) -> Golden Apple of Immortality
 # Player recover 100% hp
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchCard -> ESBranchCard
+# [6] ESBranchCard(90:3373) -> ESBranchCard
 # Branch on player_cards HAS [376, 377, 656, 1348], target rnd 14
-# [7] ESBranchHP -> ESBranchHP
+# [7] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 30, target rnd 17
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 70, target rnd 20
-# [9] ESGravity -> End of Eternity
+# [9] ESGravity(50:3376) -> End of Eternity
 # Condition: When < 20% hp , one-time use
 # Player -100% HP
-# [10] ESAttackMultihit -> Walnut Shot
+# [10] ESAttackMultihit(15:3372) -> Walnut Shot
 # Condition: 33% chance
 # Enemy action
-# [11] ESRandomSpawn -> Arrow Rain
+# [11] ESRandomSpawn(92:3371) -> Arrow Rain
 # Condition: 34% chance & when Fire, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 5 Water orbs
-# [12] ESColumnSpawnMulti -> Twin Aqua Feather
+# [12] ESColumnSpawnMulti(77:3370) -> Twin Aqua Feather
 # Condition: 33% chance
 # Change 1st, 6th column to Water orbs
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [14] ESBranchFlag -> ESBranchFlag
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 7
-# [15] ESFlagOperation -> ESFlagOperation
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [16] ESStatusShield -> Don't come any closer!
+# [16] ESStatusShield(20:3374) -> Don't come any closer!
 # Voids status ailments for 999 turns
-# [17] ESBranchFlag -> ESBranchFlag
+# [17] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 9
-# [18] ESFlagOperation -> ESFlagOperation
+# [18] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
-# [19] ESRecoverEnemy -> Twinkle Apple
+# [19] ESRecoverEnemy(86:3369) -> Twinkle Apple
 # Enemy recover 100% hp
-# [20] ESBranchFlag -> ESBranchFlag
+# [20] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 9
-# [21] ESFlagOperation -> ESFlagOperation
+# [21] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [22] ESBindSkill -> Angel Kiss
+# [22] ESBindSkill(14:3368) -> Angel Kiss
 # Bind active skills for 3 turns

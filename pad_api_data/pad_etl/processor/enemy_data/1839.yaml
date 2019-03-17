@@ -83,81 +83,92 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESSkyfall -> You better watch this radiance!!
+# 	[0] ESSkyfall(96:3788) -> You better watch this radiance!!
 # 	Locked random skyfall +30% for 99 turns
-# 	[1] ESStatusShield -> Crystal Aura
+# 	[1] ESStatusShield(20:3789) -> Crystal Aura
 # 	Voids status ailments for 999 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESAttackMultihit -> Crossing Ray
+# [6] ESAttackMultihit(15:3791) -> Crossing Ray
 # Condition: When < 20% hp
 # Enemy action
-# [7] ESBranchCard -> ESBranchCard
+# [7] ESBranchCard(90:3808) -> ESBranchCard
 # Branch on player_cards HAS [2440, 2441], target rnd 26
-# [8] ESBranchCard -> ESBranchCard
+# [8] ESBranchCard(90:3806) -> ESBranchCard
 # Branch on player_cards HAS [1946, 1947], target rnd 26
-# [9] ESBindAttribute -> Evaporate
+# [9] ESBindAttribute(2:3801) -> Evaporate
 # Condition: When < 70% hp , one-time use
 # Bind Water cards for 5 turns
-# [10] ESDispel -> Erase Light
+# [10] ESDispel(6:3802) -> Erase Light
 # Condition: When < 70% hp , one-time use
 # Voids player buff effects
-# [11] ESSkyfall -> Poison Mist
+# [11] ESSkyfall(68:3793) -> Poison Mist
 # Condition: When < 70% hp , one-time use
 # Mortal Poison skyfall +20% for 2 turns
-# [12] ESBranchHP -> ESBranchHP
+# [12] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 21
-# [13] ESOrbLock -> Brilliant Flare
+# [13] ESOrbLock(94:3792) -> Brilliant Flare
 # Lock all Jammer orbs
-# [14] ESColumnSpawnMulti -> Reflection Ray
+# [14] ESColumnSpawnMulti(77:3795) -> Reflection Ray
 # Condition: 16% chance
 # Change 1st column to Jammer orbs
-# [15] ESColumnSpawnMulti -> Reflection Ray
+# [15] ESColumnSpawnMulti(77:3796) -> Reflection Ray
 # Condition: 16% chance
 # Change 2nd column to Jammer orbs
-# [16] ESColumnSpawnMulti -> Reflection Ray
+# [16] ESColumnSpawnMulti(77:3797) -> Reflection Ray
 # Condition: 17% chance
 # Change 3rd column to Jammer orbs
-# [17] ESColumnSpawnMulti -> Reflection Ray
+# [17] ESColumnSpawnMulti(77:3798) -> Reflection Ray
 # Condition: 17% chance
 # Change 4th column to Jammer orbs
-# [18] ESColumnSpawnMulti -> Reflection Ray
+# [18] ESColumnSpawnMulti(77:3799) -> Reflection Ray
 # Condition: 17% chance
 # Change 5th column to Jammer orbs
-# [19] ESColumnSpawnMulti -> Reflection Ray
+# [19] ESColumnSpawnMulti(77:3800) -> Reflection Ray
 # Condition: 17% chance
 # Change 6th column to Jammer orbs
-# [20] ESEndPath -> ESEndPath
+# [20] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [21] ESOrbLock -> Brilliant Flare
+# [21] ESOrbLock(94:3792) -> Brilliant Flare
 # Lock all Jammer orbs
-# [22] ESColumnSpawnMulti -> Reflection Ray
+# [22] ESColumnSpawnMulti(77:3803) -> Reflection Ray
 # Condition: 33% chance
 # Change 1st, 4th column to Jammer orbs
-# [23] ESColumnSpawnMulti -> Reflection Ray
+# [23] ESColumnSpawnMulti(77:3804) -> Reflection Ray
 # Condition: 33% chance
 # Change 2nd, 5th column to Jammer orbs
-# [24] ESColumnSpawnMulti -> Reflection Ray
+# [24] ESColumnSpawnMulti(77:3805) -> Reflection Ray
 # Condition: 34% chance
 # Change 4th, 6th column to Jammer orbs
-# [25] ESEndPath -> ESEndPath
+# [25] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [26] ESBranchFlag -> ESBranchFlag
+# [26] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 9
-# [27] ESFlagOperation -> ESFlagOperation
+# [27] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [28] ESBranchCard -> ESBranchCard
+# [28] ESBranchCard(90:3806) -> ESBranchCard
 # Branch on player_cards HAS [1946, 1947], target rnd 30
-# [29] ESAttackMultihit -> You foolish Devilbound creature
+# [29] ESAttackMultihit(15:3809) -> You foolish Devilbound creature
 # Enemy action
-# [30] ESAttackMultihit -> If you want power, sacrifice him to me!
+# [30] ESAttackMultihit(15:3807) -> If you want power, sacrifice him to me!
 # Enemy action

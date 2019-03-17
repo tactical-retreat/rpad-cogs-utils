@@ -263,90 +263,101 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 2 -       10
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESBindTarget -> What do you want?
+# 	[0] ESBindTarget(54:10220) -> What do you want?
 # 	Bind 1 both leaders for 4 turns
-# 	[1] ESAbsorbThreshold -> I don't like you
+# 	[1] ESAbsorbThreshold(87:10221) -> I don't like you
 # 	Absorb damage >= 5000000 damage for 10 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchHP -> ESBranchHP
+# [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 1, target rnd 27
-# [7] ESBranchHP -> ESBranchHP
+# [7] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 100, target rnd 25
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 10, target rnd 31
-# [9] ESBranchHP -> ESBranchHP
+# [9] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 16
-# [10] ESBranchFlag -> ESBranchFlag
+# [10] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 14
-# [11] ESFlagOperation -> ESFlagOperation
+# [11] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [12] SkillSet:
-# 	[0] ESBindSkill -> Hey!
+# 	[0] ESBindSkill(14:10223) -> Hey!
 # 	Bind active skills for 5 turns
-# 	[1] ESGravity -> You're OK with this, right?
+# 	[1] ESGravity(50:10224) -> You're OK with this, right?
 # 	Player -99% HP
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [14] ESRandomSpawn -> You're useless!
+# [14] ESRandomSpawn(92:10236) -> You're useless!
 # Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board
 # Spawn random 3 Jammer orbs
-# [15] ESEndPath -> ESEndPath
+# [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [16] ESBranchFlag -> ESBranchFlag
+# [16] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 20
-# [17] ESFlagOperation -> ESFlagOperation
+# [17] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [18] SkillSet:
-# 	[0] ESDamageShield -> Protect me!
+# 	[0] ESDamageShield(74:10227) -> Protect me!
 # 	Reduce damage from all sources by 50% for 999 turns
-# 	[1] ESOrbChangeAttackBits -> Let me get rid of these!
+# 	[1] ESOrbChangeAttackBits(108:10228) -> Let me get rid of these!
 # 	Change Dark to Jammer
-# [19] ESEndPath -> ESEndPath
+# [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [20] ESOrbChangeAttackBits -> It suits you!
+# [20] ESOrbChangeAttackBits(108:10230) -> It suits you!
 # Change Jammer to Mortal Poison
-# [21] ESOrbChangeAttackBits -> Let me get rid of these!
+# [21] ESOrbChangeAttackBits(108:10228) -> Let me get rid of these!
 # Condition: 33% chance
 # Change Dark to Jammer
-# [22] ESGravity -> You're OK with this, right?
+# [22] ESGravity(50:10224) -> You're OK with this, right?
 # Condition: 33% chance
 # Player -99% HP
-# [23] ESAttackMultihit -> Hey now, what's up with you?
+# [23] ESAttackMultihit(15:10231) -> Hey now, what's up with you?
 # Condition: 34% chance
 # Enemy action
-# [24] ESEndPath -> ESEndPath
+# [24] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [25] ESBindAwoken -> How about that?
+# [25] ESBindAwoken(88:10226) -> How about that?
 # Condition: One-time use
 # Bind awoken skills for 2 turns
-# [26] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
+# [26] ESBranchRemainingEnemies(120:8595) -> ESBranchRemainingEnemies
 # Branch on remaining enemies = 1, target rnd 10
-# [27] ESBranchFlag -> ESBranchFlag
+# [27] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 31
-# [28] ESFlagOperation -> ESFlagOperation
+# [28] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
 # [29] SkillSet:
-# 	[0] ESBindAwoken -> How about that?
+# 	[0] ESBindAwoken(88:10232) -> How about that?
 # 	Bind awoken skills for 2 turns
-# 	[1] ESBindRandomSub -> Just sleep already!
+# 	[1] ESBindRandomSub(65:10233) -> Just sleep already!
 # 	Bind 4 random subs for 2 turns
-# [30] ESEndPath -> ESEndPath
+# [30] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [31] ESAttackMultihit -> You're not that good...
+# [31] ESAttackMultihit(15:10235) -> You're not that good...
 # Enemy action
-# [32] ESEndPath -> ESEndPath
+# [32] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [33] ESResolve -> Resolve
+# [33] ESResolve(73:10218) -> Resolve
 # Survive attacks with 1 HP when HP > 75%
-# [34] ESTurnChangePassive -> Pick up the pace!
+# [34] ESTurnChangePassive(106:10219) -> Pick up the pace!
 # Enemy turn counter change to 1 when HP <= 50%

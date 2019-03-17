@@ -146,41 +146,52 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:355) -> ESPreemptive
 # Enable preempt if level 5
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 5, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESStatusShield -> Firm Stance
+# [6] ESStatusShield(20:2356) -> Firm Stance
 # Voids status ailments for 999 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESRecoverEnemy -> Cat Refreshments
+# [8] ESRecoverEnemy(86:2363) -> Cat Refreshments
 # Condition: When < 1% hp
 # Enemy recover 100% hp
-# [9] ESColumnSpawnMulti -> Cat Roll
+# [9] ESColumnSpawnMulti(77:2361) -> Cat Roll
 # Condition: When < 30% hp
 # Change 2nd, 3rd, 4th, 5th column to Light, Jammer, Poison orbs
-# [10] ESAttackUp -> Cat Flop
+# [10] ESAttackUp(17:2360) -> Cat Flop
 # Condition: When < 50% hp , one-time use
 # Increase damage to 200% for the next 1 turns
-# [11] ESAttackMultihit -> Cat Thrust
+# [11] ESAttackMultihit(15:2357) -> Cat Thrust
 # Condition: 30% chance when < 99% hp
 # Enemy action
-# [12] ESBindAttack -> Cat Slap
+# [12] ESBindAttack(63:2358) -> Cat Slap
 # Condition: 30% chance when < 99% hp
 # Bind 2 both leaders for 2 turns
-# [13] ESBlind -> Cat Surprise
+# [13] ESBlind(62:2359) -> Cat Surprise
 # Condition: When < 99% hp
 # Blind all orbs on the board
-# [14] ESGravity -> Bon Bon Stomach Press
+# [14] ESGravity(50:2362) -> Bon Bon Stomach Press
 # Player -99% HP
-# [15] ESResolve -> White Cat's Resolve
+# [15] ESResolve(73:2355) -> White Cat's Resolve
 # Survive attacks with 1 HP when HP > 80%

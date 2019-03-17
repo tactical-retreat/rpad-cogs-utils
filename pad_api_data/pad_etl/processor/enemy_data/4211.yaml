@@ -153,35 +153,46 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 3 -       11
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESDamageShield -> I'm so embarrassed!...
+# [4] ESDamageShield(74:8975) -> I'm so embarrassed!...
 # Condition: One-time use
 # Reduce damage from all sources by 75% for 1 turns
-# [5] ESAbsorbAttribute -> Seiryuu's Perception
+# [5] ESAbsorbAttribute(53:8976) -> Seiryuu's Perception
 # Condition: When < 50% hp , one-time use
 # Absorb Water damage for 2 turns
-# [6] ESBoardChangeAttackBits -> Seiryuu Seven-Star Perception
+# [6] ESBoardChangeAttackBits(85:8979) -> Seiryuu Seven-Star Perception
 # Condition: When < 10% hp
 # Change all orbs to Water, Wood, Dark
-# [7] ESBranchCounter -> ESBranchCounter
+# [7] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 3, target rnd 11
-# [8] ESSetCounter -> ESSetCounter
+# [8] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [9] ESGravity -> Tiny Bashful Punch
+# [9] ESGravity(50:8977) -> Tiny Bashful Punch
 # Condition: 15% chance
 # Player -90% HP
-# [10] ESAttackMultihit -> Sweet Combo
+# [10] ESAttackMultihit(15:8995) -> Sweet Combo
 # Enemy action
-# [11] ESSetCounter -> ESSetCounter
+# [11] ESSetCounter(25:15) -> ESSetCounter
 # counter = 0
-# [12] ESAttackMultihit -> Don't smirk at me!
+# [12] ESAttackMultihit(15:8978) -> Don't smirk at me!
 # Enemy action
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn

@@ -691,131 +691,142 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 0 -        0
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESDeathCry -> Carol & Just Tranformation
+# [2] ESDeathCry(69:9996) -> Carol & Just Tranformation
 # Condition: On death
 # Show message: Even if I show a little of my true power|It will probably be good
-# [3] ESBranchLevel -> ESBranchLevel
+# [3] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 6
-# [4] ESBranchLevel -> ESBranchLevel
+# [4] ESBranchLevel(33:23) -> ESBranchLevel
 # Branch on level < 3, target rnd 47
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchFlag -> ESBranchFlag
+# [6] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 10
-# [7] ESFlagOperation -> ESFlagOperation
+# [7] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [8] SkillSet:
-# 	[0] ESStatusShield -> Now... let's get started, Inmate!
+# 	[0] ESStatusShield(20:9972) -> Now... let's get started, Inmate!
 # 	Voids status ailments for 999 turns
-# 	[1] ESDebuffMovetime -> You needn't hold back.
+# 	[1] ESDebuffMovetime(39:9973) -> You needn't hold back.
 # 	Movetime -2s for 10 turns
-# [9] ESEndPath -> ESEndPath
+# [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [10] ESSetCounter -> ESSetCounter
+# [10] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [11] ESBranchHP -> ESBranchHP
+# [11] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 41
-# [12] ESBranchHP -> ESBranchHP
+# [12] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 75, target rnd 36
-# [13] ESBranchCounter -> ESBranchCounter
+# [13] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 6, target rnd 15
 # [14] SkillSet:
-# 	[0] ESAttackMultihit -> Vajra Blast
+# 	[0] ESAttackMultihit(15:9975) -> Vajra Blast
 # 	Enemy action
-# 	[1] ESAttackMultihit -> Triple Down
+# 	[1] ESAttackMultihit(15:9976) -> Triple Down
 # 	Enemy action
-# [15] ESBranchCounter -> ESBranchCounter
+# [15] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 7, target rnd 18
-# [16] ESAttackMultihit -> All-Out Attack
+# [16] ESAttackMultihit(15:10021) -> All-Out Attack
 # Enemy action
-# [17] ESEndPath -> ESEndPath
+# [17] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [18] ESBranchCounter -> ESBranchCounter
+# [18] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 11, target rnd 24
-# [19] ESBranchCounter -> ESBranchCounter
+# [19] ESBranchCounter(31:21) -> ESBranchCounter
 # Branch on counter = 10, target rnd 22
-# [20] ESBranchCounter -> ESBranchCounter
+# [20] ESBranchCounter(31:21) -> ESBranchCounter
 # Branch on counter = 8, target rnd 22
 # [21] SkillSet:
-# 	[0] ESOrbChangeAttack -> Agidyne
+# 	[0] ESOrbChangeAttack(48:9981) -> Agidyne
 # 	Change Random to Jammer
-# 	[1] ESOrbLock -> Bufudyne
+# 	[1] ESOrbLock(94:9982) -> Bufudyne
 # 	Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [22] SkillSet:
-# 	[0] ESBindAttack -> Ziodyne
+# 	[0] ESBindAttack(63:9984) -> Ziodyne
 # 	Bind 1 random for 3 turns
-# 	[1] ESSkillDelay -> Garudyne
+# 	[1] ESSkillDelay(89:9985) -> Garudyne
 # 	Delay active skills by 1 turns
-# [23] ESEndPath -> ESEndPath
+# [23] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [24] ESBranchCounter -> ESBranchCounter
+# [24] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 12, target rnd 27
-# [25] ESAttackMultihit -> All-Out Attack
+# [25] ESAttackMultihit(15:10021) -> All-Out Attack
 # Enemy action
-# [26] ESEndPath -> ESEndPath
+# [26] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [27] ESBranchCounter -> ESBranchCounter
+# [27] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 16, target rnd 33
-# [28] ESBranchCounter -> ESBranchCounter
+# [28] ESBranchCounter(31:21) -> ESBranchCounter
 # Branch on counter = 15, target rnd 31
-# [29] ESBranchCounter -> ESBranchCounter
+# [29] ESBranchCounter(31:21) -> ESBranchCounter
 # Branch on counter = 13, target rnd 31
 # [30] SkillSet:
-# 	[0] ESBlind -> Psiodyne
+# 	[0] ESBlind(62:9990) -> Psiodyne
 # 	Blind all orbs on the board
-# 	[1] ESBindAwoken -> Freidyne
+# 	[1] ESBindAwoken(88:9991) -> Freidyne
 # 	Bind awoken skills for 1 turns
 # [31] SkillSet:
-# 	[0] ESOrbChangeAttack -> Kougaon
+# 	[0] ESOrbChangeAttack(48:9993) -> Kougaon
 # 	Change Random to Light
-# 	[1] ESOrbChangeAttack -> Eigaon
+# 	[1] ESOrbChangeAttack(48:9994) -> Eigaon
 # 	Change Random to Dark
-# [32] ESEndPath -> ESEndPath
+# [32] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [33] ESSetCounter -> ESSetCounter
+# [33] ESSetCounter(25:15) -> ESSetCounter
 # counter = 0
-# [34] ESAttackMultihit -> All-Out Attack
+# [34] ESAttackMultihit(15:10021) -> All-Out Attack
 # Enemy action
-# [35] ESEndPath -> ESEndPath
+# [35] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [36] ESBranchFlag -> ESBranchFlag
+# [36] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 13
-# [37] ESFlagOperation -> ESFlagOperation
+# [37] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [38] ESSetCounter -> ESSetCounter
+# [38] ESSetCounter(25:15) -> ESSetCounter
 # counter = 6
 # [39] SkillSet:
-# 	[0] ESBindSkill -> How do you feel?
+# 	[0] ESBindSkill(14:9978) -> How do you feel?
 # 	Bind active skills for 5 turns
-# 	[1] ESGravity -> Are you ready to surrender?
+# 	[1] ESGravity(50:9979) -> Are you ready to surrender?
 # 	Player -50% HP
-# [40] ESEndPath -> ESEndPath
+# [40] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [41] ESBranchFlag -> ESBranchFlag
+# [41] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 13
-# [42] ESFlagOperation -> ESFlagOperation
+# [42] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [43] ESSetCounter -> ESSetCounter
+# [43] ESSetCounter(25:15) -> ESSetCounter
 # counter = 11
 # [44] SkillSet:
-# 	[0] ESBindAttack -> You still have yet to fall...
+# 	[0] ESBindAttack(63:9987) -> You still have yet to fall...
 # 	Bind 6 random for 1 turns
-# 	[1] ESBlindStickyRandom -> You're pretty good, Inmate!
+# 	[1] ESBlindStickyRandom(97:9988) -> You're pretty good, Inmate!
 # 	Blind random 6 orbs for 3 turns
-# [45] ESEndPath -> ESEndPath
+# [45] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [46] ESBranchFlag -> ESBranchFlag
+# [46] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 49
-# [47] ESFlagOperation -> ESFlagOperation
+# [47] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [48] SkillSet:
-# 	[0] ESInactivity -> Now... let's get started, Inmate!
+# 	[0] ESInactivity(66:9997) -> Now... let's get started, Inmate!
 # 	Do nothing
-# 	[1] ESInactivity -> You needn't hold back.
+# 	[1] ESInactivity(66:9998) -> You needn't hold back.
 # 	Do nothing
-# [49] ESEndPath -> ESEndPath
+# [49] ESEndPath(36:26) -> ESEndPath
 # end_turn

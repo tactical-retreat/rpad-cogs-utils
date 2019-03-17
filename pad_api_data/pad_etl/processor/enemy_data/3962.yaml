@@ -74,30 +74,41 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 3 -       11
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESOrbLock -> Gah!
+# [6] ESOrbLock(94:8277) -> Gah!
 # Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESAbsorbCombo -> Toon Dragon Sense
+# [8] ESAbsorbCombo(67:8275) -> Toon Dragon Sense
 # Condition: When < 50% hp , one-time use
 # Absorb combo <= 5 damage for 3 turns
-# [9] ESRandomSpawn -> Chilling Ice
+# [9] ESRandomSpawn(92:8271) -> Chilling Ice
 # Condition: 30% chance & when Fire, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 10 Water orbs
-# [10] ESAttackMultihit -> Vivid Slash
+# [10] ESAttackMultihit(15:8276) -> Vivid Slash
 # Condition: 40% chance
 # Enemy action
-# [11] ESEndPath -> ESEndPath
+# [11] ESEndPath(36:26) -> ESEndPath
 # end_turn

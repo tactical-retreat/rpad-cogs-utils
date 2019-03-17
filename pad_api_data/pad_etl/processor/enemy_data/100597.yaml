@@ -90,27 +90,38 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 0 -        0
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESBranchFlag -> ESBranchFlag
+# [1] ESBranchFlag(23:13) -> ESBranchFlag
 # Branch on flag & 1, target rnd 3
-# [2] ESFlagOperation -> ESFlagOperation
+# [2] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [3] ESBindRandom -> Ice Coffin
+# [3] ESBindRandom(1:88) -> Ice Coffin
 # Bind 5 random cards for 1~2 turns
-# [4] ESBranchHP -> ESBranchHP
+# [4] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 40, target rnd 8
-# [5] ESJammerChangeRandom -> Mischief by God
+# [5] ESJammerChangeRandom(13:100) -> Mischief by God
 # Condition: When < 55% hp , one-time use
 # Change Random 2 to Jammer
-# [6] ESAttackMultihit -> Freeze Blast
+# [6] ESAttackMultihit(15:89) -> Freeze Blast
 # Condition: 75% chance when < 75% hp
 # Enemy action
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchFlag -> ESBranchFlag
+# [8] ESBranchFlag(23:13) -> ESBranchFlag
 # Branch on flag & 2, target rnd 4
-# [9] ESFlagOperation -> ESFlagOperation
+# [9] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [10] ESBindRandom -> Crystal Coffin
+# [10] ESBindRandom(1:99) -> Crystal Coffin
 # Bind 3 random cards for 2~3 turns

@@ -108,25 +108,36 @@ records:
   usage_pct: 80
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESBranchHP -> ESBranchHP
+# [1] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 100, target rnd 5
-# [2] ESSkillDelay -> Ferocious Flames
+# [2] ESSkillDelay(89:3773) -> Ferocious Flames
 # Condition: One-time use
 # Delay active skills by 2 turns
-# [3] ESRandomSpawn -> Magic Dragon Flame
+# [3] ESRandomSpawn(92:3775) -> Magic Dragon Flame
 # Condition: 80% chance when < 50% hp & when Water, Wood, Light, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 3 Fire, Dark orbs
-# [4] ESAttackMultihit -> Corona Blow
+# [4] ESAttackMultihit(15:3774) -> Corona Blow
 # Enemy action
-# [5] ESBranchFlag -> ESBranchFlag
+# [5] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [6] ESFlagOperation -> ESFlagOperation
+# [6] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [7] ESStatusShield -> It noticed you
+# [7] ESStatusShield(20:3777) -> It noticed you
 # Voids status ailments for 999 turns
-# [8] ESInactivity -> Gazing in your direction
+# [8] ESInactivity(66:3776) -> Gazing in your direction
 # Do nothing
-# [9] ESEndPath -> ESEndPath
+# [9] ESEndPath(36:26) -> ESEndPath
 # end_turn

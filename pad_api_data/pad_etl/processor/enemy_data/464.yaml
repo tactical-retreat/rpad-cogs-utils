@@ -63,25 +63,36 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 2 -       10
+# [52] 0 -        0
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:355) -> ESPreemptive
 # Enable preempt if level 5
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 5, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESPoisonChangeRandom -> *****
+# [6] ESPoisonChangeRandom(60:1931) -> *****
 # Change Random 3 to Poison
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBindRandom -> Bad Breath
+# [8] ESBindRandom(1:184) -> Bad Breath
 # Condition: When < 30% hp , one-time use
 # Bind 6 random cards for 1~3 turns
-# [9] ESAttackUp -> Malboro Song
+# [9] ESAttackUp(17:185) -> Malboro Song
 # Condition: When < 75% hp
 # Increase damage to 200% for the next 5 turns

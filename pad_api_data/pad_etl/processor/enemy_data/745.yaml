@@ -81,26 +81,37 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 2 -       10
+# [51] 0 -        0
+# [52] 0 -        0
+# [53] 0 -        0
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:355) -> ESPreemptive
 # Enable preempt if level 5
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 5, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 7
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESInactivity -> Here I come!
+# [6] ESInactivity(16:554) -> Here I come!
 # Do nothing
-# [7] ESAttackMultihit -> Southern Seven-Star Formation
+# [7] ESAttackMultihit(15:557) -> Southern Seven-Star Formation
 # Condition: When < 20% hp
 # Enemy action
-# [8] ESAttackMultihit -> Phoenix Sword Dance
+# [8] ESAttackMultihit(15:556) -> Phoenix Sword Dance
 # Condition: 60% chance when < 60% hp
 # Enemy action
-# [9] ESOrbChangeAttack -> Crimson Slash
+# [9] ESOrbChangeAttack(48:555) -> Crimson Slash
 # Condition: 70% chance
 # Change Heal to Fire

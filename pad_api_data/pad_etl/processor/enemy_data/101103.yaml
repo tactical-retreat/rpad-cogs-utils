@@ -101,43 +101,54 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESDebuffMovetime -> Cold Gaze
+# [4] ESDebuffMovetime(39:9533) -> Cold Gaze
 # Movetime -3s for 5 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchCounter -> ESBranchCounter
+# [6] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 4, target rnd 12
-# [7] ESSetCounter -> ESSetCounter
+# [7] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [8] ESRecoverEnemy -> Resurrection
+# [8] ESRecoverEnemy(7:876) -> Resurrection
 # Condition: When < 75% hp , one-time use
 # Enemy recover 100% hp
-# [9] ESOrbChangeAttack -> Shining Ray
+# [9] ESOrbChangeAttack(48:874) -> Shining Ray
 # Condition: 33% chance
 # Change Random to Light
-# [10] ESOrbChangeAttack -> Heart Break
+# [10] ESOrbChangeAttack(48:9537) -> Heart Break
 # Condition: 50% chance
 # Change Heal to Jammer
-# [11] ESEndPath -> ESEndPath
+# [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [12] ESBranchFlag -> ESBranchFlag
+# [12] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 8
-# [13] ESFlagOperation -> ESFlagOperation
+# [13] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [14] SkillSet:
-# 	[0] ESBindRandomSub -> Judgment from Heaven
+# 	[0] ESBindRandomSub(65:9534) -> Judgment from Heaven
 # 	Bind 1 random subs for 20 turns
-# 	[1] ESAttackUp -> Divine Protection
+# 	[1] ESAttackUp(17:9535) -> Divine Protection
 # 	Increase damage to 150% for the next 99 turns
-# [15] ESEndPath -> ESEndPath
+# [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [16] ESTypeResist -> Angel Devil Half Reduced
+# [16] ESTypeResist(118:9532) -> Angel Devil Half Reduced
 # Reduce damage from Devil by 50%

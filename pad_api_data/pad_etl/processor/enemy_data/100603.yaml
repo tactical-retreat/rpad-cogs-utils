@@ -45,21 +45,32 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 3 -       11
+# [51] 1 -        1
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESOrbLock -> Wings of Darkness
+# [4] ESOrbLock(94:5105) -> Wings of Darkness
 # Lock all Dark orbs
-# [5] ESRandomSpawn -> Wings of Darkness
+# [5] ESRandomSpawn(92:5126) -> Wings of Darkness
 # Condition: When fire, water, wood, light, heal, jammer, poison, mortal poison orbs are on the board
 # Spawn random 3 Dark orbs
-# [6] ESOrbChangeSingle -> Guard Stance-Dark
+# [6] ESOrbChangeSingle(4:5110) -> Guard Stance-Dark
 # Condition: One-time use
 # Change Light to Heal
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn

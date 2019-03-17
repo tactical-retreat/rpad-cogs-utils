@@ -117,42 +117,53 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 0 -        0
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESStatusShield -> Solomon's Little Key
+# [4] ESStatusShield(20:1724) -> Solomon's Little Key
 # Voids status ailments for 999 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchHP -> ESBranchHP
+# [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 12
-# [7] ESOrbChangeAttack -> Ground Explosion
+# [7] ESOrbChangeAttack(48:1738) -> Ground Explosion
 # Condition: 50% chance when < 30% hp
 # Change Random to Wood
-# [8] ESOrbChangeAttack -> Ground Explosion
+# [8] ESOrbChangeAttack(48:1739) -> Ground Explosion
 # Condition: When < 30% hp
 # Change Random to Fire
-# [9] ESOrbChangeAttack -> Grimoire of Earth
+# [9] ESOrbChangeAttack(48:1736) -> Grimoire of Earth
 # Condition: 30% chance
 # Change Heal to Wood
-# [10] ESBindAttack -> Tentacle Cage
+# [10] ESBindAttack(63:1737) -> Tentacle Cage
 # Condition: When < 75% hp , one-time use
 # Bind 1 subs for 1~2 turns
-# [11] ESEndPath -> ESEndPath
+# [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [12] ESBranchFlag -> ESBranchFlag
+# [12] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 7
-# [13] ESFlagOperation -> ESFlagOperation
+# [13] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [14] ESSkyfall -> Earth Evocation
+# [14] ESSkyfall(68:1735) -> Earth Evocation
 # Condition: When < 50% hp
 # Wood skyfall +25% for 99 turns
-# [15] ESEndPath -> ESEndPath
+# [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [16] ESAttributeResist -> Light & Dark Resistance
+# [16] ESAttributeResist(72:1740) -> Light & Dark Resistance
 # Reduce damage from Light, Dark by 50%

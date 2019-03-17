@@ -648,61 +648,72 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 3 -       11
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESDebuffMovetime -> No need for talk. Let's do this.
+# [2] ESDebuffMovetime(39:12545) -> No need for talk. Let's do this.
 # Condition: One-time use
 # Movetime -1s for 10 turns
-# [3] ESBranchHP -> ESBranchHP
+# [3] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 15
-# [4] ESBranchCounter -> ESBranchCounter
+# [4] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 9, target rnd 12
-# [5] ESSetCounter -> ESSetCounter
+# [5] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [6] ESBranchHP -> ESBranchHP
+# [6] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 51, target rnd 8
 # [7] SkillSet:
 # 	Condition: 25% chance
-# 	[0] ESOrbChangeAttack -> Sonic Break
+# 	[0] ESOrbChangeAttack(48:12558) -> Sonic Break
 # 	Change Random to Wood
-# 	[1] ESOrbChangeAttack -> Sonic Break
+# 	[1] ESOrbChangeAttack(48:12558) -> Sonic Break
 # 	Change Random to Wood
 # [8] SkillSet:
 # 	Condition: 33% chance
-# 	[0] ESAttackMultihit -> Bullet Revolver
+# 	[0] ESAttackMultihit(15:12547) -> Bullet Revolver
 # 	Enemy action
-# 	[1] ESRowSpawnMulti -> Sonic Boom
+# 	[1] ESRowSpawnMulti(79:12548) -> Sonic Boom
 # 	Change 3rd row to Wood orbs
 # [9] SkillSet:
 # 	Condition: 33% chance
-# 	[0] ESAttackMultihit -> Taurus Combination
+# 	[0] ESAttackMultihit(15:12550) -> Taurus Combination
 # 	Enemy action
-# 	[1] ESAttackSinglehit -> Disable Skill
+# 	[1] ESAttackSinglehit(82:1) -> Disable Skill
 # 	Enemy action
-# 	[2] ESColumnSpawnMulti -> Somersault Kick
+# 	[2] ESColumnSpawnMulti(77:12551) -> Somersault Kick
 # 	Change 4th column to Wood orbs
 # [10] SkillSet:
 # 	Condition: 34% chance
-# 	[0] ESRandomSpawn -> Sonic Blade
+# 	[0] ESRandomSpawn(92:12553) -> Sonic Blade
 # 	Spawn random 1 Wood orbs
-# 	[1] ESRowSpawnMulti -> Sonic Cross
+# 	[1] ESRowSpawnMulti(79:12554) -> Sonic Cross
 # 	Change 3rd, 4th row to Wood orbs
-# [11] ESEndPath -> ESEndPath
+# [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [12] ESSetCounter -> ESSetCounter
+# [12] ESSetCounter(25:15) -> ESSetCounter
 # counter = 0
-# [13] ESAttackMultihit -> Sonic Hurricane
+# [13] ESAttackMultihit(15:12555) -> Sonic Hurricane
 # Enemy action
-# [14] ESEndPath -> ESEndPath
+# [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [15] ESAttackUp -> Solid Puncher
+# [15] ESAttackUp(17:12556) -> Solid Puncher
 # Condition: One-time use
 # Increase damage to 150% for the next 5 turns
-# [16] ESBranchHP -> ESBranchHP
+# [16] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 16, target rnd 4
-# [17] ESAttackMultihit -> Sonic Tempest
+# [17] ESAttackMultihit(15:12559) -> Sonic Tempest
 # Enemy action
-# [18] ESEndPath -> ESEndPath
+# [18] ESEndPath(36:26) -> ESEndPath
 # end_turn

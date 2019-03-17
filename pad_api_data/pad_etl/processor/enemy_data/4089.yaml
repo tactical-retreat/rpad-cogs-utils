@@ -117,53 +117,64 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESCloud -> Come at me!
+# [6] ESCloud(104:8647) -> Come at me!
 # 3x1 cloud appear for 2 turns at 3rd row, 3rd column
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 15, target rnd 20
-# [9] ESBranchHP -> ESBranchHP
+# [9] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 13
-# [10] ESRandomSpawn -> Ryuuenbu
+# [10] ESRandomSpawn(92:8648) -> Ryuuenbu
 # Condition: 50% chance & when Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 3 Fire orbs
-# [11] ESAttackMultihit -> Hissatsu Shinobi-Bachi
+# [11] ESAttackMultihit(15:8649) -> Hissatsu Shinobi-Bachi
 # Enemy action
-# [12] ESEndPath -> ESEndPath
+# [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [13] ESBranchFlag -> ESBranchFlag
+# [13] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 17
-# [14] ESFlagOperation -> ESFlagOperation
+# [14] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [15] ESGravity -> Musasabi no Mai
+# [15] ESGravity(50:8650) -> Musasabi no Mai
 # Player -80% HP
-# [16] ESEndPath -> ESEndPath
+# [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [17] ESRandomSpawn -> Hisho-Ryu-Enjin
+# [17] ESRandomSpawn(92:8651) -> Hisho-Ryu-Enjin
 # Condition: 50% chance & when Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 6 Fire orbs
-# [18] ESAttackMultihit -> Hissatsu Shinobi-Bachi
+# [18] ESAttackMultihit(15:8649) -> Hissatsu Shinobi-Bachi
 # Enemy action
-# [19] ESEndPath -> ESEndPath
+# [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [20] ESAttackMultihit -> Chou Hissatsu Shinobi-Bachi
+# [20] ESAttackMultihit(15:8652) -> Chou Hissatsu Shinobi-Bachi
 # Enemy action
-# [21] ESEndPath -> ESEndPath
+# [21] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [22] SkillSet:
 # 	Condition: On death
-# 	[0] ESInactivity -> Andyyyy!
+# 	[0] ESInactivity(66:8653) -> Andyyyy!
 # 	Do nothing

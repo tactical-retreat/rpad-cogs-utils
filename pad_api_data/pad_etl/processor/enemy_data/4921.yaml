@@ -191,71 +191,82 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 3 -       11
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBindRandomSub -> V3 Electric Heat Chop
+# [4] ESBindRandomSub(65:11696) -> V3 Electric Heat Chop
 # Condition: One-time use
 # Bind 2 random subs for 2 turns
-# [5] ESBranchHP -> ESBranchHP
+# [5] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 15, target rnd 24
-# [6] ESSetCounter -> ESSetCounter
+# [6] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [7] ESBranchCounter -> ESBranchCounter
+# [7] ESBranchCounter(31:21) -> ESBranchCounter
 # Branch on counter = 9, target rnd 21
-# [8] ESBranchCounter -> ESBranchCounter
+# [8] ESBranchCounter(31:21) -> ESBranchCounter
 # Branch on counter = 6, target rnd 20
-# [9] ESBranchCounter -> ESBranchCounter
+# [9] ESBranchCounter(31:21) -> ESBranchCounter
 # Branch on counter = 3, target rnd 19
-# [10] ESBranchHP -> ESBranchHP
+# [10] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 15
-# [11] ESAttackMultihit -> V3 Chop
+# [11] ESAttackMultihit(15:11697) -> V3 Chop
 # Condition: 33% chance
 # Enemy action
-# [12] ESAttackMultihit -> V3 Punch
+# [12] ESAttackMultihit(15:11698) -> V3 Punch
 # Condition: 34% chance
 # Enemy action
-# [13] ESAttackMultihit -> Hurricane Last Dash
+# [13] ESAttackMultihit(15:11699) -> Hurricane Last Dash
 # Condition: 33% chance
 # Enemy action
-# [14] ESEndPath -> ESEndPath
+# [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [15] ESBranchFlag -> ESBranchFlag
+# [15] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 11
-# [16] ESFlagOperation -> ESFlagOperation
+# [16] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [17] ESGravity -> Red Bone Ring
+# [17] ESGravity(50:11700) -> Red Bone Ring
 # Player -99% HP
-# [18] ESEndPath -> ESEndPath
+# [18] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [19] SkillSet:
-# 	[0] ESAttackMultihit -> V3 Kick
+# 	[0] ESAttackMultihit(15:11702) -> V3 Kick
 # 	Enemy action
-# 	[1] ESAttackMultihit -> V3 Reverse Kick
+# 	[1] ESAttackMultihit(15:11703) -> V3 Reverse Kick
 # 	Enemy action
 # [20] SkillSet:
-# 	[0] ESAttackMultihit -> V3 Corkscrew Kick
+# 	[0] ESAttackMultihit(15:11705) -> V3 Corkscrew Kick
 # 	Enemy action
-# 	[1] ESSpinnersRandom -> V3 Reverse Corkscrew Kick
+# 	[1] ESSpinnersRandom(109:11706) -> V3 Reverse Corkscrew Kick
 # 	Random 2 orbs change every 1.0s for 1 turns
-# [21] ESSetCounter -> ESSetCounter
+# [21] ESSetCounter(25:15) -> ESSetCounter
 # counter = 6
-# [22] ESAttackMultihit -> V3 Reverse Rotation Corkscrew Kick
+# [22] ESAttackMultihit(15:11707) -> V3 Reverse Rotation Corkscrew Kick
 # Enemy action
-# [23] ESEndPath -> ESEndPath
+# [23] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [24] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAttackUp -> Red Bone Power
+# 	[0] ESAttackUp(17:11709) -> Red Bone Power
 # 	Increase damage to 200% for the next 1 turns
-# 	[1] ESDamageShield -> Red Lamp Power
+# 	[1] ESDamageShield(74:11710) -> Red Lamp Power
 # 	Reduce damage from all sources by 50% for 1 turns
-# [25] ESAttackMultihit -> V3 Double Rotation Kick
+# [25] ESAttackMultihit(15:11711) -> V3 Double Rotation Kick
 # Enemy action
-# [26] ESEndPath -> ESEndPath
+# [26] ESEndPath(36:26) -> ESEndPath
 # end_turn

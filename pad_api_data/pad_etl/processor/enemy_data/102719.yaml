@@ -232,100 +232,111 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 10 -     1010
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESVoidShield -> Divine King's Lightning Cloak
+# 	[0] ESVoidShield(71:8748) -> Divine King's Lightning Cloak
 # 	Void damage >= 40000000 for 99 turns
-# 	[1] ESStatusShield -> Dragon Skin
+# 	[1] ESStatusShield(20:8749) -> Dragon Skin
 # 	Voids status ailments for 999 turns
-# 	[2] ESGravity -> Wrath of Zeus
+# 	[2] ESGravity(50:8750) -> Wrath of Zeus
 # 	Player -65% HP
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchHP -> ESBranchHP
+# [6] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 90, target rnd 21
-# [7] ESBranchHP -> ESBranchHP
+# [7] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 13
 # [8] SkillSet:
 # 	Condition: When < 60% hp
-# 	[0] ESChangeAttribute -> Almighty
+# 	[0] ESChangeAttribute(46:2733) -> Almighty
 # 	Change own attribute to random one of Fire, Water, Wood, Light, Dark
-# 	[1] ESOrbChangeAttack -> Heart End
+# 	[1] ESOrbChangeAttack(48:2731) -> Heart End
 # 	Change Heal to Jammer
 # [9] SkillSet:
 # 	Condition: When < 70% hp
-# 	[0] ESChangeAttribute -> Almighty
+# 	[0] ESChangeAttribute(46:2733) -> Almighty
 # 	Change own attribute to random one of Fire, Water, Wood, Light, Dark
-# 	[1] ESPoisonChangeRandomAttack -> Dead Fang
+# 	[1] ESPoisonChangeRandomAttack(64:2730) -> Dead Fang
 # 	Change Random 3 to Poison
 # [10] SkillSet:
 # 	Condition: When < 80% hp
-# 	[0] ESChangeAttribute -> Almighty
+# 	[0] ESChangeAttribute(46:2733) -> Almighty
 # 	Change own attribute to random one of Fire, Water, Wood, Light, Dark
-# 	[1] ESBlind -> Dark Lightning
+# 	[1] ESBlind(62:2729) -> Dark Lightning
 # 	Blind all orbs on the board
 # [11] SkillSet:
 # 	Condition: When < 90% hp
-# 	[0] ESChangeAttribute -> Almighty
+# 	[0] ESChangeAttribute(46:2733) -> Almighty
 # 	Change own attribute to random one of Fire, Water, Wood, Light, Dark
-# 	[1] ESBindAttack -> Thunder Bind
+# 	[1] ESBindAttack(63:2728) -> Thunder Bind
 # 	Bind 1 random for 2 turns
 # [12] SkillSet:
 # 	Condition: When < 90% hp
-# 	[0] ESChangeAttribute -> Almighty
+# 	[0] ESChangeAttribute(46:2733) -> Almighty
 # 	Change own attribute to random one of Fire, Water, Wood, Light, Dark
-# 	[1] ESBindAttack -> Thunder Bind
+# 	[1] ESBindAttack(63:2728) -> Thunder Bind
 # 	Bind 1 random for 2 turns
-# [13] ESBranchFlag -> ESBranchFlag
+# [13] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 16
-# [14] ESFlagOperation -> ESFlagOperation
+# [14] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [15] SkillSet:
-# 	[0] ESChangeAttribute -> Almighty
+# 	[0] ESChangeAttribute(46:2733) -> Almighty
 # 	Change own attribute to random one of Fire, Water, Wood, Light, Dark
-# 	[1] ESAbsorbCombo -> Trial of the Sky
+# 	[1] ESAbsorbCombo(67:2732) -> Trial of the Sky
 # 	Absorb combo <= 7 damage for 3 turns
-# 	[2] ESAttackMultihit -> Heaven Commandment
+# 	[2] ESAttackMultihit(15:2727) -> Heaven Commandment
 # 	Enemy action
 # [16] SkillSet:
 # 	Condition: When < 20% hp
-# 	[0] ESDispel -> Glare of the Dragon God
+# 	[0] ESDispel(6:2742) -> Glare of the Dragon God
 # 	Voids player buff effects
-# 	[1] ESGravity -> Dragon Nova
+# 	[1] ESGravity(50:2743) -> Dragon Nova
 # 	Player -500% HP
 # [17] SkillSet:
 # 	Condition: When < 30% hp
-# 	[0] ESAttackMultihit -> Storm Lightning
+# 	[0] ESAttackMultihit(15:2739) -> Storm Lightning
 # 	Enemy action
-# 	[1] ESOrbLock -> Glittering God
+# 	[1] ESOrbLock(94:2740) -> Glittering God
 # 	Lock 15 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison orbs
 # [18] SkillSet:
 # 	Condition: When < 40% hp
-# 	[0] ESAttackMultihit -> Chain Blast
+# 	[0] ESAttackMultihit(15:2736) -> Chain Blast
 # 	Enemy action
-# 	[1] ESBoardChange -> New Sky
+# 	[1] ESBoardChange(84:2737) -> New Sky
 # 	Change all orbs to Heal, Poison
 # [19] SkillSet:
 # 	Condition: When < 50% hp
-# 	[0] ESChangeAttribute -> Almighty
+# 	[0] ESChangeAttribute(46:2733) -> Almighty
 # 	Change own attribute to random one of Fire, Water, Wood, Light, Dark
-# 	[1] ESColumnSpawnMulti -> Volt Ray
+# 	[1] ESColumnSpawnMulti(77:2735) -> Volt Ray
 # 	Change 3rd column to Jammer orbs
-# [20] ESAttackMultihit -> Heaven Commandment
+# [20] ESAttackMultihit(15:2727) -> Heaven Commandment
 # Enemy action
 # [21] SkillSet:
-# 	[0] ESDispel -> Glare of the Dragon God
+# 	[0] ESDispel(6:2745) -> Glare of the Dragon God
 # 	Voids player buff effects
-# 	[1] ESGravity -> Dragon Nova
+# 	[1] ESGravity(50:2746) -> Dragon Nova
 # 	Player -500% HP
-# [22] ESEndPath -> ESEndPath
+# [22] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [23] ESAttributeResist -> ZeuDra Light Halved
+# [23] ESAttributeResist(72:8805) -> ZeuDra Light Halved
 # Reduce damage from Light by 50%

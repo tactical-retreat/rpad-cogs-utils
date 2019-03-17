@@ -108,41 +108,52 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 0 -        0
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:355) -> ESPreemptive
 # Enable preempt if level 5
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 5, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESStatusShield -> Here I go
+# [6] ESStatusShield(20:1404) -> Here I go
 # Voids status ailments for 5 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchFlag -> ESBranchFlag
+# [8] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 12
-# [9] ESFlagOperation -> ESFlagOperation
+# [9] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [10] ESDebuffMovetime -> Moonflower Gaze
+# [10] ESDebuffMovetime(39:1405) -> Moonflower Gaze
 # Movetime -1s for 4 turns
-# [11] ESEndPath -> ESEndPath
+# [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [12] ESBranchHP -> ESBranchHP
+# [12] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 16
-# [13] ESOrbChangeAttack -> Moon Heaven Strike
+# [13] ESOrbChangeAttack(48:1406) -> Moon Heaven Strike
 # Condition: 50% chance
 # Change Light to Dark
-# [14] ESAttackMultihit -> Nine Dragon Claws
+# [14] ESAttackMultihit(15:1407) -> Nine Dragon Claws
 # Enemy action
-# [15] ESEndPath -> ESEndPath
+# [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [16] ESBlind -> Get ready for this
+# [16] ESBlind(62:1408) -> Get ready for this
 # Condition: One-time use
 # Blind all orbs on the board
-# [17] ESAttackMultihit -> Moonshadow Dance
+# [17] ESAttackMultihit(15:1409) -> Moonshadow Dance
 # Enemy action

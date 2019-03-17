@@ -128,49 +128,60 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 3 -       11
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
 # [2] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESBindTyping -> Encroaching Evil
+# 	[0] ESBindTyping(3:11609) -> Encroaching Evil
 # 	Bind Attacker cards for 5 turns
-# 	[1] ESBindSkill -> Frightening Scream
+# 	[1] ESBindSkill(14:11610) -> Frightening Scream
 # 	Bind active skills for 5 turns
-# [3] ESBranchHP -> ESBranchHP
+# [3] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 1, target rnd 13
-# [4] ESBranchHP -> ESBranchHP
+# [4] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 15, target rnd 11
-# [5] ESBranchHP -> ESBranchHP
+# [5] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 51, target rnd 7
 # [6] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESGravity -> Embracing Pain
+# 	[0] ESGravity(50:11615) -> Embracing Pain
 # 	Player -75% HP
-# 	[1] ESBlindStickyRandom -> Darkness Bullet
+# 	[1] ESBlindStickyRandom(97:11616) -> Darkness Bullet
 # 	Blind random 15 orbs for 3 turns
-# [7] ESBlind -> Black Bullet
+# [7] ESBlind(5:11611) -> Black Bullet
 # Condition: 33% chance
 # Blind all orbs on the board
-# [8] ESOrbLock -> Paralysing Spear
+# [8] ESOrbLock(94:11612) -> Paralysing Spear
 # Condition: 33% chance
 # Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [9] ESAttackMultihit -> Rushing Tentacle
+# [9] ESAttackMultihit(15:11613) -> Rushing Tentacle
 # Condition: 34% chance
 # Enemy action
-# [10] ESEndPath -> ESEndPath
+# [10] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [11] ESBlindStickyRandom -> Black Javelins
+# [11] ESBlindStickyRandom(97:11620) -> Black Javelins
 # Blind all orbs for 1 turns
-# [12] ESEndPath -> ESEndPath
+# [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [13] SkillSet:
-# 	[0] ESBindAwoken -> Losing Power
+# 	[0] ESBindAwoken(88:11618) -> Losing Power
 # 	Bind awoken skills for 2 turns
-# 	[1] ESRecoverEnemy -> Predation
+# 	[1] ESRecoverEnemy(86:11619) -> Predation
 # 	Enemy recover 14% hp
-# [14] ESEndPath -> ESEndPath
+# [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [15] ESResolve -> Resolve
+# [15] ESResolve(73:11607) -> Resolve
 # Survive attacks with 1 HP when HP > 75%

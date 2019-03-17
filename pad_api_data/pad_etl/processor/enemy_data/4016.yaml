@@ -361,103 +361,114 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 4095 - 111111111111
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchCard -> ESBranchCard
+# [2] ESBranchCard(90:8590) -> ESBranchCard
 # Branch on player_cards HAS [3940, 3941], target rnd 5
-# [3] ESBranchCard -> ESBranchCard
+# [3] ESBranchCard(90:8591) -> ESBranchCard
 # Branch on player_cards HAS [2442, 2443, 3768, 3769, 1948, 1949, 2745, 3908], target rnd 6
 # [4] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESDamageShield -> You leave me no choice...
+# 	[0] ESDamageShield(74:8557) -> You leave me no choice...
 # 	Reduce damage from all sources by 75% for 20 turns
-# 	[1] ESStatusShield -> Quarryla
+# 	[1] ESStatusShield(20:8560) -> Quarryla
 # 	Voids status ailments for 999 turns
-# 	[2] ESVoidShield -> Fervor Flame Wings
+# 	[2] ESVoidShield(71:8561) -> Fervor Flame Wings
 # 	Void damage >= 30000000 for 999 turns
 # [5] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESDamageShield -> ...I loathe Dragon Callers!
+# 	[0] ESDamageShield(74:8558) -> ...I loathe Dragon Callers!
 # 	Reduce damage from all sources by 75% for 20 turns
-# 	[1] ESStatusShield -> Quarryla
+# 	[1] ESStatusShield(20:8560) -> Quarryla
 # 	Voids status ailments for 999 turns
-# 	[2] ESVoidShield -> Fervor Flame Wings
+# 	[2] ESVoidShield(71:8561) -> Fervor Flame Wings
 # 	Void damage >= 30000000 for 999 turns
 # [6] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESDamageShield -> You remind me of the past
+# 	[0] ESDamageShield(74:8559) -> You remind me of the past
 # 	Reduce damage from all sources by 75% for 20 turns
-# 	[1] ESStatusShield -> Quarryla
+# 	[1] ESStatusShield(20:8560) -> Quarryla
 # 	Voids status ailments for 999 turns
-# 	[2] ESVoidShield -> Fervor Flame Wings
+# 	[2] ESVoidShield(71:8561) -> Fervor Flame Wings
 # 	Void damage >= 30000000 for 999 turns
-# [7] ESInactivity -> Shall I show a little dragon power?
+# [7] ESInactivity(66:8565) -> Shall I show a little dragon power?
 # Condition: One-time use
 # Do nothing
-# [8] ESBombRandomSpawn -> Rhuentel
+# [8] ESBombRandomSpawn(102:8566) -> Rhuentel
 # Condition: One-time use
 # Spawn random 12 locked Bomb orbs
 # [9] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESInactivity -> Not bad, but get ready for...
+# 	[0] ESInactivity(66:8567) -> Not bad, but get ready for...
 # 	Do nothing
-# 	[1] ESBindRandomSub -> Draaagon Eyes!!
+# 	[1] ESBindRandomSub(65:8568) -> Draaagon Eyes!!
 # 	Bind 1 random subs for 10 turns
-# [10] ESAbsorbCombo -> Brace yourself for my attack!
+# [10] ESAbsorbCombo(67:8570) -> Brace yourself for my attack!
 # Condition: One-time use
 # Absorb combo <= 6 damage for 5 turns
-# [11] ESBranchCounter -> ESBranchCounter
+# [11] ESBranchCounter(31:21) -> ESBranchCounter
 # Branch on counter = 4, target rnd 18
-# [12] ESSetCounter -> ESSetCounter
+# [12] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [13] ESGravity -> Vrusilla
+# [13] ESGravity(50:8574) -> Vrusilla
 # Condition: One-time use
 # Player -99% HP
-# [14] ESRowSpawnMulti -> Larskerk
+# [14] ESRowSpawnMulti(79:8572) -> Larskerk
 # Condition: 33% chance
 # Change 3rd row to Poison orbs
-# [15] ESOrbLock -> Fescas
+# [15] ESOrbLock(94:8573) -> Fescas
 # Condition: 33% chance
 # Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [16] ESAttackMultihit -> Squilla
+# [16] ESAttackMultihit(15:8571) -> Squilla
 # Condition: 34% chance
 # Enemy action
-# [17] ESEndPath -> ESEndPath
+# [17] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [18] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESBlind -> I'm tired of concentrating
+# 	[0] ESBlind(5:8575) -> I'm tired of concentrating
 # 	Blind all orbs on the board
-# 	[1] ESRecoverEnemy -> Let's take a break!
+# 	[1] ESRecoverEnemy(7:8576) -> Let's take a break!
 # 	Enemy recover 40% hp
 # [19] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAttackUp -> Sorry, but I want to return soon
+# 	[0] ESAttackUp(17:8578) -> Sorry, but I want to return soon
 # 	Increase damage to 1000% for the next 999 turns
-# 	[1] ESColumnSpawnMulti -> Ancient firedrake, your power unto me!
+# 	[1] ESColumnSpawnMulti(76:8579) -> Ancient firedrake, your power unto me!
 # 	Change 1st column to Fire orbs
-# [20] ESRowSpawnMulti -> Embrace and watch over me...
+# [20] ESRowSpawnMulti(78:8580) -> Embrace and watch over me...
 # Condition: One-time use
 # Change 1st row to Fire orbs
-# [21] ESColumnSpawnMulti -> 1,000 flames of roaring power...
+# [21] ESColumnSpawnMulti(76:8581) -> 1,000 flames of roaring power...
 # Condition: One-time use
 # Change 6th column to Fire orbs
-# [22] ESRowSpawnMulti -> Engulf this adversary...
+# [22] ESRowSpawnMulti(78:8582) -> Engulf this adversary...
 # Condition: One-time use
 # Change 5th row to Fire orbs
 # [23] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESBindAwoken -> Until only ash remains!
+# 	[0] ESBindAwoken(88:8583) -> Until only ash remains!
 # 	Bind awoken skills for 1 turns
-# 	[1] ESAttackMultihit -> Relentless Flames - Galvana
+# 	[1] ESAttackMultihit(15:8584) -> Relentless Flames - Galvana
 # 	Enemy action
-# [24] ESAttackMultihit -> Please take over!
+# [24] ESAttackMultihit(15:8586) -> Please take over!
 # Enemy action
-# [25] ESEndPath -> ESEndPath
+# [25] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [26] SkillSet:
 # 	Condition: On death
-# 	[0] ESInactivity -> I u-u-u-understand...
+# 	[0] ESInactivity(66:8587) -> I u-u-u-understand...
 # 	Do nothing

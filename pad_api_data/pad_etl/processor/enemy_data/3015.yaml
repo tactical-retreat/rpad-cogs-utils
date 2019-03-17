@@ -336,81 +336,92 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 11 -     1011
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 7, target rnd 4
 # [3] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAbsorbCombo -> Burning Flame
+# 	[0] ESAbsorbCombo(67:4925) -> Burning Flame
 # 	Absorb combo <= 5 damage for 99 turns
-# 	[1] ESOrbLock -> Power Claw
+# 	[1] ESOrbLock(94:4926) -> Power Claw
 # 	Lock all Fire, Wood orbs
 # [4] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAbsorbCombo -> Burning Flame
+# 	[0] ESAbsorbCombo(67:4925) -> Burning Flame
 # 	Absorb combo <= 5 damage for 99 turns
-# 	[1] ESOrbLock -> Power Claw
+# 	[1] ESOrbLock(94:4926) -> Power Claw
 # 	Lock all Fire, Wood orbs
 # [5] SkillSet:
 # 	Condition: When < 70% hp , one-time use
-# 	[0] ESVoidShield -> Power Erase
+# 	[0] ESVoidShield(71:4931) -> Power Erase
 # 	Void damage >= 500000 for 3 turns
-# 	[1] ESGravity -> Metal Slicer
+# 	[1] ESGravity(50:4932) -> Metal Slicer
 # 	Player -99% HP
-# [6] ESDamageShield -> Flare Armor
+# [6] ESDamageShield(74:4930) -> Flare Armor
 # Condition: One-time use
 # Reduce damage from all sources by 50% for 3 turns
-# [7] ESOrbLock -> Explosive Skewer
+# [7] ESOrbLock(94:4942) -> Explosive Skewer
 # Condition: When < 15% hp
 # Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [8] ESOrbLock -> Power Claw
+# [8] ESOrbLock(94:4935) -> Power Claw
 # Condition: When < 70% hp , one-time use
 # Lock 8 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [9] ESBlind -> Dark Flare
+# [9] ESBlind(62:4934) -> Dark Flare
 # Condition: One-time use
 # Blind all orbs on the board
-# [10] ESBranchFlag -> ESBranchFlag
+# [10] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 16
-# [11] ESFlagOperation -> ESFlagOperation
+# [11] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [12] ESAttackUp -> Heat Up
+# [12] ESAttackUp(17:4943) -> Heat Up
 # Condition: When < 50% hp
 # Increase damage to 150% for the next 999 turns
-# [13] ESRandomSpawn -> Destroying Claw
+# [13] ESRandomSpawn(92:4944) -> Destroying Claw
 # Condition: When < 30% hp & when Fire, Water, Wood, Light, Dark, Heal, Mortal Poison orbs are on the board
 # Spawn random 4 Jammer, Poison orbs
-# [14] ESOrbChangeAttack -> Death Claw
+# [14] ESOrbChangeAttack(48:4936) -> Death Claw
 # Condition: 50% chance
 # Change Random to Poison
-# [15] ESOrbChangeAttack -> Crushing Claw
+# [15] ESOrbChangeAttack(48:4937) -> Crushing Claw
 # Change Random to Jammer
-# [16] ESBranchFlag -> ESBranchFlag
+# [16] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 21
-# [17] ESFlagOperation -> ESFlagOperation
+# [17] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [18] ESAttackUp -> Heat Up
+# [18] ESAttackUp(17:4943) -> Heat Up
 # Condition: When < 50% hp
 # Increase damage to 150% for the next 999 turns
-# [19] ESOrbLock -> Evil Hold
+# [19] ESOrbLock(94:4939) -> Evil Hold
 # Condition: 50% chance
 # Lock all Jammer, Poison orbs
-# [20] ESOrbLock -> Element Hold
+# [20] ESOrbLock(94:4938) -> Element Hold
 # Lock 7 random Fire, Water, Wood, Light, Dark, Heal orbs
-# [21] ESFlagOperation -> ESFlagOperation
+# [21] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b11
-# [22] ESAttackUp -> Heat Up
+# [22] ESAttackUp(17:4943) -> Heat Up
 # Condition: When < 50% hp
 # Increase damage to 150% for the next 999 turns
-# [23] ESAttackMultihit -> Melting Claw
+# [23] ESAttackMultihit(15:4945) -> Melting Claw
 # Condition: When < 30% hp
 # Enemy action
-# [24] ESBindSkill -> Heat Chain
+# [24] ESBindSkill(14:4940) -> Heat Chain
 # Condition: 50% chance
 # Bind active skills for 3 turns
-# [25] ESAttackMultihit -> Cleave Rush
+# [25] ESAttackMultihit(15:4941) -> Cleave Rush
 # Enemy action
-# [26] ESAttributeResist -> Halves Light-Dark
+# [26] ESAttributeResist(72:4928) -> Halves Light-Dark
 # Reduce damage from Light, Dark by 50%

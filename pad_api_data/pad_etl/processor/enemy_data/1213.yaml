@@ -54,25 +54,36 @@ records:
   usage_pct: 50
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 3 -       11
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESAbsorbThreshold -> Blessing of the Goddess
+# [4] ESAbsorbThreshold(87:2308) -> Blessing of the Goddess
 # Condition: One-time use
 # Absorb damage >= 200000 damage for 3 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBindAttribute -> Prayer of the Goddess
+# [6] ESBindAttribute(2:2311) -> Prayer of the Goddess
 # Condition: One-time use
 # Bind Dark cards for 3 turns
-# [7] ESRandomSpawn -> Sacred Assault
+# [7] ESRandomSpawn(92:2309) -> Sacred Assault
 # Condition: 50% chance & when Fire, Water, Wood, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 4 Light orbs
-# [8] ESBoardChangeAttackBits -> Rainbow Road
+# [8] ESBoardChangeAttackBits(85:2310) -> Rainbow Road
 # Condition: 50% chance
 # Change all orbs to Fire, Water, Wood, Light, Dark, Heal

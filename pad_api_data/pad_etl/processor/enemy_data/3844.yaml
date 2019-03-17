@@ -137,57 +137,68 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 0 -        0
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESSkillDelay -> Allow me to get us started
+# [6] ESSkillDelay(89:9592) -> Allow me to get us started
 # Delay active skills by 5 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 14
-# [9] ESBranchHP -> ESBranchHP
+# [9] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 10, target rnd 18
-# [10] ESOrbChangeAttack -> I don't need this!
+# [10] ESOrbChangeAttack(48:9593) -> I don't need this!
 # Condition: 33% chance
 # Change Random to Dark
-# [11] ESDamageShield -> Reinforce defence while attacking
+# [11] ESDamageShield(74:9594) -> Reinforce defence while attacking
 # Condition: 50% chance
 # Reduce damage from all sources by 50% for 1 turns
-# [12] ESAttackMultihit -> You can't escape my 
+# [12] ESAttackMultihit(15:9595) -> You can't escape my 
 # attacks for an instant
 # Enemy action
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [14] ESBranchFlag -> ESBranchFlag
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 9
-# [15] ESFlagOperation -> ESFlagOperation
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [16] SkillSet:
-# 	[0] ESSpinnersFixed -> I didn't want to use this but...
+# 	[0] ESSpinnersFixed(110:9596) -> I didn't want to use this but...
 # 	Specific orbs change every 1.0s for 3 turns
-# 	[1] ESBlindStickyFixed -> Let me use this
+# 	[1] ESBlindStickyFixed(98:9597) -> Let me use this
 # 	Blind orbs in specific positions for 3 turns
-# 	[2] ESAttackUp -> Let me end this
+# 	[2] ESAttackUp(17:9598) -> Let me end this
 # 	Increase damage to 150% for the next 99 turns
-# [17] ESEndPath -> ESEndPath
+# [17] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [18] ESAttackMultihit -> Not...not yet!
+# [18] ESAttackMultihit(15:9600) -> Not...not yet!
 # Enemy action
-# [19] ESEndPath -> ESEndPath
+# [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [20] SkillSet:
 # 	Condition: On death
-# 	[0] ESGravity -> It can't end yet....
+# 	[0] ESGravity(50:9601) -> It can't end yet....
 # 	Player -99% HP
-# [21] ESTypeResist -> Akechi Dragon Half Reduced
+# [21] ESTypeResist(118:9591) -> Akechi Dragon Half Reduced
 # Reduce damage from Dragon by 50%

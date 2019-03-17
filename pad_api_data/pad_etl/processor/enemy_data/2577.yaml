@@ -126,46 +126,57 @@ records:
   usage_pct: 33
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 4 -      100
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESDamageShield -> Shell Seclusion
+# [6] ESDamageShield(74:3658) -> Shell Seclusion
 # Reduce damage from all sources by 50% for 1 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESAttackUp -> Wind-Up Full Throttle
+# [8] ESAttackUp(17:3613) -> Wind-Up Full Throttle
 # Increase damage to 200% for the next 999 turns
-# [9] ESRandomSpawn -> Incandescent Ocean
+# [9] ESRandomSpawn(92:3761) -> Incandescent Ocean
 # Condition: When < 50% hp , one-time use & when Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Change all orbs to Fire
-# [10] ESGravity -> Full Spiral
+# [10] ESGravity(50:3663) -> Full Spiral
 # Condition: When < 10% hp
 # Player -100% HP
-# [11] ESBranchFlag -> ESBranchFlag
+# [11] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 17
-# [12] ESFlagOperation -> ESFlagOperation
+# [12] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [13] ESRandomSpawn -> Three Hearts Clutch
+# [13] ESRandomSpawn(92:3659) -> Three Hearts Clutch
 # Condition: 34% chance & when Fire, Water, Wood, Light, Dark, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 3 Heal orbs
-# [14] ESOrbLock -> Seven Ties Tentacle
+# [14] ESOrbLock(94:3660) -> Seven Ties Tentacle
 # Condition: 33% chance
 # Lock 7 random Fire, Water, Wood, Light, Dark orbs
-# [15] ESRandomSpawn -> Nine Flames Breath
+# [15] ESRandomSpawn(92:3760) -> Nine Flames Breath
 # Condition: 33% chance & when Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 9 Fire orbs
-# [16] ESEndPath -> ESEndPath
+# [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [17] ESFlagOperation -> ESFlagOperation
+# [17] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b10
-# [18] ESDamageShield -> Shell Seclusion
+# [18] ESDamageShield(74:3658) -> Shell Seclusion
 # Reduce damage from all sources by 50% for 1 turns

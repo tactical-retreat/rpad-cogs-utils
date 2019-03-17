@@ -233,112 +233,123 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 4 -      100
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 5
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESVoidShield -> Let's take it easy for now, eh?
+# 	[0] ESVoidShield(71:7134) -> Let's take it easy for now, eh?
 # 	Void damage >= 10000000 for 999 turns
-# 	[1] ESLeaderSwap -> Sly Prank
+# 	[1] ESLeaderSwap(75:7135) -> Sly Prank
 # 	Leader changes to random sub for 3 turns
-# [5] ESBranchHP -> ESBranchHP
+# [5] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 28
-# [6] ESAttackUpStatus -> Trickster's Trap
+# [6] ESAttackUpStatus(18:7167) -> Trickster's Trap
 # Condition: after being affected by a status effect
 # Increase damage to 200% for the next 999 turns
-# [7] ESBranchHP -> ESBranchHP
+# [7] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 19
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 75, target rnd 14
-# [9] ESBranchFlag -> ESBranchFlag
+# [9] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 12
-# [10] ESFlagOperation -> ESFlagOperation
+# [10] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [11] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESSkyfall -> Shadow of Jörmungandr! Unleash chaos!
+# 	[0] ESSkyfall(68:7137) -> Shadow of Jörmungandr! Unleash chaos!
 # 	Jammer, Poison skyfall +8% for 5 turns
-# 	[1] ESGravity -> Deathline Rune
+# 	[1] ESGravity(50:7138) -> Deathline Rune
 # 	Player -98% HP
-# [12] ESBoardChange -> World Serpent's Coil
+# [12] ESBoardChange(84:7139) -> World Serpent's Coil
 # Condition: One-time use
 # Change all orbs to Jammer, Mortal Poison
-# [13] ESBranchFlag -> ESBranchFlag
+# [13] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 23
-# [14] ESBranchFlag -> ESBranchFlag
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 17
-# [15] ESFlagOperation -> ESFlagOperation
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [16] SkillSet:
-# 	[0] ESDebuffRCV -> Shadow of Hel! Extinguish all life!
+# 	[0] ESDebuffRCV(105:7141) -> Shadow of Hel! Extinguish all life!
 # 	Rcv 50% for 99 turns
-# 	[1] ESGravity -> Deathland Rune
+# 	[1] ESGravity(50:7142) -> Deathland Rune
 # 	Player -99% HP
-# [17] ESOrbLock -> Dead Judgment
+# [17] ESOrbLock(94:7143) -> Dead Judgment
 # Lock all Poison, Mortal Poison orbs
-# [18] ESBranchFlag -> ESBranchFlag
+# [18] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 23
-# [19] ESBranchFlag -> ESBranchFlag
+# [19] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 22
-# [20] ESFlagOperation -> ESFlagOperation
+# [20] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
 # [21] SkillSet:
-# 	[0] ESCloud -> Shadow of Fenrir! Seal the heavens!
+# 	[0] ESCloud(104:7145) -> Shadow of Fenrir! Seal the heavens!
 # 	4x2 cloud appear for 10 turns at 1st row, 2nd column
-# 	[1] ESGravity -> Death Rune
+# 	[1] ESGravity(50:7146) -> Death Rune
 # 	Player -100% HP
-# [22] ESRandomSpawn -> Chain Crunch
+# [22] ESRandomSpawn(92:7147) -> Chain Crunch
 # Condition: When jammer orbs are on the board
 # Spawn random 1 Dark orbs
 # [23] SkillSet:
 # 	Condition: 20% chance
-# 	[0] ESRandomSpawn -> Blessings of the Trickster God
+# 	[0] ESRandomSpawn(92:7156) -> Blessings of the Trickster God
 # 	Spawn random 3 Jammer, Poison orbs
-# 	[1] ESBindAttack -> Fake Spear Gungnir
+# 	[1] ESBindAttack(63:7157) -> Fake Spear Gungnir
 # 	Bind 1 random for 1 turns
 # [24] SkillSet:
 # 	Condition: 25% chance
-# 	[0] ESRandomSpawn -> Blessings of the Trickster God
+# 	[0] ESRandomSpawn(92:7156) -> Blessings of the Trickster God
 # 	Spawn random 3 Jammer, Poison orbs
-# 	[1] ESBindAwoken -> Fake Ring Draupnir
+# 	[1] ESBindAwoken(88:7158) -> Fake Ring Draupnir
 # 	Bind awoken skills for 1 turns
 # [25] SkillSet:
 # 	Condition: 34% chance
-# 	[0] ESRandomSpawn -> Blessings of the Trickster God
+# 	[0] ESRandomSpawn(92:7156) -> Blessings of the Trickster God
 # 	Spawn random 3 Jammer, Poison orbs
-# 	[1] ESOrbLock -> Fake Hammer Mjölnir
+# 	[1] ESOrbLock(94:7160) -> Fake Hammer Mjölnir
 # 	Lock 5 random Fire, Water, Wood, Light, Dark orbs
 # [26] SkillSet:
 # 	Condition: 50% chance
-# 	[0] ESRandomSpawn -> Blessings of the Trickster God
+# 	[0] ESRandomSpawn(92:7156) -> Blessings of the Trickster God
 # 	Spawn random 3 Jammer, Poison orbs
-# 	[1] ESRowSpawnMulti -> Fake Blade Lævateinn
+# 	[1] ESRowSpawnMulti(79:7161) -> Fake Blade Lævateinn
 # 	Change 5th row to Fire orbs
 # [27] SkillSet:
-# 	[0] ESRandomSpawn -> Blessings of the Trickster God
+# 	[0] ESRandomSpawn(92:7156) -> Blessings of the Trickster God
 # 	Spawn random 3 Jammer, Poison orbs
-# 	[1] ESGravity -> Fake Ship Skidbladnir
+# 	[1] ESGravity(50:7159) -> Fake Ship Skidbladnir
 # 	Player -99% HP
-# [28] ESBranchFlag -> ESBranchFlag
+# [28] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 16, target rnd 31
-# [29] ESFlagOperation -> ESFlagOperation
+# [29] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11111
 # [30] SkillSet:
-# 	[0] ESBoardChange -> Hold on! It's not your turn yet!
+# 	[0] ESBoardChange(84:7149) -> Hold on! It's not your turn yet!
 # 	Change all orbs to Light, Heal, Jammer
-# 	[1] ESDebuffMovetime -> Oh, fine... I'll let you have your fun
+# 	[1] ESDebuffMovetime(39:7150) -> Oh, fine... I'll let you have your fun
 # 	Movetime 25% for 1 turns
-# 	[2] ESSkillDelay -> Can you erase all the Jammers?
+# 	[2] ESSkillDelay(89:7151) -> Can you erase all the Jammers?
 # 	Delay active skills by 30 turns
-# [31] ESOrbChangeAttack -> Nope, guess not!
+# [31] ESOrbChangeAttack(48:7152) -> Nope, guess not!
 # Change Jammer to Dark
 # [32] SkillSet:
-# 	[0] ESInactivity -> Guess now's as good a time as any
+# 	[0] ESInactivity(66:7154) -> Guess now's as good a time as any
 # 	Do nothing
-# 	[1] ESEndBattle -> Well then, if you'll excuse me...
+# 	[1] ESEndBattle(40:7155) -> Well then, if you'll excuse me...
 # 	Reduce self HP to 0

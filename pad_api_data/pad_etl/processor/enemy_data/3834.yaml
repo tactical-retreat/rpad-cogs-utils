@@ -351,102 +351,113 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 127 -  1111111
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
 # [2] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESStatusShield -> Wonderful! I've been waiting for you!
+# 	[0] ESStatusShield(20:7875) -> Wonderful! I've been waiting for you!
 # 	Voids status ailments for 999 turns
-# 	[1] ESVoidShield -> Just a warning: I won't hold back!
+# 	[1] ESVoidShield(71:7876) -> Just a warning: I won't hold back!
 # 	Void damage >= 35000000 for 999 turns
-# [3] ESBranchCounter -> ESBranchCounter
+# [3] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 2, target rnd 8
-# [4] ESSetCounter -> ESSetCounter
+# [4] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [5] ESBranchHP -> ESBranchHP
+# [5] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 40, target rnd 8
 # [6] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESRecoverEnemy -> I'm no pushover, you know. Scared yet?
+# 	[0] ESRecoverEnemy(86:7878) -> I'm no pushover, you know. Scared yet?
 # 	Enemy recover 30% hp
-# 	[1] ESOrbLock -> Well, let's continue!
+# 	[1] ESOrbLock(94:7879) -> Well, let's continue!
 # 	Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [7] ESBranchCounter -> ESBranchCounter
+# [7] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 1, target rnd 8
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 5, target rnd 28
-# [9] ESBranchHP -> ESBranchHP
+# [9] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 25
-# [10] ESGravity -> Have at you!
+# [10] ESGravity(50:7881) -> Have at you!
 # Condition: One-time use
 # Player -99% HP
-# [11] ESAttackMultihit -> Think again!
+# [11] ESAttackMultihit(15:7882) -> Think again!
 # Condition: One-time use
 # Enemy action
-# [12] ESBindAttack -> How's this?
+# [12] ESBindAttack(63:7883) -> How's this?
 # Condition: One-time use
 # Bind 2 subs for 3 turns
-# [13] ESDamageShield -> Barrier!
+# [13] ESDamageShield(74:7884) -> Barrier!
 # Condition: One-time use
 # Reduce damage from all sources by 75% for 1 turns
-# [14] ESSpinnersRandom -> Hah!
+# [14] ESSpinnersRandom(109:7885) -> Hah!
 # Condition: One-time use
 # Random 2 orbs change every 1.0s for 1 turns
-# [15] ESCloud -> Hmph!
+# [15] ESCloud(104:7886) -> Hmph!
 # Condition: One-time use
 # 2x1 cloud appear for 1 turns at random location
-# [16] ESBranchFlag -> ESBranchFlag
+# [16] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 19
-# [17] ESFlagOperation -> ESFlagOperation
+# [17] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [18] SkillSet:
-# 	[0] ESInactivity -> Whoa...
+# 	[0] ESInactivity(66:7887) -> Whoa...
 # 	Do nothing
-# 	[1] ESRecoverPlayer -> Tough guy, huh!
+# 	[1] ESRecoverPlayer(55:7888) -> Tough guy, huh!
 # 	Player recover 100% hp
-# 	[2] ESAttackUp -> Now we're getting somewhere!
+# 	[2] ESAttackUp(17:7889) -> Now we're getting somewhere!
 # 	Increase damage to 150% for the next 999 turns
-# [19] ESOrbLock -> Left yourself wide open!
+# [19] ESOrbLock(94:7891) -> Left yourself wide open!
 # Lock all Jammer orbs
-# [20] ESRandomSpawn -> Burn!
+# [20] ESRandomSpawn(92:7892) -> Burn!
 # Condition: 50% chance & when Fire, Water, Wood, Light, Dark, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 5 Jammer orbs
-# [21] ESGravity -> Once again!
+# [21] ESGravity(50:7893) -> Once again!
 # Condition: 25% chance
 # Player -99% HP
-# [22] ESDamageShield -> Barrier!
+# [22] ESDamageShield(74:7894) -> Barrier!
 # Condition: 33% chance
 # Reduce damage from all sources by 75% for 1 turns
-# [23] ESSpinnersRandom -> Hyah!
+# [23] ESSpinnersRandom(109:7895) -> Hyah!
 # Condition: 50% chance
 # Random 2 orbs change every 1.0s for 1 turns
-# [24] ESCloud -> I don't think so!
+# [24] ESCloud(104:7896) -> I don't think so!
 # 2x1 cloud appear for 1 turns at random location
-# [25] ESBranchFlag -> ESBranchFlag
+# [25] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 10
-# [26] ESFlagOperation -> ESFlagOperation
+# [26] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [27] SkillSet:
-# 	[0] ESInactivity -> Whoa...
+# 	[0] ESInactivity(66:7887) -> Whoa...
 # 	Do nothing
-# 	[1] ESRecoverPlayer -> Tough guy, huh!
+# 	[1] ESRecoverPlayer(55:7888) -> Tough guy, huh!
 # 	Player recover 100% hp
-# 	[2] ESAttackUp -> Now we're getting somewhere!
+# 	[2] ESAttackUp(17:7889) -> Now we're getting somewhere!
 # 	Increase damage to 150% for the next 999 turns
-# [28] ESBranchFlag -> ESBranchFlag
+# [28] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 31
-# [29] ESFlagOperation -> ESFlagOperation
+# [29] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [30] SkillSet:
-# 	[0] ESInactivity -> Uh-oh... Not good...
+# 	[0] ESInactivity(66:7897) -> Uh-oh... Not good...
 # 	Do nothing
-# 	[1] ESBindAwoken -> Let's end this!
+# 	[1] ESBindAwoken(88:7898) -> Let's end this!
 # 	Bind awoken skills for 2 turns
-# [31] ESAttackMultihit -> Pyro Starburst!!
+# [31] ESAttackMultihit(15:7900) -> Pyro Starburst!!
 # Enemy action
 # [32] SkillSet:
 # 	Condition: On death
-# 	[0] ESInactivity -> I'm...finished...
+# 	[0] ESInactivity(66:7901) -> I'm...finished...
 # 	Do nothing

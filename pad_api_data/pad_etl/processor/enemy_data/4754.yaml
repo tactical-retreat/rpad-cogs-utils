@@ -83,36 +83,47 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchCard -> ESBranchCard
+# [4] ESBranchCard(90:11008) -> ESBranchCard
 # Branch on player_cards HAS [4751, 4752], target rnd 6
 # [5] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESBindRandomSub -> Arrested for obstructing a Public Servant
+# 	[0] ESBindRandomSub(65:11000) -> Arrested for obstructing a Public Servant
 # 	Bind 2 random subs for 1 turns
-# 	[1] ESRandomSpawn -> I hurt a policeman's heart
+# 	[1] ESRandomSpawn(92:11001) -> I hurt a policeman's heart
 # 	Spawn random 3 Dark orbs
-# [6] ESRandomSpawn -> Let's slurp mayonnaise in that world!
+# [6] ESRandomSpawn(92:11003) -> Let's slurp mayonnaise in that world!
 # Condition: One-time use & when Fire, Water, Wood, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 3 Light orbs
-# [7] ESAttackMultihit -> This is the end
+# [7] ESAttackMultihit(15:11007) -> This is the end
 # Condition: When < 10% hp
 # Enemy action
-# [8] ESSkillDelay -> Don't belittle an Earth policeman!
+# [8] ESSkillDelay(89:11004) -> Don't belittle an Earth policeman!
 # Condition: 33% chance
 # Delay active skills by 1 turns
-# [9] ESOrbLock -> You can't go one step further!
+# [9] ESOrbLock(94:11005) -> You can't go one step further!
 # Condition: 33% chance
 # Lock 4 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [10] ESAttackMultihit -> I'll purge all of you fools!
+# [10] ESAttackMultihit(15:11006) -> I'll purge all of you fools!
 # Condition: 34% chance
 # Enemy action
-# [11] ESEndPath -> ESEndPath
+# [11] ESEndPath(36:26) -> ESEndPath
 # end_turn

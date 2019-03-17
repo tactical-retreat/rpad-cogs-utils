@@ -101,47 +101,58 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESAbsorbThreshold -> Crown of Death
+# 	[0] ESAbsorbThreshold(87:10056) -> Crown of Death
 # 	Absorb damage >= 4000000 damage for 10 turns
-# 	[1] ESCloud -> Dark Cloud
+# 	[1] ESCloud(104:10057) -> Dark Cloud
 # 	1x2 cloud appear for 10 turns at random location
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESAttackMultihit -> Almulk Ghadab
+# [6] ESAttackMultihit(15:10059) -> Almulk Ghadab
 # Condition: When < 20% hp
 # Enemy action
-# [7] ESBranchCounter -> ESBranchCounter
+# [7] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 9, target rnd 12
-# [8] ESSetCounter -> ESSetCounter
+# [8] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [9] ESRowSpawnMulti -> Hudr Leaf
+# [9] ESRowSpawnMulti(79:10063) -> Hudr Leaf
 # Condition: 50% chance
 # Change 2nd, 3rd row to Wood, Jammer orbs
-# [10] ESSkillDelay -> Uwaaba
+# [10] ESSkillDelay(89:10064) -> Uwaaba
 # Delay active skills by 3 turns
-# [11] ESEndPath -> ESEndPath
+# [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [12] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESDebuffMovetime -> The Malice of Rebellion
+# 	[0] ESDebuffMovetime(39:10060) -> The Malice of Rebellion
 # 	Movetime 50% for 10 turns
-# 	[1] ESAttackUp -> Aaru's Throne
+# 	[1] ESAttackUp(17:10061) -> Aaru's Throne
 # 	Increase damage to 150% for the next 99 turns
-# [13] ESRowSpawnMulti -> Hudr Leaf
+# [13] ESRowSpawnMulti(79:10063) -> Hudr Leaf
 # Condition: 50% chance
 # Change 2nd, 3rd row to Wood, Jammer orbs
-# [14] ESSkillDelay -> Uwaaba
+# [14] ESSkillDelay(89:10064) -> Uwaaba
 # Delay active skills by 3 turns
-# [15] ESEndPath -> ESEndPath
+# [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [16] ESAttributeResist -> Fire Att. Halved
+# [16] ESAttributeResist(72:10065) -> Fire Att. Halved
 # Reduce damage from Fire by 50%

@@ -108,74 +108,85 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:355) -> ESPreemptive
 # Enable preempt if level 5
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 5, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [6] SkillSet:
-# 	[0] ESRecoverPlayer -> I haven't seen you in a while
+# 	[0] ESRecoverPlayer(55:3152) -> I haven't seen you in a while
 # 	Player recover 100% hp
-# 	[1] ESGravity -> I'll step on you again
+# 	[1] ESGravity(50:3153) -> I'll step on you again
 # 	Player -80% HP
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchCard -> ESBranchCard
+# [8] ESBranchCard(90:3159) -> ESBranchCard
 # Branch on player_cards HAS [974], target rnd 16
-# [9] ESBranchCard -> ESBranchCard
+# [9] ESBranchCard(90:3155) -> ESBranchCard
 # Branch on player_cards HAS [976], target rnd 19
-# [10] ESBranchCard -> ESBranchCard
+# [10] ESBranchCard(90:3157) -> ESBranchCard
 # Branch on player_cards HAS [977], target rnd 22
-# [11] ESBranchCard -> ESBranchCard
+# [11] ESBranchCard(90:3161) -> ESBranchCard
 # Branch on player_cards HAS [978], target rnd 25
-# [12] ESBranchHP -> ESBranchHP
+# [12] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 30, target rnd 28
-# [13] ESBindTarget -> Mid-Summer Embrace
+# [13] ESBindTarget(54:3164) -> Mid-Summer Embrace
 # Condition: When < 50% hp , one-time use
 # Bind 1 own leader for 3 turns
-# [14] ESRandomSpawn -> Summer Poison
+# [14] ESRandomSpawn(92:3163) -> Summer Poison
 # Condition: 30% chance when < 70% hp & when Fire, Water, Wood, Light, Dark, Heal, Jammer, Mortal Poison orbs are on the board
 # Spawn random 4 Poison orbs
-# [15] ESAttackMultihit -> My eyes are up here!
+# [15] ESAttackMultihit(15:3165) -> My eyes are up here!
 # Enemy action
-# [16] ESBranchFlag -> ESBranchFlag
+# [16] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 9
-# [17] ESFlagOperation -> ESFlagOperation
+# [17] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [18] ESAttackMultihit -> You're too close!
+# [18] ESAttackMultihit(15:3160) -> You're too close!
 # Enemy action
-# [19] ESBranchFlag -> ESBranchFlag
+# [19] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 10
-# [20] ESFlagOperation -> ESFlagOperation
+# [20] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [21] ESAttackMultihit -> I'll shave off your beard!
+# [21] ESAttackMultihit(15:3156) -> I'll shave off your beard!
 # Enemy action
-# [22] ESBranchFlag -> ESBranchFlag
+# [22] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 11
-# [23] ESFlagOperation -> ESFlagOperation
+# [23] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
-# [24] ESAttackMultihit -> Would the two of you like some tea?
+# [24] ESAttackMultihit(15:3158) -> Would the two of you like some tea?
 # Enemy action
-# [25] ESBranchFlag -> ESBranchFlag
+# [25] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 16, target rnd 12
-# [26] ESFlagOperation -> ESFlagOperation
+# [26] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11111
-# [27] ESAttackMultihit -> E-Evil eye??
+# [27] ESAttackMultihit(15:3162) -> E-Evil eye??
 # Enemy action
-# [28] ESBranchFlag -> ESBranchFlag
+# [28] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 32, target rnd 31
-# [29] ESFlagOperation -> ESFlagOperation
+# [29] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111111
-# [30] ESInactivity -> Summer Princess's Command
+# [30] ESInactivity(66:3166) -> Summer Princess's Command
 # Condition: When < 30% hp
 # Do nothing
-# [31] ESAttackMultihit -> Sea Dragon Summer Offensive
+# [31] ESAttackMultihit(15:3167) -> Sea Dragon Summer Offensive
 # Condition: When < 30% hp
 # Enemy action

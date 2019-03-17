@@ -99,44 +99,55 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 0 -        0
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESAttackUp -> I will eliminate the intruders!
+# [4] ESAttackUp(17:1696) -> I will eliminate the intruders!
 # Increase damage to 300% for the next 1 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchFlag -> ESBranchFlag
+# [6] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 10
-# [7] ESFlagOperation -> ESFlagOperation
+# [7] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [8] ESAttackMultihit -> Brave Smash
+# [8] ESAttackMultihit(15:1697) -> Brave Smash
 # Enemy action
-# [9] ESEndPath -> ESEndPath
+# [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [10] ESBindSkill -> Ancient Dragon Tribe's Curse
+# [10] ESBindSkill(14:1698) -> Ancient Dragon Tribe's Curse
 # Condition: When < 75% hp , one-time use
 # Bind active skills for 5 turns
-# [11] ESBranchHP -> ESBranchHP
+# [11] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 30, target rnd 14
-# [12] ESAttackMultihit -> Soil Bullet
+# [12] ESAttackMultihit(15:1699) -> Soil Bullet
 # Enemy action
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [14] ESBranchFlag -> ESBranchFlag
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 18
-# [15] ESFlagOperation -> ESFlagOperation
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [16] ESInactivity -> Draco Summon-Stone-Breaking Dragon
+# [16] ESInactivity(66:1700) -> Draco Summon-Stone-Breaking Dragon
 # Condition: When < 30% hp
 # Do nothing
-# [17] ESEndPath -> ESEndPath
+# [17] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [18] ESAttackMultihit -> Gigantic Crusher
+# [18] ESAttackMultihit(15:1701) -> Gigantic Crusher
 # Condition: When < 30% hp
 # Enemy action

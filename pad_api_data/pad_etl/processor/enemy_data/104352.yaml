@@ -203,112 +203,123 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [6] SkillSet:
-# 	[0] ESStatusShield -> Flaming Feather Robes
+# 	[0] ESStatusShield(20:9651) -> Flaming Feather Robes
 # 	Voids status ailments for 999 turns
-# 	[1] ESVoidShield -> Horns of Immense Heat
+# 	[1] ESVoidShield(71:9652) -> Horns of Immense Heat
 # 	Void damage >= 15000000 for 999 turns
-# 	[2] ESBombFixedSpawn -> Guidance Fire of Ruin
+# 	[2] ESBombFixedSpawn(103:9653) -> Guidance Fire of Ruin
 # 	Spawn locked Bomb orbs in the specified positions
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 18
-# [9] ESBranchHP -> ESBranchHP
+# [9] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 75, target rnd 14
 # [10] SkillSet:
 # 	Condition: 33% chance
-# 	[0] ESBoardChangeAttackBits -> All Encompassing Conflagration
+# 	[0] ESBoardChangeAttackBits(85:9655) -> All Encompassing Conflagration
 # 	Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison
-# 	[1] ESAttackMultihit -> Rigid Flametail Attack
+# 	[1] ESAttackMultihit(15:9658) -> Rigid Flametail Attack
 # 	Enemy action
 # [11] SkillSet:
 # 	Condition: 50% chance
-# 	[0] ESOrbChangeAttack -> Sacred Flame Jet
+# 	[0] ESOrbChangeAttack(48:9656) -> Sacred Flame Jet
 # 	Change Random to Jammer
-# 	[1] ESAttackMultihit -> Rigid Flametail Attack
+# 	[1] ESAttackMultihit(15:9658) -> Rigid Flametail Attack
 # 	Enemy action
 # [12] SkillSet:
-# 	[0] ESGravity -> Great Mauve Flame
+# 	[0] ESGravity(50:9657) -> Great Mauve Flame
 # 	Player -30% HP
-# 	[1] ESAttackMultihit -> Rigid Flametail Attack
+# 	[1] ESAttackMultihit(15:9658) -> Rigid Flametail Attack
 # 	Enemy action
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [14] ESBranchFlag -> ESBranchFlag
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 10
-# [15] ESFlagOperation -> ESFlagOperation
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [16] SkillSet:
-# 	[0] ESAttributeBlock -> The Gates of Hell
+# 	[0] ESAttributeBlock(107:9662) -> The Gates of Hell
 # 	Unable to Fire orbs for 3 turns
-# 	[1] ESSkyfall -> Beacon Fire from the Underworld
+# 	[1] ESSkyfall(68:9663) -> Beacon Fire from the Underworld
 # 	Fire skyfall +15% for 3 turns
-# [17] ESEndPath -> ESEndPath
+# [17] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [18] ESBranchHP -> ESBranchHP
+# [18] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 10, target rnd 29
-# [19] ESBranchFlag -> ESBranchFlag
+# [19] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 23
-# [20] ESFlagOperation -> ESFlagOperation
+# [20] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [21] SkillSet:
-# 	[0] ESBoardChangeAttackBits -> Purgatory Flames of Damnation
+# 	[0] ESBoardChangeAttackBits(85:9665) -> Purgatory Flames of Damnation
 # 	Change all orbs to Fire, Jammer
-# 	[1] ESCloud -> Heat Haze
+# 	[1] ESCloud(104:9666) -> Heat Haze
 # 	Row of cloud appear for 3 turns at 1st column
-# 	[2] ESAbsorbCombo -> Flame Dance Incarnation
+# 	[2] ESAbsorbCombo(67:9667) -> Flame Dance Incarnation
 # 	Absorb combo <= 7 damage for 99 turns
-# [22] ESEndPath -> ESEndPath
+# [22] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [23] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESRandomSpawn -> Alabaster Flame
+# 	[0] ESRandomSpawn(92:9672) -> Alabaster Flame
 # 	Spawn random 3 Light, Heal, Jammer, Poison, Mortal Poison orbs
-# 	[1] ESGravity -> Judgment Carving
+# 	[1] ESGravity(50:9677) -> Judgment Carving
 # 	Player -75% HP
 # [24] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESRandomSpawn -> Obsidian Flame
+# 	[0] ESRandomSpawn(92:9673) -> Obsidian Flame
 # 	Spawn random 6 Dark, Poison orbs
-# 	[1] ESAttackMultihit -> Judgment Carving
+# 	[1] ESAttackMultihit(15:9678) -> Judgment Carving
 # 	Enemy action
 # [25] SkillSet:
 # 	Condition: 33% chance
-# 	[0] ESBoardChangeAttackBits -> Scarlet Flame
+# 	[0] ESBoardChangeAttackBits(85:9669) -> Scarlet Flame
 # 	Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Jammer
-# 	[1] ESBindAwoken -> Judgment Carving
+# 	[1] ESBindAwoken(88:9674) -> Judgment Carving
 # 	Bind awoken skills for 1 turns
 # [26] SkillSet:
 # 	Condition: 50% chance
-# 	[0] ESColumnSpawnMulti -> Cerulean Flame
+# 	[0] ESColumnSpawnMulti(77:9670) -> Cerulean Flame
 # 	Change 2nd, 5th column to Water, Jammer orbs
-# 	[1] ESSkillDelay -> Judgment Carving
+# 	[1] ESSkillDelay(89:9675) -> Judgment Carving
 # 	Delay active skills by 1~2 turns
 # [27] SkillSet:
-# 	[0] ESRowSpawnMulti -> Virescent Flame
+# 	[0] ESRowSpawnMulti(79:9671) -> Virescent Flame
 # 	Change 2nd, 4th row to Wood, Heal, Poison orbs
-# 	[1] ESLeaderSwap -> Judgment Carving
+# 	[1] ESLeaderSwap(75:9676) -> Judgment Carving
 # 	Leader changes to random sub for 1 turns
-# [28] ESEndPath -> ESEndPath
+# [28] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [29] ESAttackMultihit -> Conflagration of Hell
+# [29] ESAttackMultihit(15:9684) -> Conflagration of Hell
 # Enemy action
-# [30] ESEndPath -> ESEndPath
+# [30] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [31] ESAttributeResist -> Fire Att. Half Reduced
+# [31] ESAttributeResist(72:9650) -> Fire Att. Half Reduced
 # Reduce damage from Fire by 50%
-# [32] ESResolve -> Dragonbound Soul Spirit
+# [32] ESResolve(73:12175) -> Dragonbound Soul Spirit
 # Survive attacks with 1 HP when HP > 99%

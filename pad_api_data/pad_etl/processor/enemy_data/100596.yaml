@@ -101,38 +101,49 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 3 -       11
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESBindRandom -> Ice Coffin
+# 	[0] ESBindRandom(1:9374) -> Ice Coffin
 # 	Bind 5 random cards for 1~2 turns
-# 	[1] ESBindSkill -> Ice Kiss
+# 	[1] ESBindSkill(14:9375) -> Ice Kiss
 # 	Bind active skills for 3 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] SkillSet:
 # 	Condition: When < 55% hp , one-time use
-# 	[0] ESJammerChangeRandom -> Divine Mischief
+# 	[0] ESJammerChangeRandom(13:9379) -> Divine Mischief
 # 	Change Random 2 to Jammer
-# 	[1] ESOrbLock -> Freeze
+# 	[1] ESOrbLock(94:9380) -> Freeze
 # 	Lock all Jammer orbs
 # [7] SkillSet:
 # 	Condition: When < 30% hp , one-time use
-# 	[0] ESBindRandom -> Crystal Coffin
+# 	[0] ESBindRandom(1:9382) -> Crystal Coffin
 # 	Bind 3 random cards for 2~3 turns
-# 	[1] ESAttackUp -> Serene Wrath
+# 	[1] ESAttackUp(19:9383) -> Serene Wrath
 # 	Increase damage to 200% for the next 999 turns
-# [8] ESAttackMultihit -> Freeze Blast
+# [8] ESAttackMultihit(15:9378) -> Freeze Blast
 # Condition: 80% chance when < 75% hp
 # Enemy action
-# [9] ESRandomSpawn -> Cooling Poison
+# [9] ESRandomSpawn(92:9377) -> Cooling Poison
 # Condition: When fire, water, wood, light, dark, heal, jammer, mortal poison orbs are on the board
 # Spawn random 1 Poison orbs
-# [10] ESEndPath -> ESEndPath
+# [10] ESEndPath(36:26) -> ESEndPath
 # end_turn

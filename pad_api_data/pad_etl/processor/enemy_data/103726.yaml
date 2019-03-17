@@ -99,50 +99,61 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 3 -       11
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 10
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESBranchLevel -> ESBranchLevel
+# [6] ESBranchLevel(34:24) -> ESBranchLevel
 # Branch on level = 4, target rnd 8
-# [7] ESAbsorbAttribute -> Huohushenfu
+# [7] ESAbsorbAttribute(53:8200) -> Huohushenfu
 # Absorb Fire damage for 2~6 turns
-# [8] ESStatusShield -> Hushenfu
+# [8] ESStatusShield(20:7376) -> Hushenfu
 # Voids status ailments for 1 turns
-# [9] ESEndPath -> ESEndPath
+# [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [10] ESOrbLock -> Huoshufu
+# [10] ESOrbLock(94:7377) -> Huoshufu
 # Condition: When < 50% hp , one-time use
 # Lock all Fire orbs
-# [11] ESAttackUp -> Fennu
+# [11] ESAttackUp(17:7353) -> Fennu
 # Increase damage to 150% for the next 999 turns
-# [12] ESBranchFlag -> ESBranchFlag
+# [12] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 16
-# [13] ESFlagOperation -> ESFlagOperation
+# [13] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [14] ESBombFixedSpawn -> Baozha
+# [14] ESBombFixedSpawn(103:7347) -> Baozha
 # Spawn Bomb orbs in the specified positions
-# [15] ESEndPath -> ESEndPath
+# [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [16] ESBranchFlag -> ESBranchFlag
+# [16] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 20
-# [17] ESFlagOperation -> ESFlagOperation
+# [17] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [18] ESAttackMultihit -> Gongji
+# [18] ESAttackMultihit(15:7352) -> Gongji
 # Enemy action
-# [19] ESEndPath -> ESEndPath
+# [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [20] ESFlagOperation -> ESFlagOperation
+# [20] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b110
-# [21] ESInactivity -> Jumping, jumping
+# [21] ESInactivity(66:7360) -> Jumping, jumping
 # Do nothing
-# [22] ESEndPath -> ESEndPath
+# [22] ESEndPath(36:26) -> ESEndPath
 # end_turn

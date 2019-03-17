@@ -83,37 +83,48 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:355) -> ESPreemptive
 # Enable preempt if level 5
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 5, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESAbsorbThreshold -> Innocent Brush Strokes
+# [6] ESAbsorbThreshold(87:6002) -> Innocent Brush Strokes
 # Absorb damage >= 200000 damage for 2 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESOrbLock -> Victor Book♪
+# [8] ESOrbLock(94:6005) -> Victor Book♪
 # Condition: When < 25% hp , one-time use
 # Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [9] ESAttackMultihit -> The Sword Kusanagi
+# [9] ESAttackMultihit(15:6006) -> The Sword Kusanagi
 # Condition: When < 25% hp
 # Enemy action
-# [10] ESBranchFlag -> ESBranchFlag
+# [10] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 13
-# [11] ESFlagOperation -> ESFlagOperation
+# [11] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [12] ESBombFixedSpawn -> Explosive Writing
+# [12] ESBombFixedSpawn(103:6004) -> Explosive Writing
 # Spawn Bomb orbs in the specified positions
-# [13] ESFlagOperation -> ESFlagOperation
+# [13] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b10
-# [14] ESOrbChangeAttack -> Fire Spirit's Writing
+# [14] ESOrbChangeAttack(48:6003) -> Fire Spirit's Writing
 # Change Random to Fire
-# [15] ESEndPath -> ESEndPath
+# [15] ESEndPath(36:26) -> ESEndPath
 # end_turn

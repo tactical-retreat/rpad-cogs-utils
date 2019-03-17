@@ -110,51 +110,62 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 10 -     1010
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESSkillDelay -> Demonic Eye of Truth
+# 	[0] ESSkillDelay(89:6986) -> Demonic Eye of Truth
 # 	Delay active skills by 10 turns
-# 	[1] ESDebuffRCV -> Lifeseal Talisman
+# 	[1] ESDebuffRCV(105:6987) -> Lifeseal Talisman
 # 	Rcv 50% for 10 turns
-# 	[2] ESBindSkill -> Chime of the Demon Moon
+# 	[2] ESBindSkill(14:6988) -> Chime of the Demon Moon
 # 	Bind active skills for 10 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESAttackUpStatus -> Accursed Tiara
+# [6] ESAttackUpStatus(18:6998) -> Accursed Tiara
 # Condition: after being affected by a status effect
 # Increase damage to 200% for the next 999 turns
-# [7] ESBoardChangeAttackBits -> Darkness
+# [7] ESBoardChangeAttackBits(85:6999) -> Darkness
 # Condition: When < 5% hp
 # Change all orbs to Dark
-# [8] ESBranchFlag -> ESBranchFlag
+# [8] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 12
-# [9] ESFlagOperation -> ESFlagOperation
+# [9] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [10] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESGravity -> Bone-Shaking Bloom Hammer
+# 	[0] ESGravity(50:6990) -> Bone-Shaking Bloom Hammer
 # 	Player -99% HP
-# 	[1] ESRandomSpawn -> Demonheart
+# 	[1] ESRandomSpawn(92:6991) -> Demonheart
 # 	Spawn random 3 Heal orbs
-# [11] ESEndPath -> ESEndPath
+# [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [12] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESBindAwoken -> Dark Demon Cage
+# 	[0] ESBindAwoken(88:6995) -> Dark Demon Cage
 # 	Bind awoken skills for 5 turns
-# 	[1] ESStatusShield -> Seal of Darkness
+# 	[1] ESStatusShield(20:6996) -> Seal of Darkness
 # 	Voids status ailments for 9 turns
-# [13] ESOrbChangeAttack -> Shadow Drop
+# [13] ESOrbChangeAttack(48:6994) -> Shadow Drop
 # Condition: 50% chance
 # Change Water to Dark
-# [14] ESAttackMultihit -> Concealed Mirror Kunai
+# [14] ESAttackMultihit(15:6993) -> Concealed Mirror Kunai
 # Enemy action
-# [15] ESEndPath -> ESEndPath
+# [15] ESEndPath(36:26) -> ESEndPath
 # end_turn

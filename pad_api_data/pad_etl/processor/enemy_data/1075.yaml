@@ -45,39 +45,50 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 3 -       11
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 0 -        0
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:697) -> ESPreemptive
 # Enable preempt if level 3
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 3, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESRandomSpawn -> I leave you some strawberries
+# [6] ESRandomSpawn(92:4263) -> I leave you some strawberries
 # Condition: When water, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board
 # Spawn random 3 Fire orbs
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchFlag -> ESBranchFlag
+# [8] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 15
-# [9] ESOrbChangeAttack -> Clean when you're done!
+# [9] ESOrbChangeAttack(48:4260) -> Clean when you're done!
 # Change Jammer to Heal
-# [10] ESFlagOperation -> ESFlagOperation
+# [10] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [11] ESRandomSpawn -> Let's eat one!
+# [11] ESRandomSpawn(92:4259) -> Let's eat one!
 # Condition: When fire orbs are on the board
 # Spawn random 1 Jammer orbs
-# [12] ESFlagOperation -> ESFlagOperation
+# [12] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b10
-# [13] ESBindAttack -> Food bitterness is scary right?
+# [13] ESBindAttack(63:4261) -> Food bitterness is scary right?
 # Bind 6 random for 1 turns
-# [14] ESEndPath -> ESEndPath
+# [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [15] ESFlagOperation -> ESFlagOperation
+# [15] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b10
-# [16] ESDamageShield -> Strawberries are the best!!!
+# [16] ESDamageShield(74:4262) -> Strawberries are the best!!!
 # Reduce damage from all sources by 75% for 1 turns

@@ -200,68 +200,79 @@ records:
   usage_pct: 50
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 7 -      111
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [6] SkillSet:
-# 	[0] ESStatusShield -> I'm Kamen Rider Genm!
+# 	[0] ESStatusShield(20:11804) -> I'm Kamen Rider Genm!
 # 	Voids status ailments for 10 turns
-# 	[1] ESDamageShield -> Multi Unbreaker
+# 	[1] ESDamageShield(74:11777) -> Multi Unbreaker
 # 	Reduce damage from all sources by 50% for 5 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESDebuffMovetime -> Anti Bugster Area
+# [8] ESDebuffMovetime(39:11806) -> Anti Bugster Area
 # Condition: One-time use
 # Movetime -1s for 5 turns
-# [9] ESBranchHP -> ESBranchHP
+# [9] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 19
-# [10] ESBranchCounter -> ESBranchCounter
+# [10] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 4, target rnd 15
-# [11] ESSetCounter -> ESSetCounter
+# [11] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [12] ESAttackMultihit -> GM Glows Arm
+# [12] ESAttackMultihit(15:11807) -> GM Glows Arm
 # Condition: 50% chance
 # Enemy action
-# [13] ESRandomSpawn -> Alfight Shoes
+# [13] ESRandomSpawn(92:11808) -> Alfight Shoes
 # Condition: 50% chance & when Fire, Water, Wood, Light, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 4 Dark orbs
-# [14] ESEndPath -> ESEndPath
+# [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [15] ESSetCounter -> ESSetCounter
+# [15] ESSetCounter(25:15) -> ESSetCounter
 # counter = 0
-# [16] ESCloud -> Mid-Air
+# [16] ESCloud(104:11778) -> Mid-Air
 # Condition: 50% chance
 # 2x1 cloud appear for 5 turns at random location
-# [17] ESAbsorbCombo -> Double Jump
+# [17] ESAbsorbCombo(67:11779) -> Double Jump
 # Condition: 50% chance
 # Absorb combo <= 4 damage for 5 turns
-# [18] ESEndPath -> ESEndPath
+# [18] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [19] ESAttackUp -> Gain Riser
+# [19] ESAttackUp(17:11789) -> Gain Riser
 # Condition: One-time use
 # Increase damage to 150% for the next 3 turns
-# [20] ESBranchHP -> ESBranchHP
+# [20] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 21, target rnd 10
-# [21] ESAbsorbAttribute -> Mech Build Guard
+# [21] ESAbsorbAttribute(53:11790) -> Mech Build Guard
 # Condition: One-time use
 # Absorb Fire damage for 3 turns
 # [22] SkillSet:
-# 	[0] ESRandomSpawn -> Gashat! Finishing Move!
+# 	[0] ESRandomSpawn(92:11810) -> Gashat! Finishing Move!
 # 	Spawn random 6 Dark orbs
-# 	[1] ESAttackMultihit -> Mighty Critical Strike
+# 	[1] ESAttackMultihit(15:11811) -> Mighty Critical Strike
 # 	Enemy action
-# [23] ESEndPath -> ESEndPath
+# [23] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [24] SkillSet:
 # 	Condition: On death
-# 	[0] ESInactivity -> I'm... indestructible​!
+# 	[0] ESInactivity(66:11812) -> I'm... indestructible​!
 # 	Do nothing

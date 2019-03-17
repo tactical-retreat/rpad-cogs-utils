@@ -136,62 +136,73 @@ records:
   usage_pct: 30
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 0 -        0
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [6] SkillSet:
-# 	[0] ESAttackUp -> Matarukaja
+# 	[0] ESAttackUp(17:9964) -> Matarukaja
 # 	Increase damage to 150% for the next 3 turns
-# 	[1] ESStatusShield -> Null Despair
+# 	[1] ESStatusShield(20:9965) -> Null Despair
 # 	Voids status ailments for 999 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchFlag -> ESBranchFlag
+# [8] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 12
-# [9] ESFlagOperation -> ESFlagOperation
+# [9] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [10] ESAttackMultihit -> Megaton Raid
+# [10] ESAttackMultihit(15:9968) -> Megaton Raid
 # Enemy action
-# [11] ESEndPath -> ESEndPath
+# [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [12] ESBranchHP -> ESBranchHP
+# [12] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 16
-# [13] ESAttackMultihit -> Megaton Raid
+# [13] ESAttackMultihit(15:9968) -> Megaton Raid
 # Condition: 50% chance
 # Enemy action
-# [14] ESOrbLock -> Bufudyne
+# [14] ESOrbLock(94:9967) -> Bufudyne
 # Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [15] ESEndPath -> ESEndPath
+# [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [16] ESBranchFlag -> ESBranchFlag
+# [16] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 20
-# [17] ESFlagOperation -> ESFlagOperation
+# [17] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [18] ESOrbLock -> Mabufudyne
+# [18] ESOrbLock(94:9949) -> Mabufudyne
 # Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [19] ESEndPath -> ESEndPath
+# [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [20] ESOrbLock -> Mabufudyne
+# [20] ESOrbLock(94:9949) -> Mabufudyne
 # Condition: 40% chance
 # Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [21] ESAttackMultihit -> Megaton Raid
+# [21] ESAttackMultihit(15:9968) -> Megaton Raid
 # Condition: 30% chance
 # Enemy action
-# [22] ESOrbLock -> Bufudyne
+# [22] ESOrbLock(94:9967) -> Bufudyne
 # Condition: 30% chance
 # Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [23] ESEndPath -> ESEndPath
+# [23] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [24] SkillSet:
 # 	Condition: On death
-# 	[0] ESInactivity -> Hee-ho... I surrender!
+# 	[0] ESInactivity(66:9970) -> Hee-ho... I surrender!
 # 	Do nothing

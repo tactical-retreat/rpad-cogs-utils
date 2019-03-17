@@ -54,26 +54,37 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 3 -       11
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 0 -        0
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
+# [1] ESBranchRemainingEnemies(120:8595) -> ESBranchRemainingEnemies
 # Branch on remaining enemies = 1, target rnd 4
-# [2] ESAttackMultihit -> Big Blade
+# [2] ESAttackMultihit(15:1294) -> Big Blade
 # Enemy action
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 2
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [6] SkillSet:
-# 	[0] ESRecoverEnemy -> Pouring Fighting Spirit
+# 	[0] ESRecoverEnemy(86:11641) -> Pouring Fighting Spirit
 # 	Enemy recover 100% hp
-# 	[1] ESDamageShield -> Counterattack
+# 	[1] ESDamageShield(74:11642) -> Counterattack
 # 	Reduce damage from all sources by 75% for 99 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESResolve -> Resolve
+# [8] ESResolve(73:11638) -> Resolve
 # Survive attacks with 1 HP when HP > 50%
-# [9] ESTurnChangePassive -> Enemy's next turn changed
+# [9] ESTurnChangePassive(106:11639) -> Enemy's next turn changed
 # Enemy turn counter change to 1 when HP <= 50%

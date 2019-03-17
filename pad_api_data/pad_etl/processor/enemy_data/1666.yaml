@@ -137,45 +137,56 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 31 -    11111
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [6] SkillSet:
-# 	[0] ESCloud -> Let's go!
+# 	[0] ESCloud(104:9699) -> Let's go!
 # 	2x3 cloud appear for 6 turns at random location
-# 	[1] ESDamageShield -> Protection of the Ether and the Sun
+# 	[1] ESDamageShield(74:9700) -> Protection of the Ether and the Sun
 # 	Reduce damage from all sources by 75% for 5 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESDebuffRCV -> How long can you bear through this?
+# [8] ESDebuffRCV(105:9702) -> How long can you bear through this?
 # Condition: One-time use
 # Rcv 10% for 5 turns
-# [9] ESAttackMultihit -> Eternity's Judgment
+# [9] ESAttackMultihit(15:9703) -> Eternity's Judgment
 # Condition: One-time use
 # Enemy action
-# [10] ESAttackMultihit -> Eternity's Judgment
+# [10] ESAttackMultihit(15:9704) -> Eternity's Judgment
 # Condition: One-time use
 # Enemy action
-# [11] ESAttackMultihit -> Eternity's Judgment
+# [11] ESAttackMultihit(15:9705) -> Eternity's Judgment
 # Condition: One-time use
 # Enemy action
-# [12] ESAttackMultihit -> Eternity's Judgment
+# [12] ESAttackMultihit(15:9706) -> Eternity's Judgment
 # Condition: One-time use
 # Enemy action
-# [13] ESAttackMultihit -> Guidance to the Underworld
+# [13] ESAttackMultihit(15:9707) -> Guidance to the Underworld
 # Enemy action
-# [14] ESEndPath -> ESEndPath
+# [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [15] SkillSet:
 # 	Condition: On death
-# 	[0] ESDebuffMovetime -> Tears of the Sacred Divinity
+# 	[0] ESDebuffMovetime(39:9708) -> Tears of the Sacred Divinity
 # 	Movetime 50% for 2 turns

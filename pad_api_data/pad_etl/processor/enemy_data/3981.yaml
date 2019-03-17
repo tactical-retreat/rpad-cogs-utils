@@ -92,55 +92,66 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 2 -       10
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 10
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESBranchLevel -> ESBranchLevel
+# [6] ESBranchLevel(34:24) -> ESBranchLevel
 # Branch on level = 4, target rnd 8
 # [7] SkillSet:
-# 	[0] ESStatusShield -> New God of Apokolips
+# 	[0] ESStatusShield(20:8448) -> New God of Apokolips
 # 	Voids status ailments for 10 turns
-# 	[1] ESAbsorbCombo -> Villainous Strategy
+# 	[1] ESAbsorbCombo(67:8449) -> Villainous Strategy
 # 	Absorb combo <= 6 damage for 5 turns
 # [8] SkillSet:
-# 	[0] ESStatusShield -> New God of Apokolips
+# 	[0] ESStatusShield(20:8448) -> New God of Apokolips
 # 	Voids status ailments for 10 turns
-# 	[1] ESAbsorbCombo -> Villainous Strategy
+# 	[1] ESAbsorbCombo(67:8451) -> Villainous Strategy
 # 	Absorb combo <= 4 damage for 5 turns
-# [9] ESEndPath -> ESEndPath
+# [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [10] ESBranchHP -> ESBranchHP
+# [10] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 16
-# [11] ESColumnSpawnMulti -> Splitting Swing
+# [11] ESColumnSpawnMulti(77:8457) -> Splitting Swing
 # Condition: When < 30% hp , one-time use
 # Change 3rd, 4th column to Jammer orbs, 1st, 2nd, 5th, 6th column to Fire, Water, Wood, Light, Dark, Heal orbs
-# [12] ESGravity -> Radion Bolt
+# [12] ESGravity(50:8455) -> Radion Bolt
 # Condition: 20% chance
 # Player -99% HP
-# [13] ESColumnSpawnMulti -> Blazing Slash
+# [13] ESColumnSpawnMulti(77:8453) -> Blazing Slash
 # Condition: 30% chance
 # Change 3rd column to Fire orbs
-# [14] ESAttackMultihit -> Axe Sweep
+# [14] ESAttackMultihit(15:8454) -> Axe Sweep
 # Enemy action
-# [15] ESEndPath -> ESEndPath
+# [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [16] ESBranchFlag -> ESBranchFlag
+# [16] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 11
-# [17] ESFlagOperation -> ESFlagOperation
+# [17] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [18] ESAttackUp -> Might of Apokolips
+# [18] ESAttackUp(17:8456) -> Might of Apokolips
 # Condition: When < 50% hp
 # Increase damage to 150% for the next 999 turns
-# [19] ESEndPath -> ESEndPath
+# [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [20] ESAttributeResist -> Halve Light & Dark
+# [20] ESAttributeResist(72:8458) -> Halve Light & Dark
 # Reduce damage from Light, Dark by 50%

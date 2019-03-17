@@ -99,36 +99,47 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 0 -        0
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:355) -> ESPreemptive
 # Enable preempt if level 5
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 5, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESStatusShield -> Fertile Guard
+# [6] ESStatusShield(20:205) -> Fertile Guard
 # Voids status ailments for 999 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 50, target rnd 14
-# [9] ESBranchFlag -> ESBranchFlag
+# [9] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 12
-# [10] ESFlagOperation -> ESFlagOperation
+# [10] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [11] ESBindAttack -> Thorn Cage
+# [11] ESBindAttack(63:943) -> Thorn Cage
 # Bind 4 random for 2~4 turns
-# [12] ESOrbChangeAttack -> Rose Ocean
+# [12] ESOrbChangeAttack(48:944) -> Rose Ocean
 # Change Heal to Water
-# [13] ESOrbChangeAttack -> Beautiful Rose
+# [13] ESOrbChangeAttack(48:942) -> Beautiful Rose
 # Change Random to Heal
-# [14] ESOrbChangeAttack -> Flower Tail
+# [14] ESOrbChangeAttack(48:902) -> Flower Tail
 # Condition: One-time use
 # Change Random to Heal
-# [15] ESBindAttack -> Thorn Whip
+# [15] ESBindAttack(63:941) -> Thorn Whip
 # Bind 1 subs for 2 turns

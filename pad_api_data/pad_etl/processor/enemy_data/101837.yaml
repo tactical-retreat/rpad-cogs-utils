@@ -47,37 +47,48 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 0 -        0
+# [53] 2 -       10
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESLeaderSwap -> Medjellusion
+# 	[0] ESLeaderSwap(75:1787) -> Medjellusion
 # 	Leader changes to random sub for 3 turns
-# 	[1] ESOrbLock -> Medje Kick
+# 	[1] ESOrbLock(94:8225) -> Medje Kick
 # 	Lock 8 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESAbsorbCombo -> Unmoving Soul
+# [6] ESAbsorbCombo(67:1785) -> Unmoving Soul
 # Absorb combo <= 4 damage for 99 turns
-# [7] ESAttackMultihit -> Medje The End
+# [7] ESAttackMultihit(15:1791) -> Medje The End
 # Condition: When < 30% hp
 # Enemy action
-# [8] ESOrbChangeAttack -> Invisible Glimpse
+# [8] ESOrbChangeAttack(48:1786) -> Invisible Glimpse
 # Condition: One-time use
 # Change Heal to Jammer
-# [9] ESOrbChangeAttack -> Medjebeam
+# [9] ESOrbChangeAttack(48:1789) -> Medjebeam
 # Condition: 30% chance
 # Change Random to Dark
-# [10] ESGravity -> Medjebeam
+# [10] ESGravity(50:1788) -> Medjebeam
 # Condition: 40% chance
 # Player -99% HP
-# [11] ESBlind -> Medjebeam
+# [11] ESBlind(62:1790) -> Medjebeam
 # Condition: 60% chance
 # Blind all orbs on the board
-# [12] ESLeaderSwap -> Medjellusion
+# [12] ESLeaderSwap(75:1787) -> Medjellusion
 # Leader changes to random sub for 3 turns

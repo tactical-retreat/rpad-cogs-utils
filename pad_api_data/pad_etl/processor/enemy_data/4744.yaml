@@ -168,96 +168,107 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESStatusShield -> Here I go, Máni!
+# 	[0] ESStatusShield(20:10549) -> Here I go, Máni!
 # 	Voids status ailments for 999 turns
-# 	[1] ESSkyfall -> OK, Sól!
+# 	[1] ESSkyfall(96:10550) -> OK, Sól!
 # 	Locked random skyfall +10% for 15 turns
-# 	[2] ESOrbLock -> Inseparable Sides
+# 	[2] ESOrbLock(94:10551) -> Inseparable Sides
 # 	Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchHP -> ESBranchHP
+# [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 12
 # [7] SkillSet:
 # 	Condition: 25% chance
-# 	[0] ESOrbChangeAttack -> Noctilucence
+# 	[0] ESOrbChangeAttack(48:10555) -> Noctilucence
 # 	Change Random to Heal
-# 	[1] ESBlind -> Gloom
+# 	[1] ESBlind(62:10553) -> Gloom
 # 	Blind all orbs on the board
 # [8] SkillSet:
 # 	Condition: 25% chance
-# 	[0] ESPoisonChangeRandomAttack -> Rotting Heat
+# 	[0] ESPoisonChangeRandomAttack(64:10556) -> Rotting Heat
 # 	Change Random 3 to Poison
-# 	[1] ESBlind -> Gloom
+# 	[1] ESBlind(62:10553) -> Gloom
 # 	Blind all orbs on the board
 # [9] SkillSet:
 # 	Condition: 25% chance
-# 	[0] ESOrbChangeAttack -> Noctilucence
+# 	[0] ESOrbChangeAttack(48:10555) -> Noctilucence
 # 	Change Random to Heal
-# 	[1] ESBindAttack -> Drought
+# 	[1] ESBindAttack(63:10554) -> Drought
 # 	Bind 1 subs for 1 turns
 # [10] SkillSet:
 # 	Condition: 25% chance
-# 	[0] ESPoisonChangeRandomAttack -> Rotting Heat
+# 	[0] ESPoisonChangeRandomAttack(64:10556) -> Rotting Heat
 # 	Change Random 3 to Poison
-# 	[1] ESBindAttack -> Drought
+# 	[1] ESBindAttack(63:10554) -> Drought
 # 	Bind 1 subs for 1 turns
-# [11] ESEndPath -> ESEndPath
+# [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [12] ESBranchFlag -> ESBranchFlag
+# [12] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 16
-# [13] ESFlagOperation -> ESFlagOperation
+# [13] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [14] SkillSet:
-# 	[0] ESSkillDelay -> Rúro Pari
+# 	[0] ESSkillDelay(89:10561) -> Rúro Pari
 # 	Delay active skills by 3 turns
-# 	[1] ESAttackMultihit -> Synchronized Burst
+# 	[1] ESAttackMultihit(15:10562) -> Synchronized Burst
 # 	Enemy action
-# [15] ESEndPath -> ESEndPath
+# [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [16] ESBranchHP -> ESBranchHP
+# [16] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 10, target rnd 22
 # [17] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAttackMultihit -> Synchronized Burst
+# 	[0] ESAttackMultihit(15:10562) -> Synchronized Burst
 # 	Enemy action
-# 	[1] ESBlind -> Gloom
+# 	[1] ESBlind(62:10553) -> Gloom
 # 	Blind all orbs on the board
 # [18] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAttackMultihit -> Synchronized Burst
+# 	[0] ESAttackMultihit(15:10562) -> Synchronized Burst
 # 	Enemy action
-# 	[1] ESBindAttack -> Drought
+# 	[1] ESBindAttack(63:10554) -> Drought
 # 	Bind 1 subs for 1 turns
 # [19] SkillSet:
 # 	Condition: 25% chance
-# 	[0] ESGravity -> Deteri
+# 	[0] ESGravity(50:10564) -> Deteri
 # 	Player -75% HP
-# 	[1] ESBlind -> Gloom
+# 	[1] ESBlind(62:10553) -> Gloom
 # 	Blind all orbs on the board
 # [20] SkillSet:
 # 	Condition: 25% chance
-# 	[0] ESGravity -> Deteri
+# 	[0] ESGravity(50:10564) -> Deteri
 # 	Player -75% HP
-# 	[1] ESBindAttack -> Drought
+# 	[1] ESBindAttack(63:10554) -> Drought
 # 	Bind 1 subs for 1 turns
-# [21] ESEndPath -> ESEndPath
+# [21] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [22] SkillSet:
-# 	[0] ESChangeAttribute -> Dusk
+# 	[0] ESChangeAttribute(46:10569) -> Dusk
 # 	Change own attribute to random one of Fire, Water, Wood, Light, Dark
-# 	[1] ESAttackMultihit -> Demina Miracle
+# 	[1] ESAttackMultihit(15:10570) -> Demina Miracle
 # 	Enemy action
-# [23] ESEndPath -> ESEndPath
+# [23] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [24] ESAttributeResist -> Light & Wood Resistance
+# [24] ESAttributeResist(72:10548) -> Light & Wood Resistance
 # Reduce damage from Wood, Light by 50%

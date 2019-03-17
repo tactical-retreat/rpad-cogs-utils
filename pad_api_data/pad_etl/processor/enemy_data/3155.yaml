@@ -126,49 +126,60 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 3 -       11
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 5
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESStatusShield -> Welcome to the big leagues
+# 	[0] ESStatusShield(20:5363) -> Welcome to the big leagues
 # 	Voids status ailments for 10 turns
-# 	[1] ESOrbChangeAttack -> Wasser Biene
+# 	[1] ESOrbChangeAttack(48:5364) -> Wasser Biene
 # 	Change Random to Water
-# [5] ESDamageShield -> Prima Schild
+# [5] ESDamageShield(74:5372) -> Prima Schild
 # Condition: When < 50% hp , one-time use
 # Reduce damage from all sources by 50% for 3 turns
-# [6] ESDebuffMovetime -> Zeit Rauben
+# [6] ESDebuffMovetime(39:5369) -> Zeit Rauben
 # Condition: When < 50% hp , one-time use
 # Movetime 50% for 3 turns
-# [7] ESSkyfall -> Licht Regen
+# [7] ESSkyfall(68:5373) -> Licht Regen
 # Condition: When < 70% hp , one-time use
 # Light skyfall +15% for 10 turns
-# [8] ESAttackMultihit -> Eisen Zorn
+# [8] ESAttackMultihit(15:5370) -> Eisen Zorn
 # Condition: When < 15% hp
 # Enemy action
-# [9] ESBranchFlag -> ESBranchFlag
+# [9] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 12
-# [10] ESFlagOperation -> ESFlagOperation
+# [10] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [11] ESRandomSpawn -> Blitzen Schwert
+# [11] ESRandomSpawn(92:5366) -> Blitzen Schwert
 # Condition: When fire, water, wood, light, dark, jammer, poison, mortal poison orbs are on the board
 # Spawn random 4 Heal orbs
-# [12] ESFlagOperation -> ESFlagOperation
+# [12] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b10
-# [13] ESRandomSpawn -> Drehung Klinge
+# [13] ESRandomSpawn(92:5367) -> Drehung Klinge
 # Condition: 50% chance & when Heal orbs are on the board
 # Change all orbs to Jammer
-# [14] ESRandomSpawn -> Windhose
+# [14] ESRandomSpawn(92:5368) -> Windhose
 # Condition: When heal orbs are on the board
 # Change all orbs to Mortal Poison
-# [15] ESColumnSpawnMulti -> Blitz Lanze
+# [15] ESColumnSpawnMulti(77:5371) -> Blitz Lanze
 # Change 3rd, 4th column to Light, Heal orbs
-# [16] ESEndPath -> ESEndPath
+# [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [17] ESAttributeResist -> Robot Dark Halved
+# [17] ESAttributeResist(72:5374) -> Robot Dark Halved
 # Reduce damage from Dark by 50%

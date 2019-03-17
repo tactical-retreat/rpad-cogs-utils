@@ -90,34 +90,45 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:355) -> ESPreemptive
 # Enable preempt if level 5
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 5, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESSkillDelay -> Found the new kid in the class!
+# [6] ESSkillDelay(89:2034) -> Found the new kid in the class!
 # Delay active skills by 2 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESAttackUp -> Now I'm mad!!
+# [8] ESAttackUp(17:2037) -> Now I'm mad!!
 # Condition: When < 70% hp , one-time use
 # Increase damage to 200% for the next 1 turns
-# [9] ESAttackMultihit -> Ur FEVER!
+# [9] ESAttackMultihit(15:2038) -> Ur FEVER!
 # Condition: When < 30% hp
 # Enemy action
-# [10] ESNone -> ESNone
+# [10] ESNone(0:0) -> ESNone
 # nothing
-# [11] ESOrbChangeAttack -> OMG!!
+# [11] ESOrbChangeAttack(48:2035) -> OMG!!
 # Condition: 50% chance
 # Change Water to Fire
-# [12] ESAttackMultihit -> Take that!
+# [12] ESAttackMultihit(15:2036) -> Take that!
 # Enemy action
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn

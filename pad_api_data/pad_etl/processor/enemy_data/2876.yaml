@@ -144,68 +144,79 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [6] SkillSet:
-# 	[0] ESStatusShield -> Let's confirm your wishes
+# 	[0] ESStatusShield(20:4224) -> Let's confirm your wishes
 # 	Voids status ailments for 5 turns
-# 	[1] ESBoardChangeAttackBits -> Abyss Dark Ring
+# 	[1] ESBoardChangeAttackBits(85:4225) -> Abyss Dark Ring
 # 	Change all orbs to Water, Dark, Heal
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [8] SkillSet:
 # 	Condition: When < 20% hp , one-time use
-# 	[0] ESRecoverEnemy -> Conquering Will
+# 	[0] ESRecoverEnemy(86:4221) -> Conquering Will
 # 	Enemy recover 55% hp
-# 	[1] ESAttackUp -> Dragonbound's Wrath
+# 	[1] ESAttackUp(17:4222) -> Dragonbound's Wrath
 # 	Increase damage to 200% for the next 999 turns
 # [9] SkillSet:
 # 	Condition: When < 20% hp
-# 	[0] ESAttackMultihit -> Abyss Hole
+# 	[0] ESAttackMultihit(15:4232) -> Abyss Hole
 # 	Enemy action
-# 	[1] ESBoardChangeAttackBits -> Abyss Dark Ring
+# 	[1] ESBoardChangeAttackBits(85:4225) -> Abyss Dark Ring
 # 	Change all orbs to Water, Dark, Heal
-# [10] ESBranchHP -> ESBranchHP
+# [10] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 19
-# [11] ESBranchFlag -> ESBranchFlag
+# [11] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 16
-# [12] ESFlagOperation -> ESFlagOperation
+# [12] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [13] ESBranchCard -> ESBranchCard
+# [13] ESBranchCard(90:4227) -> ESBranchCard
 # Branch on player_cards HAS [2442, 2443], target rnd 15
-# [14] ESSkillDelay -> Wave of Calmness
+# [14] ESSkillDelay(89:4229) -> Wave of Calmness
 # Delay active skills by 2 turns
-# [15] ESSkillDelay -> Use the Claws's power as you wish
+# [15] ESSkillDelay(89:4228) -> Use the Claws's power as you wish
 # Delay active skills by 2 turns
-# [16] ESColumnSpawnMulti -> Blue Ice Revival
+# [16] ESColumnSpawnMulti(77:4230) -> Blue Ice Revival
 # Condition: 40% chance
 # Change 1st column to Dark orbs, 2nd column to Water orbs
-# [17] ESAttackMultihit -> Abyss Hole
+# [17] ESAttackMultihit(15:4232) -> Abyss Hole
 # Condition: 50% chance
 # Enemy action
-# [18] ESRandomSpawn -> Abyss' Guidance
+# [18] ESRandomSpawn(92:4231) -> Abyss' Guidance
 # Condition: When fire, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board
 # Spawn random 8 Water orbs
-# [19] ESBranchFlag -> ESBranchFlag
+# [19] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 16
-# [20] ESFlagOperation -> ESFlagOperation
+# [20] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [21] SkillSet:
-# 	[0] ESAbsorbAttribute -> Abyssal Shark Dragon's Trial
+# 	[0] ESAbsorbAttribute(53:4233) -> Abyssal Shark Dragon's Trial
 # 	Absorb Water damage for 1 turns
-# 	[1] ESOrbChangeAttack -> Chopping Ring of the Deep Sea
+# 	[1] ESOrbChangeAttack(48:4234) -> Chopping Ring of the Deep Sea
 # 	Change Heal to Poison
-# [22] ESResolve -> Dragonbound's Resolve
+# [22] ESResolve(73:4220) -> Dragonbound's Resolve
 # Survive attacks with 1 HP when HP > 50%
-# [23] ESAttributeResist -> Toa Wood Halven
+# [23] ESAttributeResist(72:4348) -> Toa Wood Halven
 # Reduce damage from Wood by 50%

@@ -198,73 +198,84 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 3 -       11
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESDamageShield -> Your words are not needed.
+# [6] ESDamageShield(74:12464) -> Your words are not needed.
 # Reduce damage from all sources by 50% for 10 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchCounter -> ESBranchCounter
+# [8] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 2, target rnd 15
-# [9] ESBranchHP -> ESBranchHP
+# [9] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 19
-# [10] ESSetCounter -> ESSetCounter
+# [10] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [11] ESRowSpawnMulti -> Tiger Shot
+# [11] ESRowSpawnMulti(79:12403) -> Tiger Shot
 # Condition: 33% chance
 # Change 2nd row to Fire orbs
-# [12] ESRowSpawnMulti -> Grand Tiger Shot
+# [12] ESRowSpawnMulti(79:12404) -> Grand Tiger Shot
 # Condition: 33% chance
 # Change 4th row to Fire orbs
 # [13] SkillSet:
 # 	Condition: 34% chance
-# 	[0] ESGravity -> Tiger Knee Crush
+# 	[0] ESGravity(50:12406) -> Tiger Knee Crush
 # 	Player -30% HP
-# 	[1] ESAttackMultihit -> Tiger Uppercut
+# 	[1] ESAttackMultihit(15:12407) -> Tiger Uppercut
 # 	Enemy action
-# [14] ESEndPath -> ESEndPath
+# [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [15] ESAttackUp -> Angry Charge
+# [15] ESAttackUp(17:12408) -> Angry Charge
 # Condition: One-time use
 # Increase damage to 200% for the next 1 turns
-# [16] ESSetCounter -> ESSetCounter
+# [16] ESSetCounter(25:15) -> ESSetCounter
 # counter = 0
-# [17] ESAttackMultihit -> Tiger Uppercut
+# [17] ESAttackMultihit(15:12407) -> Tiger Uppercut
 # Enemy action
-# [18] ESEndPath -> ESEndPath
+# [18] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [19] ESBranchFlag -> ESBranchFlag
+# [19] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 23
-# [20] ESFlagOperation -> ESFlagOperation
+# [20] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [21] SkillSet:
-# 	[0] ESAbsorbCombo -> Tiger Assault
+# 	[0] ESAbsorbCombo(67:12465) -> Tiger Assault
 # 	Absorb combo <= 5 damage for 10 turns
-# 	[1] ESInactivity -> Prepare!
+# 	[1] ESInactivity(66:12629) -> Prepare!
 # 	Do nothing
-# [22] ESEndPath -> ESEndPath
+# [22] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [23] ESBranchHP -> ESBranchHP
+# [23] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 15, target rnd 27
-# [24] ESSkillDelay -> Tiger Spike
+# [24] ESSkillDelay(89:12410) -> Tiger Spike
 # Condition: 50% chance
 # Delay active skills by 2 turns
-# [25] ESAttackMultihit -> Tiger Rush
+# [25] ESAttackMultihit(15:12411) -> Tiger Rush
 # Condition: 50% chance
 # Enemy action
-# [26] ESEndPath -> ESEndPath
+# [26] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [27] ESAttackMultihit -> Tiger Rampage
+# [27] ESAttackMultihit(15:12412) -> Tiger Rampage
 # Enemy action
-# [28] ESEndPath -> ESEndPath
+# [28] ESEndPath(36:26) -> ESEndPath
 # end_turn

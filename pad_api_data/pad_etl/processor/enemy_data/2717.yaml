@@ -343,208 +343,219 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 15 -     1111
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 11
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
 # 	Condition: 17% chance
-# 	[0] ESStatusShield -> Ark Scales
+# 	[0] ESStatusShield(20:4152) -> Ark Scales
 # 	Voids status ailments for 999 turns
-# 	[1] ESVoidShield -> Sacred Boat Protective Walls
+# 	[1] ESVoidShield(71:4151) -> Sacred Boat Protective Walls
 # 	Void damage >= 5000000 for 99 turns
-# 	[2] ESAbsorbAttribute -> Blue Sky Rainbow
+# 	[2] ESAbsorbAttribute(53:4153) -> Blue Sky Rainbow
 # 	Absorb Fire, Light damage for 1 turns
 # [5] SkillSet:
 # 	Condition: 17% chance
-# 	[0] ESStatusShield -> Ark Scales
+# 	[0] ESStatusShield(20:4152) -> Ark Scales
 # 	Voids status ailments for 999 turns
-# 	[1] ESVoidShield -> Sacred Boat Protective Walls
+# 	[1] ESVoidShield(71:4151) -> Sacred Boat Protective Walls
 # 	Void damage >= 5000000 for 99 turns
-# 	[2] ESAbsorbAttribute -> Blue Sky Rainbow
+# 	[2] ESAbsorbAttribute(53:4154) -> Blue Sky Rainbow
 # 	Absorb Fire, Dark damage for 1 turns
 # [6] SkillSet:
 # 	Condition: 17% chance
-# 	[0] ESStatusShield -> Ark Scales
+# 	[0] ESStatusShield(20:4152) -> Ark Scales
 # 	Voids status ailments for 999 turns
-# 	[1] ESVoidShield -> Sacred Boat Protective Walls
+# 	[1] ESVoidShield(71:4151) -> Sacred Boat Protective Walls
 # 	Void damage >= 5000000 for 99 turns
-# 	[2] ESAbsorbAttribute -> Blue Sky Rainbow
+# 	[2] ESAbsorbAttribute(53:4155) -> Blue Sky Rainbow
 # 	Absorb Water, Light damage for 1 turns
 # [7] SkillSet:
 # 	Condition: 17% chance
-# 	[0] ESStatusShield -> Ark Scales
+# 	[0] ESStatusShield(20:4152) -> Ark Scales
 # 	Voids status ailments for 999 turns
-# 	[1] ESVoidShield -> Sacred Boat Protective Walls
+# 	[1] ESVoidShield(71:4151) -> Sacred Boat Protective Walls
 # 	Void damage >= 5000000 for 99 turns
-# 	[2] ESAbsorbAttribute -> Blue Sky Rainbow
+# 	[2] ESAbsorbAttribute(53:4156) -> Blue Sky Rainbow
 # 	Absorb Water, Dark damage for 1 turns
 # [8] SkillSet:
 # 	Condition: 16% chance
-# 	[0] ESStatusShield -> Ark Scales
+# 	[0] ESStatusShield(20:4152) -> Ark Scales
 # 	Voids status ailments for 999 turns
-# 	[1] ESVoidShield -> Sacred Boat Protective Walls
+# 	[1] ESVoidShield(71:4151) -> Sacred Boat Protective Walls
 # 	Void damage >= 5000000 for 99 turns
-# 	[2] ESAbsorbAttribute -> Blue Sky Rainbow
+# 	[2] ESAbsorbAttribute(53:4157) -> Blue Sky Rainbow
 # 	Absorb Wood, Light damage for 1 turns
 # [9] SkillSet:
 # 	Condition: 16% chance
-# 	[0] ESStatusShield -> Ark Scales
+# 	[0] ESStatusShield(20:4152) -> Ark Scales
 # 	Voids status ailments for 999 turns
-# 	[1] ESVoidShield -> Sacred Boat Protective Walls
+# 	[1] ESVoidShield(71:4151) -> Sacred Boat Protective Walls
 # 	Void damage >= 5000000 for 99 turns
-# 	[2] ESAbsorbAttribute -> Blue Sky Rainbow
+# 	[2] ESAbsorbAttribute(53:4158) -> Blue Sky Rainbow
 # 	Absorb Wood, Dark damage for 1 turns
-# [10] ESEndPath -> ESEndPath
+# [10] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [11] SkillSet:
 # 	Condition: When < 10% hp
-# 	[0] ESDamageShield -> Retreat Ark
+# 	[0] ESDamageShield(74:4185) -> Retreat Ark
 # 	Reduce damage from all sources by 75% for 1 turns
-# 	[1] ESDispel -> Fog Bow - Purge
+# 	[1] ESDispel(6:4190) -> Fog Bow - Purge
 # 	Voids player buff effects
-# 	[2] ESAttackMultihit -> Final Judgement
+# 	[2] ESAttackMultihit(15:4195) -> Final Judgement
 # 	Enemy action
 # [12] SkillSet:
 # 	Condition: When < 90% hp , one-time use
-# 	[0] ESDamageShield -> Retreat Ark
+# 	[0] ESDamageShield(74:4185) -> Retreat Ark
 # 	Reduce damage from all sources by 75% for 1 turns
-# 	[1] ESBindSkill -> Fog Bow - Seal
+# 	[1] ESBindSkill(14:4186) -> Fog Bow - Seal
 # 	Bind active skills for 10 turns
-# 	[2] ESBoardChangeAttackBits -> First Judgement
+# 	[2] ESBoardChangeAttackBits(85:4191) -> First Judgement
 # 	Change all orbs to Fire, Water, Wood, Light, Dark
 # [13] SkillSet:
 # 	Condition: When < 70% hp , one-time use
-# 	[0] ESDamageShield -> Retreat Ark
+# 	[0] ESDamageShield(74:4185) -> Retreat Ark
 # 	Reduce damage from all sources by 75% for 1 turns
-# 	[1] ESBlind -> Fog Bow - Haze
+# 	[1] ESBlind(5:4187) -> Fog Bow - Haze
 # 	Blind all orbs on the board
-# 	[2] ESBoardChangeAttackBits -> Second Judgement
+# 	[2] ESBoardChangeAttackBits(85:4192) -> Second Judgement
 # 	Change all orbs to Fire, Water, Wood, Light, Dark
 # [14] SkillSet:
 # 	Condition: When < 50% hp , one-time use
-# 	[0] ESDamageShield -> Retreat Ark
+# 	[0] ESDamageShield(74:4185) -> Retreat Ark
 # 	Reduce damage from all sources by 75% for 1 turns
-# 	[1] ESSkillDelay -> Fog Bow - Gaze
+# 	[1] ESSkillDelay(89:4188) -> Fog Bow - Gaze
 # 	Delay active skills by 5 turns
-# 	[2] ESAttackMultihit -> Third Judgement
+# 	[2] ESAttackMultihit(15:4193) -> Third Judgement
 # 	Enemy action
 # [15] SkillSet:
 # 	Condition: When < 30% hp , one-time use
-# 	[0] ESDamageShield -> Retreat Ark
+# 	[0] ESDamageShield(74:4185) -> Retreat Ark
 # 	Reduce damage from all sources by 75% for 1 turns
-# 	[1] ESBindAwoken -> Fog Bow - Graze
+# 	[1] ESBindAwoken(88:4189) -> Fog Bow - Graze
 # 	Bind awoken skills for 2 turns
-# 	[2] ESBoardChangeAttackBits -> Fourth Judgement
+# 	[2] ESBoardChangeAttackBits(85:4194) -> Fourth Judgement
 # 	Change all orbs to Fire, Water, Wood, Light, Dark
-# [16] ESBranchHP -> ESBranchHP
+# [16] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 30
 # [17] SkillSet:
 # 	Condition: 8% chance
-# 	[0] ESAbsorbAttribute -> Blue Sky Rainbow
+# 	[0] ESAbsorbAttribute(53:4153) -> Blue Sky Rainbow
 # 	Absorb Fire, Light damage for 1 turns
-# 	[1] ESOrbChangeAttack -> Prismatic Thunder
+# 	[1] ESOrbChangeAttack(48:4165) -> Prismatic Thunder
 # 	Change Random to Fire
-# 	[2] ESBindAttack -> Strand Sacrifice
+# 	[2] ESBindAttack(63:4170) -> Strand Sacrifice
 # 	Bind 1 subs for 1 turns
 # [18] SkillSet:
 # 	Condition: 8% chance
-# 	[0] ESAbsorbAttribute -> Blue Sky Rainbow
+# 	[0] ESAbsorbAttribute(53:4153) -> Blue Sky Rainbow
 # 	Absorb Fire, Light damage for 1 turns
-# 	[1] ESOrbChangeAttack -> Prismatic Thunder
+# 	[1] ESOrbChangeAttack(48:4168) -> Prismatic Thunder
 # 	Change Random to Light
-# 	[2] ESBindAttack -> Strand Sacrifice
+# 	[2] ESBindAttack(63:4170) -> Strand Sacrifice
 # 	Bind 1 subs for 1 turns
 # [19] SkillSet:
 # 	Condition: 8% chance
-# 	[0] ESAbsorbAttribute -> Blue Sky Rainbow
+# 	[0] ESAbsorbAttribute(53:4154) -> Blue Sky Rainbow
 # 	Absorb Fire, Dark damage for 1 turns
-# 	[1] ESOrbChangeAttack -> Prismatic Thunder
+# 	[1] ESOrbChangeAttack(48:4165) -> Prismatic Thunder
 # 	Change Random to Fire
-# 	[2] ESBindAttack -> Strand Sacrifice
+# 	[2] ESBindAttack(63:4170) -> Strand Sacrifice
 # 	Bind 1 subs for 1 turns
 # [20] SkillSet:
 # 	Condition: 8% chance
-# 	[0] ESAbsorbAttribute -> Blue Sky Rainbow
+# 	[0] ESAbsorbAttribute(53:4154) -> Blue Sky Rainbow
 # 	Absorb Fire, Dark damage for 1 turns
-# 	[1] ESOrbChangeAttack -> Prismatic Thunder
+# 	[1] ESOrbChangeAttack(48:4169) -> Prismatic Thunder
 # 	Change Random to Dark
-# 	[2] ESBindAttack -> Strand Sacrifice
+# 	[2] ESBindAttack(63:4170) -> Strand Sacrifice
 # 	Bind 1 subs for 1 turns
 # [21] SkillSet:
 # 	Condition: 9% chance
-# 	[0] ESAbsorbAttribute -> Blue Sky Rainbow
+# 	[0] ESAbsorbAttribute(53:4155) -> Blue Sky Rainbow
 # 	Absorb Water, Light damage for 1 turns
-# 	[1] ESOrbChangeAttack -> Prismatic Thunder
+# 	[1] ESOrbChangeAttack(48:4166) -> Prismatic Thunder
 # 	Change Random to Water
-# 	[2] ESBindAttack -> Strand Sacrifice
+# 	[2] ESBindAttack(63:4170) -> Strand Sacrifice
 # 	Bind 1 subs for 1 turns
 # [22] SkillSet:
 # 	Condition: 9% chance
-# 	[0] ESAbsorbAttribute -> Blue Sky Rainbow
+# 	[0] ESAbsorbAttribute(53:4155) -> Blue Sky Rainbow
 # 	Absorb Water, Light damage for 1 turns
-# 	[1] ESOrbChangeAttack -> Prismatic Thunder
+# 	[1] ESOrbChangeAttack(48:4168) -> Prismatic Thunder
 # 	Change Random to Light
-# 	[2] ESBindAttack -> Strand Sacrifice
+# 	[2] ESBindAttack(63:4170) -> Strand Sacrifice
 # 	Bind 1 subs for 1 turns
 # [23] SkillSet:
 # 	Condition: 9% chance
-# 	[0] ESAbsorbAttribute -> Blue Sky Rainbow
+# 	[0] ESAbsorbAttribute(53:4156) -> Blue Sky Rainbow
 # 	Absorb Water, Dark damage for 1 turns
-# 	[1] ESOrbChangeAttack -> Prismatic Thunder
+# 	[1] ESOrbChangeAttack(48:4166) -> Prismatic Thunder
 # 	Change Random to Water
-# 	[2] ESBindAttack -> Strand Sacrifice
+# 	[2] ESBindAttack(63:4170) -> Strand Sacrifice
 # 	Bind 1 subs for 1 turns
 # [24] SkillSet:
 # 	Condition: 9% chance
-# 	[0] ESAbsorbAttribute -> Blue Sky Rainbow
+# 	[0] ESAbsorbAttribute(53:4156) -> Blue Sky Rainbow
 # 	Absorb Water, Dark damage for 1 turns
-# 	[1] ESOrbChangeAttack -> Prismatic Thunder
+# 	[1] ESOrbChangeAttack(48:4169) -> Prismatic Thunder
 # 	Change Random to Dark
-# 	[2] ESBindAttack -> Strand Sacrifice
+# 	[2] ESBindAttack(63:4170) -> Strand Sacrifice
 # 	Bind 1 subs for 1 turns
 # [25] SkillSet:
 # 	Condition: 8% chance
-# 	[0] ESAbsorbAttribute -> Blue Sky Rainbow
+# 	[0] ESAbsorbAttribute(53:4157) -> Blue Sky Rainbow
 # 	Absorb Wood, Light damage for 1 turns
-# 	[1] ESOrbChangeAttack -> Prismatic Thunder
+# 	[1] ESOrbChangeAttack(48:4167) -> Prismatic Thunder
 # 	Change Random to Wood
-# 	[2] ESBindAttack -> Strand Sacrifice
+# 	[2] ESBindAttack(63:4170) -> Strand Sacrifice
 # 	Bind 1 subs for 1 turns
 # [26] SkillSet:
 # 	Condition: 8% chance
-# 	[0] ESAbsorbAttribute -> Blue Sky Rainbow
+# 	[0] ESAbsorbAttribute(53:4157) -> Blue Sky Rainbow
 # 	Absorb Wood, Light damage for 1 turns
-# 	[1] ESOrbChangeAttack -> Prismatic Thunder
+# 	[1] ESOrbChangeAttack(48:4168) -> Prismatic Thunder
 # 	Change Random to Light
-# 	[2] ESBindAttack -> Strand Sacrifice
+# 	[2] ESBindAttack(63:4170) -> Strand Sacrifice
 # 	Bind 1 subs for 1 turns
 # [27] SkillSet:
 # 	Condition: 8% chance
-# 	[0] ESAbsorbAttribute -> Blue Sky Rainbow
+# 	[0] ESAbsorbAttribute(53:4158) -> Blue Sky Rainbow
 # 	Absorb Wood, Dark damage for 1 turns
-# 	[1] ESOrbChangeAttack -> Prismatic Thunder
+# 	[1] ESOrbChangeAttack(48:4167) -> Prismatic Thunder
 # 	Change Random to Wood
-# 	[2] ESBindAttack -> Strand Sacrifice
+# 	[2] ESBindAttack(63:4170) -> Strand Sacrifice
 # 	Bind 1 subs for 1 turns
 # [28] SkillSet:
 # 	Condition: 8% chance
-# 	[0] ESAbsorbAttribute -> Blue Sky Rainbow
+# 	[0] ESAbsorbAttribute(53:4158) -> Blue Sky Rainbow
 # 	Absorb Wood, Dark damage for 1 turns
-# 	[1] ESOrbChangeAttack -> Prismatic Thunder
+# 	[1] ESOrbChangeAttack(48:4169) -> Prismatic Thunder
 # 	Change Random to Dark
-# 	[2] ESBindAttack -> Strand Sacrifice
+# 	[2] ESBindAttack(63:4170) -> Strand Sacrifice
 # 	Bind 1 subs for 1 turns
-# [29] ESEndPath -> ESEndPath
+# [29] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [30] SkillSet:
-# 	[0] ESOrbChangeAttack -> Rainbow Blank
+# 	[0] ESOrbChangeAttack(48:4183) -> Rainbow Blank
 # 	Change Random to Jammer
-# 	[1] ESBindAttack -> Strand Sacrifice
+# 	[1] ESBindAttack(63:4170) -> Strand Sacrifice
 # 	Bind 1 subs for 1 turns
-# 	[2] ESGravity -> Ark Impact
+# 	[2] ESGravity(50:1218) -> Ark Impact
 # 	Player -99% HP

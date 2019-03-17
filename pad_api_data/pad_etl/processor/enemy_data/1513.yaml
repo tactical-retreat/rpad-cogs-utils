@@ -173,48 +173,59 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 7 -      111
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESDamageShield -> Dance of the Shrine Maiden
+# [4] ESDamageShield(74:8535) -> Dance of the Shrine Maiden
 # Reduce damage from all sources by 50% for 5 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchHP -> ESBranchHP
+# [6] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 100, target rnd 13
 # [7] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAttackUp -> Awful! Now I'm mad!
+# 	[0] ESAttackUp(17:8537) -> Awful! Now I'm mad!
 # 	Increase damage to 1000% for the next 999 turns
-# 	[1] ESStatusShield -> Cheeks puffing up in anger
+# 	[1] ESStatusShield(20:8538) -> Cheeks puffing up in anger
 # 	Voids status ailments for 999 turns
-# [8] ESCloud -> I'm hiding them, okay?
+# [8] ESCloud(104:8541) -> I'm hiding them, okay?
 # Condition: One-time use
 # 2x2 cloud appear for 5 turns at random location
-# [9] ESSkillDelay -> Ritual Chimes
+# [9] ESSkillDelay(89:8542) -> Ritual Chimes
 # Condition: One-time use
 # Delay active skills by 4 turns
-# [10] ESBoardChangeAttackBits -> Maple Leaf Revolt Dance
+# [10] ESBoardChangeAttackBits(85:8543) -> Maple Leaf Revolt Dance
 # Condition: 40% chance when < 30% hp
 # Change all orbs to Fire, Wood
-# [11] ESAttackMultihit -> Ailanthus Umbrella
+# [11] ESAttackMultihit(15:8540) -> Ailanthus Umbrella
 # Enemy action
-# [12] ESEndPath -> ESEndPath
+# [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [13] ESBranchCounter -> ESBranchCounter
+# [13] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 4, target rnd 16
-# [14] ESSetCounter -> ESSetCounter
+# [14] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [15] ESInactivity -> Smiling joyfully
+# [15] ESInactivity(66:8536) -> Smiling joyfully
 # Do nothing
-# [16] ESSetCounter -> ESSetCounter
+# [16] ESSetCounter(25:15) -> ESSetCounter
 # counter = 0
-# [17] ESDamageShield -> Dance of the Shrine Maiden
+# [17] ESDamageShield(74:8535) -> Dance of the Shrine Maiden
 # Reduce damage from all sources by 50% for 5 turns
-# [18] ESEndPath -> ESEndPath
+# [18] ESEndPath(36:26) -> ESEndPath
 # end_turn

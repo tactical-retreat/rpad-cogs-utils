@@ -117,60 +117,71 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 4 -      100
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESBindSkill -> Never Sleep Ever
+# [6] ESBindSkill(14:11908) -> Never Sleep Ever
 # Bind active skills for 3 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 14
-# [9] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
+# [9] ESBranchRemainingEnemies(120:8595) -> ESBranchRemainingEnemies
 # Branch on remaining enemies = 1, target rnd 13
-# [10] ESAttackMultihit -> There! There!
+# [10] ESAttackMultihit(15:11909) -> There! There!
 # Condition: 40% chance
 # Enemy action
-# [11] ESOrbChangeAttack -> Hey, refreshing ♪
+# [11] ESOrbChangeAttack(48:11910) -> Hey, refreshing ♪
 # Condition: 40% chance
 # Change Random to Water
-# [12] ESEndPath -> ESEndPath
+# [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [13] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESDebuffMovetime -> Huh, sorry!
+# 	[0] ESDebuffMovetime(39:11914) -> Huh, sorry!
 # 	Movetime -1s for 3 turns
-# 	[1] ESColumnSpawnMulti -> Sorry for the intrusion ♪
+# 	[1] ESColumnSpawnMulti(76:11915) -> Sorry for the intrusion ♪
 # 	Change 3rd, 4th column to Jammer orbs
-# [14] ESBranchHP -> ESBranchHP
+# [14] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 18
-# [15] ESSkillDelay -> Let's talk some more!
+# [15] ESSkillDelay(89:11911) -> Let's talk some more!
 # Condition: 50% chance
 # Delay active skills by 2 turns
-# [16] ESCloud -> Let's make things a little misty ♪
+# [16] ESCloud(104:11912) -> Let's make things a little misty ♪
 # Condition: 50% chance
 # 1x3 cloud appear for 1 turns at random location
-# [17] ESEndPath -> ESEndPath
+# [17] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [18] ESBranchFlag -> ESBranchFlag
+# [18] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 22
-# [19] ESFlagOperation -> ESFlagOperation
+# [19] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [20] ESAttackUp -> Here I come ♪
+# [20] ESAttackUp(19:11916) -> Here I come ♪
 # Increase damage to 150% for the next 5 turns
-# [21] ESEndPath -> ESEndPath
+# [21] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [22] ESRandomSpawn -> Hahaaah ♪
+# [22] ESRandomSpawn(92:11917) -> Hahaaah ♪
 # Condition: When fire, water, wood, light, dark, heal, jammer, mortal poison orbs are on the board
 # Spawn random 5 Poison orbs
-# [23] ESEndPath -> ESEndPath
+# [23] ESEndPath(36:26) -> ESEndPath
 # end_turn

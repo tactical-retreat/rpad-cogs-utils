@@ -162,54 +162,65 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 31 -    11111
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESBindRandomSub -> Roar
+# 	[0] ESBindRandomSub(65:7304) -> Roar
 # 	Bind 3 random subs for 1 turns
-# 	[1] ESStatusShield -> Astalos Scale
+# 	[1] ESStatusShield(20:7305) -> Astalos Scale
 # 	Voids status ailments for 999 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESOrbLock -> Wingtalon Sweep
+# [6] ESOrbLock(94:7307) -> Wingtalon Sweep
 # Condition: One-time use
 # Lock all Light, Dark orbs
-# [7] ESOrbLock -> Tailspin
+# [7] ESOrbLock(94:7308) -> Tailspin
 # Condition: One-time use
 # Lock all Wood, Heal orbs
-# [8] ESOrbLock -> Crest Swing
+# [8] ESOrbLock(94:7309) -> Crest Swing
 # Condition: One-time use
 # Lock all Fire, Water orbs
-# [9] ESOrbLock -> Lightning Breath
+# [9] ESOrbLock(94:7310) -> Lightning Breath
 # Condition: One-time use
 # Lock 8 random Light, Dark, Heal orbs
-# [10] ESAttackMultihit -> Rushing Bite
+# [10] ESAttackMultihit(15:7311) -> Rushing Bite
 # Condition: One-time use
 # Enemy action
 # [11] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAttackUp -> Rage
+# 	[0] ESAttackUp(17:7312) -> Rage
 # 	Increase damage to 120% for the next 10 turns
-# 	[1] ESInactivity -> Thunder-charged
+# 	[1] ESInactivity(66:7313) -> Thunder-charged
 # 	Do nothing
-# [12] ESOrbLock -> Lightning Breath
+# [12] ESOrbLock(94:7318) -> Lightning Breath
 # Condition: 25% chance
 # Lock 12 random Fire, Water, Wood, Light, Dark, Heal orbs
-# [13] ESOrbLock -> Crest Thrash
+# [13] ESOrbLock(94:7317) -> Crest Thrash
 # Condition: 33% chance
 # Lock all Fire, Water orbs
-# [14] ESOrbLock -> Charged Tail Strike
+# [14] ESOrbLock(94:7316) -> Charged Tail Strike
 # Condition: 50% chance
 # Lock all Wood, Heal orbs
-# [15] ESOrbLock -> Wingtalon Strike
+# [15] ESOrbLock(94:7315) -> Wingtalon Strike
 # Lock all Light, Dark orbs
-# [16] ESAttackMultihit -> Spinning Dive
+# [16] ESAttackMultihit(15:7319) -> Spinning Dive
 # Enemy action
-# [17] ESEndPath -> ESEndPath
+# [17] ESEndPath(36:26) -> ESEndPath
 # end_turn

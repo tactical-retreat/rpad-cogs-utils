@@ -54,58 +54,69 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 4 -      100
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 7 -      111
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESAbsorbAttribute -> Deep Aqua
+# [2] ESAbsorbAttribute(53:5063) -> Deep Aqua
 # Condition: One-time use
 # Absorb Wood damage for 3 turns
-# [3] ESRecoverEnemyAlly -> Resuscitation
+# [3] ESRecoverEnemyAlly(52:5079) -> Resuscitation
 # Condition: When enemy ally is killed
 # Enemy ally recover 100% hp
-# [4] ESBoardChangeAttackBits -> Blue Calamity
+# [4] ESBoardChangeAttackBits(85:5070) -> Blue Calamity
 # Condition: When < 15% hp
 # Change all orbs to Poison
-# [5] ESDebuffMovetime -> Extreme Cold
+# [5] ESDebuffMovetime(39:5068) -> Extreme Cold
 # Condition: When < 70% hp , one-time use
 # Movetime -1s for 3 turns
-# [6] ESAbsorbCombo -> Bubble Wall
+# [6] ESAbsorbCombo(67:5069) -> Bubble Wall
 # Condition: When < 50% hp , one-time use
 # Absorb combo <= 5 damage for 3 turns
-# [7] ESBranchFlag -> ESBranchFlag
+# [7] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 10
-# [8] ESFlagOperation -> ESFlagOperation
+# [8] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [9] ESAbsorbAttribute -> Deep Aqua
+# [9] ESAbsorbAttribute(53:5064) -> Deep Aqua
 # Absorb Wood damage for 3 turns
-# [10] ESBranchFlag -> ESBranchFlag
+# [10] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 13
-# [11] ESFlagOperation -> ESFlagOperation
+# [11] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [12] ESSkyfall -> Poison Swirl
+# [12] ESSkyfall(68:5065) -> Poison Swirl
 # Mortal Poison skyfall +20% for 1 turns
-# [13] ESBranchFlag -> ESBranchFlag
+# [13] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 16
-# [14] ESFlagOperation -> ESFlagOperation
+# [14] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [15] ESOrbLock -> Sharp Teeth
+# [15] ESOrbLock(94:5066) -> Sharp Teeth
 # Lock 8 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [16] ESBranchFlag -> ESBranchFlag
+# [16] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 19
-# [17] ESFlagOperation -> ESFlagOperation
+# [17] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
-# [18] ESDamageShield -> Shell Scale
+# [18] ESDamageShield(74:5067) -> Shell Scale
 # Reduce damage from all sources by 75% for 3 turns
-# [19] ESBranchFlag -> ESBranchFlag
+# [19] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 16, target rnd 22
-# [20] ESFlagOperation -> ESFlagOperation
+# [20] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11111
-# [21] ESSkyfall -> Poison Swirl
+# [21] ESSkyfall(68:5065) -> Poison Swirl
 # Mortal Poison skyfall +20% for 1 turns
-# [22] ESFlagOperation -> ESFlagOperation
+# [22] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b11111
-# [23] ESOrbLock -> Sharp Teeth
+# [23] ESOrbLock(94:5066) -> Sharp Teeth
 # Lock 8 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [24] ESResolve -> Eight Resolve
+# [24] ESResolve(73:5144) -> Eight Resolve
 # Survive attacks with 1 HP when HP > 75%

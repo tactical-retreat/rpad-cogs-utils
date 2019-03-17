@@ -101,46 +101,57 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 1 -        1
+# [52] 1 -        1
+# [53] 7 -      111
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESAttributeBlock -> Holy Effect
+# [2] ESAttributeBlock(107:9317) -> Holy Effect
 # Condition: One-time use
 # Unable to Dark orbs for 2 turns
-# [3] ESBranchHP -> ESBranchHP
+# [3] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 14
-# [4] ESBranchCounter -> ESBranchCounter
+# [4] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 2, target rnd 11
-# [5] ESBranchCounter -> ESBranchCounter
+# [5] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 1, target rnd 9
-# [6] ESSetCounter -> ESSetCounter
+# [6] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [7] ESRandomSpawn -> Lightning
+# [7] ESRandomSpawn(92:9318) -> Lightning
 # Condition: When fire, water, wood, heal, jammer, poison, mortal poison orbs are on the board
 # Spawn random 3 Light orbs
-# [8] ESEndPath -> ESEndPath
+# [8] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [9] ESDamageShield -> Deity's Robe
+# [9] ESDamageShield(74:9320) -> Deity's Robe
 # Condition: One-time use
 # Reduce damage from all sources by 75% for 2 turns
-# [10] ESBranchCounter -> ESBranchCounter
+# [10] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 1, target rnd 6
 # [11] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAttackUp -> Angel's Wrath
+# 	[0] ESAttackUp(19:9321) -> Angel's Wrath
 # 	Increase damage to 300% for the next 999 turns
-# 	[1] ESSkillDelay -> Skill Corrosion
+# 	[1] ESSkillDelay(89:9322) -> Skill Corrosion
 # 	Delay active skills by 1 turns
-# [12] ESBranchCounter -> ESBranchCounter
+# [12] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 1, target rnd 6
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [14] ESBranchFlag -> ESBranchFlag
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 4
-# [15] ESFlagOperation -> ESFlagOperation
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [16] ESRecoverEnemy -> Resurrection
+# [16] ESRecoverEnemy(86:9319) -> Resurrection
 # Enemy recover 100% hp
-# [17] ESEndPath -> ESEndPath
+# [17] ESEndPath(36:26) -> ESEndPath
 # end_turn

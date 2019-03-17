@@ -128,55 +128,66 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 2 -       10
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESStatusShield -> Here I come, brave rival!
+# 	[0] ESStatusShield(20:2464) -> Here I come, brave rival!
 # 	Voids status ailments for 999 turns
-# 	[1] ESBindAttribute -> Dragon Knight
+# 	[1] ESBindAttribute(2:2465) -> Dragon Knight
 # 	Bind Dark cards for 3 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESAttackMultihit -> Last Belief
+# [6] ESAttackMultihit(15:2466) -> Last Belief
 # Condition: When < 20% hp
 # Enemy action
-# [7] ESBranchHP -> ESBranchHP
+# [7] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 12
 # [8] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAttackUp -> His sword is raised
+# 	[0] ESAttackUp(17:2469) -> His sword is raised
 # 	Increase damage to 200% for the next 2 turns
-# 	[1] ESRowSpawnMulti -> Proud Slash
+# 	[1] ESRowSpawnMulti(79:2470) -> Proud Slash
 # 	Change 3rd row to Light orbs
 # [9] SkillSet:
 # 	Condition: 30% chance
-# 	[0] ESAttackMultihit -> Ruthless Saw
+# 	[0] ESAttackMultihit(15:2471) -> Ruthless Saw
 # 	Enemy action
-# 	[1] ESAbsorbAttribute -> Dragontree Shield
+# 	[1] ESAbsorbAttribute(53:2472) -> Dragontree Shield
 # 	Absorb Water damage for 1 turns
 # [10] SkillSet:
 # 	Condition: 30% chance
-# 	[0] ESSkillDelay -> Stun Buckler
+# 	[0] ESSkillDelay(89:2473) -> Stun Buckler
 # 	Delay active skills by 1 turns
-# 	[1] ESAttackMultihit -> Slash and Thrust
+# 	[1] ESAttackMultihit(15:2474) -> Slash and Thrust
 # 	Enemy action
-# [11] ESEndPath -> ESEndPath
+# [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [12] ESBranchFlag -> ESBranchFlag
+# [12] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 8
-# [13] ESFlagOperation -> ESFlagOperation
+# [13] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [14] ESDispel -> Brave Resistance
+# [14] ESDispel(6:2467) -> Brave Resistance
 # Condition: When < 50% hp
 # Voids player buff effects
-# [15] ESGravity -> Brave Resistance
+# [15] ESGravity(50:2468) -> Brave Resistance
 # Condition: When < 50% hp
 # Player -99% HP
-# [16] ESAttributeResist -> *****
+# [16] ESAttributeResist(72:2456) -> *****
 # Reduce damage from Wood, Light by 50%

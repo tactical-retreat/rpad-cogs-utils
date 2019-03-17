@@ -117,77 +117,88 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 3 -       11
+# [51] 1 -        1
+# [52] 1 -        1
+# [53] 3 -       11
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [6] SkillSet:
-# 	[0] ESOrbLock -> Radiant Blond Hair
+# 	[0] ESOrbLock(94:7647) -> Radiant Blond Hair
 # 	Lock all Light, Heal orbs
-# 	[1] ESBoardChangeAttackBits -> Light Pulse
+# 	[1] ESBoardChangeAttackBits(85:7648) -> Light Pulse
 # 	Change all orbs to Jammer
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 26
-# [9] ESBranchFlag -> ESBranchFlag
+# [9] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 15
-# [10] ESFlagOperation -> ESFlagOperation
+# [10] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [11] ESOrbChangeAttack -> Beautiful Nebulous Glow
+# [11] ESOrbChangeAttack(48:7653) -> Beautiful Nebulous Glow
 # Condition: One-time use
 # Change Jammer to Heal
 # [12] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESDamageShield -> Pure White Silk Scales
+# 	[0] ESDamageShield(74:7650) -> Pure White Silk Scales
 # 	Reduce damage from all sources by 35% for 10 turns
-# 	[1] ESStatusShield -> Songstress's Divine Protection
+# 	[1] ESStatusShield(20:7651) -> Songstress's Divine Protection
 # 	Voids status ailments for 10 turns
 # [13] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESDamageShield -> Pure White Silk Scales
+# 	[0] ESDamageShield(74:7650) -> Pure White Silk Scales
 # 	Reduce damage from all sources by 35% for 10 turns
-# 	[1] ESStatusShield -> Songstress's Divine Protection
+# 	[1] ESStatusShield(20:7651) -> Songstress's Divine Protection
 # 	Voids status ailments for 10 turns
-# [14] ESEndPath -> ESEndPath
+# [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [15] ESAttackUp -> Resentful Stare
+# [15] ESAttackUp(17:7655) -> Resentful Stare
 # Condition: One-time use
 # Increase damage to 150% for the next 999 turns
-# [16] ESAbsorbThreshold -> Pure White Damask Scales
+# [16] ESAbsorbThreshold(87:7656) -> Pure White Damask Scales
 # Condition: One-time use
 # Absorb damage >= 1000000 damage for 4 turns
-# [17] ESBranchFlag -> ESBranchFlag
+# [17] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 20
-# [18] ESFlagOperation -> ESFlagOperation
+# [18] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [19] ESDebuffRCV -> Chiming Rings
+# [19] ESDebuffRCV(105:7658) -> Chiming Rings
 # Rcv 50% for 2 turns
-# [20] ESBranchFlag -> ESBranchFlag
+# [20] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 23
-# [21] ESFlagOperation -> ESFlagOperation
+# [21] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
-# [22] ESRandomSpawn -> Golden Flower Thorns
+# [22] ESRandomSpawn(92:7657) -> Golden Flower Thorns
 # Spawn random 3 Mortal Poison orbs
-# [23] ESFlagOperation -> ESFlagOperation
+# [23] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b1100
-# [24] ESGravity -> Brutal Wisp Fangs
+# [24] ESGravity(50:7659) -> Brutal Wisp Fangs
 # Player -90% HP
-# [25] ESEndPath -> ESEndPath
+# [25] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [26] ESBranchFlag -> ESBranchFlag
+# [26] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 16, target rnd 29
-# [27] ESFlagOperation -> ESFlagOperation
+# [27] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11111
-# [28] ESSkillDelay -> Glazed Dragon Eyes
+# [28] ESSkillDelay(89:7660) -> Glazed Dragon Eyes
 # Delay active skills by 5 turns
-# [29] ESBoardChangeAttackBits -> Scattered Gleam of Bewitching Beauty
+# [29] ESBoardChangeAttackBits(85:7661) -> Scattered Gleam of Bewitching Beauty
 # Change all orbs to Light, Jammer

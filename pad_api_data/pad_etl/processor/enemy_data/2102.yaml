@@ -99,41 +99,52 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 3 -       11
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESJammerChangeRandom -> Hell Howl
+# 	[0] ESJammerChangeRandom(13:4464) -> Hell Howl
 # 	Change Random 2 to Jammer
-# 	[1] ESVoidShield -> Earth Circle's Construction
+# 	[1] ESVoidShield(71:4465) -> Earth Circle's Construction
 # 	Void damage >= 1000000 for 5 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] SkillSet:
 # 	Condition: When < 20% hp
-# 	[0] ESGravity -> Bone Crush
+# 	[0] ESGravity(50:4475) -> Bone Crush
 # 	Player -70% HP
-# 	[1] ESAttackMultihit -> Trinity Fang
+# 	[1] ESAttackMultihit(15:4474) -> Trinity Fang
 # 	Enemy action
-# [7] ESOrbLock -> Fire Full Smash
+# [7] ESOrbLock(94:4467) -> Fire Full Smash
 # Condition: One-time use
 # Lock all Jammer orbs
-# [8] ESStorePower -> Feeding some meat to Cerberus
+# [8] ESStorePower(8:4468) -> Feeding some meat to Cerberus
 # Condition: One-time use
 # Increase damage to 300% for the next attack
-# [9] ESOrbLock -> Fire Full Smash
+# [9] ESOrbLock(94:4472) -> Fire Full Smash
 # Condition: When < 50% hp , one-time use
 # Lock all Jammer orbs
-# [10] ESStorePower -> Feeding some meat to Cerberus
+# [10] ESStorePower(8:4473) -> Feeding some meat to Cerberus
 # Condition: When < 50% hp , one-time use
 # Increase damage to 300% for the next attack
 # [11] SkillSet:
-# 	[0] ESOrbChangeAttack -> Death Smash
+# 	[0] ESOrbChangeAttack(48:4470) -> Death Smash
 # 	Change Random to Jammer
-# 	[1] ESPoisonChangeRandomAttack -> Death Bite
+# 	[1] ESPoisonChangeRandomAttack(64:4469) -> Death Bite
 # 	Change Random 3 to Poison

@@ -90,42 +90,53 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 5 -      101
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESStatusShield -> Metal Barrier
+# 	[0] ESStatusShield(20:5724) -> Metal Barrier
 # 	Voids status ailments for 5 turns
-# 	[1] ESOrbSealColumn -> Heat Area
+# 	[1] ESOrbSealColumn(99:5725) -> Heat Area
 # 	Seal 1st column for 5 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchHP -> ESBranchHP
+# [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 11
-# [7] ESBranchFlag -> ESBranchFlag
+# [7] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 14
 # [8] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESDamageShield -> Hard Coating
+# 	[0] ESDamageShield(74:5727) -> Hard Coating
 # 	Reduce damage from all sources by 75% for 5 turns
-# 	[1] ESOrbChangeAttack -> Piercing Burn
+# 	[1] ESOrbChangeAttack(48:5728) -> Piercing Burn
 # 	Change Heal to Fire
-# [9] ESOrbLock -> Blast Cannon
+# [9] ESOrbLock(94:5730) -> Blast Cannon
 # Condition: 80% chance
 # Lock all Fire orbs
-# [10] ESAttackMultihit -> Plasma Lance
+# [10] ESAttackMultihit(15:5731) -> Plasma Lance
 # Enemy action
-# [11] ESBranchFlag -> ESBranchFlag
+# [11] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 14
-# [12] ESFlagOperation -> ESFlagOperation
+# [12] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [13] ESRecoverEnemy -> Auto Repair
+# [13] ESRecoverEnemy(86:5732) -> Auto Repair
 # Enemy recover 30% hp
-# [14] ESAttackMultihit -> Megido Cannon
+# [14] ESAttackMultihit(15:5733) -> Megido Cannon
 # Enemy action

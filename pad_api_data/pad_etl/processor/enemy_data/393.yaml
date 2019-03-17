@@ -193,81 +193,92 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESAbsorbCombo -> Dark Melancholy
+# 	[0] ESAbsorbCombo(67:4319) -> Dark Melancholy
 # 	Absorb combo <= 6 damage for 999 turns
-# 	[1] ESStatusShield -> Divine Protection of the Good Harvest
+# 	[1] ESStatusShield(20:4320) -> Divine Protection of the Good Harvest
 # 	Voids status ailments for 999 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] SkillSet:
 # 	Condition: When < 1% hp
-# 	[0] ESRecoverEnemy -> Healing Wind
+# 	[0] ESRecoverEnemy(86:4339) -> Healing Wind
 # 	Enemy recover 50% hp
-# 	[1] ESGravity -> Evil Eye
+# 	[1] ESGravity(50:4340) -> Evil Eye
 # 	Player -500% HP
-# [7] ESBranchHP -> ESBranchHP
+# [7] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 30, target rnd 15
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 11
-# [9] ESBoardChangeAttackBits -> Sephiroth Anger
+# [9] ESBoardChangeAttackBits(85:4322) -> Sephiroth Anger
 # Condition: One-time use
 # Change all orbs to Fire, Water, Wood, Light, Dark, Heal
-# [10] ESAbsorbAttribute -> Light Fascination
+# [10] ESAbsorbAttribute(53:4323) -> Light Fascination
 # Absorb Light damage for 1 turns
-# [11] ESBranchFlag -> ESBranchFlag
+# [11] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 14
-# [12] ESFlagOperation -> ESFlagOperation
+# [12] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [13] SkillSet:
-# 	[0] ESSkyfall -> Lucent Blessing
+# 	[0] ESSkyfall(68:4324) -> Lucent Blessing
 # 	Light skyfall +20% for 5 turns
-# 	[1] ESBoardChangeAttackBits -> Sephiroth Rage
+# 	[1] ESBoardChangeAttackBits(85:4325) -> Sephiroth Rage
 # 	Change all orbs to Fire, Water, Wood, Light, Dark, Heal
-# [14] ESBoardChangeAttackBits -> Sephiroth Rage
+# [14] ESBoardChangeAttackBits(85:4325) -> Sephiroth Rage
 # Change all orbs to Fire, Water, Wood, Light, Dark, Heal
-# [15] ESBranchFlag -> ESBranchFlag
+# [15] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 18
-# [16] ESFlagOperation -> ESFlagOperation
+# [16] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [17] SkillSet:
-# 	[0] ESVoidShield -> God Tree's Basket
+# 	[0] ESVoidShield(71:4327) -> God Tree's Basket
 # 	Void damage >= 500000 for 99 turns
-# 	[1] ESAbsorbAttribute -> Plant Fascination
+# 	[1] ESAbsorbAttribute(53:4328) -> Plant Fascination
 # 	Absorb Wood damage for 1 turns
 # [18] SkillSet:
 # 	Condition: 25% chance
-# 	[0] ESAbsorbAttribute -> Flame Fascination
+# 	[0] ESAbsorbAttribute(53:4330) -> Flame Fascination
 # 	Absorb Fire damage for 1 turns
-# 	[1] ESRowSpawnMulti -> Natural Disaster
+# 	[1] ESRowSpawnMulti(79:4333) -> Natural Disaster
 # 	Change 5th row to Heal orbs
 # [19] SkillSet:
 # 	Condition: 25% chance
-# 	[0] ESAbsorbAttribute -> Ice Fascination
+# 	[0] ESAbsorbAttribute(53:4331) -> Ice Fascination
 # 	Absorb Water damage for 1 turns
-# 	[1] ESRowSpawnMulti -> Natural Disaster
+# 	[1] ESRowSpawnMulti(79:4333) -> Natural Disaster
 # 	Change 5th row to Heal orbs
 # [20] SkillSet:
 # 	Condition: 25% chance
-# 	[0] ESAbsorbAttribute -> Dark Fascination
+# 	[0] ESAbsorbAttribute(53:4332) -> Dark Fascination
 # 	Absorb Dark damage for 1 turns
-# 	[1] ESRowSpawnMulti -> Natural Disaster
+# 	[1] ESRowSpawnMulti(79:4333) -> Natural Disaster
 # 	Change 5th row to Heal orbs
 # [21] SkillSet:
 # 	Condition: 25% chance
-# 	[0] ESAbsorbAttribute -> Plant Fascination
+# 	[0] ESAbsorbAttribute(53:4328) -> Plant Fascination
 # 	Absorb Wood damage for 1 turns
-# 	[1] ESRowSpawnMulti -> Natural Disaster
+# 	[1] ESRowSpawnMulti(79:4333) -> Natural Disaster
 # 	Change 5th row to Heal orbs
-# [22] ESEndPath -> ESEndPath
+# [22] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [23] ESResolve -> 30% Resolve
+# [23] ESResolve(73:4338) -> 30% Resolve
 # Survive attacks with 1 HP when HP > 30%

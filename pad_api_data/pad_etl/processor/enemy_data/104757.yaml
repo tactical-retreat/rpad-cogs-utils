@@ -101,32 +101,43 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 15 -     1111
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchCard -> ESBranchCard
+# [4] ESBranchCard(90:11031) -> ESBranchCard
 # Branch on player_cards HAS [4748, 4749], target rnd 6
-# [5] ESBlind -> I'll just destroy this rotten world
+# [5] ESBlind(5:11025) -> I'll just destroy this rotten world
 # Condition: One-time use
 # Blind all orbs on the board
-# [6] ESBlind -> You will lose everything
+# [6] ESBlind(5:11026) -> You will lose everything
 # Condition: One-time use
 # Blind all orbs on the board
-# [7] ESStatusShield -> Stop playing house
+# [7] ESStatusShield(20:11027) -> Stop playing house
 # Condition: One-time use
 # Voids status ailments for 999 turns
-# [8] ESOrbLock -> My resolution was decided long ago
+# [8] ESOrbLock(94:11028) -> My resolution was decided long ago
 # Condition: One-time use
 # Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [9] ESAttackUp -> I am the destroyer of this world
+# [9] ESAttackUp(17:11029) -> I am the destroyer of this world
 # Condition: One-time use
 # Increase damage to 300% for the next 99 turns
-# [10] ESAttackMultihit -> Sleep in Hell
+# [10] ESAttackMultihit(15:11030) -> Sleep in Hell
 # Enemy action
-# [11] ESEndPath -> ESEndPath
+# [11] ESEndPath(36:26) -> ESEndPath
 # end_turn

@@ -72,25 +72,36 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 0 -        0
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESFixedStart -> Forced Resurrection
+# [4] ESFixedStart(101:10140) -> Forced Resurrection
 # Fix orb movement starting point to random position on the board
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESAttackMultihit -> Dead Rejection
+# [6] ESAttackMultihit(15:10143) -> Dead Rejection
 # Condition: When < 10% hp
 # Enemy action
-# [7] ESRowSpawnMulti -> Water Jet
+# [7] ESRowSpawnMulti(79:10141) -> Water Jet
 # Condition: 50% chance
 # Change 2nd row to Water orbs
-# [8] ESAttackMultihit -> Marionette Dance
+# [8] ESAttackMultihit(15:10142) -> Marionette Dance
 # Enemy action
-# [9] ESEndPath -> ESEndPath
+# [9] ESEndPath(36:26) -> ESEndPath
 # end_turn

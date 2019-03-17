@@ -90,37 +90,48 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 0 -        0
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:355) -> ESPreemptive
 # Enable preempt if level 5
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 5, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESStatusShield -> Fertile Guard
+# [6] ESStatusShield(20:205) -> Fertile Guard
 # Voids status ailments for 999 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 50, target rnd 12
-# [9] ESBranchFlag -> ESBranchFlag
+# [9] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 12
-# [10] ESFlagOperation -> ESFlagOperation
+# [10] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [11] ESBindRandomSub -> Serpent Eye
+# [11] ESBindRandomSub(65:40) -> Serpent Eye
 # Bind 2 random subs for 3 turns
-# [12] ESPoisonChangeRandom -> Poison Marking
+# [12] ESPoisonChangeRandom(60:51) -> Poison Marking
 # Condition: When < 30% hp , one-time use
 # Change Random 3 to Poison
-# [13] ESAttackMultihit -> Purple Orbit
+# [13] ESAttackMultihit(15:50) -> Purple Orbit
 # Condition: When < 30% hp
 # Enemy action
-# [14] ESOrbChangeAttack -> Curing Breath
+# [14] ESOrbChangeAttack(48:49) -> Curing Breath
 # Change Poison to Heal
-# [15] ESPoisonChangeRandomAttack -> Poison Fog
+# [15] ESPoisonChangeRandomAttack(64:48) -> Poison Fog
 # Change Random 6 to Poison

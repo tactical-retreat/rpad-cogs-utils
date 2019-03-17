@@ -103,65 +103,76 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESAbsorbAttribute -> Sangen Mechanism
+# 	[0] ESAbsorbAttribute(53:3811) -> Sangen Mechanism
 # 	Absorb Light, Dark damage for 5 turns
-# 	[1] ESOrbChangeAttack -> Heal-to-Blue Twist Puppetry
+# 	[1] ESOrbChangeAttack(48:3819) -> Heal-to-Blue Twist Puppetry
 # 	Change Heal to Water
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchHP -> ESBranchHP
+# [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 11
 # [7] SkillSet:
 # 	Condition: 40% chance
-# 	[0] ESChangeAttribute -> Elemental Flip
+# 	[0] ESChangeAttribute(46:3813) -> Elemental Flip
 # 	Change own attribute to random one of Fire, Water
-# 	[1] ESOrbChangeAttack -> Green-to-Red Twist Puppetry
+# 	[1] ESOrbChangeAttack(48:3817) -> Green-to-Red Twist Puppetry
 # 	Change Wood to Fire
 # [8] SkillSet:
 # 	Condition: 25% chance
-# 	[0] ESChangeAttribute -> Elemental Flip
+# 	[0] ESChangeAttribute(46:3813) -> Elemental Flip
 # 	Change own attribute to random one of Fire, Water
-# 	[1] ESOrbChangeAttack -> Heal-to-Blue Twist Puppetry
+# 	[1] ESOrbChangeAttack(48:3819) -> Heal-to-Blue Twist Puppetry
 # 	Change Heal to Water
 # [9] SkillSet:
 # 	Condition: 35% chance
-# 	[0] ESChangeAttribute -> Elemental Flip
+# 	[0] ESChangeAttribute(46:3813) -> Elemental Flip
 # 	Change own attribute to random one of Fire, Water
-# 	[1] ESRowSpawnMulti -> Red Line Stitch Puppetry
+# 	[1] ESRowSpawnMulti(79:3822) -> Red Line Stitch Puppetry
 # 	Change 3rd row to Fire orbs
-# [10] ESEndPath -> ESEndPath
+# [10] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [11] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESStatusShield -> Impassive
+# 	[0] ESStatusShield(20:3815) -> Impassive
 # 	Voids status ailments for 1 turns
-# 	[1] ESBindTarget -> Hold Twin
+# 	[1] ESBindTarget(54:3836) -> Hold Twin
 # 	Bind 1 both leaders for 1 turns
-# [12] ESRowSpawnMulti -> Blue-to-Red Stitch Puppetry
+# [12] ESRowSpawnMulti(79:3838) -> Blue-to-Red Stitch Puppetry
 # Change 1st, 3rd, 5th row to Water orbs, 2nd, 4th row to Fire orbs
-# [13] ESNone -> ESNone
+# [13] ESNone(0:0) -> ESNone
 # nothing
-# [14] ESNone -> ESNone
+# [14] ESNone(0:0) -> ESNone
 # nothing
-# [15] ESNone -> ESNone
+# [15] ESNone(0:0) -> ESNone
 # nothing
-# [16] ESNone -> ESNone
+# [16] ESNone(0:0) -> ESNone
 # nothing
-# [17] ESNone -> ESNone
+# [17] ESNone(0:0) -> ESNone
 # nothing
-# [18] ESNone -> ESNone
+# [18] ESNone(0:0) -> ESNone
 # nothing
 # [19] SkillSet:
-# 	[0] ESChangeAttribute -> Elemental Flip
+# 	[0] ESChangeAttribute(46:3814) -> Elemental Flip
 # 	Change own attribute to random one of Water, Wood
-# 	[1] ESOrbChangeAttack -> Heal-to-Green Twist Puppetry
+# 	[1] ESOrbChangeAttack(48:3820) -> Heal-to-Green Twist Puppetry
 # 	Change Heal to Wood

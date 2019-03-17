@@ -81,41 +81,52 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:355) -> ESPreemptive
 # Enable preempt if level 5
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 5, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESBlindStickyFixed -> Affectionate Brush Strokes
+# [6] ESBlindStickyFixed(98:5474) -> Affectionate Brush Strokes
 # Blind orbs in specific positions for 3 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESSkyfall -> Book of Wonders♪
+# [8] ESSkyfall(68:5477) -> Book of Wonders♪
 # Condition: When < 25% hp , one-time use
 # Poison skyfall +20% for 1 turns
-# [9] ESRandomSpawn -> Secret Chest
+# [9] ESRandomSpawn(92:5478) -> Secret Chest
 # Condition: When < 25% hp & when Fire, Water, Wood, Light, Dark, Heal, Jammer, Mortal Poison orbs are on the board
 # Spawn random 6 Poison orbs
-# [10] ESBranchFlag -> ESBranchFlag
+# [10] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 13
-# [11] ESFlagOperation -> ESFlagOperation
+# [11] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [12] ESGravity -> Destructive Writing
+# [12] ESGravity(50:5476) -> Destructive Writing
 # Player -99% HP
-# [13] ESFlagOperation -> ESFlagOperation
+# [13] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b10
-# [14] ESOrbChangeAttack -> Dark Spirit's Writing
+# [14] ESOrbChangeAttack(48:5475) -> Dark Spirit's Writing
 # Change Random to Dark
-# [15] ESEndPath -> ESEndPath
+# [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [16] SkillSet:
 # 	Condition: On death
-# 	[0] ESRandomSpawn -> Tee-hee!
+# 	[0] ESRandomSpawn(92:5479) -> Tee-hee!
 # 	Spawn random 3 Mortal Poison orbs

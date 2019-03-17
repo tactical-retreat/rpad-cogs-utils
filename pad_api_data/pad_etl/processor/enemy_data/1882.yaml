@@ -171,63 +171,74 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESAbsorbThreshold -> Respect for the Weak
+# [4] ESAbsorbThreshold(87:10972) -> Respect for the Weak
 # Absorb damage >= 6000000 damage for 5 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchFlag -> ESBranchFlag
+# [6] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 13
-# [7] ESFlagOperation -> ESFlagOperation
+# [7] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 11
 # [9] SkillSet:
-# 	[0] ESStatusShield -> Immovable Faith
+# 	[0] ESStatusShield(20:10974) -> Immovable Faith
 # 	Voids status ailments for 5 turns
-# 	[1] ESChangeAttribute -> Rigorous Obedience
+# 	[1] ESChangeAttribute(46:10975) -> Rigorous Obedience
 # 	Change own attribute to Fire
-# [10] ESEndPath -> ESEndPath
+# [10] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [11] SkillSet:
-# 	[0] ESStatusShield -> Immovable Faith
+# 	[0] ESStatusShield(20:10974) -> Immovable Faith
 # 	Voids status ailments for 5 turns
-# 	[1] ESSkillDelay -> Duty to the Seal Lord
+# 	[1] ESSkillDelay(89:10977) -> Duty to the Seal Lord
 # 	Delay active skills by 2~3 turns
-# [12] ESEndPath -> ESEndPath
+# [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [13] ESBranchHP -> ESBranchHP
+# [13] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 20
-# [14] ESBranchCounter -> ESBranchCounter
+# [14] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 3, target rnd 22
-# [15] ESSetCounter -> ESSetCounter
+# [15] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [16] ESRowSpawnMulti -> Flash of Affection
+# [16] ESRowSpawnMulti(79:10979) -> Flash of Affection
 # Condition: One-time use
 # Change 3rd row to Heal orbs
-# [17] ESRowSpawnMulti -> One Sword, Two Outcomes
+# [17] ESRowSpawnMulti(79:10980) -> One Sword, Two Outcomes
 # Condition: 25% chance
 # Change 2nd row to Fire orbs, 4th row to Water orbs
-# [18] ESAttackMultihit -> Sublime Sword Technique
+# [18] ESAttackMultihit(15:10981) -> Sublime Sword Technique
 # Condition: 25% chance
 # Enemy action
-# [19] ESEndPath -> ESEndPath
+# [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [20] ESAttackMultihit -> Righteous Judgment
+# [20] ESAttackMultihit(15:10982) -> Righteous Judgment
 # Enemy action
-# [21] ESEndPath -> ESEndPath
+# [21] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [22] SkillSet:
-# 	[0] ESBlindStickyRandom -> Frivolous Dark Moon
+# 	[0] ESBlindStickyRandom(97:10971) -> Frivolous Dark Moon
 # 	Blind random 5~10 orbs for 1 turns
-# 	[1] ESAttackMultihit -> Holy Boisterous Dance of the Sword
+# 	[1] ESAttackMultihit(15:10789) -> Holy Boisterous Dance of the Sword
 # 	Enemy action
-# [23] ESEndPath -> ESEndPath
+# [23] ESEndPath(36:26) -> ESEndPath
 # end_turn

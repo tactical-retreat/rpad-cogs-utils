@@ -243,52 +243,63 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 511 - 111111111
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:697) -> ESPreemptive
 # Enable preempt if level 3
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 3, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 7
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESAbsorbAttribute -> Black Energy Barrier
+# [6] ESAbsorbAttribute(53:4268) -> Black Energy Barrier
 # Absorb Light damage for 10 turns
-# [7] ESAttackUpStatus -> Shining Eyes
+# [7] ESAttackUpStatus(18:4270) -> Shining Eyes
 # Condition: after being affected by a status effect
 # Increase damage to 1000% for the next 999 turns
-# [8] ESAttackMultihit -> Metal Deadly Fang
+# [8] ESAttackMultihit(15:4269) -> Metal Deadly Fang
 # Condition: When < 5% hp
 # Enemy action
-# [9] ESInactivity -> Quietly gazes in your direction
+# [9] ESInactivity(66:4273) -> Quietly gazes in your direction
 # Condition: One-time use
 # Do nothing
-# [10] ESInactivity -> Quietly gazes in your direction
+# [10] ESInactivity(66:4274) -> Quietly gazes in your direction
 # Condition: One-time use
 # Do nothing
-# [11] ESInactivity -> Quietly gazes in your direction
+# [11] ESInactivity(66:4275) -> Quietly gazes in your direction
 # Condition: One-time use
 # Do nothing
-# [12] ESBoardChange -> Mechanical Wolf Howling
+# [12] ESBoardChange(84:4267) -> Mechanical Wolf Howling
 # Condition: One-time use
 # Change all orbs to Fire, Water, Wood, Dark, Heal
-# [13] ESAttackMultihit -> Ur Flare
+# [13] ESAttackMultihit(15:4271) -> Ur Flare
 # Condition: One-time use
 # Enemy action
-# [14] ESInactivity -> Quietly gazes in your direction
+# [14] ESInactivity(66:4276) -> Quietly gazes in your direction
 # Condition: One-time use
 # Do nothing
-# [15] ESInactivity -> Quietly gazes in your direction
+# [15] ESInactivity(66:4277) -> Quietly gazes in your direction
 # Condition: One-time use
 # Do nothing
-# [16] ESInactivity -> Quietly gazes in your direction
+# [16] ESInactivity(66:4278) -> Quietly gazes in your direction
 # Condition: One-time use
 # Do nothing
-# [17] ESInactivity -> Quietly gazes in your direction
+# [17] ESInactivity(66:4279) -> Quietly gazes in your direction
 # Condition: One-time use
 # Do nothing
-# [18] ESSkillDelay -> Dark Railgun
+# [18] ESSkillDelay(89:4272) -> Dark Railgun
 # Delay active skills by 2~5 turns

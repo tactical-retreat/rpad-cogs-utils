@@ -54,42 +54,53 @@ records:
   usage_pct: 50
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 3 -       11
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 2 -       10
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESBranchLevel -> ESBranchLevel
+# [1] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 3
-# [2] ESEndPath -> ESEndPath
+# [2] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [3] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
+# [3] ESBranchRemainingEnemies(120:8595) -> ESBranchRemainingEnemies
 # Branch on remaining enemies = 1, target rnd 14
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESBindAttack -> Zio
+# [6] ESBindAttack(63:9950) -> Zio
 # Bind 1 subs for 2 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 11
-# [9] ESBindAttack -> Zio
+# [9] ESBindAttack(63:9950) -> Zio
 # Condition: 50% chance
 # Bind 1 subs for 2 turns
-# [10] ESEndPath -> ESEndPath
+# [10] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [11] ESRecoverEnemy -> Dia
+# [11] ESRecoverEnemy(86:9951) -> Dia
 # Condition: One-time use
 # Enemy recover 30% hp
-# [12] ESBindAttack -> Zio
+# [12] ESBindAttack(63:9950) -> Zio
 # Condition: 50% chance
 # Bind 1 subs for 2 turns
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [14] ESBranchFlag -> ESBranchFlag
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 11
-# [15] ESFlagOperation -> ESFlagOperation
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [16] ESAttackUp -> Tarukaja
+# [16] ESAttackUp(17:9952) -> Tarukaja
 # Increase damage to 150% for the next 3 turns
-# [17] ESEndPath -> ESEndPath
+# [17] ESEndPath(36:26) -> ESEndPath
 # end_turn

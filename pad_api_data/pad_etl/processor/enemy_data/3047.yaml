@@ -118,61 +118,72 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 3 -       11
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESSkyfall -> A fair fight, huh?
+# [6] ESSkyfall(68:4974) -> A fair fight, huh?
 # Wood skyfall +20% for 1 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESStatusShield -> They call me "Sword Hunter" Cho.
+# [8] ESStatusShield(20:4977) -> They call me "Sword Hunter" Cho.
 # Now see my true skill.
 # Condition: When < 70% hp , one-time use
 # Voids status ailments for 999 turns
-# [9] ESAttackUp -> You're all... annoying!!
+# [9] ESAttackUp(17:4981) -> You're all... annoying!!
 # Condition: When < 20% hp , one-time use
 # Increase damage to 200% for the next 999 turns
-# [10] ESBranchHP -> ESBranchHP
+# [10] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 23
-# [11] ESBranchHP -> ESBranchHP
+# [11] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 40, target rnd 20
-# [12] ESBranchHP -> ESBranchHP
+# [12] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 70, target rnd 18
-# [13] ESBranchFlag -> ESBranchFlag
+# [13] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 17
-# [14] ESFlagOperation -> ESFlagOperation
+# [14] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [15] ESBindSkill -> Gotcha!
+# [15] ESBindSkill(14:4975) -> Gotcha!
 # Bind active skills for 1 turns
-# [16] ESAttackMultihit -> Gotcha!
+# [16] ESAttackMultihit(15:4976) -> Gotcha!
 # Enemy action
-# [17] ESEndPath -> ESEndPath
+# [17] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [18] ESOrbLock -> "Hakujin" - The Thin One
+# [18] ESOrbLock(94:4978) -> "Hakujin" - The Thin One
 # Condition: 70% chance when < 70% hp
 # Lock 2 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [19] ESEndPath -> ESEndPath
+# [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [20] ESBranchFlag -> ESBranchFlag
+# [20] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 23
-# [21] ESFlagOperation -> ESFlagOperation
+# [21] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [22] ESOrbLock -> "Orochi" Pose. Take this.
+# [22] ESOrbLock(94:4979) -> "Orochi" Pose. Take this.
 # Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [23] ESOrbLock -> "Orochi" Pose
+# [23] ESOrbLock(94:4980) -> "Orochi" Pose
 # Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [24] ESEndPath -> ESEndPath
+# [24] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [25] SkillSet:
 # 	Condition: On death
-# 	[0] ESInactivity -> You'll never get to Shishio-sama!
+# 	[0] ESInactivity(66:4962) -> You'll never get to Shishio-sama!
 # 	Do nothing

@@ -81,37 +81,48 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 0 -        0
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESBindAttack -> Poor Hospitality
+# 	[0] ESBindAttack(63:9470) -> Poor Hospitality
 # 	Bind 2 both leaders for 3 turns
-# 	[1] ESBindAttack -> H-huh?!
+# 	[1] ESBindAttack(63:9471) -> H-huh?!
 # 	Bind 2 both leaders for 1 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchCounter -> ESBranchCounter
+# [6] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 2, target rnd 11
-# [7] ESSetCounter -> ESSetCounter
+# [7] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [8] ESAttackMultihit -> Hoo hoo hoo!
+# [8] ESAttackMultihit(15:9473) -> Hoo hoo hoo!
 # Condition: When < 50% hp
 # Enemy action
-# [9] ESOrbChangeAttack -> Grovel before me!
+# [9] ESOrbChangeAttack(48:9474) -> Grovel before me!
 # Change Random to Jammer
-# [10] ESEndPath -> ESEndPath
+# [10] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [11] ESBranchFlag -> ESBranchFlag
+# [11] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 8
-# [12] ESFlagOperation -> ESFlagOperation
+# [12] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [13] ESDebuffMovetime -> Patience Reward
+# [13] ESDebuffMovetime(39:9475) -> Patience Reward
 # Movetime 150% for 10 turns
-# [14] ESEndPath -> ESEndPath
+# [14] ESEndPath(36:26) -> ESEndPath
 # end_turn

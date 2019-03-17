@@ -125,53 +125,64 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 0 -        0
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESStatusShield -> I'm 3rd-Seat Assistant Adjutant,
+# [4] ESStatusShield(20:2750) -> I'm 3rd-Seat Assistant Adjutant,
 # Squad 11, Ikkaku Madarame!
 # Voids status ailments for 3 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchCard -> ESBranchCard
+# [6] ESBranchCard(90:2757) -> ESBranchCard
 # Branch on player_cards HAS [2675, 2676, 2677, 3353, 3354], target rnd 18
-# [7] ESBranchFlag -> ESBranchFlag
+# [7] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 10
-# [8] ESFlagOperation -> ESFlagOperation
+# [8] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [9] ESGravity -> Extend! Hozukimaru!
+# [9] ESGravity(50:2751) -> Extend! Hozukimaru!
 # Player -70% HP
-# [10] ESBranchFlag -> ESBranchFlag
+# [10] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 13
-# [11] ESFlagOperation -> ESFlagOperation
+# [11] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
-# [12] ESRandomSpawn -> No mistakes!!
+# [12] ESRandomSpawn(92:2752) -> No mistakes!!
 # Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board
 # Spawn random 3 Jammer orbs
-# [13] ESBranchFlag -> ESBranchFlag
+# [13] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 16, target rnd 16
-# [14] ESFlagOperation -> ESFlagOperation
+# [14] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11111
-# [15] ESAttackMultihit -> Split apart! Hozukimaru!
+# [15] ESAttackMultihit(15:2753) -> Split apart! Hozukimaru!
 # Enemy action
-# [16] ESAttackMultihit -> Ikkaku Madarame was
+# [16] ESAttackMultihit(15:2754) -> Ikkaku Madarame was
 # not born a coward!!!
 # Condition: When < 15% hp
 # Enemy action
-# [17] ESAttackMultihit -> Ha!
+# [17] ESAttackMultihit(15:2755) -> Ha!
 # Enemy action
-# [18] ESBranchFlag -> ESBranchFlag
+# [18] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 7
-# [19] ESFlagOperation -> ESFlagOperation
+# [19] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [20] ESOrbLock -> Well, "ichi", what say we be friends!
+# [20] ESOrbLock(94:2758) -> Well, "ichi", what say we be friends!
 # Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer orbs
 # [21] SkillSet:
 # 	Condition: On death
-# 	[0] ESBlind -> I'm not so lucky after all.
+# 	[0] ESBlind(5:2821) -> I'm not so lucky after all.
 # 	Blind all orbs on the board

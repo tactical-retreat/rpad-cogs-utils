@@ -74,44 +74,55 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESSkillDelay -> The Third Eye
+# 	[0] ESSkillDelay(89:2204) -> The Third Eye
 # 	Delay active skills by 2 turns
-# 	[1] ESAbsorbCombo -> The Destroyer's Divine Power
+# 	[1] ESAbsorbCombo(67:2205) -> The Destroyer's Divine Power
 # 	Absorb combo <= 4 damage for 99 turns
-# 	[2] ESGravity -> Damaru
+# 	[2] ESGravity(50:2206) -> Damaru
 # 	Player -75% HP
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] SkillSet:
 # 	Condition: When < 30% hp
-# 	[0] ESGravity -> Damaru
+# 	[0] ESGravity(50:2206) -> Damaru
 # 	Player -75% HP
-# 	[1] ESBoardChangeAttackFlat -> Destructive Third Eye
+# 	[1] ESBoardChangeAttackFlat(81:2212) -> Destructive Third Eye
 # 	Change all orbs to Fire
-# [7] ESOrbChangeAttack -> Nilakantha
+# [7] ESOrbChangeAttack(48:2209) -> Nilakantha
 # Change Poison to Heal
-# [8] ESColumnSpawnMulti -> Trishula
+# [8] ESColumnSpawnMulti(77:2210) -> Trishula
 # Condition: 25% chance
 # Change 2nd column to Fire orbs, 4th column to Fire orbs, 6th column to Fire orbs
-# [9] ESAttackMultihit -> Pinaka
+# [9] ESAttackMultihit(15:2211) -> Pinaka
 # Condition: 25% chance
 # Enemy action
-# [10] ESPoisonChangeRandomAttack -> Halahala
+# [10] ESPoisonChangeRandomAttack(64:2208) -> Halahala
 # Condition: One-time use
 # Change Random 7 to Poison
-# [11] ESBlind -> Mahakala
+# [11] ESBlind(62:2207) -> Mahakala
 # Condition: 25% chance
 # Blind all orbs on the board
-# [12] ESEndPath -> ESEndPath
+# [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [13] ESAttributeResist -> *****
+# [13] ESAttributeResist(72:2202) -> *****
 # Reduce damage from Fire, Water by 50%

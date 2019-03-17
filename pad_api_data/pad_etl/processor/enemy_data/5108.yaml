@@ -146,71 +146,82 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 3 -       11
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESGravity -> Don't escape!
+# [4] ESGravity(50:12413) -> Don't escape!
 # Condition: One-time use
 # Player -99% HP
-# [5] ESBranchHP -> ESBranchHP
+# [5] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 10
 # [6] SkillSet:
 # 	Condition: 33% chance
-# 	[0] ESSpinnersRandom -> KKB
+# 	[0] ESSpinnersRandom(109:12416) -> KKB
 # 	Random 1 orbs change every 1.0s for 1 turns
-# 	[1] ESSkillDelay -> Buffalo Swing
+# 	[1] ESSkillDelay(89:12417) -> Buffalo Swing
 # 	Delay active skills by 2 turns
 # [7] SkillSet:
 # 	Condition: 33% chance
-# 	[0] ESSpinnersRandom -> KKB
+# 	[0] ESSpinnersRandom(109:12416) -> KKB
 # 	Random 1 orbs change every 1.0s for 1 turns
-# 	[1] ESAttackMultihit -> Buffalo Pressure
+# 	[1] ESAttackMultihit(15:12418) -> Buffalo Pressure
 # 	Enemy action
-# [8] ESAttackMultihit -> Under Impact
+# [8] ESAttackMultihit(15:12419) -> Under Impact
 # Condition: 34% chance
 # Enemy action
-# [9] ESEndPath -> ESEndPath
+# [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [10] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESDamageShield -> Crazy Rush
+# 	[0] ESDamageShield(74:12424) -> Crazy Rush
 # 	Reduce damage from all sources by 50% for 5 turns
-# 	[1] ESInactivity -> Don't stop me
+# 	[1] ESInactivity(66:12631) -> Don't stop me
 # 	Do nothing
-# [11] ESBranchHP -> ESBranchHP
+# [11] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 15, target rnd 17
 # [12] SkillSet:
 # 	Condition: 25% chance
-# 	[0] ESAttackMultihit -> Dash Straight
+# 	[0] ESAttackMultihit(15:12420) -> Dash Straight
 # 	Enemy action
-# 	[1] ESAttackMultihit -> Charging Buffalo
+# 	[1] ESAttackMultihit(15:12425) -> Charging Buffalo
 # 	Enemy action
 # [13] SkillSet:
 # 	Condition: 25% chance
-# 	[0] ESRowSpawnMulti -> Dash Grand Blow
+# 	[0] ESRowSpawnMulti(79:12421) -> Dash Grand Blow
 # 	Change 5th row to Dark orbs
-# 	[1] ESAttackMultihit -> Charging Buffalo
+# 	[1] ESAttackMultihit(15:12425) -> Charging Buffalo
 # 	Enemy action
 # [14] SkillSet:
 # 	Condition: 25% chance
-# 	[0] ESColumnSpawnMulti -> Screw Smash
+# 	[0] ESColumnSpawnMulti(77:12422) -> Screw Smash
 # 	Change 4th column to Dark orbs
-# 	[1] ESAttackMultihit -> Charging Buffalo
+# 	[1] ESAttackMultihit(15:12425) -> Charging Buffalo
 # 	Enemy action
 # [15] SkillSet:
 # 	Condition: 25% chance
-# 	[0] ESGravity -> Turn Punch
+# 	[0] ESGravity(50:12423) -> Turn Punch
 # 	Player -50% HP
-# 	[1] ESAttackMultihit -> Charging Buffalo
+# 	[1] ESAttackMultihit(15:12425) -> Charging Buffalo
 # 	Enemy action
-# [16] ESEndPath -> ESEndPath
+# [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [17] ESAttackMultihit -> Gigaton Blow
+# [17] ESAttackMultihit(15:12430) -> Gigaton Blow
 # Enemy action
-# [18] ESEndPath -> ESEndPath
+# [18] ESEndPath(36:26) -> ESEndPath
 # end_turn

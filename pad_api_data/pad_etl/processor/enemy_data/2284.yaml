@@ -63,34 +63,45 @@ records:
   usage_pct: 50
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 4 -      100
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 0 -        0
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:355) -> ESPreemptive
 # Enable preempt if level 5
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 5, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESSkyfall -> I hate the heat...
+# [6] ESSkyfall(68:3132) -> I hate the heat...
 # Water skyfall +25% for 5 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESAttackUp -> Don't jump out like that!
+# [8] ESAttackUp(19:3133) -> Don't jump out like that!
 # Increase damage to 200% for the next 999 turns
-# [9] ESBranchCard -> ESBranchCard
+# [9] ESBranchCard(90:3135) -> ESBranchCard
 # Branch on player_cards HAS [475, 477, 478, 479], target rnd 12
-# [10] ESAttackMultihit -> Summer Slash
+# [10] ESAttackMultihit(15:3134) -> Summer Slash
 # Condition: 50% chance
 # Enemy action
-# [11] ESEndPath -> ESEndPath
+# [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [12] ESBranchFlag -> ESBranchFlag
+# [12] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 10
-# [13] ESFlagOperation -> ESFlagOperation
+# [13] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [14] ESRecoverPlayer -> You're here? Why not have a break?
+# [14] ESRecoverPlayer(55:3136) -> You're here? Why not have a break?
 # Player recover 100% hp

@@ -36,26 +36,37 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 0 -        0
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESBranchFlag -> ESBranchFlag
+# [1] ESBranchFlag(23:13) -> ESBranchFlag
 # Branch on flag & 1, target rnd 3
-# [2] ESFlagOperation -> ESFlagOperation
+# [2] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [3] ESAttackMultihit -> Ninja Fireworks
+# [3] ESAttackMultihit(15:217) -> Ninja Fireworks
 # Enemy action
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(23:13) -> ESBranchFlag
 # Branch on flag & 2, target rnd 7
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [6] ESBindRandom -> What a Great View!
+# [6] ESBindRandom(1:218) -> What a Great View!
 # Condition: One-time use
 # Bind 3 random cards for 2~3 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESAttackMultihit -> Coin Throw
+# [8] ESAttackMultihit(15:221) -> Coin Throw
 # Condition: 50% chance when < 25% hp
 # Enemy action
-# [9] ESBlind -> Smoke Screen
+# [9] ESBlind(5:220) -> Smoke Screen
 # Condition: 5% chance
 # Blind all orbs on the board

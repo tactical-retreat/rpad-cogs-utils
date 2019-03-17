@@ -137,60 +137,71 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESSkillDelay -> Bite
+# [6] ESSkillDelay(89:8819) -> Bite
 # Delay active skills by 3 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchFlag -> ESBranchFlag
+# [8] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 12
-# [9] ESFlagOperation -> ESFlagOperation
+# [9] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [10] ESDebuffMovetime -> Mid-Air Frost Blast
+# [10] ESDebuffMovetime(39:8820) -> Mid-Air Frost Blast
 # Movetime -2s for 10 turns
-# [11] ESEndPath -> ESEndPath
+# [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [12] ESBranchHP -> ESBranchHP
+# [12] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 15, target rnd 24
-# [13] ESBranchHP -> ESBranchHP
+# [13] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 17
-# [14] ESCloud -> Mid-Air Frost Scythe
+# [14] ESCloud(104:8821) -> Mid-Air Frost Scythe
 # Condition: One-time use
 # 1x1 cloud appear for 2 turns at random location
-# [15] ESAttackMultihit -> Mid-Air Claw Attack
+# [15] ESAttackMultihit(15:8822) -> Mid-Air Claw Attack
 # Enemy action
-# [16] ESEndPath -> ESEndPath
+# [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [17] ESBranchFlag -> ESBranchFlag
+# [17] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 21
-# [18] ESFlagOperation -> ESFlagOperation
+# [18] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [19] SkillSet:
-# 	[0] ESBindRandom -> Roar
+# 	[0] ESBindRandom(1:8824) -> Roar
 # 	Bind 2 random cards for 1 turns
-# 	[1] ESAttackUp -> Anger
+# 	[1] ESAttackUp(17:8823) -> Anger
 # 	Increase damage to 150% for the next 10 turns
-# [20] ESEndPath -> ESEndPath
+# [20] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [21] ESGravity -> Charge
+# [21] ESGravity(50:8826) -> Charge
 # Condition: One-time use
 # Player -99% HP
-# [22] ESAttackMultihit -> Mid-Air Strike Attack
+# [22] ESAttackMultihit(15:8827) -> Mid-Air Strike Attack
 # Enemy action
-# [23] ESEndPath -> ESEndPath
+# [23] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [24] ESCloud -> Mid-Air Spinning Tail Attack
+# [24] ESCloud(104:8828) -> Mid-Air Spinning Tail Attack
 # Column of cloud appear for 1 turns at random location
-# [25] ESEndPath -> ESEndPath
+# [25] ESEndPath(36:26) -> ESEndPath
 # end_turn

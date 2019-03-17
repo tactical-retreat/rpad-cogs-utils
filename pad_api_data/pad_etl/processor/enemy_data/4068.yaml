@@ -99,34 +99,45 @@ records:
   usage_pct: 80
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 3 -       11
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 3 -       11
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 10
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESBranchCard -> ESBranchCard
+# [6] ESBranchCard(90:8601) -> ESBranchCard
 # Branch on player_cards HAS [789, 790, 2404, 3122], target rnd 8
-# [7] ESInactivity -> ♪
+# [7] ESInactivity(66:8598) -> ♪
 # Do nothing
-# [8] ESDebuffRCV -> Resonance of Cockatrice
+# [8] ESDebuffRCV(105:8597) -> Resonance of Cockatrice
 # Rcv 200% for 5 turns
-# [9] ESEndPath -> ESEndPath
+# [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [10] ESAttackSinglehit -> Disable Skill
+# [10] ESAttackSinglehit(82:1) -> Disable Skill
 # Condition: 80% chance
 # Enemy action
-# [11] ESBindRandomSub -> Whip Bind
+# [11] ESBindRandomSub(65:8599) -> Whip Bind
 # Condition: One-time use
 # Bind 1 random subs for 2 turns
-# [12] ESCloud -> Sweet Temptation
+# [12] ESCloud(104:8600) -> Sweet Temptation
 # Condition: One-time use
 # 2x1 cloud appear for 1 turns at random location
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn

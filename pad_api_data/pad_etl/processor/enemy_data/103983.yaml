@@ -99,40 +99,51 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 4 -      100
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 3 -       11
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESDamageShield -> Flight
+# [4] ESDamageShield(74:8442) -> Flight
 # Condition: One-time use
 # Reduce damage from all sources by 75% for 1 turns
-# [5] ESGravity -> Swooping Attack
+# [5] ESGravity(50:8443) -> Swooping Attack
 # Condition: One-time use
 # Player -80% HP
-# [6] ESBranchCounter -> ESBranchCounter
+# [6] ESBranchCounter(31:21) -> ESBranchCounter
 # Branch on counter = 3, target rnd 11
-# [7] ESSetCounter -> ESSetCounter
+# [7] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [8] ESAttackMultihit -> Swarm Tactics
+# [8] ESAttackMultihit(15:8437) -> Swarm Tactics
 # Condition: 50% chance
 # Enemy action
-# [9] ESAttackMultihit -> Vicious Attack
+# [9] ESAttackMultihit(15:8438) -> Vicious Attack
 # Enemy action
-# [10] ESEndPath -> ESEndPath
+# [10] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [11] ESBranchFlag -> ESBranchFlag
+# [11] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [12] ESFlagOperation -> ESFlagOperation
+# [12] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [13] ESAttackUp -> Mindless Loyalty
+# [13] ESAttackUp(17:8444) -> Mindless Loyalty
 # Increase damage to 300% for the next 999 turns
-# [14] ESAttackMultihit -> All-Out Attack
+# [14] ESAttackMultihit(15:8445) -> All-Out Attack
 # Enemy action
-# [15] ESEndPath -> ESEndPath
+# [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [16] ESAttributeResist -> Halve Water
+# [16] ESAttributeResist(72:8447) -> Halve Water
 # Reduce damage from Water by 50%

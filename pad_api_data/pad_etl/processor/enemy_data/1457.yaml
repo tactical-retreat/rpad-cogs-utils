@@ -152,23 +152,34 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 0 -        0
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:355) -> ESPreemptive
 # Enable preempt if level 5
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESInactivity -> ***** (Saint Seiya)
+# [4] ESInactivity(66:1205) -> ***** (Saint Seiya)
 # Do nothing
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESAttackMultihit -> ***** (Saint Seiya)
+# [6] ESAttackMultihit(15:1208) -> ***** (Saint Seiya)
 # Condition: When < 30% hp
 # Enemy action
-# [7] ESPoisonChangeRandomAttack -> ***** (Saint Seiya)
+# [7] ESPoisonChangeRandomAttack(64:1206) -> ***** (Saint Seiya)
 # Condition: One-time use
 # Change Random 6 to Poison
-# [8] ESAttackMultihit -> ***** (Saint Seiya)
+# [8] ESAttackMultihit(15:1207) -> ***** (Saint Seiya)
 # Enemy action

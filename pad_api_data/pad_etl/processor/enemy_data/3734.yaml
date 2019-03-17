@@ -130,62 +130,73 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESStatusShield -> Yoooooo!!
+# 	[0] ESStatusShield(20:7583) -> Yoooooo!!
 # 	Voids status ailments for 999 turns
-# 	[1] ESAbsorbAttribute -> !! Flood Warning !!
+# 	[1] ESAbsorbAttribute(53:7584) -> !! Flood Warning !!
 # 	Absorb Water damage for 10 turns
-# 	[2] ESBlind -> Ultimate Smokescreen
+# 	[2] ESBlind(62:7585) -> Ultimate Smokescreen
 # 	Blind all orbs on the board
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] SkillSet:
 # 	Condition: When < 1% hp , one-time use
-# 	[0] ESRecoverEnemy -> Simple Repairs
+# 	[0] ESRecoverEnemy(86:7592) -> Simple Repairs
 # 	Enemy recover 51% hp
-# 	[1] ESLeaderSwap -> Pipe Impact
+# 	[1] ESLeaderSwap(75:7593) -> Pipe Impact
 # 	Leader changes to random sub for 99 turns
 # [7] SkillSet:
 # 	Condition: When < 10% hp
-# 	[0] ESChangeAttribute -> Karakuri Change
+# 	[0] ESChangeAttribute(46:7595) -> Karakuri Change
 # 	Change own attribute to random one of Fire, Light
-# 	[1] ESBoardChangeAttackBits -> Type 5 Karakuri Cannon
+# 	[1] ESBoardChangeAttackBits(85:7596) -> Type 5 Karakuri Cannon
 # 	Change all orbs to Fire
-# [8] ESBranchFlag -> ESBranchFlag
+# [8] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 12
-# [9] ESFlagOperation -> ESFlagOperation
+# [9] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [10] ESBombFixedSpawn -> Crossfire HANABI
+# [10] ESBombFixedSpawn(103:7587) -> Crossfire HANABI
 # Spawn Bomb orbs in the specified positions
-# [11] ESEndPath -> ESEndPath
+# [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [12] ESBranchFlag -> ESBranchFlag
+# [12] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 17
-# [13] ESFlagOperation -> ESFlagOperation
+# [13] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [14] ESBindRandom -> WAV - Large Net
+# [14] ESBindRandom(1:7588) -> WAV - Large Net
 # Condition: 50% chance
 # Bind 6 random cards for 1 turns
-# [15] ESSkillDelay -> Whirling Odachi
+# [15] ESSkillDelay(89:7589) -> Whirling Odachi
 # Delay active skills by 2 turns
-# [16] ESEndPath -> ESEndPath
+# [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [17] ESFlagOperation -> ESFlagOperation
+# [17] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b110
-# [18] ESGravity -> Rocket Slap
+# [18] ESGravity(50:7590) -> Rocket Slap
 # Condition: 50% chance
 # Player -99% HP
-# [19] ESAttackMultihit -> Coin Machine Gun
+# [19] ESAttackMultihit(15:7591) -> Coin Machine Gun
 # Enemy action
-# [20] ESEndPath -> ESEndPath
+# [20] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [21] ESResolve -> Resolve
+# [21] ESResolve(73:7598) -> Resolve
 # Survive attacks with 1 HP when HP > 50%

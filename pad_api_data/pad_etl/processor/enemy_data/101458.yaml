@@ -128,52 +128,63 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 2 -       10
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESStatusShield -> OOPArt Effect
+# 	[0] ESStatusShield(20:8005) -> OOPArt Effect
 # 	Voids status ailments for 999 turns
-# 	[1] ESBindAwoken -> Wisdom from Very Ancient Times
+# 	[1] ESBindAwoken(88:8006) -> Wisdom from Very Ancient Times
 # 	Bind awoken skills for 6 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchHP -> ESBranchHP
+# [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 14
-# [7] ESAttackMultihit -> Gear Tempest
+# [7] ESAttackMultihit(15:3766) -> Gear Tempest
 # Condition: When < 20% hp
 # Enemy action
 # [8] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESBlind -> Cattle Mutilation
+# 	[0] ESBlind(62:3765) -> Cattle Mutilation
 # 	Blind all orbs on the board
-# 	[1] ESChangeAttribute -> Full Element
+# 	[1] ESChangeAttribute(46:3763) -> Full Element
 # 	Change own attribute to random one of Fire, Water, Wood, Light, Dark
-# [9] ESGravity -> Weight of the Trilithon
+# [9] ESGravity(50:3794) -> Weight of the Trilithon
 # Condition: 20% chance
 # Player -99% HP
-# [10] ESOrbChangeAttack -> Glyph of Plunder, Monkey
+# [10] ESOrbChangeAttack(48:540) -> Glyph of Plunder, Monkey
 # Condition: 20% chance
 # Change Random to Jammer
-# [11] ESAttackMultihit -> Crystal Fang
+# [11] ESAttackMultihit(15:600) -> Crystal Fang
 # Condition: 30% chance
 # Enemy action
-# [12] ESAttackMultihit -> Annihilating Light of the Pleiades
+# [12] ESAttackMultihit(15:3778) -> Annihilating Light of the Pleiades
 # Condition: 30% chance
 # Enemy action
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [14] ESBranchFlag -> ESBranchFlag
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 7
-# [15] ESFlagOperation -> ESFlagOperation
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [16] ESDebuffMovetime -> Lost Technology
+# [16] ESDebuffMovetime(39:3764) -> Lost Technology
 # Movetime -2s for 5 turns
-# [17] ESEndPath -> ESEndPath
+# [17] ESEndPath(36:26) -> ESEndPath
 # end_turn

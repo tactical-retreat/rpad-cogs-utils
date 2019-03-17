@@ -81,35 +81,46 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 7 -      111
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESStatusShield -> I thought we had something.
+# [4] ESStatusShield(20:8482) -> I thought we had something.
 # Condition: One-time use
 # Voids status ailments for 3 turns
-# [5] ESOrbChangeAttack -> Too slow!
+# [5] ESOrbChangeAttack(48:8483) -> Too slow!
 # Condition: One-time use
 # Change Random to Water
 # [6] SkillSet:
 # 	Condition: When < 50% hp , one-time use
-# 	[0] ESInactivity -> It's pointless!
+# 	[0] ESInactivity(66:8484) -> It's pointless!
 # 	Do nothing
-# 	[1] ESRecoverEnemy -> It'll take more than that to kill me!
+# 	[1] ESRecoverEnemy(7:8485) -> It'll take more than that to kill me!
 # 	Enemy recover 50% hp
-# [7] ESAttackUp -> AAAAAAAAH!!!
+# [7] ESAttackUp(17:8488) -> AAAAAAAAH!!!
 # Condition: When < 20% hp
 # Increase damage to 150% for the next 999 turns
-# [8] ESAttackMultihit -> Ultimate Spear
+# [8] ESAttackMultihit(15:8487) -> Ultimate Spear
 # Condition: 40% chance
 # Enemy action
-# [9] ESEndPath -> ESEndPath
+# [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [10] SkillSet:
 # 	Condition: On death
-# 	[0] ESInactivity -> You won.
+# 	[0] ESInactivity(66:8489) -> You won.
 # 	Do nothing

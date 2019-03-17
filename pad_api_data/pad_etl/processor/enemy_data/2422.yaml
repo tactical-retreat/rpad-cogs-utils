@@ -126,58 +126,69 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [6] SkillSet:
-# 	[0] ESOrbSealRow -> Don't even try to get closer
+# 	[0] ESOrbSealRow(100:10096) -> Don't even try to get closer
 # 	Seal 1st row for 5 turns
-# 	[1] ESAbsorbAttribute -> Creation of Antibody
+# 	[1] ESAbsorbAttribute(53:10097) -> Creation of Antibody
 # 	Absorb Water, Dark damage for 5 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESSetCounter -> ESSetCounter
+# [8] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [9] ESBranchCounter -> ESBranchCounter
+# [9] ESBranchCounter(31:21) -> ESBranchCounter
 # Branch on counter = 5, target rnd 15
-# [10] ESBranchHP -> ESBranchHP
+# [10] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 10, target rnd 21
-# [11] ESOrbChangeAttack -> White Out
+# [11] ESOrbChangeAttack(48:10101) -> White Out
 # Condition: 33% chance
 # Change Heal to Light
-# [12] ESOrbLock -> Restraining Star
+# [12] ESOrbLock(94:10102) -> Restraining Star
 # Condition: 33% chance
 # Lock all Water, Dark orbs
-# [13] ESAttackMultihit -> Star Quasar
+# [13] ESAttackMultihit(15:10103) -> Star Quasar
 # Condition: 34% chance
 # Enemy action
-# [14] ESEndPath -> ESEndPath
+# [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [15] ESSetCounter -> ESSetCounter
+# [15] ESSetCounter(25:15) -> ESSetCounter
 # counter = 0
-# [16] ESAbsorbThreshold -> Gigantic Power Shield
+# [16] ESAbsorbThreshold(87:10099) -> Gigantic Power Shield
 # Condition: One-time use
 # Absorb damage >= 2000000 damage for 5 turns
-# [17] ESBranchFlag -> ESBranchFlag
+# [17] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 10
-# [18] ESFlagOperation -> ESFlagOperation
+# [18] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [19] ESDamageShield -> Divine Protection from the Gods
+# [19] ESDamageShield(74:10100) -> Divine Protection from the Gods
 # Reduce damage from all sources by 75% for 99 turns
-# [20] ESEndPath -> ESEndPath
+# [20] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [21] ESAttackMultihit -> Shooting Snow White
+# [21] ESAttackMultihit(15:10104) -> Shooting Snow White
 # Enemy action
-# [22] ESEndPath -> ESEndPath
+# [22] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [23] ESTypeResist -> God Machine Halved
+# [23] ESTypeResist(118:10095) -> God Machine Halved
 # Reduce damage from God, Machine by 50%

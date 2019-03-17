@@ -510,82 +510,93 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1023 - 1111111111
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchCard -> ESBranchCard
+# [2] ESBranchCard(90:4705) -> ESBranchCard
 # Branch on player_cards HAS [2141, 2142, 2143, 2144, 2145, 2146], target rnd 4
 # [3] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESStatusShield -> Did you think that was my real form?
+# 	[0] ESStatusShield(20:4576) -> Did you think that was my real form?
 # 	Voids status ailments for 999 turns
-# 	[1] ESVoidShield -> Space-Time Distortion
+# 	[1] ESVoidShield(71:4577) -> Space-Time Distortion
 # 	Void damage >= 500000 for 5 turns
 # [4] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESStatusShield -> Did you think that was my real form?
+# 	[0] ESStatusShield(20:4576) -> Did you think that was my real form?
 # 	Voids status ailments for 999 turns
-# 	[1] ESVoidShield -> Your Dragon God is waiting for you...
+# 	[1] ESVoidShield(71:4706) -> Your Dragon God is waiting for you...
 # 	Void damage >= 500000 for 5 turns
-# [5] ESAttackMultihit -> Time Saw
+# [5] ESAttackMultihit(15:4594) -> Time Saw
 # Condition: When < 20% hp
 # Enemy action
-# [6] ESBranchHP -> ESBranchHP
+# [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 17
 # [7] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESRowSpawnMulti -> Continuous Border
+# 	[0] ESRowSpawnMulti(79:4579) -> Continuous Border
 # 	Change 3rd row to Heal, Jammer orbs
-# 	[1] ESFixedStart -> Time Warp
+# 	[1] ESFixedStart(101:4580) -> Time Warp
 # 	Fix orb movement starting point to random position on the board
-# [8] ESAttackMultihit -> Hour Hand Strike
+# [8] ESAttackMultihit(15:4582) -> Hour Hand Strike
 # Condition: One-time use
 # Enemy action
-# [9] ESBindRandomSub -> Time Bind
+# [9] ESBindRandomSub(65:4583) -> Time Bind
 # Condition: One-time use
 # Bind 2 random subs for 6 turns
 # [10] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESRowSpawnMulti -> Continuous Border
+# 	[0] ESRowSpawnMulti(79:4579) -> Continuous Border
 # 	Change 3rd row to Heal, Jammer orbs
-# 	[1] ESFixedStart -> Time Warp
+# 	[1] ESFixedStart(101:4580) -> Time Warp
 # 	Fix orb movement starting point to random position on the board
-# [11] ESAttackMultihit -> Hour Hand Strike
+# [11] ESAttackMultihit(15:4585) -> Hour Hand Strike
 # Condition: One-time use
 # Enemy action
-# [12] ESRecoverEnemy -> Time Leap
+# [12] ESRecoverEnemy(86:4586) -> Time Leap
 # Condition: One-time use
 # Enemy recover 50% hp
 # [13] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESRowSpawnMulti -> Continuous Border
+# 	[0] ESRowSpawnMulti(79:4579) -> Continuous Border
 # 	Change 3rd row to Heal, Jammer orbs
-# 	[1] ESFixedStart -> Time Warp
+# 	[1] ESFixedStart(101:4580) -> Time Warp
 # 	Fix orb movement starting point to random position on the board
-# [14] ESAttackMultihit -> Hour Hand Strike
+# [14] ESAttackMultihit(15:4588) -> Hour Hand Strike
 # Condition: One-time use
 # Enemy action
-# [15] ESDebuffMovetime -> Time Steal
+# [15] ESDebuffMovetime(39:4589) -> Time Steal
 # Condition: One-time use
 # Movetime -3s for 5 turns
-# [16] ESAttackMultihit -> Time Saw
+# [16] ESAttackMultihit(15:4590) -> Time Saw
 # Enemy action
-# [17] ESBranchFlag -> ESBranchFlag
+# [17] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 7
-# [18] ESFlagOperation -> ESFlagOperation
+# [18] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [19] ESBranchLevel -> ESBranchLevel
+# [19] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 7, target rnd 21
 # [20] SkillSet:
-# 	[0] ESAbsorbCombo -> Strain
+# 	[0] ESAbsorbCombo(67:4591) -> Strain
 # 	Absorb combo <= 6 damage for 1 turns
-# 	[1] ESFixedStart -> Time Warp
+# 	[1] ESFixedStart(101:4592) -> Time Warp
 # 	Fix orb movement starting point to random position on the board
 # [21] SkillSet:
-# 	[0] ESAbsorbCombo -> Strain
+# 	[0] ESAbsorbCombo(67:4708) -> Strain
 # 	Absorb combo <= 7 damage for 1 turns
-# 	[1] ESFixedStart -> Time Warp
+# 	[1] ESFixedStart(101:4592) -> Time Warp
 # 	Fix orb movement starting point to random position on the board
-# [22] ESAttributeResist -> Time Dark Halven
+# [22] ESAttributeResist(72:4704) -> Time Dark Halven
 # Reduce damage from Dark by 50%

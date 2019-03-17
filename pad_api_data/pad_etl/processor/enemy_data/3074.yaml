@@ -128,59 +128,70 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 3 -       11
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESSkillDelay -> Why do you fight?
+# 	[0] ESSkillDelay(89:5145) -> Why do you fight?
 # 	Delay active skills by 4~6 turns
-# 	[1] ESStatusShield -> I won't go easy on you
+# 	[1] ESStatusShield(20:5146) -> I won't go easy on you
 # 	Voids status ailments for 999 turns
-# 	[2] ESAbsorbThreshold -> Iron DEF of Aegis
+# 	[2] ESAbsorbThreshold(87:5147) -> Iron DEF of Aegis
 # 	Absorb damage >= 4000000 damage for 99 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchHP -> ESBranchHP
+# [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 18
-# [7] ESBranchHP -> ESBranchHP
+# [7] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 12
-# [8] ESGravity -> LB-Siculus Strike
+# [8] ESGravity(50:5151) -> LB-Siculus Strike
 # Condition: One-time use
 # Player -150% HP
 # [9] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESBlindStickyFixed -> Color Delete
+# 	[0] ESBlindStickyFixed(98:5153) -> Color Delete
 # 	Blind orbs in specific positions for 3 turns
-# 	[1] ESBindAttack -> CFM-Pulse
+# 	[1] ESBindAttack(63:5165) -> CFM-Pulse
 # 	Bind 1 random for 3 turns
-# [10] ESColumnSpawnMulti -> C-Shining Spear
+# [10] ESColumnSpawnMulti(77:5150) -> C-Shining Spear
 # Condition: 50% chance
 # Change 2nd column to Wood orbs, 5th column to Light orbs
-# [11] ESChangeAttribute -> EB & Self Convert
+# [11] ESChangeAttribute(46:5152) -> EB & Self Convert
 # Change own attribute to random one of Wood, Light
-# [12] ESBranchFlag -> ESBranchFlag
+# [12] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 15
-# [13] ESFlagOperation -> ESFlagOperation
+# [13] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [14] ESDamageShield -> AS-Complete Protection
+# [14] ESDamageShield(74:5149) -> AS-Complete Protection
 # Reduce damage from all sources by 99% for 2 turns
-# [15] ESBranchFlag -> ESBranchFlag
+# [15] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 8
-# [16] ESFlagOperation -> ESFlagOperation
+# [16] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [17] ESAttackMultihit -> Storm Punisher FPE
+# [17] ESAttackMultihit(15:5154) -> Storm Punisher FPE
 # Enemy action
-# [18] ESBranchFlag -> ESBranchFlag
+# [18] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 21
-# [19] ESFlagOperation -> ESFlagOperation
+# [19] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
-# [20] ESRecoverEnemy -> AS-Overhaul
+# [20] ESRecoverEnemy(86:5156) -> AS-Overhaul
 # Enemy recover 50% hp
-# [21] ESAttackMultihit -> Starburst SSE
+# [21] ESAttackMultihit(15:5155) -> Starburst SSE
 # Enemy action

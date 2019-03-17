@@ -342,160 +342,171 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 6, target rnd 26
-# [3] ESBranchFlag -> ESBranchFlag
+# [3] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 7
-# [4] ESFlagOperation -> ESFlagOperation
+# [4] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [5] SkillSet:
-# 	[0] ESAbsorbCombo -> Don't get in my way...
+# 	[0] ESAbsorbCombo(67:11096) -> Don't get in my way...
 # 	Absorb combo <= 5 damage for 999 turns
-# 	[1] ESCloud -> Harbinger of Thunder
+# 	[1] ESCloud(104:11305) -> Harbinger of Thunder
 # 	Row of cloud appear for 1 turns at random location
-# 	[2] ESSkyfall -> Warrior God's Call
+# 	[2] ESSkyfall(96:11098) -> Warrior God's Call
 # 	Locked Water, Light skyfall +100% for 10 turns
-# [6] ESEndPath -> ESEndPath
+# [6] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [7] ESBranchHP -> ESBranchHP
+# [7] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 100, target rnd 16
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 18
 # [9] SkillSet:
 # 	Condition: 10% chance
-# 	[0] ESCloud -> Harbinger of Thunder
+# 	[0] ESCloud(104:11305) -> Harbinger of Thunder
 # 	Row of cloud appear for 1 turns at random location
-# 	[1] ESColumnSpawnMulti -> Thunder!!
+# 	[1] ESColumnSpawnMulti(77:11099) -> Thunder!!
 # 	Change 2nd column to Light orbs
 # [10] SkillSet:
 # 	Condition: 10% chance
-# 	[0] ESCloud -> Harbinger of Thunder
+# 	[0] ESCloud(104:11305) -> Harbinger of Thunder
 # 	Row of cloud appear for 1 turns at random location
-# 	[1] ESColumnSpawnMulti -> Thunder!!
+# 	[1] ESColumnSpawnMulti(77:11100) -> Thunder!!
 # 	Change 3rd column to Light orbs
 # [11] SkillSet:
 # 	Condition: 10% chance
-# 	[0] ESCloud -> Harbinger of Thunder
+# 	[0] ESCloud(104:11305) -> Harbinger of Thunder
 # 	Row of cloud appear for 1 turns at random location
-# 	[1] ESColumnSpawnMulti -> Thunder!!
+# 	[1] ESColumnSpawnMulti(77:11101) -> Thunder!!
 # 	Change 4th column to Light orbs
 # [12] SkillSet:
 # 	Condition: 10% chance
-# 	[0] ESCloud -> Harbinger of Thunder
+# 	[0] ESCloud(104:11305) -> Harbinger of Thunder
 # 	Row of cloud appear for 1 turns at random location
-# 	[1] ESColumnSpawnMulti -> Thunder!!
+# 	[1] ESColumnSpawnMulti(77:11102) -> Thunder!!
 # 	Change 5th column to Light orbs
 # [13] SkillSet:
 # 	Condition: 30% chance
-# 	[0] ESCloud -> Harbinger of Thunder
+# 	[0] ESCloud(104:11305) -> Harbinger of Thunder
 # 	Row of cloud appear for 1 turns at random location
-# 	[1] ESOrbLock -> Roar, Mjölnir!
+# 	[1] ESOrbLock(94:11103) -> Roar, Mjölnir!
 # 	Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [14] SkillSet:
 # 	Condition: 30% chance
-# 	[0] ESCloud -> Harbinger of Thunder
+# 	[0] ESCloud(104:11305) -> Harbinger of Thunder
 # 	Row of cloud appear for 1 turns at random location
-# 	[1] ESAttackMultihit -> Give me power, Megingjörd!
+# 	[1] ESAttackMultihit(15:11104) -> Give me power, Megingjörd!
 # 	Enemy action
-# [15] ESEndPath -> ESEndPath
+# [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [16] SkillSet:
-# 	[0] ESAttackMultihit -> Is that all you've got?
+# 	[0] ESAttackMultihit(15:11106) -> Is that all you've got?
 # 	Enemy action
-# 	[1] ESSkillDelay -> Warrior God's Ambition
+# 	[1] ESSkillDelay(89:11107) -> Warrior God's Ambition
 # 	Delay active skills by 3 turns
-# [17] ESEndPath -> ESEndPath
+# [17] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [18] ESBranchHP -> ESBranchHP
+# [18] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 23
-# [19] ESBranchFlag -> ESBranchFlag
+# [19] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 9
-# [20] ESFlagOperation -> ESFlagOperation
+# [20] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [21] SkillSet:
-# 	[0] ESStatusShield -> Since you came this far...
+# 	[0] ESStatusShield(20:11109) -> Since you came this far...
 # 	Voids status ailments for 999 turns
-# 	[1] ESDamageShield -> ...just come and fight!
+# 	[1] ESDamageShield(74:11110) -> ...just come and fight!
 # 	Reduce damage from all sources by 50% for 10 turns
-# [22] ESEndPath -> ESEndPath
+# [22] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [23] ESAttackUp -> Earth Megin Unleashed
+# [23] ESAttackUp(17:11111) -> Earth Megin Unleashed
 # Condition: One-time use
 # Increase damage to 200% for the next 99 turns
-# [24] ESRandomSpawn -> Lightning Hell
+# [24] ESRandomSpawn(92:11112) -> Lightning Hell
 # Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board
 # Change all orbs to Jammer
-# [25] ESEndPath -> ESEndPath
+# [25] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [26] ESBranchFlag -> ESBranchFlag
+# [26] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 30
-# [27] ESFlagOperation -> ESFlagOperation
+# [27] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [28] SkillSet:
-# 	[0] ESAbsorbCombo -> Don't get in my way...
+# 	[0] ESAbsorbCombo(67:11096) -> Don't get in my way...
 # 	Absorb combo <= 5 damage for 999 turns
-# 	[1] ESCloud -> Harbinger of Thunder
+# 	[1] ESCloud(104:11097) -> Harbinger of Thunder
 # 	6x2 cloud appear for 1 turns at random location
-# 	[2] ESSkyfall -> Warrior God's Call
+# 	[2] ESSkyfall(96:11098) -> Warrior God's Call
 # 	Locked Water, Light skyfall +100% for 10 turns
-# [29] ESEndPath -> ESEndPath
+# [29] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [30] ESBranchHP -> ESBranchHP
+# [30] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 100, target rnd 16
-# [31] ESBranchHP -> ESBranchHP
+# [31] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 39
 # [32] SkillSet:
 # 	Condition: 10% chance
-# 	[0] ESCloud -> Harbinger of Thunder
+# 	[0] ESCloud(104:11097) -> Harbinger of Thunder
 # 	6x2 cloud appear for 1 turns at random location
-# 	[1] ESColumnSpawnMulti -> Thunder!!
+# 	[1] ESColumnSpawnMulti(77:11099) -> Thunder!!
 # 	Change 2nd column to Light orbs
 # [33] SkillSet:
 # 	Condition: 10% chance
-# 	[0] ESCloud -> Harbinger of Thunder
+# 	[0] ESCloud(104:11097) -> Harbinger of Thunder
 # 	6x2 cloud appear for 1 turns at random location
-# 	[1] ESColumnSpawnMulti -> Thunder!!
+# 	[1] ESColumnSpawnMulti(77:11100) -> Thunder!!
 # 	Change 3rd column to Light orbs
 # [34] SkillSet:
 # 	Condition: 10% chance
-# 	[0] ESCloud -> Harbinger of Thunder
+# 	[0] ESCloud(104:11097) -> Harbinger of Thunder
 # 	6x2 cloud appear for 1 turns at random location
-# 	[1] ESColumnSpawnMulti -> Thunder!!
+# 	[1] ESColumnSpawnMulti(77:11101) -> Thunder!!
 # 	Change 4th column to Light orbs
 # [35] SkillSet:
 # 	Condition: 10% chance
-# 	[0] ESCloud -> Harbinger of Thunder
+# 	[0] ESCloud(104:11097) -> Harbinger of Thunder
 # 	6x2 cloud appear for 1 turns at random location
-# 	[1] ESColumnSpawnMulti -> Thunder!!
+# 	[1] ESColumnSpawnMulti(77:11102) -> Thunder!!
 # 	Change 5th column to Light orbs
 # [36] SkillSet:
 # 	Condition: 30% chance
-# 	[0] ESCloud -> Harbinger of Thunder
+# 	[0] ESCloud(104:11097) -> Harbinger of Thunder
 # 	6x2 cloud appear for 1 turns at random location
-# 	[1] ESOrbLock -> Roar, Mjölnir!
+# 	[1] ESOrbLock(94:11103) -> Roar, Mjölnir!
 # 	Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [37] SkillSet:
 # 	Condition: 30% chance
-# 	[0] ESCloud -> Harbinger of Thunder
+# 	[0] ESCloud(104:11097) -> Harbinger of Thunder
 # 	6x2 cloud appear for 1 turns at random location
-# 	[1] ESAttackMultihit -> Give me power, Megingjörd!
+# 	[1] ESAttackMultihit(15:11104) -> Give me power, Megingjörd!
 # 	Enemy action
-# [38] ESEndPath -> ESEndPath
+# [38] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [39] ESBranchHP -> ESBranchHP
+# [39] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 23
-# [40] ESBranchFlag -> ESBranchFlag
+# [40] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 32
-# [41] ESFlagOperation -> ESFlagOperation
+# [41] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [42] SkillSet:
-# 	[0] ESStatusShield -> Since you came this far...
+# 	[0] ESStatusShield(20:11109) -> Since you came this far...
 # 	Voids status ailments for 999 turns
-# 	[1] ESDamageShield -> ...just come and fight!
+# 	[1] ESDamageShield(74:11110) -> ...just come and fight!
 # 	Reduce damage from all sources by 50% for 10 turns
-# [43] ESEndPath -> ESEndPath
+# [43] ESEndPath(36:26) -> ESEndPath
 # end_turn

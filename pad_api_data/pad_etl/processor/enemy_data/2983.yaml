@@ -105,59 +105,70 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 10
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESBranchCard -> ESBranchCard
+# [4] ESBranchCard(90:6372) -> ESBranchCard
 # Branch on player_cards HAS [2323], target rnd 7
-# [5] ESBranchCard -> ESBranchCard
+# [5] ESBranchCard(90:6375) -> ESBranchCard
 # Branch on player_cards HAS [2322], target rnd 8
 # [6] SkillSet:
-# 	[0] ESAbsorbCombo -> Let's take it nice and slow
+# 	[0] ESAbsorbCombo(67:6370) -> Let's take it nice and slow
 # 	Absorb combo <= 6 damage for 999 turns
-# 	[1] ESStatusShield -> Blessed Harvest
+# 	[1] ESStatusShield(20:6379) -> Blessed Harvest
 # 	Voids status ailments for 999 turns
-# 	[2] ESDebuffMovetime -> Vines get in the way of the puzzle!
+# 	[2] ESDebuffMovetime(39:6371) -> Vines get in the way of the puzzle!
 # 	Movetime 25% for 6 turns
 # [7] SkillSet:
-# 	[0] ESAbsorbCombo -> You ate my dango, didn't you!
+# 	[0] ESAbsorbCombo(67:6374) -> You ate my dango, didn't you!
 # 	Absorb combo <= 6 damage for 999 turns
-# 	[1] ESStatusShield -> Blessed Harvest
+# 	[1] ESStatusShield(20:6379) -> Blessed Harvest
 # 	Voids status ailments for 999 turns
-# 	[2] ESDebuffMovetime -> Vines get in the way of the puzzle!
+# 	[2] ESDebuffMovetime(39:6371) -> Vines get in the way of the puzzle!
 # 	Movetime 25% for 6 turns
 # [8] SkillSet:
-# 	[0] ESAbsorbCombo -> Frightened and on the verge of tears
+# 	[0] ESAbsorbCombo(67:6377) -> Frightened and on the verge of tears
 # 	Absorb combo <= 6 damage for 999 turns
-# 	[1] ESStatusShield -> Blessed Harvest
+# 	[1] ESStatusShield(20:6379) -> Blessed Harvest
 # 	Voids status ailments for 999 turns
-# 	[2] ESDebuffMovetime -> Vines get in the way of the puzzle!
+# 	[2] ESDebuffMovetime(39:6371) -> Vines get in the way of the puzzle!
 # 	Movetime 25% for 6 turns
-# [9] ESEndPath -> ESEndPath
+# [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [10] ESLeaderSwap -> It's time for your punishment!
+# [10] ESLeaderSwap(75:6386) -> It's time for your punishment!
 # Condition: When < 25% hp , one-time use
 # Leader changes to random sub for 1 turns
-# [11] ESGravity -> Judgment Slash
+# [11] ESGravity(50:6387) -> Judgment Slash
 # Condition: When < 25% hp
 # Player -300% HP
 # [12] SkillSet:
 # 	Condition: When < 50% hp
-# 	[0] ESRowSpawnMulti -> Lifespan Diminisher
+# 	[0] ESRowSpawnMulti(79:6382) -> Lifespan Diminisher
 # 	Change 3rd row to Heal orbs
-# 	[1] ESOrbChangeAttack -> Insidious Impurity
+# 	[1] ESOrbChangeAttack(48:6385) -> Insidious Impurity
 # 	Change Heal to Poison
 # [13] SkillSet:
-# 	[0] ESDamageShield -> Benevolent Protection
+# 	[0] ESDamageShield(74:6380) -> Benevolent Protection
 # 	Reduce damage from all sources by 75% for 1 turns
-# 	[1] ESRowSpawnMulti -> Lifespan Diminisher
+# 	[1] ESRowSpawnMulti(79:6382) -> Lifespan Diminisher
 # 	Change 3rd row to Heal orbs
-# 	[2] ESOrbChangeAttack -> Ruined Harvest Mudslide
+# 	[2] ESOrbChangeAttack(48:6383) -> Ruined Harvest Mudslide
 # 	Change Heal to Jammer
-# [14] ESTurnChangePassive -> Enemies' next move changed in anger
+# [14] ESTurnChangePassive(106:6378) -> Enemies' next move changed in anger
 # Enemy turn counter change to 1 when HP <= 50%

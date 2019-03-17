@@ -81,44 +81,55 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 0 -        0
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESAttackPreemptive -> Move, move, move---!!
+# [1] ESAttackPreemptive(47:674) -> Move, move, move---!!
 # Enemy action
-# [2] ESBranchHP -> ESBranchHP
+# [2] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 40, target rnd 7
-# [3] ESBranchFlag -> ESBranchFlag
+# [3] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 10
-# [4] ESFlagOperation -> ESFlagOperation
+# [4] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [5] ESOrbChangeAttack -> Not going easy anymore!
+# [5] ESOrbChangeAttack(48:682) -> Not going easy anymore!
 # Change Poison to Dark
-# [6] ESGravity -> Not going easy anymore!
+# [6] ESGravity(50:681) -> Not going easy anymore!
 # Player -50% HP
-# [7] ESPoisonChangeRandom -> Take this!
+# [7] ESPoisonChangeRandom(60:675) -> Take this!
 # Condition: One-time use
 # Change Random 5 to Poison
-# [8] ESAttackMultihit -> Deadly Drive!
+# [8] ESAttackMultihit(15:676) -> Deadly Drive!
 # Condition: 70% chance when < 75% hp
 # Enemy action
-# [9] ESEndPath -> ESEndPath
+# [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [10] ESBranchFlag -> ESBranchFlag
+# [10] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 13
-# [11] ESFlagOperation -> ESFlagOperation
+# [11] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [12] ESRandomSpawn -> Sink into a sea of poison!!
+# [12] ESRandomSpawn(92:677) -> Sink into a sea of poison!!
 # Condition: One-time use
 # Change all orbs to Poison
-# [13] ESBranchFlag -> ESBranchFlag
+# [13] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 16
-# [14] ESFlagOperation -> ESFlagOperation
+# [14] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [15] ESAttackMultihit -> Deadly Drive!
+# [15] ESAttackMultihit(15:676) -> Deadly Drive!
 # Condition: When < 75% hp
 # Enemy action
-# [16] ESFlagOperation -> ESFlagOperation
+# [16] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b110
-# [17] ESAttackMultihit -> Deadly Drive!
+# [17] ESAttackMultihit(15:676) -> Deadly Drive!
 # Condition: When < 75% hp
 # Enemy action

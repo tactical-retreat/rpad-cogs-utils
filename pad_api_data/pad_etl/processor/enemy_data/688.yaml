@@ -54,19 +54,30 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 2 -       10
+# [51] 1 -        1
+# [52] 0 -        0
+# [53] 2 -       10
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESBranchFlag -> ESBranchFlag
+# [1] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 5
-# [2] ESFlagOperation -> ESFlagOperation
+# [2] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [3] ESInactivity -> Mouth Opened Wide
+# [3] ESInactivity(16:383) -> Mouth Opened Wide
 # Condition: One-time use
 # Do nothing
-# [4] ESEndPath -> ESEndPath
+# [4] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [5] ESAttackMultihit -> Chaos Ray
+# [5] ESAttackMultihit(15:385) -> Chaos Ray
 # Condition: One-time use
 # Enemy action
-# [6] ESInactivity -> CHAOS!
+# [6] ESInactivity(16:384) -> CHAOS!
 # Do nothing

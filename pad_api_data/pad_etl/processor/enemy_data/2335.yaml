@@ -45,39 +45,50 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 4 -      100
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:355) -> ESPreemptive
 # Enable preempt if level 5
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 5, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESBindAttack -> Paralyze Breath
+# [6] ESBindAttack(63:3349) -> Paralyze Breath
 # Bind own leader for 2 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESRecoverEnemyAlly -> Follow Repair
+# [8] ESRecoverEnemyAlly(52:3235) -> Follow Repair
 # Condition: When enemy ally is killed
 # Enemy ally recover 45% hp
-# [9] ESAttackMultihit -> Limit Burst
+# [9] ESAttackMultihit(15:3241) -> Limit Burst
 # Condition: When < 10% hp
 # Enemy action
-# [10] ESSkillDelay -> Absorption
+# [10] ESSkillDelay(89:3240) -> Absorption
 # Condition: When < 80% hp , one-time use
 # Delay active skills by 1 turns
-# [11] ESOrbLock -> Peaky Lightning
+# [11] ESOrbLock(94:3350) -> Peaky Lightning
 # Condition: 40% chance
 # Lock all Light orbs
-# [12] ESRandomSpawn -> Gold Pulse
+# [12] ESRandomSpawn(92:3351) -> Gold Pulse
 # Condition: 40% chance & when Fire, Water, Wood, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 5 Light orbs
-# [13] ESOrbChangeAttack -> Thunder Poison
+# [13] ESOrbChangeAttack(48:3352) -> Thunder Poison
 # Condition: 20% chance when < 70% hp
 # Change Light to Poison
-# [14] ESEndPath -> ESEndPath
+# [14] ESEndPath(36:26) -> ESEndPath
 # end_turn

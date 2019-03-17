@@ -135,47 +135,58 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 4 -      100
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 0 -        0
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESSkyfall -> Eagle Eye
+# [6] ESSkyfall(96:3466) -> Eagle Eye
 # Locked Light skyfall +100% for 99 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESDispel -> Lovely Pose
+# [8] ESDispel(6:3473) -> Lovely Pose
 # Voids player buff effects
-# [9] ESBranchHP -> ESBranchHP
+# [9] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 70, target rnd 16
-# [10] ESAttackMultihit -> Meteorite
+# [10] ESAttackMultihit(15:3470) -> Meteorite
 # Condition: When < 10% hp
 # Enemy action
-# [11] ESOrbLock -> Skipping about
+# [11] ESOrbLock(94:3472) -> Skipping about
 # Condition: 25% chance
 # Lock 4 random Fire, Water, Wood, Light, Dark orbs
-# [12] ESBindRandom -> Lick Bind
+# [12] ESBindRandom(1:3469) -> Lick Bind
 # Condition: 25% chance
 # Bind 1 random cards for 1 turns
-# [13] ESAttackMultihit -> Snarl
+# [13] ESAttackMultihit(15:3468) -> Snarl
 # Condition: 25% chance
 # Enemy action
-# [14] ESColumnSpawnMulti -> Saint Corona
+# [14] ESColumnSpawnMulti(77:3467) -> Saint Corona
 # Condition: 25% chance
 # Change 2nd, 4th column to Light orbs
-# [15] ESEndPath -> ESEndPath
+# [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [16] ESBranchFlag -> ESBranchFlag
+# [16] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 10
-# [17] ESFlagOperation -> ESFlagOperation
+# [17] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [18] ESLeaderSwap -> Whim
+# [18] ESLeaderSwap(75:3471) -> Whim
 # Condition: When < 70% hp
 # Leader changes to random sub for 1 turns

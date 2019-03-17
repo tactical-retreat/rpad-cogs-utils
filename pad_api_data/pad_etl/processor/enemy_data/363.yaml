@@ -139,69 +139,80 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESDamageShield -> Garment of Protection
+# 	[0] ESDamageShield(74:6122) -> Garment of Protection
 # 	Reduce damage from all sources by 80% for 1 turns
-# 	[1] ESBindAttack -> Gungnir
+# 	[1] ESBindAttack(63:6123) -> Gungnir
 # 	Bind 1 random for 5 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchHP -> ESBranchHP
+# [6] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 100, target rnd 20
-# [7] ESBranchHP -> ESBranchHP
+# [7] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 14
-# [8] ESAttackMultihit -> Vak Sigfodr
+# [8] ESAttackMultihit(15:6136) -> Vak Sigfodr
 # Condition: When < 15% hp
 # Enemy action
 # [9] SkillSet:
 # 	Condition: When < 50% hp , one-time use
-# 	[0] ESAttackMultihit -> Triple Slash
+# 	[0] ESAttackMultihit(15:6131) -> Triple Slash
 # 	Enemy action
-# 	[1] ESRecoverEnemy -> Auto-recover
+# 	[1] ESRecoverEnemy(86:6132) -> Auto-recover
 # 	Enemy recover 10% hp
-# [10] ESRowSpawnMulti -> Divide Poison
+# [10] ESRowSpawnMulti(79:6135) -> Divide Poison
 # Condition: When < 50% hp
 # Change 3rd row to Wood, Poison orbs
 # [11] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAttackMultihit -> Double Slash
+# 	[0] ESAttackMultihit(15:6125) -> Double Slash
 # 	Enemy action
-# 	[1] ESRecoverEnemy -> Auto-recover
+# 	[1] ESRecoverEnemy(86:6126) -> Auto-recover
 # 	Enemy recover 10% hp
-# [12] ESRowSpawnMulti -> Divide Blast
+# [12] ESRowSpawnMulti(79:6134) -> Divide Blast
 # Change 3rd row to Wood orbs
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [14] ESBranchFlag -> ESBranchFlag
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 8
-# [15] ESFlagOperation -> ESFlagOperation
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [16] ESBranchCard -> ESBranchCard
+# [16] ESBranchCard(90:6137) -> ESBranchCard
 # Branch on player_cards HAS [2640, 2641, 2899, 2900], target rnd 18
 # [17] SkillSet:
-# 	[0] ESDebuffMovetime -> Skilfing
+# 	[0] ESDebuffMovetime(39:6128) -> Skilfing
 # 	Movetime -1s for 7 turns
-# 	[1] ESGravity -> Hnikar
+# 	[1] ESGravity(50:6129) -> Hnikar
 # 	Player -99% HP
 # [18] SkillSet:
-# 	[0] ESDebuffMovetime -> I am not...going to lose!
+# 	[0] ESDebuffMovetime(39:6138) -> I am not...going to lose!
 # 	Movetime -1s for 7 turns
-# 	[1] ESGravity -> Hnikar
+# 	[1] ESGravity(50:6129) -> Hnikar
 # 	Player -99% HP
-# [19] ESEndPath -> ESEndPath
+# [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [20] SkillSet:
-# 	[0] ESDamageShield -> Garment of Protection
+# 	[0] ESDamageShield(74:6122) -> Garment of Protection
 # 	Reduce damage from all sources by 80% for 1 turns
-# 	[1] ESBindAttack -> Gungnir
+# 	[1] ESBindAttack(63:6123) -> Gungnir
 # 	Bind 1 random for 5 turns
-# [21] ESEndPath -> ESEndPath
+# [21] ESEndPath(36:26) -> ESEndPath
 # end_turn

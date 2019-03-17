@@ -226,116 +226,127 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESStatusShield -> Flowing Green Scales
+# 	[0] ESStatusShield(20:11069) -> Flowing Green Scales
 # 	Voids status ailments for 999 turns
-# 	[1] ESAttributeBlock -> Extermination of Life
+# 	[1] ESAttributeBlock(107:11070) -> Extermination of Life
 # 	Unable to Heal orbs for 1 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchHP -> ESBranchHP
+# [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 1, target rnd 28
-# [7] ESBranchHP -> ESBranchHP
+# [7] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 23
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 19
 # [9] SkillSet:
 # 	Condition: 20% chance
-# 	[0] ESVoidShield -> Longing for Life
+# 	[0] ESVoidShield(71:11080) -> Longing for Life
 # 	Void damage >= 15000000 for 1 turns
-# 	[1] ESOrbSealRow -> Demonic Region
+# 	[1] ESOrbSealRow(100:11081) -> Demonic Region
 # 	Seal 1st row for 1 turns
 # [10] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAbsorbThreshold -> Starvation
+# 	[0] ESAbsorbThreshold(87:11082) -> Starvation
 # 	Absorb damage >= 20000000 damage for 1 turns
-# 	[1] ESSkyfall -> Meteor Shower
+# 	[1] ESSkyfall(68:11083) -> Meteor Shower
 # 	Water, Wood skyfall +20% for 1 turns
 # [11] SkillSet:
 # 	Condition: 4% chance
-# 	[0] ESAbsorbAttribute -> Scaly Transformation
+# 	[0] ESAbsorbAttribute(53:11084) -> Scaly Transformation
 # 	Absorb Fire damage for 1 turns
-# 	[1] ESOrbChangeAttack -> Required Force
+# 	[1] ESOrbChangeAttack(48:11089) -> Required Force
 # 	Change Random to Fire
 # [12] SkillSet:
 # 	Condition: 4% chance
-# 	[0] ESAbsorbAttribute -> Scaly Transformation
+# 	[0] ESAbsorbAttribute(53:11085) -> Scaly Transformation
 # 	Absorb Water damage for 1 turns
-# 	[1] ESOrbChangeAttack -> Required Force
+# 	[1] ESOrbChangeAttack(48:11090) -> Required Force
 # 	Change Random to Water
 # [13] SkillSet:
 # 	Condition: 4% chance
-# 	[0] ESAbsorbAttribute -> Scaly Transformation
+# 	[0] ESAbsorbAttribute(53:11086) -> Scaly Transformation
 # 	Absorb Wood damage for 1 turns
-# 	[1] ESOrbChangeAttack -> Required Force
+# 	[1] ESOrbChangeAttack(48:11091) -> Required Force
 # 	Change Random to Wood
 # [14] SkillSet:
 # 	Condition: 4% chance
-# 	[0] ESAbsorbAttribute -> Scaly Transformation
+# 	[0] ESAbsorbAttribute(53:11087) -> Scaly Transformation
 # 	Absorb Light damage for 1 turns
-# 	[1] ESOrbChangeAttack -> Required Force
+# 	[1] ESOrbChangeAttack(48:11092) -> Required Force
 # 	Change Random to Light
 # [15] SkillSet:
 # 	Condition: 4% chance
-# 	[0] ESAbsorbAttribute -> Scaly Transformation
+# 	[0] ESAbsorbAttribute(53:11088) -> Scaly Transformation
 # 	Absorb Dark damage for 1 turns
-# 	[1] ESOrbChangeAttack -> Required Force
+# 	[1] ESOrbChangeAttack(48:11093) -> Required Force
 # 	Change Random to Dark
 # [16] SkillSet:
 # 	Condition: 20% chance
-# 	[0] ESAbsorbCombo -> Withering Hope
+# 	[0] ESAbsorbCombo(67:11094) -> Withering Hope
 # 	Absorb combo <= 8 damage for 1 turns
-# 	[1] ESCloud -> Clouds of Yonder
+# 	[1] ESCloud(104:11289) -> Clouds of Yonder
 # 	Row of cloud appear for 1 turns at random location
 # [17] SkillSet:
 # 	Condition: 20% chance
-# 	[0] ESDamageShield -> Encasing Strongscales
+# 	[0] ESDamageShield(74:11290) -> Encasing Strongscales
 # 	Reduce damage from all sources by 75% for 1 turns
-# 	[1] ESBoardChangeAttackBits -> Rapids of Life
+# 	[1] ESBoardChangeAttackBits(85:11291) -> Rapids of Life
 # 	Change all orbs to Heal
-# [18] ESEndPath -> ESEndPath
+# [18] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [19] ESBranchFlag -> ESBranchFlag
+# [19] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 9
-# [20] ESFlagOperation -> ESFlagOperation
+# [20] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [21] SkillSet:
-# 	[0] ESGravity -> Life Constricting
+# 	[0] ESGravity(50:11293) -> Life Constricting
 # 	Player -99% HP
-# 	[1] ESSkillDelay -> Glint of Despair
+# 	[1] ESSkillDelay(89:11294) -> Glint of Despair
 # 	Delay active skills by 7 turns
-# [22] ESEndPath -> ESEndPath
+# [22] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [23] ESBranchCounter -> ESBranchCounter
+# [23] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 1, target rnd 26
-# [24] ESSetCounter -> ESSetCounter
+# [24] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
 # [25] SkillSet:
-# 	[0] ESBindAwoken -> Crimson Snake Eyes
+# 	[0] ESBindAwoken(88:11296) -> Crimson Snake Eyes
 # 	Bind awoken skills for 1 turns
-# 	[1] ESSpinnersFixed -> Groans of the Dancing Frenzy
+# 	[1] ESSpinnersFixed(110:11297) -> Groans of the Dancing Frenzy
 # 	Specific orbs change every 1.0s for 1 turns
 # [26] SkillSet:
-# 	[0] ESChangeAttribute -> Morph Scales
+# 	[0] ESChangeAttribute(46:11299) -> Morph Scales
 # 	Change own attribute to random one of Fire, Water, Wood, Light, Dark
-# 	[1] ESAttackMultihit -> Frenzy of Absolute Power
+# 	[1] ESAttackMultihit(15:11300) -> Frenzy of Absolute Power
 # 	Enemy action
-# [27] ESEndPath -> ESEndPath
+# [27] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [28] SkillSet:
-# 	[0] ESRecoverEnemy -> Blessed Rain
+# 	[0] ESRecoverEnemy(86:11302) -> Blessed Rain
 # 	Enemy recover 100% hp
-# 	[1] ESLeaderSwap -> Rondo of Life and Death
+# 	[1] ESLeaderSwap(75:11303) -> Rondo of Life and Death
 # 	Leader changes to random sub for 3 turns
-# [29] ESEndPath -> ESEndPath
+# [29] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [30] ESResolve -> Resolve
+# [30] ESResolve(73:11067) -> Resolve
 # Survive attacks with 1 HP when HP > 50%

@@ -126,67 +126,78 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:697) -> ESPreemptive
 # Enable preempt if level 3
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 3, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [6] SkillSet:
-# 	[0] ESStatusShield -> Barrier Field
+# 	[0] ESStatusShield(20:232) -> Barrier Field
 # 	Voids status ailments for 999 turns
-# 	[1] ESDebuffRCV -> Demon Cyclone
+# 	[1] ESDebuffRCV(105:7617) -> Demon Cyclone
 # 	Rcv 50% for 4 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 25, target rnd 26
-# [9] ESBranchFlag -> ESBranchFlag
+# [9] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 12
-# [10] ESFlagOperation -> ESFlagOperation
+# [10] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [11] ESPoisonChangeRandomAttack -> Genocide Missile Type 0
+# [11] ESPoisonChangeRandomAttack(64:955) -> Genocide Missile Type 0
 # Change Random 6 to Poison
-# [12] ESBranchFlag -> ESBranchFlag
+# [12] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 15
-# [13] ESFlagOperation -> ESFlagOperation
+# [13] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [14] ESAttackMultihit -> Improved Endless Noble Claws
+# [14] ESAttackMultihit(15:954) -> Improved Endless Noble Claws
 # Enemy action
-# [15] ESBranchFlag -> ESBranchFlag
+# [15] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 18
-# [16] ESFlagOperation -> ESFlagOperation
+# [16] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
-# [17] ESBlind -> Dark Cyclone Blast
+# [17] ESBlind(62:953) -> Dark Cyclone Blast
 # Blind all orbs on the board
-# [18] ESBranchFlag -> ESBranchFlag
+# [18] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 16, target rnd 21
-# [19] ESFlagOperation -> ESFlagOperation
+# [19] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11111
-# [20] ESAttackMultihit -> High Megiddo Cannon
+# [20] ESAttackMultihit(15:951) -> High Megiddo Cannon
 # Enemy action
-# [21] ESBranchFlag -> ESBranchFlag
+# [21] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 32, target rnd 23
-# [22] ESFlagOperation -> ESFlagOperation
+# [22] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111111
-# [23] ESFlagOperation -> ESFlagOperation
+# [23] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b111110
-# [24] ESBindAttack -> Freezing Crusher
+# [24] ESBindAttack(63:952) -> Freezing Crusher
 # Bind 4 subs for 2 turns
-# [25] ESEndPath -> ESEndPath
+# [25] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [26] ESInactivity -> Limiter Off
+# [26] ESInactivity(66:957) -> Limiter Off
 # Condition: One-time use
 # Do nothing
-# [27] ESAttackMultihit -> Ultimate Stream
+# [27] ESAttackMultihit(15:956) -> Ultimate Stream
 # Enemy action
-# [28] ESEndPath -> ESEndPath
+# [28] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [29] ESAttributeResist -> Hadar Halved
+# [29] ESAttributeResist(72:7621) -> Hadar Halved
 # Reduce damage from Fire, Dark by 50%

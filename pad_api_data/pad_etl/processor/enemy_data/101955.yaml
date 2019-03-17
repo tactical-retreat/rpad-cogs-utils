@@ -47,42 +47,53 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 63 -   111111
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
 # [2] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESBindAwoken -> Let's plaaay!
+# 	[0] ESBindAwoken(88:8131) -> Let's plaaay!
 # 	Bind awoken skills for 6 turns
-# 	[1] ESBindSkill -> It's Puzzle Fight Time!
+# 	[1] ESBindSkill(14:8132) -> It's Puzzle Fight Time!
 # 	Bind active skills for 6 turns
-# 	[2] ESBoardChange -> It's gonna get harder! Get ready!
+# 	[2] ESBoardChange(84:8133) -> It's gonna get harder! Get ready!
 # 	Change all orbs to Fire, Water, Wood, Light, Dark, Heal
-# [3] ESOrbChangeAttack -> Nope! Wroong!
+# [3] ESOrbChangeAttack(48:8146) -> Nope! Wroong!
 # Change Jammer to Water
-# [4] ESRowSpawnMulti -> Can you erase my Jammers?
+# [4] ESRowSpawnMulti(78:8135) -> Can you erase my Jammers?
 # Condition: One-time use
 # Change 1st, 5th row to Water, Heal, Jammer orbs, 3rd row to Jammer orbs
-# [5] ESColumnSpawnMulti -> Here I gooo!
+# [5] ESColumnSpawnMulti(76:8136) -> Here I gooo!
 # Condition: One-time use
 # Change 1st, 4th, 6th column to Water, Heal, Jammer orbs, 3rd column to Jammer orbs
-# [6] ESRandomSpawn -> My... You're not bad!
+# [6] ESRandomSpawn(92:8137) -> My... You're not bad!
 # Condition: One-time use & when Fire, Water, Wood, Light, Dark, Heal, Poison, Mortal Poison orbs are on the board
 # Spawn random 13 Jammer orbs
 # [7] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESBlindStickyRandom -> However, this here...
+# 	[0] ESBlindStickyRandom(97:8138) -> However, this here...
 # 	Blind random 30 orbs for 1 turns
-# 	[1] ESRandomSpawn -> Can you erase these!?
+# 	[1] ESRandomSpawn(92:8139) -> Can you erase these!?
 # 	Spawn random 16 Jammer orbs
 # [8] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESDebuffMovetime -> You're impressive!
+# 	[0] ESDebuffMovetime(39:8141) -> You're impressive!
 # 	Movetime -2s for 1 turns
-# 	[1] ESRandomSpawn -> This will finish it!
+# 	[1] ESRandomSpawn(92:8142) -> This will finish it!
 # 	Spawn random 4 Jammer orbs
-# 	[2] ESFixedStart -> Eat this!
+# 	[2] ESFixedStart(101:8143) -> Eat this!
 # 	Fix orb movement starting point to random position on the board
-# [9] ESEndBattle -> That was fun! See ya!
+# [9] ESEndBattle(40:8145) -> That was fun! See ya!
 # Reduce self HP to 0

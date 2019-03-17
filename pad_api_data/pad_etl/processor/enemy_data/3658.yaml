@@ -90,52 +90,63 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 7 -      111
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [6] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESBindRandomSub -> Roar
+# 	[0] ESBindRandomSub(65:7203) -> Roar
 # 	Bind 1 random subs for 1 turns
-# 	[1] ESInactivity -> Fireball Charge
+# 	[1] ESInactivity(66:7204) -> Fireball Charge
 # 	Do nothing
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESAttackUp -> Scalding Tail
+# [8] ESAttackUp(17:7211) -> Scalding Tail
 # Condition: One-time use
 # Increase damage to 150% for the next 10 turns
-# [9] ESStorePower -> Great Tailspin Stance
+# [9] ESStorePower(8:7212) -> Great Tailspin Stance
 # Condition: One-time use
 # Increase damage to 4100% for the next attack
-# [10] ESBombRandomSpawn -> Three-hit Fireball Breath
+# [10] ESBombRandomSpawn(102:7213) -> Three-hit Fireball Breath
 # Condition: 50% chance when < 40% hp
 # Spawn random 6 Bomb orbs
-# [11] ESAttackMultihit -> Combo Jumping Tail Strike
+# [11] ESAttackMultihit(15:7214) -> Combo Jumping Tail Strike
 # Condition: When < 40% hp
 # Enemy action
-# [12] ESRandomSpawn -> Bite
+# [12] ESRandomSpawn(92:7206) -> Bite
 # Condition: One-time use
 # Spawn random 3 Fire orbs
-# [13] ESBombRandomSpawn -> Fireball Breath
+# [13] ESBombRandomSpawn(102:7207) -> Fireball Breath
 # Condition: One-time use
 # Spawn random 3 Bomb orbs
-# [14] ESRandomSpawn -> Fire Wave
+# [14] ESRandomSpawn(92:7208) -> Fire Wave
 # Condition: 20% chance
 # Spawn random 6 Fire orbs
-# [15] ESAttackMultihit -> Tail Slam
+# [15] ESAttackMultihit(15:7209) -> Tail Slam
 # Condition: 20% chance
 # Enemy action
-# [16] ESGravity -> Jumping Tail Strike
+# [16] ESGravity(50:7210) -> Jumping Tail Strike
 # Condition: 20% chance
 # Player -70% HP
-# [17] ESEndPath -> ESEndPath
+# [17] ESEndPath(36:26) -> ESEndPath
 # end_turn

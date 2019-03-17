@@ -225,78 +225,89 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 511 - 111111111
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [6] SkillSet:
-# 	[0] ESInactivity -> Watch and learn!
+# 	[0] ESInactivity(66:5448) -> Watch and learn!
 # 	Do nothing
-# 	[1] ESLeaderSwap -> Psycho Phoenix Wave
+# 	[1] ESLeaderSwap(75:5449) -> Psycho Phoenix Wave
 # 	Leader changes to random sub for 2 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESAttackMultihit -> Muscle Revenger
+# [8] ESAttackMultihit(15:5464) -> Muscle Revenger
 # Condition: When < 10% hp
 # Enemy action
-# [9] ESBranchFlag -> ESBranchFlag
+# [9] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 21
-# [10] ESFlagOperation -> ESFlagOperation
+# [10] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [11] ESVoidShield -> God of Flight's Power
+# [11] ESVoidShield(71:5466) -> God of Flight's Power
 # Condition: When < 90% hp , one-time use
 # Void damage >= 500000 for 1 turns
-# [12] ESVoidShield -> God of Flight's Power
+# [12] ESVoidShield(71:5456) -> God of Flight's Power
 # Condition: When < 90% hp , one-time use
 # Void damage >= 500000 for 1 turns
-# [13] ESAbsorbCombo -> God of Technique's Power
+# [13] ESAbsorbCombo(67:5458) -> God of Technique's Power
 # Condition: When < 70% hp , one-time use
 # Absorb combo <= 6 damage for 1 turns
-# [14] ESAttackUp -> God of Brute Strength's Power
+# [14] ESAttackUp(17:5460) -> God of Brute Strength's Power
 # Condition: When < 50% hp , one-time use
 # Increase damage to 200% for the next 1 turns
-# [15] ESBindTarget -> God of Brutality's Power
+# [15] ESBindTarget(54:5462) -> God of Brutality's Power
 # Condition: When < 30% hp , one-time use
 # Bind 1 both leaders for 1 turns
-# [16] ESFlagOperation -> ESFlagOperation
+# [16] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b10
-# [17] ESBranchCard -> ESBranchCard
+# [17] ESBranchCard(90:5465) -> ESBranchCard
 # Branch on player_cards HAS [3124, 3125, 3850], target rnd 26
-# [18] ESOrbChangeAttack -> Face Flash
+# [18] ESOrbChangeAttack(48:5452) -> Face Flash
 # Condition: 20% chance
 # Change Random to Light
-# [19] ESOrbChangeAttack -> Face Flash
+# [19] ESOrbChangeAttack(48:5453) -> Face Flash
 # Condition: 50% chance
 # Change Random to Light
-# [20] ESOrbChangeAttack -> Face Flash
+# [20] ESOrbChangeAttack(48:5454) -> Face Flash
 # Change Random to Light
-# [21] ESFlagOperation -> ESFlagOperation
+# [21] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b10
-# [22] ESBindAttack -> Phoenix Stretch
+# [22] ESBindAttack(63:5457) -> Phoenix Stretch
 # Condition: One-time use
 # Bind 3 random for 1 turns
-# [23] ESRowSpawnMulti -> Muscle Inferno
+# [23] ESRowSpawnMulti(79:5459) -> Muscle Inferno
 # Condition: One-time use
 # Change 3rd row to Fire orbs
-# [24] ESSkillDelay -> Pendulum Backbreaker
+# [24] ESSkillDelay(89:5461) -> Pendulum Backbreaker
 # Condition: One-time use
 # Delay active skills by 2 turns
-# [25] ESBindSkill -> Choujin Raging Ox Execution
+# [25] ESBindSkill(14:5463) -> Choujin Raging Ox Execution
 # Condition: One-time use
 # Bind active skills for 3 turns
 # [26] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESInactivity -> Yo, Kinnikuman!
+# 	[0] ESInactivity(66:5451) -> Yo, Kinnikuman!
 # 	Do nothing
-# 	[1] ESOrbChangeAttack -> Face Flash
+# 	[1] ESOrbChangeAttack(48:5454) -> Face Flash
 # 	Change Random to Light
-# [27] ESBranchFlag -> ESBranchFlag
+# [27] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 18

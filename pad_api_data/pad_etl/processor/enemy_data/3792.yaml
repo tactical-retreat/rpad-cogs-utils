@@ -63,30 +63,41 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 4 -      100
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:355) -> ESPreemptive
 # Enable preempt if level 5
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 5, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 10
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESBranchCard -> ESBranchCard
+# [6] ESBranchCard(90:7643) -> ESBranchCard
 # Branch on player_cards HAS [3791, 100], target rnd 8
-# [7] ESDebuffMovetime -> Sweet Decoration
+# [7] ESDebuffMovetime(39:7639) -> Sweet Decoration
 # Movetime -1s for 2 turns
-# [8] ESDebuffMovetime -> Persephone is so beautiful♪
+# [8] ESDebuffMovetime(39:7640) -> Persephone is so beautiful♪
 # Movetime 150% for 2 turns
-# [9] ESEndPath -> ESEndPath
+# [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [10] ESCloud -> Fresh Cream Paint
+# [10] ESCloud(104:7641) -> Fresh Cream Paint
 # Condition: One-time use
 # 2x1 cloud appear for 1 turns at random location
-# [11] ESRandomSpawn -> Lovely Macaron
+# [11] ESRandomSpawn(92:7642) -> Lovely Macaron
 # Spawn random 1 Fire, Water, Wood, Light, Dark orbs
-# [12] ESEndPath -> ESEndPath
+# [12] ESEndPath(36:26) -> ESEndPath
 # end_turn

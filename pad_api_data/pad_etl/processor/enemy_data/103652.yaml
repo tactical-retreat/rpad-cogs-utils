@@ -132,54 +132,65 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [6] SkillSet:
-# 	[0] ESBindRandomSub -> Roar
+# 	[0] ESBindRandomSub(65:7228) -> Roar
 # 	Bind 1 random subs for 1 turns
-# 	[1] ESColumnSpawnMulti -> Flame Breath
+# 	[1] ESColumnSpawnMulti(77:7229) -> Flame Breath
 # 	Change 3rd column to Fire orbs
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [8] SkillSet:
 # 	Condition: When < 70% hp , one-time use
-# 	[0] ESAttackUp -> Rage
+# 	[0] ESAttackUp(17:7233) -> Rage
 # 	Increase damage to 126% for the next 10 turns
-# 	[1] ESAbsorbCombo -> Take Flight
+# 	[1] ESAbsorbCombo(67:7234) -> Take Flight
 # 	Absorb combo <= 5 damage for 999 turns
-# [9] ESAttackMultihit -> Triple Flame Breath
+# [9] ESAttackMultihit(15:7240) -> Triple Flame Breath
 # Condition: When < 15% hp
 # Enemy action
-# [10] ESBranchHP -> ESBranchHP
+# [10] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 70, target rnd 14
-# [11] ESAttackMultihit -> Tailspin
+# [11] ESAttackMultihit(15:7231) -> Tailspin
 # Condition: 50% chance
 # Enemy action
-# [12] ESOrbLock -> Rushing Bite
+# [12] ESOrbLock(94:7232) -> Rushing Bite
 # Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [14] ESColumnSpawnMulti -> Flame Breath
+# [14] ESColumnSpawnMulti(77:7236) -> Flame Breath
 # Condition: 25% chance when < 70% hp
 # Change 3rd column to Fire orbs
-# [15] ESRandomSpawn -> Flying Kick
+# [15] ESRandomSpawn(92:7237) -> Flying Kick
 # Condition: 25% chance when < 70% hp
 # Spawn random 4 Poison orbs
-# [16] ESRowSpawnMulti -> Airborne Heat Breath
+# [16] ESRowSpawnMulti(79:7238) -> Airborne Heat Breath
 # Condition: 25% chance when < 70% hp
 # Change 2nd row to Fire orbs
-# [17] ESOrbLock -> Airborne Bite
+# [17] ESOrbLock(94:7239) -> Airborne Bite
 # Condition: 25% chance when < 70% hp
 # Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [18] ESEndPath -> ESEndPath
+# [18] ESEndPath(36:26) -> ESEndPath
 # end_turn

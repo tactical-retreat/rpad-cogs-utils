@@ -211,72 +211,83 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESOrbLock -> Black Wings of Divine Punishment
+# 	[0] ESOrbLock(94:6825) -> Black Wings of Divine Punishment
 # 	Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# 	[1] ESAbsorbCombo -> Trials of Heaven
+# 	[1] ESAbsorbCombo(67:6826) -> Trials of Heaven
 # 	Absorb combo <= 4 damage for 999 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchHP -> ESBranchHP
+# [6] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 71, target rnd 21
-# [7] ESAttackMultihit -> Herdade Voltro
+# [7] ESAttackMultihit(15:6843) -> Herdade Voltro
 # Condition: When < 10% hp
 # Enemy action
 # [8] SkillSet:
 # 	Condition: When < 50% hp , one-time use
-# 	[0] ESAttackUp -> Holy Throne
+# 	[0] ESAttackUp(17:6840) -> Holy Throne
 # 	Increase damage to 150% for the next 999 turns
-# 	[1] ESOrbLock -> Surveillance
+# 	[1] ESOrbLock(94:6855) -> Surveillance
 # 	Lock all Fire, Water, Wood, Light, Dark, Jammer, Poison, Mortal Poison orbs
-# [9] ESBlindStickyFixed -> Sword of Divine Judgment
+# [9] ESBlindStickyFixed(98:6829) -> Sword of Divine Judgment
 # Condition: 11% chance
 # Blind orbs in specific positions for 1 turns
-# [10] ESBlindStickyFixed -> Sword of Divine Judgment
+# [10] ESBlindStickyFixed(98:6830) -> Sword of Divine Judgment
 # Condition: 11% chance
 # Blind orbs in specific positions for 1 turns
-# [11] ESBlindStickyFixed -> Sword of Divine Judgment
+# [11] ESBlindStickyFixed(98:6831) -> Sword of Divine Judgment
 # Condition: 11% chance
 # Blind orbs in specific positions for 1 turns
-# [12] ESBlindStickyFixed -> Sword of Divine Judgment
+# [12] ESBlindStickyFixed(98:6832) -> Sword of Divine Judgment
 # Condition: 11% chance
 # Blind orbs in specific positions for 1 turns
-# [13] ESBlindStickyFixed -> Sword of Divine Judgment
+# [13] ESBlindStickyFixed(98:6833) -> Sword of Divine Judgment
 # Condition: 11% chance
 # Blind orbs in specific positions for 1 turns
-# [14] ESBlindStickyFixed -> Sword of Divine Judgment
+# [14] ESBlindStickyFixed(98:6834) -> Sword of Divine Judgment
 # Condition: 11% chance
 # Blind orbs in specific positions for 1 turns
-# [15] ESBlindStickyFixed -> Sword of Divine Judgment
+# [15] ESBlindStickyFixed(98:6835) -> Sword of Divine Judgment
 # Condition: 11% chance
 # Blind orbs in specific positions for 1 turns
-# [16] ESBlindStickyFixed -> Sword of Divine Judgment
+# [16] ESBlindStickyFixed(98:6836) -> Sword of Divine Judgment
 # Condition: 11% chance
 # Blind orbs in specific positions for 1 turns
-# [17] ESBlindStickyFixed -> Sword of Divine Judgment
+# [17] ESBlindStickyFixed(98:6837) -> Sword of Divine Judgment
 # Condition: 11% chance
 # Blind orbs in specific positions for 1 turns
-# [18] ESBlindStickyFixed -> Sword of Divine Judgment
+# [18] ESBlindStickyFixed(98:6838) -> Sword of Divine Judgment
 # Condition: 11% chance
 # Blind orbs in specific positions for 1 turns
-# [19] ESBlindStickyFixed -> Sword of Divine Judgment
+# [19] ESBlindStickyFixed(98:6839) -> Sword of Divine Judgment
 # Condition: 12% chance
 # Blind orbs in specific positions for 1 turns
-# [20] ESEndPath -> ESEndPath
+# [20] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [21] ESAttackMultihit -> Shame... I expected more from you
+# [21] ESAttackMultihit(15:6828) -> Shame... I expected more from you
 # Enemy action
-# [22] ESEndPath -> ESEndPath
+# [22] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [23] ESTurnChangePassive -> Turn changed through divine intervention
+# [23] ESTurnChangePassive(106:6842) -> Turn changed through divine intervention
 # Enemy turn counter change to 1 when HP <= 70%
-# [24] ESAttributeResist -> Dark Metatron Light Halved
+# [24] ESAttributeResist(72:8256) -> Dark Metatron Light Halved
 # Reduce damage from Light by 50%

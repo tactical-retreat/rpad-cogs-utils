@@ -90,35 +90,46 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:355) -> ESPreemptive
 # Enable preempt if level 5
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 5, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESStatusShield -> Bring it on!
+# [6] ESStatusShield(20:2029) -> Bring it on!
 # Voids status ailments for 5 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESRecoverEnemy -> Guts!
+# [8] ESRecoverEnemy(86:2032) -> Guts!
 # Condition: When < 1% hp
 # Enemy recover 49% hp
 # [9] SkillSet:
 # 	Condition: When < 50% hp , one-time use
-# 	[0] ESInactivity -> Get 'em, boss!!
+# 	[0] ESInactivity(66:2039) -> Get 'em, boss!!
 # 	Do nothing
-# 	[1] ESInactivity -> All RIGHT!!
+# 	[1] ESInactivity(66:2040) -> All RIGHT!!
 # 	Do nothing
-# [10] ESAttackMultihit -> I am the greatest!!!!
+# [10] ESAttackMultihit(15:2033) -> I am the greatest!!!!
 # Condition: When < 50% hp
 # Enemy action
-# [11] ESAttackMultihit -> GRRREAT!!
+# [11] ESAttackMultihit(15:2030) -> GRRREAT!!
 # Enemy action
-# [12] ESEndPath -> ESEndPath
+# [12] ESEndPath(36:26) -> ESEndPath
 # end_turn

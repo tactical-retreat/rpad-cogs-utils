@@ -108,39 +108,50 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 0 -        0
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESGravity -> ***** (Dragon Ball)
+# [4] ESGravity(50:1129) -> ***** (Dragon Ball)
 # Player -99% HP
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchHP -> ESBranchHP
+# [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 30, target rnd 11
-# [7] ESInactivity -> ***** (Dragon Ball)
+# [7] ESInactivity(66:1127) -> ***** (Dragon Ball)
 # Condition: One-time use
 # Do nothing
-# [8] ESOrbChangeAttack -> ***** (Dragon Ball)
+# [8] ESOrbChangeAttack(48:1093) -> ***** (Dragon Ball)
 # Condition: When < 50% hp
 # Change Random to Jammer
-# [9] ESAttackMultihit -> ***** (Dragon Ball)
+# [9] ESAttackMultihit(15:1092) -> ***** (Dragon Ball)
 # Enemy action
-# [10] ESEndPath -> ESEndPath
+# [10] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [11] ESBranchFlag -> ESBranchFlag
+# [11] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 14
-# [12] ESFlagOperation -> ESFlagOperation
+# [12] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [13] ESInactivity -> ***** (Dragon Ball)
+# [13] ESInactivity(66:1094) -> ***** (Dragon Ball)
 # Condition: When < 30% hp
 # Do nothing
-# [14] ESFlagOperation -> ESFlagOperation
+# [14] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b10
-# [15] ESAttackMultihit -> ***** (Dragon Ball)
+# [15] ESAttackMultihit(15:1095) -> ***** (Dragon Ball)
 # Condition: When < 30% hp
 # Enemy action

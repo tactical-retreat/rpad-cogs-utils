@@ -99,26 +99,37 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 2 -       10
+# [51] 0 -        0
+# [52] 0 -        0
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:355) -> ESPreemptive
 # Enable preempt if level 5
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 5, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 7
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESAttackMultihit -> ...turn back
+# [6] ESAttackMultihit(15:558) -> ...turn back
 # Enemy action
-# [7] ESAttackMultihit -> Western Seven-Star Formation
+# [7] ESAttackMultihit(15:561) -> Western Seven-Star Formation
 # Condition: When < 20% hp
 # Enemy action
-# [8] ESAttackMultihit -> Fierce Tiger Slashing Claws
+# [8] ESAttackMultihit(15:559) -> Fierce Tiger Slashing Claws
 # Condition: 60% chance when < 60% hp
 # Enemy action
-# [9] ESGravity -> Disastrous Heavy Fangs
+# [9] ESGravity(50:560) -> Disastrous Heavy Fangs
 # Condition: One-time use
 # Player -99% HP

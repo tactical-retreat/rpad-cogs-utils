@@ -90,26 +90,37 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 0 -        0
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESAbsorbAttribute -> Evil Seal of Destruction
+# [4] ESAbsorbAttribute(53:62) -> Evil Seal of Destruction
 # Absorb Light damage for 5 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESDebuffMovetime -> Insanity of the Heretic
+# [6] ESDebuffMovetime(39:63) -> Insanity of the Heretic
 # Condition: When < 50% hp , one-time use
 # Movetime -2s for 3 turns
-# [7] ESAttackMultihit -> Hellbringer Flame Palm
+# [7] ESAttackMultihit(15:64) -> Hellbringer Flame Palm
 # Condition: When < 30% hp
 # Enemy action
-# [8] ESOrbChangeAttack -> Dark Buddhist Magic
+# [8] ESOrbChangeAttack(48:61) -> Dark Buddhist Magic
 # Condition: 50% chance
 # Change Light to Dark
-# [9] ESAttackMultihit -> Purple Dragon Summoning
+# [9] ESAttackMultihit(15:66) -> Purple Dragon Summoning
 # Enemy action

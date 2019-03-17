@@ -117,28 +117,39 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 4 -      100
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 0 -        0
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESBindRandom -> Sleeping Forest
+# [4] ESBindRandom(1:10891) -> Sleeping Forest
 # Bind 6 random cards for 5 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchCounter -> ESBranchCounter
+# [6] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 4, target rnd 10
-# [7] ESSetCounter -> ESSetCounter
+# [7] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [8] ESRandomSpawn -> Growing Roses
+# [8] ESRandomSpawn(92:10892) -> Growing Roses
 # Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board
 # Spawn random 5 Jammer orbs
-# [9] ESEndPath -> ESEndPath
+# [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [10] ESAttackMultihit -> Waking Time
+# [10] ESAttackMultihit(15:10893) -> Waking Time
 # Enemy action
-# [11] ESEndPath -> ESEndPath
+# [11] ESEndPath(36:26) -> ESEndPath
 # end_turn

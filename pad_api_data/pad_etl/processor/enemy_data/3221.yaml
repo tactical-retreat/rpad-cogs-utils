@@ -424,96 +424,107 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 3 -       11
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESStatusShield -> Transparent Melody
+# 	[0] ESStatusShield(20:5642) -> Transparent Melody
 # 	Voids status ailments for 999 turns
-# 	[1] ESDamageShield -> Overture for the Impenetrable
+# 	[1] ESDamageShield(74:5643) -> Overture for the Impenetrable
 # 	Reduce damage from all sources by 99% for 1 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchFlag -> ESBranchFlag
+# [6] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 11
-# [7] ESFlagOperation -> ESFlagOperation
+# [7] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [8] ESBranchLevel -> ESBranchLevel
+# [8] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 6, target rnd 10
 # [9] SkillSet:
-# 	[0] ESAbsorbCombo -> Play me your puzzle's song ♪
+# 	[0] ESAbsorbCombo(67:5645) -> Play me your puzzle's song ♪
 # 	Absorb combo <= 4 damage for 1 turns
-# 	[1] ESDebuffMovetime -> Hesitant Opening Notes
+# 	[1] ESDebuffMovetime(39:5646) -> Hesitant Opening Notes
 # 	Movetime 25% for 1 turns
 # [10] SkillSet:
-# 	[0] ESAbsorbCombo -> Play me your puzzle's song ♪
+# 	[0] ESAbsorbCombo(67:5670) -> Play me your puzzle's song ♪
 # 	Absorb combo <= 5 damage for 1 turns
-# 	[1] ESDebuffMovetime -> Hesitant Opening Notes
+# 	[1] ESDebuffMovetime(39:5646) -> Hesitant Opening Notes
 # 	Movetime 25% for 1 turns
-# [11] ESBranchFlag -> ESBranchFlag
+# [11] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 16
-# [12] ESFlagOperation -> ESFlagOperation
+# [12] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [13] SkillSet:
 # 	Condition: When < 99% hp
-# 	[0] ESBindAttack -> I simply can't lose ♪
+# 	[0] ESBindAttack(63:5649) -> I simply can't lose ♪
 # 	Bind 1 random for 4 turns
-# 	[1] ESDamageShield -> Steel Arabesque
+# 	[1] ESDamageShield(74:5659) -> Steel Arabesque
 # 	Reduce damage from all sources by 50% for 5 turns
 # [14] SkillSet:
-# 	[0] ESGravity -> You should sound better than this!
+# 	[0] ESGravity(50:5648) -> You should sound better than this!
 # 	Player -99% HP
-# 	[1] ESVoidShield -> Blessed Fantasia
+# 	[1] ESVoidShield(71:5658) -> Blessed Fantasia
 # 	Void damage >= 500000 for 5 turns
-# [15] ESEndPath -> ESEndPath
+# [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [16] ESBranchHP -> ESBranchHP
+# [16] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 30, target rnd 28
-# [17] ESBranchFlag -> ESBranchFlag
+# [17] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 16, target rnd 30
-# [18] ESAttackUp -> Warrior's March
+# [18] ESAttackUp(17:5672) -> Warrior's March
 # Condition: When < 50% hp
 # Increase damage to 150% for the next 999 turns
-# [19] ESBranchFlag -> ESBranchFlag
+# [19] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 24
-# [20] ESFlagOperation -> ESFlagOperation
+# [20] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
 # [21] SkillSet:
 # 	Condition: 50% chance
-# 	[0] ESBlindStickyFixed -> Surely you can hear the Orbs' song ♪
+# 	[0] ESBlindStickyFixed(98:5650) -> Surely you can hear the Orbs' song ♪
 # 	Blind orbs in specific positions for 1 turns
-# 	[1] ESBoardChangeAttackBits -> Rainbow Septet
+# 	[1] ESBoardChangeAttackBits(85:5652) -> Rainbow Septet
 # 	Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Jammer
 # [22] SkillSet:
-# 	[0] ESBlindStickyFixed -> Feel the music in your heart ♪
+# 	[0] ESBlindStickyFixed(98:5651) -> Feel the music in your heart ♪
 # 	Blind orbs in specific positions for 1 turns
-# 	[1] ESBoardChangeAttackBits -> Rainbow Septet
+# 	[1] ESBoardChangeAttackBits(85:5652) -> Rainbow Septet
 # 	Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Jammer
-# [23] ESEndPath -> ESEndPath
+# [23] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [24] ESFlagOperation -> ESFlagOperation
+# [24] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b1000
-# [25] ESOrbLock -> Obbligato of Ice Blades
+# [25] ESOrbLock(94:5655) -> Obbligato of Ice Blades
 # Condition: 50% chance
 # Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [26] ESAttackMultihit -> Ice Blossom Quartet
+# [26] ESAttackMultihit(15:5662) -> Ice Blossom Quartet
 # Enemy action
-# [27] ESEndPath -> ESEndPath
+# [27] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [28] ESFlagOperation -> ESFlagOperation
+# [28] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11111
-# [29] ESAbsorbCombo -> Barcarole for the River of Woe
+# [29] ESAbsorbCombo(67:5656) -> Barcarole for the River of Woe
 # Condition: One-time use
 # Absorb combo <= 6 damage for 2 turns
-# [30] ESCloud -> This is your last performance!
+# [30] ESCloud(104:5673) -> This is your last performance!
 # Condition: One-time use
 # Row of cloud appear for 1 turns at random location
-# [31] ESAttackMultihit -> Requiem of a Thousand Creeds
+# [31] ESAttackMultihit(15:5657) -> Requiem of a Thousand Creeds
 # Enemy action
-# [32] ESAttributeResist -> Half Water Wood
+# [32] ESAttributeResist(72:5669) -> Half Water Wood
 # Reduce damage from Water, Wood by 50%

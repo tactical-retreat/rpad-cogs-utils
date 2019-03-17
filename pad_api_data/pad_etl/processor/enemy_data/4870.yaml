@@ -63,42 +63,53 @@ records:
   usage_pct: 34
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 5
-# [3] ESInactivity -> Could you give me some tips?
+# [3] ESInactivity(66:11420) -> Could you give me some tips?
 # Condition: One-time use
 # Do nothing
-# [4] ESEndPath -> ESEndPath
+# [4] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [5] ESBoardChange -> Could you give me some tips?
+# [5] ESBoardChange(84:11421) -> Could you give me some tips?
 # Condition: One-time use
 # Change all orbs to Fire, Water, Wood, Light, Dark, Heal
-# [6] ESBranchHP -> ESBranchHP
+# [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 11
-# [7] ESRowSpawnMulti -> Hiyaaa!
+# [7] ESRowSpawnMulti(79:11422) -> Hiyaaa!
 # Condition: 33% chance
 # Change 3rd row to Fire orbs
-# [8] ESRandomSpawn -> Huaaa!
+# [8] ESRandomSpawn(92:11424) -> Huaaa!
 # Condition: 33% chance & when Fire, Water, Wood, Light, Dark, Heal, Poison, Mortal Poison orbs are on the board
 # Spawn random 4 Jammer orbs
-# [9] ESAttackMultihit -> Ahh ghaaa!
+# [9] ESAttackMultihit(15:11425) -> Ahh ghaaa!
 # Condition: 34% chance
 # Enemy action
-# [10] ESEndPath -> ESEndPath
+# [10] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [11] ESBranchFlag -> ESBranchFlag
+# [11] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 7
-# [12] ESFlagOperation -> ESFlagOperation
+# [12] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [13] ESAttackUp -> Let's keep going!
+# [13] ESAttackUp(17:11423) -> Let's keep going!
 # Increase damage to 150% for the next 3 turns
-# [14] ESEndPath -> ESEndPath
+# [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [15] SkillSet:
 # 	Condition: On death
-# 	[0] ESInactivity -> I'm really hungry. I have to log out.
+# 	[0] ESInactivity(66:11652) -> I'm really hungry. I have to log out.
 # 	Do nothing

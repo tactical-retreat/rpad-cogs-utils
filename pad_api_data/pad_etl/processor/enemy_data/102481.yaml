@@ -99,45 +99,56 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESStatusShield -> Eat me! Tendo Jigoku Absorbing Form!
+# [6] ESStatusShield(20:3484) -> Eat me! Tendo Jigoku Absorbing Form!
 # Voids status ailments for 999 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 14
-# [9] ESRecoverEnemy -> Regeneration
+# [9] ESRecoverEnemy(86:3487) -> Regeneration
 # Condition: When < 20% hp , one-time use
 # Enemy recover 30% hp
-# [10] ESRandomSpawn -> Flame Arrow
+# [10] ESRandomSpawn(92:3489) -> Flame Arrow
 # Condition: When < 20% hp & when Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 8 Fire orbs
-# [11] ESAttackMultihit -> Absorbing Form Bite
+# [11] ESAttackMultihit(15:3485) -> Absorbing Form Bite
 # Condition: 70% chance
 # Enemy action
-# [12] ESAttackMultihit -> Strong Blow
+# [12] ESAttackMultihit(15:3488) -> Strong Blow
 # Condition: 70% chance
 # Enemy action
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [14] ESBranchFlag -> ESBranchFlag
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 9
-# [15] ESFlagOperation -> ESFlagOperation
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [16] ESBranchCard -> ESBranchCard
+# [16] ESBranchCard(90:3490) -> ESBranchCard
 # Branch on player_cards HAS [2468, 2469], target rnd 18
-# [17] ESAbsorbAttribute -> Absorption
+# [17] ESAbsorbAttribute(53:3486) -> Absorption
 # Absorb Fire damage for 3 turns
-# [18] ESAbsorbAttribute -> Shall I devour your 8 dragons as well?
+# [18] ESAbsorbAttribute(53:3491) -> Shall I devour your 8 dragons as well?
 # Absorb Fire damage for 3 turns

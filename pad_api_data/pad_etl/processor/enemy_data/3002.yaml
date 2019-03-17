@@ -150,90 +150,101 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [6] SkillSet:
-# 	[0] ESSkillDelay -> Visitor, come here but do not rush
+# 	[0] ESSkillDelay(89:5127) -> Visitor, come here but do not rush
 # 	Delay active skills by 2 turns
-# 	[1] ESOrbLock -> Dimension-Miracle
+# 	[1] ESOrbLock(94:5128) -> Dimension-Miracle
 # 	Lock all Wood, Heal orbs
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 21
-# [9] ESBranchFlag -> ESBranchFlag
+# [9] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 14
-# [10] ESFlagOperation -> ESFlagOperation
+# [10] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [11] ESBranchCard -> ESBranchCard
+# [11] ESBranchCard(90:5134) -> ESBranchCard
 # Branch on player_cards HAS [2145, 2146, 2972], target rnd 13
 # [12] SkillSet:
-# 	[0] ESStatusShield -> Mountain Dragon God's Protection
+# 	[0] ESStatusShield(20:5135) -> Mountain Dragon God's Protection
 # 	Voids status ailments for 999 turns
-# 	[1] ESBoardChangeAttackBits -> Sacred Grounds of the Green Earth
+# 	[1] ESBoardChangeAttackBits(85:5137) -> Sacred Grounds of the Green Earth
 # 	Change all orbs to Jammer
 # [13] SkillSet:
-# 	[0] ESStatusShield -> Tranquility suits you well
+# 	[0] ESStatusShield(20:5136) -> Tranquility suits you well
 # 	Voids status ailments for 999 turns
-# 	[1] ESBoardChangeAttackBits -> Sacred Grounds of the Green Earth
+# 	[1] ESBoardChangeAttackBits(85:5137) -> Sacred Grounds of the Green Earth
 # 	Change all orbs to Jammer
-# [14] ESBranchFlag -> ESBranchFlag
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 17
-# [15] ESFlagOperation -> ESFlagOperation
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [16] ESRandomSpawn -> Blue Wind of the Green Fate
+# [16] ESRandomSpawn(92:5138) -> Blue Wind of the Green Fate
 # Condition: When fire, water, light, dark, jammer, poison, mortal poison orbs are on the board
 # Spawn random 3 Wood, Heal orbs
-# [17] ESOrbLock -> Dimension-Miracle
+# [17] ESOrbLock(94:5143) -> Dimension-Miracle
 # Condition: One-time use
 # Lock all Wood, Heal orbs
-# [18] ESOrbLock -> Dimension-Miracle
+# [18] ESOrbLock(94:5142) -> Dimension-Miracle
 # Condition: One-time use
 # Lock 6 random Fire, Water, Wood, Light, Dark orbs
-# [19] ESFlagOperation -> ESFlagOperation
+# [19] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b100
-# [20] ESBoardChangeAttackBits -> Sacred Grounds of the Green Earth
+# [20] ESBoardChangeAttackBits(85:5137) -> Sacred Grounds of the Green Earth
 # Change all orbs to Jammer
-# [21] ESBranchFlag -> ESBranchFlag
+# [21] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 26
-# [22] ESFlagOperation -> ESFlagOperation
+# [22] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
-# [23] ESBranchCard -> ESBranchCard
+# [23] ESBranchCard(90:5134) -> ESBranchCard
 # Branch on player_cards HAS [2145, 2146, 2972], target rnd 25
 # [24] SkillSet:
-# 	[0] ESStatusShield -> Mountain Dragon God's Protection
+# 	[0] ESStatusShield(20:5135) -> Mountain Dragon God's Protection
 # 	Voids status ailments for 999 turns
-# 	[1] ESBoardChangeAttackBits -> Sacred Grounds of the Green Earth
+# 	[1] ESBoardChangeAttackBits(85:5137) -> Sacred Grounds of the Green Earth
 # 	Change all orbs to Jammer
-# 	[2] ESDamageShield -> Magatama of Yin and Yang
+# 	[2] ESDamageShield(74:5139) -> Magatama of Yin and Yang
 # 	Reduce damage from all sources by 75% for 1 turns
 # [25] SkillSet:
-# 	[0] ESStatusShield -> Tranquility suits you well
+# 	[0] ESStatusShield(20:5136) -> Tranquility suits you well
 # 	Voids status ailments for 999 turns
-# 	[1] ESBoardChangeAttackBits -> Sacred Grounds of the Green Earth
+# 	[1] ESBoardChangeAttackBits(85:5137) -> Sacred Grounds of the Green Earth
 # 	Change all orbs to Jammer
-# 	[2] ESDamageShield -> Magatama of Yin and Yang
+# 	[2] ESDamageShield(74:5139) -> Magatama of Yin and Yang
 # 	Reduce damage from all sources by 75% for 1 turns
-# [26] ESBranchFlag -> ESBranchFlag
+# [26] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 29
-# [27] ESFlagOperation -> ESFlagOperation
+# [27] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
-# [28] ESDamageShield -> Magatama of Yin and Yang
+# [28] ESDamageShield(74:5139) -> Magatama of Yin and Yang
 # Reduce damage from all sources by 75% for 1 turns
-# [29] ESBoardChangeAttackBits -> Raging Wind of the Earth
+# [29] ESBoardChangeAttackBits(85:5140) -> Raging Wind of the Earth
 # Condition: One-time use
 # Change all orbs to Wood, Jammer, Poison
-# [30] ESFlagOperation -> ESFlagOperation
+# [30] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b1000
-# [31] ESOrbLock -> Summit Miracle
+# [31] ESOrbLock(94:5141) -> Summit Miracle
 # Lock 18 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs

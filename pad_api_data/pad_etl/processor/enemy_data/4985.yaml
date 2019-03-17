@@ -139,45 +139,56 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 4 -      100
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [6] SkillSet:
-# 	[0] ESStatusShield -> Gyrorooon!
+# 	[0] ESStatusShield(20:11935) -> Gyrorooon!
 # 	Voids status ailments for 10 turns
-# 	[1] ESSkyfall -> It's hot! You're gonna get burned!
+# 	[1] ESSkyfall(96:11936) -> It's hot! You're gonna get burned!
 # 	Locked Fire skyfall +100% for 10 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 14
-# [9] ESBranchHP -> ESBranchHP
+# [9] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 51, target rnd 11
-# [10] ESFixedStart -> Gyorogyoro!
+# [10] ESFixedStart(101:11939) -> Gyorogyoro!
 # Condition: 50% chance
 # Fix orb movement starting point to random position on the board
-# [11] ESGravity -> Gyoro Boom!
+# [11] ESGravity(50:11937) -> Gyoro Boom!
 # Condition: One-time use
 # Player -75% HP
-# [12] ESOrbChangeAttack -> Gyoro! How about this!
+# [12] ESOrbChangeAttack(48:11938) -> Gyoro! How about this!
 # Condition: 50% chance
 # Change Random to Fire
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [14] ESAttackMultihit -> Moretsu Three-Pronged Attack
+# [14] ESAttackMultihit(15:11940) -> Moretsu Three-Pronged Attack
 # Enemy action
-# [15] ESEndPath -> ESEndPath
+# [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [16] SkillSet:
 # 	Condition: On death
-# 	[0] ESInactivity -> Gyororon! You got me!
+# 	[0] ESInactivity(66:11941) -> Gyororon! You got me!
 # 	Do nothing

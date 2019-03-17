@@ -72,39 +72,50 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESAttackMultihit -> Liushahe Whirlwind
+# [4] ESAttackMultihit(15:2525) -> Liushahe Whirlwind
 # Enemy action
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] SkillSet:
 # 	Condition: When < 1% hp
-# 	[0] ESGravity -> Mystic Curse
+# 	[0] ESGravity(50:2531) -> Mystic Curse
 # 	Player -99% HP
-# 	[1] ESAttackMultihit -> Chomp
+# 	[1] ESAttackMultihit(15:2532) -> Chomp
 # 	Enemy action
-# [7] ESAbsorbCombo -> General of the Sacred Mountain
+# [7] ESAbsorbCombo(67:2526) -> General of the Sacred Mountain
 # Absorb combo <= 4 damage for 99 turns
-# [8] ESBindSkill -> Nine Ill Winds
+# [8] ESBindSkill(14:2527) -> Nine Ill Winds
 # Condition: When < 50% hp , one-time use
 # Bind active skills for 3 turns
-# [9] ESRandomSpawn -> Crescent Moon Staff
+# [9] ESRandomSpawn(92:2528) -> Crescent Moon Staff
 # Condition: 30% chance & when Fire, Water, Wood, Light, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 5 Dark orbs
-# [10] ESAttackMultihit -> Chomp
+# [10] ESAttackMultihit(15:2532) -> Chomp
 # Condition: 30% chance
 # Enemy action
-# [11] ESAttackSinglehit -> Disable Skill
+# [11] ESAttackSinglehit(82:1) -> Disable Skill
 # Condition: 30% chance
 # Enemy action
-# [12] ESEndPath -> ESEndPath
+# [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [13] ESResolve -> *****
+# [13] ESResolve(73:2530) -> *****
 # Survive attacks with 1 HP when HP > 75%

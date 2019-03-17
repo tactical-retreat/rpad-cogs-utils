@@ -137,40 +137,51 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 3 -       11
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESDeathCry -> Gainaut Transform
+# [2] ESDeathCry(69:3779) -> Gainaut Transform
 # Condition: On death
 # Show message: Ohhhh!! I....can still....shiiiine!!!
-# [3] ESBranchFlag -> ESBranchFlag
+# [3] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 7
-# [4] ESFlagOperation -> ESFlagOperation
+# [4] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [5] SkillSet:
-# 	[0] ESDamageShield -> You have guts to point your sword at me!
+# 	[0] ESDamageShield(74:3780) -> You have guts to point your sword at me!
 # 	Reduce damage from all sources by 35% for 3 turns
-# 	[1] ESRowSpawnMulti -> Burn!!
+# 	[1] ESRowSpawnMulti(79:3781) -> Burn!!
 # 	Change 4th row to Fire orbs
-# [6] ESEndPath -> ESEndPath
+# [6] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [7] ESAttackMultihit -> Extreme Blaze
+# [7] ESAttackMultihit(15:3787) -> Extreme Blaze
 # Condition: When < 20% hp
 # Enemy action
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 12
-# [9] ESSkillDelay -> Burning Cannon
+# [9] ESSkillDelay(89:3785) -> Burning Cannon
 # Condition: One-time use
 # Delay active skills by 2 turns
-# [10] ESBindAttack -> Miraculous Vortex
+# [10] ESBindAttack(63:3784) -> Miraculous Vortex
 # Condition: 30% chance
 # Bind 1 random for 3 turns
-# [11] ESAttackMultihit -> Fire Prison
+# [11] ESAttackMultihit(15:3783) -> Fire Prison
 # Enemy action
-# [12] ESBranchFlag -> ESBranchFlag
+# [12] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 9
-# [13] ESFlagOperation -> ESFlagOperation
+# [13] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [14] ESAttackUp -> Guooohhh!! I won't forgive you!!
+# [14] ESAttackUp(17:3786) -> Guooohhh!! I won't forgive you!!
 # Increase damage to 200% for the next 999 turns

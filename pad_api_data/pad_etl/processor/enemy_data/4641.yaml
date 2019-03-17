@@ -135,50 +135,61 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 4 -      100
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 0 -        0
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESDeathCry -> Spe Dun Dragon Wood Transformation
+# [4] ESDeathCry(69:10358) -> Spe Dun Dragon Wood Transformation
 # Condition: On death
 # Show message: Nehd's appearance is changing|Help have been summoned
-# [5] ESBranchFlag -> ESBranchFlag
+# [5] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 9
-# [6] ESFlagOperation -> ESFlagOperation
+# [6] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [7] ESAttackMultihit -> Reaping Cut
+# [7] ESAttackMultihit(15:10351) -> Reaping Cut
 # Enemy action
-# [8] ESEndPath -> ESEndPath
+# [8] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [9] ESBranchHP -> ESBranchHP
+# [9] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 14
-# [10] ESRandomSpawn -> Burying
+# [10] ESRandomSpawn(92:10352) -> Burying
 # Condition: 33% chance & when Fire, Water, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 3 Wood orbs
-# [11] ESColumnSpawnMulti -> Vertical Slash
+# [11] ESColumnSpawnMulti(77:10353) -> Vertical Slash
 # Condition: 33% chance
 # Change 4th column to Wood orbs
-# [12] ESRowSpawnMulti -> Vertical Slash
+# [12] ESRowSpawnMulti(79:10354) -> Vertical Slash
 # Condition: 34% chance
 # Change 3rd row to Wood orbs
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [14] ESBranchFlag -> ESBranchFlag
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 18
-# [15] ESFlagOperation -> ESFlagOperation
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [16] SkillSet:
-# 	[0] ESAttackMultihit -> Reaping Cut
+# 	[0] ESAttackMultihit(15:10351) -> Reaping Cut
 # 	Enemy action
-# 	[1] ESBindRandomSub -> Restrain
+# 	[1] ESBindRandomSub(65:10355) -> Restrain
 # 	Bind 1 random subs for 3 turns
-# [17] ESEndPath -> ESEndPath
+# [17] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [18] ESAttackMultihit -> Reaping Dismissal
+# [18] ESAttackMultihit(15:10357) -> Reaping Dismissal
 # Enemy action
-# [19] ESEndPath -> ESEndPath
+# [19] ESEndPath(36:26) -> ESEndPath
 # end_turn

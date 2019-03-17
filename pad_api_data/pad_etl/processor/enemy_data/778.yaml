@@ -99,36 +99,47 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 0 -        0
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESBranchHP -> ESBranchHP
+# [1] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 50, target rnd 5
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 5
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(44:29) -> ESFlagOperation
 # flag OR 0b1
-# [4] ESNone -> ESNone
+# [4] ESNone(0:0) -> ESNone
 # nothing
-# [5] ESBranchHP -> ESBranchHP
+# [5] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 40, target rnd 9
-# [6] ESInactivity -> Focus my mind...
+# [6] ESInactivity(16:437) -> Focus my mind...
 # Condition: One-time use
 # Do nothing
-# [7] ESAttackMultihit -> What lives must die...
+# [7] ESAttackMultihit(15:438) -> What lives must die...
 # Enemy action
-# [8] ESEndPath -> ESEndPath
+# [8] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [9] ESBranchFlag -> ESBranchFlag
+# [9] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 13
-# [10] ESFlagOperation -> ESFlagOperation
+# [10] ESFlagOperation(44:29) -> ESFlagOperation
 # flag OR 0b10
-# [11] ESBindRandom -> Bind!
+# [11] ESBindRandom(1:433) -> Bind!
 # Bind 3 random cards for 3 turns
-# [12] ESEndPath -> ESEndPath
+# [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [13] ESAttackMultihit -> Destroy!
+# [13] ESAttackMultihit(15:435) -> Destroy!
 # Condition: 60% chance
 # Enemy action
-# [14] ESOrbChangeAttack -> Terminate!
+# [14] ESOrbChangeAttack(48:434) -> Terminate!
 # Condition: 60% chance
 # Change Random to Jammer

@@ -119,50 +119,61 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 10 -     1010
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESStatusShield -> Concept of Boundless Worlds
+# 	[0] ESStatusShield(20:6787) -> Concept of Boundless Worlds
 # 	Voids status ailments for 999 turns
-# 	[1] ESCloud -> Dormant Oceanic Evil
+# 	[1] ESCloud(104:6788) -> Dormant Oceanic Evil
 # 	Row of cloud appear for 30 turns at 1st column
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] SkillSet:
 # 	Condition: When < 1% hp
-# 	[0] ESRecoverEnemy -> Eternal Cell Regeneration
+# 	[0] ESRecoverEnemy(86:6797) -> Eternal Cell Regeneration
 # 	Enemy recover 100% hp
-# 	[1] ESAttackMultihit -> Veracity of the Cosmic Grotesque
+# 	[1] ESAttackMultihit(15:6794) -> Veracity of the Cosmic Grotesque
 # 	Enemy action
-# [7] ESAttackMultihit -> Veracity of the Cosmic Grotesque
+# [7] ESAttackMultihit(15:6794) -> Veracity of the Cosmic Grotesque
 # Condition: When < 10% hp
 # Enemy action
-# [8] ESSkyfall -> Nature's Encroaching Nightmare 
+# [8] ESSkyfall(68:6790) -> Nature's Encroaching Nightmare 
 # Condition: One-time use
 # Mortal Poison skyfall +15% for 15 turns
-# [9] ESAbsorbCombo -> Doomsday Sanctuary
+# [9] ESAbsorbCombo(67:6791) -> Doomsday Sanctuary
 # Absorb combo <= 6 damage for 999 turns
-# [10] ESRandomSpawn -> Ruler of the One and Only Ocean
+# [10] ESRandomSpawn(92:6792) -> Ruler of the One and Only Ocean
 # Condition: 25% chance & when Fire, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 9 Water orbs
-# [11] ESAttackMultihit -> Father Dagon and His Deep Ones
+# [11] ESAttackMultihit(15:6793) -> Father Dagon and His Deep Ones
 # Condition: 25% chance
 # Enemy action
-# [12] ESDebuffMovetime -> Sealing Silence of the Deep
+# [12] ESDebuffMovetime(39:6795) -> Sealing Silence of the Deep
 # Condition: 25% chance
 # Movetime 25% for 1 turns
-# [13] ESOrbLock -> Dreaded Celestial
+# [13] ESOrbLock(94:6796) -> Dreaded Celestial
 # Condition: 25% chance
 # Lock 15 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [14] ESEndPath -> ESEndPath
+# [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [15] ESResolve -> Resolve
+# [15] ESResolve(73:6799) -> Resolve
 # Survive attacks with 1 HP when HP > 50%
-# [16] ESAttributeResist -> Wood damage halved
+# [16] ESAttributeResist(72:6800) -> Wood damage halved
 # Reduce damage from Wood by 50%

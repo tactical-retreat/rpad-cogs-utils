@@ -45,39 +45,50 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 4 -      100
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:355) -> ESPreemptive
 # Enable preempt if level 5
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 5, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESAbsorbAttribute -> Hydro Core
+# [6] ESAbsorbAttribute(53:3286) -> Hydro Core
 # Absorb Water damage for 5 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESRecoverEnemyAlly -> Follow Repair
+# [8] ESRecoverEnemyAlly(52:3235) -> Follow Repair
 # Condition: When enemy ally is killed
 # Enemy ally recover 45% hp
-# [9] ESAttackMultihit -> Limit Burst
+# [9] ESAttackMultihit(15:3241) -> Limit Burst
 # Condition: When < 10% hp
 # Enemy action
-# [10] ESSkillDelay -> Absorption
+# [10] ESSkillDelay(89:3240) -> Absorption
 # Condition: When < 80% hp , one-time use
 # Delay active skills by 1 turns
-# [11] ESRandomSpawn -> Super Water Surge
+# [11] ESRandomSpawn(92:3287) -> Super Water Surge
 # Condition: 40% chance & when Fire, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 4 Water orbs
-# [12] ESColumnSpawnMulti -> Aqua Gun
+# [12] ESColumnSpawnMulti(77:3288) -> Aqua Gun
 # Condition: 40% chance
 # Change 3rd column to Water orbs
-# [13] ESOrbChangeAttack -> Blue Charger
+# [13] ESOrbChangeAttack(48:3289) -> Blue Charger
 # Condition: 20% chance
 # Change Water to Jammer
-# [14] ESEndPath -> ESEndPath
+# [14] ESEndPath(36:26) -> ESEndPath
 # end_turn

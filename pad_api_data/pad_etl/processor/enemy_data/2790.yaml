@@ -628,86 +628,97 @@ records:
   usage_pct: 15
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 511 - 111111111
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESDeathCry -> Orphan Transformation
+# [2] ESDeathCry(69:2963) -> Orphan Transformation
 # Condition: On death
 # Show message: Hahahaha!| Don't you want eternity?
-# [3] ESBranchLevel -> ESBranchLevel
+# [3] ESBranchLevel(33:23) -> ESBranchLevel
 # Branch on level < 3, target rnd 7
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 9
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [6] SkillSet:
-# 	[0] ESStatusShield -> Our name is Orphan.
+# 	[0] ESStatusShield(20:3952) -> Our name is Orphan.
 # 	Voids status ailments for 999 turns
-# 	[1] ESRecoverPlayer -> By our hand, the world
+# 	[1] ESRecoverPlayer(55:3982) -> By our hand, the world
 # shall know redemption.
 # 	Player recover 100% hp
 # [7] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESInactivity -> Our name is Orphan.
+# 	[0] ESInactivity(66:3935) -> Our name is Orphan.
 # 	Do nothing
-# 	[1] ESInactivity -> By our hand, the world
+# 	[1] ESInactivity(66:3984) -> By our hand, the world
 # shall know redemption.
 # 	Do nothing
-# [8] ESEndPath -> ESEndPath
+# [8] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [9] ESBranchHP -> ESBranchHP
+# [9] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 40, target rnd 19
-# [10] ESBranchFlag -> ESBranchFlag
+# [10] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 22
 # [11] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAbsorbCombo -> Consummate Light
+# 	[0] ESAbsorbCombo(67:3951) -> Consummate Light
 # 	Absorb combo <= 3 damage for 3 turns
-# 	[1] ESGravity -> Merciless Judgment
+# 	[1] ESGravity(50:3936) -> Merciless Judgment
 # 	Player -99% HP
-# [12] ESAttackMultihit -> Hammer
+# [12] ESAttackMultihit(15:3937) -> Hammer
 # Condition: One-time use
 # Enemy action
-# [13] ESAttackMultihit -> Requiem
+# [13] ESAttackMultihit(15:3938) -> Requiem
 # Condition: One-time use
 # Enemy action
-# [14] ESAttackMultihit -> Progenitorial Wrath
+# [14] ESAttackMultihit(15:3939) -> Progenitorial Wrath
 # Condition: One-time use
 # Enemy action
 # [15] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESChangeAttribute -> Consummate Darkness
+# 	[0] ESChangeAttribute(46:3940) -> Consummate Darkness
 # 	Change own attribute to Dark
-# 	[1] ESGravity -> Merciless Judgment
+# 	[1] ESGravity(50:3936) -> Merciless Judgment
 # 	Player -99% HP
-# [16] ESPoisonChangeRandomAttack -> Chains of Torment
+# [16] ESPoisonChangeRandomAttack(64:3942) -> Chains of Torment
 # Condition: One-time use
 # Change Random 5 to Poison
-# [17] ESAttackMultihit -> Black Ruin
+# [17] ESAttackMultihit(15:3941) -> Black Ruin
 # Condition: One-time use
 # Enemy action
-# [18] ESRecoverEnemy -> Vile Exploitation
+# [18] ESRecoverEnemy(86:3943) -> Vile Exploitation
 # Condition: One-time use
 # Enemy recover 10% hp
-# [19] ESBranchFlag -> ESBranchFlag
+# [19] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 22
-# [20] ESFlagOperation -> ESFlagOperation
+# [20] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [21] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESGravity -> Merciless Judgment
+# 	[0] ESGravity(50:3936) -> Merciless Judgment
 # 	Player -99% HP
-# 	[1] ESChangeAttribute -> Opposite Extremes
+# 	[1] ESChangeAttribute(46:3944) -> Opposite Extremes
 # 	Change own attribute to random one of Light, Dark
-# [22] ESRecoverEnemy -> Vile Exploitation
+# [22] ESRecoverEnemy(86:3948) -> Vile Exploitation
 # Condition: 65% chance
 # Enemy recover 10% hp
-# [23] ESAttackUp -> Dies Irae
+# [23] ESAttackUp(17:3949) -> Dies Irae
 # Condition: 20% chance
 # Increase damage to 200% for the next 999 turns
-# [24] ESAttackMultihit -> Progenitorial Wrath
+# [24] ESAttackMultihit(15:3950) -> Progenitorial Wrath
 # Condition: 15% chance
 # Enemy action
-# [25] ESEndPath -> ESEndPath
+# [25] ESEndPath(36:26) -> ESEndPath
 # end_turn

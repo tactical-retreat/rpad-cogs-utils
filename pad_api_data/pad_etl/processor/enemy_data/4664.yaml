@@ -103,59 +103,70 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [4] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESStatusShield -> Byakko lives in isolation.
+# 	[0] ESStatusShield(20:10613) -> Byakko lives in isolation.
 # 	Voids status ailments for 5 turns
-# 	[1] ESBindRandom -> Something that won't swarm.
+# 	[1] ESBindRandom(1:10614) -> Something that won't swarm.
 # 	Bind 1 random cards for 3 turns
-# [5] ESBranchFlag -> ESBranchFlag
+# [5] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 10
-# [6] ESFlagOperation -> ESFlagOperation
+# [6] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [7] ESBranchHP -> ESBranchHP
+# [7] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 21
 # [8] SkillSet:
-# 	[0] ESFixedStart -> I always seized any opportunities.
+# 	[0] ESFixedStart(101:10616) -> I always seized any opportunities.
 # 	Fix orb movement starting point to random position on the board
-# 	[1] ESOrbLock -> I'm a predator stalking its prey.
+# 	[1] ESOrbLock(94:10617) -> I'm a predator stalking its prey.
 # 	Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [9] ESEndPath -> ESEndPath
+# [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [10] ESBranchFlag -> ESBranchFlag
+# [10] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 14
-# [11] ESFlagOperation -> ESFlagOperation
+# [11] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [12] SkillSet:
-# 	[0] ESBoardChangeAttackBits -> Cute is an insult...for Byakko...
+# 	[0] ESBoardChangeAttackBits(85:10619) -> Cute is an insult...for Byakko...
 # 	Change all orbs to Fire, Water, Dark
-# 	[1] ESRowSpawnMulti -> ...
+# 	[1] ESRowSpawnMulti(78:10620) -> ...
 # 	Change 3rd row to Heal orbs
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [14] ESBranchFlag -> ESBranchFlag
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 18
-# [15] ESFlagOperation -> ESFlagOperation
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
-# [16] ESAttackUp -> Are you...ready?
+# [16] ESAttackUp(17:10622) -> Are you...ready?
 # Increase damage to 200% for the next 1 turns
-# [17] ESEndPath -> ESEndPath
+# [17] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [18] ESFlagOperation -> ESFlagOperation
+# [18] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b0
-# [19] ESSkillDelay -> Wild Ball
+# [19] ESSkillDelay(89:10587) -> Wild Ball
 # Delay active skills by 2 turns
-# [20] ESEndPath -> ESEndPath
+# [20] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [21] ESRecoverEnemy -> Swelling Energy
+# [21] ESRecoverEnemy(86:10623) -> Swelling Energy
 # Enemy recover 50% hp
-# [22] ESEndPath -> ESEndPath
+# [22] ESEndPath(36:26) -> ESEndPath
 # end_turn

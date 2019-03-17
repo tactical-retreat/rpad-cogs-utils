@@ -99,34 +99,45 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 0 -        0
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESAbsorbAttribute -> Chaotic Defense
+# [4] ESAbsorbAttribute(53:76) -> Chaotic Defense
 # Absorb Dark damage for 10 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchHP -> ESBranchHP
+# [6] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 50, target rnd 14
-# [7] ESBranchFlag -> ESBranchFlag
+# [7] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 11
-# [8] ESFlagOperation -> ESFlagOperation
+# [8] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [9] ESBindRandomSub -> Temptation
+# [9] ESBindRandomSub(65:77) -> Temptation
 # Bind 3 random subs for 2~3 turns
-# [10] ESEndPath -> ESEndPath
+# [10] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [11] ESOrbChangeSingle -> Candy &
+# [11] ESOrbChangeSingle(4:79) -> Candy &
 # Condition: One-time use
 # Change Random to Heal
-# [12] ESAttackMultihit -> Death
+# [12] ESAttackMultihit(15:80) -> Death
 # Enemy action
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [14] ESAttackMultihit -> Love Hurricane
+# [14] ESAttackMultihit(15:78) -> Love Hurricane
 # Enemy action

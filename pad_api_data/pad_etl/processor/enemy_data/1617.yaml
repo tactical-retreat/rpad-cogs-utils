@@ -215,90 +215,101 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 15 -     1111
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESStatusShield -> Undine, here I go...
+# 	[0] ESStatusShield(20:5780) -> Undine, here I go...
 # 	Voids status ailments for 999 turns
-# 	[1] ESVoidShield -> Okay! Here's my Water Barrier!
+# 	[1] ESVoidShield(71:5781) -> Okay! Here's my Water Barrier!
 # 	Void damage >= 500000 for 5 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchFlag -> ESBranchFlag
+# [6] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 10
-# [7] ESFlagOperation -> ESFlagOperation
+# [7] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 26
-# [9] ESRowSpawnMulti -> Elemental Stream
+# [9] ESRowSpawnMulti(79:5782) -> Elemental Stream
 # Change 1st, 2nd, 3rd, 4th row to Fire, Wood, Light, Dark orbs, 5th row to Water orbs
-# [10] ESBranchFlag -> ESBranchFlag
+# [10] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 14
-# [11] ESFlagOperation -> ESFlagOperation
+# [11] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [12] ESBranchHP -> ESBranchHP
+# [12] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 26
-# [13] ESGravity -> Marine Pressure
+# [13] ESGravity(50:5783) -> Marine Pressure
 # Player -99% HP
-# [14] ESBranchFlag -> ESBranchFlag
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 18
-# [15] ESFlagOperation -> ESFlagOperation
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
-# [16] ESBranchHP -> ESBranchHP
+# [16] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 26
-# [17] ESColumnSpawnMulti -> Abyssal Stream
+# [17] ESColumnSpawnMulti(77:5784) -> Abyssal Stream
 # Change 1st column to Water orbs, 2nd, 3rd, 4th, 5th column to Fire, Wood, Light, Dark orbs, 6th column to Mortal Poison orbs
-# [18] ESBranchFlag -> ESBranchFlag
+# [18] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 16, target rnd 22
-# [19] ESFlagOperation -> ESFlagOperation
+# [19] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11111
-# [20] ESBranchHP -> ESBranchHP
+# [20] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 26
-# [21] ESGravity -> Abyss Pressure
+# [21] ESGravity(50:5785) -> Abyss Pressure
 # Player -100% HP
-# [22] ESBranchFlag -> ESBranchFlag
+# [22] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 32, target rnd 25
-# [23] ESFlagOperation -> ESFlagOperation
+# [23] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111111
 # [24] SkillSet:
-# 	[0] ESBindAwoken -> No! The barrier's gonna break!
+# 	[0] ESBindAwoken(88:5799) -> No! The barrier's gonna break!
 # 	Bind awoken skills for 2 turns
-# 	[1] ESAttackUp -> Let's get serious...!
+# 	[1] ESAttackUp(17:5800) -> Let's get serious...!
 # 	Increase damage to 200% for the next 1 turns
 # [25] SkillSet:
-# 	[0] ESBoardChangeAttackBits -> Elemental Splash!
+# 	[0] ESBoardChangeAttackBits(85:5802) -> Elemental Splash!
 # 	Change all orbs to Fire, Water, Wood, Light, Dark
-# 	[1] ESSkillDelay -> Voice of Innocence
+# 	[1] ESSkillDelay(89:5803) -> Voice of Innocence
 # 	Delay active skills by 1~3 turns
 # [26] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESRecoverEnemy -> Sharon! Take this potion!
+# 	[0] ESRecoverEnemy(86:5787) -> Sharon! Take this potion!
 # 	Enemy recover 50% hp
-# 	[1] ESInactivity -> Thanks Undine!
+# 	[1] ESInactivity(66:5788) -> Thanks Undine!
 # 	Do nothing
 # [27] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESRecoverEnemy -> Drink some more potion!
+# 	[0] ESRecoverEnemy(86:5790) -> Drink some more potion!
 # 	Enemy recover 30% hp
-# 	[1] ESMortalPoisonChangeRandom -> I can't drink this much...
+# 	[1] ESMortalPoisonChangeRandom(61:5791) -> I can't drink this much...
 # 	Change Random 6 to Mortal Poison
 # [28] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESRecoverEnemy -> If you don't drink it, you'll lose!
+# 	[0] ESRecoverEnemy(86:5793) -> If you don't drink it, you'll lose!
 # 	Enemy recover 10% hp
-# 	[1] ESMortalPoisonChangeRandom -> I can't...take any more...
+# 	[1] ESMortalPoisonChangeRandom(61:5794) -> I can't...take any more...
 # 	Change Random 18 to Mortal Poison
 # [29] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESInactivity -> Come on, open wide...
+# 	[0] ESInactivity(66:5796) -> Come on, open wide...
 # 	Do nothing
-# 	[1] ESBoardChange -> Aaaaahhhh!
+# 	[1] ESBoardChange(84:5797) -> Aaaaahhhh!
 # 	Change all orbs to Mortal Poison
-# [30] ESEndPath -> ESEndPath
+# [30] ESEndPath(36:26) -> ESEndPath
 # end_turn

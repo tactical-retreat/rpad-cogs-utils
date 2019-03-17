@@ -353,78 +353,89 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 3 -       11
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESOrbLock -> This is the path of my destiny!
+# [2] ESOrbLock(94:12572) -> This is the path of my destiny!
 # Condition: One-time use
 # Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [3] ESBranchHP -> ESBranchHP
+# [3] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 10
-# [4] ESBranchCounter -> ESBranchCounter
+# [4] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 9, target rnd 17
-# [5] ESSetCounter -> ESSetCounter
+# [5] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
 # [6] SkillSet:
 # 	Condition: 33% chance
-# 	[0] ESAttackMultihit -> Collarbone Breaker
+# 	[0] ESAttackMultihit(15:12576) -> Collarbone Breaker
 # 	Enemy action
-# 	[1] ESAttackSinglehit -> Disable Skill
+# 	[1] ESAttackSinglehit(82:1) -> Disable Skill
 # 	Enemy action
-# 	[2] ESAttackMultihit -> Hadoken
+# 	[2] ESAttackMultihit(15:12579) -> Hadoken
 # 	Enemy action
 # [7] SkillSet:
 # 	Condition: 33% chance
-# 	[0] ESBindAttack -> Solar Plexus Strike
+# 	[0] ESBindAttack(63:12577) -> Solar Plexus Strike
 # 	Bind 1 subs for 1~2 turns
-# 	[1] ESAttackSinglehit -> Disable Skill
+# 	[1] ESAttackSinglehit(82:1) -> Disable Skill
 # 	Enemy action
-# 	[2] ESAttackMultihit -> Shoryuken
+# 	[2] ESAttackMultihit(15:12580) -> Shoryuken
 # 	Enemy action
 # [8] SkillSet:
 # 	Condition: 34% chance
-# 	[0] ESGravity -> Axe Kick
+# 	[0] ESGravity(50:12578) -> Axe Kick
 # 	Player -25% HP
-# 	[1] ESAttackSinglehit -> Disable Skill
+# 	[1] ESAttackSinglehit(82:1) -> Disable Skill
 # 	Enemy action
-# 	[2] ESAbsorbCombo -> Tatsumaki Senpukyaku
+# 	[2] ESAbsorbCombo(67:12581) -> Tatsumaki Senpukyaku
 # 	Absorb combo <= 5 damage for 1 turns
-# [9] ESEndPath -> ESEndPath
+# [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [10] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAttackUp -> Denjin Renki
+# 	[0] ESAttackUp(17:12582) -> Denjin Renki
 # 	Increase damage to 150% for the next 10 turns
-# 	[1] ESInactivity -> Now the fight's begun! 
+# 	[1] ESInactivity(66:12670) -> Now the fight's begun! 
 # 	Do nothing
-# [11] ESBranchHP -> ESBranchHP
+# [11] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 15, target rnd 15
 # [12] SkillSet:
 # 	Condition: 50% chance
-# 	[0] ESAttackMultihit -> Collarbone Breaker
+# 	[0] ESAttackMultihit(15:12576) -> Collarbone Breaker
 # 	Enemy action
-# 	[1] ESAttackSinglehit -> Disable Skill
+# 	[1] ESAttackSinglehit(82:1) -> Disable Skill
 # 	Enemy action
-# 	[2] ESRowSpawnMulti -> Ooo!
+# 	[2] ESRowSpawnMulti(79:12585) -> Ooo!
 # 	Change 3rd row to Light orbs
 # [13] SkillSet:
 # 	Condition: 50% chance
-# 	[0] ESBindAttack -> Solar Plexus Strike
+# 	[0] ESBindAttack(63:12577) -> Solar Plexus Strike
 # 	Bind 1 subs for 1~2 turns
-# 	[1] ESAttackSinglehit -> Disable Skill
+# 	[1] ESAttackSinglehit(82:1) -> Disable Skill
 # 	Enemy action
-# 	[2] ESColumnSpawnMulti -> Shoryuken
+# 	[2] ESColumnSpawnMulti(77:12586) -> Shoryuken
 # 	Change 4th column to Light orbs
-# [14] ESEndPath -> ESEndPath
+# [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [15] ESColumnSpawnMulti -> Denjin Hadoken
+# [15] ESColumnSpawnMulti(77:12588) -> Denjin Hadoken
 # Change 4th, 5th column to Light orbs
-# [16] ESEndPath -> ESEndPath
+# [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [17] ESSetCounter -> ESSetCounter
+# [17] ESSetCounter(25:15) -> ESSetCounter
 # counter = 0
-# [18] ESAttackMultihit -> Shinku Hadoken
+# [18] ESAttackMultihit(15:12587) -> Shinku Hadoken
 # Enemy action
-# [19] ESEndPath -> ESEndPath
+# [19] ESEndPath(36:26) -> ESEndPath
 # end_turn

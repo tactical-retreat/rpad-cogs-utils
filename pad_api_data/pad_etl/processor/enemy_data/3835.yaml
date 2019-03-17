@@ -148,56 +148,67 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [6] SkillSet:
-# 	[0] ESAbsorbAttribute -> War Scales
+# 	[0] ESAbsorbAttribute(53:7793) -> War Scales
 # 	Absorb Fire damage for 5 turns
-# 	[1] ESOrbChangeAttackBits -> Raging Blaze
+# 	[1] ESOrbChangeAttackBits(108:7794) -> Raging Blaze
 # 	Change Water, Light, Dark to Fire
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [8] SkillSet:
 # 	Condition: When < 50% hp , one-time use
-# 	[0] ESSpinnersFixed -> Flame Spiral
+# 	[0] ESSpinnersFixed(110:7798) -> Flame Spiral
 # 	Specific orbs change every 1.0s for 10 turns
-# 	[1] ESAbsorbCombo -> Hellfire Rope
+# 	[1] ESAbsorbCombo(67:7799) -> Hellfire Rope
 # 	Absorb combo <= 6 damage for 10 turns
-# [9] ESOrbLock -> Roaring Destruction
+# [9] ESOrbLock(94:7807) -> Roaring Destruction
 # Condition: When < 15% hp
 # Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [10] SkillSet:
 # 	Condition: When < 20% hp
-# 	[0] ESOrbLock -> Incineration
+# 	[0] ESOrbLock(94:7803) -> Incineration
 # 	Lock 12 random Fire, Water, Wood, Light, Dark, Heal orbs
-# 	[1] ESAttackMultihit -> Brutal Inferno Fangs
+# 	[1] ESAttackMultihit(15:7796) -> Brutal Inferno Fangs
 # 	Enemy action
 # [11] SkillSet:
 # 	Condition: When < 30% hp
-# 	[0] ESOrbLock -> Incineration
+# 	[0] ESOrbLock(94:7802) -> Incineration
 # 	Lock 8 random Fire, Water, Wood, Light, Dark, Heal orbs
-# 	[1] ESAttackMultihit -> Brutal Inferno Fangs
+# 	[1] ESAttackMultihit(15:7796) -> Brutal Inferno Fangs
 # 	Enemy action
 # [12] SkillSet:
 # 	Condition: When < 40% hp
-# 	[0] ESOrbLock -> Incineration
+# 	[0] ESOrbLock(94:7801) -> Incineration
 # 	Lock 4 random Fire, Water, Wood, Light, Dark, Heal orbs
-# 	[1] ESAttackMultihit -> Brutal Inferno Fangs
+# 	[1] ESAttackMultihit(15:7796) -> Brutal Inferno Fangs
 # 	Enemy action
-# [13] ESOrbChangeAttackBits -> Sublimation
+# [13] ESOrbChangeAttackBits(108:7797) -> Sublimation
 # Condition: 50% chance
 # Change Water to Fire
-# [14] ESAttackMultihit -> Brutal Inferno Fangs
+# [14] ESAttackMultihit(15:7796) -> Brutal Inferno Fangs
 # Enemy action
-# [15] ESEndPath -> ESEndPath
+# [15] ESEndPath(36:26) -> ESEndPath
 # end_turn

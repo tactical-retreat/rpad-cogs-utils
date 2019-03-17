@@ -146,116 +146,127 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 10 -     1010
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESVoidShield -> Light Dragon Barrier
+# 	[0] ESVoidShield(71:7000) -> Light Dragon Barrier
 # 	Void damage >= 10000000 for 999 turns
-# 	[1] ESStatusShield -> Guardian Dragon Formation
+# 	[1] ESStatusShield(20:7001) -> Guardian Dragon Formation
 # 	Voids status ailments for 999 turns
-# 	[2] ESBindRandomSub -> Acid Prison
+# 	[2] ESBindRandomSub(65:7002) -> Acid Prison
 # 	Bind 4 random subs for 15 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] SkillSet:
 # 	Condition: When < 10% hp
-# 	[0] ESDispel -> Photon Break
+# 	[0] ESDispel(6:7020) -> Photon Break
 # 	Voids player buff effects
-# 	[1] ESAttackMultihit -> Myriad Meteor Ray
+# 	[1] ESAttackMultihit(15:7021) -> Myriad Meteor Ray
 # 	Enemy action
-# [7] ESBranchHP -> ESBranchHP
+# [7] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 80, target rnd 14
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 20
-# [9] ESBranchHP -> ESBranchHP
+# [9] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 30, target rnd 26
-# [10] ESChangeAttribute -> Change mon Attaque
+# [10] ESChangeAttribute(46:7018) -> Change mon Attaque
 # Condition: 50% chance
 # Change own attribute to random one of Light, Water
-# [11] ESBindAwoken -> Divine Charm
+# [11] ESBindAwoken(88:7019) -> Divine Charm
 # Condition: 30% chance
 # Bind awoken skills for 1 turns
-# [12] ESAbsorbCombo -> Prism Burst
+# [12] ESAbsorbCombo(67:7017) -> Prism Burst
 # Condition: 20% chance
 # Absorb combo <= 8 damage for 1 turns
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [14] ESBranchFlag -> ESBranchFlag
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 8
-# [15] ESFlagOperation -> ESFlagOperation
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [16] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAbsorbAttribute -> Deep Shadow
+# 	[0] ESAbsorbAttribute(53:7004) -> Deep Shadow
 # 	Absorb Dark damage for 3 turns
-# 	[1] ESAttackMultihit -> Shining Stream
+# 	[1] ESAttackMultihit(15:7007) -> Shining Stream
 # 	Enemy action
 # [17] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAttackMultihit -> Cyclone
+# 	[0] ESAttackMultihit(15:7005) -> Cyclone
 # 	Enemy action
-# 	[1] ESAttackMultihit -> Shining Stream
+# 	[1] ESAttackMultihit(15:7007) -> Shining Stream
 # 	Enemy action
 # [18] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESDamageShield -> Shell Scales
+# 	[0] ESDamageShield(74:7006) -> Shell Scales
 # 	Reduce damage from all sources by 75% for 3 turns
-# 	[1] ESAttackMultihit -> Shining Stream
+# 	[1] ESAttackMultihit(15:7007) -> Shining Stream
 # 	Enemy action
-# [19] ESEndPath -> ESEndPath
+# [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [20] ESBranchFlag -> ESBranchFlag
+# [20] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 9
-# [21] ESFlagOperation -> ESFlagOperation
+# [21] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [22] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAttackMultihit -> Cyclone
+# 	[0] ESAttackMultihit(15:7005) -> Cyclone
 # 	Enemy action
-# 	[1] ESAttackMultihit -> Shining Stream
+# 	[1] ESAttackMultihit(15:7007) -> Shining Stream
 # 	Enemy action
 # [23] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESDamageShield -> Shell Scales
+# 	[0] ESDamageShield(74:7006) -> Shell Scales
 # 	Reduce damage from all sources by 75% for 3 turns
-# 	[1] ESAttackMultihit -> Shining Stream
+# 	[1] ESAttackMultihit(15:7007) -> Shining Stream
 # 	Enemy action
 # [24] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAbsorbAttribute -> Deep Shadow
+# 	[0] ESAbsorbAttribute(53:7004) -> Deep Shadow
 # 	Absorb Dark damage for 3 turns
-# 	[1] ESAttackMultihit -> Shining Stream
+# 	[1] ESAttackMultihit(15:7007) -> Shining Stream
 # 	Enemy action
-# [25] ESEndPath -> ESEndPath
+# [25] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [26] ESBranchFlag -> ESBranchFlag
+# [26] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 10
-# [27] ESFlagOperation -> ESFlagOperation
+# [27] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
 # [28] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAttackMultihit -> Cyclone
+# 	[0] ESAttackMultihit(15:7005) -> Cyclone
 # 	Enemy action
-# 	[1] ESAttackMultihit -> Shining Stream
+# 	[1] ESAttackMultihit(15:7007) -> Shining Stream
 # 	Enemy action
 # [29] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESDamageShield -> Shell Scales
+# 	[0] ESDamageShield(74:7006) -> Shell Scales
 # 	Reduce damage from all sources by 75% for 3 turns
-# 	[1] ESAttackMultihit -> Shining Stream
+# 	[1] ESAttackMultihit(15:7007) -> Shining Stream
 # 	Enemy action
 # [30] SkillSet:
-# 	[0] ESAbsorbAttribute -> Deep Shadow
+# 	[0] ESAbsorbAttribute(53:7004) -> Deep Shadow
 # 	Absorb Dark damage for 3 turns
-# 	[1] ESAttackMultihit -> Shining Stream
+# 	[1] ESAttackMultihit(15:7007) -> Shining Stream
 # 	Enemy action
-# [31] ESEndPath -> ESEndPath
+# [31] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [32] ESAttributeResist -> Light damage halved
+# [32] ESAttributeResist(72:7023) -> Light damage halved
 # Reduce damage from Light by 50%

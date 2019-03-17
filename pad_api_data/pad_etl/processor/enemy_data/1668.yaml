@@ -191,85 +191,96 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [6] SkillSet:
-# 	[0] ESBlindStickyFixed -> Hey, it's daaark!
+# 	[0] ESBlindStickyFixed(98:9832) -> Hey, it's daaark!
 # 	Blind orbs in specific positions for 3 turns
-# 	[1] ESBindTyping -> You're no good!
+# 	[1] ESBindTyping(3:9833) -> You're no good!
 # 	Bind God cards for 10 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 1, target rnd 28
-# [9] ESBranchHP -> ESBranchHP
+# [9] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 25
-# [10] ESBranchHP -> ESBranchHP
+# [10] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 21
-# [11] ESSetCounter -> ESSetCounter
+# [11] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [12] ESBranchCounter -> ESBranchCounter
+# [12] ESBranchCounter(31:21) -> ESBranchCounter
 # Branch on counter = 3, target rnd 17
-# [13] ESOrbChangeAttackBits -> It became a splendid color!
+# [13] ESOrbChangeAttackBits(108:9835) -> It became a splendid color!
 # Condition: 33% chance
 # Change Fire to Dark, Poison
-# [14] ESBombRandomSpawn -> I need motivation!
+# [14] ESBombRandomSpawn(102:9836) -> I need motivation!
 # Condition: 33% chance
 # Spawn random 8 Bomb orbs
-# [15] ESAttackMultihit -> Something like this?
+# [15] ESAttackMultihit(15:9837) -> Something like this?
 # Condition: 40% chance
 # Enemy action
-# [16] ESEndPath -> ESEndPath
+# [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [17] ESSetCounter -> ESSetCounter
+# [17] ESSetCounter(25:15) -> ESSetCounter
 # counter = 0
 # [18] SkillSet:
 # 	Condition: 50% chance
-# 	[0] ESBlindStickyFixed -> Hey, it's daaark!
+# 	[0] ESBlindStickyFixed(98:9838) -> Hey, it's daaark!
 # 	Blind orbs in specific positions for 3 turns
-# 	[1] ESRandomSpawn -> Understand how I feel!
+# 	[1] ESRandomSpawn(92:9839) -> Understand how I feel!
 # 	Spawn random 6 Poison orbs
 # [19] SkillSet:
-# 	[0] ESBlindStickyFixed -> Hey, it's daaark!
+# 	[0] ESBlindStickyFixed(98:9832) -> Hey, it's daaark!
 # 	Blind orbs in specific positions for 3 turns
-# 	[1] ESRandomSpawn -> Understand how I feel!
+# 	[1] ESRandomSpawn(92:9839) -> Understand how I feel!
 # 	Spawn random 6 Poison orbs
-# [20] ESEndPath -> ESEndPath
+# [20] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [21] ESBranchFlag -> ESBranchFlag
+# [21] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 11
-# [22] ESFlagOperation -> ESFlagOperation
+# [22] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [23] SkillSet:
-# 	[0] ESBoardChange -> I'll give it to you like thiiis
+# 	[0] ESBoardChange(84:9842) -> I'll give it to you like thiiis
 # 	Change all orbs to Fire, Dark, Poison
-# 	[1] ESBombFixedSpawn -> Have this too ♪
+# 	[1] ESBombFixedSpawn(103:9843) -> Have this too ♪
 # 	Spawn Bomb orbs in the specified positions
-# [24] ESEndPath -> ESEndPath
+# [24] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [25] ESAbsorbAttribute -> I won't give up!
+# [25] ESAbsorbAttribute(53:9845) -> I won't give up!
 # Condition: One-time use
 # Absorb Fire, Dark damage for 1 turns
-# [26] ESGravity -> OK, this is the end!
+# [26] ESGravity(50:9846) -> OK, this is the end!
 # Player -300% HP
-# [27] ESEndPath -> ESEndPath
+# [27] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [28] SkillSet:
-# 	[0] ESRecoverEnemy -> It huuurts!
+# 	[0] ESRecoverEnemy(86:9847) -> It huuurts!
 # 	Enemy recover 50% hp
-# 	[1] ESAttackMultihit -> I won't forgive you!
+# 	[1] ESAttackMultihit(15:9848) -> I won't forgive you!
 # 	Enemy action
-# [29] ESEndPath -> ESEndPath
+# [29] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [30] ESResolve -> Nephthys Resolve
+# [30] ESResolve(73:9831) -> Nephthys Resolve
 # Survive attacks with 1 HP when HP > 50%

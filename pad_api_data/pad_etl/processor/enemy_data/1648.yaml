@@ -99,29 +99,40 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 0 -        0
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESStatusShield -> Armor of Darkness
+# [4] ESStatusShield(20:1613) -> Armor of Darkness
 # Voids status ailments for 999 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBindAttribute -> Black Binding
+# [6] ESBindAttribute(2:1617) -> Black Binding
 # Condition: When < 50% hp , one-time use
 # Bind Light cards for 3 turns
-# [7] ESAttackMultihit -> Bloody Execution
+# [7] ESAttackMultihit(15:1618) -> Bloody Execution
 # Condition: When < 30% hp
 # Enemy action
-# [8] ESPoisonChangeRandomAttack -> Shield of Destruction
+# [8] ESPoisonChangeRandomAttack(64:1614) -> Shield of Destruction
 # Condition: 60% chance
 # Change Random 3 to Poison
-# [9] ESOrbChangeAttack -> Magic Flame
+# [9] ESOrbChangeAttack(48:1616) -> Magic Flame
 # Condition: 60% chance
 # Change Light to Fire
-# [10] ESBlind -> Darkness
+# [10] ESBlind(62:1615) -> Darkness
 # Blind all orbs on the board

@@ -181,95 +181,106 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 9
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
 # 	Condition: 25% chance
-# 	[0] ESChangeAttribute -> Constellation Shift
+# 	[0] ESChangeAttribute(46:6635) -> Constellation Shift
 # 	Change own attribute to Fire
-# 	[1] ESAbsorbAttribute -> Star Saucer
+# 	[1] ESAbsorbAttribute(53:6636) -> Star Saucer
 # 	Absorb Water damage for 3 turns
-# 	[2] ESOrbLock -> Wicked Revelation
+# 	[2] ESOrbLock(94:6643) -> Wicked Revelation
 # 	Lock all Heal orbs
 # [5] SkillSet:
 # 	Condition: 25% chance
-# 	[0] ESChangeAttribute -> Constellation Shift
+# 	[0] ESChangeAttribute(46:6637) -> Constellation Shift
 # 	Change own attribute to Water
-# 	[1] ESAbsorbAttribute -> Star Saucer
+# 	[1] ESAbsorbAttribute(53:6638) -> Star Saucer
 # 	Absorb Wood damage for 3 turns
-# 	[2] ESOrbLock -> Wicked Revelation
+# 	[2] ESOrbLock(94:6643) -> Wicked Revelation
 # 	Lock all Heal orbs
 # [6] SkillSet:
 # 	Condition: 25% chance
-# 	[0] ESChangeAttribute -> Constellation Shift
+# 	[0] ESChangeAttribute(46:6639) -> Constellation Shift
 # 	Change own attribute to Wood
-# 	[1] ESAbsorbAttribute -> Star Saucer
+# 	[1] ESAbsorbAttribute(53:6640) -> Star Saucer
 # 	Absorb Fire damage for 3 turns
-# 	[2] ESOrbLock -> Wicked Revelation
+# 	[2] ESOrbLock(94:6643) -> Wicked Revelation
 # 	Lock all Heal orbs
 # [7] SkillSet:
 # 	Condition: 25% chance
-# 	[0] ESChangeAttribute -> Constellation Shift
+# 	[0] ESChangeAttribute(46:6641) -> Constellation Shift
 # 	Change own attribute to Light
-# 	[1] ESAbsorbAttribute -> Star Saucer
+# 	[1] ESAbsorbAttribute(53:6642) -> Star Saucer
 # 	Absorb Dark damage for 3 turns
-# 	[2] ESOrbLock -> Wicked Revelation
+# 	[2] ESOrbLock(94:6643) -> Wicked Revelation
 # 	Lock all Heal orbs
-# [8] ESEndPath -> ESEndPath
+# [8] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [9] ESBranchFlag -> ESBranchFlag
+# [9] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 13
-# [10] ESFlagOperation -> ESFlagOperation
+# [10] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [11] ESBoardChangeAttackBits -> Necrostar
+# [11] ESBoardChangeAttackBits(85:6648) -> Necrostar
 # Change all orbs to Poison
-# [12] ESEndPath -> ESEndPath
+# [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [13] ESBoardChangeAttackBits -> Cruelty Star
+# [13] ESBoardChangeAttackBits(85:6659) -> Cruelty Star
 # Condition: When < 20% hp
 # Change all orbs to Poison
 # [14] SkillSet:
 # 	Condition: When < 50% hp , one-time use
-# 	[0] ESChangeAttribute -> Altered Orbit
+# 	[0] ESChangeAttribute(46:6655) -> Altered Orbit
 # 	Change own attribute to Dark
-# 	[1] ESAttackUp -> God King's Resonance
+# 	[1] ESAttackUp(17:6656) -> God King's Resonance
 # 	Increase damage to 150% for the next 999 turns
-# 	[2] ESSkyfall -> Calamity Rain
+# 	[2] ESSkyfall(68:6657) -> Calamity Rain
 # 	Poison skyfall +15% for 5 turns
-# [15] ESBranchFlag -> ESBranchFlag
+# [15] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 20
-# [16] ESFlagOperation -> ESFlagOperation
+# [16] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [17] SkillSet:
 # 	Condition: 50% chance
-# 	[0] ESCloud -> Aries' Golden Fleece
+# 	[0] ESCloud(104:6649) -> Aries' Golden Fleece
 # 	3x1 cloud appear for 2 turns at random location
-# 	[1] ESAttackMultihit -> Dark Nail
+# 	[1] ESAttackMultihit(15:6651) -> Dark Nail
 # 	Enemy action
 # [18] SkillSet:
-# 	[0] ESCloud -> Aries' Golden Fleece
+# 	[0] ESCloud(104:6650) -> Aries' Golden Fleece
 # 	1x3 cloud appear for 2 turns at random location
-# 	[1] ESAttackMultihit -> Dark Nail
+# 	[1] ESAttackMultihit(15:6651) -> Dark Nail
 # 	Enemy action
-# [19] ESEndPath -> ESEndPath
+# [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [20] ESBranchFlag -> ESBranchFlag
+# [20] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 24
-# [21] ESFlagOperation -> ESFlagOperation
+# [21] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
-# [22] ESBindAttack -> Dark Star Luster
+# [22] ESBindAttack(63:6654) -> Dark Star Luster
 # Bind 1 random for 1 turns
-# [23] ESEndPath -> ESEndPath
+# [23] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [24] ESFlagOperation -> ESFlagOperation
+# [24] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b1100
-# [25] ESBindAttack -> Dark Star Luster
+# [25] ESBindAttack(63:6654) -> Dark Star Luster
 # Bind 1 random for 1 turns
-# [26] ESEndPath -> ESEndPath
+# [26] ESEndPath(36:26) -> ESEndPath
 # end_turn

@@ -112,41 +112,52 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 7 -      111
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
 # [2] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESBlindStickyFixed -> I am the true Dragon King!
+# 	[0] ESBlindStickyFixed(98:6723) -> I am the true Dragon King!
 # 	Blind orbs in specific positions for 1 turns
-# 	[1] ESStatusShield -> Acnologia Transformation
+# 	[1] ESStatusShield(20:6724) -> Acnologia Transformation
 # 	Voids status ailments for 999 turns
 # [3] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESFixedStart -> I recognize you as my enemy
+# 	[0] ESFixedStart(101:6726) -> I recognize you as my enemy
 # 	Fix orb movement starting point to random position on the board
-# 	[1] ESAttackMultihit -> GWAAAH-
+# 	[1] ESAttackMultihit(15:6727) -> GWAAAH-
 # 	Enemy action
-# [4] ESDebuffMovetime -> You can't escape
+# [4] ESDebuffMovetime(39:6728) -> You can't escape
 # Condition: One-time use
 # Movetime -1s for 3 turns
-# [5] ESBranchHP -> ESBranchHP
+# [5] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 35, target rnd 8
-# [6] ESAttackMultihit -> GWAAAH-
+# [6] ESAttackMultihit(15:6727) -> GWAAAH-
 # Condition: 50% chance
 # Enemy action
-# [7] ESAttackMultihit -> DESTROY!!! DESTROY!!!
+# [7] ESAttackMultihit(15:6730) -> DESTROY!!! DESTROY!!!
 # Enemy action
-# [8] ESBranchFlag -> ESBranchFlag
+# [8] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 12
-# [9] ESFlagOperation -> ESFlagOperation
+# [9] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [10] ESAttackUp -> Total Annihilation is what I seek!
+# [10] ESAttackUp(17:6729) -> Total Annihilation is what I seek!
 # Increase damage to 200% for the next 999 turns
-# [11] ESEndPath -> ESEndPath
+# [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [12] ESBoardChangeAttackBits -> Howl
+# [12] ESBoardChangeAttackBits(85:6731) -> Howl
 # Change all orbs to Fire
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn

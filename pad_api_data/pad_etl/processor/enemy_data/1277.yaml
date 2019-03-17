@@ -63,28 +63,39 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 0 -        0
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:355) -> ESPreemptive
 # Enable preempt if level 5
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 5, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESRecoverPlayer -> Here I come, human child
+# [6] ESRecoverPlayer(55:1038) -> Here I come, human child
 # Player recover 100% hp
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESAbsorbCombo -> This is a dragon's true might!
+# [8] ESAbsorbCombo(67:1040) -> This is a dragon's true might!
 # Condition: When < 50% hp
 # Absorb combo <= 3 damage for 999 turns
-# [9] ESAttackMultihit -> Let's finish you off
+# [9] ESAttackMultihit(15:1041) -> Let's finish you off
 # Condition: When < 30% hp
 # Enemy action
-# [10] ESOrbChangeAttack -> Take this!
+# [10] ESOrbChangeAttack(48:1039) -> Take this!
 # Condition: One-time use
 # Change Random to Jammer

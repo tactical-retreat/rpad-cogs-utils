@@ -117,51 +117,62 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:355) -> ESPreemptive
 # Enable preempt if level 5
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 5, target rnd 5
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESEndPath -> ESEndPath
+# [4] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [5] ESBranchFlag -> ESBranchFlag
+# [5] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 9
-# [6] ESFlagOperation -> ESFlagOperation
+# [6] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [7] ESInactivity -> Man can never defeat the lord of Hell!
+# [7] ESInactivity(66:2181) -> Man can never defeat the lord of Hell!
 # Do nothing
-# [8] ESEndPath -> ESEndPath
+# [8] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [9] ESBranchHP -> ESBranchHP
+# [9] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 15
-# [10] ESBlind -> Blind
+# [10] ESBlind(62:2106) -> Blind
 # Condition: One-time use
 # Blind all orbs on the board
-# [11] ESSkillDelay -> Slow
+# [11] ESSkillDelay(89:2105) -> Slow
 # Condition: One-time use
 # Delay active skills by 1 turns
-# [12] EnemySkillUnknown -> *****
+# [12] EnemySkillUnknown(93:2043) -> *****
 # unknown
-# [13] ESAttackMultihit -> Starfall
+# [13] ESAttackMultihit(15:2107) -> Starfall
 # Enemy action
-# [14] ESEndPath -> ESEndPath
+# [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [15] ESBindSkill -> Curse
+# [15] ESBindSkill(14:2104) -> Curse
 # Condition: When < 30% hp , one-time use
 # Bind active skills for 2 turns
-# [16] ESAttackMultihit -> Flare
+# [16] ESAttackMultihit(15:2182) -> Flare
 # Condition: One-time use
 # Enemy action
-# [17] EnemySkillUnknown -> *****
+# [17] EnemySkillUnknown(93:2043) -> *****
 # unknown
-# [18] ESAttackMultihit -> Starfall
+# [18] ESAttackMultihit(15:2107) -> Starfall
 # Enemy action
-# [19] ESEndPath -> ESEndPath
+# [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [20] SkillSet:
 # 	Condition: On death
-# 	[0] ESInactivity -> Rrrraaaaagh!
+# 	[0] ESInactivity(66:2156) -> Rrrraaaaagh!
 # 	Do nothing

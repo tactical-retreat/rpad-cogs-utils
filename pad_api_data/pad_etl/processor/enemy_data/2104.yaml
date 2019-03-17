@@ -130,51 +130,62 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 2 -       10
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESDamageShield -> Guardian Dragon Barrier
+# 	[0] ESDamageShield(74:2268) -> Guardian Dragon Barrier
 # 	Reduce damage from all sources by 50% for 5 turns
-# 	[1] ESBlind -> Behold, Zhou Yu's ingenuity!
+# 	[1] ESBlind(5:2269) -> Behold, Zhou Yu's ingenuity!
 # 	Blind all orbs on the board
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchFlag -> ESBranchFlag
+# [6] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 10
-# [7] ESFlagOperation -> ESFlagOperation
+# [7] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [8] SkillSet:
-# 	[0] ESStatusShield -> Barrier
+# 	[0] ESStatusShield(20:2271) -> Barrier
 # 	Voids status ailments for 999 turns
-# 	[1] ESAttackMultihit -> Ambush
+# 	[1] ESAttackMultihit(15:2272) -> Ambush
 # 	Enemy action
-# [9] ESEndPath -> ESEndPath
+# [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [10] ESAttackMultihit -> Celestial Dance
+# [10] ESAttackMultihit(15:2278) -> Celestial Dance
 # Condition: When < 20% hp
 # Enemy action
 # [11] SkillSet:
 # 	Condition: When < 75% hp , one-time use
-# 	[0] ESRowSpawnMulti -> Besieged by Fire
+# 	[0] ESRowSpawnMulti(79:2280) -> Besieged by Fire
 # 	Change 1st row to Fire orbs, 5th row to Fire orbs
-# 	[1] ESColumnSpawnMulti -> Can you prevail?
+# 	[1] ESColumnSpawnMulti(77:2281) -> Can you prevail?
 # 	Change 1st column to Fire orbs, 6th column to Fire orbs
-# [12] ESAttackMultihit -> Sword Dance
+# [12] ESAttackMultihit(15:2275) -> Sword Dance
 # Condition: 60% chance
 # Enemy action
-# [13] ESRandomSpawn -> Falling Rock Trap
+# [13] ESRandomSpawn(92:2296) -> Falling Rock Trap
 # Condition: 20% chance & when Fire, Water, Wood, Light, Dark, Heal, Poison, Mortal Poison orbs are on the board
 # Spawn random 5 Jammer orbs
-# [14] ESPoisonChangeRandomAttack -> Guardian Dragon's Venomous Talons
+# [14] ESPoisonChangeRandomAttack(64:2276) -> Guardian Dragon's Venomous Talons
 # Condition: 20% chance
 # Change Random 4 to Poison
-# [15] ESEndPath -> ESEndPath
+# [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [16] ESResolve -> *****
+# [16] ESResolve(73:2266) -> *****
 # Survive attacks with 1 HP when HP > 50%

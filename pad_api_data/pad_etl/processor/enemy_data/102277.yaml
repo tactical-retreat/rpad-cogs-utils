@@ -144,43 +144,54 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 2 -       10
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESStatusShield -> Ice Armor
+# [4] ESStatusShield(20:3107) -> Ice Armor
 # Voids status ailments for 999 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESRecoverEnemy -> Freezing Zone
+# [6] ESRecoverEnemy(86:3108) -> Freezing Zone
 # Condition: When < 1% hp
 # Enemy recover 50% hp
-# [7] ESBranchHP -> ESBranchHP
+# [7] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 30, target rnd 11
-# [8] ESGravity -> Powerful Claws
+# [8] ESGravity(50:3109) -> Powerful Claws
 # Condition: One-time use
 # Player -99% HP
-# [9] ESAttackMultihit -> Ice Edge Hammer
+# [9] ESAttackMultihit(15:3110) -> Ice Edge Hammer
 # Condition: 70% chance
 # Enemy action
-# [10] ESAttackMultihit -> Blizzard of Destruction
+# [10] ESAttackMultihit(15:3111) -> Blizzard of Destruction
 # Enemy action
-# [11] ESBranchFlag -> ESBranchFlag
+# [11] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 14
-# [12] ESFlagOperation -> ESFlagOperation
+# [12] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [13] SkillSet:
-# 	[0] ESBoardChangeAttackBits -> Frenzy
+# 	[0] ESBoardChangeAttackBits(85:3112) -> Frenzy
 # 	Change all orbs to Water, Heal, Jammer
-# 	[1] ESOrbLock -> Enraged Glare
+# 	[1] ESOrbLock(94:3113) -> Enraged Glare
 # 	Lock all Jammer orbs
-# [14] ESAttackMultihit -> Abyssal Tempest
+# [14] ESAttackMultihit(15:3115) -> Abyssal Tempest
 # Enemy action
-# [15] ESResolve -> *****
+# [15] ESResolve(73:3116) -> *****
 # Survive attacks with 1 HP when HP > 30%
-# [16] ESAttributeResist -> Ilsix Water Halved
+# [16] ESAttributeResist(72:8247) -> Ilsix Water Halved
 # Reduce damage from Water by 50%

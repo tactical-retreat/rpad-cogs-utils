@@ -81,35 +81,46 @@ records:
   usage_pct: 25
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 4 -      100
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11111
-# [4] ESSkyfall -> Ninpo - Hide in Leaves
+# [4] ESSkyfall(68:3871) -> Ninpo - Hide in Leaves
 # Condition: One-time use
 # Jammer skyfall +15% for 5 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBoardChangeAttackBits -> Leaf Blade Whirlwind Swing Technique
+# [6] ESBoardChangeAttackBits(85:3877) -> Leaf Blade Whirlwind Swing Technique
 # Condition: One-time use
 # Change all orbs to Wood, Jammer, Poison
-# [7] ESRandomSpawn -> Wind's Escape - Gust
+# [7] ESRandomSpawn(92:3872) -> Wind's Escape - Gust
 # Condition: 25% chance & when Fire, Water, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Change all orbs to Wood
-# [8] ESAttackMultihit -> Kunai Multiple Throw
+# [8] ESAttackMultihit(15:3873) -> Kunai Multiple Throw
 # Condition: 25% chance
 # Enemy action
-# [9] ESOrbChangeAttack -> Spiritual Ninja Art: Wt to Wd
+# [9] ESOrbChangeAttack(48:3874) -> Spiritual Ninja Art: Wt to Wd
 # Condition: 25% chance
 # Change Water to Wood
-# [10] ESColumnSpawnMulti -> Fuma Shuriken Attack - Twin Shuriken
+# [10] ESColumnSpawnMulti(77:3875) -> Fuma Shuriken Attack - Twin Shuriken
 # Condition: 25% chance
 # Change 2nd, 5th column to Wood orbs
-# [11] ESEndPath -> ESEndPath
+# [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [12] ESAttributeResist -> Slightly reduces Fire
+# [12] ESAttributeResist(72:3870) -> Slightly reduces Fire
 # Reduce damage from Fire by 50%

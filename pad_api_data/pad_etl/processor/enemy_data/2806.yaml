@@ -103,35 +103,46 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESAbsorbCombo -> Celestial Art Stance
+# 	[0] ESAbsorbCombo(67:7478) -> Celestial Art Stance
 # 	Absorb combo <= 4 damage for 999 turns
-# 	[1] ESAttackUp -> Unforgivable Revision
+# 	[1] ESAttackUp(17:7517) -> Unforgivable Revision
 # 	Increase damage to 200% for the next 3 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] SkillSet:
 # 	Condition: When < 50% hp , one-time use
-# 	[0] ESStatusShield -> Divine Wind of Suwa
+# 	[0] ESStatusShield(20:7481) -> Divine Wind of Suwa
 # 	Voids status ailments for 999 turns
-# 	[1] ESDamageShield -> Terra Firma Stance
+# 	[1] ESDamageShield(74:7482) -> Terra Firma Stance
 # 	Reduce damage from all sources by 75% for 99 turns
-# 	[2] ESCloud -> Minakata Fog
+# 	[2] ESCloud(104:7479) -> Minakata Fog
 # 	6x3 cloud appear for 1 turns at 2nd row, 1st column
-# [7] ESAttackMultihit -> Divine Katana of Yasaka
+# [7] ESAttackMultihit(15:7484) -> Divine Katana of Yasaka
 # Condition: When < 10% hp
 # Enemy action
-# [8] ESBombRandomSpawn -> Firetrap Whirlwind
+# [8] ESBombRandomSpawn(102:7483) -> Firetrap Whirlwind
 # Spawn random 8 locked Bomb orbs
-# [9] ESResolve -> Takeminakata Resolve
+# [9] ESResolve(73:7475) -> Takeminakata Resolve
 # Survive attacks with 1 HP when HP > 50%
-# [10] ESTurnChangePassive -> Next turn changed
+# [10] ESTurnChangePassive(106:7476) -> Next turn changed
 # Enemy turn counter change to 1 when HP <= 50%

@@ -119,55 +119,66 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 0 -        0
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [6] SkillSet:
-# 	[0] ESAbsorbAttribute -> Dark Miasma
+# 	[0] ESAbsorbAttribute(53:8147) -> Dark Miasma
 # 	Absorb Dark damage for 5 turns
-# 	[1] ESSkyfall -> Poisonous Purple Butterflies
+# 	[1] ESSkyfall(68:8148) -> Poisonous Purple Butterflies
 # 	Poison skyfall +25% for 7 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchCounter -> ESBranchCounter
+# [8] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 7, target rnd 13
-# [9] ESSetCounter -> ESSetCounter
+# [9] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [10] ESOrbLock -> Poison Stinger
+# [10] ESOrbLock(94:8150) -> Poison Stinger
 # Lock all Poison, Mortal Poison orbs
-# [11] ESRandomSpawn -> Lethal Poison Fangs
+# [11] ESRandomSpawn(92:8151) -> Lethal Poison Fangs
 # Condition: When fire, water, wood, light, dark, heal, jammer orbs are on the board
 # Spawn random 3 Mortal Poison orbs
-# [12] ESEndPath -> ESEndPath
+# [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [13] ESBranchCounter -> ESBranchCounter
+# [13] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 8, target rnd 17
-# [14] ESSetCounter -> ESSetCounter
+# [14] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
 # [15] SkillSet:
-# 	[0] ESDamageShield -> Steel Serpent Scales
+# 	[0] ESDamageShield(74:8152) -> Steel Serpent Scales
 # 	Reduce damage from all sources by 99% for 1 turns
-# 	[1] ESRandomSpawn -> Thick Miasmatic Fog
+# 	[1] ESRandomSpawn(92:8153) -> Thick Miasmatic Fog
 # 	Spawn random 4 Poison, Mortal Poison orbs
-# [16] ESEndPath -> ESEndPath
+# [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [17] ESSetCounter -> ESSetCounter
+# [17] ESSetCounter(25:15) -> ESSetCounter
 # counter = 0
-# [18] ESOrbChangeAttackBits -> Great Demon Serpent of the Dusk
+# [18] ESOrbChangeAttackBits(108:8155) -> Great Demon Serpent of the Dusk
 # Change Poison, Mortal Poison to Dark
 # [19] SkillSet:
-# 	[0] ESAbsorbAttribute -> Dark Miasma
+# 	[0] ESAbsorbAttribute(53:8147) -> Dark Miasma
 # 	Absorb Dark damage for 5 turns
-# 	[1] ESSkyfall -> Poisonous Purple Butterflies
+# 	[1] ESSkyfall(68:8148) -> Poisonous Purple Butterflies
 # 	Poison skyfall +25% for 7 turns
-# [20] ESEndPath -> ESEndPath
+# [20] ESEndPath(36:26) -> ESEndPath
 # end_turn

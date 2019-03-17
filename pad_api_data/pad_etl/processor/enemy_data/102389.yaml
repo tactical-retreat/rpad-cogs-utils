@@ -117,44 +117,55 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 1 -        1
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESStatusShield -> Please be gentle...
+# [4] ESStatusShield(20:5844) -> Please be gentle...
 # Voids status ailments for 999 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchHP -> ESBranchHP
+# [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 14
-# [7] ESBranchFlag -> ESBranchFlag
+# [7] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 11
-# [8] ESFlagOperation -> ESFlagOperation
+# [8] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [9] ESAttackMultihit -> Dance of the Four Gods
+# [9] ESAttackMultihit(15:5847) -> Dance of the Four Gods
 # Enemy action
-# [10] ESEndPath -> ESEndPath
+# [10] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [11] ESColumnSpawnMulti -> Flame Streaker Dual Mace
+# [11] ESColumnSpawnMulti(77:5845) -> Flame Streaker Dual Mace
 # Condition: 50% chance
 # Change 1st column to Fire orbs, 6th column to Water orbs
-# [12] ESCloud -> Raging Flash Rumble
+# [12] ESCloud(104:12144) -> Raging Flash Rumble
 # 2x5 cloud appear for 1 turns at random location
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [14] ESBindAwoken -> Cardinal Sky Dragon's Supremacy
+# [14] ESBindAwoken(88:5852) -> Cardinal Sky Dragon's Supremacy
 # Condition: One-time use
 # Bind awoken skills for 8 turns
 # [15] SkillSet:
-# 	[0] ESSkillDelay -> Let me show you
+# 	[0] ESSkillDelay(89:5848) -> Let me show you
 # 	Delay active skills by 1 turns
-# 	[1] ESBindAttack -> Boisterous Dance of Kirin
+# 	[1] ESBindAttack(63:5849) -> Boisterous Dance of Kirin
 # 	Bind 6 random for 3 turns
-# [16] ESEndPath -> ESEndPath
+# [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [17] ESResolve -> Resolve
+# [17] ESResolve(73:5851) -> Resolve
 # Survive attacks with 1 HP when HP > 50%

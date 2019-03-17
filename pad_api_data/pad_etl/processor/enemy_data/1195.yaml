@@ -90,39 +90,50 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESStatusShield -> Intruder...
+# [4] ESStatusShield(20:1965) -> Intruder...
 # Condition: One-time use
 # Voids status ailments for 3 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESAttackUp -> Blood of Iga
+# [6] ESAttackUp(17:1968) -> Blood of Iga
 # Condition: When < 50% hp
 # Increase damage to 200% for the next 999 turns
-# [7] ESBranchHP -> ESBranchHP
+# [7] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 13
-# [8] ESBoardChange -> Shadow Concealment Technique
+# [8] ESBoardChange(84:1967) -> Shadow Concealment Technique
 # Condition: One-time use
 # Change all orbs to Jammer
-# [9] ESRowSpawnMulti -> Slash
+# [9] ESRowSpawnMulti(79:1966) -> Slash
 # Change 3rd row to Dark orbs
-# [10] ESEndPath -> ESEndPath
+# [10] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [11] ESAttributeResist -> Halve Light
+# [11] ESAttributeResist(72:1774) -> Halve Light
 # Reduce damage from Light by 50%
-# [12] ESEndPath -> ESEndPath
+# [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [13] ESRowSpawnMulti -> Moon Cutting Circle
+# [13] ESRowSpawnMulti(79:1969) -> Moon Cutting Circle
 # Condition: When < 20% hp
 # Change 2nd row to Dark orbs, 4th row to Dark orbs
-# [14] ESRowSpawnMulti -> Slash
+# [14] ESRowSpawnMulti(79:1966) -> Slash
 # Change 3rd row to Dark orbs
-# [15] ESEndPath -> ESEndPath
+# [15] ESEndPath(36:26) -> ESEndPath
 # end_turn

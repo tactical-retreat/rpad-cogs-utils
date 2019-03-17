@@ -126,68 +126,79 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [6] SkillSet:
-# 	[0] ESInactivity -> I am Hakumen! From that name,
+# 	[0] ESInactivity(66:3499) -> I am Hakumen! From that name,
 # 	Do nothing
-# 	[1] ESStatusShield -> Comes the destruction of all!!
+# 	[1] ESStatusShield(20:3500) -> Comes the destruction of all!!
 # 	Voids status ailments for 999 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchCard -> ESBranchCard
+# [8] ESBranchCard(90:3509) -> ESBranchCard
 # Branch on player_cards HAS [2464, 2465], target rnd 22
-# [9] ESBindRandom -> Waaaaaah!
+# [9] ESBindRandom(1:3501) -> Waaaaaah!
 # Condition: When < 80% hp , one-time use
 # Bind 1 random cards for 3 turns
-# [10] ESBranchFlag -> ESBranchFlag
+# [10] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 15
-# [11] ESFlagOperation -> ESFlagOperation
+# [11] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [12] ESGravity -> Shumuna
+# [12] ESGravity(50:3504) -> Shumuna
 # Condition: 50% chance
 # Player -99% HP
-# [13] ESRowSpawnMulti -> Towako
+# [13] ESRowSpawnMulti(79:3506) -> Towako
 # Condition: 50% chance
 # Change 2nd, 3rd row to Fire orbs
-# [14] ESEndPath -> ESEndPath
+# [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [15] ESBranchFlag -> ESBranchFlag
+# [15] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 20
-# [16] ESFlagOperation -> ESFlagOperation
+# [16] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
-# [17] ESVoidShield -> Kuragi
+# [17] ESVoidShield(71:3505) -> Kuragi
 # Condition: 50% chance
 # Void damage >= 500000 for 2 turns
-# [18] ESDamageShield -> Ayakashi
+# [18] ESDamageShield(74:3507) -> Ayakashi
 # Condition: 50% chance
 # Reduce damage from all sources by 50% for 2 turns
-# [19] ESEndPath -> ESEndPath
+# [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [20] ESRandomSpawn -> Storm and Lightning Tail
+# [20] ESRandomSpawn(92:3510) -> Storm and Lightning Tail
 # Condition: 50% chance & when Fire, Water, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 4 Wood, Light orbs
-# [21] ESAttackMultihit -> Spear-Shaped Tail
+# [21] ESAttackMultihit(15:3511) -> Spear-Shaped Tail
 # Enemy action
-# [22] ESBranchFlag -> ESBranchFlag
+# [22] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 9
-# [23] ESFlagOperation -> ESFlagOperation
+# [23] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [24] ESBlind -> Hate...more...
+# [24] ESBlind(5:3502) -> Hate...more...
 # Blind all orbs on the board
-# [25] ESEndPath -> ESEndPath
+# [25] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [26] SkillSet:
 # 	Condition: On death
-# 	[0] ESSkillSet -> Last 2 times
+# 	[0] ESSkillSet(83:3514) -> Last 2 times
 # 	Perform multiple skills

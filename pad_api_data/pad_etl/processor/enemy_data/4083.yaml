@@ -90,39 +90,50 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 3 -       11
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESDebuffMovetime -> Come! Come!
+# [6] ESDebuffMovetime(39:8629) -> Come! Come!
 # Movetime -1s for 3 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 15, target rnd 13
-# [9] ESDamageShield -> Mouko Raijin Gou
+# [9] ESDamageShield(74:8631) -> Mouko Raijin Gou
 # Condition: One-time use
 # Reduce damage from all sources by 50% for 1 turns
-# [10] ESRowSpawnMulti -> Ko-Ou Ken
+# [10] ESRowSpawnMulti(79:8630) -> Ko-Ou Ken
 # Condition: 30% chance
 # Change 3rd row to Light orbs
-# [11] ESAttackMultihit -> Hien Shippuu Kyaku
+# [11] ESAttackMultihit(15:8632) -> Hien Shippuu Kyaku
 # Enemy action
-# [12] ESEndPath -> ESEndPath
+# [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [13] ESAttackMultihit -> Haoh Shoukou Ken
+# [13] ESAttackMultihit(15:8633) -> Haoh Shoukou Ken
 # Enemy action
-# [14] ESEndPath -> ESEndPath
+# [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [15] SkillSet:
 # 	Condition: On death
-# 	[0] ESInactivity -> I've failed!
+# 	[0] ESInactivity(66:8634) -> I've failed!
 # 	Do nothing

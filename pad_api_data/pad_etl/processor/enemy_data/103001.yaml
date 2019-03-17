@@ -54,82 +54,93 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [6] SkillSet:
-# 	[0] ESSkillDelay -> Which one of you will be my opponent?
+# 	[0] ESSkillDelay(89:4904) -> Which one of you will be my opponent?
 # 	Delay active skills by 2 turns
-# 	[1] ESJammerChangeRandom -> Dimension-Curse of the Sea God
+# 	[1] ESJammerChangeRandom(13:4905) -> Dimension-Curse of the Sea God
 # 	Change Random 3 to Jammer
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESOrbChangeAttack -> Sea Punishment
+# [8] ESOrbChangeAttack(48:4907) -> Sea Punishment
 # Change Jammer to Poison
-# [9] ESBranchFlag -> ESBranchFlag
+# [9] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 19
-# [10] ESBranchHP -> ESBranchHP
+# [10] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 15
-# [11] ESFlagOperation -> ESFlagOperation
+# [11] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [12] ESBranchCard -> ESBranchCard
+# [12] ESBranchCard(90:4919) -> ESBranchCard
 # Branch on player_cards HAS [2143, 2144, 2971], target rnd 14
 # [13] SkillSet:
-# 	[0] ESStatusShield -> Sea Dragon God's Protection
+# 	[0] ESStatusShield(20:4912) -> Sea Dragon God's Protection
 # 	Voids status ailments for 999 turns
-# 	[1] ESOrbChangeAttack -> Dimension-Curse of the Sacred Waters
+# 	[1] ESOrbChangeAttack(48:4914) -> Dimension-Curse of the Sacred Waters
 # 	Change Random to Heal
 # [14] SkillSet:
-# 	[0] ESStatusShield -> It's time you stop acting so crazy!
+# 	[0] ESStatusShield(20:4913) -> It's time you stop acting so crazy!
 # 	Voids status ailments for 999 turns
-# 	[1] ESOrbChangeAttack -> Dimension-Curse of the Sacred Waters
+# 	[1] ESOrbChangeAttack(48:4914) -> Dimension-Curse of the Sacred Waters
 # 	Change Random to Heal
-# [15] ESFlagOperation -> ESFlagOperation
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [16] ESBranchCard -> ESBranchCard
+# [16] ESBranchCard(90:4919) -> ESBranchCard
 # Branch on player_cards HAS [2143, 2144, 2971], target rnd 18
 # [17] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESStatusShield -> Sea Dragon God's Protection
+# 	[0] ESStatusShield(20:4912) -> Sea Dragon God's Protection
 # 	Voids status ailments for 999 turns
-# 	[1] ESOrbChangeAttack -> Dimension-Curse of the Sacred Waters
+# 	[1] ESOrbChangeAttack(48:4914) -> Dimension-Curse of the Sacred Waters
 # 	Change Random to Heal
-# 	[2] ESBoardChangeAttackBits -> Indigo Ocean Whirlpool
+# 	[2] ESBoardChangeAttackBits(85:4915) -> Indigo Ocean Whirlpool
 # 	Change all orbs to Fire, Water, Wood, Light, Dark, Jammer
 # [18] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESStatusShield -> It's time you stop acting so crazy!
+# 	[0] ESStatusShield(20:4913) -> It's time you stop acting so crazy!
 # 	Voids status ailments for 999 turns
-# 	[1] ESOrbChangeAttack -> Dimension-Curse of the Sacred Waters
+# 	[1] ESOrbChangeAttack(48:4914) -> Dimension-Curse of the Sacred Waters
 # 	Change Random to Heal
-# 	[2] ESBoardChangeAttackBits -> Indigo Ocean Whirlpool
+# 	[2] ESBoardChangeAttackBits(85:4915) -> Indigo Ocean Whirlpool
 # 	Change all orbs to Fire, Water, Wood, Light, Dark, Jammer
-# [19] ESBoardChangeAttackBits -> Indigo Ocean Whirlpool
+# [19] ESBoardChangeAttackBits(85:4915) -> Indigo Ocean Whirlpool
 # Condition: When < 50% hp , one-time use
 # Change all orbs to Fire, Water, Wood, Light, Dark, Jammer
-# [20] ESAttackMultihit -> Sea Dragon God's Strike
+# [20] ESAttackMultihit(15:4918) -> Sea Dragon God's Strike
 # Condition: When < 20% hp
 # Enemy action
-# [21] ESBranchFlag -> ESBranchFlag
+# [21] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 24
-# [22] ESFlagOperation -> ESFlagOperation
+# [22] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [23] ESRandomSpawn -> Blue Life Calm Waves
+# [23] ESRandomSpawn(92:4916) -> Blue Life Calm Waves
 # Condition: When fire, wood, light, dark, poison, mortal poison orbs are on the board
 # Spawn random 3 Water, Heal orbs
-# [24] ESFlagOperation -> ESFlagOperation
+# [24] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b100
-# [25] ESRandomSpawn -> Blue Dust Raging Wave
+# [25] ESRandomSpawn(92:4917) -> Blue Dust Raging Wave
 # Condition: When fire, wood, light, dark, poison, mortal poison orbs are on the board
 # Spawn random 3 Water, Jammer orbs
-# [26] ESResolve -> Dragon Dimension Resolve
+# [26] ESResolve(73:8222) -> Dragon Dimension Resolve
 # Survive attacks with 1 HP when HP > 50%

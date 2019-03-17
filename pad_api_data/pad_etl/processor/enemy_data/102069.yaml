@@ -109,59 +109,70 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESRecoverPlayer -> Hello and welcome!
+# 	[0] ESRecoverPlayer(55:2066) -> Hello and welcome!
 # 	Player recover 100% hp
-# 	[1] ESAbsorbThreshold -> What are you doing to Aamir?!
+# 	[1] ESAbsorbThreshold(87:2067) -> What are you doing to Aamir?!
 # 	Absorb damage >= 500000 damage for 2 turns
-# 	[2] ESStatusShield -> Who are YOU?
+# 	[2] ESStatusShield(20:2068) -> Who are YOU?
 # 	Voids status ailments for 2 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] SkillSet:
 # 	Condition: When < 50% hp , one-time use
-# 	[0] ESAttackUp -> What did you do to my face?
+# 	[0] ESAttackUp(17:2078) -> What did you do to my face?
 # 	Increase damage to 200% for the next 2 turns
-# 	[1] ESPoisonChangeRandom -> What do you think you're doing?!
+# 	[1] ESPoisonChangeRandom(60:2079) -> What do you think you're doing?!
 # 	Change Random 6 to Poison
-# 	[2] ESBindSkill -> Oh no! Aamir's precious face!
+# 	[2] ESBindSkill(14:2080) -> Oh no! Aamir's precious face!
 # 	Bind active skills for 2 turns
 # [7] SkillSet:
 # 	Condition: When < 20% hp
-# 	[0] ESAttackMultihit -> Nobody likes a pest!
+# 	[0] ESAttackMultihit(15:2086) -> Nobody likes a pest!
 # 	Enemy action
-# 	[1] ESAttackMultihit -> Shoo!
+# 	[1] ESAttackMultihit(15:2087) -> Shoo!
 # 	Enemy action
-# 	[2] ESAttackMultihit -> Time for you to go home
+# 	[2] ESAttackMultihit(15:2088) -> Time for you to go home
 # 	Enemy action
 # [8] SkillSet:
 # 	Condition: When < 50% hp
-# 	[0] ESAttackMultihit -> I'd rather play with them...
+# 	[0] ESAttackMultihit(15:2082) -> I'd rather play with them...
 # 	Enemy action
-# 	[1] ESRecoverEnemy -> Heheh!
+# 	[1] ESRecoverEnemy(86:2083) -> Heheh!
 # 	Enemy recover 1% hp
-# 	[2] ESBlind -> Could you quit gawking?
+# 	[2] ESBlind(5:2084) -> Could you quit gawking?
 # 	Blind all orbs on the board
 # [9] SkillSet:
 # 	Condition: 50% chance
-# 	[0] ESColumnSpawnMulti -> You come over here, too
+# 	[0] ESColumnSpawnMulti(77:2074) -> You come over here, too
 # 	Change 1st column to Wood orbs, 6th column to Dark orbs
-# 	[1] ESBindRandomSub -> Don't waste your time with them!
+# 	[1] ESBindRandomSub(65:2075) -> Don't waste your time with them!
 # 	Bind 1 random subs for 2 turns
-# 	[2] ESAttackMultihit -> You're an eyesore!
+# 	[2] ESAttackMultihit(15:2076) -> You're an eyesore!
 # 	Enemy action
 # [10] SkillSet:
-# 	[0] ESAttackMultihit -> How about THIS?
+# 	[0] ESAttackMultihit(15:2070) -> How about THIS?
 # 	Enemy action
-# 	[1] ESRecoverEnemy -> Aamir, you're so cool!
+# 	[1] ESRecoverEnemy(86:2071) -> Aamir, you're so cool!
 # 	Enemy recover 10% hp
-# 	[2] ESPoisonChangeRandom -> Let me help!
+# 	[2] ESPoisonChangeRandom(60:2072) -> Let me help!
 # 	Change Random 1 to Poison

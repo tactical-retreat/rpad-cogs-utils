@@ -234,110 +234,121 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1023 - 1111111111
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESStatusShield -> Enhancement of the 5 Senses
+# 	[0] ESStatusShield(20:9851) -> Enhancement of the 5 Senses
 # 	Voids status ailments for 30 turns
-# 	[1] ESDamageShield -> Strong Body Protected by Snow
+# 	[1] ESDamageShield(74:9852) -> Strong Body Protected by Snow
 # 	Reduce damage from all sources by 95% for 3 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchCounter -> ESBranchCounter
+# [6] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 2, target rnd 12
-# [7] ESSetCounter -> ESSetCounter
+# [7] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [8] ESLeaderSwap -> Forceful Throw
+# [8] ESLeaderSwap(75:9850) -> Forceful Throw
 # Condition: When < 20% hp
 # Leader changes to random sub for 5 turns
-# [9] ESAttackMultihit -> Raging Rebellious Attack
+# [9] ESAttackMultihit(15:9886) -> Raging Rebellious Attack
 # Condition: When < 20% hp
 # Enemy action
-# [10] ESRandomSpawn -> Smash to Pieces
+# [10] ESRandomSpawn(92:9885) -> Smash to Pieces
 # Condition: 30% chance & when Fire, Water, Wood, Light, Dark, Heal, Poison, Mortal Poison orbs are on the board
 # Spawn random 8 Jammer orbs
-# [11] ESAttackMultihit -> Battering
+# [11] ESAttackMultihit(15:9884) -> Battering
 # Enemy action
-# [12] ESSetCounter -> ESSetCounter
+# [12] ESSetCounter(25:15) -> ESSetCounter
 # counter = 0
-# [13] ESLeaderSwap -> Forceful Throw
+# [13] ESLeaderSwap(75:9850) -> Forceful Throw
 # Condition: When < 20% hp
 # Leader changes to random sub for 5 turns
-# [14] ESAttackMultihit -> Raging Rebellious Attack
+# [14] ESAttackMultihit(15:9886) -> Raging Rebellious Attack
 # Condition: When < 20% hp
 # Enemy action
 # [15] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAttackUp -> Rage
+# 	[0] ESAttackUp(17:9854) -> Rage
 # 	Increase damage to 120% for the next 2 turns
-# 	[1] ESDamageShield -> Risky Attack
+# 	[1] ESDamageShield(74:9864) -> Risky Attack
 # 	Reduce damage from all sources by 90% for 3 turns
 # [16] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAttackUp -> Rage
+# 	[0] ESAttackUp(17:9855) -> Rage
 # 	Increase damage to 140% for the next 2 turns
-# 	[1] ESDamageShield -> Risky Attack
+# 	[1] ESDamageShield(74:9865) -> Risky Attack
 # 	Reduce damage from all sources by 80% for 3 turns
 # [17] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAttackUp -> Rage
+# 	[0] ESAttackUp(17:9856) -> Rage
 # 	Increase damage to 160% for the next 2 turns
-# 	[1] ESDamageShield -> Risky Attack
+# 	[1] ESDamageShield(74:9866) -> Risky Attack
 # 	Reduce damage from all sources by 70% for 3 turns
 # [18] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAttackUp -> Rage
+# 	[0] ESAttackUp(17:9857) -> Rage
 # 	Increase damage to 180% for the next 2 turns
-# 	[1] ESDamageShield -> Risky Attack
+# 	[1] ESDamageShield(74:9867) -> Risky Attack
 # 	Reduce damage from all sources by 60% for 3 turns
 # [19] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAttackUp -> Rage
+# 	[0] ESAttackUp(17:9858) -> Rage
 # 	Increase damage to 200% for the next 2 turns
-# 	[1] ESDamageShield -> Risky Attack
+# 	[1] ESDamageShield(74:9868) -> Risky Attack
 # 	Reduce damage from all sources by 50% for 3 turns
 # [20] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAttackUp -> Rage
+# 	[0] ESAttackUp(17:9859) -> Rage
 # 	Increase damage to 220% for the next 2 turns
-# 	[1] ESDamageShield -> Risky Attack
+# 	[1] ESDamageShield(74:9869) -> Risky Attack
 # 	Reduce damage from all sources by 40% for 3 turns
 # [21] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAttackUp -> Rage
+# 	[0] ESAttackUp(17:9860) -> Rage
 # 	Increase damage to 240% for the next 2 turns
-# 	[1] ESDamageShield -> Risky Attack
+# 	[1] ESDamageShield(74:9870) -> Risky Attack
 # 	Reduce damage from all sources by 30% for 3 turns
 # [22] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAttackUp -> Rage
+# 	[0] ESAttackUp(17:9861) -> Rage
 # 	Increase damage to 260% for the next 2 turns
-# 	[1] ESDamageShield -> Risky Attack
+# 	[1] ESDamageShield(74:9871) -> Risky Attack
 # 	Reduce damage from all sources by 20% for 3 turns
 # [23] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAttackUp -> Rage
+# 	[0] ESAttackUp(17:9862) -> Rage
 # 	Increase damage to 280% for the next 2 turns
-# 	[1] ESDamageShield -> Risky Attack
+# 	[1] ESDamageShield(74:9872) -> Risky Attack
 # 	Reduce damage from all sources by 10% for 3 turns
 # [24] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAttackUp -> Intense Rage
+# 	[0] ESAttackUp(17:9863) -> Intense Rage
 # 	Increase damage to 300% for the next 999 turns
-# 	[1] ESCloud -> Ice Dust Smoke
+# 	[1] ESCloud(104:9873) -> Ice Dust Smoke
 # 	5x4 cloud appear for 10 turns at random location
-# [25] ESRandomSpawn -> Smash to Pieces
+# [25] ESRandomSpawn(92:9885) -> Smash to Pieces
 # Condition: 30% chance & when Fire, Water, Wood, Light, Dark, Heal, Poison, Mortal Poison orbs are on the board
 # Spawn random 8 Jammer orbs
-# [26] ESAttackMultihit -> Battering
+# [26] ESAttackMultihit(15:9884) -> Battering
 # Enemy action
-# [27] ESEndPath -> ESEndPath
+# [27] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [28] ESAttributeResist -> Water Halved
+# [28] ESAttributeResist(72:9887) -> Water Halved
 # Reduce damage from Water by 50%

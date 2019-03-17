@@ -128,49 +128,60 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 3 -       11
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESRowSpawnMulti -> Look alive!
+# 	[0] ESRowSpawnMulti(79:8238) -> Look alive!
 # 	Change 1st, 2nd, 4th, 5th row to Fire, Water, Wood, Light, Dark, Heal orbs, 3rd row to Mortal Poison orbs
-# 	[1] ESStatusShield -> Mount Ooe's Soul Guardian
+# 	[1] ESStatusShield(20:7809) -> Mount Ooe's Soul Guardian
 # 	Voids status ailments for 5 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchCounter -> ESBranchCounter
+# [6] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 4, target rnd 13
-# [7] ESSetCounter -> ESSetCounter
+# [7] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [8] ESAttackMultihit -> Matchless Vajra Barrage
+# [8] ESAttackMultihit(15:7818) -> Matchless Vajra Barrage
 # Condition: When < 5% hp
 # Enemy action
-# [9] ESBlindStickyRandom -> Steely Gaze
+# [9] ESBlindStickyRandom(97:7816) -> Steely Gaze
 # Condition: 30% chance when < 33% hp
 # Blind random 1~4 orbs for 1 turns
-# [10] ESStorePower -> Here I go!!
+# [10] ESStorePower(8:7817) -> Here I go!!
 # Condition: When < 33% hp , one-time use
 # Increase damage to 450% for the next attack
-# [11] ESAttackMultihit -> Wham! Bam!
+# [11] ESAttackMultihit(15:7811) -> Wham! Bam!
 # Condition: 50% chance
 # Enemy action
-# [12] ESAttackMultihit -> Take that and that and that!
+# [12] ESAttackMultihit(15:7812) -> Take that and that and that!
 # Enemy action
-# [13] ESBranchFlag -> ESBranchFlag
+# [13] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 8
-# [14] ESFlagOperation -> ESFlagOperation
+# [14] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [15] SkillSet:
-# 	[0] ESVoidShield -> How about that, eh? Still wanna fight?
+# 	[0] ESVoidShield(71:7813) -> How about that, eh? Still wanna fight?
 # 	Void damage >= 10000000 for 99 turns
-# 	[1] ESRecoverEnemy -> War Cycle
+# 	[1] ESRecoverEnemy(86:7814) -> War Cycle
 # 	Enemy recover 15% hp
-# [16] ESEndPath -> ESEndPath
+# [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [17] ESAttributeResist -> Ibaraki Water Halved
+# [17] ESAttributeResist(72:8240) -> Ibaraki Water Halved
 # Reduce damage from Water by 50%

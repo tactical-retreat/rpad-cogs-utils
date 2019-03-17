@@ -208,132 +208,143 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 0 -        0
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESStatusShield -> Oh, welcome to my shop
+# 	[0] ESStatusShield(20:11234) -> Oh, welcome to my shop
 # 	Voids status ailments for 999 turns
-# 	[1] ESDamageShield -> You're the one doing errands huh?
+# 	[1] ESDamageShield(74:11235) -> You're the one doing errands huh?
 # 	Reduce damage from all sources by 75% for 1 turns
-# 	[2] ESVoidShield -> Show me the result of your errand
+# 	[2] ESVoidShield(71:11236) -> Show me the result of your errand
 # 	Void damage >= 50000000 for 999 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchFlag -> ESBranchFlag
+# [6] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 13
-# [7] ESFlagOperation -> ESFlagOperation
+# [7] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 90, target rnd 10
 # [9] SkillSet:
-# 	[0] ESSkyfall -> You're just a small-fry
+# 	[0] ESSkyfall(68:11238) -> You're just a small-fry
 # 	Jammer, Poison skyfall +10% for 99 turns
-# 	[1] ESSpinnersFixed -> Well, try your best!
+# 	[1] ESSpinnersFixed(110:11239) -> Well, try your best!
 # 	Specific orbs change every 1.0s for 99 turns
-# [10] ESSetCounter -> ESSetCounter
+# [10] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
 # [11] SkillSet:
-# 	[0] ESDamageShield -> You're doing quite well
+# 	[0] ESDamageShield(74:11241) -> You're doing quite well
 # 	Reduce damage from all sources by 50% for 99 turns
-# 	[1] ESSkillDelay -> This is fine, right?
+# 	[1] ESSkillDelay(89:11242) -> This is fine, right?
 # 	Delay active skills by 10 turns
-# [12] ESEndPath -> ESEndPath
+# [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [13] ESBranchHP -> ESBranchHP
+# [13] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 10, target rnd 42
-# [14] ESBranchHP -> ESBranchHP
+# [14] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 25, target rnd 36
-# [15] ESBranchHP -> ESBranchHP
+# [15] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 30
-# [16] ESBranchHP -> ESBranchHP
+# [16] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 75, target rnd 24
-# [17] ESOrbLock -> Viscid Dragon
+# [17] ESOrbLock(94:11243) -> Viscid Dragon
 # Condition: 16% chance
 # Lock 15 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [18] ESAttackMultihit -> Snappy
+# [18] ESAttackMultihit(15:11244) -> Snappy
 # Condition: 16% chance
 # Enemy action
-# [19] ESOrbChangeAttack -> Colorful Palette
+# [19] ESOrbChangeAttack(48:11245) -> Colorful Palette
 # Condition: 17% chance
 # Change Random to Dark
-# [20] ESDebuffMovetime -> Cracked Hourglass
+# [20] ESDebuffMovetime(39:11246) -> Cracked Hourglass
 # Condition: 17% chance
 # Movetime -4s for 1 turns
-# [21] ESBombRandomSpawn -> Dangerous Tools
+# [21] ESBombRandomSpawn(102:11247) -> Dangerous Tools
 # Condition: 17% chance
 # Spawn random 5 Bomb orbs
-# [22] ESBindRandom -> Welding
+# [22] ESBindRandom(1:11248) -> Welding
 # Condition: 17% chance
 # Bind 3 random cards for 2 turns
-# [23] ESEndPath -> ESEndPath
+# [23] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [24] ESBranchFlag -> ESBranchFlag
+# [24] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 17
-# [25] ESFlagOperation -> ESFlagOperation
+# [25] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [26] ESBranchCounter -> ESBranchCounter
+# [26] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 1, target rnd 28
 # [27] SkillSet:
-# 	[0] ESGravity -> It huuurts!
+# 	[0] ESGravity(50:11250) -> It huuurts!
 # 	Player -50% HP
-# 	[1] ESRandomSpawn -> Eat this!
+# 	[1] ESRandomSpawn(92:11251) -> Eat this!
 # 	Spawn random 10 Mortal Poison orbs
 # [28] SkillSet:
-# 	[0] ESGravity -> It huuurts!
+# 	[0] ESGravity(50:11250) -> It huuurts!
 # 	Player -50% HP
-# 	[1] ESAbsorbCombo -> How about this?
+# 	[1] ESAbsorbCombo(67:11253) -> How about this?
 # 	Absorb combo <= 7 damage for 99 turns
-# [29] ESEndPath -> ESEndPath
+# [29] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [30] ESBranchFlag -> ESBranchFlag
+# [30] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 17
-# [31] ESFlagOperation -> ESFlagOperation
+# [31] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
-# [32] ESBranchCounter -> ESBranchCounter
+# [32] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 1, target rnd 34
 # [33] SkillSet:
-# 	[0] ESGravity -> It huuurts!
+# 	[0] ESGravity(50:11255) -> It huuurts!
 # 	Player -75% HP
-# 	[1] ESRandomSpawn -> Drown!
+# 	[1] ESRandomSpawn(92:11256) -> Drown!
 # 	Spawn random 20 Mortal Poison orbs
 # [34] SkillSet:
-# 	[0] ESGravity -> It huuurts!
+# 	[0] ESGravity(50:11255) -> It huuurts!
 # 	Player -75% HP
-# 	[1] ESBindAwoken -> You won't have me again
+# 	[1] ESBindAwoken(88:11258) -> You won't have me again
 # 	Bind awoken skills for 3 turns
-# [35] ESEndPath -> ESEndPath
+# [35] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [36] ESBranchFlag -> ESBranchFlag
+# [36] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 16, target rnd 17
-# [37] ESFlagOperation -> ESFlagOperation
+# [37] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11111
-# [38] ESBranchCounter -> ESBranchCounter
+# [38] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 1, target rnd 40
 # [39] SkillSet:
-# 	[0] ESGravity -> It huuurts!
+# 	[0] ESGravity(50:11260) -> It huuurts!
 # 	Player -99% HP
-# 	[1] ESRandomSpawn -> Sink!
+# 	[1] ESRandomSpawn(92:11261) -> Sink!
 # 	Change all orbs to Mortal Poison
 # [40] SkillSet:
-# 	[0] ESGravity -> It huuurts!
+# 	[0] ESGravity(50:11260) -> It huuurts!
 # 	Player -99% HP
-# 	[1] ESAbsorbAttribute -> Is it over already?
+# 	[1] ESAbsorbAttribute(53:11263) -> Is it over already?
 # 	Absorb Light, Dark damage for 99 turns
-# [41] ESEndPath -> ESEndPath
+# [41] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [42] ESBranchFlag -> ESBranchFlag
+# [42] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 32, target rnd 44
-# [43] ESFlagOperation -> ESFlagOperation
+# [43] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111111
-# [44] ESAttackMultihit -> Right, good job!
+# [44] ESAttackMultihit(15:11264) -> Right, good job!
 # Enemy action
-# [45] ESEndPath -> ESEndPath
+# [45] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [46] SkillSet:
 # 	Condition: On death

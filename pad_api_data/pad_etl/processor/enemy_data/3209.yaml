@@ -150,54 +150,65 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [6] SkillSet:
-# 	[0] ESBindAwoken -> Immutable Divine Power
+# 	[0] ESBindAwoken(88:5809) -> Immutable Divine Power
 # 	Bind awoken skills for 2 turns
-# 	[1] ESColumnSpawnMulti -> Windy Realm of Salvation
+# 	[1] ESColumnSpawnMulti(77:5810) -> Windy Realm of Salvation
 # 	Change 2nd, 5th column to Wood orbs, 1st, 6th column to Heal, Jammer orbs, 3rd, 4th column to Fire, Water, Light, Dark orbs
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchFlag -> ESBranchFlag
+# [8] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 13
-# [9] ESFlagOperation -> ESFlagOperation
+# [9] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [10] ESBranchHP -> ESBranchHP
+# [10] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 80, target rnd 12
-# [11] ESBindRandomSub -> Wind God's Lasso
+# [11] ESBindRandomSub(65:5811) -> Wind God's Lasso
 # Bind 1 random subs for 3~5 turns
-# [12] ESBoardChange -> Vajra Wind Blade
+# [12] ESBoardChange(84:5812) -> Vajra Wind Blade
 # Change all orbs to Wood, Heal, Jammer, Poison
-# [13] ESBranchHP -> ESBranchHP
+# [13] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 18
-# [14] ESRowSpawnMulti -> Sky Splitting Jetstream
+# [14] ESRowSpawnMulti(79:5816) -> Sky Splitting Jetstream
 # Condition: When < 20% hp
 # Change 2nd, 4th row to Wood orbs, 1st, 3rd, 5th row to Fire, Water, Light, Dark, Heal orbs
-# [15] ESGravity -> Garuda's Double Palm
+# [15] ESGravity(50:5819) -> Garuda's Double Palm
 # Condition: When < 80% hp , one-time use
 # Player -99% HP
-# [16] ESRowSpawnMulti -> Garuda's Slashing Claws
+# [16] ESRowSpawnMulti(79:5817) -> Garuda's Slashing Claws
 # Condition: 50% chance
 # Change 3rd row to Wood orbs
-# [17] ESColumnSpawnMulti -> Garuda's Slashing Claws
+# [17] ESColumnSpawnMulti(77:5818) -> Garuda's Slashing Claws
 # Change 3rd column to Wood orbs
-# [18] ESBranchFlag -> ESBranchFlag
+# [18] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 14
-# [19] ESFlagOperation -> ESFlagOperation
+# [19] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [20] SkillSet:
-# 	[0] ESBindSkill -> Wave of Compassion
+# 	[0] ESBindSkill(14:5814) -> Wave of Compassion
 # 	Bind active skills for 10 turns
-# 	[1] ESAttackUp -> Formed the hand sign for "Power"
+# 	[1] ESAttackUp(17:5815) -> Formed the hand sign for "Power"
 # 	Increase damage to 200% for the next 999 turns

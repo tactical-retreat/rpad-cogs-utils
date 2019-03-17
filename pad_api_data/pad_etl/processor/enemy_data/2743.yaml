@@ -81,35 +81,46 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 3 -       11
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAbsorbAttribute -> Infernal Dragon Knight's Soul
+# 	[0] ESAbsorbAttribute(53:4833) -> Infernal Dragon Knight's Soul
 # 	Absorb Dark damage for 4 turns
-# 	[1] ESColumnSpawnMulti -> Darkness Scythe
+# 	[1] ESColumnSpawnMulti(77:4834) -> Darkness Scythe
 # 	Change 5th column to Dark orbs
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESAttackMultihit -> Chaos Prominence
+# [6] ESAttackMultihit(15:4838) -> Chaos Prominence
 # Condition: When < 10% hp
 # Enemy action
-# [7] ESBindAttribute -> Abyss Cage
+# [7] ESBindAttribute(2:4839) -> Abyss Cage
 # Condition: One-time use
 # Bind Dark cards for 5~10 turns
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 100, target rnd 11
-# [9] ESOrbChangeAttack -> Erosion
+# [9] ESOrbChangeAttack(48:4837) -> Erosion
 # Change Random to Dark
-# [10] ESEndPath -> ESEndPath
+# [10] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [11] ESAttackMultihit -> Soul Spirit
+# [11] ESAttackMultihit(15:4836) -> Soul Spirit
 # Enemy action
-# [12] ESEndPath -> ESEndPath
+# [12] ESEndPath(36:26) -> ESEndPath
 # end_turn

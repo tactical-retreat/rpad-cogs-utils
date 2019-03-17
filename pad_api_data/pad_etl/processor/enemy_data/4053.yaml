@@ -298,78 +298,89 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESStatusShield -> Protection of the Stars
+# 	[0] ESStatusShield(20:10899) -> Protection of the Stars
 # 	Voids status ailments for 999 turns
-# 	[1] ESAbsorbAttribute -> Scales of Discernment
+# 	[1] ESAbsorbAttribute(53:10916) -> Scales of Discernment
 # 	Absorb Light, Dark damage for 30 turns
-# 	[2] ESSkyfall -> Waking Star - Dark
+# 	[2] ESSkyfall(68:10917) -> Waking Star - Dark
 # 	Light, Dark skyfall +20% for 3 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchHP -> ESBranchHP
+# [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 16
-# [7] ESBranchCounter -> ESBranchCounter
+# [7] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 2, target rnd 13
-# [8] ESSetCounter -> ESSetCounter
+# [8] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [9] ESBindRandom -> Entahaz Masaka
+# [9] ESBindRandom(1:10919) -> Entahaz Masaka
 # Condition: 33% chance
 # Bind 4 random cards for 1~2 turns
-# [10] ESBlind -> Kokzaram
+# [10] ESBlind(5:10920) -> Kokzaram
 # Condition: 33% chance
 # Blind all orbs on the board
-# [11] ESRandomSpawn -> Sanaa Aswad
+# [11] ESRandomSpawn(92:10921) -> Sanaa Aswad
 # Condition: 34% chance & when Fire, Water, Wood, Light, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 6 Dark orbs
-# [12] ESEndPath -> ESEndPath
+# [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [13] ESAttackUp -> Limit of the Sky
+# [13] ESAttackUp(17:10901) -> Limit of the Sky
 # Condition: One-time use
 # Increase damage to 150% for the next 99 turns
-# [14] ESBranchCounter -> ESBranchCounter
+# [14] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 2, target rnd 9
-# [15] ESEndPath -> ESEndPath
+# [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [16] ESBranchHP -> ESBranchHP
+# [16] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 5, target rnd 25
-# [17] ESBranchHP -> ESBranchHP
+# [17] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 10, target rnd 24
-# [18] ESBranchFlag -> ESBranchFlag
+# [18] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 22
-# [19] ESFlagOperation -> ESFlagOperation
+# [19] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [20] SkillSet:
-# 	[0] ESBindAwoken -> Mahatuha
+# 	[0] ESBindAwoken(88:10922) -> Mahatuha
 # 	Bind awoken skills for 3 turns
-# 	[1] ESDebuffMovetime -> Sahwakt
+# 	[1] ESDebuffMovetime(39:10923) -> Sahwakt
 # 	Movetime 50% for 3 turns
-# [21] ESEndPath -> ESEndPath
+# [21] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [22] SkillSet:
-# 	[0] ESAttackMultihit -> Sout Yadoreb
+# 	[0] ESAttackMultihit(15:10925) -> Sout Yadoreb
 # 	Enemy action
-# 	[1] ESBlindStickyRandom -> Yasurek Sitta
+# 	[1] ESBlindStickyRandom(97:10926) -> Yasurek Sitta
 # 	Blind random 6 orbs for 1 turns
-# [23] ESEndPath -> ESEndPath
+# [23] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [24] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESDamageShield -> Protection of the Planets
+# 	[0] ESDamageShield(74:10900) -> Protection of the Planets
 # 	Reduce damage from all sources by 75% for 1 turns
-# 	[1] ESAttackUp -> Limit of the Sky
+# 	[1] ESAttackUp(17:10901) -> Limit of the Sky
 # 	Increase damage to 150% for the next 99 turns
-# [25] ESAttackMultihit -> Shamar Zoful
+# [25] ESAttackMultihit(15:10928) -> Shamar Zoful
 # Enemy action
-# [26] ESEndPath -> ESEndPath
+# [26] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [27] ESResolve -> Resolve
+# [27] ESResolve(73:10898) -> Resolve
 # Survive attacks with 1 HP when HP > 50%

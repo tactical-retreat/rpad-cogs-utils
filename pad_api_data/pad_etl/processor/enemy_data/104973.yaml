@@ -90,47 +90,58 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 4 -      100
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESRandomSpawn -> Babaan! (I'm here!)
+# [6] ESRandomSpawn(92:12064) -> Babaan! (I'm here!)
 # Condition: When fire, water, wood, light, dark, heal, jammer, poison orbs are on the board
 # Spawn random 3 Mortal Poison orbs
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 17
-# [9] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
+# [9] ESBranchRemainingEnemies(120:8595) -> ESBranchRemainingEnemies
 # Branch on remaining enemies = 1, target rnd 13
-# [10] ESAttackMultihit -> Baba!
+# [10] ESAttackMultihit(15:11903) -> Baba!
 # Condition: 40% chance
 # Enemy action
-# [11] ESOrbChangeAttack -> Babaan? (Do you want some tea?)
+# [11] ESOrbChangeAttack(48:11904) -> Babaan? (Do you want some tea?)
 # Condition: 40% chance
 # Change Random to Heal
-# [12] ESEndPath -> ESEndPath
+# [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [13] ESBranchFlag -> ESBranchFlag
+# [13] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 10
-# [14] ESFlagOperation -> ESFlagOperation
+# [14] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [15] ESDebuffRCV -> Babaan... (It's hard for you too)
+# [15] ESDebuffRCV(105:12065) -> Babaan... (It's hard for you too)
 # Rcv 50% for 5 turns
-# [16] ESEndPath -> ESEndPath
+# [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [17] ESLeaderSwap -> Babaan! (Don't cave in)
+# [17] ESLeaderSwap(75:11907) -> Babaan! (Don't cave in)
 # Condition: One-time use
 # Leader changes to random sub for 1 turns
-# [18] ESAttackMultihit -> Loving Slap
+# [18] ESAttackMultihit(15:11906) -> Loving Slap
 # Enemy action
-# [19] ESEndPath -> ESEndPath
+# [19] ESEndPath(36:26) -> ESEndPath
 # end_turn

@@ -137,67 +137,78 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESAbsorbAttribute -> My severed arm still aches...
+# 	[0] ESAbsorbAttribute(53:8036) -> My severed arm still aches...
 # 	Absorb Light, Dark damage for 5 turns
-# 	[1] ESStatusShield -> What do you want with me?
+# 	[1] ESStatusShield(20:8037) -> What do you want with me?
 # 	Voids status ailments for 5 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESAttackMultihit -> Wildflower Bonebreaker
+# [6] ESAttackMultihit(15:8046) -> Wildflower Bonebreaker
 # Condition: When < 5% hp
 # Enemy action
-# [7] ESSetCounter -> ESSetCounter
+# [7] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [8] ESAttackUpStatus -> Crafty
+# [8] ESAttackUpStatus(18:8042) -> Crafty
 # Condition: after being affected by a status effect
 # Increase damage to 200% for the next 999 turns
-# [9] ESBranchCounter -> ESBranchCounter
+# [9] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 5, target rnd 14
-# [10] ESSkillDelay -> Helmet Splitter
+# [10] ESSkillDelay(89:8043) -> Helmet Splitter
 # Condition: 33% chance
 # Delay active skills by 1 turns
-# [11] ESOrbLock -> Forward Kick
+# [11] ESOrbLock(94:8044) -> Forward Kick
 # Condition: 50% chance
 # Lock 6 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [12] ESAttackMultihit -> Strike
+# [12] ESAttackMultihit(15:8045) -> Strike
 # Enemy action
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [14] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESDebuffRCV -> Don't mess with a demon!
+# 	[0] ESDebuffRCV(105:8039) -> Don't mess with a demon!
 # 	Rcv 50% for 7 turns
-# 	[1] ESDamageShield -> Steel Demonskin
+# 	[1] ESDamageShield(74:8040) -> Steel Demonskin
 # 	Reduce damage from all sources by 75% for 7 turns
-# [15] ESBranchCounter -> ESBranchCounter
+# [15] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 12, target rnd 20
-# [16] ESSkillDelay -> Helmet Splitter
+# [16] ESSkillDelay(89:8043) -> Helmet Splitter
 # Condition: 33% chance
 # Delay active skills by 1 turns
-# [17] ESOrbLock -> Forward Kick
+# [17] ESOrbLock(94:8044) -> Forward Kick
 # Condition: 50% chance
 # Lock 6 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [18] ESAttackMultihit -> Strike
+# [18] ESAttackMultihit(15:8045) -> Strike
 # Enemy action
-# [19] ESEndPath -> ESEndPath
+# [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [20] ESBranchFlag -> ESBranchFlag
+# [20] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 16
-# [21] ESFlagOperation -> ESFlagOperation
+# [21] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [22] SkillSet:
-# 	[0] ESBindAwoken -> You gonna keep dancing?
+# 	[0] ESBindAwoken(88:8047) -> You gonna keep dancing?
 # 	Bind awoken skills for 1 turns
-# 	[1] ESAttackMultihit -> Fall here!
+# 	[1] ESAttackMultihit(15:8048) -> Fall here!
 # 	Enemy action
-# [23] ESEndPath -> ESEndPath
+# [23] ESEndPath(36:26) -> ESEndPath
 # end_turn

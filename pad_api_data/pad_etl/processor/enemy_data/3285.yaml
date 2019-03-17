@@ -162,73 +162,84 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 15 -     1111
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 10
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESBranchCard -> ESBranchCard
+# [6] ESBranchCard(90:5971) -> ESBranchCard
 # Branch on player_cards HAS [2744], target rnd 8
 # [7] SkillSet:
-# 	[0] ESGravity -> Uwahahaha! Respect my authority!
+# 	[0] ESGravity(50:5955) -> Uwahahaha! Respect my authority!
 # 	Player -99% HP
-# 	[1] ESStatusShield -> I'm the baddest of the bad!
+# 	[1] ESStatusShield(20:5956) -> I'm the baddest of the bad!
 # 	Voids status ailments for 5 turns
 # [8] SkillSet:
-# 	[0] ESGravity -> Uwahahaha! Respect my authority!
+# 	[0] ESGravity(50:5955) -> Uwahahaha! Respect my authority!
 # 	Player -99% HP
-# 	[1] ESStatusShield -> Sure, I'll let you go...if you win!
+# 	[1] ESStatusShield(20:5972) -> Sure, I'll let you go...if you win!
 # 	Voids status ailments for 5 turns
-# [9] ESEndPath -> ESEndPath
+# [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [10] ESBranchHP -> ESBranchHP
+# [10] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 20
-# [11] ESBranchFlag -> ESBranchFlag
+# [11] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 17
-# [12] ESFlagOperation -> ESFlagOperation
+# [12] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [13] ESBranchCard -> ESBranchCard
+# [13] ESBranchCard(90:5958) -> ESBranchCard
 # Branch on player_cards HAS [1849], target rnd 15
-# [14] ESRowSpawnMulti -> Scythe of Divine Judgment
+# [14] ESRowSpawnMulti(79:5960) -> Scythe of Divine Judgment
 # Change 1st row to Jammer orbs
-# [15] ESInactivity -> Oh, hello Father♪
+# [15] ESInactivity(66:5959) -> Oh, hello Father♪
 # Do nothing
-# [16] ESEndPath -> ESEndPath
+# [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [17] ESRowSpawnMulti -> Scythe of Divine Judgment
+# [17] ESRowSpawnMulti(79:5960) -> Scythe of Divine Judgment
 # Condition: 60% chance
 # Change 1st row to Jammer orbs
-# [18] ESMortalPoisonChangeRandom -> Dead Gift
+# [18] ESMortalPoisonChangeRandom(61:5961) -> Dead Gift
 # Change Random 2 to Mortal Poison
-# [19] ESEndPath -> ESEndPath
+# [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [20] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESInactivity -> You've got some nerve! I will end you!
+# 	[0] ESInactivity(66:5962) -> You've got some nerve! I will end you!
 # 	Do nothing
-# 	[1] ESGravity -> Death Sentence
+# 	[1] ESGravity(50:5963) -> Death Sentence
 # 	Player -99% HP
-# [21] ESMortalPoisonChangeRandom -> 3
+# [21] ESMortalPoisonChangeRandom(61:5965) -> 3
 # Condition: One-time use
 # Change Random 3 to Mortal Poison
-# [22] ESMortalPoisonChangeRandom -> 2
+# [22] ESMortalPoisonChangeRandom(61:5966) -> 2
 # Condition: One-time use
 # Change Random 3 to Mortal Poison
-# [23] ESMortalPoisonChangeRandom -> 1
+# [23] ESMortalPoisonChangeRandom(61:5967) -> 1
 # Condition: One-time use
 # Change Random 3 to Mortal Poison
-# [24] ESAttackMultihit -> Catastrophe
+# [24] ESAttackMultihit(15:5968) -> Catastrophe
 # Enemy action
-# [25] ESEndPath -> ESEndPath
+# [25] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [26] SkillSet:
 # 	Condition: On death
-# 	[0] ESRandomSpawn -> I-I lost...*sniff*
+# 	[0] ESRandomSpawn(92:5970) -> I-I lost...*sniff*
 # 	Spawn random 3 Poison orbs

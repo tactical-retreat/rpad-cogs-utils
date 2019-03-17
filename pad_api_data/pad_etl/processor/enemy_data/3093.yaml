@@ -101,40 +101,51 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 0 -        0
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESAbsorbCombo -> Green Whirlwind's Dance
+# 	[0] ESAbsorbCombo(67:5224) -> Green Whirlwind's Dance
 # 	Absorb combo <= 6 damage for 1 turns
-# 	[1] ESBoardChangeAttackBits -> Feather Rain
+# 	[1] ESBoardChangeAttackBits(85:5225) -> Feather Rain
 # 	Change all orbs to Fire, Water, Wood, Light, Dark, Jammer
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchHP -> ESBranchHP
+# [6] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 100, target rnd 16
-# [7] ESBranchFlag -> ESBranchFlag
+# [7] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 10
-# [8] ESFlagOperation -> ESFlagOperation
+# [8] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [9] ESRowSpawnMulti -> Wind Spiral
+# [9] ESRowSpawnMulti(79:5226) -> Wind Spiral
 # Change 1st row to Wood orbs
-# [10] ESBranchFlag -> ESBranchFlag
+# [10] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 13
-# [11] ESFlagOperation -> ESFlagOperation
+# [11] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [12] ESAbsorbAttribute -> Fire-Extinguishing Wind
+# [12] ESAbsorbAttribute(53:5227) -> Fire-Extinguishing Wind
 # Absorb Fire damage for 3 turns
-# [13] ESOrbChangeAttack -> Lightning
+# [13] ESOrbChangeAttack(48:5228) -> Lightning
 # Change Jammer to Light
-# [14] ESBranchHP -> ESBranchHP
+# [14] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 16
-# [15] ESOrbChangeAttack -> Gale
+# [15] ESOrbChangeAttack(48:5229) -> Gale
 # Change Random to Jammer
-# [16] ESBoardChangeAttackBits -> Feather Rain
+# [16] ESBoardChangeAttackBits(85:5225) -> Feather Rain
 # Change all orbs to Fire, Water, Wood, Light, Dark, Jammer

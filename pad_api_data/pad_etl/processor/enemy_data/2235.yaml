@@ -146,70 +146,81 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESStatusShield -> War Deity's Ambition
+# 	[0] ESStatusShield(20:3987) -> War Deity's Ambition
 # 	Voids status ailments for 999 turns
-# 	[1] ESRowSpawnMulti -> Rapid Scalding
+# 	[1] ESRowSpawnMulti(79:4002) -> Rapid Scalding
 # 	Change 3rd row to Jammer orbs
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] SkillSet:
 # 	Condition: When < 10% hp , one-time use
-# 	[0] ESRecoverEnemy -> Blazing Spirit
+# 	[0] ESRecoverEnemy(86:4004) -> Blazing Spirit
 # 	Enemy recover 40% hp
-# 	[1] ESVoidShield -> Divine Body's Shining Flames
+# 	[1] ESVoidShield(71:4003) -> Divine Body's Shining Flames
 # 	Void damage >= 1000000 for 10 turns
-# [7] ESVoidShield -> Divine Body's Shining Flames
+# [7] ESVoidShield(71:4003) -> Divine Body's Shining Flames
 # Condition: When < 50% hp , one-time use
 # Void damage >= 1000000 for 10 turns
 # [8] SkillSet:
 # 	Condition: When < 10% hp
-# 	[0] ESRecoverEnemy -> Blazing Spirit
+# 	[0] ESRecoverEnemy(86:4004) -> Blazing Spirit
 # 	Enemy recover 40% hp
-# 	[1] ESColumnSpawnMulti -> Wall Eruption
+# 	[1] ESColumnSpawnMulti(77:3999) -> Wall Eruption
 # 	Change 1st, 3rd, 4th, 6th column to Fire orbs
-# [9] ESBranchFlag -> ESBranchFlag
+# [9] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 15
-# [10] ESFlagOperation -> ESFlagOperation
+# [10] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [11] ESBindAttribute -> Revenge Full of Hatred
+# [11] ESBindAttribute(2:4001) -> Revenge Full of Hatred
 # Condition: When < 70% hp
 # Bind Water cards for 5 turns
-# [12] ESBindAttack -> Trembling Lance
+# [12] ESBindAttack(63:3994) -> Trembling Lance
 # Condition: 20% chance
 # Bind 4 subs for 1 turns
 # [13] SkillSet:
 # 	Condition: 50% chance
-# 	[0] ESBlind -> Cinder Storm
+# 	[0] ESBlind(62:3991) -> Cinder Storm
 # 	Blind all orbs on the board
-# 	[1] ESOrbChangeAttack -> Hidden Ember
+# 	[1] ESOrbChangeAttack(48:3992) -> Hidden Ember
 # 	Change Random to Fire
-# [14] ESJammerChangeRandom -> Wall Burst
+# [14] ESJammerChangeRandom(13:3990) -> Wall Burst
 # Change Random 3 to Jammer
-# [15] ESBranchFlag -> ESBranchFlag
+# [15] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 20
-# [16] ESFlagOperation -> ESFlagOperation
+# [16] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [17] ESOrbChangeAttack -> Rubble Incineration
+# [17] ESOrbChangeAttack(48:3995) -> Rubble Incineration
 # Change Jammer to Fire
-# [18] ESOrbLock -> Constant Grimness
+# [18] ESOrbLock(94:3996) -> Constant Grimness
 # Lock all Fire, Light orbs
-# [19] ESAttackMultihit -> Thrust Combination
+# [19] ESAttackMultihit(15:3997) -> Thrust Combination
 # Enemy action
-# [20] ESFlagOperation -> ESFlagOperation
+# [20] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b110
 # [21] SkillSet:
-# 	[0] ESAbsorbAttribute -> Mars Core
+# 	[0] ESAbsorbAttribute(53:3998) -> Mars Core
 # 	Absorb Fire damage for 1 turns
-# 	[1] ESColumnSpawnMulti -> Wall Eruption
+# 	[1] ESColumnSpawnMulti(77:3999) -> Wall Eruption
 # 	Change 1st, 3rd, 4th, 6th column to Fire orbs
-# [22] ESResolve -> ****
+# [22] ESResolve(73:3989) -> ****
 # Survive attacks with 1 HP when HP > 50%

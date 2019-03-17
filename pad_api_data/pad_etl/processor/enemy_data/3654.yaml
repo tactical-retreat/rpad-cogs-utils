@@ -153,55 +153,66 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESGravity -> Dash Attack
+# [6] ESGravity(50:7241) -> Dash Attack
 # Player -99% HP
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESAttackUp -> Rage
+# [8] ESAttackUp(17:7242) -> Rage
 # Condition: When < 50% hp , one-time use
 # Increase damage to 145% for the next 10 turns
-# [9] ESBindAttack -> Great Thunderbolt
+# [9] ESBindAttack(63:7243) -> Great Thunderbolt
 # Condition: When < 10% hp
 # Bind 6 random for 5 turns
-# [10] ESBranchHP -> ESBranchHP
+# [10] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 16
-# [11] ESBindAttack -> Thunderbolt
+# [11] ESBindAttack(63:7245) -> Thunderbolt
 # Condition: 25% chance
 # Bind own leader for 1 turns
-# [12] ESBindAttack -> Thunderbolt
+# [12] ESBindAttack(63:7246) -> Thunderbolt
 # Condition: 25% chance
 # Bind friend leader for 1 turns
-# [13] ESBindAttack -> Thunderbolt
+# [13] ESBindAttack(63:7247) -> Thunderbolt
 # Condition: 25% chance
 # Bind 2 subs for 1 turns
-# [14] ESAttackMultihit -> Back Kick
+# [14] ESAttackMultihit(15:7244) -> Back Kick
 # Condition: 25% chance
 # Enemy action
-# [15] ESEndPath -> ESEndPath
+# [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [16] ESBindAttack -> Thunderbolt
+# [16] ESBindAttack(63:7248) -> Thunderbolt
 # Condition: 25% chance when < 50% hp
 # Bind own leader for 2 turns
-# [17] ESBindAttack -> Thunderbolt
+# [17] ESBindAttack(63:7249) -> Thunderbolt
 # Condition: 25% chance when < 50% hp
 # Bind friend leader for 2 turns
-# [18] ESBindAttack -> Thunderbolt
+# [18] ESBindAttack(63:7250) -> Thunderbolt
 # Condition: 25% chance when < 50% hp
 # Bind 2 subs for 2 turns
-# [19] ESAttackMultihit -> Back Kick
+# [19] ESAttackMultihit(15:7244) -> Back Kick
 # Condition: 25% chance
 # Enemy action
-# [20] ESEndPath -> ESEndPath
+# [20] ESEndPath(36:26) -> ESEndPath
 # end_turn

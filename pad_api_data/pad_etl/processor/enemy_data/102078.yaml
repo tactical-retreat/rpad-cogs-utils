@@ -132,58 +132,69 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 0 -        0
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESStatusShield -> Dance of the Goddess
+# 	[0] ESStatusShield(20:2404) -> Dance of the Goddess
 # 	Voids status ailments for 999 turns
-# 	[1] ESDamageShield -> Chakra Released
+# 	[1] ESDamageShield(74:8257) -> Chakra Released
 # 	Reduce damage from all sources by 75% for 2 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESAttackMultihit -> Ushnisha-Kamala
+# [6] ESAttackMultihit(15:2417) -> Ushnisha-Kamala
 # Condition: When < 5% hp
 # Enemy action
-# [7] ESBranchHP -> ESBranchHP
+# [7] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 65, target rnd 15
-# [8] ESBranchCounter -> ESBranchCounter
+# [8] ESBranchCounter(31:21) -> ESBranchCounter
 # Branch on counter = 2, target rnd 16
-# [9] ESSetCounter -> ESSetCounter
+# [9] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
 # [10] SkillSet:
 # 	Condition: 20% chance when < 65% hp
-# 	[0] ESBlind -> Nirmanakaya
+# 	[0] ESBlind(62:2422) -> Nirmanakaya
 # 	Blind all orbs on the board
-# 	[1] ESBoardChangeAttackBits -> Dharmakaya
+# 	[1] ESBoardChangeAttackBits(85:2423) -> Dharmakaya
 # 	Change all orbs to Fire, Water, Wood, Light, Dark, Heal
 # [11] SkillSet:
 # 	Condition: 20% chance when < 65% hp
-# 	[0] ESBoardChangeAttackBits -> Dharmakaya
+# 	[0] ESBoardChangeAttackBits(85:2423) -> Dharmakaya
 # 	Change all orbs to Fire, Water, Wood, Light, Dark, Heal
-# 	[1] ESSkillDelay -> Sambhogakaya
+# 	[1] ESSkillDelay(89:2424) -> Sambhogakaya
 # 	Delay active skills by 1 turns
 # [12] SkillSet:
 # 	Condition: 20% chance when < 65% hp
-# 	[0] ESSkillDelay -> Sambhogakaya
+# 	[0] ESSkillDelay(89:2424) -> Sambhogakaya
 # 	Delay active skills by 1 turns
-# 	[1] ESBlind -> Nirmanakaya
+# 	[1] ESBlind(62:2422) -> Nirmanakaya
 # 	Blind all orbs on the board
-# [13] ESBindSkill -> Kalam
+# [13] ESBindSkill(14:2395) -> Kalam
 # Condition: 20% chance
 # Bind active skills for 10 turns
-# [14] ESEndPath -> ESEndPath
+# [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [15] ESAttackMultihit -> Mahasukha-Kamala
+# [15] ESAttackMultihit(15:2418) -> Mahasukha-Kamala
 # Enemy action
-# [16] ESBranchFlag -> ESBranchFlag
+# [16] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 9
-# [17] ESFlagOperation -> ESFlagOperation
+# [17] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [18] ESVoidShield -> Dark Times
+# [18] ESVoidShield(71:8259) -> Dark Times
 # Void damage >= 10000000 for 999 turns

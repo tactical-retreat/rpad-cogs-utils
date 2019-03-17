@@ -99,46 +99,57 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESBoardChangeAttackBits -> I go shopping occasionally
+# [6] ESBoardChangeAttackBits(85:10576) -> I go shopping occasionally
 # Change all orbs to Water, Light, Heal
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 14
-# [9] ESBranchHP -> ESBranchHP
+# [9] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 10, target rnd 18
-# [10] ESBlindStickyFixed -> Crossfire
+# [10] ESBlindStickyFixed(98:10577) -> Crossfire
 # Condition: One-time use
 # Blind orbs in specific positions for 1 turns
-# [11] ESBlindStickyFixed -> Crossfire
+# [11] ESBlindStickyFixed(98:10578) -> Crossfire
 # Condition: One-time use
 # Blind orbs in specific positions for 1 turns
-# [12] ESOrbChangeAttack -> Slider
+# [12] ESOrbChangeAttack(48:10608) -> Slider
 # Condition: 50% chance
 # Change Random to Water
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [14] ESBranchFlag -> ESBranchFlag
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 9
-# [15] ESFlagOperation -> ESFlagOperation
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [16] ESDebuffMovetime -> A short temper is a disadvantage
+# [16] ESDebuffMovetime(39:10579) -> A short temper is a disadvantage
 # Movetime -1s for 5 turns
-# [17] ESEndPath -> ESEndPath
+# [17] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [18] ESRowSpawnMulti -> Crescent Moon
+# [18] ESRowSpawnMulti(79:10580) -> Crescent Moon
 # Change 5th row to Light orbs
-# [19] ESEndPath -> ESEndPath
+# [19] ESEndPath(36:26) -> ESEndPath
 # end_turn

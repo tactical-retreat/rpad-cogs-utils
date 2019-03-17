@@ -112,52 +112,63 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESStatusShield -> Do you honestly think
+# [6] ESStatusShield(20:12236) -> Do you honestly think
 # you can defeat me?
 # Voids status ailments for 999 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 14
-# [9] ESBranchHP -> ESBranchHP
+# [9] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 51, target rnd 11
-# [10] ESGravity -> You are a nuisance, so die!
+# [10] ESGravity(50:12237) -> You are a nuisance, so die!
 # Condition: One-time use
 # Player -99% HP
-# [11] ESOrbChangeAttack -> How does that feel?
+# [11] ESOrbChangeAttack(48:12199) -> How does that feel?
 # Condition: 50% chance
 # Change Random to Dark
-# [12] ESAttackMultihit -> I have no use for you,
+# [12] ESAttackMultihit(15:12200) -> I have no use for you,
 # Condition: 50% chance
 # Enemy action
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [14] ESBranchFlag -> ESBranchFlag
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 18
-# [15] ESFlagOperation -> ESFlagOperation
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [16] ESBindAwoken -> Rule Breaker
+# [16] ESBindAwoken(88:12202) -> Rule Breaker
 # Bind awoken skills for 1 turns
-# [17] ESEndPath -> ESEndPath
+# [17] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [18] ESFlagOperation -> ESFlagOperation
+# [18] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [19] SkillSet:
-# 	[0] ESInactivity -> Are you surprised?
+# 	[0] ESInactivity(66:12203) -> Are you surprised?
 # 	Do nothing
-# 	[1] ESAttackMultihit -> This is my Noble Phantasm, Rule Breaker.
+# 	[1] ESAttackMultihit(15:12204) -> This is my Noble Phantasm, Rule Breaker.
 # 	Enemy action
-# [20] ESEndPath -> ESEndPath
+# [20] ESEndPath(36:26) -> ESEndPath
 # end_turn

@@ -234,48 +234,59 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESRecoverPlayer -> Gleam of the Phoenix
+# 	[0] ESRecoverPlayer(55:8027) -> Gleam of the Phoenix
 # 	Player recover 100% hp
-# 	[1] ESAbsorbThreshold -> Heavenly Phantom Stance
+# 	[1] ESAbsorbThreshold(87:8028) -> Heavenly Phantom Stance
 # 	Absorb damage >= 2000000 damage for 5 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchHP -> ESBranchHP
+# [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 16
-# [7] ESBranchCounter -> ESBranchCounter
+# [7] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 5, target rnd 16
-# [8] ESSetCounter -> ESSetCounter
+# [8] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [9] ESBranchHP -> ESBranchHP
+# [9] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 100, target rnd 14
-# [10] ESDamageShield -> Immortal Guard
+# [10] ESDamageShield(74:8033) -> Immortal Guard
 # Reduce damage from all sources by 75% for 4 turns
-# [11] ESGravity -> Caaaaw!!
+# [11] ESGravity(50:8034) -> Caaaaw!!
 # Condition: One-time use
 # Player -99% HP
-# [12] ESOrbChangeAttack -> Immortal Flame
+# [12] ESOrbChangeAttack(48:8035) -> Immortal Flame
 # Change Random to Heal
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [14] ESAttackMultihit -> Eternal Flare
+# [14] ESAttackMultihit(15:8032) -> Eternal Flare
 # Enemy action
-# [15] ESEndPath -> ESEndPath
+# [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [16] ESSetCounter -> ESSetCounter
+# [16] ESSetCounter(25:15) -> ESSetCounter
 # counter = 0
 # [17] SkillSet:
-# 	[0] ESRecoverEnemy -> Flames of Reincarnation
+# 	[0] ESRecoverEnemy(7:8030) -> Flames of Reincarnation
 # 	Enemy recover 100% hp
-# 	[1] ESBoardChangeAttackBits -> Immortal Eruption
+# 	[1] ESBoardChangeAttackBits(85:8031) -> Immortal Eruption
 # 	Change all orbs to Heal
-# [18] ESEndPath -> ESEndPath
+# [18] ESEndPath(36:26) -> ESEndPath
 # end_turn

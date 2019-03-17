@@ -135,44 +135,55 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 4 -      100
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 2 -       10
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESBindRandom -> Evil Eye
+# [6] ESBindRandom(1:3464) -> Evil Eye
 # Bind 1 random cards for 3 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESAttackUp -> Battle Soul
+# [8] ESAttackUp(17:3430) -> Battle Soul
 # Increase damage to 200% for the next 999 turns
-# [9] ESBranchHP -> ESBranchHP
+# [9] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 15
-# [10] ESAttackMultihit -> Fierce Charge
+# [10] ESAttackMultihit(15:3431) -> Fierce Charge
 # Condition: When < 10% hp
 # Enemy action
-# [11] ESAttackMultihit -> Paw Shake
+# [11] ESAttackMultihit(15:3434) -> Paw Shake
 # Condition: One-time use
 # Enemy action
-# [12] ESRandomSpawn -> Cold Horn
+# [12] ESRandomSpawn(92:3465) -> Cold Horn
 # Condition: One-time use & when Fire, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 4 Water orbs
-# [13] ESAttackMultihit -> Other Hand
+# [13] ESAttackMultihit(15:3435) -> Other Hand
 # Enemy action
-# [14] ESEndPath -> ESEndPath
+# [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [15] ESBranchFlag -> ESBranchFlag
+# [15] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 10
-# [16] ESFlagOperation -> ESFlagOperation
+# [16] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [17] ESSkillDelay -> Big Howl
+# [17] ESSkillDelay(89:3433) -> Big Howl
 # Delay active skills by 1~2 turns
-# [18] ESEndPath -> ESEndPath
+# [18] ESEndPath(36:26) -> ESEndPath
 # end_turn

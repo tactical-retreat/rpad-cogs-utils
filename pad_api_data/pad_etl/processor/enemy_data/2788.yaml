@@ -85,34 +85,45 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 3 -       11
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:697) -> ESPreemptive
 # Enable preempt if level 3
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 3, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESBlind -> Let us see if you can
+# [6] ESBlind(5:3916) -> Let us see if you can
 # do any better!
 # Blind all orbs on the board
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESAttackMultihit -> Implosion
+# [8] ESAttackMultihit(15:3917) -> Implosion
 # Condition: One-time use
 # Enemy action
-# [9] ESAttackMultihit -> Implosion
+# [9] ESAttackMultihit(15:3918) -> Implosion
 # Condition: One-time use
 # Enemy action
-# [10] ESAttackMultihit -> Implosion
+# [10] ESAttackMultihit(15:3919) -> Implosion
 # Enemy action
-# [11] ESEndPath -> ESEndPath
+# [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [12] SkillSet:
 # 	Condition: On death
-# 	[0] ESInactivity -> No... It's not over yet!
+# 	[0] ESInactivity(66:3920) -> No... It's not over yet!
 # 	Do nothing

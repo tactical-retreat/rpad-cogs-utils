@@ -119,46 +119,57 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 3 -       11
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 10
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESBranchCard -> ESBranchCard
+# [6] ESBranchCard(90:4731) -> ESBranchCard
 # Branch on player_cards HAS [650, 651, 2948], target rnd 8
-# [7] ESRecoverPlayer -> I am very happy!
+# [7] ESRecoverPlayer(55:4725) -> I am very happy!
 # Player recover 100% hp
-# [8] ESRecoverPlayer -> Please make me happy ♪
+# [8] ESRecoverPlayer(55:4732) -> Please make me happy ♪
 # Player recover 100% hp
-# [9] ESEndPath -> ESEndPath
+# [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [10] ESBranchHP -> ESBranchHP
+# [10] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 17
-# [11] ESBranchHP -> ESBranchHP
+# [11] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 70, target rnd 14
-# [12] ESDebuffMovetime -> Cake Cutting
+# [12] ESDebuffMovetime(39:4727) -> Cake Cutting
 # Condition: One-time use
 # Movetime -2s for 1 turns
-# [13] ESOrbLock -> Bouquet Toss
+# [13] ESOrbLock(94:4726) -> Bouquet Toss
 # Lock 1 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [14] ESBranchFlag -> ESBranchFlag
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 12
-# [15] ESFlagOperation -> ESFlagOperation
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [16] ESDamageShield -> White Flower
+# [16] ESDamageShield(74:4729) -> White Flower
 # Reduce damage from all sources by 50% for 3 turns
-# [17] ESBranchFlag -> ESBranchFlag
+# [17] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 20
-# [18] ESFlagOperation -> ESFlagOperation
+# [18] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [19] ESBindRandomSub -> Hug of Happiness
+# [19] ESBindRandomSub(65:4730) -> Hug of Happiness
 # Bind 1 random subs for 5 turns
-# [20] ESAttackMultihit -> Happy Genesis
+# [20] ESAttackMultihit(15:4728) -> Happy Genesis
 # Enemy action

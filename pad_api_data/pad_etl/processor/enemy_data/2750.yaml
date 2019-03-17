@@ -155,67 +155,78 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 7 -      111
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAbsorbCombo -> Celestial Prelude
+# 	[0] ESAbsorbCombo(67:4089) -> Celestial Prelude
 # 	Absorb combo <= 7 damage for 3 turns
-# 	[1] ESStatusShield -> I'd be glad if you could listen quietly
+# 	[1] ESStatusShield(20:4090) -> I'd be glad if you could listen quietly
 # 	Voids status ailments for 3 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESGravity -> Glorious Postlude
+# [6] ESGravity(50:4106) -> Glorious Postlude
 # Condition: When < 10% hp
 # Player -500% HP
-# [7] ESBranchFlag -> ESBranchFlag
+# [7] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 12
-# [8] ESRowSpawnMulti -> Holy Tree's Staff
+# [8] ESRowSpawnMulti(79:4092) -> Holy Tree's Staff
 # Condition: One-time use
 # Change 1st, 3rd, 5th row to Light orbs, 2nd, 4th row to Wood orbs
-# [9] ESBoardChangeAttackBits -> Six Strings' Timbre
+# [9] ESBoardChangeAttackBits(85:4093) -> Six Strings' Timbre
 # Condition: One-time use
 # Change all orbs to Fire, Water, Wood, Light, Dark, Heal
-# [10] ESFlagOperation -> ESFlagOperation
+# [10] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [11] SkillSet:
-# 	[0] ESOrbChangeAttack -> Last Movement - Flash
+# 	[0] ESOrbChangeAttack(48:4094) -> Last Movement - Flash
 # 	Change Random to Light
-# 	[1] ESDamageShield -> The show is over...
+# 	[1] ESDamageShield(74:4095) -> The show is over...
 # 	Reduce damage from all sources by 50% for 3 turns
-# [12] ESBranchFlag -> ESBranchFlag
+# [12] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 17
-# [13] ESFlagOperation -> ESFlagOperation
+# [13] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [14] ESBindTyping -> Blinding Chain of God's Ruin
+# [14] ESBindTyping(3:4098) -> Blinding Chain of God's Ruin
 # Bind God cards for 5 turns
-# [15] ESBindAttribute -> Blinding Chain of Devil's Ruin
+# [15] ESBindAttribute(2:4099) -> Blinding Chain of Devil's Ruin
 # Bind Dark cards for 5 turns
-# [16] ESBindTarget -> Blinding Chain of Good & Evil's Ruin
+# [16] ESBindTarget(54:4100) -> Blinding Chain of Good & Evil's Ruin
 # Bind 1 both leaders for 5 turns
-# [17] ESBranchFlag -> ESBranchFlag
+# [17] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 20
-# [18] ESFlagOperation -> ESFlagOperation
+# [18] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
-# [19] ESBoardChangeAttackBits -> Hyacinth's Lamentation
+# [19] ESBoardChangeAttackBits(85:4101) -> Hyacinth's Lamentation
 # Change all orbs to Fire, Wood, Light, Jammer
-# [20] ESFlagOperation -> ESFlagOperation
+# [20] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b1000
-# [21] ESOrbChangeAttack -> Sunlight Gift
+# [21] ESOrbChangeAttack(48:4102) -> Sunlight Gift
 # Change Jammer to Heal
-# [22] ESOrbChangeAttack -> Sunlight Glow
+# [22] ESOrbChangeAttack(48:4103) -> Sunlight Glow
 # Change Wood to Fire
-# [23] ESOrbChangeAttack -> Sunlight Tears
+# [23] ESOrbChangeAttack(48:4104) -> Sunlight Tears
 # Change Fire to Water
-# [24] ESOrbLock -> Sunlight Flash
+# [24] ESOrbLock(94:4105) -> Sunlight Flash
 # Lock all Light orbs
-# [25] ESBoardChangeAttackBits -> Hyacinth's Lamentation
+# [25] ESBoardChangeAttackBits(85:4101) -> Hyacinth's Lamentation
 # Change all orbs to Fire, Wood, Light, Jammer
-# [26] ESResolve -> Apollo Resolve
+# [26] ESResolve(73:4137) -> Apollo Resolve
 # Survive attacks with 1 HP when HP > 50%

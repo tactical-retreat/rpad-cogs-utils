@@ -90,36 +90,47 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 4 -      100
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:355) -> ESPreemptive
 # Enable preempt if level 5
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 5, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESSkyfall -> Grand Core
+# [6] ESSkyfall(68:3741) -> Grand Core
 # Jammer skyfall +15% for 10 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESAttackMultihit -> Limit Burst
+# [8] ESAttackMultihit(15:3241) -> Limit Burst
 # Condition: When < 10% hp
 # Enemy action
-# [9] ESSkillDelay -> Absorption
+# [9] ESSkillDelay(89:3240) -> Absorption
 # Condition: When < 80% hp , one-time use
 # Delay active skills by 1 turns
-# [10] ESBindAttack -> Root Chain
+# [10] ESBindAttack(63:3743) -> Root Chain
 # Condition: 50% chance
 # Bind 1 random for 3 turns
-# [11] ESColumnSpawnMulti -> Splash Hell Gale
+# [11] ESColumnSpawnMulti(77:3742) -> Splash Hell Gale
 # Change 3rd, 4th column to Water, Wood orbs
-# [12] ESEndPath -> ESEndPath
+# [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [13] SkillSet:
 # 	Condition: On death
-# 	[0] ESRandomSpawn -> Mechanical Toxin
+# 	[0] ESRandomSpawn(92:3739) -> Mechanical Toxin
 # 	Spawn random 6 Mortal Poison orbs

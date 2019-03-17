@@ -99,57 +99,68 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESAttackMultihit -> Move, move, move---!!
+# 	[0] ESAttackMultihit(15:9491) -> Move, move, move---!!
 # 	Enemy action
-# 	[1] ESAbsorbThreshold -> Demon Wheelie
+# 	[1] ESAbsorbThreshold(87:9492) -> Demon Wheelie
 # 	Absorb damage >= 6000000 damage for 5 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchHP -> ESBranchHP
+# [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 40, target rnd 10
-# [7] ESAttackMultihit -> Deadly Drive!
+# [7] ESAttackMultihit(15:9496) -> Deadly Drive!
 # Condition: 50% chance when < 75% hp
 # Enemy action
-# [8] ESPoisonChangeRandom -> Take this!
+# [8] ESPoisonChangeRandom(60:9498) -> Take this!
 # Condition: 50% chance
 # Change Random 7 to Poison
-# [9] ESEndPath -> ESEndPath
+# [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [10] ESOrbChangeAttack -> Not going easy anymore!
+# [10] ESOrbChangeAttack(48:9495) -> Not going easy anymore!
 # Condition: When < 40% hp , one-time use
 # Change Poison to Mortal Poison
-# [11] ESAttackUp -> Not going easy anymore!
+# [11] ESAttackUp(17:9494) -> Not going easy anymore!
 # Condition: When < 40% hp , one-time use
 # Increase damage to 150% for the next 99 turns
-# [12] ESBranchCounter -> ESBranchCounter
+# [12] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 1, target rnd 16
-# [13] ESSetCounter -> ESSetCounter
+# [13] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [14] ESBoardChange -> Sink into a sea of poison!!
+# [14] ESBoardChange(84:9497) -> Sink into a sea of poison!!
 # Change all orbs to Mortal Poison
-# [15] ESEndPath -> ESEndPath
+# [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [16] ESBranchCounter -> ESBranchCounter
+# [16] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 3, target rnd 20
-# [17] ESSetCounter -> ESSetCounter
+# [17] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [18] ESAttackMultihit -> Deadly Drive!
+# [18] ESAttackMultihit(15:9496) -> Deadly Drive!
 # Condition: When < 75% hp
 # Enemy action
-# [19] ESEndPath -> ESEndPath
+# [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [20] ESSetCounter -> ESSetCounter
+# [20] ESSetCounter(25:15) -> ESSetCounter
 # counter = 0
-# [21] ESBoardChange -> Sink into a sea of poison!!
+# [21] ESBoardChange(84:9497) -> Sink into a sea of poison!!
 # Change all orbs to Mortal Poison
-# [22] ESEndPath -> ESEndPath
+# [22] ESEndPath(36:26) -> ESEndPath
 # end_turn

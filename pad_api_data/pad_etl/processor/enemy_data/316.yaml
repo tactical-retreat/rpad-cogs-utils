@@ -45,27 +45,38 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 3 -       11
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:2605) -> ESPreemptive
 # Enable preempt if level 7
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 7, target rnd 7
-# [3] ESBranchLevel -> ESBranchLevel
+# [3] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 1, target rnd 4
-# [4] ESInactivity -> Wait and See
+# [4] ESInactivity(16:157) -> Wait and See
 # Condition: One-time use
 # Do nothing
-# [5] ESAttackUp -> Overdrive
+# [5] ESAttackUp(17:158) -> Overdrive
 # Condition: When < 40% hp
 # Increase damage to 150% for the next 15 turns
-# [6] ESEndPath -> ESEndPath
+# [6] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [7] ESGravity -> High Pressure
+# [7] ESGravity(50:2598) -> High Pressure
 # Condition: One-time use
 # Player -99% HP
-# [8] ESRandomSpawn -> Jotunn Flame
+# [8] ESRandomSpawn(92:2599) -> Jotunn Flame
 # Condition: When water, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board
 # Spawn random 5 Fire orbs
-# [9] ESEndPath -> ESEndPath
+# [9] ESEndPath(36:26) -> ESEndPath
 # end_turn

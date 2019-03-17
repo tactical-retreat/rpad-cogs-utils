@@ -81,28 +81,39 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 0 -        0
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESBranchHP -> ESBranchHP
+# [1] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 5
-# [2] ESInactivity -> ***** (Saint Seiya)
+# [2] ESInactivity(66:1201) -> ***** (Saint Seiya)
 # Condition: One-time use
 # Do nothing
-# [3] ESBindAttack -> ***** (Saint Seiya)
+# [3] ESBindAttack(63:1202) -> ***** (Saint Seiya)
 # Bind 1 random for 2 turns
-# [4] ESEndPath -> ESEndPath
+# [4] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [5] ESBranchFlag -> ESBranchFlag
+# [5] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 9
-# [6] ESFlagOperation -> ESFlagOperation
+# [6] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [7] ESInactivity -> ***** (Saint Seiya)
+# [7] ESInactivity(66:1203) -> ***** (Saint Seiya)
 # Condition: When < 50% hp
 # Do nothing
-# [8] ESEndPath -> ESEndPath
+# [8] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [9] ESFlagOperation -> ESFlagOperation
+# [9] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b1
-# [10] ESBindAttack -> ***** (Saint Seiya)
+# [10] ESBindAttack(63:1204) -> ***** (Saint Seiya)
 # Condition: When < 50% hp
 # Bind 1 random for 4 turns

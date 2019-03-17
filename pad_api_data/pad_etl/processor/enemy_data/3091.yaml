@@ -189,57 +189,68 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 0 -        0
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESDamageShield -> Burning Heat Mantle
+# 	[0] ESDamageShield(74:5211) -> Burning Heat Mantle
 # 	Reduce damage from all sources by 75% for 4 turns
-# 	[1] ESGravity -> Blazing Tail
+# 	[1] ESGravity(50:5212) -> Blazing Tail
 # 	Player -99% HP
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchFlag -> ESBranchFlag
+# [6] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 12
-# [7] ESFlagOperation -> ESFlagOperation
+# [7] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 23
-# [9] ESBranchHP -> ESBranchHP
+# [9] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 80, target rnd 24
-# [10] ESRandomSpawn -> Powerful Blaze
+# [10] ESRandomSpawn(92:5213) -> Powerful Blaze
 # Condition: When water, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board
 # Spawn random 6 Fire orbs
-# [11] ESEndPath -> ESEndPath
+# [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [12] ESBranchFlag -> ESBranchFlag
+# [12] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 18
-# [13] ESFlagOperation -> ESFlagOperation
+# [13] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [14] ESBranchHP -> ESBranchHP
+# [14] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 23
-# [15] ESBranchHP -> ESBranchHP
+# [15] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 24
-# [16] ESAttackMultihit -> Hellfire Claw
+# [16] ESAttackMultihit(15:5214) -> Hellfire Claw
 # Enemy action
-# [17] ESEndPath -> ESEndPath
+# [17] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [18] ESBranchFlag -> ESBranchFlag
+# [18] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 23
-# [19] ESFlagOperation -> ESFlagOperation
+# [19] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
-# [20] ESBranchHP -> ESBranchHP
+# [20] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 23
-# [21] ESGravity -> Blazing Tail
+# [21] ESGravity(50:5212) -> Blazing Tail
 # Player -99% HP
-# [22] ESEndPath -> ESEndPath
+# [22] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [23] ESRowSpawnMulti -> Inferno Blast
+# [23] ESRowSpawnMulti(79:5216) -> Inferno Blast
 # Change 1st row to Fire orbs
-# [24] ESOrbChangeAttack -> Flame Breath
+# [24] ESOrbChangeAttack(48:5215) -> Flame Breath
 # Change Random to Fire

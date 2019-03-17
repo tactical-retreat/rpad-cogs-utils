@@ -262,115 +262,126 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [6] SkillSet:
-# 	[0] ESStatusShield -> This wishful soul looks tasty
+# 	[0] ESStatusShield(20:4354) -> This wishful soul looks tasty
 # 	Voids status ailments for 5 turns
-# 	[1] ESDamageShield -> Dividing Damage
+# 	[1] ESDamageShield(74:4353) -> Dividing Damage
 # 	Reduce damage from all sources by 50% for 5 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [8] SkillSet:
 # 	Condition: When < 20% hp , one-time use
-# 	[0] ESRecoverEnemy -> Overcoming Will
+# 	[0] ESRecoverEnemy(86:4381) -> Overcoming Will
 # 	Enemy recover 29% hp
-# 	[1] ESAttackUp -> Dragonbound's Wrath
+# 	[1] ESAttackUp(17:4222) -> Dragonbound's Wrath
 # 	Increase damage to 200% for the next 999 turns
 # [9] SkillSet:
 # 	Condition: When < 20% hp
-# 	[0] ESAttackMultihit -> Twin Prominence
+# 	[0] ESAttackMultihit(15:4374) -> Twin Prominence
 # 	Enemy action
-# 	[1] ESBoardChangeAttackBits -> Sunrise Zone
+# 	[1] ESBoardChangeAttackBits(85:4359) -> Sunrise Zone
 # 	Change all orbs to Fire, Light, Dark, Heal
-# [10] ESBranchHP -> ESBranchHP
+# [10] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 26
-# [11] ESBranchFlag -> ESBranchFlag
+# [11] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 16
-# [12] ESFlagOperation -> ESFlagOperation
+# [12] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [13] ESBranchCard -> ESBranchCard
+# [13] ESBranchCard(90:4356) -> ESBranchCard
 # Branch on player_cards HAS [1946, 1947, 2744], target rnd 15
 # [14] SkillSet:
-# 	[0] ESAbsorbCombo -> Auroral Chains
+# 	[0] ESAbsorbCombo(67:4358) -> Auroral Chains
 # 	Absorb combo <= 5 damage for 1 turns
-# 	[1] ESBoardChangeAttackBits -> Sunrise Zone
+# 	[1] ESBoardChangeAttackBits(85:4359) -> Sunrise Zone
 # 	Change all orbs to Fire, Light, Dark, Heal
 # [15] SkillSet:
-# 	[0] ESAbsorbCombo -> Hurry! Let me eat your soul!
+# 	[0] ESAbsorbCombo(67:4357) -> Hurry! Let me eat your soul!
 # 	Absorb combo <= 5 damage for 1 turns
-# 	[1] ESBoardChangeAttackBits -> Sunrise Zone
+# 	[1] ESBoardChangeAttackBits(85:4359) -> Sunrise Zone
 # 	Change all orbs to Fire, Light, Dark, Heal
-# [16] ESBranchFlag -> ESBranchFlag
+# [16] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 20
-# [17] ESFlagOperation -> ESFlagOperation
+# [17] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [18] ESBranchHP -> ESBranchHP
+# [18] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 75, target rnd 14
-# [19] ESFlagOperation -> ESFlagOperation
+# [19] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b100
-# [20] ESRandomSpawn -> Dawn Guidance
+# [20] ESRandomSpawn(92:4362) -> Dawn Guidance
 # Condition: 30% chance when < 75% hp & when Water, Wood, Light, Dark, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 6 Heal orbs
 # [21] SkillSet:
 # 	Condition: 20% chance
-# 	[0] ESColumnSpawnMulti -> Thunder Roar
+# 	[0] ESColumnSpawnMulti(77:4363) -> Thunder Roar
 # 	Change 2nd column to Light orbs
-# 	[1] ESColumnSpawnMulti -> Heat Roar
+# 	[1] ESColumnSpawnMulti(77:4364) -> Heat Roar
 # 	Change 4th column to Fire orbs
 # [22] SkillSet:
 # 	Condition: 15% chance
-# 	[0] ESColumnSpawnMulti -> Thunder Roar
+# 	[0] ESColumnSpawnMulti(77:4363) -> Thunder Roar
 # 	Change 2nd column to Light orbs
-# 	[1] ESAttackMultihit -> Prominence Bullet
+# 	[1] ESAttackMultihit(15:4366) -> Prominence Bullet
 # 	Enemy action
 # [23] SkillSet:
 # 	Condition: 15% chance
-# 	[0] ESAttackMultihit -> Prominence Breath
+# 	[0] ESAttackMultihit(15:4365) -> Prominence Breath
 # 	Enemy action
-# 	[1] ESColumnSpawnMulti -> Heat Roar
+# 	[1] ESColumnSpawnMulti(77:4364) -> Heat Roar
 # 	Change 4th column to Fire orbs
 # [24] SkillSet:
 # 	Condition: 20% chance
-# 	[0] ESAttackMultihit -> Prominence Breath
+# 	[0] ESAttackMultihit(15:4365) -> Prominence Breath
 # 	Enemy action
-# 	[1] ESAttackMultihit -> Prominence Bullet
+# 	[1] ESAttackMultihit(15:4366) -> Prominence Bullet
 # 	Enemy action
-# [25] ESEndPath -> ESEndPath
+# [25] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [26] ESBranchFlag -> ESBranchFlag
+# [26] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 29
-# [27] ESFlagOperation -> ESFlagOperation
+# [27] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
 # [28] SkillSet:
-# 	[0] ESAbsorbAttribute -> Purifying Thunder Dragon's Trial
+# 	[0] ESAbsorbAttribute(53:4371) -> Purifying Thunder Dragon's Trial
 # 	Absorb Fire damage for 1 turns
-# 	[1] ESBindAttack -> Rising Sun's Blazing Whirlpool
+# 	[1] ESBindAttack(63:4372) -> Rising Sun's Blazing Whirlpool
 # 	Bind 4 random for 1 turns
 # [29] SkillSet:
 # 	Condition: 34% chance
-# 	[0] ESAttackMultihit -> Twin Prominence
+# 	[0] ESAttackMultihit(15:4374) -> Twin Prominence
 # 	Enemy action
-# 	[1] ESOrbLock -> Double-headed Gaze
+# 	[1] ESOrbLock(94:4376) -> Double-headed Gaze
 # 	Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [30] SkillSet:
 # 	Condition: 50% chance
-# 	[0] ESColumnSpawnMulti -> Red Heat's Purifying Thunder
+# 	[0] ESColumnSpawnMulti(77:4375) -> Red Heat's Purifying Thunder
 # 	Change 2nd column to Light orbs, 4th column to Fire orbs
-# 	[1] ESOrbLock -> Double-headed Gaze
+# 	[1] ESOrbLock(94:4376) -> Double-headed Gaze
 # 	Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [31] ESRandomSpawn -> Dawn Guidance
+# [31] ESRandomSpawn(92:4362) -> Dawn Guidance
 # Condition: When < 75% hp & when Water, Wood, Light, Dark, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 6 Heal orbs
-# [32] ESAttributeResist -> Water Halven
+# [32] ESAttributeResist(72:4383) -> Water Halven
 # Reduce damage from Water by 50%

@@ -126,47 +126,58 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 2 -       10
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESGravity -> You're not getting through!
+# [4] ESGravity(50:2826) -> You're not getting through!
 # Player -99% HP
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchHP -> ESBranchHP
+# [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 30, target rnd 14
-# [7] ESBranchHP -> ESBranchHP
+# [7] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 70, target rnd 11
-# [8] ESColumnSpawnMulti -> Gale Shot
+# [8] ESColumnSpawnMulti(77:2827) -> Gale Shot
 # Condition: One-time use
 # Change 3rd column to Wood orbs
-# [9] ESRandomSpawn -> Poison Arrow
+# [9] ESRandomSpawn(92:2828) -> Poison Arrow
 # Condition: When fire, water, wood, light, dark, heal, jammer, mortal poison orbs are on the board
 # Spawn random 2 Poison orbs
-# [10] ESEndPath -> ESEndPath
+# [10] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [11] ESBranchFlag -> ESBranchFlag
+# [11] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 8
-# [12] ESFlagOperation -> ESFlagOperation
+# [12] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [13] ESBindSkill -> Ancient Dragon Tribe's Dark Curse
+# [13] ESBindSkill(14:2829) -> Ancient Dragon Tribe's Dark Curse
 # Bind active skills for 6 turns
-# [14] ESBranchFlag -> ESBranchFlag
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 18
-# [15] ESFlagOperation -> ESFlagOperation
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [16] ESInactivity -> Draco Summon-Swift Dragon Emperor
+# [16] ESInactivity(66:2830) -> Draco Summon-Swift Dragon Emperor
 # Do nothing
-# [17] ESEndPath -> ESEndPath
+# [17] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [18] ESAttackMultihit -> World-Wrecking Windstorm
+# [18] ESAttackMultihit(15:2831) -> World-Wrecking Windstorm
 # Enemy action
-# [19] ESEndPath -> ESEndPath
+# [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [20] ESAttributeResist -> Green Sonia Water Halved
+# [20] ESAttributeResist(72:12098) -> Green Sonia Water Halved
 # Reduce damage from Water by 50%

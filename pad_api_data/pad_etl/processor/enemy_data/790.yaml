@@ -116,25 +116,36 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 3 -       11
+# [51] 0 -        0
+# [52] 0 -        0
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:355) -> ESPreemptive
 # Enable preempt if level 5
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(33:23) -> ESBranchLevel
 # Branch on level < 4, target rnd 9
-# [3] ESBranchFlag -> ESBranchFlag
+# [3] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [4] ESFlagOperation -> ESFlagOperation
+# [4] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [5] ESJammerChangeRandom -> Chaos Eye
+# [5] ESJammerChangeRandom(13:503) -> Chaos Eye
 # Change Random 2 to Jammer
-# [6] ESBranchHP -> ESBranchHP
+# [6] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 30, target rnd 8
-# [7] ESBindRandom -> Pupil of the Evil Eye
+# [7] ESBindRandom(1:504) -> Pupil of the Evil Eye
 # Condition: One-time use
 # Bind 2 random cards for 4 turns
-# [8] ESAttackMultihit -> Snake Bite
+# [8] ESAttackMultihit(15:512) -> Snake Bite
 # Condition: 70% chance
 # Enemy action
-# [9] ESEndPath -> ESEndPath
+# [9] ESEndPath(36:26) -> ESEndPath
 # end_turn

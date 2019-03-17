@@ -247,92 +247,103 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 63 -   111111
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESStatusShield -> Antivirus
+# 	[0] ESStatusShield(20:2969) -> Antivirus
 # 	Voids status ailments for 999 turns
-# 	[1] ESDamageShield -> Gigantic Body
+# 	[1] ESDamageShield(74:2970) -> Gigantic Body
 # 	Reduce damage from all sources by 75% for 7 turns
-# 	[2] ESVoidShield -> Energy Calm
+# 	[2] ESVoidShield(71:2995) -> Energy Calm
 # 	Void damage >= 6000000 for 99 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESRandomSpawn -> The huge body started to move
+# [6] ESRandomSpawn(92:2972) -> The huge body started to move
 # Condition: One-time use & when Fire, Water, Wood, Light, Dark, Heal, Poison, Mortal Poison orbs are on the board
 # Spawn random 3 Jammer orbs
-# [7] ESStorePower -> Raising its arm
+# [7] ESStorePower(8:2973) -> Raising its arm
 # Condition: One-time use
 # Increase damage to 690% for the next attack
-# [8] ESRandomSpawn -> Rearranging its posture
+# [8] ESRandomSpawn(92:2974) -> Rearranging its posture
 # Condition: One-time use & when Fire, Water, Wood, Light, Dark, Heal, Poison, Mortal Poison orbs are on the board
 # Spawn random 3 Jammer orbs
-# [9] ESStorePower -> Raising its arm again
+# [9] ESStorePower(8:2975) -> Raising its arm again
 # Condition: One-time use
 # Increase damage to 690% for the next attack
-# [10] ESBlind -> Opening its mouth
+# [10] ESBlind(5:2976) -> Opening its mouth
 # Condition: One-time use
 # Blind all orbs on the board
-# [11] ESBranchHP -> ESBranchHP
+# [11] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 21
-# [12] ESBranchFlag -> ESBranchFlag
+# [12] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 20
-# [13] ESFlagOperation -> ESFlagOperation
+# [13] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [14] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESColumnSpawnMulti -> Gaia Beam
+# 	[0] ESColumnSpawnMulti(77:2977) -> Gaia Beam
 # 	Change 3rd, 4th column to Wood orbs
-# 	[1] ESAbsorbAttribute -> Inhale
+# 	[1] ESAbsorbAttribute(53:2985) -> Inhale
 # 	Absorb Fire, Water damage for 3 turns
 # [15] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESColumnSpawnMulti -> Gaia Beam
+# 	[0] ESColumnSpawnMulti(77:2977) -> Gaia Beam
 # 	Change 3rd, 4th column to Wood orbs
-# 	[1] ESAbsorbAttribute -> Inhale
+# 	[1] ESAbsorbAttribute(53:2986) -> Inhale
 # 	Absorb Water, Wood damage for 3 turns
 # [16] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESColumnSpawnMulti -> Gaia Beam
+# 	[0] ESColumnSpawnMulti(77:2977) -> Gaia Beam
 # 	Change 3rd, 4th column to Wood orbs
-# 	[1] ESAbsorbAttribute -> Inhale
+# 	[1] ESAbsorbAttribute(53:2987) -> Inhale
 # 	Absorb Wood, Light damage for 3 turns
 # [17] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESColumnSpawnMulti -> Gaia Beam
+# 	[0] ESColumnSpawnMulti(77:2977) -> Gaia Beam
 # 	Change 3rd, 4th column to Wood orbs
-# 	[1] ESAbsorbAttribute -> Inhale
+# 	[1] ESAbsorbAttribute(53:2988) -> Inhale
 # 	Absorb Light, Dark damage for 3 turns
 # [18] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESColumnSpawnMulti -> Gaia Beam
+# 	[0] ESColumnSpawnMulti(77:2977) -> Gaia Beam
 # 	Change 3rd, 4th column to Wood orbs
-# 	[1] ESAbsorbAttribute -> Inhale
+# 	[1] ESAbsorbAttribute(53:2989) -> Inhale
 # 	Absorb Fire, Dark damage for 3 turns
-# [19] ESEndPath -> ESEndPath
+# [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [20] ESSkillDelay -> Skill Break
+# [20] ESSkillDelay(89:2979) -> Skill Break
 # Delay active skills by 3~5 turns
-# [21] ESGravity -> Grand Ray
+# [21] ESGravity(50:2978) -> Grand Ray
 # Condition: One-time use
 # Player -500% HP
-# [22] ESGravity -> Grand Ray
+# [22] ESGravity(50:2984) -> Grand Ray
 # Condition: When < 20% hp
 # Player -500% HP
-# [23] ESRecoverEnemy -> Cell Mending
+# [23] ESRecoverEnemy(86:2982) -> Cell Mending
 # Condition: 50% chance when < 30% hp
 # Enemy recover 10% hp
-# [24] ESBindAttack -> Great Vine
+# [24] ESBindAttack(63:2983) -> Great Vine
 # Condition: When < 30% hp
 # Bind 1 random for 5 turns
-# [25] ESOrbLock -> Hardened Sign
+# [25] ESOrbLock(94:2980) -> Hardened Sign
 # Condition: 50% chance
 # Lock 6 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [26] ESBlind -> Earth's Mantle Press
+# [26] ESBlind(62:2981) -> Earth's Mantle Press
 # Blind all orbs on the board

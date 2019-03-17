@@ -117,54 +117,65 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 0 -        0
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESNone -> ESNone
+# [1] ESNone(0:0) -> ESNone
 # nothing
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 5, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchHP -> ESBranchHP
+# [4] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 75, target rnd 10
-# [5] ESAttackUp -> ***** (Dragon Ball)
+# [5] ESAttackUp(17:1116) -> ***** (Dragon Ball)
 # Condition: When < 50% hp
 # Increase damage to 200% for the next 999 turns
-# [6] ESBranchHP -> ESBranchHP
+# [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 17
-# [7] ESBlind -> ***** (Dragon Ball)
+# [7] ESBlind(62:1117) -> ***** (Dragon Ball)
 # Condition: When < 50% hp , one-time use
 # Blind all orbs on the board
-# [8] ESOrbChangeAttack -> ***** (Dragon Ball)
+# [8] ESOrbChangeAttack(48:1113) -> ***** (Dragon Ball)
 # Condition: 50% chance
 # Change Random to Jammer
-# [9] ESEndPath -> ESEndPath
+# [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [10] ESBranchFlag -> ESBranchFlag
+# [10] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 13
-# [11] ESFlagOperation -> ESFlagOperation
+# [11] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [12] ESStatusShield -> ***** (Dragon Ball)
+# [12] ESStatusShield(20:1114) -> ***** (Dragon Ball)
 # Condition: When < 75% hp
 # Voids status ailments for 999 turns
-# [13] ESBranchFlag -> ESBranchFlag
+# [13] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 5
-# [14] ESFlagOperation -> ESFlagOperation
+# [14] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [15] ESAttackMultihit -> ***** (Dragon Ball)
+# [15] ESAttackMultihit(15:1115) -> ***** (Dragon Ball)
 # Condition: When < 75% hp
 # Enemy action
-# [16] ESEndPath -> ESEndPath
+# [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [17] ESBranchFlag -> ESBranchFlag
+# [17] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 20
-# [18] ESFlagOperation -> ESFlagOperation
+# [18] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [19] ESInactivity -> ***** (Dragon Ball)
+# [19] ESInactivity(66:1118) -> ***** (Dragon Ball)
 # Condition: When < 30% hp
 # Do nothing
-# [20] ESFlagOperation -> ESFlagOperation
+# [20] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b100
-# [21] ESAttackMultihit -> ***** (Dragon Ball)
+# [21] ESAttackMultihit(15:1119) -> ***** (Dragon Ball)
 # Condition: When < 30% hp
 # Enemy action

@@ -290,72 +290,83 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 5 -      101
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESBombFixedSpawn -> Jumping Strike Attack
+# [6] ESBombFixedSpawn(103:8913) -> Jumping Strike Attack
 # Spawn Bomb orbs in the specified positions
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 40, target rnd 18
-# [9] ESBranchCounter -> ESBranchCounter
+# [9] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 5, target rnd 16
-# [10] ESSetCounter -> ESSetCounter
+# [10] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [11] ESBombRandomSpawn -> Foreleg Slam
+# [11] ESBombRandomSpawn(102:8914) -> Foreleg Slam
 # Condition: 30% chance
 # Spawn random 3 Bomb orbs
-# [12] ESBombFixedSpawn -> Charge
+# [12] ESBombFixedSpawn(103:8915) -> Charge
 # Condition: 15% chance
 # Spawn Bomb orbs in the specified positions
-# [13] ESBombFixedSpawn -> Slime-Coated Headbutt
+# [13] ESBombFixedSpawn(103:8916) -> Slime-Coated Headbutt
 # Condition: 15% chance
 # Spawn Bomb orbs in the specified positions
-# [14] ESAttackMultihit -> Spinning Tail Attack
+# [14] ESAttackMultihit(15:8917) -> Spinning Tail Attack
 # Condition: 40% chance
 # Enemy action
-# [15] ESEndPath -> ESEndPath
+# [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [16] ESSetCounter -> ESSetCounter
+# [16] ESSetCounter(25:15) -> ESSetCounter
 # counter = 0
-# [17] ESInactivity -> Spreading Slime
+# [17] ESInactivity(66:8918) -> Spreading Slime
 # Do nothing
-# [18] ESBranchFlag -> ESBranchFlag
+# [18] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 22
-# [19] ESFlagOperation -> ESFlagOperation
+# [19] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [20] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESBindRandomSub -> Roar
+# 	[0] ESBindRandomSub(65:8919) -> Roar
 # 	Bind 1 random subs for 1 turns
-# 	[1] ESAttackUp -> Anger
+# 	[1] ESAttackUp(17:8920) -> Anger
 # 	Increase damage to 126% for the next 10 turns
-# [21] ESEndPath -> ESEndPath
+# [21] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [22] ESBoardChangeAttackBits -> Slime Mold Explosion
+# [22] ESBoardChangeAttackBits(85:8926) -> Slime Mold Explosion
 # Condition: One-time use
 # Change all orbs to Fire, Jammer
-# [23] ESRandomSpawn -> Foreleg Slam
+# [23] ESRandomSpawn(92:8922) -> Foreleg Slam
 # Condition: 30% chance & when Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 4 Fire orbs
-# [24] ESBlindStickyFixed -> Charge
+# [24] ESBlindStickyFixed(98:8923) -> Charge
 # Condition: 20% chance
 # Blind orbs in specific positions for 1 turns
-# [25] ESColumnSpawnMulti -> Jumping Strike Attack
+# [25] ESColumnSpawnMulti(77:8924) -> Jumping Strike Attack
 # Condition: 20% chance
 # Change 2nd, 5th column to Fire orbs
-# [26] ESAttackMultihit -> Spinning Tail Attack
+# [26] ESAttackMultihit(15:8925) -> Spinning Tail Attack
 # Condition: 30% chance
 # Enemy action
-# [27] ESEndPath -> ESEndPath
+# [27] ESEndPath(36:26) -> ESEndPath
 # end_turn

@@ -101,114 +101,125 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 7 -      111
+# [54] 7 -      111
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESStatusShield -> Barrier Charm
+# 	[0] ESStatusShield(20:7030) -> Barrier Charm
 # 	Voids status ailments for 999 turns
-# 	[1] ESAbsorbThreshold -> Heavenly Mirror Scales
+# 	[1] ESAbsorbThreshold(87:7031) -> Heavenly Mirror Scales
 # 	Absorb damage >= 6000000 damage for 999 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] SkillSet:
 # 	Condition: When < 10% hp
-# 	[0] ESBindAwoken -> Light Mist
+# 	[0] ESBindAwoken(88:7060) -> Light Mist
 # 	Bind awoken skills for 1 turns
-# 	[1] ESBoardChangeAttackBits -> Light
+# 	[1] ESBoardChangeAttackBits(85:7061) -> Light
 # 	Change all orbs to Light
-# [7] ESBranchFlag -> ESBranchFlag
+# [7] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 16
-# [8] ESFlagOperation -> ESFlagOperation
+# [8] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [9] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAbsorbAttribute -> Thousand-Seal Prison
+# 	[0] ESAbsorbAttribute(53:7037) -> Thousand-Seal Prison
 # 	Absorb Dark damage for 2 turns
-# 	[1] ESBindAttack -> Silk Chains
+# 	[1] ESBindAttack(63:7039) -> Silk Chains
 # 	Bind 1 random for 2 turns
 # [10] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAbsorbAttribute -> Thousand-Seal Prison
+# 	[0] ESAbsorbAttribute(53:7036) -> Thousand-Seal Prison
 # 	Absorb Light damage for 2 turns
-# 	[1] ESBindAttack -> Silk Chains
+# 	[1] ESBindAttack(63:7039) -> Silk Chains
 # 	Bind 1 random for 2 turns
 # [11] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAbsorbAttribute -> Thousand-Seal Prison
+# 	[0] ESAbsorbAttribute(53:7035) -> Thousand-Seal Prison
 # 	Absorb Wood damage for 2 turns
-# 	[1] ESBindAttack -> Silk Chains
+# 	[1] ESBindAttack(63:7039) -> Silk Chains
 # 	Bind 1 random for 2 turns
 # [12] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAbsorbAttribute -> Thousand-Seal Prison
+# 	[0] ESAbsorbAttribute(53:7034) -> Thousand-Seal Prison
 # 	Absorb Water damage for 2 turns
-# 	[1] ESBindAttack -> Silk Chains
+# 	[1] ESBindAttack(63:7039) -> Silk Chains
 # 	Bind 1 random for 2 turns
 # [13] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAbsorbAttribute -> Thousand-Seal Prison
+# 	[0] ESAbsorbAttribute(53:7033) -> Thousand-Seal Prison
 # 	Absorb Fire damage for 2 turns
-# 	[1] ESBindAttack -> Silk Chains
+# 	[1] ESBindAttack(63:7039) -> Silk Chains
 # 	Bind 1 random for 2 turns
 # [14] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESDebuffRCV -> Disturbed Forest
+# 	[0] ESDebuffRCV(105:7038) -> Disturbed Forest
 # 	Rcv 50% for 2 turns
-# 	[1] ESBindAttack -> Silk Chains
+# 	[1] ESBindAttack(63:7039) -> Silk Chains
 # 	Bind 1 random for 2 turns
-# [15] ESEndPath -> ESEndPath
+# [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [16] ESBranchFlag -> ESBranchFlag
+# [16] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 25
-# [17] ESFlagOperation -> ESFlagOperation
+# [17] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [18] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESOrbLock -> Fire Beacon
+# 	[0] ESOrbLock(94:7046) -> Fire Beacon
 # 	Lock all Fire orbs
-# 	[1] ESAttackMultihit -> Glistening Sword
+# 	[1] ESAttackMultihit(15:7051) -> Glistening Sword
 # 	Enemy action
 # [19] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESOrbLock -> Water Beacon
+# 	[0] ESOrbLock(94:7047) -> Water Beacon
 # 	Lock all Water orbs
-# 	[1] ESAttackMultihit -> Glistening Sword
+# 	[1] ESAttackMultihit(15:7051) -> Glistening Sword
 # 	Enemy action
 # [20] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESOrbLock -> Wood Beacon
+# 	[0] ESOrbLock(94:7048) -> Wood Beacon
 # 	Lock all Wood orbs
-# 	[1] ESAttackMultihit -> Glistening Sword
+# 	[1] ESAttackMultihit(15:7051) -> Glistening Sword
 # 	Enemy action
 # [21] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESOrbLock -> Light Beacon
+# 	[0] ESOrbLock(94:7049) -> Light Beacon
 # 	Lock all Light orbs
-# 	[1] ESAttackMultihit -> Glistening Sword
+# 	[1] ESAttackMultihit(15:7051) -> Glistening Sword
 # 	Enemy action
 # [22] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESOrbLock -> Dark Beacon
+# 	[0] ESOrbLock(94:7050) -> Dark Beacon
 # 	Lock all Dark orbs
-# 	[1] ESAttackMultihit -> Glistening Sword
+# 	[1] ESAttackMultihit(15:7051) -> Glistening Sword
 # 	Enemy action
 # [23] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESRandomSpawn -> Sky Dragon's Tears
+# 	[0] ESRandomSpawn(92:7052) -> Sky Dragon's Tears
 # 	Spawn random 3 Heal orbs
-# 	[1] ESGravity -> Vulnerable Scent
+# 	[1] ESGravity(50:7053) -> Vulnerable Scent
 # 	Player -99% HP
-# [24] ESEndPath -> ESEndPath
+# [24] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [25] ESFlagOperation -> ESFlagOperation
+# [25] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b110
-# [26] ESBlind -> Lightraider Amulet
+# [26] ESBlind(62:7088) -> Lightraider Amulet
 # Blind all orbs on the board
-# [27] ESEndPath -> ESEndPath
+# [27] ESEndPath(36:26) -> ESEndPath
 # end_turn

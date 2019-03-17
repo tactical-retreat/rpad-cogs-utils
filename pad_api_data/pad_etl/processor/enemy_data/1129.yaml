@@ -81,23 +81,34 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 0 -        0
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESDebuffMovetime -> Dragon Triton
+# [4] ESDebuffMovetime(39:1670) -> Dragon Triton
 # Movetime -1s for 5 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESAttackMultihit -> Dragon Blade - Wrathful Flurry
+# [6] ESAttackMultihit(15:1673) -> Dragon Blade - Wrathful Flurry
 # Condition: When < 30% hp
 # Enemy action
-# [7] ESPoisonChangeRandomAttack -> Dragon Blade - Poison Attack
+# [7] ESPoisonChangeRandomAttack(64:1671) -> Dragon Blade - Poison Attack
 # Condition: One-time use
 # Change Random 5 to Poison
-# [8] ESGravity -> Dragon Blade - Steel Cutting Strike
+# [8] ESGravity(50:1672) -> Dragon Blade - Steel Cutting Strike
 # Player -99% HP

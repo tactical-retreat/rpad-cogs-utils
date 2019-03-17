@@ -162,56 +162,67 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 2 -       10
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESOrbLock -> I'll do it! Hey! Come here!!
+# [4] ESOrbLock(94:2629) -> I'll do it! Hey! Come here!!
 # Lock 10 random Fire, Water, Wood, Light, Dark orbs
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] SkillSet:
 # 	Condition: When < 1% hp
-# 	[0] ESAttackUp -> It hurts!!
+# 	[0] ESAttackUp(17:2640) -> It hurts!!
 # 	Increase damage to 200% for the next 999 turns
-# 	[1] ESRecoverEnemy -> I'm not finished!!
+# 	[1] ESRecoverEnemy(86:2641) -> I'm not finished!!
 # 	Enemy recover 100% hp
-# [7] ESBranchHP -> ESBranchHP
+# [7] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 14
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 30, target rnd 17
-# [9] ESBindRandom -> War God Grapevine Stretch
+# [9] ESBindRandom(1:2632) -> War God Grapevine Stretch
 # Condition: One-time use
 # Bind 1 random cards for 3 turns
-# [10] ESSkillDelay -> Quintessence of the Low Kick
+# [10] ESSkillDelay(89:2630) -> Quintessence of the Low Kick
 # Condition: 33% chance
 # Delay active skills by 1 turns
-# [11] ESColumnSpawnMulti -> Lightning Strike
+# [11] ESColumnSpawnMulti(77:2631) -> Lightning Strike
 # Condition: 34% chance
 # Change 3rd, 4th column to Light orbs
-# [12] ESAttackMultihit -> Martial God Hell Thrust
+# [12] ESAttackMultihit(15:2633) -> Martial God Hell Thrust
 # Condition: 33% chance
 # Enemy action
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [14] ESBranchFlag -> ESBranchFlag
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 8
-# [15] ESFlagOperation -> ESFlagOperation
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [16] ESRandomSpawn -> Onamazu's Poison Mist
+# [16] ESRandomSpawn(92:2634) -> Onamazu's Poison Mist
 # Condition: When fire, water, wood, light, dark, heal, jammer, mortal poison orbs are on the board
 # Spawn random 8 Poison orbs
-# [17] ESBranchFlag -> ESBranchFlag
+# [17] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 20
-# [18] ESFlagOperation -> ESFlagOperation
+# [18] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [19] ESBlind -> I'm gonna end this! Get ready!
+# [19] ESBlind(5:2635) -> I'm gonna end this! Get ready!
 # Blind all orbs on the board
-# [20] ESColumnSpawnMulti -> Itsu-no-Ohabari's Breaking Thunder
+# [20] ESColumnSpawnMulti(77:2636) -> Itsu-no-Ohabari's Breaking Thunder
 # Change 1st, 2nd, 5th, 6th column to Jammer orbs
-# [21] ESResolve -> Takemi Resolve
+# [21] ESResolve(73:2637) -> Takemi Resolve
 # Survive attacks with 1 HP when HP > 50%

@@ -81,23 +81,34 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 0 -        0
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESBlind -> Let's have some fun!
+# [4] ESBlind(5:671) -> Let's have some fun!
 # Blind all orbs on the board
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESAttackMultihit -> Do it Cauchemar!
+# [6] ESAttackMultihit(15:673) -> Do it Cauchemar!
 # Condition: When < 30% hp
 # Enemy action
-# [7] ESOrbChangeAttack -> No healing for you!
+# [7] ESOrbChangeAttack(48:672) -> No healing for you!
 # Condition: One-time use
 # Change Heal to Random
-# [8] ESGravity -> Here I come!
+# [8] ESGravity(50:670) -> Here I come!
 # Player -75% HP

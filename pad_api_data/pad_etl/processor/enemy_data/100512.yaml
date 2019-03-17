@@ -72,39 +72,50 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 0 -        0
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESInactivity -> Here I come!!
+# [4] ESInactivity(66:5580) -> Here I come!!
 # Do nothing
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchFlag -> ESBranchFlag
+# [6] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 9
-# [7] ESFlagOperation -> ESFlagOperation
+# [7] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [8] ESOrbSealColumn -> Countdown Pose [3]
+# [8] ESOrbSealColumn(99:5581) -> Countdown Pose [3]
 # Seal 6th column for 1 turns
-# [9] ESBranchFlag -> ESBranchFlag
+# [9] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 12
-# [10] ESFlagOperation -> ESFlagOperation
+# [10] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [11] ESAbsorbCombo -> Countdown Pose [2]
+# [11] ESAbsorbCombo(67:5582) -> Countdown Pose [2]
 # Absorb combo <= 5 damage for 1 turns
-# [12] ESBranchFlag -> ESBranchFlag
+# [12] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 15
-# [13] ESFlagOperation -> ESFlagOperation
+# [13] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
-# [14] ESBindAwoken -> Countdown Pose [1]
+# [14] ESBindAwoken(88:5583) -> Countdown Pose [1]
 # Bind awoken skills for 1 turns
-# [15] ESFlagOperation -> ESFlagOperation
+# [15] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b1110
-# [16] ESAttackMultihit -> Fiiiiiiire!!
+# [16] ESAttackMultihit(15:5584) -> Fiiiiiiire!!
 # Enemy action
-# [17] ESEndPath -> ESEndPath
+# [17] ESEndPath(36:26) -> ESEndPath
 # end_turn

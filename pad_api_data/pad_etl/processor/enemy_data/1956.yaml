@@ -121,36 +121,47 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESAbsorbThreshold -> It's about to get more dangerous
+# [4] ESAbsorbThreshold(87:2215) -> It's about to get more dangerous
 # Absorb damage >= 300000 damage for 99 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] SkillSet:
 # 	Condition: When < 1% hp
-# 	[0] ESRandomSpawn -> Grief of the Golden God
+# 	[0] ESRandomSpawn(92:2221) -> Grief of the Golden God
 # 	Spawn random 10 Jammer orbs
-# 	[1] ESEndBattle -> Foolishness...
+# 	[1] ESEndBattle(40:2222) -> Foolishness...
 # 	Reduce self HP to 0
-# [7] ESRowSpawnMulti -> Himalayan Anger
+# [7] ESRowSpawnMulti(79:2219) -> Himalayan Anger
 # Condition: When < 30% hp
 # Change 1st row to Jammer orbs
-# [8] ESRowSpawnMulti -> Calming Mountain Wind
+# [8] ESRowSpawnMulti(79:2217) -> Calming Mountain Wind
 # Condition: One-time use
 # Change 1st row to Heal orbs, 3rd row to Wood orbs, 5th row to Heal orbs
-# [9] ESColumnSpawnMulti -> Trishula
+# [9] ESColumnSpawnMulti(77:2218) -> Trishula
 # Condition: 50% chance
 # Change 1st column to Fire orbs, 3rd column to Fire orbs, 5th column to Fire orbs
-# [10] ESAttackMultihit -> Tiger Rush
+# [10] ESAttackMultihit(15:2216) -> Tiger Rush
 # Enemy action
-# [11] ESEndPath -> ESEndPath
+# [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [12] ESResolve -> *****
+# [12] ESResolve(73:2214) -> *****
 # Survive attacks with 1 HP when HP > 1%

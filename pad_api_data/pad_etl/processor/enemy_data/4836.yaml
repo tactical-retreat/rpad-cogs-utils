@@ -121,69 +121,80 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 4 -      100
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESStatusShield -> Protection of the Gods
+# 	[0] ESStatusShield(20:11675) -> Protection of the Gods
 # 	Voids status ailments for 999 turns
-# 	[1] ESAbsorbCombo -> Raging Thunder's Might
+# 	[1] ESAbsorbCombo(67:11676) -> Raging Thunder's Might
 # 	Absorb combo <= 10 damage for 10 turns
-# 	[2] ESVoidShield -> Divine King's Armor
+# 	[2] ESVoidShield(71:11677) -> Divine King's Armor
 # 	Void damage >= 100000000 for 999 turns
-# 	[3] ESDispel -> Almighty Gods' Majesty
+# 	[3] ESDispel(6:11678) -> Almighty Gods' Majesty
 # 	Voids player buff effects
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchHP -> ESBranchHP
+# [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 7, target rnd 21
-# [7] ESBranchCounter -> ESBranchCounter
+# [7] ESBranchCounter(31:21) -> ESBranchCounter
 # Branch on counter = 9, target rnd 17
-# [8] ESSetCounter -> ESSetCounter
+# [8] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [9] ESBranchHP -> ESBranchHP
+# [9] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 13
 # [10] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESChangeAttribute -> Divine King's Changing Cloak
+# 	[0] ESChangeAttribute(46:11680) -> Divine King's Changing Cloak
 # 	Change own attribute to random one of Fire, Water, Wood, Light, Dark
-# 	[1] ESAttackMultihit -> Divine King's Imperial Lightning
+# 	[1] ESAttackMultihit(15:11681) -> Divine King's Imperial Lightning
 # 	Enemy action
-# [11] ESAttackMultihit -> Divine King's Imperial Lightning
+# [11] ESAttackMultihit(15:11681) -> Divine King's Imperial Lightning
 # Enemy action
-# [12] ESEndPath -> ESEndPath
+# [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [13] ESBranchFlag -> ESBranchFlag
+# [13] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 10
-# [14] ESFlagOperation -> ESFlagOperation
+# [14] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [15] SkillSet:
-# 	[0] ESDispel -> Almighty Gods' Majesty
+# 	[0] ESDispel(6:11678) -> Almighty Gods' Majesty
 # 	Voids player buff effects
-# 	[1] ESAttackMultihit -> Divine King's Imperial Lightning
+# 	[1] ESAttackMultihit(15:11681) -> Divine King's Imperial Lightning
 # 	Enemy action
-# [16] ESEndPath -> ESEndPath
+# [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [17] ESBranchCounter -> ESBranchCounter
+# [17] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 10, target rnd 9
-# [18] ESSetCounter -> ESSetCounter
+# [18] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [19] ESDamageShield -> Divine King's Lightning Cloak
+# [19] ESDamageShield(74:11684) -> Divine King's Lightning Cloak
 # Reduce damage from all sources by 75% for 999 turns
-# [20] ESEndPath -> ESEndPath
+# [20] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [21] ESAttackUp -> Almighty Gods' Fighting Spirit​
+# [21] ESAttackUp(17:11683) -> Almighty Gods' Fighting Spirit​
 # Increase damage to 500% for the next 99 turns
 # [22] SkillSet:
-# 	[0] ESBindAwoken -> Divine King's Wave
+# 	[0] ESBindAwoken(88:11686) -> Divine King's Wave
 # 	Bind awoken skills for 1 turns
-# 	[1] ESAttackMultihit -> Divine King's Imperial Lightning
+# 	[1] ESAttackMultihit(15:11681) -> Divine King's Imperial Lightning
 # 	Enemy action
-# [23] ESEndPath -> ESEndPath
+# [23] ESEndPath(36:26) -> ESEndPath
 # end_turn

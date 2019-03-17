@@ -137,66 +137,77 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESStatusShield -> Haughty
+# 	[0] ESStatusShield(20:11351) -> Haughty
 # 	Voids status ailments for 999 turns
-# 	[1] ESSkillDelay -> Bow before me
+# 	[1] ESSkillDelay(89:11352) -> Bow before me
 # 	Delay active skills by 3 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchHP -> ESBranchHP
+# [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 1, target rnd 23
-# [7] ESBranchHP -> ESBranchHP
+# [7] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 17
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 13
-# [9] ESRecoverEnemy -> Bloody Fangs
+# [9] ESRecoverEnemy(86:11355) -> Bloody Fangs
 # Condition: One-time use
 # Enemy recover 10% hp
-# [10] ESOrbChangeAttack -> Blood Pain
+# [10] ESOrbChangeAttack(48:11353) -> Blood Pain
 # Condition: 50% chance
 # Change Random to Dark
-# [11] ESAttackMultihit -> Nightmare Raid
+# [11] ESAttackMultihit(15:11354) -> Nightmare Raid
 # Enemy action
-# [12] ESEndPath -> ESEndPath
+# [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [13] ESBranchFlag -> ESBranchFlag
+# [13] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 9
-# [14] ESFlagOperation -> ESFlagOperation
+# [14] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [15] SkillSet:
-# 	[0] ESAbsorbCombo -> Gleam of the Red Moon
+# 	[0] ESAbsorbCombo(67:11357) -> Gleam of the Red Moon
 # 	Absorb combo <= 6 damage for 99 turns
-# 	[1] ESDamageShield -> Stand in awe of my power
+# 	[1] ESDamageShield(74:11358) -> Stand in awe of my power
 # 	Reduce damage from all sources by 50% for 10 turns
-# [16] ESEndPath -> ESEndPath
+# [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [17] ESBranchFlag -> ESBranchFlag
+# [17] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 21
-# [18] ESFlagOperation -> ESFlagOperation
+# [18] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [19] ESAttackUp -> Let me finish this
+# [19] ESAttackUp(17:11359) -> Let me finish this
 # Increase damage to 150% for the next 99 turns
-# [20] ESEndPath -> ESEndPath
+# [20] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [21] ESAttackMultihit -> Infinity Claws
+# [21] ESAttackMultihit(15:11360) -> Infinity Claws
 # Enemy action
-# [22] ESEndPath -> ESEndPath
+# [22] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [23] SkillSet:
-# 	[0] ESRecoverEnemy -> I can't be defeated
+# 	[0] ESRecoverEnemy(86:11362) -> I can't be defeated
 # 	Enemy recover 100% hp
-# 	[1] ESSkyfall -> Don't underestimate me
+# 	[1] ESSkyfall(68:11363) -> Don't underestimate me
 # 	Mortal Poison skyfall +20% for 1 turns
-# [24] ESEndPath -> ESEndPath
+# [24] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [25] ESResolve -> Resolve
+# [25] ESResolve(73:11349) -> Resolve
 # Survive attacks with 1 HP when HP > 50%

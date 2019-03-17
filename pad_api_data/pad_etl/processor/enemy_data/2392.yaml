@@ -114,61 +114,72 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESStatusShield -> Do you mean to challenge me?
+# 	[0] ESStatusShield(20:10527) -> Do you mean to challenge me?
 # 	Voids status ailments for 999 turns
-# 	[1] ESOrbSealRow -> Just the right time to warm up
+# 	[1] ESOrbSealRow(100:10528) -> Just the right time to warm up
 # 	Seal 1st row for 5 turns
-# 	[2] ESAbsorbCombo -> You can really do it?
+# 	[2] ESAbsorbCombo(67:10529) -> You can really do it?
 # 	Absorb combo <= 6 damage for 10 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchCounter -> ESBranchCounter
+# [6] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 1, target rnd 18
-# [7] ESBranchHP -> ESBranchHP
+# [7] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 12
-# [8] ESOrbChangeAttackBits -> Sæhrimnir
+# [8] ESOrbChangeAttackBits(108:10531) -> Sæhrimnir
 # Change Jammer to Heal
-# [9] ESRandomSpawn -> Drómi Call
+# [9] ESRandomSpawn(92:10532) -> Drómi Call
 # Condition: 50% chance & when Water, Wood, Light, Dark, Heal, Poison, Mortal Poison orbs are on the board
 # Spawn random 4 Fire, Jammer orbs
-# [10] ESColumnSpawnMulti -> Glær Svalinn
+# [10] ESColumnSpawnMulti(77:10533) -> Glær Svalinn
 # Condition: 50% chance
 # Change 2nd, 5th column to Fire, Water orbs
-# [11] ESEndPath -> ESEndPath
+# [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [12] ESBranchHP -> ESBranchHP
+# [12] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 17
-# [13] ESBranchFlag -> ESBranchFlag
+# [13] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 8
-# [14] ESFlagOperation -> ESFlagOperation
+# [14] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [15] SkillSet:
-# 	[0] ESOrbLock -> This just became interesting!
+# 	[0] ESOrbLock(94:10534) -> This just became interesting!
 # 	Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# 	[1] ESDebuffMovetime -> Can you still fight?
+# 	[1] ESDebuffMovetime(39:10535) -> Can you still fight?
 # 	Movetime -4s for 5 turns
-# [16] ESEndPath -> ESEndPath
+# [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [17] ESSetCounter -> ESSetCounter
+# [17] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
 # [18] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESBindRandom -> Next, victory will be achieved!
+# 	[0] ESBindRandom(1:10537) -> Next, victory will be achieved!
 # 	Bind 6 random cards for 2 turns
-# 	[1] ESRandomSpawn -> This is your last rest
+# 	[1] ESRandomSpawn(92:10538) -> This is your last rest
 # 	Change all orbs to Heal
-# [19] ESAttackMultihit -> Reginna Hel
+# [19] ESAttackMultihit(15:10540) -> Reginna Hel
 # Enemy action
-# [20] ESEndPath -> ESEndPath
+# [20] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [21] ESResolve -> Resolve
+# [21] ESResolve(73:10526) -> Resolve
 # Survive attacks with 1 HP when HP > 50%

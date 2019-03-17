@@ -117,51 +117,62 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESOrbChangeAttack -> Nature's Knowledge
+# [6] ESOrbChangeAttack(48:10247) -> Nature's Knowledge
 # Change Random to Wood
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 17
-# [9] ESSetCounter -> ESSetCounter
+# [9] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [10] ESBranchCounter -> ESBranchCounter
+# [10] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 3, target rnd 14
-# [11] ESDispel -> Naturalize
+# [11] ESDispel(6:10248) -> Naturalize
 # Condition: One-time use
 # Voids player buff effects
-# [12] ESOrbChangeAttack -> Nature's Knowledge
+# [12] ESOrbChangeAttack(48:10247) -> Nature's Knowledge
 # Change Random to Wood
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [14] ESSetCounter -> ESSetCounter
+# [14] ESSetCounter(25:15) -> ESSetCounter
 # counter = 0
-# [15] ESAttackUp -> Giant Growth
+# [15] ESAttackUp(17:10249) -> Giant Growth
 # Increase damage to 300% for the next 1 turns
-# [16] ESEndPath -> ESEndPath
+# [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [17] ESBranchFlag -> ESBranchFlag
+# [17] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 21
-# [18] ESFlagOperation -> ESFlagOperation
+# [18] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [19] ESRandomSpawn -> Animist's Awakening
+# [19] ESRandomSpawn(92:10250) -> Animist's Awakening
 # Condition: When fire, water, light, dark, heal, jammer, poison, mortal poison orbs are on the board
 # Spawn random 8 Wood orbs
-# [20] ESEndPath -> ESEndPath
+# [20] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [21] ESAttackMultihit -> Pierce the Sky
+# [21] ESAttackMultihit(15:10251) -> Pierce the Sky
 # Enemy action
-# [22] ESEndPath -> ESEndPath
+# [22] ESEndPath(36:26) -> ESEndPath
 # end_turn

@@ -90,92 +90,103 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 7 -      111
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESStatusShield -> Shaitan! You're up!
+# [2] ESStatusShield(20:5301) -> Shaitan! You're up!
 # Condition: One-time use
 # Voids status ailments for 7 turns
-# [3] ESBranchFlag -> ESBranchFlag
+# [3] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 16, target rnd 30
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 18
-# [5] ESBranchFlag -> ESBranchFlag
+# [5] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 21
-# [6] ESBranchFlag -> ESBranchFlag
+# [6] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 24
-# [7] ESBranchFlag -> ESBranchFlag
+# [7] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 27
-# [8] ESFlagOperation -> ESFlagOperation
+# [8] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
 # [9] SkillSet:
 # 	Condition: When < 50% hp , one-time use
-# 	[0] ESSkillDelay -> Now you've done it! I'm going all out!
+# 	[0] ESSkillDelay(89:5316) -> Now you've done it! I'm going all out!
 # 	Delay active skills by 5 turns
-# 	[1] ESBoardChangeAttackBits -> Inferno Spell!
+# 	[1] ESBoardChangeAttackBits(85:5317) -> Inferno Spell!
 # 	Change all orbs to Fire, Jammer
-# [10] ESFlagOperation -> ESFlagOperation
+# [10] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11111
 # [11] SkillSet:
 # 	Condition: When < 50% hp
-# 	[0] ESSkillDelay -> Now you've done it! I'm going all out!
+# 	[0] ESSkillDelay(89:5316) -> Now you've done it! I'm going all out!
 # 	Delay active skills by 5 turns
-# 	[1] ESBoardChange -> Infe...
+# 	[1] ESBoardChange(84:5318) -> Infe...
 # 	Change all orbs to Jammer
-# [12] ESFlagOperation -> ESFlagOperation
+# [12] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [13] ESInactivity -> Hear me, Serpents of Fiery Dawn!
+# [13] ESInactivity(66:5302) -> Hear me, Serpents of Fiery Dawn!
 # Condition: One-time use
 # Do nothing
-# [14] ESFlagOperation -> ESFlagOperation
+# [14] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b10
-# [15] ESInactivity -> Go now, Scorpions of Creeping Flame!
+# [15] ESInactivity(66:5305) -> Go now, Scorpions of Creeping Flame!
 # Condition: One-time use
 # Do nothing
-# [16] ESFlagOperation -> ESFlagOperation
+# [16] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b100
-# [17] ESInactivity -> Come forth, Wolves of Wildfire!
+# [17] ESInactivity(66:5308) -> Come forth, Wolves of Wildfire!
 # Condition: One-time use
 # Do nothing
-# [18] ESBoardChangeAttackBits -> Inferno Spell!
+# [18] ESBoardChangeAttackBits(85:5321) -> Inferno Spell!
 # Condition: One-time use
 # Change all orbs to Fire, Jammer
-# [19] ESFlagOperation -> ESFlagOperation
+# [19] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11111
-# [20] ESBoardChange -> Infe...
+# [20] ESBoardChange(84:5318) -> Infe...
 # Change all orbs to Jammer
-# [21] ESFlagOperation -> ESFlagOperation
+# [21] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b1
 # [22] SkillSet:
 # 	Condition: When < 50% hp
-# 	[0] ESInactivity -> Let me give you a hand
+# 	[0] ESInactivity(66:5314) -> Let me give you a hand
 # 	Do nothing
-# 	[1] ESBindAttack -> Coiling Blaze!
+# 	[1] ESBindAttack(63:5304) -> Coiling Blaze!
 # 	Bind 4 subs for 6 turns
-# [23] ESBindAttack -> Coiling Blaze!
+# [23] ESBindAttack(63:5303) -> Coiling Blaze!
 # Bind 2 subs for 3 turns
-# [24] ESFlagOperation -> ESFlagOperation
+# [24] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b10
 # [25] SkillSet:
 # 	Condition: When < 50% hp
-# 	[0] ESInactivity -> Let me give you a hand
+# 	[0] ESInactivity(66:5314) -> Let me give you a hand
 # 	Do nothing
-# 	[1] ESBoardChangeAttackBits -> Venom Detonation!
+# 	[1] ESBoardChangeAttackBits(85:5307) -> Venom Detonation!
 # 	Change all orbs to Fire, Mortal Poison
-# [26] ESBoardChangeAttackBits -> Venom Detonation!
+# [26] ESBoardChangeAttackBits(85:5306) -> Venom Detonation!
 # Change all orbs to Fire, Poison
-# [27] ESFlagOperation -> ESFlagOperation
+# [27] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b100
 # [28] SkillSet:
 # 	Condition: When < 50% hp
-# 	[0] ESInactivity -> Let me give you a hand
+# 	[0] ESInactivity(66:5314) -> Let me give you a hand
 # 	Do nothing
-# 	[1] ESAttackMultihit -> Raiding Erupt!
+# 	[1] ESAttackMultihit(15:5310) -> Raiding Erupt!
 # 	Enemy action
-# [29] ESAttackMultihit -> Raiding Erupt!
+# [29] ESAttackMultihit(15:5309) -> Raiding Erupt!
 # Enemy action
-# [30] ESAttackMultihit -> Cane Strike
+# [30] ESAttackMultihit(15:5319) -> Cane Strike
 # Enemy action
-# [31] ESResolve -> Laila resolve
+# [31] ESResolve(73:5300) -> Laila resolve
 # Survive attacks with 1 HP when HP > 50%

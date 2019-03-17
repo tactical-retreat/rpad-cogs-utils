@@ -99,48 +99,59 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 0 -        0
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:355) -> ESPreemptive
 # Enable preempt if level 5
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 5, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [6] SkillSet:
-# 	[0] ESStatusShield -> Flame Body
+# 	[0] ESStatusShield(20:2312) -> Flame Body
 # 	Voids status ailments for 5 turns
-# 	[1] ESAttackMultihit -> Crossdraw Breath
+# 	[1] ESAttackMultihit(15:2313) -> Crossdraw Breath
 # 	Enemy action
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchFlag -> ESBranchFlag
+# [8] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 11
-# [9] ESFlagOperation -> ESFlagOperation
+# [9] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [10] SkillSet:
-# 	[0] ESAbsorbCombo -> Blaze Aura
+# 	[0] ESAbsorbCombo(67:2314) -> Blaze Aura
 # 	Absorb combo <= 5 damage for 5 turns
-# 	[1] ESAttackMultihit -> Triple Breath
+# 	[1] ESAttackMultihit(15:2315) -> Triple Breath
 # 	Enemy action
-# [11] ESBranchFlag -> ESBranchFlag
+# [11] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 14
-# [12] ESFlagOperation -> ESFlagOperation
+# [12] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [13] SkillSet:
-# 	[0] ESVoidShield -> Fire Armor
+# 	[0] ESVoidShield(71:2316) -> Fire Armor
 # 	Void damage >= 500000 for 5 turns
-# 	[1] ESAttackMultihit -> Fanning Breath
+# 	[1] ESAttackMultihit(15:2317) -> Fanning Breath
 # 	Enemy action
-# [14] ESBranchFlag -> ESBranchFlag
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 17
-# [15] ESFlagOperation -> ESFlagOperation
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
-# [16] ESBindAttack -> Inferno Bullet
+# [16] ESBindAttack(63:2294) -> Inferno Bullet
 # Bind 5 random for 5 turns
-# [17] ESAttackMultihit -> Burst End
+# [17] ESAttackMultihit(15:2295) -> Burst End
 # Enemy action

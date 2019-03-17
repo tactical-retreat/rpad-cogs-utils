@@ -195,58 +195,69 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 0 -        0
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESStatusShield -> My name is Orpharion!
+# 	[0] ESStatusShield(20:5853) -> My name is Orpharion!
 # 	Voids status ailments for 999 turns
-# 	[1] ESAbsorbCombo -> Paradiso Puma
+# 	[1] ESAbsorbCombo(67:5854) -> Paradiso Puma
 # 	Absorb combo <= 6 damage for 999 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchHP -> ESBranchHP
+# [6] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 100, target rnd 16
-# [7] ESBranchHP -> ESBranchHP
+# [7] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 14
-# [8] ESOrbSealRow -> Sopra Perdere
+# [8] ESOrbSealRow(100:5856) -> Sopra Perdere
 # Condition: 20% chance
 # Seal 1st row for 1 turns
-# [9] ESBlindStickyRandom -> Oscurità Alcuni
+# [9] ESBlindStickyRandom(97:5857) -> Oscurità Alcuni
 # Condition: 20% chance
 # Blind random 4~10 orbs for 1 turns
-# [10] ESOrbLock -> Chiave Spina
+# [10] ESOrbLock(94:5858) -> Chiave Spina
 # Condition: 20% chance
 # Lock 11 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [11] ESBindAttack -> Anestesia Spada
+# [11] ESBindAttack(63:5859) -> Anestesia Spada
 # Condition: 20% chance
 # Bind 1 random for 2 turns
-# [12] ESBindAwoken -> Niente Spazio
+# [12] ESBindAwoken(88:5860) -> Niente Spazio
 # Condition: 20% chance
 # Bind awoken skills for 1 turns
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [14] SkillSet:
-# 	[0] ESDispel -> Angelo Lacrima
+# 	[0] ESDispel(6:5862) -> Angelo Lacrima
 # 	Voids player buff effects
-# 	[1] ESAttackMultihit -> Innumerevole Ferita
+# 	[1] ESAttackMultihit(15:5863) -> Innumerevole Ferita
 # 	Enemy action
-# [15] ESEndPath -> ESEndPath
+# [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [16] ESBranchFlag -> ESBranchFlag
+# [16] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 7
-# [17] ESFlagOperation -> ESFlagOperation
+# [17] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [18] ESSkillDelay -> Disperazione
+# [18] ESSkillDelay(89:5861) -> Disperazione
 # Delay active skills by 99 turns
-# [19] ESEndPath -> ESEndPath
+# [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [20] ESResolve -> Resolve
+# [20] ESResolve(73:5865) -> Resolve
 # Survive attacks with 1 HP when HP > 50%
-# [21] ESAttributeResist -> Dark Halved
+# [21] ESAttributeResist(72:5866) -> Dark Halved
 # Reduce damage from Dark by 50%

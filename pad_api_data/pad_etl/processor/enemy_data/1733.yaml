@@ -159,79 +159,90 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [6] SkillSet:
-# 	[0] ESStatusShield -> I'll reinforce my defenses
+# 	[0] ESStatusShield(20:9077) -> I'll reinforce my defenses
 # 	Voids status ailments for 999 turns
-# 	[1] ESDamageShield -> Can you hit me?
+# 	[1] ESDamageShield(74:9078) -> Can you hit me?
 # 	Reduce damage from all sources by 90% for 2 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESSetCounter -> ESSetCounter
+# [8] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [9] ESBranchCounter -> ESBranchCounter
+# [9] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 10, target rnd 30
-# [10] ESBranchHP -> ESBranchHP
+# [10] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 30, target rnd 24
-# [11] ESBranchHP -> ESBranchHP
+# [11] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 90, target rnd 16
-# [12] ESBranchFlag -> ESBranchFlag
+# [12] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 31
-# [13] ESFlagOperation -> ESFlagOperation
+# [13] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [14] SkillSet:
-# 	[0] ESAbsorbThreshold -> Not yet, ok?
+# 	[0] ESAbsorbThreshold(87:9080) -> Not yet, ok?
 # 	Absorb damage >= 4000000 damage for 10 turns
-# 	[1] ESAttackUp -> Prepare yourself
+# 	[1] ESAttackUp(17:9086) -> Prepare yourself
 # 	Increase damage to 150% for the next 2 turns
-# [15] ESEndPath -> ESEndPath
+# [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [16] ESBranchFlag -> ESBranchFlag
+# [16] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 20
-# [17] ESFlagOperation -> ESFlagOperation
+# [17] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [18] ESDebuffMovetime -> I'm really going to give my all now!
+# [18] ESDebuffMovetime(39:9084) -> I'm really going to give my all now!
 # Movetime 50% for 10 turns
-# [19] ESEndPath -> ESEndPath
+# [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [20] ESRowSpawnMulti -> How about this?
+# [20] ESRowSpawnMulti(78:9082) -> How about this?
 # Condition: One-time use
 # Change 2nd row to Water, Jammer orbs, 4th row to Water, Jammer orbs
-# [21] ESSpinnersRandom -> Blue Metal Flash
+# [21] ESSpinnersRandom(109:9081) -> Blue Metal Flash
 # Condition: 50% chance
 # Random 3 orbs change every 1.0s for 2 turns
-# [22] ESAttackMultihit -> Take it!
+# [22] ESAttackMultihit(15:9083) -> Take it!
 # Enemy action
-# [23] ESEndPath -> ESEndPath
+# [23] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [24] ESBranchFlag -> ESBranchFlag
+# [24] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 28
-# [25] ESFlagOperation -> ESFlagOperation
+# [25] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
-# [26] ESOrbSealColumn -> Azure Star Blockade
+# [26] ESOrbSealColumn(99:9088) -> Azure Star Blockade
 # Seal 1st, 6th column for 1 turns
-# [27] ESEndPath -> ESEndPath
+# [27] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [28] ESColumnSpawnMulti -> Binding Azure Bladewings
+# [28] ESColumnSpawnMulti(76:9090) -> Binding Azure Bladewings
 # Change 2nd column to Water, Jammer orbs, 5th column to Water, Jammer orbs
-# [29] ESEndPath -> ESEndPath
+# [29] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [30] ESSetCounter -> ESSetCounter
+# [30] ESSetCounter(25:15) -> ESSetCounter
 # counter = 0
-# [31] ESBoardChangeAttackBits -> Time's up!
+# [31] ESBoardChangeAttackBits(85:9085) -> Time's up!
 # Change all orbs to Water
-# [32] ESEndPath -> ESEndPath
+# [32] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [33] ESTurnChangePassive -> Enemy's next turn changed
+# [33] ESTurnChangePassive(106:9092) -> Enemy's next turn changed
 # Enemy turn counter change to 1 when HP <= 90%

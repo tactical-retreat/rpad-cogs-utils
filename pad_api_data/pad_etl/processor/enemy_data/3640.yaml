@@ -141,43 +141,54 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 7 -      111
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESStatusShield -> Concept of Boundless Worlds
+# 	[0] ESStatusShield(20:6801) -> Concept of Boundless Worlds
 # 	Voids status ailments for 999 turns
-# 	[1] ESBlindStickyFixed -> Creeping Chaos Continuum
+# 	[1] ESBlindStickyFixed(98:6802) -> Creeping Chaos Continuum
 # 	Blind orbs in specific positions for 30 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESAttackMultihit -> Enforcing Infinite Will
+# [6] ESAttackMultihit(15:6805) -> Enforcing Infinite Will
 # Condition: When < 10% hp
 # Enemy action
-# [7] ESGravity -> Omen of a Faceless Calamity
+# [7] ESGravity(50:6804) -> Omen of a Faceless Calamity
 # Condition: 20% chance
 # Player -99% HP
-# [8] ESChangeAttribute -> A Thousand Enslaved Manifestations
+# [8] ESChangeAttribute(46:6806) -> A Thousand Enslaved Manifestations
 # Condition: 20% chance
 # Change own attribute to random one of Fire, Water, Wood, Light, Dark
-# [9] ESBindAttack -> Haunter of the Dark
+# [9] ESBindAttack(63:6807) -> Haunter of the Dark
 # Condition: One-time use
 # Bind 3 random for 10 turns
-# [10] ESAttributeBlock -> Insanity Emerging from the Darkness
+# [10] ESAttributeBlock(107:6808) -> Insanity Emerging from the Darkness
 # Condition: One-time use
 # Unable to Heal orbs for 2 turns
-# [11] ESAbsorbAttribute -> Disparaging Sentient Flame's Denial
+# [11] ESAbsorbAttribute(53:6809) -> Disparaging Sentient Flame's Denial
 # Condition: 20% chance
 # Absorb Fire damage for 5 turns
-# [12] ESAttackMultihit -> Raid of the Subservient Shantaks
+# [12] ESAttackMultihit(15:6810) -> Raid of the Subservient Shantaks
 # Condition: 20% chance
 # Enemy action
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [14] ESAttributeResist -> Fire damage halved
+# [14] ESAttributeResist(72:6811) -> Fire damage halved
 # Reduce damage from Fire by 50%

@@ -94,43 +94,54 @@ records:
   usage_pct: 34
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 0 -        0
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESBindAwoken -> I'm your opponent!
+# 	[0] ESBindAwoken(88:8421) -> I'm your opponent!
 # 	Bind awoken skills for 3 turns
-# 	[1] ESSpinnersRandom -> Pinpoint
+# 	[1] ESSpinnersRandom(109:8422) -> Pinpoint
 # 	Random 1 orbs change every 1.0s for 10 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchCounter -> ESBranchCounter
+# [6] ESBranchCounter(31:21) -> ESBranchCounter
 # Branch on counter = 8, target rnd 12
-# [7] ESSetCounter -> ESSetCounter
+# [7] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [8] ESBombRandomSpawn -> Fire Shot
+# [8] ESBombRandomSpawn(102:8424) -> Fire Shot
 # Condition: 33% chance
 # Spawn random 3 Bomb orbs
-# [9] ESOrbLock -> Freeze Shot
+# [9] ESOrbLock(94:8425) -> Freeze Shot
 # Condition: 33% chance
 # Lock 9 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [10] ESAttackMultihit -> Quadruple Shot
+# [10] ESAttackMultihit(15:8426) -> Quadruple Shot
 # Condition: 34% chance
 # Enemy action
-# [11] ESEndPath -> ESEndPath
+# [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [12] ESBranchFlag -> ESBranchFlag
+# [12] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 8
-# [13] ESFlagOperation -> ESFlagOperation
+# [13] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [14] ESSkillDelay -> Weak Point
+# [14] ESSkillDelay(89:8427) -> Weak Point
 # Delay active skills by 5 turns
-# [15] ESEndPath -> ESEndPath
+# [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [16] ESAttributeResist -> Halve Fire & Water
+# [16] ESAttributeResist(72:8428) -> Halve Fire & Water
 # Reduce damage from Fire, Water by 50%

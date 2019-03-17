@@ -128,38 +128,49 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESOrbLock -> I won't let you go
+# [4] ESOrbLock(94:2832) -> I won't let you go
 # Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchHP -> ESBranchHP
+# [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 30, target rnd 11
-# [7] ESOrbChangeAttack -> Aqua Sphere
+# [7] ESOrbChangeAttack(48:2833) -> Aqua Sphere
 # Condition: 40% chance
 # Change Random to Water
-# [8] ESSkillDelay -> Cold Scythe
+# [8] ESSkillDelay(89:2834) -> Cold Scythe
 # Condition: 40% chance
 # Delay active skills by 1 turns
-# [9] ESBindAttack -> Crystallizing Dark Wave
+# [9] ESBindAttack(63:2835) -> Crystallizing Dark Wave
 # Condition: One-time use
 # Bind 2 random for 3 turns
-# [10] ESEndPath -> ESEndPath
+# [10] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [11] ESBranchFlag -> ESBranchFlag
+# [11] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 15
-# [12] ESFlagOperation -> ESFlagOperation
+# [12] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [13] ESInactivity -> Draco Summon-Frost Dragon Emperor
+# [13] ESInactivity(66:2836) -> Draco Summon-Frost Dragon Emperor
 # Do nothing
-# [14] ESEndPath -> ESEndPath
+# [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [15] ESAttackMultihit -> Abyss Tempest
+# [15] ESAttackMultihit(15:2837) -> Abyss Tempest
 # Enemy action

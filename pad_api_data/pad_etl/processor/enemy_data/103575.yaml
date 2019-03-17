@@ -157,118 +157,129 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 10 -     1010
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESVoidShield -> Water Dragon Barrier
+# 	[0] ESVoidShield(71:6763) -> Water Dragon Barrier
 # 	Void damage >= 10000000 for 999 turns
-# 	[1] ESStatusShield -> Guardian Dragon Formation
+# 	[1] ESStatusShield(20:6764) -> Guardian Dragon Formation
 # 	Voids status ailments for 999 turns
-# 	[2] ESAbsorbCombo -> High Bubble Wall
+# 	[2] ESAbsorbCombo(67:6765) -> High Bubble Wall
 # 	Absorb combo <= 7 damage for 999 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] SkillSet:
 # 	Condition: When < 20% hp
-# 	[0] ESDispel -> Cold Break
+# 	[0] ESDispel(6:6783) -> Cold Break
 # 	Voids player buff effects
-# 	[1] ESBoardChangeAttackBits -> Blue Calamity Abyss
+# 	[1] ESBoardChangeAttackBits(85:6784) -> Blue Calamity Abyss
 # 	Change all orbs to Mortal Poison
-# [7] ESBranchHP -> ESBranchHP
+# [7] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 80, target rnd 14
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 20
-# [9] ESBranchHP -> ESBranchHP
+# [9] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 30, target rnd 26
-# [10] ESOrbLock -> Sharptooth
+# [10] ESOrbLock(94:6780) -> Sharptooth
 # Condition: 40% chance
 # Lock 8 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [11] ESBindSkill -> Sanctifying Waters
+# [11] ESBindSkill(14:6781) -> Sanctifying Waters
 # Condition: 20% chance
 # Bind active skills for 5 turns
-# [12] ESBlindStickyRandom -> Ice Metal Needle
+# [12] ESBlindStickyRandom(97:6782) -> Ice Metal Needle
 # Condition: 40% chance
 # Blind random 5 orbs for 1 turns
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [14] ESBranchFlag -> ESBranchFlag
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 8
-# [15] ESFlagOperation -> ESFlagOperation
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [16] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAbsorbAttribute -> Deep Aqua
+# 	[0] ESAbsorbAttribute(53:6767) -> Deep Aqua
 # 	Absorb Wood damage for 3 turns
-# 	[1] ESAttackMultihit -> Ether Screw
+# 	[1] ESAttackMultihit(15:6770) -> Ether Screw
 # 	Enemy action
 # [17] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESSkyfall -> Poison Swirl
+# 	[0] ESSkyfall(68:6768) -> Poison Swirl
 # 	Mortal Poison skyfall +15% for 3 turns
-# 	[1] ESAttackMultihit -> Ether Screw
+# 	[1] ESAttackMultihit(15:6770) -> Ether Screw
 # 	Enemy action
 # [18] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESDamageShield -> Shell Scales
+# 	[0] ESDamageShield(74:6769) -> Shell Scales
 # 	Reduce damage from all sources by 75% for 3 turns
-# 	[1] ESAttackMultihit -> Ether Screw
+# 	[1] ESAttackMultihit(15:6770) -> Ether Screw
 # 	Enemy action
-# [19] ESEndPath -> ESEndPath
+# [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [20] ESBranchFlag -> ESBranchFlag
+# [20] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 9
-# [21] ESFlagOperation -> ESFlagOperation
+# [21] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [22] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESSkyfall -> Poison Swirl
+# 	[0] ESSkyfall(68:6768) -> Poison Swirl
 # 	Mortal Poison skyfall +15% for 3 turns
-# 	[1] ESAttackMultihit -> Ether Screw
+# 	[1] ESAttackMultihit(15:6770) -> Ether Screw
 # 	Enemy action
 # [23] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESDamageShield -> Shell Scales
+# 	[0] ESDamageShield(74:6769) -> Shell Scales
 # 	Reduce damage from all sources by 75% for 3 turns
-# 	[1] ESAttackMultihit -> Ether Screw
+# 	[1] ESAttackMultihit(15:6770) -> Ether Screw
 # 	Enemy action
 # [24] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAbsorbAttribute -> Deep Aqua
+# 	[0] ESAbsorbAttribute(53:6767) -> Deep Aqua
 # 	Absorb Wood damage for 3 turns
-# 	[1] ESAttackMultihit -> Ether Screw
+# 	[1] ESAttackMultihit(15:6770) -> Ether Screw
 # 	Enemy action
-# [25] ESEndPath -> ESEndPath
+# [25] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [26] ESBranchFlag -> ESBranchFlag
+# [26] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 10
-# [27] ESFlagOperation -> ESFlagOperation
+# [27] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
 # [28] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESSkyfall -> Poison Swirl
+# 	[0] ESSkyfall(68:6768) -> Poison Swirl
 # 	Mortal Poison skyfall +15% for 3 turns
-# 	[1] ESAttackMultihit -> Ether Screw
+# 	[1] ESAttackMultihit(15:6770) -> Ether Screw
 # 	Enemy action
 # [29] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESDamageShield -> Shell Scales
+# 	[0] ESDamageShield(74:6769) -> Shell Scales
 # 	Reduce damage from all sources by 75% for 3 turns
-# 	[1] ESAttackMultihit -> Ether Screw
+# 	[1] ESAttackMultihit(15:6770) -> Ether Screw
 # 	Enemy action
 # [30] SkillSet:
-# 	[0] ESAbsorbAttribute -> Deep Aqua
+# 	[0] ESAbsorbAttribute(53:6767) -> Deep Aqua
 # 	Absorb Wood damage for 3 turns
-# 	[1] ESAttackMultihit -> Ether Screw
+# 	[1] ESAttackMultihit(15:6770) -> Ether Screw
 # 	Enemy action
-# [31] ESEndPath -> ESEndPath
+# [31] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [32] ESAttributeResist -> Water damage halved
+# [32] ESAttributeResist(72:6786) -> Water damage halved
 # Reduce damage from Water by 50%
-# [33] ESResolve -> Dragonbound Soul Spirit
+# [33] ESResolve(73:12175) -> Dragonbound Soul Spirit
 # Survive attacks with 1 HP when HP > 99%

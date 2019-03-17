@@ -166,85 +166,96 @@ records:
   usage_pct: 25
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESStatusShield -> Heaven's Armor
+# 	[0] ESStatusShield(20:4280) -> Heaven's Armor
 # 	Voids status ailments for 999 turns
-# 	[1] ESDamageShield -> Limited Barrier
+# 	[1] ESDamageShield(74:4281) -> Limited Barrier
 # 	Reduce damage from all sources by 50% for 5 turns
-# 	[2] ESSkyfall -> Electromagnetic Field
+# 	[2] ESSkyfall(96:4282) -> Electromagnetic Field
 # 	Locked random skyfall +15% for 10 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] SkillSet:
 # 	Condition: When < 1% hp
-# 	[0] ESRecoverEnemy -> Holy Repair
+# 	[0] ESRecoverEnemy(86:4478) -> Holy Repair
 # 	Enemy recover 19% hp
-# 	[1] ESAttackMultihit -> Limit Break
+# 	[1] ESAttackMultihit(15:4296) -> Limit Break
 # 	Enemy action
-# [7] ESAttackMultihit -> Limit Break
+# [7] ESAttackMultihit(15:4296) -> Limit Break
 # Condition: When < 20% hp
 # Enemy action
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 27
-# [9] ESBranchFlag -> ESBranchFlag
+# [9] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 16
-# [10] ESFlagOperation -> ESFlagOperation
+# [10] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [11] ESOrbLock -> Shock Ray
+# [11] ESOrbLock(94:4284) -> Shock Ray
 # Condition: One-time use
 # Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [12] ESRandomSpawn -> Flash Bomb
+# [12] ESRandomSpawn(92:4285) -> Flash Bomb
 # Condition: One-time use & when Fire, Water, Wood, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 3 Light orbs
-# [13] ESDebuffMovetime -> Machine Glare
+# [13] ESDebuffMovetime(39:4286) -> Machine Glare
 # Condition: One-time use
 # Movetime -1s for 1 turns
-# [14] ESInactivity -> Gathering magical power
+# [14] ESInactivity(66:4287) -> Gathering magical power
 # Condition: 25% chance
 # Do nothing
-# [15] ESEndPath -> ESEndPath
+# [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [16] ESBranchFlag -> ESBranchFlag
+# [16] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 23
-# [17] ESFlagOperation -> ESFlagOperation
+# [17] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [18] ESInactivity -> Full Charge
+# [18] ESInactivity(66:4291) -> Full Charge
 # Condition: One-time use
 # Do nothing
-# [19] ESSkillDelay -> Suppressive Wave
+# [19] ESSkillDelay(89:4288) -> Suppressive Wave
 # Condition: 25% chance
 # Delay active skills by 3 turns
-# [20] ESAbsorbCombo -> Ordeal Section
+# [20] ESAbsorbCombo(67:4289) -> Ordeal Section
 # Condition: 25% chance
 # Absorb combo <= 6 damage for 1 turns
-# [21] ESSkyfall -> Jamming
+# [21] ESSkyfall(68:4290) -> Jamming
 # Condition: 25% chance
 # Jammer skyfall +20% for 1 turns
-# [22] ESEndPath -> ESEndPath
+# [22] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [23] ESFlagOperation -> ESFlagOperation
+# [23] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b110
-# [24] ESAttackMultihit -> Steel Wing
+# [24] ESAttackMultihit(15:4292) -> Steel Wing
 # Condition: One-time use
 # Enemy action
-# [25] ESBindAttack -> Paralysis Sight
+# [25] ESBindAttack(63:4293) -> Paralysis Sight
 # Condition: One-time use
 # Bind 1 random for 3 turns
-# [26] ESAttackMultihit -> Core Full Burst
+# [26] ESAttackMultihit(15:4294) -> Core Full Burst
 # Enemy action
-# [27] ESAttackUp -> Awaken Force
+# [27] ESAttackUp(17:4295) -> Awaken Force
 # Increase damage to 200% for the next 999 turns
-# [28] ESBranchFlag -> ESBranchFlag
+# [28] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 9
-# [29] ESAttributeResist -> Robot Dark Halven
+# [29] ESAttributeResist(72:4477) -> Robot Dark Halven
 # Reduce damage from Dark by 50%
-# [30] ESResolve -> Robot Resolve
+# [30] ESResolve(73:4480) -> Robot Resolve
 # Survive attacks with 1 HP when HP > 50%

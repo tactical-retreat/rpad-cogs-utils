@@ -108,47 +108,58 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 0 -        0
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESAbsorbCombo -> Here I come!
+# [4] ESAbsorbCombo(67:1516) -> Here I come!
 # Absorb combo <= 3 damage for 999 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchHP -> ESBranchHP
+# [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 10
-# [7] ESBranchFlag -> ESBranchFlag
+# [7] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 15
-# [8] ESOrbChangeAttack -> Blue Dragon Flame Moon Blade
+# [8] ESOrbChangeAttack(48:1518) -> Blue Dragon Flame Moon Blade
 # Condition: 60% chance
 # Change Random to Fire
-# [9] ESEndPath -> ESEndPath
+# [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [10] ESBranchFlag -> ESBranchFlag
+# [10] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 15
-# [11] ESFlagOperation -> ESFlagOperation
+# [11] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [12] ESBindAttribute -> Anti-Magic Jade Pearl
+# [12] ESBindAttribute(2:1520) -> Anti-Magic Jade Pearl
 # Condition: When < 50% hp
 # Bind Fire cards for 3 turns
-# [13] ESRecoverEnemy -> Time for a snack!
+# [13] ESRecoverEnemy(7:1517) -> Time for a snack!
 # Condition: When < 50% hp , one-time use
 # Enemy recover 50% hp
-# [14] ESEndPath -> ESEndPath
+# [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [15] ESRecoverEnemy -> Time for a snack!
+# [15] ESRecoverEnemy(7:1517) -> Time for a snack!
 # Condition: When < 50% hp , one-time use
 # Enemy recover 50% hp
-# [16] ESAttackMultihit -> Southern Blossom Dance Formation
+# [16] ESAttackMultihit(15:1521) -> Southern Blossom Dance Formation
 # Condition: When < 30% hp
 # Enemy action
-# [17] ESOrbChangeAttack -> Wind Blade
+# [17] ESOrbChangeAttack(48:1519) -> Wind Blade
 # Condition: 60% chance
 # Change Random to Wood
-# [18] ESEndPath -> ESEndPath
+# [18] ESEndPath(36:26) -> ESEndPath
 # end_turn

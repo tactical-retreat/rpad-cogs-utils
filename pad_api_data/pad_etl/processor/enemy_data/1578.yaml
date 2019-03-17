@@ -72,28 +72,39 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 0 -        0
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:355) -> ESPreemptive
 # Enable preempt if level 5
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 5, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESAbsorbCombo -> ***** (Dragon Ball)
+# [6] ESAbsorbCombo(67:1481) -> ***** (Dragon Ball)
 # Absorb combo <= 3 damage for 5 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBindRandomSub -> ***** (Dragon Ball)
+# [8] ESBindRandomSub(65:1484) -> ***** (Dragon Ball)
 # Condition: When < 50% hp , one-time use
 # Bind 1 random subs for 3 turns
-# [9] ESAttackMultihit -> ***** (Dragon Ball)
+# [9] ESAttackMultihit(15:1483) -> ***** (Dragon Ball)
 # Condition: When < 50% hp
 # Enemy action
-# [10] ESOrbChangeAttack -> ***** (Dragon Ball)
+# [10] ESOrbChangeAttack(48:1482) -> ***** (Dragon Ball)
 # Condition: 50% chance when < 75% hp
 # Change Random to Jammer

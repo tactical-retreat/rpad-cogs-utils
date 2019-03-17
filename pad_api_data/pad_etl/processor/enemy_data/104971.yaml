@@ -101,50 +101,61 @@ records:
   usage_pct: 50
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 4 -      100
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESAbsorbCombo -> Starviiiiing
+# [6] ESAbsorbCombo(67:12062) -> Starviiiiing
 # Absorb combo <= 5 damage for 99 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 30, target rnd 17
-# [9] ESBranchRemainingEnemies -> ESBranchRemainingEnemies
+# [9] ESBranchRemainingEnemies(120:8595) -> ESBranchRemainingEnemies
 # Branch on remaining enemies = 1, target rnd 13
-# [10] ESAttackMultihit -> Starve!
+# [10] ESAttackMultihit(15:11896) -> Starve!
 # Condition: 40% chance
 # Enemy action
-# [11] ESRandomSpawn -> Time for a snack!
+# [11] ESRandomSpawn(92:11897) -> Time for a snack!
 # Condition: 40% chance & when Fire, Water, Wood, Light, Dark, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 3 Heal orbs
-# [12] ESEndPath -> ESEndPath
+# [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [13] ESBranchFlag -> ESBranchFlag
+# [13] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 10
-# [14] ESFlagOperation -> ESFlagOperation
+# [14] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [15] ESBindAwoken -> I'm starving...
+# [15] ESBindAwoken(88:12063) -> I'm starving...
 # Bind awoken skills for 3 turns
-# [16] ESEndPath -> ESEndPath
+# [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [17] ESRecoverEnemy -> Hungry Impact
+# [17] ESRecoverEnemy(86:11899) -> Hungry Impact
 # Condition: One-time use
 # Enemy recover 100% hp
-# [18] ESOrbChangeAttack -> I can't stop drooling!
+# [18] ESOrbChangeAttack(48:11900) -> I can't stop drooling!
 # Condition: 50% chance
 # Change Random to Water
-# [19] ESOrbLock -> This is my snack!
+# [19] ESOrbLock(94:11901) -> This is my snack!
 # Condition: 50% chance
 # Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [20] ESEndPath -> ESEndPath
+# [20] ESEndPath(36:26) -> ESEndPath
 # end_turn

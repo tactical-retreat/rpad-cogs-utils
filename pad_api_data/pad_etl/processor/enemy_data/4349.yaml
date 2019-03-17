@@ -90,31 +90,42 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 3 -       11
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESInactivity -> You came...
+# [6] ESInactivity(66:9649) -> You came...
 # Do nothing
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESAbsorbCombo -> If it's a battle, I won't lose!
+# [8] ESAbsorbCombo(67:9627) -> If it's a battle, I won't lose!
 # Condition: When < 2% hp , one-time use
 # Absorb combo <= 6 damage for 1 turns
-# [9] ESAttackMultihit -> School Combo
+# [9] ESAttackMultihit(15:9629) -> School Combo
 # Condition: When < 20% hp
 # Enemy action
-# [10] ESAttackMultihit -> School Axe
+# [10] ESAttackMultihit(15:9628) -> School Axe
 # Enemy action
-# [11] ESEndPath -> ESEndPath
+# [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [12] ESResolve -> Dog Resolve
+# [12] ESResolve(73:9648) -> Dog Resolve
 # Survive attacks with 1 HP when HP > 50%

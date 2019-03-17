@@ -146,98 +146,109 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 2 -       10
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESStatusShield -> You've done well to come this far
+# 	[0] ESStatusShield(20:1903) -> You've done well to come this far
 # 	Voids status ailments for 2 turns
-# 	[1] ESAbsorbCombo -> Let's have some fun!
+# 	[1] ESAbsorbCombo(67:1909) -> Let's have some fun!
 # 	Absorb combo <= 4 damage for 999 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] SkillSet:
 # 	Condition: When < 10% hp
-# 	[0] ESGravity -> Wrath of God
+# 	[0] ESGravity(50:1908) -> Wrath of God
 # 	Player -95% HP
-# 	[1] ESRecoverEnemy -> Blessing of the Gods
+# 	[1] ESRecoverEnemy(7:1928) -> Blessing of the Gods
 # 	Enemy recover 50% hp
-# [7] ESNone -> ESNone
+# [7] ESNone(0:0) -> ESNone
 # nothing
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 40, target rnd 20
 # [9] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESColumnSpawnMulti -> Lightning of God
+# 	[0] ESColumnSpawnMulti(77:1905) -> Lightning of God
 # 	Change 3rd column to Light orbs, 4th column to Light orbs
-# 	[1] ESStatusShield -> Preening
+# 	[1] ESStatusShield(20:1915) -> Preening
 # 	Voids status ailments for 2 turns
 # [10] SkillSet:
 # 	Condition: 20% chance
-# 	[0] ESColumnSpawnMulti -> Lightning of God
+# 	[0] ESColumnSpawnMulti(77:1905) -> Lightning of God
 # 	Change 3rd column to Light orbs, 4th column to Light orbs
-# 	[1] ESAttackMultihit -> Double Slap
+# 	[1] ESAttackMultihit(15:1911) -> Double Slap
 # 	Enemy action
 # [11] SkillSet:
 # 	Condition: 20% chance
-# 	[0] ESRowSpawnMulti -> Zeus Blade
+# 	[0] ESRowSpawnMulti(79:1906) -> Zeus Blade
 # 	Change 4th row to Light orbs
-# 	[1] ESOrbChangeAttack -> Mischief by God
+# 	[1] ESOrbChangeAttack(48:1912) -> Mischief by God
 # 	Change Light to Jammer
 # [12] SkillSet:
 # 	Condition: 20% chance
-# 	[0] ESRowSpawnMulti -> Zeus Blade
+# 	[0] ESRowSpawnMulti(79:1906) -> Zeus Blade
 # 	Change 4th row to Light orbs
-# 	[1] ESAttackMultihit -> Double Slap
+# 	[1] ESAttackMultihit(15:1911) -> Double Slap
 # 	Enemy action
 # [13] SkillSet:
 # 	Condition: 20% chance
-# 	[0] ESColumnSpawnMulti -> Lightning of God
+# 	[0] ESColumnSpawnMulti(77:1905) -> Lightning of God
 # 	Change 3rd column to Light orbs, 4th column to Light orbs
-# 	[1] ESBindAttack -> Diabolic Embrace
+# 	[1] ESBindAttack(63:1916) -> Diabolic Embrace
 # 	Bind 1 subs for 1~2 turns
 # [14] SkillSet:
 # 	Condition: 20% chance
-# 	[0] ESRowSpawnMulti -> Zeus Blade
+# 	[0] ESRowSpawnMulti(79:1906) -> Zeus Blade
 # 	Change 4th row to Light orbs
-# 	[1] ESGravity -> Ultra Gravity
+# 	[1] ESGravity(50:1910) -> Ultra Gravity
 # 	Player -99% HP
-# [15] ESEndPath -> ESEndPath
+# [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [16] ESBranchFlag -> ESBranchFlag
+# [16] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 8
-# [17] ESFlagOperation -> ESFlagOperation
+# [17] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [18] SkillSet:
-# 	[0] ESBindTyping -> Glare of Zeus
+# 	[0] ESBindTyping(3:1904) -> Glare of Zeus
 # 	Bind God cards for 2~4 turns
-# 	[1] ESGravity -> Ultra Gravity
+# 	[1] ESGravity(50:1910) -> Ultra Gravity
 # 	Player -99% HP
-# [19] ESEndPath -> ESEndPath
+# [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [20] ESBranchFlag -> ESBranchFlag
+# [20] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 24
-# [21] ESFlagOperation -> ESFlagOperation
+# [21] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [22] SkillSet:
-# 	[0] ESBindTyping -> Glare of Zeus
+# 	[0] ESBindTyping(3:1904) -> Glare of Zeus
 # 	Bind God cards for 2~4 turns
-# 	[1] ESInactivity -> Time to finish you off!
+# 	[1] ESInactivity(66:1913) -> Time to finish you off!
 # 	Do nothing
-# [23] ESEndPath -> ESEndPath
+# [23] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [24] SkillSet:
-# 	[0] ESAttackMultihit -> Super Nova
+# 	[0] ESAttackMultihit(15:1907) -> Super Nova
 # 	Enemy action
-# 	[1] ESAttackMultihit -> Graviton Bomb
+# 	[1] ESAttackMultihit(15:1914) -> Graviton Bomb
 # 	Enemy action
-# [25] ESEndPath -> ESEndPath
+# [25] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [26] ESResolve -> *****
+# [26] ESResolve(73:1879) -> *****
 # Survive attacks with 1 HP when HP > 50%

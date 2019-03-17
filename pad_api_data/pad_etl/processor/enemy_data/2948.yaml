@@ -105,66 +105,77 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESDamageShield -> Atmospheric Barrier
+# 	[0] ESDamageShield(74:7119) -> Atmospheric Barrier
 # 	Reduce damage from all sources by 99% for 6 turns
-# 	[1] ESAttackMultihit -> Jupiter Judgment
+# 	[1] ESAttackMultihit(15:7120) -> Jupiter Judgment
 # 	Enemy action
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESStatusShield -> Protection of the Gods
+# 	[0] ESStatusShield(20:7122) -> Protection of the Gods
 # 	Voids status ailments for 999 turns
-# 	[1] ESAbsorbThreshold -> Storm Vesture
+# 	[1] ESAbsorbThreshold(87:7123) -> Storm Vesture
 # 	Absorb damage >= 3000000 damage for 5 turns
-# 	[2] ESOrbLock -> Shall we begin?
+# 	[2] ESOrbLock(94:7124) -> Shall we begin?
 # 	Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [7] ESBranchFlag -> ESBranchFlag
+# [7] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 11
-# [8] ESFlagOperation -> ESFlagOperation
+# [8] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [9] ESBoardChangeAttackBits -> Jupiter Genesis
+# [9] ESBoardChangeAttackBits(85:7125) -> Jupiter Genesis
 # Change all orbs to Wood
-# [10] ESEndPath -> ESEndPath
+# [10] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [11] ESBranchFlag -> ESBranchFlag
+# [11] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 15
-# [12] ESFlagOperation -> ESFlagOperation
+# [12] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [13] ESBoardChangeAttackBits -> Jupiter Genesis
+# [13] ESBoardChangeAttackBits(85:7125) -> Jupiter Genesis
 # Change all orbs to Wood
-# [14] ESEndPath -> ESEndPath
+# [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [15] ESBranchFlag -> ESBranchFlag
+# [15] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 19
-# [16] ESFlagOperation -> ESFlagOperation
+# [16] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
-# [17] ESBoardChangeAttackBits -> Jupiter Genesis
+# [17] ESBoardChangeAttackBits(85:7125) -> Jupiter Genesis
 # Change all orbs to Wood
-# [18] ESEndPath -> ESEndPath
+# [18] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [19] ESBranchFlag -> ESBranchFlag
+# [19] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 16, target rnd 23
-# [20] ESFlagOperation -> ESFlagOperation
+# [20] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11111
-# [21] ESBoardChangeAttackBits -> Jupiter Genesis
+# [21] ESBoardChangeAttackBits(85:7125) -> Jupiter Genesis
 # Change all orbs to Wood
-# [22] ESEndPath -> ESEndPath
+# [22] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [23] ESFlagOperation -> ESFlagOperation
+# [23] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b11110
-# [24] ESOrbLock -> Catching breath
+# [24] ESOrbLock(94:7126) -> Catching breath
 # Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [25] ESInactivity -> Catching breath
+# [25] ESInactivity(66:7127) -> Catching breath
 # Do nothing
-# [26] ESEndPath -> ESEndPath
+# [26] ESEndPath(36:26) -> ESEndPath
 # end_turn

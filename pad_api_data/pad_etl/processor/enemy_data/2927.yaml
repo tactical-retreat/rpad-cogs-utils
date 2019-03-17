@@ -208,108 +208,119 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESDamageShield -> Cross On!
+# 	[0] ESDamageShield(74:4659) -> Cross On!
 # 	Reduce damage from all sources by 50% for 3 turns
-# 	[1] ESBoardChangeAttackBits -> Flame Falcon Blinding Light
+# 	[1] ESBoardChangeAttackBits(85:4660) -> Flame Falcon Blinding Light
 # 	Change all orbs to Fire, Water, Wood, Light, Dark
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] SkillSet:
 # 	Condition: When < 20% hp , one-time use
-# 	[0] ESStatusShield -> Sky God Protection
+# 	[0] ESStatusShield(20:4662) -> Sky God Protection
 # 	Voids status ailments for 999 turns
-# 	[1] ESBoardChangeAttackBits -> Flame Falcon Blinding Light
+# 	[1] ESBoardChangeAttackBits(85:4660) -> Flame Falcon Blinding Light
 # 	Change all orbs to Fire, Water, Wood, Light, Dark
-# 	[2] ESAttackMultihit -> 10 combos!!
+# 	[2] ESAttackMultihit(15:4656) -> 10 combos!!
 # 	Enemy action
 # [7] SkillSet:
 # 	Condition: When < 20% hp
-# 	[0] ESBoardChangeAttackBits -> Flame Falcon Blinding Light
+# 	[0] ESBoardChangeAttackBits(85:4660) -> Flame Falcon Blinding Light
 # 	Change all orbs to Fire, Water, Wood, Light, Dark
-# 	[1] ESAttackMultihit -> 10 combos!!
+# 	[1] ESAttackMultihit(15:4656) -> 10 combos!!
 # 	Enemy action
 # [8] SkillSet:
 # 	Condition: When < 50% hp , one-time use
-# 	[0] ESStatusShield -> Sky God Protection
+# 	[0] ESStatusShield(20:4662) -> Sky God Protection
 # 	Voids status ailments for 999 turns
-# 	[1] ESBindAttack -> Dragon Summoning!!!
+# 	[1] ESBindAttack(63:4667) -> Dragon Summoning!!!
 # 	Bind 4 subs for 3 turns
 # [9] SkillSet:
 # 	Condition: When < 80% hp , one-time use
-# 	[0] ESStatusShield -> Sky God Protection
+# 	[0] ESStatusShield(20:4662) -> Sky God Protection
 # 	Voids status ailments for 999 turns
-# 	[1] ESOrbChangeAttack -> Dragon Summoning!!!
+# 	[1] ESOrbChangeAttack(48:4665) -> Dragon Summoning!!!
 # 	Change Random to Jammer
 # [10] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESStatusShield -> Sky God Protection
+# 	[0] ESStatusShield(20:4662) -> Sky God Protection
 # 	Voids status ailments for 999 turns
-# 	[1] ESAttackMultihit -> Dragon Summoning!!!
+# 	[1] ESAttackMultihit(15:4663) -> Dragon Summoning!!!
 # 	Enemy action
-# [11] ESBranchFlag -> ESBranchFlag
+# [11] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 14
-# [12] ESFlagOperation -> ESFlagOperation
+# [12] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [13] SkillSet:
-# 	[0] ESDebuffMovetime -> Eye of Wadjet
+# 	[0] ESDebuffMovetime(39:4671) -> Eye of Wadjet
 # 	Movetime -2s for 1 turns
-# 	[1] ESOrbChangeAttack -> Flame Falcon's Furious Attack
+# 	[1] ESOrbChangeAttack(48:4672) -> Flame Falcon's Furious Attack
 # 	Change Random to Fire
-# [14] ESBranchFlag -> ESBranchFlag
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 19
-# [15] ESFlagOperation -> ESFlagOperation
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [16] SkillSet:
 # 	Condition: 34% chance
-# 	[0] ESAbsorbCombo -> Five Origins' Sanctuary
+# 	[0] ESAbsorbCombo(67:4674) -> Five Origins' Sanctuary
 # 	Absorb combo <= 4 damage for 2 turns
-# 	[1] ESRowSpawnMulti -> Inferno Blast
+# 	[1] ESRowSpawnMulti(79:4675) -> Inferno Blast
 # 	Change 1st row to Fire orbs
 # [17] SkillSet:
 # 	Condition: 50% chance
-# 	[0] ESAbsorbCombo -> Five Origins' Sanctuary
+# 	[0] ESAbsorbCombo(67:4674) -> Five Origins' Sanctuary
 # 	Absorb combo <= 4 damage for 2 turns
-# 	[1] ESRowSpawnMulti -> Mirage Blade
+# 	[1] ESRowSpawnMulti(79:4676) -> Mirage Blade
 # 	Change 1st row to Water orbs
 # [18] SkillSet:
-# 	[0] ESAbsorbCombo -> Five Origins' Sanctuary
+# 	[0] ESAbsorbCombo(67:4674) -> Five Origins' Sanctuary
 # 	Absorb combo <= 4 damage for 2 turns
-# 	[1] ESRowSpawnMulti -> Wind Spiral
+# 	[1] ESRowSpawnMulti(79:4677) -> Wind Spiral
 # 	Change 1st row to Wood orbs
-# [19] ESBranchFlag -> ESBranchFlag
+# [19] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 22
-# [20] ESFlagOperation -> ESFlagOperation
+# [20] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
 # [21] SkillSet:
-# 	[0] ESDebuffMovetime -> Eye of Wadjet
+# 	[0] ESDebuffMovetime(39:4671) -> Eye of Wadjet
 # 	Movetime -2s for 1 turns
-# 	[1] ESOrbChangeAttack -> Flame Falcon's Furious Attack
+# 	[1] ESOrbChangeAttack(48:4672) -> Flame Falcon's Furious Attack
 # 	Change Random to Fire
-# [22] ESFlagOperation -> ESFlagOperation
+# [22] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b1110
 # [23] SkillSet:
 # 	Condition: 34% chance
-# 	[0] ESBoardChange -> Five Origins' Tuning
+# 	[0] ESBoardChange(84:4681) -> Five Origins' Tuning
 # 	Change all orbs to Fire, Water, Wood, Light, Dark
-# 	[1] ESRowSpawnMulti -> Inferno Blast
+# 	[1] ESRowSpawnMulti(79:4675) -> Inferno Blast
 # 	Change 1st row to Fire orbs
 # [24] SkillSet:
 # 	Condition: 50% chance
-# 	[0] ESBoardChange -> Five Origins' Tuning
+# 	[0] ESBoardChange(84:4681) -> Five Origins' Tuning
 # 	Change all orbs to Fire, Water, Wood, Light, Dark
-# 	[1] ESRowSpawnMulti -> Mirage Blade
+# 	[1] ESRowSpawnMulti(79:4676) -> Mirage Blade
 # 	Change 1st row to Water orbs
 # [25] SkillSet:
-# 	[0] ESBoardChange -> Five Origins' Tuning
+# 	[0] ESBoardChange(84:4681) -> Five Origins' Tuning
 # 	Change all orbs to Fire, Water, Wood, Light, Dark
-# 	[1] ESRowSpawnMulti -> Wind Spiral
+# 	[1] ESRowSpawnMulti(79:4677) -> Wind Spiral
 # 	Change 1st row to Wood orbs

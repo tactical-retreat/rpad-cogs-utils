@@ -108,46 +108,57 @@ records:
   usage_pct: 25
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 4 -      100
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [6] SkillSet:
-# 	[0] ESRecoverPlayer -> Noko Smile
+# 	[0] ESRecoverPlayer(55:11926) -> Noko Smile
 # 	Player recover 100% hp
-# 	[1] ESDebuffMovetime -> Here is some happiness!
+# 	[1] ESDebuffMovetime(39:11927) -> Here is some happiness!
 # 	Movetime 150% for 5 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 14
-# [9] ESAttackMultihit -> Kapu!
+# [9] ESAttackMultihit(15:11928) -> Kapu!
 # Condition: 25% chance
 # Enemy action
-# [10] ESOrbChangeAttack -> The clovers are increasing!
+# [10] ESOrbChangeAttack(48:11929) -> The clovers are increasing!
 # Condition: 25% chance
 # Change Random to Wood
-# [11] ESRowSpawnMulti -> I'm so happy!
+# [11] ESRowSpawnMulti(79:11930) -> I'm so happy!
 # Condition: 25% chance
 # Change 3rd row to Heal orbs
-# [12] ESBindRandomSub -> Let's all be friends!
+# [12] ESBindRandomSub(65:11931) -> Let's all be friends!
 # Condition: One-time use
 # Bind 4 random subs for 1 turns
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [14] ESBranchFlag -> ESBranchFlag
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 9
-# [15] ESFlagOperation -> ESFlagOperation
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [16] ESAttackUp -> Kyupiiin!
+# [16] ESAttackUp(17:11932) -> Kyupiiin!
 # Increase damage to 150% for the next 5 turns
-# [17] ESEndPath -> ESEndPath
+# [17] ESEndPath(36:26) -> ESEndPath
 # end_turn

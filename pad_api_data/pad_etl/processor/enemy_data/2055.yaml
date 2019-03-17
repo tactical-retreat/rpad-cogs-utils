@@ -90,67 +90,78 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:355) -> ESPreemptive
 # Enable preempt if level 5
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 5, target rnd 5
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESEndPath -> ESEndPath
+# [4] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [5] ESBranchFlag -> ESBranchFlag
+# [5] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 10
-# [6] ESInactivity -> Grr...gh...agh...
+# [6] ESInactivity(66:2184) -> Grr...gh...agh...
 # Condition: One-time use
 # Do nothing
-# [7] ESFlagOperation -> ESFlagOperation
+# [7] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [8] ESAttackMultihit -> Meteor
+# [8] ESAttackMultihit(15:2188) -> Meteor
 # Condition: When < 50% hp
 # Enemy action
-# [9] ESEndPath -> ESEndPath
+# [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [10] ESBranchFlag -> ESBranchFlag
+# [10] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 14
-# [11] ESFlagOperation -> ESFlagOperation
+# [11] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [12] ESInactivity -> Gh-gh-gh-gh...
+# [12] ESInactivity(66:2185) -> Gh-gh-gh-gh...
 # Do nothing
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [14] ESBranchFlag -> ESBranchFlag
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 19
-# [15] ESFlagOperation -> ESFlagOperation
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [16] EnemySkillUnknown -> *****
+# [16] EnemySkillUnknown(93:2043) -> *****
 # unknown
-# [17] ESAttackMultihit -> Big Bang
+# [17] ESAttackMultihit(15:2111) -> Big Bang
 # Enemy action
-# [18] ESEndPath -> ESEndPath
+# [18] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [19] ESBranchFlag -> ESBranchFlag
+# [19] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 24
-# [20] ESFlagOperation -> ESFlagOperation
+# [20] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
-# [21] ESGravity -> Whirl
+# [21] ESGravity(50:2110) -> Whirl
 # Condition: When < 50% hp
 # Player -99% HP
-# [22] ESOrbChangeAttack -> Black Hole
+# [22] ESOrbChangeAttack(48:2186) -> Black Hole
 # Change Random to Jammer
-# [23] ESEndPath -> ESEndPath
+# [23] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [24] ESFlagOperation -> ESFlagOperation
+# [24] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b1110
-# [25] ESAttackMultihit -> Meteor
+# [25] ESAttackMultihit(15:2188) -> Meteor
 # Condition: When < 50% hp
 # Enemy action
-# [26] ESPoisonChangeRandomAttack -> Bio
+# [26] ESPoisonChangeRandomAttack(64:2109) -> Bio
 # Change Random 5 to Poison
-# [27] ESEndPath -> ESEndPath
+# [27] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [28] SkillSet:
 # 	Condition: On death
-# 	[0] ESInactivity -> I will never die...
+# 	[0] ESInactivity(66:2187) -> I will never die...
 # 	Do nothing

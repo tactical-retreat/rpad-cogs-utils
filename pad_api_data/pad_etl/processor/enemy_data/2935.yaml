@@ -72,26 +72,37 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESDamageShield -> Water Blade's Iron Skin
+# [4] ESDamageShield(74:4615) -> Water Blade's Iron Skin
 # Reduce damage from all sources by 50% for 3 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBindAttack -> Freezing Feather
+# [6] ESBindAttack(63:4618) -> Freezing Feather
 # Condition: When < 50% hp , one-time use
 # Bind 4 subs for 3 turns
-# [7] ESRowSpawnMulti -> Mirage Blade
+# [7] ESRowSpawnMulti(79:4619) -> Mirage Blade
 # Condition: When < 50% hp
 # Change 1st row to Water orbs
-# [8] ESOrbChangeAttack -> Beauty of the Four Seasons
+# [8] ESOrbChangeAttack(48:4616) -> Beauty of the Four Seasons
 # Change Heal to Water
-# [9] ESRandomSpawn -> Ice Sword
+# [9] ESRandomSpawn(92:4617) -> Ice Sword
 # Condition: When fire, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board
 # Spawn random 9 Water orbs

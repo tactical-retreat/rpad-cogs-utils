@@ -647,85 +647,96 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 63 -   111111
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
 # 	Condition: 33% chance
-# 	[0] ESStatusShield -> Let's have some fun
+# 	[0] ESStatusShield(20:2838) -> Let's have some fun
 # 	Voids status ailments for 999 turns
-# 	[1] ESAbsorbAttribute -> Dragon's Origin
+# 	[1] ESAbsorbAttribute(53:2839) -> Dragon's Origin
 # 	Absorb Fire, Light, Dark damage for 3 turns
 # [5] SkillSet:
 # 	Condition: 34% chance
-# 	[0] ESStatusShield -> Let's have some fun
+# 	[0] ESStatusShield(20:2838) -> Let's have some fun
 # 	Voids status ailments for 999 turns
-# 	[1] ESAbsorbAttribute -> Dragon's Origin
+# 	[1] ESAbsorbAttribute(53:2840) -> Dragon's Origin
 # 	Absorb Water, Light, Dark damage for 3 turns
 # [6] SkillSet:
 # 	Condition: 33% chance
-# 	[0] ESStatusShield -> Let's have some fun
+# 	[0] ESStatusShield(20:2838) -> Let's have some fun
 # 	Voids status ailments for 999 turns
-# 	[1] ESAbsorbAttribute -> Dragon's Origin
+# 	[1] ESAbsorbAttribute(53:2841) -> Dragon's Origin
 # 	Absorb Wood, Light, Dark damage for 3 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 15, target rnd 26
-# [9] ESBranchFlag -> ESBranchFlag
+# [9] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 19
-# [10] ESFlagOperation -> ESFlagOperation
+# [10] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [11] ESInactivity -> Draco Summon-Dragon Portal
+# [11] ESInactivity(66:2845) -> Draco Summon-Dragon Portal
 # Condition: One-time use
 # Do nothing
-# [12] ESDamageShield -> Fair Skies Guardian Dragon - Shield
+# [12] ESDamageShield(74:2846) -> Fair Skies Guardian Dragon - Shield
 # Condition: One-time use
 # Reduce damage from all sources by 50% for 2 turns
-# [13] ESAbsorbCombo -> Fair Skies Guardian Dragon - Skill
+# [13] ESAbsorbCombo(67:2847) -> Fair Skies Guardian Dragon - Skill
 # Condition: One-time use
 # Absorb combo <= 6 damage for 2 turns
-# [14] ESVoidShield -> Fair Skies Guardian Dragon - Balance
+# [14] ESVoidShield(71:2848) -> Fair Skies Guardian Dragon - Balance
 # Condition: One-time use
 # Void damage >= 800000 for 2 turns
-# [15] ESAbsorbThreshold -> Fair Skies Guardian Dragon - Judge
+# [15] ESAbsorbThreshold(87:2849) -> Fair Skies Guardian Dragon - Judge
 # Condition: One-time use
 # Absorb damage >= 1500000 damage for 2 turns
-# [16] ESFlagOperation -> ESFlagOperation
+# [16] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b10
 # [17] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESAttackUp -> Draggie Knight, Zeal's Enhancement
+# 	[0] ESAttackUp(17:2850) -> Draggie Knight, Zeal's Enhancement
 # 	Increase damage to 250% for the next 1 turns
-# 	[1] ESDamageShield -> Draggie Shield
+# 	[1] ESDamageShield(74:2851) -> Draggie Shield
 # 	Reduce damage from all sources by 75% for 1 turns
-# [18] ESBranchFlag -> ESBranchFlag
+# [18] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 26
-# [19] ESFlagOperation -> ESFlagOperation
+# [19] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b10
-# [20] ESBlind -> Cattle Mutilation
+# [20] ESBlind(62:2854) -> Cattle Mutilation
 # Condition: 20% chance
 # Blind all orbs on the board
-# [21] ESOrbLock -> Glass Leaf
+# [21] ESOrbLock(94:2855) -> Glass Leaf
 # Condition: 20% chance
 # Lock all Wood orbs
-# [22] ESPoisonChangeRandomAttack -> Genocide Missile Type 0
+# [22] ESPoisonChangeRandomAttack(64:2856) -> Genocide Missile Type 0
 # Condition: 20% chance
 # Change Random 6 to Poison
-# [23] ESOrbChangeAttack -> Dark Rumble
+# [23] ESOrbChangeAttack(48:2857) -> Dark Rumble
 # Condition: 20% chance
 # Change Random to Dark
-# [24] ESBoardChangeAttackBits -> Brilliant Dragon Skull
+# [24] ESBoardChangeAttackBits(85:2858) -> Brilliant Dragon Skull
 # Condition: 20% chance
 # Change all orbs to Fire, Water, Wood, Light, Dark
-# [25] ESEndPath -> ESEndPath
+# [25] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [26] ESFlagOperation -> ESFlagOperation
+# [26] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b10
-# [27] ESAttackMultihit -> Alt. Five Origin Dragon Star Attack
+# [27] ESAttackMultihit(15:2853) -> Alt. Five Origin Dragon Star Attack
 # Enemy action

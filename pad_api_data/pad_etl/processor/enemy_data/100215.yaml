@@ -99,31 +99,42 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESBlindStickyFixed -> Black Breath
+# [4] ESBlindStickyFixed(98:9366) -> Black Breath
 # Blind orbs in specific positions for 3 turns
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchHP -> ESBranchHP
+# [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 30, target rnd 9
-# [7] ESRandomSpawn -> Blood Needle
+# [7] ESRandomSpawn(92:9368) -> Blood Needle
 # Condition: 50% chance & when Fire, Water, Wood, Light, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 6 Dark orbs
-# [8] ESAttackMultihit -> Triple Fang
+# [8] ESAttackMultihit(15:9373) -> Triple Fang
 # Enemy action
-# [9] ESInactivity -> Mouth opened wide
+# [9] ESInactivity(66:9371) -> Mouth opened wide
 # Condition: One-time use
 # Do nothing
-# [10] ESAttackMultihit -> Chaos Ray
+# [10] ESAttackMultihit(15:9372) -> Chaos Ray
 # Enemy action
-# [11] ESEndPath -> ESEndPath
+# [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [12] ESTurnChangePassive -> Enemy's next turn changed
+# [12] ESTurnChangePassive(106:9370) -> Enemy's next turn changed
 # Enemy turn counter change to 1 when HP <= 30%

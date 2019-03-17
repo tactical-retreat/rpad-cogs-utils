@@ -188,45 +188,56 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 0 -        0
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:355) -> ESPreemptive
 # Enable preempt if level 5
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESJammerChangeRandom -> ***** (Saint Seiya)
+# [4] ESJammerChangeRandom(13:1187) -> ***** (Saint Seiya)
 # Change Random 2 to Jammer
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchHP -> ESBranchHP
+# [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 10
-# [7] ESBindAttack -> ***** (Saint Seiya)
+# [7] ESBindAttack(63:1189) -> ***** (Saint Seiya)
 # Condition: When < 75% hp , one-time use
 # Bind 3 subs for 1~3 turns
-# [8] ESAttackMultihit -> ***** (Saint Seiya)
+# [8] ESAttackMultihit(15:1188) -> ***** (Saint Seiya)
 # Enemy action
-# [9] ESEndPath -> ESEndPath
+# [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [10] ESBranchFlag -> ESBranchFlag
+# [10] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 14
-# [11] ESFlagOperation -> ESFlagOperation
+# [11] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [12] ESInactivity -> ***** (Saint Seiya)
+# [12] ESInactivity(66:1190) -> ***** (Saint Seiya)
 # Condition: When < 50% hp
 # Do nothing
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [14] ESBranchFlag -> ESBranchFlag
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 18
-# [15] ESFlagOperation -> ESFlagOperation
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [16] ESInactivity -> ***** (Saint Seiya)
+# [16] ESInactivity(66:1191) -> ***** (Saint Seiya)
 # Condition: When < 50% hp
 # Do nothing
-# [17] ESEndPath -> ESEndPath
+# [17] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [18] ESAttackMultihit -> ***** (Saint Seiya)
+# [18] ESAttackMultihit(15:1192) -> ***** (Saint Seiya)
 # Condition: When < 50% hp
 # Enemy action

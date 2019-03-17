@@ -157,65 +157,76 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 2 -       10
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [6] SkillSet:
-# 	[0] ESStatusShield -> Northern Lightning's Divine Protection
+# 	[0] ESStatusShield(20:5678) -> Northern Lightning's Divine Protection
 # 	Voids status ailments for 1 turns
-# 	[1] ESBoardChangeAttackBits -> Purifying Thunderplains
+# 	[1] ESBoardChangeAttackBits(85:5679) -> Purifying Thunderplains
 # 	Change all orbs to Fire, Water, Wood, Light, Dark, Heal
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchFlag -> ESBranchFlag
+# [8] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 24
-# [9] ESBranchHP -> ESBranchHP
+# [9] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 10, target rnd 21
-# [10] ESBranchFlag -> ESBranchFlag
+# [10] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 17
-# [11] ESFlagOperation -> ESFlagOperation
+# [11] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [12] ESBranchHP -> ESBranchHP
+# [12] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 70, target rnd 15
-# [13] ESSkillDelay -> Diverging Flash
+# [13] ESSkillDelay(89:5680) -> Diverging Flash
 # Delay active skills by 3 turns
-# [14] ESEndPath -> ESEndPath
+# [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [15] ESBindTarget -> Converging Flash
+# [15] ESBindTarget(54:5681) -> Converging Flash
 # Bind 1 own leader for 2 turns
-# [16] ESEndPath -> ESEndPath
+# [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [17] ESOrbChangeAttack -> Bolt Vajra
+# [17] ESOrbChangeAttack(48:5688) -> Bolt Vajra
 # Condition: When < 70% hp , one-time use
 # Change Heal to Jammer
-# [18] ESRandomSpawn -> Thunder Vajra
+# [18] ESRandomSpawn(92:5686) -> Thunder Vajra
 # Condition: 40% chance & when Fire, Water, Wood, Light, Dark, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 5 Heal orbs
-# [19] ESOrbLock -> Lightning Vajra
+# [19] ESOrbLock(94:5687) -> Lightning Vajra
 # Lock 5 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
-# [20] ESEndPath -> ESEndPath
+# [20] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [21] ESFlagOperation -> ESFlagOperation
+# [21] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [22] SkillSet:
-# 	[0] ESRecoverEnemy -> Crisis Wisdom
+# 	[0] ESRecoverEnemy(86:5683) -> Crisis Wisdom
 # 	Enemy recover 10% hp
-# 	[1] ESBindRandom -> Lightning strikes the field
+# 	[1] ESBindRandom(1:5684) -> Lightning strikes the field
 # 	Bind 6 random cards for 4 turns
-# [23] ESEndPath -> ESEndPath
+# [23] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [24] ESAttackMultihit -> Six Flash Thunder Blade
+# [24] ESAttackMultihit(15:5685) -> Six Flash Thunder Blade
 # Enemy action
-# [25] ESEndPath -> ESEndPath
+# [25] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [26] ESResolve -> Resolve Light Wisdom King Dragon
+# [26] ESResolve(73:5689) -> Resolve Light Wisdom King Dragon
 # Survive attacks with 1 HP when HP > 71%

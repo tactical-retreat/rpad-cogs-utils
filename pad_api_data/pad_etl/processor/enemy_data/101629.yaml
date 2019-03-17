@@ -119,44 +119,55 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
-# 	[0] ESAbsorbCombo -> Cauchemar Phantom
+# 	[0] ESAbsorbCombo(67:5552) -> Cauchemar Phantom
 # 	Absorb combo <= 5 damage for 999 turns
-# 	[1] ESFixedStart -> Cauchemar Road
+# 	[1] ESFixedStart(101:5558) -> Cauchemar Road
 # 	Fix orb movement starting point to random position on the board
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBranchHP -> ESBranchHP
+# [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 12
-# [7] ESOrbChangeAttack -> Cauchemar Tempest
+# [7] ESOrbChangeAttack(48:5557) -> Cauchemar Tempest
 # Condition: When < 20% hp
 # Change Random to Jammer
-# [8] ESOrbChangeAttack -> Cauchemar Illusion
+# [8] ESOrbChangeAttack(48:5556) -> Cauchemar Illusion
 # Condition: 40% chance
 # Change Heal to Jammer
-# [9] ESBindAttack -> Cauchemar Nightmare
+# [9] ESBindAttack(63:5555) -> Cauchemar Nightmare
 # Condition: One-time use
 # Bind 3 subs for 2 turns
-# [10] ESAttackMultihit -> Cauchemar Combat
+# [10] ESAttackMultihit(15:5553) -> Cauchemar Combat
 # Enemy action
-# [11] ESEndPath -> ESEndPath
+# [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [12] ESBranchFlag -> ESBranchFlag
+# [12] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 7
-# [13] ESFlagOperation -> ESFlagOperation
+# [13] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [14] SkillSet:
-# 	[0] ESDebuffMovetime -> Astaroth's Whispers
+# 	[0] ESDebuffMovetime(39:5554) -> Astaroth's Whispers
 # 	Movetime -2s for 2 turns
-# 	[1] ESBlindStickyRandom -> Cauchemar Darkness
+# 	[1] ESBlindStickyRandom(97:5559) -> Cauchemar Darkness
 # 	Blind random 5 orbs for 3 turns
-# [15] ESEndPath -> ESEndPath
+# [15] ESEndPath(36:26) -> ESEndPath
 # end_turn

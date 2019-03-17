@@ -236,121 +236,132 @@ records:
   usage_pct: 20
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 2 -       10
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 10
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] SkillSet:
 # 	Condition: 20% chance
-# 	[0] ESAbsorbAttribute -> Singularity
+# 	[0] ESAbsorbAttribute(53:3637) -> Singularity
 # 	Absorb Light, Dark damage for 2 turns
-# 	[1] ESStatusShield -> Machinery Body
+# 	[1] ESStatusShield(20:3565) -> Machinery Body
 # 	Voids status ailments for 999 turns
 # [5] SkillSet:
 # 	Condition: 20% chance
-# 	[0] ESAbsorbAttribute -> Singularity
+# 	[0] ESAbsorbAttribute(53:3637) -> Singularity
 # 	Absorb Light, Dark damage for 2 turns
-# 	[1] ESStatusShield -> Machinery Body
+# 	[1] ESStatusShield(20:3565) -> Machinery Body
 # 	Voids status ailments for 999 turns
 # [6] SkillSet:
 # 	Condition: 20% chance
-# 	[0] ESAbsorbAttribute -> Singularity
+# 	[0] ESAbsorbAttribute(53:3637) -> Singularity
 # 	Absorb Light, Dark damage for 2 turns
-# 	[1] ESStatusShield -> Machinery Body
+# 	[1] ESStatusShield(20:3565) -> Machinery Body
 # 	Voids status ailments for 999 turns
 # [7] SkillSet:
 # 	Condition: 20% chance
-# 	[0] ESAbsorbAttribute -> Singularity
+# 	[0] ESAbsorbAttribute(53:3637) -> Singularity
 # 	Absorb Light, Dark damage for 2 turns
-# 	[1] ESStatusShield -> Machinery Body
+# 	[1] ESStatusShield(20:3565) -> Machinery Body
 # 	Voids status ailments for 999 turns
 # [8] SkillSet:
 # 	Condition: 20% chance
-# 	[0] ESAbsorbAttribute -> Singularity
+# 	[0] ESAbsorbAttribute(53:3637) -> Singularity
 # 	Absorb Light, Dark damage for 2 turns
-# 	[1] ESStatusShield -> Machinery Body
+# 	[1] ESStatusShield(20:3565) -> Machinery Body
 # 	Voids status ailments for 999 turns
-# [9] ESEndPath -> ESEndPath
+# [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [10] ESGravity -> Dark Railgun
+# [10] ESGravity(50:3572) -> Dark Railgun
 # Condition: When < 20% hp
 # Player -1000% HP
-# [11] ESBranchHP -> ESBranchHP
+# [11] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 24
-# [12] ESBranchFlag -> ESBranchFlag
+# [12] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 17
-# [13] ESFlagOperation -> ESFlagOperation
+# [13] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [14] ESSkillDelay -> Black Weapon
+# [14] ESSkillDelay(89:3566) -> Black Weapon
 # Condition: 33% chance
 # Delay active skills by 3 turns
-# [15] ESOrbLock -> Black Weapon
+# [15] ESOrbLock(94:3569) -> Black Weapon
 # Condition: 50% chance
 # Lock 8 random Fire, Water, Wood, Light, Dark, Heal, Jammer orbs
-# [16] ESRandomSpawn -> Black Weapon
+# [16] ESRandomSpawn(92:3567) -> Black Weapon
 # Condition: When fire, water, wood, light, dark, heal, jammer, poison orbs are on the board
 # Spawn random 3 Mortal Poison orbs
-# [17] ESFlagOperation -> ESFlagOperation
+# [17] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b110
 # [18] SkillSet:
 # 	Condition: 20% chance
-# 	[0] ESAbsorbAttribute -> Elemental Absorber
+# 	[0] ESAbsorbAttribute(53:3593) -> Elemental Absorber
 # 	Absorb Fire damage for 2 turns
-# 	[1] ESOrbChangeAttack -> Flare Combat
+# 	[1] ESOrbChangeAttack(48:3608) -> Flare Combat
 # 	Change Random to Fire
 # [19] SkillSet:
 # 	Condition: 20% chance
-# 	[0] ESAbsorbAttribute -> Elemental Absorber
+# 	[0] ESAbsorbAttribute(53:3594) -> Elemental Absorber
 # 	Absorb Water damage for 2 turns
-# 	[1] ESOrbChangeAttack -> Aqua Combat
+# 	[1] ESOrbChangeAttack(48:3609) -> Aqua Combat
 # 	Change Random to Water
 # [20] SkillSet:
 # 	Condition: 20% chance
-# 	[0] ESAbsorbAttribute -> Elemental Absorber
+# 	[0] ESAbsorbAttribute(53:3595) -> Elemental Absorber
 # 	Absorb Wood damage for 2 turns
-# 	[1] ESOrbChangeAttack -> Earth Combat
+# 	[1] ESOrbChangeAttack(48:3610) -> Earth Combat
 # 	Change Random to Wood
 # [21] SkillSet:
 # 	Condition: 20% chance
-# 	[0] ESAbsorbAttribute -> Elemental Absorber
+# 	[0] ESAbsorbAttribute(53:3596) -> Elemental Absorber
 # 	Absorb Light damage for 2 turns
-# 	[1] ESOrbChangeAttack -> Light Combat
+# 	[1] ESOrbChangeAttack(48:3611) -> Light Combat
 # 	Change Random to Light
 # [22] SkillSet:
 # 	Condition: 20% chance
-# 	[0] ESAbsorbAttribute -> Elemental Absorber
+# 	[0] ESAbsorbAttribute(53:3597) -> Elemental Absorber
 # 	Absorb Dark damage for 2 turns
-# 	[1] ESOrbChangeAttack -> Dark Combat
+# 	[1] ESOrbChangeAttack(48:3612) -> Dark Combat
 # 	Change Random to Dark
-# [23] ESEndPath -> ESEndPath
+# [23] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [24] ESBranchHP -> ESBranchHP
+# [24] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 30, target rnd 28
 # [25] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESBindAwoken -> Limit Signal
+# 	[0] ESBindAwoken(88:3575) -> Limit Signal
 # 	Bind awoken skills for 2 turns
-# 	[1] ESRandomSpawn -> Rust Generate
+# 	[1] ESRandomSpawn(92:3573) -> Rust Generate
 # 	Spawn random 12 Jammer orbs
 # [26] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESBindRandom -> Numb Signal
+# 	[0] ESBindRandom(1:3574) -> Numb Signal
 # 	Bind 4 random cards for 3 turns
-# 	[1] ESAttackUp -> Power Steel
+# 	[1] ESAttackUp(17:3577) -> Power Steel
 # 	Increase damage to 200% for the next 1 turns
-# [27] ESAttackMultihit -> Myriad Swords Wings
+# [27] ESAttackMultihit(15:3571) -> Myriad Swords Wings
 # Enemy action
-# [28] ESBranchFlag -> ESBranchFlag
+# [28] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 25
-# [29] ESFlagOperation -> ESFlagOperation
+# [29] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [30] ESRecoverEnemy -> Half Repair
+# [30] ESRecoverEnemy(86:3570) -> Half Repair
 # Enemy recover 50% hp
-# [31] ESAttributeResist -> *****
+# [31] ESAttributeResist(72:3564) -> *****
 # Reduce damage from Light by 50%
-# [32] ESResolve -> Machine Zeus Hera Resolve
+# [32] ESResolve(73:5867) -> Machine Zeus Hera Resolve
 # Survive attacks with 1 HP when HP > 81%

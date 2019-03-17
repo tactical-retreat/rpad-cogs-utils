@@ -153,43 +153,54 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 4 -      100
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESGravity -> Water Pressure
+# [6] ESGravity(50:3620) -> Water Pressure
 # Player -50% HP
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESRecoverEnemy -> Longevity Invasion
+# [8] ESRecoverEnemy(86:3602) -> Longevity Invasion
 # Condition: When < 1% hp
 # Enemy recover 9% hp
-# [9] ESAttackUp -> Wind-Up Full Throttle
+# [9] ESAttackUp(17:3613) -> Wind-Up Full Throttle
 # Increase damage to 200% for the next 999 turns
-# [10] ESBlind -> Attack from the Deep Sea
+# [10] ESBlind(62:3626) -> Attack from the Deep Sea
 # Condition: When < 50% hp , one-time use
 # Blind all orbs on the board
-# [11] ESAttackMultihit -> Screw Headbutt
+# [11] ESAttackMultihit(15:3621) -> Screw Headbutt
 # Condition: When < 10% hp
 # Enemy action
-# [12] ESRecoverEnemy -> Longevity Attack
+# [12] ESRecoverEnemy(86:3623) -> Longevity Attack
 # Condition: 40% chance when < 76% hp
 # Enemy recover 10% hp
-# [13] ESRandomSpawn -> Single Jet
+# [13] ESRandomSpawn(92:3622) -> Single Jet
 # Condition: 40% chance & when Fire, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 1 Water orbs
-# [14] ESAbsorbAttribute -> Secret Plan of the Living Fossil
+# [14] ESAbsorbAttribute(53:3624) -> Secret Plan of the Living Fossil
 # Condition: 20% chance
 # Absorb Wood damage for 1 turns
-# [15] ESEndPath -> ESEndPath
+# [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [16] ESResolve -> Coelacanth's Temper
+# [16] ESResolve(73:3625) -> Coelacanth's Temper
 # Survive attacks with 1 HP when HP > 76%

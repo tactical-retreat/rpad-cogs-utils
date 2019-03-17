@@ -99,42 +99,53 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 0 -        0
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:355) -> ESPreemptive
 # Enable preempt if level 5
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 5, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESStatusShield -> Beef Scale
+# [6] ESStatusShield(20:1802) -> Beef Scale
 # Voids status ailments for 4 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchFlag -> ESBranchFlag
+# [8] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 12
-# [9] ESFlagOperation -> ESFlagOperation
+# [9] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [10] ESAttackUp -> Lunchtime Discount
+# [10] ESAttackUp(17:1803) -> Lunchtime Discount
 # Increase damage to 200% for the next 3 turns
-# [11] ESEndPath -> ESEndPath
+# [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [12] ESOrbChangeAttack -> Forbidden Mega Helping Press
+# [12] ESOrbChangeAttack(48:1807) -> Forbidden Mega Helping Press
 # Condition: When < 30% hp
 # Change Random to Fire
-# [13] ESGravity -> Big Helping Punch
+# [13] ESGravity(50:1806) -> Big Helping Punch
 # Condition: When < 50% hp , one-time use
 # Player -99% HP
-# [14] ESRowSpawnMulti -> Extra Onion Shot
+# [14] ESRowSpawnMulti(79:1805) -> Extra Onion Shot
 # Condition: 40% chance
 # Change 2nd row to Wood orbs, 4th row to Wood orbs
-# [15] ESRowSpawnMulti -> Extra Juice
+# [15] ESRowSpawnMulti(79:1804) -> Extra Juice
 # Change 1st row to Water orbs, 2nd row to Heal orbs
-# [16] ESEndPath -> ESEndPath
+# [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [17] ESAttributeResist -> Halve Water
+# [17] ESAttributeResist(72:1772) -> Halve Water
 # Reduce damage from Water by 50%

@@ -108,43 +108,54 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 4 -      100
+# [51] 0 -        0
+# [52] 1 -        1
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESAbsorbAttribute -> Dark Cloak
+# [6] ESAbsorbAttribute(53:2714) -> Dark Cloak
 # Absorb Dark damage for 3 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchHP -> ESBranchHP
+# [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 14
-# [9] ESGravity -> Gemini's Crest - Cosmos
+# [9] ESGravity(50:2719) -> Gemini's Crest - Cosmos
 # Condition: When < 10% hp
 # Player -100% HP
-# [10] ESBindAwoken -> Sleep Light
+# [10] ESBindAwoken(88:2717) -> Sleep Light
 # Condition: One-time use
 # Bind awoken skills for 1 turns
-# [11] ESRandomSpawn -> Bright Fellow
+# [11] ESRandomSpawn(92:2716) -> Bright Fellow
 # Condition: 40% chance & when Fire, Water, Wood, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board
 # Spawn random 3 Light orbs
-# [12] ESBindRandomSub -> Little Spark
+# [12] ESBindRandomSub(65:2718) -> Little Spark
 # Condition: 40% chance
 # Bind 1 random subs for 1 turns
-# [13] ESEndPath -> ESEndPath
+# [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [14] ESBranchFlag -> ESBranchFlag
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 9
-# [15] ESFlagOperation -> ESFlagOperation
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [16] ESColumnSpawnMulti -> Bright Child's Timbre
+# [16] ESColumnSpawnMulti(76:2715) -> Bright Child's Timbre
 # Change 5th, 6th column to Light orbs
-# [17] ESEndPath -> ESEndPath
+# [17] ESEndPath(36:26) -> ESEndPath
 # end_turn

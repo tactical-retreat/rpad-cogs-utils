@@ -117,53 +117,64 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 0 -        0
+# [52] 0 -        0
+# [53] 1 -        1
+# [54] 1 -        1
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:355) -> ESPreemptive
 # Enable preempt if level 5
-# [2] ESBranchLevel -> ESBranchLevel
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 5, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESBranchFlag -> ESBranchFlag
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 8
-# [5] ESFlagOperation -> ESFlagOperation
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESAttackUp -> Victory will be mine!
+# [6] ESAttackUp(17:1844) -> Victory will be mine!
 # Increase damage to 200% for the next 1 turns
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchFlag -> ESBranchFlag
+# [8] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 12
-# [9] ESFlagOperation -> ESFlagOperation
+# [9] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [10] ESOrbChangeAttack -> Hoof of Victory
+# [10] ESOrbChangeAttack(48:1845) -> Hoof of Victory
 # Change Random to Jammer
-# [11] ESEndPath -> ESEndPath
+# [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [12] ESBranchHP -> ESBranchHP
+# [12] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 75, target rnd 18
-# [13] ESAttackUp -> I'll win at any cost!
+# [13] ESAttackUp(17:1848) -> I'll win at any cost!
 # Condition: When < 30% hp , one-time use
 # Increase damage to 300% for the next 1 turns
-# [14] ESAttackMultihit -> Double Hooves of Victory
+# [14] ESAttackMultihit(15:1849) -> Double Hooves of Victory
 # Condition: When < 30% hp
 # Enemy action
-# [15] ESOrbChangeAttack -> Hoof of Victory
+# [15] ESOrbChangeAttack(48:1845) -> Hoof of Victory
 # Condition: 50% chance
 # Change Random to Jammer
-# [16] ESRowSpawnMulti -> Tail Snap
+# [16] ESRowSpawnMulti(79:1847) -> Tail Snap
 # Condition: 60% chance
 # Change 3rd row to Wood orbs
-# [17] ESEndPath -> ESEndPath
+# [17] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [18] ESBranchFlag -> ESBranchFlag
+# [18] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 13
-# [19] ESFlagOperation -> ESFlagOperation
+# [19] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [20] ESBindTarget -> Best Smile
+# [20] ESBindTarget(54:1846) -> Best Smile
 # Bind 1 both leaders for 2~4 turns
-# [21] ESEndPath -> ESEndPath
+# [21] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [22] ESAttributeResist -> Halve Fire
+# [22] ESAttributeResist(72:1771) -> Halve Fire
 # Reduce damage from Fire by 50%

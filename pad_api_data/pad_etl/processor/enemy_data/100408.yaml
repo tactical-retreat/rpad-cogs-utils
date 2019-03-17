@@ -72,34 +72,45 @@ records:
   usage_pct: 100
 
 ############################################################
+### Card Unknowns
+############################################################
+# [09] 5 -      101
+# [51] 1 -        1
+# [52] 1 -        1
+# [53] 3 -       11
+# [54] 0 -        0
+# [55] 0 -        0
+# [56] 0 -        0
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
 # [2] SkillSet:
 # 	Condition: One-time use
-# 	[0] ESSkillDelay -> Blaze
+# 	[0] ESSkillDelay(89:10512) -> Blaze
 # 	Delay active skills by 3~6 turns
-# 	[1] ESAbsorbCombo -> Burning Giant
+# 	[1] ESAbsorbCombo(67:10513) -> Burning Giant
 # 	Absorb combo <= 7 damage for 5 turns
-# [3] ESBranchCounter -> ESBranchCounter
+# [3] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 4, target rnd 8
-# [4] ESSetCounter -> ESSetCounter
+# [4] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
-# [5] ESAttackUp -> Flame Up
+# [5] ESAttackUp(17:10517) -> Flame Up
 # Condition: When < 20% hp , one-time use
 # Increase damage to 200% for the next 99 turns
-# [6] ESBombRandomSpawn -> Explosion Breath
+# [6] ESBombRandomSpawn(102:10515) -> Explosion Breath
 # Spawn random 4 Bomb orbs
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESBranchFlag -> ESBranchFlag
+# [8] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 5
-# [9] ESFlagOperation -> ESFlagOperation
+# [9] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [10] ESDebuffRCV -> Scorching Heat
+# [10] ESDebuffRCV(105:10516) -> Scorching Heat
 # Rcv 50% for 5 turns
-# [11] ESEndPath -> ESEndPath
+# [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [12] ESTypeResist -> God halved
+# [12] ESTypeResist(118:10518) -> God halved
 # Reduce damage from God by 50%
