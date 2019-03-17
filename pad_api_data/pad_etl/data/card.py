@@ -105,6 +105,7 @@ class BookCard(pad_util.JsonDictEncodable):
         self.active_skill_id = SkillId(raw[25])
         self.leader_skill_id = SkillId(raw[26])
 
+        # Enemy turn timer for normal dungeons, and techs where enemy_turns_alt is not populated.
         self.enemy_turns = int(raw[27])
 
         # Min = lvl 1 and Max = lvl 10
@@ -138,11 +139,15 @@ class BookCard(pad_util.JsonDictEncodable):
         self.un_evo_mat_4 = CardId(raw[49])
         self.un_evo_mat_5 = CardId(raw[50])
 
-        self.unknown_051 = raw[51]
+        # When >0, the enemy turn timer for technical dungeons.
+        self.enemy_turns_alt = int(raw[51])
+
         self.unknown_052 = raw[52]
         self.unknown_053 = raw[53]
         self.unknown_054 = raw[54]
         self.unknown_055 = raw[55]
+
+        # Unused
         self.unknown_056 = raw[56]
 
         # self.enemy_skills = raw[57]
