@@ -31,6 +31,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: When 1 enemy remains and HP <= 19
+  name_jp: When 1 enemy remains and HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 99 turns
+  desc_jp: Increase damage to 200% for the next 99 turns
+  max_atk_pct: null
+  name_en: Earth Megin Unleashed
+  name_jp: Earth Megin Unleashed
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -156,24 +174,6 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Increase damage to 200% for the next 99 turns
-  desc_jp: Increase damage to 200% for the next 99 turns
-  max_atk_pct: null
-  name_en: Earth Megin Unleashed
-  name_jp: Earth Megin Unleashed
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Data @ 6
@@ -192,6 +192,24 @@ records:
   name_jp: Don't get in my way... + Harbinger of Thunder + Warrior God's Call
   one_time: false
   record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: When 1 enemy remains and HP <= 19
+  name_jp: When 1 enemy remains and HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 99 turns
+  desc_jp: Increase damage to 200% for the next 99 turns
+  max_atk_pct: null
+  name_en: Earth Megin Unleashed
+  name_jp: Earth Megin Unleashed
+  one_time: true
+  record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
   desc_en: ''
@@ -322,24 +340,6 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Increase damage to 200% for the next 99 turns
-  desc_jp: Increase damage to 200% for the next 99 turns
-  max_atk_pct: null
-  name_en: Earth Megin Unleashed
-  name_jp: Earth Megin Unleashed
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Card Unknowns
@@ -431,8 +431,8 @@ records:
 # 	Reduce damage from all sources by 50% for 10 turns
 # [22] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [23] ESAttackUp(17:11111) -> Earth Megin Unleashed
-# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# [23] ESAttackUPRemainingEnemies(17:11111) -> Earth Megin Unleashed
+# 	Condition: One-time use, when <= 1 enemies remain (ai:100 rnd:0) (one-time: 1)
 # Increase damage to 200% for the next 99 turns
 # [24] ESRandomSpawn(92:11112) -> Lightning Hell
 # 	Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board (ai:100 rnd:0)

@@ -47,42 +47,6 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Increase damage to 200% for the next 1 turns
-  desc_jp: Increase damage to 200% for the next 1 turns
-  max_atk_pct: null
-  name_en: You're a troublesome one, aren't you?
-  name_jp: You're a troublesome one, aren't you?
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Enemy recover 50% hp + Increase damage to 200% for the next 1 turns
-  desc_jp: Enemy recover 50% hp + Increase damage to 200% for the next 1 turns
-  max_atk_pct: null
-  name_en: Overcoming Will + Raising Flap
-  name_jp: Overcoming Will + Raising Flap
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -151,6 +115,24 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 1
+  name_jp: HP <= 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy recover 50% hp + Increase damage to 200% for the next 1 turns
+  desc_jp: Enemy recover 50% hp + Increase damage to 200% for the next 1 turns
+  max_atk_pct: null
+  name_en: Overcoming Will + Raising Flap
+  name_jp: Overcoming Will + Raising Flap
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Card Unknowns
@@ -184,7 +166,7 @@ records:
 # 	Condition: When < 1% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESRecoverEnemy(86:4552) -> Overcoming Will
 # 	Enemy recover 50% hp
-# 	[1] ESAttackUp(17:4551) -> Raising Flap
+# 	[1] ESAttackUPRemainingEnemies(17:4551) -> Raising Flap
 # 	Increase damage to 200% for the next 1 turns
 # [9] SkillSet:
 # 	Condition: When < 20% hp (ai:100 rnd:0)
@@ -200,14 +182,14 @@ records:
 # flag SET 0b11
 # [13] ESBranchCard(90:4549) -> ESBranchCard
 # Branch on player_cards HAS [2508, 2509], target rnd 15
-# [14] ESAttackUp(17:4551) -> Raising Flap
-# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# [14] ESAttackUPRemainingEnemies(17:4551) -> Raising Flap
+# 	Condition: One-time use, when <= 1 enemies remain (ai:100 rnd:0) (one-time: 1)
 # Increase damage to 200% for the next 1 turns
-# [15] ESAttackUp(17:4550) -> You're a troublesome one, aren't you?
-# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# [15] ESAttackUPRemainingEnemies(17:4550) -> You're a troublesome one, aren't you?
+# 	Condition: One-time use, when <= 1 enemies remain (ai:100 rnd:0) (one-time: 1)
 # Increase damage to 200% for the next 1 turns
-# [16] ESAttackUp(17:4551) -> Raising Flap
-# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# [16] ESAttackUPRemainingEnemies(17:4551) -> Raising Flap
+# 	Condition: One-time use, when <= 1 enemies remain (ai:100 rnd:0) (one-time: 1)
 # Increase damage to 200% for the next 1 turns
 # [17] ESAttackMultihit(15:4553) -> Storm Raid
 # 	Condition: 20% chance (ai:20 rnd:0)

@@ -29,6 +29,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: When 1 enemy remains and HP <= 99
+  name_jp: When 1 enemy remains and HP <= 99
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 1000% for the next 999 turns
+  desc_jp: Increase damage to 1000% for the next 999 turns
+  max_atk_pct: null
+  name_en: How mean! Now I'm angry!
+  name_jp: How mean! Now I'm angry!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -70,24 +88,6 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 99
-  name_jp: HP <= 99
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Increase damage to 1000% for the next 999 turns
-  desc_jp: Increase damage to 1000% for the next 999 turns
-  max_atk_pct: null
-  name_en: How mean! Now I'm angry!
-  name_jp: How mean! Now I'm angry!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Card Unknowns
@@ -112,7 +112,8 @@ records:
 # end_turn
 # [6] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 100, target rnd 11
-# [7] ESAttackUp(17:643) -> How mean! Now I'm angry!
+# [7] ESAttackUPRemainingEnemies(17:643) -> How mean! Now I'm angry!
+# 	Condition: when <= 1 enemies remain (ai:100 rnd:0)
 # Increase damage to 1000% for the next 999 turns
 # [8] ESAttackMultihit(15:644) -> Favorite Japanese Umbrella
 # 	Condition: 40% chance (ai:40 rnd:0)

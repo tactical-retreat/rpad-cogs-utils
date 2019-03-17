@@ -106,8 +106,8 @@ records:
 # end_turn
 # [3] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 75, target rnd 9
-# [4] ESAttackUp(19:1502) -> Anger
-# 	Condition: When < 30% hp (ai:100 rnd:0)
+# [4] ESAttackUPCooldown(19:1502) -> Anger
+# 	Condition: When < 30% hp, after 1 turns (ai:100 rnd:0)
 # Increase damage to 200% for the next 2 turns
 # [5] ESAttackMultihit(15:1501) -> *****
 # 	Condition: 75% chance when < 50% hp (ai:75 rnd:0)
@@ -123,7 +123,8 @@ records:
 # Branch on flag & 1, target rnd 4
 # [10] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [11] ESAttackUp(19:1500) -> Anger
+# [11] ESAttackUPCooldown(19:1500) -> Anger
+# 	Condition: after 1 turns (ai:100 rnd:0)
 # Increase damage to 200% for the next 2 turns
 # [12] ESEndPath(36:26) -> ESEndPath
 # end_turn

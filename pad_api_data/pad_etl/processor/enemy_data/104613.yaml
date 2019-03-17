@@ -91,6 +91,33 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: When 1 enemy remains and HP <= 19
+  name_jp: When 1 enemy remains and HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: 'Show message: My power...|I smell Planeswalker. Who are you?'
+  desc_jp: 'Show message: My power...|I smell Planeswalker. Who are you?'
+  max_atk_pct: null
+  name_en: "\u5909\u8EAB\u6642"
+  name_jp: "\u5909\u8EAB\u6642"
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: Increase damage to 400% for the next 1 turns
+  desc_jp: Increase damage to 400% for the next 1 turns
+  max_atk_pct: null
+  name_en: Scream of Fury
+  name_jp: Scream of Fury
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -177,33 +204,6 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: 'Show message: My power...|I smell Planeswalker. Who are you?'
-  desc_jp: 'Show message: My power...|I smell Planeswalker. Who are you?'
-  max_atk_pct: null
-  name_en: "\u5909\u8EAB\u6642"
-  name_jp: "\u5909\u8EAB\u6642"
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 0
-- !SkillRecord
-  desc_en: Increase damage to 400% for the next 1 turns
-  desc_jp: Increase damage to 400% for the next 1 turns
-  max_atk_pct: null
-  name_en: Scream of Fury
-  name_jp: Scream of Fury
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Card Unknowns
@@ -252,8 +252,8 @@ records:
 # Bind active skills for 3 turns
 # [17] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [18] ESAttackUp(17:10285) -> Scream of Fury
-# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# [18] ESAttackUPRemainingEnemies(17:10285) -> Scream of Fury
+# 	Condition: One-time use, when <= 1 enemies remain (ai:100 rnd:0) (one-time: 1)
 # Increase damage to 400% for the next 1 turns
 # [19] SkillSet:
 # 	[0] ESRecoverEnemy(86:10286) -> Corrupt

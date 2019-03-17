@@ -83,6 +83,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: When 1 enemy remains and HP <= 49
+  name_jp: When 1 enemy remains and HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 999 turns
+  desc_jp: Increase damage to 200% for the next 999 turns
+  max_atk_pct: null
+  name_en: That hurts!
+  name_jp: That hurts!
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -115,24 +133,6 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 30
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Increase damage to 200% for the next 999 turns
-  desc_jp: Increase damage to 200% for the next 999 turns
-  max_atk_pct: null
-  name_en: That hurts!
-  name_jp: That hurts!
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
@@ -179,8 +179,8 @@ records:
 # end_turn
 # [8] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 90, target rnd 19
-# [9] ESAttackUp(17:3479) -> That hurts!
-# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# [9] ESAttackUPRemainingEnemies(17:3479) -> That hurts!
+# 	Condition: When < 50% hp , one-time use, when <= 1 enemies remain (ai:100 rnd:0) (one-time: 1)
 # Increase damage to 200% for the next 999 turns
 # [10] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 22

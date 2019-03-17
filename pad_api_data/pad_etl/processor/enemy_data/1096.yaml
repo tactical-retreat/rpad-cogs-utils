@@ -29,6 +29,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 300% for the next 999 turns
+  desc_jp: Increase damage to 300% for the next 999 turns
+  max_atk_pct: null
+  name_en: Awakening
+  name_jp: Awakening
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -60,7 +78,8 @@ records:
 # [2] ESInactivity(16:883) -> *Snores*
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Do nothing
-# [3] ESAttackUp(17:884) -> Awakening
+# [3] ESAttackUPRemainingEnemies(17:884) -> Awakening
+# 	Condition: when <= 999 enemies remain (ai:100 rnd:0)
 # Increase damage to 300% for the next 999 turns
 # [4] ESAttackMultihit(15:885) -> Dragon Star
 # Enemy action

@@ -29,8 +29,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -89,15 +89,6 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Reduce damage from all sources by 50% for 1 turns
-  desc_jp: Reduce damage from all sources by 50% for 1 turns
-  max_atk_pct: null
-  name_en: Shell Seclusion
-  name_jp: Shell Seclusion
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
   desc_en: Spawn random 3 Heal orbs, Deal 130% damage
   desc_jp: Spawn random 3 Heal orbs, Deal 130% damage
   max_atk_pct: 130
@@ -124,6 +115,15 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 33
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 1 turns
+  desc_jp: Reduce damage from all sources by 50% for 1 turns
+  max_atk_pct: null
+  name_en: Shell Seclusion
+  name_jp: Shell Seclusion
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Card Unknowns
@@ -150,7 +150,8 @@ records:
 # Reduce damage from all sources by 50% for 1 turns
 # [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESAttackUp(17:3613) -> Wind-Up Full Throttle
+# [8] ESAttackUPRemainingEnemies(17:3613) -> Wind-Up Full Throttle
+# 	Condition: when <= 1 enemies remain (ai:100 rnd:0)
 # Increase damage to 200% for the next 999 turns
 # [9] ESRandomSpawn(92:3662) -> Corona Ocean
 # 	Condition: When < 50% hp , one-time use & when Fire, Water, Wood, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:100 rnd:0) (one-time: 1)

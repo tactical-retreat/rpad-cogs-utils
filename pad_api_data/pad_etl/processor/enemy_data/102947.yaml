@@ -31,6 +31,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: When 1 enemy remains and HP <= 49
+  name_jp: When 1 enemy remains and HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 150% for the next 999 turns
+  desc_jp: Increase damage to 150% for the next 999 turns
+  max_atk_pct: null
+  name_en: Corpse Dragon's Wail
+  name_jp: Corpse Dragon's Wail
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -43,24 +61,6 @@ records:
   name_en: Death Miasma
   name_jp: Death Miasma
   one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Increase damage to 150% for the next 999 turns
-  desc_jp: Increase damage to 150% for the next 999 turns
-  max_atk_pct: null
-  name_en: Corpse Dragon's Wail
-  name_jp: Corpse Dragon's Wail
-  one_time: true
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -111,8 +111,8 @@ records:
 # [6] ESOrbChangeAttack(48:7514) -> Deadly Poison Breath
 # 	Condition: When < 10% hp (ai:100 rnd:0)
 # Change Random to Mortal Poison
-# [7] ESAttackUp(17:7500) -> Corpse Dragon's Wail
-# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# [7] ESAttackUPRemainingEnemies(17:7500) -> Corpse Dragon's Wail
+# 	Condition: When < 50% hp , one-time use, when <= 1 enemies remain (ai:100 rnd:0) (one-time: 1)
 # Increase damage to 150% for the next 999 turns
 # [8] ESSkyfall(68:7504) -> Death Miasma
 # Mortal Poison skyfall +5% for 5 turns

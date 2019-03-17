@@ -31,11 +31,20 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 3
-  name_jp: Turn 3
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 150% for the next 2 turns
+  desc_jp: Increase damage to 150% for the next 2 turns
+  max_atk_pct: null
+  name_en: I can't go easy on you
+  name_jp: I can't go easy on you
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
 - !SkillRecord
   desc_en: Change 3rd, 4th column to Water orbs, Deal 110% damage
   desc_jp: Change 3rd, 4th column to Water orbs, Deal 110% damage
@@ -55,15 +64,6 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change 3rd, 4th column to Water orbs, Deal 110% damage
-  desc_jp: Change 3rd, 4th column to Water orbs, Deal 110% damage
-  max_atk_pct: 110
-  name_en: How about THIS?!
-  name_jp: How about THIS?!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
   desc_en: Change 5th row to Water orbs, Deal 300% damage
   desc_jp: Change 5th row to Water orbs, Deal 300% damage
   max_atk_pct: 300
@@ -81,15 +81,6 @@ records:
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
-- !SkillRecord
-  desc_en: Increase damage to 150% for the next 2 turns
-  desc_jp: Increase damage to 150% for the next 2 turns
-  max_atk_pct: null
-  name_en: I can't go easy on you
-  name_jp: I can't go easy on you
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 50
 - !SkillRecord
   desc_en: Change 3rd, 4th column to Water orbs, Deal 110% damage
   desc_jp: Change 3rd, 4th column to Water orbs, Deal 110% damage
@@ -132,8 +123,8 @@ records:
 # end_turn
 # [10] ESSetCounter(25:15) -> ESSetCounter
 # counter = 0
-# [11] ESAttackUp(17:10732) -> I can't go easy on you
-# 	Condition: 50% chance (ai:50 rnd:0)
+# [11] ESAttackUPRemainingEnemies(17:10732) -> I can't go easy on you
+# 	Condition: 50% chance, when <= 2 enemies remain (ai:50 rnd:0)
 # Increase damage to 150% for the next 2 turns
 # [12] ESColumnSpawnMulti(77:10733) -> How about THIS?!
 # Change 3rd, 4th column to Water orbs

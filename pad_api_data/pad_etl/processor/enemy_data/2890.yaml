@@ -69,8 +69,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 20
-  name_jp: HP <= 20
+  name_en: When 1 enemy remains and HP <= 49
+  name_jp: When 1 enemy remains and HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -82,6 +82,15 @@ records:
   name_jp: Awaken Force
   one_time: false
   record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 20
+  name_jp: HP <= 20
+  one_time: false
+  record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
   desc_en: Deal 800% damage (2 hits, 400% each)
@@ -248,7 +257,8 @@ records:
 # Bind 1 random for 3 turns
 # [26] ESAttackMultihit(15:4294) -> Core Full Burst
 # Enemy action
-# [27] ESAttackUp(17:4295) -> Awaken Force
+# [27] ESAttackUPRemainingEnemies(17:4295) -> Awaken Force
+# 	Condition: when <= 1 enemies remain (ai:100 rnd:0)
 # Increase damage to 200% for the next 999 turns
 # [28] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 9

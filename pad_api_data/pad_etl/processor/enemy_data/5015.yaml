@@ -53,30 +53,30 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Increase damage to 150% for the next 3 turns
-  desc_jp: Increase damage to 150% for the next 3 turns
-  max_atk_pct: null
-  name_en: "\u2026GRUAAA!"
-  name_jp: "\u2026GRUAAA!"
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 3
-  name_jp: Turn 3
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Deal 120% damage (2 hits, 60% each)
   desc_jp: Deal 120% damage (2 hits, 60% each)
   max_atk_pct: 120
   name_en: GAAA
   name_jp: GAAA
   one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 150% for the next 3 turns
+  desc_jp: Increase damage to 150% for the next 3 turns
+  max_atk_pct: null
+  name_en: "\u2026GRUAAA!"
+  name_jp: "\u2026GRUAAA!"
+  one_time: true
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -123,8 +123,8 @@ records:
 # Reduce damage from all sources by 50% for 5 turns
 # [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESAttackUp(17:12190) -> …GRUAAA!
-# 	Condition: One-time use (ai:100 rnd:0) (one-time: 3)
+# [8] ESAttackUPRemainingEnemies(17:12190) -> …GRUAAA!
+# 	Condition: One-time use, when <= 1 enemies remain (ai:100 rnd:0) (one-time: 3)
 # Increase damage to 150% for the next 3 turns
 # [9] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 13

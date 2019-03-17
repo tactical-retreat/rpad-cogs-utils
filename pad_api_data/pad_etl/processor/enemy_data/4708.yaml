@@ -38,6 +38,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: When 1 enemy remains and HP <= 29
+  name_jp: When 1 enemy remains and HP <= 29
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 300% for the next 999 turns
+  desc_jp: Increase damage to 300% for the next 999 turns
+  max_atk_pct: null
+  name_en: Level Up
+  name_jp: Level Up
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -107,8 +125,8 @@ records:
 # [6] ESLeaderSwap(75:10722) -> Demonic Magic
 # 	Condition: When < 75% hp , one-time use (ai:100 rnd:0) (one-time: 2)
 # Leader changes to random sub for 2 turns
-# [7] ESAttackUp(17:10724) -> Level Up
-# 	Condition: When < 30% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# [7] ESAttackUPRemainingEnemies(17:10724) -> Level Up
+# 	Condition: When < 30% hp , one-time use, when <= 1 enemies remain (ai:100 rnd:0) (one-time: 1)
 # Increase damage to 300% for the next 999 turns
 # [8] ESOrbChangeAttackBits(108:10721) -> Draw Attack - Demon
 # 	Condition: 30% chance (ai:30 rnd:0)

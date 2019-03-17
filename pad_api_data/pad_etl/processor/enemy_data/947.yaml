@@ -47,8 +47,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
+  name_en: When 1 enemy remains and HP <= 49
+  name_jp: When 1 enemy remains and HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -101,8 +101,8 @@ records:
 # Player recover 100% hp
 # [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESAttackUp(17:705) -> Challenge the Triple
-# 	Condition: When < 50% hp (ai:100 rnd:0)
+# [6] ESAttackUPRemainingEnemies(17:705) -> Challenge the Triple
+# 	Condition: When < 50% hp, when <= 1 enemies remain (ai:100 rnd:0)
 # Increase damage to 300% for the next 999 turns
 # [7] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 30, target rnd 10

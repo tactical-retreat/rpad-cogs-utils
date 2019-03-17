@@ -29,6 +29,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: When 1 enemy remains and HP <= 69
+  name_jp: When 1 enemy remains and HP <= 69
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 1 turns
+  desc_jp: Increase damage to 200% for the next 1 turns
+  max_atk_pct: null
+  name_en: Now I'm mad!!
+  name_jp: Now I'm mad!!
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -50,24 +68,6 @@ records:
   name_en: Take that!
   name_jp: Take that!
   one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 70
-  name_jp: HP <= 70
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Increase damage to 200% for the next 1 turns
-  desc_jp: Increase damage to 200% for the next 1 turns
-  max_atk_pct: null
-  name_en: Now I'm mad!!
-  name_jp: Now I'm mad!!
-  one_time: true
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -114,8 +114,8 @@ records:
 # Delay active skills by 2 turns
 # [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [8] ESAttackUp(17:2037) -> Now I'm mad!!
-# 	Condition: When < 70% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# [8] ESAttackUPRemainingEnemies(17:2037) -> Now I'm mad!!
+# 	Condition: When < 70% hp , one-time use, when <= 1 enemies remain (ai:100 rnd:0) (one-time: 1)
 # Increase damage to 200% for the next 1 turns
 # [9] ESAttackMultihit(15:2038) -> Ur FEVER!
 # 	Condition: When < 30% hp (ai:100 rnd:0)

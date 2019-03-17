@@ -97,15 +97,6 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: Increase damage to 200% for the next 3 turns
-  desc_jp: Increase damage to 200% for the next 3 turns
-  max_atk_pct: null
-  name_en: Glyph of Hunting, Hound
-  name_jp: Glyph of Hunting, Hound
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Card Unknowns
@@ -161,7 +152,8 @@ records:
 # Branch on flag & 16, target rnd 23
 # [21] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11111
-# [22] ESAttackUp(17:541) -> Glyph of Hunting, Hound
+# [22] ESAttackUPRemainingEnemies(17:541) -> Glyph of Hunting, Hound
+# 	Condition: when <= 1 enemies remain (ai:100 rnd:0)
 # Increase damage to 200% for the next 3 turns
 # [23] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b11110

@@ -76,6 +76,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: When 1 enemy remains and HP <= 74
+  name_jp: When 1 enemy remains and HP <= 74
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 150% for the next 3 turns
+  desc_jp: Increase damage to 150% for the next 3 turns
+  max_atk_pct: null
+  name_en: Destruction Impulse
+  name_jp: Destruction Impulse
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -150,24 +168,6 @@ records:
   max_atk_pct: null
   name_en: Head Strike + Spike Shot
   name_jp: Head Strike + Spike Shot
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Increase damage to 150% for the next 3 turns
-  desc_jp: Increase damage to 150% for the next 3 turns
-  max_atk_pct: null
-  name_en: Destruction Impulse
-  name_jp: Destruction Impulse
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -260,7 +260,8 @@ records:
 # Branch on counter > 3, target rnd 21
 # [18] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 2, target rnd 20
-# [19] ESAttackUp(17:8836) -> Destruction Impulse
+# [19] ESAttackUPRemainingEnemies(17:8836) -> Destruction Impulse
+# 	Condition: when <= 1 enemies remain (ai:100 rnd:0)
 # Increase damage to 150% for the next 3 turns
 # [20] SkillSet:
 # 	[0] ESAttackMultihit(15:8837) -> Tail Scythe

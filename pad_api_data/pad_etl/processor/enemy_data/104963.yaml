@@ -29,6 +29,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  max_atk_pct: null
+  name_en: Damn!
+  name_jp: Damn!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -100,7 +118,7 @@ records:
 # [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 15, target rnd 17
 # [9] ESBranchRemainingEnemies(120:8595) -> ESBranchRemainingEnemies
-# Branch on remaining enemies = 1, target rnd 13
+# Branch on remaining enemies <= 1, target rnd 13
 # [10] ESAttackMultihit(15:11891) -> Grrrrr!
 # 	Condition: 40% chance (ai:40 rnd:0)
 # Enemy action

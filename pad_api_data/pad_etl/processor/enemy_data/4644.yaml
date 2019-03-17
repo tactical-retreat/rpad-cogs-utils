@@ -47,17 +47,17 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: When 6 enemy remains
-  name_jp: When 6 enemy remains
+  name_en: When 2 enemy remains and HP <= 49
+  name_jp: When 2 enemy remains and HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change all orbs to Fire, Water, Light, Heal, Deal 120% damage
-  desc_jp: Change all orbs to Fire, Water, Light, Heal, Deal 120% damage
-  max_atk_pct: 120
-  name_en: Lightning Enclosure
-  name_jp: Lightning Enclosure
+  desc_en: Seal 5th row for 2 turns
+  desc_jp: Seal 5th row for 2 turns
+  max_atk_pct: null
+  name_en: Liberty Shackles
+  name_jp: Liberty Shackles
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -65,18 +65,38 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change all orbs to Fire, Water, Light, Heal, Deal 120% damage
-  desc_jp: Change all orbs to Fire, Water, Light, Heal, Deal 120% damage
-  max_atk_pct: 120
-  name_en: Lightning Enclosure
-  name_jp: Lightning Enclosure
+  desc_en: Bind active skills for 1 turns + Increase damage to 200% for the next 99
+    turns
+  desc_jp: Bind active skills for 1 turns + Increase damage to 200% for the next 99
+    turns
+  max_atk_pct: null
+  name_en: Trial of Judgment + Conviction
+  name_jp: Trial of Judgment + Conviction
   one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 15
+  name_jp: HP <= 15
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 105% damage
+  desc_jp: Change Random to Jammer, Deal 105% damage
+  max_atk_pct: 105
+  name_en: Trial Sin
+  name_jp: Trial Sin
+  one_time: true
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -224,7 +244,7 @@ records:
 # [12] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 15, target rnd 30
 # [13] ESBranchRemainingEnemies(120:8595) -> ESBranchRemainingEnemies
-# Branch on remaining enemies = 1, target rnd 21
+# Branch on remaining enemies <= 1, target rnd 21
 # [14] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
 # [15] ESBranchCounter(32:22) -> ESBranchCounter
@@ -249,7 +269,7 @@ records:
 # [23] SkillSet:
 # 	[0] ESBindSkill(14:10392) -> Trial of Judgment
 # 	Bind active skills for 1 turns
-# 	[1] ESAttackUp(17:10393) -> Conviction
+# 	[1] ESAttackUPRemainingEnemies(17:10393) -> Conviction
 # 	Increase damage to 200% for the next 99 turns
 # [24] ESEndPath(36:26) -> ESEndPath
 # end_turn
@@ -274,7 +294,7 @@ records:
 # [32] ESSetCounter(25:15) -> ESSetCounter
 # counter = 0
 # [33] ESBranchRemainingEnemies(120:8595) -> ESBranchRemainingEnemies
-# Branch on remaining enemies = 2, target rnd 35
+# Branch on remaining enemies <= 2, target rnd 35
 # [34] ESBoardChangeAttackBits(85:10387) -> Lightning Enclosure
 # Change all orbs to Fire, Water, Light, Heal
 # [35] ESOrbSealRow(100:10386) -> Liberty Shackles

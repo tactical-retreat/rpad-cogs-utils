@@ -47,6 +47,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: When 1 enemy remains and HP <= 19
+  name_jp: When 1 enemy remains and HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 999 turns
+  desc_jp: Increase damage to 200% for the next 999 turns
+  max_atk_pct: null
+  name_en: You're all... annoying!!
+  name_jp: You're all... annoying!!
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 70
   name_jp: HP <= 70
   one_time: false
@@ -146,8 +164,8 @@ records:
 # Now see my true skill.
 # 	Condition: When < 70% hp , one-time use (ai:100 rnd:0) (one-time: 2)
 # Voids status ailments for 999 turns
-# [9] ESAttackUp(17:4981) -> You're all... annoying!!
-# 	Condition: When < 20% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# [9] ESAttackUPRemainingEnemies(17:4981) -> You're all... annoying!!
+# 	Condition: When < 20% hp , one-time use, when <= 1 enemies remain (ai:100 rnd:0) (one-time: 1)
 # Increase damage to 200% for the next 999 turns
 # [10] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 23

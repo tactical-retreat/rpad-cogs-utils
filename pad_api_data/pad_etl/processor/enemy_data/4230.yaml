@@ -29,6 +29,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: When 3 enemy remains
+  name_jp: When 3 enemy remains
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy ally recover 100% hp
+  desc_jp: Enemy ally recover 100% hp
+  max_atk_pct: null
+  name_en: Radiance of Regeneration
+  name_jp: Radiance of Regeneration
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -61,12 +79,12 @@ records:
 # Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESAttackUp(19:9179) -> The Green Augite is pulsating
+# [4] ESAttackUPCooldown(19:9179) -> The Green Augite is pulsating
 # Increase damage to 200% for the next 1 turns
 # [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] ESBranchRemainingEnemies(120:8595) -> ESBranchRemainingEnemies
-# Branch on remaining enemies = 3, target rnd 8
+# Branch on remaining enemies <= 3, target rnd 8
 # [7] ESAttackMultihit(15:9181) -> Slash
 # Enemy action
 # [8] ESRecoverEnemyAlly(52:9180) -> Radiance of Regeneration

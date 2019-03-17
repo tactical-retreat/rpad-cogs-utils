@@ -96,24 +96,6 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Increase damage to 150% for the next 999 turns
-  desc_jp: Increase damage to 150% for the next 999 turns
-  max_atk_pct: null
-  name_en: Warrior's March
-  name_jp: Warrior's March
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 29
   name_jp: HP <= 29
   one_time: false
@@ -303,24 +285,6 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Increase damage to 150% for the next 999 turns
-  desc_jp: Increase damage to 150% for the next 999 turns
-  max_atk_pct: null
-  name_en: Warrior's March
-  name_jp: Warrior's March
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 29
   name_jp: HP <= 29
   one_time: false
@@ -484,8 +448,8 @@ records:
 # Branch on hp < 30, target rnd 28
 # [17] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 16, target rnd 30
-# [18] ESAttackUp(17:5672) -> Warrior's March
-# 	Condition: When < 50% hp (ai:100 rnd:0)
+# [18] ESAttackUPRemainingEnemies(17:5672) -> Warrior's March
+# 	Condition: When < 50% hp, when <= 1 enemies remain (ai:100 rnd:0)
 # Increase damage to 150% for the next 999 turns
 # [19] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 24

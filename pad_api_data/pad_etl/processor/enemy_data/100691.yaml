@@ -38,6 +38,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy recover 100% hp + Reduce damage from all sources by 75% for 99 turns
+  desc_jp: Enemy recover 100% hp + Reduce damage from all sources by 75% for 99 turns
+  max_atk_pct: null
+  name_en: Pouring Fighting Spirit + Counterattack
+  name_jp: Pouring Fighting Spirit + Counterattack
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -65,7 +83,7 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESBranchRemainingEnemies(120:8595) -> ESBranchRemainingEnemies
-# Branch on remaining enemies = 1, target rnd 4
+# Branch on remaining enemies <= 1, target rnd 4
 # [2] ESAttackMultihit(15:1294) -> Big Blade
 # Enemy action
 # [3] ESEndPath(36:26) -> ESEndPath

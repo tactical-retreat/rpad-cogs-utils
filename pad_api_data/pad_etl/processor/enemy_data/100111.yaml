@@ -20,6 +20,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 180% damage (3 hits, 60% each)
+  desc_jp: Deal 180% damage (3 hits, 60% each)
+  max_atk_pct: 180
+  name_en: Nightmare Crush
+  name_jp: Nightmare Crush
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -50,6 +68,42 @@ records:
   name_jp: World of Darkness
   one_time: false
   record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: When 2 enemy remains
+  name_jp: When 2 enemy remains
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy ally recover 50% hp
+  desc_jp: Enemy ally recover 50% hp
+  max_atk_pct: null
+  name_en: Bloody Sharing
+  name_jp: Bloody Sharing
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 180% damage (3 hits, 60% each)
+  desc_jp: Deal 180% damage (3 hits, 60% each)
+  max_atk_pct: 180
+  name_en: Nightmare Crush
+  name_jp: Nightmare Crush
+  one_time: false
+  record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
   desc_en: ''
@@ -98,9 +152,9 @@ records:
 # [8] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [9] ESBranchRemainingEnemies(120:8595) -> ESBranchRemainingEnemies
-# Branch on remaining enemies = 1, target rnd 16
+# Branch on remaining enemies <= 1, target rnd 16
 # [10] ESBranchRemainingEnemies(120:8595) -> ESBranchRemainingEnemies
-# Branch on remaining enemies = 2, target rnd 13
+# Branch on remaining enemies <= 2, target rnd 13
 # [11] ESRecoverEnemy(86:9126) -> Bloody Stealing
 # 	Condition: 50% chance (ai:50 rnd:0)
 # Enemy recover 10% hp
@@ -124,7 +178,7 @@ records:
 # [20] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [21] ESBranchRemainingEnemies(120:8595) -> ESBranchRemainingEnemies
-# Branch on remaining enemies = 1, target rnd 16
+# Branch on remaining enemies <= 1, target rnd 16
 # [22] ESRecoverEnemy(86:9126) -> Bloody Stealing
 # 	Condition: 50% chance (ai:50 rnd:0)
 # Enemy recover 10% hp

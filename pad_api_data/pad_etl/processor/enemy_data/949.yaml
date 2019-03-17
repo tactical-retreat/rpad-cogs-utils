@@ -20,8 +20,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -68,7 +68,8 @@ records:
 # Branch on level > 5, target rnd 3
 # [2] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [3] ESAttackUp(17:725) -> Seeing Red
+# [3] ESAttackUPRemainingEnemies(17:725) -> Seeing Red
+# 	Condition: when <= 1 enemies remain (ai:100 rnd:0)
 # Increase damage to 200% for the next 999 turns
 # [4] ESAttackMultihit(15:731) -> Slingshot
 # 	Condition: 50% chance when < 75% hp (ai:50 rnd:0)

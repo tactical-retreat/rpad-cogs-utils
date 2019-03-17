@@ -10,6 +10,41 @@ reviewed_by: unreviewed
 warnings: []
 
 ############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Wait and See
+  name_jp: Wait and See
+  one_time: true
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: When 1 enemy remains and HP <= 39
+  name_jp: When 1 enemy remains and HP <= 39
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 150% for the next 15 turns
+  desc_jp: Increase damage to 150% for the next 15 turns
+  max_atk_pct: null
+  name_en: Overdrive
+  name_jp: Overdrive
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
 ### Data @ 7
 ############################################################
 !SkillRecordListing
@@ -64,8 +99,8 @@ records:
 # [4] ESInactivity(16:157) -> Wait and See
 # 	Condition: One-time use (ai:0 rnd:100) (one-time: 1)
 # Do nothing
-# [5] ESAttackUp(17:158) -> Overdrive
-# 	Condition: When < 40% hp (ai:100 rnd:0)
+# [5] ESAttackUPRemainingEnemies(17:158) -> Overdrive
+# 	Condition: When < 40% hp, when <= 1 enemies remain (ai:100 rnd:0)
 # Increase damage to 150% for the next 15 turns
 # [6] ESEndPath(36:26) -> ESEndPath
 # end_turn

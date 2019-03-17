@@ -116,6 +116,37 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: When 1 enemy remains and HP <= 19
+  name_jp: When 1 enemy remains and HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: 'Show message: I''ll drag you down to the ground and
+
+    make you a part of me!|Yes. It was a success.'
+  desc_jp: 'Show message: I''ll drag you down to the ground and
+
+    make you a part of me!|Yes. It was a success.'
+  max_atk_pct: null
+  name_en: Father's Transformation
+  name_jp: Father's Transformation
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: Increase damage to 300% for the next 999 turns
+  desc_jp: Increase damage to 300% for the next 999 turns
+  max_atk_pct: null
+  name_en: I will become a perfect being.
+  name_jp: I will become a perfect being.
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -287,8 +318,8 @@ records:
 # [6] ESBindAwoken(88:8512) -> This is a waste of time.
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
 # Bind awoken skills for 3 turns
-# [7] ESAttackUp(17:8513) -> I will become a perfect being.
-# 	Condition: When < 20% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# [7] ESAttackUPRemainingEnemies(17:8513) -> I will become a perfect being.
+# 	Condition: When < 20% hp , one-time use, when <= 1 enemies remain (ai:100 rnd:0) (one-time: 1)
 # Increase damage to 300% for the next 999 turns
 # [8] ESColumnSpawnMulti(77:8514) -> Stationary Transmutation
 # 	Condition: 20% chance (ai:0 rnd:20)

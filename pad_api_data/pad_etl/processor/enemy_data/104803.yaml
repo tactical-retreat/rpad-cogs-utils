@@ -29,26 +29,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 90% damage (3 hits, 30% each)
-  desc_jp: Deal 90% damage (3 hits, 30% each)
-  max_atk_pct: 90
-  name_en: Gualiva Doshia
-  name_jp: Gualiva Doshia
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -149,8 +131,8 @@ records:
 # [4] ESBoardChangeAttackBits(85:10757) -> Badorishe de Jelut
 # 	Condition: When < 10% hp (ai:100 rnd:0)
 # Change all orbs to Fire
-# [5] ESAttackUp(17:10754) -> Brave Verse of Flame
-# 	Condition: 50% chance (ai:50 rnd:0)
+# [5] ESAttackUPRemainingEnemies(17:10754) -> Brave Verse of Flame
+# 	Condition: 50% chance, when <= 1 enemies remain (ai:50 rnd:0)
 # Increase damage to 200% for the next 1 turns
 # [6] ESAttackMultihit(15:10755) -> Gualiva Doshia
 # Enemy action

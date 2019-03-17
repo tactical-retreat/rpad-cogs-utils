@@ -31,6 +31,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: When 1 enemy remains and HP <= 9
+  name_jp: When 1 enemy remains and HP <= 9
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 999 turns
+  desc_jp: Increase damage to 200% for the next 999 turns
+  max_atk_pct: null
+  name_en: Growing Threat
+  name_jp: Growing Threat
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 50
   name_jp: HP <= 50
   one_time: false
@@ -423,8 +441,8 @@ records:
 # 	Absorb Light damage for 5 turns
 # [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESAttackUp(17:7720) -> Growing Threat
-# 	Condition: When < 10% hp (ai:100 rnd:0)
+# [6] ESAttackUPRemainingEnemies(17:7720) -> Growing Threat
+# 	Condition: When < 10% hp, when <= 1 enemies remain (ai:100 rnd:0)
 # Increase damage to 200% for the next 999 turns
 # [7] ESDamageShield(74:7721) -> Protect
 # 	Condition: When < 50% hp (ai:100 rnd:0)

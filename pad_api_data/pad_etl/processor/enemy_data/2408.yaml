@@ -29,6 +29,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: When 1 enemy remains and HP <= 19
+  name_jp: When 1 enemy remains and HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 150% for the next 99 turns
+  desc_jp: Increase damage to 150% for the next 99 turns
+  max_atk_pct: null
+  name_en: Palate Cleanser
+  name_jp: Palate Cleanser
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -88,24 +106,6 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Increase damage to 150% for the next 99 turns
-  desc_jp: Increase damage to 150% for the next 99 turns
-  max_atk_pct: null
-  name_en: Palate Cleanser
-  name_jp: Palate Cleanser
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Card Unknowns
@@ -150,8 +150,8 @@ records:
 # Change Random to Jammer
 # [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [14] ESAttackUp(17:11418) -> Palate Cleanser
-# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# [14] ESAttackUPRemainingEnemies(17:11418) -> Palate Cleanser
+# 	Condition: One-time use, when <= 1 enemies remain (ai:100 rnd:0) (one-time: 1)
 # Increase damage to 150% for the next 99 turns
 # [15] ESAttackMultihit(15:11419) -> Nectar Inferno
 # Enemy action

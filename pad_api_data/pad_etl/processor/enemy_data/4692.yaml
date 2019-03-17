@@ -29,6 +29,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: When 1 enemy remains and HP <= 29
+  name_jp: When 1 enemy remains and HP <= 29
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 300% for the next 1 turns
+  desc_jp: Increase damage to 300% for the next 1 turns
+  max_atk_pct: null
+  name_en: Wisdom of the Twin Star
+  name_jp: Wisdom of the Twin Star
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 75
   name_jp: HP <= 75
   one_time: false
@@ -61,15 +79,6 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: Increase damage to 300% for the next 1 turns
-  desc_jp: Increase damage to 300% for the next 1 turns
-  max_atk_pct: null
-  name_en: Wisdom of the Twin Star
-  name_jp: Wisdom of the Twin Star
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Card Unknowns
@@ -95,8 +104,8 @@ records:
 # [6] ESAbsorbCombo(67:10713) -> Humph, I'll play around with you
 # 	Condition: When < 75% hp , one-time use (ai:100 rnd:0) (one-time: 2)
 # Absorb combo <= 5 damage for 3 turns
-# [7] ESAttackUp(17:10714) -> Wisdom of the Twin Star
-# 	Condition: When < 30% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# [7] ESAttackUPRemainingEnemies(17:10714) -> Wisdom of the Twin Star
+# 	Condition: When < 30% hp , one-time use, when <= 1 enemies remain (ai:100 rnd:0) (one-time: 1)
 # Increase damage to 300% for the next 1 turns
 # [8] ESBombFixedSpawn(103:10715) -> Evil Vanguard that dwells in death
 # 	Condition: When < 30% hp (ai:100 rnd:0)
