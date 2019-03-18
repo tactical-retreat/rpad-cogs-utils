@@ -1,5 +1,7 @@
 from collections import OrderedDict
 import json
+from math import ceil, log
+from typing import List, Any
 
 from ..common import pad_util
 
@@ -1775,9 +1777,9 @@ PASSIVE_MAP = {
 # ES ids put in here will force the condition to one_time=True.
 # The values are the bitmapped integer flags corresponding to the one-time use field.
 _FORCE_ONE_TIME = {
-    88: 1, # Hera-Is
-    99: 2, # Hera-Is
-    100: 4, # Hera-Is
+    # 88: 1, # Hera-Is
+    # 99: 2, # Hera-Is
+    # 100: 4, # Hera-Is
 }
 
 # ES ids put in here will force the condition to the specified HP threshold.
@@ -1799,6 +1801,22 @@ def apply_es_overrides(es):
         es.condition.hp_threshold = _FORCE_HP_THRESHOLD[es.enemy_skill_id] or None
 
 
+def inject_implicit_onetime(behavior: List[Any]):
+    """Injects one_time values into specific categories of skills.
+
+    Currently only ESBindRandom but other early skills may need this.
+    This seems to fix things like Hera-Is and others, but breaks some like Metatron Tama.
+    There may be some interaction with slots 52/53/54 to take into account but unclear.
+    """
+    max_flag = max([0] + [x.condition.one_time for x in behavior if hasattr(x, 'condition') and x.condition.one_time])
+    next_flag = pow(2, ceil(log(max_flag + 1)/log(2)))
+    for b in behavior:
+        if type(b) == ESBindRandom and not b.condition.one_time:
+            b.condition.one_time = next_flag
+            next_flag = next_flag << 1
+
+
+
 def extract_behavior(enemy_skillset):
     if enemy_skill_map is None:
         return None
@@ -1813,6 +1831,8 @@ def extract_behavior(enemy_skillset):
             new_es = EnemySkillUnknown(skill)
         apply_es_overrides(new_es)
         behavior.append(new_es)
+
+    inject_implicit_onetime(behavior)
     return behavior
 
 
