@@ -143,8 +143,17 @@ class BookCard(pad_util.JsonDictEncodable):
         self.enemy_turns_alt = int(raw[51])
 
         self.unknown_052 = raw[52]
-        self.unknown_053 = raw[53]
-        self.unknown_054 = raw[54]
+
+        # Usage modified by enemy_skill_effect_type.
+        self.enemy_skill_effect = int(raw[53])
+
+        # The vast majority of these are:
+        # 0: (unknown atm; lot of monsters have this, with large numbers or bitmaps in 53)
+        # 1: Use 53 as countdown, when expired reset one-time skills.
+        # 2: (not sure, only used for deus ex machina, has 53=2)
+        # 5: (only used by a monster that never appears in a dungeon)
+        # 7: (not sure, only used by kanna, 53=7 as well)
+        self.enemy_skill_effect_type = int(raw[54])
 
         # Boolean, unlikely to be anything useful, only populated for 495 and 111.
         self.unknown_055 = raw[55]

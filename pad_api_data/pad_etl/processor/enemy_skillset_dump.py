@@ -266,11 +266,12 @@ def dump_summary_to_file(card: BookCard, enemy_summary: EnemySummary, enemy_beha
             f.write('{}\n'.format(_header('Data @ {}'.format(listing.level))))
             f.write('{}\n'.format(yaml.dump(listing, default_flow_style=False)))
 
-        f.write('{}\n'.format(_header('Card Unknowns')))
-        for i in ['09'] + list(range(52, 55)):
-            field = 'unknown_0{}'.format(i)
-            value = getattr(card, field)
-            f.write('# [{}] {} - {:8b}\n'.format(i, value, value))
+        f.write('{}\n'.format(_header('ES Modifiers')))
+        f.write('# [{}] {} - {:8b}\n'.format(9, card.unknown_009, card.unknown_009))
+        f.write('# [{}] {}\n'.format(52, 'true' if card.unknown_052 else 'false'))
+        f.write('# [{}] {} - {:8b}\n'.format('effect', card.enemy_skill_effect, card.enemy_skill_effect))
+        f.write('# [{}] {}\n'.format(52, 'type', card.enemy_skill_effect_type))
+
         f.write('#\n')
 
         if enemy_behavior:
