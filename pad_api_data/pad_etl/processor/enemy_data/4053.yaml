@@ -40,8 +40,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: Turn 1
+  name_jp: Turn 1
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -51,9 +51,18 @@ records:
   max_atk_pct: 100
   name_en: Entahaz Masaka
   name_jp: Entahaz Masaka
-  one_time: false
+  one_time: true
   record_type_name: ACTION
   usage_pct: 33
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
 - !SkillRecord
   desc_en: Blind all orbs on the board, Deal 100% damage
   desc_jp: Blind all orbs on the board, Deal 100% damage
@@ -180,7 +189,7 @@ records:
 # [8] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
 # [9] ESBindRandom(1:10919) -> Entahaz Masaka
-# 	Condition: 33% chance (ai:0 rnd:33)
+# 	Condition: 33% chance (ai:0 rnd:33) (one-time: 2)
 # Bind 4 random cards for 1~2 turns
 # [10] ESBlind(5:10920) -> Kokzaram
 # 	Condition: 33% chance (ai:0 rnd:33)

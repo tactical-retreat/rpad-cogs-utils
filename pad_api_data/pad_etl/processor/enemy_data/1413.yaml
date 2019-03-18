@@ -29,8 +29,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: Turn 1
+  name_jp: Turn 1
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -40,9 +40,18 @@ records:
   max_atk_pct: 100
   name_en: Tame
   name_jp: Tame
-  one_time: false
+  one_time: true
   record_type_name: ACTION
   usage_pct: 25
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
 - !SkillRecord
   desc_en: Deal 105% damage (3 hits, 35% each)
   desc_jp: Deal 105% damage (3 hits, 35% each)
@@ -113,7 +122,7 @@ records:
 # [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 10
 # [7] ESBindRandom(1:10876) -> Tame
-# 	Condition: 25% chance (ai:25 rnd:0)
+# 	Condition: 25% chance (ai:25 rnd:0) (one-time: 2)
 # Bind 1 random cards for 3 turns
 # [8] ESAttackMultihit(15:10875) -> Bite
 # Enemy action
