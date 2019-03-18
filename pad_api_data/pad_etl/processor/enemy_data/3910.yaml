@@ -29,37 +29,47 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: Execute below actions in order repeatedly
+  name_jp: Execute below actions in order repeatedly
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 100% damage
-  desc_jp: Deal 100% damage
+  desc_en: Change all orbs to Fire, Light, Heal, Deal 100% damage
+  desc_jp: Change all orbs to Fire, Light, Heal, Deal 100% damage
   max_atk_pct: 100
-  name_en: Disable Skill
-  name_jp: Disable Skill
-  one_time: false
+  name_en: Draco Summon - Light, Fire & Life
+  name_jp: Draco Summon - Light, Fire & Life
+  one_time: true
   record_type_name: ACTION
   usage_pct: 100
 
 ############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 1 -        1
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESBoardChangeAttackBits -> Draco Summon - Light, Fire & Life
-# Condition: One-time use
+# [4] ESBoardChangeAttackBits(85:8182) -> Draco Summon - Light, Fire & Life
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Change all orbs to Fire, Light, Heal
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESBoardChangeAttackBits -> Draco Summon - Light, Fire & Life
-# Condition: One-time use
+# [6] ESBoardChangeAttackBits(85:8182) -> Draco Summon - Light, Fire & Life
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Change all orbs to Fire, Light, Heal
-# [7] ESEndPath -> ESEndPath
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn

@@ -17,6 +17,15 @@ level: 1
 overrides: []
 records:
 - !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Have a splendid Lucky Day!
+  name_jp: Have a splendid Lucky Day!
+  one_time: false
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
@@ -26,11 +35,46 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 55% damage
-  desc_jp: Deal 55% damage
-  max_atk_pct: 55
-  name_en: Gift Breath
-  name_jp: Gift Breath
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Have a splendid Lucky Day!
+  name_jp: Have a splendid Lucky Day!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Have a splendid Lucky Day!
+  name_jp: Have a splendid Lucky Day!
+  one_time: false
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Have a splendid Lucky Day!
+  name_jp: Have a splendid Lucky Day!
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -48,5 +92,9 @@ records:
 ############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESAttackMultihit(15:6522) -> Gift Breath
-# Enemy action
+# [1] ESPreemptive(49:355) -> ESPreemptive
+# Enable preempt if level 5
+# [2] ESInactivity(66:8948) -> Have a splendid Lucky Day!
+# Do nothing
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
