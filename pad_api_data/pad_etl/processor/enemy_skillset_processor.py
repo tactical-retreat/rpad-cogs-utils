@@ -694,7 +694,10 @@ def convert(enemy_behavior: List, level: int, enemy_skill_effect: int, enemy_ski
     elif enemy_skill_effect_type == 1:
         ctx = CTXCounter(level, enemy_skill_effect)
     else:
-        ctx = Context(level)
+        # ctx = Context(level)
+        # For now fall back to the old context implementation to prevent errors in log.
+        print('Incorrect context used')
+        ctx = CTXBitmap(level, enemy_skill_effect)
 
     ctx, preemptives = extract_preemptives(ctx, behaviors)
     if ctx is None:
