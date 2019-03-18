@@ -296,7 +296,7 @@ def _file_by_id(monster_id):
     return os.path.join(os.path.dirname(__file__), 'enemy_data', '{}.yaml'.format(monster_id))
 
 
-def load_summary_as_dump_text(card: BookCard, monster_level: int):
+def load_summary_as_dump_text(card: BookCard, monster_level: int, dungeon_atk_modifier: float):
     """Produce a textual description of enemy behavior.
 
     Loads the enemy summary from disk, identifies the behavior appropriate for the level,
@@ -316,6 +316,7 @@ def load_summary_as_dump_text(card: BookCard, monster_level: int):
         return 'Basic attacks (3)\n'
 
     atk = card.enemy().atk.value_at(monster_level)
+    atk *= dungeon_atk_modifier
     msg = ''
     for row in enemy_info:
         header = row.name_en

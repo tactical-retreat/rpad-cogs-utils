@@ -115,7 +115,7 @@ def flatten_data(wave_data, dungeon_data, db, limit_floor_id=None):
                 monster_level = monster_info[1]
                 card = db.raw_card_by_id(monster_id)
                 output += '\n{} - {} @ level {}'.format(monster_id, card.name, monster_level)
-                output += '\n{}'.format(esd.load_summary_as_dump_text(card, monster_level))
+                output += '\n{}'.format(esd.load_summary_as_dump_text(card, monster_level, floor.modifiers_clean['atk']))
 
         output += '\n'
 
