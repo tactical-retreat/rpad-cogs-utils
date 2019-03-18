@@ -63,6 +63,7 @@ def run_test(args):
 
     golden_dungeons = [
         307, # Hera-Is
+        318, # Zeus-Dios
     ]
 
     for dungeon_id, wave_data in dungeon_id_to_wavedata.items():
