@@ -30,13 +30,15 @@ def parse_args():
 
 def process_card(card):
     enemy_behavior = card.enemy_behavior
+    enemy_skill_effect = card.card.enemy_skill_effect
+    enemy_skill_effect_type = card.card.enemy_skill_effect_type
     if not enemy_behavior:
         return
 
     levels = enemy_skillset_processor.extract_levels(enemy_behavior)
     skill_listings = []
     for level in sorted(levels):
-        skillset = enemy_skillset_processor.convert(enemy_behavior, level)
+        skillset = enemy_skillset_processor.convert(enemy_behavior, level, enemy_skill_effect, enemy_skill_effect_type)
         flattened = enemy_skillset_dump.flatten_skillset(level, skillset)
         if not flattened.records:
             continue
@@ -55,7 +57,6 @@ def process_card(card):
 def run(args):
     raw_input_dir = os.path.join(args.input_dir, 'raw')
     db = database.Database('na', raw_input_dir)
-    print('loading')
     db.load_database(skip_skills=True, skip_bonus=True, skip_extra=True)
 
     count = 0

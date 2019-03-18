@@ -86,8 +86,8 @@ class Context(object):
         self.do_preemptive = False
         # A bitmask for flag values which can be updated.
         self.flags = 0
-        # A bitmask for flag values which can only be set.
-        self.onetime_flags = 0
+        # A bitmask for flag values which can only be unset.
+        self.skill_use = 0
         # Special flag that is modified by the 'counter' operations.
         self.counter = 0
         # Countdown on/off
@@ -112,6 +112,12 @@ class Context(object):
 
     def clone(self):
         return copy.deepcopy(self)
+
+    def check_skill_use(self, usage):
+        raise NotImplementedError('check_skill_use')
+
+    def update_skill_use(self, usage):
+        raise NotImplementedError('update_skill_use')
 
     def turn_event(self):
         self.turn += 1
@@ -170,12 +176,45 @@ class Context(object):
         return True
 
 
+class CTXBitmap(Context):
+    def __init__(self, level, skill_use_flags):
+        super(CTXBitmap, self).__init__(level)
+        self.skill_use = skill_use_flags
+
+    def check_skill_use(self, usage):
+        return usage is None or self.skill_use & usage == usage
+
+    def update_skill_use(self, usage):
+        if usage is not None and self.check_skill_use(usage):
+            self.skill_use &= ~usage
+
+
+class CTXCounter(Context):
+    def __init__(self, level, skill_use_counter):
+        super(CTXCounter, self).__init__(level)
+        self.skill_use = skill_use_counter
+
+    def check_skill_use(self, usage):
+        if usage is None:
+            return True
+        else:
+            if self.skill_use == usage:
+                return True
+            else:
+                self.skill_use += 1
+                return False
+
+    def update_skill_use(self, usage):
+        if usage is not None and self.check_skill_use(usage):
+            self.skill_use -= usage
+
+
 def default_attack():
     """Indicates that the monster uses its standard attack."""
     return ESDefaultAttack()
 
 
-def loop_through(ctx: Context, behaviors: List[Any]):
+def loop_through(ctx, behaviors: List[Any]):
     """Executes a single turn through the simulator.
 
     This is called multiple times with varying Context values to probe the action set
@@ -249,37 +288,41 @@ def loop_through(ctx: Context, behaviors: List[Any]):
 
                 # Flag based checks (one-time and global flags).
                 # This check might be wrong? This is checking if all flags are unset, maybe just one needs to be unset.
-                if cond.one_time:
-                    if not ctx.onetime_flags & cond.one_time:
-                        if not ctx.apply_skill_effects(b):
-                            idx += 1
-                            continue
-                        ctx.onetime_flags = ctx.onetime_flags | cond.one_time
-                        results.append(b)
-                        return results
-                    else:
-                        idx += 1
-                        continue
+                # if cond.one_time:
+                #     if not ctx.skill_use_flags & cond.one_time:
+                #         if not ctx.apply_skill_effects(b):
+                #             idx += 1
+                #             continue
+                #         ctx.skill_use_flags = ctx.skill_use_flags | cond.one_time
+                #         results.append(b)
+                #         return results
+                #     else:
+                #         idx += 1
+                #         continue
 
                 if cond.ai == 100 and b_type != ESDispel:
                     # This always executes so it is a terminal action.
                     if not ctx.apply_skill_effects(b):
                         idx += 1
                         continue
+                    if not ctx.check_skill_use(cond.one_time):
+                        idx += 1
+                        continue
+                    ctx.update_skill_use(cond.one_time)
                     results.append(b)
                     return results
                 else:
                     # Not a terminal action, so accumulate it and continue.
-                    if ctx.apply_skill_effects(b):
+                    if ctx.apply_skill_effects(b) and ctx.check_skill_use(cond.one_time):
                         results.append(b)
                     idx += 1
                     continue
             else:
                 # Stuff without a condition is always terminal.
+                print('HI I DONT HAVE AI OR RND, IM {}'.format(b.name))
                 if not ctx.apply_skill_effects(b):
                     idx += 1
                     continue
-                results.append(b)
                 return results
 
         if b_type == ESBranchFlag:
@@ -635,7 +678,7 @@ def extract_hp_groups(ctx: Context, hp_checkpoints: Set[int], behaviors: List[An
 
     return results, globally_seen_behavior
 
-def convert(enemy_behavior: List, level: int):
+def convert(enemy_behavior: List, level: int, enemy_skill_effect: int, enemy_skill_effect_type: int):
     skillset = ProcessedSkillset(level)
 
     # Behavior is 1-indexed, so stick a fake row in to start
@@ -645,7 +688,14 @@ def convert(enemy_behavior: List, level: int):
         behaviors)
     skillset.base_abilities = base_abilities
 
-    ctx = Context(level)
+    # Pick the correct enemy_skill_effect model to use
+    if enemy_skill_effect_type == 0:
+        ctx = CTXBitmap(level, enemy_skill_effect)
+    elif enemy_skill_effect_type == 1:
+        ctx = CTXCounter(level, enemy_skill_effect)
+    else:
+        ctx = Context(level)
+
     ctx, preemptives = extract_preemptives(ctx, behaviors)
     if ctx is None:
         # Some monsters have no skillset at all
