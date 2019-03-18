@@ -269,8 +269,10 @@ def dump_summary_to_file(card: BookCard, enemy_summary: EnemySummary, enemy_beha
         f.write('{}\n'.format(_header('ES Modifiers')))
         f.write('# [{}] {} - {:8b}\n'.format(9, card.unknown_009, card.unknown_009))
         f.write('# [{}] {}\n'.format(52, 'true' if card.unknown_052 else 'false'))
-        f.write('# [{}] {} - {:8b}\n'.format('effect', card.enemy_skill_effect, card.enemy_skill_effect))
-        f.write('# [{}] {}\n'.format(52, 'type', card.enemy_skill_effect_type))
+        f.write('# [{}] {} - {:8b}\n'.format(53, card.enemy_skill_effect, card.enemy_skill_effect))
+        f.write('# [{}] {}\n'.format(54, card.enemy_skill_effect_type))
+        f.write('# 53 is enemy_skill_modifier\n')
+        f.write('# 54 is enemy_skill_modifier_type\n')
 
         f.write('#\n')
 
