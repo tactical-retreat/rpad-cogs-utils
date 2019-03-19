@@ -207,10 +207,10 @@ def load_summary(monster_id: int) -> Optional[EnemySummary]:
             if cur_listing_data:
                 all_listings.append(cur_listing_data)
 
-    enemy_info = yaml.load(''.join(entry_info_data))
+    enemy_info = yaml.load(''.join(entry_info_data), Loader=yaml.Loader)
     enemy_info.warnings = []
     enemy_summary = EnemySummary(enemy_info)
-    enemy_summary.data = [yaml.load(''.join(x)) for x in all_listings]
+    enemy_summary.data = [yaml.load(''.join(x), Loader=yaml.Loader) for x in all_listings]
 
     return enemy_summary
 
