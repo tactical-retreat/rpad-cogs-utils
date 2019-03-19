@@ -558,7 +558,7 @@ def extract_repeating_skills(turn_data: List, loop_start: int, loop_end: int) ->
         for hp_b in common_behaviors.copy():
             if hp_b not in turn_data[idx].items():
                 common_behaviors.remove(hp_b)
-    for idx in range(loop_start, loop_end):
+    for idx in range(loop_start):
         for hp, hp_behavior in turn_data[idx].items():
             if (hp, hp_behavior) not in common_behaviors:
                 repeating_skill_groups.append(TimedSkillGroup(idx + 1, hp, hp_behavior))
