@@ -302,7 +302,7 @@ def loop_through(ctx, behaviors: List[Any]):
                 #         idx += 1
                 #         continue
 
-                if cond.ai == 100 and b_type != ESDispel:
+                if max(cond.ai, cond.rnd) == 100 and b_type != ESDispel:
                     # This always executes so it is a terminal action.
                     if not ctx.apply_skill_effects(b):
                         idx += 1
