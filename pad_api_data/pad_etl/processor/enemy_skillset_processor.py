@@ -178,35 +178,37 @@ class Context(object):
 
 class CTXBitmap(Context):
     def __init__(self, level, skill_use_flags):
+        # TODO: skill_use_flags param might be useless
         super(CTXBitmap, self).__init__(level)
-        self.skill_use = skill_use_flags
+        self.skill_use = 0
 
     def check_skill_use(self, usage):
-        return usage is None or self.skill_use & usage == usage
+        return usage is None or self.skill_use & usage == 0
 
     def update_skill_use(self, usage):
-        if usage is not None and self.check_skill_use(usage):
-            self.skill_use &= ~usage
+        if usage is not None:
+            self.skill_use |= usage
 
 
 class CTXCounter(Context):
     def __init__(self, level, skill_use_counter):
+        # TODO: skill_use_counter param might be useless
         super(CTXCounter, self).__init__(level)
-        self.skill_use = skill_use_counter
+        self.skill_use = 0
 
     def check_skill_use(self, usage):
         if usage is None:
             return True
         else:
-            if self.skill_use == usage:
+            if self.skill_use == 0:
                 return True
-            else:
-                self.skill_use += 1
+            elif self.skill_use > 0:
+                self.skill_use -= 1
                 return False
 
     def update_skill_use(self, usage):
-        if usage is not None and self.check_skill_use(usage):
-            self.skill_use -= usage
+        if usage is not None:
+            self.skill_use += usage
 
 
 def default_attack():
@@ -643,7 +645,7 @@ def extract_timed_actions_multi(looped_behavior: List[Any], turn_data: List[Any]
     for turn in turn_data[loop_start:loop_end]:
         for hp, hp_behavior in turn.items():
             loop_hp_to_actions[hp].append(hp_behavior)
-    for idx in range(loop_start):
+    for idx in range(loop_start, loop_end):
         check_turn_data = turn_data[idx]
         for hp, hp_behavior in looped_behavior:
             if check_turn_data.get(hp, None) == hp_behavior:

@@ -174,7 +174,16 @@ def flatten_skillset(level: int, skillset: ProcessedSkillset) -> SkillRecordList
     if skillset.repeating_skill_groups:
         records.append(create_divider('Execute below actions in order repeatedly'))
 
+    current_turn = 0
     for item in skillset.repeating_skill_groups:
+        header = ''
+        if item.turn != current_turn:
+            header += 'Turn {}'.format(item.turn)
+            current_turn = item.turn
+        if item.hp != 100:
+            header += ' HP <= {}'.format(item.hp)
+        if len(header) > 0:
+            records.append(create_divider(header))
         for sub_item in item.skills:
             records.append(behavior_to_skillrecord(RecordType.ACTION, sub_item))
 
