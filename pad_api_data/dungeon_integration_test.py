@@ -109,7 +109,7 @@ def flatten_data(wave_data, dungeon_data, db, limit_floor_id=None):
         print(header)
         output += header
 
-        for floor_stage in sorted(floor_stage_to_monsters.keys()):
+        for floor_stage in sorted([x for x in floor_stage_to_monsters.keys() if x[0] == floor.floor_number]):
             stage = floor_stage[1]
             output += '\nstage {}\n'.format(stage)
             for monster_info in sorted(floor_stage_to_monsters[floor_stage], key=lambda x: x[0]):
