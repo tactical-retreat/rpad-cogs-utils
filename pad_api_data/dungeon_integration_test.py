@@ -64,6 +64,7 @@ def run_test(args):
     golden_dungeons = [
         307, # Hera-Is
         318, # Zeus-Dios
+        317, # ECO
         331, # Hera-Ur
     ]
 
