@@ -266,6 +266,7 @@ def loop_through(ctx, behaviors: List[Any]):
             ctx.is_preemptive = True
             ctx.do_preemptive = True
             results.append(b)
+            ctx.update_skill_use(b.condition.one_time)
             return results
 
         if b_type == ESCountdown:
