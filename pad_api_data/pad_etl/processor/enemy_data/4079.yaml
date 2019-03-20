@@ -17,44 +17,36 @@ level: 1
 overrides: []
 records:
 - !SkillRecord
-  desc_en: Do nothing
-  desc_jp: Do nothing
+  desc_en: Do nothing (Preemptive)
+  desc_jp: Do nothing (Preemptive)
   max_atk_pct: null
   name_en: Hey, c'mon c'mon!
   name_jp: Hey, c'mon c'mon!
   one_time: true
   record_type_name: PREEMPT
   usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 100% damage
-  desc_jp: Deal 100% damage
-  max_atk_pct: 100
-  name_en: Disable Skill
-  name_jp: Disable Skill
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
 ############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESInactivity -> Hey, c'mon c'mon!
-# Condition: One-time use
+# [2] ESInactivity(66:8664) -> Hey, c'mon c'mon!
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Do nothing
-# [3] ESEndPath -> ESEndPath
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [4] SkillSet:
-# 	Condition: On death
-# 	[0] ESInactivity -> Woaaaaaah!
+# 	Condition: On death (ai:0 rnd:0)
+# 	[0] ESInactivity(66:8662) -> Woaaaaaah!
 # 	Do nothing

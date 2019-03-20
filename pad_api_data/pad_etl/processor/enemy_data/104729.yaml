@@ -10,41 +10,6 @@ reviewed_by: unreviewed
 warnings: []
 
 ############################################################
-### Data @ 1
-############################################################
-!SkillRecordListing
-level: 1
-overrides: []
-records:
-- !SkillRecord
-  desc_en: Deal 100% damage
-  desc_jp: Deal 100% damage
-  max_atk_pct: 100
-  name_en: Disable Skill
-  name_jp: Disable Skill
-  one_time: false
-  record_type_name: PREEMPT
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 100% damage
-  desc_jp: Deal 100% damage
-  max_atk_pct: 100
-  name_en: Disable Skill
-  name_jp: Disable Skill
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-
-############################################################
 ### Data @ 4
 ############################################################
 !SkillRecordListing
@@ -52,44 +17,36 @@ level: 4
 overrides: []
 records:
 - !SkillRecord
-  desc_en: Spawn random 30 Wood, Mortal Poison orbs
-  desc_jp: Spawn random 30 Wood, Mortal Poison orbs
+  desc_en: Spawn random 30 Wood, Mortal Poison orbs (Preemptive)
+  desc_jp: Spawn random 30 Wood, Mortal Poison orbs (Preemptive)
   max_atk_pct: null
   name_en: Curse of the Tree
   name_jp: Curse of the Tree
   one_time: true
   record_type_name: PREEMPT
   usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 100% damage
-  desc_jp: Deal 100% damage
-  max_atk_pct: 100
-  name_en: Disable Skill
-  name_jp: Disable Skill
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
+############################################################
+### ES Modifiers
+############################################################
+# [9] 4 -      100
+# [52] true
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
 ############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:3402) -> ESPreemptive
 # Enable preempt if level 4
-# [2] ESBranchLevel -> ESBranchLevel
-# Branch on level = 4, target rnd 4
-# [3] ESEndPath -> ESEndPath
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 4, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESRandomSpawn -> Curse of the Tree
-# Condition: One-time use
+# [4] ESRandomSpawn(92:10694) -> Curse of the Tree
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Spawn random 30 Wood, Mortal Poison orbs
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn

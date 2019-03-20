@@ -17,43 +17,35 @@ level: 1
 overrides: []
 records:
 - !SkillRecord
-  desc_en: Player recover 100% hp
-  desc_jp: Player recover 100% hp
+  desc_en: Player recover 100% hp (Preemptive)
+  desc_jp: Player recover 100% hp (Preemptive)
   max_atk_pct: null
   name_en: Want some ice cream?
   name_jp: Want some ice cream?
   one_time: false
   record_type_name: PREEMPT
   usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 100% damage
-  desc_jp: Deal 100% damage
-  max_atk_pct: 100
-  name_en: Disable Skill
-  name_jp: Disable Skill
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] false
+# [53] 1 -        1
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
 ############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive -> ESPreemptive
+# [1] ESPreemptive(49:318) -> ESPreemptive
 # Enable preempt if level 1
-# [2] ESBranchFlag -> ESBranchFlag
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation -> ESFlagOperation
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESRecoverPlayer -> Want some ice cream?
+# [4] ESRecoverPlayer(55:707) -> Want some ice cream?
 # Player recover 100% hp
-# [5] ESEndPath -> ESEndPath
+# [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
