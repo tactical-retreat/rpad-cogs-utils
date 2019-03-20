@@ -111,11 +111,13 @@ def behavior_to_skillrecord(record_type: RecordType, action: Union[ESAction, ESL
         name = ' + '.join(map(lambda s: s.name, action.skill_list))
         description = ' + '.join(map(lambda s: s.description, action.skill_list))
 
-    if type(action) == ESPassive:
+    if issubclass(type(action), ESPassive):
         name = 'Ability'
 
     if type(action) in [ESPreemptive, ESAttackPreemptive]:
         name = 'Preemptive'
+    elif record_type == RecordType.PREEMPT:
+        description += ' (Preemptive)'
 
     attack = getattr(action, 'attack', None)
     if attack is not None:
