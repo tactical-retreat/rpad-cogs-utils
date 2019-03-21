@@ -420,12 +420,18 @@ class Describe:
 
 class ESCondition(pad_util.JsonDictEncodable):
     def __init__(self, ai, rnd, params_arr, description=None):
+        # If the monster has a hp_threshold value, the % chance is AI+RND under the threshold.
         self.ai = ai
+        # The base % chance is rnd.
         self.rnd = rnd
         self.hp_threshold = None if params_arr[11] is None else params_arr[11]
         self.one_time = params_arr[13]
         self.description = description if description else \
             Describe.condition(max(ai, rnd), self.hp_threshold, self.one_time is not None)
+
+        # Force ignore hp threshold on skill if the monster has no AI.
+        if self.hp_threshold and self.ai == 0:
+            self.hp_threshold = None
 
 
 class ESAttack(pad_util.JsonDictEncodable):
@@ -1785,7 +1791,7 @@ _FORCE_ONE_TIME = {
 # ES ids put in here will force the condition to the specified HP threshold.
 # If the threshold is 0, it is removed.
 _FORCE_HP_THRESHOLD = {
-    87: 0, # Chaos Devil Dragon's Chaos Ray
+    # 87: 0, # Chaos Devil Dragon's Chaos Ray
 }
 
 
