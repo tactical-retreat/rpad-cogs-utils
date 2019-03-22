@@ -4,7 +4,7 @@ import os
 import yaml
 
 from pad_etl.processor import debug_utils
-from pad_etl.processor.enemy_skillset_processor import ProcessedSkillset
+from pad_etl.processor.enemy_skillset_processor import ProcessedSkillset, StandardSkillGroup
 from ..data.card import BookCard
 from .enemy_skillset import *
 
@@ -286,7 +286,7 @@ def load_and_merge_summary(enemy_summary: EnemySummary) -> EnemySummary:
     return saved_summary
 
 
-def dump_summary_to_file(card: BookCard, enemy_summary: EnemySummary, enemy_behavior: List):
+def dump_summary_to_file(card: BookCard, enemy_summary: EnemySummary, enemy_behavior: List[ESAction], unused_behavior: List[ESAction]):
     """Writes the enemy info, actions by level, and enemy behavior to a file."""
     file_path = _file_by_id(enemy_summary.info.monster_id)
     with open(file_path, 'w', encoding='utf-8') as f:
@@ -295,6 +295,13 @@ def dump_summary_to_file(card: BookCard, enemy_summary: EnemySummary, enemy_beha
         for listing in enemy_summary.data:
             f.write('{}\n'.format(_header('Data @ {}'.format(listing.level))))
             f.write('{}\n'.format(yaml.dump(listing, default_flow_style=False)))
+
+        if unused_behavior:
+            f.write('{}\n'.format(_header('Unused Actions')))
+            for behavior in unused_behavior:
+                behavior_str = debug_utils.simple_dump_obj(behavior)
+                behavior_str = behavior_str.replace('\n', '\n# ').rstrip('#').rstrip()
+                f.write('# {}\n'.format(behavior_str))
 
         f.write('{}\n'.format(_header('ES Modifiers')))
         f.write('# [{}] {} - {:8b}\n'.format(9, card.unknown_009, card.unknown_009))
@@ -311,7 +318,7 @@ def dump_summary_to_file(card: BookCard, enemy_summary: EnemySummary, enemy_beha
             for idx, behavior in enumerate(enemy_behavior):
                 behavior_str = debug_utils.simple_dump_obj(behavior)
                 behavior_str = behavior_str.replace('\n', '\n# ').rstrip('#').rstrip()
-                f.write('# [{}] {}\n'.format(idx + 1, behavior_str, '\n'))
+                f.write('# [{}] {}\n'.format(idx + 1, behavior_str))
 
 
 def _header(header_text: str) -> str:
@@ -365,3 +372,19 @@ def load_summary_as_dump_text(card: BookCard, monster_level: int, dungeon_atk_mo
             msg += desc + '\n'
 
     return msg
+
+
+def extract_used_skills(skillset: ProcessedSkillset) -> List[ESAction]:
+    """Flattens a ProcessedSkillset to a list of actions"""
+    results = []
+    results.extend(skillset.preemptives)
+
+    def sg_extract(l: List[StandardSkillGroup]) -> List[ESAction]:
+        return [item for sublist in l for item in sublist.skills]
+
+    results.extend(sg_extract(skillset.timed_skill_groups))
+    results.extend(sg_extract(skillset.repeating_skill_groups))
+    results.extend(sg_extract(skillset.hp_skill_groups))
+    results.extend(sg_extract(skillset.enemycount_skill_groups))
+
+    return results

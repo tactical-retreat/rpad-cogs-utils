@@ -691,6 +691,7 @@ def extract_hp_groups(ctx: Context, hp_checkpoints: Set[int], behaviors: List[An
 
     return results, globally_seen_behavior
 
+
 def convert(enemy_behavior: List, level: int, enemy_skill_effect: int, enemy_skill_effect_type: int):
     skillset = ProcessedSkillset(level)
 

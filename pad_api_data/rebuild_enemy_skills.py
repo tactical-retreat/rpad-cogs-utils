@@ -9,6 +9,7 @@ import os
 from pad_etl.data import database
 from pad_etl.processor import enemy_skillset_processor
 from pad_etl.processor import enemy_skillset_dump
+from pad_etl.processor.enemy_skillset import ESAction
 
 fail_logger = logging.getLogger('processor_failures')
 fail_logger.disabled = True
@@ -39,21 +40,31 @@ def process_card(card):
 
     levels = enemy_skillset_processor.extract_levels(enemy_behavior)
     skill_listings = []
+    used_actions = []
     for level in sorted(levels):
         skillset = enemy_skillset_processor.convert(enemy_behavior, level, enemy_skill_effect, enemy_skill_effect_type)
         flattened = enemy_skillset_dump.flatten_skillset(level, skillset)
         if not flattened.records:
             continue
+        used_actions.extend(enemy_skillset_dump.extract_used_skills(skillset))
         skill_listings.append(flattened)
 
     if not skill_listings:
         return
 
+    unused_actions = []
+    for b in enemy_behavior:
+        if issubclass(type(b), ESAction) and b not in used_actions and b not in unused_actions:
+            unused_actions.append(b)
+
     entry_info = enemy_skillset_dump.EntryInfo(
         card.card.card_id, card.card.name, 'not yet populated')
+    if unused_actions:
+        entry_info.warnings.append('Found {} unused actions'.format(len(unused_actions)))
+
     summary = enemy_skillset_dump.EnemySummary(entry_info, skill_listings)
 
-    enemy_skillset_dump.dump_summary_to_file(card.card, summary, enemy_behavior)
+    enemy_skillset_dump.dump_summary_to_file(card.card, summary, enemy_behavior, unused_actions)
 
 
 def run(args):
