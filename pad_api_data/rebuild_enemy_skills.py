@@ -21,6 +21,8 @@ def parse_args():
                             help="Path to a folder where the input data is")
     inputGroup.add_argument("--card_id", required=False,
                             help="Process only this card")
+    inputGroup.add_argument("--interactive", required=False,
+                            help="Lets you specify a card id on the command line")
 
     helpGroup = parser.add_argument_group("Help")
     helpGroup.add_argument("-h", "--help", action="help",
@@ -59,9 +61,13 @@ def run(args):
     db = database.Database('na', raw_input_dir)
     db.load_database(skip_skills=True, skip_bonus=True, skip_extra=True)
 
+    fixed_card_id = args.card_id
+    if args.interactive:
+        fixed_card_id = input("enter a card id:").strip()
+
     count = 0
     for card in db.cards:
-        if args.card_id and card.card.card_id != int(args.card_id):
+        if fixed_card_id and card.card.card_id != int(fixed_card_id):
             continue
         try:
             count += 1
