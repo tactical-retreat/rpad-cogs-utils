@@ -106,6 +106,8 @@ class Context(object):
         self.damage_shield = 0
         # Turns of status shield, initial:int=0 -> shield up:int>0 -> expire:int=0
         self.status_shield = 0
+        # Turns of combo shield, initial:int=0 -> shield up:int>0 -> expire:int=0
+        self.combo_shield = 0
 
     def reset(self):
         self.is_preemptive = False
@@ -134,6 +136,9 @@ class Context(object):
         if self.status_shield > 0:
             # count down shield turns
             self.status_shield -= 1
+        if self.combo_shield > 0:
+            # count down shield turns
+            self.combo_shield -= 1
         if self.countdown:
             if self.counter > 0:
                 self.counter -= 1
@@ -170,6 +175,12 @@ class Context(object):
         elif b_type == ESStatusShield:
             if self.status_shield == 0:
                 self.status_shield = behavior.turns
+                return True
+            else:
+                return False
+        elif b_type == ESAbsorbCombo:
+            if self.combo_shield == 0:
+                self.combo_shield = behavior.max_turns
                 return True
             else:
                 return False
