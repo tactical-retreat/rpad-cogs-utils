@@ -7,7 +7,8 @@ monster_id: 3568
 monster_name_en: Shadow Machine King, Kurogane Maru
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 7 unused actions
 
 ############################################################
 ### Data @ 1
@@ -279,6 +280,26 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# ESOrbChangeAttack(48:8889) -> Sacrifice Saber
+# Change Poison to Dark
+# ESOrbChangeAttack(48:8890) -> Drill Break
+# Change Jammer to Fire
+# ESColumnSpawnMulti(77:8877) -> Double Sacrifice
+# 	Condition: 50% chance (ai:50 rnd:0)
+# Change 1st column to Poison orbs, 6th column to Jammer orbs
+# ESColumnSpawnMulti(77:8878) -> Twin Strike
+# Change 1st column to Dark orbs, 6th column to Fire orbs
+# ESRowSpawnMulti(79:8886) -> Double Sacrifice
+# 	Condition: 33% chance (ai:33 rnd:0)
+# Change 1st row to Poison orbs, 5th row to Jammer orbs
+# ESRowSpawnMulti(79:8887) -> Twin Strike
+# 	Condition: 50% chance (ai:50 rnd:0)
+# Change 1st row to Dark orbs, 5th row to Fire orbs
+# ESAttackMultihit(15:8888) -> Cross Rush
+# Enemy action
 ############################################################
 ### ES Modifiers
 ############################################################

@@ -7,7 +7,8 @@ monster_id: 2336
 monster_name_en: Wood Armor Dragon, Becrux
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 5 unused actions
 
 ############################################################
 ### Data @ 5
@@ -35,6 +36,24 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# ESAttackMultihit(15:3241) -> Limit Burst
+# 	Condition: When < 10% hp (ai:100 rnd:0)
+# Enemy action
+# ESSkillDelay(89:3240) -> Absorption
+# 	Condition: When < 80% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Delay active skills by 1 turns
+# ESSkyfall(68:3354) -> Green Energy
+# 	Condition: 20% chance (ai:0 rnd:20)
+# Wood skyfall +20% for 99 turns
+# ESRowSpawnMulti(79:3355) -> Leaf Wind
+# 	Condition: 40% chance (ai:0 rnd:40)
+# Change 5th row to Wood orbs
+# ESAttackMultihit(15:3356) -> Aero Blast
+# 	Condition: 40% chance (ai:0 rnd:40)
+# Enemy action
 ############################################################
 ### ES Modifiers
 ############################################################

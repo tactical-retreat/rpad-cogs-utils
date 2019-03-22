@@ -7,7 +7,8 @@ monster_id: 1253
 monster_name_en: Blazing Dragonfire Angel, Uriel
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 5 unused actions
 
 ############################################################
 ### Data @ 1
@@ -242,6 +243,33 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 3)
+# 	[0] ESInactivity(66:4083) -> Uses 3 Blazing Spheres
+# 	Do nothing
+# 	[1] ESBoardChangeAttackBits(85:4060) -> Saint Explosion!
+# 	Change all orbs to Fire, Water, Wood, Light
+# SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
+# 	[0] ESInactivity(66:4084) -> Uses 2 Blazing Spheres
+# 	Do nothing
+# 	[1] ESBoardChangeAttackBits(85:4061) -> Holy Explosion!
+# 	Change all orbs to Fire, Wood, Light
+# SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# 	[0] ESInactivity(66:4085) -> Uses 1 Blazing Sphere
+# 	Do nothing
+# 	[1] ESBoardChangeAttackBits(85:4062) -> Photon Explosion!
+# 	Change all orbs to Fire, Light
+# ESBoardChangeAttackBits(85:4063) -> Explosion
+# Change all orbs to Fire
+# SkillSet:
+# 	Condition: On death (ai:0 rnd:0)
+# 	[0] ESSkyfall(68:4138) -> Holy Flame Oracle
+# 	Fire skyfall +15% for 5 turns
 ############################################################
 ### ES Modifiers
 ############################################################

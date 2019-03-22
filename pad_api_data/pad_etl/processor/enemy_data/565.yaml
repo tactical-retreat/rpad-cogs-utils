@@ -7,7 +7,8 @@ monster_id: 565
 monster_name_en: Ishikawa Goemon
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 3 unused actions
 
 ############################################################
 ### Data @ 1
@@ -26,6 +27,18 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# ESBindRandom(1:218) -> What a Great View!
+# 	Condition: One-time use (ai:100 rnd:100) (one-time: 1)
+# Bind 3 random cards for 2~3 turns
+# ESAttackMultihit(15:221) -> Coin Throw
+# 	Condition: 50% chance when < 25% hp (ai:50 rnd:0)
+# Enemy action
+# ESBlind(5:220) -> Smoke Screen
+# 	Condition: 5% chance (ai:0 rnd:5)
+# Blind all orbs on the board
 ############################################################
 ### ES Modifiers
 ############################################################

@@ -7,7 +7,8 @@ monster_id: 1422
 monster_name_en: Guardian of the Sacred City, Athena
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 3 unused actions
 
 ############################################################
 ### Data @ 1
@@ -71,6 +72,18 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# ESRecoverEnemy(7:1642) -> Resurrection
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Enemy recover 100% hp
+# ESBindAttribute(2:1643) -> Hymn of Nike
+# 	Condition: When < 75% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Bind Dark cards for 10 turns
+# ESStatusShield(20:1644) -> Aegis Defense
+# 	Condition: When < 90% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Voids status ailments for 999 turns
 ############################################################
 ### ES Modifiers
 ############################################################

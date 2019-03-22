@@ -7,7 +7,8 @@ monster_id: 2894
 monster_name_en: Loyal Demon Prince, Cauchemar
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 4 unused actions
 
 ############################################################
 ### Data @ 1
@@ -91,6 +92,23 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# ESRandomSpawn(92:10987) -> Cauchemar Fragment
+# 	Condition: 33% chance & when Fire, Water, Wood, Light, Dark, Heal, Mortal Poison orbs are on the board (ai:0 rnd:33)
+# Spawn random 2 Jammer, Poison orbs
+# ESOrbChangeAttack(48:10988) -> Cauchemar Tempest
+# 	Condition: 33% chance (ai:0 rnd:33)
+# Change Random to Jammer
+# ESAttackMultihit(15:10989) -> Cauchemar Impact
+# 	Condition: 34% chance (ai:0 rnd:34)
+# Enemy action
+# SkillSet:
+# 	[0] ESSpinnersRandom(109:10991) -> Cauchemar Despair
+# 	Random 4 orbs change every 1.5s for 4 turns
+# 	[1] ESRowSpawnMulti(79:10992) -> Cauchemar Catastrophe
+# 	Change 1st, 3rd, 5th row to Jammer orbs
 ############################################################
 ### ES Modifiers
 ############################################################

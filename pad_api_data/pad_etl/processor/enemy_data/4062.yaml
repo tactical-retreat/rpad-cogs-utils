@@ -7,7 +7,8 @@ monster_id: 4062
 monster_name_en: Ruining Hands War Goddess, Morrigu
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 12 unused actions
 
 ############################################################
 ### Data @ 1
@@ -144,6 +145,63 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# ESOrbChangeAttack(48:8889) -> Sacrifice Saber
+# Change Poison to Dark
+# ESOrbChangeAttack(48:8890) -> Drill Break
+# Change Jammer to Fire
+# SkillSet:
+# 	[0] ESColumnSpawnMulti(77:8868) -> Double Sacrifice
+# 	Change 1st column to Poison orbs, 6th column to Jammer orbs
+# 	[1] ESAttributeBlock(107:8869) -> Twin Protection
+# 	Unable to Jammer, Poison orbs for 1 turns
+# SkillSet:
+# 	Condition: One-time use (ai:50 rnd:0) (one-time: 1)
+# 	[0] ESOrbSealColumn(99:8871) -> Protective Wall
+# 	Seal 6th column for 1 turns
+# 	[1] ESBombFixedSpawn(103:8872) -> Burst Out
+# 	Spawn Bomb orbs in the specified positions
+# 	[2] ESAttackMultihit(15:8897) -> Hyah!!!
+# 	Enemy action
+# SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# 	[0] ESOrbSealColumn(99:8874) -> Protective Wall
+# 	Seal 1st column for 1 turns
+# 	[1] ESBlindStickyFixed(98:8875) -> Cross Saber
+# 	Blind orbs in specific positions for 1 turns
+# 	[2] ESAttackMultihit(15:8897) -> Hyah!!!
+# 	Enemy action
+# ESColumnSpawnMulti(77:8877) -> Double Sacrifice
+# 	Condition: 50% chance (ai:50 rnd:0)
+# Change 1st column to Poison orbs, 6th column to Jammer orbs
+# ESColumnSpawnMulti(77:8878) -> Twin Strike
+# Change 1st column to Dark orbs, 6th column to Fire orbs
+# SkillSet:
+# 	Condition: One-time use (ai:50 rnd:0) (one-time: 1)
+# 	[0] ESBlindStickyFixed(98:8879) -> Double Saber
+# 	Blind orbs in specific positions for 1 turns
+# 	[1] ESOrbLock(94:8880) -> X Field
+# 	Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# 	[2] ESAttackMultihit(15:8897) -> Hyah!!!
+# 	Enemy action
+# SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# 	[0] ESOrbSealRow(100:8882) -> Protective Wall
+# 	Seal 1st row for 1 turns
+# 	[1] ESBlindStickyFixed(98:8884) -> Cross Saber
+# 	Blind orbs in specific positions for 1 turns
+# 	[2] ESBombFixedSpawn(103:8883) -> Burst Out
+# 	Spawn Bomb orbs in the specified positions
+# ESRowSpawnMulti(79:8886) -> Double Sacrifice
+# 	Condition: 33% chance (ai:33 rnd:0)
+# Change 1st row to Poison orbs, 5th row to Jammer orbs
+# ESRowSpawnMulti(79:8887) -> Twin Strike
+# 	Condition: 50% chance (ai:50 rnd:0)
+# Change 1st row to Dark orbs, 5th row to Fire orbs
+# ESAttackMultihit(15:8888) -> Cross Rush
+# Enemy action
 ############################################################
 ### ES Modifiers
 ############################################################

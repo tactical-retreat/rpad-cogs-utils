@@ -7,7 +7,8 @@ monster_id: 2432
 monster_name_en: Shadow Dog Dragon, Shibabowdra
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 6 unused actions
 
 ############################################################
 ### Data @ 4
@@ -35,6 +36,27 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# ESGravity(50:3428) -> Wonder Bark
+# 	Condition: When < 10% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Player -100% HP
+# ESBindAttack(63:3423) -> Play-Bite
+# 	Condition: 20% chance (ai:0 rnd:20)
+# Bind 1 subs for 2 turns
+# ESAttackMultihit(15:3426) -> Slash Woof
+# 	Condition: 35% chance (ai:0 rnd:35)
+# Enemy action
+# ESRowSpawnMulti(79:3427) -> Present Bone
+# 	Condition: 35% chance (ai:0 rnd:35)
+# Change 3rd row to Dark orbs
+# ESBlind(5:3424) -> Dig a Hole
+# 	Condition: 10% chance (ai:0 rnd:10)
+# Blind all orbs on the board
+# ESDamageShield(74:3425) -> Stay
+# 	Condition: When < 70% hp (ai:100 rnd:0)
+# Reduce damage from all sources by 30% for 5 turns
 ############################################################
 ### ES Modifiers
 ############################################################

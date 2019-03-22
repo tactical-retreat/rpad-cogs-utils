@@ -7,7 +7,8 @@ monster_id: 104881
 monster_name_en: Heathcliff
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 3 unused actions
 
 ############################################################
 ### Data @ 1
@@ -97,6 +98,21 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# ESInactivity(66:11429) -> I always thought you'd be the one
+# standing before me at the very end.
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Do nothing
+# ESBindRandomSub(65:11468) -> I always thought you'd be the one
+# standing before me at the very end.
+# Bind 3 random subs for 3 turns
+# SkillSet:
+# 	Condition: On death (ai:0 rnd:0)
+# 	[0] ESInactivity(66:11653) -> I guess sometimes these
+# things just happen.
+# 	Do nothing
 ############################################################
 ### ES Modifiers
 ############################################################

@@ -7,7 +7,8 @@ monster_id: 3834
 monster_name_en: Guardian Deity of the Sky City, Athena Helios
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 6 unused actions
 
 ############################################################
 ### Data @ 1
@@ -352,6 +353,27 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# ESRandomSpawn(92:7892) -> Burn!
+# 	Condition: 50% chance & when Fire, Water, Wood, Light, Dark, Jammer, Poison, Mortal Poison orbs are on the board (ai:50 rnd:0)
+# Spawn random 5 Jammer orbs
+# ESGravity(50:7893) -> Once again!
+# 	Condition: 25% chance (ai:25 rnd:0)
+# Player -99% HP
+# ESDamageShield(74:7894) -> Barrier!
+# 	Condition: 33% chance (ai:33 rnd:0)
+# Reduce damage from all sources by 75% for 1 turns
+# ESSpinnersRandom(109:7895) -> Hyah!
+# 	Condition: 50% chance (ai:50 rnd:0)
+# Random 2 orbs change every 1.0s for 1 turns
+# ESCloud(104:7896) -> I don't think so!
+# 2x1 cloud appear for 1 turns at random location
+# SkillSet:
+# 	Condition: On death (ai:0 rnd:0)
+# 	[0] ESInactivity(66:7901) -> I'm...finished...
+# 	Do nothing
 ############################################################
 ### ES Modifiers
 ############################################################

@@ -7,7 +7,8 @@ monster_id: 1615
 monster_name_en: Inferno Sorcerer, Laila
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 9 unused actions
 
 ############################################################
 ### Data @ 1
@@ -107,6 +108,44 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# SkillSet:
+# 	Condition: When < 50% hp (ai:100 rnd:0)
+# 	[0] ESSkillDelay(89:5316) -> Now you've done it! I'm going all out!
+# 	Delay active skills by 5 turns
+# 	[1] ESBoardChange(84:5318) -> Infe...
+# 	Change all orbs to Jammer
+# ESBoardChangeAttackBits(85:5321) -> Inferno Spell!
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Change all orbs to Fire, Jammer
+# ESBoardChange(84:5318) -> Infe...
+# Change all orbs to Jammer
+# SkillSet:
+# 	Condition: When < 50% hp (ai:100 rnd:0)
+# 	[0] ESInactivity(66:5314) -> Let me give you a hand
+# 	Do nothing
+# 	[1] ESBindAttack(63:5304) -> Coiling Blaze!
+# 	Bind 4 subs for 6 turns
+# ESBindAttack(63:5303) -> Coiling Blaze!
+# Bind 2 subs for 3 turns
+# SkillSet:
+# 	Condition: When < 50% hp (ai:100 rnd:0)
+# 	[0] ESInactivity(66:5314) -> Let me give you a hand
+# 	Do nothing
+# 	[1] ESBoardChangeAttackBits(85:5307) -> Venom Detonation!
+# 	Change all orbs to Fire, Mortal Poison
+# ESBoardChangeAttackBits(85:5306) -> Venom Detonation!
+# Change all orbs to Fire, Poison
+# SkillSet:
+# 	Condition: When < 50% hp (ai:100 rnd:0)
+# 	[0] ESInactivity(66:5314) -> Let me give you a hand
+# 	Do nothing
+# 	[1] ESAttackMultihit(15:5310) -> Raiding Erupt!
+# 	Enemy action
+# ESAttackMultihit(15:5309) -> Raiding Erupt!
+# Enemy action
 ############################################################
 ### ES Modifiers
 ############################################################

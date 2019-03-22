@@ -7,7 +7,8 @@ monster_id: 3239
 monster_name_en: Reincarnated Neptune
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 3 unused actions
 
 ############################################################
 ### Data @ 1
@@ -120,6 +121,21 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# ESRandomSpawn(92:11664) -> Abysstrom
+# 	Condition: 50% chance & when Fire, Water, Wood, Light, Dark, Heal, Jammer orbs are on the board (ai:0 rnd:50)
+# Spawn random 8 Poison orbs
+# ESAttackMultihit(15:11665) -> Double Scissors
+# 	Condition: 50% chance (ai:0 rnd:50)
+# Enemy action
+# SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# 	[0] ESRecoverEnemy(86:11670) -> How regrettable
+# 	Enemy recover 50% hp
+# 	[1] ESDamageShield(74:11671) -> Finally, you will struggle
+# 	Reduce damage from all sources by 75% for 99 turns
 ############################################################
 ### ES Modifiers
 ############################################################

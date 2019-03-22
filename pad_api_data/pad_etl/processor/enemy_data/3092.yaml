@@ -7,7 +7,8 @@ monster_id: 3092
 monster_name_en: Iceberg Sword, Shiraha
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 2 unused actions
 
 ############################################################
 ### Data @ 1
@@ -37,6 +38,15 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# ESRowSpawnMulti(79:5222) -> Mirage Blade
+# 	Condition: When < 50% hp (ai:100 rnd:0)
+# Change 1st row to Water orbs
+# ESRandomSpawn(92:5221) -> Ice Sword
+# 	Condition: When fire, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
+# Spawn random 9 Water orbs
 ############################################################
 ### ES Modifiers
 ############################################################

@@ -7,7 +7,8 @@ monster_id: 2333
 monster_name_en: Fire Armor Dragon, Sador
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 5 unused actions
 
 ############################################################
 ### Data @ 5
@@ -35,6 +36,24 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# ESAttackMultihit(15:3241) -> Limit Burst
+# 	Condition: When < 10% hp (ai:100 rnd:0)
+# Enemy action
+# ESSkillDelay(89:3240) -> Absorption
+# 	Condition: When < 80% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Delay active skills by 1 turns
+# ESOrbChangeAttack(48:3232) -> Blaze Emission
+# 	Condition: 40% chance (ai:0 rnd:40)
+# Change Random to Fire
+# ESAttackMultihit(15:3233) -> Flare Missile
+# 	Condition: 40% chance (ai:0 rnd:40)
+# Enemy action
+# ESOrbChangeAttack(48:3234) -> Fire Trap
+# 	Condition: 20% chance (ai:0 rnd:20)
+# Change Fire to Poison
 ############################################################
 ### ES Modifiers
 ############################################################

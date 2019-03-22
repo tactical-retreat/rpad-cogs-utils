@@ -7,7 +7,8 @@ monster_id: 1955
 monster_name_en: Awoken Lakshmi
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 6 unused actions
 
 ############################################################
 ### Data @ 1
@@ -35,6 +36,30 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# ESRandomSpawn(92:2226) -> Can you erase my Jammers?
+# 	Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board (ai:100 rnd:0)
+# Spawn random 5 Jammer orbs
+# ESRandomSpawn(92:2227) -> Here I gooo!
+# 	Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board (ai:100 rnd:0)
+# Spawn random 6 Jammer orbs
+# ESRandomSpawn(92:2228) -> My... You're not bad!
+# 	Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board (ai:100 rnd:0)
+# Spawn random 10 Jammer orbs
+# SkillSet:
+# 	[0] ESBlind(5:2229) -> However, this here...
+# 	Blind all orbs on the board
+# 	[1] ESRandomSpawn(92:2230) -> Can you erase these!?
+# 	Spawn random 15 Jammer orbs
+# SkillSet:
+# 	[0] ESDebuffMovetime(39:2232) -> You're impressive!
+# 	Movetime -1s for 1 turns
+# 	[1] ESRandomSpawn(92:2233) -> This will finish it!
+# 	Spawn random 9 Jammer orbs
+# ESEndBattle(40:2235) -> That was fun! See ya!
+# Reduce self HP to 0
 ############################################################
 ### ES Modifiers
 ############################################################

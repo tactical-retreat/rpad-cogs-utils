@@ -7,7 +7,8 @@ monster_id: 2334
 monster_name_en: Water Armor Dragon, Gienah
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 5 unused actions
 
 ############################################################
 ### Data @ 5
@@ -35,6 +36,24 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# ESAttackMultihit(15:3241) -> Limit Burst
+# 	Condition: When < 10% hp (ai:100 rnd:0)
+# Enemy action
+# ESSkillDelay(89:3240) -> Absorption
+# 	Condition: When < 80% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Delay active skills by 1 turns
+# ESRandomSpawn(92:3287) -> Super Water Surge
+# 	Condition: 40% chance & when Fire, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:0 rnd:40)
+# Spawn random 4 Water orbs
+# ESColumnSpawnMulti(77:3288) -> Aqua Gun
+# 	Condition: 40% chance (ai:0 rnd:40)
+# Change 3rd column to Water orbs
+# ESOrbChangeAttack(48:3289) -> Blue Charger
+# 	Condition: 20% chance (ai:0 rnd:20)
+# Change Water to Jammer
 ############################################################
 ### ES Modifiers
 ############################################################

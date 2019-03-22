@@ -7,7 +7,8 @@ monster_id: 2337
 monster_name_en: Light Armor Dragon, Acrux
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 5 unused actions
 
 ############################################################
 ### Data @ 5
@@ -35,6 +36,24 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# ESAttackMultihit(15:3241) -> Limit Burst
+# 	Condition: When < 10% hp (ai:100 rnd:0)
+# Enemy action
+# ESSkillDelay(89:3240) -> Absorption
+# 	Condition: When < 80% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Delay active skills by 1 turns
+# ESBlind(62:3237) -> Light Beam
+# 	Condition: 20% chance (ai:0 rnd:20)
+# Blind all orbs on the board
+# ESBindAttack(63:3238) -> Holy Bind
+# 	Condition: 40% chance (ai:0 rnd:40)
+# Bind 1 random for 4 turns
+# ESOrbChangeAttack(48:3239) -> Energy Ball
+# 	Condition: 40% chance (ai:0 rnd:40)
+# Change Light to Jammer
 ############################################################
 ### ES Modifiers
 ############################################################

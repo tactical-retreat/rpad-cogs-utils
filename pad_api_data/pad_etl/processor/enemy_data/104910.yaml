@@ -7,7 +7,8 @@ monster_id: 104910
 monster_name_en: "\u4EEE\u9762\u30E9\u30A4\u30C0\u30FC\uFF22\uFF2C\uFF21\uFF23\uFF2B"
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 1 unused actions
 
 ############################################################
 ### Data @ 4
@@ -71,6 +72,12 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# ESAttackUPRemainingEnemies(17:11835) -> Vital Charge
+# 	Condition: when <= 1 enemies remain (ai:100 rnd:0)
+# Increase damage to 150% for the next 999 turns
 ############################################################
 ### ES Modifiers
 ############################################################

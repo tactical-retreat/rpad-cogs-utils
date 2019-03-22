@@ -7,7 +7,8 @@ monster_id: 4417
 monster_name_en: Monstrous Beast of the Gleaming Peak, Bigfoot
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 3 unused actions
 
 ############################################################
 ### Data @ 1
@@ -233,6 +234,24 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# ESAttackMultihit(15:9886) -> Raging Rebellious Attack
+# 	Condition: When < 20% hp (ai:100 rnd:0)
+# Enemy action
+# SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
+# 	[0] ESAttackUPRemainingEnemies(17:9862) -> Rage
+# 	Increase damage to 280% for the next 2 turns
+# 	[1] ESDamageShield(74:9872) -> Risky Attack
+# 	Reduce damage from all sources by 10% for 3 turns
+# SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# 	[0] ESAttackUPRemainingEnemies(17:9863) -> Intense Rage
+# 	Increase damage to 300% for the next 999 turns
+# 	[1] ESCloud(104:9873) -> Ice Dust Smoke
+# 	5x4 cloud appear for 10 turns at random location
 ############################################################
 ### ES Modifiers
 ############################################################

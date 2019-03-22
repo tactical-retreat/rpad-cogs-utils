@@ -7,7 +7,8 @@ monster_id: 2180
 monster_name_en: Pacifying Yomi Goddess, Izanami
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 4 unused actions
 
 ############################################################
 ### Data @ 1
@@ -95,6 +96,31 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# SkillSet:
+# 	Condition: When < 1% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# 	[0] ESRecoverEnemy(86:6510) -> Unwavering Light
+# 	Enemy recover 4% hp
+# 	[1] ESAbsorbCombo(67:6468) -> Protection of the Eight Thunders
+# 	Absorb combo <= 7 damage for 999 turns
+# 	[2] ESBlindStickyFixed(98:6469) -> Boundary of Disdain
+# 	Blind orbs in specific positions for 4 turns
+# 	[3] ESAttackUPRemainingEnemies(17:6470) -> The Nature of Death
+# 	Increase damage to 400% for the next 999 turns
+# SkillSet:
+# 	[0] ESPoisonChangeRandom(60:6461) -> An Invitation to Death & Decay
+# 	Change Random 11 to Poison
+# 	[1] ESOrbLock(94:6462) -> Curse of the Eternal Land
+# 	Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# ESOrbChangeAttack(48:6463) -> Anguished Wailing
+# Change Heal to Jammer
+# SkillSet:
+# 	[0] ESDamageShield(74:6458) -> The Feathered Garment of Yomi
+# 	Reduce damage from all sources by 50% for 3 turns
+# 	[1] ESGravity(50:6466) -> Last Embrace
+# 	Player -100% HP
 ############################################################
 ### ES Modifiers
 ############################################################

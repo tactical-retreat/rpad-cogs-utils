@@ -7,7 +7,8 @@ monster_id: 3012
 monster_name_en: Deighk
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 7 unused actions
 
 ############################################################
 ### Data @ 1
@@ -44,6 +45,26 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# ESAttackMultihit(15:5078) -> Meteors Myriad
+# 	Condition: When < 15% hp (ai:100 rnd:0)
+# Enemy action
+# ESGravity(50:5076) -> Fin Drive
+# 	Condition: When < 70% hp , one-time use (ai:100 rnd:0) (one-time: 2)
+# Player -99% HP
+# ESBindAttack(63:5077) -> Sun Jail
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Bind 1 subs for 5 turns
+# ESDamageShield(74:5072) -> Shell Scale
+# Reduce damage from all sources by 75% for 3 turns
+# ESAttackMultihit(15:5073) -> Cyclone
+# Enemy action
+# ESFixedStart(101:5074) -> Flash Induction
+# Fix orb movement starting point to random position on the board
+# ESAbsorbAttribute(53:5075) -> Deep Shadow
+# Absorb Dark damage for 3 turns
 ############################################################
 ### ES Modifiers
 ############################################################

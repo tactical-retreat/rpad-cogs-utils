@@ -7,7 +7,8 @@ monster_id: 5111
 monster_name_en: Kage
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 7 unused actions
 
 ############################################################
 ### Data @ 1
@@ -35,6 +36,37 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# ESColumnSpawnMulti(77:12619) -> Misogi
+# 	Condition: 25% chance (ai:25 rnd:0)
+# Change 3rd, 4th column to Dark orbs
+# ESInactivity(66:12608) -> Away with you!
+# 	Condition: 33% chance (ai:0 rnd:33)
+# Do nothing
+# SkillSet:
+# 	Condition: 33% chance (ai:0 rnd:33)
+# 	[0] ESAttackMultihit(15:12612) -> Hadoken
+# 	Enemy action
+# 	[1] ESAbsorbCombo(67:12613) -> Kurekijin
+# 	Absorb combo <= 5 damage for 1 turns
+# SkillSet:
+# 	Condition: 34% chance (ai:0 rnd:34)
+# 	[0] ESAttackMultihit(15:12615) -> Shoryuken
+# 	Enemy action
+# 	[1] ESRowSpawnMulti(79:12616) -> Shakunetsu Hadoken
+# 	Change 3rd row to Fire orbs
+# ESAttackUPRemainingEnemies(17:12618) -> Rikudo Osatsu
+# 	Condition: One-time use, when <= 1 enemies remain (ai:100 rnd:0) (one-time: 1)
+# Increase damage to 150% for the next 10 turns
+# ESAttackMultihit(15:12620) -> Shun Goku Satsu
+# Enemy action
+# SkillSet:
+# 	[0] ESInactivity(66:12617) -> This will be your grave!
+# 	Do nothing
+# 	[1] ESBlind(5:12674) -> Fly off!
+# 	Blind all orbs on the board
 ############################################################
 ### ES Modifiers
 ############################################################

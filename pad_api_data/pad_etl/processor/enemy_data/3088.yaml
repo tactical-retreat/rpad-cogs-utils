@@ -7,7 +7,8 @@ monster_id: 3088
 monster_name_en: Valkyrie Rose Armor X Dragon Caller, Ana
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 7 unused actions
 
 ############################################################
 ### Data @ 1
@@ -233,6 +234,29 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# ESAttackUPRemainingEnemies(17:5265) -> Innocent Bravery
+# 	Condition: When < 40% hp, when <= 1 enemies remain (ai:100 rnd:0)
+# Increase damage to 400% for the next 1 turns
+# ESAttackUPRemainingEnemies(17:5264) -> Innocent Soul
+# 	Condition: When < 60% hp, when <= 1 enemies remain (ai:100 rnd:0)
+# Increase damage to 300% for the next 1 turns
+# ESAttackUPRemainingEnemies(17:5263) -> Innocent Will
+# 	Condition: When < 80% hp, when <= 1 enemies remain (ai:100 rnd:0)
+# Increase damage to 200% for the next 1 turns
+# ESBindAttack(63:5270) -> Deadly Thorn Shackles
+# 	Condition: When < 40% hp (ai:100 rnd:0)
+# Bind 4 subs for 3 turns
+# ESBindAttack(63:5269) -> Scattering Thorn Shackles
+# 	Condition: When < 60% hp (ai:100 rnd:0)
+# Bind 3 subs for 3 turns
+# ESBindAttack(63:5268) -> Double Thorn Shackles
+# 	Condition: When < 80% hp (ai:100 rnd:0)
+# Bind 2 subs for 3 turns
+# ESBindAttack(63:5267) -> Thorn Shackles
+# Bind 1 subs for 3 turns
 ############################################################
 ### ES Modifiers
 ############################################################

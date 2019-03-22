@@ -7,7 +7,8 @@ monster_id: 2335
 monster_name_en: Thunder Armor Dragon, Albireo
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 5 unused actions
 
 ############################################################
 ### Data @ 5
@@ -35,6 +36,24 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# ESAttackMultihit(15:3241) -> Limit Burst
+# 	Condition: When < 10% hp (ai:100 rnd:0)
+# Enemy action
+# ESSkillDelay(89:3240) -> Absorption
+# 	Condition: When < 80% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Delay active skills by 1 turns
+# ESOrbLock(94:3350) -> Peaky Lightning
+# 	Condition: 40% chance (ai:0 rnd:40)
+# Lock all Light orbs
+# ESRandomSpawn(92:3351) -> Gold Pulse
+# 	Condition: 40% chance & when Fire, Water, Wood, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:0 rnd:40)
+# Spawn random 5 Light orbs
+# ESOrbChangeAttack(48:3352) -> Thunder Poison
+# 	Condition: 20% chance when < 70% hp (ai:0 rnd:20)
+# Change Light to Poison
 ############################################################
 ### ES Modifiers
 ############################################################

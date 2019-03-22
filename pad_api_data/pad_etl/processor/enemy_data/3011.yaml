@@ -7,7 +7,8 @@ monster_id: 3011
 monster_name_en: Achtros
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 7 unused actions
 
 ############################################################
 ### Data @ 1
@@ -44,6 +45,26 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# ESBoardChangeAttackBits(85:5070) -> Blue Calamity
+# 	Condition: When < 15% hp (ai:100 rnd:0)
+# Change all orbs to Poison
+# ESDebuffMovetime(39:5068) -> Extreme Cold
+# 	Condition: When < 70% hp , one-time use (ai:100 rnd:0) (one-time: 2)
+# Movetime -1s for 3 turns
+# ESAbsorbCombo(67:5069) -> Bubble Wall
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Absorb combo <= 5 damage for 3 turns
+# ESAbsorbAttribute(53:5064) -> Deep Aqua
+# Absorb Wood damage for 3 turns
+# ESSkyfall(68:5065) -> Poison Swirl
+# Mortal Poison skyfall +20% for 1 turns
+# ESOrbLock(94:5066) -> Sharp Teeth
+# Lock 8 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# ESDamageShield(74:5067) -> Shell Scale
+# Reduce damage from all sources by 75% for 3 turns
 ############################################################
 ### ES Modifiers
 ############################################################

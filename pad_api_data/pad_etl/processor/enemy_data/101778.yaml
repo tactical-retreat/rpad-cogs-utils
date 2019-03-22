@@ -7,7 +7,8 @@ monster_id: 101778
 monster_name_en: Alt. Gold Bowl Demon, Chickenbowl
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 4 unused actions
 
 ############################################################
 ### Data @ 1
@@ -35,6 +36,20 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# ESRandomSpawn(92:8899) -> Pecking
+# 	Condition: When fire, water, wood, dark, heal, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
+# Spawn random 6 Light orbs
+# ESAttackMultihit(15:1757) -> Taste Stinger
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Enemy action
+# ESRecoverEnemy(7:1758) -> Munching Time
+# 	Condition: When < 50% hp (ai:100 rnd:0)
+# Enemy recover 50% hp
+# ESOrbChangeAttack(48:1755) -> Chicken Smash
+# Change Light to Jammer
 ############################################################
 ### ES Modifiers
 ############################################################
