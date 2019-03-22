@@ -776,12 +776,8 @@ def collapse_repeating_groups(groups: List[TimedSkillGroup]) -> List[TimedSkillG
     new_groups = [cur_item]
     for idx in range(1, len(groups)):
         next_item = groups[idx]
-        if cur_item.skills == next_item.skills:
-            # This seems to be cleaning up some instances where the same action appears in
-            # consecutive hp buckets, which seems like a bug. We don't want '1-1' showing
-            # up in that case, so only change the end if the next item is different.
-            if cur_item.turn != next_item.turn and cur_item.end_turn != next_item.turn:
-                cur_item.end_turn = next_item.turn
+        if cur_item.skills == next_item.skills and cur_item.turn != next_item.turn:
+            cur_item.end_turn = next_item.turn
         else:
             new_groups.append(next_item)
             cur_item = next_item
