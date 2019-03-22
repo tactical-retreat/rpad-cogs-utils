@@ -436,7 +436,7 @@ def info_from_behaviors(behaviors):
 
     for idx, es in enumerate(behaviors):
         # Extract the passives and null them out to simplify processing
-        if type(es) in PASSIVE_MAP.values():
+        if issubclass(type(es), ESPassive):
             base_abilities.append(es)
             behaviors[idx] = None
 
@@ -755,17 +755,18 @@ def extract_hp_threshold(es):
 def clean_skillset(skillset: ProcessedSkillset):
     # Check to see if the skillset is functionally empty (only default actions). These are created
     # for some monsters with mostly empty/broken behavior.
-    def has_action(skills):
-        return any([type(s) != ESDefaultAttack for s in skills])
+    def clear_default_action(skills):
+        return [s for s in skills if type(s) != ESDefaultAttack]
 
-    def group_has_action(group):
-        return any([has_action(sg.skills) for sg in group])
+    def clear_empty_group(group):
+        for sg in group:
+            clear_default_action(sg.skills)
+        return [sg for sg in group if sg.skills]
 
-    if not (group_has_action(skillset.timed_skill_groups) or
-            group_has_action(skillset.repeating_skill_groups) or
-            group_has_action(skillset.enemycount_skill_groups) or
-            group_has_action(skillset.hp_skill_groups)):
-        return ProcessedSkillset(skillset.level)
+    clear_empty_group(skillset.timed_skill_groups)
+    clear_empty_group(skillset.repeating_skill_groups)
+    clear_empty_group(skillset.enemycount_skill_groups)
+    clear_empty_group(skillset.hp_skill_groups)
 
     # First cleanup: items with a condition attached can show up in timed
     # groups and also in random HP buckets (generally the 100% one due to
