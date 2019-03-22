@@ -198,6 +198,9 @@ def flatten_skillset(level: int, skillset: ProcessedSkillset) -> SkillRecordList
         if item.turn != current_turn:
             header += 'Turn {}'.format(item.turn)
             current_turn = item.turn
+            if item.end_turn:
+                header += '-{}'.format(item.end_turn)
+
         if item.hp != 100:
             header += ' HP <= {}'.format(item.hp)
         if len(header) > 0:

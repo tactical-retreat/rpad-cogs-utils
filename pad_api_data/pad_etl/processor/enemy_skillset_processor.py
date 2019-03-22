@@ -21,31 +21,31 @@ class TimedSkillGroup(StandardSkillGroup):
     """Set of skills which execute on a specific turn, possibly with a HP threshold."""
 
     def __init__(self, turn: int, hp: int, skills: List[ESAction]):
-        StandardSkillGroup.__init__(self, skills)
+        super().__init__(skills)
         # The turn that this group executes on.
         self.turn = turn
         # The hp threshold that this group executes on, always present, even if 100.
         self.hp = hp
+        # If set, this group executes over a range of turns
+        self.end_turn = None # int
 
 
 class EnemyCountSkillGroup(StandardSkillGroup):
     """Set of skills which execute when a specific number of enemies are present."""
 
-    def __init__(self, count: int, hp: int, skills: List, following_skills=None):
-        StandardSkillGroup.__init__(self, skills)
+    def __init__(self, count: int, hp: int, skills: List[ESAction]):
+        super().__init__(skills)
         # Number of enemies required to trigger this set of actions.
         self.count = count
         # The hp threshold that this group executes on, always present, even if 100.
         self.hp = hp
-        # I don't remember what I was thinking this would be used for =(
-        # self.following_skills = following_skills
 
 
 class HpSkillGroup(StandardSkillGroup):
     """Set of skills which execute when a HP threshold is reached."""
 
     def __init__(self, hp_ceiling: int, skills: List[ESAction]):
-        StandardSkillGroup.__init__(self, skills)
+        super().__init__(skills)
         # The hp threshold that this group executes on, always present, even if 100.
         self.hp_ceiling = hp_ceiling
 
@@ -66,11 +66,11 @@ class ProcessedSkillset(object):
         self.preemptives = []  # List[ESAction]
         # Actions which execute according to the current turn before behavior
         # enters a stable loop state.
-        self.timed_skill_groups = []  # List[StandardSkillGroup]
+        self.timed_skill_groups = []  # List[TimedSkillGroup]
         # Actions which execute depending on the enemy on-screen count.
         self.enemycount_skill_groups = []  # List[StandardSkillGroup]
         # Multi-turn stable action loops.
-        self.repeating_skill_groups = []  # List[StandardSkillGroup]
+        self.repeating_skill_groups = []  # List[TimedSkillGroup]
         # Single-turn stable action loops.
         self.hp_skill_groups = []  # List[StandardSkillGroup]
 
@@ -766,6 +766,28 @@ def extract_hp_threshold(es):
     return None
 
 
+def collapse_repeating_groups(groups: List[TimedSkillGroup]) -> List[TimedSkillGroup]:
+    """For repeating movesets, collapse consecutive repeats."""
+    if len(groups) <= 1:
+        # No work we can do here
+        return groups
+
+    cur_item = groups[0]
+    new_groups = [cur_item]
+    for idx in range(1, len(groups)):
+        next_item = groups[idx]
+        if cur_item.skills == next_item.skills:
+            # This seems to be cleaning up some instances where the same action appears in
+            # consecutive hp buckets, which seems like a bug. We don't want '1-1' showing
+            # up in that case, so only change the end if the next item is different.
+            if cur_item.turn != next_item.turn and cur_item.end_turn != next_item.turn:
+                cur_item.end_turn = next_item.turn
+        else:
+            new_groups.append(next_item)
+            cur_item = next_item
+    return new_groups
+
+
 def clean_skillset(skillset: ProcessedSkillset):
     # Check to see if the skillset is functionally empty (only default actions). These are created
     # for some monsters with mostly empty/broken behavior.
@@ -840,11 +862,19 @@ def clean_skillset(skillset: ProcessedSkillset):
                 cur_moveset = check_moveset
 
     # Iterate over every skillset group and remove now-empty ones
-    skillset.timed_skill_groups = [x for x in skillset.timed_skill_groups if x.skills]
-    skillset.repeating_skill_groups = [x for x in skillset.repeating_skill_groups if x.skills]
-    skillset.enemycount_skill_groups = [x for x in skillset.enemycount_skill_groups if x.skills]
-    skillset.hp_skill_groups = [x for x in skillset.hp_skill_groups if x.skills]
+    def filter_empty(group: List[StandardSkillGroup]):
+        return [x for x in group if x.skills]
+
+    skillset.timed_skill_groups = filter_empty(skillset.timed_skill_groups)
+    skillset.repeating_skill_groups = filter_empty(skillset.repeating_skill_groups)
+    skillset.enemycount_skill_groups = filter_empty(skillset.enemycount_skill_groups)
+    skillset.hp_skill_groups = filter_empty(skillset.hp_skill_groups)
+
+    # Ensure HP groups are sorted properly
     skillset.hp_skill_groups.sort(key=lambda x: x.hp_ceiling, reverse=True)
+
+    # Collapse unnecessary outputs
+    skillset.repeating_skill_groups = collapse_repeating_groups(skillset.repeating_skill_groups)
 
     return skillset
 
