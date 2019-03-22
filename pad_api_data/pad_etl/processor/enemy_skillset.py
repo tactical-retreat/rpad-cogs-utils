@@ -499,6 +499,8 @@ class ESAction(ESBehavior):
         self.attack = attack if attack is not None else ESAttack.new_instance(params(skill)[14])
         # param 15 controls displaying sprites on screen, used by Gintama
 
+    def ends_battle(self):
+        return False
 
 class ESInactivity(ESAction):
     def __init__(self, skill):
@@ -936,6 +938,8 @@ class ESEndBattle(ESAction):
         if self.condition:
             self.condition.chance = 100
 
+    def ends_battle(self):
+        return True
 
 class ESChangeAttribute(ESAction):
     def __init__(self, skill: EnemySkillRef):
@@ -1250,7 +1254,7 @@ class SubSkill(object):
 
 class ESSkillSet(ESAction):
     def __init__(self, skill: EnemySkillRef):
-        self.skill_list = []
+        self.skill_list = [] # List[ESAction]
         i = 0
         for s in params(skill)[1:11]:
             if s is not None:
@@ -1267,6 +1271,8 @@ class ESSkillSet(ESAction):
             description='Perform multiple skills'
         )
 
+    def ends_battle(self):
+        return any([s.ends_battle() for s in self.skill_list])
 
 class ESSkillSetOnDeath(ESSkillSet):
     def __init__(self, skill: EnemySkillRef):

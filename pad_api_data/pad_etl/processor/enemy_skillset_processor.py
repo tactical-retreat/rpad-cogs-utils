@@ -708,6 +708,9 @@ def convert(enemy_behavior: List, level: int, enemy_skill_effect: int, enemy_ski
 
     if preemptives is not None:
         skillset.preemptives = preemptives
+        if any([p.ends_battle() for p in preemptives]):
+            # This monster terminates the battle immediately.
+            return skillset
 
     turn_data, ctx = extract_turn_behaviors(ctx, behaviors, hp_checkpoints)
     behavior_loop = extract_loop_indexes(turn_data)
