@@ -421,17 +421,26 @@ class Describe:
 class ESCondition(pad_util.JsonDictEncodable):
     def __init__(self, ai, rnd, params_arr, description=None):
         # If the monster has a hp_threshold value, the % chance is AI+RND under the threshold.
-        self.ai = ai
+        self._ai = ai
         # The base % chance is rnd.
-        self.rnd = rnd
+        self._rnd = rnd
         self.hp_threshold = None if params_arr[11] is None else params_arr[11]
         self.one_time = params_arr[13]
         self.description = description if description else \
             Describe.condition(max(ai, rnd), self.hp_threshold, self.one_time is not None)
 
         # Force ignore hp threshold on skill if the monster has no AI.
-        if self.hp_threshold and self.ai == 0:
+        if self.hp_threshold and self._ai == 0:
             self.hp_threshold = None
+
+    def use_chance(self):
+        """Returns the likelyhood that this condition will be used.
+
+        If 100, it means it will always activate.
+        Note that this implementation is incorrect; it should take a 'current HP' parameter and
+        validate that against the hp_threshold. If under, the result should be ai+rnd.
+        """
+        return max(self._ai, self._rnd)
 
 
 class ESAttack(pad_util.JsonDictEncodable):

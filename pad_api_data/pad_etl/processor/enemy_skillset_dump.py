@@ -126,7 +126,7 @@ def behavior_to_skillrecord(record_type: RecordType, action: Union[ESAction, ESL
 
     cond = getattr(action, 'condition', None)
     if cond is not None:
-        usage_pct = max(cond.ai, cond.rnd)
+        usage_pct = cond.use_chance()
         if cond.one_time:
             one_time = True
 

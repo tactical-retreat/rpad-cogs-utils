@@ -303,7 +303,7 @@ def loop_through(ctx, behaviors: List[Any]):
                 #         idx += 1
                 #         continue
 
-                if max(cond.ai, cond.rnd) == 100 and b_type != ESDispel:
+                if cond.use_chance() == 100 and b_type != ESDispel:
                     # This always executes so it is a terminal action.
                     if not ctx.apply_skill_effects(b):
                         idx += 1
@@ -322,7 +322,6 @@ def loop_through(ctx, behaviors: List[Any]):
                     continue
             else:
                 # Stuff without a condition is always terminal.
-                print('HI I DONT HAVE AI OR RND, IM {}'.format(b.name))
                 if not ctx.apply_skill_effects(b):
                     idx += 1
                     continue
