@@ -1312,7 +1312,7 @@ def fixed_pos_convert(arguments):
                         col_pos = board[x+1][0]
                         del board[x+1][0]
                     elif x > 2:
-                        col_pos = board[x-1][0] = 0
+                        col_pos = board[x-1][0]
                         del board[x-1][0]
                     elif len(board[x+1]) > 0:
                         col_pos = board[x+1][0]
