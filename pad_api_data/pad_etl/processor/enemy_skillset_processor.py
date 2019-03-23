@@ -30,6 +30,18 @@ class TimedSkillGroup(StandardSkillGroup):
         self.end_turn = None # int
 
 
+class RepeatSkillGroup(StandardSkillGroup):
+    """Set of skills which execute on a specific turn, possibly with a HP threshold."""
+
+    def __init__(self, turn: int, interval: int, hp_threshold: int, skills: List[ESAction]):
+        super().__init__(skills)
+        self.hp = hp_threshold
+        # The turn that this group executes on.
+        self.turn = turn
+        # The number of turns between repeats, aka loop size + 1
+        self.interval = interval + 1  # int
+
+
 class EnemyCountSkillGroup(StandardSkillGroup):
     """Set of skills which execute when a specific number of enemies are present."""
 
@@ -44,10 +56,10 @@ class EnemyCountSkillGroup(StandardSkillGroup):
 class HpSkillGroup(StandardSkillGroup):
     """Set of skills which execute when a HP threshold is reached."""
 
-    def __init__(self, hp_ceiling: int, skills: List[ESAction]):
+    def __init__(self, hp: int, skills: List[ESAction]):
         super().__init__(skills)
         # The hp threshold that this group executes on, always present, even if 100.
-        self.hp_ceiling = hp_ceiling
+        self.hp = hp
 
 
 class ProcessedSkillset(object):
@@ -559,7 +571,7 @@ def extract_loop_indexes(turn_data: List) -> Tuple[int, int]:
     return behavior_loop
 
 
-def extract_repeating_skills(turn_data: List, loop_start: int, loop_end: int) -> Tuple[List, List[TimedSkillGroup]]:
+def extract_repeating_skills(turn_data: List, loop_start: int, loop_end: int) -> Tuple[List, List[Any]]:
     looped_behavior = []  # keep track of behaviour added to loops
     repeating_skill_groups = []
 
@@ -572,7 +584,7 @@ def extract_repeating_skills(turn_data: List, loop_start: int, loop_end: int) ->
     for idx in range(loop_start, loop_end):
         for hp, hp_behavior in turn_data[idx].items():
             if (hp, hp_behavior) not in common_behaviors:
-                repeating_skill_groups.append(TimedSkillGroup(idx + 1, hp, hp_behavior))
+                repeating_skill_groups.append(RepeatSkillGroup(idx + 1, loop_end - loop_start, hp, hp_behavior))
                 looped_behavior.append((hp, hp_behavior))
 
     return looped_behavior, repeating_skill_groups
@@ -813,7 +825,7 @@ def clean_skillset(skillset: ProcessedSkillset):
     extracted = []
     for hp_skills in skillset.hp_skill_groups:
         for es in list(hp_skills.skills):
-            if extract_hp_threshold(es) and extract_hp_threshold(es) != hp_skills.hp_ceiling:
+            if extract_hp_threshold(es) and extract_hp_threshold(es) != hp_skills.hp:
                 if es not in extracted:
                     extracted.append(es)
                 hp_skills.skills.remove(es)
@@ -834,7 +846,7 @@ def clean_skillset(skillset: ProcessedSkillset):
         hp_threshold = es.condition.hp_threshold
         placed = False
         for hp_group in skillset.hp_skill_groups:
-            if hp_group.hp_ceiling == hp_threshold:
+            if hp_group.hp == hp_threshold:
                 hp_group.skills.append(es)
                 placed = True
                 break
@@ -867,7 +879,7 @@ def clean_skillset(skillset: ProcessedSkillset):
     skillset.hp_skill_groups = filter_empty(skillset.hp_skill_groups)
 
     # Ensure HP groups are sorted properly
-    skillset.hp_skill_groups.sort(key=lambda x: x.hp_ceiling, reverse=True)
+    skillset.hp_skill_groups.sort(key=lambda x: x.hp, reverse=True)
 
     # Collapse unnecessary outputs
     skillset.repeating_skill_groups = collapse_repeating_groups(skillset.repeating_skill_groups)
