@@ -8,7 +8,7 @@ monster_name_en: Fallen Angel Lucifer
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 1 unused actions
+- Found 2 unused actions
 
 ############################################################
 ### Data @ 1
@@ -23,7 +23,7 @@ records:
   max_atk_pct: null
   name_en: Charismatic Evil
   name_jp: Charismatic Evil
-  one_time: false
+  one_time: true
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
@@ -54,24 +54,6 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Do nothing
-  desc_jp: Do nothing
-  max_atk_pct: null
-  name_en: Perish!
-  name_jp: Perish!
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 29
-  name_jp: HP <= 29
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Deal 2000% damage
   desc_jp: Deal 2000% damage
   max_atk_pct: 2000
@@ -86,6 +68,9 @@ records:
 ############################################################
 # ESPoisonChangeRandom(60:1313) -> I will be your opponent
 # Change Random 3 to Poison
+# ESInactivity(66:1316) -> Perish!
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Do nothing
 ############################################################
 ### ES Modifiers
 ############################################################
