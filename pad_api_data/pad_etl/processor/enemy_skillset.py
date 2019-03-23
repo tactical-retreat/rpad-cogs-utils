@@ -1826,7 +1826,7 @@ def apply_es_overrides(es):
         es.condition.hp_threshold = _FORCE_HP_THRESHOLD[es.enemy_skill_id] or None
 
 
-def inject_implicit_onetime(behavior: List[Any]):
+def inject_implicit_onetime(behavior: List[ESAction]):
     """Injects one_time values into specific categories of skills.
 
     Currently only ESBindRandom but other early skills may need this.
@@ -1838,7 +1838,7 @@ def inject_implicit_onetime(behavior: List[Any]):
     max_flag = max([0] + [x.condition.one_time for x in behavior if hasattr(x, 'condition') and x.condition.one_time])
     next_flag = pow(2, ceil(log(max_flag + 1)/log(2)))
     for b in behavior:
-        if type(b) == ESBindRandom and not b.condition.one_time:
+        if type(b) in [ESBindRandom, ESBindAttribute] and not b.condition.one_time and b.condition.use_chance() == 100:
             b.condition.one_time = next_flag
             next_flag = next_flag << 1
 
