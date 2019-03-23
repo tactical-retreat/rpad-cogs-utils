@@ -2490,8 +2490,7 @@ def reformat_json(skill_data):
                             MULTI_PART_LS[str(reformatted['leader_skills'][i]
                                               ['args']['skill_ids'][j])] = [i]
             else:
-                print('Unexpected leader skill type: {c2} (skill id: {i})'.format(c2=c[2], i=i))
-                del reformatted['leader_skills'][i]
+                raise Exception('Unexpected leader skill type: {c2} (skill id: {i})'.format(c2=c[2], i=i))
                 #reformatted['leader_skills'][i]['type'] = f'_{c[2]}'
                 #reformatted['leader_skills'][i]['args'] = {f'_{i}':v for i,v in enumerate(c[6:])}
         else:
@@ -2505,8 +2504,7 @@ def reformat_json(skill_data):
                 reformatted['active_skills'][i]['type'], reformatted['active_skills'][i]['args'] = SKILL_TRANSFORM[c[2]](
                     c[6:])
                 if type(reformatted['active_skills'][i]['args']) != dict:
-                    print('Unhandled active skill type: {c2} (skill id: {i})'.format(c2=c[2], i=i))
-                    del reformatted['active_skills'][i]
+                    raise Exception('Unhandled active skill type: {c2} (skill id: {i})'.format(c2=c[2], i=i))
                 if reformatted['active_skills'][i]['type'] == 'combine_active_skills':
                     for j in range(0, len(reformatted['active_skills'][i]['args']['skill_ids'])):
                         part_id = str(reformatted['active_skills'][i]['args']['skill_ids'][j])
@@ -2514,10 +2512,7 @@ def reformat_json(skill_data):
                             MULTI_PART_AS[part_id] = []
                         MULTI_PART_AS[part_id].append(reformatted['active_skills'][i]['id'])
             else:
-                print('Unexpected active skill type: {c2} (skill id: {i})'.format(c2=c[2], i=i))
-                del reformatted['active_skills'][i]
-                #reformatted['active_skills'][i]['type'] = f'_{c[2]}'
-                #reformatted['active_skills'][i]['args'] = {f'_{i}':v for i,v in enumerate(c[6:])}
+                raise Exception('Unexpected active skill type: {c2} (skill id: {i})'.format(c2=c[2], i=i))
 
     def process_askill(j, c):
         if c[2] in SKILL_TRANSFORM:
