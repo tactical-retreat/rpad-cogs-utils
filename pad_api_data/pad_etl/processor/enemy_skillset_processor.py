@@ -506,22 +506,24 @@ def extract_turn_behaviors(ctx: Context, behaviors: List, hp_checkpoints: Set[in
     Simulate the first 20 turns at all hp check points
     """
     res_ctx = None
-    seen_behaviour = []
     hp_turn_data = {}
     for checkpoint in sorted(hp_checkpoints, reverse=True):
         hp_ctx = ctx.clone()
+        # TODO: ESRecoverEnemy may require special handling
         hp_ctx.hp = checkpoint
 
         turn_data = []
         for idx in range(0, 20):
+            # loop through the current turn
             cur_behavior = loop_through(hp_ctx, behaviors)
-            if len(cur_behavior) > 0 and cur_behavior not in seen_behaviour:
+            # compare current behavior with behavior on higher hp thresholds on the same turn
+            comp_behavior = [behavior[idx] for hp, behavior in hp_turn_data.items()]
+            if len(cur_behavior) > 0 and cur_behavior not in comp_behavior:
                 turn_data.append(cur_behavior)
             else:
                 turn_data.append(None)
             hp_ctx.turn_event()
 
-        seen_behaviour.extend(turn_data)
         if checkpoint == 100:
             res_ctx = hp_ctx
 
