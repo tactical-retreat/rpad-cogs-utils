@@ -1260,7 +1260,6 @@ fixed_pos_convert_backups = {'row_pos_1': [],
                              'attribute': 0,
                              'skill_text': ''}
 
-
 def fixed_pos_convert(arguments):
     def f(x):
         _, c = convert_with_defaults('fixed_pos',
@@ -1281,52 +1280,74 @@ def fixed_pos_convert(arguments):
             4: '2nd column from right',
             5: 'far right column',
         }
-
-        board = [[], [], [], [], []]
-        board[0] = c['row_pos_1']
-        board[1] = c['row_pos_2']
-        board[2] = c['row_pos_3']
-        board[3] = c['row_pos_4']
-        board[4] = c['row_pos_5']
+        
+        board = [[],[],[],[],[]]
+        board[0]= c['row_pos_1']
+        board[1]= c['row_pos_2']
+        board[2]= c['row_pos_3']
+        board[3]= c['row_pos_4']
+        board[4]= c['row_pos_5']
         orb_count = 0
         row_pos = 0
         col_pos = 0
         shape = 'some shape'
-        determined = False
-        
+
+        output = []
         for x in board:
             orb_count += len(x)
 
-        if orb_count == 5:
+        if not (orb_count%5):
             for x in range(1,len(board)-1): #Check for cross
-                if len(board[x]) == 3 and len(board[x-1]) == 1 and len(board[x+1]) == 1 and not determined:   #Check for cross
+                if len(board[x]) == 3 and len(board[x-1]) == 1 and len(board[x+1]) == 1:   #Check for cross
                     row_pos = x
                     col_pos = board[x][1]
                     shape = 'cross'
-                    determined = True
+                    result = (shape,row_pos,col_pos)
+                    output.append(result)
+                    del board[x][1]
             for x in range(0,len(board)): #Check for L
-                if len(board[x]) == 3 and not determined:
+                if len(board[x]) == 3:
                     row_pos = x
-                    col_pos = board[x+1][0] if x < 2 else (board[x-1][0] if x > 2 else
-                                                           (board[x+1][0] if len(board[x+1]) > 0 else
-                                                            (board[x-1][0])))
+                    if x < 2:
+                        col_pos = board[x+1][0]
+                        del board[x+1][0]
+                    elif x > 2:
+                        col_pos = board[x-1][0] = 0
+                        del board[x-1][0]
+                    elif len(board[x+1]) > 0:
+                        col_pos = board[x+1][0]
+                        del board[x+1][0]
+                    else:
+                        col_pos = board[x-1][0]
+                        del board[x-1][0]
+                        
                     shape = 'L shape'
-                    determined = True
-        if orb_count == 9 and not determined:
+                    result = (shape,row_pos,col_pos)
+                    output.append(result)
+                    
+        if not (orb_count%9):
             for x in range(1,len(board)-1): #Check for square
                 if len(board[x]) == 3 and len(board[x-1]) == 3 and len(board[x+1]) == 3 :
                     row_pos = x
                     col_pos = board[x][1]
                     shape = 'square'
-                    determined = True
-        if orb_count == 18 and not determined:
+                    result = (shape,row_pos,col_pos)
+                    output.append(result)
+                    del board[x][1] 
+        if orb_count == 18:
             if len(board[0]) == 6 and len(board[4]) == 6 and len(board[1]) + len(board[2]) + len(board[3]) == 6:
-                    shape = 'border'
+                    c['skill_text'] += 'Change the outermost orbs of the board to {} orbs'.format(ATTRIBUTES[c['attribute']])
         
-        c['skill_text'] += 'Change the outermost orbs of the board to ' + ATTRIBUTES[c['attribute']] + ' orbs'  if shape == 'border' else (
-            'Create ' + shape + ' of ' + ATTRIBUTES[c['attribute']] + ' orbs with center at ' + ROW_INDEX[row_pos] + ' and ' +COLUMN_INDEX[col_pos])
+        if output:
+            for entry in output:
+                if c['skill_text']:
+                    c['skill_text']+= '; '
+                c['skill_text'] += 'Create {} of {} orbs with center at {} and {}'.format(entry[0],
+                                                                                          ATTRIBUTES[c['attribute']],
+                                                                                          ROW_INDEX[entry[1]],
+                                                                                          COLUMN_INDEX[entry[2]])
         
-        return 'create_shape', c
+        return 'fixed_pos', c
     return f
 
 # End of Active skill
