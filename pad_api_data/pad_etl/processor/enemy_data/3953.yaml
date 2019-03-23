@@ -82,8 +82,8 @@ records:
   record_type_name: ACTION
   usage_pct: 25
 - !SkillRecord
-  desc_en: Deal 100% damage
-  desc_jp: Deal 100% damage
+  desc_en: Single hit attack, Deal 100% damage
+  desc_jp: Single hit attack, Deal 100% damage
   max_atk_pct: 100
   name_en: Disable Skill
   name_jp: Disable Skill
@@ -100,8 +100,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 150%~250% damage (3~5 hits, 50% each)
-  desc_jp: Deal 150%~250% damage (3~5 hits, 50% each)
+  desc_en: Multi-hit attack, Deal 150%~250% damage (3~5 hits, 50% each)
+  desc_jp: Multi-hit attack, Deal 150%~250% damage (3~5 hits, 50% each)
   max_atk_pct: 250
   name_en: Run Amok
   name_jp: Run Amok
@@ -182,8 +182,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 1000% damage (10 hits, 100% each)
-  desc_jp: Deal 1000% damage (10 hits, 100% each)
+  desc_en: Multi-hit attack, Deal 1000% damage (10 hits, 100% each)
+  desc_jp: Multi-hit attack, Deal 1000% damage (10 hits, 100% each)
   max_atk_pct: 1000
   name_en: Hyahhhh!!!
   name_jp: Hyahhhh!!!
@@ -227,7 +227,7 @@ records:
 # Branch on hp < 20, target rnd 24
 # [10] ESAttackMultihit(15:8304) -> Run Amok
 # 	Condition: When < 50% hp (ai:100 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [11] ESColumnSpawnMulti(77:8290) -> Tear to Pieces
 # 	Condition: 25% chance (ai:0 rnd:25)
 # Change 2nd, 4th, 6th column to Jammer orbs
@@ -239,7 +239,7 @@ records:
 # Player -70% HP
 # [14] ESAttackSinglehit(82:1) -> Disable Skill
 # 	Condition: 25% chance (ai:0 rnd:25)
-# Enemy action
+# Single hit attack
 # [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [16] ESBranchFlag(43:10) -> ESBranchFlag
@@ -282,4 +282,4 @@ records:
 # 	Condition: when <= 1 enemies remain (ai:100 rnd:0)
 # Increase damage to 1000% for the next 999 turns
 # [25] ESAttackMultihit(15:8306) -> Hyahhhh!!!
-# Enemy action
+# Multi-hit attack

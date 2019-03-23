@@ -17,8 +17,8 @@ level: 1
 overrides: []
 records:
 - !SkillRecord
-  desc_en: Deal 200% damage (Preemptive)
-  desc_jp: Deal 200% damage (Preemptive)
+  desc_en: Multi-hit attack, Deal 200% damage (Preemptive)
+  desc_jp: Multi-hit attack, Deal 200% damage (Preemptive)
   max_atk_pct: 200
   name_en: Psycho Axe
   name_jp: Psycho Axe
@@ -26,8 +26,8 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 200% damage
-  desc_jp: Deal 200% damage
+  desc_en: Multi-hit attack, Deal 200% damage
+  desc_jp: Multi-hit attack, Deal 200% damage
   max_atk_pct: 200
   name_en: Psycho Axe
   name_jp: Psycho Axe
@@ -52,8 +52,8 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
-  desc_en: Enemy action + Enemy action + Change Random to Dark
-  desc_jp: Enemy action + Enemy action + Change Random to Dark
+  desc_en: Multi-hit attack + Single hit attack + Change Random to Dark
+  desc_jp: Multi-hit attack + Single hit attack + Change Random to Dark
   max_atk_pct: null
   name_en: Psycho Axe + Disable Skill + Shadow Axe
   name_jp: Psycho Axe + Disable Skill + Shadow Axe
@@ -61,8 +61,8 @@ records:
   record_type_name: ACTION
   usage_pct: 25
 - !SkillRecord
-  desc_en: Enemy action + Change Random to Dark
-  desc_jp: Enemy action + Change Random to Dark
+  desc_en: Multi-hit attack + Change Random to Dark
+  desc_jp: Multi-hit attack + Change Random to Dark
   max_atk_pct: null
   name_en: Head Press + Somersault Skull Diver
   name_jp: Head Press + Somersault Skull Diver
@@ -70,8 +70,8 @@ records:
   record_type_name: ACTION
   usage_pct: 25
 - !SkillRecord
-  desc_en: Change Random to Poison + Enemy action
-  desc_jp: Change Random to Poison + Enemy action
+  desc_en: Change Random to Poison + Multi-hit attack
+  desc_jp: Change Random to Poison + Multi-hit attack
   max_atk_pct: null
   name_en: Psycho Blast + Double Knee Press
   name_jp: Psycho Blast + Double Knee Press
@@ -79,8 +79,8 @@ records:
   record_type_name: ACTION
   usage_pct: 25
 - !SkillRecord
-  desc_en: Change Random to Poison + Enemy action
-  desc_jp: Change Random to Poison + Enemy action
+  desc_en: Change Random to Poison + Multi-hit attack
+  desc_jp: Change Random to Poison + Multi-hit attack
   max_atk_pct: null
   name_en: Psycho Blast + Psycho Inferno
   name_jp: Psycho Blast + Psycho Inferno
@@ -133,8 +133,8 @@ records:
   record_type_name: ACTION
   usage_pct: 25
 - !SkillRecord
-  desc_en: Change Random to Poison + Enemy action
-  desc_jp: Change Random to Poison + Enemy action
+  desc_en: Change Random to Poison + Multi-hit attack
+  desc_jp: Change Random to Poison + Multi-hit attack
   max_atk_pct: null
   name_en: Psycho Blast + Double Knee Press
   name_jp: Psycho Blast + Double Knee Press
@@ -142,8 +142,8 @@ records:
   record_type_name: ACTION
   usage_pct: 25
 - !SkillRecord
-  desc_en: Change Random to Poison + Enemy action
-  desc_jp: Change Random to Poison + Enemy action
+  desc_en: Change Random to Poison + Multi-hit attack
+  desc_jp: Change Random to Poison + Multi-hit attack
   max_atk_pct: null
   name_en: Psycho Blast + Psycho Inferno
   name_jp: Psycho Blast + Psycho Inferno
@@ -187,7 +187,7 @@ records:
 # [2] ESBranchLevel(35:25) -> ESBranchLevel
 # Branch on level > 4, target rnd 5
 # [3] ESAttackMultihit(15:12622) -> Psycho Axe
-# Enemy action
+# Multi-hit attack
 # [4] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [5] ESSkillDelay(89:12443) -> Bow down before my Psycho Power!
@@ -198,15 +198,15 @@ records:
 # [7] SkillSet:
 # 	Condition: 25% chance (ai:0 rnd:25)
 # 	[0] ESAttackMultihit(15:12445) -> Psycho Axe
-# 	Enemy action
+# 	Multi-hit attack
 # 	[1] ESAttackSinglehit(82:1) -> Disable Skill
-# 	Enemy action
+# 	Single hit attack
 # 	[2] ESOrbChangeAttack(48:12446) -> Shadow Axe
 # 	Change Random to Dark
 # [8] SkillSet:
 # 	Condition: 25% chance (ai:0 rnd:25)
 # 	[0] ESAttackMultihit(15:12448) -> Head Press
-# 	Enemy action
+# 	Multi-hit attack
 # 	[1] ESOrbChangeAttack(48:12449) -> Somersault Skull Diver
 # 	Change Random to Dark
 # [9] SkillSet:
@@ -214,13 +214,13 @@ records:
 # 	[0] ESOrbChangeAttack(48:12452) -> Psycho Blast
 # 	Change Random to Poison
 # 	[1] ESAttackMultihit(15:12453) -> Double Knee Press
-# 	Enemy action
+# 	Multi-hit attack
 # [10] SkillSet:
 # 	Condition: 25% chance (ai:0 rnd:25)
 # 	[0] ESOrbChangeAttack(48:12452) -> Psycho Blast
 # 	Change Random to Poison
 # 	[1] ESAttackMultihit(15:12454) -> Psycho Inferno
-# 	Enemy action
+# 	Multi-hit attack
 # [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [12] ESDamageShield(74:12455) -> Scurry! Psycho Nightmare
@@ -242,13 +242,13 @@ records:
 # 	[0] ESOrbChangeAttack(48:12452) -> Psycho Blast
 # 	Change Random to Poison
 # 	[1] ESAttackMultihit(15:12453) -> Double Knee Press
-# 	Enemy action
+# 	Multi-hit attack
 # [17] SkillSet:
 # 	Condition: 25% chance (ai:0 rnd:25)
 # 	[0] ESOrbChangeAttack(48:12452) -> Psycho Blast
 # 	Change Random to Poison
 # 	[1] ESAttackMultihit(15:12454) -> Psycho Inferno
-# 	Enemy action
+# 	Multi-hit attack
 # [18] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [19] SkillSet:

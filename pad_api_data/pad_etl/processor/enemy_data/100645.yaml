@@ -17,8 +17,8 @@ level: 1
 overrides: []
 records:
 - !SkillRecord
-  desc_en: Enemy action + Absorb damage >= 6000000 damage for 5 turns (Preemptive)
-  desc_jp: Enemy action + Absorb damage >= 6000000 damage for 5 turns (Preemptive)
+  desc_en: Multi-hit attack + Absorb damage >= 6000000 damage for 5 turns (Preemptive)
+  desc_jp: Multi-hit attack + Absorb damage >= 6000000 damage for 5 turns (Preemptive)
   max_atk_pct: null
   name_en: Move, move, move---!! + Demon Wheelie
   name_jp: Move, move, move---!! + Demon Wheelie
@@ -44,8 +44,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 150% damage (3 hits, 50% each)
-  desc_jp: Deal 150% damage (3 hits, 50% each)
+  desc_en: Multi-hit attack, Deal 150% damage (3 hits, 50% each)
+  desc_jp: Multi-hit attack, Deal 150% damage (3 hits, 50% each)
   max_atk_pct: 150
   name_en: Deadly Drive!
   name_jp: Deadly Drive!
@@ -110,7 +110,7 @@ records:
 # flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESAttackMultihit(15:9491) -> Move, move, move---!!
-# 	Enemy action
+# 	Multi-hit attack
 # 	[1] ESAbsorbThreshold(87:9492) -> Demon Wheelie
 # 	Absorb damage >= 6000000 damage for 5 turns
 # [5] ESEndPath(36:26) -> ESEndPath
@@ -119,7 +119,7 @@ records:
 # Branch on hp < 40, target rnd 10
 # [7] ESAttackMultihit(15:9496) -> Deadly Drive!
 # 	Condition: 50% chance when < 75% hp (ai:50 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [8] ESPoisonChangeRandom(60:9498) -> Take this!
 # 	Condition: 50% chance (ai:50 rnd:0)
 # Change Random 7 to Poison
@@ -145,7 +145,7 @@ records:
 # counter + 1
 # [18] ESAttackMultihit(15:9496) -> Deadly Drive!
 # 	Condition: When < 75% hp (ai:100 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [20] ESSetCounter(25:15) -> ESSetCounter

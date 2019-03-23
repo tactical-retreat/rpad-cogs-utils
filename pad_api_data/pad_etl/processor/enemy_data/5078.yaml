@@ -55,8 +55,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Enemy action + Enemy action + Change 3rd row to Light orbs
-  desc_jp: Enemy action + Enemy action + Change 3rd row to Light orbs
+  desc_en: Multi-hit attack + Single hit attack + Change 3rd row to Light orbs
+  desc_jp: Multi-hit attack + Single hit attack + Change 3rd row to Light orbs
   max_atk_pct: null
   name_en: Collarbone Breaker + Disable Skill + Ooo!
   name_jp: Collarbone Breaker + Disable Skill + Ooo!
@@ -64,8 +64,10 @@ records:
   record_type_name: ACTION
   usage_pct: 50
 - !SkillRecord
-  desc_en: Bind 1 subs for 1~2 turns + Enemy action + Change 4th column to Light orbs
-  desc_jp: Bind 1 subs for 1~2 turns + Enemy action + Change 4th column to Light orbs
+  desc_en: Bind 1 subs for 1~2 turns + Single hit attack + Change 4th column to Light
+    orbs
+  desc_jp: Bind 1 subs for 1~2 turns + Single hit attack + Change 4th column to Light
+    orbs
   max_atk_pct: null
   name_en: Solar Plexus Strike + Disable Skill + Shoryuken
   name_jp: Solar Plexus Strike + Disable Skill + Shoryuken
@@ -109,8 +111,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Enemy action + Enemy action + Enemy action
-  desc_jp: Enemy action + Enemy action + Enemy action
+  desc_en: Multi-hit attack + Single hit attack + Multi-hit attack
+  desc_jp: Multi-hit attack + Single hit attack + Multi-hit attack
   max_atk_pct: null
   name_en: Collarbone Breaker + Disable Skill + Hadoken
   name_jp: Collarbone Breaker + Disable Skill + Hadoken
@@ -118,8 +120,8 @@ records:
   record_type_name: ACTION
   usage_pct: 33
 - !SkillRecord
-  desc_en: Bind 1 subs for 1~2 turns + Enemy action + Enemy action
-  desc_jp: Bind 1 subs for 1~2 turns + Enemy action + Enemy action
+  desc_en: Bind 1 subs for 1~2 turns + Single hit attack + Multi-hit attack
+  desc_jp: Bind 1 subs for 1~2 turns + Single hit attack + Multi-hit attack
   max_atk_pct: null
   name_en: Solar Plexus Strike + Disable Skill + Shoryuken
   name_jp: Solar Plexus Strike + Disable Skill + Shoryuken
@@ -127,8 +129,8 @@ records:
   record_type_name: ACTION
   usage_pct: 33
 - !SkillRecord
-  desc_en: Player -25% HP + Enemy action + Absorb combo <= 5 damage for 1 turns
-  desc_jp: Player -25% HP + Enemy action + Absorb combo <= 5 damage for 1 turns
+  desc_en: Player -25% HP + Single hit attack + Absorb combo <= 5 damage for 1 turns
+  desc_jp: Player -25% HP + Single hit attack + Absorb combo <= 5 damage for 1 turns
   max_atk_pct: null
   name_en: Axe Kick + Disable Skill + Tatsumaki Senpukyaku
   name_jp: Axe Kick + Disable Skill + Tatsumaki Senpukyaku
@@ -145,8 +147,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 350% damage
-  desc_jp: Deal 350% damage
+  desc_en: Multi-hit attack, Deal 350% damage
+  desc_jp: Multi-hit attack, Deal 350% damage
   max_atk_pct: 350
   name_en: Shinku Hadoken
   name_jp: Shinku Hadoken
@@ -181,25 +183,25 @@ records:
 # [6] SkillSet:
 # 	Condition: 33% chance (ai:0 rnd:33)
 # 	[0] ESAttackMultihit(15:12576) -> Collarbone Breaker
-# 	Enemy action
+# 	Multi-hit attack
 # 	[1] ESAttackSinglehit(82:1) -> Disable Skill
-# 	Enemy action
+# 	Single hit attack
 # 	[2] ESAttackMultihit(15:12579) -> Hadoken
-# 	Enemy action
+# 	Multi-hit attack
 # [7] SkillSet:
 # 	Condition: 33% chance (ai:0 rnd:33)
 # 	[0] ESBindAttack(63:12577) -> Solar Plexus Strike
 # 	Bind 1 subs for 1~2 turns
 # 	[1] ESAttackSinglehit(82:1) -> Disable Skill
-# 	Enemy action
+# 	Single hit attack
 # 	[2] ESAttackMultihit(15:12580) -> Shoryuken
-# 	Enemy action
+# 	Multi-hit attack
 # [8] SkillSet:
 # 	Condition: 34% chance (ai:0 rnd:34)
 # 	[0] ESGravity(50:12578) -> Axe Kick
 # 	Player -25% HP
 # 	[1] ESAttackSinglehit(82:1) -> Disable Skill
-# 	Enemy action
+# 	Single hit attack
 # 	[2] ESAbsorbCombo(67:12581) -> Tatsumaki Senpukyaku
 # 	Absorb combo <= 5 damage for 1 turns
 # [9] ESEndPath(36:26) -> ESEndPath
@@ -215,9 +217,9 @@ records:
 # [12] SkillSet:
 # 	Condition: 50% chance (ai:0 rnd:50)
 # 	[0] ESAttackMultihit(15:12576) -> Collarbone Breaker
-# 	Enemy action
+# 	Multi-hit attack
 # 	[1] ESAttackSinglehit(82:1) -> Disable Skill
-# 	Enemy action
+# 	Single hit attack
 # 	[2] ESRowSpawnMulti(79:12585) -> Ooo!
 # 	Change 3rd row to Light orbs
 # [13] SkillSet:
@@ -225,7 +227,7 @@ records:
 # 	[0] ESBindAttack(63:12577) -> Solar Plexus Strike
 # 	Bind 1 subs for 1~2 turns
 # 	[1] ESAttackSinglehit(82:1) -> Disable Skill
-# 	Enemy action
+# 	Single hit attack
 # 	[2] ESColumnSpawnMulti(77:12586) -> Shoryuken
 # 	Change 4th column to Light orbs
 # [14] ESEndPath(36:26) -> ESEndPath
@@ -237,6 +239,6 @@ records:
 # [17] ESSetCounter(25:15) -> ESSetCounter
 # counter = 0
 # [18] ESAttackMultihit(15:12587) -> Shinku Hadoken
-# Enemy action
+# Multi-hit attack
 # [19] ESEndPath(36:26) -> ESEndPath
 # end_turn

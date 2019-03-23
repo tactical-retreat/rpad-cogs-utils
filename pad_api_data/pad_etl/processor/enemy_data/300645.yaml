@@ -17,8 +17,8 @@ level: 1
 overrides: []
 records:
 - !SkillRecord
-  desc_en: Deal 70% damage
-  desc_jp: Deal 70% damage
+  desc_en: Preemptive attack, Deal 70% damage
+  desc_jp: Preemptive attack, Deal 70% damage
   max_atk_pct: 70
   name_en: Preemptive
   name_jp: Preemptive
@@ -35,8 +35,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 120% damage (3 hits, 40% each)
-  desc_jp: Deal 120% damage (3 hits, 40% each)
+  desc_en: Multi-hit attack, Deal 120% damage (3 hits, 40% each)
+  desc_jp: Multi-hit attack, Deal 120% damage (3 hits, 40% each)
   max_atk_pct: 120
   name_en: Deadly Drive!
   name_jp: Deadly Drive!
@@ -103,7 +103,7 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESAttackPreemptive(47:674) -> Move, move, move---!!
-# Enemy action
+# Preemptive attack
 # [2] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 40, target rnd 7
 # [3] ESBranchFlag(43:10) -> ESBranchFlag
@@ -119,7 +119,7 @@ records:
 # Change Random 5 to Poison
 # [8] ESAttackMultihit(15:676) -> Deadly Drive!
 # 	Condition: 70% chance when < 75% hp (ai:70 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [10] ESBranchFlag(43:10) -> ESBranchFlag
@@ -135,9 +135,9 @@ records:
 # flag SET 0b111
 # [15] ESAttackMultihit(15:676) -> Deadly Drive!
 # 	Condition: When < 75% hp (ai:100 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [16] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b110
 # [17] ESAttackMultihit(15:676) -> Deadly Drive!
 # 	Condition: When < 75% hp (ai:100 rnd:0)
-# Enemy action
+# Multi-hit attack

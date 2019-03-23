@@ -26,8 +26,8 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
-  desc_en: Bind 1 subs for 1~2 turns + Enemy action + Enemy action
-  desc_jp: Bind 1 subs for 1~2 turns + Enemy action + Enemy action
+  desc_en: Bind 1 subs for 1~2 turns + Single hit attack + Multi-hit attack
+  desc_jp: Bind 1 subs for 1~2 turns + Single hit attack + Multi-hit attack
   max_atk_pct: null
   name_en: Thunder Kick + Disable Skill + Hadoken
   name_jp: Thunder Kick + Disable Skill + Hadoken
@@ -35,8 +35,8 @@ records:
   record_type_name: ACTION
   usage_pct: 33
 - !SkillRecord
-  desc_en: Player -25% HP + Enemy action + Enemy action
-  desc_jp: Player -25% HP + Enemy action + Enemy action
+  desc_en: Player -25% HP + Single hit attack + Multi-hit attack
+  desc_jp: Player -25% HP + Single hit attack + Multi-hit attack
   max_atk_pct: null
   name_en: Inazuma Kick + Disable Skill + Shoryuken
   name_jp: Inazuma Kick + Disable Skill + Shoryuken
@@ -44,8 +44,8 @@ records:
   record_type_name: ACTION
   usage_pct: 33
 - !SkillRecord
-  desc_en: Enemy action + Enemy action + Absorb combo <= 5 damage for 1 turns
-  desc_jp: Enemy action + Enemy action + Absorb combo <= 5 damage for 1 turns
+  desc_en: Multi-hit attack + Single hit attack + Absorb combo <= 5 damage for 1 turns
+  desc_jp: Multi-hit attack + Single hit attack + Absorb combo <= 5 damage for 1 turns
   max_atk_pct: null
   name_en: Lion Breaker + Disable Skill + Tatsumaki Senpukyaku
   name_jp: Lion Breaker + Disable Skill + Tatsumaki Senpukyaku
@@ -80,8 +80,10 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Bind 1 subs for 1~2 turns + Enemy action + Change 3rd row to Fire orbs
-  desc_jp: Bind 1 subs for 1~2 turns + Enemy action + Change 3rd row to Fire orbs
+  desc_en: Bind 1 subs for 1~2 turns + Single hit attack + Change 3rd row to Fire
+    orbs
+  desc_jp: Bind 1 subs for 1~2 turns + Single hit attack + Change 3rd row to Fire
+    orbs
   max_atk_pct: null
   name_en: Thunder Kick + Disable Skill + Hadoken
   name_jp: Thunder Kick + Disable Skill + Hadoken
@@ -89,8 +91,8 @@ records:
   record_type_name: ACTION
   usage_pct: 50
 - !SkillRecord
-  desc_en: Player -25% HP + Enemy action + Change 4th column to Fire orbs
-  desc_jp: Player -25% HP + Enemy action + Change 4th column to Fire orbs
+  desc_en: Player -25% HP + Single hit attack + Change 4th column to Fire orbs
+  desc_jp: Player -25% HP + Single hit attack + Change 4th column to Fire orbs
   max_atk_pct: null
   name_en: Inazuma Kick + Disable Skill + Shoryuken
   name_jp: Inazuma Kick + Disable Skill + Shoryuken
@@ -145,23 +147,23 @@ records:
 # 	[0] ESBindAttack(63:12390) -> Thunder Kick
 # 	Bind 1 subs for 1~2 turns
 # 	[1] ESAttackSinglehit(82:1) -> Disable Skill
-# 	Enemy action
+# 	Single hit attack
 # 	[2] ESAttackMultihit(15:12393) -> Hadoken
-# 	Enemy action
+# 	Multi-hit attack
 # [7] SkillSet:
 # 	Condition: 33% chance (ai:0 rnd:33)
 # 	[0] ESGravity(50:12391) -> Inazuma Kick
 # 	Player -25% HP
 # 	[1] ESAttackSinglehit(82:1) -> Disable Skill
-# 	Enemy action
+# 	Single hit attack
 # 	[2] ESAttackMultihit(15:12394) -> Shoryuken
-# 	Enemy action
+# 	Multi-hit attack
 # [8] SkillSet:
 # 	Condition: 34% chance (ai:0 rnd:34)
 # 	[0] ESAttackMultihit(15:12392) -> Lion Breaker
-# 	Enemy action
+# 	Multi-hit attack
 # 	[1] ESAttackSinglehit(82:1) -> Disable Skill
-# 	Enemy action
+# 	Single hit attack
 # 	[2] ESAbsorbCombo(67:12461) -> Tatsumaki Senpukyaku
 # 	Absorb combo <= 5 damage for 1 turns
 # [9] ESEndPath(36:26) -> ESEndPath
@@ -184,7 +186,7 @@ records:
 # 	[0] ESBindAttack(63:12390) -> Thunder Kick
 # 	Bind 1 subs for 1~2 turns
 # 	[1] ESAttackSinglehit(82:1) -> Disable Skill
-# 	Enemy action
+# 	Single hit attack
 # 	[2] ESRowSpawnMulti(79:12399) -> Hadoken
 # 	Change 3rd row to Fire orbs
 # [16] SkillSet:
@@ -192,7 +194,7 @@ records:
 # 	[0] ESGravity(50:12391) -> Inazuma Kick
 # 	Player -25% HP
 # 	[1] ESAttackSinglehit(82:1) -> Disable Skill
-# 	Enemy action
+# 	Single hit attack
 # 	[2] ESColumnSpawnMulti(77:12400) -> Shoryuken
 # 	Change 4th column to Fire orbs
 # [17] ESEndPath(36:26) -> ESEndPath

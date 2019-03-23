@@ -35,8 +35,10 @@ records:
   record_type_name: PASSIVE
   usage_pct: 100
 - !SkillRecord
-  desc_en: Voids status ailments for 999 turns + Unable to Heal orbs for 3 turns (Preemptive)
-  desc_jp: Voids status ailments for 999 turns + Unable to Heal orbs for 3 turns (Preemptive)
+  desc_en: Voids status ailments for 999 turns + Unable to match Heal orbs for 3 turns
+    (Preemptive)
+  desc_jp: Voids status ailments for 999 turns + Unable to match Heal orbs for 3 turns
+    (Preemptive)
   max_atk_pct: null
   name_en: Saint's Robe + Staff of Destiny
   name_jp: Saint's Robe + Staff of Destiny
@@ -89,8 +91,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 140% damage (2 hits, 70% each)
-  desc_jp: Deal 140% damage (2 hits, 70% each)
+  desc_en: Multi-hit attack, Deal 140% damage (2 hits, 70% each)
+  desc_jp: Multi-hit attack, Deal 140% damage (2 hits, 70% each)
   max_atk_pct: 140
   name_en: Arentillia
   name_jp: Arentillia
@@ -125,8 +127,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change own attribute to random one of Dark, Light + Enemy action
-  desc_jp: Change own attribute to random one of Dark, Light + Enemy action
+  desc_en: Change own attribute to random one of Dark, Light + Multi-hit attack
+  desc_jp: Change own attribute to random one of Dark, Light + Multi-hit attack
   max_atk_pct: null
   name_en: Another Fate + Arentillia
   name_jp: Another Fate + Arentillia
@@ -143,8 +145,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change own attribute to Light + Enemy action
-  desc_jp: Change own attribute to Light + Enemy action
+  desc_en: Change own attribute to Light + Multi-hit attack
+  desc_jp: Change own attribute to Light + Multi-hit attack
   max_atk_pct: null
   name_en: Apotheosis Omen + Arentillia
   name_jp: Apotheosis Omen + Arentillia
@@ -179,8 +181,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 1200% damage (4 hits, 300% each)
-  desc_jp: Deal 1200% damage (4 hits, 300% each)
+  desc_en: Multi-hit attack, Deal 1200% damage (4 hits, 300% each)
+  desc_jp: Multi-hit attack, Deal 1200% damage (4 hits, 300% each)
   max_atk_pct: 1200
   name_en: Rizentbard
   name_jp: Rizentbard
@@ -224,8 +226,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Unable to Fire orbs for 2 turns
-  desc_jp: Unable to Fire orbs for 2 turns
+  desc_en: Unable to match Fire orbs for 2 turns
+  desc_jp: Unable to match Fire orbs for 2 turns
   max_atk_pct: null
   name_en: Staff of Destiny
   name_jp: Staff of Destiny
@@ -233,8 +235,8 @@ records:
   record_type_name: ACTION
   usage_pct: 20
 - !SkillRecord
-  desc_en: Unable to Water orbs for 2 turns
-  desc_jp: Unable to Water orbs for 2 turns
+  desc_en: Unable to match Water orbs for 2 turns
+  desc_jp: Unable to match Water orbs for 2 turns
   max_atk_pct: null
   name_en: Staff of Destiny
   name_jp: Staff of Destiny
@@ -242,8 +244,8 @@ records:
   record_type_name: ACTION
   usage_pct: 20
 - !SkillRecord
-  desc_en: Unable to Wood orbs for 2 turns
-  desc_jp: Unable to Wood orbs for 2 turns
+  desc_en: Unable to match Wood orbs for 2 turns
+  desc_jp: Unable to match Wood orbs for 2 turns
   max_atk_pct: null
   name_en: Staff of Destiny
   name_jp: Staff of Destiny
@@ -251,8 +253,8 @@ records:
   record_type_name: ACTION
   usage_pct: 20
 - !SkillRecord
-  desc_en: Unable to Light orbs for 2 turns
-  desc_jp: Unable to Light orbs for 2 turns
+  desc_en: Unable to match Light orbs for 2 turns
+  desc_jp: Unable to match Light orbs for 2 turns
   max_atk_pct: null
   name_en: Staff of Destiny
   name_jp: Staff of Destiny
@@ -260,8 +262,8 @@ records:
   record_type_name: ACTION
   usage_pct: 20
 - !SkillRecord
-  desc_en: Unable to Dark orbs for 2 turns
-  desc_jp: Unable to Dark orbs for 2 turns
+  desc_en: Unable to match Dark orbs for 2 turns
+  desc_jp: Unable to match Dark orbs for 2 turns
   max_atk_pct: null
   name_en: Staff of Destiny
   name_jp: Staff of Destiny
@@ -307,7 +309,7 @@ records:
 # 	[0] ESStatusShield(20:6536) -> Saint's Robe
 # 	Voids status ailments for 999 turns
 # 	[1] ESAttributeBlock(107:6537) -> Staff of Destiny
-# 	Unable to Heal orbs for 3 turns
+# 	Unable to match Heal orbs for 3 turns
 # [3] SkillSet:
 # 	Condition: When < 1% hp (ai:100 rnd:0)
 # 	[0] ESRecoverEnemy(86:6531) -> Divine Cure
@@ -319,7 +321,7 @@ records:
 # Absorb combo <= 6 damage for 999 turns
 # [5] ESAttackMultihit(15:6554) -> Rizentbard
 # 	Condition: When < 20% hp (ai:100 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [6] ESDamageShield(74:6544) -> Sanctuary
 # 	Condition: When < 80% hp , one-time use (ai:100 rnd:0) (one-time: 8)
 # Reduce damage from all sources by 50% for 10 turns
@@ -331,7 +333,7 @@ records:
 # Reduce damage from all sources by 50% for 10 turns
 # [9] ESAttackMultihit(15:6540) -> Arentillia
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 4)
-# Enemy action
+# Multi-hit attack
 # [10] SkillSet:
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
 # 	[0] ESBlind(62:6541) -> Goudenbel
@@ -343,32 +345,32 @@ records:
 # 	[0] ESChangeAttribute(46:6547) -> Apotheosis Omen
 # 	Change own attribute to Light
 # 	[1] ESAttackMultihit(15:6540) -> Arentillia
-# 	Enemy action
+# 	Multi-hit attack
 # [12] SkillSet:
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESChangeAttribute(46:6546) -> Another Fate
 # 	Change own attribute to random one of Dark, Light
 # 	[1] ESAttackMultihit(15:6540) -> Arentillia
-# 	Enemy action
+# 	Multi-hit attack
 # [13] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 21
 # [14] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [15] ESAttributeBlock(107:6548) -> Staff of Destiny
 # 	Condition: 20% chance (ai:0 rnd:20)
-# Unable to Fire orbs for 2 turns
+# Unable to match Fire orbs for 2 turns
 # [16] ESAttributeBlock(107:6549) -> Staff of Destiny
 # 	Condition: 20% chance (ai:0 rnd:20)
-# Unable to Water orbs for 2 turns
+# Unable to match Water orbs for 2 turns
 # [17] ESAttributeBlock(107:6550) -> Staff of Destiny
 # 	Condition: 20% chance (ai:0 rnd:20)
-# Unable to Wood orbs for 2 turns
+# Unable to match Wood orbs for 2 turns
 # [18] ESAttributeBlock(107:6551) -> Staff of Destiny
 # 	Condition: 20% chance (ai:0 rnd:20)
-# Unable to Light orbs for 2 turns
+# Unable to match Light orbs for 2 turns
 # [19] ESAttributeBlock(107:6552) -> Staff of Destiny
 # 	Condition: 20% chance (ai:0 rnd:20)
-# Unable to Dark orbs for 2 turns
+# Unable to match Dark orbs for 2 turns
 # [20] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [21] ESFlagOperation(24:14) -> ESFlagOperation

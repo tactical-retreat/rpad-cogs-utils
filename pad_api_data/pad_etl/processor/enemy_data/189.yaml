@@ -17,8 +17,8 @@ level: 1
 overrides: []
 records:
 - !SkillRecord
-  desc_en: Deal 50% damage
-  desc_jp: Deal 50% damage
+  desc_en: Preemptive attack, Deal 50% damage
+  desc_jp: Preemptive attack, Deal 50% damage
   max_atk_pct: 50
   name_en: Preemptive
   name_jp: Preemptive
@@ -44,8 +44,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 180% damage (3 hits, 60% each)
-  desc_jp: Deal 180% damage (3 hits, 60% each)
+  desc_en: Multi-hit attack, Deal 180% damage (3 hits, 60% each)
+  desc_jp: Multi-hit attack, Deal 180% damage (3 hits, 60% each)
   max_atk_pct: 180
   name_en: Double Slap
   name_jp: Double Slap
@@ -98,8 +98,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 600% damage
-  desc_jp: Deal 600% damage
+  desc_en: Multi-hit attack, Deal 600% damage
+  desc_jp: Multi-hit attack, Deal 600% damage
   max_atk_pct: 600
   name_en: Graviton Bomb
   name_jp: Graviton Bomb
@@ -121,12 +121,12 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESAttackPreemptive(47:335) -> Holy Rite
-# Enemy action
+# Preemptive attack
 # [2] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 25, target rnd 6
 # [3] ESAttackMultihit(15:322) -> Double Slap
 # 	Condition: 50% chance when < 60% hp (ai:50 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [4] ESJammerChangeRandom(13:100) -> Mischief by God
 # 	Condition: When < 55% hp , one-time use (ai:0 rnd:25) (one-time: 1)
 # Change Random 2 to Jammer
@@ -143,4 +143,4 @@ records:
 # [10] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b1
 # [11] ESAttackMultihit(15:324) -> Graviton Bomb
-# Enemy action
+# Multi-hit attack
