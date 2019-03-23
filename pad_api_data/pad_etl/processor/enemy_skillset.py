@@ -393,7 +393,7 @@ class Describe:
 
     @staticmethod
     def attribute_block(turns, attributes):
-        return 'Unable to {:s} orbs for {:d} turns'.format(', '.join(attributes), turns)
+        return 'Unable to match {:s} orbs for {:d} turns'.format(', '.join(attributes), turns)
 
     @staticmethod
     def spinners(turns, speed, position_description):
@@ -528,7 +528,8 @@ class ESAttackSinglehit(ESAction):
         super().__init__(
             skill,
             effect='attack_single',
-            attack=ESAttack.new_instance(atk_multiplier)
+            attack=ESAttack.new_instance(atk_multiplier),
+            description='Single hit attack'
         )
 
 
@@ -548,7 +549,8 @@ class ESAttackMultihit(ESAction):
         super().__init__(
             skill,
             effect='attack_multi',
-            attack=ESAttack.new_instance(params(skill)[3], params(skill)[1], params(skill)[2])
+            attack=ESAttack.new_instance(params(skill)[3], params(skill)[1], params(skill)[2]),
+            description='Multi-hit attack'
         )
 
 
@@ -557,7 +559,8 @@ class ESAttackPreemptive(ESAction):
         super().__init__(
             skill,
             effect='attack_preemptive',
-            attack=ESAttack.new_instance(params(skill)[2])
+            attack=ESAttack.new_instance(params(skill)[2]),
+            description='Preemptive attack'
         )
 
 
