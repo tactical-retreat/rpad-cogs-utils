@@ -31,10 +31,11 @@ def parse_args():
     return parser.parse_args()
 
 
-def process_card(card):
-    enemy_behavior = card.enemy_behavior
-    enemy_skill_effect = card.card.enemy_skill_effect
-    enemy_skill_effect_type = card.card.enemy_skill_effect_type
+def process_card(mcard):
+    enemy_behavior = mcard.enemy_behavior
+    card = mcard.card
+    enemy_skill_effect = card.enemy_skill_effect
+    enemy_skill_effect_type = card.enemy_skill_effect_type
     if not enemy_behavior:
         return
 
@@ -42,7 +43,7 @@ def process_card(card):
     skill_listings = []
     used_actions = []
     for level in sorted(levels):
-        skillset = enemy_skillset_processor.convert(enemy_behavior, level, enemy_skill_effect, enemy_skill_effect_type)
+        skillset = enemy_skillset_processor.convert(card, enemy_behavior, level, enemy_skill_effect, enemy_skill_effect_type)
         flattened = enemy_skillset_dump.flatten_skillset(level, skillset)
         if not flattened.records:
             continue
@@ -58,13 +59,13 @@ def process_card(card):
             unused_actions.append(b)
 
     entry_info = enemy_skillset_dump.EntryInfo(
-        card.card.card_id, card.card.name, 'not yet populated')
+        card.card_id, card.name, 'not yet populated')
     if unused_actions:
         entry_info.warnings.append('Found {} unused actions'.format(len(unused_actions)))
 
     summary = enemy_skillset_dump.EnemySummary(entry_info, skill_listings)
 
-    enemy_skillset_dump.dump_summary_to_file(card.card, summary, enemy_behavior, unused_actions)
+    enemy_skillset_dump.dump_summary_to_file(card, summary, enemy_behavior, unused_actions)
 
 
 def run(args):

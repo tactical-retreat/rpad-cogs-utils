@@ -5,9 +5,16 @@ called a ProcessedSkillset.
 import collections
 import copy
 
+from pad_etl.data.card import BookCard
 from .enemy_skillset import *
 from typing import List, Any, Set, Tuple
 
+
+# This is a hack that accounts for the fact that some monsters seem to be zero-indexed
+# rather than 1-indexed for jumps. Not obvious why this occurs yet.
+ZERO_INDEXED_MONSTERS = [
+    565, # Goemon
+]
 
 class StandardSkillGroup(object):
     """Base class storing a list of skills."""
@@ -692,11 +699,15 @@ def extract_hp_groups(ctx: Context, hp_checkpoints: Set[int], behaviors: List[An
     return results, globally_seen_behavior
 
 
-def convert(enemy_behavior: List, level: int, enemy_skill_effect: int, enemy_skill_effect_type: int):
+def convert(card: BookCard, enemy_behavior: List, level: int, enemy_skill_effect: int, enemy_skill_effect_type: int):
     skillset = ProcessedSkillset(level)
 
     # Behavior is 1-indexed, so stick a fake row in to start
     behaviors = [None] + list(enemy_behavior)
+
+    # Fix some monsters that seem to be 0-indexed
+    if card.card_id in ZERO_INDEXED_MONSTERS:
+        behaviors.pop(0)
 
     base_abilities, hp_checkpoints, card_checkpoints, has_enemy_remaining_branch = info_from_behaviors(
         behaviors)
