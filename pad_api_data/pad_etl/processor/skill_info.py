@@ -2445,7 +2445,6 @@ class CalculatedSkill(object):
 def reformat_json_info(skill_data):
     reformatted = reformat_json(skill_data)
     leader_skills = {}
-    active_skills = {}
 
     for sid, info in reformatted['leader_skills'].items():
         args = info['args']
@@ -2459,7 +2458,6 @@ def reformat_json_info(skill_data):
 
     # IDs are unique, no need for two maps
     results = leader_skills.copy()
-    leader_skills.update(active_skills)
     return results
 
 
@@ -2632,12 +2630,21 @@ def reformat_json(skill_data):
         try:
             process_lskill(i, c)
         except Exception as ex:
+            reformatted['leader_skills'][i] = {
+                'args': {
+                    'skill_text': 'failed to process',
+                    'params': [0, 0, 0, 0],
+                },
+            }
             print('failed to process', i, c, ex)
 
     for j, c in enumerate(skill_data['skill']):
         try:
             process_askill(j, c)
         except Exception as ex:
+            reformatted['active_skills'][j] = {
+                'args': {'skill_text': 'failed to process'},
+            }
             print('failed to process', j, c, ex)
 
     # Do final trimming on parameter values now that all the math has completed
