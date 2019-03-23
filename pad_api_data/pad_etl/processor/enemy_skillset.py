@@ -528,8 +528,7 @@ class ESAttackSinglehit(ESAction):
         super().__init__(
             skill,
             effect='attack_single',
-            attack=ESAttack.new_instance(atk_multiplier),
-            description='Single hit attack'
+            attack=ESAttack.new_instance(atk_multiplier)
         )
 
 
@@ -549,8 +548,7 @@ class ESAttackMultihit(ESAction):
         super().__init__(
             skill,
             effect='attack_multi',
-            attack=ESAttack.new_instance(params(skill)[3], params(skill)[1], params(skill)[2]),
-            description='Multi-hit attack'
+            attack=ESAttack.new_instance(params(skill)[3], params(skill)[1], params(skill)[2])
         )
 
 
@@ -559,8 +557,7 @@ class ESAttackPreemptive(ESAction):
         super().__init__(
             skill,
             effect='attack_preemptive',
-            attack=ESAttack.new_instance(params(skill)[2]),
-            description='Preemptive attack'
+            attack=ESAttack.new_instance(params(skill)[2])
         )
 
 
