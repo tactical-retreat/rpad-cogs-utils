@@ -7,6 +7,7 @@ import logging
 import os
 
 from pad_etl.data import database
+from pad_etl.processor import debug_utils
 from pad_etl.processor import enemy_skillset_processor
 from pad_etl.processor import enemy_skillset_dump
 from pad_etl.processor.enemy_skillset import ESAction
@@ -47,7 +48,7 @@ def process_card(mcard):
         flattened = enemy_skillset_dump.flatten_skillset(level, skillset)
         if not flattened.records:
             continue
-        used_actions.extend(enemy_skillset_dump.extract_used_skills(skillset))
+        used_actions.extend(debug_utils.extract_used_skills(skillset))
         skill_listings.append(flattened)
 
     if not skill_listings:

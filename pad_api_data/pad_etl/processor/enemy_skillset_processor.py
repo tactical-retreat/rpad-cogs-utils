@@ -5,6 +5,7 @@ called a ProcessedSkillset.
 import collections
 import copy
 
+import pad_etl.processor.debug_utils
 from pad_etl.data.card import BookCard
 from .enemy_skillset import *
 from typing import List, Any, Set, Tuple
@@ -80,6 +81,9 @@ class ProcessedSkillset(object):
         self.repeating_skill_groups = []  # List[TimedSkillGroup]
         # Single-turn stable action loops.
         self.hp_skill_groups = []  # List[StandardSkillGroup]
+        # Action which triggers when a staus is applied
+        self.status_action = None # ESAttackUpStatus
+
 
 
 class Context(object):
@@ -296,6 +300,13 @@ def loop_through(ctx, behaviors: List[Any]):
                 results.append(b)
                 return results
 
+        if b_type == ESAttackUpStatus:
+            # This is a special case; it's not a terminal action unlike other enrages.
+            results.append(b)
+            idx += 1
+            continue
+
+
         # Processing for actions and unparsed stuff, this section should accumulate
         # items into results.
         if b_type == EnemySkillUnknown or issubclass(b_type, ESAction):
@@ -306,20 +317,6 @@ def loop_through(ctx, behaviors: List[Any]):
                 if cond.hp_threshold and ctx.hp >= cond.hp_threshold:
                     idx += 1
                     continue
-
-                # Flag based checks (one-time and global flags).
-                # This check might be wrong? This is checking if all flags are unset, maybe just one needs to be unset.
-                # if cond.one_time:
-                #     if not ctx.skill_use_flags & cond.one_time:
-                #         if not ctx.apply_skill_effects(b):
-                #             idx += 1
-                #             continue
-                #         ctx.skill_use_flags = ctx.skill_use_flags | cond.one_time
-                #         results.append(b)
-                #         return results
-                #     else:
-                #         idx += 1
-                #         continue
 
                 if cond.use_chance() == 100 and b_type != ESDispel:
                     # This always executes so it is a terminal action.
@@ -799,18 +796,28 @@ def collapse_repeating_groups(groups: List[TimedSkillGroup]) -> List[TimedSkillG
 def clean_skillset(skillset: ProcessedSkillset):
     # Check to see if the skillset is functionally empty (only default actions). These are created
     # for some monsters with mostly empty/broken behavior.
-    def clear_default_action(skills):
-        return [s for s in skills if type(s) != ESDefaultAttack]
+    def clear_action(skills, action_type):
+        skills[:] = [s for s in skills if type(s) != action_type]
 
-    def clear_empty_group(group):
+    def clear_empty_group(group, action_type):
         for sg in group:
-            clear_default_action(sg.skills)
-        return [sg for sg in group if sg.skills]
+            clear_action(sg.skills, action_type)
+        group[:] = [sg for sg in group if sg.skills]
 
-    clear_empty_group(skillset.timed_skill_groups)
-    clear_empty_group(skillset.repeating_skill_groups)
-    clear_empty_group(skillset.enemycount_skill_groups)
-    clear_empty_group(skillset.hp_skill_groups)
+    def clear_skillset(action_type):
+        clear_empty_group(skillset.timed_skill_groups, action_type)
+        clear_empty_group(skillset.repeating_skill_groups, action_type)
+        clear_empty_group(skillset.enemycount_skill_groups, action_type)
+        clear_empty_group(skillset.hp_skill_groups, action_type)
+
+    clear_skillset(ESDefaultAttack)
+
+    # Move ESAttackUpStatus to a special location, clear it out of any other buckets
+    all_skills = pad_etl.processor.debug_utils.extract_used_skills(skillset)
+    status_skills = [x for x in all_skills if type(x) == ESAttackUpStatus]
+    if status_skills:
+        skillset.status_action = status_skills[0]
+        clear_skillset(ESAttackUpStatus)
 
     # First cleanup: items with a condition attached can show up in timed
     # groups and also in random HP buckets (generally the 100% one due to

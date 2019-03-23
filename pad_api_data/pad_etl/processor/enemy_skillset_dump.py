@@ -1,10 +1,10 @@
 from enum import Enum, auto
-from typing import List, Optional, TextIO, Union
+from typing import Optional, TextIO, Union
 import os
 import yaml
 
 from pad_etl.processor import debug_utils
-from pad_etl.processor.enemy_skillset_processor import ProcessedSkillset, StandardSkillGroup
+from pad_etl.processor.enemy_skillset_processor import ProcessedSkillset
 from ..data.card import BookCard
 from .enemy_skillset import *
 
@@ -157,6 +157,11 @@ def flatten_skillset(level: int, skillset: ProcessedSkillset) -> SkillRecordList
 
     for item in skillset.preemptives:
         records.append(behavior_to_skillrecord(RecordType.PREEMPT, item))
+
+    if skillset.status_action:
+        skill_output = True
+        records.append(create_divider('When afflicted by delay/poison'))
+        records.append(behavior_to_skillrecord(RecordType.ACTION, skillset.status_action))
 
     for idx, item in enumerate(skillset.timed_skill_groups):
         skill_output = True
@@ -372,19 +377,3 @@ def load_summary_as_dump_text(card: BookCard, monster_level: int, dungeon_atk_mo
             msg += desc + '\n'
 
     return msg
-
-
-def extract_used_skills(skillset: ProcessedSkillset) -> List[ESAction]:
-    """Flattens a ProcessedSkillset to a list of actions"""
-    results = []
-    results.extend(skillset.preemptives)
-
-    def sg_extract(l: List[StandardSkillGroup]) -> List[ESAction]:
-        return [item for sublist in l for item in sublist.skills]
-
-    results.extend(sg_extract(skillset.timed_skill_groups))
-    results.extend(sg_extract(skillset.repeating_skill_groups))
-    results.extend(sg_extract(skillset.hp_skill_groups))
-    results.extend(sg_extract(skillset.enemycount_skill_groups))
-
-    return results
