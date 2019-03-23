@@ -2479,10 +2479,8 @@ def reformat_json(skill_data):
                 reformatted['leader_skills'][i]['type'], reformatted['leader_skills'][i]['args'] = SKILL_TRANSFORM[c[2]](
                     c[6:])
                 if type(reformatted['leader_skills'][i]['args']) == list:
-                    print('Unhandled leader skill type: {c2} (skill id: {i})'.format(
+                    raise Exception('Unhandled leader skill type: {c2} (skill id: {i})'.format(
                         c2=c[2], i=i))
-                    del reformatted['leader_skills'][i]
-                    return
                 if reformatted['leader_skills'][i]['type'] == 'combine_leader_skills':
                     for j in range(0, len(reformatted['leader_skills'][i]['args']['skill_ids'])):
                         if MULTI_PART_LS.get(str(reformatted['leader_skills'][i]['args']['skill_ids'][j])):
