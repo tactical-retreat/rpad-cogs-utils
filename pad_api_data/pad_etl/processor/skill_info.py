@@ -2625,7 +2625,7 @@ def reformat_json(skill_data):
         except Exception as ex:
             reformatted['leader_skills'][i] = {
                 'args': {
-                    'skill_text': 'failed to process',
+                    'skill_text': '',
                     'params': [0, 0, 0, 0],
                 },
             }
@@ -2636,7 +2636,7 @@ def reformat_json(skill_data):
             process_askill(j, c)
         except Exception as ex:
             reformatted['active_skills'][j] = {
-                'args': {'skill_text': 'failed to process'},
+                'args': {'skill_text': ''},
             }
             print('failed to process', j, c, ex)
 
