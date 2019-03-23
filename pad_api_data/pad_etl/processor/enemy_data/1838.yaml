@@ -28,9 +28,9 @@ records:
   usage_pct: 0
 - !SkillRecord
   desc_en: Reduce damage from all sources by 35% for 3 turns + Change 4th row to Fire
-    orbs (Preemptive)
+    orbs, Deal 100% damage (Preemptive)
   desc_jp: Reduce damage from all sources by 35% for 3 turns + Change 4th row to Fire
-    orbs (Preemptive)
+    orbs, Deal 100% damage (Preemptive)
   max_atk_pct: null
   name_en: You have guts to point your sword at me! + Burn!!
   name_jp: You have guts to point your sword at me! + Burn!!
@@ -110,8 +110,8 @@ records:
   record_type_name: ACTION
   usage_pct: 30
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 100% damage (2 hits, 50% each)
-  desc_jp: Multi-hit attack, Deal 100% damage (2 hits, 50% each)
+  desc_en: Deal 100% damage (2 hits, 50% each)
+  desc_jp: Deal 100% damage (2 hits, 50% each)
   max_atk_pct: 100
   name_en: Fire Prison
   name_jp: Fire Prison
@@ -128,8 +128,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 300% damage
-  desc_jp: Multi-hit attack, Deal 300% damage
+  desc_en: Deal 300% damage
+  desc_jp: Deal 300% damage
   max_atk_pct: 300
   name_en: Extreme Blaze
   name_jp: Extreme Blaze
@@ -200,8 +200,8 @@ records:
   record_type_name: ACTION
   usage_pct: 30
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 100% damage (2 hits, 50% each)
-  desc_jp: Multi-hit attack, Deal 100% damage (2 hits, 50% each)
+  desc_en: Deal 100% damage (2 hits, 50% each)
+  desc_jp: Deal 100% damage (2 hits, 50% each)
   max_atk_pct: 100
   name_en: Fire Prison
   name_jp: Fire Prison
@@ -246,7 +246,7 @@ records:
 # end_turn
 # [7] ESAttackMultihit(15:3787) -> Extreme Blaze
 # 	Condition: When < 20% hp (ai:100 rnd:0)
-# Multi-hit attack
+# Enemy action
 # [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 12
 # [9] ESSkillDelay(89:3785) -> Burning Cannon
@@ -256,7 +256,7 @@ records:
 # 	Condition: 30% chance (ai:30 rnd:0)
 # Bind 1 random for 3 turns
 # [11] ESAttackMultihit(15:3783) -> Fire Prison
-# Multi-hit attack
+# Enemy action
 # [12] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 9
 # [13] ESFlagOperation(22:12) -> ESFlagOperation

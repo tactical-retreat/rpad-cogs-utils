@@ -7,8 +7,7 @@ monster_id: 103013
 monster_name_en: Alt. Stone Scales Dragon Emperor, Deightros
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -72,8 +71,10 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Absorb combo <= 5 damage for 3 turns + Bind 1 subs for 5 turns
-  desc_jp: Absorb combo <= 5 damage for 3 turns + Bind 1 subs for 5 turns
+  desc_en: Absorb combo <= 5 damage for 3 turns + Bind 1 subs for 5 turns, Deal 160%
+    damage
+  desc_jp: Absorb combo <= 5 damage for 3 turns + Bind 1 subs for 5 turns, Deal 160%
+    damage
   max_atk_pct: null
   name_en: Bubble Wall + Sun Jail
   name_jp: Bubble Wall + Sun Jail
@@ -135,8 +136,10 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Mortal Poison skyfall +20% for 1 turns + Multi-hit attack
-  desc_jp: Mortal Poison skyfall +20% for 1 turns + Multi-hit attack
+  desc_en: Mortal Poison skyfall +20% for 1 turns + Deal 140% damage (2 hits, 70%
+    each)
+  desc_jp: Mortal Poison skyfall +20% for 1 turns + Deal 140% damage (2 hits, 70%
+    each)
   max_atk_pct: null
   name_en: Poison Swirl + Cyclone
   name_jp: Poison Swirl + Cyclone
@@ -154,9 +157,11 @@ records:
   usage_pct: 100
 - !SkillRecord
   desc_en: Fix orb movement starting point to random position on the board + Lock
-    8 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+    8 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs,
+    Deal 140% damage
   desc_jp: Fix orb movement starting point to random position on the board + Lock
-    8 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+    8 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs,
+    Deal 140% damage
   max_atk_pct: null
   name_en: Flash Induction + Sharptooth
   name_jp: Flash Induction + Sharptooth
@@ -191,8 +196,10 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Mortal Poison skyfall +20% for 1 turns + Multi-hit attack
-  desc_jp: Mortal Poison skyfall +20% for 1 turns + Multi-hit attack
+  desc_en: Mortal Poison skyfall +20% for 1 turns + Deal 140% damage (2 hits, 70%
+    each)
+  desc_jp: Mortal Poison skyfall +20% for 1 turns + Deal 140% damage (2 hits, 70%
+    each)
   max_atk_pct: null
   name_en: Poison Swirl + Cyclone
   name_jp: Poison Swirl + Cyclone
@@ -210,9 +217,11 @@ records:
   usage_pct: 100
 - !SkillRecord
   desc_en: Fix orb movement starting point to random position on the board + Lock
-    8 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+    8 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs,
+    Deal 140% damage
   desc_jp: Fix orb movement starting point to random position on the board + Lock
-    8 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+    8 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs,
+    Deal 140% damage
   max_atk_pct: null
   name_en: Flash Induction + Sharptooth
   name_jp: Flash Induction + Sharptooth
@@ -238,11 +247,6 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
-############################################################
-### Unused Actions
-############################################################
-# ESDamageShield(74:6336) -> Shell Scales
-# Reduce damage from all sources by 75% for 3 turns
 ############################################################
 ### ES Modifiers
 ############################################################
@@ -296,7 +300,7 @@ records:
 # 	[0] ESSkyfall(68:6334) -> Poison Swirl
 # 	Mortal Poison skyfall +20% for 1 turns
 # 	[1] ESAttackMultihit(15:6340) -> Cyclone
-# 	Multi-hit attack
+# 	Enemy action
 # [13] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 16
 # [14] ESFlagOperation(22:12) -> ESFlagOperation
@@ -320,7 +324,7 @@ records:
 # 	[0] ESSkyfall(68:6334) -> Poison Swirl
 # 	Mortal Poison skyfall +20% for 1 turns
 # 	[1] ESAttackMultihit(15:6340) -> Cyclone
-# 	Multi-hit attack
+# 	Enemy action
 # [22] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b11111
 # [23] SkillSet:

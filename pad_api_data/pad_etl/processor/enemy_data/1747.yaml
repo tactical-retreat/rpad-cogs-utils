@@ -28,8 +28,8 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 1200% damage (6 hits, 200% each)
-  desc_jp: Multi-hit attack, Deal 1200% damage (6 hits, 200% each)
+  desc_en: Deal 1200% damage (6 hits, 200% each)
+  desc_jp: Deal 1200% damage (6 hits, 200% each)
   max_atk_pct: 1200
   name_en: Muladhara
   name_jp: Muladhara
@@ -46,8 +46,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack + Bind 1 random cards for 2 turns
-  desc_jp: Multi-hit attack + Bind 1 random cards for 2 turns
+  desc_en: Deal 180% damage (2 hits, 90% each) + Bind 1 random cards for 2 turns
+  desc_jp: Deal 180% damage (2 hits, 90% each) + Bind 1 random cards for 2 turns
   max_atk_pct: null
   name_en: Svadhishthana + Manipura
   name_jp: Svadhishthana + Manipura
@@ -55,8 +55,8 @@ records:
   record_type_name: ACTION
   usage_pct: 25
 - !SkillRecord
-  desc_en: Multi-hit attack + Blind all orbs on the board
-  desc_jp: Multi-hit attack + Blind all orbs on the board
+  desc_en: Deal 180% damage (2 hits, 90% each) + Blind all orbs on the board
+  desc_jp: Deal 180% damage (2 hits, 90% each) + Blind all orbs on the board
   max_atk_pct: null
   name_en: Svadhishthana + Anahata
   name_jp: Svadhishthana + Anahata
@@ -64,8 +64,8 @@ records:
   record_type_name: ACTION
   usage_pct: 25
 - !SkillRecord
-  desc_en: Multi-hit attack + Change Random 3 to Poison
-  desc_jp: Multi-hit attack + Change Random 3 to Poison
+  desc_en: Deal 180% damage (2 hits, 90% each) + Change Random 3 to Poison
+  desc_jp: Deal 180% damage (2 hits, 90% each) + Change Random 3 to Poison
   max_atk_pct: null
   name_en: Svadhishthana + Vishuddha
   name_jp: Svadhishthana + Vishuddha
@@ -73,8 +73,8 @@ records:
   record_type_name: ACTION
   usage_pct: 25
 - !SkillRecord
-  desc_en: Multi-hit attack + Player -99% HP
-  desc_jp: Multi-hit attack + Player -99% HP
+  desc_en: Deal 180% damage (2 hits, 90% each) + Player -99% HP
+  desc_jp: Deal 180% damage (2 hits, 90% each) + Player -99% HP
   max_atk_pct: null
   name_en: Svadhishthana + Ajna
   name_jp: Svadhishthana + Ajna
@@ -100,8 +100,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 1500% damage
-  desc_jp: Multi-hit attack, Deal 1500% damage
+  desc_en: Deal 1500% damage
+  desc_jp: Deal 1500% damage
   max_atk_pct: 1500
   name_en: Sahasrara
   name_jp: Sahasrara
@@ -137,31 +137,31 @@ records:
 # end_turn
 # [6] ESAttackMultihit(15:2406) -> Sahasrara
 # 	Condition: When < 5% hp (ai:100 rnd:0)
-# Multi-hit attack
+# Enemy action
 # [7] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 65, target rnd 14
 # [8] SkillSet:
 # 	Condition: 25% chance when < 65% hp (ai:0 rnd:25)
 # 	[0] ESAttackMultihit(15:2412) -> Svadhishthana
-# 	Multi-hit attack
+# 	Enemy action
 # 	[1] ESBindRandom(1:2413) -> Manipura
 # 	Bind 1 random cards for 2 turns
 # [9] SkillSet:
 # 	Condition: 25% chance when < 65% hp (ai:0 rnd:25)
 # 	[0] ESAttackMultihit(15:2412) -> Svadhishthana
-# 	Multi-hit attack
+# 	Enemy action
 # 	[1] ESBlind(5:2414) -> Anahata
 # 	Blind all orbs on the board
 # [10] SkillSet:
 # 	Condition: 25% chance when < 65% hp (ai:0 rnd:25)
 # 	[0] ESAttackMultihit(15:2412) -> Svadhishthana
-# 	Multi-hit attack
+# 	Enemy action
 # 	[1] ESPoisonChangeRandom(60:2415) -> Vishuddha
 # 	Change Random 3 to Poison
 # [11] SkillSet:
 # 	Condition: 25% chance when < 65% hp (ai:0 rnd:25)
 # 	[0] ESAttackMultihit(15:2412) -> Svadhishthana
-# 	Multi-hit attack
+# 	Enemy action
 # 	[1] ESGravity(50:2416) -> Ajna
 # 	Player -99% HP
 # [12] ESBindSkill(14:2395) -> Kalam
@@ -170,4 +170,4 @@ records:
 # [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [14] ESAttackMultihit(15:2407) -> Muladhara
-# Multi-hit attack
+# Enemy action

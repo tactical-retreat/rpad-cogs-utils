@@ -7,8 +7,7 @@ monster_id: 3457
 monster_name_en: Lawless Demonic Gentleman, Azazel
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -45,8 +44,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Delay active skills by 4 turns + Multi-hit attack
-  desc_jp: Delay active skills by 4 turns + Multi-hit attack
+  desc_en: Delay active skills by 4 turns + Deal 175% damage (7 hits, 25% each)
+  desc_jp: Delay active skills by 4 turns + Deal 175% damage (7 hits, 25% each)
   max_atk_pct: null
   name_en: Devil Snake's Glare + Negative Chain
   name_jp: Devil Snake's Glare + Negative Chain
@@ -63,8 +62,10 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Enemy recover 50% hp + Reduce damage from all sources by 75% for 99 turns
-  desc_jp: Enemy recover 50% hp + Reduce damage from all sources by 75% for 99 turns
+  desc_en: Enemy recover 50% hp + Reduce damage from all sources by 75% for 99 turns,
+    Deal 200% damage
+  desc_jp: Enemy recover 50% hp + Reduce damage from all sources by 75% for 99 turns,
+    Deal 200% damage
   max_atk_pct: null
   name_en: Fresh Blood of a Male Goat + Devil's Influence
   name_jp: Fresh Blood of a Male Goat + Devil's Influence
@@ -81,8 +82,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Delay active skills by 6 turns + Multi-hit attack
-  desc_jp: Delay active skills by 6 turns + Multi-hit attack
+  desc_en: Delay active skills by 6 turns + Deal 160% damage (4 hits, 40% each)
+  desc_jp: Delay active skills by 6 turns + Deal 160% damage (4 hits, 40% each)
   max_atk_pct: null
   name_en: Devil Snake's Evil Eye + Negative Chain
   name_jp: Devil Snake's Evil Eye + Negative Chain
@@ -99,8 +100,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 700% damage (7 hits, 100% each)
-  desc_jp: Multi-hit attack, Deal 700% damage (7 hits, 100% each)
+  desc_en: Deal 700% damage (7 hits, 100% each)
+  desc_jp: Deal 700% damage (7 hits, 100% each)
   max_atk_pct: 700
   name_en: Nightmare Spiral
   name_jp: Nightmare Spiral
@@ -167,14 +168,6 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# SkillSet:
-# 	[0] ESSkillDelay(89:6319) -> Devil Snake's Evil Eye
-# 	Delay active skills by 6 turns
-# 	[1] ESAttackMultihit(15:6320) -> Negative Chain
-# 	Enemy action
-############################################################
 ### ES Modifiers
 ############################################################
 # [9] 5 -      101
@@ -208,7 +201,7 @@ records:
 # 	Reduce damage from all sources by 75% for 99 turns
 # [7] ESAttackMultihit(15:6325) -> Nightmare Spiral
 # 	Condition: When < 15% hp (ai:100 rnd:0)
-# Multi-hit attack
+# Enemy action
 # [8] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 13
 # [9] ESFlagOperation(22:12) -> ESFlagOperation
@@ -218,12 +211,12 @@ records:
 # 	[0] ESSkillDelay(89:6316) -> Devil Snake's Glare
 # 	Delay active skills by 4 turns
 # 	[1] ESAttackMultihit(15:6317) -> Negative Chain
-# 	Multi-hit attack
+# 	Enemy action
 # [11] SkillSet:
 # 	[0] ESSkillDelay(89:6319) -> Devil Snake's Evil Eye
 # 	Delay active skills by 6 turns
 # 	[1] ESAttackMultihit(15:6320) -> Negative Chain
-# 	Multi-hit attack
+# 	Enemy action
 # [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [13] ESBranchFlag(43:10) -> ESBranchFlag

@@ -82,10 +82,10 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change all orbs to Fire, Jammer + Row of cloud appear for 3 turns at 1st
-    column + Absorb combo <= 7 damage for 99 turns
-  desc_jp: Change all orbs to Fire, Jammer + Row of cloud appear for 3 turns at 1st
-    column + Absorb combo <= 7 damage for 99 turns
+  desc_en: Change all orbs to Fire, Jammer, Deal 100% damage + Row of cloud appear
+    for 3 turns at 1st column + Absorb combo <= 7 damage for 99 turns
+  desc_jp: Change all orbs to Fire, Jammer, Deal 100% damage + Row of cloud appear
+    for 3 turns at 1st column + Absorb combo <= 7 damage for 99 turns
   max_atk_pct: null
   name_en: Purgatory Flames of Damnation + Heat Haze + Flame Dance Incarnation
   name_jp: Purgatory Flames of Damnation + Heat Haze + Flame Dance Incarnation
@@ -113,8 +113,8 @@ records:
   record_type_name: ACTION
   usage_pct: 50
 - !SkillRecord
-  desc_en: Spawn random 6 Dark, Poison orbs + Multi-hit attack
-  desc_jp: Spawn random 6 Dark, Poison orbs + Multi-hit attack
+  desc_en: Spawn random 6 Dark, Poison orbs + Deal 105% damage (3 hits, 35% each)
+  desc_jp: Spawn random 6 Dark, Poison orbs + Deal 105% damage (3 hits, 35% each)
   max_atk_pct: null
   name_en: Obsidian Flame + Judgment Carving
   name_jp: Obsidian Flame + Judgment Carving
@@ -131,10 +131,10 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison
-    + Multi-hit attack
-  desc_jp: Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison
-    + Multi-hit attack
+  desc_en: Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison,
+    Deal 30% damage + Deal 60% damage (3 hits, 20% each)
+  desc_jp: Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison,
+    Deal 30% damage + Deal 60% damage (3 hits, 20% each)
   max_atk_pct: null
   name_en: All Encompassing Conflagration + Rigid Flametail Attack
   name_jp: All Encompassing Conflagration + Rigid Flametail Attack
@@ -142,8 +142,10 @@ records:
   record_type_name: ACTION
   usage_pct: 33
 - !SkillRecord
-  desc_en: Change Random to Jammer + Multi-hit attack
-  desc_jp: Change Random to Jammer + Multi-hit attack
+  desc_en: Change Random to Jammer, Deal 35% damage + Deal 60% damage (3 hits, 20%
+    each)
+  desc_jp: Change Random to Jammer, Deal 35% damage + Deal 60% damage (3 hits, 20%
+    each)
   max_atk_pct: null
   name_en: Sacred Flame Jet + Rigid Flametail Attack
   name_jp: Sacred Flame Jet + Rigid Flametail Attack
@@ -151,8 +153,8 @@ records:
   record_type_name: ACTION
   usage_pct: 50
 - !SkillRecord
-  desc_en: Player -30% HP + Multi-hit attack
-  desc_jp: Player -30% HP + Multi-hit attack
+  desc_en: Player -30% HP + Deal 60% damage (3 hits, 20% each)
+  desc_jp: Player -30% HP + Deal 60% damage (3 hits, 20% each)
   max_atk_pct: null
   name_en: Great Mauve Flame + Rigid Flametail Attack
   name_jp: Great Mauve Flame + Rigid Flametail Attack
@@ -169,8 +171,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Spawn random 6 Dark, Poison orbs + Multi-hit attack
-  desc_jp: Spawn random 6 Dark, Poison orbs + Multi-hit attack
+  desc_en: Spawn random 6 Dark, Poison orbs + Deal 105% damage (3 hits, 35% each)
+  desc_jp: Spawn random 6 Dark, Poison orbs + Deal 105% damage (3 hits, 35% each)
   max_atk_pct: null
   name_en: Obsidian Flame + Judgment Carving
   name_jp: Obsidian Flame + Judgment Carving
@@ -187,8 +189,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 2500% damage (5 hits, 500% each)
-  desc_jp: Multi-hit attack, Deal 2500% damage (5 hits, 500% each)
+  desc_en: Deal 2500% damage (5 hits, 500% each)
+  desc_jp: Deal 2500% damage (5 hits, 500% each)
   max_atk_pct: 2500
   name_en: Conflagration of Hell
   name_jp: Conflagration of Hell
@@ -257,18 +259,18 @@ records:
 # 	[0] ESBoardChangeAttackBits(85:9655) -> All Encompassing Conflagration
 # 	Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison
 # 	[1] ESAttackMultihit(15:9658) -> Rigid Flametail Attack
-# 	Multi-hit attack
+# 	Enemy action
 # [11] SkillSet:
 # 	Condition: 50% chance (ai:50 rnd:0)
 # 	[0] ESOrbChangeAttack(48:9656) -> Sacred Flame Jet
 # 	Change Random to Jammer
 # 	[1] ESAttackMultihit(15:9658) -> Rigid Flametail Attack
-# 	Multi-hit attack
+# 	Enemy action
 # [12] SkillSet:
 # 	[0] ESGravity(50:9657) -> Great Mauve Flame
 # 	Player -30% HP
 # 	[1] ESAttackMultihit(15:9658) -> Rigid Flametail Attack
-# 	Multi-hit attack
+# 	Enemy action
 # [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [14] ESBranchFlag(43:10) -> ESBranchFlag
@@ -308,7 +310,7 @@ records:
 # 	[0] ESRandomSpawn(92:9673) -> Obsidian Flame
 # 	Spawn random 6 Dark, Poison orbs
 # 	[1] ESAttackMultihit(15:9678) -> Judgment Carving
-# 	Multi-hit attack
+# 	Enemy action
 # [25] SkillSet:
 # 	Condition: 33% chance (ai:33 rnd:0)
 # 	[0] ESBoardChangeAttackBits(85:9669) -> Scarlet Flame
@@ -329,7 +331,7 @@ records:
 # [28] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [29] ESAttackMultihit(15:9684) -> Conflagration of Hell
-# Multi-hit attack
+# Enemy action
 # [30] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [31] ESAttributeResist(72:9650) -> Fire Att. Half Reduced

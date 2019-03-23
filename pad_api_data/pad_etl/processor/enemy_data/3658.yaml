@@ -54,8 +54,8 @@ records:
   record_type_name: ACTION
   usage_pct: 20
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 120% damage
-  desc_jp: Multi-hit attack, Deal 120% damage
+  desc_en: Deal 120% damage
+  desc_jp: Deal 120% damage
   max_atk_pct: 120
   name_en: Tail Slam
   name_jp: Tail Slam
@@ -135,8 +135,8 @@ records:
   record_type_name: ACTION
   usage_pct: 20
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 120% damage
-  desc_jp: Multi-hit attack, Deal 120% damage
+  desc_en: Deal 120% damage
+  desc_jp: Deal 120% damage
   max_atk_pct: 120
   name_en: Tail Slam
   name_jp: Tail Slam
@@ -180,8 +180,8 @@ records:
   record_type_name: ACTION
   usage_pct: 50
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 140% damage (2 hits, 70% each)
-  desc_jp: Multi-hit attack, Deal 140% damage (2 hits, 70% each)
+  desc_en: Deal 140% damage (2 hits, 70% each)
+  desc_jp: Deal 140% damage (2 hits, 70% each)
   max_atk_pct: 140
   name_en: Combo Jumping Tail Strike
   name_jp: Combo Jumping Tail Strike
@@ -192,9 +192,9 @@ records:
 ############################################################
 ### Unused Actions
 ############################################################
-# ESAttackUPRemainingEnemies(17:7211) -> Scalding Tail
-# 	Condition: One-time use, when <= 1 enemies remain (ai:100 rnd:0) (one-time: 3)
-# Increase damage to 150% for the next 10 turns
+# ESRandomSpawn(92:7206) -> Bite
+# 	Condition: One-time use (ai:0 rnd:20) (one-time: 1)
+# Spawn random 3 Fire orbs
 ############################################################
 ### ES Modifiers
 ############################################################
@@ -237,7 +237,7 @@ records:
 # Spawn random 6 Bomb orbs
 # [11] ESAttackMultihit(15:7214) -> Combo Jumping Tail Strike
 # 	Condition: When < 40% hp (ai:100 rnd:0)
-# Multi-hit attack
+# Enemy action
 # [12] ESRandomSpawn(92:7206) -> Bite
 # 	Condition: One-time use (ai:0 rnd:20) (one-time: 1)
 # Spawn random 3 Fire orbs
@@ -249,7 +249,7 @@ records:
 # Spawn random 6 Fire orbs
 # [15] ESAttackMultihit(15:7209) -> Tail Slam
 # 	Condition: 20% chance (ai:0 rnd:20)
-# Multi-hit attack
+# Enemy action
 # [16] ESGravity(50:7210) -> Jumping Tail Strike
 # 	Condition: 20% chance (ai:0 rnd:20)
 # Player -70% HP

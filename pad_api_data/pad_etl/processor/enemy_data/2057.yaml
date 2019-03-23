@@ -38,10 +38,10 @@ records:
 - !SkillRecord
   desc_en: Increase damage to 200% for the next 999 turns + Reduce damage from all
     sources by 50% for 1 turns + Voids status ailments for 999 turns + Do nothing
-    + Multi-hit attack
+    + Deal 120% damage
   desc_jp: Increase damage to 200% for the next 999 turns + Reduce damage from all
     sources by 50% for 1 turns + Voids status ailments for 999 turns + Do nothing
-    + Multi-hit attack
+    + Deal 120% damage
   max_atk_pct: null
   name_en: I suppose I misjudged! + Fighting all four of you... + ...is just too tough
     for me... + ...NOT! Ha, I lied! Like a rug! Oh, I kill me! + Jump
@@ -60,8 +60,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 80% damage (8 hits, 10% each)
-  desc_jp: Multi-hit attack, Deal 80% damage (8 hits, 10% each)
+  desc_en: Deal 80% damage (8 hits, 10% each)
+  desc_jp: Deal 80% damage (8 hits, 10% each)
   max_atk_pct: 80
   name_en: Goblin Punch
   name_jp: Goblin Punch
@@ -87,8 +87,8 @@ records:
   record_type_name: ACTION
   usage_pct: 30
 - !SkillRecord
-  desc_en: Single hit attack, Deal 100% damage
-  desc_jp: Single hit attack, Deal 100% damage
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
   max_atk_pct: 100
   name_en: Disable Skill
   name_jp: Disable Skill
@@ -114,8 +114,8 @@ records:
   record_type_name: ACTION
   usage_pct: 50
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 120% damage
-  desc_jp: Multi-hit attack, Deal 120% damage
+  desc_en: Deal 120% damage
+  desc_jp: Deal 120% damage
   max_atk_pct: 120
   name_en: Jump
   name_jp: Jump
@@ -175,7 +175,7 @@ records:
 # 	[3] ESInactivity(66:2136) -> ...NOT! Ha, I lied! Like a rug! Oh, I kill me!
 # 	Do nothing
 # 	[4] ESAttackMultihit(15:2137) -> Jump
-# 	Multi-hit attack
+# 	Enemy action
 # [10] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 50, target rnd 14
 # [11] ESBindAttack(63:2139) -> Electrocute
@@ -183,12 +183,12 @@ records:
 # Bind 1 subs for 2 turns
 # [12] ESAttackMultihit(15:2137) -> Jump
 # 	Condition: 50% chance (ai:50 rnd:0)
-# Multi-hit attack
+# Enemy action
 # [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [14] ESAttackMultihit(15:2127) -> Goblin Punch
 # 	Condition: 30% chance (ai:30 rnd:0)
-# Multi-hit attack
+# Enemy action
 # [15] ESOrbChangeAttack(48:2128) -> Aera
 # 	Condition: 30% chance (ai:30 rnd:0)
 # Change Random to Wood
@@ -196,7 +196,7 @@ records:
 # 	Condition: 30% chance (ai:30 rnd:0)
 # Change Random to Jammer
 # [17] ESAttackSinglehit(82:1) -> Disable Skill
-# Single hit attack
+# Enemy action
 # [18] SkillSet:
 # 	Condition: On death (ai:100 rnd:0)
 # 	[0] ESSkillSet(83:2143) -> *****

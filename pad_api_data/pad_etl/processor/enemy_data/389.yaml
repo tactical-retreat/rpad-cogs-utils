@@ -17,8 +17,8 @@ level: 1
 overrides: []
 records:
 - !SkillRecord
-  desc_en: Preemptive attack, Deal 100% damage
-  desc_jp: Preemptive attack, Deal 100% damage
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
   max_atk_pct: 100
   name_en: Preemptive
   name_jp: Preemptive
@@ -71,8 +71,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 100% damage (2 hits, 50% each)
-  desc_jp: Multi-hit attack, Deal 100% damage (2 hits, 50% each)
+  desc_en: Deal 100% damage (2 hits, 50% each)
+  desc_jp: Deal 100% damage (2 hits, 50% each)
   max_atk_pct: 100
   name_en: Flame Slash
   name_jp: Flame Slash
@@ -89,8 +89,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 120%~180% damage (4~6 hits, 30% each)
-  desc_jp: Multi-hit attack, Deal 120%~180% damage (4~6 hits, 30% each)
+  desc_en: Deal 120%~180% damage (4~6 hits, 30% each)
+  desc_jp: Deal 120%~180% damage (4~6 hits, 30% each)
   max_atk_pct: 180
   name_en: Barrage Bomb
   name_jp: Barrage Bomb
@@ -106,8 +106,8 @@ level: 5
 overrides: []
 records:
 - !SkillRecord
-  desc_en: Preemptive attack, Deal 100% damage
-  desc_jp: Preemptive attack, Deal 100% damage
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
   max_atk_pct: 100
   name_en: Preemptive
   name_jp: Preemptive
@@ -160,8 +160,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 100% damage (2 hits, 50% each)
-  desc_jp: Multi-hit attack, Deal 100% damage (2 hits, 50% each)
+  desc_en: Deal 100% damage (2 hits, 50% each)
+  desc_jp: Deal 100% damage (2 hits, 50% each)
   max_atk_pct: 100
   name_en: Flame Slash
   name_jp: Flame Slash
@@ -178,8 +178,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 120%~180% damage (4~6 hits, 30% each)
-  desc_jp: Multi-hit attack, Deal 120%~180% damage (4~6 hits, 30% each)
+  desc_en: Deal 120%~180% damage (4~6 hits, 30% each)
+  desc_jp: Deal 120%~180% damage (4~6 hits, 30% each)
   max_atk_pct: 180
   name_en: Barrage Bomb
   name_jp: Barrage Bomb
@@ -201,11 +201,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESAttackPreemptive(47:370) -> Quick Bomb
-# Preemptive attack
+# Enemy action
 # [2] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 5
 # [3] ESAttackMultihit(15:265) -> Flame Slash
-# Multi-hit attack
+# Enemy action
 # [4] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [5] ESBranchLevel(35:25) -> ESBranchLevel
@@ -224,7 +224,7 @@ records:
 # [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [12] ESAttackMultihit(15:372) -> Barrage Bomb
-# Multi-hit attack
+# Enemy action
 # [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [14] ESBindAttribute(2:396) -> Hyper Dark Bind

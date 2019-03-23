@@ -19,9 +19,9 @@ overrides: []
 records:
 - !SkillRecord
   desc_en: Reduce damage from all sources by 80% for 1 turns + Bind 1 random for 5
-    turns (Preemptive)
+    turns, Deal 120% damage (Preemptive)
   desc_jp: Reduce damage from all sources by 80% for 1 turns + Bind 1 random for 5
-    turns (Preemptive)
+    turns, Deal 120% damage (Preemptive)
   max_atk_pct: null
   name_en: Garment of Protection + Gungnir
   name_jp: Garment of Protection + Gungnir
@@ -57,9 +57,9 @@ records:
   usage_pct: 100
 - !SkillRecord
   desc_en: Reduce damage from all sources by 80% for 1 turns + Bind 1 random for 5
-    turns
+    turns, Deal 120% damage
   desc_jp: Reduce damage from all sources by 80% for 1 turns + Bind 1 random for 5
-    turns
+    turns, Deal 120% damage
   max_atk_pct: null
   name_en: Garment of Protection + Gungnir
   name_jp: Garment of Protection + Gungnir
@@ -76,8 +76,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 500% damage (5 hits, 100% each)
-  desc_jp: Multi-hit attack, Deal 500% damage (5 hits, 100% each)
+  desc_en: Deal 500% damage (5 hits, 100% each)
+  desc_jp: Deal 500% damage (5 hits, 100% each)
   max_atk_pct: 500
   name_en: Vak Sigfodr
   name_jp: Vak Sigfodr
@@ -103,8 +103,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack + Enemy recover 10% hp
-  desc_jp: Multi-hit attack + Enemy recover 10% hp
+  desc_en: Deal 160% damage (2 hits, 80% each) + Enemy recover 10% hp
+  desc_jp: Deal 160% damage (2 hits, 80% each) + Enemy recover 10% hp
   max_atk_pct: null
   name_en: Double Slash + Auto-recover
   name_jp: Double Slash + Auto-recover
@@ -148,8 +148,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack + Enemy recover 10% hp
-  desc_jp: Multi-hit attack + Enemy recover 10% hp
+  desc_en: Deal 180% damage (3 hits, 60% each) + Enemy recover 10% hp
+  desc_jp: Deal 180% damage (3 hits, 60% each) + Enemy recover 10% hp
   max_atk_pct: null
   name_en: Triple Slash + Auto-recover
   name_jp: Triple Slash + Auto-recover
@@ -215,11 +215,11 @@ records:
 # Branch on hp < 50, target rnd 14
 # [8] ESAttackMultihit(15:6136) -> Vak Sigfodr
 # 	Condition: When < 15% hp (ai:100 rnd:0)
-# Multi-hit attack
+# Enemy action
 # [9] SkillSet:
 # 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESAttackMultihit(15:6131) -> Triple Slash
-# 	Multi-hit attack
+# 	Enemy action
 # 	[1] ESRecoverEnemy(86:6132) -> Auto-recover
 # 	Enemy recover 10% hp
 # [10] ESRowSpawnMulti(79:6135) -> Divide Poison
@@ -228,7 +228,7 @@ records:
 # [11] SkillSet:
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESAttackMultihit(15:6125) -> Double Slash
-# 	Multi-hit attack
+# 	Enemy action
 # 	[1] ESRecoverEnemy(86:6126) -> Auto-recover
 # 	Enemy recover 10% hp
 # [12] ESRowSpawnMulti(79:6134) -> Divide Blast

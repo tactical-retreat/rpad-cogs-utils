@@ -59,10 +59,10 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change 1st column to Wood orbs, 6th column to Dark orbs + Bind 1 random
-    subs for 2 turns + Multi-hit attack
-  desc_jp: Change 1st column to Wood orbs, 6th column to Dark orbs + Bind 1 random
-    subs for 2 turns + Multi-hit attack
+  desc_en: Change 1st column to Wood orbs, 6th column to Dark orbs, Deal 150% damage
+    + Bind 1 random subs for 2 turns + Deal 20% damage (2 hits, 10% each)
+  desc_jp: Change 1st column to Wood orbs, 6th column to Dark orbs, Deal 150% damage
+    + Bind 1 random subs for 2 turns + Deal 20% damage (2 hits, 10% each)
   max_atk_pct: null
   name_en: You come over here, too + Don't waste your time with them! + You're an
     eyesore!
@@ -72,8 +72,10 @@ records:
   record_type_name: ACTION
   usage_pct: 50
 - !SkillRecord
-  desc_en: Multi-hit attack + Enemy recover 10% hp + Change Random 1 to Poison
-  desc_jp: Multi-hit attack + Enemy recover 10% hp + Change Random 1 to Poison
+  desc_en: Deal 200% damage (2 hits, 100% each) + Enemy recover 10% hp + Change Random
+    1 to Poison
+  desc_jp: Deal 200% damage (2 hits, 100% each) + Enemy recover 10% hp + Change Random
+    1 to Poison
   max_atk_pct: null
   name_en: How about THIS? + Aamir, you're so cool! + Let me help!
   name_jp: How about THIS? + Aamir, you're so cool! + Let me help!
@@ -90,8 +92,10 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack + Enemy recover 1% hp + Blind all orbs on the board
-  desc_jp: Multi-hit attack + Enemy recover 1% hp + Blind all orbs on the board
+  desc_en: Deal 140% damage (2 hits, 70% each) + Enemy recover 1% hp + Blind all orbs
+    on the board
+  desc_jp: Deal 140% damage (2 hits, 70% each) + Enemy recover 1% hp + Blind all orbs
+    on the board
   max_atk_pct: null
   name_en: I'd rather play with them... + Heheh! + Could you quit gawking?
   name_jp: I'd rather play with them... + Heheh! + Could you quit gawking?
@@ -108,8 +112,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack + Multi-hit attack + Multi-hit attack
-  desc_jp: Multi-hit attack + Multi-hit attack + Multi-hit attack
+  desc_en: Deal 400% damage + Deal 40% damage (2 hits, 20% each) + Deal 35% damage
+  desc_jp: Deal 400% damage + Deal 40% damage (2 hits, 20% each) + Deal 35% damage
   max_atk_pct: null
   name_en: Nobody likes a pest! + Shoo! + Time for you to go home
   name_jp: Nobody likes a pest! + Shoo! + Time for you to go home
@@ -156,15 +160,15 @@ records:
 # [7] SkillSet:
 # 	Condition: When < 20% hp (ai:100 rnd:0)
 # 	[0] ESAttackMultihit(15:2086) -> Nobody likes a pest!
-# 	Multi-hit attack
+# 	Enemy action
 # 	[1] ESAttackMultihit(15:2087) -> Shoo!
-# 	Multi-hit attack
+# 	Enemy action
 # 	[2] ESAttackMultihit(15:2088) -> Time for you to go home
-# 	Multi-hit attack
+# 	Enemy action
 # [8] SkillSet:
 # 	Condition: When < 50% hp (ai:100 rnd:0)
 # 	[0] ESAttackMultihit(15:2082) -> I'd rather play with them...
-# 	Multi-hit attack
+# 	Enemy action
 # 	[1] ESRecoverEnemy(86:2083) -> Heheh!
 # 	Enemy recover 1% hp
 # 	[2] ESBlind(5:2084) -> Could you quit gawking?
@@ -176,10 +180,10 @@ records:
 # 	[1] ESBindRandomSub(65:2075) -> Don't waste your time with them!
 # 	Bind 1 random subs for 2 turns
 # 	[2] ESAttackMultihit(15:2076) -> You're an eyesore!
-# 	Multi-hit attack
+# 	Enemy action
 # [10] SkillSet:
 # 	[0] ESAttackMultihit(15:2070) -> How about THIS?
-# 	Multi-hit attack
+# 	Enemy action
 # 	[1] ESRecoverEnemy(86:2071) -> Aamir, you're so cool!
 # 	Enemy recover 10% hp
 # 	[2] ESPoisonChangeRandom(60:2072) -> Let me help!

@@ -18,8 +18,8 @@ level: 4
 overrides: []
 records:
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 80% damage (Preemptive)
-  desc_jp: Multi-hit attack, Deal 80% damage (Preemptive)
+  desc_en: Deal 80% damage (Preemptive)
+  desc_jp: Deal 80% damage (Preemptive)
   max_atk_pct: 80
   name_en: Fin Cutter
   name_jp: Fin Cutter
@@ -36,8 +36,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Player -25% HP + Multi-hit attack
-  desc_jp: Player -25% HP + Multi-hit attack
+  desc_en: Player -25% HP + Deal 100% damage
+  desc_jp: Player -25% HP + Deal 100% damage
   max_atk_pct: null
   name_en: Condor Jump + Amazon Kick
   name_jp: Condor Jump + Amazon Kick
@@ -72,8 +72,8 @@ records:
   record_type_name: ACTION
   usage_pct: 33
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 100% damage (2 hits, 50% each)
-  desc_jp: Multi-hit attack, Deal 100% damage (2 hits, 50% each)
+  desc_en: Deal 100% damage (2 hits, 50% each)
+  desc_jp: Deal 100% damage (2 hits, 50% each)
   max_atk_pct: 100
   name_en: Monkey Attack
   name_jp: Monkey Attack
@@ -90,8 +90,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 150% damage
-  desc_jp: Multi-hit attack, Deal 150% damage
+  desc_en: Deal 150% damage
+  desc_jp: Deal 150% damage
   max_atk_pct: 150
   name_en: Super Slice
   name_jp: Super Slice
@@ -129,7 +129,7 @@ records:
 # [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [6] ESAttackMultihit(15:11687) -> Fin Cutter
-# Multi-hit attack
+# Enemy action
 # [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [8] ESBranchHP(28:18) -> ESBranchHP
@@ -142,7 +142,7 @@ records:
 # Enemy recover 5% hp
 # [11] ESAttackMultihit(15:11690) -> Monkey Attack
 # 	Condition: 34% chance (ai:0 rnd:34)
-# Multi-hit attack
+# Enemy action
 # [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [13] ESBranchFlag(43:10) -> ESBranchFlag
@@ -161,7 +161,7 @@ records:
 # 	[0] ESGravity(50:11693) -> Condor Jump
 # 	Player -25% HP
 # 	[1] ESAttackMultihit(15:11694) -> Amazon Kick
-# 	Multi-hit attack
+# 	Enemy action
 # [19] ESSpinnersRandom(109:11688) -> Spin Kick
 # 	Condition: 33% chance (ai:0 rnd:33)
 # Random 1 orbs change every 2.0s for 1 turns
@@ -170,10 +170,10 @@ records:
 # Enemy recover 5% hp
 # [21] ESAttackMultihit(15:11690) -> Monkey Attack
 # 	Condition: 34% chance (ai:0 rnd:34)
-# Multi-hit attack
+# Enemy action
 # [22] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [23] ESAttackMultihit(15:11695) -> Super Slice
-# Multi-hit attack
+# Enemy action
 # [24] ESEndPath(36:26) -> ESEndPath
 # end_turn

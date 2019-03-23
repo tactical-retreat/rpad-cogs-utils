@@ -8,7 +8,7 @@ monster_name_en: Alt. Flash Machine King, Cosmo Crusader
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 2 unused actions
+- Found 1 unused actions
 
 ############################################################
 ### Data @ 1
@@ -27,8 +27,10 @@ records:
   record_type_name: PASSIVE
   usage_pct: 100
 - !SkillRecord
-  desc_en: Voids status ailments for 10 turns + Change Random to Water (Preemptive)
-  desc_jp: Voids status ailments for 10 turns + Change Random to Water (Preemptive)
+  desc_en: Voids status ailments for 10 turns + Change Random to Water, Deal 50% damage
+    (Preemptive)
+  desc_jp: Voids status ailments for 10 turns + Change Random to Water, Deal 50% damage
+    (Preemptive)
   max_atk_pct: null
   name_en: Welcome to the big leagues + Wasser Biene
   name_jp: Welcome to the big leagues + Wasser Biene
@@ -99,8 +101,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 1500% damage (5 hits, 300% each)
-  desc_jp: Multi-hit attack, Deal 1500% damage (5 hits, 300% each)
+  desc_en: Deal 1500% damage (5 hits, 300% each)
+  desc_jp: Deal 1500% damage (5 hits, 300% each)
   max_atk_pct: 1500
   name_en: Eisen Zorn
   name_jp: Eisen Zorn
@@ -165,9 +167,6 @@ records:
 ############################################################
 ### Unused Actions
 ############################################################
-# ESDamageShield(74:5372) -> Prima Schild
-# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 3)
-# Reduce damage from all sources by 50% for 3 turns
 # ESColumnSpawnMulti(77:5371) -> Blitz Lanze
 # Change 3rd, 4th column to Light, Heal orbs
 ############################################################
@@ -205,7 +204,7 @@ records:
 # Light skyfall +15% for 10 turns
 # [8] ESAttackMultihit(15:5370) -> Eisen Zorn
 # 	Condition: When < 15% hp (ai:100 rnd:0)
-# Multi-hit attack
+# Enemy action
 # [9] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 12
 # [10] ESFlagOperation(22:12) -> ESFlagOperation

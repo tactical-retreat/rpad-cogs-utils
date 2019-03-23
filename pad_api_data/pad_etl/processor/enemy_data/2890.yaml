@@ -202,8 +202,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 800% damage (2 hits, 400% each)
-  desc_jp: Multi-hit attack, Deal 800% damage (2 hits, 400% each)
+  desc_en: Deal 800% damage (2 hits, 400% each)
+  desc_jp: Deal 800% damage (2 hits, 400% each)
   max_atk_pct: 800
   name_en: Limit Break
   name_jp: Limit Break
@@ -220,8 +220,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Enemy recover 19% hp + Multi-hit attack
-  desc_jp: Enemy recover 19% hp + Multi-hit attack
+  desc_en: Enemy recover 19% hp + Deal 800% damage (2 hits, 400% each)
+  desc_jp: Enemy recover 19% hp + Deal 800% damage (2 hits, 400% each)
   max_atk_pct: null
   name_en: Holy Repair + Limit Break
   name_jp: Holy Repair + Limit Break
@@ -283,8 +283,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 180% damage (3 hits, 60% each)
-  desc_jp: Multi-hit attack, Deal 180% damage (3 hits, 60% each)
+  desc_en: Deal 180% damage (3 hits, 60% each)
+  desc_jp: Deal 180% damage (3 hits, 60% each)
   max_atk_pct: 180
   name_en: Steel Wing
   name_jp: Steel Wing
@@ -375,10 +375,10 @@ records:
 # 	[0] ESRecoverEnemy(86:4478) -> Holy Repair
 # 	Enemy recover 19% hp
 # 	[1] ESAttackMultihit(15:4296) -> Limit Break
-# 	Multi-hit attack
+# 	Enemy action
 # [7] ESAttackMultihit(15:4296) -> Limit Break
 # 	Condition: When < 20% hp (ai:100 rnd:0)
-# Multi-hit attack
+# Enemy action
 # [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 27
 # [9] ESBranchFlag(43:10) -> ESBranchFlag
@@ -421,12 +421,12 @@ records:
 # flag UNSET 0b110
 # [24] ESAttackMultihit(15:4292) -> Steel Wing
 # 	Condition: One-time use (ai:60 rnd:0) (one-time: 1)
-# Multi-hit attack
+# Enemy action
 # [25] ESBindAttack(63:4293) -> Paralysis Sight
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Bind 1 random for 3 turns
 # [26] ESAttackMultihit(15:4294) -> Core Full Burst
-# Multi-hit attack
+# Enemy action
 # [27] ESAttackUPRemainingEnemies(17:4295) -> Awaken Force
 # 	Condition: when <= 1 enemies remain (ai:100 rnd:0)
 # Increase damage to 200% for the next 999 turns

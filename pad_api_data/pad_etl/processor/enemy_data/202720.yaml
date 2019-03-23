@@ -18,9 +18,9 @@ overrides: []
 records:
 - !SkillRecord
   desc_en: Voids status ailments for 999 turns + Absorb damage >= 2000000 damage for
-    999 turns + Multi-hit attack (Preemptive)
+    999 turns + Deal 400% damage (4 hits, 100% each) (Preemptive)
   desc_jp: Voids status ailments for 999 turns + Absorb damage >= 2000000 damage for
-    999 turns + Multi-hit attack (Preemptive)
+    999 turns + Deal 400% damage (4 hits, 100% each) (Preemptive)
   max_atk_pct: null
   name_en: Black Body + Dark Ball + Darkdragon's Baptism
   name_jp: Black Body + Dark Ball + Darkdragon's Baptism
@@ -55,8 +55,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 1000% damage (2 hits, 500% each)
-  desc_jp: Multi-hit attack, Deal 1000% damage (2 hits, 500% each)
+  desc_en: Deal 1000% damage (2 hits, 500% each)
+  desc_jp: Deal 1000% damage (2 hits, 500% each)
   max_atk_pct: 1000
   name_en: Brilliant World
   name_jp: Brilliant World
@@ -91,8 +91,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 1250% damage (5 hits, 250% each)
-  desc_jp: Multi-hit attack, Deal 1250% damage (5 hits, 250% each)
+  desc_en: Deal 1250% damage (5 hits, 250% each)
+  desc_jp: Deal 1250% damage (5 hits, 250% each)
   max_atk_pct: 1250
   name_en: Celestial Prison's Scorching Heat
   name_jp: Celestial Prison's Scorching Heat
@@ -127,8 +127,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 1500% damage (3 hits, 500% each)
-  desc_jp: Multi-hit attack, Deal 1500% damage (3 hits, 500% each)
+  desc_en: Deal 1500% damage (3 hits, 500% each)
+  desc_jp: Deal 1500% damage (3 hits, 500% each)
   max_atk_pct: 1500
   name_en: Soul Burst
   name_jp: Soul Burst
@@ -163,8 +163,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 1760% damage (4 hits, 440% each)
-  desc_jp: Multi-hit attack, Deal 1760% damage (4 hits, 440% each)
+  desc_en: Deal 1760% damage (4 hits, 440% each)
+  desc_jp: Deal 1760% damage (4 hits, 440% each)
   max_atk_pct: 1760
   name_en: Abysstrom
   name_jp: Abysstrom
@@ -199,8 +199,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 2100% damage (6 hits, 350% each)
-  desc_jp: Multi-hit attack, Deal 2100% damage (6 hits, 350% each)
+  desc_en: Deal 2100% damage (6 hits, 350% each)
+  desc_jp: Deal 2100% damage (6 hits, 350% each)
   max_atk_pct: 2100
   name_en: Death Scythe
   name_jp: Death Scythe
@@ -244,8 +244,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Voids player buff effects + Multi-hit attack
-  desc_jp: Voids player buff effects + Multi-hit attack
+  desc_en: Voids player buff effects + Deal 3000% damage (10 hits, 300% each)
+  desc_jp: Voids player buff effects + Deal 3000% damage (10 hits, 300% each)
   max_atk_pct: null
   name_en: Dark Eyes + Ultra Graviton Breath
   name_jp: Dark Eyes + Ultra Graviton Breath
@@ -275,7 +275,7 @@ records:
 # 	[1] ESAbsorbThreshold(87:4298) -> Dark Ball
 # 	Absorb damage >= 2000000 damage for 999 turns
 # 	[2] ESAttackMultihit(15:4299) -> Darkdragon's Baptism
-# 	Multi-hit attack
+# 	Enemy action
 # [3] SkillSet:
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 512)
 # 	[0] ESInactivity(66:4301) -> Summon Vinus
@@ -284,7 +284,7 @@ records:
 # 	Player recover 100% hp
 # [4] ESAttackMultihit(15:4308) -> Brilliant World
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 256)
-# Multi-hit attack
+# Enemy action
 # [5] SkillSet:
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 128)
 # 	[0] ESInactivity(66:4302) -> Summon Mineva
@@ -293,7 +293,7 @@ records:
 # 	Player recover 100% hp
 # [6] ESAttackMultihit(15:4310) -> Celestial Prison's Scorching Heat
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 64)
-# Multi-hit attack
+# Enemy action
 # [7] SkillSet:
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 32)
 # 	[0] ESInactivity(66:4303) -> Summon Seres
@@ -302,7 +302,7 @@ records:
 # 	Player recover 100% hp
 # [8] ESAttackMultihit(15:4312) -> Soul Burst
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 16)
-# Multi-hit attack
+# Enemy action
 # [9] SkillSet:
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 8)
 # 	[0] ESInactivity(66:4304) -> Summon Neptunus
@@ -311,7 +311,7 @@ records:
 # 	Player recover 100% hp
 # [10] ESAttackMultihit(15:4314) -> Abysstrom
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 4)
-# Multi-hit attack
+# Enemy action
 # [11] SkillSet:
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
 # 	[0] ESInactivity(66:4305) -> Summon Ades
@@ -320,7 +320,7 @@ records:
 # 	Player recover 100% hp
 # [12] ESAttackMultihit(15:4316) -> Death Scythe
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
-# Multi-hit attack
+# Enemy action
 # [13] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 16
 # [14] ESFlagOperation(22:12) -> ESFlagOperation
@@ -333,4 +333,4 @@ records:
 # 	[0] ESDispel(6:4352) -> Dark Eyes
 # 	Voids player buff effects
 # 	[1] ESAttackMultihit(15:4318) -> Ultra Graviton Breath
-# 	Multi-hit attack
+# 	Enemy action

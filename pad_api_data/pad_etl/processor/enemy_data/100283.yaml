@@ -62,8 +62,8 @@ records:
   record_type_name: ACTION
   usage_pct: 80
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 140% damage (2 hits, 70% each)
-  desc_jp: Multi-hit attack, Deal 140% damage (2 hits, 70% each)
+  desc_en: Deal 140% damage (2 hits, 70% each)
+  desc_jp: Deal 140% damage (2 hits, 70% each)
   max_atk_pct: 140
   name_en: Plasma Lance
   name_jp: Plasma Lance
@@ -80,8 +80,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 1000% damage (2 hits, 500% each)
-  desc_jp: Multi-hit attack, Deal 1000% damage (2 hits, 500% each)
+  desc_en: Deal 1000% damage (2 hits, 500% each)
+  desc_jp: Deal 1000% damage (2 hits, 500% each)
   max_atk_pct: 1000
   name_en: Megido Cannon
   name_jp: Megido Cannon
@@ -125,8 +125,10 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Reduce damage from all sources by 75% for 5 turns + Change Heal to Fire
-  desc_jp: Reduce damage from all sources by 75% for 5 turns + Change Heal to Fire
+  desc_en: Reduce damage from all sources by 75% for 5 turns + Change Heal to Fire,
+    Deal 200% damage
+  desc_jp: Reduce damage from all sources by 75% for 5 turns + Change Heal to Fire,
+    Deal 200% damage
   max_atk_pct: null
   name_en: Hard Coating + Piercing Burn
   name_jp: Hard Coating + Piercing Burn
@@ -193,7 +195,7 @@ records:
 # 	Condition: 80% chance (ai:80 rnd:0)
 # Lock all Fire orbs
 # [10] ESAttackMultihit(15:5731) -> Plasma Lance
-# Multi-hit attack
+# Enemy action
 # [11] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 14
 # [12] ESFlagOperation(22:12) -> ESFlagOperation
@@ -201,4 +203,4 @@ records:
 # [13] ESRecoverEnemy(86:5732) -> Auto Repair
 # Enemy recover 30% hp
 # [14] ESAttackMultihit(15:5733) -> Megido Cannon
-# Multi-hit attack
+# Enemy action

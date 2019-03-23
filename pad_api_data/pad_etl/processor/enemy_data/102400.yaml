@@ -8,7 +8,7 @@ monster_name_en: Alt. Awoken Heimdallr
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 2 unused actions
+- Found 1 unused actions
 
 ############################################################
 ### Data @ 1
@@ -108,8 +108,8 @@ records:
   record_type_name: ACTION
   usage_pct: 30
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 110% damage
-  desc_jp: Multi-hit attack, Deal 110% damage
+  desc_en: Deal 110% damage
+  desc_jp: Deal 110% damage
   max_atk_pct: 110
   name_en: Horn Axe
   name_jp: Horn Axe
@@ -153,8 +153,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 480% damage (4 hits, 120% each)
-  desc_jp: Multi-hit attack, Deal 480% damage (4 hits, 120% each)
+  desc_en: Deal 480% damage (4 hits, 120% each)
+  desc_jp: Deal 480% damage (4 hits, 120% each)
   max_atk_pct: 480
   name_en: Holy
   name_jp: Holy
@@ -167,9 +167,6 @@ records:
 ############################################################
 # ESBindAttribute(2:3455) -> I'll stop you
 # Bind Dark cards for 1 turns
-# ESAttackMultihit(15:3449) -> Holy
-# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
-# Enemy action
 ############################################################
 ### ES Modifiers
 ############################################################
@@ -206,7 +203,7 @@ records:
 # Delay active skills by 1 turns
 # [11] ESAttackMultihit(15:3450) -> Horn Axe
 # 	Condition: 70% chance (ai:0 rnd:70)
-# Multi-hit attack
+# Enemy action
 # [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [13] ESBranchFlag(43:10) -> ESBranchFlag
@@ -236,7 +233,7 @@ records:
 # Reduce damage from all sources by 50% for 2 turns
 # [25] ESAttackMultihit(15:3449) -> Holy
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
-# Multi-hit attack
+# Enemy action
 # [26] ESColumnSpawnMulti(77:3453) -> Slam
 # Change 3rd column to Light orbs
 # [27] ESEndPath(36:26) -> ESEndPath

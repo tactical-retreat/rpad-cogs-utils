@@ -90,8 +90,8 @@ records:
   record_type_name: ACTION
   usage_pct: 40
 - !SkillRecord
-  desc_en: Single hit attack, Deal 100% damage
-  desc_jp: Single hit attack, Deal 100% damage
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
   max_atk_pct: 100
   name_en: Disable Skill
   name_jp: Disable Skill
@@ -108,8 +108,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 300% damage
-  desc_jp: Multi-hit attack, Deal 300% damage
+  desc_en: Deal 300% damage
+  desc_jp: Deal 300% damage
   max_atk_pct: 300
   name_en: Calm and Calculated Finishing Strike
   name_jp: Calm and Calculated Finishing Strike
@@ -174,7 +174,7 @@ records:
 # Blind all orbs on the board
 # [15] ESAttackSinglehit(82:1) -> Disable Skill
 # 	Condition: 20% chance (ai:0 rnd:20)
-# Single hit attack
+# Enemy action
 # [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [17] ESBranchFlag(43:10) -> ESBranchFlag
@@ -182,7 +182,7 @@ records:
 # [18] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [19] ESAttackMultihit(15:3310) -> Heavy Middle Kick
-# Multi-hit attack
+# Enemy action
 # [20] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 10
 # [21] ESFlagOperation(22:12) -> ESFlagOperation
@@ -206,4 +206,4 @@ records:
 # [30] ESBindRandom(1:3308) -> Binding
 # Bind 6 random cards for 2 turns
 # [31] ESAttackMultihit(15:3317) -> Calm and Calculated Finishing Strike
-# Multi-hit attack
+# Enemy action

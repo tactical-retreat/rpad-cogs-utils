@@ -57,8 +57,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack + Multi-hit attack
-  desc_jp: Multi-hit attack + Multi-hit attack
+  desc_en: Deal 80% damage + Deal 105% damage (3 hits, 35% each)
+  desc_jp: Deal 80% damage + Deal 105% damage (3 hits, 35% each)
   max_atk_pct: null
   name_en: Rankyaku + Yosokyaku
   name_jp: Rankyaku + Yosokyaku
@@ -66,8 +66,10 @@ records:
   record_type_name: ACTION
   usage_pct: 33
 - !SkillRecord
-  desc_en: Multi-hit attack + Single hit attack + Change Random to Water
-  desc_jp: Multi-hit attack + Single hit attack + Change Random to Water
+  desc_en: Deal 60% damage (4 hits, 15% each) + Deal 100% damage + Change Random to
+    Water, Deal 40% damage
+  desc_jp: Deal 60% damage (4 hits, 15% each) + Deal 100% damage + Change Random to
+    Water, Deal 40% damage
   max_atk_pct: null
   name_en: Hyakuretsukyaku + Disable Skill + Spinning Bird Kick
   name_jp: Hyakuretsukyaku + Disable Skill + Spinning Bird Kick
@@ -75,8 +77,10 @@ records:
   record_type_name: ACTION
   usage_pct: 33
 - !SkillRecord
-  desc_en: Change 3rd row to Water orbs + Single hit attack + Change Random to Water
-  desc_jp: Change 3rd row to Water orbs + Single hit attack + Change Random to Water
+  desc_en: Change 3rd row to Water orbs, Deal 40% damage + Deal 100% damage + Change
+    Random to Water, Deal 40% damage
+  desc_jp: Change 3rd row to Water orbs, Deal 40% damage + Deal 100% damage + Change
+    Random to Water, Deal 40% damage
   max_atk_pct: null
   name_en: Kikoken + Disable Skill + Spinning Bird Kick
   name_jp: Kikoken + Disable Skill + Spinning Bird Kick
@@ -126,15 +130,15 @@ records:
 # [4] SkillSet:
 # 	Condition: 33% chance (ai:0 rnd:33)
 # 	[0] ESAttackMultihit(15:12562) -> Rankyaku
-# 	Multi-hit attack
+# 	Enemy action
 # 	[1] ESAttackMultihit(15:12563) -> Yosokyaku
-# 	Multi-hit attack
+# 	Enemy action
 # [5] SkillSet:
 # 	Condition: 33% chance (ai:0 rnd:33)
 # 	[0] ESAttackMultihit(15:12565) -> Hyakuretsukyaku
-# 	Multi-hit attack
+# 	Enemy action
 # 	[1] ESAttackSinglehit(82:1) -> Disable Skill
-# 	Single hit attack
+# 	Enemy action
 # 	[2] ESOrbChangeAttack(48:12566) -> Spinning Bird Kick
 # 	Change Random to Water
 # [6] SkillSet:
@@ -142,7 +146,7 @@ records:
 # 	[0] ESRowSpawnMulti(79:12568) -> Kikoken
 # 	Change 3rd row to Water orbs
 # 	[1] ESAttackSinglehit(82:1) -> Disable Skill
-# 	Single hit attack
+# 	Enemy action
 # 	[2] ESOrbChangeAttack(48:12569) -> Spinning Bird Kick
 # 	Change Random to Water
 # [7] ESEndPath(36:26) -> ESEndPath

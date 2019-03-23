@@ -49,8 +49,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
+  name_en: Turn 1
+  name_jp: Turn 1
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -75,8 +75,8 @@ records:
   record_type_name: ACTION
   usage_pct: 50
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 300% damage
-  desc_jp: Multi-hit attack, Deal 300% damage
+  desc_en: Deal 300% damage
+  desc_jp: Deal 300% damage
   max_atk_pct: 300
   name_en: Strike
   name_jp: Strike
@@ -131,8 +131,8 @@ records:
   record_type_name: ACTION
   usage_pct: 50
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 300% damage
-  desc_jp: Multi-hit attack, Deal 300% damage
+  desc_en: Deal 300% damage
+  desc_jp: Deal 300% damage
   max_atk_pct: 300
   name_en: Strike
   name_jp: Strike
@@ -149,8 +149,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Bind awoken skills for 1 turns + Multi-hit attack
-  desc_jp: Bind awoken skills for 1 turns + Multi-hit attack
+  desc_en: Bind awoken skills for 1 turns + Deal 7000% damage (7 hits, 1000% each)
+  desc_jp: Bind awoken skills for 1 turns + Deal 7000% damage (7 hits, 1000% each)
   max_atk_pct: null
   name_en: You gonna keep dancing? + Fall here!
   name_jp: You gonna keep dancing? + Fall here!
@@ -167,8 +167,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 5000% damage (5 hits, 1000% each)
-  desc_jp: Multi-hit attack, Deal 5000% damage (5 hits, 1000% each)
+  desc_en: Deal 5000% damage (5 hits, 1000% each)
+  desc_jp: Deal 5000% damage (5 hits, 1000% each)
   max_atk_pct: 5000
   name_en: Wildflower Bonebreaker
   name_jp: Wildflower Bonebreaker
@@ -204,7 +204,7 @@ records:
 # end_turn
 # [6] ESAttackMultihit(15:8046) -> Wildflower Bonebreaker
 # 	Condition: When < 5% hp (ai:100 rnd:0)
-# Multi-hit attack
+# Enemy action
 # [7] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
 # [8] ESAttackUpStatus(18:8042) -> Crafty
@@ -219,7 +219,7 @@ records:
 # 	Condition: 50% chance (ai:50 rnd:0)
 # Lock 6 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [12] ESAttackMultihit(15:8045) -> Strike
-# Multi-hit attack
+# Enemy action
 # [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [14] SkillSet:
@@ -237,7 +237,7 @@ records:
 # 	Condition: 50% chance (ai:50 rnd:0)
 # Lock 6 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [18] ESAttackMultihit(15:8045) -> Strike
-# Multi-hit attack
+# Enemy action
 # [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [20] ESBranchFlag(43:10) -> ESBranchFlag
@@ -248,6 +248,6 @@ records:
 # 	[0] ESBindAwoken(88:8047) -> You gonna keep dancing?
 # 	Bind awoken skills for 1 turns
 # 	[1] ESAttackMultihit(15:8048) -> Fall here!
-# 	Multi-hit attack
+# 	Enemy action
 # [23] ESEndPath(36:26) -> ESEndPath
 # end_turn

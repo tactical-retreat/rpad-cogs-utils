@@ -7,8 +7,7 @@ monster_id: 2823
 monster_name_en: Aloof Delinquent, Dark Dragon Swordsman
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 4
@@ -27,8 +26,8 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 10% damage (Preemptive)
-  desc_jp: Multi-hit attack, Deal 10% damage (Preemptive)
+  desc_en: Deal 10% damage (Preemptive)
+  desc_jp: Deal 10% damage (Preemptive)
   max_atk_pct: 10
   name_en: Let's do this
   name_jp: Let's do this
@@ -63,8 +62,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 100% damage (2 hits, 50% each)
-  desc_jp: Multi-hit attack, Deal 100% damage (2 hits, 50% each)
+  desc_en: Deal 100% damage (2 hits, 50% each)
+  desc_jp: Deal 100% damage (2 hits, 50% each)
   max_atk_pct: 100
   name_en: You wanna fight?
   name_jp: You wanna fight?
@@ -81,8 +80,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 200% damage (2 hits, 100% each)
-  desc_jp: Multi-hit attack, Deal 200% damage (2 hits, 100% each)
+  desc_en: Deal 200% damage (2 hits, 100% each)
+  desc_jp: Deal 200% damage (2 hits, 100% each)
   max_atk_pct: 200
   name_en: Decisive Lead
   name_jp: Decisive Lead
@@ -108,8 +107,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 100% damage
-  desc_jp: Multi-hit attack, Deal 100% damage
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
   max_atk_pct: 100
   name_en: Hmm?
   name_jp: Hmm?
@@ -117,12 +116,6 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
-############################################################
-### Unused Actions
-############################################################
-# ESGravity(50:2023) -> Revenge Attack
-# 	Condition: When < 30% hp (ai:100 rnd:0)
-# Player -99% HP
 ############################################################
 ### ES Modifiers
 ############################################################
@@ -149,19 +142,19 @@ records:
 # [6] ESDispel(6:2019) -> Let's do this
 # Voids player buff effects
 # [7] ESAttackMultihit(15:2020) -> Let's do this
-# Multi-hit attack
+# Enemy action
 # [8] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [9] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 14
 # [10] ESAttackMultihit(15:2024) -> Decisive Lead
 # 	Condition: When < 20% hp (ai:100 rnd:0)
-# Multi-hit attack
+# Enemy action
 # [11] ESAttackMultihit(15:2021) -> Hmm?
 # 	Condition: When < 80% hp , one-time use (ai:100 rnd:0) (one-time: 1)
-# Multi-hit attack
+# Enemy action
 # [12] ESAttackMultihit(15:2022) -> You wanna fight?
-# Multi-hit attack
+# Enemy action
 # [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [14] ESBranchFlag(43:10) -> ESBranchFlag

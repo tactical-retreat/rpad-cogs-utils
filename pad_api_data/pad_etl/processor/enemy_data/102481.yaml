@@ -8,7 +8,7 @@ monster_name_en: Alt. Final Form, Tendo Jigoku
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 1 unused actions
+- Found 2 unused actions
 
 ############################################################
 ### Data @ 4
@@ -72,8 +72,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 100% damage
-  desc_jp: Multi-hit attack, Deal 100% damage
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
   max_atk_pct: 100
   name_en: Absorbing Form Bite
   name_jp: Absorbing Form Bite
@@ -81,8 +81,8 @@ records:
   record_type_name: ACTION
   usage_pct: 70
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 120% damage
-  desc_jp: Multi-hit attack, Deal 120% damage
+  desc_en: Deal 120% damage
+  desc_jp: Deal 120% damage
   max_atk_pct: 120
   name_en: Strong Blow
   name_jp: Strong Blow
@@ -93,6 +93,9 @@ records:
 ############################################################
 ### Unused Actions
 ############################################################
+# ESRandomSpawn(92:3489) -> Flame Arrow
+# 	Condition: When < 20% hp & when Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:100 rnd:0)
+# Spawn random 8 Fire orbs
 # ESAbsorbAttribute(53:3491) -> Shall I devour your 8 dragons as well?
 # Absorb Fire damage for 3 turns
 ############################################################
@@ -132,10 +135,10 @@ records:
 # Spawn random 8 Fire orbs
 # [11] ESAttackMultihit(15:3485) -> Absorbing Form Bite
 # 	Condition: 70% chance (ai:70 rnd:0)
-# Multi-hit attack
+# Enemy action
 # [12] ESAttackMultihit(15:3488) -> Strong Blow
 # 	Condition: 70% chance (ai:70 rnd:0)
-# Multi-hit attack
+# Enemy action
 # [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [14] ESBranchFlag(43:10) -> ESBranchFlag

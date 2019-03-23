@@ -8,7 +8,7 @@ monster_name_en: Awoken Machine Athena
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 1 unused actions
+- Found 2 unused actions
 
 ############################################################
 ### Data @ 1
@@ -56,8 +56,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 1200% damage (6 hits, 200% each)
-  desc_jp: Multi-hit attack, Deal 1200% damage (6 hits, 200% each)
+  desc_en: Deal 1200% damage (6 hits, 200% each)
+  desc_jp: Deal 1200% damage (6 hits, 200% each)
   max_atk_pct: 1200
   name_en: Storm Punisher FPE
   name_jp: Storm Punisher FPE
@@ -101,8 +101,10 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Blind orbs in specific positions for 3 turns + Bind 1 random for 3 turns
-  desc_jp: Blind orbs in specific positions for 3 turns + Bind 1 random for 3 turns
+  desc_en: Blind orbs in specific positions for 3 turns + Bind 1 random for 3 turns,
+    Deal 420% damage
+  desc_jp: Blind orbs in specific positions for 3 turns + Bind 1 random for 3 turns,
+    Deal 420% damage
   max_atk_pct: null
   name_en: Color Delete + CFM-Pulse
   name_jp: Color Delete + CFM-Pulse
@@ -143,6 +145,8 @@ records:
 # ESGravity(50:5151) -> LB-Siculus Strike
 # 	Condition: One-time use (ai:40 rnd:0) (one-time: 3)
 # Player -150% HP
+# ESAttackMultihit(15:5155) -> Starburst SSE
+# Enemy action
 ############################################################
 ### ES Modifiers
 ############################################################
@@ -201,7 +205,7 @@ records:
 # [16] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [17] ESAttackMultihit(15:5154) -> Storm Punisher FPE
-# Multi-hit attack
+# Enemy action
 # [18] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 21
 # [19] ESFlagOperation(22:12) -> ESFlagOperation
@@ -209,4 +213,4 @@ records:
 # [20] ESRecoverEnemy(86:5156) -> AS-Overhaul
 # Enemy recover 50% hp
 # [21] ESAttackMultihit(15:5155) -> Starburst SSE
-# Multi-hit attack
+# Enemy action

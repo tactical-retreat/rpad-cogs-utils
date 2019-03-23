@@ -83,8 +83,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 180% damage
-  desc_jp: Multi-hit attack, Deal 180% damage
+  desc_en: Deal 180% damage
+  desc_jp: Deal 180% damage
   max_atk_pct: 180
   name_en: Rake
   name_jp: Rake
@@ -110,8 +110,8 @@ records:
   record_type_name: ACTION
   usage_pct: 15
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 200% damage (2 hits, 100% each)
-  desc_jp: Multi-hit attack, Deal 200% damage (2 hits, 100% each)
+  desc_en: Deal 200% damage (2 hits, 100% each)
+  desc_jp: Deal 200% damage (2 hits, 100% each)
   max_atk_pct: 200
   name_en: Combo Attack
   name_jp: Combo Attack
@@ -119,8 +119,8 @@ records:
   record_type_name: ACTION
   usage_pct: 20
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 300% damage (3 hits, 100% each)
-  desc_jp: Multi-hit attack, Deal 300% damage (3 hits, 100% each)
+  desc_en: Deal 300% damage (3 hits, 100% each)
+  desc_jp: Deal 300% damage (3 hits, 100% each)
   max_atk_pct: 300
   name_en: Combo Attack
   name_jp: Combo Attack
@@ -128,8 +128,8 @@ records:
   record_type_name: ACTION
   usage_pct: 20
 - !SkillRecord
-  desc_en: Single hit attack, Deal 100% damage
-  desc_jp: Single hit attack, Deal 100% damage
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
   max_atk_pct: 100
   name_en: Disable Skill
   name_jp: Disable Skill
@@ -164,8 +164,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 700% damage
-  desc_jp: Multi-hit attack, Deal 700% damage
+  desc_en: Deal 700% damage
+  desc_jp: Deal 700% damage
   max_atk_pct: 700
   name_en: Death Strike
   name_jp: Death Strike
@@ -173,8 +173,8 @@ records:
   record_type_name: ACTION
   usage_pct: 10
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 350%~450% damage (7~9 hits, 50% each)
-  desc_jp: Multi-hit attack, Deal 350%~450% damage (7~9 hits, 50% each)
+  desc_en: Deal 350%~450% damage (7~9 hits, 50% each)
+  desc_jp: Deal 350%~450% damage (7~9 hits, 50% each)
   max_atk_pct: 450
   name_en: Combo Attack
   name_jp: Combo Attack
@@ -191,8 +191,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 240% damage
-  desc_jp: Multi-hit attack, Deal 240% damage
+  desc_en: Deal 240% damage
+  desc_jp: Deal 240% damage
   max_atk_pct: 240
   name_en: Cyclone
   name_jp: Cyclone
@@ -250,7 +250,7 @@ records:
 # counter + 1
 # [11] ESAttackMultihit(15:7722) -> Rake
 # 	Condition: 20% chance (ai:0 rnd:20)
-# Multi-hit attack
+# Enemy action
 # [12] ESBindAwoken(88:7723) -> White Breath
 # 	Condition: 15% chance (ai:0 rnd:15)
 # Bind awoken skills for 1 turns
@@ -259,13 +259,13 @@ records:
 # Bind 1 random for 3~5 turns
 # [14] ESAttackMultihit(15:7725) -> Combo Attack
 # 	Condition: 20% chance (ai:0 rnd:20)
-# Multi-hit attack
+# Enemy action
 # [15] ESAttackMultihit(15:7726) -> Combo Attack
 # 	Condition: 20% chance (ai:0 rnd:20)
-# Multi-hit attack
+# Enemy action
 # [16] ESAttackSinglehit(82:1) -> Disable Skill
 # 	Condition: 10% chance (ai:0 rnd:10)
-# Single hit attack
+# Enemy action
 # [17] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [18] ESBranchCounter(32:22) -> ESBranchCounter
@@ -275,27 +275,27 @@ records:
 # [20] ESSkyfall(68:7727) -> Cyclone
 # Poison skyfall +5% for 99 turns
 # [21] ESAttackMultihit(15:7728) -> Cyclone
-# Multi-hit attack
+# Enemy action
 # [22] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 7, target rnd 26
 # [23] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
 # [24] ESAttackMultihit(15:7729) -> Death Strike
 # 	Condition: 10% chance (ai:10 rnd:0)
-# Multi-hit attack
+# Enemy action
 # [25] ESAttackMultihit(15:7730) -> Combo Attack
-# Multi-hit attack
+# Enemy action
 # [26] ESSetCounter(25:15) -> ESSetCounter
 # counter = 0
 # [27] ESAttackMultihit(15:7728) -> Cyclone
-# Multi-hit attack
+# Enemy action
 # [28] ESSkyfall(68:7727) -> Cyclone
 # Poison skyfall +5% for 99 turns
 # [29] ESAttackMultihit(15:7731) -> Cyclone
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
-# Multi-hit attack
+# Enemy action
 # [30] ESAttackMultihit(15:7729) -> Death Strike
 # 	Condition: 20% chance (ai:20 rnd:0)
-# Multi-hit attack
+# Enemy action
 # [31] ESAttackMultihit(15:7732) -> Combo Attack
-# Multi-hit attack
+# Enemy action

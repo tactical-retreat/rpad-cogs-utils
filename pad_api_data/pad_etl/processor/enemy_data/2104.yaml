@@ -46,8 +46,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Voids status ailments for 999 turns + Multi-hit attack
-  desc_jp: Voids status ailments for 999 turns + Multi-hit attack
+  desc_en: Voids status ailments for 999 turns + Deal 100% damage (5 hits, 20% each)
+  desc_jp: Voids status ailments for 999 turns + Deal 100% damage (5 hits, 20% each)
   max_atk_pct: null
   name_en: Barrier + Ambush
   name_jp: Barrier + Ambush
@@ -64,8 +64,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 78%~130% damage (3~5 hits, 26% each)
-  desc_jp: Multi-hit attack, Deal 78%~130% damage (3~5 hits, 26% each)
+  desc_en: Deal 78%~130% damage (3~5 hits, 26% each)
+  desc_jp: Deal 78%~130% damage (3~5 hits, 26% each)
   max_atk_pct: 130
   name_en: Sword Dance
   name_jp: Sword Dance
@@ -100,8 +100,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 300% damage (6 hits, 50% each)
-  desc_jp: Multi-hit attack, Deal 300% damage (6 hits, 50% each)
+  desc_en: Deal 300% damage (6 hits, 50% each)
+  desc_jp: Deal 300% damage (6 hits, 50% each)
   max_atk_pct: 300
   name_en: Celestial Dance
   name_jp: Celestial Dance
@@ -127,10 +127,10 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change 1st row to Fire orbs, 5th row to Fire orbs + Change 1st column to
-    Fire orbs, 6th column to Fire orbs
-  desc_jp: Change 1st row to Fire orbs, 5th row to Fire orbs + Change 1st column to
-    Fire orbs, 6th column to Fire orbs
+  desc_en: Change 1st row to Fire orbs, 5th row to Fire orbs, Deal 60% damage + Change
+    1st column to Fire orbs, 6th column to Fire orbs, Deal 60% damage
+  desc_jp: Change 1st row to Fire orbs, 5th row to Fire orbs, Deal 60% damage + Change
+    1st column to Fire orbs, 6th column to Fire orbs, Deal 60% damage
   max_atk_pct: null
   name_en: Besieged by Fire + Can you prevail?
   name_jp: Besieged by Fire + Can you prevail?
@@ -172,12 +172,12 @@ records:
 # 	[0] ESStatusShield(20:2271) -> Barrier
 # 	Voids status ailments for 999 turns
 # 	[1] ESAttackMultihit(15:2272) -> Ambush
-# 	Multi-hit attack
+# 	Enemy action
 # [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [10] ESAttackMultihit(15:2278) -> Celestial Dance
 # 	Condition: When < 20% hp (ai:100 rnd:0)
-# Multi-hit attack
+# Enemy action
 # [11] SkillSet:
 # 	Condition: When < 75% hp , one-time use (ai:100 rnd:0) (one-time: 2)
 # 	[0] ESRowSpawnMulti(79:2280) -> Besieged by Fire
@@ -186,7 +186,7 @@ records:
 # 	Change 1st column to Fire orbs, 6th column to Fire orbs
 # [12] ESAttackMultihit(15:2275) -> Sword Dance
 # 	Condition: 60% chance (ai:0 rnd:60)
-# Multi-hit attack
+# Enemy action
 # [13] ESRandomSpawn(92:2296) -> Falling Rock Trap
 # 	Condition: 20% chance & when Fire, Water, Wood, Light, Dark, Heal, Poison, Mortal Poison orbs are on the board (ai:0 rnd:20)
 # Spawn random 5 Jammer orbs

@@ -62,8 +62,10 @@ records:
   record_type_name: PASSIVE
   usage_pct: 100
 - !SkillRecord
-  desc_en: Movetime -4s for 5 turns + Change all orbs to Water, Dark, Heal (Preemptive)
-  desc_jp: Movetime -4s for 5 turns + Change all orbs to Water, Dark, Heal (Preemptive)
+  desc_en: Movetime -4s for 5 turns + Change all orbs to Water, Dark, Heal, Deal 130%
+    damage (Preemptive)
+  desc_jp: Movetime -4s for 5 turns + Change all orbs to Water, Dark, Heal, Deal 130%
+    damage (Preemptive)
   max_atk_pct: null
   name_en: Let's confirm your wishes + Abyss Dark Ring
   name_jp: Let's confirm your wishes + Abyss Dark Ring
@@ -98,8 +100,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Absorb Water damage for 1 turns + Change Heal to Poison
-  desc_jp: Absorb Water damage for 1 turns + Change Heal to Poison
+  desc_en: Absorb Water damage for 1 turns + Change Heal to Poison, Deal 50% damage
+  desc_jp: Absorb Water damage for 1 turns + Change Heal to Poison, Deal 50% damage
   max_atk_pct: null
   name_en: Abyssal Shark Dragon's Trial + Chopping Ring of the Deep Sea
   name_jp: Abyssal Shark Dragon's Trial + Chopping Ring of the Deep Sea
@@ -143,8 +145,8 @@ records:
   record_type_name: ACTION
   usage_pct: 40
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 120% damage (4 hits, 30% each)
-  desc_jp: Multi-hit attack, Deal 120% damage (4 hits, 30% each)
+  desc_en: Deal 120% damage (4 hits, 30% each)
+  desc_jp: Deal 120% damage (4 hits, 30% each)
   max_atk_pct: 120
   name_en: Abyss Hole
   name_jp: Abyss Hole
@@ -170,8 +172,10 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack + Change all orbs to Water, Dark, Heal
-  desc_jp: Multi-hit attack + Change all orbs to Water, Dark, Heal
+  desc_en: Deal 120% damage (4 hits, 30% each) + Change all orbs to Water, Dark, Heal,
+    Deal 130% damage
+  desc_jp: Deal 120% damage (4 hits, 30% each) + Change all orbs to Water, Dark, Heal,
+    Deal 130% damage
   max_atk_pct: null
   name_en: Abyss Hole + Abyss Dark Ring
   name_jp: Abyss Hole + Abyss Dark Ring
@@ -223,7 +227,7 @@ records:
 # [9] SkillSet:
 # 	Condition: When < 20% hp (ai:100 rnd:0)
 # 	[0] ESAttackMultihit(15:4232) -> Abyss Hole
-# 	Multi-hit attack
+# 	Enemy action
 # 	[1] ESBoardChangeAttackBits(85:4225) -> Abyss Dark Ring
 # 	Change all orbs to Water, Dark, Heal
 # [10] ESBranchHP(28:18) -> ESBranchHP
@@ -243,7 +247,7 @@ records:
 # Change 1st column to Dark orbs, 2nd column to Water orbs
 # [17] ESAttackMultihit(15:4232) -> Abyss Hole
 # 	Condition: 50% chance (ai:50 rnd:0)
-# Multi-hit attack
+# Enemy action
 # [18] ESRandomSpawn(92:4231) -> Abyss' Guidance
 # 	Condition: When fire, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 8 Water orbs

@@ -7,8 +7,7 @@ monster_id: 3459
 monster_name_en: Demonic Gentleman of Heresy, Azazel
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -54,8 +53,10 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Absorb damage >= 15000000 damage for 999 turns + Multi-hit attack
-  desc_jp: Absorb damage >= 15000000 damage for 999 turns + Multi-hit attack
+  desc_en: Absorb damage >= 15000000 damage for 999 turns + Deal 140% damage (7 hits,
+    20% each)
+  desc_jp: Absorb damage >= 15000000 damage for 999 turns + Deal 140% damage (7 hits,
+    20% each)
   max_atk_pct: null
   name_en: Eye of Reality + Lethal Chain
   name_jp: Eye of Reality + Lethal Chain
@@ -72,8 +73,10 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Enemy recover 100% hp + Reduce damage from all sources by 50% for 99 turns
-  desc_jp: Enemy recover 100% hp + Reduce damage from all sources by 50% for 99 turns
+  desc_en: Enemy recover 100% hp + Reduce damage from all sources by 50% for 99 turns,
+    Deal 200% damage
+  desc_jp: Enemy recover 100% hp + Reduce damage from all sources by 50% for 99 turns,
+    Deal 200% damage
   max_atk_pct: null
   name_en: Sacred Goat Blood + God's Echo
   name_jp: Sacred Goat Blood + God's Echo
@@ -90,8 +93,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Delay active skills by 7 turns + Multi-hit attack
-  desc_jp: Delay active skills by 7 turns + Multi-hit attack
+  desc_en: Delay active skills by 7 turns + Deal 150% damage (5 hits, 30% each)
+  desc_jp: Delay active skills by 7 turns + Deal 150% damage (5 hits, 30% each)
   max_atk_pct: null
   name_en: Heavenly Eye of Reality + Lethal Chain
   name_jp: Heavenly Eye of Reality + Lethal Chain
@@ -108,8 +111,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 1000% damage (10 hits, 100% each)
-  desc_jp: Multi-hit attack, Deal 1000% damage (10 hits, 100% each)
+  desc_en: Deal 1000% damage (10 hits, 100% each)
+  desc_jp: Deal 1000% damage (10 hits, 100% each)
   max_atk_pct: 1000
   name_en: Sanction Spiral
   name_jp: Sanction Spiral
@@ -176,14 +179,6 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# SkillSet:
-# 	[0] ESSkillDelay(89:7631) -> Heavenly Eye of Reality
-# 	Delay active skills by 7 turns
-# 	[1] ESAttackMultihit(15:7632) -> Lethal Chain
-# 	Enemy action
-############################################################
 ### ES Modifiers
 ############################################################
 # [9] 5 -      101
@@ -217,7 +212,7 @@ records:
 # 	Reduce damage from all sources by 50% for 99 turns
 # [7] ESAttackMultihit(15:7637) -> Sanction Spiral
 # 	Condition: When < 15% hp (ai:100 rnd:0)
-# Multi-hit attack
+# Enemy action
 # [8] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 13
 # [9] ESFlagOperation(22:12) -> ESFlagOperation
@@ -227,12 +222,12 @@ records:
 # 	[0] ESAbsorbThreshold(87:7628) -> Eye of Reality
 # 	Absorb damage >= 15000000 damage for 999 turns
 # 	[1] ESAttackMultihit(15:7629) -> Lethal Chain
-# 	Multi-hit attack
+# 	Enemy action
 # [11] SkillSet:
 # 	[0] ESSkillDelay(89:7631) -> Heavenly Eye of Reality
 # 	Delay active skills by 7 turns
 # 	[1] ESAttackMultihit(15:7632) -> Lethal Chain
-# 	Multi-hit attack
+# 	Enemy action
 # [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [13] ESBranchFlag(43:10) -> ESBranchFlag

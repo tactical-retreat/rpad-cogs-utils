@@ -8,7 +8,7 @@ monster_name_en: Pixel Rinoa
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 1 unused actions
+- Found 2 unused actions
 
 ############################################################
 ### Data @ 4
@@ -18,8 +18,10 @@ level: 4
 overrides: []
 records:
 - !SkillRecord
-  desc_en: Lock all Light, Heal orbs + Change all orbs to Jammer (Preemptive)
-  desc_jp: Lock all Light, Heal orbs + Change all orbs to Jammer (Preemptive)
+  desc_en: Lock all Light, Heal orbs + Change all orbs to Jammer, Deal 100% damage
+    (Preemptive)
+  desc_jp: Lock all Light, Heal orbs + Change all orbs to Jammer, Deal 100% damage
+    (Preemptive)
   max_atk_pct: null
   name_en: Radiant Blond Hair + Light Pulse
   name_jp: Radiant Blond Hair + Light Pulse
@@ -207,6 +209,9 @@ records:
 # 	Reduce damage from all sources by 35% for 10 turns
 # 	[1] ESStatusShield(20:7651) -> Songstress's Divine Protection
 # 	Voids status ailments for 10 turns
+# ESAttackUPRemainingEnemies(17:7655) -> Resentful Stare
+# 	Condition: One-time use, when <= 1 enemies remain (ai:100 rnd:0) (one-time: 3)
+# Increase damage to 150% for the next 999 turns
 ############################################################
 ### ES Modifiers
 ############################################################

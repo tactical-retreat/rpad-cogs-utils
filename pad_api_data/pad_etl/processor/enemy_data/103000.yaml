@@ -8,7 +8,7 @@ monster_name_en: Alt. Scarlet Sky Ruler, Yamato Takeru Dragon
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 2 unused actions
+- Found 3 unused actions
 
 ############################################################
 ### Data @ 1
@@ -44,8 +44,8 @@ records:
   record_type_name: PASSIVE
   usage_pct: 100
 - !SkillRecord
-  desc_en: Delay active skills by 2 turns + Multi-hit attack (Preemptive)
-  desc_jp: Delay active skills by 2 turns + Multi-hit attack (Preemptive)
+  desc_en: Delay active skills by 2 turns + Deal 160% damage (Preemptive)
+  desc_jp: Delay active skills by 2 turns + Deal 160% damage (Preemptive)
   max_atk_pct: null
   name_en: Don't come any closer!! + Dimension-Celestial Thorn of Chaos
   name_jp: Don't come any closer!! + Dimension-Celestial Thorn of Chaos
@@ -209,9 +209,9 @@ records:
   usage_pct: 100
 - !SkillRecord
   desc_en: Voids status ailments for 999 turns + Reduce damage from all sources by
-    50% for 7 turns + Multi-hit attack
+    50% for 7 turns + Deal 160% damage
   desc_jp: Voids status ailments for 999 turns + Reduce damage from all sources by
-    50% for 7 turns + Multi-hit attack
+    50% for 7 turns + Deal 160% damage
   max_atk_pct: null
   name_en: Yamato Dragon's Protection + Scarlet Sky Barrier + Dimension-Celestial
     Thorn of Chaos
@@ -254,6 +254,8 @@ records:
 # 	Reduce damage from all sources by 50% for 7 turns
 # 	[2] ESAttackMultihit(15:4851) -> Dimension-Celestial Thorn of Chaos
 # 	Enemy action
+# ESAttackMultihit(15:4851) -> Dimension-Celestial Thorn of Chaos
+# Enemy action
 ############################################################
 ### ES Modifiers
 ############################################################
@@ -281,7 +283,7 @@ records:
 # 	[0] ESSkillDelay(89:4850) -> Don't come any closer!!
 # 	Delay active skills by 2 turns
 # 	[1] ESAttackMultihit(15:4851) -> Dimension-Celestial Thorn of Chaos
-# 	Multi-hit attack
+# 	Enemy action
 # [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [8] ESBranchFlag(43:10) -> ESBranchFlag
@@ -312,14 +314,14 @@ records:
 # 	[1] ESDamageShield(74:4867) -> Scarlet Sky Barrier
 # 	Reduce damage from all sources by 50% for 7 turns
 # 	[2] ESAttackMultihit(15:4851) -> Dimension-Celestial Thorn of Chaos
-# 	Multi-hit attack
+# 	Enemy action
 # [17] SkillSet:
 # 	[0] ESStatusShield(20:4866) -> I... don't want... to lose...
 # 	Voids status ailments for 999 turns
 # 	[1] ESDamageShield(74:4867) -> Scarlet Sky Barrier
 # 	Reduce damage from all sources by 50% for 7 turns
 # 	[2] ESAttackMultihit(15:4851) -> Dimension-Celestial Thorn of Chaos
-# 	Multi-hit attack
+# 	Enemy action
 # [18] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 22
 # [19] ESBranchHP(29:19) -> ESBranchHP
@@ -327,7 +329,7 @@ records:
 # [20] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [21] ESAttackMultihit(15:4851) -> Dimension-Celestial Thorn of Chaos
-# Multi-hit attack
+# Enemy action
 # [22] ESRandomSpawn(92:4857) -> Breath of the Scarlet Sun
 # 	Condition: One-time use & when Water, Wood, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:100 rnd:0) (one-time: 64)
 # Spawn random 3 Fire, Light orbs

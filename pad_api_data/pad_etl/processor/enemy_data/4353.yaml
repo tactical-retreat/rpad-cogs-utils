@@ -8,7 +8,7 @@ monster_name_en: Spirit Numen of Water, Zapan
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 2 unused actions
+- Found 1 unused actions
 
 ############################################################
 ### Data @ 1
@@ -93,12 +93,12 @@ records:
   max_atk_pct: 105
   name_en: Frozen Tentacle
   name_jp: Frozen Tentacle
-  one_time: true
+  one_time: false
   record_type_name: ACTION
   usage_pct: 25
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 120% damage (4 hits, 30% each)
-  desc_jp: Multi-hit attack, Deal 120% damage (4 hits, 30% each)
+  desc_en: Deal 120% damage (4 hits, 30% each)
+  desc_jp: Deal 120% damage (4 hits, 30% each)
   max_atk_pct: 120
   name_en: Frost Hurricane
   name_jp: Frost Hurricane
@@ -153,8 +153,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Water skyfall +25% for 1 turns + Multi-hit attack
-  desc_jp: Water skyfall +25% for 1 turns + Multi-hit attack
+  desc_en: Water skyfall +25% for 1 turns + Deal 125% damage (5 hits, 25% each)
+  desc_jp: Water skyfall +25% for 1 turns + Deal 125% damage (5 hits, 25% each)
   max_atk_pct: null
   name_en: Heavy Rain + Tidal Wave
   name_jp: Heavy Rain + Tidal Wave
@@ -162,8 +162,8 @@ records:
   record_type_name: ACTION
   usage_pct: 50
 - !SkillRecord
-  desc_en: Absorb Water damage for 1 turns + Multi-hit attack
-  desc_jp: Absorb Water damage for 1 turns + Multi-hit attack
+  desc_en: Absorb Water damage for 1 turns + Deal 125% damage (5 hits, 25% each)
+  desc_jp: Absorb Water damage for 1 turns + Deal 125% damage (5 hits, 25% each)
   max_atk_pct: null
   name_en: Misery Water + Tidal Wave
   name_jp: Misery Water + Tidal Wave
@@ -198,8 +198,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 2400% damage (6 hits, 400% each)
-  desc_jp: Multi-hit attack, Deal 2400% damage (6 hits, 400% each)
+  desc_en: Deal 2400% damage (6 hits, 400% each)
+  desc_jp: Deal 2400% damage (6 hits, 400% each)
   max_atk_pct: 2400
   name_en: Neo Tidal Wave
   name_jp: Neo Tidal Wave
@@ -279,8 +279,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Absorb Water damage for 1 turns + Multi-hit attack
-  desc_jp: Absorb Water damage for 1 turns + Multi-hit attack
+  desc_en: Absorb Water damage for 1 turns + Deal 125% damage (5 hits, 25% each)
+  desc_jp: Absorb Water damage for 1 turns + Deal 125% damage (5 hits, 25% each)
   max_atk_pct: null
   name_en: Misery Water + Tidal Wave
   name_jp: Misery Water + Tidal Wave
@@ -296,11 +296,6 @@ records:
 # 	Movetime 50% for 1 turns
 # 	[1] ESAttackMultihit(15:9730) -> Tidal Wave
 # 	Enemy action
-# SkillSet:
-# 	[0] ESBindAwoken(88:9734) -> Ocean Ripple
-# 	Bind awoken skills for 3 turns
-# 	[1] ESBlindStickyRandom(97:9735) -> Depths of the Abyss
-# 	Blind all orbs for 3 turns
 ############################################################
 ### ES Modifiers
 ############################################################
@@ -352,7 +347,7 @@ records:
 # Bind 2 random cards for 1 turns
 # [14] ESAttackMultihit(15:9719) -> Frost Hurricane
 # 	Condition: 25% chance (ai:0 rnd:25)
-# Multi-hit attack
+# Enemy action
 # [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [16] ESSetCounter(25:15) -> ESSetCounter
@@ -394,18 +389,18 @@ records:
 # 	[0] ESSkyfall(68:9727) -> Heavy Rain
 # 	Water skyfall +25% for 1 turns
 # 	[1] ESAttackMultihit(15:9730) -> Tidal Wave
-# 	Multi-hit attack
+# 	Enemy action
 # [30] SkillSet:
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESAbsorbAttribute(53:9728) -> Misery Water
 # 	Absorb Water damage for 1 turns
 # 	[1] ESAttackMultihit(15:9730) -> Tidal Wave
-# 	Multi-hit attack
+# 	Enemy action
 # [31] SkillSet:
 # 	[0] ESDebuffMovetime(39:9729) -> Sand Disaster
 # 	Movetime 50% for 1 turns
 # 	[1] ESAttackMultihit(15:9730) -> Tidal Wave
-# 	Multi-hit attack
+# 	Enemy action
 # [32] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [33] ESSetCounter(25:15) -> ESSetCounter
@@ -422,7 +417,7 @@ records:
 # [37] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [38] ESAttackMultihit(15:9738) -> Neo Tidal Wave
-# Multi-hit attack
+# Enemy action
 # [39] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [40] ESStorePower(8:9737) -> Unleashing the Great Sea

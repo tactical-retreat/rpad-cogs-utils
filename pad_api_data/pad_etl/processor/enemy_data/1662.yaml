@@ -43,10 +43,10 @@ records:
   record_type_name: PASSIVE
   usage_pct: 100
 - !SkillRecord
-  desc_en: Movetime 50% for 10 turns + Change Heal to Jammer + Voids status ailments
-    for 999 turns (Preemptive)
-  desc_jp: Movetime 50% for 10 turns + Change Heal to Jammer + Voids status ailments
-    for 999 turns (Preemptive)
+  desc_en: Movetime 50% for 10 turns + Change Heal to Jammer, Deal 120% damage + Voids
+    status ailments for 999 turns (Preemptive)
+  desc_jp: Movetime 50% for 10 turns + Change Heal to Jammer, Deal 120% damage + Voids
+    status ailments for 999 turns (Preemptive)
   max_atk_pct: null
   name_en: Swirling Black Emotions + Threat Removal + Quat Dafiea Easifah
   name_jp: Swirling Black Emotions + Threat Removal + Quat Dafiea Easifah
@@ -63,8 +63,10 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Spawn locked Bomb orbs in the specified positions + Rcv 50% for 10 turns
-  desc_jp: Spawn locked Bomb orbs in the specified positions + Rcv 50% for 10 turns
+  desc_en: Spawn locked Bomb orbs in the specified positions + Rcv 50% for 10 turns,
+    Deal 100% damage
+  desc_jp: Spawn locked Bomb orbs in the specified positions + Rcv 50% for 10 turns,
+    Deal 100% damage
   max_atk_pct: null
   name_en: Exploding Heresy + Look of False Evil
   name_jp: Exploding Heresy + Look of False Evil
@@ -117,8 +119,8 @@ records:
   record_type_name: ACTION
   usage_pct: 33
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 120% damage (4 hits, 30% each)
-  desc_jp: Multi-hit attack, Deal 120% damage (4 hits, 30% each)
+  desc_en: Deal 120% damage (4 hits, 30% each)
+  desc_jp: Deal 120% damage (4 hits, 30% each)
   max_atk_pct: 120
   name_en: Geela Ahsefah
   name_jp: Geela Ahsefah
@@ -135,8 +137,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 400% damage (4 hits, 100% each)
-  desc_jp: Multi-hit attack, Deal 400% damage (4 hits, 100% each)
+  desc_en: Deal 400% damage (4 hits, 100% each)
+  desc_jp: Deal 400% damage (4 hits, 100% each)
   max_atk_pct: 400
   name_en: Torrent of Magical Powers
   name_jp: Torrent of Magical Powers
@@ -197,13 +199,13 @@ records:
 # Spawn random 8 Jammer orbs
 # [15] ESAttackMultihit(15:10115) -> Geela Ahsefah
 # 	Condition: 34% chance (ai:0 rnd:34)
-# Multi-hit attack
+# Enemy action
 # [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [17] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 1, target rnd 20
 # [18] ESAttackMultihit(15:10119) -> Torrent of Magical Powers
-# Multi-hit attack
+# Enemy action
 # [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [20] ESBranchFlag(43:10) -> ESBranchFlag

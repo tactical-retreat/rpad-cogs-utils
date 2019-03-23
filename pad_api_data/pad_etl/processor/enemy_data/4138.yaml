@@ -64,8 +64,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Bind awoken skills for 1 turns + Change Light to Jammer
-  desc_jp: Bind awoken skills for 1 turns + Change Light to Jammer
+  desc_en: Bind awoken skills for 1 turns + Change Light to Jammer, Deal 110% damage
+  desc_jp: Bind awoken skills for 1 turns + Change Light to Jammer, Deal 110% damage
   max_atk_pct: null
   name_en: Roar + Pounce Attack
   name_jp: Roar + Pounce Attack
@@ -73,8 +73,10 @@ records:
   record_type_name: ACTION
   usage_pct: 50
 - !SkillRecord
-  desc_en: Change Fire to Jammer + Bind 1 own leader for 1 turns
-  desc_jp: Change Fire to Jammer + Bind 1 own leader for 1 turns
+  desc_en: Change Fire to Jammer, Deal 90% damage + Bind 1 own leader for 1 turns,
+    Deal 30% damage
+  desc_jp: Change Fire to Jammer, Deal 90% damage + Bind 1 own leader for 1 turns,
+    Deal 30% damage
   max_atk_pct: null
   name_en: Tail Strike + Binding Attack
   name_jp: Tail Strike + Binding Attack
@@ -109,8 +111,10 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change Fire to Jammer + Bind 1 own leader for 1 turns
-  desc_jp: Change Fire to Jammer + Bind 1 own leader for 1 turns
+  desc_en: Change Fire to Jammer, Deal 90% damage + Bind 1 own leader for 1 turns,
+    Deal 30% damage
+  desc_jp: Change Fire to Jammer, Deal 90% damage + Bind 1 own leader for 1 turns,
+    Deal 30% damage
   max_atk_pct: null
   name_en: Tail Strike + Binding Attack
   name_jp: Tail Strike + Binding Attack
@@ -127,8 +131,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 600% damage (3 hits, 200% each)
-  desc_jp: Multi-hit attack, Deal 600% damage (3 hits, 200% each)
+  desc_en: Deal 600% damage (3 hits, 200% each)
+  desc_jp: Deal 600% damage (3 hits, 200% each)
   max_atk_pct: 600
   name_en: Aerial Annihilation Spike Whirl
   name_jp: Aerial Annihilation Spike Whirl
@@ -172,8 +176,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 70% damage
-  desc_jp: Multi-hit attack, Deal 70% damage
+  desc_en: Deal 70% damage
+  desc_jp: Deal 70% damage
   max_atk_pct: 70
   name_en: Heavy Slam
   name_jp: Heavy Slam
@@ -181,8 +185,8 @@ records:
   record_type_name: ACTION
   usage_pct: 50
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 90% damage
-  desc_jp: Multi-hit attack, Deal 90% damage
+  desc_en: Deal 90% damage
+  desc_jp: Deal 90% damage
   max_atk_pct: 90
   name_en: Headbutt
   name_jp: Headbutt
@@ -208,8 +212,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack + Seal 1st row for 4 turns
-  desc_jp: Multi-hit attack + Seal 1st row for 4 turns
+  desc_en: Deal 70% damage + Seal 1st row for 4 turns
+  desc_jp: Deal 70% damage + Seal 1st row for 4 turns
   max_atk_pct: null
   name_en: Tail Scythe + Annihilation Spike Whirl
   name_jp: Tail Scythe + Annihilation Spike Whirl
@@ -244,8 +248,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Player -50% HP + Multi-hit attack
-  desc_jp: Player -50% HP + Multi-hit attack
+  desc_en: Player -50% HP + Deal 60% damage (2 hits, 30% each)
+  desc_jp: Player -50% HP + Deal 60% damage (2 hits, 30% each)
   max_atk_pct: null
   name_en: Head Strike + Spike Shot
   name_jp: Head Strike + Spike Shot
@@ -302,9 +306,9 @@ records:
 # Change 3rd row to Jammer orbs
 # [12] ESAttackMultihit(15:8833) -> Heavy Slam
 # 	Condition: 50% chance (ai:50 rnd:0)
-# Multi-hit attack
+# Enemy action
 # [13] ESAttackMultihit(15:8834) -> Headbutt
-# Multi-hit attack
+# Enemy action
 # [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [15] ESSetCounter(26:16) -> ESSetCounter
@@ -320,7 +324,7 @@ records:
 # Increase damage to 150% for the next 3 turns
 # [20] SkillSet:
 # 	[0] ESAttackMultihit(15:8837) -> Tail Scythe
-# 	Multi-hit attack
+# 	Enemy action
 # 	[1] ESOrbSealRow(100:8838) -> Annihilation Spike Whirl
 # 	Seal 1st row for 4 turns
 # [21] ESSkillDelay(89:8840) -> Foreleg Uppercut
@@ -331,7 +335,7 @@ records:
 # 	[0] ESGravity(50:8841) -> Head Strike
 # 	Player -50% HP
 # 	[1] ESAttackMultihit(15:8842) -> Spike Shot
-# 	Multi-hit attack
+# 	Enemy action
 # [24] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [25] SkillSet:
@@ -350,11 +354,11 @@ records:
 # 	[0] ESRecoverEnemy(86:8850) -> Spike Regeneration
 # 	Enemy recover 10% hp
 # 	[1] ESAttackMultihit(15:8851) -> Annihilation Fist
-# 	Multi-hit attack
+# 	Enemy action
 # [28] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [29] ESAttackMultihit(15:8853) -> Aerial Annihilation Spike Whirl
-# Multi-hit attack
+# Enemy action
 # [30] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [31] ESAttributeResist(72:8829) -> ネルギガンテ・パッシブ

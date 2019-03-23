@@ -8,7 +8,7 @@ monster_name_en: Reincarnated Neptune
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 3 unused actions
+- Found 2 unused actions
 
 ############################################################
 ### Data @ 1
@@ -37,9 +37,9 @@ records:
   usage_pct: 100
 - !SkillRecord
   desc_en: Voids status ailments for 999 turns + Void damage >= 10000000 for 999 turns
-    + Delay active skills by 3 turns (Preemptive)
+    + Delay active skills by 3 turns, Deal 125% damage (Preemptive)
   desc_jp: Voids status ailments for 999 turns + Void damage >= 10000000 for 999 turns
-    + Delay active skills by 3 turns (Preemptive)
+    + Delay active skills by 3 turns, Deal 125% damage (Preemptive)
   max_atk_pct: null
   name_en: That's a good look + Try to beat me! + Darkstrom
   name_jp: That's a good look + Try to beat me! + Darkstrom
@@ -130,8 +130,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 1000% damage (5 hits, 200% each)
-  desc_jp: Multi-hit attack, Deal 1000% damage (5 hits, 200% each)
+  desc_en: Deal 1000% damage (5 hits, 200% each)
+  desc_jp: Deal 1000% damage (5 hits, 200% each)
   max_atk_pct: 1000
   name_en: Abyss Maelstrom
   name_jp: Abyss Maelstrom
@@ -148,12 +148,6 @@ records:
 # ESAttackMultihit(15:11665) -> Double Scissors
 # 	Condition: 50% chance (ai:0 rnd:50)
 # Enemy action
-# SkillSet:
-# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
-# 	[0] ESRecoverEnemy(86:11670) -> How regrettable
-# 	Enemy recover 50% hp
-# 	[1] ESDamageShield(74:11671) -> Finally, you will struggle
-# 	Reduce damage from all sources by 75% for 99 turns
 ############################################################
 ### ES Modifiers
 ############################################################
@@ -192,7 +186,7 @@ records:
 # Spawn random 8 Poison orbs
 # [9] ESAttackMultihit(15:11665) -> Double Scissors
 # 	Condition: 50% chance (ai:0 rnd:50)
-# Multi-hit attack
+# Enemy action
 # [10] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [11] SkillSet:
@@ -208,7 +202,7 @@ records:
 # 	[1] ESDebuffMovetime(39:11668) -> Prepare yourself!
 # 	Movetime 50% for 10 turns
 # [13] ESAttackMultihit(15:11672) -> Abyss Maelstrom
-# Multi-hit attack
+# Enemy action
 # [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [15] ESBranchCounter(32:22) -> ESBranchCounter

@@ -8,7 +8,7 @@ monster_name_en: Gleaming Rabbit Dragon, Fragrem
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 2 unused actions
+- Found 1 unused actions
 
 ############################################################
 ### Data @ 1
@@ -62,10 +62,10 @@ records:
   record_type_name: PASSIVE
   usage_pct: 100
 - !SkillRecord
-  desc_en: Voids status ailments for 5 turns + Change all orbs to Fire, Light, Heal
-    (Preemptive)
-  desc_jp: Voids status ailments for 5 turns + Change all orbs to Fire, Light, Heal
-    (Preemptive)
+  desc_en: Voids status ailments for 5 turns + Change all orbs to Fire, Light, Heal,
+    Deal 130% damage (Preemptive)
+  desc_jp: Voids status ailments for 5 turns + Change all orbs to Fire, Light, Heal,
+    Deal 130% damage (Preemptive)
   max_atk_pct: null
   name_en: Tell me your wish! + Shine Flare Ring
   name_jp: Tell me your wish! + Shine Flare Ring
@@ -100,8 +100,10 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Absorb Light damage for 1 turns + Change 2nd, 5th column to Light orbs
-  desc_jp: Absorb Light damage for 1 turns + Change 2nd, 5th column to Light orbs
+  desc_en: Absorb Light damage for 1 turns + Change 2nd, 5th column to Light orbs,
+    Deal 100% damage
+  desc_jp: Absorb Light damage for 1 turns + Change 2nd, 5th column to Light orbs,
+    Deal 100% damage
   max_atk_pct: null
   name_en: Gleaming Rabbit Dragon's Trial + Flower Piercing Light
   name_jp: Gleaming Rabbit Dragon's Trial + Flower Piercing Light
@@ -163,8 +165,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 185% damage (5 hits, 37% each)
-  desc_jp: Multi-hit attack, Deal 185% damage (5 hits, 37% each)
+  desc_en: Deal 185% damage (5 hits, 37% each)
+  desc_jp: Deal 185% damage (5 hits, 37% each)
   max_atk_pct: 185
   name_en: Shining Claw
   name_jp: Shining Claw
@@ -226,8 +228,10 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack + Change all orbs to Fire, Light, Heal
-  desc_jp: Multi-hit attack + Change all orbs to Fire, Light, Heal
+  desc_en: Deal 185% damage (5 hits, 37% each) + Change all orbs to Fire, Light, Heal,
+    Deal 130% damage
+  desc_jp: Deal 185% damage (5 hits, 37% each) + Change all orbs to Fire, Light, Heal,
+    Deal 130% damage
   max_atk_pct: null
   name_en: Shining Claw + Shine Flare Ring
   name_jp: Shining Claw + Shine Flare Ring
@@ -240,9 +244,6 @@ records:
 ############################################################
 # ESBindSkill(14:4493) -> Your friends are so important?
 # Bind active skills for 3 turns
-# ESDamageShield(74:4503) -> Big Jump
-# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
-# Reduce damage from all sources by 75% for 1 turns
 ############################################################
 ### ES Modifiers
 ############################################################
@@ -296,7 +297,7 @@ records:
 # [16] SkillSet:
 # 	Condition: When < 20% hp (ai:100 rnd:0)
 # 	[0] ESAttackMultihit(15:4498) -> Shining Claw
-# 	Multi-hit attack
+# 	Enemy action
 # 	[1] ESBoardChangeAttackBits(85:4490) -> Shine Flare Ring
 # 	Change all orbs to Fire, Light, Heal
 # [17] ESBranchFlag(43:10) -> ESBranchFlag
@@ -311,7 +312,7 @@ records:
 # Reduce damage from all sources by 50% for 1 turns
 # [21] ESAttackMultihit(15:4498) -> Shining Claw
 # 	Condition: 30% chance (ai:30 rnd:0)
-# Multi-hit attack
+# Enemy action
 # [22] ESColumnSpawnMulti(77:4496) -> Orange Light's Judging Spirit
 # 	Condition: 50% chance (ai:50 rnd:0)
 # Change 5th column to Light orbs, 6th column to Fire orbs

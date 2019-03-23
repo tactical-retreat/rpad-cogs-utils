@@ -26,8 +26,8 @@ records:
   record_type_name: PASSIVE
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 75% damage (Preemptive)
-  desc_jp: Multi-hit attack, Deal 75% damage (Preemptive)
+  desc_en: Deal 75% damage (Preemptive)
+  desc_jp: Deal 75% damage (Preemptive)
   max_atk_pct: 75
   name_en: Liushahe Whirlwind
   name_jp: Liushahe Whirlwind
@@ -89,8 +89,8 @@ records:
   record_type_name: ACTION
   usage_pct: 30
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 120% damage (2 hits, 60% each)
-  desc_jp: Multi-hit attack, Deal 120% damage (2 hits, 60% each)
+  desc_en: Deal 120% damage (2 hits, 60% each)
+  desc_jp: Deal 120% damage (2 hits, 60% each)
   max_atk_pct: 120
   name_en: Chomp
   name_jp: Chomp
@@ -98,8 +98,8 @@ records:
   record_type_name: ACTION
   usage_pct: 30
 - !SkillRecord
-  desc_en: Single hit attack, Deal 100% damage
-  desc_jp: Single hit attack, Deal 100% damage
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
   max_atk_pct: 100
   name_en: Disable Skill
   name_jp: Disable Skill
@@ -116,8 +116,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Player -99% HP + Multi-hit attack
-  desc_jp: Player -99% HP + Multi-hit attack
+  desc_en: Player -99% HP + Deal 120% damage (2 hits, 60% each)
+  desc_jp: Player -99% HP + Deal 120% damage (2 hits, 60% each)
   max_atk_pct: null
   name_en: Mystic Curse + Chomp
   name_jp: Mystic Curse + Chomp
@@ -145,7 +145,7 @@ records:
 # [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] ESAttackMultihit(15:2525) -> Liushahe Whirlwind
-# Multi-hit attack
+# Enemy action
 # [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] SkillSet:
@@ -153,7 +153,7 @@ records:
 # 	[0] ESGravity(50:2531) -> Mystic Curse
 # 	Player -99% HP
 # 	[1] ESAttackMultihit(15:2532) -> Chomp
-# 	Multi-hit attack
+# 	Enemy action
 # [7] ESAbsorbCombo(67:2526) -> General of the Sacred Mountain
 # Absorb combo <= 4 damage for 99 turns
 # [8] ESBindSkill(14:2527) -> Nine Ill Winds
@@ -164,10 +164,10 @@ records:
 # Spawn random 5 Dark orbs
 # [10] ESAttackMultihit(15:2532) -> Chomp
 # 	Condition: 30% chance (ai:0 rnd:30)
-# Multi-hit attack
+# Enemy action
 # [11] ESAttackSinglehit(82:1) -> Disable Skill
 # 	Condition: 30% chance (ai:0 rnd:30)
-# Single hit attack
+# Enemy action
 # [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [13] ESResolve(73:2530) -> *****

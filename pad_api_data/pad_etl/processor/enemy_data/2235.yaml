@@ -8,7 +8,7 @@ monster_name_en: Avenging War Deity, Ares
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 3 unused actions
+- Found 2 unused actions
 
 ############################################################
 ### Data @ 1
@@ -27,8 +27,10 @@ records:
   record_type_name: PASSIVE
   usage_pct: 100
 - !SkillRecord
-  desc_en: Voids status ailments for 999 turns + Change 3rd row to Jammer orbs (Preemptive)
-  desc_jp: Voids status ailments for 999 turns + Change 3rd row to Jammer orbs (Preemptive)
+  desc_en: Voids status ailments for 999 turns + Change 3rd row to Jammer orbs, Deal
+    1000% damage (Preemptive)
+  desc_jp: Voids status ailments for 999 turns + Change 3rd row to Jammer orbs, Deal
+    1000% damage (Preemptive)
   max_atk_pct: null
   name_en: War Deity's Ambition + Rapid Scalding
   name_jp: War Deity's Ambition + Rapid Scalding
@@ -39,8 +41,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 70
-  name_jp: HP <= 70
+  name_en: Turn 1 HP <= 69
+  name_jp: Turn 1 HP <= 69
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -57,8 +59,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -75,14 +77,34 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 1 HP <= 9
+  name_jp: Turn 1 HP <= 9
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy recover 40% hp + Void damage >= 1000000 for 10 turns
+  desc_jp: Enemy recover 40% hp + Void damage >= 1000000 for 10 turns
+  max_atk_pct: null
+  name_en: Blazing Spirit + Divine Body's Shining Flames
+  name_jp: Blazing Spirit + Divine Body's Shining Flames
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 10
   name_jp: HP <= 10
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Enemy recover 40% hp + Change 1st, 3rd, 4th, 6th column to Fire orbs
-  desc_jp: Enemy recover 40% hp + Change 1st, 3rd, 4th, 6th column to Fire orbs
+  desc_en: Enemy recover 40% hp + Change 1st, 3rd, 4th, 6th column to Fire orbs, Deal
+    1500% damage
+  desc_jp: Enemy recover 40% hp + Change 1st, 3rd, 4th, 6th column to Fire orbs, Deal
+    1500% damage
   max_atk_pct: null
   name_en: Blazing Spirit + Wall Eruption
   name_jp: Blazing Spirit + Wall Eruption
@@ -93,8 +115,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute below actions in order repeatedly
-  name_jp: Execute below actions in order repeatedly
+  name_en: Execute below actions in order every 3 turns when HP is full
+  name_jp: Execute below actions in order every 3 turns when HP is full
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -117,8 +139,10 @@ records:
   record_type_name: ACTION
   usage_pct: 20
 - !SkillRecord
-  desc_en: Blind all orbs on the board + Change Random to Fire
-  desc_jp: Blind all orbs on the board + Change Random to Fire
+  desc_en: Blind all orbs on the board, Deal 100% damage + Change Random to Fire,
+    Deal 600% damage
+  desc_jp: Blind all orbs on the board, Deal 100% damage + Change Random to Fire,
+    Deal 600% damage
   max_atk_pct: null
   name_en: Cinder Storm + Hidden Ember
   name_jp: Cinder Storm + Hidden Ember
@@ -163,9 +187,9 @@ records:
   usage_pct: 100
 - !SkillRecord
   desc_en: Absorb Fire damage for 1 turns + Change 1st, 3rd, 4th, 6th column to Fire
-    orbs
+    orbs, Deal 1500% damage
   desc_jp: Absorb Fire damage for 1 turns + Change 1st, 3rd, 4th, 6th column to Fire
-    orbs
+    orbs, Deal 1500% damage
   max_atk_pct: null
   name_en: Mars Core + Wall Eruption
   name_jp: Mars Core + Wall Eruption
@@ -176,12 +200,6 @@ records:
 ############################################################
 ### Unused Actions
 ############################################################
-# SkillSet:
-# 	Condition: When < 10% hp , one-time use (ai:100 rnd:0) (one-time: 1)
-# 	[0] ESRecoverEnemy(86:4004) -> Blazing Spirit
-# 	Enemy recover 40% hp
-# 	[1] ESVoidShield(71:4003) -> Divine Body's Shining Flames
-# 	Void damage >= 1000000 for 10 turns
 # ESOrbLock(94:3996) -> Constant Grimness
 # Lock all Fire, Light orbs
 # ESAttackMultihit(15:3997) -> Thrust Combination

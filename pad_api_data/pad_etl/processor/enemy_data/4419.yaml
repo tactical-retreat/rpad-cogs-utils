@@ -48,9 +48,9 @@ records:
   usage_pct: 100
 - !SkillRecord
   desc_en: 6x2 cloud appear for 1 turns at 1st row, 1st column + Absorb combo <= 4
-    damage for 5 turns + Multi-hit attack
+    damage for 5 turns + Deal 270% damage (9 hits, 30% each)
   desc_jp: 6x2 cloud appear for 1 turns at 1st row, 1st column + Absorb combo <= 4
-    damage for 5 turns + Multi-hit attack
+    damage for 5 turns + Deal 270% damage (9 hits, 30% each)
   max_atk_pct: null
   name_en: Cloud Cluster + Prism Fog + Lightning Ball Strike
   name_jp: Cloud Cluster + Prism Fog + Lightning Ball Strike
@@ -87,8 +87,10 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: 3x3 cloud appear for 1 turns at 2nd row, 3rd column + Multi-hit attack
-  desc_jp: 3x3 cloud appear for 1 turns at 2nd row, 3rd column + Multi-hit attack
+  desc_en: 3x3 cloud appear for 1 turns at 2nd row, 3rd column + Deal 240% damage
+    (2 hits, 120% each)
+  desc_jp: 3x3 cloud appear for 1 turns at 2nd row, 3rd column + Deal 240% damage
+    (2 hits, 120% each)
   max_atk_pct: null
   name_en: Cloud Cluster + Storm Blow
   name_jp: Cloud Cluster + Storm Blow
@@ -126,9 +128,9 @@ records:
   usage_pct: 100
 - !SkillRecord
   desc_en: 3x3 cloud appear for 1 turns at 2nd row, 4th column + Change Random to
-    Light
+    Light, Deal 250% damage
   desc_jp: 3x3 cloud appear for 1 turns at 2nd row, 4th column + Change Random to
-    Light
+    Light, Deal 250% damage
   max_atk_pct: null
   name_en: Cloud Cluster + Plasma Breath
   name_jp: Cloud Cluster + Plasma Breath
@@ -201,8 +203,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 1300% damage (10 hits, 130% each)
-  desc_jp: Multi-hit attack, Deal 1300% damage (10 hits, 130% each)
+  desc_en: Deal 1300% damage (10 hits, 130% each)
+  desc_jp: Deal 1300% damage (10 hits, 130% each)
   max_atk_pct: 1300
   name_en: Meso-Cyclone
   name_jp: Meso-Cyclone
@@ -329,7 +331,7 @@ records:
 # 	[1] ESAbsorbCombo(67:9916) -> Prism Fog
 # 	Absorb combo <= 4 damage for 5 turns
 # 	[2] ESAttackMultihit(15:9917) -> Lightning Ball Strike
-# 	Multi-hit attack
+# 	Enemy action
 # [10] SkillSet:
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 16)
 # 	[0] ESCloud(104:9919) -> Cloud Cluster
@@ -343,7 +345,7 @@ records:
 # 	[0] ESCloud(104:9923) -> Cloud Cluster
 # 	3x3 cloud appear for 1 turns at 2nd row, 3rd column
 # 	[1] ESAttackMultihit(15:9924) -> Storm Blow
-# 	Multi-hit attack
+# 	Enemy action
 # [12] SkillSet:
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 4)
 # 	[0] ESCloud(104:9926) -> Cloud Cluster
@@ -395,6 +397,6 @@ records:
 # [29] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [30] ESAttackMultihit(15:9941) -> Meso-Cyclone
-# Multi-hit attack
+# Enemy action
 # [31] ESResolve(73:9942) -> 50% Resolve
 # Survive attacks with 1 HP when HP > 50%

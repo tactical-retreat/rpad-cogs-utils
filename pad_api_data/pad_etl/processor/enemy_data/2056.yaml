@@ -82,8 +82,8 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 120%~160% damage (3~4 hits, 40% each)
-  desc_jp: Multi-hit attack, Deal 120%~160% damage (3~4 hits, 40% each)
+  desc_en: Deal 120%~160% damage (3~4 hits, 40% each)
+  desc_jp: Deal 120%~160% damage (3~4 hits, 40% each)
   max_atk_pct: 160
   name_en: Almagest
   name_jp: Almagest
@@ -100,8 +100,8 @@ records:
   record_type_name: ACTION
   usage_pct: 40
 - !SkillRecord
-  desc_en: Single hit attack, Deal 100% damage
-  desc_jp: Single hit attack, Deal 100% damage
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
   max_atk_pct: 100
   name_en: Disable Skill
   name_jp: Disable Skill
@@ -118,8 +118,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack + Player -99% HP
-  desc_jp: Multi-hit attack + Player -99% HP
+  desc_en: Deal 120% damage (4 hits, 30% each) + Player -99% HP
+  desc_jp: Deal 120% damage (4 hits, 30% each) + Player -99% HP
   max_atk_pct: null
   name_en: Meteor + Maelstrom
   name_jp: Meteor + Maelstrom
@@ -127,8 +127,10 @@ records:
   record_type_name: ACTION
   usage_pct: 30
 - !SkillRecord
-  desc_en: Multi-hit attack + Multi-hit attack
-  desc_jp: Multi-hit attack + Multi-hit attack
+  desc_en: Deal 120%~160% damage (3~4 hits, 40% each) + Deal 50%~200% damage (1~4
+    hits, 50% each)
+  desc_jp: Deal 120%~160% damage (3~4 hits, 40% each) + Deal 50%~200% damage (1~4
+    hits, 50% each)
   max_atk_pct: null
   name_en: Almagest + Comet
   name_jp: Almagest + Comet
@@ -136,8 +138,8 @@ records:
   record_type_name: ACTION
   usage_pct: 30
 - !SkillRecord
-  desc_en: Multi-hit attack + Multi-hit attack
-  desc_jp: Multi-hit attack + Multi-hit attack
+  desc_en: Deal 50%~200% damage (1~4 hits, 50% each) + Deal 120% damage
+  desc_jp: Deal 50%~200% damage (1~4 hits, 50% each) + Deal 120% damage
   max_atk_pct: null
   name_en: Comet + Vacuum Wave
   name_jp: Comet + Vacuum Wave
@@ -183,13 +185,13 @@ records:
 # Voids player buff effects
 # [10] ESAttackMultihit(15:2119) -> Almagest
 # 	Condition: 40% chance (ai:0 rnd:40)
-# Multi-hit attack
+# Enemy action
 # [11] ESBindAttack(63:2120) -> Delta Attack
 # 	Condition: 40% chance (ai:0 rnd:40)
 # Bind 1 subs for 3 turns
 # [12] ESAttackSinglehit(82:1) -> Disable Skill
 # 	Condition: 20% chance (ai:0 rnd:20)
-# Single hit attack
+# Enemy action
 # [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [14] ESBranchFlag(43:10) -> ESBranchFlag
@@ -213,20 +215,20 @@ records:
 # [22] SkillSet:
 # 	Condition: 30% chance (ai:0 rnd:30)
 # 	[0] ESAttackMultihit(15:2188) -> Meteor
-# 	Multi-hit attack
+# 	Enemy action
 # 	[1] ESGravity(50:2192) -> Maelstrom
 # 	Player -99% HP
 # [23] SkillSet:
 # 	Condition: 30% chance (ai:0 rnd:30)
 # 	[0] ESAttackMultihit(15:2119) -> Almagest
-# 	Multi-hit attack
+# 	Enemy action
 # 	[1] ESAttackMultihit(15:2193) -> Comet
-# 	Multi-hit attack
+# 	Enemy action
 # [24] SkillSet:
 # 	Condition: 30% chance (ai:0 rnd:30)
 # 	[0] ESAttackMultihit(15:2193) -> Comet
-# 	Multi-hit attack
+# 	Enemy action
 # 	[1] ESAttackMultihit(15:2194) -> Vacuum Wave
-# 	Multi-hit attack
+# 	Enemy action
 # [25] ESEndPath(36:26) -> ESEndPath
 # end_turn

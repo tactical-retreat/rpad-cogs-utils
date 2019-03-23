@@ -54,9 +54,9 @@ records:
   usage_pct: 100
 - !SkillRecord
   desc_en: Random 3 orbs change every 1.0s for 1 turns + Delay active skills by 2
-    turns
+    turns, Deal 95% damage
   desc_jp: Random 3 orbs change every 1.0s for 1 turns + Delay active skills by 2
-    turns
+    turns, Deal 95% damage
   max_atk_pct: null
   name_en: KKB + Buffalo Swing
   name_jp: KKB + Buffalo Swing
@@ -64,8 +64,8 @@ records:
   record_type_name: ACTION
   usage_pct: 33
 - !SkillRecord
-  desc_en: Random 3 orbs change every 1.0s for 1 turns + Multi-hit attack
-  desc_jp: Random 3 orbs change every 1.0s for 1 turns + Multi-hit attack
+  desc_en: Random 3 orbs change every 1.0s for 1 turns + Deal 100% damage
+  desc_jp: Random 3 orbs change every 1.0s for 1 turns + Deal 100% damage
   max_atk_pct: null
   name_en: KKB + Buffalo Pressure
   name_jp: KKB + Buffalo Pressure
@@ -73,8 +73,8 @@ records:
   record_type_name: ACTION
   usage_pct: 33
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 105% damage (3 hits, 35% each)
-  desc_jp: Multi-hit attack, Deal 105% damage (3 hits, 35% each)
+  desc_en: Deal 105% damage (3 hits, 35% each)
+  desc_jp: Deal 105% damage (3 hits, 35% each)
   max_atk_pct: 105
   name_en: Under Impact
   name_jp: Under Impact
@@ -91,8 +91,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack + Multi-hit attack
-  desc_jp: Multi-hit attack + Multi-hit attack
+  desc_en: Deal 55% damage + Deal 60% damage (4 hits, 15% each)
+  desc_jp: Deal 55% damage + Deal 60% damage (4 hits, 15% each)
   max_atk_pct: null
   name_en: Dash Straight + Charging Buffalo
   name_jp: Dash Straight + Charging Buffalo
@@ -100,8 +100,10 @@ records:
   record_type_name: ACTION
   usage_pct: 25
 - !SkillRecord
-  desc_en: Change 5th row to Dark orbs + Multi-hit attack
-  desc_jp: Change 5th row to Dark orbs + Multi-hit attack
+  desc_en: Change 5th row to Dark orbs, Deal 45% damage + Deal 60% damage (4 hits,
+    15% each)
+  desc_jp: Change 5th row to Dark orbs, Deal 45% damage + Deal 60% damage (4 hits,
+    15% each)
   max_atk_pct: null
   name_en: Dash Grand Blow + Charging Buffalo
   name_jp: Dash Grand Blow + Charging Buffalo
@@ -109,8 +111,10 @@ records:
   record_type_name: ACTION
   usage_pct: 25
 - !SkillRecord
-  desc_en: Change 4th column to Dark orbs + Multi-hit attack
-  desc_jp: Change 4th column to Dark orbs + Multi-hit attack
+  desc_en: Change 4th column to Dark orbs, Deal 50% damage + Deal 60% damage (4 hits,
+    15% each)
+  desc_jp: Change 4th column to Dark orbs, Deal 50% damage + Deal 60% damage (4 hits,
+    15% each)
   max_atk_pct: null
   name_en: Screw Smash + Charging Buffalo
   name_jp: Screw Smash + Charging Buffalo
@@ -118,8 +122,8 @@ records:
   record_type_name: ACTION
   usage_pct: 25
 - !SkillRecord
-  desc_en: Player -50% HP + Multi-hit attack
-  desc_jp: Player -50% HP + Multi-hit attack
+  desc_en: Player -50% HP + Deal 60% damage (4 hits, 15% each)
+  desc_jp: Player -50% HP + Deal 60% damage (4 hits, 15% each)
   max_atk_pct: null
   name_en: Turn Punch + Charging Buffalo
   name_jp: Turn Punch + Charging Buffalo
@@ -136,8 +140,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 230% damage
-  desc_jp: Multi-hit attack, Deal 230% damage
+  desc_en: Deal 230% damage
+  desc_jp: Deal 230% damage
   max_atk_pct: 230
   name_en: Gigaton Blow
   name_jp: Gigaton Blow
@@ -180,10 +184,10 @@ records:
 # 	[0] ESSpinnersRandom(109:12468) -> KKB
 # 	Random 3 orbs change every 1.0s for 1 turns
 # 	[1] ESAttackMultihit(15:12418) -> Buffalo Pressure
-# 	Multi-hit attack
+# 	Enemy action
 # [8] ESAttackMultihit(15:12419) -> Under Impact
 # 	Condition: 34% chance (ai:0 rnd:34)
-# Multi-hit attack
+# Enemy action
 # [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [10] SkillSet:
@@ -197,30 +201,30 @@ records:
 # [12] SkillSet:
 # 	Condition: 25% chance (ai:0 rnd:25)
 # 	[0] ESAttackMultihit(15:12420) -> Dash Straight
-# 	Multi-hit attack
+# 	Enemy action
 # 	[1] ESAttackMultihit(15:12425) -> Charging Buffalo
-# 	Multi-hit attack
+# 	Enemy action
 # [13] SkillSet:
 # 	Condition: 25% chance (ai:0 rnd:25)
 # 	[0] ESRowSpawnMulti(79:12421) -> Dash Grand Blow
 # 	Change 5th row to Dark orbs
 # 	[1] ESAttackMultihit(15:12425) -> Charging Buffalo
-# 	Multi-hit attack
+# 	Enemy action
 # [14] SkillSet:
 # 	Condition: 25% chance (ai:0 rnd:25)
 # 	[0] ESColumnSpawnMulti(77:12422) -> Screw Smash
 # 	Change 4th column to Dark orbs
 # 	[1] ESAttackMultihit(15:12425) -> Charging Buffalo
-# 	Multi-hit attack
+# 	Enemy action
 # [15] SkillSet:
 # 	Condition: 25% chance (ai:0 rnd:25)
 # 	[0] ESGravity(50:12423) -> Turn Punch
 # 	Player -50% HP
 # 	[1] ESAttackMultihit(15:12425) -> Charging Buffalo
-# 	Multi-hit attack
+# 	Enemy action
 # [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [17] ESAttackMultihit(15:12430) -> Gigaton Blow
-# Multi-hit attack
+# Enemy action
 # [18] ESEndPath(36:26) -> ESEndPath
 # end_turn

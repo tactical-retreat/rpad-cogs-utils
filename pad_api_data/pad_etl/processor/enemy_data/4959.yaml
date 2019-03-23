@@ -7,7 +7,8 @@ monster_id: 4959
 monster_name_en: '*****'
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 1 unused actions
 
 ############################################################
 ### Data @ 1
@@ -98,8 +99,8 @@ records:
   record_type_name: ACTION
   usage_pct: 20
 - !SkillRecord
-  desc_en: Multi-hit attack, Deal 100% damage
-  desc_jp: Multi-hit attack, Deal 100% damage
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
   max_atk_pct: 100
   name_en: Hmm!
   name_jp: Hmm!
@@ -125,6 +126,11 @@ records:
   record_type_name: ACTION
   usage_pct: 20
 
+############################################################
+### Unused Actions
+############################################################
+# ESAttackMultihit(15:12044) -> Judging Superwave
+# Enemy action
 ############################################################
 ### ES Modifiers
 ############################################################
@@ -163,7 +169,7 @@ records:
 # Enemy recover 5% hp
 # [10] ESAttackMultihit(15:12037) -> Hmm!
 # 	Condition: 20% chance (ai:0 rnd:20)
-# Multi-hit attack
+# Enemy action
 # [11] ESOrbChangeAttack(48:12038) -> Dye in darkness!
 # 	Condition: 20% chance (ai:0 rnd:20)
 # Change Random to Dark
@@ -192,7 +198,7 @@ records:
 # [21] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [22] ESAttackMultihit(15:12044) -> Judging Superwave
-# Multi-hit attack
+# Enemy action
 # [23] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [24] ESTurnChangePassive(106:12031) -> You're slow!
