@@ -892,20 +892,22 @@ def spawn_orb_convert(arguments):
                                      spawn_orb_backups)(x)
         c['skill_text'] += 'Create ' + str(c['amount']) + ' '
         if len(c['orbs']) == 1:
-            c['skill_text'] += ATTRIBUTES[c['orbs'][0]] + ' orbs at random'
+            c['skill_text'] += ATTRIBUTES[c['orbs'][0]] + ' orbs'
         elif len(c['orbs']) > 1:
             for i in c['orbs'][:-1]:
                 c['skill_text'] += ATTRIBUTES[i] + ', '
-            c['skill_text'] += ATTRIBUTES[c['orbs'][-1]] + ' orbs at random'
-        if c['orbs'] != c['excluding_orbs']:
+            c['skill_text'] += ATTRIBUTES[c['orbs'][-1]] + ' orbs'
+        if c['orbs'] != c['excluding_orbs'] and c['excluding_orbs'] != []:
             templist = list(set(c['excluding_orbs']) - set(c['orbs']))
-            c['skill_text'] += ' except '
+            c['skill_text'] += ' over non '
             if len(templist) > 1:
                 for i in templist[:-1]:
                     c['skill_text'] += ATTRIBUTES[i] + ', '
                 c['skill_text'] += ATTRIBUTES[templist[-1]] + ' orbs'
             elif len(templist) == 1:
                 c['skill_text'] += ATTRIBUTES[templist[0]] + ' orbs'
+        elif len(c['orbs']) == 0:
+            c['skill_text'] += ' over any orb'
         return 'spawn_orb', c
     return f
 
@@ -2191,6 +2193,59 @@ def collab_bonus_convert(arguments):
         return 'collab_bonus', c
     return f
 
+multi_mass_match_backups = {'for_attr': [],
+                            'minimum_orb': 1,
+                            'hp_multiplier': 1.0,
+                            'atk_multiplier': 1.0,
+                            'rcv_multiplier': 1.0,
+                            'add_combo': 0}
+
+
+def multi_mass_match_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('multi_mass_match',
+                                     arguments,
+                                     multi_mass_match_backups)(x)
+        c['skill_text'] = '{}x ATK and increase combo by {} when matching {} or more connected '.format(fmt_mult(c['atk_multiplier']),
+                                                                                                        c['add_combo'],
+                                                                                                        c['minimum_orb'])
+        for i in c['for_attr'][:-1]:
+            c['skill_text'] += ATTRIBUTES[i] + ', '
+        c['skill_text'] += ATTRIBUTES[int(c['for_attr'][-1])] + ' orbs at once'
+        c['parameter'] = fmt_parameter(c)
+        return 'multi_mass_match', c
+    return f
+
+add_combo_att_backups = {'attributes': [],
+                         'min_attr': 0,
+                         'hp_multiplier': 1.0,
+                         'atk_multiplier': 1.0,
+                         'rcv_multiplier': 1.0,
+                         'add_combo': 0}
+
+
+def add_combo_att_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('add_combo_att_match',
+                                     arguments,
+                                     add_combo_att_backups)(x)
+        attr = c['attributes']
+        min_attr = c['min_attr']
+        c['parameter'] = fmt_parameter(c)
+        skill_text = '{}x ATK and increase combo by {}'.format(fmt_mult(c['atk_multiplier']),
+                                                                    c['add_combo'])
+        if attr == [0, 1, 2, 3, 4]:
+            skill_text += ' when matching {} or more colors'.format(min_attr)
+        elif attr == [0, 1, 2, 3, 4, 5]:
+            skill_text += ' when matching {} or more colors ({}+heal)'.format(min_attr,
+                                                                              min_attr - 1)
+        else:
+            attr_text = ', '.join([ATTRIBUTES[i] for i in attr])
+            skill_text += ' when matching {} at once'.format(attr_text)
+        c['skill_text'] = skill_text
+        return 'add_combo_att_match', c
+    return f
+
 # End of Leader skill
 
 
@@ -2390,7 +2445,10 @@ SKILL_TRANSFORM = {
                                        'threshold_1': (2, multi), 'above_1': True, 'atk_multiplier_1': (3, multi), 'rcv_multiplier_1': 1.0, 'damage_reduction_1': (4, multi),
                                        'threshold_2': (5, multi), 'above_2': False, 'atk_multiplier_2': (6, multi2), 'rcv_multiplier_2': (7, multi2), 'damage_reduction_2': 0.0}),
     185: bonus_time_convert({'time': (0, multi), 'for_attr': (1, binary_con), 'for_type': (2, binary_con), 'hp_multiplier': (3, multi2), 'atk_multiplier': (4, multi2), 'rcv_multiplier': (5, multi2)}),
-    186: passive_stats_convert({'for_attr': (0, binary_con), 'for_type': (1, binary_con), 'hp_multiplier': (2, multi2), 'atk_multiplier': (3, multi2), 'rcv_multiplier': (4, multi2), 'skill_text': '[Board becomes 7x6]'}), }
+    186: passive_stats_convert({'for_attr': (0, binary_con), 'for_type': (1, binary_con), 'hp_multiplier': (2, multi2), 'atk_multiplier': (3, multi2), 'rcv_multiplier': (4, multi2), 'skill_text': '[Board becomes 7x6]'}), 
+    192: multi_mass_match_convert({'for_attr':(0, binary_con), 'minimum_orb':(1, cc), 'atk_multiplier':(2, multi), 'add_combo':(3, cc)}),
+    194: add_combo_att_convert({'attributes':(0, binary_con), 'min_attr':(1,cc), 'atk_multiplier':(2, multi2), 'add_combo':(3, cc)}),
+    }
 
 
 MULTI_PART_LS = {}
