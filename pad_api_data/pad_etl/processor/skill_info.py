@@ -906,7 +906,7 @@ def spawn_orb_convert(arguments):
                 c['skill_text'] += ATTRIBUTES[templist[-1]] + ' orbs'
             elif len(templist) == 1:
                 c['skill_text'] += ATTRIBUTES[templist[0]] + ' orbs'
-        elif len(c['orbs']) == 0:
+        elif len(c['excluding_orbs']) == 0:
             c['skill_text'] += ' over any orb'
         return 'spawn_orb', c
     return f
