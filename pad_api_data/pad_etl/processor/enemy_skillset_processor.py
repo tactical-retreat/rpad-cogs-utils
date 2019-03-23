@@ -732,7 +732,7 @@ def extract_enemy_remaining(ec_ctx: Context, hp_checkpoints: Set[int], behaviors
     return results
 
 
-def convert(enemy_behavior: List, level: int, enemy_skill_effect: int, enemy_skill_effect_type: int):
+def convert(card: BookCard, enemy_behavior: List, level: int, enemy_skill_effect: int, enemy_skill_effect_type: int):
     skillset = ProcessedSkillset(level)
 
     # Behavior is 1-indexed, so stick a fake row in to start
