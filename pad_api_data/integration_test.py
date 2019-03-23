@@ -16,6 +16,7 @@ import pathlib
 import shutil
 
 from pad_etl.data import database
+from pad_etl.processor import skill_info
 
 
 def parse_args():
@@ -50,8 +51,12 @@ def run_test(args):
         print('loading')
         db.load_database()
 
+        print('computing skiis')
+        calc_skills = list(skill_info.reformat_json_info(db.raw_skills).values())
+
         print('saving')
         db.save_all(new_output_dir, True)
+        db.save(new_output_dir, 'calc_skills', calc_skills, True)
 
         print('diffing')
         files = {
@@ -62,6 +67,7 @@ def run_test(args):
             '{}_bonuses.json'.format(server): db.bonuses,
             '{}_cards.json'.format(server): db.cards,
             '{}_exchange.json'.format(server): db.exchange,
+            '{}_calc_skills.json'.format(server): calc_skills,
         }
         for file, data in files.items():
             new_file = os.path.join(new_output_dir, file)

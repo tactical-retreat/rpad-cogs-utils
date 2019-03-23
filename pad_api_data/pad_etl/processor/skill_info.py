@@ -2471,8 +2471,7 @@ def reformat_json(skill_data):
     reformatted['active_skills'] = {}
     reformatted['leader_skills'] = {}
 
-    print('Starting skill conversion of {count} skills'.format(count=len(skill_data["skill"])))
-    for i, c in enumerate(skill_data['skill']):
+    def process_lskill(i, c):
         if c[3] == 0 and c[4] == 0:  # this distinguishes leader skills from active skills
             reformatted['leader_skills'][i] = {}
             reformatted['leader_skills'][i]['id'] = i
@@ -2485,7 +2484,7 @@ def reformat_json(skill_data):
                     print('Unhandled leader skill type: {c2} (skill id: {i})'.format(
                         c2=c[2], i=i))
                     del reformatted['leader_skills'][i]
-                    continue
+                    return
                 if reformatted['leader_skills'][i]['type'] == 'combine_leader_skills':
                     for j in range(0, len(reformatted['leader_skills'][i]['args']['skill_ids'])):
                         if MULTI_PART_LS.get(str(reformatted['leader_skills'][i]['args']['skill_ids'][j])):
@@ -2523,7 +2522,8 @@ def reformat_json(skill_data):
                 del reformatted['active_skills'][i]
                 #reformatted['active_skills'][i]['type'] = f'_{c[2]}'
                 #reformatted['active_skills'][i]['args'] = {f'_{i}':v for i,v in enumerate(c[6:])}
-    for j, c in enumerate(skill_data['skill']):
+
+    def process_askill(j, c):
         if c[2] in SKILL_TRANSFORM:
             i_str = str(j)
             if MULTI_PART_LS.get(i_str):
@@ -2626,6 +2626,19 @@ def reformat_json(skill_data):
                         j)][repeated_skill]]['args']['skill_text'] = AS_comb_skill_text
                     if 'times' in reformatted['active_skills'][MULTI_PART_AS[str(j)][repeated_skill]]['args']['skill_text']:
                         break
+
+    print('Starting skill conversion of {count} skills'.format(count=len(skill_data["skill"])))
+    for i, c in enumerate(skill_data['skill']):
+        try:
+            process_lskill(i, c)
+        except Exception as ex:
+            print('failed to process', i, c, ex)
+
+    for j, c in enumerate(skill_data['skill']):
+        try:
+            process_askill(j, c)
+        except Exception as ex:
+            print('failed to process', j, c, ex)
 
     # Do final trimming on parameter values now that all the math has completed
     for skill in reformatted['leader_skills'].values():
