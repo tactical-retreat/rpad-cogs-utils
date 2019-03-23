@@ -29,20 +29,11 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
-  desc_en: Lock all Jammer orbs, Deal 220% damage
-  desc_jp: Lock all Jammer orbs, Deal 220% damage
-  max_atk_pct: 220
-  name_en: Brilliant Flare
-  name_jp: Brilliant Flare
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 70
-  name_jp: HP <= 70
+  name_en: Turn 1 HP <= 69
+  name_jp: Turn 1 HP <= 69
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -59,14 +50,32 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Lock all Jammer orbs, Deal 220% damage
+  desc_jp: Lock all Jammer orbs, Deal 220% damage
+  max_atk_pct: 220
+  name_en: Brilliant Flare
+  name_jp: Brilliant Flare
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 20
   name_jp: HP <= 20
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 600% damage (6 hits, 100% each)
-  desc_jp: Deal 600% damage (6 hits, 100% each)
+  desc_en: Multi-hit attack, Deal 600% damage (6 hits, 100% each)
+  desc_jp: Multi-hit attack, Deal 600% damage (6 hits, 100% each)
   max_atk_pct: 600
   name_en: Crossing Ray
   name_jp: Crossing Ray
@@ -142,7 +151,7 @@ records:
 # end_turn
 # [6] ESAttackMultihit(15:3791) -> Crossing Ray
 # 	Condition: When < 20% hp (ai:100 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [7] ESBranchCard(90:3808) -> ESBranchCard
 # Branch on player_cards HAS [2440, 2441], target rnd 26
 # [8] ESBranchCard(90:3806) -> ESBranchCard
@@ -200,6 +209,6 @@ records:
 # [28] ESBranchCard(90:3806) -> ESBranchCard
 # Branch on player_cards HAS [1946, 1947], target rnd 30
 # [29] ESAttackMultihit(15:3809) -> You foolish Devilbound creature
-# Enemy action
+# Multi-hit attack
 # [30] ESAttackMultihit(15:3807) -> If you want power, sacrifice him to me!
-# Enemy action
+# Multi-hit attack

@@ -27,8 +27,53 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 80% damage (2 hits, 40% each)
-  desc_jp: Deal 80% damage (2 hits, 40% each)
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind 1 own leader for 3 turns
+  desc_jp: Bind 1 own leader for 3 turns
+  max_atk_pct: null
+  name_en: Mid-Summer Embrace
+  name_jp: Mid-Summer Embrace
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1 HP <= 29
+  name_jp: Turn 1 HP <= 29
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Summer Princess's Command
+  name_jp: Summer Princess's Command
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Multi-hit attack, Deal 80% damage (2 hits, 40% each)
+  desc_jp: Multi-hit attack, Deal 80% damage (2 hits, 40% each)
   max_atk_pct: 80
   name_en: My eyes are up here!
   name_jp: My eyes are up here!
@@ -57,41 +102,14 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Bind 1 own leader for 3 turns
-  desc_jp: Bind 1 own leader for 3 turns
-  max_atk_pct: null
-  name_en: Mid-Summer Embrace
-  name_jp: Mid-Summer Embrace
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 30
   name_jp: HP <= 30
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Do nothing
-  desc_jp: Do nothing
-  max_atk_pct: null
-  name_en: Summer Princess's Command
-  name_jp: Summer Princess's Command
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 500% damage (5 hits, 100% each)
-  desc_jp: Deal 500% damage (5 hits, 100% each)
+  desc_en: Multi-hit attack, Deal 500% damage (5 hits, 100% each)
+  desc_jp: Multi-hit attack, Deal 500% damage (5 hits, 100% each)
   max_atk_pct: 500
   name_en: Sea Dragon Summer Offensive
   name_jp: Sea Dragon Summer Offensive
@@ -157,31 +175,31 @@ records:
 # 	Condition: 30% chance when < 70% hp & when Fire, Water, Wood, Light, Dark, Heal, Jammer, Mortal Poison orbs are on the board (ai:30 rnd:0)
 # Spawn random 4 Poison orbs
 # [15] ESAttackMultihit(15:3165) -> My eyes are up here!
-# Enemy action
+# Multi-hit attack
 # [16] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 9
 # [17] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [18] ESAttackMultihit(15:3160) -> You're too close!
-# Enemy action
+# Multi-hit attack
 # [19] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 10
 # [20] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [21] ESAttackMultihit(15:3156) -> I'll shave off your beard!
-# Enemy action
+# Multi-hit attack
 # [22] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 11
 # [23] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
 # [24] ESAttackMultihit(15:3158) -> Would the two of you like some tea?
-# Enemy action
+# Multi-hit attack
 # [25] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 16, target rnd 12
 # [26] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11111
 # [27] ESAttackMultihit(15:3162) -> E-Evil eye??
-# Enemy action
+# Multi-hit attack
 # [28] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 32, target rnd 31
 # [29] ESFlagOperation(22:12) -> ESFlagOperation
@@ -191,4 +209,4 @@ records:
 # Do nothing
 # [31] ESAttackMultihit(15:3167) -> Sea Dragon Summer Offensive
 # 	Condition: When < 30% hp (ai:100 rnd:0)
-# Enemy action
+# Multi-hit attack

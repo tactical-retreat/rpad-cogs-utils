@@ -37,8 +37,35 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 300% damage (2 hits, 150% each)
-  desc_jp: Deal 300% damage (2 hits, 150% each)
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Specific orbs change every 1.0s for 10 turns, Deal 260% damage
+  desc_jp: Specific orbs change every 1.0s for 10 turns, Deal 260% damage
+  max_atk_pct: 260
+  name_en: Crystal Reversal
+  name_jp: Crystal Reversal
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Multi-hit attack, Deal 300% damage (2 hits, 150% each)
+  desc_jp: Multi-hit attack, Deal 300% damage (2 hits, 150% each)
   max_atk_pct: 300
   name_en: Ice Rush
   name_jp: Ice Rush
@@ -55,17 +82,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Specific orbs change every 1.0s for 10 turns, Deal 260% damage
-  desc_jp: Specific orbs change every 1.0s for 10 turns, Deal 260% damage
-  max_atk_pct: 260
-  name_en: Crystal Reversal
-  name_jp: Crystal Reversal
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 360% damage (3 hits, 120% each)
-  desc_jp: Deal 360% damage (3 hits, 120% each)
+  desc_en: Multi-hit attack, Deal 360% damage (3 hits, 120% each)
+  desc_jp: Multi-hit attack, Deal 360% damage (3 hits, 120% each)
   max_atk_pct: 360
   name_en: Cold Trident
   name_jp: Cold Trident
@@ -104,9 +122,9 @@ records:
 # Specific orbs change every 1.0s for 10 turns
 # [7] ESAttackMultihit(15:9893) -> Cold Trident
 # 	Condition: When < 50% hp (ai:100 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [8] ESAttackMultihit(15:9892) -> Ice Rush
-# Enemy action
+# Multi-hit attack
 # [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [10] ESTypeResist(118:9894) -> Physical Balanced Halved

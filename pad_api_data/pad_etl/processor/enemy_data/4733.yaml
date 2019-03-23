@@ -26,13 +26,62 @@ records:
   record_type_name: PASSIVE
   usage_pct: 100
 - !SkillRecord
-  desc_en: Voids status ailments for 999 turns + Unable to Heal orbs for 1 turns (Preemptive)
-  desc_jp: Voids status ailments for 999 turns + Unable to Heal orbs for 1 turns (Preemptive)
+  desc_en: Voids status ailments for 999 turns + Unable to match Heal orbs for 1 turns
+    (Preemptive)
+  desc_jp: Voids status ailments for 999 turns + Unable to match Heal orbs for 1 turns
+    (Preemptive)
   max_atk_pct: null
   name_en: Flowing Green Scales + Extermination of Life
   name_jp: Flowing Green Scales + Extermination of Life
   one_time: false
   record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Player -99% HP + Delay active skills by 7 turns
+  desc_jp: Player -99% HP + Delay active skills by 7 turns
+  max_atk_pct: null
+  name_en: Life Constricting + Glint of Despair
+  name_jp: Life Constricting + Glint of Despair
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1 HP <= 19
+  name_jp: Turn 1 HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind awoken skills for 1 turns + Specific orbs change every 1.0s for 1
+    turns
+  desc_jp: Bind awoken skills for 1 turns + Specific orbs change every 1.0s for 1
+    turns
+  max_atk_pct: null
+  name_en: Crimson Snake Eyes + Groans of the Dancing Frenzy
+  name_jp: Crimson Snake Eyes + Groans of the Dancing Frenzy
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
   desc_en: Void damage >= 15000000 for 1 turns + Seal 1st row for 1 turns
@@ -125,44 +174,6 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Player -99% HP + Delay active skills by 7 turns
-  desc_jp: Player -99% HP + Delay active skills by 7 turns
-  max_atk_pct: null
-  name_en: Life Constricting + Glint of Despair
-  name_jp: Life Constricting + Glint of Despair
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Bind awoken skills for 1 turns + Specific orbs change every 1.0s for 1
-    turns
-  desc_jp: Bind awoken skills for 1 turns + Specific orbs change every 1.0s for 1
-    turns
-  max_atk_pct: null
-  name_en: Crimson Snake Eyes + Groans of the Dancing Frenzy
-  name_jp: Crimson Snake Eyes + Groans of the Dancing Frenzy
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 19
   name_jp: HP <= 19
   one_time: false
@@ -170,9 +181,9 @@ records:
   usage_pct: 100
 - !SkillRecord
   desc_en: Change own attribute to random one of Fire, Water, Wood, Light, Dark +
-    Enemy action
+    Multi-hit attack
   desc_jp: Change own attribute to random one of Fire, Water, Wood, Light, Dark +
-    Enemy action
+    Multi-hit attack
   max_atk_pct: null
   name_en: Morph Scales + Frenzy of Absolute Power
   name_jp: Morph Scales + Frenzy of Absolute Power
@@ -221,7 +232,7 @@ records:
 # 	[0] ESStatusShield(20:11069) -> Flowing Green Scales
 # 	Voids status ailments for 999 turns
 # 	[1] ESAttributeBlock(107:11070) -> Extermination of Life
-# 	Unable to Heal orbs for 1 turns
+# 	Unable to match Heal orbs for 1 turns
 # [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] ESBranchHP(28:18) -> ESBranchHP
@@ -310,7 +321,7 @@ records:
 # 	[0] ESChangeAttribute(46:11299) -> Morph Scales
 # 	Change own attribute to random one of Fire, Water, Wood, Light, Dark
 # 	[1] ESAttackMultihit(15:11300) -> Frenzy of Absolute Power
-# 	Enemy action
+# 	Multi-hit attack
 # [27] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [28] SkillSet:

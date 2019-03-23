@@ -107,6 +107,33 @@ records:
   record_type_name: PREEMPT
   usage_pct: 10
 - !SkillRecord
+  desc_en: Bind 1 subs for 2 turns, Deal 50% damage
+  desc_jp: Bind 1 subs for 2 turns, Deal 50% damage
+  max_atk_pct: 50
+  name_en: Sacred Sacrifice
+  name_jp: Sacred Sacrifice
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 30
+- !SkillRecord
+  desc_en: Change Random to Random, Deal 75% damage
+  desc_jp: Change Random to Random, Deal 75% damage
+  max_atk_pct: 75
+  name_en: Rainbow Contract
+  name_jp: Rainbow Contract
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Change Random to Heal, Deal 100% damage
+  desc_jp: Change Random to Heal, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Twinkle Hope
+  name_jp: Twinkle Hope
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
@@ -116,8 +143,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 2000% damage (2 hits, 1000% each)
-  desc_jp: Deal 2000% damage (2 hits, 1000% each)
+  desc_en: Multi-hit attack, Deal 2000% damage (2 hits, 1000% each)
+  desc_jp: Multi-hit attack, Deal 2000% damage (2 hits, 1000% each)
   max_atk_pct: 2000
   name_en: Punishment Thunder
   name_jp: Punishment Thunder
@@ -128,8 +155,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute below actions in order repeatedly
-  name_jp: Execute below actions in order repeatedly
+  name_en: Execute below actions in order every 2 turns when HP is full
+  name_jp: Execute below actions in order every 2 turns when HP is full
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -151,15 +178,6 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 30
-- !SkillRecord
-  desc_en: Change Random to Random, Deal 75% damage
-  desc_jp: Change Random to Random, Deal 75% damage
-  max_atk_pct: 75
-  name_en: Rainbow Contract
-  name_jp: Rainbow Contract
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 50
 - !SkillRecord
   desc_en: Change Random to Heal, Deal 100% damage
   desc_jp: Change Random to Heal, Deal 100% damage
@@ -352,7 +370,7 @@ records:
 # end_turn
 # [15] ESAttackMultihit(15:5520) -> Punishment Thunder
 # 	Condition: When < 20% hp (ai:100 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [16] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 21
 # [17] ESFlagOperation(22:12) -> ESFlagOperation

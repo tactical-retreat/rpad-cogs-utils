@@ -62,12 +62,30 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 110% damage (2 hits, 55% each)
-  desc_jp: Deal 110% damage (2 hits, 55% each)
+  desc_en: Multi-hit attack, Deal 110% damage (2 hits, 55% each)
+  desc_jp: Multi-hit attack, Deal 110% damage (2 hits, 55% each)
   max_atk_pct: 110
   name_en: Tail Attack
   name_jp: Tail Attack
   one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 40
+  name_jp: HP <= 40
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind 1 random cards for 5 turns
+  desc_jp: Bind 1 random cards for 5 turns
+  max_atk_pct: null
+  name_en: Eagle Grip
+  name_jp: Eagle Grip
+  one_time: true
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -89,17 +107,8 @@ records:
   record_type_name: ACTION
   usage_pct: 50
 - !SkillRecord
-  desc_en: Bind 1 random cards for 5 turns
-  desc_jp: Bind 1 random cards for 5 turns
-  max_atk_pct: null
-  name_en: Eagle Grip
-  name_jp: Eagle Grip
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 50
-- !SkillRecord
-  desc_en: Deal 130% damage (2 hits, 65% each)
-  desc_jp: Deal 130% damage (2 hits, 65% each)
+  desc_en: Multi-hit attack, Deal 130% damage (2 hits, 65% each)
+  desc_jp: Multi-hit attack, Deal 130% damage (2 hits, 65% each)
   max_atk_pct: 130
   name_en: Claw Strike of Anger
   name_jp: Claw Strike of Anger
@@ -141,7 +150,7 @@ records:
 # 	Condition: One-time use (ai:50 rnd:0) (one-time: 2)
 # Bind 1 random cards for 5 turns
 # [10] ESAttackMultihit(15:590) -> Claw Strike of Anger
-# Enemy action
+# Multi-hit attack
 # [11] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 14
 # [12] ESFlagOperation(22:12) -> ESFlagOperation
@@ -160,7 +169,7 @@ records:
 # [18] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
 # [19] ESAttackMultihit(15:571) -> Tail Attack
-# Enemy action
+# Multi-hit attack
 # [20] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 16, target rnd 23
 # [21] ESFlagOperation(22:12) -> ESFlagOperation

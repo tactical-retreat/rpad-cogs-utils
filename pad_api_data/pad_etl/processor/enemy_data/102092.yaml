@@ -43,8 +43,8 @@ records:
   record_type_name: PASSIVE
   usage_pct: 100
 - !SkillRecord
-  desc_en: Voids status ailments for 5 turns + Enemy action (Preemptive)
-  desc_jp: Voids status ailments for 5 turns + Enemy action (Preemptive)
+  desc_en: Voids status ailments for 5 turns + Multi-hit attack (Preemptive)
+  desc_jp: Voids status ailments for 5 turns + Multi-hit attack (Preemptive)
   max_atk_pct: null
   name_en: Flame Body + Crossdraw Breath
   name_jp: Flame Body + Crossdraw Breath
@@ -61,8 +61,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Absorb combo <= 5 damage for 5 turns + Enemy action
-  desc_jp: Absorb combo <= 5 damage for 5 turns + Enemy action
+  desc_en: Absorb combo <= 5 damage for 5 turns + Multi-hit attack
+  desc_jp: Absorb combo <= 5 damage for 5 turns + Multi-hit attack
   max_atk_pct: null
   name_en: Blaze Aura + Triple Breath
   name_jp: Blaze Aura + Triple Breath
@@ -79,8 +79,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Void damage >= 5000000 for 5 turns + Enemy action
-  desc_jp: Void damage >= 5000000 for 5 turns + Enemy action
+  desc_en: Void damage >= 5000000 for 5 turns + Multi-hit attack
+  desc_jp: Void damage >= 5000000 for 5 turns + Multi-hit attack
   max_atk_pct: null
   name_en: Fire Armor + Fanning Breath
   name_jp: Fire Armor + Fanning Breath
@@ -115,8 +115,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 5000% damage (5 hits, 1000% each)
-  desc_jp: Deal 5000% damage (5 hits, 1000% each)
+  desc_en: Multi-hit attack, Deal 5000% damage (5 hits, 1000% each)
+  desc_jp: Multi-hit attack, Deal 5000% damage (5 hits, 1000% each)
   max_atk_pct: 5000
   name_en: Burst End
   name_jp: Burst End
@@ -151,7 +151,7 @@ records:
 # 	[0] ESStatusShield(20:2312) -> Flame Body
 # 	Voids status ailments for 5 turns
 # 	[1] ESAttackMultihit(15:8242) -> Crossdraw Breath
-# 	Enemy action
+# 	Multi-hit attack
 # [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [8] ESBranchFlag(43:10) -> ESBranchFlag
@@ -162,7 +162,7 @@ records:
 # 	[0] ESAbsorbCombo(67:2314) -> Blaze Aura
 # 	Absorb combo <= 5 damage for 5 turns
 # 	[1] ESAttackMultihit(15:2315) -> Triple Breath
-# 	Enemy action
+# 	Multi-hit attack
 # [11] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 14
 # [12] ESFlagOperation(22:12) -> ESFlagOperation
@@ -171,7 +171,7 @@ records:
 # 	[0] ESVoidShield(71:8244) -> Fire Armor
 # 	Void damage >= 5000000 for 5 turns
 # 	[1] ESAttackMultihit(15:2317) -> Fanning Breath
-# 	Enemy action
+# 	Multi-hit attack
 # [14] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 17
 # [15] ESFlagOperation(22:12) -> ESFlagOperation
@@ -179,6 +179,6 @@ records:
 # [16] ESBindAttack(63:2294) -> Inferno Bullet
 # Bind 5 random for 5 turns
 # [17] ESAttackMultihit(15:2295) -> Burst End
-# Enemy action
+# Multi-hit attack
 # [18] ESAttributeResist(72:8246) -> Lifive Fire Halved
 # Reduce damage from Fire by 50%

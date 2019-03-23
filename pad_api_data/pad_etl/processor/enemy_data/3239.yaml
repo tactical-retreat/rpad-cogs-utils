@@ -50,6 +50,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Poison to Mortal Poison, Deal 150% damage
+  desc_jp: Change Poison to Mortal Poison, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Chaostrom
+  name_jp: Chaostrom
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 3
   name_jp: Turn 3
   one_time: false
@@ -68,26 +86,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change Poison to Mortal Poison, Deal 150% damage
-  desc_jp: Change Poison to Mortal Poison, Deal 150% damage
-  max_atk_pct: 150
-  name_en: Chaostrom
-  name_jp: Chaostrom
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -106,14 +106,32 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 1 HP <= 0
+  name_jp: Turn 1 HP <= 0
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy recover 50% hp + Reduce damage from all sources by 75% for 99 turns
+  desc_jp: Enemy recover 50% hp + Reduce damage from all sources by 75% for 99 turns
+  max_atk_pct: null
+  name_en: How regrettable + Finally, you will struggle
+  name_jp: How regrettable + Finally, you will struggle
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 1000% damage (5 hits, 200% each)
-  desc_jp: Deal 1000% damage (5 hits, 200% each)
+  desc_en: Multi-hit attack, Deal 1000% damage (5 hits, 200% each)
+  desc_jp: Multi-hit attack, Deal 1000% damage (5 hits, 200% each)
   max_atk_pct: 1000
   name_en: Abyss Maelstrom
   name_jp: Abyss Maelstrom
@@ -174,7 +192,7 @@ records:
 # Spawn random 8 Poison orbs
 # [9] ESAttackMultihit(15:11665) -> Double Scissors
 # 	Condition: 50% chance (ai:0 rnd:50)
-# Enemy action
+# Multi-hit attack
 # [10] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [11] SkillSet:
@@ -190,7 +208,7 @@ records:
 # 	[1] ESDebuffMovetime(39:11668) -> Prepare yourself!
 # 	Movetime 50% for 10 turns
 # [13] ESAttackMultihit(15:11672) -> Abyss Maelstrom
-# Enemy action
+# Multi-hit attack
 # [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [15] ESBranchCounter(32:22) -> ESBranchCounter

@@ -27,20 +27,11 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change Jammer to Fire, Deal 200% damage
-  desc_jp: Change Jammer to Fire, Deal 200% damage
-  max_atk_pct: 200
-  name_en: Crushing Jaws
-  name_jp: Crushing Jaws
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -57,14 +48,32 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Jammer to Fire, Deal 200% damage
+  desc_jp: Change Jammer to Fire, Deal 200% damage
+  max_atk_pct: 200
+  name_en: Crushing Jaws
+  name_jp: Crushing Jaws
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 25
   name_jp: HP <= 25
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 240% damage (6 hits, 40% each)
-  desc_jp: Deal 240% damage (6 hits, 40% each)
+  desc_en: Multi-hit attack, Deal 240% damage (6 hits, 40% each)
+  desc_jp: Multi-hit attack, Deal 240% damage (6 hits, 40% each)
   max_atk_pct: 240
   name_en: Scorching Mantis Dragon Fist
   name_jp: Scorching Mantis Dragon Fist
@@ -89,20 +98,11 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change Jammer to Fire, Deal 200% damage
-  desc_jp: Change Jammer to Fire, Deal 200% damage
-  max_atk_pct: 200
-  name_en: Crushing Jaws
-  name_jp: Crushing Jaws
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -119,14 +119,32 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Jammer to Fire, Deal 200% damage
+  desc_jp: Change Jammer to Fire, Deal 200% damage
+  max_atk_pct: 200
+  name_en: Crushing Jaws
+  name_jp: Crushing Jaws
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 25
   name_jp: HP <= 25
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 240% damage (6 hits, 40% each)
-  desc_jp: Deal 240% damage (6 hits, 40% each)
+  desc_en: Multi-hit attack, Deal 240% damage (6 hits, 40% each)
+  desc_jp: Multi-hit attack, Deal 240% damage (6 hits, 40% each)
   max_atk_pct: 240
   name_en: Scorching Mantis Dragon Fist
   name_jp: Scorching Mantis Dragon Fist
@@ -183,14 +201,14 @@ records:
 # Branch on hp < 50, target rnd 19
 # [14] ESAttackMultihit(15:1508) -> Scorching Mantis Dragon Fist
 # 	Condition: When < 25% hp (ai:100 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [15] ESOrbChangeAttack(48:1506) -> Crushing Jaws
 # Change Jammer to Fire
 # [16] ESOrbChangeAttack(48:1505) -> Fire Eating Sickle
 # 	Condition: 70% chance (ai:70 rnd:0)
 # Change Fire to Jammer
 # [17] ESAttackMultihit(15:1507) -> Mantis Dragon Fist
-# Enemy action
+# Multi-hit attack
 # [18] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [19] ESBranchFlag(43:10) -> ESBranchFlag

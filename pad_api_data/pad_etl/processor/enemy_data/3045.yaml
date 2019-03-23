@@ -48,14 +48,32 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 2 HP <= 49
+  name_jp: Turn 2 HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy recover 15% hp
+  desc_jp: Enemy recover 15% hp
+  max_atk_pct: null
+  name_en: Hyoooh
+  name_jp: Hyoooh
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 160% damage (2 hits, 80% each)
-  desc_jp: Deal 160% damage (2 hits, 80% each)
+  desc_en: Multi-hit attack, Deal 160% damage (2 hits, 80% each)
+  desc_jp: Multi-hit attack, Deal 160% damage (2 hits, 80% each)
   max_atk_pct: 160
   name_en: Futae no Kiwami
   name_jp: Futae no Kiwami
@@ -77,24 +95,6 @@ records:
   max_atk_pct: 150
   name_en: Hyoh!!
   name_jp: Hyoh!!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Enemy recover 15% hp
-  desc_jp: Enemy recover 15% hp
-  max_atk_pct: null
-  name_en: Hyoooh
-  name_jp: Hyoooh
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -126,8 +126,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 400% damage
-  desc_jp: Deal 400% damage
+  desc_en: Multi-hit attack, Deal 400% damage
+  desc_jp: Multi-hit attack, Deal 400% damage
   max_atk_pct: 400
   name_en: Hyoh!!
   name_jp: Hyoh!!
@@ -178,12 +178,12 @@ records:
 # [10] ESOrbChangeAttack(48:4983) -> "Myo-o The Angry" cannot lose!
 # Change Light to Dark
 # [11] ESAttackMultihit(15:4984) -> "Myo-o The Angry" cannot lose!
-# Enemy action
+# Multi-hit attack
 # [12] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 17
 # [13] ESAttackMultihit(15:4989) -> Hyoh!!
 # 	Condition: When < 10% hp (ai:100 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [14] ESBindAttack(63:4988) -> Long range
 # 	Condition: When < 45% hp , one-time use (ai:50 rnd:0) (one-time: 1)
 # Bind 1 subs for 3 turns
@@ -191,7 +191,7 @@ records:
 # 	Condition: When < 70% hp & when Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 3 Fire orbs
 # [16] ESAttackMultihit(15:4986) -> Futae no Kiwami
-# Enemy action
+# Multi-hit attack
 # [17] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 13
 # [18] ESFlagOperation(22:12) -> ESFlagOperation

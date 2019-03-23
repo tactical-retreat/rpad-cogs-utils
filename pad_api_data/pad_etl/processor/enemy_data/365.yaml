@@ -29,35 +29,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Enemy action + Delay active skills by 1 turns
-  desc_jp: Enemy action + Delay active skills by 1 turns
-  max_atk_pct: null
-  name_en: Triple Slash + Skill Resistance
-  name_jp: Triple Slash + Skill Resistance
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change 3rd row to Water, Poison orbs, Deal 150% damage
-  desc_jp: Change 3rd row to Water, Poison orbs, Deal 150% damage
-  max_atk_pct: 150
-  name_en: Divide Poison
-  name_jp: Divide Poison
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -80,8 +53,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 500% damage (5 hits, 100% each)
-  desc_jp: Deal 500% damage (5 hits, 100% each)
+  desc_en: Multi-hit attack, Deal 500% damage (5 hits, 100% each)
+  desc_jp: Multi-hit attack, Deal 500% damage (5 hits, 100% each)
   max_atk_pct: 500
   name_en: Vak Sigfodr
   name_jp: Vak Sigfodr
@@ -92,8 +65,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute below actions in order repeatedly
-  name_jp: Execute below actions in order repeatedly
+  name_en: Execute below actions in order every 2 turns when HP is full
+  name_jp: Execute below actions in order every 2 turns when HP is full
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -107,8 +80,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Enemy action + Delay active skills by 1 turns
-  desc_jp: Enemy action + Delay active skills by 1 turns
+  desc_en: Multi-hit attack + Delay active skills by 1 turns
+  desc_jp: Multi-hit attack + Delay active skills by 1 turns
   max_atk_pct: null
   name_en: Double Slash + Skill Resistance
   name_jp: Double Slash + Skill Resistance
@@ -130,6 +103,51 @@ records:
   max_atk_pct: 120
   name_en: Divide Icicle
   name_jp: Divide Icicle
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute below actions in order every 2 turns when HP <= 49
+  name_jp: Execute below actions in order every 2 turns when HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Multi-hit attack + Delay active skills by 1 turns
+  desc_jp: Multi-hit attack + Delay active skills by 1 turns
+  max_atk_pct: null
+  name_en: Triple Slash + Skill Resistance
+  name_jp: Triple Slash + Skill Resistance
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change 3rd row to Water, Poison orbs, Deal 150% damage
+  desc_jp: Change 3rd row to Water, Poison orbs, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Divide Poison
+  name_jp: Divide Poison
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -164,11 +182,11 @@ records:
 # Branch on hp < 50, target rnd 13
 # [7] ESAttackMultihit(15:6206) -> Vak Sigfodr
 # 	Condition: When < 15% hp (ai:100 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [8] SkillSet:
 # 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESAttackMultihit(15:6201) -> Triple Slash
-# 	Enemy action
+# 	Multi-hit attack
 # 	[1] ESSkillDelay(89:6202) -> Skill Resistance
 # 	Delay active skills by 1 turns
 # [9] ESRowSpawnMulti(79:6205) -> Divide Poison
@@ -177,7 +195,7 @@ records:
 # [10] SkillSet:
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESAttackMultihit(15:6195) -> Double Slash
-# 	Enemy action
+# 	Multi-hit attack
 # 	[1] ESSkillDelay(89:6196) -> Skill Resistance
 # 	Delay active skills by 1 turns
 # [11] ESRowSpawnMulti(79:6204) -> Divide Icicle

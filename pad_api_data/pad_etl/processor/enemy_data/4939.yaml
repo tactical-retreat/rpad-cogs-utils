@@ -50,6 +50,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 2 HP <= 20
+  name_jp: Turn 2 HP <= 20
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Absorb Fire damage for 3 turns
+  desc_jp: Absorb Fire damage for 3 turns
+  max_atk_pct: null
+  name_en: Mech Build Guard
+  name_jp: Mech Build Guard
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: When 1 enemy remains and HP <= 49
   name_jp: When 1 enemy remains and HP <= 49
   one_time: false
@@ -68,8 +86,35 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 21
-  name_jp: HP <= 21
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Multi-hit attack, Deal 100% damage
+  desc_jp: Multi-hit attack, Deal 100% damage
+  max_atk_pct: 100
+  name_en: GM Glows Arm
+  name_jp: GM Glows Arm
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Spawn random 4 Dark orbs, Deal 95% damage
+  desc_jp: Spawn random 4 Dark orbs, Deal 95% damage
+  max_atk_pct: 95
+  name_en: Alfight Shoes
+  name_jp: Alfight Shoes
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -92,26 +137,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Absorb Fire damage for 3 turns
-  desc_jp: Absorb Fire damage for 3 turns
-  max_atk_pct: null
-  name_en: Mech Build Guard
-  name_jp: Mech Build Guard
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 20
-  name_jp: HP <= 20
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Spawn random 6 Dark orbs + Enemy action
-  desc_jp: Spawn random 6 Dark orbs + Enemy action
+  desc_en: Spawn random 6 Dark orbs + Multi-hit attack
+  desc_jp: Spawn random 6 Dark orbs + Multi-hit attack
   max_atk_pct: null
   name_en: Gashat! Finishing Move! + Mighty Critical Strike
   name_jp: Gashat! Finishing Move! + Mighty Critical Strike
@@ -122,8 +149,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute below actions in order repeatedly
-  name_jp: Execute below actions in order repeatedly
+  name_en: Execute below actions in order every 5 turns when HP is full
+  name_jp: Execute below actions in order every 5 turns when HP is full
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -131,26 +158,17 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 2-5
-  name_jp: Turn 2-5
+  name_en: Turn 2
+  name_jp: Turn 2
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 100% damage
-  desc_jp: Deal 100% damage
+  desc_en: Multi-hit attack, Deal 100% damage
+  desc_jp: Multi-hit attack, Deal 100% damage
   max_atk_pct: 100
   name_en: GM Glows Arm
   name_jp: GM Glows Arm
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 50
-- !SkillRecord
-  desc_en: Spawn random 4 Dark orbs, Deal 95% damage
-  desc_jp: Spawn random 4 Dark orbs, Deal 95% damage
-  max_atk_pct: 95
-  name_en: Alfight Shoes
-  name_jp: Alfight Shoes
   one_time: false
   record_type_name: ACTION
   usage_pct: 50
@@ -230,7 +248,7 @@ records:
 # counter + 1
 # [12] ESAttackMultihit(15:11807) -> GM Glows Arm
 # 	Condition: 50% chance (ai:0 rnd:50)
-# Enemy action
+# Multi-hit attack
 # [13] ESRandomSpawn(92:11808) -> Alfight Shoes
 # 	Condition: 50% chance & when Fire, Water, Wood, Light, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:0 rnd:50)
 # Spawn random 4 Dark orbs
@@ -258,7 +276,7 @@ records:
 # 	[0] ESRandomSpawn(92:11810) -> Gashat! Finishing Move!
 # 	Spawn random 6 Dark orbs
 # 	[1] ESAttackMultihit(15:11811) -> Mighty Critical Strike
-# 	Enemy action
+# 	Multi-hit attack
 # [23] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [24] SkillSet:

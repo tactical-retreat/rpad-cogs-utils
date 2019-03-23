@@ -38,6 +38,53 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Specific orbs change every 1.0s for 3 turns + Rcv 50% for 3 turns
+  desc_jp: Specific orbs change every 1.0s for 3 turns + Rcv 50% for 3 turns
+  max_atk_pct: null
+  name_en: Dawaaran + Shifa'a
+  name_jp: Dawaaran + Shifa'a
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1 HP <= 9
+  name_jp: Turn 1 HP <= 9
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 75% for 1 turns + Increase damage to
+    150% for the next 99 turns
+  desc_jp: Reduce damage from all sources by 75% for 1 turns + Increase damage to
+    150% for the next 99 turns
+  max_atk_pct: null
+  name_en: Protection of the Planets + Limit of the Sky
+  name_jp: Protection of the Planets + Limit of the Sky
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
   desc_en: Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
     Poison orbs, Deal 100% damage
   desc_jp: Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
@@ -76,26 +123,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Specific orbs change every 1.0s for 3 turns + Rcv 50% for 3 turns
-  desc_jp: Specific orbs change every 1.0s for 3 turns + Rcv 50% for 3 turns
-  max_atk_pct: null
-  name_en: Dawaaran + Shifa'a
-  name_jp: Dawaaran + Shifa'a
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Enemy action + Column of cloud appear for 1 turns at random location
-  desc_jp: Enemy action + Column of cloud appear for 1 turns at random location
+  desc_en: Multi-hit attack + Column of cloud appear for 1 turns at random location
+  desc_jp: Multi-hit attack + Column of cloud appear for 1 turns at random location
   max_atk_pct: null
   name_en: Mhidofa Uvundukia + Gunpowder Smoke
   name_jp: Mhidofa Uvundukia + Gunpowder Smoke
@@ -112,28 +141,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Reduce damage from all sources by 75% for 1 turns + Increase damage to
-    150% for the next 99 turns
-  desc_jp: Reduce damage from all sources by 75% for 1 turns + Increase damage to
-    150% for the next 99 turns
-  max_atk_pct: null
-  name_en: Protection of the Planets + Limit of the Sky
-  name_jp: Protection of the Planets + Limit of the Sky
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 9
-  name_jp: HP <= 9
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 2000% damage (4 hits, 500% each)
-  desc_jp: Deal 2000% damage (4 hits, 500% each)
+  desc_en: Multi-hit attack, Deal 2000% damage (4 hits, 500% each)
+  desc_jp: Multi-hit attack, Deal 2000% damage (4 hits, 500% each)
   max_atk_pct: 2000
   name_en: Intee Kamkadam
   name_jp: Intee Kamkadam
@@ -216,7 +225,7 @@ records:
 # end_turn
 # [22] SkillSet:
 # 	[0] ESAttackMultihit(15:10912) -> Mhidofa Uvundukia
-# 	Enemy action
+# 	Multi-hit attack
 # 	[1] ESCloud(104:10913) -> Gunpowder Smoke
 # 	Column of cloud appear for 1 turns at random location
 # [23] ESEndPath(36:26) -> ESEndPath
@@ -228,7 +237,7 @@ records:
 # 	[1] ESAttackUPRemainingEnemies(17:10901) -> Limit of the Sky
 # 	Increase damage to 150% for the next 99 turns
 # [25] ESAttackMultihit(15:10915) -> Intee Kamkadam
-# Enemy action
+# Multi-hit attack
 # [26] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [27] ESResolve(73:10898) -> Resolve

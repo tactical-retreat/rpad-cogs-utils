@@ -26,10 +26,37 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Fire skyfall +15% for 3 turns + Do nothing
+  desc_jp: Fire skyfall +15% for 3 turns + Do nothing
+  max_atk_pct: null
+  name_en: Haru Arashi + You're gonna get it now!
+  name_jp: Haru Arashi + You're gonna get it now!
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
   desc_en: Lock 1 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
-    Poison orbs + Do nothing + Enemy action
+    Poison orbs + Do nothing + Multi-hit attack
   desc_jp: Lock 1 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
-    Poison orbs + Do nothing + Enemy action
+    Poison orbs + Do nothing + Multi-hit attack
   max_atk_pct: null
   name_en: Haru Kaze + Yoisho!  + Sakura Otoshi
   name_jp: Haru Kaze + Yoisho!  + Sakura Otoshi
@@ -68,26 +95,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Fire skyfall +15% for 3 turns + Do nothing
-  desc_jp: Fire skyfall +15% for 3 turns + Do nothing
-  max_atk_pct: null
-  name_en: Haru Arashi + You're gonna get it now!
-  name_jp: Haru Arashi + You're gonna get it now!
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Enemy action + Enemy action + Absorb combo <= 4 damage for 1 turns
-  desc_jp: Enemy action + Enemy action + Absorb combo <= 4 damage for 1 turns
+  desc_en: Single hit attack + Multi-hit attack + Absorb combo <= 4 damage for 1 turns
+  desc_jp: Single hit attack + Multi-hit attack + Absorb combo <= 4 damage for 1 turns
   max_atk_pct: null
   name_en: Disable Skill + Hadoken + Shunpukyaku
   name_jp: Disable Skill + Hadoken + Shunpukyaku
@@ -95,8 +104,8 @@ records:
   record_type_name: ACTION
   usage_pct: 33
 - !SkillRecord
-  desc_en: Enemy action + Enemy action + Absorb combo <= 4 damage for 1 turns
-  desc_jp: Enemy action + Enemy action + Absorb combo <= 4 damage for 1 turns
+  desc_en: Multi-hit attack + Single hit attack + Absorb combo <= 4 damage for 1 turns
+  desc_jp: Multi-hit attack + Single hit attack + Absorb combo <= 4 damage for 1 turns
   max_atk_pct: null
   name_en: Shouoken + Disable Skill + Shunpukyaku
   name_jp: Shouoken + Disable Skill + Shunpukyaku
@@ -122,8 +131,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 210% damage (7 hits, 30% each)
-  desc_jp: Deal 210% damage (7 hits, 30% each)
+  desc_en: Multi-hit attack, Deal 210% damage (7 hits, 30% each)
+  desc_jp: Multi-hit attack, Deal 210% damage (7 hits, 30% each)
   max_atk_pct: 210
   name_en: Sakura Rain
   name_jp: Sakura Rain
@@ -158,7 +167,7 @@ records:
 # 	[1] ESInactivity(66:12625) -> Yoisho! 
 # 	Do nothing
 # 	[2] ESAttackMultihit(15:12515) -> Sakura Otoshi
-# 	Enemy action
+# 	Multi-hit attack
 # [5] SkillSet:
 # 	Condition: 33% chance (ai:0 rnd:33)
 # 	[0] ESOrbLock(94:12514) -> Haru Kaze
@@ -188,17 +197,17 @@ records:
 # [10] SkillSet:
 # 	Condition: 33% chance (ai:0 rnd:33)
 # 	[0] ESAttackSinglehit(82:1) -> Disable Skill
-# 	Enemy action
+# 	Single hit attack
 # 	[1] ESAttackMultihit(15:12520) -> Hadoken
-# 	Enemy action
+# 	Multi-hit attack
 # 	[2] ESAbsorbCombo(67:12521) -> Shunpukyaku
 # 	Absorb combo <= 4 damage for 1 turns
 # [11] SkillSet:
 # 	Condition: 33% chance (ai:0 rnd:33)
 # 	[0] ESAttackMultihit(15:12522) -> Shouoken
-# 	Enemy action
+# 	Multi-hit attack
 # 	[1] ESAttackSinglehit(82:1) -> Disable Skill
-# 	Enemy action
+# 	Single hit attack
 # 	[2] ESAbsorbCombo(67:12521) -> Shunpukyaku
 # 	Absorb combo <= 4 damage for 1 turns
 # [12] ESSkillDelay(89:12524) -> Hogasho
@@ -207,6 +216,6 @@ records:
 # [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [14] ESAttackMultihit(15:12525) -> Sakura Rain
-# Enemy action
+# Multi-hit attack
 # [15] ESEndPath(36:26) -> ESEndPath
 # end_turn

@@ -47,20 +47,11 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
-  desc_en: Movetime 50% for 10 turns
-  desc_jp: Movetime 50% for 10 turns
-  max_atk_pct: null
-  name_en: Malicious Laughter
-  name_jp: Malicious Laughter
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -81,14 +72,54 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 1 HP <= 0
+  name_jp: Turn 1 HP <= 0
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy recover 4% hp + Absorb combo <= 7 damage for 999 turns + Blind orbs
+    in specific positions for 4 turns + Increase damage to 400% for the next 999 turns
+  desc_jp: Enemy recover 4% hp + Absorb combo <= 7 damage for 999 turns + Blind orbs
+    in specific positions for 4 turns + Increase damage to 400% for the next 999 turns
+  max_atk_pct: null
+  name_en: Unwavering Light + Protection of the Eight Thunders + Boundary of Disdain
+    + The Nature of Death
+  name_jp: Unwavering Light + Protection of the Eight Thunders + Boundary of Disdain
+    + The Nature of Death
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Movetime 50% for 10 turns
+  desc_jp: Movetime 50% for 10 turns
+  max_atk_pct: null
+  name_en: Malicious Laughter
+  name_jp: Malicious Laughter
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 4
   name_jp: HP <= 4
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 150% damage (5 hits, 30% each)
-  desc_jp: Deal 150% damage (5 hits, 30% each)
+  desc_en: Multi-hit attack, Deal 150% damage (5 hits, 30% each)
+  desc_jp: Multi-hit attack, Deal 150% damage (5 hits, 30% each)
   max_atk_pct: 150
   name_en: Fires of Deicide
   name_jp: Fires of Deicide
@@ -189,7 +220,7 @@ records:
 # [16] ESOrbChangeAttack(48:6463) -> Anguished Wailing
 # Change Heal to Jammer
 # [17] ESAttackMultihit(15:6464) -> Fires of Deicide
-# Enemy action
+# Multi-hit attack
 # [18] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [19] ESFlagOperation(24:14) -> ESFlagOperation
@@ -204,7 +235,7 @@ records:
 # [22] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [23] ESAttackMultihit(15:6464) -> Fires of Deicide
-# Enemy action
+# Multi-hit attack
 # [24] ESAttributeResist(72:6472) -> Dark Izanami Passive
 # Reduce damage from Dark by 50%
 # [25] ESResolve(73:6508) -> Dark Izanami Resolve

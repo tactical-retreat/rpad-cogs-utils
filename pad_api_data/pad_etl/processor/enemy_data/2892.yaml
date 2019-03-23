@@ -58,8 +58,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -78,8 +78,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
+  name_en: Turn 1 HP <= 19
+  name_jp: Turn 1 HP <= 19
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -132,32 +132,14 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Bind awoken skills for 2 turns, Deal 270% damage
-  desc_jp: Bind awoken skills for 2 turns, Deal 270% damage
-  max_atk_pct: 270
-  name_en: Unyielding Chains
-  name_jp: Unyielding Chains
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 5
   name_jp: HP <= 5
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 10000% damage (10 hits, 1000% each)
-  desc_jp: Deal 10000% damage (10 hits, 1000% each)
+  desc_en: Multi-hit attack, Deal 10000% damage (10 hits, 1000% each)
+  desc_jp: Multi-hit attack, Deal 10000% damage (10 hits, 1000% each)
   max_atk_pct: 10000
   name_en: Seth Velkshell
   name_jp: Seth Velkshell
@@ -168,8 +150,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute below actions in order repeatedly
-  name_jp: Execute below actions in order repeatedly
+  name_en: Execute below actions in order every 6 turns when HP is full
+  name_jp: Execute below actions in order every 6 turns when HP is full
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -195,14 +177,14 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 3-7
-  name_jp: Turn 3-7
+  name_en: Turn 3
+  name_jp: Turn 3
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 300% damage (5 hits, 60% each)
-  desc_jp: Deal 300% damage (5 hits, 60% each)
+  desc_en: Multi-hit attack, Deal 300% damage (5 hits, 60% each)
+  desc_jp: Multi-hit attack, Deal 300% damage (5 hits, 60% each)
   max_atk_pct: 300
   name_en: Barches Voltro
   name_jp: Barches Voltro
@@ -263,7 +245,7 @@ records:
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 5)
 # Bind awoken skills for 2 turns
 # [13] ESAttackMultihit(15:7685) -> Barches Voltro
-# Enemy action
+# Multi-hit attack
 # [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [15] ESBranchFlag(43:10) -> ESBranchFlag
@@ -289,7 +271,7 @@ records:
 # end_turn
 # [23] ESAttackMultihit(15:7692) -> Seth Velkshell
 # 	Condition: When < 5% hp (ai:100 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [24] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 12
 # [25] ESEndPath(36:26) -> ESEndPath

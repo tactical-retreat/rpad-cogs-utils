@@ -47,6 +47,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 1 HP <= 0
+  name_jp: Turn 1 HP <= 0
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy recover 100% hp
+  desc_jp: Enemy recover 100% hp
+  max_atk_pct: null
+  name_en: Dragon Dew
+  name_jp: Dragon Dew
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: When 1 enemy remains and HP <= 49
   name_jp: When 1 enemy remains and HP <= 49
   one_time: false
@@ -65,26 +83,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 1
-  name_jp: HP <= 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Enemy recover 100% hp
-  desc_jp: Enemy recover 100% hp
-  max_atk_pct: null
-  name_en: Dragon Dew
-  name_jp: Dragon Dew
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Execute below actions in order repeatedly
-  name_jp: Execute below actions in order repeatedly
+  name_en: Execute below actions in order every 6 turns when HP is full
+  name_jp: Execute below actions in order every 6 turns when HP is full
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -152,8 +152,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 250% damage (5 hits, 50% each)
-  desc_jp: Deal 250% damage (5 hits, 50% each)
+  desc_en: Multi-hit attack, Deal 250% damage (5 hits, 50% each)
+  desc_jp: Multi-hit attack, Deal 250% damage (5 hits, 50% each)
   max_atk_pct: 250
   name_en: Divine Star
   name_jp: Divine Star
@@ -245,7 +245,7 @@ records:
 # [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [16] ESAttackMultihit(15:1837) -> Divine Star
-# Enemy action
+# Multi-hit attack
 # [17] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [18] ESInactivity(66:1838) -> Draco Summon-Dragon Lord

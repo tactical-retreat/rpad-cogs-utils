@@ -32,8 +32,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -50,14 +50,14 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 2 HP <= 49
+  name_jp: Turn 2 HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 1200% damage (6 hits, 200% each)
-  desc_jp: Deal 1200% damage (6 hits, 200% each)
+  desc_en: Multi-hit attack, Deal 1200% damage (6 hits, 200% each)
+  desc_jp: Multi-hit attack, Deal 1200% damage (6 hits, 200% each)
   max_atk_pct: 1200
   name_en: Storm Punisher FPE
   name_jp: Storm Punisher FPE
@@ -68,8 +68,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
+  name_en: Turn 1 HP <= 19
+  name_jp: Turn 1 HP <= 19
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -86,26 +86,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 10000% damage (10 hits, 1000% each)
-  desc_jp: Deal 10000% damage (10 hits, 1000% each)
-  max_atk_pct: 10000
-  name_en: Starburst SSE
-  name_jp: Starburst SSE
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Execute below actions in order repeatedly
-  name_jp: Execute below actions in order repeatedly
+  name_en: Execute below actions in order every 2 turns when HP is full
+  name_jp: Execute below actions in order every 2 turns when HP is full
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -219,7 +201,7 @@ records:
 # [16] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [17] ESAttackMultihit(15:5154) -> Storm Punisher FPE
-# Enemy action
+# Multi-hit attack
 # [18] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 21
 # [19] ESFlagOperation(22:12) -> ESFlagOperation
@@ -227,4 +209,4 @@ records:
 # [20] ESRecoverEnemy(86:5156) -> AS-Overhaul
 # Enemy recover 50% hp
 # [21] ESAttackMultihit(15:5155) -> Starburst SSE
-# Enemy action
+# Multi-hit attack

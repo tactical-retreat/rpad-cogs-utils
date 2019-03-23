@@ -36,8 +36,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 70% damage
-  desc_jp: Deal 70% damage
+  desc_en: Multi-hit attack, Deal 70% damage
+  desc_jp: Multi-hit attack, Deal 70% damage
   max_atk_pct: 70
   name_en: Paw Shake
   name_jp: Paw Shake
@@ -51,6 +51,24 @@ records:
   name_en: Flame Bite
   name_jp: Flame Bite
   one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Delay active skills by 1~2 turns
+  desc_jp: Delay active skills by 1~2 turns
+  max_atk_pct: null
+  name_en: Big Howl
+  name_jp: Big Howl
+  one_time: false
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -93,32 +111,14 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Delay active skills by 1~2 turns
-  desc_jp: Delay active skills by 1~2 turns
-  max_atk_pct: null
-  name_en: Big Howl
-  name_jp: Big Howl
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 10
   name_jp: HP <= 10
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 300% damage (3 hits, 100% each)
-  desc_jp: Deal 300% damage (3 hits, 100% each)
+  desc_en: Multi-hit attack, Deal 300% damage (3 hits, 100% each)
+  desc_jp: Multi-hit attack, Deal 300% damage (3 hits, 100% each)
   max_atk_pct: 300
   name_en: Fierce Charge
   name_jp: Fierce Charge
@@ -165,15 +165,15 @@ records:
 # Branch on hp < 50, target rnd 15
 # [10] ESAttackMultihit(15:3431) -> Fierce Charge
 # 	Condition: When < 10% hp (ai:100 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [11] ESAttackMultihit(15:3434) -> Paw Shake
 # 	Condition: One-time use (ai:50 rnd:0) (one-time: 2)
-# Enemy action
+# Multi-hit attack
 # [12] ESRandomSpawn(92:3432) -> Flame Bite
 # 	Condition: One-time use & when Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:100 rnd:0) (one-time: 1)
 # Spawn random 4 Fire orbs
 # [13] ESAttackMultihit(15:3435) -> Other Hand
-# Enemy action
+# Multi-hit attack
 # [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [15] ESBranchFlag(43:10) -> ESBranchFlag

@@ -29,8 +29,26 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
+  name_en: Turn 1 HP <= 74
+  name_jp: Turn 1 HP <= 74
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind 4 random cards for 1~3 turns
+  desc_jp: Bind 4 random cards for 1~3 turns
+  max_atk_pct: null
+  name_en: Honey Honey Bind
+  name_jp: Honey Honey Bind
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2 HP <= 49
+  name_jp: Turn 2 HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -53,8 +71,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 120%~240% damage (3~6 hits, 40% each)
-  desc_jp: Deal 120%~240% damage (3~6 hits, 40% each)
+  desc_en: Multi-hit attack, Deal 120%~240% damage (3~6 hits, 40% each)
+  desc_jp: Multi-hit attack, Deal 120%~240% damage (3~6 hits, 40% each)
   max_atk_pct: 240
   name_en: Honeybee Swarm
   name_jp: Honeybee Swarm
@@ -65,8 +83,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute below actions in order repeatedly
-  name_jp: Execute below actions in order repeatedly
+  name_en: Execute below actions in order every 2 turns when HP is full
+  name_jp: Execute below actions in order every 2 turns when HP is full
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -85,24 +103,6 @@ records:
   max_atk_pct: 50
   name_en: Poison Needle
   name_jp: Poison Needle
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: ' HP <= 74'
-  name_jp: ' HP <= 74'
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Bind 4 random cards for 1~3 turns
-  desc_jp: Bind 4 random cards for 1~3 turns
-  max_atk_pct: null
-  name_en: Honey Honey Bind
-  name_jp: Honey Honey Bind
   one_time: true
   record_type_name: ACTION
   usage_pct: 100
@@ -127,8 +127,26 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
+  name_en: Turn 1 HP <= 74
+  name_jp: Turn 1 HP <= 74
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind 4 random cards for 1~3 turns
+  desc_jp: Bind 4 random cards for 1~3 turns
+  max_atk_pct: null
+  name_en: Honey Honey Bind
+  name_jp: Honey Honey Bind
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2 HP <= 49
+  name_jp: Turn 2 HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -151,8 +169,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 120%~240% damage (3~6 hits, 40% each)
-  desc_jp: Deal 120%~240% damage (3~6 hits, 40% each)
+  desc_en: Multi-hit attack, Deal 120%~240% damage (3~6 hits, 40% each)
+  desc_jp: Multi-hit attack, Deal 120%~240% damage (3~6 hits, 40% each)
   max_atk_pct: 240
   name_en: Honeybee Swarm
   name_jp: Honeybee Swarm
@@ -163,8 +181,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute below actions in order repeatedly
-  name_jp: Execute below actions in order repeatedly
+  name_en: Execute below actions in order every 2 turns when HP is full
+  name_jp: Execute below actions in order every 2 turns when HP is full
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -183,24 +201,6 @@ records:
   max_atk_pct: 50
   name_en: Poison Needle
   name_jp: Poison Needle
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: ' HP <= 74'
-  name_jp: ' HP <= 74'
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Bind 4 random cards for 1~3 turns
-  desc_jp: Bind 4 random cards for 1~3 turns
-  max_atk_pct: null
-  name_en: Honey Honey Bind
-  name_jp: Honey Honey Bind
   one_time: true
   record_type_name: ACTION
   usage_pct: 100
@@ -248,7 +248,7 @@ records:
 # Branch on hp < 50, target rnd 22
 # [15] ESAttackMultihit(15:1652) -> Honeybee Swarm
 # 	Condition: When < 30% hp (ai:100 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [16] ESPoisonChangeRandomAttack(64:1651) -> Poison Needle
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Change Random 4 to Poison

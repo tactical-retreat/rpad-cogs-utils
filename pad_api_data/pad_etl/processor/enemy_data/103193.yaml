@@ -47,6 +47,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 2 HP <= 14
+  name_jp: Turn 2 HP <= 14
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: I'll finish this...
+  name_jp: I'll finish this...
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -62,8 +80,8 @@ records:
   record_type_name: ACTION
   usage_pct: 50
 - !SkillRecord
-  desc_en: Deal 7% damage (7 hits, 1% each)
-  desc_jp: Deal 7% damage (7 hits, 1% each)
+  desc_en: Multi-hit attack, Deal 7% damage (7 hits, 1% each)
+  desc_jp: Multi-hit attack, Deal 7% damage (7 hits, 1% each)
   max_atk_pct: 7
   name_en: Punishing Mist
   name_jp: Punishing Mist
@@ -80,17 +98,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Do nothing
-  desc_jp: Do nothing
-  max_atk_pct: null
-  name_en: I'll finish this...
-  name_jp: I'll finish this...
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 30% damage (10 hits, 3% each)
-  desc_jp: Deal 30% damage (10 hits, 3% each)
+  desc_en: Multi-hit attack, Deal 30% damage (10 hits, 3% each)
+  desc_jp: Multi-hit attack, Deal 30% damage (10 hits, 3% each)
   max_atk_pct: 30
   name_en: Terror Burst
   name_jp: Terror Burst
@@ -127,11 +136,11 @@ records:
 # Do nothing
 # [5] ESAttackMultihit(15:12351) -> Terror Burst
 # 	Condition: When < 15% hp (ai:100 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [6] ESOrbChangeAttack(48:12348) -> Darkness Spear
 # 	Condition: 50% chance (ai:50 rnd:0)
 # Change Random to Dark
 # [7] ESAttackMultihit(15:12349) -> Punishing Mist
-# Enemy action
+# Multi-hit attack
 # [8] ESEndPath(36:26) -> ESEndPath
 # end_turn

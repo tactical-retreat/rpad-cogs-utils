@@ -30,8 +30,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute below actions in order repeatedly
-  name_jp: Execute below actions in order repeatedly
+  name_en: Execute below actions in order every 4 turns when HP is full
+  name_jp: Execute below actions in order every 4 turns when HP is full
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -63,8 +63,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 300% damage
-  desc_jp: Deal 300% damage
+  desc_en: Multi-hit attack, Deal 300% damage
+  desc_jp: Multi-hit attack, Deal 300% damage
   max_atk_pct: 300
   name_en: Big Bang
   name_jp: Big Bang
@@ -93,24 +93,6 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: ' HP <= 49'
-  name_jp: ' HP <= 49'
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Player -99% HP
-  desc_jp: Player -99% HP
-  max_atk_pct: null
-  name_en: Whirl
-  name_jp: Whirl
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: Turn 5
   name_jp: Turn 5
   one_time: false
@@ -129,17 +111,44 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: ' HP <= 49'
-  name_jp: ' HP <= 49'
+  name_en: Execute below actions in order every 4 turns when HP <= 49
+  name_jp: Execute below actions in order every 4 turns when HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 120% damage (4 hits, 30% each)
-  desc_jp: Deal 120% damage (4 hits, 30% each)
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Multi-hit attack, Deal 120% damage (4 hits, 30% each)
+  desc_jp: Multi-hit attack, Deal 120% damage (4 hits, 30% each)
   max_atk_pct: 120
   name_en: Meteor
   name_jp: Meteor
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 4
+  name_jp: Turn 4
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  max_atk_pct: null
+  name_en: Whirl
+  name_jp: Whirl
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -181,7 +190,7 @@ records:
 # flag SET 0b1
 # [8] ESAttackMultihit(15:2188) -> Meteor
 # 	Condition: When < 50% hp (ai:100 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [10] ESBranchFlag(43:10) -> ESBranchFlag
@@ -199,7 +208,7 @@ records:
 # [16] ESNone(93:2043) -> ESNone
 # nothing
 # [17] ESAttackMultihit(15:2111) -> Big Bang
-# Enemy action
+# Multi-hit attack
 # [18] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [19] ESBranchFlag(43:10) -> ESBranchFlag
@@ -217,7 +226,7 @@ records:
 # flag UNSET 0b1110
 # [25] ESAttackMultihit(15:2188) -> Meteor
 # 	Condition: When < 50% hp (ai:100 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [26] ESPoisonChangeRandomAttack(64:2109) -> Bio
 # Change Random 5 to Poison
 # [27] ESEndPath(36:26) -> ESEndPath

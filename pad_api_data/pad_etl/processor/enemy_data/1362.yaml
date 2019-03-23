@@ -26,6 +26,51 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Serpent Top
+  name_jp: Serpent Top
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2 HP <= 49
+  name_jp: Turn 2 HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind 6 random for 1~2 turns, Deal 25% damage
+  desc_jp: Bind 6 random for 1~2 turns, Deal 25% damage
+  max_atk_pct: 25
+  name_en: Nile-Style Moonsault Press
+  name_jp: Nile-Style Moonsault Press
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
   desc_en: Change Random to Heal, Deal 125% damage
   desc_jp: Change Random to Heal, Deal 125% damage
   max_atk_pct: 125
@@ -44,8 +89,8 @@ records:
   record_type_name: ACTION
   usage_pct: 30
 - !SkillRecord
-  desc_en: Deal 150% damage (3 hits, 50% each)
-  desc_jp: Deal 150% damage (3 hits, 50% each)
+  desc_en: Multi-hit attack, Deal 150% damage (3 hits, 50% each)
+  desc_jp: Multi-hit attack, Deal 150% damage (3 hits, 50% each)
   max_atk_pct: 150
   name_en: Blue Dragon Screw
   name_jp: Blue Dragon Screw
@@ -74,44 +119,17 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Execute below actions in order every 2 turns when HP <= 49
+  name_jp: Execute below actions in order every 2 turns when HP <= 49
   one_time: false
   record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Do nothing
-  desc_jp: Do nothing
-  max_atk_pct: null
-  name_en: Serpent Top
-  name_jp: Serpent Top
-  one_time: false
-  record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Bind 6 random for 1~2 turns, Deal 25% damage
-  desc_jp: Bind 6 random for 1~2 turns, Deal 25% damage
-  max_atk_pct: 25
-  name_en: Nile-Style Moonsault Press
-  name_jp: Nile-Style Moonsault Press
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 3
+  name_jp: Turn 3
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -128,14 +146,14 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 4
+  name_jp: Turn 4
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 5000% damage
-  desc_jp: Deal 5000% damage
+  desc_en: Multi-hit attack, Deal 5000% damage
+  desc_jp: Multi-hit attack, Deal 5000% damage
   max_atk_pct: 5000
   name_en: Pinfall
   name_jp: Pinfall
@@ -180,7 +198,7 @@ records:
 # Change Random to Water
 # [11] ESAttackMultihit(15:1231) -> Blue Dragon Screw
 # 	Condition: 40% chance (ai:40 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [12] ESBindAttack(63:1232) -> Frozen Cobra Twist
 # 	Condition: 60% chance (ai:60 rnd:0)
 # Bind friend leader for 1 turns
@@ -208,4 +226,4 @@ records:
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Do nothing
 # [24] ESAttackMultihit(15:1237) -> Pinfall
-# Enemy action
+# Multi-hit attack

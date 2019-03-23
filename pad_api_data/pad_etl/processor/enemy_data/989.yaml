@@ -26,8 +26,8 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 150% damage
-  desc_jp: Deal 150% damage
+  desc_en: Multi-hit attack, Deal 150% damage
+  desc_jp: Multi-hit attack, Deal 150% damage
   max_atk_pct: 150
   name_en: Night Sword
   name_jp: Night Sword
@@ -53,8 +53,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 150% damage
-  desc_jp: Deal 150% damage
+  desc_en: Multi-hit attack, Deal 150% damage
+  desc_jp: Multi-hit attack, Deal 150% damage
   max_atk_pct: 150
   name_en: Night Sword
   name_jp: Night Sword
@@ -74,8 +74,17 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 29
-  name_jp: HP <= 29
+  name_en: Execute below actions in order every 2 turns when HP <= 29
+  name_jp: Execute below actions in order every 2 turns when HP <= 29
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -92,14 +101,14 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 29
-  name_jp: HP <= 29
+  name_en: Turn 2
+  name_jp: Turn 2
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 1200% damage (12 hits, 100% each)
-  desc_jp: Deal 1200% damage (12 hits, 100% each)
+  desc_en: Multi-hit attack, Deal 1200% damage (12 hits, 100% each)
+  desc_jp: Multi-hit attack, Deal 1200% damage (12 hits, 100% each)
   max_atk_pct: 1200
   name_en: World!
   name_jp: World!
@@ -134,7 +143,7 @@ records:
 # Branch on hp < 30, target rnd 13
 # [7] ESAttackMultihit(15:764) -> Night Sword
 # 	Condition: 40% chance (ai:40 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [8] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 50, target rnd 11
 # [9] ESOrbChangeAttack(48:762) -> Moonlight
@@ -149,4 +158,4 @@ records:
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Do nothing
 # [14] ESAttackMultihit(15:766) -> World!
-# Enemy action
+# Multi-hit attack

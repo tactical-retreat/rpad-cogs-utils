@@ -48,8 +48,17 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
+  name_en: Execute below actions in order every 3 turns when HP <= 49
+  name_jp: Execute below actions in order every 3 turns when HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -60,6 +69,33 @@ records:
   name_en: Counting the Cost
   name_jp: Counting the Cost
   one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute below actions in order every 3 turns when HP <= 29
+  name_jp: Execute below actions in order every 3 turns when HP <= 29
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Multi-hit attack, Deal 240%~320% damage (3~4 hits, 80% each)
+  desc_jp: Multi-hit attack, Deal 240%~320% damage (3~4 hits, 80% each)
+  max_atk_pct: 320
+  name_en: Celestial Spectacle
+  name_jp: Celestial Spectacle
+  one_time: false
   record_type_name: ACTION
   usage_pct: 100
 
@@ -99,7 +135,7 @@ records:
 # Delay active skills by 2 turns
 # [8] ESAttackMultihit(15:2262) -> Celestial Spectacle
 # 	Condition: When < 30% hp (ai:100 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [9] ESRowSpawnMulti(79:2259) -> Celestial Observation
 # 	Condition: 50% chance (ai:0 rnd:50)
 # Change 1st row to Light orbs, 5th row to Water orbs

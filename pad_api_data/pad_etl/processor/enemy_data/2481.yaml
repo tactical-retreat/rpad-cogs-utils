@@ -27,29 +27,11 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 100% damage
-  desc_jp: Deal 100% damage
-  max_atk_pct: 100
-  name_en: Absorbing Form Bite
-  name_jp: Absorbing Form Bite
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 70
-- !SkillRecord
-  desc_en: Deal 120% damage
-  desc_jp: Deal 120% damage
-  max_atk_pct: 120
-  name_en: Strong Blow
-  name_jp: Strong Blow
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 70
-- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -66,8 +48,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 20
-  name_jp: HP <= 20
+  name_en: Turn 2 HP <= 19
+  name_jp: Turn 2 HP <= 19
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -81,14 +63,32 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
-  desc_en: Spawn random 8 Fire orbs, Deal 260% damage
-  desc_jp: Spawn random 8 Fire orbs, Deal 260% damage
-  max_atk_pct: 260
-  name_en: Flame Arrow
-  name_jp: Flame Arrow
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Multi-hit attack, Deal 100% damage
+  desc_jp: Multi-hit attack, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Absorbing Form Bite
+  name_jp: Absorbing Form Bite
   one_time: false
   record_type_name: ACTION
-  usage_pct: 100
+  usage_pct: 70
+- !SkillRecord
+  desc_en: Multi-hit attack, Deal 120% damage
+  desc_jp: Multi-hit attack, Deal 120% damage
+  max_atk_pct: 120
+  name_en: Strong Blow
+  name_jp: Strong Blow
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 70
 
 ############################################################
 ### Unused Actions
@@ -132,10 +132,10 @@ records:
 # Spawn random 8 Fire orbs
 # [11] ESAttackMultihit(15:3485) -> Absorbing Form Bite
 # 	Condition: 70% chance (ai:70 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [12] ESAttackMultihit(15:3488) -> Strong Blow
 # 	Condition: 70% chance (ai:70 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [14] ESBranchFlag(43:10) -> ESBranchFlag

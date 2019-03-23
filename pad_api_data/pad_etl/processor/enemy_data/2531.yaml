@@ -18,13 +18,31 @@ level: 5
 overrides: []
 records:
 - !SkillRecord
-  desc_en: Deal 240% damage (2 hits, 120% each) (Preemptive)
-  desc_jp: Deal 240% damage (2 hits, 120% each) (Preemptive)
+  desc_en: Multi-hit attack, Deal 240% damage (2 hits, 120% each) (Preemptive)
+  desc_jp: Multi-hit attack, Deal 240% damage (2 hits, 120% each) (Preemptive)
   max_atk_pct: 240
   name_en: Fury Horn
   name_jp: Fury Horn
   one_time: false
   record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1 HP <= 79
+  name_jp: Turn 1 HP <= 79
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Delay active skills by 1 turns
+  desc_jp: Delay active skills by 1 turns
+  max_atk_pct: null
+  name_en: Absorption
+  name_jp: Absorption
+  one_time: true
+  record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
   desc_en: ''
@@ -66,32 +84,14 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 80
-  name_jp: HP <= 80
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Delay active skills by 1 turns
-  desc_jp: Delay active skills by 1 turns
-  max_atk_pct: null
-  name_en: Absorption
-  name_jp: Absorption
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 10
   name_jp: HP <= 10
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 1000% damage (2 hits, 500% each)
-  desc_jp: Deal 1000% damage (2 hits, 500% each)
+  desc_en: Multi-hit attack, Deal 1000% damage (2 hits, 500% each)
+  desc_jp: Multi-hit attack, Deal 1000% damage (2 hits, 500% each)
   max_atk_pct: 1000
   name_en: Limit Burst
   name_jp: Limit Burst
@@ -128,7 +128,7 @@ records:
 # [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [6] ESAttackMultihit(15:3585) -> Fury Horn
-# Enemy action
+# Multi-hit attack
 # [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [8] ESAttackUPRemainingEnemies(17:3592) -> Gear Charge
@@ -136,7 +136,7 @@ records:
 # Increase damage to 200% for the next 999 turns
 # [9] ESAttackMultihit(15:3241) -> Limit Burst
 # 	Condition: When < 10% hp (ai:100 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [10] ESSkillDelay(89:3240) -> Absorption
 # 	Condition: When < 80% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Delay active skills by 1 turns

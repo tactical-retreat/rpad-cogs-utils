@@ -29,6 +29,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 150% damage
+  desc_jp: Change Random to Jammer, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Grovel before me!
+  name_jp: Grovel before me!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 3
   name_jp: Turn 3
   one_time: false
@@ -47,32 +65,14 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change Random to Jammer, Deal 150% damage
-  desc_jp: Change Random to Jammer, Deal 150% damage
-  max_atk_pct: 150
-  name_en: Grovel before me!
-  name_jp: Grovel before me!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 240% damage (3 hits, 80% each)
-  desc_jp: Deal 240% damage (3 hits, 80% each)
+  desc_en: Multi-hit attack, Deal 240% damage (3 hits, 80% each)
+  desc_jp: Multi-hit attack, Deal 240% damage (3 hits, 80% each)
   max_atk_pct: 240
   name_en: Hoo hoo hoo!
   name_jp: Hoo hoo hoo!
@@ -112,7 +112,7 @@ records:
 # counter + 1
 # [8] ESAttackMultihit(15:9473) -> Hoo hoo hoo!
 # 	Condition: When < 50% hp (ai:100 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [9] ESOrbChangeAttack(48:9474) -> Grovel before me!
 # Change Random to Jammer
 # [10] ESEndPath(36:26) -> ESEndPath

@@ -39,8 +39,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 70
-  name_jp: HP <= 70
+  name_en: Turn 1 HP <= 69
+  name_jp: Turn 1 HP <= 69
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -50,6 +50,24 @@ records:
   max_atk_pct: null
   name_en: Tot Regen
   name_jp: Tot Regen
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 5 turns
+  desc_jp: Reduce damage from all sources by 50% for 5 turns
+  max_atk_pct: null
+  name_en: Starr Schild
+  name_jp: Starr Schild
   one_time: true
   record_type_name: ACTION
   usage_pct: 100
@@ -81,8 +99,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 3500% damage (5 hits, 700% each)
-  desc_jp: Deal 3500% damage (5 hits, 700% each)
+  desc_en: Multi-hit attack, Deal 3500% damage (5 hits, 700% each)
+  desc_jp: Multi-hit attack, Deal 3500% damage (5 hits, 700% each)
   max_atk_pct: 3500
   name_en: "Eisen \xC4rger"
   name_jp: "Eisen \xC4rger"
@@ -93,8 +111,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute below actions in order repeatedly
-  name_jp: Execute below actions in order repeatedly
+  name_en: Execute below actions in order every 2 turns when HP is full
+  name_jp: Execute below actions in order every 2 turns when HP is full
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -187,7 +205,7 @@ records:
 # Poison skyfall +15% for 10 turns
 # [8] ESAttackMultihit(15:5382) -> Eisen Ärger
 # 	Condition: When < 15% hp (ai:100 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [9] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 12
 # [10] ESFlagOperation(22:12) -> ESFlagOperation

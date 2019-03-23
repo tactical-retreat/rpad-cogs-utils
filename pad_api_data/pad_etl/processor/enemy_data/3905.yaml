@@ -28,29 +28,11 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
-  desc_en: Spawn random 8 Water orbs, Deal 300% damage
-  desc_jp: Spawn random 8 Water orbs, Deal 300% damage
-  max_atk_pct: 300
-  name_en: Krytallos Mageia
-  name_jp: Krytallos Mageia
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 50
-- !SkillRecord
-  desc_en: Deal 400% damage (5 hits, 80% each)
-  desc_jp: Deal 400% damage (5 hits, 80% each)
-  max_atk_pct: 400
-  name_en: Crystal Storm
-  name_jp: Crystal Storm
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -67,8 +49,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 30
-  name_jp: HP <= 30
+  name_en: Turn 2 HP <= 29
+  name_jp: Turn 2 HP <= 29
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -80,6 +62,42 @@ records:
   name_jp: Nerophobos
   one_time: true
   record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Spawn random 8 Water orbs, Deal 300% damage
+  desc_jp: Spawn random 8 Water orbs, Deal 300% damage
+  max_atk_pct: 300
+  name_en: Krytallos Mageia
+  name_jp: Krytallos Mageia
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Multi-hit attack, Deal 400% damage (5 hits, 80% each)
+  desc_jp: Multi-hit attack, Deal 400% damage (5 hits, 80% each)
+  max_atk_pct: 400
+  name_en: Crystal Storm
+  name_jp: Crystal Storm
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 30
+  name_jp: HP <= 30
+  one_time: false
+  record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
   desc_en: Change all orbs to Water, Deal 2000% damage
@@ -131,7 +149,7 @@ records:
 # 	Condition: 50% chance & when Fire, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:50 rnd:0)
 # Spawn random 8 Water orbs
 # [10] ESAttackMultihit(15:8389) -> Crystal Storm
-# Enemy action
+# Multi-hit attack
 # [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [12] ESBranchFlag(43:10) -> ESBranchFlag

@@ -54,8 +54,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Absorb damage >= 15000000 damage for 999 turns + Enemy action
-  desc_jp: Absorb damage >= 15000000 damage for 999 turns + Enemy action
+  desc_en: Absorb damage >= 15000000 damage for 999 turns + Multi-hit attack
+  desc_jp: Absorb damage >= 15000000 damage for 999 turns + Multi-hit attack
   max_atk_pct: null
   name_en: Eye of Reality + Lethal Chain
   name_jp: Eye of Reality + Lethal Chain
@@ -66,8 +66,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -84,14 +84,32 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 2 HP <= 49
+  name_jp: Turn 2 HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Delay active skills by 7 turns + Multi-hit attack
+  desc_jp: Delay active skills by 7 turns + Multi-hit attack
+  max_atk_pct: null
+  name_en: Heavenly Eye of Reality + Lethal Chain
+  name_jp: Heavenly Eye of Reality + Lethal Chain
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 15
   name_jp: HP <= 15
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 1000% damage (10 hits, 100% each)
-  desc_jp: Deal 1000% damage (10 hits, 100% each)
+  desc_en: Multi-hit attack, Deal 1000% damage (10 hits, 100% each)
+  desc_jp: Multi-hit attack, Deal 1000% damage (10 hits, 100% each)
   max_atk_pct: 1000
   name_en: Sanction Spiral
   name_jp: Sanction Spiral
@@ -102,8 +120,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute below actions in order repeatedly
-  name_jp: Execute below actions in order repeatedly
+  name_en: Execute below actions in order every 2 turns when HP is full
+  name_jp: Execute below actions in order every 2 turns when HP is full
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -199,7 +217,7 @@ records:
 # 	Reduce damage from all sources by 50% for 99 turns
 # [7] ESAttackMultihit(15:7637) -> Sanction Spiral
 # 	Condition: When < 15% hp (ai:100 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [8] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 13
 # [9] ESFlagOperation(22:12) -> ESFlagOperation
@@ -209,12 +227,12 @@ records:
 # 	[0] ESAbsorbThreshold(87:7628) -> Eye of Reality
 # 	Absorb damage >= 15000000 damage for 999 turns
 # 	[1] ESAttackMultihit(15:7629) -> Lethal Chain
-# 	Enemy action
+# 	Multi-hit attack
 # [11] SkillSet:
 # 	[0] ESSkillDelay(89:7631) -> Heavenly Eye of Reality
 # 	Delay active skills by 7 turns
 # 	[1] ESAttackMultihit(15:7632) -> Lethal Chain
-# 	Enemy action
+# 	Multi-hit attack
 # [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [13] ESBranchFlag(43:10) -> ESBranchFlag

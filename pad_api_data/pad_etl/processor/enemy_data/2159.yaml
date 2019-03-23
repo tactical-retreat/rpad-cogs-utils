@@ -17,20 +17,11 @@ level: 5
 overrides: []
 records:
 - !SkillRecord
-  desc_en: Deal 120% damage (2 hits, 60% each)
-  desc_jp: Deal 120% damage (2 hits, 60% each)
-  max_atk_pct: 120
-  name_en: '***** (Duel Master)'
-  name_jp: '***** (Duel Master)'
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 40
-- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 70
-  name_jp: HP <= 70
+  name_en: Turn 1 HP <= 69
+  name_jp: Turn 1 HP <= 69
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -47,14 +38,32 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Multi-hit attack, Deal 120% damage (2 hits, 60% each)
+  desc_jp: Multi-hit attack, Deal 120% damage (2 hits, 60% each)
+  max_atk_pct: 120
+  name_en: '***** (Duel Master)'
+  name_jp: '***** (Duel Master)'
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 40
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 20
   name_jp: HP <= 20
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 180% damage
-  desc_jp: Deal 180% damage
+  desc_en: Multi-hit attack, Deal 180% damage
+  desc_jp: Multi-hit attack, Deal 180% damage
   max_atk_pct: 180
   name_en: '***** (Duel Master)'
   name_jp: '***** (Duel Master)'
@@ -81,12 +90,12 @@ records:
 # end_turn
 # [3] ESAttackMultihit(15:2494) -> ***** (Duel Master)
 # 	Condition: When < 20% hp (ai:100 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [4] ESAbsorbAttribute(53:2495) -> ***** (Duel Master)
 # 	Condition: When < 70% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Absorb Dark damage for 2 turns
 # [5] ESAttackMultihit(15:2496) -> ***** (Duel Master)
 # 	Condition: 40% chance (ai:40 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [6] ESEndPath(36:26) -> ESEndPath
 # end_turn

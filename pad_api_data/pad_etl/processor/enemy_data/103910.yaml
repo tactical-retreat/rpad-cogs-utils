@@ -47,26 +47,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 120% damage (6 hits, 20% each)
-  desc_jp: Deal 120% damage (6 hits, 20% each)
-  max_atk_pct: 120
-  name_en: Whiteout - Nemesis
-  name_jp: Whiteout - Nemesis
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 14
-  name_jp: HP <= 14
+  name_en: Turn 2 HP <= 14
+  name_jp: Turn 2 HP <= 14
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -83,14 +65,32 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Multi-hit attack, Deal 120% damage (6 hits, 20% each)
+  desc_jp: Multi-hit attack, Deal 120% damage (6 hits, 20% each)
+  max_atk_pct: 120
+  name_en: Whiteout - Nemesis
+  name_jp: Whiteout - Nemesis
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 14
   name_jp: HP <= 14
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 200% damage (2 hits, 100% each)
-  desc_jp: Deal 200% damage (2 hits, 100% each)
+  desc_en: Multi-hit attack, Deal 200% damage (2 hits, 100% each)
+  desc_jp: Multi-hit attack, Deal 200% damage (2 hits, 100% each)
   max_atk_pct: 200
   name_en: Clearing Tempest
   name_jp: Clearing Tempest
@@ -122,13 +122,13 @@ records:
 # [4] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 15, target rnd 7
 # [5] ESAttackMultihit(15:9017) -> Whiteout - Nemesis
-# Enemy action
+# Multi-hit attack
 # [6] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [7] ESInactivity(66:9018) -> Draco Summoning
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Do nothing
 # [8] ESAttackMultihit(15:9019) -> Clearing Tempest
-# Enemy action
+# Multi-hit attack
 # [9] ESEndPath(36:26) -> ESEndPath
 # end_turn

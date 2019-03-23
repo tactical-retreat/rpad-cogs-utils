@@ -27,42 +27,6 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 10
-  name_jp: HP <= 10
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 400% damage (4 hits, 100% each)
-  desc_jp: Deal 400% damage (4 hits, 100% each)
-  max_atk_pct: 400
-  name_en: Volcanic Blade
-  name_jp: Volcanic Blade
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Execute below actions in order repeatedly
-  name_jp: Execute below actions in order repeatedly
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 1-2
-  name_jp: Turn 1-2
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Player -99% HP
   desc_jp: Player -99% HP
   max_atk_pct: null
@@ -93,14 +57,68 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: HP <= 10
+  name_jp: HP <= 10
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Multi-hit attack, Deal 400% damage (4 hits, 100% each)
+  desc_jp: Multi-hit attack, Deal 400% damage (4 hits, 100% each)
+  max_atk_pct: 400
+  name_en: Volcanic Blade
+  name_jp: Volcanic Blade
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute below actions in order every 3 turns when HP is full
+  name_jp: Execute below actions in order every 3 turns when HP is full
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  max_atk_pct: null
+  name_en: Skidbladnir Giant Form
+  name_jp: Skidbladnir Giant Form
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 20
+- !SkillRecord
+  desc_en: Lock all Fire orbs, Deal 120% damage
+  desc_jp: Lock all Fire orbs, Deal 120% damage
+  max_atk_pct: 120
+  name_en: Fairy King Blaze
+  name_jp: Fairy King Blaze
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 30
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 3
   name_jp: Turn 3
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 160% damage (2 hits, 80% each)
-  desc_jp: Deal 160% damage (2 hits, 80% each)
+  desc_en: Multi-hit attack, Deal 160% damage (2 hits, 80% each)
+  desc_jp: Multi-hit attack, Deal 160% damage (2 hits, 80% each)
   max_atk_pct: 160
   name_en: Gullinbursti's Charge
   name_jp: Gullinbursti's Charge
@@ -139,10 +157,10 @@ records:
 # end_turn
 # [6] ESAttackMultihit(15:3279) -> Volcanic Blade
 # 	Condition: When < 10% hp (ai:100 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [7] ESAttackMultihit(15:3275) -> Gullinbursti's Charge
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
-# Enemy action
+# Multi-hit attack
 # [8] ESBranchCard(90:3273) -> ESBranchCard
 # Branch on player_cards HAS [372, 373, 654, 1346], target rnd 13
 # [9] ESGravity(50:3276) -> Skidbladnir Giant Form

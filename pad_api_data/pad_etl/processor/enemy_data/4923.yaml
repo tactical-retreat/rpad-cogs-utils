@@ -18,13 +18,40 @@ level: 4
 overrides: []
 records:
 - !SkillRecord
-  desc_en: Deal 80% damage (Preemptive)
-  desc_jp: Deal 80% damage (Preemptive)
+  desc_en: Multi-hit attack, Deal 80% damage (Preemptive)
+  desc_jp: Multi-hit attack, Deal 80% damage (Preemptive)
   max_atk_pct: 80
   name_en: Fin Cutter
   name_jp: Fin Cutter
   one_time: false
   record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2 HP <= 49
+  name_jp: Turn 2 HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Player -25% HP + Multi-hit attack
+  desc_jp: Player -25% HP + Multi-hit attack
+  max_atk_pct: null
+  name_en: Condor Jump + Amazon Kick
+  name_jp: Condor Jump + Amazon Kick
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
   desc_en: Random 1 orbs change every 2.0s for 1 turns, Deal 90% damage
@@ -45,8 +72,8 @@ records:
   record_type_name: ACTION
   usage_pct: 33
 - !SkillRecord
-  desc_en: Deal 100% damage (2 hits, 50% each)
-  desc_jp: Deal 100% damage (2 hits, 50% each)
+  desc_en: Multi-hit attack, Deal 100% damage (2 hits, 50% each)
+  desc_jp: Multi-hit attack, Deal 100% damage (2 hits, 50% each)
   max_atk_pct: 100
   name_en: Monkey Attack
   name_jp: Monkey Attack
@@ -57,32 +84,14 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Player -25% HP + Enemy action
-  desc_jp: Player -25% HP + Enemy action
-  max_atk_pct: null
-  name_en: Condor Jump + Amazon Kick
-  name_jp: Condor Jump + Amazon Kick
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 19
   name_jp: HP <= 19
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 150% damage
-  desc_jp: Deal 150% damage
+  desc_en: Multi-hit attack, Deal 150% damage
+  desc_jp: Multi-hit attack, Deal 150% damage
   max_atk_pct: 150
   name_en: Super Slice
   name_jp: Super Slice
@@ -120,7 +129,7 @@ records:
 # [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [6] ESAttackMultihit(15:11687) -> Fin Cutter
-# Enemy action
+# Multi-hit attack
 # [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [8] ESBranchHP(28:18) -> ESBranchHP
@@ -133,7 +142,7 @@ records:
 # Enemy recover 5% hp
 # [11] ESAttackMultihit(15:11690) -> Monkey Attack
 # 	Condition: 34% chance (ai:0 rnd:34)
-# Enemy action
+# Multi-hit attack
 # [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [13] ESBranchFlag(43:10) -> ESBranchFlag
@@ -152,7 +161,7 @@ records:
 # 	[0] ESGravity(50:11693) -> Condor Jump
 # 	Player -25% HP
 # 	[1] ESAttackMultihit(15:11694) -> Amazon Kick
-# 	Enemy action
+# 	Multi-hit attack
 # [19] ESSpinnersRandom(109:11688) -> Spin Kick
 # 	Condition: 33% chance (ai:0 rnd:33)
 # Random 1 orbs change every 2.0s for 1 turns
@@ -161,10 +170,10 @@ records:
 # Enemy recover 5% hp
 # [21] ESAttackMultihit(15:11690) -> Monkey Attack
 # 	Condition: 34% chance (ai:0 rnd:34)
-# Enemy action
+# Multi-hit attack
 # [22] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [23] ESAttackMultihit(15:11695) -> Super Slice
-# Enemy action
+# Multi-hit attack
 # [24] ESEndPath(36:26) -> ESEndPath
 # end_turn

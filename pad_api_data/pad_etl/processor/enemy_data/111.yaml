@@ -17,6 +17,24 @@ level: 1
 overrides: []
 records:
 - !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1 HP <= 19
+  name_jp: Turn 1 HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy recover 100% hp
+  desc_jp: Enemy recover 100% hp
+  max_atk_pct: null
+  name_en: Resurrection
+  name_jp: Resurrection
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 70
+- !SkillRecord
   desc_en: Voids player buff effects
   desc_jp: Voids player buff effects
   max_atk_pct: null
@@ -38,29 +56,29 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 20
-  name_jp: HP <= 20
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Enemy recover 100% hp
-  desc_jp: Enemy recover 100% hp
+  desc_en: Voids player buff effects
+  desc_jp: Voids player buff effects
   max_atk_pct: null
-  name_en: Resurrection
-  name_jp: Resurrection
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 70
-- !SkillRecord
-  desc_en: Deal 180% damage (3 hits, 60% each)
-  desc_jp: Deal 180% damage (3 hits, 60% each)
-  max_atk_pct: 180
-  name_en: Nightmare Slash
-  name_jp: Nightmare Slash
+  name_en: Reset Wave
+  name_jp: Reset Wave
   one_time: false
   record_type_name: ACTION
-  usage_pct: 70
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Blind all orbs on the board
+  desc_jp: Blind all orbs on the board
+  max_atk_pct: null
+  name_en: Dark World
+  name_jp: Dark World
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 10
 
 ############################################################
 ### ES Modifiers
@@ -80,7 +98,7 @@ records:
 # Enemy recover 100% hp
 # [2] ESAttackMultihit(15:110) -> Nightmare Slash
 # 	Condition: 70% chance when < 20% hp (ai:70 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [3] ESDispel(6:6) -> Reset Wave
 # 	Condition: 50% chance (ai:50 rnd:0)
 # Voids player buff effects

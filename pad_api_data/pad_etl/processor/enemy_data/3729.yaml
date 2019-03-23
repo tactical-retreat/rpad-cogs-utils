@@ -30,6 +30,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Lock all Light orbs, Deal 50% damage
+  desc_jp: Lock all Light orbs, Deal 50% damage
+  max_atk_pct: 50
+  name_en: Guangshufu
+  name_jp: Guangshufu
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: When 1 enemy remains
   name_jp: When 1 enemy remains
   one_time: false
@@ -48,26 +66,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Lock all Light orbs, Deal 50% damage
-  desc_jp: Lock all Light orbs, Deal 50% damage
-  max_atk_pct: 50
-  name_en: Guangshufu
-  name_jp: Guangshufu
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Execute below actions in order repeatedly
-  name_jp: Execute below actions in order repeatedly
+  name_en: Execute below actions in order every 3 turns when HP is full
+  name_jp: Execute below actions in order every 3 turns when HP is full
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -99,8 +99,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 100% damage (2 hits, 50% each)
-  desc_jp: Deal 100% damage (2 hits, 50% each)
+  desc_en: Multi-hit attack, Deal 100% damage (2 hits, 50% each)
+  desc_jp: Multi-hit attack, Deal 100% damage (2 hits, 50% each)
   max_atk_pct: 100
   name_en: Gongji
   name_jp: Gongji
@@ -181,7 +181,7 @@ records:
 # [17] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [18] ESAttackMultihit(15:7352) -> Gongji
-# Enemy action
+# Multi-hit attack
 # [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [20] ESFlagOperation(24:14) -> ESFlagOperation

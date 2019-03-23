@@ -17,8 +17,8 @@ level: 1
 overrides: []
 records:
 - !SkillRecord
-  desc_en: Void damage >= 100 for 10 turns + Enemy action (Preemptive)
-  desc_jp: Void damage >= 100 for 10 turns + Enemy action (Preemptive)
+  desc_en: Void damage >= 100 for 10 turns + Multi-hit attack (Preemptive)
+  desc_jp: Void damage >= 100 for 10 turns + Multi-hit attack (Preemptive)
   max_atk_pct: null
   name_en: Old Dragon Knight's Soul + Rock Sword
   name_jp: Old Dragon Knight's Soul + Rock Sword
@@ -47,8 +47,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute below actions in order repeatedly
-  name_jp: Execute below actions in order repeatedly
+  name_en: Execute below actions in order every 2 turns when HP is full
+  name_jp: Execute below actions in order every 2 turns when HP is full
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -92,8 +92,17 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: ' HP <= 9'
-  name_jp: ' HP <= 9'
+  name_en: Execute below actions in order every 2 turns when HP <= 9
+  name_jp: Execute below actions in order every 2 turns when HP <= 9
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -130,7 +139,7 @@ records:
 # 	[0] ESVoidShield(71:4818) -> Old Dragon Knight's Soul
 # 	Void damage >= 100 for 10 turns
 # 	[1] ESAttackMultihit(15:4819) -> Rock Sword
-# 	Enemy action
+# 	Multi-hit attack
 # [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] ESAttackUpStatus(18:4821) -> Power Released

@@ -18,8 +18,8 @@ level: 1
 overrides: []
 records:
 - !SkillRecord
-  desc_en: Deal 100% damage (Preemptive)
-  desc_jp: Deal 100% damage (Preemptive)
+  desc_en: Multi-hit attack, Deal 100% damage (Preemptive)
+  desc_jp: Multi-hit attack, Deal 100% damage (Preemptive)
   max_atk_pct: 100
   name_en: Great Lariat
   name_jp: Great Lariat
@@ -27,20 +27,11 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 100% damage
-  desc_jp: Deal 100% damage
-  max_atk_pct: 100
-  name_en: Great Chop
-  name_jp: Great Chop
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -57,8 +48,35 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Multi-hit attack, Deal 100% damage
+  desc_jp: Multi-hit attack, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Great Chop
+  name_jp: Great Chop
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute below actions in order every 2 turns when HP <= 49
+  name_jp: Execute below actions in order every 2 turns when HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -75,14 +93,14 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 3
+  name_jp: Turn 3
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 1200% damage (4 hits, 300% each)
-  desc_jp: Deal 1200% damage (4 hits, 300% each)
+  desc_en: Multi-hit attack, Deal 1200% damage (4 hits, 300% each)
+  desc_jp: Multi-hit attack, Deal 1200% damage (4 hits, 300% each)
   max_atk_pct: 1200
   name_en: Fire!!
   name_jp: Fire!!
@@ -117,7 +135,7 @@ records:
 # flag SET 0b1
 # [4] ESAttackMultihit(15:877) -> Great Lariat
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
-# Enemy action
+# Multi-hit attack
 # [5] ESBranchHP(28:179) -> ESBranchHP
 # Branch on hp < 50, target rnd 9
 # [6] ESGravity(50:879) -> Great Press
@@ -125,7 +143,7 @@ records:
 # Player -99% HP
 # [7] ESAttackMultihit(15:880) -> Great Chop
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
-# Enemy action
+# Multi-hit attack
 # [8] ESInactivity(16:878) -> Grrrreat!
 # Do nothing
 # [9] ESBranchFlag(43:10) -> ESBranchFlag
@@ -136,6 +154,6 @@ records:
 # Do nothing
 # [12] ESAttackMultihit(15:882) -> Fire!!
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
-# Enemy action
+# Multi-hit attack
 # [13] ESInactivity(16:878) -> Grrrreat!
 # Do nothing

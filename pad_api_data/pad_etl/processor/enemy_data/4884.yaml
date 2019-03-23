@@ -73,14 +73,14 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
+  name_en: Turn 1 HP <= 95
+  name_jp: Turn 1 HP <= 95
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 110% damage (2 hits, 55% each)
-  desc_jp: Deal 110% damage (2 hits, 55% each)
+  desc_en: Multi-hit attack, Deal 110% damage (2 hits, 55% each)
+  desc_jp: Multi-hit attack, Deal 110% damage (2 hits, 55% each)
   max_atk_pct: 110
   name_en: Black Great Holy Tree
   name_jp: Black Great Holy Tree
@@ -133,8 +133,8 @@ records:
   record_type_name: ACTION
   usage_pct: 20
 - !SkillRecord
-  desc_en: Deal 110% damage (2 hits, 55% each)
-  desc_jp: Deal 110% damage (2 hits, 55% each)
+  desc_en: Multi-hit attack, Deal 110% damage (2 hits, 55% each)
+  desc_jp: Multi-hit attack, Deal 110% damage (2 hits, 55% each)
   max_atk_pct: 110
   name_en: Black Great Holy Tree
   name_jp: Black Great Holy Tree
@@ -145,26 +145,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Enemy recover 50% hp
-  desc_jp: Enemy recover 50% hp
-  max_atk_pct: null
-  name_en: White Great Holy Tree
-  name_jp: White Great Holy Tree
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
+  name_en: HP <= 49
+  name_jp: HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -187,8 +169,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 300% damage (3 hits, 100% each)
-  desc_jp: Deal 300% damage (3 hits, 100% each)
+  desc_en: Multi-hit attack, Deal 300% damage (3 hits, 100% each)
+  desc_jp: Multi-hit attack, Deal 300% damage (3 hits, 100% each)
   max_atk_pct: 300
   name_en: Spear Throw
   name_jp: Spear Throw
@@ -232,7 +214,7 @@ records:
 # [11] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 96, target rnd 13
 # [12] ESAttackMultihit(15:11461) -> Black Great Holy Tree
-# Enemy action
+# Multi-hit attack
 # [13] ESRecoverEnemy(86:11460) -> White Great Holy Tree
 # Enemy recover 50% hp
 # [14] ESEndPath(36:26) -> ESEndPath
@@ -269,11 +251,11 @@ records:
 # Change 4th row to Light orbs
 # [26] ESAttackMultihit(15:11461) -> Black Great Holy Tree
 # 	Condition: 20% chance (ai:0 rnd:20)
-# Enemy action
+# Multi-hit attack
 # [27] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [28] ESAttackMultihit(15:11465) -> Spear Throw
-# Enemy action
+# Multi-hit attack
 # [29] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [30] ESResolve(73:11466) -> Resolve

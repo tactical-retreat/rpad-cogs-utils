@@ -47,14 +47,32 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 1 HP <= 39
+  name_jp: Turn 1 HP <= 39
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Fighting spirit increases
+  name_jp: Fighting spirit increases
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 140% damage (2 hits, 70% each)
-  desc_jp: Deal 140% damage (2 hits, 70% each)
+  desc_en: Multi-hit attack, Deal 140% damage (2 hits, 70% each)
+  desc_jp: Multi-hit attack, Deal 140% damage (2 hits, 70% each)
   max_atk_pct: 140
   name_en: Destroy!!
   name_jp: Destroy!!
@@ -80,26 +98,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Do nothing
-  desc_jp: Do nothing
-  max_atk_pct: null
-  name_en: Fighting spirit increases
-  name_jp: Fighting spirit increases
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 39
-  name_jp: HP <= 39
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 1200% damage (4 hits, 300% each)
-  desc_jp: Deal 1200% damage (4 hits, 300% each)
+  desc_en: Multi-hit attack, Deal 1200% damage (4 hits, 300% each)
+  desc_jp: Multi-hit attack, Deal 1200% damage (4 hits, 300% each)
   max_atk_pct: 1200
   name_en: Vanishing of Sin
   name_jp: Vanishing of Sin
@@ -137,7 +137,7 @@ records:
 # Bind 6 random cards for 4~5 turns
 # [8] ESAttackMultihit(15:2623) -> Destroy!!
 # 	Condition: 50% chance (ai:50 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [9] ESRandomSpawn(92:2624) -> Terminate!!
 # 	Condition: When fire, water, wood, light, dark, heal, jammer, poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 4 Mortal Poison orbs
@@ -148,4 +148,4 @@ records:
 # [12] ESInactivity(66:2626) -> Fighting spirit increases
 # Do nothing
 # [13] ESAttackMultihit(15:2625) -> Vanishing of Sin
-# Enemy action
+# Multi-hit attack

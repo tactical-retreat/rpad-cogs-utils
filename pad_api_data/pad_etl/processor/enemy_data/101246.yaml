@@ -36,29 +36,11 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
-  desc_en: Bind 1 random for 4 turns, Deal 100% damage
-  desc_jp: Bind 1 random for 4 turns, Deal 100% damage
-  max_atk_pct: 100
-  name_en: Dragon Monk Binding Law of Tathagata
-  name_jp: Dragon Monk Binding Law of Tathagata
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 30
-- !SkillRecord
-  desc_en: Deal 150% damage (3 hits, 50% each)
-  desc_jp: Deal 150% damage (3 hits, 50% each)
-  max_atk_pct: 150
-  name_en: Rakshasa Power
-  name_jp: Rakshasa Power
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 70
-  name_jp: HP <= 70
+  name_en: Turn 1 HP <= 69
+  name_jp: Turn 1 HP <= 69
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -75,8 +57,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -93,8 +75,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 2 HP <= 49
+  name_jp: Turn 2 HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -108,6 +90,33 @@ records:
     see you get rid of the evil
   name_jp: Scriptures of the Dragon God Caste + Puzzle is rearranged + Alright, let's
     see you get rid of the evil
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind 1 random for 4 turns, Deal 100% damage
+  desc_jp: Bind 1 random for 4 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Dragon Monk Binding Law of Tathagata
+  name_jp: Dragon Monk Binding Law of Tathagata
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 30
+- !SkillRecord
+  desc_en: Multi-hit attack, Deal 150% damage (3 hits, 50% each)
+  desc_jp: Multi-hit attack, Deal 150% damage (3 hits, 50% each)
+  max_atk_pct: 150
+  name_en: Rakshasa Power
+  name_jp: Rakshasa Power
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -167,7 +176,7 @@ records:
 # 	Condition: 30% chance (ai:30 rnd:0)
 # Bind 1 random for 4 turns
 # [9] ESAttackMultihit(15:3060) -> Rakshasa Power
-# Enemy action
+# Multi-hit attack
 # [10] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 13
 # [11] ESFlagOperation(22:12) -> ESFlagOperation
@@ -188,6 +197,6 @@ records:
 # [16] ESOrbChangeAttack(48:3066) -> Chaos
 # Change Jammer to Light
 # [17] ESAttackMultihit(15:3062) -> Vicious Khakkhara Thrust
-# Enemy action
+# Multi-hit attack
 # [18] ESAttributeResist(72:3069) -> Xuanzang Passive
 # Reduce damage from Dark by 50%

@@ -29,6 +29,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 1 HP <= 69
+  name_jp: Turn 1 HP <= 69
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Voids status ailments for 10 turns
+  desc_jp: Voids status ailments for 10 turns
+  max_atk_pct: null
+  name_en: I won't lose!
+  name_jp: I won't lose!
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: When 1 enemy remains and HP <= 19
   name_jp: When 1 enemy remains and HP <= 19
   one_time: false
@@ -62,30 +80,12 @@ records:
   record_type_name: ACTION
   usage_pct: 50
 - !SkillRecord
-  desc_en: Deal 240% damage (3 hits, 80% each)
-  desc_jp: Deal 240% damage (3 hits, 80% each)
+  desc_en: Multi-hit attack, Deal 240% damage (3 hits, 80% each)
+  desc_jp: Multi-hit attack, Deal 240% damage (3 hits, 80% each)
   max_atk_pct: 240
   name_en: Storm Slash
   name_jp: Storm Slash
   one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 70
-  name_jp: HP <= 70
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Voids status ailments for 10 turns
-  desc_jp: Voids status ailments for 10 turns
-  max_atk_pct: null
-  name_en: I won't lose!
-  name_jp: I won't lose!
-  one_time: true
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -107,8 +107,8 @@ records:
   record_type_name: ACTION
   usage_pct: 30
 - !SkillRecord
-  desc_en: Deal 300% damage (5 hits, 60% each)
-  desc_jp: Deal 300% damage (5 hits, 60% each)
+  desc_en: Multi-hit attack, Deal 300% damage (5 hits, 60% each)
+  desc_jp: Multi-hit attack, Deal 300% damage (5 hits, 60% each)
   max_atk_pct: 300
   name_en: Tempest Slash
   name_jp: Tempest Slash
@@ -145,11 +145,11 @@ records:
 # Delay active skills by 3 turns
 # [6] ESAttackMultihit(15:8817) -> Tempest Slash
 # 	Condition: When < 40% hp (ai:100 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [7] ESColumnSpawnMulti(77:8815) -> Dragon Gale
 # 	Condition: 50% chance (ai:50 rnd:0)
 # Change 3rd, 4th column to Wood orbs
 # [8] ESAttackMultihit(15:8814) -> Storm Slash
-# Enemy action
+# Multi-hit attack
 # [9] ESEndPath(36:26) -> ESEndPath
 # end_turn

@@ -26,29 +26,11 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change Light to Dark, Deal 75% damage
-  desc_jp: Change Light to Dark, Deal 75% damage
-  max_atk_pct: 75
-  name_en: Dark Buddhist Magic
-  name_jp: Dark Buddhist Magic
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 50
-- !SkillRecord
-  desc_en: Deal 105% damage (3 hits, 35% each)
-  desc_jp: Deal 105% damage (3 hits, 35% each)
-  max_atk_pct: 105
-  name_en: Purple Dragon Summoning
-  name_jp: Purple Dragon Summoning
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -65,14 +47,41 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Light to Dark, Deal 75% damage
+  desc_jp: Change Light to Dark, Deal 75% damage
+  max_atk_pct: 75
+  name_en: Dark Buddhist Magic
+  name_jp: Dark Buddhist Magic
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Multi-hit attack, Deal 105% damage (3 hits, 35% each)
+  desc_jp: Multi-hit attack, Deal 105% damage (3 hits, 35% each)
+  max_atk_pct: 105
+  name_en: Purple Dragon Summoning
+  name_jp: Purple Dragon Summoning
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 30
   name_jp: HP <= 30
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 200% damage (4 hits, 50% each)
-  desc_jp: Deal 200% damage (4 hits, 50% each)
+  desc_en: Multi-hit attack, Deal 200% damage (4 hits, 50% each)
+  desc_jp: Multi-hit attack, Deal 200% damage (4 hits, 50% each)
   max_atk_pct: 200
   name_en: Hellbringer Flame Palm
   name_jp: Hellbringer Flame Palm
@@ -108,9 +117,9 @@ records:
 # Movetime -2s for 3 turns
 # [7] ESAttackMultihit(15:64) -> Hellbringer Flame Palm
 # 	Condition: When < 30% hp (ai:100 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [8] ESOrbChangeAttack(48:61) -> Dark Buddhist Magic
 # 	Condition: 50% chance (ai:50 rnd:0)
 # Change Light to Dark
 # [9] ESAttackMultihit(15:66) -> Purple Dragon Summoning
-# Enemy action
+# Multi-hit attack

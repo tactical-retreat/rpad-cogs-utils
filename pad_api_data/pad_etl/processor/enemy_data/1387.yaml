@@ -17,8 +17,8 @@ level: 1
 overrides: []
 records:
 - !SkillRecord
-  desc_en: Deal 75% damage (Preemptive)
-  desc_jp: Deal 75% damage (Preemptive)
+  desc_en: Multi-hit attack, Deal 75% damage (Preemptive)
+  desc_jp: Multi-hit attack, Deal 75% damage (Preemptive)
   max_atk_pct: 75
   name_en: '***** (Dragon Ball)'
   name_jp: '***** (Dragon Ball)'
@@ -29,8 +29,17 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
+  name_en: Execute below actions in order every 2 turns when HP <= 49
+  name_jp: Execute below actions in order every 2 turns when HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -64,7 +73,7 @@ records:
 # [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] ESAttackMultihit(15:1130) -> ***** (Dragon Ball)
-# Enemy action
+# Multi-hit attack
 # [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] ESOrbChangeAttack(48:1097) -> ***** (Dragon Ball)

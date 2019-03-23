@@ -17,8 +17,8 @@ level: 1
 overrides: []
 records:
 - !SkillRecord
-  desc_en: Deal 50% damage
-  desc_jp: Deal 50% damage
+  desc_en: Preemptive attack, Deal 50% damage
+  desc_jp: Preemptive attack, Deal 50% damage
   max_atk_pct: 50
   name_en: Preemptive
   name_jp: Preemptive
@@ -26,8 +26,35 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 100% damage (2 hits, 50% each)
-  desc_jp: Deal 100% damage (2 hits, 50% each)
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind 3 random cards for 3 turns
+  desc_jp: Bind 3 random cards for 3 turns
+  max_atk_pct: null
+  name_en: Curse of the Divine Tree
+  name_jp: Curse of the Divine Tree
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Multi-hit attack, Deal 100% damage (2 hits, 50% each)
+  desc_jp: Multi-hit attack, Deal 100% damage (2 hits, 50% each)
   max_atk_pct: 100
   name_en: Holy Breath
   name_jp: Holy Breath
@@ -44,30 +71,12 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 150% damage (2 hits, 75% each)
-  desc_jp: Deal 150% damage (2 hits, 75% each)
+  desc_en: Multi-hit attack, Deal 150% damage (2 hits, 75% each)
+  desc_jp: Multi-hit attack, Deal 150% damage (2 hits, 75% each)
   max_atk_pct: 150
   name_en: God Gaia Breath
   name_jp: God Gaia Breath
   one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Bind 3 random cards for 3 turns
-  desc_jp: Bind 3 random cards for 3 turns
-  max_atk_pct: null
-  name_en: Curse of the Divine Tree
-  name_jp: Curse of the Divine Tree
-  one_time: true
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -103,11 +112,11 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESAttackPreemptive(47:320) -> Divine Speed
-# Enemy action
+# Preemptive attack
 # [2] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 5
 # [3] ESAttackMultihit(15:251) -> Holy Breath
-# Enemy action
+# Multi-hit attack
 # [4] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [5] ESBindRandom(1:640) -> Curse of the Divine Tree
@@ -118,4 +127,4 @@ records:
 # Change Random to Wood
 # [7] ESAttackMultihit(15:231) -> God Gaia Breath
 # 	Condition: When < 50% hp (ai:100 rnd:0)
-# Enemy action
+# Multi-hit attack

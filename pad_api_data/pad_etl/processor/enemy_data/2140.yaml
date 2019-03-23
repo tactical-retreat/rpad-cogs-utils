@@ -26,6 +26,33 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Movetime -1s for 3 turns + Increase damage to 200% for the next 999 turns
+  desc_jp: Movetime -1s for 3 turns + Increase damage to 200% for the next 999 turns
+  max_atk_pct: null
+  name_en: I know how you think! + I know how to beat you!
+  name_jp: I know how you think! + I know how to beat you!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
   desc_en: Change Heal to Jammer, Deal 30% damage
   desc_jp: Change Heal to Jammer, Deal 30% damage
   max_atk_pct: 30
@@ -44,32 +71,14 @@ records:
   record_type_name: ACTION
   usage_pct: 30
 - !SkillRecord
-  desc_en: Deal 100% damage
-  desc_jp: Deal 100% damage
+  desc_en: Single hit attack, Deal 100% damage
+  desc_jp: Single hit attack, Deal 100% damage
   max_atk_pct: 100
   name_en: Disable Skill
   name_jp: Disable Skill
   one_time: false
   record_type_name: ACTION
   usage_pct: 30
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Movetime -1s for 3 turns + Increase damage to 200% for the next 999 turns
-  desc_jp: Movetime -1s for 3 turns + Increase damage to 200% for the next 999 turns
-  max_atk_pct: null
-  name_en: I know how you think! + I know how to beat you!
-  name_jp: I know how you think! + I know how to beat you!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### ES Modifiers
@@ -108,7 +117,7 @@ records:
 # Change 1st row to Jammer orbs
 # [11] ESAttackSinglehit(82:1) -> Disable Skill
 # 	Condition: 30% chance (ai:0 rnd:30)
-# Enemy action
+# Single hit attack
 # [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [13] ESBranchFlag(43:10) -> ESBranchFlag

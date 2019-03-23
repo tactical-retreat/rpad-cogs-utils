@@ -27,38 +27,11 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 100% damage
-  desc_jp: Deal 100% damage
-  max_atk_pct: 100
-  name_en: Shadow Punch
-  name_jp: Shadow Punch
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 33
-- !SkillRecord
-  desc_en: Deal 120% damage
-  desc_jp: Deal 120% damage
-  max_atk_pct: 120
-  name_en: Shadow Kick
-  name_jp: Shadow Kick
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 33
-- !SkillRecord
-  desc_en: Change Random to Wood, Deal 100% damage
-  desc_jp: Change Random to Wood, Deal 100% damage
-  max_atk_pct: 100
-  name_en: Shadow Beam
-  name_jp: Shadow Beam
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 34
-- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 74
-  name_jp: HP <= 74
+  name_en: Turn 1 HP <= 74
+  name_jp: Turn 1 HP <= 74
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -75,8 +48,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -89,6 +62,42 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Multi-hit attack, Deal 100% damage
+  desc_jp: Multi-hit attack, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Shadow Punch
+  name_jp: Shadow Punch
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 33
+- !SkillRecord
+  desc_en: Multi-hit attack, Deal 120% damage
+  desc_jp: Multi-hit attack, Deal 120% damage
+  max_atk_pct: 120
+  name_en: Shadow Kick
+  name_jp: Shadow Kick
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 33
+- !SkillRecord
+  desc_en: Change Random to Wood, Deal 100% damage
+  desc_jp: Change Random to Wood, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Shadow Beam
+  name_jp: Shadow Beam
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 34
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
@@ -166,10 +175,10 @@ records:
 # Branch on hp < 75, target rnd 12
 # [8] ESAttackMultihit(15:11729) -> Shadow Punch
 # 	Condition: 33% chance (ai:0 rnd:33)
-# Enemy action
+# Multi-hit attack
 # [9] ESAttackMultihit(15:11730) -> Shadow Kick
 # 	Condition: 33% chance (ai:0 rnd:33)
-# Enemy action
+# Multi-hit attack
 # [10] ESOrbChangeAttack(48:11731) -> Shadow Beam
 # 	Condition: 34% chance (ai:0 rnd:34)
 # Change Random to Wood

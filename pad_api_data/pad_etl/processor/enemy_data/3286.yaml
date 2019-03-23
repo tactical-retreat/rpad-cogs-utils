@@ -38,8 +38,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 120% damage (2 hits, 60% each)
-  desc_jp: Deal 120% damage (2 hits, 60% each)
+  desc_en: Multi-hit attack, Deal 120% damage (2 hits, 60% each)
+  desc_jp: Multi-hit attack, Deal 120% damage (2 hits, 60% each)
   max_atk_pct: 120
   name_en: The Demon Minions are acting up
   name_jp: The Demon Minions are acting up
@@ -68,35 +68,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Blind all orbs on the board, Deal 100% damage
-  desc_jp: Blind all orbs on the board, Deal 100% damage
-  max_atk_pct: 100
-  name_en: Darkness Mist
-  name_jp: Darkness Mist
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 50
-- !SkillRecord
-  desc_en: Deal 110% damage
-  desc_jp: Deal 110% damage
-  max_atk_pct: 110
-  name_en: Chaos Ray
-  name_jp: Chaos Ray
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -117,8 +90,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 2 HP <= 49
+  name_jp: Turn 2 HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -135,8 +108,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 3 HP <= 49
+  name_jp: Turn 3 HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -153,8 +126,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 4 HP <= 49
+  name_jp: Turn 4 HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -171,14 +144,41 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 100% damage
+  desc_jp: Blind all orbs on the board, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Darkness Mist
+  name_jp: Darkness Mist
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Multi-hit attack, Deal 110% damage
+  desc_jp: Multi-hit attack, Deal 110% damage
+  max_atk_pct: 110
+  name_en: Chaos Ray
+  name_jp: Chaos Ray
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 49
   name_jp: HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 360% damage (6 hits, 60% each)
-  desc_jp: Deal 360% damage (6 hits, 60% each)
+  desc_en: Multi-hit attack, Deal 360% damage (6 hits, 60% each)
+  desc_jp: Multi-hit attack, Deal 360% damage (6 hits, 60% each)
   max_atk_pct: 360
   name_en: Endless Nightmare
   name_jp: Endless Nightmare
@@ -238,7 +238,7 @@ records:
 # [12] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [13] ESAttackMultihit(15:5941) -> The Demon Minions are acting up
-# Enemy action
+# Multi-hit attack
 # [14] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 18
 # [15] ESFlagOperation(22:12) -> ESFlagOperation
@@ -252,7 +252,7 @@ records:
 # 	Condition: 50% chance (ai:50 rnd:0)
 # Blind all orbs on the board
 # [19] ESAttackMultihit(15:5953) -> Chaos Ray
-# Enemy action
+# Multi-hit attack
 # [20] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [21] ESSkillDelay(89:5943) -> Imma show you a big one!
@@ -272,6 +272,6 @@ records:
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Do nothing
 # [25] ESAttackMultihit(15:5949) -> Endless Nightmare
-# Enemy action
+# Multi-hit attack
 # [26] ESEndPath(36:26) -> ESEndPath
 # end_turn

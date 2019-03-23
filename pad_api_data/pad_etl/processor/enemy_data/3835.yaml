@@ -26,29 +26,11 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change Water to Fire, Deal 140% damage
-  desc_jp: Change Water to Fire, Deal 140% damage
-  max_atk_pct: 140
-  name_en: Sublimation
-  name_jp: Sublimation
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 50
-- !SkillRecord
-  desc_en: Deal 165% damage (3 hits, 55% each)
-  desc_jp: Deal 165% damage (3 hits, 55% each)
-  max_atk_pct: 165
-  name_en: Brutal Inferno Fangs
-  name_jp: Brutal Inferno Fangs
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -67,14 +49,41 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Water to Fire, Deal 140% damage
+  desc_jp: Change Water to Fire, Deal 140% damage
+  max_atk_pct: 140
+  name_en: Sublimation
+  name_jp: Sublimation
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Multi-hit attack, Deal 165% damage (3 hits, 55% each)
+  desc_jp: Multi-hit attack, Deal 165% damage (3 hits, 55% each)
+  max_atk_pct: 165
+  name_en: Brutal Inferno Fangs
+  name_jp: Brutal Inferno Fangs
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 40
   name_jp: HP <= 40
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Lock 4 random Fire, Water, Wood, Light, Dark, Heal orbs + Enemy action
-  desc_jp: Lock 4 random Fire, Water, Wood, Light, Dark, Heal orbs + Enemy action
+  desc_en: Lock 4 random Fire, Water, Wood, Light, Dark, Heal orbs + Multi-hit attack
+  desc_jp: Lock 4 random Fire, Water, Wood, Light, Dark, Heal orbs + Multi-hit attack
   max_atk_pct: null
   name_en: Incineration + Brutal Inferno Fangs
   name_jp: Incineration + Brutal Inferno Fangs
@@ -91,8 +100,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Lock 8 random Fire, Water, Wood, Light, Dark, Heal orbs + Enemy action
-  desc_jp: Lock 8 random Fire, Water, Wood, Light, Dark, Heal orbs + Enemy action
+  desc_en: Lock 8 random Fire, Water, Wood, Light, Dark, Heal orbs + Multi-hit attack
+  desc_jp: Lock 8 random Fire, Water, Wood, Light, Dark, Heal orbs + Multi-hit attack
   max_atk_pct: null
   name_en: Incineration + Brutal Inferno Fangs
   name_jp: Incineration + Brutal Inferno Fangs
@@ -109,8 +118,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Lock 12 random Fire, Water, Wood, Light, Dark, Heal orbs + Enemy action
-  desc_jp: Lock 12 random Fire, Water, Wood, Light, Dark, Heal orbs + Enemy action
+  desc_en: Lock 12 random Fire, Water, Wood, Light, Dark, Heal orbs + Multi-hit attack
+  desc_jp: Lock 12 random Fire, Water, Wood, Light, Dark, Heal orbs + Multi-hit attack
   max_atk_pct: null
   name_en: Incineration + Brutal Inferno Fangs
   name_jp: Incineration + Brutal Inferno Fangs
@@ -182,23 +191,23 @@ records:
 # 	[0] ESOrbLock(94:7803) -> Incineration
 # 	Lock 12 random Fire, Water, Wood, Light, Dark, Heal orbs
 # 	[1] ESAttackMultihit(15:7796) -> Brutal Inferno Fangs
-# 	Enemy action
+# 	Multi-hit attack
 # [11] SkillSet:
 # 	Condition: When < 30% hp (ai:100 rnd:0)
 # 	[0] ESOrbLock(94:7802) -> Incineration
 # 	Lock 8 random Fire, Water, Wood, Light, Dark, Heal orbs
 # 	[1] ESAttackMultihit(15:7796) -> Brutal Inferno Fangs
-# 	Enemy action
+# 	Multi-hit attack
 # [12] SkillSet:
 # 	Condition: When < 40% hp (ai:100 rnd:0)
 # 	[0] ESOrbLock(94:7801) -> Incineration
 # 	Lock 4 random Fire, Water, Wood, Light, Dark, Heal orbs
 # 	[1] ESAttackMultihit(15:7796) -> Brutal Inferno Fangs
-# 	Enemy action
+# 	Multi-hit attack
 # [13] ESOrbChangeAttackBits(108:7797) -> Sublimation
 # 	Condition: 50% chance (ai:50 rnd:0)
 # Change Water to Fire
 # [14] ESAttackMultihit(15:7796) -> Brutal Inferno Fangs
-# Enemy action
+# Multi-hit attack
 # [15] ESEndPath(36:26) -> ESEndPath
 # end_turn

@@ -30,26 +30,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 4
-  name_jp: Turn 4
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Blind all orbs for 3 turns
-  desc_jp: Blind all orbs for 3 turns
-  max_atk_pct: null
-  name_en: Solomon's Secret Key
-  name_jp: Solomon's Secret Key
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: Turn 1
+  name_jp: Turn 1
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -84,14 +66,32 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 4
+  name_jp: Turn 4
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 108% damage (3 hits, 36% each)
-  desc_jp: Deal 108% damage (3 hits, 36% each)
+  desc_en: Blind all orbs for 3 turns
+  desc_jp: Blind all orbs for 3 turns
+  max_atk_pct: null
+  name_en: Solomon's Secret Key
+  name_jp: Solomon's Secret Key
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Multi-hit attack, Deal 108% damage (3 hits, 36% each)
+  desc_jp: Multi-hit attack, Deal 108% damage (3 hits, 36% each)
   max_atk_pct: 108
   name_en: Sout Yadoreb
   name_jp: Sout Yadoreb
@@ -108,8 +108,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Enemy action + Blind random 6 orbs for 1 turns
-  desc_jp: Enemy action + Blind random 6 orbs for 1 turns
+  desc_en: Multi-hit attack + Blind random 6 orbs for 1 turns
+  desc_jp: Multi-hit attack + Blind random 6 orbs for 1 turns
   max_atk_pct: null
   name_en: Sout Yadoreb + Yasurek Sitta
   name_jp: Sout Yadoreb + Yasurek Sitta
@@ -126,8 +126,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 60% damage (2 hits, 30% each)
-  desc_jp: Deal 60% damage (2 hits, 30% each)
+  desc_en: Multi-hit attack, Deal 60% damage (2 hits, 30% each)
+  desc_jp: Multi-hit attack, Deal 60% damage (2 hits, 30% each)
   max_atk_pct: 60
   name_en: Pentacle of the Demonic Sword
   name_jp: Pentacle of the Demonic Sword
@@ -213,18 +213,18 @@ records:
 # [17] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [18] ESAttackMultihit(15:10925) -> Sout Yadoreb
-# Enemy action
+# Multi-hit attack
 # [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [20] SkillSet:
 # 	[0] ESAttackMultihit(15:10925) -> Sout Yadoreb
-# 	Enemy action
+# 	Multi-hit attack
 # 	[1] ESBlindStickyRandom(97:10926) -> Yasurek Sitta
 # 	Blind random 6 orbs for 1 turns
 # [21] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [22] ESAttackMultihit(15:10930) -> Pentacle of the Demonic Sword
-# Enemy action
+# Multi-hit attack
 # [23] SkillSet:
 # 	[0] ESStatusShield(20:10932) -> I wonder if your life means anything
 # 	Voids status ailments for 999 turns
@@ -237,7 +237,7 @@ records:
 # [24] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [25] ESAttackMultihit(15:10915) -> Intee Kamkadam
-# Enemy action
+# Multi-hit attack
 # [26] ESNone(0:0) -> ESNone
 # nothing
 # [27] ESNone(0:0) -> ESNone
@@ -260,7 +260,7 @@ records:
 # [34] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [35] ESAttributeBlock(107:10335) -> Red Exception
-# Unable to Fire orbs for 3 turns
+# Unable to match Fire orbs for 3 turns
 # [36] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [37] ESBombRandomSpawn(102:10316) -> Affliction Bombing

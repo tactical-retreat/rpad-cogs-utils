@@ -26,13 +26,49 @@ records:
   record_type_name: PREEMPT
   usage_pct: 0
 - !SkillRecord
-  desc_en: Deal 120% damage (Preemptive)
-  desc_jp: Deal 120% damage (Preemptive)
+  desc_en: Multi-hit attack, Deal 120% damage (Preemptive)
+  desc_jp: Multi-hit attack, Deal 120% damage (Preemptive)
   max_atk_pct: 120
   name_en: Reaping Cut
   name_jp: Reaping Cut
   one_time: false
   record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1 HP <= 19
+  name_jp: Turn 1 HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: 'Show message: Nehd''s appearance is changing|Help have been summoned'
+  desc_jp: 'Show message: Nehd''s appearance is changing|Help have been summoned'
+  max_atk_pct: null
+  name_en: Spe Dun Dragon Wood Transformation
+  name_jp: Spe Dun Dragon Wood Transformation
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: Multi-hit attack + Bind 1 random subs for 3 turns
+  desc_jp: Multi-hit attack + Bind 1 random subs for 3 turns
+  max_atk_pct: null
+  name_en: Reaping Cut + Restrain
+  name_jp: Reaping Cut + Restrain
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
   desc_en: 'Show message: Nehd''s appearance is changing|Help have been summoned'
@@ -89,35 +125,8 @@ records:
   record_type_name: ACTION
   usage_pct: 0
 - !SkillRecord
-  desc_en: Enemy action + Bind 1 random subs for 3 turns
-  desc_jp: Enemy action + Bind 1 random subs for 3 turns
-  max_atk_pct: null
-  name_en: Reaping Cut + Restrain
-  name_jp: Reaping Cut + Restrain
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: 'Show message: Nehd''s appearance is changing|Help have been summoned'
-  desc_jp: 'Show message: Nehd''s appearance is changing|Help have been summoned'
-  max_atk_pct: null
-  name_en: Spe Dun Dragon Wood Transformation
-  name_jp: Spe Dun Dragon Wood Transformation
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 0
-- !SkillRecord
-  desc_en: Deal 160% damage
-  desc_jp: Deal 160% damage
+  desc_en: Multi-hit attack, Deal 160% damage
+  desc_jp: Multi-hit attack, Deal 160% damage
   max_atk_pct: 160
   name_en: Reaping Dismissal
   name_jp: Reaping Dismissal
@@ -152,7 +161,7 @@ records:
 # [6] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [7] ESAttackMultihit(15:10351) -> Reaping Cut
-# Enemy action
+# Multi-hit attack
 # [8] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [9] ESBranchHP(28:18) -> ESBranchHP
@@ -174,12 +183,12 @@ records:
 # flag SET 0b11
 # [16] SkillSet:
 # 	[0] ESAttackMultihit(15:10351) -> Reaping Cut
-# 	Enemy action
+# 	Multi-hit attack
 # 	[1] ESBindRandomSub(65:10355) -> Restrain
 # 	Bind 1 random subs for 3 turns
 # [17] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [18] ESAttackMultihit(15:10357) -> Reaping Dismissal
-# Enemy action
+# Multi-hit attack
 # [19] ESEndPath(36:26) -> ESEndPath
 # end_turn

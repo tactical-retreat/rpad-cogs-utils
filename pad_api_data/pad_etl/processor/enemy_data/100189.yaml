@@ -17,8 +17,8 @@ level: 1
 overrides: []
 records:
 - !SkillRecord
-  desc_en: Absorb combo <= 6 damage for 99 turns + Enemy action (Preemptive)
-  desc_jp: Absorb combo <= 6 damage for 99 turns + Enemy action (Preemptive)
+  desc_en: Absorb combo <= 6 damage for 99 turns + Multi-hit attack (Preemptive)
+  desc_jp: Absorb combo <= 6 damage for 99 turns + Multi-hit attack (Preemptive)
   max_atk_pct: null
   name_en: Dark Matter + Holy Rite
   name_jp: Dark Matter + Holy Rite
@@ -26,29 +26,11 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change Random 2 to Jammer
-  desc_jp: Change Random 2 to Jammer
-  max_atk_pct: null
-  name_en: Mischief by God
-  name_jp: Mischief by God
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 10
-- !SkillRecord
-  desc_en: Deal 120% damage (3 hits, 40% each)
-  desc_jp: Deal 120% damage (3 hits, 40% each)
-  max_atk_pct: 120
-  name_en: Double Slap
-  name_jp: Double Slap
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 50
-- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 24
-  name_jp: HP <= 24
+  name_en: Turn 1 HP <= 24
+  name_jp: Turn 1 HP <= 24
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -65,14 +47,41 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Random 2 to Jammer
+  desc_jp: Change Random 2 to Jammer
+  max_atk_pct: null
+  name_en: Mischief by God
+  name_jp: Mischief by God
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 10
+- !SkillRecord
+  desc_en: Multi-hit attack, Deal 120% damage (3 hits, 40% each)
+  desc_jp: Multi-hit attack, Deal 120% damage (3 hits, 40% each)
+  max_atk_pct: 120
+  name_en: Double Slap
+  name_jp: Double Slap
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 24
   name_jp: HP <= 24
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 600% damage
-  desc_jp: Deal 600% damage
+  desc_en: Multi-hit attack, Deal 600% damage
+  desc_jp: Multi-hit attack, Deal 600% damage
   max_atk_pct: 600
   name_en: Graviton Bomb
   name_jp: Graviton Bomb
@@ -103,7 +112,7 @@ records:
 # 	[0] ESAbsorbCombo(67:4765) -> Dark Matter
 # 	Absorb combo <= 6 damage for 99 turns
 # 	[1] ESAttackMultihit(15:4764) -> Holy Rite
-# 	Enemy action
+# 	Multi-hit attack
 # [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] ESBranchHP(28:18) -> ESBranchHP
@@ -113,7 +122,7 @@ records:
 # Change Random 2 to Jammer
 # [8] ESAttackMultihit(15:4767) -> Double Slap
 # 	Condition: 50% chance (ai:50 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [10] ESBranchFlag(43:10) -> ESBranchFlag
@@ -123,4 +132,4 @@ records:
 # [12] ESBindAwoken(88:4768) -> Gathering Energy
 # Bind awoken skills for 1 turns
 # [13] ESAttackMultihit(15:4769) -> Graviton Bomb
-# Enemy action
+# Multi-hit attack

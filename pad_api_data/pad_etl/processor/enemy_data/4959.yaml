@@ -35,6 +35,51 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Movetime 50% for 5 turns + Rcv 50% for 5 turns
+  desc_jp: Movetime 50% for 5 turns + Rcv 50% for 5 turns
+  max_atk_pct: null
+  name_en: It's seems I underestimated you... + Fight with all your strength!
+  name_jp: It's seems I underestimated you... + Fight with all your strength!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1 HP <= 14
+  name_jp: Turn 1 HP <= 14
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy recover 50% hp
+  desc_jp: Enemy recover 50% hp
+  max_atk_pct: null
+  name_en: To be driven this far...
+  name_jp: To be driven this far...
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
   desc_en: Bind 1 random subs for 2 turns, Deal 85% damage
   desc_jp: Bind 1 random subs for 2 turns, Deal 85% damage
   max_atk_pct: 85
@@ -53,8 +98,8 @@ records:
   record_type_name: ACTION
   usage_pct: 20
 - !SkillRecord
-  desc_en: Deal 100% damage
-  desc_jp: Deal 100% damage
+  desc_en: Multi-hit attack, Deal 100% damage
+  desc_jp: Multi-hit attack, Deal 100% damage
   max_atk_pct: 100
   name_en: Hmm!
   name_jp: Hmm!
@@ -79,60 +124,6 @@ records:
   one_time: true
   record_type_name: ACTION
   usage_pct: 20
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Movetime 50% for 5 turns + Rcv 50% for 5 turns
-  desc_jp: Movetime 50% for 5 turns + Rcv 50% for 5 turns
-  max_atk_pct: null
-  name_en: It's seems I underestimated you... + Fight with all your strength!
-  name_jp: It's seems I underestimated you... + Fight with all your strength!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 14
-  name_jp: HP <= 14
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Enemy recover 50% hp
-  desc_jp: Enemy recover 50% hp
-  max_atk_pct: null
-  name_en: To be driven this far...
-  name_jp: To be driven this far...
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 14
-  name_jp: HP <= 14
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 200% damage
-  desc_jp: Deal 200% damage
-  max_atk_pct: 200
-  name_en: Judging Superwave
-  name_jp: Judging Superwave
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### ES Modifiers
@@ -172,7 +163,7 @@ records:
 # Enemy recover 5% hp
 # [10] ESAttackMultihit(15:12037) -> Hmm!
 # 	Condition: 20% chance (ai:0 rnd:20)
-# Enemy action
+# Multi-hit attack
 # [11] ESOrbChangeAttack(48:12038) -> Dye in darkness!
 # 	Condition: 20% chance (ai:0 rnd:20)
 # Change Random to Dark
@@ -201,7 +192,7 @@ records:
 # [21] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [22] ESAttackMultihit(15:12044) -> Judging Superwave
-# Enemy action
+# Multi-hit attack
 # [23] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [24] ESTurnChangePassive(106:12031) -> You're slow!

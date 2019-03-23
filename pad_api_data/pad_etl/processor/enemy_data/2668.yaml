@@ -30,6 +30,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Multi-hit attack, Deal 100% damage
+  desc_jp: Multi-hit attack, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Crown Rod
+  name_jp: Crown Rod
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 2
   name_jp: Turn 2
   one_time: false
@@ -48,32 +66,14 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: Turn 1 HP <= 9
+  name_jp: Turn 1 HP <= 9
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 100% damage
-  desc_jp: Deal 100% damage
-  max_atk_pct: 100
-  name_en: Crown Rod
-  name_jp: Crown Rod
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 10
-  name_jp: HP <= 10
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 300% damage
-  desc_jp: Deal 300% damage
+  desc_en: Multi-hit attack, Deal 300% damage
+  desc_jp: Multi-hit attack, Deal 300% damage
   max_atk_pct: 300
   name_en: Carat Full Swing
   name_jp: Carat Full Swing
@@ -113,9 +113,9 @@ records:
 # Branch on counter > 2, target rnd 9
 # [6] ESAttackMultihit(15:12341) -> Carat Full Swing
 # 	Condition: When < 10% hp (ai:100 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [7] ESAttackMultihit(15:12338) -> Crown Rod
-# Enemy action
+# Multi-hit attack
 # [8] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [9] ESBranchFlag(43:10) -> ESBranchFlag

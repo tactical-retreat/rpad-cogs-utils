@@ -47,8 +47,8 @@ records:
   record_type_name: ACTION
   usage_pct: 25
 - !SkillRecord
-  desc_en: Spawn random 3 Wood orbs + Enemy action
-  desc_jp: Spawn random 3 Wood orbs + Enemy action
+  desc_en: Spawn random 3 Wood orbs + Multi-hit attack
+  desc_jp: Spawn random 3 Wood orbs + Multi-hit attack
   max_atk_pct: null
   name_en: Magia Points have recovered + Arrow of Artemis
   name_jp: Magia Points have recovered + Arrow of Artemis
@@ -56,8 +56,8 @@ records:
   record_type_name: ACTION
   usage_pct: 33
 - !SkillRecord
-  desc_en: Spawn random 3 Wood orbs + Enemy action
-  desc_jp: Spawn random 3 Wood orbs + Enemy action
+  desc_en: Spawn random 3 Wood orbs + Multi-hit attack
+  desc_jp: Spawn random 3 Wood orbs + Multi-hit attack
   max_atk_pct: null
   name_en: Magia Points have recovered + Hera's Jealousy
   name_jp: Magia Points have recovered + Hera's Jealousy
@@ -71,62 +71,6 @@ records:
   name_en: Magia Points have recovered + Gaze of the Gorgon
   name_jp: Magia Points have recovered + Gaze of the Gorgon
   one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Spawn random 3 Wood orbs + Poison skyfall +20% for 3 turns
-  desc_jp: Spawn random 3 Wood orbs + Poison skyfall +20% for 3 turns
-  max_atk_pct: null
-  name_en: Magia Points have recovered + Hydra Venom
-  name_jp: Magia Points have recovered + Hydra Venom
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Spawn random 3 Wood orbs + Reduce damage from all sources by 50% for 3
-    turns
-  desc_jp: Spawn random 3 Wood orbs + Reduce damage from all sources by 50% for 3
-    turns
-  max_atk_pct: null
-  name_en: Magia Points have recovered + Aegis
-  name_jp: Magia Points have recovered + Aegis
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Spawn random 3 Wood orbs + Increase damage to 200% for the next 1 turns
-  desc_jp: Spawn random 3 Wood orbs + Increase damage to 200% for the next 1 turns
-  max_atk_pct: null
-  name_en: Magia Points have recovered + Magia Activation
-  name_jp: Magia Points have recovered + Magia Activation
-  one_time: false
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -151,8 +95,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
+  name_en: Turn 1 HP <= 74
+  name_jp: Turn 1 HP <= 74
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -169,8 +113,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -189,26 +133,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Spawn random 3 Wood orbs + Increase damage to 200% for the next 1 turns
-  desc_jp: Spawn random 3 Wood orbs + Increase damage to 200% for the next 1 turns
-  max_atk_pct: null
-  name_en: Magia Points have recovered + Magia Activation
-  name_jp: Magia Points have recovered + Magia Activation
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Execute below actions in order repeatedly
-  name_jp: Execute below actions in order repeatedly
+  name_en: Execute below actions in order every 2 turns when HP is full
+  name_jp: Execute below actions in order every 2 turns when HP is full
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -222,8 +148,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Spawn random 3 Wood orbs + Enemy action
-  desc_jp: Spawn random 3 Wood orbs + Enemy action
+  desc_en: Spawn random 3 Wood orbs + Multi-hit attack
+  desc_jp: Spawn random 3 Wood orbs + Multi-hit attack
   max_atk_pct: null
   name_en: Magia Points have recovered + Overdrive
   name_jp: Magia Points have recovered + Overdrive
@@ -327,7 +253,7 @@ records:
 # 	[0] ESRandomSpawn(92:10667) -> Magia Points have recovered
 # 	Spawn random 3 Wood orbs
 # 	[1] ESAttackMultihit(15:10670) -> Arrow of Artemis
-# 	Enemy action
+# 	Multi-hit attack
 # [20] ESSetCounter(27:17) -> ESSetCounter
 # counter - 1
 # [21] SkillSet:
@@ -335,7 +261,7 @@ records:
 # 	[0] ESRandomSpawn(92:10667) -> Magia Points have recovered
 # 	Spawn random 3 Wood orbs
 # 	[1] ESAttackMultihit(15:10671) -> Hera's Jealousy
-# 	Enemy action
+# 	Multi-hit attack
 # [22] SkillSet:
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
 # 	[0] ESRandomSpawn(92:10667) -> Magia Points have recovered
@@ -357,7 +283,7 @@ records:
 # 	[0] ESRandomSpawn(92:10667) -> Magia Points have recovered
 # 	Spawn random 3 Wood orbs
 # 	[1] ESAttackMultihit(15:10674) -> Talaria, the Winged Sandals
-# 	Enemy action
+# 	Multi-hit attack
 # [27] ESSetCounter(25:15) -> ESSetCounter
 # counter = 9
 # [28] SkillSet:
@@ -372,7 +298,7 @@ records:
 # 	[0] ESRandomSpawn(92:10667) -> Magia Points have recovered
 # 	Spawn random 3 Wood orbs
 # 	[1] ESAttackMultihit(15:10679) -> Overdrive
-# 	Enemy action
+# 	Multi-hit attack
 # [31] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [32] ESBranchFlag(43:10) -> ESBranchFlag

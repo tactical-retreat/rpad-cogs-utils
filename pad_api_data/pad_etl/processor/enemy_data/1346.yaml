@@ -27,38 +27,11 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
-  desc_en: Spawn random 3 Wood orbs, Deal 90% damage
-  desc_jp: Spawn random 3 Wood orbs, Deal 90% damage
-  max_atk_pct: 90
-  name_en: Piggy Attack
-  name_jp: Piggy Attack
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 35
-- !SkillRecord
-  desc_en: Deal 120% damage (2 hits, 60% each)
-  desc_jp: Deal 120% damage (2 hits, 60% each)
-  max_atk_pct: 120
-  name_en: Kitty Attack
-  name_jp: Kitty Attack
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 35
-- !SkillRecord
-  desc_en: Spawn random 3 Light orbs, Deal 90% damage
-  desc_jp: Spawn random 3 Light orbs, Deal 90% damage
-  max_atk_pct: 90
-  name_en: Hawk Attack
-  name_jp: Hawk Attack
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 30
-- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 70
-  name_jp: HP <= 70
+  name_en: Turn 1 HP <= 69
+  name_jp: Turn 1 HP <= 69
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -84,8 +57,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -102,14 +75,50 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Spawn random 3 Wood orbs, Deal 90% damage
+  desc_jp: Spawn random 3 Wood orbs, Deal 90% damage
+  max_atk_pct: 90
+  name_en: Piggy Attack
+  name_jp: Piggy Attack
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 35
+- !SkillRecord
+  desc_en: Multi-hit attack, Deal 120% damage (2 hits, 60% each)
+  desc_jp: Multi-hit attack, Deal 120% damage (2 hits, 60% each)
+  max_atk_pct: 120
+  name_en: Kitty Attack
+  name_jp: Kitty Attack
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 35
+- !SkillRecord
+  desc_en: Spawn random 3 Light orbs, Deal 90% damage
+  desc_jp: Spawn random 3 Light orbs, Deal 90% damage
+  max_atk_pct: 90
+  name_en: Hawk Attack
+  name_jp: Hawk Attack
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 30
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 19
   name_jp: HP <= 19
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 300% damage (3 hits, 100% each)
-  desc_jp: Deal 300% damage (3 hits, 100% each)
+  desc_en: Multi-hit attack, Deal 300% damage (3 hits, 100% each)
+  desc_jp: Multi-hit attack, Deal 300% damage (3 hits, 100% each)
   max_atk_pct: 300
   name_en: Simultaneous Animal Attack
   name_jp: Simultaneous Animal Attack
@@ -166,7 +175,7 @@ records:
 # Spawn random 3 Wood orbs
 # [12] ESAttackMultihit(15:3175) -> Kitty Attack
 # 	Condition: 35% chance (ai:0 rnd:35)
-# Enemy action
+# Multi-hit attack
 # [13] ESRandomSpawn(92:3176) -> Hawk Attack
 # 	Condition: 30% chance & when Fire, Water, Wood, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:0 rnd:30)
 # Spawn random 3 Light orbs
@@ -186,4 +195,4 @@ records:
 # [20] ESBindRandom(1:3178) -> Fertility Goddess's Embrace
 # Bind 6 random cards for 2~3 turns
 # [21] ESAttackMultihit(15:3177) -> Simultaneous Animal Attack
-# Enemy action
+# Multi-hit attack

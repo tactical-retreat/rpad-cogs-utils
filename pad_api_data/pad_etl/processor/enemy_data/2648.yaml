@@ -47,14 +47,32 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change 3rd, 4th column to Water orbs
+  desc_jp: Change 3rd, 4th column to Water orbs
+  max_atk_pct: null
+  name_en: Cutting Water Pincers
+  name_jp: Cutting Water Pincers
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 110% damage (2 hits, 55% each)
-  desc_jp: Deal 110% damage (2 hits, 55% each)
+  desc_en: Multi-hit attack, Deal 110% damage (2 hits, 55% each)
+  desc_jp: Multi-hit attack, Deal 110% damage (2 hits, 55% each)
   max_atk_pct: 110
   name_en: Cross Scissors
   name_jp: Cross Scissors
@@ -74,32 +92,14 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change 3rd, 4th column to Water orbs
-  desc_jp: Change 3rd, 4th column to Water orbs
-  max_atk_pct: null
-  name_en: Cutting Water Pincers
-  name_jp: Cutting Water Pincers
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 10
   name_jp: HP <= 10
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 400% damage (2 hits, 200% each)
-  desc_jp: Deal 400% damage (2 hits, 200% each)
+  desc_en: Multi-hit attack, Deal 400% damage (2 hits, 200% each)
+  desc_jp: Multi-hit attack, Deal 400% damage (2 hits, 200% each)
   max_atk_pct: 400
   name_en: Cancer's Crest - Comet
   name_jp: Cancer's Crest - Comet
@@ -138,13 +138,13 @@ records:
 # Branch on hp < 50, target rnd 14
 # [9] ESAttackMultihit(15:4042) -> Cancer's Crest - Comet
 # 	Condition: When < 10% hp (ai:100 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [10] ESDamageShield(74:4041) -> Hard Shell
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Reduce damage from all sources by 50% for 3 turns
 # [11] ESAttackMultihit(15:4040) -> Cross Scissors
 # 	Condition: 50% chance (ai:0 rnd:50)
-# Enemy action
+# Multi-hit attack
 # [12] ESRandomSpawn(92:4039) -> Jet Cannon
 # 	Condition: 50% chance & when Fire, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:0 rnd:50)
 # Spawn random 2 Water orbs

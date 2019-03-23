@@ -47,8 +47,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -69,8 +69,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute below actions in order repeatedly
-  name_jp: Execute below actions in order repeatedly
+  name_en: Execute below actions in order every 6 turns when HP is full
+  name_jp: Execute below actions in order every 6 turns when HP is full
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -84,8 +84,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Enemy action + Enemy action
-  desc_jp: Enemy action + Enemy action
+  desc_en: Multi-hit attack + Multi-hit attack
+  desc_jp: Multi-hit attack + Multi-hit attack
   max_atk_pct: null
   name_en: Vorpal Blade + Riot Gun
   name_jp: Vorpal Blade + Riot Gun
@@ -176,8 +176,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 300% damage (10 hits, 30% each)
-  desc_jp: Deal 300% damage (10 hits, 30% each)
+  desc_en: Multi-hit attack, Deal 300% damage (10 hits, 30% each)
+  desc_jp: Multi-hit attack, Deal 300% damage (10 hits, 30% each)
   max_atk_pct: 300
   name_en: All-Out Attack
   name_jp: All-Out Attack
@@ -227,9 +227,9 @@ records:
 # Branch on counter > 2, target rnd 11
 # [9] SkillSet:
 # 	[0] ESAttackMultihit(15:10003) -> Vorpal Blade
-# 	Enemy action
+# 	Multi-hit attack
 # 	[1] ESAttackMultihit(15:10004) -> Riot Gun
-# 	Enemy action
+# 	Multi-hit attack
 # [10] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [11] ESBranchCounter(32:22) -> ESBranchCounter
@@ -271,7 +271,7 @@ records:
 # [23] ESSetCounter(25:15) -> ESSetCounter
 # counter = 0
 # [24] ESAttackMultihit(15:10021) -> All-Out Attack
-# Enemy action
+# Multi-hit attack
 # [25] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [26] ESBranchFlag(43:10) -> ESBranchFlag

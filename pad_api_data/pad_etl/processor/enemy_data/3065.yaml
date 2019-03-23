@@ -26,20 +26,11 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 100% damage
-  desc_jp: Deal 100% damage
-  max_atk_pct: 100
-  name_en: Brave Smash
-  name_jp: Brave Smash
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 39
-  name_jp: HP <= 39
+  name_en: Turn 2 HP <= 39
+  name_jp: Turn 2 HP <= 39
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -56,14 +47,32 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Multi-hit attack, Deal 100% damage
+  desc_jp: Multi-hit attack, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Brave Smash
+  name_jp: Brave Smash
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 39
   name_jp: HP <= 39
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 500% damage (5 hits, 100% each)
-  desc_jp: Deal 500% damage (5 hits, 100% each)
+  desc_en: Multi-hit attack, Deal 500% damage (5 hits, 100% each)
+  desc_jp: Multi-hit attack, Deal 500% damage (5 hits, 100% each)
   max_atk_pct: 500
   name_en: Graviton Press
   name_jp: Graviton Press
@@ -94,13 +103,13 @@ records:
 # [4] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [5] ESAttackMultihit(15:5060) -> Brave Smash
-# Enemy action
+# Multi-hit attack
 # [6] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 40, target rnd 9
 # [7] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 12
 # [8] ESAttackMultihit(15:5060) -> Brave Smash
-# Enemy action
+# Multi-hit attack
 # [9] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 12
 # [10] ESFlagOperation(22:12) -> ESFlagOperation
@@ -108,4 +117,4 @@ records:
 # [11] ESInactivity(66:5062) -> Draco Summon TAMA!
 # Do nothing
 # [12] ESAttackMultihit(15:5061) -> Graviton Press
-# Enemy action
+# Multi-hit attack

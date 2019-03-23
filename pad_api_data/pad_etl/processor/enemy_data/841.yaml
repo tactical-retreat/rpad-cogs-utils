@@ -29,8 +29,35 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 70
-  name_jp: HP <= 70
+  name_en: HP <= 30
+  name_jp: HP <= 30
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Multi-hit attack, Deal 160% damage (4 hits, 40% each)
+  desc_jp: Multi-hit attack, Deal 160% damage (4 hits, 40% each)
+  max_atk_pct: 160
+  name_en: Toyama Whirlwind
+  name_jp: Toyama Whirlwind
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute below actions in order every 2 turns when HP <= 69
+  name_jp: Execute below actions in order every 2 turns when HP <= 69
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -41,24 +68,6 @@ records:
   name_en: Cherry Blossom Storm
   name_jp: Cherry Blossom Storm
   one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 30
-  name_jp: HP <= 30
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 160% damage (4 hits, 40% each)
-  desc_jp: Deal 160% damage (4 hits, 40% each)
-  max_atk_pct: 160
-  name_en: Toyama Whirlwind
-  name_jp: Toyama Whirlwind
-  one_time: false
   record_type_name: ACTION
   usage_pct: 100
 
@@ -87,7 +96,7 @@ records:
 # end_turn
 # [6] ESAttackMultihit(15:613) -> Toyama Whirlwind
 # 	Condition: When < 30% hp (ai:100 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [7] ESOrbChangeAttack(48:612) -> Cherry Blossom Storm
 # 	Condition: When < 70% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Change Random to Wood

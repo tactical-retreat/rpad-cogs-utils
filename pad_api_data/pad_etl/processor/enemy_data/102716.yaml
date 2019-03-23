@@ -53,8 +53,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 101% damage
-  desc_jp: Deal 101% damage
+  desc_en: Multi-hit attack, Deal 101% damage
+  desc_jp: Multi-hit attack, Deal 101% damage
   max_atk_pct: 101
   name_en: Hell Fire Greataxe
   name_jp: Hell Fire Greataxe
@@ -71,8 +71,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 204% damage (2 hits, 102% each)
-  desc_jp: Deal 204% damage (2 hits, 102% each)
+  desc_en: Multi-hit attack, Deal 204% damage (2 hits, 102% each)
+  desc_jp: Multi-hit attack, Deal 204% damage (2 hits, 102% each)
   max_atk_pct: 204
   name_en: Double Hammer Hit
   name_jp: Double Hammer Hit
@@ -89,8 +89,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 309% damage (3 hits, 103% each)
-  desc_jp: Deal 309% damage (3 hits, 103% each)
+  desc_en: Multi-hit attack, Deal 309% damage (3 hits, 103% each)
+  desc_jp: Multi-hit attack, Deal 309% damage (3 hits, 103% each)
   max_atk_pct: 309
   name_en: 3 Blazing Blades
   name_jp: 3 Blazing Blades
@@ -107,8 +107,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 416% damage (4 hits, 104% each)
-  desc_jp: Deal 416% damage (4 hits, 104% each)
+  desc_en: Multi-hit attack, Deal 416% damage (4 hits, 104% each)
+  desc_jp: Multi-hit attack, Deal 416% damage (4 hits, 104% each)
   max_atk_pct: 416
   name_en: Crimson Lion
   name_jp: Crimson Lion
@@ -125,8 +125,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 525% damage (5 hits, 105% each)
-  desc_jp: Deal 525% damage (5 hits, 105% each)
+  desc_en: Multi-hit attack, Deal 525% damage (5 hits, 105% each)
+  desc_jp: Multi-hit attack, Deal 525% damage (5 hits, 105% each)
   max_atk_pct: 525
   name_en: Painless Time-Split
   name_jp: Painless Time-Split
@@ -143,12 +143,30 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 636% damage (6 hits, 106% each)
-  desc_jp: Deal 636% damage (6 hits, 106% each)
+  desc_en: Multi-hit attack, Deal 636% damage (6 hits, 106% each)
+  desc_jp: Multi-hit attack, Deal 636% damage (6 hits, 106% each)
   max_atk_pct: 636
   name_en: Resounding Destructive Strength
   name_jp: Resounding Destructive Strength
   one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1 HP <= 0
+  name_jp: Turn 1 HP <= 0
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy recover 50% hp
+  desc_jp: Enemy recover 50% hp
+  max_atk_pct: null
+  name_en: Fortitude
+  name_jp: Fortitude
+  one_time: false
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -161,29 +179,11 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 3619% damage (7 hits, 517% each)
-  desc_jp: Deal 3619% damage (7 hits, 517% each)
+  desc_en: Multi-hit attack, Deal 3619% damage (7 hits, 517% each)
+  desc_jp: Multi-hit attack, Deal 3619% damage (7 hits, 517% each)
   max_atk_pct: 3619
   name_en: Divine Might
   name_jp: Divine Might
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 1
-  name_jp: HP <= 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Enemy recover 50% hp
-  desc_jp: Enemy recover 50% hp
-  max_atk_pct: null
-  name_en: Fortitude
-  name_jp: Fortitude
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -214,24 +214,24 @@ records:
 # Enemy recover 50% hp
 # [4] ESAttackMultihit(15:4046) -> Hell Fire Greataxe
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 64)
-# Enemy action
+# Multi-hit attack
 # [5] ESAttackMultihit(15:4047) -> Double Hammer Hit
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 32)
-# Enemy action
+# Multi-hit attack
 # [6] ESAttackMultihit(15:4048) -> 3 Blazing Blades
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 16)
-# Enemy action
+# Multi-hit attack
 # [7] ESAttackMultihit(15:4049) -> Crimson Lion
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 8)
-# Enemy action
+# Multi-hit attack
 # [8] ESAttackMultihit(15:4050) -> Painless Time-Split
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 4)
-# Enemy action
+# Multi-hit attack
 # [9] ESAttackMultihit(15:4051) -> Resounding Destructive Strength
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
-# Enemy action
+# Multi-hit attack
 # [10] ESAttackMultihit(15:4052) -> Divine Might
-# Enemy action
+# Multi-hit attack
 # [11] ESResolve(73:4056) -> Hephaestus Resolve
 # Survive attacks with 1 HP when HP > 50%
 # [12] ESAttributeResist(72:8802) -> HepaDra Fire Water Halved

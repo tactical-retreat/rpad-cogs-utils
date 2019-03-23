@@ -47,24 +47,6 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Voids status ailments for 5 turns + Delay active skills by 2~3 turns
-  desc_jp: Voids status ailments for 5 turns + Delay active skills by 2~3 turns
-  max_atk_pct: null
-  name_en: Immovable Faith + Duty to the Seal Lord
-  name_jp: Immovable Faith + Duty to the Seal Lord
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: Turn 2
   name_jp: Turn 2
   one_time: false
@@ -89,8 +71,8 @@ records:
   record_type_name: ACTION
   usage_pct: 25
 - !SkillRecord
-  desc_en: Deal 105% damage (3 hits, 35% each)
-  desc_jp: Deal 105% damage (3 hits, 35% each)
+  desc_en: Multi-hit attack, Deal 105% damage (3 hits, 35% each)
+  desc_jp: Multi-hit attack, Deal 105% damage (3 hits, 35% each)
   max_atk_pct: 105
   name_en: Sublime Sword Technique
   name_jp: Sublime Sword Technique
@@ -101,74 +83,20 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 3
-  name_jp: Turn 3
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change 3rd row to Heal orbs, Deal 120% damage
-  desc_jp: Change 3rd row to Heal orbs, Deal 120% damage
-  max_atk_pct: 120
-  name_en: Flash of Affection
-  name_jp: Flash of Affection
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 50
-- !SkillRecord
-  desc_en: Change 2nd row to Fire orbs, 4th row to Water orbs, Deal 100% damage
-  desc_jp: Change 2nd row to Fire orbs, 4th row to Water orbs, Deal 100% damage
-  max_atk_pct: 100
-  name_en: One Sword, Two Outcomes
-  name_jp: One Sword, Two Outcomes
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 25
-- !SkillRecord
-  desc_en: Deal 105% damage (3 hits, 35% each)
-  desc_jp: Deal 105% damage (3 hits, 35% each)
-  max_atk_pct: 105
-  name_en: Sublime Sword Technique
-  name_jp: Sublime Sword Technique
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 25
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
+  desc_en: Voids status ailments for 5 turns + Delay active skills by 2~3 turns
+  desc_jp: Voids status ailments for 5 turns + Delay active skills by 2~3 turns
   max_atk_pct: null
-  name_en: Turn 4
-  name_jp: Turn 4
+  name_en: Immovable Faith + Duty to the Seal Lord
+  name_jp: Immovable Faith + Duty to the Seal Lord
   one_time: false
-  record_type_name: DIVIDER
+  record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: Change 3rd row to Heal orbs, Deal 120% damage
-  desc_jp: Change 3rd row to Heal orbs, Deal 120% damage
-  max_atk_pct: 120
-  name_en: Flash of Affection
-  name_jp: Flash of Affection
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 50
-- !SkillRecord
-  desc_en: Change 2nd row to Fire orbs, 4th row to Water orbs, Deal 100% damage
-  desc_jp: Change 2nd row to Fire orbs, 4th row to Water orbs, Deal 100% damage
-  max_atk_pct: 100
-  name_en: One Sword, Two Outcomes
-  name_jp: One Sword, Two Outcomes
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 25
-- !SkillRecord
-  desc_en: Deal 105% damage (3 hits, 35% each)
-  desc_jp: Deal 105% damage (3 hits, 35% each)
-  max_atk_pct: 105
-  name_en: Sublime Sword Technique
-  name_jp: Sublime Sword Technique
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 25
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
@@ -179,8 +107,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Blind random 5~10 orbs for 1 turns + Enemy action
-  desc_jp: Blind random 5~10 orbs for 1 turns + Enemy action
+  desc_en: Blind random 5~10 orbs for 1 turns + Multi-hit attack
+  desc_jp: Blind random 5~10 orbs for 1 turns + Multi-hit attack
   max_atk_pct: null
   name_en: Frivolous Dark Moon + Holy Boisterous Dance of the Sword
   name_jp: Frivolous Dark Moon + Holy Boisterous Dance of the Sword
@@ -197,8 +125,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 400% damage (4 hits, 100% each)
-  desc_jp: Deal 400% damage (4 hits, 100% each)
+  desc_en: Multi-hit attack, Deal 400% damage (4 hits, 100% each)
+  desc_jp: Multi-hit attack, Deal 400% damage (4 hits, 100% each)
   max_atk_pct: 400
   name_en: Righteous Judgment
   name_jp: Righteous Judgment
@@ -263,17 +191,17 @@ records:
 # Change 2nd row to Fire orbs, 4th row to Water orbs
 # [18] ESAttackMultihit(15:10981) -> Sublime Sword Technique
 # 	Condition: 25% chance (ai:0 rnd:25)
-# Enemy action
+# Multi-hit attack
 # [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [20] ESAttackMultihit(15:10982) -> Righteous Judgment
-# Enemy action
+# Multi-hit attack
 # [21] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [22] SkillSet:
 # 	[0] ESBlindStickyRandom(97:10971) -> Frivolous Dark Moon
 # 	Blind random 5~10 orbs for 1 turns
 # 	[1] ESAttackMultihit(15:10789) -> Holy Boisterous Dance of the Sword
-# 	Enemy action
+# 	Multi-hit attack
 # [23] ESEndPath(36:26) -> ESEndPath
 # end_turn

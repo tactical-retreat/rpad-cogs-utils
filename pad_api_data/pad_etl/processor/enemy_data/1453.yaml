@@ -20,26 +20,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 75
-  name_jp: HP <= 75
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 125% damage
-  desc_jp: Deal 125% damage
-  max_atk_pct: 125
-  name_en: '***** (Saint Seiya)'
-  name_jp: '***** (Saint Seiya)'
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -62,8 +44,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 200% damage
-  desc_jp: Deal 200% damage
+  desc_en: Multi-hit attack, Deal 200% damage
+  desc_jp: Multi-hit attack, Deal 200% damage
   max_atk_pct: 200
   name_en: '***** (Saint Seiya)'
   name_jp: '***** (Saint Seiya)'
@@ -74,8 +56,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute below actions in order repeatedly
-  name_jp: Execute below actions in order repeatedly
+  name_en: Execute below actions in order every 2 turns when HP is full
+  name_jp: Execute below actions in order every 2 turns when HP is full
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -95,6 +77,33 @@ records:
   name_en: '***** (Saint Seiya)'
   name_jp: '***** (Saint Seiya)'
   one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute below actions in order every 2 turns when HP <= 74
+  name_jp: Execute below actions in order every 2 turns when HP <= 74
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Multi-hit attack, Deal 125% damage
+  desc_jp: Multi-hit attack, Deal 125% damage
+  max_atk_pct: 125
+  name_en: '***** (Saint Seiya)'
+  name_jp: '***** (Saint Seiya)'
+  one_time: false
   record_type_name: ACTION
   usage_pct: 100
 
@@ -118,7 +127,7 @@ records:
 # Change Random to Jammer
 # [3] ESAttackMultihit(15:1198) -> ***** (Saint Seiya)
 # 	Condition: When < 75% hp (ai:100 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [4] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [5] ESBranchFlag(43:10) -> ESBranchFlag
@@ -130,4 +139,4 @@ records:
 # [8] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [9] ESAttackMultihit(15:1200) -> ***** (Saint Seiya)
-# Enemy action
+# Multi-hit attack

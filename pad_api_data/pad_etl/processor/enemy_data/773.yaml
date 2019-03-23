@@ -18,8 +18,8 @@ level: 1
 overrides: []
 records:
 - !SkillRecord
-  desc_en: Deal 40% damage
-  desc_jp: Deal 40% damage
+  desc_en: Preemptive attack, Deal 40% damage
+  desc_jp: Preemptive attack, Deal 40% damage
   max_atk_pct: 40
   name_en: Preemptive
   name_jp: Preemptive
@@ -30,26 +30,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: When HP is full
-  name_jp: When HP is full
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 80%~120% damage (2~3 hits, 40% each)
-  desc_jp: Deal 80%~120% damage (2~3 hits, 40% each)
-  max_atk_pct: 120
-  name_en: Breath of the Blue Sky
-  name_jp: Breath of the Blue Sky
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: When HP is not full
-  name_jp: When HP is not full
+  name_en: Turn 1 HP <= 99
+  name_jp: Turn 1 HP <= 99
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -66,8 +48,35 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: When HP is not full
-  name_jp: When HP is not full
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Multi-hit attack, Deal 80%~120% damage (2~3 hits, 40% each)
+  desc_jp: Multi-hit attack, Deal 80%~120% damage (2~3 hits, 40% each)
+  max_atk_pct: 120
+  name_en: Breath of the Blue Sky
+  name_jp: Breath of the Blue Sky
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute below actions in order every 4 turns when HP <= 99
+  name_jp: Execute below actions in order every 4 turns when HP <= 99
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -77,6 +86,24 @@ records:
   max_atk_pct: null
   name_en: ESCountdown
   name_jp: ESCountdown
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 5
+  name_jp: Turn 5
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Multi-hit attack, Deal 1100% damage (5 hits, 220% each)
+  desc_jp: Multi-hit attack, Deal 1100% damage (5 hits, 220% each)
+  max_atk_pct: 1100
+  name_en: Lost Utopia
+  name_jp: Lost Utopia
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -100,7 +127,7 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESAttackPreemptive(47:478) -> Skydragon Flight
-# Enemy action
+# Preemptive attack
 # [2] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 100, target rnd 8
 # [3] ESInactivity(66:483) -> Roar of Ruin
@@ -111,8 +138,8 @@ records:
 # [5] ESCountdown(37:178) -> ESCountdown
 # countdown
 # [6] ESAttackMultihit(15:484) -> Lost Utopia
-# Enemy action
+# Multi-hit attack
 # [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [8] ESAttackMultihit(15:474) -> Breath of the Blue Sky
-# Enemy action
+# Multi-hit attack

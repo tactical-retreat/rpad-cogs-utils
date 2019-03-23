@@ -75,26 +75,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 150% damage (3 hits, 50% each)
-  desc_jp: Deal 150% damage (3 hits, 50% each)
-  max_atk_pct: 150
-  name_en: One way or another, you will fall!
-  name_jp: One way or another, you will fall!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 2 HP <= 49
+  name_jp: Turn 2 HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -113,8 +95,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 29
-  name_jp: HP <= 29
+  name_en: Turn 3 HP <= 29
+  name_jp: Turn 3 HP <= 29
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -131,14 +113,32 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Multi-hit attack, Deal 150% damage (3 hits, 50% each)
+  desc_jp: Multi-hit attack, Deal 150% damage (3 hits, 50% each)
+  max_atk_pct: 150
+  name_en: One way or another, you will fall!
+  name_jp: One way or another, you will fall!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 29
   name_jp: HP <= 29
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 140%~210% damage (2~3 hits, 70% each)
-  desc_jp: Deal 140%~210% damage (2~3 hits, 70% each)
+  desc_en: Multi-hit attack, Deal 140%~210% damage (2~3 hits, 70% each)
+  desc_jp: Multi-hit attack, Deal 140%~210% damage (2~3 hits, 70% each)
   max_atk_pct: 210
   name_en: Hyohh!!!
   name_jp: Hyohh!!!
@@ -149,8 +149,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute below actions in order repeatedly
-  name_jp: Execute below actions in order repeatedly
+  name_en: Execute below actions in order every 2 turns when HP is full
+  name_jp: Execute below actions in order every 2 turns when HP is full
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -182,8 +182,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 100% damage
-  desc_jp: Deal 100% damage
+  desc_en: Multi-hit attack, Deal 100% damage
+  desc_jp: Multi-hit attack, Deal 100% damage
   max_atk_pct: 100
   name_en: Hyohh!!!
   name_jp: Hyohh!!!
@@ -252,7 +252,7 @@ records:
 # Branch on hp < 30, target rnd 22
 # [16] ESAttackMultihit(15:5016) -> One way or another, you will fall!
 # 	Condition: When < 50% hp (ai:100 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [17] SkillSet:
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESRandomSpawn(92:5011) -> Shaaaah!!
@@ -260,7 +260,7 @@ records:
 # 	[1] ESRowSpawnMulti(79:5012) -> Shaaah!!
 # 	Change 3rd row to Fire orbs
 # [18] ESAttackMultihit(15:5009) -> Hyohh!!!
-# Enemy action
+# Multi-hit attack
 # [19] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [20] SkillSet:
@@ -275,7 +275,7 @@ records:
 # [23] ESOrbChangeAttack(48:5017) -> The Second Secret, "Guren Kaina"!!
 # Change Random to Fire
 # [24] ESAttackMultihit(15:5008) -> Hyohh!!!
-# Enemy action
+# Multi-hit attack
 # [25] SkillSet:
 # 	Condition: On death (ai:0 rnd:0)
 # 	[0] ESInactivity(66:4968) -> Feh! You disappoint me.

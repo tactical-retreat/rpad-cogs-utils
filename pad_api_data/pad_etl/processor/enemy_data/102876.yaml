@@ -92,6 +92,42 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Absorb Water damage for 1 turns + Change Heal to Poison
+  desc_jp: Absorb Water damage for 1 turns + Change Heal to Poison
+  max_atk_pct: null
+  name_en: Abyssal Shark Dragon's Trial + Chopping Ring of the Deep Sea
+  name_jp: Abyssal Shark Dragon's Trial + Chopping Ring of the Deep Sea
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1 HP <= 19
+  name_jp: Turn 1 HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy recover 55% hp + Increase damage to 200% for the next 999 turns
+  desc_jp: Enemy recover 55% hp + Increase damage to 200% for the next 999 turns
+  max_atk_pct: null
+  name_en: Conquering Will + Dragonbound's Wrath
+  name_jp: Conquering Will + Dragonbound's Wrath
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -107,8 +143,8 @@ records:
   record_type_name: ACTION
   usage_pct: 40
 - !SkillRecord
-  desc_en: Deal 120% damage (4 hits, 30% each)
-  desc_jp: Deal 120% damage (4 hits, 30% each)
+  desc_en: Multi-hit attack, Deal 120% damage (4 hits, 30% each)
+  desc_jp: Multi-hit attack, Deal 120% damage (4 hits, 30% each)
   max_atk_pct: 120
   name_en: Abyss Hole
   name_jp: Abyss Hole
@@ -128,41 +164,14 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Absorb Water damage for 1 turns + Change Heal to Poison
-  desc_jp: Absorb Water damage for 1 turns + Change Heal to Poison
-  max_atk_pct: null
-  name_en: Abyssal Shark Dragon's Trial + Chopping Ring of the Deep Sea
-  name_jp: Abyssal Shark Dragon's Trial + Chopping Ring of the Deep Sea
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 20
   name_jp: HP <= 20
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Enemy recover 55% hp + Increase damage to 200% for the next 999 turns
-  desc_jp: Enemy recover 55% hp + Increase damage to 200% for the next 999 turns
-  max_atk_pct: null
-  name_en: Conquering Will + Dragonbound's Wrath
-  name_jp: Conquering Will + Dragonbound's Wrath
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Enemy action + Change all orbs to Water, Dark, Heal
-  desc_jp: Enemy action + Change all orbs to Water, Dark, Heal
+  desc_en: Multi-hit attack + Change all orbs to Water, Dark, Heal
+  desc_jp: Multi-hit attack + Change all orbs to Water, Dark, Heal
   max_atk_pct: null
   name_en: Abyss Hole + Abyss Dark Ring
   name_jp: Abyss Hole + Abyss Dark Ring
@@ -214,7 +223,7 @@ records:
 # [9] SkillSet:
 # 	Condition: When < 20% hp (ai:100 rnd:0)
 # 	[0] ESAttackMultihit(15:4232) -> Abyss Hole
-# 	Enemy action
+# 	Multi-hit attack
 # 	[1] ESBoardChangeAttackBits(85:4225) -> Abyss Dark Ring
 # 	Change all orbs to Water, Dark, Heal
 # [10] ESBranchHP(28:18) -> ESBranchHP
@@ -234,7 +243,7 @@ records:
 # Change 1st column to Dark orbs, 2nd column to Water orbs
 # [17] ESAttackMultihit(15:4232) -> Abyss Hole
 # 	Condition: 50% chance (ai:50 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [18] ESRandomSpawn(92:4231) -> Abyss' Guidance
 # 	Condition: When fire, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 8 Water orbs

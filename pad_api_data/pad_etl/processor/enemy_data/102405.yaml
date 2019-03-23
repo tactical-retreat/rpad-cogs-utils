@@ -47,14 +47,32 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 2 HP <= 49
+  name_jp: Turn 2 HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind 4 random subs for 2~3 turns, Deal 100% damage
+  desc_jp: Bind 4 random subs for 2~3 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Pumpkin Charm
+  name_jp: Pumpkin Charm
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 110% damage (2 hits, 55% each)
-  desc_jp: Deal 110% damage (2 hits, 55% each)
+  desc_en: Multi-hit attack, Deal 110% damage (2 hits, 55% each)
+  desc_jp: Multi-hit attack, Deal 110% damage (2 hits, 55% each)
   max_atk_pct: 110
   name_en: Candle Nails
   name_jp: Candle Nails
@@ -67,24 +85,6 @@ records:
   max_atk_pct: 100
   name_en: Sweet Wink
   name_jp: Sweet Wink
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Bind 4 random subs for 2~3 turns, Deal 100% damage
-  desc_jp: Bind 4 random subs for 2~3 turns, Deal 100% damage
-  max_atk_pct: 100
-  name_en: Pumpkin Charm
-  name_jp: Pumpkin Charm
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -114,7 +114,7 @@ records:
 # Branch on hp < 50, target rnd 8
 # [5] ESAttackMultihit(15:11396) -> Candle Nails
 # 	Condition: 50% chance (ai:50 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [6] ESRandomSpawn(92:11398) -> Sweet Wink
 # 	Condition: When fire, water, wood, light, dark, heal, jammer, mortal poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 9 Poison orbs

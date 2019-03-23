@@ -17,20 +17,11 @@ level: 5
 overrides: []
 records:
 - !SkillRecord
-  desc_en: Change Heal to Water, Deal 100% damage
-  desc_jp: Change Heal to Water, Deal 100% damage
-  max_atk_pct: 100
-  name_en: Pounce Stance - Water
-  name_jp: Pounce Stance - Water
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -47,14 +38,32 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Heal to Water, Deal 100% damage
+  desc_jp: Change Heal to Water, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Pounce Stance - Water
+  name_jp: Pounce Stance - Water
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 1
   name_jp: HP <= 1
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 1000% damage
-  desc_jp: Deal 1000% damage
+  desc_en: Multi-hit attack, Deal 1000% damage
+  desc_jp: Multi-hit attack, Deal 1000% damage
   max_atk_pct: 1000
   name_en: Irritated Swat
   name_jp: Irritated Swat
@@ -81,7 +90,7 @@ records:
 # end_turn
 # [3] ESAttackMultihit(15:2052) -> Irritated Swat
 # 	Condition: When < 1% hp (ai:100 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [4] ESBindSkill(14:2051) -> Menace
 # 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Bind active skills for 2 turns

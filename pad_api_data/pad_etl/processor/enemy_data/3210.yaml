@@ -75,8 +75,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
+  name_en: Turn 1 HP <= 69
+  name_jp: Turn 1 HP <= 69
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -86,6 +86,24 @@ records:
   max_atk_pct: null
   name_en: Converging Flash
   name_jp: Converging Flash
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1 HP <= 9
+  name_jp: Turn 1 HP <= 9
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy recover 10% hp + Bind 6 random cards for 4 turns
+  desc_jp: Enemy recover 10% hp + Bind 6 random cards for 4 turns
+  max_atk_pct: null
+  name_en: Crisis Wisdom + Lightning strikes the field
+  name_jp: Crisis Wisdom + Lightning strikes the field
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -122,8 +140,35 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 70
-  name_jp: HP <= 70
+  name_en: HP <= 9
+  name_jp: HP <= 9
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Multi-hit attack, Deal 600% damage (6 hits, 100% each)
+  desc_jp: Multi-hit attack, Deal 600% damage (6 hits, 100% each)
+  max_atk_pct: 600
+  name_en: Six Flash Thunder Blade
+  name_jp: Six Flash Thunder Blade
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute below actions in order every 3 turns when HP <= 69
+  name_jp: Execute below actions in order every 3 turns when HP <= 69
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -134,42 +179,6 @@ records:
   name_en: Bolt Vajra
   name_jp: Bolt Vajra
   one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 9
-  name_jp: HP <= 9
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Enemy recover 10% hp + Bind 6 random cards for 4 turns
-  desc_jp: Enemy recover 10% hp + Bind 6 random cards for 4 turns
-  max_atk_pct: null
-  name_en: Crisis Wisdom + Lightning strikes the field
-  name_jp: Crisis Wisdom + Lightning strikes the field
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 9
-  name_jp: HP <= 9
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 600% damage (6 hits, 100% each)
-  desc_jp: Deal 600% damage (6 hits, 100% each)
-  max_atk_pct: 600
-  name_en: Six Flash Thunder Blade
-  name_jp: Six Flash Thunder Blade
-  one_time: false
   record_type_name: ACTION
   usage_pct: 100
 
@@ -241,7 +250,7 @@ records:
 # [23] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [24] ESAttackMultihit(15:5685) -> Six Flash Thunder Blade
-# Enemy action
+# Multi-hit attack
 # [25] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [26] ESResolve(73:5689) -> Resolve Light Wisdom King Dragon

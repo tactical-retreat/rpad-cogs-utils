@@ -49,44 +49,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 5
-  name_jp: Turn 5
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Rcv 50% for 7 turns + Reduce damage from all sources by 75% for 7 turns
-  desc_jp: Rcv 50% for 7 turns + Reduce damage from all sources by 75% for 7 turns
-  max_atk_pct: null
-  name_en: Don't mess with a demon! + Steel Demonskin
-  name_jp: Don't mess with a demon! + Steel Demonskin
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 12
-  name_jp: Turn 12
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Bind awoken skills for 1 turns + Enemy action
-  desc_jp: Bind awoken skills for 1 turns + Enemy action
-  max_atk_pct: null
-  name_en: You gonna keep dancing? + Fall here!
-  name_jp: You gonna keep dancing? + Fall here!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: Turn 2
+  name_jp: Turn 2
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -111,11 +75,85 @@ records:
   record_type_name: ACTION
   usage_pct: 50
 - !SkillRecord
-  desc_en: Deal 300% damage
-  desc_jp: Deal 300% damage
+  desc_en: Multi-hit attack, Deal 300% damage
+  desc_jp: Multi-hit attack, Deal 300% damage
   max_atk_pct: 300
   name_en: Strike
   name_jp: Strike
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 5
+  name_jp: Turn 5
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Rcv 50% for 7 turns + Reduce damage from all sources by 75% for 7 turns
+  desc_jp: Rcv 50% for 7 turns + Reduce damage from all sources by 75% for 7 turns
+  max_atk_pct: null
+  name_en: Don't mess with a demon! + Steel Demonskin
+  name_jp: Don't mess with a demon! + Steel Demonskin
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 6
+  name_jp: Turn 6
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Delay active skills by 1 turns, Deal 270% damage
+  desc_jp: Delay active skills by 1 turns, Deal 270% damage
+  max_atk_pct: 270
+  name_en: Helmet Splitter
+  name_jp: Helmet Splitter
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 33
+- !SkillRecord
+  desc_en: Lock 6 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 270% damage
+  desc_jp: Lock 6 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 270% damage
+  max_atk_pct: 270
+  name_en: Forward Kick
+  name_jp: Forward Kick
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Multi-hit attack, Deal 300% damage
+  desc_jp: Multi-hit attack, Deal 300% damage
+  max_atk_pct: 300
+  name_en: Strike
+  name_jp: Strike
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 12
+  name_jp: Turn 12
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind awoken skills for 1 turns + Multi-hit attack
+  desc_jp: Bind awoken skills for 1 turns + Multi-hit attack
+  max_atk_pct: null
+  name_en: You gonna keep dancing? + Fall here!
+  name_jp: You gonna keep dancing? + Fall here!
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -129,8 +167,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 5000% damage (5 hits, 1000% each)
-  desc_jp: Deal 5000% damage (5 hits, 1000% each)
+  desc_en: Multi-hit attack, Deal 5000% damage (5 hits, 1000% each)
+  desc_jp: Multi-hit attack, Deal 5000% damage (5 hits, 1000% each)
   max_atk_pct: 5000
   name_en: Wildflower Bonebreaker
   name_jp: Wildflower Bonebreaker
@@ -166,7 +204,7 @@ records:
 # end_turn
 # [6] ESAttackMultihit(15:8046) -> Wildflower Bonebreaker
 # 	Condition: When < 5% hp (ai:100 rnd:0)
-# Enemy action
+# Multi-hit attack
 # [7] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
 # [8] ESAttackUpStatus(18:8042) -> Crafty
@@ -181,7 +219,7 @@ records:
 # 	Condition: 50% chance (ai:50 rnd:0)
 # Lock 6 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [12] ESAttackMultihit(15:8045) -> Strike
-# Enemy action
+# Multi-hit attack
 # [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [14] SkillSet:
@@ -199,7 +237,7 @@ records:
 # 	Condition: 50% chance (ai:50 rnd:0)
 # Lock 6 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [18] ESAttackMultihit(15:8045) -> Strike
-# Enemy action
+# Multi-hit attack
 # [19] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [20] ESBranchFlag(43:10) -> ESBranchFlag
@@ -210,6 +248,6 @@ records:
 # 	[0] ESBindAwoken(88:8047) -> You gonna keep dancing?
 # 	Bind awoken skills for 1 turns
 # 	[1] ESAttackMultihit(15:8048) -> Fall here!
-# 	Enemy action
+# 	Multi-hit attack
 # [23] ESEndPath(36:26) -> ESEndPath
 # end_turn
