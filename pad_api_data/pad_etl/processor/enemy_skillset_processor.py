@@ -898,6 +898,7 @@ def clean_skillset(skillset: ProcessedSkillset):
     skillset.hp_skill_groups.sort(key=lambda x: x.hp, reverse=True)
 
     # Collapse unnecessary outputs
+    skillset.timed_skill_groups = collapse_repeating_groups(skillset.timed_skill_groups)
     skillset.repeating_skill_groups = collapse_repeating_groups(skillset.repeating_skill_groups)
 
     return skillset
