@@ -8,7 +8,7 @@ monster_name_en: Godly Knight of the Sky, Verche
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 3 unused actions
+- Found 4 unused actions
 
 ############################################################
 ### Data @ 1
@@ -36,11 +36,20 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
+  desc_en: Change Jammer to Light, Deal 220% damage
+  desc_jp: Change Jammer to Light, Deal 220% damage
+  max_atk_pct: 220
+  name_en: Conviction
+  name_jp: Conviction
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1 HP <= 69
-  name_jp: Turn 1 HP <= 69
+  name_en: HP <= 70
+  name_jp: HP <= 70
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -53,48 +62,15 @@ records:
   one_time: true
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 1 HP <= 49
-  name_jp: Turn 1 HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Absorb Dark damage for 5 turns
-  desc_jp: Absorb Dark damage for 5 turns
-  max_atk_pct: null
-  name_en: Saint Barrier
-  name_jp: Saint Barrier
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change Jammer to Light, Deal 220% damage
-  desc_jp: Change Jammer to Light, Deal 220% damage
-  max_atk_pct: 220
-  name_en: Conviction
-  name_jp: Conviction
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Unused Actions
 ############################################################
 # ESSkillDelay(89:4343) -> Penalty
 # Delay active skills by 3 turns
+# ESAbsorbAttribute(53:4347) -> Saint Barrier
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Absorb Dark damage for 5 turns
 # ESOrbChangeAttack(48:4344) -> Justice Spear
 # Change Dark to Jammer
 # ESRandomSpawn(92:4349) -> Force Lightning

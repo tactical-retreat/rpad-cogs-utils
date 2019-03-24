@@ -7,7 +7,8 @@ monster_id: 100027
 monster_name_en: Alt. Lil' Green Dragon
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 1 unused actions
 
 ############################################################
 ### Data @ 1
@@ -16,24 +17,6 @@ warnings: []
 level: 1
 overrides: []
 records:
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 2 HP <= 49
-  name_jp: Turn 2 HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Increase damage to 200% for the next 99 turns
-  desc_jp: Increase damage to 200% for the next 99 turns
-  max_atk_pct: null
-  name_en: Anger
-  name_jp: Anger
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
@@ -56,8 +39,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute below actions in order every 2 turns when HP is full
-  name_jp: Execute below actions in order every 2 turns when HP is full
+  name_en: Execute below actions in order repeatedly
+  name_jp: Execute below actions in order repeatedly
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -80,6 +63,12 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# ESAttackUPCooldown(19:7454) -> Anger
+# 	Condition: When < 50% hp , one-time use, after 1 turns (ai:100 rnd:0) (one-time: 1)
+# Increase damage to 200% for the next 99 turns
 ############################################################
 ### ES Modifiers
 ############################################################

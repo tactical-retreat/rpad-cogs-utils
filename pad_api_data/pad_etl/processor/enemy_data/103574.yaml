@@ -35,10 +35,10 @@ records:
   record_type_name: PASSIVE
   usage_pct: 100
 - !SkillRecord
-  desc_en: Void damage >= 10000000 for 999 turns + Rcv 200% for 9 turns + Deal 760%
-    damage (Preemptive)
-  desc_jp: Void damage >= 10000000 for 999 turns + Rcv 200% for 9 turns + Deal 760%
-    damage (Preemptive)
+  desc_en: Void damage >= 10000000 for 999 turns + Rcv 200% for 9 turns + Enemy action
+    (Preemptive)
+  desc_jp: Void damage >= 10000000 for 999 turns + Rcv 200% for 9 turns + Enemy action
+    (Preemptive)
   max_atk_pct: null
   name_en: Blaze Armor + Salvation Flame + Crossdraw Breath
   name_jp: Blaze Armor + Salvation Flame + Crossdraw Breath
@@ -46,39 +46,10 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 1 HP <= 49
-  name_jp: Turn 1 HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change own attribute to random one of Fire, Light + Voids status ailments
-    for 999 turns + Unable to match Dark orbs for 3 turns
-  desc_jp: Change own attribute to random one of Fire, Light + Voids status ailments
-    for 999 turns + Unable to match Dark orbs for 3 turns
-  max_atk_pct: null
-  name_en: Bonfire + Guardian Dragon Formation + Pure Blaze
-  name_jp: Bonfire + Guardian Dragon Formation + Pure Blaze
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Fix orb movement starting point to random position on the board + Deal
-    450% damage (3 hits, 150% each)
-  desc_jp: Fix orb movement starting point to random position on the board + Deal
-    450% damage (3 hits, 150% each)
+  desc_en: Fix orb movement starting point to random position on the board + Enemy
+    action
+  desc_jp: Fix orb movement starting point to random position on the board + Enemy
+    action
   max_atk_pct: null
   name_en: First Glisten + Triple Blaze
   name_jp: First Glisten + Triple Blaze
@@ -95,10 +66,21 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Fix orb movement starting point to random position on the board + Deal
-    600% damage (6 hits, 100% each)
-  desc_jp: Fix orb movement starting point to random position on the board + Deal
-    600% damage (6 hits, 100% each)
+  desc_en: Change own attribute to random one of Fire, Light + Voids status ailments
+    for 999 turns + Unable to Dark orbs for 3 turns
+  desc_jp: Change own attribute to random one of Fire, Light + Voids status ailments
+    for 999 turns + Unable to Dark orbs for 3 turns
+  max_atk_pct: null
+  name_en: Bonfire + Guardian Dragon Formation + Pure Blaze
+  name_jp: Bonfire + Guardian Dragon Formation + Pure Blaze
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Fix orb movement starting point to random position on the board + Enemy
+    action
+  desc_jp: Fix orb movement starting point to random position on the board + Enemy
+    action
   max_atk_pct: null
   name_en: First Glisten + Fanning Breath
   name_jp: First Glisten + Fanning Breath
@@ -115,10 +97,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change own attribute to random one of Fire, Light + Deal 10000% damage
-    (5 hits, 2000% each)
-  desc_jp: Change own attribute to random one of Fire, Light + Deal 10000% damage
-    (5 hits, 2000% each)
+  desc_en: Change own attribute to random one of Fire, Light + Enemy action
+  desc_jp: Change own attribute to random one of Fire, Light + Enemy action
   max_atk_pct: null
   name_en: Bonfire + Burst End
   name_jp: Bonfire + Burst End
@@ -167,7 +147,7 @@ records:
 # 	[1] ESStatusShield(20:6608) -> Guardian Dragon Formation
 # 	Voids status ailments for 999 turns
 # 	[2] ESAttributeBlock(107:6740) -> Pure Blaze
-# 	Unable to match Dark orbs for 3 turns
+# 	Unable to Dark orbs for 3 turns
 # [8] SkillSet:
 # 	Condition: When < 50% hp (ai:100 rnd:0)
 # 	[0] ESFixedStart(101:6610) -> First Glisten

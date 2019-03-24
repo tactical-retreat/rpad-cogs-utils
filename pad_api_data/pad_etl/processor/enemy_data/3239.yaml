@@ -8,7 +8,7 @@ monster_name_en: Reincarnated Neptune
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 2 unused actions
+- Found 3 unused actions
 
 ############################################################
 ### Data @ 1
@@ -37,32 +37,14 @@ records:
   usage_pct: 100
 - !SkillRecord
   desc_en: Voids status ailments for 999 turns + Void damage >= 10000000 for 999 turns
-    + Delay active skills by 3 turns, Deal 125% damage (Preemptive)
+    + Delay active skills by 3 turns (Preemptive)
   desc_jp: Voids status ailments for 999 turns + Void damage >= 10000000 for 999 turns
-    + Delay active skills by 3 turns, Deal 125% damage (Preemptive)
+    + Delay active skills by 3 turns (Preemptive)
   max_atk_pct: null
   name_en: That's a good look + Try to beat me! + Darkstrom
   name_jp: That's a good look + Try to beat me! + Darkstrom
   one_time: true
   record_type_name: PREEMPT
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change Poison to Mortal Poison, Deal 150% damage
-  desc_jp: Change Poison to Mortal Poison, Deal 150% damage
-  max_atk_pct: 150
-  name_en: Chaostrom
-  name_jp: Chaostrom
-  one_time: false
-  record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
   desc_en: ''
@@ -86,8 +68,26 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1 HP <= 49
-  name_jp: Turn 1 HP <= 49
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Poison to Mortal Poison, Deal 150% damage
+  desc_jp: Change Poison to Mortal Poison, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Chaostrom
+  name_jp: Chaostrom
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -99,24 +99,6 @@ records:
   max_atk_pct: null
   name_en: Finally, you will struggle... + Prepare yourself!
   name_jp: Finally, you will struggle... + Prepare yourself!
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 1 HP <= 0
-  name_jp: Turn 1 HP <= 0
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Enemy recover 50% hp + Reduce damage from all sources by 75% for 99 turns
-  desc_jp: Enemy recover 50% hp + Reduce damage from all sources by 75% for 99 turns
-  max_atk_pct: null
-  name_en: How regrettable + Finally, you will struggle
-  name_jp: How regrettable + Finally, you will struggle
   one_time: true
   record_type_name: ACTION
   usage_pct: 100
@@ -148,6 +130,12 @@ records:
 # ESAttackMultihit(15:11665) -> Double Scissors
 # 	Condition: 50% chance (ai:0 rnd:50)
 # Enemy action
+# SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# 	[0] ESRecoverEnemy(86:11670) -> How regrettable
+# 	Enemy recover 50% hp
+# 	[1] ESDamageShield(74:11671) -> Finally, you will struggle
+# 	Reduce damage from all sources by 75% for 99 turns
 ############################################################
 ### ES Modifiers
 ############################################################

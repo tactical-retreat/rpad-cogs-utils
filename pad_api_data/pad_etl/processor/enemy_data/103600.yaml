@@ -36,10 +36,8 @@ records:
   record_type_name: PASSIVE
   usage_pct: 100
 - !SkillRecord
-  desc_en: Voids status ailments for 999 turns + Unable to match Heal orbs for 3 turns
-    (Preemptive)
-  desc_jp: Voids status ailments for 999 turns + Unable to match Heal orbs for 3 turns
-    (Preemptive)
+  desc_en: Voids status ailments for 999 turns + Unable to Heal orbs for 3 turns (Preemptive)
+  desc_jp: Voids status ailments for 999 turns + Unable to Heal orbs for 3 turns (Preemptive)
   max_atk_pct: null
   name_en: Saint's Robe + Staff of Destiny
   name_jp: Saint's Robe + Staff of Destiny
@@ -61,6 +59,24 @@ records:
   max_atk_pct: null
   name_en: Corsier
   name_jp: Corsier
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 10 turns
+  desc_jp: Reduce damage from all sources by 50% for 10 turns
+  max_atk_pct: null
+  name_en: Sanctuary
+  name_jp: Sanctuary
   one_time: true
   record_type_name: ACTION
   usage_pct: 100
@@ -92,8 +108,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Blind all orbs on the board, Deal 100% damage + Player recover 100% hp
-  desc_jp: Blind all orbs on the board, Deal 100% damage + Player recover 100% hp
+  desc_en: Blind all orbs on the board + Player recover 100% hp
+  desc_jp: Blind all orbs on the board + Player recover 100% hp
   max_atk_pct: null
   name_en: Goudenbel + Cure
   name_jp: Goudenbel + Cure
@@ -110,10 +126,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change own attribute to random one of Dark, Light + Deal 140% damage (2
-    hits, 70% each)
-  desc_jp: Change own attribute to random one of Dark, Light + Deal 140% damage (2
-    hits, 70% each)
+  desc_en: Change own attribute to random one of Dark, Light + Enemy action
+  desc_jp: Change own attribute to random one of Dark, Light + Enemy action
   max_atk_pct: null
   name_en: Another Fate + Arentillia
   name_jp: Another Fate + Arentillia
@@ -124,32 +138,14 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1 HP <= 79
-  name_jp: Turn 1 HP <= 79
+  name_en: Turn 4
+  name_jp: Turn 4
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Reduce damage from all sources by 50% for 10 turns
-  desc_jp: Reduce damage from all sources by 50% for 10 turns
-  max_atk_pct: null
-  name_en: Sanctuary
-  name_jp: Sanctuary
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 4 HP <= 49
-  name_jp: Turn 4 HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change own attribute to Light + Deal 140% damage (2 hits, 70% each)
-  desc_jp: Change own attribute to Light + Deal 140% damage (2 hits, 70% each)
+  desc_en: Change own attribute to Light + Enemy action
+  desc_jp: Change own attribute to Light + Enemy action
   max_atk_pct: null
   name_en: Apotheosis Omen + Arentillia
   name_jp: Apotheosis Omen + Arentillia
@@ -160,8 +156,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1 HP <= 34
-  name_jp: Turn 1 HP <= 34
+  name_en: HP <= 35
+  name_jp: HP <= 35
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -174,132 +170,6 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 2 HP <= 34
-  name_jp: Turn 2 HP <= 34
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Reduce damage from all sources by 50% for 10 turns
-  desc_jp: Reduce damage from all sources by 50% for 10 turns
-  max_atk_pct: null
-  name_en: Sanctuary
-  name_jp: Sanctuary
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 3 HP <= 34
-  name_jp: Turn 3 HP <= 34
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 140% damage (2 hits, 70% each)
-  desc_jp: Deal 140% damage (2 hits, 70% each)
-  max_atk_pct: 140
-  name_en: Arentillia
-  name_jp: Arentillia
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 4 HP <= 34
-  name_jp: Turn 4 HP <= 34
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Blind all orbs on the board, Deal 100% damage + Player recover 100% hp
-  desc_jp: Blind all orbs on the board, Deal 100% damage + Player recover 100% hp
-  max_atk_pct: null
-  name_en: Goudenbel + Cure
-  name_jp: Goudenbel + Cure
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 5 HP <= 34
-  name_jp: Turn 5 HP <= 34
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change own attribute to Light + Deal 140% damage (2 hits, 70% each)
-  desc_jp: Change own attribute to Light + Deal 140% damage (2 hits, 70% each)
-  max_atk_pct: null
-  name_en: Apotheosis Omen + Arentillia
-  name_jp: Apotheosis Omen + Arentillia
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Unable to match Fire orbs for 2 turns
-  desc_jp: Unable to match Fire orbs for 2 turns
-  max_atk_pct: null
-  name_en: Staff of Destiny
-  name_jp: Staff of Destiny
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 20
-- !SkillRecord
-  desc_en: Unable to match Water orbs for 2 turns
-  desc_jp: Unable to match Water orbs for 2 turns
-  max_atk_pct: null
-  name_en: Staff of Destiny
-  name_jp: Staff of Destiny
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 20
-- !SkillRecord
-  desc_en: Unable to match Wood orbs for 2 turns
-  desc_jp: Unable to match Wood orbs for 2 turns
-  max_atk_pct: null
-  name_en: Staff of Destiny
-  name_jp: Staff of Destiny
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 20
-- !SkillRecord
-  desc_en: Unable to match Light orbs for 2 turns
-  desc_jp: Unable to match Light orbs for 2 turns
-  max_atk_pct: null
-  name_en: Staff of Destiny
-  name_jp: Staff of Destiny
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 20
-- !SkillRecord
-  desc_en: Unable to match Dark orbs for 2 turns
-  desc_jp: Unable to match Dark orbs for 2 turns
-  max_atk_pct: null
-  name_en: Staff of Destiny
-  name_jp: Staff of Destiny
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 20
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
@@ -340,8 +210,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute below actions in order every 2 turns when HP is full
-  name_jp: Execute below actions in order every 2 turns when HP is full
+  name_en: Execute below actions in order repeatedly
+  name_jp: Execute below actions in order repeatedly
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -355,8 +225,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Unable to match Fire orbs for 2 turns
-  desc_jp: Unable to match Fire orbs for 2 turns
+  desc_en: Unable to Fire orbs for 2 turns
+  desc_jp: Unable to Fire orbs for 2 turns
   max_atk_pct: null
   name_en: Staff of Destiny
   name_jp: Staff of Destiny
@@ -364,8 +234,8 @@ records:
   record_type_name: ACTION
   usage_pct: 20
 - !SkillRecord
-  desc_en: Unable to match Wood orbs for 2 turns
-  desc_jp: Unable to match Wood orbs for 2 turns
+  desc_en: Unable to Water orbs for 2 turns
+  desc_jp: Unable to Water orbs for 2 turns
   max_atk_pct: null
   name_en: Staff of Destiny
   name_jp: Staff of Destiny
@@ -373,8 +243,26 @@ records:
   record_type_name: ACTION
   usage_pct: 20
 - !SkillRecord
-  desc_en: Unable to match Dark orbs for 2 turns
-  desc_jp: Unable to match Dark orbs for 2 turns
+  desc_en: Unable to Wood orbs for 2 turns
+  desc_jp: Unable to Wood orbs for 2 turns
+  max_atk_pct: null
+  name_en: Staff of Destiny
+  name_jp: Staff of Destiny
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 20
+- !SkillRecord
+  desc_en: Unable to Light orbs for 2 turns
+  desc_jp: Unable to Light orbs for 2 turns
+  max_atk_pct: null
+  name_en: Staff of Destiny
+  name_jp: Staff of Destiny
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 20
+- !SkillRecord
+  desc_en: Unable to Dark orbs for 2 turns
+  desc_jp: Unable to Dark orbs for 2 turns
   max_atk_pct: null
   name_en: Staff of Destiny
   name_jp: Staff of Destiny
@@ -387,69 +275,6 @@ records:
   max_atk_pct: null
   name_en: Turn 6
   name_jp: Turn 6
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Delay active skills by 1 turns, Deal 250% damage
-  desc_jp: Delay active skills by 1 turns, Deal 250% damage
-  max_atk_pct: 250
-  name_en: Misheliente
-  name_jp: Misheliente
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Execute below actions in order every 2 turns when HP <= 34
-  name_jp: Execute below actions in order every 2 turns when HP <= 34
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 6
-  name_jp: Turn 6
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Unable to match Fire orbs for 2 turns
-  desc_jp: Unable to match Fire orbs for 2 turns
-  max_atk_pct: null
-  name_en: Staff of Destiny
-  name_jp: Staff of Destiny
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 20
-- !SkillRecord
-  desc_en: Unable to match Wood orbs for 2 turns
-  desc_jp: Unable to match Wood orbs for 2 turns
-  max_atk_pct: null
-  name_en: Staff of Destiny
-  name_jp: Staff of Destiny
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 20
-- !SkillRecord
-  desc_en: Unable to match Dark orbs for 2 turns
-  desc_jp: Unable to match Dark orbs for 2 turns
-  max_atk_pct: null
-  name_en: Staff of Destiny
-  name_jp: Staff of Destiny
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 20
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 7
-  name_jp: Turn 7
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -489,7 +314,7 @@ records:
 # 	[0] ESStatusShield(20:6536) -> Saint's Robe
 # 	Voids status ailments for 999 turns
 # 	[1] ESAttributeBlock(107:6537) -> Staff of Destiny
-# 	Unable to match Heal orbs for 3 turns
+# 	Unable to Heal orbs for 3 turns
 # [3] SkillSet:
 # 	Condition: When < 1% hp (ai:100 rnd:0)
 # 	[0] ESRecoverEnemy(86:6531) -> Divine Cure
@@ -538,19 +363,19 @@ records:
 # flag SET 0b1
 # [15] ESAttributeBlock(107:6548) -> Staff of Destiny
 # 	Condition: 20% chance (ai:0 rnd:20)
-# Unable to match Fire orbs for 2 turns
+# Unable to Fire orbs for 2 turns
 # [16] ESAttributeBlock(107:6549) -> Staff of Destiny
 # 	Condition: 20% chance (ai:0 rnd:20)
-# Unable to match Water orbs for 2 turns
+# Unable to Water orbs for 2 turns
 # [17] ESAttributeBlock(107:6550) -> Staff of Destiny
 # 	Condition: 20% chance (ai:0 rnd:20)
-# Unable to match Wood orbs for 2 turns
+# Unable to Wood orbs for 2 turns
 # [18] ESAttributeBlock(107:6551) -> Staff of Destiny
 # 	Condition: 20% chance (ai:0 rnd:20)
-# Unable to match Light orbs for 2 turns
+# Unable to Light orbs for 2 turns
 # [19] ESAttributeBlock(107:6552) -> Staff of Destiny
 # 	Condition: 20% chance (ai:0 rnd:20)
-# Unable to match Dark orbs for 2 turns
+# Unable to Dark orbs for 2 turns
 # [20] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [21] ESFlagOperation(24:14) -> ESFlagOperation
