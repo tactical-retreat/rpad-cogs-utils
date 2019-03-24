@@ -7,8 +7,7 @@ monster_id: 408
 monster_name_en: Infernodragon Muspelheim
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -35,13 +34,25 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 25
+  name_jp: HP <= 25
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 99 turns
+  desc_jp: Increase damage to 200% for the next 99 turns
+  max_atk_pct: null
+  name_en: Wrath of Flame
+  name_jp: Wrath of Flame
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
-############################################################
-### Unused Actions
-############################################################
-# ESAttackUPCooldown(19:226) -> Wrath of Flame
-# 	Condition: When < 25% hp, after 1 turns (ai:100 rnd:0)
-# Increase damage to 200% for the next 99 turns
 ############################################################
 ### ES Modifiers
 ############################################################
@@ -56,7 +67,7 @@ records:
 ### Raw Behavior
 ############################################################
 # [1] ESAttackUPCooldown(19:226) -> Wrath of Flame
-# 	Condition: When < 25% hp, after 1 turns (ai:100 rnd:0)
+# 	Condition: When < 25% hp (ai:100 rnd:0)
 # Increase damage to 200% for the next 99 turns
 # [2] ESAttackMultihit(15:227) -> God Magma Breath
 # 	Condition: 50% chance when < 50% hp (ai:50 rnd:0)

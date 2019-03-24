@@ -7,8 +7,7 @@ monster_id: 100024
 monster_name_en: Alt. Lil' Blue Dragon
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -33,6 +32,24 @@ records:
   name_en: Cold Ball
   name_jp: Cold Ball
   one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 99 turns
+  desc_jp: Increase damage to 200% for the next 99 turns
+  max_atk_pct: null
+  name_en: Anger
+  name_jp: Anger
+  one_time: true
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -64,12 +81,6 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# ESAttackUPCooldown(19:7454) -> Anger
-# 	Condition: When < 50% hp , one-time use, after 1 turns (ai:100 rnd:0) (one-time: 1)
-# Increase damage to 200% for the next 99 turns
-############################################################
 ### ES Modifiers
 ############################################################
 # [9] 2 -       10
@@ -85,7 +96,7 @@ records:
 # [1] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 100, target rnd 5
 # [2] ESAttackUPCooldown(19:7454) -> Anger
-# 	Condition: When < 50% hp , one-time use, after 1 turns (ai:100 rnd:0) (one-time: 1)
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Increase damage to 200% for the next 99 turns
 # [3] ESRandomSpawn(92:7456) -> Cold Ball
 # Spawn random 1 Water orbs

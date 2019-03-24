@@ -44,12 +44,12 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Bind 1 random for 2 turns, Deal 200% damage
-  desc_jp: Bind 1 random for 2 turns, Deal 200% damage
-  max_atk_pct: 200
-  name_en: Shock Pulse
-  name_jp: Shock Pulse
-  one_time: false
+  desc_en: Increase damage to 200% for the next 999 turns
+  desc_jp: Increase damage to 200% for the next 999 turns
+  max_atk_pct: null
+  name_en: Activated
+  name_jp: Activated
+  one_time: true
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -62,12 +62,12 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Increase damage to 200% for the next 999 turns
-  desc_jp: Increase damage to 200% for the next 999 turns
-  max_atk_pct: null
-  name_en: Activated
-  name_jp: Activated
-  one_time: true
+  desc_en: Bind 1 random for 2 turns, Deal 200% damage
+  desc_jp: Bind 1 random for 2 turns, Deal 200% damage
+  max_atk_pct: 200
+  name_en: Shock Pulse
+  name_jp: Shock Pulse
+  one_time: false
   record_type_name: ACTION
   usage_pct: 100
 
@@ -91,7 +91,7 @@ records:
 # [3] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 100, target rnd 7
 # [4] ESAttackUPCooldown(19:3002) -> Activated
-# 	Condition: One-time use, after 1 turns (ai:100 rnd:0) (one-time: 1)
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Increase damage to 200% for the next 999 turns
 # [5] ESBindAttack(63:3006) -> Shock Pulse
 # Bind 1 random for 2 turns

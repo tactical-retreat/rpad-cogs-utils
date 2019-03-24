@@ -7,8 +7,7 @@ monster_id: 1593
 monster_name_en: Earth Insect Dragon, Gigarock
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 5
@@ -50,6 +49,24 @@ records:
   max_atk_pct: 100
   name_en: Hard Hit
   name_jp: Hard Hit
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 6 turns
+  desc_jp: Increase damage to 200% for the next 6 turns
+  max_atk_pct: null
+  name_en: Insect Beat
+  name_jp: Insect Beat
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -119,6 +136,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 6 turns
+  desc_jp: Increase damage to 200% for the next 6 turns
+  max_atk_pct: null
+  name_en: Insect Beat
+  name_jp: Insect Beat
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 25
   name_jp: HP <= 25
   one_time: false
@@ -134,12 +169,6 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
-############################################################
-### Unused Actions
-############################################################
-# ESAttackUPCooldown(19:1604) -> Insect Beat
-# 	Condition: after 1 turns (ai:100 rnd:0)
-# Increase damage to 200% for the next 6 turns
 ############################################################
 ### ES Modifiers
 ############################################################
@@ -197,7 +226,6 @@ records:
 # [20] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [21] ESAttackUPCooldown(19:1604) -> Insect Beat
-# 	Condition: after 1 turns (ai:100 rnd:0)
 # Increase damage to 200% for the next 6 turns
 # [22] ESEndPath(36:26) -> ESEndPath
 # end_turn

@@ -7,8 +7,7 @@ monster_id: 1494
 monster_name_en: '***** (Bikkuriman)'
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -25,6 +24,24 @@ records:
   name_jp: Amon is here!!!
   one_time: false
   record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 300% for the next 999 turns
+  desc_jp: Increase damage to 300% for the next 999 turns
+  max_atk_pct: null
+  name_en: All for me!
+  name_jp: All for me!
+  one_time: false
+  record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
   desc_en: ''
@@ -73,12 +90,6 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# ESAttackUPCooldown(19:1547) -> All for me!
-# 	Condition: When < 50% hp, after 1 turns (ai:100 rnd:0)
-# Increase damage to 300% for the next 999 turns
-############################################################
 ### ES Modifiers
 ############################################################
 # [9] 5 -      101
@@ -102,7 +113,7 @@ records:
 # [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] ESAttackUPCooldown(19:1547) -> All for me!
-# 	Condition: When < 50% hp, after 1 turns (ai:100 rnd:0)
+# 	Condition: When < 50% hp (ai:100 rnd:0)
 # Increase damage to 300% for the next 999 turns
 # [7] ESOrbChangeAttack(48:1546) -> Super Devil Hook
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)

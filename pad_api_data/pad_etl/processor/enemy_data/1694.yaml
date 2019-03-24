@@ -7,8 +7,7 @@ monster_id: 1694
 monster_name_en: Evil Genius, Lex Luthor (Comics)
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 5
@@ -35,6 +34,24 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 999 turns
+  desc_jp: Increase damage to 200% for the next 999 turns
+  max_atk_pct: null
+  name_en: Warsuit
+  name_jp: Warsuit
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Data @ 10
@@ -61,13 +78,25 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 999 turns
+  desc_jp: Increase damage to 200% for the next 999 turns
+  max_atk_pct: null
+  name_en: Warsuit
+  name_jp: Warsuit
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
-############################################################
-### Unused Actions
-############################################################
-# ESAttackUPCooldown(19:1636) -> Warsuit
-# 	Condition: When < 50% hp, after 1 turns (ai:100 rnd:0)
-# Increase damage to 200% for the next 999 turns
 ############################################################
 ### ES Modifiers
 ############################################################
@@ -106,7 +135,7 @@ records:
 # [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [13] ESAttackUPCooldown(19:1636) -> Warsuit
-# 	Condition: When < 50% hp, after 1 turns (ai:100 rnd:0)
+# 	Condition: When < 50% hp (ai:100 rnd:0)
 # Increase damage to 200% for the next 999 turns
 # [14] ESAttackMultihit(15:1635) -> LexCorp Resources
 # 	Condition: 50% chance (ai:50 rnd:0)
