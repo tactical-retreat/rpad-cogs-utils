@@ -538,7 +538,6 @@ def extract_loop_indexes(turn_data: List) -> Tuple[int, int]:
     Find loops in the data
     """
     # Loop over every turn
-    behavior_loop = None
     for i_idx, check_data in enumerate(turn_data):
         # Loop over every following turn. If the outer turn matches an inner turn moveset,
         # we found a loop.
@@ -573,10 +572,10 @@ def extract_loop_indexes(turn_data: List) -> Tuple[int, int]:
                 possible_loops.remove((check_start, check_end))
 
         if len(possible_loops) > 0:
-            behavior_loop = possible_loops[0]
-            break
+            return possible_loops[0][0], possible_loops[0][1]
 
-    return behavior_loop
+    raise Exception('No loop found')
+
 
 
 def extract_repeating_skills(turn_data: List, loop_start: int, loop_end: int) -> Tuple[List, List[TimedSkillGroup]]:
