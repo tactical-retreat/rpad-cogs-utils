@@ -8,7 +8,7 @@ monster_name_en: Light Orb Dragon, Yobi
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 1 unused actions
+- Found 2 unused actions
 
 ############################################################
 ### Data @ 4
@@ -50,18 +50,36 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: When 1 enemy remains
-  name_jp: When 1 enemy remains
+  name_en: When 5 enemy remains and HP <= 20
+  name_jp: When 5 enemy remains and HP <= 20
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Increase damage to 150% for the next 999 turns
-  desc_jp: Increase damage to 150% for the next 999 turns
+  desc_en: Rcv 50% for 2 turns, Deal 130% damage
+  desc_jp: Rcv 50% for 2 turns, Deal 130% damage
+  max_atk_pct: 130
+  name_en: Chiming Rings
+  name_jp: Chiming Rings
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
   max_atk_pct: null
-  name_en: Resentful Stare
-  name_jp: Resentful Stare
-  one_time: true
+  name_en: HP <= 20
+  name_jp: HP <= 20
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Player -90% HP
+  desc_jp: Player -90% HP
+  max_atk_pct: null
+  name_en: Brutal Wisp Fangs
+  name_jp: Brutal Wisp Fangs
+  one_time: false
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -137,6 +155,24 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
+  desc_en: Absorb damage >= 1000000 damage for 4 turns
+  desc_jp: Absorb damage >= 1000000 damage for 4 turns
+  max_atk_pct: null
+  name_en: Pure White Damask Scales
+  name_jp: Pure White Damask Scales
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 4
+  name_jp: Turn 4
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
   desc_en: Spawn random 3 Mortal Poison orbs, Deal 110% damage
   desc_jp: Spawn random 3 Mortal Poison orbs, Deal 110% damage
   max_atk_pct: 110
@@ -149,8 +185,26 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 4
-  name_jp: Turn 4
+  name_en: Turn 5
+  name_jp: Turn 5
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Absorb damage >= 1000000 damage for 4 turns
+  desc_jp: Absorb damage >= 1000000 damage for 4 turns
+  max_atk_pct: null
+  name_en: Pure White Damask Scales
+  name_jp: Pure White Damask Scales
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 6
+  name_jp: Turn 6
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -167,8 +221,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 5
-  name_jp: Turn 5
+  name_en: Turn 7
+  name_jp: Turn 7
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -191,6 +245,9 @@ records:
 # 	Reduce damage from all sources by 35% for 10 turns
 # 	[1] ESStatusShield(20:7651) -> Songstress's Divine Protection
 # 	Voids status ailments for 10 turns
+# ESAttackUPRemainingEnemies(17:7655) -> Resentful Stare
+# 	Condition: One-time use, when <= 1 enemies remain (ai:100 rnd:0) (one-time: 3)
+# Increase damage to 150% for the next 999 turns
 ############################################################
 ### ES Modifiers
 ############################################################
