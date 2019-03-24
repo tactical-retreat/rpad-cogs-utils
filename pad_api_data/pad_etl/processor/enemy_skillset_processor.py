@@ -666,31 +666,6 @@ def extract_timed_actions(looped_behavior: List[Any], turn_data: List[Any], loop
     return results
 
 
-def extract_timed_actions_multi(looped_behavior: List[Any], turn_data: List[Any], loop_start: int, loop_end: int) -> List[TimedSkillGroup]:
-    # This is an alternative to the above which uses all the turns of the loop, but it doesn't seem to have any
-    # practical effect
-    results = []
-    loop_hp_to_actions = collections.defaultdict(list)
-
-    for turn in turn_data[loop_start:loop_end]:
-        for hp, hp_behavior in turn.items():
-            loop_hp_to_actions[hp].append(hp_behavior)
-    for idx in range(loop_start, loop_end):
-        check_turn_data = turn_data[idx]
-        for hp, hp_behavior in looped_behavior:
-            if check_turn_data.get(hp, None) == hp_behavior:
-                check_turn_data.pop(hp)
-        for hp, hp_behavior_list in loop_hp_to_actions.items():
-            if check_turn_data.get(hp, None) in hp_behavior_list:
-                check_turn_data.pop(hp)
-
-        for hp, hp_behavior in check_turn_data.items():
-            results.append(TimedSkillGroup(idx + 1, hp, hp_behavior))
-            # looped_behavior.append((hp, hp_behavior))
-
-    return results
-
-
 def extract_hp_groups(ctx: Context, hp_checkpoints: Set[int], behaviors: List[Any], looped_behavior: List[Any]) -> Tuple[List[HpSkillGroup], List[Any]]:
     results = []
     # Simulate HP decreasing
