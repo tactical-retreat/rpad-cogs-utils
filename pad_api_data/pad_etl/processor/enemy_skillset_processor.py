@@ -20,42 +20,38 @@ ZERO_INDEXED_MONSTERS = [
 class StandardSkillGroup(object):
     """Base class storing a list of skills."""
 
-    def __init__(self, skills: List[ESAction]):
+    def __init__(self, skills: List[ESAction], hp_threshold):
         # List of skills which execute.
         self.skills = skills
+        # The hp threshold that this group executes on, always present, even if 100.
+        self.hp = hp_threshold
 
 
 class TimedSkillGroup(StandardSkillGroup):
     """Set of skills which execute on a specific turn, possibly with a HP threshold."""
 
-    def __init__(self, turn: int, hp: int, skills: List[ESAction]):
-        super().__init__(skills)
+    def __init__(self, turn: int, hp_threshold: int, skills: List[ESAction]):
+        super().__init__(skills, hp_threshold)
         # The turn that this group executes on.
         self.turn = turn
-        # The hp threshold that this group executes on, always present, even if 100.
-        self.hp = hp
         # If set, this group executes over a range of turns
-        self.end_turn = None # int
+        self.end_turn = None  # int
 
 
 class EnemyCountSkillGroup(StandardSkillGroup):
     """Set of skills which execute when a specific number of enemies are present."""
 
-    def __init__(self, count: int, hp: int, skills: List[ESAction]):
-        super().__init__(skills)
+    def __init__(self, count: int, hp_threshold: int, skills: List[ESAction]):
+        super().__init__(skills, hp_threshold)
         # Number of enemies required to trigger this set of actions.
         self.count = count
-        # The hp threshold that this group executes on, always present, even if 100.
-        self.hp = hp
 
 
 class HpSkillGroup(StandardSkillGroup):
     """Set of skills which execute when a HP threshold is reached."""
 
-    def __init__(self, hp_ceiling: int, skills: List[ESAction]):
-        super().__init__(skills)
-        # The hp threshold that this group executes on, always present, even if 100.
-        self.hp_ceiling = hp_ceiling
+    def __init__(self, hp_threshold: int, skills: List[ESAction]):
+        super().__init__(skills, hp_threshold)
 
 
 class ProcessedSkillset(object):
@@ -494,8 +490,10 @@ def extract_preemptives(ctx: Context, behaviors: List[Any]):
         return original_ctx, None
 
 
-def extract_turn_behaviors(ctx: Context, behaviors: List, hp_checkpoints: Set[int]):
-    # For the first 20 turns, compute actions at every HP checkpoint
+def extract_turn_behaviors(ctx: Context, behaviors: List, hp_checkpoints: Set[int]) -> Tuple[List, Context]:
+    """
+    Simulate the first 20 turns at all hp check points
+    """
     turn_data = []
     for idx in range(0, 20):
         next_ctx = None
@@ -521,6 +519,9 @@ def extract_turn_behaviors(ctx: Context, behaviors: List, hp_checkpoints: Set[in
 
 
 def extract_loop_indexes(turn_data: List) -> Tuple[int, int]:
+    """
+    Find loops in the data
+    """
     # Loop over every turn
     behavior_loop = None
     for i_idx, check_data in enumerate(turn_data):
@@ -759,7 +760,6 @@ def convert(card: BookCard, enemy_behavior: List, level: int, enemy_skill_effect
 
     # Simulate enemies being defeated
     if has_enemy_remaining_branch:
-        # TODO: The fact that this takes globally_seen_behavior is suspicious to me
         enemy_skill_groups = extract_enemy_remaining(ctx.clone(), hp_checkpoints, behaviors, globally_seen_behavior)
         skillset.enemycount_skill_groups.extend(enemy_skill_groups)
 
@@ -832,7 +832,7 @@ def clean_skillset(skillset: ProcessedSkillset):
     extracted = []
     for hp_skills in skillset.hp_skill_groups:
         for es in list(hp_skills.skills):
-            if extract_hp_threshold(es) and extract_hp_threshold(es) != hp_skills.hp_ceiling:
+            if extract_hp_threshold(es) and extract_hp_threshold(es) != hp_skills.hp:
                 if es not in extracted:
                     extracted.append(es)
                 hp_skills.skills.remove(es)
@@ -853,7 +853,7 @@ def clean_skillset(skillset: ProcessedSkillset):
         hp_threshold = es.condition.hp_threshold
         placed = False
         for hp_group in skillset.hp_skill_groups:
-            if hp_group.hp_ceiling == hp_threshold:
+            if hp_group.hp == hp_threshold:
                 hp_group.skills.append(es)
                 placed = True
                 break
@@ -886,7 +886,7 @@ def clean_skillset(skillset: ProcessedSkillset):
     skillset.hp_skill_groups = filter_empty(skillset.hp_skill_groups)
 
     # Ensure HP groups are sorted properly
-    skillset.hp_skill_groups.sort(key=lambda x: x.hp_ceiling, reverse=True)
+    skillset.hp_skill_groups.sort(key=lambda x: x.hp, reverse=True)
 
     # Collapse unnecessary outputs
     skillset.repeating_skill_groups = collapse_repeating_groups(skillset.repeating_skill_groups)

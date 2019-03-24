@@ -393,7 +393,7 @@ class Describe:
 
     @staticmethod
     def attribute_block(turns, attributes):
-        return 'Unable to {:s} orbs for {:d} turns'.format(', '.join(attributes), turns)
+        return 'Unable to match {:s} orbs for {:d} turns'.format(', '.join(attributes), turns)
 
     @staticmethod
     def spinners(turns, speed, position_description):
