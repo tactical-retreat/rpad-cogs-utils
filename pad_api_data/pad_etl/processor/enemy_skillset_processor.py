@@ -77,6 +77,10 @@ class ProcessedSkillset(object):
         self.base_abilities = []  # List[ESAction]
         # Preemptive attacks, shields, combo guards.
         self.preemptives = []  # List[ESAction]
+        # Action which triggers when a staus is applied
+        self.status_action = None # ESAttackUpStatus
+        # Action which triggers player has a buff
+        self.dispel_action = None # ESDispel
         # Actions which execute according to the current turn before behavior
         # enters a stable loop state.
         self.timed_skill_groups = []  # List[TimedSkillGroup]
@@ -86,8 +90,6 @@ class ProcessedSkillset(object):
         self.repeating_skill_groups = []  # List[TimedSkillGroup]
         # Single-turn stable action loops.
         self.hp_skill_groups = []  # List[StandardSkillGroup]
-        # Action which triggers when a staus is applied
-        self.status_action = None # ESAttackUpStatus
 
 
 
@@ -826,11 +828,15 @@ def clean_skillset(skillset: ProcessedSkillset):
     clear_skillset(ESDefaultAttack)
 
     # Move ESAttackUpStatus to a special location, clear it out of any other buckets
-    all_skills = pad_etl.processor.debug_utils.extract_used_skills(skillset)
+    all_skills = pad_etl.processor.debug_utils.extract_used_skills(skillset, include_preemptive=False)
     status_skills = [x for x in all_skills if type(x) == ESAttackUpStatus]
     if status_skills:
         skillset.status_action = status_skills[0]
         clear_skillset(ESAttackUpStatus)
+    dispel_skills = [x for x in all_skills if type(x) == ESDispel]
+    if dispel_skills:
+        skillset.dispel_action = dispel_skills[0]
+        clear_skillset(ESDispel)
 
     # First cleanup: items with a condition attached can show up in timed
     # groups and also in random HP buckets (generally the 100% one due to

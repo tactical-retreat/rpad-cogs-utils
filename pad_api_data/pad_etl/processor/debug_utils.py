@@ -31,10 +31,12 @@ def simple_dump_obj(o):
         return msg
 
 
-def extract_used_skills(skillset: ProcessedSkillset) -> List[ESAction]:
+def extract_used_skills(skillset: ProcessedSkillset, include_preemptive=True) -> List[ESAction]:
     """Flattens a ProcessedSkillset to a list of actions"""
     results = []
-    results.extend(skillset.preemptives)
+
+    if include_preemptive:
+        results.extend(skillset.preemptives)
 
     def sg_extract(l: List[StandardSkillGroup]) -> List[ESAction]:
         return [item for sublist in l for item in sublist.skills]
@@ -45,5 +47,7 @@ def extract_used_skills(skillset: ProcessedSkillset) -> List[ESAction]:
     results.extend(sg_extract(skillset.enemycount_skill_groups))
     if skillset.status_action:
         results.append(skillset.status_action)
+    if skillset.dispel_action:
+        results.append(skillset.dispel_action)
 
     return results

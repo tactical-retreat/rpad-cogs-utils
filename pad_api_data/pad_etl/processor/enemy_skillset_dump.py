@@ -163,6 +163,11 @@ def flatten_skillset(level: int, skillset: ProcessedSkillset) -> SkillRecordList
         records.append(create_divider('When afflicted by delay/poison'))
         records.append(behavior_to_skillrecord(RecordType.ACTION, skillset.status_action))
 
+    if skillset.dispel_action:
+        skill_output = True
+        records.append(create_divider('When player has any buff'))
+        records.append(behavior_to_skillrecord(RecordType.ACTION, skillset.dispel_action))
+
     for idx, item in enumerate(skillset.timed_skill_groups):
         skill_output = True
         if item.hp < 100:
