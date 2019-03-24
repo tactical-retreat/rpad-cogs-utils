@@ -7,7 +7,8 @@ monster_id: 345
 monster_name_en: ECO Pepen Alma
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 1 unused actions
 
 ############################################################
 ### Data @ 1
@@ -20,8 +21,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 40
-  name_jp: HP <= 40
+  name_en: Turn 1 HP <= 39
+  name_jp: Turn 1 HP <= 39
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -34,25 +35,13 @@ records:
   one_time: true
   record_type_name: ACTION
   usage_pct: 60
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 30
-  name_jp: HP <= 30
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 150% damage
-  desc_jp: Deal 150% damage
-  max_atk_pct: 150
-  name_en: Hayaya!
-  name_jp: Hayaya!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 60
 
+############################################################
+### Unused Actions
+############################################################
+# ESAttackMultihit(15:123) -> Hayaya!
+# 	Condition: 60% chance when < 30% hp (ai:60 rnd:0)
+# Enemy action
 ############################################################
 ### ES Modifiers
 ############################################################

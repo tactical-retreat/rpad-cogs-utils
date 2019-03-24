@@ -17,8 +17,10 @@ level: 1
 overrides: []
 records:
 - !SkillRecord
-  desc_en: Absorb Water damage for 5 turns + Lock all Water, Dark orbs (Preemptive)
-  desc_jp: Absorb Water damage for 5 turns + Lock all Water, Dark orbs (Preemptive)
+  desc_en: Absorb Water damage for 5 turns + Lock all Water, Dark orbs, Deal 120%
+    damage (Preemptive)
+  desc_jp: Absorb Water damage for 5 turns + Lock all Water, Dark orbs, Deal 120%
+    damage (Preemptive)
   max_atk_pct: null
   name_en: Grace of Mimir + Diabolic Lance Gungnir
   name_jp: Grace of Mimir + Diabolic Lance Gungnir
@@ -29,35 +31,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Enemy action + Delay active skills by 1 turns
-  desc_jp: Enemy action + Delay active skills by 1 turns
-  max_atk_pct: null
-  name_en: Triple Slash + Skill Resistance
-  name_jp: Triple Slash + Skill Resistance
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change 3rd row to Water, Poison orbs, Deal 150% damage
-  desc_jp: Change 3rd row to Water, Poison orbs, Deal 150% damage
-  max_atk_pct: 150
-  name_en: Divide Poison
-  name_jp: Divide Poison
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -92,8 +67,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute below actions in order repeatedly
-  name_jp: Execute below actions in order repeatedly
+  name_en: Execute below actions in order every 2 turns when HP is full
+  name_jp: Execute below actions in order every 2 turns when HP is full
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -107,8 +82,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Enemy action + Delay active skills by 1 turns
-  desc_jp: Enemy action + Delay active skills by 1 turns
+  desc_en: Deal 160% damage (2 hits, 80% each) + Delay active skills by 1 turns
+  desc_jp: Deal 160% damage (2 hits, 80% each) + Delay active skills by 1 turns
   max_atk_pct: null
   name_en: Double Slash + Skill Resistance
   name_jp: Double Slash + Skill Resistance
@@ -130,6 +105,51 @@ records:
   max_atk_pct: 120
   name_en: Divide Icicle
   name_jp: Divide Icicle
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute below actions in order every 2 turns when HP <= 49
+  name_jp: Execute below actions in order every 2 turns when HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 180% damage (3 hits, 60% each) + Delay active skills by 1 turns
+  desc_jp: Deal 180% damage (3 hits, 60% each) + Delay active skills by 1 turns
+  max_atk_pct: null
+  name_en: Triple Slash + Skill Resistance
+  name_jp: Triple Slash + Skill Resistance
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change 3rd row to Water, Poison orbs, Deal 150% damage
+  desc_jp: Change 3rd row to Water, Poison orbs, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Divide Poison
+  name_jp: Divide Poison
   one_time: false
   record_type_name: ACTION
   usage_pct: 100

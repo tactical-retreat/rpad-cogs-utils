@@ -48,9 +48,9 @@ records:
   usage_pct: 100
 - !SkillRecord
   desc_en: 6x2 cloud appear for 1 turns at 1st row, 1st column + Absorb combo <= 4
-    damage for 5 turns + Enemy action
+    damage for 5 turns + Deal 270% damage (9 hits, 30% each)
   desc_jp: 6x2 cloud appear for 1 turns at 1st row, 1st column + Absorb combo <= 4
-    damage for 5 turns + Enemy action
+    damage for 5 turns + Deal 270% damage (9 hits, 30% each)
   max_atk_pct: null
   name_en: Cloud Cluster + Prism Fog + Lightning Ball Strike
   name_jp: Cloud Cluster + Prism Fog + Lightning Ball Strike
@@ -87,8 +87,10 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: 3x3 cloud appear for 1 turns at 2nd row, 3rd column + Enemy action
-  desc_jp: 3x3 cloud appear for 1 turns at 2nd row, 3rd column + Enemy action
+  desc_en: 3x3 cloud appear for 1 turns at 2nd row, 3rd column + Deal 240% damage
+    (2 hits, 120% each)
+  desc_jp: 3x3 cloud appear for 1 turns at 2nd row, 3rd column + Deal 240% damage
+    (2 hits, 120% each)
   max_atk_pct: null
   name_en: Cloud Cluster + Storm Blow
   name_jp: Cloud Cluster + Storm Blow
@@ -126,9 +128,9 @@ records:
   usage_pct: 100
 - !SkillRecord
   desc_en: 3x3 cloud appear for 1 turns at 2nd row, 4th column + Change Random to
-    Light
+    Light, Deal 250% damage
   desc_jp: 3x3 cloud appear for 1 turns at 2nd row, 4th column + Change Random to
-    Light
+    Light, Deal 250% damage
   max_atk_pct: null
   name_en: Cloud Cluster + Plasma Breath
   name_jp: Cloud Cluster + Plasma Breath
@@ -157,26 +159,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change Jammer to Light, Deal 260% damage
-  desc_jp: Change Jammer to Light, Deal 260% damage
-  max_atk_pct: 260
-  name_en: Heaven's Breaching
-  name_jp: Heaven's Breaching
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -195,35 +179,17 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Change all orbs to Fire, Light, Heal, Jammer, Poison, Deal 246% damage
-  desc_jp: Change all orbs to Fire, Light, Heal, Jammer, Poison, Deal 246% damage
-  max_atk_pct: 246
-  name_en: Grimy Cloud
-  name_jp: Grimy Cloud
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Bind 2 random subs for 1~2 turns, Deal 220% damage
-  desc_jp: Bind 2 random subs for 1~2 turns, Deal 220% damage
-  max_atk_pct: 220
-  name_en: Lightning Chain
-  name_jp: Lightning Chain
+  desc_en: Change Jammer to Light, Deal 260% damage
+  desc_jp: Change Jammer to Light, Deal 260% damage
+  max_atk_pct: 260
+  name_en: Heaven's Breaching
+  name_jp: Heaven's Breaching
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -262,6 +228,51 @@ records:
   max_atk_pct: null
   name_en: Updraft + Swelling Clouds + Disastrous Cloud
   name_jp: Updraft + Swelling Clouds + Disastrous Cloud
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute below actions in order every 2 turns when HP <= 49
+  name_jp: Execute below actions in order every 2 turns when HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change all orbs to Fire, Light, Heal, Jammer, Poison, Deal 246% damage
+  desc_jp: Change all orbs to Fire, Light, Heal, Jammer, Poison, Deal 246% damage
+  max_atk_pct: 246
+  name_en: Grimy Cloud
+  name_jp: Grimy Cloud
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind 2 random subs for 1~2 turns, Deal 220% damage
+  desc_jp: Bind 2 random subs for 1~2 turns, Deal 220% damage
+  max_atk_pct: 220
+  name_en: Lightning Chain
+  name_jp: Lightning Chain
   one_time: false
   record_type_name: ACTION
   usage_pct: 100

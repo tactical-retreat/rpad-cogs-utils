@@ -8,7 +8,7 @@ monster_name_en: Awoken Machine Athena
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 1 unused actions
+- Found 2 unused actions
 
 ############################################################
 ### Data @ 1
@@ -32,8 +32,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -50,8 +50,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 2 HP <= 49
+  name_jp: Turn 2 HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -68,8 +68,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
+  name_en: Turn 1 HP <= 19
+  name_jp: Turn 1 HP <= 19
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -86,26 +86,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 10000% damage (10 hits, 1000% each)
-  desc_jp: Deal 10000% damage (10 hits, 1000% each)
-  max_atk_pct: 10000
-  name_en: Starburst SSE
-  name_jp: Starburst SSE
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Execute below actions in order repeatedly
-  name_jp: Execute below actions in order repeatedly
+  name_en: Execute below actions in order every 2 turns when HP is full
+  name_jp: Execute below actions in order every 2 turns when HP is full
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -119,8 +101,10 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Blind orbs in specific positions for 3 turns + Bind 1 random for 3 turns
-  desc_jp: Blind orbs in specific positions for 3 turns + Bind 1 random for 3 turns
+  desc_en: Blind orbs in specific positions for 3 turns + Bind 1 random for 3 turns,
+    Deal 420% damage
+  desc_jp: Blind orbs in specific positions for 3 turns + Bind 1 random for 3 turns,
+    Deal 420% damage
   max_atk_pct: null
   name_en: Color Delete + CFM-Pulse
   name_jp: Color Delete + CFM-Pulse
@@ -154,6 +138,62 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute below actions in order every 2 turns when HP <= 19
+  name_jp: Execute below actions in order every 2 turns when HP <= 19
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Blind orbs in specific positions for 3 turns + Bind 1 random for 3 turns,
+    Deal 420% damage
+  desc_jp: Blind orbs in specific positions for 3 turns + Bind 1 random for 3 turns,
+    Deal 420% damage
+  max_atk_pct: null
+  name_en: Color Delete + CFM-Pulse
+  name_jp: Color Delete + CFM-Pulse
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change 2nd column to Wood orbs, 5th column to Light orbs, Deal 380% damage
+  desc_jp: Change 2nd column to Wood orbs, 5th column to Light orbs, Deal 380% damage
+  max_atk_pct: 380
+  name_en: C-Shining Spear
+  name_jp: C-Shining Spear
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Change own attribute to random one of Wood, Light, Deal 380% damage
+  desc_jp: Change own attribute to random one of Wood, Light, Deal 380% damage
+  max_atk_pct: 380
+  name_en: EB & Self Convert
+  name_jp: EB & Self Convert
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Unused Actions
@@ -161,6 +201,8 @@ records:
 # ESGravity(50:5151) -> LB-Siculus Strike
 # 	Condition: One-time use (ai:40 rnd:0) (one-time: 3)
 # Player -150% HP
+# ESAttackMultihit(15:5155) -> Starburst SSE
+# Enemy action
 ############################################################
 ### ES Modifiers
 ############################################################

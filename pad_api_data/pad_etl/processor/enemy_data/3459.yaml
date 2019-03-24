@@ -7,8 +7,7 @@ monster_id: 3459
 monster_name_en: Demonic Gentleman of Heresy, Azazel
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -54,8 +53,10 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Absorb damage >= 15000000 damage for 999 turns + Enemy action
-  desc_jp: Absorb damage >= 15000000 damage for 999 turns + Enemy action
+  desc_en: Absorb damage >= 15000000 damage for 999 turns + Deal 140% damage (7 hits,
+    20% each)
+  desc_jp: Absorb damage >= 15000000 damage for 999 turns + Deal 140% damage (7 hits,
+    20% each)
   max_atk_pct: null
   name_en: Eye of Reality + Lethal Chain
   name_jp: Eye of Reality + Lethal Chain
@@ -66,18 +67,38 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Enemy recover 100% hp + Reduce damage from all sources by 50% for 99 turns
-  desc_jp: Enemy recover 100% hp + Reduce damage from all sources by 50% for 99 turns
+  desc_en: Enemy recover 100% hp + Reduce damage from all sources by 50% for 99 turns,
+    Deal 200% damage
+  desc_jp: Enemy recover 100% hp + Reduce damage from all sources by 50% for 99 turns,
+    Deal 200% damage
   max_atk_pct: null
   name_en: Sacred Goat Blood + God's Echo
   name_jp: Sacred Goat Blood + God's Echo
   one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2 HP <= 49
+  name_jp: Turn 2 HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Delay active skills by 7 turns + Deal 150% damage (5 hits, 30% each)
+  desc_jp: Delay active skills by 7 turns + Deal 150% damage (5 hits, 30% each)
+  max_atk_pct: null
+  name_en: Heavenly Eye of Reality + Lethal Chain
+  name_jp: Heavenly Eye of Reality + Lethal Chain
+  one_time: false
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -102,8 +123,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute below actions in order repeatedly
-  name_jp: Execute below actions in order repeatedly
+  name_en: Execute below actions in order every 2 turns when HP is full
+  name_jp: Execute below actions in order every 2 turns when HP is full
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -156,15 +177,65 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute below actions in order every 2 turns when HP <= 49
+  name_jp: Execute below actions in order every 2 turns when HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Lock 10 random Light, Heal, Poison, Mortal Poison orbs, Deal 110% damage
+  desc_jp: Lock 10 random Light, Heal, Poison, Mortal Poison orbs, Deal 110% damage
+  max_atk_pct: 110
+  name_en: Pearl Face
+  name_jp: Pearl Face
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 4
+  name_jp: Turn 4
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Spawn random 7 Mortal Poison orbs, Deal 50% damage
+  desc_jp: Spawn random 7 Mortal Poison orbs, Deal 50% damage
+  max_atk_pct: 50
+  name_en: Shenisa
+  name_jp: Shenisa
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Change 1st, 2nd column to Fire, Water, Poison orbs, 3rd, 4th column to
+    Wood, Light, Poison orbs, 5th, 6th column to Dark, Heal, Poison orbs, Deal 120%
+    damage
+  desc_jp: Change 1st, 2nd column to Fire, Water, Poison orbs, 3rd, 4th column to
+    Wood, Light, Poison orbs, 5th, 6th column to Dark, Heal, Poison orbs, Deal 120%
+    damage
+  max_atk_pct: 120
+  name_en: Erythra
+  name_jp: Erythra
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 
-############################################################
-### Unused Actions
-############################################################
-# SkillSet:
-# 	[0] ESSkillDelay(89:7631) -> Heavenly Eye of Reality
-# 	Delay active skills by 7 turns
-# 	[1] ESAttackMultihit(15:7632) -> Lethal Chain
-# 	Enemy action
 ############################################################
 ### ES Modifiers
 ############################################################

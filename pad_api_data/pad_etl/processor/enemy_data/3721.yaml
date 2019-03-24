@@ -7,8 +7,7 @@ monster_id: 3721
 monster_name_en: Fire Orb Dragon, Kajin
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 4
@@ -18,10 +17,10 @@ level: 4
 overrides: []
 records:
 - !SkillRecord
-  desc_en: Change 4th, 5th, 6th column to Fire, Jammer orbs + Absorb combo <= 6 damage
-    for 1 turns (Preemptive)
-  desc_jp: Change 4th, 5th, 6th column to Fire, Jammer orbs + Absorb combo <= 6 damage
-    for 1 turns (Preemptive)
+  desc_en: Change 4th, 5th, 6th column to Fire, Jammer orbs, Deal 140% damage + Absorb
+    combo <= 6 damage for 1 turns (Preemptive)
+  desc_jp: Change 4th, 5th, 6th column to Fire, Jammer orbs, Deal 140% damage + Absorb
+    combo <= 6 damage for 1 turns (Preemptive)
   max_atk_pct: null
   name_en: One-Eyed Hellfire + Seething Fire
   name_jp: One-Eyed Hellfire + Seething Fire
@@ -52,8 +51,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
+  name_en: Turn 1 HP <= 99
+  name_jp: Turn 1 HP <= 99
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -72,26 +71,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 14
-  name_jp: Turn 14
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Reduce damage from all sources by 75% for 4 turns
-  desc_jp: Reduce damage from all sources by 75% for 4 turns
-  max_atk_pct: null
-  name_en: Insulating Firescales
-  name_jp: Insulating Firescales
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
+  name_en: Turn 1 HP <= 19
+  name_jp: Turn 1 HP <= 19
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -104,6 +85,24 @@ records:
   name_en: Glare of the Fire Dragon
   name_jp: Glare of the Fire Dragon
   one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 150% for the next 999 turns
+  desc_jp: Increase damage to 150% for the next 999 turns
+  max_atk_pct: null
+  name_en: Resentful Stare
+  name_jp: Resentful Stare
+  one_time: true
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -128,8 +127,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute below actions in order repeatedly
-  name_jp: Execute below actions in order repeatedly
+  name_en: Execute below actions in order every 4 turns when HP is full
+  name_jp: Execute below actions in order every 4 turns when HP is full
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -137,8 +136,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 15
-  name_jp: Turn 15
+  name_en: Turn 2
+  name_jp: Turn 2
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -155,8 +154,26 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 16
-  name_jp: Turn 16
+  name_en: Turn 3
+  name_jp: Turn 3
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 75% for 4 turns
+  desc_jp: Reduce damage from all sources by 75% for 4 turns
+  max_atk_pct: null
+  name_en: Insulating Firescales
+  name_jp: Insulating Firescales
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 4
+  name_jp: Turn 4
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -173,8 +190,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 17
-  name_jp: Turn 17
+  name_en: Turn 5
+  name_jp: Turn 5
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -188,12 +205,6 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
-############################################################
-### Unused Actions
-############################################################
-# ESAttackUPRemainingEnemies(17:7369) -> Resentful Stare
-# 	Condition: One-time use, when <= 1 enemies remain (ai:100 rnd:0) (one-time: 3)
-# Increase damage to 150% for the next 999 turns
 ############################################################
 ### ES Modifiers
 ############################################################

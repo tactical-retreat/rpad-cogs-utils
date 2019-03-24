@@ -7,7 +7,8 @@ monster_id: 283
 monster_name_en: Fire Mechdragon, Betelgeuse
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 1 unused actions
 
 ############################################################
 ### Data @ 5
@@ -16,6 +17,42 @@ warnings: []
 level: 5
 overrides: []
 records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1 HP <= 49
+  name_jp: Turn 1 HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy recover 40%~50% hp
+  desc_jp: Enemy recover 40%~50% hp
+  max_atk_pct: null
+  name_en: Auto Recover
+  name_jp: Auto Recover
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 75
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1 HP <= 24
+  name_jp: Turn 1 HP <= 24
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy recover 40%~50% hp
+  desc_jp: Enemy recover 40%~50% hp
+  max_atk_pct: null
+  name_en: Auto Recover
+  name_jp: Auto Recover
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 75
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
@@ -34,43 +71,12 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 50
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 50
-  name_jp: HP <= 50
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Enemy recover 40%~50% hp
-  desc_jp: Enemy recover 40%~50% hp
-  max_atk_pct: null
-  name_en: Auto Recover
-  name_jp: Auto Recover
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 75
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 24
-  name_jp: HP <= 24
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 280% damage (2 hits, 140% each)
-  desc_jp: Deal 280% damage (2 hits, 140% each)
-  max_atk_pct: 280
-  name_en: Megiddo Cannon
-  name_jp: Megiddo Cannon
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# ESAttackMultihit(15:105) -> Megiddo Cannon
+# Enemy action
 ############################################################
 ### ES Modifiers
 ############################################################

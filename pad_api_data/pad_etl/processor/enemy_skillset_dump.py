@@ -109,7 +109,7 @@ def behavior_to_skillrecord(record_type: RecordType, action: Union[ESAction, ESL
     one_time = False
     if type(action) == ESSkillSet:
         name = ' + '.join(map(lambda s: s.name, action.skill_list))
-        description = ' + '.join(map(lambda s: s.description, action.skill_list))
+        description = ' + '.join(map(lambda s: s.full_description(), action.skill_list))
 
     if issubclass(type(action), ESPassive):
         name = 'Ability'
@@ -165,7 +165,10 @@ def flatten_skillset(level: int, skillset: ProcessedSkillset) -> SkillRecordList
 
     for idx, item in enumerate(skillset.timed_skill_groups):
         skill_output = True
-        records.append(create_divider('Turn {}'.format(item.turn)))
+        if item.hp < 100:
+            records.append(create_divider('Turn {} HP <= {}'.format(item.turn, item.hp)))
+        else:
+            records.append(create_divider('Turn {}'.format(item.turn)))
         for sub_item in item.skills:
             records.append(behavior_to_skillrecord(RecordType.ACTION, sub_item))
 
@@ -179,37 +182,35 @@ def flatten_skillset(level: int, skillset: ProcessedSkillset) -> SkillRecordList
             records.append(behavior_to_skillrecord(RecordType.ACTION, sub_item))
 
     hp_skill_groups = skillset.hp_skill_groups
-    use_hp_full_output = len(hp_skill_groups) > 1 and hp_skill_groups[1].hp_ceiling == 99
+    use_hp_full_output = len(hp_skill_groups) > 1 and hp_skill_groups[1].hp == 99
     for item in skillset.hp_skill_groups:
-        if use_hp_full_output and item.hp_ceiling == 100:
+        if use_hp_full_output and item.hp == 100:
             records.append(create_divider('When HP is full'))
-        elif use_hp_full_output and item.hp_ceiling == 99:
+        elif use_hp_full_output and item.hp == 99:
             records.append(create_divider('When HP is not full'))
-        elif not skill_output and item.hp_ceiling == 100:
+        elif not skill_output and item.hp == 100:
             pass
         else:
-            records.append(create_divider('HP <= {}'.format(item.hp_ceiling)))
+            records.append(create_divider('HP <= {}'.format(item.hp)))
 
         skill_output = True
         for sub_item in item.skills:
             records.append(behavior_to_skillrecord(RecordType.ACTION, sub_item))
 
-    if skillset.repeating_skill_groups:
-        records.append(create_divider('Execute below actions in order repeatedly'))
+    # if skillset.repeating_skill_groups:
+    #     records.append(create_divider('Execute below actions in order repeatedly'))
 
-    current_turn = 0
-    for item in skillset.repeating_skill_groups:
-        header = ''
-        if item.turn != current_turn:
-            header += 'Turn {}'.format(item.turn)
-            current_turn = item.turn
-            if item.end_turn:
-                header += '-{}'.format(item.end_turn)
-
-        if item.hp != 100:
-            header += ' HP <= {}'.format(item.hp)
-        if len(header) > 0:
+    cur_hp = None
+    for item in sorted(skillset.repeating_skill_groups, key=lambda x: x.hp, reverse=True):
+        if cur_hp != item.hp:
+            cur_hp = item.hp
+            header = 'Execute below actions in order every {} turns'.format(item.interval)
+            if item.hp < 100:
+                header += ' when HP <= {}'.format(item.hp)
+            else:
+                header += ' when HP is full'
             records.append(create_divider(header))
+        records.append(create_divider('Turn {}'.format(item.turn)))
         for sub_item in item.skills:
             records.append(behavior_to_skillrecord(RecordType.ACTION, sub_item))
 

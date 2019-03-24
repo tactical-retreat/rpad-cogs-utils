@@ -7,8 +7,7 @@ monster_id: 408
 monster_name_en: Infernodragon Muspelheim
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -17,6 +16,24 @@ warnings:
 level: 1
 overrides: []
 records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2 HP <= 24
+  name_jp: Turn 2 HP <= 24
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 99 turns
+  desc_jp: Increase damage to 200% for the next 99 turns
+  max_atk_pct: null
+  name_en: Wrath of Flame
+  name_jp: Wrath of Flame
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
@@ -36,12 +53,6 @@ records:
   record_type_name: ACTION
   usage_pct: 50
 
-############################################################
-### Unused Actions
-############################################################
-# ESAttackUPCooldown(19:226) -> Wrath of Flame
-# 	Condition: When < 25% hp, after 1 turns (ai:100 rnd:0)
-# Increase damage to 200% for the next 99 turns
 ############################################################
 ### ES Modifiers
 ############################################################
