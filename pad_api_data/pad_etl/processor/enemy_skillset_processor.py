@@ -38,6 +38,15 @@ class TimedSkillGroup(StandardSkillGroup):
         self.end_turn = None  # int
 
 
+class RepeatSkillGroup(TimedSkillGroup):
+    """Set of skills which execute on a specific turn, possibly with a HP threshold."""
+
+    def __init__(self, turn: int, interval: int, hp_threshold: int, skills: List[ESAction]):
+        super().__init__(turn, hp_threshold, skills)
+        # The number of turns between repeats, aka loop size
+        self.interval = interval  # int
+
+
 class EnemyCountSkillGroup(StandardSkillGroup):
     """Set of skills which execute when a specific number of enemies are present."""
 
