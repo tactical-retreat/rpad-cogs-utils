@@ -63,6 +63,7 @@ def run_test(args):
 
     golden_dungeons = [
         116, # Gunma
+        158, # Goemon
         172, # Taiko
         307, # Hera-Is
         318, # Zeus-Dios
