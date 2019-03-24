@@ -577,6 +577,37 @@ def extract_loop_indexes(turn_data: List) -> Tuple[int, int]:
     raise Exception('No loop found')
 
 
+def remove_common_behaviour(data: list, start: int, end: int) -> list:
+    """
+    Helper: remove any behaviour that occurs more than once in the set
+    """
+    if any([x is None for x in data[start:end]]):
+        return data
+    common_behaviour = data[start].copy()
+    for idx in range(start + 1, end):
+        for skill in common_behaviour:
+            if skill not in data[idx]:
+                common_behaviour.remove(skill)
+    for idx in range(start, end):
+        if data[idx] is None:
+            continue
+        for skill in data[idx].copy():
+            if skill in common_behaviour:
+                data[idx].remove(skill)
+    return data
+
+
+def remove_seen_behaviour(data: list, start: int, end: int, seen_data: list) -> list:
+    """
+    Helper: remove any behaviour in the seen_data list
+    """
+    for idx in range(start, end):
+        if data[idx] is None:
+            continue
+        if data[idx] in seen_data:
+            data[idx] = None
+    return data
+
 
 def extract_repeating_skills(turn_data: List, loop_start: int, loop_end: int) -> Tuple[List, List[TimedSkillGroup]]:
     looped_behavior = []  # keep track of behaviour added to loops
@@ -646,8 +677,6 @@ def extract_enemy_remaining(ec_ctx: Context, hp_checkpoints: Set[int], behaviors
 
 
 def extract_timed_actions(looped_behavior: List[Any], turn_data: List[Any], loop_start: int) -> List[TimedSkillGroup]:
-    # TODO: This seems wrong? it only compares to the first turn of the loop and loop_size could be > 1
-    # Trim turns before the loop
     results = []
     looping_behavior = turn_data[loop_start]
 
