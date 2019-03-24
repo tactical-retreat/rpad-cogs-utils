@@ -200,6 +200,10 @@ class Context(object):
                 return True
             else:
                 return False
+        # TODO: Delete this. I don't think it makes sense to update the HP in response
+        # to an enemy action; we evaluate at the end of the player's round.
+        # elif b_type == ESRecoverEnemy:
+        #     self.hp += behavior.max_amount
         return True
 
 
