@@ -197,22 +197,21 @@ def flatten_skillset(level: int, skillset: ProcessedSkillset) -> SkillRecordList
         for sub_item in item.skills:
             records.append(behavior_to_skillrecord(RecordType.ACTION, sub_item))
 
-    if skillset.repeating_skill_groups:
-        records.append(create_divider('Execute below actions in order repeatedly'))
-
-    current_turn = 0
-    for item in skillset.repeating_skill_groups:
-        header = ''
-        if item.turn != current_turn:
-            header += 'Turn {}'.format(item.turn)
-            current_turn = item.turn
-            if item.end_turn:
-                header += '-{}'.format(item.end_turn)
-
-        if item.hp != 100:
-            header += ' HP <= {}'.format(item.hp)
-        if len(header) > 0:
+    cur_hp = None
+    for item in sorted(skillset.repeating_skill_groups, key=lambda x: x.hp, reverse=True):
+        if cur_hp != item.hp:
+            cur_hp = item.hp
+            header = 'Execute below actions in order repeatedly'
+            # TODO: uncomment this once interval stuff is merged?
+            # header = 'Execute below actions in order every {} turns'.format(item.interval)
+            if item.hp != 100:
+                header += ' when HP <= {}'.format(item.hp)
             records.append(create_divider(header))
+
+        header = 'Turn {}'.format(item.turn)
+        if item.end_turn:
+            header += '-{}'.format(item.end_turn)
+        records.append(create_divider(header))
         for sub_item in item.skills:
             records.append(behavior_to_skillrecord(RecordType.ACTION, sub_item))
 
