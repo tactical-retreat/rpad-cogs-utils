@@ -325,10 +325,10 @@ def loop_through(ctx, behaviors: List[Any]):
 
                 if cond.use_chance() == 100 and b_type != ESDispel:
                     # This always executes so it is a terminal action.
-                    if not ctx.apply_skill_effects(b):
+                    if not ctx.check_skill_use(cond.one_time):
                         idx += 1
                         continue
-                    if not ctx.check_skill_use(cond.one_time):
+                    if not ctx.apply_skill_effects(b):
                         idx += 1
                         continue
                     ctx.update_skill_use(cond.one_time)
@@ -336,7 +336,7 @@ def loop_through(ctx, behaviors: List[Any]):
                     return results
                 else:
                     # Not a terminal action, so accumulate it and continue.
-                    if ctx.apply_skill_effects(b) and ctx.check_skill_use(cond.one_time):
+                    if ctx.check_skill_use(cond.one_time) and ctx.apply_skill_effects(b):
                         results.append(b)
                     idx += 1
                     continue
