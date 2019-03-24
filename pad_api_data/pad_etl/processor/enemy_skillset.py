@@ -874,7 +874,8 @@ class ESAttackUpStatus(ESAttackUp):
 class ESAttackUPCooldown(ESAttackUp):
     def __init__(self, skill: EnemySkillRef):
         # enrage cannot trigger until this many turns have passed
-        self.turn_cooldown = params(skill)[1]
+        cooldown_value = params(skill)[1] or 0
+        self.turn_cooldown = cooldown_value if cooldown_value > 1 else None
         super().__init__(
             skill,
             multiplier=params(skill)[3],
