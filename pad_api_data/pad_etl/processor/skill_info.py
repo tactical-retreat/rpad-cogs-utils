@@ -2237,6 +2237,38 @@ def multi_mass_match_convert(arguments):
         return 'multi_mass_match', c
     return f
 
+l_match_backups = {'attributes': [],
+                   'hp_multiplier': 1.0,
+                   'atk_multiplier': 1.0,
+                   'rcv_multiplier': 1.0,
+                   'damage_reduction': 0}
+
+
+def l_match_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('l_match',
+                                     arguments,
+                                     l_match_backups)(x)
+        c['parameter'] = fmt_parameter(c)
+        atk_mult = c['atk_multiplier']
+        rcv_mult = c['rcv_multiplier']
+        reduct = c['damage_reduction']
+        mult_text = fmt_multiplier_text(1, atk_mult, rcv_mult) 
+        reduct_text = fmt_reduct_text(reduct)
+        if mult_text:
+            skill_text = mult_text
+            if reduct_text:
+                skill_text += ' and ' + reduct_text
+        elif reduct_text:
+            skill_text = mult_text
+        skill_text += ' when matching 5 '
+        for i in c['attributes'][:-1]:
+            skill_text += ATTRIBUTES[i] + ', '
+        skill_text += ATTRIBUTES[int(c['attributes'][-1])] + ' orbs in L shape'
+        c['skill_text'] = skill_text
+        return 'l_match', c
+    return f
+
 add_combo_att_backups = {'attributes': [],
                          'min_attr': 0,
                          'hp_multiplier': 1.0,
@@ -2468,6 +2500,7 @@ SKILL_TRANSFORM = {
     185: bonus_time_convert({'time': (0, multi), 'for_attr': (1, binary_con), 'for_type': (2, binary_con), 'hp_multiplier': (3, multi2), 'atk_multiplier': (4, multi2), 'rcv_multiplier': (5, multi2)}),
     186: passive_stats_convert({'for_attr': (0, binary_con), 'for_type': (1, binary_con), 'hp_multiplier': (2, multi2), 'atk_multiplier': (3, multi2), 'rcv_multiplier': (4, multi2), 'skill_text': '[Board becomes 7x6]'}), 
     192: multi_mass_match_convert({'for_attr':(0, binary_con), 'minimum_orb':(1, cc), 'atk_multiplier':(2, multi), 'add_combo':(3, cc)}),
+    193: l_match_convert({'attributes':(0,binary_con), 'atk_multiplier':(1,multi2), 'rcv_multiplier':(2, multi2), 'damage_reduction':(3, multi)}),
     194: add_combo_att_convert({'attributes':(0, binary_con), 'min_attr':(1,cc), 'atk_multiplier':(2, multi2), 'add_combo':(3, cc)}),
     }
 
