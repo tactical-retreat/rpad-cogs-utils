@@ -7,7 +7,8 @@ monster_id: 1091
 monster_name_en: Blast Aurora Dragon
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 1 unused actions
 
 ############################################################
 ### Data @ 3
@@ -29,8 +30,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1 HP <= 74
-  name_jp: Turn 1 HP <= 74
+  name_en: HP <= 74
+  name_jp: HP <= 74
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -47,8 +48,26 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute below actions in order every 2 turns when HP is full
-  name_jp: Execute below actions in order every 2 turns when HP is full
+  name_en: HP <= 74
+  name_jp: HP <= 74
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Display <COUNTER> and skip turn
+  desc_jp: Display <COUNTER> and skip turn
+  max_atk_pct: null
+  name_en: ESCountdown
+  name_jp: ESCountdown
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute below actions in order repeatedly
+  name_jp: Execute below actions in order repeatedly
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -70,52 +89,12 @@ records:
   one_time: true
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Execute below actions in order every 4 turns when HP <= 74
-  name_jp: Execute below actions in order every 4 turns when HP <= 74
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Display <COUNTER> and skip turn
-  desc_jp: Display <COUNTER> and skip turn
-  max_atk_pct: null
-  name_en: ESCountdown
-  name_jp: ESCountdown
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 5
-  name_jp: Turn 5
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 500% damage (5 hits, 100% each)
-  desc_jp: Deal 500% damage (5 hits, 100% each)
-  max_atk_pct: 500
-  name_en: Blue Out Nemesis
-  name_jp: Blue Out Nemesis
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# ESAttackMultihit(15:1217) -> Blue Out Nemesis
+# Enemy action
 ############################################################
 ### ES Modifiers
 ############################################################

@@ -7,7 +7,8 @@ monster_id: 3722
 monster_name_en: Water Orb Dragon, Senja
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 1 unused actions
 
 ############################################################
 ### Data @ 4
@@ -37,10 +38,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Absorb combo <= 6 damage for 10 turns + Change Jammer to Poison, Deal 250%
-    damage
-  desc_jp: Absorb combo <= 6 damage for 10 turns + Change Jammer to Poison, Deal 250%
-    damage
+  desc_en: Absorb combo <= 6 damage for 10 turns + Change Jammer to Poison
+  desc_jp: Absorb combo <= 6 damage for 10 turns + Change Jammer to Poison
   max_atk_pct: null
   name_en: Mariner's Divine Protection + Outbreak
   name_jp: Mariner's Divine Protection + Outbreak
@@ -51,8 +50,26 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1 HP <= 19
-  name_jp: Turn 1 HP <= 19
+  name_en: Turn 14
+  name_jp: Turn 14
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 75% for 4 turns
+  desc_jp: Reduce damage from all sources by 75% for 4 turns
+  max_atk_pct: null
+  name_en: Abyssal Scales
+  name_jp: Abyssal Scales
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 19
+  name_jp: HP <= 19
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -63,24 +80,6 @@ records:
   name_en: Senja Sight
   name_jp: Senja Sight
   one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: When 1 enemy remains
-  name_jp: When 1 enemy remains
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Increase damage to 150% for the next 999 turns
-  desc_jp: Increase damage to 150% for the next 999 turns
-  max_atk_pct: null
-  name_en: Resentful Stare
-  name_jp: Resentful Stare
-  one_time: true
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -105,8 +104,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute below actions in order every 4 turns when HP is full
-  name_jp: Execute below actions in order every 4 turns when HP is full
+  name_en: Execute below actions in order repeatedly
+  name_jp: Execute below actions in order repeatedly
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -114,8 +113,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
+  name_en: Turn 15
+  name_jp: Turn 15
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -132,26 +131,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 3
-  name_jp: Turn 3
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Reduce damage from all sources by 75% for 4 turns
-  desc_jp: Reduce damage from all sources by 75% for 4 turns
-  max_atk_pct: null
-  name_en: Abyssal Scales
-  name_jp: Abyssal Scales
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 4
-  name_jp: Turn 4
+  name_en: Turn 16
+  name_jp: Turn 16
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -168,8 +149,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 5
-  name_jp: Turn 5
+  name_en: Turn 17
+  name_jp: Turn 17
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -183,6 +164,12 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# ESAttackUPRemainingEnemies(17:7493) -> Resentful Stare
+# 	Condition: One-time use, when <= 1 enemies remain (ai:100 rnd:0) (one-time: 3)
+# Increase damage to 150% for the next 999 turns
 ############################################################
 ### ES Modifiers
 ############################################################

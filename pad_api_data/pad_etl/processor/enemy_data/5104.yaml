@@ -7,7 +7,8 @@ monster_id: 5104
 monster_name_en: Vega
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 1 unused actions
 
 ############################################################
 ### Data @ 4
@@ -47,42 +48,6 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1 HP <= 49
-  name_jp: Turn 1 HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Absorb combo <= 4 damage for 5 turns
-  desc_jp: Absorb combo <= 4 damage for 5 turns
-  max_atk_pct: null
-  name_en: Matador Turn
-  name_jp: Matador Turn
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 2 HP <= 49
-  name_jp: Turn 2 HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Leader changes to random sub for 2 turns, Deal 90% damage
-  desc_jp: Leader changes to random sub for 2 turns, Deal 90% damage
-  max_atk_pct: 90
-  name_en: Grand Izuna Drop
-  name_jp: Grand Izuna Drop
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: false
@@ -115,6 +80,24 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 34
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Absorb combo <= 4 damage for 5 turns
+  desc_jp: Absorb combo <= 4 damage for 5 turns
+  max_atk_pct: null
+  name_en: Matador Turn
+  name_jp: Matador Turn
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
@@ -179,6 +162,12 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# ESLeaderSwap(75:12438) -> Grand Izuna Drop
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Leader changes to random sub for 2 turns
 ############################################################
 ### ES Modifiers
 ############################################################

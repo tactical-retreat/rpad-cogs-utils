@@ -7,7 +7,8 @@ monster_id: 101250
 monster_name_en: Alt. Awoken Hera-Sowilo
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 1 unused actions
 
 ############################################################
 ### Data @ 1
@@ -47,8 +48,44 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute below actions in order every 2 turns when HP is full
-  name_jp: Execute below actions in order every 2 turns when HP is full
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Absorb combo <= 5 damage for 5 turns
+  desc_jp: Absorb combo <= 5 damage for 5 turns
+  max_atk_pct: null
+  name_en: Shining Death Queen's Test
+  name_jp: Shining Death Queen's Test
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 49
+  name_jp: HP <= 49
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Display <COUNTER> and skip turn
+  desc_jp: Display <COUNTER> and skip turn
+  max_atk_pct: null
+  name_en: ESCountdown
+  name_jp: ESCountdown
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute below actions in order repeatedly
+  name_jp: Execute below actions in order repeatedly
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -88,70 +125,12 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Execute below actions in order every 5 turns when HP <= 49
-  name_jp: Execute below actions in order every 5 turns when HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Absorb combo <= 5 damage for 5 turns
-  desc_jp: Absorb combo <= 5 damage for 5 turns
-  max_atk_pct: null
-  name_en: Shining Death Queen's Test
-  name_jp: Shining Death Queen's Test
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 3
-  name_jp: Turn 3
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Display <COUNTER> and skip turn
-  desc_jp: Display <COUNTER> and skip turn
-  max_atk_pct: null
-  name_en: ESCountdown
-  name_jp: ESCountdown
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 6
-  name_jp: Turn 6
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 500% damage (5 hits, 100% each)
-  desc_jp: Deal 500% damage (5 hits, 100% each)
-  max_atk_pct: 500
-  name_en: Shining Death Queen's Judgement
-  name_jp: Shining Death Queen's Judgement
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# ESAttackMultihit(15:1027) -> Shining Death Queen's Judgement
+# Enemy action
 ############################################################
 ### ES Modifiers
 ############################################################

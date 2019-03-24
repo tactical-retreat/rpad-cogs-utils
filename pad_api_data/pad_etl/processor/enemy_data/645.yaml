@@ -8,7 +8,7 @@ monster_name_en: Archdemon Beelzebub
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 1 unused actions
+- Found 2 unused actions
 
 ############################################################
 ### Data @ 1
@@ -26,6 +26,24 @@ records:
   one_time: false
   record_type_name: PREEMPT
   usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 75
+  name_jp: HP <= 75
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 120% damage (3 hits, 40% each)
+  desc_jp: Deal 120% damage (3 hits, 40% each)
+  max_atk_pct: 120
+  name_en: Deadly Drive!
+  name_jp: Deadly Drive!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 70
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
@@ -48,26 +66,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 39
-  name_jp: HP <= 39
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change all orbs to Poison
-  desc_jp: Change all orbs to Poison
-  max_atk_pct: null
-  name_en: Sink into a sea of poison!!
-  name_jp: Sink into a sea of poison!!
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Execute below actions in order every 2 turns when HP is full
-  name_jp: Execute below actions in order every 2 turns when HP is full
+  name_en: Execute below actions in order repeatedly
+  name_jp: Execute below actions in order repeatedly
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -89,39 +89,15 @@ records:
   one_time: true
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Execute below actions in order every 2 turns when HP <= 74
-  name_jp: Execute below actions in order every 2 turns when HP <= 74
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 120% damage (3 hits, 40% each)
-  desc_jp: Deal 120% damage (3 hits, 40% each)
-  max_atk_pct: 120
-  name_en: Deadly Drive!
-  name_jp: Deadly Drive!
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 70
 
 ############################################################
 ### Unused Actions
 ############################################################
 # ESGravity(50:681) -> Not going easy anymore!
 # Player -50% HP
+# ESRandomSpawn(92:677) -> Sink into a sea of poison!!
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Change all orbs to Poison
 ############################################################
 ### ES Modifiers
 ############################################################

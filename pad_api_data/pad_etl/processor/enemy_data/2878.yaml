@@ -8,7 +8,7 @@ monster_name_en: Gleaming Rabbit Dragon, Fragrem
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 1 unused actions
+- Found 2 unused actions
 
 ############################################################
 ### Data @ 1
@@ -62,10 +62,10 @@ records:
   record_type_name: PASSIVE
   usage_pct: 100
 - !SkillRecord
-  desc_en: Voids status ailments for 5 turns + Change all orbs to Fire, Light, Heal,
-    Deal 130% damage (Preemptive)
-  desc_jp: Voids status ailments for 5 turns + Change all orbs to Fire, Light, Heal,
-    Deal 130% damage (Preemptive)
+  desc_en: Voids status ailments for 5 turns + Change all orbs to Fire, Light, Heal
+    (Preemptive)
+  desc_jp: Voids status ailments for 5 turns + Change all orbs to Fire, Light, Heal
+    (Preemptive)
   max_atk_pct: null
   name_en: Tell me your wish! + Shine Flare Ring
   name_jp: Tell me your wish! + Shine Flare Ring
@@ -94,16 +94,14 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1 HP <= 49
-  name_jp: Turn 1 HP <= 49
+  name_en: HP <= 49
+  name_jp: HP <= 49
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Absorb Light damage for 1 turns + Change 2nd, 5th column to Light orbs,
-    Deal 100% damage
-  desc_jp: Absorb Light damage for 1 turns + Change 2nd, 5th column to Light orbs,
-    Deal 100% damage
+  desc_en: Absorb Light damage for 1 turns + Change 2nd, 5th column to Light orbs
+  desc_jp: Absorb Light damage for 1 turns + Change 2nd, 5th column to Light orbs
   max_atk_pct: null
   name_en: Gleaming Rabbit Dragon's Trial + Flower Piercing Light
   name_jp: Gleaming Rabbit Dragon's Trial + Flower Piercing Light
@@ -114,26 +112,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 2 HP <= 49
-  name_jp: Turn 2 HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Reduce damage from all sources by 75% for 1 turns
-  desc_jp: Reduce damage from all sources by 75% for 1 turns
-  max_atk_pct: null
-  name_en: Big Jump
-  name_jp: Big Jump
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Execute below actions in order every 2 turns when HP is full
-  name_jp: Execute below actions in order every 2 turns when HP is full
+  name_en: Execute below actions in order repeatedly
+  name_jp: Execute below actions in order repeatedly
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -152,6 +132,24 @@ records:
   max_atk_pct: null
   name_en: Leap
   name_jp: Leap
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: ' HP <= 19'
+  name_jp: ' HP <= 19'
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy recover 19% hp + Reduce damage from all sources by 75% for 1 turns
+  desc_jp: Enemy recover 19% hp + Reduce damage from all sources by 75% for 1 turns
+  max_atk_pct: null
+  name_en: Overcoming Will + Big Jump
+  name_jp: Overcoming Will + Big Jump
   one_time: true
   record_type_name: ACTION
   usage_pct: 100
@@ -195,70 +193,14 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute below actions in order every 2 turns when HP <= 49
-  name_jp: Execute below actions in order every 2 turns when HP <= 49
+  name_en: ' HP <= 19'
+  name_jp: ' HP <= 19'
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 3
-  name_jp: Turn 3
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Reduce damage from all sources by 50% for 1 turns
-  desc_jp: Reduce damage from all sources by 50% for 1 turns
-  max_atk_pct: null
-  name_en: Leap
-  name_jp: Leap
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Execute below actions in order every 2 turns when HP <= 19
-  name_jp: Execute below actions in order every 2 turns when HP <= 19
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Enemy recover 19% hp + Reduce damage from all sources by 75% for 1 turns
-  desc_jp: Enemy recover 19% hp + Reduce damage from all sources by 75% for 1 turns
-  max_atk_pct: null
-  name_en: Overcoming Will + Big Jump
-  name_jp: Overcoming Will + Big Jump
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 185% damage (5 hits, 37% each) + Change all orbs to Fire, Light, Heal,
-    Deal 130% damage
-  desc_jp: Deal 185% damage (5 hits, 37% each) + Change all orbs to Fire, Light, Heal,
-    Deal 130% damage
+  desc_en: Enemy action + Change all orbs to Fire, Light, Heal
+  desc_jp: Enemy action + Change all orbs to Fire, Light, Heal
   max_atk_pct: null
   name_en: Shining Claw + Shine Flare Ring
   name_jp: Shining Claw + Shine Flare Ring
@@ -271,6 +213,9 @@ records:
 ############################################################
 # ESBindSkill(14:4493) -> Your friends are so important?
 # Bind active skills for 3 turns
+# ESDamageShield(74:4503) -> Big Jump
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Reduce damage from all sources by 75% for 1 turns
 ############################################################
 ### ES Modifiers
 ############################################################

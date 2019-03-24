@@ -8,7 +8,7 @@ monster_name_en: Pacifying Yomi Goddess, Izanami
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 3 unused actions
+- Found 4 unused actions
 
 ############################################################
 ### Data @ 1
@@ -47,11 +47,20 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
+  desc_en: Movetime 50% for 10 turns
+  desc_jp: Movetime 50% for 10 turns
+  max_atk_pct: null
+  name_en: Malicious Laughter
+  name_jp: Malicious Laughter
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1 HP <= 49
-  name_jp: Turn 1 HP <= 49
+  name_en: HP <= 50
+  name_jp: HP <= 50
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -66,46 +75,6 @@ records:
   name_jp: Protection of the Eight Thunders + Boundary of Disdain + The Nature of
     Death
   one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 1 HP <= 0
-  name_jp: Turn 1 HP <= 0
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Enemy recover 4% hp + Absorb combo <= 7 damage for 999 turns + Blind orbs
-    in specific positions for 4 turns + Increase damage to 400% for the next 999 turns
-  desc_jp: Enemy recover 4% hp + Absorb combo <= 7 damage for 999 turns + Blind orbs
-    in specific positions for 4 turns + Increase damage to 400% for the next 999 turns
-  max_atk_pct: null
-  name_en: Unwavering Light + Protection of the Eight Thunders + Boundary of Disdain
-    + The Nature of Death
-  name_jp: Unwavering Light + Protection of the Eight Thunders + Boundary of Disdain
-    + The Nature of Death
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Movetime 50% for 10 turns
-  desc_jp: Movetime 50% for 10 turns
-  max_atk_pct: null
-  name_en: Malicious Laughter
-  name_jp: Malicious Laughter
-  one_time: false
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -130,6 +99,16 @@ records:
 ############################################################
 ### Unused Actions
 ############################################################
+# SkillSet:
+# 	Condition: When < 1% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# 	[0] ESRecoverEnemy(86:6510) -> Unwavering Light
+# 	Enemy recover 4% hp
+# 	[1] ESAbsorbCombo(67:6468) -> Protection of the Eight Thunders
+# 	Absorb combo <= 7 damage for 999 turns
+# 	[2] ESBlindStickyFixed(98:6469) -> Boundary of Disdain
+# 	Blind orbs in specific positions for 4 turns
+# 	[3] ESAttackUPRemainingEnemies(17:6470) -> The Nature of Death
+# 	Increase damage to 400% for the next 999 turns
 # SkillSet:
 # 	[0] ESPoisonChangeRandom(60:6461) -> An Invitation to Death & Decay
 # 	Change Random 11 to Poison
