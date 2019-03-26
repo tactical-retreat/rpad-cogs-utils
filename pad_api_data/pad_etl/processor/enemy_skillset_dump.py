@@ -245,7 +245,7 @@ def load_summary(monster_id: int) -> Optional[EnemySummary]:
     if not os.path.exists(file_path):
         return None
 
-    with open(file_path) as f:
+    with open(file_path, encoding='utf-8') as f:
         line = _consume_comments(f)
 
         entry_info_data = []
