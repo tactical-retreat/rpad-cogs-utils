@@ -65,6 +65,8 @@ def process_card(mcard):
         entry_info.warnings.append('Found {} unused actions'.format(len(unused_actions)))
 
     summary = enemy_skillset_dump.EnemySummary(entry_info, skill_listings)
+    # TODO: turn this on
+    # summary = enemy_skillset_dump.load_and_merge_summary(summary)
 
     enemy_skillset_dump.dump_summary_to_file(card, summary, enemy_behavior, unused_actions)
 
