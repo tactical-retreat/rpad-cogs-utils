@@ -11,17 +11,19 @@ stage 1
 340 - Wooden Dark Tiamat @ level 5
 Poison Breath
 Change Random 6 to Poison (Preemptive) (1 time use)
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 Hell Breath
 10125 Damage - Deal 100% damage (2 hits, 50% each)
------ Turn 2 -----
+----- Loop to 1 after. Turn 2 -----
 Poison Breath
 Change Random 6 to Poison (1 time use)
------ Execute below actions in order repeatedly when HP <= 49 -----
------ Turn 1 -----
+----- HP <= 50 -----
+----- Execute repeatedly. Turn 1 -----
 God Gaia Breath
 15187 Damage - Deal 150% damage (2 hits, 75% each)
+----- Loop to 1 after. Turn 2 -----
+Poison Breath
+Change Random 6 to Poison (1 time use)
 
 stage 2
 
@@ -33,20 +35,21 @@ Grovel before me!
 ----- HP <= 50 -----
 Hoo hoo hoo!
 13256 Damage - Deal 105% damage (3 hits, 35% each) (70% chance)
+Grovel before me!
+10100 Damage - Change Random to Jammer, Deal 80% damage (70% chance)
 
 635 - Wind Archdemon Astaroth @ level 5
 Let's have some fun!
 Blind all orbs on the board (Preemptive)
+----- Execute repeatedly. Turn 1 -----
+No healing for you!
+4750 Damage - Change Heal to Random, Deal 50% damage (1 time use)
+----- Loop to 1 after. Turn 2 -----
+Here I come!
+Player -75% HP
 ----- HP <= 30 -----
 Do it Cauchemar!
 13300 Damage - Deal 140% damage (4 hits, 35% each)
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
-No healing for you!
-4750 Damage - Change Heal to Random, Deal 50% damage (1 time use)
------ Turn 2 -----
-Here I come!
-Player -75% HP
 
 stage 3
 
@@ -61,14 +64,31 @@ stage 4
 645 - Archdemon Beelzebub @ level 5
 Preemptive
 9002 Damage - Deal 70% damage
------ HP <= 75 -----
-Deadly Drive!
-15433 Damage - Deal 120% damage (3 hits, 40% each) (70% chance)
------ HP <= 39 -----
-Not going easy anymore!
-6430 Damage - Change Poison to Dark, Deal 50% damage
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
 Take this!
 Change Random 5 to Poison (1 time use)
+----- HP <= 75 -----
+----- Execute repeatedly. Turn 1 -----
+Take this!
+Change Random 5 to Poison (1 time use)
+----- Loop to 1 after. Turn 2 -----
+Deadly Drive!
+15433 Damage - Deal 120% damage (3 hits, 40% each) (70% chance)
+----- HP <= 40 -----
+Not going easy anymore!
+6430 Damage - Change Poison to Dark, Deal 50% damage
+----- Turn 2 -----
+Sink into a sea of poison!!
+Change all orbs to Poison (1 time use)
+----- Turn 3-6 -----
+Deadly Drive!
+15433 Damage - Deal 120% damage (3 hits, 40% each)
+----- Turn 4 -----
+Deadly Drive!
+15433 Damage - Deal 120% damage (3 hits, 40% each)
+----- Loop to 1 after. Turn 5 -----
+Deadly Drive!
+15433 Damage - Deal 120% damage (3 hits, 40% each)
+----- Turn 6 -----
+Deadly Drive!
+15433 Damage - Deal 120% damage (3 hits, 40% each)
 

@@ -5,12 +5,11 @@ stage 0
 100250 - Alt. Dub-amelit @ level 10
 !
 Do nothing (Preemptive) (1 time use)
+Dark Orb Toss
+4512 Damage - Deal 50% damage
 ----- When 1 enemy remains -----
 Pinch Up!
 Increase damage to 1000% for the next 999 turns
------ HP <= 100 -----
-Dark Orb Toss
-4512 Damage - Deal 50% damage
 
 100579 - Alt. Will-O'-Wisp @ level 7
 Mini-bomb
@@ -21,18 +20,18 @@ Spawn random 1 Bomb orbs
 101964 - Alt. Green DeviNyan @ level 7
 Dancing around
 Reduce damage from all sources by 50% for 1 turns (Preemptive) (1 time use)
------ Turn 1 -----
 Got angry
 Increase damage to 200% for the next 999 turns (1 time use)
------ Turn 2 -----
-Dancing around
-Reduce damage from all sources by 75% for 1 turns (1 time use)
------ Turn 3 -----
-Dancing around
-Reduce damage from all sources by 99% for 1 turns (1 time use)
 ----- HP <= 100 -----
 Amazing Attack
 16022 Damage - Deal 400% damage (4 hits, 100% each)
+----- Enemy is defeated -----
+----- Turn 1 -----
+Dancing around
+Reduce damage from all sources by 75% for 1 turns (1 time use)
+----- Turn 2 -----
+Got angry
+Increase damage to 200% for the next 999 turns (1 time use)
 
 stage 1
 
@@ -45,14 +44,12 @@ Baby Ice
 100098 - Alt. Mystic Flame Knight @ level 30
 Fire Orb change
 Change Water to Fire (Preemptive) (1 time use)
------ Turn 1 -----
 Flame Grudge
 Bind Water cards for 2~4 turns (1 time use)
 
 100102 - Alt. Mystic Stone Knight @ level 30
 Wood Orb change
 Change Fire to Wood (Preemptive) (1 time use)
------ Turn 1 -----
 Ground Grudge
 Bind Fire cards for 2~4 turns (1 time use)
 
@@ -61,8 +58,7 @@ stage 2
 1095 - Water Twin Star Leviathan @ level 7
 Sea Serpent's Whirlwind
 Bind active skills for 10 turns (Preemptive)
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 Constrict
 3731 Damage - Deal 25% damage
 ----- Turn 2 -----
@@ -77,7 +73,7 @@ Constrict
 ----- Turn 5 -----
 Crunch
 149246 Damage - Deal 1000% damage
------ Turn 6 -----
+----- Loop to 1 after. Turn 6 -----
 Engulf
 149246 Damage - Deal 1000% damage
 
@@ -107,13 +103,11 @@ stage 4
 782 - Mystic Megalith Dragon, Baalbek @ level 15
 Weight of the Trilithon
 Player -99% HP (Preemptive) (1 time use)
------ HP <= 29 -----
-Meteor Storm
-30599 Damage - Deal 100%~140% damage (5~7 hits, 20% each)
------ Execute below actions in order repeatedly -----
------ Turn 3 -----
 Weight of the Trilithon
 Player -99% HP (1 time use)
+----- HP <= 30 -----
+Meteor Storm
+30599 Damage - Deal 100%~140% damage (5~7 hits, 20% each)
 
 stage 5
 
@@ -124,19 +118,21 @@ Reduce damage from all sources by 80% for 1 turns + Bind 1 random for 5 turns, D
 Garment of Protection + Gungnir
 Reduce damage from all sources by 80% for 1 turns + Bind 1 random for 5 turns, Deal 120% damage
 ----- When HP is not full -----
+----- Execute repeatedly. Turn 1 -----
 Double Slash + Auto-recover
 Deal 160% damage (2 hits, 80% each) + Enemy recover 10% hp (1 time use)
------ When HP is not full -----
+----- Loop to 1 after. Turn 2 -----
 Divide Blast
 18592 Damage - Change 3rd row to Wood orbs, Deal 120% damage
 ----- HP <= 50 -----
-Triple Slash + Auto-recover
-Deal 180% damage (3 hits, 60% each) + Enemy recover 10% hp (1 time use)
-Divide Poison
-23241 Damage - Change 3rd row to Wood, Poison orbs, Deal 150% damage
------ HP <= 49 -----
 Skilfing + Hnikar
 Movetime -1s for 7 turns + Player -99% HP
+----- Loop to 1 after. Turn 2 -----
+Triple Slash + Auto-recover
+Deal 180% damage (3 hits, 60% each) + Enemy recover 10% hp (1 time use)
+----- Turn 3 -----
+Divide Poison
+23241 Damage - Change 3rd row to Wood, Poison orbs, Deal 150% damage
 ----- HP <= 15 -----
 Vak Sigfodr
 77470 Damage - Deal 500% damage (5 hits, 100% each)
@@ -146,6 +142,14 @@ stage 6
 3329 - Serpent Steel Star Healer, Ras @ level 7
 Antibodies + Hypnotism
 Voids status ailments for 999 turns + Leader changes to random sub for 1 turns (Preemptive)
+----- Execute repeatedly. Turn 1 -----
+Multiple Walls + Elemental Purée
+Absorb combo <= 6 damage for 1 turns + Change own attribute to random one of Fire, Water, Wood, Light, Dark, Deal 135% damage (50% chance)
+Reflescale + Elemental Purée
+Reduce damage from all sources by 75% for 1 turns + Change own attribute to random one of Fire, Water, Wood, Light, Dark, Deal 135% damage
+----- Loop to 1 after. Turn 2 -----
+Hypno Pursuit
+13212 Damage - Leader changes to random sub for 1 turns, Deal 90% damage
 ----- HP <= 50 -----
 Mournful Meteor + Forbidden Area
 Poison skyfall +30% for 1 turns + Seal 1st, 5th row for 1 turns (1 time use)
@@ -155,15 +159,6 @@ Increase damage to 200% for the next 999 turns + Enemy recover 20% hp (1 time us
 ----- HP <= 20 -----
 Stardust Comet
 132126 Damage - Deal 900% damage (9 hits, 100% each)
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
-Multiple Walls + Elemental Purée
-Absorb combo <= 6 damage for 1 turns + Change own attribute to random one of Fire, Water, Wood, Light, Dark, Deal 135% damage (50% chance)
-Reflescale + Elemental Purée
-Reduce damage from all sources by 75% for 1 turns + Change own attribute to random one of Fire, Water, Wood, Light, Dark, Deal 135% damage
------ Turn 2 -----
-Hypno Pursuit
-13212 Damage - Leader changes to random sub for 1 turns, Deal 90% damage
 
 Ras Descended! - Steel Star Healer-Mythical
 
@@ -172,12 +167,11 @@ stage 0
 100250 - Alt. Dub-amelit @ level 5
 !
 Do nothing (Preemptive) (1 time use)
+Dark Orb Toss
+2167 Damage - Deal 50% damage
 ----- When 1 enemy remains -----
 Pinch Up!
 Increase damage to 1000% for the next 999 turns
------ HP <= 100 -----
-Dark Orb Toss
-2167 Damage - Deal 50% damage
 
 100579 - Alt. Will-O'-Wisp @ level 5
 Mini-bomb
@@ -188,18 +182,18 @@ Spawn random 1 Bomb orbs
 101964 - Alt. Green DeviNyan @ level 5
 Dancing around
 Reduce damage from all sources by 50% for 1 turns (Preemptive) (1 time use)
------ Turn 1 -----
 Got angry
 Increase damage to 200% for the next 999 turns (1 time use)
------ Turn 2 -----
-Dancing around
-Reduce damage from all sources by 75% for 1 turns (1 time use)
------ Turn 3 -----
-Dancing around
-Reduce damage from all sources by 99% for 1 turns (1 time use)
 ----- HP <= 100 -----
 Amazing Attack
 10944 Damage - Deal 400% damage (4 hits, 100% each)
+----- Enemy is defeated -----
+----- Turn 1 -----
+Dancing around
+Reduce damage from all sources by 75% for 1 turns (1 time use)
+----- Turn 2 -----
+Got angry
+Increase damage to 200% for the next 999 turns (1 time use)
 
 stage 1
 
@@ -212,14 +206,12 @@ Baby Ice
 100098 - Alt. Mystic Flame Knight @ level 25
 Fire Orb change
 Change Water to Fire (Preemptive) (1 time use)
------ Turn 1 -----
 Flame Grudge
 Bind Water cards for 2~4 turns (1 time use)
 
 100102 - Alt. Mystic Stone Knight @ level 25
 Wood Orb change
 Change Fire to Wood (Preemptive) (1 time use)
------ Turn 1 -----
 Ground Grudge
 Bind Fire cards for 2~4 turns (1 time use)
 
@@ -228,8 +220,7 @@ stage 2
 1095 - Water Twin Star Leviathan @ level 5
 Sea Serpent's Whirlwind
 Bind active skills for 10 turns (Preemptive)
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 Constrict
 2548 Damage - Deal 25% damage
 ----- Turn 2 -----
@@ -244,7 +235,7 @@ Constrict
 ----- Turn 5 -----
 Crunch
 101944 Damage - Deal 1000% damage
------ Turn 6 -----
+----- Loop to 1 after. Turn 6 -----
 Engulf
 101944 Damage - Deal 1000% damage
 
@@ -274,13 +265,11 @@ stage 4
 782 - Mystic Megalith Dragon, Baalbek @ level 12
 Weight of the Trilithon
 Player -99% HP (Preemptive) (1 time use)
------ HP <= 29 -----
-Meteor Storm
-24184 Damage - Deal 100%~140% damage (5~7 hits, 20% each)
------ Execute below actions in order repeatedly -----
------ Turn 3 -----
 Weight of the Trilithon
 Player -99% HP (1 time use)
+----- HP <= 30 -----
+Meteor Storm
+24184 Damage - Deal 100%~140% damage (5~7 hits, 20% each)
 
 stage 5
 
@@ -291,19 +280,21 @@ Reduce damage from all sources by 80% for 1 turns + Bind 1 random for 5 turns, D
 Garment of Protection + Gungnir
 Reduce damage from all sources by 80% for 1 turns + Bind 1 random for 5 turns, Deal 120% damage
 ----- When HP is not full -----
+----- Execute repeatedly. Turn 1 -----
 Double Slash + Auto-recover
 Deal 160% damage (2 hits, 80% each) + Enemy recover 10% hp (1 time use)
------ When HP is not full -----
+----- Loop to 1 after. Turn 2 -----
 Divide Blast
 12699 Damage - Change 3rd row to Wood orbs, Deal 120% damage
 ----- HP <= 50 -----
-Triple Slash + Auto-recover
-Deal 180% damage (3 hits, 60% each) + Enemy recover 10% hp (1 time use)
-Divide Poison
-15874 Damage - Change 3rd row to Wood, Poison orbs, Deal 150% damage
------ HP <= 49 -----
 Skilfing + Hnikar
 Movetime -1s for 7 turns + Player -99% HP
+----- Loop to 1 after. Turn 2 -----
+Triple Slash + Auto-recover
+Deal 180% damage (3 hits, 60% each) + Enemy recover 10% hp (1 time use)
+----- Turn 3 -----
+Divide Poison
+15874 Damage - Change 3rd row to Wood, Poison orbs, Deal 150% damage
 ----- HP <= 15 -----
 Vak Sigfodr
 52916 Damage - Deal 500% damage (5 hits, 100% each)
@@ -313,6 +304,14 @@ stage 6
 3329 - Serpent Steel Star Healer, Ras @ level 5
 Antibodies + Hypnotism
 Voids status ailments for 999 turns + Leader changes to random sub for 1 turns (Preemptive)
+----- Execute repeatedly. Turn 1 -----
+Multiple Walls + Elemental Purée
+Absorb combo <= 6 damage for 1 turns + Change own attribute to random one of Fire, Water, Wood, Light, Dark, Deal 135% damage (50% chance)
+Reflescale + Elemental Purée
+Reduce damage from all sources by 75% for 1 turns + Change own attribute to random one of Fire, Water, Wood, Light, Dark, Deal 135% damage
+----- Loop to 1 after. Turn 2 -----
+Hypno Pursuit
+9025 Damage - Leader changes to random sub for 1 turns, Deal 90% damage
 ----- HP <= 50 -----
 Mournful Meteor + Forbidden Area
 Poison skyfall +30% for 1 turns + Seal 1st, 5th row for 1 turns (1 time use)
@@ -322,13 +321,4 @@ Increase damage to 200% for the next 999 turns + Enemy recover 20% hp (1 time us
 ----- HP <= 20 -----
 Stardust Comet
 90250 Damage - Deal 900% damage (9 hits, 100% each)
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
-Multiple Walls + Elemental Purée
-Absorb combo <= 6 damage for 1 turns + Change own attribute to random one of Fire, Water, Wood, Light, Dark, Deal 135% damage (50% chance)
-Reflescale + Elemental Purée
-Reduce damage from all sources by 75% for 1 turns + Change own attribute to random one of Fire, Water, Wood, Light, Dark, Deal 135% damage
------ Turn 2 -----
-Hypno Pursuit
-9025 Damage - Leader changes to random sub for 1 turns, Deal 90% damage
 

@@ -8,7 +8,7 @@ monster_name_en: Orphan, Second Form
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 5 unused actions
+- Found 4 unused actions
 
 ############################################################
 ### Data @ 1
@@ -62,6 +62,15 @@ records:
   name_jp: Temporal Hollow
   one_time: true
   record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
   desc_en: ''
@@ -123,24 +132,6 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 3 HP <= 59
-  name_jp: Turn 3 HP <= 59
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Jammer skyfall +15% for 3 turns + Deal 100% damage
-  desc_jp: Jammer skyfall +15% for 3 turns + Deal 100% damage
-  max_atk_pct: null
-  name_en: It's acting differently. + Black Ruin
-  name_jp: It's acting differently. + Black Ruin
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: Turn 4
   name_jp: Turn 4
   one_time: false
@@ -181,24 +172,6 @@ records:
   max_atk_pct: null
   name_en: Ignorant slaves of Pulse. + Sanction
   name_jp: Ignorant slaves of Pulse. + Sanction
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 5 HP <= 39
-  name_jp: Turn 5 HP <= 39
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Jammer skyfall +15% for 3 turns + Deal 100% damage
-  desc_jp: Jammer skyfall +15% for 3 turns + Deal 100% damage
-  max_atk_pct: null
-  name_en: It's acting differently. + Black Ruin
-  name_jp: It's acting differently. + Black Ruin
   one_time: true
   record_type_name: ACTION
   usage_pct: 100
@@ -259,15 +232,6 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Deal 700% damage
   desc_jp: Deal 700% damage
   max_atk_pct: 700
@@ -276,19 +240,81 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 60
+  name_jp: HP <= 60
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Jammer skyfall +15% for 3 turns + Deal 100% damage
+  desc_jp: Jammer skyfall +15% for 3 turns + Deal 100% damage
+  max_atk_pct: null
+  name_en: It's acting differently. + Black Ruin
+  name_jp: It's acting differently. + Black Ruin
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 4
+  name_jp: Turn 4
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  max_atk_pct: 100
+  name_en: Black Ruin
+  name_jp: Black Ruin
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 5
+  name_jp: Turn 5
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 75% for 2 turns + Change Random to Heal,
+    Deal 200% damage
+  desc_jp: Reduce damage from all sources by 75% for 2 turns + Change Random to Heal,
+    Deal 200% damage
+  max_atk_pct: null
+  name_en: Ignorant slaves of Pulse. + Rebirth
+  name_jp: Ignorant slaves of Pulse. + Rebirth
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Unused Actions
 ############################################################
-# ESAttackMultihit(15:3977) -> Black Ruin
-# 	Condition: One-time use (ai:100 rnd:0) (one-time: 16)
-# Enemy action
 # SkillSet:
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 8)
-# 	[0] ESDamageShield(74:3971) -> Ignorant slaves of Pulse.
-# 	Reduce damage from all sources by 75% for 2 turns
-# 	[1] ESOrbChangeAttack(48:3960) -> Rebirth
-# 	Change Random to Heal
+# 	[0] ESSkyfall(68:3964) -> It's acting differently.
+# 	Jammer skyfall +15% for 3 turns
+# 	[1] ESAttackMultihit(15:3961) -> Black Ruin
+# 	Enemy action
 # ESAttackMultihit(15:3978) -> Black Ruin
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 4)
 # Enemy action

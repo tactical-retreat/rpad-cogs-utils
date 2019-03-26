@@ -7,7 +7,8 @@ monster_id: 102987
 monster_name_en: Alt. Iron Machine King, Star Justice
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 1 unused actions
 
 ############################################################
 ### Data @ 1
@@ -56,17 +57,62 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 7
-  name_jp: Turn 7
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Increase damage to 200% for the next 999 turns
-  desc_jp: Increase damage to 200% for the next 999 turns
+  desc_en: ''
+  desc_jp: ''
   max_atk_pct: null
-  name_en: Justice Booster
-  name_jp: Justice Booster
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change 2nd row to Wood orbs, Deal 100% damage
+  desc_jp: Change 2nd row to Wood orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Justice Blade
+  name_jp: Justice Blade
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  max_atk_pct: null
+  name_en: Justice Punch
+  name_jp: Justice Punch
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 3
+  name_jp: Loop to 1 after. Turn 3
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 120% damage (3 hits, 40% each)
+  desc_jp: Deal 120% damage (3 hits, 40% each)
+  max_atk_pct: 120
+  name_en: Justice Star Boomerang
+  name_jp: Justice Star Boomerang
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -124,70 +170,13 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Execute below actions in order repeatedly
-  name_jp: Execute below actions in order repeatedly
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 8
-  name_jp: Turn 8
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change 2nd row to Wood orbs, Deal 100% damage
-  desc_jp: Change 2nd row to Wood orbs, Deal 100% damage
-  max_atk_pct: 100
-  name_en: Justice Blade
-  name_jp: Justice Blade
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 9
-  name_jp: Turn 9
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Player -99% HP
-  desc_jp: Player -99% HP
-  max_atk_pct: null
-  name_en: Justice Punch
-  name_jp: Justice Punch
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 10
-  name_jp: Turn 10
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 120% damage (3 hits, 40% each)
-  desc_jp: Deal 120% damage (3 hits, 40% each)
-  max_atk_pct: 120
-  name_en: Justice Star Boomerang
-  name_jp: Justice Star Boomerang
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# ESAttackUPCooldown(19:4846) -> Justice Booster
+# 	Condition: after 7 turns (ai:100 rnd:0)
+# Increase damage to 200% for the next 999 turns
 ############################################################
 ### ES Modifiers
 ############################################################

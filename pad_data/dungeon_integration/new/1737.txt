@@ -11,19 +11,20 @@ Clean when you're done!
 1077 - Berry Dragon @ level 10
 I've found some blueberries
 Spawn random 3 Water orbs (Preemptive)
------ Execute below actions in order repeatedly -----
------ Turn 1-2 -----
+----- Execute repeatedly. Turn 1-2 -----
 Munch Munch Munch
 20952 Damage - Spawn random 3 Jammer orbs, Deal 100% damage
------ Turn 3 -----
+----- Turn 2 -----
+Munch Munch Munch
+20952 Damage - Spawn random 3 Jammer orbs, Deal 100% damage
+----- Loop to 1 after. Turn 3 -----
 Spit!
 Player -75% HP
 
 1081 - Lemon Dragon @ level 10
 Lemon... Sour... I want some...
 Spawn random 3 Light orbs (Preemptive)
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 It's tart, so just one...
 21312 Damage - Spawn random 1 Heal orbs, Deal 100% damage
 ----- Turn 2 -----
@@ -32,7 +33,7 @@ It's tart, but I'll take another one...
 ----- Turn 3 -----
 It's tart... But I can't stop
 21312 Damage - Spawn random 1 Heal orbs, Deal 100% damage
------ Turn 4 -----
+----- Loop to 1 after. Turn 4 -----
 It's tart!!
 53280 Damage - Deal 250% damage (5 hits, 50% each)
 
@@ -41,8 +42,12 @@ stage 1
 758 - Drilling Shark Dragon, Megalodran @ level 5
 Burning Shield
 Absorb Wood damage for 5 turns (Preemptive) (1 time use)
------ Execute below actions in order repeatedly -----
------ Turn 2 -----
+Aqua Jet
+29520 Damage - Change Random to Water, Deal 120% damage (70% chance)
+Crunch Fang
+34440 Damage - Deal 140% damage (2 hits, 70% each) (70% chance)
+----- HP <= 100 -----
+----- Turn 2-5 -----
 Aqua Jet
 29520 Damage - Change Random to Water, Deal 120% damage (70% chance)
 Crunch Fang
@@ -57,7 +62,7 @@ Aqua Jet
 29520 Damage - Change Random to Water, Deal 120% damage (70% chance)
 Crunch Fang
 34440 Damage - Deal 140% damage (2 hits, 70% each) (70% chance)
------ Turn 5 -----
+----- Loop to 1 after. Turn 5 -----
 Aqua Jet
 29520 Damage - Change Random to Water, Deal 120% damage (70% chance)
 Crunch Fang
@@ -65,17 +70,7 @@ Crunch Fang
 ----- Turn 6 -----
 Shark Horn Blade
 78720 Damage - Bind 1 random for 2 turns, Deal 320% damage (1 time use)
------ Execute below actions in order repeatedly when HP <= 59 -----
------ Turn 2 -----
-Vortex Cage
-19680 Damage - Lock all Fire, Water orbs, Deal 80% damage
------ Turn 3 -----
-Vortex Cage
-19680 Damage - Lock all Fire, Water orbs, Deal 80% damage
------ Turn 4 -----
-Vortex Cage
-19680 Damage - Lock all Fire, Water orbs, Deal 80% damage
------ Turn 5 -----
+----- HP <= 60 -----
 Vortex Cage
 19680 Damage - Lock all Fire, Water orbs, Deal 80% damage
 
@@ -86,7 +81,6 @@ Ability
 Survive attacks with 1 HP when HP > 75%
 Liushahe Whirlwind
 34988 Damage - Deal 75% damage (Preemptive)
------ Turn 1 -----
 General of the Sacred Mountain
 Absorb combo <= 4 damage for 99 turns
 ----- HP <= 100 -----
@@ -99,7 +93,7 @@ Disable Skill
 ----- HP <= 50 -----
 Nine Ill Winds
 Bind active skills for 3 turns (1 time use)
------ HP <= 1 -----
+----- Enemy is defeated -----
 Mystic Curse + Chomp
 Player -99% HP + Deal 120% damage (2 hits, 60% each)
 
@@ -114,10 +108,9 @@ Cold Scythe
 31802 Damage - Delay active skills by 1 turns, Deal 110% damage (40% chance)
 Crystallizing Dark Wave
 26019 Damage - Bind 2 random for 3 turns, Deal 90% damage (20% chance) (1 time use)
------ HP <= 29 -----
+----- HP <= 30 -----
 Draco Summon-Frost Dragon Emperor
 Do nothing
------ HP <= 29 -----
 Abyss Tempest
 144554 Damage - Deal 500% damage (5 hits, 100% each)
 
@@ -128,22 +121,21 @@ Ability
 Reduce damage from Dark by 50%
 Light Sword Scale
 Voids status ailments for 999 turns (Preemptive)
------ HP <= 49 -----
-Sword Mountain Stance
-Absorb combo <= 4 damage for 2 turns
------ HP <= 49 -----
-Pouring Light Blade
-34417 Damage - Change Random to Light, Deal 85% damage
------ HP <= 49 -----
-Lightning Horizon
-121475 Damage - Change 2nd, 3rd, 4th row to Light orbs, Deal 300% damage
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 Tail Slash
 40491 Damage - Change 3rd row to Jammer orbs, Deal 100% damage (1 time use)
------ Turn 2 -----
+----- Loop to 1 after. Turn 2 -----
 Sword Phalanx
 60737 Damage - Deal 90%~150% damage (3~5 hits, 30% each)
+----- HP <= 50 -----
+Sword Mountain Stance
+Absorb combo <= 4 damage for 2 turns
+----- Loop to 1 after. Turn 2 -----
+Pouring Light Blade
+34417 Damage - Change Random to Light, Deal 85% damage
+----- Turn 3 -----
+Lightning Horizon
+121475 Damage - Change 2nd, 3rd, 4th row to Light orbs, Deal 300% damage
 
 stage 5
 
@@ -158,10 +150,10 @@ Dazzler Splash
 34473 Damage - Movetime 50% for 1 turns, Deal 140% damage (25% chance) (1 time use)
 Tail Slap
 32011 Damage - Spawn random 3 Water orbs, Deal 130% damage (25% chance)
------ HP <= 69 -----
+----- HP <= 70 -----
 Breaching
 Increase damage to 250% for the next attack
------ HP <= 49 -----
+----- HP <= 50 -----
 Skimming
 Player -99% HP
 ----- HP <= 15 -----

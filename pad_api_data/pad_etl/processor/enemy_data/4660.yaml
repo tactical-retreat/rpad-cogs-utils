@@ -8,7 +8,7 @@ monster_name_en: '*****'
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 2 unused actions
+- Found 1 unused actions
 
 ############################################################
 ### Data @ 4
@@ -25,15 +25,6 @@ records:
   name_jp: I'll try my best! + Well, now for a fair game!
   one_time: false
   record_type_name: PREEMPT
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
   desc_en: Change Heal to Light, Deal 100% damage
@@ -75,8 +66,35 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Heal to Light, Deal 100% damage
+  desc_jp: Change Heal to Light, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Shining Straight
+  name_jp: Shining Straight
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Change Random to Wood, Deal 120% damage
+  desc_jp: Change Random to Wood, Deal 120% damage
+  max_atk_pct: 120
+  name_en: Orb Curve
+  name_jp: Orb Curve
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 20
+  name_jp: HP <= 20
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -90,21 +108,75 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Deal 300% damage (10 hits, 30% each)
   desc_jp: Deal 300% damage (10 hits, 30% each)
   max_atk_pct: 300
   name_en: Starburst!!!
   name_jp: Starburst!!!
   one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 150% for the next 5 turns
+  desc_jp: Increase damage to 150% for the next 5 turns
+  max_atk_pct: null
+  name_en: You got burned!
+  name_jp: You got burned!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Heal to Light, Deal 100% damage
+  desc_jp: Change Heal to Light, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Shining Straight
+  name_jp: Shining Straight
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Change Random to Wood, Deal 120% damage
+  desc_jp: Change Random to Wood, Deal 120% damage
+  max_atk_pct: 120
+  name_en: Orb Curve
+  name_jp: Orb Curve
+  one_time: true
   record_type_name: ACTION
   usage_pct: 100
 
@@ -116,9 +188,6 @@ records:
 # 	Blind all orbs on the board
 # 	[1] ESAttackMultihit(15:10639) -> Even looking like this, you're strong!
 # 	Enemy action
-# ESAttackUPRemainingEnemies(17:10641) -> You got burned!
-# 	Condition: when <= 1 enemies remain (ai:100 rnd:0)
-# Increase damage to 150% for the next 5 turns
 ############################################################
 ### ES Modifiers
 ############################################################

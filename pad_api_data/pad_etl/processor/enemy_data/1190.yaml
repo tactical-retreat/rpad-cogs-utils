@@ -8,7 +8,7 @@ monster_name_en: Ancient Draggie Knight, Zeal
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 1 unused actions
+- Found 2 unused actions
 
 ############################################################
 ### Data @ 1
@@ -45,6 +45,15 @@ records:
   name_jp: Wave of Nothingness
   one_time: true
   record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
   desc_en: ''
@@ -101,33 +110,6 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 7
-  name_jp: Turn 7
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Reduce damage from all sources by 50% for 5 turns
-  desc_jp: Reduce damage from all sources by 50% for 5 turns
-  max_atk_pct: null
-  name_en: Dragon Shield
-  name_jp: Dragon Shield
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Deal 100% damage (2 hits, 50% each)
   desc_jp: Deal 100% damage (2 hits, 50% each)
   max_atk_pct: 100
@@ -140,6 +122,8 @@ records:
 ############################################################
 ### Unused Actions
 ############################################################
+# ESDamageShield(74:8338) -> Dragon Shield
+# Reduce damage from all sources by 50% for 5 turns
 # ESAttackUPRemainingEnemies(17:8335) -> This is my true power!
 # 	Condition: when <= 1 enemies remain (ai:100 rnd:0)
 # Increase damage to 300% for the next 999 turns

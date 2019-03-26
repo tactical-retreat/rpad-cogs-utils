@@ -11,26 +11,26 @@ Illusory Faith Theatre
 ----- When HP is not full -----
 Elemental Turn
 27945 Damage - Change own attribute to random one of Fire, Water, Wood, Light, Dark, Deal 120% damage (1 time use)
------ When HP is not full -----
 Allegro Step
 34931 Damage - Deal 150% damage (3 hits, 50% each)
 ----- HP <= 80 -----
-Arabesque Repair
-18630 Damage - Enemy recover 30% hp, Deal 80% damage (20% chance)
------ HP <= 79 -----
+----- Turn 1 -----
 Waltz
 Leader changes to random sub for 1 turns (33% chance)
 Rondo
 23287 Damage - Change 1st, 3rd, 5th, 7th column to Fire, Water, Wood, Light, Dark orbs, 2nd, 4th, 6th column to Jammer, Poison orbs, Deal 100% damage (33% chance)
 Requiem
 Delay active skills by 3 turns (34% chance)
------ HP <= 79 -----
+----- Turn 2 -----
+Elemental Turn
+27945 Damage - Change own attribute to random one of Fire, Water, Wood, Light, Dark, Deal 120% damage (1 time use)
+Arabesque Repair
+18630 Damage - Enemy recover 30% hp, Deal 80% damage (20% chance)
 Allegro Step
 34931 Damage - Deal 150% damage (3 hits, 50% each)
------ HP <= 19 -----
+----- HP <= 20 -----
 Preparation
 30274 Damage - Delay active skills by 1 turns, Deal 130% damage
------ HP <= 19 -----
 Sudden Curtain Call
 232877 Damage - Deal 1000% damage
 
@@ -41,35 +41,29 @@ Ability
 Reduce damage from Dark by 50%
 Welcome to the big leagues + Wasser Biene
 Voids status ailments for 10 turns + Change Random to Water, Deal 50% damage (Preemptive)
------ HP <= 70 -----
-Licht Regen
-Light skyfall +15% for 10 turns (1 time use)
------ HP <= 50 -----
-Zeit Rauben
-Movetime 50% for 3 turns (1 time use)
------ HP <= 15 -----
-Eisen Zorn
-356453 Damage - Deal 1500% damage (5 hits, 300% each)
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 Blitzen Schwert
 23763 Damage - Spawn random 4 Heal orbs, Deal 100% damage
------ Turn 2 -----
+----- Loop to 1 after. Turn 2 -----
 Drehung Klinge
 35645 Damage - Change all orbs to Jammer, Deal 150% damage (50% chance)
 Windhose
 Change all orbs to Mortal Poison
+----- HP <= 70 -----
+Licht Regen
+Light skyfall +15% for 10 turns (1 time use)
+----- HP <= 50 -----
+Prima Schild
+Reduce damage from all sources by 50% for 3 turns (1 time use)
+----- HP <= 15 -----
+Eisen Zorn
+356453 Damage - Deal 1500% damage (5 hits, 300% each)
 
 stage 2
 
 1324 - Extreme King Metal Dragon @ level 10
 He looks full
 Do nothing (Preemptive) (1 time use)
------ When 4 enemy remains -----
-He looks full
-Do nothing (1 time use)
------ Execute below actions in order repeatedly -----
------ Turn 6 -----
 He looks full
 Do nothing (1 time use)
 
@@ -88,27 +82,15 @@ Ability
 Reduce damage from Light, Dark by 50%
 Burning Flame + Power Claw
 Absorb combo <= 5 damage for 99 turns + Lock all Fire, Wood orbs (Preemptive) (1 time use)
------ Turn 1 -----
 Dark Flare
 32758 Damage - Blind all orbs on the board, Deal 170% damage (1 time use)
------ When 1 enemy remains and HP <= 49 -----
-Heat Up
-Increase damage to 150% for the next 999 turns
------ HP <= 30 -----
-Melting Claw
-30831 Damage - Deal 160% damage (4 hits, 40% each)
-Destroying Claw
-21196 Damage - Spawn random 4 Jammer, Poison orbs, Deal 110% damage
------ HP <= 15 -----
-Explosive Skewer
-144524 Damage - Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 750% damage
------ Execute below actions in order repeatedly -----
+----- HP <= 100 -----
 ----- Turn 2 -----
 Death Claw
 21196 Damage - Change Random to Poison, Deal 110% damage (50% chance)
 Crushing Claw
 21196 Damage - Change Random to Jammer, Deal 110% damage
------ Turn 3 -----
+----- Loop to 1 after. Turn 3 -----
 Evil Hold
 23123 Damage - Lock all Jammer, Poison orbs, Deal 120% damage (50% chance)
 Element Hold
@@ -118,6 +100,55 @@ Heat Chain
 25050 Damage - Bind active skills for 3 turns, Deal 130% damage (50% chance)
 Cleave Rush
 26977 Damage - Deal 140% damage (4 hits, 35% each)
+----- HP <= 30 -----
+----- Turn 2 -----
+Destroying Claw
+21196 Damage - Spawn random 4 Jammer, Poison orbs, Deal 110% damage
+----- Loop to 1 after. Turn 3 -----
+Evil Hold
+23123 Damage - Lock all Jammer, Poison orbs, Deal 120% damage (50% chance)
+Element Hold
+23123 Damage - Lock 7 random Fire, Water, Wood, Light, Dark, Heal orbs, Deal 120% damage
+----- Turn 4 -----
+Melting Claw
+30831 Damage - Deal 160% damage (4 hits, 40% each)
+----- HP <= 15 -----
+Explosive Skewer
+144524 Damage - Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 750% damage
+----- When 1 enemy remains -----
+----- HP <= 50 -----
+Heat Up
+Increase damage to 150% for the next 999 turns
+----- Loop to 1 after. Turn 3 -----
+Evil Hold
+23123 Damage - Lock all Jammer, Poison orbs, Deal 120% damage (50% chance)
+Element Hold
+23123 Damage - Lock 7 random Fire, Water, Wood, Light, Dark, Heal orbs, Deal 120% damage
+----- Turn 4 -----
+Heat Chain
+25050 Damage - Bind active skills for 3 turns, Deal 130% damage (50% chance)
+Cleave Rush
+26977 Damage - Deal 140% damage (4 hits, 35% each)
+----- Turn 5 -----
+Death Claw
+21196 Damage - Change Random to Poison, Deal 110% damage (50% chance)
+Crushing Claw
+21196 Damage - Change Random to Jammer, Deal 110% damage
+----- HP <= 30 -----
+----- Loop to 1 after. Turn 3 -----
+Evil Hold
+23123 Damage - Lock all Jammer, Poison orbs, Deal 120% damage (50% chance)
+Element Hold
+23123 Damage - Lock 7 random Fire, Water, Wood, Light, Dark, Heal orbs, Deal 120% damage
+----- Turn 4 -----
+Melting Claw
+30831 Damage - Deal 160% damage (4 hits, 40% each)
+----- Turn 5 -----
+Destroying Claw
+21196 Damage - Spawn random 4 Jammer, Poison orbs, Deal 110% damage
+----- HP <= 15 -----
+Explosive Skewer
+144524 Damage - Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 750% damage
 
 stage 4
 
@@ -129,9 +160,16 @@ Voids status ailments for 999 turns + Delay active skills by 4 turns (Preemptive
 ----- When player has any buff -----
 Justice Eye
 Voids player buff effects
------ Turn 7 -----
-Justice Booster
-Increase damage to 200% for the next 999 turns
+----- HP <= 100 -----
+----- Execute repeatedly. Turn 1 -----
+Justice Blade
+24556 Damage - Change 2nd row to Wood orbs, Deal 100% damage
+----- Turn 2 -----
+Justice Punch
+Player -99% HP
+----- Loop to 1 after. Turn 3 -----
+Justice Star Boomerang
+29467 Damage - Deal 120% damage (3 hits, 40% each)
 ----- HP <= 70 -----
 Justice Barrier
 Reduce damage from all sources by 50% for 6 turns (1 time use)
@@ -141,16 +179,6 @@ Justice Tornado
 ----- HP <= 15 -----
 Justice Ultimate Storm
 196452 Damage - Deal 800% damage (8 hits, 100% each)
------ Execute below actions in order repeatedly -----
------ Turn 8 -----
-Justice Blade
-24556 Damage - Change 2nd row to Wood orbs, Deal 100% damage
------ Turn 9 -----
-Justice Punch
-Player -99% HP
------ Turn 10 -----
-Justice Star Boomerang
-29467 Damage - Deal 120% damage (3 hits, 40% each)
 
 stage 5
 
@@ -170,23 +198,6 @@ Machine Glare
 25927 Damage - Movetime -1s for 1 turns, Deal 120% damage (25% chance) (1 time use)
 Gathering magical power
 Do nothing (25% chance)
------ When 1 enemy remains and HP <= 49 -----
-Awaken Force
-Increase damage to 200% for the next 999 turns
------ HP <= 49 -----
-Full Charge
-Do nothing (25% chance) (1 time use)
-Suppressive Wave
-30248 Damage - Delay active skills by 3 turns, Deal 140% damage (25% chance)
-Jamming
-30248 Damage - Jammer skyfall +20% for 1 turns, Deal 140% damage (25% chance)
------ HP <= 20 -----
-Limit Break
-172848 Damage - Deal 800% damage (2 hits, 400% each)
------ HP <= 1 -----
-Holy Repair + Limit Break
-Enemy recover 19% hp + Deal 800% damage (2 hits, 400% each)
------ Execute below actions in order repeatedly -----
 ----- Turn 2 -----
 Full Charge
 Do nothing (25% chance) (1 time use)
@@ -196,7 +207,8 @@ Ordeal Section
 30248 Damage - Absorb combo <= 6 damage for 1 turns, Deal 140% damage (25% chance)
 Jamming
 30248 Damage - Jammer skyfall +20% for 1 turns, Deal 140% damage (25% chance)
------ Turn 3 -----
+----- HP <= 100 -----
+----- Loop to 1 after. Turn 3 -----
 Steel Wing
 38890 Damage - Deal 180% damage (3 hits, 60% each) (60% chance) (1 time use)
 Paralysis Sight
@@ -208,6 +220,48 @@ Machine Glare
 25927 Damage - Movetime -1s for 1 turns, Deal 120% damage (25% chance) (1 time use)
 Gathering magical power
 Do nothing (25% chance)
+----- Turn 5 -----
+Full Charge
+Do nothing (25% chance) (1 time use)
+Suppressive Wave
+30248 Damage - Delay active skills by 3 turns, Deal 140% damage (25% chance)
+Jamming
+30248 Damage - Jammer skyfall +20% for 1 turns, Deal 140% damage (25% chance)
+----- HP <= 20 -----
+Limit Break
+172848 Damage - Deal 800% damage (2 hits, 400% each)
+----- Enemy is defeated -----
+Holy Repair + Limit Break
+Enemy recover 19% hp + Deal 800% damage (2 hits, 400% each)
+----- When 1 enemy remains -----
+----- HP <= 50 -----
+----- Turn 1 -----
+Awaken Force
+Increase damage to 200% for the next 999 turns
+----- Turn 2 -----
+Shock Ray
+25927 Damage - Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 120% damage (25% chance) (1 time use)
+Flash Bomb
+25927 Damage - Spawn random 3 Light orbs, Deal 120% damage (25% chance) (1 time use)
+Machine Glare
+25927 Damage - Movetime -1s for 1 turns, Deal 120% damage (25% chance) (1 time use)
+Gathering magical power
+Do nothing (25% chance)
+----- Turn 3 -----
+Full Charge
+Do nothing (25% chance) (1 time use)
+Suppressive Wave
+30248 Damage - Delay active skills by 3 turns, Deal 140% damage (25% chance)
+Ordeal Section
+30248 Damage - Absorb combo <= 6 damage for 1 turns, Deal 140% damage (25% chance)
+Jamming
+30248 Damage - Jammer skyfall +20% for 1 turns, Deal 140% damage (25% chance)
+----- HP <= 20 -----
+Limit Break
+172848 Damage - Deal 800% damage (2 hits, 400% each)
+----- Enemy is defeated -----
+Holy Repair + Limit Break
+Enemy recover 19% hp + Deal 800% damage (2 hits, 400% each)
 
 stage 6
 
@@ -218,7 +272,6 @@ Ability
 Survive attacks with 1 HP when HP > 50%
 Hell Armor + Demon Flare + Chaos Field
 Voids status ailments for 999 turns + Spawn locked Bomb orbs in the specified positions + Locked random skyfall +100% for 1 turns (Preemptive)
------ Turn 1 -----
 Energy Ray
 53052 Damage - Fix orb movement starting point to random position on the board, Deal 200% damage
 ----- HP <= 100 -----
@@ -231,7 +284,6 @@ Evil Bomb
 ----- HP <= 50 -----
 Trauma Dimension + Jamming
 Absorb combo <= 5 damage for 999 turns + Jammer skyfall +20% for 10 turns
------ HP <= 49 -----
 Suppression Pulse + Dead Wing
 Delay active skills by 2 turns + Deal 210% damage (3 hits, 70% each) (20% chance) (1 time use)
 Black Metal Glare + Paralysis Dart
@@ -241,7 +293,7 @@ Evil Bomb
 ----- HP <= 20 -----
 Limit Break
 1591564 Damage - Deal 6000% damage (3 hits, 2000% each)
------ HP <= 1 -----
+----- Enemy is defeated -----
 Cell Proliferate + Helter-Skelter
 Enemy recover 51% hp + Increase damage to 200% for the next 999 turns
 
@@ -258,26 +310,26 @@ Illusory Faith Theatre
 ----- When HP is not full -----
 Elemental Turn
 19088 Damage - Change own attribute to random one of Fire, Water, Wood, Light, Dark, Deal 120% damage (1 time use)
------ When HP is not full -----
 Allegro Step
 23860 Damage - Deal 150% damage (3 hits, 50% each)
 ----- HP <= 80 -----
-Arabesque Repair
-12725 Damage - Enemy recover 30% hp, Deal 80% damage (20% chance)
------ HP <= 79 -----
+----- Turn 1 -----
 Waltz
 Leader changes to random sub for 1 turns (33% chance)
 Rondo
 15906 Damage - Change 1st, 3rd, 5th, 7th column to Fire, Water, Wood, Light, Dark orbs, 2nd, 4th, 6th column to Jammer, Poison orbs, Deal 100% damage (33% chance)
 Requiem
 Delay active skills by 3 turns (34% chance)
------ HP <= 79 -----
+----- Turn 2 -----
+Elemental Turn
+19088 Damage - Change own attribute to random one of Fire, Water, Wood, Light, Dark, Deal 120% damage (1 time use)
+Arabesque Repair
+12725 Damage - Enemy recover 30% hp, Deal 80% damage (20% chance)
 Allegro Step
 23860 Damage - Deal 150% damage (3 hits, 50% each)
------ HP <= 19 -----
+----- HP <= 20 -----
 Preparation
 20679 Damage - Delay active skills by 1 turns, Deal 130% damage
------ HP <= 19 -----
 Sudden Curtain Call
 159069 Damage - Deal 1000% damage
 
@@ -288,38 +340,30 @@ Ability
 Reduce damage from Dark by 50%
 Welcome to the big leagues + Wasser Biene
 Voids status ailments for 10 turns + Change Random to Water, Deal 50% damage (Preemptive)
------ HP <= 70 -----
-Licht Regen
-Light skyfall +15% for 10 turns (1 time use)
------ HP <= 50 -----
-Zeit Rauben
-Movetime 50% for 3 turns (1 time use)
------ HP <= 15 -----
-Eisen Zorn
-243479 Damage - Deal 1500% damage (5 hits, 300% each)
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 Blitzen Schwert
 16231 Damage - Spawn random 4 Heal orbs, Deal 100% damage
------ Turn 2 -----
+----- Loop to 1 after. Turn 2 -----
 Drehung Klinge
 24347 Damage - Change all orbs to Jammer, Deal 150% damage (50% chance)
 Windhose
 Change all orbs to Mortal Poison
+----- HP <= 70 -----
+Licht Regen
+Light skyfall +15% for 10 turns (1 time use)
+----- HP <= 50 -----
+Prima Schild
+Reduce damage from all sources by 50% for 3 turns (1 time use)
+----- HP <= 15 -----
+Eisen Zorn
+243479 Damage - Deal 1500% damage (5 hits, 300% each)
 
 stage 2
 
 1206 - 5 Mechdragon Fusion, God Canopus @ level 10
 God Dragons' Field
 Voids status ailments for 999 turns (Preemptive)
------ HP <= 24 -----
-God Mode Activated!!
-Increase damage to 200% for the next 999 turns (1 time use)
------ HP <= 24 -----
-Final God Cannon
-37752 Damage - Deal 200% damage
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 Super Hadar Missile
 23595 Damage - Change Random to Jammer, Deal 125% damage
 ----- Turn 2 -----
@@ -331,21 +375,19 @@ Canopus Tornado Cutter
 ----- Turn 4 -----
 Betelgeuse Bomb
 28314 Damage - Change Random to Fire, Deal 150% damage
------ Turn 5 -----
+----- Loop to 1 after. Turn 5 -----
 Aldebaran Crusher
 Player -99% HP
+----- HP <= 25 -----
+God Mode Activated!!
+Increase damage to 200% for the next 999 turns (1 time use)
+Final God Cannon
+37752 Damage - Deal 200% damage
 
 1207 - 5 Mechdragon Combo, Demon Hadar @ level 10
 Barrier Field
 Voids status ailments for 999 turns (Preemptive)
------ HP <= 24 -----
-Limiter Off
-Do nothing (1 time use)
------ HP <= 24 -----
-Ultimate Stream
-152334 Damage - Deal 900% damage (3 hits, 300% each)
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 Genocide Missile Type 0
 16926 Damage - Change Random 6 to Poison, Deal 100% damage
 ----- Turn 2 -----
@@ -357,18 +399,20 @@ Dark Cyclone Blast
 ----- Turn 4 -----
 High Megiddo Cannon
 33852 Damage - Deal 200% damage (2 hits, 100% each)
------ Turn 5 -----
+----- Loop to 1 after. Turn 5 -----
 Freezing Crusher
 12694 Damage - Bind 4 subs for 2 turns, Deal 75% damage
+----- HP <= 25 -----
+----- Execute repeatedly. Turn 1 -----
+Limiter Off
+Do nothing (1 time use)
+----- Loop to 1 after. Turn 2 -----
+Ultimate Stream
+152334 Damage - Deal 900% damage (3 hits, 300% each)
 
 1324 - Extreme King Metal Dragon @ level 7
 He looks full
 Do nothing (Preemptive) (1 time use)
------ When 4 enemy remains -----
-He looks full
-Do nothing (1 time use)
------ Execute below actions in order repeatedly -----
------ Turn 6 -----
 He looks full
 Do nothing (1 time use)
 
@@ -379,27 +423,15 @@ Ability
 Reduce damage from Light, Dark by 50%
 Burning Flame + Power Claw
 Absorb combo <= 5 damage for 99 turns + Lock all Fire, Wood orbs (Preemptive) (1 time use)
------ Turn 1 -----
 Dark Flare
 22376 Damage - Blind all orbs on the board, Deal 170% damage (1 time use)
------ When 1 enemy remains and HP <= 49 -----
-Heat Up
-Increase damage to 150% for the next 999 turns
------ HP <= 30 -----
-Melting Claw
-21060 Damage - Deal 160% damage (4 hits, 40% each)
-Destroying Claw
-14478 Damage - Spawn random 4 Jammer, Poison orbs, Deal 110% damage
------ HP <= 15 -----
-Explosive Skewer
-98718 Damage - Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 750% damage
------ Execute below actions in order repeatedly -----
+----- HP <= 100 -----
 ----- Turn 2 -----
 Death Claw
 14478 Damage - Change Random to Poison, Deal 110% damage (50% chance)
 Crushing Claw
 14478 Damage - Change Random to Jammer, Deal 110% damage
------ Turn 3 -----
+----- Loop to 1 after. Turn 3 -----
 Evil Hold
 15795 Damage - Lock all Jammer, Poison orbs, Deal 120% damage (50% chance)
 Element Hold
@@ -409,6 +441,55 @@ Heat Chain
 17111 Damage - Bind active skills for 3 turns, Deal 130% damage (50% chance)
 Cleave Rush
 18427 Damage - Deal 140% damage (4 hits, 35% each)
+----- HP <= 30 -----
+----- Turn 2 -----
+Destroying Claw
+14478 Damage - Spawn random 4 Jammer, Poison orbs, Deal 110% damage
+----- Loop to 1 after. Turn 3 -----
+Evil Hold
+15795 Damage - Lock all Jammer, Poison orbs, Deal 120% damage (50% chance)
+Element Hold
+15795 Damage - Lock 7 random Fire, Water, Wood, Light, Dark, Heal orbs, Deal 120% damage
+----- Turn 4 -----
+Melting Claw
+21060 Damage - Deal 160% damage (4 hits, 40% each)
+----- HP <= 15 -----
+Explosive Skewer
+98718 Damage - Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 750% damage
+----- When 1 enemy remains -----
+----- HP <= 50 -----
+Heat Up
+Increase damage to 150% for the next 999 turns
+----- Loop to 1 after. Turn 3 -----
+Evil Hold
+15795 Damage - Lock all Jammer, Poison orbs, Deal 120% damage (50% chance)
+Element Hold
+15795 Damage - Lock 7 random Fire, Water, Wood, Light, Dark, Heal orbs, Deal 120% damage
+----- Turn 4 -----
+Heat Chain
+17111 Damage - Bind active skills for 3 turns, Deal 130% damage (50% chance)
+Cleave Rush
+18427 Damage - Deal 140% damage (4 hits, 35% each)
+----- Turn 5 -----
+Death Claw
+14478 Damage - Change Random to Poison, Deal 110% damage (50% chance)
+Crushing Claw
+14478 Damage - Change Random to Jammer, Deal 110% damage
+----- HP <= 30 -----
+----- Loop to 1 after. Turn 3 -----
+Evil Hold
+15795 Damage - Lock all Jammer, Poison orbs, Deal 120% damage (50% chance)
+Element Hold
+15795 Damage - Lock 7 random Fire, Water, Wood, Light, Dark, Heal orbs, Deal 120% damage
+----- Turn 4 -----
+Melting Claw
+21060 Damage - Deal 160% damage (4 hits, 40% each)
+----- Turn 5 -----
+Destroying Claw
+14478 Damage - Spawn random 4 Jammer, Poison orbs, Deal 110% damage
+----- HP <= 15 -----
+Explosive Skewer
+98718 Damage - Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 750% damage
 
 stage 4
 
@@ -420,9 +501,16 @@ Voids status ailments for 999 turns + Delay active skills by 4 turns (Preemptive
 ----- When player has any buff -----
 Justice Eye
 Voids player buff effects
------ Turn 7 -----
-Justice Booster
-Increase damage to 200% for the next 999 turns
+----- HP <= 100 -----
+----- Execute repeatedly. Turn 1 -----
+Justice Blade
+16773 Damage - Change 2nd row to Wood orbs, Deal 100% damage
+----- Turn 2 -----
+Justice Punch
+Player -99% HP
+----- Loop to 1 after. Turn 3 -----
+Justice Star Boomerang
+20128 Damage - Deal 120% damage (3 hits, 40% each)
 ----- HP <= 70 -----
 Justice Barrier
 Reduce damage from all sources by 50% for 6 turns (1 time use)
@@ -432,16 +520,6 @@ Justice Tornado
 ----- HP <= 15 -----
 Justice Ultimate Storm
 134188 Damage - Deal 800% damage (8 hits, 100% each)
------ Execute below actions in order repeatedly -----
------ Turn 8 -----
-Justice Blade
-16773 Damage - Change 2nd row to Wood orbs, Deal 100% damage
------ Turn 9 -----
-Justice Punch
-Player -99% HP
------ Turn 10 -----
-Justice Star Boomerang
-20128 Damage - Deal 120% damage (3 hits, 40% each)
 
 stage 5
 
@@ -461,23 +539,6 @@ Machine Glare
 20357 Damage - Movetime -1s for 1 turns, Deal 120% damage (25% chance) (1 time use)
 Gathering magical power
 Do nothing (25% chance)
------ When 1 enemy remains and HP <= 49 -----
-Awaken Force
-Increase damage to 200% for the next 999 turns
------ HP <= 49 -----
-Full Charge
-Do nothing (25% chance) (1 time use)
-Suppressive Wave
-23750 Damage - Delay active skills by 3 turns, Deal 140% damage (25% chance)
-Jamming
-23750 Damage - Jammer skyfall +20% for 1 turns, Deal 140% damage (25% chance)
------ HP <= 20 -----
-Limit Break
-135717 Damage - Deal 800% damage (2 hits, 400% each)
------ HP <= 1 -----
-Holy Repair + Limit Break
-Enemy recover 19% hp + Deal 800% damage (2 hits, 400% each)
------ Execute below actions in order repeatedly -----
 ----- Turn 2 -----
 Full Charge
 Do nothing (25% chance) (1 time use)
@@ -487,7 +548,8 @@ Ordeal Section
 23750 Damage - Absorb combo <= 6 damage for 1 turns, Deal 140% damage (25% chance)
 Jamming
 23750 Damage - Jammer skyfall +20% for 1 turns, Deal 140% damage (25% chance)
------ Turn 3 -----
+----- HP <= 100 -----
+----- Loop to 1 after. Turn 3 -----
 Steel Wing
 30536 Damage - Deal 180% damage (3 hits, 60% each) (60% chance) (1 time use)
 Paralysis Sight
@@ -499,4 +561,46 @@ Machine Glare
 20357 Damage - Movetime -1s for 1 turns, Deal 120% damage (25% chance) (1 time use)
 Gathering magical power
 Do nothing (25% chance)
+----- Turn 5 -----
+Full Charge
+Do nothing (25% chance) (1 time use)
+Suppressive Wave
+23750 Damage - Delay active skills by 3 turns, Deal 140% damage (25% chance)
+Jamming
+23750 Damage - Jammer skyfall +20% for 1 turns, Deal 140% damage (25% chance)
+----- HP <= 20 -----
+Limit Break
+135717 Damage - Deal 800% damage (2 hits, 400% each)
+----- Enemy is defeated -----
+Holy Repair + Limit Break
+Enemy recover 19% hp + Deal 800% damage (2 hits, 400% each)
+----- When 1 enemy remains -----
+----- HP <= 50 -----
+----- Turn 1 -----
+Awaken Force
+Increase damage to 200% for the next 999 turns
+----- Turn 2 -----
+Shock Ray
+20357 Damage - Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 120% damage (25% chance) (1 time use)
+Flash Bomb
+20357 Damage - Spawn random 3 Light orbs, Deal 120% damage (25% chance) (1 time use)
+Machine Glare
+20357 Damage - Movetime -1s for 1 turns, Deal 120% damage (25% chance) (1 time use)
+Gathering magical power
+Do nothing (25% chance)
+----- Turn 3 -----
+Full Charge
+Do nothing (25% chance) (1 time use)
+Suppressive Wave
+23750 Damage - Delay active skills by 3 turns, Deal 140% damage (25% chance)
+Ordeal Section
+23750 Damage - Absorb combo <= 6 damage for 1 turns, Deal 140% damage (25% chance)
+Jamming
+23750 Damage - Jammer skyfall +20% for 1 turns, Deal 140% damage (25% chance)
+----- HP <= 20 -----
+Limit Break
+135717 Damage - Deal 800% damage (2 hits, 400% each)
+----- Enemy is defeated -----
+Holy Repair + Limit Break
+Enemy recover 19% hp + Deal 800% damage (2 hits, 400% each)
 

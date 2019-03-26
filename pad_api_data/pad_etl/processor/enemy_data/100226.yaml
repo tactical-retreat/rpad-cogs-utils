@@ -7,7 +7,8 @@ monster_id: 100226
 monster_name_en: Alt. Great Valkyrie
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 1 unused actions
 
 ############################################################
 ### Data @ 1
@@ -28,39 +29,12 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Bind 2 random cards for 5 turns + Absorb combo <= 6 damage for 10 turns
   desc_jp: Bind 2 random cards for 5 turns + Absorb combo <= 6 damage for 10 turns
   max_atk_pct: null
   name_en: Gleipnir + Fylgja's Protection
   name_jp: Gleipnir + Fylgja's Protection
   one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 1 HP <= 49
-  name_jp: Turn 1 HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Enemy recover 100% hp
-  desc_jp: Enemy recover 100% hp
-  max_atk_pct: null
-  name_en: Resurrection
-  name_jp: Resurrection
-  one_time: false
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -96,21 +70,27 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 30
-  name_jp: HP <= 30
+  name_en: HP <= 50
+  name_jp: HP <= 50
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 360%~450% damage (4~5 hits, 90% each)
-  desc_jp: Deal 360%~450% damage (4~5 hits, 90% each)
-  max_atk_pct: 450
-  name_en: Valkyrie Blade
-  name_jp: Valkyrie Blade
+  desc_en: Enemy recover 100% hp
+  desc_jp: Enemy recover 100% hp
+  max_atk_pct: null
+  name_en: Resurrection
+  name_jp: Resurrection
   one_time: false
   record_type_name: ACTION
-  usage_pct: 90
+  usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# ESAttackMultihit(15:9364) -> Valkyrie Blade
+# 	Condition: 90% chance when < 30% hp (ai:90 rnd:0)
+# Enemy action
 ############################################################
 ### ES Modifiers
 ############################################################

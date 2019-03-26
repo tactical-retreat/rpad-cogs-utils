@@ -45,7 +45,7 @@ Pounce Stance - Fire
 ----- HP <= 50 -----
 Menace
 Bind active skills for 2 turns (1 time use)
------ HP <= 1 -----
+----- Enemy is defeated -----
 Irritated Swat
 132852 Damage - Deal 1000% damage
 
@@ -55,7 +55,7 @@ Pounce Stance - Water
 ----- HP <= 50 -----
 Menace
 Bind active skills for 2 turns (1 time use)
------ HP <= 1 -----
+----- Enemy is defeated -----
 Irritated Swat
 128925 Damage - Deal 1000% damage
 
@@ -65,7 +65,7 @@ Pounce Stance - Wood
 ----- HP <= 50 -----
 Menace
 Bind active skills for 2 turns (1 time use)
------ HP <= 1 -----
+----- Enemy is defeated -----
 Irritated Swat
 128925 Damage - Deal 1000% damage
 
@@ -75,7 +75,7 @@ Pounce Stance - Light
 ----- HP <= 50 -----
 Menace
 Bind active skills for 2 turns (1 time use)
------ HP <= 1 -----
+----- Enemy is defeated -----
 Irritated Swat
 128925 Damage - Deal 1000% damage
 
@@ -85,7 +85,7 @@ Pounce Stance - Dark
 ----- HP <= 50 -----
 Menace
 Bind active skills for 2 turns (1 time use)
------ HP <= 1 -----
+----- Enemy is defeated -----
 Irritated Swat
 128925 Damage - Deal 1000% damage
 
@@ -94,67 +94,63 @@ stage 2
 310 - Ice Samurai Ogre @ level 31
 Energy Charge
 Increase damage to 200% for the next attack (50% chance)
------ HP <= 49 -----
+----- HP <= 50 -----
 Freeze Strike
 65925 Damage - Deal 150% damage
 
 311 - Wood Samurai Ogre @ level 31
 Energy Charge
 Increase damage to 200% for the next attack (50% chance)
------ HP <= 49 -----
+----- HP <= 50 -----
 Rock Strike
 65925 Damage - Deal 150% damage
 
 312 - Blazing Ice Ogre @ level 31
------ Turn 1 -----
 Binding Move
 Bind 1 random cards for 10 turns (1 time use)
------ HP <= 49 -----
+----- HP <= 50 -----
 Flame Strike
 80282 Damage - Deal 150% damage
 
 313 - Wood Ice Ogre @ level 31
------ Turn 1 -----
 Binding Move
 Bind 1 random cards for 10 turns (1 time use)
------ HP <= 49 -----
+----- HP <= 50 -----
 Rock Strike
 80282 Damage - Deal 150% damage
 
 314 - Flame Armor Ogre @ level 31
------ Turn 1 -----
 Water Bind
 Bind Water cards for 2~4 turns (1 time use)
------ HP <= 49 -----
+----- HP <= 50 -----
 Flame Strike
 62702 Damage - Deal 150% damage
 
 315 - Ice Armor Ogre @ level 31
------ Turn 1 -----
 Water Bind
 Bind Water cards for 2~4 turns (1 time use)
------ HP <= 49 -----
+----- HP <= 50 -----
 Freeze Strike
 62702 Damage - Deal 150% damage
 
 stage 3
 
 1109 - Flame Twin Star Ifrit @ level 6
------ Turn 1 -----
+----- When HP is full -----
 It noticed you
 Voids status ailments for 999 turns
------ When HP is full -----
 Gazing in your direction
 Do nothing
 ----- When HP is not full -----
 Ferocious Flames
 16204 Damage - Delay active skills by 2 turns, Deal 100% damage (1 time use)
------ When HP is not full -----
 Corona Blow
 25926 Damage - Deal 160% damage
 ----- HP <= 50 -----
 Magic Dragon Flame
 30788 Damage - Spawn random 3 Fire, Dark orbs, Deal 190% damage (80% chance)
+Corona Blow
+25926 Damage - Deal 160% damage
 
 stage 4
 
@@ -165,10 +161,10 @@ Super Horn
 12258 Damage - Deal 120% damage (50% chance)
 Grand Rush
 10215 Damage - Spawn random 6 Jammer orbs, Deal 100% damage
------ HP <= 49 -----
+----- HP <= 50 -----
 Absolute Guard
 Reduce damage from all sources by 75% for 1 turns
------ HP <= 29 -----
+----- HP <= 30 -----
 Death Crash
 20430 Damage - Bind active skills for 10 turns, Deal 200% damage
 
@@ -209,17 +205,7 @@ stage 7
 1458 - Mystic Pentad Dragon, Folklore @ level 6
 Wisdom from Very Ancient Times
 9079 Damage - Bind awoken skills for 3 turns, Deal 70% damage (Preemptive) (1 time use)
------ HP <= 50 -----
-Cattle Mutilation + Full Element
-Blind all orbs on the board, Deal 200% damage + Change own attribute to random one of Fire, Water, Wood, Light, Dark (1 time use)
------ HP <= 49 -----
-Lost Technology
-Movetime -2s for 5 turns
------ HP <= 20 -----
-Gear Tempest
-38910 Damage - Deal 300% damage (3 hits, 100% each)
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 Weight of the Trilithon
 Player -99% HP (20% chance)
 Glyph of Plunder, Monkey
@@ -231,7 +217,7 @@ Annihilating Light of the Pleiades
 ----- Turn 2 -----
 Cattle Mutilation + Full Element
 Blind all orbs on the board, Deal 200% damage + Change own attribute to random one of Fire, Water, Wood, Light, Dark (1 time use)
------ Turn 3 -----
+----- Loop to 1 after. Turn 3 -----
 Weight of the Trilithon
 Player -99% HP (20% chance)
 Glyph of Plunder, Monkey
@@ -240,6 +226,12 @@ Crystal Fang
 15564 Damage - Deal 120% damage (2 hits, 60% each) (30% chance)
 Annihilating Light of the Pleiades
 18158 Damage - Deal 140% damage (7 hits, 20% each) (30% chance)
+----- HP <= 50 -----
+Lost Technology
+Movetime -2s for 5 turns
+----- HP <= 20 -----
+Gear Tempest
+38910 Damage - Deal 300% damage (3 hits, 100% each)
 
 stage 8
 
@@ -248,14 +240,7 @@ Gainaut Transform
 Show message: Ohhhh!! I....can still....shiiiine!!! (Preemptive)
 You have guts to point your sword at me! + Burn!!
 Reduce damage from all sources by 35% for 3 turns + Change 4th row to Fire orbs, Deal 100% damage (Preemptive)
------ HP <= 49 -----
-Gainaut Transform
-Show message: Ohhhh!! I....can still....shiiiine!!!
------ HP <= 20 -----
-Extreme Blaze
-46421 Damage - Deal 300% damage
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 Gainaut Transform
 Show message: Ohhhh!! I....can still....shiiiine!!!
 Burning Cannon
@@ -267,6 +252,34 @@ Miraculous Vortex
 12378 Damage - Bind 1 random for 3 turns, Deal 80% damage (30% chance)
 Fire Prison
 15473 Damage - Deal 100% damage (2 hits, 50% each)
+----- Turn 3 -----
+Gainaut Transform
+Show message: Ohhhh!! I....can still....shiiiine!!!
+Miraculous Vortex
+12378 Damage - Bind 1 random for 3 turns, Deal 80% damage (30% chance)
+Fire Prison
+15473 Damage - Deal 100% damage (2 hits, 50% each)
+----- Loop to 1 after. Turn 4 -----
+Gainaut Transform
+Show message: Ohhhh!! I....can still....shiiiine!!!
+Miraculous Vortex
+12378 Damage - Bind 1 random for 3 turns, Deal 80% damage (30% chance)
+Fire Prison
+15473 Damage - Deal 100% damage (2 hits, 50% each)
+----- HP <= 50 -----
+Gainaut Transform
+Show message: Ohhhh!! I....can still....shiiiine!!!
+----- HP <= 20 -----
+Gainaut Transform
+Show message: Ohhhh!! I....can still....shiiiine!!!
+Extreme Blaze
+46421 Damage - Deal 300% damage
+----- When 1 enemy remains -----
+----- HP <= 50 -----
+Gainaut Transform
+Show message: Ohhhh!! I....can still....shiiiine!!!
+Guooohhh!! I won't forgive you!!
+Increase damage to 200% for the next 999 turns
 
 stage 9
 
@@ -329,7 +342,7 @@ Pounce Stance - Fire
 ----- HP <= 50 -----
 Menace
 Bind active skills for 2 turns (1 time use)
------ HP <= 1 -----
+----- Enemy is defeated -----
 Irritated Swat
 126311 Damage - Deal 1000% damage
 
@@ -339,7 +352,7 @@ Pounce Stance - Water
 ----- HP <= 50 -----
 Menace
 Bind active skills for 2 turns (1 time use)
------ HP <= 1 -----
+----- Enemy is defeated -----
 Irritated Swat
 122577 Damage - Deal 1000% damage
 
@@ -349,7 +362,7 @@ Pounce Stance - Wood
 ----- HP <= 50 -----
 Menace
 Bind active skills for 2 turns (1 time use)
------ HP <= 1 -----
+----- Enemy is defeated -----
 Irritated Swat
 122577 Damage - Deal 1000% damage
 
@@ -359,7 +372,7 @@ Pounce Stance - Light
 ----- HP <= 50 -----
 Menace
 Bind active skills for 2 turns (1 time use)
------ HP <= 1 -----
+----- Enemy is defeated -----
 Irritated Swat
 122577 Damage - Deal 1000% damage
 
@@ -369,7 +382,7 @@ Pounce Stance - Dark
 ----- HP <= 50 -----
 Menace
 Bind active skills for 2 turns (1 time use)
------ HP <= 1 -----
+----- Enemy is defeated -----
 Irritated Swat
 122577 Damage - Deal 1000% damage
 
@@ -378,67 +391,63 @@ stage 2
 310 - Ice Samurai Ogre @ level 30
 Energy Charge
 Increase damage to 200% for the next attack (50% chance)
------ HP <= 49 -----
+----- HP <= 50 -----
 Freeze Strike
 63750 Damage - Deal 150% damage
 
 311 - Wood Samurai Ogre @ level 30
 Energy Charge
 Increase damage to 200% for the next attack (50% chance)
------ HP <= 49 -----
+----- HP <= 50 -----
 Rock Strike
 63750 Damage - Deal 150% damage
 
 312 - Blazing Ice Ogre @ level 30
------ Turn 1 -----
 Binding Move
 Bind 1 random cards for 10 turns (1 time use)
------ HP <= 49 -----
+----- HP <= 50 -----
 Flame Strike
 77633 Damage - Deal 150% damage
 
 313 - Wood Ice Ogre @ level 30
------ Turn 1 -----
 Binding Move
 Bind 1 random cards for 10 turns (1 time use)
------ HP <= 49 -----
+----- HP <= 50 -----
 Rock Strike
 77633 Damage - Deal 150% damage
 
 314 - Flame Armor Ogre @ level 30
------ Turn 1 -----
 Water Bind
 Bind Water cards for 2~4 turns (1 time use)
------ HP <= 49 -----
+----- HP <= 50 -----
 Flame Strike
 60633 Damage - Deal 150% damage
 
 315 - Ice Armor Ogre @ level 30
------ Turn 1 -----
 Water Bind
 Bind Water cards for 2~4 turns (1 time use)
------ HP <= 49 -----
+----- HP <= 50 -----
 Freeze Strike
 60633 Damage - Deal 150% damage
 
 stage 3
 
 1109 - Flame Twin Star Ifrit @ level 5
------ Turn 1 -----
+----- When HP is full -----
 It noticed you
 Voids status ailments for 999 turns
------ When HP is full -----
 Gazing in your direction
 Do nothing
 ----- When HP is not full -----
 Ferocious Flames
 13152 Damage - Delay active skills by 2 turns, Deal 100% damage (1 time use)
------ When HP is not full -----
 Corona Blow
 21044 Damage - Deal 160% damage
 ----- HP <= 50 -----
 Magic Dragon Flame
 24990 Damage - Spawn random 3 Fire, Dark orbs, Deal 190% damage (80% chance)
+Corona Blow
+21044 Damage - Deal 160% damage
 
 stage 4
 
@@ -449,10 +458,10 @@ Super Horn
 9949 Damage - Deal 120% damage (50% chance)
 Grand Rush
 8291 Damage - Spawn random 6 Jammer orbs, Deal 100% damage
------ HP <= 49 -----
+----- HP <= 50 -----
 Absolute Guard
 Reduce damage from all sources by 75% for 1 turns
------ HP <= 29 -----
+----- HP <= 30 -----
 Death Crash
 16583 Damage - Bind active skills for 10 turns, Deal 200% damage
 
@@ -471,17 +480,7 @@ stage 6
 1458 - Mystic Pentad Dragon, Folklore @ level 5
 Wisdom from Very Ancient Times
 7369 Damage - Bind awoken skills for 3 turns, Deal 70% damage (Preemptive) (1 time use)
------ HP <= 50 -----
-Cattle Mutilation + Full Element
-Blind all orbs on the board, Deal 200% damage + Change own attribute to random one of Fire, Water, Wood, Light, Dark (1 time use)
------ HP <= 49 -----
-Lost Technology
-Movetime -2s for 5 turns
------ HP <= 20 -----
-Gear Tempest
-31583 Damage - Deal 300% damage (3 hits, 100% each)
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 Weight of the Trilithon
 Player -99% HP (20% chance)
 Glyph of Plunder, Monkey
@@ -493,7 +492,7 @@ Annihilating Light of the Pleiades
 ----- Turn 2 -----
 Cattle Mutilation + Full Element
 Blind all orbs on the board, Deal 200% damage + Change own attribute to random one of Fire, Water, Wood, Light, Dark (1 time use)
------ Turn 3 -----
+----- Loop to 1 after. Turn 3 -----
 Weight of the Trilithon
 Player -99% HP (20% chance)
 Glyph of Plunder, Monkey
@@ -502,6 +501,12 @@ Crystal Fang
 12633 Damage - Deal 120% damage (2 hits, 60% each) (30% chance)
 Annihilating Light of the Pleiades
 14738 Damage - Deal 140% damage (7 hits, 20% each) (30% chance)
+----- HP <= 50 -----
+Lost Technology
+Movetime -2s for 5 turns
+----- HP <= 20 -----
+Gear Tempest
+31583 Damage - Deal 300% damage (3 hits, 100% each)
 
 stage 7
 
@@ -510,14 +515,7 @@ Gainaut Transform
 Show message: Ohhhh!! I....can still....shiiiine!!! (Preemptive)
 You have guts to point your sword at me! + Burn!!
 Reduce damage from all sources by 35% for 3 turns + Change 4th row to Fire orbs, Deal 100% damage (Preemptive)
------ HP <= 49 -----
-Gainaut Transform
-Show message: Ohhhh!! I....can still....shiiiine!!!
------ HP <= 20 -----
-Extreme Blaze
-31708 Damage - Deal 300% damage
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 Gainaut Transform
 Show message: Ohhhh!! I....can still....shiiiine!!!
 Burning Cannon
@@ -529,6 +527,34 @@ Miraculous Vortex
 8455 Damage - Bind 1 random for 3 turns, Deal 80% damage (30% chance)
 Fire Prison
 10569 Damage - Deal 100% damage (2 hits, 50% each)
+----- Turn 3 -----
+Gainaut Transform
+Show message: Ohhhh!! I....can still....shiiiine!!!
+Miraculous Vortex
+8455 Damage - Bind 1 random for 3 turns, Deal 80% damage (30% chance)
+Fire Prison
+10569 Damage - Deal 100% damage (2 hits, 50% each)
+----- Loop to 1 after. Turn 4 -----
+Gainaut Transform
+Show message: Ohhhh!! I....can still....shiiiine!!!
+Miraculous Vortex
+8455 Damage - Bind 1 random for 3 turns, Deal 80% damage (30% chance)
+Fire Prison
+10569 Damage - Deal 100% damage (2 hits, 50% each)
+----- HP <= 50 -----
+Gainaut Transform
+Show message: Ohhhh!! I....can still....shiiiine!!!
+----- HP <= 20 -----
+Gainaut Transform
+Show message: Ohhhh!! I....can still....shiiiine!!!
+Extreme Blaze
+31708 Damage - Deal 300% damage
+----- When 1 enemy remains -----
+----- HP <= 50 -----
+Gainaut Transform
+Show message: Ohhhh!! I....can still....shiiiine!!!
+Guooohhh!! I won't forgive you!!
+Increase damage to 200% for the next 999 turns
 
 stage 8
 

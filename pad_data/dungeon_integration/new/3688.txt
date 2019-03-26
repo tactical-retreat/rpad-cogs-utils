@@ -26,13 +26,34 @@ Double Million Punches
 ----- Turn 7 -----
 The Final Labor
 Do nothing (1 time use)
------ Execute below actions in order repeatedly -----
------ Turn 8-11 -----
+----- HP <= 100 -----
 ESCountdown
 Display <COUNTER> and skip turn
------ Turn 12 -----
-Gigantic Break!
-300000 Damage - Deal 2000% damage (2 hits, 1000% each)
+----- When 1 enemy remains -----
+----- Turn 1 -----
+Sucker Punch
+Player -99% HP
+----- Turn 2 -----
+Million Punches
+15000 Damage - Deal 100% damage
+----- Turn 3 -----
+The Second Labor
+Bind 6 random cards for 2 turns (1 time use)
+----- Turn 4 -----
+Hydra's Poison Dart
+Change Random 7 to Poison
+----- Turn 5 -----
+Million Punches
+15000 Damage - Deal 100% damage
+----- Turn 6 -----
+The Third Labor
+Increase damage to 200% for the next 1 turns
+----- Turn 7 -----
+Double Million Punches
+15000 Damage - Deal 100% damage
+----- Turn 8 -----
+The Final Labor
+Do nothing (1 time use)
 
 New Year Quest 1 - Lv14
 
@@ -41,8 +62,7 @@ stage 0
 625 - Wood Dominion Michael @ level 6
 Protective Field
 Voids status ailments for 4 turns (Preemptive)
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 Sealing Field
 Bind 1 both leaders for 4 turns
 ----- Turn 2 -----
@@ -54,7 +74,7 @@ Soul Scales
 ----- Turn 4 -----
 Soul Scales
 15981 Damage - Deal 200% damage
------ Turn 5 -----
+----- Loop to 1 after. Turn 5 -----
 Soul Scales
 63927 Damage - Deal 800% damage
 
@@ -101,10 +121,9 @@ Dragon God's Tears
 Player recover 100% hp (Preemptive)
 Crimson Bolt
 19044 Damage - Change Random to Fire, Deal 100% damage
------ HP <= 49 -----
+----- HP <= 50 -----
 Holy Binding Flame
 Bind Devil cards for 3~5 turns (1 time use)
------ HP <= 49 -----
 Dragon Sword Amenoohabari
 28567 Damage - Deal 150% damage (3 hits, 50% each)
 
@@ -139,7 +158,10 @@ stage 1
 1176 - Keeper of Gold @ level 4
 TAMADRA Shield
 Absorb Dark damage for 3 turns (Preemptive)
------ Turn 1 -----
+----- Turn 1-2 -----
+Punch
+8597 Damage - Deal 100% damage
+----- Turn 2 -----
 Punch
 8597 Damage - Deal 100% damage
 ----- HP <= 100 -----
@@ -153,10 +175,6 @@ stage 0
 915 - Angelit @ level 5
 Angelic Mercy
 Player recover 100% hp (Preemptive)
------ When 1 enemy remains -----
-Angrilit
-Increase damage to 300% for the next 999 turns
------ HP <= 100 -----
 Heart Attack
 9541 Damage - Change Random to Heal, Deal 100% damage
 ----- HP <= 50 -----
@@ -165,21 +183,23 @@ Bind 1 both leaders for 4 turns (1 time use)
 ----- HP <= 20 -----
 Hell & Heaven
 19083 Damage - Deal 200% damage (4 hits, 50% each)
-
-916 - Devilit @ level 5
 ----- When 1 enemy remains -----
 Angrilit
 Increase damage to 300% for the next 999 turns
+
+916 - Devilit @ level 5
+----- Execute repeatedly. Turn 1 -----
+Devilit Poison
+Change Random 6 to Poison (1 time use)
+----- Loop to 1 after. Turn 2 -----
+Heart Break
+18916 Damage - Change Heal to Jammer, Deal 100% damage
 ----- HP <= 20 -----
 Hell & Heaven
 37833 Damage - Deal 200% damage (4 hits, 50% each)
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
-Devilit Poison
-Change Random 6 to Poison (1 time use)
------ Turn 2 -----
-Heart Break
-18916 Damage - Change Heal to Jammer, Deal 100% damage
+----- When 1 enemy remains -----
+Angrilit
+Increase damage to 300% for the next 999 turns
 
 stage 1
 
@@ -211,7 +231,6 @@ Do nothing
 ----- When HP is not full -----
 Looks Like It's Awake
 Do nothing (1 time use)
------ When HP is not full -----
 Super Gulp!!
 26805 Damage - Deal 500% damage (2 hits, 250% each)
 
@@ -222,15 +241,15 @@ stage 0
 774 - Omega Wood Skydragon, Horai @ level 5
 Preemptive
 5144 Damage - Deal 40% damage
------ When 1 enemy remains and HP <= 49 -----
-Imperial Wrath
-Increase damage to 200% for the next 999 turns
------ HP <= 100 -----
 Breath of the Wood Sky
 15433 Damage - Deal 120% damage (2 hits, 60% each)
------ HP <= 49 -----
+----- HP <= 50 -----
 Breath of the Red Sky
 15433 Damage - Deal 90%~120% damage (3~4 hits, 30% each)
+----- When 1 enemy remains -----
+----- HP <= 50 -----
+Imperial Wrath
+Increase damage to 200% for the next 999 turns
 
 stage 1
 
@@ -246,6 +265,8 @@ Resurrection
 Enemy recover 100% hp (70% chance) (1 time use)
 Nightmare Slash
 10394 Damage - Deal 180% damage (3 hits, 60% each) (70% chance)
+Dark World
+Blind all orbs on the board (10% chance)
 
 stage 2
 
@@ -255,6 +276,8 @@ Twin Dragon Palms
 ----- HP <= 60 -----
 Multiple Dragon Kicks
 17976 Damage - Deal 140%~175% damage (4~5 hits, 35% each) (50% chance)
+Twin Dragon Palms
+12326 Damage - Deal 120% damage (2 hits, 60% each)
 ----- HP <= 20 -----
 Eastern Seven-Star Formation
 50332 Damage - Deal 490% damage (7 hits, 70% each)
@@ -262,7 +285,6 @@ Eastern Seven-Star Formation
 stage 3
 
 541 - Water Samurai Dragon, Kenshin @ level 12
------ Turn 1 -----
 Protection of the Pagoda
 Voids status ailments for 999 turns
 ----- HP <= 50 -----
@@ -274,29 +296,29 @@ stage 4
 1525 - Honorable Dragon General, Kanetsugu @ level 4
 Shining Love
 Voids status ailments for 10 turns (Preemptive)
+Honorable Dragon Cannon
+8031 Damage - Change Random to Heal, Deal 300% damage (1 time use)
 ----- HP <= 85 -----
 Honorable Dragon's Roar
 Increase damage to 200% for the next 999 turns
------ HP <= 49 -----
+----- HP <= 50 -----
 Gaze of the Honorable Dragon
 Bind Devil cards for 5 turns
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- HP <= 30 -----
+----- Turn 3 -----
 Honorable Dragon Cannon
 8031 Damage - Change Random to Heal, Deal 300% damage (1 time use)
+----- Turn 4 -----
+Gold Coin Throw
+1338 Damage - Change Heal to Jammer, Deal 50% damage
 
 New Year Quest 1 - Lv10
 
 stage 0
 
 512 - Red Giant Gigas @ level 6
------ Execute below actions in order repeatedly -----
------ Turn 1-3 -----
 ESCountdown
 Display <COUNTER> and skip turn
------ Turn 4 -----
-Fiiiiiire!!
-99999 Damage - Deal 300% damage (3 hits, 100% each)
 
 stage 1
 
@@ -313,11 +335,7 @@ Ability
 Reduce damage from Light, Dark by 50%
 Can you escape me?
 Bind active skills for 5 turns (Preemptive) (1 time use)
------ HP <= 49 -----
-Soul Burst
-30458 Damage - Change all orbs to Wood, Heal, Deal 300% damage (1 time use)
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1-5 -----
 Bonds of the Sacred Tree
 7614 Damage - Bind own leader for 1~2 turns, Deal 75% damage (20% chance)
 Cage of Thorns
@@ -352,11 +370,11 @@ Cage of Thorns
 5076 Damage - Bind 3 subs for 1~2 turns, Deal 50% damage (20% chance)
 Whiplash
 16244 Damage - Deal 120%~160% damage (3~4 hits, 40% each) (60% chance)
------ Turn 6 -----
+----- Loop to 1 after. Turn 6 -----
 Soul Burst
 30458 Damage - Change all orbs to Wood, Heal, Deal 300% damage (1 time use)
------ Execute below actions in order repeatedly when HP <= 49 -----
------ Turn 1 -----
+----- HP <= 50 -----
+----- Execute repeatedly. Turn 1-5 -----
 Soul Cure
 Enemy recover 100% hp
 ----- Turn 2 -----
@@ -371,93 +389,111 @@ Enemy recover 100% hp
 ----- Turn 5 -----
 Soul Cure
 Enemy recover 100% hp
+----- Loop to 1 after. Turn 6 -----
+Soul Burst
+30458 Damage - Change all orbs to Wood, Heal, Deal 300% damage (1 time use)
 
 New Year Quest 1 - Lv9
 
 stage 0
 
 897 - Flame Chaser @ level 10
------ When 1 enemy remains and HP <= 49 -----
-Chase Mode
-Increase damage to 200% for the next 5 turns
------ HP <= 24 -----
-Overheat
-8736 Damage - Change Random to Fire, Deal 160% damage
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 Red Heat
 4368 Damage - Change Random to Fire, Deal 80% damage (1 time use)
------ Turn 2 -----
+----- Loop to 1 after. Turn 2 -----
 Flame Blade
 5460 Damage - Deal 100% damage (2 hits, 50% each)
+----- HP <= 25 -----
+Overheat
+8736 Damage - Change Random to Fire, Deal 160% damage
+----- When 1 enemy remains -----
+----- HP <= 50 -----
+Chase Mode
+Increase damage to 200% for the next 5 turns
+----- HP <= 25 -----
+Overheat
+8736 Damage - Change Random to Fire, Deal 160% damage
 
 stage 1
 
 899 - Aqua Chaser @ level 10
------ When 1 enemy remains and HP <= 49 -----
-Chase Mode
-Increase damage to 200% for the next 5 turns
------ HP <= 24 -----
-Hydro Burst
-8352 Damage - Change Random to Water, Deal 160% damage
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 Hydro Laser
 4176 Damage - Change Random to Water, Deal 80% damage (1 time use)
------ Turn 2 -----
+----- Loop to 1 after. Turn 2 -----
 Aqua Lance
 5220 Damage - Deal 100% damage (4 hits, 25% each)
+----- HP <= 25 -----
+Hydro Burst
+8352 Damage - Change Random to Water, Deal 160% damage
+----- When 1 enemy remains -----
+----- HP <= 50 -----
+Chase Mode
+Increase damage to 200% for the next 5 turns
+----- HP <= 25 -----
+Hydro Burst
+8352 Damage - Change Random to Water, Deal 160% damage
 
 stage 2
 
 901 - Wind Chaser @ level 10
------ When 1 enemy remains and HP <= 49 -----
-Chase Mode
-Increase damage to 200% for the next 5 turns
------ HP <= 24 -----
-Aero Stream
-8592 Damage - Change Random to Wood, Deal 160% damage
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 Air Slash
 4296 Damage - Change Random to Wood, Deal 80% damage (1 time use)
------ Turn 2 -----
+----- Loop to 1 after. Turn 2 -----
 Wind Edge
 5370 Damage - Deal 100% damage (5 hits, 20% each)
+----- HP <= 25 -----
+Aero Stream
+8592 Damage - Change Random to Wood, Deal 160% damage
+----- When 1 enemy remains -----
+----- HP <= 50 -----
+Chase Mode
+Increase damage to 200% for the next 5 turns
+----- HP <= 25 -----
+Aero Stream
+8592 Damage - Change Random to Wood, Deal 160% damage
 
 stage 3
 
 903 - Lightning Chaser @ level 10
------ When 1 enemy remains and HP <= 49 -----
-Chase Mode
-Increase damage to 200% for the next 5 turns
------ HP <= 24 -----
-Thunder Weapon
-8352 Damage - Change Random to Light, Deal 160% damage
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 Discharge
 4176 Damage - Change Random to Light, Deal 80% damage (1 time use)
------ Turn 2 -----
+----- Loop to 1 after. Turn 2 -----
 Volt Axe
 5742 Damage - Deal 110% damage
+----- HP <= 25 -----
+Thunder Weapon
+8352 Damage - Change Random to Light, Deal 160% damage
+----- When 1 enemy remains -----
+----- HP <= 50 -----
+Chase Mode
+Increase damage to 200% for the next 5 turns
+----- HP <= 25 -----
+Thunder Weapon
+8352 Damage - Change Random to Light, Deal 160% damage
 
 stage 4
 
 905 - Phantom Chaser @ level 12
------ When 1 enemy remains and HP <= 49 -----
-Chase Mode
-Increase damage to 200% for the next 5 turns
------ HP <= 24 -----
-Shadow Mist
-10146 Damage - Change Random to Dark, Deal 160% damage
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 Fear Attack
 5073 Damage - Change Random to Dark, Deal 80% damage (1 time use)
------ Turn 2 -----
+----- Loop to 1 after. Turn 2 -----
 Quad Size
 6341 Damage - Deal 100% damage (4 hits, 25% each)
+----- HP <= 25 -----
+Shadow Mist
+10146 Damage - Change Random to Dark, Deal 160% damage
+----- When 1 enemy remains -----
+----- HP <= 50 -----
+Chase Mode
+Increase damage to 200% for the next 5 turns
+----- HP <= 25 -----
+Shadow Mist
+10146 Damage - Change Random to Dark, Deal 160% damage
 
 New Year Quest 1 - Lv8
 
@@ -466,11 +502,6 @@ stage 0
 1324 - Extreme King Metal Dragon @ level 2
 He looks full
 Do nothing (Preemptive) (1 time use)
------ When 4 enemy remains -----
-He looks full
-Do nothing (1 time use)
------ Execute below actions in order repeatedly -----
------ Turn 6 -----
 He looks full
 Do nothing (1 time use)
 
@@ -484,7 +515,7 @@ Quick Stomp
 ----- HP <= 40 -----
 Full Swing
 16560 Damage - Deal 150% damage
------ HP <= 9 -----
+----- HP <= 10 -----
 Binding Move
 Bind 1 random cards for 10 turns (1 time use)
 
@@ -493,25 +524,25 @@ Chaos Eye
 Change Random 2 to Jammer (Preemptive)
 Snake Bite
 10413 Damage - Deal 130% damage (2 hits, 65% each) (70% chance)
------ HP <= 29 -----
+----- HP <= 30 -----
 Pupil of the Evil Eye
 Bind 2 random cards for 4 turns (1 time use)
 
 792 - Hominal Beast, Centaur @ level 10
 Gale Thrust
 2844 Damage - Deal 60% damage (Preemptive)
+Rainfall Thrust
+6636 Damage - Deal 105%~140% damage (3~4 hits, 35% each) (70% chance)
+----- HP <= 30 -----
+----- Execute repeatedly. Turn 1 -----
+A little closer...
+474 Damage - Deal 10% damage (1 time use)
+----- Loop to 1 after. Turn 2 -----
+Critical Charge
+9480 Damage - Deal 200% damage
 ----- When 1 enemy remains -----
 Lone Force
 Increase damage to 300% for the next 999 turns
------ HP <= 100 -----
-Rainfall Thrust
-6636 Damage - Deal 105%~140% damage (3~4 hits, 35% each) (70% chance)
------ HP <= 29 -----
-A little closer...
-474 Damage - Deal 10% damage (1 time use)
------ HP <= 29 -----
-Critical Charge
-9480 Damage - Deal 200% damage
 
 stage 1
 
@@ -577,20 +608,16 @@ Basic attacks (1)
 stage 2
 
 684 - King Flamie @ level 4
------ When 1 enemy remains -----
-Lone Force
-Increase damage to 300% for the next 999 turns
------ HP <= 100 -----
 Bouncing off the Walls
 Do nothing (10% chance)
 ----- HP <= 50 -----
 Super Duper Mad!
 2425 Damage - Deal 140% damage (7 hits, 20% each)
-
-685 - King Bubblie @ level 4
------ When 1 enemy remains and HP <= 99 -----
+----- When 1 enemy remains -----
 Lone Force
 Increase damage to 300% for the next 999 turns
+
+685 - King Bubblie @ level 4
 ----- When HP is full -----
 Snoring Peacefully
 Do nothing
@@ -600,22 +627,35 @@ Good Morning Attack!
 ----- HP <= 50 -----
 All Washed-up
 Bind Fire cards for 2~4 turns (1 time use)
-
-686 - King Woodsie @ level 4
 ----- When 1 enemy remains -----
+----- HP <= 100 -----
+----- Turn 1 -----
+Good Morning Attack!
+4812 Damage - Deal 300% damage
+----- Turn 2 -----
 Lone Force
 Increase damage to 300% for the next 999 turns
------ HP <= 100 -----
+----- HP <= 50 -----
+----- Turn 2 -----
+All Washed-up
+Bind Fire cards for 2~4 turns (1 time use)
+----- Turn 3 -----
+Lone Force
+Increase damage to 300% for the next 999 turns
+
+686 - King Woodsie @ level 4
 Puffing Up
 Increase damage to 200% for the next attack (50% chance)
 ----- HP <= 50 -----
 Chow Time!
 Bind 1 random cards for 5 turns (1 time use)
+----- When 1 enemy remains -----
+Lone Force
+Increase damage to 300% for the next 999 turns
 
 stage 3
 
 221 - Berserk @ level 2
------ Turn 1 -----
 Hyper Fire Bind
 Bind Fire cards for 10 turns (1 time use)
 ----- HP <= 25 -----
@@ -623,7 +663,6 @@ Clean Cut
 12781 Damage - Deal 200% damage
 
 223 - Highlander @ level 2
------ Turn 1 -----
 Dark Flash
 Blind all orbs on the board (1 time use)
 ----- HP <= 75 -----

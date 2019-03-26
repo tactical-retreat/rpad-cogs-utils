@@ -9,7 +9,6 @@ Delay active skills by 1 turns
 ----- When HP is not full -----
 Activated
 Increase damage to 200% for the next 999 turns (1 time use)
------ When HP is not full -----
 Aqua Pulse
 16380 Damage - Spawn random 3 Water orbs, Deal 280% damage
 
@@ -20,7 +19,6 @@ Delay active skills by 1 turns
 ----- When HP is not full -----
 Activated
 Increase damage to 200% for the next 999 turns (1 time use)
------ When HP is not full -----
 Wind Pulse
 16380 Damage - Spawn random 3 Wood orbs, Deal 280% damage
 
@@ -41,13 +39,13 @@ Energy Shotgun
 31773 Damage - Deal 120% damage (6 hits, 20% each) (60% chance)
 Keen Edge
 26478 Damage - Change 2nd column to Jammer orbs, 4th column to Poison orbs, Deal 100% damage (40% chance)
------ HP <= 49 -----
+----- HP <= 50 -----
 High-End Booster + Energy Counter
 Increase damage to 200% for the next 999 turns + Player -99% HP
 ----- HP <= 10 -----
 Backward Impact
 132390 Damage - Deal 500% damage
------ HP <= 1 -----
+----- Enemy is defeated -----
 Backdraft
 39717 Damage - Movetime -2s for 10 turns, Deal 150% damage (1 time use)
 
@@ -60,6 +58,10 @@ Field Resistance + Plant Net
 Voids status ailments for 999 turns + Bind 6 random cards for 4 turns (Preemptive) (1 time use)
 God Gaia Breath
 62640 Damage - Deal 100% damage (2 hits, 50% each)
+----- When 1 enemy remains -----
+----- HP <= 50 -----
+Force of Nature
+Increase damage to 500% for the next 99 turns
 
 stage 3
 
@@ -68,31 +70,43 @@ Ability
 Survive attacks with 1 HP when HP > 50%
 Yomi Wave
 Delay active skills by 4 turns (Preemptive)
------ HP <= 29 -----
-Serpent King's Annihilating Strike
-1233280 Damage - Deal 4000% damage (4 hits, 1000% each)
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 Divine Hellfire
 30832 Damage - Spawn random 4 Fire, Dark orbs, Deal 100% damage (1 time use)
+----- Loop to 1 after. Turn 2 -----
+Hell Bolt
+23124 Damage - Change Fire to Jammer, Deal 75% damage (50% chance)
+Snake God's Venomous Fangs
+15416 Damage - Change Dark to Poison, Deal 50% damage (50% chance)
+----- HP <= 50 -----
+----- Turn 1 -----
+Snake Eye Curse
+Bind 6 random cards for 2 turns (1 time use)
 ----- Turn 2 -----
 Hell Bolt
 23124 Damage - Change Fire to Jammer, Deal 75% damage (50% chance)
 Snake God's Venomous Fangs
 15416 Damage - Change Dark to Poison, Deal 50% damage (50% chance)
------ Execute below actions in order repeatedly when HP <= 49 -----
------ Turn 1 -----
-Snake Eye Curse
-Bind 6 random cards for 2 turns (1 time use)
+----- Turn 3 -----
+Hell Bolt
+23124 Damage - Change Fire to Jammer, Deal 75% damage (50% chance)
+Snake God's Venomous Fangs
+15416 Damage - Change Dark to Poison, Deal 50% damage (50% chance)
+----- Turn 4 -----
+Divine Hellfire
+30832 Damage - Spawn random 4 Fire, Dark orbs, Deal 100% damage (1 time use)
+----- HP <= 30 -----
+Serpent King's Annihilating Strike
+1233280 Damage - Deal 4000% damage (4 hits, 1000% each)
+----- Enemy is defeated -----
+Grudge Howl
+Delay active skills by 99 turns
 
 stage 4
 
 2395 - Awoken Thor @ level 10
 Don't get in my way... + Harbinger of Thunder + Warrior God's Call
 Absorb combo <= 5 damage for 999 turns + Row of cloud appear for 1 turns at random location + Locked Water, Light skyfall +100% for 10 turns (Preemptive)
------ When 1 enemy remains and HP <= 19 -----
-Earth Megin Unleashed
-Increase damage to 200% for the next 99 turns (1 time use)
 ----- When HP is full -----
 Is that all you've got? + Warrior God's Ambition
 Deal 110% damage (2 hits, 55% each) + Delay active skills by 3 turns
@@ -109,12 +123,16 @@ Harbinger of Thunder + Roar, Mjölnir!
 Row of cloud appear for 1 turns at random location + Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 100% damage (30% chance)
 Harbinger of Thunder + Give me power, Megingjörd!
 Row of cloud appear for 1 turns at random location + Deal 105% damage (3 hits, 35% each) (30% chance)
------ HP <= 49 -----
+----- HP <= 50 -----
 Since you came this far... + ...just come and fight!
 Voids status ailments for 999 turns + Reduce damage from all sources by 50% for 10 turns
------ HP <= 19 -----
+----- HP <= 20 -----
 Lightning Hell
 154350 Damage - Change all orbs to Jammer, Deal 500% damage
+----- When 1 enemy remains -----
+----- HP <= 20 -----
+Earth Megin Unleashed
+Increase damage to 200% for the next 99 turns (1 time use)
 
 stage 5
 
@@ -141,16 +159,15 @@ Withering Hope + Clouds of Yonder
 Absorb combo <= 8 damage for 1 turns + Row of cloud appear for 1 turns at random location, Deal 100% damage (20% chance)
 Encasing Strongscales + Rapids of Life
 Reduce damage from all sources by 75% for 1 turns + Change all orbs to Heal, Deal 150% damage (20% chance)
------ HP <= 49 -----
+----- HP <= 50 -----
 Life Constricting + Glint of Despair
 Player -99% HP + Delay active skills by 7 turns
------ HP <= 19 -----
+----- HP <= 20 -----
 Crimson Snake Eyes + Groans of the Dancing Frenzy
 Bind awoken skills for 1 turns + Specific orbs change every 1.0s for 1 turns
------ HP <= 19 -----
 Morph Scales + Frenzy of Absolute Power
 Change own attribute to random one of Fire, Water, Wood, Light, Dark + Deal 1200% damage (4 hits, 300% each)
------ HP <= 0 -----
+----- Enemy is defeated -----
 Blessed Rain + Rondo of Life and Death
 Enemy recover 100% hp + Leader changes to random sub for 3 turns
 
@@ -165,7 +182,6 @@ Delay active skills by 1 turns
 ----- When HP is not full -----
 Activated
 Increase damage to 200% for the next 999 turns (1 time use)
------ When HP is not full -----
 Aqua Pulse
 12861 Damage - Spawn random 3 Water orbs, Deal 280% damage
 
@@ -176,7 +192,6 @@ Delay active skills by 1 turns
 ----- When HP is not full -----
 Activated
 Increase damage to 200% for the next 999 turns (1 time use)
------ When HP is not full -----
 Wind Pulse
 12861 Damage - Spawn random 3 Wood orbs, Deal 280% damage
 
@@ -197,13 +212,13 @@ Energy Shotgun
 25610 Damage - Deal 120% damage (6 hits, 20% each) (60% chance)
 Keen Edge
 21341 Damage - Change 2nd column to Jammer orbs, 4th column to Poison orbs, Deal 100% damage (40% chance)
------ HP <= 49 -----
+----- HP <= 50 -----
 High-End Booster + Energy Counter
 Increase damage to 200% for the next 999 turns + Player -99% HP
 ----- HP <= 10 -----
 Backward Impact
 106709 Damage - Deal 500% damage
------ HP <= 1 -----
+----- Enemy is defeated -----
 Backdraft
 32012 Damage - Movetime -2s for 10 turns, Deal 150% damage (1 time use)
 
@@ -216,6 +231,10 @@ Field Resistance + Plant Net
 Voids status ailments for 999 turns + Bind 6 random cards for 4 turns (Preemptive) (1 time use)
 God Gaia Breath
 49184 Damage - Deal 100% damage (2 hits, 50% each)
+----- When 1 enemy remains -----
+----- HP <= 50 -----
+Force of Nature
+Increase damage to 500% for the next 99 turns
 
 stage 3
 
@@ -224,31 +243,43 @@ Ability
 Survive attacks with 1 HP when HP > 50%
 Yomi Wave
 Delay active skills by 4 turns (Preemptive)
------ HP <= 29 -----
-Serpent King's Annihilating Strike
-1015200 Damage - Deal 4000% damage (4 hits, 1000% each)
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 Divine Hellfire
 25380 Damage - Spawn random 4 Fire, Dark orbs, Deal 100% damage (1 time use)
+----- Loop to 1 after. Turn 2 -----
+Hell Bolt
+19035 Damage - Change Fire to Jammer, Deal 75% damage (50% chance)
+Snake God's Venomous Fangs
+12690 Damage - Change Dark to Poison, Deal 50% damage (50% chance)
+----- HP <= 50 -----
+----- Turn 1 -----
+Snake Eye Curse
+Bind 6 random cards for 2 turns (1 time use)
 ----- Turn 2 -----
 Hell Bolt
 19035 Damage - Change Fire to Jammer, Deal 75% damage (50% chance)
 Snake God's Venomous Fangs
 12690 Damage - Change Dark to Poison, Deal 50% damage (50% chance)
------ Execute below actions in order repeatedly when HP <= 49 -----
------ Turn 1 -----
-Snake Eye Curse
-Bind 6 random cards for 2 turns (1 time use)
+----- Turn 3 -----
+Hell Bolt
+19035 Damage - Change Fire to Jammer, Deal 75% damage (50% chance)
+Snake God's Venomous Fangs
+12690 Damage - Change Dark to Poison, Deal 50% damage (50% chance)
+----- Turn 4 -----
+Divine Hellfire
+25380 Damage - Spawn random 4 Fire, Dark orbs, Deal 100% damage (1 time use)
+----- HP <= 30 -----
+Serpent King's Annihilating Strike
+1015200 Damage - Deal 4000% damage (4 hits, 1000% each)
+----- Enemy is defeated -----
+Grudge Howl
+Delay active skills by 99 turns
 
 stage 4
 
 2395 - Awoken Thor @ level 8
 Don't get in my way... + Harbinger of Thunder + Warrior God's Call
 Absorb combo <= 5 damage for 999 turns + Row of cloud appear for 1 turns at random location + Locked Water, Light skyfall +100% for 10 turns (Preemptive)
------ When 1 enemy remains and HP <= 19 -----
-Earth Megin Unleashed
-Increase damage to 200% for the next 99 turns (1 time use)
 ----- When HP is full -----
 Is that all you've got? + Warrior God's Ambition
 Deal 110% damage (2 hits, 55% each) + Delay active skills by 3 turns
@@ -265,12 +296,16 @@ Harbinger of Thunder + Roar, Mjölnir!
 Row of cloud appear for 1 turns at random location + Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 100% damage (30% chance)
 Harbinger of Thunder + Give me power, Megingjörd!
 Row of cloud appear for 1 turns at random location + Deal 105% damage (3 hits, 35% each) (30% chance)
------ HP <= 49 -----
+----- HP <= 50 -----
 Since you came this far... + ...just come and fight!
 Voids status ailments for 999 turns + Reduce damage from all sources by 50% for 10 turns
------ HP <= 19 -----
+----- HP <= 20 -----
 Lightning Hell
 121193 Damage - Change all orbs to Jammer, Deal 500% damage
+----- When 1 enemy remains -----
+----- HP <= 20 -----
+Earth Megin Unleashed
+Increase damage to 200% for the next 99 turns (1 time use)
 
 stage 5
 
@@ -297,16 +332,15 @@ Withering Hope + Clouds of Yonder
 Absorb combo <= 8 damage for 1 turns + Row of cloud appear for 1 turns at random location, Deal 100% damage (20% chance)
 Encasing Strongscales + Rapids of Life
 Reduce damage from all sources by 75% for 1 turns + Change all orbs to Heal, Deal 150% damage (20% chance)
------ HP <= 49 -----
+----- HP <= 50 -----
 Life Constricting + Glint of Despair
 Player -99% HP + Delay active skills by 7 turns
------ HP <= 19 -----
+----- HP <= 20 -----
 Crimson Snake Eyes + Groans of the Dancing Frenzy
 Bind awoken skills for 1 turns + Specific orbs change every 1.0s for 1 turns
------ HP <= 19 -----
 Morph Scales + Frenzy of Absolute Power
 Change own attribute to random one of Fire, Water, Wood, Light, Dark + Deal 1200% damage (4 hits, 300% each)
------ HP <= 0 -----
+----- Enemy is defeated -----
 Blessed Rain + Rondo of Life and Death
 Enemy recover 100% hp + Leader changes to random sub for 3 turns
 
@@ -321,7 +355,6 @@ Delay active skills by 1 turns
 ----- When HP is not full -----
 Activated
 Increase damage to 200% for the next 999 turns (1 time use)
------ When HP is not full -----
 Aqua Pulse
 6066 Damage - Spawn random 3 Water orbs, Deal 280% damage
 
@@ -332,7 +365,6 @@ Delay active skills by 1 turns
 ----- When HP is not full -----
 Activated
 Increase damage to 200% for the next 999 turns (1 time use)
------ When HP is not full -----
 Wind Pulse
 6066 Damage - Spawn random 3 Wood orbs, Deal 280% damage
 
@@ -353,13 +385,13 @@ Energy Shotgun
 13092 Damage - Deal 120% damage (6 hits, 20% each) (60% chance)
 Keen Edge
 10910 Damage - Change 2nd column to Jammer orbs, 4th column to Poison orbs, Deal 100% damage (40% chance)
------ HP <= 49 -----
+----- HP <= 50 -----
 High-End Booster + Energy Counter
 Increase damage to 200% for the next 999 turns + Player -99% HP
 ----- HP <= 10 -----
 Backward Impact
 54550 Damage - Deal 500% damage
------ HP <= 1 -----
+----- Enemy is defeated -----
 Backdraft
 16365 Damage - Movetime -2s for 10 turns, Deal 150% damage (1 time use)
 
@@ -372,6 +404,10 @@ Field Resistance + Plant Net
 Voids status ailments for 999 turns + Bind 6 random cards for 4 turns (Preemptive) (1 time use)
 God Gaia Breath
 23200 Damage - Deal 100% damage (2 hits, 50% each)
+----- When 1 enemy remains -----
+----- HP <= 50 -----
+Force of Nature
+Increase damage to 500% for the next 99 turns
 
 stage 3
 
@@ -380,31 +416,43 @@ Ability
 Survive attacks with 1 HP when HP > 50%
 Yomi Wave
 Delay active skills by 4 turns (Preemptive)
------ HP <= 29 -----
-Serpent King's Annihilating Strike
-550464 Damage - Deal 4000% damage (4 hits, 1000% each)
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 Divine Hellfire
 13761 Damage - Spawn random 4 Fire, Dark orbs, Deal 100% damage (1 time use)
+----- Loop to 1 after. Turn 2 -----
+Hell Bolt
+10321 Damage - Change Fire to Jammer, Deal 75% damage (50% chance)
+Snake God's Venomous Fangs
+6880 Damage - Change Dark to Poison, Deal 50% damage (50% chance)
+----- HP <= 50 -----
+----- Turn 1 -----
+Snake Eye Curse
+Bind 6 random cards for 2 turns (1 time use)
 ----- Turn 2 -----
 Hell Bolt
 10321 Damage - Change Fire to Jammer, Deal 75% damage (50% chance)
 Snake God's Venomous Fangs
 6880 Damage - Change Dark to Poison, Deal 50% damage (50% chance)
------ Execute below actions in order repeatedly when HP <= 49 -----
------ Turn 1 -----
-Snake Eye Curse
-Bind 6 random cards for 2 turns (1 time use)
+----- Turn 3 -----
+Hell Bolt
+10321 Damage - Change Fire to Jammer, Deal 75% damage (50% chance)
+Snake God's Venomous Fangs
+6880 Damage - Change Dark to Poison, Deal 50% damage (50% chance)
+----- Turn 4 -----
+Divine Hellfire
+13761 Damage - Spawn random 4 Fire, Dark orbs, Deal 100% damage (1 time use)
+----- HP <= 30 -----
+Serpent King's Annihilating Strike
+550464 Damage - Deal 4000% damage (4 hits, 1000% each)
+----- Enemy is defeated -----
+Grudge Howl
+Delay active skills by 99 turns
 
 stage 4
 
 2395 - Awoken Thor @ level 5
 Don't get in my way... + Harbinger of Thunder + Warrior God's Call
 Absorb combo <= 5 damage for 999 turns + Row of cloud appear for 1 turns at random location + Locked Water, Light skyfall +100% for 10 turns (Preemptive)
------ When 1 enemy remains and HP <= 19 -----
-Earth Megin Unleashed
-Increase damage to 200% for the next 99 turns (1 time use)
 ----- When HP is full -----
 Is that all you've got? + Warrior God's Ambition
 Deal 110% damage (2 hits, 55% each) + Delay active skills by 3 turns
@@ -421,12 +469,16 @@ Harbinger of Thunder + Roar, Mjölnir!
 Row of cloud appear for 1 turns at random location + Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 100% damage (30% chance)
 Harbinger of Thunder + Give me power, Megingjörd!
 Row of cloud appear for 1 turns at random location + Deal 105% damage (3 hits, 35% each) (30% chance)
------ HP <= 49 -----
+----- HP <= 50 -----
 Since you came this far... + ...just come and fight!
 Voids status ailments for 999 turns + Reduce damage from all sources by 50% for 10 turns
------ HP <= 19 -----
+----- HP <= 20 -----
 Lightning Hell
 57166 Damage - Change all orbs to Jammer, Deal 500% damage
+----- When 1 enemy remains -----
+----- HP <= 20 -----
+Earth Megin Unleashed
+Increase damage to 200% for the next 99 turns (1 time use)
 
 stage 5
 
@@ -453,16 +505,15 @@ Withering Hope + Clouds of Yonder
 Absorb combo <= 8 damage for 1 turns + Row of cloud appear for 1 turns at random location, Deal 100% damage (20% chance)
 Encasing Strongscales + Rapids of Life
 Reduce damage from all sources by 75% for 1 turns + Change all orbs to Heal, Deal 150% damage (20% chance)
------ HP <= 49 -----
+----- HP <= 50 -----
 Life Constricting + Glint of Despair
 Player -99% HP + Delay active skills by 7 turns
------ HP <= 19 -----
+----- HP <= 20 -----
 Crimson Snake Eyes + Groans of the Dancing Frenzy
 Bind awoken skills for 1 turns + Specific orbs change every 1.0s for 1 turns
------ HP <= 19 -----
 Morph Scales + Frenzy of Absolute Power
 Change own attribute to random one of Fire, Water, Wood, Light, Dark + Deal 1200% damage (4 hits, 300% each)
------ HP <= 0 -----
+----- Enemy is defeated -----
 Blessed Rain + Rondo of Life and Death
 Enemy recover 100% hp + Leader changes to random sub for 3 turns
 

@@ -41,6 +41,51 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Spawn random 4 Heal orbs, Deal 100% damage
+  desc_jp: Spawn random 4 Heal orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Blitzen Schwert
+  name_jp: Blitzen Schwert
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 2
+  name_jp: Loop to 1 after. Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change all orbs to Jammer, Deal 150% damage
+  desc_jp: Change all orbs to Jammer, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Drehung Klinge
+  name_jp: Drehung Klinge
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Change all orbs to Mortal Poison
+  desc_jp: Change all orbs to Mortal Poison
+  max_atk_pct: null
+  name_en: Windhose
+  name_jp: Windhose
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 70
   name_jp: HP <= 70
   one_time: false
@@ -65,11 +110,11 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Movetime 50% for 3 turns
-  desc_jp: Movetime 50% for 3 turns
+  desc_en: Reduce damage from all sources by 50% for 3 turns
+  desc_jp: Reduce damage from all sources by 50% for 3 turns
   max_atk_pct: null
-  name_en: Zeit Rauben
-  name_jp: Zeit Rauben
+  name_en: Prima Schild
+  name_jp: Prima Schild
   one_time: true
   record_type_name: ACTION
   usage_pct: 100
@@ -91,67 +136,13 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Execute below actions in order repeatedly
-  name_jp: Execute below actions in order repeatedly
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Spawn random 4 Heal orbs, Deal 100% damage
-  desc_jp: Spawn random 4 Heal orbs, Deal 100% damage
-  max_atk_pct: 100
-  name_en: Blitzen Schwert
-  name_jp: Blitzen Schwert
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change all orbs to Jammer, Deal 150% damage
-  desc_jp: Change all orbs to Jammer, Deal 150% damage
-  max_atk_pct: 150
-  name_en: Drehung Klinge
-  name_jp: Drehung Klinge
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 50
-- !SkillRecord
-  desc_en: Change all orbs to Mortal Poison
-  desc_jp: Change all orbs to Mortal Poison
-  max_atk_pct: null
-  name_en: Windhose
-  name_jp: Windhose
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Unused Actions
 ############################################################
-# ESDamageShield(74:5372) -> Prima Schild
-# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 3)
-# Reduce damage from all sources by 50% for 3 turns
+# ESDebuffMovetime(39:5369) -> Zeit Rauben
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 2)
+# Movetime 50% for 3 turns
 # ESColumnSpawnMulti(77:5371) -> Blitz Lanze
 # Change 3rd, 4th column to Light, Heal orbs
 ############################################################

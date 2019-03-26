@@ -7,8 +7,7 @@ monster_id: 101726
 monster_name_en: Alt. Awoken Hinokagutsuchi
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -39,26 +38,53 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 29
-  name_jp: HP <= 29
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 4000% damage (4 hits, 1000% each)
-  desc_jp: Deal 4000% damage (4 hits, 1000% each)
-  max_atk_pct: 4000
-  name_en: Serpent King's Annihilating Strike
-  name_jp: Serpent King's Annihilating Strike
-  one_time: false
+  desc_en: Spawn random 4 Fire, Dark orbs, Deal 100% damage
+  desc_jp: Spawn random 4 Fire, Dark orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Divine Hellfire
+  name_jp: Divine Hellfire
+  one_time: true
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute below actions in order repeatedly
-  name_jp: Execute below actions in order repeatedly
+  name_en: Loop to 1 after. Turn 2
+  name_jp: Loop to 1 after. Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Fire to Jammer, Deal 75% damage
+  desc_jp: Change Fire to Jammer, Deal 75% damage
+  max_atk_pct: 75
+  name_en: Hell Bolt
+  name_jp: Hell Bolt
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Change Dark to Poison, Deal 50% damage
+  desc_jp: Change Dark to Poison, Deal 50% damage
+  max_atk_pct: 50
+  name_en: Snake God's Venomous Fangs
+  name_jp: Snake God's Venomous Fangs
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -72,11 +98,11 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Spawn random 4 Fire, Dark orbs, Deal 100% damage
-  desc_jp: Spawn random 4 Fire, Dark orbs, Deal 100% damage
-  max_atk_pct: 100
-  name_en: Divine Hellfire
-  name_jp: Divine Hellfire
+  desc_en: Bind 6 random cards for 2 turns
+  desc_jp: Bind 6 random cards for 2 turns
+  max_atk_pct: null
+  name_en: Snake Eye Curse
+  name_jp: Snake Eye Curse
   one_time: true
   record_type_name: ACTION
   usage_pct: 100
@@ -111,35 +137,84 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute below actions in order repeatedly when HP <= 49
-  name_jp: Execute below actions in order repeatedly when HP <= 49
+  name_en: Turn 3
+  name_jp: Turn 3
   one_time: false
   record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Fire to Jammer, Deal 75% damage
+  desc_jp: Change Fire to Jammer, Deal 75% damage
+  max_atk_pct: 75
+  name_en: Hell Bolt
+  name_jp: Hell Bolt
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Change Dark to Poison, Deal 50% damage
+  desc_jp: Change Dark to Poison, Deal 50% damage
+  max_atk_pct: 50
+  name_en: Snake God's Venomous Fangs
+  name_jp: Snake God's Venomous Fangs
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 4
+  name_jp: Turn 4
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Spawn random 4 Fire, Dark orbs, Deal 100% damage
+  desc_jp: Spawn random 4 Fire, Dark orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Divine Hellfire
+  name_jp: Divine Hellfire
+  one_time: true
+  record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
+  name_en: HP <= 30
+  name_jp: HP <= 30
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Bind 6 random cards for 2 turns
-  desc_jp: Bind 6 random cards for 2 turns
+  desc_en: Deal 4000% damage (4 hits, 1000% each)
+  desc_jp: Deal 4000% damage (4 hits, 1000% each)
+  max_atk_pct: 4000
+  name_en: Serpent King's Annihilating Strike
+  name_jp: Serpent King's Annihilating Strike
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
   max_atk_pct: null
-  name_en: Snake Eye Curse
-  name_jp: Snake Eye Curse
-  one_time: true
+  name_en: Enemy is defeated
+  name_jp: Enemy is defeated
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Delay active skills by 99 turns
+  desc_jp: Delay active skills by 99 turns
+  max_atk_pct: null
+  name_en: Grudge Howl
+  name_jp: Grudge Howl
+  one_time: false
   record_type_name: ACTION
   usage_pct: 100
 
-############################################################
-### Unused Actions
-############################################################
-# ESSkillDelay(89:2172) -> Grudge Howl
-# Delay active skills by 99 turns
 ############################################################
 ### ES Modifiers
 ############################################################

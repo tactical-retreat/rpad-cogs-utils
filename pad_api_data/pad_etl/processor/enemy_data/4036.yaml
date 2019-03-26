@@ -8,7 +8,7 @@ monster_name_en: Gluttony
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 2 unused actions
+- Found 1 unused actions
 
 ############################################################
 ### Data @ 4
@@ -66,8 +66,26 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 29
-  name_jp: HP <= 29
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Player -70% HP
+  desc_jp: Player -70% HP
+  max_atk_pct: null
+  name_en: Swallow
+  name_jp: Swallow
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 30
+  name_jp: HP <= 30
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -84,8 +102,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute below actions in order repeatedly
-  name_jp: Execute below actions in order repeatedly
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -93,17 +111,17 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 3
-  name_jp: Turn 3
+  name_en: HP <= 30
+  name_jp: HP <= 30
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Player -70% HP
-  desc_jp: Player -70% HP
+  desc_en: Increase damage to 150% for the next 999 turns
+  desc_jp: Increase damage to 150% for the next 999 turns
   max_atk_pct: null
-  name_en: Swallow
-  name_jp: Swallow
+  name_en: I'm just gonna swallow you whole!
+  name_jp: I'm just gonna swallow you whole!
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -111,9 +129,6 @@ records:
 ############################################################
 ### Unused Actions
 ############################################################
-# ESAttackUPRemainingEnemies(17:8497) -> I'm just gonna swallow you whole!
-# 	Condition: when <= 1 enemies remain (ai:100 rnd:0)
-# Increase damage to 150% for the next 999 turns
 # SkillSet:
 # 	Condition: On death (ai:0 rnd:0)
 # 	[0] ESInactivity(66:8499) -> Help me... Lust...

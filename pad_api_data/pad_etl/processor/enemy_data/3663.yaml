@@ -7,8 +7,7 @@ monster_id: 3663
 monster_name_en: Massacre Demon Diablos
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -107,6 +106,44 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind active skills for 3 turns + Do nothing + Reduce damage from all sources
+    by 75% for 1 turns
+  desc_jp: Bind active skills for 3 turns + Do nothing + Reduce damage from all sources
+    by 75% for 1 turns
+  max_atk_pct: null
+  name_en: Roar + Enter Fury State + Burrow
+  name_jp: Roar + Enter Fury State + Burrow
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 1500% damage
+  desc_jp: Deal 1500% damage
+  max_atk_pct: 1500
+  name_en: Burrowed Assault
+  name_jp: Burrowed Assault
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
   desc_en: Increase damage to 120% for the next 1 turns + Change Random to Jammer,
     Deal 1200% damage
   desc_jp: Increase damage to 120% for the next 1 turns + Change Random to Jammer,
@@ -137,44 +174,6 @@ records:
   name_en: Rage + Combo Horn Thrash
   name_jp: Rage + Combo Horn Thrash
   one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 89
-  name_jp: HP <= 89
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Bind active skills for 3 turns + Do nothing + Reduce damage from all sources
-    by 75% for 1 turns
-  desc_jp: Bind active skills for 3 turns + Do nothing + Reduce damage from all sources
-    by 75% for 1 turns
-  max_atk_pct: null
-  name_en: Roar + Enter Fury State + Burrow
-  name_jp: Roar + Enter Fury State + Burrow
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 89
-  name_jp: HP <= 89
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 1500% damage
-  desc_jp: Deal 1500% damage
-  max_atk_pct: 1500
-  name_en: Burrowed Assault
-  name_jp: Burrowed Assault
-  one_time: true
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -307,8 +306,17 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
+  name_en: HP <= 20
+  name_jp: HP <= 20
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -327,8 +335,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
+  name_en: Turn 4
+  name_jp: Turn 4
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -344,15 +352,6 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Deal 3000% damage (3 hits, 1000% each) + Change all orbs to Water, Deal
     12000% damage
   desc_jp: Deal 3000% damage (3 hits, 1000% each) + Change all orbs to Water, Deal
@@ -363,18 +362,27 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Enemy is defeated
+  name_jp: Enemy is defeated
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind active skills for 3 turns + Enemy recover 60% hp + Reduce damage from
+    all sources by 75% for 1 turns
+  desc_jp: Bind active skills for 3 turns + Enemy recover 60% hp + Reduce damage from
+    all sources by 75% for 1 turns
+  max_atk_pct: null
+  name_en: Roar + Enter Fury State + Burrow
+  name_jp: Roar + Enter Fury State + Burrow
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
 
-############################################################
-### Unused Actions
-############################################################
-# SkillSet:
-# 	Condition: When < 1% hp , one-time use (ai:100 rnd:0) (one-time: 8)
-# 	[0] ESBindSkill(14:7257) -> Roar
-# 	Bind active skills for 3 turns
-# 	[1] ESRecoverEnemy(86:7326) -> Enter Fury State
-# 	Enemy recover 60% hp
-# 	[2] ESDamageShield(74:7259) -> Burrow
-# 	Reduce damage from all sources by 75% for 1 turns
 ############################################################
 ### ES Modifiers
 ############################################################

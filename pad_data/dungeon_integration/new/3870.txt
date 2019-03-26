@@ -9,7 +9,6 @@ Delay active skills by 1 turns
 ----- When HP is not full -----
 Activated
 Increase damage to 200% for the next 999 turns (1 time use)
------ When HP is not full -----
 Flame Pulse
 7583 Damage - Spawn random 3 Fire orbs, Deal 280% damage
 
@@ -20,7 +19,6 @@ Delay active skills by 1 turns
 ----- When HP is not full -----
 Activated
 Increase damage to 200% for the next 999 turns (1 time use)
------ When HP is not full -----
 Wind Pulse
 7583 Damage - Spawn random 3 Wood orbs, Deal 280% damage
 
@@ -43,7 +41,7 @@ Seven Smog
 Spawn random 7 Poison orbs (20% chance)
 Red Alert
 15708 Damage - Lock all Fire orbs, Deal 110% damage (30% chance)
------ HP <= 49 -----
+----- HP <= 50 -----
 Capture Net
 Bind 2 random subs for 3 turns
 ----- HP <= 30 -----
@@ -61,7 +59,7 @@ Blazing Claw
 12755 Damage - Change 5th column to Fire orbs, Deal 100% damage (50% chance)
 Burning Fang
 Player -70% HP (30% chance)
------ HP <= 49 -----
+----- HP <= 50 -----
 Flame Lion's Roar
 Fire skyfall +15% for 10 turns
 ----- HP <= 10 -----
@@ -77,7 +75,7 @@ Floral Vestige
 12536 Damage - Change 3rd row to Fire, Water, Light, Dark orbs, Deal 100% damage (40% chance)
 Trample Vestige
 11283 Damage - Change 5th row to Jammer orbs, Deal 90% damage (30% chance)
------ HP <= 49 -----
+----- HP <= 50 -----
 Vine Cage of Wooden Horns
 Bind 4 random subs for 1 turns
 ----- HP <= 10 -----
@@ -116,13 +114,7 @@ Black Robot Transformation
 Show message: This... is not... the end!|Limiters have been released (Preemptive)
 Heat Smoke + Started accumulating power in his fists
 Jammer, Poison skyfall +15% for 5 turns + Reduce damage from all sources by 50% for 3 turns (Preemptive) (1 time use)
------ When 1 enemy remains -----
-Black Robot Transformation
-Show message: This... is not... the end!|Limiters have been released
-1
-Increase damage to 1000% for the next 999 turns
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 Black Robot Transformation
 Show message: This... is not... the end!|Limiters have been released
 3
@@ -137,11 +129,48 @@ Black Robot Transformation
 Show message: This... is not... the end!|Limiters have been released
 1
 Do nothing
------ Turn 4 -----
+----- Loop to 1 after. Turn 4 -----
 Black Robot Transformation
 Show message: This... is not... the end!|Limiters have been released
 Burning Destruction Fist
 122002 Damage - Change all orbs to Fire, Deal 1000% damage
+----- When 1 enemy remains -----
+----- Turn 1 -----
+Black Robot Transformation
+Show message: This... is not... the end!|Limiters have been released
+3
+Do nothing
+----- Turn 2 -----
+Black Robot Transformation
+Show message: This... is not... the end!|Limiters have been released
+2
+Change all orbs to Jammer
+----- Turn 3 -----
+Black Robot Transformation
+Show message: This... is not... the end!|Limiters have been released
+1
+Increase damage to 1000% for the next 999 turns
+----- HP <= 100 -----
+----- Loop to 1 after. Turn 4 -----
+Black Robot Transformation
+Show message: This... is not... the end!|Limiters have been released
+Burning Destruction Fist
+122002 Damage - Change all orbs to Fire, Deal 1000% damage
+----- Turn 5 -----
+Black Robot Transformation
+Show message: This... is not... the end!|Limiters have been released
+3
+Do nothing
+----- Turn 6 -----
+Black Robot Transformation
+Show message: This... is not... the end!|Limiters have been released
+2
+Change all orbs to Jammer
+----- Turn 7 -----
+Black Robot Transformation
+Show message: This... is not... the end!|Limiters have been released
+1
+Do nothing
 
 stage 6
 
@@ -150,27 +179,15 @@ Ability
 Reduce damage from Light, Dark by 50%
 Burning Flame + Power Claw
 Absorb combo <= 5 damage for 99 turns + Lock all Fire, Wood orbs (Preemptive) (1 time use)
------ Turn 1 -----
 Dark Flare
 25199 Damage - Blind all orbs on the board, Deal 170% damage (1 time use)
------ When 1 enemy remains and HP <= 49 -----
-Heat Up
-Increase damage to 150% for the next 999 turns
------ HP <= 30 -----
-Melting Claw
-23716 Damage - Deal 160% damage (4 hits, 40% each)
-Destroying Claw
-16305 Damage - Spawn random 4 Jammer, Poison orbs, Deal 110% damage
------ HP <= 15 -----
-Explosive Skewer
-111172 Damage - Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 750% damage
------ Execute below actions in order repeatedly -----
+----- HP <= 100 -----
 ----- Turn 2 -----
 Death Claw
 16305 Damage - Change Random to Poison, Deal 110% damage (50% chance)
 Crushing Claw
 16305 Damage - Change Random to Jammer, Deal 110% damage
------ Turn 3 -----
+----- Loop to 1 after. Turn 3 -----
 Evil Hold
 17787 Damage - Lock all Jammer, Poison orbs, Deal 120% damage (50% chance)
 Element Hold
@@ -180,6 +197,55 @@ Heat Chain
 19269 Damage - Bind active skills for 3 turns, Deal 130% damage (50% chance)
 Cleave Rush
 20752 Damage - Deal 140% damage (4 hits, 35% each)
+----- HP <= 30 -----
+----- Turn 2 -----
+Destroying Claw
+16305 Damage - Spawn random 4 Jammer, Poison orbs, Deal 110% damage
+----- Loop to 1 after. Turn 3 -----
+Evil Hold
+17787 Damage - Lock all Jammer, Poison orbs, Deal 120% damage (50% chance)
+Element Hold
+17787 Damage - Lock 7 random Fire, Water, Wood, Light, Dark, Heal orbs, Deal 120% damage
+----- Turn 4 -----
+Melting Claw
+23716 Damage - Deal 160% damage (4 hits, 40% each)
+----- HP <= 15 -----
+Explosive Skewer
+111172 Damage - Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 750% damage
+----- When 1 enemy remains -----
+----- HP <= 50 -----
+Heat Up
+Increase damage to 150% for the next 999 turns
+----- Loop to 1 after. Turn 3 -----
+Evil Hold
+17787 Damage - Lock all Jammer, Poison orbs, Deal 120% damage (50% chance)
+Element Hold
+17787 Damage - Lock 7 random Fire, Water, Wood, Light, Dark, Heal orbs, Deal 120% damage
+----- Turn 4 -----
+Heat Chain
+19269 Damage - Bind active skills for 3 turns, Deal 130% damage (50% chance)
+Cleave Rush
+20752 Damage - Deal 140% damage (4 hits, 35% each)
+----- Turn 5 -----
+Death Claw
+16305 Damage - Change Random to Poison, Deal 110% damage (50% chance)
+Crushing Claw
+16305 Damage - Change Random to Jammer, Deal 110% damage
+----- HP <= 30 -----
+----- Loop to 1 after. Turn 3 -----
+Evil Hold
+17787 Damage - Lock all Jammer, Poison orbs, Deal 120% damage (50% chance)
+Element Hold
+17787 Damage - Lock 7 random Fire, Water, Wood, Light, Dark, Heal orbs, Deal 120% damage
+----- Turn 4 -----
+Melting Claw
+23716 Damage - Deal 160% damage (4 hits, 40% each)
+----- Turn 5 -----
+Destroying Claw
+16305 Damage - Spawn random 4 Jammer, Poison orbs, Deal 110% damage
+----- HP <= 15 -----
+Explosive Skewer
+111172 Damage - Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 750% damage
 
 Liberty Geist Descended! - War Machine King-Mythical
 
@@ -192,7 +258,6 @@ Delay active skills by 1 turns
 ----- When HP is not full -----
 Activated
 Increase damage to 200% for the next 999 turns (1 time use)
------ When HP is not full -----
 Flame Pulse
 5824 Damage - Spawn random 3 Fire orbs, Deal 280% damage
 
@@ -203,7 +268,6 @@ Delay active skills by 1 turns
 ----- When HP is not full -----
 Activated
 Increase damage to 200% for the next 999 turns (1 time use)
------ When HP is not full -----
 Wind Pulse
 5824 Damage - Spawn random 3 Wood orbs, Deal 280% damage
 
@@ -226,7 +290,7 @@ Seven Smog
 Spawn random 7 Poison orbs (20% chance)
 Red Alert
 10604 Damage - Lock all Fire orbs, Deal 110% damage (30% chance)
------ HP <= 49 -----
+----- HP <= 50 -----
 Capture Net
 Bind 2 random subs for 3 turns
 ----- HP <= 30 -----
@@ -244,7 +308,7 @@ Blazing Claw
 9372 Damage - Change 5th column to Fire orbs, Deal 100% damage (50% chance)
 Burning Fang
 Player -70% HP (30% chance)
------ HP <= 49 -----
+----- HP <= 50 -----
 Flame Lion's Roar
 Fire skyfall +15% for 10 turns
 ----- HP <= 10 -----
@@ -260,7 +324,7 @@ Floral Vestige
 9211 Damage - Change 3rd row to Fire, Water, Light, Dark orbs, Deal 100% damage (40% chance)
 Trample Vestige
 8290 Damage - Change 5th row to Jammer orbs, Deal 90% damage (30% chance)
------ HP <= 49 -----
+----- HP <= 50 -----
 Vine Cage of Wooden Horns
 Bind 4 random subs for 1 turns
 ----- HP <= 10 -----
@@ -299,13 +363,7 @@ Black Robot Transformation
 Show message: This... is not... the end!|Limiters have been released (Preemptive)
 Heat Smoke + Started accumulating power in his fists
 Jammer, Poison skyfall +15% for 5 turns + Reduce damage from all sources by 50% for 3 turns (Preemptive) (1 time use)
------ When 1 enemy remains -----
-Black Robot Transformation
-Show message: This... is not... the end!|Limiters have been released
-1
-Increase damage to 1000% for the next 999 turns
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 Black Robot Transformation
 Show message: This... is not... the end!|Limiters have been released
 3
@@ -320,11 +378,48 @@ Black Robot Transformation
 Show message: This... is not... the end!|Limiters have been released
 1
 Do nothing
------ Turn 4 -----
+----- Loop to 1 after. Turn 4 -----
 Black Robot Transformation
 Show message: This... is not... the end!|Limiters have been released
 Burning Destruction Fist
 99027 Damage - Change all orbs to Fire, Deal 1000% damage
+----- When 1 enemy remains -----
+----- Turn 1 -----
+Black Robot Transformation
+Show message: This... is not... the end!|Limiters have been released
+3
+Do nothing
+----- Turn 2 -----
+Black Robot Transformation
+Show message: This... is not... the end!|Limiters have been released
+2
+Change all orbs to Jammer
+----- Turn 3 -----
+Black Robot Transformation
+Show message: This... is not... the end!|Limiters have been released
+1
+Increase damage to 1000% for the next 999 turns
+----- HP <= 100 -----
+----- Loop to 1 after. Turn 4 -----
+Black Robot Transformation
+Show message: This... is not... the end!|Limiters have been released
+Burning Destruction Fist
+99027 Damage - Change all orbs to Fire, Deal 1000% damage
+----- Turn 5 -----
+Black Robot Transformation
+Show message: This... is not... the end!|Limiters have been released
+3
+Do nothing
+----- Turn 6 -----
+Black Robot Transformation
+Show message: This... is not... the end!|Limiters have been released
+2
+Change all orbs to Jammer
+----- Turn 7 -----
+Black Robot Transformation
+Show message: This... is not... the end!|Limiters have been released
+1
+Do nothing
 
 stage 6
 
@@ -333,27 +428,15 @@ Ability
 Reduce damage from Light, Dark by 50%
 Burning Flame + Power Claw
 Absorb combo <= 5 damage for 99 turns + Lock all Fire, Wood orbs (Preemptive) (1 time use)
------ Turn 1 -----
 Dark Flare
 17212 Damage - Blind all orbs on the board, Deal 170% damage (1 time use)
------ When 1 enemy remains and HP <= 49 -----
-Heat Up
-Increase damage to 150% for the next 999 turns
------ HP <= 30 -----
-Melting Claw
-16200 Damage - Deal 160% damage (4 hits, 40% each)
-Destroying Claw
-11137 Damage - Spawn random 4 Jammer, Poison orbs, Deal 110% damage
------ HP <= 15 -----
-Explosive Skewer
-75937 Damage - Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 750% damage
------ Execute below actions in order repeatedly -----
+----- HP <= 100 -----
 ----- Turn 2 -----
 Death Claw
 11137 Damage - Change Random to Poison, Deal 110% damage (50% chance)
 Crushing Claw
 11137 Damage - Change Random to Jammer, Deal 110% damage
------ Turn 3 -----
+----- Loop to 1 after. Turn 3 -----
 Evil Hold
 12150 Damage - Lock all Jammer, Poison orbs, Deal 120% damage (50% chance)
 Element Hold
@@ -363,4 +446,53 @@ Heat Chain
 13162 Damage - Bind active skills for 3 turns, Deal 130% damage (50% chance)
 Cleave Rush
 14175 Damage - Deal 140% damage (4 hits, 35% each)
+----- HP <= 30 -----
+----- Turn 2 -----
+Destroying Claw
+11137 Damage - Spawn random 4 Jammer, Poison orbs, Deal 110% damage
+----- Loop to 1 after. Turn 3 -----
+Evil Hold
+12150 Damage - Lock all Jammer, Poison orbs, Deal 120% damage (50% chance)
+Element Hold
+12150 Damage - Lock 7 random Fire, Water, Wood, Light, Dark, Heal orbs, Deal 120% damage
+----- Turn 4 -----
+Melting Claw
+16200 Damage - Deal 160% damage (4 hits, 40% each)
+----- HP <= 15 -----
+Explosive Skewer
+75937 Damage - Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 750% damage
+----- When 1 enemy remains -----
+----- HP <= 50 -----
+Heat Up
+Increase damage to 150% for the next 999 turns
+----- Loop to 1 after. Turn 3 -----
+Evil Hold
+12150 Damage - Lock all Jammer, Poison orbs, Deal 120% damage (50% chance)
+Element Hold
+12150 Damage - Lock 7 random Fire, Water, Wood, Light, Dark, Heal orbs, Deal 120% damage
+----- Turn 4 -----
+Heat Chain
+13162 Damage - Bind active skills for 3 turns, Deal 130% damage (50% chance)
+Cleave Rush
+14175 Damage - Deal 140% damage (4 hits, 35% each)
+----- Turn 5 -----
+Death Claw
+11137 Damage - Change Random to Poison, Deal 110% damage (50% chance)
+Crushing Claw
+11137 Damage - Change Random to Jammer, Deal 110% damage
+----- HP <= 30 -----
+----- Loop to 1 after. Turn 3 -----
+Evil Hold
+12150 Damage - Lock all Jammer, Poison orbs, Deal 120% damage (50% chance)
+Element Hold
+12150 Damage - Lock 7 random Fire, Water, Wood, Light, Dark, Heal orbs, Deal 120% damage
+----- Turn 4 -----
+Melting Claw
+16200 Damage - Deal 160% damage (4 hits, 40% each)
+----- Turn 5 -----
+Destroying Claw
+11137 Damage - Spawn random 4 Jammer, Poison orbs, Deal 110% damage
+----- HP <= 15 -----
+Explosive Skewer
+75937 Damage - Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 750% damage
 

@@ -9,7 +9,6 @@ Delay active skills by 1 turns
 ----- When HP is not full -----
 Activated
 Increase damage to 200% for the next 999 turns (1 time use)
------ When HP is not full -----
 Flame Pulse
 5824 Damage - Spawn random 3 Fire orbs, Deal 280% damage
 
@@ -20,7 +19,6 @@ Delay active skills by 1 turns
 ----- When HP is not full -----
 Activated
 Increase damage to 200% for the next 999 turns (1 time use)
------ When HP is not full -----
 Shock Pulse
 4160 Damage - Bind 1 random for 2 turns, Deal 200% damage
 
@@ -33,7 +31,11 @@ Increase damage to 300% for the next attack (50% chance)
 ----- HP <= 50 -----
 Auto Recover
 Enemy recover 40%~50% hp (75% chance) (1 time use)
------ HP <= 24 -----
+High Energy Charge
+Increase damage to 300% for the next attack (50% chance)
+----- HP <= 25 -----
+Auto Recover
+Enemy recover 40%~50% hp (75% chance) (1 time use)
 Megiddo Cannon
 67008 Damage - Deal 280% damage (2 hits, 140% each)
 
@@ -44,7 +46,11 @@ Increase damage to 300% for the next attack (50% chance)
 ----- HP <= 50 -----
 Auto Recover
 Enemy recover 40%~50% hp (75% chance) (1 time use)
------ HP <= 24 -----
+High Energy Charge
+Increase damage to 300% for the next attack (50% chance)
+----- HP <= 25 -----
+Auto Recover
+Enemy recover 40%~50% hp (75% chance) (1 time use)
 Ice Crusher
 81340 Damage - Deal 140%~350% damage (2~5 hits, 70% each)
 
@@ -55,7 +61,11 @@ Increase damage to 300% for the next attack (50% chance)
 ----- HP <= 50 -----
 Auto Recover
 Enemy recover 40%~50% hp (75% chance) (1 time use)
------ HP <= 24 -----
+High Energy Charge
+Increase damage to 300% for the next attack (50% chance)
+----- HP <= 25 -----
+Auto Recover
+Enemy recover 40%~50% hp (75% chance) (1 time use)
 Cyclone Blast
 40808 Damage - Deal 250% damage (5 hits, 50% each)
 
@@ -66,7 +76,11 @@ Double Strike
 ----- HP <= 50 -----
 Auto Recover
 Enemy recover 40%~50% hp (75% chance) (1 time use)
------ HP <= 24 -----
+Double Strike
+15106 Damage - Deal 140% damage (2 hits, 70% each) (75% chance)
+----- HP <= 25 -----
+Auto Recover
+Enemy recover 40%~50% hp (75% chance) (1 time use)
 Endless Noble Claws
 30212 Damage - Deal 280% damage (4 hits, 70% each)
 
@@ -77,7 +91,11 @@ Increase damage to 300% for the next attack (50% chance)
 ----- HP <= 50 -----
 Auto Recover
 Enemy recover 40%~50% hp (75% chance) (1 time use)
------ HP <= 24 -----
+High Energy Charge
+Increase damage to 300% for the next attack (50% chance)
+----- HP <= 25 -----
+Auto Recover
+Enemy recover 40%~50% hp (75% chance) (1 time use)
 Genocide Missile
 66483 Damage - Deal 270% damage (3 hits, 90% each)
 
@@ -86,13 +104,11 @@ stage 2
 782 - Mystic Megalith Dragon, Baalbek @ level 13
 Weight of the Trilithon
 Player -99% HP (Preemptive) (1 time use)
------ HP <= 29 -----
-Meteor Storm
-26322 Damage - Deal 100%~140% damage (5~7 hits, 20% each)
------ Execute below actions in order repeatedly -----
------ Turn 3 -----
 Weight of the Trilithon
 Player -99% HP (1 time use)
+----- HP <= 30 -----
+Meteor Storm
+26322 Damage - Deal 100%~140% damage (5~7 hits, 20% each)
 
 783 - Mystic Mechdragon, Antikythera @ level 13
 Wisdom of the Ancients
@@ -103,15 +119,14 @@ Malevolent Star of Disaster
 Player -50% HP (50% chance)
 Gear Impact
 13833 Damage - Deal 125% damage (75% chance)
------ HP <= 29 -----
+----- HP <= 30 -----
 Constellation Blast
 19920 Damage - Deal 180% damage (12 hits, 15% each)
 
 784 - Mystic Painting Dragon, Nazca @ level 13
 Glyph of First Strike, Hummingbird
 9936 Damage - Deal 150% damage (Preemptive)
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 Glyph of Plunder, Monkey
 5299 Damage - Change Random to Jammer, Deal 80% damage
 ----- Turn 2 -----
@@ -132,77 +147,87 @@ Glyph of Plunder, Monkey
 ----- Turn 9 -----
 Glyph of Fierce Assault, Condor
 9936 Damage - Deal 150% damage (3 hits, 50% each)
------ Execute below actions in order repeatedly when HP <= 29 -----
+----- HP <= 30 -----
+----- Execute repeatedly. Turn 1 -----
+Glyph of Weight, Whale
+Player -99% HP (1 time use)
+----- Loop to 1 after. Turn 2 -----
+Glyph of Regret, Titan
+13248 Damage - Deal 200% damage
+----- When 1 enemy remains -----
 ----- Turn 1 -----
-Glyph of Weight, Whale
-Player -99% HP (1 time use)
+Glyph of Plunder, Monkey
+5299 Damage - Change Random to Jammer, Deal 80% damage
 ----- Turn 2 -----
-Glyph of Weight, Whale
-Player -99% HP (1 time use)
------ Turn 3-4 -----
-Glyph of Regret, Titan
-13248 Damage - Deal 200% damage
------ Turn 5 -----
-Glyph of Regret, Titan
-13248 Damage - Deal 200% damage
------ Turn 6-7 -----
-Glyph of Regret, Titan
-13248 Damage - Deal 200% damage
------ Turn 8 -----
-Glyph of Regret, Titan
-13248 Damage - Deal 200% damage
+Glyph of Restraint, Spider
+Bind 1 random cards for 3 turns (1 time use)
+----- Turn 3 -----
+Glyph of Fierce Assault, Condor
+9936 Damage - Deal 150% damage (3 hits, 50% each)
+----- Turn 4 -----
+Glyph of Hunting, Hound
+Increase damage to 200% for the next 3 turns
+----- Turn 6 -----
+Glyph of Plunder, Monkey
+5299 Damage - Change Random to Jammer, Deal 80% damage
+----- Turn 7 -----
+Glyph of Fierce Assault, Condor
+9936 Damage - Deal 150% damage (3 hits, 50% each)
 ----- Turn 9 -----
-Glyph of Regret, Titan
-13248 Damage - Deal 200% damage
+Glyph of Plunder, Monkey
+5299 Damage - Change Random to Jammer, Deal 80% damage
 ----- Turn 10 -----
-Glyph of Weight, Whale
-Player -99% HP (1 time use)
+Glyph of Fierce Assault, Condor
+9936 Damage - Deal 150% damage (3 hits, 50% each)
+----- Turn 12 -----
+Glyph of Plunder, Monkey
+5299 Damage - Change Random to Jammer, Deal 80% damage
+----- Turn 13 -----
+Glyph of Restraint, Spider
+Bind 1 random cards for 3 turns (1 time use)
+----- HP <= 100 -----
+----- Turn 14 -----
+Glyph of Fierce Assault, Condor
+9936 Damage - Deal 150% damage (3 hits, 50% each)
+----- Turn 16 -----
+Glyph of Plunder, Monkey
+5299 Damage - Change Random to Jammer, Deal 80% damage
 
 785 - Mystic Crystal Dragon, CrystalSkull @ level 13
 Hollow Eye Glint
 Blind all orbs on the board (Preemptive)
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 Cursing Light of the Crystal
 Bind 2 random cards for 3 turns (1 time use)
------ Turn 2 -----
+----- Turn 2-3 -----
 Crystal Fang
 18659 Damage - Deal 120% damage (2 hits, 60% each) (70% chance)
------ Turn 3 -----
+----- Loop to 1 after. Turn 3 -----
 Crystal Fang
 18659 Damage - Deal 120% damage (2 hits, 60% each) (70% chance)
------ Execute below actions in order repeatedly when HP <= 39 -----
------ Turn 2 -----
+----- HP <= 40 -----
+----- Execute repeatedly. Turn 1 -----
+Cursing Light of the Crystal
+Bind 2 random cards for 3 turns (1 time use)
+----- Turn 2-3 -----
 False Light of Mystery
 23324 Damage - Change Random to Jammer, Deal 150% damage
------ Turn 3 -----
+----- Loop to 1 after. Turn 3 -----
 False Light of Mystery
 23324 Damage - Change Random to Jammer, Deal 150% damage
 
 786 - Mystic Astro Dragon, Nebradisk @ level 13
 Wisdom of the Ancients
 Voids status ailments for 999 turns (Preemptive)
------ Execute below actions in order repeatedly -----
------ Turn 1-3 -----
 ESCountdown
 Display <COUNTER> and skip turn
------ Turn 4 -----
-Annihilating Light of the Pleiades 
-134390 Damage - Deal 1400% damage (7 hits, 200% each)
 
 stage 3
 
 1206 - 5 Mechdragon Fusion, God Canopus @ level 6
 God Dragons' Field
 Voids status ailments for 999 turns (Preemptive)
------ HP <= 24 -----
-God Mode Activated!!
-Increase damage to 200% for the next 999 turns (1 time use)
------ HP <= 24 -----
-Final God Cannon
-16563 Damage - Deal 200% damage
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 Super Hadar Missile
 10352 Damage - Change Random to Jammer, Deal 125% damage
 ----- Turn 2 -----
@@ -214,21 +239,19 @@ Canopus Tornado Cutter
 ----- Turn 4 -----
 Betelgeuse Bomb
 12422 Damage - Change Random to Fire, Deal 150% damage
------ Turn 5 -----
+----- Loop to 1 after. Turn 5 -----
 Aldebaran Crusher
 Player -99% HP
+----- HP <= 25 -----
+God Mode Activated!!
+Increase damage to 200% for the next 999 turns (1 time use)
+Final God Cannon
+16563 Damage - Deal 200% damage
 
 1207 - 5 Mechdragon Combo, Demon Hadar @ level 6
 Barrier Field
 Voids status ailments for 999 turns (Preemptive)
------ HP <= 24 -----
-Limiter Off
-Do nothing (1 time use)
------ HP <= 24 -----
-Ultimate Stream
-66836 Damage - Deal 900% damage (3 hits, 300% each)
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 Genocide Missile Type 0
 7426 Damage - Change Random 6 to Poison, Deal 100% damage
 ----- Turn 2 -----
@@ -240,9 +263,16 @@ Dark Cyclone Blast
 ----- Turn 4 -----
 High Megiddo Cannon
 14852 Damage - Deal 200% damage (2 hits, 100% each)
------ Turn 5 -----
+----- Loop to 1 after. Turn 5 -----
 Freezing Crusher
 5569 Damage - Bind 4 subs for 2 turns, Deal 75% damage
+----- HP <= 25 -----
+----- Execute repeatedly. Turn 1 -----
+Limiter Off
+Do nothing (1 time use)
+----- Loop to 1 after. Turn 2 -----
+Ultimate Stream
+66836 Damage - Deal 900% damage (3 hits, 300% each)
 
 stage 4
 
@@ -314,13 +344,13 @@ Energy Shotgun
 13283 Damage - Deal 120% damage (6 hits, 20% each) (60% chance)
 Keen Edge
 11069 Damage - Change 2nd column to Jammer orbs, 4th column to Poison orbs, Deal 100% damage (40% chance)
------ HP <= 49 -----
+----- HP <= 50 -----
 High-End Booster + Energy Counter
 Increase damage to 200% for the next 999 turns + Player -99% HP
 ----- HP <= 10 -----
 Backward Impact
 55347 Damage - Deal 500% damage
------ HP <= 1 -----
+----- Enemy is defeated -----
 Backdraft
 16604 Damage - Movetime -2s for 10 turns, Deal 150% damage (1 time use)
 
@@ -335,26 +365,26 @@ Illusory Faith Theatre
 ----- When HP is not full -----
 Elemental Turn
 14683 Damage - Change own attribute to random one of Fire, Water, Wood, Light, Dark, Deal 120% damage (1 time use)
------ When HP is not full -----
 Allegro Step
 18354 Damage - Deal 150% damage (3 hits, 50% each)
 ----- HP <= 80 -----
-Arabesque Repair
-9788 Damage - Enemy recover 30% hp, Deal 80% damage (20% chance)
------ HP <= 79 -----
+----- Turn 1 -----
 Waltz
 Leader changes to random sub for 1 turns (33% chance)
 Rondo
 12236 Damage - Change 1st, 3rd, 5th, 7th column to Fire, Water, Wood, Light, Dark orbs, 2nd, 4th, 6th column to Jammer, Poison orbs, Deal 100% damage (33% chance)
 Requiem
 Delay active skills by 3 turns (34% chance)
------ HP <= 79 -----
+----- Turn 2 -----
+Elemental Turn
+14683 Damage - Change own attribute to random one of Fire, Water, Wood, Light, Dark, Deal 120% damage (1 time use)
+Arabesque Repair
+9788 Damage - Enemy recover 30% hp, Deal 80% damage (20% chance)
 Allegro Step
 18354 Damage - Deal 150% damage (3 hits, 50% each)
------ HP <= 19 -----
+----- HP <= 20 -----
 Preparation
 15906 Damage - Delay active skills by 1 turns, Deal 130% damage
------ HP <= 19 -----
 Sudden Curtain Call
 122361 Damage - Deal 1000% damage
 
@@ -369,7 +399,6 @@ Delay active skills by 1 turns
 ----- When HP is not full -----
 Activated
 Increase damage to 200% for the next 999 turns (1 time use)
------ When HP is not full -----
 Flame Pulse
 4064 Damage - Spawn random 3 Fire orbs, Deal 280% damage
 
@@ -380,7 +409,6 @@ Delay active skills by 1 turns
 ----- When HP is not full -----
 Activated
 Increase damage to 200% for the next 999 turns (1 time use)
------ When HP is not full -----
 Shock Pulse
 2903 Damage - Bind 1 random for 2 turns, Deal 200% damage
 
@@ -393,7 +421,11 @@ Increase damage to 300% for the next attack (50% chance)
 ----- HP <= 50 -----
 Auto Recover
 Enemy recover 40%~50% hp (75% chance) (1 time use)
------ HP <= 24 -----
+High Energy Charge
+Increase damage to 300% for the next attack (50% chance)
+----- HP <= 25 -----
+Auto Recover
+Enemy recover 40%~50% hp (75% chance) (1 time use)
 Megiddo Cannon
 43596 Damage - Deal 280% damage (2 hits, 140% each)
 
@@ -404,7 +436,11 @@ Increase damage to 300% for the next attack (50% chance)
 ----- HP <= 50 -----
 Auto Recover
 Enemy recover 40%~50% hp (75% chance) (1 time use)
------ HP <= 24 -----
+High Energy Charge
+Increase damage to 300% for the next attack (50% chance)
+----- HP <= 25 -----
+Auto Recover
+Enemy recover 40%~50% hp (75% chance) (1 time use)
 Ice Crusher
 52920 Damage - Deal 140%~350% damage (2~5 hits, 70% each)
 
@@ -415,7 +451,11 @@ Increase damage to 300% for the next attack (50% chance)
 ----- HP <= 50 -----
 Auto Recover
 Enemy recover 40%~50% hp (75% chance) (1 time use)
------ HP <= 24 -----
+High Energy Charge
+Increase damage to 300% for the next attack (50% chance)
+----- HP <= 25 -----
+Auto Recover
+Enemy recover 40%~50% hp (75% chance) (1 time use)
 Cyclone Blast
 26550 Damage - Deal 250% damage (5 hits, 50% each)
 
@@ -426,7 +466,11 @@ Double Strike
 ----- HP <= 50 -----
 Auto Recover
 Enemy recover 40%~50% hp (75% chance) (1 time use)
------ HP <= 24 -----
+Double Strike
+9828 Damage - Deal 140% damage (2 hits, 70% each) (75% chance)
+----- HP <= 25 -----
+Auto Recover
+Enemy recover 40%~50% hp (75% chance) (1 time use)
 Endless Noble Claws
 19656 Damage - Deal 280% damage (4 hits, 70% each)
 
@@ -437,7 +481,11 @@ Increase damage to 300% for the next attack (50% chance)
 ----- HP <= 50 -----
 Auto Recover
 Enemy recover 40%~50% hp (75% chance) (1 time use)
------ HP <= 24 -----
+High Energy Charge
+Increase damage to 300% for the next attack (50% chance)
+----- HP <= 25 -----
+Auto Recover
+Enemy recover 40%~50% hp (75% chance) (1 time use)
 Genocide Missile
 43254 Damage - Deal 270% damage (3 hits, 90% each)
 
@@ -446,13 +494,11 @@ stage 2
 782 - Mystic Megalith Dragon, Baalbek @ level 10
 Weight of the Trilithon
 Player -99% HP (Preemptive) (1 time use)
------ HP <= 29 -----
-Meteor Storm
-19908 Damage - Deal 100%~140% damage (5~7 hits, 20% each)
------ Execute below actions in order repeatedly -----
------ Turn 3 -----
 Weight of the Trilithon
 Player -99% HP (1 time use)
+----- HP <= 30 -----
+Meteor Storm
+19908 Damage - Deal 100%~140% damage (5~7 hits, 20% each)
 
 783 - Mystic Mechdragon, Antikythera @ level 10
 Wisdom of the Ancients
@@ -463,15 +509,14 @@ Malevolent Star of Disaster
 Player -50% HP (50% chance)
 Gear Impact
 10462 Damage - Deal 125% damage (75% chance)
------ HP <= 29 -----
+----- HP <= 30 -----
 Constellation Blast
 15066 Damage - Deal 180% damage (12 hits, 15% each)
 
 784 - Mystic Painting Dragon, Nazca @ level 10
 Glyph of First Strike, Hummingbird
 7515 Damage - Deal 150% damage (Preemptive)
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 Glyph of Plunder, Monkey
 4008 Damage - Change Random to Jammer, Deal 80% damage
 ----- Turn 2 -----
@@ -492,77 +537,87 @@ Glyph of Plunder, Monkey
 ----- Turn 9 -----
 Glyph of Fierce Assault, Condor
 7515 Damage - Deal 150% damage (3 hits, 50% each)
------ Execute below actions in order repeatedly when HP <= 29 -----
+----- HP <= 30 -----
+----- Execute repeatedly. Turn 1 -----
+Glyph of Weight, Whale
+Player -99% HP (1 time use)
+----- Loop to 1 after. Turn 2 -----
+Glyph of Regret, Titan
+10020 Damage - Deal 200% damage
+----- When 1 enemy remains -----
 ----- Turn 1 -----
-Glyph of Weight, Whale
-Player -99% HP (1 time use)
+Glyph of Plunder, Monkey
+4008 Damage - Change Random to Jammer, Deal 80% damage
 ----- Turn 2 -----
-Glyph of Weight, Whale
-Player -99% HP (1 time use)
------ Turn 3-4 -----
-Glyph of Regret, Titan
-10020 Damage - Deal 200% damage
------ Turn 5 -----
-Glyph of Regret, Titan
-10020 Damage - Deal 200% damage
------ Turn 6-7 -----
-Glyph of Regret, Titan
-10020 Damage - Deal 200% damage
------ Turn 8 -----
-Glyph of Regret, Titan
-10020 Damage - Deal 200% damage
+Glyph of Restraint, Spider
+Bind 1 random cards for 3 turns (1 time use)
+----- Turn 3 -----
+Glyph of Fierce Assault, Condor
+7515 Damage - Deal 150% damage (3 hits, 50% each)
+----- Turn 4 -----
+Glyph of Hunting, Hound
+Increase damage to 200% for the next 3 turns
+----- Turn 6 -----
+Glyph of Plunder, Monkey
+4008 Damage - Change Random to Jammer, Deal 80% damage
+----- Turn 7 -----
+Glyph of Fierce Assault, Condor
+7515 Damage - Deal 150% damage (3 hits, 50% each)
 ----- Turn 9 -----
-Glyph of Regret, Titan
-10020 Damage - Deal 200% damage
+Glyph of Plunder, Monkey
+4008 Damage - Change Random to Jammer, Deal 80% damage
 ----- Turn 10 -----
-Glyph of Weight, Whale
-Player -99% HP (1 time use)
+Glyph of Fierce Assault, Condor
+7515 Damage - Deal 150% damage (3 hits, 50% each)
+----- Turn 12 -----
+Glyph of Plunder, Monkey
+4008 Damage - Change Random to Jammer, Deal 80% damage
+----- Turn 13 -----
+Glyph of Restraint, Spider
+Bind 1 random cards for 3 turns (1 time use)
+----- HP <= 100 -----
+----- Turn 14 -----
+Glyph of Fierce Assault, Condor
+7515 Damage - Deal 150% damage (3 hits, 50% each)
+----- Turn 16 -----
+Glyph of Plunder, Monkey
+4008 Damage - Change Random to Jammer, Deal 80% damage
 
 785 - Mystic Crystal Dragon, CrystalSkull @ level 10
 Hollow Eye Glint
 Blind all orbs on the board (Preemptive)
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 Cursing Light of the Crystal
 Bind 2 random cards for 3 turns (1 time use)
------ Turn 2 -----
+----- Turn 2-3 -----
 Crystal Fang
 14112 Damage - Deal 120% damage (2 hits, 60% each) (70% chance)
------ Turn 3 -----
+----- Loop to 1 after. Turn 3 -----
 Crystal Fang
 14112 Damage - Deal 120% damage (2 hits, 60% each) (70% chance)
------ Execute below actions in order repeatedly when HP <= 39 -----
------ Turn 2 -----
+----- HP <= 40 -----
+----- Execute repeatedly. Turn 1 -----
+Cursing Light of the Crystal
+Bind 2 random cards for 3 turns (1 time use)
+----- Turn 2-3 -----
 False Light of Mystery
 17640 Damage - Change Random to Jammer, Deal 150% damage
------ Turn 3 -----
+----- Loop to 1 after. Turn 3 -----
 False Light of Mystery
 17640 Damage - Change Random to Jammer, Deal 150% damage
 
 786 - Mystic Astro Dragon, Nebradisk @ level 10
 Wisdom of the Ancients
 Voids status ailments for 999 turns (Preemptive)
------ Execute below actions in order repeatedly -----
------ Turn 1-3 -----
 ESCountdown
 Display <COUNTER> and skip turn
------ Turn 4 -----
-Annihilating Light of the Pleiades 
-101640 Damage - Deal 1400% damage (7 hits, 200% each)
 
 stage 3
 
 1206 - 5 Mechdragon Fusion, God Canopus @ level 4
 God Dragons' Field
 Voids status ailments for 999 turns (Preemptive)
------ HP <= 24 -----
-God Mode Activated!!
-Increase damage to 200% for the next 999 turns (1 time use)
------ HP <= 24 -----
-Final God Cannon
-10325 Damage - Deal 200% damage
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 Super Hadar Missile
 6453 Damage - Change Random to Jammer, Deal 125% damage
 ----- Turn 2 -----
@@ -574,21 +629,19 @@ Canopus Tornado Cutter
 ----- Turn 4 -----
 Betelgeuse Bomb
 7743 Damage - Change Random to Fire, Deal 150% damage
------ Turn 5 -----
+----- Loop to 1 after. Turn 5 -----
 Aldebaran Crusher
 Player -99% HP
+----- HP <= 25 -----
+God Mode Activated!!
+Increase damage to 200% for the next 999 turns (1 time use)
+Final God Cannon
+10325 Damage - Deal 200% damage
 
 1207 - 5 Mechdragon Combo, Demon Hadar @ level 4
 Barrier Field
 Voids status ailments for 999 turns (Preemptive)
------ HP <= 24 -----
-Limiter Off
-Do nothing (1 time use)
------ HP <= 24 -----
-Ultimate Stream
-41663 Damage - Deal 900% damage (3 hits, 300% each)
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 Genocide Missile Type 0
 4629 Damage - Change Random 6 to Poison, Deal 100% damage
 ----- Turn 2 -----
@@ -600,9 +653,16 @@ Dark Cyclone Blast
 ----- Turn 4 -----
 High Megiddo Cannon
 9258 Damage - Deal 200% damage (2 hits, 100% each)
------ Turn 5 -----
+----- Loop to 1 after. Turn 5 -----
 Freezing Crusher
 3472 Damage - Bind 4 subs for 2 turns, Deal 75% damage
+----- HP <= 25 -----
+----- Execute repeatedly. Turn 1 -----
+Limiter Off
+Do nothing (1 time use)
+----- Loop to 1 after. Turn 2 -----
+Ultimate Stream
+41663 Damage - Deal 900% damage (3 hits, 300% each)
 
 stage 4
 
@@ -674,13 +734,13 @@ Energy Shotgun
 7119 Damage - Deal 120% damage (6 hits, 20% each) (60% chance)
 Keen Edge
 5933 Damage - Change 2nd column to Jammer orbs, 4th column to Poison orbs, Deal 100% damage (40% chance)
------ HP <= 49 -----
+----- HP <= 50 -----
 High-End Booster + Energy Counter
 Increase damage to 200% for the next 999 turns + Player -99% HP
 ----- HP <= 10 -----
 Backward Impact
 29666 Damage - Deal 500% damage
------ HP <= 1 -----
+----- Enemy is defeated -----
 Backdraft
 8899 Damage - Movetime -2s for 10 turns, Deal 150% damage (1 time use)
 
@@ -695,26 +755,26 @@ Illusory Faith Theatre
 ----- When HP is not full -----
 Elemental Turn
 7870 Damage - Change own attribute to random one of Fire, Water, Wood, Light, Dark, Deal 120% damage (1 time use)
------ When HP is not full -----
 Allegro Step
 9837 Damage - Deal 150% damage (3 hits, 50% each)
 ----- HP <= 80 -----
-Arabesque Repair
-5246 Damage - Enemy recover 30% hp, Deal 80% damage (20% chance)
------ HP <= 79 -----
+----- Turn 1 -----
 Waltz
 Leader changes to random sub for 1 turns (33% chance)
 Rondo
 6558 Damage - Change 1st, 3rd, 5th, 7th column to Fire, Water, Wood, Light, Dark orbs, 2nd, 4th, 6th column to Jammer, Poison orbs, Deal 100% damage (33% chance)
 Requiem
 Delay active skills by 3 turns (34% chance)
------ HP <= 79 -----
+----- Turn 2 -----
+Elemental Turn
+7870 Damage - Change own attribute to random one of Fire, Water, Wood, Light, Dark, Deal 120% damage (1 time use)
+Arabesque Repair
+5246 Damage - Enemy recover 30% hp, Deal 80% damage (20% chance)
 Allegro Step
 9837 Damage - Deal 150% damage (3 hits, 50% each)
------ HP <= 19 -----
+----- HP <= 20 -----
 Preparation
 8526 Damage - Delay active skills by 1 turns, Deal 130% damage
------ HP <= 19 -----
 Sudden Curtain Call
 65585 Damage - Deal 1000% damage
 

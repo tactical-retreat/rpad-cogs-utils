@@ -3,8 +3,6 @@ PAD X, Ana Descended! - Lovely Dragon Caller-X
 stage 0
 
 2930 - Ouka @ level 10
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
 Heat Breath
 Player -50% HP (1 time use)
 
@@ -22,11 +20,10 @@ Gale
 stage 1
 
 2931 - Lowen @ level 10
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 Heat Breath
 Player -50% HP (1 time use)
------ Turn 2 -----
+----- Loop to 1 after. Turn 2 -----
 Heat Tail
 10950 Damage - Deal 100% damage (2 hits, 50% each)
 
@@ -41,8 +38,6 @@ Gale
 stage 2
 
 2930 - Ouka @ level 10
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
 Heat Breath
 Player -50% HP (1 time use)
 
@@ -64,30 +59,21 @@ Reduce damage from all sources by 75% for 4 turns + Player -99% HP (Preemptive)
 ----- Turn 1 -----
 Powerful Blaze
 27336 Damage - Spawn random 6 Fire orbs, Deal 170% damage
------ Turn 1 HP <= 79 -----
-Flame Breath
-16080 Damage - Change Random to Fire, Deal 100% damage
------ Turn 1 HP <= 19 -----
-Inferno Blast
-32160 Damage - Change 1st row to Fire orbs, Deal 200% damage
 ----- Turn 2 -----
 Hellfire Claw
 32160 Damage - Deal 200% damage (2 hits, 100% each)
------ Turn 2 HP <= 49 -----
-Flame Breath
-16080 Damage - Change Random to Fire, Deal 100% damage
------ Turn 2 HP <= 19 -----
-Inferno Blast
-32160 Damage - Change 1st row to Fire orbs, Deal 200% damage
 ----- Turn 3 -----
 Blazing Tail
 Player -99% HP
------ Turn 3 HP <= 19 -----
-Inferno Blast
-32160 Damage - Change 1st row to Fire orbs, Deal 200% damage
 ----- HP <= 100 -----
 Inferno Blast
 32160 Damage - Change 1st row to Fire orbs, Deal 200% damage
+----- HP <= 80 -----
+Flame Breath
+16080 Damage - Change Random to Fire, Deal 100% damage
+----- HP <= 50 -----
+Flame Breath
+16080 Damage - Change Random to Fire, Deal 100% damage
 
 3092 - Iceberg Sword, Shiraha @ level 10
 Iceberg Sword's Iron Skin + Freezing Feather
@@ -102,12 +88,12 @@ Absorb combo <= 6 damage for 1 turns + Change all orbs to Fire, Water, Wood, Lig
 Feather Rain
 8136 Damage - Change all orbs to Fire, Water, Wood, Light, Dark, Jammer, Deal 80% damage
 ----- When HP is not full -----
+----- Turn 1 -----
 Wind Spiral
 10170 Damage - Change 1st row to Wood orbs, Deal 100% damage
------ When HP is not full -----
+----- Turn 2 -----
 Fire-Extinguishing Wind
 Absorb Fire damage for 3 turns
------ When HP is not full -----
 Lightning
 15255 Damage - Change Jammer to Light, Deal 150% damage
 
@@ -123,15 +109,7 @@ Monsters! + Dragon Summoning!!!
 Do nothing + Change 1st column to Water orbs, 6th column to Wood orbs, Deal 80% damage (Preemptive) (50% chance) (1 time use)
 Monsters! + Dragon Summoning!!!
 Do nothing + Change 1st column to Wood orbs, 6th column to Fire orbs, Deal 80% damage (Preemptive) (1 time use)
------ HP <= 20 -----
-Ana starts crying + 10 combos!!
-Delay active skills by 3 turns + Deal 200% damage (10 hits, 20% each)
------ HP <= 19 -----
-Changing Ana
-Show message: Armor Drop set on D-Gear! |Divine Law Goddess, Valkyrie Rose's Energy grants
-Ana new powers
------ Execute below actions in order repeatedly -----
------ Turn 1-2 -----
+----- Execute repeatedly. Turn 1-2 -----
 Changing Ana
 Show message: Armor Drop set on D-Gear! |Divine Law Goddess, Valkyrie Rose's Energy grants
 Ana new powers
@@ -139,7 +117,15 @@ Heat Breath + 3 combos ♪
 Player -50% HP + Deal 60% damage (3 hits, 20% each) (50% chance)
 Ice Blade + 3 combos ♪
 Change Random to Water, Deal 60% damage + Deal 60% damage (3 hits, 20% each)
------ Turn 3 -----
+----- Turn 2 -----
+Changing Ana
+Show message: Armor Drop set on D-Gear! |Divine Law Goddess, Valkyrie Rose's Energy grants
+Ana new powers
+Heat Breath + 3 combos ♪
+Player -50% HP + Deal 60% damage (3 hits, 20% each) (50% chance)
+Ice Blade + 3 combos ♪
+Change Random to Water, Deal 60% damage + Deal 60% damage (3 hits, 20% each)
+----- Loop to 1 after. Turn 3 -----
 Changing Ana
 Show message: Armor Drop set on D-Gear! |Divine Law Goddess, Valkyrie Rose's Energy grants
 Ana new powers
@@ -149,6 +135,12 @@ Dragon Summoning!!! + The Monsters block the way
 Change 1st column to Water orbs, 6th column to Wood orbs, Deal 80% damage + Reduce damage from all sources by 50% for 2 turns (50% chance)
 Dragon Summoning!!! + The Monsters block the way
 Change 1st column to Wood orbs, 6th column to Fire orbs, Deal 80% damage + Reduce damage from all sources by 50% for 2 turns
+----- HP <= 20 -----
+Changing Ana
+Show message: Armor Drop set on D-Gear! |Divine Law Goddess, Valkyrie Rose's Energy grants
+Ana new powers
+Ana starts crying + 10 combos!!
+Delay active skills by 3 turns + Deal 200% damage (10 hits, 20% each)
 
 stage 5
 
@@ -157,51 +149,95 @@ Ability
 Survive attacks with 1 HP when HP > 50%
 Cross On! + Mercy Flash
 Voids status ailments for 3 turns + Change Random to Heal, Deal 130% damage (Preemptive)
------ When 1 enemy remains and HP <= 80 -----
-Innocent Mind
-Increase damage to 150% for the next 1 turns
------ HP <= 35 -----
-Resurrection
-Enemy recover 100% hp (1 time use)
-Resurrection + Life Cutting Flash
-Enemy recover 79% hp + Change Heal to Light, Deal 100% damage (1 time use)
-Resurrection + Mercy Flash
-Enemy recover 59% hp + Change Random to Heal, Deal 130% damage (1 time use)
-Resurrection + Pure Plumage
-Enemy recover 19% hp + Reduce damage from all sources by 75% for 3 turns (1 time use)
------ HP <= 20 -----
-10 combos!! + Life Cutting Flash
-Deal 200% damage (10 hits, 20% each) + Change Heal to Light, Deal 100% damage
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 Life Cutting Flash
 11958 Damage - Change Heal to Light, Deal 100% damage
 ----- Turn 2 -----
 Maiden's Aura
 Delay active skills by 1 turns
------ Turn 3 -----
+----- Loop to 1 after. Turn 3 -----
 White Shield Protection + Mercy Flash
 Voids status ailments for 3 turns + Change Random to Heal, Deal 130% damage
------ Execute below actions in order repeatedly when HP <= 79 -----
+----- HP <= 80 -----
+----- Execute repeatedly. Turn 1 -----
+Life Cutting Flash
+11958 Damage - Change Heal to Light, Deal 100% damage
 ----- Turn 2 -----
 Goddess' Aura
 Delay active skills by 2 turns
------ Execute below actions in order repeatedly when HP <= 59 -----
+----- Loop to 1 after. Turn 3 -----
+White Shield Protection + Mercy Flash
+Voids status ailments for 3 turns + Change Random to Heal, Deal 130% damage
+----- HP <= 60 -----
+----- Execute repeatedly. Turn 1 -----
+Life Cutting Flash
+11958 Damage - Change Heal to Light, Deal 100% damage
 ----- Turn 2 -----
 Fighting Maiden's Aura
 Delay active skills by 3 turns
------ Execute below actions in order repeatedly when HP <= 39 -----
+----- Loop to 1 after. Turn 3 -----
+White Shield Protection + Mercy Flash
+Voids status ailments for 3 turns + Change Random to Heal, Deal 130% damage
+----- HP <= 40 -----
+----- Execute repeatedly. Turn 1 -----
+Life Cutting Flash
+11958 Damage - Change Heal to Light, Deal 100% damage
 ----- Turn 2 -----
 Divine Law's Aura
 Delay active skills by 4 turns
+----- Loop to 1 after. Turn 3 -----
+White Shield Protection + Mercy Flash
+Voids status ailments for 3 turns + Change Random to Heal, Deal 130% damage
+----- HP <= 35 -----
+----- Turn 1 -----
+Resurrection
+Enemy recover 100% hp (1 time use)
+----- Turn 2 -----
+Resurrection + Life Cutting Flash
+Enemy recover 79% hp + Change Heal to Light, Deal 100% damage (1 time use)
+----- Turn 3 -----
+Resurrection + Mercy Flash
+Enemy recover 59% hp + Change Random to Heal, Deal 130% damage (1 time use)
+----- Turn 4 -----
+Resurrection + Pure Plumage
+Enemy recover 19% hp + Reduce damage from all sources by 75% for 3 turns (1 time use)
+----- HP <= 20 -----
+10 combos!! + Life Cutting Flash
+Deal 200% damage (10 hits, 20% each) + Change Heal to Light, Deal 100% damage
+----- When 1 enemy remains -----
+Innocent Mind
+Increase damage to 150% for the next 1 turns
+----- HP <= 80 -----
+Innocent Will
+Increase damage to 200% for the next 1 turns
+----- HP <= 60 -----
+Innocent Soul
+Increase damage to 300% for the next 1 turns
+----- HP <= 40 -----
+Innocent Bravery
+Increase damage to 400% for the next 1 turns
+----- HP <= 35 -----
+----- Turn 1 -----
+Resurrection
+Enemy recover 100% hp (1 time use)
+----- Turn 2 -----
+Resurrection + Life Cutting Flash
+Enemy recover 79% hp + Change Heal to Light, Deal 100% damage (1 time use)
+----- Turn 3 -----
+Resurrection + Mercy Flash
+Enemy recover 59% hp + Change Random to Heal, Deal 130% damage (1 time use)
+----- Turn 4 -----
+Resurrection + Pure Plumage
+Enemy recover 19% hp + Reduce damage from all sources by 75% for 3 turns (1 time use)
+----- Turn 5 -----
+Innocent Bravery
+Increase damage to 400% for the next 1 turns
 
 PAD X, Ana Descended! - Lovely Dragon Caller-Legend
 
 stage 0
 
 2930 - Ouka @ level 6
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
 Heat Breath
 Player -50% HP (1 time use)
 
@@ -219,11 +255,10 @@ Gale
 stage 1
 
 2931 - Lowen @ level 6
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 Heat Breath
 Player -50% HP (1 time use)
------ Turn 2 -----
+----- Loop to 1 after. Turn 2 -----
 Heat Tail
 6245 Damage - Deal 100% damage (2 hits, 50% each)
 
@@ -238,8 +273,6 @@ Gale
 stage 2
 
 2930 - Ouka @ level 6
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
 Heat Breath
 Player -50% HP (1 time use)
 
@@ -261,30 +294,21 @@ Reduce damage from all sources by 75% for 4 turns + Player -99% HP (Preemptive)
 ----- Turn 1 -----
 Powerful Blaze
 12655 Damage - Spawn random 6 Fire orbs, Deal 170% damage
------ Turn 1 HP <= 79 -----
-Flame Breath
-7444 Damage - Change Random to Fire, Deal 100% damage
------ Turn 1 HP <= 19 -----
-Inferno Blast
-14888 Damage - Change 1st row to Fire orbs, Deal 200% damage
 ----- Turn 2 -----
 Hellfire Claw
 14888 Damage - Deal 200% damage (2 hits, 100% each)
------ Turn 2 HP <= 49 -----
-Flame Breath
-7444 Damage - Change Random to Fire, Deal 100% damage
------ Turn 2 HP <= 19 -----
-Inferno Blast
-14888 Damage - Change 1st row to Fire orbs, Deal 200% damage
 ----- Turn 3 -----
 Blazing Tail
 Player -99% HP
------ Turn 3 HP <= 19 -----
-Inferno Blast
-14888 Damage - Change 1st row to Fire orbs, Deal 200% damage
 ----- HP <= 100 -----
 Inferno Blast
 14888 Damage - Change 1st row to Fire orbs, Deal 200% damage
+----- HP <= 80 -----
+Flame Breath
+7444 Damage - Change Random to Fire, Deal 100% damage
+----- HP <= 50 -----
+Flame Breath
+7444 Damage - Change Random to Fire, Deal 100% damage
 
 3092 - Iceberg Sword, Shiraha @ level 5
 Iceberg Sword's Iron Skin + Freezing Feather
@@ -299,12 +323,12 @@ Absorb combo <= 6 damage for 1 turns + Change all orbs to Fire, Water, Wood, Lig
 Feather Rain
 3766 Damage - Change all orbs to Fire, Water, Wood, Light, Dark, Jammer, Deal 80% damage
 ----- When HP is not full -----
+----- Turn 1 -----
 Wind Spiral
 4708 Damage - Change 1st row to Wood orbs, Deal 100% damage
------ When HP is not full -----
+----- Turn 2 -----
 Fire-Extinguishing Wind
 Absorb Fire damage for 3 turns
------ When HP is not full -----
 Lightning
 7062 Damage - Change Jammer to Light, Deal 150% damage
 
@@ -320,15 +344,7 @@ Monsters! + Dragon Summoning!!!
 Do nothing + Change 1st column to Water orbs, 6th column to Wood orbs, Deal 80% damage (Preemptive) (50% chance) (1 time use)
 Monsters! + Dragon Summoning!!!
 Do nothing + Change 1st column to Wood orbs, 6th column to Fire orbs, Deal 80% damage (Preemptive) (1 time use)
------ HP <= 20 -----
-Ana starts crying + 10 combos!!
-Delay active skills by 3 turns + Deal 200% damage (10 hits, 20% each)
------ HP <= 19 -----
-Changing Ana
-Show message: Armor Drop set on D-Gear! |Divine Law Goddess, Valkyrie Rose's Energy grants
-Ana new powers
------ Execute below actions in order repeatedly -----
------ Turn 1-2 -----
+----- Execute repeatedly. Turn 1-2 -----
 Changing Ana
 Show message: Armor Drop set on D-Gear! |Divine Law Goddess, Valkyrie Rose's Energy grants
 Ana new powers
@@ -336,7 +352,15 @@ Heat Breath + 3 combos ♪
 Player -50% HP + Deal 60% damage (3 hits, 20% each) (50% chance)
 Ice Blade + 3 combos ♪
 Change Random to Water, Deal 60% damage + Deal 60% damage (3 hits, 20% each)
------ Turn 3 -----
+----- Turn 2 -----
+Changing Ana
+Show message: Armor Drop set on D-Gear! |Divine Law Goddess, Valkyrie Rose's Energy grants
+Ana new powers
+Heat Breath + 3 combos ♪
+Player -50% HP + Deal 60% damage (3 hits, 20% each) (50% chance)
+Ice Blade + 3 combos ♪
+Change Random to Water, Deal 60% damage + Deal 60% damage (3 hits, 20% each)
+----- Loop to 1 after. Turn 3 -----
 Changing Ana
 Show message: Armor Drop set on D-Gear! |Divine Law Goddess, Valkyrie Rose's Energy grants
 Ana new powers
@@ -346,6 +370,12 @@ Dragon Summoning!!! + The Monsters block the way
 Change 1st column to Water orbs, 6th column to Wood orbs, Deal 80% damage + Reduce damage from all sources by 50% for 2 turns (50% chance)
 Dragon Summoning!!! + The Monsters block the way
 Change 1st column to Wood orbs, 6th column to Fire orbs, Deal 80% damage + Reduce damage from all sources by 50% for 2 turns
+----- HP <= 20 -----
+Changing Ana
+Show message: Armor Drop set on D-Gear! |Divine Law Goddess, Valkyrie Rose's Energy grants
+Ana new powers
+Ana starts crying + 10 combos!!
+Delay active skills by 3 turns + Deal 200% damage (10 hits, 20% each)
 
 stage 5
 
@@ -354,41 +384,87 @@ Ability
 Survive attacks with 1 HP when HP > 50%
 Cross On! + Mercy Flash
 Voids status ailments for 3 turns + Change Random to Heal, Deal 130% damage (Preemptive)
------ When 1 enemy remains and HP <= 80 -----
-Innocent Mind
-Increase damage to 150% for the next 1 turns
------ HP <= 35 -----
-Resurrection
-Enemy recover 100% hp (1 time use)
-Resurrection + Life Cutting Flash
-Enemy recover 79% hp + Change Heal to Light, Deal 100% damage (1 time use)
-Resurrection + Mercy Flash
-Enemy recover 59% hp + Change Random to Heal, Deal 130% damage (1 time use)
-Resurrection + Pure Plumage
-Enemy recover 19% hp + Reduce damage from all sources by 75% for 3 turns (1 time use)
------ HP <= 20 -----
-10 combos!! + Life Cutting Flash
-Deal 200% damage (10 hits, 20% each) + Change Heal to Light, Deal 100% damage
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 Life Cutting Flash
 6409 Damage - Change Heal to Light, Deal 100% damage
 ----- Turn 2 -----
 Maiden's Aura
 Delay active skills by 1 turns
------ Turn 3 -----
+----- Loop to 1 after. Turn 3 -----
 White Shield Protection + Mercy Flash
 Voids status ailments for 3 turns + Change Random to Heal, Deal 130% damage
------ Execute below actions in order repeatedly when HP <= 79 -----
+----- HP <= 80 -----
+----- Execute repeatedly. Turn 1 -----
+Life Cutting Flash
+6409 Damage - Change Heal to Light, Deal 100% damage
 ----- Turn 2 -----
 Goddess' Aura
 Delay active skills by 2 turns
------ Execute below actions in order repeatedly when HP <= 59 -----
+----- Loop to 1 after. Turn 3 -----
+White Shield Protection + Mercy Flash
+Voids status ailments for 3 turns + Change Random to Heal, Deal 130% damage
+----- HP <= 60 -----
+----- Execute repeatedly. Turn 1 -----
+Life Cutting Flash
+6409 Damage - Change Heal to Light, Deal 100% damage
 ----- Turn 2 -----
 Fighting Maiden's Aura
 Delay active skills by 3 turns
------ Execute below actions in order repeatedly when HP <= 39 -----
+----- Loop to 1 after. Turn 3 -----
+White Shield Protection + Mercy Flash
+Voids status ailments for 3 turns + Change Random to Heal, Deal 130% damage
+----- HP <= 40 -----
+----- Execute repeatedly. Turn 1 -----
+Life Cutting Flash
+6409 Damage - Change Heal to Light, Deal 100% damage
 ----- Turn 2 -----
 Divine Law's Aura
 Delay active skills by 4 turns
+----- Loop to 1 after. Turn 3 -----
+White Shield Protection + Mercy Flash
+Voids status ailments for 3 turns + Change Random to Heal, Deal 130% damage
+----- HP <= 35 -----
+----- Turn 1 -----
+Resurrection
+Enemy recover 100% hp (1 time use)
+----- Turn 2 -----
+Resurrection + Life Cutting Flash
+Enemy recover 79% hp + Change Heal to Light, Deal 100% damage (1 time use)
+----- Turn 3 -----
+Resurrection + Mercy Flash
+Enemy recover 59% hp + Change Random to Heal, Deal 130% damage (1 time use)
+----- Turn 4 -----
+Resurrection + Pure Plumage
+Enemy recover 19% hp + Reduce damage from all sources by 75% for 3 turns (1 time use)
+----- HP <= 20 -----
+10 combos!! + Life Cutting Flash
+Deal 200% damage (10 hits, 20% each) + Change Heal to Light, Deal 100% damage
+----- When 1 enemy remains -----
+Innocent Mind
+Increase damage to 150% for the next 1 turns
+----- HP <= 80 -----
+Innocent Will
+Increase damage to 200% for the next 1 turns
+----- HP <= 60 -----
+Innocent Soul
+Increase damage to 300% for the next 1 turns
+----- HP <= 40 -----
+Innocent Bravery
+Increase damage to 400% for the next 1 turns
+----- HP <= 35 -----
+----- Turn 1 -----
+Resurrection
+Enemy recover 100% hp (1 time use)
+----- Turn 2 -----
+Resurrection + Life Cutting Flash
+Enemy recover 79% hp + Change Heal to Light, Deal 100% damage (1 time use)
+----- Turn 3 -----
+Resurrection + Mercy Flash
+Enemy recover 59% hp + Change Random to Heal, Deal 130% damage (1 time use)
+----- Turn 4 -----
+Resurrection + Pure Plumage
+Enemy recover 19% hp + Reduce damage from all sources by 75% for 3 turns (1 time use)
+----- Turn 5 -----
+Innocent Bravery
+Increase damage to 400% for the next 1 turns
 

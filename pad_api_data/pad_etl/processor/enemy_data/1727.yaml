@@ -110,11 +110,15 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Increase damage to 150% for the next 10 turns
-  desc_jp: Increase damage to 150% for the next 10 turns
+  desc_en: Absorb combo <= 5 damage for 10 turns + 2x3 cloud appear for 10 turns at
+    2nd row, 3rd column + Movetime 50% for 10 turns + Increase damage to 150% for
+    the next 10 turns
+  desc_jp: Absorb combo <= 5 damage for 10 turns + 2x3 cloud appear for 10 turns at
+    2nd row, 3rd column + Movetime 50% for 10 turns + Increase damage to 150% for
+    the next 10 turns
   max_atk_pct: null
-  name_en: Test of Endurance
-  name_jp: Test of Endurance
+  name_en: Test of Skill + Test of Perception + Test of Speed + Test of Endurance
+  name_jp: Test of Skill + Test of Perception + Test of Speed + Test of Endurance
   one_time: true
   record_type_name: ACTION
   usage_pct: 100
@@ -122,8 +126,17 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -142,8 +155,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 2
+  name_jp: Turn 2
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -157,15 +170,6 @@ records:
   name_jp: Attack Stance - Light + Philanthropy + Decision
   one_time: false
   record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
   desc_en: Player -55% HP + Deal 75% damage (3 hits, 25% each)
@@ -201,16 +205,6 @@ records:
 ### Unused Actions
 ############################################################
 # SkillSet:
-# 	Condition: When < 60% hp , one-time use (ai:100 rnd:0) (one-time: 30)
-# 	[0] ESAbsorbCombo(67:6480) -> Test of Skill
-# 	Absorb combo <= 5 damage for 10 turns
-# 	[1] ESCloud(104:6481) -> Test of Perception
-# 	2x3 cloud appear for 10 turns at 2nd row, 3rd column
-# 	[2] ESDebuffMovetime(39:6482) -> Test of Speed
-# 	Movetime 50% for 10 turns
-# 	[3] ESAttackUPCooldown(19:6483) -> Test of Endurance
-# 	Increase damage to 150% for the next 10 turns
-# SkillSet:
 # 	Condition: When < 60% hp , one-time use (ai:100 rnd:0) (one-time: 14)
 # 	[0] ESCloud(104:6481) -> Test of Perception
 # 	2x3 cloud appear for 10 turns at 2nd row, 3rd column
@@ -224,6 +218,9 @@ records:
 # 	Movetime 50% for 10 turns
 # 	[1] ESAttackUPCooldown(19:6483) -> Test of Endurance
 # 	Increase damage to 150% for the next 10 turns
+# ESAttackUPCooldown(19:6483) -> Test of Endurance
+# 	Condition: When < 60% hp , one-time use (ai:100 rnd:0) (one-time: 2)
+# Increase damage to 150% for the next 10 turns
 ############################################################
 ### ES Modifiers
 ############################################################

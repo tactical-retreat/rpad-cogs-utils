@@ -7,7 +7,8 @@ monster_id: 2893
 monster_name_en: Soul Binding Princess of Darkness, Hel
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 1 unused actions
 
 ############################################################
 ### Data @ 1
@@ -37,39 +38,12 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Poison skyfall +20% for 99 turns + Deal 165% damage (3 hits, 55% each)
   desc_jp: Poison skyfall +20% for 99 turns + Deal 165% damage (3 hits, 55% each)
   max_atk_pct: null
   name_en: Eternal Suffering + Garm's Rotten Fangs
   name_jp: Eternal Suffering + Garm's Rotten Fangs
   one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 2 HP <= 49
-  name_jp: Turn 2 HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Enemy recover 100% hp + Reduce damage from all sources by 75% for 10 turns
-  desc_jp: Enemy recover 100% hp + Reduce damage from all sources by 75% for 10 turns
-  max_atk_pct: null
-  name_en: Color of Life + Naglfar
-  name_jp: Color of Life + Naglfar
-  one_time: false
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -103,17 +77,17 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: HP <= 50
+  name_jp: HP <= 50
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Player -99% HP + Delay active skills by 2~6 turns
-  desc_jp: Player -99% HP + Delay active skills by 2~6 turns
+  desc_en: Enemy recover 100% hp + Reduce damage from all sources by 75% for 10 turns
+  desc_jp: Enemy recover 100% hp + Reduce damage from all sources by 75% for 10 turns
   max_atk_pct: null
-  name_en: Color of Death + Nightmare
-  name_jp: Color of Death + Nightmare
+  name_en: Color of Life + Naglfar
+  name_jp: Color of Life + Naglfar
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -136,6 +110,14 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# SkillSet:
+# 	[0] ESGravity(50:7974) -> Color of Death
+# 	Player -99% HP
+# 	[1] ESSkillDelay(89:7975) -> Nightmare
+# 	Delay active skills by 2~6 turns
 ############################################################
 ### ES Modifiers
 ############################################################

@@ -8,7 +8,7 @@ monster_name_en: Demon Who Commands Flames, Shishio Makoto
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 6 unused actions
+- Found 5 unused actions
 
 ############################################################
 ### Data @ 1
@@ -83,8 +83,17 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 29
-  name_jp: HP <= 29
+  name_en: HP <= 30
+  name_jp: HP <= 30
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -101,8 +110,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 29
-  name_jp: HP <= 29
+  name_en: Turn 3
+  name_jp: Turn 3
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -119,8 +128,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 29
-  name_jp: HP <= 29
+  name_en: Turn 4
+  name_jp: Turn 4
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -134,21 +143,30 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 29
-  name_jp: HP <= 29
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Deal 360% damage (3 hits, 120% each)
   desc_jp: Deal 360% damage (3 hits, 120% each)
   max_atk_pct: 360
   name_en: Hyaaah!!
   name_jp: Hyaaah!!
   one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 10
+  name_jp: HP <= 10
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change all orbs to Fire + Deal 280% damage (7 hits, 40% each)
+  desc_jp: Change all orbs to Fire + Deal 280% damage (7 hits, 40% each)
+  max_atk_pct: null
+  name_en: Hyaaah!! + The Final Secret Sword, "Kaguzuchi"!!
+  name_jp: Hyaaah!! + The Final Secret Sword, "Kaguzuchi"!!
+  one_time: true
   record_type_name: ACTION
   usage_pct: 100
 
@@ -165,12 +183,6 @@ records:
 # 	Voids status ailments for 7 turns
 # 	[1] ESRandomSpawn(92:5037) -> Ah, how this brings me back...
 # 	Spawn random 5 Wood orbs
-# SkillSet:
-# 	Condition: One-time use (ai:100 rnd:0) (one-time: 7)
-# 	[0] ESBoardChange(84:5044) -> Hyaaah!!
-# 	Change all orbs to Fire
-# 	[1] ESAttackMultihit(15:5045) -> The Final Secret Sword, "Kaguzuchi"!!
-# 	Enemy action
 # SkillSet:
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 3)
 # 	[0] ESBoardChange(84:5044) -> Hyaaah!!

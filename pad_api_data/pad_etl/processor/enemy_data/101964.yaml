@@ -7,7 +7,8 @@ monster_id: 101964
 monster_name_en: Alt. Green DeviNyan
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 1 unused actions
 
 ############################################################
 ### Data @ 1
@@ -26,56 +27,11 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Increase damage to 200% for the next 999 turns
   desc_jp: Increase damage to 200% for the next 999 turns
   max_atk_pct: null
   name_en: Got angry
   name_jp: Got angry
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Reduce damage from all sources by 75% for 1 turns
-  desc_jp: Reduce damage from all sources by 75% for 1 turns
-  max_atk_pct: null
-  name_en: Dancing around
-  name_jp: Dancing around
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 3
-  name_jp: Turn 3
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Reduce damage from all sources by 99% for 1 turns
-  desc_jp: Reduce damage from all sources by 99% for 1 turns
-  max_atk_pct: null
-  name_en: Dancing around
-  name_jp: Dancing around
   one_time: true
   record_type_name: ACTION
   usage_pct: 100
@@ -97,7 +53,58 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Enemy is defeated
+  name_jp: Enemy is defeated
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 75% for 1 turns
+  desc_jp: Reduce damage from all sources by 75% for 1 turns
+  max_atk_pct: null
+  name_en: Dancing around
+  name_jp: Dancing around
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 999 turns
+  desc_jp: Increase damage to 200% for the next 999 turns
+  max_atk_pct: null
+  name_en: Got angry
+  name_jp: Got angry
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# ESDamageShield(74:6116) -> Dancing around
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
+# Reduce damage from all sources by 99% for 1 turns
 ############################################################
 ### ES Modifiers
 ############################################################

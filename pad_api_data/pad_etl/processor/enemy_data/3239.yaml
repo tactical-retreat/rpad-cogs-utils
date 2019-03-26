@@ -8,7 +8,7 @@ monster_name_en: Reincarnated Neptune
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 3 unused actions
+- Found 2 unused actions
 
 ############################################################
 ### Data @ 1
@@ -50,6 +50,42 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 1-2
+  name_jp: Turn 1-2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Poison to Mortal Poison, Deal 150% damage
+  desc_jp: Change Poison to Mortal Poison, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Chaostrom
+  name_jp: Chaostrom
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Poison to Mortal Poison, Deal 150% damage
+  desc_jp: Change Poison to Mortal Poison, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Chaostrom
+  name_jp: Chaostrom
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: Turn 3
   name_jp: Turn 3
   one_time: false
@@ -86,8 +122,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: HP <= 50
+  name_jp: HP <= 50
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -103,21 +139,30 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Deal 1000% damage (5 hits, 200% each)
   desc_jp: Deal 1000% damage (5 hits, 200% each)
   max_atk_pct: 1000
   name_en: Abyss Maelstrom
   name_jp: Abyss Maelstrom
   one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Enemy is defeated
+  name_jp: Enemy is defeated
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy recover 50% hp + Reduce damage from all sources by 75% for 99 turns
+  desc_jp: Enemy recover 50% hp + Reduce damage from all sources by 75% for 99 turns
+  max_atk_pct: null
+  name_en: How regrettable + Finally, you will struggle
+  name_jp: How regrettable + Finally, you will struggle
+  one_time: true
   record_type_name: ACTION
   usage_pct: 100
 
@@ -130,12 +175,6 @@ records:
 # ESAttackMultihit(15:11665) -> Double Scissors
 # 	Condition: 50% chance (ai:0 rnd:50)
 # Enemy action
-# SkillSet:
-# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
-# 	[0] ESRecoverEnemy(86:11670) -> How regrettable
-# 	Enemy recover 50% hp
-# 	[1] ESDamageShield(74:11671) -> Finally, you will struggle
-# 	Reduce damage from all sources by 75% for 99 turns
 ############################################################
 ### ES Modifiers
 ############################################################

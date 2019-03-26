@@ -8,7 +8,7 @@ monster_name_en: Nemea, Lion of Steel
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 3 unused actions
+- Found 2 unused actions
 
 ############################################################
 ### Data @ 4
@@ -39,8 +39,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
+  name_en: HP <= 20
+  name_jp: HP <= 20
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -54,13 +54,58 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
+  desc_en: Deal 300% damage (4 hits, 75% each)
+  desc_jp: Deal 300% damage (4 hits, 75% each)
+  max_atk_pct: 300
+  name_en: Rending Claws
+  name_jp: Rending Claws
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 19
-  name_jp: HP <= 19
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
   one_time: false
   record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 150% for the next 5 turns
+  desc_jp: Increase damage to 150% for the next 5 turns
+  max_atk_pct: null
+  name_en: Raging Lion
+  name_jp: Raging Lion
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 20
+  name_jp: HP <= 20
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Delay active skills by 1 turns
+  desc_jp: Delay active skills by 1 turns
+  max_atk_pct: null
+  name_en: Howl
+  name_jp: Howl
+  one_time: false
+  record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
   desc_en: Deal 300% damage (4 hits, 75% each)
@@ -80,9 +125,6 @@ records:
 # Change Heal to Wood
 # ESAttackMultihit(15:10663) -> Steel Claws
 # Enemy action
-# ESAttackUPRemainingEnemies(17:10664) -> Raging Lion
-# 	Condition: when <= 1 enemies remain (ai:100 rnd:0)
-# Increase damage to 150% for the next 5 turns
 ############################################################
 ### ES Modifiers
 ############################################################

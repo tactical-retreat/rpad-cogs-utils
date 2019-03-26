@@ -7,8 +7,7 @@ monster_id: 105104
 monster_name_en: Vega
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 4
@@ -25,15 +24,6 @@ records:
   name_jp: Let my beauty intoxicate you.
   one_time: false
   record_type_name: PREEMPT
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: false
-  record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
   desc_en: Leader changes to random sub for 1 turns, Deal 90% damage
@@ -84,8 +74,17 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -102,10 +101,19 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 49
-  name_jp: HP <= 49
+  name_en: Turn 2
+  name_jp: Turn 2
   one_time: false
   record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Leader changes to random sub for 2 turns, Deal 90% damage
+  desc_jp: Leader changes to random sub for 2 turns, Deal 90% damage
+  max_atk_pct: 90
+  name_en: Grand Izuna Drop
+  name_jp: Grand Izuna Drop
+  one_time: true
+  record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
   desc_en: Change 3rd row to Dark orbs, Deal 130% damage
@@ -147,8 +155,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 14
-  name_jp: HP <= 14
+  name_en: HP <= 15
+  name_jp: HP <= 15
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -162,12 +170,6 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
-############################################################
-### Unused Actions
-############################################################
-# ESLeaderSwap(75:12438) -> Grand Izuna Drop
-# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
-# Leader changes to random sub for 2 turns
 ############################################################
 ### ES Modifiers
 ############################################################

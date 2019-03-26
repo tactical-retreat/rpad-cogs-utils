@@ -7,7 +7,8 @@ monster_id: 3121
 monster_name_en: Beach Lifeguard, Aqua Chaser
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 1 unused actions
 
 ############################################################
 ### Data @ 4
@@ -16,33 +17,6 @@ warnings: []
 level: 4
 overrides: []
 records:
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Increase damage to 200% for the next 3 turns
-  desc_jp: Increase damage to 200% for the next 3 turns
-  max_atk_pct: null
-  name_en: Chase Mode
-  name_jp: Chase Mode
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
 - !SkillRecord
   desc_en: Deal 90% damage (3 hits, 30% each)
   desc_jp: Deal 90% damage (3 hits, 30% each)
@@ -71,6 +45,12 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# ESAttackUPCooldown(19:5338) -> Chase Mode
+# 	Condition: One-time use, after 2 turns (ai:100 rnd:0) (one-time: 1)
+# Increase damage to 200% for the next 3 turns
 ############################################################
 ### ES Modifiers
 ############################################################

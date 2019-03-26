@@ -8,7 +8,7 @@ monster_name_en: Yellow Augite, Magatama of Yonder
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 4 unused actions
+- Found 3 unused actions
 
 ############################################################
 ### Data @ 1
@@ -25,6 +25,15 @@ records:
   name_jp: Augite's Resonance
   one_time: false
   record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  max_atk_pct: 100
+  name_en: Flash
+  name_jp: Flash
+  one_time: false
+  record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
   desc_en: ''
@@ -48,17 +57,17 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: When 2 enemy remains
-  name_jp: When 2 enemy remains
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Remove damage immunity effect
-  desc_jp: Remove damage immunity effect
-  max_atk_pct: null
-  name_en: Augite's Resonance disappeared
-  name_jp: Augite's Resonance disappeared
+  desc_en: Deal 300% damage (3 hits, 100% each)
+  desc_jp: Deal 300% damage (3 hits, 100% each)
+  max_atk_pct: 300
+  name_en: Disorientating Flash
+  name_jp: Disorientating Flash
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -66,17 +75,17 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: When 2 enemy remains
+  name_jp: When 2 enemy remains
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 100% damage
-  desc_jp: Deal 100% damage
-  max_atk_pct: 100
-  name_en: Flash
-  name_jp: Flash
+  desc_en: Enemy ally recover 100% hp
+  desc_jp: Enemy ally recover 100% hp
+  max_atk_pct: null
+  name_en: Radiance of Regeneration
+  name_jp: Radiance of Regeneration
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
@@ -84,11 +93,8 @@ records:
 ############################################################
 ### Unused Actions
 ############################################################
-# ESAttackMultihit(15:9171) -> Disorientating Flash
-# Enemy action
-# ESRecoverEnemyAlly(52:9172) -> Radiance of Regeneration
-# 	Condition: When enemy ally is killed (ai:100 rnd:0)
-# Enemy ally recover 100% hp
+# ESInvulnerableOff(121:9173) -> Augite's Resonance disappeared
+# Remove damage immunity effect
 # ESAbsorbCombo(67:9174) -> Secular Sword's Reflexion
 # Absorb combo <= 6 damage for 6 turns
 # ESTurnChangeActive(122:9170) -> The Yellow Augite is pulsating

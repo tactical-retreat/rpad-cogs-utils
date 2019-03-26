@@ -33,6 +33,8 @@ Resurrection
 Enemy recover 100% hp (70% chance) (1 time use)
 Nightmare Slash
 15336 Damage - Deal 180% damage (3 hits, 60% each) (70% chance)
+Dark World
+Blind all orbs on the board (10% chance)
 
 300 - Pierdra @ level 5
 Bind Attack
@@ -46,14 +48,15 @@ Increase damage to 200% for the next attack (50% chance)
 ----- HP <= 25 -----
 Spear of Poseidon
 53625 Damage - Deal 150% damage (3 hits, 50% each) (70% chance)
+Energy Charge
+Increase damage to 200% for the next attack (50% chance)
 
 stage 4
 
 1631 - Dark Sky Star Dragon Emperor, Defoud @ level 6
 Star Emperor's Gleam
 Absorb combo <= 5 damage for 99 turns (Preemptive) (1 time use)
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1-6 -----
 Heavenly Lightning
 10389 Damage - Change Random to Light, Deal 80% damage (60% chance)
 Photon Breath
@@ -83,11 +86,11 @@ Heavenly Lightning
 10389 Damage - Change Random to Light, Deal 80% damage (60% chance)
 Photon Breath
 19481 Damage - Deal 150% damage (3 hits, 50% each)
------ Turn 7 -----
+----- Loop to 1 after. Turn 7 -----
 Nebula Inferno
 129873 Damage - Blind all orbs on the board, Deal 1000% damage (1 time use)
------ Execute below actions in order repeatedly when HP <= 49 -----
------ Turn 1 -----
+----- HP <= 50 -----
+----- Execute repeatedly. Turn 1-6 -----
 Dark Rumble
 10389 Damage - Change Random to Dark, Deal 80% damage (60% chance)
 Photon Breath
@@ -117,8 +120,11 @@ Dark Rumble
 10389 Damage - Change Random to Dark, Deal 80% damage (60% chance)
 Photon Breath
 19481 Damage - Deal 150% damage (3 hits, 50% each)
------ Execute below actions in order repeatedly when HP <= 29 -----
------ Turn 1 -----
+----- Loop to 1 after. Turn 7 -----
+Nebula Inferno
+129873 Damage - Blind all orbs on the board, Deal 1000% damage (1 time use)
+----- HP <= 30 -----
+----- Execute repeatedly. Turn 1-6 -----
 Divine Star
 32468 Damage - Deal 250% damage (5 hits, 50% each)
 ----- Turn 2 -----
@@ -136,6 +142,9 @@ Divine Star
 ----- Turn 6 -----
 Divine Star
 32468 Damage - Deal 250% damage (5 hits, 50% each)
+----- Loop to 1 after. Turn 7 -----
+Nebula Inferno
+129873 Damage - Blind all orbs on the board, Deal 1000% damage (1 time use)
 
 stage 5
 
@@ -154,27 +163,26 @@ stage 6
 1189 - Awoken Hera-Beorc @ level 6
 Photosynthesis
 Absorb Light damage for 10 turns (Preemptive)
+----- Execute repeatedly. Turn 1 -----
+Arboreal Queen's Allure
+13067 Damage - Change Fire to Wood, Deal 70% damage (70% chance)
+Tie Up
+7467 Damage - Bind 1 subs for 3 turns, Deal 40% damage (1 time use)
+----- Loop to 1 after. Turn 2 -----
+Arboreal Queen's Allure
+13067 Damage - Change Fire to Wood, Deal 70% damage (70% chance)
+----- HP <= 50 -----
+----- Execute repeatedly. Turn 1 -----
+Arboreal Queen's Temptation
+18668 Damage - Change Dark to Light, Deal 100% damage (70% chance)
+Tie Up
+7467 Damage - Bind 1 subs for 3 turns, Deal 40% damage (1 time use)
+----- Loop to 1 after. Turn 2 -----
+Arboreal Queen's Temptation
+18668 Damage - Change Dark to Light, Deal 100% damage (70% chance)
 ----- HP <= 30 -----
 Jupiter Genesis
 37336 Damage - Deal 200% damage
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
-Arboreal Queen's Allure
-13067 Damage - Change Fire to Wood, Deal 70% damage (70% chance)
-Tie Up
-7467 Damage - Bind 1 subs for 3 turns, Deal 40% damage (1 time use)
------ Turn 2 -----
-Arboreal Queen's Allure
-13067 Damage - Change Fire to Wood, Deal 70% damage (70% chance)
------ Execute below actions in order repeatedly when HP <= 49 -----
------ Turn 1 -----
-Arboreal Queen's Temptation
-18668 Damage - Change Dark to Light, Deal 100% damage (70% chance)
-Tie Up
-7467 Damage - Bind 1 subs for 3 turns, Deal 40% damage (1 time use)
------ Turn 2 -----
-Arboreal Queen's Temptation
-18668 Damage - Change Dark to Light, Deal 100% damage (70% chance)
 
 stage 7
 
@@ -183,17 +191,7 @@ Ability
 Survive attacks with 1 HP when HP > 50%
 You've done well to come this far + Let's have some fun!
 Voids status ailments for 2 turns + Absorb combo <= 4 damage for 999 turns (Preemptive) (1 time use)
------ HP <= 39 -----
-Glare of Zeus + Time to finish you off!
-Bind God cards for 2~4 turns + Do nothing
------ HP <= 39 -----
-Super Nova + Graviton Bomb
-Deal 45000% damage (10 hits, 4500% each) + Deal 80000% damage
------ HP <= 10 -----
-Wrath of God + Blessing of the Gods
-Player -95% HP + Enemy recover 50% hp
------ Execute below actions in order repeatedly -----
------ Turn 1-2 -----
+----- Execute repeatedly. Turn 1-2 -----
 Lightning of God + Double Slap
 Change 3rd column to Light orbs, 4th column to Light orbs, Deal 12000% damage + Deal 18000% damage (3 hits, 6000% each) (20% chance)
 Zeus Blade + Mischief by God
@@ -204,9 +202,28 @@ Lightning of God + Diabolic Embrace
 Change 3rd column to Light orbs, 4th column to Light orbs, Deal 12000% damage + Bind 1 subs for 1~2 turns, Deal 10000% damage (20% chance)
 Zeus Blade + Ultra Gravity
 Change 4th row to Light orbs, Deal 15000% damage + Player -99% HP (20% chance)
------ Turn 3 -----
+----- Turn 2 -----
+Lightning of God + Double Slap
+Change 3rd column to Light orbs, 4th column to Light orbs, Deal 12000% damage + Deal 18000% damage (3 hits, 6000% each) (20% chance)
+Zeus Blade + Mischief by God
+Change 4th row to Light orbs, Deal 15000% damage + Change Light to Jammer, Deal 7500% damage (20% chance)
+Zeus Blade + Double Slap
+Change 4th row to Light orbs, Deal 15000% damage + Deal 18000% damage (3 hits, 6000% each) (20% chance)
+Lightning of God + Diabolic Embrace
+Change 3rd column to Light orbs, 4th column to Light orbs, Deal 12000% damage + Bind 1 subs for 1~2 turns, Deal 10000% damage (20% chance)
+Zeus Blade + Ultra Gravity
+Change 4th row to Light orbs, Deal 15000% damage + Player -99% HP (20% chance)
+----- Loop to 1 after. Turn 3 -----
 Lightning of God + Preening
 Change 3rd column to Light orbs, 4th column to Light orbs, Deal 12000% damage + Voids status ailments for 2 turns (1 time use)
+----- HP <= 40 -----
+Glare of Zeus + Time to finish you off!
+Bind God cards for 2~4 turns + Do nothing
+Super Nova + Graviton Bomb
+Deal 45000% damage (10 hits, 4500% each) + Deal 80000% damage
+----- HP <= 10 -----
+Wrath of God + Blessing of the Gods
+Player -95% HP + Enemy recover 50% hp
 
 stage 8
 
@@ -220,9 +237,6 @@ Voids status ailments for 999 turns + Absorb Wood, Light, Dark damage for 3 turn
 ----- Turn 1 -----
 Draco Summon-Dragon Portal
 Do nothing (1 time use)
------ Turn 1 HP <= 14 -----
-Alt. Five Origin Dragon Star Attack
-63910 Damage - Deal 500% damage (5 hits, 100% each)
 ----- Turn 2 -----
 Cattle Mutilation
 20451 Damage - Blind all orbs on the board, Deal 160% damage (20% chance)
@@ -234,15 +248,9 @@ Dark Rumble
 19173 Damage - Change Random to Dark, Deal 150% damage (20% chance)
 Brilliant Dragon Skull
 17894 Damage - Change all orbs to Fire, Water, Wood, Light, Dark, Deal 140% damage (20% chance)
------ Turn 2 HP <= 14 -----
-Alt. Five Origin Dragon Star Attack
-63910 Damage - Deal 500% damage (5 hits, 100% each)
 ----- Turn 3 -----
 Fair Skies Guardian Dragon - Shield
 Reduce damage from all sources by 50% for 2 turns (1 time use)
------ Turn 3 HP <= 14 -----
-Alt. Five Origin Dragon Star Attack
-63910 Damage - Deal 500% damage (5 hits, 100% each)
 ----- Turn 4 -----
 Cattle Mutilation
 20451 Damage - Blind all orbs on the board, Deal 160% damage (20% chance)
@@ -254,15 +262,9 @@ Dark Rumble
 19173 Damage - Change Random to Dark, Deal 150% damage (20% chance)
 Brilliant Dragon Skull
 17894 Damage - Change all orbs to Fire, Water, Wood, Light, Dark, Deal 140% damage (20% chance)
------ Turn 4 HP <= 14 -----
-Alt. Five Origin Dragon Star Attack
-63910 Damage - Deal 500% damage (5 hits, 100% each)
 ----- Turn 5 -----
 Fair Skies Guardian Dragon - Skill
 Absorb combo <= 6 damage for 2 turns (1 time use)
------ Turn 5 HP <= 14 -----
-Alt. Five Origin Dragon Star Attack
-63910 Damage - Deal 500% damage (5 hits, 100% each)
 ----- Turn 6 -----
 Cattle Mutilation
 20451 Damage - Blind all orbs on the board, Deal 160% damage (20% chance)
@@ -274,15 +276,9 @@ Dark Rumble
 19173 Damage - Change Random to Dark, Deal 150% damage (20% chance)
 Brilliant Dragon Skull
 17894 Damage - Change all orbs to Fire, Water, Wood, Light, Dark, Deal 140% damage (20% chance)
------ Turn 6 HP <= 14 -----
-Alt. Five Origin Dragon Star Attack
-63910 Damage - Deal 500% damage (5 hits, 100% each)
 ----- Turn 7 -----
 Fair Skies Guardian Dragon - Balance
 Void damage >= 800000 for 2 turns (1 time use)
------ Turn 7 HP <= 14 -----
-Alt. Five Origin Dragon Star Attack
-63910 Damage - Deal 500% damage (5 hits, 100% each)
 ----- Turn 8 -----
 Cattle Mutilation
 20451 Damage - Blind all orbs on the board, Deal 160% damage (20% chance)
@@ -294,15 +290,9 @@ Dark Rumble
 19173 Damage - Change Random to Dark, Deal 150% damage (20% chance)
 Brilliant Dragon Skull
 17894 Damage - Change all orbs to Fire, Water, Wood, Light, Dark, Deal 140% damage (20% chance)
------ Turn 8 HP <= 14 -----
-Alt. Five Origin Dragon Star Attack
-63910 Damage - Deal 500% damage (5 hits, 100% each)
 ----- Turn 9 -----
 Fair Skies Guardian Dragon - Judge
 Absorb damage >= 1500000 damage for 2 turns (1 time use)
------ Turn 9 HP <= 14 -----
-Alt. Five Origin Dragon Star Attack
-63910 Damage - Deal 500% damage (5 hits, 100% each)
 ----- Turn 10 -----
 Cattle Mutilation
 20451 Damage - Blind all orbs on the board, Deal 160% damage (20% chance)
@@ -314,15 +304,9 @@ Dark Rumble
 19173 Damage - Change Random to Dark, Deal 150% damage (20% chance)
 Brilliant Dragon Skull
 17894 Damage - Change all orbs to Fire, Water, Wood, Light, Dark, Deal 140% damage (20% chance)
------ Turn 10 HP <= 14 -----
-Alt. Five Origin Dragon Star Attack
-63910 Damage - Deal 500% damage (5 hits, 100% each)
 ----- Turn 11 -----
 Draggie Knight, Zeal's Enhancement + Draggie Shield
 Increase damage to 250% for the next 1 turns + Reduce damage from all sources by 75% for 1 turns (1 time use)
------ Turn 11 HP <= 14 -----
-Alt. Five Origin Dragon Star Attack
-63910 Damage - Deal 500% damage (5 hits, 100% each)
 ----- HP <= 100 -----
 Alt. Five Origin Dragon Star Attack
 63910 Damage - Deal 500% damage (5 hits, 100% each)
@@ -332,82 +316,12 @@ stage 9
 4227 - Hexazeon @ level 10
 Protected from damage by the Augites
 Immune to damage from all sources for 999 turns (Preemptive)
+Stellar Dragon's Glare
+10320 Damage - Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 100% damage
 ----- When 3 enemy remains -----
 Dragon Cloud
 10320 Damage - 6x2 cloud appear for 3 turns at random location, Deal 100% damage
------ When 3 enemy remains and HP <= 90 -----
-Dragon Cloud
-10320 Damage - 6x2 cloud appear for 3 turns at random location, Deal 100% damage
------ When 3 enemy remains and HP <= 89 -----
-Dragon Cloud
-10320 Damage - 6x2 cloud appear for 3 turns at random location, Deal 100% damage
------ When 3 enemy remains and HP <= 50 -----
-Dragon Cloud
-10320 Damage - 6x2 cloud appear for 3 turns at random location, Deal 100% damage
------ When 3 enemy remains and HP <= 49 -----
-Dragon Cloud
-10320 Damage - 6x2 cloud appear for 3 turns at random location, Deal 100% damage
------ When 3 enemy remains and HP <= 20 -----
-Dragon Cloud
-10320 Damage - 6x2 cloud appear for 3 turns at random location, Deal 100% damage
------ When 3 enemy remains and HP <= 19 -----
-Dragon Cloud
-10320 Damage - 6x2 cloud appear for 3 turns at random location, Deal 100% damage
 ----- When 2 enemy remains -----
-Sealing Pulse
-10320 Damage - Seal 1st column for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-10320 Damage - Seal 6th column for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-10320 Damage - Seal 1st row for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-10320 Damage - Seal 5th row for 3 turns, Deal 100% damage (25% chance)
------ When 2 enemy remains and HP <= 90 -----
-Sealing Pulse
-10320 Damage - Seal 1st column for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-10320 Damage - Seal 6th column for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-10320 Damage - Seal 1st row for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-10320 Damage - Seal 5th row for 3 turns, Deal 100% damage (25% chance)
------ When 2 enemy remains and HP <= 89 -----
-Sealing Pulse
-10320 Damage - Seal 1st column for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-10320 Damage - Seal 6th column for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-10320 Damage - Seal 1st row for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-10320 Damage - Seal 5th row for 3 turns, Deal 100% damage (25% chance)
------ When 2 enemy remains and HP <= 50 -----
-Sealing Pulse
-10320 Damage - Seal 1st column for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-10320 Damage - Seal 6th column for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-10320 Damage - Seal 1st row for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-10320 Damage - Seal 5th row for 3 turns, Deal 100% damage (25% chance)
------ When 2 enemy remains and HP <= 49 -----
-Sealing Pulse
-10320 Damage - Seal 1st column for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-10320 Damage - Seal 6th column for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-10320 Damage - Seal 1st row for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-10320 Damage - Seal 5th row for 3 turns, Deal 100% damage (25% chance)
------ When 2 enemy remains and HP <= 20 -----
-Sealing Pulse
-10320 Damage - Seal 1st column for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-10320 Damage - Seal 6th column for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-10320 Damage - Seal 1st row for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-10320 Damage - Seal 5th row for 3 turns, Deal 100% damage (25% chance)
------ When 2 enemy remains and HP <= 19 -----
 Sealing Pulse
 10320 Damage - Seal 1st column for 3 turns, Deal 100% damage (25% chance)
 Sealing Pulse
@@ -417,48 +331,47 @@ Sealing Pulse
 Sealing Pulse
 10320 Damage - Seal 5th row for 3 turns, Deal 100% damage (25% chance)
 ----- When 1 enemy remains -----
+----- Turn 1 -----
 All Augites have successfully shattered + Chest Core's Shine + Fortified Scales
 Remove damage immunity effect + Voids status ailments for 66 turns + Void damage >= 66666666 for 999 turns (1 time use)
------ When 1 enemy remains and HP <= 90 -----
+----- Turn 2 -----
 Time Binding + Wave + Wave
 Delay active skills by 1 turns + Player -99% HP + Player -99% HP (1 time use)
------ When 1 enemy remains and HP <= 89 -----
+----- HP <= 100 -----
 Rotting Pain
 25800 Damage - Change Random to Jammer, Deal 250% damage (25% chance)
 Four Resonating Guns
 35088 Damage - Deal 340% damage (4 hits, 85% each)
------ When 1 enemy remains and HP <= 50 -----
-Rotting Pain
-25800 Damage - Change Random to Jammer, Deal 250% damage (25% chance)
-Four Resonating Guns
-35088 Damage - Deal 340% damage (4 hits, 85% each)
------ When 1 enemy remains and HP <= 49 -----
+----- HP <= 90 -----
+Secular Sword + Empty Teachings
+Absorb combo <= 6 damage for 66 turns + Specific orbs change every 1.0s for 6 turns (1 time use)
+----- HP <= 50 -----
 Deprivation + Holy Charity
 Movetime -3s for 6 turns + Heal skyfall +15% for 6 turns (1 time use)
------ When 1 enemy remains and HP <= 20 -----
 Rotting Pain + Wave
 Change Random to Jammer, Deal 250% damage + Player -99% HP (30% chance)
 Four Resonating Guns + Wave
 Deal 340% damage (4 hits, 85% each) + Player -99% HP
------ When 1 enemy remains and HP <= 19 -----
+----- HP <= 20 -----
 Stellar Dragon's Glare + Barbed Chain Cage
 Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs + Bind awoken skills for 3 turns
------ HP <= 100 -----
-Stellar Dragon's Glare
-10320 Damage - Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 100% damage
+Metamorphosis + Six Limitless Flashes
+Change own attribute to random one of Water, Light + Deal 3600% damage (6 hits, 600% each)
 
 4228 - Yellow Augite, Magatama of Yonder @ level 10
 Augite's Resonance
 Immune to damage from all sources for 999 turns (Preemptive)
+Flash
+9240 Damage - Deal 100% damage
 ----- When 3 enemy remains -----
 Instant Ripped Death
 Movetime 50% for 1 turns (1 time use)
------ When 2 enemy remains -----
-Augite's Resonance disappeared
-Remove damage immunity effect
 ----- HP <= 100 -----
-Flash
-9240 Damage - Deal 100% damage
+Disorientating Flash
+27720 Damage - Deal 300% damage (3 hits, 100% each)
+----- When 2 enemy remains -----
+Radiance of Regeneration
+Enemy ally recover 100% hp
 
 4229 - Purple Augite, Mirror of Eternal Darkness @ level 10
 Shield Expansion
@@ -472,12 +385,11 @@ Reduce damage from all sources by 35% for 6 turns (1 time use)
 4230 - Green Augite, Holy Sword of Jade @ level 10
 The Green Augite is pulsating
 Increase damage to 200% for the next 1 turns (Preemptive)
+Slash
+18756 Damage - Deal 180% damage
 ----- When 3 enemy remains -----
 Radiance of Regeneration
 Enemy ally recover 100% hp
------ HP <= 100 -----
-Slash
-18756 Damage - Deal 180% damage
 
 Hexazeon Descended! - Stellar Dragon of the 6 Skies-Mythical Plus
 
@@ -514,6 +426,8 @@ Resurrection
 Enemy recover 100% hp (70% chance) (1 time use)
 Nightmare Slash
 10394 Damage - Deal 180% damage (3 hits, 60% each) (70% chance)
+Dark World
+Blind all orbs on the board (10% chance)
 
 300 - Pierdra @ level 5
 Bind Attack
@@ -527,14 +441,15 @@ Increase damage to 200% for the next attack (50% chance)
 ----- HP <= 25 -----
 Spear of Poseidon
 28743 Damage - Deal 150% damage (3 hits, 50% each) (70% chance)
+Energy Charge
+Increase damage to 200% for the next attack (50% chance)
 
 stage 4
 
 1631 - Dark Sky Star Dragon Emperor, Defoud @ level 5
 Star Emperor's Gleam
 Absorb combo <= 5 damage for 99 turns (Preemptive) (1 time use)
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1-6 -----
 Heavenly Lightning
 8433 Damage - Change Random to Light, Deal 80% damage (60% chance)
 Photon Breath
@@ -564,11 +479,11 @@ Heavenly Lightning
 8433 Damage - Change Random to Light, Deal 80% damage (60% chance)
 Photon Breath
 15812 Damage - Deal 150% damage (3 hits, 50% each)
------ Turn 7 -----
+----- Loop to 1 after. Turn 7 -----
 Nebula Inferno
 105416 Damage - Blind all orbs on the board, Deal 1000% damage (1 time use)
------ Execute below actions in order repeatedly when HP <= 49 -----
------ Turn 1 -----
+----- HP <= 50 -----
+----- Execute repeatedly. Turn 1-6 -----
 Dark Rumble
 8433 Damage - Change Random to Dark, Deal 80% damage (60% chance)
 Photon Breath
@@ -598,8 +513,11 @@ Dark Rumble
 8433 Damage - Change Random to Dark, Deal 80% damage (60% chance)
 Photon Breath
 15812 Damage - Deal 150% damage (3 hits, 50% each)
------ Execute below actions in order repeatedly when HP <= 29 -----
------ Turn 1 -----
+----- Loop to 1 after. Turn 7 -----
+Nebula Inferno
+105416 Damage - Blind all orbs on the board, Deal 1000% damage (1 time use)
+----- HP <= 30 -----
+----- Execute repeatedly. Turn 1-6 -----
 Divine Star
 26354 Damage - Deal 250% damage (5 hits, 50% each)
 ----- Turn 2 -----
@@ -617,6 +535,9 @@ Divine Star
 ----- Turn 6 -----
 Divine Star
 26354 Damage - Deal 250% damage (5 hits, 50% each)
+----- Loop to 1 after. Turn 7 -----
+Nebula Inferno
+105416 Damage - Blind all orbs on the board, Deal 1000% damage (1 time use)
 
 stage 5
 
@@ -635,27 +556,26 @@ stage 6
 1189 - Awoken Hera-Beorc @ level 5
 Photosynthesis
 Absorb Light damage for 10 turns (Preemptive)
+----- Execute repeatedly. Turn 1 -----
+Arboreal Queen's Allure
+10606 Damage - Change Fire to Wood, Deal 70% damage (70% chance)
+Tie Up
+6061 Damage - Bind 1 subs for 3 turns, Deal 40% damage (1 time use)
+----- Loop to 1 after. Turn 2 -----
+Arboreal Queen's Allure
+10606 Damage - Change Fire to Wood, Deal 70% damage (70% chance)
+----- HP <= 50 -----
+----- Execute repeatedly. Turn 1 -----
+Arboreal Queen's Temptation
+15152 Damage - Change Dark to Light, Deal 100% damage (70% chance)
+Tie Up
+6061 Damage - Bind 1 subs for 3 turns, Deal 40% damage (1 time use)
+----- Loop to 1 after. Turn 2 -----
+Arboreal Queen's Temptation
+15152 Damage - Change Dark to Light, Deal 100% damage (70% chance)
 ----- HP <= 30 -----
 Jupiter Genesis
 30305 Damage - Deal 200% damage
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
-Arboreal Queen's Allure
-10606 Damage - Change Fire to Wood, Deal 70% damage (70% chance)
-Tie Up
-6061 Damage - Bind 1 subs for 3 turns, Deal 40% damage (1 time use)
------ Turn 2 -----
-Arboreal Queen's Allure
-10606 Damage - Change Fire to Wood, Deal 70% damage (70% chance)
------ Execute below actions in order repeatedly when HP <= 49 -----
------ Turn 1 -----
-Arboreal Queen's Temptation
-15152 Damage - Change Dark to Light, Deal 100% damage (70% chance)
-Tie Up
-6061 Damage - Bind 1 subs for 3 turns, Deal 40% damage (1 time use)
------ Turn 2 -----
-Arboreal Queen's Temptation
-15152 Damage - Change Dark to Light, Deal 100% damage (70% chance)
 
 stage 7
 
@@ -664,17 +584,7 @@ Ability
 Survive attacks with 1 HP when HP > 50%
 You've done well to come this far + Let's have some fun!
 Voids status ailments for 2 turns + Absorb combo <= 4 damage for 999 turns (Preemptive) (1 time use)
------ HP <= 39 -----
-Glare of Zeus + Time to finish you off!
-Bind God cards for 2~4 turns + Do nothing
------ HP <= 39 -----
-Super Nova + Graviton Bomb
-Deal 45000% damage (10 hits, 4500% each) + Deal 80000% damage
------ HP <= 10 -----
-Wrath of God + Blessing of the Gods
-Player -95% HP + Enemy recover 50% hp
------ Execute below actions in order repeatedly -----
------ Turn 1-2 -----
+----- Execute repeatedly. Turn 1-2 -----
 Lightning of God + Double Slap
 Change 3rd column to Light orbs, 4th column to Light orbs, Deal 12000% damage + Deal 18000% damage (3 hits, 6000% each) (20% chance)
 Zeus Blade + Mischief by God
@@ -685,9 +595,28 @@ Lightning of God + Diabolic Embrace
 Change 3rd column to Light orbs, 4th column to Light orbs, Deal 12000% damage + Bind 1 subs for 1~2 turns, Deal 10000% damage (20% chance)
 Zeus Blade + Ultra Gravity
 Change 4th row to Light orbs, Deal 15000% damage + Player -99% HP (20% chance)
------ Turn 3 -----
+----- Turn 2 -----
+Lightning of God + Double Slap
+Change 3rd column to Light orbs, 4th column to Light orbs, Deal 12000% damage + Deal 18000% damage (3 hits, 6000% each) (20% chance)
+Zeus Blade + Mischief by God
+Change 4th row to Light orbs, Deal 15000% damage + Change Light to Jammer, Deal 7500% damage (20% chance)
+Zeus Blade + Double Slap
+Change 4th row to Light orbs, Deal 15000% damage + Deal 18000% damage (3 hits, 6000% each) (20% chance)
+Lightning of God + Diabolic Embrace
+Change 3rd column to Light orbs, 4th column to Light orbs, Deal 12000% damage + Bind 1 subs for 1~2 turns, Deal 10000% damage (20% chance)
+Zeus Blade + Ultra Gravity
+Change 4th row to Light orbs, Deal 15000% damage + Player -99% HP (20% chance)
+----- Loop to 1 after. Turn 3 -----
 Lightning of God + Preening
 Change 3rd column to Light orbs, 4th column to Light orbs, Deal 12000% damage + Voids status ailments for 2 turns (1 time use)
+----- HP <= 40 -----
+Glare of Zeus + Time to finish you off!
+Bind God cards for 2~4 turns + Do nothing
+Super Nova + Graviton Bomb
+Deal 45000% damage (10 hits, 4500% each) + Deal 80000% damage
+----- HP <= 10 -----
+Wrath of God + Blessing of the Gods
+Player -95% HP + Enemy recover 50% hp
 
 stage 8
 
@@ -701,9 +630,6 @@ Voids status ailments for 999 turns + Absorb Wood, Light, Dark damage for 3 turn
 ----- Turn 1 -----
 Draco Summon-Dragon Portal
 Do nothing (1 time use)
------ Turn 1 HP <= 14 -----
-Alt. Five Origin Dragon Star Attack
-51875 Damage - Deal 500% damage (5 hits, 100% each)
 ----- Turn 2 -----
 Cattle Mutilation
 16600 Damage - Blind all orbs on the board, Deal 160% damage (20% chance)
@@ -715,15 +641,9 @@ Dark Rumble
 15562 Damage - Change Random to Dark, Deal 150% damage (20% chance)
 Brilliant Dragon Skull
 14525 Damage - Change all orbs to Fire, Water, Wood, Light, Dark, Deal 140% damage (20% chance)
------ Turn 2 HP <= 14 -----
-Alt. Five Origin Dragon Star Attack
-51875 Damage - Deal 500% damage (5 hits, 100% each)
 ----- Turn 3 -----
 Fair Skies Guardian Dragon - Shield
 Reduce damage from all sources by 50% for 2 turns (1 time use)
------ Turn 3 HP <= 14 -----
-Alt. Five Origin Dragon Star Attack
-51875 Damage - Deal 500% damage (5 hits, 100% each)
 ----- Turn 4 -----
 Cattle Mutilation
 16600 Damage - Blind all orbs on the board, Deal 160% damage (20% chance)
@@ -735,15 +655,9 @@ Dark Rumble
 15562 Damage - Change Random to Dark, Deal 150% damage (20% chance)
 Brilliant Dragon Skull
 14525 Damage - Change all orbs to Fire, Water, Wood, Light, Dark, Deal 140% damage (20% chance)
------ Turn 4 HP <= 14 -----
-Alt. Five Origin Dragon Star Attack
-51875 Damage - Deal 500% damage (5 hits, 100% each)
 ----- Turn 5 -----
 Fair Skies Guardian Dragon - Skill
 Absorb combo <= 6 damage for 2 turns (1 time use)
------ Turn 5 HP <= 14 -----
-Alt. Five Origin Dragon Star Attack
-51875 Damage - Deal 500% damage (5 hits, 100% each)
 ----- Turn 6 -----
 Cattle Mutilation
 16600 Damage - Blind all orbs on the board, Deal 160% damage (20% chance)
@@ -755,15 +669,9 @@ Dark Rumble
 15562 Damage - Change Random to Dark, Deal 150% damage (20% chance)
 Brilliant Dragon Skull
 14525 Damage - Change all orbs to Fire, Water, Wood, Light, Dark, Deal 140% damage (20% chance)
------ Turn 6 HP <= 14 -----
-Alt. Five Origin Dragon Star Attack
-51875 Damage - Deal 500% damage (5 hits, 100% each)
 ----- Turn 7 -----
 Fair Skies Guardian Dragon - Balance
 Void damage >= 800000 for 2 turns (1 time use)
------ Turn 7 HP <= 14 -----
-Alt. Five Origin Dragon Star Attack
-51875 Damage - Deal 500% damage (5 hits, 100% each)
 ----- Turn 8 -----
 Cattle Mutilation
 16600 Damage - Blind all orbs on the board, Deal 160% damage (20% chance)
@@ -775,15 +683,9 @@ Dark Rumble
 15562 Damage - Change Random to Dark, Deal 150% damage (20% chance)
 Brilliant Dragon Skull
 14525 Damage - Change all orbs to Fire, Water, Wood, Light, Dark, Deal 140% damage (20% chance)
------ Turn 8 HP <= 14 -----
-Alt. Five Origin Dragon Star Attack
-51875 Damage - Deal 500% damage (5 hits, 100% each)
 ----- Turn 9 -----
 Fair Skies Guardian Dragon - Judge
 Absorb damage >= 1500000 damage for 2 turns (1 time use)
------ Turn 9 HP <= 14 -----
-Alt. Five Origin Dragon Star Attack
-51875 Damage - Deal 500% damage (5 hits, 100% each)
 ----- Turn 10 -----
 Cattle Mutilation
 16600 Damage - Blind all orbs on the board, Deal 160% damage (20% chance)
@@ -795,15 +697,9 @@ Dark Rumble
 15562 Damage - Change Random to Dark, Deal 150% damage (20% chance)
 Brilliant Dragon Skull
 14525 Damage - Change all orbs to Fire, Water, Wood, Light, Dark, Deal 140% damage (20% chance)
------ Turn 10 HP <= 14 -----
-Alt. Five Origin Dragon Star Attack
-51875 Damage - Deal 500% damage (5 hits, 100% each)
 ----- Turn 11 -----
 Draggie Knight, Zeal's Enhancement + Draggie Shield
 Increase damage to 250% for the next 1 turns + Reduce damage from all sources by 75% for 1 turns (1 time use)
------ Turn 11 HP <= 14 -----
-Alt. Five Origin Dragon Star Attack
-51875 Damage - Deal 500% damage (5 hits, 100% each)
 ----- HP <= 100 -----
 Alt. Five Origin Dragon Star Attack
 51875 Damage - Deal 500% damage (5 hits, 100% each)
@@ -813,82 +709,12 @@ stage 9
 4227 - Hexazeon @ level 7
 Protected from damage by the Augites
 Immune to damage from all sources for 999 turns (Preemptive)
+Stellar Dragon's Glare
+8646 Damage - Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 100% damage
 ----- When 3 enemy remains -----
 Dragon Cloud
 8646 Damage - 6x2 cloud appear for 3 turns at random location, Deal 100% damage
------ When 3 enemy remains and HP <= 90 -----
-Dragon Cloud
-8646 Damage - 6x2 cloud appear for 3 turns at random location, Deal 100% damage
------ When 3 enemy remains and HP <= 89 -----
-Dragon Cloud
-8646 Damage - 6x2 cloud appear for 3 turns at random location, Deal 100% damage
------ When 3 enemy remains and HP <= 50 -----
-Dragon Cloud
-8646 Damage - 6x2 cloud appear for 3 turns at random location, Deal 100% damage
------ When 3 enemy remains and HP <= 49 -----
-Dragon Cloud
-8646 Damage - 6x2 cloud appear for 3 turns at random location, Deal 100% damage
------ When 3 enemy remains and HP <= 20 -----
-Dragon Cloud
-8646 Damage - 6x2 cloud appear for 3 turns at random location, Deal 100% damage
------ When 3 enemy remains and HP <= 19 -----
-Dragon Cloud
-8646 Damage - 6x2 cloud appear for 3 turns at random location, Deal 100% damage
 ----- When 2 enemy remains -----
-Sealing Pulse
-8646 Damage - Seal 1st column for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-8646 Damage - Seal 6th column for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-8646 Damage - Seal 1st row for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-8646 Damage - Seal 5th row for 3 turns, Deal 100% damage (25% chance)
------ When 2 enemy remains and HP <= 90 -----
-Sealing Pulse
-8646 Damage - Seal 1st column for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-8646 Damage - Seal 6th column for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-8646 Damage - Seal 1st row for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-8646 Damage - Seal 5th row for 3 turns, Deal 100% damage (25% chance)
------ When 2 enemy remains and HP <= 89 -----
-Sealing Pulse
-8646 Damage - Seal 1st column for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-8646 Damage - Seal 6th column for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-8646 Damage - Seal 1st row for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-8646 Damage - Seal 5th row for 3 turns, Deal 100% damage (25% chance)
------ When 2 enemy remains and HP <= 50 -----
-Sealing Pulse
-8646 Damage - Seal 1st column for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-8646 Damage - Seal 6th column for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-8646 Damage - Seal 1st row for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-8646 Damage - Seal 5th row for 3 turns, Deal 100% damage (25% chance)
------ When 2 enemy remains and HP <= 49 -----
-Sealing Pulse
-8646 Damage - Seal 1st column for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-8646 Damage - Seal 6th column for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-8646 Damage - Seal 1st row for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-8646 Damage - Seal 5th row for 3 turns, Deal 100% damage (25% chance)
------ When 2 enemy remains and HP <= 20 -----
-Sealing Pulse
-8646 Damage - Seal 1st column for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-8646 Damage - Seal 6th column for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-8646 Damage - Seal 1st row for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-8646 Damage - Seal 5th row for 3 turns, Deal 100% damage (25% chance)
------ When 2 enemy remains and HP <= 19 -----
 Sealing Pulse
 8646 Damage - Seal 1st column for 3 turns, Deal 100% damage (25% chance)
 Sealing Pulse
@@ -898,48 +724,47 @@ Sealing Pulse
 Sealing Pulse
 8646 Damage - Seal 5th row for 3 turns, Deal 100% damage (25% chance)
 ----- When 1 enemy remains -----
+----- Turn 1 -----
 All Augites have successfully shattered + Chest Core's Shine + Fortified Scales
 Remove damage immunity effect + Voids status ailments for 66 turns + Void damage >= 66666666 for 999 turns (1 time use)
------ When 1 enemy remains and HP <= 90 -----
+----- Turn 2 -----
 Time Binding + Wave + Wave
 Delay active skills by 1 turns + Player -99% HP + Player -99% HP (1 time use)
------ When 1 enemy remains and HP <= 89 -----
+----- HP <= 100 -----
 Rotting Pain
 21616 Damage - Change Random to Jammer, Deal 250% damage (25% chance)
 Four Resonating Guns
 29398 Damage - Deal 340% damage (4 hits, 85% each)
------ When 1 enemy remains and HP <= 50 -----
-Rotting Pain
-21616 Damage - Change Random to Jammer, Deal 250% damage (25% chance)
-Four Resonating Guns
-29398 Damage - Deal 340% damage (4 hits, 85% each)
------ When 1 enemy remains and HP <= 49 -----
+----- HP <= 90 -----
+Secular Sword + Empty Teachings
+Absorb combo <= 6 damage for 66 turns + Specific orbs change every 1.0s for 6 turns (1 time use)
+----- HP <= 50 -----
 Deprivation + Holy Charity
 Movetime -3s for 6 turns + Heal skyfall +15% for 6 turns (1 time use)
------ When 1 enemy remains and HP <= 20 -----
 Rotting Pain + Wave
 Change Random to Jammer, Deal 250% damage + Player -99% HP (30% chance)
 Four Resonating Guns + Wave
 Deal 340% damage (4 hits, 85% each) + Player -99% HP
------ When 1 enemy remains and HP <= 19 -----
+----- HP <= 20 -----
 Stellar Dragon's Glare + Barbed Chain Cage
 Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs + Bind awoken skills for 3 turns
------ HP <= 100 -----
-Stellar Dragon's Glare
-8646 Damage - Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 100% damage
+Metamorphosis + Six Limitless Flashes
+Change own attribute to random one of Water, Light + Deal 3600% damage (6 hits, 600% each)
 
 4228 - Yellow Augite, Magatama of Yonder @ level 7
 Augite's Resonance
 Immune to damage from all sources for 999 turns (Preemptive)
+Flash
+7793 Damage - Deal 100% damage
 ----- When 3 enemy remains -----
 Instant Ripped Death
 Movetime 50% for 1 turns (1 time use)
------ When 2 enemy remains -----
-Augite's Resonance disappeared
-Remove damage immunity effect
 ----- HP <= 100 -----
-Flash
-7793 Damage - Deal 100% damage
+Disorientating Flash
+23380 Damage - Deal 300% damage (3 hits, 100% each)
+----- When 2 enemy remains -----
+Radiance of Regeneration
+Enemy ally recover 100% hp
 
 4229 - Purple Augite, Mirror of Eternal Darkness @ level 7
 Shield Expansion
@@ -953,12 +778,11 @@ Reduce damage from all sources by 35% for 6 turns (1 time use)
 4230 - Green Augite, Holy Sword of Jade @ level 7
 The Green Augite is pulsating
 Increase damage to 200% for the next 1 turns (Preemptive)
+Slash
+15714 Damage - Deal 180% damage
 ----- When 3 enemy remains -----
 Radiance of Regeneration
 Enemy ally recover 100% hp
------ HP <= 100 -----
-Slash
-15714 Damage - Deal 180% damage
 
 Hexazeon Descended! - Stellar Dragon of the 6 Skies-Mythical
 
@@ -995,6 +819,8 @@ Resurrection
 Enemy recover 100% hp (70% chance) (1 time use)
 Nightmare Slash
 7100 Damage - Deal 180% damage (3 hits, 60% each) (70% chance)
+Dark World
+Blind all orbs on the board (10% chance)
 
 300 - Pierdra @ level 3
 Bind Attack
@@ -1008,14 +834,15 @@ Increase damage to 200% for the next attack (50% chance)
 ----- HP <= 25 -----
 Spear of Poseidon
 16302 Damage - Deal 150% damage (3 hits, 50% each) (70% chance)
+Energy Charge
+Increase damage to 200% for the next attack (50% chance)
 
 stage 4
 
 1631 - Dark Sky Star Dragon Emperor, Defoud @ level 4
 Star Emperor's Gleam
 Absorb combo <= 5 damage for 99 turns (Preemptive) (1 time use)
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1-6 -----
 Heavenly Lightning
 6476 Damage - Change Random to Light, Deal 80% damage (60% chance)
 Photon Breath
@@ -1045,11 +872,11 @@ Heavenly Lightning
 6476 Damage - Change Random to Light, Deal 80% damage (60% chance)
 Photon Breath
 12144 Damage - Deal 150% damage (3 hits, 50% each)
------ Turn 7 -----
+----- Loop to 1 after. Turn 7 -----
 Nebula Inferno
 80960 Damage - Blind all orbs on the board, Deal 1000% damage (1 time use)
------ Execute below actions in order repeatedly when HP <= 49 -----
------ Turn 1 -----
+----- HP <= 50 -----
+----- Execute repeatedly. Turn 1-6 -----
 Dark Rumble
 6476 Damage - Change Random to Dark, Deal 80% damage (60% chance)
 Photon Breath
@@ -1079,8 +906,11 @@ Dark Rumble
 6476 Damage - Change Random to Dark, Deal 80% damage (60% chance)
 Photon Breath
 12144 Damage - Deal 150% damage (3 hits, 50% each)
------ Execute below actions in order repeatedly when HP <= 29 -----
------ Turn 1 -----
+----- Loop to 1 after. Turn 7 -----
+Nebula Inferno
+80960 Damage - Blind all orbs on the board, Deal 1000% damage (1 time use)
+----- HP <= 30 -----
+----- Execute repeatedly. Turn 1-6 -----
 Divine Star
 20240 Damage - Deal 250% damage (5 hits, 50% each)
 ----- Turn 2 -----
@@ -1098,6 +928,9 @@ Divine Star
 ----- Turn 6 -----
 Divine Star
 20240 Damage - Deal 250% damage (5 hits, 50% each)
+----- Loop to 1 after. Turn 7 -----
+Nebula Inferno
+80960 Damage - Blind all orbs on the board, Deal 1000% damage (1 time use)
 
 stage 5
 
@@ -1116,27 +949,26 @@ stage 6
 1189 - Awoken Hera-Beorc @ level 4
 Photosynthesis
 Absorb Light damage for 10 turns (Preemptive)
+----- Execute repeatedly. Turn 1 -----
+Arboreal Queen's Allure
+8146 Damage - Change Fire to Wood, Deal 70% damage (70% chance)
+Tie Up
+4654 Damage - Bind 1 subs for 3 turns, Deal 40% damage (1 time use)
+----- Loop to 1 after. Turn 2 -----
+Arboreal Queen's Allure
+8146 Damage - Change Fire to Wood, Deal 70% damage (70% chance)
+----- HP <= 50 -----
+----- Execute repeatedly. Turn 1 -----
+Arboreal Queen's Temptation
+11637 Damage - Change Dark to Light, Deal 100% damage (70% chance)
+Tie Up
+4654 Damage - Bind 1 subs for 3 turns, Deal 40% damage (1 time use)
+----- Loop to 1 after. Turn 2 -----
+Arboreal Queen's Temptation
+11637 Damage - Change Dark to Light, Deal 100% damage (70% chance)
 ----- HP <= 30 -----
 Jupiter Genesis
 23274 Damage - Deal 200% damage
------ Execute below actions in order repeatedly -----
------ Turn 1 -----
-Arboreal Queen's Allure
-8146 Damage - Change Fire to Wood, Deal 70% damage (70% chance)
-Tie Up
-4654 Damage - Bind 1 subs for 3 turns, Deal 40% damage (1 time use)
------ Turn 2 -----
-Arboreal Queen's Allure
-8146 Damage - Change Fire to Wood, Deal 70% damage (70% chance)
------ Execute below actions in order repeatedly when HP <= 49 -----
------ Turn 1 -----
-Arboreal Queen's Temptation
-11637 Damage - Change Dark to Light, Deal 100% damage (70% chance)
-Tie Up
-4654 Damage - Bind 1 subs for 3 turns, Deal 40% damage (1 time use)
------ Turn 2 -----
-Arboreal Queen's Temptation
-11637 Damage - Change Dark to Light, Deal 100% damage (70% chance)
 
 stage 7
 
@@ -1145,17 +977,7 @@ Ability
 Survive attacks with 1 HP when HP > 50%
 You've done well to come this far + Let's have some fun!
 Voids status ailments for 2 turns + Absorb combo <= 4 damage for 999 turns (Preemptive) (1 time use)
------ HP <= 39 -----
-Glare of Zeus + Time to finish you off!
-Bind God cards for 2~4 turns + Do nothing
------ HP <= 39 -----
-Super Nova + Graviton Bomb
-Deal 45000% damage (10 hits, 4500% each) + Deal 80000% damage
------ HP <= 10 -----
-Wrath of God + Blessing of the Gods
-Player -95% HP + Enemy recover 50% hp
------ Execute below actions in order repeatedly -----
------ Turn 1-2 -----
+----- Execute repeatedly. Turn 1-2 -----
 Lightning of God + Double Slap
 Change 3rd column to Light orbs, 4th column to Light orbs, Deal 12000% damage + Deal 18000% damage (3 hits, 6000% each) (20% chance)
 Zeus Blade + Mischief by God
@@ -1166,9 +988,28 @@ Lightning of God + Diabolic Embrace
 Change 3rd column to Light orbs, 4th column to Light orbs, Deal 12000% damage + Bind 1 subs for 1~2 turns, Deal 10000% damage (20% chance)
 Zeus Blade + Ultra Gravity
 Change 4th row to Light orbs, Deal 15000% damage + Player -99% HP (20% chance)
------ Turn 3 -----
+----- Turn 2 -----
+Lightning of God + Double Slap
+Change 3rd column to Light orbs, 4th column to Light orbs, Deal 12000% damage + Deal 18000% damage (3 hits, 6000% each) (20% chance)
+Zeus Blade + Mischief by God
+Change 4th row to Light orbs, Deal 15000% damage + Change Light to Jammer, Deal 7500% damage (20% chance)
+Zeus Blade + Double Slap
+Change 4th row to Light orbs, Deal 15000% damage + Deal 18000% damage (3 hits, 6000% each) (20% chance)
+Lightning of God + Diabolic Embrace
+Change 3rd column to Light orbs, 4th column to Light orbs, Deal 12000% damage + Bind 1 subs for 1~2 turns, Deal 10000% damage (20% chance)
+Zeus Blade + Ultra Gravity
+Change 4th row to Light orbs, Deal 15000% damage + Player -99% HP (20% chance)
+----- Loop to 1 after. Turn 3 -----
 Lightning of God + Preening
 Change 3rd column to Light orbs, 4th column to Light orbs, Deal 12000% damage + Voids status ailments for 2 turns (1 time use)
+----- HP <= 40 -----
+Glare of Zeus + Time to finish you off!
+Bind God cards for 2~4 turns + Do nothing
+Super Nova + Graviton Bomb
+Deal 45000% damage (10 hits, 4500% each) + Deal 80000% damage
+----- HP <= 10 -----
+Wrath of God + Blessing of the Gods
+Player -95% HP + Enemy recover 50% hp
 
 stage 8
 
@@ -1182,9 +1023,6 @@ Voids status ailments for 999 turns + Absorb Wood, Light, Dark damage for 3 turn
 ----- Turn 1 -----
 Draco Summon-Dragon Portal
 Do nothing (1 time use)
------ Turn 1 HP <= 14 -----
-Alt. Five Origin Dragon Star Attack
-39840 Damage - Deal 500% damage (5 hits, 100% each)
 ----- Turn 2 -----
 Cattle Mutilation
 12748 Damage - Blind all orbs on the board, Deal 160% damage (20% chance)
@@ -1196,15 +1034,9 @@ Dark Rumble
 11952 Damage - Change Random to Dark, Deal 150% damage (20% chance)
 Brilliant Dragon Skull
 11155 Damage - Change all orbs to Fire, Water, Wood, Light, Dark, Deal 140% damage (20% chance)
------ Turn 2 HP <= 14 -----
-Alt. Five Origin Dragon Star Attack
-39840 Damage - Deal 500% damage (5 hits, 100% each)
 ----- Turn 3 -----
 Fair Skies Guardian Dragon - Shield
 Reduce damage from all sources by 50% for 2 turns (1 time use)
------ Turn 3 HP <= 14 -----
-Alt. Five Origin Dragon Star Attack
-39840 Damage - Deal 500% damage (5 hits, 100% each)
 ----- Turn 4 -----
 Cattle Mutilation
 12748 Damage - Blind all orbs on the board, Deal 160% damage (20% chance)
@@ -1216,15 +1048,9 @@ Dark Rumble
 11952 Damage - Change Random to Dark, Deal 150% damage (20% chance)
 Brilliant Dragon Skull
 11155 Damage - Change all orbs to Fire, Water, Wood, Light, Dark, Deal 140% damage (20% chance)
------ Turn 4 HP <= 14 -----
-Alt. Five Origin Dragon Star Attack
-39840 Damage - Deal 500% damage (5 hits, 100% each)
 ----- Turn 5 -----
 Fair Skies Guardian Dragon - Skill
 Absorb combo <= 6 damage for 2 turns (1 time use)
------ Turn 5 HP <= 14 -----
-Alt. Five Origin Dragon Star Attack
-39840 Damage - Deal 500% damage (5 hits, 100% each)
 ----- Turn 6 -----
 Cattle Mutilation
 12748 Damage - Blind all orbs on the board, Deal 160% damage (20% chance)
@@ -1236,15 +1062,9 @@ Dark Rumble
 11952 Damage - Change Random to Dark, Deal 150% damage (20% chance)
 Brilliant Dragon Skull
 11155 Damage - Change all orbs to Fire, Water, Wood, Light, Dark, Deal 140% damage (20% chance)
------ Turn 6 HP <= 14 -----
-Alt. Five Origin Dragon Star Attack
-39840 Damage - Deal 500% damage (5 hits, 100% each)
 ----- Turn 7 -----
 Fair Skies Guardian Dragon - Balance
 Void damage >= 800000 for 2 turns (1 time use)
------ Turn 7 HP <= 14 -----
-Alt. Five Origin Dragon Star Attack
-39840 Damage - Deal 500% damage (5 hits, 100% each)
 ----- Turn 8 -----
 Cattle Mutilation
 12748 Damage - Blind all orbs on the board, Deal 160% damage (20% chance)
@@ -1256,15 +1076,9 @@ Dark Rumble
 11952 Damage - Change Random to Dark, Deal 150% damage (20% chance)
 Brilliant Dragon Skull
 11155 Damage - Change all orbs to Fire, Water, Wood, Light, Dark, Deal 140% damage (20% chance)
------ Turn 8 HP <= 14 -----
-Alt. Five Origin Dragon Star Attack
-39840 Damage - Deal 500% damage (5 hits, 100% each)
 ----- Turn 9 -----
 Fair Skies Guardian Dragon - Judge
 Absorb damage >= 1500000 damage for 2 turns (1 time use)
------ Turn 9 HP <= 14 -----
-Alt. Five Origin Dragon Star Attack
-39840 Damage - Deal 500% damage (5 hits, 100% each)
 ----- Turn 10 -----
 Cattle Mutilation
 12748 Damage - Blind all orbs on the board, Deal 160% damage (20% chance)
@@ -1276,15 +1090,9 @@ Dark Rumble
 11952 Damage - Change Random to Dark, Deal 150% damage (20% chance)
 Brilliant Dragon Skull
 11155 Damage - Change all orbs to Fire, Water, Wood, Light, Dark, Deal 140% damage (20% chance)
------ Turn 10 HP <= 14 -----
-Alt. Five Origin Dragon Star Attack
-39840 Damage - Deal 500% damage (5 hits, 100% each)
 ----- Turn 11 -----
 Draggie Knight, Zeal's Enhancement + Draggie Shield
 Increase damage to 250% for the next 1 turns + Reduce damage from all sources by 75% for 1 turns (1 time use)
------ Turn 11 HP <= 14 -----
-Alt. Five Origin Dragon Star Attack
-39840 Damage - Deal 500% damage (5 hits, 100% each)
 ----- HP <= 100 -----
 Alt. Five Origin Dragon Star Attack
 39840 Damage - Deal 500% damage (5 hits, 100% each)
@@ -1294,82 +1102,12 @@ stage 9
 4227 - Hexazeon @ level 2
 Protected from damage by the Augites
 Immune to damage from all sources for 999 turns (Preemptive)
+Stellar Dragon's Glare
+5857 Damage - Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 100% damage
 ----- When 3 enemy remains -----
 Dragon Cloud
 5857 Damage - 6x2 cloud appear for 3 turns at random location, Deal 100% damage
------ When 3 enemy remains and HP <= 90 -----
-Dragon Cloud
-5857 Damage - 6x2 cloud appear for 3 turns at random location, Deal 100% damage
------ When 3 enemy remains and HP <= 89 -----
-Dragon Cloud
-5857 Damage - 6x2 cloud appear for 3 turns at random location, Deal 100% damage
------ When 3 enemy remains and HP <= 50 -----
-Dragon Cloud
-5857 Damage - 6x2 cloud appear for 3 turns at random location, Deal 100% damage
------ When 3 enemy remains and HP <= 49 -----
-Dragon Cloud
-5857 Damage - 6x2 cloud appear for 3 turns at random location, Deal 100% damage
------ When 3 enemy remains and HP <= 20 -----
-Dragon Cloud
-5857 Damage - 6x2 cloud appear for 3 turns at random location, Deal 100% damage
------ When 3 enemy remains and HP <= 19 -----
-Dragon Cloud
-5857 Damage - 6x2 cloud appear for 3 turns at random location, Deal 100% damage
 ----- When 2 enemy remains -----
-Sealing Pulse
-5857 Damage - Seal 1st column for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-5857 Damage - Seal 6th column for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-5857 Damage - Seal 1st row for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-5857 Damage - Seal 5th row for 3 turns, Deal 100% damage (25% chance)
------ When 2 enemy remains and HP <= 90 -----
-Sealing Pulse
-5857 Damage - Seal 1st column for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-5857 Damage - Seal 6th column for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-5857 Damage - Seal 1st row for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-5857 Damage - Seal 5th row for 3 turns, Deal 100% damage (25% chance)
------ When 2 enemy remains and HP <= 89 -----
-Sealing Pulse
-5857 Damage - Seal 1st column for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-5857 Damage - Seal 6th column for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-5857 Damage - Seal 1st row for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-5857 Damage - Seal 5th row for 3 turns, Deal 100% damage (25% chance)
------ When 2 enemy remains and HP <= 50 -----
-Sealing Pulse
-5857 Damage - Seal 1st column for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-5857 Damage - Seal 6th column for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-5857 Damage - Seal 1st row for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-5857 Damage - Seal 5th row for 3 turns, Deal 100% damage (25% chance)
------ When 2 enemy remains and HP <= 49 -----
-Sealing Pulse
-5857 Damage - Seal 1st column for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-5857 Damage - Seal 6th column for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-5857 Damage - Seal 1st row for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-5857 Damage - Seal 5th row for 3 turns, Deal 100% damage (25% chance)
------ When 2 enemy remains and HP <= 20 -----
-Sealing Pulse
-5857 Damage - Seal 1st column for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-5857 Damage - Seal 6th column for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-5857 Damage - Seal 1st row for 3 turns, Deal 100% damage (25% chance)
-Sealing Pulse
-5857 Damage - Seal 5th row for 3 turns, Deal 100% damage (25% chance)
------ When 2 enemy remains and HP <= 19 -----
 Sealing Pulse
 5857 Damage - Seal 1st column for 3 turns, Deal 100% damage (25% chance)
 Sealing Pulse
@@ -1379,48 +1117,47 @@ Sealing Pulse
 Sealing Pulse
 5857 Damage - Seal 5th row for 3 turns, Deal 100% damage (25% chance)
 ----- When 1 enemy remains -----
+----- Turn 1 -----
 All Augites have successfully shattered + Chest Core's Shine + Fortified Scales
 Remove damage immunity effect + Voids status ailments for 66 turns + Void damage >= 66666666 for 999 turns (1 time use)
------ When 1 enemy remains and HP <= 90 -----
+----- Turn 2 -----
 Time Binding + Wave + Wave
 Delay active skills by 1 turns + Player -99% HP + Player -99% HP (1 time use)
------ When 1 enemy remains and HP <= 89 -----
+----- HP <= 100 -----
 Rotting Pain
 14644 Damage - Change Random to Jammer, Deal 250% damage (25% chance)
 Four Resonating Guns
 19916 Damage - Deal 340% damage (4 hits, 85% each)
------ When 1 enemy remains and HP <= 50 -----
-Rotting Pain
-14644 Damage - Change Random to Jammer, Deal 250% damage (25% chance)
-Four Resonating Guns
-19916 Damage - Deal 340% damage (4 hits, 85% each)
------ When 1 enemy remains and HP <= 49 -----
+----- HP <= 90 -----
+Secular Sword + Empty Teachings
+Absorb combo <= 6 damage for 66 turns + Specific orbs change every 1.0s for 6 turns (1 time use)
+----- HP <= 50 -----
 Deprivation + Holy Charity
 Movetime -3s for 6 turns + Heal skyfall +15% for 6 turns (1 time use)
------ When 1 enemy remains and HP <= 20 -----
 Rotting Pain + Wave
 Change Random to Jammer, Deal 250% damage + Player -99% HP (30% chance)
 Four Resonating Guns + Wave
 Deal 340% damage (4 hits, 85% each) + Player -99% HP
------ When 1 enemy remains and HP <= 19 -----
+----- HP <= 20 -----
 Stellar Dragon's Glare + Barbed Chain Cage
 Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs + Bind awoken skills for 3 turns
------ HP <= 100 -----
-Stellar Dragon's Glare
-5857 Damage - Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 100% damage
+Metamorphosis + Six Limitless Flashes
+Change own attribute to random one of Water, Light + Deal 3600% damage (6 hits, 600% each)
 
 4228 - Yellow Augite, Magatama of Yonder @ level 2
 Augite's Resonance
 Immune to damage from all sources for 999 turns (Preemptive)
+Flash
+5382 Damage - Deal 100% damage
 ----- When 3 enemy remains -----
 Instant Ripped Death
 Movetime 50% for 1 turns (1 time use)
------ When 2 enemy remains -----
-Augite's Resonance disappeared
-Remove damage immunity effect
 ----- HP <= 100 -----
-Flash
-5382 Damage - Deal 100% damage
+Disorientating Flash
+16146 Damage - Deal 300% damage (3 hits, 100% each)
+----- When 2 enemy remains -----
+Radiance of Regeneration
+Enemy ally recover 100% hp
 
 4229 - Purple Augite, Mirror of Eternal Darkness @ level 2
 Shield Expansion
@@ -1434,10 +1171,9 @@ Reduce damage from all sources by 35% for 6 turns (1 time use)
 4230 - Green Augite, Holy Sword of Jade @ level 2
 The Green Augite is pulsating
 Increase damage to 200% for the next 1 turns (Preemptive)
+Slash
+10644 Damage - Deal 180% damage
 ----- When 3 enemy remains -----
 Radiance of Regeneration
 Enemy ally recover 100% hp
------ HP <= 100 -----
-Slash
-10644 Damage - Deal 180% damage
 
