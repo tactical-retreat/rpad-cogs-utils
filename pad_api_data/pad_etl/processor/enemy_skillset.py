@@ -487,7 +487,7 @@ class ESAction(ESBehavior):
             return output
 
     def __eq__(self, other):
-        return self.enemy_skill_id == other.enemy_skill_id
+        return other and self.enemy_skill_id == other.enemy_skill_id
 
     def __init__(self, skill: EnemySkillRef, effect='enemy_skill', description='Enemy action', attack=None):
         super().__init__(skill)

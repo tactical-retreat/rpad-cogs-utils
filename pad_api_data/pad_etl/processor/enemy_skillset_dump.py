@@ -4,7 +4,7 @@ import os
 import yaml
 
 from pad_etl.processor import debug_utils
-from pad_etl.processor.enemy_skillset_processor import ProcessedSkillset
+from pad_etl.processor.enemy_skillset_processor import ProcessedSkillset, Moveset
 from ..data.card import BookCard
 from .enemy_skillset import *
 
@@ -100,7 +100,7 @@ class EnemySummary(object):
         return next(filter(lambda d: d.level == selected_level, self.data))
 
 
-def behavior_to_skillrecord(record_type: RecordType, action: Union[ESAction, ESLogic]) -> SkillRecord:
+def behavior_to_skillrecord(record_type: RecordType, action: Union[ESAction, ESSkillSet]) -> SkillRecord:
     name = action.name
     description = action.full_description()
     min_damage = None
@@ -150,7 +150,6 @@ def flatten_skillset(level: int, skillset: ProcessedSkillset) -> SkillRecordList
     records = []  # List[SkillRecord]
     # Keeps track of when we output our first non-preempt/ability item.
     # Used to simplify the output of the first item in some cases.
-    skill_output = False
 
     for item in skillset.base_abilities:
         records.append(behavior_to_skillrecord(RecordType.PASSIVE, item))
@@ -158,67 +157,84 @@ def flatten_skillset(level: int, skillset: ProcessedSkillset) -> SkillRecordList
     for item in skillset.preemptives:
         records.append(behavior_to_skillrecord(RecordType.PREEMPT, item))
 
-    if skillset.status_action:
-        skill_output = True
-        records.append(create_divider('When afflicted by delay/poison'))
-        records.append(behavior_to_skillrecord(RecordType.ACTION, skillset.status_action))
+    def process_moveset(moveset: Moveset):
+        skill_output = False
+        if moveset.status_action:
+            skill_output = True
+            records.append(create_divider('When afflicted by delay/poison'))
+            records.append(behavior_to_skillrecord(RecordType.ACTION, moveset.status_action))
 
-    if skillset.dispel_action:
-        skill_output = True
-        records.append(create_divider('When player has any buff'))
-        records.append(behavior_to_skillrecord(RecordType.ACTION, skillset.dispel_action))
+        if moveset.dispel_action:
+            skill_output = True
+            records.append(create_divider('When player has any buff'))
+            records.append(behavior_to_skillrecord(RecordType.ACTION, moveset.dispel_action))
 
-    for idx, item in enumerate(skillset.timed_skill_groups):
-        skill_output = True
-        if item.hp < 100:
-            records.append(create_divider('Turn {} HP <= {}'.format(item.turn, item.hp)))
-        else:
-            records.append(create_divider('Turn {}'.format(item.turn)))
-        for sub_item in item.skills:
-            records.append(behavior_to_skillrecord(RecordType.ACTION, sub_item))
+        hp_checkpoints = [hp_action.hp for hp_action in moveset.hp_actions]
+        use_hp_full_output = 100 in hp_checkpoints and 99 in hp_checkpoints
 
-    for item in skillset.enemycount_skill_groups:
-        skill_output = True
-        header = 'When {} enemy remains'.format(item.count)
-        if item.hp != 100:
-            header += ' and HP <= {}'.format(item.hp)
-        records.append(create_divider(header))
-        for sub_item in item.skills:
-            records.append(behavior_to_skillrecord(RecordType.ACTION, sub_item))
 
-    hp_skill_groups = skillset.hp_skill_groups
-    use_hp_full_output = len(hp_skill_groups) > 1 and hp_skill_groups[1].hp == 99
-    for item in skillset.hp_skill_groups:
-        if use_hp_full_output and item.hp == 100:
-            records.append(create_divider('When HP is full'))
-        elif use_hp_full_output and item.hp == 99:
-            records.append(create_divider('When HP is not full'))
-        elif not skill_output and item.hp == 100:
-            pass
-        else:
-            records.append(create_divider('HP <= {}'.format(item.hp)))
+        def hp_title(hp: int) -> str:
+            if use_hp_full_output and hp == 100:
+                return 'When HP is full'
+            elif use_hp_full_output and hp == 99:
+                return 'When HP is not full'
+            elif not skill_output and hp == 100:
+                return ''
+            elif (hp + 1) % 5 == 0:
+                # return 'HP < {}'.format(hp + 1)
+                # TODO: fix this later; causing too many diffs right now
+                return 'HP <= {}'.format(hp + 1)
+            elif hp == 0:
+                return 'Enemy is defeated'
+            else:
+                return 'HP <= {}'.format(hp)
 
-        skill_output = True
-        for sub_item in item.skills:
-            records.append(behavior_to_skillrecord(RecordType.ACTION, sub_item))
+        for hp_action in moveset.hp_actions:
+            title = hp_title(hp_action.hp)
+            skill_output = True
+            print_late_hp = False
+            if title:
+                records.append(create_divider(title))
+            else:
+                print_late_hp = len(hp_action.timed)
 
-    cur_hp = None
-    for item in sorted(skillset.repeating_skill_groups, key=lambda x: x.hp, reverse=True):
-        if cur_hp != item.hp:
-            cur_hp = item.hp
-            header = 'Execute below actions in order repeatedly'
-            # TODO: uncomment this once interval stuff is merged?
-            # header = 'Execute below actions in order every {} turns'.format(item.interval)
-            if item.hp != 100:
-                header += ' when HP <= {}'.format(item.hp)
-            records.append(create_divider(header))
+            # TODO: maybe we need special handling for 'always use turn x' commands?
+            for item in hp_action.timed:
+                if len(hp_action.timed) > 1 or item.end_turn:
+                    title = 'Turn {}'.format(item.turn)
+                    if item.end_turn:
+                        title += '-{}'.format(item.end_turn)
+                    records.append(create_divider(title))
+                for skill in item.skills:
+                    records.append(behavior_to_skillrecord(RecordType.ACTION, skill))
 
-        header = 'Turn {}'.format(item.turn)
-        if item.end_turn:
-            header += '-{}'.format(item.end_turn)
-        records.append(create_divider(header))
-        for sub_item in item.skills:
-            records.append(behavior_to_skillrecord(RecordType.ACTION, sub_item))
+            # Considers a situation where we printed turn info but no hp title, we
+            # want to dump one here
+            if hp_action.repeating and print_late_hp:
+                title = hp_title(hp_action.hp)
+                records.append(create_divider(title))
+
+            for repeating_set in hp_action.repeating:
+                if len(hp_action.repeating) > 1:
+                    turn = repeating_set.turn
+                    if turn == 1:
+                        title = 'Execute repeatedly. Turn {}'.format(turn)
+                    elif turn == len(hp_action.repeating):
+                        title = 'Loop to 1 after. Turn {}'.format(turn)
+                    else:
+                        title = 'Turn {}'.format(turn)
+                    if repeating_set.end_turn:
+                        title += '-{}'.format(repeating_set.end_turn)
+                    records.append(create_divider(title))
+
+                for skill in repeating_set.skills:
+                    records.append(behavior_to_skillrecord(RecordType.ACTION, skill))
+
+    process_moveset(skillset.moveset)
+
+    for er_moveset in skillset.enemy_remaining_movesets:
+        records.append(create_divider("When {} enemy remains".format(er_moveset.count)))
+        process_moveset(er_moveset)
 
     return SkillRecordListing(level=level, records=records)
 

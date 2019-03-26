@@ -14,8 +14,9 @@ from typing import List, Any, Set, Tuple
 # This is a hack that accounts for the fact that some monsters seem to be zero-indexed
 # rather than 1-indexed for jumps. Not obvious why this occurs yet.
 ZERO_INDEXED_MONSTERS = [
-    565, # Goemon
+    565,  # Goemon
 ]
+
 
 class StandardSkillGroup(object):
     """Base class storing a list of skills."""
@@ -26,6 +27,11 @@ class StandardSkillGroup(object):
         # The hp threshold that this group executes on, always present, even if 100.
         self.hp = hp_threshold
 
+        self.hp_range = None  # type: int
+
+    def __eq__(self, other):
+        return self.skills == other.skills
+
 
 class TimedSkillGroup(StandardSkillGroup):
     """Set of skills which execute on a specific turn, possibly with a HP threshold."""
@@ -35,7 +41,7 @@ class TimedSkillGroup(StandardSkillGroup):
         # The turn that this group executes on.
         self.turn = turn
         # If set, this group executes over a range of turns
-        self.end_turn = None  # int
+        self.end_turn = None  # type: int
 
 
 class RepeatSkillGroup(TimedSkillGroup):
@@ -44,23 +50,31 @@ class RepeatSkillGroup(TimedSkillGroup):
     def __init__(self, turn: int, interval: int, hp_threshold: int, skills: List[ESAction]):
         super().__init__(turn, hp_threshold, skills)
         # The number of turns between repeats, aka loop size
-        self.interval = interval  # int
+        self.interval = interval
 
 
-class EnemyCountSkillGroup(StandardSkillGroup):
-    """Set of skills which execute when a specific number of enemies are present."""
+class HpActions():
+    def __init__(self, hp: int, timed: List[TimedSkillGroup], repeating: List[RepeatSkillGroup]):
+        self.hp = hp
+        self.timed = timed
+        self.repeating = repeating
 
-    def __init__(self, count: int, hp_threshold: int, skills: List[ESAction]):
-        super().__init__(skills, hp_threshold)
+
+class Moveset(object):
+    def __init__(self):
+        # Action which triggers when a status is applied.
+        self.status_action = None  # type: ESAttackUpStatus
+        # Action which triggers player has a buff.
+        self.dispel_action = None  # type: ESDispel
+        # Timed and repeating actions which execute at various HP checkpoints.
+        self.hp_actions = []  # type: List[HpActions]
+
+
+class EnemyRemainingMoveset(Moveset):
+    def __init__(self, count: int):
+        super().__init__()
         # Number of enemies required to trigger this set of actions.
         self.count = count
-
-
-class HpSkillGroup(StandardSkillGroup):
-    """Set of skills which execute when a HP threshold is reached."""
-
-    def __init__(self, hp_threshold: int, skills: List[ESAction]):
-        super().__init__(skills, hp_threshold)
 
 
 class ProcessedSkillset(object):
@@ -74,23 +88,15 @@ class ProcessedSkillset(object):
         # The monster level this skillset applies to.
         self.level = level
         # Things like color/type resists, resolve, etc.
-        self.base_abilities = []  # List[ESAction]
+        self.base_abilities = []  # type: List[ESAction]
         # Preemptive attacks, shields, combo guards.
-        self.preemptives = []  # List[ESAction]
-        # Action which triggers when a staus is applied
-        self.status_action = None # ESAttackUpStatus
-        # Action which triggers player has a buff
-        self.dispel_action = None # ESDispel
-        # Actions which execute according to the current turn before behavior
-        # enters a stable loop state.
-        self.timed_skill_groups = []  # List[TimedSkillGroup]
-        # Actions which execute depending on the enemy on-screen count.
-        self.enemycount_skill_groups = []  # List[StandardSkillGroup]
-        # Multi-turn stable action loops.
-        self.repeating_skill_groups = []  # List[TimedSkillGroup]
-        # Single-turn stable action loops.
-        self.hp_skill_groups = []  # List[StandardSkillGroup]
+        self.preemptives = []  # type: List[ESAction]
 
+        # Default enemy actions.
+        self.moveset = Moveset()
+
+        # Alternate movesets which execute when a specific number of enemies remain.
+        self.enemy_remaining_movesets = []  # type: List[EnemyRemainingMoveset]
 
 
 class Context(object):
@@ -249,7 +255,7 @@ def default_attack():
     return ESDefaultAttack()
 
 
-def loop_through(ctx, behaviors: List[Any]):
+def loop_through(ctx, behaviors: List[ESBehavior]) -> List[ESBehavior]:
     """Executes a single turn through the simulator.
 
     This is called multiple times with varying Context values to probe the action set
@@ -316,7 +322,6 @@ def loop_through(ctx, behaviors: List[Any]):
             results.append(b)
             idx += 1
             continue
-
 
         # Processing for actions and unparsed stuff, this section should accumulate
         # items into results.
@@ -452,11 +457,12 @@ def loop_through(ctx, behaviors: List[Any]):
     return results
 
 
-def info_from_behaviors(behaviors):
+def info_from_behaviors(behaviors: List[ESBehavior]):
     """Extract some static info from the behavior list and clean it up where necessary."""
     base_abilities = []
     hp_checkpoints = set()
     hp_checkpoints.add(100)
+    hp_checkpoints.add(0)
     card_checkpoints = set()
     has_enemy_remaining_branch = False
 
@@ -505,38 +511,20 @@ def extract_preemptives(ctx: Context, behaviors: List[Any]):
         return original_ctx, None
 
 
-def extract_turn_behaviors(ctx: Context, behaviors: List, hp_checkpoints: Set[int]) -> Tuple[List, Context]:
-    """
-    Simulate the first 20 turns at all hp check points
-    """
+def extract_turn_behaviors(ctx: Context, behaviors: List[ESBehavior], hp_checkpoint: int) -> List[List[ESBehavior]]:
+    """Simulate the first 20 turns at a specific hp checkpoint."""
+    hp_ctx = ctx.clone()
+    hp_ctx.hp = hp_checkpoint
     turn_data = []
     for idx in range(0, 20):
-        next_ctx = None
-        hp_data = {}
-        seen_behavior = []
-        for checkpoint in sorted(hp_checkpoints, reverse=True):
-            hp_ctx = ctx.clone()
-            hp_ctx.hp = checkpoint
-            cur_behavior = loop_through(hp_ctx, behaviors)
-            if cur_behavior not in seen_behavior:
-                hp_data[checkpoint] = cur_behavior
-                seen_behavior.append(cur_behavior)
-
-            if next_ctx is None:
-                # We need to flip flags, so arbitrarily pick the first ctx to roll over.
-                next_ctx = hp_ctx.clone()
-
-        turn_data.append(hp_data)
-        ctx = next_ctx
+        turn_data.append(loop_through(hp_ctx, behaviors))
         ctx.turn_event()
 
-    return turn_data, ctx
+    return turn_data
 
 
-def extract_loop_indexes(turn_data: List) -> Tuple[int, int]:
-    """
-    Find loops in the data
-    """
+def extract_loop_indexes(turn_data: List[ESBehavior]) -> Tuple[int, int]:
+    """Find loops in the data."""
     # Loop over every turn
     for i_idx, check_data in enumerate(turn_data):
         # Loop over every following turn. If the outer turn matches an inner turn moveset,
@@ -577,149 +565,79 @@ def extract_loop_indexes(turn_data: List) -> Tuple[int, int]:
     raise Exception('No loop found')
 
 
-def remove_common_behaviour(data: list, start: int, end: int) -> list:
-    """
-    Helper: remove any behaviour that occurs more than once in the set
-    """
-    if any([x is None for x in data[start:end]]):
-        return data
-    common_behaviour = data[start].copy()
-    for idx in range(start + 1, end):
-        for skill in common_behaviour:
-            if skill not in data[idx]:
-                common_behaviour.remove(skill)
-    for idx in range(start, end):
-        if data[idx] is None:
-            continue
-        for skill in data[idx].copy():
-            if skill in common_behaviour:
-                data[idx].remove(skill)
-    return data
+def extract_loop_skills(hp: int, turn_data: list, loop_start: int, loop_end: int) -> HpActions:
+    """Create timed and repeating skill groups."""
+    timed_skill_groups = []
+    if loop_start > 0:
+        for idx in range(0, loop_start):
+            timed_skill_groups.append(TimedSkillGroup(idx + 1, hp, turn_data[idx]))
 
-
-def remove_seen_behaviour(data: list, start: int, end: int, seen_data: list) -> list:
-    """
-    Helper: remove any behaviour in the seen_data list
-    """
-    for idx in range(start, end):
-        if data[idx] is None:
-            continue
-        if data[idx] in seen_data:
-            data[idx] = None
-    return data
-
-
-def extract_repeating_skills(turn_data: List, loop_start: int, loop_end: int) -> Tuple[List, List[TimedSkillGroup]]:
-    looped_behavior = []  # keep track of behaviour added to loops
+    loop_size = loop_end - loop_start
     repeating_skill_groups = []
-
-    # exclude any behavior present on all turns of the loop
-    common_behaviors = [hp_b for hp_b in turn_data[loop_start].items()]
-    for idx in range(loop_start + 1, loop_end):
-        for hp_b in common_behaviors.copy():
-            if hp_b not in turn_data[idx].items():
-                common_behaviors.remove(hp_b)
     for idx in range(loop_start, loop_end):
-        for hp, hp_behavior in turn_data[idx].items():
-            if (hp, hp_behavior) not in common_behaviors:
-                repeating_skill_groups.append(TimedSkillGroup(idx + 1, hp, hp_behavior))
-                looped_behavior.append((hp, hp_behavior))
+        repeating_skill_groups.append(RepeatSkillGroup(idx + 1, loop_size, hp, turn_data[idx]))
 
-    return looped_behavior, repeating_skill_groups
+    return HpActions(hp, timed_skill_groups, repeating_skill_groups)
 
 
-def extract_enemy_remaining(ec_ctx: Context, hp_checkpoints: Set[int], behaviors: List[Any], globally_seen_behavior: List[Any]) -> List[EnemyCountSkillGroup]:
-    results = []
-    ec_data = {}
-    for ecount in [999] + list(range(6, 0, -1)):
-        ec_ctx.enemies = ecount
-        current_ec_data = {}
-        for checkpoint in sorted(hp_checkpoints, reverse=True):
-            ec_ctx.hp = checkpoint
-            cur_loop = loop_through(ec_ctx, behaviors)
+def compute_enemy_actions(ctx: Context, behaviors: List[ESBehavior], hp_checkpoints: List[int]) -> List[HpActions]:
+    # Compute turn behaviors for every hp checkpoint
+    hp_to_turn_behaviors = {hp: extract_turn_behaviors(ctx, behaviors, hp) for hp in hp_checkpoints}
 
-            if cur_loop in globally_seen_behavior:
-                continue
+    # Convert turn behaviors into fixed turns and repeating loops.
+    hp_to_actions = {}  # type Map[int, HpActions]
+    for hp, turn in hp_to_turn_behaviors.items():
+        loop_start, loop_end = extract_loop_indexes(turn)
+        hp_to_actions[hp] = extract_loop_skills(hp, turn, loop_start, loop_end)
 
-            current_ec_data[checkpoint] = cur_loop
+    # Starting from the top hp bracket and extending down, compute the true timed actions.
+    for chp_idx in range(len(hp_checkpoints)):
+        # Extract the hp, and timed actions for the current index.
+        hp = hp_checkpoints[chp_idx]
+        actions = hp_to_actions[hp]
+        timed = actions.timed
+        # Loop over every timed action.
+        for turn_idx in range(len(timed)):
+            cur_skills = timed[turn_idx].skills
+            # Loop over every subsequent hp checkpoint
+            for nhp_idx in range(chp_idx + 1, len(hp_checkpoints)):
+                comp_hp = hp_checkpoints[nhp_idx]
+                comp_actions = hp_to_actions[comp_hp]
+                # Check if the checkpoint has a timed action at that slot, and
+                # if it is equivalent. If so, smear the parent to that hp and
+                # delete the child.
+                # This takes care of 'true' timed actions (actions which always execute on turn n)
+                # as well as hp thresholded actions that span checkpoints.
+                comp_timed = comp_actions.timed
+                if turn_idx >= len(comp_timed):
+                    # This timed set had less slots than the parent, we're done.
+                    break
 
-            # # Check for the first action being one-time. Kind of a hacky special case for loops.
-            # follow_loop = loop_through(ec_ctx, behaviors)
-            # if follow_loop != cur_loop:
-            #     ec_data[ecount].extend(follow_loop)
+                if cur_skills == comp_timed[turn_idx].skills:
+                    comp_timed[turn_idx].skills.clear()
+                    timed[turn_idx].hp_range = comp_hp
 
-        if all([x != current_ec_data for ec, x in ec_data.items()]):
-            ec_data[ecount] = current_ec_data
+        repeating = actions.repeating
+        # Loop over the repeating action set at each checkpoint. If the whole repeating action
+        # set is equivalent, smear it.
+        for nhp_idx in range(chp_idx + 1, len(hp_checkpoints)):
+            comp_hp = hp_checkpoints[nhp_idx]
+            comp_actions = hp_to_actions[comp_hp]
+            comp_repeating = comp_actions.repeating
+            if [x.skills for x in repeating] == [x.skills for x in comp_repeating]:
+                for x in repeating:
+                    # TODO: maybe repeating should be an object with a hp slot instead
+                    x.hp_range = comp_hp
+                comp_repeating.clear()
 
-    # prune actions
-    for ecount, loop in ec_data.items():
-        if loop is None:
-            continue
-        # remove skillsets already seen from decreasing HP
-        for hp, b_set in loop.copy().items():
-            if b_set in globally_seen_behavior:
-                loop.pop(hp)
-        # remove skillsets found on more than 1 turn
-        for comp_ecount, comp_loop in ec_data.items():
-            if comp_loop is None:
-                continue
-            if ecount != comp_ecount and loop == comp_loop:
-                ec_data[ecount] = None
-                ec_data[comp_ecount] = None
-
-    for ecount, loop in ec_data.items():
-        if loop is None:
-            continue
-        for hp, b_set in loop.items():
-            results.append(EnemyCountSkillGroup(ecount, hp, b_set))
-
-    return results
-
-
-def extract_timed_actions(looped_behavior: List[Any], turn_data: List[Any], loop_start: int) -> List[TimedSkillGroup]:
-    results = []
-    looping_behavior = turn_data[loop_start]
-
-    for idx in range(loop_start):
-        check_turn_data = turn_data[idx]
-        for hp, hp_behavior in looped_behavior:
-            if check_turn_data.get(hp, None) == hp_behavior:
-                check_turn_data.pop(hp)
-        for hp, hp_behavior in looping_behavior.items():
-            if check_turn_data.get(hp, None) == hp_behavior:
-                check_turn_data.pop(hp)
-
-        for hp, hp_behavior in check_turn_data.items():
-            results.append(TimedSkillGroup(idx + 1, hp, hp_behavior))
-
-    return results
-
-
-def extract_hp_groups(ctx: Context, hp_checkpoints: Set[int], behaviors: List[Any], looped_behavior: List[Any]) -> Tuple[List[HpSkillGroup], List[Any]]:
-    results = []
-    # Simulate HP decreasing
-    globally_seen_behavior = []
-    hp_ctx = ctx.clone()
-    for checkpoint in sorted(hp_checkpoints, reverse=True):
-        locally_seen_behavior = []
-        hp_ctx.hp = checkpoint
-        cur_loop = loop_through(hp_ctx, behaviors)
-        while cur_loop not in globally_seen_behavior and cur_loop not in locally_seen_behavior:
-            # exclude behavior already included in a repeat loop
-            if (checkpoint, cur_loop) not in looped_behavior:
-                results.append(HpSkillGroup(checkpoint, cur_loop))
-            globally_seen_behavior.append(cur_loop)
-            locally_seen_behavior.append(cur_loop)
-            cur_loop = loop_through(hp_ctx, behaviors)
-
-    return results, globally_seen_behavior
+    return list(hp_to_actions.values())
 
 
 def convert(card: BookCard, enemy_behavior: List, level: int, enemy_skill_effect: int, enemy_skill_effect_type: int):
     skillset = ProcessedSkillset(level)
 
     # Behavior is 1-indexed, so stick a fake row in to start
-    behaviors = [None] + list(enemy_behavior)
+    behaviors = [None] + list(enemy_behavior)  # type: List[ESBehavior]
 
     # Fix some monsters that seem to be 0-indexed
     if card.card_id in ZERO_INDEXED_MONSTERS:
@@ -728,6 +646,9 @@ def convert(card: BookCard, enemy_behavior: List, level: int, enemy_skill_effect
     base_abilities, hp_checkpoints, card_checkpoints, has_enemy_remaining_branch = info_from_behaviors(
         behaviors)
     skillset.base_abilities = base_abilities
+
+    # Ensure the HP checkpoints are in descended order
+    hp_checkpoints = sorted(hp_checkpoints, reverse=True)
 
     # Pick the correct enemy_skill_effect model to use
     if enemy_skill_effect_type == 0:
@@ -751,46 +672,53 @@ def convert(card: BookCard, enemy_behavior: List, level: int, enemy_skill_effect
             # This monster terminates the battle immediately.
             return skillset
 
-    turn_data, ctx = extract_turn_behaviors(ctx, behaviors, hp_checkpoints)
-    behavior_loop = extract_loop_indexes(turn_data)
-
-    # Process loops
-    looped_behavior = []  # keep track of behaviour added to loops
-    if behavior_loop is not None:
-        loop_start, loop_end = behavior_loop
-        loop_size = loop_end - loop_start
-
-        # Handle a multi-turn loop
-        if loop_size > 1:
-            repeating_looped_behavior, repeating_skill_groups = extract_repeating_skills(turn_data, loop_start, loop_end)
-            looped_behavior.extend(repeating_looped_behavior)
-            skillset.repeating_skill_groups.extend(repeating_skill_groups)
-
-        timed_skills = extract_timed_actions(looped_behavior, turn_data, loop_start)
-        # Disabled, seems no better than above
-        # timed_skills =  extract_timed_actions_multi(looped_behavior, turn_data, loop_start, loop_end)
-
-        skillset.timed_skill_groups.extend(timed_skills)
-
-    # Simulate HP decreasing
-    hp_skill_groups, globally_seen_behavior = extract_hp_groups(ctx.clone(), hp_checkpoints, behaviors, looped_behavior)
-    skillset.hp_skill_groups.extend(hp_skill_groups)
+    # Compute the standard action moveset
+    hp_actions = compute_enemy_actions(ctx.clone(), behaviors, hp_checkpoints)
+    clean_skillset(skillset.moveset, hp_actions)
 
     # Simulate enemies being defeated
     if has_enemy_remaining_branch:
-        enemy_skill_groups = extract_enemy_remaining(ctx.clone(), hp_checkpoints, behaviors, globally_seen_behavior)
-        skillset.enemycount_skill_groups.extend(enemy_skill_groups)
+        enemy_movesets = []
+        # Loop from 6 back to 1, simulating possible movesets.
+        for ecount in range(6, 0, -1):
+            enemy_moveset = EnemyRemainingMoveset(ecount)
+            enemy_ctx = ctx.clone()
+            enemy_ctx.enemies = ecount
+            enemy_actions = compute_enemy_actions(enemy_ctx, behaviors, hp_checkpoints)
+            clean_skillset(enemy_moveset, enemy_actions)
+            enemy_movesets.append(enemy_moveset)
 
-    return clean_skillset(skillset)
+        # Dedupe the enemy remaining movesets, with the 'standard' moveset as the
+        # initial state. We only want to keep deltas from that state.
+        all_movesets = [skillset.moveset] + enemy_movesets
+        for cms_idx in range(len(all_movesets)):
+            cms = all_movesets[cms_idx]
 
+            for nms_idx in range(cms_idx + 1, len(all_movesets)):
+                nms = all_movesets[nms_idx]
 
-def extract_hp_threshold(es):
-    """If the action has a HP threshold, extracts it."""
-    if skill_has_condition(es):
-        c = es.condition
-        if hasattr(c, 'hp_threshold'):
-            return c.hp_threshold
-    return None
+                if cms.dispel_action == nms.dispel_action:
+                    nms.dispel_action = None
+                if cms.status_action == nms.status_action:
+                    nms.status_action = None
+
+                for action_idx in range(len(cms.hp_actions)):
+                    cms_action = cms.hp_actions[action_idx]
+                    if action_idx >= len(nms.hp_actions):
+                        break
+                    nms_action = nms.hp_actions[action_idx]
+
+                    if cms_action.timed == nms_action.timed:
+                        nms_action.timed.clear()
+                    if cms_action.repeating == nms_action.repeating:
+                        nms_action.repeating.clear()
+
+        for moveset in enemy_movesets:
+            moveset.hp_actions = [x for x in moveset.hp_actions if x.timed or x.repeating]
+            if moveset.hp_actions:
+                skillset.enemy_remaining_movesets.append(moveset)
+
+    return skillset
 
 
 def collapse_repeating_groups(groups: List[TimedSkillGroup]) -> List[TimedSkillGroup]:
@@ -811,110 +739,46 @@ def collapse_repeating_groups(groups: List[TimedSkillGroup]) -> List[TimedSkillG
     return new_groups
 
 
-def clean_skillset(skillset: ProcessedSkillset):
-    # Check to see if the skillset is functionally empty (only default actions). These are created
-    # for some monsters with mostly empty/broken behavior.
-    def clear_action(skills, action_type):
+def clean_skillset(moveset: Moveset, hp_actions: List[HpActions]):
+    """Perform a variety of cleanups and compute the final skillset."""
+
+    def extract_and_clear_action(skills, action_type):
+        """Clears an action by type from the skill list and returns any matches."""
+        actions = [s for s in skills if type(s) == action_type]
         skills[:] = [s for s in skills if type(s) != action_type]
+        return actions
 
-    def clear_empty_group(group, action_type):
-        for sg in group:
-            clear_action(sg.skills, action_type)
-        group[:] = [sg for sg in group if sg.skills]
+    # Extract special hoisted actions if present, clearing them in their home sets.
+    status_skills = []
+    dispel_skills = []
+    for hp_action in hp_actions:
+        for t in hp_action.timed:
+            status_skills.extend(extract_and_clear_action(t.skills, ESAttackUpStatus))
+            dispel_skills.extend(extract_and_clear_action(t.skills, ESDispel))
 
-    def clear_skillset(action_type):
-        clear_empty_group(skillset.timed_skill_groups, action_type)
-        clear_empty_group(skillset.repeating_skill_groups, action_type)
-        clear_empty_group(skillset.enemycount_skill_groups, action_type)
-        clear_empty_group(skillset.hp_skill_groups, action_type)
+        for r in hp_action.repeating:
+            status_skills.extend(extract_and_clear_action(r.skills, ESAttackUpStatus))
+            dispel_skills.extend(extract_and_clear_action(r.skills, ESDispel))
 
-    clear_skillset(ESDefaultAttack)
-
-    # Move ESAttackUpStatus to a special location, clear it out of any other buckets
-    all_skills = pad_etl.processor.debug_utils.extract_used_skills(skillset, include_preemptive=False)
-    status_skills = [x for x in all_skills if type(x) == ESAttackUpStatus]
+    # If we found anything, set them. These are lists but they should just contain the
+    # same item repeatedly, unless a monster has multiple status-enrage/dispels?
     if status_skills:
-        skillset.status_action = status_skills[0]
-        clear_skillset(ESAttackUpStatus)
-    dispel_skills = [x for x in all_skills if type(x) == ESDispel]
+        moveset.status_action = status_skills[0]
     if dispel_skills:
-        skillset.dispel_action = dispel_skills[0]
-        clear_skillset(ESDispel)
-
-    # First cleanup: items with a condition attached can show up in timed
-    # groups and also in random HP buckets (generally the 100% one due to
-    # earlier cleanups).
-    #
-    # TODO: is this still the case post-changes with ai/onetime flags?
-    #
-    # Extract the ones in the HP buckets to a unique set, then only remove
-    # timed entries that match (to prevent removing things like, <50% in turn 1).
-    #
-    # Then re-insert the skills into their own HP group.
-    extracted = []
-    for hp_skills in skillset.hp_skill_groups:
-        for es in list(hp_skills.skills):
-            if extract_hp_threshold(es) and extract_hp_threshold(es) != hp_skills.hp:
-                if es not in extracted:
-                    extracted.append(es)
-                hp_skills.skills.remove(es)
-
-    for timed_skills in skillset.timed_skill_groups:
-        for es in list(timed_skills.skills):
-            if es in extracted:
-                timed_skills.skills.remove(es)
-
-    for repeating_skills in skillset.repeating_skill_groups:
-        for es in list(repeating_skills.skills):
-            if es in extracted:
-                repeating_skills.skills.remove(es)
-
-    # Insert any extracted skills from the one-time/timed/repeating skillsets
-    # back into the correct HP bucket.
-    for es in extracted:
-        hp_threshold = es.condition.hp_threshold
-        placed = False
-        for hp_group in skillset.hp_skill_groups:
-            if hp_group.hp == hp_threshold:
-                hp_group.skills.append(es)
-                placed = True
-                break
-        if not placed:
-            skillset.hp_skill_groups.append(HpSkillGroup(hp_threshold, [es]))
-
-    # Now, starting from the max HP bucket and working our way down, identify the
-    # current 'default' moveset (any items with no condition attached). If we find
-    # that moveset in another bucket, remove it. If we find a new moveset, replace it.
-    def extract_moveset(hp_group):
-        return [s for s in hp_group.skills if not skill_has_nonpct_condition(s)]
-
-    if skillset.hp_skill_groups:
-        cur_moveset = extract_moveset(skillset.hp_skill_groups[0])
-        for hp_group in skillset.hp_skill_groups[1:]:
-            check_moveset = extract_moveset(hp_group)
-            if check_moveset == cur_moveset:
-                for move in cur_moveset:
-                    hp_group.skills.remove(move)
-            elif check_moveset:
-                cur_moveset = check_moveset
-
-    # Iterate over every skillset group and remove now-empty ones
-    def filter_empty(group: List[StandardSkillGroup]):
-        return [x for x in group if x.skills]
-
-    skillset.timed_skill_groups = filter_empty(skillset.timed_skill_groups)
-    skillset.repeating_skill_groups = filter_empty(skillset.repeating_skill_groups)
-    skillset.enemycount_skill_groups = filter_empty(skillset.enemycount_skill_groups)
-    skillset.hp_skill_groups = filter_empty(skillset.hp_skill_groups)
-
-    # Ensure HP groups are sorted properly
-    skillset.hp_skill_groups.sort(key=lambda x: x.hp, reverse=True)
+        moveset.dispel_action = dispel_skills[0]
 
     # Collapse unnecessary outputs
-    skillset.timed_skill_groups = collapse_repeating_groups(skillset.timed_skill_groups)
-    skillset.repeating_skill_groups = collapse_repeating_groups(skillset.repeating_skill_groups)
+    for hp_action in hp_actions:
+        collapse_repeating_groups(hp_action.timed)
+        collapse_repeating_groups(hp_action.repeating)
 
-    return skillset
+    # Only add non-empty hp checkpoints
+    for hp_action in hp_actions:
+        # Make sure repeating groups have at least one skill in them.
+        hp_action.timed = [x for x in hp_action.timed if x.skills]
+        hp_action.repeating = [x for x in hp_action.repeating if x.skills]
+        if hp_action.timed or hp_action.repeating:
+            moveset.hp_actions.append(hp_action)
 
 
 def extract_levels(enemy_behavior: List[Any]):
@@ -927,15 +791,6 @@ def extract_levels(enemy_behavior: List[Any]):
         elif hasattr(b, 'level'):
             levels.add(b.level)
     return levels
-
-
-def skill_has_nonpct_condition(es):
-    """Detects if a skill activates always or on a %, vs onetime/thresholded."""
-    if not skill_has_condition(es):
-        return False
-    # Is checking the threshold here right? Maybe it should just be checking one_time.
-    # Or maybe it's redundant.
-    return es.condition.hp_threshold or es.condition.one_time
 
 
 def skill_has_condition(es):

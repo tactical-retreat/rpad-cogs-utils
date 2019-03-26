@@ -1,7 +1,7 @@
 from typing import List
 
 from pad_etl.processor.enemy_skillset import ESAction
-from pad_etl.processor.enemy_skillset_processor import ProcessedSkillset, StandardSkillGroup
+from pad_etl.processor.enemy_skillset_processor import ProcessedSkillset, StandardSkillGroup, Moveset
 from .enemy_skillset import *
 
 
@@ -41,13 +41,22 @@ def extract_used_skills(skillset: ProcessedSkillset, include_preemptive=True) ->
     def sg_extract(l: List[StandardSkillGroup]) -> List[ESAction]:
         return [item for sublist in l for item in sublist.skills]
 
-    results.extend(sg_extract(skillset.timed_skill_groups))
-    results.extend(sg_extract(skillset.repeating_skill_groups))
-    results.extend(sg_extract(skillset.hp_skill_groups))
-    results.extend(sg_extract(skillset.enemycount_skill_groups))
-    if skillset.status_action:
-        results.append(skillset.status_action)
-    if skillset.dispel_action:
-        results.append(skillset.dispel_action)
+    def moveset_extract(moveset: Moveset) -> List[ESAction]:
+        moveset_results = []
+
+        for hp_action in moveset.hp_actions:
+            results.extend(sg_extract(hp_action.timed))
+            results.extend(sg_extract(hp_action.repeating))
+
+        if moveset.status_action:
+            moveset_results.append(moveset.status_action)
+        if moveset.dispel_action:
+            moveset_results.append(moveset.dispel_action)
+
+        return moveset_results
+
+    results.extend(moveset_extract(skillset.moveset))
+    for e_moveset in skillset.enemy_remaining_movesets:
+        results.extend(moveset_extract(e_moveset))
 
     return results
