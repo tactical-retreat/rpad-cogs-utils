@@ -160,35 +160,38 @@ def special_adjust_enemy_remaining(skillset: ProcessedSkillset):
     es_moveset = skillset.enemy_remaining_movesets[0]
     count_of_one = es_moveset.count == 1
     no_repeating_actions = not any(map(lambda x: x.repeating, es_moveset.hp_actions))
+    # only_singular_timed_actions = all(map(lambda x: len([z.skills for z in x.timed]) == 1, es_moveset.hp_actions))
+    # This might be wrong?
     only_singular_timed_actions = all(map(lambda x: len(x.timed) == 1, es_moveset.hp_actions))
     if not (count_of_one and no_repeating_actions and only_singular_timed_actions):
         return
 
     skillset.enemy_remaining_movesets.clear()
-    found_action = None
     for action in es_moveset.hp_actions:
+        found_action = None
         # First try to find an existing HP bucket to insert into.
         for primary_action in skillset.moveset.hp_actions:
             if primary_action.hp == action.hp:
                 found_action = primary_action
+                break
 
-    # If no bucket exists, insert one and sort the array.
-    if not found_action:
-        found_action = HpActions(action.hp, [], [])
-        skillset.moveset.hp_actions.append(found_action)
-        skillset.moveset.hp_actions.sort(key=lambda x: x.hp, reverse=True)
+        # If no bucket exists, insert one and sort the array.
+        if not found_action:
+            found_action = HpActions(action.hp, [], [])
+            skillset.moveset.hp_actions.append(found_action)
+            skillset.moveset.hp_actions.sort(key=lambda x: x.hp, reverse=True)
 
-    # If there are no timed skills (maybe because we just created the bucket)
-    # or there were timed skills but not for turn 1 (unusual) insert a new
-    # skill group for it.
-    if not found_action.timed or found_action.timed[0].turn != 1:
-        new_timed_skills = TimedSkillGroup(1, action.hp, [])
-        found_action.timed.insert(0, new_timed_skills)
+        # If there are no timed skills (maybe because we just created the bucket)
+        # or there were timed skills but not for turn 1 (unusual) insert a new
+        # skill group for it.
+        if not found_action.timed or found_action.timed[0].turn != 1:
+            new_timed_skills = TimedSkillGroup(1, action.hp, [])
+            found_action.timed.insert(0, new_timed_skills)
 
-    # Insert the skills at the highest priority and add a note.
-    for idx, skill in enumerate( action.timed[0].skills):
-        found_action.timed[0].skills.insert(idx, skill)
-        found_action.timed[0].notes[idx] = 'When 1 enemy remains'
+        # Insert the skills at the highest priority and add a note.
+        for idx, skill in enumerate(action.timed[0].skills):
+            found_action.timed[0].skills.insert(idx, skill)
+            found_action.timed[0].notes[idx] = 'When 1 enemy remains'
 
 
 def flatten_skillset(level: int, skillset: ProcessedSkillset) -> SkillRecordListing:
