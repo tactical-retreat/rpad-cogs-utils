@@ -81,7 +81,11 @@ class BookCard(pad_util.JsonDictEncodable):
         self.type_2_id = TypeId(raw[6])
         self.rarity = int(raw[7])
         self.cost = int(raw[8])
-        self.unknown_009 = raw[9]
+
+        # Appears to be related to the size of the monster.
+        # If 5, the monster always spawns alone. Needs more research.
+        self.unknown_009 = int(raw[9])
+
         self.max_level = int(raw[10])
         self.feed_xp_at_lvl_4 = int(raw[11])
         self.released_status = raw[12] == 100
