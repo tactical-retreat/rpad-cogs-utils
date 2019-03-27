@@ -225,9 +225,7 @@ def flatten_skillset(level: int, skillset: ProcessedSkillset) -> SkillRecordList
             elif not skill_output and hp == 100:
                 return ''
             elif (hp + 1) % 5 == 0:
-                # return 'HP < {}'.format(hp + 1)
-                # TODO: fix this later; causing too many diffs right now
-                return 'HP <= {}'.format(hp + 1)
+                return 'HP < {}'.format(hp + 1)
             elif hp == 0:
                 return 'Enemy is defeated'
             else:
