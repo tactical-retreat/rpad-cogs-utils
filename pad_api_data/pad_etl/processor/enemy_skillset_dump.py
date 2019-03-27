@@ -257,12 +257,12 @@ def flatten_skillset(level: int, skillset: ProcessedSkillset) -> SkillRecordList
                 title = hp_title(hp_action.hp)
                 records.append(create_divider(title))
 
-            for repeating_set in hp_action.repeating:
+            for idx, repeating_set in enumerate(hp_action.repeating):
                 if len(hp_action.repeating) > 1:
                     turn = repeating_set.turn
-                    if turn == 1:
+                    if idx == 0:
                         title = 'Execute repeatedly. Turn {}'.format(turn)
-                    elif turn == len(hp_action.repeating):
+                    elif idx == len(hp_action.repeating) - 1:
                         title = 'Loop to 1 after. Turn {}'.format(turn)
                     else:
                         title = 'Turn {}'.format(turn)
