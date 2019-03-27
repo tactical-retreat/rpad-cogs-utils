@@ -1800,31 +1800,13 @@ BEHAVIOR_MAP = {
     118: ESTypeResist,
 }
 
-# ES ids put in here will force the condition to one_time=True.
-# The values are the bitmapped integer flags corresponding to the one-time use field.
-_FORCE_ONE_TIME = {
-    # 88: 1, # Hera-Is
-    # 99: 2, # Hera-Is
-    # 100: 4, # Hera-Is
-}
-
-# ES ids put in here will force the condition to the specified HP threshold.
-# If the threshold is 0, it is removed.
-_FORCE_HP_THRESHOLD = {
-    # 87: 0, # Chaos Devil Dragon's Chaos Ray
-}
-
 
 def apply_es_overrides(es):
     """Apply manually configured overrides to some skills.
 
-    The thought is currently that extremely old skills have some kind of manual override that is
-    not accounted for in the behavior data, so force apply it.
+    We were able to resolve any issues here so this is no longer necessary.
     """
-    if es.enemy_skill_id in _FORCE_ONE_TIME:
-        es.condition.one_time = _FORCE_ONE_TIME[es.enemy_skill_id]
-    if es.enemy_skill_id in _FORCE_HP_THRESHOLD:
-        es.condition.hp_threshold = _FORCE_HP_THRESHOLD[es.enemy_skill_id] or None
+    pass
 
 
 def inject_implicit_onetime(behavior: List[ESAction]):
