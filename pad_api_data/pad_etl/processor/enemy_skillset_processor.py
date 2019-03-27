@@ -636,7 +636,8 @@ def compute_enemy_actions(ctx: Context, behaviors: List[ESBehavior], hp_checkpoi
     return list(hp_to_actions.values())
 
 
-def convert(card: BookCard, enemy_behavior: List, level: int, enemy_skill_effect: int, enemy_skill_effect_type: int):
+def convert(card: BookCard, enemy_behavior: List[ESBehavior],
+            level: int, enemy_skill_effect: int, enemy_skill_effect_type: int, force_one_enemy: bool=False):
     skillset = ProcessedSkillset(level)
 
     # Behavior is 1-indexed, so stick a fake row in to start
@@ -663,6 +664,10 @@ def convert(card: BookCard, enemy_behavior: List, level: int, enemy_skill_effect
         # For now fall back to the old context implementation to prevent errors in log.
         print('Incorrect context used')
         ctx = CTXBitmap(level, enemy_skill_effect)
+
+    if force_one_enemy:
+        ctx.enemies = 1
+        has_enemy_remaining_branch = False
 
     ctx, preemptives = extract_preemptives(ctx, behaviors)
     if ctx is None:
