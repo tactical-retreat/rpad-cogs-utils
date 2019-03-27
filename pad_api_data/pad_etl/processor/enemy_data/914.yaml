@@ -7,8 +7,7 @@ monster_id: 914
 monster_name_en: Eternal Jade Dragon Caller, Sonia
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -17,6 +16,15 @@ warnings:
 level: 1
 overrides: []
 records:
+- !SkillRecord
+  desc_en: Increase damage to 300% for the next 1 turns (Preemptive)
+  desc_jp: Increase damage to 300% for the next 1 turns (Preemptive)
+  max_atk_pct: null
+  name_en: I will eliminate the intruders!
+  name_jp: I will eliminate the intruders!
+  one_time: false
+  record_type_name: PREEMPT
+  usage_pct: 100
 - !SkillRecord
   desc_en: Deal 100% damage
   desc_jp: Deal 100% damage
@@ -90,12 +98,6 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
-############################################################
-### Unused Actions
-############################################################
-# ESAttackUPRemainingEnemies(17:1696) -> I will eliminate the intruders!
-# 	Condition: when <= 1 enemies remain (ai:100 rnd:0)
-# Increase damage to 300% for the next 1 turns
 ############################################################
 ### ES Modifiers
 ############################################################

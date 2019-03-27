@@ -8,7 +8,7 @@ monster_name_en: Hexazeon
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 2 unused actions
+- Found 8 unused actions
 
 ############################################################
 ### Data @ 1
@@ -25,89 +25,6 @@ records:
   name_jp: Protected from damage by the Augites
   one_time: false
   record_type_name: PREEMPT
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
-    orbs, Deal 100% damage
-  desc_jp: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
-    orbs, Deal 100% damage
-  max_atk_pct: 100
-  name_en: Stellar Dragon's Glare
-  name_jp: Stellar Dragon's Glare
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: When 3 enemy remains
-  name_jp: When 3 enemy remains
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: 6x2 cloud appear for 3 turns at random location, Deal 100% damage
-  desc_jp: 6x2 cloud appear for 3 turns at random location, Deal 100% damage
-  max_atk_pct: 100
-  name_en: Dragon Cloud
-  name_jp: Dragon Cloud
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: When 2 enemy remains
-  name_jp: When 2 enemy remains
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Seal 1st column for 3 turns, Deal 100% damage
-  desc_jp: Seal 1st column for 3 turns, Deal 100% damage
-  max_atk_pct: 100
-  name_en: Sealing Pulse
-  name_jp: Sealing Pulse
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 25
-- !SkillRecord
-  desc_en: Seal 6th column for 3 turns, Deal 100% damage
-  desc_jp: Seal 6th column for 3 turns, Deal 100% damage
-  max_atk_pct: 100
-  name_en: Sealing Pulse
-  name_jp: Sealing Pulse
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 25
-- !SkillRecord
-  desc_en: Seal 1st row for 3 turns, Deal 100% damage
-  desc_jp: Seal 1st row for 3 turns, Deal 100% damage
-  max_atk_pct: 100
-  name_en: Sealing Pulse
-  name_jp: Sealing Pulse
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 25
-- !SkillRecord
-  desc_en: Seal 5th row for 3 turns, Deal 100% damage
-  desc_jp: Seal 5th row for 3 turns, Deal 100% damage
-  max_atk_pct: 100
-  name_en: Sealing Pulse
-  name_jp: Sealing Pulse
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 25
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: When 1 enemy remains
-  name_jp: When 1 enemy remains
-  one_time: false
-  record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
   desc_en: ''
@@ -267,8 +184,24 @@ records:
 ############################################################
 ### Unused Actions
 ############################################################
+# ESOrbLock(94:9139) -> Stellar Dragon's Glare
+# Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # ESInactivity(66:9182) -> Wait and See
 # Do nothing
+# ESCloud(104:9140) -> Dragon Cloud
+# 6x2 cloud appear for 3 turns at random location
+# ESOrbSealColumn(99:9141) -> Sealing Pulse
+# 	Condition: 25% chance (ai:0 rnd:25)
+# Seal 1st column for 3 turns
+# ESOrbSealColumn(99:9142) -> Sealing Pulse
+# 	Condition: 25% chance (ai:0 rnd:25)
+# Seal 6th column for 3 turns
+# ESOrbSealRow(100:9143) -> Sealing Pulse
+# 	Condition: 25% chance (ai:0 rnd:25)
+# Seal 1st row for 3 turns
+# ESOrbSealRow(100:9144) -> Sealing Pulse
+# 	Condition: 25% chance (ai:0 rnd:25)
+# Seal 5th row for 3 turns
 # ESTurnChangeActive(122:9145) -> An adventurer! Splendid!
 # Enemy turn counter change to 1
 ############################################################

@@ -7,7 +7,8 @@ monster_id: 4230
 monster_name_en: Green Augite, Holy Sword of Jade
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 1 unused actions
 
 ############################################################
 ### Data @ 1
@@ -34,25 +35,13 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: When 3 enemy remains
-  name_jp: When 3 enemy remains
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Enemy ally recover 100% hp
-  desc_jp: Enemy ally recover 100% hp
-  max_atk_pct: null
-  name_en: Radiance of Regeneration
-  name_jp: Radiance of Regeneration
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# ESRecoverEnemyAlly(52:9180) -> Radiance of Regeneration
+# 	Condition: When enemy ally is killed (ai:100 rnd:0)
+# Enemy ally recover 100% hp
 ############################################################
 ### ES Modifiers
 ############################################################

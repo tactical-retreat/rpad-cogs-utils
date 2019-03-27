@@ -7,8 +7,7 @@ monster_id: 1324
 monster_name_en: Extreme King Metal Dragon
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -44,29 +43,20 @@ level: 5
 overrides: []
 records:
 - !SkillRecord
-  desc_en: ''
-  desc_jp: ''
+  desc_en: Increase damage to 200% for the next 5 turns (Preemptive)
+  desc_jp: Increase damage to 200% for the next 5 turns (Preemptive)
   max_atk_pct: null
-  name_en: Execute repeatedly. Turn 1
-  name_jp: Execute repeatedly. Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 5000% damage
-  desc_jp: Deal 5000% damage
-  max_atk_pct: 5000
-  name_en: Chomp!
-  name_jp: Chomp!
+  name_en: Hangry!
+  name_jp: Hangry!
   one_time: true
-  record_type_name: ACTION
+  record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Loop to 1 after. Turn 2-6
-  name_jp: Loop to 1 after. Turn 2-6
+  name_en: Execute repeatedly. Turn 1-5
+  name_jp: Execute repeatedly. Turn 1-5
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -79,13 +69,25 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 40
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 6
+  name_jp: Loop to 1 after. Turn 6
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 5000% damage
+  desc_jp: Deal 5000% damage
+  max_atk_pct: 5000
+  name_en: Chomp!
+  name_jp: Chomp!
+  one_time: true
+  record_type_name: ACTION
+  usage_pct: 100
 
-############################################################
-### Unused Actions
-############################################################
-# ESAttackUPRemainingEnemies(17:1245) -> Hangry!
-# 	Condition: One-time use, when <= 1 enemies remain (ai:100 rnd:0) (one-time: 5)
-# Increase damage to 200% for the next 5 turns
 ############################################################
 ### ES Modifiers
 ############################################################

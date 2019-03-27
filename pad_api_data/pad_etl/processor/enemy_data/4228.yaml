@@ -8,7 +8,7 @@ monster_name_en: Yellow Augite, Magatama of Yonder
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 3 unused actions
+- Found 6 unused actions
 
 ############################################################
 ### Data @ 1
@@ -35,64 +35,18 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: When 3 enemy remains
-  name_jp: When 3 enemy remains
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Movetime 50% for 1 turns
-  desc_jp: Movetime 50% for 1 turns
-  max_atk_pct: null
-  name_en: Instant Ripped Death
-  name_jp: Instant Ripped Death
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Deal 300% damage (3 hits, 100% each)
-  desc_jp: Deal 300% damage (3 hits, 100% each)
-  max_atk_pct: 300
-  name_en: Disorientating Flash
-  name_jp: Disorientating Flash
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: When 2 enemy remains
-  name_jp: When 2 enemy remains
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Enemy ally recover 100% hp
-  desc_jp: Enemy ally recover 100% hp
-  max_atk_pct: null
-  name_en: Radiance of Regeneration
-  name_jp: Radiance of Regeneration
-  one_time: false
-  record_type_name: ACTION
-  usage_pct: 100
 
 ############################################################
 ### Unused Actions
 ############################################################
+# ESDebuffMovetime(39:9177) -> Instant Ripped Death
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Movetime 50% for 1 turns
+# ESAttackMultihit(15:9171) -> Disorientating Flash
+# Enemy action
+# ESRecoverEnemyAlly(52:9172) -> Radiance of Regeneration
+# 	Condition: When enemy ally is killed (ai:100 rnd:0)
+# Enemy ally recover 100% hp
 # ESInvulnerableOff(121:9173) -> Augite's Resonance disappeared
 # Remove damage immunity effect
 # ESAbsorbCombo(67:9174) -> Secular Sword's Reflexion

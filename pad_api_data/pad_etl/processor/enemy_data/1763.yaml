@@ -7,8 +7,7 @@ monster_id: 1763
 monster_name_en: Rich Bowl Dragon, Katsumin
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -42,6 +41,15 @@ records:
   name_jp: Ability
   one_time: false
   record_type_name: PASSIVE
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 1 turns (Preemptive)
+  desc_jp: Increase damage to 200% for the next 1 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Victory will be mine!
+  name_jp: Victory will be mine!
+  one_time: false
+  record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
   desc_en: Change Random to Jammer, Deal 100% damage
@@ -107,8 +115,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
-  desc_en: Increase damage to 300% for the next 1 turns (When 1 enemy remains)
-  desc_jp: Increase damage to 300% for the next 1 turns (When 1 enemy remains)
+  desc_en: Increase damage to 300% for the next 1 turns
+  desc_jp: Increase damage to 300% for the next 1 turns
   max_atk_pct: null
   name_en: I'll win at any cost!
   name_jp: I'll win at any cost!
@@ -125,12 +133,6 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
-############################################################
-### Unused Actions
-############################################################
-# ESAttackUPRemainingEnemies(17:1844) -> Victory will be mine!
-# 	Condition: when <= 1 enemies remain (ai:100 rnd:0)
-# Increase damage to 200% for the next 1 turns
 ############################################################
 ### ES Modifiers
 ############################################################

@@ -7,8 +7,7 @@ monster_id: 3332
 monster_name_en: Ancient Fire Dragon Caller, Eldora
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -17,6 +16,15 @@ warnings:
 level: 1
 overrides: []
 records:
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 999 turns (Preemptive)
+  desc_jp: Increase damage to 200% for the next 999 turns (Preemptive)
+  max_atk_pct: null
+  name_en: High Spirit Mode
+  name_jp: High Spirit Mode
+  one_time: false
+  record_type_name: PREEMPT
+  usage_pct: 100
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
@@ -54,12 +62,6 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
-############################################################
-### Unused Actions
-############################################################
-# ESAttackUPRemainingEnemies(17:6071) -> High Spirit Mode
-# 	Condition: when <= 1 enemies remain (ai:100 rnd:0)
-# Increase damage to 200% for the next 999 turns
 ############################################################
 ### ES Modifiers
 ############################################################
