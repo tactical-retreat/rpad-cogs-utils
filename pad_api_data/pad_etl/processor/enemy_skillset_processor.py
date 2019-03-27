@@ -8,8 +8,7 @@ import copy
 import pad_etl.processor.debug_utils
 from pad_etl.data.card import BookCard
 from .enemy_skillset import *
-from typing import List, Any, Set, Tuple
-
+from typing import List, Any, Set, Tuple, Optional, Dict
 
 # This is a hack that accounts for the fact that some monsters seem to be zero-indexed
 # rather than 1-indexed for jumps. Not obvious why this occurs yet.
@@ -27,7 +26,11 @@ class StandardSkillGroup(object):
         # The hp threshold that this group executes on, always present, even if 100.
         self.hp = hp_threshold
 
-        self.hp_range = None  # type: int
+        self.hp_range = None  # type: Optional[int]
+
+        # Extra notes for skills in this group that could be appended to output.
+        # The index of the note corresponds to the index of the skill.
+        self.notes = {} # type: Dict[int, str]
 
     def __eq__(self, other):
         return self.skills == other.skills
@@ -41,7 +44,7 @@ class TimedSkillGroup(StandardSkillGroup):
         # The turn that this group executes on.
         self.turn = turn
         # If set, this group executes over a range of turns
-        self.end_turn = None  # type: int
+        self.end_turn = None  # type: Optional[int]
 
 
 class RepeatSkillGroup(TimedSkillGroup):

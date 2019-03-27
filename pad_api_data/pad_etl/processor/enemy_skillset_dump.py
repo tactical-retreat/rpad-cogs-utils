@@ -4,7 +4,7 @@ import os
 import yaml
 
 from pad_etl.processor import debug_utils
-from pad_etl.processor.enemy_skillset_processor import ProcessedSkillset, Moveset
+from pad_etl.processor.enemy_skillset_processor import ProcessedSkillset, Moveset, HpActions, TimedSkillGroup
 from ..data.card import BookCard
 from .enemy_skillset import *
 
@@ -100,7 +100,7 @@ class EnemySummary(object):
         return next(filter(lambda d: d.level == selected_level, self.data))
 
 
-def behavior_to_skillrecord(record_type: RecordType, action: Union[ESAction, ESSkillSet]) -> SkillRecord:
+def behavior_to_skillrecord(record_type: RecordType, action: Union[ESAction, ESSkillSet], note='') -> SkillRecord:
     name = action.name
     description = action.full_description()
     min_damage = None
@@ -130,6 +130,9 @@ def behavior_to_skillrecord(record_type: RecordType, action: Union[ESAction, ESS
         if cond.one_time:
             one_time = True
 
+    if note:
+        description += ' ({})'.format(note)
+
     return SkillRecord(record_type=record_type,
                        name_en=name,
                        name_jp=name,
@@ -146,10 +149,50 @@ def create_divider(divider_text: str) -> SkillRecord:
                        desc_jp='')
 
 
+def special_adjust_enemy_remaining(skillset: ProcessedSkillset):
+    # Special case processing for simple enemy remains movesets. A lot of earlier monsters
+    # use this for enrage, we don't want to dump an entirely new section for that, so instead
+    # merge it into the normal moveset with a special qualifier.
+    one_moveset = len(skillset.enemy_remaining_movesets) == 1
+    if not one_moveset:
+        return
+
+    es_moveset = skillset.enemy_remaining_movesets[0]
+    count_of_one = es_moveset.count == 1
+    no_repeating_actions = not any(map(lambda x: x.repeating, es_moveset.hp_actions))
+    only_singular_timed_actions = all(map(lambda x: len(x.timed) == 1, es_moveset.hp_actions))
+    if not (count_of_one and no_repeating_actions and only_singular_timed_actions):
+        return
+
+    skillset.enemy_remaining_movesets.clear()
+    found_action = None
+    for action in es_moveset.hp_actions:
+        # First try to find an existing HP bucket to insert into.
+        for primary_action in skillset.moveset.hp_actions:
+            if primary_action.hp == action.hp:
+                found_action = primary_action
+
+    # If no bucket exists, insert one and sort the array.
+    if not found_action:
+        found_action = HpActions(action.hp, [], [])
+        skillset.moveset.hp_actions.append(found_action)
+        skillset.moveset.hp_actions.sort(key=lambda x: x.hp, reverse=True)
+
+    # If there are no timed skills (maybe because we just created the bucket)
+    # or there were timed skills but not for turn 1 (unusual) insert a new
+    # skill group for it.
+    if not found_action.timed or found_action.timed[0].turn != 1:
+        new_timed_skills = TimedSkillGroup(1, action.hp, [])
+        found_action.timed.insert(0, new_timed_skills)
+
+    # Insert the skills at the highest priority and add a note.
+    for idx, skill in enumerate( action.timed[0].skills):
+        found_action.timed[0].skills.insert(idx, skill)
+        found_action.timed[0].notes[idx] = 'When 1 enemy remains'
+
+
 def flatten_skillset(level: int, skillset: ProcessedSkillset) -> SkillRecordListing:
     records = []  # List[SkillRecord]
-    # Keeps track of when we output our first non-preempt/ability item.
-    # Used to simplify the output of the first item in some cases.
 
     for item in skillset.base_abilities:
         records.append(behavior_to_skillrecord(RecordType.PASSIVE, item))
@@ -158,6 +201,8 @@ def flatten_skillset(level: int, skillset: ProcessedSkillset) -> SkillRecordList
         records.append(behavior_to_skillrecord(RecordType.PREEMPT, item))
 
     def process_moveset(moveset: Moveset):
+        # Keeps track of when we output our first non-preempt/ability item.
+        # Used to simplify the output of the first item in some cases.
         skill_output = False
         if moveset.status_action:
             skill_output = True
@@ -171,7 +216,6 @@ def flatten_skillset(level: int, skillset: ProcessedSkillset) -> SkillRecordList
 
         hp_checkpoints = [hp_action.hp for hp_action in moveset.hp_actions]
         use_hp_full_output = 100 in hp_checkpoints and 99 in hp_checkpoints
-
 
         def hp_title(hp: int) -> str:
             if use_hp_full_output and hp == 100:
@@ -205,8 +249,9 @@ def flatten_skillset(level: int, skillset: ProcessedSkillset) -> SkillRecordList
                     if item.end_turn:
                         title += '-{}'.format(item.end_turn)
                     records.append(create_divider(title))
-                for skill in item.skills:
-                    records.append(behavior_to_skillrecord(RecordType.ACTION, skill))
+                for idx, skill in enumerate(item.skills):
+                    note = item.notes.get(idx, '')
+                    records.append(behavior_to_skillrecord(RecordType.ACTION, skill, note=note))
 
             # Considers a situation where we printed turn info but no hp title, we
             # want to dump one here
@@ -229,6 +274,8 @@ def flatten_skillset(level: int, skillset: ProcessedSkillset) -> SkillRecordList
 
                 for skill in repeating_set.skills:
                     records.append(behavior_to_skillrecord(RecordType.ACTION, skill))
+
+    special_adjust_enemy_remaining(skillset)
 
     process_moveset(skillset.moveset)
 
