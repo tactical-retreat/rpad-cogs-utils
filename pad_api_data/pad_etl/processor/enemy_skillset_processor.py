@@ -350,6 +350,8 @@ def loop_through(ctx, behaviors: List[ESBehavior]) -> List[ESBehavior]:
                     return results
                 else:
                     # Not a terminal action, so accumulate it and continue.
+                    # if cond.use_chance() < 100 or (ctx.check_skill_use(cond.one_time) and ctx.apply_skill_effects(b)):
+                    # TODO: check if this should be changed?
                     if ctx.check_skill_use(cond.one_time) and ctx.apply_skill_effects(b):
                         results.append(b)
                     idx += 1
@@ -705,11 +707,10 @@ def convert(card: BookCard, enemy_behavior: List, level: int, enemy_skill_effect
                 if cms.status_action == nms.status_action:
                     nms.status_action = None
 
-                for action_idx in range(len(cms.hp_actions)):
-                    cms_action = cms.hp_actions[action_idx]
-                    if action_idx >= len(nms.hp_actions):
-                        break
-                    nms_action = nms.hp_actions[action_idx]
+                for cms_action in cms.hp_actions:
+                    nms_action = find_action_by_hp(cms_action.hp, nms.hp_actions)
+                    if nms_action is None:
+                        continue
 
                     if cms_action.timed == nms_action.timed:
                         nms_action.timed.clear()
@@ -800,3 +801,9 @@ def skill_has_condition(es):
     if not hasattr(es, 'condition'):
         return False
     return es.condition is not None
+
+def find_action_by_hp(hp: int, actions: List[HpActions]) -> Optional[HpActions]:
+    for a in actions:
+        if a.hp == hp:
+            return a
+    return None
