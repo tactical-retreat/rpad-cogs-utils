@@ -350,7 +350,6 @@ def loop_through(ctx, behaviors: List[ESBehavior]) -> List[ESBehavior]:
                     return results
                 else:
                     # Not a terminal action, so accumulate it and continue.
-                    # TODO: check if this condition check should be removed?
                     if ctx.check_skill_use(cond.one_time) and ctx.apply_skill_effects(b):
                         results.append(b)
                     idx += 1
