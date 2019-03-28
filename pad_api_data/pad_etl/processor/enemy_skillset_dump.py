@@ -245,11 +245,10 @@ def flatten_skillset(level: int, skillset: ProcessedSkillset) -> SkillRecordList
 
             # TODO: maybe we need special handling for 'always use turn x' commands?
             for item in hp_action.timed:
-                if len(hp_action.timed) > 1 or item.end_turn:
-                    title = 'Turn {}'.format(item.turn)
-                    if item.end_turn:
-                        title += '-{}'.format(item.end_turn)
-                    records.append(create_divider(title))
+                title = 'Turn {}'.format(item.turn)
+                if item.end_turn:
+                    title += '-{}'.format(item.end_turn)
+                records.append(create_divider(title))
                 for idx, skill in enumerate(item.skills):
                     note = item.notes.get(idx, '')
                     records.append(behavior_to_skillrecord(RecordType.ACTION, skill, note=note))
