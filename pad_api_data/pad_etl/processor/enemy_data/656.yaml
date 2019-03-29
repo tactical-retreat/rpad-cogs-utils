@@ -145,16 +145,16 @@ records:
 # Branch on hp < 80, target rnd 15
 # [8] ESRandomSpawn(92:3326) -> Black Pain
 # 	Condition: When < 20% hp & when Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison orbs are on the board (ai:100 rnd:0)
-# Spawn random 6 Mortal Poison orbs
+# Spawn random 6 Mortal Poison orbs, Deal 200% damage
 # [9] SkillSet:
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
 # 	[0] ESBlind(62:3324) -> Surprise Attack
-# 	Blind all orbs on the board
+# 	Blind all orbs on the board, Deal 120% damage
 # 	[1] ESChangeAttribute(46:3323) -> Transformation
 # 	Change own attribute to random one of Fire, Water, Wood
 # [10] ESAttackMultihit(15:3322) -> Fear Gift
 # 	Condition: 60% chance (ai:60 rnd:0)
-# Enemy action
+# Deal 120% damage (2 hits, 60% each)
 # [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [12] ESBranchFlag(43:10) -> ESBranchFlag

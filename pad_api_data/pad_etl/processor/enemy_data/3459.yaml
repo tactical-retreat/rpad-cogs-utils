@@ -218,10 +218,10 @@ records:
 # 	[0] ESRecoverEnemy(86:7625) -> Sacred Goat Blood
 # 	Enemy recover 100% hp
 # 	[1] ESDamageShield(74:7626) -> God's Echo
-# 	Reduce damage from all sources by 50% for 99 turns
+# 	Reduce damage from all sources by 50% for 99 turns, Deal 200% damage
 # [7] ESAttackMultihit(15:7637) -> Sanction Spiral
 # 	Condition: When < 15% hp (ai:100 rnd:0)
-# Enemy action
+# Deal 1000% damage (10 hits, 100% each)
 # [8] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 13
 # [9] ESFlagOperation(22:12) -> ESFlagOperation
@@ -231,12 +231,12 @@ records:
 # 	[0] ESAbsorbThreshold(87:7628) -> Eye of Reality
 # 	Absorb damage >= 15000000 damage for 999 turns
 # 	[1] ESAttackMultihit(15:7629) -> Lethal Chain
-# 	Enemy action
+# 	Deal 140% damage (7 hits, 20% each)
 # [11] SkillSet:
 # 	[0] ESSkillDelay(89:7631) -> Heavenly Eye of Reality
 # 	Delay active skills by 7 turns
 # 	[1] ESAttackMultihit(15:7632) -> Lethal Chain
-# 	Enemy action
+# 	Deal 150% damage (5 hits, 30% each)
 # [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [13] ESBranchFlag(43:10) -> ESBranchFlag
@@ -244,16 +244,16 @@ records:
 # [14] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [15] ESOrbLock(94:7635) -> Pearl Face
-# Lock 10 random Light, Heal, Poison, Mortal Poison orbs
+# Lock 10 random Light, Heal, Poison, Mortal Poison orbs, Deal 110% damage
 # [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [17] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b100
 # [18] ESRandomSpawn(92:7636) -> Shenisa
 # 	Condition: 50% chance & when Fire, Water, Wood, Light, Dark, Jammer, Poison, Mortal Poison orbs are on the board (ai:50 rnd:0)
-# Spawn random 7 Mortal Poison orbs
+# Spawn random 7 Mortal Poison orbs, Deal 50% damage
 # [19] ESColumnSpawnMulti(77:7634) -> Erythra
-# Change 1st, 2nd column to Fire, Water, Poison orbs, 3rd, 4th column to Wood, Light, Poison orbs, 5th, 6th column to Dark, Heal, Poison orbs
+# Change 1st, 2nd column to Fire, Water, Poison orbs, 3rd, 4th column to Wood, Light, Poison orbs, 5th, 6th column to Dark, Heal, Poison orbs, Deal 120% damage
 # [20] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [21] ESAttributeResist(72:7638) -> Dark damage halved

@@ -507,7 +507,7 @@ records:
 ### Unused Actions
 ############################################################
 # ESAttackMultihit(15:4294) -> Core Full Burst
-# Enemy action
+# Deal 520% damage (4 hits, 130% each)
 ############################################################
 ### ES Modifiers
 ############################################################
@@ -544,10 +544,10 @@ records:
 # 	[0] ESRecoverEnemy(86:4478) -> Holy Repair
 # 	Enemy recover 19% hp
 # 	[1] ESAttackMultihit(15:4296) -> Limit Break
-# 	Enemy action
+# 	Deal 800% damage (2 hits, 400% each)
 # [8] ESAttackMultihit(15:4296) -> Limit Break
 # 	Condition: When < 20% hp (ai:100 rnd:0)
-# Enemy action
+# Deal 800% damage (2 hits, 400% each)
 # [9] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 28
 # [10] ESBranchFlag(43:10) -> ESBranchFlag
@@ -556,13 +556,13 @@ records:
 # flag SET 0b11
 # [12] ESOrbLock(94:4284) -> Shock Ray
 # 	Condition: One-time use (ai:0 rnd:25) (one-time: 1)
-# Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 120% damage
 # [13] ESRandomSpawn(92:4285) -> Flash Bomb
 # 	Condition: One-time use & when Fire, Water, Wood, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:0 rnd:25) (one-time: 1)
-# Spawn random 3 Light orbs
+# Spawn random 3 Light orbs, Deal 120% damage
 # [14] ESDebuffMovetime(39:4286) -> Machine Glare
 # 	Condition: One-time use (ai:0 rnd:25) (one-time: 1)
-# Movetime -1s for 1 turns
+# Movetime -1s for 1 turns, Deal 120% damage
 # [15] ESInactivity(66:4287) -> Gathering magical power
 # 	Condition: 25% chance (ai:0 rnd:25)
 # Do nothing
@@ -577,25 +577,25 @@ records:
 # Do nothing
 # [20] ESSkillDelay(89:4288) -> Suppressive Wave
 # 	Condition: 25% chance (ai:0 rnd:25)
-# Delay active skills by 3 turns
+# Delay active skills by 3 turns, Deal 140% damage
 # [21] ESAbsorbCombo(67:4289) -> Ordeal Section
 # 	Condition: 25% chance (ai:0 rnd:25)
-# Absorb combo <= 6 damage for 1 turns
+# Absorb combo <= 6 damage for 1 turns, Deal 140% damage
 # [22] ESSkyfall(68:4290) -> Jamming
 # 	Condition: 25% chance (ai:0 rnd:25)
-# Jammer skyfall +20% for 1 turns
+# Jammer skyfall +20% for 1 turns, Deal 140% damage
 # [23] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [24] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b110
 # [25] ESAttackMultihit(15:4292) -> Steel Wing
 # 	Condition: One-time use (ai:60 rnd:0) (one-time: 1)
-# Enemy action
+# Deal 180% damage (3 hits, 60% each)
 # [26] ESBindAttack(63:4293) -> Paralysis Sight
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
-# Bind 1 random for 3 turns
+# Bind 1 random for 3 turns, Deal 170% damage
 # [27] ESAttackMultihit(15:4294) -> Core Full Burst
-# Enemy action
+# Deal 520% damage (4 hits, 130% each)
 # [28] ESAttackUPRemainingEnemies(17:4295) -> Awaken Force
 # 	Condition: when <= 1 enemies remain (ai:100 rnd:0)
 # Increase damage to 200% for the next 999 turns

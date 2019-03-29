@@ -224,27 +224,27 @@ records:
 # 	[0] ESChangeAttribute(46:8411) -> Psevdaisthíseis
 # 	Change own attribute to random one of Fire, Water, Wood
 # 	[1] ESColumnSpawnMulti(77:8412) -> ...Grovel at my feet
-# 	Change 3rd column to Dark orbs, 4th column to Light orbs
+# 	Change 3rd column to Dark orbs, 4th column to Light orbs, Deal 250% damage
 # [5] SkillSet:
 # 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESChangeAttribute(46:8414) -> Dread
 # 	Change own attribute to Dark
 # 	[1] ESDebuffMovetime(39:8415) -> Keraunós
-# 	Movetime -1s for 10 turns
+# 	Movetime -1s for 10 turns, Deal 150% damage
 # [6] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 5, target rnd 9
 # [7] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
 # [8] ESAttackMultihit(15:8408) -> Royal Sword
-# Enemy action
+# Deal 96%~160% damage (6~10 hits, 16% each)
 # [9] ESSetCounter(25:15) -> ESSetCounter
 # counter = 0
 # [10] ESBlindStickyRandom(97:8409) -> Black Thunderstorm
 # 	Condition: 50% chance (ai:50 rnd:0)
-# Blind random 1~5 orbs for 3 turns
+# Blind random 1~5 orbs for 3 turns, Deal 140% damage
 # [11] ESRandomSpawn(92:8410) -> Black Thunderstorm
 # 	Condition: When fire, water, wood, light, dark, heal, jammer, poison orbs are on the board (ai:100 rnd:0)
-# Spawn random 3 Mortal Poison orbs
+# Spawn random 3 Mortal Poison orbs, Deal 140% damage
 # [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [13] ESBranchFlag(43:10) -> ESBranchFlag

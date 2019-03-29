@@ -304,9 +304,10 @@ records:
 # Branch on hp < 20, target rnd 18
 # [11] ESSkillDelay(89:10282) -> Divest
 # 	Condition: 50% chance (ai:50 rnd:0)
-# Delay active skills by 1~2 turns
+# Delay active skills by 1~2 turns, Deal 60% damage
 # [12] ESBindRandom(1:10283) -> Terror
-# Bind 1 random cards for 2 turns
+# 	Condition: None (ai:100 rnd:0) (one-time: 2)
+# Bind 1 random cards for 2 turns, Deal 58% damage
 # [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [14] ESBranchFlag(43:10) -> ESBranchFlag
@@ -314,7 +315,7 @@ records:
 # [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [16] ESBindSkill(14:10284) -> Nightsnare
-# Bind active skills for 3 turns
+# Bind active skills for 3 turns, Deal 55% damage
 # [17] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [18] ESAttackUPRemainingEnemies(17:10285) -> Scream of Fury
@@ -324,7 +325,7 @@ records:
 # 	[0] ESRecoverEnemy(86:10286) -> Corrupt
 # 	Enemy recover 10% hp
 # 	[1] ESAttackSinglehit(82:10287) -> 通常攻撃
-# 	Enemy action
+# 	Deal 100% damage
 # [20] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [21] ESTurnChangePassive(106:10280) -> Ancient Craving

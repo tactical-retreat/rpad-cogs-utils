@@ -164,29 +164,29 @@ records:
 # [7] SkillSet:
 # 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESBindAttack(63:2561) -> Shankha
-# 	Bind 5 random for 2 turns
+# 	Bind 5 random for 2 turns, Deal 70% damage
 # 	[1] ESRecoverEnemy(86:2562) -> Avatar
-# 	Enemy recover 10% hp
+# 	Enemy recover 10% hp, Deal 10% damage
 # [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 30, target rnd 17
 # [9] SkillSet:
 # 	Condition: 30% chance (ai:0 rnd:30)
 # 	[0] ESOrbChangeAttack(48:2558) -> Khakkhara of the Creation
-# 	Change Heal to Jammer
+# 	Change Heal to Jammer, Deal 80% damage
 # 	[1] ESRecoverEnemy(86:2562) -> Avatar
-# 	Enemy recover 10% hp
+# 	Enemy recover 10% hp, Deal 10% damage
 # [10] SkillSet:
 # 	Condition: 30% chance (ai:0 rnd:30)
 # 	[0] ESAttackMultihit(15:2559) -> Chakram of Order
-# 	Enemy action
+# 	Deal 140% damage (4 hits, 35% each)
 # 	[1] ESRecoverEnemy(86:2562) -> Avatar
-# 	Enemy recover 10% hp
+# 	Enemy recover 10% hp, Deal 10% damage
 # [11] SkillSet:
 # 	Condition: 30% chance (ai:0 rnd:30)
 # 	[0] ESRowSpawnMulti(79:2560) -> Lotus Flower of Prosperity
-# 	Change 1st row to Heal orbs, 5th row to Wood orbs
+# 	Change 1st row to Heal orbs, 5th row to Wood orbs, Deal 120% damage
 # 	[1] ESRecoverEnemy(86:2562) -> Avatar
-# 	Enemy recover 10% hp
+# 	Enemy recover 10% hp, Deal 10% damage
 # [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [13] ESBranchFlag(43:10) -> ESBranchFlag
@@ -211,6 +211,6 @@ records:
 # end_turn
 # [21] ESAttackMultihit(15:2551) -> Trivikrama
 # 	Condition: When < 30% hp (ai:100 rnd:0)
-# Enemy action
+# Deal 3000% damage (3 hits, 1000% each)
 # [22] ESEndPath(36:26) -> ESEndPath
 # end_turn

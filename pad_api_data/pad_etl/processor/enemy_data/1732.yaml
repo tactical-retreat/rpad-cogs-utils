@@ -145,7 +145,7 @@ records:
 # [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] ESAttackMultihit(15:3524) -> Celestial Thorn of Chaos
-# Enemy action
+# Deal 180% damage
 # [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] ESAttackUPRemainingEnemies(17:3527) -> Super Strength
@@ -157,7 +157,7 @@ records:
 # Branch on hp < 70, target rnd 11
 # [9] ESRowSpawnMulti(79:3526) -> Flame Slash
 # 	Condition: 50% chance (ai:50 rnd:0)
-# Change 3rd row to Fire orbs
+# Change 3rd row to Fire orbs, Deal 120% damage
 # [10] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [11] ESBranchFlag(43:10) -> ESBranchFlag
@@ -165,8 +165,9 @@ records:
 # [12] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [13] ESBindAttribute(2:3525) -> The Sword Kusanagi
-# Bind Fire cards for 2 turns
+# 	Condition: None (ai:100 rnd:0) (one-time: 2)
+# Bind Fire cards for 2 turns, Deal 100% damage
 # [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [15] ESAttackMultihit(15:3528) -> God of War Destroying Sword
-# Enemy action
+# Deal 300% damage (3 hits, 100% each)

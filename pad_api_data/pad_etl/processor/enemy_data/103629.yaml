@@ -155,7 +155,7 @@ records:
 # 	[0] ESFixedStart(101:6726) -> I recognize you as my enemy
 # 	Fix orb movement starting point to random position on the board
 # 	[1] ESAttackMultihit(15:6727) -> GWAAAH-
-# 	Enemy action
+# 	Deal 150% damage (3 hits, 50% each)
 # [4] ESDebuffMovetime(39:6728) -> You can't escape
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Movetime -1s for 3 turns
@@ -163,9 +163,9 @@ records:
 # Branch on hp < 35, target rnd 8
 # [6] ESAttackMultihit(15:6727) -> GWAAAH-
 # 	Condition: 50% chance (ai:50 rnd:0)
-# Enemy action
+# Deal 150% damage (3 hits, 50% each)
 # [7] ESAttackMultihit(15:6730) -> DESTROY!!! DESTROY!!!
-# Enemy action
+# Deal 120% damage (2 hits, 60% each)
 # [8] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 12
 # [9] ESFlagOperation(22:12) -> ESFlagOperation
@@ -176,6 +176,6 @@ records:
 # [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [12] ESBoardChangeAttackBits(85:6731) -> Howl
-# Change all orbs to Fire
+# Change all orbs to Fire, Deal 500% damage
 # [13] ESEndPath(36:26) -> ESEndPath
 # end_turn

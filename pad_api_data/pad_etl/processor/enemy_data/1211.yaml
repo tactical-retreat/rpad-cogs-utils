@@ -103,7 +103,7 @@ records:
 ### Unused Actions
 ############################################################
 # ESBlind(62:1432) -> Blackout
-# Blind all orbs on the board
+# Blind all orbs on the board, Deal 25% damage
 ############################################################
 ### ES Modifiers
 ############################################################
@@ -124,14 +124,15 @@ records:
 # [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] ESBindAttribute(2:1386) -> Creeping Hand of Evil
+# 	Condition: None (ai:100 rnd:0) (one-time: 4)
 # Bind Wood cards for 3 turns
 # [5] ESBlind(62:1432) -> Blackout
-# Blind all orbs on the board
+# Blind all orbs on the board, Deal 25% damage
 # [6] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [7] ESBindAttack(63:1387) -> Tentacle Attack
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
-# Bind 2 subs for 2 turns
+# Bind 2 subs for 2 turns, Deal 75% damage
 # [8] ESAttackMultihit(15:1388) -> Hard Tentacle
 # 	Condition: When < 30% hp (ai:100 rnd:0)
-# Enemy action
+# Deal 150% damage (3 hits, 50% each)

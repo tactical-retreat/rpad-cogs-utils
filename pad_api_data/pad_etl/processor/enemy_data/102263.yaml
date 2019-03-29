@@ -98,6 +98,7 @@ records:
 # ESSkillDelay(89:3090) -> You must have guts to face me!
 # Delay active skills by 1~2 turns
 # ESBindRandom(1:3092) -> You shall not pass
+# 	Condition: None (ai:100 rnd:0) (one-time: 2)
 # Bind 6 random cards for 2 turns
 ############################################################
 ### ES Modifiers
@@ -120,7 +121,7 @@ records:
 # flag SET 0b1
 # [4] SkillSet:
 # 	[0] ESBoardChangeAttackBits(85:3086) -> You'll regret coming here
-# 	Change all orbs to Fire, Water, Wood, Light, Dark, Jammer, Poison
+# 	Change all orbs to Fire, Water, Wood, Light, Dark, Jammer, Poison, Deal 60% damage
 # 	[1] ESOrbLock(94:3087) -> Freeze Lock
 # 	Lock all Jammer, Poison orbs
 # [5] ESEndPath(36:26) -> ESEndPath
@@ -134,13 +135,13 @@ records:
 # Reduce damage from all sources by 30% for 3 turns
 # [9] ESAttackMultihit(15:3096) -> Super Snowstorm
 # 	Condition: When < 30% hp (ai:100 rnd:0)
-# Enemy action
+# Deal 150% damage (5 hits, 30% each)
 # [10] ESOrbChangeAttack(48:3093) -> Ice Needle
 # 	Condition: 60% chance (ai:60 rnd:0)
-# Change Wood to Water
+# Change Wood to Water, Deal 60% damage
 # [11] ESRowSpawnMulti(79:3094) -> Freezing Wind
 # 	Condition: 60% chance (ai:60 rnd:0)
-# Change 1st, 2nd row to Water, Jammer, Poison orbs
+# Change 1st, 2nd row to Water, Jammer, Poison orbs, Deal 60% damage
 # [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [13] ESBranchFlag(43:10) -> ESBranchFlag
@@ -154,4 +155,5 @@ records:
 # [17] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [18] ESBindRandom(1:3092) -> You shall not pass
+# 	Condition: None (ai:100 rnd:0) (one-time: 2)
 # Bind 6 random cards for 2 turns

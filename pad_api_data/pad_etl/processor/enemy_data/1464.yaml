@@ -41,13 +41,13 @@ records:
 ############################################################
 # ESAttackMultihit(15:1266) -> Genesis Gleam
 # 	Condition: When < 20% hp (ai:100 rnd:0)
-# Enemy action
+# Deal 400% damage (4 hits, 100% each)
 # ESJammerChangeSingle(12:1263) -> Arcane Spell
 # Change Fire to Jammer
 # ESPoisonChangeRandomAttack(64:1264) -> Judgement of the Dead
-# Change Random 6 to Poison
+# Change Random 6 to Poison, Deal 50% damage
 # ESBindAttack(63:1265) -> Playing with Time & Space
-# Bind 1 random for 3 turns
+# Bind 1 random for 3 turns, Deal 50% damage
 ############################################################
 ### ES Modifiers
 ############################################################
@@ -76,7 +76,7 @@ records:
 # Enemy ally recover 50% hp
 # [7] ESAttackMultihit(15:1266) -> Genesis Gleam
 # 	Condition: When < 20% hp (ai:100 rnd:0)
-# Enemy action
+# Deal 400% damage (4 hits, 100% each)
 # [8] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 12
 # [9] ESFlagOperation(22:12) -> ESFlagOperation
@@ -90,10 +90,10 @@ records:
 # [13] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [14] ESPoisonChangeRandomAttack(64:1264) -> Judgement of the Dead
-# Change Random 6 to Poison
+# Change Random 6 to Poison, Deal 50% damage
 # [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [16] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b110
 # [17] ESBindAttack(63:1265) -> Playing with Time & Space
-# Bind 1 random for 3 turns
+# Bind 1 random for 3 turns, Deal 50% damage

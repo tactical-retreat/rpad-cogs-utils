@@ -408,7 +408,7 @@ records:
 ### Unused Actions
 ############################################################
 # ESAttackMultihit(15:1561) -> Jumping Breath
-# Enemy action
+# Deal 80% damage (4 hits, 20% each)
 ############################################################
 ### ES Modifiers
 ############################################################
@@ -450,14 +450,14 @@ records:
 # Branch on hp < 50, target rnd 19
 # [14] ESOrbChangeAttack(48:1557) -> High Jump
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
-# Change Random to Jammer
+# Change Random to Jammer, Deal 20% damage
 # [15] ESOrbChangeAttack(48:1560) -> Meteor Strike
 # 	Condition: When < 30% hp (ai:100 rnd:0)
-# Change Jammer to Water
+# Change Jammer to Water, Deal 200% damage
 # [16] ESOrbChangeAttack(48:1558) -> Locust Press
-# Change Jammer to Water
+# Change Jammer to Water, Deal 125% damage
 # [17] ESAttackMultihit(15:1561) -> Jumping Breath
-# Enemy action
+# Deal 80% damage (4 hits, 20% each)
 # [18] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [19] ESBranchFlag(43:10) -> ESBranchFlag
@@ -465,6 +465,7 @@ records:
 # [20] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [21] ESBindAttribute(2:1559) -> Plant Feast
+# 	Condition: None (ai:100 rnd:0) (one-time: 2)
 # Bind Wood cards for 3 turns
 # [22] ESEndPath(36:26) -> ESEndPath
 # end_turn

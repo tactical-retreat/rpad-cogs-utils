@@ -132,13 +132,13 @@ records:
 # end_turn
 # [6] ESAttackMultihit(15:1987) -> Creation's Judgement
 # 	Condition: When < 20% hp (ai:100 rnd:0)
-# Enemy action
+# Deal 200% damage (4 hits, 50% each)
 # [7] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 11
 # [8] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [9] ESOrbChangeAttack(48:1988) -> Protector of the Night
-# Change Random to Jammer
+# Change Random to Jammer, Deal 50% damage
 # [10] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [11] ESBranchFlag(43:10) -> ESBranchFlag
@@ -146,12 +146,12 @@ records:
 # [12] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [13] ESPoisonChangeRandomAttack(64:1989) -> Leaf of the Ished Tree
-# Change Random 4 to Poison
+# Change Random 4 to Poison, Deal 50% damage
 # [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [15] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b110
 # [16] ESBindAttack(63:1990) -> Time Mastery
-# Bind 1 subs for 4 turns
+# Bind 1 subs for 4 turns, Deal 50% damage
 # [17] ESResolve(73:8227) -> Thoth Resolve
 # Survive attacks with 1 HP when HP > 80%

@@ -158,7 +158,7 @@ records:
 ############################################################
 # ESRandomSpawn(92:4535) -> Robbing Heat
 # 	Condition: When jammer orbs are on the board (ai:100 rnd:0)
-# Change all orbs to Poison
+# Change all orbs to Poison, Deal 100% damage
 ############################################################
 ### ES Modifiers
 ############################################################
@@ -179,7 +179,7 @@ records:
 # [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] ESRowSpawnMulti(79:4530) -> I will devour you!
-# Change 3rd row to Fire, Jammer orbs
+# Change 3rd row to Fire, Jammer orbs, Deal 130% damage
 # [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] ESBranchFlag(43:10) -> ESBranchFlag
@@ -187,18 +187,19 @@ records:
 # [7] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [8] ESBindRandom(1:4531) -> Flame Cage
+# 	Condition: None (ai:100 rnd:0) (one-time: 2)
 # Bind 3 random cards for 3 turns
 # [9] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 14
 # [10] ESAttackMultihit(15:4533) -> Burn Knuckle
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
-# Enemy action
+# Deal 150% damage (2 hits, 75% each)
 # [11] ESRandomSpawn(92:4534) -> Dusky Malice
 # 	Condition: When fire orbs are on the board (ai:100 rnd:0)
-# Change all orbs to Jammer
+# Change all orbs to Jammer, Deal 100% damage
 # [12] ESRandomSpawn(92:4535) -> Robbing Heat
 # 	Condition: When jammer orbs are on the board (ai:100 rnd:0)
-# Change all orbs to Poison
+# Change all orbs to Poison, Deal 100% damage
 # [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [14] ESBranchFlag(43:10) -> ESBranchFlag

@@ -271,7 +271,7 @@ records:
 # 	[0] ESStatusShield(20:4489) -> Tell me your wish!
 # 	Voids status ailments for 5 turns
 # 	[1] ESBoardChangeAttackBits(85:4490) -> Shine Flare Ring
-# 	Change all orbs to Fire, Light, Heal
+# 	Change all orbs to Fire, Light, Heal, Deal 130% damage
 # [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [8] ESBranchFlag(43:10) -> ESBranchFlag
@@ -297,9 +297,9 @@ records:
 # [16] SkillSet:
 # 	Condition: When < 20% hp (ai:100 rnd:0)
 # 	[0] ESAttackMultihit(15:4498) -> Shining Claw
-# 	Enemy action
+# 	Deal 185% damage (5 hits, 37% each)
 # 	[1] ESBoardChangeAttackBits(85:4490) -> Shine Flare Ring
-# 	Change all orbs to Fire, Light, Heal
+# 	Change all orbs to Fire, Light, Heal, Deal 130% damage
 # [17] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 19
 # [18] ESBranchHP(28:18) -> ESBranchHP
@@ -312,20 +312,20 @@ records:
 # Reduce damage from all sources by 50% for 1 turns
 # [21] ESAttackMultihit(15:4498) -> Shining Claw
 # 	Condition: 30% chance (ai:30 rnd:0)
-# Enemy action
+# Deal 185% damage (5 hits, 37% each)
 # [22] ESColumnSpawnMulti(77:4496) -> Orange Light's Judging Spirit
 # 	Condition: 50% chance (ai:50 rnd:0)
-# Change 5th column to Light orbs, 6th column to Fire orbs
+# Change 5th column to Light orbs, 6th column to Fire orbs, Deal 170% damage
 # [23] ESRandomSpawn(92:4497) -> Brightness Guidance
 # 	Condition: When fire, water, wood, dark, heal, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
-# Spawn random 8 Light orbs
+# Spawn random 8 Light orbs, Deal 170% damage
 # [24] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [25] SkillSet:
 # 	[0] ESAbsorbAttribute(53:4499) -> Gleaming Rabbit Dragon's Trial
 # 	Absorb Light damage for 1 turns
 # 	[1] ESColumnSpawnMulti(77:4500) -> Flower Piercing Light
-# 	Change 2nd, 5th column to Light orbs
+# 	Change 2nd, 5th column to Light orbs, Deal 100% damage
 # [26] ESResolve(73:4220) -> Dragonbound's Resolve
 # Survive attacks with 1 HP when HP > 50%
 # [27] ESAttributeResist(72:4506) -> Dark Halven

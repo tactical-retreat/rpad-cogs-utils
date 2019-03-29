@@ -241,23 +241,23 @@ records:
 # end_turn
 # [6] ESBoardChangeAttackBits(85:2962) -> Contraindication
 # 	Condition: When < 25% hp (ai:100 rnd:0)
-# Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
+# Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison, Deal 400% damage
 # [7] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 13
 # [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 75, target rnd 22
 # [9] ESRandomSpawn(92:2951) -> Hinder Alchemy
 # 	Condition: When < 75% hp , one-time use & when Fire, Water, Wood, Light, Dark, Heal, Poison, Mortal Poison orbs are on the board (ai:100 rnd:0) (one-time: 2)
-# Spawn random 5 Jammer orbs
+# Spawn random 5 Jammer orbs, Deal 180% damage
 # [10] ESRandomSpawn(92:2950) -> Heat and Cold
 # 	Condition: When < 75% hp & when Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:100 rnd:0)
-# Spawn random 2 Fire, Water orbs
+# Spawn random 2 Fire, Water orbs, Deal 160% damage
 # [11] ESBindAttack(63:2945) -> Shadow Touch
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
-# Bind 1 subs for 2 turns
+# Bind 1 subs for 2 turns, Deal 130% damage
 # [12] ESRandomSpawn(92:2946) -> Poison Alchemy
 # 	Condition: When fire, water, wood, light, dark, heal, jammer, mortal poison orbs are on the board (ai:100 rnd:0)
-# Spawn random 3 Poison orbs
+# Spawn random 3 Poison orbs, Deal 180% damage
 # [13] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 19
 # [14] ESFlagOperation(22:12) -> ESFlagOperation
@@ -283,20 +283,20 @@ records:
 # [18] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [19] ESOrbChangeAttack(48:2965) -> High Poison Alchemy
-# Change Jammer to Mortal Poison
+# Change Jammer to Mortal Poison, Deal 200% damage
 # [20] ESRandomSpawn(92:2951) -> Hinder Alchemy
 # 	Condition: When < 75% hp , one-time use & when Fire, Water, Wood, Light, Dark, Heal, Poison, Mortal Poison orbs are on the board (ai:100 rnd:0) (one-time: 2)
-# Spawn random 5 Jammer orbs
+# Spawn random 5 Jammer orbs, Deal 180% damage
 # [21] ESRandomSpawn(92:2950) -> Heat and Cold
 # 	Condition: When < 75% hp & when Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:100 rnd:0)
-# Spawn random 2 Fire, Water orbs
+# Spawn random 2 Fire, Water orbs, Deal 160% damage
 # [22] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 9
 # [23] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [24] SkillSet:
 # 	[0] ESBoardChangeAttackBits(85:2947) -> Healing Element
-# 	Change all orbs to Fire, Light, Dark
+# 	Change all orbs to Fire, Light, Dark, Deal 100% damage
 # 	[1] ESRowSpawnMulti(78:2948) -> Hinder Line
 # 	Change 3rd row to Jammer orbs
 # [25] ESEndPath(36:26) -> ESEndPath

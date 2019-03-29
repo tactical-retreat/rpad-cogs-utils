@@ -255,13 +255,13 @@ records:
 # Branch on hp < 30, target rnd 17
 # [9] ESRandomSpawn(92:2167) -> Divine Hellfire
 # 	Condition: One-time use & when Water, Wood, Light, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:100 rnd:0) (one-time: 1)
-# Spawn random 4 Fire, Dark orbs
+# Spawn random 4 Fire, Dark orbs, Deal 100% damage
 # [10] ESOrbChangeAttack(48:2169) -> Hell Bolt
 # 	Condition: 50% chance (ai:0 rnd:50)
-# Change Fire to Jammer
+# Change Fire to Jammer, Deal 75% damage
 # [11] ESPoisonChangeSingle(56:2168) -> Snake God's Venomous Fangs
 # 	Condition: 50% chance (ai:0 rnd:50)
-# Change Dark to Poison
+# Change Dark to Poison, Deal 50% damage
 # [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [13] ESBranchFlag(43:10) -> ESBranchFlag
@@ -269,11 +269,12 @@ records:
 # [14] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [15] ESBindRandom(1:2170) -> Snake Eye Curse
+# 	Condition: None (ai:100 rnd:0) (one-time: 2)
 # Bind 6 random cards for 2 turns
 # [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [17] ESAttackMultihit(15:2171) -> Serpent King's Annihilating Strike
-# Enemy action
+# Deal 4000% damage (4 hits, 1000% each)
 # [18] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [19] ESBranchFlag(43:10) -> ESBranchFlag

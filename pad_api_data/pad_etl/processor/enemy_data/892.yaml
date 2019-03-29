@@ -103,7 +103,7 @@ records:
 ### Unused Actions
 ############################################################
 # ESOrbChangeAttack(48:1471) -> Lightning Arrow
-# Change Random to Light
+# Change Random to Light, Deal 75% damage
 ############################################################
 ### ES Modifiers
 ############################################################
@@ -128,9 +128,10 @@ records:
 # [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [6] ESBindAttribute(2:1456) -> Flame Cage
+# 	Condition: None (ai:100 rnd:0) (one-time: 2)
 # Bind Wood cards for 3 turns
 # [7] ESOrbChangeAttack(48:1471) -> Lightning Arrow
-# Change Random to Light
+# Change Random to Light, Deal 75% damage
 # [8] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [9] ESBindTyping(3:1457) -> Shining Lyre
@@ -140,7 +141,7 @@ records:
 # Branch on hp < 30, target rnd 13
 # [11] ESOrbChangeAttack(48:1458) -> Sunlight Bullet
 # 	Condition: 50% chance (ai:50 rnd:0)
-# Change Random to Fire
+# Change Random to Fire, Deal 125% damage
 # [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [13] ESBranchFlag(43:10) -> ESBranchFlag
@@ -154,4 +155,4 @@ records:
 # end_turn
 # [17] ESAttackMultihit(15:1460) -> Grand Sun
 # 	Condition: When < 30% hp (ai:100 rnd:0)
-# Enemy action
+# Deal 1000% damage

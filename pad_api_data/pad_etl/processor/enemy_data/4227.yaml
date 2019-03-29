@@ -212,23 +212,23 @@ records:
 ### Unused Actions
 ############################################################
 # ESOrbLock(94:9139) -> Stellar Dragon's Glare
-# Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 100% damage
 # ESInactivity(66:9182) -> Wait and See
 # Do nothing
 # ESCloud(104:9140) -> Dragon Cloud
-# 6x2 cloud appear for 3 turns at random location
+# 6x2 cloud appear for 3 turns at random location, Deal 100% damage
 # ESOrbSealColumn(99:9141) -> Sealing Pulse
 # 	Condition: 25% chance (ai:0 rnd:25)
-# Seal 1st column for 3 turns
+# Seal 1st column for 3 turns, Deal 100% damage
 # ESOrbSealColumn(99:9142) -> Sealing Pulse
 # 	Condition: 25% chance (ai:0 rnd:25)
-# Seal 6th column for 3 turns
+# Seal 6th column for 3 turns, Deal 100% damage
 # ESOrbSealRow(100:9143) -> Sealing Pulse
 # 	Condition: 25% chance (ai:0 rnd:25)
-# Seal 1st row for 3 turns
+# Seal 1st row for 3 turns, Deal 100% damage
 # ESOrbSealRow(100:9144) -> Sealing Pulse
 # 	Condition: 25% chance (ai:0 rnd:25)
-# Seal 5th row for 3 turns
+# Seal 5th row for 3 turns, Deal 100% damage
 # ESTurnChangeActive(122:9145) -> An adventurer! Splendid!
 # Enemy turn counter change to 1
 ############################################################
@@ -263,25 +263,25 @@ records:
 # [9] ESBranchRemainingEnemies(120:8595) -> ESBranchRemainingEnemies
 # Branch on remaining enemies <= 4, target rnd 10
 # [10] ESOrbLock(94:9139) -> Stellar Dragon's Glare
-# Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 100% damage
 # [11] ESInactivity(66:9182) -> Wait and See
 # Do nothing
 # [12] ESCloud(104:9140) -> Dragon Cloud
-# 6x2 cloud appear for 3 turns at random location
+# 6x2 cloud appear for 3 turns at random location, Deal 100% damage
 # [13] ESInactivity(66:9182) -> Wait and See
 # Do nothing
 # [14] ESOrbSealColumn(99:9141) -> Sealing Pulse
 # 	Condition: 25% chance (ai:0 rnd:25)
-# Seal 1st column for 3 turns
+# Seal 1st column for 3 turns, Deal 100% damage
 # [15] ESOrbSealColumn(99:9142) -> Sealing Pulse
 # 	Condition: 25% chance (ai:0 rnd:25)
-# Seal 6th column for 3 turns
+# Seal 6th column for 3 turns, Deal 100% damage
 # [16] ESOrbSealRow(100:9143) -> Sealing Pulse
 # 	Condition: 25% chance (ai:0 rnd:25)
-# Seal 1st row for 3 turns
+# Seal 1st row for 3 turns, Deal 100% damage
 # [17] ESOrbSealRow(100:9144) -> Sealing Pulse
 # 	Condition: 25% chance (ai:0 rnd:25)
-# Seal 5th row for 3 turns
+# Seal 5th row for 3 turns, Deal 100% damage
 # [18] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [19] SkillSet:
@@ -317,20 +317,20 @@ records:
 # [24] SkillSet:
 # 	Condition: 30% chance when < 50% hp (ai:30 rnd:0)
 # 	[0] ESOrbChangeAttack(48:9160) -> Rotting Pain
-# 	Change Random to Jammer
+# 	Change Random to Jammer, Deal 250% damage
 # 	[1] ESGravity(50:9161) -> Wave
 # 	Player -99% HP
 # [25] SkillSet:
 # 	Condition: When < 50% hp (ai:100 rnd:0)
 # 	[0] ESAttackMultihit(15:9159) -> Four Resonating Guns
-# 	Enemy action
+# 	Deal 340% damage (4 hits, 85% each)
 # 	[1] ESGravity(50:9161) -> Wave
 # 	Player -99% HP
 # [26] ESOrbChangeAttack(48:9160) -> Rotting Pain
 # 	Condition: 25% chance (ai:25 rnd:0)
-# Change Random to Jammer
+# Change Random to Jammer, Deal 250% damage
 # [27] ESAttackMultihit(15:9159) -> Four Resonating Guns
-# Enemy action
+# Deal 340% damage (4 hits, 85% each)
 # [28] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 32
 # [29] ESFlagOperation(22:12) -> ESFlagOperation
@@ -346,7 +346,7 @@ records:
 # 	[0] ESChangeAttribute(46:9165) -> Metamorphosis
 # 	Change own attribute to random one of Water, Light
 # 	[1] ESAttackMultihit(15:9166) -> Six Limitless Flashes
-# 	Enemy action
+# 	Deal 3600% damage (6 hits, 600% each)
 # [33] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [34] ESTurnChangeActive(122:9145) -> An adventurer! Splendid!

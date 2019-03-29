@@ -115,18 +115,18 @@ records:
 ############################################################
 # ESRandomSpawn(92:10987) -> Cauchemar Fragment
 # 	Condition: 33% chance & when Fire, Water, Wood, Light, Dark, Heal, Mortal Poison orbs are on the board (ai:0 rnd:33)
-# Spawn random 2 Jammer, Poison orbs
+# Spawn random 2 Jammer, Poison orbs, Deal 100% damage
 # ESOrbChangeAttack(48:10988) -> Cauchemar Tempest
 # 	Condition: 33% chance (ai:0 rnd:33)
-# Change Random to Jammer
+# Change Random to Jammer, Deal 100% damage
 # ESAttackMultihit(15:10989) -> Cauchemar Impact
 # 	Condition: 34% chance (ai:0 rnd:34)
-# Enemy action
+# Deal 120% damage (3 hits, 40% each)
 # SkillSet:
 # 	[0] ESSpinnersRandom(109:10991) -> Cauchemar Despair
 # 	Random 4 orbs change every 1.5s for 4 turns
 # 	[1] ESRowSpawnMulti(79:10992) -> Cauchemar Catastrophe
-# 	Change 1st, 3rd, 5th row to Jammer orbs
+# 	Change 1st, 3rd, 5th row to Jammer orbs, Deal 110% damage
 ############################################################
 ### ES Modifiers
 ############################################################
@@ -160,18 +160,18 @@ records:
 # [7] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 17
 # [8] ESOrbChangeAttack(48:10998) -> Cauchemar Infinity
-# Change Jammer to Wood
+# Change Jammer to Wood, Deal 240% damage
 # [9] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 4, target rnd 14
 # [10] ESRandomSpawn(92:10987) -> Cauchemar Fragment
 # 	Condition: 33% chance & when Fire, Water, Wood, Light, Dark, Heal, Mortal Poison orbs are on the board (ai:0 rnd:33)
-# Spawn random 2 Jammer, Poison orbs
+# Spawn random 2 Jammer, Poison orbs, Deal 100% damage
 # [11] ESOrbChangeAttack(48:10988) -> Cauchemar Tempest
 # 	Condition: 33% chance (ai:0 rnd:33)
-# Change Random to Jammer
+# Change Random to Jammer, Deal 100% damage
 # [12] ESAttackMultihit(15:10989) -> Cauchemar Impact
 # 	Condition: 34% chance (ai:0 rnd:34)
-# Enemy action
+# Deal 120% damage (3 hits, 40% each)
 # [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [14] ESSetCounter(25:15) -> ESSetCounter
@@ -180,7 +180,7 @@ records:
 # 	[0] ESSpinnersRandom(109:10991) -> Cauchemar Despair
 # 	Random 4 orbs change every 1.5s for 4 turns
 # 	[1] ESRowSpawnMulti(79:10992) -> Cauchemar Catastrophe
-# 	Change 1st, 3rd, 5th row to Jammer orbs
+# 	Change 1st, 3rd, 5th row to Jammer orbs, Deal 110% damage
 # [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [17] ESBranchHP(28:18) -> ESBranchHP
@@ -203,6 +203,6 @@ records:
 # 	[1] ESBlind(5:10997) -> Astaroth's Judgment
 # 	Blind all orbs on the board
 # [23] ESBoardChangeAttackBits(85:10999) -> Cauchemar Destruction
-# Change all orbs to Jammer
+# Change all orbs to Jammer, Deal 500% damage
 # [24] ESEndPath(36:26) -> ESEndPath
 # end_turn

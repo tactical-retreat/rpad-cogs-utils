@@ -217,7 +217,7 @@ records:
 # Absorb Dark damage for 2 turns
 # [6] ESBoardChangeAttackBits(85:8994) -> Byakko Seven-Star Perception
 # 	Condition: When < 10% hp (ai:100 rnd:0)
-# Change all orbs to Fire, Water, Dark
+# Change all orbs to Fire, Water, Dark, Deal 180% damage
 # [7] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 3, target rnd 11
 # [8] ESSetCounter(26:16) -> ESSetCounter
@@ -226,10 +226,10 @@ records:
 # 	Condition: 15% chance (ai:15 rnd:0)
 # Absorb combo <= 5 damage for 2 turns
 # [10] ESAttackMultihit(15:8995) -> Sweet Combo
-# Enemy action
+# Deal 100% damage (2 hits, 50% each)
 # [11] ESSetCounter(25:15) -> ESSetCounter
 # counter = 0
 # [12] ESFixedStart(101:8993) -> Don't get cocky now
-# Fix orb movement starting point to random position on the board
+# Fix orb movement starting point to random position on the board, Deal 120% damage
 # [13] ESEndPath(36:26) -> ESEndPath
 # end_turn

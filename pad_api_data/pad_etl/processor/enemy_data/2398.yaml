@@ -157,7 +157,7 @@ records:
 ### Unused Actions
 ############################################################
 # ESAttackMultihit(15:3340) -> You think you can beat me with that?
-# Enemy action
+# Deal 130% damage
 ############################################################
 ### ES Modifiers
 ############################################################
@@ -186,20 +186,20 @@ records:
 # Branch on player_cards HAS [368, 369, 652, 1344], target rnd 14
 # [7] ESAttackMultihit(15:3335) -> Last Flame
 # 	Condition: When < 20% hp (ai:100 rnd:0)
-# Enemy action
+# Deal 280% damage (4 hits, 70% each)
 # [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 80, target rnd 17
 # [9] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 20
 # [10] ESRandomSpawn(92:3331) -> Corona
 # 	Condition: One-time use & when Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:100 rnd:0) (one-time: 3)
-# Change all orbs to Fire
+# Change all orbs to Fire, Deal 150% damage
 # [11] ESOrbChangeAttack(48:3333) -> Black Flame
 # 	Condition: 50% chance (ai:50 rnd:0)
-# Change Fire to Jammer
+# Change Fire to Jammer, Deal 120% damage
 # [12] ESRandomSpawn(92:3332) -> Laevateinn
 # 	Condition: When water, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
-# Spawn random 6 Fire orbs
+# Spawn random 6 Fire orbs, Deal 130% damage
 # [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [14] ESBranchFlag(43:10) -> ESBranchFlag
@@ -207,7 +207,7 @@ records:
 # [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [16] ESAttackMultihit(15:3340) -> You think you can beat me with that?
-# Enemy action
+# Deal 130% damage
 # [17] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 9
 # [18] ESFlagOperation(22:12) -> ESFlagOperation

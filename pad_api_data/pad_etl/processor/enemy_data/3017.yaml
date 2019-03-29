@@ -692,7 +692,7 @@ records:
 # Reduce damage from all sources by 75% for 3 turns
 # ESOrbLock(94:5089) -> Power Claw
 # 	Condition: When < 70% hp , one-time use (ai:100 rnd:0) (one-time: 2)
-# Lock 8 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# Lock 8 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 100% damage
 ############################################################
 ### ES Modifiers
 ############################################################
@@ -733,13 +733,13 @@ records:
 # Reduce damage from all sources by 75% for 3 turns
 # [7] ESOrbLock(94:5096) -> Ultimate Skewer
 # 	Condition: When < 15% hp (ai:100 rnd:0)
-# Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 1000% damage
 # [8] ESOrbLock(94:5089) -> Power Claw
 # 	Condition: When < 70% hp , one-time use (ai:100 rnd:0) (one-time: 2)
-# Lock 8 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# Lock 8 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 100% damage
 # [9] ESBlind(62:5088) -> Dark Bolt
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
-# Blind all orbs on the board
+# Blind all orbs on the board, Deal 200% damage
 # [10] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 16
 # [11] ESFlagOperation(22:12) -> ESFlagOperation
@@ -749,12 +749,12 @@ records:
 # Increase damage to 200% for the next 999 turns
 # [13] ESRandomSpawn(92:5098) -> Destruction Claw
 # 	Condition: When < 30% hp & when Fire, Water, Wood, Light, Dark, Heal, Mortal Poison orbs are on the board (ai:100 rnd:0)
-# Spawn random 4 Jammer, Poison orbs
+# Spawn random 4 Jammer, Poison orbs, Deal 130% damage
 # [14] ESOrbChangeAttack(48:5090) -> Nemesis Claw
 # 	Condition: 50% chance (ai:50 rnd:0)
-# Change Random to Poison
+# Change Random to Poison, Deal 130% damage
 # [15] ESOrbChangeAttack(48:5091) -> Break Claw
-# Change Random to Jammer
+# Change Random to Jammer, Deal 130% damage
 # [16] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 21
 # [17] ESFlagOperation(22:12) -> ESFlagOperation
@@ -764,9 +764,9 @@ records:
 # Increase damage to 200% for the next 999 turns
 # [19] ESOrbLock(94:5093) -> Evil Grab
 # 	Condition: 50% chance (ai:50 rnd:0)
-# Lock all Jammer, Poison orbs
+# Lock all Jammer, Poison orbs, Deal 140% damage
 # [20] ESOrbLock(94:5092) -> Element Grab
-# Lock 10 random Fire, Water, Wood, Light, Dark, Heal orbs
+# Lock 10 random Fire, Water, Wood, Light, Dark, Heal orbs, Deal 140% damage
 # [21] ESFlagOperation(24:14) -> ESFlagOperation
 # flag UNSET 0b11
 # [22] ESAttackUPRemainingEnemies(17:5097) -> Increase
@@ -774,11 +774,11 @@ records:
 # Increase damage to 200% for the next 999 turns
 # [23] ESAttackMultihit(15:5099) -> Raiden Claw
 # 	Condition: When < 30% hp (ai:100 rnd:0)
-# Enemy action
+# Deal 200% damage (4 hits, 50% each)
 # [24] ESBindSkill(14:5094) -> High Metal Chain
 # 	Condition: 50% chance (ai:50 rnd:0)
-# Bind active skills for 5 turns
+# Bind active skills for 5 turns, Deal 140% damage
 # [25] ESAttackMultihit(15:5095) -> Cleave Combo
-# Enemy action
+# Deal 160% damage (4 hits, 40% each)
 # [26] ESAttributeResist(72:4928) -> Halves Light-Dark
 # Reduce damage from Light, Dark by 50%

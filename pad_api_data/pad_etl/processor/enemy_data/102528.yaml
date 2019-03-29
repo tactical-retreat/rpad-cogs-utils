@@ -197,6 +197,7 @@ records:
 ### Unused Actions
 ############################################################
 # ESBindRandom(1:3755) -> Machine King Gaze
+# 	Condition: None (ai:100 rnd:0) (one-time: 4)
 # Bind 2 random cards for 10 turns
 ############################################################
 ### ES Modifiers
@@ -234,10 +235,10 @@ records:
 # Branch on hp < 70, target rnd 12
 # [10] ESBindRandomSub(65:3724) -> ZEUS Cannon
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
-# Bind 1 random subs for 3 turns
+# Bind 1 random subs for 3 turns, Deal 90% damage
 # [11] ESRandomSpawn(92:3723) -> ZEUS Sword
 # 	Condition: When fire, water, wood, light, dark, heal, jammer, poison orbs are on the board (ai:100 rnd:0)
-# Spawn random 5 Mortal Poison orbs
+# Spawn random 5 Mortal Poison orbs, Deal 190% damage
 # [12] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 10
 # [13] ESFlagOperation(22:12) -> ESFlagOperation
@@ -245,6 +246,7 @@ records:
 # [14] ESBindTyping(3:3725) -> Machine King Gaze
 # Bind God cards for 10 turns
 # [15] ESBindRandom(1:3755) -> Machine King Gaze
+# 	Condition: None (ai:100 rnd:0) (one-time: 4)
 # Bind 2 random cards for 10 turns
 # [16] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 19
@@ -260,14 +262,14 @@ records:
 # 	[0] ESSkillDelay(89:3729) -> Absolute Absorb
 # 	Delay active skills by 3 turns
 # 	[1] ESAttackMultihit(15:3732) -> Sword Bit Rush
-# 	Enemy action
+# 	Deal 180% damage (6 hits, 30% each)
 # [20] SkillSet:
 # 	[0] ESRowSpawnMulti(79:3728) -> Delta Dead Lightning
-# 	Change 1st, 5th row to Light, Jammer, Mortal Poison orbs
+# 	Change 1st, 5th row to Light, Jammer, Mortal Poison orbs, Deal 180% damage
 # 	[1] ESAttackMultihit(15:3732) -> Sword Bit Rush
-# 	Enemy action
+# 	Deal 180% damage (6 hits, 30% each)
 # [21] ESAttackMultihit(15:3730) -> Hyper Nova
-# Enemy action
+# Deal 6400% damage (8 hits, 800% each)
 # [22] ESAttributeResist(72:3756) -> Halve Dark
 # Reduce damage from Dark by 50%
 # [23] ESResolve(73:5867) -> Machine Zeus Hera Resolve

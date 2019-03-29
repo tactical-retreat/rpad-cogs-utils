@@ -214,7 +214,7 @@ records:
 # [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [4] ESBindAttack(63:10121) -> テオザケル
-# Bind 2 random for 2 turns
+# Bind 2 random for 2 turns, Deal 105% damage
 # [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [6] ESBranchFlag(43:10) -> ESBranchFlag
@@ -231,12 +231,12 @@ records:
 # Branch on hp < 50, target rnd 15
 # [12] ESColumnSpawnMulti(77:10123) -> ソルド・ザケルガ
 # 	Condition: 33% chance (ai:33 rnd:0)
-# Change 3rd column to Light orbs, 4th column to Jammer orbs
+# Change 3rd column to Light orbs, 4th column to Jammer orbs, Deal 110% damage
 # [13] ESAttackMultihit(15:10122) -> ザケルガ
 # 	Condition: 66% chance (ai:66 rnd:0)
-# Enemy action
+# Deal 120% damage
 # [14] ESAttackMultihit(15:10124) -> ザケル
-# Enemy action
+# Deal 100% damage
 # [15] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 19
 # [16] ESFlagOperation(22:12) -> ESFlagOperation
@@ -247,9 +247,9 @@ records:
 # end_turn
 # [19] ESRandomSpawn(92:10126) -> ジャウロ・ザケルガ
 # 	Condition: One-time use & when Fire, Water, Wood, Light, Dark, Heal orbs are on the board (ai:100 rnd:0) (one-time: 1)
-# Spawn random 11 Light orbs
+# Spawn random 11 Light orbs, Deal 120% damage
 # [20] ESAttackMultihit(15:10125) -> ガンレイズ・ザケル
-# Enemy action
+# Deal 128% damage (8 hits, 16% each)
 # [21] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [22] ESAttackUPRemainingEnemies(17:10129) -> お前らと遊ぶのは、もう飽きた
@@ -259,6 +259,6 @@ records:
 # 	[0] ESColumnSpawnMulti(76:10131) -> ジガディラス・ウル・ザケルガ
 # 	Change 3rd, 4th column to Light orbs
 # 	[1] ESAttackMultihit(15:10132) -> ZIGAAAAAAAAAA
-# 	Enemy action
+# 	Deal 400% damage (8 hits, 50% each)
 # [24] ESAttributeResist(72:10120) -> ゼオン耐性
 # Reduce damage from Light, Dark by 50%

@@ -274,7 +274,7 @@ records:
 # 	[0] ESStatusShield(20:4546) -> I don't care about your hopes!
 # 	Voids status ailments for 5 turns
 # 	[1] ESBoardChangeAttackBits(85:4547) -> Storm Lightning
-# 	Change all orbs to Wood, Light, Heal
+# 	Change all orbs to Wood, Light, Heal, Deal 130% damage
 # [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [8] SkillSet:
@@ -286,9 +286,9 @@ records:
 # [9] SkillSet:
 # 	Condition: When < 20% hp (ai:100 rnd:0)
 # 	[0] ESAttackMultihit(15:4553) -> Storm Raid
-# 	Enemy action
+# 	Deal 110% damage (2 hits, 55% each)
 # 	[1] ESBoardChangeAttackBits(85:4547) -> Storm Lightning
-# 	Change all orbs to Wood, Light, Heal
+# 	Change all orbs to Wood, Light, Heal, Deal 130% damage
 # [10] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 20
 # [11] ESBranchFlag(43:10) -> ESBranchFlag
@@ -308,13 +308,13 @@ records:
 # Increase damage to 200% for the next 1 turns
 # [17] ESAttackMultihit(15:4553) -> Storm Raid
 # 	Condition: 20% chance (ai:20 rnd:0)
-# Enemy action
+# Deal 110% damage (2 hits, 55% each)
 # [18] ESColumnSpawnMulti(77:4559) -> Green Wind Soul Cutter
 # 	Condition: 50% chance (ai:50 rnd:0)
-# Change 3rd column to Light orbs, 4th column to Wood orbs
+# Change 3rd column to Light orbs, 4th column to Wood orbs, Deal 95% damage
 # [19] ESRandomSpawn(92:4560) -> Mountain Haze's Guidance
 # 	Condition: When fire, water, light, dark, heal, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
-# Spawn random 8 Wood orbs
+# Spawn random 8 Wood orbs, Deal 90% damage
 # [20] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 11
 # [21] ESFlagOperation(22:12) -> ESFlagOperation
@@ -323,7 +323,7 @@ records:
 # 	[0] ESAbsorbAttribute(53:4555) -> Storm Hawk Dragon's Trial
 # 	Absorb Wood damage for 1 turns
 # 	[1] ESRowSpawnMulti(79:4556) -> Splitting Storm Wind
-# 	Change 2nd, 4th row to Wood, Jammer orbs
+# 	Change 2nd, 4th row to Wood, Jammer orbs, Deal 100% damage
 # [23] ESAttributeResist(72:4561) -> Fire Halven
 # Reduce damage from Fire by 50%
 # [24] ESResolve(73:4220) -> Dragonbound's Resolve

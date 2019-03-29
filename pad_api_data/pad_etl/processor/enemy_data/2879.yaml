@@ -234,7 +234,7 @@ records:
 # 	[0] ESBlind(5:4689) -> I recognize the strength of your wish
 # 	Blind all orbs on the board
 # 	[1] ESBoardChangeAttackBits(85:4686) -> Sunset Zone
-# 	Change all orbs to Fire, Water, Dark, Heal
+# 	Change all orbs to Fire, Water, Dark, Heal, Deal 150% damage
 ############################################################
 ### ES Modifiers
 ############################################################
@@ -274,9 +274,9 @@ records:
 # [9] SkillSet:
 # 	Condition: When < 20% hp (ai:100 rnd:0)
 # 	[0] ESAttackMultihit(15:4695) -> Dual Shade
-# 	Enemy action
+# 	Deal 120% damage (2 hits, 60% each)
 # 	[1] ESBoardChangeAttackBits(85:4686) -> Sunset Zone
-# 	Change all orbs to Fire, Water, Dark, Heal
+# 	Change all orbs to Fire, Water, Dark, Heal, Deal 150% damage
 # [10] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 23
 # [11] ESBranchFlag(43:10) -> ESBranchFlag
@@ -289,12 +289,12 @@ records:
 # 	[0] ESBlind(5:4690) -> Vesperal Gloom
 # 	Blind all orbs on the board
 # 	[1] ESBoardChangeAttackBits(85:4686) -> Sunset Zone
-# 	Change all orbs to Fire, Water, Dark, Heal
+# 	Change all orbs to Fire, Water, Dark, Heal, Deal 150% damage
 # [15] SkillSet:
 # 	[0] ESBlind(5:4689) -> I recognize the strength of your wish
 # 	Blind all orbs on the board
 # 	[1] ESBoardChangeAttackBits(85:4686) -> Sunset Zone
-# 	Change all orbs to Fire, Water, Dark, Heal
+# 	Change all orbs to Fire, Water, Dark, Heal, Deal 150% damage
 # [16] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 20
 # [17] ESFlagOperation(22:12) -> ESFlagOperation
@@ -305,12 +305,12 @@ records:
 # flag UNSET 0b100
 # [20] ESRowSpawnMulti(79:4691) -> Dusk Guidance
 # 	Condition: 30% chance (ai:30 rnd:0)
-# Change 3rd row to Heal orbs
+# Change 3rd row to Heal orbs, Deal 175% damage
 # [21] ESColumnSpawnMulti(77:4694) -> Purple Lightning
 # 	Condition: 50% chance (ai:50 rnd:0)
-# Change 3rd column to Dark orbs, 5th column to Water orbs
+# Change 3rd column to Dark orbs, 5th column to Water orbs, Deal 80% damage
 # [22] ESAttackMultihit(15:4695) -> Dual Shade
-# Enemy action
+# Deal 120% damage (2 hits, 60% each)
 # [23] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 26
 # [24] ESFlagOperation(22:12) -> ESFlagOperation
@@ -319,17 +319,17 @@ records:
 # 	[0] ESAbsorbAttribute(53:4698) -> Destroying Thunder Dragon's Trial
 # 	Absorb Dark damage for 1 turns
 # 	[1] ESColumnSpawnMulti(77:4699) -> Dark Slash
-# 	Change 2nd, 5th column to Dark orbs
+# 	Change 2nd, 5th column to Dark orbs, Deal 100% damage
 # [26] SkillSet:
 # 	Condition: 50% chance (ai:50 rnd:0)
 # 	[0] ESBlind(5:4690) -> Vesperal Gloom
 # 	Blind all orbs on the board
 # 	[1] ESColumnSpawnMulti(77:4694) -> Purple Lightning
-# 	Change 3rd column to Dark orbs, 5th column to Water orbs
+# 	Change 3rd column to Dark orbs, 5th column to Water orbs, Deal 80% damage
 # [27] SkillSet:
 # 	[0] ESBlind(5:4690) -> Vesperal Gloom
 # 	Blind all orbs on the board
 # 	[1] ESRowSpawnMulti(79:4691) -> Dusk Guidance
-# 	Change 3rd row to Heal orbs
+# 	Change 3rd row to Heal orbs, Deal 175% damage
 # [28] ESAttributeResist(72:4702) -> Light Halve
 # Reduce damage from Light by 50%
