@@ -500,6 +500,9 @@ class ESAction(ESBehavior):
     def ends_battle(self):
         return False
 
+    def is_conditional(self):
+        return False
+
 class ESInactivity(ESAction):
     def __init__(self, skill):
         super().__init__(
@@ -615,6 +618,9 @@ class ESBindAttribute(ESBind):
             target_type_description='{:s} cards'.format(ATTRIBUTE_MAP[params(skill)[1]]))
         self.target_attribute = ATTRIBUTE_MAP[params(skill)[1]]
 
+    def is_conditional(self):
+        return True
+
 
 class ESBindTyping(ESBind):
     def __init__(self, skill: EnemySkillRef):
@@ -623,6 +629,9 @@ class ESBindTyping(ESBind):
             target_count=None,
             target_type_description='{:s} cards'.format(TYPING_MAP[params(skill)[1]]))
         self.target_typing = TYPING_MAP[params(skill)[1]]
+
+    def is_conditional(self):
+        return True
 
 
 class ESBindSkill(ESAction):
@@ -635,6 +644,8 @@ class ESBindSkill(ESAction):
             description=Describe.bind(self.min_turns, self.max_turns, target_type='active skills')
         )
 
+    def is_conditional(self):
+        return True
 
 class ESBindAwoken(ESAction):
     def __init__(self, skill: EnemySkillRef):
@@ -645,6 +656,8 @@ class ESBindAwoken(ESAction):
             description=Describe.bind(self.turns, None, None, 'awoken skills')
         )
 
+    def is_conditional(self):
+        return True
 
 class ESOrbChange(ESAction):
     def __init__(self, skill: EnemySkillRef, orb_from, orb_to):
@@ -656,15 +669,24 @@ class ESOrbChange(ESAction):
             description=Describe.orb_change(self.orb_from, self.orb_to)
         )
 
+class ESOrbChangeConditional(ESOrbChange):
+    """Parent class for orb changes that may not execute."""
 
-class ESOrbChangeSingle(ESOrbChange):
+    def __init__(self, skill: EnemySkillRef, orb_from, orb_to):
+        super().__init__(skill, orb_from, orb_to)
+
+    def is_conditional(self):
+        return True
+
+
+class ESOrbChangeSingle(ESOrbChangeConditional):
     def __init__(self, skill: EnemySkillRef):
         from_attr = ATTRIBUTE_MAP[params(skill)[1]]
         to_attr = ATTRIBUTE_MAP[params(skill)[2]]
         super().__init__(skill, from_attr, to_attr)
 
 
-class ESOrbChangeAttackBits(ESOrbChange):
+class ESOrbChangeAttackBits(ESOrbChangeConditional):
     def __init__(self, skill: EnemySkillRef):
         super().__init__(
             skill,
@@ -674,11 +696,14 @@ class ESOrbChangeAttackBits(ESOrbChange):
         self.attack = ESAttack.new_instance(params(skill)[1])
 
 
-class ESJammerChangeSingle(ESOrbChange):
+class ESJammerChangeSingle(ESOrbChangeConditional):
     def __init__(self, skill: EnemySkillRef):
         from_attr = ATTRIBUTE_MAP[params(skill)[1]]
         to_attr = ATTRIBUTE_MAP[6]
         super().__init__(skill, from_attr, to_attr)
+
+    def is_conditional(self):
+        return True
 
 
 class ESJammerChangeRandom(ESOrbChange):
@@ -689,7 +714,7 @@ class ESJammerChangeRandom(ESOrbChange):
         super().__init__(skill, from_attr, to_attr)
 
 
-class ESPoisonChangeSingle(ESOrbChange):
+class ESPoisonChangeSingle(ESOrbChangeConditional):
     def __init__(self, skill: EnemySkillRef):
         from_attr = ATTRIBUTE_MAP[params(skill)[1]]
         to_attr = ATTRIBUTE_MAP[7]

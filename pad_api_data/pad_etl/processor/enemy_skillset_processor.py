@@ -347,6 +347,9 @@ def loop_through(ctx, behaviors: List[ESBehavior]) -> List[ESBehavior]:
                         continue
                     ctx.update_skill_use(cond.one_time)
                     results.append(b)
+                    if b.is_conditional():
+                        idx += 1
+                        continue
                     return results
                 else:
                     # Not a terminal action, so accumulate it and continue.
@@ -786,6 +789,15 @@ def clean_skillset(moveset: Moveset, hp_actions: List[HpActions]):
         hp_action.repeating = [x for x in hp_action.repeating if x.skills]
         if hp_action.timed or hp_action.repeating:
             moveset.hp_actions.append(hp_action)
+
+    # Clean up optional timed skills that bleed over into repeating skills.
+    # Disabled temporarily.
+    # for hp_action in moveset.hp_actions:
+    #     if len(hp_action.timed) != 1:
+    #         continue
+    #     timed = hp_action.timed[0]
+    #     if len(timed.skills) > 1 and len(hp_action.repeating) == 1:
+    #         timed.skills = [x for x in timed.skills if x not in hp_action.repeating[0].skills]
 
 
 def extract_levels(enemy_behavior: List[Any]):
