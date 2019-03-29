@@ -415,6 +415,10 @@ class Describe:
     def attribute_exists(atts):
         return 'when {:s} orbs are on the board'.format(', '.join(atts))
 
+    @staticmethod
+    def countdown(counter):
+        return 'Display \'{:d}\' and skip turn'.format(counter)
+
 
 # Condition subclass
 
@@ -1588,7 +1592,7 @@ class ESSetCounterIf(ESLogic):
 
     @property
     def description(self):
-        return 'counter {} {} if counter = {}'.format(self.effect, self.counter, self.counter_is)
+        return 'set counter = {} if counter == {}'.format(self.counter, self.counter_is)
 
 
 class ESBranch(ESLogic):
@@ -1668,8 +1672,15 @@ class ESCountdown(ESLogic):
         # decrement counter and end path
         super().__init__(skill, effect='countdown')
 
-    def full_description(self):
-        return 'Display <COUNTER> and skip turn'
+
+class ESCountdownMessage(ESAction):
+    """Dummy action class to represent displaying countdown numbers"""
+    def __init__(self, enemy_skill_id, current_counter=0):
+        super(ESCountdownMessage, self).__init__(EnemySkillRef(enemy_skill_id, 0, 0))
+        self.enemy_skill_id += 1000 * current_counter
+        self.current_counter = current_counter
+        self.name = 'Countdown Message'
+        self.description = Describe.countdown(self.current_counter)
 
 
 class ESPreemptive(ESLogic):

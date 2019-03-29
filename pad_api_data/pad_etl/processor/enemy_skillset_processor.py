@@ -117,8 +117,6 @@ class Context(object):
         self.skill_use = 0
         # Special flag that is modified by the 'counter' operations.
         self.counter = 0
-        # Countdown on/off
-        self.countdown = False
         # Current HP value.
         self.hp = 100
         # Monster level, toggles some behaviors.
@@ -166,11 +164,6 @@ class Context(object):
         if self.combo_shield > 0:
             # count down shield turns
             self.combo_shield -= 1
-        if self.countdown:
-            if self.counter > 0:
-                self.counter -= 1
-            else:
-                self.countdown = False
 
     def apply_skill_effects(self, behavior):
         """Check context to see if a skill is allowed to be used, and update flag accordingly"""
@@ -311,15 +304,6 @@ def loop_through(ctx, behaviors: List[ESBehavior]) -> List[ESBehavior]:
             ctx.update_skill_use(b.condition.one_time)
             return results
 
-        if b_type == ESCountdown:
-            ctx.countdown = True
-            if ctx.counter == 1:
-                idx += 1
-                continue
-            else:
-                results.append(b)
-                return results
-
         if b_type == ESAttackUpStatus:
             # This is a special case; it's not a terminal action unlike other enrages.
             results.append(b)
@@ -429,6 +413,15 @@ def loop_through(ctx, behaviors: List[ESBehavior]) -> List[ESBehavior]:
                 ctx.counter = b.counter
             idx += 1
             continue
+
+        if b_type == ESCountdown:
+            ctx.counter -= 1
+            if ctx.counter > 0:
+                results.append(ESCountdownMessage(b.enemy_skill_id, ctx.counter))
+                return results
+            else:
+                idx += 1
+                continue
 
         if b_type == ESBranchCounter:
             # Branch based on the counter value.
