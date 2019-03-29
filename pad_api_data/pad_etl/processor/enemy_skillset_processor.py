@@ -578,7 +578,7 @@ def extract_loop_skills(hp: int, turn_data: list, loop_start: int, loop_end: int
     loop_size = loop_end - loop_start
     repeating_skill_groups = []
     for idx in range(loop_start, loop_end):
-        repeating_skill_groups.append(RepeatSkillGroup(idx + 1, loop_size, hp, turn_data[idx]))
+        repeating_skill_groups.append(RepeatSkillGroup(idx + 1 - loop_start, loop_size, hp, turn_data[idx]))
 
     return HpActions(hp, timed_skill_groups, repeating_skill_groups)
 
