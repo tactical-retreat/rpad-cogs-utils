@@ -65,10 +65,13 @@ def run_test(args):
         116, # Gunma
         158, # Goemon
         172, # Taiko
+        176, # Valkyrie
         307, # Hera-Is
         318, # Zeus-Dios
         317, # ECO
         331, # Hera-Ur
+        337, # Dragon Zombie
+        354, # Takeminakata
     ]
 
     for dungeon_id, wave_data in dungeon_id_to_wavedata.items():
