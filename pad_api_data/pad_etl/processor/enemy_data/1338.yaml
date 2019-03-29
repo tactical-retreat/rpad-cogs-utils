@@ -7,8 +7,7 @@ monster_id: 1338
 monster_name_en: Durga
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 3 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -74,15 +73,6 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Bind active skills for 5 turns + Player -99% HP
   desc_jp: Bind active skills for 5 turns + Player -99% HP
   max_atk_pct: null
@@ -95,8 +85,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute repeatedly. Turn 1
-  name_jp: Execute repeatedly. Turn 1
+  name_en: Execute repeatedly. Turn 1-2
+  name_jp: Execute repeatedly. Turn 1-2
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -113,8 +103,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
+  name_en: Loop to 1 after. Turn 3
+  name_jp: Loop to 1 after. Turn 3
   one_time: false
   record_type_name: DIVIDER
   usage_pct: 100
@@ -126,15 +116,6 @@ records:
   name_jp: How about that?
   one_time: true
   record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Loop to 1 after. Turn 3
-  name_jp: Loop to 1 after. Turn 3
-  one_time: false
-  record_type_name: DIVIDER
   usage_pct: 100
 - !SkillRecord
   desc_en: Spawn random 3 Jammer orbs, Deal 150% damage
@@ -220,6 +201,33 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
+  desc_en: Change Dark to Jammer, Deal 100% damage
+  desc_jp: Change Dark to Jammer, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Let me get rid of these!
+  name_jp: Let me get rid of these!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 33
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  max_atk_pct: null
+  name_en: You're OK with this, right?
+  name_jp: You're OK with this, right?
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 33
+- !SkillRecord
+  desc_en: Deal 120% damage (2 hits, 60% each)
+  desc_jp: Deal 120% damage (2 hits, 60% each)
+  max_atk_pct: 120
+  name_en: Hey now, what's up with you?
+  name_jp: Hey now, what's up with you?
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 34
+- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
@@ -265,18 +273,6 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
-############################################################
-### Unused Actions
-############################################################
-# ESOrbChangeAttackBits(108:10228) -> Let me get rid of these!
-# 	Condition: 33% chance (ai:0 rnd:33)
-# Change Dark to Jammer, Deal 100% damage
-# ESGravity(50:10224) -> You're OK with this, right?
-# 	Condition: 33% chance (ai:0 rnd:33)
-# Player -99% HP
-# ESAttackMultihit(15:10231) -> Hey now, what's up with you?
-# 	Condition: 34% chance (ai:0 rnd:34)
-# Deal 120% damage (2 hits, 60% each)
 ############################################################
 ### ES Modifiers
 ############################################################

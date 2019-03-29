@@ -8,7 +8,7 @@ monster_name_en: Seething Dragon Caller, Alpha
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 5 unused actions
+- Found 2 unused actions
 
 ############################################################
 ### Data @ 1
@@ -35,6 +35,33 @@ records:
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
+- !SkillRecord
+  desc_en: Delay active skills by 2 turns, Deal 95% damage
+  desc_jp: Delay active skills by 2 turns, Deal 95% damage
+  max_atk_pct: 95
+  name_en: I'll make you suffer!
+  name_jp: I'll make you suffer!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 33
+- !SkillRecord
+  desc_en: Spawn random 5 Jammer orbs, Deal 100% damage
+  desc_jp: Spawn random 5 Jammer orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: I'll burn you to ashes!
+  name_jp: I'll burn you to ashes!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 33
+- !SkillRecord
+  desc_en: Deal 110% damage (2 hits, 55% each)
+  desc_jp: Deal 110% damage (2 hits, 55% each)
+  max_atk_pct: 110
+  name_en: Hey, hey, hey!
+  name_jp: Hey, hey, hey!
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 34
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
@@ -107,15 +134,6 @@ records:
 # 	Seal 1st row for 5 turns
 # 	[1] ESAbsorbCombo(67:11149) -> What are you doing, stupid Suou?!
 # 	Absorb combo <= 6 damage for 999 turns
-# ESSkillDelay(89:11152) -> I'll make you suffer!
-# 	Condition: 33% chance (ai:0 rnd:33)
-# Delay active skills by 2 turns, Deal 95% damage
-# ESRandomSpawn(92:11153) -> I'll burn you to ashes!
-# 	Condition: 33% chance & when Fire, Water, Wood, Light, Dark, Heal, Poison, Mortal Poison orbs are on the board (ai:0 rnd:33)
-# Spawn random 5 Jammer orbs, Deal 100% damage
-# ESAttackMultihit(15:11154) -> Hey, hey, hey!
-# 	Condition: 34% chance (ai:0 rnd:34)
-# Deal 110% damage (2 hits, 55% each)
 # SkillSet:
 # 	Condition: On death (ai:0 rnd:0)
 # 	[0] ESInactivity(66:11160) -> Oh, on an errand? Why didn't you say?

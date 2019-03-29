@@ -7,7 +7,8 @@ monster_id: 2394
 monster_name_en: Awoken Freyja
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 1 unused actions
 
 ############################################################
 ### Data @ 1
@@ -54,15 +55,6 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Execute repeatedly. Turn 1
-  name_jp: Execute repeatedly. Turn 1
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
   desc_en: Change Mortal Poison to Heal, Deal 150% damage
   desc_jp: Change Mortal Poison to Heal, Deal 150% damage
   max_atk_pct: 150
@@ -71,26 +63,6 @@ records:
   one_time: true
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Loop to 1 after. Turn 2
-  name_jp: Loop to 1 after. Turn 2
-  one_time: false
-  record_type_name: DIVIDER
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change 2nd row to Wood, Dark orbs, 4th row to Wood, Dark orbs, Deal 50%
-    damage + Leader changes to random sub for 1 turns
-  desc_jp: Change 2nd row to Wood, Dark orbs, 4th row to Wood, Dark orbs, Deal 50%
-    damage + Leader changes to random sub for 1 turns
-  max_atk_pct: null
-  name_en: This flower is beautiful, right? + Those ones are splendid too
-  name_jp: This flower is beautiful, right? + Those ones are splendid too
-  one_time: true
-  record_type_name: ACTION
-  usage_pct: 33
 - !SkillRecord
   desc_en: Change 2nd row to Wood, Dark orbs, 4th row to Wood, Dark orbs, Deal 50%
     damage + Delay active skills by 1~2 turns, Deal 30% damage
@@ -163,6 +135,15 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# SkillSet:
+# 	Condition: One-time use (ai:33 rnd:0) (one-time: 1)
+# 	[0] ESRowSpawnMulti(79:9579) -> This flower is beautiful, right?
+# 	Change 2nd row to Wood, Dark orbs, 4th row to Wood, Dark orbs, Deal 50% damage
+# 	[1] ESLeaderSwap(75:9580) -> Those ones are splendid too
+# 	Leader changes to random sub for 1 turns
 ############################################################
 ### ES Modifiers
 ############################################################
