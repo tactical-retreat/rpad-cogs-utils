@@ -33,7 +33,7 @@ class SkillRecord(yaml.YAMLObject):
     yaml_tag = u'!SkillRecord'
 
     def __init__(self, record_type=RecordType.TEXT, name_en='', name_jp='', desc_en='', desc_jp='', min_atk_pct=None,
-                 max_atk_pct=None, usage_pct=100, one_time=False):
+                 max_atk_pct=None, usage_pct=100, one_time=0):
         self.record_type_name = record_type.name
         # For actions, the name that is displayed in-game.
         # For dividers, contains the divider text.
@@ -106,7 +106,7 @@ def behavior_to_skillrecord(record_type: RecordType, action: Union[ESAction, ESS
     min_damage = None
     max_damage = None
     usage_pct = 100
-    one_time = False
+    one_time = 0
     if type(action) == ESSkillSet:
         name = ' + '.join(map(lambda s: s.name, action.skill_list))
         description = ' + '.join(map(lambda s: s.full_description(), action.skill_list))
@@ -128,7 +128,7 @@ def behavior_to_skillrecord(record_type: RecordType, action: Union[ESAction, ESS
     if cond is not None:
         usage_pct = cond.use_chance()
         if cond.one_time:
-            one_time = True
+            one_time = cond.one_time
 
     if note:
         description += ' ({})'.format(note)
@@ -146,7 +146,7 @@ def behavior_to_skillrecord(record_type: RecordType, action: Union[ESAction, ESS
 
 def create_divider(divider_text: str) -> SkillRecord:
     return SkillRecord(record_type=RecordType.DIVIDER, name_en=divider_text, name_jp=divider_text, desc_en='',
-                       desc_jp='')
+                       desc_jp='', max_atk_pct=None, min_atk_pct=None, usage_pct=None, one_time=None)
 
 
 def special_adjust_enemy_remaining(skillset: ProcessedSkillset):
@@ -438,10 +438,13 @@ def load_summary_as_dump_text(card: BookCard, monster_level: int, dungeon_atk_mo
         desc = row.desc_en
         if row.max_atk_pct:
             desc = '{} Damage - {}'.format(int(row.max_atk_pct * atk / 100), desc)
-        if row.usage_pct not in [100, 0]:
+        if row.usage_pct not in [100, 0, None]:
             desc += ' ({}% chance)'.format(row.usage_pct)
-        if row.one_time:
-            desc += ' (1 time use)'
+        if row.one_time and row.record_type_name != 'PREEMPT':
+            if card.enemy_skill_effect_type == 1:
+                desc += ' (every {} turns)'.format(row.one_time + 1)
+            else:
+                desc += ' (1 time use)'
         msg += header + '\n'
         if desc:
             msg += desc + '\n'
