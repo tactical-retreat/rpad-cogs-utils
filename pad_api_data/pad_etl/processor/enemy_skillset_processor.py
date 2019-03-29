@@ -17,6 +17,39 @@ ZERO_INDEXED_MONSTERS = [
 ]
 
 
+# Everything in this chunk False is the old behavior
+# This one is probably wrong, especially if we use SEED_CTX
+APPLY_TURN_AROUND_PREEMPT = False
+SEED_CTX = False
+START_TURN_UPDATE = False
+END_TURN_UPDATE = False
+USE_SETS_MAX = False
+
+
+# Both of these as TRUE is the default behavior
+USE_UPDATE = not START_TURN_UPDATE and not END_TURN_UPDATE
+
+# Good chance that this should be False if SEED_CTX is true.
+UPDATE_USE_IN_PREEMPT = True
+
+SCHEME_1 = False
+SCHEME_2 = True
+
+
+if SCHEME_1:
+    SEED_CTX = True
+    START_TURN_UPDATE = True
+    UPDATE_USE_IN_PREEMPT = False
+    USE_SETS_MAX = True
+
+
+if SCHEME_2:
+    SEED_CTX = False
+    START_TURN_UPDATE = True
+    UPDATE_USE_IN_PREEMPT = True
+    USE_SETS_MAX = True
+
+
 class StandardSkillGroup(object):
     """Base class storing a list of skills."""
 
@@ -217,6 +250,9 @@ class Context(object):
         #     self.hp += behavior.max_amount
         return True
 
+    def start_turn(self):
+        pass
+
 
 class CTXBitmap(Context):
     def __init__(self, level, skill_use_flags):
@@ -236,7 +272,8 @@ class CTXCounter(Context):
     def __init__(self, level, skill_use_counter):
         # TODO: skill_use_counter param might be useless
         super(CTXCounter, self).__init__(level)
-        self.skill_use = 0
+        self.skill_use_counter = skill_use_counter
+        self.skill_use = skill_use_counter if SEED_CTX else 0
 
     def check_skill_use(self, usage):
         if usage is None:
@@ -245,12 +282,26 @@ class CTXCounter(Context):
             if self.skill_use == 0:
                 return True
             elif self.skill_use > 0:
-                self.skill_use -= 1
+                if USE_UPDATE:
+                    self.skill_use -= 1
                 return False
 
     def update_skill_use(self, usage):
         if usage is not None:
-            self.skill_use += usage
+            if USE_SETS_MAX:
+                self.skill_use = self.skill_use_counter
+            else:
+                self.skill_use += usage
+
+    def start_turn(self):
+        super().start_turn()
+        if START_TURN_UPDATE:
+            self.skill_use -= 1
+
+    def turn_event(self):
+        super().turn_event()
+        if END_TURN_UPDATE:
+            self.skill_use -= 1
 
 
 def default_attack():
@@ -308,7 +359,8 @@ def loop_through(ctx, behaviors: List[ESBehavior]) -> List[ESBehavior]:
             ctx.is_preemptive = True
             ctx.do_preemptive = True
             results.append(b)
-            ctx.update_skill_use(b.condition.one_time)
+            if UPDATE_USE_IN_PREEMPT:
+                ctx.update_skill_use(b.condition.one_time)
             return results
 
         if b_type == ESCountdown:
@@ -505,7 +557,12 @@ def extract_preemptives(ctx: Context, behaviors: List[Any]):
     """
     original_ctx = ctx.clone()
 
+    if APPLY_TURN_AROUND_PREEMPT:
+        ctx.start_turn()
     cur_loop = loop_through(ctx, behaviors)
+    if APPLY_TURN_AROUND_PREEMPT:
+        ctx.turn_event()
+
     if ctx.is_preemptive:
         # Save the current loop as preempt
         return ctx, cur_loop
@@ -520,6 +577,7 @@ def extract_turn_behaviors(ctx: Context, behaviors: List[ESBehavior], hp_checkpo
     hp_ctx.hp = hp_checkpoint
     turn_data = []
     for idx in range(0, 20):
+        ctx.start_turn()
         turn_data.append(loop_through(hp_ctx, behaviors))
         ctx.turn_event()
 
