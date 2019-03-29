@@ -64,7 +64,7 @@ def _clean_enemy(cards, enemy_skills):
         if len(card.enemy_skill_refs) == 0:
             continue
         enemy_skillset = [x for x in card.enemy_skill_refs]
-        behavior = enemy_skillset_lib.extract_behavior(enemy_skillset)
+        behavior = enemy_skillset_lib.extract_behavior(card, enemy_skillset)
         merged_enemies.append(MergedEnemy(card.card_id, behavior))
     return merged_enemies
 

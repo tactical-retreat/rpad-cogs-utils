@@ -1,11 +1,9 @@
 from collections import OrderedDict
 import json
 from math import ceil, log
-from typing import List, Any
+from typing import List
 
-from ..common import pad_util
-from ..data.card import EnemySkillRef
-
+from ..data.card import EnemySkillRef, BookCard
 
 ATTRIBUTE_MAP = {
     -1: 'Random',
@@ -1809,7 +1807,7 @@ def apply_es_overrides(es):
     pass
 
 
-def inject_implicit_onetime(behavior: List[ESAction]):
+def inject_implicit_onetime(card: BookCard, behavior: List[ESAction]):
     """Injects one_time values into specific categories of skills.
 
     Currently only ESBindRandom but other early skills may need this.
@@ -1818,6 +1816,9 @@ def inject_implicit_onetime(behavior: List[ESAction]):
     TODO: Investigate if this has an ai/rnd interaction, like the hp_threshold issue.
     There may be some interaction with slots 52/53/54 to take into account but unclear.
     """
+    if card.enemy_skill_effect_type != 0:
+        # This only seems to apply to type 0 monsters
+        return
     max_flag = max([0] + [x.condition.one_time for x in behavior if hasattr(x, 'condition') and x.condition.one_time])
     next_flag = pow(2, ceil(log(max_flag + 1)/log(2)))
     for b in behavior:
@@ -1826,7 +1827,7 @@ def inject_implicit_onetime(behavior: List[ESAction]):
             next_flag = next_flag << 1
 
 
-def extract_behavior(enemy_skillset: List[EnemySkillRef]):
+def extract_behavior(card: BookCard, enemy_skillset: List[EnemySkillRef]):
     if enemy_skill_map is None:
         return None
     behavior = []
@@ -1839,7 +1840,7 @@ def extract_behavior(enemy_skillset: List[EnemySkillRef]):
         apply_es_overrides(new_es)
         behavior.append(new_es)
 
-    inject_implicit_onetime(behavior)
+    inject_implicit_onetime(card, behavior)
     return behavior
 
 
