@@ -7,8 +7,7 @@ monster_id: 101250
 monster_name_en: Alt. Awoken Hera-Sowilo
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -117,20 +116,78 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
-  desc_en: Display <COUNTER> and skip turn
-  desc_jp: Display <COUNTER> and skip turn
+  desc_en: ''
+  desc_jp: ''
   max_atk_pct: null
-  name_en: ESCountdown
-  name_jp: ESCountdown
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Display '3' and skip turn
+  desc_jp: Display '3' and skip turn
+  max_atk_pct: null
+  name_en: Countdown Message
+  name_jp: Countdown Message
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Display '2' and skip turn
+  desc_jp: Display '2' and skip turn
+  max_atk_pct: null
+  name_en: Countdown Message
+  name_jp: Countdown Message
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Display '1' and skip turn
+  desc_jp: Display '1' and skip turn
+  max_atk_pct: null
+  name_en: Countdown Message
+  name_jp: Countdown Message
+  one_time: false
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 4
+  name_jp: Loop to 1 after. Turn 4
+  one_time: false
+  record_type_name: DIVIDER
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 500% damage (5 hits, 100% each)
+  desc_jp: Deal 500% damage (5 hits, 100% each)
+  max_atk_pct: 500
+  name_en: Shining Death Queen's Judgement
+  name_jp: Shining Death Queen's Judgement
   one_time: false
   record_type_name: ACTION
   usage_pct: 100
 
-############################################################
-### Unused Actions
-############################################################
-# ESAttackMultihit(15:1027) -> Shining Death Queen's Judgement
-# Deal 500% damage (5 hits, 100% each)
 ############################################################
 ### ES Modifiers
 ############################################################
@@ -165,7 +222,7 @@ records:
 # [10] ESAbsorbCombo(67:1026) -> Shining Death Queen's Test
 # Absorb combo <= 5 damage for 5 turns
 # [11] ESSetCounterIf(38:177) -> ESSetCounterIf
-# counter set_counter_if 4 if counter = 0
+# set counter = 4 if counter == 0
 # [12] ESCountdown(37:178) -> ESCountdown
 # countdown
 # [13] ESAttackMultihit(15:1027) -> Shining Death Queen's Judgement
