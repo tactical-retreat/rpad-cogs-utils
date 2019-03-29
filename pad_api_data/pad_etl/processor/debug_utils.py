@@ -21,13 +21,16 @@ def simple_dump_obj(o):
             msg += '\n\t{}'.format(fmt_cond(o.condition))
         for idx, behavior in enumerate(o.skill_list):
             msg += '\n\t[{}] {}'.format(idx, fmt_action_name(behavior))
-            msg += '\n\t{}'.format(behavior.description)
+            msg += '\n\t{}'.format(behavior.full_description())
         return msg
     else:
         msg = fmt_action_name(o)
-        if hasattr(o, 'condition') and o.condition.description:
+        if hasattr(o, 'condition') and (o.condition.description or o.condition.one_time):
             msg += '\n\t{}'.format(fmt_cond(o.condition))
-        msg += '\n{}'.format(o.description)
+        if issubclass(type(o), ESAction):
+            msg += '\n{}'.format(o.full_description())
+        else:
+            msg += '\n{}'.format(o.description)
         return msg
 
 
