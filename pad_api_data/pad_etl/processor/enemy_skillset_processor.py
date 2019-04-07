@@ -211,28 +211,7 @@ class Context(object):
         return True
 
 
-class CTXBitmap(Context):
-    def __init__(self, level, skill_use_flags):
-        # TODO: skill_use_flags param might be useless
-        super().__init__(level)
-        self.skill_use = 0
-        self.flag_skill_use = 0
-
-    def check_skill_use(self, cond: ESCondition):
-        if cond.one_time:
-            return self.skill_use & cond.one_time == 0
-        elif cond.forced_one_time:
-            return self.flag_skill_use & cond.forced_one_time == 0
-        else:
-            return True
-
-    def update_skill_use(self, cond: ESCondition):
-        if cond.one_time:
-            self.skill_use |= cond.one_time
-        elif cond.forced_one_time:
-            self.flag_skill_use |= cond.forced_one_time
-
-class CTXBitmap2(Context):
+class CTXCountdown(Context):
     def __init__(self, level, skill_use_flags):
         # For testing
         super().__init__(level)
@@ -683,14 +662,14 @@ def convert(card: BookCard, enemy_behavior: List[ESBehavior],
 
     # Pick the correct enemy_skill_effect model to use
     if enemy_skill_effect_type == 0:
-        ctx = CTXBitmap(level, enemy_skill_effect)
+        ctx = CTXCountdown(level, enemy_skill_effect)
     elif enemy_skill_effect_type == 1:
         ctx = CTXCounter(level, enemy_skill_effect)
     else:
         # ctx = Context(level)
         # For now fall back to the old context implementation to prevent errors in log.
         print('Incorrect context used')
-        ctx = CTXBitmap(level, enemy_skill_effect)
+        ctx = CTXCountdown(level, enemy_skill_effect)
 
     if force_one_enemy:
         ctx.enemies = 1
