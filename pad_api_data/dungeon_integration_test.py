@@ -67,6 +67,7 @@ def run_test(args):
         172, # Taiko
         176, # Valkyrie
         307, # Hera-Is
+        308, # Gung-ho
         318, # Zeus-Dios
         317, # ECO
         331, # Hera-Ur
