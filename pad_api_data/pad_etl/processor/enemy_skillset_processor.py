@@ -140,10 +140,10 @@ class Context(object):
     def clone(self):
         return copy.deepcopy(self)
 
-    def check_skill_use(self, usage):
+    def check_skill_use(self, cond: ESCondition):
         raise NotImplementedError('check_skill_use')
 
-    def update_skill_use(self, usage):
+    def update_skill_use(self, cond: ESCondition):
         raise NotImplementedError('update_skill_use')
 
     def turn_event(self):
@@ -214,24 +214,54 @@ class Context(object):
 class CTXBitmap(Context):
     def __init__(self, level, skill_use_flags):
         # TODO: skill_use_flags param might be useless
-        super(CTXBitmap, self).__init__(level)
+        super().__init__(level)
         self.skill_use = 0
+        self.flag_skill_use = 0
 
-    def check_skill_use(self, usage):
-        return usage is None or self.skill_use & usage == 0
+    def check_skill_use(self, cond: ESCondition):
+        if cond.one_time:
+            return self.skill_use & cond.one_time == 0
+        elif cond.forced_one_time:
+            return self.flag_skill_use & cond.forced_one_time == 0
+        else:
+            return True
 
-    def update_skill_use(self, usage):
-        if usage is not None:
-            self.skill_use |= usage
+    def update_skill_use(self, cond: ESCondition):
+        if cond.one_time:
+            self.skill_use |= cond.one_time
+        elif cond.forced_one_time:
+            self.flag_skill_use |= cond.forced_one_time
+
+class CTXBitmap2(Context):
+    def __init__(self, level, skill_use_flags):
+        # For testing
+        super().__init__(level)
+        self.skill_use = skill_use_flags
+        self.flag_skill_use = 0
+
+    def check_skill_use(self, cond: ESCondition):
+        if cond.one_time:
+            return self.skill_use >= cond.one_time
+        elif cond.forced_one_time:
+            return self.flag_skill_use & cond.forced_one_time == 0
+        else:
+            return True
+
+    def update_skill_use(self, cond: ESCondition):
+        if cond.one_time:
+            self.skill_use -= cond.one_time
+        elif cond.forced_one_time:
+            self.flag_skill_use |= cond.forced_one_time
 
 
 class CTXCounter(Context):
     def __init__(self, level, skill_use_counter):
         # TODO: skill_use_counter param might be useless
-        super(CTXCounter, self).__init__(level)
+        super().__init__(level)
         self.skill_use = 0
 
-    def check_skill_use(self, usage):
+    def check_skill_use(self, cond: ESCondition):
+        usage = cond.one_time
         if usage is None:
             return True
         else:
@@ -241,7 +271,8 @@ class CTXCounter(Context):
                 self.skill_use -= 1
                 return False
 
-    def update_skill_use(self, usage):
+    def update_skill_use(self, cond: ESCondition):
+        usage = cond.one_time
         if usage is not None:
             self.skill_use += usage
 
@@ -301,7 +332,7 @@ def loop_through(ctx, behaviors: List[ESBehavior]) -> List[ESBehavior]:
             ctx.is_preemptive = True
             ctx.do_preemptive = True
             results.append(b)
-            ctx.update_skill_use(b.condition.one_time)
+            ctx.update_skill_use(b.condition)
             return results
 
         if b_type == ESAttackUpStatus:
@@ -323,13 +354,13 @@ def loop_through(ctx, behaviors: List[ESBehavior]) -> List[ESBehavior]:
 
                 if cond.use_chance() == 100 and b_type != ESDispel:
                     # This always executes so it is a terminal action.
-                    if not ctx.check_skill_use(cond.one_time):
+                    if not ctx.check_skill_use(cond):
                         idx += 1
                         continue
                     if not ctx.apply_skill_effects(b):
                         idx += 1
                         continue
-                    ctx.update_skill_use(cond.one_time)
+                    ctx.update_skill_use(cond)
                     results.append(b)
                     if b.is_conditional():
                         idx += 1
@@ -337,7 +368,7 @@ def loop_through(ctx, behaviors: List[ESBehavior]) -> List[ESBehavior]:
                     return results
                 else:
                     # Not a terminal action, so accumulate it and continue.
-                    if ctx.check_skill_use(cond.one_time) and ctx.apply_skill_effects(b):
+                    if ctx.check_skill_use(cond) and ctx.apply_skill_effects(b):
                         results.append(b)
                     idx += 1
                     continue

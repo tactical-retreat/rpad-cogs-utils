@@ -129,6 +129,8 @@ def behavior_to_skillrecord(record_type: RecordType, action: Union[ESAction, ESS
         usage_pct = cond.use_chance()
         if cond.one_time:
             one_time = cond.one_time
+        elif cond.forced_one_time:
+            one_time = cond.forced_one_time
 
     if note:
         description += ' ({})'.format(note)

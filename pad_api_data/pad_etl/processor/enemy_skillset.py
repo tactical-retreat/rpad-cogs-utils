@@ -430,8 +430,9 @@ class ESCondition(object):
         self._rnd = rnd
         self.hp_threshold = None if params_arr[11] is None else params_arr[11]
         self.one_time = params_arr[13]
+        self.forced_one_time = None
         self.description = description if description else \
-            Describe.condition(max(ai, rnd), self.hp_threshold, self.one_time is not None)
+            Describe.condition(max(ai, rnd), self.hp_threshold, self.one_time is not None or self.forced_one_time is not None)
 
         # Force ignore hp threshold on skill if the monster has no AI.
         if self.hp_threshold and self._ai == 0:
@@ -1859,7 +1860,7 @@ def inject_implicit_onetime(card: BookCard, behavior: List[ESAction]):
     next_flag = pow(2, ceil(log(max_flag + 1)/log(2)))
     for b in behavior:
         if type(b) in [ESBindRandom, ESBindAttribute] and not b.condition.one_time and b.condition.use_chance() == 100:
-            b.condition.one_time = next_flag
+            b.condition.forced_one_time = next_flag
             next_flag = next_flag << 1
 
 

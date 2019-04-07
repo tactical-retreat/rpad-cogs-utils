@@ -10,6 +10,8 @@ def simple_dump_obj(o):
         msg = 'Condition: {} (ai:{} rnd:{})'.format(c.description, c._ai, c._rnd)
         if c.one_time:
             msg += ' (one-time: {})'.format(c.one_time)
+        elif c.forced_one_time:
+            msg += ' (one-time only)'
         return msg
 
     def fmt_action_name(a):
@@ -25,7 +27,7 @@ def simple_dump_obj(o):
         return msg
     else:
         msg = fmt_action_name(o)
-        if hasattr(o, 'condition') and (o.condition.description or o.condition.one_time):
+        if hasattr(o, 'condition') and (o.condition.description or o.condition.one_time or o.condition.forced_one_time):
             msg += '\n\t{}'.format(fmt_cond(o.condition))
         if issubclass(type(o), ESAction):
             msg += '\n{}'.format(o.full_description())
