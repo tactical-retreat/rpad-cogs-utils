@@ -136,25 +136,14 @@ records:
   record_type_name: ACTION
   usage_pct: 50
 - !SkillRecord
-  desc_en: Bind awoken skills for 2 turns + Change 5th row to Mortal Poison orbs,
+  desc_en: Bind active skills for 2 turns + Change 5th row to Mortal Poison orbs,
     Deal 50% damage
-  desc_jp: Bind awoken skills for 2 turns + Change 5th row to Mortal Poison orbs,
-    Deal 50% damage
-  max_atk_pct: null
-  name_en: Poppy's Lethargy + Cocytus's Erosion
-  name_jp: Poppy's Lethargy + Cocytus's Erosion
-  one_time: 34
-  record_type_name: ACTION
-  usage_pct: 50
-- !SkillRecord
-  desc_en: Delay active skills by 2 turns + Change 5th row to Mortal Poison orbs,
-    Deal 50% damage
-  desc_jp: Delay active skills by 2 turns + Change 5th row to Mortal Poison orbs,
+  desc_jp: Bind active skills for 2 turns + Change 5th row to Mortal Poison orbs,
     Deal 50% damage
   max_atk_pct: null
-  name_en: Narcissus's Temptation + Cocytus's Erosion
-  name_jp: Narcissus's Temptation + Cocytus's Erosion
-  one_time: 32
+  name_en: Pomegranate's Folly + Cocytus's Erosion
+  name_jp: Pomegranate's Folly + Cocytus's Erosion
+  one_time: 21
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -219,7 +208,83 @@ records:
   max_atk_pct: null
   name_en: Narcissus's Temptation + Cocytus's Erosion
   name_jp: Narcissus's Temptation + Cocytus's Erosion
-  one_time: 2
+  one_time: 12
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Bind active skills for 2 turns + Change 5th row to Mortal Poison orbs,
+    Deal 50% damage
+  desc_jp: Bind active skills for 2 turns + Change 5th row to Mortal Poison orbs,
+    Deal 50% damage
+  max_atk_pct: null
+  name_en: Pomegranate's Folly + Cocytus's Erosion
+  name_jp: Pomegranate's Folly + Cocytus's Erosion
+  one_time: 11
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 8
+  name_jp: Turn 8
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change Mortal Poison to Heal, Deal 400% damage
+  desc_jp: Change Mortal Poison to Heal, Deal 400% damage
+  max_atk_pct: 400
+  name_en: Bloody Blossom - Anemone
+  name_jp: Bloody Blossom - Anemone
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 9
+  name_jp: Turn 9
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind 2 random subs for 2 turns
+  desc_jp: Bind 2 random subs for 2 turns
+  max_atk_pct: null
+  name_en: Light Sleep's Cradle
+  name_jp: Light Sleep's Cradle
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Bind 4 random subs for 1 turns
+  desc_jp: Bind 4 random subs for 1 turns
+  max_atk_pct: null
+  name_en: Nap's Cradle
+  name_jp: Nap's Cradle
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 10
+  name_jp: Turn 10
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind awoken skills for 2 turns + Change 5th row to Mortal Poison orbs,
+    Deal 50% damage
+  desc_jp: Bind awoken skills for 2 turns + Change 5th row to Mortal Poison orbs,
+    Deal 50% damage
+  max_atk_pct: null
+  name_en: Poppy's Lethargy + Cocytus's Erosion
+  name_jp: Poppy's Lethargy + Cocytus's Erosion
+  one_time: 4
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -299,6 +364,18 @@ records:
 ### Unused Actions
 ############################################################
 # SkillSet:
+# 	Condition: One-time use (ai:50 rnd:0) (one-time: 34)
+# 	[0] ESBindAwoken(88:4010) -> Poppy's Lethargy
+# 	Bind awoken skills for 2 turns
+# 	[1] ESRowSpawnMulti(79:4013) -> Cocytus's Erosion
+# 	Change 5th row to Mortal Poison orbs, Deal 50% damage
+# SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 32)
+# 	[0] ESSkillDelay(89:4011) -> Narcissus's Temptation
+# 	Delay active skills by 2 turns
+# 	[1] ESRowSpawnMulti(79:4013) -> Cocytus's Erosion
+# 	Change 5th row to Mortal Poison orbs, Deal 50% damage
+# SkillSet:
 # 	Condition: One-time use (ai:50 rnd:0) (one-time: 24)
 # 	[0] ESBindAwoken(88:4010) -> Poppy's Lethargy
 # 	Bind awoken skills for 2 turns
@@ -311,21 +388,9 @@ records:
 # 	[1] ESRowSpawnMulti(79:4013) -> Cocytus's Erosion
 # 	Change 5th row to Mortal Poison orbs, Deal 50% damage
 # SkillSet:
-# 	Condition: One-time use (ai:50 rnd:0) (one-time: 12)
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
 # 	[0] ESSkillDelay(89:4011) -> Narcissus's Temptation
 # 	Delay active skills by 2 turns
-# 	[1] ESRowSpawnMulti(79:4013) -> Cocytus's Erosion
-# 	Change 5th row to Mortal Poison orbs, Deal 50% damage
-# SkillSet:
-# 	Condition: One-time use (ai:100 rnd:0) (one-time: 11)
-# 	[0] ESBindSkill(14:4012) -> Pomegranate's Folly
-# 	Bind active skills for 2 turns
-# 	[1] ESRowSpawnMulti(79:4013) -> Cocytus's Erosion
-# 	Change 5th row to Mortal Poison orbs, Deal 50% damage
-# SkillSet:
-# 	Condition: One-time use (ai:100 rnd:0) (one-time: 4)
-# 	[0] ESBindAwoken(88:4010) -> Poppy's Lethargy
-# 	Bind awoken skills for 2 turns
 # 	[1] ESRowSpawnMulti(79:4013) -> Cocytus's Erosion
 # 	Change 5th row to Mortal Poison orbs, Deal 50% damage
 # SkillSet:

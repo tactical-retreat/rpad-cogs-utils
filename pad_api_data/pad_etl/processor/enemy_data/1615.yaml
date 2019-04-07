@@ -8,7 +8,7 @@ monster_name_en: Inferno Sorcerer, Laila
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 8 unused actions
+- Found 7 unused actions
 
 ############################################################
 ### Data @ 1
@@ -122,8 +122,26 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
+  name_en: Turn 2-3
+  name_jp: Turn 2-3
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change all orbs to Fire, Jammer, Deal 150% damage
+  desc_jp: Change all orbs to Fire, Jammer, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Inferno Spell!
+  name_jp: Inferno Spell!
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 4
+  name_jp: Turn 4
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
@@ -146,9 +164,6 @@ records:
 # 	Delay active skills by 5 turns
 # 	[1] ESBoardChange(84:5318) -> Infe...
 # 	Change all orbs to Jammer
-# ESBoardChangeAttackBits(85:5321) -> Inferno Spell!
-# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
-# Change all orbs to Fire, Jammer, Deal 150% damage
 # SkillSet:
 # 	Condition: When < 50% hp (ai:100 rnd:0)
 # 	[0] ESInactivity(66:5314) -> Let me give you a hand
