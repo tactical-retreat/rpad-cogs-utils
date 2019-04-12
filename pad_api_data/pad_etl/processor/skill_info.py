@@ -675,14 +675,25 @@ def absorb_mechanic_void_convert(arguments):
                                      absorb_mechanic_void_backups)(x)
         if c['attribute_absorb'] and c['damage_absorb']:
             c['skill_text'] += fmt_duration(c['duration']) + \
-                'void damage absorb shield and att. absorb shield effects'
+                'bypass damage absorb shield and att. absorb shield effects'
         elif c['attribute_absorb'] and not c['damage_absorb']:
-            c['skill_text'] += fmt_duration(c['duration']) + 'void att. absorb shield effects'
+            c['skill_text'] += fmt_duration(c['duration']) + 'bypass att. absorb shield effects'
         elif not c['attribute_absorb'] and c['damage_absorb']:
-            c['skill_text'] += fmt_duration(c['duration']) + 'void damage absorb shield effects'
+            c['skill_text'] += fmt_duration(c['duration']) + 'bypass damage absorb shield effects'
         return 'absorb_mechanic_void', c
     return f
 
+void_mechanic_backups = {'duration': 0,
+							  'skill_text': ''}
+
+def void_mechanic_convert(arguments):
+	def f(x):
+		_, c = convert_with_defaults('void_mechanic',
+									 arguments,
+									 void_mechanic_backups)(x)
+		c['skill_text'] += fmt_duration(c['duration']) + 'bypass void damage shield effects'
+		return 'void_mechanic', c
+	return f
 
 true_gravity_convert_backups = {'percentage_max_hp': 0,
                                 'skill_text': ''}
@@ -2269,6 +2280,7 @@ def l_match_convert(arguments):
         return 'l_match', c
     return f
 
+
 add_combo_att_backups = {'attributes': [],
                          'min_attr': 0,
                          'hp_multiplier': 1.0,
@@ -2394,6 +2406,7 @@ SKILL_TRANSFORM = {
     188: multi_hit_laser_convert({'damage': (0, cc), 'mass_attack': False}),
     # May be using incomplete data eg. Toragon SID: 10136
     189: convert('unlock_board_path', {'skill_text': 'Unlock all orbs; Change all orbs to Fire, Water, Wood, and Light orbs; Show path to 3 combos'}),
+    191: void_mechanic_convert({'duration':(0, cc)}),
     11: passive_stats_convert({'for_attr': (0, listify), 'atk_multiplier': (1, multi)}),
     12: after_attack_convert({'multiplier': (0, multi)}),
     13: heal_on_convert({'multiplier': (0, multi)}),
