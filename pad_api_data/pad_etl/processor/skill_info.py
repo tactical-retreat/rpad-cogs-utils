@@ -684,13 +684,13 @@ def absorb_mechanic_void_convert(arguments):
     return f
 
 void_mechanic_backups = {'duration': 0,
-							  'skill_text': ''}
+			 'skill_text': ''}
 
 def void_mechanic_convert(arguments):
 	def f(x):
 		_, c = convert_with_defaults('void_mechanic',
-									 arguments,
-									 void_mechanic_backups)(x)
+					     arguments,
+					     void_mechanic_backups)(x)
 		c['skill_text'] += fmt_duration(c['duration']) + 'bypass void damage shield effects'
 		return 'void_mechanic', c
 	return f
