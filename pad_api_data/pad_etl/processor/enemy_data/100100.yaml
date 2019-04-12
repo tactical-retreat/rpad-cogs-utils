@@ -1,0 +1,86 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 100100
+monster_name_en: Alt. Mystic Ice Knight
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Change Wood to Water (Preemptive)
+  desc_jp: Change Wood to Water (Preemptive)
+  max_atk_pct: null
+  name_en: Water Orb change
+  name_jp: Water Orb change
+  one_time: 2
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind Wood cards for 2~4 turns (Preemptive)
+  desc_jp: Bind Wood cards for 2~4 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Ice Grudge
+  name_jp: Ice Grudge
+  one_time: 1
+  record_type_name: PREEMPT
+  usage_pct: 100
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Change Wood to Water (Preemptive)
+  desc_jp: Change Wood to Water (Preemptive)
+  max_atk_pct: null
+  name_en: Water Orb change
+  name_jp: Water Orb change
+  one_time: 2
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind Wood cards for 2~4 turns (Preemptive)
+  desc_jp: Bind Wood cards for 2~4 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Ice Grudge
+  name_jp: Ice Grudge
+  one_time: 1
+  record_type_name: PREEMPT
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 2 -       10
+# [52] true
+# [53] 3 -       11
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:355) -> ESPreemptive
+# Enable preempt if level 5
+# [2] ESOrbChangeSingle(4:4782) -> Water Orb change
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
+# Change Wood to Water
+# [3] ESBindAttribute(2:4787) -> Ice Grudge
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Bind Wood cards for 2~4 turns
+# [4] ESEndPath(36:26) -> ESEndPath
+# end_turn

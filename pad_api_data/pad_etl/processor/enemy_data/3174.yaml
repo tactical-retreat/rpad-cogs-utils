@@ -1,0 +1,73 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3174
+monster_name_en: Abyssal Dragon, Apocalypse X
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 1 turns
+  desc_jp: Increase damage to 200% for the next 1 turns
+  max_atk_pct: null
+  name_en: Super Berserk
+  name_jp: Super Berserk
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 60% damage (3 hits, 20% each)
+  desc_jp: Deal 60% damage (3 hits, 20% each)
+  max_atk_pct: 60
+  name_en: Catastrophe
+  name_jp: Catastrophe
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 1 -        1
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESAttackUPCooldown(19:5596) -> Super Berserk
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Increase damage to 200% for the next 1 turns
+# [2] ESAttackMultihit(15:5595) -> Catastrophe
+# Deal 60% damage (3 hits, 20% each)

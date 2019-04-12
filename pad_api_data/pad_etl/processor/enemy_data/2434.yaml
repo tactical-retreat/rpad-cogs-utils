@@ -1,0 +1,191 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2434
+monster_name_en: Light Dog Dragon, Chinbowdra
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Locked Light skyfall +100% for 99 turns (Preemptive)
+  desc_jp: Locked Light skyfall +100% for 99 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Eagle Eye
+  name_jp: Eagle Eye
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: When player has any buff
+  name_jp: When player has any buff
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Voids player buff effects
+  desc_jp: Voids player buff effects
+  max_atk_pct: null
+  name_en: Lovely Pose
+  name_jp: Lovely Pose
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Lock 4 random Fire, Water, Wood, Light, Dark orbs, Deal 100% damage
+  desc_jp: Lock 4 random Fire, Water, Wood, Light, Dark orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Skipping about
+  name_jp: Skipping about
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 25
+- !SkillRecord
+  desc_en: Bind 1 random cards for 1 turns
+  desc_jp: Bind 1 random cards for 1 turns
+  max_atk_pct: null
+  name_en: Lick Bind
+  name_jp: Lick Bind
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 25
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  max_atk_pct: 100
+  name_en: Snarl
+  name_jp: Snarl
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 25
+- !SkillRecord
+  desc_en: Change 2nd, 4th column to Light orbs, Deal 70% damage
+  desc_jp: Change 2nd, 4th column to Light orbs, Deal 70% damage
+  max_atk_pct: 70
+  name_en: Saint Corona
+  name_jp: Saint Corona
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 25
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 70
+  name_jp: HP < 70
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Leader changes to random sub for 1 turns
+  desc_jp: Leader changes to random sub for 1 turns
+  max_atk_pct: null
+  name_en: Whim
+  name_jp: Whim
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 10
+  name_jp: HP < 10
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 270% damage (3 hits, 90% each)
+  desc_jp: Deal 270% damage (3 hits, 90% each)
+  max_atk_pct: 270
+  name_en: Meteorite
+  name_jp: Meteorite
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 4 -      100
+# [52] true
+# [53] 0 -        0
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:3402) -> ESPreemptive
+# Enable preempt if level 4
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 4, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 8
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [6] ESSkyfall(96:3466) -> Eagle Eye
+# Locked Light skyfall +100% for 99 turns
+# [7] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [8] ESDispel(6:3473) -> Lovely Pose
+# Voids player buff effects
+# [9] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 70, target rnd 16
+# [10] ESAttackMultihit(15:3470) -> Meteorite
+# 	Condition: When < 10% hp (ai:100 rnd:0)
+# Deal 270% damage (3 hits, 90% each)
+# [11] ESOrbLock(94:3472) -> Skipping about
+# 	Condition: 25% chance (ai:0 rnd:25)
+# Lock 4 random Fire, Water, Wood, Light, Dark orbs, Deal 100% damage
+# [12] ESBindRandom(1:3469) -> Lick Bind
+# 	Condition: 25% chance (ai:0 rnd:25)
+# Bind 1 random cards for 1 turns
+# [13] ESAttackMultihit(15:3468) -> Snarl
+# 	Condition: 25% chance (ai:0 rnd:25)
+# Deal 100% damage
+# [14] ESColumnSpawnMulti(77:3467) -> Saint Corona
+# 	Condition: 25% chance (ai:0 rnd:25)
+# Change 2nd, 4th column to Light orbs, Deal 70% damage
+# [15] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [16] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 10
+# [17] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [18] ESLeaderSwap(75:3471) -> Whim
+# 	Condition: When < 70% hp (ai:100 rnd:0)
+# Leader changes to random sub for 1 turns

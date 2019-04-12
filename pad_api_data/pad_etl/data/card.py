@@ -81,7 +81,11 @@ class BookCard(pad_util.JsonDictEncodable):
         self.type_2_id = TypeId(raw[6])
         self.rarity = int(raw[7])
         self.cost = int(raw[8])
-        self.unknown_009 = raw[9]
+
+        # Appears to be related to the size of the monster.
+        # If 5, the monster always spawns alone. Needs more research.
+        self.unknown_009 = int(raw[9])
+
         self.max_level = int(raw[10])
         self.feed_xp_at_lvl_4 = int(raw[11])
         self.released_status = raw[12] == 100
@@ -105,6 +109,7 @@ class BookCard(pad_util.JsonDictEncodable):
         self.active_skill_id = SkillId(raw[25])
         self.leader_skill_id = SkillId(raw[26])
 
+        # Enemy turn timer for normal dungeons, and techs where enemy_turns_alt is not populated.
         self.enemy_turns = int(raw[27])
 
         # Min = lvl 1 and Max = lvl 10
@@ -138,11 +143,26 @@ class BookCard(pad_util.JsonDictEncodable):
         self.un_evo_mat_4 = CardId(raw[49])
         self.un_evo_mat_5 = CardId(raw[50])
 
-        self.unknown_051 = raw[51]
+        # When >0, the enemy turn timer for technical dungeons.
+        self.enemy_turns_alt = int(raw[51])
+
         self.unknown_052 = raw[52]
-        self.unknown_053 = raw[53]
-        self.unknown_054 = raw[54]
+
+        # Usage modified by enemy_skill_effect_type.
+        self.enemy_skill_effect = int(raw[53])
+
+        # The vast majority of these are:
+        # 0: (unknown atm; lot of monsters have this, with large numbers or bitmaps in 53)
+        # 1: Use 53 as countdown, when expired reset one-time skills.
+        # 2: (not sure, only used for deus ex machina, has 53=2)
+        # 5: (only used by a monster that never appears in a dungeon)
+        # 7: (not sure, only used by kanna, 53=7 as well)
+        self.enemy_skill_effect_type = int(raw[54])
+
+        # Boolean, unlikely to be anything useful, only populated for 495 and 111.
         self.unknown_055 = raw[55]
+
+        # Unused
         self.unknown_056 = raw[56]
 
         # self.enemy_skills = raw[57]
@@ -158,7 +178,7 @@ class BookCard(pad_util.JsonDictEncodable):
 
         self.sell_mp = int(raw[63])
         self.latent_on_feed = int(raw[64])
-        self.unknown_066 = raw[65]  # Might be which collab
+        self.collab_id = int(raw[65])
 
         self.random_flags = raw[66]
         self.inheritable = bool(self.random_flags & 1)

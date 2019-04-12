@@ -1,0 +1,83 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1462
+monster_name_en: Sopdet
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings:
+- Found 3 unused actions
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb combo <= 4 damage for 999 turns (Preemptive)
+  desc_jp: Absorb combo <= 4 damage for 999 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Grace of the Nile
+  name_jp: Grace of the Nile
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy ally recover 50% hp
+  desc_jp: Enemy ally recover 50% hp
+  max_atk_pct: null
+  name_en: Ceremony of Rebirth
+  name_jp: Ceremony of Rebirth
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Unused Actions
+############################################################
+# ESAttackMultihit(15:1260) -> Heliacal Rising
+# 	Condition: When < 20% hp (ai:100 rnd:0)
+# Deal 150% damage (3 hits, 50% each)
+# ESOrbChangeAttack(48:1259) -> Yaah!!
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Change Dark to Heal, Deal 100% damage
+# ESOrbChangeAttack(48:1267) -> Take that!
+# Change Light to Heal, Deal 100% damage
+############################################################
+### ES Modifiers
+############################################################
+# [9] 4 -      100
+# [52] false
+# [53] 1 -        1
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] ESAbsorbCombo(67:1258) -> Grace of the Nile
+# Absorb combo <= 4 damage for 999 turns
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESRecoverEnemyAlly(52:1261) -> Ceremony of Rebirth
+# 	Condition: When enemy ally is killed (ai:100 rnd:0)
+# Enemy ally recover 50% hp
+# [7] ESAttackMultihit(15:1260) -> Heliacal Rising
+# 	Condition: When < 20% hp (ai:100 rnd:0)
+# Deal 150% damage (3 hits, 50% each)
+# [8] ESOrbChangeAttack(48:1259) -> Yaah!!
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Change Dark to Heal, Deal 100% damage
+# [9] ESOrbChangeAttack(48:1267) -> Take that!
+# Change Light to Heal, Deal 100% damage

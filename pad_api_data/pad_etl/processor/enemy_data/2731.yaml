@@ -1,0 +1,89 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2731
+monster_name_en: Time Guardians, Takkun & Tikkun
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Movetime -1s for 5 turns
+  desc_jp: Movetime -1s for 5 turns
+  max_atk_pct: null
+  name_en: Spacetime Phone
+  name_jp: Spacetime Phone
+  one_time: 2
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 99 turns
+  desc_jp: Increase damage to 200% for the next 99 turns
+  max_atk_pct: null
+  name_en: Takkun Boost
+  name_jp: Takkun Boost
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 3 -       11
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 5, target rnd 4
+# [2] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESDebuffMovetime(39:2881) -> Spacetime Phone
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
+# Movetime -1s for 5 turns
+# [5] ESAttackUPRemainingEnemies(17:2882) -> Takkun Boost
+# 	Condition: When < 50% hp , one-time use, when <= 1 enemies remain (ai:100 rnd:0) (one-time: 1)
+# Increase damage to 200% for the next 99 turns

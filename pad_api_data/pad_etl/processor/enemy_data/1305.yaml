@@ -1,0 +1,132 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1305
+monster_name_en: Gryps Rider, Vector Finn
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Deal 50% damage (Preemptive)
+  desc_jp: Deal 50% damage (Preemptive)
+  max_atk_pct: 50
+  name_en: Wings of Fianna
+  name_jp: Wings of Fianna
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 125% damage
+  desc_jp: Change Random to Jammer, Deal 125% damage
+  max_atk_pct: 125
+  name_en: Magic Blood Spear Mac an Luin
+  name_jp: Magic Blood Spear Mac an Luin
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 100% damage
+  desc_jp: Blind all orbs on the board, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Dark Turbulence
+  name_jp: Dark Turbulence
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 70
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind 1 subs for 3 turns, Deal 80% damage
+  desc_jp: Bind 1 subs for 3 turns, Deal 80% damage
+  max_atk_pct: 80
+  name_en: King's Claws
+  name_jp: King's Claws
+  one_time: 2
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 2-3
+  name_jp: Loop to 1 after. Turn 2-3
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 125% damage
+  desc_jp: Change Random to Jammer, Deal 125% damage
+  max_atk_pct: 125
+  name_en: Magic Blood Spear Mac an Luin
+  name_jp: Magic Blood Spear Mac an Luin
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 100% damage
+  desc_jp: Blind all orbs on the board, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Dark Turbulence
+  name_jp: Dark Turbulence
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 70
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] false
+# [53] 2 -       10
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] ESAttackMultihit(15:1609) -> Wings of Fianna
+# Deal 50% damage
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESBindAttack(63:1610) -> King's Claws
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 2)
+# Bind 1 subs for 3 turns, Deal 80% damage
+# [7] ESOrbChangeAttack(48:1611) -> Magic Blood Spear Mac an Luin
+# 	Condition: 50% chance (ai:50 rnd:0)
+# Change Random to Jammer, Deal 125% damage
+# [8] ESBlind(62:1612) -> Dark Turbulence
+# 	Condition: 70% chance (ai:70 rnd:0)
+# Blind all orbs on the board, Deal 100% damage

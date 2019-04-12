@@ -1,0 +1,173 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 349
+monster_name_en: ECO Tiny
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Bind 3 random cards for 2~4 turns
+  desc_jp: Bind 3 random cards for 2~4 turns
+  max_atk_pct: null
+  name_en: Poke Poke
+  name_jp: Poke Poke
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 15
+- !SkillRecord
+  desc_en: Bind 2 random cards for 2~4 turns
+  desc_jp: Bind 2 random cards for 2~4 turns
+  max_atk_pct: null
+  name_en: Poke Poke
+  name_jp: Poke Poke
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 8
+- !SkillRecord
+  desc_en: Bind 4 random cards for 2~4 turns
+  desc_jp: Bind 4 random cards for 2~4 turns
+  max_atk_pct: null
+  name_en: Poke Poke
+  name_jp: Poke Poke
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 7
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 40
+  name_jp: HP < 40
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Enemy recover 30% hp
+  desc_jp: Enemy recover 30% hp
+  max_atk_pct: null
+  name_en: Heal
+  name_jp: Heal
+  one_time: 3
+  record_type_name: ACTION
+  usage_pct: 60
+- !SkillRecord
+  desc_en: Bind 3 random cards for 2~4 turns
+  desc_jp: Bind 3 random cards for 2~4 turns
+  max_atk_pct: null
+  name_en: Poke Poke
+  name_jp: Poke Poke
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 15
+- !SkillRecord
+  desc_en: Bind 2 random cards for 2~4 turns
+  desc_jp: Bind 2 random cards for 2~4 turns
+  max_atk_pct: null
+  name_en: Poke Poke
+  name_jp: Poke Poke
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 8
+- !SkillRecord
+  desc_en: Bind 4 random cards for 2~4 turns
+  desc_jp: Bind 4 random cards for 2~4 turns
+  max_atk_pct: null
+  name_en: Poke Poke
+  name_jp: Poke Poke
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 7
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 30
+  name_jp: HP < 30
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 100%~250% damage (2~5 hits, 50% each)
+  desc_jp: Deal 100%~250% damage (2~5 hits, 50% each)
+  max_atk_pct: 250
+  name_en: Miraculous Star
+  name_jp: Miraculous Star
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Enemy recover 30% hp
+  desc_jp: Enemy recover 30% hp
+  max_atk_pct: null
+  name_en: Heal
+  name_jp: Heal
+  one_time: 3
+  record_type_name: ACTION
+  usage_pct: 60
+- !SkillRecord
+  desc_en: Bind 3 random cards for 2~4 turns
+  desc_jp: Bind 3 random cards for 2~4 turns
+  max_atk_pct: null
+  name_en: Poke Poke
+  name_jp: Poke Poke
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 15
+- !SkillRecord
+  desc_en: Bind 2 random cards for 2~4 turns
+  desc_jp: Bind 2 random cards for 2~4 turns
+  max_atk_pct: null
+  name_en: Poke Poke
+  name_jp: Poke Poke
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 8
+- !SkillRecord
+  desc_en: Bind 4 random cards for 2~4 turns
+  desc_jp: Bind 4 random cards for 2~4 turns
+  max_atk_pct: null
+  name_en: Poke Poke
+  name_jp: Poke Poke
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 7
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 4 -      100
+# [52] false
+# [53] 3 -       11
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESAttackMultihit(15:122) -> Miraculous Star
+# 	Condition: 50% chance when < 30% hp (ai:50 rnd:0)
+# Deal 100%~250% damage (2~5 hits, 50% each)
+# [2] ESRecoverEnemy(7:81) -> Heal
+# 	Condition: When < 40% hp , one-time use (ai:60 rnd:0) (one-time: 3)
+# Enemy recover 30% hp
+# [3] ESBindRandom(1:35) -> Poke Poke
+# 	Condition: 15% chance when < 60% hp (ai:0 rnd:15)
+# Bind 3 random cards for 2~4 turns
+# [4] ESBindRandom(1:34) -> Poke Poke
+# 	Condition: 8% chance when < 80% hp (ai:0 rnd:8)
+# Bind 2 random cards for 2~4 turns
+# [5] ESBindRandom(1:36) -> Poke Poke
+# 	Condition: 7% chance when < 40% hp (ai:0 rnd:7)
+# Bind 4 random cards for 2~4 turns

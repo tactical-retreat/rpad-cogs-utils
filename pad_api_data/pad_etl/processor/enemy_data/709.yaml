@@ -1,0 +1,47 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 709
+monster_name_en: The Sixth Angel
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Deal 100% damage (2 hits, 50% each)
+  desc_jp: Deal 100% damage (2 hits, 50% each)
+  max_atk_pct: 100
+  name_en: Intercept
+  name_jp: Intercept
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 3 -       11
+# [52] false
+# [53] 0 -        0
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 5, target rnd 3
+# [2] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [3] ESAttackMultihit(15:348) -> Intercept
+# Deal 100% damage (2 hits, 50% each)

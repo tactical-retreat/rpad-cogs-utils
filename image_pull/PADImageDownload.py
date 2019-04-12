@@ -67,7 +67,7 @@ else:
 
 
 for file_name in os.listdir(raw_dir):
-    if 'mons' not in file_name:
+    if 'mons' not in file_name or 'isanimated' in file_name:
         print('skipping', file_name)
         continue
 

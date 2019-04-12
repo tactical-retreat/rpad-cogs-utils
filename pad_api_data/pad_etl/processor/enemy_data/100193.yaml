@@ -1,0 +1,75 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 100193
+monster_name_en: Alt. Frost Devil
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Lock 1 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 10% damage (Preemptive)
+  desc_jp: Lock 1 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 10% damage (Preemptive)
+  max_atk_pct: 10
+  name_en: Tiny Frost
+  name_jp: Tiny Frost
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Increase damage to 130% for the next 3 turns
+  desc_jp: Increase damage to 130% for the next 3 turns
+  max_atk_pct: null
+  name_en: Anger
+  name_jp: Anger
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 1 -        1
+# [52] true
+# [53] 0 -        0
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] ESOrbLock(94:9351) -> Tiny Frost
+# Lock 1 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 10% damage
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESAttackUPCooldown(19:131) -> Anger
+# Increase damage to 130% for the next 3 turns
+# [7] ESEndPath(36:26) -> ESEndPath
+# end_turn

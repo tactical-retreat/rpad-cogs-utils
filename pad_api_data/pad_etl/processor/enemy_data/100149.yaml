@@ -1,0 +1,59 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 100149
+monster_name_en: Alt. Keeper of Forest
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb combo <= 6 damage for 999 turns (Preemptive)
+  desc_jp: Absorb combo <= 6 damage for 999 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Watchman's Realm
+  name_jp: Watchman's Realm
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind awoken skills for 1 turns + Deal 6000% damage (10 hits, 600% each)
+  desc_jp: Bind awoken skills for 1 turns + Deal 6000% damage (10 hits, 600% each)
+  max_atk_pct: null
+  name_en: Shield Smash + Ultimate Lance
+  name_jp: Shield Smash + Ultimate Lance
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 4 -      100
+# [52] true
+# [53] 0 -        0
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESAbsorbCombo(67:7173) -> Watchman's Realm
+# Absorb combo <= 6 damage for 999 turns
+# [3] SkillSet:
+# 	[0] ESBindAwoken(88:7174) -> Shield Smash
+# 	Bind awoken skills for 1 turns
+# 	[1] ESAttackMultihit(15:7175) -> Ultimate Lance
+# 	Deal 6000% damage (10 hits, 600% each)

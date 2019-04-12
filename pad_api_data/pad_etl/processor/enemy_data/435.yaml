@@ -1,0 +1,53 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 435
+monster_name_en: Tsumagoi Cabbage
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 40
+  name_jp: HP < 40
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 100% damage (10 hits, 10% each)
+  desc_jp: Deal 100% damage (10 hits, 10% each)
+  max_atk_pct: 100
+  name_en: Shredded Cabbage
+  name_jp: Shredded Cabbage
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 40
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 2 -       10
+# [52] false
+# [53] 0 -        0
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESAttackMultihit(15:168) -> Shredded Cabbage
+# 	Condition: 40% chance when < 40% hp (ai:40 rnd:0)
+# Deal 100% damage (10 hits, 10% each)

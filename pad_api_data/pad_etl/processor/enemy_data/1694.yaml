@@ -1,0 +1,160 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1694
+monster_name_en: Evil Genius, Lex Luthor (Comics)
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb combo <= 3 damage for 5 turns (Preemptive)
+  desc_jp: Absorb combo <= 3 damage for 5 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Evil Genius
+  name_jp: Evil Genius
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 90%~150% damage (3~5 hits, 30% each)
+  desc_jp: Deal 90%~150% damage (3~5 hits, 30% each)
+  max_atk_pct: 150
+  name_en: LexCorp Resources
+  name_jp: LexCorp Resources
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 999 turns
+  desc_jp: Increase damage to 200% for the next 999 turns
+  max_atk_pct: null
+  name_en: Warsuit
+  name_jp: Warsuit
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Data @ 10
+############################################################
+!SkillRecordListing
+level: 10
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb combo <= 4 damage for 5 turns (Preemptive)
+  desc_jp: Absorb combo <= 4 damage for 5 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Evil Genius
+  name_jp: Evil Genius
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 90%~150% damage (3~5 hits, 30% each)
+  desc_jp: Deal 90%~150% damage (3~5 hits, 30% each)
+  max_atk_pct: 150
+  name_en: LexCorp Resources
+  name_jp: LexCorp Resources
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 999 turns
+  desc_jp: Increase damage to 200% for the next 999 turns
+  max_atk_pct: null
+  name_en: Warsuit
+  name_jp: Warsuit
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] false
+# [53] 0 -        0
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:355) -> ESPreemptive
+# Enable preempt if level 5
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 10, target rnd 9
+# [3] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 5, target rnd 5
+# [4] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [5] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 13
+# [6] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [7] ESAbsorbCombo(67:1654) -> Evil Genius
+# Absorb combo <= 3 damage for 5 turns
+# [8] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [9] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 13
+# [10] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [11] ESAbsorbCombo(67:1634) -> Evil Genius
+# Absorb combo <= 4 damage for 5 turns
+# [12] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [13] ESAttackUPCooldown(19:1636) -> Warsuit
+# 	Condition: When < 50% hp (ai:100 rnd:0)
+# Increase damage to 200% for the next 999 turns
+# [14] ESAttackMultihit(15:1635) -> LexCorp Resources
+# 	Condition: 50% chance (ai:50 rnd:0)
+# Deal 90%~150% damage (3~5 hits, 30% each)

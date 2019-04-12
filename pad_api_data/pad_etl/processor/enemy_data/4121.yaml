@@ -1,0 +1,258 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4121
+monster_name_en: Gilles Legato
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings:
+- Found 9 unused actions
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Immune to damage from all sources for 999 turns (Preemptive)
+  desc_jp: Immune to damage from all sources for 999 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Overcoat of Immortality
+  name_jp: Overcoat of Immortality
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change 2nd column to Dark orbs, Deal 160% damage
+  desc_jp: Change 2nd column to Dark orbs, Deal 160% damage
+  max_atk_pct: 160
+  name_en: Vampire Blade
+  name_jp: Vampire Blade
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 30
+- !SkillRecord
+  desc_en: Deal 180% damage (2 hits, 90% each)
+  desc_jp: Deal 180% damage (2 hits, 90% each)
+  max_atk_pct: 180
+  name_en: Blood Needle
+  name_jp: Blood Needle
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: When 2 enemy remains
+  name_jp: When 2 enemy remains
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Leader changes to random sub for 1 turns
+  desc_jp: Leader changes to random sub for 1 turns
+  max_atk_pct: null
+  name_en: Dance!
+  name_jp: Dance!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Blind all orbs on the board
+  desc_jp: Blind all orbs on the board
+  max_atk_pct: null
+  name_en: Dark World
+  name_jp: Dark World
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 60
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  max_atk_pct: null
+  name_en: Pain
+  name_jp: Pain
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Enemy ally recover 100% hp
+  desc_jp: Enemy ally recover 100% hp
+  max_atk_pct: null
+  name_en: Futile...
+  name_jp: Futile...
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Unused Actions
+############################################################
+# SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# 	[0] ESInvulnerableOff(121:8724) -> Cunning...
+# 	Remove damage immunity effect
+# 	[1] ESAttackUPCooldown(19:8725) -> I'll end you!
+# 	Increase damage to 150% for the next 999 turns
+# 	[2] ESStatusShield(20:8726) -> War Demon's Armor
+# 	Voids status ailments for 99 turns
+# ESBlind(62:8729) -> Darkness Pulse
+# 	Condition: 50% chance (ai:50 rnd:0)
+# Blind all orbs on the board, Deal 220% damage
+# ESAttackMultihit(15:8728) -> Blood Bullet
+# Deal 250% damage (5 hits, 50% each)
+# SkillSet:
+# 	[0] ESChangeAttribute(46:8730) -> Magic Garment
+# 	Change own attribute to random one of Fire, Water
+# 	[1] ESAbsorbCombo(67:8731) -> Your skills are quite good
+# 	Absorb combo <= 6 damage for 20 turns
+# 	[2] ESCloud(104:8732) -> Show me what you've got
+# 	1x1 cloud appear for 20 turns at random location
+# ESOrbChangeAttackBits(108:8720) -> Despair
+# 	Condition: 20% chance (ai:20 rnd:0)
+# Change Heal to Dark, Deal 150% damage
+# ESOrbLock(94:8719) -> Shadow Fangs
+# 	Condition: 30% chance (ai:30 rnd:0)
+# Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 200% damage
+# ESAttackMultihit(15:8734) -> Chase into the Abyss
+# Deal 240% damage (3 hits, 80% each)
+# ESBindAwoken(88:8735) -> Descend into Darkness
+# Bind awoken skills for 3 turns
+# ESAttackMultihit(15:8736) -> Chaos Flame
+# Deal 3000% damage (10 hits, 300% each)
+############################################################
+### ES Modifiers
+############################################################
+# [9] 4 -      100
+# [52] true
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 5
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] ESInvulnerableOn(119:8713) -> Overcoat of Immortality
+# Immune to damage from all sources for 999 turns
+# [5] ESBranchRemainingEnemies(120:8595) -> ESBranchRemainingEnemies
+# Branch on remaining enemies <= 1, target rnd 17
+# [6] ESBranchRemainingEnemies(120:8595) -> ESBranchRemainingEnemies
+# Branch on remaining enemies <= 2, target rnd 12
+# [7] ESBranchRemainingEnemies(120:8595) -> ESBranchRemainingEnemies
+# Branch on remaining enemies <= 3, target rnd 8
+# [8] ESSetCounter(25:15) -> ESSetCounter
+# counter = 0
+# [9] ESColumnSpawnMulti(77:8714) -> Vampire Blade
+# 	Condition: 30% chance (ai:30 rnd:0)
+# Change 2nd column to Dark orbs, Deal 160% damage
+# [10] ESAttackMultihit(15:8715) -> Blood Needle
+# Deal 180% damage (2 hits, 90% each)
+# [11] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [12] ESSetCounter(26:16) -> ESSetCounter
+# counter + 1
+# [13] ESBranchCounter(32:22) -> ESBranchCounter
+# Branch on counter > 2, target rnd 15
+# [14] ESLeaderSwap(75:8716) -> Dance!
+# Leader changes to random sub for 1 turns
+# [15] ESBlind(5:8721) -> Dark World
+# 	Condition: 60% chance (ai:60 rnd:0)
+# Blind all orbs on the board
+# [16] ESGravity(50:8722) -> Pain
+# Player -99% HP
+# [17] ESBranchCounter(32:22) -> ESBranchCounter
+# Branch on counter > 1, target rnd 19
+# [18] ESRecoverEnemyAlly(52:8723) -> Futile...
+# 	Condition: When enemy ally is killed (ai:100 rnd:0)
+# Enemy ally recover 100% hp
+# [19] SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# 	[0] ESInvulnerableOff(121:8724) -> Cunning...
+# 	Remove damage immunity effect
+# 	[1] ESAttackUPCooldown(19:8725) -> I'll end you!
+# 	Increase damage to 150% for the next 999 turns
+# 	[2] ESStatusShield(20:8726) -> War Demon's Armor
+# 	Voids status ailments for 99 turns
+# [20] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 4, target rnd 36
+# [21] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 70, target rnd 25
+# [22] ESBlind(62:8729) -> Darkness Pulse
+# 	Condition: 50% chance (ai:50 rnd:0)
+# Blind all orbs on the board, Deal 220% damage
+# [23] ESAttackMultihit(15:8728) -> Blood Bullet
+# Deal 250% damage (5 hits, 50% each)
+# [24] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [25] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 15, target rnd 33
+# [26] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 30
+# [27] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [28] SkillSet:
+# 	[0] ESChangeAttribute(46:8730) -> Magic Garment
+# 	Change own attribute to random one of Fire, Water
+# 	[1] ESAbsorbCombo(67:8731) -> Your skills are quite good
+# 	Absorb combo <= 6 damage for 20 turns
+# 	[2] ESCloud(104:8732) -> Show me what you've got
+# 	1x1 cloud appear for 20 turns at random location
+# [29] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [30] ESOrbChangeAttackBits(108:8720) -> Despair
+# 	Condition: 20% chance (ai:20 rnd:0)
+# Change Heal to Dark, Deal 150% damage
+# [31] ESOrbLock(94:8719) -> Shadow Fangs
+# 	Condition: 30% chance (ai:30 rnd:0)
+# Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 200% damage
+# [32] ESAttackMultihit(15:8734) -> Chase into the Abyss
+# Deal 240% damage (3 hits, 80% each)
+# [33] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 4, target rnd 36
+# [34] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b111
+# [35] ESBindAwoken(88:8735) -> Descend into Darkness
+# Bind awoken skills for 3 turns
+# [36] ESAttackMultihit(15:8736) -> Chaos Flame
+# Deal 3000% damage (10 hits, 300% each)
+# [37] ESEndPath(36:26) -> ESEndPath
+# end_turn

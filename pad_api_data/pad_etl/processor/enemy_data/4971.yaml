@@ -1,0 +1,178 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4971
+monster_name_en: '*****'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb combo <= 4 damage for 5 turns (Preemptive)
+  desc_jp: Absorb combo <= 4 damage for 5 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Starviiiiing
+  name_jp: Starviiiiing
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind awoken skills for 2 turns (When 1 enemy remains)
+  desc_jp: Bind awoken skills for 2 turns (When 1 enemy remains)
+  max_atk_pct: null
+  name_en: I'm starving...
+  name_jp: I'm starving...
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 110% damage
+  desc_jp: Deal 110% damage
+  max_atk_pct: 110
+  name_en: Starve!
+  name_jp: Starve!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 40
+- !SkillRecord
+  desc_en: Spawn random 3 Heal orbs, Deal 120% damage
+  desc_jp: Spawn random 3 Heal orbs, Deal 120% damage
+  max_atk_pct: 120
+  name_en: Time for a snack!
+  name_jp: Time for a snack!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 40
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 30
+  name_jp: HP < 30
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Enemy recover 100% hp
+  desc_jp: Enemy recover 100% hp
+  max_atk_pct: null
+  name_en: Hungry Impact
+  name_jp: Hungry Impact
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Random to Water, Deal 100% damage
+  desc_jp: Change Random to Water, Deal 100% damage
+  max_atk_pct: 100
+  name_en: I can't stop drooling!
+  name_jp: I can't stop drooling!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 110% damage
+  desc_jp: Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 110% damage
+  max_atk_pct: 110
+  name_en: This is my snack!
+  name_jp: This is my snack!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 4 -      100
+# [52] true
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:3402) -> ESPreemptive
+# Enable preempt if level 4
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 4, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 8
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [6] ESAbsorbCombo(67:11895) -> Starviiiiing
+# Absorb combo <= 4 damage for 5 turns
+# [7] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [8] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 30, target rnd 17
+# [9] ESBranchRemainingEnemies(120:8595) -> ESBranchRemainingEnemies
+# Branch on remaining enemies <= 1, target rnd 13
+# [10] ESAttackMultihit(15:11896) -> Starve!
+# 	Condition: 40% chance (ai:40 rnd:0)
+# Deal 110% damage
+# [11] ESRandomSpawn(92:11897) -> Time for a snack!
+# 	Condition: 40% chance & when Fire, Water, Wood, Light, Dark, Jammer, Poison, Mortal Poison orbs are on the board (ai:40 rnd:0)
+# Spawn random 3 Heal orbs, Deal 120% damage
+# [12] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [13] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 10
+# [14] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [15] ESBindAwoken(88:11898) -> I'm starving...
+# Bind awoken skills for 2 turns
+# [16] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [17] ESRecoverEnemy(86:11899) -> Hungry Impact
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Enemy recover 100% hp
+# [18] ESOrbChangeAttack(48:11900) -> I can't stop drooling!
+# 	Condition: 50% chance (ai:0 rnd:50)
+# Change Random to Water, Deal 100% damage
+# [19] ESOrbLock(94:11901) -> This is my snack!
+# 	Condition: 50% chance (ai:0 rnd:50)
+# Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 110% damage
+# [20] ESEndPath(36:26) -> ESEndPath
+# end_turn

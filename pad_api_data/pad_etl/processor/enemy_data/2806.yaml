@@ -1,0 +1,147 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2806
+monster_name_en: War God of Protection, Takeminakata
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 50%
+  desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
+  name_en: Ability
+  name_jp: Ability
+  one_time: 0
+  record_type_name: PASSIVE
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy turn counter change to 1 when HP <= 50%
+  desc_jp: Enemy turn counter change to 1 when HP <= 50%
+  max_atk_pct: null
+  name_en: Ability
+  name_jp: Ability
+  one_time: 0
+  record_type_name: PASSIVE
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Absorb combo <= 4 damage for 999 turns + Increase damage to 200% for the
+    next 3 turns (Preemptive)
+  desc_jp: Absorb combo <= 4 damage for 999 turns + Increase damage to 200% for the
+    next 3 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Celestial Art Stance + Unforgivable Revision
+  name_jp: Celestial Art Stance + Unforgivable Revision
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Spawn random 8 locked Bomb orbs, Deal 100% damage
+  desc_jp: Spawn random 8 locked Bomb orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Firetrap Whirlwind
+  name_jp: Firetrap Whirlwind
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Reduce damage from all sources by
+    75% for 99 turns + 6x3 cloud appear for 1 turns at 2nd row, 1st column
+  desc_jp: Voids status ailments for 999 turns + Reduce damage from all sources by
+    75% for 99 turns + 6x3 cloud appear for 1 turns at 2nd row, 1st column
+  max_atk_pct: null
+  name_en: Divine Wind of Suwa + Terra Firma Stance + Minakata Fog
+  name_jp: Divine Wind of Suwa + Terra Firma Stance + Minakata Fog
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 10
+  name_jp: HP < 10
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 800% damage (8 hits, 100% each)
+  desc_jp: Deal 800% damage (8 hits, 100% each)
+  max_atk_pct: 800
+  name_en: Divine Katana of Yasaka
+  name_jp: Divine Katana of Yasaka
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] SkillSet:
+# 	[0] ESAbsorbCombo(67:7478) -> Celestial Art Stance
+# 	Absorb combo <= 4 damage for 999 turns
+# 	[1] ESAttackUPRemainingEnemies(17:7517) -> Unforgivable Revision
+# 	Increase damage to 200% for the next 3 turns
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] SkillSet:
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# 	[0] ESStatusShield(20:7481) -> Divine Wind of Suwa
+# 	Voids status ailments for 999 turns
+# 	[1] ESDamageShield(74:7482) -> Terra Firma Stance
+# 	Reduce damage from all sources by 75% for 99 turns
+# 	[2] ESCloud(104:7479) -> Minakata Fog
+# 	6x3 cloud appear for 1 turns at 2nd row, 1st column
+# [7] ESAttackMultihit(15:7484) -> Divine Katana of Yasaka
+# 	Condition: When < 10% hp (ai:100 rnd:0)
+# Deal 800% damage (8 hits, 100% each)
+# [8] ESBombRandomSpawn(102:7483) -> Firetrap Whirlwind
+# Spawn random 8 locked Bomb orbs, Deal 100% damage
+# [9] ESResolve(73:7475) -> Takeminakata Resolve
+# Survive attacks with 1 HP when HP > 50%
+# [10] ESTurnChangePassive(106:7476) -> Next turn changed
+# Enemy turn counter change to 1 when HP <= 50%

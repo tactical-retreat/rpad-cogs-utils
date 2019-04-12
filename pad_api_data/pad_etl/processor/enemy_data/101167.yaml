@@ -1,0 +1,155 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 101167
+monster_name_en: Alt. Blue Flower Dragon, Starling
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings:
+- Found 1 unused actions
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Spawn random 6 Fire, Water, Wood,
+    Light, Dark, Poison, Mortal Poison orbs (Preemptive)
+  desc_jp: Voids status ailments for 999 turns + Spawn random 6 Fire, Water, Wood,
+    Light, Dark, Poison, Mortal Poison orbs (Preemptive)
+  max_atk_pct: null
+  name_en: Fertile Guard + Aurora Glass
+  name_jp: Fertile Guard + Aurora Glass
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change Random to Heal, Deal 100% damage
+  desc_jp: Change Random to Heal, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Flower Tail
+  name_jp: Flower Tail
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 2
+  name_jp: Loop to 1 after. Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind 1 subs for 2 turns, Deal 75% damage
+  desc_jp: Bind 1 subs for 2 turns, Deal 75% damage
+  max_atk_pct: 75
+  name_en: Thorn Whip
+  name_jp: Thorn Whip
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind 4 random for 2~4 turns, Deal 50% damage
+  desc_jp: Bind 4 random for 2~4 turns, Deal 50% damage
+  max_atk_pct: 50
+  name_en: Thorn Cage
+  name_jp: Thorn Cage
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Heal to Water, Deal 300% damage
+  desc_jp: Change Heal to Water, Deal 300% damage
+  max_atk_pct: 300
+  name_en: Rose Ocean
+  name_jp: Rose Ocean
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Unused Actions
+############################################################
+# ESOrbChangeAttack(48:942) -> Beautiful Rose
+# Change Random to Heal, Deal 125% damage
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 1 -        1
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:355) -> ESPreemptive
+# Enable preempt if level 5
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 5, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 8
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [6] SkillSet:
+# 	[0] ESStatusShield(20:11544) -> Fertile Guard
+# 	Voids status ailments for 999 turns
+# 	[1] ESRandomSpawn(92:11545) -> Aurora Glass
+# 	Spawn random 6 Fire, Water, Wood, Light, Dark, Poison, Mortal Poison orbs
+# [7] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [8] ESBranchHP(29:19) -> ESBranchHP
+# Branch on hp > 50, target rnd 14
+# [9] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 12
+# [10] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [11] ESBindAttack(63:943) -> Thorn Cage
+# Bind 4 random for 2~4 turns, Deal 50% damage
+# [12] ESOrbChangeAttack(48:944) -> Rose Ocean
+# Change Heal to Water, Deal 300% damage
+# [13] ESOrbChangeAttack(48:942) -> Beautiful Rose
+# Change Random to Heal, Deal 125% damage
+# [14] ESOrbChangeAttack(48:902) -> Flower Tail
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Change Random to Heal, Deal 100% damage
+# [15] ESBindAttack(63:941) -> Thorn Whip
+# Bind 1 subs for 2 turns, Deal 75% damage

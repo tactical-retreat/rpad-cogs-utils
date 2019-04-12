@@ -1,0 +1,206 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 365
+monster_name_en: Awoken Deity Odin
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb Water damage for 5 turns + Lock all Water, Dark orbs, Deal 120%
+    damage (Preemptive)
+  desc_jp: Absorb Water damage for 5 turns + Lock all Water, Dark orbs, Deal 120%
+    damage (Preemptive)
+  max_atk_pct: null
+  name_en: Grace of Mimir + Diabolic Lance Gungnir
+  name_jp: Grace of Mimir + Diabolic Lance Gungnir
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 160% damage (2 hits, 80% each) + Delay active skills by 1 turns
+  desc_jp: Deal 160% damage (2 hits, 80% each) + Delay active skills by 1 turns
+  max_atk_pct: null
+  name_en: Double Slash + Skill Resistance
+  name_jp: Double Slash + Skill Resistance
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 2
+  name_jp: Loop to 1 after. Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change 3rd row to Water orbs, Deal 120% damage
+  desc_jp: Change 3rd row to Water orbs, Deal 120% damage
+  max_atk_pct: 120
+  name_en: Divide Icicle
+  name_jp: Divide Icicle
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Mortal Poison skyfall +15% for 1 turns + Player -99% HP
+  desc_jp: Mortal Poison skyfall +15% for 1 turns + Player -99% HP
+  max_atk_pct: null
+  name_en: Vidur + Hnikar
+  name_jp: Vidur + Hnikar
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 180% damage (3 hits, 60% each) + Delay active skills by 1 turns
+  desc_jp: Deal 180% damage (3 hits, 60% each) + Delay active skills by 1 turns
+  max_atk_pct: null
+  name_en: Triple Slash + Skill Resistance
+  name_jp: Triple Slash + Skill Resistance
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 2
+  name_jp: Loop to 1 after. Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change 3rd row to Water, Poison orbs, Deal 150% damage
+  desc_jp: Change 3rd row to Water, Poison orbs, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Divide Poison
+  name_jp: Divide Poison
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 15
+  name_jp: HP < 15
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 500% damage (5 hits, 100% each)
+  desc_jp: Deal 500% damage (5 hits, 100% each)
+  max_atk_pct: 500
+  name_en: Vak Sigfodr
+  name_jp: Vak Sigfodr
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 1 -        1
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] SkillSet:
+# 	[0] ESAbsorbAttribute(53:6192) -> Grace of Mimir
+# 	Absorb Water damage for 5 turns
+# 	[1] ESOrbLock(94:6193) -> Diabolic Lance Gungnir
+# 	Lock all Water, Dark orbs, Deal 120% damage
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 50, target rnd 13
+# [7] ESAttackMultihit(15:6206) -> Vak Sigfodr
+# 	Condition: When < 15% hp (ai:100 rnd:0)
+# Deal 500% damage (5 hits, 100% each)
+# [8] SkillSet:
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# 	[0] ESAttackMultihit(15:6201) -> Triple Slash
+# 	Deal 180% damage (3 hits, 60% each)
+# 	[1] ESSkillDelay(89:6202) -> Skill Resistance
+# 	Delay active skills by 1 turns
+# [9] ESRowSpawnMulti(79:6205) -> Divide Poison
+# 	Condition: When < 50% hp (ai:100 rnd:0)
+# Change 3rd row to Water, Poison orbs, Deal 150% damage
+# [10] SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# 	[0] ESAttackMultihit(15:6195) -> Double Slash
+# 	Deal 160% damage (2 hits, 80% each)
+# 	[1] ESSkillDelay(89:6196) -> Skill Resistance
+# 	Delay active skills by 1 turns
+# [11] ESRowSpawnMulti(79:6204) -> Divide Icicle
+# Change 3rd row to Water orbs, Deal 120% damage
+# [12] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [13] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 7
+# [14] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [15] SkillSet:
+# 	[0] ESSkyfall(68:6198) -> Vidur
+# 	Mortal Poison skyfall +15% for 1 turns
+# 	[1] ESGravity(50:6199) -> Hnikar
+# 	Player -99% HP

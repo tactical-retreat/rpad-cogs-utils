@@ -1,0 +1,69 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2435
+monster_name_en: Fire Shibamaru
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Deal 80% damage (Preemptive)
+  desc_jp: Deal 80% damage (Preemptive)
+  max_atk_pct: 80
+  name_en: WOOF!
+  name_jp: WOOF!
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Random to Fire, Deal 120% damage
+  desc_jp: Change Random to Fire, Deal 120% damage
+  max_atk_pct: 120
+  name_en: Fire Technique Scroll
+  name_jp: Fire Technique Scroll
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 30
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 3 -       11
+# [52] true
+# [53] 0 -        0
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:3402) -> ESPreemptive
+# Enable preempt if level 4
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 4, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 8
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [6] ESAttackMultihit(15:3417) -> WOOF!
+# Deal 80% damage
+# [7] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [8] ESOrbChangeAttack(48:3418) -> Fire Technique Scroll
+# 	Condition: 30% chance (ai:30 rnd:0)
+# Change Random to Fire, Deal 120% damage
+# [9] ESEndPath(36:26) -> ESEndPath
+# end_turn

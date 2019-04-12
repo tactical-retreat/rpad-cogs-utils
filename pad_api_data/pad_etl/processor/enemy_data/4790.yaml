@@ -1,0 +1,118 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4790
+monster_name_en: Witch of Escaping the Summer, Werewolfie
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Change Random to Dark, Deal 120% damage (Preemptive)
+  desc_jp: Change Random to Dark, Deal 120% damage (Preemptive)
+  max_atk_pct: 120
+  name_en: You want some too?!
+  name_jp: You want some too?!
+  one_time: 2
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Spawn random 1 Heal orbs, Deal 100% damage
+  desc_jp: Spawn random 1 Heal orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: I'll give you only one!
+  name_jp: I'll give you only one!
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Spawn random 3 Jammer orbs, Deal 100% damage
+  desc_jp: Spawn random 3 Jammer orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: I said only one!
+  name_jp: I said only one!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 20
+  name_jp: HP < 20
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 120% damage (3 hits, 40% each)
+  desc_jp: Deal 120% damage (3 hits, 40% each)
+  max_atk_pct: 120
+  name_en: Coconut Slash
+  name_jp: Coconut Slash
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 4 -      100
+# [52] true
+# [53] 3 -       11
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:3402) -> ESPreemptive
+# Enable preempt if level 4
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 4, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESOrbChangeAttack(48:10864) -> You want some too?!
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
+# Change Random to Dark, Deal 120% damage
+# [5] ESRandomSpawn(92:10865) -> I'll give you only one!
+# 	Condition: One-time use & when Fire, Water, Wood, Light, Dark, Jammer, Poison, Mortal Poison orbs are on the board (ai:100 rnd:0) (one-time: 1)
+# Spawn random 1 Heal orbs, Deal 100% damage
+# [6] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 20, target rnd 9
+# [7] ESRandomSpawn(92:10866) -> I said only one!
+# 	Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board (ai:100 rnd:0)
+# Spawn random 3 Jammer orbs, Deal 100% damage
+# [8] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [9] ESAttackMultihit(15:10867) -> Coconut Slash
+# Deal 120% damage (3 hits, 40% each)
+# [10] ESEndPath(36:26) -> ESEndPath
+# end_turn

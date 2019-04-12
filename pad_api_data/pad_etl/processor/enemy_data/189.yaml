@@ -1,0 +1,146 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 189
+monster_name_en: Hera
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Deal 50% damage
+  desc_jp: Deal 50% damage
+  max_atk_pct: 50
+  name_en: Preemptive
+  name_jp: Preemptive
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Random 2 to Jammer
+  desc_jp: Change Random 2 to Jammer
+  max_atk_pct: null
+  name_en: Mischief by God
+  name_jp: Mischief by God
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 25
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 60
+  name_jp: HP < 60
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 180% damage (3 hits, 60% each)
+  desc_jp: Deal 180% damage (3 hits, 60% each)
+  max_atk_pct: 180
+  name_en: Double Slap
+  name_jp: Double Slap
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Change Random 2 to Jammer
+  desc_jp: Change Random 2 to Jammer
+  max_atk_pct: null
+  name_en: Mischief by God
+  name_jp: Mischief by God
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 25
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 25
+  name_jp: HP < 25
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Gathering Energy
+  name_jp: Gathering Energy
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 2
+  name_jp: Loop to 1 after. Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 600% damage
+  desc_jp: Deal 600% damage
+  max_atk_pct: 600
+  name_en: Graviton Bomb
+  name_jp: Graviton Bomb
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] false
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESAttackPreemptive(47:335) -> Holy Rite
+# Deal 50% damage
+# [2] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 25, target rnd 6
+# [3] ESAttackMultihit(15:322) -> Double Slap
+# 	Condition: 50% chance when < 60% hp (ai:50 rnd:0)
+# Deal 180% damage (3 hits, 60% each)
+# [4] ESJammerChangeRandom(13:100) -> Mischief by God
+# 	Condition: When < 55% hp , one-time use (ai:0 rnd:25) (one-time: 1)
+# Change Random 2 to Jammer
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 10
+# [7] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [8] ESInactivity(16:323) -> Gathering Energy
+# Do nothing
+# [9] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [10] ESFlagOperation(24:14) -> ESFlagOperation
+# flag UNSET 0b1
+# [11] ESAttackMultihit(15:324) -> Graviton Bomb
+# Deal 600% damage

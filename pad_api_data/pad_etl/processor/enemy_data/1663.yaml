@@ -1,0 +1,126 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1663
+monster_name_en: Osiris
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Light, Dark by 50%
+  desc_jp: Reduce damage from Light, Dark by 50%
+  max_atk_pct: null
+  name_en: Ability
+  name_jp: Ability
+  one_time: 0
+  record_type_name: PASSIVE
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Wood, Dark skyfall +25% for 99 turns (Preemptive)
+  desc_jp: Wood, Dark skyfall +25% for 99 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Monarchy of Dark Riches
+  name_jp: Monarchy of Dark Riches
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change 3rd row to Jammer orbs, Deal 50% damage
+  desc_jp: Change 3rd row to Jammer orbs, Deal 50% damage
+  max_atk_pct: 50
+  name_en: Switch of Judgement
+  name_jp: Switch of Judgement
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 2
+  name_jp: Loop to 1 after. Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change 2nd column to Heal orbs, 5th column to Heal orbs, Deal 100% damage
+  desc_jp: Change 2nd column to Heal orbs, 5th column to Heal orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Firm Staff of Blessing
+  name_jp: Firm Staff of Blessing
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 30
+  name_jp: HP < 30
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 200% damage (2 hits, 100% each)
+  desc_jp: Deal 200% damage (2 hits, 100% each)
+  max_atk_pct: 200
+  name_en: Invisible Protection
+  name_jp: Invisible Protection
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] false
+# [53] 1 -        1
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] ESSkyfall(68:1792) -> Monarchy of Dark Riches
+# Wood, Dark skyfall +25% for 99 turns
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESAttackMultihit(15:1795) -> Invisible Protection
+# 	Condition: When < 30% hp (ai:100 rnd:0)
+# Deal 200% damage (2 hits, 100% each)
+# [7] ESRowSpawnMulti(79:1794) -> Switch of Judgement
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Change 3rd row to Jammer orbs, Deal 50% damage
+# [8] ESColumnSpawnMulti(77:1793) -> Firm Staff of Blessing
+# Change 2nd column to Heal orbs, 5th column to Heal orbs, Deal 100% damage
+# [9] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [10] ESAttributeResist(72:1740) -> Light & Dark Resistance
+# Reduce damage from Light, Dark by 50%

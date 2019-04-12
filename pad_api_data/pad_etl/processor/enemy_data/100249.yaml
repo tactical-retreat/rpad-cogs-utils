@@ -1,0 +1,89 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 100249
+monster_name_en: Alt. Dub-topalit
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Specific orbs change every 1.0s for 2 turns (Preemptive)
+  desc_jp: Specific orbs change every 1.0s for 2 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Dazzle!
+  name_jp: Dazzle!
+  one_time: 1
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Increase damage to 1000% for the next 999 turns (When 1 enemy remains)
+  desc_jp: Increase damage to 1000% for the next 999 turns (When 1 enemy remains)
+  max_atk_pct: null
+  name_en: In a Pinch!
+  name_jp: In a Pinch!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 50% damage
+  desc_jp: Deal 50% damage
+  max_atk_pct: 50
+  name_en: Light Orb Toss
+  name_jp: Light Orb Toss
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 2 -       10
+# [52] true
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESSpinnersFixed(110:7582) -> Dazzle!
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Specific orbs change every 1.0s for 2 turns
+# [3] ESAttackUPRemainingEnemies(17:7580) -> In a Pinch!
+# 	Condition: when <= 1 enemies remain (ai:100 rnd:0)
+# Increase damage to 1000% for the next 999 turns
+# [4] ESAttackMultihit(15:7581) -> Light Orb Toss
+# Deal 50% damage
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn

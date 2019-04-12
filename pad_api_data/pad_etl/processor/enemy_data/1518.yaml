@@ -1,0 +1,197 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1518
+monster_name_en: Keeper of Paradise, Metatron
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings:
+- Found 2 unused actions
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Bind 1 both leaders for 2 turns (Preemptive)
+  desc_jp: Bind 1 both leaders for 2 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Let's stretch before swimming!
+  name_jp: Let's stretch before swimming!
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 1 turns
+  desc_jp: Reduce damage from all sources by 50% for 1 turns
+  max_atk_pct: null
+  name_en: Can't forget the sunscreen!
+  name_jp: Can't forget the sunscreen!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change 1st, 2nd, 3rd, 4th, 5th row to Water orbs, Deal 100% damage
+  desc_jp: Change 1st, 2nd, 3rd, 4th, 5th row to Water orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Here I go!
+  name_jp: Here I go!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Spawn random 1 Heal orbs + Bind 1 subs for 2 turns, Deal 120% damage
+  desc_jp: Spawn random 1 Heal orbs + Bind 1 subs for 2 turns, Deal 120% damage
+  max_atk_pct: null
+  name_en: Beach volleyball time! + ATTACK!!
+  name_jp: Beach volleyball time! + ATTACK!!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 4
+  name_jp: Turn 4
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change all orbs to Wood + Change 3rd, 4th column to Fire orbs, Deal 150%
+    damage
+  desc_jp: Change all orbs to Wood + Change 3rd, 4th column to Fire orbs, Deal 150%
+    damage
+  max_atk_pct: null
+  name_en: Next let's split watermelons! + Ha!
+  name_jp: Next let's split watermelons! + Ha!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 400% damage (2 hits, 200% each)
+  desc_jp: Deal 400% damage (2 hits, 200% each)
+  max_atk_pct: 400
+  name_en: That was fun! This is for you!
+  name_jp: That was fun! This is for you!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Unused Actions
+############################################################
+# ESAttackMultihit(15:3131) -> ...Aren't you hot with that on your head?
+# Deal 400% damage (2 hits, 200% each)
+# ESAttackMultihit(15:3169) -> Why do you resist me?
+# Deal 400% damage (2 hits, 200% each)
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 0 -        0
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:355) -> ESPreemptive
+# Enable preempt if level 5
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 5, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 8
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [6] ESBindTarget(54:3119) -> Let's stretch before swimming!
+# Bind 1 both leaders for 2 turns
+# [7] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [8] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 11
+# [9] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [10] ESDamageShield(74:3120) -> Can't forget the sunscreen!
+# Reduce damage from all sources by 50% for 1 turns
+# [11] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 4, target rnd 14
+# [12] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b111
+# [13] ESRowSpawnMulti(79:3122) -> Here I go!
+# Change 1st, 2nd, 3rd, 4th, 5th row to Water orbs, Deal 100% damage
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 8, target rnd 17
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1111
+# [16] SkillSet:
+# 	[0] ESRandomSpawn(92:3123) -> Beach volleyball time!
+# 	Spawn random 1 Heal orbs
+# 	[1] ESBindAttack(63:3126) -> ATTACK!!
+# 	Bind 1 subs for 2 turns, Deal 120% damage
+# [17] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 16, target rnd 20
+# [18] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11111
+# [19] SkillSet:
+# 	[0] ESBoardChange(84:3124) -> Next let's split watermelons!
+# 	Change all orbs to Wood
+# 	[1] ESColumnSpawnMulti(77:3128) -> Ha!
+# 	Change 3rd, 4th column to Fire orbs, Deal 150% damage
+# [20] ESBranchCard(90:3130) -> ESBranchCard
+# Branch on player_cards HAS [1118], target rnd 24
+# [21] ESBranchCard(90:3168) -> ESBranchCard
+# Branch on player_cards HAS [1119], target rnd 25
+# [22] ESAttackMultihit(15:3125) -> That was fun! This is for you!
+# Deal 400% damage (2 hits, 200% each)
+# [23] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [24] ESAttackMultihit(15:3131) -> ...Aren't you hot with that on your head?
+# Deal 400% damage (2 hits, 200% each)
+# [25] ESAttackMultihit(15:3169) -> Why do you resist me?
+# Deal 400% damage (2 hits, 200% each)

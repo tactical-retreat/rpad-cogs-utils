@@ -1,0 +1,214 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 102722
+monster_name_en: Alt. Awoken Hephaestus
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 75% for 5 turns + Locked random skyfall
+    +50% for 3 turns (Preemptive)
+  desc_jp: Reduce damage from all sources by 75% for 5 turns + Locked random skyfall
+    +50% for 3 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Blazing Furnace + Tempering Secrets
+  name_jp: Blazing Furnace + Tempering Secrets
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 80% damage (2 hits, 40% each)
+  desc_jp: Deal 80% damage (2 hits, 40% each)
+  max_atk_pct: 80
+  name_en: Forging
+  name_jp: Forging
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 100% damage (2 hits, 50% each)
+  desc_jp: Deal 100% damage (2 hits, 50% each)
+  max_atk_pct: 100
+  name_en: Forging
+  name_jp: Forging
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 120% damage (2 hits, 60% each)
+  desc_jp: Deal 120% damage (2 hits, 60% each)
+  max_atk_pct: 120
+  name_en: Forging
+  name_jp: Forging
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 4
+  name_jp: Turn 4
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 140% damage (2 hits, 70% each)
+  desc_jp: Deal 140% damage (2 hits, 70% each)
+  max_atk_pct: 140
+  name_en: Forging
+  name_jp: Forging
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 5
+  name_jp: Turn 5
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 160% damage + Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer,
+    Poison, Mortal Poison orbs
+  desc_jp: Deal 160% damage + Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer,
+    Poison, Mortal Poison orbs
+  max_atk_pct: null
+  name_en: Creation of the Sacred Treasures + Quenching
+  name_jp: Creation of the Sacred Treasures + Quenching
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 3500% damage (7 hits, 500% each)
+  desc_jp: Deal 3500% damage (7 hits, 500% each)
+  max_atk_pct: 3500
+  name_en: Iron Rampage
+  name_jp: Iron Rampage
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] SkillSet:
+# 	[0] ESDamageShield(74:2814) -> Blazing Furnace
+# 	Reduce damage from all sources by 75% for 5 turns
+# 	[1] ESSkyfall(96:10786) -> Tempering Secrets
+# 	Locked random skyfall +50% for 3 turns
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 10
+# [7] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [8] ESAttackMultihit(15:2815) -> Forging
+# Deal 80% damage (2 hits, 40% each)
+# [9] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [10] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 4, target rnd 14
+# [11] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b111
+# [12] ESAttackMultihit(15:2816) -> Forging
+# Deal 100% damage (2 hits, 50% each)
+# [13] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 8, target rnd 18
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1111
+# [16] ESAttackMultihit(15:2817) -> Forging
+# Deal 120% damage (2 hits, 60% each)
+# [17] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [18] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 16, target rnd 22
+# [19] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11111
+# [20] ESAttackMultihit(15:2820) -> Forging
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Deal 140% damage (2 hits, 70% each)
+# [21] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [22] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 32, target rnd 26
+# [23] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b111111
+# [24] SkillSet:
+# 	[0] ESAttackMultihit(15:10782) -> Creation of the Sacred Treasures
+# 	Deal 160% damage
+# 	[1] ESOrbLock(94:10783) -> Quenching
+# 	Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [25] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [26] ESAttackMultihit(15:10785) -> Iron Rampage
+# Deal 3500% damage (7 hits, 500% each)
+# [27] ESEndPath(36:26) -> ESEndPath
+# end_turn

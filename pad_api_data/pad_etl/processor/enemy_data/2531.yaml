@@ -1,0 +1,157 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2531
+monster_name_en: Green Flame Armor Dragon, Shedir
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings:
+- Found 1 unused actions
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Deal 240% damage (2 hits, 120% each) (Preemptive)
+  desc_jp: Deal 240% damage (2 hits, 120% each) (Preemptive)
+  max_atk_pct: 240
+  name_en: Fury Horn
+  name_jp: Fury Horn
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 999 turns (When 1 enemy remains)
+  desc_jp: Increase damage to 200% for the next 999 turns (When 1 enemy remains)
+  max_atk_pct: null
+  name_en: Gear Charge
+  name_jp: Gear Charge
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change Poison to Wood, Deal 150% damage
+  desc_jp: Change Poison to Wood, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Clean Nap
+  name_jp: Clean Nap
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 80
+  name_jp: HP < 80
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Delay active skills by 1 turns
+  desc_jp: Delay active skills by 1 turns
+  max_atk_pct: null
+  name_en: Absorption
+  name_jp: Absorption
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 10
+  name_jp: HP < 10
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 1000% damage (2 hits, 500% each)
+  desc_jp: Deal 1000% damage (2 hits, 500% each)
+  max_atk_pct: 1000
+  name_en: Limit Burst
+  name_jp: Limit Burst
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Unused Actions
+############################################################
+# ESRowSpawnMulti(79:3586) -> Aero Burn
+# Change 1st row to Fire orbs, 5th row to Wood orbs, Deal 130% damage
+############################################################
+### ES Modifiers
+############################################################
+# [9] 4 -      100
+# [52] true
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:355) -> ESPreemptive
+# Enable preempt if level 5
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 5, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 8
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [6] ESAttackMultihit(15:3585) -> Fury Horn
+# Deal 240% damage (2 hits, 120% each)
+# [7] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [8] ESAttackUPRemainingEnemies(17:3592) -> Gear Charge
+# 	Condition: when <= 1 enemies remain (ai:100 rnd:0)
+# Increase damage to 200% for the next 999 turns
+# [9] ESAttackMultihit(15:3241) -> Limit Burst
+# 	Condition: When < 10% hp (ai:100 rnd:0)
+# Deal 1000% damage (2 hits, 500% each)
+# [10] ESSkillDelay(89:3240) -> Absorption
+# 	Condition: When < 80% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Delay active skills by 1 turns
+# [11] ESOrbChangeAttack(48:3587) -> Clean Nap
+# Change Poison to Wood, Deal 150% damage
+# [12] ESRowSpawnMulti(79:3586) -> Aero Burn
+# Change 1st row to Fire orbs, 5th row to Wood orbs, Deal 130% damage
+# [13] ESEndPath(36:26) -> ESEndPath
+# end_turn

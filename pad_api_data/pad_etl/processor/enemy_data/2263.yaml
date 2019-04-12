@@ -1,0 +1,159 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2263
+monster_name_en: Cruel Frozen Hell Demon, Indigo
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings:
+- Found 2 unused actions
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Change all orbs to Fire, Water, Wood, Light, Dark, Jammer, Poison, Deal
+    60% damage + Lock all Jammer, Poison orbs (Preemptive)
+  desc_jp: Change all orbs to Fire, Water, Wood, Light, Dark, Jammer, Poison, Deal
+    60% damage + Lock all Jammer, Poison orbs (Preemptive)
+  max_atk_pct: null
+  name_en: You'll regret coming here + Freeze Lock
+  name_jp: You'll regret coming here + Freeze Lock
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Wood to Water, Deal 60% damage
+  desc_jp: Change Wood to Water, Deal 60% damage
+  max_atk_pct: 60
+  name_en: Ice Needle
+  name_jp: Ice Needle
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 60
+- !SkillRecord
+  desc_en: Change 1st, 2nd row to Water, Jammer, Poison orbs, Deal 60% damage
+  desc_jp: Change 1st, 2nd row to Water, Jammer, Poison orbs, Deal 60% damage
+  max_atk_pct: 60
+  name_en: Freezing Wind
+  name_jp: Freezing Wind
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 60
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 80
+  name_jp: HP < 80
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 30% for 3 turns
+  desc_jp: Reduce damage from all sources by 30% for 3 turns
+  max_atk_pct: null
+  name_en: Purple Soul Shield
+  name_jp: Purple Soul Shield
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 30
+  name_jp: HP < 30
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 150% damage (5 hits, 30% each)
+  desc_jp: Deal 150% damage (5 hits, 30% each)
+  max_atk_pct: 150
+  name_en: Super Snowstorm
+  name_jp: Super Snowstorm
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Unused Actions
+############################################################
+# ESSkillDelay(89:3090) -> You must have guts to face me!
+# Delay active skills by 1~2 turns
+# ESBindRandom(1:3092) -> You shall not pass
+# 	Condition: None (ai:100 rnd:0) (one-time only)
+# Bind 6 random cards for 2 turns
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] SkillSet:
+# 	[0] ESBoardChangeAttackBits(85:3086) -> You'll regret coming here
+# 	Change all orbs to Fire, Water, Wood, Light, Dark, Jammer, Poison, Deal 60% damage
+# 	[1] ESOrbLock(94:3087) -> Freeze Lock
+# 	Lock all Jammer, Poison orbs
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESBranchCard(90:3089) -> ESBranchCard
+# Branch on player_cards HAS [1257], target rnd 13
+# [7] ESBranchCard(90:3091) -> ESBranchCard
+# Branch on player_cards HAS [1947], target rnd 16
+# [8] ESDamageShield(74:3095) -> Purple Soul Shield
+# 	Condition: When < 80% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Reduce damage from all sources by 30% for 3 turns
+# [9] ESAttackMultihit(15:3096) -> Super Snowstorm
+# 	Condition: When < 30% hp (ai:100 rnd:0)
+# Deal 150% damage (5 hits, 30% each)
+# [10] ESOrbChangeAttack(48:3093) -> Ice Needle
+# 	Condition: 60% chance (ai:60 rnd:0)
+# Change Wood to Water, Deal 60% damage
+# [11] ESRowSpawnMulti(79:3094) -> Freezing Wind
+# 	Condition: 60% chance (ai:60 rnd:0)
+# Change 1st, 2nd row to Water, Jammer, Poison orbs, Deal 60% damage
+# [12] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [13] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 7
+# [14] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [15] ESSkillDelay(89:3090) -> You must have guts to face me!
+# Delay active skills by 1~2 turns
+# [16] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 4, target rnd 8
+# [17] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b111
+# [18] ESBindRandom(1:3092) -> You shall not pass
+# 	Condition: None (ai:100 rnd:0) (one-time only)
+# Bind 6 random cards for 2 turns

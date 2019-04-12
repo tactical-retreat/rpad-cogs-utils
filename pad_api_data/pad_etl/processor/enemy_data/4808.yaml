@@ -1,0 +1,195 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4808
+monster_name_en: Vortex Dragon Caller, Vigo
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings:
+- Found 2 unused actions
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb combo <= 10 damage for 999 turns (Preemptive)
+  desc_jp: Absorb combo <= 10 damage for 999 turns (Preemptive)
+  max_atk_pct: null
+  name_en: I hope you're a good training partner
+  name_jp: I hope you're a good training partner
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Specific orbs change every 1.0s for 4 turns
+  desc_jp: Specific orbs change every 1.0s for 4 turns
+  max_atk_pct: null
+  name_en: Show me what you've got
+  name_jp: Show me what you've got
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Spawn random 3 Bomb orbs
+  desc_jp: Spawn random 3 Bomb orbs
+  max_atk_pct: null
+  name_en: How about...this!
+  name_jp: How about...this!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change 1st column to Water, Light orbs, 6th column to Water, Light orbs,
+    Deal 100% damage
+  desc_jp: Change 1st column to Water, Light orbs, 6th column to Water, Light orbs,
+    Deal 100% damage
+  max_atk_pct: 100
+  name_en: Let's see how you handle this!
+  name_jp: Let's see how you handle this!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 4
+  name_jp: Turn 4
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind awoken skills for 1 turns
+  desc_jp: Bind awoken skills for 1 turns
+  max_atk_pct: null
+  name_en: Let's end it now...
+  name_jp: Let's end it now...
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 3000% damage (6 hits, 500% each)
+  desc_jp: Deal 3000% damage (6 hits, 500% each)
+  max_atk_pct: 3000
+  name_en: I look forward to next time
+  name_jp: I look forward to next time
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Unused Actions
+############################################################
+# ESAbsorbCombo(67:11137) -> Let's practice together once in a while
+# Absorb combo <= 10 damage for 999 turns
+# SkillSet:
+# 	Condition: On death (ai:0 rnd:0)
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 8
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] ESBranchCard(90:11138) -> ESBranchCard
+# Branch on player_cards HAS [4806, 4807], target rnd 6
+# [5] ESAbsorbCombo(67:11136) -> I hope you're a good training partner
+# Absorb combo <= 10 damage for 999 turns
+# [6] ESAbsorbCombo(67:11137) -> Let's practice together once in a while
+# Absorb combo <= 10 damage for 999 turns
+# [7] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [8] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 12
+# [9] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [10] ESSpinnersFixed(110:11139) -> Show me what you've got
+# Specific orbs change every 1.0s for 4 turns
+# [11] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [12] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 4, target rnd 16
+# [13] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b111
+# [14] ESBombRandomSpawn(102:11140) -> How about...this!
+# Spawn random 3 Bomb orbs
+# [15] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [16] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 8, target rnd 20
+# [17] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1111
+# [18] ESColumnSpawnMulti(77:11141) -> Let's see how you handle this!
+# Change 1st column to Water, Light orbs, 6th column to Water, Light orbs, Deal 100% damage
+# [19] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [20] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 16, target rnd 24
+# [21] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11111
+# [22] ESBindAwoken(88:11142) -> Let's end it now...
+# Bind awoken skills for 1 turns
+# [23] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [24] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [25] ESAttackMultihit(15:11143) -> I look forward to next time
+# Deal 3000% damage (6 hits, 500% each)
+# [26] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [27] SkillSet:
+# 	Condition: On death (ai:0 rnd:0)

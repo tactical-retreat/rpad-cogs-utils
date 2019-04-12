@@ -1,0 +1,122 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 885
+monster_name_en: Nine-Tailed Izuna
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Deal 80% damage (Preemptive)
+  desc_jp: Deal 80% damage (Preemptive)
+  max_atk_pct: 80
+  name_en: Stray Demon Katana Slash
+  name_jp: Stray Demon Katana Slash
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Random to Random, Deal 80% damage
+  desc_jp: Change Random to Random, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Nine-Tails Five Spirit Formation
+  name_jp: Nine-Tails Five Spirit Formation
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 160% damage (4 hits, 40% each)
+  desc_jp: Deal 160% damage (4 hits, 40% each)
+  max_atk_pct: 160
+  name_en: Burning Heavens Strike
+  name_jp: Burning Heavens Strike
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Change Random to Random, Deal 80% damage
+  desc_jp: Change Random to Random, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Nine-Tails Five Spirit Formation
+  name_jp: Nine-Tails Five Spirit Formation
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 2
+  name_jp: Loop to 1 after. Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 160% damage (4 hits, 40% each)
+  desc_jp: Deal 160% damage (4 hits, 40% each)
+  max_atk_pct: 160
+  name_en: Burning Heavens Strike
+  name_jp: Burning Heavens Strike
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] false
+# [53] 1 -        1
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:355) -> ESPreemptive
+# Enable preempt if level 5
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 5, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 7
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [6] ESAttackMultihit(15:656) -> Stray Demon Katana Slash
+# Deal 80% damage
+# [7] ESAttackMultihit(15:657) -> Burning Heavens Strike
+# 	Condition: 50% chance when < 50% hp (ai:50 rnd:0)
+# Deal 160% damage (4 hits, 40% each)
+# [8] ESOrbChangeAttack(48:655) -> Nine-Tails Five Spirit Formation
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Change Random to Random, Deal 80% damage

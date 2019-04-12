@@ -1,0 +1,48 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1410
+monster_name_en: '***** (Dragon Ball)'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Bind Fire cards for 2~4 turns
+  desc_jp: Bind Fire cards for 2~4 turns
+  max_atk_pct: null
+  name_en: Flame Bind
+  name_jp: Flame Bind
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 3
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] false
+# [53] 0 -        0
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBindAttribute(2:1028) -> Flame Bind
+# 	Condition: One-time use (ai:1 rnd:3) (one-time: 1)
+# Bind Fire cards for 2~4 turns
+# [2] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [3] ESNone(0:1029) -> ESNone
+# nothing

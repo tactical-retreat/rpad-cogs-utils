@@ -1,0 +1,216 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1882
+monster_name_en: Double-Edged Blade Brave, Claymore
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb damage >= 6000000 damage for 5 turns (Preemptive)
+  desc_jp: Absorb damage >= 6000000 damage for 5 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Respect for the Weak
+  name_jp: Respect for the Weak
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Voids status ailments for 5 turns + Change own attribute to Fire
+  desc_jp: Voids status ailments for 5 turns + Change own attribute to Fire
+  max_atk_pct: null
+  name_en: Immovable Faith + Rigorous Obedience
+  name_jp: Immovable Faith + Rigorous Obedience
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2-4
+  name_jp: Turn 2-4
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change 3rd row to Heal orbs, Deal 120% damage
+  desc_jp: Change 3rd row to Heal orbs, Deal 120% damage
+  max_atk_pct: 120
+  name_en: Flash of Affection
+  name_jp: Flash of Affection
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Change 2nd row to Fire orbs, 4th row to Water orbs, Deal 100% damage
+  desc_jp: Change 2nd row to Fire orbs, 4th row to Water orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: One Sword, Two Outcomes
+  name_jp: One Sword, Two Outcomes
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 25
+- !SkillRecord
+  desc_en: Deal 105% damage (3 hits, 35% each)
+  desc_jp: Deal 105% damage (3 hits, 35% each)
+  max_atk_pct: 105
+  name_en: Sublime Sword Technique
+  name_jp: Sublime Sword Technique
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 25
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Blind random 5~10 orbs for 1 turns + Deal 150% damage (5 hits, 30% each)
+  desc_jp: Blind random 5~10 orbs for 1 turns + Deal 150% damage (5 hits, 30% each)
+  max_atk_pct: null
+  name_en: Frivolous Dark Moon + Holy Boisterous Dance of the Sword
+  name_jp: Frivolous Dark Moon + Holy Boisterous Dance of the Sword
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Voids status ailments for 5 turns + Delay active skills by 2~3 turns
+  desc_jp: Voids status ailments for 5 turns + Delay active skills by 2~3 turns
+  max_atk_pct: null
+  name_en: Immovable Faith + Duty to the Seal Lord
+  name_jp: Immovable Faith + Duty to the Seal Lord
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 20
+  name_jp: HP < 20
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 400% damage (4 hits, 100% each)
+  desc_jp: Deal 400% damage (4 hits, 100% each)
+  max_atk_pct: 400
+  name_en: Righteous Judgment
+  name_jp: Righteous Judgment
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 1 -        1
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] ESAbsorbThreshold(87:10972) -> Respect for the Weak
+# Absorb damage >= 6000000 damage for 5 turns
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 13
+# [7] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [8] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 50, target rnd 11
+# [9] SkillSet:
+# 	[0] ESStatusShield(20:10974) -> Immovable Faith
+# 	Voids status ailments for 5 turns
+# 	[1] ESChangeAttribute(46:10975) -> Rigorous Obedience
+# 	Change own attribute to Fire
+# [10] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [11] SkillSet:
+# 	[0] ESStatusShield(20:10974) -> Immovable Faith
+# 	Voids status ailments for 5 turns
+# 	[1] ESSkillDelay(89:10977) -> Duty to the Seal Lord
+# 	Delay active skills by 2~3 turns
+# [12] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [13] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 20, target rnd 20
+# [14] ESBranchCounter(32:22) -> ESBranchCounter
+# Branch on counter > 3, target rnd 22
+# [15] ESSetCounter(26:16) -> ESSetCounter
+# counter + 1
+# [16] ESRowSpawnMulti(79:10979) -> Flash of Affection
+# 	Condition: One-time use (ai:0 rnd:50) (one-time: 1)
+# Change 3rd row to Heal orbs, Deal 120% damage
+# [17] ESRowSpawnMulti(79:10980) -> One Sword, Two Outcomes
+# 	Condition: 25% chance (ai:0 rnd:25)
+# Change 2nd row to Fire orbs, 4th row to Water orbs, Deal 100% damage
+# [18] ESAttackMultihit(15:10981) -> Sublime Sword Technique
+# 	Condition: 25% chance (ai:0 rnd:25)
+# Deal 105% damage (3 hits, 35% each)
+# [19] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [20] ESAttackMultihit(15:10982) -> Righteous Judgment
+# Deal 400% damage (4 hits, 100% each)
+# [21] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [22] SkillSet:
+# 	[0] ESBlindStickyRandom(97:10971) -> Frivolous Dark Moon
+# 	Blind random 5~10 orbs for 1 turns
+# 	[1] ESAttackMultihit(15:10789) -> Holy Boisterous Dance of the Sword
+# 	Deal 150% damage (5 hits, 30% each)
+# [23] ESEndPath(36:26) -> ESEndPath
+# end_turn

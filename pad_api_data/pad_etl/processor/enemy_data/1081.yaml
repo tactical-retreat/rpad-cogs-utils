@@ -1,0 +1,171 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1081
+monster_name_en: Lemon Dragon
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings:
+- Found 1 unused actions
+
+############################################################
+### Data @ 3
+############################################################
+!SkillRecordListing
+level: 3
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Spawn random 3 Light orbs (Preemptive)
+  desc_jp: Spawn random 3 Light orbs (Preemptive)
+  max_atk_pct: null
+  name_en: Lemon... Sour... I want some...
+  name_jp: Lemon... Sour... I want some...
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Spawn random 1 Heal orbs, Deal 100% damage
+  desc_jp: Spawn random 1 Heal orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: It's tart, so just one...
+  name_jp: It's tart, so just one...
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Spawn random 1 Heal orbs, Deal 100% damage
+  desc_jp: Spawn random 1 Heal orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: It's tart, but I'll take another one...
+  name_jp: It's tart, but I'll take another one...
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Spawn random 1 Heal orbs, Deal 100% damage
+  desc_jp: Spawn random 1 Heal orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: It's tart... But I can't stop
+  name_jp: It's tart... But I can't stop
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 4
+  name_jp: Loop to 1 after. Turn 4
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 250% damage (5 hits, 50% each)
+  desc_jp: Deal 250% damage (5 hits, 50% each)
+  max_atk_pct: 250
+  name_en: It's tart!!
+  name_jp: It's tart!!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Unused Actions
+############################################################
+# ESAttackMultihit(15:4257) -> There is no lemon!
+# Deal 150% damage (3 hits, 50% each)
+############################################################
+### ES Modifiers
+############################################################
+# [9] 3 -       11
+# [52] true
+# [53] 0 -        0
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:697) -> ESPreemptive
+# Enable preempt if level 3
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 3, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 8
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [6] ESRandomSpawn(92:4258) -> Lemon... Sour... I want some...
+# 	Condition: When fire, water, wood, dark, heal, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
+# Spawn random 3 Light orbs
+# [7] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [8] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 13
+# [9] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [10] ESRandomSpawn(92:4253) -> It's tart, so just one...
+# 	Condition: When light orbs are on the board (ai:100 rnd:0)
+# Spawn random 1 Heal orbs, Deal 100% damage
+# [11] ESFlagOperation(24:14) -> ESFlagOperation
+# flag UNSET 0b10
+# [12] ESAttackMultihit(15:4257) -> There is no lemon!
+# Deal 150% damage (3 hits, 50% each)
+# [13] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 4, target rnd 18
+# [14] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b111
+# [15] ESRandomSpawn(92:4254) -> It's tart, but I'll take another one...
+# 	Condition: When light orbs are on the board (ai:100 rnd:0)
+# Spawn random 1 Heal orbs, Deal 100% damage
+# [16] ESFlagOperation(24:14) -> ESFlagOperation
+# flag UNSET 0b100
+# [17] ESAttackMultihit(15:4257) -> There is no lemon!
+# Deal 150% damage (3 hits, 50% each)
+# [18] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 8, target rnd 23
+# [19] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1111
+# [20] ESRandomSpawn(92:4255) -> It's tart... But I can't stop
+# 	Condition: When light orbs are on the board (ai:100 rnd:0)
+# Spawn random 1 Heal orbs, Deal 100% damage
+# [21] ESFlagOperation(24:14) -> ESFlagOperation
+# flag UNSET 0b1000
+# [22] ESAttackMultihit(15:4257) -> There is no lemon!
+# Deal 150% damage (3 hits, 50% each)
+# [23] ESFlagOperation(24:14) -> ESFlagOperation
+# flag UNSET 0b1110
+# [24] ESAttackMultihit(15:4256) -> It's tart!!
+# Deal 250% damage (5 hits, 50% each)

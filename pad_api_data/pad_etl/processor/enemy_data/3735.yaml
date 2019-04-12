@@ -1,0 +1,170 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3735
+monster_name_en: "Boneclad Dragonbound, Herm\xE9-Do"
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Enemy turn counter change to 1 when HP <= 50%
+  desc_jp: Enemy turn counter change to 1 when HP <= 50%
+  max_atk_pct: null
+  name_en: Ability
+  name_jp: Ability
+  one_time: 0
+  record_type_name: PASSIVE
+  usage_pct: 100
+- !SkillRecord
+  desc_en: 'Show message: Ooohh, you''re strong!|Ha... Hahaha... Ahahahaha! (Preemptive)'
+  desc_jp: 'Show message: Ooohh, you''re strong!|Ha... Hahaha... Ahahahaha! (Preemptive)'
+  max_atk_pct: null
+  name_en: Transformation
+  name_jp: Transformation
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 0
+- !SkillRecord
+  desc_en: Absorb combo <= 6 damage for 999 turns (Preemptive)
+  desc_jp: Absorb combo <= 6 damage for 999 turns (Preemptive)
+  max_atk_pct: null
+  name_en: 'You dare set foot in this castle?!
+
+    Hmph. How brave of you.'
+  name_jp: 'You dare set foot in this castle?!
+
+    Hmph. How brave of you.'
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: 'Show message: Ooohh, you''re strong!|Ha... Hahaha... Ahahahaha!'
+  desc_jp: 'Show message: Ooohh, you''re strong!|Ha... Hahaha... Ahahahaha!'
+  max_atk_pct: null
+  name_en: Transformation
+  name_jp: Transformation
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: Deal 180% damage (3 hits, 60% each)
+  desc_jp: Deal 180% damage (3 hits, 60% each)
+  max_atk_pct: 180
+  name_en: Clear Stream
+  name_jp: Clear Stream
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Rcv 50% for 3 turns
+  desc_jp: Voids status ailments for 999 turns + Rcv 50% for 3 turns
+  max_atk_pct: null
+  name_en: Intriguing... + Let's have a little more fun
+  name_jp: Intriguing... + Let's have a little more fun
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: 'Show message: Ooohh, you''re strong!|Ha... Hahaha... Ahahahaha!'
+  desc_jp: 'Show message: Ooohh, you''re strong!|Ha... Hahaha... Ahahahaha!'
+  max_atk_pct: null
+  name_en: Transformation
+  name_jp: Transformation
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: Movetime 50% for 1 turns, Deal 150% damage
+  desc_jp: Movetime 50% for 1 turns, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Icicle Sting
+  name_jp: Icicle Sting
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Spawn random 5 Bomb orbs, Deal 150% damage
+  desc_jp: Spawn random 5 Bomb orbs, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Bubble Bomb
+  name_jp: Bubble Bomb
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESDeathCry(69:7415) -> Transformation
+# 	Condition: On death (ai:0 rnd:0)
+# Show message: Ooohh, you're strong!|Ha... Hahaha... Ahahahaha!
+# [3] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 7
+# [4] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [5] ESAbsorbCombo(67:7407) -> You dare set foot in this castle?!
+# Hmph. How brave of you.
+# Absorb combo <= 6 damage for 999 turns
+# [6] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [7] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 50, target rnd 10
+# [8] ESAttackMultihit(15:7408) -> Clear Stream
+# Deal 180% damage (3 hits, 60% each)
+# [9] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [10] SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# 	[0] ESStatusShield(20:7410) -> Intriguing...
+# 	Voids status ailments for 999 turns
+# 	[1] ESDebuffRCV(105:7411) -> Let's have a little more fun
+# 	Rcv 50% for 3 turns
+# [11] ESDebuffMovetime(39:7413) -> Icicle Sting
+# 	Condition: 50% chance (ai:50 rnd:0)
+# Movetime 50% for 1 turns, Deal 150% damage
+# [12] ESBombRandomSpawn(102:7414) -> Bubble Bomb
+# Spawn random 5 Bomb orbs, Deal 150% damage
+# [13] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [14] ESTurnChangePassive(106:7409) -> Next turn changed
+# Enemy turn counter change to 1 when HP <= 50%

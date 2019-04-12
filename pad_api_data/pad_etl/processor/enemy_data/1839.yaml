@@ -1,0 +1,223 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1839
+monster_name_en: Lightning Sky Stubborn Dragon King, Gainaut
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings:
+- Found 13 unused actions
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Locked random skyfall +30% for 99 turns + Voids status ailments for 999
+    turns (Preemptive)
+  desc_jp: Locked random skyfall +30% for 99 turns + Voids status ailments for 999
+    turns (Preemptive)
+  max_atk_pct: null
+  name_en: You better watch this radiance!! + Crystal Aura
+  name_jp: You better watch this radiance!! + Crystal Aura
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Lock all Jammer orbs, Deal 220% damage
+  desc_jp: Lock all Jammer orbs, Deal 220% damage
+  max_atk_pct: 220
+  name_en: Brilliant Flare
+  name_jp: Brilliant Flare
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 70
+  name_jp: HP < 70
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind Water cards for 5 turns
+  desc_jp: Bind Water cards for 5 turns
+  max_atk_pct: null
+  name_en: Evaporate
+  name_jp: Evaporate
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Lock all Jammer orbs, Deal 220% damage
+  desc_jp: Lock all Jammer orbs, Deal 220% damage
+  max_atk_pct: 220
+  name_en: Brilliant Flare
+  name_jp: Brilliant Flare
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 20
+  name_jp: HP < 20
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 600% damage (6 hits, 100% each)
+  desc_jp: Deal 600% damage (6 hits, 100% each)
+  max_atk_pct: 600
+  name_en: Crossing Ray
+  name_jp: Crossing Ray
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Unused Actions
+############################################################
+# ESDispel(6:3802) -> Erase Light
+# 	Condition: When < 70% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Voids player buff effects
+# ESSkyfall(68:3793) -> Poison Mist
+# 	Condition: When < 70% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Mortal Poison skyfall +20% for 2 turns
+# ESColumnSpawnMulti(77:3795) -> Reflection Ray
+# 	Condition: 16% chance (ai:0 rnd:16)
+# Change 1st column to Jammer orbs, Deal 140% damage
+# ESColumnSpawnMulti(77:3796) -> Reflection Ray
+# 	Condition: 16% chance (ai:0 rnd:16)
+# Change 2nd column to Jammer orbs, Deal 140% damage
+# ESColumnSpawnMulti(77:3797) -> Reflection Ray
+# 	Condition: 17% chance (ai:0 rnd:17)
+# Change 3rd column to Jammer orbs, Deal 140% damage
+# ESColumnSpawnMulti(77:3798) -> Reflection Ray
+# 	Condition: 17% chance (ai:0 rnd:17)
+# Change 4th column to Jammer orbs, Deal 140% damage
+# ESColumnSpawnMulti(77:3799) -> Reflection Ray
+# 	Condition: 17% chance (ai:0 rnd:17)
+# Change 5th column to Jammer orbs, Deal 140% damage
+# ESColumnSpawnMulti(77:3800) -> Reflection Ray
+# 	Condition: 17% chance (ai:0 rnd:17)
+# Change 6th column to Jammer orbs, Deal 140% damage
+# ESColumnSpawnMulti(77:3803) -> Reflection Ray
+# 	Condition: 33% chance (ai:0 rnd:33)
+# Change 1st, 4th column to Jammer orbs, Deal 160% damage
+# ESColumnSpawnMulti(77:3804) -> Reflection Ray
+# 	Condition: 33% chance (ai:0 rnd:33)
+# Change 2nd, 5th column to Jammer orbs, Deal 160% damage
+# ESColumnSpawnMulti(77:3805) -> Reflection Ray
+# 	Condition: 34% chance (ai:0 rnd:34)
+# Change 4th, 6th column to Jammer orbs, Deal 160% damage
+# ESAttackMultihit(15:3809) -> You foolish Devilbound creature
+# Deal 100% damage
+# ESAttackMultihit(15:3807) -> If you want power, sacrifice him to me!
+# Deal 100% damage
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] SkillSet:
+# 	[0] ESSkyfall(96:3788) -> You better watch this radiance!!
+# 	Locked random skyfall +30% for 99 turns
+# 	[1] ESStatusShield(20:3789) -> Crystal Aura
+# 	Voids status ailments for 999 turns
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESAttackMultihit(15:3791) -> Crossing Ray
+# 	Condition: When < 20% hp (ai:100 rnd:0)
+# Deal 600% damage (6 hits, 100% each)
+# [7] ESBranchCard(90:3808) -> ESBranchCard
+# Branch on player_cards HAS [2440, 2441], target rnd 26
+# [8] ESBranchCard(90:3806) -> ESBranchCard
+# Branch on player_cards HAS [1946, 1947], target rnd 26
+# [9] ESBindAttribute(2:3801) -> Evaporate
+# 	Condition: When < 70% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Bind Water cards for 5 turns
+# [10] ESDispel(6:3802) -> Erase Light
+# 	Condition: When < 70% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Voids player buff effects
+# [11] ESSkyfall(68:3793) -> Poison Mist
+# 	Condition: When < 70% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Mortal Poison skyfall +20% for 2 turns
+# [12] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 50, target rnd 21
+# [13] ESOrbLock(94:3792) -> Brilliant Flare
+# Lock all Jammer orbs, Deal 220% damage
+# [14] ESColumnSpawnMulti(77:3795) -> Reflection Ray
+# 	Condition: 16% chance (ai:0 rnd:16)
+# Change 1st column to Jammer orbs, Deal 140% damage
+# [15] ESColumnSpawnMulti(77:3796) -> Reflection Ray
+# 	Condition: 16% chance (ai:0 rnd:16)
+# Change 2nd column to Jammer orbs, Deal 140% damage
+# [16] ESColumnSpawnMulti(77:3797) -> Reflection Ray
+# 	Condition: 17% chance (ai:0 rnd:17)
+# Change 3rd column to Jammer orbs, Deal 140% damage
+# [17] ESColumnSpawnMulti(77:3798) -> Reflection Ray
+# 	Condition: 17% chance (ai:0 rnd:17)
+# Change 4th column to Jammer orbs, Deal 140% damage
+# [18] ESColumnSpawnMulti(77:3799) -> Reflection Ray
+# 	Condition: 17% chance (ai:0 rnd:17)
+# Change 5th column to Jammer orbs, Deal 140% damage
+# [19] ESColumnSpawnMulti(77:3800) -> Reflection Ray
+# 	Condition: 17% chance (ai:0 rnd:17)
+# Change 6th column to Jammer orbs, Deal 140% damage
+# [20] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [21] ESOrbLock(94:3792) -> Brilliant Flare
+# Lock all Jammer orbs, Deal 220% damage
+# [22] ESColumnSpawnMulti(77:3803) -> Reflection Ray
+# 	Condition: 33% chance (ai:0 rnd:33)
+# Change 1st, 4th column to Jammer orbs, Deal 160% damage
+# [23] ESColumnSpawnMulti(77:3804) -> Reflection Ray
+# 	Condition: 33% chance (ai:0 rnd:33)
+# Change 2nd, 5th column to Jammer orbs, Deal 160% damage
+# [24] ESColumnSpawnMulti(77:3805) -> Reflection Ray
+# 	Condition: 34% chance (ai:0 rnd:34)
+# Change 4th, 6th column to Jammer orbs, Deal 160% damage
+# [25] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [26] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 9
+# [27] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [28] ESBranchCard(90:3806) -> ESBranchCard
+# Branch on player_cards HAS [1946, 1947], target rnd 30
+# [29] ESAttackMultihit(15:3809) -> You foolish Devilbound creature
+# Deal 100% damage
+# [30] ESAttackMultihit(15:3807) -> If you want power, sacrifice him to me!
+# Deal 100% damage

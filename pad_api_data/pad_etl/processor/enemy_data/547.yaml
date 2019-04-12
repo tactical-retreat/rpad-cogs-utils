@@ -1,0 +1,66 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 547
+monster_name_en: Low Water Ninja
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 25
+  name_jp: HP < 25
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind 1 random cards for 5 turns
+  desc_jp: Bind 1 random cards for 5 turns
+  max_atk_pct: null
+  name_en: Ninja Trick Shadow Tagging
+  name_jp: Ninja Trick Shadow Tagging
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 1 -        1
+# [52] false
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 5, target rnd 3
+# [2] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [3] ESBindRandom(1:222) -> Ninja Trick Shadow Tagging
+# 	Condition: When < 25% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Bind 1 random cards for 5 turns

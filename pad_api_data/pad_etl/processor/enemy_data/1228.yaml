@@ -1,0 +1,67 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1228
+monster_name_en: Awoken Odin TAMADRA
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 3
+############################################################
+!SkillRecordListing
+level: 3
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Bind 1 random cards for 3 turns (Preemptive)
+  desc_jp: Bind 1 random cards for 3 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Pure Smile
+  name_jp: Pure Smile
+  one_time: 1
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Random to Light, Deal 200% damage
+  desc_jp: Change Random to Light, Deal 200% damage
+  max_atk_pct: 200
+  name_en: Gungnir TAMA!
+  name_jp: Gungnir TAMA!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 3 -       11
+# [52] false
+# [53] 0 -        0
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:697) -> ESPreemptive
+# Enable preempt if level 3
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 3, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 8
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [6] ESBindRandom(1:589) -> Pure Smile
+# 	Condition: None (ai:100 rnd:0) (one-time only)
+# Bind 1 random cards for 3 turns
+# [7] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [8] ESOrbChangeAttack(48:1278) -> Gungnir TAMA!
+# Change Random to Light, Deal 200% damage

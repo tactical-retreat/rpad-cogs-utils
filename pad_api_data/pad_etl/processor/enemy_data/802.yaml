@@ -1,0 +1,113 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 802
+monster_name_en: Gods of Hunt, Umisachi & Yamasachi
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb Wood damage for 10 turns (Preemptive)
+  desc_jp: Absorb Wood damage for 10 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Treasure of the Mountains and Seas
+  name_jp: Treasure of the Mountains and Seas
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change Heal to Water, Deal 75% damage
+  desc_jp: Change Heal to Water, Deal 75% damage
+  max_atk_pct: 75
+  name_en: High Tide Jewel
+  name_jp: High Tide Jewel
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 2
+  name_jp: Loop to 1 after. Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change Water to Jammer, Deal 100% damage
+  desc_jp: Change Water to Jammer, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Low Tide Jewel
+  name_jp: Low Tide Jewel
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 30
+  name_jp: HP < 30
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 300% damage (3 hits, 100% each)
+  desc_jp: Deal 300% damage (3 hits, 100% each)
+  max_atk_pct: 300
+  name_en: Ceremony of the Mountains and Seas
+  name_jp: Ceremony of the Mountains and Seas
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] false
+# [53] 1 -        1
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] ESAbsorbAttribute(53:1071) -> Treasure of the Mountains and Seas
+# Absorb Wood damage for 10 turns
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESAttackMultihit(15:1074) -> Ceremony of the Mountains and Seas
+# 	Condition: When < 30% hp (ai:100 rnd:0)
+# Deal 300% damage (3 hits, 100% each)
+# [7] ESOrbChangeAttack(48:1073) -> High Tide Jewel
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Change Heal to Water, Deal 75% damage
+# [8] ESOrbChangeAttack(48:1072) -> Low Tide Jewel
+# Change Water to Jammer, Deal 100% damage

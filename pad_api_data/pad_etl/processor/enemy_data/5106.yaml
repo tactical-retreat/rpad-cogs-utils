@@ -1,0 +1,180 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 5106
+monster_name_en: Zangief
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 5 turns (Preemptive)
+  desc_jp: Reduce damage from all sources by 50% for 5 turns (Preemptive)
+  max_atk_pct: null
+  name_en: My iron body is invincible! Beware!
+  name_jp: My iron body is invincible! Beware!
+  one_time: 32
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 150% damage
+  desc_jp: Blind all orbs on the board, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Head Butt
+  name_jp: Head Butt
+  one_time: 16
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Seal 5th row for 2 turns, Deal 175% damage
+  desc_jp: Seal 5th row for 2 turns, Deal 175% damage
+  max_atk_pct: 175
+  name_en: Flying Body Press
+  name_jp: Flying Body Press
+  one_time: 8
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Player -25% HP
+  desc_jp: Player -25% HP
+  max_atk_pct: null
+  name_en: Screw Pile Driver
+  name_jp: Screw Pile Driver
+  one_time: 4
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 4
+  name_jp: Turn 4
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 50% damage + Deal 100% damage + Random 1 orbs change every 2.0s for
+    2 turns, Deal 50% damage
+  desc_jp: Deal 50% damage + Deal 100% damage + Random 1 orbs change every 2.0s for
+    2 turns, Deal 50% damage
+  max_atk_pct: null
+  name_en: Knee Hammer + Disable Skill + Double Lariat
+  name_jp: Knee Hammer + Disable Skill + Double Lariat
+  one_time: 2
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 5
+  name_jp: Turn 5
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Leader changes to random sub for 2 turns, Deal 250% damage
+  desc_jp: Leader changes to random sub for 2 turns, Deal 250% damage
+  max_atk_pct: 250
+  name_en: Borscht Dynamite
+  name_jp: Borscht Dynamite
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change 4th, 5th row to Fire orbs, Deal 300% damage
+  desc_jp: Change 4th, 5th row to Fire orbs, Deal 300% damage
+  max_atk_pct: 300
+  name_en: Bolshoi Russian Suplex
+  name_jp: Bolshoi Russian Suplex
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 63 -   111111
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESDamageShield(74:12501) -> My iron body is invincible! Beware!
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 32)
+# Reduce damage from all sources by 50% for 5 turns
+# [3] ESBlind(5:12502) -> Head Butt
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 16)
+# Blind all orbs on the board, Deal 150% damage
+# [4] ESOrbSealRow(100:12503) -> Flying Body Press
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 8)
+# Seal 5th row for 2 turns, Deal 175% damage
+# [5] ESGravity(50:12504) -> Screw Pile Driver
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 4)
+# Player -25% HP
+# [6] SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
+# 	[0] ESAttackMultihit(15:12506) -> Knee Hammer
+# 	Deal 50% damage
+# 	[1] ESAttackSinglehit(82:1) -> Disable Skill
+# 	Deal 100% damage
+# 	[2] ESSpinnersRandom(109:12507) -> Double Lariat
+# 	Random 1 orbs change every 2.0s for 2 turns, Deal 50% damage
+# [7] ESLeaderSwap(75:12508) -> Borscht Dynamite
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Leader changes to random sub for 2 turns, Deal 250% damage
+# [8] ESRowSpawnMulti(79:12509) -> Bolshoi Russian Suplex
+# Change 4th, 5th row to Fire orbs, Deal 300% damage
+# [9] ESEndPath(36:26) -> ESEndPath
+# end_turn

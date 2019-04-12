@@ -1,0 +1,200 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 389
+monster_name_en: War Deity, Dark Minerva
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  max_atk_pct: 100
+  name_en: Preemptive
+  name_jp: Preemptive
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 100% damage (2 hits, 50% each)
+  desc_jp: Deal 100% damage (2 hits, 50% each)
+  max_atk_pct: 100
+  name_en: Flame Slash
+  name_jp: Flame Slash
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind Dark cards for 2~4 turns
+  desc_jp: Bind Dark cards for 2~4 turns
+  max_atk_pct: null
+  name_en: Dark Bind
+  name_jp: Dark Bind
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Countless Dark Bullets Appear
+  name_jp: Countless Dark Bullets Appear
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 120%~180% damage (4~6 hits, 30% each)
+  desc_jp: Deal 120%~180% damage (4~6 hits, 30% each)
+  max_atk_pct: 180
+  name_en: Barrage Bomb
+  name_jp: Barrage Bomb
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  max_atk_pct: 100
+  name_en: Preemptive
+  name_jp: Preemptive
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 100% damage (2 hits, 50% each)
+  desc_jp: Deal 100% damage (2 hits, 50% each)
+  max_atk_pct: 100
+  name_en: Flame Slash
+  name_jp: Flame Slash
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind Dark cards for 10 turns
+  desc_jp: Bind Dark cards for 10 turns
+  max_atk_pct: null
+  name_en: Hyper Dark Bind
+  name_jp: Hyper Dark Bind
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Countless Dark Bullets Appear
+  name_jp: Countless Dark Bullets Appear
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 120%~180% damage (4~6 hits, 30% each)
+  desc_jp: Deal 120%~180% damage (4~6 hits, 30% each)
+  max_atk_pct: 180
+  name_en: Barrage Bomb
+  name_jp: Barrage Bomb
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] false
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESAttackPreemptive(47:370) -> Quick Bomb
+# Deal 100% damage
+# [2] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 50, target rnd 5
+# [3] ESAttackMultihit(15:265) -> Flame Slash
+# Deal 100% damage (2 hits, 50% each)
+# [4] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [5] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 5, target rnd 14
+# [6] ESBindAttribute(2:377) -> Dark Bind
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Bind Dark cards for 2~4 turns
+# [7] ESNone(0:0) -> ESNone
+# nothing
+# [8] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 12
+# [9] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [10] ESInactivity(16:371) -> Countless Dark Bullets Appear
+# Do nothing
+# [11] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [12] ESAttackMultihit(15:372) -> Barrage Bomb
+# Deal 120%~180% damage (4~6 hits, 30% each)
+# [13] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [14] ESBindAttribute(2:396) -> Hyper Dark Bind
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Bind Dark cards for 10 turns
+# [15] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 5, target rnd 7
+# [16] ESEndPath(36:26) -> ESEndPath
+# end_turn

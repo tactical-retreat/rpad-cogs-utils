@@ -1,0 +1,98 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1316
+monster_name_en: Underworld Tyrant, Baphomet
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Change Light to Dark, Deal 120% damage
+  desc_jp: Change Light to Dark, Deal 120% damage
+  max_atk_pct: 120
+  name_en: Darkstrike
+  name_jp: Darkstrike
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 75
+  name_jp: HP < 75
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind own leader for 3 turns, Deal 75% damage
+  desc_jp: Bind own leader for 3 turns, Deal 75% damage
+  max_atk_pct: 75
+  name_en: Break Armor
+  name_jp: Break Armor
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 150% damage
+  desc_jp: Blind all orbs on the board, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Lord of Vermilion
+  name_jp: Lord of Vermilion
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] false
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 5, target rnd 3
+# [2] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [3] ESBindAttack(63:1056) -> Break Armor
+# 	Condition: When < 75% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Bind own leader for 3 turns, Deal 75% damage
+# [4] ESBlind(62:1058) -> Lord of Vermilion
+# 	Condition: When < 50% hp (ai:100 rnd:0)
+# Blind all orbs on the board, Deal 150% damage
+# [5] ESOrbChangeAttack(48:1057) -> Darkstrike
+# Change Light to Dark, Deal 120% damage

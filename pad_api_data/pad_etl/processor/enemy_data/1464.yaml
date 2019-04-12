@@ -1,0 +1,99 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1464
+monster_name_en: Thoth
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings:
+- Found 4 unused actions
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns (Preemptive)
+  desc_jp: Voids status ailments for 999 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Hieroglyphic Carvings
+  name_jp: Hieroglyphic Carvings
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy ally recover 50% hp
+  desc_jp: Enemy ally recover 50% hp
+  max_atk_pct: null
+  name_en: Ceremony of Rebirth
+  name_jp: Ceremony of Rebirth
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Unused Actions
+############################################################
+# ESAttackMultihit(15:1266) -> Genesis Gleam
+# 	Condition: When < 20% hp (ai:100 rnd:0)
+# Deal 400% damage (4 hits, 100% each)
+# ESJammerChangeSingle(12:1263) -> Arcane Spell
+# Change Fire to Jammer
+# ESPoisonChangeRandomAttack(64:1264) -> Judgement of the Dead
+# Change Random 6 to Poison, Deal 50% damage
+# ESBindAttack(63:1265) -> Playing with Time & Space
+# Bind 1 random for 3 turns, Deal 50% damage
+############################################################
+### ES Modifiers
+############################################################
+# [9] 4 -      100
+# [52] false
+# [53] 1 -        1
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] ESStatusShield(20:1262) -> Hieroglyphic Carvings
+# Voids status ailments for 999 turns
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESRecoverEnemyAlly(52:1261) -> Ceremony of Rebirth
+# 	Condition: When enemy ally is killed (ai:100 rnd:0)
+# Enemy ally recover 50% hp
+# [7] ESAttackMultihit(15:1266) -> Genesis Gleam
+# 	Condition: When < 20% hp (ai:100 rnd:0)
+# Deal 400% damage (4 hits, 100% each)
+# [8] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 12
+# [9] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [10] ESJammerChangeSingle(12:1263) -> Arcane Spell
+# Change Fire to Jammer
+# [11] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [12] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 4, target rnd 16
+# [13] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b111
+# [14] ESPoisonChangeRandomAttack(64:1264) -> Judgement of the Dead
+# Change Random 6 to Poison, Deal 50% damage
+# [15] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [16] ESFlagOperation(24:14) -> ESFlagOperation
+# flag UNSET 0b110
+# [17] ESBindAttack(63:1265) -> Playing with Time & Space
+# Bind 1 random for 3 turns, Deal 50% damage

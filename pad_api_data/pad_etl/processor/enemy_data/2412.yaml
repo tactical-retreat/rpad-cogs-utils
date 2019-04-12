@@ -1,0 +1,208 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2412
+monster_name_en: Playful Star Gods, Thoth & Sopdet
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb combo <= 4 damage for 10 turns (Preemptive)
+  desc_jp: Absorb combo <= 4 damage for 10 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Trick or Treat!
+  name_jp: Trick or Treat!
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 100% damage + Do nothing
+  desc_jp: Change Random to Jammer, Deal 100% damage + Do nothing
+  max_atk_pct: null
+  name_en: Gimme candy! + zzZZZ
+  name_jp: Gimme candy! + zzZZZ
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 150% damage + Do nothing
+  desc_jp: Change Random to Jammer, Deal 150% damage + Do nothing
+  max_atk_pct: null
+  name_en: More! + zzZZZ
+  name_jp: More! + zzZZZ
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Do nothing + Increase damage to 200% for the next 999 turns
+  desc_jp: Do nothing + Increase damage to 200% for the next 999 turns
+  max_atk_pct: null
+  name_en: Wake up already! + Oops, sorry about that!
+  name_jp: Wake up already! + Oops, sorry about that!
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change Random to Heal, Deal 100% damage + Spawn random 3 Poison orbs
+  desc_jp: Change Random to Heal, Deal 100% damage + Spawn random 3 Poison orbs
+  max_atk_pct: null
+  name_en: Take that! + Underworld Glow
+  name_jp: Take that! + Underworld Glow
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 20
+  name_jp: HP < 20
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 120% damage + Spawn random 3 Poison orbs
+  desc_jp: Change Random to Jammer, Deal 120% damage + Spawn random 3 Poison orbs
+  max_atk_pct: null
+  name_en: And that! + Underworld Glow
+  name_jp: And that! + Underworld Glow
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 10
+  name_jp: HP < 10
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 120% damage + Spawn random 6 Mortal Poison
+    orbs
+  desc_jp: Change Random to Jammer, Deal 120% damage + Spawn random 6 Mortal Poison
+    orbs
+  max_atk_pct: null
+  name_en: And that! + Magic Pumpkin Shot
+  name_jp: And that! + Magic Pumpkin Shot
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:3402) -> ESPreemptive
+# Enable preempt if level 4
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 4, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 8
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [6] ESAbsorbCombo(67:3386) -> Trick or Treat!
+# Absorb combo <= 4 damage for 10 turns
+# [7] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [8] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 11
+# [9] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [10] SkillSet:
+# 	[0] ESOrbChangeAttack(48:3387) -> Gimme candy!
+# 	Change Random to Jammer, Deal 100% damage
+# 	[1] ESInactivity(66:3389) -> zzZZZ
+# 	Do nothing
+# [11] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 4, target rnd 14
+# [12] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b111
+# [13] SkillSet:
+# 	[0] ESOrbChangeAttack(48:3388) -> More!
+# 	Change Random to Jammer, Deal 150% damage
+# 	[1] ESInactivity(66:3389) -> zzZZZ
+# 	Do nothing
+# [14] SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# 	[0] ESInactivity(66:3390) -> Wake up already!
+# 	Do nothing
+# 	[1] ESAttackUPRemainingEnemies(17:3391) -> Oops, sorry about that!
+# 	Increase damage to 200% for the next 999 turns
+# [15] SkillSet:
+# 	Condition: When < 10% hp (ai:100 rnd:0)
+# 	[0] ESOrbChangeAttack(48:3393) -> And that!
+# 	Change Random to Jammer, Deal 120% damage
+# 	[1] ESRandomSpawn(92:3394) -> Magic Pumpkin Shot
+# 	Spawn random 6 Mortal Poison orbs
+# [16] SkillSet:
+# 	Condition: When < 20% hp (ai:100 rnd:0)
+# 	[0] ESOrbChangeAttack(48:3393) -> And that!
+# 	Change Random to Jammer, Deal 120% damage
+# 	[1] ESRandomSpawn(92:3395) -> Underworld Glow
+# 	Spawn random 3 Poison orbs
+# [17] SkillSet:
+# 	[0] ESOrbChangeAttack(48:3392) -> Take that!
+# 	Change Random to Heal, Deal 100% damage
+# 	[1] ESRandomSpawn(92:3395) -> Underworld Glow
+# 	Spawn random 3 Poison orbs
+# [18] ESEndPath(36:26) -> ESEndPath
+# end_turn

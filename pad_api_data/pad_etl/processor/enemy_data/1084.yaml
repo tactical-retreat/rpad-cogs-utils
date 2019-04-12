@@ -1,0 +1,74 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1084
+monster_name_en: Purple Sky Fruit, Grape Dragon
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings:
+- Found 1 unused actions
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Player recover 100% hp (Preemptive)
+  desc_jp: Player recover 100% hp (Preemptive)
+  max_atk_pct: null
+  name_en: Fruity Goodness
+  name_jp: Fruity Goodness
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Heal to Dark, Deal 125% damage
+  desc_jp: Change Heal to Dark, Deal 125% damage
+  max_atk_pct: 125
+  name_en: Bubbly Grape
+  name_jp: Bubbly Grape
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Unused Actions
+############################################################
+# ESOrbChangeAttack(48:46) -> Grape Shower
+# Change Random to Heal, Deal 150% damage
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] false
+# [53] 0 -        0
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:355) -> ESPreemptive
+# Enable preempt if level 5
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 5, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 8
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [6] ESRecoverPlayer(55:907) -> Fruity Goodness
+# Player recover 100% hp
+# [7] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [8] ESOrbChangeAttack(48:47) -> Bubbly Grape
+# Change Heal to Dark, Deal 125% damage
+# [9] ESOrbChangeAttack(48:46) -> Grape Shower
+# Change Random to Heal, Deal 150% damage

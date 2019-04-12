@@ -1,0 +1,80 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 837
+monster_name_en: Mystery of Toyama Bay, Firefly Squid
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Blind all orbs on the board
+  desc_jp: Blind all orbs on the board
+  max_atk_pct: null
+  name_en: Squid Ink
+  name_jp: Squid Ink
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 40
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 70
+  name_jp: HP < 70
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 80% damage
+  desc_jp: Change Random to Jammer, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Illuminate
+  name_jp: Illuminate
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 70
+- !SkillRecord
+  desc_en: Blind all orbs on the board
+  desc_jp: Blind all orbs on the board
+  max_atk_pct: null
+  name_en: Squid Ink
+  name_jp: Squid Ink
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 40
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 3 -       11
+# [52] false
+# [53] 1 -        1
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 5, target rnd 4
+# [2] ESNone(0:0) -> ESNone
+# nothing
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESOrbChangeAttack(48:609) -> Illuminate
+# 	Condition: When < 70% hp , one-time use (ai:70 rnd:0) (one-time: 1)
+# Change Random to Jammer, Deal 80% damage
+# [5] ESBlind(5:608) -> Squid Ink
+# 	Condition: 40% chance (ai:40 rnd:0)
+# Blind all orbs on the board

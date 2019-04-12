@@ -1,0 +1,151 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 993
+monster_name_en: '*****'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  max_atk_pct: null
+  name_en: Mighty Guard
+  name_jp: Mighty Guard
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Display '3' and skip turn
+  desc_jp: Display '3' and skip turn
+  max_atk_pct: null
+  name_en: Countdown Message
+  name_jp: Countdown Message
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Display '2' and skip turn
+  desc_jp: Display '2' and skip turn
+  max_atk_pct: null
+  name_en: Countdown Message
+  name_jp: Countdown Message
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Display '1' and skip turn
+  desc_jp: Display '1' and skip turn
+  max_atk_pct: null
+  name_en: Countdown Message
+  name_jp: Countdown Message
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 4
+  name_jp: Loop to 1 after. Turn 4
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 2000% damage (10 hits, 200% each)
+  desc_jp: Deal 2000% damage (10 hits, 200% each)
+  max_atk_pct: 2000
+  name_en: Mega Flare
+  name_jp: Mega Flare
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] false
+# [53] 0 -        0
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchHP(28:179) -> ESBranchHP
+# Branch on hp < 50, target rnd 8
+# [2] ESStatusShield(20:188) -> Mighty Guard
+# Voids status ailments for 999 turns
+# [3] ESNone(0:0) -> ESNone
+# nothing
+# [4] ESNone(0:0) -> ESNone
+# nothing
+# [5] ESNone(0:0) -> ESNone
+# nothing
+# [6] ESNone(0:0) -> ESNone
+# nothing
+# [7] ESEndPath(36:180) -> ESEndPath
+# end_turn
+# [8] ESSetCounterIf(38:177) -> ESSetCounterIf
+# set counter = 4 if counter == 0
+# [9] ESCountdown(37:178) -> ESCountdown
+# countdown
+# [10] ESAttackMultihit(15:187) -> Mega Flare
+# Deal 2000% damage (10 hits, 200% each)

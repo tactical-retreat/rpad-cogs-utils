@@ -1,0 +1,106 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 951
+monster_name_en: AB Bluebird Blues
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Change Random 3 to Jammer (Preemptive)
+  desc_jp: Change Random 3 to Jammer (Preemptive)
+  max_atk_pct: null
+  name_en: Triplet Trouble
+  name_jp: Triplet Trouble
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 75
+  name_jp: HP < 75
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 125% damage
+  desc_jp: Deal 125% damage
+  max_atk_pct: 125
+  name_en: Slingshot
+  name_jp: Slingshot
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 30
+  name_jp: HP < 30
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 150% damage (3 hits, 50% each)
+  desc_jp: Deal 150% damage (3 hits, 50% each)
+  max_atk_pct: 150
+  name_en: Scatter Attack
+  name_jp: Scatter Attack
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 70
+- !SkillRecord
+  desc_en: Deal 125% damage
+  desc_jp: Deal 125% damage
+  max_atk_pct: 125
+  name_en: Slingshot
+  name_jp: Slingshot
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 4 -      100
+# [52] false
+# [53] 0 -        0
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:355) -> ESPreemptive
+# Enable preempt if level 5
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 5, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 8
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [6] ESJammerChangeRandom(13:736) -> Triplet Trouble
+# Change Random 3 to Jammer
+# [7] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [8] ESAttackMultihit(15:726) -> Scatter Attack
+# 	Condition: 70% chance when < 30% hp (ai:70 rnd:0)
+# Deal 150% damage (3 hits, 50% each)
+# [9] ESAttackMultihit(15:731) -> Slingshot
+# 	Condition: 50% chance when < 75% hp (ai:50 rnd:0)
+# Deal 125% damage

@@ -1,0 +1,131 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 568
+monster_name_en: War Deity Ares
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings:
+- Found 1 unused actions
+
+############################################################
+### Data @ 3
+############################################################
+!SkillRecordListing
+level: 3
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 50% damage (Preemptive)
+  desc_jp: Blind all orbs on the board, Deal 50% damage (Preemptive)
+  max_atk_pct: 50
+  name_en: Cruel War
+  name_jp: Cruel War
+  one_time: 1
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  max_atk_pct: null
+  name_en: Fiery Spear of Destruction
+  name_jp: Fiery Spear of Destruction
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 150% damage (2 hits, 75% each)
+  desc_jp: Deal 150% damage (2 hits, 75% each)
+  max_atk_pct: 150
+  name_en: Wallbreaker
+  name_jp: Wallbreaker
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 2
+  name_jp: Loop to 1 after. Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 50% damage
+  desc_jp: Blind all orbs on the board, Deal 50% damage
+  max_atk_pct: 50
+  name_en: Cruel War
+  name_jp: Cruel War
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Unused Actions
+############################################################
+# ESOrbChangeAttack(48:1166) -> Dark Spear of Insanity
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Change Random to Jammer, Deal 100% damage
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] false
+# [53] 1 -        1
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:697) -> ESPreemptive
+# Enable preempt if level 3
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 3, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 8
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [6] ESBlind(62:1168) -> Cruel War
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Blind all orbs on the board, Deal 50% damage
+# [7] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [8] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 50, target rnd 12
+# [9] ESGravity(50:1167) -> Fiery Spear of Destruction
+# Player -99% HP
+# [10] ESOrbChangeAttack(48:1166) -> Dark Spear of Insanity
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Change Random to Jammer, Deal 100% damage
+# [11] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [12] ESBlind(62:1168) -> Cruel War
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Blind all orbs on the board, Deal 50% damage
+# [13] ESAttackMultihit(15:1169) -> Wallbreaker
+# Deal 150% damage (2 hits, 75% each)

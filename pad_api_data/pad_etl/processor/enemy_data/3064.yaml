@@ -1,0 +1,105 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3064
+monster_name_en: Endless Blue Dragon Caller, Sonia TAMADRA
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns (Preemptive)
+  desc_jp: Voids status ailments for 999 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Protect TAMA!
+  name_jp: Protect TAMA!
+  one_time: 1
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Random to Water, Deal 100% damage
+  desc_jp: Change Random to Water, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Blue Sphere
+  name_jp: Blue Sphere
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 40
+  name_jp: HP < 40
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Draco Summon TAMA!
+  name_jp: Draco Summon TAMA!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change 2nd, 5th column to Water orbs, Deal 500% damage
+  desc_jp: Change 2nd, 5th column to Water orbs, Deal 500% damage
+  max_atk_pct: 500
+  name_en: Crystal Fang
+  name_jp: Crystal Fang
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 3 -       11
+# [52] true
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESStatusShield(20:5056) -> Protect TAMA!
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Voids status ailments for 999 turns
+# [3] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 40, target rnd 6
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 9
+# [5] ESOrbChangeAttack(48:5057) -> Blue Sphere
+# Change Random to Water, Deal 100% damage
+# [6] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 9
+# [7] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [8] ESInactivity(66:5062) -> Draco Summon TAMA!
+# Do nothing
+# [9] ESColumnSpawnMulti(77:5058) -> Crystal Fang
+# Change 2nd, 5th column to Water orbs, Deal 500% damage

@@ -1,0 +1,177 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 100565
+monster_name_en: Alt. Ishikawa Goemon
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Reduce damage from all sources by
+    75% for 3 turns (Preemptive)
+  desc_jp: Voids status ailments for 999 turns + Reduce damage from all sources by
+    75% for 3 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Kabuki Dance + Coming through!
+  name_jp: Kabuki Dance + Coming through!
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 200% damage
+  desc_jp: Deal 200% damage
+  max_atk_pct: 200
+  name_en: Ninja Fireworks
+  name_jp: Ninja Fireworks
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind 3 random cards for 2~3 turns
+  desc_jp: Bind 3 random cards for 2~3 turns
+  max_atk_pct: null
+  name_en: What a great view!
+  name_jp: What a great view!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: 6x2 cloud appear for 1 turns at random location
+  desc_jp: 6x2 cloud appear for 1 turns at random location
+  max_atk_pct: null
+  name_en: Giant Smoke Screen
+  name_jp: Giant Smoke Screen
+  one_time: 2
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 2-3
+  name_jp: Loop to 1 after. Turn 2-3
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 125% damage (5 hits, 25% each)
+  desc_jp: Deal 125% damage (5 hits, 25% each)
+  max_atk_pct: 125
+  name_en: Coin Throw
+  name_jp: Coin Throw
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 20
+  name_jp: HP < 20
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 1800% damage (6 hits, 300% each)
+  desc_jp: Deal 1800% damage (6 hits, 300% each)
+  max_atk_pct: 1800
+  name_en: Hellfire Blossom
+  name_jp: Hellfire Blossom
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 2 -       10
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] SkillSet:
+# 	[0] ESStatusShield(20:5507) -> Kabuki Dance
+# 	Voids status ailments for 999 turns
+# 	[1] ESDamageShield(74:5508) -> Coming through!
+# 	Reduce damage from all sources by 75% for 3 turns
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 9
+# [7] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [8] ESAttackMultihit(15:5510) -> Ninja Fireworks
+# Deal 200% damage
+# [9] ESAttackMultihit(15:5514) -> Hellfire Blossom
+# 	Condition: When < 20% hp (ai:100 rnd:0)
+# Deal 1800% damage (6 hits, 300% each)
+# [10] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 4, target rnd 13
+# [11] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b111
+# [12] ESBindRandom(1:5511) -> What a great view!
+# Bind 3 random cards for 2~3 turns
+# [13] ESCloud(104:5512) -> Giant Smoke Screen
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
+# 6x2 cloud appear for 1 turns at random location
+# [14] ESAttackMultihit(15:5513) -> Coin Throw
+# Deal 125% damage (5 hits, 25% each)
+# [15] ESEndPath(36:26) -> ESEndPath
+# end_turn

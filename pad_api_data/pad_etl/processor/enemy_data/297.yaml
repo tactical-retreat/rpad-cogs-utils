@@ -1,0 +1,44 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 297
+monster_name_en: Fairlio
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Bind 1 random cards for 2~4 turns
+  desc_jp: Bind 1 random cards for 2~4 turns
+  max_atk_pct: null
+  name_en: Bind Attack
+  name_jp: Bind Attack
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 10
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 2 -       10
+# [52] false
+# [53] 0 -        0
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBindRandom(1:31) -> Bind Attack
+# 	Condition: 10% chance (ai:0 rnd:10)
+# Bind 1 random cards for 2~4 turns

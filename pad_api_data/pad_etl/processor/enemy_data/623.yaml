@@ -1,0 +1,129 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 623
+monster_name_en: Water Dominion Gabriel
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Bind 1 own leader for 5 turns (Preemptive)
+  desc_jp: Bind 1 own leader for 5 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Angelic Murmur
+  name_jp: Angelic Murmur
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  max_atk_pct: null
+  name_en: Divine Word - The Final Day
+  name_jp: Divine Word - The Final Day
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 2
+  name_jp: Loop to 1 after. Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 160% damage (2 hits, 80% each)
+  desc_jp: Deal 160% damage (2 hits, 80% each)
+  max_atk_pct: 160
+  name_en: Summon Casablanca
+  name_jp: Summon Casablanca
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Enemy recover 100% hp
+  desc_jp: Enemy recover 100% hp
+  max_atk_pct: null
+  name_en: Mystic White Lily
+  name_jp: Mystic White Lily
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] false
+# [53] 1 -        1
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] ESBindTarget(54:986) -> Angelic Murmur
+# Bind 1 own leader for 5 turns
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 50, target rnd 10
+# [7] ESGravity(50:987) -> Divine Word - The Final Day
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Player -99% HP
+# [8] ESAttackMultihit(15:988) -> Summon Casablanca
+# Deal 160% damage (2 hits, 80% each)
+# [9] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [10] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 7
+# [11] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [12] ESRecoverEnemy(7:989) -> Mystic White Lily
+# Enemy recover 100% hp

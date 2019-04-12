@@ -1,0 +1,181 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 101629
+monster_name_en: Alt. Chivalric Demon Prince, Cauchemar
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb combo <= 5 damage for 999 turns + Fix orb movement starting point
+    to random position on the board (Preemptive)
+  desc_jp: Absorb combo <= 5 damage for 999 turns + Fix orb movement starting point
+    to random position on the board (Preemptive)
+  max_atk_pct: null
+  name_en: Cauchemar Phantom + Cauchemar Road
+  name_jp: Cauchemar Phantom + Cauchemar Road
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change Heal to Jammer, Deal 50% damage
+  desc_jp: Change Heal to Jammer, Deal 50% damage
+  max_atk_pct: 50
+  name_en: Cauchemar Illusion
+  name_jp: Cauchemar Illusion
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 40
+- !SkillRecord
+  desc_en: Bind 3 subs for 2 turns, Deal 75% damage
+  desc_jp: Bind 3 subs for 2 turns, Deal 75% damage
+  max_atk_pct: 75
+  name_en: Cauchemar Nightmare
+  name_jp: Cauchemar Nightmare
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 2
+  name_jp: Loop to 1 after. Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change Heal to Jammer, Deal 50% damage
+  desc_jp: Change Heal to Jammer, Deal 50% damage
+  max_atk_pct: 50
+  name_en: Cauchemar Illusion
+  name_jp: Cauchemar Illusion
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 40
+- !SkillRecord
+  desc_en: Deal 120% damage (3 hits, 40% each)
+  desc_jp: Deal 120% damage (3 hits, 40% each)
+  max_atk_pct: 120
+  name_en: Cauchemar Combat
+  name_jp: Cauchemar Combat
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Movetime -2s for 2 turns + Blind random 5 orbs for 3 turns
+  desc_jp: Movetime -2s for 2 turns + Blind random 5 orbs for 3 turns
+  max_atk_pct: null
+  name_en: Astaroth's Whispers + Cauchemar Darkness
+  name_jp: Astaroth's Whispers + Cauchemar Darkness
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 20
+  name_jp: HP < 20
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 600% damage
+  desc_jp: Change Random to Jammer, Deal 600% damage
+  max_atk_pct: 600
+  name_en: Cauchemar Tempest
+  name_jp: Cauchemar Tempest
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 1 -        1
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] SkillSet:
+# 	[0] ESAbsorbCombo(67:5552) -> Cauchemar Phantom
+# 	Absorb combo <= 5 damage for 999 turns
+# 	[1] ESFixedStart(101:5558) -> Cauchemar Road
+# 	Fix orb movement starting point to random position on the board
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 50, target rnd 12
+# [7] ESOrbChangeAttack(48:5557) -> Cauchemar Tempest
+# 	Condition: When < 20% hp (ai:100 rnd:0)
+# Change Random to Jammer, Deal 600% damage
+# [8] ESOrbChangeAttack(48:5556) -> Cauchemar Illusion
+# 	Condition: 40% chance (ai:40 rnd:0)
+# Change Heal to Jammer, Deal 50% damage
+# [9] ESBindAttack(63:5555) -> Cauchemar Nightmare
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Bind 3 subs for 2 turns, Deal 75% damage
+# [10] ESAttackMultihit(15:5553) -> Cauchemar Combat
+# Deal 120% damage (3 hits, 40% each)
+# [11] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [12] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 7
+# [13] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [14] SkillSet:
+# 	[0] ESDebuffMovetime(39:5554) -> Astaroth's Whispers
+# 	Movetime -2s for 2 turns
+# 	[1] ESBlindStickyRandom(97:5559) -> Cauchemar Darkness
+# 	Blind random 5 orbs for 3 turns
+# [15] ESEndPath(36:26) -> ESEndPath
+# end_turn

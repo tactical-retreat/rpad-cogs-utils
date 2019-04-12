@@ -1,0 +1,109 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 100691
+monster_name_en: Alt. Heavy Infantry Hobgoblin
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 50%
+  desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
+  name_en: Ability
+  name_jp: Ability
+  one_time: 0
+  record_type_name: PASSIVE
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy turn counter change to 1 when HP <= 50%
+  desc_jp: Enemy turn counter change to 1 when HP <= 50%
+  max_atk_pct: null
+  name_en: Ability
+  name_jp: Ability
+  one_time: 0
+  record_type_name: PASSIVE
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Enemy recover 100% hp + Reduce damage from all sources by 75% for 99 turns
+    (When 1 enemy remains)
+  desc_jp: Enemy recover 100% hp + Reduce damage from all sources by 75% for 99 turns
+    (When 1 enemy remains)
+  max_atk_pct: null
+  name_en: Pouring Fighting Spirit + Counterattack
+  name_jp: Pouring Fighting Spirit + Counterattack
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  max_atk_pct: 100
+  name_en: Big Blade
+  name_jp: Big Blade
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 3 -       11
+# [52] true
+# [53] 0 -        0
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchRemainingEnemies(120:8595) -> ESBranchRemainingEnemies
+# Branch on remaining enemies <= 1, target rnd 4
+# [2] ESAttackMultihit(15:1294) -> Big Blade
+# Deal 100% damage
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 2
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [6] SkillSet:
+# 	[0] ESRecoverEnemy(86:11641) -> Pouring Fighting Spirit
+# 	Enemy recover 100% hp
+# 	[1] ESDamageShield(74:11642) -> Counterattack
+# 	Reduce damage from all sources by 75% for 99 turns
+# [7] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [8] ESResolve(73:11638) -> Resolve
+# Survive attacks with 1 HP when HP > 50%
+# [9] ESTurnChangePassive(106:11639) -> Enemy's next turn changed
+# Enemy turn counter change to 1 when HP <= 50%

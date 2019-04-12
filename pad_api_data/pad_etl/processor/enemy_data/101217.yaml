@@ -1,0 +1,181 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 101217
+monster_name_en: Alt. Keeper of the Sacred Texts, Metatron
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Enemy turn counter change to 1 when HP <= 70%
+  desc_jp: Enemy turn counter change to 1 when HP <= 70%
+  max_atk_pct: null
+  name_en: Ability
+  name_jp: Ability
+  one_time: 0
+  record_type_name: PASSIVE
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Reduce damage from Dark by 50%
+  desc_jp: Reduce damage from Dark by 50%
+  max_atk_pct: null
+  name_en: Ability
+  name_jp: Ability
+  one_time: 0
+  record_type_name: PASSIVE
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Rcv 50% for 10 turns + Absorb combo <= 5 damage for 999 turns (Preemptive)
+  desc_jp: Rcv 50% for 10 turns + Absorb combo <= 5 damage for 999 turns (Preemptive)
+  max_atk_pct: null
+  name_en: White Wings of Divine Intervention + Trials of Heaven
+  name_jp: White Wings of Divine Intervention + Trials of Heaven
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 1000% damage
+  desc_jp: Deal 1000% damage
+  max_atk_pct: 1000
+  name_en: You've a while to go yet
+  name_jp: You've a while to go yet
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 70
+  name_jp: HP <= 70
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Column of cloud appear for 1 turns at random location, Deal 200% damage
+  desc_jp: Column of cloud appear for 1 turns at random location, Deal 200% damage
+  max_atk_pct: 200
+  name_en: Divine One's Writing
+  name_jp: Divine One's Writing
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Row of cloud appear for 1 turns at random location, Deal 200% damage
+  desc_jp: Row of cloud appear for 1 turns at random location, Deal 200% damage
+  max_atk_pct: 200
+  name_en: Divine One's Writing
+  name_jp: Divine One's Writing
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Increase damage to 150% for the next 999 turns + Bind awoken skills for
+    3 turns
+  desc_jp: Increase damage to 150% for the next 999 turns + Bind awoken skills for
+    3 turns
+  max_atk_pct: null
+  name_en: Holy Throne + Prediction
+  name_jp: Holy Throne + Prediction
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 10
+  name_jp: HP < 10
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 30000% damage (10 hits, 3000% each)
+  desc_jp: Deal 30000% damage (10 hits, 3000% each)
+  max_atk_pct: 30000
+  name_en: Meterion Kesh
+  name_jp: Meterion Kesh
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] SkillSet:
+# 	[0] ESDebuffRCV(105:6844) -> White Wings of Divine Intervention
+# 	Rcv 50% for 10 turns
+# 	[1] ESAbsorbCombo(67:6845) -> Trials of Heaven
+# 	Absorb combo <= 5 damage for 999 turns
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESBranchHP(29:19) -> ESBranchHP
+# Branch on hp > 71, target rnd 12
+# [7] ESAttackMultihit(15:6854) -> Meterion Kesh
+# 	Condition: When < 10% hp (ai:100 rnd:0)
+# Deal 30000% damage (10 hits, 3000% each)
+# [8] SkillSet:
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# 	[0] ESAttackUPRemainingEnemies(17:6850) -> Holy Throne
+# 	Increase damage to 150% for the next 999 turns
+# 	[1] ESBindAwoken(88:6851) -> Prediction
+# 	Bind awoken skills for 3 turns
+# [9] ESCloud(104:6848) -> Divine One's Writing
+# 	Condition: 50% chance (ai:50 rnd:0)
+# Column of cloud appear for 1 turns at random location, Deal 200% damage
+# [10] ESCloud(104:6849) -> Divine One's Writing
+# Row of cloud appear for 1 turns at random location, Deal 200% damage
+# [11] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [12] ESAttackMultihit(15:6847) -> You've a while to go yet
+# Deal 1000% damage
+# [13] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [14] ESTurnChangePassive(106:6853) -> Turn changed through divine intervention
+# Enemy turn counter change to 1 when HP <= 70%
+# [15] ESAttributeResist(72:8255) -> Light Metatron Dark Halved
+# Reduce damage from Dark by 50%

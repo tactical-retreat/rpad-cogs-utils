@@ -1,0 +1,149 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3842
+monster_name_en: Awoken Ishida Mitsunari
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings:
+- Found 1 unused actions
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 3 turns + Fix orb movement starting point to
+    random position on the board (Preemptive)
+  desc_jp: Voids status ailments for 3 turns + Fix orb movement starting point to
+    random position on the board (Preemptive)
+  max_atk_pct: null
+  name_en: Target Confirmed + Lock-On
+  name_jp: Target Confirmed + Lock-On
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  max_atk_pct: null
+  name_en: Focused Laser
+  name_jp: Focused Laser
+  one_time: 2
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 2-3
+  name_jp: Loop to 1 after. Turn 2-3
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 120% damage (3 hits, 40% each)
+  desc_jp: Deal 120% damage (3 hits, 40% each)
+  max_atk_pct: 120
+  name_en: Spread Laser
+  name_jp: Spread Laser
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 75% for 1 turns
+  desc_jp: Reduce damage from all sources by 75% for 1 turns
+  max_atk_pct: null
+  name_en: Safety Mode Activated
+  name_jp: Safety Mode Activated
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Unused Actions
+############################################################
+# SkillSet:
+# 	Condition: On death (ai:0 rnd:0)
+# 	[0] ESInactivity(66:6947) -> Shutting Down
+# 	Do nothing
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 2 -       10
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] SkillSet:
+# 	[0] ESStatusShield(20:6941) -> Target Confirmed
+# 	Voids status ailments for 3 turns
+# 	[1] ESFixedStart(101:6942) -> Lock-On
+# 	Fix orb movement starting point to random position on the board
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 50, target rnd 10
+# [7] ESGravity(50:6945) -> Focused Laser
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
+# Player -99% HP
+# [8] ESAttackMultihit(15:6944) -> Spread Laser
+# Deal 120% damage (3 hits, 40% each)
+# [9] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [10] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 7
+# [11] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [12] ESDamageShield(74:6946) -> Safety Mode Activated
+# 	Condition: When < 50% hp (ai:100 rnd:0)
+# Reduce damage from all sources by 75% for 1 turns
+# [13] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [14] SkillSet:
+# 	Condition: On death (ai:0 rnd:0)
+# 	[0] ESInactivity(66:6947) -> Shutting Down
+# 	Do nothing

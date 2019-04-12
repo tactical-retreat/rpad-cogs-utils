@@ -1,0 +1,184 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1650
+monster_name_en: Armored Blue Flame Knight, Nim
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Fire, Water by 50%
+  desc_jp: Reduce damage from Fire, Water by 50%
+  max_atk_pct: null
+  name_en: Ability
+  name_jp: Ability
+  one_time: 0
+  record_type_name: PASSIVE
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind awoken skills for 3 turns + Random 1 orbs change every 1.0s for 10
+    turns (Preemptive)
+  desc_jp: Bind awoken skills for 3 turns + Random 1 orbs change every 1.0s for 10
+    turns (Preemptive)
+  max_atk_pct: null
+  name_en: I'm your opponent! + Pinpoint
+  name_jp: I'm your opponent! + Pinpoint
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1-8
+  name_jp: Turn 1-8
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Spawn random 3 Bomb orbs, Deal 360% damage
+  desc_jp: Spawn random 3 Bomb orbs, Deal 360% damage
+  max_atk_pct: 360
+  name_en: Fire Shot
+  name_jp: Fire Shot
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 33
+- !SkillRecord
+  desc_en: Lock 9 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 360% damage
+  desc_jp: Lock 9 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 360% damage
+  max_atk_pct: 360
+  name_en: Freeze Shot
+  name_jp: Freeze Shot
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 33
+- !SkillRecord
+  desc_en: Deal 400% damage (4 hits, 100% each)
+  desc_jp: Deal 400% damage (4 hits, 100% each)
+  max_atk_pct: 400
+  name_en: Quadruple Shot
+  name_jp: Quadruple Shot
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 34
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 9
+  name_jp: Turn 9
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Delay active skills by 5 turns, Deal 320% damage
+  desc_jp: Delay active skills by 5 turns, Deal 320% damage
+  max_atk_pct: 320
+  name_en: Weak Point
+  name_jp: Weak Point
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Spawn random 3 Bomb orbs, Deal 360% damage
+  desc_jp: Spawn random 3 Bomb orbs, Deal 360% damage
+  max_atk_pct: 360
+  name_en: Fire Shot
+  name_jp: Fire Shot
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 33
+- !SkillRecord
+  desc_en: Lock 9 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 360% damage
+  desc_jp: Lock 9 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 360% damage
+  max_atk_pct: 360
+  name_en: Freeze Shot
+  name_jp: Freeze Shot
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 33
+- !SkillRecord
+  desc_en: Deal 400% damage (4 hits, 100% each)
+  desc_jp: Deal 400% damage (4 hits, 100% each)
+  max_atk_pct: 400
+  name_en: Quadruple Shot
+  name_jp: Quadruple Shot
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 34
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 0 -        0
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] SkillSet:
+# 	[0] ESBindAwoken(88:8421) -> I'm your opponent!
+# 	Bind awoken skills for 3 turns
+# 	[1] ESSpinnersRandom(109:8422) -> Pinpoint
+# 	Random 1 orbs change every 1.0s for 10 turns
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESBranchCounter(31:21) -> ESBranchCounter
+# Branch on counter = 8, target rnd 12
+# [7] ESSetCounter(26:16) -> ESSetCounter
+# counter + 1
+# [8] ESBombRandomSpawn(102:8424) -> Fire Shot
+# 	Condition: 33% chance (ai:0 rnd:33)
+# Spawn random 3 Bomb orbs, Deal 360% damage
+# [9] ESOrbLock(94:8425) -> Freeze Shot
+# 	Condition: 33% chance (ai:0 rnd:33)
+# Lock 9 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 360% damage
+# [10] ESAttackMultihit(15:8426) -> Quadruple Shot
+# 	Condition: 34% chance (ai:0 rnd:34)
+# Deal 400% damage (4 hits, 100% each)
+# [11] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [12] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 8
+# [13] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [14] ESSkillDelay(89:8427) -> Weak Point
+# Delay active skills by 5 turns, Deal 320% damage
+# [15] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [16] ESAttributeResist(72:8428) -> Halve Fire & Water
+# Reduce damage from Fire, Water by 50%

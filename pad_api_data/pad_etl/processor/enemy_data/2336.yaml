@@ -1,0 +1,103 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2336
+monster_name_en: Wood Armor Dragon, Becrux
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings:
+- Found 5 unused actions
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb Wood damage for 5 turns (Preemptive)
+  desc_jp: Absorb Wood damage for 5 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Plant Core
+  name_jp: Plant Core
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Enemy ally recover 45% hp
+  desc_jp: Enemy ally recover 45% hp
+  max_atk_pct: null
+  name_en: Follow Repair
+  name_jp: Follow Repair
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Unused Actions
+############################################################
+# ESAttackMultihit(15:3241) -> Limit Burst
+# 	Condition: When < 10% hp (ai:100 rnd:0)
+# Deal 1000% damage (2 hits, 500% each)
+# ESSkillDelay(89:3240) -> Absorption
+# 	Condition: When < 80% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Delay active skills by 1 turns
+# ESSkyfall(68:3354) -> Green Energy
+# 	Condition: 20% chance (ai:0 rnd:20)
+# Wood skyfall +20% for 99 turns
+# ESRowSpawnMulti(79:3355) -> Leaf Wind
+# 	Condition: 40% chance (ai:0 rnd:40)
+# Change 5th row to Wood orbs, Deal 100% damage
+# ESAttackMultihit(15:3356) -> Aero Blast
+# 	Condition: 40% chance (ai:0 rnd:40)
+# Deal 120% damage (2 hits, 60% each)
+############################################################
+### ES Modifiers
+############################################################
+# [9] 4 -      100
+# [52] true
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:355) -> ESPreemptive
+# Enable preempt if level 5
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 5, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 8
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [6] ESAbsorbAttribute(53:3353) -> Plant Core
+# Absorb Wood damage for 5 turns
+# [7] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [8] ESRecoverEnemyAlly(52:3235) -> Follow Repair
+# 	Condition: When enemy ally is killed (ai:100 rnd:0)
+# Enemy ally recover 45% hp
+# [9] ESAttackMultihit(15:3241) -> Limit Burst
+# 	Condition: When < 10% hp (ai:100 rnd:0)
+# Deal 1000% damage (2 hits, 500% each)
+# [10] ESSkillDelay(89:3240) -> Absorption
+# 	Condition: When < 80% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Delay active skills by 1 turns
+# [11] ESSkyfall(68:3354) -> Green Energy
+# 	Condition: 20% chance (ai:0 rnd:20)
+# Wood skyfall +20% for 99 turns
+# [12] ESRowSpawnMulti(79:3355) -> Leaf Wind
+# 	Condition: 40% chance (ai:0 rnd:40)
+# Change 5th row to Wood orbs, Deal 100% damage
+# [13] ESAttackMultihit(15:3356) -> Aero Blast
+# 	Condition: 40% chance (ai:0 rnd:40)
+# Deal 120% damage (2 hits, 60% each)
+# [14] ESEndPath(36:26) -> ESEndPath
+# end_turn

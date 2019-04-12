@@ -1,0 +1,73 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1385
+monster_name_en: '***** (Dragon Ball)'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 999 turns (Preemptive)
+  desc_jp: Increase damage to 200% for the next 999 turns (Preemptive)
+  max_atk_pct: null
+  name_en: '***** (Dragon Ball)'
+  name_jp: '***** (Dragon Ball)'
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 30
+  name_jp: HP < 30
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 140% damage (7 hits, 20% each)
+  desc_jp: Deal 140% damage (7 hits, 20% each)
+  max_atk_pct: 140
+  name_en: '***** (Dragon Ball)'
+  name_jp: '***** (Dragon Ball)'
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] false
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] ESAttackUPRemainingEnemies(17:1099) -> ***** (Dragon Ball)
+# 	Condition: when <= 1 enemies remain (ai:100 rnd:0)
+# Increase damage to 200% for the next 999 turns
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESAttackMultihit(15:1100) -> ***** (Dragon Ball)
+# 	Condition: When < 30% hp (ai:100 rnd:0)
+# Deal 140% damage (7 hits, 20% each)

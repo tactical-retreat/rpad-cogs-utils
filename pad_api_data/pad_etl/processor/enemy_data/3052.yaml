@@ -1,0 +1,164 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3052
+monster_name_en: Kikuichimonji, Norimune
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Seal 1st row for 3 turns (Preemptive)
+  desc_jp: Seal 1st row for 3 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Whirlwind Bindings
+  name_jp: Whirlwind Bindings
+  one_time: 2
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change 3rd, 4th column to Wood orbs, Deal 210% damage
+  desc_jp: Change 3rd, 4th column to Wood orbs, Deal 210% damage
+  max_atk_pct: 210
+  name_en: Dragon Gale
+  name_jp: Dragon Gale
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Deal 240% damage (3 hits, 80% each)
+  desc_jp: Deal 240% damage (3 hits, 80% each)
+  max_atk_pct: 240
+  name_en: Storm Slash
+  name_jp: Storm Slash
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 70
+  name_jp: HP < 70
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Voids status ailments for 10 turns
+  desc_jp: Voids status ailments for 10 turns
+  max_atk_pct: null
+  name_en: I won't lose!
+  name_jp: I won't lose!
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 40
+  name_jp: HP < 40
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Delay active skills by 3 turns, Deal 260% damage
+  desc_jp: Delay active skills by 3 turns, Deal 260% damage
+  max_atk_pct: 260
+  name_en: Blast Bash
+  name_jp: Blast Bash
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 30
+- !SkillRecord
+  desc_en: Deal 300% damage (5 hits, 60% each)
+  desc_jp: Deal 300% damage (5 hits, 60% each)
+  max_atk_pct: 300
+  name_en: Tempest Slash
+  name_jp: Tempest Slash
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 20
+  name_jp: HP < 20
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Increase damage to 300% for the next 999 turns (When 1 enemy remains)
+  desc_jp: Increase damage to 300% for the next 999 turns (When 1 enemy remains)
+  max_atk_pct: null
+  name_en: My strength won't waver yet!
+  name_jp: My strength won't waver yet!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 3 -       11
+# [52] true
+# [53] 3 -       11
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESOrbSealRow(100:8812) -> Whirlwind Bindings
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
+# Seal 1st row for 3 turns
+# [3] ESStatusShield(20:8813) -> I won't lose!
+# 	Condition: When < 70% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Voids status ailments for 10 turns
+# [4] ESAttackUPRemainingEnemies(17:8818) -> My strength won't waver yet!
+# 	Condition: When < 20% hp, when <= 1 enemies remain (ai:100 rnd:0)
+# Increase damage to 300% for the next 999 turns
+# [5] ESSkillDelay(89:8816) -> Blast Bash
+# 	Condition: 30% chance when < 40% hp (ai:30 rnd:0)
+# Delay active skills by 3 turns, Deal 260% damage
+# [6] ESAttackMultihit(15:8817) -> Tempest Slash
+# 	Condition: When < 40% hp (ai:100 rnd:0)
+# Deal 300% damage (5 hits, 60% each)
+# [7] ESColumnSpawnMulti(77:8815) -> Dragon Gale
+# 	Condition: 50% chance (ai:50 rnd:0)
+# Change 3rd, 4th column to Wood orbs, Deal 210% damage
+# [8] ESAttackMultihit(15:8814) -> Storm Slash
+# Deal 240% damage (3 hits, 80% each)
+# [9] ESEndPath(36:26) -> ESEndPath
+# end_turn

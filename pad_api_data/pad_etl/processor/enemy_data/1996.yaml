@@ -1,0 +1,56 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1996
+monster_name_en: Shinra Sorcerer God Moebius Card
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Deal 100% damage (Preemptive)
+  desc_jp: Deal 100% damage (Preemptive)
+  max_atk_pct: 100
+  name_en: Disable Skill
+  name_jp: Disable Skill
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  max_atk_pct: 100
+  name_en: Disable Skill
+  name_jp: Disable Skill
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 1 -        1
+# [52] true
+# [53] 1 -        1
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESNone(0:6523) -> ESNone
+# nothing
+# [3] ESAttackSinglehit(82:1) -> Disable Skill
+# Deal 100% damage

@@ -1,0 +1,197 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1621
+monster_name_en: Flash Sorcerer, Rei Sirius
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Rcv 50% for 10 turns + Column of cloud appear for 4 turns at 1st row (Preemptive)
+  desc_jp: Rcv 50% for 10 turns + Column of cloud appear for 4 turns at 1st row (Preemptive)
+  max_atk_pct: null
+  name_en: Give me a hand, Baby Genie! + Leave it to me! Rub that lamp!
+  name_jp: Give me a hand, Baby Genie! + Leave it to me! Rub that lamp!
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change 1st column to Light orbs, Deal 100% damage + Player -99% HP
+  desc_jp: Change 1st column to Light orbs, Deal 100% damage + Player -99% HP
+  max_atk_pct: null
+  name_en: "Light Spell! + Magic Punch\u2606"
+  name_jp: "Light Spell! + Magic Punch\u2606"
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change 1st column to Light orbs, Deal 125% damage + Player -99% HP
+  desc_jp: Change 1st column to Light orbs, Deal 125% damage + Player -99% HP
+  max_atk_pct: null
+  name_en: "Light Spell!! + Magic Punch\u2606"
+  name_jp: "Light Spell!! + Magic Punch\u2606"
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change 1st column to Light orbs, Deal 150% damage + Player -99% HP
+  desc_jp: Change 1st column to Light orbs, Deal 150% damage + Player -99% HP
+  max_atk_pct: null
+  name_en: "Light Spell!!! + Magic Punch\u2606"
+  name_jp: "Light Spell!!! + Magic Punch\u2606"
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 4
+  name_jp: Turn 4
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change 1st column to Light orbs, Deal 175% damage + Player -99% HP
+  desc_jp: Change 1st column to Light orbs, Deal 175% damage + Player -99% HP
+  max_atk_pct: null
+  name_en: "Light Spell!!!! + Magic Punch\u2606"
+  name_jp: "Light Spell!!!! + Magic Punch\u2606"
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 5
+  name_jp: Loop to 1 after. Turn 5
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change 1st column to Light orbs, Deal 200% damage + Column of cloud appear
+    for 4 turns at 1st row
+  desc_jp: Change 1st column to Light orbs, Deal 200% damage + Column of cloud appear
+    for 4 turns at 1st row
+  max_atk_pct: null
+  name_en: The grand finale! Light Spell!!!!! + Need smoke! Need smoke!
+  name_jp: The grand finale! Light Spell!!!!! + Need smoke! Need smoke!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] SkillSet:
+# 	[0] ESDebuffRCV(105:7461) -> Give me a hand, Baby Genie!
+# 	Rcv 50% for 10 turns
+# 	[1] ESCloud(104:7462) -> Leave it to me! Rub that lamp!
+# 	Column of cloud appear for 4 turns at 1st row
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 10
+# [7] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [8] SkillSet:
+# 	[0] ESColumnSpawnMulti(77:7465) -> Light Spell!
+# 	Change 1st column to Light orbs, Deal 100% damage
+# 	[1] ESGravity(50:7463) -> Magic Punch☆
+# 	Player -99% HP
+# [9] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [10] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 4, target rnd 14
+# [11] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b111
+# [12] SkillSet:
+# 	[0] ESColumnSpawnMulti(77:7467) -> Light Spell!!
+# 	Change 1st column to Light orbs, Deal 125% damage
+# 	[1] ESGravity(50:7463) -> Magic Punch☆
+# 	Player -99% HP
+# [13] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 8, target rnd 18
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1111
+# [16] SkillSet:
+# 	[0] ESColumnSpawnMulti(77:7469) -> Light Spell!!!
+# 	Change 1st column to Light orbs, Deal 150% damage
+# 	[1] ESGravity(50:7463) -> Magic Punch☆
+# 	Player -99% HP
+# [17] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [18] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 16, target rnd 22
+# [19] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11111
+# [20] SkillSet:
+# 	[0] ESColumnSpawnMulti(77:7471) -> Light Spell!!!!
+# 	Change 1st column to Light orbs, Deal 175% damage
+# 	[1] ESGravity(50:7463) -> Magic Punch☆
+# 	Player -99% HP
+# [21] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [22] ESFlagOperation(24:14) -> ESFlagOperation
+# flag UNSET 0b11110
+# [23] SkillSet:
+# 	[0] ESColumnSpawnMulti(77:7473) -> The grand finale! Light Spell!!!!!
+# 	Change 1st column to Light orbs, Deal 200% damage
+# 	[1] ESCloud(104:7474) -> Need smoke! Need smoke!
+# 	Column of cloud appear for 4 turns at 1st row

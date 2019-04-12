@@ -1,0 +1,126 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4754
+monster_name_en: '*****'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings:
+- Found 1 unused actions
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Bind 2 random subs for 1 turns + Spawn random 3 Dark orbs (Preemptive)
+  desc_jp: Bind 2 random subs for 1 turns + Spawn random 3 Dark orbs (Preemptive)
+  max_atk_pct: null
+  name_en: Arrested for obstructing a Public Servant + I hurt a policeman's heart
+  name_jp: Arrested for obstructing a Public Servant + I hurt a policeman's heart
+  one_time: 1
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Delay active skills by 1 turns, Deal 100% damage
+  desc_jp: Delay active skills by 1 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Don't belittle an Earth policeman!
+  name_jp: Don't belittle an Earth policeman!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 33
+- !SkillRecord
+  desc_en: Lock 4 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 100% damage
+  desc_jp: Lock 4 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: You can't go one step further!
+  name_jp: You can't go one step further!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 33
+- !SkillRecord
+  desc_en: Deal 120% damage (2 hits, 60% each)
+  desc_jp: Deal 120% damage (2 hits, 60% each)
+  max_atk_pct: 120
+  name_en: I'll purge all of you fools!
+  name_jp: I'll purge all of you fools!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 34
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 10
+  name_jp: HP < 10
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 200% damage (5 hits, 40% each)
+  desc_jp: Deal 200% damage (5 hits, 40% each)
+  max_atk_pct: 200
+  name_en: This is the end
+  name_jp: This is the end
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Unused Actions
+############################################################
+# ESRandomSpawn(92:11003) -> Let's slurp mayonnaise in that world!
+# 	Condition: One-time use & when Fire, Water, Wood, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:100 rnd:0) (one-time: 1)
+# Spawn random 3 Light orbs
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:3402) -> ESPreemptive
+# Enable preempt if level 4
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 4, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESBranchCard(90:11008) -> ESBranchCard
+# Branch on player_cards HAS [4751, 4752], target rnd 6
+# [5] SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# 	[0] ESBindRandomSub(65:11000) -> Arrested for obstructing a Public Servant
+# 	Bind 2 random subs for 1 turns
+# 	[1] ESRandomSpawn(92:11001) -> I hurt a policeman's heart
+# 	Spawn random 3 Dark orbs
+# [6] ESRandomSpawn(92:11003) -> Let's slurp mayonnaise in that world!
+# 	Condition: One-time use & when Fire, Water, Wood, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:100 rnd:0) (one-time: 1)
+# Spawn random 3 Light orbs
+# [7] ESAttackMultihit(15:11007) -> This is the end
+# 	Condition: When < 10% hp (ai:100 rnd:0)
+# Deal 200% damage (5 hits, 40% each)
+# [8] ESSkillDelay(89:11004) -> Don't belittle an Earth policeman!
+# 	Condition: 33% chance (ai:0 rnd:33)
+# Delay active skills by 1 turns, Deal 100% damage
+# [9] ESOrbLock(94:11005) -> You can't go one step further!
+# 	Condition: 33% chance (ai:0 rnd:33)
+# Lock 4 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 100% damage
+# [10] ESAttackMultihit(15:11006) -> I'll purge all of you fools!
+# 	Condition: 34% chance (ai:0 rnd:34)
+# Deal 120% damage (2 hits, 60% each)
+# [11] ESEndPath(36:26) -> ESEndPath
+# end_turn

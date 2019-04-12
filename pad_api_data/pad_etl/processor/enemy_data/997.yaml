@@ -1,0 +1,117 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 997
+monster_name_en: Shining Sea Deity, Isis
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Deal 50% damage (Preemptive)
+  desc_jp: Deal 50% damage (Preemptive)
+  max_atk_pct: 50
+  name_en: Young Firebird's Ambush
+  name_jp: Young Firebird's Ambush
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Wood to Water, Deal 80% damage
+  desc_jp: Change Wood to Water, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Holy Ocean's Wave
+  name_jp: Holy Ocean's Wave
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Change Dark to Light, Deal 80% damage
+  desc_jp: Change Dark to Light, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Burning Life Light
+  name_jp: Burning Life Light
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 80
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind active skills for 5 turns
+  desc_jp: Bind active skills for 5 turns
+  max_atk_pct: null
+  name_en: The Flooding of the Nile
+  name_jp: The Flooding of the Nile
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 160% damage (2 hits, 80% each)
+  desc_jp: Deal 160% damage (2 hits, 80% each)
+  max_atk_pct: 160
+  name_en: Star Mother & Firebird's Flash
+  name_jp: Star Mother & Firebird's Flash
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] false
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] ESAttackMultihit(15:1253) -> Young Firebird's Ambush
+# Deal 50% damage
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESBindSkill(14:1256) -> The Flooding of the Nile
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Bind active skills for 5 turns
+# [7] ESAttackMultihit(15:1257) -> Star Mother & Firebird's Flash
+# 	Condition: When < 50% hp (ai:100 rnd:0)
+# Deal 160% damage (2 hits, 80% each)
+# [8] ESOrbChangeAttack(48:1254) -> Holy Ocean's Wave
+# 	Condition: 50% chance (ai:50 rnd:0)
+# Change Wood to Water, Deal 80% damage
+# [9] ESOrbChangeAttack(48:1255) -> Burning Life Light
+# 	Condition: 80% chance (ai:80 rnd:0)
+# Change Dark to Light, Deal 80% damage

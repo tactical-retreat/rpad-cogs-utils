@@ -1,0 +1,67 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 79
+monster_name_en: Flame Guardian
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 11
+############################################################
+!SkillRecordListing
+level: 11
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns (Preemptive)
+  desc_jp: Voids status ailments for 999 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Defensive Stance
+  name_jp: Defensive Stance
+  one_time: 1
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 40% damage
+  desc_jp: Deal 40% damage
+  max_atk_pct: 40
+  name_en: Crusher Hand
+  name_jp: Crusher Hand
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 4 -      100
+# [52] true
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:538) -> ESPreemptive
+# Enable preempt if level 10
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 11, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 8
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [6] ESStatusShield(20:1046) -> Defensive Stance
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Voids status ailments for 999 turns
+# [7] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [8] ESAttackMultihit(15:1045) -> Crusher Hand
+# Deal 40% damage

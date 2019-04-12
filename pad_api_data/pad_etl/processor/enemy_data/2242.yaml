@@ -1,0 +1,113 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2242
+monster_name_en: Sacred Princess, Alma
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Do nothing + Voids status ailments for 999 turns (Preemptive)
+  desc_jp: Do nothing + Voids status ailments for 999 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Can you hear... The wind's whisper, + the flames' flicker, the water's
+    murmur
+  name_jp: Can you hear... The wind's whisper, + the flames' flicker, the water's
+    murmur
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 120% damage (6 hits, 20% each)
+  desc_jp: Deal 120% damage (6 hits, 20% each)
+  max_atk_pct: 120
+  name_en: Legendary 6 Wings
+  name_jp: Legendary 6 Wings
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change all orbs to Fire, Wood, Light, Deal 150% damage
+  desc_jp: Change all orbs to Fire, Wood, Light, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Holy Light Requiem
+  name_jp: Holy Light Requiem
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 120% damage (6 hits, 20% each)
+  desc_jp: Deal 120% damage (6 hits, 20% each)
+  max_atk_pct: 120
+  name_en: Legendary 6 Wings
+  name_jp: Legendary 6 Wings
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 1 -        1
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:355) -> ESPreemptive
+# Enable preempt if level 5
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 5, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 8
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [6] SkillSet:
+# 	[0] ESInactivity(66:2545) -> Can you hear... The wind's whisper,
+# 	Do nothing
+# 	[1] ESStatusShield(20:2546) -> the flames' flicker, the water's murmur
+# 	Voids status ailments for 999 turns
+# [7] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [8] ESBoardChangeAttackBits(85:2548) -> Holy Light Requiem
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Change all orbs to Fire, Wood, Light, Deal 150% damage
+# [9] ESAttackMultihit(15:2547) -> Legendary 6 Wings
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Deal 120% damage (6 hits, 20% each)
+# [10] ESEndPath(36:26) -> ESEndPath
+# end_turn

@@ -1,0 +1,242 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4834
+monster_name_en: Chosen War Goddess, Valkyrie - Ciel
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings:
+- Found 1 unused actions
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 50%
+  desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
+  name_en: Ability
+  name_jp: Ability
+  one_time: 0
+  record_type_name: PASSIVE
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Absorb damage >= 30000000 damage
+    for 999 turns + Rcv 50% for 10 turns + Delay active skills by 10 turns (Preemptive)
+  desc_jp: Voids status ailments for 999 turns + Absorb damage >= 30000000 damage
+    for 999 turns + Rcv 50% for 10 turns + Delay active skills by 10 turns (Preemptive)
+  max_atk_pct: null
+  name_en: White Valkyrie Shield + Fylgja's Clothing + Discerning Lifechains + Fighting
+    Maiden's Appearance
+  name_jp: White Valkyrie Shield + Fylgja's Clothing + Discerning Lifechains + Fighting
+    Maiden's Appearance
+  one_time: 9
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 100% damage (2 hits, 50% each)
+  desc_jp: Deal 100% damage (2 hits, 50% each)
+  max_atk_pct: 100
+  name_en: Double Slash
+  name_jp: Double Slash
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Enemy recover 100% hp + Locked random skyfall +100% for 99 turns
+  desc_jp: Enemy recover 100% hp + Locked random skyfall +100% for 99 turns
+  max_atk_pct: null
+  name_en: Resurrection + Heavenly Decision
+  name_jp: Resurrection + Heavenly Decision
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2-10
+  name_jp: Turn 2-10
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 150% damage (3 hits, 50% each)
+  desc_jp: Deal 150% damage (3 hits, 50% each)
+  max_atk_pct: 150
+  name_en: Triple Slash
+  name_jp: Triple Slash
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 150% damage (3 hits, 50% each)
+  desc_jp: Deal 150% damage (3 hits, 50% each)
+  max_atk_pct: 150
+  name_en: Triple Slash
+  name_jp: Triple Slash
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 7
+  name_jp: HP <= 7
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 99 turns
+  desc_jp: Increase damage to 200% for the next 99 turns
+  max_atk_pct: null
+  name_en: Last Judgement
+  name_jp: Last Judgement
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change own attribute to random one of Fire, Water, Wood, Light, Dark +
+    Deal 2000%~2500% damage (4~5 hits, 500% each)
+  desc_jp: Change own attribute to random one of Fire, Water, Wood, Light, Dark +
+    Deal 2000%~2500% damage (4~5 hits, 500% each)
+  max_atk_pct: null
+  name_en: Sweeping Spirit Garments + Valkyrie Blade - Ciel
+  name_jp: Sweeping Spirit Garments + Valkyrie Blade - Ciel
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Unused Actions
+############################################################
+# SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 9)
+# 	[0] ESDebuffRCV(105:11551) -> Discerning Lifechains
+# 	Rcv 50% for 10 turns
+# 	[1] ESGravity(50:11559) -> Mighty Bash
+# 	Player -75% HP
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 9 -     1001
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 9)
+# 	[0] ESStatusShield(20:11549) -> White Valkyrie Shield
+# 	Voids status ailments for 999 turns
+# 	[1] ESAbsorbThreshold(87:11550) -> Fylgja's Clothing
+# 	Absorb damage >= 30000000 damage for 999 turns
+# 	[2] ESDebuffRCV(105:11551) -> Discerning Lifechains
+# 	Rcv 50% for 10 turns
+# 	[3] ESSkillDelay(89:11552) -> Fighting Maiden's Appearance
+# 	Delay active skills by 10 turns
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 50, target rnd 11
+# [7] ESBranchCounter(31:21) -> ESBranchCounter
+# Branch on counter = 9, target rnd 20
+# [8] ESSetCounter(26:16) -> ESSetCounter
+# counter + 1
+# [9] ESAttackMultihit(15:11556) -> Double Slash
+# Deal 100% damage (2 hits, 50% each)
+# [10] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [11] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 15
+# [12] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [13] SkillSet:
+# 	[0] ESRecoverEnemy(86:11554) -> Resurrection
+# 	Enemy recover 100% hp
+# 	[1] ESSkyfall(96:11555) -> Heavenly Decision
+# 	Locked random skyfall +100% for 99 turns
+# [14] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [15] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 8, target rnd 23
+# [16] ESBranchCounter(31:21) -> ESBranchCounter
+# Branch on counter = 9, target rnd 20
+# [17] ESSetCounter(26:16) -> ESSetCounter
+# counter + 1
+# [18] ESAttackMultihit(15:11557) -> Triple Slash
+# Deal 150% damage (3 hits, 50% each)
+# [19] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [20] ESSetCounter(25:15) -> ESSetCounter
+# counter = 0
+# [21] SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 9)
+# 	[0] ESDebuffRCV(105:11551) -> Discerning Lifechains
+# 	Rcv 50% for 10 turns
+# 	[1] ESGravity(50:11559) -> Mighty Bash
+# 	Player -75% HP
+# [22] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [23] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 4, target rnd 27
+# [24] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b111
+# [25] ESAttackUPRemainingEnemies(17:11560) -> Last Judgement
+# 	Condition: when <= 1 enemies remain (ai:100 rnd:0)
+# Increase damage to 200% for the next 99 turns
+# [26] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [27] SkillSet:
+# 	[0] ESChangeAttribute(46:11562) -> Sweeping Spirit Garments
+# 	Change own attribute to random one of Fire, Water, Wood, Light, Dark
+# 	[1] ESAttackMultihit(15:11563) -> Valkyrie Blade - Ciel
+# 	Deal 2000%~2500% damage (4~5 hits, 500% each)
+# [28] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [29] ESResolve(73:11547) -> Resolve
+# Survive attacks with 1 HP when HP > 50%

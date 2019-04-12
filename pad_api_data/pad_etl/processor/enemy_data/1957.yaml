@@ -1,0 +1,230 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1957
+monster_name_en: Fire Cat Dragon, Tabby Nyadra
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 50%
+  desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
+  name_en: Ability
+  name_jp: Ability
+  one_time: 0
+  record_type_name: PASSIVE
+  usage_pct: 100
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 50%
+  desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
+  name_en: Ability
+  name_jp: Ability
+  one_time: 0
+  record_type_name: PASSIVE
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind active skills for 2 turns (Preemptive)
+  desc_jp: Bind active skills for 2 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Cat Wave
+  name_jp: Cat Wave
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Fire to Jammer, Deal 150% damage
+  desc_jp: Change Fire to Jammer, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Surreptitious Snack
+  name_jp: Surreptitious Snack
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change 4th, 6th column to Fire orbs, Deal 300% damage
+  desc_jp: Change 4th, 6th column to Fire orbs, Deal 300% damage
+  max_atk_pct: 300
+  name_en: Flame Meow Slash
+  name_jp: Flame Meow Slash
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 2
+  name_jp: Loop to 1 after. Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change Fire to Jammer, Deal 150% damage
+  desc_jp: Change Fire to Jammer, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Surreptitious Snack
+  name_jp: Surreptitious Snack
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 30
+  name_jp: HP < 30
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change all orbs to Fire, Deal 200% damage
+  desc_jp: Change all orbs to Fire, Deal 200% damage
+  max_atk_pct: 200
+  name_en: Lick Lick Meow!
+  name_jp: Lick Lick Meow!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Enemy is defeated
+  name_jp: Enemy is defeated
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind 6 random for 1 turns, Deal 200% damage
+  desc_jp: Bind 6 random for 1 turns, Deal 200% damage
+  max_atk_pct: 200
+  name_en: 9 Lives!
+  name_jp: 9 Lives!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 1000% damage
+  desc_jp: Deal 1000% damage
+  max_atk_pct: 1000
+  name_en: Irritated Swat
+  name_jp: Irritated Swat
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 1 -        1
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:355) -> ESPreemptive
+# Enable preempt if level 5
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 5, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 8
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [6] ESBindSkill(14:2053) -> Cat Wave
+# Bind active skills for 2 turns
+# [7] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [8] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 1, target rnd 17
+# [9] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 30, target rnd 13
+# [10] ESColumnSpawnMulti(77:2055) -> Flame Meow Slash
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Change 4th, 6th column to Fire orbs, Deal 300% damage
+# [11] ESOrbChangeAttack(48:2054) -> Surreptitious Snack
+# Change Fire to Jammer, Deal 150% damage
+# [12] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [13] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 10
+# [14] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [15] ESBoardChangeAttackBits(85:2056) -> Lick Lick Meow!
+# 	Condition: When < 30% hp (ai:100 rnd:0)
+# Change all orbs to Fire, Deal 200% damage
+# [16] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [17] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 4, target rnd 20
+# [18] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b101
+# [19] ESBindAttack(63:2092) -> 9 Lives!
+# 	Condition: When < 1% hp (ai:100 rnd:0)
+# Bind 6 random for 1 turns, Deal 200% damage
+# [20] ESAttackMultihit(15:2052) -> Irritated Swat
+# 	Condition: When < 1% hp (ai:100 rnd:0)
+# Deal 1000% damage
+# [21] ESResolve(73:1829) -> *****
+# Survive attacks with 1 HP when HP > 50%

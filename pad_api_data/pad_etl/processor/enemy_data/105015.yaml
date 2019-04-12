@@ -1,0 +1,152 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 105015
+monster_name_en: Servant, Berserker
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 10 turns (Preemptive)
+  desc_jp: Reduce damage from all sources by 50% for 10 turns (Preemptive)
+  max_atk_pct: null
+  name_en: GROOOO!!
+  name_jp: GROOOO!!
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Increase damage to 150% for the next 3 turns
+  desc_jp: Increase damage to 150% for the next 3 turns
+  max_atk_pct: null
+  name_en: "\u2026GRUAAA!"
+  name_jp: "\u2026GRUAAA!"
+  one_time: 3
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 110% damage
+  desc_jp: Deal 110% damage
+  max_atk_pct: 110
+  name_en: GRAAAAAA!!!
+  name_jp: GRAAAAAA!!!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 120% damage (2 hits, 60% each)
+  desc_jp: Deal 120% damage (2 hits, 60% each)
+  max_atk_pct: 120
+  name_en: GAAA
+  name_jp: GAAA
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 135% damage (3 hits, 45% each)
+  desc_jp: Deal 135% damage (3 hits, 45% each)
+  max_atk_pct: 135
+  name_en: Guguhh... Guah... GAAAA!!!
+  name_jp: Guguhh... Guah... GAAAA!!!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 3 -       11
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:3402) -> ESPreemptive
+# Enable preempt if level 4
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 4, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 8
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [6] ESDamageShield(74:12233) -> GROOOO!!
+# Reduce damage from all sources by 50% for 10 turns
+# [7] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [8] ESAttackUPRemainingEnemies(17:12190) -> …GRUAAA!
+# 	Condition: One-time use, when <= 1 enemies remain (ai:100 rnd:0) (one-time: 3)
+# Increase damage to 150% for the next 3 turns
+# [9] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 13
+# [10] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [11] ESAttackMultihit(15:12191) -> GRAAAAAA!!!
+# Deal 110% damage
+# [12] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [13] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 4, target rnd 17
+# [14] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b111
+# [15] ESAttackMultihit(15:12192) -> GAAA
+# Deal 120% damage (2 hits, 60% each)
+# [16] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [17] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [18] ESAttackMultihit(15:12193) -> Guguhh... Guah... GAAAA!!!
+# Deal 135% damage (3 hits, 45% each)
+# [19] ESEndPath(36:26) -> ESEndPath
+# end_turn

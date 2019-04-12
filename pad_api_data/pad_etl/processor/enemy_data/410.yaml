@@ -1,0 +1,83 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 410
+monster_name_en: Gaiadragon Yggdrasil
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 150% damage (2 hits, 75% each)
+  desc_jp: Deal 150% damage (2 hits, 75% each)
+  max_atk_pct: 150
+  name_en: God Gaia Breath
+  name_jp: God Gaia Breath
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 10
+  name_jp: HP < 10
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind 4 random cards for 9 turns
+  desc_jp: Bind 4 random cards for 9 turns
+  max_atk_pct: null
+  name_en: Plant Net
+  name_jp: Plant Net
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] false
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBindRandom(1:230) -> Plant Net
+# 	Condition: When < 10% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Bind 4 random cards for 9 turns
+# [2] ESAttackMultihit(15:231) -> God Gaia Breath
+# 	Condition: 50% chance when < 50% hp (ai:50 rnd:0)
+# Deal 150% damage (2 hits, 75% each)

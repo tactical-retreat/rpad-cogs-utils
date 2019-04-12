@@ -1,0 +1,69 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 100665
+monster_name_en: Blue Ninja, Ukai Magoroku
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb combo <= 6 damage for 1 turns (Preemptive)
+  desc_jp: Absorb combo <= 6 damage for 1 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Standing ready
+  name_jp: Standing ready
+  one_time: 1
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 120% damage (6 hits, 20% each)
+  desc_jp: Deal 120% damage (6 hits, 20% each)
+  max_atk_pct: 120
+  name_en: Alter Ego
+  name_jp: Alter Ego
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 4 -      100
+# [52] true
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESAbsorbCombo(67:10701) -> Standing ready
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Absorb combo <= 6 damage for 1 turns
+# [3] ESAttackMultihit(15:1347) -> Alter Ego
+# 	Condition: When < 50% hp (ai:100 rnd:0)
+# Deal 120% damage (6 hits, 20% each)
+# [4] ESEndPath(36:26) -> ESEndPath
+# end_turn

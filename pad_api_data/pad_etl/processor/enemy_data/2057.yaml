@@ -1,0 +1,194 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2057
+monster_name_en: Gilgamesh
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings:
+- Found 1 unused actions
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Do nothing + Do nothing + Voids status ailments for 1 turns (Preemptive)
+  desc_jp: Do nothing + Do nothing + Voids status ailments for 1 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Took you long enough! + I was worried you'd gotten lost! + It's go time!
+  name_jp: Took you long enough! + I was worried you'd gotten lost! + It's go time!
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 80% damage (8 hits, 10% each)
+  desc_jp: Deal 80% damage (8 hits, 10% each)
+  max_atk_pct: 80
+  name_en: Goblin Punch
+  name_jp: Goblin Punch
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 30
+- !SkillRecord
+  desc_en: Change Random to Wood, Deal 100% damage
+  desc_jp: Change Random to Wood, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Aera
+  name_jp: Aera
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 30
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 120% damage
+  desc_jp: Change Random to Jammer, Deal 120% damage
+  max_atk_pct: 120
+  name_en: Wind Slash
+  name_jp: Wind Slash
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 30
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  max_atk_pct: 100
+  name_en: Disable Skill
+  name_jp: Disable Skill
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 999 turns + Reduce damage from all
+    sources by 50% for 1 turns + Voids status ailments for 999 turns + Do nothing
+    + Deal 120% damage
+  desc_jp: Increase damage to 200% for the next 999 turns + Reduce damage from all
+    sources by 50% for 1 turns + Voids status ailments for 999 turns + Do nothing
+    + Deal 120% damage
+  max_atk_pct: null
+  name_en: I suppose I misjudged! + Fighting all four of you... + ...is just too tough
+    for me... + ...NOT! Ha, I lied! Like a rug! Oh, I kill me! + Jump
+  name_jp: I suppose I misjudged! + Fighting all four of you... + ...is just too tough
+    for me... + ...NOT! Ha, I lied! Like a rug! Oh, I kill me! + Jump
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind 1 subs for 2 turns, Deal 80% damage
+  desc_jp: Bind 1 subs for 2 turns, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Electrocute
+  name_jp: Electrocute
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Deal 120% damage
+  desc_jp: Deal 120% damage
+  max_atk_pct: 120
+  name_en: Jump
+  name_jp: Jump
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+
+############################################################
+### Unused Actions
+############################################################
+# SkillSet:
+# 	Condition: On death (ai:100 rnd:0)
+# 	[0] ESSkillSet(83:2143) -> *****
+# 	Perform multiple skills
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:355) -> ESPreemptive
+# Enable preempt if level 5
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 5, target rnd 5
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [5] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 9
+# [6] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [7] SkillSet:
+# 	[0] ESInactivity(66:2123) -> Took you long enough!
+# 	Do nothing
+# 	[1] ESInactivity(66:2124) -> I was worried you'd gotten lost!
+# 	Do nothing
+# 	[2] ESStatusShield(20:2125) -> It's go time!
+# 	Voids status ailments for 1 turns
+# [8] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [9] SkillSet:
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# 	[0] ESAttackUPRemainingEnemies(17:2130) -> I suppose I misjudged!
+# 	Increase damage to 200% for the next 999 turns
+# 	[1] ESDamageShield(74:2132) -> Fighting all four of you...
+# 	Reduce damage from all sources by 50% for 1 turns
+# 	[2] ESStatusShield(20:2134) -> ...is just too tough for me...
+# 	Voids status ailments for 999 turns
+# 	[3] ESInactivity(66:2136) -> ...NOT! Ha, I lied! Like a rug! Oh, I kill me!
+# 	Do nothing
+# 	[4] ESAttackMultihit(15:2137) -> Jump
+# 	Deal 120% damage
+# [10] ESBranchHP(29:19) -> ESBranchHP
+# Branch on hp > 50, target rnd 14
+# [11] ESBindAttack(63:2139) -> Electrocute
+# 	Condition: 50% chance (ai:50 rnd:0)
+# Bind 1 subs for 2 turns, Deal 80% damage
+# [12] ESAttackMultihit(15:2137) -> Jump
+# 	Condition: 50% chance (ai:50 rnd:0)
+# Deal 120% damage
+# [13] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [14] ESAttackMultihit(15:2127) -> Goblin Punch
+# 	Condition: 30% chance (ai:30 rnd:0)
+# Deal 80% damage (8 hits, 10% each)
+# [15] ESOrbChangeAttack(48:2128) -> Aera
+# 	Condition: 30% chance (ai:30 rnd:0)
+# Change Random to Wood, Deal 100% damage
+# [16] ESOrbChangeAttack(48:2129) -> Wind Slash
+# 	Condition: 30% chance (ai:30 rnd:0)
+# Change Random to Jammer, Deal 120% damage
+# [17] ESAttackSinglehit(82:1) -> Disable Skill
+# Deal 100% damage
+# [18] SkillSet:
+# 	Condition: On death (ai:100 rnd:0)
+# 	[0] ESSkillSet(83:2143) -> *****
+# 	Perform multiple skills

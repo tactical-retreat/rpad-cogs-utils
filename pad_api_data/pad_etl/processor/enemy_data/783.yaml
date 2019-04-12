@@ -1,0 +1,109 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 783
+monster_name_en: Mystic Mechdragon, Antikythera
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns (Preemptive)
+  desc_jp: Voids status ailments for 999 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Wisdom of the Ancients
+  name_jp: Wisdom of the Ancients
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Random to Water, Deal 80% damage
+  desc_jp: Change Random to Water, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Aquatic Star of Blessing
+  name_jp: Aquatic Star of Blessing
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 25
+- !SkillRecord
+  desc_en: Player -50% HP
+  desc_jp: Player -50% HP
+  max_atk_pct: null
+  name_en: Malevolent Star of Disaster
+  name_jp: Malevolent Star of Disaster
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Deal 125% damage
+  desc_jp: Deal 125% damage
+  max_atk_pct: 125
+  name_en: Gear Impact
+  name_jp: Gear Impact
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 75
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 30
+  name_jp: HP < 30
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 180% damage (12 hits, 15% each)
+  desc_jp: Deal 180% damage (12 hits, 15% each)
+  max_atk_pct: 180
+  name_en: Constellation Blast
+  name_jp: Constellation Blast
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] false
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:355) -> ESPreemptive
+# Enable preempt if level 5
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 5, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESBranchHP(29:19) -> ESBranchHP
+# Branch on hp > 30, target rnd 7
+# [5] ESAttackMultihit(15:510) -> Constellation Blast
+# Deal 180% damage (12 hits, 15% each)
+# [6] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [7] ESStatusShield(20:468) -> Wisdom of the Ancients
+# Voids status ailments for 999 turns
+# [8] ESOrbChangeAttack(48:507) -> Aquatic Star of Blessing
+# 	Condition: 25% chance (ai:25 rnd:0)
+# Change Random to Water, Deal 80% damage
+# [9] ESGravity(50:509) -> Malevolent Star of Disaster
+# 	Condition: 50% chance (ai:50 rnd:0)
+# Player -50% HP
+# [10] ESAttackMultihit(15:506) -> Gear Impact
+# 	Condition: 75% chance (ai:75 rnd:0)
+# Deal 125% damage

@@ -1,0 +1,178 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4089
+monster_name_en: Alluring Kunoichi, Mai Shiranui
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings:
+- Found 1 unused actions
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: 3x1 cloud appear for 2 turns at 3rd row, 3rd column (Preemptive)
+  desc_jp: 3x1 cloud appear for 2 turns at 3rd row, 3rd column (Preemptive)
+  max_atk_pct: null
+  name_en: Come at me!
+  name_jp: Come at me!
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Spawn random 3 Fire orbs, Deal 80% damage
+  desc_jp: Spawn random 3 Fire orbs, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Ryuuenbu
+  name_jp: Ryuuenbu
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  max_atk_pct: 100
+  name_en: Hissatsu Shinobi-Bachi
+  name_jp: Hissatsu Shinobi-Bachi
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Player -80% HP
+  desc_jp: Player -80% HP
+  max_atk_pct: null
+  name_en: Musasabi no Mai
+  name_jp: Musasabi no Mai
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Spawn random 6 Fire orbs, Deal 120% damage
+  desc_jp: Spawn random 6 Fire orbs, Deal 120% damage
+  max_atk_pct: 120
+  name_en: Hisho-Ryu-Enjin
+  name_jp: Hisho-Ryu-Enjin
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  max_atk_pct: 100
+  name_en: Hissatsu Shinobi-Bachi
+  name_jp: Hissatsu Shinobi-Bachi
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 15
+  name_jp: HP < 15
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 180% damage (3 hits, 60% each)
+  desc_jp: Deal 180% damage (3 hits, 60% each)
+  max_atk_pct: 180
+  name_en: Chou Hissatsu Shinobi-Bachi
+  name_jp: Chou Hissatsu Shinobi-Bachi
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Unused Actions
+############################################################
+# SkillSet:
+# 	Condition: On death (ai:0 rnd:0)
+# 	[0] ESInactivity(66:8653) -> Andyyyy!
+# 	Do nothing
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 1 -        1
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:3402) -> ESPreemptive
+# Enable preempt if level 4
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 4, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 8
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [6] ESCloud(104:8647) -> Come at me!
+# 3x1 cloud appear for 2 turns at 3rd row, 3rd column
+# [7] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [8] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 15, target rnd 20
+# [9] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 50, target rnd 13
+# [10] ESRandomSpawn(92:8648) -> Ryuuenbu
+# 	Condition: 50% chance & when Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:50 rnd:0)
+# Spawn random 3 Fire orbs, Deal 80% damage
+# [11] ESAttackMultihit(15:8649) -> Hissatsu Shinobi-Bachi
+# Deal 100% damage
+# [12] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [13] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 17
+# [14] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [15] ESGravity(50:8650) -> Musasabi no Mai
+# Player -80% HP
+# [16] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [17] ESRandomSpawn(92:8651) -> Hisho-Ryu-Enjin
+# 	Condition: 50% chance & when Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:50 rnd:0)
+# Spawn random 6 Fire orbs, Deal 120% damage
+# [18] ESAttackMultihit(15:8649) -> Hissatsu Shinobi-Bachi
+# Deal 100% damage
+# [19] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [20] ESAttackMultihit(15:8652) -> Chou Hissatsu Shinobi-Bachi
+# Deal 180% damage (3 hits, 60% each)
+# [21] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [22] SkillSet:
+# 	Condition: On death (ai:0 rnd:0)
+# 	[0] ESInactivity(66:8653) -> Andyyyy!
+# 	Do nothing

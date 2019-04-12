@@ -1,0 +1,113 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 819
+monster_name_en: Hrungnir
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Player -99% HP (Preemptive)
+  desc_jp: Player -99% HP (Preemptive)
+  max_atk_pct: null
+  name_en: Wave of Cold Air
+  name_jp: Wave of Cold Air
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change Random to Water, Deal 80% damage
+  desc_jp: Change Random to Water, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Ice Pillar Creation
+  name_jp: Ice Pillar Creation
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 2
+  name_jp: Loop to 1 after. Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 120%~150% damage (4~5 hits, 30% each)
+  desc_jp: Deal 120%~150% damage (4~5 hits, 30% each)
+  max_atk_pct: 150
+  name_en: Ice Block Bullets
+  name_jp: Ice Block Bullets
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 30
+  name_jp: HP < 30
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 200%~250% damage (4~5 hits, 50% each)
+  desc_jp: Deal 200%~250% damage (4~5 hits, 50% each)
+  max_atk_pct: 250
+  name_en: Target-Seeking Ice Block Bullets
+  name_jp: Target-Seeking Ice Block Bullets
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] false
+# [53] 1 -        1
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] ESGravity(50:529) -> Wave of Cold Air
+# Player -99% HP
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESAttackMultihit(15:532) -> Target-Seeking Ice Block Bullets
+# 	Condition: When < 30% hp (ai:100 rnd:0)
+# Deal 200%~250% damage (4~5 hits, 50% each)
+# [7] ESOrbChangeAttack(48:530) -> Ice Pillar Creation
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Change Random to Water, Deal 80% damage
+# [8] ESAttackMultihit(15:531) -> Ice Block Bullets
+# Deal 120%~150% damage (4~5 hits, 30% each)

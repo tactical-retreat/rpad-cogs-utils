@@ -1,0 +1,60 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4085
+monster_name_en: Leona Heidern
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings:
+- Found 1 unused actions
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Do nothing (Preemptive)
+  desc_jp: Do nothing (Preemptive)
+  max_atk_pct: null
+  name_en: Fulfilling mission
+  name_jp: Fulfilling mission
+  one_time: 1
+  record_type_name: PREEMPT
+  usage_pct: 100
+
+############################################################
+### Unused Actions
+############################################################
+# SkillSet:
+# 	Condition: On death (ai:0 rnd:0)
+# 	[0] ESInactivity(66:8644) -> Aaaaaaah!
+# 	Do nothing
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESInactivity(66:8646) -> Fulfilling mission
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Do nothing
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] SkillSet:
+# 	Condition: On death (ai:0 rnd:0)
+# 	[0] ESInactivity(66:8644) -> Aaaaaaah!
+# 	Do nothing

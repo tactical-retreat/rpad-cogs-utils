@@ -1,0 +1,136 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2622
+monster_name_en: Space Witch, Haggar
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings:
+- Found 1 unused actions
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Blind all orbs on the board (Preemptive)
+  desc_jp: Blind all orbs on the board (Preemptive)
+  max_atk_pct: null
+  name_en: 'It is time to reclaim
+
+    what is rightfully ours.'
+  name_jp: 'It is time to reclaim
+
+    what is rightfully ours.'
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Seal 1st column for 1 turns, Deal 100% damage
+  desc_jp: Seal 1st column for 1 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Sly Tactics
+  name_jp: Sly Tactics
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 30
+- !SkillRecord
+  desc_en: Change 1st column to Poison orbs, 6th column to Jammer orbs
+  desc_jp: Change 1st column to Poison orbs, 6th column to Jammer orbs
+  max_atk_pct: null
+  name_en: Astral Deception
+  name_jp: Astral Deception
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 30
+- !SkillRecord
+  desc_en: Change 3rd column to Light orbs, 4th column to Dark orbs, Deal 120% damage
+  desc_jp: Change 3rd column to Light orbs, 4th column to Dark orbs, Deal 120% damage
+  max_atk_pct: 120
+  name_en: Black Magic
+  name_jp: Black Magic
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 40
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 40
+  name_jp: HP < 40
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Enemy recover 50% hp
+  desc_jp: Enemy recover 50% hp
+  max_atk_pct: null
+  name_en: Gathering Quintessence
+  name_jp: Gathering Quintessence
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Unused Actions
+############################################################
+# SkillSet:
+# 	Condition: On death (ai:0 rnd:0)
+# 	[0] ESInactivity(66:6939) -> Nooooo!
+# 	Do nothing
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] ESBlind(5:6934) -> It is time to reclaim
+# what is rightfully ours.
+# Blind all orbs on the board
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESRecoverEnemy(86:6936) -> Gathering Quintessence
+# 	Condition: When < 40% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Enemy recover 50% hp
+# [7] ESOrbSealColumn(99:6937) -> Sly Tactics
+# 	Condition: 30% chance (ai:0 rnd:30)
+# Seal 1st column for 1 turns, Deal 100% damage
+# [8] ESColumnSpawnMulti(76:6938) -> Astral Deception
+# 	Condition: 30% chance (ai:0 rnd:30)
+# Change 1st column to Poison orbs, 6th column to Jammer orbs
+# [9] ESColumnSpawnMulti(77:6935) -> Black Magic
+# 	Condition: 40% chance (ai:0 rnd:40)
+# Change 3rd column to Light orbs, 4th column to Dark orbs, Deal 120% damage
+# [10] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [11] SkillSet:
+# 	Condition: On death (ai:0 rnd:0)
+# 	[0] ESInactivity(66:6939) -> Nooooo!
+# 	Do nothing

@@ -1,0 +1,189 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 101103
+monster_name_en: Alt. Heavenly Herald, Archangel
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Devil by 50%
+  desc_jp: Reduce damage from Devil by 50%
+  max_atk_pct: null
+  name_en: Ability
+  name_jp: Ability
+  one_time: 0
+  record_type_name: PASSIVE
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Movetime -3s for 5 turns (Preemptive)
+  desc_jp: Movetime -3s for 5 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Cold Gaze
+  name_jp: Cold Gaze
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1-4
+  name_jp: Turn 1-4
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change Random to Light, Deal 75% damage
+  desc_jp: Change Random to Light, Deal 75% damage
+  max_atk_pct: 75
+  name_en: Shining Ray
+  name_jp: Shining Ray
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 33
+- !SkillRecord
+  desc_en: Change Heal to Jammer, Deal 50% damage
+  desc_jp: Change Heal to Jammer, Deal 50% damage
+  max_atk_pct: 50
+  name_en: Heart Break
+  name_jp: Heart Break
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 5
+  name_jp: Turn 5
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind 1 random subs for 20 turns + Increase damage to 150% for the next
+    99 turns
+  desc_jp: Bind 1 random subs for 20 turns + Increase damage to 150% for the next
+    99 turns
+  max_atk_pct: null
+  name_en: Judgment from Heaven + Divine Protection
+  name_jp: Judgment from Heaven + Divine Protection
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change Random to Light, Deal 75% damage
+  desc_jp: Change Random to Light, Deal 75% damage
+  max_atk_pct: 75
+  name_en: Shining Ray
+  name_jp: Shining Ray
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 33
+- !SkillRecord
+  desc_en: Change Heal to Jammer, Deal 50% damage
+  desc_jp: Change Heal to Jammer, Deal 50% damage
+  max_atk_pct: 50
+  name_en: Heart Break
+  name_jp: Heart Break
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 75
+  name_jp: HP < 75
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Enemy recover 100% hp
+  desc_jp: Enemy recover 100% hp
+  max_atk_pct: null
+  name_en: Resurrection
+  name_jp: Resurrection
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] ESDebuffMovetime(39:9533) -> Cold Gaze
+# Movetime -3s for 5 turns
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESBranchCounter(32:22) -> ESBranchCounter
+# Branch on counter > 4, target rnd 12
+# [7] ESSetCounter(26:16) -> ESSetCounter
+# counter + 1
+# [8] ESRecoverEnemy(7:876) -> Resurrection
+# 	Condition: When < 75% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Enemy recover 100% hp
+# [9] ESOrbChangeAttack(48:874) -> Shining Ray
+# 	Condition: 33% chance (ai:33 rnd:0)
+# Change Random to Light, Deal 75% damage
+# [10] ESOrbChangeAttack(48:9537) -> Heart Break
+# 	Condition: 50% chance (ai:50 rnd:0)
+# Change Heal to Jammer, Deal 50% damage
+# [11] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [12] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 8
+# [13] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [14] SkillSet:
+# 	[0] ESBindRandomSub(65:9534) -> Judgment from Heaven
+# 	Bind 1 random subs for 20 turns
+# 	[1] ESAttackUPRemainingEnemies(17:9535) -> Divine Protection
+# 	Increase damage to 150% for the next 99 turns
+# [15] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [16] ESTypeResist(118:9532) -> Angel Devil Half Reduced
+# Reduce damage from Devil by 50%

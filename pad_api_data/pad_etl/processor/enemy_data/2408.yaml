@@ -1,0 +1,161 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2408
+monster_name_en: Masquerade Guest, Izanami
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Bind 1 random subs for 2 turns (Preemptive)
+  desc_jp: Bind 1 random subs for 2 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Do you want to join us?
+  name_jp: Do you want to join us?
+  one_time: 4
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Spawn random 1 Fire, Wood, Heal orbs, Deal 105% damage
+  desc_jp: Spawn random 1 Fire, Wood, Heal orbs, Deal 105% damage
+  max_atk_pct: 105
+  name_en: Temptation of the 3 colored Dango
+  name_jp: Temptation of the 3 colored Dango
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 100% damage
+  desc_jp: Change Random to Jammer, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Super Sweet Dorayaki
+  name_jp: Super Sweet Dorayaki
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change 1st row to Poison orbs, 5th row to Jammer orbs
+  desc_jp: Change 1st row to Poison orbs, 5th row to Jammer orbs
+  max_atk_pct: null
+  name_en: Sweet Grudge
+  name_jp: Sweet Grudge
+  one_time: 2
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 20
+  name_jp: HP < 20
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Increase damage to 150% for the next 99 turns
+  desc_jp: Increase damage to 150% for the next 99 turns
+  max_atk_pct: null
+  name_en: Palate Cleanser
+  name_jp: Palate Cleanser
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 100% damage (5 hits, 20% each)
+  desc_jp: Deal 100% damage (5 hits, 20% each)
+  max_atk_pct: 100
+  name_en: Nectar Inferno
+  name_jp: Nectar Inferno
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 7 -      111
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:3402) -> ESPreemptive
+# Enable preempt if level 4
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 4, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESBindRandomSub(65:11414) -> Do you want to join us?
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 4)
+# Bind 1 random subs for 2 turns
+# [5] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 50, target rnd 9
+# [6] ESRandomSpawn(92:11415) -> Temptation of the 3 colored Dango
+# 	Condition: 50% chance & when Water, Light, Dark, Jammer, Poison, Mortal Poison orbs are on the board (ai:0 rnd:50)
+# Spawn random 1 Fire, Wood, Heal orbs, Deal 105% damage
+# [7] ESOrbChangeAttack(48:11416) -> Super Sweet Dorayaki
+# 	Condition: 50% chance (ai:0 rnd:50)
+# Change Random to Jammer, Deal 100% damage
+# [8] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [9] ESRowSpawnMulti(78:11417) -> Sweet Grudge
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
+# Change 1st row to Poison orbs, 5th row to Jammer orbs
+# [10] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 20, target rnd 14
+# [11] ESRandomSpawn(92:11415) -> Temptation of the 3 colored Dango
+# 	Condition: 50% chance & when Water, Light, Dark, Jammer, Poison, Mortal Poison orbs are on the board (ai:0 rnd:50)
+# Spawn random 1 Fire, Wood, Heal orbs, Deal 105% damage
+# [12] ESOrbChangeAttack(48:11416) -> Super Sweet Dorayaki
+# 	Condition: 50% chance (ai:0 rnd:50)
+# Change Random to Jammer, Deal 100% damage
+# [13] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [14] ESAttackUPRemainingEnemies(17:11418) -> Palate Cleanser
+# 	Condition: One-time use, when <= 1 enemies remain (ai:100 rnd:0) (one-time: 1)
+# Increase damage to 150% for the next 99 turns
+# [15] ESAttackMultihit(15:11419) -> Nectar Inferno
+# Deal 100% damage (5 hits, 20% each)
+# [16] ESEndPath(36:26) -> ESEndPath
+# end_turn

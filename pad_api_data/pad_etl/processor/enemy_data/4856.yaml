@@ -1,0 +1,193 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4856
+monster_name_en: Black Swordsman, Kirito
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb combo <= 6 damage for 5 turns + Movetime -3s for 5 turns (Preemptive)
+  desc_jp: Absorb combo <= 6 damage for 5 turns + Movetime -3s for 5 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Ok, who's next? + Ok then. Let's finish it.
+  name_jp: Ok, who's next? + Ok then. Let's finish it.
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 120% damage (2 hits, 60% each)
+  desc_jp: Deal 120% damage (2 hits, 60% each)
+  max_atk_pct: 120
+  name_en: Move!
+  name_jp: Move!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 34
+- !SkillRecord
+  desc_en: Change 1st column to Water orbs, 6th column to Dark orbs, Deal 100% damage
+  desc_jp: Change 1st column to Water orbs, 6th column to Dark orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Haaaaaaaa!
+  name_jp: Haaaaaaaa!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 33
+- !SkillRecord
+  desc_en: Change 1st row to Water orbs, 5th row to Dark orbs, Deal 100% damage
+  desc_jp: Change 1st row to Water orbs, 5th row to Dark orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Haaargh!
+  name_jp: Haaargh!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 33
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind awoken skills for 2 turns
+  desc_jp: Bind awoken skills for 2 turns
+  max_atk_pct: null
+  name_en: This isn't some in-game duel.
+  name_jp: This isn't some in-game duel.
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 20
+  name_jp: HP < 20
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Blind all orbs on the board + Lock all Fire, Water, Wood, Light, Dark,
+    Heal, Jammer, Poison, Mortal Poison orbs
+  desc_jp: Blind all orbs on the board + Lock all Fire, Water, Wood, Light, Dark,
+    Heal, Jammer, Poison, Mortal Poison orbs
+  max_atk_pct: null
+  name_en: Oh, crap! + This will take forever...
+  name_jp: Oh, crap! + This will take forever...
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 2
+  name_jp: Loop to 1 after. Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Increase damage to 150% for the next 1 turns + Deal 200% damage (8 hits,
+    25% each)
+  desc_jp: Increase damage to 150% for the next 1 turns + Deal 200% damage (8 hits,
+    25% each)
+  max_atk_pct: null
+  name_en: Not yet... + Starburst...Stream!
+  name_jp: Not yet... + Starburst...Stream!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 1 -        1
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] SkillSet:
+# 	[0] ESAbsorbCombo(67:11502) -> Ok, who's next?
+# 	Absorb combo <= 6 damage for 5 turns
+# 	[1] ESDebuffMovetime(39:11503) -> Ok then. Let's finish it.
+# 	Movetime -3s for 5 turns
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 20, target rnd 16
+# [7] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 50, target rnd 12
+# [8] ESAttackMultihit(15:11504) -> Move!
+# 	Condition: 34% chance (ai:0 rnd:34)
+# Deal 120% damage (2 hits, 60% each)
+# [9] ESColumnSpawnMulti(77:11505) -> Haaaaaaaa!
+# 	Condition: 33% chance (ai:0 rnd:33)
+# Change 1st column to Water orbs, 6th column to Dark orbs, Deal 100% damage
+# [10] ESRowSpawnMulti(79:11506) -> Haaargh!
+# 	Condition: 33% chance (ai:0 rnd:33)
+# Change 1st row to Water orbs, 5th row to Dark orbs, Deal 100% damage
+# [11] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [12] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 8
+# [13] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [14] ESBindAwoken(88:11507) -> This isn't some in-game duel.
+# Bind awoken skills for 2 turns
+# [15] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [16] SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# 	[0] ESBlind(5:11509) -> Oh, crap!
+# 	Blind all orbs on the board
+# 	[1] ESOrbLock(94:11510) -> This will take forever...
+# 	Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [17] SkillSet:
+# 	[0] ESAttackUPRemainingEnemies(17:11512) -> Not yet...
+# 	Increase damage to 150% for the next 1 turns
+# 	[1] ESAttackMultihit(15:11513) -> Starburst...Stream!
+# 	Deal 200% damage (8 hits, 25% each)
+# [18] ESEndPath(36:26) -> ESEndPath
+# end_turn

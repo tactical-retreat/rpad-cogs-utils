@@ -1,0 +1,166 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 991
+monster_name_en: '*****'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Change Random 3 to Poison (Preemptive)
+  desc_jp: Change Random 3 to Poison (Preemptive)
+  max_atk_pct: null
+  name_en: '*****'
+  name_jp: '*****'
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Random 2 to Poison, Deal 75% damage
+  desc_jp: Change Random 2 to Poison, Deal 75% damage
+  max_atk_pct: 75
+  name_en: '*****'
+  name_jp: '*****'
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 30
+  name_jp: HP < 30
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind 6 random cards for 1~3 turns
+  desc_jp: Bind 6 random cards for 1~3 turns
+  max_atk_pct: null
+  name_en: Bad Breath
+  name_jp: Bad Breath
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Data @ 7
+############################################################
+!SkillRecordListing
+level: 7
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Change Random 12 to Poison (Preemptive)
+  desc_jp: Change Random 12 to Poison (Preemptive)
+  max_atk_pct: null
+  name_en: '*****'
+  name_jp: '*****'
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Random 2 to Poison, Deal 75% damage
+  desc_jp: Change Random 2 to Poison, Deal 75% damage
+  max_atk_pct: 75
+  name_en: '*****'
+  name_jp: '*****'
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 30
+  name_jp: HP < 30
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind 6 random cards for 1~3 turns
+  desc_jp: Bind 6 random cards for 1~3 turns
+  max_atk_pct: null
+  name_en: Bad Breath
+  name_jp: Bad Breath
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] false
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:355) -> ESPreemptive
+# Enable preempt if level 5
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 7, target rnd 12
+# [3] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 5, target rnd 5
+# [4] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [5] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 9
+# [6] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [7] ESPoisonChangeRandom(60:1931) -> *****
+# Change Random 3 to Poison
+# [8] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [9] ESBindRandom(1:184) -> Bad Breath
+# 	Condition: When < 30% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Bind 6 random cards for 1~3 turns
+# [10] ESPoisonChangeRandomAttack(64:1932) -> *****
+# Change Random 2 to Poison, Deal 75% damage
+# [11] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [12] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 16
+# [13] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [14] ESPoisonChangeRandom(60:1934) -> *****
+# Change Random 12 to Poison
+# [15] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [16] ESBindRandom(1:184) -> Bad Breath
+# 	Condition: When < 30% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Bind 6 random cards for 1~3 turns
+# [17] ESPoisonChangeRandomAttack(64:1932) -> *****
+# Change Random 2 to Poison, Deal 75% damage

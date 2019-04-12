@@ -1,0 +1,146 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 104616
+monster_name_en: Jhoira's Familiar
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings:
+- Found 3 unused actions
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Bind awoken skills for 1 turns (Preemptive)
+  desc_jp: Bind awoken skills for 1 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Interference
+  name_jp: Interference
+  one_time: 1
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind awoken skills for 1 turns
+  desc_jp: Bind awoken skills for 1 turns
+  max_atk_pct: null
+  name_en: Interference
+  name_jp: Interference
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind 1 random cards for 2 turns
+  desc_jp: Bind 1 random cards for 2 turns
+  max_atk_pct: null
+  name_en: Ultrasonic Wave
+  name_jp: Ultrasonic Wave
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 25
+- !SkillRecord
+  desc_en: Delay active skills by 1~2 turns
+  desc_jp: Delay active skills by 1~2 turns
+  max_atk_pct: null
+  name_en: Wingbeats
+  name_jp: Wingbeats
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 25
+- !SkillRecord
+  desc_en: Leader changes to random sub for 1 turns
+  desc_jp: Leader changes to random sub for 1 turns
+  max_atk_pct: null
+  name_en: Shared Sight
+  name_jp: Shared Sight
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 25
+- !SkillRecord
+  desc_en: Spawn random 8 Mortal Poison orbs
+  desc_jp: Spawn random 8 Mortal Poison orbs
+  max_atk_pct: null
+  name_en: Decimator Web
+  name_jp: Decimator Web
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 25
+
+############################################################
+### Unused Actions
+############################################################
+# ESBindSkill(14:10263) -> Flash
+# 	Condition: One-time use (ai:50 rnd:0) (one-time: 1)
+# Bind active skills for 2 turns
+# ESGravity(50:10267) -> Mana-Burner
+# Player -1000% HP
+# SkillSet:
+# 	Condition: On death (ai:0 rnd:0)
+# 	[0] ESInactivity(66:10268) -> Evacuation
+# 	Do nothing
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 1 -        1
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:3402) -> ESPreemptive
+# Enable preempt if level 4
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 4, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 8
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [6] ESBindAwoken(88:10265) -> Interference
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Bind awoken skills for 1 turns
+# [7] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [8] ESSetCounter(26:16) -> ESSetCounter
+# counter + 1
+# [9] ESBranchCounter(32:22) -> ESBranchCounter
+# Branch on counter > 15, target rnd 17
+# [10] ESBindSkill(14:10263) -> Flash
+# 	Condition: One-time use (ai:50 rnd:0) (one-time: 1)
+# Bind active skills for 2 turns
+# [11] ESBindAwoken(88:10265) -> Interference
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Bind awoken skills for 1 turns
+# [12] ESBindRandom(1:10262) -> Ultrasonic Wave
+# 	Condition: 25% chance (ai:0 rnd:25)
+# Bind 1 random cards for 2 turns
+# [13] ESSkillDelay(89:10264) -> Wingbeats
+# 	Condition: 25% chance (ai:0 rnd:25)
+# Delay active skills by 1~2 turns
+# [14] ESLeaderSwap(75:10266) -> Shared Sight
+# 	Condition: 25% chance (ai:0 rnd:25)
+# Leader changes to random sub for 1 turns
+# [15] ESRandomSpawn(92:10270) -> Decimator Web
+# 	Condition: 25% chance & when Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison orbs are on the board (ai:0 rnd:25)
+# Spawn random 8 Mortal Poison orbs
+# [16] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [17] ESGravity(50:10267) -> Mana-Burner
+# Player -1000% HP
+# [18] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [19] SkillSet:
+# 	Condition: On death (ai:0 rnd:0)
+# 	[0] ESInactivity(66:10268) -> Evacuation
+# 	Do nothing

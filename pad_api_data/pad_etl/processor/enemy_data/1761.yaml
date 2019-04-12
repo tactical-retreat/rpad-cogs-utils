@@ -1,0 +1,222 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1761
+monster_name_en: Burning Bowl Dragon, Gyundo
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Water by 50%
+  desc_jp: Reduce damage from Water by 50%
+  max_atk_pct: null
+  name_en: Ability
+  name_jp: Ability
+  one_time: 0
+  record_type_name: PASSIVE
+  usage_pct: 100
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Water by 50%
+  desc_jp: Reduce damage from Water by 50%
+  max_atk_pct: null
+  name_en: Ability
+  name_jp: Ability
+  one_time: 0
+  record_type_name: PASSIVE
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Voids status ailments for 4 turns (Preemptive)
+  desc_jp: Voids status ailments for 4 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Beef Scale
+  name_jp: Beef Scale
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 3 turns
+  desc_jp: Increase damage to 200% for the next 3 turns
+  max_atk_pct: null
+  name_en: Lunchtime Discount
+  name_jp: Lunchtime Discount
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change 2nd row to Wood orbs, 4th row to Wood orbs, Deal 75% damage
+  desc_jp: Change 2nd row to Wood orbs, 4th row to Wood orbs, Deal 75% damage
+  max_atk_pct: 75
+  name_en: Extra Onion Shot
+  name_jp: Extra Onion Shot
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 40
+- !SkillRecord
+  desc_en: Change 1st row to Water orbs, 2nd row to Heal orbs, Deal 125% damage
+  desc_jp: Change 1st row to Water orbs, 2nd row to Heal orbs, Deal 125% damage
+  max_atk_pct: 125
+  name_en: Extra Juice
+  name_jp: Extra Juice
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  max_atk_pct: null
+  name_en: Big Helping Punch
+  name_jp: Big Helping Punch
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 2
+  name_jp: Loop to 1 after. Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change 2nd row to Wood orbs, 4th row to Wood orbs, Deal 75% damage
+  desc_jp: Change 2nd row to Wood orbs, 4th row to Wood orbs, Deal 75% damage
+  max_atk_pct: 75
+  name_en: Extra Onion Shot
+  name_jp: Extra Onion Shot
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 40
+- !SkillRecord
+  desc_en: Change 1st row to Water orbs, 2nd row to Heal orbs, Deal 125% damage
+  desc_jp: Change 1st row to Water orbs, 2nd row to Heal orbs, Deal 125% damage
+  max_atk_pct: 125
+  name_en: Extra Juice
+  name_jp: Extra Juice
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 30
+  name_jp: HP < 30
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change Random to Fire, Deal 500% damage
+  desc_jp: Change Random to Fire, Deal 500% damage
+  max_atk_pct: 500
+  name_en: Forbidden Mega Helping Press
+  name_jp: Forbidden Mega Helping Press
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] false
+# [53] 1 -        1
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:355) -> ESPreemptive
+# Enable preempt if level 5
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 5, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 8
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [6] ESStatusShield(20:1802) -> Beef Scale
+# Voids status ailments for 4 turns
+# [7] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [8] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 12
+# [9] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [10] ESAttackUPRemainingEnemies(17:1803) -> Lunchtime Discount
+# 	Condition: when <= 3 enemies remain (ai:100 rnd:0)
+# Increase damage to 200% for the next 3 turns
+# [11] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [12] ESOrbChangeAttack(48:1807) -> Forbidden Mega Helping Press
+# 	Condition: When < 30% hp (ai:100 rnd:0)
+# Change Random to Fire, Deal 500% damage
+# [13] ESGravity(50:1806) -> Big Helping Punch
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Player -99% HP
+# [14] ESRowSpawnMulti(79:1805) -> Extra Onion Shot
+# 	Condition: 40% chance (ai:40 rnd:0)
+# Change 2nd row to Wood orbs, 4th row to Wood orbs, Deal 75% damage
+# [15] ESRowSpawnMulti(79:1804) -> Extra Juice
+# Change 1st row to Water orbs, 2nd row to Heal orbs, Deal 125% damage
+# [16] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [17] ESAttributeResist(72:1772) -> Halve Water
+# Reduce damage from Water by 50%

@@ -1,0 +1,189 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2962
+monster_name_en: White Roses Bride, Hera-Beorc
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings:
+- Found 1 unused actions
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Player recover 100% hp (Preemptive)
+  desc_jp: Player recover 100% hp (Preemptive)
+  max_atk_pct: null
+  name_en: I am very happy!
+  name_jp: I am very happy!
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Movetime -2s for 1 turns, Deal 100% damage
+  desc_jp: Movetime -2s for 1 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Cake Cutting
+  name_jp: Cake Cutting
+  one_time: 3
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 2-4
+  name_jp: Loop to 1 after. Turn 2-4
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Lock 1 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 130% damage
+  desc_jp: Lock 1 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 130% damage
+  max_atk_pct: 130
+  name_en: Bouquet Toss
+  name_jp: Bouquet Toss
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 70
+  name_jp: HP < 70
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 3 turns
+  desc_jp: Reduce damage from all sources by 50% for 3 turns
+  max_atk_pct: null
+  name_en: White Flower
+  name_jp: White Flower
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 20
+  name_jp: HP < 20
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind 1 random subs for 5 turns
+  desc_jp: Bind 1 random subs for 5 turns
+  max_atk_pct: null
+  name_en: Hug of Happiness
+  name_jp: Hug of Happiness
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 300% damage
+  desc_jp: Deal 300% damage
+  max_atk_pct: 300
+  name_en: Happy Genesis
+  name_jp: Happy Genesis
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Unused Actions
+############################################################
+# ESRecoverPlayer(55:4732) -> Please make me happy ♪
+# Player recover 100% hp
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 3 -       11
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:3402) -> ESPreemptive
+# Enable preempt if level 4
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 4, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 10
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [6] ESBranchCard(90:4731) -> ESBranchCard
+# Branch on player_cards HAS [650, 651, 2948], target rnd 8
+# [7] ESRecoverPlayer(55:4725) -> I am very happy!
+# Player recover 100% hp
+# [8] ESRecoverPlayer(55:4732) -> Please make me happy ♪
+# Player recover 100% hp
+# [9] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [10] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 20, target rnd 17
+# [11] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 70, target rnd 14
+# [12] ESDebuffMovetime(39:4727) -> Cake Cutting
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 3)
+# Movetime -2s for 1 turns, Deal 100% damage
+# [13] ESOrbLock(94:4726) -> Bouquet Toss
+# Lock 1 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 130% damage
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 12
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [16] ESDamageShield(74:4729) -> White Flower
+# Reduce damage from all sources by 50% for 3 turns
+# [17] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 4, target rnd 20
+# [18] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b111
+# [19] ESBindRandomSub(65:4730) -> Hug of Happiness
+# Bind 1 random subs for 5 turns
+# [20] ESAttackMultihit(15:4728) -> Happy Genesis
+# Deal 300% damage

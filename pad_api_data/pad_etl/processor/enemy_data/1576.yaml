@@ -1,0 +1,127 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1576
+monster_name_en: '***** (Dragon Ball)'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Change Random 4 to Poison, Deal 50% damage (Preemptive)
+  desc_jp: Change Random 4 to Poison, Deal 50% damage (Preemptive)
+  max_atk_pct: 50
+  name_en: '***** (Dragon Ball)'
+  name_jp: '***** (Dragon Ball)'
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 75
+  name_jp: HP < 75
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change Random 4 to Poison
+  desc_jp: Change Random 4 to Poison
+  max_atk_pct: null
+  name_en: '***** (Dragon Ball)'
+  name_jp: '***** (Dragon Ball)'
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 2
+  name_jp: Loop to 1 after. Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change Random to Fire, Deal 75% damage
+  desc_jp: Change Random to Fire, Deal 75% damage
+  max_atk_pct: 75
+  name_en: '***** (Dragon Ball)'
+  name_jp: '***** (Dragon Ball)'
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 30
+  name_jp: HP < 30
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 160% damage (2 hits, 80% each)
+  desc_jp: Deal 160% damage (2 hits, 80% each)
+  max_atk_pct: 160
+  name_en: '***** (Dragon Ball)'
+  name_jp: '***** (Dragon Ball)'
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] false
+# [53] 1 -        1
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:355) -> ESPreemptive
+# Enable preempt if level 5
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 5, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 8
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [6] ESPoisonChangeRandomAttack(64:1477) -> ***** (Dragon Ball)
+# Change Random 4 to Poison, Deal 50% damage
+# [7] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [8] ESAttackMultihit(15:1480) -> ***** (Dragon Ball)
+# 	Condition: When < 30% hp (ai:100 rnd:0)
+# Deal 160% damage (2 hits, 80% each)
+# [9] ESPoisonChangeRandom(60:1478) -> ***** (Dragon Ball)
+# 	Condition: When < 75% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Change Random 4 to Poison
+# [10] ESOrbChangeAttack(48:1479) -> ***** (Dragon Ball)
+# 	Condition: When < 75% hp (ai:100 rnd:0)
+# Change Random to Fire, Deal 75% damage

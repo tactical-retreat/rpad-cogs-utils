@@ -1,0 +1,53 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1054
+monster_name_en: Bokkle
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Increase damage to 300% for the next 999 turns (When 1 enemy remains)
+  desc_jp: Increase damage to 300% for the next 999 turns (When 1 enemy remains)
+  max_atk_pct: null
+  name_en: Friendly Handshake
+  name_jp: Friendly Handshake
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 2 -       10
+# [52] false
+# [53] 0 -        0
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESAttackUPRemainingEnemies(17:286) -> Friendly Handshake
+# 	Condition: when <= 1 enemies remain (ai:100 rnd:0)
+# Increase damage to 300% for the next 999 turns

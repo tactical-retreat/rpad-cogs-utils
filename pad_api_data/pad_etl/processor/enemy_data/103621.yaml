@@ -1,0 +1,162 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 103621
+monster_name_en: Heir to the Fuwa Enmei-ryu, Hokuto Fuwa
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings:
+- Found 1 unused actions
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Player -50% HP (Preemptive)
+  desc_jp: Player -50% HP (Preemptive)
+  max_atk_pct: null
+  name_en: GAAAAAHH!
+  name_jp: GAAAAAHH!
+  one_time: 1
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 100% damage
+  desc_jp: Blind all orbs on the board, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Fugasumi
+  name_jp: Fugasumi
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Lock 6 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 130% damage
+  desc_jp: Lock 6 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 130% damage
+  max_atk_pct: 130
+  name_en: Funokazura Rouga
+  name_jp: Funokazura Rouga
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 150% damage
+  desc_jp: Deal 150% damage
+  max_atk_pct: 150
+  name_en: Kogetsu
+  name_jp: Kogetsu
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 4
+  name_jp: Loop to 1 after. Turn 4
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind 1 random for 1 turns, Deal 200% damage
+  desc_jp: Bind 1 random for 1 turns, Deal 200% damage
+  max_atk_pct: 200
+  name_en: Fuwaenmei-Ryu Hidden Art, Kamui
+  name_jp: Fuwaenmei-Ryu Hidden Art, Kamui
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Unused Actions
+############################################################
+# ESGravity(50:6691) -> What's wrong master, running away?
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Player -50% HP
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchCard(90:6690) -> ESBranchCard
+# Branch on player_cards HAS [3617, 3618], target rnd 4
+# [3] ESGravity(50:6684) -> GAAAAAHH!
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Player -50% HP
+# [4] ESGravity(50:6691) -> What's wrong master, running away?
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Player -50% HP
+# [5] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 9
+# [6] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [7] ESBlind(62:6685) -> Fugasumi
+# Blind all orbs on the board, Deal 100% damage
+# [8] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [9] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 13
+# [10] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [11] ESOrbLock(94:6687) -> Funokazura Rouga
+# Lock 6 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 130% damage
+# [12] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [13] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 4, target rnd 17
+# [14] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b111
+# [15] ESAttackMultihit(15:6688) -> Kogetsu
+# Deal 150% damage
+# [16] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [17] ESFlagOperation(24:14) -> ESFlagOperation
+# flag UNSET 0b111
+# [18] ESBindAttack(63:6689) -> Fuwaenmei-Ryu Hidden Art, Kamui
+# Bind 1 random for 1 turns, Deal 200% damage
+# [19] ESEndPath(36:26) -> ESEndPath
+# end_turn

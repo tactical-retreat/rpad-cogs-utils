@@ -1,0 +1,103 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 775
+monster_name_en: Omega Holy Skydragon, Shangri-La
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Deal 40% damage
+  desc_jp: Deal 40% damage
+  max_atk_pct: 40
+  name_en: Preemptive
+  name_jp: Preemptive
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 100%~120% damage (5~6 hits, 20% each)
+  desc_jp: Deal 100%~120% damage (5~6 hits, 20% each)
+  max_atk_pct: 120
+  name_en: Breath of the Holy Sky
+  name_jp: Breath of the Holy Sky
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind 1 friend leader for 3 turns
+  desc_jp: Bind 1 friend leader for 3 turns
+  max_atk_pct: null
+  name_en: Writhing Thorns
+  name_jp: Writhing Thorns
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 120% damage (2 hits, 60% each)
+  desc_jp: Deal 120% damage (2 hits, 60% each)
+  max_atk_pct: 120
+  name_en: Breath of the Wood Sky
+  name_jp: Breath of the Wood Sky
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] false
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESAttackPreemptive(47:478) -> Skydragon Flight
+# Deal 40% damage
+# [2] ESBranchHP(29:19) -> ESBranchHP
+# Branch on hp > 50, target rnd 8
+# [3] ESBindTarget(54:480) -> Writhing Thorns
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Bind 1 friend leader for 3 turns
+# [4] ESAttackMultihit(15:475) -> Breath of the Wood Sky
+# Deal 120% damage (2 hits, 60% each)
+# [5] ESNone(0:0) -> ESNone
+# nothing
+# [6] ESNone(0:0) -> ESNone
+# nothing
+# [7] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [8] ESAttackMultihit(15:476) -> Breath of the Holy Sky
+# Deal 100%~120% damage (5~6 hits, 20% each)

@@ -1,0 +1,69 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 101520
+monster_name_en: Metabon
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Change Random 1 to Jammer (Preemptive)
+  desc_jp: Change Random 1 to Jammer (Preemptive)
+  max_atk_pct: null
+  name_en: I'm gonna get in your way.
+  name_jp: I'm gonna get in your way.
+  one_time: 2
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 30
+  name_jp: HP < 30
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind 3 random subs for 2~3 turns
+  desc_jp: Bind 3 random subs for 2~3 turns
+  max_atk_pct: null
+  name_en: I'm going to keep you from moving.
+  name_jp: I'm going to keep you from moving.
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 60
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 2 -       10
+# [52] true
+# [53] 3 -       11
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESJammerChangeRandom(13:10702) -> I'm gonna get in your way.
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
+# Change Random 1 to Jammer
+# [3] ESBindRandomSub(65:1340) -> I'm going to keep you from moving.
+# 	Condition: When < 30% hp , one-time use (ai:60 rnd:0) (one-time: 1)
+# Bind 3 random subs for 2~3 turns
+# [4] ESEndPath(36:26) -> ESEndPath
+# end_turn

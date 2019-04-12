@@ -1,0 +1,216 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 100130
+monster_name_en: Alt. Hades
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings:
+- Found 1 unused actions
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Light by 50%
+  desc_jp: Reduce damage from Light by 50%
+  max_atk_pct: null
+  name_en: Ability
+  name_jp: Ability
+  one_time: 0
+  record_type_name: PASSIVE
+  usage_pct: 100
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Light by 50%
+  desc_jp: Reduce damage from Light by 50%
+  max_atk_pct: null
+  name_en: Ability
+  name_jp: Ability
+  one_time: 0
+  record_type_name: PASSIVE
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Blind orbs in specific positions for 1 turns (Preemptive)
+  desc_jp: Blind orbs in specific positions for 1 turns (Preemptive)
+  max_atk_pct: null
+  name_en: 'Death Countdown: 5'
+  name_jp: 'Death Countdown: 5'
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Blind orbs in specific positions for 1 turns
+  desc_jp: Blind orbs in specific positions for 1 turns
+  max_atk_pct: null
+  name_en: 'Death Countdown: 4'
+  name_jp: 'Death Countdown: 4'
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Blind orbs in specific positions for 1 turns
+  desc_jp: Blind orbs in specific positions for 1 turns
+  max_atk_pct: null
+  name_en: 'Death Countdown: 3'
+  name_jp: 'Death Countdown: 3'
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Blind orbs in specific positions for 1 turns
+  desc_jp: Blind orbs in specific positions for 1 turns
+  max_atk_pct: null
+  name_en: 'Death Countdown: 2'
+  name_jp: 'Death Countdown: 2'
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 4
+  name_jp: Turn 4
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Blind orbs in specific positions for 1 turns
+  desc_jp: Blind orbs in specific positions for 1 turns
+  max_atk_pct: null
+  name_en: 'Death Countdown: 1'
+  name_jp: 'Death Countdown: 1'
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Blind orbs in specific positions for 1 turns + Deal 500% damage
+  desc_jp: Blind orbs in specific positions for 1 turns + Deal 500% damage
+  max_atk_pct: null
+  name_en: 'Death Countdown: 0 + This is the end'
+  name_jp: 'Death Countdown: 0 + This is the end'
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Unused Actions
+############################################################
+# SkillSet:
+# 	Condition: On death (ai:0 rnd:0)
+# 	[0] ESSkyfall(68:9136) -> It can't end like this
+# 	Poison skyfall +15% for 2 turns
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 0 -        0
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:3402) -> ESPreemptive
+# Enable preempt if level 4
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 4, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 7
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [6] ESBlindStickyFixed(98:9130) -> Death Countdown: 5
+# Blind orbs in specific positions for 1 turns
+# [7] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 10
+# [8] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [9] ESBlindStickyFixed(98:9131) -> Death Countdown: 4
+# Blind orbs in specific positions for 1 turns
+# [10] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 4, target rnd 13
+# [11] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b111
+# [12] ESBlindStickyFixed(98:9132) -> Death Countdown: 3
+# Blind orbs in specific positions for 1 turns
+# [13] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 8, target rnd 16
+# [14] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1111
+# [15] ESBlindStickyFixed(98:9133) -> Death Countdown: 2
+# Blind orbs in specific positions for 1 turns
+# [16] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 16, target rnd 19
+# [17] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11111
+# [18] ESBlindStickyFixed(98:9134) -> Death Countdown: 1
+# Blind orbs in specific positions for 1 turns
+# [19] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b0
+# [20] SkillSet:
+# 	[0] ESBlindStickyFixed(98:9135) -> Death Countdown: 0
+# 	Blind orbs in specific positions for 1 turns
+# 	[1] ESAttackMultihit(15:9013) -> This is the end
+# 	Deal 500% damage
+# [21] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [22] ESAttributeResist(72:9129) -> Hades Resistance
+# Reduce damage from Light by 50%
+# [23] SkillSet:
+# 	Condition: On death (ai:0 rnd:0)
+# 	[0] ESSkyfall(68:9136) -> It can't end like this
+# 	Poison skyfall +15% for 2 turns

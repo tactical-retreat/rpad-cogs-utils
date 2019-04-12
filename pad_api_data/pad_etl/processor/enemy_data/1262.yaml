@@ -1,0 +1,142 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1262
+monster_name_en: Divine Flower Suzaku, Leilan
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Change Heal to Fire, Deal 80% damage
+  desc_jp: Change Heal to Fire, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Crimson Slash
+  name_jp: Crimson Slash
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Deal 100%~125% damage (4~5 hits, 25% each)
+  desc_jp: Deal 100%~125% damage (4~5 hits, 25% each)
+  max_atk_pct: 125
+  name_en: Fenghuang Sword Dance
+  name_jp: Fenghuang Sword Dance
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind Light cards for 3~4 turns
+  desc_jp: Bind Light cards for 3~4 turns
+  max_atk_pct: null
+  name_en: Light Absorbing Vine Snare
+  name_jp: Light Absorbing Vine Snare
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Heal to Fire, Deal 80% damage
+  desc_jp: Change Heal to Fire, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Crimson Slash
+  name_jp: Crimson Slash
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Deal 100%~125% damage (4~5 hits, 25% each)
+  desc_jp: Deal 100%~125% damage (4~5 hits, 25% each)
+  max_atk_pct: 125
+  name_en: Fenghuang Sword Dance
+  name_jp: Fenghuang Sword Dance
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 30
+  name_jp: HP < 30
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind Light cards for 3~4 turns
+  desc_jp: Bind Light cards for 3~4 turns
+  max_atk_pct: null
+  name_en: Light Absorbing Vine Snare
+  name_jp: Light Absorbing Vine Snare
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 350% damage (7 hits, 50% each)
+  desc_jp: Deal 350% damage (7 hits, 50% each)
+  max_atk_pct: 350
+  name_en: Southern Seven-Star Formation
+  name_jp: Southern Seven-Star Formation
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] false
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBindAttribute(2:1016) -> Light Absorbing Vine Snare
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Bind Light cards for 3~4 turns
+# [2] ESAttackMultihit(15:1017) -> Southern Seven-Star Formation
+# 	Condition: When < 30% hp (ai:100 rnd:0)
+# Deal 350% damage (7 hits, 50% each)
+# [3] ESOrbChangeAttack(48:1014) -> Crimson Slash
+# 	Condition: 50% chance (ai:50 rnd:0)
+# Change Heal to Fire, Deal 80% damage
+# [4] ESAttackMultihit(15:1015) -> Fenghuang Sword Dance
+# Deal 100%~125% damage (4~5 hits, 25% each)

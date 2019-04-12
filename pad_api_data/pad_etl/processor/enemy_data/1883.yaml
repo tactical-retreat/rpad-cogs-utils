@@ -1,0 +1,247 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1883
+monster_name_en: Nameless Blade Brave, Masamune
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings:
+- Found 1 unused actions
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 50%
+  desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
+  name_en: Ability
+  name_jp: Ability
+  one_time: 0
+  record_type_name: PASSIVE
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Absorb combo <= 7 damage for 10 turns (Preemptive)
+  desc_jp: Absorb combo <= 7 damage for 10 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Tamahagane Iron Skin
+  name_jp: Tamahagane Iron Skin
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change own attribute to Water
+  desc_jp: Change own attribute to Water
+  max_atk_pct: null
+  name_en: Hollow Slice like Flowing Water
+  name_jp: Hollow Slice like Flowing Water
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change 3rd column to Wood orbs, Deal 250% damage
+  desc_jp: Change 3rd column to Wood orbs, Deal 250% damage
+  max_atk_pct: 250
+  name_en: Piercing Wind
+  name_jp: Piercing Wind
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 25
+- !SkillRecord
+  desc_en: Rcv 50% for 1 turns, Deal 220% damage
+  desc_jp: Rcv 50% for 1 turns, Deal 220% damage
+  max_atk_pct: 220
+  name_en: Flower Cutter
+  name_jp: Flower Cutter
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 25
+- !SkillRecord
+  desc_en: Random 3 orbs change every 1.0s for 1 turns, Deal 230% damage
+  desc_jp: Random 3 orbs change every 1.0s for 1 turns, Deal 230% damage
+  max_atk_pct: 230
+  name_en: Uzu Tomoe
+  name_jp: Uzu Tomoe
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 25
+- !SkillRecord
+  desc_en: Deal 280% damage (10 hits, 28% each)
+  desc_jp: Deal 280% damage (10 hits, 28% each)
+  max_atk_pct: 280
+  name_en: 1,000 Cuts
+  name_jp: 1,000 Cuts
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 25
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison,
+    Mortal Poison + Bind 1 random for 5 turns, Deal 280% damage
+  desc_jp: Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison,
+    Mortal Poison + Bind 1 random for 5 turns, Deal 280% damage
+  max_atk_pct: null
+  name_en: Kaleidoscope + Unbind
+  name_jp: Kaleidoscope + Unbind
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 75% for 3 turns
+  desc_jp: Reduce damage from all sources by 75% for 3 turns
+  max_atk_pct: null
+  name_en: Forge Folding
+  name_jp: Forge Folding
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 15
+  name_jp: HP < 15
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Enemy recover 60% hp
+  desc_jp: Enemy recover 60% hp
+  max_atk_pct: null
+  name_en: Reforge
+  name_jp: Reforge
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Unused Actions
+############################################################
+# ESAttackUPRemainingEnemies(17:8553) -> Sharpening
+# 	Condition: One-time use, when <= 1 enemies remain (ai:100 rnd:0) (one-time: 1)
+# Increase damage to 150% for the next 999 turns
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] ESAbsorbCombo(67:8544) -> Tamahagane Iron Skin
+# Absorb combo <= 7 damage for 10 turns
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESBranchHP(29:19) -> ESBranchHP
+# Branch on hp > 100, target rnd 15
+# [7] ESRecoverEnemy(7:8555) -> Reforge
+# 	Condition: When < 15% hp (ai:100 rnd:0)
+# Enemy recover 60% hp
+# [8] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 4, target rnd 23
+# [9] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 50, target rnd 19
+# [10] ESColumnSpawnMulti(77:8546) -> Piercing Wind
+# 	Condition: 25% chance (ai:0 rnd:25)
+# Change 3rd column to Wood orbs, Deal 250% damage
+# [11] ESDebuffRCV(105:8547) -> Flower Cutter
+# 	Condition: 25% chance (ai:0 rnd:25)
+# Rcv 50% for 1 turns, Deal 220% damage
+# [12] ESSpinnersRandom(109:8548) -> Uzu Tomoe
+# 	Condition: 25% chance (ai:0 rnd:25)
+# Random 3 orbs change every 1.0s for 1 turns, Deal 230% damage
+# [13] ESAttackMultihit(15:8549) -> 1,000 Cuts
+# 	Condition: 25% chance (ai:0 rnd:25)
+# Deal 280% damage (10 hits, 28% each)
+# [14] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [15] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 7
+# [16] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [17] ESChangeAttribute(46:8545) -> Hollow Slice like Flowing Water
+# Change own attribute to Water
+# [18] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [19] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 4, target rnd 23
+# [20] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b111
+# [21] SkillSet:
+# 	[0] ESBoardChange(84:8550) -> Kaleidoscope
+# 	Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
+# 	[1] ESBindAttack(63:8551) -> Unbind
+# 	Bind 1 random for 5 turns, Deal 280% damage
+# [22] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [23] ESDamageShield(74:8554) -> Forge Folding
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Reduce damage from all sources by 75% for 3 turns
+# [24] ESAttackUPRemainingEnemies(17:8553) -> Sharpening
+# 	Condition: One-time use, when <= 1 enemies remain (ai:100 rnd:0) (one-time: 1)
+# Increase damage to 150% for the next 999 turns
+# [25] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 4, target rnd 10
+# [26] ESResolve(73:8556) -> Masamune Resolve
+# Survive attacks with 1 HP when HP > 50%

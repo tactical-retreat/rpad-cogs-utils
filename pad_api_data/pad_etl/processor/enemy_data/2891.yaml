@@ -1,0 +1,206 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2891
+monster_name_en: Light Guiding Star Machine, Orpharion
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 50%
+  desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
+  name_en: Ability
+  name_jp: Ability
+  one_time: 0
+  record_type_name: PASSIVE
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Reduce damage from Dark by 50%
+  desc_jp: Reduce damage from Dark by 50%
+  max_atk_pct: null
+  name_en: Ability
+  name_jp: Ability
+  one_time: 0
+  record_type_name: PASSIVE
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Absorb combo <= 6 damage for 999
+    turns (Preemptive)
+  desc_jp: Voids status ailments for 999 turns + Absorb combo <= 6 damage for 999
+    turns (Preemptive)
+  max_atk_pct: null
+  name_en: My name is Orpharion! + Paradiso Puma
+  name_jp: My name is Orpharion! + Paradiso Puma
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Delay active skills by 99 turns
+  desc_jp: Delay active skills by 99 turns
+  max_atk_pct: null
+  name_en: Disperazione
+  name_jp: Disperazione
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Seal 1st row for 1 turns, Deal 100% damage
+  desc_jp: Seal 1st row for 1 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Sopra Perdere
+  name_jp: Sopra Perdere
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 20
+- !SkillRecord
+  desc_en: Blind random 4~10 orbs for 1 turns, Deal 100% damage
+  desc_jp: Blind random 4~10 orbs for 1 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: "Oscurit\xE0 Alcuni"
+  name_jp: "Oscurit\xE0 Alcuni"
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 20
+- !SkillRecord
+  desc_en: Lock 11 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 100% damage
+  desc_jp: Lock 11 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Chiave Spina
+  name_jp: Chiave Spina
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 20
+- !SkillRecord
+  desc_en: Bind 1 random for 2 turns, Deal 100% damage
+  desc_jp: Bind 1 random for 2 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Anestesia Spada
+  name_jp: Anestesia Spada
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 20
+- !SkillRecord
+  desc_en: Bind awoken skills for 1 turns, Deal 100% damage
+  desc_jp: Bind awoken skills for 1 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Niente Spazio
+  name_jp: Niente Spazio
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 20
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Voids player buff effects + Deal 5000% damage (10 hits, 500% each)
+  desc_jp: Voids player buff effects + Deal 5000% damage (10 hits, 500% each)
+  max_atk_pct: null
+  name_en: Angelo Lacrima + Innumerevole Ferita
+  name_jp: Angelo Lacrima + Innumerevole Ferita
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 0 -        0
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] SkillSet:
+# 	[0] ESStatusShield(20:5853) -> My name is Orpharion!
+# 	Voids status ailments for 999 turns
+# 	[1] ESAbsorbCombo(67:5854) -> Paradiso Puma
+# 	Absorb combo <= 6 damage for 999 turns
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESBranchHP(29:19) -> ESBranchHP
+# Branch on hp > 100, target rnd 16
+# [7] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 50, target rnd 14
+# [8] ESOrbSealRow(100:5856) -> Sopra Perdere
+# 	Condition: 20% chance (ai:0 rnd:20)
+# Seal 1st row for 1 turns, Deal 100% damage
+# [9] ESBlindStickyRandom(97:5857) -> Oscurità Alcuni
+# 	Condition: 20% chance (ai:0 rnd:20)
+# Blind random 4~10 orbs for 1 turns, Deal 100% damage
+# [10] ESOrbLock(94:5858) -> Chiave Spina
+# 	Condition: 20% chance (ai:0 rnd:20)
+# Lock 11 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 100% damage
+# [11] ESBindAttack(63:5859) -> Anestesia Spada
+# 	Condition: 20% chance (ai:0 rnd:20)
+# Bind 1 random for 2 turns, Deal 100% damage
+# [12] ESBindAwoken(88:5860) -> Niente Spazio
+# 	Condition: 20% chance (ai:0 rnd:20)
+# Bind awoken skills for 1 turns, Deal 100% damage
+# [13] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [14] SkillSet:
+# 	[0] ESDispel(6:5862) -> Angelo Lacrima
+# 	Voids player buff effects
+# 	[1] ESAttackMultihit(15:5863) -> Innumerevole Ferita
+# 	Deal 5000% damage (10 hits, 500% each)
+# [15] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [16] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 7
+# [17] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [18] ESSkillDelay(89:5861) -> Disperazione
+# Delay active skills by 99 turns
+# [19] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [20] ESResolve(73:5865) -> Resolve
+# Survive attacks with 1 HP when HP > 50%
+# [21] ESAttributeResist(72:5866) -> Dark Halved
+# Reduce damage from Dark by 50%

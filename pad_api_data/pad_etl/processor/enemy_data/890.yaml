@@ -1,0 +1,153 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 890
+monster_name_en: Commerce Deity of Dreams, Hermes
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 3
+############################################################
+!SkillRecordListing
+level: 3
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 50% damage (Preemptive)
+  desc_jp: Change Random to Jammer, Deal 50% damage (Preemptive)
+  max_atk_pct: 50
+  name_en: Speedster
+  name_jp: Speedster
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 75% damage
+  desc_jp: Blind all orbs on the board, Deal 75% damage
+  max_atk_pct: 75
+  name_en: Black Letter
+  name_jp: Black Letter
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 30
+- !SkillRecord
+  desc_en: Change Random to Heal, Deal 150% damage
+  desc_jp: Change Random to Heal, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Love Letter
+  name_jp: Love Letter
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 40
+- !SkillRecord
+  desc_en: Bind 4 random for 1~2 turns, Deal 50% damage
+  desc_jp: Bind 4 random for 1~2 turns, Deal 50% damage
+  max_atk_pct: 50
+  name_en: Hypnos Letter
+  name_jp: Hypnos Letter
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 30
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 100% damage
+  desc_jp: Change Random to Jammer, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Thanatos Letter
+  name_jp: Thanatos Letter
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 75
+  name_jp: HP < 75
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Jammer skyfall +25% for 5 turns
+  desc_jp: Jammer skyfall +25% for 5 turns
+  max_atk_pct: null
+  name_en: Trickster
+  name_jp: Trickster
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 30
+  name_jp: HP < 30
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 200% damage (4 hits, 50% each)
+  desc_jp: Deal 200% damage (4 hits, 50% each)
+  max_atk_pct: 200
+  name_en: Argeiphontes
+  name_jp: Argeiphontes
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] false
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:697) -> ESPreemptive
+# Enable preempt if level 3
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 3, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 8
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [6] ESOrbChangeAttack(48:1441) -> Speedster
+# Change Random to Jammer, Deal 50% damage
+# [7] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [8] ESSkyfall(68:1442) -> Trickster
+# 	Condition: When < 75% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Jammer skyfall +25% for 5 turns
+# [9] ESAttackMultihit(15:1447) -> Argeiphontes
+# 	Condition: When < 30% hp (ai:100 rnd:0)
+# Deal 200% damage (4 hits, 50% each)
+# [10] ESBlind(62:1443) -> Black Letter
+# 	Condition: 30% chance (ai:30 rnd:0)
+# Blind all orbs on the board, Deal 75% damage
+# [11] ESOrbChangeAttack(48:1444) -> Love Letter
+# 	Condition: 40% chance (ai:40 rnd:0)
+# Change Random to Heal, Deal 150% damage
+# [12] ESBindAttack(63:1445) -> Hypnos Letter
+# 	Condition: 30% chance (ai:30 rnd:0)
+# Bind 4 random for 1~2 turns, Deal 50% damage
+# [13] ESOrbChangeAttack(48:1446) -> Thanatos Letter
+# Change Random to Jammer, Deal 100% damage

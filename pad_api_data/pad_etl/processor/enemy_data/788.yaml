@@ -1,0 +1,171 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 788
+monster_name_en: Beast of the Labyrinth, Minotaur
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Deal 20% damage (Preemptive)
+  desc_jp: Deal 20% damage (Preemptive)
+  max_atk_pct: 20
+  name_en: Quick Stomp
+  name_jp: Quick Stomp
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 40
+  name_jp: HP < 40
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 150% damage
+  desc_jp: Deal 150% damage
+  max_atk_pct: 150
+  name_en: Full Swing
+  name_jp: Full Swing
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 10
+  name_jp: HP < 10
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind 1 random cards for 10 turns
+  desc_jp: Bind 1 random cards for 10 turns
+  max_atk_pct: null
+  name_en: Binding Move
+  name_jp: Binding Move
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Deal 20% damage (Preemptive)
+  desc_jp: Deal 20% damage (Preemptive)
+  max_atk_pct: 20
+  name_en: Quick Stomp
+  name_jp: Quick Stomp
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 40
+  name_jp: HP < 40
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 150% damage
+  desc_jp: Deal 150% damage
+  max_atk_pct: 150
+  name_en: Full Swing
+  name_jp: Full Swing
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 10
+  name_jp: HP < 10
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind 1 random cards for 10 turns
+  desc_jp: Bind 1 random cards for 10 turns
+  max_atk_pct: null
+  name_en: Binding Move
+  name_jp: Binding Move
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 3 -       11
+# [52] false
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:355) -> ESPreemptive
+# Enable preempt if level 5
+# [2] ESBranchLevel(33:23) -> ESBranchLevel
+# Branch on level < 4, target rnd 9
+# [3] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [4] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [5] ESAttackMultihit(15:471) -> Quick Stomp
+# Deal 20% damage
+# [6] ESBranchHP(29:19) -> ESBranchHP
+# Branch on hp > 10, target rnd 10
+# [7] ESBindRandom(1:367) -> Binding Move
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Bind 1 random cards for 10 turns
+# [8] ESAttackMultihit(15:467) -> Full Swing
+# 	Condition: When < 40% hp (ai:100 rnd:0)
+# Deal 150% damage
+# [9] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [10] ESAttackMultihit(15:467) -> Full Swing
+# 	Condition: When < 40% hp (ai:100 rnd:0)
+# Deal 150% damage

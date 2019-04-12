@@ -1,0 +1,155 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1257
+monster_name_en: Surging Demon Lord, Belial
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings:
+- Found 1 unused actions
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Bind active skills for 5 turns (Preemptive)
+  desc_jp: Bind active skills for 5 turns (Preemptive)
+  max_atk_pct: null
+  name_en: I'm not even going to wait 1 turn!
+  name_jp: I'm not even going to wait 1 turn!
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: When HP is full
+  name_jp: When HP is full
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change 3rd row to Fire orbs, Deal 150% damage
+  desc_jp: Change 3rd row to Fire orbs, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Burn!
+  name_jp: Burn!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: When HP is not full
+  name_jp: When HP is not full
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  max_atk_pct: null
+  name_en: I'll show you hell!
+  name_jp: I'll show you hell!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change 1st column to Fire orbs, 3rd column to Poison orbs, Deal 80% damage
+  desc_jp: Change 1st column to Fire orbs, 3rd column to Poison orbs, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Flame Curse
+  name_jp: Flame Curse
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 20
+  name_jp: HP < 20
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change 3rd, 4th column to Fire orbs, Deal 300% damage
+  desc_jp: Change 3rd, 4th column to Fire orbs, Deal 300% damage
+  max_atk_pct: 300
+  name_en: Flame Road
+  name_jp: Flame Road
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Unused Actions
+############################################################
+# ESDamageShield(74:3082) -> Why are you there?!
+# Reduce damage from all sources by 50% for 1 turns
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 1 -        1
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] ESBindSkill(14:3079) -> I'm not even going to wait 1 turn!
+# Bind active skills for 5 turns
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESBranchHP(29:19) -> ESBranchHP
+# Branch on hp > 100, target rnd 17
+# [7] ESBranchCard(90:3083) -> ESBranchCard
+# Branch on player_cards HAS [2263], target rnd 14
+# [8] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 4, target rnd 11
+# [9] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b111
+# [10] ESStatusShield(20:3080) -> I'll show you hell!
+# Voids status ailments for 999 turns
+# [11] ESColumnSpawnMulti(77:3085) -> Flame Road
+# 	Condition: When < 20% hp (ai:100 rnd:0)
+# Change 3rd, 4th column to Fire orbs, Deal 300% damage
+# [12] ESColumnSpawnMulti(77:3084) -> Flame Curse
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Change 1st column to Fire orbs, 3rd column to Poison orbs, Deal 80% damage
+# [13] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 8
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [16] ESDamageShield(74:3082) -> Why are you there?!
+# Reduce damage from all sources by 50% for 1 turns
+# [17] ESRowSpawnMulti(79:3081) -> Burn!
+# Change 3rd row to Fire orbs, Deal 150% damage

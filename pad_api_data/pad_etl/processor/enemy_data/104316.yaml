@@ -1,0 +1,180 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 104316
+monster_name_en: Chu
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Do nothing (Preemptive)
+  desc_jp: Do nothing (Preemptive)
+  max_atk_pct: null
+  name_en: Let me tell you somethin' , mate!
+  name_jp: Let me tell you somethin' , mate!
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Deal 70% damage (Preemptive)
+  desc_jp: Deal 70% damage (Preemptive)
+  max_atk_pct: 70
+  name_en: Let me tell you somethin' , mate!
+  name_jp: Let me tell you somethin' , mate!
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 100% damage (5 hits, 20% each)
+  desc_jp: Deal 100% damage (5 hits, 20% each)
+  max_atk_pct: 100
+  name_en: We're going to enjoy this!
+  name_jp: We're going to enjoy this!
+  one_time: 4
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Do nothing + Do nothing + Increase damage to 150% for the next 99 turns
+  desc_jp: Do nothing + Do nothing + Increase damage to 150% for the next 99 turns
+  max_atk_pct: null
+  name_en: 'This is the strongest alchy ever made. + Urrrggh..! + That hit the spot! '
+  name_jp: 'This is the strongest alchy ever made. + Urrrggh..! + That hit the spot! '
+  one_time: 2
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Do nothing + Change 3rd row to Water, Wood orbs, Deal 80% damage
+  desc_jp: Do nothing + Change 3rd row to Water, Wood orbs, Deal 80% damage
+  max_atk_pct: null
+  name_en: Time for us to test our powers. + Raaaaah!
+  name_jp: Time for us to test our powers. + Raaaaah!
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Lock 9 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs + Deal 110% damage
+  desc_jp: Lock 9 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
+    Poison orbs + Deal 110% damage
+  max_atk_pct: null
+  name_en: Now I have you! + One last go!!
+  name_jp: Now I have you! + One last go!!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 7 -      111
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 4, target rnd 5
+# [3] ESBranchLevel(33:23) -> ESBranchLevel
+# Branch on level < 3, target rnd 14
+# [4] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [5] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 9
+# [6] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [7] ESAttackMultihit(15:9389) -> Let me tell you somethin' , mate!
+# Deal 70% damage
+# [8] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [9] ESAttackMultihit(15:9390) -> We're going to enjoy this!
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 4)
+# Deal 100% damage (5 hits, 20% each)
+# [10] SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
+# 	[0] ESInactivity(66:9391) -> This is the strongest alchy ever made.
+# 	Do nothing
+# 	[1] ESInactivity(66:9392) -> Urrrggh..!
+# 	Do nothing
+# 	[2] ESAttackUPRemainingEnemies(17:9393) -> That hit the spot! 
+# 	Increase damage to 150% for the next 99 turns
+# [11] SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# 	[0] ESInactivity(66:9395) -> Time for us to test our powers.
+# 	Do nothing
+# 	[1] ESRowSpawnMulti(79:9396) -> Raaaaah!
+# 	Change 3rd row to Water, Wood orbs, Deal 80% damage
+# [12] SkillSet:
+# 	[0] ESOrbLock(94:9398) -> Now I have you!
+# 	Lock 9 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# 	[1] ESAttackMultihit(15:9399) -> One last go!!
+# 	Deal 110% damage
+# [13] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 17
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [16] ESInactivity(66:9401) -> Let me tell you somethin' , mate!
+# Do nothing
+# [17] ESEndPath(36:26) -> ESEndPath
+# end_turn

@@ -1,0 +1,57 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1392
+monster_name_en: '***** (Dragon Ball)'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 120% damage (3 hits, 40% each)
+  desc_jp: Deal 120% damage (3 hits, 40% each)
+  max_atk_pct: 120
+  name_en: '***** (Dragon Ball)'
+  name_jp: '***** (Dragon Ball)'
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 2 -       10
+# [52] false
+# [53] 0 -        0
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 5, target rnd 3
+# [2] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [3] ESAttackMultihit(15:1087) -> ***** (Dragon Ball)
+# 	Condition: When < 50% hp (ai:100 rnd:0)
+# Deal 120% damage (3 hits, 40% each)

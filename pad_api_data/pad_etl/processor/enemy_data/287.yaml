@@ -1,0 +1,120 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 287
+monster_name_en: Annihilate Mechdragon, Hadar
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 75
+  name_jp: HP < 75
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Increase damage to 300% for the next attack
+  desc_jp: Increase damage to 300% for the next attack
+  max_atk_pct: null
+  name_en: High Energy Charge
+  name_jp: High Energy Charge
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Enemy recover 40%~50% hp
+  desc_jp: Enemy recover 40%~50% hp
+  max_atk_pct: null
+  name_en: Auto Recover
+  name_jp: Auto Recover
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 75
+- !SkillRecord
+  desc_en: Increase damage to 300% for the next attack
+  desc_jp: Increase damage to 300% for the next attack
+  max_atk_pct: null
+  name_en: High Energy Charge
+  name_jp: High Energy Charge
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 25
+  name_jp: HP < 25
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Enemy recover 40%~50% hp
+  desc_jp: Enemy recover 40%~50% hp
+  max_atk_pct: null
+  name_en: Auto Recover
+  name_jp: Auto Recover
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 75
+- !SkillRecord
+  desc_en: Deal 270% damage (3 hits, 90% each)
+  desc_jp: Deal 270% damage (3 hits, 90% each)
+  max_atk_pct: 270
+  name_en: Genocide Missile
+  name_jp: Genocide Missile
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] false
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 5, target rnd 3
+# [2] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [3] ESRecoverEnemy(7:84) -> Auto Recover
+# 	Condition: When < 50% hp , one-time use (ai:75 rnd:0) (one-time: 1)
+# Enemy recover 40%~50% hp
+# [4] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 25, target rnd 7
+# [5] ESStorePower(8:117) -> High Energy Charge
+# 	Condition: 50% chance when < 75% hp (ai:50 rnd:0)
+# Increase damage to 300% for the next attack
+# [6] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [7] ESAttackMultihit(15:109) -> Genocide Missile
+# Deal 270% damage (3 hits, 90% each)

@@ -1,0 +1,172 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 100648
+monster_name_en: Alt. Athena
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Player recover 100% hp + Delay active skills by 3~5 turns (Preemptive)
+  desc_jp: Player recover 100% hp + Delay active skills by 3~5 turns (Preemptive)
+  max_atk_pct: null
+  name_en: You've done well to make it here. + See if you can get through me!
+  name_jp: You've done well to make it here. + See if you can get through me!
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  max_atk_pct: null
+  name_en: Aegis Shield
+  name_jp: Aegis Shield
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change Random to Light, Deal 80% damage
+  desc_jp: Change Random to Light, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Shining Spear
+  name_jp: Shining Spear
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 60
+  name_jp: HP < 60
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 120% damage (6 hits, 20% each)
+  desc_jp: Deal 120% damage (6 hits, 20% each)
+  max_atk_pct: 120
+  name_en: Storm Punisher
+  name_jp: Storm Punisher
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Change Random to Light, Deal 80% damage
+  desc_jp: Change Random to Light, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Shining Spear
+  name_jp: Shining Spear
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 35
+  name_jp: HP < 35
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: 2x5 cloud appear for 2 turns at 1st row, 3rd column
+  desc_jp: 2x5 cloud appear for 2 turns at 1st row, 3rd column
+  max_atk_pct: null
+  name_en: End of the line!
+  name_jp: End of the line!
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 2000% damage (10 hits, 200% each)
+  desc_jp: Deal 2000% damage (10 hits, 200% each)
+  max_atk_pct: 2000
+  name_en: Lightning Starburst
+  name_jp: Lightning Starburst
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] SkillSet:
+# 	[0] ESRecoverPlayer(55:5585) -> You've done well to make it here.
+# 	Player recover 100% hp
+# 	[1] ESSkillDelay(89:5586) -> See if you can get through me!
+# 	Delay active skills by 3~5 turns
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 9
+# [7] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [8] ESStatusShield(20:5588) -> Aegis Shield
+# Voids status ailments for 999 turns
+# [9] ESCloud(104:5591) -> End of the line!
+# 	Condition: When < 35% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# 2x5 cloud appear for 2 turns at 1st row, 3rd column
+# [10] ESAttackMultihit(15:5592) -> Lightning Starburst
+# 	Condition: When < 35% hp (ai:100 rnd:0)
+# Deal 2000% damage (10 hits, 200% each)
+# [11] ESAttackMultihit(15:5590) -> Storm Punisher
+# 	Condition: 50% chance when < 60% hp (ai:50 rnd:0)
+# Deal 120% damage (6 hits, 20% each)
+# [12] ESOrbChangeAttack(48:5589) -> Shining Spear
+# Change Random to Light, Deal 80% damage
+# [13] ESEndPath(36:26) -> ESEndPath
+# end_turn

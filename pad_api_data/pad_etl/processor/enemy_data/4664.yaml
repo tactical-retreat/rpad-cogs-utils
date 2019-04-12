@@ -1,0 +1,201 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4664
+monster_name_en: '*****'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 5 turns + Bind 1 random cards for 3 turns (Preemptive)
+  desc_jp: Voids status ailments for 5 turns + Bind 1 random cards for 3 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Byakko lives in isolation. + Something that won't swarm.
+  name_jp: Byakko lives in isolation. + Something that won't swarm.
+  one_time: 1
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Fix orb movement starting point to random position on the board + Lock
+    10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
+    orbs
+  desc_jp: Fix orb movement starting point to random position on the board + Lock
+    10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
+    orbs
+  max_atk_pct: null
+  name_en: I always seized any opportunities. + I'm a predator stalking its prey.
+  name_jp: I always seized any opportunities. + I'm a predator stalking its prey.
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change all orbs to Fire, Water, Dark, Deal 100% damage + Change 3rd row
+    to Heal orbs
+  desc_jp: Change all orbs to Fire, Water, Dark, Deal 100% damage + Change 3rd row
+    to Heal orbs
+  max_atk_pct: null
+  name_en: Cute is an insult...for Byakko... + ...
+  name_jp: Cute is an insult...for Byakko... + ...
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 1 turns
+  desc_jp: Increase damage to 200% for the next 1 turns
+  max_atk_pct: null
+  name_en: Are you...ready?
+  name_jp: Are you...ready?
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Delay active skills by 2 turns, Deal 100% damage
+  desc_jp: Delay active skills by 2 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Wild Ball
+  name_jp: Wild Ball
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 20
+  name_jp: HP < 20
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Enemy recover 50% hp
+  desc_jp: Enemy recover 50% hp
+  max_atk_pct: null
+  name_en: Swelling Energy
+  name_jp: Swelling Energy
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:3402) -> ESPreemptive
+# Enable preempt if level 4
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 4, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# 	[0] ESStatusShield(20:10613) -> Byakko lives in isolation.
+# 	Voids status ailments for 5 turns
+# 	[1] ESBindRandom(1:10614) -> Something that won't swarm.
+# 	Bind 1 random cards for 3 turns
+# [5] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 10
+# [6] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [7] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 20, target rnd 21
+# [8] SkillSet:
+# 	[0] ESFixedStart(101:10616) -> I always seized any opportunities.
+# 	Fix orb movement starting point to random position on the board
+# 	[1] ESOrbLock(94:10617) -> I'm a predator stalking its prey.
+# 	Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [9] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [10] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 4, target rnd 14
+# [11] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b111
+# [12] SkillSet:
+# 	[0] ESBoardChangeAttackBits(85:10619) -> Cute is an insult...for Byakko...
+# 	Change all orbs to Fire, Water, Dark, Deal 100% damage
+# 	[1] ESRowSpawnMulti(78:10620) -> ...
+# 	Change 3rd row to Heal orbs
+# [13] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 8, target rnd 18
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1111
+# [16] ESAttackUPRemainingEnemies(17:10622) -> Are you...ready?
+# 	Condition: when <= 1 enemies remain (ai:100 rnd:0)
+# Increase damage to 200% for the next 1 turns
+# [17] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [18] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b0
+# [19] ESSkillDelay(89:10587) -> Wild Ball
+# Delay active skills by 2 turns, Deal 100% damage
+# [20] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [21] ESRecoverEnemy(86:10623) -> Swelling Energy
+# Enemy recover 50% hp
+# [22] ESEndPath(36:26) -> ESEndPath
+# end_turn

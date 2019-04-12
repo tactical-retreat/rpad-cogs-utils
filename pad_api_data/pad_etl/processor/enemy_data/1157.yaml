@@ -1,0 +1,166 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1157
+monster_name_en: Pierdra Badtz-Maru
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Change Fire to Jammer, Deal 80% damage
+  desc_jp: Change Fire to Jammer, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Fire Eating Attack
+  name_jp: Fire Eating Attack
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Change Water to Jammer, Deal 80% damage
+  desc_jp: Change Water to Jammer, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Water Eating Attack
+  name_jp: Water Eating Attack
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Change Wood to Jammer, Deal 80% damage
+  desc_jp: Change Wood to Jammer, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Wood Eating Attack
+  name_jp: Wood Eating Attack
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Change Light to Jammer, Deal 80% damage
+  desc_jp: Change Light to Jammer, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Light Eating Attack
+  name_jp: Light Eating Attack
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  max_atk_pct: 100
+  name_en: Disable Skill
+  name_jp: Disable Skill
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 200
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 25
+  name_jp: HP < 25
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 200% damage
+  desc_jp: Deal 200% damage
+  max_atk_pct: 200
+  name_en: Buster Horn
+  name_jp: Buster Horn
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Change Random to Fire, Deal 75% damage
+  desc_jp: Change Random to Fire, Deal 75% damage
+  max_atk_pct: 75
+  name_en: Red Tackle
+  name_jp: Red Tackle
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Change Random to Water, Deal 75% damage
+  desc_jp: Change Random to Water, Deal 75% damage
+  max_atk_pct: 75
+  name_en: Blue Tackle
+  name_jp: Blue Tackle
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Change Random to Wood, Deal 75% damage
+  desc_jp: Change Random to Wood, Deal 75% damage
+  max_atk_pct: 75
+  name_en: Green Tackle
+  name_jp: Green Tackle
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  max_atk_pct: 100
+  name_en: Disable Skill
+  name_jp: Disable Skill
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 2 -       10
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 25, target rnd 9
+# [2] ESNone(0:0) -> ESNone
+# nothing
+# [3] ESOrbChangeAttack(48:1510) -> Fire Eating Attack
+# 	Condition: One-time use (ai:0 rnd:50) (one-time: 1)
+# Change Fire to Jammer, Deal 80% damage
+# [4] ESOrbChangeAttack(48:1511) -> Water Eating Attack
+# 	Condition: One-time use (ai:0 rnd:50) (one-time: 1)
+# Change Water to Jammer, Deal 80% damage
+# [5] ESOrbChangeAttack(48:1512) -> Wood Eating Attack
+# 	Condition: One-time use (ai:0 rnd:50) (one-time: 1)
+# Change Wood to Jammer, Deal 80% damage
+# [6] ESOrbChangeAttack(48:1513) -> Light Eating Attack
+# 	Condition: One-time use (ai:0 rnd:50) (one-time: 1)
+# Change Light to Jammer, Deal 80% damage
+# [7] ESAttackSinglehit(82:1) -> Disable Skill
+# Deal 100% damage
+# [8] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [9] ESAttackMultihit(15:1603) -> Buster Horn
+# 	Condition: 50% chance when < 25% hp (ai:50 rnd:0)
+# Deal 200% damage
+# [10] ESOrbChangeAttack(48:1583) -> Red Tackle
+# 	Condition: One-time use (ai:0 rnd:50) (one-time: 1)
+# Change Random to Fire, Deal 75% damage
+# [11] ESOrbChangeAttack(48:1584) -> Blue Tackle
+# 	Condition: One-time use (ai:0 rnd:50) (one-time: 1)
+# Change Random to Water, Deal 75% damage
+# [12] ESOrbChangeAttack(48:1585) -> Green Tackle
+# 	Condition: One-time use (ai:0 rnd:50) (one-time: 1)
+# Change Random to Wood, Deal 75% damage
+# [13] ESAttackSinglehit(82:1) -> Disable Skill
+# 	Condition: 50% chance (ai:0 rnd:50)
+# Deal 100% damage

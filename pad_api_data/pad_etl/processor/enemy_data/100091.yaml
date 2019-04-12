@@ -1,0 +1,110 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 100091
+monster_name_en: Alt. Siren
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Change all orbs to Heal (Preemptive)
+  desc_jp: Change all orbs to Heal (Preemptive)
+  max_atk_pct: null
+  name_en: Guard Stance-Water
+  name_jp: Guard Stance-Water
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change 6th column to Poison orbs
+  desc_jp: Change 6th column to Poison orbs
+  max_atk_pct: null
+  name_en: Noise Affliction
+  name_jp: Noise Affliction
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind 1 subs for 2 turns, Deal 80% damage
+  desc_jp: Bind 1 subs for 2 turns, Deal 80% damage
+  max_atk_pct: 80
+  name_en: The Sound of Confinement
+  name_jp: The Sound of Confinement
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Spawn random 1 Water orbs, Deal 100% damage
+  desc_jp: Spawn random 1 Water orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Sparkling Voice
+  name_jp: Sparkling Voice
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 3 -       11
+# [52] true
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 7
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] ESRandomSpawn(92:5663) -> Guard Stance-Water
+# 	Condition: When fire orbs are on the board (ai:100 rnd:0)
+# Change all orbs to Heal
+# [5] ESBindAttack(63:5668) -> The Sound of Confinement
+# Bind 1 subs for 2 turns, Deal 80% damage
+# [6] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [7] ESColumnSpawnMulti(76:5665) -> Noise Affliction
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Change 6th column to Poison orbs
+# [8] ESBindAttack(63:5668) -> The Sound of Confinement
+# 	Condition: 50% chance (ai:50 rnd:0)
+# Bind 1 subs for 2 turns, Deal 80% damage
+# [9] ESRandomSpawn(92:5667) -> Sparkling Voice
+# 	Condition: When fire, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
+# Spawn random 1 Water orbs, Deal 100% damage
+# [10] ESEndPath(36:26) -> ESEndPath
+# end_turn

@@ -1,0 +1,182 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 105017
+monster_name_en: Servant, Caster
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns (Preemptive)
+  desc_jp: Voids status ailments for 999 turns (Preemptive)
+  max_atk_pct: null
+  name_en: 'Do you honestly think
+
+    you can defeat me?'
+  name_jp: 'Do you honestly think
+
+    you can defeat me?'
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Random to Dark, Deal 95% damage
+  desc_jp: Change Random to Dark, Deal 95% damage
+  max_atk_pct: 95
+  name_en: How does that feel?
+  name_jp: How does that feel?
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Deal 120% damage (3 hits, 40% each)
+  desc_jp: Deal 120% damage (3 hits, 40% each)
+  max_atk_pct: 120
+  name_en: I have no use for you,
+  name_jp: I have no use for you,
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  max_atk_pct: null
+  name_en: You are a nuisance, so die!
+  name_jp: You are a nuisance, so die!
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Change Random to Dark, Deal 95% damage
+  desc_jp: Change Random to Dark, Deal 95% damage
+  max_atk_pct: 95
+  name_en: How does that feel?
+  name_jp: How does that feel?
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Deal 120% damage (3 hits, 40% each)
+  desc_jp: Deal 120% damage (3 hits, 40% each)
+  max_atk_pct: 120
+  name_en: I have no use for you,
+  name_jp: I have no use for you,
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 20
+  name_jp: HP < 20
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind awoken skills for 1 turns
+  desc_jp: Bind awoken skills for 1 turns
+  max_atk_pct: null
+  name_en: Rule Breaker
+  name_jp: Rule Breaker
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Do nothing + Deal 200% damage (2 hits, 100% each)
+  desc_jp: Do nothing + Deal 200% damage (2 hits, 100% each)
+  max_atk_pct: null
+  name_en: Are you surprised? + This is my Noble Phantasm, Rule Breaker.
+  name_jp: Are you surprised? + This is my Noble Phantasm, Rule Breaker.
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 1 -        1
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:3402) -> ESPreemptive
+# Enable preempt if level 4
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 4, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 8
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [6] ESStatusShield(20:12236) -> Do you honestly think
+# you can defeat me?
+# Voids status ailments for 999 turns
+# [7] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [8] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 20, target rnd 14
+# [9] ESBranchHP(29:19) -> ESBranchHP
+# Branch on hp > 51, target rnd 11
+# [10] ESGravity(50:12237) -> You are a nuisance, so die!
+# 	Condition: One-time use (ai:50 rnd:0) (one-time: 1)
+# Player -99% HP
+# [11] ESOrbChangeAttack(48:12199) -> How does that feel?
+# 	Condition: 50% chance (ai:0 rnd:50)
+# Change Random to Dark, Deal 95% damage
+# [12] ESAttackMultihit(15:12200) -> I have no use for you,
+# 	Condition: 50% chance (ai:0 rnd:50)
+# Deal 120% damage (3 hits, 40% each)
+# [13] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 18
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [16] ESBindAwoken(88:12202) -> Rule Breaker
+# Bind awoken skills for 1 turns
+# [17] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [18] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [19] SkillSet:
+# 	[0] ESInactivity(66:12203) -> Are you surprised?
+# 	Do nothing
+# 	[1] ESAttackMultihit(15:12204) -> This is my Noble Phantasm, Rule Breaker.
+# 	Deal 200% damage (2 hits, 100% each)
+# [20] ESEndPath(36:26) -> ESEndPath
+# end_turn

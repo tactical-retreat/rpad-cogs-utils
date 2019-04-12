@@ -1,0 +1,224 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 100018
+monster_name_en: Alt. Spinas
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Spawn random 3 Dark orbs, Deal 100% damage
+  desc_jp: Spawn random 3 Dark orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Dark Breath
+  name_jp: Dark Breath
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Spawn random 3 Dark orbs, Deal 100% damage
+  desc_jp: Spawn random 3 Dark orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Dark Breath
+  name_jp: Dark Breath
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Delay active skills by 2 turns, Deal 95% damage
+  desc_jp: Delay active skills by 2 turns, Deal 95% damage
+  max_atk_pct: 95
+  name_en: Fading Shadow
+  name_jp: Fading Shadow
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: When 2 enemy remains
+  name_jp: When 2 enemy remains
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Spawn random 3 Dark orbs, Deal 100% damage
+  desc_jp: Spawn random 3 Dark orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Dark Breath
+  name_jp: Dark Breath
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 5 turns
+  desc_jp: Reduce damage from all sources by 50% for 5 turns
+  max_atk_pct: null
+  name_en: Moonlight Protection
+  name_jp: Moonlight Protection
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Spawn random 3 Dark orbs, Deal 100% damage
+  desc_jp: Spawn random 3 Dark orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Dark Breath
+  name_jp: Dark Breath
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Increase damage to 300% for the next 99 turns
+  desc_jp: Increase damage to 300% for the next 99 turns
+  max_atk_pct: null
+  name_en: Hidden Ambition
+  name_jp: Hidden Ambition
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 140% damage (2 hits, 70% each)
+  desc_jp: Deal 140% damage (2 hits, 70% each)
+  max_atk_pct: 140
+  name_en: Hell Breath
+  name_jp: Hell Breath
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 2 -       10
+# [52] true
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 4, target rnd 3
+# [2] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [3] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 7
+# [4] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [5] ESRandomSpawn(92:10396) -> Dark Breath
+# 	Condition: When fire, water, wood, light, heal, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
+# Spawn random 3 Dark orbs, Deal 100% damage
+# [6] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [7] ESBranchRemainingEnemies(120:8595) -> ESBranchRemainingEnemies
+# Branch on remaining enemies <= 1, target rnd 16
+# [8] ESBranchRemainingEnemies(120:8595) -> ESBranchRemainingEnemies
+# Branch on remaining enemies <= 2, target rnd 12
+# [9] ESRandomSpawn(92:10396) -> Dark Breath
+# 	Condition: 50% chance & when Fire, Water, Wood, Light, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:50 rnd:0)
+# Spawn random 3 Dark orbs, Deal 100% damage
+# [10] ESSkillDelay(89:10397) -> Fading Shadow
+# Delay active skills by 2 turns, Deal 95% damage
+# [11] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [12] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 9
+# [13] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [14] ESDamageShield(74:10398) -> Moonlight Protection
+# Reduce damage from all sources by 50% for 5 turns
+# [15] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [16] ESAttackUPRemainingEnemies(17:10399) -> Hidden Ambition
+# 	Condition: One-time use, when <= 1 enemies remain (ai:100 rnd:0) (one-time: 1)
+# Increase damage to 300% for the next 99 turns
+# [17] ESAttackMultihit(15:10400) -> Hell Breath
+# Deal 140% damage (2 hits, 70% each)
+# [18] ESEndPath(36:26) -> ESEndPath
+# end_turn

@@ -1,0 +1,161 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4210
+monster_name_en: South Loving Goddess, Leilan
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Change 3rd row to Fire orbs (Preemptive)
+  desc_jp: Change 3rd row to Fire orbs (Preemptive)
+  max_atk_pct: null
+  name_en: This is a little awkward...
+  name_jp: This is a little awkward...
+  one_time: 2
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1-3
+  name_jp: Execute repeatedly. Turn 1-3
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind awoken skills for 2 turns
+  desc_jp: Bind awoken skills for 2 turns
+  max_atk_pct: null
+  name_en: Trouncing Wink
+  name_jp: Trouncing Wink
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 15
+- !SkillRecord
+  desc_en: Deal 100% damage (2 hits, 50% each)
+  desc_jp: Deal 100% damage (2 hits, 50% each)
+  max_atk_pct: 100
+  name_en: Sweet Combo
+  name_jp: Sweet Combo
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 4
+  name_jp: Loop to 1 after. Turn 4
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 120% damage
+  desc_jp: Blind all orbs on the board, Deal 120% damage
+  max_atk_pct: 120
+  name_en: No peeking!
+  name_jp: No peeking!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Absorb Fire damage for 2 turns
+  desc_jp: Absorb Fire damage for 2 turns
+  max_atk_pct: null
+  name_en: Suzaku's Perception
+  name_jp: Suzaku's Perception
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 10
+  name_jp: HP < 10
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change all orbs to Fire, Wood, Light, Deal 180% damage
+  desc_jp: Change all orbs to Fire, Wood, Light, Deal 180% damage
+  max_atk_pct: 180
+  name_en: Suzaku Seven-Star Perception
+  name_jp: Suzaku Seven-Star Perception
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 3 -       11
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:3402) -> ESPreemptive
+# Enable preempt if level 4
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 4, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESRowSpawnMulti(78:8970) -> This is a little awkward...
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
+# Change 3rd row to Fire orbs
+# [5] ESAbsorbAttribute(53:8971) -> Suzaku's Perception
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Absorb Fire damage for 2 turns
+# [6] ESBoardChangeAttackBits(85:8974) -> Suzaku Seven-Star Perception
+# 	Condition: When < 10% hp (ai:100 rnd:0)
+# Change all orbs to Fire, Wood, Light, Deal 180% damage
+# [7] ESBranchCounter(32:22) -> ESBranchCounter
+# Branch on counter > 3, target rnd 11
+# [8] ESSetCounter(26:16) -> ESSetCounter
+# counter + 1
+# [9] ESBindAwoken(88:8972) -> Trouncing Wink
+# 	Condition: 15% chance (ai:15 rnd:0)
+# Bind awoken skills for 2 turns
+# [10] ESAttackMultihit(15:8995) -> Sweet Combo
+# Deal 100% damage (2 hits, 50% each)
+# [11] ESSetCounter(25:15) -> ESSetCounter
+# counter = 0
+# [12] ESBlind(62:8973) -> No peeking!
+# Blind all orbs on the board, Deal 120% damage
+# [13] ESEndPath(36:26) -> ESEndPath
+# end_turn

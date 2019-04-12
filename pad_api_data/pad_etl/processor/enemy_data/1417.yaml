@@ -1,0 +1,146 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1417
+monster_name_en: Four Leaf Clover Princess, Thumbelina
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 90% for 3 turns (Preemptive)
+  desc_jp: Reduce damage from all sources by 90% for 3 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Lucky Guard
+  name_jp: Lucky Guard
+  one_time: 2
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1-2
+  name_jp: Turn 1-2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  max_atk_pct: null
+  name_en: Squall
+  name_jp: Squall
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind awoken skills for 3 turns
+  desc_jp: Bind awoken skills for 3 turns
+  max_atk_pct: null
+  name_en: Star Stream
+  name_jp: Star Stream
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 330% damage (3 hits, 110% each)
+  desc_jp: Deal 330% damage (3 hits, 110% each)
+  max_atk_pct: 330
+  name_en: Poke
+  name_jp: Poke
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 4-5
+  name_jp: Turn 4-5
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 330% damage (3 hits, 110% each)
+  desc_jp: Deal 330% damage (3 hits, 110% each)
+  max_atk_pct: 330
+  name_en: Poke
+  name_jp: Poke
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 1800% damage (6 hits, 300% each)
+  desc_jp: Deal 1800% damage (6 hits, 300% each)
+  max_atk_pct: 1800
+  name_en: Swallow Dive
+  name_jp: Swallow Dive
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 4 -      100
+# [52] true
+# [53] 3 -       11
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESDamageShield(74:8807) -> Lucky Guard
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
+# Reduce damage from all sources by 90% for 3 turns
+# [3] ESBranchCounter(32:22) -> ESBranchCounter
+# Branch on counter > 2, target rnd 6
+# [4] ESSetCounter(26:16) -> ESSetCounter
+# counter + 1
+# [5] ESGravity(50:8811) -> Squall
+# Player -99% HP
+# [6] ESBindAwoken(88:8808) -> Star Stream
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Bind awoken skills for 3 turns
+# [7] ESBranchCounter(32:22) -> ESBranchCounter
+# Branch on counter > 5, target rnd 10
+# [8] ESSetCounter(26:16) -> ESSetCounter
+# counter + 1
+# [9] ESAttackMultihit(15:8809) -> Poke
+# Deal 330% damage (3 hits, 110% each)
+# [10] ESAttackMultihit(15:8810) -> Swallow Dive
+# Deal 1800% damage (6 hits, 300% each)
+# [11] ESEndPath(36:26) -> ESEndPath
+# end_turn

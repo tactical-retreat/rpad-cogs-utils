@@ -1,0 +1,165 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 100633
+monster_name_en: Alt. Blizzard Archdemon Amon
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Bind 2 both leaders for 3 turns, Deal 130% damage + Bind 2 both leaders
+    for 1 turns, Deal 170% damage (Preemptive)
+  desc_jp: Bind 2 both leaders for 3 turns, Deal 130% damage + Bind 2 both leaders
+    for 1 turns, Deal 170% damage (Preemptive)
+  max_atk_pct: null
+  name_en: Poor Hospitality + H-huh?!
+  name_jp: Poor Hospitality + H-huh?!
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1-2
+  name_jp: Turn 1-2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 150% damage
+  desc_jp: Change Random to Jammer, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Grovel before me!
+  name_jp: Grovel before me!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Movetime 150% for 10 turns
+  desc_jp: Movetime 150% for 10 turns
+  max_atk_pct: null
+  name_en: Patience Reward
+  name_jp: Patience Reward
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 150% damage
+  desc_jp: Change Random to Jammer, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Grovel before me!
+  name_jp: Grovel before me!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1-2
+  name_jp: Turn 1-2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 240% damage (3 hits, 80% each)
+  desc_jp: Deal 240% damage (3 hits, 80% each)
+  max_atk_pct: 240
+  name_en: Hoo hoo hoo!
+  name_jp: Hoo hoo hoo!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 240% damage (3 hits, 80% each)
+  desc_jp: Deal 240% damage (3 hits, 80% each)
+  max_atk_pct: 240
+  name_en: Hoo hoo hoo!
+  name_jp: Hoo hoo hoo!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 0 -        0
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] SkillSet:
+# 	[0] ESBindAttack(63:9470) -> Poor Hospitality
+# 	Bind 2 both leaders for 3 turns, Deal 130% damage
+# 	[1] ESBindAttack(63:9471) -> H-huh?!
+# 	Bind 2 both leaders for 1 turns, Deal 170% damage
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESBranchCounter(32:22) -> ESBranchCounter
+# Branch on counter > 2, target rnd 11
+# [7] ESSetCounter(26:16) -> ESSetCounter
+# counter + 1
+# [8] ESAttackMultihit(15:9473) -> Hoo hoo hoo!
+# 	Condition: When < 50% hp (ai:100 rnd:0)
+# Deal 240% damage (3 hits, 80% each)
+# [9] ESOrbChangeAttack(48:9474) -> Grovel before me!
+# Change Random to Jammer, Deal 150% damage
+# [10] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [11] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 8
+# [12] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [13] ESDebuffMovetime(39:9475) -> Patience Reward
+# Movetime 150% for 10 turns
+# [14] ESEndPath(36:26) -> ESEndPath
+# end_turn

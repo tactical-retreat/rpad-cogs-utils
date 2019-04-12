@@ -1,0 +1,78 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 763
+monster_name_en: OCTOPUS Ver.2
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 999 turns (When 1 enemy remains)
+  desc_jp: Increase damage to 200% for the next 999 turns (When 1 enemy remains)
+  max_atk_pct: null
+  name_en: SPEED UP
+  name_jp: SPEED UP
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change Water to Jammer, Deal 70% damage
+  desc_jp: Change Water to Jammer, Deal 70% damage
+  max_atk_pct: 70
+  name_en: INVASION
+  name_jp: INVASION
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 2 -       10
+# [52] false
+# [53] 1 -        1
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 5, target rnd 3
+# [2] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [3] ESAttackUPRemainingEnemies(17:425) -> SPEED UP
+# 	Condition: when <= 1 enemies remain (ai:100 rnd:0)
+# Increase damage to 200% for the next 999 turns
+# [4] ESOrbChangeAttack(48:429) -> INVASION
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Change Water to Jammer, Deal 70% damage

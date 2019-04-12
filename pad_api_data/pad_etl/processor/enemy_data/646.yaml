@@ -1,0 +1,105 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 646
+monster_name_en: Satan
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  max_atk_pct: 100
+  name_en: Preemptive
+  name_jp: Preemptive
+  one_time: 4
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: When player has any buff
+  name_jp: When player has any buff
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Voids player buff effects
+  desc_jp: Voids player buff effects
+  max_atk_pct: null
+  name_en: Wave of Nothingness
+  name_jp: Wave of Nothingness
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  max_atk_pct: null
+  name_en: Demonic Shield
+  name_jp: Demonic Shield
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 1080% damage (6 hits, 180% each)
+  desc_jp: Deal 1080% damage (6 hits, 180% each)
+  max_atk_pct: 1080
+  name_en: World Ends
+  name_jp: World Ends
+  one_time: 3
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] false
+# [53] 4 -      100
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESAttackPreemptive(47:266) -> Glitter of Devil's Eyes
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 4)
+# Deal 100% damage
+# [2] ESStatusShield(20:269) -> Demonic Shield
+# Voids status ailments for 999 turns
+# [3] ESAttackMultihit(15:267) -> World Ends
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 3)
+# Deal 1080% damage (6 hits, 180% each)
+# [4] ESDispel(6:268) -> Wave of Nothingness
+# Voids player buff effects

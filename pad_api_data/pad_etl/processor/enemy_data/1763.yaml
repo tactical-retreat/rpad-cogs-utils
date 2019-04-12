@@ -1,0 +1,224 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1763
+monster_name_en: Rich Bowl Dragon, Katsumin
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Fire by 50%
+  desc_jp: Reduce damage from Fire by 50%
+  max_atk_pct: null
+  name_en: Ability
+  name_jp: Ability
+  one_time: 0
+  record_type_name: PASSIVE
+  usage_pct: 100
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Fire by 50%
+  desc_jp: Reduce damage from Fire by 50%
+  max_atk_pct: null
+  name_en: Ability
+  name_jp: Ability
+  one_time: 0
+  record_type_name: PASSIVE
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 1 turns (Preemptive)
+  desc_jp: Increase damage to 200% for the next 1 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Victory will be mine!
+  name_jp: Victory will be mine!
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 100% damage
+  desc_jp: Change Random to Jammer, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Hoof of Victory
+  name_jp: Hoof of Victory
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change Random to Jammer, Deal 100% damage
+  desc_jp: Change Random to Jammer, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Hoof of Victory
+  name_jp: Hoof of Victory
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Change 3rd row to Wood orbs, Deal 150% damage
+  desc_jp: Change 3rd row to Wood orbs, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Tail Snap
+  name_jp: Tail Snap
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 60
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 75
+  name_jp: HP < 75
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind 1 both leaders for 2~4 turns
+  desc_jp: Bind 1 both leaders for 2~4 turns
+  max_atk_pct: null
+  name_en: Best Smile
+  name_jp: Best Smile
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 30
+  name_jp: HP < 30
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Increase damage to 300% for the next 1 turns
+  desc_jp: Increase damage to 300% for the next 1 turns
+  max_atk_pct: null
+  name_en: I'll win at any cost!
+  name_jp: I'll win at any cost!
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 400% damage (2 hits, 200% each)
+  desc_jp: Deal 400% damage (2 hits, 200% each)
+  max_atk_pct: 400
+  name_en: Double Hooves of Victory
+  name_jp: Double Hooves of Victory
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] false
+# [53] 1 -        1
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:355) -> ESPreemptive
+# Enable preempt if level 5
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 5, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 8
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [6] ESAttackUPRemainingEnemies(17:1844) -> Victory will be mine!
+# 	Condition: when <= 1 enemies remain (ai:100 rnd:0)
+# Increase damage to 200% for the next 1 turns
+# [7] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [8] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 12
+# [9] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [10] ESOrbChangeAttack(48:1845) -> Hoof of Victory
+# Change Random to Jammer, Deal 100% damage
+# [11] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [12] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 75, target rnd 18
+# [13] ESAttackUPRemainingEnemies(17:1848) -> I'll win at any cost!
+# 	Condition: When < 30% hp , one-time use, when <= 1 enemies remain (ai:100 rnd:0) (one-time: 1)
+# Increase damage to 300% for the next 1 turns
+# [14] ESAttackMultihit(15:1849) -> Double Hooves of Victory
+# 	Condition: When < 30% hp (ai:100 rnd:0)
+# Deal 400% damage (2 hits, 200% each)
+# [15] ESOrbChangeAttack(48:1845) -> Hoof of Victory
+# 	Condition: 50% chance (ai:50 rnd:0)
+# Change Random to Jammer, Deal 100% damage
+# [16] ESRowSpawnMulti(79:1847) -> Tail Snap
+# 	Condition: 60% chance (ai:60 rnd:0)
+# Change 3rd row to Wood orbs, Deal 150% damage
+# [17] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [18] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 4, target rnd 13
+# [19] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b111
+# [20] ESBindTarget(54:1846) -> Best Smile
+# Bind 1 both leaders for 2~4 turns
+# [21] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [22] ESAttributeResist(72:1771) -> Halve Fire
+# Reduce damage from Fire by 50%

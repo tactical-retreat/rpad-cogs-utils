@@ -1,0 +1,125 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 895
+monster_name_en: Arcane Monarch, Vampire Duke
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Player -99% HP (Preemptive)
+  desc_jp: Player -99% HP (Preemptive)
+  max_atk_pct: null
+  name_en: Back!
+  name_jp: Back!
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Random to Water, Deal 75% damage
+  desc_jp: Change Random to Water, Deal 75% damage
+  max_atk_pct: 75
+  name_en: Freeze Pain
+  name_jp: Freeze Pain
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind Dark cards for 3 turns
+  desc_jp: Bind Dark cards for 3 turns
+  max_atk_pct: null
+  name_en: Dark Emperor's Shadow
+  name_jp: Dark Emperor's Shadow
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: You're out of your league
+  name_jp: You're out of your league
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 200% damage (8 hits, 25% each)
+  desc_jp: Deal 200% damage (8 hits, 25% each)
+  max_atk_pct: 200
+  name_en: Infinity Blade
+  name_jp: Infinity Blade
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] false
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] ESGravity(50:1389) -> Back!
+# Player -99% HP
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESBindAttribute(2:1391) -> Dark Emperor's Shadow
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Bind Dark cards for 3 turns
+# [7] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 50, target rnd 10
+# [8] ESOrbChangeAttack(48:1390) -> Freeze Pain
+# 	Condition: 50% chance (ai:50 rnd:0)
+# Change Random to Water, Deal 75% damage
+# [9] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [10] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 14
+# [11] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [12] ESInactivity(66:1392) -> You're out of your league
+# Do nothing
+# [13] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [14] ESAttackMultihit(15:1393) -> Infinity Blade
+# Deal 200% damage (8 hits, 25% each)

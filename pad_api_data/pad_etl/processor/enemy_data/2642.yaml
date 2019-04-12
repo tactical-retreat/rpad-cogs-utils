@@ -1,0 +1,153 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2642
+monster_name_en: Metallic Star Dragon, Scorpio
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Spawn random 3 Poison orbs (Preemptive)
+  desc_jp: Spawn random 3 Poison orbs (Preemptive)
+  max_atk_pct: null
+  name_en: Poison Debris
+  name_jp: Poison Debris
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Poison to Fire, Deal 150% damage
+  desc_jp: Change Poison to Fire, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Flame Sterilization
+  name_jp: Flame Sterilization
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 30
+- !SkillRecord
+  desc_en: Bind 1 random subs for 1 turns, Deal 100% damage
+  desc_jp: Bind 1 random subs for 1 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Tail Stroke
+  name_jp: Tail Stroke
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 35
+- !SkillRecord
+  desc_en: Spawn random 1 Poison orbs, Deal 100% damage
+  desc_jp: Spawn random 1 Poison orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Pinpoint Venom
+  name_jp: Pinpoint Venom
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 35
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Spawn random 5 Poison orbs
+  desc_jp: Spawn random 5 Poison orbs
+  max_atk_pct: null
+  name_en: Burning Scorpio's Stinger
+  name_jp: Burning Scorpio's Stinger
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 10
+  name_jp: HP < 10
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 600% damage
+  desc_jp: Deal 600% damage
+  max_atk_pct: 600
+  name_en: Scorpio's Crest - Meteor
+  name_jp: Scorpio's Crest - Meteor
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 4 -      100
+# [52] true
+# [53] 1 -        1
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:3402) -> ESPreemptive
+# Enable preempt if level 4
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 4, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 8
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [6] ESRandomSpawn(92:2690) -> Poison Debris
+# 	Condition: When fire, water, wood, light, dark, heal, jammer, mortal poison orbs are on the board (ai:100 rnd:0)
+# Spawn random 3 Poison orbs
+# [7] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [8] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 50, target rnd 14
+# [9] ESAttackMultihit(15:2696) -> Scorpio's Crest - Meteor
+# 	Condition: When < 10% hp (ai:100 rnd:0)
+# Deal 600% damage
+# [10] ESOrbChangeAttack(48:2695) -> Flame Sterilization
+# 	Condition: One-time use (ai:0 rnd:30) (one-time: 1)
+# Change Poison to Fire, Deal 150% damage
+# [11] ESBindRandomSub(65:2694) -> Tail Stroke
+# 	Condition: 35% chance (ai:0 rnd:35)
+# Bind 1 random subs for 1 turns, Deal 100% damage
+# [12] ESRandomSpawn(92:2693) -> Pinpoint Venom
+# 	Condition: 35% chance & when Fire, Water, Wood, Light, Dark, Heal, Jammer, Mortal Poison orbs are on the board (ai:0 rnd:35)
+# Spawn random 1 Poison orbs, Deal 100% damage
+# [13] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 9
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [16] ESRandomSpawn(92:2691) -> Burning Scorpio's Stinger
+# 	Condition: When fire, water, wood, light, dark, heal, jammer, mortal poison orbs are on the board (ai:100 rnd:0)
+# Spawn random 5 Poison orbs
+# [17] ESEndPath(36:26) -> ESEndPath
+# end_turn

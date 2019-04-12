@@ -1,0 +1,153 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1443
+monster_name_en: '***** (Saint Seiya)'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 10 turns (Preemptive)
+  desc_jp: Voids status ailments for 10 turns (Preemptive)
+  max_atk_pct: null
+  name_en: '***** (Saint Seiya)'
+  name_jp: '***** (Saint Seiya)'
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Jammer skyfall +10% for 5 turns
+  desc_jp: Jammer skyfall +10% for 5 turns
+  max_atk_pct: null
+  name_en: '***** (Saint Seiya)'
+  name_jp: '***** (Saint Seiya)'
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind own leader for 2 turns, Deal 75% damage
+  desc_jp: Bind own leader for 2 turns, Deal 75% damage
+  max_atk_pct: 75
+  name_en: '***** (Saint Seiya)'
+  name_jp: '***** (Saint Seiya)'
+  one_time: 2
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 30
+  name_jp: HP < 30
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: '***** (Saint Seiya)'
+  name_jp: '***** (Saint Seiya)'
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 500% damage (5 hits, 100% each)
+  desc_jp: Deal 500% damage (5 hits, 100% each)
+  max_atk_pct: 500
+  name_en: '***** (Saint Seiya)'
+  name_jp: '***** (Saint Seiya)'
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] false
+# [53] 2 -       10
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:355) -> ESPreemptive
+# Enable preempt if level 5
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 5, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 8
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [6] ESStatusShield(20:1209) -> ***** (Saint Seiya)
+# Voids status ailments for 10 turns
+# [7] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [8] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 12
+# [9] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [10] ESSkyfall(68:1210) -> ***** (Saint Seiya)
+# Jammer skyfall +10% for 5 turns
+# [11] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [12] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 30, target rnd 15
+# [13] ESBindAttack(63:1211) -> ***** (Saint Seiya)
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
+# Bind own leader for 2 turns, Deal 75% damage
+# [14] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [15] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 4, target rnd 19
+# [16] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b111
+# [17] ESInactivity(66:1212) -> ***** (Saint Seiya)
+# 	Condition: When < 30% hp (ai:100 rnd:0)
+# Do nothing
+# [18] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [19] ESAttackMultihit(15:1213) -> ***** (Saint Seiya)
+# Deal 500% damage (5 hits, 100% each)

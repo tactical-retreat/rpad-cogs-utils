@@ -1,0 +1,174 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1195
+monster_name_en: Moonlit Shadow, Hattori Hanzo
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Light by 50%
+  desc_jp: Reduce damage from Light by 50%
+  max_atk_pct: null
+  name_en: Ability
+  name_jp: Ability
+  one_time: 0
+  record_type_name: PASSIVE
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Voids status ailments for 3 turns (Preemptive)
+  desc_jp: Voids status ailments for 3 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Intruder...
+  name_jp: Intruder...
+  one_time: 1
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change 3rd row to Dark orbs, Deal 120% damage
+  desc_jp: Change 3rd row to Dark orbs, Deal 120% damage
+  max_atk_pct: 120
+  name_en: Slash
+  name_jp: Slash
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 2
+  name_jp: Loop to 1 after. Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change all orbs to Jammer
+  desc_jp: Change all orbs to Jammer
+  max_atk_pct: null
+  name_en: Shadow Concealment Technique
+  name_jp: Shadow Concealment Technique
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 999 turns
+  desc_jp: Increase damage to 200% for the next 999 turns
+  max_atk_pct: null
+  name_en: Blood of Iga
+  name_jp: Blood of Iga
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change 3rd row to Dark orbs, Deal 120% damage
+  desc_jp: Change 3rd row to Dark orbs, Deal 120% damage
+  max_atk_pct: 120
+  name_en: Slash
+  name_jp: Slash
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 20
+  name_jp: HP < 20
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change 2nd row to Dark orbs, 4th row to Dark orbs, Deal 300% damage
+  desc_jp: Change 2nd row to Dark orbs, 4th row to Dark orbs, Deal 300% damage
+  max_atk_pct: 300
+  name_en: Moon Cutting Circle
+  name_jp: Moon Cutting Circle
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 1 -        1
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] ESStatusShield(20:1965) -> Intruder...
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Voids status ailments for 3 turns
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESAttackUPRemainingEnemies(17:1968) -> Blood of Iga
+# 	Condition: When < 50% hp, when <= 1 enemies remain (ai:100 rnd:0)
+# Increase damage to 200% for the next 999 turns
+# [7] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 50, target rnd 13
+# [8] ESBoardChange(84:1967) -> Shadow Concealment Technique
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Change all orbs to Jammer
+# [9] ESRowSpawnMulti(79:1966) -> Slash
+# Change 3rd row to Dark orbs, Deal 120% damage
+# [10] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [11] ESAttributeResist(72:1774) -> Halve Light
+# Reduce damage from Light by 50%
+# [12] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [13] ESRowSpawnMulti(79:1969) -> Moon Cutting Circle
+# 	Condition: When < 20% hp (ai:100 rnd:0)
+# Change 2nd row to Dark orbs, 4th row to Dark orbs, Deal 300% damage
+# [14] ESRowSpawnMulti(79:1966) -> Slash
+# Change 3rd row to Dark orbs, Deal 120% damage
+# [15] ESEndPath(36:26) -> ESEndPath
+# end_turn

@@ -1,0 +1,207 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3543
+monster_name_en: Summit Horn Wisedragon, Bacches
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Enemy turn counter change to 2 when HP <= 50%
+  desc_jp: Enemy turn counter change to 2 when HP <= 50%
+  max_atk_pct: null
+  name_en: Ability
+  name_jp: Ability
+  one_time: 0
+  record_type_name: PASSIVE
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Reduce damage from Wood by 50%
+  desc_jp: Reduce damage from Wood by 50%
+  max_atk_pct: null
+  name_en: Ability
+  name_jp: Ability
+  one_time: 0
+  record_type_name: PASSIVE
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Voids status ailments for 5 turns (Preemptive)
+  desc_jp: Voids status ailments for 5 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Getting ready to headbutt
+  name_jp: Getting ready to headbutt
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 2400% damage (6 hits, 400% each) + Voids status ailments for 5 turns
+  desc_jp: Deal 2400% damage (6 hits, 400% each) + Voids status ailments for 5 turns
+  max_atk_pct: null
+  name_en: Thunderhorn Destruction + Getting ready to headbutt
+  name_jp: Thunderhorn Destruction + Getting ready to headbutt
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 6 turns + Blind orbs in specific
+    positions for 6 turns
+  desc_jp: Reduce damage from all sources by 50% for 6 turns + Blind orbs in specific
+    positions for 6 turns
+  max_atk_pct: null
+  name_en: Fortified Cells + Colossal Dragon's Majesty
+  name_jp: Fortified Cells + Colossal Dragon's Majesty
+  one_time: 8
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 600% damage (2 hits, 300% each)
+  desc_jp: Deal 600% damage (2 hits, 300% each)
+  max_atk_pct: 600
+  name_en: Crushing Claw
+  name_jp: Crushing Claw
+  one_time: 4
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 600% damage (2 hits, 300% each)
+  desc_jp: Deal 600% damage (2 hits, 300% each)
+  max_atk_pct: 600
+  name_en: Crushing Claw
+  name_jp: Crushing Claw
+  one_time: 2
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 4
+  name_jp: Turn 4
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 75% for 10 turns + Seal 5th row for 10
+    turns
+  desc_jp: Reduce damage from all sources by 75% for 10 turns + Seal 5th row for 10
+    turns
+  max_atk_pct: null
+  name_en: Traces of the Demon Army + Colossal Dragon's Pressure
+  name_jp: Traces of the Demon Army + Colossal Dragon's Pressure
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 870% damage (3 hits, 290% each)
+  desc_jp: Deal 870% damage (3 hits, 290% each)
+  max_atk_pct: 870
+  name_en: Thunderhorn Catastrophe
+  name_jp: Thunderhorn Catastrophe
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 15 -     1111
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] ESStatusShield(20:6571) -> Getting ready to headbutt
+# Voids status ailments for 5 turns
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 50, target rnd 9
+# [7] SkillSet:
+# 	[0] ESAttackMultihit(15:6572) -> Thunderhorn Destruction
+# 	Deal 2400% damage (6 hits, 400% each)
+# 	[1] ESStatusShield(20:6571) -> Getting ready to headbutt
+# 	Voids status ailments for 5 turns
+# [8] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [9] SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 8)
+# 	[0] ESDamageShield(74:6574) -> Fortified Cells
+# 	Reduce damage from all sources by 50% for 6 turns
+# 	[1] ESBlindStickyFixed(98:6575) -> Colossal Dragon's Majesty
+# 	Blind orbs in specific positions for 6 turns
+# [10] ESAttackMultihit(15:6577) -> Crushing Claw
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 4)
+# Deal 600% damage (2 hits, 300% each)
+# [11] ESAttackMultihit(15:6578) -> Crushing Claw
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
+# Deal 600% damage (2 hits, 300% each)
+# [12] SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# 	[0] ESDamageShield(74:6579) -> Traces of the Demon Army
+# 	Reduce damage from all sources by 75% for 10 turns
+# 	[1] ESOrbSealRow(100:6580) -> Colossal Dragon's Pressure
+# 	Seal 5th row for 10 turns
+# [13] ESAttackMultihit(15:6582) -> Thunderhorn Catastrophe
+# Deal 870% damage (3 hits, 290% each)
+# [14] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [15] ESTurnChangePassive(106:6583) -> Enemy's next turn changed in anger
+# Enemy turn counter change to 2 when HP <= 50%
+# [16] ESAttributeResist(72:6824) -> Bacches Wood damage halved
+# Reduce damage from Wood by 50%

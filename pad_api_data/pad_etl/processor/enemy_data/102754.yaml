@@ -1,0 +1,238 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 102754
+monster_name_en: Alt. Rainbow Wing Whirlwind Dragon Emperor, Sevenzard
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings:
+- Found 12 unused actions
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Wood by 50%
+  desc_jp: Reduce damage from Wood by 50%
+  max_atk_pct: null
+  name_en: Ability
+  name_jp: Ability
+  one_time: 0
+  record_type_name: PASSIVE
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Voids status ailments for 7 turns + Reduce damage from all sources by 75%
+    for 7 turns + Change Random 4 to Poison, Deal 70% damage (Preemptive)
+  desc_jp: Voids status ailments for 7 turns + Reduce damage from all sources by 75%
+    for 7 turns + Change Random 4 to Poison, Deal 70% damage (Preemptive)
+  max_atk_pct: null
+  name_en: Seven Mirages + Mucus Skin + Poison Claw
+  name_jp: Seven Mirages + Mucus Skin + Poison Claw
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Poison to Jammer, Deal 210% damage
+  desc_jp: Change Poison to Jammer, Deal 210% damage
+  max_atk_pct: 210
+  name_en: Hell Bloom
+  name_jp: Hell Bloom
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 15
+  name_jp: HP <= 15
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind 1 random subs for 7 turns + Change Random 14 to Poison, Deal 140%
+    damage
+  desc_jp: Bind 1 random subs for 7 turns + Change Random 14 to Poison, Deal 140%
+    damage
+  max_atk_pct: null
+  name_en: Paralyzing Vine + Deadly Poison Rave
+  name_jp: Paralyzing Vine + Deadly Poison Rave
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Unused Actions
+############################################################
+# SkillSet:
+# 	Condition: When < 86% hp , one-time use (ai:100 rnd:0) (one-time: 16)
+# 	[0] ESVoidShield(71:4408) -> Temporal Stealth
+# 	Void damage >= 100000 for 1 turns
+# 	[1] ESPoisonChangeRandomAttack(64:4411) -> Hell Poison Claw
+# 	Change Random 7 to Poison, Deal 70% damage
+# SkillSet:
+# 	Condition: When < 72% hp , one-time use (ai:100 rnd:0) (one-time: 8)
+# 	[0] ESChangeAttribute(46:4409) -> Urgency Mimic
+# 	Change own attribute to random one of Water, Wood
+# 	[1] ESPoisonChangeRandomAttack(64:4412) -> Venom Claw
+# 	Change Random 4 to Poison, Deal 70% damage
+# SkillSet:
+# 	Condition: When < 58% hp , one-time use (ai:100 rnd:0) (one-time: 4)
+# 	[0] ESBindRandomSub(65:4410) -> Paralyzing Vine
+# 	Bind 1 random subs for 7 turns
+# 	[1] ESPoisonChangeRandomAttack(64:4413) -> Hell Venom Claw
+# 	Change Random 5 to Poison, Deal 70% damage
+# SkillSet:
+# 	Condition: When < 44% hp , one-time use (ai:100 rnd:0) (one-time: 2)
+# 	[0] ESVoidShield(71:4408) -> Temporal Stealth
+# 	Void damage >= 100000 for 1 turns
+# 	[1] ESPoisonChangeRandomAttack(64:4414) -> Poison Rave
+# 	Change Random 4 to Poison, Deal 140% damage
+# SkillSet:
+# 	Condition: When < 30% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# 	[0] ESChangeAttribute(46:4409) -> Urgency Mimic
+# 	Change own attribute to random one of Water, Wood
+# 	[1] ESPoisonChangeRandomAttack(64:4415) -> Hell's Poison Rave
+# 	Change Random 7 to Poison, Deal 140% damage
+# SkillSet:
+# 	Condition: 15% chance (ai:0 rnd:15)
+# 	[0] ESChangeAttribute(46:4423) -> Energy Mimic
+# 	Change own attribute to random one of Fire, Water, Wood
+# 	[1] ESAttackMultihit(15:4424) -> Storm Rave
+# 	Deal 105% damage (7 hits, 15% each)
+# SkillSet:
+# 	Condition: 15% chance (ai:0 rnd:15)
+# 	[0] ESChangeAttribute(46:4423) -> Energy Mimic
+# 	Change own attribute to random one of Fire, Water, Wood
+# 	[1] ESGravity(50:4426) -> Vine Rings
+# 	Player -77% HP
+# SkillSet:
+# 	Condition: 15% chance (ai:0 rnd:15)
+# 	[0] ESChangeAttribute(46:4423) -> Energy Mimic
+# 	Change own attribute to random one of Fire, Water, Wood
+# 	[1] ESBoardChangeAttackBits(85:4428) -> Seven Gardens
+# 	Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Poison, Deal 70% damage
+# SkillSet:
+# 	Condition: 15% chance (ai:0 rnd:15)
+# 	[0] ESChangeAttribute(46:4423) -> Energy Mimic
+# 	Change own attribute to random one of Fire, Water, Wood
+# 	[1] ESPoisonChangeRandomAttack(64:4425) -> Poison Blow
+# 	Change Random 5 to Poison, Deal 70% damage
+# ESRecoverEnemy(86:4427) -> Draining Nails
+# 	Condition: 15% chance when < 93% hp (ai:0 rnd:15)
+# Enemy recover 7% hp, Deal 70% damage
+# ESPoisonChangeRandomAttack(64:4429) -> Venom Blow
+# 	Condition: 10% chance (ai:0 rnd:10)
+# Change Random 3 to Poison, Deal 70% damage
+# ESOrbLock(94:4430) -> Clotting Nails
+# 	Condition: 15% chance (ai:0 rnd:15)
+# Lock 7 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 70% damage
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 31 -    11111
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] SkillSet:
+# 	[0] ESStatusShield(20:4404) -> Seven Mirages
+# 	Voids status ailments for 7 turns
+# 	[1] ESDamageShield(74:4405) -> Mucus Skin
+# 	Reduce damage from all sources by 75% for 7 turns
+# 	[2] ESPoisonChangeRandomAttack(64:4406) -> Poison Claw
+# 	Change Random 4 to Poison, Deal 70% damage
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] SkillSet:
+# 	Condition: When < 16% hp (ai:100 rnd:0)
+# 	[0] ESBindRandomSub(65:4410) -> Paralyzing Vine
+# 	Bind 1 random subs for 7 turns
+# 	[1] ESPoisonChangeRandomAttack(64:4416) -> Deadly Poison Rave
+# 	Change Random 14 to Poison, Deal 140% damage
+# [7] ESOrbChangeAttack(48:4434) -> Hell Bloom
+# Change Poison to Jammer, Deal 210% damage
+# [8] SkillSet:
+# 	Condition: When < 86% hp , one-time use (ai:100 rnd:0) (one-time: 16)
+# 	[0] ESVoidShield(71:4408) -> Temporal Stealth
+# 	Void damage >= 100000 for 1 turns
+# 	[1] ESPoisonChangeRandomAttack(64:4411) -> Hell Poison Claw
+# 	Change Random 7 to Poison, Deal 70% damage
+# [9] SkillSet:
+# 	Condition: When < 72% hp , one-time use (ai:100 rnd:0) (one-time: 8)
+# 	[0] ESChangeAttribute(46:4409) -> Urgency Mimic
+# 	Change own attribute to random one of Water, Wood
+# 	[1] ESPoisonChangeRandomAttack(64:4412) -> Venom Claw
+# 	Change Random 4 to Poison, Deal 70% damage
+# [10] SkillSet:
+# 	Condition: When < 58% hp , one-time use (ai:100 rnd:0) (one-time: 4)
+# 	[0] ESBindRandomSub(65:4410) -> Paralyzing Vine
+# 	Bind 1 random subs for 7 turns
+# 	[1] ESPoisonChangeRandomAttack(64:4413) -> Hell Venom Claw
+# 	Change Random 5 to Poison, Deal 70% damage
+# [11] SkillSet:
+# 	Condition: When < 44% hp , one-time use (ai:100 rnd:0) (one-time: 2)
+# 	[0] ESVoidShield(71:4408) -> Temporal Stealth
+# 	Void damage >= 100000 for 1 turns
+# 	[1] ESPoisonChangeRandomAttack(64:4414) -> Poison Rave
+# 	Change Random 4 to Poison, Deal 140% damage
+# [12] SkillSet:
+# 	Condition: When < 30% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# 	[0] ESChangeAttribute(46:4409) -> Urgency Mimic
+# 	Change own attribute to random one of Water, Wood
+# 	[1] ESPoisonChangeRandomAttack(64:4415) -> Hell's Poison Rave
+# 	Change Random 7 to Poison, Deal 140% damage
+# [13] SkillSet:
+# 	Condition: 15% chance (ai:0 rnd:15)
+# 	[0] ESChangeAttribute(46:4423) -> Energy Mimic
+# 	Change own attribute to random one of Fire, Water, Wood
+# 	[1] ESAttackMultihit(15:4424) -> Storm Rave
+# 	Deal 105% damage (7 hits, 15% each)
+# [14] SkillSet:
+# 	Condition: 15% chance (ai:0 rnd:15)
+# 	[0] ESChangeAttribute(46:4423) -> Energy Mimic
+# 	Change own attribute to random one of Fire, Water, Wood
+# 	[1] ESGravity(50:4426) -> Vine Rings
+# 	Player -77% HP
+# [15] SkillSet:
+# 	Condition: 15% chance (ai:0 rnd:15)
+# 	[0] ESChangeAttribute(46:4423) -> Energy Mimic
+# 	Change own attribute to random one of Fire, Water, Wood
+# 	[1] ESBoardChangeAttackBits(85:4428) -> Seven Gardens
+# 	Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Poison, Deal 70% damage
+# [16] SkillSet:
+# 	Condition: 15% chance (ai:0 rnd:15)
+# 	[0] ESChangeAttribute(46:4423) -> Energy Mimic
+# 	Change own attribute to random one of Fire, Water, Wood
+# 	[1] ESPoisonChangeRandomAttack(64:4425) -> Poison Blow
+# 	Change Random 5 to Poison, Deal 70% damage
+# [17] ESRecoverEnemy(86:4427) -> Draining Nails
+# 	Condition: 15% chance when < 93% hp (ai:0 rnd:15)
+# Enemy recover 7% hp, Deal 70% damage
+# [18] ESPoisonChangeRandomAttack(64:4429) -> Venom Blow
+# 	Condition: 10% chance (ai:0 rnd:10)
+# Change Random 3 to Poison, Deal 70% damage
+# [19] ESOrbLock(94:4430) -> Clotting Nails
+# 	Condition: 15% chance (ai:0 rnd:15)
+# Lock 7 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 70% damage
+# [20] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [21] ESAttributeResist(72:8248) -> Sevenzard Wood Halved
+# Reduce damage from Wood by 50%

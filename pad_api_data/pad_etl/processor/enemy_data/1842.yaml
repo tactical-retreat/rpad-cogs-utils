@@ -1,0 +1,183 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1842
+monster_name_en: Wind Dragon Queen, Linthia
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: 'Show message: You''re so cruel|I wanted to play more with you...! (Preemptive)'
+  desc_jp: 'Show message: You''re so cruel|I wanted to play more with you...! (Preemptive)'
+  max_atk_pct: null
+  name_en: Linthia Transformation
+  name_jp: Linthia Transformation
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 0
+- !SkillRecord
+  desc_en: Wood skyfall +15% for 99 turns (Preemptive)
+  desc_jp: Wood skyfall +15% for 99 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Did you come to see me?
+  name_jp: Did you come to see me?
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Void damage >= 400000 for 5 turns
+  desc_jp: Void damage >= 400000 for 5 turns
+  max_atk_pct: null
+  name_en: Floral Mirror
+  name_jp: Floral Mirror
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: 'Show message: You''re so cruel|I wanted to play more with you...!'
+  desc_jp: 'Show message: You''re so cruel|I wanted to play more with you...!'
+  max_atk_pct: null
+  name_en: Linthia Transformation
+  name_jp: Linthia Transformation
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: Deal 110% damage
+  desc_jp: Deal 110% damage
+  max_atk_pct: 110
+  name_en: Aero Ball
+  name_jp: Aero Ball
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Absorb combo <= 4 damage for 3 turns
+  desc_jp: Absorb combo <= 4 damage for 3 turns
+  max_atk_pct: null
+  name_en: "I'm having so much fun!\u266A"
+  name_jp: "I'm having so much fun!\u266A"
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: 'Show message: You''re so cruel|I wanted to play more with you...!'
+  desc_jp: 'Show message: You''re so cruel|I wanted to play more with you...!'
+  max_atk_pct: null
+  name_en: Linthia Transformation
+  name_jp: Linthia Transformation
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: Change 1st row to Wood orbs, Deal 170% damage
+  desc_jp: Change 1st row to Wood orbs, Deal 170% damage
+  max_atk_pct: 170
+  name_en: Blossom Wind
+  name_jp: Blossom Wind
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Spawn random 5 Fire orbs, Deal 170% damage
+  desc_jp: Spawn random 5 Fire orbs, Deal 170% damage
+  max_atk_pct: 170
+  name_en: Rose Cyclone
+  name_jp: Rose Cyclone
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESDeathCry(69:3534) -> Linthia Transformation
+# 	Condition: On death (ai:0 rnd:0)
+# Show message: You're so cruel|I wanted to play more with you...!
+# [3] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 7
+# [4] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [5] ESSkyfall(68:3535) -> Did you come to see me?
+# Wood skyfall +15% for 99 turns
+# [6] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [7] ESVoidShield(71:3536) -> Floral Mirror
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Void damage >= 400000 for 5 turns
+# [8] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 50, target rnd 11
+# [9] ESAttackMultihit(15:3537) -> Aero Ball
+# Deal 110% damage
+# [10] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [11] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 14
+# [12] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [13] ESAbsorbCombo(67:3538) -> I'm having so much fun!♪
+# Absorb combo <= 4 damage for 3 turns
+# [14] ESRowSpawnMulti(79:3539) -> Blossom Wind
+# 	Condition: 50% chance (ai:50 rnd:0)
+# Change 1st row to Wood orbs, Deal 170% damage
+# [15] ESRandomSpawn(92:3540) -> Rose Cyclone
+# 	Condition: When water, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
+# Spawn random 5 Fire orbs, Deal 170% damage

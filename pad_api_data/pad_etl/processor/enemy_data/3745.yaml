@@ -1,0 +1,166 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3745
+monster_name_en: "Dragonbound Shanj\xE9"
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Dark by 50%
+  desc_jp: Reduce damage from Dark by 50%
+  max_atk_pct: null
+  name_en: Ability
+  name_jp: Ability
+  one_time: 0
+  record_type_name: PASSIVE
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Fix orb movement starting point to random position on the board (Preemptive)
+  desc_jp: Fix orb movement starting point to random position on the board (Preemptive)
+  max_atk_pct: null
+  name_en: You! Get on the ground!
+  name_jp: You! Get on the ground!
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change 3rd, 4th column to Dark, Jammer orbs
+  desc_jp: Change 3rd, 4th column to Dark, Jammer orbs
+  max_atk_pct: null
+  name_en: It's go time, Sharrus!
+  name_jp: It's go time, Sharrus!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Player -90% HP
+  desc_jp: Player -90% HP
+  max_atk_pct: null
+  name_en: Now get to work!
+  name_jp: Now get to work!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 170% damage
+  desc_jp: Blind all orbs on the board, Deal 170% damage
+  max_atk_pct: 170
+  name_en: Sharrus is whimpering
+  name_jp: Sharrus is whimpering
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 2
+  name_jp: Loop to 1 after. Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Enemy recover 50% hp
+  desc_jp: Enemy recover 50% hp
+  max_atk_pct: null
+  name_en: "Twinkle \u2606 Shadow"
+  name_jp: "Twinkle \u2606 Shadow"
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 3 -       11
+# [52] true
+# [53] 1 -        1
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] ESFixedStart(101:7402) -> You! Get on the ground!
+# Fix orb movement starting point to random position on the board
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 10
+# [7] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [8] ESColumnSpawnMulti(76:7403) -> It's go time, Sharrus!
+# Change 3rd, 4th column to Dark, Jammer orbs
+# [9] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [10] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 4, target rnd 14
+# [11] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b111
+# [12] ESGravity(50:7404) -> Now get to work!
+# Player -90% HP
+# [13] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [14] ESBlind(62:7406) -> Sharrus is whimpering
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Blind all orbs on the board, Deal 170% damage
+# [15] ESRecoverEnemy(86:7405) -> Twinkle ☆ Shadow
+# Enemy recover 50% hp
+# [16] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [17] ESAttributeResist(72:7448) -> Dark damage halved
+# Reduce damage from Dark by 50%

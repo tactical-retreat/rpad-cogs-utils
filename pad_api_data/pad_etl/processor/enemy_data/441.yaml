@@ -1,0 +1,103 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 441
+monster_name_en: Ancient Fire Dragon, Ardbeg
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  max_atk_pct: null
+  name_en: Fertile Guard
+  name_jp: Fertile Guard
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 75
+  name_jp: HP < 75
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change Water to Light
+  desc_jp: Change Water to Light
+  max_atk_pct: null
+  name_en: Grace of Sun - Water
+  name_jp: Grace of Sun - Water
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 25
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 150% damage
+  desc_jp: Deal 150% damage
+  max_atk_pct: 150
+  name_en: Blaze Ball
+  name_jp: Blaze Ball
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 75
+- !SkillRecord
+  desc_en: Change Water to Light
+  desc_jp: Change Water to Light
+  max_atk_pct: null
+  name_en: Grace of Sun - Water
+  name_jp: Grace of Sun - Water
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 25
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] false
+# [53] 0 -        0
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESStatusShield(20:205) -> Fertile Guard
+# Voids status ailments for 999 turns
+# [2] ESAttackMultihit(15:200) -> Blaze Ball
+# 	Condition: 75% chance when < 50% hp (ai:75 rnd:0)
+# Deal 150% damage
+# [3] ESOrbChangeSingle(4:207) -> Grace of Sun - Water
+# 	Condition: 25% chance when < 75% hp (ai:25 rnd:0)
+# Change Water to Light

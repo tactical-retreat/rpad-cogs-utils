@@ -1,0 +1,79 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3998
+monster_name_en: Ancient Castle Guards, Poltergift
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Random 1 orbs change every 1.0s for 1 turns, Deal 100% damage
+  desc_jp: Random 1 orbs change every 1.0s for 1 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Wonder Candle
+  name_jp: Wonder Candle
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 2
+  name_jp: Loop to 1 after. Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Jammer skyfall +20% for 1 turns, Deal 100% damage
+  desc_jp: Jammer skyfall +20% for 1 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Candy Rain
+  name_jp: Candy Rain
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 3 -       11
+# [52] true
+# [53] 1 -        1
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 4, target rnd 3
+# [2] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [3] ESSpinnersRandom(109:8177) -> Wonder Candle
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Random 1 orbs change every 1.0s for 1 turns, Deal 100% damage
+# [4] ESSkyfall(68:8178) -> Candy Rain
+# Jammer skyfall +20% for 1 turns, Deal 100% damage
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn

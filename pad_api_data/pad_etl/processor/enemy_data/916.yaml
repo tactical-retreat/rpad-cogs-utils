@@ -1,0 +1,124 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 916
+monster_name_en: Devilit
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Increase damage to 300% for the next 999 turns (When 1 enemy remains)
+  desc_jp: Increase damage to 300% for the next 999 turns (When 1 enemy remains)
+  max_atk_pct: null
+  name_en: Angrilit
+  name_jp: Angrilit
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change Random 6 to Poison
+  desc_jp: Change Random 6 to Poison
+  max_atk_pct: null
+  name_en: Devilit Poison
+  name_jp: Devilit Poison
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 2
+  name_jp: Loop to 1 after. Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change Heal to Jammer, Deal 100% damage
+  desc_jp: Change Heal to Jammer, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Heart Break
+  name_jp: Heart Break
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 20
+  name_jp: HP < 20
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 200% damage (4 hits, 50% each)
+  desc_jp: Deal 200% damage (4 hits, 50% each)
+  max_atk_pct: 200
+  name_en: Hell & Heaven
+  name_jp: Hell & Heaven
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 4 -      100
+# [52] false
+# [53] 1 -        1
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESAttackUPRemainingEnemies(17:721) -> Angrilit
+# 	Condition: when <= 1 enemies remain (ai:100 rnd:0)
+# Increase damage to 300% for the next 999 turns
+# [2] ESAttackMultihit(15:722) -> Hell & Heaven
+# 	Condition: When < 20% hp (ai:100 rnd:0)
+# Deal 200% damage (4 hits, 50% each)
+# [3] ESPoisonChangeRandom(60:723) -> Devilit Poison
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Change Random 6 to Poison
+# [4] ESOrbChangeAttack(48:724) -> Heart Break
+# Change Heal to Jammer, Deal 100% damage

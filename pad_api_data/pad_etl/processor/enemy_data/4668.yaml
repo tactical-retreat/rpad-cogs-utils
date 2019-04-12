@@ -1,0 +1,180 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4668
+monster_name_en: '*****'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Player -75% HP (Preemptive)
+  desc_jp: Player -75% HP (Preemptive)
+  max_atk_pct: null
+  name_en: Malice Prince
+  name_jp: Malice Prince
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change Random to Light, Deal 120% damage
+  desc_jp: Change Random to Light, Deal 120% damage
+  max_atk_pct: 120
+  name_en: H-Shot
+  name_jp: H-Shot
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 2 turns, Deal 100% damage
+  desc_jp: Reduce damage from all sources by 50% for 2 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Heavy Ball
+  name_jp: Heavy Ball
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Delay active skills by 2 turns, Deal 100% damage
+  desc_jp: Delay active skills by 2 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Wild Ball
+  name_jp: Wild Ball
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change Random to Light, Deal 120% damage
+  desc_jp: Change Random to Light, Deal 120% damage
+  max_atk_pct: 120
+  name_en: H-Shot
+  name_jp: H-Shot
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 2
+  name_jp: Loop to 1 after. Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Delay active skills by 2 turns, Deal 100% damage
+  desc_jp: Delay active skills by 2 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Wild Ball
+  name_jp: Wild Ball
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 10
+  name_jp: HP < 10
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Specific orbs change every 2.0s for 1 turns, Deal 150% damage
+  desc_jp: Specific orbs change every 2.0s for 1 turns, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Excalibur!!!
+  name_jp: Excalibur!!!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 1 -        1
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:3402) -> ESPreemptive
+# Enable preempt if level 4
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 4, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 8
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [6] ESGravity(50:10584) -> Malice Prince
+# Player -75% HP
+# [7] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [8] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 10, target rnd 13
+# [9] ESOrbChangeAttack(48:10586) -> H-Shot
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Change Random to Light, Deal 120% damage
+# [10] ESDamageShield(74:10585) -> Heavy Ball
+# 	Condition: 50% chance (ai:0 rnd:50)
+# Reduce damage from all sources by 50% for 2 turns, Deal 100% damage
+# [11] ESSkillDelay(89:10587) -> Wild Ball
+# 	Condition: 50% chance (ai:0 rnd:50)
+# Delay active skills by 2 turns, Deal 100% damage
+# [12] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [13] ESSpinnersFixed(110:10588) -> Excalibur!!!
+# Specific orbs change every 2.0s for 1 turns, Deal 150% damage
+# [14] ESEndPath(36:26) -> ESEndPath
+# end_turn

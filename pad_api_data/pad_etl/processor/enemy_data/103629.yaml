@@ -1,0 +1,181 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 103629
+monster_name_en: Black Dragon of the Apocalypse, Acnologia
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Blind orbs in specific positions for 1 turns + Voids status ailments for
+    999 turns (Preemptive)
+  desc_jp: Blind orbs in specific positions for 1 turns + Voids status ailments for
+    999 turns (Preemptive)
+  max_atk_pct: null
+  name_en: I am the true Dragon King! + Acnologia Transformation
+  name_jp: I am the true Dragon King! + Acnologia Transformation
+  one_time: 4
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Fix orb movement starting point to random position on the board + Deal
+    150% damage (3 hits, 50% each)
+  desc_jp: Fix orb movement starting point to random position on the board + Deal
+    150% damage (3 hits, 50% each)
+  max_atk_pct: null
+  name_en: I recognize you as my enemy + GWAAAH-
+  name_jp: I recognize you as my enemy + GWAAAH-
+  one_time: 2
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Movetime -1s for 3 turns
+  desc_jp: Movetime -1s for 3 turns
+  max_atk_pct: null
+  name_en: You can't escape
+  name_jp: You can't escape
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 150% damage (3 hits, 50% each)
+  desc_jp: Deal 150% damage (3 hits, 50% each)
+  max_atk_pct: 150
+  name_en: GWAAAH-
+  name_jp: GWAAAH-
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Deal 120% damage (2 hits, 60% each)
+  desc_jp: Deal 120% damage (2 hits, 60% each)
+  max_atk_pct: 120
+  name_en: DESTROY!!! DESTROY!!!
+  name_jp: DESTROY!!! DESTROY!!!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 35
+  name_jp: HP < 35
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 999 turns
+  desc_jp: Increase damage to 200% for the next 999 turns
+  max_atk_pct: null
+  name_en: Total Annihilation is what I seek!
+  name_jp: Total Annihilation is what I seek!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change all orbs to Fire, Deal 500% damage
+  desc_jp: Change all orbs to Fire, Deal 500% damage
+  max_atk_pct: 500
+  name_en: Howl
+  name_jp: Howl
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 7 -      111
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 4)
+# 	[0] ESBlindStickyFixed(98:6723) -> I am the true Dragon King!
+# 	Blind orbs in specific positions for 1 turns
+# 	[1] ESStatusShield(20:6724) -> Acnologia Transformation
+# 	Voids status ailments for 999 turns
+# [3] SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
+# 	[0] ESFixedStart(101:6726) -> I recognize you as my enemy
+# 	Fix orb movement starting point to random position on the board
+# 	[1] ESAttackMultihit(15:6727) -> GWAAAH-
+# 	Deal 150% damage (3 hits, 50% each)
+# [4] ESDebuffMovetime(39:6728) -> You can't escape
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Movetime -1s for 3 turns
+# [5] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 35, target rnd 8
+# [6] ESAttackMultihit(15:6727) -> GWAAAH-
+# 	Condition: 50% chance (ai:50 rnd:0)
+# Deal 150% damage (3 hits, 50% each)
+# [7] ESAttackMultihit(15:6730) -> DESTROY!!! DESTROY!!!
+# Deal 120% damage (2 hits, 60% each)
+# [8] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 12
+# [9] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [10] ESAttackUPRemainingEnemies(17:6729) -> Total Annihilation is what I seek!
+# 	Condition: when <= 1 enemies remain (ai:100 rnd:0)
+# Increase damage to 200% for the next 999 turns
+# [11] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [12] ESBoardChangeAttackBits(85:6731) -> Howl
+# Change all orbs to Fire, Deal 500% damage
+# [13] ESEndPath(36:26) -> ESEndPath
+# end_turn

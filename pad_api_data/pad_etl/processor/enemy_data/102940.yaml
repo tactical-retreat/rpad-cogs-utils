@@ -1,0 +1,197 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 102940
+monster_name_en: Alt. Distant Sea Dragon, Whaledor
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Delay active skills by 5 turns + Absorb combo <= 6 damage for 20 turns
+    (Preemptive)
+  desc_jp: Delay active skills by 5 turns + Absorb combo <= 6 damage for 20 turns
+    (Preemptive)
+  max_atk_pct: null
+  name_en: Giant Whale's Sea Spray + Twinkling Echo
+  name_jp: Giant Whale's Sea Spray + Twinkling Echo
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 150% damage (3 hits, 50% each)
+  desc_jp: Deal 150% damage (3 hits, 50% each)
+  max_atk_pct: 150
+  name_en: Tempest
+  name_jp: Tempest
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 25
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 130% damage
+  desc_jp: Blind all orbs on the board, Deal 130% damage
+  max_atk_pct: 130
+  name_en: Swallowing Whole!
+  name_jp: Swallowing Whole!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 25
+- !SkillRecord
+  desc_en: Movetime 50% for 1 turns, Deal 140% damage
+  desc_jp: Movetime 50% for 1 turns, Deal 140% damage
+  max_atk_pct: 140
+  name_en: Dazzler Splash
+  name_jp: Dazzler Splash
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 25
+- !SkillRecord
+  desc_en: Spawn random 3 Water orbs, Deal 130% damage
+  desc_jp: Spawn random 3 Water orbs, Deal 130% damage
+  max_atk_pct: 130
+  name_en: Tail Slap
+  name_jp: Tail Slap
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 25
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 70
+  name_jp: HP < 70
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Increase damage to 250% for the next attack
+  desc_jp: Increase damage to 250% for the next attack
+  max_atk_pct: null
+  name_en: Breaching
+  name_jp: Breaching
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  max_atk_pct: null
+  name_en: Skimming
+  name_jp: Skimming
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 15
+  name_jp: HP < 15
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change 3rd, 4th column to Water orbs, Deal 750% damage
+  desc_jp: Change 3rd, 4th column to Water orbs, Deal 750% damage
+  max_atk_pct: 750
+  name_en: Hydro Cannon
+  name_jp: Hydro Cannon
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 1 -        1
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] SkillSet:
+# 	[0] ESSkillDelay(89:5167) -> Giant Whale's Sea Spray
+# 	Delay active skills by 5 turns
+# 	[1] ESAbsorbCombo(67:8230) -> Twinkling Echo
+# 	Absorb combo <= 6 damage for 20 turns
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESColumnSpawnMulti(77:5174) -> Hydro Cannon
+# 	Condition: When < 15% hp (ai:100 rnd:0)
+# Change 3rd, 4th column to Water orbs, Deal 750% damage
+# [7] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 70, target rnd 14
+# [8] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 50, target rnd 17
+# [9] ESAttackMultihit(15:5171) -> Tempest
+# 	Condition: 25% chance (ai:0 rnd:25)
+# Deal 150% damage (3 hits, 50% each)
+# [10] ESBlind(62:5172) -> Swallowing Whole!
+# 	Condition: 25% chance (ai:0 rnd:25)
+# Blind all orbs on the board, Deal 130% damage
+# [11] ESDebuffMovetime(39:5173) -> Dazzler Splash
+# 	Condition: One-time use (ai:0 rnd:25) (one-time: 1)
+# Movetime 50% for 1 turns, Deal 140% damage
+# [12] ESRandomSpawn(92:5176) -> Tail Slap
+# 	Condition: 25% chance & when Heal orbs are on the board (ai:0 rnd:25)
+# Spawn random 3 Water orbs, Deal 130% damage
+# [13] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 8
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [16] ESStorePower(8:5175) -> Breaching
+# Increase damage to 250% for the next attack
+# [17] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 4, target rnd 9
+# [18] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b111
+# [19] ESGravity(50:5170) -> Skimming
+# Player -99% HP

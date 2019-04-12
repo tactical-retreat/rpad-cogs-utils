@@ -1,0 +1,75 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 4579
+monster_name_en: '*****'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Increase damage to 150% for the next 1 turns (Preemptive)
+  desc_jp: Increase damage to 150% for the next 1 turns (Preemptive)
+  max_atk_pct: null
+  name_en: I filled my sword with the soul of Fever!
+  name_jp: I filled my sword with the soul of Fever!
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Enemy is defeated
+  name_jp: Enemy is defeated
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Increase damage to 150% for the next 1 turns
+  desc_jp: Increase damage to 150% for the next 1 turns
+  max_atk_pct: null
+  name_en: I filled my sword with the soul of Fever!
+  name_jp: I filled my sword with the soul of Fever!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 0 -        0
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESAttackUPRemainingEnemies(17:8956) -> I filled my sword with the soul of Fever!
+# 	Condition: when <= 1 enemies remain (ai:100 rnd:0)
+# Increase damage to 150% for the next 1 turns
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn

@@ -1,0 +1,153 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 392
+monster_name_en: Fertility Deity, Holy Ceres
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change Random to Heal, Deal 75% damage
+  desc_jp: Change Random to Heal, Deal 75% damage
+  max_atk_pct: 75
+  name_en: Signs of Blooming
+  name_jp: Signs of Blooming
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 2
+  name_jp: Loop to 1 after. Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change Heal to Wood, Deal 150% damage
+  desc_jp: Change Heal to Wood, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Flower World
+  name_jp: Flower World
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind Fire cards for 3~5 turns
+  desc_jp: Bind Fire cards for 3~5 turns
+  max_atk_pct: null
+  name_en: Extinguishing Prayer
+  name_jp: Extinguishing Prayer
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Charging Magical Power
+  name_jp: Charging Magical Power
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 2
+  name_jp: Loop to 1 after. Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 160%~200% damage (4~5 hits, 40% each)
+  desc_jp: Deal 160%~200% damage (4~5 hits, 40% each)
+  max_atk_pct: 200
+  name_en: Shining Storm
+  name_jp: Shining Storm
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] false
+# [53] 1 -        1
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 50, target rnd 5
+# [2] ESOrbChangeAttack(48:965) -> Signs of Blooming
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Change Random to Heal, Deal 75% damage
+# [3] ESOrbChangeAttack(48:966) -> Flower World
+# Change Heal to Wood, Deal 150% damage
+# [4] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [5] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 9
+# [6] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [7] ESBindAttribute(2:967) -> Extinguishing Prayer
+# Bind Fire cards for 3~5 turns
+# [8] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [9] ESInactivity(16:968) -> Charging Magical Power
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Do nothing
+# [10] ESAttackMultihit(15:969) -> Shining Storm
+# Deal 160%~200% damage (4~5 hits, 40% each)

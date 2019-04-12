@@ -1,0 +1,64 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 101529
+monster_name_en: Alt. High Light Ninja
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Increase damage to 2100% for the next attack (Preemptive)
+  desc_jp: Increase damage to 2100% for the next attack (Preemptive)
+  max_atk_pct: null
+  name_en: Secret Demon Art - Roaring Thunder
+  name_jp: Secret Demon Art - Roaring Thunder
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 2100% for the next attack
+  desc_jp: Increase damage to 2100% for the next attack
+  max_atk_pct: null
+  name_en: Secret Demon Art - Roaring Thunder
+  name_jp: Secret Demon Art - Roaring Thunder
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 4 -      100
+# [52] true
+# [53] 0 -        0
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] ESStorePower(8:8191) -> Secret Demon Art - Roaring Thunder
+# Increase damage to 2100% for the next attack
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESStorePower(8:8191) -> Secret Demon Art - Roaring Thunder
+# Increase damage to 2100% for the next attack
+# [7] ESEndPath(36:26) -> ESEndPath
+# end_turn

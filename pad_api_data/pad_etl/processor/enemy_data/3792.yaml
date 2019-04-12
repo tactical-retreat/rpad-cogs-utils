@@ -1,0 +1,108 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3792
+monster_name_en: Jubilant Patissiere, Dark Lady
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings:
+- Found 1 unused actions
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Movetime -1s for 2 turns (Preemptive)
+  desc_jp: Movetime -1s for 2 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Sweet Decoration
+  name_jp: Sweet Decoration
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: 2x1 cloud appear for 1 turns at random location, Deal 100% damage
+  desc_jp: 2x1 cloud appear for 1 turns at random location, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Fresh Cream Paint
+  name_jp: Fresh Cream Paint
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 2
+  name_jp: Loop to 1 after. Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Spawn random 1 Fire, Water, Wood, Light, Dark orbs, Deal 100% damage
+  desc_jp: Spawn random 1 Fire, Water, Wood, Light, Dark orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Lovely Macaron
+  name_jp: Lovely Macaron
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Unused Actions
+############################################################
+# ESDebuffMovetime(39:7640) -> Persephone is so beautiful♪
+# Movetime 150% for 2 turns
+############################################################
+### ES Modifiers
+############################################################
+# [9] 4 -      100
+# [52] true
+# [53] 1 -        1
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:355) -> ESPreemptive
+# Enable preempt if level 5
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 5, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 10
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [6] ESBranchCard(90:7643) -> ESBranchCard
+# Branch on player_cards HAS [3791, 100], target rnd 8
+# [7] ESDebuffMovetime(39:7639) -> Sweet Decoration
+# Movetime -1s for 2 turns
+# [8] ESDebuffMovetime(39:7640) -> Persephone is so beautiful♪
+# Movetime 150% for 2 turns
+# [9] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [10] ESCloud(104:7641) -> Fresh Cream Paint
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# 2x1 cloud appear for 1 turns at random location, Deal 100% damage
+# [11] ESRandomSpawn(92:7642) -> Lovely Macaron
+# Spawn random 1 Fire, Water, Wood, Light, Dark orbs, Deal 100% damage
+# [12] ESEndPath(36:26) -> ESEndPath
+# end_turn

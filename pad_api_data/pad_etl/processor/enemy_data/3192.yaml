@@ -1,0 +1,57 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3192
+monster_name_en: Shimmering Thunder Goddess, Hera Dragon
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Deal 100% damage (4 hits, 25% each) (Preemptive)
+  desc_jp: Deal 100% damage (4 hits, 25% each) (Preemptive)
+  max_atk_pct: 100
+  name_en: Thunder Dragon Baptism
+  name_jp: Thunder Dragon Baptism
+  one_time: 1
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 150% damage (10 hits, 15% each)
+  desc_jp: Deal 150% damage (10 hits, 15% each)
+  max_atk_pct: 150
+  name_en: Giga Graviton Breath
+  name_jp: Giga Graviton Breath
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESAttackMultihit(15:6734) -> Thunder Dragon Baptism
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Deal 100% damage (4 hits, 25% each)
+# [3] ESAttackMultihit(15:6735) -> Giga Graviton Breath
+# Deal 150% damage (10 hits, 15% each)

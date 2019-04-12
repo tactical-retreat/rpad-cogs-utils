@@ -1,0 +1,147 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 101964
+monster_name_en: Alt. Green DeviNyan
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings:
+- Found 1 unused actions
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 1 turns (Preemptive)
+  desc_jp: Reduce damage from all sources by 50% for 1 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Dancing around
+  name_jp: Dancing around
+  one_time: 8
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 999 turns
+  desc_jp: Increase damage to 200% for the next 999 turns
+  max_atk_pct: null
+  name_en: Got angry
+  name_jp: Got angry
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 400% damage (4 hits, 100% each)
+  desc_jp: Deal 400% damage (4 hits, 100% each)
+  max_atk_pct: 400
+  name_en: Amazing Attack
+  name_jp: Amazing Attack
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Enemy is defeated
+  name_jp: Enemy is defeated
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 75% for 1 turns
+  desc_jp: Reduce damage from all sources by 75% for 1 turns
+  max_atk_pct: null
+  name_en: Dancing around
+  name_jp: Dancing around
+  one_time: 4
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 999 turns
+  desc_jp: Increase damage to 200% for the next 999 turns
+  max_atk_pct: null
+  name_en: Got angry
+  name_jp: Got angry
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Unused Actions
+############################################################
+# ESDamageShield(74:6116) -> Dancing around
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
+# Reduce damage from all sources by 99% for 1 turns
+############################################################
+### ES Modifiers
+############################################################
+# [9] 3 -       11
+# [52] true
+# [53] 15 -     1111
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESDamageShield(74:6114) -> Dancing around
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 8)
+# Reduce damage from all sources by 50% for 1 turns
+# [3] ESDamageShield(74:6115) -> Dancing around
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 4)
+# Reduce damage from all sources by 75% for 1 turns
+# [4] ESDamageShield(74:6116) -> Dancing around
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
+# Reduce damage from all sources by 99% for 1 turns
+# [5] ESAttackUPCooldown(19:6117) -> Got angry
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Increase damage to 200% for the next 999 turns
+# [6] ESAttackMultihit(15:6118) -> Amazing Attack
+# Deal 400% damage (4 hits, 100% each)
+# [7] ESEndPath(36:26) -> ESEndPath
+# end_turn

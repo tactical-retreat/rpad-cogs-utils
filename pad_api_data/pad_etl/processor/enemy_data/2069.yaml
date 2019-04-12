@@ -1,0 +1,181 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2069
+monster_name_en: Black Beast Demon's Servant, Aamir
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Player recover 100% hp + Absorb damage >= 500000 damage for 2 turns + Voids
+    status ailments for 2 turns (Preemptive)
+  desc_jp: Player recover 100% hp + Absorb damage >= 500000 damage for 2 turns + Voids
+    status ailments for 2 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Hello and welcome! + What are you doing to Aamir?! + Who are YOU?
+  name_jp: Hello and welcome! + What are you doing to Aamir?! + Who are YOU?
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change 1st column to Wood orbs, 6th column to Dark orbs, Deal 150% damage
+    + Bind 1 random subs for 2 turns + Deal 20% damage (2 hits, 10% each)
+  desc_jp: Change 1st column to Wood orbs, 6th column to Dark orbs, Deal 150% damage
+    + Bind 1 random subs for 2 turns + Deal 20% damage (2 hits, 10% each)
+  max_atk_pct: null
+  name_en: You come over here, too + Don't waste your time with them! + You're an
+    eyesore!
+  name_jp: You come over here, too + Don't waste your time with them! + You're an
+    eyesore!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Deal 200% damage (2 hits, 100% each) + Enemy recover 10% hp + Change Random
+    1 to Poison
+  desc_jp: Deal 200% damage (2 hits, 100% each) + Enemy recover 10% hp + Change Random
+    1 to Poison
+  max_atk_pct: null
+  name_en: How about THIS? + Aamir, you're so cool! + Let me help!
+  name_jp: How about THIS? + Aamir, you're so cool! + Let me help!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 2 turns + Change Random 6 to Poison
+    + Bind active skills for 2 turns
+  desc_jp: Increase damage to 200% for the next 2 turns + Change Random 6 to Poison
+    + Bind active skills for 2 turns
+  max_atk_pct: null
+  name_en: What did you do to my face? + What do you think you're doing?! + Oh no!
+    Aamir's precious face!
+  name_jp: What did you do to my face? + What do you think you're doing?! + Oh no!
+    Aamir's precious face!
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 140% damage (2 hits, 70% each) + Enemy recover 1% hp + Blind all orbs
+    on the board
+  desc_jp: Deal 140% damage (2 hits, 70% each) + Enemy recover 1% hp + Blind all orbs
+    on the board
+  max_atk_pct: null
+  name_en: I'd rather play with them... + Heheh! + Could you quit gawking?
+  name_jp: I'd rather play with them... + Heheh! + Could you quit gawking?
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 20
+  name_jp: HP < 20
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 400% damage + Deal 40% damage (2 hits, 20% each) + Deal 35% damage
+  desc_jp: Deal 400% damage + Deal 40% damage (2 hits, 20% each) + Deal 35% damage
+  max_atk_pct: null
+  name_en: Nobody likes a pest! + Shoo! + Time for you to go home
+  name_jp: Nobody likes a pest! + Shoo! + Time for you to go home
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] SkillSet:
+# 	[0] ESRecoverPlayer(55:2066) -> Hello and welcome!
+# 	Player recover 100% hp
+# 	[1] ESAbsorbThreshold(87:2067) -> What are you doing to Aamir?!
+# 	Absorb damage >= 500000 damage for 2 turns
+# 	[2] ESStatusShield(20:2068) -> Who are YOU?
+# 	Voids status ailments for 2 turns
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] SkillSet:
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# 	[0] ESAttackUPRemainingEnemies(17:2078) -> What did you do to my face?
+# 	Increase damage to 200% for the next 2 turns
+# 	[1] ESPoisonChangeRandom(60:2079) -> What do you think you're doing?!
+# 	Change Random 6 to Poison
+# 	[2] ESBindSkill(14:2080) -> Oh no! Aamir's precious face!
+# 	Bind active skills for 2 turns
+# [7] SkillSet:
+# 	Condition: When < 20% hp (ai:100 rnd:0)
+# 	[0] ESAttackMultihit(15:2086) -> Nobody likes a pest!
+# 	Deal 400% damage
+# 	[1] ESAttackMultihit(15:2087) -> Shoo!
+# 	Deal 40% damage (2 hits, 20% each)
+# 	[2] ESAttackMultihit(15:2088) -> Time for you to go home
+# 	Deal 35% damage
+# [8] SkillSet:
+# 	Condition: When < 50% hp (ai:100 rnd:0)
+# 	[0] ESAttackMultihit(15:2082) -> I'd rather play with them...
+# 	Deal 140% damage (2 hits, 70% each)
+# 	[1] ESRecoverEnemy(86:2083) -> Heheh!
+# 	Enemy recover 1% hp
+# 	[2] ESBlind(5:2084) -> Could you quit gawking?
+# 	Blind all orbs on the board
+# [9] SkillSet:
+# 	Condition: 50% chance (ai:50 rnd:0)
+# 	[0] ESColumnSpawnMulti(77:2074) -> You come over here, too
+# 	Change 1st column to Wood orbs, 6th column to Dark orbs, Deal 150% damage
+# 	[1] ESBindRandomSub(65:2075) -> Don't waste your time with them!
+# 	Bind 1 random subs for 2 turns
+# 	[2] ESAttackMultihit(15:2076) -> You're an eyesore!
+# 	Deal 20% damage (2 hits, 10% each)
+# [10] SkillSet:
+# 	[0] ESAttackMultihit(15:2070) -> How about THIS?
+# 	Deal 200% damage (2 hits, 100% each)
+# 	[1] ESRecoverEnemy(86:2071) -> Aamir, you're so cool!
+# 	Enemy recover 10% hp
+# 	[2] ESPoisonChangeRandom(60:2072) -> Let me help!
+# 	Change Random 1 to Poison

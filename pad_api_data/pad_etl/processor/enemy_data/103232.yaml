@@ -1,0 +1,108 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 103232
+monster_name_en: Alt. Old Castle Lantern, Flemin
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Void damage >= 100 for 3 turns (Preemptive)
+  desc_jp: Void damage >= 100 for 3 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Spooky Light
+  name_jp: Spooky Light
+  one_time: 1
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1-2
+  name_jp: Turn 1-2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Spawn random 3 Mortal Poison orbs, Deal 75% damage
+  desc_jp: Spawn random 3 Mortal Poison orbs, Deal 75% damage
+  max_atk_pct: 75
+  name_en: Eerie Flare
+  name_jp: Eerie Flare
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Spawn random 1 Bomb orbs, Deal 75% damage
+  desc_jp: Spawn random 1 Bomb orbs, Deal 75% damage
+  max_atk_pct: 75
+  name_en: Cat Bomb
+  name_jp: Cat Bomb
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Spawn random 5 Bomb orbs, Deal 160% damage
+  desc_jp: Spawn random 5 Bomb orbs, Deal 160% damage
+  max_atk_pct: 160
+  name_en: Candle Bomb
+  name_jp: Candle Bomb
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 4 -      100
+# [52] true
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESVoidShield(71:11369) -> Spooky Light
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Void damage >= 100 for 3 turns
+# [3] ESBranchRemainingEnemies(120:8595) -> ESBranchRemainingEnemies
+# Branch on remaining enemies <= 1, target rnd 9
+# [4] ESBranchCounter(32:22) -> ESBranchCounter
+# Branch on counter > 2, target rnd 9
+# [5] ESSetCounter(26:16) -> ESSetCounter
+# counter + 1
+# [6] ESRandomSpawn(92:11370) -> Eerie Flare
+# 	Condition: 50% chance & when Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison orbs are on the board (ai:50 rnd:0)
+# Spawn random 3 Mortal Poison orbs, Deal 75% damage
+# [7] ESBombRandomSpawn(102:11371) -> Cat Bomb
+# Spawn random 1 Bomb orbs, Deal 75% damage
+# [8] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [9] ESBombRandomSpawn(102:11372) -> Candle Bomb
+# Spawn random 5 Bomb orbs, Deal 160% damage
+# [10] ESEndPath(36:26) -> ESEndPath
+# end_turn

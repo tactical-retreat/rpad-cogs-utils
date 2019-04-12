@@ -1,0 +1,140 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1141
+monster_name_en: Kitty WoodBubblie
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Bouncing Merrily!
+  name_jp: Bouncing Merrily!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 30
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Bouncing Merrily!
+  name_jp: Bouncing Merrily!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 30
+- !SkillRecord
+  desc_en: Change Fire to Wood
+  desc_jp: Change Fire to Wood
+  max_atk_pct: null
+  name_en: Melon Drop!
+  name_jp: Melon Drop!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 30
+- !SkillRecord
+  desc_en: Change Wood to Water
+  desc_jp: Change Wood to Water
+  max_atk_pct: null
+  name_en: Blueberry Drop!
+  name_jp: Blueberry Drop!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 30
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 30
+  name_jp: HP < 30
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 150% damage
+  desc_jp: Deal 150% damage
+  max_atk_pct: 150
+  name_en: Jump Attack!
+  name_jp: Jump Attack!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 70
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Bouncing Merrily!
+  name_jp: Bouncing Merrily!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 30
+- !SkillRecord
+  desc_en: Change Fire to Wood
+  desc_jp: Change Fire to Wood
+  max_atk_pct: null
+  name_en: Melon Drop!
+  name_jp: Melon Drop!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 30
+- !SkillRecord
+  desc_en: Change Wood to Water
+  desc_jp: Change Wood to Water
+  max_atk_pct: null
+  name_en: Blueberry Drop!
+  name_jp: Blueberry Drop!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 30
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 3 -       11
+# [52] false
+# [53] 0 -        0
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 5, target rnd 4
+# [2] ESInactivity(66:886) -> Bouncing Merrily!
+# 	Condition: 30% chance (ai:30 rnd:0)
+# Do nothing
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESAttackMultihit(15:887) -> Jump Attack!
+# 	Condition: 70% chance when < 30% hp (ai:70 rnd:0)
+# Deal 150% damage
+# [5] ESInactivity(66:886) -> Bouncing Merrily!
+# 	Condition: 30% chance (ai:30 rnd:0)
+# Do nothing
+# [6] ESOrbChangeSingle(4:890) -> Melon Drop!
+# 	Condition: 30% chance (ai:30 rnd:0)
+# Change Fire to Wood
+# [7] ESOrbChangeSingle(4:889) -> Blueberry Drop!
+# 	Condition: 30% chance (ai:30 rnd:0)
+# Change Wood to Water

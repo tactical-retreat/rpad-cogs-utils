@@ -1,0 +1,199 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1190
+monster_name_en: Ancient Draggie Knight, Zeal
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings:
+- Found 2 unused actions
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Rcv 50% for 10 turns + Reduce damage from all sources by 99% for 5 turns
+    (Preemptive)
+  desc_jp: Rcv 50% for 10 turns + Reduce damage from all sources by 99% for 5 turns
+    (Preemptive)
+  max_atk_pct: null
+  name_en: Ancient Field + Hyper Dragon Shield
+  name_jp: Ancient Field + Hyper Dragon Shield
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: When player has any buff
+  name_jp: When player has any buff
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Voids player buff effects
+  desc_jp: Voids player buff effects
+  max_atk_pct: null
+  name_en: Wave of Nothingness
+  name_jp: Wave of Nothingness
+  one_time: 2
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  max_atk_pct: null
+  name_en: Ready...Set...Fight!
+  name_jp: Ready...Set...Fight!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 75% for 5 turns
+  desc_jp: Reduce damage from all sources by 75% for 5 turns
+  max_atk_pct: null
+  name_en: Super Dragon Shield
+  name_jp: Super Dragon Shield
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Movetime -3s for 10 turns
+  desc_jp: Movetime -3s for 10 turns
+  max_atk_pct: null
+  name_en: That's all you've got?!
+  name_jp: That's all you've got?!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 100% damage (2 hits, 50% each)
+  desc_jp: Deal 100% damage (2 hits, 50% each)
+  max_atk_pct: 100
+  name_en: Dragon Fang
+  name_jp: Dragon Fang
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Unused Actions
+############################################################
+# ESDamageShield(74:8338) -> Dragon Shield
+# Reduce damage from all sources by 50% for 5 turns
+# ESAttackUPRemainingEnemies(17:8335) -> This is my true power!
+# 	Condition: when <= 1 enemies remain (ai:100 rnd:0)
+# Increase damage to 300% for the next 999 turns
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 2 -       10
+# [54] 1
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] SkillSet:
+# 	[0] ESDebuffRCV(105:8331) -> Ancient Field
+# 	Rcv 50% for 10 turns
+# 	[1] ESDamageShield(74:8332) -> Hyper Dragon Shield
+# 	Reduce damage from all sources by 99% for 5 turns
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESDispel(6:8336) -> Wave of Nothingness
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
+# Voids player buff effects
+# [7] ESStatusShield(20:8333) -> Ready...Set...Fight!
+# Voids status ailments for 999 turns
+# [8] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 13
+# [9] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [10] ESDamageShield(74:8337) -> Super Dragon Shield
+# Reduce damage from all sources by 75% for 5 turns
+# [11] ESFlagOperation(24:14) -> ESFlagOperation
+# flag UNSET 0b10
+# [12] ESAttackMultihit(15:8339) -> Dragon Fang
+# Deal 100% damage (2 hits, 50% each)
+# [13] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 4, target rnd 17
+# [14] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b111
+# [15] ESDebuffMovetime(39:8334) -> That's all you've got?!
+# Movetime -3s for 10 turns
+# [16] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [17] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 8, target rnd 22
+# [18] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1111
+# [19] ESDamageShield(74:8338) -> Dragon Shield
+# Reduce damage from all sources by 50% for 5 turns
+# [20] ESFlagOperation(24:14) -> ESFlagOperation
+# flag UNSET 0b1000
+# [21] ESAttackMultihit(15:8339) -> Dragon Fang
+# Deal 100% damage (2 hits, 50% each)
+# [22] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 16, target rnd 26
+# [23] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11111
+# [24] ESAttackUPRemainingEnemies(17:8335) -> This is my true power!
+# 	Condition: when <= 1 enemies remain (ai:100 rnd:0)
+# Increase damage to 300% for the next 999 turns
+# [25] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [26] ESAttackMultihit(15:8339) -> Dragon Fang
+# Deal 100% damage (2 hits, 50% each)

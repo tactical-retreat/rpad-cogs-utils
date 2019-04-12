@@ -1,0 +1,219 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3836
+monster_name_en: Water Warchief Dragon, Senshu
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb Water damage for 5 turns + Lock all Water orbs, Deal 70% damage
+    (Preemptive)
+  desc_jp: Absorb Water damage for 5 turns + Lock all Water orbs, Deal 70% damage
+    (Preemptive)
+  max_atk_pct: null
+  name_en: Water Orb Eyes + Flowing Hydro Cannon
+  name_jp: Water Orb Eyes + Flowing Hydro Cannon
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Wood to Water, Deal 70% damage
+  desc_jp: Change Wood to Water, Deal 70% damage
+  max_atk_pct: 70
+  name_en: Gust of Wind
+  name_jp: Gust of Wind
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 70
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 70% damage
+  desc_jp: Blind all orbs on the board, Deal 70% damage
+  max_atk_pct: 70
+  name_en: Silent Sand
+  name_jp: Silent Sand
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Absorb damage >= 1000000 damage for 10 turns + Wood skyfall +25% for 10
+    turns
+  desc_jp: Absorb damage >= 1000000 damage for 10 turns + Wood skyfall +25% for 10
+    turns
+  max_atk_pct: null
+  name_en: Clearwater Reflection + Vitality Pulse
+  name_jp: Clearwater Reflection + Vitality Pulse
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 40
+  name_jp: HP < 40
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 35% for 1 turns + Deal 90% damage (3
+    hits, 30% each)
+  desc_jp: Reduce damage from all sources by 35% for 1 turns + Deal 90% damage (3
+    hits, 30% each)
+  max_atk_pct: null
+  name_en: Ripple + Copious Dragon Fangs
+  name_jp: Ripple + Copious Dragon Fangs
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 30
+  name_jp: HP < 30
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 1 turns + Deal 90% damage (3
+    hits, 30% each)
+  desc_jp: Reduce damage from all sources by 50% for 1 turns + Deal 90% damage (3
+    hits, 30% each)
+  max_atk_pct: null
+  name_en: Ripple + Copious Dragon Fangs
+  name_jp: Ripple + Copious Dragon Fangs
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 20
+  name_jp: HP < 20
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 75% for 1 turns + Deal 90% damage (3
+    hits, 30% each)
+  desc_jp: Reduce damage from all sources by 75% for 1 turns + Deal 90% damage (3
+    hits, 30% each)
+  max_atk_pct: null
+  name_en: Ripple + Copious Dragon Fangs
+  name_jp: Ripple + Copious Dragon Fangs
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 10
+  name_jp: HP < 10
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Movetime 25% for 1 turns, Deal 250% damage
+  desc_jp: Movetime 25% for 1 turns, Deal 250% damage
+  max_atk_pct: 250
+  name_en: Open Ocean
+  name_jp: Open Ocean
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 -      101
+# [52] true
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:3402) -> ESPreemptive
+# Enable preempt if level 4
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 4, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 8
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [6] SkillSet:
+# 	[0] ESAbsorbAttribute(53:7903) -> Water Orb Eyes
+# 	Absorb Water damage for 5 turns
+# 	[1] ESOrbLock(94:7904) -> Flowing Hydro Cannon
+# 	Lock all Water orbs, Deal 70% damage
+# [7] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [8] SkillSet:
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# 	[0] ESAbsorbThreshold(87:7908) -> Clearwater Reflection
+# 	Absorb damage >= 1000000 damage for 10 turns
+# 	[1] ESSkyfall(68:7909) -> Vitality Pulse
+# 	Wood skyfall +25% for 10 turns
+# [9] ESDebuffMovetime(39:7918) -> Open Ocean
+# 	Condition: When < 10% hp (ai:100 rnd:0)
+# Movetime 25% for 1 turns, Deal 250% damage
+# [10] SkillSet:
+# 	Condition: When < 20% hp (ai:100 rnd:0)
+# 	[0] ESDamageShield(74:7913) -> Ripple
+# 	Reduce damage from all sources by 75% for 1 turns
+# 	[1] ESAttackMultihit(15:7914) -> Copious Dragon Fangs
+# 	Deal 90% damage (3 hits, 30% each)
+# [11] SkillSet:
+# 	Condition: When < 30% hp (ai:100 rnd:0)
+# 	[0] ESDamageShield(74:7912) -> Ripple
+# 	Reduce damage from all sources by 50% for 1 turns
+# 	[1] ESAttackMultihit(15:7914) -> Copious Dragon Fangs
+# 	Deal 90% damage (3 hits, 30% each)
+# [12] SkillSet:
+# 	Condition: When < 40% hp (ai:100 rnd:0)
+# 	[0] ESDamageShield(74:7911) -> Ripple
+# 	Reduce damage from all sources by 35% for 1 turns
+# 	[1] ESAttackMultihit(15:7914) -> Copious Dragon Fangs
+# 	Deal 90% damage (3 hits, 30% each)
+# [13] ESOrbChangeAttackBits(108:7907) -> Gust of Wind
+# 	Condition: 70% chance (ai:70 rnd:0)
+# Change Wood to Water, Deal 70% damage
+# [14] ESBlind(62:7906) -> Silent Sand
+# Blind all orbs on the board, Deal 70% damage
+# [15] ESEndPath(36:26) -> ESEndPath
+# end_turn

@@ -1,0 +1,57 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1312
+monster_name_en: Mistress
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 5
+############################################################
+!SkillRecordListing
+level: 5
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind 1 random subs for 3 turns
+  desc_jp: Bind 1 random subs for 3 turns
+  max_atk_pct: null
+  name_en: Hold Web
+  name_jp: Hold Web
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 20
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 2 -       10
+# [52] false
+# [53] 1 -        1
+# [54] 0
+# 53 is enemy_skill_modifier
+# 54 is enemy_skill_modifier_type
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 5, target rnd 3
+# [2] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [3] ESBindRandomSub(65:1052) -> Hold Web
+# 	Condition: When < 50% hp , one-time use (ai:20 rnd:0) (one-time: 1)
+# Bind 1 random subs for 3 turns
