@@ -1150,6 +1150,25 @@ def suicide_nuke_convert(arguments):
     return f
 
 
+suicide_backups = {
+    'hp_remaining': 1,
+    'skill_text': ''
+}
+
+
+def suicide_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('suicide',
+                                     arguments,
+                                     suicide_backups)(x)
+        if c['hp_remaining'] == 0:
+            c['skill_text'] += 'Reduce HP to 1'
+        else:
+            c['skill_text'] += 'Reduce HP by ' + fmt_mult(c['hp_remaining'] * 100) + '%'
+        return 'suicide', c
+    return f
+
+
 type_attack_boost_backups = {'duration': 0,
                              'types': [],
                              'multiplier': 0,
@@ -1402,6 +1421,9 @@ def passive_stats_convert(arguments):
             c['skill_text'] += skill_text
         elif skill_text != '' and c['skill_text'] != '':
             c['skill_text'] += '; ' + skill_text
+
+        if c['skill_text'].endswith('; '):
+            c['skill_text'] = c['skill_text'][:-2]
 
         c['parameter'] = fmt_parameter(c)
         return 'passive_stats', c
@@ -2515,6 +2537,7 @@ SKILL_TRANSFORM = {
     192: multi_mass_match_convert({'for_attr':(0, binary_con), 'minimum_orb':(1, cc), 'atk_multiplier':(2, multi), 'add_combo':(3, cc)}),
     193: l_match_convert({'attributes':(0,binary_con), 'atk_multiplier':(1,multi2), 'rcv_multiplier':(2, multi2), 'damage_reduction':(3, multi)}),
     194: add_combo_att_convert({'attributes':(0, binary_con), 'min_attr':(1,cc), 'atk_multiplier':(2, multi2), 'add_combo':(3, cc)}),
+    195: suicide_convert({'hp_remaining': (0, multi)}),
     }
 
 
