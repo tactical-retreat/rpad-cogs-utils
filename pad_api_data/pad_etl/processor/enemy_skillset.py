@@ -731,6 +731,9 @@ class ESPoisonChangeRandom(ESOrbChange):
         self.random_count = int(params(skill)[1])
         from_attr = 'Random {:d}'.format(self.random_count)
         to_attr = ATTRIBUTE_MAP[7]
+        # TODO: This skill (and possibly others) seem to have an 'excludes hearts'
+        # clause; either it's innate to this skill, or it's in params[2] (many monsters have
+        # a 1 in that slot, not all though).
         super().__init__(skill, from_attr, to_attr)
 
 
