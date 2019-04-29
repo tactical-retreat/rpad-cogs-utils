@@ -112,7 +112,7 @@ def fmt_multiplier_text(hp_mult, atk_mult, rcv_mult):
         return '{}x all stats'.format(fmt_mult(hp_mult))
 
     mults = [('HP', hp_mult), ('ATK', atk_mult), ('RCV', rcv_mult)]
-    mults = list(filter(lambda x: x[1] != 1, mults))
+    mults = list(filter(lambda x: x[1] > 1, mults))
     mults.sort(key=itemgetter(1), reverse=True)
 
     chunks = []
@@ -187,6 +187,25 @@ def fmt_stats_type_attr_bonus(c, reduce_join_txt='; ', skip_attr_all=False):
         skill_text += reduct_text
 
     return skill_text
+
+
+def fmt_multi_attr(attributes, conjunction='or'):
+    prefix = ' '
+    if 1 <= len(attributes) <= 7:
+        attr_list = [ATTRIBUTES[i] for i in attributes]
+    elif 7 <= len(attributes) < 10:
+        att_sym_diff = sorted(list(set(ATTRIBUTES) - set(attributes)), key=lambda x: ATTRIBUTES[x])
+        attr_list = [ATTRIBUTES[i] for i in att_sym_diff]
+        prefix = ' non '
+    else:
+        return '' if conjunction == 'or' else ' all'
+
+    if len(attr_list) == 1:
+        return prefix + attr_list[0]
+    elif len(attributes) == 2:
+        return prefix + ' '.join([attr_list[0], conjunction, attr_list[1]])
+    else:
+        return prefix + ', '.join(attr for attr in attr_list[:-1]) + ', {} {}'.format(conjunction, attr_list[-1])
 
 
 # Active skill
@@ -1633,15 +1652,7 @@ def mass_match_convert(arguments):
         if max_count != min_count:
             skill_text += ' or more connected'
 
-        if len(attributes) >= 1 and len(attributes) <= 7:
-            color_text = ', '.join(ATTRIBUTES[i] for i in attributes) if len(attributes) == 1 else ((', '.join(ATTRIBUTES[i] for i in attributes[:-1])) + ' or {}'.format(ATTRIBUTES[attributes[-1]]))
-            skill_text += ' ' + color_text
-        elif len(attributes) >= 7 and len(attributes) < 10:
-            att_sym_diff = sorted(list(set(ATTRIBUTES) - set(attributes)), key = lambda x: ATTRIBUTES[x])
-            color_text = 'non {}'.format(', '.join(ATTRIBUTES[i] for i in att_sym_diff)) if len(att_sym_diff) == 1 else ('non {}'.format(', '.join(ATTRIBUTES[i] for i in att_sym_diff[:-1])) + ' or {}'.format(ATTRIBUTES[att_sym_diff[-1]]))
-            skill_text += ' ' + color_text
-
-        skill_text += ' orbs'
+        skill_text += fmt_multi_attr(attributes) + ' orbs'
 
         if max_count != min_count and max_count > 0:
             max_atk = (max_count - min_count) * bonus_atk_mult + min_atk_mult
@@ -2260,14 +2271,18 @@ def multi_mass_match_convert(arguments):
         _, c = convert_with_defaults('multi_mass_match',
                                      arguments,
                                      multi_mass_match_backups)(x)
-        c['skill_text'] = '{}x ATK and increase combo by {} when matching {} or more connected '.format(fmt_mult(c['atk_multiplier']),
-                                                                                                        c['add_combo'],
-                                                                                                        c['minimum_orb'])
-        for i in c['for_attr'][:-1]:
-            c['skill_text'] += ATTRIBUTES[i] + ', '
-        c['skill_text'] += ATTRIBUTES[int(c['for_attr'][-1])] + ' orbs at once'
+        c['skill_text'] = fmt_multiplier_text(1, c['atk_multiplier'], 1)
+        if c['atk_multiplier'] > 0:
+            c['skill_text'] += ' and '
+        c['skill_text'] += 'increase combo by {} when matching {} or more connected'.format(
+            c['add_combo'],
+            c['minimum_orb'])
+
+        c['skill_text'] += fmt_multi_attr(c['for_attr'], conjunction='and') + ' orbs at once'
+
         c['parameter'] = fmt_parameter(c)
         return 'multi_mass_match', c
+
     return f
 
 l_match_backups = {'attributes': [],
@@ -2286,7 +2301,8 @@ def l_match_convert(arguments):
         atk_mult = c['atk_multiplier']
         rcv_mult = c['rcv_multiplier']
         reduct = c['damage_reduction']
-        mult_text = fmt_multiplier_text(1, atk_mult, rcv_mult) 
+        attributes = c['attributes']
+        mult_text = fmt_multiplier_text(1, atk_mult, rcv_mult)
         reduct_text = fmt_reduct_text(reduct)
         if mult_text:
             skill_text = mult_text
@@ -2294,12 +2310,10 @@ def l_match_convert(arguments):
                 skill_text += ' and ' + reduct_text
         elif reduct_text:
             skill_text = mult_text
-        skill_text += ' when matching 5 '
-        for i in c['attributes'][:-1]:
-            skill_text += ATTRIBUTES[i] + ', '
-        skill_text += ATTRIBUTES[int(c['attributes'][-1])] + ' orbs in L shape'
+        skill_text += ' when matching 5' + fmt_multi_attr(attributes) + ' orbs in L shape'
         c['skill_text'] = skill_text
         return 'l_match', c
+
     return f
 
 
