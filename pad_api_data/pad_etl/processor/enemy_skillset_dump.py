@@ -381,12 +381,10 @@ def dump_summary_to_file(card: BookCard, enemy_summary: EnemySummary, enemy_beha
                 f.write('# {}\n'.format(behavior_str))
 
         f.write('{}\n'.format(_header('ES Modifiers')))
-        f.write('# [{}] {} - {:8b}\n'.format(9, card.unknown_009, card.unknown_009))
-        f.write('# [{}] {}\n'.format(52, 'true' if card.unknown_052 else 'false'))
-        f.write('# [{}] {} - {:8b}\n'.format(53, card.enemy_skill_effect, card.enemy_skill_effect))
-        f.write('# [{}] {}\n'.format(54, card.enemy_skill_effect_type))
-        f.write('# 53 is enemy_skill_modifier\n')
-        f.write('# 54 is enemy_skill_modifier_type\n')
+        f.write('# [{}] {} - monster size?\n'.format(9, card.unknown_009))
+        f.write('# [{}] {} - use new AI\n'.format(52, 'true' if card.unknown_052 else 'false'))
+        f.write('# [{}] {} - starting/max counter\n'.format(53, card.enemy_skill_max_counter))
+        f.write('# [{}] {} - counter increment\n'.format(54, card.enemy_skill_counter_increment))
 
         f.write('#\n')
 
@@ -443,7 +441,7 @@ def load_summary_as_dump_text(card: BookCard, monster_level: int, dungeon_atk_mo
         if row.usage_pct not in [100, 0, None]:
             desc += ' ({}% chance)'.format(row.usage_pct)
         if row.one_time and row.record_type_name != 'PREEMPT':
-            if card.enemy_skill_effect_type == 1:
+            if card.enemy_skill_counter_increment == 1:
                 desc += ' (every {} turns)'.format(row.one_time + 1)
             else:
                 desc += ' (1 time use)'

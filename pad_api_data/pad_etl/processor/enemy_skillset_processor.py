@@ -642,7 +642,7 @@ def compute_enemy_actions(ctx: Context, behaviors: List[ESBehavior], hp_checkpoi
 
 
 def convert(card: BookCard, enemy_behavior: List[ESBehavior],
-            level: int, enemy_skill_effect: int, enemy_skill_effect_type: int, force_one_enemy: bool=False):
+            level: int, enemy_skill_max_counter: int, enemy_skill_counter_increment: int, force_one_enemy: bool=False):
     skillset = ProcessedSkillset(level)
 
     # Behavior is 1-indexed, so stick a fake row in to start
@@ -660,15 +660,15 @@ def convert(card: BookCard, enemy_behavior: List[ESBehavior],
     hp_checkpoints = sorted(hp_checkpoints, reverse=True)
 
     # Pick the correct enemy_skill_effect model to use
-    if enemy_skill_effect_type == 0:
-        ctx = CTXCountdown(level, enemy_skill_effect)
-    elif enemy_skill_effect_type == 1:
-        ctx = CTXCounter(level, enemy_skill_effect)
+    if enemy_skill_counter_increment == 0:
+        ctx = CTXCountdown(level, enemy_skill_max_counter)
+    elif enemy_skill_counter_increment == 1:
+        ctx = CTXCounter(level, enemy_skill_max_counter)
     else:
         # ctx = Context(level)
         # For now fall back to the old context implementation to prevent errors in log.
         print('Incorrect context used')
-        ctx = CTXCountdown(level, enemy_skill_effect)
+        ctx = CTXCountdown(level, enemy_skill_max_counter)
 
     if force_one_enemy:
         ctx.enemies = 1

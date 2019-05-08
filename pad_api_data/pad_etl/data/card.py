@@ -148,16 +148,22 @@ class BookCard(pad_util.JsonDictEncodable):
 
         self.unknown_052 = raw[52]
 
-        # Usage modified by enemy_skill_effect_type.
-        self.enemy_skill_effect = int(raw[53])
+        # Each monster has an internal counter which starts at raw[53] and is decremented
+        # each time a skill activates. If the counter is less than the action cost, it cannot
+        # execute.
+        #
+        # Turn flow follows this order:
+        # 1: pick action (possibly checking counter value)
+        # 2: increment the counter up, capped at the max value
+        # 3: decrement the counter based on the selected action value
 
-        # The vast majority of these are:
-        # 0: (unknown atm; lot of monsters have this, with large numbers or bitmaps in 53)
-        # 1: Use 53 as countdown, when expired reset one-time skills.
-        # 2: (not sure, only used for deus ex machina, has 53=2)
-        # 5: (only used by a monster that never appears in a dungeon)
-        # 7: (not sure, only used by kanna, 53=7 as well)
-        self.enemy_skill_effect_type = int(raw[54])
+        # The starting and maximum value for the enemy skill action counter.
+        self.enemy_skill_max_counter = int(raw[53])
+
+        # The amount to increment the counter each turn.
+        # The vast majority of these are 0/1.
+        # Deus Ex Machina has 2, Kanna has 7.
+        self.enemy_skill_counter_increment = int(raw[54])
 
         # Boolean, unlikely to be anything useful, only populated for 495 and 111.
         self.unknown_055 = raw[55]

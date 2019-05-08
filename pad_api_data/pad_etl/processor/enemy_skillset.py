@@ -1856,8 +1856,8 @@ def inject_implicit_onetime(card: BookCard, behavior: List[ESAction]):
     TODO: Investigate if this has an ai/rnd interaction, like the hp_threshold issue.
     There may be some interaction with slots 52/53/54 to take into account but unclear.
     """
-    if card.enemy_skill_effect_type != 0:
-        # This only seems to apply to type 0 monsters
+    if card.enemy_skill_counter_increment != 0:
+        # This seems unlikely to be correct.
         return
     max_flag = max([0] + [x.condition.one_time for x in behavior if hasattr(x, 'condition') and x.condition.one_time])
     next_flag = pow(2, ceil(log(max_flag + 1)/log(2)))

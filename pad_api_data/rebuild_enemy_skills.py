@@ -35,8 +35,8 @@ def parse_args():
 def process_card(mcard):
     enemy_behavior = mcard.enemy_behavior
     card = mcard.card
-    enemy_skill_effect = card.enemy_skill_effect
-    enemy_skill_effect_type = card.enemy_skill_effect_type
+    enemy_skill_max_counter = card.enemy_skill_max_counter
+    enemy_skill_counter_increment = card.enemy_skill_counter_increment
     if not enemy_behavior:
         return
 
@@ -47,8 +47,8 @@ def process_card(mcard):
         skillset = enemy_skillset_processor.convert(
             card,
             enemy_behavior,
-            level, enemy_skill_effect,
-            enemy_skill_effect_type,
+            level, enemy_skill_max_counter,
+            enemy_skill_counter_increment,
             force_one_enemy=(int(card.unknown_009) == 5))
         flattened = enemy_skillset_dump.flatten_skillset(level, skillset)
         if not flattened.records:
