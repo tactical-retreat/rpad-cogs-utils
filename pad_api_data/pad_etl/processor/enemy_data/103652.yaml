@@ -67,9 +67,9 @@ records:
   usage_pct: null
 - !SkillRecord
   desc_en: Increase damage to 126% for the next 10 turns + Absorb combo <= 5 damage
-    for 999 turns
+    for 10 turns
   desc_jp: Increase damage to 126% for the next 10 turns + Absorb combo <= 5 damage
-    for 999 turns
+    for 10 turns
   max_atk_pct: null
   name_en: Rage + Take Flight
   name_jp: Rage + Take Flight
@@ -136,12 +136,10 @@ records:
 ############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] true
-# [53] 1 -        1
-# [54] 0
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 1 - starting/max counter
+# [54] 0 - counter increment
 #
 ############################################################
 ### Raw Behavior
@@ -168,7 +166,7 @@ records:
 # 	[0] ESAttackUPRemainingEnemies(17:7233) -> Rage
 # 	Increase damage to 126% for the next 10 turns
 # 	[1] ESAbsorbCombo(67:7234) -> Take Flight
-# 	Absorb combo <= 5 damage for 999 turns
+# 	Absorb combo <= 5 damage for 10 turns
 # [9] ESAttackMultihit(15:7240) -> Triple Flame Breath
 # 	Condition: When < 15% hp (ai:100 rnd:0)
 # Deal 300% damage (3 hits, 100% each)

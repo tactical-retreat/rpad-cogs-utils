@@ -8,7 +8,7 @@ monster_name_en: Kage
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 7 unused actions
+- Found 2 unused actions
 
 ############################################################
 ### Data @ 1
@@ -39,43 +39,22 @@ records:
 ############################################################
 ### Unused Actions
 ############################################################
-# ESColumnSpawnMulti(77:12619) -> Misogi
-# 	Condition: 25% chance (ai:25 rnd:0)
-# Change 3rd, 4th column to Dark orbs, Deal 150% damage
 # ESInactivity(66:12608) -> Away with you!
 # 	Condition: 33% chance (ai:0 rnd:33)
 # Do nothing
 # SkillSet:
 # 	Condition: 33% chance (ai:0 rnd:33)
-# 	[0] ESAttackMultihit(15:12612) -> Hadoken
-# 	Deal 50% damage
-# 	[1] ESAbsorbCombo(67:12613) -> Kurekijin
-# 	Absorb combo <= 5 damage for 1 turns, Deal 55% damage
-# SkillSet:
-# 	Condition: 34% chance (ai:0 rnd:34)
-# 	[0] ESAttackMultihit(15:12615) -> Shoryuken
-# 	Deal 60% damage
-# 	[1] ESRowSpawnMulti(79:12616) -> Shakunetsu Hadoken
-# 	Change 3rd row to Fire orbs, Deal 50% damage
-# ESAttackUPRemainingEnemies(17:12618) -> Rikudo Osatsu
-# 	Condition: One-time use, when <= 1 enemies remain (ai:100 rnd:0) (one-time: 1)
-# Increase damage to 150% for the next 10 turns
-# ESAttackMultihit(15:12620) -> Shun Goku Satsu
-# Deal 300% damage (10 hits, 30% each)
-# SkillSet:
-# 	[0] ESInactivity(66:12617) -> This will be your grave!
+# 	[0] ESInactivity(66:12609) -> You are lucky to meet me
 # 	Do nothing
-# 	[1] ESBlind(5:12674) -> Fly off!
-# 	Blind all orbs on the board, Deal 200% damage
+# 	[1] ESEndBattle(40:12610) -> For you!
+# 	Reduce self HP to 0
 ############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] true
-# [53] 3 -       11
-# [54] 0
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 3 - starting/max counter
+# [54] 0 - counter increment
 #
 ############################################################
 ### Raw Behavior
@@ -95,41 +74,32 @@ records:
 # Branch on counter > 10, target rnd 16
 # [6] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 51, target rnd 8
-# [7] ESColumnSpawnMulti(77:12619) -> Misogi
-# 	Condition: 25% chance (ai:25 rnd:0)
-# Change 3rd, 4th column to Dark orbs, Deal 150% damage
+# [7] ESNone(0:12619) -> ESNone
+# nothing
 # [8] ESInactivity(66:12608) -> Away with you!
 # 	Condition: 33% chance (ai:0 rnd:33)
 # Do nothing
 # [9] SkillSet:
 # 	Condition: 33% chance (ai:0 rnd:33)
-# 	[0] ESAttackMultihit(15:12612) -> Hadoken
-# 	Deal 50% damage
-# 	[1] ESAbsorbCombo(67:12613) -> Kurekijin
-# 	Absorb combo <= 5 damage for 1 turns, Deal 55% damage
-# [10] SkillSet:
-# 	Condition: 34% chance (ai:0 rnd:34)
-# 	[0] ESAttackMultihit(15:12615) -> Shoryuken
-# 	Deal 60% damage
-# 	[1] ESRowSpawnMulti(79:12616) -> Shakunetsu Hadoken
-# 	Change 3rd row to Fire orbs, Deal 50% damage
+# 	[0] ESInactivity(66:12609) -> You are lucky to meet me
+# 	Do nothing
+# 	[1] ESEndBattle(40:12610) -> For you!
+# 	Reduce self HP to 0
+# [10] ESNone(0:12614) -> ESNone
+# nothing
 # [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [12] ESAttackUPRemainingEnemies(17:12618) -> Rikudo Osatsu
-# 	Condition: One-time use, when <= 1 enemies remain (ai:100 rnd:0) (one-time: 1)
-# Increase damage to 150% for the next 10 turns
+# [12] ESNone(0:12618) -> ESNone
+# nothing
 # [13] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 11, target rnd 5
-# [14] ESAttackMultihit(15:12620) -> Shun Goku Satsu
-# Deal 300% damage (10 hits, 30% each)
+# [14] ESNone(0:12620) -> ESNone
+# nothing
 # [15] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [16] ESSetCounter(25:15) -> ESSetCounter
 # counter = 0
-# [17] SkillSet:
-# 	[0] ESInactivity(66:12617) -> This will be your grave!
-# 	Do nothing
-# 	[1] ESBlind(5:12674) -> Fly off!
-# 	Blind all orbs on the board, Deal 200% damage
+# [17] ESNone(0:12673) -> ESNone
+# nothing
 # [18] ESEndPath(36:26) -> ESEndPath
 # end_turn
