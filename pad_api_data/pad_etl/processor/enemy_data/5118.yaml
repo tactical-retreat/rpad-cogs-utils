@@ -1,0 +1,181 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 5118
+monster_name_en: Qilin
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings:
+- Found 4 unused actions
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Deal 110% damage (2 hits, 55% each) (Preemptive)
+  desc_jp: Deal 110% damage (2 hits, 55% each) (Preemptive)
+  max_atk_pct: 110
+  name_en: What about this?
+  name_jp: What about this?
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 0
+- !SkillRecord
+  desc_en: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
+    orbs + Bind 4 random subs for 10 turns (Preemptive)
+  desc_jp: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
+    orbs + Bind 4 random subs for 10 turns (Preemptive)
+  max_atk_pct: null
+  name_en: You can stay here forever! + Forever!!
+  name_jp: You can stay here forever! + Forever!!
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 110% damage (2 hits, 55% each)
+  desc_jp: Deal 110% damage (2 hits, 55% each)
+  max_atk_pct: 110
+  name_en: What about this?
+  name_jp: What about this?
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
+    orbs + Bind 4 random subs for 10 turns
+  desc_jp: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
+    orbs + Bind 4 random subs for 10 turns
+  max_atk_pct: null
+  name_en: You can stay here forever! + Forever!!
+  name_jp: You can stay here forever! + Forever!!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Deal 110% damage (2 hits, 55% each) (Preemptive)
+  desc_jp: Deal 110% damage (2 hits, 55% each) (Preemptive)
+  max_atk_pct: 110
+  name_en: What about this?
+  name_jp: What about this?
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 0
+- !SkillRecord
+  desc_en: Do nothing (Preemptive)
+  desc_jp: Do nothing (Preemptive)
+  max_atk_pct: null
+  name_en: 7 years, yeaaaah!
+  name_jp: 7 years, yeaaaah!
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 110% damage (2 hits, 55% each)
+  desc_jp: Deal 110% damage (2 hits, 55% each)
+  max_atk_pct: 110
+  name_en: What about this?
+  name_jp: What about this?
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 0
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: 7 years, yeaaaah!
+  name_jp: 7 years, yeaaaah!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Unused Actions
+############################################################
+# ESInactivity(66:12678) -> Celebration time!
+# Do nothing
+# ESInactivity(66:12679) -> What a great day!
+# Do nothing
+# SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
+# 	[0] ESStatusShield(20:12683) -> Hey! Good of you to come!
+# 	Voids status ailments for 999 turns
+# 	[1] ESAbsorbThreshold(87:12684) -> Make sure you take a rest too!
+# 	Absorb damage >= 8000000 damage for 999 turns
+# 	[2] ESBindAwoken(88:12685) -> In eternity!
+# 	Bind awoken skills for 10 turns
+# ESBindAwoken(88:12685) -> In eternity!
+# Bind awoken skills for 10 turns
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 3 - starting/max counter
+# [54] 0 - counter increment
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESAttackMultihit(15:12689) -> What about this?
+# Deal 110% damage (2 hits, 55% each)
+# [3] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 4, target rnd 5
+# [4] SkillSet:
+# 	[0] ESOrbLock(94:12691) -> You can stay here forever!
+# 	Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# 	[1] ESBindRandomSub(65:12692) -> Forever!!
+# 	Bind 4 random subs for 10 turns
+# [5] ESInactivity(66:12675) -> 7 years, yeaaaah!
+# Do nothing
+# [6] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 13
+# [7] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [8] ESBranchCombo(113:6528) -> ESBranchCombo
+# Branch on combo > 9, target rnd 10
+# [9] ESInactivity(66:12678) -> Celebration time!
+# Do nothing
+# [10] ESSetCounter(26:16) -> ESSetCounter
+# counter + 1
+# [11] ESInactivity(66:12678) -> Celebration time!
+# Do nothing
+# [12] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [13] ESBranchCombo(113:6528) -> ESBranchCombo
+# Branch on combo > 9, target rnd 16
+# [14] ESInactivity(66:12679) -> What a great day!
+# Do nothing
+# [15] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [16] ESSetCounter(26:16) -> ESSetCounter
+# counter + 1
+# [17] ESBranchCounter(32:22) -> ESBranchCounter
+# Branch on counter > 2, target rnd 19
+# [18] SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
+# 	[0] ESStatusShield(20:12683) -> Hey! Good of you to come!
+# 	Voids status ailments for 999 turns
+# 	[1] ESAbsorbThreshold(87:12684) -> Make sure you take a rest too!
+# 	Absorb damage >= 8000000 damage for 999 turns
+# 	[2] ESBindAwoken(88:12685) -> In eternity!
+# 	Bind awoken skills for 10 turns
+# [19] ESBindAwoken(88:12685) -> In eternity!
+# Bind awoken skills for 10 turns
+# [20] ESEndPath(36:26) -> ESEndPath
+# end_turn

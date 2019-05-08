@@ -1,0 +1,180 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2513
+monster_name_en: Snow Star Byakko, Haku
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Player -99% HP (Preemptive)
+  desc_jp: Player -99% HP (Preemptive)
+  max_atk_pct: null
+  name_en: Don't come...
+  name_jp: Don't come...
+  one_time: 2
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 1 turns, Deal 95% damage
+  desc_jp: Reduce damage from all sources by 50% for 1 turns, Deal 95% damage
+  max_atk_pct: 95
+  name_en: Warm Gloves
+  name_jp: Warm Gloves
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 112% damage (4 hits, 28% each)
+  desc_jp: Deal 112% damage (4 hits, 28% each)
+  max_atk_pct: 112
+  name_en: Double Wreath Swing
+  name_jp: Double Wreath Swing
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind awoken skills for 5 turns
+  desc_jp: Bind awoken skills for 5 turns
+  max_atk_pct: null
+  name_en: I told you not to...
+  name_jp: I told you not to...
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 1 turns, Deal 95% damage
+  desc_jp: Reduce damage from all sources by 50% for 1 turns, Deal 95% damage
+  max_atk_pct: 95
+  name_en: Warm Gloves
+  name_jp: Warm Gloves
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Deal 112% damage (4 hits, 28% each)
+  desc_jp: Deal 112% damage (4 hits, 28% each)
+  max_atk_pct: 112
+  name_en: Double Wreath Swing
+  name_jp: Double Wreath Swing
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 20
+  name_jp: HP <= 20
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind awoken skills for 5 turns
+  desc_jp: Bind awoken skills for 5 turns
+  max_atk_pct: null
+  name_en: I told you not to...
+  name_jp: I told you not to...
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 245% damage (7 hits, 35% each)
+  desc_jp: Deal 245% damage (7 hits, 35% each)
+  max_atk_pct: 245
+  name_en: Western Seven-Star Formation
+  name_jp: Western Seven-Star Formation
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 3 - starting/max counter
+# [54] 0 - counter increment
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESGravity(50:12657) -> Don't come...
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
+# Player -99% HP
+# [3] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 50, target rnd 7
+# [4] ESDamageShield(74:12658) -> Warm Gloves
+# 	Condition: 50% chance (ai:0 rnd:50)
+# Reduce damage from all sources by 50% for 1 turns, Deal 95% damage
+# [5] ESAttackMultihit(15:12659) -> Double Wreath Swing
+# 	Condition: 50% chance (ai:0 rnd:50)
+# Deal 112% damage (4 hits, 28% each)
+# [6] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [7] ESBindAwoken(88:12660) -> I told you not to...
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Bind awoken skills for 5 turns
+# [8] ESBranchHP(29:19) -> ESBranchHP
+# Branch on hp > 21, target rnd 4
+# [9] ESAttackMultihit(15:12661) -> Western Seven-Star Formation
+# Deal 245% damage (7 hits, 35% each)
+# [10] ESEndPath(36:26) -> ESEndPath
+# end_turn

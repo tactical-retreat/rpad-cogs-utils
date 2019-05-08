@@ -1,0 +1,94 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 5120
+monster_name_en: Sacred Beast's Seven-Star Mirror
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings:
+- Found 4 unused actions
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 7 turns (Preemptive)
+  desc_jp: Reduce damage from all sources by 50% for 7 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Protective Type
+  name_jp: Protective Type
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Reduce self HP to 0
+  desc_jp: Reduce self HP to 0
+  max_atk_pct: null
+  name_en: The Seven-Star Mirror stopped shining
+  name_jp: The Seven-Star Mirror stopped shining
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Unused Actions
+############################################################
+# ESOrbSealRow(100:12381) -> Immovable Type
+# 	Condition: One-time use (ai:50 rnd:0) (one-time: 2)
+# Seal 1st row for 3 turns, Deal 90% damage
+# ESCloud(104:12382) -> Invisible Type
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
+# 2x2 cloud appear for 3 turns at random location, Deal 90% damage
+# ESRandomSpawn(92:12383) -> Poison Scourge
+# 	Condition: 50% chance & when Fire, Water, Wood, Light, Dark, Heal, Jammer, Mortal Poison orbs are on the board (ai:0 rnd:50)
+# Spawn random 5 Poison orbs, Deal 100% damage
+# ESBombFixedSpawn(103:12384) -> Burst Scourge
+# 	Condition: 50% chance (ai:0 rnd:50)
+# Spawn Bomb orbs in the specified positions, Deal 100% damage
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 2 - starting/max counter
+# [54] 1 - counter increment
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] ESDamageShield(74:12380) -> Protective Type
+# Reduce damage from all sources by 50% for 7 turns
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESBranchRemainingEnemies(120:8595) -> ESBranchRemainingEnemies
+# Branch on remaining enemies <= 1, target rnd 12
+# [7] ESOrbSealRow(100:12381) -> Immovable Type
+# 	Condition: One-time use (ai:50 rnd:0) (one-time: 2)
+# Seal 1st row for 3 turns, Deal 90% damage
+# [8] ESCloud(104:12382) -> Invisible Type
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
+# 2x2 cloud appear for 3 turns at random location, Deal 90% damage
+# [9] ESRandomSpawn(92:12383) -> Poison Scourge
+# 	Condition: 50% chance & when Fire, Water, Wood, Light, Dark, Heal, Jammer, Mortal Poison orbs are on the board (ai:0 rnd:50)
+# Spawn random 5 Poison orbs, Deal 100% damage
+# [10] ESBombFixedSpawn(103:12384) -> Burst Scourge
+# 	Condition: 50% chance (ai:0 rnd:50)
+# Spawn Bomb orbs in the specified positions, Deal 100% damage
+# [11] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [12] ESEndBattle(40:12385) -> The Seven-Star Mirror stopped shining
+# Reduce self HP to 0
+# [13] ESEndPath(36:26) -> ESEndPath
+# end_turn

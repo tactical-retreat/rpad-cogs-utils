@@ -1,0 +1,168 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1835
+monster_name_en: Dark-Winged Star Angel, Lumiel
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings:
+- Found 2 unused actions
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 100% damage + Spawn random 3 Fire, Water,
+    Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs (Preemptive)
+  desc_jp: Blind all orbs on the board, Deal 100% damage + Spawn random 3 Fire, Water,
+    Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs (Preemptive)
+  max_atk_pct: null
+  name_en: It's pitch black + Take this!
+  name_jp: It's pitch black + Take this!
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Absorb combo <= 6 damage for 99 turns
+  desc_jp: Voids status ailments for 999 turns + Absorb combo <= 6 damage for 99 turns
+  max_atk_pct: null
+  name_en: Clean up please! + More and more!
+  name_jp: Clean up please! + More and more!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change Poison to Dark, Deal 250% damage
+  desc_jp: Change Poison to Dark, Deal 250% damage
+  max_atk_pct: 250
+  name_en: Useless things go in the trash can!
+  name_jp: Useless things go in the trash can!
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 100% damage + Spawn random 3 Fire, Water,
+    Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+  desc_jp: Blind all orbs on the board, Deal 100% damage + Spawn random 3 Fire, Water,
+    Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+  max_atk_pct: null
+  name_en: It's pitch black + Take this!
+  name_jp: It's pitch black + Take this!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 10
+  name_jp: HP < 10
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change all orbs to Water, Dark, Deal 500% damage
+  desc_jp: Change all orbs to Water, Dark, Deal 500% damage
+  max_atk_pct: 500
+  name_en: I don't need all this anymore
+  name_jp: I don't need all this anymore
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Unused Actions
+############################################################
+# ESOrbChangeAttackBits(108:13174) -> Useless things go in the trash can!
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Change Jammer to Dark, Deal 250% damage
+# ESSkyfall(68:13178) -> I'll give you more!
+# Jammer, Poison skyfall +15% for 10 turns
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 1 - starting/max counter
+# [54] 1 - counter increment
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] SkillSet:
+# 	[0] ESBlind(62:13171) -> It's pitch black
+# 	Blind all orbs on the board, Deal 100% damage
+# 	[1] ESRandomSpawn(92:13172) -> Take this!
+# 	Spawn random 3 Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 10
+# [7] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [8] SkillSet:
+# 	[0] ESStatusShield(20:13176) -> Clean up please!
+# 	Voids status ailments for 999 turns
+# 	[1] ESAbsorbCombo(67:13177) -> More and more!
+# 	Absorb combo <= 6 damage for 99 turns
+# [9] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [10] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 10, target rnd 20
+# [11] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 50, target rnd 16
+# [12] ESOrbChangeAttackBits(108:13173) -> Useless things go in the trash can!
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Change Poison to Dark, Deal 250% damage
+# [13] ESOrbChangeAttackBits(108:13174) -> Useless things go in the trash can!
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Change Jammer to Dark, Deal 250% damage
+# [14] SkillSet:
+# 	[0] ESBlind(62:13171) -> It's pitch black
+# 	Blind all orbs on the board, Deal 100% damage
+# 	[1] ESRandomSpawn(92:13172) -> Take this!
+# 	Spawn random 3 Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# [15] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [16] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 12
+# [17] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [18] ESSkyfall(68:13178) -> I'll give you more!
+# Jammer, Poison skyfall +15% for 10 turns
+# [19] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [20] ESBoardChangeAttackBits(85:13179) -> I don't need all this anymore
+# Change all orbs to Water, Dark, Deal 500% damage
+# [21] ESEndPath(36:26) -> ESEndPath
+# end_turn
