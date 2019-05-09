@@ -674,6 +674,10 @@ class ESOrbChange(ESAction):
             description=Describe.orb_change(self.orb_from, self.orb_to)
         )
 
+    def is_conditional(self):
+        return self.orb_from.lower() != 'random'
+
+
 class ESOrbChangeConditional(ESOrbChange):
     """Parent class for orb changes that may not execute."""
 
@@ -1217,6 +1221,9 @@ class ESRandomSpawn(ESAction):
                     self.condition_attributes).capitalize()
 
 
+    def is_conditional(self):
+        return len(self.condition_attributes or []) < 6
+
 class ESBombRandomSpawn(ESAction):
     def __init__(self, skill: EnemySkillRef):
         self.count = params(skill)[2]
@@ -1333,6 +1340,9 @@ class ESOrbLock(ESAction):
             effect='orb_lock',
             description=Describe.orb_lock(self.count, self.attributes)
         )
+
+    def is_conditional(self):
+        return self.attributes != ['random'] and len(self.attributes) != 9
 
 
 class ESOrbSeal(ESAction):
