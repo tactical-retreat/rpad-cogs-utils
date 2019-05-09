@@ -438,6 +438,9 @@ class ESCondition(object):
         if self.hp_threshold and self._ai == 0:
             self.hp_threshold = None
 
+        # If set, this only executes when a specified number of enemies remain.
+        self.enemies_remaining = None
+
     def use_chance(self):
         """Returns the likelyhood that this condition will be used.
 
@@ -844,6 +847,7 @@ class ESRecoverEnemyAlly(ESRecover):
         super().__init__(skill, target='enemy ally')
         if self.condition:
             self.condition.description = 'When enemy ally is killed'
+            self.condition.enemies_remaining = 1
 
 
 class ESRecoverPlayer(ESRecover):

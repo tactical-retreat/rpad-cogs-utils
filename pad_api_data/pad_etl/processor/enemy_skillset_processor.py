@@ -65,9 +65,9 @@ class HpActions():
 class Moveset(object):
     def __init__(self):
         # Action which triggers when a status is applied.
-        self.status_action = None  # type: ESAttackUpStatus
-        # Action which triggers player has a buff.
-        self.dispel_action = None  # type: ESDispel
+        self.status_action = None  # type: Optional[ESAttackUpStatus]
+        # Action which triggers when player has a buff.
+        self.dispel_action = None  # type: Optional[ESDispel]
         # Timed and repeating actions which execute at various HP checkpoints.
         self.hp_actions = []  # type: List[HpActions]
 
@@ -295,6 +295,8 @@ class Context(object):
             return self.skill_counter >= cond.one_time
         elif cond.forced_one_time:
             return self.flag_skill_use & cond.forced_one_time == 0
+        elif cond.enemies_remaining:
+            return self.enemies <= cond.enemies_remaining
         else:
             return True
 
@@ -396,7 +398,7 @@ def loop_through_inner(ctx, behaviors: List[Optional[ESBehavior]]) -> List[ESAct
                     idx += 1
                     continue
 
-                if cond.use_chance() == 100 and b_type != ESDispel:
+                if cond.use_chance() == 100 and b_type not in [ESDispel]:
                     # This always executes so it is a terminal action.
                     if not ctx.check_skill_use(cond):
                         idx += 1
@@ -517,6 +519,7 @@ def loop_through_inner(ctx, behaviors: List[Optional[ESBehavior]]) -> List[ESAct
             continue
 
         if b_type == ESBranchRemainingEnemies:
+            # TODO: This should be <= probably
             if ctx.enemies == b.branch_value:
                 idx = b.target_round
             else:
@@ -562,7 +565,7 @@ def info_from_behaviors(behaviors: List[ESBehavior]):
             card_checkpoints.update(es.branch_value)
 
         # Find checks for specific amounts of enemies.
-        if type(es) == ESBranchRemainingEnemies or type(es) == ESAttackUPRemainingEnemies:
+        if type(es) in [ESBranchRemainingEnemies, ESAttackUPRemainingEnemies, ESRecoverEnemyAlly]:
             has_enemy_remaining_branch = True
 
     return base_abilities, hp_checkpoints, card_checkpoints, has_enemy_remaining_branch
