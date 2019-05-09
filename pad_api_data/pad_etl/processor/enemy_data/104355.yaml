@@ -1,0 +1,222 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 104355
+monster_name_en: Alt. Spirit Numen of Light, Keela
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings:
+- Found 12 unused actions
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Light by 50%
+  desc_jp: Reduce damage from Light by 50%
+  max_atk_pct: null
+  name_en: Ability
+  name_jp: Ability
+  one_time: 0
+  record_type_name: PASSIVE
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 99%
+  desc_jp: Survive attacks with 1 HP when HP > 99%
+  max_atk_pct: null
+  name_en: Ability
+  name_jp: Ability
+  one_time: 0
+  record_type_name: PASSIVE
+  usage_pct: 100
+
+############################################################
+### Unused Actions
+############################################################
+# SkillSet:
+# 	[0] ESStatusShield(20:10029) -> Prayer
+# 	Voids status ailments for 999 turns
+# 	[1] ESAbsorbAttribute(53:10030) -> Dawn Eclipse
+# 	Absorb Light damage for 10 turns
+# 	[2] ESSpinnersFixed(110:10031) -> Halo Ring
+# 	Specific orbs change every 1.5s for 20 turns
+# 	[3] ESVoidShield(71:10032) -> Divine Gift of Silk
+# 	Void damage >= 15000000 for 999 turns
+# ESOrbLock(94:10045) -> Shadow of Fate
+# 	Condition: When < 75% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 160% damage
+# SkillSet:
+# 	Condition: 50% chance (ai:50 rnd:0)
+# 	[0] ESSpinnersFixed(110:10036) -> Traversing Radiance
+# 	Specific orbs change every 1.5s for 20 turns
+# 	[1] ESBindAttack(63:10037) -> Light Prison
+# 	Bind 1 subs for 2 turns, Deal 120% damage
+# SkillSet:
+# 	[0] ESSpinnersFixed(110:10036) -> Traversing Radiance
+# 	Specific orbs change every 1.5s for 20 turns
+# 	[1] ESAttackMultihit(15:10038) -> Shining Arrow
+# 	Deal 129% damage (3 hits, 43% each)
+# SkillSet:
+# 	Condition: 50% chance (ai:50 rnd:0)
+# 	[0] ESSpinnersFixed(110:10035) -> Traversing Radiance
+# 	Specific orbs change every 1.0s for 20 turns
+# 	[1] ESBindAttack(63:10037) -> Light Prison
+# 	Bind 1 subs for 2 turns, Deal 120% damage
+# SkillSet:
+# 	[0] ESSpinnersFixed(110:10035) -> Traversing Radiance
+# 	Specific orbs change every 1.0s for 20 turns
+# 	[1] ESAttackMultihit(15:10038) -> Shining Arrow
+# 	Deal 129% damage (3 hits, 43% each)
+# SkillSet:
+# 	Condition: 50% chance (ai:50 rnd:0)
+# 	[0] ESSpinnersFixed(110:10034) -> Traversing Radiance
+# 	Specific orbs change every 0.8s for 20 turns
+# 	[1] ESBindAttack(63:10037) -> Light Prison
+# 	Bind 1 subs for 2 turns, Deal 120% damage
+# SkillSet:
+# 	[0] ESSpinnersFixed(110:10034) -> Traversing Radiance
+# 	Specific orbs change every 0.8s for 20 turns
+# 	[1] ESAttackMultihit(15:10038) -> Shining Arrow
+# 	Deal 129% damage (3 hits, 43% each)
+# SkillSet:
+# 	[0] ESAbsorbCombo(67:10051) -> Prism Mirror
+# 	Absorb combo <= 9 damage for 1 turns
+# 	[1] ESSpinnersFixed(110:10052) -> Traversing Radiance
+# 	Specific orbs change every 1.0s for 20 turns
+# ESAttackMultihit(15:10054) -> Gleaming Sword of Alvaliere
+# Deal 10000% damage (10 hits, 1000% each)
+# SkillSet:
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# 	[0] ESAttackUPRemainingEnemies(17:10046) -> Philysians
+# 	Increase damage to 200% for the next 1 turns
+# 	[1] ESAbsorbCombo(67:10048) -> Prism Mirror
+# 	Absorb combo <= 6 damage for 15 turns
+# SkillSet:
+# 	Condition: When < 50% hp (ai:100 rnd:0)
+# 	[0] ESAttackUPRemainingEnemies(17:10046) -> Philysians
+# 	Increase damage to 200% for the next 1 turns
+# 	[1] ESAbsorbCombo(67:10047) -> Prism Mirror
+# 	Absorb combo <= 6 damage for 5 turns
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 1 - starting/max counter
+# [54] 0 - counter increment
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:3402) -> ESPreemptive
+# Enable preempt if level 4
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 4, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 9
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [6] SkillSet:
+# 	[0] ESStatusShield(20:10029) -> Prayer
+# 	Voids status ailments for 999 turns
+# 	[1] ESAbsorbAttribute(53:10030) -> Dawn Eclipse
+# 	Absorb Light damage for 10 turns
+# 	[2] ESSpinnersFixed(110:10031) -> Halo Ring
+# 	Specific orbs change every 1.5s for 20 turns
+# 	[3] ESVoidShield(71:10032) -> Divine Gift of Silk
+# 	Void damage >= 15000000 for 999 turns
+# [7] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [8] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [9] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 10, target rnd 23
+# [10] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 50, target rnd 28
+# [11] ESOrbLock(94:10045) -> Shadow of Fate
+# 	Condition: When < 75% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 160% damage
+# [12] ESBranchCombo(113:6528) -> ESBranchCombo
+# Branch on combo > 9, target rnd 20
+# [13] ESBranchCombo(113:6528) -> ESBranchCombo
+# Branch on combo > 6, target rnd 17
+# [14] SkillSet:
+# 	Condition: 50% chance (ai:50 rnd:0)
+# 	[0] ESSpinnersFixed(110:10036) -> Traversing Radiance
+# 	Specific orbs change every 1.5s for 20 turns
+# 	[1] ESBindAttack(63:10037) -> Light Prison
+# 	Bind 1 subs for 2 turns, Deal 120% damage
+# [15] SkillSet:
+# 	[0] ESSpinnersFixed(110:10036) -> Traversing Radiance
+# 	Specific orbs change every 1.5s for 20 turns
+# 	[1] ESAttackMultihit(15:10038) -> Shining Arrow
+# 	Deal 129% damage (3 hits, 43% each)
+# [16] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [17] SkillSet:
+# 	Condition: 50% chance (ai:50 rnd:0)
+# 	[0] ESSpinnersFixed(110:10035) -> Traversing Radiance
+# 	Specific orbs change every 1.0s for 20 turns
+# 	[1] ESBindAttack(63:10037) -> Light Prison
+# 	Bind 1 subs for 2 turns, Deal 120% damage
+# [18] SkillSet:
+# 	[0] ESSpinnersFixed(110:10035) -> Traversing Radiance
+# 	Specific orbs change every 1.0s for 20 turns
+# 	[1] ESAttackMultihit(15:10038) -> Shining Arrow
+# 	Deal 129% damage (3 hits, 43% each)
+# [19] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [20] SkillSet:
+# 	Condition: 50% chance (ai:50 rnd:0)
+# 	[0] ESSpinnersFixed(110:10034) -> Traversing Radiance
+# 	Specific orbs change every 0.8s for 20 turns
+# 	[1] ESBindAttack(63:10037) -> Light Prison
+# 	Bind 1 subs for 2 turns, Deal 120% damage
+# [21] SkillSet:
+# 	[0] ESSpinnersFixed(110:10034) -> Traversing Radiance
+# 	Specific orbs change every 0.8s for 20 turns
+# 	[1] ESAttackMultihit(15:10038) -> Shining Arrow
+# 	Deal 129% damage (3 hits, 43% each)
+# [22] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [23] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 26
+# [24] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [25] SkillSet:
+# 	[0] ESAbsorbCombo(67:10051) -> Prism Mirror
+# 	Absorb combo <= 9 damage for 1 turns
+# 	[1] ESSpinnersFixed(110:10052) -> Traversing Radiance
+# 	Specific orbs change every 1.0s for 20 turns
+# [26] ESAttackMultihit(15:10054) -> Gleaming Sword of Alvaliere
+# Deal 10000% damage (10 hits, 1000% each)
+# [27] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [28] ESBranchCounter(32:22) -> ESBranchCounter
+# Branch on counter > 1, target rnd 11
+# [29] ESSetCounter(26:16) -> ESSetCounter
+# counter + 1
+# [30] SkillSet:
+# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
+# 	[0] ESAttackUPRemainingEnemies(17:10046) -> Philysians
+# 	Increase damage to 200% for the next 1 turns
+# 	[1] ESAbsorbCombo(67:10048) -> Prism Mirror
+# 	Absorb combo <= 6 damage for 15 turns
+# [31] SkillSet:
+# 	Condition: When < 50% hp (ai:100 rnd:0)
+# 	[0] ESAttackUPRemainingEnemies(17:10046) -> Philysians
+# 	Increase damage to 200% for the next 1 turns
+# 	[1] ESAbsorbCombo(67:10047) -> Prism Mirror
+# 	Absorb combo <= 6 damage for 5 turns
+# [32] ESAttributeResist(72:10055) -> Light Halved
+# Reduce damage from Light by 50%
+# [33] ESResolve(73:12175) -> Dragonbound Soul Spirit
+# Survive attacks with 1 HP when HP > 99%
