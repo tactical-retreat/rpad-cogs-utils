@@ -57,7 +57,7 @@ def process_card(mcard):
             used_actions.extend(debug_utils.extract_used_skills(skillset))
             skill_listings.append(flattened)
         except Exception as ex:
-            if 'No loop' in str(ex):
+            if 'No loop' not in str(ex):
                 raise ex
 
     if not skill_listings:
