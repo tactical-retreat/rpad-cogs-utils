@@ -7,8 +7,7 @@ monster_id: 2334
 monster_name_en: Water Armor Dragon, Gienah
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 5 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 5
@@ -27,6 +26,87 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
+  desc_en: Spawn random 4 Water orbs, Deal 120% damage
+  desc_jp: Spawn random 4 Water orbs, Deal 120% damage
+  max_atk_pct: 120
+  name_en: Super Water Surge
+  name_jp: Super Water Surge
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 40
+- !SkillRecord
+  desc_en: Change 3rd column to Water orbs, Deal 120% damage
+  desc_jp: Change 3rd column to Water orbs, Deal 120% damage
+  max_atk_pct: 120
+  name_en: Aqua Gun
+  name_jp: Aqua Gun
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 40
+- !SkillRecord
+  desc_en: Change Water to Jammer, Deal 80% damage
+  desc_jp: Change Water to Jammer, Deal 80% damage
+  max_atk_pct: 80
+  name_en: Blue Charger
+  name_jp: Blue Charger
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 20
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 80
+  name_jp: HP < 80
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Delay active skills by 1 turns
+  desc_jp: Delay active skills by 1 turns
+  max_atk_pct: null
+  name_en: Absorption
+  name_jp: Absorption
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 10
+  name_jp: HP < 10
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 1000% damage (2 hits, 500% each)
+  desc_jp: Deal 1000% damage (2 hits, 500% each)
+  max_atk_pct: 1000
+  name_en: Limit Burst
+  name_jp: Limit Burst
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
   desc_en: Enemy ally recover 45% hp
   desc_jp: Enemy ally recover 45% hp
   max_atk_pct: null
@@ -36,24 +116,6 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
-############################################################
-### Unused Actions
-############################################################
-# ESAttackMultihit(15:3241) -> Limit Burst
-# 	Condition: When < 10% hp (ai:100 rnd:0)
-# Deal 1000% damage (2 hits, 500% each)
-# ESSkillDelay(89:3240) -> Absorption
-# 	Condition: When < 80% hp , one-time use (ai:100 rnd:0) (one-time: 1)
-# Delay active skills by 1 turns
-# ESRandomSpawn(92:3287) -> Super Water Surge
-# 	Condition: 40% chance & when Fire, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:0 rnd:40)
-# Spawn random 4 Water orbs, Deal 120% damage
-# ESColumnSpawnMulti(77:3288) -> Aqua Gun
-# 	Condition: 40% chance (ai:0 rnd:40)
-# Change 3rd column to Water orbs, Deal 120% damage
-# ESOrbChangeAttack(48:3289) -> Blue Charger
-# 	Condition: 20% chance (ai:0 rnd:20)
-# Change Water to Jammer, Deal 80% damage
 ############################################################
 ### ES Modifiers
 ############################################################
