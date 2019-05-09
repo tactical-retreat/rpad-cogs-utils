@@ -104,7 +104,7 @@ class ProcessedSkillset(object):
 class Context(object):
     """Represents the game state when running through the simulator."""
 
-    def __init__(self, level):
+    def __init__(self, level: int, max_skill_counter: int, skill_counter_increment: int):
         self.turn = 1
         # Whether the current turn triggered a preempt flag.
         self.is_preemptive = False
@@ -133,17 +133,21 @@ class Context(object):
         # Turns of combo shield, initial:int=0 -> shield up:int>0 -> expire:int=0
         self.combo_shield = 0
 
+        # The current skill counter value, initialized to max.
+        self.skill_counter = max_skill_counter
+        # The max value for the skill counter.
+        self.max_skill_counter = max_skill_counter
+        # the amount to increment the skill counter by each turn.
+        self.skill_counter_increment = skill_counter_increment
+
+        # The flag values for one-time skills.
+        self.flag_skill_use = 0
+
     def reset(self):
         self.is_preemptive = False
 
     def clone(self):
         return copy.deepcopy(self)
-
-    def check_skill_use(self, cond: ESCondition):
-        raise NotImplementedError('check_skill_use')
-
-    def update_skill_use(self, cond: ESCondition):
-        raise NotImplementedError('update_skill_use')
 
     def turn_event(self):
         self.turn += 1
@@ -185,6 +189,7 @@ class Context(object):
                     return True
                 else:
                     return False
+        # TODO: void shield missing, absorb too
         elif b_type == ESDamageShield:
             if self.damage_shield == 0:
                 self.damage_shield = behavior.turns
@@ -209,17 +214,9 @@ class Context(object):
         #     self.hp += behavior.max_amount
         return True
 
-
-class CTXCountdown(Context):
-    def __init__(self, level, skill_use_flags):
-        # For testing
-        super().__init__(level)
-        self.skill_use = skill_use_flags
-        self.flag_skill_use = 0
-
     def check_skill_use(self, cond: ESCondition):
         if cond.one_time:
-            return self.skill_use >= cond.one_time
+            return self.skill_counter >= cond.one_time
         elif cond.forced_one_time:
             return self.flag_skill_use & cond.forced_one_time == 0
         else:
@@ -227,32 +224,12 @@ class CTXCountdown(Context):
 
     def update_skill_use(self, cond: ESCondition):
         if cond.one_time:
-            self.skill_use -= cond.one_time
+            self.skill_counter -= cond.one_time
         elif cond.forced_one_time:
             self.flag_skill_use |= cond.forced_one_time
 
-
-class CTXCounter(Context):
-    def __init__(self, level, skill_use_counter):
-        # TODO: skill_use_counter param might be useless
-        super().__init__(level)
-        self.skill_use = 0
-
-    def check_skill_use(self, cond: ESCondition):
-        usage = cond.one_time
-        if usage is None:
-            return True
-        else:
-            if self.skill_use == 0:
-                return True
-            elif self.skill_use > 0:
-                self.skill_use -= 1
-                return False
-
-    def update_skill_use(self, cond: ESCondition):
-        usage = cond.one_time
-        if usage is not None:
-            self.skill_use += usage
+    def increment_skill_counter(self):
+        self.skill_counter = min(self.skill_counter + self.skill_counter_increment, self.max_skill_counter)
 
 
 def default_attack():
@@ -260,7 +237,20 @@ def default_attack():
     return ESDefaultAttack()
 
 
-def loop_through(ctx, behaviors: List[ESBehavior]) -> List[ESBehavior]:
+def loop_through(ctx, behaviors: List[Optional[ESBehavior]]) -> List[ESAction]:
+    results = loop_through_inner(ctx, behaviors)
+
+    ctx.increment_skill_counter()
+
+    for r in results:
+        if r.condition and r.condition.use_chance() == 100:
+            # Handle single counter / fixed cost items
+            ctx.update_skill_use(r.condition)
+            break
+
+    return results
+
+def loop_through_inner(ctx, behaviors: List[Optional[ESBehavior]]) -> List[ESAction]:
     """Executes a single turn through the simulator.
 
     This is called multiple times with varying Context values to probe the action set
@@ -310,7 +300,6 @@ def loop_through(ctx, behaviors: List[ESBehavior]) -> List[ESBehavior]:
             ctx.is_preemptive = True
             ctx.do_preemptive = True
             results.append(b)
-            ctx.update_skill_use(b.condition)
             return results
 
         if b_type == ESAttackUpStatus:
@@ -338,7 +327,6 @@ def loop_through(ctx, behaviors: List[ESBehavior]) -> List[ESBehavior]:
                     if not ctx.apply_skill_effects(b):
                         idx += 1
                         continue
-                    ctx.update_skill_use(cond)
                     results.append(b)
                     if b.is_conditional():
                         idx += 1
@@ -658,17 +646,7 @@ def convert(card: BookCard, enemy_behavior: List[ESBehavior],
 
     # Ensure the HP checkpoints are in descended order
     hp_checkpoints = sorted(hp_checkpoints, reverse=True)
-
-    # Pick the correct enemy_skill_effect model to use
-    if enemy_skill_counter_increment == 0:
-        ctx = CTXCountdown(level, enemy_skill_max_counter)
-    elif enemy_skill_counter_increment == 1:
-        ctx = CTXCounter(level, enemy_skill_max_counter)
-    else:
-        # ctx = Context(level)
-        # For now fall back to the old context implementation to prevent errors in log.
-        print('Incorrect context used')
-        ctx = CTXCountdown(level, enemy_skill_max_counter)
+    ctx = Context(level, enemy_skill_max_counter, enemy_skill_counter_increment)
 
     if force_one_enemy:
         ctx.enemies = 1
