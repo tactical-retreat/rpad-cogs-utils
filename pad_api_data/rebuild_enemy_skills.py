@@ -44,17 +44,21 @@ def process_card(mcard):
     skill_listings = []
     used_actions = []
     for level in sorted(levels):
-        skillset = enemy_skillset_processor.convert(
-            card,
-            enemy_behavior,
-            level, enemy_skill_max_counter,
-            enemy_skill_counter_increment,
-            force_one_enemy=(int(card.unknown_009) == 5))
-        flattened = enemy_skillset_dump.flatten_skillset(level, skillset)
-        if not flattened.records:
-            continue
-        used_actions.extend(debug_utils.extract_used_skills(skillset))
-        skill_listings.append(flattened)
+        try:
+            skillset = enemy_skillset_processor.convert(
+                card,
+                enemy_behavior,
+                level, enemy_skill_max_counter,
+                enemy_skill_counter_increment,
+                force_one_enemy=(int(card.unknown_009) == 5))
+            flattened = enemy_skillset_dump.flatten_skillset(level, skillset)
+            if not flattened.records:
+                continue
+            used_actions.extend(debug_utils.extract_used_skills(skillset))
+            skill_listings.append(flattened)
+        except Exception as ex:
+            if 'No loop' in str(ex):
+                raise ex
 
     if not skill_listings:
         return
