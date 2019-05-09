@@ -132,6 +132,12 @@ class Context(object):
         self.status_shield = 0
         # Turns of combo shield, initial:int=0 -> shield up:int>0 -> expire:int=0
         self.combo_shield = 0
+        # Turns of attribute absorb shield, initial:int=0 -> shield up:int>0 -> expire:int=0
+        self.attribute_shield = 0
+        # Turns of damage absorb shield, initial:int=0 -> shield up:int>0 -> expire:int=0
+        self.absorb_shield = 0
+        # Turns of damage void shield, initial:int=0 -> shield up:int>0 -> expire:int=0
+        self.void_shield = 0
 
         # The current skill counter value, initialized to max.
         self.skill_counter = max_skill_counter
@@ -158,17 +164,22 @@ class Context(object):
             elif self.enraged < 0:
                 # count up enraged cooldown turns
                 self.enraged += 1
+
+        # count down shield turns
         if self.damage_shield > 0:
-            # count down shield turns
             self.damage_shield -= 1
         if self.status_shield > 0:
-            # count down shield turns
             self.status_shield -= 1
         if self.combo_shield > 0:
-            # count down shield turns
             self.combo_shield -= 1
+        if self.attribute_shield > 0:
+            self.attribute_shield -= 1
+        if self.absorb_shield > 0:
+            self.absorb_shield -= 1
+        if self.void_shield > 0:
+            self.void_shield -= 1
 
-    def apply_skill_effects(self, behavior):
+    def apply_skill_effects(self, behavior) -> bool:
         """Check context to see if a skill is allowed to be used, and update flag accordingly"""
         b_type = type(behavior)
         if issubclass(b_type, ESAttackUp):
@@ -189,7 +200,6 @@ class Context(object):
                     return True
                 else:
                     return False
-        # TODO: void shield missing, absorb too
         elif b_type == ESDamageShield:
             if self.damage_shield == 0:
                 self.damage_shield = behavior.turns
@@ -208,10 +218,76 @@ class Context(object):
                 return True
             else:
                 return False
-        # TODO: Delete this. I don't think it makes sense to update the HP in response
-        # to an enemy action; we evaluate at the end of the player's round.
-        # elif b_type == ESRecoverEnemy:
-        #     self.hp += behavior.max_amount
+        elif b_type == ESAbsorbAttribute:
+            if self.attribute_shield == 0:
+                self.attribute_shield = behavior.max_turns
+                return True
+            else:
+                return False
+        elif b_type == ESAbsorbThreshold:
+            if self.absorb_shield == 0:
+                self.absorb_shield = behavior.turns
+                return True
+            else:
+                return False
+        elif b_type == ESVoidShield:
+            if self.void_shield == 0:
+                self.void_shield = behavior.turns
+                return True
+            else:
+                return False
+
+        return True
+
+    def check_no_apply_skill_effects(self, behavior) -> bool:
+        """Check context to see if a skill is allowed to be used"""
+        b_type = type(behavior)
+        if issubclass(b_type, ESAttackUp):
+            if b_type == ESAttackUPRemainingEnemies \
+                    and behavior.enemy_count is not None \
+                    and self.enemies > behavior.enemy_count:
+                return False
+            if self.enraged is None:
+                if b_type == ESAttackUPCooldown and behavior.turn_cooldown is not None:
+                    return False
+                else:
+                    return True
+            else:
+                if self.enraged == 0:
+                    return True
+                else:
+                    return False
+        elif b_type == ESDamageShield:
+            if self.damage_shield == 0:
+                return True
+            else:
+                return False
+        elif b_type == ESStatusShield:
+            if self.status_shield == 0:
+                return True
+            else:
+                return False
+        elif b_type == ESAbsorbCombo:
+            if self.combo_shield == 0:
+                return True
+            else:
+                return False
+        elif b_type == ESAbsorbAttribute:
+            if self.attribute_shield == 0:
+                return True
+            else:
+                return False
+        elif b_type == ESAbsorbThreshold:
+            if self.absorb_shield == 0:
+                return True
+            else:
+                return False
+        elif b_type == ESVoidShield:
+            if self.void_shield == 0:
+                return True
+            else:
+                return False
+
         return True
 
     def check_skill_use(self, cond: ESCondition):
@@ -249,6 +325,7 @@ def loop_through(ctx, behaviors: List[Optional[ESBehavior]]) -> List[ESAction]:
             break
 
     return results
+
 
 def loop_through_inner(ctx, behaviors: List[Optional[ESBehavior]]) -> List[ESAction]:
     """Executes a single turn through the simulator.
@@ -334,7 +411,7 @@ def loop_through_inner(ctx, behaviors: List[Optional[ESBehavior]]) -> List[ESAct
                     return results
                 else:
                     # Not a terminal action, so accumulate it and continue.
-                    if ctx.check_skill_use(cond) and ctx.apply_skill_effects(b):
+                    if ctx.check_skill_use(cond) and ctx.check_no_apply_skill_effects(b):
                         results.append(b)
                     idx += 1
                     continue
