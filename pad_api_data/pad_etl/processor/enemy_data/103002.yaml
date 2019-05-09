@@ -78,8 +78,17 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
@@ -96,8 +105,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 3
-  name_jp: Turn 3
+  name_en: Loop to 1 after. Turn 2
+  name_jp: Loop to 1 after. Turn 2
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
@@ -111,21 +120,12 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: null
-  record_type_name: DIVIDER
-  usage_pct: null
-- !SkillRecord
-  desc_en: Lock 6 random Fire, Water, Wood, Light, Dark orbs, Deal 80% damage
-  desc_jp: Lock 6 random Fire, Water, Wood, Light, Dark orbs, Deal 80% damage
-  max_atk_pct: 80
-  name_en: Dimension-Miracle
-  name_jp: Dimension-Miracle
-  one_time: 1
+  desc_en: Change all orbs to Jammer, Deal 60% damage
+  desc_jp: Change all orbs to Jammer, Deal 60% damage
+  max_atk_pct: 60
+  name_en: Sacred Grounds of the Green Earth
+  name_jp: Sacred Grounds of the Green Earth
+  one_time: 0
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -262,8 +262,9 @@ records:
 # 	Voids status ailments for 999 turns
 # 	[1] ESBoardChangeAttackBits(85:5137) -> Sacred Grounds of the Green Earth
 # 	Change all orbs to Jammer, Deal 60% damage
-# ESBoardChangeAttackBits(85:5137) -> Sacred Grounds of the Green Earth
-# Change all orbs to Jammer, Deal 60% damage
+# ESOrbLock(94:5142) -> Dimension-Miracle
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Lock 6 random Fire, Water, Wood, Light, Dark orbs, Deal 80% damage
 # SkillSet:
 # 	[0] ESStatusShield(20:5136) -> Tranquility suits you well
 # 	Voids status ailments for 999 turns
