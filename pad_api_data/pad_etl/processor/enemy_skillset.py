@@ -765,6 +765,9 @@ class ESPoisonChangeRandomAttack(ESOrbChangeAttack):
         to_attr = ATTRIBUTE_MAP[7]
         super().__init__(skill, orb_from=from_attr, orb_to=to_attr)
 
+    def is_conditional(self):
+        return False
+
 
 class ESBlind(ESAction):
     def __init__(self, skill: EnemySkillRef):
@@ -1207,6 +1210,7 @@ class ESRandomSpawn(ESAction):
         self.count = params(skill)[1]
         self.attributes = attribute_bitmap(params(skill)[2])
         self.condition_attributes = attribute_bitmap(params(skill)[3], inverse=True)
+
         super().__init__(
             skill,
             effect='random_orb_spawn',
