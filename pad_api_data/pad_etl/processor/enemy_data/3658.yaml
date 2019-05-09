@@ -7,8 +7,7 @@ monster_id: 3658
 monster_name_en: Glavenus
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 4
@@ -66,11 +65,20 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
+  name_en: Turn 2-3
+  name_jp: Turn 2-3
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
+- !SkillRecord
+  desc_en: Spawn random 3 Fire orbs, Deal 100% damage
+  desc_jp: Spawn random 3 Fire orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Bite
+  name_jp: Bite
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 20
 - !SkillRecord
   desc_en: Spawn random 3 Bomb orbs, Deal 100% damage
   desc_jp: Spawn random 3 Bomb orbs, Deal 100% damage
@@ -111,8 +119,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 3
-  name_jp: Turn 3
+  name_en: Turn 4
+  name_jp: Turn 4
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
@@ -129,11 +137,29 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 4
-  name_jp: Turn 4
+  name_en: HP <= 100
+  name_jp: HP <= 100
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1-4
+  name_jp: Execute repeatedly. Turn 1-4
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Spawn random 3 Fire orbs, Deal 100% damage
+  desc_jp: Spawn random 3 Fire orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Bite
+  name_jp: Bite
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 20
 - !SkillRecord
   desc_en: Spawn random 3 Bomb orbs, Deal 100% damage
   desc_jp: Spawn random 3 Bomb orbs, Deal 100% damage
@@ -174,17 +200,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: null
-  record_type_name: DIVIDER
-  usage_pct: null
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Execute repeatedly. Turn 1
-  name_jp: Execute repeatedly. Turn 1
+  name_en: Loop to 1 after. Turn 5
+  name_jp: Loop to 1 after. Turn 5
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
@@ -197,42 +214,6 @@ records:
   one_time: 5
   record_type_name: ACTION
   usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Loop to 1 after. Turn 2
-  name_jp: Loop to 1 after. Turn 2
-  one_time: null
-  record_type_name: DIVIDER
-  usage_pct: null
-- !SkillRecord
-  desc_en: Spawn random 6 Fire orbs, Deal 110% damage
-  desc_jp: Spawn random 6 Fire orbs, Deal 110% damage
-  max_atk_pct: 110
-  name_en: Fire Wave
-  name_jp: Fire Wave
-  one_time: 0
-  record_type_name: ACTION
-  usage_pct: 20
-- !SkillRecord
-  desc_en: Deal 120% damage
-  desc_jp: Deal 120% damage
-  max_atk_pct: 120
-  name_en: Tail Slam
-  name_jp: Tail Slam
-  one_time: 0
-  record_type_name: ACTION
-  usage_pct: 20
-- !SkillRecord
-  desc_en: Player -70% HP
-  desc_jp: Player -70% HP
-  max_atk_pct: null
-  name_en: Jumping Tail Strike
-  name_jp: Jumping Tail Strike
-  one_time: 0
-  record_type_name: ACTION
-  usage_pct: 20
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
@@ -246,8 +227,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
+  name_en: Turn 1-3
+  name_jp: Turn 1-3
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
@@ -273,8 +254,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute repeatedly. Turn 1-2
-  name_jp: Execute repeatedly. Turn 1-2
+  name_en: Execute repeatedly. Turn 1-4
+  name_jp: Execute repeatedly. Turn 1-4
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
@@ -300,8 +281,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Loop to 1 after. Turn 3
-  name_jp: Loop to 1 after. Turn 3
+  name_en: Loop to 1 after. Turn 5
+  name_jp: Loop to 1 after. Turn 5
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
@@ -315,12 +296,6 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
-############################################################
-### Unused Actions
-############################################################
-# ESRandomSpawn(92:7206) -> Bite
-# 	Condition: One-time use (ai:0 rnd:20) (one-time: 1)
-# Spawn random 3 Fire orbs, Deal 100% damage
 ############################################################
 ### ES Modifiers
 ############################################################

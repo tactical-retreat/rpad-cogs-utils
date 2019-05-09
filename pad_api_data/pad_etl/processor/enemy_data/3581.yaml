@@ -7,7 +7,8 @@ monster_id: 3581
 monster_name_en: Morning Moon Dragon Caller, Satsuki
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 2 unused actions
 
 ############################################################
 ### Data @ 1
@@ -73,66 +74,12 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 2-10
-  name_jp: Turn 2-10
-  one_time: null
-  record_type_name: DIVIDER
-  usage_pct: null
-- !SkillRecord
-  desc_en: Change Water to Dark, Deal 250% damage
-  desc_jp: Change Water to Dark, Deal 250% damage
-  max_atk_pct: 250
-  name_en: Shadow Drop
-  name_jp: Shadow Drop
-  one_time: 0
-  record_type_name: ACTION
-  usage_pct: 50
-- !SkillRecord
-  desc_en: Deal 280% damage (2 hits, 140% each)
-  desc_jp: Deal 280% damage (2 hits, 140% each)
-  max_atk_pct: 280
-  name_en: Concealed Mirror Kunai
-  name_jp: Concealed Mirror Kunai
-  one_time: 0
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 11
-  name_jp: Turn 11
-  one_time: null
-  record_type_name: DIVIDER
-  usage_pct: null
-- !SkillRecord
   desc_en: Bind awoken skills for 5 turns + Voids status ailments for 9 turns
   desc_jp: Bind awoken skills for 5 turns + Voids status ailments for 9 turns
   max_atk_pct: null
   name_en: Dark Demon Cage + Seal of Darkness
   name_jp: Dark Demon Cage + Seal of Darkness
   one_time: 9
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Change Water to Dark, Deal 250% damage
-  desc_jp: Change Water to Dark, Deal 250% damage
-  max_atk_pct: 250
-  name_en: Shadow Drop
-  name_jp: Shadow Drop
-  one_time: 0
-  record_type_name: ACTION
-  usage_pct: 50
-- !SkillRecord
-  desc_en: Deal 280% damage (2 hits, 140% each)
-  desc_jp: Deal 280% damage (2 hits, 140% each)
-  max_atk_pct: 280
-  name_en: Concealed Mirror Kunai
-  name_jp: Concealed Mirror Kunai
-  one_time: 0
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -154,6 +101,14 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# ESOrbChangeAttack(48:6994) -> Shadow Drop
+# 	Condition: 50% chance (ai:50 rnd:0)
+# Change Water to Dark, Deal 250% damage
+# ESAttackMultihit(15:6993) -> Concealed Mirror Kunai
+# Deal 280% damage (2 hits, 140% each)
 ############################################################
 ### ES Modifiers
 ############################################################

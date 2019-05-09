@@ -7,7 +7,8 @@ monster_id: 3207
 monster_name_en: Fire Guardian Dragon, Touen
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 1 unused actions
 
 ############################################################
 ### Data @ 4
@@ -55,15 +56,6 @@ records:
   record_type_name: DIVIDER
   usage_pct: null
 - !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Execute repeatedly. Turn 1
-  name_jp: Execute repeatedly. Turn 1
-  one_time: null
-  record_type_name: DIVIDER
-  usage_pct: null
-- !SkillRecord
   desc_en: Lock all Jammer, Poison orbs, Deal 150% damage
   desc_jp: Lock all Jammer, Poison orbs, Deal 150% damage
   max_atk_pct: 150
@@ -79,33 +71,6 @@ records:
   name_en: Fireball of Mass Destruction
   name_jp: Fireball of Mass Destruction
   one_time: 2
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Loop to 1 after. Turn 2-3
-  name_jp: Loop to 1 after. Turn 2-3
-  one_time: null
-  record_type_name: DIVIDER
-  usage_pct: null
-- !SkillRecord
-  desc_en: Lock all Jammer, Poison orbs, Deal 150% damage
-  desc_jp: Lock all Jammer, Poison orbs, Deal 150% damage
-  max_atk_pct: 150
-  name_en: Sacred Exorcist Flame
-  name_jp: Sacred Exorcist Flame
-  one_time: 0
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Spawn random 3 Jammer orbs, Deal 100% damage
-  desc_jp: Spawn random 3 Jammer orbs, Deal 100% damage
-  max_atk_pct: 100
-  name_en: Triple Abaddon Wave
-  name_jp: Triple Abaddon Wave
-  one_time: 0
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -181,6 +146,12 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# ESRandomSpawn(92:5706) -> Triple Abaddon Wave
+# 	Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board (ai:100 rnd:0)
+# Spawn random 3 Jammer orbs, Deal 100% damage
 ############################################################
 ### ES Modifiers
 ############################################################

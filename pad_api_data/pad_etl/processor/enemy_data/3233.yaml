@@ -8,7 +8,7 @@ monster_name_en: Morning Sun Dragon Caller, Kanna
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 4 unused actions
+- Found 5 unused actions
 
 ############################################################
 ### Data @ 1
@@ -32,8 +32,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
@@ -117,62 +117,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 3
-  name_jp: Turn 3
-  one_time: null
-  record_type_name: DIVIDER
-  usage_pct: null
-- !SkillRecord
-  desc_en: Blind all orbs on the board, Deal 250% damage
-  desc_jp: Blind all orbs on the board, Deal 250% damage
-  max_atk_pct: 250
-  name_en: Lightraider Amulet
-  name_jp: Lightraider Amulet
-  one_time: 0
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 4
-  name_jp: Turn 4
-  one_time: null
-  record_type_name: DIVIDER
-  usage_pct: null
-- !SkillRecord
-  desc_en: Absorb Fire damage for 2 turns + Bind 1 random for 2 turns, Deal 260% damage
-  desc_jp: Absorb Fire damage for 2 turns + Bind 1 random for 2 turns, Deal 260% damage
-  max_atk_pct: null
-  name_en: Thousand-Seal Prison + Silk Chains
-  name_jp: Thousand-Seal Prison + Silk Chains
-  one_time: 1
-  record_type_name: ACTION
-  usage_pct: 17
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 5
-  name_jp: Turn 5
-  one_time: null
-  record_type_name: DIVIDER
-  usage_pct: null
-- !SkillRecord
-  desc_en: Spawn random 3 Heal orbs + Player -99% HP
-  desc_jp: Spawn random 3 Heal orbs + Player -99% HP
-  max_atk_pct: null
-  name_en: Sky Dragon's Tears + Vulnerable Scent
-  name_jp: Sky Dragon's Tears + Vulnerable Scent
-  one_time: 1
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
+  name_en: Loop to 1 after. Turn 3
+  name_jp: Loop to 1 after. Turn 3
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
@@ -231,6 +177,12 @@ records:
 # 	Lock all Dark orbs
 # 	[1] ESAttackMultihit(15:7051) -> Glistening Sword
 # 	Deal 300% damage (2 hits, 150% each)
+# SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# 	[0] ESRandomSpawn(92:7052) -> Sky Dragon's Tears
+# 	Spawn random 3 Heal orbs
+# 	[1] ESGravity(50:7053) -> Vulnerable Scent
+# 	Player -99% HP
 ############################################################
 ### ES Modifiers
 ############################################################

@@ -146,7 +146,7 @@ Voids status ailments for 999 turns + Reduce damage from all sources by 75% for 
 ----- Turn 2 -----
 Its flames changed + Scorching Firelands
 Change own attribute to Fire + Change all orbs to Fire, Deal 500% damage
------ Turn 3 -----
+----- Execute repeatedly. Turn 1 -----
 Lamplight of the Echoing Sphere
 35280 Damage - Movetime -3s for 1 turns, Deal 100% damage (50% chance) (every 2 turns)
 Withering Darkflame
@@ -155,8 +155,7 @@ Enshrouding Miasma
 38102 Damage - 3x3 cloud appear for 1 turns at random location, Deal 108% damage (50% chance)
 Rotting Desire
 38102 Damage - Spawn random 8 Jammer orbs, Deal 108% damage
-Withering Darkflame
-35280 Damage - Bind awoken skills for 1 turns, Deal 100% damage (every 2 turns)
+----- Loop to 1 after. Turn 2 -----
 Enshrouding Miasma
 38102 Damage - 3x3 cloud appear for 1 turns at random location, Deal 108% damage (50% chance)
 Rotting Desire
@@ -273,6 +272,14 @@ I'll Stomp You Under My Heel!
 ----- Turn 1 -----
 Tempting Embrace
 Bind 1 own leader for 3 turns
+----- Execute repeatedly. Turn 1 -----
+I'll Stomp You Under My Heel!
+9086 Damage - Change Random to Heal, Deal 150% damage (every 2 turns)
+----- Loop to 1 after. Turn 2 -----
+Honey Poison
+Change Heal to Poison (50% chance)
+Blue Slash
+6057 Damage - Change Random to Water, Deal 100% damage
 ----- HP < 30 -----
 ----- Turn 2 -----
 Princess's Order
@@ -1068,12 +1075,15 @@ Shadow Touch
 ----- Turn 1 -----
 Healing Element + Hinder Line
 Change all orbs to Fire, Light, Dark, Deal 100% damage + Change 3rd row to Jammer orbs
------ Execute repeatedly. Turn 1-2 -----
+----- Execute repeatedly. Turn 1 -----
 Heat and Cold
 13066 Damage - Spawn random 2 Fire, Water orbs, Deal 160% damage
------ Loop to 1 after. Turn 3 -----
+----- Turn 2 -----
 Hinder Alchemy
 14700 Damage - Spawn random 5 Jammer orbs, Deal 180% damage (every 3 turns)
+----- Loop to 1 after. Turn 3 -----
+Heat and Cold
+13066 Damage - Spawn random 2 Fire, Water orbs, Deal 160% damage
 ----- HP < 50 -----
 ----- Turn 1 -----
 Chemical Reaction + Weaknessless
@@ -1082,12 +1092,11 @@ Chemical Reaction + Weaknessless
 Change own attribute to Light + Absorb Dark damage for 5 turns (33% chance)
 Chemical Reaction + Weaknessless
 Change own attribute to Dark + Absorb Light damage for 5 turns (34% chance)
------ Execute repeatedly. Turn 1-2 -----
+----- Turn 2 -----
 High Poison Alchemy
 16333 Damage - Change Jammer to Mortal Poison, Deal 200% damage
 Heat and Cold
 13066 Damage - Spawn random 2 Fire, Water orbs, Deal 160% damage
------ Loop to 1 after. Turn 3 -----
 High Poison Alchemy
 16333 Damage - Change Jammer to Mortal Poison, Deal 200% damage
 Hinder Alchemy
@@ -1871,20 +1880,21 @@ stage 6
 2549 - Awoken Yamatsumi @ level 5
 What are you doing on my grounds!
 Voids status ailments for 999 turns (Preemptive)
------ Turn 1 -----
-Guiding White Dog
-25433 Damage - Change 3rd, 4th column to Jammer orbs, Deal 140% damage (every 3 turns)
------ HP <= 100 -----
 ----- Execute repeatedly. Turn 1 -----
 Miracle
 18166 Damage - Lock 6 random Fire, Water, Wood, Light, Dark orbs, Deal 100% damage (50% chance)
 Shower of Blossoms
 19075 Damage - Deal 105% damage (3 hits, 35% each)
------ Loop to 1 after. Turn 2 -----
+----- Turn 2 -----
 Fire Fighting Black Dog
 25433 Damage - Change Fire to Jammer, Deal 140% damage (50% chance) (every 3 turns)
 Guiding White Dog
 25433 Damage - Change 3rd, 4th column to Jammer orbs, Deal 140% damage (every 3 turns)
+----- Loop to 1 after. Turn 3 -----
+Miracle
+18166 Damage - Lock 6 random Fire, Water, Wood, Light, Dark orbs, Deal 100% damage (50% chance)
+Shower of Blossoms
+19075 Damage - Deal 105% damage (3 hits, 35% each)
 ----- HP < 40 -----
 ----- Turn 1 -----
 Amenotamu-zake

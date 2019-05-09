@@ -7,8 +7,7 @@ monster_id: 104352
 monster_name_en: Alt. Spirit Numen of Fire, Borma
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 3 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -163,8 +162,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
@@ -189,12 +188,45 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
-  desc_en: Spawn random 6 Dark, Poison orbs + Deal 105% damage (3 hits, 35% each)
-  desc_jp: Spawn random 6 Dark, Poison orbs + Deal 105% damage (3 hits, 35% each)
+  desc_en: ''
+  desc_jp: ''
   max_atk_pct: null
-  name_en: Obsidian Flame + Judgment Carving
-  name_jp: Obsidian Flame + Judgment Carving
-  one_time: 1
+  name_en: Loop to 1 after. Turn 2
+  name_jp: Loop to 1 after. Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Jammer, Deal 115%
+    damage + Bind awoken skills for 1 turns
+  desc_jp: Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Jammer, Deal 115%
+    damage + Bind awoken skills for 1 turns
+  max_atk_pct: null
+  name_en: Scarlet Flame + Judgment Carving
+  name_jp: Scarlet Flame + Judgment Carving
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 33
+- !SkillRecord
+  desc_en: Change 2nd, 5th column to Water, Jammer orbs, Deal 115% damage + Delay
+    active skills by 1~2 turns
+  desc_jp: Change 2nd, 5th column to Water, Jammer orbs, Deal 115% damage + Delay
+    active skills by 1~2 turns
+  max_atk_pct: null
+  name_en: Cerulean Flame + Judgment Carving
+  name_jp: Cerulean Flame + Judgment Carving
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Change 2nd, 4th row to Wood, Heal, Poison orbs, Deal 115% damage + Leader
+    changes to random sub for 1 turns
+  desc_jp: Change 2nd, 4th row to Wood, Heal, Poison orbs, Deal 115% damage + Leader
+    changes to random sub for 1 turns
+  max_atk_pct: null
+  name_en: Virescent Flame + Judgment Carving
+  name_jp: Virescent Flame + Judgment Carving
+  one_time: 0
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -216,26 +248,6 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
-############################################################
-### Unused Actions
-############################################################
-# SkillSet:
-# 	Condition: 33% chance (ai:33 rnd:0)
-# 	[0] ESBoardChangeAttackBits(85:9669) -> Scarlet Flame
-# 	Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Jammer, Deal 115% damage
-# 	[1] ESBindAwoken(88:9674) -> Judgment Carving
-# 	Bind awoken skills for 1 turns
-# SkillSet:
-# 	Condition: 50% chance (ai:50 rnd:0)
-# 	[0] ESColumnSpawnMulti(77:9670) -> Cerulean Flame
-# 	Change 2nd, 5th column to Water, Jammer orbs, Deal 115% damage
-# 	[1] ESSkillDelay(89:9675) -> Judgment Carving
-# 	Delay active skills by 1~2 turns
-# SkillSet:
-# 	[0] ESRowSpawnMulti(79:9671) -> Virescent Flame
-# 	Change 2nd, 4th row to Wood, Heal, Poison orbs, Deal 115% damage
-# 	[1] ESLeaderSwap(75:9676) -> Judgment Carving
-# 	Leader changes to random sub for 1 turns
 ############################################################
 ### ES Modifiers
 ############################################################

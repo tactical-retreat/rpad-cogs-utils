@@ -7,8 +7,7 @@ monster_id: 4660
 monster_name_en: '*****'
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 4
@@ -30,8 +29,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
@@ -45,21 +44,30 @@ records:
   record_type_name: ACTION
   usage_pct: 50
 - !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: null
-  record_type_name: DIVIDER
-  usage_pct: null
-- !SkillRecord
   desc_en: Change Random to Wood, Deal 120% damage
   desc_jp: Change Random to Wood, Deal 120% damage
   max_atk_pct: 120
   name_en: Orb Curve
   name_jp: Orb Curve
   one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 2
+  name_jp: Loop to 1 after. Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Blind all orbs on the board + Deal 120% damage (6 hits, 20% each)
+  desc_jp: Blind all orbs on the board + Deal 120% damage (6 hits, 20% each)
+  max_atk_pct: null
+  name_en: Were you surprised? + Even looking like this, you're strong!
+  name_jp: Were you surprised? + Even looking like this, you're strong!
+  one_time: 0
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -87,33 +95,6 @@ records:
   name_en: You got burned!
   name_jp: You got burned!
   one_time: 0
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
-  one_time: null
-  record_type_name: DIVIDER
-  usage_pct: null
-- !SkillRecord
-  desc_en: Change Heal to Light, Deal 100% damage
-  desc_jp: Change Heal to Light, Deal 100% damage
-  max_atk_pct: 100
-  name_en: Shining Straight
-  name_jp: Shining Straight
-  one_time: 1
-  record_type_name: ACTION
-  usage_pct: 50
-- !SkillRecord
-  desc_en: Change Random to Wood, Deal 120% damage
-  desc_jp: Change Random to Wood, Deal 120% damage
-  max_atk_pct: 120
-  name_en: Orb Curve
-  name_jp: Orb Curve
-  one_time: 1
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -153,14 +134,6 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
-############################################################
-### Unused Actions
-############################################################
-# SkillSet:
-# 	[0] ESBlind(5:10638) -> Were you surprised?
-# 	Blind all orbs on the board
-# 	[1] ESAttackMultihit(15:10639) -> Even looking like this, you're strong!
-# 	Deal 120% damage (6 hits, 20% each)
 ############################################################
 ### ES Modifiers
 ############################################################

@@ -7,7 +7,8 @@ monster_id: 2194
 monster_name_en: Evil Eye CyberBeast, Kakkab
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 9 unused actions
 
 ############################################################
 ### Data @ 3
@@ -53,174 +54,12 @@ records:
   record_type_name: DIVIDER
   usage_pct: null
 - !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: null
-  record_type_name: DIVIDER
-  usage_pct: null
-- !SkillRecord
   desc_en: Do nothing
   desc_jp: Do nothing
   max_atk_pct: null
   name_en: Quietly gazes in your direction
   name_jp: Quietly gazes in your direction
   one_time: 256
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
-  one_time: null
-  record_type_name: DIVIDER
-  usage_pct: null
-- !SkillRecord
-  desc_en: Do nothing
-  desc_jp: Do nothing
-  max_atk_pct: null
-  name_en: Quietly gazes in your direction
-  name_jp: Quietly gazes in your direction
-  one_time: 128
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 3
-  name_jp: Turn 3
-  one_time: null
-  record_type_name: DIVIDER
-  usage_pct: null
-- !SkillRecord
-  desc_en: Do nothing
-  desc_jp: Do nothing
-  max_atk_pct: null
-  name_en: Quietly gazes in your direction
-  name_jp: Quietly gazes in your direction
-  one_time: 64
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 4
-  name_jp: Turn 4
-  one_time: null
-  record_type_name: DIVIDER
-  usage_pct: null
-- !SkillRecord
-  desc_en: Change all orbs to Fire, Water, Wood, Dark, Heal
-  desc_jp: Change all orbs to Fire, Water, Wood, Dark, Heal
-  max_atk_pct: null
-  name_en: Mechanical Wolf Howling
-  name_jp: Mechanical Wolf Howling
-  one_time: 32
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 5
-  name_jp: Turn 5
-  one_time: null
-  record_type_name: DIVIDER
-  usage_pct: null
-- !SkillRecord
-  desc_en: Deal 400% damage (2 hits, 200% each)
-  desc_jp: Deal 400% damage (2 hits, 200% each)
-  max_atk_pct: 400
-  name_en: Ur Flare
-  name_jp: Ur Flare
-  one_time: 16
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 6
-  name_jp: Turn 6
-  one_time: null
-  record_type_name: DIVIDER
-  usage_pct: null
-- !SkillRecord
-  desc_en: Do nothing
-  desc_jp: Do nothing
-  max_atk_pct: null
-  name_en: Quietly gazes in your direction
-  name_jp: Quietly gazes in your direction
-  one_time: 8
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 7
-  name_jp: Turn 7
-  one_time: null
-  record_type_name: DIVIDER
-  usage_pct: null
-- !SkillRecord
-  desc_en: Do nothing
-  desc_jp: Do nothing
-  max_atk_pct: null
-  name_en: Quietly gazes in your direction
-  name_jp: Quietly gazes in your direction
-  one_time: 4
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 8
-  name_jp: Turn 8
-  one_time: null
-  record_type_name: DIVIDER
-  usage_pct: null
-- !SkillRecord
-  desc_en: Do nothing
-  desc_jp: Do nothing
-  max_atk_pct: null
-  name_en: Quietly gazes in your direction
-  name_jp: Quietly gazes in your direction
-  one_time: 2
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 9
-  name_jp: Turn 9
-  one_time: null
-  record_type_name: DIVIDER
-  usage_pct: null
-- !SkillRecord
-  desc_en: Do nothing
-  desc_jp: Do nothing
-  max_atk_pct: null
-  name_en: Quietly gazes in your direction
-  name_jp: Quietly gazes in your direction
-  one_time: 1
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: Delay active skills by 2~5 turns, Deal 1200% damage
-  desc_jp: Delay active skills by 2~5 turns, Deal 1200% damage
-  max_atk_pct: 1200
-  name_en: Dark Railgun
-  name_jp: Dark Railgun
-  one_time: 0
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -242,6 +81,35 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
+############################################################
+### Unused Actions
+############################################################
+# ESInactivity(66:4274) -> Quietly gazes in your direction
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 128)
+# Do nothing
+# ESInactivity(66:4275) -> Quietly gazes in your direction
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 64)
+# Do nothing
+# ESBoardChange(84:4267) -> Mechanical Wolf Howling
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 32)
+# Change all orbs to Fire, Water, Wood, Dark, Heal
+# ESAttackMultihit(15:4271) -> Ur Flare
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 16)
+# Deal 400% damage (2 hits, 200% each)
+# ESInactivity(66:4276) -> Quietly gazes in your direction
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 8)
+# Do nothing
+# ESInactivity(66:4277) -> Quietly gazes in your direction
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 4)
+# Do nothing
+# ESInactivity(66:4278) -> Quietly gazes in your direction
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
+# Do nothing
+# ESInactivity(66:4279) -> Quietly gazes in your direction
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Do nothing
+# ESSkillDelay(89:4272) -> Dark Railgun
+# Delay active skills by 2~5 turns, Deal 1200% damage
 ############################################################
 ### ES Modifiers
 ############################################################

@@ -7,7 +7,8 @@ monster_id: 1327
 monster_name_en: Jewel of Wood
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings: []
+warnings:
+- Found 1 unused actions
 
 ############################################################
 ### Data @ 1
@@ -16,15 +17,6 @@ warnings: []
 level: 1
 overrides: []
 records:
-- !SkillRecord
-  desc_en: Change Heal to Jammer, Deal 25% damage
-  desc_jp: Change Heal to Jammer, Deal 25% damage
-  max_atk_pct: 25
-  name_en: Invisible Glimpse
-  name_jp: Invisible Glimpse
-  one_time: 2
-  record_type_name: ACTION
-  usage_pct: 20
 - !SkillRecord
   desc_en: Blind all orbs on the board, Deal 75% damage
   desc_jp: Blind all orbs on the board, Deal 75% damage
@@ -44,6 +36,12 @@ records:
   record_type_name: ACTION
   usage_pct: 20
 
+############################################################
+### Unused Actions
+############################################################
+# ESOrbChangeAttack(48:1786) -> Invisible Glimpse
+# 	Condition: One-time use (ai:0 rnd:20) (one-time: 2)
+# Change Heal to Jammer, Deal 25% damage
 ############################################################
 ### ES Modifiers
 ############################################################

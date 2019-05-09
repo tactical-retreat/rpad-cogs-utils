@@ -7,8 +7,7 @@ monster_id: 103829
 monster_name_en: Alt. Crazy Archangel of Foresight, Camael
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -44,6 +43,44 @@ records:
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
+- !SkillRecord
+  desc_en: Spawn random 4 locked Bomb orbs, Deal 300% damage
+  desc_jp: Spawn random 4 locked Bomb orbs, Deal 300% damage
+  max_atk_pct: 300
+  name_en: Baleful Crimson Sword
+  name_jp: Baleful Crimson Sword
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Random 1 orbs change every 0.5s for 1 turns, Deal 300% damage
+  desc_jp: Random 1 orbs change every 0.5s for 1 turns, Deal 300% damage
+  max_atk_pct: 300
+  name_en: Shyucess Verdant Sword
+  name_jp: Shyucess Verdant Sword
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 5
+  name_jp: Turn 5
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change 1st, 5th row to Heal, Poison orbs, 3rd row to Mortal Poison orbs
+    + Increase damage to 150% for the next 999 turns
+  desc_jp: Change 1st, 5th row to Heal, Poison orbs, 3rd row to Mortal Poison orbs
+    + Increase damage to 150% for the next 999 turns
+  max_atk_pct: null
+  name_en: Deadly Scorpion Poison + Order of Destruction
+  name_jp: Deadly Scorpion Poison + Order of Destruction
+  one_time: 4
+  record_type_name: ACTION
+  usage_pct: 100
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
@@ -92,15 +129,6 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
-############################################################
-### Unused Actions
-############################################################
-# SkillSet:
-# 	Condition: One-time use (ai:100 rnd:0) (one-time: 4)
-# 	[0] ESRowSpawnMulti(78:7739) -> Deadly Scorpion Poison
-# 	Change 1st, 5th row to Heal, Poison orbs, 3rd row to Mortal Poison orbs
-# 	[1] ESAttackUPRemainingEnemies(17:7740) -> Order of Destruction
-# 	Increase damage to 150% for the next 999 turns
 ############################################################
 ### ES Modifiers
 ############################################################

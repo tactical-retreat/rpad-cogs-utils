@@ -117,8 +117,12 @@ Ability
 Survive attacks with 1 HP when HP > 50%
 White Valkyrie Shield + Fylgja's Clothing + Discerning Lifechains + Fighting Maiden's Appearance
 Voids status ailments for 999 turns + Absorb damage >= 30000000 damage for 999 turns + Rcv 50% for 10 turns + Delay active skills by 10 turns (Preemptive)
+----- Execute repeatedly. Turn 1-9 -----
 Double Slash
 40400 Damage - Deal 100% damage (2 hits, 50% each)
+----- Loop to 1 after. Turn 10 -----
+Discerning Lifechains + Mighty Bash
+Rcv 50% for 10 turns + Player -75% HP (every 10 turns)
 ----- HP < 50 -----
 ----- Turn 1 -----
 Resurrection + Heavenly Decision
@@ -126,6 +130,9 @@ Enemy recover 100% hp + Locked random skyfall +100% for 99 turns
 ----- Turn 2-10 -----
 Triple Slash
 60600 Damage - Deal 150% damage (3 hits, 50% each)
+----- Turn 11 -----
+Discerning Lifechains + Mighty Bash
+Rcv 50% for 10 turns + Player -75% HP (every 10 turns)
 Triple Slash
 60600 Damage - Deal 150% damage (3 hits, 50% each)
 ----- HP <= 7 -----
@@ -170,18 +177,8 @@ Increase damage to 200% for the next 999 turns
 ----- Turn 1 -----
 Bone-Shaking Bloom Hammer + Demonheart
 Player -99% HP + Spawn random 3 Heal orbs (every 10 turns)
------ Turn 2-10 -----
-Shadow Drop
-388044 Damage - Change Water to Dark, Deal 250% damage (50% chance)
-Concealed Mirror Kunai
-434609 Damage - Deal 280% damage (2 hits, 140% each)
------ Turn 11 -----
 Dark Demon Cage + Seal of Darkness
 Bind awoken skills for 5 turns + Voids status ailments for 9 turns (every 10 turns)
-Shadow Drop
-388044 Damage - Change Water to Dark, Deal 250% damage (50% chance)
-Concealed Mirror Kunai
-434609 Damage - Deal 280% damage (2 hits, 140% each)
 ----- HP < 5 -----
 Darkness
 9313066 Damage - Change all orbs to Dark, Deal 6000% damage
@@ -257,20 +254,13 @@ Survive attacks with 1 HP when HP > 71%
 I'll punish you, insolent fool! + Angel's Feathered Robe + Spinning Moonlight
 Bind awoken skills for 3 turns + Voids status ailments for 999 turns + Reduce damage from all sources by 50% for 5 turns (Preemptive)
 ----- Turn 1 -----
-I'll punish you, insolent fool!
-Bind awoken skills for 3 turns
 Moonlight Robe
 Reduce damage from all sources by 75% for 10 turns
------ Turn 2 -----
+----- HP <= 100 -----
 I'll punish you, insolent fool!
 Bind awoken skills for 3 turns
 Jeweled Branch of Horai
 Bind 1 own leader for 1 turns (34% chance) (every 2 turns)
-Buddha's Stone Bowl
-Player -99% HP (every 2 turns)
------ HP <= 100 -----
-I'll punish you, insolent fool!
-Bind awoken skills for 3 turns
 Buddha's Stone Bowl
 Player -99% HP (every 2 turns)
 ----- HP < 70 -----
@@ -319,28 +309,41 @@ Absorb combo <= 6 damage for 10 turns + Change Jammer to Poison, Deal 250% damag
 Roaring Deluge
 11138 Damage - Delay active skills by 2 turns, Deal 120% damage
 ----- Turn 3 -----
-Abyssal Scales
-Reduce damage from all sources by 75% for 4 turns (every 4 turns)
------ Turn 4 -----
 Bubble Bloom
 12066 Damage - Change Heal to Water, Deal 130% damage
 Depth Charge
 Player -90% HP
------ Turn 5 -----
+----- Turn 4 -----
 Roaring Deluge
 11138 Damage - Delay active skills by 2 turns, Deal 120% damage
------ Turn 6 -----
+----- Turn 5 -----
 Resentful Stare
 Increase damage to 150% for the next 999 turns (every 4 turns)
------ HP <= 100 -----
------ Execute repeatedly. Turn 1 -----
+----- Turn 6 -----
 Bubble Bloom
 12066 Damage - Change Heal to Water, Deal 130% damage
 Depth Charge
 Player -90% HP
------ Loop to 1 after. Turn 2 -----
+----- Turn 7 -----
 Roaring Deluge
 11138 Damage - Delay active skills by 2 turns, Deal 120% damage
+----- Turn 8 -----
+Bubble Bloom
+12066 Damage - Change Heal to Water, Deal 130% damage
+Depth Charge
+Player -90% HP
+----- Turn 9 -----
+Abyssal Scales
+Reduce damage from all sources by 75% for 4 turns (every 4 turns)
+----- HP <= 100 -----
+----- Execute repeatedly. Turn 1 -----
+Roaring Deluge
+11138 Damage - Delay active skills by 2 turns, Deal 120% damage
+----- Loop to 1 after. Turn 2 -----
+Bubble Bloom
+12066 Damage - Change Heal to Water, Deal 130% damage
+Depth Charge
+Player -90% HP
 ----- HP < 20 -----
 ----- Turn 1 -----
 Senja Sight
@@ -379,20 +382,12 @@ Glare of Garm + Decay
 Bind God cards for 5 turns + Spawn random 4 Poison orbs
 ----- HP < 20 -----
 ----- Turn 1 -----
-Eat Heart Strike
-75060 Damage - Change Heal to Dark, Deal 300% damage
 Glare of Garm + Decay
 Bind God cards for 5 turns + Spawn random 4 Poison orbs
------ Execute repeatedly. Turn 1 -----
 Eat Heart Strike
 75060 Damage - Change Heal to Dark, Deal 300% damage
 Dead Judgment
 30024 Damage - Lock all Poison, Mortal Poison orbs, Deal 120% damage (every 3 turns)
-Poison Nail
-30024 Damage - Spawn random 2 Mortal Poison orbs, Deal 120% damage (80% chance)
------ Loop to 1 after. Turn 2-3 -----
-Eat Heart Strike
-75060 Damage - Change Heal to Dark, Deal 300% damage
 Poison Nail
 30024 Damage - Spawn random 2 Mortal Poison orbs, Deal 120% damage (80% chance)
 
@@ -936,27 +931,40 @@ Reduce damage from all sources by 75% for 4 turns + Absorb Light, Dark damage fo
 Tree Tusk Incarceration
 38160 Damage - Lock 9 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 120% damage
 ----- Turn 3 -----
-Scaly Stronghold
-Reduce damage from all sources by 75% for 4 turns (every 4 turns)
------ Turn 4 -----
 Hushed Windweaver
 41340 Damage - Change Heal to Wood, Deal 130% damage
 Splintering Windblast
 Player -90% HP
------ Turn 5 -----
+----- Turn 4 -----
 Tree Tusk Incarceration
 38160 Damage - Lock 9 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 120% damage
------ Turn 6 -----
+----- Turn 5 -----
 Resentful Stare
 Increase damage to 150% for the next 999 turns (every 4 turns)
------ Execute repeatedly. Turn 1 -----
+----- Turn 6 -----
 Hushed Windweaver
 41340 Damage - Change Heal to Wood, Deal 130% damage
 Splintering Windblast
 Player -90% HP
------ Loop to 1 after. Turn 2 -----
+----- Turn 7 -----
 Tree Tusk Incarceration
 38160 Damage - Lock 9 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 120% damage
+----- Turn 8 -----
+Hushed Windweaver
+41340 Damage - Change Heal to Wood, Deal 130% damage
+Splintering Windblast
+Player -90% HP
+----- Turn 9 -----
+Scaly Stronghold
+Reduce damage from all sources by 75% for 4 turns (every 4 turns)
+----- Execute repeatedly. Turn 1 -----
+Tree Tusk Incarceration
+38160 Damage - Lock 9 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 120% damage
+----- Loop to 1 after. Turn 2 -----
+Hushed Windweaver
+41340 Damage - Change Heal to Wood, Deal 130% damage
+Splintering Windblast
+Player -90% HP
 ----- When HP is not full -----
 ----- Turn 1 -----
 Scaly Stronghold + Lush Green
@@ -1019,30 +1027,7 @@ Darkness Pillar
 57862 Damage - Change Random to Dark, Deal 105% damage (33% chance)
 Darkness Rush
 66128 Damage - Deal 120% damage (2 hits, 60% each) (34% chance)
------ Turn 3 -----
-Gloomy Enclosure
-66128 Damage - Change all orbs to Fire, Water, Dark, Heal, Deal 120% damage
------ Turn 4 -----
-Accepting Spirit
-55107 Damage - Spawn random 4 Fire, Dark orbs, Deal 100% damage (33% chance)
-Darkness Pillar
-57862 Damage - Change Random to Dark, Deal 105% damage (33% chance)
-Darkness Rush
-66128 Damage - Deal 120% damage (2 hits, 60% each) (34% chance)
------ Turn 5 -----
-Eroding Mist
-Spawn random 8 Poison orbs (every 3 turns)
------ Turn 6 -----
-Gloomy Enclosure
-66128 Damage - Change all orbs to Fire, Water, Dark, Heal, Deal 120% damage
------ Turn 7-8 -----
-Accepting Spirit
-55107 Damage - Spawn random 4 Fire, Dark orbs, Deal 100% damage (33% chance)
-Darkness Pillar
-57862 Damage - Change Random to Dark, Deal 105% damage (33% chance)
-Darkness Rush
-66128 Damage - Deal 120% damage (2 hits, 60% each) (34% chance)
------ Loop to 1 after. Turn 9 -----
+----- Loop to 1 after. Turn 3 -----
 Gloomy Enclosure
 66128 Damage - Change all orbs to Fire, Water, Dark, Heal, Deal 120% damage
 ----- HP < 15 -----
@@ -1070,30 +1055,7 @@ Darkness Pillar
 57862 Damage - Change Random to Dark, Deal 105% damage (33% chance)
 Darkness Rush
 66128 Damage - Deal 120% damage (2 hits, 60% each) (34% chance)
------ Turn 3 -----
-Welcoming Mist
-Absorb Fire, Dark damage for 2 turns
------ Turn 4 -----
-Accepting Spirit
-55107 Damage - Spawn random 4 Fire, Dark orbs, Deal 100% damage (33% chance)
-Darkness Pillar
-57862 Damage - Change Random to Dark, Deal 105% damage (33% chance)
-Darkness Rush
-66128 Damage - Deal 120% damage (2 hits, 60% each) (34% chance)
------ Turn 5 -----
-Eroding Mist
-Spawn random 8 Poison orbs (every 3 turns)
------ Turn 6 -----
-Welcoming Mist
-Absorb Fire, Dark damage for 2 turns
------ Turn 7-8 -----
-Accepting Spirit
-55107 Damage - Spawn random 4 Fire, Dark orbs, Deal 100% damage (33% chance)
-Darkness Pillar
-57862 Damage - Change Random to Dark, Deal 105% damage (33% chance)
-Darkness Rush
-66128 Damage - Deal 120% damage (2 hits, 60% each) (34% chance)
------ Loop to 1 after. Turn 9 -----
+----- Loop to 1 after. Turn 3 -----
 Welcoming Mist
 Absorb Fire, Dark damage for 2 turns
 ----- When 1 enemy remains -----
@@ -1272,6 +1234,14 @@ I'll Stomp You Under My Heel!
 ----- Turn 1 -----
 Tempting Embrace
 Bind 1 own leader for 3 turns
+----- Execute repeatedly. Turn 1 -----
+I'll Stomp You Under My Heel!
+15930 Damage - Change Random to Heal, Deal 150% damage (every 2 turns)
+----- Loop to 1 after. Turn 2 -----
+Honey Poison
+Change Heal to Poison (50% chance)
+Blue Slash
+10620 Damage - Change Random to Water, Deal 100% damage
 ----- HP < 30 -----
 ----- Turn 2 -----
 Princess's Order
@@ -1361,36 +1331,10 @@ stage 2
 101955 - Alt. Awoken Lakshmi @ level 5
 Let's plaaay! + It's Puzzle Fight Time! + It's gonna get harder! Get ready!
 Bind awoken skills for 6 turns + Bind active skills for 6 turns + Change all orbs to Fire, Water, Wood, Light, Dark, Heal (Preemptive)
------ Turn 1 -----
 Nope! Wroong!
 9999900 Damage - Change Jammer to Water, Deal 90000% damage
 Can you erase my Jammers?
 Change 1st, 5th row to Water, Heal, Jammer orbs, 3rd row to Jammer orbs (1 time use)
------ Turn 2 -----
-Nope! Wroong!
-9999900 Damage - Change Jammer to Water, Deal 90000% damage
-Here I gooo!
-Change 1st, 4th, 6th column to Water, Heal, Jammer orbs, 3rd column to Jammer orbs (1 time use)
------ Turn 3 -----
-Nope! Wroong!
-9999900 Damage - Change Jammer to Water, Deal 90000% damage
-My... You're not bad!
-Spawn random 13 Jammer orbs (1 time use)
------ Turn 4 -----
-Nope! Wroong!
-9999900 Damage - Change Jammer to Water, Deal 90000% damage
-However, this here... + Can you erase these!?
-Blind random 30 orbs for 1 turns + Spawn random 16 Jammer orbs (1 time use)
------ Turn 5 -----
-Nope! Wroong!
-9999900 Damage - Change Jammer to Water, Deal 90000% damage
-You're impressive! + This will finish it! + Eat this!
-Movetime -2s for 1 turns + Spawn random 4 Jammer orbs + Fix orb movement starting point to random position on the board (1 time use)
------ HP <= 100 -----
-Nope! Wroong!
-9999900 Damage - Change Jammer to Water, Deal 90000% damage
-That was fun! See ya!
-Reduce self HP to 0
 
 New Year Quest 2 - Lv20
 
@@ -1495,12 +1439,15 @@ Shadow Touch
 ----- Turn 1 -----
 Healing Element + Hinder Line
 Change all orbs to Fire, Light, Dark, Deal 100% damage + Change 3rd row to Jammer orbs
------ Execute repeatedly. Turn 1-2 -----
+----- Execute repeatedly. Turn 1 -----
 Heat and Cold
 16098 Damage - Spawn random 2 Fire, Water orbs, Deal 160% damage
------ Loop to 1 after. Turn 3 -----
+----- Turn 2 -----
 Hinder Alchemy
 18110 Damage - Spawn random 5 Jammer orbs, Deal 180% damage (every 3 turns)
+----- Loop to 1 after. Turn 3 -----
+Heat and Cold
+16098 Damage - Spawn random 2 Fire, Water orbs, Deal 160% damage
 ----- HP < 50 -----
 ----- Turn 1 -----
 Chemical Reaction + Weaknessless
@@ -1509,12 +1456,11 @@ Chemical Reaction + Weaknessless
 Change own attribute to Light + Absorb Dark damage for 5 turns (33% chance)
 Chemical Reaction + Weaknessless
 Change own attribute to Dark + Absorb Light damage for 5 turns (34% chance)
------ Execute repeatedly. Turn 1-2 -----
+----- Turn 2 -----
 High Poison Alchemy
 20122 Damage - Change Jammer to Mortal Poison, Deal 200% damage
 Heat and Cold
 16098 Damage - Spawn random 2 Fire, Water orbs, Deal 160% damage
------ Loop to 1 after. Turn 3 -----
 High Poison Alchemy
 20122 Damage - Change Jammer to Mortal Poison, Deal 200% damage
 Hinder Alchemy
@@ -1653,21 +1599,33 @@ Seal 1st column for 1 turns + Change 6th column to Heal, Jammer orbs, Deal 120% 
 ----- Turn 2 -----
 Drops from Heaven
 18062 Damage - Change all orbs to Poison, Deal 130% damage (1 time use)
+Holy Rays of the Sun
+18062 Damage - Blind all orbs on the board, Deal 130% damage (1 time use)
+----- Turn 3 -----
 Scarab's Heavenly Wings
 Bind awoken skills for 3 turns (1 time use)
 Eeny, meeny, miny, moe♪ + Eat this!
 Seal 1st row for 1 turns + Change 5th row to Heal, Jammer orbs, Deal 120% damage (1 time use)
------ Turn 3 -----
-Drops from Heaven
-19451 Damage - Change all orbs to Poison, Deal 140% damage (1 time use)
-Ash-Shams Cloak
-Reduce damage from all sources by 50% for 3 turns (1 time use)
 ----- Turn 4 -----
-Rolling, rolling, rolling, rolling ♪ + Eat this!
-Seal 6th column for 1 turns + Change 1st column to Heal, Jammer orbs, Deal 120% damage (1 time use)
+Eeny, meeny, miny, moe♪ + Eat this!
+Seal 1st row for 1 turns + Change 5th row to Heal, Jammer orbs, Deal 120% damage (1 time use)
 ----- Turn 5 -----
 Drops from Heaven
+19451 Damage - Change all orbs to Poison, Deal 140% damage (1 time use)
+Holy Rays of the Sun
+19451 Damage - Blind all orbs on the board, Deal 140% damage (1 time use)
+----- Turn 6 -----
+Ash-Shams Cloak
+Reduce damage from all sources by 50% for 3 turns (1 time use)
+----- Turn 7 -----
+Rolling, rolling, rolling, rolling ♪ + Eat this!
+Seal 6th column for 1 turns + Change 1st column to Heal, Jammer orbs, Deal 120% damage (1 time use)
+----- Turn 8 -----
+Drops from Heaven
 20841 Damage - Change all orbs to Poison, Deal 150% damage (1 time use)
+Holy Rays of the Sun
+20841 Damage - Blind all orbs on the board, Deal 150% damage (1 time use)
+----- Turn 9 -----
 Here we go!
 Absorb combo <= 5 damage for 1 turns (1 time use)
 ----- HP <= 100 -----
@@ -1853,35 +1811,8 @@ Absorb Light damage for 10 turns (Preemptive)
 Shining Eyes
 Increase damage to 1000% for the next 999 turns
 ----- HP <= 100 -----
------ Turn 1 -----
 Quietly gazes in your direction
 Do nothing (1 time use)
------ Turn 2 -----
-Quietly gazes in your direction
-Do nothing (1 time use)
------ Turn 3 -----
-Quietly gazes in your direction
-Do nothing (1 time use)
------ Turn 4 -----
-Mechanical Wolf Howling
-Change all orbs to Fire, Water, Wood, Dark, Heal (1 time use)
------ Turn 5 -----
-Ur Flare
-67280 Damage - Deal 400% damage (2 hits, 200% each) (1 time use)
------ Turn 6 -----
-Quietly gazes in your direction
-Do nothing (1 time use)
------ Turn 7 -----
-Quietly gazes in your direction
-Do nothing (1 time use)
------ Turn 8 -----
-Quietly gazes in your direction
-Do nothing (1 time use)
------ Turn 9 -----
-Quietly gazes in your direction
-Do nothing (1 time use)
-Dark Railgun
-201842 Damage - Delay active skills by 2~5 turns, Deal 1200% damage
 ----- HP < 5 -----
 Metal Deadly Fang
 420505 Damage - Deal 2500% damage (5 hits, 500% each)
