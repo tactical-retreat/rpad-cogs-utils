@@ -161,9 +161,9 @@ class Context(object):
     def clone(self):
         return copy.deepcopy(self)
 
-    def turn_event(self):
+    def turn_event(self, enraged_this_turn: bool):
         self.turn += 1
-        if self.enraged is not None:
+        if self.enraged is not None and not enraged_this_turn:
             if self.enraged > 0:
                 # count down enraged turns
                 self.enraged -= 1
@@ -304,6 +304,8 @@ class Context(object):
     def increment_skill_counter(self):
         self.skill_counter = min(self.skill_counter + self.skill_counter_increment, self.max_skill_counter)
 
+    def is_enraged(self):
+        return (self.enraged or 0) > 0
 
 def default_attack():
     """Indicates that the monster uses its standard attack."""
@@ -651,8 +653,10 @@ def extract_turn_behaviors(ctx: Context, behaviors: List[ESBehavior], hp_checkpo
     hp_ctx.hp = hp_checkpoint
     turn_data = []
     for idx in range(0, 20):
+        started_enraged = hp_ctx.is_enraged()
         turn_data.append(loop_through(hp_ctx, behaviors))
-        hp_ctx.turn_event()
+        enraged_this_turn = not started_enraged and hp_ctx.is_enraged()
+        hp_ctx.turn_event(enraged_this_turn)
 
     return turn_data
 
