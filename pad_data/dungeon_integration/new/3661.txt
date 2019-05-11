@@ -9,37 +9,20 @@ Reduce damage from all sources by 50% for 1 turns (Preemptive)
 Wind-Up Full Throttle
 Increase damage to 200% for the next 999 turns (When 1 enemy remains)
 ----- HP <= 100 -----
+----- Execute repeatedly. Turn 1 -----
 Three Hearts Clutch
 18522 Damage - Spawn random 3 Heal orbs, Deal 130% damage (34% chance)
 Seven Ties Tentacle
 14248 Damage - Lock 7 random Fire, Water, Wood, Light, Dark orbs, Deal 100% damage (33% chance)
 Nine Flames Breath
 14248 Damage - Spawn random 9 Fire orbs, Deal 100% damage (33% chance)
------ HP <= 50 -----
------ Turn 1 -----
-Three Hearts Clutch
-18522 Damage - Spawn random 3 Heal orbs, Deal 130% damage (34% chance)
-Seven Ties Tentacle
-14248 Damage - Lock 7 random Fire, Water, Wood, Light, Dark orbs, Deal 100% damage (33% chance)
-Nine Flames Breath
-14248 Damage - Spawn random 9 Fire orbs, Deal 100% damage (33% chance)
------ Turn 2 -----
+----- Loop to 1 after. Turn 2 -----
 Shell Seclusion
 Reduce damage from all sources by 50% for 1 turns
 ----- HP < 50 -----
 ----- Turn 1 -----
 Incandescent Ocean
 Change all orbs to Fire (1 time use)
------ Turn 2 -----
-Three Hearts Clutch
-18522 Damage - Spawn random 3 Heal orbs, Deal 130% damage (34% chance)
-Seven Ties Tentacle
-14248 Damage - Lock 7 random Fire, Water, Wood, Light, Dark orbs, Deal 100% damage (33% chance)
-Nine Flames Breath
-14248 Damage - Spawn random 9 Fire orbs, Deal 100% damage (33% chance)
------ Turn 3 -----
-Shell Seclusion
-Reduce damage from all sources by 50% for 1 turns
 ----- HP < 10 -----
 Full Spiral
 Player -100% HP
@@ -368,22 +351,21 @@ Ability
 Reduce damage from Wood, Light by 50%
 I'm honored to face you!
 Voids status ailments for 999 turns (Preemptive)
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 Ha!
 21301 Damage - Deal 120% damage
 ----- Turn 2 -----
 His shield is raised
 Reduce damage from all sources by 50% for 1 turns
------ HP <= 100 -----
------ Execute repeatedly. Turn 1 -----
+----- Turn 3 -----
 Take that!
 23076 Damage - Deal 130% damage
------ Turn 3 -----
+----- Turn 4 -----
+His shield is raised
+Reduce damage from all sources by 50% for 1 turns
+----- Loop to 1 after. Turn 5 -----
 Triple Thrust
 31951 Damage - Deal 180% damage (3 hits, 60% each)
------ Loop to 1 after. Turn 4 -----
-Ha!
-21301 Damage - Deal 120% damage
 
 stage 10
 
@@ -416,7 +398,6 @@ stage 0
 
 100030 - Alt. Lil' White Dragon @ level 13
 ----- When HP is full -----
------ Turn 1 -----
 Light Guard
 Reduce damage from all sources by 50% for 2 turns
 ----- When HP is not full -----
@@ -429,7 +410,6 @@ Increase damage to 200% for the next 99 turns (1 time use)
 
 100033 - Alt. Lil' Black Dragon @ level 13
 ----- When HP is full -----
------ Turn 1 -----
 Dark Guard
 Reduce damage from all sources by 50% for 2 turns
 ----- When HP is not full -----
@@ -651,16 +631,15 @@ Reduce damage from all sources by 50% for 1 turns (Preemptive)
 ----- Turn 1 -----
 Got angry
 Increase damage to 200% for the next 999 turns (1 time use)
+----- Turn 2 -----
+Dancing around
+Reduce damage from all sources by 75% for 1 turns (1 time use)
+----- Turn 3 -----
+Dancing around
+Reduce damage from all sources by 99% for 1 turns (1 time use)
 ----- HP <= 100 -----
 Amazing Attack
 16022 Damage - Deal 400% damage (4 hits, 100% each)
------ Enemy is defeated -----
------ Turn 1 -----
-Dancing around
-Reduce damage from all sources by 75% for 1 turns (1 time use)
------ Turn 2 -----
-Got angry
-Increase damage to 200% for the next 999 turns (1 time use)
 
 stage 1
 
@@ -807,6 +786,13 @@ stage 0
 2007 - Sphinx @ level 7
 Immovable Protection
 Voids status ailments for 999 turns (Preemptive)
+----- Turn 1-2 -----
+It's looking at you
+Do nothing
+----- Turn 3 -----
+The flames have begun to dance
+Increase damage to 300% for the next 999 turns
+----- HP <= 100 -----
 It's looking at you
 Do nothing
 ----- HP < 50 -----
@@ -1195,30 +1181,6 @@ Maitrii Kleza
 ----- Turn 3 -----
 Darsana Layaanaam
 14256 Damage - Blind all orbs on the board, Deal 110% damage (1 time use)
------ Turn 4 -----
-Pramaada Dukkha
-Player -99% HP
------ Turn 5 -----
-Aatma Yogah
-12960 Damage - Enemy recover 5%~8% hp, Deal 100% damage
------ Turn 6 -----
-Nairantarya
-17107 Damage - Deal 132% damage (3 hits, 44% each)
------ Turn 7 -----
-Guruh Karma
-18144 Damage - Absorb combo <= 6 damage for 1 turns, Deal 140% damage
------ Turn 8 -----
-Pramaada Dukkha
-Player -99% HP
------ Turn 9 -----
-Aatma Yogah
-12960 Damage - Enemy recover 5%~8% hp, Deal 100% damage
------ Turn 10 -----
-Nairantarya
-17107 Damage - Deal 132% damage (3 hits, 44% each)
------ Turn 11 -----
-Pratibandhii
-19440 Damage - Bind 1 random for 3 turns, Deal 150% damage (1 time use)
 ----- HP <= 100 -----
 ----- Execute repeatedly. Turn 1 -----
 Pramaada Dukkha
@@ -1226,46 +1188,17 @@ Player -99% HP
 ----- Turn 2 -----
 Aatma Yogah
 12960 Damage - Enemy recover 5%~8% hp, Deal 100% damage
------ Loop to 1 after. Turn 3 -----
+----- Turn 3 -----
 Nairantarya
 17107 Damage - Deal 132% damage (3 hits, 44% each)
+----- Loop to 1 after. Turn 4 -----
+Guruh Karma
+18144 Damage - Absorb combo <= 6 damage for 1 turns, Deal 140% damage
 ----- HP < 50 -----
 ----- Turn 4 -----
 Pratibandhii
 19440 Damage - Bind 1 random for 3 turns, Deal 150% damage (1 time use)
------ Turn 5 -----
-Pramaada Dukkha
-Player -99% HP
------ Turn 6 -----
-Aatma Yogah
-12960 Damage - Enemy recover 5%~8% hp, Deal 100% damage
------ Turn 7 -----
-Nairantarya
-17107 Damage - Deal 132% damage (3 hits, 44% each)
------ Turn 8 -----
-Guruh Karma
-18144 Damage - Absorb combo <= 6 damage for 1 turns, Deal 140% damage
 ----- HP < 30 -----
------ Turn 5 -----
-Pratisedha
-20736 Damage - Change Heal to Jammer, Deal 160% damage (15% chance)
-Pramaada Dukkha
-Player -99% HP
------ Turn 6 -----
-Pratisedha
-20736 Damage - Change Heal to Jammer, Deal 160% damage (15% chance)
-Aatma Yogah
-12960 Damage - Enemy recover 5%~8% hp, Deal 100% damage
------ Turn 7 -----
-Pratisedha
-20736 Damage - Change Heal to Jammer, Deal 160% damage (15% chance)
-Nairantarya
-17107 Damage - Deal 132% damage (3 hits, 44% each)
------ Turn 8 -----
-Pratisedha
-20736 Damage - Change Heal to Jammer, Deal 160% damage (15% chance)
-Guruh Karma
-18144 Damage - Absorb combo <= 6 damage for 1 turns, Deal 140% damage
 ----- Execute repeatedly. Turn 1 -----
 Pratisedha
 20736 Damage - Change Heal to Jammer, Deal 160% damage (15% chance)
@@ -1284,6 +1217,8 @@ Nairantarya
 ----- Loop to 1 after. Turn 4 -----
 Pratisedha
 20736 Damage - Change Heal to Jammer, Deal 160% damage (15% chance)
+Guruh Karma
+18144 Damage - Absorb combo <= 6 damage for 1 turns, Deal 140% damage
 ----- HP < 10 -----
 Daurmanasya
 38880 Damage - Deal 300% damage (3 hits, 100% each)
@@ -1926,7 +1861,18 @@ You must have guts to face me!
 Delay active skills by 1~2 turns, (if [1257] on team)
 Purple Soul Shield
 Reduce damage from all sources by 30% for 3 turns (1 time use)
+----- Turn 2-3 -----
+Ice Needle
+23922 Damage - Change Wood to Water, Deal 60% damage (60% chance)
+Freezing Wind
+23922 Damage - Change 1st, 2nd row to Water, Jammer, Poison orbs, Deal 60% damage (60% chance)
+----- Turn 4 -----
+Purple Soul Shield
+Reduce damage from all sources by 30% for 3 turns (1 time use)
 ----- HP < 30 -----
+----- Turn 2-3 -----
+Super Snowstorm
+59805 Damage - Deal 150% damage (5 hits, 30% each)
 Super Snowstorm
 59805 Damage - Deal 150% damage (5 hits, 30% each)
 
