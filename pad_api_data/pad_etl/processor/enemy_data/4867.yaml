@@ -8,7 +8,7 @@ monster_name_en: Yuuki
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 3 unused actions
+- Found 1 unused actions
 
 ############################################################
 ### Data @ 1
@@ -26,6 +26,15 @@ records:
   one_time: 1
   record_type_name: PREEMPT
   usage_pct: 100
+- !SkillRecord
+  desc_en: Do nothing, (if [4858, 4859] on team) (Preemptive)
+  desc_jp: Do nothing, (if [4858, 4859] on team) (Preemptive)
+  max_atk_pct: null
+  name_en: Hey, what's up? You next?
+  name_jp: Hey, what's up? You next?
+  one_time: 1
+  record_type_name: PREEMPT
+  usage_pct: 100
 
 ############################################################
 ### Data @ 4
@@ -40,6 +49,17 @@ records:
   max_atk_pct: null
   name_en: Come on... Draw your sword.
   name_jp: Come on... Draw your sword.
+  one_time: 1
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Fix orb movement starting point to random position on the board, (if [4858,
+    4859] on team) (Preemptive)
+  desc_jp: Fix orb movement starting point to random position on the board, (if [4858,
+    4859] on team) (Preemptive)
+  max_atk_pct: null
+  name_en: Hey, what's up? You next?
+  name_jp: Hey, what's up? You next?
   one_time: 1
   record_type_name: PREEMPT
   usage_pct: 100
@@ -145,12 +165,6 @@ records:
 ############################################################
 ### Unused Actions
 ############################################################
-# ESInactivity(66:11438) -> Hey, what's up? You next?
-# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
-# Do nothing
-# ESFixedStart(101:11439) -> Hey, what's up? You next?
-# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
-# Fix orb movement starting point to random position on the board
 # SkillSet:
 # 	Condition: On death (ai:0 rnd:0)
 # 	[0] ESInactivity(66:11654) -> I've totally seen enough
@@ -178,7 +192,7 @@ records:
 # Do nothing
 # [5] ESInactivity(66:11438) -> Hey, what's up? You next?
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
-# Do nothing
+# Do nothing, (if [4858, 4859] on team)
 # [6] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [7] ESBranchCard(90:11440) -> ESBranchCard
@@ -188,7 +202,7 @@ records:
 # Fix orb movement starting point to random position on the board
 # [9] ESFixedStart(101:11439) -> Hey, what's up? You next?
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
-# Fix orb movement starting point to random position on the board
+# Fix orb movement starting point to random position on the board, (if [4858, 4859] on team)
 # [10] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 14
 # [11] ESFlagOperation(22:12) -> ESFlagOperation

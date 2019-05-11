@@ -7,8 +7,7 @@ monster_id: 103621
 monster_name_en: Heir to the Fuwa Enmei-ryu, Hokuto Fuwa
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -23,6 +22,15 @@ records:
   max_atk_pct: null
   name_en: GAAAAAHH!
   name_jp: GAAAAAHH!
+  one_time: 1
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Player -50% HP, (if [3617, 3618] on team) (Preemptive)
+  desc_jp: Player -50% HP, (if [3617, 3618] on team) (Preemptive)
+  max_atk_pct: null
+  name_en: What's wrong master, running away?
+  name_jp: What's wrong master, running away?
   one_time: 1
   record_type_name: PREEMPT
   usage_pct: 100
@@ -102,12 +110,6 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# ESGravity(50:6691) -> What's wrong master, running away?
-# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
-# Player -50% HP
-############################################################
 ### ES Modifiers
 ############################################################
 # [9] 5 - monster size?
@@ -127,7 +129,7 @@ records:
 # Player -50% HP
 # [4] ESGravity(50:6691) -> What's wrong master, running away?
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
-# Player -50% HP
+# Player -50% HP, (if [3617, 3618] on team)
 # [5] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 9
 # [6] ESFlagOperation(22:12) -> ESFlagOperation

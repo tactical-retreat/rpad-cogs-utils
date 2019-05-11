@@ -8,7 +8,7 @@ monster_name_en: Illuminating Dragon Caller, Myne
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 2 unused actions
+- Found 1 unused actions
 
 ############################################################
 ### Data @ 4
@@ -23,6 +23,17 @@ records:
   max_atk_pct: null
   name_en: Oh! A visitor?!
   name_jp: Oh! A visitor?!
+  one_time: 2
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 75% for 1 turns, (if [3930, 3931, 3942,
+    3943] on team) (Preemptive)
+  desc_jp: Reduce damage from all sources by 75% for 1 turns, (if [3930, 3931, 3942,
+    3943] on team) (Preemptive)
+  max_atk_pct: null
+  name_en: W...Welcome home?...
+  name_jp: W...Welcome home?...
   one_time: 2
   record_type_name: PREEMPT
   usage_pct: 100
@@ -104,9 +115,6 @@ records:
 ############################################################
 ### Unused Actions
 ############################################################
-# ESDamageShield(74:8309) -> W...Welcome home?...
-# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
-# Reduce damage from all sources by 75% for 1 turns
 # SkillSet:
 # 	Condition: On death (ai:0 rnd:0)
 # 	[0] ESRandomSpawn(92:8315) -> It's dangerous inside so be careful...!
@@ -135,7 +143,7 @@ records:
 # Reduce damage from all sources by 75% for 1 turns
 # [6] ESDamageShield(74:8309) -> W...Welcome home?...
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
-# Reduce damage from all sources by 75% for 1 turns
+# Reduce damage from all sources by 75% for 1 turns, (if [3930, 3931, 3942, 3943] on team)
 # [7] ESSkillDelay(89:8313) -> Flying Bucket
 # 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Delay active skills by 2 turns

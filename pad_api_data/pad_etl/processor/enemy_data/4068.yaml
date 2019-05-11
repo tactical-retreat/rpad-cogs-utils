@@ -7,8 +7,7 @@ monster_id: 4068
 monster_name_en: Patissiere of the Sanctuary, Cockatrice
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 4
@@ -23,6 +22,15 @@ records:
   max_atk_pct: null
   name_en: "\u266A"
   name_jp: "\u266A"
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Rcv 200% for 5 turns, (if [789, 790, 2404, 3122] on team) (Preemptive)
+  desc_jp: Rcv 200% for 5 turns, (if [789, 790, 2404, 3122] on team) (Preemptive)
+  max_atk_pct: null
+  name_en: Resonance of Cockatrice
+  name_jp: Resonance of Cockatrice
   one_time: 0
   record_type_name: PREEMPT
   usage_pct: 100
@@ -100,11 +108,6 @@ records:
   usage_pct: 80
 
 ############################################################
-### Unused Actions
-############################################################
-# ESDebuffRCV(105:8597) -> Resonance of Cockatrice
-# Rcv 200% for 5 turns
-############################################################
 ### ES Modifiers
 ############################################################
 # [9] 3 - monster size?
@@ -130,7 +133,7 @@ records:
 # [7] ESInactivity(66:8598) -> ♪
 # Do nothing
 # [8] ESDebuffRCV(105:8597) -> Resonance of Cockatrice
-# Rcv 200% for 5 turns
+# Rcv 200% for 5 turns, (if [789, 790, 2404, 3122] on team)
 # [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [10] ESAttackSinglehit(82:1) -> Disable Skill

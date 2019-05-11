@@ -8,7 +8,7 @@ monster_name_en: Kyo Kusanagi
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 3 unused actions
+- Found 1 unused actions
 
 ############################################################
 ### Data @ 1
@@ -26,16 +26,28 @@ records:
   one_time: 1
   record_type_name: PREEMPT
   usage_pct: 100
+- !SkillRecord
+  desc_en: Do nothing, (if [4091, 4092, 4093] on team) (Preemptive)
+  desc_jp: Do nothing, (if [4091, 4092, 4093] on team) (Preemptive)
+  max_atk_pct: null
+  name_en: The flames are calling you!
+  name_jp: The flames are calling you!
+  one_time: 1
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Do nothing, (if [4094, 4095] on team) (Preemptive)
+  desc_jp: Do nothing, (if [4094, 4095] on team) (Preemptive)
+  max_atk_pct: null
+  name_en: Shall we fight, Benimaru?
+  name_jp: Shall we fight, Benimaru?
+  one_time: 1
+  record_type_name: PREEMPT
+  usage_pct: 100
 
 ############################################################
 ### Unused Actions
 ############################################################
-# ESInactivity(66:8627) -> The flames are calling you!
-# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
-# Do nothing
-# ESInactivity(66:8628) -> Shall we fight, Benimaru?
-# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
-# Do nothing
 # SkillSet:
 # 	Condition: On death (ai:0 rnd:0)
 # 	[0] ESInactivity(66:8624) -> Aaaaaaaaah!
@@ -70,10 +82,10 @@ records:
 # Do nothing
 # [9] ESInactivity(66:8627) -> The flames are calling you!
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
-# Do nothing
+# Do nothing, (if [4091, 4092, 4093] on team)
 # [10] ESInactivity(66:8628) -> Shall we fight, Benimaru?
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
-# Do nothing
+# Do nothing, (if [4094, 4095] on team)
 # [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [12] SkillSet:

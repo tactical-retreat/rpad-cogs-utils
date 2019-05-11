@@ -8,7 +8,7 @@ monster_name_en: Iori Yagami
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 2 unused actions
+- Found 1 unused actions
 
 ############################################################
 ### Data @ 1
@@ -26,13 +26,19 @@ records:
   one_time: 1
   record_type_name: PREEMPT
   usage_pct: 100
+- !SkillRecord
+  desc_en: Do nothing, (if [4076, 4077, 4078] on team) (Preemptive)
+  desc_jp: Do nothing, (if [4076, 4077, 4078] on team) (Preemptive)
+  max_atk_pct: null
+  name_en: Then let it burn, as it demands.
+  name_jp: Then let it burn, as it demands.
+  one_time: 1
+  record_type_name: PREEMPT
+  usage_pct: 100
 
 ############################################################
 ### Unused Actions
 ############################################################
-# ESInactivity(66:8678) -> Then let it burn, as it demands.
-# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
-# Do nothing
 # SkillSet:
 # 	Condition: On death (ai:0 rnd:0)
 # 	[0] ESInactivity(66:8675) -> It can't end like this!
@@ -65,7 +71,7 @@ records:
 # Do nothing
 # [8] ESInactivity(66:8678) -> Then let it burn, as it demands.
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
-# Do nothing
+# Do nothing, (if [4076, 4077, 4078] on team)
 # [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [10] SkillSet:
