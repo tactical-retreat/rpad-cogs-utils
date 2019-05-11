@@ -282,6 +282,12 @@ def flatten_skillset(level: int, skillset: ProcessedSkillset) -> SkillRecordList
         records.append(create_divider("When {} enemy remains".format(er_moveset.count)))
         process_moveset(er_moveset)
 
+    for item in skillset.death_actions:
+        # We ignore death cries, and only output 'useful' skillsets on death
+        if type(item) == ESSkillSetOnDeath and item.has_action():
+            records.append(create_divider("On death"))
+            records.append(behavior_to_skillrecord(RecordType.ACTION, item))
+
     return SkillRecordListing(level=level, records=records)
 
 

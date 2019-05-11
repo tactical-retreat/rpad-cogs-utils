@@ -1340,6 +1340,16 @@ class ESSkillSetOnDeath(ESSkillSet):
         if self.condition:
             self.condition.description = 'On death'
 
+    def has_action(self) -> bool:
+        """Helper that determines if the skillset does stuff other than emote."""
+        for x in self.skill_list:
+            if type(x) == ESSkillSet:
+                if any([type(y) != ESInactivity for y in x.skill_list]):
+                    return True
+            elif type(x) != ESInactivity:
+                return True
+        return False
+
 
 class ESSkillDelay(ESAction):
     def __init__(self, skill: EnemySkillRef):

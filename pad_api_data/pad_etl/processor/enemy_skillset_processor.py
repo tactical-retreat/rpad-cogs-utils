@@ -91,6 +91,8 @@ class ProcessedSkillset(object):
         self.level = level
         # Things like color/type resists, resolve, etc.
         self.base_abilities = []  # type: List[ESAction]
+        # These automatically trigger when the monster dies
+        self.death_actions = []  # type: List[ESAction]
         # Preemptive attacks, shields, combo guards.
         self.preemptives = []  # type: List[ESAction]
 
@@ -515,6 +517,7 @@ def loop_through_inner(ctx, behaviors: List[Optional[ESBehavior]]) -> List[ESAct
 def info_from_behaviors(behaviors: List[ESBehavior]):
     """Extract some static info from the behavior list and clean it up where necessary."""
     base_abilities = []
+    death_actions = []
     hp_checkpoints = set()
     hp_checkpoints.add(100)
     hp_checkpoints.add(0)
@@ -528,6 +531,14 @@ def info_from_behaviors(behaviors: List[ESBehavior]):
         if issubclass(type(es), ESPassive):
             base_abilities.append(es)
             behaviors[idx] = None
+            continue
+
+        # Extract death actions and null them out
+        if type(es) in [ESDeathCry, ESSkillSetOnDeath]:
+            death_actions.append(es)
+            behaviors[idx] = None
+            continue
+
 
         # Find candidate branch HP values
         if type(es) == ESBranchHP:
@@ -549,7 +560,7 @@ def info_from_behaviors(behaviors: List[ESBehavior]):
         if type(es) in [ESBranchRemainingEnemies, ESAttackUPRemainingEnemies, ESRecoverEnemyAlly]:
             has_enemy_remaining_branch = True
 
-    return base_abilities, hp_checkpoints, card_checkpoints, has_enemy_remaining_branch
+    return base_abilities, hp_checkpoints, card_checkpoints, has_enemy_remaining_branch, death_actions
 
 
 def extract_preemptives(ctx: Context, behaviors: List[Any], card_checkpoints: Set[Tuple[int]]):
@@ -717,9 +728,10 @@ def convert(card: BookCard, enemy_behavior: List[ESBehavior],
     if card.card_id in ZERO_INDEXED_MONSTERS:
         behaviors.pop(0)
 
-    base_abilities, hp_checkpoints, card_checkpoints, has_enemy_remaining_branch = info_from_behaviors(
-        behaviors)
+    (base_abilities, hp_checkpoints, card_checkpoints,
+     has_enemy_remaining_branch, death_actions) = info_from_behaviors(behaviors)
     skillset.base_abilities = base_abilities
+    skillset.death_actions = death_actions
 
     # Ensure the HP checkpoints are in descended order
     hp_checkpoints = sorted(hp_checkpoints, reverse=True)
