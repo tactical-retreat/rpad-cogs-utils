@@ -302,7 +302,7 @@ def loop_through(ctx, behaviors: List[Optional[ESBehavior]]) -> List[ESAction]:
     original_ctx = ctx.clone()
     results, card_branches, combo_branches = loop_through_inner(ctx, behaviors)
 
-    # Handle extracting alternate preempts based on card values
+    # Handle extracting alternate actions based on card values
     card_extra_actions = []
     for card_ids in sorted(card_branches):
         card_ctx = original_ctx.clone()
@@ -320,6 +320,24 @@ def loop_through(ctx, behaviors: List[Optional[ESBehavior]]) -> List[ESAction]:
 
     # Add any alternate preempts
     for nb in card_extra_actions:
+        results.insert(0, nb)
+
+    # Handle extracting alternate actions based on combo values
+    combo_extra_actions = []
+    for combo_count in sorted(combo_branches):
+        combo_ctx = original_ctx.clone()
+        combo_ctx.combos = combo_count
+        combo_loop, _, _ = loop_through_inner(combo_ctx, behaviors)
+        new_behaviors = [x for x in combo_loop if x not in results]
+
+        # Update the description to distinguish
+        for nb in new_behaviors:
+            nb.extra_description = '(if >={} combos last turn)'.format(combo_count)
+
+        combo_extra_actions.extend(new_behaviors)
+
+    # Add any alternate preempts
+    for nb in combo_extra_actions:
         results.insert(0, nb)
 
     ctx.increment_skill_counter()
@@ -531,7 +549,7 @@ def loop_through_inner(ctx: Context, behaviors: List[Optional[ESBehavior]]) -> L
 
         if b_type == ESBranchCombo:
             # Branch if we made the appropriate number of combos last round.
-            idx = b.target_round if ctx.combos > b.branch_value else idx + 1
+            idx = b.target_round if ctx.combos >= b.branch_value else idx + 1
             combo_branches.append(b.branch_value)
             continue
 

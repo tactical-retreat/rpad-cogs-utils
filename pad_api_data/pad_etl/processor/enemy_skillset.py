@@ -1746,7 +1746,7 @@ class ESBranchCard(ESBranch):
 
 class ESBranchCombo(ESBranch):
     def __init__(self, skill: EnemySkillRef):
-        super().__init__(skill, branch_condition='combo', compare='>')
+        super().__init__(skill, branch_condition='combo', compare='>=')
 
 
 class ESBranchRemainingEnemies(ESBranch):
