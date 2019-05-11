@@ -311,6 +311,9 @@ def loop_through(ctx, behaviors: List[Optional[ESBehavior]]) -> List[ESAction]:
         # Update the description to distinguish
         for nb in new_behaviors:
             nb.extra_description = '(if {} on team)'.format(list(card_ids))
+
+        # Some branches set flags to prevent them from triggering again
+        ctx.flags |= card_ctx.flags
         card_extra_actions.extend(new_behaviors)
 
     # Add any alternate preempts
