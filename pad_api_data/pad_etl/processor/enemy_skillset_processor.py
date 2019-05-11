@@ -297,7 +297,25 @@ def default_attack():
 
 
 def loop_through(ctx, behaviors: List[Optional[ESBehavior]]) -> List[ESAction]:
-    results = loop_through_inner(ctx, behaviors)
+    original_ctx = ctx.clone()
+    results, card_branches = loop_through_inner(ctx, behaviors)
+
+    # Handle extracting alternate preempts based on card values
+    card_extra_actions = []
+    for card_ids in sorted(card_branches):
+        card_ctx = original_ctx.clone()
+        card_ctx.cards.update(card_ids)
+        card_loop, _ = loop_through_inner(card_ctx, behaviors)
+        new_behaviors = [x for x in card_loop if x not in results]
+
+        # Update the description to distinguish
+        for nb in new_behaviors:
+            nb.extra_description = '(if {} on team)'.format(list(card_ids))
+        card_extra_actions.extend(new_behaviors)
+
+    # Add any alternate preempts
+    for nb in card_extra_actions:
+        results.insert(0, nb)
 
     ctx.increment_skill_counter()
 
@@ -323,6 +341,11 @@ def loop_through_inner(ctx, behaviors: List[Optional[ESBehavior]]) -> List[ESAct
     # A list of behaviors which have been iterated over.
     traversed = []
 
+    # If any BranchCard instructions were spotted
+    card_branches = []
+    # If any BranchCombo instructions were spotted
+    combo_branches = []
+
     # The current spot in the behavior array.
     idx = 0
     # Number of iterations we've done.
@@ -336,7 +359,7 @@ def loop_through_inner(ctx, behaviors: List[Optional[ESBehavior]]) -> List[ESAct
             # if len(results) == 0:
             #     # if the result set is empty, add something
             #     results.append(default_attack())
-            return results
+            return results, card_branches
         traversed.append(idx)
 
         # Extract the current behavior and its type.
@@ -361,7 +384,7 @@ def loop_through_inner(ctx, behaviors: List[Optional[ESBehavior]]) -> List[ESAct
             ctx.is_preemptive = True
             ctx.do_preemptive = True
             results.append(b)
-            return results
+            return results, card_branches
 
         if b_type == ESAttackUpStatus:
             # This is a special case; it's not a terminal action unlike other enrages.
@@ -392,7 +415,7 @@ def loop_through_inner(ctx, behaviors: List[Optional[ESBehavior]]) -> List[ESAct
                     if b.is_conditional():
                         idx += 1
                         continue
-                    return results
+                    return results, card_branches
                 else:
                     # Not a terminal action, so accumulate it and continue.
                     if ctx.check_skill_use(cond) and ctx.check_no_apply_skill_effects(b):
@@ -404,7 +427,7 @@ def loop_through_inner(ctx, behaviors: List[Optional[ESBehavior]]) -> List[ESAct
                 if not ctx.apply_skill_effects(b):
                     idx += 1
                     continue
-                return results
+                return results, card_branches
 
         if b_type == ESBranchFlag:
             if b.branch_value == b.branch_value & ctx.flags:
@@ -421,7 +444,7 @@ def loop_through_inner(ctx, behaviors: List[Optional[ESBehavior]]) -> List[ESAct
             # if len(results) == 0:
             #     # if the result set is empty, add something
             #     results.append(default_attack())
-            return results
+            return results, card_branches
 
         if b_type == ESFlagOperation:
             # Operations which change flag state, we always move to the next behavior after.
@@ -476,7 +499,7 @@ def loop_through_inner(ctx, behaviors: List[Optional[ESBehavior]]) -> List[ESAct
             ctx.counter -= 1
             if ctx.counter > 0:
                 results.append(ESCountdownMessage(b.enemy_skill_id, ctx.counter))
-                return results
+                return results, card_branches
             else:
                 idx += 1
                 continue
@@ -498,6 +521,7 @@ def loop_through_inner(ctx, behaviors: List[Optional[ESBehavior]]) -> List[ESAct
             # Branch if it's checking for a card we have on the team.
             card_on_team = any([card in ctx.cards for card in b.branch_value])
             idx = b.target_round if card_on_team else idx + 1
+            card_branches.append(b.branch_value)
             continue
 
         if b_type == ESBranchRemainingEnemies:
@@ -512,7 +536,7 @@ def loop_through_inner(ctx, behaviors: List[Optional[ESBehavior]]) -> List[ESAct
 
     if iter_count == 1000:
         print('error, iter count exceeded 1000')
-    return results
+    return results, card_branches
 
 
 def info_from_behaviors(behaviors: List[ESBehavior]):
@@ -575,22 +599,6 @@ def extract_preemptives(ctx: Context, behaviors: List[Any], card_checkpoints: Se
     if not ctx.is_preemptive:
         # Roll back the context.
         return original_ctx, None
-
-    # Handle extracting alternate preempts based on card values
-    card_extra_actions = []
-    for card_ids in card_checkpoints:
-        card_ctx = original_ctx.clone()
-        card_ctx.cards.update(card_ids)
-        card_loop = loop_through(card_ctx, behaviors)
-        new_behaviors = [x for x in card_loop if x not in cur_loop]
-
-        # Update the description to distinguish
-        for nb in new_behaviors:
-            nb.extra_description = '(if {} on team)'.format(list(card_ids))
-        card_extra_actions.extend(new_behaviors)
-
-    # Add any alternate preempts
-    cur_loop.extend(card_extra_actions)
 
     # Save the current loop as preempt
     return ctx, cur_loop
