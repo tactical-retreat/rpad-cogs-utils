@@ -7,8 +7,7 @@ monster_id: 3906
 monster_name_en: Piercing-Eyed Dragon Monk, Xuanzang
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 2 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -116,6 +115,33 @@ records:
   record_type_name: DIVIDER
   usage_pct: null
 - !SkillRecord
+  desc_en: Change Random 1 to Jammer, Deal 230% damage, (if >10 combos last turn)
+  desc_jp: Change Random 1 to Jammer, Deal 230% damage, (if >10 combos last turn)
+  max_atk_pct: 230
+  name_en: Cruelty
+  name_jp: Cruelty
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Spawn random 3 Heal orbs, Deal 200% damage, (if >10 combos last turn)
+  desc_jp: Spawn random 3 Heal orbs, Deal 200% damage, (if >10 combos last turn)
+  max_atk_pct: 200
+  name_en: Heavenly Palm
+  name_jp: Heavenly Palm
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Random 1 to Jammer, Deal 230% damage, (if >10 combos last turn)
+  desc_jp: Change Random 1 to Jammer, Deal 230% damage, (if >10 combos last turn)
+  max_atk_pct: 230
+  name_en: Cruelty
+  name_jp: Cruelty
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
   desc_en: Change Jammer to Light, Deal 1000% damage
   desc_jp: Change Jammer to Light, Deal 1000% damage
   max_atk_pct: 1000
@@ -134,13 +160,6 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
-############################################################
-### Unused Actions
-############################################################
-# ESRandomSpawn(92:8469) -> Heavenly Palm
-# Spawn random 3 Heal orbs, Deal 200% damage
-# ESJammerChangeRandom(13:8470) -> Cruelty
-# Change Random 1 to Jammer, Deal 230% damage
 ############################################################
 ### ES Modifiers
 ############################################################
@@ -192,16 +211,16 @@ records:
 # 	[1] ESDebuffMovetime(39:8467) -> Aim for high combos!
 # 	Movetime -1s for 10 turns
 # [13] ESBranchCombo(113:6528) -> ESBranchCombo
-# Branch on combo > 10, target rnd 17
+# Branch on combo >= 10, target rnd 17
 # [14] ESBranchCombo(113:6528) -> ESBranchCombo
-# Branch on combo > 6, target rnd 18
+# Branch on combo >= 6, target rnd 18
 # [15] ESOrbChangeAttack(48:8472) -> Chaos
 # Change Jammer to Light, Deal 1000% damage
 # [16] ESAttackMultihit(15:8471) -> The Truth of Suffering
 # Deal 280% damage (4 hits, 70% each)
 # [17] ESRandomSpawn(92:8469) -> Heavenly Palm
-# Spawn random 3 Heal orbs, Deal 200% damage
+# Spawn random 3 Heal orbs, Deal 200% damage, (if >10 combos last turn)
 # [18] ESJammerChangeRandom(13:8470) -> Cruelty
-# Change Random 1 to Jammer, Deal 230% damage
+# Change Random 1 to Jammer, Deal 230% damage, (if >10 combos last turn)
 # [19] ESEndPath(36:26) -> ESEndPath
 # end_turn

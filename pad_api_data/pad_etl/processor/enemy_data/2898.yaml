@@ -8,7 +8,7 @@ monster_name_en: "Venomous Midgard Snake, J\xF6rmungandr-Ullr"
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 8 unused actions
+- Found 7 unused actions
 
 ############################################################
 ### Data @ 1
@@ -17,6 +17,19 @@ warnings:
 level: 1
 overrides: []
 records:
+- !SkillRecord
+  desc_en: Absorb combo <= 4 damage for 1 turns + Change all orbs to Fire, Water,
+    Wood, Light, Dark, Heal + Blind all orbs on the board, (if >4 combos last turn)
+    (Preemptive)
+  desc_jp: Absorb combo <= 4 damage for 1 turns + Change all orbs to Fire, Water,
+    Wood, Light, Dark, Heal + Blind all orbs on the board, (if >4 combos last turn)
+    (Preemptive)
+  max_atk_pct: null
+  name_en: This is just the beginning + How tedious... + Just let me enjoy this
+  name_jp: This is just the beginning + How tedious... + Just let me enjoy this
+  one_time: 32
+  record_type_name: PREEMPT
+  usage_pct: 100
 - !SkillRecord
   desc_en: Player -1000% HP (Preemptive)
   desc_jp: Player -1000% HP (Preemptive)
@@ -47,14 +60,6 @@ records:
 # 	Change all orbs to Fire, Water, Wood, Light, Dark, Heal
 # 	[2] ESRandomSpawn(92:7091) -> Now then - show me your glow!
 # 	Spawn random 14 Jammer orbs
-# SkillSet:
-# 	Condition: One-time use (ai:100 rnd:0) (one-time: 32)
-# 	[0] ESAbsorbCombo(67:7093) -> This is just the beginning
-# 	Absorb combo <= 4 damage for 1 turns
-# 	[1] ESBoardChange(84:7094) -> How tedious...
-# 	Change all orbs to Fire, Water, Wood, Light, Dark, Heal
-# 	[2] ESBlind(5:7095) -> Just let me enjoy this
-# 	Blind all orbs on the board
 # SkillSet:
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 16)
 # 	[0] ESAbsorbCombo(67:7097) -> Feeling the heat?
@@ -117,7 +122,7 @@ records:
 # 	[2] ESRandomSpawn(92:7091) -> Now then - show me your glow!
 # 	Spawn random 14 Jammer orbs
 # [3] ESBranchCombo(113:6528) -> ESBranchCombo
-# Branch on combo > 4, target rnd 5
+# Branch on combo >= 4, target rnd 5
 # [4] ESGravity(50:7115) -> Is that your best? Then begone!
 # Player -1000% HP
 # [5] SkillSet:
@@ -129,7 +134,7 @@ records:
 # 	[2] ESBlind(5:7095) -> Just let me enjoy this
 # 	Blind all orbs on the board
 # [6] ESBranchCombo(113:6528) -> ESBranchCombo
-# Branch on combo > 5, target rnd 8
+# Branch on combo >= 5, target rnd 8
 # [7] ESGravity(50:7115) -> Is that your best? Then begone!
 # Player -1000% HP
 # [8] SkillSet:
@@ -141,7 +146,7 @@ records:
 # 	[2] ESCloud(104:7099) -> How's this?
 # 	Column of cloud appear for 1 turns at 1st row
 # [9] ESBranchCombo(113:6528) -> ESBranchCombo
-# Branch on combo > 6, target rnd 11
+# Branch on combo >= 6, target rnd 11
 # [10] ESGravity(50:7115) -> Is that your best? Then begone!
 # Player -1000% HP
 # [11] SkillSet:
@@ -153,7 +158,7 @@ records:
 # 	[2] ESRandomSpawn(92:7103) -> Surely you're not done yet?
 # 	Spawn random 3 Fire, Water, Wood, Light, Dark, Heal orbs
 # [12] ESBranchCombo(113:6528) -> ESBranchCombo
-# Branch on combo > 7, target rnd 14
+# Branch on combo >= 7, target rnd 14
 # [13] ESGravity(50:7115) -> Is that your best? Then begone!
 # Player -1000% HP
 # [14] SkillSet:
@@ -165,7 +170,7 @@ records:
 # 	[2] ESRandomSpawn(92:7117) -> Let's see you get past this!
 # 	Spawn random 3 Fire, Water, Wood, Light, Dark, Heal, Jammer orbs
 # [15] ESBranchCombo(113:6528) -> ESBranchCombo
-# Branch on combo > 8, target rnd 17
+# Branch on combo >= 8, target rnd 17
 # [16] ESGravity(50:7116) -> Pathetic! Come back when you're stronger
 # Player -1000% HP
 # [17] SkillSet:
@@ -177,7 +182,7 @@ records:
 # 	[2] ESFixedStart(101:7110) -> Don't let up now!
 # 	Fix orb movement starting point to random position on the board
 # [18] ESBranchCombo(113:6528) -> ESBranchCombo
-# Branch on combo > 9, target rnd 20
+# Branch on combo >= 9, target rnd 20
 # [19] ESGravity(50:7116) -> Pathetic! Come back when you're stronger
 # Player -1000% HP
 # [20] SkillSet:

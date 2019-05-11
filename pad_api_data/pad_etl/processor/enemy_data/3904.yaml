@@ -7,8 +7,7 @@ monster_id: 3904
 monster_name_en: Almighty Awoken Zeus Vulcan
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 2 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -28,6 +27,26 @@ records:
   one_time: 0
   record_type_name: PREEMPT
   usage_pct: 100
+- !SkillRecord
+  desc_en: Column of cloud appear for 1 turns at random location, Deal 260% damage,
+    (if >12 combos last turn)
+  desc_jp: Column of cloud appear for 1 turns at random location, Deal 260% damage,
+    (if >12 combos last turn)
+  max_atk_pct: 260
+  name_en: "Foti\xE1 X\xEDphos"
+  name_jp: "Foti\xE1 X\xEDphos"
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 150% for the next 1 turns, (if >9 combos last turn)
+  desc_jp: Increase damage to 150% for the next 1 turns, (if >9 combos last turn)
+  max_atk_pct: null
+  name_en: "The\xF3s Thym\xF3s"
+  name_jp: "The\xF3s Thym\xF3s"
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
 - !SkillRecord
   desc_en: Player -99% HP
   desc_jp: Player -99% HP
@@ -86,14 +105,6 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# ESCloud(104:8397) -> Fotiá Xíphos
-# Column of cloud appear for 1 turns at random location, Deal 260% damage
-# ESAttackUPRemainingEnemies(17:8396) -> Theós Thymós
-# 	Condition: 50% chance, when <= 1 enemies remain (ai:50 rnd:0)
-# Increase damage to 150% for the next 1 turns
-############################################################
 ### ES Modifiers
 ############################################################
 # [9] 5 - monster size?
@@ -122,9 +133,9 @@ records:
 # [7] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 21
 # [8] ESBranchCombo(113:6528) -> ESBranchCombo
-# Branch on combo > 12, target rnd 13
+# Branch on combo >= 12, target rnd 13
 # [9] ESBranchCombo(113:6528) -> ESBranchCombo
-# Branch on combo > 9, target rnd 15
+# Branch on combo >= 9, target rnd 15
 # [10] ESGravity(50:8398) -> Timoría
 # 	Condition: One-time use (ai:60 rnd:0) (one-time: 2)
 # Player -99% HP
@@ -133,12 +144,12 @@ records:
 # [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [13] ESCloud(104:8397) -> Fotiá Xíphos
-# Column of cloud appear for 1 turns at random location, Deal 260% damage
+# Column of cloud appear for 1 turns at random location, Deal 260% damage, (if >12 combos last turn)
 # [14] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [15] ESAttackUPRemainingEnemies(17:8396) -> Theós Thymós
 # 	Condition: 50% chance, when <= 1 enemies remain (ai:50 rnd:0)
-# Increase damage to 150% for the next 1 turns
+# Increase damage to 150% for the next 1 turns, (if >9 combos last turn)
 # [16] ESAttackMultihit(15:8399) -> Epíthesi
 # Deal 300% damage (2 hits, 150% each)
 # [17] ESEndPath(36:26) -> ESEndPath

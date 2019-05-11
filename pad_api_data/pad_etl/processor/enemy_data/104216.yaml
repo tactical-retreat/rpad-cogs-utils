@@ -35,8 +35,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: null
 - !SkillRecord
-  desc_en: Deal 100% damage (2 hits, 50% each)
-  desc_jp: Deal 100% damage (2 hits, 50% each)
+  desc_en: Deal 100% damage (2 hits, 50% each), (if >7 combos last turn)
+  desc_jp: Deal 100% damage (2 hits, 50% each), (if >7 combos last turn)
   max_atk_pct: 100
   name_en: Sweet Combo
   name_jp: Sweet Combo
@@ -116,8 +116,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: null
 - !SkillRecord
-  desc_en: Movetime 150% for 3 turns
-  desc_jp: Movetime 150% for 3 turns
+  desc_en: Movetime 150% for 3 turns, (if >7 combos last turn)
+  desc_jp: Movetime 150% for 3 turns, (if >7 combos last turn)
   max_atk_pct: null
   name_en: Devil's Devotion
   name_jp: Devil's Devotion
@@ -148,6 +148,42 @@ records:
   max_atk_pct: null
   name_en: Test of One's True Feelings
   name_jp: Test of One's True Feelings
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Movetime 150% for 3 turns, (if >7 combos last turn)
+  desc_jp: Movetime 150% for 3 turns, (if >7 combos last turn)
+  max_atk_pct: null
+  name_en: Devil's Devotion
+  name_jp: Devil's Devotion
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change all orbs to Heal, Jammer, Poison, Deal 200% damage
+  desc_jp: Change all orbs to Heal, Jammer, Poison, Deal 200% damage
+  max_atk_pct: 200
+  name_en: Chocolate Smothering
+  name_jp: Chocolate Smothering
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 100% damage (2 hits, 50% each), (if >7 combos last turn)
+  desc_jp: Deal 100% damage (2 hits, 50% each), (if >7 combos last turn)
+  max_atk_pct: 100
+  name_en: Sweet Combo
+  name_jp: Sweet Combo
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
@@ -187,13 +223,13 @@ records:
 # Branch on flag & 1, target rnd 22
 # [7] ESDebuffMovetime(39:9001) -> Devil's Devotion
 # 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
-# Movetime 150% for 3 turns
+# Movetime 150% for 3 turns, (if >7 combos last turn)
 # [8] ESBranchCounter(32:22) -> ESBranchCounter
 # Branch on counter > 2, target rnd 11
 # [9] ESSetCounter(26:16) -> ESSetCounter
 # counter + 1
 # [10] ESAttackMultihit(15:8995) -> Sweet Combo
-# Deal 100% damage (2 hits, 50% each)
+# Deal 100% damage (2 hits, 50% each), (if >7 combos last turn)
 # [11] ESSetCounter(25:15) -> ESSetCounter
 # counter = 0
 # [12] ESOrbSealColumn(99:8997) -> Wrapping Arrow
@@ -224,7 +260,7 @@ records:
 # [22] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b0
 # [23] ESBranchCombo(113:6528) -> ESBranchCombo
-# Branch on combo > 7, target rnd 7
+# Branch on combo >= 7, target rnd 7
 # [24] ESBoardChangeAttackBits(85:9004) -> Chocolate Smothering
 # Change all orbs to Heal, Jammer, Poison, Deal 200% damage
 # [25] ESEndPath(36:26) -> ESEndPath

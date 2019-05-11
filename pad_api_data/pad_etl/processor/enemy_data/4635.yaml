@@ -8,7 +8,7 @@ monster_name_en: Healing Goddess of the Dark Blades, Eir
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 11 unused actions
+- Found 10 unused actions
 
 ############################################################
 ### Data @ 1
@@ -90,6 +90,21 @@ records:
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
+- !SkillRecord
+  desc_en: Remove damage immunity effect + Blind orbs in specific positions for 15
+    turns + 2x1 cloud appear for 15 turns at 2nd row, 2nd column + Void damage >=
+    20000000 for 30 turns, (if >8 combos last turn)
+  desc_jp: Remove damage immunity effect + Blind orbs in specific positions for 15
+    turns + 2x1 cloud appear for 15 turns at 2nd row, 2nd column + Void damage >=
+    20000000 for 30 turns, (if >8 combos last turn)
+  max_atk_pct: null
+  name_en: The examination is over! + You seem to hate Darkness & Clouds + Bring it
+    together + Let's overcome this!
+  name_jp: The examination is over! + You seem to hate Darkness & Clouds + Bring it
+    together + Let's overcome this!
+  one_time: 2
+  record_type_name: ACTION
+  usage_pct: 100
 - !SkillRecord
   desc_en: Remove damage immunity effect + Reduce damage from all sources by 75% for
     5 turns + Void damage >= 20000000 for 30 turns + Delay active skills by 99 turns
@@ -255,16 +270,6 @@ records:
 # 	[3] ESVoidShield(71:10479) -> Let's overcome this!
 # 	Void damage >= 20000000 for 30 turns
 # SkillSet:
-# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
-# 	[0] ESInvulnerableOff(121:10461) -> The examination is over!
-# 	Remove damage immunity effect
-# 	[1] ESBlindStickyFixed(98:10468) -> You seem to hate Darkness & Clouds
-# 	Blind orbs in specific positions for 15 turns
-# 	[2] ESCloud(104:10476) -> Bring it together
-# 	2x1 cloud appear for 15 turns at 2nd row, 2nd column
-# 	[3] ESVoidShield(71:10479) -> Let's overcome this!
-# 	Void damage >= 20000000 for 30 turns
-# SkillSet:
 # 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # 	[0] ESInactivity(66:10493) -> You're in great condition!
 # 	Do nothing
@@ -314,7 +319,7 @@ records:
 # [4] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
 # [5] ESBranchCombo(113:6528) -> ESBranchCombo
-# Branch on combo > 8, target rnd 8
+# Branch on combo >= 8, target rnd 8
 # [6] ESSetCounter(25:15) -> ESSetCounter
 # counter = 8
 # [7] SkillSet:
@@ -338,7 +343,7 @@ records:
 # [12] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [13] ESBranchCombo(113:6528) -> ESBranchCombo
-# Branch on combo > 8, target rnd 16
+# Branch on combo >= 8, target rnd 16
 # [14] ESSetCounter(27:17) -> ESSetCounter
 # counter - 1
 # [15] SkillSet:
@@ -360,7 +365,7 @@ records:
 # [19] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [20] ESBranchCombo(113:6528) -> ESBranchCombo
-# Branch on combo > 8, target rnd 22
+# Branch on combo >= 8, target rnd 22
 # [21] ESSetCounter(27:17) -> ESSetCounter
 # counter - 1
 # [22] ESBranchCounter(32:22) -> ESBranchCounter

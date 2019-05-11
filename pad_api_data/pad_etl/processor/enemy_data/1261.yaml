@@ -7,8 +7,7 @@ monster_id: 1261
 monster_name_en: Haughty Demon Lord, Baal
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 3 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -34,11 +33,113 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1-4
-  name_jp: Turn 1-4
+  name_en: Turn 1
+  name_jp: Turn 1
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
+- !SkillRecord
+  desc_en: Change 1st, 3rd, 5th row to Light orbs, 2nd, 4th row to Dark orbs + Change
+    3rd, 4th column to Heal orbs + Absorb combo <= 6 damage for 1 turns, (if >6 combos
+    last turn)
+  desc_jp: Change 1st, 3rd, 5th row to Light orbs, 2nd, 4th row to Dark orbs + Change
+    3rd, 4th column to Heal orbs + Absorb combo <= 6 damage for 1 turns, (if >6 combos
+    last turn)
+  max_atk_pct: null
+  name_en: It's only natural to get this far + In that case... + ...how about this?
+  name_jp: It's only natural to get this far + In that case... + ...how about this?
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 40000% damage (4 hits, 10000% each)
+  desc_jp: Deal 40000% damage (4 hits, 10000% each)
+  max_atk_pct: 40000
+  name_en: Too bad
+  name_jp: Too bad
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Spawn random 6 Fire, Water, Wood, Light, Dark orbs + Blind orbs in specific
+    positions for 1 turns + Absorb combo <= 7 damage for 1 turns, (if >7 combos last
+    turn)
+  desc_jp: Spawn random 6 Fire, Water, Wood, Light, Dark orbs + Blind orbs in specific
+    positions for 1 turns + Absorb combo <= 7 damage for 1 turns, (if >7 combos last
+    turn)
+  max_atk_pct: null
+  name_en: You can do it, right? + Next...this... + Can you do it?
+  name_jp: You can do it, right? + Next...this... + Can you do it?
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 40000% damage (4 hits, 10000% each)
+  desc_jp: Deal 40000% damage (4 hits, 10000% each)
+  max_atk_pct: 40000
+  name_en: Too bad
+  name_jp: Too bad
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 3
+  name_jp: Turn 3
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison,
+    Mortal Poison + Blind all orbs on the board + Absorb combo <= 8 damage for 1 turns,
+    (if >8 combos last turn)
+  desc_jp: Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison,
+    Mortal Poison + Blind all orbs on the board + Absorb combo <= 8 damage for 1 turns,
+    (if >8 combos last turn)
+  max_atk_pct: null
+  name_en: I didn't think you'd do it + This is the end + Decide and show me!
+  name_jp: I didn't think you'd do it + This is the end + Decide and show me!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 40000% damage (4 hits, 10000% each)
+  desc_jp: Deal 40000% damage (4 hits, 10000% each)
+  max_atk_pct: 40000
+  name_en: Too bad
+  name_jp: Too bad
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 4
+  name_jp: Turn 4
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Reduce self HP to 0, (if >9 combos last turn)
+  desc_jp: Reduce self HP to 0, (if >9 combos last turn)
+  max_atk_pct: null
+  name_en: Nice combo
+  name_jp: Nice combo
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
 - !SkillRecord
   desc_en: Deal 40000% damage (4 hits, 10000% each)
   desc_jp: Deal 40000% damage (4 hits, 10000% each)
@@ -58,8 +159,8 @@ records:
   record_type_name: DIVIDER
   usage_pct: null
 - !SkillRecord
-  desc_en: Reduce self HP to 0
-  desc_jp: Reduce self HP to 0
+  desc_en: Reduce self HP to 0, (if >9 combos last turn)
+  desc_jp: Reduce self HP to 0, (if >9 combos last turn)
   max_atk_pct: null
   name_en: Nice combo
   name_jp: Nice combo
@@ -67,30 +168,6 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
-############################################################
-### Unused Actions
-############################################################
-# SkillSet:
-# 	[0] ESRowSpawnMulti(78:9052) -> It's only natural to get this far
-# 	Change 1st, 3rd, 5th row to Light orbs, 2nd, 4th row to Dark orbs
-# 	[1] ESColumnSpawnMulti(76:9053) -> In that case...
-# 	Change 3rd, 4th column to Heal orbs
-# 	[2] ESAbsorbCombo(67:9054) -> ...how about this?
-# 	Absorb combo <= 6 damage for 1 turns
-# SkillSet:
-# 	[0] ESRandomSpawn(92:9056) -> You can do it, right?
-# 	Spawn random 6 Fire, Water, Wood, Light, Dark orbs
-# 	[1] ESBlindStickyFixed(98:9057) -> Next...this...
-# 	Blind orbs in specific positions for 1 turns
-# 	[2] ESAbsorbCombo(67:9058) -> Can you do it?
-# 	Absorb combo <= 7 damage for 1 turns
-# SkillSet:
-# 	[0] ESBoardChange(84:9060) -> I didn't think you'd do it
-# 	Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
-# 	[1] ESBlind(5:9061) -> This is the end
-# 	Blind all orbs on the board
-# 	[2] ESAbsorbCombo(67:9062) -> Decide and show me!
-# 	Absorb combo <= 8 damage for 1 turns
 ############################################################
 ### ES Modifiers
 ############################################################
@@ -122,7 +199,7 @@ records:
 # [7] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [8] ESBranchCombo(113:6528) -> ESBranchCombo
-# Branch on combo > 6, target rnd 26
+# Branch on combo >= 6, target rnd 26
 # [9] ESAttackMultihit(15:9064) -> Too bad
 # Deal 40000% damage (4 hits, 10000% each)
 # [10] ESEndPath(36:26) -> ESEndPath
@@ -132,7 +209,7 @@ records:
 # [12] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [13] ESBranchCombo(113:6528) -> ESBranchCombo
-# Branch on combo > 7, target rnd 27
+# Branch on combo >= 7, target rnd 27
 # [14] ESAttackMultihit(15:9064) -> Too bad
 # Deal 40000% damage (4 hits, 10000% each)
 # [15] ESEndPath(36:26) -> ESEndPath
@@ -142,7 +219,7 @@ records:
 # [17] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
 # [18] ESBranchCombo(113:6528) -> ESBranchCombo
-# Branch on combo > 8, target rnd 28
+# Branch on combo >= 8, target rnd 28
 # [19] ESAttackMultihit(15:9064) -> Too bad
 # Deal 40000% damage (4 hits, 10000% each)
 # [20] ESEndPath(36:26) -> ESEndPath
@@ -152,7 +229,7 @@ records:
 # [22] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11111
 # [23] ESBranchCombo(113:6528) -> ESBranchCombo
-# Branch on combo > 9, target rnd 29
+# Branch on combo >= 9, target rnd 29
 # [24] ESAttackMultihit(15:9064) -> Too bad
 # Deal 40000% damage (4 hits, 10000% each)
 # [25] ESEndPath(36:26) -> ESEndPath
@@ -179,6 +256,6 @@ records:
 # 	[2] ESAbsorbCombo(67:9062) -> Decide and show me!
 # 	Absorb combo <= 8 damage for 1 turns
 # [29] ESEndBattle(40:9065) -> Nice combo
-# Reduce self HP to 0
+# Reduce self HP to 0, (if >9 combos last turn)
 # [30] ESEndPath(36:26) -> ESEndPath
 # end_turn

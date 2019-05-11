@@ -8,7 +8,7 @@ monster_name_en: Alt. Spirit Numen of Light, Keela
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 5 unused actions
+- Found 1 unused actions
 
 ############################################################
 ### Data @ 1
@@ -74,6 +74,50 @@ records:
   one_time: 0
   record_type_name: PREEMPT
   usage_pct: 100
+- !SkillRecord
+  desc_en: Specific orbs change every 0.8s for 20 turns + Deal 129% damage (3 hits,
+    43% each), (if >9 combos last turn)
+  desc_jp: Specific orbs change every 0.8s for 20 turns + Deal 129% damage (3 hits,
+    43% each), (if >9 combos last turn)
+  max_atk_pct: null
+  name_en: Traversing Radiance + Shining Arrow
+  name_jp: Traversing Radiance + Shining Arrow
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Specific orbs change every 0.8s for 20 turns + Bind 1 subs for 2 turns,
+    Deal 120% damage, (if >9 combos last turn)
+  desc_jp: Specific orbs change every 0.8s for 20 turns + Bind 1 subs for 2 turns,
+    Deal 120% damage, (if >9 combos last turn)
+  max_atk_pct: null
+  name_en: Traversing Radiance + Light Prison
+  name_jp: Traversing Radiance + Light Prison
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Specific orbs change every 1.0s for 20 turns + Deal 129% damage (3 hits,
+    43% each), (if >6 combos last turn)
+  desc_jp: Specific orbs change every 1.0s for 20 turns + Deal 129% damage (3 hits,
+    43% each), (if >6 combos last turn)
+  max_atk_pct: null
+  name_en: Traversing Radiance + Shining Arrow
+  name_jp: Traversing Radiance + Shining Arrow
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Specific orbs change every 1.0s for 20 turns + Bind 1 subs for 2 turns,
+    Deal 120% damage, (if >6 combos last turn)
+  desc_jp: Specific orbs change every 1.0s for 20 turns + Bind 1 subs for 2 turns,
+    Deal 120% damage, (if >6 combos last turn)
+  max_atk_pct: null
+  name_en: Traversing Radiance + Light Prison
+  name_jp: Traversing Radiance + Light Prison
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
 - !SkillRecord
   desc_en: Specific orbs change every 1.5s for 20 turns + Bind 1 subs for 2 turns,
     Deal 120% damage
@@ -197,28 +241,6 @@ records:
 ### Unused Actions
 ############################################################
 # SkillSet:
-# 	Condition: 50% chance (ai:50 rnd:0)
-# 	[0] ESSpinnersFixed(110:10035) -> Traversing Radiance
-# 	Specific orbs change every 1.0s for 20 turns
-# 	[1] ESBindAttack(63:10037) -> Light Prison
-# 	Bind 1 subs for 2 turns, Deal 120% damage
-# SkillSet:
-# 	[0] ESSpinnersFixed(110:10035) -> Traversing Radiance
-# 	Specific orbs change every 1.0s for 20 turns
-# 	[1] ESAttackMultihit(15:10038) -> Shining Arrow
-# 	Deal 129% damage (3 hits, 43% each)
-# SkillSet:
-# 	Condition: 50% chance (ai:50 rnd:0)
-# 	[0] ESSpinnersFixed(110:10034) -> Traversing Radiance
-# 	Specific orbs change every 0.8s for 20 turns
-# 	[1] ESBindAttack(63:10037) -> Light Prison
-# 	Bind 1 subs for 2 turns, Deal 120% damage
-# SkillSet:
-# 	[0] ESSpinnersFixed(110:10034) -> Traversing Radiance
-# 	Specific orbs change every 0.8s for 20 turns
-# 	[1] ESAttackMultihit(15:10038) -> Shining Arrow
-# 	Deal 129% damage (3 hits, 43% each)
-# SkillSet:
 # 	Condition: When < 50% hp (ai:100 rnd:0)
 # 	[0] ESAttackUPRemainingEnemies(17:10046) -> Philysians
 # 	Increase damage to 200% for the next 1 turns
@@ -266,9 +288,9 @@ records:
 # 	Condition: When < 75% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 160% damage
 # [12] ESBranchCombo(113:6528) -> ESBranchCombo
-# Branch on combo > 9, target rnd 20
+# Branch on combo >= 9, target rnd 20
 # [13] ESBranchCombo(113:6528) -> ESBranchCombo
-# Branch on combo > 6, target rnd 17
+# Branch on combo >= 6, target rnd 17
 # [14] SkillSet:
 # 	Condition: 50% chance (ai:50 rnd:0)
 # 	[0] ESSpinnersFixed(110:10036) -> Traversing Radiance

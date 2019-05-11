@@ -7,8 +7,7 @@ monster_id: 2420
 monster_name_en: Dark Plant Mechanical Star God, Spica
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 2 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -71,11 +70,51 @@ records:
   record_type_name: DIVIDER
   usage_pct: null
 - !SkillRecord
+  desc_en: Absorb combo <= 7 damage for 10 turns + Spawn random 6 Wood, Jammer, Poison
+    orbs, (if >5 combos last turn)
+  desc_jp: Absorb combo <= 7 damage for 10 turns + Spawn random 6 Wood, Jammer, Poison
+    orbs, (if >5 combos last turn)
+  max_atk_pct: null
+  name_en: Great! + How about this one?
+  name_jp: Great! + How about this one?
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
   desc_en: Bind awoken skills for 1 turns + Blind all orbs on the board
   desc_jp: Bind awoken skills for 1 turns + Blind all orbs on the board
   max_atk_pct: null
   name_en: This is not good at all! + Try your best for the next one too!
   name_jp: This is not good at all! + Try your best for the next one too!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Absorb combo <= 7 damage for 10 turns + Bind active skills for 5 turns,
+    (if >5 combos last turn)
+  desc_jp: Absorb combo <= 7 damage for 10 turns + Bind active skills for 5 turns,
+    (if >5 combos last turn)
+  max_atk_pct: null
+  name_en: Great! + Well, have a consolation prize!
+  name_jp: Great! + Well, have a consolation prize!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 1000% damage
+  desc_jp: Deal 1000% damage
+  max_atk_pct: 1000
+  name_en: "This is no good \u266A"
+  name_jp: "This is no good \u266A"
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
@@ -97,24 +136,6 @@ records:
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
-  one_time: null
-  record_type_name: DIVIDER
-  usage_pct: null
-- !SkillRecord
-  desc_en: Deal 1000% damage
-  desc_jp: Deal 1000% damage
-  max_atk_pct: 1000
-  name_en: "This is no good \u266A"
-  name_jp: "This is no good \u266A"
-  one_time: 0
-  record_type_name: ACTION
-  usage_pct: 100
 - !SkillRecord
   desc_en: Change Random to Wood, Deal 110% damage
   desc_jp: Change Random to Wood, Deal 110% damage
@@ -143,19 +164,6 @@ records:
   record_type_name: ACTION
   usage_pct: 34
 
-############################################################
-### Unused Actions
-############################################################
-# SkillSet:
-# 	[0] ESAbsorbCombo(67:9743) -> Great!
-# 	Absorb combo <= 7 damage for 10 turns
-# 	[1] ESRandomSpawn(92:9744) -> How about this one?
-# 	Spawn random 6 Wood, Jammer, Poison orbs
-# SkillSet:
-# 	[0] ESAbsorbCombo(67:9743) -> Great!
-# 	Absorb combo <= 7 damage for 10 turns
-# 	[1] ESBindSkill(14:9749) -> Well, have a consolation prize!
-# 	Bind active skills for 5 turns
 ############################################################
 ### ES Modifiers
 ############################################################
@@ -191,7 +199,7 @@ records:
 # [10] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [11] ESBranchCombo(113:6528) -> ESBranchCombo
-# Branch on combo > 5, target rnd 24
+# Branch on combo >= 5, target rnd 24
 # [12] SkillSet:
 # 	[0] ESBindAwoken(88:9746) -> This is not good at all!
 # 	Bind awoken skills for 1 turns
@@ -204,7 +212,7 @@ records:
 # [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [16] ESBranchCombo(113:6528) -> ESBranchCombo
-# Branch on combo > 5, target rnd 27
+# Branch on combo >= 5, target rnd 27
 # [17] ESAttackMultihit(15:9754) -> This is no good ♪
 # Deal 1000% damage
 # [18] ESEndPath(36:26) -> ESEndPath

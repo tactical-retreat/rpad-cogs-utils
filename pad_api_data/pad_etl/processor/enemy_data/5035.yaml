@@ -7,8 +7,7 @@ monster_id: 5035
 monster_name_en: Magic Dracosnake of the Evilfangs, Zahhak
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -46,6 +45,15 @@ records:
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
+- !SkillRecord
+  desc_en: Deal 100% damage, (if >8 combos last turn)
+  desc_jp: Deal 100% damage, (if >8 combos last turn)
+  max_atk_pct: 100
+  name_en: Fall from the sky
+  name_jp: Fall from the sky
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
 - !SkillRecord
   desc_en: Deal 180% damage
   desc_jp: Deal 180% damage
@@ -264,6 +272,15 @@ records:
   record_type_name: DIVIDER
   usage_pct: null
 - !SkillRecord
+  desc_en: Deal 100% damage, (if >9 combos last turn)
+  desc_jp: Deal 100% damage, (if >9 combos last turn)
+  max_atk_pct: 100
+  name_en: Fall from the sky
+  name_jp: Fall from the sky
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
   desc_en: Deal 180% damage
   desc_jp: Deal 180% damage
   max_atk_pct: 180
@@ -445,11 +462,6 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# ESAttackMultihit(15:11845) -> Fall from the sky
-# Deal 100% damage
-############################################################
 ### ES Modifiers
 ############################################################
 # [9] 5 - monster size?
@@ -479,11 +491,11 @@ records:
 # [6] ESSetCounter(25:15) -> ESSetCounter
 # counter = 5
 # [7] ESBranchCombo(113:6528) -> ESBranchCombo
-# Branch on combo > 8, target rnd 9
+# Branch on combo >= 8, target rnd 9
 # [8] ESAttackMultihit(15:11844) -> Snake Fist Drive Strike
 # Deal 180% damage
 # [9] ESAttackMultihit(15:11845) -> Fall from the sky
-# Deal 100% damage
+# Deal 100% damage, (if >8 combos last turn)
 # [10] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [11] ESBranchCounter(32:22) -> ESBranchCounter
@@ -586,11 +598,11 @@ records:
 # [49] ESSetCounter(25:15) -> ESSetCounter
 # counter = 5
 # [50] ESBranchCombo(113:6528) -> ESBranchCombo
-# Branch on combo > 9, target rnd 52
+# Branch on combo >= 9, target rnd 52
 # [51] ESAttackMultihit(15:11844) -> Snake Fist Drive Strike
 # Deal 180% damage
 # [52] ESAttackMultihit(15:11845) -> Fall from the sky
-# Deal 100% damage
+# Deal 100% damage, (if >9 combos last turn)
 # [53] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [54] ESTypeResist(118:11643) -> God Halved
