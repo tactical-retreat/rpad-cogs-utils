@@ -126,6 +126,8 @@ class Context(object):
         self.enemies = 999
         # Cards on the team.
         self.cards = set()
+        # Combos made in previous round.
+        self.combos = 0
         # Turns of enrage, initial:None -> (enrage cooldown period:int<0 ->) enrage:int>0 -> expire:int=0
         self.enraged = None
         # Turns of damage shield, initial:int=0 -> shield up:int>0 -> expire:int=0
@@ -298,14 +300,14 @@ def default_attack():
 
 def loop_through(ctx, behaviors: List[Optional[ESBehavior]]) -> List[ESAction]:
     original_ctx = ctx.clone()
-    results, card_branches = loop_through_inner(ctx, behaviors)
+    results, card_branches, combo_branches = loop_through_inner(ctx, behaviors)
 
     # Handle extracting alternate preempts based on card values
     card_extra_actions = []
     for card_ids in sorted(card_branches):
         card_ctx = original_ctx.clone()
         card_ctx.cards.update(card_ids)
-        card_loop, _ = loop_through_inner(card_ctx, behaviors)
+        card_loop, _, _ = loop_through_inner(card_ctx, behaviors)
         new_behaviors = [x for x in card_loop if x not in results]
 
         # Update the description to distinguish
@@ -332,7 +334,7 @@ def loop_through(ctx, behaviors: List[Optional[ESBehavior]]) -> List[ESAction]:
     return results
 
 
-def loop_through_inner(ctx, behaviors: List[Optional[ESBehavior]]) -> List[ESAction]:
+def loop_through_inner(ctx: Context, behaviors: List[Optional[ESBehavior]]) -> List[ESAction]:
     """Executes a single turn through the simulator.
 
     This is called multiple times with varying Context values to probe the action set
@@ -362,7 +364,7 @@ def loop_through_inner(ctx, behaviors: List[Optional[ESBehavior]]) -> List[ESAct
             # if len(results) == 0:
             #     # if the result set is empty, add something
             #     results.append(default_attack())
-            return results, card_branches
+            return results, card_branches, combo_branches
         traversed.append(idx)
 
         # Extract the current behavior and its type.
@@ -387,7 +389,7 @@ def loop_through_inner(ctx, behaviors: List[Optional[ESBehavior]]) -> List[ESAct
             ctx.is_preemptive = True
             ctx.do_preemptive = True
             results.append(b)
-            return results, card_branches
+            return results, card_branches, combo_branches
 
         if b_type == ESAttackUpStatus:
             # This is a special case; it's not a terminal action unlike other enrages.
@@ -418,7 +420,7 @@ def loop_through_inner(ctx, behaviors: List[Optional[ESBehavior]]) -> List[ESAct
                     if b.is_conditional():
                         idx += 1
                         continue
-                    return results, card_branches
+                    return results, card_branches, combo_branches
                 else:
                     # Not a terminal action, so accumulate it and continue.
                     if ctx.check_skill_use(cond) and ctx.check_no_apply_skill_effects(b):
@@ -430,7 +432,7 @@ def loop_through_inner(ctx, behaviors: List[Optional[ESBehavior]]) -> List[ESAct
                 if not ctx.apply_skill_effects(b):
                     idx += 1
                     continue
-                return results, card_branches
+                return results, card_branches, combo_branches
 
         if b_type == ESBranchFlag:
             if b.branch_value == b.branch_value & ctx.flags:
@@ -447,7 +449,7 @@ def loop_through_inner(ctx, behaviors: List[Optional[ESBehavior]]) -> List[ESAct
             # if len(results) == 0:
             #     # if the result set is empty, add something
             #     results.append(default_attack())
-            return results, card_branches
+            return results, card_branches, combo_branches
 
         if b_type == ESFlagOperation:
             # Operations which change flag state, we always move to the next behavior after.
@@ -502,7 +504,7 @@ def loop_through_inner(ctx, behaviors: List[Optional[ESBehavior]]) -> List[ESAct
             ctx.counter -= 1
             if ctx.counter > 0:
                 results.append(ESCountdownMessage(b.enemy_skill_id, ctx.counter))
-                return results, card_branches
+                return results, card_branches, combo_branches
             else:
                 idx += 1
                 continue
@@ -527,6 +529,12 @@ def loop_through_inner(ctx, behaviors: List[Optional[ESBehavior]]) -> List[ESAct
             card_branches.append(b.branch_value)
             continue
 
+        if b_type == ESBranchCombo:
+            # Branch if we made the appropriate number of combos last round.
+            idx = b.target_round if ctx.combos > b.branch_value else idx + 1
+            combo_branches.append(b.branch_value)
+            continue
+
         if b_type == ESBranchRemainingEnemies:
             # TODO: This should be <= probably
             if ctx.enemies == b.branch_value:
@@ -539,7 +547,7 @@ def loop_through_inner(ctx, behaviors: List[Optional[ESBehavior]]) -> List[ESAct
 
     if iter_count == 1000:
         print('error, iter count exceeded 1000')
-    return results, card_branches
+    return results, card_branches, combo_branches
 
 
 def info_from_behaviors(behaviors: List[ESBehavior]):
