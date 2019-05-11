@@ -480,17 +480,22 @@ class ESBehavior(object):
         self.name = name(skill)
         self.type = es_type(skill)
         self.description = None
+        # This might be filled in during the processing step
+        self.extra_description = None
 
 # Action
 class ESAction(ESBehavior):
     def full_description(self):
+        output = self.description
         if self.description == 'Enemy action':
-            return self.attack.description
-        else:
-            output = self.description
-            if self.attack:
-                output += ', {:s}'.format(self.attack.description)
-            return output
+            output = self.attack.description
+        elif self.attack:
+            output += ', {:s}'.format(self.attack.description)
+
+        if self.extra_description:
+            output += ', {:s}'.format(self.extra_description)
+
+        return output
 
     def __eq__(self, other):
         return other and self.enemy_skill_id == other.enemy_skill_id
@@ -1317,6 +1322,14 @@ class ESSkillSet(ESAction):
             effect='skill_set',
             description='Perform multiple skills'
         )
+
+        self.name = ' + '.join(map(lambda s: s.name, self.skill_list))
+
+    def full_description(self):
+        output = ' + '.join(map(lambda s: s.full_description(), self.skill_list))
+        if self.extra_description:
+            output += ', {:s}'.format(self.extra_description)
+        return output
 
     def ends_battle(self):
         return any([s.ends_battle() for s in self.skill_list])

@@ -253,40 +253,19 @@ class Context(object):
                 else:
                     return True
             else:
-                if self.enraged == 0:
-                    return True
-                else:
-                    return False
+                return self.enraged == 0
         elif b_type == ESDamageShield:
-            if self.damage_shield == 0:
-                return True
-            else:
-                return False
+            return self.damage_shield == 0
         elif b_type == ESStatusShield:
-            if self.status_shield == 0:
-                return True
-            else:
-                return False
+            return self.status_shield == 0
         elif b_type == ESAbsorbCombo:
-            if self.combo_shield == 0:
-                return True
-            else:
-                return False
+            return self.combo_shield == 0
         elif b_type == ESAbsorbAttribute:
-            if self.attribute_shield == 0:
-                return True
-            else:
-                return False
+            return self.attribute_shield == 0
         elif b_type == ESAbsorbThreshold:
-            if self.absorb_shield == 0:
-                return True
-            else:
-                return False
+            return self.absorb_shield == 0
         elif b_type == ESVoidShield:
-            if self.void_shield == 0:
-                return True
-            else:
-                return False
+            return self.void_shield == 0
 
         return True
 
@@ -542,6 +521,8 @@ def info_from_behaviors(behaviors: List[ESBehavior]):
     card_checkpoints = set()
     has_enemy_remaining_branch = False
 
+    # TODO: Null out useless on-death skills
+
     for idx, es in enumerate(behaviors):
         # Extract the passives and null them out to simplify processing
         if issubclass(type(es), ESPassive):
@@ -562,7 +543,7 @@ def info_from_behaviors(behaviors: List[ESBehavior]):
 
         # Find checks for specific cards.
         if type(es) == ESBranchCard:
-            card_checkpoints.update(es.branch_value)
+            card_checkpoints.add(tuple(es.branch_value))
 
         # Find checks for specific amounts of enemies.
         if type(es) in [ESBranchRemainingEnemies, ESAttackUPRemainingEnemies, ESRecoverEnemyAlly]:
@@ -571,7 +552,7 @@ def info_from_behaviors(behaviors: List[ESBehavior]):
     return base_abilities, hp_checkpoints, card_checkpoints, has_enemy_remaining_branch
 
 
-def extract_preemptives(ctx: Context, behaviors: List[Any]):
+def extract_preemptives(ctx: Context, behaviors: List[Any], card_checkpoints: Set[Tuple[int]]):
     """Simulate the initial run through the behaviors looking for preemptives.
 
     If we find a preemptive, continue onwards. If not, roll the context back.
@@ -579,12 +560,28 @@ def extract_preemptives(ctx: Context, behaviors: List[Any]):
     original_ctx = ctx.clone()
 
     cur_loop = loop_through(ctx, behaviors)
-    if ctx.is_preemptive:
-        # Save the current loop as preempt
-        return ctx, cur_loop
-    else:
+    if not ctx.is_preemptive:
         # Roll back the context.
         return original_ctx, None
+
+    # Handle extracting alternate preempts based on card values
+    card_extra_actions = []
+    for card_ids in card_checkpoints:
+        card_ctx = original_ctx.clone()
+        card_ctx.cards.update(card_ids)
+        card_loop = loop_through(card_ctx, behaviors)
+        new_behaviors = [x for x in card_loop if x not in cur_loop]
+
+        # Update the description to distinguish
+        for nb in new_behaviors:
+            nb.extra_description = '(if {} on team)'.format(list(card_ids))
+        card_extra_actions.extend(new_behaviors)
+
+    # Add any alternate preempts
+    cur_loop.extend(card_extra_actions)
+
+    # Save the current loop as preempt
+    return ctx, cur_loop
 
 
 def extract_turn_behaviors(ctx: Context, behaviors: List[ESBehavior], hp_checkpoint: int) -> List[List[ESBehavior]]:
@@ -732,7 +729,7 @@ def convert(card: BookCard, enemy_behavior: List[ESBehavior],
         ctx.enemies = 1
         has_enemy_remaining_branch = False
 
-    ctx, preemptives = extract_preemptives(ctx, behaviors)
+    ctx, preemptives = extract_preemptives(ctx, behaviors, card_checkpoints)
     if ctx is None:
         # Some monsters have no skillset at all
         return skillset

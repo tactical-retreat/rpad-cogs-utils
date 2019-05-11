@@ -107,9 +107,6 @@ def behavior_to_skillrecord(record_type: RecordType, action: Union[ESAction, ESS
     max_damage = None
     usage_pct = 100
     one_time = 0
-    if type(action) == ESSkillSet:
-        name = ' + '.join(map(lambda s: s.name, action.skill_list))
-        description = ' + '.join(map(lambda s: s.full_description(), action.skill_list))
 
     if issubclass(type(action), ESPassive):
         name = 'Ability'
