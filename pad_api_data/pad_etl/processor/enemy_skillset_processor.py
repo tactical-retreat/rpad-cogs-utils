@@ -244,12 +244,12 @@ class Context(object):
                 return True
             else:
                 return False
-        # elif b_type == ESDebuffMovetime:
-        #     if self.time_debuff == 0:
-        #         self.time_debuff = behavior.turns
-        #         return True
-        #     else:
-        #         return False
+        elif b_type == ESDebuffMovetime:
+            if self.time_debuff == 0:
+                self.time_debuff = behavior.turns
+                return True
+            else:
+                return False
 
         return True
 
@@ -280,6 +280,8 @@ class Context(object):
             return self.absorb_shield == 0
         elif b_type == ESVoidShield:
             return self.void_shield == 0
+        elif b_type == ESDebuffMovetime:
+            return self.time_debuff == 0
 
         return True
 
@@ -650,7 +652,7 @@ def extract_turn_behaviors(ctx: Context, behaviors: List[ESBehavior], hp_checkpo
     turn_data = []
     for idx in range(0, 20):
         turn_data.append(loop_through(hp_ctx, behaviors))
-        ctx.turn_event()
+        hp_ctx.turn_event()
 
     return turn_data
 
