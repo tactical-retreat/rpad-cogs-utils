@@ -1,0 +1,184 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 1261
+monster_name_en: Haughty Demon Lord, Baal
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings:
+- Found 3 unused actions
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Movetime 150% for 4 turns + Fix orb movement starting point to random position
+    on the board + Absorb combo <= 5 damage for 1 turns (Preemptive)
+  desc_jp: Movetime 150% for 4 turns + Fix orb movement starting point to random position
+    on the board + Absorb combo <= 5 damage for 1 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Show me your highest combo! + Let's have a trial first + You can do it,
+    right?!
+  name_jp: Show me your highest combo! + Let's have a trial first + You can do it,
+    right?!
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1-4
+  name_jp: Turn 1-4
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 40000% damage (4 hits, 10000% each)
+  desc_jp: Deal 40000% damage (4 hits, 10000% each)
+  max_atk_pct: 40000
+  name_en: Too bad
+  name_jp: Too bad
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Reduce self HP to 0
+  desc_jp: Reduce self HP to 0
+  max_atk_pct: null
+  name_en: Nice combo
+  name_jp: Nice combo
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Unused Actions
+############################################################
+# SkillSet:
+# 	[0] ESRowSpawnMulti(78:9052) -> It's only natural to get this far
+# 	Change 1st, 3rd, 5th row to Light orbs, 2nd, 4th row to Dark orbs
+# 	[1] ESColumnSpawnMulti(76:9053) -> In that case...
+# 	Change 3rd, 4th column to Heal orbs
+# 	[2] ESAbsorbCombo(67:9054) -> ...how about this?
+# 	Absorb combo <= 6 damage for 1 turns
+# SkillSet:
+# 	[0] ESRandomSpawn(92:9056) -> You can do it, right?
+# 	Spawn random 6 Fire, Water, Wood, Light, Dark orbs
+# 	[1] ESBlindStickyFixed(98:9057) -> Next...this...
+# 	Blind orbs in specific positions for 1 turns
+# 	[2] ESAbsorbCombo(67:9058) -> Can you do it?
+# 	Absorb combo <= 7 damage for 1 turns
+# SkillSet:
+# 	[0] ESBoardChange(84:9060) -> I didn't think you'd do it
+# 	Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
+# 	[1] ESBlind(5:9061) -> This is the end
+# 	Blind all orbs on the board
+# 	[2] ESAbsorbCombo(67:9062) -> Decide and show me!
+# 	Absorb combo <= 8 damage for 1 turns
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 0 - starting/max counter
+# [54] 0 - counter increment
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] SkillSet:
+# 	[0] ESDebuffMovetime(39:9048) -> Show me your highest combo!
+# 	Movetime 150% for 4 turns
+# 	[1] ESFixedStart(101:9049) -> Let's have a trial first
+# 	Fix orb movement starting point to random position on the board
+# 	[2] ESAbsorbCombo(67:9050) -> You can do it, right?!
+# 	Absorb combo <= 5 damage for 1 turns
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 11
+# [7] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [8] ESBranchCombo(113:6528) -> ESBranchCombo
+# Branch on combo > 6, target rnd 26
+# [9] ESAttackMultihit(15:9064) -> Too bad
+# Deal 40000% damage (4 hits, 10000% each)
+# [10] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [11] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 4, target rnd 16
+# [12] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b111
+# [13] ESBranchCombo(113:6528) -> ESBranchCombo
+# Branch on combo > 7, target rnd 27
+# [14] ESAttackMultihit(15:9064) -> Too bad
+# Deal 40000% damage (4 hits, 10000% each)
+# [15] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [16] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 8, target rnd 21
+# [17] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1111
+# [18] ESBranchCombo(113:6528) -> ESBranchCombo
+# Branch on combo > 8, target rnd 28
+# [19] ESAttackMultihit(15:9064) -> Too bad
+# Deal 40000% damage (4 hits, 10000% each)
+# [20] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [21] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 16, target rnd 29
+# [22] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11111
+# [23] ESBranchCombo(113:6528) -> ESBranchCombo
+# Branch on combo > 9, target rnd 29
+# [24] ESAttackMultihit(15:9064) -> Too bad
+# Deal 40000% damage (4 hits, 10000% each)
+# [25] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [26] SkillSet:
+# 	[0] ESRowSpawnMulti(78:9052) -> It's only natural to get this far
+# 	Change 1st, 3rd, 5th row to Light orbs, 2nd, 4th row to Dark orbs
+# 	[1] ESColumnSpawnMulti(76:9053) -> In that case...
+# 	Change 3rd, 4th column to Heal orbs
+# 	[2] ESAbsorbCombo(67:9054) -> ...how about this?
+# 	Absorb combo <= 6 damage for 1 turns
+# [27] SkillSet:
+# 	[0] ESRandomSpawn(92:9056) -> You can do it, right?
+# 	Spawn random 6 Fire, Water, Wood, Light, Dark orbs
+# 	[1] ESBlindStickyFixed(98:9057) -> Next...this...
+# 	Blind orbs in specific positions for 1 turns
+# 	[2] ESAbsorbCombo(67:9058) -> Can you do it?
+# 	Absorb combo <= 7 damage for 1 turns
+# [28] SkillSet:
+# 	[0] ESBoardChange(84:9060) -> I didn't think you'd do it
+# 	Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
+# 	[1] ESBlind(5:9061) -> This is the end
+# 	Blind all orbs on the board
+# 	[2] ESAbsorbCombo(67:9062) -> Decide and show me!
+# 	Absorb combo <= 8 damage for 1 turns
+# [29] ESEndBattle(40:9065) -> Nice combo
+# Reduce self HP to 0
+# [30] ESEndPath(36:26) -> ESEndPath
+# end_turn

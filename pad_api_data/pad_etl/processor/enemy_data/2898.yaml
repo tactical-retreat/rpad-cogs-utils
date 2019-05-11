@@ -1,0 +1,190 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 2898
+monster_name_en: "Venomous Midgard Snake, J\xF6rmungandr-Ullr"
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings:
+- Found 8 unused actions
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Player -1000% HP (Preemptive)
+  desc_jp: Player -1000% HP (Preemptive)
+  max_atk_pct: null
+  name_en: Is that your best? Then begone!
+  name_jp: Is that your best? Then begone!
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Player -1000% HP
+  desc_jp: Player -1000% HP
+  max_atk_pct: null
+  name_en: Is that your best? Then begone!
+  name_jp: Is that your best? Then begone!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### Unused Actions
+############################################################
+# SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 64)
+# 	[0] ESAbsorbCombo(67:7089) -> I shall test your abilities, adventurer
+# 	Absorb combo <= 3 damage for 1 turns
+# 	[1] ESBoardChange(84:7090) -> I'm hoping for a good combo!
+# 	Change all orbs to Fire, Water, Wood, Light, Dark, Heal
+# 	[2] ESRandomSpawn(92:7091) -> Now then - show me your glow!
+# 	Spawn random 14 Jammer orbs
+# SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 32)
+# 	[0] ESAbsorbCombo(67:7093) -> This is just the beginning
+# 	Absorb combo <= 4 damage for 1 turns
+# 	[1] ESBoardChange(84:7094) -> How tedious...
+# 	Change all orbs to Fire, Water, Wood, Light, Dark, Heal
+# 	[2] ESBlind(5:7095) -> Just let me enjoy this
+# 	Blind all orbs on the board
+# SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 16)
+# 	[0] ESAbsorbCombo(67:7097) -> Feeling the heat?
+# 	Absorb combo <= 5 damage for 1 turns
+# 	[1] ESBoardChange(84:7098) -> Suppose we take things up a notch?
+# 	Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Poison
+# 	[2] ESCloud(104:7099) -> How's this?
+# 	Column of cloud appear for 1 turns at 1st row
+# SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 8)
+# 	[0] ESAbsorbCombo(67:7101) -> Not too shabby
+# 	Absorb combo <= 6 damage for 1 turns
+# 	[1] ESRowSpawnMulti(78:7102) -> What's wrong? You're all sweaty...
+# 	Change 3rd row to Jammer orbs
+# 	[2] ESRandomSpawn(92:7103) -> Surely you're not done yet?
+# 	Spawn random 3 Fire, Water, Wood, Light, Dark, Heal orbs
+# SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 4)
+# 	[0] ESAbsorbCombo(67:7105) -> Nobody's lasted this long in a while...
+# 	Absorb combo <= 7 damage for 1 turns
+# 	[1] ESBombFixedSpawn(103:7106) -> But now it's do or die!
+# 	Spawn Bomb orbs in the specified positions
+# 	[2] ESRandomSpawn(92:7117) -> Let's see you get past this!
+# 	Spawn random 3 Fire, Water, Wood, Light, Dark, Heal, Jammer orbs
+# ESGravity(50:7116) -> Pathetic! Come back when you're stronger
+# Player -1000% HP
+# SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
+# 	[0] ESAbsorbCombo(67:7108) -> Hmph, impressive
+# 	Absorb combo <= 8 damage for 1 turns
+# 	[1] ESRandomSpawn(92:7109) -> The end is nigh...
+# 	Spawn random 6 Fire, Water, Wood, Light, Dark orbs
+# 	[2] ESFixedStart(101:7110) -> Don't let up now!
+# 	Fix orb movement starting point to random position on the board
+# SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# 	[0] ESInactivity(66:7112) -> You have proven yourself, adventurer
+# 	Do nothing
+# 	[1] ESEndBattle(40:7113) -> This was great for killing time
+# 	Reduce self HP to 0
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 63 - starting/max counter
+# [54] 0 - counter increment
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 64)
+# 	[0] ESAbsorbCombo(67:7089) -> I shall test your abilities, adventurer
+# 	Absorb combo <= 3 damage for 1 turns
+# 	[1] ESBoardChange(84:7090) -> I'm hoping for a good combo!
+# 	Change all orbs to Fire, Water, Wood, Light, Dark, Heal
+# 	[2] ESRandomSpawn(92:7091) -> Now then - show me your glow!
+# 	Spawn random 14 Jammer orbs
+# [3] ESBranchCombo(113:6528) -> ESBranchCombo
+# Branch on combo > 4, target rnd 5
+# [4] ESGravity(50:7115) -> Is that your best? Then begone!
+# Player -1000% HP
+# [5] SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 32)
+# 	[0] ESAbsorbCombo(67:7093) -> This is just the beginning
+# 	Absorb combo <= 4 damage for 1 turns
+# 	[1] ESBoardChange(84:7094) -> How tedious...
+# 	Change all orbs to Fire, Water, Wood, Light, Dark, Heal
+# 	[2] ESBlind(5:7095) -> Just let me enjoy this
+# 	Blind all orbs on the board
+# [6] ESBranchCombo(113:6528) -> ESBranchCombo
+# Branch on combo > 5, target rnd 8
+# [7] ESGravity(50:7115) -> Is that your best? Then begone!
+# Player -1000% HP
+# [8] SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 16)
+# 	[0] ESAbsorbCombo(67:7097) -> Feeling the heat?
+# 	Absorb combo <= 5 damage for 1 turns
+# 	[1] ESBoardChange(84:7098) -> Suppose we take things up a notch?
+# 	Change all orbs to Fire, Water, Wood, Light, Dark, Heal, Poison
+# 	[2] ESCloud(104:7099) -> How's this?
+# 	Column of cloud appear for 1 turns at 1st row
+# [9] ESBranchCombo(113:6528) -> ESBranchCombo
+# Branch on combo > 6, target rnd 11
+# [10] ESGravity(50:7115) -> Is that your best? Then begone!
+# Player -1000% HP
+# [11] SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 8)
+# 	[0] ESAbsorbCombo(67:7101) -> Not too shabby
+# 	Absorb combo <= 6 damage for 1 turns
+# 	[1] ESRowSpawnMulti(78:7102) -> What's wrong? You're all sweaty...
+# 	Change 3rd row to Jammer orbs
+# 	[2] ESRandomSpawn(92:7103) -> Surely you're not done yet?
+# 	Spawn random 3 Fire, Water, Wood, Light, Dark, Heal orbs
+# [12] ESBranchCombo(113:6528) -> ESBranchCombo
+# Branch on combo > 7, target rnd 14
+# [13] ESGravity(50:7115) -> Is that your best? Then begone!
+# Player -1000% HP
+# [14] SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 4)
+# 	[0] ESAbsorbCombo(67:7105) -> Nobody's lasted this long in a while...
+# 	Absorb combo <= 7 damage for 1 turns
+# 	[1] ESBombFixedSpawn(103:7106) -> But now it's do or die!
+# 	Spawn Bomb orbs in the specified positions
+# 	[2] ESRandomSpawn(92:7117) -> Let's see you get past this!
+# 	Spawn random 3 Fire, Water, Wood, Light, Dark, Heal, Jammer orbs
+# [15] ESBranchCombo(113:6528) -> ESBranchCombo
+# Branch on combo > 8, target rnd 17
+# [16] ESGravity(50:7116) -> Pathetic! Come back when you're stronger
+# Player -1000% HP
+# [17] SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
+# 	[0] ESAbsorbCombo(67:7108) -> Hmph, impressive
+# 	Absorb combo <= 8 damage for 1 turns
+# 	[1] ESRandomSpawn(92:7109) -> The end is nigh...
+# 	Spawn random 6 Fire, Water, Wood, Light, Dark orbs
+# 	[2] ESFixedStart(101:7110) -> Don't let up now!
+# 	Fix orb movement starting point to random position on the board
+# [18] ESBranchCombo(113:6528) -> ESBranchCombo
+# Branch on combo > 9, target rnd 20
+# [19] ESGravity(50:7116) -> Pathetic! Come back when you're stronger
+# Player -1000% HP
+# [20] SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# 	[0] ESInactivity(66:7112) -> You have proven yourself, adventurer
+# 	Do nothing
+# 	[1] ESEndBattle(40:7113) -> This was great for killing time
+# 	Reduce self HP to 0
+# [21] ESEndPath(36:26) -> ESEndPath
+# end_turn

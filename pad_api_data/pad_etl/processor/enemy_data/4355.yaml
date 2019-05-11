@@ -8,7 +8,7 @@ monster_name_en: Spirit Numen of Light, Keela
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 12 unused actions
+- Found 5 unused actions
 
 ############################################################
 ### Data @ 1
@@ -28,32 +28,157 @@ records:
   usage_pct: 100
 
 ############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Light by 50%
+  desc_jp: Reduce damage from Light by 50%
+  max_atk_pct: null
+  name_en: Ability
+  name_jp: Ability
+  one_time: 0
+  record_type_name: PASSIVE
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Absorb Light damage for 10 turns
+    + Specific orbs change every 1.5s for 20 turns + Void damage >= 15000000 for 999
+    turns (Preemptive)
+  desc_jp: Voids status ailments for 999 turns + Absorb Light damage for 10 turns
+    + Specific orbs change every 1.5s for 20 turns + Void damage >= 15000000 for 999
+    turns (Preemptive)
+  max_atk_pct: null
+  name_en: Prayer + Dawn Eclipse + Halo Ring + Divine Gift of Silk
+  name_jp: Prayer + Dawn Eclipse + Halo Ring + Divine Gift of Silk
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Specific orbs change every 1.5s for 20 turns + Bind 1 subs for 2 turns,
+    Deal 120% damage
+  desc_jp: Specific orbs change every 1.5s for 20 turns + Bind 1 subs for 2 turns,
+    Deal 120% damage
+  max_atk_pct: null
+  name_en: Traversing Radiance + Light Prison
+  name_jp: Traversing Radiance + Light Prison
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Specific orbs change every 1.5s for 20 turns + Deal 129% damage (3 hits,
+    43% each)
+  desc_jp: Specific orbs change every 1.5s for 20 turns + Deal 129% damage (3 hits,
+    43% each)
+  max_atk_pct: null
+  name_en: Traversing Radiance + Shining Arrow
+  name_jp: Traversing Radiance + Shining Arrow
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 75
+  name_jp: HP < 75
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
+    orbs, Deal 160% damage
+  desc_jp: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
+    orbs, Deal 160% damage
+  max_atk_pct: 160
+  name_en: Shadow of Fate
+  name_jp: Shadow of Fate
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 1 turns + Absorb combo <= 6 damage
+    for 15 turns
+  desc_jp: Increase damage to 200% for the next 1 turns + Absorb combo <= 6 damage
+    for 15 turns
+  max_atk_pct: null
+  name_en: Philysians + Prism Mirror
+  name_jp: Philysians + Prism Mirror
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 10
+  name_jp: HP < 10
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Absorb combo <= 9 damage for 1 turns + Specific orbs change every 1.0s
+    for 20 turns
+  desc_jp: Absorb combo <= 9 damage for 1 turns + Specific orbs change every 1.0s
+    for 20 turns
+  max_atk_pct: null
+  name_en: Prism Mirror + Traversing Radiance
+  name_jp: Prism Mirror + Traversing Radiance
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 10000% damage (10 hits, 1000% each)
+  desc_jp: Deal 10000% damage (10 hits, 1000% each)
+  max_atk_pct: 10000
+  name_en: Gleaming Sword of Alvaliere
+  name_jp: Gleaming Sword of Alvaliere
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
 ### Unused Actions
 ############################################################
 # SkillSet:
-# 	[0] ESStatusShield(20:10029) -> Prayer
-# 	Voids status ailments for 999 turns
-# 	[1] ESAbsorbAttribute(53:10030) -> Dawn Eclipse
-# 	Absorb Light damage for 10 turns
-# 	[2] ESSpinnersFixed(110:10031) -> Halo Ring
-# 	Specific orbs change every 1.5s for 20 turns
-# 	[3] ESVoidShield(71:10032) -> Divine Gift of Silk
-# 	Void damage >= 15000000 for 999 turns
-# ESOrbLock(94:10045) -> Shadow of Fate
-# 	Condition: When < 75% hp , one-time use (ai:100 rnd:0) (one-time: 1)
-# Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 160% damage
-# SkillSet:
-# 	Condition: 50% chance (ai:50 rnd:0)
-# 	[0] ESSpinnersFixed(110:10036) -> Traversing Radiance
-# 	Specific orbs change every 1.5s for 20 turns
-# 	[1] ESBindAttack(63:10037) -> Light Prison
-# 	Bind 1 subs for 2 turns, Deal 120% damage
-# SkillSet:
-# 	[0] ESSpinnersFixed(110:10036) -> Traversing Radiance
-# 	Specific orbs change every 1.5s for 20 turns
-# 	[1] ESAttackMultihit(15:10038) -> Shining Arrow
-# 	Deal 129% damage (3 hits, 43% each)
-# SkillSet:
 # 	Condition: 50% chance (ai:50 rnd:0)
 # 	[0] ESSpinnersFixed(110:10035) -> Traversing Radiance
 # 	Specific orbs change every 1.0s for 20 turns
@@ -75,19 +200,6 @@ records:
 # 	Specific orbs change every 0.8s for 20 turns
 # 	[1] ESAttackMultihit(15:10038) -> Shining Arrow
 # 	Deal 129% damage (3 hits, 43% each)
-# SkillSet:
-# 	[0] ESAbsorbCombo(67:10051) -> Prism Mirror
-# 	Absorb combo <= 9 damage for 1 turns
-# 	[1] ESSpinnersFixed(110:10052) -> Traversing Radiance
-# 	Specific orbs change every 1.0s for 20 turns
-# ESAttackMultihit(15:10054) -> Gleaming Sword of Alvaliere
-# Deal 10000% damage (10 hits, 1000% each)
-# SkillSet:
-# 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
-# 	[0] ESAttackUPRemainingEnemies(17:10046) -> Philysians
-# 	Increase damage to 200% for the next 1 turns
-# 	[1] ESAbsorbCombo(67:10048) -> Prism Mirror
-# 	Absorb combo <= 6 damage for 15 turns
 # SkillSet:
 # 	Condition: When < 50% hp (ai:100 rnd:0)
 # 	[0] ESAttackUPRemainingEnemies(17:10046) -> Philysians
