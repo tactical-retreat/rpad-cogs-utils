@@ -142,6 +142,8 @@ class Context(object):
         self.absorb_shield = 0
         # Turns of damage void shield, initial:int=0 -> shield up:int>0 -> expire:int=0
         self.void_shield = 0
+        # Turns of time debuff, initial:int=0 -> shield up:int>0 -> expire:int=0
+        self.time_debuff = 0
 
         # The current skill counter value, initialized to max.
         self.skill_counter = max_skill_counter
@@ -182,6 +184,8 @@ class Context(object):
             self.absorb_shield -= 1
         if self.void_shield > 0:
             self.void_shield -= 1
+        if self.time_debuff > 0:
+            self.time_debuff -= 1
 
     def apply_skill_effects(self, behavior) -> bool:
         """Check context to see if a skill is allowed to be used, and update flag accordingly"""
@@ -240,6 +244,12 @@ class Context(object):
                 return True
             else:
                 return False
+        # elif b_type == ESDebuffMovetime:
+        #     if self.time_debuff == 0:
+        #         self.time_debuff = behavior.turns
+        #         return True
+        #     else:
+        #         return False
 
         return True
 

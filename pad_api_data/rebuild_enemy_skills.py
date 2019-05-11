@@ -79,6 +79,8 @@ def process_card(mcard):
 
     enemy_skillset_dump.dump_summary_to_file(card, summary, enemy_behavior, unused_actions)
 
+    return len(unused_actions)
+
 
 def run(args):
     raw_input_dir = os.path.join(args.input_dir, 'raw')
@@ -89,21 +91,34 @@ def run(args):
     if args.interactive:
         fixed_card_id = input("enter a card id:").strip()
 
+    from collections import defaultdict
+    unused = defaultdict(int)
+
     count = 0
     for card in db.cards:
         if fixed_card_id and card.card.card_id != int(fixed_card_id):
             continue
         try:
             count += 1
-            if count % 50 == 0:
-                print('processing {} of {}'.format(count, len(db.cards)))
-            process_card(card)
+            # if count % 50 == 0:
+                # print('processing {} of {}'.format(count, len(db.cards)))
+            u = process_card(card)
+
+            if '**' not in card.card.name:
+                u = -1 if u is None else u
+                unused[u] += 1
+                if u >=5:
+                    print(u, card.card.card_id, card.card.name)
         except Exception as ex:
             print('failed to process', card.card.name)
             print(ex)
             if 'unsupported operation' not in str(ex):
                 import traceback
                 traceback.print_exc()
+
+    print('unused')
+    for k in sorted(unused.keys()):
+        print(k, unused[k])
 
 
 if __name__ == '__main__':
