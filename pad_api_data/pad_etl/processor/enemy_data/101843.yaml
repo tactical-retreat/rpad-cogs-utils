@@ -7,8 +7,7 @@ monster_id: 101843
 monster_name_en: Alt. Crystal Wind Dragon Queen, Linthia
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 2 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -45,6 +44,15 @@ records:
   record_type_name: DIVIDER
   usage_pct: null
 - !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 110% damage, (if [2508, 2509] on team)
+  desc_jp: Blind all orbs on the board, Deal 110% damage, (if [2508, 2509] on team)
+  max_atk_pct: 110
+  name_en: Sorry, I'm tired of looking at your face
+  name_jp: Sorry, I'm tired of looking at your face
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
   desc_en: Change 1st column to Fire orbs, 6th column to Wood orbs, Deal 140% damage
   desc_jp: Change 1st column to Fire orbs, 6th column to Wood orbs, Deal 140% damage
   max_atk_pct: 140
@@ -62,6 +70,15 @@ records:
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
+- !SkillRecord
+  desc_en: Fire, Light skyfall +20% for 99 turns, (if [1950, 1951] on team)
+  desc_jp: Fire, Light skyfall +20% for 99 turns, (if [1950, 1951] on team)
+  max_atk_pct: null
+  name_en: You seem to be funnier than the world
+  name_jp: You seem to be funnier than the world
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
 - !SkillRecord
   desc_en: Deal 150% damage (3 hits, 50% each)
   desc_jp: Deal 150% damage (3 hits, 50% each)
@@ -135,6 +152,15 @@ records:
   record_type_name: DIVIDER
   usage_pct: null
 - !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 110% damage, (if [2508, 2509] on team)
+  desc_jp: Blind all orbs on the board, Deal 110% damage, (if [2508, 2509] on team)
+  max_atk_pct: 110
+  name_en: Sorry, I'm tired of looking at your face
+  name_jp: Sorry, I'm tired of looking at your face
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
   desc_en: Change 1st column to Fire orbs, 6th column to Wood orbs, Deal 140% damage
   desc_jp: Change 1st column to Fire orbs, 6th column to Wood orbs, Deal 140% damage
   max_atk_pct: 140
@@ -152,6 +178,15 @@ records:
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
+- !SkillRecord
+  desc_en: Fire, Light skyfall +20% for 99 turns, (if [1950, 1951] on team)
+  desc_jp: Fire, Light skyfall +20% for 99 turns, (if [1950, 1951] on team)
+  max_atk_pct: null
+  name_en: You seem to be funnier than the world
+  name_jp: You seem to be funnier than the world
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
 - !SkillRecord
   desc_en: Deal 150% damage (3 hits, 50% each)
   desc_jp: Deal 150% damage (3 hits, 50% each)
@@ -271,13 +306,6 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# ESBlind(62:3552) -> Sorry, I'm tired of looking at your face
-# Blind all orbs on the board, Deal 110% damage
-# ESSkyfall(68:3554) -> You seem to be funnier than the world
-# Fire, Light skyfall +20% for 99 turns
-############################################################
 ### ES Modifiers
 ############################################################
 # [9] 5 - monster size?
@@ -321,7 +349,7 @@ records:
 # [13] ESColumnSpawnMulti(77:3544) -> Vanir Rose
 # Change 1st column to Fire orbs, 6th column to Wood orbs, Deal 140% damage
 # [14] ESBlind(62:3552) -> Sorry, I'm tired of looking at your face
-# Blind all orbs on the board, Deal 110% damage
+# Blind all orbs on the board, Deal 110% damage, (if [2508, 2509] on team)
 # [15] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 20
 # [16] ESFlagOperation(22:12) -> ESFlagOperation
@@ -331,7 +359,7 @@ records:
 # [18] ESAttackMultihit(15:3545) -> Glass Storm
 # Deal 150% damage (3 hits, 50% each)
 # [19] ESSkyfall(68:3554) -> You seem to be funnier than the world
-# Fire, Light skyfall +20% for 99 turns
+# Fire, Light skyfall +20% for 99 turns, (if [1950, 1951] on team)
 # [20] ESAttackMultihit(15:3545) -> Glass Storm
 # 	Condition: 50% chance (ai:50 rnd:0)
 # Deal 150% damage (3 hits, 50% each)

@@ -7,8 +7,7 @@ monster_id: 2822
 monster_name_en: Newspaper Club's New Member, Waron
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 4
@@ -32,11 +31,20 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute repeatedly. Turn 1
-  name_jp: Execute repeatedly. Turn 1
+  name_en: Turn 1
+  name_jp: Turn 1
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
+- !SkillRecord
+  desc_en: Spawn random 3 Heal orbs, (if [2815] on team)
+  desc_jp: Spawn random 3 Heal orbs, (if [2815] on team)
+  max_atk_pct: null
+  name_en: Are you here for the interview too, boss?
+  name_jp: Are you here for the interview too, boss?
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
 - !SkillRecord
   desc_en: Change 1st column to Water orbs, Deal 100% damage
   desc_jp: Change 1st column to Water orbs, Deal 100% damage
@@ -50,8 +58,17 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Loop to 1 after. Turn 2
-  name_jp: Loop to 1 after. Turn 2
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
@@ -64,13 +81,25 @@ records:
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 2
+  name_jp: Loop to 1 after. Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change 1st column to Water orbs, Deal 100% damage
+  desc_jp: Change 1st column to Water orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Ice Camera
+  name_jp: Ice Camera
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
 
-############################################################
-### Unused Actions
-############################################################
-# ESRandomSpawn(92:4112) -> Are you here for the interview too, boss?
-# 	Condition: When fire, water, wood, light, dark, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
-# Spawn random 3 Heal orbs
 ############################################################
 ### ES Modifiers
 ############################################################
@@ -108,4 +137,4 @@ records:
 # flag SET 0b11
 # [12] ESRandomSpawn(92:4112) -> Are you here for the interview too, boss?
 # 	Condition: When fire, water, wood, light, dark, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
-# Spawn random 3 Heal orbs
+# Spawn random 3 Heal orbs, (if [2815] on team)

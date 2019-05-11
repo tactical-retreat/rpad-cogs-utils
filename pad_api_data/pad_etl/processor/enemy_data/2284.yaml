@@ -7,8 +7,7 @@ monster_id: 2284
 monster_name_en: Shaved Ice Specialist, Frost Demon
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 5
@@ -48,6 +47,33 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Player recover 100% hp, (if [475, 477, 478, 479] on team)
+  desc_jp: Player recover 100% hp, (if [475, 477, 478, 479] on team)
+  max_atk_pct: null
+  name_en: You're here? Why not have a break?
+  name_jp: You're here? Why not have a break?
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 120% damage (2 hits, 60% each)
+  desc_jp: Deal 120% damage (2 hits, 60% each)
+  max_atk_pct: 120
+  name_en: Summer Slash
+  name_jp: Summer Slash
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP <= 100
   name_jp: HP <= 100
   one_time: null
@@ -63,11 +89,6 @@ records:
   record_type_name: ACTION
   usage_pct: 50
 
-############################################################
-### Unused Actions
-############################################################
-# ESRecoverPlayer(55:3136) -> You're here? Why not have a break?
-# Player recover 100% hp
 ############################################################
 ### ES Modifiers
 ############################################################
@@ -107,4 +128,4 @@ records:
 # [13] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [14] ESRecoverPlayer(55:3136) -> You're here? Why not have a break?
-# Player recover 100% hp
+# Player recover 100% hp, (if [475, 477, 478, 479] on team)

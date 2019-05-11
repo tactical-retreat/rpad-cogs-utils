@@ -7,8 +7,7 @@ monster_id: 1345
 monster_name_en: Eternal Twin Stars, Idunn & Idunna
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -26,6 +25,33 @@ records:
   one_time: 0
   record_type_name: PREEMPT
   usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns, (if [376, 377, 656, 1348] on team)
+  desc_jp: Voids status ailments for 999 turns, (if [376, 377, 656, 1348] on team)
+  max_atk_pct: null
+  name_en: Don't come any closer!
+  name_jp: Don't come any closer!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
 - !SkillRecord
   desc_en: Deal 150% damage (3 hits, 50% each)
   desc_jp: Deal 150% damage (3 hits, 50% each)
@@ -72,6 +98,15 @@ records:
   record_type_name: DIVIDER
   usage_pct: null
 - !SkillRecord
+  desc_en: Voids status ailments for 999 turns, (if [376, 377, 656, 1348] on team)
+  desc_jp: Voids status ailments for 999 turns, (if [376, 377, 656, 1348] on team)
+  max_atk_pct: null
+  name_en: Don't come any closer!
+  name_jp: Don't come any closer!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
   desc_en: Bind active skills for 3 turns
   desc_jp: Bind active skills for 3 turns
   max_atk_pct: null
@@ -98,6 +133,15 @@ records:
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns, (if [376, 377, 656, 1348] on team)
+  desc_jp: Voids status ailments for 999 turns, (if [376, 377, 656, 1348] on team)
+  max_atk_pct: null
+  name_en: Don't come any closer!
+  name_jp: Don't come any closer!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
 - !SkillRecord
   desc_en: Enemy recover 100% hp
   desc_jp: Enemy recover 100% hp
@@ -172,11 +216,6 @@ records:
   usage_pct: 33
 
 ############################################################
-### Unused Actions
-############################################################
-# ESStatusShield(20:3374) -> Don't come any closer!
-# Voids status ailments for 999 turns
-############################################################
 ### ES Modifiers
 ############################################################
 # [9] 5 - monster size?
@@ -222,7 +261,7 @@ records:
 # [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [16] ESStatusShield(20:3374) -> Don't come any closer!
-# Voids status ailments for 999 turns
+# Voids status ailments for 999 turns, (if [376, 377, 656, 1348] on team)
 # [17] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 9
 # [18] ESFlagOperation(22:12) -> ESFlagOperation

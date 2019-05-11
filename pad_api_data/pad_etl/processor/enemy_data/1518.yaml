@@ -7,8 +7,7 @@ monster_id: 1518
 monster_name_en: Keeper of Paradise, Metatron
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 2 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 5
@@ -110,6 +109,24 @@ records:
   record_type_name: DIVIDER
   usage_pct: null
 - !SkillRecord
+  desc_en: Deal 400% damage (2 hits, 200% each), (if [1119] on team)
+  desc_jp: Deal 400% damage (2 hits, 200% each), (if [1119] on team)
+  max_atk_pct: 400
+  name_en: Why do you resist me?
+  name_jp: Why do you resist me?
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 400% damage (2 hits, 200% each), (if [1118] on team)
+  desc_jp: Deal 400% damage (2 hits, 200% each), (if [1118] on team)
+  max_atk_pct: 400
+  name_en: '...Aren''t you hot with that on your head?'
+  name_jp: '...Aren''t you hot with that on your head?'
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
   desc_en: Deal 400% damage (2 hits, 200% each)
   desc_jp: Deal 400% damage (2 hits, 200% each)
   max_atk_pct: 400
@@ -119,13 +136,6 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
-############################################################
-### Unused Actions
-############################################################
-# ESAttackMultihit(15:3131) -> ...Aren't you hot with that on your head?
-# Deal 400% damage (2 hits, 200% each)
-# ESAttackMultihit(15:3169) -> Why do you resist me?
-# Deal 400% damage (2 hits, 200% each)
 ############################################################
 ### ES Modifiers
 ############################################################
@@ -190,6 +200,6 @@ records:
 # [23] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [24] ESAttackMultihit(15:3131) -> ...Aren't you hot with that on your head?
-# Deal 400% damage (2 hits, 200% each)
+# Deal 400% damage (2 hits, 200% each), (if [1118] on team)
 # [25] ESAttackMultihit(15:3169) -> Why do you resist me?
-# Deal 400% damage (2 hits, 200% each)
+# Deal 400% damage (2 hits, 200% each), (if [1119] on team)

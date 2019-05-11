@@ -7,8 +7,7 @@ monster_id: 2285
 monster_name_en: "Beach Caf\xE9 Waitress, High Water Ninja"
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 5
@@ -35,6 +34,15 @@ records:
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
+- !SkillRecord
+  desc_en: Spawn random 3 Heal orbs, (if [1526, 1528, 1529, 1530] on team)
+  desc_jp: Spawn random 3 Heal orbs, (if [1526, 1528, 1529, 1530] on team)
+  max_atk_pct: null
+  name_en: Don't tell master I have a part-time job!
+  name_jp: Don't tell master I have a part-time job!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
 - !SkillRecord
   desc_en: Blind all orbs on the board, Deal 100% damage
   desc_jp: Blind all orbs on the board, Deal 100% damage
@@ -63,12 +71,6 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 
-############################################################
-### Unused Actions
-############################################################
-# ESRandomSpawn(92:3141) -> Don't tell master I have a part-time job!
-# 	Condition: When fire, water, wood, light, dark, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
-# Spawn random 3 Heal orbs
 ############################################################
 ### ES Modifiers
 ############################################################
@@ -107,4 +109,4 @@ records:
 # flag SET 0b11
 # [13] ESRandomSpawn(92:3141) -> Don't tell master I have a part-time job!
 # 	Condition: When fire, water, wood, light, dark, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
-# Spawn random 3 Heal orbs
+# Spawn random 3 Heal orbs, (if [1526, 1528, 1529, 1530] on team)
