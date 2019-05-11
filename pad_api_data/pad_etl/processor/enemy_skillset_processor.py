@@ -302,7 +302,8 @@ def loop_through(ctx, behaviors: List[Optional[ESBehavior]]) -> List[ESAction]:
     ctx.increment_skill_counter()
 
     for r in results:
-        if r.condition and r.condition.use_chance() == 100:
+        cond = r.condition
+        if cond and cond.use_chance() == 100 and (cond.one_time or cond.forced_one_time):
             # Handle single counter / fixed cost items
             ctx.update_skill_use(r.condition)
             break
