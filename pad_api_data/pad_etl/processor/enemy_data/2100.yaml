@@ -7,8 +7,7 @@ monster_id: 2100
 monster_name_en: Unicorn Rider, Liene
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -32,6 +31,15 @@ records:
   max_atk_pct: 500
   name_en: Holy Jagged Horn - Purification
   name_jp: Holy Jagged Horn - Purification
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Absorb damage >= 1000000 damage for 10 turns (Preemptive)
+  desc_jp: Absorb damage >= 1000000 damage for 10 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Holy Jagged Horn - Bewitching
+  name_jp: Holy Jagged Horn - Bewitching
   one_time: 0
   record_type_name: PREEMPT
   usage_pct: 100
@@ -183,19 +191,12 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# ESAbsorbThreshold(87:9896) -> Holy Jagged Horn - Bewitching
-# Absorb damage >= 1000000 damage for 10 turns
-############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] true
-# [53] 1 -        1
-# [54] 1
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 1 - starting/max counter
+# [54] 1 - counter increment
 #
 ############################################################
 ### Raw Behavior

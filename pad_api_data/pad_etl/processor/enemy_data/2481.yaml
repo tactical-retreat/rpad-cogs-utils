@@ -7,8 +7,7 @@ monster_id: 2481
 monster_name_en: Final Form, Tendo Jigoku
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 4
@@ -63,6 +62,15 @@ records:
   record_type_name: DIVIDER
   usage_pct: null
 - !SkillRecord
+  desc_en: Absorb Fire damage for 3 turns, (if [2468, 2469] on team)
+  desc_jp: Absorb Fire damage for 3 turns, (if [2468, 2469] on team)
+  max_atk_pct: null
+  name_en: Shall I devour your 8 dragons as well?
+  name_jp: Shall I devour your 8 dragons as well?
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
   desc_en: Absorb Fire damage for 3 turns
   desc_jp: Absorb Fire damage for 3 turns
   max_atk_pct: null
@@ -109,19 +117,12 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# ESAbsorbAttribute(53:3491) -> Shall I devour your 8 dragons as well?
-# Absorb Fire damage for 3 turns
-############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] true
-# [53] 1 -        1
-# [54] 0
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 1 - starting/max counter
+# [54] 0 - counter increment
 #
 ############################################################
 ### Raw Behavior
@@ -165,4 +166,4 @@ records:
 # [17] ESAbsorbAttribute(53:3486) -> Absorption
 # Absorb Fire damage for 3 turns
 # [18] ESAbsorbAttribute(53:3491) -> Shall I devour your 8 dragons as well?
-# Absorb Fire damage for 3 turns
+# Absorb Fire damage for 3 turns, (if [2468, 2469] on team)

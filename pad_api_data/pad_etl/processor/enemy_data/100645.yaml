@@ -7,8 +7,7 @@ monster_id: 100645
 monster_name_en: Alt. Archdemon Beelzebub
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -90,6 +89,15 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
+  desc_en: Increase damage to 150% for the next 99 turns
+  desc_jp: Increase damage to 150% for the next 99 turns
+  max_atk_pct: null
+  name_en: Not going easy anymore!
+  name_jp: Not going easy anymore!
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
@@ -145,20 +153,12 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# ESAttackUPRemainingEnemies(17:9494) -> Not going easy anymore!
-# 	Condition: When < 40% hp , one-time use, when <= 1 enemies remain (ai:100 rnd:0) (one-time: 1)
-# Increase damage to 150% for the next 99 turns
-############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] true
-# [53] 1 -        1
-# [54] 0
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 1 - starting/max counter
+# [54] 0 - counter increment
 #
 ############################################################
 ### Raw Behavior

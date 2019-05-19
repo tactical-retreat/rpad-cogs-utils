@@ -7,8 +7,7 @@ monster_id: 2400
 monster_name_en: Awoken Heimdallr
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -45,8 +44,19 @@ records:
   record_type_name: DIVIDER
   usage_pct: null
 - !SkillRecord
-  desc_en: Voids status ailments for 999 turns
-  desc_jp: Voids status ailments for 999 turns
+  desc_en: Bind Dark cards for 1 turns, (if [376, 377, 656, 1348, 2396] on team)
+  desc_jp: Bind Dark cards for 1 turns, (if [376, 377, 656, 1348, 2396] on team)
+  max_atk_pct: null
+  name_en: I'll stop you
+  name_jp: I'll stop you
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns, (if [376, 377, 656, 1348, 2396] on
+    team)
+  desc_jp: Voids status ailments for 999 turns, (if [376, 377, 656, 1348, 2396] on
+    team)
   max_atk_pct: null
   name_en: Guardian God's Five Senses
   name_jp: Guardian God's Five Senses
@@ -99,6 +109,26 @@ records:
   record_type_name: DIVIDER
   usage_pct: null
 - !SkillRecord
+  desc_en: Voids status ailments for 999 turns, (if [376, 377, 656, 1348, 2396] on
+    team)
+  desc_jp: Voids status ailments for 999 turns, (if [376, 377, 656, 1348, 2396] on
+    team)
+  max_atk_pct: null
+  name_en: Guardian God's Five Senses
+  name_jp: Guardian God's Five Senses
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind Dark cards for 1 turns, (if [376, 377, 656, 1348, 2396] on team)
+  desc_jp: Bind Dark cards for 1 turns, (if [376, 377, 656, 1348, 2396] on team)
+  max_atk_pct: null
+  name_en: I'll stop you
+  name_jp: I'll stop you
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
   desc_en: Blind all orbs on the board, Deal 100% damage
   desc_jp: Blind all orbs on the board, Deal 100% damage
   max_atk_pct: 100
@@ -125,6 +155,26 @@ records:
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns, (if [376, 377, 656, 1348, 2396] on
+    team)
+  desc_jp: Voids status ailments for 999 turns, (if [376, 377, 656, 1348, 2396] on
+    team)
+  max_atk_pct: null
+  name_en: Guardian God's Five Senses
+  name_jp: Guardian God's Five Senses
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind Dark cards for 1 turns, (if [376, 377, 656, 1348, 2396] on team)
+  desc_jp: Bind Dark cards for 1 turns, (if [376, 377, 656, 1348, 2396] on team)
+  max_atk_pct: null
+  name_en: I'll stop you
+  name_jp: I'll stop you
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
 - !SkillRecord
   desc_en: Reduce damage from all sources by 50% for 2 turns
   desc_jp: Reduce damage from all sources by 50% for 2 turns
@@ -172,19 +222,12 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# ESBindAttribute(2:3455) -> I'll stop you
-# Bind Dark cards for 1 turns
-############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] true
-# [53] 2 -       10
-# [54] 1
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 2 - starting/max counter
+# [54] 1 - counter increment
 #
 ############################################################
 ### Raw Behavior
@@ -220,13 +263,13 @@ records:
 # [14] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [15] ESBindAttribute(2:3455) -> I'll stop you
-# Bind Dark cards for 1 turns
+# Bind Dark cards for 1 turns, (if [376, 377, 656, 1348, 2396] on team)
 # [16] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 4, target rnd 8
 # [17] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [18] ESStatusShield(20:3446) -> Guardian God's Five Senses
-# Voids status ailments for 999 turns
+# Voids status ailments for 999 turns, (if [376, 377, 656, 1348, 2396] on team)
 # [19] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 10
 # [20] ESFlagOperation(22:12) -> ESFlagOperation

@@ -7,8 +7,7 @@ monster_id: 103260
 monster_name_en: Alt. Yamato Flame Dragon Caller, Tsubaki
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -38,15 +37,6 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
-  one_time: null
-  record_type_name: DIVIDER
-  usage_pct: null
-- !SkillRecord
   desc_en: Reduce damage from all sources by 50% for 1 turns, Deal 320% damage
   desc_jp: Reduce damage from all sources by 50% for 1 turns, Deal 320% damage
   max_atk_pct: 320
@@ -55,15 +45,6 @@ records:
   one_time: 0
   record_type_name: ACTION
   usage_pct: 50
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: HP <= 100
-  name_jp: HP <= 100
-  one_time: null
-  record_type_name: DIVIDER
-  usage_pct: null
 - !SkillRecord
   desc_en: Bind active skills for 5 turns, Deal 320% damage
   desc_jp: Bind active skills for 5 turns, Deal 320% damage
@@ -119,6 +100,24 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 1 turns, Deal 320% damage
+  desc_jp: Reduce damage from all sources by 50% for 1 turns, Deal 320% damage
+  max_atk_pct: 320
+  name_en: Fire Guardian's Sunblade
+  name_jp: Fire Guardian's Sunblade
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Spawn random 4 Jammer orbs, Deal 320% damage
+  desc_jp: Spawn random 4 Jammer orbs, Deal 320% damage
+  max_atk_pct: 320
+  name_en: Scarlet Embers
+  name_jp: Scarlet Embers
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
@@ -138,20 +137,12 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# ESRandomSpawn(92:6883) -> Scarlet Embers
-# 	Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board (ai:100 rnd:0)
-# Spawn random 4 Jammer orbs, Deal 320% damage
-############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] true
-# [53] 1 -        1
-# [54] 0
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 1 - starting/max counter
+# [54] 0 - counter increment
 #
 ############################################################
 ### Raw Behavior

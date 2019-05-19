@@ -7,8 +7,7 @@ monster_id: 2485
 monster_name_en: Incarnation of Evil, Hakumen no Mono
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 2 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 4
@@ -35,6 +34,15 @@ records:
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
+- !SkillRecord
+  desc_en: Blind all orbs on the board, (if [2464, 2465] on team)
+  desc_jp: Blind all orbs on the board, (if [2464, 2465] on team)
+  max_atk_pct: null
+  name_en: Hate...more...
+  name_jp: Hate...more...
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
 - !SkillRecord
   desc_en: Player -99% HP
   desc_jp: Player -99% HP
@@ -126,6 +134,15 @@ records:
   record_type_name: DIVIDER
   usage_pct: null
 - !SkillRecord
+  desc_en: Blind all orbs on the board, (if [2464, 2465] on team)
+  desc_jp: Blind all orbs on the board, (if [2464, 2465] on team)
+  max_atk_pct: null
+  name_en: Hate...more...
+  name_jp: Hate...more...
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
   desc_en: Bind 1 random cards for 3 turns
   desc_jp: Bind 1 random cards for 3 turns
   max_atk_pct: null
@@ -190,23 +207,12 @@ records:
   usage_pct: 50
 
 ############################################################
-### Unused Actions
-############################################################
-# ESBlind(5:3502) -> Hate...more...
-# Blind all orbs on the board
-# SkillSet:
-# 	Condition: On death (ai:100 rnd:0)
-# 	[0] ESSkillSet(83:3514) -> Last 2 times
-# 	Perform multiple skills
-############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] true
-# [53] 1 -        1
-# [54] 0
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 1 - starting/max counter
+# [54] 0 - counter increment
 #
 ############################################################
 ### Raw Behavior
@@ -267,10 +273,10 @@ records:
 # [23] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [24] ESBlind(5:3502) -> Hate...more...
-# Blind all orbs on the board
+# Blind all orbs on the board, (if [2464, 2465] on team)
 # [25] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [26] SkillSet:
 # 	Condition: On death (ai:100 rnd:0)
-# 	[0] ESSkillSet(83:3514) -> Last 2 times
-# 	Perform multiple skills
+# 	[0] ESSkillSet(83:3514) -> My name is not Hakumen. + The name I wanted to be called...
+# 	Do nothing + Do nothing

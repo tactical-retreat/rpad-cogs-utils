@@ -7,8 +7,33 @@ monster_id: 2704
 monster_name_en: Zangetsu
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 2 unused actions
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: On death
+  name_jp: On death
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Spawn random 3 Heal orbs
+  desc_jp: Spawn random 3 Heal orbs
+  max_atk_pct: null
+  name_en: Can you still stand and continue?
+  name_jp: Can you still stand and continue?
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
 
 ############################################################
 ### Data @ 4
@@ -17,6 +42,21 @@ warnings:
 level: 4
 overrides: []
 records:
+- !SkillRecord
+  desc_en: Do nothing + Player recover 100% hp, (if [2675, 2676, 2677, 3353, 3354]
+    on team) (Preemptive)
+  desc_jp: Do nothing + Player recover 100% hp, (if [2675, 2676, 2677, 3353, 3354]
+    on team) (Preemptive)
+  max_atk_pct: null
+  name_en: 'Amongst these swords, there is one...
+
+    that is the true me. + Try to defeat me if you can!!'
+  name_jp: 'Amongst these swords, there is one...
+
+    that is the true me. + Try to defeat me if you can!!'
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
 - !SkillRecord
   desc_en: Player recover 100% hp (Preemptive)
   desc_jp: Player recover 100% hp (Preemptive)
@@ -130,11 +170,38 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
+  desc_en: Increase damage to 200% for the next 1 turns
+  desc_jp: Increase damage to 200% for the next 1 turns
+  max_atk_pct: null
+  name_en: Never take your eyes off the enemy.
+  name_jp: Never take your eyes off the enemy.
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 5
-  name_jp: Turn 5
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  max_atk_pct: 100
+  name_en: Disable Skill
+  name_jp: Disable Skill
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 2
+  name_jp: Loop to 1 after. Turn 2
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
@@ -148,37 +215,31 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
-  desc_en: Deal 100% damage
-  desc_jp: Deal 100% damage
-  max_atk_pct: 100
-  name_en: Disable Skill
-  name_jp: Disable Skill
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: On death
+  name_jp: On death
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Spawn random 3 Heal orbs
+  desc_jp: Spawn random 3 Heal orbs
+  max_atk_pct: null
+  name_en: Can you still stand and continue?
+  name_jp: Can you still stand and continue?
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# SkillSet:
-# 	[0] ESInactivity(66:2776) -> Amongst these swords, there is one...
-# that is the true me.
-# 	Do nothing
-# 	[1] ESRecoverPlayer(55:2770) -> Try to defeat me if you can!!
-# 	Player recover 100% hp
-# SkillSet:
-# 	Condition: On death (ai:100 rnd:0)
-# 	[0] ESRandomSpawn(92:2824) -> Can you still stand and continue?
-# 	Spawn random 3 Heal orbs
-############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] true
-# [53] 1 -        1
-# [54] 1
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 1 - starting/max counter
+# [54] 1 - counter increment
 #
 ############################################################
 ### Raw Behavior

@@ -8,7 +8,7 @@ monster_name_en: God of Intelligence, Kinnikuman Super Phoenix
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 2 unused actions
+- Found 1 unused actions
 
 ############################################################
 ### Data @ 4
@@ -26,6 +26,35 @@ records:
   one_time: 0
   record_type_name: PREEMPT
   usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Do nothing + Change Random to Light, Deal 100% damage, (if [3124, 3125,
+    3850] on team)
+  desc_jp: Do nothing + Change Random to Light, Deal 100% damage, (if [3124, 3125,
+    3850] on team)
+  max_atk_pct: null
+  name_en: Yo, Kinnikuman! + Face Flash
+  name_jp: Yo, Kinnikuman! + Face Flash
+  one_time: 256
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
 - !SkillRecord
   desc_en: Change Random to Light, Deal 100% damage
   desc_jp: Change Random to Light, Deal 100% damage
@@ -285,21 +314,13 @@ records:
 # ESVoidShield(71:5456) -> God of Flight's Power
 # 	Condition: When < 90% hp , one-time use (ai:100 rnd:0) (one-time: 128)
 # Void damage >= 500000 for 1 turns
-# SkillSet:
-# 	Condition: One-time use (ai:100 rnd:0) (one-time: 256)
-# 	[0] ESInactivity(66:5451) -> Yo, Kinnikuman!
-# 	Do nothing
-# 	[1] ESOrbChangeAttack(48:5454) -> Face Flash
-# 	Change Random to Light, Deal 100% damage
 ############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] true
-# [53] 511 - 111111111
-# [54] 0
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 511 - starting/max counter
+# [54] 0 - counter increment
 #
 ############################################################
 ### Raw Behavior

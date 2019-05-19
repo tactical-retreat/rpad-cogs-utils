@@ -7,8 +7,7 @@ monster_id: 2187
 monster_name_en: Gale CyberDragon, Alnair
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -83,6 +82,15 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
+  desc_en: Spawn random 6 Wood orbs, Deal 150% damage
+  desc_jp: Spawn random 6 Wood orbs, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Wind Pulse
+  name_jp: Wind Pulse
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
@@ -102,20 +110,12 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# ESRandomSpawn(92:5163) -> Wind Pulse
-# 	Condition: One-time use & when Fire, Water, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:100 rnd:0) (one-time: 1)
-# Spawn random 6 Wood orbs, Deal 150% damage
-############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] true
-# [53] 15 -     1111
-# [54] 0
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 15 - starting/max counter
+# [54] 0 - counter increment
 #
 ############################################################
 ### Raw Behavior

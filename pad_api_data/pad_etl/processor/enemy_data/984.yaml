@@ -7,8 +7,7 @@ monster_id: 984
 monster_name_en: Gigas the Great
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -26,6 +25,42 @@ records:
   one_time: 1
   record_type_name: PREEMPT
   usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Grrrreat!
+  name_jp: Grrrreat!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 2
+  name_jp: Loop to 1 after. Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  max_atk_pct: null
+  name_en: Great Press
+  name_jp: Great Press
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 30
 - !SkillRecord
   desc_en: Deal 100% damage
   desc_jp: Deal 100% damage
@@ -72,12 +107,12 @@ records:
   record_type_name: DIVIDER
   usage_pct: null
 - !SkillRecord
-  desc_en: Do nothing
-  desc_jp: Do nothing
-  max_atk_pct: null
-  name_en: Grrrreat!
-  name_jp: Grrrreat!
-  one_time: 0
+  desc_en: Deal 1200% damage (4 hits, 300% each)
+  desc_jp: Deal 1200% damage (4 hits, 300% each)
+  max_atk_pct: 1200
+  name_en: Fire!!
+  name_jp: Fire!!
+  one_time: 1
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -90,30 +125,22 @@ records:
   record_type_name: DIVIDER
   usage_pct: null
 - !SkillRecord
-  desc_en: Deal 1200% damage (4 hits, 300% each)
-  desc_jp: Deal 1200% damage (4 hits, 300% each)
-  max_atk_pct: 1200
-  name_en: Fire!!
-  name_jp: Fire!!
-  one_time: 1
+  desc_en: Do nothing
+  desc_jp: Do nothing
+  max_atk_pct: null
+  name_en: Grrrreat!
+  name_jp: Grrrreat!
+  one_time: 0
   record_type_name: ACTION
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# ESGravity(50:879) -> Great Press
-# 	Condition: One-time use (ai:30 rnd:0) (one-time: 1)
-# Player -99% HP
-############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] false
-# [53] 1 -        1
-# [54] 1
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] false - use new AI
+# [53] 1 - starting/max counter
+# [54] 1 - counter increment
 #
 ############################################################
 ### Raw Behavior

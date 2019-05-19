@@ -8,7 +8,7 @@ monster_name_en: Grape Dragon
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 1 unused actions
+- Found 3 unused actions
 
 ############################################################
 ### Data @ 3
@@ -27,15 +27,6 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Execute repeatedly. Turn 1
-  name_jp: Execute repeatedly. Turn 1
-  one_time: null
-  record_type_name: DIVIDER
-  usage_pct: null
-- !SkillRecord
   desc_en: Spawn random 1 Heal orbs
   desc_jp: Spawn random 1 Heal orbs
   max_atk_pct: null
@@ -45,56 +36,20 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
-  one_time: null
-  record_type_name: DIVIDER
-  usage_pct: null
-- !SkillRecord
-  desc_en: Spawn random 1 Jammer orbs, Deal 120% damage
-  desc_jp: Spawn random 1 Jammer orbs, Deal 120% damage
-  max_atk_pct: 120
-  name_en: Seed Gun!
-  name_jp: Seed Gun!
+  desc_en: Change Heal to Jammer, Deal 100% damage
+  desc_jp: Change Heal to Jammer, Deal 100% damage
+  max_atk_pct: 100
+  name_en: No grapes? Let's eat this instead then!
+  name_jp: No grapes? Let's eat this instead then!
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
-  desc_en: ''
-  desc_jp: ''
+  desc_en: Spawn random 3 Dark orbs
+  desc_jp: Spawn random 3 Dark orbs
   max_atk_pct: null
-  name_en: Turn 3
-  name_jp: Turn 3
-  one_time: null
-  record_type_name: DIVIDER
-  usage_pct: null
-- !SkillRecord
-  desc_en: Spawn random 1 Heal orbs
-  desc_jp: Spawn random 1 Heal orbs
-  max_atk_pct: null
-  name_en: I'll take another one
-  name_jp: I'll take another one
-  one_time: 0
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Loop to 1 after. Turn 4
-  name_jp: Loop to 1 after. Turn 4
-  one_time: null
-  record_type_name: DIVIDER
-  usage_pct: null
-- !SkillRecord
-  desc_en: Spawn random 3 Jammer orbs, Deal 280% damage
-  desc_jp: Spawn random 3 Jammer orbs, Deal 280% damage
-  max_atk_pct: 280
-  name_en: Seed Cannon!
-  name_jp: Seed Cannon!
+  name_en: Let's eat grapes together!
+  name_jp: Let's eat grapes together!
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
@@ -102,17 +57,22 @@ records:
 ############################################################
 ### Unused Actions
 ############################################################
-# ESOrbChangeAttack(48:5289) -> No grapes? Let's eat this instead then!
-# Change Heal to Jammer, Deal 100% damage
+# ESRandomSpawn(92:5286) -> Seed Gun!
+# 	Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board (ai:100 rnd:0)
+# Spawn random 1 Jammer orbs, Deal 120% damage
+# ESRandomSpawn(92:5287) -> I'll take another one
+# 	Condition: When dark orbs are on the board (ai:100 rnd:0)
+# Spawn random 1 Heal orbs
+# ESRandomSpawn(92:5288) -> Seed Cannon!
+# 	Condition: When fire, water, wood, light, dark, heal, poison, mortal poison orbs are on the board (ai:100 rnd:0)
+# Spawn random 3 Jammer orbs, Deal 280% damage
 ############################################################
 ### ES Modifiers
 ############################################################
-# [9] 3 -       11
-# [52] true
-# [53] 0 -        0
-# [54] 0
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 3 - monster size?
+# [52] true - use new AI
+# [53] 0 - starting/max counter
+# [54] 0 - counter increment
 #
 ############################################################
 ### Raw Behavior

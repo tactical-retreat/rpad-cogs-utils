@@ -7,8 +7,7 @@ monster_id: 2962
 monster_name_en: White Roses Bride, Hera-Beorc
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 4
@@ -17,6 +16,15 @@ warnings:
 level: 4
 overrides: []
 records:
+- !SkillRecord
+  desc_en: Player recover 100% hp, (if [650, 651, 2948] on team) (Preemptive)
+  desc_jp: Player recover 100% hp, (if [650, 651, 2948] on team) (Preemptive)
+  max_atk_pct: null
+  name_en: "Please make me happy \u266A"
+  name_jp: "Please make me happy \u266A"
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
 - !SkillRecord
   desc_en: Player recover 100% hp (Preemptive)
   desc_jp: Player recover 100% hp (Preemptive)
@@ -129,19 +137,12 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# ESRecoverPlayer(55:4732) -> Please make me happy ♪
-# Player recover 100% hp
-############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] true
-# [53] 3 -       11
-# [54] 1
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 3 - starting/max counter
+# [54] 1 - counter increment
 #
 ############################################################
 ### Raw Behavior
@@ -161,7 +162,7 @@ records:
 # [7] ESRecoverPlayer(55:4725) -> I am very happy!
 # Player recover 100% hp
 # [8] ESRecoverPlayer(55:4732) -> Please make me happy ♪
-# Player recover 100% hp
+# Player recover 100% hp, (if [650, 651, 2948] on team)
 # [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [10] ESBranchHP(28:18) -> ESBranchHP

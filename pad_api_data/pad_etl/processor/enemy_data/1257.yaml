@@ -7,8 +7,7 @@ monster_id: 1257
 monster_name_en: Surging Demon Lord, Belial
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -63,6 +62,15 @@ records:
   record_type_name: DIVIDER
   usage_pct: null
 - !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 1 turns, (if [2263] on team)
+  desc_jp: Reduce damage from all sources by 50% for 1 turns, (if [2263] on team)
+  max_atk_pct: null
+  name_en: Why are you there?!
+  name_jp: Why are you there?!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
   desc_en: Voids status ailments for 999 turns
   desc_jp: Voids status ailments for 999 turns
   max_atk_pct: null
@@ -100,19 +108,12 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# ESDamageShield(74:3082) -> Why are you there?!
-# Reduce damage from all sources by 50% for 1 turns
-############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] true
-# [53] 1 -        1
-# [54] 1
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 1 - starting/max counter
+# [54] 1 - counter increment
 #
 ############################################################
 ### Raw Behavior
@@ -150,6 +151,6 @@ records:
 # [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [16] ESDamageShield(74:3082) -> Why are you there?!
-# Reduce damage from all sources by 50% for 1 turns
+# Reduce damage from all sources by 50% for 1 turns, (if [2263] on team)
 # [17] ESRowSpawnMulti(79:3081) -> Burn!
 # Change 3rd row to Fire orbs, Deal 150% damage

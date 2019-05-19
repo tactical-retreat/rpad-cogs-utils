@@ -7,8 +7,7 @@ monster_id: 4754
 monster_name_en: '*****'
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 4
@@ -17,6 +16,15 @@ warnings:
 level: 4
 overrides: []
 records:
+- !SkillRecord
+  desc_en: Spawn random 3 Light orbs, (if [4751, 4752] on team) (Preemptive)
+  desc_jp: Spawn random 3 Light orbs, (if [4751, 4752] on team) (Preemptive)
+  max_atk_pct: null
+  name_en: Let's slurp mayonnaise in that world!
+  name_jp: Let's slurp mayonnaise in that world!
+  one_time: 1
+  record_type_name: PREEMPT
+  usage_pct: 100
 - !SkillRecord
   desc_en: Bind 2 random subs for 1 turns + Spawn random 3 Dark orbs (Preemptive)
   desc_jp: Bind 2 random subs for 1 turns + Spawn random 3 Dark orbs (Preemptive)
@@ -75,20 +83,12 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# ESRandomSpawn(92:11003) -> Let's slurp mayonnaise in that world!
-# 	Condition: One-time use & when Fire, Water, Wood, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:100 rnd:0) (one-time: 1)
-# Spawn random 3 Light orbs
-############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] true
-# [53] 1 -        1
-# [54] 0
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 1 - starting/max counter
+# [54] 0 - counter increment
 #
 ############################################################
 ### Raw Behavior
@@ -109,7 +109,7 @@ records:
 # 	Spawn random 3 Dark orbs
 # [6] ESRandomSpawn(92:11003) -> Let's slurp mayonnaise in that world!
 # 	Condition: One-time use & when Fire, Water, Wood, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:100 rnd:0) (one-time: 1)
-# Spawn random 3 Light orbs
+# Spawn random 3 Light orbs, (if [4751, 4752] on team)
 # [7] ESAttackMultihit(15:11007) -> This is the end
 # 	Condition: When < 10% hp (ai:100 rnd:0)
 # Deal 200% damage (5 hits, 40% each)

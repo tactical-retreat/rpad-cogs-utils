@@ -7,8 +7,7 @@ monster_id: 102971
 monster_name_en: Alt. Indigo Ocean Water Dragon Caller, Sumire
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 3 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -56,6 +55,15 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
+  desc_en: Movetime -2s for 3 turns
+  desc_jp: Movetime -2s for 3 turns
+  max_atk_pct: null
+  name_en: Vortex Cascade
+  name_jp: Vortex Cascade
+  one_time: 8
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
@@ -74,6 +82,15 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
+  desc_en: Player recover 100% hp
+  desc_jp: Player recover 100% hp
+  max_atk_pct: null
+  name_en: Hidden Waters
+  name_jp: Hidden Waters
+  one_time: 4
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
@@ -88,6 +105,15 @@ records:
   max_atk_pct: 3000
   name_en: Godspring Current
   name_jp: Godspring Current
+  one_time: 2
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 320% damage (2 hits, 160% each)
+  desc_jp: Deal 320% damage (2 hits, 160% each)
+  max_atk_pct: 320
+  name_en: Scale Blade
+  name_jp: Scale Blade
   one_time: 2
   record_type_name: ACTION
   usage_pct: 100
@@ -196,26 +222,12 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# ESDebuffMovetime(39:6588) -> Vortex Cascade
-# 	Condition: One-time use (ai:100 rnd:0) (one-time: 8)
-# Movetime -2s for 3 turns
-# ESRecoverPlayer(55:6590) -> Hidden Waters
-# 	Condition: One-time use (ai:100 rnd:0) (one-time: 4)
-# Player recover 100% hp
-# ESAttackMultihit(15:6592) -> Scale Blade
-# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
-# Deal 320% damage (2 hits, 160% each)
-############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] true
-# [53] 31 -    11111
-# [54] 0
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 31 - starting/max counter
+# [54] 0 - counter increment
 #
 ############################################################
 ### Raw Behavior

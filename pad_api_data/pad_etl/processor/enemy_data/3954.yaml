@@ -7,8 +7,33 @@ monster_id: 3954
 monster_name_en: Illuminating Dragon Caller, Myne
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 2 unused actions
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: On death
+  name_jp: On death
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Spawn random 1 Heal orbs
+  desc_jp: Spawn random 1 Heal orbs
+  max_atk_pct: null
+  name_en: It's dangerous inside so be careful...!
+  name_jp: It's dangerous inside so be careful...!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 0
 
 ############################################################
 ### Data @ 4
@@ -17,6 +42,17 @@ warnings:
 level: 4
 overrides: []
 records:
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 75% for 1 turns, (if [3930, 3931, 3942,
+    3943] on team) (Preemptive)
+  desc_jp: Reduce damage from all sources by 75% for 1 turns, (if [3930, 3931, 3942,
+    3943] on team) (Preemptive)
+  max_atk_pct: null
+  name_en: W...Welcome home?...
+  name_jp: W...Welcome home?...
+  one_time: 2
+  record_type_name: PREEMPT
+  usage_pct: 100
 - !SkillRecord
   desc_en: Reduce damage from all sources by 75% for 1 turns (Preemptive)
   desc_jp: Reduce damage from all sources by 75% for 1 turns (Preemptive)
@@ -100,26 +136,32 @@ records:
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: On death
+  name_jp: On death
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Spawn random 1 Heal orbs
+  desc_jp: Spawn random 1 Heal orbs
+  max_atk_pct: null
+  name_en: It's dangerous inside so be careful...!
+  name_jp: It's dangerous inside so be careful...!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 0
 
-############################################################
-### Unused Actions
-############################################################
-# ESDamageShield(74:8309) -> W...Welcome home?...
-# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
-# Reduce damage from all sources by 75% for 1 turns
-# SkillSet:
-# 	Condition: On death (ai:0 rnd:0)
-# 	[0] ESRandomSpawn(92:8315) -> It's dangerous inside so be careful...!
-# 	Spawn random 1 Heal orbs
 ############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] true
-# [53] 3 -       11
-# [54] 0
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 3 - starting/max counter
+# [54] 0 - counter increment
 #
 ############################################################
 ### Raw Behavior
@@ -137,7 +179,7 @@ records:
 # Reduce damage from all sources by 75% for 1 turns
 # [6] ESDamageShield(74:8309) -> W...Welcome home?...
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
-# Reduce damage from all sources by 75% for 1 turns
+# Reduce damage from all sources by 75% for 1 turns, (if [3930, 3931, 3942, 3943] on team)
 # [7] ESSkillDelay(89:8313) -> Flying Bucket
 # 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Delay active skills by 2 turns

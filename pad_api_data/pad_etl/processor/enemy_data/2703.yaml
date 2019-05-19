@@ -7,8 +7,7 @@ monster_id: 2703
 monster_name_en: Squad 6 Captain, Byakuya Kuchiki
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 2 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -100,6 +99,19 @@ records:
   record_type_name: DIVIDER
   usage_pct: null
 - !SkillRecord
+  desc_en: Do nothing + Increase damage to 200% for the next 999 turns + Do nothing,
+    (if [2675, 2676, 2677, 3353, 3354] on team)
+  desc_jp: Do nothing + Increase damage to 200% for the next 999 turns + Do nothing,
+    (if [2675, 2676, 2677, 3353, 3354] on team)
+  max_atk_pct: null
+  name_en: This is the true form of Senbonzakura. + Senkei Senbonzakura Kageyoshi
+    + You are only the second to ever see it.
+  name_jp: This is the true form of Senbonzakura. + Senkei Senbonzakura Kageyoshi
+    + You are only the second to ever see it.
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
   desc_en: Do nothing + Increase damage to 200% for the next 999 turns
   desc_jp: Do nothing + Increase damage to 200% for the next 999 turns
   max_atk_pct: null
@@ -150,28 +162,12 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# SkillSet:
-# 	[0] ESInactivity(66:2802) -> This is the true form of Senbonzakura.
-# 	Do nothing
-# 	[1] ESAttackUPRemainingEnemies(17:2796) -> Senkei Senbonzakura Kageyoshi
-# 	Increase damage to 200% for the next 999 turns
-# 	[2] ESInactivity(66:2800) -> You are only the second to ever see it.
-# 	Do nothing
-# SkillSet:
-# 	Condition: On death (ai:100 rnd:0)
-# 	[0] ESInactivity(66:2823) -> The battle... is yours.
-# 	Do nothing
-############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] true
-# [53] 1 -        1
-# [54] 1
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 1 - starting/max counter
+# [54] 1 - counter increment
 #
 ############################################################
 ### Raw Behavior

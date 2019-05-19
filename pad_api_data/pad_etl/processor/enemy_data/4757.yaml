@@ -7,8 +7,7 @@ monster_id: 4757
 monster_name_en: '*****'
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 4
@@ -17,6 +16,15 @@ warnings:
 level: 4
 overrides: []
 records:
+- !SkillRecord
+  desc_en: Blind all orbs on the board, (if [4748, 4749] on team) (Preemptive)
+  desc_jp: Blind all orbs on the board, (if [4748, 4749] on team) (Preemptive)
+  max_atk_pct: null
+  name_en: You will lose everything
+  name_jp: You will lose everything
+  one_time: 8
+  record_type_name: PREEMPT
+  usage_pct: 100
 - !SkillRecord
   desc_en: Blind all orbs on the board (Preemptive)
   desc_jp: Blind all orbs on the board (Preemptive)
@@ -102,20 +110,12 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# ESBlind(5:11026) -> You will lose everything
-# 	Condition: One-time use (ai:100 rnd:0) (one-time: 8)
-# Blind all orbs on the board
-############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] true
-# [53] 15 -     1111
-# [54] 0
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 15 - starting/max counter
+# [54] 0 - counter increment
 #
 ############################################################
 ### Raw Behavior
@@ -133,7 +133,7 @@ records:
 # Blind all orbs on the board
 # [6] ESBlind(5:11026) -> You will lose everything
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 8)
-# Blind all orbs on the board
+# Blind all orbs on the board, (if [4748, 4749] on team)
 # [7] ESStatusShield(20:11027) -> Stop playing house
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 4)
 # Voids status ailments for 999 turns, Deal 200% damage

@@ -1,0 +1,169 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 3904
+monster_name_en: Almighty Awoken Zeus Vulcan
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Absorb combo <= 8 damage for 10 turns + Void damage >= 10000000 for 999
+    turns (Preemptive)
+  desc_jp: Absorb combo <= 8 damage for 10 turns + Void damage >= 10000000 for 999
+    turns (Preemptive)
+  max_atk_pct: null
+  name_en: Flame God's Ambition + Incandescent Fighting Spirit
+  name_jp: Flame God's Ambition + Incandescent Fighting Spirit
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Column of cloud appear for 1 turns at random location, Deal 260% damage,
+    (if >=12 combos last turn)
+  desc_jp: Column of cloud appear for 1 turns at random location, Deal 260% damage,
+    (if >=12 combos last turn)
+  max_atk_pct: 260
+  name_en: "Foti\xE1 X\xEDphos"
+  name_jp: "Foti\xE1 X\xEDphos"
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 150% for the next 1 turns, (if >=9 combos last turn)
+  desc_jp: Increase damage to 150% for the next 1 turns, (if >=9 combos last turn)
+  max_atk_pct: null
+  name_en: "The\xF3s Thym\xF3s"
+  name_jp: "The\xF3s Thym\xF3s"
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  max_atk_pct: null
+  name_en: "Timor\xEDa"
+  name_jp: "Timor\xEDa"
+  one_time: 2
+  record_type_name: ACTION
+  usage_pct: 60
+- !SkillRecord
+  desc_en: Deal 300% damage (2 hits, 150% each)
+  desc_jp: Deal 300% damage (2 hits, 150% each)
+  max_atk_pct: 300
+  name_en: "Ep\xEDthesi"
+  name_jp: "Ep\xEDthesi"
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 20
+  name_jp: HP < 20
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
+    orbs + Reduce damage from all sources by 75% for 1 turns
+  desc_jp: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
+    orbs + Reduce damage from all sources by 75% for 1 turns
+  max_atk_pct: null
+  name_en: "You're making me angry + Stigm\xE6 Asp\xEDda"
+  name_jp: "You're making me angry + Stigm\xE6 Asp\xEDda"
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 3000% damage (3 hits, 1000% each)
+  desc_jp: Deal 3000% damage (3 hits, 1000% each)
+  max_atk_pct: 3000
+  name_en: "Apot\xE9frosi"
+  name_jp: "Apot\xE9frosi"
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 2 - starting/max counter
+# [54] 1 - counter increment
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] SkillSet:
+# 	[0] ESAbsorbCombo(67:8393) -> Flame God's Ambition
+# 	Absorb combo <= 8 damage for 10 turns
+# 	[1] ESVoidShield(71:8394) -> Incandescent Fighting Spirit
+# 	Void damage >= 10000000 for 999 turns
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 20, target rnd 18
+# [7] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 21
+# [8] ESBranchCombo(113:6528) -> ESBranchCombo
+# Branch on combo >= 12, target rnd 13
+# [9] ESBranchCombo(113:6528) -> ESBranchCombo
+# Branch on combo >= 9, target rnd 15
+# [10] ESGravity(50:8398) -> Timoría
+# 	Condition: One-time use (ai:60 rnd:0) (one-time: 2)
+# Player -99% HP
+# [11] ESAttackMultihit(15:8399) -> Epíthesi
+# Deal 300% damage (2 hits, 150% each)
+# [12] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [13] ESCloud(104:8397) -> Fotiá Xíphos
+# Column of cloud appear for 1 turns at random location, Deal 260% damage, (if >=12 combos last turn)
+# [14] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [15] ESAttackUPRemainingEnemies(17:8396) -> Theós Thymós
+# 	Condition: 50% chance, when <= 1 enemies remain (ai:50 rnd:0)
+# Increase damage to 150% for the next 1 turns, (if >=9 combos last turn)
+# [16] ESAttackMultihit(15:8399) -> Epíthesi
+# Deal 300% damage (2 hits, 150% each)
+# [17] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [18] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 21
+# [19] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [20] SkillSet:
+# 	[0] ESOrbLock(94:8401) -> You're making me angry
+# 	Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
+# 	[1] ESDamageShield(74:8402) -> Stigmæ Aspída
+# 	Reduce damage from all sources by 75% for 1 turns
+# [21] ESAttackMultihit(15:8404) -> Apotéfrosi
+# Deal 3000% damage (3 hits, 1000% each)
+# [22] ESEndPath(36:26) -> ESEndPath
+# end_turn

@@ -7,8 +7,7 @@ monster_id: 2543
 monster_name_en: Shinto Shrine's Dragon Knight, Himiko
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -47,11 +46,20 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute repeatedly. Turn 1
-  name_jp: Execute repeatedly. Turn 1
+  name_en: Turn 1
+  name_jp: Turn 1
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
+- !SkillRecord
+  desc_en: Spawn random 3 Heal orbs, (if [1362, 1363, 1364, 1365] on team)
+  desc_jp: Spawn random 3 Heal orbs, (if [1362, 1363, 1364, 1365] on team)
+  max_atk_pct: null
+  name_en: May thee have a great one!
+  name_jp: May thee have a great one!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
 - !SkillRecord
   desc_en: Change 1st, 3rd, 5th row to Fire, Water, Wood, Light, Dark, Heal orbs,
     Deal 130% damage
@@ -76,8 +84,17 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
@@ -94,8 +111,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Loop to 1 after. Turn 3
-  name_jp: Loop to 1 after. Turn 3
+  name_en: Loop to 1 after. Turn 2-3
+  name_jp: Loop to 1 after. Turn 2-3
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
@@ -137,6 +154,15 @@ records:
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
+- !SkillRecord
+  desc_en: Spawn random 3 Heal orbs, (if [1362, 1363, 1364, 1365] on team)
+  desc_jp: Spawn random 3 Heal orbs, (if [1362, 1363, 1364, 1365] on team)
+  max_atk_pct: null
+  name_en: May thee have a great one!
+  name_jp: May thee have a great one!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
 - !SkillRecord
   desc_en: Reduce damage from all sources by 50% for 1 turns
   desc_jp: Reduce damage from all sources by 50% for 1 turns
@@ -184,20 +210,12 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# ESRandomSpawn(92:3688) -> May thee have a great one!
-# 	Condition: When fire, water, wood, light, dark, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
-# Spawn random 3 Heal orbs
-############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] true
-# [53] 2 -       10
-# [54] 1
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 2 - starting/max counter
+# [54] 1 - counter increment
 #
 ############################################################
 ### Raw Behavior
@@ -239,7 +257,7 @@ records:
 # flag SET 0b11
 # [17] ESRandomSpawn(92:3688) -> May thee have a great one!
 # 	Condition: When fire, water, wood, light, dark, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
-# Spawn random 3 Heal orbs
+# Spawn random 3 Heal orbs, (if [1362, 1363, 1364, 1365] on team)
 # [18] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 8, target rnd 21
 # [19] ESFlagOperation(22:12) -> ESFlagOperation

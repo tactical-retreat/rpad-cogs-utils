@@ -7,8 +7,7 @@ monster_id: 1624
 monster_name_en: Wandering Wizard, Wee Jas
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -70,6 +69,15 @@ records:
   max_atk_pct: 180
   name_en: Time Purification
   name_jp: Time Purification
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change 5th row to Heal orbs, Deal 140% damage
+  desc_jp: Change 5th row to Heal orbs, Deal 140% damage
+  max_atk_pct: 140
+  name_en: Break Time
+  name_jp: Break Time
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
@@ -156,19 +164,12 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# ESRowSpawnMulti(79:4604) -> Break Time
-# Change 5th row to Heal orbs, Deal 140% damage
-############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] true
-# [53] 1 -        1
-# [54] 0
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 1 - starting/max counter
+# [54] 0 - counter increment
 #
 ############################################################
 ### Raw Behavior

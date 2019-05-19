@@ -9,37 +9,20 @@ Reduce damage from all sources by 50% for 1 turns (Preemptive)
 Wind-Up Full Throttle
 Increase damage to 200% for the next 999 turns (When 1 enemy remains)
 ----- HP <= 100 -----
+----- Execute repeatedly. Turn 1 -----
 Three Hearts Clutch
 18522 Damage - Spawn random 3 Heal orbs, Deal 130% damage (34% chance)
 Seven Ties Tentacle
 14248 Damage - Lock 7 random Fire, Water, Wood, Light, Dark orbs, Deal 100% damage (33% chance)
 Nine Flames Breath
 14248 Damage - Spawn random 9 Fire orbs, Deal 100% damage (33% chance)
------ HP <= 50 -----
------ Turn 1 -----
-Three Hearts Clutch
-18522 Damage - Spawn random 3 Heal orbs, Deal 130% damage (34% chance)
-Seven Ties Tentacle
-14248 Damage - Lock 7 random Fire, Water, Wood, Light, Dark orbs, Deal 100% damage (33% chance)
-Nine Flames Breath
-14248 Damage - Spawn random 9 Fire orbs, Deal 100% damage (33% chance)
------ Turn 2 -----
+----- Loop to 1 after. Turn 2 -----
 Shell Seclusion
 Reduce damage from all sources by 50% for 1 turns
 ----- HP < 50 -----
 ----- Turn 1 -----
 Incandescent Ocean
 Change all orbs to Fire (1 time use)
------ Turn 2 -----
-Three Hearts Clutch
-18522 Damage - Spawn random 3 Heal orbs, Deal 130% damage (34% chance)
-Seven Ties Tentacle
-14248 Damage - Lock 7 random Fire, Water, Wood, Light, Dark orbs, Deal 100% damage (33% chance)
-Nine Flames Breath
-14248 Damage - Spawn random 9 Fire orbs, Deal 100% damage (33% chance)
------ Turn 3 -----
-Shell Seclusion
-Reduce damage from all sources by 50% for 1 turns
 ----- HP < 10 -----
 Full Spiral
 Player -100% HP
@@ -63,6 +46,8 @@ Burn Knuckle
 ----- Loop to 1 after. Turn 2 -----
 Dusky Malice
 25802 Damage - Change all orbs to Jammer, Deal 100% damage
+Robbing Heat
+25802 Damage - Change all orbs to Poison, Deal 100% damage
 ----- HP < 50 -----
 ----- Turn 2 -----
 Flame Commandment
@@ -128,11 +113,44 @@ Futile...
 Enemy ally recover 100% hp
 
 4123 - Red Stone Pillar @ level 10
-Basic attacks (1)
+Hellish Flame
+Voids status ailments for 99 turns (Preemptive)
+Burn
+9000 Damage - Deal 90% damage (3 hits, 30% each)
+----- HP < 50 -----
+----- Turn 1 -----
+Incandescent Surge
+Spawn random 6 locked Bomb orbs
+----- Turn 2 -----
+Guardian Flame
+Movetime 150% for 5 turns, (if >=8 combos last turn)
+Anti-Fire
+Absorb Fire damage for 3 turns (20% chance)
+Anti-Fire
+Absorb Water damage for 3 turns (20% chance)
+Anti-Fire
+Absorb Wood damage for 3 turns (20% chance)
+Anti-Fire
+Absorb Light damage for 3 turns (20% chance)
+Anti-Fire
+Absorb Dark damage for 3 turns (20% chance)
+----- When 2 enemy remains -----
+----- Turn 1 -----
+Crimson
+Increase damage to 250% for the next 99 turns
 
 4124 - Blue Stone Pillar @ level 10
 Vile Cerulean Flame
 Absorb combo <= 6 damage for 99 turns (Preemptive)
+----- When player has any buff -----
+Wave of Nothingness
+Voids player buff effects
+----- HP <= 100 -----
+Healing Flame
+Enemy recover 15% hp (20% chance)
+Freeze Flame
+7000 Damage - Lock 4 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 70% damage
+----- When 1 enemy remains -----
 Revival Flame
 Enemy ally recover 100% hp
 
@@ -141,12 +159,10 @@ February Quest Dungeon-Expert - Nordis Descended!-Special
 stage 0
 
 195 - Taur Devil @ level 16
------ Turn 1 -----
 Anger
 Increase damage to 130% for the next 3 turns (40% chance)
 
 197 - Harpie Devil @ level 16
------ Turn 1 -----
 Anger
 Increase damage to 130% for the next 3 turns (40% chance)
 
@@ -313,6 +329,8 @@ Voids status ailments for 4 turns (Preemptive)
 ----- Turn 1 -----
 Howling Gust
 12730 Damage - Change Fire to Jammer, Deal 100% damage
+Howling Gust
+12730 Damage - Change Random to Jammer, Deal 100% damage
 ----- Turn 2 -----
 Wild Talon Rake
 25461 Damage - Deal 200% damage (4 hits, 50% each)
@@ -331,42 +349,23 @@ stage 9
 1844 - Knight Dragon King, Nordis @ level 7
 Ability
 Reduce damage from Wood, Light by 50%
-*****
-Show message: Well done! I too must evolve! (Preemptive)
 I'm honored to face you!
 Voids status ailments for 999 turns (Preemptive)
------ Turn 1 -----
-*****
-Show message: Well done! I too must evolve!
+----- Execute repeatedly. Turn 1 -----
 Ha!
 21301 Damage - Deal 120% damage
 ----- Turn 2 -----
-*****
-Show message: Well done! I too must evolve!
 His shield is raised
 Reduce damage from all sources by 50% for 1 turns
------ HP <= 100 -----
------ Execute repeatedly. Turn 1 -----
-*****
-Show message: Well done! I too must evolve!
+----- Turn 3 -----
 Take that!
 23076 Damage - Deal 130% damage
------ Turn 2 -----
-*****
-Show message: Well done! I too must evolve!
------ Turn 3 -----
-*****
-Show message: Well done! I too must evolve!
+----- Turn 4 -----
+His shield is raised
+Reduce damage from all sources by 50% for 1 turns
+----- Loop to 1 after. Turn 5 -----
 Triple Thrust
 31951 Damage - Deal 180% damage (3 hits, 60% each)
------ Turn 4 -----
-*****
-Show message: Well done! I too must evolve!
-Ha!
-21301 Damage - Deal 120% damage
------ Loop to 1 after. Turn 5 -----
-*****
-Show message: Well done! I too must evolve!
 
 stage 10
 
@@ -399,7 +398,6 @@ stage 0
 
 100030 - Alt. Lil' White Dragon @ level 13
 ----- When HP is full -----
------ Turn 1 -----
 Light Guard
 Reduce damage from all sources by 50% for 2 turns
 ----- When HP is not full -----
@@ -412,7 +410,6 @@ Increase damage to 200% for the next 99 turns (1 time use)
 
 100033 - Alt. Lil' Black Dragon @ level 13
 ----- When HP is full -----
------ Turn 1 -----
 Dark Guard
 Reduce damage from all sources by 50% for 2 turns
 ----- When HP is not full -----
@@ -426,6 +423,10 @@ Increase damage to 200% for the next 99 turns (1 time use)
 100234 - Alt. Mystic Mask @ level 10
 Mysterious Wave
 Delay active skills by 1~3 turns (Preemptive)
+----- HP < 50 -----
+Mysterious Beam
+44000 Damage - Deal 200% damage (50% chance)
+----- When 1 enemy remains -----
 Resurrection Ceremony
 Enemy ally recover 100% hp
 
@@ -465,6 +466,8 @@ Hell Ball
 ----- Execute repeatedly. Turn 1 -----
 Hell Ball
 44163 Damage - Change Water to Dark, Deal 90% damage (every 2 turns)
+Dark Cyclone Blast
+61338 Damage - Blind all orbs on the board, Deal 125% damage
 ----- Loop to 1 after. Turn 2 -----
 Dark Cyclone Blast
 61338 Damage - Blind all orbs on the board, Deal 125% damage
@@ -628,16 +631,15 @@ Reduce damage from all sources by 50% for 1 turns (Preemptive)
 ----- Turn 1 -----
 Got angry
 Increase damage to 200% for the next 999 turns (1 time use)
+----- Turn 2 -----
+Dancing around
+Reduce damage from all sources by 75% for 1 turns (1 time use)
+----- Turn 3 -----
+Dancing around
+Reduce damage from all sources by 99% for 1 turns (1 time use)
 ----- HP <= 100 -----
 Amazing Attack
 16022 Damage - Deal 400% damage (4 hits, 100% each)
------ Enemy is defeated -----
------ Turn 1 -----
-Dancing around
-Reduce damage from all sources by 75% for 1 turns (1 time use)
------ Turn 2 -----
-Got angry
-Increase damage to 200% for the next 999 turns (1 time use)
 
 stage 1
 
@@ -652,12 +654,18 @@ Fire Orb change
 Change Water to Fire (Preemptive)
 Flame Grudge
 Bind Water cards for 2~4 turns (Preemptive)
+----- Turn 1 -----
+Flame Grudge
+Bind Water cards for 2~4 turns (1 time use)
 
 100102 - Alt. Mystic Stone Knight @ level 30
 Wood Orb change
 Change Fire to Wood (Preemptive)
 Ground Grudge
 Bind Fire cards for 2~4 turns (Preemptive)
+----- Turn 1 -----
+Ground Grudge
+Bind Fire cards for 2~4 turns (1 time use)
 
 stage 2
 
@@ -732,6 +740,8 @@ Divide Blast
 18592 Damage - Change 3rd row to Wood orbs, Deal 120% damage
 ----- HP < 50 -----
 ----- Turn 1 -----
+I am not...going to lose! + Hnikar
+Movetime -1s for 7 turns + Player -99% HP, (if [2640, 2641, 2899, 2900] on team)
 Skilfing + Hnikar
 Movetime -1s for 7 turns + Player -99% HP
 ----- Execute repeatedly. Turn 1 -----
@@ -776,6 +786,13 @@ stage 0
 2007 - Sphinx @ level 7
 Immovable Protection
 Voids status ailments for 999 turns (Preemptive)
+----- Turn 1-2 -----
+It's looking at you
+Do nothing
+----- Turn 3 -----
+The flames have begun to dance
+Increase damage to 300% for the next 999 turns
+----- HP <= 100 -----
 It's looking at you
 Do nothing
 ----- HP < 50 -----
@@ -892,9 +909,12 @@ stage 5
 Brilliant Fighting Spirit
 Void damage >= 600000 for 99 turns (Preemptive)
 ----- Execute repeatedly. Turn 1 -----
+Multiple Curved Blades
+17494 Damage - Deal 120% damage (3 hits, 40% each)
+----- Turn 2 -----
 Blazing Curved Blades
 14579 Damage - Spawn Bomb orbs in the specified positions, Deal 100% damage (every 4 turns)
------ Loop to 1 after. Turn 2 -----
+----- Loop to 1 after. Turn 3-4 -----
 Multiple Curved Blades
 17494 Damage - Deal 120% damage (3 hits, 40% each)
 ----- HP < 50 -----
@@ -905,6 +925,12 @@ Style Change + Shield of Taghyir
 Change own attribute to Water + Absorb Wood damage for 5 turns (33% chance)
 Style Change + Shield of Taghyir
 Change own attribute to Wood + Absorb Fire damage for 5 turns (33% chance)
+----- Execute repeatedly. Turn 1 -----
+Blazing Curved Blades
+14579 Damage - Spawn Bomb orbs in the specified positions, Deal 100% damage (every 4 turns)
+----- Loop to 1 after. Turn 2-4 -----
+Multiple Curved Blades
+17494 Damage - Deal 120% damage (3 hits, 40% each)
 ----- HP < 10 -----
 Nar Hujum
 32073 Damage - Spawn Bomb orbs in the specified positions, Deal 220% damage
@@ -972,6 +998,10 @@ Wolf Ash
 ----- Loop to 1 after. Turn 2 -----
 Gáe Bulg
 13192 Damage - Spawn random 8 Wood orbs, Deal 100% damage
+Gáe Bulg
+13192 Damage - Change Heal to Wood, Deal 100% damage
+Gáe Bulg
+13192 Damage - Spawn random 3 Wood orbs, Deal 100% damage
 ----- HP < 50 -----
 ----- Execute repeatedly. Turn 1 -----
 Crimson Imperial Blade
@@ -1035,17 +1065,19 @@ Flare Claw
 Dash
 Player -80% HP (60% chance)
 ----- HP < 50 -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 Storm Claw
 18035 Damage - Change 2nd column to Wood orbs, 5th column to Wood orbs, Deal 100% damage (every 2 turns)
-Flare Claw
-18035 Damage - Change 2nd column to Fire orbs, 5th column to Fire orbs, Deal 100% damage (every 2 turns)
+----- Loop to 1 after. Turn 2 -----
+Dash
+Player -80% HP (60% chance)
 ----- HP < 30 -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 Union Claw
 27053 Damage - Change 1st, 2nd column to Fire orbs, 5th, 6th column to Wood orbs, Deal 150% damage (every 2 turns)
-Storm Claw
-18035 Damage - Change 2nd column to Wood orbs, 5th column to Wood orbs, Deal 100% damage (every 2 turns)
+----- Loop to 1 after. Turn 2 -----
+Dash
+Player -80% HP (60% chance)
 
 stage 4
 
@@ -1085,6 +1117,8 @@ Burn Knuckle
 ----- Loop to 1 after. Turn 2 -----
 Dusky Malice
 14396 Damage - Change all orbs to Jammer, Deal 100% damage
+Robbing Heat
+14396 Damage - Change all orbs to Poison, Deal 100% damage
 ----- HP < 50 -----
 ----- Turn 2 -----
 Flame Commandment
@@ -1147,30 +1181,6 @@ Maitrii Kleza
 ----- Turn 3 -----
 Darsana Layaanaam
 14256 Damage - Blind all orbs on the board, Deal 110% damage (1 time use)
------ Turn 4 -----
-Pramaada Dukkha
-Player -99% HP
------ Turn 5 -----
-Aatma Yogah
-12960 Damage - Enemy recover 5%~8% hp, Deal 100% damage
------ Turn 6 -----
-Nairantarya
-17107 Damage - Deal 132% damage (3 hits, 44% each)
------ Turn 7 -----
-Guruh Karma
-18144 Damage - Absorb combo <= 6 damage for 1 turns, Deal 140% damage
------ Turn 8 -----
-Pramaada Dukkha
-Player -99% HP
------ Turn 9 -----
-Aatma Yogah
-12960 Damage - Enemy recover 5%~8% hp, Deal 100% damage
------ Turn 10 -----
-Nairantarya
-17107 Damage - Deal 132% damage (3 hits, 44% each)
------ Turn 11 -----
-Pratibandhii
-19440 Damage - Bind 1 random for 3 turns, Deal 150% damage (1 time use)
 ----- HP <= 100 -----
 ----- Execute repeatedly. Turn 1 -----
 Pramaada Dukkha
@@ -1178,46 +1188,17 @@ Player -99% HP
 ----- Turn 2 -----
 Aatma Yogah
 12960 Damage - Enemy recover 5%~8% hp, Deal 100% damage
------ Loop to 1 after. Turn 3 -----
+----- Turn 3 -----
 Nairantarya
 17107 Damage - Deal 132% damage (3 hits, 44% each)
+----- Loop to 1 after. Turn 4 -----
+Guruh Karma
+18144 Damage - Absorb combo <= 6 damage for 1 turns, Deal 140% damage
 ----- HP < 50 -----
 ----- Turn 4 -----
 Pratibandhii
 19440 Damage - Bind 1 random for 3 turns, Deal 150% damage (1 time use)
------ Turn 5 -----
-Pramaada Dukkha
-Player -99% HP
------ Turn 6 -----
-Aatma Yogah
-12960 Damage - Enemy recover 5%~8% hp, Deal 100% damage
------ Turn 7 -----
-Nairantarya
-17107 Damage - Deal 132% damage (3 hits, 44% each)
------ Turn 8 -----
-Guruh Karma
-18144 Damage - Absorb combo <= 6 damage for 1 turns, Deal 140% damage
 ----- HP < 30 -----
------ Turn 5 -----
-Pratisedha
-20736 Damage - Change Heal to Jammer, Deal 160% damage (15% chance)
-Pramaada Dukkha
-Player -99% HP
------ Turn 6 -----
-Pratisedha
-20736 Damage - Change Heal to Jammer, Deal 160% damage (15% chance)
-Aatma Yogah
-12960 Damage - Enemy recover 5%~8% hp, Deal 100% damage
------ Turn 7 -----
-Pratisedha
-20736 Damage - Change Heal to Jammer, Deal 160% damage (15% chance)
-Nairantarya
-17107 Damage - Deal 132% damage (3 hits, 44% each)
------ Turn 8 -----
-Pratisedha
-20736 Damage - Change Heal to Jammer, Deal 160% damage (15% chance)
-Guruh Karma
-18144 Damage - Absorb combo <= 6 damage for 1 turns, Deal 140% damage
 ----- Execute repeatedly. Turn 1 -----
 Pratisedha
 20736 Damage - Change Heal to Jammer, Deal 160% damage (15% chance)
@@ -1236,6 +1217,8 @@ Nairantarya
 ----- Loop to 1 after. Turn 4 -----
 Pratisedha
 20736 Damage - Change Heal to Jammer, Deal 160% damage (15% chance)
+Guruh Karma
+18144 Damage - Absorb combo <= 6 damage for 1 turns, Deal 140% damage
 ----- HP < 10 -----
 Daurmanasya
 38880 Damage - Deal 300% damage (3 hits, 100% each)
@@ -1271,6 +1254,8 @@ Hell Ball
 ----- Execute repeatedly. Turn 1 -----
 Hell Ball
 27881 Damage - Change Water to Dark, Deal 90% damage (every 2 turns)
+Dark Cyclone Blast
+38723 Damage - Blind all orbs on the board, Deal 125% damage
 ----- Loop to 1 after. Turn 2 -----
 Dark Cyclone Blast
 38723 Damage - Blind all orbs on the board, Deal 125% damage
@@ -1634,6 +1619,8 @@ Scriptures of the Dragon God Caste + Puzzle is rearranged + Alright, let's see y
 Change 1st, 5th row to Light, Jammer orbs, Deal 10% damage + Change 1st, 3rd, 5th column to Light, Heal, Jammer orbs, Deal 10% damage + Movetime -3s for 1 turns
 Chaos
 117361 Damage - Change Jammer to Light, Deal 1000% damage
+Vicious Khakkhara Thrust
+23472 Damage - Deal 200% damage
 
 February Quest Dungeon-Expert - Jörmungandr Descended!
 
@@ -1714,6 +1701,8 @@ Fertile Guard
 Voids status ailments for 999 turns (Preemptive)
 Curing Breath
 8536 Damage - Change Poison to Heal, Deal 120% damage
+Poison Fog
+3556 Damage - Change Random 6 to Poison, Deal 50% damage
 ----- HP < 50 -----
 ----- Turn 1 -----
 Serpent Eye
@@ -1730,6 +1719,8 @@ stage 3
 790 - Stone Gaze Demon Bird, Cockatrice @ level 10
 Chaos Eye
 Change Random 2 to Jammer (Preemptive)
+Snake Bite
+10413 Damage - Deal 130% damage (2 hits, 65% each) (Preemptive) (70% chance)
 Snake Bite
 10413 Damage - Deal 130% damage (2 hits, 65% each) (70% chance)
 ----- HP < 30 -----
@@ -1852,15 +1843,36 @@ stage 2
 2263 - Cruel Frozen Hell Demon, Indigo @ level 10
 You'll regret coming here + Freeze Lock
 Change all orbs to Fire, Water, Wood, Light, Dark, Jammer, Poison, Deal 60% damage + Lock all Jammer, Poison orbs (Preemptive)
+----- Turn 1 -----
+You shall not pass
+Bind 6 random cards for 2 turns, (if [1947] on team) (1 time use)
+You must have guts to face me!
+Delay active skills by 1~2 turns, (if [1257] on team)
+----- HP <= 100 -----
 Ice Needle
 23922 Damage - Change Wood to Water, Deal 60% damage (60% chance)
 Freezing Wind
 23922 Damage - Change 1st, 2nd row to Water, Jammer, Poison orbs, Deal 60% damage (60% chance)
 ----- HP < 80 -----
 ----- Turn 1 -----
+You shall not pass
+Bind 6 random cards for 2 turns, (if [1947] on team) (1 time use)
+You must have guts to face me!
+Delay active skills by 1~2 turns, (if [1257] on team)
+Purple Soul Shield
+Reduce damage from all sources by 30% for 3 turns (1 time use)
+----- Turn 2-3 -----
+Ice Needle
+23922 Damage - Change Wood to Water, Deal 60% damage (60% chance)
+Freezing Wind
+23922 Damage - Change 1st, 2nd row to Water, Jammer, Poison orbs, Deal 60% damage (60% chance)
+----- Turn 4 -----
 Purple Soul Shield
 Reduce damage from all sources by 30% for 3 turns (1 time use)
 ----- HP < 30 -----
+----- Turn 2-3 -----
+Super Snowstorm
+59805 Damage - Deal 150% damage (5 hits, 30% each)
 Super Snowstorm
 59805 Damage - Deal 150% damage (5 hits, 30% each)
 
@@ -1900,6 +1912,10 @@ Bind active skills for 2 turns + Change 5th row to Mortal Poison orbs, Deal 50% 
 ----- Turn 2 -----
 Bloody Blossom - Anemone
 86640 Damage - Change Mortal Poison to Heal, Deal 400% damage
+Cursed Flower - Mint
+21660 Damage - Change Heal to Mortal Poison, Deal 100% damage
+Cocytus's Erosion
+10830 Damage - Change 5th row to Mortal Poison orbs, Deal 50% damage
 ----- Turn 3 -----
 Light Sleep's Cradle
 Bind 2 random subs for 2 turns (50% chance)
@@ -1913,6 +1929,10 @@ Bind active skills for 2 turns + Change 5th row to Mortal Poison orbs, Deal 50% 
 ----- Turn 5 -----
 Bloody Blossom - Anemone
 86640 Damage - Change Mortal Poison to Heal, Deal 400% damage
+Cursed Flower - Mint
+21660 Damage - Change Heal to Mortal Poison, Deal 100% damage
+Cocytus's Erosion
+10830 Damage - Change 5th row to Mortal Poison orbs, Deal 50% damage
 ----- Turn 6 -----
 Light Sleep's Cradle
 Bind 2 random subs for 2 turns (50% chance)
@@ -1926,6 +1946,10 @@ Bind active skills for 2 turns + Change 5th row to Mortal Poison orbs, Deal 50% 
 ----- Turn 8 -----
 Bloody Blossom - Anemone
 86640 Damage - Change Mortal Poison to Heal, Deal 400% damage
+Cursed Flower - Mint
+21660 Damage - Change Heal to Mortal Poison, Deal 100% damage
+Cocytus's Erosion
+10830 Damage - Change 5th row to Mortal Poison orbs, Deal 50% damage
 ----- Turn 9 -----
 Light Sleep's Cradle
 Bind 2 random subs for 2 turns (50% chance)
@@ -1938,6 +1962,10 @@ Bind awoken skills for 2 turns + Change 5th row to Mortal Poison orbs, Deal 50% 
 ----- Execute repeatedly. Turn 1 -----
 Bloody Blossom - Anemone
 86640 Damage - Change Mortal Poison to Heal, Deal 400% damage
+Cursed Flower - Mint
+21660 Damage - Change Heal to Mortal Poison, Deal 100% damage
+Cocytus's Erosion
+10830 Damage - Change 5th row to Mortal Poison orbs, Deal 50% damage
 ----- Turn 2 -----
 Light Sleep's Cradle
 Bind 2 random subs for 2 turns (50% chance)
@@ -2020,6 +2048,8 @@ stage 1
 1836 - Medjedra @ level 10
 Medjetic Eye
 Lock all Poison, Mortal Poison orbs (Preemptive)
+Medjetic Eye
+Bind awoken skills for 2 turns (Preemptive)
 ----- Execute repeatedly. Turn 1 -----
 Medje Kick
 23670 Damage - Lock 1 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 100% damage (every 2 turns)
@@ -2051,19 +2081,27 @@ stage 2
 2130 - Unwavering Demon Dragon, Nobunaga @ level 10
 Burning Grudge + Immortal Ambition
 Change 1st, 2nd, 5th, 6th column to Fire, Poison orbs, Deal 100% damage + Locked random skyfall +20% for 10 turns (Preemptive)
------ Turn 1 -----
+----- Execute repeatedly. Turn 1-5 -----
 Work of the Devil
 36873 Damage - Change Random to Jammer, Deal 170% damage (34% chance)
 Devil Dragon's Blade
 41211 Damage - Deal 190% damage (2 hits, 95% each) (33% chance)
 No Mercy
 39042 Damage - Absorb combo <= 6 damage for 1 turns, Deal 180% damage (33% chance)
------ HP <= 100 -----
+----- Loop to 1 after. Turn 6 -----
+Soaring Destruction
+173520 Damage - Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 800% damage (every 6 turns)
+----- HP < 50 -----
+----- Turn 1 -----
+Injustice
+Absorb Fire, Water, Wood damage for 2 turns
 ----- Execute repeatedly. Turn 1-4 -----
 Work of the Devil
 36873 Damage - Change Random to Jammer, Deal 170% damage (34% chance)
 Devil Dragon's Blade
 41211 Damage - Deal 190% damage (2 hits, 95% each) (33% chance)
+No Mercy
+39042 Damage - Absorb combo <= 6 damage for 1 turns, Deal 180% damage (33% chance)
 ----- Turn 5 -----
 Soaring Destruction
 173520 Damage - Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 800% damage (every 6 turns)
@@ -2072,30 +2110,8 @@ Work of the Devil
 36873 Damage - Change Random to Jammer, Deal 170% damage (34% chance)
 Devil Dragon's Blade
 41211 Damage - Deal 190% damage (2 hits, 95% each) (33% chance)
------ HP < 50 -----
------ Turn 1 -----
-Injustice
-Absorb Fire, Water, Wood damage for 2 turns
------ Turn 2 -----
-Work of the Devil
-36873 Damage - Change Random to Jammer, Deal 170% damage (34% chance)
-Devil Dragon's Blade
-41211 Damage - Deal 190% damage (2 hits, 95% each) (33% chance)
 No Mercy
 39042 Damage - Absorb combo <= 6 damage for 1 turns, Deal 180% damage (33% chance)
------ Execute repeatedly. Turn 1-3 -----
-Work of the Devil
-36873 Damage - Change Random to Jammer, Deal 170% damage (34% chance)
-Devil Dragon's Blade
-41211 Damage - Deal 190% damage (2 hits, 95% each) (33% chance)
------ Turn 4 -----
-Soaring Destruction
-173520 Damage - Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 800% damage (every 6 turns)
------ Loop to 1 after. Turn 5-6 -----
-Work of the Devil
-36873 Damage - Change Random to Jammer, Deal 170% damage (34% chance)
-Devil Dragon's Blade
-41211 Damage - Deal 190% damage (2 hits, 95% each) (33% chance)
 
 stage 3
 
@@ -2199,18 +2215,40 @@ Shadow of Hel! Extinguish all life! + Deathland Rune
 Rcv 50% for 99 turns + Player -99% HP
 Dead Judgment
 37935 Damage - Lock all Poison, Mortal Poison orbs, Deal 150% damage
+Blessings of the Trickster God + Fake Spear Gungnir
+Spawn random 3 Jammer, Poison orbs + Bind 1 random for 1 turns, Deal 100% damage (20% chance)
+Blessings of the Trickster God + Fake Ring Draupnir
+Spawn random 3 Jammer, Poison orbs + Bind awoken skills for 1 turns, Deal 100% damage (25% chance)
+Blessings of the Trickster God + Fake Hammer Mjölnir
+Spawn random 3 Jammer, Poison orbs + Lock 5 random Fire, Water, Wood, Light, Dark orbs, Deal 100% damage (34% chance)
+Blessings of the Trickster God + Fake Blade Lævateinn
+Spawn random 3 Jammer, Poison orbs + Change 5th row to Fire orbs, Deal 100% damage (50% chance)
+Blessings of the Trickster God + Fake Ship Skidbladnir
+Spawn random 3 Jammer, Poison orbs + Player -99% HP
 ----- HP < 50 -----
 ----- Turn 1 -----
 Shadow of Fenrir! Seal the heavens! + Death Rune
 4x2 cloud appear for 10 turns at 1st row, 2nd column + Player -100% HP
 Chain Crunch
 37935 Damage - Spawn random 1 Dark orbs, Deal 150% damage
+Blessings of the Trickster God + Fake Spear Gungnir
+Spawn random 3 Jammer, Poison orbs + Bind 1 random for 1 turns, Deal 100% damage (20% chance)
+Blessings of the Trickster God + Fake Ring Draupnir
+Spawn random 3 Jammer, Poison orbs + Bind awoken skills for 1 turns, Deal 100% damage (25% chance)
+Blessings of the Trickster God + Fake Hammer Mjölnir
+Spawn random 3 Jammer, Poison orbs + Lock 5 random Fire, Water, Wood, Light, Dark orbs, Deal 100% damage (34% chance)
+Blessings of the Trickster God + Fake Blade Lævateinn
+Spawn random 3 Jammer, Poison orbs + Change 5th row to Fire orbs, Deal 100% damage (50% chance)
+Blessings of the Trickster God + Fake Ship Skidbladnir
+Spawn random 3 Jammer, Poison orbs + Player -99% HP
 ----- HP < 20 -----
 ----- Turn 1 -----
 Hold on! It's not your turn yet! + Oh, fine... I'll let you have your fun + Can you erase all the Jammers?
 Change all orbs to Light, Heal, Jammer + Movetime 25% for 1 turns + Delay active skills by 30 turns
 Nope, guess not!
 252900 Damage - Change Jammer to Dark, Deal 1000% damage
+Guess now's as good a time as any + Well then, if you'll excuse me...
+Do nothing + Reduce self HP to 0
 
 February Quest Dungeon-Expert - Challenge Lv8-Fixed Team
 
@@ -2282,7 +2320,10 @@ Voids status ailments for 999 turns + Spawn random 13 Poison orbs + Lock 13 rand
 ----- Turn 1 -----
 Agonizing Sacrifice
 12600 Damage - Change Poison to Mortal Poison, Deal 200% damage
------ Turn 2 -----
+A Reward For Your Agony + Ominous Sorcery
+Player recover 100% hp + Bind awoken skills for 1 turns
+----- HP <= 100 -----
+----- Execute repeatedly. Turn 1 -----
 Desperation + Acid Breath
 Absorb Fire damage for 3 turns + Change Random to Jammer, Deal 170% damage (20% chance) (every 3 turns)
 Desperation + Acid Breath
@@ -2293,13 +2334,13 @@ Desperation + Acid Breath
 Absorb Light damage for 3 turns + Change Random to Jammer, Deal 170% damage (50% chance) (every 3 turns)
 Desperation + Acid Breath
 Absorb Dark damage for 3 turns + Change Random to Jammer, Deal 170% damage (every 3 turns)
------ HP <= 100 -----
-Desperation + Acid Breath
-Absorb Wood damage for 3 turns + Change Random to Jammer, Deal 170% damage (33% chance) (every 3 turns)
-Desperation + Acid Breath
-Absorb Light damage for 3 turns + Change Random to Jammer, Deal 170% damage (50% chance) (every 3 turns)
-Desperation + Acid Breath
-Absorb Dark damage for 3 turns + Change Random to Jammer, Deal 170% damage (every 3 turns)
+----- Loop to 1 after. Turn 2-3 -----
+Red Dragon Liquid
+8190 Damage - Spawn random 5 Water orbs, Deal 130% damage (40% chance)
+Corpse Dragon's Curse
+Poison skyfall +10% for 10 turns (20% chance)
+Abyssal Pain
+9450 Damage - Deal 150% damage (3 hits, 50% each) (40% chance)
 ----- HP < 15 -----
 ----- Turn 1 -----
 Accursed Eclipse
@@ -2313,7 +2354,10 @@ Voids status ailments for 999 turns + Spawn random 13 Poison orbs + Lock 13 rand
 ----- Turn 1 -----
 Agonizing Sacrifice
 12600 Damage - Change Poison to Mortal Poison, Deal 200% damage
------ Turn 2 -----
+A Reward For Your Agony + Ominous Sorcery
+Player recover 100% hp + Bind awoken skills for 1 turns
+----- HP <= 100 -----
+----- Execute repeatedly. Turn 1 -----
 Desperation + Acid Breath
 Absorb Fire damage for 3 turns + Change Random to Jammer, Deal 170% damage (20% chance) (every 3 turns)
 Desperation + Acid Breath
@@ -2324,13 +2368,13 @@ Desperation + Acid Breath
 Absorb Light damage for 3 turns + Change Random to Jammer, Deal 170% damage (50% chance) (every 3 turns)
 Desperation + Acid Breath
 Absorb Dark damage for 3 turns + Change Random to Jammer, Deal 170% damage (every 3 turns)
------ HP <= 100 -----
-Desperation + Acid Breath
-Absorb Wood damage for 3 turns + Change Random to Jammer, Deal 170% damage (33% chance) (every 3 turns)
-Desperation + Acid Breath
-Absorb Light damage for 3 turns + Change Random to Jammer, Deal 170% damage (50% chance) (every 3 turns)
-Desperation + Acid Breath
-Absorb Dark damage for 3 turns + Change Random to Jammer, Deal 170% damage (every 3 turns)
+----- Loop to 1 after. Turn 2-3 -----
+Green Dragon Liquid
+8190 Damage - Change 1st row to Water orbs, Deal 130% damage (40% chance)
+Corpse Dragon's Curse
+Poison skyfall +10% for 10 turns (20% chance)
+Abyssal Pain
+9450 Damage - Deal 150% damage (3 hits, 50% each) (40% chance)
 ----- HP < 15 -----
 ----- Turn 1 -----
 Accursed Eclipse
@@ -2344,7 +2388,10 @@ Voids status ailments for 999 turns + Spawn random 13 Poison orbs + Lock 13 rand
 ----- Turn 1 -----
 Agonizing Sacrifice
 12600 Damage - Change Poison to Mortal Poison, Deal 200% damage
------ Turn 2 -----
+A Reward For Your Agony + Ominous Sorcery
+Player recover 100% hp + Bind awoken skills for 1 turns
+----- HP <= 100 -----
+----- Execute repeatedly. Turn 1 -----
 Desperation + Acid Breath
 Absorb Fire damage for 3 turns + Change Random to Jammer, Deal 170% damage (20% chance) (every 3 turns)
 Desperation + Acid Breath
@@ -2355,13 +2402,13 @@ Desperation + Acid Breath
 Absorb Light damage for 3 turns + Change Random to Jammer, Deal 170% damage (50% chance) (every 3 turns)
 Desperation + Acid Breath
 Absorb Dark damage for 3 turns + Change Random to Jammer, Deal 170% damage (every 3 turns)
------ HP <= 100 -----
-Desperation + Acid Breath
-Absorb Wood damage for 3 turns + Change Random to Jammer, Deal 170% damage (33% chance) (every 3 turns)
-Desperation + Acid Breath
-Absorb Light damage for 3 turns + Change Random to Jammer, Deal 170% damage (50% chance) (every 3 turns)
-Desperation + Acid Breath
-Absorb Dark damage for 3 turns + Change Random to Jammer, Deal 170% damage (every 3 turns)
+----- Loop to 1 after. Turn 2-3 -----
+Blue Dragon Liquid
+8190 Damage - Change 1st column to Water orbs, Deal 130% damage (40% chance)
+Corpse Dragon's Curse
+Poison skyfall +10% for 10 turns (20% chance)
+Abyssal Pain
+9450 Damage - Deal 150% damage (3 hits, 50% each) (40% chance)
 ----- HP < 15 -----
 ----- Turn 1 -----
 Accursed Eclipse
@@ -2378,22 +2425,52 @@ Chimney Drop
 Rudolph's Steely Gaze
 Voids player buff effects
 ----- HP <= 100 -----
------ Execute repeatedly. Turn 1 -----
+----- Turn 1 -----
 Present Box
 25530 Damage - Spawn random 5 Jammer orbs, Deal 120% damage (34% chance)
 Present Box
 27657 Damage - Spawn random 3 Water orbs, Deal 130% damage (33% chance)
 Present Box
 Player -80% HP (33% chance)
------ Loop to 1 after. Turn 2 -----
+----- Turn 2 -----
 Rudolph Attack
 34040 Damage - Deal 160% damage (2 hits, 80% each) (50% chance)
 Rudolph Antler Lock
 29785 Damage - Lock 5 random Fire, Water, Wood, Light, Dark, Heal, Jammer orbs, Deal 140% damage
+Rudolph Tackle
+34040 Damage - Delay active skills by 2 turns, Deal 160% damage
+----- Execute repeatedly. Turn 1 -----
+Rudolph Attack
+34040 Damage - Deal 160% damage (2 hits, 80% each) (50% chance)
+Rudolph Antler Lock
+29785 Damage - Lock 5 random Fire, Water, Wood, Light, Dark, Heal, Jammer orbs, Deal 140% damage
+Chicken Barrel
+127650 Damage - Deal 600% damage (6 hits, 100% each)
+----- Loop to 1 after. Turn 2 -----
+Present Box
+25530 Damage - Spawn random 5 Jammer orbs, Deal 120% damage (34% chance)
+Present Box
+27657 Damage - Spawn random 3 Water orbs, Deal 130% damage (33% chance)
+Present Box
+Player -80% HP (33% chance)
 ----- HP < 70 -----
 ----- Turn 1 -----
 Lullaby
 Bind 3 random cards for 3 turns (1 time use)
+----- Turn 2 -----
+Present Box
+25530 Damage - Spawn random 5 Jammer orbs, Deal 120% damage (34% chance)
+Present Box
+27657 Damage - Spawn random 3 Water orbs, Deal 130% damage (33% chance)
+Present Box
+Player -80% HP (33% chance)
+----- Turn 3 -----
+Rudolph Attack
+34040 Damage - Deal 160% damage (2 hits, 80% each) (50% chance)
+Rudolph Antler Lock
+29785 Damage - Lock 5 random Fire, Water, Wood, Light, Dark, Heal, Jammer orbs, Deal 140% damage
+Rudolph Tackle
+34040 Damage - Delay active skills by 2 turns, Deal 160% damage
 ----- HP < 20 -----
 ----- Turn 1 -----
 Rudolph Tackle

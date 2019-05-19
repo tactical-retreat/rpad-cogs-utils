@@ -7,8 +7,7 @@ monster_id: 1954
 monster_name_en: Awoken Shiva
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 4 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -47,6 +46,44 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
+  desc_en: Change 2nd column to Fire orbs, 4th column to Fire orbs, 6th column to
+    Fire orbs, Deal 100% damage
+  desc_jp: Change 2nd column to Fire orbs, 4th column to Fire orbs, 6th column to
+    Fire orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Trishula
+  name_jp: Trishula
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 25
+- !SkillRecord
+  desc_en: Deal 120% damage (3 hits, 40% each)
+  desc_jp: Deal 120% damage (3 hits, 40% each)
+  max_atk_pct: 120
+  name_en: Pinaka
+  name_jp: Pinaka
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 25
+- !SkillRecord
+  desc_en: Change Random 7 to Poison, Deal 50% damage
+  desc_jp: Change Random 7 to Poison, Deal 50% damage
+  max_atk_pct: 50
+  name_en: Halahala
+  name_jp: Halahala
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 25
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 75% damage
+  desc_jp: Blind all orbs on the board, Deal 75% damage
+  max_atk_pct: 75
+  name_en: Mahakala
+  name_jp: Mahakala
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 25
+- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
@@ -66,29 +103,12 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# ESColumnSpawnMulti(77:2210) -> Trishula
-# 	Condition: 25% chance (ai:0 rnd:25)
-# Change 2nd column to Fire orbs, 4th column to Fire orbs, 6th column to Fire orbs, Deal 100% damage
-# ESAttackMultihit(15:2211) -> Pinaka
-# 	Condition: 25% chance (ai:0 rnd:25)
-# Deal 120% damage (3 hits, 40% each)
-# ESPoisonChangeRandomAttack(64:2208) -> Halahala
-# 	Condition: One-time use (ai:0 rnd:25) (one-time: 1)
-# Change Random 7 to Poison, Deal 50% damage
-# ESBlind(62:2207) -> Mahakala
-# 	Condition: 25% chance (ai:0 rnd:25)
-# Blind all orbs on the board, Deal 75% damage
-############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] true
-# [53] 1 -        1
-# [54] 1
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 1 - starting/max counter
+# [54] 1 - counter increment
 #
 ############################################################
 ### Raw Behavior

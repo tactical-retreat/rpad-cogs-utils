@@ -8,7 +8,7 @@ monster_name_en: Scarlet Sky Ruler, Yamato Takeru Dragon
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 3 unused actions
+- Found 1 unused actions
 
 ############################################################
 ### Data @ 4
@@ -35,6 +35,17 @@ records:
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Reduce damage from all sources by
+    50% for 7 turns, (if [2141, 2142, 2970] on team)
+  desc_jp: Voids status ailments for 999 turns + Reduce damage from all sources by
+    50% for 7 turns, (if [2141, 2142, 2970] on team)
+  max_atk_pct: null
+  name_en: I... don't want... to lose... + Scarlet Sky Barrier
+  name_jp: I... don't want... to lose... + Scarlet Sky Barrier
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
 - !SkillRecord
   desc_en: Voids status ailments for 999 turns + Reduce damage from all sources by
     50% for 7 turns
@@ -210,6 +221,19 @@ records:
   usage_pct: null
 - !SkillRecord
   desc_en: Voids status ailments for 999 turns + Reduce damage from all sources by
+    50% for 7 turns + Deal 160% damage, (if [2141, 2142, 2970] on team)
+  desc_jp: Voids status ailments for 999 turns + Reduce damage from all sources by
+    50% for 7 turns + Deal 160% damage, (if [2141, 2142, 2970] on team)
+  max_atk_pct: null
+  name_en: I... don't want... to lose... + Scarlet Sky Barrier + Dimension-Celestial
+    Thorn of Chaos
+  name_jp: I... don't want... to lose... + Scarlet Sky Barrier + Dimension-Celestial
+    Thorn of Chaos
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Reduce damage from all sources by
     50% for 7 turns + Deal 160% damage
   desc_jp: Voids status ailments for 999 turns + Reduce damage from all sources by
     50% for 7 turns + Deal 160% damage
@@ -225,29 +249,15 @@ records:
 ############################################################
 ### Unused Actions
 ############################################################
-# SkillSet:
-# 	[0] ESStatusShield(20:4866) -> I... don't want... to lose...
-# 	Voids status ailments for 999 turns
-# 	[1] ESDamageShield(74:4867) -> Scarlet Sky Barrier
-# 	Reduce damage from all sources by 50% for 7 turns
-# SkillSet:
-# 	[0] ESStatusShield(20:4866) -> I... don't want... to lose...
-# 	Voids status ailments for 999 turns
-# 	[1] ESDamageShield(74:4867) -> Scarlet Sky Barrier
-# 	Reduce damage from all sources by 50% for 7 turns
-# 	[2] ESAttackMultihit(15:4851) -> Dimension-Celestial Thorn of Chaos
-# 	Deal 160% damage
 # ESAttackMultihit(15:4851) -> Dimension-Celestial Thorn of Chaos
 # Deal 160% damage
 ############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] true
-# [53] 127 -  1111111
-# [54] 0
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 127 - starting/max counter
+# [54] 0 - counter increment
 #
 ############################################################
 ### Raw Behavior

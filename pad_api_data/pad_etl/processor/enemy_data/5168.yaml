@@ -1,0 +1,57 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 5168
+monster_name_en: '*****'
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Light, Dark skyfall +15% for 3 turns (Preemptive)
+  desc_jp: Light, Dark skyfall +15% for 3 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Charity of the Evil God
+  name_jp: Charity of the Evil God
+  one_time: 1
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 100% damage (2 hits, 50% each)
+  desc_jp: Deal 100% damage (2 hits, 50% each)
+  max_atk_pct: 100
+  name_en: True End-Dios
+  name_jp: True End-Dios
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 1 - starting/max counter
+# [54] 0 - counter increment
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESSkyfall(68:13211) -> Charity of the Evil God
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Light, Dark skyfall +15% for 3 turns
+# [3] ESAttackMultihit(15:13212) -> True End-Dios
+# Deal 100% damage (2 hits, 50% each)
+# [4] ESEndPath(36:26) -> ESEndPath
+# end_turn

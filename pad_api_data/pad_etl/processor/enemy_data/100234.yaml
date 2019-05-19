@@ -7,8 +7,7 @@ monster_id: 100234
 monster_name_en: Alt. Mystic Mask
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -26,6 +25,33 @@ records:
   one_time: 1
   record_type_name: PREEMPT
   usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 200% damage
+  desc_jp: Deal 200% damage
+  max_atk_pct: 200
+  name_en: Mysterious Beam
+  name_jp: Mysterious Beam
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
 - !SkillRecord
   desc_en: Enemy ally recover 100% hp
   desc_jp: Enemy ally recover 100% hp
@@ -53,6 +79,33 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 200% damage
+  desc_jp: Deal 200% damage
+  max_atk_pct: 200
+  name_en: Mysterious Beam
+  name_jp: Mysterious Beam
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
   desc_en: Enemy ally recover 100% hp
   desc_jp: Enemy ally recover 100% hp
   max_atk_pct: null
@@ -63,20 +116,12 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# ESAttackMultihit(15:4777) -> Mysterious Beam
-# 	Condition: 50% chance when < 50% hp (ai:50 rnd:0)
-# Deal 200% damage
-############################################################
 ### ES Modifiers
 ############################################################
-# [9] 2 -       10
-# [52] true
-# [53] 1 -        1
-# [54] 0
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 2 - monster size?
+# [52] true - use new AI
+# [53] 1 - starting/max counter
+# [54] 0 - counter increment
 #
 ############################################################
 ### Raw Behavior

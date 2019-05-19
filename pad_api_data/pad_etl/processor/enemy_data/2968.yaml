@@ -7,8 +7,7 @@ monster_id: 2968
 monster_name_en: Illusionless Time Dragonbound, Myr
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -25,6 +24,17 @@ records:
   name_jp: Ability
   one_time: 0
   record_type_name: PASSIVE
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Void damage >= 500000 for 5 turns,
+    (if [2141, 2142, 2143, 2144, 2145, 2146] on team) (Preemptive)
+  desc_jp: Voids status ailments for 999 turns + Void damage >= 500000 for 5 turns,
+    (if [2141, 2142, 2143, 2144, 2145, 2146] on team) (Preemptive)
+  max_atk_pct: null
+  name_en: Did you think that was my real form? + Your Dragon God is waiting for you...
+  name_jp: Did you think that was my real form? + Your Dragon God is waiting for you...
+  one_time: 512
+  record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
   desc_en: Voids status ailments for 999 turns + Void damage >= 500000 for 5 turns
@@ -456,6 +466,17 @@ records:
   record_type_name: PASSIVE
   usage_pct: 100
 - !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Void damage >= 500000 for 5 turns,
+    (if [2141, 2142, 2143, 2144, 2145, 2146] on team) (Preemptive)
+  desc_jp: Voids status ailments for 999 turns + Void damage >= 500000 for 5 turns,
+    (if [2141, 2142, 2143, 2144, 2145, 2146] on team) (Preemptive)
+  max_atk_pct: null
+  name_en: Did you think that was my real form? + Your Dragon God is waiting for you...
+  name_jp: Did you think that was my real form? + Your Dragon God is waiting for you...
+  one_time: 512
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
   desc_en: Voids status ailments for 999 turns + Void damage >= 500000 for 5 turns
     (Preemptive)
   desc_jp: Voids status ailments for 999 turns + Void damage >= 500000 for 5 turns
@@ -869,23 +890,12 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# SkillSet:
-# 	Condition: One-time use (ai:100 rnd:0) (one-time: 512)
-# 	[0] ESStatusShield(20:4576) -> Did you think that was my real form?
-# 	Voids status ailments for 999 turns
-# 	[1] ESVoidShield(71:4706) -> Your Dragon God is waiting for you...
-# 	Void damage >= 500000 for 5 turns
-############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] true
-# [53] 1023 - 1111111111
-# [54] 0
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 1023 - starting/max counter
+# [54] 0 - counter increment
 #
 ############################################################
 ### Raw Behavior

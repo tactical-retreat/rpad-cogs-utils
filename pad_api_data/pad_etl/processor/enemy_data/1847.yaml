@@ -7,8 +7,7 @@ monster_id: 1847
 monster_name_en: "Maleficent Phantom Dragon King, Zaerog\u221E"
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 3 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -109,6 +108,33 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
+  desc_en: Enemy recover 10% hp + Spawn random 4 Poison orbs
+  desc_jp: Enemy recover 10% hp + Spawn random 4 Poison orbs
+  max_atk_pct: null
+  name_en: Blue Sphere + Chaos Bolt
+  name_jp: Blue Sphere + Chaos Bolt
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 33
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 120% damage
+  desc_jp: Blind all orbs on the board, Deal 120% damage
+  max_atk_pct: 120
+  name_en: Dark Pulse
+  name_jp: Dark Pulse
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 33
+- !SkillRecord
+  desc_en: Deal 150% damage (3 hits, 50% each)
+  desc_jp: Deal 150% damage (3 hits, 50% each)
+  max_atk_pct: 150
+  name_en: Dragon King Cannon
+  name_jp: Dragon King Cannon
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 33
+- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
@@ -173,29 +199,12 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# SkillSet:
-# 	Condition: 33% chance (ai:0 rnd:33)
-# 	[0] ESRecoverEnemy(86:2335) -> Blue Sphere
-# 	Enemy recover 10% hp
-# 	[1] ESRandomSpawn(92:2336) -> Chaos Bolt
-# 	Spawn random 4 Poison orbs
-# ESBlind(62:2339) -> Dark Pulse
-# 	Condition: 33% chance (ai:0 rnd:33)
-# Blind all orbs on the board, Deal 120% damage
-# ESAttackMultihit(15:2340) -> Dragon King Cannon
-# 	Condition: 33% chance (ai:0 rnd:33)
-# Deal 150% damage (3 hits, 50% each)
-############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] true
-# [53] 1 -        1
-# [54] 0
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 1 - starting/max counter
+# [54] 0 - counter increment
 #
 ############################################################
 ### Raw Behavior

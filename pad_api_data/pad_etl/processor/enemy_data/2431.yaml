@@ -7,8 +7,7 @@ monster_id: 2431
 monster_name_en: Wood Dog Dragon, Shibawandra
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 6 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 4
@@ -27,6 +26,150 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
+  desc_en: Bind 1 subs for 2 turns, Deal 50% damage
+  desc_jp: Bind 1 subs for 2 turns, Deal 50% damage
+  max_atk_pct: 50
+  name_en: Play-Bite
+  name_jp: Play-Bite
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 20
+- !SkillRecord
+  desc_en: Deal 110% damage
+  desc_jp: Deal 110% damage
+  max_atk_pct: 110
+  name_en: Slash Woof
+  name_jp: Slash Woof
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 35
+- !SkillRecord
+  desc_en: Change 3rd column to Wood orbs, Deal 100% damage
+  desc_jp: Change 3rd column to Wood orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Warming Beam
+  name_jp: Warming Beam
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 35
+- !SkillRecord
+  desc_en: Blind all orbs on the board
+  desc_jp: Blind all orbs on the board
+  max_atk_pct: null
+  name_en: Dig a Hole
+  name_jp: Dig a Hole
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 10
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 70
+  name_jp: HP < 70
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 30% for 5 turns
+  desc_jp: Reduce damage from all sources by 30% for 5 turns
+  max_atk_pct: null
+  name_en: Stay
+  name_jp: Stay
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 10
+  name_jp: HP < 10
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Player -100% HP
+  desc_jp: Player -100% HP
+  max_atk_pct: null
+  name_en: Wonder Bark
+  name_jp: Wonder Bark
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 2
+  name_jp: Loop to 1 after. Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind 1 subs for 2 turns, Deal 50% damage
+  desc_jp: Bind 1 subs for 2 turns, Deal 50% damage
+  max_atk_pct: 50
+  name_en: Play-Bite
+  name_jp: Play-Bite
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 20
+- !SkillRecord
+  desc_en: Deal 110% damage
+  desc_jp: Deal 110% damage
+  max_atk_pct: 110
+  name_en: Slash Woof
+  name_jp: Slash Woof
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 35
+- !SkillRecord
+  desc_en: Change 3rd column to Wood orbs, Deal 100% damage
+  desc_jp: Change 3rd column to Wood orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: Warming Beam
+  name_jp: Warming Beam
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 35
+- !SkillRecord
+  desc_en: Blind all orbs on the board
+  desc_jp: Blind all orbs on the board
+  max_atk_pct: null
+  name_en: Dig a Hole
+  name_jp: Dig a Hole
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 10
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
   desc_en: Enemy ally recover 45% hp
   desc_jp: Enemy ally recover 45% hp
   max_atk_pct: null
@@ -37,35 +180,12 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# ESGravity(50:3428) -> Wonder Bark
-# 	Condition: When < 10% hp , one-time use (ai:100 rnd:0) (one-time: 1)
-# Player -100% HP
-# ESBindAttack(63:3423) -> Play-Bite
-# 	Condition: 20% chance (ai:0 rnd:20)
-# Bind 1 subs for 2 turns, Deal 50% damage
-# ESAttackMultihit(15:3426) -> Slash Woof
-# 	Condition: 35% chance (ai:0 rnd:35)
-# Deal 110% damage
-# ESColumnSpawnMulti(77:3530) -> Warming Beam
-# 	Condition: 35% chance (ai:0 rnd:35)
-# Change 3rd column to Wood orbs, Deal 100% damage
-# ESBlind(5:3424) -> Dig a Hole
-# 	Condition: 10% chance (ai:0 rnd:10)
-# Blind all orbs on the board
-# ESDamageShield(74:3425) -> Stay
-# 	Condition: When < 70% hp (ai:100 rnd:0)
-# Reduce damage from all sources by 30% for 5 turns
-############################################################
 ### ES Modifiers
 ############################################################
-# [9] 4 -      100
-# [52] true
-# [53] 1 -        1
-# [54] 1
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 4 - monster size?
+# [52] true - use new AI
+# [53] 1 - starting/max counter
+# [54] 1 - counter increment
 #
 ############################################################
 ### Raw Behavior

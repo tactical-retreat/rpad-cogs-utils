@@ -1,0 +1,133 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 5189
+monster_name_en: Seregios
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Change Dark to Jammer, Deal 80% damage (Preemptive)
+  desc_jp: Change Dark to Jammer, Deal 80% damage (Preemptive)
+  max_atk_pct: 80
+  name_en: Scaleblade Swing
+  name_jp: Scaleblade Swing
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1-2
+  name_jp: Execute repeatedly. Turn 1-2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 100% damage
+  desc_jp: Deal 100% damage
+  max_atk_pct: 100
+  name_en: Tackle
+  name_jp: Tackle
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Change Random to Light, Deal 95% damage
+  desc_jp: Change Random to Light, Deal 95% damage
+  max_atk_pct: 95
+  name_en: Talon Scratch
+  name_jp: Talon Scratch
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 3
+  name_jp: Loop to 1 after. Turn 3
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Blind all orbs on the board, Deal 45% damage + Change Dark to Jammer, Deal
+    80% damage
+  desc_jp: Blind all orbs on the board, Deal 45% damage + Change Dark to Jammer, Deal
+    80% damage
+  max_atk_pct: null
+  name_en: Jumping Strike Attack + Scaleblade Swing
+  name_jp: Jumping Strike Attack + Scaleblade Swing
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Deal 50% damage + Change Dark to Jammer, Deal 80% damage
+  desc_jp: Deal 50% damage + Change Dark to Jammer, Deal 80% damage
+  max_atk_pct: null
+  name_en: Spinning Tail Attack + Scaleblade Swing
+  name_jp: Spinning Tail Attack + Scaleblade Swing
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 3 - starting/max counter
+# [54] 0 - counter increment
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] ESOrbChangeAttackBits(108:13031) -> Scaleblade Swing
+# Change Dark to Jammer, Deal 80% damage
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESBranchCounter(32:22) -> ESBranchCounter
+# Branch on counter > 2, target rnd 11
+# [7] ESSetCounter(26:16) -> ESSetCounter
+# counter + 1
+# [8] ESAttackMultihit(15:13032) -> Tackle
+# 	Condition: 50% chance (ai:0 rnd:50)
+# Deal 100% damage
+# [9] ESOrbChangeAttack(48:13033) -> Talon Scratch
+# 	Condition: 50% chance (ai:0 rnd:50)
+# Change Random to Light, Deal 95% damage
+# [10] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [11] ESSetCounter(25:15) -> ESSetCounter
+# counter = 0
+# [12] SkillSet:
+# 	Condition: 50% chance (ai:0 rnd:50)
+# 	[0] ESBlind(62:13036) -> Jumping Strike Attack
+# 	Blind all orbs on the board, Deal 45% damage
+# 	[1] ESOrbChangeAttackBits(108:13031) -> Scaleblade Swing
+# 	Change Dark to Jammer, Deal 80% damage
+# [13] SkillSet:
+# 	Condition: 50% chance (ai:0 rnd:50)
+# 	[0] ESAttackMultihit(15:13037) -> Spinning Tail Attack
+# 	Deal 50% damage
+# 	[1] ESOrbChangeAttackBits(108:13031) -> Scaleblade Swing
+# 	Change Dark to Jammer, Deal 80% damage
+# [14] ESEndPath(36:26) -> ESEndPath
+# end_turn

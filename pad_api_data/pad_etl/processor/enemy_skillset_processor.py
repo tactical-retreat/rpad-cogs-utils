@@ -65,9 +65,9 @@ class HpActions():
 class Moveset(object):
     def __init__(self):
         # Action which triggers when a status is applied.
-        self.status_action = None  # type: ESAttackUpStatus
-        # Action which triggers player has a buff.
-        self.dispel_action = None  # type: ESDispel
+        self.status_action = None  # type: Optional[ESAttackUpStatus]
+        # Action which triggers when player has a buff.
+        self.dispel_action = None  # type: Optional[ESDispel]
         # Timed and repeating actions which execute at various HP checkpoints.
         self.hp_actions = []  # type: List[HpActions]
 
@@ -91,6 +91,8 @@ class ProcessedSkillset(object):
         self.level = level
         # Things like color/type resists, resolve, etc.
         self.base_abilities = []  # type: List[ESAction]
+        # These automatically trigger when the monster dies
+        self.death_actions = []  # type: List[ESAction]
         # Preemptive attacks, shields, combo guards.
         self.preemptives = []  # type: List[ESAction]
 
@@ -104,7 +106,7 @@ class ProcessedSkillset(object):
 class Context(object):
     """Represents the game state when running through the simulator."""
 
-    def __init__(self, level):
+    def __init__(self, level: int, max_skill_counter: int, skill_counter_increment: int):
         self.turn = 1
         # Whether the current turn triggered a preempt flag.
         self.is_preemptive = False
@@ -124,6 +126,8 @@ class Context(object):
         self.enemies = 999
         # Cards on the team.
         self.cards = set()
+        # Combos made in previous round.
+        self.combos = 0
         # Turns of enrage, initial:None -> (enrage cooldown period:int<0 ->) enrage:int>0 -> expire:int=0
         self.enraged = None
         # Turns of damage shield, initial:int=0 -> shield up:int>0 -> expire:int=0
@@ -132,6 +136,24 @@ class Context(object):
         self.status_shield = 0
         # Turns of combo shield, initial:int=0 -> shield up:int>0 -> expire:int=0
         self.combo_shield = 0
+        # Turns of attribute absorb shield, initial:int=0 -> shield up:int>0 -> expire:int=0
+        self.attribute_shield = 0
+        # Turns of damage absorb shield, initial:int=0 -> shield up:int>0 -> expire:int=0
+        self.absorb_shield = 0
+        # Turns of damage void shield, initial:int=0 -> shield up:int>0 -> expire:int=0
+        self.void_shield = 0
+        # Turns of time debuff, initial:int=0 -> shield up:int>0 -> expire:int=0
+        self.time_debuff = 0
+
+        # The current skill counter value, initialized to max.
+        self.skill_counter = max_skill_counter
+        # The max value for the skill counter.
+        self.max_skill_counter = max_skill_counter
+        # the amount to increment the skill counter by each turn.
+        self.skill_counter_increment = skill_counter_increment
+
+        # The flag values for one-time skills.
+        self.flag_skill_use = 0
 
     def reset(self):
         self.is_preemptive = False
@@ -139,32 +161,33 @@ class Context(object):
     def clone(self):
         return copy.deepcopy(self)
 
-    def check_skill_use(self, cond: ESCondition):
-        raise NotImplementedError('check_skill_use')
-
-    def update_skill_use(self, cond: ESCondition):
-        raise NotImplementedError('update_skill_use')
-
-    def turn_event(self):
+    def turn_event(self, enraged_this_turn: bool):
         self.turn += 1
-        if self.enraged is not None:
+        if self.enraged is not None and not enraged_this_turn:
             if self.enraged > 0:
                 # count down enraged turns
                 self.enraged -= 1
             elif self.enraged < 0:
                 # count up enraged cooldown turns
                 self.enraged += 1
+
+        # count down shield turns
         if self.damage_shield > 0:
-            # count down shield turns
             self.damage_shield -= 1
         if self.status_shield > 0:
-            # count down shield turns
             self.status_shield -= 1
         if self.combo_shield > 0:
-            # count down shield turns
             self.combo_shield -= 1
+        if self.attribute_shield > 0:
+            self.attribute_shield -= 1
+        if self.absorb_shield > 0:
+            self.absorb_shield -= 1
+        if self.void_shield > 0:
+            self.void_shield -= 1
+        if self.time_debuff > 0:
+            self.time_debuff -= 1
 
-    def apply_skill_effects(self, behavior):
+    def apply_skill_effects(self, behavior) -> bool:
         """Check context to see if a skill is allowed to be used, and update flag accordingly"""
         b_type = type(behavior)
         if issubclass(b_type, ESAttackUp):
@@ -203,64 +226,147 @@ class Context(object):
                 return True
             else:
                 return False
-        # TODO: Delete this. I don't think it makes sense to update the HP in response
-        # to an enemy action; we evaluate at the end of the player's round.
-        # elif b_type == ESRecoverEnemy:
-        #     self.hp += behavior.max_amount
+        elif b_type == ESAbsorbAttribute:
+            if self.attribute_shield == 0:
+                self.attribute_shield = behavior.max_turns
+                return True
+            else:
+                return False
+        elif b_type == ESAbsorbThreshold:
+            if self.absorb_shield == 0:
+                self.absorb_shield = behavior.turns
+                return True
+            else:
+                return False
+        elif b_type == ESVoidShield:
+            if self.void_shield == 0:
+                self.void_shield = behavior.turns
+                return True
+            else:
+                return False
+        elif b_type == ESDebuffMovetime:
+            if self.time_debuff == 0:
+                self.time_debuff = behavior.turns
+                return True
+            else:
+                return False
+
         return True
 
+    def check_no_apply_skill_effects(self, behavior) -> bool:
+        """Check context to see if a skill is allowed to be used"""
+        b_type = type(behavior)
+        if issubclass(b_type, ESAttackUp):
+            if b_type == ESAttackUPRemainingEnemies \
+                    and behavior.enemy_count is not None \
+                    and self.enemies > behavior.enemy_count:
+                return False
+            if self.enraged is None:
+                if b_type == ESAttackUPCooldown and behavior.turn_cooldown is not None:
+                    return False
+                else:
+                    return True
+            else:
+                return self.enraged == 0
+        elif b_type == ESDamageShield:
+            return self.damage_shield == 0
+        elif b_type == ESStatusShield:
+            return self.status_shield == 0
+        elif b_type == ESAbsorbCombo:
+            return self.combo_shield == 0
+        elif b_type == ESAbsorbAttribute:
+            return self.attribute_shield == 0
+        elif b_type == ESAbsorbThreshold:
+            return self.absorb_shield == 0
+        elif b_type == ESVoidShield:
+            return self.void_shield == 0
+        elif b_type == ESDebuffMovetime:
+            return self.time_debuff == 0
 
-class CTXCountdown(Context):
-    def __init__(self, level, skill_use_flags):
-        # For testing
-        super().__init__(level)
-        self.skill_use = skill_use_flags
-        self.flag_skill_use = 0
+        return True
 
     def check_skill_use(self, cond: ESCondition):
         if cond.one_time:
-            return self.skill_use >= cond.one_time
+            return self.skill_counter >= cond.one_time
         elif cond.forced_one_time:
             return self.flag_skill_use & cond.forced_one_time == 0
+        elif cond.enemies_remaining:
+            return self.enemies <= cond.enemies_remaining
         else:
             return True
 
     def update_skill_use(self, cond: ESCondition):
         if cond.one_time:
-            self.skill_use -= cond.one_time
+            self.skill_counter -= cond.one_time
         elif cond.forced_one_time:
             self.flag_skill_use |= cond.forced_one_time
 
+    def increment_skill_counter(self):
+        self.skill_counter = min(self.skill_counter + self.skill_counter_increment, self.max_skill_counter)
 
-class CTXCounter(Context):
-    def __init__(self, level, skill_use_counter):
-        # TODO: skill_use_counter param might be useless
-        super().__init__(level)
-        self.skill_use = 0
-
-    def check_skill_use(self, cond: ESCondition):
-        usage = cond.one_time
-        if usage is None:
-            return True
-        else:
-            if self.skill_use == 0:
-                return True
-            elif self.skill_use > 0:
-                self.skill_use -= 1
-                return False
-
-    def update_skill_use(self, cond: ESCondition):
-        usage = cond.one_time
-        if usage is not None:
-            self.skill_use += usage
-
+    def is_enraged(self):
+        return (self.enraged or 0) > 0
 
 def default_attack():
     """Indicates that the monster uses its standard attack."""
     return ESDefaultAttack()
 
 
-def loop_through(ctx, behaviors: List[ESBehavior]) -> List[ESBehavior]:
+def loop_through(ctx, behaviors: List[Optional[ESBehavior]]) -> List[ESAction]:
+    original_ctx = ctx.clone()
+    results, card_branches, combo_branches = loop_through_inner(ctx, behaviors)
+
+    # Handle extracting alternate actions based on card values
+    card_extra_actions = []
+    for card_ids in sorted(card_branches):
+        card_ctx = original_ctx.clone()
+        card_ctx.cards.update(card_ids)
+        card_loop, _, _ = loop_through_inner(card_ctx, behaviors)
+        new_behaviors = [x for x in card_loop if x not in results]
+
+        # Update the description to distinguish
+        for nb in new_behaviors:
+            nb.extra_description = '(if {} on team)'.format(list(card_ids))
+
+        # Some branches set flags to prevent them from triggering again
+        ctx.flags |= card_ctx.flags
+        card_extra_actions.extend(new_behaviors)
+
+    # Add any alternate preempts
+    for nb in card_extra_actions:
+        results.insert(0, nb)
+
+    # Handle extracting alternate actions based on combo values
+    combo_extra_actions = []
+    for combo_count in sorted(combo_branches):
+        combo_ctx = original_ctx.clone()
+        combo_ctx.combos = combo_count
+        combo_loop, _, _ = loop_through_inner(combo_ctx, behaviors)
+        new_behaviors = [x for x in combo_loop if x not in results]
+
+        # Update the description to distinguish
+        for nb in new_behaviors:
+            nb.extra_description = '(if >={} combos last turn)'.format(combo_count)
+
+        combo_extra_actions.extend(new_behaviors)
+
+    # Add any alternate preempts
+    for nb in combo_extra_actions:
+        results.insert(0, nb)
+
+    ctx.increment_skill_counter()
+
+    for r in results:
+        cond = r.condition
+        if cond and cond.use_chance() == 100 and (cond.one_time or cond.forced_one_time):
+            # Handle single counter / fixed cost items
+            ctx.update_skill_use(r.condition)
+            break
+
+    return results
+
+
+def loop_through_inner(ctx: Context, behaviors: List[Optional[ESBehavior]]) -> List[ESAction]:
     """Executes a single turn through the simulator.
 
     This is called multiple times with varying Context values to probe the action set
@@ -271,6 +377,11 @@ def loop_through(ctx, behaviors: List[ESBehavior]) -> List[ESBehavior]:
     results = []
     # A list of behaviors which have been iterated over.
     traversed = []
+
+    # If any BranchCard instructions were spotted
+    card_branches = []
+    # If any BranchCombo instructions were spotted
+    combo_branches = []
 
     # The current spot in the behavior array.
     idx = 0
@@ -285,7 +396,7 @@ def loop_through(ctx, behaviors: List[ESBehavior]) -> List[ESBehavior]:
             # if len(results) == 0:
             #     # if the result set is empty, add something
             #     results.append(default_attack())
-            return results
+            return results, card_branches, combo_branches
         traversed.append(idx)
 
         # Extract the current behavior and its type.
@@ -310,8 +421,7 @@ def loop_through(ctx, behaviors: List[ESBehavior]) -> List[ESBehavior]:
             ctx.is_preemptive = True
             ctx.do_preemptive = True
             results.append(b)
-            ctx.update_skill_use(b.condition)
-            return results
+            return results, card_branches, combo_branches
 
         if b_type == ESAttackUpStatus:
             # This is a special case; it's not a terminal action unlike other enrages.
@@ -330,7 +440,7 @@ def loop_through(ctx, behaviors: List[ESBehavior]) -> List[ESBehavior]:
                     idx += 1
                     continue
 
-                if cond.use_chance() == 100 and b_type != ESDispel:
+                if cond.use_chance() == 100 and b_type not in [ESDispel]:
                     # This always executes so it is a terminal action.
                     if not ctx.check_skill_use(cond):
                         idx += 1
@@ -338,15 +448,14 @@ def loop_through(ctx, behaviors: List[ESBehavior]) -> List[ESBehavior]:
                     if not ctx.apply_skill_effects(b):
                         idx += 1
                         continue
-                    ctx.update_skill_use(cond)
                     results.append(b)
                     if b.is_conditional():
                         idx += 1
                         continue
-                    return results
+                    return results, card_branches, combo_branches
                 else:
                     # Not a terminal action, so accumulate it and continue.
-                    if ctx.check_skill_use(cond) and ctx.apply_skill_effects(b):
+                    if ctx.check_skill_use(cond) and ctx.check_no_apply_skill_effects(b):
                         results.append(b)
                     idx += 1
                     continue
@@ -355,7 +464,7 @@ def loop_through(ctx, behaviors: List[ESBehavior]) -> List[ESBehavior]:
                 if not ctx.apply_skill_effects(b):
                     idx += 1
                     continue
-                return results
+                return results, card_branches, combo_branches
 
         if b_type == ESBranchFlag:
             if b.branch_value == b.branch_value & ctx.flags:
@@ -372,7 +481,7 @@ def loop_through(ctx, behaviors: List[ESBehavior]) -> List[ESBehavior]:
             # if len(results) == 0:
             #     # if the result set is empty, add something
             #     results.append(default_attack())
-            return results
+            return results, card_branches, combo_branches
 
         if b_type == ESFlagOperation:
             # Operations which change flag state, we always move to the next behavior after.
@@ -427,7 +536,7 @@ def loop_through(ctx, behaviors: List[ESBehavior]) -> List[ESBehavior]:
             ctx.counter -= 1
             if ctx.counter > 0:
                 results.append(ESCountdownMessage(b.enemy_skill_id, ctx.counter))
-                return results
+                return results, card_branches, combo_branches
             else:
                 idx += 1
                 continue
@@ -449,9 +558,17 @@ def loop_through(ctx, behaviors: List[ESBehavior]) -> List[ESBehavior]:
             # Branch if it's checking for a card we have on the team.
             card_on_team = any([card in ctx.cards for card in b.branch_value])
             idx = b.target_round if card_on_team else idx + 1
+            card_branches.append(b.branch_value)
+            continue
+
+        if b_type == ESBranchCombo:
+            # Branch if we made the appropriate number of combos last round.
+            idx = b.target_round if ctx.combos >= b.branch_value else idx + 1
+            combo_branches.append(b.branch_value)
             continue
 
         if b_type == ESBranchRemainingEnemies:
+            # TODO: This should be <= probably
             if ctx.enemies == b.branch_value:
                 idx = b.target_round
             else:
@@ -462,23 +579,34 @@ def loop_through(ctx, behaviors: List[ESBehavior]) -> List[ESBehavior]:
 
     if iter_count == 1000:
         print('error, iter count exceeded 1000')
-    return results
+    return results, card_branches, combo_branches
 
 
 def info_from_behaviors(behaviors: List[ESBehavior]):
     """Extract some static info from the behavior list and clean it up where necessary."""
     base_abilities = []
+    death_actions = []
     hp_checkpoints = set()
     hp_checkpoints.add(100)
     hp_checkpoints.add(0)
     card_checkpoints = set()
     has_enemy_remaining_branch = False
 
+    # TODO: Null out useless on-death skills
+
     for idx, es in enumerate(behaviors):
         # Extract the passives and null them out to simplify processing
         if issubclass(type(es), ESPassive):
             base_abilities.append(es)
             behaviors[idx] = None
+            continue
+
+        # Extract death actions and null them out
+        if type(es) in [ESDeathCry, ESSkillSetOnDeath]:
+            death_actions.append(es)
+            behaviors[idx] = None
+            continue
+
 
         # Find candidate branch HP values
         if type(es) == ESBranchHP:
@@ -494,16 +622,16 @@ def info_from_behaviors(behaviors: List[ESBehavior]):
 
         # Find checks for specific cards.
         if type(es) == ESBranchCard:
-            card_checkpoints.update(es.branch_value)
+            card_checkpoints.add(tuple(es.branch_value))
 
         # Find checks for specific amounts of enemies.
-        if type(es) == ESBranchRemainingEnemies or type(es) == ESAttackUPRemainingEnemies:
+        if type(es) in [ESBranchRemainingEnemies, ESAttackUPRemainingEnemies, ESRecoverEnemyAlly]:
             has_enemy_remaining_branch = True
 
-    return base_abilities, hp_checkpoints, card_checkpoints, has_enemy_remaining_branch
+    return base_abilities, hp_checkpoints, card_checkpoints, has_enemy_remaining_branch, death_actions
 
 
-def extract_preemptives(ctx: Context, behaviors: List[Any]):
+def extract_preemptives(ctx: Context, behaviors: List[Any], card_checkpoints: Set[Tuple[int]]):
     """Simulate the initial run through the behaviors looking for preemptives.
 
     If we find a preemptive, continue onwards. If not, roll the context back.
@@ -511,12 +639,12 @@ def extract_preemptives(ctx: Context, behaviors: List[Any]):
     original_ctx = ctx.clone()
 
     cur_loop = loop_through(ctx, behaviors)
-    if ctx.is_preemptive:
-        # Save the current loop as preempt
-        return ctx, cur_loop
-    else:
+    if not ctx.is_preemptive:
         # Roll back the context.
         return original_ctx, None
+
+    # Save the current loop as preempt
+    return ctx, cur_loop
 
 
 def extract_turn_behaviors(ctx: Context, behaviors: List[ESBehavior], hp_checkpoint: int) -> List[List[ESBehavior]]:
@@ -525,8 +653,10 @@ def extract_turn_behaviors(ctx: Context, behaviors: List[ESBehavior], hp_checkpo
     hp_ctx.hp = hp_checkpoint
     turn_data = []
     for idx in range(0, 20):
+        started_enraged = hp_ctx.is_enraged()
         turn_data.append(loop_through(hp_ctx, behaviors))
-        ctx.turn_event()
+        enraged_this_turn = not started_enraged and hp_ctx.is_enraged()
+        hp_ctx.turn_event(enraged_this_turn)
 
     return turn_data
 
@@ -642,7 +772,7 @@ def compute_enemy_actions(ctx: Context, behaviors: List[ESBehavior], hp_checkpoi
 
 
 def convert(card: BookCard, enemy_behavior: List[ESBehavior],
-            level: int, enemy_skill_effect: int, enemy_skill_effect_type: int, force_one_enemy: bool=False):
+            level: int, enemy_skill_max_counter: int, enemy_skill_counter_increment: int, force_one_enemy: bool=False):
     skillset = ProcessedSkillset(level)
 
     # Behavior is 1-indexed, so stick a fake row in to start
@@ -652,29 +782,20 @@ def convert(card: BookCard, enemy_behavior: List[ESBehavior],
     if card.card_id in ZERO_INDEXED_MONSTERS:
         behaviors.pop(0)
 
-    base_abilities, hp_checkpoints, card_checkpoints, has_enemy_remaining_branch = info_from_behaviors(
-        behaviors)
+    (base_abilities, hp_checkpoints, card_checkpoints,
+     has_enemy_remaining_branch, death_actions) = info_from_behaviors(behaviors)
     skillset.base_abilities = base_abilities
+    skillset.death_actions = death_actions
 
     # Ensure the HP checkpoints are in descended order
     hp_checkpoints = sorted(hp_checkpoints, reverse=True)
-
-    # Pick the correct enemy_skill_effect model to use
-    if enemy_skill_effect_type == 0:
-        ctx = CTXCountdown(level, enemy_skill_effect)
-    elif enemy_skill_effect_type == 1:
-        ctx = CTXCounter(level, enemy_skill_effect)
-    else:
-        # ctx = Context(level)
-        # For now fall back to the old context implementation to prevent errors in log.
-        print('Incorrect context used')
-        ctx = CTXCountdown(level, enemy_skill_effect)
+    ctx = Context(level, enemy_skill_max_counter, enemy_skill_counter_increment)
 
     if force_one_enemy:
         ctx.enemies = 1
         has_enemy_remaining_branch = False
 
-    ctx, preemptives = extract_preemptives(ctx, behaviors)
+    ctx, preemptives = extract_preemptives(ctx, behaviors, card_checkpoints)
     if ctx is None:
         # Some monsters have no skillset at all
         return skillset

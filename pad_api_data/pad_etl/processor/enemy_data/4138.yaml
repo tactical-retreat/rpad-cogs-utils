@@ -7,8 +7,7 @@ monster_id: 4138
 monster_name_en: Nergigante
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -112,8 +111,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
@@ -130,8 +129,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Execute repeatedly. Turn 1
-  name_jp: Execute repeatedly. Turn 1
+  name_en: Turn 2
+  name_jp: Turn 2
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
@@ -148,8 +147,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 2
-  name_jp: Turn 2
+  name_en: Turn 3
+  name_jp: Turn 3
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
@@ -166,8 +165,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 3
-  name_jp: Turn 3
+  name_en: Loop to 1 after. Turn 4
+  name_jp: Loop to 1 after. Turn 4
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
@@ -184,24 +183,6 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Loop to 1 after. Turn 4
-  name_jp: Loop to 1 after. Turn 4
-  one_time: null
-  record_type_name: DIVIDER
-  usage_pct: null
-- !SkillRecord
-  desc_en: Deal 70% damage + Seal 1st row for 4 turns
-  desc_jp: Deal 70% damage + Seal 1st row for 4 turns
-  max_atk_pct: null
-  name_en: Tail Scythe + Annihilation Spike Whirl
-  name_jp: Tail Scythe + Annihilation Spike Whirl
-  one_time: 0
-  record_type_name: ACTION
-  usage_pct: 100
-- !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
   name_en: HP < 50
   name_jp: HP < 50
   one_time: null
@@ -211,8 +192,8 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
@@ -240,6 +221,24 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
+  name_en: Loop to 1 after. Turn 2
+  name_jp: Loop to 1 after. Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Enemy recover 10% hp + Deal 130% damage
+  desc_jp: Enemy recover 10% hp + Deal 130% damage
+  max_atk_pct: null
+  name_en: Spike Regeneration + Annihilation Fist
+  name_jp: Spike Regeneration + Annihilation Fist
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
   name_en: HP < 10
   name_jp: HP < 10
   one_time: null
@@ -256,22 +255,12 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# SkillSet:
-# 	[0] ESRecoverEnemy(86:8850) -> Spike Regeneration
-# 	Enemy recover 10% hp
-# 	[1] ESAttackMultihit(15:8851) -> Annihilation Fist
-# 	Deal 130% damage
-############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] true
-# [53] 1 -        1
-# [54] 1
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 1 - starting/max counter
+# [54] 1 - counter increment
 #
 ############################################################
 ### Raw Behavior

@@ -35,8 +35,8 @@ def parse_args():
 def process_card(mcard):
     enemy_behavior = mcard.enemy_behavior
     card = mcard.card
-    enemy_skill_effect = card.enemy_skill_effect
-    enemy_skill_effect_type = card.enemy_skill_effect_type
+    enemy_skill_max_counter = card.enemy_skill_max_counter
+    enemy_skill_counter_increment = card.enemy_skill_counter_increment
     if not enemy_behavior:
         return
 
@@ -44,17 +44,21 @@ def process_card(mcard):
     skill_listings = []
     used_actions = []
     for level in sorted(levels):
-        skillset = enemy_skillset_processor.convert(
-            card,
-            enemy_behavior,
-            level, enemy_skill_effect,
-            enemy_skill_effect_type,
-            force_one_enemy=(int(card.unknown_009) == 5))
-        flattened = enemy_skillset_dump.flatten_skillset(level, skillset)
-        if not flattened.records:
-            continue
-        used_actions.extend(debug_utils.extract_used_skills(skillset))
-        skill_listings.append(flattened)
+        try:
+            skillset = enemy_skillset_processor.convert(
+                card,
+                enemy_behavior,
+                level, enemy_skill_max_counter,
+                enemy_skill_counter_increment,
+                force_one_enemy=(int(card.unknown_009) == 5))
+            flattened = enemy_skillset_dump.flatten_skillset(level, skillset)
+            if not flattened.records:
+                continue
+            used_actions.extend(debug_utils.extract_used_skills(skillset))
+            skill_listings.append(flattened)
+        except Exception as ex:
+            if 'No loop' not in str(ex):
+                raise ex
 
     if not skill_listings:
         return
@@ -75,6 +79,8 @@ def process_card(mcard):
 
     enemy_skillset_dump.dump_summary_to_file(card, summary, enemy_behavior, unused_actions)
 
+    return len(unused_actions)
+
 
 def run(args):
     raw_input_dir = os.path.join(args.input_dir, 'raw')
@@ -85,21 +91,34 @@ def run(args):
     if args.interactive:
         fixed_card_id = input("enter a card id:").strip()
 
+    from collections import defaultdict
+    unused = defaultdict(int)
+
     count = 0
     for card in db.cards:
         if fixed_card_id and card.card.card_id != int(fixed_card_id):
             continue
         try:
             count += 1
-            if count % 50 == 0:
-                print('processing {} of {}'.format(count, len(db.cards)))
-            process_card(card)
+            # if count % 50 == 0:
+                # print('processing {} of {}'.format(count, len(db.cards)))
+            u = process_card(card)
+
+            if '**' not in card.card.name:
+                u = -1 if u is None else u
+                unused[u] += 1
+                if u >=5:
+                    print(u, card.card.card_id, card.card.name)
         except Exception as ex:
             print('failed to process', card.card.name)
             print(ex)
             if 'unsupported operation' not in str(ex):
                 import traceback
                 traceback.print_exc()
+
+    print('unused')
+    for k in sorted(unused.keys()):
+        print(k, unused[k])
 
 
 if __name__ == '__main__':

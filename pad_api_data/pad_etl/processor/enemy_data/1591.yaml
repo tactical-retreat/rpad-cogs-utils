@@ -7,8 +7,7 @@ monster_id: 1591
 monster_name_en: Flame Insect Dragon, Flammesickle
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 2 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 5
@@ -32,6 +31,24 @@ records:
   max_atk_pct: 200
   name_en: Crushing Jaws
   name_jp: Crushing Jaws
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Fire to Jammer, Deal 75% damage
+  desc_jp: Change Fire to Jammer, Deal 75% damage
+  max_atk_pct: 75
+  name_en: Fire Eating Sickle
+  name_jp: Fire Eating Sickle
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 70
+- !SkillRecord
+  desc_en: Deal 120% damage (3 hits, 40% each)
+  desc_jp: Deal 120% damage (3 hits, 40% each)
+  max_atk_pct: 120
+  name_en: Mantis Dragon Fist
+  name_jp: Mantis Dragon Fist
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
@@ -107,6 +124,24 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
+  desc_en: Change Fire to Jammer, Deal 75% damage
+  desc_jp: Change Fire to Jammer, Deal 75% damage
+  max_atk_pct: 75
+  name_en: Fire Eating Sickle
+  name_jp: Fire Eating Sickle
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 70
+- !SkillRecord
+  desc_en: Deal 120% damage (3 hits, 40% each)
+  desc_jp: Deal 120% damage (3 hits, 40% each)
+  max_atk_pct: 120
+  name_en: Mantis Dragon Fist
+  name_jp: Mantis Dragon Fist
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
@@ -153,22 +188,12 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# ESOrbChangeAttack(48:1505) -> Fire Eating Sickle
-# 	Condition: 70% chance (ai:70 rnd:0)
-# Change Fire to Jammer, Deal 75% damage
-# ESAttackMultihit(15:1507) -> Mantis Dragon Fist
-# Deal 120% damage (3 hits, 40% each)
-############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] false
-# [53] 0 -        0
-# [54] 0
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] false - use new AI
+# [53] 0 - starting/max counter
+# [54] 0 - counter increment
 #
 ############################################################
 ### Raw Behavior

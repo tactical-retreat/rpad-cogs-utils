@@ -7,8 +7,33 @@ monster_id: 3285
 monster_name_en: Psychopomp Princess of Oblivion, Grida
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 3 unused actions
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: On death
+  name_jp: On death
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Spawn random 3 Poison orbs
+  desc_jp: Spawn random 3 Poison orbs
+  max_atk_pct: null
+  name_en: I-I lost...*sniff*
+  name_jp: I-I lost...*sniff*
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 0
 
 ############################################################
 ### Data @ 4
@@ -17,6 +42,17 @@ warnings:
 level: 4
 overrides: []
 records:
+- !SkillRecord
+  desc_en: Player -99% HP + Voids status ailments for 5 turns, (if [2744] on team)
+    (Preemptive)
+  desc_jp: Player -99% HP + Voids status ailments for 5 turns, (if [2744] on team)
+    (Preemptive)
+  max_atk_pct: null
+  name_en: Uwahahaha! Respect my authority! + Sure, I'll let you go...if you win!
+  name_jp: Uwahahaha! Respect my authority! + Sure, I'll let you go...if you win!
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
 - !SkillRecord
   desc_en: Player -99% HP + Voids status ailments for 5 turns (Preemptive)
   desc_jp: Player -99% HP + Voids status ailments for 5 turns (Preemptive)
@@ -36,11 +72,11 @@ records:
   record_type_name: DIVIDER
   usage_pct: null
 - !SkillRecord
-  desc_en: Change 1st row to Jammer orbs, Deal 120% damage
-  desc_jp: Change 1st row to Jammer orbs, Deal 120% damage
-  max_atk_pct: 120
-  name_en: Scythe of Divine Judgment
-  name_jp: Scythe of Divine Judgment
+  desc_en: Do nothing, (if [1849] on team)
+  desc_jp: Do nothing, (if [1849] on team)
+  max_atk_pct: null
+  name_en: "Oh, hello Father\u266A"
+  name_jp: "Oh, hello Father\u266A"
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
@@ -117,6 +153,33 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
+  desc_en: Change Random 3 to Mortal Poison
+  desc_jp: Change Random 3 to Mortal Poison
+  max_atk_pct: null
+  name_en: '2'
+  name_jp: '2'
+  one_time: 2
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Random 3 to Mortal Poison
+  desc_jp: Change Random 3 to Mortal Poison
+  max_atk_pct: null
+  name_en: '1'
+  name_jp: '1'
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 2000% damage (2 hits, 1000% each)
+  desc_jp: Deal 2000% damage (2 hits, 1000% each)
+  max_atk_pct: 2000
+  name_en: Catastrophe
+  name_jp: Catastrophe
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
@@ -132,6 +195,24 @@ records:
   name_en: '2'
   name_jp: '2'
   one_time: 2
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Random 3 to Mortal Poison
+  desc_jp: Change Random 3 to Mortal Poison
+  max_atk_pct: null
+  name_en: '1'
+  name_jp: '1'
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 2000% damage (2 hits, 1000% each)
+  desc_jp: Deal 2000% damage (2 hits, 1000% each)
+  max_atk_pct: 2000
+  name_en: Catastrophe
+  name_jp: Catastrophe
+  one_time: 0
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -161,30 +242,41 @@ records:
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 2000% damage (2 hits, 1000% each)
+  desc_jp: Deal 2000% damage (2 hits, 1000% each)
+  max_atk_pct: 2000
+  name_en: Catastrophe
+  name_jp: Catastrophe
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: On death
+  name_jp: On death
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Spawn random 3 Poison orbs
+  desc_jp: Spawn random 3 Poison orbs
+  max_atk_pct: null
+  name_en: I-I lost...*sniff*
+  name_jp: I-I lost...*sniff*
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 0
 
-############################################################
-### Unused Actions
-############################################################
-# SkillSet:
-# 	[0] ESGravity(50:5955) -> Uwahahaha! Respect my authority!
-# 	Player -99% HP
-# 	[1] ESStatusShield(20:5972) -> Sure, I'll let you go...if you win!
-# 	Voids status ailments for 5 turns
-# ESInactivity(66:5959) -> Oh, hello Father♪
-# Do nothing
-# SkillSet:
-# 	Condition: On death (ai:0 rnd:0)
-# 	[0] ESRandomSpawn(92:5970) -> I-I lost...*sniff*
-# 	Spawn random 3 Poison orbs
 ############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] true
-# [53] 15 -     1111
-# [54] 0
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 15 - starting/max counter
+# [54] 0 - counter increment
 #
 ############################################################
 ### Raw Behavior
@@ -224,7 +316,7 @@ records:
 # [14] ESRowSpawnMulti(79:5960) -> Scythe of Divine Judgment
 # Change 1st row to Jammer orbs, Deal 120% damage
 # [15] ESInactivity(66:5959) -> Oh, hello Father♪
-# Do nothing
+# Do nothing, (if [1849] on team)
 # [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [17] ESRowSpawnMulti(79:5960) -> Scythe of Divine Judgment

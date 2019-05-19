@@ -107,9 +107,6 @@ def behavior_to_skillrecord(record_type: RecordType, action: Union[ESAction, ESS
     max_damage = None
     usage_pct = 100
     one_time = 0
-    if type(action) == ESSkillSet:
-        name = ' + '.join(map(lambda s: s.name, action.skill_list))
-        description = ' + '.join(map(lambda s: s.full_description(), action.skill_list))
 
     if issubclass(type(action), ESPassive):
         name = 'Ability'
@@ -285,6 +282,12 @@ def flatten_skillset(level: int, skillset: ProcessedSkillset) -> SkillRecordList
         records.append(create_divider("When {} enemy remains".format(er_moveset.count)))
         process_moveset(er_moveset)
 
+    for item in skillset.death_actions:
+        # We ignore death cries, and only output 'useful' skillsets on death
+        if type(item) == ESSkillSetOnDeath and item.has_action():
+            records.append(create_divider("On death"))
+            records.append(behavior_to_skillrecord(RecordType.ACTION, item))
+
     return SkillRecordListing(level=level, records=records)
 
 
@@ -381,12 +384,10 @@ def dump_summary_to_file(card: BookCard, enemy_summary: EnemySummary, enemy_beha
                 f.write('# {}\n'.format(behavior_str))
 
         f.write('{}\n'.format(_header('ES Modifiers')))
-        f.write('# [{}] {} - {:8b}\n'.format(9, card.unknown_009, card.unknown_009))
-        f.write('# [{}] {}\n'.format(52, 'true' if card.unknown_052 else 'false'))
-        f.write('# [{}] {} - {:8b}\n'.format(53, card.enemy_skill_effect, card.enemy_skill_effect))
-        f.write('# [{}] {}\n'.format(54, card.enemy_skill_effect_type))
-        f.write('# 53 is enemy_skill_modifier\n')
-        f.write('# 54 is enemy_skill_modifier_type\n')
+        f.write('# [{}] {} - monster size?\n'.format(9, card.unknown_009))
+        f.write('# [{}] {} - use new AI\n'.format(52, 'true' if card.unknown_052 else 'false'))
+        f.write('# [{}] {} - starting/max counter\n'.format(53, card.enemy_skill_max_counter))
+        f.write('# [{}] {} - counter increment\n'.format(54, card.enemy_skill_counter_increment))
 
         f.write('#\n')
 
@@ -443,7 +444,7 @@ def load_summary_as_dump_text(card: BookCard, monster_level: int, dungeon_atk_mo
         if row.usage_pct not in [100, 0, None]:
             desc += ' ({}% chance)'.format(row.usage_pct)
         if row.one_time and row.record_type_name != 'PREEMPT':
-            if card.enemy_skill_effect_type == 1:
+            if card.enemy_skill_counter_increment == 1:
                 desc += ' (every {} turns)'.format(row.one_time + 1)
             else:
                 desc += ' (1 time use)'

@@ -7,8 +7,7 @@ monster_id: 3834
 monster_name_en: Guardian Deity of the Sky City, Athena Helios
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 6 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -173,6 +172,51 @@ records:
   max_atk_pct: 250
   name_en: Left yourself wide open!
   name_jp: Left yourself wide open!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Spawn random 5 Jammer orbs, Deal 200% damage
+  desc_jp: Spawn random 5 Jammer orbs, Deal 200% damage
+  max_atk_pct: 200
+  name_en: Burn!
+  name_jp: Burn!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  max_atk_pct: null
+  name_en: Once again!
+  name_jp: Once again!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 25
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 75% for 1 turns
+  desc_jp: Reduce damage from all sources by 75% for 1 turns
+  max_atk_pct: null
+  name_en: Barrier!
+  name_jp: Barrier!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 33
+- !SkillRecord
+  desc_en: Random 2 orbs change every 1.0s for 1 turns, Deal 180% damage
+  desc_jp: Random 2 orbs change every 1.0s for 1 turns, Deal 180% damage
+  max_atk_pct: 180
+  name_en: Hyah!
+  name_jp: Hyah!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: 2x1 cloud appear for 1 turns at random location, Deal 190% damage
+  desc_jp: 2x1 cloud appear for 1 turns at random location, Deal 190% damage
+  max_atk_pct: 190
+  name_en: I don't think so!
+  name_jp: I don't think so!
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
@@ -436,35 +480,12 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# ESRandomSpawn(92:7892) -> Burn!
-# 	Condition: 50% chance & when Fire, Water, Wood, Light, Dark, Jammer, Poison, Mortal Poison orbs are on the board (ai:50 rnd:0)
-# Spawn random 5 Jammer orbs, Deal 200% damage
-# ESGravity(50:7893) -> Once again!
-# 	Condition: 25% chance (ai:25 rnd:0)
-# Player -99% HP
-# ESDamageShield(74:7894) -> Barrier!
-# 	Condition: 33% chance (ai:33 rnd:0)
-# Reduce damage from all sources by 75% for 1 turns
-# ESSpinnersRandom(109:7895) -> Hyah!
-# 	Condition: 50% chance (ai:50 rnd:0)
-# Random 2 orbs change every 1.0s for 1 turns, Deal 180% damage
-# ESCloud(104:7896) -> I don't think so!
-# 2x1 cloud appear for 1 turns at random location, Deal 190% damage
-# SkillSet:
-# 	Condition: On death (ai:0 rnd:0)
-# 	[0] ESInactivity(66:7901) -> I'm...finished...
-# 	Do nothing
-############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] true
-# [53] 127 -  1111111
-# [54] 0
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 127 - starting/max counter
+# [54] 0 - counter increment
 #
 ############################################################
 ### Raw Behavior

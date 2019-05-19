@@ -101,19 +101,19 @@ python3 ${EXEC_DIR}/padguide_processor.py \
 
 human_fixes_check
 
-echo "exporting wave data"
-python3 ${EXEC_DIR}/dungeon_wave_exporter.py \
-  --db_config=${EXEC_DIR}/db_config.json \
-  --processed_dir=${DATA_DIR}/processed
+#echo "exporting wave data"
+#python3 ${EXEC_DIR}/dungeon_wave_exporter.py \
+#  --db_config=${EXEC_DIR}/db_config.json \
+#  --processed_dir=${DATA_DIR}/processed
 
-echo "updating padguide_dev"
-python3 ${EXEC_DIR}/padguide_processor.py \
-  --input_dir=${DATA_DIR}/raw \
-  --output_dir=${DATA_DIR}/processed \
-  --db_config=${EXEC_DIR}/db_config_dev.json \
-  --doupdates \
-  --dev \
-  --skipintermediate
+#echo "updating padguide_dev"
+#python3 ${EXEC_DIR}/padguide_processor.py \
+#  --input_dir=${DATA_DIR}/raw \
+#  --output_dir=${DATA_DIR}/processed \
+#  --db_config=${EXEC_DIR}/db_config_dev.json \
+#  --doupdates \
+#  --dev \
+#  --skipintermediate
 
 echo "serializing padguide"
 python3 ${EXEC_DIR}/extract_padguide_db.py \

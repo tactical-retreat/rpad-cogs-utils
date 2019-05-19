@@ -7,8 +7,7 @@ monster_id: 2701
 monster_name_en: Squad 12 Captain, Mayuri Kurotsuchi
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 2 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -116,6 +115,17 @@ records:
   record_type_name: DIVIDER
   usage_pct: null
 - !SkillRecord
+  desc_en: Do nothing + Do nothing + Spawn random 6 Poison orbs, (if [2682, 2683]
+    on team)
+  desc_jp: Do nothing + Do nothing + Spawn random 6 Poison orbs, (if [2682, 2683]
+    on team)
+  max_atk_pct: null
+  name_en: Don't get carried away!!!! + Bankai + Konjiki Ashisogijizo
+  name_jp: Don't get carried away!!!! + Bankai + Konjiki Ashisogijizo
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
   desc_en: Do nothing + Spawn random 6 Poison orbs
   desc_jp: Do nothing + Spawn random 6 Poison orbs
   max_atk_pct: null
@@ -151,30 +161,32 @@ records:
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: On death
+  name_jp: On death
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change 5th row to Water orbs
+  desc_jp: Change 5th row to Water orbs
+  max_atk_pct: null
+  name_en: That was a close one... Goodbye.
+  name_jp: That was a close one... Goodbye.
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
 
-############################################################
-### Unused Actions
-############################################################
-# SkillSet:
-# 	[0] ESInactivity(66:2789) -> Don't get carried away!!!!
-# 	Do nothing
-# 	[1] ESInactivity(66:2862) -> Bankai
-# 	Do nothing
-# 	[2] ESRandomSpawn(92:2784) -> Konjiki Ashisogijizo
-# 	Spawn random 6 Poison orbs
-# SkillSet:
-# 	Condition: On death (ai:100 rnd:0)
-# 	[0] ESRowSpawnMulti(78:2787) -> That was a close one... Goodbye.
-# 	Change 5th row to Water orbs
 ############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] true
-# [53] 1 -        1
-# [54] 1
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 1 - starting/max counter
+# [54] 1 - counter increment
 #
 ############################################################
 ### Raw Behavior

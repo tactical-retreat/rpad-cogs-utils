@@ -7,8 +7,7 @@ monster_id: 2879
 monster_name_en: Destroying Thunder Dragon, Dorva
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -63,6 +62,17 @@ records:
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
+- !SkillRecord
+  desc_en: Blind all orbs on the board + Change all orbs to Fire, Water, Dark, Heal,
+    Deal 150% damage, (if [1948, 1949, 2745] on team)
+  desc_jp: Blind all orbs on the board + Change all orbs to Fire, Water, Dark, Heal,
+    Deal 150% damage, (if [1948, 1949, 2745] on team)
+  max_atk_pct: null
+  name_en: I recognize the strength of your wish + Sunset Zone
+  name_jp: I recognize the strength of your wish + Sunset Zone
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
 - !SkillRecord
   desc_en: Blind all orbs on the board + Change all orbs to Fire, Water, Dark, Heal,
     Deal 150% damage
@@ -228,22 +238,12 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# SkillSet:
-# 	[0] ESBlind(5:4689) -> I recognize the strength of your wish
-# 	Blind all orbs on the board
-# 	[1] ESBoardChangeAttackBits(85:4686) -> Sunset Zone
-# 	Change all orbs to Fire, Water, Dark, Heal, Deal 150% damage
-############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] true
-# [53] 1 -        1
-# [54] 0
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 1 - starting/max counter
+# [54] 0 - counter increment
 #
 ############################################################
 ### Raw Behavior

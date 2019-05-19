@@ -7,8 +7,7 @@ monster_id: 4091
 monster_name_en: Iori Yagami
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 2 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -17,6 +16,15 @@ warnings:
 level: 1
 overrides: []
 records:
+- !SkillRecord
+  desc_en: Do nothing, (if [4076, 4077, 4078] on team) (Preemptive)
+  desc_jp: Do nothing, (if [4076, 4077, 4078] on team) (Preemptive)
+  max_atk_pct: null
+  name_en: Then let it burn, as it demands.
+  name_jp: Then let it burn, as it demands.
+  one_time: 1
+  record_type_name: PREEMPT
+  usage_pct: 100
 - !SkillRecord
   desc_en: Do nothing (Preemptive)
   desc_jp: Do nothing (Preemptive)
@@ -28,24 +36,12 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# ESInactivity(66:8678) -> Then let it burn, as it demands.
-# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
-# Do nothing
-# SkillSet:
-# 	Condition: On death (ai:0 rnd:0)
-# 	[0] ESInactivity(66:8675) -> It can't end like this!
-# 	Do nothing
-############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] true
-# [53] 1 -        1
-# [54] 0
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 1 - starting/max counter
+# [54] 0 - counter increment
 #
 ############################################################
 ### Raw Behavior
@@ -67,7 +63,7 @@ records:
 # Do nothing
 # [8] ESInactivity(66:8678) -> Then let it burn, as it demands.
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
-# Do nothing
+# Do nothing, (if [4076, 4077, 4078] on team)
 # [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [10] SkillSet:

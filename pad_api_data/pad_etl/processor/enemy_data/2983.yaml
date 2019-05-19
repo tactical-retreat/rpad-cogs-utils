@@ -7,8 +7,7 @@ monster_id: 2983
 monster_name_en: Awoken Kushinadahime
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 2 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -25,6 +24,32 @@ records:
   name_jp: Ability
   one_time: 0
   record_type_name: PASSIVE
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Absorb combo <= 6 damage for 999 turns + Voids status ailments for 999
+    turns + Movetime 25% for 6 turns, (if [2323] on team) (Preemptive)
+  desc_jp: Absorb combo <= 6 damage for 999 turns + Voids status ailments for 999
+    turns + Movetime 25% for 6 turns, (if [2323] on team) (Preemptive)
+  max_atk_pct: null
+  name_en: You ate my dango, didn't you! + Blessed Harvest + Vines get in the way
+    of the puzzle!
+  name_jp: You ate my dango, didn't you! + Blessed Harvest + Vines get in the way
+    of the puzzle!
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Absorb combo <= 6 damage for 999 turns + Voids status ailments for 999
+    turns + Movetime 25% for 6 turns, (if [2322] on team) (Preemptive)
+  desc_jp: Absorb combo <= 6 damage for 999 turns + Voids status ailments for 999
+    turns + Movetime 25% for 6 turns, (if [2322] on team) (Preemptive)
+  max_atk_pct: null
+  name_en: Frightened and on the verge of tears + Blessed Harvest + Vines get in the
+    way of the puzzle!
+  name_jp: Frightened and on the verge of tears + Blessed Harvest + Vines get in the
+    way of the puzzle!
+  one_time: 0
+  record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
   desc_en: Absorb combo <= 6 damage for 999 turns + Voids status ailments for 999
@@ -108,31 +133,12 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# SkillSet:
-# 	[0] ESAbsorbCombo(67:6374) -> You ate my dango, didn't you!
-# 	Absorb combo <= 6 damage for 999 turns
-# 	[1] ESStatusShield(20:6379) -> Blessed Harvest
-# 	Voids status ailments for 999 turns
-# 	[2] ESDebuffMovetime(39:6371) -> Vines get in the way of the puzzle!
-# 	Movetime 25% for 6 turns
-# SkillSet:
-# 	[0] ESAbsorbCombo(67:6377) -> Frightened and on the verge of tears
-# 	Absorb combo <= 6 damage for 999 turns
-# 	[1] ESStatusShield(20:6379) -> Blessed Harvest
-# 	Voids status ailments for 999 turns
-# 	[2] ESDebuffMovetime(39:6371) -> Vines get in the way of the puzzle!
-# 	Movetime 25% for 6 turns
-############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] true
-# [53] 1 -        1
-# [54] 0
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 1 - starting/max counter
+# [54] 0 - counter increment
 #
 ############################################################
 ### Raw Behavior

@@ -7,8 +7,7 @@ monster_id: 825
 monster_name_en: Godly Knight of the Sky, Verche
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 2 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -50,6 +49,24 @@ records:
   max_atk_pct: 220
   name_en: Conviction
   name_jp: Conviction
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change Dark to Jammer, Deal 110% damage
+  desc_jp: Change Dark to Jammer, Deal 110% damage
+  max_atk_pct: 110
+  name_en: Justice Spear
+  name_jp: Justice Spear
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Spawn random 4 Light orbs, Deal 90% damage
+  desc_jp: Spawn random 4 Light orbs, Deal 90% damage
+  max_atk_pct: 90
+  name_en: Force Lightning
+  name_jp: Force Lightning
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
@@ -109,22 +126,12 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# ESOrbChangeAttack(48:4344) -> Justice Spear
-# Change Dark to Jammer, Deal 110% damage
-# ESRandomSpawn(92:4349) -> Force Lightning
-# 	Condition: When fire, water, wood, dark, heal, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
-# Spawn random 4 Light orbs, Deal 90% damage
-############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] true
-# [53] 1 -        1
-# [54] 0
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 1 - starting/max counter
+# [54] 0 - counter increment
 #
 ############################################################
 ### Raw Behavior

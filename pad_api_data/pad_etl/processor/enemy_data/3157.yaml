@@ -8,7 +8,7 @@ monster_name_en: Flash Machine Emperor, Another Crusader
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings:
-- Found 2 unused actions
+- Found 1 unused actions
 
 ############################################################
 ### Data @ 1
@@ -79,6 +79,15 @@ records:
   max_atk_pct: 100
   name_en: Sturm Wind
   name_jp: Sturm Wind
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Change 3rd, 4th column to Water, Wood, Poison orbs, Deal 150% damage
+  desc_jp: Change 3rd, 4th column to Water, Wood, Poison orbs, Deal 150% damage
+  max_atk_pct: 150
+  name_en: Wirbel Lanze
+  name_jp: Wirbel Lanze
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
@@ -161,17 +170,13 @@ records:
 # ESDebuffMovetime(39:5381) -> Zeit Radieren
 # 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 2)
 # Movetime 25% for 5 turns
-# ESColumnSpawnMulti(77:5383) -> Wirbel Lanze
-# Change 3rd, 4th column to Water, Wood, Poison orbs, Deal 150% damage
 ############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] true
-# [53] 3 -       11
-# [54] 0
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 3 - starting/max counter
+# [54] 0 - counter increment
 #
 ############################################################
 ### Raw Behavior

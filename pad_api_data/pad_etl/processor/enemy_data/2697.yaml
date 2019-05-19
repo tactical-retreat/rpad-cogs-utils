@@ -7,8 +7,7 @@ monster_id: 2697
 monster_name_en: Squad 11, 3rd Seat, Ikkaku Madarame
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 2 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -39,6 +38,17 @@ records:
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
+- !SkillRecord
+  desc_en: Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer orbs, (if [2675,
+    2676, 2677, 3353, 3354] on team)
+  desc_jp: Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer orbs, (if [2675,
+    2676, 2677, 3353, 3354] on team)
+  max_atk_pct: null
+  name_en: Well, "ichi", what say we be friends!
+  name_jp: Well, "ichi", what say we be friends!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
 - !SkillRecord
   desc_en: Player -70% HP
   desc_jp: Player -70% HP
@@ -124,25 +134,32 @@ records:
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: On death
+  name_jp: On death
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Blind all orbs on the board
+  desc_jp: Blind all orbs on the board
+  max_atk_pct: null
+  name_en: I'm not so lucky after all.
+  name_jp: I'm not so lucky after all.
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
 
-############################################################
-### Unused Actions
-############################################################
-# ESOrbLock(94:2758) -> Well, "ichi", what say we be friends!
-# Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer orbs
-# SkillSet:
-# 	Condition: On death (ai:100 rnd:0)
-# 	[0] ESBlind(5:2821) -> I'm not so lucky after all.
-# 	Blind all orbs on the board
 ############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] true
-# [53] 0 -        0
-# [54] 0
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 0 - starting/max counter
+# [54] 0 - counter increment
 #
 ############################################################
 ### Raw Behavior
@@ -190,7 +207,7 @@ records:
 # [19] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
 # [20] ESOrbLock(94:2758) -> Well, "ichi", what say we be friends!
-# Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer orbs
+# Lock 3 random Fire, Water, Wood, Light, Dark, Heal, Jammer orbs, (if [2675, 2676, 2677, 3353, 3354] on team)
 # [21] SkillSet:
 # 	Condition: On death (ai:100 rnd:0)
 # 	[0] ESBlind(5:2821) -> I'm not so lucky after all.

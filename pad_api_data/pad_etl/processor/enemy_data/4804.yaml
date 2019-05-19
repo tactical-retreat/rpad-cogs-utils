@@ -7,8 +7,7 @@ monster_id: 4804
 monster_name_en: Rising Dragon Caller, Omega
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 2 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -17,6 +16,15 @@ warnings:
 level: 1
 overrides: []
 records:
+- !SkillRecord
+  desc_en: Blind all orbs for 10 turns, (if [4796, 4797] on team) (Preemptive)
+  desc_jp: Blind all orbs for 10 turns, (if [4796, 4797] on team) (Preemptive)
+  max_atk_pct: null
+  name_en: Huh, oh, Suou?!...
+  name_jp: Huh, oh, Suou?!...
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
 - !SkillRecord
   desc_en: Blind all orbs for 10 turns (Preemptive)
   desc_jp: Blind all orbs for 10 turns (Preemptive)
@@ -183,23 +191,12 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# ESBlindStickyRandom(97:11163) -> Huh, oh, Suou?!...
-# Blind all orbs for 10 turns
-# SkillSet:
-# 	Condition: On death (ai:0 rnd:0)
-# 	[0] ESInactivity(66:11174) -> Oh, you are not an intruder?!...
-# 	Do nothing
-############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] true
-# [53] 1 -        1
-# [54] 1
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 1 - starting/max counter
+# [54] 1 - counter increment
 #
 ############################################################
 ### Raw Behavior
@@ -215,7 +212,7 @@ records:
 # [5] ESBlindStickyRandom(97:11162) -> W-Well, you can't get through!...
 # Blind all orbs for 10 turns
 # [6] ESBlindStickyRandom(97:11163) -> Huh, oh, Suou?!...
-# Blind all orbs for 10 turns
+# Blind all orbs for 10 turns, (if [4796, 4797] on team)
 # [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [8] ESBranchHP(28:18) -> ESBranchHP

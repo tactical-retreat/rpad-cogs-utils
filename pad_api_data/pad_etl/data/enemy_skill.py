@@ -12,7 +12,6 @@ FILE_NAME = 'download_enemy_skill_data.json'
 class EnemySkill(pad_util.JsonDictEncodable):
 
     def __init__(self, raw: List[Any]):
-        from builtins import int
         self.enemy_skill_id = int(raw[0])
         self.name = raw[1]
         self.type = int(raw[2])

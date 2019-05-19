@@ -438,6 +438,9 @@ class ESCondition(object):
         if self.hp_threshold and self._ai == 0:
             self.hp_threshold = None
 
+        # If set, this only executes when a specified number of enemies remain.
+        self.enemies_remaining = None
+
     def use_chance(self):
         """Returns the likelyhood that this condition will be used.
 
@@ -477,17 +480,22 @@ class ESBehavior(object):
         self.name = name(skill)
         self.type = es_type(skill)
         self.description = None
+        # This might be filled in during the processing step
+        self.extra_description = None
 
 # Action
 class ESAction(ESBehavior):
     def full_description(self):
+        output = self.description
         if self.description == 'Enemy action':
-            return self.attack.description
-        else:
-            output = self.description
-            if self.attack:
-                output += ', {:s}'.format(self.attack.description)
-            return output
+            output = self.attack.description
+        elif self.attack:
+            output += ', {:s}'.format(self.attack.description)
+
+        if self.extra_description:
+            output += ', {:s}'.format(self.extra_description)
+
+        return output
 
     def __eq__(self, other):
         return other and self.enemy_skill_id == other.enemy_skill_id
@@ -674,6 +682,10 @@ class ESOrbChange(ESAction):
             description=Describe.orb_change(self.orb_from, self.orb_to)
         )
 
+    def is_conditional(self):
+        return self.orb_from.lower() != 'random'
+
+
 class ESOrbChangeConditional(ESOrbChange):
     """Parent class for orb changes that may not execute."""
 
@@ -731,6 +743,9 @@ class ESPoisonChangeRandom(ESOrbChange):
         self.random_count = int(params(skill)[1])
         from_attr = 'Random {:d}'.format(self.random_count)
         to_attr = ATTRIBUTE_MAP[7]
+        # TODO: This skill (and possibly others) seem to have an 'excludes hearts'
+        # clause; either it's innate to this skill, or it's in params[2] (many monsters have
+        # a 1 in that slot, not all though).
         super().__init__(skill, from_attr, to_attr)
 
 
@@ -757,6 +772,9 @@ class ESPoisonChangeRandomAttack(ESOrbChangeAttack):
         from_attr = 'Random {:d}'.format(self.random_count)
         to_attr = ATTRIBUTE_MAP[7]
         super().__init__(skill, orb_from=from_attr, orb_to=to_attr)
+
+    def is_conditional(self):
+        return False
 
 
 class ESBlind(ESAction):
@@ -834,6 +852,7 @@ class ESRecoverEnemyAlly(ESRecover):
         super().__init__(skill, target='enemy ally')
         if self.condition:
             self.condition.description = 'When enemy ally is killed'
+            self.condition.enemies_remaining = 1
 
 
 class ESRecoverPlayer(ESRecover):
@@ -1200,6 +1219,7 @@ class ESRandomSpawn(ESAction):
         self.count = params(skill)[1]
         self.attributes = attribute_bitmap(params(skill)[2])
         self.condition_attributes = attribute_bitmap(params(skill)[3], inverse=True)
+
         super().__init__(
             skill,
             effect='random_orb_spawn',
@@ -1213,6 +1233,9 @@ class ESRandomSpawn(ESAction):
                 self.condition.description = Describe.attribute_exists(
                     self.condition_attributes).capitalize()
 
+
+    def is_conditional(self):
+        return len(self.condition_attributes or []) < 6
 
 class ESBombRandomSpawn(ESAction):
     def __init__(self, skill: EnemySkillRef):
@@ -1300,6 +1323,14 @@ class ESSkillSet(ESAction):
             description='Perform multiple skills'
         )
 
+        self.name = ' + '.join(map(lambda s: s.name, self.skill_list))
+
+    def full_description(self):
+        output = ' + '.join(map(lambda s: s.full_description(), self.skill_list))
+        if self.extra_description:
+            output += ', {:s}'.format(self.extra_description)
+        return output
+
     def ends_battle(self):
         return any([s.ends_battle() for s in self.skill_list])
 
@@ -1308,6 +1339,16 @@ class ESSkillSetOnDeath(ESSkillSet):
         super().__init__(skill)
         if self.condition:
             self.condition.description = 'On death'
+
+    def has_action(self) -> bool:
+        """Helper that determines if the skillset does stuff other than emote."""
+        for x in self.skill_list:
+            if type(x) == ESSkillSet:
+                if any([type(y) != ESInactivity for y in x.skill_list]):
+                    return True
+            elif type(x) != ESInactivity:
+                return True
+        return False
 
 
 class ESSkillDelay(ESAction):
@@ -1330,6 +1371,9 @@ class ESOrbLock(ESAction):
             effect='orb_lock',
             description=Describe.orb_lock(self.count, self.attributes)
         )
+
+    def is_conditional(self):
+        return self.attributes != ['random'] and len(self.attributes) != 9
 
 
 class ESOrbSeal(ESAction):
@@ -1702,7 +1746,7 @@ class ESBranchCard(ESBranch):
 
 class ESBranchCombo(ESBranch):
     def __init__(self, skill: EnemySkillRef):
-        super().__init__(skill, branch_condition='combo', compare='>')
+        super().__init__(skill, branch_condition='combo', compare='>=')
 
 
 class ESBranchRemainingEnemies(ESBranch):
@@ -1853,8 +1897,8 @@ def inject_implicit_onetime(card: BookCard, behavior: List[ESAction]):
     TODO: Investigate if this has an ai/rnd interaction, like the hp_threshold issue.
     There may be some interaction with slots 52/53/54 to take into account but unclear.
     """
-    if card.enemy_skill_effect_type != 0:
-        # This only seems to apply to type 0 monsters
+    if card.enemy_skill_counter_increment != 0:
+        # This seems unlikely to be correct.
         return
     max_flag = max([0] + [x.condition.one_time for x in behavior if hasattr(x, 'condition') and x.condition.one_time])
     next_flag = pow(2, ceil(log(max_flag + 1)/log(2)))

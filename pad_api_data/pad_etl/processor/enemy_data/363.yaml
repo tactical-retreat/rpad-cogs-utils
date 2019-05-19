@@ -7,8 +7,7 @@ monster_id: 363
 monster_name_en: Awoken Odin
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -112,6 +111,17 @@ records:
   record_type_name: DIVIDER
   usage_pct: null
 - !SkillRecord
+  desc_en: Movetime -1s for 7 turns + Player -99% HP, (if [2640, 2641, 2899, 2900]
+    on team)
+  desc_jp: Movetime -1s for 7 turns + Player -99% HP, (if [2640, 2641, 2899, 2900]
+    on team)
+  max_atk_pct: null
+  name_en: I am not...going to lose! + Hnikar
+  name_jp: I am not...going to lose! + Hnikar
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
   desc_en: Movetime -1s for 7 turns + Player -99% HP
   desc_jp: Movetime -1s for 7 turns + Player -99% HP
   max_atk_pct: null
@@ -176,22 +186,12 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# SkillSet:
-# 	[0] ESDebuffMovetime(39:6138) -> I am not...going to lose!
-# 	Movetime -1s for 7 turns
-# 	[1] ESGravity(50:6129) -> Hnikar
-# 	Player -99% HP
-############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] true
-# [53] 1 -        1
-# [54] 1
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 1 - starting/max counter
+# [54] 1 - counter increment
 #
 ############################################################
 ### Raw Behavior

@@ -124,6 +124,9 @@ def flatten_data(wave_data, dungeon_data, db, limit_floor_id=None):
                 monster_id = monster_info[0]
                 monster_level = monster_info[1]
                 card = db.raw_card_by_id(monster_id)
+                if not card:
+                    output += '\nCould not find monster {} @ level {}'.format(monster_id, monster_level)
+                    continue
                 output += '\n{} - {} @ level {}'.format(monster_id, card.name, monster_level)
                 output += '\n{}'.format(esd.load_summary_as_dump_text(card, monster_level, floor.modifiers_clean['atk']))
 

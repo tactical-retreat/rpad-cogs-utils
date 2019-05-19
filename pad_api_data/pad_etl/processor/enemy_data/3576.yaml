@@ -7,8 +7,7 @@ monster_id: 3576
 monster_name_en: Seventh Dragon Caller, Shapeshifter Wallace
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -146,6 +145,17 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
+  desc_en: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
+    orbs, Deal 300% damage
+  desc_jp: Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
+    orbs, Deal 300% damage
+  max_atk_pct: 300
+  name_en: Thousand-Blade Strike
+  name_jp: Thousand-Blade Strike
+  one_time: 8
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
@@ -269,20 +279,12 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# ESOrbLock(94:6906) -> Thousand-Blade Strike
-# 	Condition: One-time use (ai:100 rnd:0) (one-time: 8)
-# Lock all Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 300% damage
-############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] true
-# [53] 1023 - 1111111111
-# [54] 0
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 1023 - starting/max counter
+# [54] 0 - counter increment
 #
 ############################################################
 ### Raw Behavior

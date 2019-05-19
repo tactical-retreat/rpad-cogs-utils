@@ -1,0 +1,244 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 103180
+monster_name_en: Omnipresent Earth Blade, Shintetsu Ryokaku
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Enemy turn counter change to 1 when HP <= 75%
+  desc_jp: Enemy turn counter change to 1 when HP <= 75%
+  max_atk_pct: null
+  name_en: Ability
+  name_jp: Ability
+  one_time: 0
+  record_type_name: PASSIVE
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Survive attacks with 1 HP when HP > 50%
+  desc_jp: Survive attacks with 1 HP when HP > 50%
+  max_atk_pct: null
+  name_en: Ability
+  name_jp: Ability
+  one_time: 0
+  record_type_name: PASSIVE
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Specific orbs change every 1.0s for 10 turns + Absorb combo <= 6 damage
+    for 20 turns (Preemptive)
+  desc_jp: Specific orbs change every 1.0s for 10 turns + Absorb combo <= 6 damage
+    for 20 turns (Preemptive)
+  max_atk_pct: null
+  name_en: Bewitching Forest + Creation of the Universe
+  name_jp: Bewitching Forest + Creation of the Universe
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Deal 240% damage (6 hits, 40% each)
+  desc_jp: Deal 240% damage (6 hits, 40% each)
+  max_atk_pct: 240
+  name_en: Double-Edge of Creation
+  name_jp: Double-Edge of Creation
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 75
+  name_jp: HP <= 75
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Player -99% HP
+  desc_jp: Player -99% HP
+  max_atk_pct: null
+  name_en: Hunting Cyclone
+  name_jp: Hunting Cyclone
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 33
+- !SkillRecord
+  desc_en: Change 6th column to Wood orbs, Deal 95% damage
+  desc_jp: Change 6th column to Wood orbs, Deal 95% damage
+  max_atk_pct: 95
+  name_en: Savage Crunch
+  name_jp: Savage Crunch
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Deal 105% damage (3 hits, 35% each)
+  desc_jp: Deal 105% damage (3 hits, 35% each)
+  max_atk_pct: 105
+  name_en: Wild Flurry
+  name_jp: Wild Flurry
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 75
+  name_jp: HP < 75
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns
+  desc_jp: Voids status ailments for 999 turns
+  max_atk_pct: null
+  name_en: Fighting Spirit Enhancement
+  name_jp: Fighting Spirit Enhancement
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 15
+  name_jp: HP < 15
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind awoken skills for 5 turns + Increase damage to 150% for the next 999
+    turns
+  desc_jp: Bind awoken skills for 5 turns + Increase damage to 150% for the next 999
+    turns
+  max_atk_pct: 150
+  name_en: Parrying Stance + Double-Edge Stance
+  name_jp: Parrying Stance + Double-Edge Stance
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Enemy is defeated
+  name_jp: Enemy is defeated
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Enemy recover 50% hp + Delay active skills by 5 turns
+  desc_jp: Enemy recover 50% hp + Delay active skills by 5 turns
+  max_atk_pct: null
+  name_en: Mind Concentration + Mighty Roar
+  name_jp: Mind Concentration + Mighty Roar
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 1 - starting/max counter
+# [54] 1 - counter increment
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [4] SkillSet:
+# 	[0] ESSpinnersFixed(110:12848) -> Bewitching Forest
+# 	Specific orbs change every 1.0s for 10 turns
+# 	[1] ESAbsorbCombo(67:12849) -> Creation of the Universe
+# 	Absorb combo <= 6 damage for 20 turns
+# [5] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [6] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 1, target rnd 24
+# [7] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 15, target rnd 18
+# [8] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 75, target rnd 14
+# [9] ESBranchHP(29:19) -> ESBranchHP
+# Branch on hp > 76, target rnd 22
+# [10] ESGravity(50:12852) -> Hunting Cyclone
+# 	Condition: One-time use (ai:33 rnd:0) (one-time: 1)
+# Player -99% HP
+# [11] ESColumnSpawnMulti(77:12850) -> Savage Crunch
+# 	Condition: 50% chance (ai:0 rnd:50)
+# Change 6th column to Wood orbs, Deal 95% damage
+# [12] ESAttackMultihit(15:12851) -> Wild Flurry
+# 	Condition: 50% chance (ai:0 rnd:50)
+# Deal 105% damage (3 hits, 35% each)
+# [13] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 10
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [16] ESStatusShield(20:12853) -> Fighting Spirit Enhancement
+# Voids status ailments for 999 turns
+# [17] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [18] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 4, target rnd 22
+# [19] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b111
+# [20] SkillSet:
+# 	[0] ESBindAwoken(88:12855) -> Parrying Stance
+# 	Bind awoken skills for 5 turns
+# 	[1] ESAttackUPRemainingEnemies(17:12856) -> Double-Edge Stance
+# 	Increase damage to 150% for the next 999 turns
+# [21] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [22] ESAttackMultihit(15:12857) -> Double-Edge of Creation
+# Deal 240% damage (6 hits, 40% each)
+# [23] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [24] SkillSet:
+# 	[0] ESRecoverEnemy(86:12859) -> Mind Concentration
+# 	Enemy recover 50% hp
+# 	[1] ESSkillDelay(89:12860) -> Mighty Roar
+# 	Delay active skills by 5 turns
+# [25] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [26] ESTurnChangePassive(106:12846) -> Enemy's next turn changed
+# Enemy turn counter change to 1 when HP <= 75%
+# [27] ESResolve(73:12861) -> Resolve
+# Survive attacks with 1 HP when HP > 50%

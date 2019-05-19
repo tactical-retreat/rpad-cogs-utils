@@ -6,12 +6,16 @@ stage 0
 Battle Initiation
 Reduce damage from all sources by 50% for 5 turns (Preemptive)
 ----- When HP is full -----
+----- Turn 1 -----
+Homogeneity Check
+Player recover 100% hp, (if [1947, 1949] on team) (1 time use)
 Illusory Faith Theatre
 27945 Damage - Bind 4 random for 2 turns, Deal 120% damage
 ----- When HP is not full -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 Elemental Turn
 27945 Damage - Change own attribute to random one of Fire, Water, Wood, Light, Dark, Deal 120% damage (1 time use)
+----- Loop to 1 after. Turn 2 -----
 Allegro Step
 34931 Damage - Deal 150% damage (3 hits, 50% each)
 ----- HP < 80 -----
@@ -22,9 +26,10 @@ Rondo
 23287 Damage - Change 1st, 3rd, 5th, 7th column to Fire, Water, Wood, Light, Dark orbs, 2nd, 4th, 6th column to Jammer, Poison orbs, Deal 100% damage (33% chance)
 Requiem
 Delay active skills by 3 turns (34% chance)
------ Turn 2 -----
+----- Execute repeatedly. Turn 1 -----
 Elemental Turn
 27945 Damage - Change own attribute to random one of Fire, Water, Wood, Light, Dark, Deal 120% damage (1 time use)
+----- Loop to 1 after. Turn 2 -----
 Arabesque Repair
 18630 Damage - Enemy recover 30% hp, Deal 80% damage (20% chance)
 Allegro Step
@@ -33,6 +38,8 @@ Allegro Step
 ----- Turn 1 -----
 Preparation
 30274 Damage - Delay active skills by 1 turns, Deal 130% damage
+Elimination of all of Master's Enemies
+232877 Damage - Deal 1000% damage, (if [1951, 1953, 2069, 2263, 2206] on team)
 Sudden Curtain Call
 232877 Damage - Deal 1000% damage
 
@@ -51,6 +58,8 @@ Drehung Klinge
 35645 Damage - Change all orbs to Jammer, Deal 150% damage (50% chance)
 Windhose
 Change all orbs to Mortal Poison
+Blitz Lanze
+40398 Damage - Change 3rd, 4th column to Light, Heal orbs, Deal 170% damage
 ----- HP < 70 -----
 ----- Turn 1-3 -----
 Licht Regen
@@ -98,12 +107,11 @@ Death Claw
 21196 Damage - Change Random to Poison, Deal 110% damage (50% chance)
 Crushing Claw
 21196 Damage - Change Random to Jammer, Deal 110% damage
------ Turn 2 -----
+----- Loop to 1 after. Turn 2 -----
 Evil Hold
 23123 Damage - Lock all Jammer, Poison orbs, Deal 120% damage (50% chance)
 Element Hold
 23123 Damage - Lock 7 random Fire, Water, Wood, Light, Dark, Heal orbs, Deal 120% damage
------ Loop to 1 after. Turn 3 -----
 Heat Chain
 25050 Damage - Bind active skills for 3 turns, Deal 130% damage (50% chance)
 Cleave Rush
@@ -124,12 +132,11 @@ Evil Hold
 23123 Damage - Lock all Jammer, Poison orbs, Deal 120% damage (50% chance)
 Element Hold
 23123 Damage - Lock 7 random Fire, Water, Wood, Light, Dark, Heal orbs, Deal 120% damage
------ Turn 2 -----
 Heat Chain
 25050 Damage - Bind active skills for 3 turns, Deal 130% damage (50% chance)
 Cleave Rush
 26977 Damage - Deal 140% damage (4 hits, 35% each)
------ Loop to 1 after. Turn 3 -----
+----- Loop to 1 after. Turn 2 -----
 Death Claw
 21196 Damage - Change Random to Poison, Deal 110% damage (50% chance)
 Crushing Claw
@@ -140,10 +147,9 @@ Evil Hold
 23123 Damage - Lock all Jammer, Poison orbs, Deal 120% damage (50% chance)
 Element Hold
 23123 Damage - Lock 7 random Fire, Water, Wood, Light, Dark, Heal orbs, Deal 120% damage
------ Turn 2 -----
 Melting Claw
 30831 Damage - Deal 160% damage (4 hits, 40% each)
------ Loop to 1 after. Turn 3 -----
+----- Loop to 1 after. Turn 2 -----
 Destroying Claw
 21196 Damage - Spawn random 4 Jammer, Poison orbs, Deal 110% damage
 ----- HP < 15 -----
@@ -161,6 +167,27 @@ Voids status ailments for 999 turns + Delay active skills by 4 turns (Preemptive
 Justice Eye
 Voids player buff effects
 ----- HP <= 100 -----
+----- Turn 1 -----
+Justice Blade
+24556 Damage - Change 2nd row to Wood orbs, Deal 100% damage
+----- Turn 2 -----
+Justice Punch
+Player -99% HP
+----- Turn 3 -----
+Justice Star Boomerang
+29467 Damage - Deal 120% damage (3 hits, 40% each)
+----- Turn 4 -----
+Justice Blade
+24556 Damage - Change 2nd row to Wood orbs, Deal 100% damage
+----- Turn 5 -----
+Justice Punch
+Player -99% HP
+----- Turn 6 -----
+Justice Star Boomerang
+29467 Damage - Deal 120% damage (3 hits, 40% each)
+----- Turn 7 -----
+Justice Booster
+Increase damage to 200% for the next 999 turns
 ----- Execute repeatedly. Turn 1 -----
 Justice Blade
 24556 Damage - Change 2nd row to Wood orbs, Deal 100% damage
@@ -174,11 +201,59 @@ Justice Star Boomerang
 ----- Turn 1 -----
 Justice Barrier
 Reduce damage from all sources by 50% for 6 turns (1 time use)
+----- Turn 2 -----
+Justice Blade
+24556 Damage - Change 2nd row to Wood orbs, Deal 100% damage
+----- Turn 3 -----
+Justice Punch
+Player -99% HP
+----- Turn 4 -----
+Justice Star Boomerang
+29467 Damage - Deal 120% damage (3 hits, 40% each)
+----- Turn 5 -----
+Justice Blade
+24556 Damage - Change 2nd row to Wood orbs, Deal 100% damage
+----- Turn 6 -----
+Justice Punch
+Player -99% HP
+----- Execute repeatedly. Turn 1 -----
+Justice Star Boomerang
+29467 Damage - Deal 120% damage (3 hits, 40% each)
+----- Turn 2 -----
+Justice Blade
+24556 Damage - Change 2nd row to Wood orbs, Deal 100% damage
+----- Loop to 1 after. Turn 3 -----
+Justice Punch
+Player -99% HP
 ----- HP < 50 -----
 ----- Turn 2 -----
 Justice Tornado
 24556 Damage - Wood, Jammer, Poison skyfall +10% for 5 turns, Deal 100% damage (1 time use)
+----- Turn 3 -----
+Justice Blade
+24556 Damage - Change 2nd row to Wood orbs, Deal 100% damage
+----- Turn 4 -----
+Justice Punch
+Player -99% HP
+----- Turn 5 -----
+Justice Star Boomerang
+29467 Damage - Deal 120% damage (3 hits, 40% each)
+----- Turn 6 -----
+Justice Blade
+24556 Damage - Change 2nd row to Wood orbs, Deal 100% damage
+----- Execute repeatedly. Turn 1 -----
+Justice Punch
+Player -99% HP
+----- Turn 2 -----
+Justice Star Boomerang
+29467 Damage - Deal 120% damage (3 hits, 40% each)
+----- Loop to 1 after. Turn 3 -----
+Justice Blade
+24556 Damage - Change 2nd row to Wood orbs, Deal 100% damage
 ----- HP < 15 -----
+----- Turn 1-6 -----
+Justice Ultimate Storm
+196452 Damage - Deal 800% damage (8 hits, 100% each)
 Justice Ultimate Storm
 196452 Damage - Deal 800% damage (8 hits, 100% each)
 
@@ -200,7 +275,8 @@ Machine Glare
 25927 Damage - Movetime -1s for 1 turns, Deal 120% damage (25% chance) (every 2 turns)
 Gathering magical power
 Do nothing (25% chance)
------ Turn 2 -----
+----- HP <= 100 -----
+----- Execute repeatedly. Turn 1 -----
 Full Charge
 Do nothing (25% chance) (every 2 turns)
 Suppressive Wave
@@ -209,26 +285,14 @@ Ordeal Section
 30248 Damage - Absorb combo <= 6 damage for 1 turns, Deal 140% damage (25% chance)
 Jamming
 30248 Damage - Jammer skyfall +20% for 1 turns, Deal 140% damage (25% chance)
------ HP <= 100 -----
------ Execute repeatedly. Turn 1 -----
+----- Turn 2 -----
 Steel Wing
 38890 Damage - Deal 180% damage (3 hits, 60% each) (60% chance) (every 2 turns)
 Paralysis Sight
 36730 Damage - Bind 1 random for 3 turns, Deal 170% damage (every 2 turns)
------ Turn 2 -----
-Flash Bomb
-25927 Damage - Spawn random 3 Light orbs, Deal 120% damage (25% chance) (every 2 turns)
-Machine Glare
-25927 Damage - Movetime -1s for 1 turns, Deal 120% damage (25% chance) (every 2 turns)
+----- Loop to 1 after. Turn 3 -----
 Gathering magical power
 Do nothing (25% chance)
------ Loop to 1 after. Turn 3 -----
-Full Charge
-Do nothing (25% chance) (every 2 turns)
-Suppressive Wave
-30248 Damage - Delay active skills by 3 turns, Deal 140% damage (25% chance)
-Jamming
-30248 Damage - Jammer skyfall +20% for 1 turns, Deal 140% damage (25% chance)
 ----- HP < 50 -----
 ----- Turn 1 -----
 Awaken Force
@@ -242,15 +306,6 @@ Machine Glare
 25927 Damage - Movetime -1s for 1 turns, Deal 120% damage (25% chance) (every 2 turns)
 Gathering magical power
 Do nothing (25% chance)
------ Turn 3 -----
-Full Charge
-Do nothing (25% chance) (every 2 turns)
-Suppressive Wave
-30248 Damage - Delay active skills by 3 turns, Deal 140% damage (25% chance)
-Ordeal Section
-30248 Damage - Absorb combo <= 6 damage for 1 turns, Deal 140% damage (25% chance)
-Jamming
-30248 Damage - Jammer skyfall +20% for 1 turns, Deal 140% damage (25% chance)
 ----- HP < 20 -----
 Limit Break
 172848 Damage - Deal 800% damage (2 hits, 400% each)
@@ -302,12 +357,16 @@ stage 0
 Battle Initiation
 Reduce damage from all sources by 50% for 5 turns (Preemptive)
 ----- When HP is full -----
+----- Turn 1 -----
+Homogeneity Check
+Player recover 100% hp, (if [1947, 1949] on team) (1 time use)
 Illusory Faith Theatre
 19088 Damage - Bind 4 random for 2 turns, Deal 120% damage
 ----- When HP is not full -----
------ Turn 1 -----
+----- Execute repeatedly. Turn 1 -----
 Elemental Turn
 19088 Damage - Change own attribute to random one of Fire, Water, Wood, Light, Dark, Deal 120% damage (1 time use)
+----- Loop to 1 after. Turn 2 -----
 Allegro Step
 23860 Damage - Deal 150% damage (3 hits, 50% each)
 ----- HP < 80 -----
@@ -318,9 +377,10 @@ Rondo
 15906 Damage - Change 1st, 3rd, 5th, 7th column to Fire, Water, Wood, Light, Dark orbs, 2nd, 4th, 6th column to Jammer, Poison orbs, Deal 100% damage (33% chance)
 Requiem
 Delay active skills by 3 turns (34% chance)
------ Turn 2 -----
+----- Execute repeatedly. Turn 1 -----
 Elemental Turn
 19088 Damage - Change own attribute to random one of Fire, Water, Wood, Light, Dark, Deal 120% damage (1 time use)
+----- Loop to 1 after. Turn 2 -----
 Arabesque Repair
 12725 Damage - Enemy recover 30% hp, Deal 80% damage (20% chance)
 Allegro Step
@@ -329,6 +389,8 @@ Allegro Step
 ----- Turn 1 -----
 Preparation
 20679 Damage - Delay active skills by 1 turns, Deal 130% damage
+Elimination of all of Master's Enemies
+159069 Damage - Deal 1000% damage, (if [1951, 1953, 2069, 2263, 2206] on team)
 Sudden Curtain Call
 159069 Damage - Deal 1000% damage
 
@@ -347,6 +409,8 @@ Drehung Klinge
 24347 Damage - Change all orbs to Jammer, Deal 150% damage (50% chance)
 Windhose
 Change all orbs to Mortal Poison
+Blitz Lanze
+27594 Damage - Change 3rd, 4th column to Light, Heal orbs, Deal 170% damage
 ----- HP < 70 -----
 ----- Turn 1-3 -----
 Licht Regen
@@ -437,12 +501,11 @@ Death Claw
 14478 Damage - Change Random to Poison, Deal 110% damage (50% chance)
 Crushing Claw
 14478 Damage - Change Random to Jammer, Deal 110% damage
------ Turn 2 -----
+----- Loop to 1 after. Turn 2 -----
 Evil Hold
 15795 Damage - Lock all Jammer, Poison orbs, Deal 120% damage (50% chance)
 Element Hold
 15795 Damage - Lock 7 random Fire, Water, Wood, Light, Dark, Heal orbs, Deal 120% damage
------ Loop to 1 after. Turn 3 -----
 Heat Chain
 17111 Damage - Bind active skills for 3 turns, Deal 130% damage (50% chance)
 Cleave Rush
@@ -463,12 +526,11 @@ Evil Hold
 15795 Damage - Lock all Jammer, Poison orbs, Deal 120% damage (50% chance)
 Element Hold
 15795 Damage - Lock 7 random Fire, Water, Wood, Light, Dark, Heal orbs, Deal 120% damage
------ Turn 2 -----
 Heat Chain
 17111 Damage - Bind active skills for 3 turns, Deal 130% damage (50% chance)
 Cleave Rush
 18427 Damage - Deal 140% damage (4 hits, 35% each)
------ Loop to 1 after. Turn 3 -----
+----- Loop to 1 after. Turn 2 -----
 Death Claw
 14478 Damage - Change Random to Poison, Deal 110% damage (50% chance)
 Crushing Claw
@@ -479,10 +541,9 @@ Evil Hold
 15795 Damage - Lock all Jammer, Poison orbs, Deal 120% damage (50% chance)
 Element Hold
 15795 Damage - Lock 7 random Fire, Water, Wood, Light, Dark, Heal orbs, Deal 120% damage
------ Turn 2 -----
 Melting Claw
 21060 Damage - Deal 160% damage (4 hits, 40% each)
------ Loop to 1 after. Turn 3 -----
+----- Loop to 1 after. Turn 2 -----
 Destroying Claw
 14478 Damage - Spawn random 4 Jammer, Poison orbs, Deal 110% damage
 ----- HP < 15 -----
@@ -500,6 +561,27 @@ Voids status ailments for 999 turns + Delay active skills by 4 turns (Preemptive
 Justice Eye
 Voids player buff effects
 ----- HP <= 100 -----
+----- Turn 1 -----
+Justice Blade
+16773 Damage - Change 2nd row to Wood orbs, Deal 100% damage
+----- Turn 2 -----
+Justice Punch
+Player -99% HP
+----- Turn 3 -----
+Justice Star Boomerang
+20128 Damage - Deal 120% damage (3 hits, 40% each)
+----- Turn 4 -----
+Justice Blade
+16773 Damage - Change 2nd row to Wood orbs, Deal 100% damage
+----- Turn 5 -----
+Justice Punch
+Player -99% HP
+----- Turn 6 -----
+Justice Star Boomerang
+20128 Damage - Deal 120% damage (3 hits, 40% each)
+----- Turn 7 -----
+Justice Booster
+Increase damage to 200% for the next 999 turns
 ----- Execute repeatedly. Turn 1 -----
 Justice Blade
 16773 Damage - Change 2nd row to Wood orbs, Deal 100% damage
@@ -513,11 +595,59 @@ Justice Star Boomerang
 ----- Turn 1 -----
 Justice Barrier
 Reduce damage from all sources by 50% for 6 turns (1 time use)
+----- Turn 2 -----
+Justice Blade
+16773 Damage - Change 2nd row to Wood orbs, Deal 100% damage
+----- Turn 3 -----
+Justice Punch
+Player -99% HP
+----- Turn 4 -----
+Justice Star Boomerang
+20128 Damage - Deal 120% damage (3 hits, 40% each)
+----- Turn 5 -----
+Justice Blade
+16773 Damage - Change 2nd row to Wood orbs, Deal 100% damage
+----- Turn 6 -----
+Justice Punch
+Player -99% HP
+----- Execute repeatedly. Turn 1 -----
+Justice Star Boomerang
+20128 Damage - Deal 120% damage (3 hits, 40% each)
+----- Turn 2 -----
+Justice Blade
+16773 Damage - Change 2nd row to Wood orbs, Deal 100% damage
+----- Loop to 1 after. Turn 3 -----
+Justice Punch
+Player -99% HP
 ----- HP < 50 -----
 ----- Turn 2 -----
 Justice Tornado
 16773 Damage - Wood, Jammer, Poison skyfall +10% for 5 turns, Deal 100% damage (1 time use)
+----- Turn 3 -----
+Justice Blade
+16773 Damage - Change 2nd row to Wood orbs, Deal 100% damage
+----- Turn 4 -----
+Justice Punch
+Player -99% HP
+----- Turn 5 -----
+Justice Star Boomerang
+20128 Damage - Deal 120% damage (3 hits, 40% each)
+----- Turn 6 -----
+Justice Blade
+16773 Damage - Change 2nd row to Wood orbs, Deal 100% damage
+----- Execute repeatedly. Turn 1 -----
+Justice Punch
+Player -99% HP
+----- Turn 2 -----
+Justice Star Boomerang
+20128 Damage - Deal 120% damage (3 hits, 40% each)
+----- Loop to 1 after. Turn 3 -----
+Justice Blade
+16773 Damage - Change 2nd row to Wood orbs, Deal 100% damage
 ----- HP < 15 -----
+----- Turn 1-6 -----
+Justice Ultimate Storm
+134188 Damage - Deal 800% damage (8 hits, 100% each)
 Justice Ultimate Storm
 134188 Damage - Deal 800% damage (8 hits, 100% each)
 
@@ -539,7 +669,8 @@ Machine Glare
 20357 Damage - Movetime -1s for 1 turns, Deal 120% damage (25% chance) (every 2 turns)
 Gathering magical power
 Do nothing (25% chance)
------ Turn 2 -----
+----- HP <= 100 -----
+----- Execute repeatedly. Turn 1 -----
 Full Charge
 Do nothing (25% chance) (every 2 turns)
 Suppressive Wave
@@ -548,26 +679,14 @@ Ordeal Section
 23750 Damage - Absorb combo <= 6 damage for 1 turns, Deal 140% damage (25% chance)
 Jamming
 23750 Damage - Jammer skyfall +20% for 1 turns, Deal 140% damage (25% chance)
------ HP <= 100 -----
------ Execute repeatedly. Turn 1 -----
+----- Turn 2 -----
 Steel Wing
 30536 Damage - Deal 180% damage (3 hits, 60% each) (60% chance) (every 2 turns)
 Paralysis Sight
 28840 Damage - Bind 1 random for 3 turns, Deal 170% damage (every 2 turns)
------ Turn 2 -----
-Flash Bomb
-20357 Damage - Spawn random 3 Light orbs, Deal 120% damage (25% chance) (every 2 turns)
-Machine Glare
-20357 Damage - Movetime -1s for 1 turns, Deal 120% damage (25% chance) (every 2 turns)
+----- Loop to 1 after. Turn 3 -----
 Gathering magical power
 Do nothing (25% chance)
------ Loop to 1 after. Turn 3 -----
-Full Charge
-Do nothing (25% chance) (every 2 turns)
-Suppressive Wave
-23750 Damage - Delay active skills by 3 turns, Deal 140% damage (25% chance)
-Jamming
-23750 Damage - Jammer skyfall +20% for 1 turns, Deal 140% damage (25% chance)
 ----- HP < 50 -----
 ----- Turn 1 -----
 Awaken Force
@@ -581,15 +700,6 @@ Machine Glare
 20357 Damage - Movetime -1s for 1 turns, Deal 120% damage (25% chance) (every 2 turns)
 Gathering magical power
 Do nothing (25% chance)
------ Turn 3 -----
-Full Charge
-Do nothing (25% chance) (every 2 turns)
-Suppressive Wave
-23750 Damage - Delay active skills by 3 turns, Deal 140% damage (25% chance)
-Ordeal Section
-23750 Damage - Absorb combo <= 6 damage for 1 turns, Deal 140% damage (25% chance)
-Jamming
-23750 Damage - Jammer skyfall +20% for 1 turns, Deal 140% damage (25% chance)
 ----- HP < 20 -----
 Limit Break
 135717 Damage - Deal 800% damage (2 hits, 400% each)

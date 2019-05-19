@@ -7,8 +7,7 @@ monster_id: 104016
 monster_name_en: Calm Observer Dragonbound, Rikuu
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 2 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -17,6 +16,32 @@ warnings:
 level: 1
 overrides: []
 records:
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 75% for 20 turns + Voids status ailments
+    for 999 turns + Void damage >= 30000000 for 999 turns, (if [3940, 3941] on team)
+    (Preemptive)
+  desc_jp: Reduce damage from all sources by 75% for 20 turns + Voids status ailments
+    for 999 turns + Void damage >= 30000000 for 999 turns, (if [3940, 3941] on team)
+    (Preemptive)
+  max_atk_pct: null
+  name_en: '...I loathe Dragon Callers! + Quarryla + Fervor Flame Wings'
+  name_jp: '...I loathe Dragon Callers! + Quarryla + Fervor Flame Wings'
+  one_time: 2048
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 75% for 20 turns + Voids status ailments
+    for 999 turns + Void damage >= 30000000 for 999 turns, (if [2442, 2443, 3768,
+    3769, 1948, 1949, 2745, 3908] on team) (Preemptive)
+  desc_jp: Reduce damage from all sources by 75% for 20 turns + Voids status ailments
+    for 999 turns + Void damage >= 30000000 for 999 turns, (if [2442, 2443, 3768,
+    3769, 1948, 1949, 2745, 3908] on team) (Preemptive)
+  max_atk_pct: null
+  name_en: You remind me of the past + Quarryla + Fervor Flame Wings
+  name_jp: You remind me of the past + Quarryla + Fervor Flame Wings
+  one_time: 2048
+  record_type_name: PREEMPT
+  usage_pct: 100
 - !SkillRecord
   desc_en: Reduce damage from all sources by 75% for 20 turns + Voids status ailments
     for 999 turns + Void damage >= 30000000 for 999 turns (Preemptive)
@@ -286,33 +311,12 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# SkillSet:
-# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2048)
-# 	[0] ESDamageShield(74:8558) -> ...I loathe Dragon Callers!
-# 	Reduce damage from all sources by 75% for 20 turns
-# 	[1] ESStatusShield(20:8560) -> Quarryla
-# 	Voids status ailments for 999 turns
-# 	[2] ESVoidShield(71:8561) -> Fervor Flame Wings
-# 	Void damage >= 30000000 for 999 turns
-# SkillSet:
-# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2048)
-# 	[0] ESDamageShield(74:8559) -> You remind me of the past
-# 	Reduce damage from all sources by 75% for 20 turns
-# 	[1] ESStatusShield(20:8560) -> Quarryla
-# 	Voids status ailments for 999 turns
-# 	[2] ESVoidShield(71:8561) -> Fervor Flame Wings
-# 	Void damage >= 30000000 for 999 turns
-############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] true
-# [53] 4095 - 111111111111
-# [54] 0
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 4095 - starting/max counter
+# [54] 0 - counter increment
 #
 ############################################################
 ### Raw Behavior

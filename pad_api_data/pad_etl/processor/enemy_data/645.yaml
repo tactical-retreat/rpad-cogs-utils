@@ -7,8 +7,7 @@ monster_id: 645
 monster_name_en: Archdemon Beelzebub
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -63,6 +62,15 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
+  desc_en: Deal 120% damage (3 hits, 40% each)
+  desc_jp: Deal 120% damage (3 hits, 40% each)
+  max_atk_pct: 120
+  name_en: Deadly Drive!
+  name_jp: Deadly Drive!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 70
+- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
@@ -108,6 +116,15 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
+  desc_en: Player -50% HP
+  desc_jp: Player -50% HP
+  max_atk_pct: null
+  name_en: Not going easy anymore!
+  name_jp: Not going easy anymore!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
@@ -126,11 +143,20 @@ records:
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
+  desc_en: Deal 120% damage (3 hits, 40% each)
+  desc_jp: Deal 120% damage (3 hits, 40% each)
+  max_atk_pct: 120
+  name_en: Deadly Drive!
+  name_jp: Deadly Drive!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Loop to 1 after. Turn 2-5
-  name_jp: Loop to 1 after. Turn 2-5
+  name_en: Loop to 1 after. Turn 2
+  name_jp: Loop to 1 after. Turn 2
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
@@ -145,19 +171,12 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# ESGravity(50:681) -> Not going easy anymore!
-# Player -50% HP
-############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] false
-# [53] 1 -        1
-# [54] 1
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] false - use new AI
+# [53] 1 - starting/max counter
+# [54] 1 - counter increment
 #
 ############################################################
 ### Raw Behavior

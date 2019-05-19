@@ -7,8 +7,7 @@ monster_id: 103143
 monster_name_en: God of Brute Strength, Kinnikuman Big Body
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 1 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 4
@@ -17,6 +16,17 @@ warnings:
 level: 4
 overrides: []
 records:
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 4 turns, (if [3146, 3147] on team)
+    (Preemptive)
+  desc_jp: Increase damage to 200% for the next 4 turns, (if [3146, 3147] on team)
+    (Preemptive)
+  max_atk_pct: null
+  name_en: Brains over brawn?! Says who!
+  name_jp: Brains over brawn?! Says who!
+  one_time: 0
+  record_type_name: PREEMPT
+  usage_pct: 100
 - !SkillRecord
   desc_en: Increase damage to 200% for the next 4 turns (Preemptive)
   desc_jp: Increase damage to 200% for the next 4 turns (Preemptive)
@@ -102,20 +112,12 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# ESAttackUPRemainingEnemies(17:5432) -> Brains over brawn?! Says who!
-# 	Condition: when <= 4 enemies remain (ai:100 rnd:0)
-# Increase damage to 200% for the next 4 turns
-############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] true
-# [53] 0 -        0
-# [54] 0
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 0 - starting/max counter
+# [54] 0 - counter increment
 #
 ############################################################
 ### Raw Behavior
@@ -137,7 +139,7 @@ records:
 # Increase damage to 200% for the next 4 turns
 # [8] ESAttackUPRemainingEnemies(17:5432) -> Brains over brawn?! Says who!
 # 	Condition: when <= 4 enemies remain (ai:100 rnd:0)
-# Increase damage to 200% for the next 4 turns
+# Increase damage to 200% for the next 4 turns, (if [3146, 3147] on team)
 # [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [10] ESBranchFlag(43:10) -> ESBranchFlag

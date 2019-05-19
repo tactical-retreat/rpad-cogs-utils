@@ -40,6 +40,8 @@ def extract_used_skills(skillset: ProcessedSkillset, include_preemptive=True) ->
     """Flattens a ProcessedSkillset to a list of actions"""
     results = []
 
+    results.extend(skillset.death_actions)
+
     if include_preemptive:
         results.extend(skillset.preemptives)
 

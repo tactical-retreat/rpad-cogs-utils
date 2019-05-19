@@ -7,8 +7,7 @@ monster_id: 4867
 monster_name_en: Yuuki
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 3 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -17,6 +16,15 @@ warnings:
 level: 1
 overrides: []
 records:
+- !SkillRecord
+  desc_en: Do nothing, (if [4858, 4859] on team) (Preemptive)
+  desc_jp: Do nothing, (if [4858, 4859] on team) (Preemptive)
+  max_atk_pct: null
+  name_en: Hey, what's up? You next?
+  name_jp: Hey, what's up? You next?
+  one_time: 1
+  record_type_name: PREEMPT
+  usage_pct: 100
 - !SkillRecord
   desc_en: Do nothing (Preemptive)
   desc_jp: Do nothing (Preemptive)
@@ -34,6 +42,17 @@ records:
 level: 4
 overrides: []
 records:
+- !SkillRecord
+  desc_en: Fix orb movement starting point to random position on the board, (if [4858,
+    4859] on team) (Preemptive)
+  desc_jp: Fix orb movement starting point to random position on the board, (if [4858,
+    4859] on team) (Preemptive)
+  max_atk_pct: null
+  name_en: Hey, what's up? You next?
+  name_jp: Hey, what's up? You next?
+  one_time: 1
+  record_type_name: PREEMPT
+  usage_pct: 100
 - !SkillRecord
   desc_en: Fix orb movement starting point to random position on the board (Preemptive)
   desc_jp: Fix orb movement starting point to random position on the board (Preemptive)
@@ -143,28 +162,12 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# ESInactivity(66:11438) -> Hey, what's up? You next?
-# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
-# Do nothing
-# ESFixedStart(101:11439) -> Hey, what's up? You next?
-# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
-# Fix orb movement starting point to random position on the board
-# SkillSet:
-# 	Condition: On death (ai:0 rnd:0)
-# 	[0] ESInactivity(66:11654) -> I've totally seen enough
-# to know you got what it takes.
-# 	Do nothing
-############################################################
 ### ES Modifiers
 ############################################################
-# [9] 5 -      101
-# [52] true
-# [53] 1 -        1
-# [54] 0
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 1 - starting/max counter
+# [54] 0 - counter increment
 #
 ############################################################
 ### Raw Behavior
@@ -180,7 +183,7 @@ records:
 # Do nothing
 # [5] ESInactivity(66:11438) -> Hey, what's up? You next?
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
-# Do nothing
+# Do nothing, (if [4858, 4859] on team)
 # [6] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [7] ESBranchCard(90:11440) -> ESBranchCard
@@ -190,7 +193,7 @@ records:
 # Fix orb movement starting point to random position on the board
 # [9] ESFixedStart(101:11439) -> Hey, what's up? You next?
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
-# Fix orb movement starting point to random position on the board
+# Fix orb movement starting point to random position on the board, (if [4858, 4859] on team)
 # [10] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 1, target rnd 14
 # [11] ESFlagOperation(22:12) -> ESFlagOperation

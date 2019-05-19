@@ -7,8 +7,7 @@ monster_id: 1464
 monster_name_en: Thoth
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
-warnings:
-- Found 4 unused actions
+warnings: []
 
 ############################################################
 ### Data @ 1
@@ -27,6 +26,87 @@ records:
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change Fire to Jammer
+  desc_jp: Change Fire to Jammer
+  max_atk_pct: null
+  name_en: Arcane Spell
+  name_jp: Arcane Spell
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change Random 6 to Poison, Deal 50% damage
+  desc_jp: Change Random 6 to Poison, Deal 50% damage
+  max_atk_pct: 50
+  name_en: Judgement of the Dead
+  name_jp: Judgement of the Dead
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 3
+  name_jp: Loop to 1 after. Turn 3
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind 1 random for 3 turns, Deal 50% damage
+  desc_jp: Bind 1 random for 3 turns, Deal 50% damage
+  max_atk_pct: 50
+  name_en: Playing with Time & Space
+  name_jp: Playing with Time & Space
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 20
+  name_jp: HP < 20
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 400% damage (4 hits, 100% each)
+  desc_jp: Deal 400% damage (4 hits, 100% each)
+  max_atk_pct: 400
+  name_en: Genesis Gleam
+  name_jp: Genesis Gleam
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: When 1 enemy remains
+  name_jp: When 1 enemy remains
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
   desc_en: Enemy ally recover 50% hp
   desc_jp: Enemy ally recover 50% hp
   max_atk_pct: null
@@ -37,26 +117,12 @@ records:
   usage_pct: 100
 
 ############################################################
-### Unused Actions
-############################################################
-# ESAttackMultihit(15:1266) -> Genesis Gleam
-# 	Condition: When < 20% hp (ai:100 rnd:0)
-# Deal 400% damage (4 hits, 100% each)
-# ESJammerChangeSingle(12:1263) -> Arcane Spell
-# Change Fire to Jammer
-# ESPoisonChangeRandomAttack(64:1264) -> Judgement of the Dead
-# Change Random 6 to Poison, Deal 50% damage
-# ESBindAttack(63:1265) -> Playing with Time & Space
-# Bind 1 random for 3 turns, Deal 50% damage
-############################################################
 ### ES Modifiers
 ############################################################
-# [9] 4 -      100
-# [52] false
-# [53] 1 -        1
-# [54] 1
-# 53 is enemy_skill_modifier
-# 54 is enemy_skill_modifier_type
+# [9] 4 - monster size?
+# [52] false - use new AI
+# [53] 1 - starting/max counter
+# [54] 1 - counter increment
 #
 ############################################################
 ### Raw Behavior
