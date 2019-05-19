@@ -112,7 +112,7 @@ def fmt_multiplier_text(hp_mult, atk_mult, rcv_mult):
         return '{}x all stats'.format(fmt_mult(hp_mult))
 
     mults = [('HP', hp_mult), ('ATK', atk_mult), ('RCV', rcv_mult)]
-    mults = list(filter(lambda x: x[1] > 1, mults))
+    mults = list(filter(lambda x: x[1] != 1, mults))
     mults.sort(key=itemgetter(1), reverse=True)
 
     chunks = []
@@ -2146,16 +2146,17 @@ def orb_remain_convert(arguments):
         _, c = convert_with_defaults('orb_remain',
                                      arguments,
                                      orb_remain_backups)(x)
-        c['skill_text'] += fmt_mult(c['atk_multiplier']) + 'x ATK when there are ' + \
-            str(c['orb_count']) + ' or fewer orbs remaining'
-        if c['bonus_atk_multiplier'] != 0:
-            c['skill_text'] += ' up to ' + fmt_mult(c['atk_multiplier'] +
-                                                    c['bonus_atk_multiplier'] *
-                                                    c['orb_count']) +\
-                               'x ATK when 0 orbs left'
-        c['step'] = c['orb_count']
-        c['parameter'] = fmt_parameter(c)
-        c['parameter'][3] = 0.0
+        if c['atk_multiplier']:
+            c['skill_text'] += fmt_mult(c['atk_multiplier']) + 'x ATK when there are ' + \
+                str(c['orb_count']) + ' or fewer orbs remaining'
+            if c['bonus_atk_multiplier'] != 0:
+                c['skill_text'] += ' up to ' + fmt_mult(c['atk_multiplier'] +
+                                                        c['bonus_atk_multiplier'] *
+                                                        c['orb_count']) +\
+                                   'x ATK when 0 orbs left'
+            c['step'] = c['orb_count']
+            c['parameter'] = fmt_parameter(c)
+            c['parameter'][3] = 0.0
         return 'orb_remain', c
     return f
 
@@ -2443,6 +2444,7 @@ SKILL_TRANSFORM = {
     # May be using incomplete data eg. Toragon SID: 10136
     189: convert('unlock_board_path', {'skill_text': 'Unlock all orbs; Change all orbs to Fire, Water, Wood, and Light orbs; Show path to 3 combos'}),
     191: void_mechanic_convert({'duration':(0, cc)}),
+    195: suicide_convert({'hp_remaining': (0, multi)}),
     11: passive_stats_convert({'for_attr': (0, listify), 'atk_multiplier': (1, multi)}),
     12: after_attack_convert({'multiplier': (0, multi)}),
     13: heal_on_convert({'multiplier': (0, multi)}),
@@ -2551,7 +2553,6 @@ SKILL_TRANSFORM = {
     192: multi_mass_match_convert({'for_attr':(0, binary_con), 'minimum_orb':(1, cc), 'atk_multiplier':(2, multi), 'add_combo':(3, cc)}),
     193: l_match_convert({'attributes':(0,binary_con), 'atk_multiplier':(1,multi2), 'rcv_multiplier':(2, multi2), 'damage_reduction':(3, multi)}),
     194: add_combo_att_convert({'attributes':(0, binary_con), 'min_attr':(1,cc), 'atk_multiplier':(2, multi2), 'add_combo':(3, cc)}),
-    195: suicide_convert({'hp_remaining': (0, multi)}),
     }
 
 
@@ -2685,8 +2686,8 @@ def reformat_json(skill_data):
                     combined_skill_args = reformatted['leader_skills'][j]['args']
                     cur_skill_id = int(MULTI_PART_LS[i_str][k])
                     cur_args = reformatted['leader_skills'][cur_skill_id]['args']
-
-                    if cur_args['skill_text'] == '':
+                    
+                    if cur_args['skill_text'] == '' or combined_skill_args['skill_text'].endswith('; '):
                         cur_args['skill_text'] += combined_skill_args['skill_text']
                     else:
                         cur_args['skill_text'] += '; ' + \
