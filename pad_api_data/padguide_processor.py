@@ -12,10 +12,8 @@ import time
 
 import feedparser
 from pad_etl.common import monster_id_mapping
-from pad_etl.data import card, skill
 from pad_etl.data import database
-from pad_etl.processor import skill_info
-from pad_etl.processor.merged_data import MergedCard, CrossServerCard
+from pad_etl.processor import skill_info, merged_data
 from pad_etl.storage import egg
 from pad_etl.storage import egg_processor
 from pad_etl.storage import monster
@@ -278,50 +276,9 @@ def database_diff_events(db_wrapper, database):
         print(repr(de[0]), repr(de[1]))
 
 
-# Creates a CrossServerCard if appropriate.
-# If the card cannot be created, provides an error message.
-def make_cross_server_card(jp_card: MergedCard, na_card: MergedCard) -> (CrossServerCard, str):
-    card_id = jp_card.card.card_id
-    if card_id <= 0 or card_id > 6000:
-        return None, 'crazy id: {}'.format(repr(card))
-
-    if '***' in jp_card.card.name or '???' in jp_card.card.name:
-        return None, 'Skipping debug card: {}'.format(repr(card))
-
-    if '***' in na_card.card.name or '???' in na_card.card.name:
-        # Card probably exists in JP but not in NA
-        na_card = jp_card
-
-    # Apparently some monsters can be ported to NA before their skills are
-    if jp_card.leader_skill and not na_card.leader_skill:
-        na_card.leader_skill = jp_card.leader_skill
-
-    if jp_card.active_skill and not na_card.active_skill:
-        na_card.active_skill = jp_card.active_skill
-
-    monster_no = monster_id_mapping.jp_id_to_monster_no(card_id)
-    return CrossServerCard(monster_no, jp_card, na_card), None
-
 
 def database_diff_cards(db_wrapper, jp_database, na_database):
-    jp_card_ids = [mc.card.card_id for mc in jp_database.cards]
-    jp_id_to_card = {mc.card.card_id: mc for mc in jp_database.cards}
-    na_id_to_card = {mc.card.card_id: mc for mc in na_database.cards}
-
-    if len(jp_card_ids) != len(jp_id_to_card):
-        logger.error('Mismatched sizes: %s %s', len(jp_card_ids), len(jp_id_to_card))
-
-    # This is the list of cards we could potentially update
-    combined_cards = []  # List[CrossServerCard]
-    for card_id in jp_card_ids:
-        jp_card = jp_id_to_card.get(card_id)
-        na_card = na_id_to_card.get(monster_id_mapping.jp_id_to_na_id(card_id), jp_card)
-
-        csc, err_msg = make_cross_server_card(jp_card, na_card)
-        if csc:
-            combined_cards.append(csc)
-        elif err_msg:
-            fail_logger.debug('Skipping card, %s', err_msg)
+    combined_cards = merged_data.build_cross_server_cards(jp_database, na_database)
 
     def insert_or_update(item: monster.SqlItem):
         # Check if the item exists by key

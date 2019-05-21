@@ -1,11 +1,14 @@
+import logging
 from datetime import datetime
 from typing import List
 
 import pytz
 
-from ..data import BookCard, MonsterSkill
 from . import enemy_skillset
-from ..common import pad_util
+from ..common import pad_util, monster_id_mapping
+from ..data import BookCard, MonsterSkill
+
+fail_logger = logging.getLogger('processor_failures')
 
 
 class MergedBonus(object):
@@ -55,3 +58,55 @@ class CrossServerCard(object):
         self.monster_no = monster_no
         self.jp_card = jp_card
         self.na_card = na_card
+
+
+def build_cross_server_cards(jp_database, na_database) -> List[CrossServerCard]:
+    jp_card_ids = [mc.card.card_id for mc in jp_database.cards]
+    jp_id_to_card = {mc.card.card_id: mc for mc in jp_database.cards}
+    na_id_to_card = {mc.card.card_id: mc for mc in na_database.cards}
+
+    # This is the list of cards we could potentially update
+    combined_cards = []  # List[CrossServerCard]
+    for card_id in jp_card_ids:
+        jp_card = jp_id_to_card.get(card_id)
+        na_card = na_id_to_card.get(monster_id_mapping.jp_id_to_na_id(card_id), jp_card)
+
+        csc, err_msg = make_cross_server_card(jp_card, na_card)
+        if csc:
+            combined_cards.append(csc)
+        elif err_msg:
+            fail_logger.debug('Skipping card, %s', err_msg)
+
+    return combined_cards
+
+
+# Creates a CrossServerCard if appropriate.
+# If the card cannot be created, provides an error message.
+def make_cross_server_card(jp_card: MergedCard, na_card: MergedCard) -> (CrossServerCard, str):
+    card_id = jp_card.card.card_id
+    if card_id <= 0 or card_id > 6000:
+        return None, 'crazy id: {}'.format(repr(jp_card))
+
+    if '***' in jp_card.card.name or '???' in jp_card.card.name:
+        return None, 'Skipping debug card: {}'.format(repr(jp_card))
+
+    if '***' in na_card.card.name or '???' in na_card.card.name:
+        # Card probably exists in JP but not in NA
+        na_card = jp_card
+
+    # Apparently some monsters can be ported to NA before their skills are
+    if jp_card.leader_skill and not na_card.leader_skill:
+        na_card.leader_skill = jp_card.leader_skill
+
+    if jp_card.active_skill and not na_card.active_skill:
+        na_card.active_skill = jp_card.active_skill
+
+    if len(jp_card.enemy_behavior) != len(na_card.enemy_behavior):
+        na_card.enemy_behavior = jp_card.enemy_behavior
+
+    for idx in range(len(jp_card.enemy_behavior)):
+        if type(jp_card.enemy_behavior[idx]) != type(na_card.enemy_behavior[idx]):
+            na_card.enemy_behavior[idx] = jp_card.enemy_behavior[idx]
+
+    monster_no = monster_id_mapping.jp_id_to_monster_no(card_id)
+    return CrossServerCard(monster_no, jp_card, na_card), None
