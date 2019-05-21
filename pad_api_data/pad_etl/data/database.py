@@ -1,15 +1,16 @@
 import json
 import logging
 import os
+from typing import List
 
 from . import bonus, card, dungeon, skill, exchange, enemy_skill
-from ..processor import enemy_skillset as enemy_skillset_lib
-from ..processor.merged_data import MergedBonus, MergedCard, MergedEnemy
+from ..processor import enemy_skillset as ess
+from ..processor import merged_data
 
 fail_logger = logging.getLogger('processor_failures')
 
 
-def _clean_bonuses(pg_server, bonus_sets, dungeons):
+def _clean_bonuses(pg_server, bonus_sets, dungeons) -> List[merged_data.MergedBonus]:
     dungeons_by_id = {d.dungeon_id: d for d in dungeons}
 
     merged_bonuses = []
@@ -25,12 +26,12 @@ def _clean_bonuses(pg_server, bonus_sets, dungeons):
                     guerrilla_group = data_group if dungeon.dungeon_type == 'guerrilla' else None
 
             if guerrilla_group or data_group == 'red':
-                merged_bonuses.append(MergedBonus(pg_server, bonus, dungeon, guerrilla_group))
+                merged_bonuses.append(merged_data.MergedBonus(pg_server, bonus, dungeon, guerrilla_group))
 
     return merged_bonuses
 
 
-def _clean_cards(cards, skills, enemy_skills):
+def _clean_cards(cards, skills, enemy_skills) -> List[merged_data.MergedCard]:
     skills_by_id = {s.skill_id: s for s in skills}
     enemy_behavior_by_card_id = {int(s.enemy_id): s.behavior for s in enemy_skills}
 
@@ -53,19 +54,19 @@ def _clean_cards(cards, skills, enemy_skills):
 
         enemy_behavior = enemy_behavior_by_card_id.get(int(card.card_id), [])
 
-        merged_cards.append(MergedCard(card, active_skill, leader_skill, enemy_behavior))
+        merged_cards.append(merged_data.MergedCard(card, active_skill, leader_skill, enemy_behavior))
     return merged_cards
 
 
-def _clean_enemy(cards, enemy_skills):
-    enemy_skillset_lib.enemy_skill_map = {s.enemy_skill_id: s for s in enemy_skills}
+def _clean_enemy(cards, enemy_skills) -> List[merged_data.MergedEnemy]:
+    ess.enemy_skill_map = {s.enemy_skill_id: s for s in enemy_skills}
     merged_enemies = []
     for card in cards:
         if len(card.enemy_skill_refs) == 0:
             continue
         enemy_skillset = [x for x in card.enemy_skill_refs]
-        behavior = enemy_skillset_lib.extract_behavior(card, enemy_skillset)
-        merged_enemies.append(MergedEnemy(card.card_id, behavior))
+        behavior = ess.extract_behavior(card, enemy_skillset)
+        merged_enemies.append(merged_data.MergedEnemy(card.card_id, behavior))
     return merged_enemies
 
 
@@ -75,21 +76,21 @@ class Database(object):
         self.base_dir = os.path.join(raw_dir, pg_server)
 
         # Loaded from disk
-        self.raw_cards = []
-        self.dungeons = []
+        self.raw_cards = [] # type: List[card.BookCard]
+        self.dungeons = [] # type: List[dungeon.Dungeon]
         self.bonus_sets = {}
-        self.skills = []
-        self.enemy_skills = []
-        self.exchange = []
+        self.skills = [] # type: List[skill.MonsterSkill]
+        self.enemy_skills = [] # type: List[enemy_skill.EnemySkill]
+        self.exchange = [] # type: List[exchange.Exchange]
         self.egg_machines = []
 
         # This is temporary for the integration of calculated skills
         self.raw_skills = []
 
         # Computed from other entries
-        self.bonuses = []
-        self.cards = []
-        self.enemies = []
+        self.bonuses = [] # type: List[merged_data.MergedBonus]
+        self.cards = [] # type: List[merged_data.MergedCard]
+        self.enemies = [] # type: List[merged_data.MergedEnemy]
 
         # Faster lookups
         self.dungeon_id_to_dungeon = {}
