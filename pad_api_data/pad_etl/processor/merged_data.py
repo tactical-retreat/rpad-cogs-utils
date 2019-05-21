@@ -1,11 +1,14 @@
 from datetime import datetime
+from typing import List
 
 import pytz
 
+from ..data import BookCard, MonsterSkill
+from . import enemy_skillset
 from ..common import pad_util
 
 
-class MergedBonus(pad_util.JsonDictEncodable):
+class MergedBonus(object):
     def __init__(self, server, bonus, dungeon, group):
         self.server = server
         self.bonus = bonus
@@ -26,8 +29,11 @@ class MergedBonus(pad_util.JsonDictEncodable):
         return close_datetime_utc - open_datetime_utc
 
 
-class MergedCard(pad_util.JsonDictEncodable):
-    def __init__(self, card, active_skill, leader_skill, enemy_behavior):
+class MergedCard(object):
+    def __init__(self, card: BookCard,
+                 active_skill: MonsterSkill,
+                 leader_skill: MonsterSkill,
+                 enemy_behavior: List[enemy_skillset.ESBehavior]):
         self.card = card
         self.active_skill = active_skill
         self.leader_skill = leader_skill
@@ -38,10 +44,10 @@ class MergedCard(pad_util.JsonDictEncodable):
             repr(self.card), repr(self.active_skill), repr(self.leader_skill))
 
 
-class MergedEnemy(pad_util.JsonDictEncodable):
-    def __init__(self, enemy_id: int, behavior):
+class MergedEnemy(object):
+    def __init__(self, enemy_id: int, behavior: List[enemy_skillset.ESBehavior]):
         self.enemy_id = enemy_id
-        self.behavior = behavior  # List[ESAction or ESLogic or ESPassive]
+        self.behavior = behavior
 
 
 class CrossServerCard(object):
