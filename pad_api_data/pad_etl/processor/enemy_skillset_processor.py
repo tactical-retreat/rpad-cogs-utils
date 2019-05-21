@@ -772,7 +772,11 @@ def compute_enemy_actions(ctx: Context, behaviors: List[ESBehavior], hp_checkpoi
 
 
 def convert(card: BookCard, enemy_behavior: List[ESBehavior],
-            level: int, enemy_skill_max_counter: int, enemy_skill_counter_increment: int, force_one_enemy: bool=False):
+            level: int, force_one_enemy: bool=False):
+
+    enemy_skill_max_counter = card.enemy_skill_max_counter
+    enemy_skill_counter_increment = card.enemy_skill_counter_increment
+
     skillset = ProcessedSkillset(level)
 
     # Behavior is 1-indexed, so stick a fake row in to start

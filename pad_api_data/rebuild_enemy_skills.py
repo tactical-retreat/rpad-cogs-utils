@@ -10,6 +10,7 @@ from pad_etl.data import database
 from pad_etl.processor import debug_utils
 from pad_etl.processor import enemy_skillset_processor
 from pad_etl.processor import enemy_skillset_dump
+from pad_etl.processor import merged_data
 from pad_etl.processor.enemy_skillset import ESAction
 
 fail_logger = logging.getLogger('processor_failures')
@@ -32,11 +33,9 @@ def parse_args():
     return parser.parse_args()
 
 
-def process_card(mcard):
+def process_card(mcard: merged_data.MergedCard):
     enemy_behavior = mcard.enemy_behavior
     card = mcard.card
-    enemy_skill_max_counter = card.enemy_skill_max_counter
-    enemy_skill_counter_increment = card.enemy_skill_counter_increment
     if not enemy_behavior:
         return
 
@@ -48,8 +47,7 @@ def process_card(mcard):
             skillset = enemy_skillset_processor.convert(
                 card,
                 enemy_behavior,
-                level, enemy_skill_max_counter,
-                enemy_skill_counter_increment,
+                level,
                 force_one_enemy=(int(card.unknown_009) == 5))
             flattened = enemy_skillset_dump.flatten_skillset(level, skillset)
             if not flattened.records:
@@ -84,22 +82,26 @@ def process_card(mcard):
 
 def run(args):
     raw_input_dir = os.path.join(args.input_dir, 'raw')
-    db = database.Database('na', raw_input_dir)
-    db.load_database(skip_skills=True, skip_bonus=True, skip_extra=True)
+    na_db = database.Database('na', raw_input_dir)
+    na_db.load_database(skip_skills=True, skip_bonus=True, skip_extra=True)
+    jp_db = database.Database('jp', raw_input_dir)
+    jp_db.load_database(skip_skills=True, skip_bonus=True, skip_extra=True)
+
+    combined_cards = merged_data.build_cross_server_cards(jp_db, na_db)
 
     fixed_card_id = args.card_id
     if args.interactive:
         fixed_card_id = input("enter a card id:").strip()
 
-
     count = 0
-    for card in db.cards:
-        if fixed_card_id and card.card.card_id != int(fixed_card_id):
+    for csc in combined_cards:
+        card = csc.na_card
+        if fixed_card_id and card.card_id != int(fixed_card_id):
             continue
         try:
             count += 1
             if count % 100 == 0:
-                print('processing {} of {}'.format(count, len(db.cards)))
+                print('processing {} of {}'.format(count, len(combined_cards)))
             process_card(card)
 
         except Exception as ex:
