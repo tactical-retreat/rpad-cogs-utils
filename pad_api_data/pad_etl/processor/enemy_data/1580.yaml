@@ -4,7 +4,7 @@
 !EntryInfo
 comments: null
 monster_id: 1580
-monster_name_en: '***** (Dragon Ball)'
+monster_name_en: 魔人ブウ・無邪気 VS 純粋悪
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings: []
@@ -38,8 +38,8 @@ records:
   desc_en: Movetime -1s for 5 turns
   desc_jp: Movetime -1s for 5 turns
   max_atk_pct: null
-  name_en: '***** (Dragon Ball)'
-  name_jp: '***** (Dragon Ball)'
+  name_en: ぬっ
+  name_jp: ぬっ
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
@@ -65,8 +65,8 @@ records:
   desc_en: Bind 1 subs for 1 turns, Deal 60% damage
   desc_jp: Bind 1 subs for 1 turns, Deal 60% damage
   max_atk_pct: 60
-  name_en: '***** (Dragon Ball)'
-  name_jp: '***** (Dragon Ball)'
+  name_en: チョ…チョコに…チョコにしてやるーっ!!!
+  name_jp: チョ…チョコに…チョコにしてやるーっ!!!
   one_time: 1
   record_type_name: ACTION
   usage_pct: 100
@@ -83,8 +83,8 @@ records:
   desc_en: Change Random to Jammer, Deal 90% damage
   desc_jp: Change Random to Jammer, Deal 90% damage
   max_atk_pct: 90
-  name_en: '***** (Dragon Ball)'
-  name_jp: '***** (Dragon Ball)'
+  name_en: ブッ
+  name_jp: ブッ
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
@@ -100,7 +100,7 @@ records:
 ############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESDeathCry(69:1430) -> ***** (Dragon Ball)
+# [1] ESDeathCry(69:1430) -> ブウ2→ブウ3
 # 	Condition: On death (ai:0 rnd:0)
 # Show message: プシュシューーーーッ|ふあああああ…
 # ムニュムニュ………
@@ -116,13 +116,13 @@ records:
 # Branch on flag & 1, target rnd 10
 # [7] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [8] ESDebuffMovetime(39:1488) -> ***** (Dragon Ball)
+# [8] ESDebuffMovetime(39:1488) -> ぬっ
 # Movetime -1s for 5 turns
 # [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [10] ESBindAttack(63:1489) -> ***** (Dragon Ball)
+# [10] ESBindAttack(63:1489) -> チョ…チョコに…チョコにしてやるーっ!!!
 # 	Condition: When < 50% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Bind 1 subs for 1 turns, Deal 60% damage
-# [11] ESOrbChangeAttack(48:1490) -> ***** (Dragon Ball)
+# [11] ESOrbChangeAttack(48:1490) -> ブッ
 # 	Condition: When < 50% hp (ai:100 rnd:0)
 # Change Random to Jammer, Deal 90% damage

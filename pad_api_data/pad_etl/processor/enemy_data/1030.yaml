@@ -4,7 +4,7 @@
 !EntryInfo
 comments: null
 monster_id: 1030
-monster_name_en: '***** (HxH)'
+monster_name_en: メルエム
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings: []
@@ -20,8 +20,8 @@ records:
   desc_en: Player recover 100% hp (Preemptive)
   desc_jp: Player recover 100% hp (Preemptive)
   max_atk_pct: null
-  name_en: '***** (HxH)'
-  name_jp: '***** (HxH)'
+  name_en: しっかり体調を戻せ
+  name_jp: しっかり体調を戻せ
   one_time: 0
   record_type_name: PREEMPT
   usage_pct: 100
@@ -29,8 +29,8 @@ records:
   desc_en: Change Random to Jammer, Deal 100% damage
   desc_jp: Change Random to Jammer, Deal 100% damage
   max_atk_pct: 100
-  name_en: '***** (HxH)'
-  name_jp: '***** (HxH)'
+  name_en: まぁよいわ
+  name_jp: まぁよいわ
   one_time: 0
   record_type_name: ACTION
   usage_pct: 60
@@ -56,8 +56,8 @@ records:
   desc_en: Increase damage to 200% for the next attack
   desc_jp: Increase damage to 200% for the next attack
   max_atk_pct: null
-  name_en: '***** (HxH)'
-  name_jp: '***** (HxH)'
+  name_en: おぬし　なかなか強いな
+  name_jp: おぬし　なかなか強いな
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
@@ -83,8 +83,8 @@ records:
   desc_en: Do nothing
   desc_jp: Do nothing
   max_atk_pct: null
-  name_en: '***** (HxH)'
-  name_jp: '***** (HxH)'
+  name_en: 余の力こそが
+  name_jp: 余の力こそが
   one_time: 1
   record_type_name: ACTION
   usage_pct: 100
@@ -101,8 +101,8 @@ records:
   desc_en: Deal 400% damage (4 hits, 100% each)
   desc_jp: Deal 400% damage (4 hits, 100% each)
   max_atk_pct: 400
-  name_en: '***** (HxH)'
-  name_jp: '***** (HxH)'
+  name_en: この世の頂点に在る！
+  name_jp: この世の頂点に在る！
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
@@ -124,7 +124,7 @@ records:
 # Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESRecoverPlayer(55:826) -> ***** (HxH)
+# [4] ESRecoverPlayer(55:826) -> しっかり体調を戻せ
 # Player recover 100% hp
 # [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
@@ -136,19 +136,19 @@ records:
 # Branch on flag & 2, target rnd 12
 # [9] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [10] ESStorePower(8:827) -> ***** (HxH)
+# [10] ESStorePower(8:827) -> おぬし　なかなか強いな
 # 	Condition: When < 75% hp (ai:100 rnd:0)
 # Increase damage to 200% for the next attack
 # [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [12] ESOrbChangeAttack(48:828) -> ***** (HxH)
+# [12] ESOrbChangeAttack(48:828) -> まぁよいわ
 # 	Condition: 60% chance (ai:60 rnd:0)
 # Change Random to Jammer, Deal 100% damage
 # [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [14] ESInactivity(16:829) -> ***** (HxH)
+# [14] ESInactivity(16:829) -> 余の力こそが
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Do nothing
-# [15] ESAttackMultihit(15:830) -> ***** (HxH)
+# [15] ESAttackMultihit(15:830) -> この世の頂点に在る！
 # 	Condition: When < 25% hp (ai:100 rnd:0)
 # Deal 400% damage (4 hits, 100% each)

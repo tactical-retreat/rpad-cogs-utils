@@ -4,7 +4,7 @@
 !EntryInfo
 comments: null
 monster_id: 4971
-monster_name_en: '*****'
+monster_name_en: ひも爺
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings: []
@@ -20,8 +20,8 @@ records:
   desc_en: Absorb combo <= 4 damage for 5 turns (Preemptive)
   desc_jp: Absorb combo <= 4 damage for 5 turns (Preemptive)
   max_atk_pct: null
-  name_en: Starviiiiing
-  name_jp: Starviiiiing
+  name_en: ひもじぃ～
+  name_jp: ひもじぃ～
   one_time: 0
   record_type_name: PREEMPT
   usage_pct: 100
@@ -38,8 +38,8 @@ records:
   desc_en: Bind awoken skills for 2 turns (When 1 enemy remains)
   desc_jp: Bind awoken skills for 2 turns (When 1 enemy remains)
   max_atk_pct: null
-  name_en: I'm starving...
-  name_jp: I'm starving...
+  name_en: ひもじいのぅ…
+  name_jp: ひもじいのぅ…
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
@@ -56,8 +56,8 @@ records:
   desc_en: Deal 110% damage
   desc_jp: Deal 110% damage
   max_atk_pct: 110
-  name_en: Starve!
-  name_jp: Starve!
+  name_en: ひもっ！
+  name_jp: ひもっ！
   one_time: 0
   record_type_name: ACTION
   usage_pct: 40
@@ -65,8 +65,8 @@ records:
   desc_en: Spawn random 3 Heal orbs, Deal 120% damage
   desc_jp: Spawn random 3 Heal orbs, Deal 120% damage
   max_atk_pct: 120
-  name_en: Time for a snack!
-  name_jp: Time for a snack!
+  name_en: メシの時間じゃ！
+  name_jp: メシの時間じゃ！
   one_time: 0
   record_type_name: ACTION
   usage_pct: 40
@@ -92,8 +92,8 @@ records:
   desc_en: Enemy recover 100% hp
   desc_jp: Enemy recover 100% hp
   max_atk_pct: null
-  name_en: Hungry Impact
-  name_jp: Hungry Impact
+  name_en: ひもじインパクト
+  name_jp: ひもじインパクト
   one_time: 1
   record_type_name: ACTION
   usage_pct: 100
@@ -101,8 +101,8 @@ records:
   desc_en: Change Random to Water, Deal 100% damage
   desc_jp: Change Random to Water, Deal 100% damage
   max_atk_pct: 100
-  name_en: I can't stop drooling!
-  name_jp: I can't stop drooling!
+  name_en: ヨダレが止まら～ん！
+  name_jp: ヨダレが止まら～ん！
   one_time: 0
   record_type_name: ACTION
   usage_pct: 50
@@ -112,8 +112,8 @@ records:
   desc_jp: Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
     Poison orbs, Deal 110% damage
   max_atk_pct: 110
-  name_en: This is my snack!
-  name_jp: This is my snack!
+  name_en: コレは　ワシのメシじゃ～！
+  name_jp: コレは　ワシのメシじゃ～！
   one_time: 0
   record_type_name: ACTION
   usage_pct: 50
@@ -139,7 +139,7 @@ records:
 # Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESAbsorbCombo(67:11895) -> Starviiiiing
+# [6] ESAbsorbCombo(67:11895) -> ひもじぃ～
 # Absorb combo <= 4 damage for 5 turns
 # [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
@@ -147,10 +147,10 @@ records:
 # Branch on hp < 30, target rnd 17
 # [9] ESBranchRemainingEnemies(120:8595) -> ESBranchRemainingEnemies
 # Branch on remaining enemies <= 1, target rnd 13
-# [10] ESAttackMultihit(15:11896) -> Starve!
+# [10] ESAttackMultihit(15:11896) -> ひもっ！
 # 	Condition: 40% chance (ai:40 rnd:0)
 # Deal 110% damage
-# [11] ESRandomSpawn(92:11897) -> Time for a snack!
+# [11] ESRandomSpawn(92:11897) -> メシの時間じゃ！
 # 	Condition: 40% chance & when Fire, Water, Wood, Light, Dark, Jammer, Poison, Mortal Poison orbs are on the board (ai:40 rnd:0)
 # Spawn random 3 Heal orbs, Deal 120% damage
 # [12] ESEndPath(36:26) -> ESEndPath
@@ -159,17 +159,17 @@ records:
 # Branch on flag & 2, target rnd 10
 # [14] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [15] ESBindAwoken(88:11898) -> I'm starving...
+# [15] ESBindAwoken(88:11898) -> ひもじいのぅ…
 # Bind awoken skills for 2 turns
 # [16] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [17] ESRecoverEnemy(86:11899) -> Hungry Impact
+# [17] ESRecoverEnemy(86:11899) -> ひもじインパクト
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Enemy recover 100% hp
-# [18] ESOrbChangeAttack(48:11900) -> I can't stop drooling!
+# [18] ESOrbChangeAttack(48:11900) -> ヨダレが止まら～ん！
 # 	Condition: 50% chance (ai:0 rnd:50)
 # Change Random to Water, Deal 100% damage
-# [19] ESOrbLock(94:11901) -> This is my snack!
+# [19] ESOrbLock(94:11901) -> コレは　ワシのメシじゃ～！
 # 	Condition: 50% chance (ai:0 rnd:50)
 # Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 110% damage
 # [20] ESEndPath(36:26) -> ESEndPath

@@ -1,0 +1,147 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 5249
+monster_name_en: ハオ
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from all sources by 50% for 5 turns (Preemptive)
+  desc_jp: Reduce damage from all sources by 50% for 5 turns (Preemptive)
+  max_atk_pct: null
+  name_en: さっそく始めようか
+  name_jp: さっそく始めようか
+  one_time: 1
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Bind 1 subs for 5 turns, Deal 95% damage
+  desc_jp: Bind 1 subs for 5 turns, Deal 95% damage
+  max_atk_pct: 95
+  name_en: 本当にバカな連中だね
+  name_jp: 本当にバカな連中だね
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 33
+- !SkillRecord
+  desc_en: Delay active skills by 2 turns, Deal 100% damage
+  desc_jp: Delay active skills by 2 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: どうせ僕には勝てないんだよ？
+  name_jp: どうせ僕には勝てないんだよ？
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 33
+- !SkillRecord
+  desc_en: Spawn random 8 Jammer orbs, Deal 90% damage
+  desc_jp: Spawn random 8 Jammer orbs, Deal 90% damage
+  max_atk_pct: 90
+  name_en: 口の利き方には気を付けた方がいい
+  name_jp: 口の利き方には気を付けた方がいい
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 34
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Absorb combo <= 5 damage for 10 turns
+  desc_jp: Absorb combo <= 5 damage for 10 turns
+  max_atk_pct: null
+  name_en: ちっちぇえな
+  name_jp: ちっちぇえな
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 20
+  name_jp: HP <= 20
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 240% damage (8 hits, 30% each)
+  desc_jp: Deal 240% damage (8 hits, 30% each)
+  max_atk_pct: 240
+  name_en: ちょっぴり痛かったかな…
+  name_jp: ちょっぴり痛かったかな…
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 1 - starting/max counter
+# [54] 0 - counter increment
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:3402) -> ESPreemptive
+# Enable preempt if level 4
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 4, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESDamageShield(74:13242) -> さっそく始めようか
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Reduce damage from all sources by 50% for 5 turns
+# [5] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 50, target rnd 10
+# [6] ESBindAttack(63:13244) -> 本当にバカな連中だね
+# 	Condition: 33% chance (ai:0 rnd:33)
+# Bind 1 subs for 5 turns, Deal 95% damage
+# [7] ESSkillDelay(89:13245) -> どうせ僕には勝てないんだよ？
+# 	Condition: 33% chance (ai:0 rnd:33)
+# Delay active skills by 2 turns, Deal 100% damage
+# [8] ESRandomSpawn(92:13246) -> 口の利き方には気を付けた方がいい
+# 	Condition: 34% chance & when Fire, Water, Wood, Light, Dark, Heal, Poison, Mortal Poison orbs are on the board (ai:0 rnd:34)
+# Spawn random 8 Jammer orbs, Deal 90% damage
+# [9] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [10] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 14
+# [11] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [12] ESAbsorbCombo(67:13243) -> ちっちぇえな
+# Absorb combo <= 5 damage for 10 turns
+# [13] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [14] ESBranchHP(29:19) -> ESBranchHP
+# Branch on hp > 21, target rnd 6
+# [15] ESAttackMultihit(15:13247) -> ちょっぴり痛かったかな…
+# Deal 240% damage (8 hits, 30% each)
+# [16] ESEndPath(36:26) -> ESEndPath
+# end_turn

@@ -4,7 +4,7 @@
 !EntryInfo
 comments: null
 monster_id: 4938
-monster_name_en: '*****'
+monster_name_en: 仮面ライダー王蛇
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings: []
@@ -20,8 +20,8 @@ records:
   desc_en: Voids status ailments for 5 turns (Preemptive)
   desc_jp: Voids status ailments for 5 turns (Preemptive)
   max_atk_pct: null
-  name_en: The festivities are here...
-  name_jp: The festivities are here...
+  name_en: ここか、祭りの場所は…
+  name_jp: ここか、祭りの場所は…
   one_time: 2
   record_type_name: PREEMPT
   usage_pct: 100
@@ -29,8 +29,8 @@ records:
   desc_en: Deal 100% damage
   desc_jp: Deal 100% damage
   max_atk_pct: 100
-  name_en: Veno Visor
-  name_jp: Veno Visor
+  name_en: ベノバイザー
+  name_jp: ベノバイザー
   one_time: 0
   record_type_name: ACTION
   usage_pct: 50
@@ -38,8 +38,8 @@ records:
   desc_en: Spawn random 3 Poison orbs, Deal 80% damage
   desc_jp: Spawn random 3 Poison orbs, Deal 80% damage
   max_atk_pct: 80
-  name_en: Veno Snaker
-  name_jp: Veno Snaker
+  name_en: ベノスネーカー
+  name_jp: ベノスネーカー
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
@@ -65,8 +65,8 @@ records:
   desc_en: Increase damage to 150% for the next 5 turns
   desc_jp: Increase damage to 150% for the next 5 turns
   max_atk_pct: null
-  name_en: You're getting on my nerves!
-  name_jp: You're getting on my nerves!
+  name_en: イライラするんだよ
+  name_jp: イライラするんだよ
   one_time: 1
   record_type_name: ACTION
   usage_pct: 100
@@ -74,8 +74,8 @@ records:
   desc_en: Do nothing + Deal 120% damage (3 hits, 40% each)
   desc_jp: Do nothing + Deal 120% damage (3 hits, 40% each)
   max_atk_pct: null
-  name_en: Sword Vent + Veno Saber
-  name_jp: Sword Vent + Veno Saber
+  name_en: ソードベント + ベノサーベル
+  name_jp: ソードベント + ベノサーベル
   one_time: 0
   record_type_name: ACTION
   usage_pct: 33
@@ -83,8 +83,8 @@ records:
   desc_en: Deal 100% damage
   desc_jp: Deal 100% damage
   max_atk_pct: 100
-  name_en: Veno Visor
-  name_jp: Veno Visor
+  name_en: ベノバイザー
+  name_jp: ベノバイザー
   one_time: 0
   record_type_name: ACTION
   usage_pct: 50
@@ -92,8 +92,8 @@ records:
   desc_en: Spawn random 3 Poison orbs, Deal 80% damage
   desc_jp: Spawn random 3 Poison orbs, Deal 80% damage
   max_atk_pct: 80
-  name_en: Veno Snaker
-  name_jp: Veno Snaker
+  name_en: ベノスネーカー
+  name_jp: ベノスネーカー
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
@@ -110,8 +110,8 @@ records:
   desc_en: Do nothing + Deal 160% damage (4 hits, 40% each)
   desc_jp: Do nothing + Deal 160% damage (4 hits, 40% each)
   max_atk_pct: null
-  name_en: Final Vent + Veno Crush
-  name_jp: Final Vent + Veno Crush
+  name_en: ファイナルベント + ベノクラッシュ
+  name_jp: ファイナルベント + ベノクラッシュ
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
@@ -133,34 +133,34 @@ records:
 # Branch on level > 4, target rnd 4
 # [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESStatusShield(20:11794) -> The festivities are here...
+# [4] ESStatusShield(20:11794) -> ここか、祭りの場所は…
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
 # Voids status ailments for 5 turns
 # [5] ESBranchHP(29:19) -> ESBranchHP
 # Branch on hp > 51, target rnd 9
-# [6] ESAttackUPRemainingEnemies(17:11797) -> You're getting on my nerves!
+# [6] ESAttackUPRemainingEnemies(17:11797) -> イライラするんだよ
 # 	Condition: One-time use, when <= 1 enemies remain (ai:100 rnd:0) (one-time: 1)
 # Increase damage to 150% for the next 5 turns
 # [7] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 15, target rnd 12
 # [8] SkillSet:
 # 	Condition: 33% chance (ai:33 rnd:0)
-# 	[0] ESInactivity(66:11799) -> Sword Vent
+# 	[0] ESInactivity(66:11799) -> ソードベント
 # 	Do nothing
-# 	[1] ESAttackMultihit(15:11800) -> Veno Saber
+# 	[1] ESAttackMultihit(15:11800) -> ベノサーベル
 # 	Deal 120% damage (3 hits, 40% each)
-# [9] ESAttackMultihit(15:11795) -> Veno Visor
+# [9] ESAttackMultihit(15:11795) -> ベノバイザー
 # 	Condition: 50% chance (ai:50 rnd:0)
 # Deal 100% damage
-# [10] ESRandomSpawn(92:11796) -> Veno Snaker
+# [10] ESRandomSpawn(92:11796) -> ベノスネーカー
 # 	Condition: When fire, water, wood, light, dark, heal, jammer, mortal poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 3 Poison orbs, Deal 80% damage
 # [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [12] SkillSet:
-# 	[0] ESInactivity(66:11802) -> Final Vent
+# 	[0] ESInactivity(66:11802) -> ファイナルベント
 # 	Do nothing
-# 	[1] ESAttackMultihit(15:11803) -> Veno Crush
+# 	[1] ESAttackMultihit(15:11803) -> ベノクラッシュ
 # 	Deal 160% damage (4 hits, 40% each)
 # [13] ESEndPath(36:26) -> ESEndPath
 # end_turn

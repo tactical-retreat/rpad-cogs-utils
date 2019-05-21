@@ -4,64 +4,105 @@
 !EntryInfo
 comments: null
 monster_id: 2622
-monster_name_en: Space Witch, Haggar
+monster_name_en: スネイク・ヘッズ副頭・陣内公平
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings: []
 
 ############################################################
-### Data @ 1
+### Data @ 4
 ############################################################
 !SkillRecordListing
-level: 1
+level: 4
 overrides: []
 records:
 - !SkillRecord
-  desc_en: Blind all orbs on the board (Preemptive)
-  desc_jp: Blind all orbs on the board (Preemptive)
+  desc_en: Do nothing + Voids status ailments for 999 turns (Preemptive)
+  desc_jp: Do nothing + Voids status ailments for 999 turns (Preemptive)
   max_atk_pct: null
-  name_en: 'It is time to reclaim
-
-    what is rightfully ours.'
-  name_jp: 'It is time to reclaim
-
-    what is rightfully ours.'
+  name_en: もういい… + 最後はオレがきっちりカタをつける
+  name_jp: もういい… + 最後はオレがきっちりカタをつける
   one_time: 0
   record_type_name: PREEMPT
   usage_pct: 100
 - !SkillRecord
-  desc_en: Seal 1st column for 1 turns, Deal 100% damage
-  desc_jp: Seal 1st column for 1 turns, Deal 100% damage
-  max_atk_pct: 100
-  name_en: Sly Tactics
-  name_jp: Sly Tactics
-  one_time: 0
-  record_type_name: ACTION
-  usage_pct: 30
-- !SkillRecord
-  desc_en: Change 1st column to Poison orbs, 6th column to Jammer orbs
-  desc_jp: Change 1st column to Poison orbs, 6th column to Jammer orbs
+  desc_en: ''
+  desc_jp: ''
   max_atk_pct: null
-  name_en: Astral Deception
-  name_jp: Astral Deception
-  one_time: 0
-  record_type_name: ACTION
-  usage_pct: 30
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
 - !SkillRecord
-  desc_en: Change 3rd column to Light orbs, 4th column to Dark orbs, Deal 120% damage
-  desc_jp: Change 3rd column to Light orbs, 4th column to Dark orbs, Deal 120% damage
-  max_atk_pct: 120
-  name_en: Black Magic
-  name_jp: Black Magic
+  desc_en: Spawn random 8 Wood orbs, (if [2617, 2618] on team)
+  desc_jp: Spawn random 8 Wood orbs, (if [2617, 2618] on team)
+  max_atk_pct: null
+  name_en: 久しぶりだなパルコ
+  name_jp: 久しぶりだなパルコ
   one_time: 0
   record_type_name: ACTION
-  usage_pct: 40
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Delay active skills by 2~5 turns
+  desc_jp: Delay active skills by 2~5 turns
+  max_atk_pct: null
+  name_en: おまえらとりあえずワビを入れろや
+  name_jp: おまえらとりあえずワビを入れろや
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP < 40
-  name_jp: HP < 40
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change 5th row to Poison orbs, Deal 100% damage
+  desc_jp: Change 5th row to Poison orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: ここに頭をこすりつけてな！
+  name_jp: ここに頭をこすりつけてな！
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Change Heal to Fire, Deal 100% damage
+  desc_jp: Change Heal to Fire, Deal 100% damage
+  max_atk_pct: 100
+  name_en: あんまり調子にのんなよてめー
+  name_jp: あんまり調子にのんなよてめー
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Spawn random 6 Fire orbs, Deal 100% damage
+  desc_jp: Spawn random 6 Fire orbs, Deal 100% damage
+  max_atk_pct: 100
+  name_en: あんまり調子にのんなよてめー
+  name_jp: あんまり調子にのんなよてめー
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
@@ -75,12 +116,23 @@ records:
   record_type_name: DIVIDER
   usage_pct: null
 - !SkillRecord
-  desc_en: Enemy recover 50% hp
-  desc_jp: Enemy recover 50% hp
+  desc_en: Spawn random 8 Wood orbs, (if [2617, 2618] on team)
+  desc_jp: Spawn random 8 Wood orbs, (if [2617, 2618] on team)
   max_atk_pct: null
-  name_en: Gathering Quintessence
-  name_jp: Gathering Quintessence
-  one_time: 1
+  name_en: 久しぶりだなパルコ
+  name_jp: 久しぶりだなパルコ
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Increase damage to 200% for the next 99 turns + Reduce damage from all
+    sources by 50% for 1 turns
+  desc_jp: Increase damage to 200% for the next 99 turns + Reduce damage from all
+    sources by 50% for 1 turns
+  max_atk_pct: null
+  name_en: タイマンか それとも全員でふくろか… + 今日のオレはそう簡単にくたばんねーぞ
+  name_jp: タイマンか それとも全員でふくろか… + 今日のオレはそう簡単にくたばんねーぞ
+  one_time: 0
   record_type_name: ACTION
   usage_pct: 100
 
@@ -89,38 +141,67 @@ records:
 ############################################################
 # [9] 5 - monster size?
 # [52] true - use new AI
-# [53] 1 - starting/max counter
+# [53] 0 - starting/max counter
 # [54] 0 - counter increment
 #
 ############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive(49:318) -> ESPreemptive
-# Enable preempt if level 1
-# [2] ESBranchFlag(43:10) -> ESBranchFlag
-# Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# [1] ESPreemptive(49:3402) -> ESPreemptive
+# Enable preempt if level 4
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 4, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 8
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESBlind(5:6934) -> It is time to reclaim
-# what is rightfully ours.
-# Blind all orbs on the board
-# [5] ESEndPath(36:26) -> ESEndPath
-# end_turn
-# [6] ESRecoverEnemy(86:6936) -> Gathering Quintessence
-# 	Condition: When < 40% hp , one-time use (ai:100 rnd:0) (one-time: 1)
-# Enemy recover 50% hp
-# [7] ESOrbSealColumn(99:6937) -> Sly Tactics
-# 	Condition: 30% chance (ai:0 rnd:30)
-# Seal 1st column for 1 turns, Deal 100% damage
-# [8] ESColumnSpawnMulti(76:6938) -> Astral Deception
-# 	Condition: 30% chance (ai:0 rnd:30)
-# Change 1st column to Poison orbs, 6th column to Jammer orbs
-# [9] ESColumnSpawnMulti(77:6935) -> Black Magic
-# 	Condition: 40% chance (ai:0 rnd:40)
-# Change 3rd column to Light orbs, 4th column to Dark orbs, Deal 120% damage
-# [10] ESEndPath(36:26) -> ESEndPath
-# end_turn
-# [11] SkillSet:
-# 	Condition: On death (ai:0 rnd:0)
-# 	[0] ESInactivity(66:6939) -> Nooooo!
+# [6] SkillSet:
+# 	[0] ESInactivity(66:2688) -> もういい…
 # 	Do nothing
+# 	[1] ESStatusShield(20:2674) -> 最後はオレがきっちりカタをつける
+# 	Voids status ailments for 999 turns
+# [7] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [8] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 11
+# [9] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [10] ESBranchCard(90:2686) -> ESBranchCard
+# Branch on player_cards HAS [2617, 2618], target rnd 23
+# [11] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 50, target rnd 20
+# [12] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 4, target rnd 15
+# [13] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b111
+# [14] ESSkillDelay(89:2675) -> おまえらとりあえずワビを入れろや
+# Delay active skills by 2~5 turns
+# [15] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 8, target rnd 18
+# [16] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1111
+# [17] ESRowSpawnMulti(79:2676) -> ここに頭をこすりつけてな！
+# Change 5th row to Poison orbs, Deal 100% damage
+# [18] ESOrbChangeAttack(48:2677) -> あんまり調子にのんなよてめー
+# Change Heal to Fire, Deal 100% damage
+# [19] ESRandomSpawn(92:2678) -> あんまり調子にのんなよてめー
+# 	Condition: When water, wood, light, dark, heal, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
+# Spawn random 6 Fire orbs, Deal 100% damage
+# [20] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 16, target rnd 18
+# [21] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11111
+# [22] SkillSet:
+# 	[0] ESAttackUPRemainingEnemies(17:2679) -> タイマンか それとも全員でふくろか…
+# 	Increase damage to 200% for the next 99 turns
+# 	[1] ESDamageShield(74:2680) -> 今日のオレはそう簡単にくたばんねーぞ
+# 	Reduce damage from all sources by 50% for 1 turns
+# [23] ESRandomSpawn(92:2687) -> 久しぶりだなパルコ
+# 	Condition: When fire, water, light, dark, heal, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
+# Spawn random 8 Wood orbs, (if [2617, 2618] on team)
+# [24] SkillSet:
+# 	Condition: On death (ai:100 rnd:0)
+# 	[0] ESSkillSet(83:2685) -> オレも何かを見つけてこようと思う！ + テルの言う光ってやつさ… そしたら…
+# 	Do nothing + Do nothing

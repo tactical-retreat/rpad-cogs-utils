@@ -4,7 +4,7 @@
 !EntryInfo
 comments: null
 monster_id: 4662
-monster_name_en: '*****'
+monster_name_en: 紅のドラゴンスラッガー・ソニア
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings: []
@@ -20,8 +20,8 @@ records:
   desc_en: Spawn random 6 Poison orbs (Preemptive)
   desc_jp: Spawn random 6 Poison orbs (Preemptive)
   max_atk_pct: null
-  name_en: Let's guide them man to man.
-  name_jp: Let's guide them man to man.
+  name_en: マンツーマンで指導しよう。
+  name_jp: マンツーマンで指導しよう。
   one_time: 0
   record_type_name: PREEMPT
   usage_pct: 100
@@ -38,8 +38,8 @@ records:
   desc_en: Change Poison to Fire, Dark, Deal 200% damage
   desc_jp: Change Poison to Fire, Dark, Deal 200% damage
   max_atk_pct: 200
-  name_en: I'll do it one way or another.
-  name_jp: I'll do it one way or another.
+  name_en: それは私がなんとかしよう。
+  name_jp: それは私がなんとかしよう。
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
@@ -47,8 +47,8 @@ records:
   desc_en: Spawn random 6 Heal orbs + Movetime 200% for 1 turns
   desc_jp: Spawn random 6 Heal orbs + Movetime 200% for 1 turns
   max_atk_pct: null
-  name_en: Alright, great! + Don't forget this sensation now.
-  name_jp: Alright, great! + Don't forget this sensation now.
+  name_en: よし、いいぞ！ + 今の感覚を忘れるな。
+  name_jp: よし、いいぞ！ + 今の感覚を忘れるな。
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
@@ -65,8 +65,8 @@ records:
   desc_en: Increase damage to 150% for the next 5 turns
   desc_jp: Increase damage to 150% for the next 5 turns
   max_atk_pct: null
-  name_en: "Dauntless Courage\u200B"
-  name_jp: "Dauntless Courage\u200B"
+  name_en: 勇猛果敢
+  name_jp: 勇猛果敢
   one_time: 1
   record_type_name: ACTION
   usage_pct: 100
@@ -85,8 +85,8 @@ records:
   desc_jp: Lock 5 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
     Poison orbs, Deal 100% damage
   max_atk_pct: 100
-  name_en: Evasive Ball
-  name_jp: Evasive Ball
+  name_en: 逃げ球
+  name_jp: 逃げ球
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
@@ -112,8 +112,8 @@ records:
   desc_en: Change all orbs to Fire, Dark, Deal 100% damage
   desc_jp: Change all orbs to Fire, Dark, Deal 100% damage
   max_atk_pct: 100
-  name_en: Try saying that again!...
-  name_jp: Try saying that again!...
+  name_en: おのれ・・・もう一度言ってみろ！
+  name_jp: おのれ・・・もう一度言ってみろ！
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
@@ -130,8 +130,8 @@ records:
   desc_en: Increase damage to 150% for the next 5 turns
   desc_jp: Increase damage to 150% for the next 5 turns
   max_atk_pct: null
-  name_en: "Dauntless Courage\u200B"
-  name_jp: "Dauntless Courage\u200B"
+  name_en: 勇猛果敢
+  name_jp: 勇猛果敢
   one_time: 1
   record_type_name: ACTION
   usage_pct: 100
@@ -148,8 +148,8 @@ records:
   desc_en: Deal 200% damage (4 hits, 50% each)
   desc_jp: Deal 200% damage (4 hits, 50% each)
   max_atk_pct: 200
-  name_en: Draco Summoning Throwing Law
-  name_jp: Draco Summoning Throwing Law
+  name_en: 継界召龍投法
+  name_jp: 継界召龍投法
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
@@ -175,7 +175,7 @@ records:
 # Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESRandomSpawn(92:10624) -> Let's guide them man to man.
+# [6] ESRandomSpawn(92:10624) -> マンツーマンで指導しよう。
 # 	Condition: When fire, water, wood, light, dark, heal, jammer, mortal poison orbs are on the board (ai:100 rnd:0)
 # Spawn random 6 Poison orbs
 # [7] ESEndPath(36:26) -> ESEndPath
@@ -184,12 +184,12 @@ records:
 # Branch on flag & 2, target rnd 13
 # [9] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b11
-# [10] ESOrbChangeAttackBits(108:10628) -> I'll do it one way or another.
+# [10] ESOrbChangeAttackBits(108:10628) -> それは私がなんとかしよう。
 # Change Poison to Fire, Dark, Deal 200% damage
 # [11] SkillSet:
-# 	[0] ESRandomSpawn(92:10625) -> Alright, great!
+# 	[0] ESRandomSpawn(92:10625) -> よし、いいぞ！
 # 	Spawn random 6 Heal orbs
-# 	[1] ESDebuffMovetime(39:10626) -> Don't forget this sensation now.
+# 	[1] ESDebuffMovetime(39:10626) -> 今の感覚を忘れるな。
 # 	Movetime 200% for 1 turns
 # [12] ESEndPath(36:26) -> ESEndPath
 # end_turn
@@ -197,10 +197,10 @@ records:
 # Branch on hp < 50, target rnd 18
 # [14] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 22
-# [15] ESAttackUPRemainingEnemies(17:10629) -> Dauntless Courage​
+# [15] ESAttackUPRemainingEnemies(17:10629) -> 勇猛果敢
 # 	Condition: One-time use, when <= 1 enemies remain (ai:100 rnd:0) (one-time: 1)
 # Increase damage to 150% for the next 5 turns
-# [16] ESOrbLock(94:10630) -> Evasive Ball
+# [16] ESOrbLock(94:10630) -> 逃げ球
 # Lock 5 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 100% damage
 # [17] ESEndPath(36:26) -> ESEndPath
 # end_turn
@@ -208,11 +208,11 @@ records:
 # Branch on flag & 4, target rnd 14
 # [19] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
-# [20] ESBoardChange(84:10631) -> Try saying that again!...
+# [20] ESBoardChange(84:10631) -> おのれ・・・もう一度言ってみろ！
 # Change all orbs to Fire, Dark, Deal 100% damage
 # [21] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [22] ESAttackMultihit(15:10632) -> Draco Summoning Throwing Law
+# [22] ESAttackMultihit(15:10632) -> 継界召龍投法
 # Deal 200% damage (4 hits, 50% each)
 # [23] ESEndPath(36:26) -> ESEndPath
 # end_turn

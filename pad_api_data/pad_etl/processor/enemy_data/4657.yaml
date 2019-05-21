@@ -4,7 +4,7 @@
 !EntryInfo
 comments: null
 monster_id: 4657
-monster_name_en: '*****'
+monster_name_en: 猪狩守
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings: []
@@ -20,8 +20,8 @@ records:
   desc_en: Voids status ailments for 5 turns (Preemptive)
   desc_jp: Voids status ailments for 5 turns (Preemptive)
   max_atk_pct: null
-  name_en: Knowledge
-  name_jp: Knowledge
+  name_en: 心得
+  name_jp: 心得
   one_time: 0
   record_type_name: PREEMPT
   usage_pct: 100
@@ -29,8 +29,8 @@ records:
   desc_en: Change Random to Water, Deal 100% damage
   desc_jp: Change Random to Water, Deal 100% damage
   max_atk_pct: 100
-  name_en: Slider
-  name_jp: Slider
+  name_en: スライダー
+  name_jp: スライダー
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
@@ -56,8 +56,8 @@ records:
   desc_en: Reduce damage from all sources by 50% for 3 turns
   desc_jp: Reduce damage from all sources by 50% for 3 turns
   max_atk_pct: null
-  name_en: Don't panic!
-  name_jp: Don't panic!
+  name_en: 慌てるな！
+  name_jp: 慌てるな！
   one_time: 1
   record_type_name: ACTION
   usage_pct: 100
@@ -65,8 +65,8 @@ records:
   desc_en: Spawn random 5 Wood orbs, Deal 120% damage
   desc_jp: Spawn random 5 Wood orbs, Deal 120% damage
   max_atk_pct: 120
-  name_en: Raging Shot
-  name_jp: Raging Shot
+  name_en: ライジングショット
+  name_jp: ライジングショット
   one_time: 0
   record_type_name: ACTION
   usage_pct: 50
@@ -74,8 +74,8 @@ records:
   desc_en: Spawn random 5 Light orbs, Deal 120% damage
   desc_jp: Spawn random 5 Light orbs, Deal 120% damage
   max_atk_pct: 120
-  name_en: Raging Cannon
-  name_jp: Raging Cannon
+  name_en: ライジングキャノン
+  name_jp: ライジングキャノン
   one_time: 0
   record_type_name: ACTION
   usage_pct: 50
@@ -101,23 +101,23 @@ records:
 # Branch on flag & 1, target rnd 8
 # [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [6] ESStatusShield(20:10602) -> Knowledge
+# [6] ESStatusShield(20:10602) -> 心得
 # Voids status ailments for 5 turns
 # [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [8] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 75, target rnd 11
-# [9] ESOrbChangeAttack(48:10608) -> Slider
+# [9] ESOrbChangeAttack(48:10608) -> スライダー
 # Change Random to Water, Deal 100% damage
 # [10] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [11] ESDamageShield(74:10603) -> Don't panic!
+# [11] ESDamageShield(74:10603) -> 慌てるな！
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Reduce damage from all sources by 50% for 3 turns
-# [12] ESRandomSpawn(92:10604) -> Raging Shot
+# [12] ESRandomSpawn(92:10604) -> ライジングショット
 # 	Condition: 50% chance & when Fire, Water, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:0 rnd:50)
 # Spawn random 5 Wood orbs, Deal 120% damage
-# [13] ESRandomSpawn(92:10605) -> Raging Cannon
+# [13] ESRandomSpawn(92:10605) -> ライジングキャノン
 # 	Condition: 50% chance & when Fire, Water, Wood, Dark, Heal, Jammer, Poison, Mortal Poison orbs are on the board (ai:0 rnd:50)
 # Spawn random 5 Light orbs, Deal 120% damage
 # [14] ESEndPath(36:26) -> ESEndPath

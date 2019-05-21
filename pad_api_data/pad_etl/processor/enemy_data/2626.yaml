@@ -4,7 +4,7 @@
 !EntryInfo
 comments: null
 monster_id: 2626
-monster_name_en: Commander Sendak
+monster_name_en: スネイク・ヘッズ幹部・大島智之
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings: []
@@ -17,15 +17,37 @@ level: 1
 overrides: []
 records:
 - !SkillRecord
-  desc_en: Movetime -1s for 3 turns (Preemptive)
-  desc_jp: Movetime -1s for 3 turns (Preemptive)
+  desc_en: ''
+  desc_jp: ''
   max_atk_pct: null
-  name_en: 'No foe has stood in my way
+  name_en: On death
+  name_jp: On death
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Blind all orbs on the board
+  desc_jp: Blind all orbs on the board
+  max_atk_pct: null
+  name_en: まだ お 終わってねーぞ こんなろー
+  name_jp: まだ お 終わってねーぞ こんなろー
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
 
-    and none ever will.'
-  name_jp: 'No foe has stood in my way
-
-    and none ever will.'
+############################################################
+### Data @ 4
+############################################################
+!SkillRecordListing
+level: 4
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Deal 30% damage (Preemptive)
+  desc_jp: Deal 30% damage (Preemptive)
+  max_atk_pct: 30
+  name_en: ヒャッハー
+  name_jp: ヒャッハー
   one_time: 0
   record_type_name: PREEMPT
   usage_pct: 100
@@ -33,47 +55,27 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1-3
-  name_jp: Turn 1-3
+  name_en: Turn 1
+  name_jp: Turn 1
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
 - !SkillRecord
-  desc_en: Spawn random 3 Bomb orbs, Deal 100% damage
-  desc_jp: Spawn random 3 Bomb orbs, Deal 100% damage
-  max_atk_pct: 100
-  name_en: Sabotage
-  name_jp: Sabotage
-  one_time: 0
-  record_type_name: ACTION
-  usage_pct: 30
-- !SkillRecord
-  desc_en: Lock 4 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
-    Poison orbs, Deal 100% damage
-  desc_jp: Lock 4 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
-    Poison orbs, Deal 100% damage
-  max_atk_pct: 100
-  name_en: Cybernetic Arm
-  name_jp: Cybernetic Arm
+  desc_en: Spawn random 8 Dark orbs, (if [2607, 2608] on team)
+  desc_jp: Spawn random 8 Dark orbs, (if [2607, 2608] on team)
+  max_atk_pct: null
+  name_en: おらー どーしたロンゲヤロー！
+  name_jp: おらー どーしたロンゲヤロー！
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
-  desc_en: ''
-  desc_jp: ''
-  max_atk_pct: null
-  name_en: Turn 4
-  name_jp: Turn 4
-  one_time: null
-  record_type_name: DIVIDER
-  usage_pct: null
-- !SkillRecord
-  desc_en: Movetime -1s for 3 turns
-  desc_jp: Movetime -1s for 3 turns
-  max_atk_pct: null
-  name_en: Luck is on our side.
-  name_jp: Luck is on our side.
-  one_time: 1
+  desc_en: Deal 150% damage
+  desc_jp: Deal 150% damage
+  max_atk_pct: 150
+  name_en: おらっ
+  name_jp: おらっ
+  one_time: 0
   record_type_name: ACTION
   usage_pct: 100
 - !SkillRecord
@@ -86,22 +88,20 @@ records:
   record_type_name: DIVIDER
   usage_pct: null
 - !SkillRecord
-  desc_en: Spawn random 3 Bomb orbs, Deal 100% damage
-  desc_jp: Spawn random 3 Bomb orbs, Deal 100% damage
-  max_atk_pct: 100
-  name_en: Sabotage
-  name_jp: Sabotage
-  one_time: 0
-  record_type_name: ACTION
-  usage_pct: 30
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Execute repeatedly. Turn 1
+  name_jp: Execute repeatedly. Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
 - !SkillRecord
-  desc_en: Lock 4 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
-    Poison orbs, Deal 100% damage
-  desc_jp: Lock 4 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal
-    Poison orbs, Deal 100% damage
-  max_atk_pct: 100
-  name_en: Cybernetic Arm
-  name_jp: Cybernetic Arm
+  desc_en: Delay active skills by 1 turns
+  desc_jp: Delay active skills by 1 turns
+  max_atk_pct: null
+  name_en: ほう タフだなおまえ！
+  name_jp: ほう タフだなおまえ！
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
@@ -109,26 +109,71 @@ records:
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: HP < 20
-  name_jp: HP < 20
+  name_en: Turn 2
+  name_jp: Turn 2
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
+- !SkillRecord
+  desc_en: Bind own leader for 3 turns, Deal 65% damage
+  desc_jp: Bind own leader for 3 turns, Deal 65% damage
+  max_atk_pct: 65
+  name_en: そりゃ
+  name_jp: そりゃ
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
 - !SkillRecord
   desc_en: ''
   desc_jp: ''
   max_atk_pct: null
-  name_en: Turn 1
-  name_jp: Turn 1
+  name_en: Turn 3
+  name_jp: Turn 3
   one_time: null
   record_type_name: DIVIDER
   usage_pct: null
 - !SkillRecord
-  desc_en: Increase damage to 200% for the next 999 turns
-  desc_jp: Increase damage to 200% for the next 999 turns
+  desc_en: Increase damage to 200% for the next 3 turns
+  desc_jp: Increase damage to 200% for the next 3 turns
   max_atk_pct: null
-  name_en: Allegiance to Zarkon
-  name_jp: Allegiance to Zarkon
+  name_en: もーしまいか あー！
+  name_jp: もーしまいか あー！
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Loop to 1 after. Turn 4
+  name_jp: Loop to 1 after. Turn 4
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 150% damage
+  desc_jp: Deal 150% damage
+  max_atk_pct: 150
+  name_en: おらっ
+  name_jp: おらっ
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: On death
+  name_jp: On death
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Blind all orbs on the board
+  desc_jp: Blind all orbs on the board
+  max_atk_pct: null
+  name_en: まだ お 終わってねーぞ こんなろー
+  name_jp: まだ お 終わってねーぞ こんなろー
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
@@ -138,37 +183,59 @@ records:
 ############################################################
 # [9] 5 - monster size?
 # [52] true - use new AI
-# [53] 1 - starting/max counter
+# [53] 0 - starting/max counter
 # [54] 0 - counter increment
 #
 ############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESPreemptive(49:318) -> ESPreemptive
-# Enable preempt if level 1
-# [2] ESBranchFlag(43:10) -> ESBranchFlag
-# Branch on flag & 1, target rnd 6
-# [3] ESFlagOperation(22:12) -> ESFlagOperation
+# [1] ESPreemptive(49:3402) -> ESPreemptive
+# Enable preempt if level 4
+# [2] ESBranchLevel(35:25) -> ESBranchLevel
+# Branch on level > 4, target rnd 4
+# [3] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [4] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 8
+# [5] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESDebuffMovetime(39:6949) -> No foe has stood in my way
-# and none ever will.
-# Movetime -1s for 3 turns
-# [5] ESEndPath(36:26) -> ESEndPath
+# [6] ESAttackMultihit(15:2655) -> ヒャッハー
+# Deal 30% damage
+# [7] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESDebuffMovetime(39:6951) -> Luck is on our side.
-# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
-# Movetime -1s for 3 turns
-# [7] ESAttackUPRemainingEnemies(17:6952) -> Allegiance to Zarkon
-# 	Condition: When < 20% hp, when <= 1 enemies remain (ai:100 rnd:0)
-# Increase damage to 200% for the next 999 turns
-# [8] ESBombRandomSpawn(102:6953) -> Sabotage
-# 	Condition: 30% chance (ai:30 rnd:0)
-# Spawn random 3 Bomb orbs, Deal 100% damage
-# [9] ESOrbLock(94:6950) -> Cybernetic Arm
-# Lock 4 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs, Deal 100% damage
-# [10] ESEndPath(36:26) -> ESEndPath
-# end_turn
-# [11] SkillSet:
-# 	Condition: On death (ai:0 rnd:0)
-# 	[0] ESSkillSet(83:6956) -> You'll never beat Zarkon. + He's already defeated you.
-# 	Do nothing + Do nothing
+# [8] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 2, target rnd 11
+# [9] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11
+# [10] ESBranchCard(90:2662) -> ESBranchCard
+# Branch on player_cards HAS [2607, 2608], target rnd 22
+# [11] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 4, target rnd 14
+# [12] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b111
+# [13] ESAttackMultihit(15:2656) -> おらっ
+# Deal 150% damage
+# [14] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 8, target rnd 17
+# [15] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1111
+# [16] ESSkillDelay(89:2657) -> ほう タフだなおまえ！
+# Delay active skills by 1 turns
+# [17] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 16, target rnd 20
+# [18] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b11111
+# [19] ESBindAttack(63:2658) -> そりゃ
+# Bind own leader for 3 turns, Deal 65% damage
+# [20] ESFlagOperation(24:14) -> ESFlagOperation
+# flag UNSET 0b11100
+# [21] ESAttackUPRemainingEnemies(17:2659) -> もーしまいか あー！
+# 	Condition: when <= 1 enemies remain (ai:100 rnd:0)
+# Increase damage to 200% for the next 3 turns
+# [22] ESRandomSpawn(92:2663) -> おらー どーしたロンゲヤロー！
+# 	Condition: When fire, water, wood, light, heal, jammer, poison, mortal poison orbs are on the board (ai:100 rnd:0)
+# Spawn random 8 Dark orbs, (if [2607, 2608] on team)
+# [23] SkillSet:
+# 	Condition: On death (ai:100 rnd:0)
+# 	[0] ESBlind(5:2660) -> まだ お 終わってねーぞ こんなろー
+# 	Blind all orbs on the board
