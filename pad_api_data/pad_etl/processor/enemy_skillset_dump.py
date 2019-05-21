@@ -371,10 +371,10 @@ def dump_summary_to_file(card: BookCard, enemy_summary: EnemySummary, enemy_beha
     file_path = _file_by_id(enemy_summary.info.monster_id)
     with open(file_path, 'w', encoding='utf-8') as f:
         f.write('{}\n'.format(_header('Info')))
-        f.write('{}\n'.format(yaml.dump(enemy_summary.info, default_flow_style=False)))
+        f.write('{}\n'.format(yaml.dump(enemy_summary.info, default_flow_style=False, allow_unicode=True)))
         for listing in enemy_summary.data:
             f.write('{}\n'.format(_header('Data @ {}'.format(listing.level))))
-            f.write('{}\n'.format(yaml.dump(listing, default_flow_style=False)))
+            f.write('{}\n'.format(yaml.dump(listing, default_flow_style=False, allow_unicode=True)))
 
         if unused_behavior:
             f.write('{}\n'.format(_header('Unused Actions')))
