@@ -483,6 +483,9 @@ class ESBehavior(object):
         # This might be filled in during the processing step
         self.extra_description = None
 
+        # Shitty hack to avoid passing CrossServerEsBehavior around
+        self.jp_name = None
+
 # Action
 class ESAction(ESBehavior):
     def full_description(self):

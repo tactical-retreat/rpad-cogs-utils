@@ -107,6 +107,9 @@ def make_cross_server_card(jp_card: MergedCard, na_card: MergedCard) -> (CrossSe
     for idx in range(len(jp_card.enemy_behavior)):
         if type(jp_card.enemy_behavior[idx]) != type(na_card.enemy_behavior[idx]):
             na_card.enemy_behavior[idx] = jp_card.enemy_behavior[idx]
+        else:
+            # Fill the JP name in as a hack.
+            na_card.enemy_behavior[idx].jp_name = jp_card.enemy_behavior[idx].name or na_card.enemy_behavior[idx].name
 
     monster_no = monster_id_mapping.jp_id_to_monster_no(card_id)
     return CrossServerCard(monster_no, jp_card, na_card), None
