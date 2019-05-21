@@ -79,21 +79,21 @@ class Database(object):
         self.base_dir = os.path.join(raw_dir, pg_server)
 
         # Loaded from disk
-        self.raw_cards = [] # type: List[BookCard]
-        self.dungeons = [] # type: List[Dungeon]
+        self.raw_cards = []  # type: List[BookCard]
+        self.dungeons = []  # type: List[Dungeon]
         self.bonus_sets = {}
-        self.skills = [] # type: List[MonsterSkill]
-        self.enemy_skills = [] # type: List[EnemySkill]
-        self.exchange = [] # type: List[Exchange]
+        self.skills = []  # type: List[MonsterSkill]
+        self.enemy_skills = []  # type: List[EnemySkill]
+        self.exchange = []  # type: List[Exchange]
         self.egg_machines = []
 
         # This is temporary for the integration of calculated skills
         self.raw_skills = []
 
         # Computed from other entries
-        self.bonuses = [] # type: List[MergedBonus]
-        self.cards = [] # type: List[MergedCard]
-        self.enemies = [] # type: List[MergedEnemy]
+        self.bonuses = []  # type: List[MergedBonus]
+        self.cards = []  # type: List[MergedCard]
+        self.enemies = []  # type: List[MergedEnemy]
 
         # Faster lookups
         self.dungeon_id_to_dungeon = {}
