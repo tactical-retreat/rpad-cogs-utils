@@ -1763,6 +1763,9 @@ class EnemySkillUnknown(ESBehavior):
     def full_description(self):
         return self.description
 
+    def ends_battle(self):
+        return False
+
 BEHAVIOR_MAP = {
     # SKILLS
     1: ESBindRandom,
