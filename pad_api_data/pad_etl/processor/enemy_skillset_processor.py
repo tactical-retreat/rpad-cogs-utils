@@ -771,9 +771,8 @@ def compute_enemy_actions(ctx: Context, behaviors: List[ESBehavior], hp_checkpoi
     return list(hp_to_actions.values())
 
 
-def convert(card: BookCard, enemy_behavior: List[ESBehavior],
-            level: int, force_one_enemy: bool=False):
-
+def convert(card: BookCard, enemy_behavior: List[ESBehavior], level: int):
+    force_one_enemy = int(card.unknown_009) == 5
     enemy_skill_max_counter = card.enemy_skill_max_counter
     enemy_skill_counter_increment = card.enemy_skill_counter_increment
 
