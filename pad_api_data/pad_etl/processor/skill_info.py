@@ -2146,8 +2146,9 @@ def orb_remain_convert(arguments):
         _, c = convert_with_defaults('orb_remain',
                                      arguments,
                                      orb_remain_backups)(x)
+        c['skill_text'] = '[No skyfall]'
         if c['atk_multiplier']:
-            c['skill_text'] += fmt_mult(c['atk_multiplier']) + 'x ATK when there are ' + \
+            c['skill_text'] += '; ' + fmt_mult(c['atk_multiplier']) + 'x ATK when there are ' + \
                 str(c['orb_count']) + ' or fewer orbs remaining'
             if c['bonus_atk_multiplier'] != 0:
                 c['skill_text'] += ' up to ' + fmt_mult(c['atk_multiplier'] +
@@ -2542,7 +2543,7 @@ SKILL_TRANSFORM = {
     171: multi_attribute_match_convert({'attributes': (slice(0, 4), list_binary_con), 'minimum_match': (4, cc), 'minimum_atk_multiplier': (5, multi), 'minimum_damage_reduction': (6, multi)}),
     175: collab_bonus_convert({'collab_id': (0, cc), 'hp_multiplier': (3, multi2), 'atk_multiplier': (4, multi2), 'rcv_multiplier': (5, multi2)}),
     176: fixed_pos_convert({'board'[0]: (0, binary_con), 'row_pos_1': (0, binary_con), 'row_pos_2': (1, binary_con), 'row_pos_3': (2, binary_con), 'row_pos_4': (3, binary_con), 'row_pos_5': (4, binary_con), 'attribute': (5, cc)}),
-    177: orb_remain_convert({'orb_count': (5, cc), 'atk_multiplier': (6, multi), 'bonus_atk_multiplier': (7, multi), 'skill_text': '[No skyfall]; '}),
+    177: orb_remain_convert({'orb_count': (5, cc), 'atk_multiplier': (6, multi), 'bonus_atk_multiplier': (7, multi)}),
     178: passive_stats_convert({'time': (0, cc), 'for_attr': (1, binary_con), 'for_type': (2, binary_con), 'hp_multiplier': (3, multi2), 'atk_multiplier': (4, multi2), 'rcv_multiplier': (5, multi2)}),
     182: mass_match_convert({'attributes': (0, binary_con), 'minimum_count': (1, cc), 'minimum_atk_multiplier': (2, multi), 'minimum_damage_reduction': (3, multi)}),
     183: dual_threshold_stats_convert({'for_attr': (0, binary_con), 'for_type': (1, binary_con),
