@@ -23,9 +23,9 @@ class Icon(SimpleSqlItem):
     KEY_COL = 'icon_seq'
 
     def __init__(self,
-                 icon_seq: int=None,
-                 icon_url: str=None,
-                 tstamp: int=None):
+                 icon_seq: int = None,
+                 icon_url: str = None,
+                 tstamp: int = None):
         self.icon_seq = icon_seq
         self.icon_url = icon_url
         self.tstamp = tstamp or (int(time.time()) * 1000)
@@ -49,12 +49,12 @@ class DungeonType(SimpleSqlItem):
     KEY_COL = 'tdt_seq'
 
     def __init__(self,
-                 order_idx: int=None,
-                 tdt_name_jp: str=None,
-                 tdt_name_kr: str=None,
-                 tdt_name_us: str=None,
-                 tdt_seq: int=None,
-                 tstamp: int=None):
+                 order_idx: int = None,
+                 tdt_name_jp: str = None,
+                 tdt_name_kr: str = None,
+                 tdt_name_us: str = None,
+                 tdt_seq: int = None,
+                 tstamp: int = None):
         self.order_idx = order_idx
         self.tdt_name_jp = tdt_name_jp
         self.tdt_name_kr = tdt_name_kr or tdt_name_us
@@ -69,20 +69,20 @@ class Dungeon(SimpleSqlItem):
     KEY_COL = 'dungeon_seq'
 
     def __init__(self,
-                 app_version: str=None,
-                 comment_jp: str=None,
-                 comment_kr: str=None,
-                 comment_us: str=None,
-                 dungeon_seq: int=None,
-                 dungeon_type: int=None,
-                 icon_seq: int=None,
-                 name_jp: str=None,
-                 name_kr: str=None,
-                 name_us: str=None,
-                 order_idx: int=None,
-                 show_yn: int=None,
-                 tdt_seq: int=None,
-                 tstamp: int=None):
+                 app_version: str = None,
+                 comment_jp: str = None,
+                 comment_kr: str = None,
+                 comment_us: str = None,
+                 dungeon_seq: int = None,
+                 dungeon_type: int = None,
+                 icon_seq: int = None,
+                 name_jp: str = None,
+                 name_kr: str = None,
+                 name_us: str = None,
+                 order_idx: int = None,
+                 show_yn: int = None,
+                 tdt_seq: int = None,
+                 tstamp: int = None):
         self.app_version = app_version  # Unused
         self.comment_jp = comment_jp  # Unused
         self.comment_kr = comment_kr  # Unused
@@ -114,9 +114,9 @@ class DungeonSkillDamage(SimpleSqlItem):
     KEY_COL = 'tds_seq'
 
     def __init__(self,
-                 damage: int=None,
-                 tds_seq: int=None,
-                 tstamp: int=None):
+                 damage: int = None,
+                 tds_seq: int = None,
+                 tstamp: int = None):
         self.damage = damage  # Damage dealt
         self.tds_seq = tds_seq  # Primary Key
         self.tstamp = tstamp or int(time.time()) * 1000
@@ -129,19 +129,19 @@ class SubDungeon(SimpleSqlItem):
     LIST_COL = 'dungeon_seq'
 
     def __init__(self,
-                 coin_max: int=None,
-                 coin_min: int=None,
-                 dungeon_seq: int=None,
-                 exp_max: int=None,
-                 exp_min: int=None,
-                 order_idx: int=None,
-                 stage: int=None,
-                 stamina: int=None,
-                 tsd_name_jp: str=None,
-                 tsd_name_kr: str=None,
-                 tsd_name_us: str=None,
-                 tsd_seq: int=None,
-                 tstamp: int=None):
+                 coin_max: int = None,
+                 coin_min: int = None,
+                 dungeon_seq: int = None,
+                 exp_max: int = None,
+                 exp_min: int = None,
+                 order_idx: int = None,
+                 stage: int = None,
+                 stamina: int = None,
+                 tsd_name_jp: str = None,
+                 tsd_name_kr: str = None,
+                 tsd_name_us: str = None,
+                 tsd_seq: int = None,
+                 tstamp: int = None):
         self.coin_max = coin_max  # Populate as 0 for now
         self.coin_min = coin_min  # Populate as 0 for now
         self.dungeon_seq = dungeon_seq  # FK to Dungeon (injected)
@@ -173,9 +173,9 @@ class SubDungeonPoint(SimpleSqlItem):
     LIST_COL = SubDungeon.KEY_COL
 
     def __init__(self,
-                 tot_point: float=None,
-                 tsd_seq: int=None,
-                 tstamp: int=None):
+                 tot_point: float = None,
+                 tsd_seq: int = None,
+                 tstamp: int = None):
         self.tot_point = tot_point  # Estimated points earned.
         self.tsd_seq = tsd_seq  # FK to SubDungeon (injected)
         self.tstamp = tstamp or int(time.time()) * 1000
@@ -199,9 +199,9 @@ class SubDungeonReward(SimpleSqlItem):
     LIST_COL = SubDungeon.KEY_COL
 
     def __init__(self,
-                 data: str=None,
-                 tsd_seq: int=None,
-                 tstamp: int=None):
+                 data: str = None,
+                 tsd_seq: int = None,
+                 tstamp: int = None):
         self.data = data  # Details above
         self.tsd_seq = tsd_seq  # FK to SubDungeon (injected)
         self.tstamp = tstamp or int(time.time()) * 1000
@@ -220,9 +220,9 @@ class SubDungeonScore(SimpleSqlItem):
     LIST_COL = SubDungeon.KEY_COL
 
     def __init__(self,
-                 score: int=None,
-                 tsd_seq: int=None,
-                 tstamp: int=None):
+                 score: int = None,
+                 tsd_seq: int = None,
+                 tstamp: int = None):
         self.score = score  # Score value required
         self.tsd_seq = tsd_seq  # FK to SubDungeon (injected)
         self.tstamp = tstamp or (int(time.time()) * 1000)
@@ -238,22 +238,22 @@ class DungeonMonster(SimpleSqlItem):
     COL_MAPPINGS = {'def': 'defense'}
 
     def __init__(self,
-                 amount: int=None,
-                 atk: int=None,
-                 comment_kr: str=None,
-                 comment_jp: str=None,
-                 comment_us: str=None,
-                 defense: int=None,  # Field actually called def!
+                 amount: int = None,
+                 atk: int = None,
+                 comment_kr: str = None,
+                 comment_jp: str = None,
+                 comment_us: str = None,
+                 defense: int = None,  # Field actually called def!
                  drop_no: int = None,
-                 dungeon_seq: int=None,
-                 floor: int=None,
-                 hp: int=None,
-                 monster_no: int=None,
-                 order_idx: int=None,
-                 tdm_seq: int=None,
-                 tsd_seq: int=None,
-                 tstamp: int=None,
-                 turn: int=None):
+                 dungeon_seq: int = None,
+                 floor: int = None,
+                 hp: int = None,
+                 monster_no: int = None,
+                 order_idx: int = None,
+                 tdm_seq: int = None,
+                 tsd_seq: int = None,
+                 tstamp: int = None,
+                 turn: int = None):
         self.amount = amount  # Number that appear, displays as 'x<amount>' if amount > 1
         self.atk = atk
 
@@ -295,12 +295,12 @@ class DungeonMonsterDrop(SimpleSqlItem):
     LIST_COL = DungeonMonster.KEY_COL
 
     def __init__(self,
-                 monster_no: int=None,
-                 order_idx: int=None,
-                 status: int=None,
-                 tdmd_seq: int=None,
-                 tdm_seq: int=None,
-                 tstamp: int=None):
+                 monster_no: int = None,
+                 order_idx: int = None,
+                 status: int = None,
+                 tdmd_seq: int = None,
+                 tdm_seq: int = None,
+                 tstamp: int = None):
         self.monster_no = monster_no  # FK to Monster (not mapped)
         self.order_idx = order_idx  # Generally 10 * n where n is 1-indexed
         self.status = status  # Generally 0; Rarely 2, not sure why (might be 'deleted')
@@ -320,10 +320,10 @@ class DungeonSkill(SqlItem):
     """
 
     def __init__(self,
-                 tdm_seq: int=None,
-                 tds_seq: int=None,
-                 ts_seq: int=None,
-                 tstamp: int=None):
+                 tdm_seq: int = None,
+                 tds_seq: int = None,
+                 ts_seq: int = None,
+                 tstamp: int = None):
         self.tdm_seq = tdm_seq  # FK to DungeonMonster (injected)
         self.tds_seq = tds_seq  # FK to DungeonSkillDamage (local)
         self.ts_seq = ts_seq  # FK to Skill (local)
