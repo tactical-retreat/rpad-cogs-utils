@@ -22,6 +22,20 @@ from ..data.wave import WaveResponse
 
 from .player_data import PlayerDataResponse, RecommendedHelpersResponse, FriendEntry, FriendLeader, CardEntry
 
+RESPONSE_CODES = {
+    0: 'Okay',
+    2: 'Re-login',
+    3: 'Unregistered',
+    8: 'dungeon not open',
+    12: 'That person has too many friends.',
+    25: 'Too many friend invites.',
+    48: 'room not found?',
+    99: 'Maintenance',
+    101: 'No connection',
+    104: "Can't connect to server?",
+    108: "???",
+}
+
 
 class ServerEndpointInfo(object):
     def __init__(self, server: Server, keygen_fn: Callable[[str, int], str]):
