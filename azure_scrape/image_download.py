@@ -23,7 +23,10 @@ def process_list_of_ships_table(table, id_mod=None):
     rows = table.findAll('tr')[1:]
     items = []
     for row in rows:
-        items.append(process_list_of_ships_row(row, id_mod))
+        try:
+            items.append(process_list_of_ships_row(row, id_mod))
+        except:
+            print('processing failed')
     return items
 
 def process_list_of_ships_row(row, id_mod):
@@ -42,6 +45,8 @@ def process_list_of_ships_row(row, id_mod):
         'images': [],
     }
     print('processing {} {}'.format(ship_id, name_en))
+    if name_en != 'Z2':
+        return item
     process_ship(full_url, item)
     return item
 
