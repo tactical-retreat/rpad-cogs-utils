@@ -45,8 +45,6 @@ def process_list_of_ships_row(row, id_mod):
         'images': [],
     }
     print('processing {} {}'.format(ship_id, name_en))
-    if name_en != 'Z2':
-        return item
     process_ship(full_url, item)
     return item
 
