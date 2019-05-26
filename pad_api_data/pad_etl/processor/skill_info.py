@@ -1399,6 +1399,18 @@ def fixed_pos_convert(arguments):
         return 'fixed_pos', c
     return f
 
+match_disable_backups = {'duration': 0,
+                         'skill_text': ''}
+
+def match_disable_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('match_disable',
+                                     arguments,
+                                     match_disable_backups)(x)
+        c['skill_text'] = 'Reduce unable to match orbs effect by {} turns'.format(c['duration'])
+        return 'match_disable', c
+    return f
+
 # End of Active skill
 
 # Leader skill
@@ -2447,6 +2459,7 @@ SKILL_TRANSFORM = {
     189: convert('unlock_board_path', {'skill_text': 'Unlock all orbs; Change all orbs to Fire, Water, Wood, and Light orbs; Show path to 3 combos'}),
     191: void_mechanic_convert({'duration':(0, cc)}),
     195: suicide_convert({'hp_remaining': (0, multi)}),
+    196: match_disable_convert({'duration': (0, cc)}),
     11: passive_stats_convert({'for_attr': (0, listify), 'atk_multiplier': (1, multi)}),
     12: after_attack_convert({'multiplier': (0, multi)}),
     13: heal_on_convert({'multiplier': (0, multi)}),
@@ -2684,11 +2697,10 @@ def reformat_json(skill_data):
             i_str = str(j)
             if MULTI_PART_LS.get(i_str):
                 for k in range(0, len(MULTI_PART_LS[i_str])):
-                        # Generating skill_text
+                    # Generating skill_text
                     combined_skill_args = reformatted['leader_skills'][j]['args']
                     cur_skill_id = int(MULTI_PART_LS[i_str][k])
                     cur_args = reformatted['leader_skills'][cur_skill_id]['args']
-                    
                     if cur_args['skill_text'] == '' or combined_skill_args['skill_text'].endswith('; '):
                         cur_args['skill_text'] += combined_skill_args['skill_text']
                     else:
