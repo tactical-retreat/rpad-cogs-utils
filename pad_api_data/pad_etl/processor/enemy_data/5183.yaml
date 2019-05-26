@@ -1,0 +1,194 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 5183
+monster_name_en: 魔皇子・ゼブン
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Reduce damage from Dark by 50%
+  desc_jp: Reduce damage from Dark by 50%
+  max_atk_pct: null
+  name_en: Ability
+  name_jp: Ability
+  one_time: 0
+  record_type_name: PASSIVE
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Voids status ailments for 999 turns + Void damage >= 60000000 for 999 turns
+    + Mortal Poison skyfall +60% for 1 turns (Preemptive)
+  desc_jp: Voids status ailments for 999 turns + Void damage >= 60000000 for 999 turns
+    + Mortal Poison skyfall +60% for 1 turns (Preemptive)
+  max_atk_pct: null
+  name_en: 魔皇子の威厳 + 狂皇の血族 + 猛毒の雨
+  name_jp: 魔皇子の威厳 + 狂皇の血族 + 猛毒の雨
+  one_time: 2
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 1
+  name_jp: Turn 1
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Poison skyfall +15% for 30 turns + Reduce damage from all sources by 75%
+    for 1 turns, Deal 30% damage
+  desc_jp: Poison skyfall +15% for 30 turns + Reduce damage from all sources by 75%
+    for 1 turns, Deal 30% damage
+  max_atk_pct: null
+  name_en: ポイズンワールド + 骸の贈物
+  name_jp: ポイズンワールド + 骸の贈物
+  one_time: 1
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 100
+  name_jp: HP <= 100
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Blind random 3 orbs for 3 turns, Deal 130% damage
+  desc_jp: Blind random 3 orbs for 3 turns, Deal 130% damage
+  max_atk_pct: 130
+  name_en: 闇からの強襲
+  name_jp: 闇からの強襲
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Deal 135% damage (3 hits, 45% each)
+  desc_jp: Deal 135% damage (3 hits, 45% each)
+  max_atk_pct: 135
+  name_en: デッドリーコンボ
+  name_jp: デッドリーコンボ
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 50
+  name_jp: HP < 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: Turn 2
+  name_jp: Turn 2
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Bind 6 random cards for 5 turns + Change all orbs to Mortal Poison, Deal
+    150% damage
+  desc_jp: Bind 6 random cards for 5 turns + Change all orbs to Mortal Poison, Deal
+    150% damage
+  max_atk_pct: null
+  name_en: 魔皇子のわがまま + 猛毒の海
+  name_jp: 魔皇子のわがまま + 猛毒の海
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP < 10
+  name_jp: HP < 10
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Movetime 25% for 1 turns + Change all orbs to Mortal Poison, Deal 800%
+    damage
+  desc_jp: Movetime 25% for 1 turns + Change all orbs to Mortal Poison, Deal 800%
+    damage
+  max_atk_pct: null
+  name_en: 消滅する生命 + 魔界の海
+  name_jp: 消滅する生命 + 魔界の海
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 100
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 3 - starting/max counter
+# [54] 0 - counter increment
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 2)
+# 	[0] ESStatusShield(20:12961) -> 魔皇子の威厳
+# 	Voids status ailments for 999 turns
+# 	[1] ESVoidShield(71:12962) -> 狂皇の血族
+# 	Void damage >= 60000000 for 999 turns
+# 	[2] ESSkyfall(68:12963) -> 猛毒の雨
+# 	Mortal Poison skyfall +60% for 1 turns
+# [3] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 10, target rnd 13
+# [4] SkillSet:
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# 	[0] ESSkyfall(68:12965) -> ポイズンワールド
+# 	Poison skyfall +15% for 30 turns
+# 	[1] ESDamageShield(74:12966) -> 骸の贈物
+# 	Reduce damage from all sources by 75% for 1 turns, Deal 30% damage
+# [5] ESBranchHP(28:18) -> ESBranchHP
+# Branch on hp < 50, target rnd 9
+# [6] ESBlindStickyRandom(97:12967) -> 闇からの強襲
+# 	Condition: 50% chance (ai:0 rnd:50)
+# Blind random 3 orbs for 3 turns, Deal 130% damage
+# [7] ESAttackMultihit(15:12968) -> デッドリーコンボ
+# 	Condition: 50% chance (ai:0 rnd:50)
+# Deal 135% damage (3 hits, 45% each)
+# [8] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [9] ESBranchFlag(43:10) -> ESBranchFlag
+# Branch on flag & 1, target rnd 6
+# [10] ESFlagOperation(22:12) -> ESFlagOperation
+# flag SET 0b1
+# [11] SkillSet:
+# 	[0] ESBindRandom(1:12970) -> 魔皇子のわがまま
+# 	Bind 6 random cards for 5 turns
+# 	[1] ESBoardChangeAttackBits(85:12971) -> 猛毒の海
+# 	Change all orbs to Mortal Poison, Deal 150% damage
+# [12] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [13] SkillSet:
+# 	[0] ESDebuffMovetime(39:12973) -> 消滅する生命
+# 	Movetime 25% for 1 turns
+# 	[1] ESBoardChangeAttackBits(85:12974) -> 魔界の海
+# 	Change all orbs to Mortal Poison, Deal 800% damage
+# [14] ESEndPath(36:26) -> ESEndPath
+# end_turn
+# [15] ESAttributeResist(72:12975) -> 闇半減
+# Reduce damage from Dark by 50%

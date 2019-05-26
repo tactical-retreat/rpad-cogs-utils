@@ -102,6 +102,7 @@ class EnemySummary(object):
 
 def behavior_to_skillrecord(record_type: RecordType, action: Union[ESAction, ESSkillSet], note='') -> SkillRecord:
     name = action.name
+    jp_name = action.jp_name
     description = action.full_description()
     min_damage = None
     max_damage = None
@@ -110,9 +111,12 @@ def behavior_to_skillrecord(record_type: RecordType, action: Union[ESAction, ESS
 
     if issubclass(type(action), ESPassive):
         name = 'Ability'
+        jp_name = name
 
     if type(action) in [ESPreemptive, ESAttackPreemptive]:
         name = 'Preemptive'
+        jp_name = name
+
     elif record_type == RecordType.PREEMPT:
         description += ' (Preemptive)'
 
@@ -134,7 +138,7 @@ def behavior_to_skillrecord(record_type: RecordType, action: Union[ESAction, ESS
 
     return SkillRecord(record_type=record_type,
                        name_en=name,
-                       name_jp=name,
+                       name_jp=jp_name,
                        desc_en=description,
                        desc_jp=description,
                        max_atk_pct=max_damage,
@@ -371,10 +375,10 @@ def dump_summary_to_file(card: BookCard, enemy_summary: EnemySummary, enemy_beha
     file_path = _file_by_id(enemy_summary.info.monster_id)
     with open(file_path, 'w', encoding='utf-8') as f:
         f.write('{}\n'.format(_header('Info')))
-        f.write('{}\n'.format(yaml.dump(enemy_summary.info, default_flow_style=False)))
+        f.write('{}\n'.format(yaml.dump(enemy_summary.info, default_flow_style=False, allow_unicode=True)))
         for listing in enemy_summary.data:
             f.write('{}\n'.format(_header('Data @ {}'.format(listing.level))))
-            f.write('{}\n'.format(yaml.dump(listing, default_flow_style=False)))
+            f.write('{}\n'.format(yaml.dump(listing, default_flow_style=False, allow_unicode=True)))
 
         if unused_behavior:
             f.write('{}\n'.format(_header('Unused Actions')))

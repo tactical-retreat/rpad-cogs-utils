@@ -4,7 +4,7 @@
 !EntryInfo
 comments: null
 monster_id: 2131
-monster_name_en: '***** (Ghost in the Shell)'
+monster_name_en: ロジコマ
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings: []
@@ -29,8 +29,8 @@ records:
   desc_en: Voids status ailments for 999 turns (Preemptive)
   desc_jp: Voids status ailments for 999 turns (Preemptive)
   max_atk_pct: null
-  name_en: Hellooo
-  name_jp: Hellooo
+  name_en: ハローう
+  name_jp: ハローう
   one_time: 0
   record_type_name: PREEMPT
   usage_pct: 100
@@ -47,8 +47,8 @@ records:
   desc_en: Deal 90% damage (3 hits, 30% each)
   desc_jp: Deal 90% damage (3 hits, 30% each)
   max_atk_pct: 90
-  name_en: Yes sir!
-  name_jp: Yes sir!
+  name_en: アイ、アイサー！
+  name_jp: アイ、アイサー！
   one_time: 1
   record_type_name: ACTION
   usage_pct: 100
@@ -65,8 +65,8 @@ records:
   desc_en: Deal 240% damage (3 hits, 80% each)
   desc_jp: Deal 240% damage (3 hits, 80% each)
   max_atk_pct: 240
-  name_en: Charge!
-  name_jp: Charge!
+  name_en: とつげき～!!
+  name_jp: とつげき～!!
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
@@ -83,8 +83,8 @@ records:
   desc_en: Reduce self HP to 0
   desc_jp: Reduce self HP to 0
   max_atk_pct: null
-  name_en: Commander! We lost our protective wall!
-  name_jp: Commander! We lost our protective wall!
+  name_en: 少佐ー！もう防壁もちませーん!!
+  name_jp: 少佐ー！もう防壁もちませーん!!
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
@@ -106,17 +106,17 @@ records:
 # Branch on flag & 1, target rnd 6
 # [3] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [4] ESStatusShield(20:2428) -> Hellooo
+# [4] ESStatusShield(20:2428) -> ハローう
 # Voids status ailments for 999 turns
 # [5] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [6] ESEndBattle(40:2431) -> Commander! We lost our protective wall!
+# [6] ESEndBattle(40:2431) -> 少佐ー！もう防壁もちませーん!!
 # 	Condition: When < 1% hp (ai:100 rnd:0)
 # Reduce self HP to 0
-# [7] ESAttackMultihit(15:2429) -> Yes sir!
+# [7] ESAttackMultihit(15:2429) -> アイ、アイサー！
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
 # Deal 90% damage (3 hits, 30% each)
-# [8] ESAttackMultihit(15:2430) -> Charge!
+# [8] ESAttackMultihit(15:2430) -> とつげき～!!
 # Deal 240% damage (3 hits, 80% each)
-# [9] ESResolve(73:2432) -> Logicoma - Passive
+# [9] ESResolve(73:2432) -> ロジコマ・パッシブ
 # Survive attacks with 1 HP when HP > 1%

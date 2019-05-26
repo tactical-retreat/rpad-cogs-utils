@@ -1,0 +1,132 @@
+############################################################
+### Info
+############################################################
+!EntryInfo
+comments: null
+monster_id: 5262
+monster_name_en: マルコ
+monster_name_jp: not yet populated
+reviewed_by: unreviewed
+warnings: []
+
+############################################################
+### Data @ 1
+############################################################
+!SkillRecordListing
+level: 1
+overrides: []
+records:
+- !SkillRecord
+  desc_en: Voids status ailments for 5 turns (Preemptive)
+  desc_jp: Voids status ailments for 5 turns (Preemptive)
+  max_atk_pct: null
+  name_en: 私が相手だ
+  name_jp: 私が相手だ
+  one_time: 1
+  record_type_name: PREEMPT
+  usage_pct: 100
+- !SkillRecord
+  desc_en: Delay active skills by 2 turns, Deal 100% damage
+  desc_jp: Delay active skills by 2 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: 私は大本気だよ
+  name_jp: 私は大本気だよ
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 33
+- !SkillRecord
+  desc_en: Change Random to Light, Deal 90% damage
+  desc_jp: Change Random to Light, Deal 90% damage
+  max_atk_pct: 90
+  name_en: 我が正義証明するのみ!!!
+  name_jp: 我が正義証明するのみ!!!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 33
+- !SkillRecord
+  desc_en: Change 2nd row to Light orbs, Deal 95% damage
+  desc_jp: Change 2nd row to Light orbs, Deal 95% damage
+  max_atk_pct: 95
+  name_en: まだまだッ!!!
+  name_jp: まだまだッ!!!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 34
+- !SkillRecord
+  desc_en: ''
+  desc_jp: ''
+  max_atk_pct: null
+  name_en: HP <= 50
+  name_jp: HP <= 50
+  one_time: null
+  record_type_name: DIVIDER
+  usage_pct: null
+- !SkillRecord
+  desc_en: Deal 120% damage (4 hits, 30% each)
+  desc_jp: Deal 120% damage (4 hits, 30% each)
+  max_atk_pct: 120
+  name_en: 私は彼らに未来を託す！
+  name_jp: 私は彼らに未来を託す！
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 50
+- !SkillRecord
+  desc_en: Delay active skills by 2 turns, Deal 100% damage
+  desc_jp: Delay active skills by 2 turns, Deal 100% damage
+  max_atk_pct: 100
+  name_en: 私は大本気だよ
+  name_jp: 私は大本気だよ
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 33
+- !SkillRecord
+  desc_en: Change Random to Light, Deal 90% damage
+  desc_jp: Change Random to Light, Deal 90% damage
+  max_atk_pct: 90
+  name_en: 我が正義証明するのみ!!!
+  name_jp: 我が正義証明するのみ!!!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 33
+- !SkillRecord
+  desc_en: Change 2nd row to Light orbs, Deal 95% damage
+  desc_jp: Change 2nd row to Light orbs, Deal 95% damage
+  max_atk_pct: 95
+  name_en: まだまだッ!!!
+  name_jp: まだまだッ!!!
+  one_time: 0
+  record_type_name: ACTION
+  usage_pct: 34
+
+############################################################
+### ES Modifiers
+############################################################
+# [9] 5 - monster size?
+# [52] true - use new AI
+# [53] 1 - starting/max counter
+# [54] 0 - counter increment
+#
+############################################################
+### Raw Behavior
+############################################################
+# [1] ESPreemptive(49:318) -> ESPreemptive
+# Enable preempt if level 1
+# [2] ESStatusShield(20:13282) -> 私が相手だ
+# 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
+# Voids status ailments for 5 turns
+# [3] ESBranchHP(29:19) -> ESBranchHP
+# Branch on hp > 51, target rnd 5
+# [4] ESAttackMultihit(15:13286) -> 私は彼らに未来を託す！
+# 	Condition: 50% chance (ai:50 rnd:0)
+# Deal 120% damage (4 hits, 30% each)
+# [5] ESSkillDelay(89:13283) -> 私は大本気だよ
+# 	Condition: 33% chance (ai:0 rnd:33)
+# Delay active skills by 2 turns, Deal 100% damage
+# [6] ESOrbChangeAttack(48:13284) -> 我が正義証明するのみ!!!
+# 	Condition: 33% chance (ai:0 rnd:33)
+# Change Random to Light, Deal 90% damage
+# [7] ESRowSpawnMulti(79:13285) -> まだまだッ!!!
+# 	Condition: 34% chance (ai:0 rnd:34)
+# Change 2nd row to Light orbs, Deal 95% damage
+# [8] ESEndPath(36:26) -> ESEndPath
+# end_turn

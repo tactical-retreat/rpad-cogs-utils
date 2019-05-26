@@ -4,7 +4,7 @@
 !EntryInfo
 comments: null
 monster_id: 1581
-monster_name_en: '***** (Dragon Ball)'
+monster_name_en: 魔人ブウ・邪悪
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings: []
@@ -38,8 +38,8 @@ records:
   desc_en: Increase damage to 200% for the next 999 turns
   desc_jp: Increase damage to 200% for the next 999 turns
   max_atk_pct: null
-  name_en: '***** (Dragon Ball)'
-  name_jp: '***** (Dragon Ball)'
+  name_en: もうオレこうげきしていいか？
+  name_jp: もうオレこうげきしていいか？
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
@@ -47,8 +47,8 @@ records:
   desc_en: Deal 150% damage
   desc_jp: Deal 150% damage
   max_atk_pct: 150
-  name_en: '***** (Dragon Ball)'
-  name_jp: '***** (Dragon Ball)'
+  name_en: はあっ!!!!
+  name_jp: はあっ!!!!
   one_time: 1
   record_type_name: ACTION
   usage_pct: 100
@@ -74,8 +74,8 @@ records:
   desc_en: Absorb combo <= 3 damage for 3 turns
   desc_jp: Absorb combo <= 3 damage for 3 turns
   max_atk_pct: null
-  name_en: '***** (Dragon Ball)'
-  name_jp: '***** (Dragon Ball)'
+  name_en: いただきーーーっ!!!
+  name_jp: いただきーーーっ!!!
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
@@ -91,7 +91,7 @@ records:
 ############################################################
 ### Raw Behavior
 ############################################################
-# [1] ESDeathCry(69:1431) -> ***** (Dragon Ball)
+# [1] ESDeathCry(69:1431) -> ブウ3→ブウ4
 # 	Condition: On death (ai:0 rnd:0)
 # Show message: ご…こおおおお…あっ…
 # …あっ…あががが…|ウギャギャギャオーッ!!!
@@ -99,12 +99,12 @@ records:
 # Branch on level > 5, target rnd 4
 # [3] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [4] ESAttackUPCooldown(19:1492) -> ***** (Dragon Ball)
+# [4] ESAttackUPCooldown(19:1492) -> もうオレこうげきしていいか？
 # 	Condition: When < 75% hp (ai:100 rnd:0)
 # Increase damage to 200% for the next 999 turns
 # [5] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 50, target rnd 8
-# [6] ESAttackMultihit(15:1491) -> ***** (Dragon Ball)
+# [6] ESAttackMultihit(15:1491) -> はあっ!!!!
 # 	Condition: When < 75% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Deal 150% damage
 # [7] ESEndPath(36:26) -> ESEndPath
@@ -113,10 +113,10 @@ records:
 # Branch on flag & 1, target rnd 12
 # [9] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1
-# [10] ESAbsorbCombo(67:1493) -> ***** (Dragon Ball)
+# [10] ESAbsorbCombo(67:1493) -> いただきーーーっ!!!
 # Absorb combo <= 3 damage for 3 turns
 # [11] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [12] ESAttackMultihit(15:1491) -> ***** (Dragon Ball)
+# [12] ESAttackMultihit(15:1491) -> はあっ!!!!
 # 	Condition: When < 75% hp , one-time use (ai:100 rnd:0) (one-time: 1)
 # Deal 150% damage

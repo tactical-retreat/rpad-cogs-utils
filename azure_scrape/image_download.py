@@ -1,7 +1,6 @@
 import argparse
 import json
 import os
-import urllib.request
 
 from bs4 import BeautifulSoup
 import requests
@@ -16,57 +15,25 @@ helpGroup.add_argument("-h", "--help", action="help", help="Displays this help m
 args = parser.parse_args()
 
 
-output_dir = args.output_dir
+def process_list_of_ships_table(table, id_mod=None):
+    headers = table.findAll('th')
+    if len(headers) < 5 or headers[0].text.strip() != 'ID' or headers[1].text.strip() != 'Name':
+        print('skipping table')
+        return
+    rows = table.findAll('tr')[1:]
+    items = []
+    for row in rows:
+        try:
+            items.append(process_list_of_ships_row(row, id_mod))
+        except:
+            print('processing failed')
+    return items
 
-BASE_URL = 'https://azurlane.koumakan.jp'
-ships_url = '{}/List_of_Ships'.format(BASE_URL)
-soup = BeautifulSoup(requests.get(ships_url).text, 'lxml')
-
-used_ids = set()
-
-
-def process_image(full_url, title, item):
-    page = BeautifulSoup(requests.get(full_url).text, 'lxml')
-    original_image_link = page.find('a', text=lambda x: x == 'Original file')
-    if original_image_link:
-        item['images'].append({
-            'order': len(item['images']),
-            'title': title,
-            'file_name': original_image_link['title'],
-            'url': '{}{}'.format(BASE_URL, original_image_link['href']),
-        })
-    else:
-        print('failed to find image for ' + title)
-
-
-def process_tab(tab, item):
-    title = tab['title']
-    url_ref = tab.find('a')['href']
-    full_url = '{}{}'.format(BASE_URL, url_ref)
-    process_image(full_url, title, item)
-
-
-def process_sub_row(full_url, item):
-    page = BeautifulSoup(requests.get(full_url).text, 'lxml')
-
-    tables = page.findAll('table')
-    for table in tables:
-        if table.find('th').text.strip() == 'Ship Stats':
-            tabs = table.findAll('div', {'class': 'tabbertab'})
-            for tab in tabs:
-                process_tab(tab, item)
-            return
-    print('failed to find ship stats')
-
-
-def process_row(row):
-    global used_ids
+def process_list_of_ships_row(row, id_mod):
     cols = row.findAll('td')
-    ship_id = int(cols[0].text.strip())
-    if ship_id in used_ids or ship_id in [3, 4]:
-        # Fix for collab ships, 3,4 are not used atm
-        ship_id += 2000
-    used_ids.add(ship_id)
+    ship_id = cols[0].text.strip()
+    if id_mod:
+        ship_id = id_mod(ship_id)
 
     name_en = cols[1].text.strip()
     url_ref = cols[1].find('a')['href']
@@ -78,27 +45,64 @@ def process_row(row):
         'images': [],
     }
     print('processing {} {}'.format(ship_id, name_en))
-    process_sub_row(full_url, item)
+    process_ship(full_url, item)
     return item
 
+def process_ship(full_url, item):
+    page = BeautifulSoup(requests.get(full_url).text, 'lxml')
 
-def process_table(table):
-    headers = table.findAll('th')
-    if len(headers) < 5 or headers[0].text.strip() != 'ID' or headers[1].text.strip() != 'Name':
-        print('skipping table')
-        return
-    rows = table.findAll('tr')[1:]
-    items = []
-    for row in rows:
-        items.append(process_row(row))
-    return items
+    switcher = page.find('div', {'class': 'shiparttabbernew'})
+    tabs = switcher.findAll('div', {'class': 'tabbertab'})
+
+    for tab in tabs:
+        title = tab['title']
+        link = tab.find('a', {'class': 'image'})
+        link_target = link['href']
+        full_url = '{}{}'.format(BASE_URL, link_target)
+        process_image(full_url, title, item)
 
 
-tables = soup.findAll('table')
+def process_image(full_url, title, item):
+    page = BeautifulSoup(requests.get(full_url).text, 'lxml')
+    original_image_path = page.find('a', text=lambda x: x == 'Original file')['href']
+    if original_image_path:
+        file_name = os.path.basename(original_image_path)
+        item['images'].append({
+            'order': len(item['images']),
+            'title': title,
+            'file_name': file_name,
+            'url': '{}{}'.format(BASE_URL, original_image_path),
+        })
+    else:
+        print('failed to find image for ' + title)
+
+
+def download_file(url, file_path):
+    print('downloading {} to {}'.format(url, file_path))
+    response = requests.get(url)
+    with open(file_path, "wb") as f:
+        f.write(response.content)
+
+
+output_dir = args.output_dir
+
+BASE_URL = 'https://azurlane.koumakan.jp'
+SHIPS_URL = '{}/List_of_Ships'.format(BASE_URL)
+soup = BeautifulSoup(requests.get(SHIPS_URL).text, 'lxml')
+
+header = soup.find(id='Standard_List')
+standard_table = header.findNext('table')
+
+header = header.findNext(id='Research_Ships')
+research_table = header.findNext('table')
+
+header = header.findNext(id='Collab_Ships')
+collab_table = header.findNext('table')
+
 items = []
-for table in tables:
-    items.extend(process_table(table))
-
+items.extend(process_list_of_ships_table(standard_table))
+items.extend(process_list_of_ships_table(research_table))
+items.extend(process_list_of_ships_table(collab_table, id_mod=lambda x: int(x) + 2000))
 
 if len(items) < 100:
     print('Grossly unexpected number of items found, bailing')
@@ -110,15 +114,6 @@ output_json = {'items': items}
 output_json_file = os.path.join(output_dir, 'azure_lane.json')
 with open(output_json_file, "w") as f:
     json.dump(output_json, f)
-
-
-def download_file(url, file_path):
-    print('downloading {} to {}'.format(url, file_path))
-    response_object = urllib.request.urlopen(url)
-    with response_object as response:
-        file_data = response.read()
-        with open(file_path, "wb") as f:
-            f.write(file_data)
 
 
 for item in items:

@@ -2245,6 +2245,7 @@ def collab_bonus_convert(arguments):
             76: 'Sword Art Online Collab',
             77: 'Kamen Rider Collab',
             78: 'Yo-kai Watch World Collab',
+            83: 'Shaman King Collab',
             10001: 'Dragonbounds & Dragon Callers',
         }
 

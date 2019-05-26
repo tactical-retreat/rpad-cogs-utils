@@ -4,7 +4,7 @@
 !EntryInfo
 comments: null
 monster_id: 4664
-monster_name_en: '*****'
+monster_name_en: 静かなる白虎・ハク
 monster_name_jp: not yet populated
 reviewed_by: unreviewed
 warnings: []
@@ -20,8 +20,8 @@ records:
   desc_en: Voids status ailments for 5 turns + Bind 1 random cards for 3 turns (Preemptive)
   desc_jp: Voids status ailments for 5 turns + Bind 1 random cards for 3 turns (Preemptive)
   max_atk_pct: null
-  name_en: Byakko lives in isolation. + Something that won't swarm.
-  name_jp: Byakko lives in isolation. + Something that won't swarm.
+  name_en: 虎は孤高の存在。 + 群れることはしないもの。
+  name_jp: 虎は孤高の存在。 + 群れることはしないもの。
   one_time: 1
   record_type_name: PREEMPT
   usage_pct: 100
@@ -42,8 +42,8 @@ records:
     10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison
     orbs
   max_atk_pct: null
-  name_en: I always seized any opportunities. + I'm a predator stalking its prey.
-  name_jp: I always seized any opportunities. + I'm a predator stalking its prey.
+  name_en: ずっと機会を狙ってた。 + 虎視眈々と。
+  name_jp: ずっと機会を狙ってた。 + 虎視眈々と。
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
@@ -62,8 +62,8 @@ records:
   desc_jp: Change all orbs to Fire, Water, Dark, Deal 100% damage + Change 3rd row
     to Heal orbs
   max_atk_pct: null
-  name_en: Cute is an insult...for Byakko... + ...
-  name_jp: Cute is an insult...for Byakko... + ...
+  name_en: 虎にカワイイは・・・侮辱・・・ + ・・・・・・
+  name_jp: 虎にカワイイは・・・侮辱・・・ + ・・・・・・
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
@@ -80,8 +80,8 @@ records:
   desc_en: Increase damage to 200% for the next 1 turns
   desc_jp: Increase damage to 200% for the next 1 turns
   max_atk_pct: null
-  name_en: Are you...ready?
-  name_jp: Are you...ready?
+  name_en: 準備・・・できた？
+  name_jp: 準備・・・できた？
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
@@ -98,8 +98,8 @@ records:
   desc_en: Delay active skills by 2 turns, Deal 100% damage
   desc_jp: Delay active skills by 2 turns, Deal 100% damage
   max_atk_pct: 100
-  name_en: Wild Ball
-  name_jp: Wild Ball
+  name_en: 荒れ球
+  name_jp: 荒れ球
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
@@ -125,8 +125,8 @@ records:
   desc_en: Enemy recover 50% hp
   desc_jp: Enemy recover 50% hp
   max_atk_pct: null
-  name_en: Swelling Energy
-  name_jp: Swelling Energy
+  name_en: みなぎる活力
+  name_jp: みなぎる活力
   one_time: 0
   record_type_name: ACTION
   usage_pct: 100
@@ -150,9 +150,9 @@ records:
 # end_turn
 # [4] SkillSet:
 # 	Condition: One-time use (ai:100 rnd:0) (one-time: 1)
-# 	[0] ESStatusShield(20:10613) -> Byakko lives in isolation.
+# 	[0] ESStatusShield(20:10613) -> 虎は孤高の存在。
 # 	Voids status ailments for 5 turns
-# 	[1] ESBindRandom(1:10614) -> Something that won't swarm.
+# 	[1] ESBindRandom(1:10614) -> 群れることはしないもの。
 # 	Bind 1 random cards for 3 turns
 # [5] ESBranchFlag(43:10) -> ESBranchFlag
 # Branch on flag & 2, target rnd 10
@@ -161,9 +161,9 @@ records:
 # [7] ESBranchHP(28:18) -> ESBranchHP
 # Branch on hp < 20, target rnd 21
 # [8] SkillSet:
-# 	[0] ESFixedStart(101:10616) -> I always seized any opportunities.
+# 	[0] ESFixedStart(101:10616) -> ずっと機会を狙ってた。
 # 	Fix orb movement starting point to random position on the board
-# 	[1] ESOrbLock(94:10617) -> I'm a predator stalking its prey.
+# 	[1] ESOrbLock(94:10617) -> 虎視眈々と。
 # 	Lock 10 random Fire, Water, Wood, Light, Dark, Heal, Jammer, Poison, Mortal Poison orbs
 # [9] ESEndPath(36:26) -> ESEndPath
 # end_turn
@@ -172,9 +172,9 @@ records:
 # [11] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b111
 # [12] SkillSet:
-# 	[0] ESBoardChangeAttackBits(85:10619) -> Cute is an insult...for Byakko...
+# 	[0] ESBoardChangeAttackBits(85:10619) -> 虎にカワイイは・・・侮辱・・・
 # 	Change all orbs to Fire, Water, Dark, Deal 100% damage
-# 	[1] ESRowSpawnMulti(78:10620) -> ...
+# 	[1] ESRowSpawnMulti(78:10620) -> ・・・・・・
 # 	Change 3rd row to Heal orbs
 # [13] ESEndPath(36:26) -> ESEndPath
 # end_turn
@@ -182,18 +182,18 @@ records:
 # Branch on flag & 8, target rnd 18
 # [15] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b1111
-# [16] ESAttackUPRemainingEnemies(17:10622) -> Are you...ready?
+# [16] ESAttackUPRemainingEnemies(17:10622) -> 準備・・・できた？
 # 	Condition: when <= 1 enemies remain (ai:100 rnd:0)
 # Increase damage to 200% for the next 1 turns
 # [17] ESEndPath(36:26) -> ESEndPath
 # end_turn
 # [18] ESFlagOperation(22:12) -> ESFlagOperation
 # flag SET 0b0
-# [19] ESSkillDelay(89:10587) -> Wild Ball
+# [19] ESSkillDelay(89:10587) -> 荒れ球
 # Delay active skills by 2 turns, Deal 100% damage
 # [20] ESEndPath(36:26) -> ESEndPath
 # end_turn
-# [21] ESRecoverEnemy(86:10623) -> Swelling Energy
+# [21] ESRecoverEnemy(86:10623) -> みなぎる活力
 # Enemy recover 50% hp
 # [22] ESEndPath(36:26) -> ESEndPath
 # end_turn
