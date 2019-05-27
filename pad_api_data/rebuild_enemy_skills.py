@@ -27,6 +27,10 @@ def parse_args():
     inputGroup.add_argument("--interactive", required=False,
                             help="Lets you specify a card id on the command line")
 
+    outputGroup = parser.add_argument_group("Output")
+    outputGroup.add_argument("--output_dir", required=True,
+                            help="Path to a folder where the results go")
+
     helpGroup = parser.add_argument_group("Help")
     helpGroup.add_argument("-h", "--help", action="help",
                            help="Displays this help message and exits.")
@@ -57,6 +61,10 @@ def process_card(mcard: merged_data.MergedCard):
         except Exception as ex:
             if 'No loop' not in str(ex):
                 raise ex
+            else:
+                # TODO: some monsters have whacked out behavior (they aren't real monsters)
+                # Should start ignoring those (e.g. pixel yuna).
+                print('\tLoop detection failure for', card.card_id, card.name)
 
     if not skill_listings:
         return
@@ -81,6 +89,8 @@ def process_card(mcard: merged_data.MergedCard):
 
 
 def run(args):
+    enemy_skillset_dump.set_data_dir(args.output_dir)
+
     raw_input_dir = os.path.join(args.input_dir, 'raw')
     na_db = database.Database('na', raw_input_dir)
     na_db.load_database(skip_skills=True, skip_bonus=True, skip_extra=True)
@@ -95,17 +105,18 @@ def run(args):
 
     count = 0
     for csc in combined_cards:
-        card = csc.na_card
+        merged_card = csc.na_card
+        card = merged_card.card
         if fixed_card_id and card.card_id != int(fixed_card_id):
             continue
         try:
             count += 1
             if count % 100 == 0:
                 print('processing {} of {}'.format(count, len(combined_cards)))
-            process_card(card)
+            process_card(merged_card)
 
         except Exception as ex:
-            print('failed to process', card.card.name)
+            print('failed to process', card.name)
             print(ex)
             if 'unsupported operation' not in str(ex):
                 import traceback

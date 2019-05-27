@@ -6,12 +6,10 @@ changes to the dungeon parsing code.
 """
 
 import argparse
-import filecmp
 import logging
 import os
 import pathlib
 
-import shutil
 from collections import defaultdict
 
 from pad_etl.data import database
@@ -26,6 +24,9 @@ def parse_args():
     inputGroup = parser.add_argument_group("Input")
     inputGroup.add_argument("--input_dir", required=True,
                             help="Path to a folder where the input data is")
+    inputGroup.add_argument("--es_input_dir", required=True,
+                            help="Path to a folder where the enemy skills data is")
+
 
     outputGroup = parser.add_argument_group("Output")
     outputGroup.add_argument("--output_dir", required=True,
@@ -38,6 +39,8 @@ def parse_args():
 
 
 def run_test(args):
+    esd.set_data_dir(args.es_input_dir)
+
     raw_input_dir = os.path.join(args.input_dir, 'raw')
     processed_input_dir = os.path.join(args.input_dir, 'processed')
 

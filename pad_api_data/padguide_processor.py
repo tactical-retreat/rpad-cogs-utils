@@ -278,7 +278,7 @@ def database_diff_events(db_wrapper, database):
 
 
 def database_diff_cards(db_wrapper, jp_database, na_database):
-    combined_cards = merged_data.build_cross_server_cards(jp_database, na_database)
+    combined_cards = merged_data.build_ownable_cross_server_cards(jp_database, na_database)
 
     def insert_or_update(item: monster.SqlItem):
         # Check if the item exists by key

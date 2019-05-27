@@ -60,6 +60,11 @@ class CrossServerCard(object):
         self.na_card = na_card
 
 
+def build_ownable_cross_server_cards(jp_database, na_database) -> List[CrossServerCard]:
+    all_cards = build_cross_server_cards(jp_database, na_database)
+    return list(filter(lambda c: c.monster_no > 0 and c.monster_no < 9000, all_cards))
+
+
 def build_cross_server_cards(jp_database, na_database) -> List[CrossServerCard]:
     jp_card_ids = [mc.card.card_id for mc in jp_database.cards]
     jp_id_to_card = {mc.card.card_id: mc for mc in jp_database.cards}
@@ -84,8 +89,6 @@ def build_cross_server_cards(jp_database, na_database) -> List[CrossServerCard]:
 # If the card cannot be created, provides an error message.
 def make_cross_server_card(jp_card: MergedCard, na_card: MergedCard) -> (CrossServerCard, str):
     card_id = jp_card.card.card_id
-    if card_id <= 0 or card_id > 6000:
-        return None, 'crazy id: {}'.format(repr(jp_card))
 
     if '***' in jp_card.card.name or '???' in jp_card.card.name:
         return None, 'Skipping debug card: {}'.format(repr(jp_card))
