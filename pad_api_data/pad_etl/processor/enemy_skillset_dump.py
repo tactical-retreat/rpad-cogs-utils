@@ -9,6 +9,21 @@ from ..data.card import BookCard
 from .enemy_skillset import *
 
 
+_DATA_DIR = None
+
+def set_data_dir(data_dir: str):
+    if not os.path.isdir(data_dir):
+        raise ValueError('Not a directory:', data_dir)
+    global _DATA_DIR
+    _DATA_DIR = data_dir
+
+
+def data_dir() -> str:
+    if not _DATA_DIR:
+        raise ValueError('You must set the data dir before loading ES info')
+    return _DATA_DIR
+
+
 class RecordType(Enum):
     """Describes the type of record being stored.
 
@@ -411,8 +426,8 @@ def _header(header_text: str) -> str:
     ])
 
 
-def _file_by_id(monster_id):
-    return os.path.join(os.path.dirname(__file__), 'enemy_data', '{}.yaml'.format(monster_id))
+def _file_by_id(monster_id: int):
+    return os.path.join(data_dir(), '{}.yaml'.format(monster_id))
 
 
 def load_summary_as_dump_text(card: BookCard, monster_level: int, dungeon_atk_modifier: float):
