@@ -1345,6 +1345,9 @@ def fixed_pos_convert(arguments):
         for x in board:
             orb_count += len(x)
 
+        if orb_count == 4:
+            if len(board[0]) == 2 and len(board[4]) == 2:
+                c['skill_text'] += 'Create 4 {} orbs at the corners of the board'.format(ATTRIBUTES[c['attribute']])
         if not (orb_count%5):
             for x in range(1,len(board)-1): #Check for cross
                 if len(board[x]) == 3 and len(board[x-1]) == 1 and len(board[x+1]) == 1:   #Check for cross
