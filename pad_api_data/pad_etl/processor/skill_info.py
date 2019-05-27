@@ -2351,13 +2351,10 @@ def add_combo_att_convert(arguments):
         attr = c['attributes']
         min_attr = c['min_attr']
         c['parameter'] = fmt_parameter(c)
-        skill_text = fmt_multiplier_text(1, c['atk_multiplier'], 1)
-        if c['atk_multiplier'] > 0 and c['atk_multiplier']!= 1:
-            skill_text += ' and increase combo by {}'.format(c['add_combo'])
+        if c['atk_multiplier'] not in [0,1]:
+            skill_text = fmt_multiplier_text(1, c['atk_multiplier'], 1) + ' and increase combo by {}'.format(c['add_combo'])
         else:
             skill_text = 'Increase combo by {}'.format(c['add_combo'])
-        #skill_text = '{}x ATK and increase combo by {}'.format(fmt_mult(c['atk_multiplier']),
-        #                                                            c['add_combo'])
         if attr == [0, 1, 2, 3, 4]:
             skill_text += ' when matching {} or more colors'.format(min_attr)
         elif attr == [0, 1, 2, 3, 4, 5]:
