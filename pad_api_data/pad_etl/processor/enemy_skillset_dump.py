@@ -1,4 +1,4 @@
-from enum import Enum, auto
+from enum import Enum
 from typing import Optional, TextIO, Union
 import os
 import yaml
@@ -30,17 +30,17 @@ class RecordType(Enum):
     Has no practical use for DadGuide but it might be useful for other apps.
     """
     # Resist, resolve
-    PASSIVE = auto()
+    PASSIVE = 1
     # Actions that happen on the first turn
-    PREEMPT = auto()
+    PREEMPT = 2
     # Description-only visual separation aids
-    DIVIDER = auto()
+    DIVIDER = 3
     # Any kind of action, could be multiple enemy skills compounded into one
-    ACTION = auto()
+    ACTION = 4
     # An action that increases enemy damage
-    ENRAGE = auto()
+    ENRAGE = 5
     # Generic operator-supplied text placeholder, probably description-only
-    TEXT = auto()
+    TEXT = 6
 
 
 class SkillRecord(yaml.YAMLObject):
@@ -441,6 +441,10 @@ def load_summary_as_dump_text(card: BookCard, monster_level: int, dungeon_atk_mo
     if not summary:
         return 'Basic attacks (1)\n'
 
+    return summary_as_dump_text(summary, monster_level, dungeon_atk_modifier)
+
+
+def summary_as_dump_text(summary: EnemySummary, monster_level: int, dungeon_atk_modifier: float):
     skill_data = summary.data_for_level(monster_level)
     if not skill_data:
         return 'Basic attacks (2)\n'
