@@ -2289,10 +2289,12 @@ def multi_mass_match_convert(arguments):
         _, c = convert_with_defaults('multi_mass_match',
                                      arguments,
                                      multi_mass_match_backups)(x)
-        c['skill_text'] = fmt_multiplier_text(1, c['atk_multiplier'], 1)
-        if c['atk_multiplier'] > 0:
-            c['skill_text'] += ' and '
-        c['skill_text'] += 'increase combo by {} when matching {} or more connected'.format(
+        
+        if c['atk_multiplier'] not in [0,1]:
+            c['skill_text'] = fmt_multiplier_text(1, c['atk_multiplier'], 1) + ' and increase '
+        else:
+            c['skill_text'] = 'Increase '
+        c['skill_text'] += 'combo by {} when matching {} or more connected'.format(
             c['add_combo'],
             c['minimum_orb'])
 
