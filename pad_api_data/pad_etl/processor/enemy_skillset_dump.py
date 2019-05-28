@@ -441,10 +441,10 @@ def load_summary_as_dump_text(card: BookCard, monster_level: int, dungeon_atk_mo
     if not summary:
         return 'Basic attacks (1)\n'
 
-    return summary_as_dump_text(summary, monster_level, dungeon_atk_modifier)
+    return summary_as_dump_text(summary, card, monster_level, dungeon_atk_modifier)
 
 
-def summary_as_dump_text(summary: EnemySummary, monster_level: int, dungeon_atk_modifier: float):
+def summary_as_dump_text(summary: EnemySummary, card: BookCard, monster_level: int, dungeon_atk_modifier: float):
     skill_data = summary.data_for_level(monster_level)
     if not skill_data:
         return 'Basic attacks (2)\n'
