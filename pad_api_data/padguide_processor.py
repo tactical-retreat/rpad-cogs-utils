@@ -219,9 +219,10 @@ def find_dungeon_id(pad_id_to_dungeon_seq, pad_id_ignore, en_name_to_dungeon_id,
     return None
 
 
-def database_diff_events(db_wrapper, database):
+def database_diff_events(db_wrapper, database, cross_server_dungeons):
     filtered_events = filter_events(database.bonuses)
 
+    dungeon_id_to_csd = {csd.dungeon_id: csd for csd in cross_server_dungeons}
     en_name_to_event_id, jp_name_to_event_id = load_event_lookups(db_wrapper)
     pad_id_to_dungeon_seq, pad_id_ignore = load_dungeon_mappings(db_wrapper)
     en_name_to_dungeon_id, jp_name_to_dungeon_id = load_dungeon_lookups(db_wrapper)
@@ -239,18 +240,32 @@ def database_diff_events(db_wrapper, database):
         if event_id is None:
             fail_logger.debug('bailing early; event not found')
             continue
-        dungeon_id = find_dungeon_id(pad_id_to_dungeon_seq, pad_id_ignore,
+        dungeon_seq = find_dungeon_id(pad_id_to_dungeon_seq, pad_id_ignore,
                                      en_name_to_dungeon_id, jp_name_to_dungeon_id, merged_event)
 
-        if not dungeon_id:
+        if not dungeon_seq:
             if merged_event.group:
                 human_fix_logger.error('failed group lookup: %s', repr(merged_event))
-            else:
-                human_fix_logger.info('dungeon failed lookup: %s', repr(merged_event))
-            unmatched_events.append(merged_event)
-            continue
+                unmatched_events.append(merged_event)
+                continue
 
-        schedule_item = ScheduleItem(merged_event, event_id, dungeon_id)
+            # Automatically insert this dungeon
+            dungeon_id = merged_event.bonus.dungeon_id
+            csd = dungeon_id_to_csd.get(dungeon_id)
+            jp_name = csd.jp_dungeon.clean_name.replace("'", "''")
+            en_name = csd.na_dungeon.clean_name.replace("'", "''")
+            tstamp = int(time.time()) * 1000
+            sql = ('insert into dungeon_list (dungeon_type, icon_seq, name_jp, name_kr, name_us, order_idx, show_yn, tdt_seq, tstamp)'
+                " values (1, 0, '{}', '{}', '{}', 0, 1, 41, {})".format(jp_name, en_name, en_name, tstamp))
+
+            dungeon_seq = int(db_wrapper.insert_item(sql))
+            pad_id_to_dungeon_seq[dungeon_id] = dungeon_seq
+
+            sql = 'insert into etl_dungeon_map (pad_dungeon_id, dungeon_seq) values ({}, {})'.format(
+                dungeon_id, dungeon_seq)
+            db_wrapper.insert_item(sql)
+
+        schedule_item = ScheduleItem(merged_event, event_id, dungeon_seq)
         if not schedule_item.is_valid():
             fail_logger.debug('skipping item: %s - %s', repr(merged_event), repr(schedule_item))
             continue
@@ -631,11 +646,12 @@ def load_data(args):
     db_wrapper = DbWrapper(dry_run)
     db_wrapper.connect(db_config)
 
+    cross_server_dungeons = merged_data.build_cross_server_dungeons(jp_database, na_database)
     logger.info('Starting JP event diff')
-    database_diff_events(db_wrapper, jp_database)
+    database_diff_events(db_wrapper, jp_database, cross_server_dungeons)
 
     logger.info('Starting NA event diff')
-    database_diff_events(db_wrapper, na_database)
+    database_diff_events(db_wrapper, na_database, cross_server_dungeons)
 
     logger.info('Starting card diff')
     database_diff_cards(db_wrapper, jp_database, na_database)
