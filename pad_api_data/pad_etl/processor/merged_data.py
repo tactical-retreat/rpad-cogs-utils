@@ -6,7 +6,7 @@ import pytz
 
 from . import enemy_skillset
 from ..common import pad_util, monster_id_mapping
-from ..data import BookCard, MonsterSkill
+from ..data import BookCard, MonsterSkill, Dungeon
 
 fail_logger = logging.getLogger('processor_failures')
 
@@ -71,7 +71,7 @@ def build_cross_server_cards(jp_database, na_database) -> List[CrossServerCard]:
     na_id_to_card = {mc.card.card_id: mc for mc in na_database.cards}
 
     # This is the list of cards we could potentially update
-    combined_cards = []  # List[CrossServerCard]
+    combined_cards = []  # type: List[CrossServerCard]
     for card_id in jp_card_ids:
         jp_card = jp_id_to_card.get(card_id)
         na_card = na_id_to_card.get(monster_id_mapping.jp_id_to_na_id(card_id), jp_card)
@@ -116,3 +116,44 @@ def make_cross_server_card(jp_card: MergedCard, na_card: MergedCard) -> (CrossSe
 
     monster_no = monster_id_mapping.jp_id_to_monster_no(card_id)
     return CrossServerCard(monster_no, jp_card, na_card), None
+
+
+class CrossServerDungeon(object):
+    def __init__(self, jp_dungeon: Dungeon, na_dungeon: Dungeon):
+        self.dungeon_id = jp_dungeon.dungeon_id
+        self.jp_dungeon = jp_dungeon
+        self.na_dungeon = na_dungeon
+
+
+def build_cross_server_dungeons(jp_database, na_database) -> List[CrossServerDungeon]:
+    jp_dungeon_ids = [dungeon.dungeon_id for dungeon in jp_database.dungeons]
+    jp_id_to_dungeon = {dungeon.dungeon_id: dungeon for dungeon in jp_database.dungeons}
+    na_id_to_dungeon = {dungeon.dungeon_id: dungeon for dungeon in na_database.dungeons}
+
+    # This is the list of dungeons we could potentially update
+    combined_dungeons = []  # type: List[CrossServerDungeon]
+    for dungeon_id in jp_dungeon_ids:
+        jp_dungeon = jp_id_to_dungeon.get(dungeon_id)
+        na_dungeon = na_id_to_dungeon.get(dungeon_id) # Might need a mapping like cards
+
+        csc, err_msg = make_cross_server_dungeon(jp_dungeon, na_dungeon)
+        if csc:
+            combined_dungeons.append(csc)
+        elif err_msg:
+            fail_logger.debug('Skipping dungeon, %s', err_msg)
+
+    return combined_dungeons
+
+
+def make_cross_server_dungeon(jp_dungeon: Dungeon, na_dungeon: Dungeon) -> (CrossServerDungeon, str):
+    jp_dungeon = jp_dungeon or na_dungeon
+    na_dungeon = na_dungeon or jp_dungeon
+
+    if '***' in jp_dungeon.clean_name or '???' in jp_dungeon.clean_name:
+        return None, 'Skipping debug dungeon: {}'.format(repr(jp_dungeon))
+
+    if '***' in na_dungeon.clean_name or '???' in na_dungeon.clean_name:
+        # dungeon probably exists in JP but not in NA
+        na_dungeon = jp_dungeon
+
+    return CrossServerDungeon(jp_dungeon, na_dungeon), None
