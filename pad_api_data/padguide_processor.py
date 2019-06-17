@@ -589,19 +589,21 @@ def database_update_egg_machines(db_wrapper, jp_database, na_database):
 
 
 def database_update_news(db_wrapper):
-    RENI_NEWS_JP = 'https://pad.protic.site/news/category/pad-jp/feed'
-    jp_feed = feedparser.parse(RENI_NEWS_JP)
-    next_id = db_wrapper.get_single_value(
-        'SELECT 1 + COALESCE(MAX(CAST(tn_seq AS SIGNED)), 10000) FROM news_list', op=int)
-    for entry in jp_feed.entries:
-        item = NewsItem('JP', entry.title, entry.link)
-        if db_wrapper.check_existing(item.exists_sql()):
-            logger.debug('news already exists, skipping, %s', repr(item))
-        else:
-            logger.warn('inserting item: %s', repr(item))
-            db_wrapper.insert_item(item.insert_sql(next_id))
-            next_id += 1
+    RENI_NEWS_JP = 'https://pad.protic.site/category/pad-jp/feed/'
+    RENI_NEWS_NA = 'https://pad.protic.site/en/feed/'
 
+    def run_news_update(server, rss_url):
+        jp_feed = feedparser.parse(rss_url)
+        for entry in jp_feed.entries:
+            item = NewsItem(server, entry.title, entry.link)
+            if db_wrapper.check_existing(item.exists_sql()):
+                logger.debug('news already exists, skipping, %s', repr(item))
+            else:
+                logger.warn('inserting item: %s', repr(item))
+                db_wrapper.insert_item(item.insert_sql())
+
+    run_news_update('JP', RENI_NEWS_JP)
+    run_news_update('NA', RENI_NEWS_NA)
 
 def database_update_timestamps(db_wrapper):
     get_tables_sql = 'SELECT `internal_table` FROM get_timestamp'
