@@ -593,8 +593,8 @@ def database_update_news(db_wrapper):
     RENI_NEWS_NA = 'https://pad.protic.site/en/feed/'
 
     def run_news_update(server, rss_url):
-        jp_feed = feedparser.parse(rss_url)
-        for entry in jp_feed.entries:
+        feed_data = feedparser.parse(rss_url)
+        for entry in feed_data.entries:
             item = NewsItem(server, entry.title, entry.link)
             if db_wrapper.check_existing(item.exists_sql()):
                 logger.debug('news already exists, skipping, %s', repr(item))
@@ -603,7 +603,7 @@ def database_update_news(db_wrapper):
                 db_wrapper.insert_item(item.insert_sql())
 
     run_news_update('JP', RENI_NEWS_JP)
-    run_news_update('NA', RENI_NEWS_NA)
+    run_news_update('US', RENI_NEWS_NA)
 
 def database_update_timestamps(db_wrapper):
     get_tables_sql = 'SELECT `internal_table` FROM get_timestamp'
