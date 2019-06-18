@@ -419,6 +419,18 @@ class Describe:
     def countdown(counter):
         return 'Display \'{:d}\' and skip turn'.format(counter)
 
+    @staticmethod
+    def gacha_fever(attribute, orb_req):
+        return 'Fever Mode: clear {} {} orbs'.format(orb_req, attribute)
+
+    @staticmethod
+    def lead_alter(turns, target):
+        return 'Change leader to [{}] for {} turns'.format(target, turns)
+
+    @staticmethod
+    def no_skyfall(turns):
+        return 'No skyfall for {} turns'.format(turns)
+
 
 # Condition subclass
 
@@ -1513,6 +1525,35 @@ class ESTurnChangeActive(ESAction):
         )
 
 
+class ESGachaFever(ESAction):
+    def __init__(self, skill: EnemySkillRef):
+        self.attribute = ATTRIBUTE_MAP[params(skill)[1]]
+        self.orb_req = params(skill)[2]
+        super().__init__(
+            skill,
+            description=Describe.gacha_fever(self.attribute, self.orb_req)
+        )
+
+
+class ESLeaderAlter(ESAction):
+    def __init__(self, skill: EnemySkillRef):
+        self.turns = params(skill)[1]
+        self.target_card = params(skill)[2]
+        super().__init__(
+            skill,
+            description=Describe.lead_alter(self.turns, self.target_card)
+        )
+        
+
+class ESNoSkyfall(ESAction):
+    def __init__(self, skill: EnemySkillRef):
+        self.turns = params(skill)[2]
+        super().__init__(
+            skill,
+            description=Describe.no_skyfall(self.turns)
+        )
+
+
 # Passive
 class ESPassive(ESBehavior):
     def full_description(self):
@@ -1850,6 +1891,9 @@ BEHAVIOR_MAP = {
     121: ESInvulnerableOff,
     122: ESTurnChangeActive,
     123: ESInvulnerableOn,  # hexa's invulnerable gets special type because reasons
+    124: ESGachaFever,  # defines number & type of orbs needed in fever mode
+    125: ESLeaderAlter,
+    127: ESNoSkyfall,
 
     # LOGIC
     0: ESNone,
