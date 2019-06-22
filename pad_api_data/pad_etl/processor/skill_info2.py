@@ -48,7 +48,6 @@ class ASMultiTargetNuke(ActiveSkill):
 
         self.attribute = monster_skill.other_fields[0]
         self.damage = monster_skill.other_fields[1]
-        self.mass_attack = True
 
 
 class ASSingleTargetNuke(ActiveSkill):
@@ -56,7 +55,6 @@ class ASSingleTargetNuke(ActiveSkill):
         super().__init__(monster_skill)
 
         self.multiplier = monster_skill.other_fields[0] / 100
-        self.mass_attack = False
 
 
 # Leader skills
