@@ -42,7 +42,7 @@ class LeaderSkill(object):
         self.skill_type = monster_skill.skill_type
 
 
-class ASFixedAttrNuke(ActiveSkill):
+class ASMultiTargetNuke(ActiveSkill):
     def __init__(self, monster_skill):
         super().__init__(monster_skill)
 
@@ -51,7 +51,7 @@ class ASFixedAttrNuke(ActiveSkill):
         self.mass_attack = True
 
 
-class ASSelfAttrNuke(ActiveSkill):
+class ASSingleTargetNuke(ActiveSkill):
     def __init__(self, monster_skill):
         super().__init__(monster_skill)
 
@@ -60,16 +60,44 @@ class ASSelfAttrNuke(ActiveSkill):
 
 
 # Leader skills
-class LSPassiveStats(LeaderSkill):
+class LSAttrATKBoost(LeaderSkill):
+    def __init__(self, monster_skill):
+        super().__init__(monster_skill)
+
+        self.for_attr = [monster_skill.other_fields[0]]
+        self.atk_multiplier = monster_skill.other_fields[0] / 100
+
+
+class LSBonusAttack(LeaderSkill):
+    def __init__(self, monster_skill):
+        super().__init__(monster_skill)
+
+        self.multiplier = monster_skill.other_fields[0] / 100
+
+
+class LSAutoheal(LeaderSkill):
+    def __init__(self, monster_skill):
+        super().__init__(monster_skill)
+
+        self.multiplier = monster_skill.other_fields[0] / 100
+
+
+class LSResolve(LeaderSkill):
+    def __init__(self, monster_skill):
+        super().__init__(monster_skill)
+
+        self.threshold = monster_skill.other_fields[0] / 100
+
+
+class LSMovementTimeIncrease(LeaderSkill):
+    def __init__(self, monster_skill):
+        super().__init__(monster_skill)
+
+        self.time = monster_skill.other_fields[0] / 100
+
+class LSDamageReduction(LeaderSkill):
     def __init__(self, monster_skill):
         super().__init__(monster_skill)
 
         self.reduction_attributions = ALL_ATTR
         self.damage_reduction = monster_skill.other_fields[0] / 100
-
-
-class LSAfterAttack(LeaderSkill):
-    def __init__(self, monster_skill):
-        super().__init__(monster_skill)
-
-        self.multiplier = monster_skill.other_fields[0] / 100
