@@ -2379,7 +2379,7 @@ SKILL_TRANSFORM = {
     attr_nuke_convert({'attribute': (0, cc), 'multiplier': (1, multi), 'mass_attack': True})(x),
     1: fixed_attr_nuke_convert({'attribute': (0, cc), 'damage': (1, cc), 'mass_attack': True}),
     2: self_att_nuke_convert({'multiplier': (0, multi), 'mass_attack': False}),
-    
+
     3: shield_convert({'duration': (0, cc), 'reduction': (1, multi)}),
     4: poison_convert({'multiplier': (0, multi)}),
     5: ctw_convert({'duration': (0, cc)}),
