@@ -445,7 +445,7 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
         'SELECT 1 + COALESCE(MAX(CAST(ts_seq AS SIGNED)), 20000) FROM skill_list', op=int)
 
     # Compute English skill text
-    calc_skills = skill_info.reformat_json_info(jp_database.raw_skills)
+    calc_skills = jp_database.calc_skills
 
     # Create a list of SkillIds to CardIds
     skill_id_to_card_ids = defaultdict(list)  # type DefaultDict<SkillId, List[CardId]>
@@ -638,6 +638,8 @@ def load_data(args):
 
     if not args.skipintermediate:
         logger.info('Storing intermediate data')
+        calc_skills = skill_info.reformat_json_info(jp_database.raw_skills)
+        jp_database.calc_skills = calc_skills
         jp_database.save_all(output_dir, args.pretty)
         na_database.save_all(output_dir, args.pretty)
 
