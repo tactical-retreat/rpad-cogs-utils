@@ -2379,6 +2379,7 @@ SKILL_TRANSFORM = {
     attr_nuke_convert({'attribute': (0, cc), 'multiplier': (1, multi), 'mass_attack': True})(x),
     1: fixed_attr_nuke_convert({'attribute': (0, cc), 'damage': (1, cc), 'mass_attack': True}),
     2: self_att_nuke_convert({'multiplier': (0, multi), 'mass_attack': False}),
+
     3: shield_convert({'duration': (0, cc), 'reduction': (1, multi)}),
     4: poison_convert({'multiplier': (0, multi)}),
     5: ctw_convert({'duration': (0, cc)}),
@@ -2467,12 +2468,15 @@ SKILL_TRANSFORM = {
     191: void_mechanic_convert({'duration':(0, cc)}),
     195: suicide_convert({'hp_remaining': (0, multi)}),
     196: match_disable_convert({'duration': (0, cc)}),
+
+
     11: passive_stats_convert({'for_attr': (0, listify), 'atk_multiplier': (1, multi)}),
     12: after_attack_convert({'multiplier': (0, multi)}),
     13: heal_on_convert({'multiplier': (0, multi)}),
     14: resolve_convert({'threshold': (0, multi)}),
     15: bonus_time_convert({'time': (0, multi), 'skill_text': ''}),
     16: passive_stats_convert({'reduction_attributes': all_attr, 'damage_reduction': (0, multi)}),
+
     17: passive_stats_convert({'reduction_attributes': (0, listify), 'damage_reduction': (1, multi)}),
     22: passive_stats_convert({'for_type': (0, listify), 'atk_multiplier': (1, multi)}),
     23: passive_stats_convert({'for_type': (0, listify), 'hp_multiplier': (1, multi)}),
