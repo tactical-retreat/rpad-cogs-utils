@@ -127,12 +127,14 @@ class CrossServerDungeon(object):
 
 def build_cross_server_dungeons(jp_database, na_database) -> List[CrossServerDungeon]:
     jp_dungeon_ids = [dungeon.dungeon_id for dungeon in jp_database.dungeons]
+    na_dungeon_ids = [dungeon.dungeon_id for dungeon in na_database.dungeons]
+    dungeon_ids = jp_dungeon_ids + list(set(na_dungeon_ids) - set(jp_dungeon_ids))
     jp_id_to_dungeon = {dungeon.dungeon_id: dungeon for dungeon in jp_database.dungeons}
     na_id_to_dungeon = {dungeon.dungeon_id: dungeon for dungeon in na_database.dungeons}
 
     # This is the list of dungeons we could potentially update
     combined_dungeons = []  # type: List[CrossServerDungeon]
-    for dungeon_id in jp_dungeon_ids:
+    for dungeon_id in dungeon_ids:
         jp_dungeon = jp_id_to_dungeon.get(dungeon_id)
         na_dungeon = na_id_to_dungeon.get(dungeon_id) # Might need a mapping like cards
 
