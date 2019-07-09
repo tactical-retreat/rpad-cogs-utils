@@ -39,7 +39,7 @@ with open(bonuses_file) as f:
     bonuses = json.load(f)
 
 current_dungeons = active_dungeons.filter_current_bonuses(
-    bonuses, args.group, include_normals=False, include_multiplayer=False)
+    bonuses, args.group, include_normals=False, include_multiplayer=True)
 
 db_config_prod = '/home/tactical0retreat/rpad-cogs-utils/pad_api_data/db_config.json'
 db_config_dev = '/home/tactical0retreat/rpad-cogs-utils/pad_api_data/db_config_dev.json'
