@@ -43,18 +43,22 @@ current_dungeons = active_dungeons.filter_current_bonuses(
     bonuses, args.group, include_normals=False, include_multiplayer=True)
 
 raw_dir = '/home/tactical0retreat/pad_data/raw'
-pad_db = database.Database(args.server, args.raw_input_dir)
+pad_db = database.Database(args.server, raw_dir)
 pad_db.load_database()
 
 for dungeon in pad_db.dungeons:
     # This is a hack because I don't want to overhaul this whole script which is deprecated.
-    if dungeon.alt_dungeon_type in ['Normal Dungeon', 'Technical Dungeon']:
-        dungeon_map = {
-            'dungeon_id': dungeon.dungeon_id,
-            'clean_name': dungeon.clean_name,
-            'floors': [{'floor_number': x.floor_number} for x in dungeon.floors],
-        }
-        current_dungeons.append(dungeon_map)
+    if dungeon.one_time:
+        continue
+    if dungeon.alt_dungeon_type not in ['Normal Dungeon', 'Technical Dungeon']:
+        continue
+
+    dungeon_map = {
+        'dungeon_id': dungeon.dungeon_id,
+        'clean_name': dungeon.clean_name,
+        'floors': [{'floor_number': x.floor_number} for x in dungeon.floors],
+    }
+    current_dungeons.append(dungeon_map)
 
 db_config_prod = '/home/tactical0retreat/rpad-cogs-utils/pad_api_data/db_config.json'
 db_config_dev = '/home/tactical0retreat/rpad-cogs-utils/pad_api_data/db_config_dev.json'
