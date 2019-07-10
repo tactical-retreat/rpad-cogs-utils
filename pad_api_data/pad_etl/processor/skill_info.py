@@ -1183,7 +1183,7 @@ def suicide_convert(arguments):
         if c['hp_remaining'] == 0:
             c['skill_text'] += 'Reduce HP to 1'
         else:
-            c['skill_text'] += 'Reduce HP by ' + fmt_mult(c['hp_remaining'] * 100) + '%'
+            c['skill_text'] += 'Reduce HP by ' + fmt_mult((1 - c['hp_remaining']) * 100) + '%'
         return 'suicide', c
     return f
 
