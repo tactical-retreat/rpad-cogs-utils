@@ -219,9 +219,10 @@ def find_dungeon_id(pad_id_to_dungeon_seq, pad_id_ignore, en_name_to_dungeon_id,
     return None
 
 
-def database_diff_events(db_wrapper, database):
+def database_diff_events(db_wrapper, database, cross_server_dungeons):
     filtered_events = filter_events(database.bonuses)
 
+    dungeon_id_to_csd = {csd.dungeon_id: csd for csd in cross_server_dungeons}
     en_name_to_event_id, jp_name_to_event_id = load_event_lookups(db_wrapper)
     pad_id_to_dungeon_seq, pad_id_ignore = load_dungeon_mappings(db_wrapper)
     en_name_to_dungeon_id, jp_name_to_dungeon_id = load_dungeon_lookups(db_wrapper)
@@ -239,18 +240,32 @@ def database_diff_events(db_wrapper, database):
         if event_id is None:
             fail_logger.debug('bailing early; event not found')
             continue
-        dungeon_id = find_dungeon_id(pad_id_to_dungeon_seq, pad_id_ignore,
+        dungeon_seq = find_dungeon_id(pad_id_to_dungeon_seq, pad_id_ignore,
                                      en_name_to_dungeon_id, jp_name_to_dungeon_id, merged_event)
 
-        if not dungeon_id:
+        if not dungeon_seq:
             if merged_event.group:
                 human_fix_logger.error('failed group lookup: %s', repr(merged_event))
-            else:
-                human_fix_logger.info('dungeon failed lookup: %s', repr(merged_event))
-            unmatched_events.append(merged_event)
-            continue
+                unmatched_events.append(merged_event)
+                continue
 
-        schedule_item = ScheduleItem(merged_event, event_id, dungeon_id)
+            # Automatically insert this dungeon
+            dungeon_id = merged_event.bonus.dungeon_id
+            csd = dungeon_id_to_csd.get(dungeon_id)
+            jp_name = csd.jp_dungeon.clean_name.replace("'", "''")
+            en_name = csd.na_dungeon.clean_name.replace("'", "''")
+            tstamp = int(time.time()) * 1000
+            sql = ('insert into dungeon_list (dungeon_type, icon_seq, name_jp, name_kr, name_us, order_idx, show_yn, tdt_seq, tstamp)'
+                " values (1, 0, '{}', '{}', '{}', 0, 1, 41, {})".format(jp_name, en_name, en_name, tstamp))
+
+            dungeon_seq = int(db_wrapper.insert_item(sql))
+            pad_id_to_dungeon_seq[dungeon_id] = dungeon_seq
+
+            sql = 'insert into etl_dungeon_map (pad_dungeon_id, dungeon_seq) values ({}, {})'.format(
+                dungeon_id, dungeon_seq)
+            db_wrapper.insert_item(sql)
+
+        schedule_item = ScheduleItem(merged_event, event_id, dungeon_seq)
         if not schedule_item.is_valid():
             fail_logger.debug('skipping item: %s - %s', repr(merged_event), repr(schedule_item))
             continue
@@ -430,7 +445,7 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
         'SELECT 1 + COALESCE(MAX(CAST(ts_seq AS SIGNED)), 20000) FROM skill_list', op=int)
 
     # Compute English skill text
-    calc_skills = skill_info.reformat_json_info(jp_database.raw_skills)
+    calc_skills = jp_database.calc_skills
 
     # Create a list of SkillIds to CardIds
     skill_id_to_card_ids = defaultdict(list)  # type DefaultDict<SkillId, List[CardId]>
@@ -574,19 +589,21 @@ def database_update_egg_machines(db_wrapper, jp_database, na_database):
 
 
 def database_update_news(db_wrapper):
-    RENI_NEWS_JP = 'https://pad.protic.site/news/category/pad-jp/feed'
-    jp_feed = feedparser.parse(RENI_NEWS_JP)
-    next_id = db_wrapper.get_single_value(
-        'SELECT 1 + COALESCE(MAX(CAST(tn_seq AS SIGNED)), 10000) FROM news_list', op=int)
-    for entry in jp_feed.entries:
-        item = NewsItem('JP', entry.title, entry.link)
-        if db_wrapper.check_existing(item.exists_sql()):
-            logger.debug('news already exists, skipping, %s', repr(item))
-        else:
-            logger.warn('inserting item: %s', repr(item))
-            db_wrapper.insert_item(item.insert_sql(next_id))
-            next_id += 1
+    RENI_NEWS_JP = 'https://pad.protic.site/category/pad-jp/feed/'
+    RENI_NEWS_NA = 'https://pad.protic.site/en/feed/'
 
+    def run_news_update(server, rss_url):
+        feed_data = feedparser.parse(rss_url)
+        for entry in feed_data.entries:
+            item = NewsItem(server, entry.title, entry.link)
+            if db_wrapper.check_existing(item.exists_sql()):
+                logger.debug('news already exists, skipping, %s', repr(item))
+            else:
+                logger.warn('inserting item: %s', repr(item))
+                db_wrapper.insert_item(item.insert_sql())
+
+    run_news_update('JP', RENI_NEWS_JP)
+    run_news_update('US', RENI_NEWS_NA)
 
 def database_update_timestamps(db_wrapper):
     get_tables_sql = 'SELECT `internal_table` FROM get_timestamp'
@@ -621,6 +638,8 @@ def load_data(args):
 
     if not args.skipintermediate:
         logger.info('Storing intermediate data')
+        calc_skills = skill_info.reformat_json_info(jp_database.raw_skills)
+        jp_database.calc_skills = calc_skills
         jp_database.save_all(output_dir, args.pretty)
         na_database.save_all(output_dir, args.pretty)
 
@@ -631,11 +650,12 @@ def load_data(args):
     db_wrapper = DbWrapper(dry_run)
     db_wrapper.connect(db_config)
 
+    cross_server_dungeons = merged_data.build_cross_server_dungeons(jp_database, na_database)
     logger.info('Starting JP event diff')
-    database_diff_events(db_wrapper, jp_database)
+    database_diff_events(db_wrapper, jp_database, cross_server_dungeons)
 
     logger.info('Starting NA event diff')
-    database_diff_events(db_wrapper, na_database)
+    database_diff_events(db_wrapper, na_database, cross_server_dungeons)
 
     logger.info('Starting card diff')
     database_diff_cards(db_wrapper, jp_database, na_database)

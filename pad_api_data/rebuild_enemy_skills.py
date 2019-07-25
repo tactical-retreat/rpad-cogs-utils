@@ -48,11 +48,7 @@ def process_card(mcard: merged_data.MergedCard):
     used_actions = []
     for level in sorted(levels):
         try:
-            skillset = enemy_skillset_processor.convert(
-                card,
-                enemy_behavior,
-                level,
-                force_one_enemy=(int(card.unknown_009) == 5))
+            skillset = enemy_skillset_processor.convert(card, enemy_behavior, level)
             flattened = enemy_skillset_dump.flatten_skillset(level, skillset)
             if not flattened.records:
                 continue

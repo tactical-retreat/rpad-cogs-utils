@@ -22,10 +22,6 @@ class NewsItem(SqlItem):
         self.url_kr = url
         self.url_us = url
 
-    def insert_sql(self, tn_seq):
-        self.tn_seq = tn_seq
-        return super().insert_sql()
-
     def exists_sql(self):
         sql = """SELECT tn_seq FROM news_list
                  WHERE server = {server}

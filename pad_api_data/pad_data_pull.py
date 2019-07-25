@@ -16,7 +16,7 @@ from pad_etl.api import pad_api
 parser = argparse.ArgumentParser(description="Extracts PAD API data.", add_help=False)
 
 inputGroup = parser.add_argument_group("Input")
-inputGroup.add_argument("--server", required=True, help="One of [NA, JP, HT]")
+inputGroup.add_argument("--server", required=True, help="One of [NA, JP, KR]")
 inputGroup.add_argument("--user_uuid", required=True, help="Account UUID")
 inputGroup.add_argument("--user_intid", required=True, help="Account code")
 inputGroup.add_argument("--user_group", required=True, help="Expected user group")
@@ -35,6 +35,8 @@ if args.server == 'NA':
     endpoint = pad_api.ServerEndpoint.NA
 elif args.server == 'JP':
     endpoint = pad_api.ServerEndpoint.JA
+elif args.server == 'KR':
+    endpoint = pad_api.ServerEndpoint.KR
 else:
     raise Exception('unexpected server:' + args.server)
 

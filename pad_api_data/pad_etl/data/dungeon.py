@@ -167,7 +167,8 @@ class Dungeon(pad_util.JsonDictEncodable):
 
         self.dungeon_id = int(raw[0])
         self.name = str(raw[1])
-        self.unknown_002 = int(raw[2])
+        self.bitmap_2 = int(raw[2])
+        self.one_time = self.bitmap_2 & 1 > 0
 
         self.clean_name = pad_util.strip_colors(self.name)
 

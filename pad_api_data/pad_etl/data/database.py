@@ -89,6 +89,7 @@ class Database(object):
 
         # This is temporary for the integration of calculated skills
         self.raw_skills = []
+        self.calc_skills = {}
 
         # Computed from other entries
         self.bonuses = []  # type: List[MergedBonus]
@@ -148,6 +149,9 @@ class Database(object):
         self.save(output_dir, 'cards', self.cards, pretty)
         self.save(output_dir, 'exchange', self.exchange, pretty)
         self.save(output_dir, 'enemies', self.enemies, pretty)
+
+        if self.calc_skills:
+            self.save(output_dir, 'calc_skills', self.calc_skills, pretty)
 
     def dungeon_by_id(self, dungeon_id):
         return self.dungeon_id_to_dungeon.get(dungeon_id, None)
