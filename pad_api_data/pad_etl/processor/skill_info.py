@@ -2459,6 +2459,7 @@ SKILL_TRANSFORM = {
     161: true_gravity_convert({'percentage_max_hp': (0, multi)}),
     172: convert('unlock', {'skill_text': 'Unlock all orbs'}),
     173: absorb_mechanic_void_convert({'duration': (0, cc), 'attribute_absorb': (1, bool), 'damage_absorb': (3, bool)}),
+    176: fixed_pos_convert({'board'[0]: (0, binary_con), 'row_pos_1': (0, binary_con), 'row_pos_2': (1, binary_con), 'row_pos_3': (2, binary_con), 'row_pos_4': (3, binary_con), 'row_pos_5': (4, binary_con), 'attribute': (5, cc)}),
     179: auto_heal_convert({'duration': (0, cc), 'percentage_max_hp': (2, multi), 'unbind': (3, cc), 'awoken_unbind': (4, cc)}),
     180: enhance_skyfall_convert({'duration': (0, cc), 'percentage_increase': (1, multi)}),
     184: no_skyfall_convert({'duration': (0, cc)}),
@@ -2567,7 +2568,6 @@ SKILL_TRANSFORM = {
     170: attribute_match_convert({'attributes': (0, binary_con), 'minimum_attributes': (1, cc), 'minimum_atk_multiplier': (2, multi), 'minimum_damage_reduction': (3, multi)}),
     171: multi_attribute_match_convert({'attributes': (slice(0, 4), list_binary_con), 'minimum_match': (4, cc), 'minimum_atk_multiplier': (5, multi), 'minimum_damage_reduction': (6, multi)}),
     175: collab_bonus_convert({'collab_id': (0, cc), 'hp_multiplier': (3, multi2), 'atk_multiplier': (4, multi2), 'rcv_multiplier': (5, multi2)}),
-    176: fixed_pos_convert({'board'[0]: (0, binary_con), 'row_pos_1': (0, binary_con), 'row_pos_2': (1, binary_con), 'row_pos_3': (2, binary_con), 'row_pos_4': (3, binary_con), 'row_pos_5': (4, binary_con), 'attribute': (5, cc)}),
     177: orb_remain_convert({'orb_count': (5, cc), 'atk_multiplier': (6, multi), 'bonus_atk_multiplier': (7, multi)}),
     178: passive_stats_convert({'time': (0, cc), 'for_attr': (1, binary_con), 'for_type': (2, binary_con), 'hp_multiplier': (3, multi2), 'atk_multiplier': (4, multi2), 'rcv_multiplier': (5, multi2)}),
     182: mass_match_convert({'attributes': (0, binary_con), 'minimum_count': (1, cc), 'minimum_atk_multiplier': (2, multi), 'minimum_damage_reduction': (3, multi)}),
@@ -2579,6 +2579,7 @@ SKILL_TRANSFORM = {
     192: multi_mass_match_convert({'for_attr':(0, binary_con), 'minimum_orb':(1, cc), 'atk_multiplier':(2, multi), 'add_combo':(3, cc)}),
     193: l_match_convert({'attributes':(0,binary_con), 'atk_multiplier':(1,multi2), 'rcv_multiplier':(2, multi2), 'damage_reduction':(3, multi)}),
     194: add_combo_att_convert({'attributes':(0, binary_con), 'min_attr':(1,cc), 'atk_multiplier':(2, multi2), 'add_combo':(3, cc)}),
+    197: passive_stats_convert({'for_attr': [], 'for_type': [], 'hp_multiplier': 1.0, 'atk_multiplier': 1.0, 'rcv_multiplier': 1.0, 'skill_text': 'Disable Poison & Mortal Poison orb effects'}),
     }
 
 
