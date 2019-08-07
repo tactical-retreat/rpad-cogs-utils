@@ -327,14 +327,11 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
         insert_or_update(monster.MonsterPriceItem(csc.jp_card.card))
 
     # Awakenings
-    awakening_name_and_id = db_wrapper.fetch_data(monster.awoken_name_id_sql())
-    awoken_name_to_id = {row['name']: row['ts_seq'] for row in awakening_name_and_id}
-
     next_awakening_id = db_wrapper.get_single_value(
         'SELECT 1 + COALESCE(MAX(CAST(tma_seq AS SIGNED)), 20000) FROM awoken_skill_list', op=int)
 
     for csc in combined_cards:
-        awakenings = monster.card_to_awakenings(awoken_name_to_id, csc.jp_card.card)
+        awakenings = monster.card_to_awakenings(csc.jp_card.card)
         for item in awakenings:
             tma_seq = db_wrapper.check_existing_value(item.exists_by_values_sql())
             if tma_seq:
