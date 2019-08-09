@@ -120,26 +120,6 @@ python3 ${EXEC_DIR}/extract_padguide_db.py \
   --db_config=${EXEC_DIR}/db_config.json  \
   --output_dir=${DATA_DIR}/padguide
   
-  
-# Temporary!
-echo "Starting NA processing"
-python3 ${EXEC_DIR}/deprecated/pad_data_processing.py \
-  --input_dir=${DATA_DIR}/raw/na \
-  --output_dir=${DATA_DIR}/raw/na \
-  --server=NA
-
-echo "Starting JP processing"
-python3 ${EXEC_DIR}/deprecated/pad_data_processing.py \
-  --input_dir=${DATA_DIR}/raw/jp \
-  --output_dir=${DATA_DIR}/raw/jp \
-  --server=JP
-
-echo "Merging data"
-python3 ${EXEC_DIR}/deprecated/json_merge.py \
-  --left=${DATA_DIR}/raw/na/guerrilla_data.json \
-  --right=${DATA_DIR}/raw/jp/guerrilla_data.json \
-  --output=${DATA_DIR}/merged/guerrilla_data.json
-
 # echo "Building DB dump"
 # python3 ${EXEC_DIR}/build_padguide_db_file.py \
 #   --db_config=${EXEC_DIR}/db_config.json \
