@@ -263,7 +263,11 @@ def database_diff_events(db_wrapper, database, cross_server_dungeons):
 
             sql = 'insert into etl_dungeon_map (pad_dungeon_id, dungeon_seq) values ({}, {})'.format(
                 dungeon_id, dungeon_seq)
-            db_wrapper.insert_item(sql)
+            
+            try:
+                db_wrapper.insert_item(sql)
+            except:
+                print('failed to insert', sql)
 
         schedule_item = ScheduleItem(merged_event, event_id, dungeon_seq)
         if not schedule_item.is_valid():
