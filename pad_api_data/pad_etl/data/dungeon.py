@@ -225,7 +225,8 @@ def load_dungeon_data(data_dir: str = None, dungeon_file: str = None) -> List[Du
     for line in dungeon_info.split('\n'):
         info = line[0:2]
         data = line[2:]
-        data_values = next(csv.reader(StringIO(data), quotechar="'"))
+        data = data.replace("',", "`,").replace(",'", ",`")
+        data_values = next(csv.reader(StringIO(data), quotechar="`", delimiter=','))
         if info == 'd;':
             cur_dungeon = Dungeon(data_values)
             dungeons.append(cur_dungeon)
