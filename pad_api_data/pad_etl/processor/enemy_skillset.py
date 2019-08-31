@@ -954,7 +954,7 @@ class ESDebuff(ESAction):
     def __init__(self, skill: EnemySkillRef, debuff_type, amount, unit):
         self.turns = params(skill)[1]
         self.type = debuff_type
-        self.amount = amount
+        self.amount = amount or 0
         self.unit = unit
         super().__init__(
             skill,
