@@ -2369,6 +2369,102 @@ def add_combo_att_convert(arguments):
         return 'add_combo_att_match', c
     return f
 
+orb_heal_backups = {'heal_amt': 1,
+                    'atk_multiplier': 1.0,
+                    'damage_reduction': 0,
+                    'awk_unbind': 0}
+
+def orb_heal_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('orb_heal_from_match',
+                                     arguments,
+                                     orb_heal_backups)(x)
+        if c['atk_multiplier'] == 0:
+            c['atk_multiplier'] = 1
+        clauses = []
+        c['parameter'] = [1,
+                          c['atk_multiplier'],
+                          1,
+                          c['damage_reduction']]
+        
+        if c['atk_multiplier'] != 1:
+            clauses.append(fmt_multiplier_text(1, c['atk_multiplier'], 1))
+            
+        if c['damage_reduction'] != 0:
+            reduct_text = fmt_reduct_text(c['damage_reduction'])
+            clauses.append(reduct_text[0].upper() + reduct_text[1:])
+                           
+        if c['awk_unbind'] != 0:
+            clauses.append('Reduce awoken skill binds by {} turns'.format(c['awk_unbind']))
+            
+        skill_text = ''
+        for clause in clauses[:-1]:
+            if skill_text == '':
+                skill_text = clause
+            else:
+                skill_text += ', ' + clause
+        if skill_text != '':
+            skill_text += ' and ' + clauses[-1][0].lower() + clauses[-1][1:] + ' when recovering more than {} HP from Heal orbs'.format(c['heal_amt'])
+        else:
+            skill_text = clauses[-1] + ' when recovering more than {} HP from Heal orbs'.format(c['heal_amt'])
+        
+        c['skill_text'] = skill_text
+        return 'orb_heal_from_match', c
+    return f
+
+
+rainbow_bonus_damage_backup = {'attributes': [],
+                               'min_attr': 0,
+                               'bonus_damage': 0}
+
+def rainbow_bonus_damage_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('rainbow_bonus_damage',
+                                     arguments,
+                                     rainbow_bonus_damage_backup)(x)
+        c['parameter'] = [1,1,1,0]
+        skill_text = '{} additional damage'.format(c['bonus_damage'])
+        
+        attr = c['attributes']
+        min_attr = c['min_attr']
+        
+        if attr == [0, 1, 2, 3, 4]:
+            skill_text += ' when matching {} or more colors'.format(min_attr)
+        elif attr == [0, 1, 2, 3, 4, 5]:
+            skill_text += ' when matching {} or more colors ({}+heal)'.format(
+                min_attr, min_attr - 1)
+        elif min_attr == max_attr and len(attr) > min_attr:
+            attr_text = ', '.join([ATTRIBUTES[i] for i in attr])
+            skill_text += ' when matching ' + str(min_attr) + '+ of {} at once'.format(attr_text)
+        else:
+            attr_text = ', '.join([ATTRIBUTES[i] for i in attr])
+            skill_text += ' when matching {} at once'.format(attr_text)
+        c['skill_text'] = skill_text
+        return 'rainbow_bonus_damage', c
+    return f
+
+
+mass_match_bonus_damage_backup = {'attributes': [],
+                                  'minimum_count': 0,
+                                  'bonus_damage': 0}
+
+def mass_match_bonus_damage_convert(arguments):
+    def f(x):
+        _, c = convert_with_defaults('mass_match_bonus_damage',
+                                     arguments,
+                                     mass_match_bonus_damage_backup)(x)
+        c['parameter'] = [1,1,1,0]
+        
+        skill_text = '{} additional damage when matching {} or more'.format(c['bonus_damage'], c['minimum_count'])
+        if fmt_multi_attr(c['attributes']) != '':
+            skill_text += '{} orbs'.format(fmt_multi_attr(c['attributes']))
+        else:
+            skill_text += ' orbs'
+        
+        c['skill_text'] = skill_text
+        return 'mass_match_bonus_damage', c
+    return f
+
 # End of Leader skill
 
 
@@ -2580,6 +2676,9 @@ SKILL_TRANSFORM = {
     193: l_match_convert({'attributes':(0,binary_con), 'atk_multiplier':(1,multi2), 'rcv_multiplier':(2, multi2), 'damage_reduction':(3, multi)}),
     194: add_combo_att_convert({'attributes':(0, binary_con), 'min_attr':(1,cc), 'atk_multiplier':(2, multi2), 'add_combo':(3, cc)}),
     197: passive_stats_convert({'for_attr': [], 'for_type': [], 'hp_multiplier': 1.0, 'atk_multiplier': 1.0, 'rcv_multiplier': 1.0, 'skill_text': 'Disable Poison & Mortal Poison orb effects'}),
+    198: orb_heal_convert({'heal_amt':(0, cc), 'atk_multiplier': (1, multi), 'damage_reduction':(2, multi), 'awk_unbind': (3, cc)}),
+    199: rainbow_bonus_damage_convert({'attributes': (0, binary_con), 'min_attr': (1, cc), 'bonus_damage': (2, cc)}),
+    200: mass_match_bonus_damage_convert({'attributes': (0, binary_con), 'minimum_count': (1, cc), 'bonus_damage': (2, cc)})
     }
 
 
