@@ -2385,13 +2385,13 @@ def orb_heal_convert(arguments):
         c['parameter'] = [1,
                           c['atk_multiplier'],
                           1,
-                          c['damage_reduction']]
+                          1-c['damage_reduction']]
         
         if c['atk_multiplier'] != 1:
             clauses.append(fmt_multiplier_text(1, c['atk_multiplier'], 1))
             
         if c['damage_reduction'] != 0:
-            reduct_text = fmt_reduct_text(c['damage_reduction'])
+            reduct_text = fmt_reduct_text(1-c['damage_reduction'])
             clauses.append(reduct_text[0].upper() + reduct_text[1:])
                            
         if c['awk_unbind'] != 0:
