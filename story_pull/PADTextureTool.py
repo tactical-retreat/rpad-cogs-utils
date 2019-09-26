@@ -261,6 +261,12 @@ class TextureReader(object):
 		return binaryBlob
 	
 	@classmethod
+	def extractFileFromBinaryBlob(cls, binaryBlob, outputFilePath):
+		binaryBlob = cls.decryptAndDecompressBinaryBlob(binaryBlob)
+		with open(outputFilePath, 'wb') as outputFileHandle:
+			outputFileHandle.write(binaryBlob)
+
+	@classmethod
 	def extractTexturesFromBinaryBlob(cls, binaryBlob, outputDirectory):
 		binaryBlob = cls.decryptAndDecompressBinaryBlob(binaryBlob)
 		
@@ -324,6 +330,7 @@ class Settings(object):
 		self._outputDirectory = None
 		self._trimmingEnabled = True
 		self._blackeningEnabled = True
+		self._outputFile = None
 	
 	@property
 	def inputFiles(self):
@@ -343,6 +350,12 @@ class Settings(object):
 		return self._outputDirectory
 	def setOutputDirectory(self, value):
 		self._outputDirectory = os.path.abspath(value)
+
+	@property
+	def outputFile(self):
+		return self._outputFile
+	def setOutputFile(self, value):
+		self._outputFile = os.path.abspath(value)
 	
 	@property
 	def trimmingEnabled(self):
@@ -372,7 +385,8 @@ def getSettingsFromCommandLine():
 	group.add_argument("inputFolder", metavar="IN_DIR", nargs="?", help="A path to a folder containing one or more Puzzle & Dragons texture files. Each file in this folder and its sub-folders will be processed and have their textures extracted.", action=call(settings.setInputPath))
 
 	outputGroup = parser.add_argument_group("Output")
-	outputGroup.add_argument("-o", "--outdir", metavar="OUT_DIR", help="A path to a folder where extracted textures should be saved. This property is optional; by default, any extracted texture files will be saved in the same directory as the file from which they were extracted.", action=call(settings.setOutputDirectory))
+	outputGroup.add_argument("--outdir", metavar="OUT_DIR", help="A path to a folder where extracted textures should be saved. This property is optional; by default, any extracted texture files will be saved in the same directory as the file from which they were extracted.", action=call(settings.setOutputDirectory))
+	outputGroup.add_argument("--outfile", metavar="OUT_FILE", help="The output file to save to. Specifying this forces 'file decoder' mode.", action=call(settings.setOutputFile))
 	
 	featuresGroup = parser.add_argument_group("Optional Features")
 	featuresGroup.add_argument("-nt", "--notrim", nargs=0, help="Puzzle & Dragons' textures are padded with empty space, which this script automatically removes before writing the texture to disk. Use this flag to disable automatic trimming.", action=call(settings.setTrimmingEnabled, False))
@@ -422,6 +436,12 @@ def main():
 		else:
 			with open(inputFilePath, 'rb') as binaryFile:
 				fileContents = binaryFile.read()
+
+		if settings.outputFile:
+			print("\nDecoding {} to {}... ".format(inputFilePath, settings.outputFile))
+			TextureReader.extractFileFromBinaryBlob(fileContents, settings.outputFile)
+			return
+
 		
 		print("\nReading {}... ".format(inputFilePath))
 		textures = list(TextureReader.extractTexturesFromBinaryBlob(fileContents, inputFilePath))
