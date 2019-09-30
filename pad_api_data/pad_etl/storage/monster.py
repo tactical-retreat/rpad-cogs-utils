@@ -4,7 +4,7 @@ import time
 from . import sql_item
 from ..common import monster_id_mapping
 from ..common import shared_types
-from ..common.padguide_values import TYPE_MAP, AWAKENING_MAP, EvoType
+from ..common.padguide_values import TYPE_MAP, AWAKENING_MAP, AWAKENING_SEQ_MAP, EvoType
 from ..data.card import BookCard
 from .sql_item import SqlItem
 
@@ -195,26 +195,14 @@ class MonsterPriceItem(SqlItem):
         return 'MonsterPriceItem({})'.format(self.monster_no)
 
 
-def awoken_name_id_sql():
-    return """
-        SELECT sl.ts_name_us as name, sl.ts_seq AS ts_seq
-        FROM awoken_skill_list asl
-        INNER JOIN skill_list sl 
-        USING (ts_seq)
-        GROUP BY 1, 2
-        """
-
-
-def card_to_awakenings(awoken_name_to_id, card: BookCard):
+def card_to_awakenings(card: BookCard):
     results = []
     try:
         for awakening_id in card.awakenings:
-            pg_awakening_name = AWAKENING_MAP[awakening_id]
-            ts_seq = awoken_name_to_id[pg_awakening_name]
+            ts_seq = AWAKENING_SEQ_MAP[awakening_id]
             results.append(MonsterAwakeningItem(card.card_id, len(results) + 1, ts_seq, 0))
         for awakening_id in card.super_awakenings:
-            pg_awakening_name = AWAKENING_MAP[awakening_id]
-            ts_seq = awoken_name_to_id[pg_awakening_name]
+            ts_seq = AWAKENING_SEQ_MAP[awakening_id]
             results.append(MonsterAwakeningItem(card.card_id, len(results) + 1, ts_seq, 1))
     except Exception as e:
         print('EXCEPTION', e)

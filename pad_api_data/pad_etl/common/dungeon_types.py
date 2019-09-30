@@ -6,6 +6,7 @@ DUNGEON_TYPE = {
     4: 'Tournament Dungeon',
     5: 'Special Descended Dungeon',
     7: 'Multiplayer Dungeon',
+    9: 'Story Dungeon',
 }
 
 

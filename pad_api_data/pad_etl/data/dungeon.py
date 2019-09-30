@@ -97,6 +97,9 @@ class DungeonFloor(pad_util.JsonDictEncodable):
         for field in self.remaining_fields:
             if not 'fc1' in field:
                 continue
+            else:
+                # This broke but I don't use it anywhere so who cares
+                continue
             for sub_field in field.split('|'):
                 if not sub_field.startswith('fc'):
                     continue
@@ -225,7 +228,8 @@ def load_dungeon_data(data_dir: str = None, dungeon_file: str = None) -> List[Du
     for line in dungeon_info.split('\n'):
         info = line[0:2]
         data = line[2:]
-        data_values = next(csv.reader(StringIO(data), quotechar="'"))
+        data = data.replace("',", "`,").replace(",'", ",`")
+        data_values = next(csv.reader(StringIO(data), quotechar="`", delimiter=','))
         if info == 'd;':
             cur_dungeon = Dungeon(data_values)
             dungeons.append(cur_dungeon)
