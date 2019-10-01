@@ -2299,7 +2299,6 @@ def multi_mass_match_convert(arguments):
             c['minimum_orb'])
 
         c['skill_text'] += fmt_multi_attr(c['for_attr'], conjunction='and') + ' orbs at once'
-
         c['parameter'] = fmt_parameter(c)
         return 'multi_mass_match', c
 
@@ -2379,34 +2378,34 @@ def orb_heal_convert(arguments):
         _, c = convert_with_defaults('orb_heal_from_match',
                                      arguments,
                                      orb_heal_backups)(x)
-        if c['atk_multiplier'] == 0:
-            c['atk_multiplier'] = 1
-        clauses = []
+        skill_text = ''
         c['parameter'] = [1,
-                          c['atk_multiplier'],
+                          max(1,c['atk_multiplier']),
                           1,
-                          1-c['damage_reduction']]
+                          c['damage_reduction']]
         
-        if c['atk_multiplier'] != 1:
-            clauses.append(fmt_multiplier_text(1, c['atk_multiplier'], 1))
+        if c['atk_multiplier'] != 1 and c['atk_multiplier'] != 0:
+            skill_text += fmt_multiplier_text(1, c['atk_multiplier'], 1)
             
         if c['damage_reduction'] != 0:
-            reduct_text = fmt_reduct_text(1-c['damage_reduction'])
-            clauses.append(reduct_text[0].upper() + reduct_text[1:])
+            reduct_text = fmt_reduct_text(c['damage_reduction'])
+            if skill_text:
+                if c['awk_unbind'] == 0:
+                    skill_text += ' and '
+                else:
+                    skill_text += ', '
+                skill_text += reduct_text
+            else:
+                skill_text += reduct_text[0].upper() + reduct_text[1:]
                            
         if c['awk_unbind'] != 0:
-            clauses.append('Reduce awoken skill binds by {} turns'.format(c['awk_unbind']))
-            
-        skill_text = ''
-        for clause in clauses[:-1]:
-            if skill_text == '':
-                skill_text = clause
+            if skill_text:
+                skill_text += ' and reduce awoken skill binds by {} turns'.format(c['awk_unbind'])
             else:
-                skill_text += ', ' + clause
-        if skill_text != '':
-            skill_text += ' and ' + clauses[-1][0].lower() + clauses[-1][1:] + ' when recovering more than {} HP from Heal orbs'.format(c['heal_amt'])
-        else:
-            skill_text = clauses[-1] + ' when recovering more than {} HP from Heal orbs'.format(c['heal_amt'])
+                skill_text += 'Reduce awoken skill binds by {} turns'.format(c['awk_unbind'])
+                
+        if skill_text:
+            skill_text += ' when recovering more than {} HP from Heal orbs'.format(c['heal_amt'])
         
         c['skill_text'] = skill_text
         return 'orb_heal_from_match', c
@@ -2759,7 +2758,7 @@ def reformat_json(skill_data):
     reformatted['leader_skills'] = {}
 
     def process_lskill(i, c):
-        if c[3] == 0 and c[4] == 0:  # this distinguishes leader skills from active skills
+        if (c[3] == 0 and c[4] == 0) or (c[2] == 192 and c[3] == 6 and c[4] == 17):  # this distinguishes leader skills from active skills also Kaioh apparently have 6, 17 on part of LS instead of 0, 0
             reformatted['leader_skills'][i] = {}
             reformatted['leader_skills'][i]['id'] = i
             reformatted['leader_skills'][i]['name'] = c[0]
