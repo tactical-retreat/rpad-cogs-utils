@@ -1,497 +1,991 @@
 from typing import List
+from enum import Enum
 
 from ..data.skill import MonsterSkill
 from .skill_info_constants import ALL_ATTR, ATTRIBUTES, TYPES, COLLAB_MAP
 
+
+class ThresholdType(Enum):
+    BELOW = '<'
+    ABOVE = '>'
+
+
+class Tag(Enum):
+    NO_SKYFALL = '[No Skyfall]'
+    BOARD_7X6 = '[Board becomes 7x6]'
+    DISABLE_POISON = '[Disable Poison/Mortal Poison effects]'
+
+
+def mult(x):
+    return x / 100
+
+
+def multi_floor(x):
+    return x / 100 if x != 0 else 1.0
+
+
+# TODO: clean all these things up
+def atk_from_slice(x):
+    return x[2] / 100 if 1 in x[:2] else 1.0
+
+
+def rcv_from_slice(x):
+    return x[2] / 100 if 2 in x[:2] else 1.0
+
+
+def binary_con(x):
+    return [i for i, v in enumerate(str(bin(x))[:1:-1]) if v == '1']
+
+
+def list_binary_con(x):
+    return [b for i in x for b in binary_con(i)]
+
+
+def list_con_pos(x):
+    return [i for i in x if i > 0]
+
+
 class LeaderSkill(object):
-    def __init__(self, monster_skill: MonsterSkill):
-        self.name = monster_skill.name
-        self.raw_description = monster_skill.description
-        self.skill_type = monster_skill.skill_type
+    def __init__(self, skill_type: int, ms: MonsterSkill,
+                 hp: float = 1, atk: float = 1, rcv: float = 1, shield: float = 0):
+        if skill_type != ms.skill_type:
+            raise ValueError('Expected {} but got {}'.format(skill_type, ms.skill_type))
+        self.name = ms.name
+        self.raw_description = ms.description
+        self.skill_type = ms.skill_type
+        self.hp = hp
+        self.atk = atk
+        self.rcv = rcv
+        self.shield = shield
 
 
 class AttrAtkBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
-        self.for_attr = [monster_skill.other_fields[0]]
-        self.atk_multiplier = monster_skill.other_fields[0] / 100
+    def __init__(self, ms: MonsterSkill):
+        self.for_attr = [ms.data[0]]
+        atk = mult(ms.data[1])
+        super().__init__(11, ms, atk=atk)
 
 
 class BonusAttack(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
-        self.multiplier = monster_skill.other_fields[0] / 100
+    def __init__(self, ms: MonsterSkill):
+        self.multiplier = mult(ms.data[0])
+        super().__init__(12, ms)
 
 
 class Autoheal(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
-        self.multiplier = monster_skill.other_fields[0] / 100
+    def __init__(self, ms: MonsterSkill):
+        self.multiplier = mult(ms.data[0])
+        super().__init__(13, ms)
 
 
 class Resolve(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
-        self.threshold = monster_skill.other_fields[0] / 100
+    def __init__(self, ms: MonsterSkill):
+        self.threshold = mult(ms.data[0])
+        super().__init__(14, ms)
 
 
 class MovementTimeIncrease(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
-        self.time = monster_skill.other_fields[0] / 100
+    def __init__(self, ms: MonsterSkill):
+        self.time = mult(ms.data[0])
+        super().__init__(15, ms)
 
 
 class DamageReduction(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
-        self.reduction_attributions = ALL_ATTR
-        self.damage_reduction = monster_skill.other_fields[0] / 100
+    def __init__(self, ms: MonsterSkill):
+        shield = mult(ms.data[0])
+        self.attributes = ALL_ATTR
+        super().__init__(16, ms, shield=shield)
 
 
 class AttrDamageReduction(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
-        self.reduction_attributes = [monster_skill.other_fields[0]]
-        self.damage_reduction = monster_skill.other_fields[1] / 100
+    def __init__(self, ms: MonsterSkill):
+        self.reduction_attributes = [ms.data[0]]
+        shield = mult(ms.data[1])
+        super().__init__(17, ms, shield=shield)
+
 
 class TypeAtkBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.types = [ms.data[0]]
+        atk = mult(ms.data[1])
+        super().__init__(22, ms, atk=atk)
 
 
 class TypeHpBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.types = [ms.data[0]]
+        hp = mult(ms.data[1])
+        super().__init__(23, ms, hp=hp)
 
 
 class TypeRcvBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.types = [ms.data[0]]
+        rcv = mult(ms.data[1])
+        super().__init__(24, ms, rcv=rcv)
 
 
 class StaticAtkBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.attributes = ALL_ATTR
+        atk = mult(ms.data[0])
+        super().__init__(26, ms, atk=atk)
 
 
 class AtkRcvBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        boost = mult(ms.data[0])
+        super().__init__(28, ms, atk=boost, rcv=boost)
 
 
 class AllStatBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        boost = mult(ms.data[0])
+        super().__init__(29, ms, hp=boost, atk=boost, rcv=boost)
 
 
-class DragonGodHpBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+class TwoTypeHpBoost(LeaderSkill):
+    def __init__(self, ms: MonsterSkill):
+        self.types = ms.data[0:2]
+        hp = mult(ms.data[2])
+        super().__init__(30, ms, hp=hp)
 
 
-class DragonGodAtkBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+class TwoTypeAtkBoost(LeaderSkill):
+    def __init__(self, ms: MonsterSkill):
+        self.types = ms.data[0:2]
+        atk = mult(ms.data[2])
+        super().__init__(31, ms, atk=atk)
 
 
 class TaikoDrum(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.text_en = 'Turn orb sound effects into Taiko noises'
+        super().__init__(33, ms)
 
 
 class TwoAttrDamageReduction(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.attributes = ms.data[0:2]
+        shield = mult(ms.data[2])
+        super().__init__(36, ms, shield=shield)
 
 
 class LowHpShield(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.threshold = mult(ms.data[0])
+        self.threshold_type = ThresholdType.BELOW
+        shield = mult(ms.data[2])
+        super().__init__(38, ms, shield=shield)
 
 
 class LowHpAtkBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.threshold = mult(ms.data[0])
+        self.threshold_type = ThresholdType.BELOW
+        atk = mult(ms.data[2])
+        super().__init__(39, ms, atk=atk)
+
+
+class LowHpAtkOrRcvBoost(LeaderSkill):
+    def __init__(self, ms: MonsterSkill):
+        self.threshold = mult(ms.data[0])
+        self.threshold_type = ThresholdType.BELOW
+        atk = atk_from_slice(ms.data[1:4])
+        rcv = rcv_from_slice(ms.data[1:4])
+        super().__init__(ms, atk=atk, rcv=rcv)
 
 
 class TwoAttrAtkBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.attributes = ms.data[0:2]
+        atk = mult(ms.data[2])
+        super().__init__(40, ms, atk=atk)
 
 
 class Counterattack(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.chance = mult(ms.data[0])
+        self.multiplier = mult(ms.data[1])
+        self.attribute = ms.data[2]
+        super().__init__(41, ms)
 
 
-class FullHpShield(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+class HighHpShield(LeaderSkill):
+    def __init__(self, ms: MonsterSkill):
+        self.threshold = mult(ms.data[0])
+        self.threshold_type = ThresholdType.ABOVE
+        shield = mult(ms.data[2])
+        super().__init__(43, ms, shield=shield)
 
 
 class HighHpAtkBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.threshold = mult(ms.data[0])
+        self.threshold_type = ThresholdType.ABOVE
+        atk = atk_from_slice(ms.data[1:4])
+        rcv = rcv_from_slice(ms.data[1:4])
+        super().__init__(44, ms, atk=atk, rcv=rcv)
 
 
-class TwoAttrAtkHpBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+class AttrAtkHpBoost(LeaderSkill):
+    def __init__(self, ms: MonsterSkill):
+        self.attribute = ms.data[0]
+        boost = mult(ms.data[1])
+        hp = boost
+        atk = boost
+        super().__init__(45, ms, hp=hp, atk=atk)
 
 
 class TwoAttrHpBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.attributes = ms.data[0:2]
+        hp = mult(ms.data[2])
+        super().__init__(46, ms, hp=hp)
 
 
 class AttrHpBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.attribute = ms.data[0]
+        hp = mult(ms.data[1])
+        super().__init__(48, ms, hp=hp)
 
 
 class AttrRcvBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.attribute = ms.data[0]
+        rcv = mult(ms.data[1])
+        super().__init__(49, ms, rcv)
 
 
 class EggDropRateBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.multiplier = mult(ms.data[0])
+        super().__init__(53, ms)
 
 
 class CoinDropBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.multiplier = mult(ms.data[0])
+        super().__init__(54, ms)
 
 
 class Rainbow(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.attributes = binary_con(ms.data[0])
+        self.min_attr = ms.data[1]
+        self.min_atk = mult(ms.data[2])
+        self.atk_step = mult(ms.data[3])
+        self.max_attr = ms.data[4]
+        self.max_atk = self.min_atk + self.atk_step * (self.max_attr - self.min_attr)
+        super().__init__(61, ms, atk=self.max_atk)
 
 
 class TypeHpAtkBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.type = ms.data[0]
+        boost = mult(ms.data[1])
+        super().__init__(62, ms, hp=boost, atk=boost)
 
 
 class TypeHpRcvBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.type = ms.data[0]
+        boost = mult(ms.data[1])
+        super().__init__(63, ms, hp=boost, rcv=boost)
 
 
 class TypeAtkRcvBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.type = ms.data[0]
+        boost = mult(ms.data[1])
+        super().__init__(64, ms, hp=boost, atk=boost)
 
 
 class TypeAllStatBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.type = ms.data[0]
+        boost = mult(ms.data[1])
+        super().__init__(65, ms, hp=boost, atk=boost)
 
 
 class ComboFlatMultiplier(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.combos = ms.data[0]
+        atk = mult(ms.data[1])
+        super().__init__(66, ms, atk=atk)
 
 
 class AttrHpRcvBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.attribute = ms.data[0]
+        boost = mult(ms.data[1])
+        super().__init__(67, ms, hp=boost, rcv=boost)
 
 
 class AttrTypeAtkBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.attribute = ms.data[0]
+        self.type = ms.data[1]
+        atk = mult(ms.data[2])
+        super().__init__(69, ms, atk=atk)
 
 
 class AttrTypeHpAtkBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.attribute = ms.data[0]
+        self.type = ms.data[1]
+        boost = mult(ms.data[2])
+        super().__init__(73, ms, hp=boost, atk=boost)
 
 
 class AttrTypeAtkRcvBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.attribute = ms.data[0]
+        self.type = ms.data[1]
+        boost = mult(ms.data[2])
+        super().__init__(75, ms, atk=boost, rcv=boost)
 
 
 class AttrTypeAllStatBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.attribute = ms.data[0]
+        self.type = ms.data[1]
+        boost = mult(ms.data[2])
+        super().__init__(76, ms, hp=boost, atk=boost, rcv=boost)
 
 
-class GodDragonHpAtkBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+class TwoTypeHpAtkBoost(LeaderSkill):
+    def __init__(self, ms: MonsterSkill):
+        self.types = ms.data[0:2]
+        boost = mult(ms.data[2])
+        super().__init__(77, ms, hp=boost, atk=boost)
 
 
-class GodDragonAtkRcvBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+class TwoTypeAtkRcvBoost(LeaderSkill):
+    def __init__(self, ms: MonsterSkill):
+        self.types = ms.data[0:2]
+        boost = mult(ms.data[2])
+        super().__init__(79, ms, atk=boost, rcv=boost)
 
 
 class LowHpConditionalAttrAtkBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.threshold_type = ThresholdType.BELOW
+        self.threshold = mult(ms.data[1])
+        self.attribute = ms.data[1]
+        atk = atk_from_slice(ms.data[2:5])
+        rcv = rcv_from_slice(ms.data[2:5])
+        super().__init__(94, ms, atk=atk, rcv=rcv)
 
 
 class LowHpConditionalTypeAtkBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.threshold_type = ThresholdType.BELOW
+        self.threshold = mult(ms.data[1])
+        self.type = ms.data[1]
+        atk = atk_from_slice(ms.data[2:5])
+        rcv = rcv_from_slice(ms.data[2:5])
+        super().__init__(95, ms, atk=atk, rcv=rcv)
 
 
 class HighHpConditionalAttrAtkBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.threshold_type = ThresholdType.ABOVE
+        self.threshold = mult(ms.data[1])
+        self.attribute = ms.data[1]
+        atk = atk_from_slice(ms.data[2:5])
+        rcv = rcv_from_slice(ms.data[2:5])
+        super().__init__(96, ms, atk=atk, rcv=rcv)
 
 
 class HighHpConditionalTypeAtkBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.threshold_type = ThresholdType.ABOVE
+        self.threshold = mult(ms.data[1])
+        self.type = ms.data[1]
+        atk = atk_from_slice(ms.data[2:5])
+        rcv = rcv_from_slice(ms.data[2:5])
+        super().__init__(97, ms, atk=atk, rcv=rcv)
 
 
 class ComboScaledMultiplier(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.min_combo = ms.data[0]
+        self.min_atk = mult(ms.data[1])
+        self.atk_step = mult(ms.data[2])
+        self.max_combo = ms.data[3]
+        self.max_atk = self.min_atk + self.atk_step * (self.max_combo - self.min_combo)
+        super().__init__(98, ms, atk=self.max_atk)
 
 
-class SkillActivationAtkBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+class SkillActivationAtkRcvBoost(LeaderSkill):
+    def __init__(self, ms: MonsterSkill):
+        atk = atk_from_slice(ms.data[0:4])
+        rcv = rcv_from_slice(ms.data[0:4])
+        super().__init__(100, ms, atk=atk, rcv=rcv)
 
 
 class AtkBoostwithExactCombos(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
-
-
-class AtkBoostwithExactCombos(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.combos = ms.data[0]
+        atk = mult(ms.data[1])
+        super().__init__(101, ms, atk=atk)
 
 
 class ComboFlatMultiplierAttrAtkBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.min_combo = ms.data[0]
+        self.attributes = binary_con(ms.data[1])
+        atk = atk_from_slice(ms.data[2:5])
+        rcv = atk_from_slice(ms.data[2:5])
+        super().__init__(104, ms, atk=atk, rcv=rcv)
 
 
 class ReducedRcvAtkBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        rcv = mult(ms.data[0])
+        atk = mult(ms.data[1])
+        super().__init__(105, ms, atk=atk, rcv=rcv)
 
 
-class AtkRcvBoostwithCombosFlat(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+class ReducedHpAtkBoost(LeaderSkill):
+    def __init__(self, ms: MonsterSkill):
+        hp = mult(ms.data[0])
+        atk = mult(ms.data[1])
+        super().__init__(106, ms, hp=hp, atk=atk)
 
 
 class HpReduction(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        hp = mult(ms.data[0])
+        super().__init__(107, ms, hp=hp)
 
 
 class ReducedHpTypeAtkBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.type = ms.data[1]
+        hp = mult(ms.data[0])
+        atk = mult(ms.data[2])
+        super().__init__(108, ms, hp=hp, atk=atk)
 
 
-class RowAtkBoostnotscaled(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+class BlobFlatAtkBoost(LeaderSkill):
+    def __init__(self, ms: MonsterSkill):
+        self.attributes = binary_con(ms.data[0])
+        self.min_count = ms.data[1]
+        atk = mult(ms.data[2])
+        super().__init__(109, ms, atk=atk)
 
 
 class TwoAttrHpAtkBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.attributes = ms.data[0:2]
+        boost = mult(ms.data[2])
+        super().__init__(111, ms, hp=boost, atk=boost)
 
 
 class TwoAttrAllStatBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.attributes = ms.data[0:2]
+        boost = mult(ms.data[2])
+        super().__init__(114, ms, hp=boost, atk=boost, rcv=boost)
 
 
-class RowMatch(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+class BlobScalingAtkBoost(LeaderSkill):
+    def __init__(self, ms: MonsterSkill):
+        self.attributes = binary_con(ms.data[0])
+        self.min_count = ms.data[1]
+        self.min_atk = mult(ms.data[2])
+        self.atk_step = mult(ms.data[3])
+        self.max_count = ms.data[4]
+        self.max_atk = self.min_atk + self.atk_step * (self.max_count - self.min_count)
+        super().__init__(119, ms, atk=self.max_atk)
 
 
-class StatBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+class AttrOrTypeStatBoost(LeaderSkill):
+    def __init__(self, ms: MonsterSkill):
+        self.attributes = binary_con((ms.data[0]))
+        self.types = binary_con((ms.data[1]))
+        hp = multi_floor(ms.data[2])
+        atk = multi_floor(ms.data[3])
+        rcv = multi_floor(ms.data[4])
+        super().__init__(121, ms, hp=hp, atk=atk, rcv=rcv)
 
 
-class LowHpConditionalAtkBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+class LowHpConditionalAttrTypeAtkRcvBoost(LeaderSkill):
+    def __init__(self, ms: MonsterSkill):
+        self.threshold_type = ThresholdType.BELOW
+        self.threshold = mult(ms.data[0])
+        self.attributes = binary_con((ms.data[1]))
+        self.types = binary_con((ms.data[2]))
+        atk = multi_floor(ms.data[3])
+        rcv = multi_floor(ms.data[4])
+        super().__init__(122, ms, atk=atk, rcv=rcv)
 
 
-class HighHpConditionalBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+class HighHpConditionalAttrTypeAtkRcvBoost(LeaderSkill):
+    def __init__(self, ms: MonsterSkill):
+        self.threshold_type = ThresholdType.ABOVE
+        self.threshold = mult(ms.data[0])
+        self.attributes = binary_con((ms.data[1]))
+        self.types = binary_con((ms.data[2]))
+        atk = multi_floor(ms.data[3])
+        rcv = multi_floor(ms.data[4])
+        super().__init__(123, ms, atk=atk, rcv=rcv)
 
 
 class AttrComboScalingAtkBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.attributes = list_binary_con(ms.data[0:5])
+        self.min_match = ms.data[5]
+        self.max_match = len(self.attributes)
+        self.min_atk = mult(ms.data[6])
+        self.atk_step = mult(ms.data[7])
+        self.max_atk = self.min_atk + self.atk_step * (self.max_match - self.min_match)
+        super().__init__(124, ms, atk=self.max_atk)
 
 
 class TeamUnitConditionalStatBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.monster_ids = list_con_pos(ms.data[0:5])
+        hp = multi_floor(ms.data[5])
+        atk = multi_floor(ms.data[6])
+        super().__init__(125, ms, hp=hp, atk=atk)
 
 
-class LowHpAttrAtkBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+class MultiAttrTypeStatBoost(LeaderSkill):
+    def __init__(self, ms: MonsterSkill):
+        self.attribute = binary_con(ms.data[0])
+        self.type = binary_con(ms.data[1])
+        self.reduction = binary_con(ms.data[1])
+        hp = multi_floor(ms.data[2])
+        atk = multi_floor(ms.data[3])
+        rcv = multi_floor(ms.data[4])
+        shield = mult(ms.data[6])
+        super().__init__(129, ms, hp=hp, atk=atk, rcv=rcv, shield=shield)
 
 
-class HighHpAttrAtkBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+class LowHpAttrAtkStatBoost(LeaderSkill):
+    def __init__(self, ms: MonsterSkill):
+        self.threshold = mult(ms.data[0])
+        self.threshold_type = ThresholdType.BELOW
+        self.attribute = binary_con(ms.data[1])
+        self.type = binary_con(ms.data[2])
+        self.reduction_attr = binary_con(ms.data[5])
+        atk = multi_floor(ms.data[3])
+        rcv = multi_floor(ms.data[4])
+        shield = mult(ms.data[6])
+        super().__init__(130, ms, atk=atk, rcv=rcv, shield=shield)
 
 
-class SkillActivationConditionalAtkBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+class HighHpAttrTypeStatBoost(LeaderSkill):
+    def __init__(self, ms: MonsterSkill):
+        self.threshold = mult(ms.data[0])
+        self.threshold_type = ThresholdType.ABOVE
+        self.attribute = binary_con(ms.data[1])
+        self.type = binary_con(ms.data[2])
+        self.reduction_attr = binary_con(ms.data[5])
+        atk = multi_floor(ms.data[3])
+        rcv = multi_floor(ms.data[4])
+        shield = mult(ms.data[6])
+        super().__init__(131, ms, atk=atk, rcv=rcv, shield=shield)
+
+
+class SkillUsedAttrTypeAtkRcvBoost(LeaderSkill):
+    def __init__(self, ms: MonsterSkill):
+        self.attribute = binary_con(ms.data[0])
+        self.type = binary_con(ms.data[1])
+        atk = multi_floor(ms.data[2])
+        rcv = multi_floor(ms.data[3])
+        super().__init__(133, ms, atk=atk, rcv=rcv)
 
 
 class MultiAttrConditionalStatBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.attribute1 = binary_con(ms.data[0])
+        self.hp1 = multi_floor(ms.data[1])
+        self.atk1 = multi_floor(ms.data[2])
+        self.rcv1 = multi_floor(ms.data[3])
+        self.attribute2 = binary_con(ms.data[4])
+        self.hp2 = multi_floor(ms.data[5])
+        self.atk2 = multi_floor(ms.data[6])
+        self.rcv2 = multi_floor(ms.data[7])
+        hp = self.hp1 * self.hp2
+        atk = self.atk1 * self.atk2
+        rcv = self.rcv1 * self.rcv2
+        super().__init__(136, ms, hp=hp, atk=atk, rcv=rcv)
 
 
 class MultiTypeConditionalStatBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.type1 = binary_con(ms.data[0])
+        self.hp1 = multi_floor(ms.data[1])
+        self.atk1 = multi_floor(ms.data[2])
+        self.rcv1 = multi_floor(ms.data[3])
+        self.type2 = binary_con(ms.data[4])
+        self.hp2 = multi_floor(ms.data[5])
+        self.atk2 = multi_floor(ms.data[6])
+        self.rcv2 = multi_floor(ms.data[7])
+        hp = self.hp1 * self.hp2
+        atk = self.atk1 * self.atk2
+        rcv = self.rcv1 * self.rcv2
+        super().__init__(137, ms, hp=hp, atk=atk, rcv=rcv)
 
 
 class TwoPartLeaderSkill(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.child_ids = ms.data
+        self.child_skills = []
+        super().__init__(138, ms)
+
+    @property
+    def hp(self):
+        v = 1
+        for x in self.child_skills:
+            v *= x.hp
+        return v
+
+    @property
+    def atk(self):
+        v = 1
+        for x in self.child_skills:
+            v *= x.atk
+        return v
+
+    @property
+    def rcv(self):
+        v = 1
+        for x in self.child_skills:
+            v *= x.rcv
+        return v
 
 
 class HpMuLtiConditionalAtkBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        super().__init__(139, ms)
 
 
-class XPorCoinDropBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+class RankXpBoost(LeaderSkill):
+    def __init__(self, ms: MonsterSkill):
+        self.multiplier = mult(ms.data[0])
+        super().__init__(148, ms)
 
 
 class HealMatchRcvBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        rcv = mult(ms.data[0])
+        super().__init__(149, ms, rcv=rcv)
 
 
 class EnhanceOrbMatch5(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        atk = mult(ms.data[1])
+        super().__init__(150, ms, atk=atk)
 
 
 class HeartCross(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        atk = multi_floor(ms.data[0])
+        rcv = multi_floor(ms.data[1])
+        shield = multi_floor(ms.data[2])
+        super().__init__(151, ms, atk=atk, rcv=rcv, shield=shield)
 
 
 class Multiboost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.attribute = binary_con(ms.data[0])
+        self.type = binary_con(ms.data[1])
+        hp = multi_floor(ms.data[2])
+        atk = multi_floor(ms.data[3])
+        rcv = multi_floor(ms.data[4])
+        super().__init__(155, ms, hp=hp, atk=atk, rcv=rcv)
+
+
+class CrossMultiplier(object):
+    def __init__(self, attribute: str, atk: float):
+        self.attribute = attribute
+        self.atk = atk
 
 
 class AttrCross(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        x = ms.data
+        self.crosses = [CrossMultiplier(a, mult(d)) for a, d in zip(x[::2], x[1::2])]
+        super().__init__(157, ms)
+
+    @property
+    def atk(self):
+        v = 1
+        for x in self.crosses:
+            v *= x.atk
+        return v
 
 
 class MatchXOrMoreOrbs(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.min_match = ms.data[0]
+        self.attribute = binary_con(ms.data[1])
+        self.type = binary_con(ms.data[2])
+        hp = multi_floor(ms.data[4])
+        atk = multi_floor(ms.data[3])
+        rcv = multi_floor(ms.data[5])
+        super().__init__(158, ms, hp=hp, atk=atk, rcv=rcv)
 
 
-class AdvancedRowMatch(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+class AdvancedBlobMatch(LeaderSkill):
+    def __init__(self, ms: MonsterSkill):
+        self.attributes = binary_con(ms.data[0])
+        self.min_count = ms.data[1]
+        self.min_atk = mult(ms.data[2])
+        self.atk_step = mult(ms.data[3])
+        self.max_count = ms.data[4]
+        self.max_atk = self.min_atk + self.atk_step * (self.max_count - self.min_count)
+        super().__init__(159, ms, atk=self.max_atk)
 
 
 class SevenBySix(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        super().__init__(162, ms)
 
 
 class NoSkyfallBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.attribute = binary_con(ms.data[0])
+        self.type = binary_con(ms.data[1])
+        self.shield_attributes = binary_con(ms.data[5])
+        self.tags = [Tag.NO_SKYFALL]
+        hp = multi_floor(ms.data[2])
+        atk = multi_floor(ms.data[3])
+        rcv = multi_floor(ms.data[4])
+        shield = mult(ms.data[6])
+        super().__init__(163, ms, hp=hp, atk=atk, rcv=rcv, shield=shield)
 
+
+# TODO: rename min/max_count to min/max_combo
 
 class AttrComboConditionalAtkRcvBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.attributes = list_binary_con(ms.data[0:4])
+        self.min_count = ms.data[4]
+        self.min_atk = mult(ms.data[5])
+        self.min_rcv = mult(ms.data[6])
+        self.atk_step = mult(ms.data[7])
+        self.rcv_step = self.atk_step
+        self.max_count = ms.data[4]
+        self.max_atk = self.min_atk + self.atk_step * (self.max_count - self.min_count)
+        self.max_rcv = self.min_rcv + self.rcv_step * (self.max_count - self.min_count)
+        super().__init__(164, ms, atk=self.max_atk, rcv=self.max_rcv)
 
 
 class RainbowAtkRcv(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.attributes = binary_con(ms.data[0])
+        self.min_count = ms.data[1]
+        self.min_atk = mult(ms.data[2])
+        self.min_rcv = mult(ms.data[3])
+        self.atk_step = mult(ms.data[4])
+        self.rcv_step = mult(ms.data[5])
+        self.max_count = ms.data[4]
+        self.max_atk = self.min_atk + self.atk_step * (self.max_count - self.min_count)
+        self.max_rcv = self.min_rcv + self.rcv_step * (self.max_count - self.min_count)
+        super().__init__(165, ms, atk=self.max_atk, rcv=self.max_rcv)
 
 
 class AtkRcvComboScale(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.min_count = ms.data[0]
+        self.min_atk = mult(ms.data[1])
+        self.min_rcv = mult(ms.data[2])
+        self.atk_step = mult(ms.data[3])
+        self.rcv_step = mult(ms.data[4])
+        self.max_count = ms.data[5]
+        self.max_atk = self.min_atk + self.atk_step * (self.max_count - self.min_count)
+        self.max_rcv = self.min_rcv + self.rcv_step * (self.max_count - self.min_count)
+        super().__init__(166, ms, atk=self.max_atk, rcv=self.max_rcv)
 
 
-class RowAtkRcvBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+class BlobAtkRcvBoost(LeaderSkill):
+    def __init__(self, ms: MonsterSkill):
+        self.attributes = binary_con(ms.data[0])
+        self.min_count = ms.data[1]
+        self.min_atk = mult(ms.data[2])
+        self.min_rcv = mult(ms.data[3])
+        self.atk_step = mult(ms.data[4])
+        self.rcv_step = mult(ms.data[5])
+        self.max_count = ms.data[6]
+        self.max_atk = self.min_atk + self.atk_step * (self.max_count - self.min_count)
+        self.max_rcv = self.min_rcv + self.rcv_step * (self.max_count - self.min_count)
+        super().__init__(167, ms, atk=self.max_atk, rcv=self.max_rcv)
 
 
 class ComboMultPlusShield(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.min_count = ms.data[0]
+        atk = mult(ms.data[1])
+        shield = mult(ms.data[2])
+        super().__init__(169, ms, atk=atk, shield=shield)
 
 
 class RainbowMultPlusShield(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.attributes = binary_con(ms.data[0])
+        self.min_count = ms.data[1]
+        atk = mult(ms.data[2])
+        shield = mult(ms.data[3])
+        super().__init__(170, ms, atk=atk, shield=shield)
 
 
 class MatchAttrPlusShield(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.attributes = list_binary_con(ms.data[0:4])
+        self.min_count = ms.data[4]
+        atk = mult(ms.data[5])
+        shield = mult(ms.data[6])
+        super().__init__(171, ms, atk=atk, shield=shield)
 
 
 class CollabConditionalBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
-
-
-class CollabConditionalBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.collab_id = ms.data[0]
+        hp = multi_floor(ms.data[3])
+        atk = multi_floor(ms.data[4])
+        rcv = multi_floor(ms.data[5])
+        super().__init__(175, ms, hp=hp, atk=atk, rcv=rcv)
 
 
 class OrbRemainingMultiplier(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.orb_count = ms.data[5]
+        self.base_atk = mult(ms.data[6])
+        self.bonus_atk = mult(ms.data[5])
+        atk = self.base_atk * self.bonus_atk
+        super().__init__(177, ms, atk=atk)
 
 
-class FourSecondsMovementTime(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+class FixedMovementTime(LeaderSkill):
+    def __init__(self, ms: MonsterSkill):
+        self.time = ms.data[0]
+        self.attributes = binary_con(ms.data[1])
+        self.types = binary_con(ms.data[2])
+        hp = multi_floor(ms.data[3])
+        atk = multi_floor(ms.data[4])
+        rcv = multi_floor(ms.data[5])
+        super().__init__(178, ms, hp=hp, atk=atk, rcv=rcv)
 
 
 class RowMatcHPlusDamageReduction(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.attributes = binary_con(ms.data[0])
+        self.min_count = ms.data[1]
+        atk = mult(ms.data[2])
+        shield = mult(ms.data[3])
+        super().__init__(182, ms, atk=atk, shield=shield)
 
 
-class HpConditionalBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+class DualThresholdBoost(LeaderSkill):
+    def __init__(self, ms: MonsterSkill):
+        self.attributes = binary_con(ms.data[0])
+        self.types = binary_con(ms.data[1])
+
+        self.threshold_1 = mult(ms.data[2])
+        self.threshold_type_1 = ThresholdType.ABOVE
+        self.atk_1 = mult(ms.data[3])
+        self.rcv_1 = 1.0
+        self.shield_1 = mult(ms.data[4])
+
+        self.threshold_2 = mult(ms.data[5])
+        self.threshold_type_2 = ThresholdType.BELOW
+        self.atk_2 = mult(ms.data[6])
+        self.rcv_2 = mult(ms.data[7])
+        self.shield_2 = 0.0
+
+        atk = max(self.atk_1, self.atk_2)
+        rcv = max(self.rcv_1, self.rcv_2)
+        shield = max(self.shield_1, self.shield_2)
+
+        super().__init__(183, ms, atk=atk, rcv=rcv, shield=shield)
+
+
+class BonusTimeStatBoost(LeaderSkill):
+    def __init__(self, ms: MonsterSkill):
+        self.time = mult(ms.data[0])
+        self.attributes = binary_con(ms.data[1])
+        self.types = binary_con(ms.data[2])
+        hp = multi_floor(ms.data[3])
+        atk = multi_floor(ms.data[4])
+        rcv = multi_floor(ms.data[5])
+        super().__init__(185, ms, hp=hp, atk=atk, rcv=rcv)
 
 
 class SevenBySixStatBoost(LeaderSkill):
-    def __init__(self, monster_skill: MonsterSkill):
-        super().__init__(monster_skill)
+    def __init__(self, ms: MonsterSkill):
+        self.attributes = binary_con(ms.data[0])
+        self.types = binary_con(ms.data[1])
+        self.tags = [Tag.BOARD_7X6]
+        hp = multi_floor(ms.data[2])
+        atk = multi_floor(ms.data[3])
+        rcv = multi_floor(ms.data[4])
+        super().__init__(186, ms, hp=hp, atk=atk, rcv=rcv)
+
+
+class BlobMatchBonusCombo(LeaderSkill):
+    def __init__(self, ms: MonsterSkill):
+        self.attributes = binary_con(ms.data[0])
+        self.min_count = ms.data[1]
+        self.bonus_combo = ms.data[3]
+        atk = multi_floor(ms.data[2])
+        super().__init__(192, ms, atk=atk)
+
+
+class LMatchBoost(LeaderSkill):
+    def __init__(self, ms: MonsterSkill):
+        self.attributes = binary_con(ms.data[0])
+        atk = multi_floor(ms.data[1])
+        rcv = multi_floor(ms.data[2])
+        shield = multi_floor(ms.data[3])
+        super().__init__(193, ms, atk=atk, rcv=rcv, shield=shield)
+
+
+class AttrMatchBonusCombo(LeaderSkill):
+    def __init__(self, ms: MonsterSkill):
+        self.attributes = binary_con(ms.data[0])
+        self.min_count = ms.data[1]
+        self.bonus_combo = ms.data[3]
+        atk = multi_floor(ms.data[2])
+        super().__init__(194, ms, atk=atk)
+
+
+class DisablePoisonEffects(LeaderSkill):
+    def __init__(self, ms: MonsterSkill):
+        self.tags = [Tag.DISABLE_POISON]
+        super().__init__(197, ms)
+
+
+class HealMatchBoostUnbind(LeaderSkill):
+    def __init__(self, ms: MonsterSkill):
+        self.heal_amt = ms.data[0]
+        self.unbind_amt = ms.data[3]
+        atk = mult(ms.data[1])
+        shield = mult(ms.data[2])
+        super().__init__(198, ms, atk=atk, shield=shield)
+
+
+class RainbowBonusDamage(LeaderSkill):
+    def __init__(self, ms: MonsterSkill):
+        self.attributes = binary_con(ms.data[0])
+        self.min_attr = ms.data[1]
+        self.bonus_damage = ms.data[2]
+        super().__init__(199, ms)
+
+
+class BlobBonusDamage(LeaderSkill):
+    def __init__(self, ms: MonsterSkill):
+        self.attributes = binary_con(ms.data[0])
+        self.min_orbs = ms.data[1]
+        self.bonus_damage = ms.data[2]
+        super().__init__(200, ms)
+
 
 def convert(skill_list: List[MonsterSkill]):
     results = []
@@ -500,6 +994,7 @@ def convert(skill_list: List[MonsterSkill]):
         if ns:
             results.append(ns)
     return results
+
 
 def convert_skill(s):
     if s.skill_type == 11:
@@ -529,9 +1024,9 @@ def convert_skill(s):
     if s.skill_type == 29:
         return AllStatBoost(s)
     if s.skill_type == 30:
-        return DragonGodHpBoost(s)
+        return TwoTypeHpBoost(s)
     if s.skill_type == 31:
-        return DragonGodAtkBoost(s)
+        return TwoTypeAtkBoost(s)
     if s.skill_type == 33:
         return TaikoDrum(s)
     if s.skill_type == 36:
@@ -545,11 +1040,11 @@ def convert_skill(s):
     if s.skill_type == 41:
         return Counterattack(s)
     if s.skill_type == 43:
-        return FullHpShield(s)
+        return HighHpShield(s)
     if s.skill_type == 44:
         return HighHpAtkBoost(s)
     if s.skill_type == 45:
-        return TwoAttrAtkHpBoost(s)
+        return AttrAtkHpBoost(s)
     if s.skill_type == 46:
         return TwoAttrHpBoost(s)
     if s.skill_type == 48:
@@ -583,9 +1078,9 @@ def convert_skill(s):
     if s.skill_type == 76:
         return AttrTypeAllStatBoost(s)
     if s.skill_type == 77:
-        return GodDragonHpAtkBoost(s)
+        return TwoTypeHpAtkBoost(s)
     if s.skill_type == 79:
-        return GodDragonAtkRcvBoost(s)
+        return TwoTypeAtkRcvBoost(s)
     if s.skill_type == 94:
         return LowHpConditionalAttrAtkBoost(s)
     if s.skill_type == 95:
@@ -597,7 +1092,7 @@ def convert_skill(s):
     if s.skill_type == 98:
         return ComboScaledMultiplier(s)
     if s.skill_type == 100:
-        return SkillActivationAtkBoost(s)
+        return SkillActivationAtkRcvBoost(s)
     if s.skill_type == 101:
         return AtkBoostwithExactCombos(s)
     if s.skill_type == 104:
@@ -605,35 +1100,37 @@ def convert_skill(s):
     if s.skill_type == 105:
         return ReducedRcvAtkBoost(s)
     if s.skill_type == 106:
-        return AtkRcvBoostwithCombosFlat(s)
+        return ReducedHpAtkBoost(s)
     if s.skill_type == 107:
         return HpReduction(s)
     if s.skill_type == 108:
         return ReducedHpTypeAtkBoost(s)
     if s.skill_type == 109:
-        return RowAtkBoostnotscaled(s)
+        return BlobFlatAtkBoost(s)
     if s.skill_type == 111:
         return TwoAttrHpAtkBoost(s)
     if s.skill_type == 114:
         return TwoAttrAllStatBoost(s)
     if s.skill_type == 119:
-        return RowMatch(s)
-    if s.skill_type in [121, 129, 185]:
-        return StatBoost(s)
+        return BlobScalingAtkBoost(s)
+    if s.skill_type == 121:
+        return AttrOrTypeStatBoost(s)
     if s.skill_type == 122:
-        return LowHpConditionalAtkBoost(s)
+        return LowHpConditionalAttrTypeAtkRcvBoost(s)
     if s.skill_type == 123:
-        return HighHpConditionalBoost(s)
+        return HighHpConditionalAttrTypeAtkRcvBoost(s)
     if s.skill_type == 124:
         return AttrComboScalingAtkBoost(s)
     if s.skill_type == 125:
         return TeamUnitConditionalStatBoost(s)
+    if s.skill_type == 129:
+        return MultiAttrTypeStatBoost(s)
     if s.skill_type == 130:
-        return LowHpAttrAtkBoost(s)
+        return LowHpAttrAtkStatBoost(s)
     if s.skill_type == 131:
-        return HighHpAttrAtkBoost(s)
+        return HighHpAttrTypeStatBoost(s)
     if s.skill_type == 133:
-        return SkillActivationConditionalAtkBoost(s)
+        return SkillUsedAttrTypeAtkRcvBoost(s)
     if s.skill_type == 136:
         return MultiAttrConditionalStatBoost(s)
     if s.skill_type == 137:
@@ -643,7 +1140,7 @@ def convert_skill(s):
     if s.skill_type == 139:
         return HpMuLtiConditionalAtkBoost(s)
     if s.skill_type == 148:
-        return XPorCoinDropBoost(s)
+        return RankXpBoost(s)
     if s.skill_type == 149:
         return HealMatchRcvBoost(s)
     if s.skill_type == 150:
@@ -657,7 +1154,7 @@ def convert_skill(s):
     if s.skill_type == 158:
         return MatchXOrMoreOrbs(s)
     if s.skill_type == 159:
-        return AdvancedRowMatch(s)
+        return AdvancedBlobMatch(s)
     if s.skill_type == 162:
         return SevenBySix(s)
     if s.skill_type == 163:
@@ -669,7 +1166,7 @@ def convert_skill(s):
     if s.skill_type == 166:
         return AtkRcvComboScale(s)
     if s.skill_type == 167:
-        return RowAtkRcvBoost(s)
+        return BlobAtkRcvBoost(s)
     if s.skill_type == 169:
         return ComboMultPlusShield(s)
     if s.skill_type == 170:
@@ -681,11 +1178,28 @@ def convert_skill(s):
     if s.skill_type == 177:
         return OrbRemainingMultiplier(s)
     if s.skill_type == 178:
-        return FourSecondsMovementTime(s)
+        return FixedMovementTime(s)
     if s.skill_type == 182:
         return RowMatcHPlusDamageReduction(s)
     if s.skill_type == 183:
-        return HpConditionalBoost(s)
+        return DualThresholdBoost(s)
+    if s.skill_type == 185:
+        raise BonusTimeStatBoost(s)
     if s.skill_type == 186:
         return SevenBySixStatBoost(s)
+    if s.skill_type == 192:
+        return BlobMatchBonusCombo(s)
+    if s.skill_type == 193:
+        return LMatchBoost(s)
+    if s.skill_type == 194:
+        return AttrMatchBonusCombo(s)
+    if s.skill_type == 197:
+        return DisablePoisonEffects(s)
+    if s.skill_type == 198:
+        return HealMatchBoostUnbind(s)
+    if s.skill_type == 199:
+        return RainbowBonusDamage(s)
+    if s.skill_type == 200:
+        return BlobBonusDamage(s)
+
     return None

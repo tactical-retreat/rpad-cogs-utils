@@ -49,6 +49,9 @@ class MonsterSkill(pad_util.JsonDictEncodable):
         # Fields used in coordination with skill_type.
         self.other_fields = raw[6:]
 
+        # Fields used in coordination with skill_type.
+        self.data = self.other_fields
+
         # NEW FIELDS. The skills that a skill links to if it has multiple
         # clauses/conditions for activation
         self.skill_part_1_id = None
