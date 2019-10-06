@@ -245,7 +245,7 @@ def database_diff_events(db_wrapper, database, cross_server_dungeons):
 
         if not dungeon_seq:
             if merged_event.group:
-                human_fix_logger.error('failed group lookup: %s', repr(merged_event))
+                #human_fix_logger.error('failed group lookup: %s', repr(merged_event))
                 unmatched_events.append(merged_event)
                 continue
 
