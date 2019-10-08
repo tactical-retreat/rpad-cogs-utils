@@ -3,6 +3,7 @@ import logging
 import os
 from typing import List
 
+from pad_etl.processor import leader_skill_info
 from . import BookCard, Dungeon, MonsterSkill, EnemySkill, Exchange
 from . import bonus, card, dungeon, skill, exchange, enemy_skill
 from ..processor import enemy_skillset as ess
@@ -91,6 +92,8 @@ class Database(object):
         self.raw_skills = []
         self.calc_skills = {}
 
+        self.leader_skills = []
+
         # Computed from other entries
         self.bonuses = []  # type: List[MergedBonus]
         self.cards = []  # type: List[MergedCard]
@@ -116,6 +119,8 @@ class Database(object):
         if not skip_skills:
             self.skills = skill.load_skill_data(data_dir=base_dir)
             self.raw_skills = skill.load_raw_skill_data(data_dir=base_dir)
+            self.leader_skills = leader_skill_info.convert(self.skills)
+
         self.enemy_skills = enemy_skill.load_enemy_skill_data(data_dir=base_dir)
 
         if not skip_extra:
