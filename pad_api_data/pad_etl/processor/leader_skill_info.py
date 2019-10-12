@@ -274,7 +274,7 @@ class HighHpAtkBoost(LeaderSkill):
 
 class AttrAtkHpBoost(LeaderSkill):
     def __init__(self, ms: MonsterSkill):
-        self.attribute = ms.data[0]
+        self.attributes = [ms.data[0]]
         boost = mult(ms.data[1])
         hp = boost
         atk = boost
@@ -290,14 +290,14 @@ class TwoAttrHpBoost(LeaderSkill):
 
 class AttrHpBoost(LeaderSkill):
     def __init__(self, ms: MonsterSkill):
-        self.attribute = ms.data[0]
+        self.attributes = [ms.data[0]]
         hp = mult(ms.data[1])
         super().__init__(48, ms, hp=hp)
 
 
 class AttrRcvBoost(LeaderSkill):
     def __init__(self, ms: MonsterSkill):
-        self.attribute = ms.data[0]
+        self.attributes = [ms.data[0]]
         rcv = mult(ms.data[1])
         super().__init__(49, ms, rcv=rcv)
 
@@ -337,29 +337,33 @@ class Rainbow(LeaderSkill):
 
 class TypeHpAtkBoost(LeaderSkill):
     def __init__(self, ms: MonsterSkill):
-        self.type = ms.data[0]
-        boost = mult(ms.data[1])
+        data = ms.data
+        self.type = data[0]
+        boost = mult(data[1])
         super().__init__(62, ms, hp=boost, atk=boost)
 
 
 class TypeHpRcvBoost(LeaderSkill):
     def __init__(self, ms: MonsterSkill):
-        self.type = ms.data[0]
-        boost = mult(ms.data[1])
+        data = ms.data
+        self.type = data[0]
+        boost = mult(data[1])
         super().__init__(63, ms, hp=boost, rcv=boost)
 
 
 class TypeAtkRcvBoost(LeaderSkill):
     def __init__(self, ms: MonsterSkill):
-        self.type = ms.data[0]
-        boost = mult(ms.data[1])
+        data = ms.data
+        self.type = data[0]
+        boost = mult(data[1])
         super().__init__(64, ms, atk=boost, rcv=boost)
 
 
 class TypeAllStatBoost(LeaderSkill):
     def __init__(self, ms: MonsterSkill):
-        self.type = ms.data[0]
-        boost = mult(ms.data[1])
+        data = ms.data
+        self.type = data[0]
+        boost = mult(data[1])
         super().__init__(65, ms, hp=boost, atk=boost, rcv=boost)
 
 
@@ -389,7 +393,7 @@ class AttrTypeAtkBoost(LeaderSkill):
 class AttrTypeHpAtkBoost(LeaderSkill):
     def __init__(self, ms: MonsterSkill):
         data = ms.data
-        self.attribute = data[0]
+        self.attributes = [data[0]]
         self.type = data[1]
         boost = mult(data[2])
         super().__init__(73, ms, hp=boost, atk=boost)
@@ -398,7 +402,7 @@ class AttrTypeHpAtkBoost(LeaderSkill):
 class AttrTypeAtkRcvBoost(LeaderSkill):
     def __init__(self, ms: MonsterSkill):
         data = ms.data
-        self.attribute = data[0]
+        self.attributes = [data[0]]
         self.type = data[1]
         boost = mult(data[2])
         super().__init__(75, ms, atk=boost, rcv=boost)
@@ -407,7 +411,7 @@ class AttrTypeAtkRcvBoost(LeaderSkill):
 class AttrTypeAllStatBoost(LeaderSkill):
     def __init__(self, ms: MonsterSkill):
         data = ms.data
-        self.attribute = data[0]
+        self.attributes = [data[0]]
         self.type = data[1]
         boost = mult(data[2])
         super().__init__(76, ms, hp=boost, atk=boost, rcv=boost)
@@ -434,7 +438,7 @@ class LowHpConditionalAttrAtkBoost(LeaderSkill):
         data = ms.data
         self.threshold_type = ThresholdType.BELOW
         self.threshold = mult(data[1])
-        self.attribute = data[1]
+        self.attributes = [data[1]]
         atk = atk_from_slice(data[2:5])
         rcv = rcv_from_slice(data[2:5])
         super().__init__(94, ms, atk=atk, rcv=rcv)
@@ -456,7 +460,7 @@ class HighHpConditionalAttrAtkBoost(LeaderSkill):
         self.threshold_type = ThresholdType.ABOVE
         data = ms.data
         self.threshold = mult(data[1])
-        self.attribute = data[1]
+        self.attributes = [data[1]]
         atk = atk_from_slice(data[2:5])
         rcv = rcv_from_slice(data[2:5])
         super().__init__(96, ms, atk=atk, rcv=rcv)
@@ -647,7 +651,7 @@ class TeamUnitConditionalStatBoost(LeaderSkill):
 class MultiAttrTypeStatBoost(LeaderSkill):
     def __init__(self, ms: MonsterSkill):
         data = merge_defaults(ms.data, [0, 0, 100, 100, 100, 0, 0])
-        self.attribute = binary_con(data[0])
+        self.attributes = binary_con(data[0])
         self.type = binary_con(data[1])
         self.shield_attributes = binary_con(data[5])
         hp = multi_floor(data[2])
@@ -662,7 +666,7 @@ class LowHpAttrAtkStatBoost(LeaderSkill):
         data = merge_defaults(ms.data, [0, 0, 0, 100, 100, 0, 0])
         self.threshold = mult(data[0])
         self.threshold_type = ThresholdType.BELOW
-        self.attribute = binary_con(data[1])
+        self.attributes = binary_con(data[1])
         self.type = binary_con(data[2])
         self.reduction_attr = binary_con(data[5])
         atk = multi_floor(data[3])
@@ -676,7 +680,7 @@ class HighHpAttrTypeStatBoost(LeaderSkill):
         data = merge_defaults(ms.data, [0, 0, 0, 100, 100, 0, 0])
         self.threshold = mult(data[0])
         self.threshold_type = ThresholdType.ABOVE
-        self.attribute = binary_con(data[1])
+        self.attributes = binary_con(data[1])
         self.type = binary_con(data[2])
         self.reduction_attr = binary_con(data[5])
         atk = multi_floor(data[3])
@@ -688,7 +692,7 @@ class HighHpAttrTypeStatBoost(LeaderSkill):
 class SkillUsedAttrTypeAtkRcvBoost(LeaderSkill):
     def __init__(self, ms: MonsterSkill):
         data = merge_defaults(ms.data, [0, 0, 100, 100])
-        self.attribute = binary_con(data[0])
+        self.attributes = binary_con(data[0])
         self.type = binary_con(data[1])
         atk = multi_floor(data[2])
         rcv = multi_floor(data[3])
@@ -821,7 +825,7 @@ class HeartCross(LeaderSkill):
 class Multiboost(LeaderSkill):
     def __init__(self, ms: MonsterSkill):
         data = merge_defaults(ms.data, [0, 0, 100, 100, 100])
-        self.attribute = binary_con(data[0])
+        self.attributes = binary_con(data[0])
         self.type = binary_con(data[1])
         hp = multi_floor(data[2])
         atk = multi_floor(data[3])
@@ -859,7 +863,7 @@ class MatchXOrMoreOrbs(LeaderSkill):
     def __init__(self, ms: MonsterSkill):
         data = merge_defaults(ms.data, [0, 0, 0, 100, 100, 100])
         self.min_match = data[0]
-        self.attribute = binary_con(data[1])
+        self.attributes = binary_con(data[1])
         self.type = binary_con(data[2])
         hp = multi_floor(data[4])
         atk = multi_floor(data[3])
@@ -888,7 +892,7 @@ class SevenBySix(LeaderSkill):
 class NoSkyfallBoost(LeaderSkill):
     def __init__(self, ms: MonsterSkill):
         data = merge_defaults(ms.data, [0, 0, 100, 100, 100, 0, 0])
-        self.attribute = binary_con(data[0])
+        self.attributes = binary_con(data[0])
         self.type = binary_con(data[1])
         self.shield_attributes = binary_con(data[5])
         self.tags = [Tag.NO_SKYFALL]
@@ -910,7 +914,6 @@ class AttrComboConditionalAtkRcvBoost(LeaderSkill):
         self.min_rcv = mult(data[6])
         self.atk_step = mult(data[7])
         self.rcv_step = self.atk_step
-        self.max_count = len(self.attributes)
         self.max_atk = self.min_atk + self.atk_step * (self.max_count - self.min_count)
         self.max_rcv = self.min_rcv + self.rcv_step * (self.max_count - self.min_count)
         super().__init__(164, ms, atk=self.max_atk, rcv=self.max_rcv)
