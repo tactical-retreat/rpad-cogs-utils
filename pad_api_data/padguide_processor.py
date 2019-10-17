@@ -447,8 +447,8 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
         'SELECT 1 + COALESCE(MAX(CAST(ts_seq AS SIGNED)), 20000) FROM skill_list', op=int)
 
     # Compute English skill text
-    leader_skills = jp_database.leader_skills
-    active_skills = jp_database.active_skills
+    leader_skills = {x.skill_id: x for x in jp_database.leader_skills}
+    active_skills = {x.skill_id: x for x in jp_database.active_skills}
 
     # Create a list of SkillIds to CardIds
     skill_id_to_card_ids = defaultdict(list)  # type DefaultDict<SkillId, List[CardId]>
@@ -559,8 +559,8 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
         ts_seq_skill = info['ts_seq_skill']
         as_converter = AsTextConverter()
         if merged_card.active_skill:
-            as_skill = leader_skills.get(merged_card.active_skill.skill_id, None)
-            as_skill_description = as_skill.full_text(ls_converter) if as_skill else None
+            as_skill = active_skills.get(merged_card.active_skill.skill_id, None)
+            as_skill_description = as_skill.full_text(as_converter) if as_skill else None
 
             if ts_seq_skill:
                 # Monster already has a skill attached, see if it needs to be updated
