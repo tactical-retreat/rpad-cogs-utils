@@ -1,8 +1,8 @@
 from typing import List, Optional
 
-from pad_etl.processor.leader_skill_common import ThresholdType, Tag
-from pad_etl.processor.leader_skill_text import LsTextConverter
-from ..data.skill import MonsterSkill
+from pad_etl.processor.skills.leader_skill_common import ThresholdType, Tag
+from pad_etl.processor.skills.leader_skill_text import LsTextConverter
+from pad_etl.data import MonsterSkill
 
 
 def mult(x):

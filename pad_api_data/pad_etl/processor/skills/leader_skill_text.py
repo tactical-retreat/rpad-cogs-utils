@@ -1,5 +1,5 @@
-from pad_etl.processor.leader_skill_common import ThresholdType, Tag, AttributeDict
-from pad_etl.processor.skill_common import BaseTextConverter, fmt_mult, multi_getattr
+from pad_etl.processor.skills.leader_skill_common import ThresholdType, Tag, AttributeDict
+from pad_etl.processor.skills.skill_common import BaseTextConverter, fmt_mult, multi_getattr
 
 
 class LsTextConverter(BaseTextConverter):

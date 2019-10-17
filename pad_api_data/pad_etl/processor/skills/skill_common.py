@@ -138,10 +138,10 @@ class BaseTextConverter(object):
 
         return output
 
-    def fmt_reduct_text(self, shield, reduct_att=None):
+    def fmt_reduct_text(self, shield, reduct_att=[0, 1, 2, 3, 4]):
         if shield == 0:
             return None
-        if reduct_att is None or reduct_att == [0, 1, 2, 3, 4]:
+        if reduct_att == [0, 1, 2, 3, 4] or not reduct_att:
             return 'reduce damage taken by {}%'.format(fmt_mult(shield * 100))
         else:
             color_text = self.attributes_format(reduct_att)

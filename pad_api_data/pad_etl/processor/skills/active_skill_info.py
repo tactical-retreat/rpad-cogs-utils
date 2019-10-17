@@ -752,8 +752,9 @@ class HpMultiplierNuke(ActiveSkill):
     skill_type = 143
 
     def __init__(self, ms: MonsterSkill):
-        data = merge_defaults(ms.data, [0])
+        data = merge_defaults(ms.data, [0, 0])
         self.multiplier = multi(data[0])
+        self.attribute = data[1]
         # Note; another slot must contain the attribute, since this is a fixed nuke.
         self.mass_attack = True
         super().__init__(ms)

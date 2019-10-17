@@ -1,4 +1,4 @@
-from pad_etl.processor.skill.skill_common import BaseTextConverter
+from pad_etl.processor.skills.skill_common import BaseTextConverter
 from pad_etl.common.padguide_values import AWAKENING_MAP
 
 
@@ -474,8 +474,9 @@ class AsTextConverter(BaseTextConverter):
                self.fmt_mass_atk(act.mass_attack)
 
     def hp_nuke_convert(self, act):
-        return 'Deal damage equal to ' + fmt_mult(act.multiplier) + \
-               'x of team\'s total HP to ' + self.fmt_mass_atk(act.mass_attack)
+        return "Deal {} damage equal to {}x of team's total HP to {}".format(self.ATTRIBUTES[act.attribute],
+                                                                             fmt_mult(act.multiplier),
+                                                                             self.fmt_mass_atk(act.mass_attack))
 
     def fixed_pos_convert(self, act):
         ROW_INDEX = {
