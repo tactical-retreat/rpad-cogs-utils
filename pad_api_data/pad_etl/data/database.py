@@ -119,8 +119,6 @@ class Database(object):
 
         if not skip_skills:
             self.skills = skill.load_skill_data(data_dir=base_dir)
-            self.raw_skills = skill.load_raw_skill_data(data_dir=base_dir)
-
             parser = SkillParser()
             parser.parse(self.skills)
             self.leader_skills = parser.leader_skills

@@ -3,28 +3,29 @@ Loads the raw data files for NA/JP into intermediate structures, saves them,
 then updates the database with the new data.  
 """
 import argparse
-from collections import defaultdict
-from datetime import timedelta
 import json
 import logging
 import os
 import time
+from collections import defaultdict
+from datetime import timedelta
 
 import feedparser
+
 from pad_etl.common import monster_id_mapping
 from pad_etl.data import database
-from pad_etl.processor import skill_info, merged_data
+from pad_etl.processor import merged_data
+from pad_etl.processor.skills.active_skill_text import AsTextConverter
+from pad_etl.processor.skills.leader_skill_text import LsTextConverter
 from pad_etl.storage import egg
 from pad_etl.storage import egg_processor
 from pad_etl.storage import monster
 from pad_etl.storage import monster_skill
 from pad_etl.storage import skill_data
 from pad_etl.storage import timestamp_processor
-
 from pad_etl.storage.db_util import DbWrapper
 from pad_etl.storage.news import NewsItem
 from pad_etl.storage.schedule_item import ScheduleItem
-
 
 logging.basicConfig()
 logger = logging.getLogger('processor')
@@ -148,10 +149,10 @@ def find_event_id(en_name_to_event_id, jp_name_to_event_id, merged_event):
 
     # Disabled for now; this is putting in stuff like 'domain of the war dragons xp boost'
     message_builders = {
-        #'Exp Boost': 'Exp x {}!',
-        #'Coin Boost': 'Coin x {}!',
-        #'Drop Boost': 'Drop% x {}!',
-        #'Stamina Reduction': 'Stamina {}!',
+        # 'Exp Boost': 'Exp x {}!',
+        # 'Coin Boost': 'Coin x {}!',
+        # 'Drop Boost': 'Drop% x {}!',
+        # 'Stamina Reduction': 'Stamina {}!',
     }
 
     if bonus_name in message_builders:
@@ -241,11 +242,11 @@ def database_diff_events(db_wrapper, database, cross_server_dungeons):
             fail_logger.debug('bailing early; event not found')
             continue
         dungeon_seq = find_dungeon_id(pad_id_to_dungeon_seq, pad_id_ignore,
-                                     en_name_to_dungeon_id, jp_name_to_dungeon_id, merged_event)
+                                      en_name_to_dungeon_id, jp_name_to_dungeon_id, merged_event)
 
         if not dungeon_seq:
             if merged_event.group:
-                #human_fix_logger.error('failed group lookup: %s', repr(merged_event))
+                # human_fix_logger.error('failed group lookup: %s', repr(merged_event))
                 unmatched_events.append(merged_event)
                 continue
 
@@ -255,7 +256,8 @@ def database_diff_events(db_wrapper, database, cross_server_dungeons):
             jp_name = csd.jp_dungeon.clean_name.replace("'", "''")
             en_name = csd.na_dungeon.clean_name.replace("'", "''")
             tstamp = int(time.time()) * 1000
-            sql = ('insert into dungeon_list (dungeon_type, icon_seq, name_jp, name_kr, name_us, order_idx, show_yn, tdt_seq, tstamp)'
+            sql = (
+                'insert into dungeon_list (dungeon_type, icon_seq, name_jp, name_kr, name_us, order_idx, show_yn, tdt_seq, tstamp)'
                 " values (1, 0, '{}', '{}', '{}', 0, 1, 41, {})".format(jp_name, en_name, en_name, tstamp))
 
             dungeon_seq = int(db_wrapper.insert_item(sql))
@@ -263,7 +265,7 @@ def database_diff_events(db_wrapper, database, cross_server_dungeons):
 
             sql = 'insert into etl_dungeon_map (pad_dungeon_id, dungeon_seq) values ({}, {})'.format(
                 dungeon_id, dungeon_seq)
-            
+
             try:
                 db_wrapper.insert_item(sql)
             except:
@@ -293,7 +295,6 @@ def database_diff_events(db_wrapper, database, cross_server_dungeons):
     print('dumping all events\n')
     for de in debug_events:
         print(repr(de[0]), repr(de[1]))
-
 
 
 def database_diff_cards(db_wrapper, jp_database, na_database):
@@ -446,7 +447,8 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
         'SELECT 1 + COALESCE(MAX(CAST(ts_seq AS SIGNED)), 20000) FROM skill_list', op=int)
 
     # Compute English skill text
-    calc_skills = jp_database.calc_skills
+    leader_skills = jp_database.leader_skills
+    active_skills = jp_database.active_skills
 
     # Create a list of SkillIds to CardIds
     skill_id_to_card_ids = defaultdict(list)  # type DefaultDict<SkillId, List[CardId]>
@@ -532,42 +534,44 @@ def database_diff_cards(db_wrapper, jp_database, na_database):
             db_wrapper.insert_or_update(skill_data_item)
 
         ts_seq_leader = info['ts_seq_leader']
+        ls_converter = LsTextConverter()
         if merged_card.leader_skill:
-            calc_ls_skill = calc_skills.get(merged_card.leader_skill.skill_id, '')
-            calc_ls_skill_description = calc_ls_skill.description.strip() or None if calc_ls_skill else None
+            ls_skill = leader_skills.get(merged_card.leader_skill.skill_id, None)
+            ls_skill_description = ls_skill.full_text(ls_converter) if ls_skill else None
             if ts_seq_leader:
                 # Monster already has a skill attached, see if it needs to be updated
                 maybe_update_skill(ts_seq_leader, merged_card.leader_skill,
-                                   merged_card_na.leader_skill, calc_ls_skill_description)
+                                   merged_card_na.leader_skill, ls_skill_description)
             else:
                 # Skill needs to be attached
                 ts_seq_leader = find_or_create_skill(
-                    'ts_seq_leader', merged_card.leader_skill, merged_card_na.leader_skill, calc_ls_skill_description)
+                    'ts_seq_leader', merged_card.leader_skill, merged_card_na.leader_skill, ls_skill_description)
                 update_monster = True
 
-            update_skill_data(ts_seq_leader, ls_desc=calc_ls_skill_description)
+            update_skill_data(ts_seq_leader, ls_desc=ls_skill_description)
 
-            if calc_ls_skill:
-                leader_data_item = monster_skill.MonsterSkillLeaderDataItem(
-                    ts_seq_leader, calc_ls_skill.params)
+            if ls_skill:
+                params = [ls_skill.hp, ls_skill.atk, ls_skill.rcv, ls_skill.shield]
+                leader_data_item = monster_skill.MonsterSkillLeaderDataItem(ts_seq_leader, params)
                 if leader_data_item.leader_data:
                     insert_or_update(leader_data_item)
 
         ts_seq_skill = info['ts_seq_skill']
+        as_converter = AsTextConverter()
         if merged_card.active_skill:
-            calc_as_skill = calc_skills.get(merged_card.active_skill.skill_id, '')
-            calc_as_skill_description = calc_as_skill.description.strip() or None if calc_as_skill else None
+            as_skill = leader_skills.get(merged_card.active_skill.skill_id, None)
+            as_skill_description = as_skill.full_text(ls_converter) if as_skill else None
 
             if ts_seq_skill:
                 # Monster already has a skill attached, see if it needs to be updated
                 maybe_update_skill(ts_seq_skill, merged_card.active_skill,
-                                   merged_card_na.active_skill, calc_as_skill_description)
+                                   merged_card_na.active_skill, as_skill_description)
             else:
                 ts_seq_skill = find_or_create_skill(
-                    'ts_seq_skill', merged_card.active_skill, merged_card_na.active_skill, calc_as_skill_description)
+                    'ts_seq_skill', merged_card.active_skill, merged_card_na.active_skill, as_skill_description)
                 update_monster = True
 
-            update_skill_data(ts_seq_skill, as_desc=calc_as_skill_description)
+            update_skill_data(ts_seq_skill, as_desc=as_skill_description)
 
         if update_monster:
             logger.warn('Updating monster skill info: %s - %s - %s',
@@ -606,6 +610,7 @@ def database_update_news(db_wrapper):
     run_news_update('JP', RENI_NEWS_JP)
     run_news_update('US', RENI_NEWS_NA)
 
+
 def database_update_timestamps(db_wrapper):
     get_tables_sql = 'SELECT `internal_table` FROM get_timestamp'
     tables = list(map(lambda x: x['internal_table'], db_wrapper.fetch_data(get_tables_sql)))
@@ -639,8 +644,6 @@ def load_data(args):
 
     if not args.skipintermediate:
         logger.info('Storing intermediate data')
-        calc_skills = skill_info.reformat_json_info(jp_database.raw_skills)
-        jp_database.calc_skills = calc_skills
         jp_database.save_all(output_dir, args.pretty)
         na_database.save_all(output_dir, args.pretty)
 
