@@ -1077,7 +1077,7 @@ def convert(skill_list: List[MonsterSkill]):
             p_skill = results[p_id]
             s.random_skills.append(p_skill)
 
-    return results.values()
+    return list(results.values())
 
 
 ALL_ACTIVE_SKILLS = [

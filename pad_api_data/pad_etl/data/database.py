@@ -3,6 +3,7 @@ import logging
 import os
 from typing import List
 
+from pad_etl.common.pad_util import dump_helper
 from pad_etl.processor.skills.skill_parser import SkillParser
 from . import BookCard, Dungeon, MonsterSkill, EnemySkill, Exchange
 from . import bonus, card, dungeon, skill, exchange, enemy_skill
@@ -144,9 +145,9 @@ class Database(object):
         output_file = os.path.join(output_dir, '{}_{}.json'.format(self.pg_server, file_name))
         with open(output_file, 'w') as f:
             if pretty:
-                json.dump(obj, f, indent=4, sort_keys=True, default=lambda x: x.__dict__)
+                json.dump(obj, f, indent=4, sort_keys=True, default=dump_helper)
             else:
-                json.dump(obj, f, sort_keys=True, default=lambda x: x.__dict__)
+                json.dump(obj, f, sort_keys=True, default=dump_helper)
 
     def save_all(self, output_dir: str, pretty: bool):
         self.save(output_dir, 'raw_cards', self.raw_cards, pretty)
@@ -157,9 +158,8 @@ class Database(object):
         self.save(output_dir, 'cards', self.cards, pretty)
         self.save(output_dir, 'exchange', self.exchange, pretty)
         self.save(output_dir, 'enemies', self.enemies, pretty)
-
-        if self.calc_skills:
-            self.save(output_dir, 'calc_skills', self.calc_skills, pretty)
+        self.save(output_dir, 'leader_skills', self.leader_skills, pretty)
+        self.save(output_dir, 'active_skills', self.active_skills, pretty)
 
     def dungeon_by_id(self, dungeon_id):
         return self.dungeon_id_to_dungeon.get(dungeon_id, None)

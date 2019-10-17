@@ -1511,7 +1511,7 @@ def convert(skill_list: List[MonsterSkill]):
             p_skill = results[p_id]
             s.child_skills.append(p_skill)
 
-    return results.values()
+    return list(results.values())
 
 
 # TODO: These ended up being 1:1, convert skill type to a class value, then
