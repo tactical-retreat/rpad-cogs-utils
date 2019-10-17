@@ -1324,7 +1324,7 @@ class FixedMovementTime(LeaderSkill):
         elif self.time == 5:
             self.tags.append(Tag.FIXED_5S)
         else:
-            raise ValueError('Unexpected fixed time:' + self.time)
+            raise ValueError('Unexpected fixed time:' + str(self.time))
 
         hp = multi_floor(data[3])
         atk = multi_floor(data[4])
