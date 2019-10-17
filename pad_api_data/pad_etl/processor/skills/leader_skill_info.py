@@ -279,7 +279,6 @@ class LowHpShield(LeaderSkill):
         return converter.threshold_stats_convert(self)
 
 
-
 class LowHpAtkOrRcvBoost(LeaderSkill):
     def __init__(self, ms: MonsterSkill):
         data = merge_defaults(ms.data, [0, 0, 0, 0])
@@ -1295,13 +1294,18 @@ class CollabConditionalBoost(LeaderSkill):
 
 class OrbRemainingMultiplier(LeaderSkill):
     def __init__(self, ms: MonsterSkill):
-        data = merge_defaults(ms.data, [None, None, None, None, None, 0, 100, 0])
+        data = merge_defaults(ms.data, [0, 0, 100, 100, 100, 0, 100, 0])
+        self.attributes = binary_con(data[0])
+        self.types = binary_con(data[1])
         self.orb_count = data[5]
+        self.min_atk = multi_floor(data[3])
         self.base_atk = mult(data[6])
         self.bonus_atk = mult(data[7])
         self.tags = [Tag.NO_SKYFALL]
-        atk = self.base_atk + (self.bonus_atk * self.orb_count)
-        super().__init__(177, ms, atk=atk)
+        hp = multi_floor(data[2])
+        rcv = multi_floor(data[4])
+        atk = self.min_atk * (self.base_atk + (self.bonus_atk * self.orb_count))
+        super().__init__(177, ms, hp=hp, atk=atk, rcv=rcv)
 
     def text(self, converter: LsTextConverter) -> str:
         return converter.orb_remain_convert(self)
