@@ -49,7 +49,7 @@ def copy_images(args):
         do_copy(jp_portrait_input_dir, '{}.png'.format(jp_id),
                 output_dir, 'texture_{}.png'.format(monster_no_filled_long))
 
-    for na_id in monster_id_mapping.NA_VOLTRON_IDS:
+    for na_id in monster_id_mapping.NA_VOLTRON_IDS + monster_id_mapping.NA_POWERRANGER_IDS:
         monster_no = monster_id_mapping.na_id_to_monster_no(na_id)
         monster_no_filled = str(monster_no).zfill(4)
         monster_no_filled_long = str(monster_no).zfill(5)
