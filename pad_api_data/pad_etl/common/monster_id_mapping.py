@@ -28,8 +28,8 @@
 # monster_no 14949-14986
 # monster_no_jp/monster_no_us 4949-4986
 
-NA_VOLTRON_IDS = range(2601, 2632)
-NA_POWERRANGER_IDS = range(4949, 4987)
+NA_VOLTRON_IDS = list(range(2601, 2632))
+NA_POWERRANGER_IDS = list(range(4949, 4987))
 
 
 def between(n, bottom, top):
