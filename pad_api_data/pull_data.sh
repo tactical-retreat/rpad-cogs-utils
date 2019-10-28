@@ -87,19 +87,19 @@ function dl_data {
 
 dl_data $1
 
-echo "copying image data"
-python3 ${EXEC_DIR}/copy_image_data.py \
-  --base_dir=/home/tactical0retreat/image_data \
-  --output_dir=/var/www/html/padguide/images/icons
+#echo "copying image data"
+#python3 ${EXEC_DIR}/copy_image_data.py \
+#  --base_dir=/home/tactical0retreat/image_data \
+#  --output_dir=/var/www/html/padguide/images/icons
 
-echo "updating padguide"
-python3 ${EXEC_DIR}/padguide_processor.py \
-  --input_dir=${DATA_DIR}/raw \
-  --output_dir=${DATA_DIR}/processed \
-  --db_config=${EXEC_DIR}/db_config.json \
-  --doupdates
+#echo "updating padguide"
+#python3 ${EXEC_DIR}/padguide_processor.py \
+#  --input_dir=${DATA_DIR}/raw \
+#  --output_dir=${DATA_DIR}/processed \
+#  --db_config=${EXEC_DIR}/db_config.json \
+#  --doupdates
 
-human_fixes_check
+#human_fixes_check
 
 #echo "exporting wave data"
 #python3 ${EXEC_DIR}/dungeon_wave_exporter.py \
@@ -115,10 +115,10 @@ human_fixes_check
 #  --dev \
 #  --skipintermediate
 
-echo "serializing padguide"
-python3 ${EXEC_DIR}/extract_padguide_db.py \
-  --db_config=${EXEC_DIR}/db_config.json  \
-  --output_dir=${DATA_DIR}/padguide
+#echo "serializing padguide"
+#python3 ${EXEC_DIR}/extract_padguide_db.py \
+#  --db_config=${EXEC_DIR}/db_config.json  \
+#  --output_dir=${DATA_DIR}/padguide
   
 # echo "Building DB dump"
 # python3 ${EXEC_DIR}/build_padguide_db_file.py \
