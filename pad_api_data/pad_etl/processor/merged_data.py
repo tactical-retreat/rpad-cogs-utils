@@ -62,23 +62,24 @@ class CrossServerCard(object):
 
 def build_ownable_cross_server_cards(jp_database, na_database) -> List[CrossServerCard]:
     all_cards = build_cross_server_cards(jp_database, na_database)
-    return list(filter(lambda c: c.monster_no > 0 and c.monster_no < 9000, all_cards))
+    return list(filter(lambda c: c.monster_no > 0 and c.monster_no < 20000, all_cards))
 
 
 def build_cross_server_cards(jp_database, na_database) -> List[CrossServerCard]:
-    jp_card_ids = [mc.card.card_id for mc in jp_database.cards]
+    all_card_ids = set([mc.card.card_id for mc in jp_database.cards])
+    all_card_ids.update([mc.card.card_id for mc in na_database.cards])
     jp_id_to_card = {mc.card.card_id: mc for mc in jp_database.cards}
     na_id_to_card = {mc.card.card_id: mc for mc in na_database.cards}
 
     # This is the list of cards we could potentially update
     combined_cards = []  # type: List[CrossServerCard]
-    for card_id in jp_card_ids:
+    for card_id in all_card_ids:
         jp_card = jp_id_to_card.get(card_id)
-        na_card = na_id_to_card.get(monster_id_mapping.jp_id_to_na_id(card_id), jp_card)
+        na_card = na_id_to_card.get(card_id)
 
         csc, err_msg = make_cross_server_card(jp_card, na_card)
         if csc:
-            combined_cards.append(csc)
+            combined_cards.extend(csc)
         elif err_msg:
             fail_logger.debug('Skipping card, %s', err_msg)
 
@@ -88,7 +89,22 @@ def build_cross_server_cards(jp_database, na_database) -> List[CrossServerCard]:
 # Creates a CrossServerCard if appropriate.
 # If the card cannot be created, provides an error message.
 def make_cross_server_card(jp_card: MergedCard, na_card: MergedCard) -> (CrossServerCard, str):
+    csc = []
+    if na_card is not None:
+        monster_no = monster_id_mapping.na_id_to_monster_no(na_card.card.card_id)
+        if jp_card is None:
+            # NA exclusive card ID
+            csc.append(CrossServerCard(na_card.card.card_id, na_card, na_card))
+            return csc, None
+        elif monster_no is not None:
+            # NA exclusive card
+            csc.append(CrossServerCard(monster_no, na_card, na_card))
+            na_card = None
+
     card_id = jp_card.card.card_id
+
+    if na_card is None:
+        na_card = jp_card
 
     if '***' in jp_card.card.name or '???' in jp_card.card.name:
         return None, 'Skipping debug card: {}'.format(repr(jp_card))
@@ -115,7 +131,8 @@ def make_cross_server_card(jp_card: MergedCard, na_card: MergedCard) -> (CrossSe
             na_card.enemy_behavior[idx].jp_name = jp_card.enemy_behavior[idx].name or na_card.enemy_behavior[idx].name
 
     monster_no = monster_id_mapping.jp_id_to_monster_no(card_id)
-    return CrossServerCard(monster_no, jp_card, na_card), None
+    csc.append(CrossServerCard(monster_no, jp_card, na_card))
+    return csc, None
 
 
 class CrossServerDungeon(object):
@@ -136,7 +153,7 @@ def build_cross_server_dungeons(jp_database, na_database) -> List[CrossServerDun
     combined_dungeons = []  # type: List[CrossServerDungeon]
     for dungeon_id in dungeon_ids:
         jp_dungeon = jp_id_to_dungeon.get(dungeon_id)
-        na_dungeon = na_id_to_dungeon.get(dungeon_id) # Might need a mapping like cards
+        na_dungeon = na_id_to_dungeon.get(dungeon_id)  # Might need a mapping like cards
 
         csc, err_msg = make_cross_server_dungeon(jp_dungeon, na_dungeon)
         if csc:
