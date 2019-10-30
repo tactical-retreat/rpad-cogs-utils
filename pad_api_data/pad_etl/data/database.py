@@ -4,7 +4,6 @@ import os
 from typing import List
 
 from pad_etl.common.pad_util import dump_helper
-from pad_etl.processor.skills.skill_parser import SkillParser
 from . import BookCard, Dungeon, MonsterSkill, EnemySkill, Exchange
 from . import bonus, card, dungeon, skill, exchange, enemy_skill
 from ..processor import enemy_skillset as ess
@@ -120,10 +119,6 @@ class Database(object):
 
         if not skip_skills:
             self.skills = skill.load_skill_data(data_dir=base_dir)
-            parser = SkillParser()
-            parser.parse(self.skills)
-            self.leader_skills = parser.leader_skills
-            self.active_skills = parser.active_skills
 
         self.enemy_skills = enemy_skill.load_enemy_skill_data(data_dir=base_dir)
 
