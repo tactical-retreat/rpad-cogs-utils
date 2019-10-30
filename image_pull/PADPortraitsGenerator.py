@@ -4,7 +4,6 @@ import os
 
 from PIL import Image
 
-
 parser = argparse.ArgumentParser(description="Generates P&D portraits.", add_help=False)
 
 inputGroup = parser.add_argument_group("Input")
@@ -13,7 +12,6 @@ inputGroup.add_argument("--data_dir", required=True, help="Path to processed pad
 inputGroup.add_argument("--server", help="Either na or jp")
 inputGroup.add_argument("--card_templates_file", help="Path to card templates png")
 
-
 outputGroup = parser.add_argument_group("Output")
 outputGroup.add_argument("--output_dir", help="Path to a folder where output should be saved")
 
@@ -21,10 +19,9 @@ helpGroup = parser.add_argument_group("Help")
 helpGroup.add_argument("-h", "--help", action="help", help="Displays this help message and exits.")
 args = parser.parse_args()
 
-
 input_dir = args.input_dir
 server = args.server
-cards_file = os.path.join(args.data_dir, '{}_raw_cards.json'.format(server))
+cards_file = os.path.join(args.data_dir, '{}_cards.json'.format(server))
 card_templates_file = args.card_templates_file
 output_dir = args.output_dir
 
@@ -47,7 +44,6 @@ for idx, t in enumerate(['r', 'b', 'g', 'l', 'd']):
 
     sattr_imgs[t] = templates_img.crop(box=(xstart, ystart, xend, yend))
 
-
 card_types = []
 with open(cards_file) as f:
     card_data = json.load(f)
@@ -61,12 +57,14 @@ attr_map = {
     4: 'd',
 }
 
-for card in card_data:
-    card_id = card['card_id']
+for merged_card in card_data:
+    card = merged_card['card']
+    card_id = card['monster_no']
+    released = card['released_status']
 
     # Prevent loading junk entries (fake enemies) and also limit to data which has
     # been officially released.
-    if card_id < 9999 and not card['released_status']:
+    if card_id > 9999 or not released:
         continue
 
     card_types.append([

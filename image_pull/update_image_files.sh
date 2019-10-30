@@ -5,7 +5,7 @@
 
 RUN_DIR=/home/tactical0retreat/rpad-cogs-utils/image_pull
 IMG_DIR=/home/tactical0retreat/image_data
-PROCESSED_DATA_DIR=/home/tactical0retreat/pad_data/processed
+PROCESSED_DATA_DIR=/home/tactical0retreat/dadguide/data/processed
 
 ALT_PROCESSOR_DIR=/home/tactical0retreat/git/pad-resources
 
