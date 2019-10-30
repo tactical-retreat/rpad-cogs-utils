@@ -5,7 +5,6 @@ import subprocess
 from pad_etl.data import database
 from pad_etl.processor import active_dungeons
 from pad_etl.storage import db_util
-from pad_etl.storage import timestamp_processor
 
 
 def parse_args():
@@ -31,7 +30,6 @@ def parse_args():
 
 
 args = parse_args()
-
 
 processed_dir = '/home/tactical0retreat/pad_data/processed'
 bonuses_file = '{}/{}_bonuses.json'.format(processed_dir, args.server)
@@ -127,36 +125,3 @@ def do_dungeon_fill(dungeon_seq):
     p = subprocess.run(process_args, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     print(str(p.stdout))
     print(str(p.stderr))
-
-
-FIND_DUNGEONS_SQL = """
-select dungeon_seq, name_us
-from dungeon_list
-where dungeon_seq in (
-    select dungeon_seq 
-    from etl_dungeon_map
-    where pad_dungeon_id in (
-        select dungeon_id from wave_data group by 1
-    )
-    group by 1
-    having count(*) = 1
-)
-and dungeon_seq not in (
-    select dungeon_seq from dungeon_monster_list group by 1
-)
-order by dungeon_seq desc
-"""
-
-ready_dungeons = db_wrapper.fetch_data(FIND_DUNGEONS_SQL)
-
-for row in ready_dungeons:
-    dungeon_seq = row['dungeon_seq']
-    name_us = row['name_us']
-    print('dungeon to load:', dungeon_seq, name_us)
-    if int(dungeon_seq) in [1450]:
-        print('skipping unloadable dungeon', dungeon_seq)
-        continue
-    do_dungeon_fill(dungeon_seq)
-
-
-timestamp_processor.update_timestamps(db_wrapper)
