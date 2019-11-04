@@ -8,7 +8,6 @@ from typing import List, Any
 
 from ..common import pad_util
 from ..common.shared_types import SkillId
-from ..common.skill_type_maps import SKILL_TYPE
 
 # The typical JSON file name for this data.
 FILE_NAME = 'download_skill_data.json'
