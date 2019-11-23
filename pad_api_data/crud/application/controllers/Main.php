@@ -1,7 +1,7 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
  
 class Main extends CI_Controller {
-public $csv_primary_key = 'monster_list.monster_no';
+public $csv_primary_key = 'monster.monster_id';
 function __construct()
 {
         parent::__construct();
@@ -31,68 +31,47 @@ die();
 public function monster_list(){
 	$columns = array(
 	//monster no
-	'monster_no','monster_no_jp','monster_no_kr','monster_no_us',
+	'monster_id','monster_no_jp','monster_no_kr','monster_no_na',
 	//name
-	'tm_name_jp','tm_name_kr','tm_name_us','tm_name_us_override','pronunciation_jp',
+	'name_jp','name_kr','name_na','name_na_override',
 	//stats
-	'rarity','cost','level','exp','hp_min','hp_max','atk_min','atk_max','rcv_min','rcv_max','limit_mult','ratio_atk','ratio_hp','ratio_rcv',
+	'rarity','cost','level','exp','hp_min','hp_max','atk_min','atk_max','rcv_min','rcv_max','limit_mult',
 	//relations
-	'ta_seq','ta_seq_sub','tt_seq','tt_seq_sub','ts_seq_leader','ts_seq_skill',
-	//comments
-	'comment_jp','comment_kr','comment_us',
+	'attribute_1_id','attribute_2_id','type_1_id','type_2_id','type_3_id','active_skill_id', 'leader_skill_id',
 	//misc
 	'reg_date','tstamp'
-	/* Not displayed
-	app_version: probably useless
-	te_seq: redundant with exp
-	*/
 	);
 	$relations = array(
-		'Main Att' => array('ta_seq', 'attribute_list', 'ta_name_us'),
-		'Sub Att' => array('ta_seq_sub', 'attribute_list', 'ta_name_us'),
-		'Type 1' => array('tt_seq', 'type_list', 'tt_name_us'),
-		'Type 2' => array('tt_seq_sub', 'type_list', 'tt_name_us'),
-		'Lead Skill' => array('ts_seq_leader', 'skill_list', '{ts_seq} - {ts_desc_us_calculated}'),
-		'Active' => array('ts_seq_skill', 'skill_list', '{ts_seq} - {ts_desc_us_calculated}')
+		'Main Att' => array('attribute_1_id', 'd_attributes', 'name'),
+		'Sub Att' => array('attribute_2_id', 'd_attributes', 'name'),
+		'Type 1' => array('type_1_id', 'd_types', 'name'),
+		'Type 2' => array('type_2_id', 'd_types', 'name'),
+		'Type 2' => array('type_3_id', 'd_types', 'name'),
+		'Lead Skill' => array('leader_skill_id', 'leader_skills', '{leader_skill_id} - {desc_na}'),
+		'Active' => array('active_skill_id', 'active_skills', '{active_skill_id} - {desc_na}')
 	);
-    $this->_do_table('monster_list', $columns, $relations);
+    $this->_do_table('monsters', $columns, $relations);
 }
 
-public function monster_info_list(){
-	$columns = array('monster_no','tsr_seq','on_kr','on_us','pal_egg','rare_egg','fodder_exp','sell_price','history_jp','history_kr','history_us','tstamp');
-	$relations = array(
-		'Monster' => array('monster_no', 'monster_list', '{monster_no} - {tm_name_us}'),
-		'Series' => array('tsr_seq', 'series_list', '{tsr_seq} - {name_us}', array('del_yn' => false))
-	);
-    $this->_do_table('monster_info_list', $columns, $relations);
-}
-
-public function series_list_active(){
-	$columns = array('tsr_seq','monsters','name_jp','name_kr','name_us','search_data','del_yn','tstamp');
-	$filter = array('del_yn', 0);
+public function series_list(){
+	$columns = array('series_id','series_monsters', 'name_jp','name_kr','name_na','tstamp');
 	$relations = array(
 		//ordering looks nice but is slow af
-		'N2N_monsters' => array('monsters', 'monster_info_list', 'monster_list', 'tsr_seq', 'monster_no' , 'tm_name_us'/*, 'monster_no asc'*/)
+		'N2N_monsters' => array('series_monsters', 'monsters', 'series_id', 'monster_id' , 'name_na'/*, 'monster_no asc'*/)
 	);
     $this->_do_table('series_list', $columns, $relations, $filter);
 }
 
-public function series_list_inactive(){
-	$columns = array('tsr_seq','name_jp','name_kr','name_us','search_data','del_yn','tstamp');
-	$filter = array('del_yn', 1);
-    $this->_do_table('series_list', $columns, null, $filter);
-}
-
 public function dungeon_list_active(){
-	$columns = array('dungeon_seq','order_idx','tdt_seq','dungeon_type','icon_seq','name_jp','name_kr','name_us','comment_jp','comment_kr','comment_us','show_yn','tstamp');
-	$filter = array('show_yn', 1);
-    $this->_do_table('dungeon_list', $columns, null, $filter);
+	$columns = array('dungeon_id','name_na','name_jp','dungeon_type','icon_id','reward_na','reward_icon_ids','visible','tstamp');
+	$filter = array('visible', 1);
+    $this->_do_table('dungeons', $columns, null, $filter);
 }
 
 public function dungeon_list_inactive(){
-	$columns = array('dungeon_seq','order_idx','tdt_seq','dungeon_type','icon_seq','name_jp','name_kr','name_us','comment_jp','comment_kr','comment_us','show_yn','tstamp');
-	$filter = array('show_yn', 0);
-    $this->_do_table('dungeon_list', $columns, null, $filter);
+	$columns = array('dungeon_id','name_na','name_jp','dungeon_type','icon_id','reward_na','reward_icon_ids','visible','tstamp');
+	$filter = array('visible', 0);
+    $this->_do_table('dungeons', $columns, null, $filter);
 }
 
 private function _get_primary_key($tablename){
@@ -178,8 +157,8 @@ public function csv_upload(){
 							$input_data[$heading] = $data[$i];
 						}
 						
-						if($fieldname == 'tm_name_us_override'){
-							$this->db->select($fieldname . ', tm_name_us, tm_name_jp, ' . $wherefield);
+						if($fieldname == 'name_us_override'){
+							$this->db->select($fieldname . ', name_us, name_jp, ' . $wherefield);
 						}else{
 							$this->db->select($fieldname . ', ' . $wherefield);
 						}
@@ -304,7 +283,7 @@ public function _do_table($table = null, $columns = null, $relations = null, $fi
 
 function _update_tstamp($post_array,
  $primary_key) {
-    $post_array['tstamp'] = time() * 1000;
+    $post_array['tstamp'] = time();
     return $post_array;
 }
 
