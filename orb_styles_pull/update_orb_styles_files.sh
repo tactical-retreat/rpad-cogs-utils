@@ -1,6 +1,7 @@
 #!/bin/bash
 #
 # Updates the local cache of orb skin files.
+set -x
 
 RUN_DIR=/home/tactical0retreat/rpad-cogs-utils/orb_styles_pull
 OUTPUT_DIR=/home/tactical0retreat/pad_data/orb_styles

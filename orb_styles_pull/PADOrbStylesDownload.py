@@ -89,7 +89,7 @@ for extra in extras:
             input=raw_file_path,
             output=extract_dir))
 
-    final_file_name = extract_file_name.lower().replace('BLOCK', '')
+    final_file_name = extract_file_name.replace('BLOCK', '').lower()
     final_file_path = os.path.join(final_dir, final_file_name)
 
     if os.path.exists(final_file_path) and not should_always_process:
