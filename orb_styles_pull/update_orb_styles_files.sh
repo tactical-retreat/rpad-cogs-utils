@@ -8,5 +8,5 @@ DATA_DIR=/home/tactical0retreat/pad_data/processed
 FINAL_DIR=/home/tactical0retreat/dadguide/data/media/orb_skins
 
 # Pull raws
-python3 ${RUN_DIR}/PADOrbStylesDownload.py --output_dir=${OUTPUT_DIR} --data_dir=${DATA_DIR} --server=na
-python3 ${RUN_DIR}/PADOrbStylesDownload.py --output_dir=${OUTPUT_DIR} --data_dir=${DATA_DIR} --server=jp
+python3 ${RUN_DIR}/PADOrbStylesDownload.py --output_dir=${OUTPUT_DIR} --data_dir=${DATA_DIR} --server=na --final_dir=${FINAL_DIR}
+python3 ${RUN_DIR}/PADOrbStylesDownload.py --output_dir=${OUTPUT_DIR} --data_dir=${DATA_DIR} --server=jp --final_dir=${FINAL_DIR}
