@@ -33,9 +33,9 @@ a:hover
 <body>
 <!-- Beginning header -->
     <div>
-        <a href='<?php echo site_url('main/monster_list')?>'>Monster</a> | 
-        <a href='<?php echo site_url('main/series_list')?>'>Series</a> |
-        <a href='<?php echo site_url('main/dungeon_list_active')?>'>Dungeon</a> [<a href='<?php echo site_url('main/dungeon_list_inactive')?>'>Deleted</a>] | 
+        <a href='<?php echo site_url('main/monsters')?>'>Monster</a> |
+        <a href='<?php echo site_url('main/series')?>'>Series</a> |
+        <a href='<?php echo site_url('main/dungeons_active')?>'>Dungeon</a> [<a href='<?php echo site_url('main/dungeons_inactive')?>'>Deleted</a>] |
         <a href='<?php echo site_url('main/csv_upload')?>'>CSV Bulk Edit</a>
     </div>
 <!-- End of header-->

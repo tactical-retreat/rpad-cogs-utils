@@ -18,7 +18,7 @@ $this->load->driver('cache', array('adapter' => 'apc', 'backup' => 'file'));
  
 public function index()
 {
-$this->monster_list();
+$this->monsters();
 }
 
 public function list()
@@ -28,16 +28,16 @@ print_r($this->db->list_tables());
 die();
 }
 
-public function monster_list(){
+public function monsters(){
 	$columns = array(
 	//monster no
 	'monster_id','monster_no_jp','monster_no_kr','monster_no_na',
 	//name
 	'name_jp','name_kr','name_na','name_na_override',
 	//stats
-	'rarity','cost','level','exp','hp_min','hp_max','atk_min','atk_max','rcv_min','rcv_max','limit_mult',
+	'rarity','cost','level','exp','hp_max','atk_max','rcv_max','limit_mult',
 	//relations
-	'attribute_1_id','attribute_2_id','type_1_id','type_2_id','type_3_id','active_skill_id', 'leader_skill_id',
+	'attribute_1_id','attribute_2_id','type_1_id','type_2_id','type_3_id','active_skill_id', 'leader_skill_id','series_id',
 	//misc
 	'reg_date','tstamp'
 	);
@@ -46,29 +46,31 @@ public function monster_list(){
 		'Sub Att' => array('attribute_2_id', 'd_attributes', 'name'),
 		'Type 1' => array('type_1_id', 'd_types', 'name'),
 		'Type 2' => array('type_2_id', 'd_types', 'name'),
-		'Type 2' => array('type_3_id', 'd_types', 'name'),
-		'Lead Skill' => array('leader_skill_id', 'leader_skills', '{leader_skill_id} - {desc_na}'),
-		'Active' => array('active_skill_id', 'active_skills', '{active_skill_id} - {desc_na}')
+		'Type 3' => array('type_3_id', 'd_types', 'name'),
+		'Series' => array('series_id', 'series', 'name_na'),
+		# 'Lead Skill' => array('leader_skill_id', 'leader_skills', '{leader_skill_id} - {desc_na}'),
+		# 'Active' => array('active_skill_id', 'active_skills', '{active_skill_id} - {desc_na}')
 	);
     $this->_do_table('monsters', $columns, $relations);
 }
 
-public function series_list(){
-	$columns = array('series_id','series_monsters', 'name_jp','name_kr','name_na','tstamp');
+public function series(){
+	$columns = array('series_id','name_jp','name_kr','name_na','tstamp');
 	$relations = array(
 		//ordering looks nice but is slow af
-		'N2N_monsters' => array('series_monsters', 'monsters', 'series_id', 'monster_id' , 'name_na'/*, 'monster_no asc'*/)
+		# 'N2N_series_monsters' => array('series_monsters', 'monsters', 'monsters', 'series_id','monster_id','name_na'/*, 'monster_no asc'*/)
+		'monsters' => array('series_id', 'monsters', 'series_id')
 	);
-    $this->_do_table('series_list', $columns, $relations, $filter);
+    $this->_do_table('series', $columns, $relations, null);
 }
 
-public function dungeon_list_active(){
+public function dungeons_active(){
 	$columns = array('dungeon_id','name_na','name_jp','dungeon_type','icon_id','reward_na','reward_icon_ids','visible','tstamp');
 	$filter = array('visible', 1);
     $this->_do_table('dungeons', $columns, null, $filter);
 }
 
-public function dungeon_list_inactive(){
+public function dungeons_inactive(){
 	$columns = array('dungeon_id','name_na','name_jp','dungeon_type','icon_id','reward_na','reward_icon_ids','visible','tstamp');
 	$filter = array('visible', 0);
     $this->_do_table('dungeons', $columns, null, $filter);
@@ -273,6 +275,8 @@ public function _do_table($table = null, $columns = null, $relations = null, $fi
 	if(!is_null($order)){
 		$crud->order_by(...$order);
 	}
+
+    $crud->unset_texteditor('name_na', 'name_jp', 'name_kr', 'name_na_override');
 
     $crud->callback_before_insert(array($this,'_update_tstamp'));
     $crud->callback_before_update(array($this,'_update_tstamp'));
