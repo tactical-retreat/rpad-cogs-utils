@@ -29,6 +29,7 @@ def process_list_of_ships_table(table, id_mod=None):
             print('processing failed')
     return items
 
+
 def process_list_of_ships_row(row, id_mod):
     cols = row.findAll('td')
     ship_id = cols[0].text.strip()
@@ -48,15 +49,25 @@ def process_list_of_ships_row(row, id_mod):
     process_ship(full_url, item)
     return item
 
+
 def process_ship(full_url, item):
     page = BeautifulSoup(requests.get(full_url).text, 'lxml')
 
     switcher = page.find('div', {'class': 'shiparttabbernew'})
-    tabs = switcher.findAll('div', {'class': 'tabbertab'})
 
-    for tab in tabs:
-        title = tab['title']
-        link = tab.find('a', {'class': 'image'})
+    tabs = switcher.findAll('div', {'class': 'tabbertab'})
+    if tabs:
+        for tab in tabs:
+            title = tab['title']
+            link = tab.find('a', {'class': 'image'})
+            link_target = link['href']
+            full_url = '{}{}'.format(BASE_URL, link_target)
+            process_image(full_url, title, item)
+    else:
+        header = page.find('div', {'class': 'azl_box_head'})
+        title = header.find('div', {'class': 'azl_box_title'}).text
+        body = page.find('div', {'class': 'azl_box_body'})
+        link = body.find('a', {'class': 'image'})
         link_target = link['href']
         full_url = '{}{}'.format(BASE_URL, link_target)
         process_image(full_url, title, item)
@@ -67,12 +78,14 @@ def process_image(full_url, title, item):
     original_image_path = page.find('a', text=lambda x: x == 'Original file')['href']
     if original_image_path:
         file_name = os.path.basename(original_image_path)
-        item['images'].append({
+        result = {
             'order': len(item['images']),
             'title': title,
             'file_name': file_name,
             'url': '{}{}'.format(BASE_URL, original_image_path),
-        })
+        }
+        print('adding', result)
+        item['images'].append(result)
     else:
         print('failed to find image for ' + title)
 
@@ -114,7 +127,6 @@ output_json = {'items': items}
 output_json_file = os.path.join(output_dir, 'azure_lane.json')
 with open(output_json_file, "w") as f:
     json.dump(output_json, f)
-
 
 for item in items:
     for image in item['images']:
