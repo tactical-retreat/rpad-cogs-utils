@@ -1,10 +1,8 @@
 import argparse
 import json
 import os
-import re
-import sys
+import shutil
 import urllib.request
-
 from collections import defaultdict
 
 import padtools
@@ -18,6 +16,7 @@ inputGroup.add_argument("--data_dir", required=True, help="Path to processed pad
 
 outputGroup = parser.add_argument_group("Output")
 outputGroup.add_argument("--output_dir", help="Path to a folder where output should be saved")
+outputGroup.add_argument("--final_dir", help="Path to a folder where fixed output should be saved")
 
 helpGroup = parser.add_argument_group("Help")
 helpGroup.add_argument("-h", "--help", action="help", help="Displays this help message and exits.")
@@ -31,8 +30,8 @@ if args.server == 'na':
 elif args.server == 'jp':
     extras = padtools.regions.japan.server.extras
 
-
 output_dir = args.output_dir
+
 
 def download_file(url, file_path):
     response_object = urllib.request.urlopen(url)
@@ -54,14 +53,13 @@ fixed_dir = os.path.join(fixed_dir, server)
 os.makedirs(raw_dir, exist_ok=True)
 os.makedirs(fixed_dir, exist_ok=True)
 
-
 for extra in extras:
     raw_file_name = extra.file_name
     if not raw_file_name.startswith('padv') or not raw_file_name.endswith('.wav'):
         print('skipping', raw_file_name)
         continue
 
-    raw_file_path = os.path.join(raw_dir, raw_file_name)    
+    raw_file_path = os.path.join(raw_dir, raw_file_name)
     if os.path.exists(raw_file_path):
         print('file exists', raw_file_path)
         continue
@@ -72,7 +70,6 @@ for extra in extras:
 data_file_path = os.path.join(args.data_dir, '{}_raw_cards.json'.format(server))
 with open(data_file_path) as f:
     card_data = json.load(f)
-
 
 voice_id_to_card_id = defaultdict(set)
 for c in card_data:
@@ -94,5 +91,14 @@ for file_name in os.listdir(raw_dir):
         cmd = 'sox -t ima -r 44100 -e ima-adpcm -v .5 {} {}'.format(in_file, out_file)
         print('running', cmd)
         os.system(cmd)
+
+for file_name in os.listdir(fixed_dir):
+    in_file = os.path.join(fixed_dir, file_name)
+
+    out_file_name = file_name.zfill(9)  # 5 digits + .wav
+    out_file = os.path.join(args.final_dir, out_file_name)
+    if os.path.exists(out_file):
+        continue
+    shutil.copy2(in_file, out_file)
 
 print('done')
