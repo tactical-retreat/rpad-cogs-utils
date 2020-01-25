@@ -96,7 +96,8 @@ for file_name in os.listdir(fixed_dir):
     in_file = os.path.join(fixed_dir, file_name)
 
     out_file_name = file_name.zfill(9)  # 5 digits + .wav
-    out_file = os.path.join(args.final_dir, out_file_name)
+    out_file_dir = os.path.join(args.final_dir, server)
+    out_file = os.path.join(out_file_dir, out_file_name)
     if os.path.exists(out_file):
         continue
     shutil.copy2(in_file, out_file)
