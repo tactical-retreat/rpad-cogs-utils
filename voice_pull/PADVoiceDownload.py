@@ -78,7 +78,7 @@ for c in card_data:
         voice_id_to_card_id[voice_id].add(c['card_id'])
 
 for file_name in os.listdir(raw_dir):
-    file_id = int(file_name.lstrip('padv0').rstrip('.wav'))
+    file_id = int(file_name.lstrip('padv').lstrip('0').rstrip('.wav'))
     if file_id not in voice_id_to_card_id:
         print('skipping non-card file', file_name)
         continue
