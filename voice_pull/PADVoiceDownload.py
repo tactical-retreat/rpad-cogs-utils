@@ -88,7 +88,7 @@ for file_name in os.listdir(raw_dir):
         if os.path.exists(out_file):
             continue
 
-        cmd = 'sox -t ima -r 44100 -e ima-adpcm -v .5 {} {}'.format(in_file, out_file)
+        cmd = 'sox -t ima -r 44100 -e ima-adpcm {} -e signed-integer -b 16 {}'.format(in_file, out_file)
         print('running', cmd)
         os.system(cmd)
 
