@@ -59,7 +59,7 @@ def process_ship(full_url, item):
     if tabs:
         for tab in tabs:
             title = tab['title']
-            link = tab.find('div', {'class': 'shipskin-image'}).find('a', {'class': 'image'})
+            link = tab.find('div', {'class': 'ship-skin-image'}).find('a', {'class': 'image'})
             link_target = link['href']
             full_url = '{}{}'.format(BASE_URL, link_target)
             process_image(full_url, title, item)
@@ -75,7 +75,7 @@ def process_ship(full_url, item):
 
 def process_image(full_url, title, item):
     page = BeautifulSoup(requests.get(full_url).text, 'lxml')
-    original_image_path = page.find('div', {'class': 'fullImageLink'}).find('a')['href']
+    original_image_path = page.find('a', text=lambda x: x == 'Original file')['href']
     if original_image_path:
         file_name = os.path.basename(original_image_path)
         result = {
